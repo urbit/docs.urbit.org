@@ -1,18 +1,21 @@
 /** @type {import('tailwindcss').Config} */
+const { Markdown } = require("@urbit/fdn-design-system");
+const markdoc = require("@urbit/markdoc");
+
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+  presets: [require("@urbit/fdn-design-system/tailwind.config")],
+  content: {
+    files: [
+      "./node_modules/@urbit/fdn-design-system/build/**/*.{js,jsx}",
+      "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./content/**/*.md",
+    ],
+    transform: {
+      md: (content) => {
+        const parsed = Markdown.parse({ post: { content } });
+        return markdoc.renderers.html(parsed);
       },
     },
   },
-  plugins: [],
-}
+};

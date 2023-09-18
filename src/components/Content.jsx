@@ -89,7 +89,7 @@ export default function Content({
           })) || <NavSection posts={posts} root={root} path={path} />}
       </nav>
       <div className="mx-10 w-0.5 h-100 rounded-sm bg-gray" />
-      <div className="flex-1">
+      <div className="flex flex-col flex-1 overflow-y-scroll">
         <h1 className="text-6xl text-white font-semibold mb-10">
           {data.title}
         </h1>

@@ -11,39 +11,42 @@ import {
 } from "@urbit/fdn-design-system";
 
 function NavSection({ posts, root, path, indent = 0 }) {
+  const isUnderThisPage = `${path}/`.includes(`${root}/`);
   return (
     <>
       <Link
         className={
           `pl-${indent} font-bold ` +
           classnames({
-            "text-gray hover:text-brite": !path.includes(root),
-            "text-brite": path.includes(root),
+            "text-gray hover:text-brite": !isUnderThisPage,
+            "text-brite": isUnderThisPage,
           })
         }
         href={`/${root}`}
       >
         {posts.title}
       </Link>
-      {posts.pages.map((page) => {
-        const href = `/${root}/${page.slug}`;
-        const isThisPage = path === href;
-        return (
-          <Link
-            className={
-              `pl-${indent + 4} ` +
-              classnames({
-                "text-gray hover:text-brite": !isThisPage,
-                "text-brite": isThisPage,
-              })
-            }
-            href={href}
-          >
-            {page.title}
-          </Link>
-        );
-      })}
-      {posts.children &&
+      {isUnderThisPage &&
+        posts.pages.map((page) => {
+          const href = `/${root}/${page.slug}`;
+          const isThisPage = path === href;
+          return (
+            <Link
+              className={
+                `pl-${indent + 4} ` +
+                classnames({
+                  "text-gray hover:text-brite": !isThisPage,
+                  "text-brite": isThisPage,
+                })
+              }
+              href={href}
+            >
+              {page.title}
+            </Link>
+          );
+        })}
+      {isUnderThisPage &&
+        posts.children &&
         Object.keys(posts.children).length !== 0 &&
         Object.entries(posts.children).map(([k, v], i) => {
           return (

@@ -10,14 +10,17 @@ import {
   capitalize,
 } from "@urbit/fdn-design-system";
 
-function NavSection({ posts, root, path }) {
+function NavSection({ posts, root, path, indent = 0 }) {
   return (
     <>
       <Link
-        className={classnames({
-          "text-gray hover:text-brite": !path.includes(root),
-          "text-brite": path.includes(root),
-        })}
+        className={
+          `pl-${indent} font-bold ` +
+          classnames({
+            "text-gray hover:text-brite": !path.includes(root),
+            "text-brite": path.includes(root),
+          })
+        }
         href={`/${root}`}
       >
         {posts.title}
@@ -28,7 +31,7 @@ function NavSection({ posts, root, path }) {
         return (
           <Link
             className={
-              "pl-2 " +
+              `pl-${indent + 4} ` +
               classnames({
                 "text-gray hover:text-brite": !isThisPage,
                 "text-brite": isThisPage,
@@ -40,6 +43,18 @@ function NavSection({ posts, root, path }) {
           </Link>
         );
       })}
+      {posts.children &&
+        Object.keys(posts.children).length !== 0 &&
+        Object.entries(posts.children).map(([k, v], i) => {
+          return (
+            <NavSection
+              posts={v}
+              root={join(root, k)}
+              path={path}
+              indent={indent + 4}
+            />
+          );
+        })}
     </>
   );
 }
@@ -65,11 +80,7 @@ export default function Content({
                 {i > 0 && (
                   <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />
                 )}
-                <NavSection
-                  posts={v}
-                  root={join(root, k)}
-                  path={path}
-                />
+                <NavSection posts={v} root={join(root, k)} path={path} />
               </>
             );
           })) || <NavSection posts={posts} root={root} path={path} />}

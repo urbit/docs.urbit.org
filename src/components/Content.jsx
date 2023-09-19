@@ -11,6 +11,10 @@ import {
 } from "@urbit/fdn-design-system";
 import TableOfContents from "./TableOfContents";
 
+function label(str) {
+  return str.length > 27 ? str.slice(0, 24) + "..." : str;
+}
+
 function NavSection({ posts, root, path, indent = 0 }) {
   const isUnderThisPage = `${path}/`.includes(`${root}/`);
   return (
@@ -25,7 +29,7 @@ function NavSection({ posts, root, path, indent = 0 }) {
         }
         href={`/${root}`}
       >
-        {posts.title}
+        {label(posts.title)}
       </Link>
       {isUnderThisPage &&
         posts.pages.map((page) => {
@@ -42,7 +46,7 @@ function NavSection({ posts, root, path, indent = 0 }) {
               }
               href={href}
             >
-              {page.title}
+              {label(page.title)}
             </Link>
           );
         })}
@@ -75,8 +79,8 @@ export default function Content({
 }) {
   return (
     <div className="relative flex w-full">
-      <div className="sticky flex top-20 z-40 content-height w-3/12">
-        <nav className="flex flex-col text-xl leading-tight my-4 pr-10 overflow-scroll">
+      <div className="sticky flex top-20 z-40 content-height">
+        <nav className="flex flex-col w-68 text-xl leading-tight my-4 pr-10 whitespace-nowrap overflow-y-scroll overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
             Object.entries(posts.children).map(([k, v], i) => {

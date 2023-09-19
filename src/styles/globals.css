@@ -11,3 +11,7 @@
 .markdown :matches(h1, h2, h3) {
   @apply scroll-mt-40;
 }
+
+.content-height {
+  height: calc(100vh - 4rem - 1rem - 1rem)
+}

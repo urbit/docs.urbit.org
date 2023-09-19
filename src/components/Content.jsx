@@ -75,21 +75,23 @@ export default function Content({
 }) {
   return (
     <div className="relative flex w-full">
-      <nav className="flex flex-col w-52 text-xl leading-tight pt-4">
-        {(posts.children &&
-          Object.keys(posts.children).length !== 0 &&
-          Object.entries(posts.children).map(([k, v], i) => {
-            return (
-              <>
-                {i > 0 && (
-                  <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />
-                )}
-                <NavSection posts={v} root={join(root, k)} path={path} />
-              </>
-            );
-          })) || <NavSection posts={posts} root={root} path={path} />}
-      </nav>
-      <div className="mx-10 my-4 w-0.5 h-100 rounded-sm bg-gray" />
+      <div className="sticky flex top-20 z-40 content-height w-3/12">
+        <nav className="flex flex-col text-xl leading-tight my-4 pr-10 overflow-scroll">
+          {(posts.children &&
+            Object.keys(posts.children).length !== 0 &&
+            Object.entries(posts.children).map(([k, v], i) => {
+              return (
+                <>
+                  {i > 0 && (
+                    <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />
+                  )}
+                  <NavSection posts={v} root={join(root, k)} path={path} />
+                </>
+              );
+            })) || <NavSection posts={posts} root={root} path={path} />}
+        </nav>
+          <div className="mr-10 my-4 w-0.5 h-100 rounded-sm bg-gray" />
+      </div>
       <div className="flex-1 min-w-0">
         <TableOfContents key={params.slug?.join("/") || Math.random()} />
         <div className="w-full overflow-y-scroll">

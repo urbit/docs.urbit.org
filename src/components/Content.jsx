@@ -79,8 +79,8 @@ export default function Content({
 }) {
   return (
     <div className="relative flex w-full">
-      <div className="sticky flex top-20 z-40 content-height">
-        <nav className="flex flex-col w-68 text-xl leading-tight my-4 pr-10 whitespace-nowrap overflow-y-scroll overflow-x-hidden">
+      <div className="sticky flex top-20 z-40 content-height w-80">
+        <nav className="flex flex-col flex-1 text-xl leading-tight my-4 pr-10 whitespace-nowrap overflow-y-scroll overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
             Object.entries(posts.children).map(([k, v], i) => {

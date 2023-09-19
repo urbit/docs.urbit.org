@@ -9,6 +9,7 @@ import {
   getNextPost,
   capitalize,
 } from "@urbit/fdn-design-system";
+import TableOfContents from "./TableOfContents";
 
 function NavSection({ posts, root, path, indent = 0 }) {
   const isUnderThisPage = `${path}/`.includes(`${root}/`);
@@ -73,8 +74,8 @@ export default function Content({
   path,
 }) {
   return (
-    <div className="flex w-full">
-      <nav className="flex flex-col min-w-2/12 text-2xl leading-tight">
+    <div className="relative flex w-full">
+      <nav className="flex flex-col w-52 text-xl leading-tight pt-4">
         {(posts.children &&
           Object.keys(posts.children).length !== 0 &&
           Object.entries(posts.children).map(([k, v], i) => {
@@ -88,27 +89,30 @@ export default function Content({
             );
           })) || <NavSection posts={posts} root={root} path={path} />}
       </nav>
-      <div className="mx-10 w-0.5 h-100 rounded-sm bg-gray" />
-      <div className="flex flex-col flex-1 overflow-y-scroll">
-        <h1 className="text-6xl text-white font-semibold mb-10">
-          {data.title}
-        </h1>
-        <div className="markdown technical">
-          <Markdown.render content={JSON.parse(markdown)} />
-        </div>
-        <div className="flex justify-between items-center mt-16">
-          <a
-            className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
-            target="_blank"
-            href={`https:github.com/urbit/docs.urbit.org/blob/master/content/${root}/${
-              params.slug?.join("/") || "_index"
-            }.md`}
-          >
-            Edit this page on GitHub
-          </a>
-          <p className="font-semibold block p-2 text-gray">
-            Last modified {data.lastModified}
-          </p>
+      <div className="mx-10 my-4 w-0.5 h-100 rounded-sm bg-gray" />
+      <div className="flex-1 min-w-0">
+        <TableOfContents key={params.slug?.join("/") || Math.random()} />
+        <div className="w-full overflow-y-scroll">
+          <h1 className="text-6xl text-white font-semibold mb-10">
+            {data.title}
+          </h1>
+          <div className="markdown technical">
+            <Markdown.render content={JSON.parse(markdown)} />
+          </div>
+          <div className="flex justify-between items-center mt-16">
+            <a
+              className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
+              target="_blank"
+              href={`https:github.com/urbit/docs.urbit.org/blob/master/content/${root}/${
+                params.slug?.join("/") || "_index"
+              }.md`}
+            >
+              Edit this page on GitHub
+            </a>
+            <p className="font-semibold block p-2 text-gray">
+              Last modified {data.lastModified}
+            </p>
+          </div>
         </div>
       </div>
     </div>

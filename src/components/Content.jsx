@@ -15,10 +15,12 @@ function label(str) {
   return str.length > 27 ? str.slice(0, 24) + "..." : str;
 }
 
-function NavSection({ posts, root, path, indent = 0 }) {
+function NavSection({ children, posts, root, path, indent = 0, divider=false }) {
   const isUnderThisPage = `${path}/`.includes(`${root}/`);
   return (
     <>
+      {divider &&
+       <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />}
       <Link
         className={
           `pl-${indent} font-bold ` +
@@ -45,6 +47,7 @@ function NavSection({ posts, root, path, indent = 0 }) {
                 })
               }
               href={href}
+              key={href}
             >
               {label(page.title)}
             </Link>
@@ -60,6 +63,7 @@ function NavSection({ posts, root, path, indent = 0 }) {
               root={join(root, k)}
               path={path}
               indent={indent + 4}
+              key={join(root, k)}
             />
           );
         })}
@@ -85,16 +89,17 @@ export default function Content({
             Object.keys(posts.children).length !== 0 &&
             Object.entries(posts.children).map(([k, v], i) => {
               return (
-                <>
-                  {i > 0 && (
-                    <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />
-                  )}
-                  <NavSection posts={v} root={join(root, k)} path={path} />
-                </>
+                <NavSection
+                  posts={v}
+                  root={join(root, k)}
+                  path={path}
+                  key={join(root, k)}
+                  divider={i > 0}
+                />
               );
             })) || <NavSection posts={posts} root={root} path={path} />}
         </nav>
-          <div className="mr-10 my-4 w-0.5 h-100 rounded-sm bg-gray" />
+        <div className="mr-10 my-4 w-0.5 h-100 rounded-sm bg-gray" />
       </div>
       <div className="flex-1 min-w-0">
         <TableOfContents key={params.slug?.join("/") || Math.random()} />

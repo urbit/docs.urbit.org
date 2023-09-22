@@ -5,6 +5,7 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
   const { headings } = useHeadingsData(noh3s, markdown);
   const [activeId, setActiveId] = useState();
   const isHidden = headings.length === 1 && headings?.[0]?.items?.length === 0;
+
   useIntersectionObserver(setActiveId);
 
   return (
@@ -16,37 +17,41 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
     >
       <nav
         className={classNames(
-          "w-full whitespace-nowrap space-x-4 overflow-x-scroll pb-5",
+          "w-full flex whitespace-nowrap space-x-4 overflow-x-scroll pb-5",
           {
             hidden: isHidden,
           }
         )}
       >
         {headings.map((heading, index) => (
-          <>
-            <a
-              className={classNames("font-semibold text-gray text-xl", {
-                "text-brite": heading.id === activeId && index !== 0,
-              })}
-              href={`#${heading.id}`}
-              key={heading.id}
-            >
-              {heading.title}
-            </a>
-            {heading.items.length > 0 &&
-              heading.items.map((child) => (
-                <a
-                  className={
-                    "text-gray text-xl " +
-                    (child.id === activeId ? "text-brite" : "text-gray")
-                  }
-                  href={`#${child.id}`}
-                  key={child.id}
-                >
-                  {child.title}
-                </a>
-              ))}
-          </>
+          <ul className="flex space-x-4" key={heading.id}>
+            <li className="flex space-x-4">
+              <a
+                className={classNames("font-semibold text-gray text-xl", {
+                  "text-brite": heading.id === activeId && index !== 0,
+                })}
+                href={`#${heading.id}`}
+              >
+                {heading.title}
+              </a>
+              {heading.items.length > 0 && (
+                <ul className="flex space-x-4">
+                  {heading.items.map((child) => (
+                    <a
+                      className={
+                        "text-gray text-xl " +
+                        (child.id === activeId ? "text-brite" : "text-gray")
+                      }
+                      href={`#${child.id}`}
+                      key={child.id}
+                    >
+                      {child.title}
+                    </a>
+                  ))}
+                </ul>
+              )}
+            </li>
+          </ul>
         ))}
       </nav>
       {!isHidden && <div className="w-full mb-6 h-0.5 rounded-sm bg-gray" />}

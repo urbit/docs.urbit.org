@@ -23,12 +23,12 @@ function NavSection({ children, posts, root, path, indent = 0, divider=false }) 
        <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />}
       <Link
         className={
-          `pl-${indent} font-bold ` +
-          classnames({
+          classnames("font-bold", {
             "text-gray hover:text-brite": !isUnderThisPage,
             "text-brite": isUnderThisPage,
           })
         }
+        style={{"paddingLeft": `${indent}rem`}}
         href={`/${root}`}
       >
         {label(posts.title)}
@@ -40,12 +40,12 @@ function NavSection({ children, posts, root, path, indent = 0, divider=false }) 
           return (
             <Link
               className={
-                `pl-${indent + 4} ` +
-                classnames({
+                classnames("font-light", {
                   "text-gray hover:text-brite": !isThisPage,
                   "text-brite": isThisPage,
                 })
               }
+              style={{"paddingLeft": `${indent + 1}rem`}}
               href={href}
               key={href}
             >
@@ -62,7 +62,7 @@ function NavSection({ children, posts, root, path, indent = 0, divider=false }) 
               posts={v}
               root={join(root, k)}
               path={path}
-              indent={indent + 4}
+              indent={indent + 1}
               key={join(root, k)}
             />
           );

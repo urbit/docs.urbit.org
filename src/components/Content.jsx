@@ -10,6 +10,7 @@ import {
   capitalize,
 } from "@urbit/fdn-design-system";
 import TableOfContents from "./TableOfContents";
+import markdocVariables from "../lib/markdocVariables";
 
 function label(str) {
   return str.length > 27 ? str.slice(0, 24) + "..." : str;
@@ -169,7 +170,10 @@ export function getStaticProps(params, root, posts) {
     ) || null;
 
   const markdown = JSON.stringify(
-    Markdown.parse({ post: { content: String.raw`${content}` } })
+    Markdown.parse({
+      post: { content: String.raw`${content}` },
+      variables: markdocVariables,
+    })
   );
 
   return { props: { posts, data, markdown, params, previousPost, nextPost } };

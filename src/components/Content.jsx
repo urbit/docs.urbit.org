@@ -15,20 +15,24 @@ function label(str) {
   return str.length > 27 ? str.slice(0, 24) + "..." : str;
 }
 
-function NavSection({ children, posts, root, path, indent = 0, divider=false }) {
+function NavSection({
+  children,
+  posts,
+  root,
+  path,
+  indent = 0,
+  divider = false,
+}) {
   const isUnderThisPage = `${path}/`.includes(`${root}/`);
   return (
     <>
-      {divider &&
-       <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />}
+      {divider && <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />}
       <Link
-        className={
-          classnames("font-bold", {
-            "text-gray hover:text-brite": !isUnderThisPage,
-            "text-brite": isUnderThisPage,
-          })
-        }
-        style={{"paddingLeft": `${indent}rem`}}
+        className={classnames("font-bold", {
+          "text-gray hover:text-brite": !isUnderThisPage,
+          "text-brite": isUnderThisPage,
+        })}
+        style={{ paddingLeft: `${indent}rem` }}
         href={`/${root}`}
       >
         {label(posts.title)}
@@ -39,13 +43,11 @@ function NavSection({ children, posts, root, path, indent = 0, divider=false }) 
           const isThisPage = path === href;
           return (
             <Link
-              className={
-                classnames("font-light", {
-                  "text-gray hover:text-brite": !isThisPage,
-                  "text-brite": isThisPage,
-                })
-              }
-              style={{"paddingLeft": `${indent + 1}rem`}}
+              className={classnames("font-light", {
+                "text-gray hover:text-brite": !isThisPage,
+                "text-brite": isThisPage,
+              })}
+              style={{ paddingLeft: `${indent + 1}rem` }}
               href={href}
               key={href}
             >

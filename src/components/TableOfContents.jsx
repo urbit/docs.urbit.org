@@ -11,8 +11,8 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
   return (
     <div
       className={classNames("sticky top-16 z-40 bg-black", {
-        "mt-4": isHidden,
-        "pt-4": !isHidden,
+        "mt-5": isHidden,
+        "pt-5": !isHidden,
       })}
     >
       <nav
@@ -24,10 +24,10 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
         )}
       >
         {headings.map((heading, index) => (
-          <ul className="flex space-x-4" key={heading.id}>
-            <li className="flex space-x-4">
+          <ul className="flex nav-space-x" key={heading.id}>
+            <li className="flex nav-space-x">
               <a
-                className={classNames("font-semibold text-gray text-xl", {
+                className={classNames("font-semibold text-gray type-ui", {
                   "text-brite": heading.id === activeId && index !== 0,
                 })}
                 href={`#${heading.id}`}
@@ -35,11 +35,11 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
                 {heading.title}
               </a>
               {heading.items.length > 0 && (
-                <ul className="flex space-x-4">
+                <ul className="flex nav-space-x">
                   {heading.items.map((child) => (
                     <a
                       className={
-                        "text-gray text-xl " +
+                        "text-gray type-ui " +
                         (child.id === activeId ? "text-brite" : "text-gray")
                       }
                       href={`#${child.id}`}

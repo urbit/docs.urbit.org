@@ -86,8 +86,8 @@ export default function Content({
 }) {
   return (
     <div className="relative flex w-full">
-      <div className="sticky flex top-16 z-40 content-height py-4">
-        <nav className="flex flex-col flex-1 text-xl leading-tight w-52 pr-10 whitespace-nowrap overflow-y-scroll overflow-x-hidden">
+      <div className="sticky flex top-16 z-40 py-5 content-height side-bar">
+        <nav className="flex flex-col flex-1 type-ui offset-r whitespace-nowrap overflow-y-scroll overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
             Object.entries(posts.children).map(([k, v], i) => {
@@ -102,18 +102,18 @@ export default function Content({
               );
             })) || <NavSection posts={posts} root={root} path={path} />}
         </nav>
-        <div className="mr-10 w-0.5 h-100 rounded-sm bg-gray" />
+        <div className="w-0.5 h-100 rounded-sm bg-gray" />
       </div>
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 offset-l">
         <TableOfContents key={params.slug?.join("/") || Math.random()} />
         <div className="w-full overflow-y-scroll">
-          <h1 className="text-6xl text-white font-semibold mb-10">
+          <h1 className="text-6xl text-white mb-10">
             {data.title}
           </h1>
           <div className="markdown technical">
             <Markdown.render content={JSON.parse(markdown)} />
           </div>
-          <div className="flex justify-between items-center mt-16">
+          <div className="flex justify-between items-center text-base mt-16 mb-2">
             <a
               className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
               target="_blank"

@@ -27,7 +27,6 @@ const pages = [
   { title: "System", href: "/system" },
   { title: "Tools", href: "/tools" },
   { title: "Manual", href: "/manual" },
-  { title: "Glossary", href: "/glossary" },
   { title: "Guides", href: "/guides" },
   { title: "Overview", href: "/overview" },
   { title: "Reference", href: "/reference" },

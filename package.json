@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run prebuild && next dev",
-    "prebuild": "npm run cache-posts && npm run glossary && npm run language && npm run userspace && npm run system && npm run tools && npm run courses && npm run manual && npm run glossaryPage && npm run guides && npm run overview && npm run reference",
+    "prebuild": "npm run cache-posts && npm run glossary && npm run language && npm run userspace && npm run system && npm run tools && npm run courses && npm run manual && npm run guides && npm run overview && npm run reference",
     "cache-posts": "node src/lib/cache.js",
     "glossary": "node src/lib/buildGlossary.js",
     "language": "node src/lib/buildPageTree language weight",
@@ -13,7 +13,6 @@
     "tools": "node src/lib/buildPageTree tools weight",
     "courses": "node src/lib/buildPageTree courses weight",
     "manual": "node src/lib/buildPageTree manual weight",
-    "glossaryPage": "node src/lib/buildPageTree glossary weight",
     "guides": "node src/lib/buildPageTree guides weight",
     "overview": "node src/lib/buildPageTree overview weight",
     "reference": "node src/lib/buildPageTree reference weight",

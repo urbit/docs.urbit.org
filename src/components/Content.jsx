@@ -13,7 +13,7 @@ import TableOfContents from "./TableOfContents";
 import markdocVariables from "../lib/markdocVariables";
 
 function label(str) {
-  return str.length > 27 ? str.slice(0, 24) + "..." : str;
+  return str.length > 22 ? str.slice(0, 20).trim() + "..." : str;
 }
 
 function NavSection({
@@ -27,13 +27,13 @@ function NavSection({
   const isUnderThisPage = `${path}/`.includes(`${root}/`);
   return (
     <>
-      {divider && <div className="my-4 w-100 h-0.5 rounded-sm bg-gray" />}
+      {divider && <div className="mt-5 mb-6 w-100 h-0.5 rounded-sm bg-gray" />}
       <Link
         className={classnames("font-bold", {
           "text-gray hover:text-brite": !isUnderThisPage,
           "text-brite": isUnderThisPage,
         })}
-        style={{ paddingLeft: `${indent}rem` }}
+        style={{ paddingLeft: `${0.5 * indent}rem` }}
         href={`/${root}`}
       >
         {label(posts.title)}
@@ -48,7 +48,7 @@ function NavSection({
                 "text-gray hover:text-brite": !isThisPage,
                 "text-brite": isThisPage,
               })}
-              style={{ paddingLeft: `${indent + 1}rem` }}
+              style={{ paddingLeft: `${0.5 * (indent + 1)}rem` }}
               href={href}
               key={href}
             >
@@ -86,8 +86,8 @@ export default function Content({
 }) {
   return (
     <div className="relative flex w-full">
-      <div className="sticky flex top-20 z-40 content-height w-80">
-        <nav className="flex flex-col flex-1 text-xl leading-tight my-4 pr-10 whitespace-nowrap overflow-y-scroll overflow-x-hidden">
+      <div className="sticky flex top-16 z-40 content-height py-4">
+        <nav className="flex flex-col flex-1 text-xl leading-tight w-52 pr-10 whitespace-nowrap overflow-y-scroll overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
             Object.entries(posts.children).map(([k, v], i) => {
@@ -102,7 +102,7 @@ export default function Content({
               );
             })) || <NavSection posts={posts} root={root} path={path} />}
         </nav>
-        <div className="mr-10 my-4 w-0.5 h-100 rounded-sm bg-gray" />
+        <div className="mr-10 w-0.5 h-100 rounded-sm bg-gray" />
       </div>
       <div className="flex-1 min-w-0">
         <TableOfContents key={params.slug?.join("/") || Math.random()} />

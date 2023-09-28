@@ -84,6 +84,8 @@ export default function Content({
   root,
   path,
 }) {
+  const firstCrumb = path.split("#")[0]
+
   return (
     <div className="relative flex w-full">
       <div className="sticky flex top-12 md:top-16 z-40 py-5 content-height side-bar">
@@ -95,12 +97,12 @@ export default function Content({
                 <NavSection
                   posts={v}
                   root={join(root, k)}
-                  path={path}
+                  path={firstCrumb}
                   key={join(root, k)}
                   divider={i > 0}
                 />
               );
-            })) || <NavSection posts={posts} root={root} path={path} />}
+            })) || <NavSection posts={posts} root={root} path={firstCrumb} />}
         </nav>
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
       </div>

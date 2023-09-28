@@ -10,7 +10,7 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
 
   return (
     <div
-      className={classNames("sticky top-16 z-40 bg-black", {
+      className={classNames("sticky top-12 md:top-16 z-40 bg-black", {
         "mt-5": isHidden,
         "pt-5": !isHidden,
       })}

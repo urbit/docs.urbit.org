@@ -9,7 +9,11 @@
 }
 
 .markdown :matches(h1, h2, h3) {
-  @apply scroll-mt-40;
+  @apply scroll-mt-32 md:scroll-mt-36;
+}
+
+.content-height-sm {
+  height: calc(100vh - 3rem)
 }
 
 .content-height {

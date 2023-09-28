@@ -86,7 +86,7 @@ export default function Content({
 }) {
   return (
     <div className="relative flex w-full">
-      <div className="sticky flex top-16 z-40 py-5 content-height side-bar">
+      <div className="sticky flex top-12 md:top-16 z-40 py-5 content-height-sm md:content-height side-bar">
         <nav className="flex flex-col flex-1 type-ui offset-r whitespace-nowrap overflow-y-scroll overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&

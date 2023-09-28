@@ -12,10 +12,9 @@
   @apply scroll-mt-32 md:scroll-mt-36;
 }
 
-.content-height-sm {
-  height: calc(100vh - 3rem)
-}
-
 .content-height {
-  height: calc(100vh - 4rem)
+  height: calc(100vh - 3rem);
+  @screen md {
+    height: calc(100vh - 4rem);
+  }
 }

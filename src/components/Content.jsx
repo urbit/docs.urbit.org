@@ -106,7 +106,7 @@ export default function Content({
       </div>
       <div className="flex-1 min-w-0 offset-l">
         <TableOfContents key={params.slug?.join("/") || Math.random()} />
-        <div className="w-full overflow-y-scroll">
+        <div className="w-full">
           <h1 className="text-6xl text-white mb-10">
             {data.title}
           </h1>

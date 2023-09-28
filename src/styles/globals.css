@@ -8,7 +8,9 @@
   @apply blu;
 }
 
-.markdown :matches(h1, h2, h3) {
+.markdown h1,
+.markdown h2,
+.markdown h3 {
   @apply scroll-mt-32 md:scroll-mt-36;
 }
 

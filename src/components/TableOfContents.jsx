@@ -4,14 +4,16 @@ import classNames from "classnames";
 export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
   const { headings } = useHeadingsData(noh3s, markdown);
   const [activeId, setActiveId] = useState();
-  const isHidden = headings.length === 1 && headings?.[0]?.items?.length === 0;
+  const isHidden =
+    (headings.length === 1 && headings?.[0]?.items?.length === 0) ||
+    headings.length === 0;
 
   useIntersectionObserver(setActiveId);
 
   return (
     <div
       className={classNames("sticky top-12 md:top-16 z-40 bg-black", {
-        "mt-5": isHidden,
+        "mt-3": isHidden,
         "pt-5": !isHidden,
       })}
     >

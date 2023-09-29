@@ -29,8 +29,9 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
           <ul className="flex nav-space-x" key={heading.id}>
             <li className="flex nav-space-x">
               <a
-                className={classNames("font-semibold text-gray type-ui", {
-                  "text-brite": heading.id === activeId && index !== 0,
+                className={classNames("font-semibold type-ui", {
+                  "text-gray": !(heading.id === activeId),
+                  "text-brite": heading.id === activeId,
                 })}
                 href={`#${heading.id}`}
               >
@@ -40,10 +41,10 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
                 <ul className="flex nav-space-x">
                   {heading.items.map((child) => (
                     <a
-                      className={
-                        "text-gray type-ui " +
-                        (child.id === activeId ? "text-brite" : "text-gray")
-                      }
+                      className={classNames("type-ui", {
+                        "text-gray": !(child.id === activeId),
+                        "text-brite": child.id === activeId,
+                      })}
                       href={`#${child.id}`}
                       key={child.id}
                     >
@@ -125,7 +126,8 @@ const useIntersectionObserver = (setActiveId) => {
     };
 
     const observer = new IntersectionObserver(callback, {
-      rootMargin: "0px 0px -50% 0px",
+      rootMargin: "-10% 0px -50% 0px",
+      threshold: 0.5,
     });
 
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));

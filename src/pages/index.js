@@ -8,7 +8,7 @@ export default function Home({ search }) {
     <Container>
       <IntraNav />
       <Main>
-        <h1 className="text-brite text-9xl mt-8 mb-64">
+        <h1 className="text-brite text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light mt-8 mb-64">
           Developer docs
         </h1>
       </Main>

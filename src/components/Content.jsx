@@ -134,7 +134,7 @@ export default function Content({
           key={params.slug?.join("/") || Math.random()}
         />
         <div className="w-full overflow-y-auto">
-          <h1 className="text-6xl text-white mb-10">
+          <h1 className="text-5xl text-white mb-10">
             {data.title}
           </h1>
           <div className="markdown technical">

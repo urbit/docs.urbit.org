@@ -84,7 +84,29 @@ export default function Content({
   root,
   path,
 }) {
-  const firstCrumb = path.split("#")[0]
+  const firstCrumb = path.split("#")[0];
+  const md = JSON.parse(markdown);
+
+  const getInnerText = ({ children }) => {
+    let innerText = "";
+    children.forEach((child) => {
+      if (typeof child === "string") {
+        innerText += child;
+      } else if (typeof child === "object") {
+        innerText += getInnerText(child);
+      }
+    });
+    return innerText;
+  };
+
+  const headings = md.children.filter((e) => ["h2", "h3"].includes(e.name));
+  const headingsCleaned = headings.map((h) => {
+    return {
+      id: h.attributes?.id,
+      innerText: getInnerText(h),
+      nodeName: h.name?.toUpperCase(),
+    };
+  });
 
   return (
     <div className="relative flex w-full">
@@ -107,13 +129,16 @@ export default function Content({
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
       </div>
       <div className="flex-1 min-w-0 offset-l">
-        <TableOfContents key={params.slug?.join("/") || Math.random()} />
+        <TableOfContents
+          headings={headingsCleaned}
+          key={params.slug?.join("/") || Math.random()}
+        />
         <div className="w-full">
           <h1 className="text-6xl text-white mb-10">
             {data.title}
           </h1>
           <div className="markdown technical">
-            <Markdown.render content={JSON.parse(markdown)} />
+            <Markdown.render content={md} />
           </div>
           <div className="flex justify-between items-center text-base mt-16 mb-2">
             <a

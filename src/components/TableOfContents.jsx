@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
 
-export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
-  const { headings } = useHeadingsData(noh3s, markdown);
+export const TableOfContents = ({ headings, markdown = true }) => {
+  const nestedHeadings = getNestedHeadings(headings);
   const [activeId, setActiveId] = useState();
   const isHidden =
-    (headings.length === 1 && headings?.[0]?.items?.length === 0) ||
-    headings.length === 0;
+    (nestedHeadings.length === 1 && nestedHeadings?.[0]?.items?.length === 0) ||
+    nestedHeadings.length === 0;
 
   useIntersectionObserver(setActiveId);
 
@@ -25,7 +25,7 @@ export const TableOfContents = ({ staticPosition, noh3s, markdown = true }) => {
           }
         )}
       >
-        {headings.map((heading, index) => (
+        {nestedHeadings.map((heading, index) => (
           <ul className="flex nav-space-x" key={heading.id}>
             <li className="flex nav-space-x">
               <a
@@ -79,22 +79,6 @@ const getNestedHeadings = (headingElements) => {
   });
 
   return nestedHeadings;
-};
-
-const useHeadingsData = (noh3s, markdown) => {
-  const [headings, setHeadings] = useState([]);
-
-  const md = markdown ? ".markdown" : "";
-  const query = noh3s ? `${md} h2` : `${md} h2, ${md} h3`;
-
-  useEffect(() => {
-    const headingElements = Array.from(document.querySelectorAll(query));
-
-    const newHeadings = getNestedHeadings(headingElements);
-    setHeadings(newHeadings);
-  }, []);
-
-  return { headings };
 };
 
 const useIntersectionObserver = (setActiveId) => {

@@ -111,7 +111,7 @@ export default function Content({
   return (
     <div className="relative flex w-full">
       <div className="sticky flex top-12 md:top-16 z-40 py-5 content-height side-bar">
-        <nav className="flex flex-col flex-1 type-ui offset-r whitespace-nowrap overflow-y-scroll overflow-x-hidden">
+        <nav className="flex flex-col flex-1 type-ui offset-r whitespace-nowrap overflow-y-auto overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
             Object.entries(posts.children).map(([k, v], i) => {
@@ -133,7 +133,7 @@ export default function Content({
           headings={headingsCleaned}
           key={params.slug?.join("/") || Math.random()}
         />
-        <div className="w-full">
+        <div className="w-full overflow-y-auto">
           <h1 className="text-6xl text-white mb-10">
             {data.title}
           </h1>

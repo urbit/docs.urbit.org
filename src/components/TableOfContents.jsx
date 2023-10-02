@@ -19,7 +19,7 @@ export const TableOfContents = ({ headings, markdown = true }) => {
     >
       <nav
         className={classNames(
-          "w-full flex whitespace-nowrap space-x-4 overflow-x-scroll pb-5",
+          "w-full flex whitespace-nowrap space-x-4 overflow-x-auto pb-5",
           {
             hidden: isHidden,
           }

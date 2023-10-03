@@ -138,8 +138,14 @@ export default function Content({
         </nav>
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
       </SideBar>
-      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 mt-3 px-0 md:pl-5 lg:pr-5">
-        <h1 className="text-5xl text-white mb-10">{data.title}</h1>
+      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-0 md:pl-5 lg:pr-5">
+        <div className="md:hidden flex flex-col mt-5">
+          <div className="flex flex-1 items-center type-ui text-lite font-bold space-x-2">
+            {breadcrumbs(posts, params.slug || [], root)}
+          </div>
+          <hr className="border-gray border-t-2 rounded-xl mt-5" />
+        </div>
+        <h1 className="text-5xl text-white mt-3 mb-10">{data.title}</h1>
         <div className="markdown technical">
           <Markdown.render content={md} />
         </div>
@@ -170,14 +176,21 @@ export default function Content({
 }
 
 export const breadcrumbs = (posts, paths, root) => {
-  const results = [<Link href={`/${root}`}>{capitalize(root)}</Link>];
+  const results = [
+    <Link className="text-brite" href={`/${root}`}>
+      {capitalize(root)}
+    </Link>,
+  ];
   let thisLink = `/${root}`;
   for (const path of paths) {
+    const page = posts.pages?.filter((p) => p.slug === path)?.[0];
     posts = posts.children[path];
     thisLink = join(thisLink, path);
     results.push(
-      <span className="px-1">/</span>,
-      <Link href={thisLink}>{posts.title}</Link>
+      <span>/</span>,
+      <Link className="text-brite" href={thisLink}>
+        {posts?.title || page?.title}
+      </Link>
     );
   }
   return results;

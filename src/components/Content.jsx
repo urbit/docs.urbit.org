@@ -16,6 +16,14 @@ function label(str) {
   return str.length > 22 ? str.slice(0, 20).trim() + "..." : str;
 }
 
+function SideBar({ children }) {
+  return (
+    <div className="sticky flex top-12 md:top-16 z-40 py-5 content-height side-bar">
+      {children}
+    </div>
+  );
+}
+
 function NavSection({
   children,
   posts,
@@ -27,7 +35,7 @@ function NavSection({
   const isUnderThisPage = `${path}/`.includes(`${root}/`);
   return (
     <>
-      {divider && <div className="mt-5 mb-6 w-100 h-0.5 rounded-sm bg-gray" />}
+      {divider && <div className="my-3.5 w-100 h-0.5 rounded-sm bg-gray" />}
       <Link
         className={classnames("font-bold", {
           "text-gray hover:text-brite": !isUnderThisPage,
@@ -110,7 +118,7 @@ export default function Content({
 
   return (
     <div className="relative flex w-full">
-      <div className="sticky flex top-12 md:top-16 z-40 py-5 content-height side-bar">
+      <SideBar>
         <nav className="flex flex-col flex-1 type-ui offset-r whitespace-nowrap overflow-y-auto overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
@@ -127,35 +135,34 @@ export default function Content({
             })) || <NavSection posts={posts} root={root} path={firstCrumb} />}
         </nav>
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
+      </SideBar>
+      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 mt-3 offset-l offset-r">
+        <h1 className="text-5xl text-white mb-10">{data.title}</h1>
+        <div className="markdown technical">
+          <Markdown.render content={md} />
+        </div>
+        <div className="flex justify-between items-center text-base mt-16 mb-2">
+          <a
+            className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
+            target="_blank"
+            href={`https:github.com/urbit/docs.urbit.org/blob/master/content/${root}/${
+              params.slug?.join("/") || "_index"
+            }.md`}
+          >
+            Edit this page on GitHub
+          </a>
+          <p className="font-semibold block p-2 text-gray">
+            Last modified {data.lastModified}
+          </p>
+        </div>
       </div>
-      <div className="flex-1 min-w-0 offset-l">
+      <SideBar>
+        <div className="w-0.5 h-100 rounded-sm bg-gray" />
         <TableOfContents
           headings={headingsCleaned}
           key={params.slug?.join("/") || Math.random()}
         />
-        <div className="w-full overflow-y-auto">
-          <h1 className="text-5xl text-white mb-10">
-            {data.title}
-          </h1>
-          <div className="markdown technical">
-            <Markdown.render content={md} />
-          </div>
-          <div className="flex justify-between items-center text-base mt-16 mb-2">
-            <a
-              className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
-              target="_blank"
-              href={`https:github.com/urbit/docs.urbit.org/blob/master/content/${root}/${
-                params.slug?.join("/") || "_index"
-              }.md`}
-            >
-              Edit this page on GitHub
-            </a>
-            <p className="font-semibold block p-2 text-gray">
-              Last modified {data.lastModified}
-            </p>
-          </div>
-        </div>
-      </div>
+      </SideBar>
     </div>
   );
 }

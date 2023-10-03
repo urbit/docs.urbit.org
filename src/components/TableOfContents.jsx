@@ -11,25 +11,20 @@ export const TableOfContents = ({ headings, markdown = true }) => {
   useIntersectionObserver(setActiveId);
 
   return (
-    <div
-      className={classNames("sticky top-12 md:top-16 z-40 bg-black", {
-        "mt-3": isHidden,
-        "pt-5": !isHidden,
-      })}
+    <nav
+      className={classNames(
+        "flex flex-col flex-1 offset-l overflow-y-auto overflow-x-hidden",
+        {
+          hidden: isHidden,
+        }
+      )}
     >
-      <nav
-        className={classNames(
-          "w-full flex whitespace-nowrap space-x-4 overflow-x-auto pb-5",
-          {
-            hidden: isHidden,
-          }
-        )}
-      >
-        {nestedHeadings.map((heading, index) => (
-          <ul className="flex nav-space-x" key={heading.id}>
-            <li className="flex nav-space-x">
+      {nestedHeadings.map((heading, index) => (
+        <>
+          <ul className="flex flex-col mb-2" key={heading.id}>
+            <li className="">
               <a
-                className={classNames("font-semibold type-ui", {
+                className={classNames("text-lg font-bold", {
                   "text-gray": !(heading.id === activeId),
                   "text-brite": heading.id === activeId,
                 })}
@@ -38,10 +33,10 @@ export const TableOfContents = ({ headings, markdown = true }) => {
                 {heading.title}
               </a>
               {heading.items.length > 0 && (
-                <ul className="flex nav-space-x">
+                <ul className="flex flex-col">
                   {heading.items.map((child) => (
                     <a
-                      className={classNames("type-ui", {
+                      className={classNames("pl-2 text-base font-light", {
                         "text-gray": !(child.id === activeId),
                         "text-brite": child.id === activeId,
                       })}
@@ -55,10 +50,9 @@ export const TableOfContents = ({ headings, markdown = true }) => {
               )}
             </li>
           </ul>
-        ))}
-      </nav>
-      {!isHidden && <div className="w-full mb-6 h-0.5 rounded-sm bg-gray" />}
-    </div>
+        </>
+      ))}
+    </nav>
   );
 };
 

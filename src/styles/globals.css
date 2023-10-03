@@ -11,7 +11,7 @@
 .markdown h1,
 .markdown h2,
 .markdown h3 {
-  @apply scroll-mt-32 md:scroll-mt-36;
+  @apply scroll-mt-16 md:scroll-mt-20;
 }
 
 .content-height {

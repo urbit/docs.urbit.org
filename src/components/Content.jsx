@@ -139,8 +139,8 @@ export default function Content({
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
       </SideBar>
       <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-0 md:pl-5 lg:pr-5">
-        <div className="md:hidden flex flex-col mt-5">
-          <div className="flex flex-1 items-center type-ui text-lite font-bold space-x-2">
+        <div className="md:hidden flex flex-col mt-5 overflow-x-auto">
+          <div className="flex w-full items-center type-ui text-lite font-bold space-x-2 whitespace-nowrap">
             {breadcrumbs(posts, params.slug || [], root)}
           </div>
           <hr className="border-gray border-t-2 rounded-xl mt-5" />

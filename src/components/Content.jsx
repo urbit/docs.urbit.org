@@ -16,9 +16,11 @@ function label(str) {
   return str.length > 22 ? str.slice(0, 20).trim() + "..." : str;
 }
 
-function SideBar({ children }) {
+function SideBar({ className, children }) {
   return (
-    <div className="sticky flex top-12 md:top-16 z-40 py-5 content-height side-bar">
+    <div
+      className={`sticky flex top-12 md:top-16 z-40 py-5 content-height side-bar ${className}`}
+    >
       {children}
     </div>
   );
@@ -118,7 +120,7 @@ export default function Content({
 
   return (
     <div className="relative flex w-full">
-      <SideBar>
+      <SideBar className="hidden md:flex">
         <nav className="flex flex-col flex-1 type-ui offset-r whitespace-nowrap overflow-y-auto overflow-x-hidden">
           {(posts.children &&
             Object.keys(posts.children).length !== 0 &&
@@ -136,7 +138,7 @@ export default function Content({
         </nav>
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
       </SideBar>
-      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 mt-3 offset-l offset-r">
+      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 mt-3 px-0 md:pl-5 lg:pr-5">
         <h1 className="text-5xl text-white mb-10">{data.title}</h1>
         <div className="markdown technical">
           <Markdown.render content={md} />
@@ -156,7 +158,7 @@ export default function Content({
           </p>
         </div>
       </div>
-      <SideBar>
+      <SideBar className="hidden lg:flex">
         <div className="w-0.5 h-100 rounded-sm bg-gray" />
         <TableOfContents
           headings={headingsCleaned}

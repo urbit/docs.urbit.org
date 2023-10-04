@@ -162,7 +162,7 @@ export default function Content({
       )}
       <button
         className={classnames(
-          "flex md:hidden fixed bottom-4 right-4 items-center justify-center leading-none w-12 h-12 text-4xl text-lite bg-tint rounded-full",
+          "flex md:hidden fixed bottom-4 right-4 items-center justify-center leading-none w-12 h-12 text-4xl text-lite bg-tint border border-gray rounded-full",
           { "z-50": isOpen, "z-40": !isOpen }
         )}
         onClick={() => setIsOpen(!isOpen)}

@@ -177,22 +177,25 @@ export default function Content({
 
 export const breadcrumbs = (posts, paths, root) => {
   const results = [
-    <Link className="text-brite" href={`/${root}`}>
+    <Link className={paths.length > 0 ? "text-brite" : ""} href={`/${root}`}>
       {capitalize(root)}
     </Link>,
   ];
   let thisLink = `/${root}`;
-  for (const path of paths) {
+  paths.forEach((path, i) => {
     const page = posts.pages?.filter((p) => p.slug === path)?.[0];
     posts = posts.children[path];
     thisLink = join(thisLink, path);
     results.push(
       <span>/</span>,
-      <Link className="text-brite" href={thisLink}>
+      <Link
+        className={i + 1 < paths.length ? "text-brite" : ""}
+        href={thisLink}
+      >
         {posts?.title || page?.title}
       </Link>
     );
-  }
+  });
   return results;
 };
 

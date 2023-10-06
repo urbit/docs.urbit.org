@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
-    "@urbit/fdn-design-system": "github:urbit/fnd-design-system#0eb719e",
+    "@urbit/fdn-design-system": "github:urbit/fnd-design-system",
     "@urbit/markdoc": "^0.1.6",
     "autoprefixer": "10.4.15",
     "classnames": "^2.3.2",

@@ -1,11 +1,10 @@
-import React from "react"
+import React from "react";
 import { IntraNav as IntraNavFDS } from "@urbit/fdn-design-system";
 
 const ourSite = {
   title: "Docs",
   href: "https://docs.urbit.org",
-  theme: "blu",
-}
+};
 
 const sites = [
   {
@@ -18,7 +17,12 @@ const sites = [
     href: "https://urbit.foundation",
     theme: "mos",
   },
-]
+  {
+    title: "Network Explorer ↗",
+    href: "https://network.urbit.org",
+    taget: "_blank",
+  },
+];
 
 const pages = [
   { title: "Language", href: "/language" },
@@ -30,8 +34,15 @@ const pages = [
   { title: "Guides", href: "/guides" },
   { title: "Overview", href: "/overview" },
   { title: "Reference", href: "/reference" },
-]
+];
 
-export default function IntraNav() {
-  return <IntraNavFDS ourSite= {ourSite} sites={sites} pages={pages} />
+export default function IntraNav({ search }) {
+  return (
+    <IntraNavFDS
+      ourSite={ourSite}
+      sites={sites}
+      pages={pages}
+      search={search}
+    />
+  );
 }

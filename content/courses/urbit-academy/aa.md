@@ -1,0 +1,44 @@
++++
+title = "App Academy"
+date = "2023-05-01"
+weight = 90
+next_cohort = "May 2023"
+image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-school-live.svg"
+description = "App Academy focuses on how to build a backend Gall agent, then on connecting it to a React-based front-end. When you're done, you'll be able to produce and distribute your own Urbit apps."
++++
+
+The Urbit Foundation offers cohort classes to cover the [App
+Academy](/guides/core/app-school) curriculum jointly.
+
+App Academy focuses on how to build a backend Gall agent, then on connecting it
+to a React-based front-end.  When you're done, you'll be able to produce and
+distribute your own Urbit apps.
+
+If you prefer to learn as part of a group with a hands-on instructor, regular
+exercises and discussions, and a completion certification, then App Academy
+will be a good fit for you.
+
+By completing App Academy as a cohort student, you should be able to design and
+implement basic user apps, produce minimal working example applications, and
+contribute at the level of basic Urbit userspace bounties.
+
+The next cohort for App Academy will begin the week of January 23, 2023.
+The cohort after that is scheduled for the end of May 2023.
+
+- [Complete this form](https://forms.gle/3c8xBubvSiQfj7Tr6) to get on our
+  mailing list about the next opportunity.
+
+Until then, feel free to work through the [App Academy
+docs](/guides/core/app-school).
+
+
+###  What will you learn?
+
+-   `asl0`. 🦀 A Simple Agent
+-   `asl1`. 🦦 Arvo Services
+-   `asl2`. 🐢 Agents
+-   `asl3`. 🐝 Passing Data with JSON
+-   `asl4`. 🦩 Front-End
+-   `asl5`. 🕷️ Threads
+-   `asl6`. 🦭 Production Apps
+-   `asl7`. 🦏 Design Patterns

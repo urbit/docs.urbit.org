@@ -20,7 +20,7 @@ const sites = [
   {
     title: "Network Explorer ↗",
     href: "https://network.urbit.org",
-    taget: "_blank",
+    target: "_blank",
   },
 ];
 

@@ -19,7 +19,7 @@ new vane, contribute to Urbit as a core platform and infrastructure developer,
 and guide in-depth projects with minimal oversight (as distinct from
 collaboration).
 
-The first cohort for Core Academy will take place in late summer 2023.
+Core Academy cohorts take place in the late summer and fall of each year.
 
 - [Complete this form](https://forms.gle/gdDWFLiDV1Te65nH8) to get on our
   mailing list about the next opportunity.

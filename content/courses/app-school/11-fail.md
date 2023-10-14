@@ -69,7 +69,7 @@ typically contain functions that would only ever be used internally by the
 agent - more general functions would usually be included in a separate `/lib`
 library and imported with a [faslus](/reference/hoon/rune/fas#-faslus) (`/+`)
 rune. Additionally, you might recall that the example agent of the
-[subscriptions lesson](/guides/core/app-school/8-subscriptions#example) used
+[subscriptions lesson](/courses/app-school/8-subscriptions#example) used
 a barket (`|^`) rune to create a door in the `on-poke` arm with a separate
 `handle-poke` arm. That approach is typically used when functions will only be
 used in that one arm. The helper core, on the other hand, is useful when

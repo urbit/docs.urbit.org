@@ -7,7 +7,7 @@ insert_anchor_links = "right"
 
 This is where you look for answers to specific technical questions.
 
-## [Hoon Overview](/reference/hoon/overview)
+## [Hoon Overview](/language/hoon/overview)
 
 The design decisions underlying Hoon.
 

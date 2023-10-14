@@ -9,8 +9,8 @@ Iris gets passed HTTP requests, makes the request to the specified URL, and retu
 
 ## Sections
 
-[Data Types](/reference/arvo/iris/data-types) - Reference documentation of the data types used by Iris.
+[Data Types](/system/kernel/iris/reference/data-types) - Reference documentation of the data types used by Iris.
 
-[API Reference](/reference/arvo/iris/tasks) - The `task`s Iris takes and the `gift`s it returns.
+[API Reference](/system/kernel/iris/reference/tasks) - The `task`s Iris takes and the `gift`s it returns.
 
 [Example](/reference/arvo/iris/example) - An example of using Iris to fetch a remote HTTP resource.

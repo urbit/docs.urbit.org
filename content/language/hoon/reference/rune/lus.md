@@ -88,7 +88,7 @@ follow it. The arms of a core can be divided into **chapters** for
 'organization'. Chapter labels aren't part of the underlying noun of the core;
 they're stored as type system metadata only.
 
-See [`tome`](/reference/hoon/stdlib/4o#tome) in the Hoon standard library.
+See [`tome`](/language/hoon/reference/stdlib/4o#tome) in the Hoon standard library.
 
 **Note:** The `+|` rune has little practical utility. Chapter labels cannot be
 referenced short of manually processing the `$type` of a core.
@@ -297,7 +297,7 @@ and thus are also called "virtual arms", which can be important for things like
 Gall agent cores that require a fixed number of arms.
 
 Under the hood, `+*` gets compiled as
-[`=*`'s](/reference/hoon/rune/tis#-tistar) (see here for more discussion on
+[`=*`'s](/language/hoon/reference/rune/tis#-tistar) (see here for more discussion on
 deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the
 core to include `=* foo bar`. For example, the interpreter sees the Nock
 compiled from this Hoon expression

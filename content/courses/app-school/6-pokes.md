@@ -91,7 +91,7 @@ try to pass actual data by encoding it in the nack `tang`.
 ## Sending a poke
 
 An agent can send pokes to other agents by producing [`%poke`
-`card`s](/guides/core/app-school/5-cards#pokes). Any agent arm apart from
+`card`s](/courses/app-school/5-cards#pokes). Any agent arm apart from
 `on-peek` and `on-save` can produce such `card`s. The arms would typically
 produce the `(quip card _this)` like so:
 
@@ -134,7 +134,7 @@ A `sign:agent:gall` (henceforth just `sign`) is defined in `lull.hoon` as:
   ==
 ```
 
-It's basically the same as a [`gift`](/guides/core/app-school/5-cards#give),
+It's basically the same as a [`gift`](/courses/app-school/5-cards#give),
 but incoming instead of outgoing.
 
 The simplest way to handle a `%poke-ack` by passing it to `default-agent`'s

@@ -1,5 +1,5 @@
 +++
-title = "Running a Thread"
+title = "Example"
 weight = 4
 +++
 

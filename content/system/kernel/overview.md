@@ -21,7 +21,7 @@ companion to this document, and some segments are direct quotes or paraphrases, 
 The conceptual section titled [What is Arvo?](#what-is-arvo) can be understood
 without knowing Hoon, the Urbit programming language. The technical section
 titled [The kernel](#the-kernel) will require Chapter One of the [Hoon
-tutorial](/guides/core/hoon-school/) for full understanding, and some
+tutorial](/courses/hoon-school/) for full understanding, and some
 material from Chapter Two will be helpful as well. At the bare minimum, we
 presume that the reader has read through the [Technical
 Overview](/overview/).
@@ -149,7 +149,7 @@ Typically, updates to an operating system are given via a pre-compiled binary,
 which is why some updates will work on some systems but not on others where the
 hardware and environment may differ. This is not so on Arvo - because it is an
 [interpreter](#solid-state-interpreter), Arvo may update itself by receiving
-source code from your sponsor over [Ames](/reference/arvo/ames/ames), our
+source code from your sponsor over [Ames](/system/kernel/ames/ames), our
 network. As Hoon compiles down to Nock, which is an axiomatic representation of
 a deterministic computer, this code is guaranteed to run identically on your machine as it
 would on anybody else's.
@@ -189,7 +189,7 @@ Database theory studies in precise terms the possible properties of anything tha
 It is easy to think that "completed transaction will survive permanently"
 along with "the state of Arvo is pure function of its event log" implies that
 nothing can ever be deleted. This is not quite true.
-[Clay](/reference/arvo/clay/clay) is our [referentially
+[Clay](/system/kernel/clay/clay) is our [referentially
 transparency](https://en.wikipedia.org/wiki/Referential_transparency)
 file system, which could naively be thought to mean that since data must be
 immutable, files cannot be deleted. However, Clay can replace a file with a
@@ -221,10 +221,10 @@ cooperative multitasking.
 
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
-This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](/guides/core/hoon-school/).
+This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](/courses/hoon-school/).
 
 After concluding this section, the reader is encouraged to follow along with the
-[move trace tutorial](/reference/arvo/tutorials/move-trace),
+[move trace tutorial](/system/kernel/arvo/guides/move-trace),
 which applies many of the concepts covered below.
 
 ## Overall structure
@@ -238,7 +238,7 @@ which applies many of the concepts covered below.
 - Larval stage core
 - Formal interface
 
-See [Hoon School “Subject-Oriented Programming”](/guides/core/hoon-school/O-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
+See [Hoon School “Subject-Oriented Programming”](/courses/hoon-school/O-subject#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
 
 ### Formal interface
 
@@ -276,7 +276,7 @@ every step in the path the request takes onto the chain until we get to the
 terminal cause of the computation. Then we use this causal stack to route
 results back to the caller.
 
-The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
+The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty path element for Unix.
 
 Here's a `duct` that was recently observed in the wild upon entering `-time ~s1`
 into the dojo and pressing Enter, which sets a timer for one second that will
@@ -301,7 +301,7 @@ time app. This app returns a `@d` which denotes the current time, which falls do
 which drops it through to the terminal. Terminal drops this down to Dill, which
 converts it into an effect that Unix will recognize as a request to print the
 current time to the screen. When Dill produces this, the last path in the `duct` has an
-initial element of the empty span, so this is routed to Unix, which applies the effects.
+initial empty element, so this is routed to Unix, which applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a `duct` zero, one, or many times. You can save `duct`s for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
 
@@ -413,7 +413,7 @@ A short summary of the purpose of each these arms are as follows:
 - `+poke` is the transition function that `move`s Arvo from one state to the
   next. It is the most fundamental arm in the entire system. It is a typed
   transactional message that is processed at most once. If the `+poke` causes
-  Arvo to send an message over [Ames](/reference/arvo/ames/ames) Ames
+  Arvo to send an message over [Ames](/system/kernel/ames/ames) Ames
   guarantees that the message will be delivered exactly once. This is sometimes said
   to be impossible, and it is for standard operating systems, but that is not the case for single-level stores engaged in
   a permanent session, as is the case among Arvo ships.
@@ -532,18 +532,18 @@ data that directly causes the desired outcome of a `move`. This event data is co
 
 As of this writing, we have nine vanes, which each provide the following services:
 
-- [Ames](/reference/arvo/ames/ames): the name of both our network and the vane that communicates over it.
-- [Behn](/reference/arvo/behn/behn): a simple timer.
-- [Clay](/reference/arvo/clay/clay): our version-controlled, referentially- transparent, and global filesystem.
-- [Dill](/reference/arvo/dill/dill): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
-- [Eyre](/reference/arvo/eyre/eyre): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
-- [Gall](/reference/arvo/gall/gall): manages our userspace applications. `%gall` keeps state and manages subscribers.
-- [Iris](/reference/arvo/iris/iris): an http client.
-- [Jael](/reference/arvo/jael/jael): storage for Azimuth information.
-- [Khan](/reference/arvo/khan/khan): control plane and thread runner.
+- [Ames](/system/kernel/ames/ames): the name of both our network and the vane that communicates over it.
+- [Behn](/system/kernel/behn/behn): a simple timer.
+- [Clay](/system/kernel/clay/clay): our version-controlled, referentially- transparent, and global filesystem.
+- [Dill](/system/kernel/dill/dill): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
+- [Eyre](/system/kernel/eyre/eyre): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
+- [Gall](/system/kernel/gall/gall): manages our userspace applications. `%gall` keeps state and manages subscribers.
+- [Iris](/system/kernel/iris/iris): an http client.
+- [Jael](/system/kernel/jael/jael): storage for Azimuth information.
+- [Khan](/system/kernel/khan/khan): control plane and thread runner.
 
 #### Applying your knowledge
 
 Now that you've learned about the nuts and bolts of the Arvo kernel, why not
 check it out in action? An in-depth "move trace" tutorial for running a timer app
-is available [here](/reference/arvo/tutorials/move-trace).
+is available [here](/system/kernel/arvo/guides/move-trace).

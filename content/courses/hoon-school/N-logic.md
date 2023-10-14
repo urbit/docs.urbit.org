@@ -54,17 +54,17 @@ You are familiar in everyday life with making choices on the basis of a decision
 
 Essentially, we have to be able to decide whether or not some value or expression evaluates as `%.y` true (in which case we will do one thing) or `%.n` false (in which case we do another).  Some basic expressions are mathematical, but we also check for existence, for equality of two values, etc.
 
-- [`++gth`](/reference/hoon/stdlib/1a#gth) (greater than `>`)                   
-- [`++lth`](/reference/hoon/stdlib/1a#lth) (less than `<`)  
-- [`++gte`](/reference/hoon/stdlib/1a#gte) (greater than or equal to `≥`)
-- [`++lte`](/reference/hoon/stdlib/1a#lte) (less than or equal to `≤`)
+- [`++gth`](/language/hoon/reference/stdlib/1a#gth) (greater than `>`)                   
+- [`++lth`](/language/hoon/reference/stdlib/1a#lth) (less than `<`)  
+- [`++gte`](/language/hoon/reference/stdlib/1a#gte) (greater than or equal to `≥`)
+- [`++lte`](/language/hoon/reference/stdlib/1a#lte) (less than or equal to `≤`)
 - [`.=` dottis](/reference/hoon/rune/dot#-dottis), irregularly `=()` (check for equality)
 
-The key conditional decision-making rune is [`?:` wutcol](/reference/hoon/rune/wut#-wutcol), which lets you branch between an `expression-if-true` and an `expression-if-false`.  [`?.` wutdot](/reference/hoon/rune/wut#-wutdot) inverts the order of `?:`.  Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
+The key conditional decision-making rune is [`?:` wutcol](/language/hoon/reference/rune/wut#-wutcol), which lets you branch between an `expression-if-true` and an `expression-if-false`.  [`?.` wutdot](/language/hoon/reference/rune/wut#-wutdot) inverts the order of `?:`.  Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 
-- [`?-` wuthep](/reference/hoon/rune/wut#--wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
+- [`?-` wuthep](/language/hoon/reference/rune/wut#--wuthep) lets you choose between several possibilities, as with a type union.  Every case must be handled and no case can be unreachable.
 
     Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` wuthep switches over term unions can make it look like the expression is branching on the value.  It's actually branching on the _type_.  These are almost exclusively used with term type unions.
 
@@ -77,7 +77,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
     ==
     ```
 
-- [`?+` wutlus](/reference/hoon/rune/wut#-wutlus) is similar to `?-` but allows a default value in case no branch is taken.  Otherwise these are similar to `?-` wuthep switch statements.
+- [`?+` wutlus](/language/hoon/reference/rune/wut#-wutlus) is similar to `?-` but allows a default value in case no branch is taken.  Otherwise these are similar to `?-` wuthep switch statements.
 
     ```hoon {% copy=true %}
     |=  p=?(%0 %1 %2 %3 %4)
@@ -92,7 +92,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
 
 Mathematical logic allows the collocation of propositions to determine other propositions.  In computer science, we use this functionality to determine which part of an expression is evaluated.  We can combine logical statements pairwise:
 
-- [`?&` wutpam](/reference/hoon/rune/wut#-wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
+- [`?&` wutpam](/language/hoon/reference/rune/wut#-wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
 
     |             `AND`            | `%.y` | `%.n` |
     |------------------------------|-------|-------|
@@ -107,7 +107,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?|` wutbar](/reference/hoon/rune/wut#-wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
+- [`?|` wutbar](/language/hoon/reference/rune/wut#-wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
 
     |             `OR`             | `%.y` | `%.n` |
     |------------------------------|-------|-------|
@@ -122,7 +122,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
     %.y
     ```
 
-- [`?!` wutzap](/reference/hoon/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*).  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
+- [`?!` wutzap](/language/hoon/reference/rune/wut#-wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*).  Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
 
     |                              | `NOT` |
     |------------------------------|-------|
@@ -182,7 +182,7 @@ The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands ar
 
 ### Exercise:  Implement a Piecewise Boxcar Function
 
-The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](/guides/core/hoon-school/B-syntax) using the `?:` wutcol rune.
+The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](/courses/hoon-school/B-syntax) using the `?:` wutcol rune.
 
 - Compose a gate which implements the boxcar function,
 

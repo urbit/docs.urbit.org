@@ -9,8 +9,8 @@ Behn manages timers in a simple priority queue. Other vanes and applications ask
 
 ## Sections
 
-[API Reference](/reference/arvo/behn/tasks) - The `task`s Behn takes and the `gift`s it returns.
+[API Reference](/system/kernel/behn/reference/tasks) - The `task`s Behn takes and the `gift`s it returns.
 
-[Scry Reference](/reference/arvo/behn/scry) - The scry endpoints of Behn.
+[Scry Reference](/system/kernel/behn/reference/scry) - The scry endpoints of Behn.
 
-[Examples](/reference/arvo/behn/examples) - Practical examples of using Behn's `task`s.
+[Examples](/system/kernel/behn/examples/examples) - Practical examples of using Behn's `task`s.

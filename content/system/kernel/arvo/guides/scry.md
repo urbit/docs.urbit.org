@@ -3,9 +3,7 @@ title = "Scries"
 weight = 40
 +++
 
-{% callout %}
-
-This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](/guides/additional/remote-scry).
+This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](/userspace/apps/guides/remote-scry).
 
 ## What is a scry?
 
@@ -25,7 +23,7 @@ For details of its usage, see the [dotket](/reference/hoon/rune/dot#-dotket) sec
 
 ![Scry diagram](https://media.urbit.org/docs/arvo/scry-diagram-v3.svg)
 
-One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](/reference/arvo/clay/scry).
+One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](/system/kernel/clay/reference/scry).
 
 Most other vanes also make use of `care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `care`s still confer the general nature of the endpoint. The most widely used `care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
 
@@ -45,13 +43,22 @@ On the other hand, Dill has only a couple of endpoints which are mostly useful
 for debugging, and Iris has none at all (apart from standard memory reporting
 endpoints you'd not typically use in your applications).
 
-To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/reference/arvo/overview) section of the documents.
+To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/system/kernel/overview) section of the documents.
 
 ### Gall agents
 
 Gall has a single scry endpoint of its own to check for the existence of an agent, but otherwise all Gall scries are passed through to one of the agents it manages. The target agent to scry is specified in place of the `desk` as described in the diagram above. Each Gall agent includes a `+on-peek` arm that defines its own scry endpoints. For example, `%graph-store` has a number of scry endpoints to access the data it stores, such as chat messages and the like.
 
 Gall agents can expose scry endpoints with any `care`, but most commonly they'll take a `%x` `care`. Gall handles `%x` scries specially - it expects an extra field at the end of the `path` that specifies a `mark`. Gall will attempt to perform a `mark` conversion from the `mark` returned by the scry endpoint to the `mark` specified. Note the trailing `mark` in the `path` will not be passed through to the agent itself.
+
+{% callout %}
+
+**Note:** you should not perform agent scries from within the
+`++on-load` arm of your agent. All Gall agents are suspended during
+kernel upgrade, and then reloaded one-by-one. If the agent you scry
+wasn't reloaded before yours, the scry will fail.
+
+{% /callout %}
 
 ## What is an endpoint?
 
@@ -75,14 +82,14 @@ The case in the beginning says it takes a `%x` `care` and has a `path` of `/keys
 
 ## Web scries
 
-The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](/reference/arvo/eyre/external-api-ref#scry).
+The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](/system/kernel/eyre/reference/external-api-ref#scry).
 
 ## Further reading
 
 [dotket](/reference/hoon/rune/dot#-dotket) - Documentation of the `.^` rune which performs scries.
 
-[Arvo](/reference/arvo/overview) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
+[Arvo](/system/kernel/overview) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
 
-[Eyre's External API Reference](/reference/arvo/eyre/external-api-ref#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
+[Eyre's External API Reference](/system/kernel/eyre/reference/external-api-ref#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
 
-[App School I](/guides/core/app-school/intro) - The App School Gall tutorial includes a section about `+on-peek` and writing scry endpoints.
+[App School I](/courses/app-school/intro) - The App School Gall tutorial includes a section about `+on-peek` and writing scry endpoints.

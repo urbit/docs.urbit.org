@@ -27,7 +27,7 @@ This `task` only ever originates from Unix. It does the initial processing of a 
 
 There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:event-core`, as that is the one called by a `%hear` `task`. The other ones are used primarily for ack and nack processing, or receiving message fragments.
 
-`%hear` takes in a [$blob](/reference/arvo/ames/data-types#blob), which is essentially a large atom (around 1kB or less) that is the raw data of the message, and a [$lane](/reference/arvo/ames/data-types#lane), which is the origin of the message (typically an IP address).
+`%hear` takes in a [$blob](/system/kernel/ames/reference/data-types#blob), which is essentially a large atom (around 1kB or less) that is the raw data of the message, and a [$lane](/system/kernel/ames/reference/data-types#lane), which is the origin of the message (typically an IP address).
 
 #### Returns
 
@@ -93,7 +93,7 @@ Unix to send packets. In terms of `%pass`/`%give` semantics, this is in
 response to the `%born` `task`, which came along the Unix `duct`, rather than a
 response to the `%plea`.
 
-A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/reference/arvo/ames/data-types#plea).
+A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](/system/kernel/ames/reference/data-types#plea).
 
 #### Returns
 
@@ -128,7 +128,7 @@ response to `%born`.
 ```
 
 `%init` is called a single time during the very first boot process, immediately
-after the [larval stage](/reference/arvo/overview#larval-stage-core)
+after the [larval stage](/system/kernel/overview#larval-stage-core)
 is completed. This initializes the vane. Jael is initialized first, followed by
 other vanes such as Ames.
 
@@ -184,7 +184,7 @@ it does not merely add/remove ships from the existing list.
 
 If you just want to add/remove a ship from an existing blacklist/whitelist,
 you'll need to first [scry out the existing snub
-settings](/reference/arvo/ames/scry#snubbed), make your changes, and send the
+settings](/system/kernel/ames/reference/scry#snubbed), make your changes, and send the
 whole modified list and form in a new `%snub` `task`. 
 
 {% /callout %}
@@ -203,7 +203,7 @@ This `task` returns no `gift`s.
 
 Sets verbosity toggles on debug output. This `task` is used internally when the `|ames-verb` `hood` generator is run from the dojo.
 
-`%spew` takes in a `list` of [$verb](/reference/arvo/ames/data-types#verb), which are verbosity flags for Ames.
+`%spew` takes in a `list` of [$verb](/system/kernel/ames/reference/data-types#verb), which are verbosity flags for Ames.
 
 `%spew` flips each toggle given in `veb`.
 
@@ -268,7 +268,7 @@ A `%tune` gift. A `%tune` gift looks like:
 
 It represents a *result*. The `roar` field is null if Ames doesn't have a
 response, but may have one in the future. The
-[`$roar`](/reference/arvo/ames/data-types#roar) contains a signature and the
+[`$roar`](/system/kernel/ames/reference/data-types#roar) contains a signature and the
 data. The data in the `$roar` will be null if there is no value at the path in
 question and will never be. These two cases are equivalent to `~` and `[~ ~]` of
 a local scry.

@@ -28,7 +28,7 @@ with a system of scarce and immutable identities.
 **Azimuth** is the public-key infrastructure built to be a system of scarce and
 immutable identities. It consists of a suite of [smart contracts on the Ethereum
 blockchain](https://github.com/urbit/azimuth) as well as [several
-apps](/reference/azimuth/flow) run locally on your urbit. Togeter, they determine
+apps](/system/identity/concepts/flow) run locally on your urbit. Togeter, they determine
 which Ethereum addresses own which Urbit ID's as well as the public keys needed
 to communicate with those ID's. All identity-related operations, such as
 transfers, are governed by Azimuth. Azimuth isn't built strictly for Arvo -- the
@@ -100,36 +100,36 @@ a roller to submit single transactions results in significant savings.
 
 A casual overview of the naive rollups system can be found on the
 [blog](https://urbit.org/blog/rollups). Developers are encouraged to read our Layer 2
-documentation, starting with the [Layer 2 Overview](/reference/azimuth/l2/layer2).
+documentation, starting with the [Layer 2 Overview](/system/identity/concepts/layer2).
 
 ## Other resources {% #other %}
 
-### [Urbit HD Wallet](/reference/azimuth/hd-wallet)
+### [Urbit HD Wallet](/system/identity/concepts/hd-wallet)
 
 Azimuth has its own optional hierarchical deterministic wallet system, often
 referred to as a "master ticket".
 
-### [Data Flow](/reference/azimuth/flow)
+### [Data Flow](/system/identity/concepts/flow)
 
 Diagrams and explanations of how data flows between Bridge and the various
 components inside Urbit involved with Azimuth and L2.
 
-### [Azimuth.eth](/reference/azimuth/azimuth-eth)
+### [Azimuth.eth](/system/identity/azimuth-eth)
 
 A description of the `azimuth.eth` smart contract, which is the data store for
 Azimuth.
 
-### [Ecliptic.eth](/reference/azimuth/ecliptic)
+### [Ecliptic.eth](/system/identity/reference/ecliptic)
 
 A description of the `ecliptic.eth` smart contract, which is the business logic
 for `azimuth.eth`. This includes an overview of all function calls available.
 
-### [Advanced Azimuth Tools](/reference/azimuth/advanced-azimuth-tools)
+### [Advanced Azimuth Tools](/system/identity/guides/advanced-azimuth-tools)
 
 Expert-level tooling for generating, signing, and sending layer 1 Azimuth
 transactions from within Urbit itself.
 
-### [Life and Rift](/reference/azimuth/azimuth)
+### [Life and Rift](/system/identity/azimuth)
 
 An explanation of how Azimuth indexes networking keys revisions and breaches to
 keep track of the most recent set of networking keys necessary to communicate

@@ -37,7 +37,7 @@ in the example is broadly applicable to the other vanes as well.
 ## Sending a vane task
 
 A `task` can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on
-these in the [Cards](/guides/core/app-school/5-cards) lesson, but we'll
+these in the [Cards](/courses/app-school/5-cards) lesson, but we'll
 briefly recap it here. The type of the card is as follows:
 
 ```hoon

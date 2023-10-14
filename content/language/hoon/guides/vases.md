@@ -6,9 +6,9 @@ weight = 115
 
 ## Overview
 
-A [`$vase`](/reference/hoon/stdlib/4o#vase) is a pair of
-[`$type`](/reference/hoon/stdlib/4o#type) and
-[`$noun`](/reference/hoon/stdlib/2q#noun), where the type describes the noun.
+A [`$vase`](/language/hoon/reference/stdlib/4o#vase) is a pair of
+[`$type`](/language/hoon/reference/stdlib/4o#type) and
+[`$noun`](/language/hoon/reference/stdlib/2q#noun), where the type describes the noun.
 They're used all over Urbit to represent data whose type we can't know ahead of
 time. This often comes up when being asked to compile and run other Hoon code.
 It's also used to store data that could be any type, but where we want to know
@@ -43,7 +43,7 @@ type. Since the subject of any Hoon expression always has a known type at
 compile time, a reference (a [wing](/reference/glossary/wing), like
 `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0
 operation (subtree lookups) at a known constant
-[axis](/reference/hoon/stdlib/2q#axis) (tree slot).
+[axis](/language/hoon/reference/stdlib/2q#axis) (tree slot).
 
 A Hoon `$type` is defined by this (pronounced "buc type", also called "the type
 of type"):
@@ -127,8 +127,8 @@ mode.
 The vase operations form a relatively simple algebra. This algebra can be
 thought of as a dynamically typed programming language. Each value in the
 language is a vase (a dynamically typed datum), and the basic operations are
-[`+slap`](/reference/hoon/stdlib/5c#slap) and
-[`+slop`](/reference/hoon/stdlib/5c#slop).
+[`+slap`](/language/hoon/reference/stdlib/5c#slap) and
+[`+slop`](/language/hoon/reference/stdlib/5c#slop).
 
 For example, the Hoon expression `(slap (slop v1 (slop v2 (slap v3 h1)) v4) h2)`
 takes in four vases and two hoon expressions, and produces a vase. A pseudocode
@@ -137,7 +137,7 @@ version of this would be `h2([v1 v2 h1(v3)])`
 ### Introduction Forms
 
 The primary introduction form for a vase is the
-[`!>`](/reference/hoon/rune/zap#-zapgar) rune, which produces a vase of its
+[`!>`](/language/hoon/reference/rune/zap#-zapgar) rune, which produces a vase of its
 input. A vase can also be constructed manually as a cell whose head nests in
 `$type`, like `[[%atom %ud ~] 3]`.
 
@@ -146,7 +146,7 @@ input. A vase can also be constructed manually as a cell whose head nests in
 An elimination form for a vase is something that converts a vase to a statically
 typed value.
 
-One unsafe elimination form is the [`!<`](/reference/hoon/rune/zap#-zapgal)
+One unsafe elimination form is the [`!<`](/language/hoon/reference/rune/zap#-zapgal)
 rune, which takes a mold and a value and (unsafely) converts the value to a
 typed value. The more traditional elimination form has no syntactic support, but
 involves pattern-matching on the type data structure, e.g. dispatching based on
@@ -251,5 +251,5 @@ Got noun at axis (tree address)
 
 ## Further Reading
 
-- [Standard library section 5c](/reference/hoon/stdlib/5c): This contains most
+- [Standard library section 5c](/language/hoon/reference/stdlib/5c): This contains most
   of the vase functions in the standard library.

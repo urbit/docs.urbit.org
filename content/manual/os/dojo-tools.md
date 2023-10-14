@@ -2549,7 +2549,7 @@ prefix][path prefix].
 #### Example
 
 Refer to the [Unit Test
-Guide](https://developers.urbit.org/guides/additional/unit-tests) for details of
+Guide](https://developers.urbit.org/userspace/apps/guides/unit-tests) for details of
 using the `-test` thread.
 
 ---

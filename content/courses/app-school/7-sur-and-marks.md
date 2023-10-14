@@ -11,7 +11,7 @@ fully functioning Gall agent, we'll get to that in the next lesson.
 
 ## `/sur`
 
-In the [previous lesson on pokes](/guides/core/app-school/6-pokes), we used a
+In the [previous lesson on pokes](/courses/app-school/6-pokes), we used a
 very simple union in the `vase` for incoming pokes:
 
 ```hoon
@@ -285,7 +285,7 @@ This simple mark file isn't all that useful. Typically, you'd add `json` arms
 to `grow` and `grab`, which allow your data to be converted to and from JSON,
 and therefore allow your agent to communicate with a web front-end. Front-ends,
 JSON, and Eyre's APIs which facilitate such communications will be covered in
-the separate [Full-Stack Walkthrough](/guides/core/app-school-full-stack/intro),
+the separate [Full-Stack Walkthrough](/courses/app-school-full-stack/intro),
 which you might like to work through after completing this guide. For now
 though, it's still useful to use marks and understand how they work.
 
@@ -303,7 +303,7 @@ pokes are actually coming from - our example agents would accept data from
 anywhere, including random foreign ships. We'll now have a look at how to handle
 such permission checks.
 
-Back in [lesson 2](/guides/core/app-school/2-agent#bowl) we discussed the
+Back in [lesson 2](/courses/app-school/2-agent#bowl) we discussed the
 [bowl](/reference/arvo/gall/data-types#bowl). The `bowl` includes a couple of useful
 fields: `our` and `src`. The `our` field just contains the `@p` of the local
 ship. The `src` field contains the `@p` of the ship from which the event

@@ -182,18 +182,18 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [`++limo`](/reference/hoon/stdlib/2b#limo) which explicitly marks a null-terminated tuple as a `list`.)
+A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [`++limo`](/language/hoon/reference/stdlib/2b#limo) which explicitly marks a null-terminated tuple as a `list`.)
 
 
 ##  Addressing Limbs
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](/guides/core/hoon-school/R-metals#wet-gates) work.)
+Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](/courses/hoon-school/R-metals#wet-gates) work.)
 
 There are three different ways to access values:
 
-1. [Numeric addressing](/guides/core/hoon-school/G-trees#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
-2. [Positional addressing](/guides/core/hoon-school/G-trees#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
-3. [Wing addressing](/guides/core/hoon-school/G-trees#wings) is a way of attaching a name to the address so that you can access it directly.
+1. [Numeric addressing](/courses/hoon-school/G-trees#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
+2. [Positional addressing](/courses/hoon-school/G-trees#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
+3. [Wing addressing](/courses/hoon-school/G-trees#wings) is a way of attaching a name to the address so that you can access it directly.
 
 ### Numeric Addressing
 
@@ -223,7 +223,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 ![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/guides/core/hoon-school/M-typecheck)):
+Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/courses/hoon-school/M-typecheck)):
 
 ```hoon {% copy=true %}
 -:!>('hello Mars')
@@ -481,7 +481,7 @@ We say that the inner face has been _shadowed_ when an outer name obscures it.
 
 If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` centis loop/recursion of multiple cores with a `|-` barhep trap nested inside of a `|=` bartis gate, for instance.
 
-Solution #1 in the [Rhonda Numbers](/guides/additional/workbook/rhonda) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
+Solution #1 in the [Rhonda Numbers](/language/hoon/examples/rhonda) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
 ### Limb Resolution Operators
 
@@ -507,7 +507,7 @@ n
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the [`%=` centis](/reference/hoon/rune/cen#-centis) rune.
+The `$()` syntax is the commonly-used irregular form of the [`%=` centis](/language/hoon/reference/rune/cen#-centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
@@ -592,7 +592,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a mold gate rather than using the tic notation.  This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](/reference/hoon/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+- Extend the above generator so that it accepts a cell of type and value (a `vase` as produced by the [`!>` zapgar](/language/hoon/reference/rune/zap#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise:  Resolving Wings
 
@@ -621,7 +621,7 @@ Enter the following into dojo:
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
-- [`++flop`](/reference/hoon/stdlib/2b#flop) reverses the order of the elements (exclusive of the `~`):
+- [`++flop`](/language/hoon/reference/stdlib/2b#flop) reverses the order of the elements (exclusive of the `~`):
   
     ```hoon
     > (flop ~[1 2 3 4 5])
@@ -630,14 +630,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
   **Exercise:  `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
 
-- [`++sort`](/reference/hoon/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
+- [`++sort`](/language/hoon/reference/stdlib/2b#sort) uses a `list` and a comparison function (like `++lth`) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- [`++snag`](/reference/hoon/stdlib/2b#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
+- [`++snag`](/language/hoon/reference/stdlib/2b#snag) takes a index and a `list` to grab out a particular element (note that it starts counting at zero):
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -659,7 +659,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     '!'
     ```
 
-- [`++weld`](/reference/hoon/stdlib/2b#weld) takes two lists of the same type and concatenates them:
+- [`++weld`](/language/hoon/reference/stdlib/2b#weld) takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld ~[1 2 3] ~[4 5 6])
@@ -673,14 +673,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
 There are a couple of sometimes-useful `list` builders:
 
-- [`++gulf`](/reference/hoon/stdlib/2b#gulf) spans between two numeric values (inclusive of both):
+- [`++gulf`](/language/hoon/reference/stdlib/2b#gulf) spans between two numeric values (inclusive of both):
 
     ```hoon
     > (gulf 5 10)  
     ~[5 6 7 8 9 10]
     ```
 
-- [`++reap`](/reference/hoon/stdlib/2b#reap) repeats a value many times in a `list`:
+- [`++reap`](/language/hoon/reference/stdlib/2b#reap) repeats a value many times in a `list`:
 
     ```hoon
     > (reap 5 0x0)
@@ -696,7 +696,7 @@ There are a couple of sometimes-useful `list` builders:
     ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
     ```
 
-- [`++roll`](/reference/hoon/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+- [`++roll`](/language/hoon/reference/stdlib/2b#roll) takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
     ```hoon
     > (roll `(list @)`~[11 22 33 44 55] add)
@@ -708,11 +708,11 @@ There are a couple of sometimes-useful `list` builders:
 
 Once you have a `list` (including a `tape`), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
-- [`++lent`](/reference/hoon/stdlib/2b#lent) `[a=(list)]` get the number of elements (length) of the list
-- [`++find`](/reference/hoon/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
-- [`++snap`](/reference/hoon/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
-- [`++scag`](/reference/hoon/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
-- [`++slag`](/reference/hoon/stdlib/2b#slag) `[a=@ b=(list)]` produces all elements of the list including and after the element at index _a_
+- [`++lent`](/language/hoon/reference/stdlib/2b#lent) `[a=(list)]` get the number of elements (length) of the list
+- [`++find`](/language/hoon/reference/stdlib/2b#find) `[nedl=(list) hstk=(list)]` locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
+- [`++snap`](/language/hoon/reference/stdlib/2b#snap) `[a=(list) b=@ c=*]` replaces the element at an index in the list (zero-indexed) with something else
+- [`++scag`](/language/hoon/reference/stdlib/2b#scag) `[a=@ b=(list)]` produces the first _a_ elements from the front of the list
+- [`++slag`](/language/hoon/reference/stdlib/2b#slag) `[a=@ b=(list)]` produces all elements of the list including and after the element at index _a_
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
@@ -762,10 +762,11 @@ First, bind these faces.
   - 🍉 `12` or `+<-`
   - 🍏 `16` or `-<-<`
   - 🍋 `27` or `+<+>`
+  - 🍊 `30` or `+>+<`
   - 🍑 `42` or `->->-`
-  - 🍊 `62` or `+>+>-`
+  - 🍒 `62` or `+>+>-`
   - 🍍 `87` or `->->+>`
-  - 🍒 `126` or `+>+>+<`
+  
 
 - Resolving Lark Expressions
 

@@ -26,14 +26,11 @@ const sites = [
 
 const pages = [
   { title: "Language", href: "/language" },
-  { title: "Courses", href: "/courses" },
-  { title: "Userspace", href: "/userspace" },
   { title: "System", href: "/system" },
+  { title: "Userspace", href: "/userspace" },
   { title: "Tools", href: "/tools" },
   { title: "Manual", href: "/manual" },
-  { title: "Guides", href: "/guides" },
-  { title: "Overview", href: "/overview" },
-  { title: "Reference", href: "/reference" },
+  { title: "Courses", href: "/courses" },
 ];
 
 export default function IntraNav({ search }) {

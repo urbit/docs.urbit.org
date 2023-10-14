@@ -5,18 +5,18 @@ weight = 100
 insert_anchor_links = "right"
 +++
 
-## [Competitive Programming](/guides/additional/workbook/competitive)
+## [Competitive Programming](/language/hoon/examples/competitive)
 
-## [_Gleichniszahlenreihe_](/guides/additional/workbook/gleichniszahlenreihe) (Audioactive Numbers)
+## [_Gleichniszahlenreihe_](/language/hoon/examples/gleichniszahlenreihe) (Audioactive Numbers)
 
-## [Rhonda Numbers](/guides/additional/workbook/rhonda)
+## [Rhonda Numbers](/language/hoon/examples/rhonda)
 
-## [Roman Numerals](/guides/additional/workbook/roman)
+## [Roman Numerals](/language/hoon/examples/roman)
 
-## [Solitaire Cipher](/guides/additional/workbook/solitaire)
+## [Solitaire Cipher](/language/hoon/examples/solitaire)
 
-## [Water between Towers](/guides/additional/workbook/water-towers)
+## [Water between Towers](/language/hoon/examples/water-towers)
 
-## [ABC Blocks](/guides/additional/workbook/abc-blocks)
+## [ABC Blocks](/language/hoon/examples/abc-blocks)
 
-## [Luhn Number](/guides/additional/workbook/luhn-number)
+## [Luhn Number](/language/hoon/examples/luhn-number)

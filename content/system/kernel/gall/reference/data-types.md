@@ -89,9 +89,9 @@ as follows:
 - `sup`: Incoming subscriptions. That is, subscriptions others have made to our
   agent. See the [`bitt`](#bitt) section for details of the type.
 - `sky`: Remote scry bindings. A map from binding paths to a
-  [`mop`](/reference/hoon/zuse/2m#mop) (ordered map) of files by revision
+  [`mop`](/language/hoon/reference/zuse/2m#mop) (ordered map) of files by revision
   number. Tombstoned files have an `@uvI` hash rather than `page`.
-- `act`: The total number of [`move`](/reference/arvo/overview#move)s our agent has
+- `act`: The total number of [`move`](/system/kernel/overview#move)s our agent has
   processed so far.
 - `eny`: 512 bits of entropy.
 - `now`: The current date-time.
@@ -318,12 +318,12 @@ cases are:
   ```
   You can refer to the `/sys/lull.hoon` source code for all the possible
   vane tasks, or see each vane's API Reference section in the [Arvo
-  documentation](/reference/arvo/overview)
+  documentation](/system/kernel/overview)
 - `%pyre`: This is for aborting side-effects initiated during agent
   installation. The `tang` is an error message.
 - `%grow`/`%tomb`/`%cull`: These are used for publishing and managing
   data available for remote scries. For more information, see the
-  [remote scries guide](/guides/additional/remote-scry).
+  [remote scries guide](/userspace/apps/guides/remote-scry).
 
 A `note:agent` is always wrapped in a `%pass` [`card:agent`](#cardagent).
 
@@ -536,7 +536,7 @@ subscription path on our agent.
 - Accepts: `path`
 - Produces: `(unit (unit cage))`
 
-This arm is called when a [scry](/reference/arvo/concepts/scry) is
+This arm is called when a [scry](/system/kernel/arvo/guides/scry) is
 performed on our agent.
 
 #### `on-agent`
@@ -577,7 +577,7 @@ is:
 ```
 
 You can refer to the `/sys/lull.hoon` source code, or the API Reference
-of each vane in the [Arvo documentation](/reference/arvo/overview).
+of each vane in the [Arvo documentation](/system/kernel/overview).
 
 #### `on-fail`
 

@@ -8,7 +8,7 @@ to start writing your own agent.
 
 The things haven't touched on yet are front-end development and integration,
 Eyre's HTTP API for communicating with agents from the web, and dealing with
-JSON data. The [Full-stack Walkthrough](/guides/core/app-school-full-stack/intro)
+JSON data. The [Full-stack Walkthrough](/courses/app-school-full-stack/intro)
 covers these aspects of Urbit app development, and it also puts into practice
 many of the concepts we've discussed in this guide, so you might like to work
 through that next. In addition to that walkthrough, you can refer to the
@@ -28,7 +28,7 @@ following documents for help writing a web front-end for your app:
 - [The software distribution guide](/guides/additional/software-distribution) - This covers
   everything you need to know to distribute apps to other ships. It includes
   details of bundling a web front-end and serving it to the user in the browser.
-- [The HTTP API guide](/guides/additional/http-api-guide) - This is a reference
+- [The HTTP API guide](/tools/http-api-guide) - This is a reference
   and guide to using the `@urbit/http-api` NPM module.
 - [The Sail guide](/guides/additional/sail) - Sail is a domain-specific language
   for composing XML structure in Hoon. It can be used to compose front-ends for

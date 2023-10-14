@@ -1,28 +1,29 @@
 +++
-title = "Gall"
-weight = 20
+title = "Guides"
+description = "Learn to write asynchronous I/O functions"
+weight = 101
 sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-Tutorial and explanation of interacting with threads from a Gall agent.
+Tutorial and explanation of the basics of writing threads.
 
-## [Start Thread](/reference/arvo/threads/gall/start-thread)
+## [Fundamentals](/userspace/threads/tutorial/basics/fundamentals)
 
-Start a thread from an agent.
+Basic explanation of threads and usage of the strand arms `form` and `pure`.
 
-## [Take Result](/reference/arvo/threads/gall/take-result)
+## [Bind](/userspace/threads/tutorial/basics/bind)
 
-Subscribe for thread result from an agent.
+Using micgal (`;<`) and the strand arm `bind` to chain strands together.
 
-## [Take Facts](/reference/arvo/threads/gall/take-facts)
+## [Input](/userspace/threads/tutorial/basics/input)
 
-Subscribe for facts sent from a running thread.
+Information on what a strand takes.
 
-## [Stop Thread](/reference/arvo/threads/gall/stop-thread)
+## [Output](/userspace/threads/tutorial/basics/output)
 
-Stop a thread from an agent.
+Information on what a strand produces.
 
-## [Poke Thread](/reference/arvo/threads/gall/poke-thread)
+## [Summary](/userspace/threads/tutorial/basics/summary)
 
-Poke a running thread from an agent.
+Summary of this information.

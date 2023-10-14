@@ -108,7 +108,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-This produces the [`$hoon`](/reference/hoon/stdlib/4o#hoon) AST of
+This produces the [`$hoon`](/language/hoon/reference/stdlib/4o#hoon) AST of
 expression `q`. The first argument, `p`, is always an example of the `$hoon`
 type, typically just the `*hoon` bunt value, and is used for type inference. The
 reason for `p` is just to handle transitions if the `$hoon` type changes.
@@ -127,7 +127,7 @@ reason for `p` is just to handle transitions if the `$hoon` type changes.
 
 ## `!>` "zapgar"
 
-Wrap a noun in its type (form a [`vase`](/reference/hoon/stdlib/4o#vase)).
+Wrap a noun in its type (form a [`vase`](/language/hoon/reference/stdlib/4o#vase)).
 
 #### Syntax
 
@@ -171,7 +171,7 @@ A cell whose tail is the product of `p`, and whose head is the static type of `p
 #### Discussion
 
 In Hoon, a dynamic type is a static type compiled at runtime. This type-noun
-cell is generally called a [`vase`](/reference/hoon/stdlib/4o#vase).
+cell is generally called a [`vase`](/language/hoon/reference/stdlib/4o#vase).
 
 #### Examples
 
@@ -192,7 +192,7 @@ head of the cell produced by `!>`:
 
 ## `!<` "zapgal"
 
-Extracts a [`vase`](/reference/hoon/stdlib/4o#vase) to the given mold if
+Extracts a [`vase`](/language/hoon/reference/stdlib/4o#vase) to the given mold if
 its type nests.
 
 #### Syntax
@@ -303,7 +303,7 @@ This wraps the product of `q` in its inferred type. It's a raw version of
 information is not stripped to a raw noun.
 
 The first field, `p`, must be an example of the
-[`$type`](/reference/hoon/stdlib/4o#type) type, typically just `*type` (the
+[`$type`](/language/hoon/reference/stdlib/4o#type) type, typically just `*type` (the
 bunt of `$type`). The `p` argument is just so transitions can be handled if the
 `$type` type changes.
 

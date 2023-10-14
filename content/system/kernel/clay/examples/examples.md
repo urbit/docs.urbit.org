@@ -1,9 +1,9 @@
 +++
-title = "Tasks"
+title = "Examples"
 weight = 7
 +++
 
-This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](/reference/arvo/clay/tasks) document.
+This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](/system/kernel/clay/reference/tasks) document.
 
 Most examples will either use `|pass` to just send a `task` or the following thread to send a `task` and take the resulting `gift`. You can save the following thread to the `ted` directory of the `%base` `desk` on a fake ship:
 
@@ -30,7 +30,7 @@ Most examples will either use `|pass` to just send a `task` or the following thr
 
 ## `%warp`
 
-See the [Read and Subscribe](/reference/arvo/clay/tasks#warp---read-and-track) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
+See the [Read and Subscribe](/system/kernel/clay/reference/tasks#warp---read-and-track) section of the [API Reference](/system/kernel/clay/reference/tasks) document for general details.
 
 ### `%sing`
 
@@ -317,7 +317,7 @@ Here's a breakdown of the `task` we sent:
 
 ## `%info`
 
-See the [Write and Modify](/reference/arvo/clay/tasks#write-and-modify) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
+See the [Write and Modify](/system/kernel/clay/reference/tasks#write-and-modify) section of the [API Reference](/system/kernel/clay/reference/tasks) document for general details.
 
 ### `%ins`
 
@@ -402,7 +402,7 @@ Save to `ted/multi-change.hoon`, `|commit %base`, and run:
 
 ## Manage Mounts
 
-See the [Manage Mounts](/reference/arvo/clay/tasks#manage-mounts) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
+See the [Manage Mounts](/system/kernel/clay/reference/tasks#manage-mounts) section of the [API Reference](/system/kernel/clay/reference/tasks) document for general details.
 
 ### `%boat`
 
@@ -501,7 +501,7 @@ If you have the same `desk` mounted to multiple points, a committed change in on
 
 ## Merge Desks
 
-See the [Merge Desks](/reference/arvo/clay/tasks#merge-desks) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
+See the [Merge Desks](/system/kernel/clay/reference/tasks#merge-desks) section of the [API Reference](/system/kernel/clay/reference/tasks) document for general details.
 
 ### `%merg`
 
@@ -575,7 +575,7 @@ You can also specify it by revision number or label.
 
 ## Permissions
 
-See the [Permissions](/reference/arvo/clay/tasks#permissions) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
+See the [Permissions](/system/kernel/clay/reference/tasks#permissions) section of the [API Reference](/system/kernel/clay/reference/tasks) document for general details.
 
 ### `%perm`
 
@@ -714,7 +714,7 @@ Now we'll use the `send-task-take-gift.hoon` thread to try `%crow`:
 
 ## Foreign Ships
 
-See the [Foreign Ships](/reference/arvo/clay/tasks#foreign-ships) section of the [API Reference](/reference/arvo/clay/tasks) document for general details.
+See the [Foreign Ships](/system/kernel/clay/reference/tasks#foreign-ships) section of the [API Reference](/system/kernel/clay/reference/tasks) document for general details.
 
 ### `%warp` - Remote
 

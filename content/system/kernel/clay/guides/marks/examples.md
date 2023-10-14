@@ -3,7 +3,7 @@ title = "Examples"
 weight = 4
 +++
 
-These are the files used in the [Writing Marks](/reference/arvo/clay/marks/writing-marks) guide.
+These are the files used in the [Writing Marks](/system/kernel/clay/guides/marks/writing-marks) guide.
 
 ## `/lib/csv-utils/hoon`
 

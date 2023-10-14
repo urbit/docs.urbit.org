@@ -9,11 +9,11 @@ insert_anchor_links = "right"
 
 An overview of Behn, Urbit's timer vane.
 
-## [API Reference](/reference/arvo/behn/tasks)
+## [API Reference](/system/kernel/behn/reference/tasks)
 
 The `task`s Behn takes and the `gift`s it returns.
 
-## [Scry Reference](/reference/arvo/behn/scry)
+## [Scry Reference](/system/kernel/behn/reference/scry)
 
 The scry endpoints of Behn.
 

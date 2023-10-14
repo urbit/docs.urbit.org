@@ -6,13 +6,13 @@ weight = 20
 Here we describe what each of the primary folders present in a Clay desk. This
 organization is merely a convention, and the exact location of any file does
 not affect its operation. That being said, some [Ford
-runes](/reference/hoon/rune/fas) are designed with this structure in
+runes](/language/hoon/reference/rune/fas) are designed with this structure in
 mind, and applications such as dojo and spider look in specific folders for
 code to run. Furthermore, this organization is not perfectly adhered to -
 sometimes you may find structure definitions in `/lib`, for example.
 
 - `/app` contains userspace applications, i.e. [Gall
-  agents](/reference/arvo/gall/gall).
+  agents](/system/kernel/gall/gall).
 - `/gen` contains generators. Many applications make use of generators, but also
   each generator in this folder may be run from dojo using `+`. For example,
   `/gen/foo/hoon` in the `%base` desk is run with `+foo`. Generators on desks
@@ -20,7 +20,7 @@ sometimes you may find structure definitions in `/lib`, for example.
 - `/lib` contains libraries that may be shared by multiple agents, threads,
   generators, etc. However, this is not the location of the standard libraries
   (see `/sys`). Libraries are imported from `/lib` with `/+`.
-- `/mar` contains [mark](/reference/arvo/clay/marks/marks) definitions.
+- `/mar` contains [mark](/system/kernel/clay/guides/marks/marks) definitions.
 - `/sur` contains shared [structure](/reference/hoon/rune/) definitions.
   Whenever you expect structures to be used by code across multiple files, it is
   recommended to place their shared structures in `/sur`. Structures are
@@ -32,7 +32,7 @@ sometimes you may find structure definitions in `/lib`, for example.
   rule - structures and functions that are central to Hoon, Arvo, and its vanes,
   are all located within this folder rather than in `/lib` and `/sur`. See
   [below](#sys) for more information on `/sys`.
-- `/ted` contains [threads](/reference/arvo/threads/overview). These may be run
+- `/ted` contains [threads](/userspace/threads/overview). These may be run
   from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run
   with `-foo`. Threads on desks other than the `%base` desk can be run with
   `-desk!thread` like `-garden!foo`.
@@ -51,11 +51,11 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
 - `hoon.hoon` contains the Hoon compiler and the [Hoon standard
   library](/reference/hoon/stdlib). The Hoon
   compiler is self-hosted. This is the first file loaded by the Nock virtual
-  machine, [Vere](/reference/runtime/runtime), in order for it to learn how to
+  machine, [Vere](/system/runtime/runtime), in order for it to learn how to
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
   currently at 140. One may see this from dojo by inspecting the subject with
   `.` and noting that `%140` is the final entry of the subject.
-- `arvo.hoon` contains the [Arvo kernel](/reference/arvo/overview) and
+- `arvo.hoon` contains the [Arvo kernel](/system/kernel/overview) and
   additional structures and functions directly relevant to the kernel. This is
   Urbit's "traffic cop", and as such contains the structure definitions for
   call stacks such as `duct`s and `bone`s. Once Vere understands Hoon, it loads
@@ -65,12 +65,12 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
   vanes, as well as a few functions. In particular, this includes the
   definitions of the `task`s and `gift`s utilized by each vane, each of which
   are documented in their respective documentation. `lull.hoon` is loaded by the
-  kernel during the [larval stage](/reference/arvo/overview#larval-stage-core) in
+  kernel during the [larval stage](/system/kernel/overview#larval-stage-core) in
   order to prepare to create the vanes. `arvo.hoon` is the subject of
   `lull.hoon`.
 - `zuse.hoon` is the Arvo standard library. It consists primarily of functions
   shared by the kernel and vanes, such as the ones related to
-  [cryptography](/reference/arvo/reference/cryptography). `zuse.hoon` is loaded by
+  [cryptography](/language/hoon/reference/cryptography). `zuse.hoon` is loaded by
   the larval kernel following `lull.hoon`. `lull.hoon` is the subject of
   `zuse.hoon`. Then `zuse` is the subject of the vanes. Some of the functions in
   Zuse are documented [here](/reference/hoon/zuse).
@@ -90,13 +90,13 @@ desks and their Gall agents:
   automatically started when it's installed. This file may be omitted if there
   are no agents to start.
 - `desk.docket-0` - This file configures the tile,
-  [glob](/reference/additional/dist/glob) and other metadata for apps with a
+  [glob](/userspace/apps/reference/dist/glob) and other metadata for apps with a
   front-end. This file may be omitted if the desk does not have a tile or
   front-end to be installed. This file is versioned so the number appended may
   change in the future as changes to its specification are made. See the [Docket
-  File](/reference/additional/dist/docket) documentation for more details.
+  File](/userspace/apps/reference/dist/docket) documentation for more details.
 - `desk.ship` - This specifies the original publisher of the desk and is useful
   if a desk is being republished. It is optional and may be omitted.
 
 For more details of creating and distributing desks, see the [Software
-Distribution](/guides/additional/software-distribution) documentation.
+Distribution](/userspace/apps/guides/software-distribution) documentation.

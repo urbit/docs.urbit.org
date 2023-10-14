@@ -41,7 +41,7 @@ desc = "Ford rune. Import file, convert to mark, and wrap a face."
 Fas (`/`) runes are not technically hoon runes, but instead are instructions to
 Arvo's build system. In the past, the build system was its own vane called
 Ford. Ford has since been merged into the filesystem vane
-[Clay](/reference/arvo/clay/clay), but these are still referred to as "Ford
+[Clay](/system/kernel/clay/clay), but these are still referred to as "Ford
 runes".
 
 Ford runes are used at the top of a hoon file, and they typically specify
@@ -232,7 +232,7 @@ to a directory in the same desk as this file, containing `%hoon` files.
 
 Each hoon file in the specified directory will be built and evalutated. The
 result of evaluating each file will be added to a
-[`++map`](/reference/hoon/stdlib/2o#map) and pinned with the specified face
+[`++map`](/language/hoon/reference/stdlib/2o#map) and pinned with the specified face
 (`some-face`). The keys of the map will be the name of each file, and the values
 of the map will be the result of evaluating each file and casting its result to
 the type specified (`some-type`).

@@ -4,7 +4,7 @@ weight = 1
 +++
 
 Khan is the "control plane" and thread-runner vane. Its main purpose is to allow
-external applications to run [threads](/reference/arvo/threads/overview) via a
+external applications to run [threads](/userspace/threads/overview) via a
 Unix Socket and receive the result.
 
 At this stage, Khan's external interface is still experimental, and there are
@@ -12,21 +12,23 @@ not yet proper libraries for other languages that can make use of it. Therefore,
 these documents will only touch on Khan's internal interface.
 
 Khan's internal interface lets you run threads via Khan rather than having to
-poke [Spider](/reference/arvo/threads/reference) and subscribe for the result. This interface is simpler and more
-ergonomic than Spider's, so is usually preferable.
+poke [Spider](/userspace/threads/reference/api) and subscribe for the result.
+This interface is simpler and more ergonomic than Spider's, so is usually
+preferable.
 
-There are currently three `task`s to run a thread: `%fard`, `%fyrd`, and `%lard`.
-Only `%fard` is currently documented in
-the [API Reference](/reference/arvo/khan/tasks) section, and a practical example
-is given in the [Example](/reference/arvo/khan/example) section.
+There are two `task`s for running threads from userspace:
+[`%fard`](/system/kernel/khan/reference/tasks#fard) and
+[`%lard`](/system/kernel/khan/reference/tasks#lard). The former is for running a thread
+from file and the latter is for running an "in-line" thread, where you pass
+Khan the thread directly.
 
 ## Sections
 
-[Data Types](/reference/arvo/khan/types) - Reference documentation of the data
+[Data Types](/system/kernel/khan/reference/types) - Reference documentation of the data
 types used by Khan.
 
-[API Reference](/reference/arvo/khan/tasks) - The `task`s Khan takes and the
+[API Reference](/system/kernel/khan/reference/tasks) - The `task`s Khan takes and the
 `gift`s it returns.
 
-[Example](/reference/arvo/khan/example) - An example of using Khan to run a
+[Example](/system/kernel/khan/examples/example) - An example of using Khan to run a
 thread from a Gall agent and receive its result.

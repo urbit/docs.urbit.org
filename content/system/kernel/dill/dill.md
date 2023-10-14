@@ -6,8 +6,8 @@ weight = 1
 The terminal driver vane.
 
 Keyboard events and the like from Unix are received by Dill as
-[%belt](/reference/arvo/dill/tasks#belt) `task`s, and Dill sends `%blit`
-`gift`s containing [$blit](/reference/arvo/dill/data-types#blit)s back to the
+[%belt](/system/kernel/dill/reference/tasks#belt) `task`s, and Dill sends `%blit`
+`gift`s containing [$blit](/system/kernel/dill/reference/data-types#blit)s back to the
 runtime to be displayed in the Unix terminal. The manner of interacting with
 Dill differs depending on whether you're in userspace or kernelspace, as we'll
 explore below.
@@ -16,7 +16,7 @@ explore below.
 
 For technical reasons, Dill performs a handful of system tasks related to
 booting a ship and some memory operations. Aside from those, other Vanes mostly
-just pass Dill [tasks](/reference/arvo/dill/tasks) to print error messages and
+just pass Dill [tasks](/system/kernel/dill/reference/tasks) to print error messages and
 the like to the terminal.
 
 ## Userspace
@@ -55,22 +55,22 @@ While `%drum` talks with Dill in `$dill-belt`s and `$dill-blit`s, it talks to
 CLI apps with `$sole-action`s and `$sole-event`s, which are defined in the
 `sole` library. For more information on the `sole` library and the related
 `shoe` library, and for information on how to build CLI apps, you can refer to
-the [CLI app tutorial](/guides/additional/cli-tutorial).
+the [CLI app tutorial](/userspace/apps/guides/cli-tutorial).
 
 To give a basic idea of how keyboard events flow through these systems and
 produce terminal output, here's a diagram showing the messages in pseudo-Hoon:
 
 ![Dill userspace diagram](https://media.urbit.org/docs/arvo/dill/dill-userspace.svg)
 
-You can use a [move trace](/reference/arvo/tutorials/move-trace) to get a
+You can use a [move trace](/system/kernel/arvo/guides/move-trace) to get a
 hands-on feel for this data flow.
 
 ## Sections
 
-[API Reference](/reference/arvo/dill/tasks) - The `task`s Dill takes and the
+[API Reference](/system/kernel/dill/reference/tasks) - The `task`s Dill takes and the
 `gift`s it returns.
 
-[Scry Reference](/reference/arvo/dill/scry) - The scry endpoints of Dill.
+[Scry Reference](/system/kernel/dill/reference/scry) - The scry endpoints of Dill.
 
-[Data Types](/reference/arvo/dill/data-types) - Reference documentation of the
+[Data Types](/system/kernel/dill/reference/data-types) - Reference documentation of the
 data types used by Dill.

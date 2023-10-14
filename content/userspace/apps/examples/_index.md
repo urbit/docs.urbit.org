@@ -1,18 +1,32 @@
 +++
-title = "Examples"
-description = "Learn by examining example applications"
-weight = 3
-insert_anchor_links = "right"
+title = "Agents"
 +++
 
-## [Building a CLI App with `%rpn`](/guides/additional/app-workbook/rpn)
 
-## [Debugging Wrapper with `%dbug`](/guides/additional/app-workbook/dbug)
+## [Arvo](/reference/arvo){% class="!mb-0 !mt-12" %}
 
-## [Hosting a Website with `%feature`](/guides/additional/app-workbook/feature)
+Technical documentation on Arvo, Urbit's OS, and its components{% class="!mt-2" %}
 
-## [Serving a JS Game with `%flap`](/guides/additional/app-workbook/flap)
+## [Hoon](/reference/hoon){% class="!mb-0 !mt-12" %}
 
-## [Ship Monitoring with `%ahoy`](/guides/additional/app-workbook/ahoy)
+Detailed documentation on the Hoon programming language and its nuances{% class="!mt-2" %}
 
-## [Styled Text with `%track7`](/guides/additional/app-workbook/track7)
+## [Nock](/reference/nock){% class="!mb-0 !mt-12" %}
+
+An explanation, example, and implementations of Nock, Urbit's low-level programming language{% class="!mt-2" %}
+
+## [Vere](/reference/runtime){% class="!mb-0 !mt-12" %}
+
+Details on Urbit’s runtime, Vere{% class="!mt-2" %}
+
+## [Azimuth](/reference/azimuth){% class="!mb-0 !mt-12" %}
+
+Details on Urbit’s general-purpose public-key infrastructure (PKI), Azimuth{% class="!mt-2" %}
+
+## [Glossary](/reference/glossary){% class="!mb-0 !mt-12" %}
+
+Urbit-specific development nomenclature{% class="!mt-2" %}
+
+## [Additional References](/reference/additional){% class="!mb-0 !mt-12" %}
+
+Miscellaneous references{% class="!mt-2" %}

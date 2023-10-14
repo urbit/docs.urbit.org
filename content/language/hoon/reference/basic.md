@@ -15,7 +15,7 @@ desired type then the program compiles; otherwise the compile fails with a
 `nest-fail` crash.
 
 (For an introduction on how to use Hoon's type system, see
-[Chapter 4](/guides/core/hoon-school/E-types) of the Hoon tutorial.)
+[Chapter 4](/courses/hoon-school/E-types) of the Hoon tutorial.)
 
 In this document we discuss the recursive data structure Hoon uses for type
 inference.  Because the Hoon compiler is written in Hoon this structure is
@@ -30,7 +30,7 @@ including both faces and arm names.  (See Chapter 1 of the Hoon tutorial for an
 introduction to name resolution.)
 
 As noted, this is a simplified version of `type`.  We undo and
-explain the simplifications in the [advanced types](/reference/hoon/advanced)
+explain the simplifications in the [advanced types](/language/hoon/reference/advanced)
 section.
 
 ```hoon

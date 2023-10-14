@@ -42,7 +42,7 @@ When you pass arguments to a wet gate, their types are preserved and type analys
 
 Consider a function like `++turn` which transforms each element of a list. To use `++turn`, we install a list and a transformation function in a generic core.  The type of the list we produce depends on the type of the list and the type of the transformation function.  But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
-A wet gate is defined by a [`|*` bartar](/reference/hoon/rune/bar#-bartar) rune rather than a `|=` bartis.  More generally, cores that contain wet arms **must** be defined using [`|@` barpat](/reference/hoon/rune/bar#-barpat) instead of `|%` barcen (`|*` expands to a `|@` core with `$` buc arm).  There is also [`|$` barbuc](/reference/hoon/rune/bar#-barbuc) which defines the wet gate mold builder (remember, we like gates that build gates).
+A wet gate is defined by a [`|*` bartar](/language/hoon/reference/rune/bar#-bartar) rune rather than a `|=` bartis.  More generally, cores that contain wet arms **must** be defined using [`|@` barpat](/language/hoon/reference/rune/bar#-barpat) instead of `|%` barcen (`|*` expands to a `|@` core with `$` buc arm).  There is also [`|$` barbuc](/language/hoon/reference/rune/bar#-barbuc) which defines the wet gate mold builder (remember, we like gates that build gates).
 
 In a nutshell, compare these two gates:
 
@@ -102,7 +102,7 @@ The meat of this gate is concerned with correctly implementing the mathematical 
 
 Wet gates and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing `++map`s or `++set`s.  For instance, almost all of the arms in `++by` and `++in`, as well as most `++list` tools, are wet gates.
 
-Let's take a look at a particular wet gate from the Hoon standard library, [`++need`](/reference/hoon/stdlib/2a#need).  `++need` works with a `unit` to produce the value of a successful `unit` call, or crash on `~`.  (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
+Let's take a look at a particular wet gate from the Hoon standard library, [`++need`](/language/hoon/reference/stdlib/2a#need).  `++need` works with a `unit` to produce the value of a successful `unit` call, or crash on `~`.  (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
 ```hoon {% copy=true %}
 ++  need                                                ::  demand
@@ -123,7 +123,7 @@ This declares a wet gate which accepts a `unit`.
 ?~  a  ~>(%mean.'need' !!)
 ```
 
-If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/reference/hoon/rune/zap#-zapzap), but use [`~>` siggar](/reference/hoon/rune/sig#-siggar) to hint to the runtime interpreter how to handle the crash.
+If `a` is empty, `~`, then the `unit` cannot be unwrapped.  Crash with [`!!` zapzap](/language/hoon/reference/rune/zap#-zapzap), but use [`~>` siggar](/language/hoon/reference/rune/sig#-siggar) to hint to the runtime interpreter how to handle the crash.
 
 ```hoon
 u.a
@@ -172,7 +172,7 @@ nest-fail
 
 ### Drying Out a Gate
 
-Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](/reference/hoon/stdlib/2b#bake):
+Some functional tools like `++cury` don't work with wet gates.  It is, however, possible to “dry out“ a wet gate using [`++bake`](/language/hoon/reference/stdlib/2b#bake):
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
@@ -246,7 +246,7 @@ ford: %ride failed to compute type:
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune converts a core to a `%zinc` covariant core.
+The [`^&` ketpam](/language/hoon/reference/rune/ket#-ketpam) rune converts a core to a `%zinc` covariant core.
 
 ### `%iron` Contravariance
 
@@ -260,7 +260,7 @@ Informally, a function fits an interface if the function has a more specific res
 
 For instance, the archetypal Gall agents in `/sys/lull.hoon` are composed using iron gates since they will be used as examples for building actual agent cores.  The `++rs` and sister gates in `/sys/hoon.hoon` are built using iron doors with specified rounding behavior so when you actually use the core (like `++add:rs`) the core you are using has been built as an example.
 
-The [`|~` barsig](/reference/hoon/rune/bar#-barsig) rune produces an iron gate.  The [`^|` ketbar](/reference/hoon/rune/ket#-ketbar) rune converts a `%gold` invariant core to an iron core.
+The [`|~` barsig](/language/hoon/reference/rune/bar#-barsig) rune produces an iron gate.  The [`^|` ketbar](/language/hoon/reference/rune/ket#-ketbar) rune converts a `%gold` invariant core to an iron core.
 
 ### `%lead` Bivariance
 
@@ -276,7 +276,7 @@ Informally, a more specific generator can be used as a less specific generator.
 
 For instance, several archetypal cores in `/sys/lull.hoon` which define operational data structures for Arvo are composed using lead gates.
 
-The [`|?` barwut](/reference/hoon/rune/bar#-barwut) rune produces a lead trap.  The [`^?` ketwut](/reference/hoon/rune/ket#-ketwut) rune converts any core to a `%lead` bivariant core.
+The [`|?` barwut](/language/hoon/reference/rune/bar#-barwut) rune produces a lead trap.  The [`^?` ketwut](/language/hoon/reference/rune/ket#-ketwut) rune converts any core to a `%lead` bivariant core.
 
 ### `%gold` Invariance
 
@@ -355,7 +355,7 @@ This generator is rather simple except for the first line.  The sample is define
 50
 ```
 
-But we still haven't fully explained the first line of the code.  What does `_^|(|=(@ 15))` mean? The inside portion is clear enough:  `|=(@ 15)` produces a normal (i.e., `%gold`) gate that takes an atom and returns `15`.  The [`^|` ketbar](/reference/hoon/rune/ket#-ketbar) rune is used to turn `%gold` gates to `%iron`.  (Reverse alchemy!)  And the `_` character turns that `%iron` gate value into a structure, i.e. a type.  So the whole subexpression means, roughly:  “the same type as an iron gate whose sample is an atom, `@`, and whose product is another atom, `@`”.  The context isn't checked at all.  This is good, because that allows us to accept gates defined and produced in drastically different environments.  Let's try passing a gate with a different context:
+But we still haven't fully explained the first line of the code.  What does `_^|(|=(@ 15))` mean? The inside portion is clear enough:  `|=(@ 15)` produces a normal (i.e., `%gold`) gate that takes an atom and returns `15`.  The [`^|` ketbar](/language/hoon/reference/rune/ket#-ketbar) rune is used to turn `%gold` gates to `%iron`.  (Reverse alchemy!)  And the `_` character turns that `%iron` gate value into a structure, i.e. a type.  So the whole subexpression means, roughly:  “the same type as an iron gate whose sample is an atom, `@`, and whose product is another atom, `@`”.  The context isn't checked at all.  This is good, because that allows us to accept gates defined and produced in drastically different environments.  Let's try passing a gate with a different context:
 
 ```hoon
 > +gatepass =>([22 33] |=(a=@ +(a)))
@@ -373,7 +373,7 @@ There's a simpler way to define an iron sample. Revise the first line of `/gen/g
 (add b 20)
 ```
 
-If you test it, you'll find that the generator behaves the same as it did before the edits.  The [`$-` buchep](/reference/hoon/rune/buc#--buchep) rune is used to create an `%iron` gate structure, i.e., an `%iron` gate type.  The first expression defines the desired sample type, and the second subexpression defines the gate's desired output type.
+If you test it, you'll find that the generator behaves the same as it did before the edits.  The [`$-` buchep](/language/hoon/reference/rune/buc#--buchep) rune is used to create an `%iron` gate structure, i.e., an `%iron` gate type.  The first expression defines the desired sample type, and the second subexpression defines the gate's desired output type.
 
 The sample type of an `%iron` gate is contravariant.  This means that, when doing a cast with some `%iron` gate, the desired gate must have either the same sample type or a superset.
 
@@ -467,7 +467,7 @@ If you really want to look at the sample you can check `+6` of `iron-gate`:
 
 As with `%iron` cores, the context of `%zinc` cores is opaque—they cannot be written-to or read-from.  The sample of a `%zinc` core is read-only.  That means, among other things, that `%zinc` cores cannot be used for function calls.  Function calls in Hoon involve a change to the sample (the default sample is replaced with the argument value), which is disallowed as type-unsafe for `%zinc` cores.
 
-We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/reference/hoon/rune/ket#-ketpam) rune is used to convert `%gold` cores to `%zinc`:
+We can illustrate the casting properties of `%zinc` cores with a few examples.  The [`^&` ketpam](/language/hoon/reference/rune/ket#-ketpam) rune is used to convert `%gold` cores to `%zinc`:
 
 ```hoon
 > ^+(^&(|=(^ 15)) |=(^ 16))

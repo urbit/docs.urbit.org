@@ -7,19 +7,19 @@ insert_anchor_links = "right"
 
 This is where you look for answers to specific technical questions.
 
-## [Hoon Overview](/reference/hoon/overview)
+## [Hoon Overview](/language/hoon/overview)
 
 The design decisions underlying Hoon.
 
-## [Syntax Cheat Sheet](/reference/hoon/cheat-sheet)
+## [Syntax Cheat Sheet](/language/hoon/reference/cheat-sheet)
 
 A quick reference guide to Hoon's syntax.
 
-## [Irregular Forms](/reference/hoon/irregular)
+## [Irregular Forms](/language/hoon/reference/irregular)
 
 Irregular syntax.
 
-## [Troubleshooting](/reference/hoon/hoon-errors)
+## [Troubleshooting](/language/hoon/reference/hoon-errors)
 
 Strategies for debugging and understanding what your Hoon code is doing.
 
@@ -27,15 +27,15 @@ Strategies for debugging and understanding what your Hoon code is doing.
 
 Best practices for writing Hoon code.
 
-## [Basic Types](/reference/hoon/basic)
+## [Basic Types](/language/hoon/reference/basic)
 
 A simplified explanation of Hoon's type system.
 
-## [Advanced Types](/reference/hoon/advanced)
+## [Advanced Types](/language/hoon/reference/advanced)
 
 The full story on Hoon's type system.
 
-## [Auras](/reference/hoon/auras)
+## [Auras](/language/hoon/reference/auras)
 
 A list of aura types for atoms.
 

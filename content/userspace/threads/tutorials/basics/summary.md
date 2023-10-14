@@ -10,7 +10,7 @@ Now here's a quick recap of the main points covered:
 ## Spider
 
 - is the gall agent that manages threads.
-- Details of interacting with threads via spider can be seen [here](/reference/arvo/threads/reference).
+- Details of interacting with threads via spider can be seen [here](/userspace/threads/reference/api).
 
 ## Threads
 

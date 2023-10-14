@@ -42,7 +42,7 @@ sends or receives will be encapsulated in a vase. A vase is made with the
 `!>(some-data)`, and unpacked with the
 [zapgal](/reference/hoon/rune/zap#-zapgal) (`!<`) rune like
 `!<(type-to-extract vase)`. Have a read through the [`vase` section of the type
-reference for details](/guides/core/app-school/types#vase).
+reference for details](/courses/app-school/types#vase).
 
 We'll look at the three arms described here in a little more detail, but first
 we need to touch on the state itself.
@@ -155,7 +155,7 @@ exactly once, when the agent is first installed. Its purpose is to initialize
 the agent.
 
 `(quip a b)` is equivalent to `[(list a) b]`, see the [types
-reference](/guides/core/app-school/types#quip) for details.
+reference](/courses/app-school/types#quip) for details.
 
 A `card` is a message to another agent or vane. We'll discuss `card`s in detail
 later.
@@ -490,9 +490,9 @@ type:
 - Run through the [example](#example) yourself on a fake ship if you've not done
   so already.
 - Have a look at the [`vase` entry in the type
-  reference](/guides/core/app-school/types#vase).
+  reference](/courses/app-school/types#vase).
 - Have a look at the [`quip` entry in the type
-  reference](/guides/core/app-school/types#quip).
+  reference](/courses/app-school/types#quip).
 - Try modifying the second version of the agent in the [example](#example)
   section, adding a third state version. Include functions in the wuthep
   expression in `on-load` to convert old versions to your new state type.

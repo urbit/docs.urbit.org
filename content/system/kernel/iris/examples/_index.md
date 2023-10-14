@@ -13,7 +13,7 @@ A brief overbview of Iris, Urbit's HTTP client vane.
 
 The `task`s Iris takes and the `gift`s it returns.
 
-## [Data Types](/reference/arvo/iris/data-types)
+## [Data Types](/system/kernel/iris/reference/data-types)
 
 Reference documentation of the data types used by Iris.
 

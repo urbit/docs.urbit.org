@@ -4,7 +4,7 @@ weight = 5
 +++
 
 This document is a prologue to App School I. If you've worked though [Hoon
-School](/guides/core/hoon-school/A-intro) (or have otherwise learned the basics of
+School](/courses/hoon-school/A-intro) (or have otherwise learned the basics of
 Hoon), you'll likely be familiar with generators, but not with all the other
 parts of the Arvo operating system or the way it fits together. We'll go over
 the basic details here so you're better oriented to learn Gall agent
@@ -82,7 +82,7 @@ and its nine vanes. Userspace is primarily Gall agents, generators, threads,
 front-ends, and all of their related files in Clay. The distinction looks
 something like this:
 
-[![kernelspace/userspace diagram](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)
+[![kernelspace/userspace diagram](https://media.urbit.org/courses/app-school/kernelspace-userspace-diagram-v1.svg)](https://media.urbit.org/courses/app-school/kernelspace-userspace-diagram-v1.svg)
 
 By and large, Gall _is_ the userspace vane - the majority of userspace is either
 Gall agents, or things used by Gall agents. Apart from the agents themselves,
@@ -280,7 +280,7 @@ There are also two basic things to interact with: vanes, and other agents.
 Here's a simplified diagram of the ways an agent can interact with other parts
 of the system:
 
-![api diagram](https://media.urbit.org/guides/core/app-school/api-diagram.svg)
+![api diagram](https://media.urbit.org/courses/app-school/api-diagram.svg)
 
 Things like `on-poke` are arms of the agent core. Don't worry about their
 meaning for now, we'll discuss them in detail later in the guide.

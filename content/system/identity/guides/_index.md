@@ -19,12 +19,12 @@ referred to as a "master ticket".
 Diagrams and explanations of how data flows between Bridge and the various
 components inside Urbit involved with layer 2.
 
-### [Azimuth.eth](/reference/azimuth/azimuth-eth)
+### [Azimuth.eth](/system/identity/reference/azimuth-eth)
 
 A description of the `azimuth.eth` smart contract, which is the data store for
 Azimuth.
 
-### [Ecliptic.eth](/reference/azimuth/ecliptic)
+### [Ecliptic.eth](/system/identity/reference/ecliptic)
 
 A description of the `ecliptic.eth` smart contract, which is the business logic
 for `azimuth.eth`. This includes an overview of all function calls available.

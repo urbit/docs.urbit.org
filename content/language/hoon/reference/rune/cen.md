@@ -386,9 +386,9 @@ value) for the gate.
 #### Discussion
 
 `%-` is used to call a function; `a` is the function
-([`gate`](/reference/hoon/rune/bar#-bartis), `q` the argument. `%-` is a
+([`gate`](/language/hoon/reference/rune/bar#-bartis), `q` the argument. `%-` is a
 special case of [`%~` ("censig")](#-censig), and a gate is a special case of a
-[door](/reference/hoon/rune/bar#_-barcab).
+[door](/language/hoon/reference/rune/bar#_-barcab).
 
 #### Examples
 
@@ -583,7 +583,7 @@ Note also that `p` is a wing and can therefore be `.`, as in `~(. door
 sample)`. This little idiom lets you load your sample into the door once
 instead of over and over.
 
-See also [`|_`](/reference/hoon/rune/bar#_-barcab).
+See also [`|_`](/language/hoon/reference/rune/bar#_-barcab).
 
 #### Examples
 

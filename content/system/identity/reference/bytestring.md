@@ -1,11 +1,11 @@
 +++
-title = "L2: Transaction Format"
+title = "Transaction Format"
 weight = 8
 +++
 
 This document gives the bytestring format for layer 2 transactions and batches.
 
-[Recall](/reference/azimuth/l2/layer2) that a layer 2 transaction is a compact
+[Recall](/system/identity/concepts/layer2) that a layer 2 transaction is a compact
 representation of an Azimuth action (format given below), along with a 65-byte
 ECDSA signature. A `batch` is an atom that is a concatenation of one or more
 layer 2 transactions and associated signatures. This atom is what is posted on

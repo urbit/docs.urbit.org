@@ -29,31 +29,31 @@ mounting to Unix, changing directory, merging, and listing files.
 
 ## Developer Documentation
 
-[Architecture](/reference/arvo/clay/architecture)
+[Architecture](/system/kernel/clay/guides/architecture)
 
 A conceptual overview of how Clay was designed.
 
-[Using Clay](/reference/arvo/clay/using)
+[Using Clay](/system/kernel/clay/guides/using)
 
 A quick overview of how the most common tasks involving Clay are performed:
 reading and subscribing, syncing to Unix, and merging.
 
-[Data Types](/reference/arvo/clay/data-types)
+[Data Types](/system/kernel/clay/reference/data-types)
 
 Explanations of the many data types found throughout Clay.
 
-[Scry Reference](/reference/arvo/clay/scry)
+[Scry Reference](/system/kernel/clay/reference/scry)
 
 Reference for Clay's various scry endpoints.
 
-[API Reference](/reference/arvo/clay/tasks)
+[API Reference](/system/kernel/clay/reference/tasks)
 
 Details of the various `task`s you can use to interact with Clay.
 
-[Examples](/reference/arvo/clay/examples)
+[Examples](/system/kernel/clay/examples/examples)
 
 Example usage of the various Clay `task`s.
 
-[Marks](/reference/arvo/clay/marks/marks)
+[Marks](/system/kernel/clay/guides/marks/marks)
 
 Details of `mark`s as well as a guide to writing them and their usage.

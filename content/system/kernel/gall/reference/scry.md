@@ -161,7 +161,7 @@ A scry with a `%t` care, an agent in `q.beak` and a path of `//some/path`
 will give you the list of remote scry subpaths bound under the given
 path.
 
-See the [remote scry guide](/guides/additional/remote-scry) for more
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
 details.
 
 #### Produces
@@ -206,7 +206,7 @@ A `?`
 A scry with a `%w` care and an agent in `q.beak` will get the latest revision
 number of the bound remote scry path given in the `spur`.
 
-See the [remote scry guide](/guides/additional/remote-scry) for more
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
 details.
 
 #### Produces
@@ -226,14 +226,13 @@ format is therefore:
 [%gx /[ship]/[agent]/[file revision]//[file path]
 ```
 
-See the [remote scry guide](/guides/additional/remote-scry) for more
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
 details.
 
 #### Produces
 
-The type returned is an `(each page @uvI)`. If the file has been
-tombstoned, it'll be the `@uvI` hash of the file. Otherwise, it will be
-the data as a `page` (a pair of `mark` and `noun`).
+The type returned is the raw `noun` from the `page`. If the file has
+been tombstoned or does not exist, the scry will fail.
 
 ---
 
@@ -242,7 +241,7 @@ the data as a `page` (a pair of `mark` and `noun`).
 A scry with a `%z` care and an agent in `q.beak` will get the hash identifier
 of the value bound at the remote scry path given in the `spur`.
 
-See the [remote scry guide](/guides/additional/remote-scry) for more
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
 details.
 
 #### Produces

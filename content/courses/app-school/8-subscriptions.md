@@ -906,6 +906,6 @@ was rejected because `~nut` is no longer in `friends`:
 - Try modifying `%todo-watcher` to recording the data it receives in its state,
   rather than simply printing it to the terminal.
 - If you'd like, try going back to [lesson
-  6](/guides/core/app-school/6-pokes) (on pokes) and modifying the agents
+  6](/courses/app-school/6-pokes) (on pokes) and modifying the agents
   with an appropriate permission system, and also try running them on separate
   ships.

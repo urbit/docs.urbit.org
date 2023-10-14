@@ -92,9 +92,9 @@ The JSON the API produces looks like:
 ```
 
 Since it's an object in an object, we decode them using nested
-[`ot:dejs-soft:format`](/reference/hoon/zuse/2d_7#otdejs-softformat)
+[`ot:dejs-soft:format`](/language/hoon/reference/zuse/2d_7#otdejs-softformat)
 functions, and the price itself using
-[`no:dejs-soft:format`](/reference/hoon/zuse/2d_7#nodejs-softformat) to
+[`no:dejs-soft:format`](/language/hoon/reference/zuse/2d_7#nodejs-softformat) to
 produce a `(unit @ta)`:
 
 ```hoon
@@ -110,4 +110,4 @@ Finally, we check if the `unit` is null and either print an error or print the p
 ```
 
 For more information about working with `json`, see the [JSON
-Guide](/guides/additional/json-guide).
+Guide](/language/hoon/guides/json-guide).

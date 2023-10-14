@@ -131,4 +131,4 @@ concrete suggestions on security practices.
 
 One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is
 used for making and signing Bridge transactions from an offline computer. A
-guide to using `claz` is available [here](/reference/azimuth/advanced-azimuth-tools).
+guide to using `claz` is available [here](/system/identity/guides/advanced-azimuth-tools).

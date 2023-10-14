@@ -283,7 +283,7 @@ contains some arm `arm`, and you want to pass some argument (i.e., input value
 Because gates are also doors, you can call them the same way. To call the gate
 `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is
 an irregular form for `%~($ foo baz)`,
-[%~](/reference/hoon/rune/cen#-censig).
+[%~](/language/hoon/reference/rune/cen#-censig).
 
 #### Examples
 
@@ -578,7 +578,7 @@ A more interesting trap:
 Note that we can use `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
 ---
 
@@ -724,7 +724,7 @@ The `|-` rune can be thought of as a 'recursion point' or a 'loop starting
 point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named
 `$`, we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
 #### Examples
 
@@ -804,7 +804,7 @@ the output value of the gate.
 
 #### Discussion
 
-See [this discussion of core variance models](/reference/hoon/advanced)
+See [this discussion of core variance models](/language/hoon/reference/advanced)
 
 #### Examples
 
@@ -882,7 +882,7 @@ you know what you're doing.
 Just as with a [gate](#-bartis), we can recurse back into a wet gate
 with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
 `|*` can be used to make wet gates that produce structures, but this usage is
 discouraged in favor of `|$`.
@@ -970,7 +970,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/reference/hoon/rune/cen#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
 #### Examples
 
@@ -1050,7 +1050,7 @@ above).
 
 The `|@` rune is just like the `|%` rune except that instead of producing a
 'dry' core, it produces a 'wet' one. This allows for type polymorphism of its
-arms, using 'genericity'. See [Advanced types](/reference/hoon/advanced).
+arms, using 'genericity'. See [Advanced types](/language/hoon/reference/advanced).
 
 ---
 
@@ -1106,7 +1106,7 @@ A `|?` expression produces a lead trap (i.e., a lead core with one arm named
 
 #### Discussion
 
-See this [discussion of the core variance model](/reference/hoon/advanced).
+See this [discussion of the core variance model](/language/hoon/reference/advanced).
 
 #### Examples
 

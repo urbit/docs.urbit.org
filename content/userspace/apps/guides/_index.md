@@ -19,7 +19,7 @@ An explanation, example, and implementations of Nock, Urbit's low-level programm
 
 Details on Urbit’s runtime, Vere{% class="!mt-2" %}
 
-## [Azimuth]/system/identity){% class="!mb-0 !mt-12" %}
+## [Azimuth](/system/identity){% class="!mb-0 !mt-12" %}
 
 Details on Urbit’s general-purpose public-key infrastructure (PKI), Azimuth{% class="!mt-2" %}
 

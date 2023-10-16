@@ -108,7 +108,7 @@ cryptographic functions implemented in Hoon are hinted to the interpreter,
 causing it to utilize the [jet system](/system/runtime/guides/jetting) to run standard vetted cryptographic
 libraries.
 
-[Azimuth]/system/identity/) is an Ethereum-based public key
+[Azimuth](/system/identity/) is an Ethereum-based public key
 infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public
 keys for planets, stars, and galaxies from this store, which are then stored in
 Jael and utilized by Ames for end-to-end encrypted communication.

@@ -5,16 +5,16 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-### [Azimuth]/system/identity/azimuth)
+### [Azimuth](/system/identity/azimuth)
 
 An overview of the Ethereum-based public key infrastructure utilized by Urbit.
 
-### [Urbit HD Wallet]/system/identity/hd-wallet)
+### [Urbit HD Wallet](/system/identity/hd-wallet)
 
 Azimuth has its own optional hierarchical deterministic wallet system, often
 referred to as a "master ticket".
 
-### [Data Flow]/system/identity/flow)
+### [Data Flow](/system/identity/flow)
 
 Diagrams and explanations of how data flows between Bridge and the various
 components inside Urbit involved with layer 2.
@@ -34,7 +34,7 @@ for `azimuth.eth`. This includes an overview of all function calls available.
 Expert-level tooling for generating, signing, and sending layer 1 Azimuth-related
 transactions from within Urbit itself.
 
-### [Life and Rift]/system/identity/azimuth)
+### [Life and Rift](/system/identity/azimuth)
 
 An explanation of how Azimuth indexes networking keys and breaches to keep track
 of the most recent set of networking keys necessary to communicate with a ship.

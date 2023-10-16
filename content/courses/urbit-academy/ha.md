@@ -19,8 +19,8 @@ explain subject-oriented programming.  We omit some of the written Hoon Academy
 content for time, but you should be well-equipped to understand the optional
 lessons.
 
-The next cohort will begin the week of March 20, 2023.  The cohort after that is
-scheduled for the end of May 2023.
+Hoon Academy cohorts are offered regularly throughout the year.  The next cohort
+will begin after [Assembly](https://assembly.urbit.org) in early November 2023.
 
 - [Complete this form](https://forms.gle/kgiPckuHaVtJng9r5) to get on our
   mailing list about the next opportunity.

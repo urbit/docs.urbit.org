@@ -27,7 +27,7 @@ It's not too far off to think of an agent as simply a database with
 developer-defined logic. But an agent is significantly less constrained than a
 database. Databases are usually tightly constrained in one or more ways because
 they need to provide certain guarantees (like atomicity) or optimizations (like
-indexes). Arvo is a [single-level store](/reference/arvo/overview#single-level-store), so atomicity comes for free. Many
+indexes). Arvo is a [single-level store](/system/kernel/arvo/overview#single-level-store), so atomicity comes for free. Many
 applications don't use databases because they need relational indices; rather,
 they use them for their guarantees around persistence. Some do need the indices,
 though, and it's not hard to imagine an agent which provides a SQL-like

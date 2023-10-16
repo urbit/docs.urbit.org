@@ -21,7 +21,7 @@ sometimes you may find structure definitions in `/lib`, for example.
   generators, etc. However, this is not the location of the standard libraries
   (see `/sys`). Libraries are imported from `/lib` with `/+`.
 - `/mar` contains [mark](/system/kernel/clay/guides/marks/marks) definitions.
-- `/sur` contains shared [structure](/reference/hoon/rune/) definitions.
+- `/sur` contains shared [structure](/language/hoon/reference/rune/) definitions.
   Whenever you expect structures to be used by code across multiple files, it is
   recommended to place their shared structures in `/sur`. Structures are
   imported from `/sur` with `/-`.
@@ -49,13 +49,13 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
 -> `lull.hoon` -> `zuse.hoon`. We give a brief description of each of them.
 
 - `hoon.hoon` contains the Hoon compiler and the [Hoon standard
-  library](/reference/hoon/stdlib). The Hoon
+  library](/language/hoon/reference/stdlib). The Hoon
   compiler is self-hosted. This is the first file loaded by the Nock virtual
   machine, [Vere](/system/runtime/runtime), in order for it to learn how to
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
   currently at 140. One may see this from dojo by inspecting the subject with
   `.` and noting that `%140` is the final entry of the subject.
-- `arvo.hoon` contains the [Arvo kernel](/system/kernel/overview) and
+- `arvo.hoon` contains the [Arvo kernel](/system/kernel/arvo/overview) and
   additional structures and functions directly relevant to the kernel. This is
   Urbit's "traffic cop", and as such contains the structure definitions for
   call stacks such as `duct`s and `bone`s. Once Vere understands Hoon, it loads
@@ -65,7 +65,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
   vanes, as well as a few functions. In particular, this includes the
   definitions of the `task`s and `gift`s utilized by each vane, each of which
   are documented in their respective documentation. `lull.hoon` is loaded by the
-  kernel during the [larval stage](/system/kernel/overview#larval-stage-core) in
+  kernel during the [larval stage](/system/kernel/arvo/overview#larval-stage-core) in
   order to prepare to create the vanes. `arvo.hoon` is the subject of
   `lull.hoon`.
 - `zuse.hoon` is the Arvo standard library. It consists primarily of functions
@@ -73,7 +73,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
   [cryptography](/language/hoon/reference/cryptography). `zuse.hoon` is loaded by
   the larval kernel following `lull.hoon`. `lull.hoon` is the subject of
   `zuse.hoon`. Then `zuse` is the subject of the vanes. Some of the functions in
-  Zuse are documented [here](/reference/hoon/zuse).
+  Zuse are documented [here](/language/hoon/reference/zuse).
 
 ## Desks
 

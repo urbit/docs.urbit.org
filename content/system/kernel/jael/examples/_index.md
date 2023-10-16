@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/jael/jael)
+## [Overview](/system/kernel/jael/jael)
 
 An overview of Jael, Urbit's security and encryption vane.
 
@@ -21,6 +21,6 @@ The scry endpoints of Jael.
 
 Reference documentation of the various data types used by Jael.
 
-## [Examples](/reference/arvo/jael/examples)
+## [Examples](/system/kernel/arvo/jael/examples)
 
 Practical examples of using Jael's `task`s.

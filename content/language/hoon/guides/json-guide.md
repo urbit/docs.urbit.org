@@ -500,7 +500,7 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 ## Further reading
 
-[The Zuse library reference](/reference/hoon/zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
+[The Zuse library reference](/language/hoon/reference/zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
 
 [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks/marks) - Comprehensive documentation of `mark`s.
 

@@ -7,7 +7,7 @@ description = "Hoon Academy teaches the fundamentals of Hoon with a hands-on ins
 +++
 
 Periodically, the Urbit Foundation has offered synchronous cohort classes which
-cover the [Hoon Academy](/guides/core/hoon-school) curriculum.
+cover the [Hoon Academy](/courses/hoon-school) curriculum.
 
 If you prefer to learn as part of a group with a hands-on instructor, regular
 exercises and discussions, and a completion certification, then Hoon Academy
@@ -26,7 +26,7 @@ scheduled for the end of May 2023.
   mailing list about the next opportunity.
 
 Until then, feel free to work through the [Hoon Academy
-docs](/guides/core/hoon-school).
+docs](/courses/hoon-school).
 
 
 ###  What will you learn?

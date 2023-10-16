@@ -78,7 +78,7 @@ The fields are as follows:
   hash of those files automatically. Note that it's also possible to distribute
   front-end files from a separate web server. In that case, you'd use
   `glob-http` rather than `glob-ames`. The [Glob
-  documentation](/reference/additional/dist/glob) covers this alternative
+  documentation](/userspace/apps/reference/dist/glob) covers this alternative
   approach in more detail.
 
 Our files should now look like this:
@@ -214,12 +214,12 @@ from our ship. To do that, we just run the following command in the dojo:
 
 ## Resources
 
-- [App publishing/distribution documentation](/reference/additional/dist/dist) -
+- [App publishing/distribution documentation](/userspace/apps/reference/dist/dist) -
   Documentation covering third party desk composition, publishing and
   distribution.
 
-- [Glob documentation](/reference/additional/dist/glob) - Comprehensive documentation
+- [Glob documentation](/userspace/apps/reference/dist/glob) - Comprehensive documentation
   of handling front-end files.
 
-- [Desk publishing guide](/guides/additional/software-distribution) - A step-by-step guide to
+- [Desk publishing guide](/userspace/apps/guides/software-distribution) - A step-by-step guide to
   creating and publishing a desk.

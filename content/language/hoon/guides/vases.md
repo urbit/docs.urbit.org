@@ -14,16 +14,16 @@ time. This often comes up when being asked to compile and run other Hoon code.
 It's also used to store data that could be any type, but where we want to know
 the type, so we tag the value with its type to form a vase.
 
-- The [Arvo](/reference/glossary/arvo) kernel uses vases to build itself and run
-  [vanes](/reference/glossary/vane) (kernel modules).
-- The [Gall](/reference/glossary/gall) vane used to use vases to run userspace
-  [agents](/reference/glossary/agent), and probably will again in the future.
-- The Ford build system (in the [Clay](/reference/glossary/clay) vane) uses
+- The [Arvo](/TODO-GLOSSARY/arvo) kernel uses vases to build itself and run
+  [vanes](/TODO-GLOSSARY/vane) (kernel modules).
+- The [Gall](/TODO-GLOSSARY/gall) vane used to use vases to run userspace
+  [agents](/TODO-GLOSSARY/agent), and probably will again in the future.
+- The Ford build system (in the [Clay](/TODO-GLOSSARY/clay) vane) uses
   vases to build Hoon code and store typed files.
-- The [Dojo](/reference/glossary/dojo) shell uses vases to compile and run shell
+- The [Dojo](/TODO-GLOSSARY/dojo) shell uses vases to compile and run shell
   expressions and to run generators.
-- The [Spider](/reference/glossary/spider) agent uses vases to run
-  [threads](/reference/glossary/thread) (scripts written in an IO monad).
+- The [Spider](/TODO-GLOSSARY/spider) agent uses vases to run
+  [threads](/TODO-GLOSSARY/thread) (scripts written in an IO monad).
 
 ## Types and Molds
 
@@ -40,7 +40,7 @@ the type.
 The programmer can name parts of a type, including the type of the subject. Once
 part of a type has a name, Hoon code can refer to any named field within that
 type. Since the subject of any Hoon expression always has a known type at
-compile time, a reference (a [wing](/reference/glossary/wing), like
+compile time, a reference (a [wing](/TODO-GLOSSARY/wing), like
 `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0
 operation (subtree lookups) at a known constant
 [axis](/language/hoon/reference/stdlib/2q#axis) (tree slot).
@@ -81,7 +81,7 @@ axis and core arm) and constraints that limit the set of nouns described by this
 type.
 
 An `%atom` type describes a set of numbers. The `p=term` in an atom type is its
-[aura](/reference/glossary/aura), a name for a kind of value that can be stored
+[aura](/TODO-GLOSSARY/aura), a name for a kind of value that can be stored
 as an atom -- `%da` for date, `%ux` for hexadecimal number, `%t` for text, etc.
 The `q=(unit @)` is either `~`, meaning any value, or `[~ value]`, in which case
 this type has only a single member. The type `%foo` refers to the set whose only
@@ -108,11 +108,11 @@ the original hold.
 
 ### Cores
 
-All executable Hoon code is found in a [core](/reference/glossary/core). This
-core stores a map from [arm](/reference/glossary/arm) name (like an OOP getter
+All executable Hoon code is found in a [core](/TODO-GLOSSARY/core). This
+core stores a map from [arm](/TODO-GLOSSARY/arm) name (like an OOP getter
 function) to result type, along with some other information about the core. If
-the core is a [door](/reference/glossary/door) (like an OOP object) or a
-[gate](/reference/glossary/gate) (like an anonymous function), then slot 6 (the
+the core is a [door](/TODO-GLOSSARY/door) (like an OOP object) or a
+[gate](/TODO-GLOSSARY/gate) (like an anonymous function), then slot 6 (the
 head of the tail) of the core is a "sample" slot, which is overwritten with
 instance data or function argument, respectively. Whether this core expects a
 sample, and if so, what the sample's type is, is represented in the `$type` data

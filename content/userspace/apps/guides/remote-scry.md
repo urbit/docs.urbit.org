@@ -4,7 +4,7 @@ description = "Learn about scrying over the network"
 weight = 5
 +++
 
-To [scry](/reference/glossary/scry) is to perform a *read* from Urbit's
+To [scry](/TODO-GLOSSARY/scry) is to perform a *read* from Urbit's
 referentially transparent namespace. In other words, it's a function from a
 `path` to a `noun` (although in some cases, the resulting type may be more
 constrained). Previously we only supported scrying within the same ship, but
@@ -35,7 +35,7 @@ from Kernel version `[%zuse 413]`, it is possible to scry from *other* ships.
 ## Lifecycle of a scry
 
 When you think of scry, you probably think of [`.^`
-(dotket)](/reference/hoon/rune/dot#-dotket). However, since networking is
+(dotket)](/language/hoon/reference/rune/dot#-dotket). However, since networking is
 asynchronous, this is not a suitable interface for remote scry. Instead, a ship
 that wants to read from a remote part of the namespace will have to pass a
 `%keen` task to its Ames, which then cooperates with Vere to produce the

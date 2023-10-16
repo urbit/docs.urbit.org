@@ -26,8 +26,8 @@ determine the AST to which Hoon parses an expression.
 | `foo(x 1, y 2, z 3)` | [`%=`](/language/hoon/reference/rune/cen#-centis), resolve a wing with changes |
 | `[a b c]` | [`:*`](/language/hoon/reference/rune/col#-coltar) or [`$:`](/language/hoon/reference/rune/buc#-buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
 | `~[a b c]` | [`:~`](/language/hoon/reference/rune/col#-colsig), constructs null-terminated list |
-| `+(42)` | [`.+`](/reference/hoon/rune/dot#-dotlus), increments with Nock 4 |
-| `=(a b)` | [`.=`](/reference/hoon/rune/dot#-dottis), tests for equality wiht Nock 5 |
+| `+(42)` | [`.+`](/language/hoon/reference/rune/dot#-dotlus), increments with Nock 4 |
+| `=(a b)` | [`.=`](/language/hoon/reference/rune/dot#-dottis), tests for equality wiht Nock 5 |
 | `` `foo` bar`` | [`^-`](/language/hoon/reference/rune/ket#--kethep), typecasts by explicit type label |
 | `foo=bar` | [`^=`](/language/hoon/reference/rune/ket#-kettis), binds name to value |
 | `*foo` | [`^*`](/language/hoon/reference/rune/ket#-kettar), bunts (produces default mold value) |
@@ -55,7 +55,7 @@ Anything Nock can do, Hoon can do also.
 
 ### `.+` dotlus
 
-[docs](/reference/hoon/rune/dot#-dotlus) \\+
+[docs](/language/hoon/reference/rune/dot#-dotlus) \\+
 
 `[%dtls p=atom]`: increment an atom with Nock 4.
 
@@ -65,7 +65,7 @@ Irregular: `+(p)`
 
 ### `.=` dottis
 
-[docs](/reference/hoon/rune/dot#-dottis) \\=
+[docs](/language/hoon/reference/rune/dot#-dottis) \\=
 
 `[%dtts p=hoon q=hoon]`: test for equality with Nock 5.
 

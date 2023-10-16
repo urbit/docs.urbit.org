@@ -310,7 +310,7 @@ In the above code chunk, we're creating a cell.  The head of this cell is `%say`
 
 In this code above, we're going to compose two runes using `=<`, which has inverted arguments. We use this rune to keep the heaviest twig to the bottom of the code.
 
-The [`=~` tissig](/language/hoon/reference/rune/tis#-tissig) rune composes multiple expressions together; we use it here to make the code more readable.  We take `new-account` and use that as the subject for the call to `deposit`.  `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion.  The final reference is to `balance`, which is the account balance contained in the [core](/reference/glossary/core/) that we examine below.
+The [`=~` tissig](/language/hoon/reference/rune/tis#-tissig) rune composes multiple expressions together; we use it here to make the code more readable.  We take `new-account` and use that as the subject for the call to `deposit`.  `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion.  The final reference is to `balance`, which is the account balance contained in the [core](/TODO-GLOSSARY/core/) that we examine below.
 
 ```hoon {% copy=true %}
 |%
@@ -476,7 +476,7 @@ We get a different value from the same generator between runs, something that is
 
 ##  Scrying (In Brief)
 
-A _peek_ or a _scry_ is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane.  The [`.^` dotket](/reference/hoon/rune/dot#-dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that vane.  Scries are discused in detail in [App School](/courses/app-school/10-scry).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
+A _peek_ or a _scry_ is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane.  The [`.^` dotket](/language/hoon/reference/rune/dot#-dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that vane.  Scries are discused in detail in [App School](/courses/app-school/10-scry).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
 
 ### `%c` Clay
 
@@ -531,4 +531,4 @@ There are many more options with Clay than just accessing file and folder data. 
 {%bitcoin %base %landscape %webterm %garden %kids}
 ```
 
-Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](/reference/arvo).
+Other vanes have their own scry interfaces, which are well-documented in [the Arvo docs](/system/kernel/arvo).

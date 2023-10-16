@@ -19,11 +19,11 @@ A quick reference guide to Hoon's syntax.
 
 Irregular syntax.
 
-## [Troubleshooting](/language/hoon/reference/hoon-errors)
+## [Troubleshooting](/language/hoon/language/hoon-errors)
 
 Strategies for debugging and understanding what your Hoon code is doing.
 
-## [Style Guide](/reference/hoon/style)
+## [Style Guide](/language/hoon/guides/style)
 
 Best practices for writing Hoon code.
 
@@ -39,18 +39,18 @@ The full story on Hoon's type system.
 
 A list of aura types for atoms.
 
-## [Runes](/reference/hoon/rune/)
+## [Runes](/language/hoon/reference/rune/)
 
 Syntax and semantics for Hoon's rune system.
 
-## [Limbs and Wings](/reference/hoon/limbs/)
+## [Limbs and Wings](/language/hoon/reference/limbs/)
 
 How to find data inside Hoon subjects.
 
-## [Standard Library](/reference/hoon/stdlib/)
+## [Standard Library](/language/hoon/reference/stdlib/)
 
 Reference material for the Hoon standard library.
 
-## [Zuse](/reference/hoon/zuse/)
+## [Zuse](/language/hoon/reference/zuse/)
 
 Reference material for the Zuse library.

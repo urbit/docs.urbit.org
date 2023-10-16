@@ -64,7 +64,7 @@ Let's try one in the Dojo.
 15
 ```
 
-Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice that the `^-` kethep expression never does anything to modify the underlying [noun](/reference/glossary/noun/) of the second subexpression.  It's used simply to mandate a type-check on that expression.  This check occurs at compile-time (when the expression is compiled to Nock).
+Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice that the `^-` kethep expression never does anything to modify the underlying [noun](/TODO-GLOSSARY/noun/) of the second subexpression.  It's used simply to mandate a type-check on that expression.  This check occurs at compile-time (when the expression is compiled to Nock).
 
 What if the inferred type doesn't fit under the cast type?  You will see a `nest-fail` crash at compile-time:
 

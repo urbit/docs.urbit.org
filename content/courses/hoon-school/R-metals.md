@@ -28,7 +28,7 @@ Polymorphism is a programming concept that allows a piece of code to use differe
 
 ### Dry Cores
 
-A dry gate is the kind of gate that you're already familiar with:  a one-armed [core](/reference/glossary/core/) with a sample.  A wet gate is also a one-armed [core](/reference/glossary/core/) with a sample, but there is a difference in how types are handled.  With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a `nest-fail` error.
+A dry gate is the kind of gate that you're already familiar with:  a one-armed [core](/TODO-GLOSSARY/core/) with a sample.  A wet gate is also a one-armed [core](/TODO-GLOSSARY/core/) with a sample, but there is a difference in how types are handled.  With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a `nest-fail` error.
 
 A core's payload can change from its original value.  In fact, this happens in the typical function call:  the default sample is replaced with an input value.  How can we ensure that the core's arms are able to run correctly, that the payload type is still appropriate despite whatever changes it has undergone?
 

@@ -118,7 +118,7 @@ You can do even better using _interpolation_:
     ==
     ```
 
-    - We are using the `=` irregular syntax for the [`.=` dottis](/reference/hoon/rune/dot#-dottis) rune, which tests for the equality of two expressions.
+    - We are using the `=` irregular syntax for the [`.=` dottis](/language/hoon/reference/rune/dot#-dottis) rune, which tests for the equality of two expressions.
 
     ```hoon
     > +factorial 5
@@ -293,7 +293,7 @@ So legs are for data and arms are for computations.  But what _specifically_ is 
 
 An _arm_ is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can—it's just a noun like any other.  You almost always want to think of an arm simply as a way of running some Hoon code.
 
-Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/reference/glossary/arm) is a Hoon expression to be evaluated against the core subject (i.e. its parent core is its subject).
+Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/TODO-GLOSSARY/arm) is a Hoon expression to be evaluated against the core subject (i.e. its parent core is its subject).
 
 #### Arms for Gates
 
@@ -662,7 +662,7 @@ In the following code, the `|-` barhep trap serves as the point of recursion, an
 %=($ index +(index))
 ```
 
-We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
+We are using the `+` irregular syntax for the [`.+` dotlus](/language/hoon/reference/rune/dot#-dotlus) rune, which increments a value (adds one).
 
 In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion—if there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)!  Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
 
@@ -756,7 +756,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ==
     ```
 
-    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus).)
+    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/language/hoon/reference/rune/dot#-dotlus).)
 
     This version is a little more complicated to compare using a diagram because of the trap, but yields something like this:
 
@@ -861,7 +861,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
     $(n (dec n), t (mul t n))
     ```
 
-    The above code should look familiar.  We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`.  The `|-` here is used to create a new gate with one [arm](/reference/glossary/arm) `$` and immediately call it.  As before, think of `|-` as the recursion point.
+    The above code should look familiar.  We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`.  The `|-` here is used to create a new gate with one [arm](/TODO-GLOSSARY/arm) `$` and immediately call it.  As before, think of `|-` as the recursion point.
 
     We then evaluate `n` to see if it is 1. If it is, we return the value of `t`. In case that `n` is anything other than 1, we perform our recursion:
 

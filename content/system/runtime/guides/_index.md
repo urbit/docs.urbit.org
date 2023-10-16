@@ -31,7 +31,7 @@ with nouns is in `u3`.
 
 A walkthrough of each of the `u3` modules.
 
-## [How to write a jet](/reference/runtime/jetting)
+## [How to write a jet](/system/runtime/guides/jetting)
 
 A jetting guide by for new Urbit developers.
 

@@ -33,7 +33,7 @@ Note that neither `%progress` partial messages nor `%cancel` responses have been
 
 #### Example
 
-See the [Example](/reference/arvo/iris/example) document.
+See the [Example](/system/kernel/iris/examples/example) document.
 
 ## `%cancel-request`
 

@@ -43,7 +43,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.: `(tree @)
 {4 8 12 14 16}
 ```
 
-Notice that we don't have to insert the faces manually; by casting the [noun](/reference/glossary/noun/) above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
+Notice that we don't have to insert the faces manually; by casting the [noun](/TODO-GLOSSARY/noun/) above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
 
 ```
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]

@@ -24,20 +24,20 @@ blockchain, and as such is contained in a wallet whose private key you possess.
 If you are are utilizing a [master
 ticket](/system/identity/azimuth#master-ticket), this private key is derived
 from a seed, which is what you use to login to
-[Bridge](/reference/glossary/bridge). Otherwise, you have generated the key by
+[Bridge](/TODO-GLOSSARY/bridge). Otherwise, you have generated the key by
 some other process, of which there are too many to list here. Besides the
 private key which unlocks your ownership wallet address, you may have a few
 other private keys which unlock a wallet that corresponds to your ship's
-[proxies](/reference/glossary/proxies). We refer collectively to these keys as
+[proxies](/TODO-GLOSSARY/proxies). We refer collectively to these keys as
 your _Azimuth keys_.
 
-Only [planets](/reference/glossary/planet), [stars](/reference/glossary/star), and
-[galaxies](/reference/glossary/galaxy) have Azimuth keys.
-[Moons](/reference/glossary/moon) and [comets](/reference/glossary/comet) do not,
+Only [planets](/TODO-GLOSSARY/planet), [stars](/TODO-GLOSSARY/star), and
+[galaxies](/TODO-GLOSSARY/galaxy) have Azimuth keys.
+[Moons](/TODO-GLOSSARY/moon) and [comets](/TODO-GLOSSARY/comet) do not,
 as they do not exist on the Ethereum blockchain.
 
 It is important to note that no Azimuth keys are stored anywhere within your
-ship's [pier](/reference/glossary/pier) - Ethereum and Urbit ID are entirely
+ship's [pier](/TODO-GLOSSARY/pier) - Ethereum and Urbit ID are entirely
 separate entities from Urbit itself, and so you lose access to your Azimuth
 private keys there is no way to retrieve them somehow from your ship.
 
@@ -46,18 +46,18 @@ the [Azimuth documentation](/system/identity/azimuth).
 
 ### Networking keys
 
-All communications in Urbit over the [Ames](/reference/glossary/ames) network
+All communications in Urbit over the [Ames](/TODO-GLOSSARY/ames) network
 are end-to-end encrypted, and thus your ship stores its own public/private pair
 of _networking keys_ utilized for encryption and authentication. Networking keys
-for all ship types are stored within the ship's [Jael](/reference/glossary/jael)
-[vane](/reference/glossary/vane).
+for all ship types are stored within the ship's [Jael](/TODO-GLOSSARY/jael)
+[vane](/TODO-GLOSSARY/vane).
 
 For planets, stars, and galaxies, your networking public key is configured on
 the Ethereum blockchain using one of your Azimuth private keys - either the one
 associated to the wallet which owns the ship, or the one which holds the
-[management proxy](/reference/glossary/proxies). This is typically accomplished
+[management proxy](/TODO-GLOSSARY/proxies). This is typically accomplished
 with Bridge. Your networking private key (in the
-[keyfile](/reference/glossary/keyfile)) is a necessary input for the initial boot
+[keyfile](/TODO-GLOSSARY/keyfile)) is a necessary input for the initial boot
 sequence of your ship (sometime called its `%dawn`), and this is also provided
 by Bridge.
 
@@ -103,12 +103,12 @@ which are utilized by Ames. All cryptographic primitives are
 [jetted](/system/runtime/guides/jetting) in Vere with standard vetted implementations of
 cryptographic libraries.
 
-[Vere](/reference/runtime/) is Urbit's Nock runtime system, written in C. All
+[Vere](/system/runtime/) is Urbit's Nock runtime system, written in C. All
 cryptographic functions implemented in Hoon are hinted to the interpreter,
 causing it to utilize the [jet system](/system/runtime/guides/jetting) to run standard vetted cryptographic
 libraries.
 
-[Azimuth](/reference/azimuth/) is an Ethereum-based public key
+[Azimuth]/system/identity/) is an Ethereum-based public key
 infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public
 keys for planets, stars, and galaxies from this store, which are then stored in
 Jael and utilized by Ames for end-to-end encrypted communication.
@@ -118,6 +118,6 @@ Jael and utilized by Ames for end-to-end encrypted communication.
 The following pages contained more detailed information about the cryptography
 utilized by each of the system components.
 
-- [Ames](/reference/arvo/ames/cryptography)
+- [Ames](/system/kernel/ames/guides/cryptography)
 - [Zuse](/language/hoon/reference/cryptography)
 - [Vere](/system/runtime/reference/cryptography)

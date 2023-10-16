@@ -92,7 +92,7 @@ The word "function" is used in various ways, but let's start by talking about th
 
 That output value depends solely upon input value(s) is an important property of functions. This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and it's one of the key ingredients to building a secure Urbit stack.
 
-Functions are implemented in Hoon with a special kind of [core](/reference/glossary/core/) called a _gate_.  In this lesson you'll learn what a gate is and how a gate represents a function.  (We _won't_ talk about what a core is quite yet.)  Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of [core](/TODO-GLOSSARY/core/) called a _gate_.  In this lesson you'll learn what a gate is and how a gate represents a function.  (We _won't_ talk about what a core is quite yet.)  Along the way you'll build some example gates of your own.
 
 ### Building a Gate
 

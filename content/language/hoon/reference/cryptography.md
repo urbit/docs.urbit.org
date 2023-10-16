@@ -17,12 +17,12 @@ library reference.
 
 `zuse` contains several cryptosuites. The ones utilized by Ames are
 [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with
-the latter being the only one which is implemented as an [`+acru:ames`](/reference/arvo/ames/cryptography#crypto-core)-shaped core.
+the latter being the only one which is implemented as an [`+acru:ames`](/system/kernel/ames/guides/cryptography#crypto-core)-shaped core.
 
 ## `+crub:crypto` {% #crub %}
 
 `+crub:crypto` implements an
-[`+acru:ames`](/reference/arvo/ames/cryptography#crypto-core) core that implements
+[`+acru:ames`](/system/kernel/ames/guides/cryptography#crypto-core) core that implements
 [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
 It utilizes AES symmetric key encryption and decryption from [`+aes:crypto`](#aes)

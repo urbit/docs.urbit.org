@@ -13,19 +13,19 @@ just what is necessary to understand it from the perspective of userspace.
 
 ## Arvo and its Vanes
 
-[Arvo](/reference/arvo/overview) is the Urbit OS and kernel which is written in
-[Hoon](/reference/glossary/hoon), compiled to [Nock](/reference/glossary/nock), and
+[Arvo](/system/kernel/arvo/overview) is the Urbit OS and kernel which is written in
+[Hoon](/TODO-GLOSSARY/hoon), compiled to [Nock](/TODO-GLOSSARY/nock), and
 executed by the runtime environment and virtual machine
-[Vere](/reference/glossary/vere). Arvo has eight kernel modules called vanes:
-[Ames](/reference/arvo/ames/ames), [Behn](/reference/arvo/behn/behn),
-[Clay](/reference/arvo/clay/clay), [Dill](/reference/arvo/dill/dill),
-[Eyre](/reference/arvo/eyre/eyre), [Gall](/reference/arvo/gall/gall),
-[Iris](/reference/arvo/iris/iris), and [Jael](/reference/arvo/jael/jael).
+[Vere](/TODO-GLOSSARY/vere). Arvo has eight kernel modules called vanes:
+[Ames](/system/kernel/ames/ames), [Behn](/system/kernel/behn/behn),
+[Clay](/system/kernel/clay/clay), [Dill](/system/kernel/dill/dill),
+[Eyre](/system/kernel/eyre/eyre), [Gall](/system/kernel/gall/gall),
+[Iris](/system/kernel/iris/iris), and [Jael](/system/kernel/jael/jael).
 
 Arvo itself has its own small codebase in `/sys/arvo.hoon` which primarily
-implements the [transition function](/reference/arvo/overview#operating-function) `(State, Event) -> (State, Effects)` for
+implements the [transition function](/system/kernel/arvo/overview#operating-function) `(State, Event) -> (State, Effects)` for
 events injected by the runtime. It also handles inter-vane messaging, the
-[scry](/reference/arvo/concepts/scry) system, and a couple of other things. Most of
+[scry](/system/kernel/arvo/guides/scry) system, and a couple of other things. Most of
 the heavy lifting is done by the vanes themselves - Arvo itself typically just
 routes events to the relevant vanes.
 
@@ -52,17 +52,17 @@ Here's a brief summary of each of the vanes:
   and functions rather than tasks to Dill, and CLI apps are mediated by a
   sub-module of the `%hood` system agent called `%drum`. CLI apps will not be touched
   on in this guide, but there's a separate [CLI
-  Apps](/guides/additional/cli-tutorial) guide which covers them if you're
+  Apps](/userspace/apps/guides/cli-tutorial-tutorial) guide which covers them if you're
   interested.
 - **Eyre**: Webserver vane. App web front-ends are served via Eyre. It's possible to
   handle HTTP requests directly in a Gall agent (see the [Eyre
-  Guide](/reference/arvo/eyre/guide) for details), but usually you'd just serve a
-  front-end [glob](/reference/additional/dist/glob) via the `%docket` agent, so you'd
+  Guide](/system/kernel/eyre/guides/guide) for details), but usually you'd just serve a
+  front-end [glob](/userspace/apps/reference/dist/glob) via the `%docket` agent, so you'd
   not typically have your agent deal with Eyre directly.
 - **Gall**: App management vane; this is where your agent lives.
 - **Iris**: Web client vane. If you want your agent to query external web APIs and
   the like, it's done via Iris. Oftentimes web API interactions are
-  spun out into [threads](/guides/additional/threads/fundamentals) to avoid
+  spun out into [threads](/userspace/threads/tutorials/basics/fundamentals) to avoid
   complicating the Gall agent itself, so a Gall agent would not necessary deal
   with Iris directly, even if it made use of external APIs.
 - **Jael**: Key infrastructure vane. Jael keeps track of PKI data for your ship and
@@ -107,15 +107,15 @@ there's also:
   IO logic in a separate thread which is completely atomic. That way the Gall
   agent only has to deal with the two conditions of success or failure. Writing
   threads is covered in a [separate
-  guide](/guides/additional/threads/fundamentals), which you might like to
+  guide](/userspace/threads/tutorials/basics/fundamentals), which you might like to
   work through after completing App School I.
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests
   directly and dynamically produce responses, but it's also possible to have a
-  static [glob](/reference/additional/dist/glob) of HTML, CSS, Javascript, images,
+  static [glob](/userspace/apps/reference/dist/glob) of HTML, CSS, Javascript, images,
   etc, which are served to the client like an ordinary web app. Such front-end
   files are typically managed by the `%docket` agent which serves them via Eyre.
-  The [software distribution guide](/guides/additional/software-distribution) covers this in
+  The [software distribution guide](/userspace/apps/guides/software-distribution) covers this in
   detail, and you might like to work through it after completing App School I.
 
 ## The Filesystem
@@ -228,7 +228,7 @@ sys
 
 The chain of dependency for the core kernel files is `hoon.hoon` -> `arvo.hoon`
 -> `lull.hoon` -> `zuse.hoon`. For more information, see the [Filesystem
-Hierarchy](/reference/arvo/reference/filesystem) documentation.
+Hierarchy](/system/kernel/clay/guides/filesystem) documentation.
 
 In addition to the directories discussed, there's a handful of special files a
 desk might contain. All of them live in the root of the desk, and all are
@@ -259,11 +259,11 @@ There are also two basic things to interact with: vanes, and other agents.
   vanes in a read-only fashion. Scries can be performed from any context with
   the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you
   can read, and these are comprehensively documented in the Scry Reference of
-  each vane's section of the [Arvo documentation](/reference/arvo/overview). Agents
+  each vane's section of the [Arvo documentation](/system/kernel/arvo/overview). Agents
   define scry endpoints in the `+on-peek` arm of their agent core.
   Scries can only be done on the local ship; it is not yet possible to perform
   scries over the network (but this functionality is planned for the future). There is a separate [guide to
-  scries](/reference/arvo/concepts/scry) which you might like to read through for
+  scries](/system/kernel/arvo/guides/scry) which you might like to read through for
   more details.
 - Messages:
   - Vanes: Each vane has a number of `task`s it can be passed and `gift`s it can
@@ -272,7 +272,7 @@ There are also two basic things to interact with: vanes, and other agents.
     external HTTP resource for you, Clay might read or build a specified file,
     etc. The `task`s and `gift`s of each vane are comprehensively documented in the
     API Reference of each vane's section of the [Arvo
-    documentation](/reference/arvo/overview).
+    documentation](/system/kernel/arvo/overview).
   - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed,
     which means to subscribe for updates. We'll discuss these in detail later in
     the guide.
@@ -300,7 +300,7 @@ described here cover the majority of cases.
 Before proceeding with App School, you'll need to have an appropriate text
 editor installed and configured, and know how to work with a fake ship for
 development. Best practices are described in the [environment setup
-guide](/guides/core/environment). Example agents and other code throughout
+guide](/courses/environment). Example agents and other code throughout
 this guide will just be committed to the `%base` desk of a fake ship, but it's a
 good idea to have a read through that guide for when you begin work on your own
 apps.

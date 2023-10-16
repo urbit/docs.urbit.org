@@ -28,7 +28,7 @@ vane or app, is defined in Ames.
 This section summarizes the design of Ames. Beyond this section are deeper
 elaborations on the concepts presented here.
 
-Ames extends [Arvo's](/system/kernel/overview) `%pass`/`%give` `move` semantics across the network.
+Ames extends [Arvo's](/system/kernel/arvo/overview) `%pass`/`%give` `move` semantics across the network.
 
 Ames receives packets as Arvo events and emits packets as Arvo
 effects. The runtime is responsible for transferring the bytes in
@@ -159,7 +159,7 @@ through a relay.
 
 `SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption
 algorithm utilized to encrypt Ames packets (see the page on [Ames
-cryptography](/reference/arvo/ames/cryptography)). It is formed from the
+cryptography](/system/kernel/ames/guides/cryptography)). It is formed from the
 following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see
 [Life and Rift](/system/identity/concepts/life-and-rift) for information on what `life`
 is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus
@@ -425,7 +425,7 @@ message.
 
 Urbit's functionality is split between the two binaries `urbit-worker` (sometimes
 called the Serf) and `urbit-king` (sometimes called the King). This division of
-labor is currently not well-documented outside of the [Vere documents](/reference/runtime/), but we summarize it here.
+labor is currently not well-documented outside of the [Vere documents](/system/runtime/), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state
 of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and

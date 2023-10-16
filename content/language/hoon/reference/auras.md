@@ -3,7 +3,7 @@ title = "Auras"
 weight = 70
 +++
 
-Auras are system of nested "soft types" on [atoms](/reference/glossary/atom) that
+Auras are system of nested "soft types" on [atoms](/TODO-GLOSSARY/atom) that
 are used to track metadata about how a particular atom is to be interpreted.
 This is used for type checking as well as pretty printing.
 

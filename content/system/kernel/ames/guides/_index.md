@@ -5,11 +5,11 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/ames/ames)
+## [Overview](/system/kernel/ames/ames)
 
 An overview of Ames and its capabilities.
 
-## [Cryptography](/reference/arvo/ames/cryptography)
+## [Cryptography](/system/kernel/ames/guides/cryptography)
 
 A technical overview of how Ames implements cryptography.
 

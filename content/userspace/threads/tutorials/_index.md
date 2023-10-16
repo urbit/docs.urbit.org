@@ -8,7 +8,7 @@ insert_anchor_links = "right"
 
 Tutorial and explanation of the basics of writing threads.
 
-## [Fundamentals](/guides/additional/threads/fundamentals)
+## [Fundamentals](/userspace/threads/tutorials/basics/fundamentals)
 
 Basic explanation of threads and usage of the strand arms `form` and `pure`.
 

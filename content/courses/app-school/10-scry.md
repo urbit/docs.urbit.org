@@ -5,8 +5,8 @@ weight = 50
 
 In this lesson we'll look at scrying agents, as well as how agents handle such
 scries. If you're not at all familiar with performing scries in general, have a
-read through the [Scry Guide](/reference/arvo/concepts/scry), as well as the [dotket
-rune documentation](/reference/hoon/rune/dot#-dotket).
+read through the [Scry Guide](/system/kernel/arvo/guides/scry), as well as the [dotket
+rune documentation](/language/hoon/reference/rune/dot#-dotket).
 
 ## Scrying
 
@@ -16,11 +16,11 @@ endpoints can process the data in any way before returning it, but they cannot
 alter the actual state - scries can only read, not modify.
 
 Gall itself defines some special vane-level endpoints [as described in its scry
-reference](/reference/arvo/gall/scry), but most scries to Gall are routed to
+reference](/system/kernel/gall/reference/scry), but most scries to Gall are routed to
 particular agents and handled by them instead. Agent scries are what we'll
 focus on here. 
 
-Scries are performed with the [dotket](/reference/hoon/rune/dot#-dotket) (`.^`)
+Scries are performed with the [dotket](/language/hoon/reference/rune/dot#-dotket) (`.^`)
 rune. Here's a summary of their format:
 
 ![scry summary diagram](https://storage.googleapis.com/media.urbit.org/docs/arvo/scry-diagram-v2.svg)
@@ -310,13 +310,13 @@ crash!
 
 ## Exercises
 
-- Have a read through the [Scry Guide](/reference/arvo/concepts/scry).
-- Have a look at Gall's [scry reference](/reference/arvo/gall/scry).
+- Have a read through the [Scry Guide](/system/kernel/arvo/guides/scry).
+- Have a look at Gall's [scry reference](/system/kernel/gall/reference/scry).
 - Have a read through the [dotket rune
-  documentation](/reference/hoon/rune/dot#-dotket).
+  documentation](/language/hoon/reference/rune/dot#-dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
 - Try adding another scry endpoint to the `peeker.hoon` agent, which uses a
-  [`wyt:by`](/reference/hoon/stdlib/2i#wytby) map function to produce the
+  [`wyt:by`](/language/hoon/reference/stdlib/2i#wytby) map function to produce the
   number of items in the `data` map.
 - Have a look through the `on-peek` arms of some other agents on your ship, and
   try performing some scries to some of the endpoints.

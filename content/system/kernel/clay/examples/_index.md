@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-[Overview](/reference/arvo/clay/clay)
+[Overview](/system/kernel/clay/clay)
 
 High-level overview of Clay.
 
@@ -30,6 +30,6 @@ Reference for Clay's various scry endpoints.
 
 Details of the various `task`s you can use to interact with Clay.
 
-[Examples](/reference/arvo/clay/examples)
+[Examples](/system/kernel/arvo/clay/examples)
 
 Example usage of the various Clay `task`s.

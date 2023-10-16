@@ -7,7 +7,7 @@ insert_anchor_links = "right"
 
 Developer documentation for desk/app distribution and management.
 
-## [Overview](/reference/additional/dist/dist)
+## [Overview](/userspace/apps/reference/dist/dist)
 
 An overview of desk/app distribution and management.
 
@@ -15,6 +15,6 @@ An overview of desk/app distribution and management.
 
 Documentation of `desk.docket` files.
 
-## [Glob](/reference/additional/dist/glob)
+## [Glob](/userspace/apps/reference/dist/glob)
 
 Documentation of `glob`s (client bundles).

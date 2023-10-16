@@ -6,11 +6,11 @@ sort_by = "weight"
 
 Resources about the Urbit OS.
 
-## [Overview](/system/kernel/overview)
+## [Overview](/system/kernel/arvo/overview)
 
 Arvo is Urbit's functional operating system, written in [Hoon](/courses/hoon-school/). It's composed of modules called _vanes_, each of which has its own folder:
 
-## [Ames](/reference/arvo/ames/ames)
+## [Ames](/system/kernel/ames/ames)
 
 Ames is the name of our network and the vane that communicates over it. It's an encrypted P2P network composed of instances of the Arvo operating system.
 
@@ -46,10 +46,10 @@ Jael manages keys and Azimuth state.
 
 Khan is our thread dispatcher.
 
-## [Concepts](/reference/arvo/concepts/)
+## [Concepts](/system/kernel/arvo/concepts/)
 
 Explanations of design decisions that are pervasive throughout Arvo.
 
-## [Tutorials](/reference/arvo/tutorials/)
+## [Tutorials](/system/kernel/arvo/tutorials/)
 
 Walkthroughs that teach you more about how Arvo works.

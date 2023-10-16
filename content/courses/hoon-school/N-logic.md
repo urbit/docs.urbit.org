@@ -58,7 +58,7 @@ Essentially, we have to be able to decide whether or not some value or expressio
 - [`++lth`](/language/hoon/reference/stdlib/1a#lth) (less than `<`)  
 - [`++gte`](/language/hoon/reference/stdlib/1a#gte) (greater than or equal to `≥`)
 - [`++lte`](/language/hoon/reference/stdlib/1a#lte) (less than or equal to `≤`)
-- [`.=` dottis](/reference/hoon/rune/dot#-dottis), irregularly `=()` (check for equality)
+- [`.=` dottis](/language/hoon/reference/rune/dot#-dottis), irregularly `=()` (check for equality)
 
 The key conditional decision-making rune is [`?:` wutcol](/language/hoon/reference/rune/wut#-wutcol), which lets you branch between an `expression-if-true` and an `expression-if-false`.  [`?.` wutdot](/language/hoon/reference/rune/wut#-wutdot) inverts the order of `?:`.  Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
 

@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/behn/behn)
+## [Overview](/system/kernel/behn/behn)
 
 An overview of Behn, Urbit's timer vane.
 
@@ -17,6 +17,6 @@ The `task`s Behn takes and the `gift`s it returns.
 
 The scry endpoints of Behn.
 
-## [Examples](/reference/arvo/behn/examples)
+## [Examples](/system/kernel/arvo/behn/examples)
 
 Practical examples of using Behn's `task`s.

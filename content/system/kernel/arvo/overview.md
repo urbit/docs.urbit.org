@@ -26,7 +26,7 @@ material from Chapter Two will be helpful as well. At the bare minimum, we
 presume that the reader has read through the [Technical
 Overview](/overview/).
 
-We also suggest to the reader to peruse the [glossary](/reference/glossary/) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
+We also suggest to the reader to peruse the [glossary](/TODO-GLOSSARY/) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
 # What is Arvo?
 
@@ -55,7 +55,7 @@ In mathematical terms, one may think of Arvo as being given by a transition func
 T: (State, Input) -> (State, Output).
 ```
 
-In practice, _T_ is implemented by the `+poke` [arm](/reference/glossary/arm/) of the Arvo kernel, which is described in more detail in the [kernel section](#the-kernel). In theoretical terms, it may be more practical to think of Arvo as being defined by a _lifecycle function_ we denote here by _L_:
+In practice, _T_ is implemented by the `+poke` [arm](/TODO-GLOSSARY/arm/) of the Arvo kernel, which is described in more detail in the [kernel section](#the-kernel). In theoretical terms, it may be more practical to think of Arvo as being defined by a _lifecycle function_ we denote here by _L_:
 
 ```
 L: History -> State.
@@ -99,11 +99,11 @@ a user experience as accessible as a browser.
 
 ### Event log
 
-The formal state of an Arvo instance is an event history, as a linked list of [nouns](/reference/glossary/noun/) from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the self-compiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
+The formal state of an Arvo instance is an event history, as a linked list of [nouns](/TODO-GLOSSARY/noun/) from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the self-compiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
 
 The Arvo event log is a list of every action ever performed on your ship that
 lead up to the current state. In principle, this event log is maintained by the
-[Nock runtime environment](/reference/runtime/), but in practice
+[Nock runtime environment](/system/runtime/), but in practice
 event logs become too long over time to keep, as the event log has a size of
 O(n) where n is the number of events. Thus it is our intention to
 implement a feature whereby periodic snapshots of the state of Arvo are taken
@@ -180,7 +180,7 @@ Database theory studies in precise terms the possible properties of anything tha
   Arvo
   transactions are sequential and performed by the daemon, persistence and effect application are performed
   in parallel by the worker; see [worker and
-  daemon](/reference/runtime/) for more detail.
+  daemon](/system/runtime/) for more detail.
 
 - Durability: Completed transactions will survive permanently. In other words,
   since the event log is stored on disk, if power is lost you are guaranteed
@@ -229,7 +229,7 @@ which applies many of the concepts covered below.
 
 ## Overall structure
 
-`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single [gate](/reference/glossary/gate/) that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
+`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single [gate](/TODO-GLOSSARY/gate/) that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
 
 - Types
 - Section 3bE Arvo Core
@@ -467,7 +467,7 @@ stage or adult stage). Thus when `+poke` is performed, a new core with the
 updated state is produced, rather than modifying the existing core as would be
 expected to happen in an imperative setting.
 
-Thus besides the battery of the Arvo core, we have the [payload](/reference/glossary/payload/) which is as
+Thus besides the battery of the Arvo core, we have the [payload](/TODO-GLOSSARY/payload/) which is as
 follows.
 
 ```hoon

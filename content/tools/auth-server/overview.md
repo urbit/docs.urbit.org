@@ -40,7 +40,7 @@ Auth Server is intended to be used via an Eyre airlock. The most common is the
 [here](/tools/http-api-guide). There are a few airlocks for other
 languages too, some of which are listed
 [here](https://github.com/urbit/awesome-urbit#http-apis-airlock). Eyre's
-interfaces extend Urbit's [poke](/reference/glossary/poke),
+interfaces extend Urbit's [poke](/TODO-GLOSSARY/poke),
 [scry](/system/kernel/arvo/guides/scry) and
 [subscription](/system/kernel/arvo/guides/subscriptions) mechanics to HTTP
 clients. You can read more about Eyre [here](/system/kernel/eyre/guides/guide).

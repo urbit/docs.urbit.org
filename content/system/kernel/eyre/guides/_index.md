@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/eyre/eyre)
+## [Overview](/system/kernel/eyre/eyre)
 
 An overview of Eyre and its capabilities.
 
@@ -25,6 +25,6 @@ The scry endpoints of Eyre.
 
 Reference documentation of the various data types used by Eyre.
 
-## [Guide](/reference/arvo/eyre/guide)
+## [Guide](/system/kernel/eyre/guides/guide)
 
 Practical examples of the different ways of using Eyre.

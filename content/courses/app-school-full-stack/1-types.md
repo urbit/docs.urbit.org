@@ -206,7 +206,7 @@ When we put each of these parts together, we have our complete
 
 ## Resources
 
-- [App School I /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
+- [App School I /sur section](/courses/app-school/7-sur-and-marks#sur) -
   This section of App School covers writing a `/sur` structure library for
   an agent.
 

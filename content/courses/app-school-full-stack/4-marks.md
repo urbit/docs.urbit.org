@@ -86,11 +86,11 @@ mark in the same manner as our `%journal-action` mark above.
 
 ## Resources
 
-- [The Marks section of the Clay documentation](/reference/arvo/clay/marks/marks) -
+- [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks/marks) -
   This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall
-  Guide](/guides/core/app-school/7-sur-and-marks#mark-files) - This part of
+  Guide](/courses/app-school/7-sur-and-marks#mark-files) - This part of
   App School goes through the basics of mark files.
 
-- [The JSON Guide](/guides/additional/json-guide) - This also covers writing mark
+- [The JSON Guide](/language/hoon/guides/json-guide/) - This also covers writing mark
   files to convert to/from JSON.

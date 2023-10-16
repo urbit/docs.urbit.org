@@ -128,7 +128,7 @@ response to `%born`.
 ```
 
 `%init` is called a single time during the very first boot process, immediately
-after the [larval stage](/system/kernel/overview#larval-stage-core)
+after the [larval stage](/system/kernel/arvo/overview#larval-stage-core)
 is completed. This initializes the vane. Jael is initialized first, followed by
 other vanes such as Ames.
 

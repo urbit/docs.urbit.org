@@ -732,9 +732,9 @@ There are a few runes in this which we haven't seen yet; we will deal with them 
 
 The `!:` in the first line of the above code enables a full stack trace in the event of an error.
 
-`|= [msg=tape steps=@ud]` creates a [gate](/reference/glossary/gate) that takes a cell. The head of this cell is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](/reference/glossary/atom) -- that we give the face `steps`.
+`|= [msg=tape steps=@ud]` creates a [gate](/TODO-GLOSSARY/gate) that takes a cell. The head of this cell is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](/TODO-GLOSSARY/atom) -- that we give the face `steps`.
 
-`=<` is the rune that evaluates its first child expression with respect to its second child expression as the subject. In this case, we evaluate the expressions in the code chunk below against the [core](/reference/glossary/core) declared later, which allows us reference the core's contained [arms](/reference/glossary/arm) before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
+`=<` is the rune that evaluates its first child expression with respect to its second child expression as the subject. In this case, we evaluate the expressions in the code chunk below against the [core](/TODO-GLOSSARY/core) declared later, which allows us reference the core's contained [arms](/TODO-GLOSSARY/arm) before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
 
 ```hoon {% copy=true %}
 =.  msg  (cass msg)
@@ -801,11 +801,11 @@ You might wonder, if our gate in this arm takes `tape`s, why then are we produci
 
 As we discussed earlier, a `tape` is a list of `cord`s. In this case what we are going to do is map a single element of a `tape` (either our alphabet or shifted-alphabet) to an element of a different `tape` (either our shifted-alphabet or our alphabet). This pair will therefore be a pair of `cord`s. When we go to use this `map` to convert our incoming `msg`, we will take each element (`cord`) of our `msg` `tape`, use it as a `key` when accessing our `map` and get the corresponding `value` from that position in the `map`. This is how we're going to encode or decode our `msg` `tape`.
 
-`=| chart=(map @t @t)` adds a [noun](/reference/glossary/noun) to the subject with the default value of the `(map @t @t)` type, and gives that noun the face `chart`.
+`=| chart=(map @t @t)` adds a [noun](/TODO-GLOSSARY/noun) to the subject with the default value of the `(map @t @t)` type, and gives that noun the face `chart`.
 
 `?. =((lent key-position) (lent value-result))` checks if the two `tape`s are the same length. If not, the program crashes with an error message of `%uneven-lengths`, using `|~ %uneven-lengths !!`.
 
-If the two `tape`s are of the same length, we continue on to create a trap. `|-` creates a [trap](/reference/glossary/trap), a gate with no arguments that is called immediately.
+If the two `tape`s are of the same length, we continue on to create a trap. `|-` creates a [trap](/TODO-GLOSSARY/trap), a gate with no arguments that is called immediately.
 
 `?: |(?=(~ key-position) ?=(~ value-result))` checks if either `tape` is empty. If this is true, the `map-maker` arm is finished and can return `chart`, the `map` that we have been creating.
 
@@ -964,4 +964,4 @@ A _gate_ and a _trap_ are actually very similar:  a [gate](/language/hoon/refere
 
 #### Example:  Hoon Workbook
 
-Other examples demonstrating `++map` are available in the [Hoon Workbook](/guides/additional/workbook), such as Solution #2 in the [Rhonda Numbers](/language/hoon/examples/rhonda) tutorial.
+Other examples demonstrating `++map` are available in the [Hoon Workbook](/language/hoon/examples), such as Solution #2 in the [Rhonda Numbers](/language/hoon/examples/rhonda) tutorial.

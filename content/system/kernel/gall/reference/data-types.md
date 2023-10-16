@@ -91,7 +91,7 @@ as follows:
 - `sky`: Remote scry bindings. A map from binding paths to a
   [`mop`](/language/hoon/reference/zuse/2m#mop) (ordered map) of files by revision
   number. Tombstoned files have an `@uvI` hash rather than `page`.
-- `act`: The total number of [`move`](/system/kernel/overview#move)s our agent has
+- `act`: The total number of [`move`](/system/kernel/arvo/overview#move)s our agent has
   processed so far.
 - `eny`: 512 bits of entropy.
 - `now`: The current date-time.
@@ -318,7 +318,7 @@ cases are:
   ```
   You can refer to the `/sys/lull.hoon` source code for all the possible
   vane tasks, or see each vane's API Reference section in the [Arvo
-  documentation](/system/kernel/overview)
+  documentation](/system/kernel/arvo/overview)
 - `%pyre`: This is for aborting side-effects initiated during agent
   installation. The `tang` is an error message.
 - `%grow`/`%tomb`/`%cull`: These are used for publishing and managing
@@ -577,7 +577,7 @@ is:
 ```
 
 You can refer to the `/sys/lull.hoon` source code, or the API Reference
-of each vane in the [Arvo documentation](/system/kernel/overview).
+of each vane in the [Arvo documentation](/system/kernel/arvo/overview).
 
 #### `on-fail`
 

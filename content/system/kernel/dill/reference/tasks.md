@@ -31,7 +31,7 @@ tasks](#session-tasks) to specify the session. The [`%logs`](#logs)
 ```
 
 This `task` is used only once, when Arvo first enters the [adult
-stage](/system/kernel/overview#structural-interface-core). Dill is
+stage](/system/kernel/arvo/overview#structural-interface-core). Dill is
 technically the first vane to be activated, via the `%boot` `task`,
 which then sends Jael (considered the "true" first vane) the `%dawn` or
 `%fake` `task` wrapped in the `%boot` `task`. Jael then goes on to call
@@ -209,7 +209,7 @@ Toggle Arvo verbose mode.
 This `task` toggles verbose mode for all of Arvo, which is located here
 since Dill is the vane that prints errors. To be precise, `%verb`
 toggles the laconic bit `lac` in the [Arvo
-state](/system/kernel/overview#the-state) by passing a `%verb` `waif`
+state](/system/kernel/arvo/overview#the-state) by passing a `%verb` `waif`
 to Arvo.
 
 #### Returns

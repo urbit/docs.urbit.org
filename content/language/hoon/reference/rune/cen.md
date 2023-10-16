@@ -157,7 +157,7 @@ ensure that the resulting value is of the same type as `a`.
 `%_` is different from `%=` because `%=` can change the type of a wing with
 mutations. `%_` preserves the wing type.
 
-See [how wings are resolved](/reference/hoon/limbs/).
+See [how wings are resolved](/language/hoon/reference/limbs/).
 
 #### Examples
 

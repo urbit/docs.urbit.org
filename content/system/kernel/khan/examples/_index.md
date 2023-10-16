@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/khan/khan)
+## [Overview](/system/kernel/khan/khan)
 
 A brief overview of Khan, Urbit's control plane & thread runner vane.
 
@@ -13,10 +13,10 @@ A brief overview of Khan, Urbit's control plane & thread runner vane.
 
 The `task`s Khan takes and the `gift`s it returns.
 
-## [Data Types](/reference/arvo/iris/types)
+## [Data Types](/system/kernel/arvo/iris/types)
 
 Reference documentation of the data types used by Khan.
 
-## [Example](/reference/arvo/iris/example)
+## [Example](/system/kernel/iris/examples/example)
 
 An example of using Khan to run a thread.

@@ -155,7 +155,7 @@ This generator requires a path argument in its sample and optionally accepts a v
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw [`.^` dotket](/reference/hoon/rune/dot#-dotket) for the first time in [the previous module](/courses/hoon-school/O-subject), where we learned that it performs a _peek_ or _scry_ into the state of an Arvo vane.  Most of the time this functionality is used to ask `%c` Clay or `%g` Gall for information about a path, desk, agent, etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw [`.^` dotket](/language/hoon/reference/rune/dot#-dotket) for the first time in [the previous module](/courses/hoon-school/O-subject), where we learned that it performs a _peek_ or _scry_ into the state of an Arvo vane.  Most of the time this functionality is used to ask `%c` Clay or `%g` Gall for information about a path, desk, agent, etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
@@ -207,7 +207,7 @@ For instance, how does `+cat` work?  Let's look at the structure of `/gen/cat/ho
 
 - Some points of interest include:
   - `/?` faswut pins the expected Arvo kelvin version; right now it doesn't do anything.
-  - [`.^` dotket](/reference/hoon/rune/dot#-dotket) loads a value from Arvo (called a “scry”).
+  - [`.^` dotket](/language/hoon/reference/rune/dot#-dotket) loads a value from Arvo (called a “scry”).
   - [`++smyt`](/language/hoon/reference/stdlib/4m#smyt) pretty-prints a path.
   - [`=-` tishep](/language/hoon/reference/rune/tis#--tishep) combines a faced noun with the subject, inverted relative to `=+` tislus/`=/` tisfas.
 

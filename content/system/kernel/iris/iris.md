@@ -13,4 +13,4 @@ Iris gets passed HTTP requests, makes the request to the specified URL, and retu
 
 [API Reference](/system/kernel/iris/reference/tasks) - The `task`s Iris takes and the `gift`s it returns.
 
-[Example](/reference/arvo/iris/example) - An example of using Iris to fetch a remote HTTP resource.
+[Example](/system/kernel/iris/examples/example) - An example of using Iris to fetch a remote HTTP resource.

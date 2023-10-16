@@ -3,7 +3,7 @@ import Link from "next/link";
 import { join } from "path";
 import {
   Header,
-  SideBar,
+  Sidebar,
   MenuTray,
   ContentNav,
   FragmentNav,
@@ -33,14 +33,14 @@ export default function Content({
       <MenuTray>
         <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </MenuTray>
-      <SideBar className="hidden md:flex" left>
+      <Sidebar className="hidden md:flex" left>
         <ContentNav
           posts={posts}
           root={root}
           firstCrumb={firstCrumb}
           labelMaxLength={26}
         />
-      </SideBar>
+      </Sidebar>
       <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-5 md:pr-8 xl:pr-5">
         <Header className="md:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
@@ -64,12 +64,12 @@ export default function Content({
           </p>
         </div>
       </div>
-      <SideBar className="hidden lg:flex" right>
+      <Sidebar className="hidden lg:flex" right>
         <FragmentNav
           markdown={md}
           key={params.slug?.join("/") || Math.random()}
         />
-      </SideBar>
+      </Sidebar>
     </div>
   );
 }

@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/iris/iris)
+## [Overview](/system/kernel/iris)
 
 A brief overbview of Iris, Urbit's HTTP client vane.
 

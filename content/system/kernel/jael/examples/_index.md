@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/jael/jael)
+## [Overview](/system/kernel/jael)
 
 An overview of Jael, Urbit's security and encryption vane.
 

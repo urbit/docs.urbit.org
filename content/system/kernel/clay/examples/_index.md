@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-[Overview](/system/kernel/clay/clay)
+[Overview](/system/kernel/clay)
 
 High-level overview of Clay.
 

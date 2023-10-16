@@ -352,5 +352,5 @@ when you write `$json` encoding functions, and is the reason there are far fewer
 - [`++dejs:format` reference](/language/hoon/reference/zuse/2d_6) - This section of
   the `zuse.hoon` documentation covers all JSON _decoding_ functions.
 
-- [Eyre overview](/system/kernel/eyre/eyre) - This section of the Eyre vane
+- [Eyre overview](/system/kernel/eyre) - This section of the Eyre vane
   documentation goes over the basic features of the Eyre vane.

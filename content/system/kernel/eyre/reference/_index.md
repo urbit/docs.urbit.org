@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/eyre/eyre)
+## [Overview](/system/kernel/eyre)
 
 An overview of Eyre and its capabilities.
 

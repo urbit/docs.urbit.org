@@ -12,7 +12,7 @@ code to run. Furthermore, this organization is not perfectly adhered to -
 sometimes you may find structure definitions in `/lib`, for example.
 
 - `/app` contains userspace applications, i.e. [Gall
-  agents](/system/kernel/gall/gall).
+  agents](/system/kernel/gall).
 - `/gen` contains generators. Many applications make use of generators, but also
   each generator in this folder may be run from dojo using `+`. For example,
   `/gen/foo/hoon` in the `%base` desk is run with `+foo`. Generators on desks
@@ -55,7 +55,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
   currently at 140. One may see this from dojo by inspecting the subject with
   `.` and noting that `%140` is the final entry of the subject.
-- `arvo.hoon` contains the [Arvo kernel](/system/kernel/arvo/overview) and
+- `arvo.hoon` contains the [Arvo kernel](/system/kernel/arvo) and
   additional structures and functions directly relevant to the kernel. This is
   Urbit's "traffic cop", and as such contains the structure definitions for
   call stacks such as `duct`s and `bone`s. Once Vere understands Hoon, it loads
@@ -65,7 +65,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
   vanes, as well as a few functions. In particular, this includes the
   definitions of the `task`s and `gift`s utilized by each vane, each of which
   are documented in their respective documentation. `lull.hoon` is loaded by the
-  kernel during the [larval stage](/system/kernel/arvo/overview#larval-stage-core) in
+  kernel during the [larval stage](/system/kernel/arvo#larval-stage-core) in
   order to prepare to create the vanes. `arvo.hoon` is the subject of
   `lull.hoon`.
 - `zuse.hoon` is the Arvo standard library. It consists primarily of functions

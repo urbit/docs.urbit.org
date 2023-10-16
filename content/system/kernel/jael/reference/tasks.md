@@ -23,7 +23,7 @@ Boot from keys.
 
 This task is called once per ship during the vane initialization phase
 immediately following the beginning of the [adult
-stage](/system/kernel/arvo/overview#structural-interface-core). This task
+stage](/system/kernel/arvo#structural-interface-core). This task
 is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for
 technical reasons, though we consider Jael to be the true "first" vane.
 This task is only used for ships that will join the Ames network -

@@ -346,7 +346,7 @@ guaranteed as the Azimuth Ethereum smart contracts.
 Crucial to the functionality of Ethereum smart contracts is that they work the
 same way every time since the Ethereum Virtual Machine is deterministic.
 Similarly, as the state of Arvo is evolved via [a single pure
-function](/system/kernel/arvo/overview#an-operating-function), Arvo is deterministic as
+function](/system/kernel/arvo#an-operating-function), Arvo is deterministic as
 well. This property makes it well-suited for cases where side effects are
 unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the
 name "Hoon smart contract".

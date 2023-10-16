@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-[Overview](/system/kernel/dill/dill)
+[Overview](/system/kernel/dill)
 
 A brief overview of the Dill vane.
 

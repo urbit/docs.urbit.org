@@ -149,7 +149,7 @@ Typically, updates to an operating system are given via a pre-compiled binary,
 which is why some updates will work on some systems but not on others where the
 hardware and environment may differ. This is not so on Arvo - because it is an
 [interpreter](#solid-state-interpreter), Arvo may update itself by receiving
-source code from your sponsor over [Ames](/system/kernel/ames/ames), our
+source code from your sponsor over [Ames](/system/kernel/ames), our
 network. As Hoon compiles down to Nock, which is an axiomatic representation of
 a deterministic computer, this code is guaranteed to run identically on your machine as it
 would on anybody else's.
@@ -189,7 +189,7 @@ Database theory studies in precise terms the possible properties of anything tha
 It is easy to think that "completed transaction will survive permanently"
 along with "the state of Arvo is pure function of its event log" implies that
 nothing can ever be deleted. This is not quite true.
-[Clay](/system/kernel/clay/clay) is our [referentially
+[Clay](/system/kernel/clay) is our [referentially
 transparency](https://en.wikipedia.org/wiki/Referential_transparency)
 file system, which could naively be thought to mean that since data must be
 immutable, files cannot be deleted. However, Clay can replace a file with a
@@ -413,7 +413,7 @@ A short summary of the purpose of each these arms are as follows:
 - `+poke` is the transition function that `move`s Arvo from one state to the
   next. It is the most fundamental arm in the entire system. It is a typed
   transactional message that is processed at most once. If the `+poke` causes
-  Arvo to send an message over [Ames](/system/kernel/ames/ames) Ames
+  Arvo to send an message over [Ames](/system/kernel/ames) Ames
   guarantees that the message will be delivered exactly once. This is sometimes said
   to be impossible, and it is for standard operating systems, but that is not the case for single-level stores engaged in
   a permanent session, as is the case among Arvo ships.
@@ -532,15 +532,15 @@ data that directly causes the desired outcome of a `move`. This event data is co
 
 As of this writing, we have nine vanes, which each provide the following services:
 
-- [Ames](/system/kernel/ames/ames): the name of both our network and the vane that communicates over it.
-- [Behn](/system/kernel/behn/behn): a simple timer.
-- [Clay](/system/kernel/clay/clay): our version-controlled, referentially- transparent, and global filesystem.
-- [Dill](/system/kernel/dill/dill): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
-- [Eyre](/system/kernel/eyre/eyre): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
-- [Gall](/system/kernel/gall/gall): manages our userspace applications. `%gall` keeps state and manages subscribers.
-- [Iris](/system/kernel/iris/iris): an http client.
-- [Jael](/system/kernel/jael/jael): storage for Azimuth information.
-- [Khan](/system/kernel/khan/khan): control plane and thread runner.
+- [Ames](/system/kernel/ames): the name of both our network and the vane that communicates over it.
+- [Behn](/system/kernel/behn): a simple timer.
+- [Clay](/system/kernel/clay): our version-controlled, referentially- transparent, and global filesystem.
+- [Dill](/system/kernel/dill): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
+- [Eyre](/system/kernel/eyre): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
+- [Gall](/system/kernel/gall): manages our userspace applications. `%gall` keeps state and manages subscribers.
+- [Iris](/system/kernel/iris): an http client.
+- [Jael](/system/kernel/jael): storage for Azimuth information.
+- [Khan](/system/kernel/khan): control plane and thread runner.
 
 #### Applying your knowledge
 

@@ -1,30 +1,40 @@
 +++
-title = "Eyre"
-weight = 50
+title = "Lick"
+weight = 100
 sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/eyre/eyre)
+Urbit's inter-process communication (IPC) vane.
 
-An overview of Eyre and its capabilities.
+Lick manages IPC ports, and the communication between Urbit applications and
+POSIX applications via these ports. Other vanes and applications ask Lick to
+open an IPC port, notify it when something is connected or disconnected, and
+transfer data between itself and the Unix application.
 
-## [External API Reference](/system/kernel/eyre/reference/external-api-ref)
+The IPC ports Lick creates are Unix domain sockets (`AF_UNIX` address family)
+of the `SOCK_STREAM` type.
 
-Details of Eyre's external API including the channel system's JSON API.
+The format of the full message with header and data sent to and from the socket
+is as follows:
 
-## [Internal API Reference](/system/kernel/arvo/eyre/tasks)
+|1 byte |4 bytes          |n bytes|
+|-------|-----------------|-------|
+|version|jam size in bytes|jamfile|
 
-The `task`s Eyre takes and the `gift`s it returns.
+The version is currently `0`.
 
-## [Scry Reference](/system/kernel/arvo/eyre/scry)
+The [++jam](/language/hoon/reference/stdlib/2p#jam)file contains a pair of `mark` and
+`noun`. The process on the host OS must therefore strip the first 5 bytes,
+[`++cue`](/language/hoon/reference/stdlib/2p#cue) the jamfile, check the mark and (most
+likely) convert the noun into a native data structure.
 
-The scry endpoints of Eyre.
+Here are some libraries that can cue/jam:
 
-## [Data Types](/system/kernel/arvo/eyre/data-types)
+- [`pynoun`](https://github.com/urbit/tools)
+- [`nockjs`](https://github.com/urbit/nockjs)
+- [Rust Noun](https://github.com/urbit/noun)
 
-Reference documentation of the various data types used by Eyre.
+Lick has no novel data types in its API apart from `name`, which is just a
+`path` representing the name of a socket.
 
-## [Guide](/system/kernel/eyre/guides/guide)
-
-Practical examples of the different ways of using Eyre.

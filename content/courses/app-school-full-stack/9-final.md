@@ -66,7 +66,7 @@ Here is the reference material for each section of this walkthrough.
 - [`++dejs:format` reference](/language/hoon/reference/zuse/2d_6) - This section of
   the `zuse.hoon` documentation covers all JSON _decoding_ functions.
 
-- [Eyre Overview](/system/kernel/eyre/eyre) - This section of the Eyre vane
+- [Eyre Overview](/system/kernel/eyre) - This section of the Eyre vane
   documentation goes over the basic features of the Eyre vane.
 
 ### Marks
@@ -82,7 +82,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Eyre
 
-- [The Eyre vane documentation](/system/kernel/eyre/eyre) - This section of the vane
+- [The Eyre vane documentation](/system/kernel/eyre) - This section of the vane
   docs covers all aspects of Eyre.
 - [Eyre External API Reference](/system/kernel/eyre/reference/external-api-ref) - This section
   of the Eyre documentation contains reference material for Eyre's external API.

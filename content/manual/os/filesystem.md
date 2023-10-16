@@ -11,7 +11,7 @@ referentially transparent namespace. An easy way to think about it is like typed
 The most common way to use Clay is to mount a Clay node in a Unix directory. The
 mounted directory is always at the root of your pier directory.
 
-For more information on Clay, see the [Overview](https://developers.urbit.org/system/kernel/clay/clay), and
+For more information on Clay, see the [Overview](https://developers.urbit.org/system/kernel/clay), and
 additional usage information at [Using Clay](https://developers.urbit.org/system/kernel/arvo/clay/using).
 
 ### Quickstart

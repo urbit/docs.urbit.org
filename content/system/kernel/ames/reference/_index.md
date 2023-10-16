@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/ames/ames)
+## [Overview](/system/kernel/ames)
 
 An overview of Ames and its capabilities.
 

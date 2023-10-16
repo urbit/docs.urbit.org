@@ -28,7 +28,7 @@ vane, as an example:
 ```
 
 The API of each vane is documented in its respective section of the [Arvo
-documentation](/system/kernel/arvo/overview). Each vane has a detailed API reference and
+documentation](/system/kernel/arvo). Each vane has a detailed API reference and
 examples of their usage. There are far too many `task`s and `gift`s across the
 vanes to cover here, so in the [`Example`](#example) section of this document,
 we'll just look at a single, simple example with a Behn timer. The basic pattern
@@ -269,7 +269,7 @@ After approximately five seconds, we see the timer fired successfully:
 
 - Each vane has an API composed of `task`s it takes and `gift`s it produces.
 - Each vane's `task`s and `gift`s are defined in `lull.hoon`
-- Each vane's section of the [Arvo documentation](/system/kernel/arvo/overview) includes
+- Each vane's section of the [Arvo documentation](/system/kernel/arvo) includes
   an API reference that explains its `task`s and `gift`s, as well as an Examples
   section demonstrating their usage.
 - Vane `task`s can be sent to vanes by `%pass`ing them an `%arvo` `card`.
@@ -282,4 +282,4 @@ After approximately five seconds, we see the timer fired successfully:
 - Have a look at some vane sections of `lull.hoon` to familiarize yourself with
   its structure.
 - Have a quick look at the API reference sections of a couple of vanes in the
-  [Arvo documentation](/system/kernel/arvo/overview).
+  [Arvo documentation](/system/kernel/arvo).

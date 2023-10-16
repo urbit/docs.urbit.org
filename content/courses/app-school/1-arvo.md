@@ -13,17 +13,17 @@ just what is necessary to understand it from the perspective of userspace.
 
 ## Arvo and its Vanes
 
-[Arvo](/system/kernel/arvo/overview) is the Urbit OS and kernel which is written in
+[Arvo](/system/kernel/arvo) is the Urbit OS and kernel which is written in
 [Hoon](/TODO-GLOSSARY/hoon), compiled to [Nock](/TODO-GLOSSARY/nock), and
 executed by the runtime environment and virtual machine
 [Vere](/TODO-GLOSSARY/vere). Arvo has eight kernel modules called vanes:
-[Ames](/system/kernel/ames/ames), [Behn](/system/kernel/behn/behn),
-[Clay](/system/kernel/clay/clay), [Dill](/system/kernel/dill/dill),
-[Eyre](/system/kernel/eyre/eyre), [Gall](/system/kernel/gall/gall),
-[Iris](/system/kernel/iris/iris), and [Jael](/system/kernel/jael/jael).
+[Ames](/system/kernel/ames), [Behn](/system/kernel/behn),
+[Clay](/system/kernel/clay), [Dill](/system/kernel/dill),
+[Eyre](/system/kernel/eyre), [Gall](/system/kernel/gall),
+[Iris](/system/kernel/iris), and [Jael](/system/kernel/jael).
 
 Arvo itself has its own small codebase in `/sys/arvo.hoon` which primarily
-implements the [transition function](/system/kernel/arvo/overview#operating-function) `(State, Event) -> (State, Effects)` for
+implements the [transition function](/system/kernel/arvo#operating-function) `(State, Event) -> (State, Effects)` for
 events injected by the runtime. It also handles inter-vane messaging, the
 [scry](/system/kernel/arvo/guides/scry) system, and a couple of other things. Most of
 the heavy lifting is done by the vanes themselves - Arvo itself typically just
@@ -259,7 +259,7 @@ There are also two basic things to interact with: vanes, and other agents.
   vanes in a read-only fashion. Scries can be performed from any context with
   the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you
   can read, and these are comprehensively documented in the Scry Reference of
-  each vane's section of the [Arvo documentation](/system/kernel/arvo/overview). Agents
+  each vane's section of the [Arvo documentation](/system/kernel/arvo). Agents
   define scry endpoints in the `+on-peek` arm of their agent core.
   Scries can only be done on the local ship; it is not yet possible to perform
   scries over the network (but this functionality is planned for the future). There is a separate [guide to
@@ -272,7 +272,7 @@ There are also two basic things to interact with: vanes, and other agents.
     external HTTP resource for you, Clay might read or build a specified file,
     etc. The `task`s and `gift`s of each vane are comprehensively documented in the
     API Reference of each vane's section of the [Arvo
-    documentation](/system/kernel/arvo/overview).
+    documentation](/system/kernel/arvo).
   - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed,
     which means to subscribe for updates. We'll discuss these in detail later in
     the guide.

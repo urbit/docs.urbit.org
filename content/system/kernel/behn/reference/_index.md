@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/behn/behn)
+## [Overview](/system/kernel/behn)
 
 An overview of Behn, Urbit's timer vane.
 

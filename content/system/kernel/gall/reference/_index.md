@@ -5,11 +5,11 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/gall/gall)
+## [Overview](/system/kernel/gall)
 
 An overview of Eyre and its capabilities.
 
-## [API Reference](/system/kernel/gall/gall-api)
+## [API Reference](/system/kernel/gall-api)
 
 Reference documentation of both Gall's vane API and the API available to
 agents.

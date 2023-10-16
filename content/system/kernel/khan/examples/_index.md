@@ -5,7 +5,7 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/system/kernel/khan/khan)
+## [Overview](/system/kernel/khan)
 
 A brief overview of Khan, Urbit's control plane & thread runner vane.
 

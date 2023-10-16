@@ -85,7 +85,7 @@ limitation is slated to be implemented as of May 2021.
 
 ## System components
 
-[Ames](/system/kernel/ames/ames) is Arvo's networking vane. All packets sent by
+[Ames](/system/kernel/ames) is Arvo's networking vane. All packets sent by
 Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception
 to this are comet self-attestation packets utilized to transmit authentication
 of ownership of the private networking key associated to their public key. Ames
@@ -93,7 +93,7 @@ is responsible for encryption, decryption, and authentication of all packets. By
 default, this utilizes AES symmetric key encryption, whose shared private key is
 got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
 
-[Jael](/system/kernel/jael/jael) is primarily utilized for the safe storage
+[Jael](/system/kernel/jael) is primarily utilized for the safe storage
 of private networking keys and retrieval of public networking keys utilized by
 Ames. The Jael vane of planets, stars, and galaxies are responsible for
 distributing the public keys of their moons (ultimately via Ames).

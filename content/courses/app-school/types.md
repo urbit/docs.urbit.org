@@ -203,11 +203,11 @@ agent receives them on `/some/wire`.
 
 More formally, `wire`s are used by Arvo to represent an event cause, and
 therefore return path, in a call stack called a
-[`duct`](/system/kernel/arvo/overview#duct). Inter-vane communications happen over
-`duct`s as [`move`](/system/kernel/arvo/overview#moves)s, and Gall converts the `card`s
+[`duct`](/system/kernel/arvo#duct). Inter-vane communications happen over
+`duct`s as [`move`](/system/kernel/arvo#moves)s, and Gall converts the `card`s
 produced by agents into such `move`s behind the scenes. A detailed understanding
 of this system is not necessary to write Gall agents, but if you're interested
-it's comprehensively documented in the [Arvo overview](/system/kernel/arvo/overview) and
+it's comprehensively documented in the [Arvo overview](/system/kernel/arvo) and
 [move trace tutorial](/system/kernel/arvo/guides/move-trace).
 
 For agents, the `wire` is specified in the second argument of a `%pass` `card`.

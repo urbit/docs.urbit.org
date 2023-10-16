@@ -51,7 +51,7 @@ possible to scry.
 ## Publishing
 
 At the moment, there are two vanes that can handle remote scry requests:
-[Clay](/system/kernel/clay/clay) and [Gall](/system/kernel/gall/gall). Clay
+[Clay](/system/kernel/clay) and [Gall](/system/kernel/gall). Clay
 uses it to distribute source code in a more efficient manner than is possible
 with conventional Ames, but conceptually it only extends its [local
 scries](/system/kernel/clay/reference/scry) over the network, with the notable

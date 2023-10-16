@@ -506,7 +506,7 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 [The External API Reference section of the Eyre documentation](/system/kernel/eyre/reference/external-api-ref) - Details of the webserver vane Eyre's external API.
 
-[The Iris documentation](/system/kernel/iris/iris) - Details of the web client vane Iris, which may be used to fetch external JSON data among other things.
+[The Iris documentation](/system/kernel/iris) - Details of the web client vane Iris, which may be used to fetch external JSON data among other things.
 
 [Strings Guide](/language/hoon/guides/strings) - Atom printing functions like `+scot` will often be useful for JSON encoding - see the [Encoding in Text](/language/hoon/guides/strings#encoding-in-text) section for usage.
 

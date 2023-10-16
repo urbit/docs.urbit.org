@@ -43,7 +43,7 @@ On the other hand, Dill has only a couple of endpoints which are mostly useful
 for debugging, and Iris has none at all (apart from standard memory reporting
 endpoints you'd not typically use in your applications).
 
-To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/system/kernel/arvo/overview) section of the documents.
+To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/system/kernel/arvo) section of the documents.
 
 ### Gall agents
 
@@ -88,7 +88,7 @@ The webserver vane Eyre has a system which allows clients like web browsers to p
 
 [dotket](/language/hoon/reference/rune/dot#-dotket) - Documentation of the `.^` rune which performs scries.
 
-[Arvo](/system/kernel/arvo/overview) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
+[Arvo](/system/kernel/arvo) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
 
 [Eyre's External API Reference](/system/kernel/eyre/reference/external-api-ref#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
 

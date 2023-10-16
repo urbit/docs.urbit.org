@@ -3,7 +3,7 @@ title = "Building a CLI App"
 weight = 28
 +++
 
-We will utilize the basic calculator app logic from the [parsing guide](/guides/additional/parsing#recursive-parsers) to produce a linked calculator agent `%rpn` supporting the following operators by the appropriate parsers:
+We will utilize the basic calculator app logic from the [parsing guide](/language/hoon/guides/parsing#recursive-parsers) to produce a linked calculator agent `%rpn` supporting the following operators by the appropriate parsers:
 
 - numbers (as `@rs` without `.` dot prefix) (`royl-rs:so`)
 - `+` lus, addition (`lus`)

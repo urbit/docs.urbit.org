@@ -5,18 +5,22 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/khan/khan)
+Khan is the "control plane" and thread-runner vane. Its main purpose is to allow
+external applications to run [threads](/userspace/threads/overview) via a
+Unix Socket and receive the result.
 
-A brief overview of Khan, Urbit's control plane & thread runner vane.
+At this stage, Khan's external interface is still experimental, and there are
+not yet proper libraries for other languages that can make use of it. Therefore,
+these documents will only touch on Khan's internal interface.
 
-## [API Reference](/reference/arvo/khan/tasks)
+Khan's internal interface lets you run threads via Khan rather than having to
+poke [Spider](/userspace/threads/reference/api) and subscribe for the result.
+This interface is simpler and more ergonomic than Spider's, so is usually
+preferable.
 
-The `task`s Khan takes and the `gift`s it returns.
+There are two `task`s for running threads from userspace:
+[`%fard`](/system/kernel/khan/reference/tasks#fard) and
+[`%lard`](/system/kernel/khan/reference/tasks#lard). The former is for running a thread
+from file and the latter is for running an "in-line" thread, where you pass
+Khan the thread directly.
 
-## [Data Types](/reference/arvo/iris/types)
-
-Reference documentation of the data types used by Khan.
-
-## [Example](/reference/arvo/iris/example)
-
-An example of using Khan to run a thread.

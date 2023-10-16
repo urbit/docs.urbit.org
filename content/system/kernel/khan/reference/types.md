@@ -16,7 +16,7 @@ Thread result mold builder
 Khan returns this structure when the thread either successfully completes, or
 fails.
 
-If the [`each`](/reference/hoon/stdlib/1c#each) is `%.y`, it succeeded and `p`
+If the [`each`](/language/hoon/reference/stdlib/1c#each) is `%.y`, it succeeded and `p`
 contains the result in either a `cage` or a `page`. If the thread was run
 internally it's a `cage`, and if it was run externally it's a `page`.
 

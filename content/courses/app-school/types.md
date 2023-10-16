@@ -4,12 +4,12 @@ weight = 65
 +++
 
 This document explains a few of the types commonly used in Gall agents. In
-addition to these, the [Data Types](/reference/arvo/gall/data-types) section of the
+addition to these, the [Data Types](/system/kernel/gall/reference/data-types) section of the
 Gall vane documentation is a useful reference. In particular, the whole
-[`agent`](/reference/arvo/gall/data-types#agent) subsection, as well as
-[`bowl`](/reference/arvo/gall/data-types#bowl),
-[`boat`](/reference/arvo/gall/data-types#boat), and
-[`bitt`](/reference/arvo/gall/data-types#bitt).
+[`agent`](/system/kernel/gall/reference/data-types#agent) subsection, as well as
+[`bowl`](/system/kernel/gall/reference/data-types#bowl),
+[`boat`](/system/kernel/gall/reference/data-types#boat), and
+[`bitt`](/system/kernel/gall/reference/data-types#bitt).
 
 ## `vase`
 
@@ -39,7 +39,7 @@ of these next.
 
 ### Create a `vase`
 
-The [zapgar](/reference/hoon/rune/zap#-zapgar) rune (`!>`)
+The [zapgar](/language/hoon/reference/rune/zap#-zapgar) rune (`!>`)
 takes a single argument of any noun, and wraps it in a vase. For example, in the
 dojo:
 
@@ -62,7 +62,7 @@ constructing a `card` like a poke or a `%fact` `gift` to be sent off.
 
 ### Extract data from `vase`
 
-The [zapgal](/reference/hoon/rune/zap#-zapgal) rune (`!<`)
+The [zapgal](/language/hoon/reference/rune/zap#-zapgal) rune (`!<`)
 takes two arguments: A mold specifying the type to try and extract the data as,
 and the vase to be extracted.
 
@@ -116,7 +116,7 @@ some data. The `mark` corresponds to a mark file in the `/mar` directory, so a
 data in Clay, validating data sent between agents or over the network, and
 converting between different data types. For more information about mark files,
 you can refer to the [Marks section of the Clay
-documentation](/reference/arvo/clay/marks/marks).
+documentation](/system/kernel/clay/guides/marks/marks).
 
 ## `cage`
 
@@ -140,7 +140,7 @@ The `path` type is formally defined as:
 +$  path  (list knot)
 ```
 
-A knot is a `@ta` text atom (see the [Strings guide](/guides/additional/strings)
+A knot is a `@ta` text atom (see the [Strings guide](/language/hoon/guides/strings)
 for details), so a `path` is just a list of text. Rather than having to write
 `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like
 `/foo/bar/baz`.
@@ -172,8 +172,8 @@ Then, when you get a subscription request, you might do something like:
   ...(rest of code)...
 ```
 
-See the [Encoding in text](/guides/additional/strings#encoding-in-text) and
-[Decoding from text](/guides/additional/strings#decoding-from-text) sections of
+See the [Encoding in text](/language/hoon/guides/strings#encoding-in-text) and
+[Decoding from text](/language/hoon/guides/strings#decoding-from-text) sections of
 the Strings guide for more information on dealing with atoms encoded in strings.
 
 Aside from using function calls when constructing a `path` as demonstrated
@@ -203,12 +203,12 @@ agent receives them on `/some/wire`.
 
 More formally, `wire`s are used by Arvo to represent an event cause, and
 therefore return path, in a call stack called a
-[`duct`](/reference/arvo/overview#duct). Inter-vane communications happen over
-`duct`s as [`move`](/reference/arvo/overview#moves)s, and Gall converts the `card`s
+[`duct`](/system/kernel/arvo#duct). Inter-vane communications happen over
+`duct`s as [`move`](/system/kernel/arvo#moves)s, and Gall converts the `card`s
 produced by agents into such `move`s behind the scenes. A detailed understanding
 of this system is not necessary to write Gall agents, but if you're interested
-it's comprehensively documented in the [Arvo overview](/reference/arvo/overview) and
-[move trace tutorial](/reference/arvo/tutorials/move-trace).
+it's comprehensively documented in the [Arvo overview](/system/kernel/arvo) and
+[move trace tutorial](/system/kernel/arvo/guides/move-trace).
 
 For agents, the `wire` is specified in the second argument of a `%pass` `card`.
 It's used for anything you can `%pass`, such as `%poke`s, `%watch`es, and

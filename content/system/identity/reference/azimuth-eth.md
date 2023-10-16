@@ -6,9 +6,9 @@ weight = 5
 [Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all
 data related to Azimuth points and their ownership, and should be considered to
 be the ledger for Azimuth. This contract is just a data store - it only contains
-the bare minimum of business logic. See [Ecliptic.eth](/reference/azimuth/ecliptic)
+the bare minimum of business logic. See [Ecliptic.eth](/system/identity/reference/ecliptic)
 for the contract containing the business logic for this ledger. `Azimuth.eth`
-cannot be modified directly by [galaxy vote](/reference/glossary/upgrade) - they are
+cannot be modified directly by [galaxy vote](/TODO-GLOSSARY/upgrade) - they are
 only eligible to modify the Ecliptic.
 
 ## Global state {% #global %}
@@ -150,7 +150,7 @@ able to set its own domain name and so we do not expect this to remain the case
 forever.
 
 All data in this ledger is stored and processed locally on your ship by the
-[`%azimuth` Gall agent](/reference/azimuth/flow#azimuth), including [layer
-2](/reference/azimuth/l2/layer2) data. Because state transitions resulting from layer 2
+[`%azimuth` Gall agent](/system/identity/concepts/flow#azimuth), including [layer
+2](/system/identity/concepts/layer2) data. Because state transitions resulting from layer 2
 transactions are not included in this ledger, in general the local store will
 differ from what is kept in `Azimuth.eth`.

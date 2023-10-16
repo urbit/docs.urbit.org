@@ -132,40 +132,40 @@ In the text editor, we'll add the following:
     base+'hello'
     glob-ames+[~zod 0v0]
     version+[0 0 1]
-    website+'https://developers.urbit.org/guides/additional/software-distribution'
+    website+'https://developers.urbit.org/userspace/apps/guides/software-distribution'
     license+'MIT'
 ==
 ```
 
-You can refer to the [Docket File](/reference/additional/dist/docket)
+You can refer to the [Docket File](/userspace/apps/reference/dist/docket)
 documentation for more details of what is required. In brief, the
 `desk.docket-0` file contains a `hoon` list of
-[clauses](/reference/additional/dist/docket) which configure the appearance of
-the app tile, the source of the [glob](/reference/additional/dist/glob), and
+[clauses](/userspace/apps/reference/dist/docket) which configure the appearance of
+the app tile, the source of the [glob](/userspace/apps/reference/dist/glob), and
 some other metadata.
 
-We've given the app a [`%title`](/reference/additional/dist/docket#title) of
+We've given the app a [`%title`](/userspace/apps/reference/dist/docket#title) of
 "Hello", which will be displayed on the app tile and will be the name of the app
 when others browse to install it. We've given the app tile a
-[`%color`](/reference/additional/dist/docket#color) of `#8188C9`, and also
-specified the URL of an [`%image`](/reference/additional/dist/docket#image) to
+[`%color`](/userspace/apps/reference/dist/docket#color) of `#8188C9`, and also
+specified the URL of an [`%image`](/userspace/apps/reference/dist/docket#image) to
 display on the tile.
 
-The [`%base`](/reference/additional/dist/docket#base) clause specifies the base
+The [`%base`](/userspace/apps/reference/dist/docket#base) clause specifies the base
 URL path for the app. We've specified "hello" so it'll be
 `http://localhost:8080/apps/hello/...` in the browser. For the
-[glob](/reference/additional/dist/glob), we've used a clause of
-[`%glob-ames`](/reference/additional/dist/docket#glob-ames), which means the
+[glob](/userspace/apps/reference/dist/glob), we've used a clause of
+[`%glob-ames`](/userspace/apps/reference/dist/docket#glob-ames), which means the
 glob will be served from a ship over Ames, as opposed to being served over HTTP
-with a [`%glob-http`](/reference/additional/dist/docket#glob-http) clause or
-having an Eyre binding with a [`%site`](/reference/additional/dist/docket#site)
-clause. You can refer to the [glob](/reference/additional/dist/glob)
+with a [`%glob-http`](/userspace/apps/reference/dist/docket#glob-http) clause or
+having an Eyre binding with a [`%site`](/userspace/apps/reference/dist/docket#site)
+clause. You can refer to the [glob](/userspace/apps/reference/dist/glob)
 documentation for more details of the glob options. In our case we've specified
 `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket`
 agent will await a separate upload of the `glob`, so we can just specify `0v0`
 here as it'll get overwritten later.
 
-The [`%version`](/reference/additional/dist/docket#version) clause specifies the
+The [`%version`](/userspace/apps/reference/dist/docket#version) clause specifies the
 version as a triple of major version, minor version and patch version. The rest
 is just some additional informative metadata which will be displayed in _App
 Info_.
@@ -209,7 +209,7 @@ docket: awaiting manual glob for %hello desk
 ```
 
 That's because our `desk.docket-0` file includes a
-[`%glob-ames`](/reference/additional/dist/docket#glob-ames) clause which
+[`%glob-ames`](/userspace/apps/reference/dist/docket#glob-ames) clause which
 specifies our ship as the source, so it's waiting for us to upload the glob of
 front-end files.
 
@@ -293,7 +293,7 @@ Once you login, you'll notice you have the `Hello` app tile, but it still says
 We can now create a glob from the `hello-glob` directory we previously created.
 To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This
 will bring up the `%docket` app's
-[Globulator](/reference/additional/dist/glob#globulator) tool:
+[Globulator](/userspace/apps/reference/dist/glob#globulator) tool:
 
 ![Globulator](https://media.urbit.org/guides/additional/dist/2-globulator.png)
 

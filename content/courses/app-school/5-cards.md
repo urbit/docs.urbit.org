@@ -58,8 +58,8 @@ The type of the first field in a `%pass` card is a `wire`. A `wire` is just a
 list of `@ta`, with a syntax of `/foo/bar/baz`. When you `%pass` something to an
 agent or vane, the response will come back on the `wire` you specify here. Your
 agent can then check the `wire` and maybe do different things depending on its
-content. The [`wire`](/guides/core/app-school/types#wire) type is covered in
-the [types reference](/guides/core/app-school/types). We'll show how `wire`s
+content. The [`wire`](/courses/app-school/types#wire) type is covered in
+the [types reference](/courses/app-school/types). We'll show how `wire`s
 are practically used later on.
 
 The type of the next field is a `note:agent:gall` (henceforth just `note`), which
@@ -101,8 +101,8 @@ Note a few of these include a `path` field. The `path` type is exactly the same
 as a `wire` - a list of `@ta` with a syntax of `/foo/bar/baz`. The reason for
 the `wire`/`path` distinction is just to indicate their separate purposes. While
 a `wire` is for _responses_, a `path` is for _requests_. The
-[`path`](/guides/core/app-school/types#path) type is also covered in the
-[types reference](/guides/core/app-school/types).
+[`path`](/courses/app-school/types#path) type is also covered in the
+[types reference](/courses/app-school/types).
 
 The kinds of `task`s can be divided into two categories:
 
@@ -123,7 +123,7 @@ The kinds of `task`s can be divided into two categories:
 
 **Examples**
 
-![subscription card examples](https://media.urbit.org/guides/core/app-school/sub-cards.svg)
+![subscription card examples](https://media.urbit.org/courses/app-school/sub-cards.svg)
 
 #### Pokes
 
@@ -140,7 +140,7 @@ in the `cage` to the `mark` you specify before sending it off.
 
 **Examples**
 
-![poke card examples](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
+![poke card examples](https://media.urbit.org/courses/app-school/poke-cards.svg)
 
 ### `note-arvo`
 
@@ -167,11 +167,11 @@ The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for
 Clay, etc. After the vane letter comes the task. Each vane has an API with a
 set of tasks that it will accept, and are defined in each vane's section of
 `lull.hoon`. Each vane's tasks are documented on the API Reference page of its
-section in the [Arvo documentation](/reference/arvo/overview).
+section in the [Arvo documentation](/system/kernel/arvo).
 
 #### Examples
 
-![arvo card examples](https://media.urbit.org/guides/core/app-school/arvo-cards.svg)
+![arvo card examples](https://media.urbit.org/courses/app-school/arvo-cards.svg)
 
 ## `%give`
 
@@ -210,7 +210,7 @@ if it does not. Therefore, you would not explicitly produce a `%watch-ack` or
 
 #### Examples
 
-![ack card examples](https://media.urbit.org/guides/core/app-school/ack-cards.svg)
+![ack card examples](https://media.urbit.org/courses/app-school/ack-cards.svg)
 
 ### Subscriptions
 
@@ -230,15 +230,15 @@ receive the `%fact`. The `cage` is the data itself - a cell of a `mark` and a
 
 #### Examples
 
-![gift card examples](https://media.urbit.org/guides/core/app-school/gift-cards.svg)
+![gift card examples](https://media.urbit.org/courses/app-school/gift-cards.svg)
 
 ## Summary
 
 Here's a diagram that summarizes the different kinds of `card`s:
 
-[![card diagram](https://media.urbit.org/guides/core/app-school/card-diagram.svg)](https://media.urbit.org/guides/core/app-school/card-diagram.svg)
+[![card diagram](https://media.urbit.org/courses/app-school/card-diagram.svg)](https://media.urbit.org/courses/app-school/card-diagram.svg)
 
 ## Exercises
 
-- Have a read of the [`wire`](/guides/core/app-school/types#wire) and
-  [`path`](/guides/core/app-school/types#path) entries in the type reference.
+- Have a read of the [`wire`](/courses/app-school/types#wire) and
+  [`path`](/courses/app-school/types#path) entries in the type reference.

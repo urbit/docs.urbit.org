@@ -1,5 +1,5 @@
 +++
-title = "L2: Rollers"
+title = "Rollers"
 weight = 9
 +++
 
@@ -27,14 +27,14 @@ for detailed information on the API.
 
 `%roller` is the Gall agent which collects layer 2 Azimuth **transactions**, which
 are a concatenation of an
-[action](/reference/azimuth/l2/bytestring#actions) and a
-[signature](/reference/azimuth/l2/bytestring#signatures) and forms them into
-[batches](/reference/azimuth/l2/bytestring#batch) to be submitted periodically to the
+[action](/system/identity/reference/bytestring#actions) and a
+[signature](/system/identity/reference/bytestring#signatures) and forms them into
+[batches](/system/identity/reference/bytestring#batch) to be submitted periodically to the
 Ethereum blockchain.
 
 ### Transaction format
 
-See [Bytestring Format](/reference/azimuth/l2/bytestring) for a technical description of
+See [Bytestring Format](/system/identity/reference/bytestring) for a technical description of
 how layer 2 transactions are formatted.
 
 ### Pending transactions

@@ -1,7 +1,7 @@
 +++
 title = "Environment Setup"
 description = "How to set up an environment for Urbit development."
-weight = 2
+weight = 11
 +++
 
 This guide covers best practices for preparing your environment to develop
@@ -109,7 +109,7 @@ convenient planets and stars:
 | ~ralnyt-botdyt | `65.793` | ~marnec |
 
 Other points can be calculated using [the layout of
-Azimuth](https://developers.urbit.org/guides/core/hoon-school/C-azimuth#the-urbit-address-space).
+Azimuth](/courses/hoon-school/C-azimuth#the-urbit-address-space).
 
 ### Faster fake ship booting
 

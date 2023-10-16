@@ -35,7 +35,7 @@ ownership key and all of the related proxies.
 
 An ownership address has all rights over the assets deeded to it. These rights
 are on-chain actions described and implemented in
-[Ecliptic](/reference/glossary/ecliptic), Azimuth's suite of governing
+[Ecliptic](/TODO-GLOSSARY/ecliptic), Azimuth's suite of governing
 smart-contracts.
 
 ## Proxies
@@ -131,4 +131,4 @@ concrete suggestions on security practices.
 
 One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is
 used for making and signing Bridge transactions from an offline computer. A
-guide to using `claz` is available [here](/reference/azimuth/advanced-azimuth-tools).
+guide to using `claz` is available [here](/system/identity/guides/advanced-azimuth-tools).

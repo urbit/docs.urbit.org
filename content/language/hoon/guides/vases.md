@@ -6,24 +6,24 @@ weight = 115
 
 ## Overview
 
-A [`$vase`](/reference/hoon/stdlib/4o#vase) is a pair of
-[`$type`](/reference/hoon/stdlib/4o#type) and
-[`$noun`](/reference/hoon/stdlib/2q#noun), where the type describes the noun.
+A [`$vase`](/language/hoon/reference/stdlib/4o#vase) is a pair of
+[`$type`](/language/hoon/reference/stdlib/4o#type) and
+[`$noun`](/language/hoon/reference/stdlib/2q#noun), where the type describes the noun.
 They're used all over Urbit to represent data whose type we can't know ahead of
 time. This often comes up when being asked to compile and run other Hoon code.
 It's also used to store data that could be any type, but where we want to know
 the type, so we tag the value with its type to form a vase.
 
-- The [Arvo](/reference/glossary/arvo) kernel uses vases to build itself and run
-  [vanes](/reference/glossary/vane) (kernel modules).
-- The [Gall](/reference/glossary/gall) vane used to use vases to run userspace
-  [agents](/reference/glossary/agent), and probably will again in the future.
-- The Ford build system (in the [Clay](/reference/glossary/clay) vane) uses
+- The [Arvo](/TODO-GLOSSARY/arvo) kernel uses vases to build itself and run
+  [vanes](/TODO-GLOSSARY/vane) (kernel modules).
+- The [Gall](/TODO-GLOSSARY/gall) vane used to use vases to run userspace
+  [agents](/TODO-GLOSSARY/agent), and probably will again in the future.
+- The Ford build system (in the [Clay](/TODO-GLOSSARY/clay) vane) uses
   vases to build Hoon code and store typed files.
-- The [Dojo](/reference/glossary/dojo) shell uses vases to compile and run shell
+- The [Dojo](/TODO-GLOSSARY/dojo) shell uses vases to compile and run shell
   expressions and to run generators.
-- The [Spider](/reference/glossary/spider) agent uses vases to run
-  [threads](/reference/glossary/thread) (scripts written in an IO monad).
+- The [Spider](/TODO-GLOSSARY/spider) agent uses vases to run
+  [threads](/TODO-GLOSSARY/thread) (scripts written in an IO monad).
 
 ## Types and Molds
 
@@ -40,10 +40,10 @@ the type.
 The programmer can name parts of a type, including the type of the subject. Once
 part of a type has a name, Hoon code can refer to any named field within that
 type. Since the subject of any Hoon expression always has a known type at
-compile time, a reference (a [wing](/reference/glossary/wing), like
+compile time, a reference (a [wing](/TODO-GLOSSARY/wing), like
 `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0
 operation (subtree lookups) at a known constant
-[axis](/reference/hoon/stdlib/2q#axis) (tree slot).
+[axis](/language/hoon/reference/stdlib/2q#axis) (tree slot).
 
 A Hoon `$type` is defined by this (pronounced "buc type", also called "the type
 of type"):
@@ -81,7 +81,7 @@ axis and core arm) and constraints that limit the set of nouns described by this
 type.
 
 An `%atom` type describes a set of numbers. The `p=term` in an atom type is its
-[aura](/reference/glossary/aura), a name for a kind of value that can be stored
+[aura](/TODO-GLOSSARY/aura), a name for a kind of value that can be stored
 as an atom -- `%da` for date, `%ux` for hexadecimal number, `%t` for text, etc.
 The `q=(unit @)` is either `~`, meaning any value, or `[~ value]`, in which case
 this type has only a single member. The type `%foo` refers to the set whose only
@@ -108,11 +108,11 @@ the original hold.
 
 ### Cores
 
-All executable Hoon code is found in a [core](/reference/glossary/core). This
-core stores a map from [arm](/reference/glossary/arm) name (like an OOP getter
+All executable Hoon code is found in a [core](/TODO-GLOSSARY/core). This
+core stores a map from [arm](/TODO-GLOSSARY/arm) name (like an OOP getter
 function) to result type, along with some other information about the core. If
-the core is a [door](/reference/glossary/door) (like an OOP object) or a
-[gate](/reference/glossary/gate) (like an anonymous function), then slot 6 (the
+the core is a [door](/TODO-GLOSSARY/door) (like an OOP object) or a
+[gate](/TODO-GLOSSARY/gate) (like an anonymous function), then slot 6 (the
 head of the tail) of the core is a "sample" slot, which is overwritten with
 instance data or function argument, respectively. Whether this core expects a
 sample, and if so, what the sample's type is, is represented in the `$type` data
@@ -127,8 +127,8 @@ mode.
 The vase operations form a relatively simple algebra. This algebra can be
 thought of as a dynamically typed programming language. Each value in the
 language is a vase (a dynamically typed datum), and the basic operations are
-[`+slap`](/reference/hoon/stdlib/5c#slap) and
-[`+slop`](/reference/hoon/stdlib/5c#slop).
+[`+slap`](/language/hoon/reference/stdlib/5c#slap) and
+[`+slop`](/language/hoon/reference/stdlib/5c#slop).
 
 For example, the Hoon expression `(slap (slop v1 (slop v2 (slap v3 h1)) v4) h2)`
 takes in four vases and two hoon expressions, and produces a vase. A pseudocode
@@ -137,7 +137,7 @@ version of this would be `h2([v1 v2 h1(v3)])`
 ### Introduction Forms
 
 The primary introduction form for a vase is the
-[`!>`](/reference/hoon/rune/zap#-zapgar) rune, which produces a vase of its
+[`!>`](/language/hoon/reference/rune/zap#-zapgar) rune, which produces a vase of its
 input. A vase can also be constructed manually as a cell whose head nests in
 `$type`, like `[[%atom %ud ~] 3]`.
 
@@ -146,7 +146,7 @@ input. A vase can also be constructed manually as a cell whose head nests in
 An elimination form for a vase is something that converts a vase to a statically
 typed value.
 
-One unsafe elimination form is the [`!<`](/reference/hoon/rune/zap#-zapgal)
+One unsafe elimination form is the [`!<`](/language/hoon/reference/rune/zap#-zapgal)
 rune, which takes a mold and a value and (unsafely) converts the value to a
 typed value. The more traditional elimination form has no syntactic support, but
 involves pattern-matching on the type data structure, e.g. dispatching based on
@@ -251,5 +251,5 @@ Got noun at axis (tree address)
 
 ## Further Reading
 
-- [Standard library section 5c](/reference/hoon/stdlib/5c): This contains most
+- [Standard library section 5c](/language/hoon/reference/stdlib/5c): This contains most
   of the vase functions in the standard library.

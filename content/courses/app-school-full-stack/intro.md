@@ -4,7 +4,7 @@ weight = 1
 +++
 
 This series walks through the writing of a full Gall agent, and then the process
-of integrating it with a React front-end. This series follows on from [App School I](/guides/core/app-school/intro). If you haven't
+of integrating it with a React front-end. This series follows on from [App School I](/courses/app-school/intro). If you haven't
 completed that, or otherwise aren't familiar with the basics of writing Gall
 agents, it's strongly recommended to work through that guide first.
 
@@ -18,7 +18,7 @@ by specifying a date range.
 The `Journal` app we'll be looking at can be installed on a live ship from
 `~pocwet/journal`, and its source code is available [here](https://github.com/urbit/docs-examples/tree/main/journal-app).
 
-![journal ui screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
+![journal ui screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/entries.png)
 
 This walkthrough does not contain exercises, nor does it completely cover every
 aspect of building the app in full depth. Rather, its purpose is to demonstrate
@@ -37,51 +37,51 @@ more comprehensive manner.
 Here is the basic structure of the app we'll be building:
 
 ![journal app
-diagram](https://media.urbit.org/guides/core/app-school-full-stack-guide/journal-app-diagram.svg)
+diagram](https://media.urbit.org/courses/app-school-full-stack-guide/journal-app-diagram.svg)
 
 ## Sections
 
-#### [Introduction](/guides/core/app-school-full-stack/intro)
+#### [Introduction](/courses/app-school-full-stack/intro)
 
 An overview of the guide and table of contents.
 
-#### [1. Types](/guides/core/app-school-full-stack/1-types)
+#### [1. Types](/courses/app-school-full-stack/1-types)
 
 Creating the `/sur` structure file for our `%journal` agent.
 
-#### [2. Agent](/guides/core/app-school-full-stack/2-agent)
+#### [2. Agent](/courses/app-school-full-stack/2-agent)
 
 Creating the `%journal` agent itself.
 
-#### [3. JSON](/guides/core/app-school-full-stack/3-json)
+#### [3. JSON](/courses/app-school-full-stack/3-json)
 
 Writing a library to convert between our agent's marks and JSON. This lets our
 React front-end poke our agent, and our agent send updates back to it.
 
-#### [4. Marks](/guides/core/app-school-full-stack/4-marks)
+#### [4. Marks](/courses/app-school-full-stack/4-marks)
 
 Creating the mark files for the pokes our agent takes and updates it sends out.
 
-#### [5. Eyre](/guides/core/app-school-full-stack/5-eyre)
+#### [5. Eyre](/courses/app-school-full-stack/5-eyre)
 
 A brief overview of how the webserver vane Eyre works.
 
-#### [6. React App Setup](/guides/core/app-school-full-stack/6-react-setup)
+#### [6. React App Setup](/courses/app-school-full-stack/6-react-setup)
 
 Creating a new React app, installing the required packages, and setting up some
 basic things for our front-end.
 
-#### [7. React App Logic](/guides/core/app-school-full-stack/7-app-logic)
+#### [7. React App Logic](/courses/app-school-full-stack/7-app-logic)
 
 Analyzing the core logic of our React app, with particular focus on using
 methods of the `Urbit` class from `@urbit/http-api` to communicate with our
 agent.
 
-#### [8. Desk and Glob](/guides/core/app-school-full-stack/8-desk)
+#### [8. Desk and Glob](/courses/app-school-full-stack/8-desk)
 
 Building and "globbing" our front-end, and putting together a desk for
 distribution.
 
-#### [9. Summary](/guides/core/app-school-full-stack/9-final)
+#### [9. Summary](/courses/app-school-full-stack/9-final)
 
 Some final comments and additional resources.

@@ -8,7 +8,7 @@ description = "App Academy focuses on how to build a backend Gall agent, then on
 +++
 
 The Urbit Foundation offers cohort classes to cover the [App
-Academy](/guides/core/app-school) curriculum jointly.
+Academy](/courses/app-school) curriculum jointly.
 
 App Academy focuses on how to build a backend Gall agent, then on connecting it
 to a React-based front-end.  When you're done, you'll be able to produce and
@@ -29,7 +29,7 @@ The cohort after that is scheduled for the end of May 2023.
   mailing list about the next opportunity.
 
 Until then, feel free to work through the [App Academy
-docs](/guides/core/app-school).
+docs](/courses/app-school).
 
 
 ###  What will you learn?

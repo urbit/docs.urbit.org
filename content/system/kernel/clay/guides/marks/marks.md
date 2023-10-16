@@ -51,8 +51,8 @@ The second case of interest is the `+json` arm for converting to and from a `%js
 
 ## Sections
 
-[Writing Marks](/reference/arvo/clay/marks/writing-marks) - A practical walkthrough of writing a `mark` file.
+[Writing Marks](/system/kernel/clay/guides/marks/writing-marks) - A practical walkthrough of writing a `mark` file.
 
-[Using Marks](/reference/arvo/clay/marks/using-marks) - Details of using `mark` conversion gates and `mark` cores in your own code.
+[Using Marks](/system/kernel/clay/guides/marks/using-marks) - Details of using `mark` conversion gates and `mark` cores in your own code.
 
-[Examples](/reference/arvo/clay/marks/examples) - The example code used in the Writing Marks guide.
+[Examples](/system/kernel/clay/guides/marks/examples) - The example code used in the Writing Marks guide.

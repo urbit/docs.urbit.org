@@ -5,22 +5,22 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## [Overview](/reference/arvo/jael/jael)
+## [Overview](/system/kernel/jael)
 
 An overview of Jael, Urbit's security and encryption vane.
 
-## [API Reference](/reference/arvo/jael/tasks)
+## [API Reference](/system/kernel/jael/reference/tasks)
 
 The `task`s Jael takes and the `gift`s it returns.
 
-## [Scry Reference](/reference/arvo/jael/scry)
+## [Scry Reference](/system/kernel/jael/reference/scry)
 
 The scry endpoints of Jael.
 
-## [Data Types](/reference/arvo/jael/data-types)
+## [Data Types](/system/kernel/jael/reference/data-types)
 
 Reference documentation of the various data types used by Jael.
 
-## [Examples](/reference/arvo/jael/examples)
+## [Examples](/system/kernel/arvo/jael/examples)
 
 Practical examples of using Jael's `task`s.

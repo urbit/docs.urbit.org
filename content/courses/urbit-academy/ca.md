@@ -24,4 +24,4 @@ The first cohort for Core Academy will take place in late summer 2023.
 - [Complete this form](https://forms.gle/gdDWFLiDV1Te65nH8) to get on our
   mailing list about the next opportunity.
 
-Until then, feel free to work through the [Arvo docs](/reference/arvo).
+Until then, feel free to work through the [Arvo docs](/system/kernel/arvo).

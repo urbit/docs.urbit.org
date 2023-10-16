@@ -5,11 +5,11 @@ weight = 10
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
 
-A Gall agent is a [door](/reference/glossary/door) with exactly ten [arms](/reference/glossary/arm). Each arm is responsible for
+A Gall agent is a [door](/TODO-GLOSSARY/door) with exactly ten [arms](/TODO-GLOSSARY/arm). Each arm is responsible for
 handling certain kinds of events that Gall feeds in to the agent. A door is
-just a [core](/reference/glossary/core) with a sample - it's made with the
-[barcab](/reference/hoon/rune/bar#_-barcab) rune (`|_`) instead of the
-usual [barcen](/reference/hoon/rune/bar#-barcen) rune (`|%`).
+just a [core](/TODO-GLOSSARY/core) with a sample - it's made with the
+[barcab](/language/hoon/reference/rune/bar#_-barcab) rune (`|_`) instead of the
+usual [barcen](/language/hoon/reference/rune/bar#-barcen) rune (`|%`).
 
 ## The ten arms
 
@@ -59,7 +59,7 @@ agent, Gall populates the bowl with things like the current date-time, fresh ent
 subscription information, which ship the request came from, etc, so that all the
 arms of the agent have access to that data. For the exact structure and contents
 of the bowl, have a read through [its entry in the Gall vane types
-documentation](/reference/arvo/gall/data-types#bowl).
+documentation](/system/kernel/gall/reference/data-types#bowl).
 
 One important thing to note is that the bowl is only repopulated when there's a
 new Arvo event. If a local agent or web client were to send multiple
@@ -70,7 +70,7 @@ for this possibility.
 
 ## State
 
-If you've worked through [Hoon School](/guides/core/hoon-school/), you may
+If you've worked through [Hoon School](/courses/hoon-school/), you may
 recall that a core is a cell of `[battery payload]`. The battery is the core
 itself compiled to Nock, and the payload is the subject which it operates on.
 
@@ -141,7 +141,7 @@ dojo. We'll get to what each of the arms do later. For now, we'll just consider
 a few particular points.
 
 Firstly, note its structure - it's a door (created with `|_`) with a sample of
-`bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](/reference/hoon/irregular#-buctis)).
+`bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](/language/hoon/reference/irregular#-buctis)).
 
 Secondly, you'll notice some of the arms return:
 
@@ -285,7 +285,7 @@ If we again examine our agent core's payload by looking at the tail of
 
 - A Gall agent is a door with exactly ten specific arms and a sample of `bowl:gall`.
 - Each of the ten arms handle different kinds of events - Gall calls the
-  appropriate arm for the kind event it receives.
+  appropriate arm for the kind of event it receives.
 - The ten arms fit roughly into five categories:
   - State management.
   - Request handlers.
@@ -301,4 +301,4 @@ If we again examine our agent core's payload by looking at the tail of
 - Run through the [Example](#example) yourself on a fake ship if you've not done
   so already.
 - Have a look at the [`bowl` entry in the Gall data types
-  documentation](/reference/arvo/gall/data-types#bowl) if you've not done so already.
+  documentation](/system/kernel/gall/reference/data-types#bowl) if you've not done so already.

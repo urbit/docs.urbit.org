@@ -537,7 +537,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 Marked vase
 
-A pair of a [`mark`](#mark) and a [`vase`](/reference/hoon/stdlib/4o#vase)
+A pair of a [`mark`](#mark) and a [`vase`](/language/hoon/reference/stdlib/4o#vase)
 (type-value pair). These are extensively used for passing data around between
 vanes and agents.
 
@@ -1173,8 +1173,8 @@ commonly used in the type of a `card:agent:gall`.
 
 Event pretext
 
-Type-wise, a `wire` is the same as a [`path`](/reference/hoon/stdlib/2q#path); a
-`list` of [`knot`](/reference/hoon/stdlib/2q#knot)s with the syntax of
+Type-wise, a `wire` is the same as a [`path`](/language/hoon/reference/stdlib/2q#path); a
+`list` of [`knot`](/language/hoon/reference/stdlib/2q#knot)s with the syntax of
 `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or
 subscription endpoint, a `wire` is used for responses.
 

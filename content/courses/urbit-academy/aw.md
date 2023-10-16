@@ -20,4 +20,4 @@ The first cohort for App Workshop will take place in late 2023.
   mailing list about the next opportunity.
 
 Until then, feel free to work through the [App
-Workbook](/guides/additional/app-workbook).
+Workbook](/userspace/apps/examples).

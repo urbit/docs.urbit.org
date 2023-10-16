@@ -14,7 +14,7 @@ Terminal dimension.
 ```
 
 `p` is columns, `q` is rows. This structure is passed to Dill by the
-runtime in a [%blew](/reference/arvo/dill/tasks#blew) `task` whenever
+runtime in a [%blew](/system/kernel/dill/reference/tasks#blew) `task` whenever
 the dimensions of the terminal changes.
 
 ---
@@ -33,7 +33,7 @@ Terminal client input.
 ```
 
 A `$belt` is passed to Dill in a
-[%belt](/reference/arvo/dill/tasks#belt) `task` by the runtime whenever
+[%belt](/system/kernel/dill/reference/tasks#belt) `task` by the runtime whenever
 there is input, such as a user typing in the console. This is only used
 between the terminal client and Dill, a [$dill-belt](#dill-belt) is used
 between Dill and Arvo.
@@ -195,7 +195,7 @@ Wrapped Dill `task`s.
 ```
 
 These are a subset of Dill's `task`s which can be wrapped in a `%flog`
-`task`. See the [API Reference](/reference/arvo/dill/tasks) document for
+`task`. See the [API Reference](/system/kernel/dill/reference/tasks) document for
 details of each of these `task`s.
 
 ---
@@ -217,7 +217,7 @@ A [`$dill-belt`](#dill-belt) (client input) for a particular session.
 
 ## `$session-task`
 
-A subset of [Dill's `task`s](/reference/arvo/dill/tasks#session-tasks)
+A subset of [Dill's `task`s](/system/kernel/dill/reference/tasks#session-tasks)
 for interacting with a particular session.
 
 ```hoon
@@ -232,17 +232,17 @@ for interacting with a particular session.
   ==                                                  ::
 ```
 
-This type is used in the [`%shot`](/reference/arvo/dill/tasks#shot)
+This type is used in the [`%shot`](/system/kernel/dill/reference/tasks#shot)
 wrapper `task`.
 
-See the [Session Tasks](/reference/arvo/dill/tasks#session-tasks) entry
+See the [Session Tasks](/system/kernel/dill/reference/tasks#session-tasks) entry
 in the API reference for more details of these `task`s.
 
 ---
 
 ## `$told`
 
-A subset of [Dill's `task`s](/reference/arvo/dill/tasks#session-tasks)
+A subset of [Dill's `task`s](/system/kernel/dill/reference/tasks#session-tasks)
 for basic text printing.
 
 ```hoon
@@ -253,7 +253,7 @@ for basic text printing.
   ==                                                  ::
 ```
 
-See the [Told Tasks](/reference/arvo/dill/tasks#told-tasks) entry
+See the [Told Tasks](/system/kernel/dill/reference/tasks#told-tasks) entry
 in the API reference for more details of these `task`s.
 
 ---

@@ -384,7 +384,7 @@ Full transmission.
 ```
 
 Gall translates agent
-[`task:agent`](/reference/arvo/gall/data-types#taskagent)s emitted by
+[`task:agent`](/system/kernel/gall/reference/data-types#taskagent)s emitted by
 agents into `%deal` tasks, as well as requests from over the network.
 This `task` is kernel-level only, it cannot be used directly from
 userspace.
@@ -393,8 +393,8 @@ Its fields are:
 
 - `p`: A `sock`, a `(pair ship ship)`, the sending and receiving ships.
 - `q`: The source agent.
-- `r`: A [`deal`](/reference/arvo/gall/data-types#deal) is either a
-  [`task:agent`](/reference/arvo/gall/data-types#taskagent) or a
+- `r`: A [`deal`](/system/kernel/gall/reference/data-types#deal) is either a
+  [`task:agent`](/system/kernel/gall/reference/data-types#taskagent) or a
   `%raw-poke`. This is the request itself.
 
 #### Returns
@@ -448,7 +448,7 @@ Suspend agent.
 
 The agent specified in `dude` will be suspended. Note it is usually
 better to suspend agents with a
-[`%rein`](/reference/arvo/clay/tasks#rein---force-apps) `task` to Clay
+[`%rein`](/system/kernel/clay/reference/tasks#rein---force-apps) `task` to Clay
 rather than an `%idle` `task` to Gall.
 
 #### Returns
@@ -468,7 +468,7 @@ Load agents.
 This `task` is given to Gall by Clay. It contains the compiled agents to
 be installed or updated. This `task` would not be used from userspace.
 
-See the [`load`](/reference/arvo/gall/data-types#load) entry in the
+See the [`load`](/system/kernel/gall/reference/data-types#load) entry in the
 type reference for more details of the datastructure in this `task`.
 
 #### Returns
@@ -551,7 +551,7 @@ Set verbosity.
 ```
 
 This sets verbosity flags for Gall. Currently there's only one
-[`verb`](/reference/arvo/gall/data-types#verb), `%odd`, which prints
+[`verb`](/system/kernel/gall/reference/data-types#verb), `%odd`, which prints
 messages for unusual error cases. This overwrites the existing verbosity
 settings: an empty list will turn all verbosity flags off.
 

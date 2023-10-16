@@ -20,7 +20,7 @@ Computers were built and designed to carry out tasks which were too dainty and t
 
 In programming, we call this behavior a “loop”.  A loop describes the situation in which we set up some condition, and repeat a process over and over until something we do meets that condition.  _Most_ of the time, this means counting once for each item in a collection, like a list.
 
-Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values).  One way to do this is using the [`|-` barhep](/reference/hoon/rune/bar#--barhep) rune, which creates a structure called a _trap_.  (Think of the “trap” in the bottom of your sink.)  It means a point to which you can return again, perhaps with some key values (like a counter) changed.  Then you can repeat the calculation inside the trap again.  This continues until some single value, some noun, results, thereby handing a value back out of the expression.  (Remember that every Hoon expression results in a value.)
+Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values).  One way to do this is using the [`|-` barhep](/language/hoon/reference/rune/bar#--barhep) rune, which creates a structure called a _trap_.  (Think of the “trap” in the bottom of your sink.)  It means a point to which you can return again, perhaps with some key values (like a counter) changed.  Then you can repeat the calculation inside the trap again.  This continues until some single value, some noun, results, thereby handing a value back out of the expression.  (Remember that every Hoon expression results in a value.)
 
 This program adds 1+2+3+4+5 and returns the sum:
 
@@ -67,7 +67,7 @@ Let's unroll it:
 
 And thus `sum` yields the final value of `15`.
 
-It is frequently helpful, when constructing these, to be able to output the values at each step of the process.  Use the [`~&` sigpam](/reference/hoon/rune/sig#-sigpam) rune to create output without changing any values:
+It is frequently helpful, when constructing these, to be able to output the values at each step of the process.  Use the [`~&` sigpam](/language/hoon/reference/rune/sig#-sigpam) rune to create output without changing any values:
 
 ```hoon {% copy=true %}
 =/  counter  1
@@ -118,7 +118,7 @@ You can do even better using _interpolation_:
     ==
     ```
 
-    - We are using the `=` irregular syntax for the [`.=` dottis](/reference/hoon/rune/dot#-dottis) rune, which tests for the equality of two expressions.
+    - We are using the `=` irregular syntax for the [`.=` dottis](/language/hoon/reference/rune/dot#-dottis) rune, which tests for the equality of two expressions.
 
     ```hoon
     > +factorial 5
@@ -172,7 +172,7 @@ As we write more complicated programs, it is helpful to learn to read the runes 
 
 Recall that the `::` digraph tells the compiler to ignore the rest of the text on the line.  Such text is referred to as a "comment" because, instead of performing a computation, it exists to explain things to human readers of the source code.  Here, we have also explicitly marked the expansion of the irregular forms.
 
-We will revert to the irregular form more and more.  If you would like to see exactly how an expression is structured, you can use the [`!,` zapcom](/reference/hoon/rune/zap#-zapcom) rune.  `!,` zapcom produces an annotated _abstract syntax tree_ (AST) which labels every value and expands any irregular syntax into the regular runic form.
+We will revert to the irregular form more and more.  If you would like to see exactly how an expression is structured, you can use the [`!,` zapcom](/language/hoon/reference/rune/zap#-zapcom) rune.  `!,` zapcom produces an annotated _abstract syntax tree_ (AST) which labels every value and expands any irregular syntax into the regular runic form.
 
 ```hoon
 > !,  *hoon  (add 5 6)
@@ -246,8 +246,8 @@ For example, given the `tape` `"hello"`, the generator should return the list `[
 
 Two tools that may help:
 
-- You can retrieve the _n_^th^ element in a `tape` using the [`++snag`](/reference/hoon/stdlib/2b#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
-- You can join an element to a list using the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
+- You can retrieve the _n_^th^ element in a `tape` using the [`++snag`](/language/hoon/reference/stdlib/2b#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
+- You can join an element to a list using the [`++snoc`](/language/hoon/reference/stdlib/2b#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon {% copy=true %}
 |=  [input=tape]
@@ -293,11 +293,11 @@ So legs are for data and arms are for computations.  But what _specifically_ is 
 
 An _arm_ is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can—it's just a noun like any other.  You almost always want to think of an arm simply as a way of running some Hoon code.
 
-Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/reference/glossary/arm) is a Hoon expression to be evaluated against the core subject (i.e. its parent core is its subject).
+Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/TODO-GLOSSARY/arm) is a Hoon expression to be evaluated against the core subject (i.e. its parent core is its subject).
 
 #### Arms for Gates
 
-Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the [`++` luslus](/reference/hoon/rune/lus#-luslus) digraph.  (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value.  The `--` hephep limiter digraph is used because `|%` barcen can have any number of arms attached.  Like `++`, it is not formally a rune.)
+Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the [`++` luslus](/language/hoon/reference/rune/lus#-luslus) digraph.  (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value.  The `--` hephep limiter digraph is used because `|%` barcen can have any number of arms attached.  Like `++`, it is not formally a rune.)
 
 ```hoon {% copy=true %}
 |%
@@ -330,7 +330,7 @@ Notice here that we read the arm resolution from right-to-left.  This isn't the 
 
 #### Arms for Types
 
-We can define custom types for a core using [`+$` lusbuc](/reference/hoon/rune/lus#-lusbuc) digraphs.  We won't do much with these yet but they will come in handy for custom types later on.
+We can define custom types for a core using [`+$` lusbuc](/language/hoon/reference/rune/lus#-lusbuc) digraphs.  We won't do much with these yet but they will come in handy for custom types later on.
 
 This core defines a set of types intended to work with playing cards:
 
@@ -510,7 +510,7 @@ This result may seem a bit strange.  We didn't call `inc` or in any other way pa
 
 #### The Sample
 
-The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](/guides/core/hoon-school/G-trees).)
+The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](/courses/hoon-school/G-trees).)
 
 Let's look at the gate for inc again, paying particular attention to its sample:
 
@@ -662,7 +662,7 @@ In the following code, the `|-` barhep trap serves as the point of recursion, an
 %=($ index +(index))
 ```
 
-We are using the `+` irregular syntax for the [`.+` dotlus](/reference/hoon/rune/dot#-dotlus) rune, which increments a value (adds one).
+We are using the `+` irregular syntax for the [`.+` dotlus](/language/hoon/reference/rune/dot#-dotlus) rune, which increments a value (adds one).
 
 In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion—if there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)!  Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
 
@@ -737,7 +737,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     This fully recursive version of the Fibonacci calculation is very wasteful because it keeps no intermediate results.
 
-    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated.  We use the [`++snoc`](/reference/hoon/stdlib/2b#snoc) gate to append a noun to a `list`.
+    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated.  We use the [`++snoc`](/language/hoon/reference/stdlib/2b#snoc) gate to append a noun to a `list`.
 
     ```hoon {% copy=true %}
     |=  n=@ud
@@ -756,7 +756,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ==
     ```
 
-    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/reference/hoon/rune/dot#-dotlus).)
+    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, [`.+` dotlus](/language/hoon/reference/rune/dot#-dotlus).)
 
     This version is a little more complicated to compare using a diagram because of the trap, but yields something like this:
 
@@ -769,7 +769,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ~[1 1 2 3 5]
     ```
 
-    The program can be improved somewhat again by appending to the head of the cell (rather than using `++snoc`).  This builds a list in a backwards order, so we apply the [`++flop`](/reference/hoon/stdlib/2b#flop) gate to flip the order of the list before we return it.
+    The program can be improved somewhat again by appending to the head of the cell (rather than using `++snoc`).  This builds a list in a backwards order, so we apply the [`++flop`](/language/hoon/reference/stdlib/2b#flop) gate to flip the order of the list before we return it.
 
     ```hoon {% copy=true %}
     |=  n=@ud
@@ -861,7 +861,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
     $(n (dec n), t (mul t n))
     ```
 
-    The above code should look familiar.  We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`.  The `|-` here is used to create a new gate with one [arm](/reference/glossary/arm) `$` and immediately call it.  As before, think of `|-` as the recursion point.
+    The above code should look familiar.  We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`.  The `|-` here is used to create a new gate with one [arm](/TODO-GLOSSARY/arm) `$` and immediately call it.  As before, think of `|-` as the recursion point.
 
     We then evaluate `n` to see if it is 1. If it is, we return the value of `t`. In case that `n` is anything other than 1, we perform our recursion:
 

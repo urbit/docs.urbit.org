@@ -494,7 +494,7 @@ One argument, fixed.
 
 #### Discussion
 
-A zinc core has a read-only sample and an opaque context. See [Advanced types](/reference/hoon/advanced).
+A zinc core has a read-only sample and an opaque context. See [Advanced types](/language/hoon/reference/advanced).
 
 #### Examples
 

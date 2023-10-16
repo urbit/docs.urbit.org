@@ -31,15 +31,15 @@ tasks](#session-tasks) to specify the session. The [`%logs`](#logs)
 ```
 
 This `task` is used only once, when Arvo first enters the [adult
-stage](/reference/arvo/overview#structural-interface-core). Dill is
+stage](/system/kernel/arvo#structural-interface-core). Dill is
 technically the first vane to be activated, via the `%boot` `task`,
 which then sends Jael (considered the "true" first vane) the `%dawn` or
 `%fake` `task` wrapped in the `%boot` `task`. Jael then goes on to call
 `%init` `task`s for other vanes (including Dill).
 
 `lit` specifies whether to boot in lite mode. `p` is either a
-[%dawn](/reference/arvo/jael/tasks#dawn) or
-[%fake](/reference/arvo/jael/tasks#fake) `task:jael`. `%dawn` is for an
+[%dawn](/system/kernel/jael/reference/tasks#dawn) or
+[%fake](/system/kernel/jael/reference/tasks#fake) `task:jael`. `%dawn` is for an
 ordinary boot and `%fake` is for booting a fake ship.
 
 This `task` would not be used from userspace.
@@ -78,7 +78,7 @@ A `%flog` `task` is a wrapper over a `task` sent by another vane. Dill
 removes the wrapper and sends the bare `task` to itself over the default
 `duct`.
 
-A `%flog` `task` takes a [$flog](/reference/arvo/dill/data-types#flog)
+A `%flog` `task` takes a [$flog](/system/kernel/dill/reference/data-types#flog)
 as its argument. A `$flog` is a subset of Dill's `task`s.
 
 #### Returns
@@ -127,7 +127,7 @@ gifts each time system output occurs. A `%logs` gift looks like:
 
 A `$told` is either a [`%crud`](#crud), [`%talk`](#talk) or
 [`%text`](#text) task. See the
-[`$told`](/reference/arvo/dill/data-types#dill-belt) entry in the data
+[`$told`](/system/kernel/dill/reference/data-types#dill-belt) entry in the data
 types reference for more details.
 
 ---
@@ -193,7 +193,7 @@ Task for session.
 A `$session-task` is one of these `task`s: [`%belt`](#belt),
 [`%blew`](#blew), [`%flee`](#flee), [`%hail`](#hail), [`%open`](#open),
 [`%shut`](#shut), [`%view`](#view). See the
-[`$session-task`](/reference/arvo/dill/data-types#session-task) entry in
+[`$session-task`](/system/kernel/dill/reference/data-types#session-task) entry in
 the data types reference.
 
 ---
@@ -209,7 +209,7 @@ Toggle Arvo verbose mode.
 This `task` toggles verbose mode for all of Arvo, which is located here
 since Dill is the vane that prints errors. To be precise, `%verb`
 toggles the laconic bit `lac` in the [Arvo
-state](/reference/arvo/overview#the-state) by passing a `%verb` `waif`
+state](/system/kernel/arvo#the-state) by passing a `%verb` `waif`
 to Arvo.
 
 #### Returns
@@ -225,7 +225,7 @@ would normally be wrapped in a [`%shot`](#shot) `task` to specify the
 session, rather than sent directly.
 
 This subset of Dill's `task`s are defined in the [`$session-task`
-type](/reference/arvo/dill/data-types#session-task).
+type](/system/kernel/dill/reference/data-types#session-task).
 
 ### `%belt`
 
@@ -235,9 +235,9 @@ Terminal input.
 [%belt p=belt]
 ```
 
-The [$belt](/reference/arvo/dill/data-types#belt) in `p` contains the
+The [$belt](/system/kernel/dill/reference/data-types#belt) in `p` contains the
 input such as which key was pressed. Dill will convert the `$belt` into
-a [$dill-belt](/reference/arvo/dill/data-types#dill-belt) and `%poke` it
+a [$dill-belt](/system/kernel/dill/reference/data-types#dill-belt) and `%poke` it
 into the session handler agent for the session in question.
 
 This `task` should be wrapped in a [`%shot`](#shot) `task` to specify
@@ -258,11 +258,11 @@ Terminal resized.
 [%blew p=blew]
 ```
 
-The [$blew](/reference/arvo/dill/data-types#blew) specifies the new
+The [$blew](/system/kernel/dill/reference/data-types#blew) specifies the new
 dimensions.
 
 Dill will convert the `$blew` into a `%rez`
-[$dill-belt](/reference/arvo/dill/data-types#dill-belt) and `%poke`s the
+[$dill-belt](/system/kernel/dill/reference/data-types#dill-belt) and `%poke`s the
 session handler (typically `drum`) with it.
 
 This `task` would not typically be used from userspace. Instead, it
@@ -306,7 +306,7 @@ Refresh.
 ```
 
 Dill converts a `%hail` `task` into a `%hey`
-[$dill-belt](/reference/arvo/dill/data-types#dill-belt) and `%poke`s the
+[$dill-belt](/system/kernel/dill/reference/data-types#dill-belt) and `%poke`s the
 session handler (typically `%drum`) with it.
 
 This `task` would not typically be used from userspace. If in an odd
@@ -344,9 +344,9 @@ stand-alone application, `q` could be empty, or else just contain that
 one app.
 
 Dill will poke every agent listed in  `q` (local or remote) with a
-[`%yow` `$dill-belt`](/reference/arvo/dill/data-types#dill-belt), to let
+[`%yow` `$dill-belt`](/system/kernel/dill/reference/data-types#dill-belt), to let
 it know it's been connected. It will also `%watch` the agent `p` for
-[`$dill-blit`](/reference/arvo/dill/data-types#dill-blit)s in `%fact`s
+[`$dill-blit`](/system/kernel/dill/reference/data-types#dill-blit)s in `%fact`s
 with a `%dill-blit` `mark` on the `path` `/dill/[ses]` where `ses` is
 the session specified in the [`%shot`](#shot) wrapper.
 
@@ -365,7 +365,7 @@ requester as the occur for the session. A `%blit` `gift` looks like:
 [%blit p=(list blit)]
 ```
 
-See the [`$blit`](/reference/arvo/dill/data-types#blit) entry in the
+See the [`$blit`](/system/kernel/dill/reference/data-types#blit) entry in the
 data type reference for details of what it can contain.
 
 This subscription for `$blit`s can be stopped with a [`%flee`](#flee)
@@ -418,7 +418,7 @@ in the [`%shot`](#shot) wrapper, or the default session (`%$`) if a
 [%blit p=(list blit)]
 ```
 
-See the [`$blit`](/reference/arvo/dill/data-types#blit) entry in the
+See the [`$blit`](/system/kernel/dill/reference/data-types#blit) entry in the
 data type reference for more details.
 
 The subscription can be ended with a [`%flee`](#flee) `task`.
@@ -428,7 +428,7 @@ The subscription can be ended with a [`%flee`](#flee) `task`.
 ## Told Tasks
 
 This subset of Dill `task`s are for printing things. They are defined in
-the [`$told` type](/reference/arvo/dill/data-types#told).
+the [`$told` type](/system/kernel/dill/reference/data-types#told).
 
 ### `%crud`
 

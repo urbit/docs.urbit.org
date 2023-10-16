@@ -35,7 +35,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 The actual production Nock interpreter. Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
-in the [runtime system documentation](/reference/runtime/runtime).
+in the [runtime system documentation](/system/runtime/runtime).
 ```
 /* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */
@@ -1199,7 +1199,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
    * Nock is a combinator interpreter on nouns. A noun is an atom or a cell.
    * An atom is an unsigned integer of any size; a cell is an ordered pair of nouns.
    *
-   * @see http://urbit.org/reference/nock/definition/
+   * @see http://urbit.org/language/nock/definition/
    * @see https://media.urbit.org/whitepaper.pdf
    */
 

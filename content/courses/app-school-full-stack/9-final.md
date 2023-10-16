@@ -15,7 +15,7 @@ be installed from `~pocwet/journal`.
 In this guide we've built a separate React app for the front-end, but Hoon also
 has a native domain-specific language for composing HTML structures called Sail.
 Sail allows you to compose a front-end inside a Gall agent and serve it
-directly. See the [Sail guide](/guides/additional/sail) for details.
+directly. See the [Sail guide](/language/hoon/guides/sail) for details.
 
 Along with `@urbit/http-api`, there's also the `@urbit/api` NPM package, which
 contains a large number of helpful functions for dealing with Hoon data types
@@ -29,7 +29,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Types
 
-- [App School /sur section](/guides/core/app-school/7-sur-and-marks#sur) -
+- [App School /sur section](/courses/app-school/7-sur-and-marks#sur) -
   This section of App School covers writing a `/sur` structure library for
   an agent.
 
@@ -40,7 +40,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Agent
 
-- [App School I](/guides/core/app-school/intro) - App School I covers all
+- [App School I](/courses/app-school/intro) - App School I covers all
   aspects of writing Gall agents in detail.
 
 - [Ordered map functions in
@@ -54,46 +54,46 @@ Here is the reference material for each section of this walkthrough.
 
 ### JSON
 
-- [The JSON Guide](/guides/additional/json-guide) - The stand-alone JSON guide
+- [The JSON Guide](/language/hoon/guides/json-guide/) - The stand-alone JSON guide
   covers JSON encoding/decoding in great detail.
-- [The Zuse Reference](/reference/hoon/zuse) - The
+- [The Zuse Reference](/language/hoon/reference/zuse) - The
   `zuse.hoon` reference documents all JSON-related functions in detail.
 
-- [`++enjs:format` reference](/reference/hoon/zuse/2d_1-5#enjsformat) -
+- [`++enjs:format` reference](/language/hoon/reference/zuse/2d_1-5#enjsformat) -
   This section of the `zuse.hoon` documentation covers all JSON encoding
   functions.
 
-- [`++dejs:format` reference](/reference/hoon/zuse/2d_6) - This section of
+- [`++dejs:format` reference](/language/hoon/reference/zuse/2d_6) - This section of
   the `zuse.hoon` documentation covers all JSON _decoding_ functions.
 
-- [Eyre Overview](/reference/arvo/eyre/eyre) - This section of the Eyre vane
+- [Eyre Overview](/system/kernel/eyre) - This section of the Eyre vane
   documentation goes over the basic features of the Eyre vane.
 
 ### Marks
 
-- [The Marks section of the Clay documentation](/reference/arvo/clay/marks/marks) -
+- [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks/marks) -
   This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall
-  Guide](/guides/core/app-school/7-sur-and-marks#mark-files) - This part of
+  Guide](/courses/app-school/7-sur-and-marks#mark-files) - This part of
   App School goes through the basics of mark files.
 
-- [The JSON Guide](/guides/additional/json-guide) - This also covers writing mark
+- [The JSON Guide](/language/hoon/guides/json-guide/) - This also covers writing mark
   files to convert to/from JSON.
 
 ### Eyre
 
-- [The Eyre vane documentation](/reference/arvo/eyre/eyre) - This section of the vane
+- [The Eyre vane documentation](/system/kernel/eyre) - This section of the vane
   docs covers all aspects of Eyre.
-- [Eyre External API Reference](/reference/arvo/eyre/external-api-ref) - This section
+- [Eyre External API Reference](/system/kernel/eyre/reference/external-api-ref) - This section
   of the Eyre documentation contains reference material for Eyre's external API.
 
-- [The Eyre Guide](/reference/arvo/eyre/guide) - This section of the Eyre
+- [The Eyre Guide](/system/kernel/eyre/guides/guide) - This section of the Eyre
   documentation walks through using Eyre's external API at a low level (using
   `curl`).
 
 ### React App Setup and Logic
 
-- [HTTP API Guide](/guides/additional/http-api-guide) - Reference documentation for
+- [HTTP API Guide](/tools/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
 
 - [React app source
@@ -106,12 +106,12 @@ Here is the reference material for each section of this walkthrough.
 
 ### Desk and Glob
 
-- [App publishing/distribution docs](/guides/additional/software-distribution) -
+- [App publishing/distribution docs](/userspace/apps/guides/software-distribution) -
   Documentation covering third party desk composition, publishing and
   distribution.
 
-- [Glob documentation](/reference/additional/dist/glob) - Comprehensive documentation
+- [Glob documentation](/userspace/apps/reference/dist/glob) - Comprehensive documentation
   of handling front-end files.
 
-- [Desk publishing guide](/guides/additional/software-distribution) - A step-by-step guide to
+- [Desk publishing guide](/userspace/apps/guides/software-distribution) - A step-by-step guide to
   creating and publishing a desk.

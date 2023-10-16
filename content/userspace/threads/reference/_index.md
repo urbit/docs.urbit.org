@@ -8,22 +8,22 @@ insert_anchor_links = "right"
 
 Tutorial and explanation of the basics of writing threads.
 
-## [Fundamentals](/guides/additional/threads/fundamentals)
+## [Fundamentals](/userspace/threads/tutorial/basics/fundamentals)
 
 Basic explanation of threads and usage of the strand arms `form` and `pure`.
 
-## [Bind](/guides/additional/threads/bind)
+## [Bind](/userspace/threads/tutorial/basics/bind)
 
 Using micgal (`;<`) and the strand arm `bind` to chain strands together.
 
-## [Input](/guides/additional/threads/input)
+## [Input](/userspace/threads/tutorial/basics/input)
 
 Information on what a strand takes.
 
-## [Output](/guides/additional/threads/output)
+## [Output](/userspace/threads/tutorial/basics/output)
 
 Information on what a strand produces.
 
-## [Summary](/guides/additional/threads/summary)
+## [Summary](/userspace/threads/tutorial/basics/summary)
 
 Summary of this information.

@@ -51,7 +51,7 @@ changed two parts: `%core` and `%face`.  We added polymorphism to
 
 If cores never changed, we wouldn't need polymorphism.  Of
 course, nouns are immutable and never change, but we use them as
-but we use them as templates to construct new nouns around.
+templates to construct new nouns around.
 
 Suppose we take a core, a cell `[battery payload]`, and replace
 the payload with a different noun.  Then, we invoke an arm from
@@ -192,7 +192,7 @@ limb, we just search the type depth-first.
 If a name is in the `p.p` `map`, it's an alias.  (An alias is defined using the
 `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name
 resolves to that hoon (compiled against the `q` type).  If the unit is empty,
-the name is blocked / skipped (see [limb](/reference/hoon/limbs/limb) for what
+the name is blocked / skipped (see [limb](/language/hoon/reference/limbs/limb) for what
 this means).
 
 If a name is the `q.p` `term`, it's a bridge.  (A bridge is defined using the

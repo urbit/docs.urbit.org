@@ -4,7 +4,7 @@ description = "Learn about scrying over the network"
 weight = 5
 +++
 
-To [scry](/reference/glossary/scry) is to perform a *read* from Urbit's
+To [scry](/TODO-GLOSSARY/scry) is to perform a *read* from Urbit's
 referentially transparent namespace. In other words, it's a function from a
 `path` to a `noun` (although in some cases, the resulting type may be more
 constrained). Previously we only supported scrying within the same ship, but
@@ -35,7 +35,7 @@ from Kernel version `[%zuse 413]`, it is possible to scry from *other* ships.
 ## Lifecycle of a scry
 
 When you think of scry, you probably think of [`.^`
-(dotket)](/reference/hoon/rune/dot#-dotket). However, since networking is
+(dotket)](/language/hoon/reference/rune/dot#-dotket). However, since networking is
 asynchronous, this is not a suitable interface for remote scry. Instead, a ship
 that wants to read from a remote part of the namespace will have to pass a
 `%keen` task to its Ames, which then cooperates with Vere to produce the
@@ -51,10 +51,10 @@ possible to scry.
 ## Publishing
 
 At the moment, there are two vanes that can handle remote scry requests:
-[Clay](/reference/arvo/clay/clay) and [Gall](/reference/arvo/gall/gall). Clay
+[Clay](/system/kernel/clay) and [Gall](/system/kernel/gall). Clay
 uses it to distribute source code in a more efficient manner than is possible
 with conventional Ames, but conceptually it only extends its [local
-scries](/reference/arvo/clay/scry) over the network, with the notable
+scries](/system/kernel/clay/reference/scry) over the network, with the notable
 difference that you can't scry at the *current* time, since the requester
 doesn't know when the request reaches the publisher. Additionally, the paths
 are modified so that the vane and care are specified separately, like so:
@@ -190,7 +190,7 @@ At this point, most of these should be very clear, but briefly:
   The outer `unit` of `roar` will be `~` if Ames doesn't have a
   response, but may have one in the future. Otherwise, it will
   contain a signature and the data. The data in the
-  [`$roar`](/reference/arvo/ames/data-types#roar) may be `~`,
+  [`$roar`](/system/kernel/ames/reference/data-types#roar) may be `~`,
   meaning that there is no value at this path and will never be
   one.
 
@@ -202,15 +202,15 @@ making scry requests from threads using `+keen` in `lib/strandio`. It accepts a
 that demonstrates
 this](https://github.com/urbit/urbit/blob/i/5788/remote-scry/pkg/arvo/ted/keen.hoon).
 You can run it from the dojo using `-keen [ship path]`. For example, this reads
-the thread's own source code out of `~sampel`'s `%kids` desk, try it!
+the `%noun` mark's source code out of `~zod`'s `%kids` desk, try it!
 
 ```
--keen [~sampel /c/x/1/kids/ted/keen/hoon]
+-keen [~zod /c/x/1/kids/mar/noun/hoon]
 ```
 
 ## Additional reading
 
-- [Gall scry reference](/reference/arvo/gall/scry): Reference documentation of
+- [Gall scry reference](/system/kernel/gall/reference/scry): Reference documentation of
   Gall's vane-level and agent-level scry interface.
 
-- [Ames API reference](/reference/arvo/ames/tasks): Reference documentation of `task`s that can be passed to Ames, including those for remote scries.
+- [Ames API reference](/system/kernel/ames/reference/tasks): Reference documentation of `task`s that can be passed to Ames, including those for remote scries.

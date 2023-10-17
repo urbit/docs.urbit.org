@@ -1,13 +1,9 @@
 +++
-title = "Identity"
+title = "Concepts"
 weight = 700
 sort_by = "weight"
 insert_anchor_links = "right"
 +++
-
-### [Azimuth](/system/identity/azimuth)
-
-An overview of the Ethereum-based public key infrastructure utilized by Urbit.
 
 ### [Urbit HD Wallet](/system/identity/hd-wallet)
 
@@ -19,22 +15,12 @@ referred to as a "master ticket".
 Diagrams and explanations of how data flows between Bridge and the various
 components inside Urbit involved with layer 2.
 
-### [Azimuth.eth](/system/identity/reference/azimuth-eth)
+### [Layer 2 Overview](/system/identity/layer2)
 
-A description of the `azimuth.eth` smart contract, which is the data store for
-Azimuth.
+Technical details of Azimuth's "Layer 2" scaling solution, also known as "naive
+rollups".
 
-### [Ecliptic.eth](/system/identity/reference/ecliptic)
-
-A description of the `ecliptic.eth` smart contract, which is the business logic
-for `azimuth.eth`. This includes an overview of all function calls available.
-
-### [Advanced Azimuth Tools](/system/identity/guides/advanced-azimuth-tools)
-
-Expert-level tooling for generating, signing, and sending layer 1 Azimuth-related
-transactions from within Urbit itself.
-
-### [Life and Rift](/system/identity/azimuth)
+### [Life and Rift](/system/identity)
 
 An explanation of how Azimuth indexes networking keys and breaches to keep track
 of the most recent set of networking keys necessary to communicate with a ship.

@@ -86,7 +86,7 @@ mark in the same manner as our `%journal-action` mark above.
 
 ## Resources
 
-- [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks/marks) -
+- [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks) -
   This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall
   Guide](/courses/app-school/7-sur-and-marks#mark-files) - This part of

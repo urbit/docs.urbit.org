@@ -5,9 +5,51 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## Table of Contents
+This guide will walk through everything you need to know to write your own Gall
+agents.
 
-- [Introduction](/courses/app-school/intro)
+App School I is suitable for anyone with an intermediate knowledge of Hoon. If
+you've worked through [Hoon School](/courses/hoon-school/) or something
+equivalent, you should be fine.
+
+## What are Gall agents?
+
+Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating
+system. Gall's purpose is to manage userspace applications called _agents_.
+
+An agent is a piece of software that is primarily focused on maintaining and
+distributing a piece of state with a defined structure. It exposes an interface
+that lets programs read, subscribe to, and manipulate the state. Every event
+happens in an atomic transaction, so the state is never inconsistent. Since the
+state is permanent, when the agent is upgraded with a change to the structure of
+the state, the developer provides a migration function from the old state type
+to the new state type.
+
+It's not too far off to think of an agent as simply a database with
+developer-defined logic. But an agent is significantly less constrained than a
+database. Databases are usually tightly constrained in one or more ways because
+they need to provide certain guarantees (like atomicity) or optimizations (like
+indexes). Arvo is a [single-level
+store](/system/kernel/arvo#single-level-store), so atomicity comes for free.
+Many applications don't use databases because they need relational indices;
+rather, they use them for their guarantees around persistence. Some do need the
+indices, though, and it's not hard to imagine an agent which provides a
+SQL-like interface.
+
+On the other hand, an agent is also a lot like what many systems call a
+"service". An agent is permanent and addressable -- a running program can talk
+to an agent just by naming it. An agent can perform
+[IO](https://urbit.org/blog/io-in-hoon), unlike most databases. This is a
+critical part of an agent: it performs IO along the same transaction boundaries
+as changes to its state, so if an effect happens, you know that the associated
+state change has happened.
+
+But the best way to think about an agent is as a state machine. Like a state
+machine, any input could happen at any time, and it must react coherently to
+that input. Output (effects) and the next state of the machine are a pure
+function of the previous state and the input event.
+
+## Table of Contents
 
 #### Lessons
 

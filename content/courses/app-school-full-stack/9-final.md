@@ -40,7 +40,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Agent
 
-- [App School I](/courses/app-school/intro) - App School I covers all
+- [App School I](/courses/app-school) - App School I covers all
   aspects of writing Gall agents in detail.
 
 - [Ordered map functions in
@@ -71,7 +71,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Marks
 
-- [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks/marks) -
+- [The Marks section of the Clay documentation](/system/kernel/clay/guides/marks) -
   This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall
   Guide](/courses/app-school/7-sur-and-marks#mark-files) - This part of

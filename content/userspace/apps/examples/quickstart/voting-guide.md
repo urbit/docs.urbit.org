@@ -12,7 +12,7 @@ can be verified to have come from a group member and duplicate votes can be
 detected, but it cannot be determined who voted for what. The finished app will
 look like this:
 
-![tally screenshot](https://media.urbit.org/userspace/apps/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
+![tally screenshot](https://media.urbit.org/apps/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
 
 The front-end of the app will be written in
 [Sail](/TODO-GLOSSARY/sail), Urbit's XML language built into the Hoon
@@ -23,7 +23,7 @@ page.
 
 This app depends on the groups app
 [Squad](https://urbit.org/applications/~pocwet/docs), which we wrote in [another
-lightning tutorial](/userspace/apps/guides/quickstart/groups-guide). If you'd like to check out
+lightning tutorial](/userspace/apps/examples/quickstart/groups-guide). If you'd like to check out
 the finished app, you can install it from `~pocwet/tally` with the `|install
 ~pocwet %tally` command in your ship's Dojo, or else install it from your ship's
 homescreen. Before installing Tally, you should first install Squad from
@@ -1978,9 +1978,9 @@ ship> %tally` or by searching for `<our ship>` on their ship's homescreen.
 ## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon
-School](/courses/hoon-school/A-intro) is a comprehensive guide to the
+School](/courses/hoon-school) is a comprehensive guide to the
 language, and the best place to start. After learning the basics of Hoon, [App
-School](/courses/app-school/intro) will teach you everything you need to
+School](/courses/app-school) will teach you everything you need to
 know about app development.
 
 Along with these self-directed guides, we also run regular courses on both Hoon

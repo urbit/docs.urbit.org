@@ -1,5 +1,5 @@
 +++
-title = "Transaction Format"
+title = "L2 Transaction Format"
 weight = 8
 +++
 

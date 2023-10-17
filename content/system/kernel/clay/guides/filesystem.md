@@ -20,7 +20,7 @@ sometimes you may find structure definitions in `/lib`, for example.
 - `/lib` contains libraries that may be shared by multiple agents, threads,
   generators, etc. However, this is not the location of the standard libraries
   (see `/sys`). Libraries are imported from `/lib` with `/+`.
-- `/mar` contains [mark](/system/kernel/clay/guides/marks/marks) definitions.
+- `/mar` contains [mark](/system/kernel/clay/guides/marks) definitions.
 - `/sur` contains shared [structure](/language/hoon/reference/rune/) definitions.
   Whenever you expect structures to be used by code across multiple files, it is
   recommended to place their shared structures in `/sur`. Structures are
@@ -32,7 +32,7 @@ sometimes you may find structure definitions in `/lib`, for example.
   rule - structures and functions that are central to Hoon, Arvo, and its vanes,
   are all located within this folder rather than in `/lib` and `/sur`. See
   [below](#sys) for more information on `/sys`.
-- `/ted` contains [threads](/userspace/threads/overview). These may be run
+- `/ted` contains [threads](/userspace/threads). These may be run
   from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run
   with `-foo`. Threads on desks other than the `%base` desk can be run with
   `-desk!thread` like `-garden!foo`.
@@ -51,7 +51,7 @@ just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon`
 - `hoon.hoon` contains the Hoon compiler and the [Hoon standard
   library](/language/hoon/reference/stdlib). The Hoon
   compiler is self-hosted. This is the first file loaded by the Nock virtual
-  machine, [Vere](/system/runtime/runtime), in order for it to learn how to
+  machine, [Vere](/system/runtime), in order for it to learn how to
   interpret Hoon. The kelvin version number is the subject of `hoon.hoon`,
   currently at 140. One may see this from dojo by inspecting the subject with
   `.` and noting that `%140` is the final entry of the subject.

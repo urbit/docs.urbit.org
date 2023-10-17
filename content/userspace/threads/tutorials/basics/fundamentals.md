@@ -165,3 +165,4 @@ We cast the output to `form` - the mold of the strand we created.
 Finally we call `pure` with the gate input `arg` as its argument. Since `arg` is a `vase` it will return the `form` of a `strand` which produces a `vase`. Thus we've created a thread in accordance with its type definition.
 
 Next we'll look at the third arm of a strand: `bind`.
+

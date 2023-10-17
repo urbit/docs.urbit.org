@@ -1,5 +1,5 @@
 +++
-title = "Layer 2 Actions"
+title = "L2 Actions"
 weight = 6
 +++
 
@@ -8,7 +8,7 @@ There are a total of eleven layer 2 actions, each corresponding to a familiar
 `%configure-keys`, `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`,
 `%set-management-proxy`, `%set-spawn-proxy`, and `%set-transfer-proxy`.
 Descriptions of what these actions do may be found by searching for them at
-[Azimuth.eth](/system/identity/azimuth-eth).
+[Azimuth.eth](/system/identity-eth).
 
 Once a ship moves to layer 2, the owner will still utilize the same private keys
 they used before the transfer to perform Azimuth actions. This includes the ownership

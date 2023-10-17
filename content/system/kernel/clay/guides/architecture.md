@@ -172,5 +172,5 @@ of this system in some detail.
 ## Marks
 
 Central to a typed filesystem is the idea of file types. In Clay, we
-call these `mark`s. See the [Marks](/system/kernel/clay/guides/marks/marks)
+call these `mark`s. See the [Marks](/system/kernel/clay/guides/marks)
 section for more details.

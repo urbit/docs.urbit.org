@@ -5,52 +5,36 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-This is where you look for answers to specific technical questions.
-
-## [Hoon Overview](/language/hoon/overview)
-
-The design decisions underlying Hoon.
-
-## [Syntax Cheat Sheet](/language/hoon/reference/cheat-sheet)
-
-A quick reference guide to Hoon's syntax.
-
-## [Irregular Forms](/language/hoon/reference/irregular)
-
-Irregular syntax.
-
-## [Troubleshooting](/language/hoon/language/hoon-errors)
-
-Strategies for debugging and understanding what your Hoon code is doing.
+Guides to various features of the Hoon language.
 
 ## [Style Guide](/language/hoon/guides/style)
 
 Best practices for writing Hoon code.
 
-## [Basic Types](/language/hoon/reference/basic)
+## [JSON](/language/hoon/guides/json-guide)
 
-A simplified explanation of Hoon's type system.
+How to deal with JSON in Hoon.
 
-## [Advanced Types](/language/hoon/reference/advanced)
+## [Generators](/language/hoon/guides/generators)
 
-The full story on Hoon's type system.
+How to write Hoon scripts called Generators.
 
-## [Auras](/language/hoon/reference/auras)
+## [Parsing Text](/language/hoon/guides/parsing)
 
-A list of aura types for atoms.
+How to write functional parsers.
 
-## [Runes](/language/hoon/reference/rune/)
+## [Sail](/language/hoon/guides/sail)
 
-Syntax and semantics for Hoon's rune system.
+How to use Sail, Hoon's domain-specific language for composing HTML.
 
-## [Limbs and Wings](/language/hoon/reference/limbs/)
+## [Udon](/language/hoon/guides/udon)
 
-How to find data inside Hoon subjects.
+Urbit's markdown-like syntax for composing documents.
 
-## [Standard Library](/language/hoon/reference/stdlib/)
+## [Strings](/language/hoon/guides/strings)
 
-Reference material for the Hoon standard library.
+How to deal with text strings in Hoon.
 
-## [Zuse](/language/hoon/reference/zuse/)
+## [Vases](/language/hoon/guides/vases)
 
-Reference material for the Zuse library.
+Dynamic data types in Hoon.

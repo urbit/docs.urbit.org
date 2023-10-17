@@ -5,19 +5,6 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-[Overview](/system/kernel/clay)
-
-High-level overview of Clay.
-
-[Architecture](/system/kernel/arvo/clay/architecture)
-
-A conceptual overview of how Clay was designed.
-
-[Using Clay](/system/kernel/arvo/clay/using)
-
-A quick overview of how the most common tasks involving Clay are performed:
-reading and subscribing, syncing to Unix, and merging.
-
 [Data Types](/system/kernel/arvo/clay/data-types)
 
 Explanations of the many data types found throughout Clay.
@@ -30,6 +17,3 @@ Reference for Clay's various scry endpoints.
 
 Details of the various `task`s you can use to interact with Clay.
 
-[Examples](/system/kernel/arvo/clay/examples)
-
-Example usage of the various Clay `task`s.

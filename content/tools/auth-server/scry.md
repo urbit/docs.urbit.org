@@ -29,7 +29,7 @@ A [`proof`](/tools/auth-server/types#proof).
 ## `/proof/wood/[turf]`
 
 Make a [`proof`](/tools/auth-server/types#proof) for the given
-[`++wood`-encoded](/tools/auth-server/overview#additional-note)
+[`++wood`-encoded](/tools/auth-server#additional-note)
 [`turf`](/tools/auth-server/types#turf) (domain). This is put in a
 [`manifest`](/tools/auth-server/types#manifest) and published at
 `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to
@@ -234,7 +234,7 @@ earlier than the one specified.
 ## `/turf/wood/[turf]`
     
 Get the state of all existing requests for the specifed
-[`turf`](/tools/auth-server/types#turf) (domain), with [`++wood` encoding](/tools/auth-server/overview#additonal-note).
+[`turf`](/tools/auth-server/types#turf) (domain), with [`++wood` encoding](/tools/auth-server#additonal-note).
 
 #### Returns
 
@@ -254,7 +254,7 @@ update containing all requests for the specified `turf`, and their statuses.
 Get the state of all existing requests for the specifed
 [`turf`](/tools/auth-server/types#turf) (domain) later than the
 specified Unix millisecond time. With [`++wood`
-encoding](/tools/auth-server/overview#additonal-note).
+encoding](/tools/auth-server#additonal-note).
 
 #### Returns
 
@@ -274,7 +274,7 @@ update containing all entries with timestamps later than the one specified.
 Get the state of all existing requests for the specifed
 [`turf`](/tools/auth-server/types#turf) (domain) earlier than the
 specified Unix millisecond time. With [`++wood`
-encoding](/tools/auth-server/overview#additonal-note).
+encoding](/tools/auth-server#additonal-note).
 
 #### Returns
 

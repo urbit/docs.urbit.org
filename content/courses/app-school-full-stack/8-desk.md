@@ -214,7 +214,7 @@ from our ship. To do that, we just run the following command in the dojo:
 
 ## Resources
 
-- [App publishing/distribution documentation](/userspace/apps/reference/dist/dist) -
+- [App publishing/distribution documentation](/userspace/apps/reference/dist) -
   Documentation covering third party desk composition, publishing and
   distribution.
 

@@ -6,7 +6,7 @@ weight = 3
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
 look like this:
 
-![hut screenshot](https://media.urbit.org/userspace/apps/guides/quickstart/chat-guide/hut-screenshot-reskin.png)
+![hut screenshot](https://media.urbit.org/apps/guides/quickstart/chat-guide/hut-screenshot-reskin.png)
 
 We'll be able to create private chat rooms with members of our
 [Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate
@@ -18,7 +18,7 @@ If you'd like to check out the finished app, you can install it from
 `~pocwet/hut` by either searching for `~pocwet` in the search bar of your ship's
 homescreen, or by running `|install ~pocwet %hut`. Hut depends on the
 [Squad](https://urbit.org/applications/~pocwet/squad) app, which we wrote in
-[another lightning tutorial](/userspace/apps/guides/quickstart/groups-guide), so you should
+[another lightning tutorial](/userspace/apps/examples/quickstart/groups-guide), so you should
 install that first with `|install ~pocwet %squad`.
 
 The app source is available in the [`docs-examples` repo on
@@ -1688,9 +1688,9 @@ searching for `<our ship>` on their ship's homescreen.
 ## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon
-School](/courses/hoon-school/A-intro) is a comprehensive guide to the
+School](/courses/hoon-school) is a comprehensive guide to the
 language, and the best place to start. After learning the basics of Hoon, [App
-School](/courses/app-school/intro) will teach you everything you need to
+School](/courses/app-school) will teach you everything you need to
 know about app development.
 
 Along with these self-directed guides, we also run regular courses on both Hoon

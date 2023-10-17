@@ -39,7 +39,7 @@ already have the latest `%azimuth` state and this step should not be necessary
 and you may move to step 2.
 
 If your roller is a fakezod, you will need to configure `%azimuth` to pull the
-latest [Azimuth](/system/identity/azimuth-eth) data from Ethereum. The most common
+latest [Azimuth](/system/identity-eth) data from Ethereum. The most common
 way to do this is via an Infura node, but you could instead use e.g. your own
 Ethereum node. A free tier Infura node ought to be sufficient for most people
 and is easy to set up using their tutorials.

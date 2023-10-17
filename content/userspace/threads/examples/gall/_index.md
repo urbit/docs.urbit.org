@@ -1,29 +1,26 @@
 +++
-title = "Guides"
-description = "Learn to write asynchronous I/O functions"
+title = "Gall"
 weight = 101
-sort_by = "weight"
-insert_anchor_links = "right"
 +++
 
-Tutorial and explanation of the basics of writing threads.
+Examples of how to interact with threads from Gall agents.
 
-## [Fundamentals](/userspace/threads/tutorial/basics/fundamentals)
+## [Start Thread](/userspace/threads/examples/gall/start-thread)
 
-Basic explanation of threads and usage of the strand arms `form` and `pure`.
+How to run a thread from a Gall agent.
 
-## [Bind](/userspace/threads/tutorial/basics/bind)
+## [Take Result](/userspace/threads/examples/gall/take-result)
 
-Using micgal (`;<`) and the strand arm `bind` to chain strands together.
+How to handle the results of a completed thread.
 
-## [Input](/userspace/threads/tutorial/basics/input)
+## [Take Facts](/userspace/threads/examples/gall/take-facts)
 
-Information on what a strand takes.
+How to get subscription updates from threads.
 
-## [Output](/userspace/threads/tutorial/basics/output)
+## [Stop Thread](/userspace/threads/examples/gall/stop-thread)
 
-Information on what a strand produces.
+How to cancel a thread from a Gall agent.
 
-## [Summary](/userspace/threads/tutorial/basics/summary)
+## [Poke Thread](/userspace/threads/tutorial/gall/poke-thread)
 
-Summary of this information.
+How to poke a thread from a Gall agent.

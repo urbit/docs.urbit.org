@@ -8,7 +8,7 @@ insert_anchor_links = "right"
 Jael is the networking key infrastructure vane.
 
 The main purpose of Jael is keeping track of
-[Azimuth](/system/identity/azimuth) related information. For each ship, this
+[Azimuth](/system/identity) related information. For each ship, this
 consists of its public keys, its key revision number (or `life`), its
 continuity breach number (or `rift`) (see [Life and
 Rift](/system/identity/concepts/life-and-rift)), and who the sponsor of the

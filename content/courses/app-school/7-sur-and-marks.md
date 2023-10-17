@@ -224,7 +224,7 @@ receiving data, and not for actually storing files in Clay. Therefore, it's
 unlikely you'll need to write custom revision control functions in the `grad`
 arm. Instead, you can simply delegate `grad` functions to another mark -
 typically `%noun`. If you want to learn more about writing such `grad`
-functions, you can refer to the [Marks Guide](/system/kernel/clay/guides/marks/marks) in
+functions, you can refer to the [Marks Guide](/system/kernel/clay/guides/marks) in
 the Clay vane documentation, which is much more comprehensive, but it's not
 necessary for our purposes here.
 
@@ -285,7 +285,7 @@ This simple mark file isn't all that useful. Typically, you'd add `json` arms
 to `grow` and `grab`, which allow your data to be converted to and from JSON,
 and therefore allow your agent to communicate with a web front-end. Front-ends,
 JSON, and Eyre's APIs which facilitate such communications will be covered in
-the separate [Full-Stack Walkthrough](/courses/app-school-full-stack/intro),
+the separate [Full-Stack Walkthrough](/courses/app-school-full-stack),
 which you might like to work through after completing this guide. For now
 though, it's still useful to use marks and understand how they work.
 

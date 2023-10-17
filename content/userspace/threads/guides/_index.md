@@ -6,24 +6,8 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-Tutorial and explanation of the basics of writing threads.
+This section contains in-depth walk-throughs of thread features and tools.
 
-## [Fundamentals](/userspace/threads/tutorial/basics/fundamentals)
+## [HTTP API](/userspace/threads/guides/http-api)
 
-Basic explanation of threads and usage of the strand arms `form` and `pure`.
-
-## [Bind](/userspace/threads/tutorial/basics/bind)
-
-Using micgal (`;<`) and the strand arm `bind` to chain strands together.
-
-## [Input](/userspace/threads/tutorial/basics/input)
-
-Information on what a strand takes.
-
-## [Output](/userspace/threads/tutorial/basics/output)
-
-Information on what a strand produces.
-
-## [Summary](/userspace/threads/tutorial/basics/summary)
-
-Summary of this information.
+How to run threads through Eyre's web interface.

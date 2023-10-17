@@ -116,7 +116,7 @@ some data. The `mark` corresponds to a mark file in the `/mar` directory, so a
 data in Clay, validating data sent between agents or over the network, and
 converting between different data types. For more information about mark files,
 you can refer to the [Marks section of the Clay
-documentation](/system/kernel/clay/guides/marks/marks).
+documentation](/system/kernel/clay/guides/marks).
 
 ## `cage`
 

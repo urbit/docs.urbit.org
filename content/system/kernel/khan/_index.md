@@ -6,7 +6,7 @@ insert_anchor_links = "right"
 +++
 
 Khan is the "control plane" and thread-runner vane. Its main purpose is to allow
-external applications to run [threads](/userspace/threads/overview) via a
+external applications to run [threads](/userspace/threads) via a
 Unix Socket and receive the result.
 
 At this stage, Khan's external interface is still experimental, and there are

@@ -49,20 +49,6 @@ export default function Content({
         <div className="markdown technical">
           <Markdown.render content={md} />
         </div>
-        <div className="flex justify-between items-center text-base mt-16 mb-2">
-          <a
-            className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
-            target="_blank"
-            href={`https:github.com/urbit/docs.urbit.org/blob/master/content/${root}/${
-              params.slug?.join("/") || "_index"
-            }.md`}
-          >
-            Edit this page on GitHub
-          </a>
-          <p className="font-semibold block p-2 text-gray">
-            Last modified {data.lastModified}
-          </p>
-        </div>
       </div>
       <Sidebar className="hidden lg:flex" right>
         <FragmentNav

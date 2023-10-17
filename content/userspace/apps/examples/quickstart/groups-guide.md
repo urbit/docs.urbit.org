@@ -6,8 +6,7 @@ weight = 2
 In this lightning tutorial, we're going to build an app to create groups called
 Squad. It'll look like this:
 
-![squad screenshot](https://media.urbit.org/userspace/apps/guides/quickstart/groups-app/squad-screenshot-reskin.png)
-
+![squad screenshot](https://media.urbit.org/guides/quickstart/groups-app/squad-screenshot-reskin.png)
 We'll be able to create either public groups or private groups. Private groups
 will have a whitelist of allowed ships, and public groups will have a blacklist
 of banned ships. Other ships will be able to join groups we create, and we'll be
@@ -2013,9 +2012,9 @@ ship> %squad` or by searching for `<our ship>` on their ship's homescreen.
 ## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon
-School](/courses/hoon-school/A-intro) is a comprehensive guide to the
+School](/courses/hoon-school) is a comprehensive guide to the
 language, and the best place to start. After learning the basics of Hoon, [App
-School](/courses/app-school/intro) will teach you everything you need to
+School](/courses/app-school) will teach you everything you need to
 know about app development.
 
 Along with these self-directed guides, we also run regular courses on both Hoon

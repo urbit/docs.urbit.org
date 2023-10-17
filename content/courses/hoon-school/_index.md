@@ -5,28 +5,269 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-## Table of Contents
+Hoon School is designed to teach you Hoon without assuming you have an
+extensive programming background.  You should be able to following most
+of it even if you have no programming experience at all yet, though of
+course experience helps.  We strongly encourage you to try out all the
+examples of each lesson.  Hoon School is meant for the beginner, but
+it's not meant to be skimmed.  Each lesson consists of:
 
-- **[Introduction](/courses/hoon-school/A-intro)**
+- **Explanations**, which are prose-heavy commentary on the Hoon fundamentals.
 
-#### Lessons
+- **Exercises**, which challenge you to clarify or expand your own understanding in practice.
 
-1. **[Hoon Syntax](/courses/hoon-school/B-syntax)** - This module will discuss the fundamental data concepts of Hoon and how programs effect control flow.
-2. [Azimuth (Urbit ID)](/courses/hoon-school/C-azimuth) - This module introduces how Urbit ID is structured and provides practice in converting and working with `@p` identity points. (Optional)
-3. **[Gates (Functions)](/courses/hoon-school/D-gates)** - This module will teach you how to produce deferred computations for later use, like functions in other languages.
-4. **[Molds (Types)](/courses/hoon-school/E-types)** - This module will introduce the Hoon type system and illustrate how type checking and type inference work.
-5. **[Cores](/courses/hoon-school/F-cores)** - This module will introduce the key Hoon data structure known as the **core**, as well as ramifications.
-6. **[Trees and Addressing](/courses/hoon-school/G-trees)** - This module will elaborate how we can use the structure of nouns to locate data and evaluate code in a given expression.  It will also discuss the important `list` mold builder and a number of standard library operations.
-7. **[Libraries](/courses/hoon-school/H-libraries)** - This module will discuss how libraries can be produced, imported, and used.
-8. [Testing Code](/courses/hoon-school/I-testing) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies. (Optional)
-9. **[Text Processing I](/courses/hoon-school/J-stdlib-text)** - This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.
-10. **[Cores & Doors](/courses/hoon-school/K-doors)** - This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include doors; finally it will introduce a common door, the `++map`, to illustrate how doors work.
-11. **[Data Structures](/courses/hoon-school/L-struct)** - This module will introduce you to several useful data structures built on the door, then discuss how the compiler handles types and the sample.
-12. **[Type Checking](/courses/hoon-school/M-typecheck)** - This module will cover how the Hoon compiler infers type, as well as various cases in which a type check is performed.
-13. **[Conditional Logic](/courses/hoon-school/N-logic)** - This module will cover the nature of loobean logic and the rest of the `?` wut runes.
-14. **[Subject-Oriented Programming](/courses/hoon-school/O-subject)** - This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (“scrying”) are handled.
-15. [Text Processing II](/courses/hoon-school/P-stdlib-io) - This module will elaborate on text representation in Hoon, including formatted text, and `%ask` generators. (Optional)
-16. **[Functional Programming](/courses/hoon-school/Q-func)** - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
-17. [Text Processing III](/courses/hoon-school/Q2-parsing) - This module will cover text parsing. (Optional)
-18. [Generic and Variant Cores](/courses/hoon-school/R-metals) - This module introduces how cores can be extended for different behavioral patterns. (Optional)
-19. [Mathematics](/courses/hoon-school/S-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon. (Optional)
+- **Tutorials**, which are line-by-line commentary on example programs.
+
+There are two flavors of Hoon School:  the Hoon School Live cohort
+class, in which you work through lessons with other students and receive
+a certification (`%gora`) for completion, and these written Hoon School
+docs.  To sign up for a future cohort of Hoon School Live, please [let
+us know of your interest here](/courses) and we'll be in touch.
+
+
+##  Why Hoon?
+
+The short version is that Hoon uses Urbit's provisions and protocols to
+enable very fast application development with shared primitives,
+sensible affordances, and straightforward distribution.
+
+Urbit consists of an identity protocol (“Azimuth”, or “Urbit ID”) and a
+system protocol (“Arvo”, or “Urbit OS”).  These two parts work
+hand-in-hand to build your hundred-year computer.
+
+1. **Urbit ID (Azimuth)** is a general-purpose public-key infrastructure
+   (PKI) on the Ethereum blockchain, used as a platform for Urbit
+   identities.  It provides a system of scarce and immutable identities
+   which are cryptographically secure.
+
+2. **Urbit OS (Arvo)** is an operating system which provides the
+   software for the personal server platform that constitutes the
+   day-to-day usage of Urbit.  Arvo works over a
+   [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer)
+   [end-to-end-encrypted](https://en.wikipedia.org/wiki/End-to-end_encryption)
+   network to interact with other Urbit ships (or unique instances).
+
+Arvo is an axiomatic operating system which restricts itself to pure
+mathematical functions, making it
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm)
+and
+[functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming).
+Such strong guarantees require an operating protocol, the [Nock virtual
+machine](/language/nock/definition), which will be persistent across
+hardware changes and always provide an upgrade path for necessary
+changes.
+
+It's hard to write a purely functional operating system on hardware
+which doesn't make such guarantees, so Urbit OS uses a new language,
+Hoon, which compiles to Nock and hews to the necessary conceptual models
+for a platform like Urbit.  [The Hoon overview](/language/hoon) covers
+more of the high-level design decisions behind the language, as does
+[developer ~rovnys-ricfer's
+explanation](https://urbit.org/blog/why-hoon/).
+
+Hoon School introduces and explains the fundamental concepts you need in
+order to understand Hoon's semantics.  It then introduces a number of
+key examples and higher-order abstractions which will make you a more
+fluent Hoon programmer.
+
+Once you have completed Hoon School, you should work through [App
+School](/courses/app-school) to learn how to build full applications on
+Urbit.
+
+##  Environment Setup
+
+An Urbit ship is a particular realization of an _identity_ and an _event
+log_ or _state_.  Both of these are necessary.
+
+Since live network identities (_liveships_) are finite, scarce, and
+valuable, most developers prefer to write new code using fake identities
+(_fakeships_ or _fakezods_).  A fakeship is also different from a comet,
+which is an unkeyed liveship.
+
+Two fakeships can communicate with each other on the same machine, but
+have no awareness of the broader Urbit network.  We won't need to use
+this capability in Hoon School Live, but it will be helpful later when
+you start developing networked apps.
+
+Before beginning, you'll need to get a development ship running and
+configure an appropriate editor.  See the [Environment
+Setup](/courses/environment) guide for details.
+
+Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
+
+##  Getting started
+
+Once you've created your development ship, let's try a basic command.
+Type `%-  add  [2 2]` at the prompt and hit `Return`.  (Note the double
+spaces before and after `add`.)  Your screen now shows:
+
+```hoon {% copy=true %}
+fake: ~zod
+ames: czar: ~zod on 31337 (localhost only)
+http: live (insecure, public) on 80
+http: live (insecure, loopback) on 12321
+> %-  add  [2 2]
+4
+~zod:dojo>
+```
+
+You just used a function from the Hoon standard library, `add`, which
+for reasons that will become clear later is frequently written
+[`++add`](/language/hoon/reference/stdlib/1a#add).  Next, quit Urbit by
+entering `|exit`:
+
+```hoon {% copy=true %}
+> %-  add  [2 2]
+4
+~zod:dojo> |exit
+$
+```
+
+Your ship isn't running anymore and you're back at your computer's
+normal terminal prompt.  If your ship is ~zod, then you can restart the
+ship by typing:
+
+```hoon {% copy=true %}
+urbit zod
+```
+
+You've already used a standard library function to produce one value, in
+the Dojo. Now that your ship is running again, let's try another. Enter
+the number `17`.
+
+(We won't show the `~zod:dojo>` prompt from here on out.  We'll just
+show the echoed command along with its result.)
+
+You'll see:
+
+```hoon {% copy=true %}
+> 17
+17
+```
+
+You asked Dojo to evaluate `17` and it echoed the number back at you.
+This value is a _noun_.  We'll talk more about nouns in the next lesson.
+
+Basically, every Hoon expression operates on the values it is given
+until it reduces to some form that can't evaluate any farther.  This is
+then returned as the result of the evaluation.
+
+One more:
+
+```hoon {% copy=true %}
+> :-  1  2
+[1 2]
+```
+
+This `:-` rune takes two values and composes them into a _cell_, a pair of values.
+
+
+##  Pronouncing Hoon
+
+Hoon uses _runes_, or two-character ASCII symbols, to describe its
+structure.  (These are analogous to keywords in other programming
+languages.)  Because there has not really been a standard way of
+pronouncing, say, `#` (hash, pound, number, sharp, hatch) or `!`
+(exclamation point, bang, shriek, pling), the authors of Urbit decided
+to adopt a one-syllable mnemonic to uniquely refer to each.
+
+It is highly advisable for you to learn these pronunciations, as the
+documentation and other developers employ them frequently.  For
+instance, a rune like `|=` is called a “bartis”, and you will find it
+designated as such in the docs, in the source code, and among the
+developers.
+
+{% table %}
+- Name
+- Character
+- Name
+- Character
+- Name
+- Character
+---
+- `ace`
+- `␣`
+- `gap`
+- `␣␣`, `\n` 
+- `pat` 
+- `@`
+---
+- `bar`
+- `|`
+- `gar`
+- `>`
+- `sel`
+- `[`
+---
+- `bas`
+- `\`
+- `hax`
+- `#`
+- `ser`
+- `]`
+---
+- `buc`
+- `$`
+- `hep`
+- `-`
+- `sig`
+- `~`
+---
+- `cab`
+- `_`
+- `kel`
+- `{`
+- `soq`
+- `'`
+---
+- `cen`
+- `%`
+- `ker`
+- `}`
+- `tar`
+- `*`
+---
+- `col`
+- `:`
+- `ket`
+- `^`
+- `tic`
+- `` ` ``
+---
+- `com`
+- `,`
+- `lus`
+- `+`
+- `tis`
+- `=`
+---
+- `doq`
+- `"`
+- `mic`
+- `;`
+- `wut`
+- `?`
+---
+- `dot`
+- `.`
+- `pal`
+- `(`
+- `zap`
+- `!`
+---
+- `fas`
+- `/`
+- `pam`
+- `&`
+- `gal`
+- `<`
+---
+- `par`
+- `)`
+{% /table %}
+
+Note that the list includes two separate whitespace forms: `ace` for a
+single space `␣`; `gap` is either two or more spaces `␣␣` or a line
+break `\n`.  In Hoon, the only whitespace significance is the
+distinction between `ace` and `gap`—i.e., the distinction between one
+space and more than one.

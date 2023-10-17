@@ -22,7 +22,7 @@ cryptography.
 Your Urbit ID exists as an ERC-721 non-fungible token on the Ethereum
 blockchain, and as such is contained in a wallet whose private key you possess.
 If you are are utilizing a [master
-ticket](/system/identity/azimuth#master-ticket), this private key is derived
+ticket](/system/identity#master-ticket), this private key is derived
 from a seed, which is what you use to login to
 [Bridge](/TODO-GLOSSARY/bridge). Otherwise, you have generated the key by
 some other process, of which there are too many to list here. Besides the
@@ -42,7 +42,7 @@ separate entities from Urbit itself, and so you lose access to your Azimuth
 private keys there is no way to retrieve them somehow from your ship.
 
 For more information on the usage of these keys and the associated proxies, see
-the [Azimuth documentation](/system/identity/azimuth).
+the [Azimuth documentation](/system/identity).
 
 ### Networking keys
 

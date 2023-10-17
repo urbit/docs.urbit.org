@@ -355,4 +355,4 @@ See the [Scrying](/system/kernel/eyre/guides/guide#scrying) section of the [Guid
 
 ## Spider
 
-See the [HTTP API](/userspace/threads/guides/http-api) section of the [Threads](/userspace/threads/overview) documentation.
+See the [HTTP API](/userspace/threads/guides/http-api) section of the [Threads](/userspace/threads) documentation.

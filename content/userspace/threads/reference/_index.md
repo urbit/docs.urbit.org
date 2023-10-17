@@ -6,24 +6,12 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-Tutorial and explanation of the basics of writing threads.
+Reference information related to Spider and threads.
 
-## [Fundamentals](/userspace/threads/tutorial/basics/fundamentals)
+## [Spider API](/userspace/threads/reference/api)
 
-Basic explanation of threads and usage of the strand arms `form` and `pure`.
+Details of Spider's API for running and managing threads.
 
-## [Bind](/userspace/threads/tutorial/basics/bind)
+## [Strandio](/userspace/threads/reference/strandio)
 
-Using micgal (`;<`) and the strand arm `bind` to chain strands together.
-
-## [Input](/userspace/threads/tutorial/basics/input)
-
-Information on what a strand takes.
-
-## [Output](/userspace/threads/tutorial/basics/output)
-
-Information on what a strand produces.
-
-## [Summary](/userspace/threads/tutorial/basics/summary)
-
-Summary of this information.
+Comprehensive documentation of the threads helper library, `strandio.hoon`.

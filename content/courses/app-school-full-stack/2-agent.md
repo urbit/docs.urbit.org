@@ -324,7 +324,7 @@ The full agent source can be viewed
 
 ## Resources
 
-- [App School I](/courses/app-school/intro) - App School I covers all
+- [App School I](/courses/app-school) - App School I covers all
   aspects of writing Gall agents in detail.
 
 - [Ordered map functions in

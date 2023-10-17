@@ -5,6 +5,8 @@ weight = 100
 insert_anchor_links = "right"
 +++
 
+Hoon language examples and exercises.
+
 ## [Competitive Programming](/language/hoon/examples/competitive)
 
 ## [_Gleichniszahlenreihe_](/language/hoon/examples/gleichniszahlenreihe) (Audioactive Numbers)

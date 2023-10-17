@@ -11,7 +11,7 @@ Keep reading if you're planning to work on the Urbit interpreter, you're a
 language implementation geek, or you don't really understand anything until
 you've seen the actual structs.
 
-## [C runtime system](/system/runtime/runtime)
+## [C runtime system](/system/runtime)
 
 The Urbit interpreter is built on a Nock runtime system written
 in C, `u3`. This section is a relatively complete description.
@@ -30,10 +30,6 @@ with nouns is in `u3`.
 ## [u3: API overview by prefix](/system/runtime/reference/api)
 
 A walkthrough of each of the `u3` modules.
-
-## [How to write a jet](/system/runtime/guides/jetting)
-
-A jetting guide by for new Urbit developers.
 
 ## [Cryptography](/system/runtime/reference/cryptography)
 

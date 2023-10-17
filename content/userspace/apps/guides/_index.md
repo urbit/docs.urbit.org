@@ -1,32 +1,26 @@
 +++
 title = "Guides"
+weight = 10
 +++
 
+This section contains guides to features of Gall agents and related utilities.
 
-## [Arvo](/system/kernel/arvo){% class="!mb-0 !mt-12" %}
+## [Aqua Tests](/userspace/apps/guides/aqua)
 
-Technical documentation on Arvo, Urbit's OS, and its components{% class="!mt-2" %}
+How to use Aqua to run tests on virtual ships.
 
-## [Hoon](/language/hoon){% class="!mb-0 !mt-12" %}
+## [Remote Scry](/userspace/apps/guides/remote-scry)
 
-Detailed documentation on the Hoon programming language and its nuances{% class="!mt-2" %}
+How to manage remote scry data and perform remote scries from Gall agents.
 
-## [Nock](/language/nock){% class="!mb-0 !mt-12" %}
+## [Command-Line Apps](/userspace/apps/guides/cli-tutorial)
 
-An explanation, example, and implementations of Nock, Urbit's low-level programming language{% class="!mt-2" %}
+How to build CLI apps.
 
-## [Vere](/system/runtime){% class="!mb-0 !mt-12" %}
+## [Software Distribution](/userspace/apps/guides/software-distribution)
 
-Details on Urbit’s runtime, Vere{% class="!mt-2" %}
+How to publish and distribute apps.
 
-## [Azimuth](/system/identity){% class="!mb-0 !mt-12" %}
+## [Unit Tests](/userspace/apps/guides/unit-tests)
 
-Details on Urbit’s general-purpose public-key infrastructure (PKI), Azimuth{% class="!mt-2" %}
-
-## [Glossary](/TODO-GLOSSARY){% class="!mb-0 !mt-12" %}
-
-Urbit-specific development nomenclature{% class="!mt-2" %}
-
-## [Additional References](/reference/additional){% class="!mb-0 !mt-12" %}
-
-Miscellaneous references{% class="!mt-2" %}
+How to write unit tests to test your agents and libraries.

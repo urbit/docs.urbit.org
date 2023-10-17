@@ -105,7 +105,7 @@ sooner than the one specified in the path.
 
 Subscribe for all new updates for the given
 [`turf`](/tools/auth-server/types#turf) (domain), with [`++wood`
-encoding](/tools/auth-server/overview#additonal-note).
+encoding](/tools/auth-server#additonal-note).
 
 
 #### Returns
@@ -135,7 +135,7 @@ For `foo.bar-baz.com`:
 Subscribe for all new updates for the given
 [`turf`](/tools/auth-server/types#turf) (domain), since the given Unix
 millisecond time. With [`++wood`
-encoding](/tools/auth-server/overview#additonal-note).
+encoding](/tools/auth-server#additonal-note).
 
 #### Returns
 
@@ -324,7 +324,7 @@ specified.
 
 Get existing state request state and subscribe to updates pertaining to the
 given [`turf`](/tools/auth-server/types#turf).  With [`++wood`
-encoding](/tools/auth-server/overview#additonal-note).
+encoding](/tools/auth-server#additonal-note).
 
 #### Returns
 
@@ -348,7 +348,7 @@ long as they're for that `turf`.
 Get existing request state and subscribe to updates pertaining to the given
 [`turf`](/tools/auth-server/types#turf), for requests whose timestamps
 are later than the Unix millisecond time given.  With [`++wood`
-encoding](/tools/auth-server/overview#additonal-note).
+encoding](/tools/auth-server#additonal-note).
 
 #### Returns
 

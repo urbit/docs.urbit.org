@@ -1,32 +1,35 @@
 +++
-title = "Agents"
+title = "Examples"
+weight = 999
 +++
 
+This section contains examples of building simple apps and additional exercises
+to help hone your skills.
 
-## [Arvo](/system/kernel/arvo){% class="!mb-0 !mt-12" %}
+## [Lightning Tutorials](/userspace/apps/examples/quickstart)
 
-Technical documentation on Arvo, Urbit's OS, and its components{% class="!mt-2" %}
+Quick walk-throughs of building a groups, chat and voting app.
 
-## [Hoon](/language/hoon){% class="!mb-0 !mt-12" %}
+## [Building a CLI App](/userspace/apps/examples/rpn)
 
-Detailed documentation on the Hoon programming language and its nuances{% class="!mt-2" %}
+Building a simple calculator you can use from the command line.
 
-## [Nock](/language/nock){% class="!mb-0 !mt-12" %}
+## [Debugging Wrapper](/userspace/apps/examples/dbug)
 
-An explanation, example, and implementations of Nock, Urbit's low-level programming language{% class="!mt-2" %}
+How to use the `/lib/dbug.hoon` wrapper library to debug your Gall agents.
 
-## [Vere](/system/runtime){% class="!mb-0 !mt-12" %}
+## [Host a Website](/userspace/apps/examples/feature)
 
-Details on Urbit’s runtime, Vere{% class="!mt-2" %}
+How to build a simple app that serves a website,
 
-## [Azimuth](/system/identity){% class="!mb-0 !mt-12" %}
+## [Serving a JS Game](/userspace/apps/examples/flap)
 
-Details on Urbit’s general-purpose public-key infrastructure (PKI), Azimuth{% class="!mt-2" %}
+How to connect an off-the-shelf JS game to an Urbit back-end.
 
-## [Glossary](/TODO-GLOSSARY){% class="!mb-0 !mt-12" %}
+## [Ship Monitoring](/userspace/apps/examples/ahoy)
 
-Urbit-specific development nomenclature{% class="!mt-2" %}
+Examining and modifying an app that monitors ship activity.
 
-## [Additional References](/reference/additional){% class="!mb-0 !mt-12" %}
+## [Styled Text](/userspace/apps/examples/track7)
 
-Miscellaneous references{% class="!mt-2" %}
+How to produce styled text in an agent and output it to the terminal.

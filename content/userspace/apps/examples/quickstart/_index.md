@@ -1,5 +1,5 @@
 +++
-title = "Introduction"
+title = "Lightning Tutorials"
 weight = 1
 +++
 
@@ -9,14 +9,14 @@ intended for developers with limited knowledge of Urbit and who aren't fluent in
 Hoon (Urbit's programming language). They don't delve deeply into the code, but
 instead focus on the broader process, to give you a basic idea of the platform.
 If instead you want to learn Hoon and app development on Urbit, the best place
-to start is [Hoon School](/courses/hoon-school/A-intro), and then after that
-[App School](/courses/app-school/intro).
+to start is [Hoon School](/courses/hoon-school), and then after that
+[App School](/courses/app-school).
 
 There are so-far three guides in this series:
 
-1. [Build a Groups App](/userspace/apps/guides/quickstart/groups-guide)
-2. [Build a Chat App](/userspace/apps/guides/quickstart/chat-guide)
-3. [Build a Voting App](/userspace/apps/guides/quickstart/voting-guide)
+1. [Build a Groups App](/userspace/apps/examples/quickstart/groups-guide)
+2. [Build a Chat App](/userspace/apps/examples/quickstart/chat-guide)
+3. [Build a Voting App](/userspace/apps/examples/quickstart/voting-guide)
 
 The theme is a suite of apps for groups of people to collaborate and
 communicate. The groups app is called Squad, and lets you create public and
@@ -39,3 +39,4 @@ talk to Urbit ships.
 
 If you'd like to try out these apps immediately, you can search for `~pocwet` in
 the search bar of your ship's homescreen, and install them from there.
+

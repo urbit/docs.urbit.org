@@ -5,52 +5,56 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-This is where you look for answers to specific technical questions.
+Reference information for Hoon language features.
 
-## [Hoon Overview](/language/hoon/overview)
+## [Cheat Sheet](/language/hoon/reference/cheat-sheet)
 
-The design decisions underlying Hoon.
+A handy Hoon cheat-sheet you can download.
 
-## [Syntax Cheat Sheet](/language/hoon/reference/cheat-sheet)
+## [Cryptography](/language/hoon/reference/cryptography)
 
-A quick reference guide to Hoon's syntax.
+A survey of cryptographic functions in Hoon.
 
 ## [Irregular Forms](/language/hoon/reference/irregular)
 
-Irregular syntax.
+Details of Hoon's irregular rune syntax.
 
-## [Troubleshooting](/language/hoon/language/hoon-errors)
+## [Hoon Errors](/language/hoon/reference/hoon-errors)
 
-Strategies for debugging and understanding what your Hoon code is doing.
-
-## [Style Guide](/language/hoon/guides/style)
-
-Best practices for writing Hoon code.
+What Hoon compiler errors mean.
 
 ## [Basic Types](/language/hoon/reference/basic)
 
-A simplified explanation of Hoon's type system.
+Basic type structures in Hoon.
 
 ## [Advanced Types](/language/hoon/reference/advanced)
 
-The full story on Hoon's type system.
+Advanced type structures in Hoon.
+
+## [Mips](/language/hoon/reference/mips)
+
+Documentation of the Mips (map of maps) library.
 
 ## [Auras](/language/hoon/reference/auras)
 
-A list of aura types for atoms.
+Atomic auras.
 
-## [Runes](/language/hoon/reference/rune/)
+## [Arvo](/language/hoon/reference/arvo)
 
-Syntax and semantics for Hoon's rune system.
+Reference documentation for a selection of `arvo.hoon` types and functions.
 
-## [Limbs and Wings](/language/hoon/reference/limbs/)
+## [Standard Library](/language/hoon/reference/stdlib)
 
-How to find data inside Hoon subjects.
+Reference documentation for the `hoon.hoon` standard library.
 
-## [Standard Library](/language/hoon/reference/stdlib/)
+## [Runes](/language/hoon/reference/rune)
 
-Reference material for the Hoon standard library.
+Rune reference.
 
-## [Zuse](/language/hoon/reference/zuse/)
+## [Limbs and wings](/language/hoon/reference/limbs)
 
-Reference material for the Zuse library.
+Addressing the subject.
+
+## [Zuse](/language/hoon/reference/zuse)
+
+Reference documentation for parts of `zuse.hoon`.

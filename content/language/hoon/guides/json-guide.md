@@ -414,7 +414,7 @@ Here's a simple `mark` file for the `$user` structure we created in the [first e
 --
 ```
 
-The [Marks section](/system/kernel/clay/guides/marks/marks) of the Clay documentation covers `mark` files comprehensively and is worth reading through if you want to write a mark file.
+The [Marks section](/system/kernel/clay/guides/marks) of the Clay documentation covers `mark` files comprehensively and is worth reading through if you want to write a mark file.
 
 In brief, a mark file contains a `door` with three arms. The door's sample type is the type of the data in question - in our case the `$user` structure. The `+grab` arm contains methods for converting _to_ our mark, and the `+grow` arm contains methods for converting _from_ our mark. The `+noun` arms are mandatory, and then we've added `+json` arms which respectively call the `+from-js` and `+to-js` functions from our `json-test.hoon` library. The final `+grad` arm defines various revision control functions, in our case we've delegated these to the `%noun` mark.
 
@@ -502,7 +502,7 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 [The Zuse library reference](/language/hoon/reference/zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
 
-[The Marks section of the Clay documentation](/system/kernel/clay/guides/marks/marks) - Comprehensive documentation of `mark`s.
+[The Marks section of the Clay documentation](/system/kernel/clay/guides/marks) - Comprehensive documentation of `mark`s.
 
 [The External API Reference section of the Eyre documentation](/system/kernel/eyre/reference/external-api-ref) - Details of the webserver vane Eyre's external API.
 

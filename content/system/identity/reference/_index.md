@@ -5,36 +5,28 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-### [Azimuth](/system/identity/azimuth)
-
-An overview of the Ethereum-based public key infrastructure utilized by Urbit.
-
-### [Urbit HD Wallet](/system/identity/hd-wallet)
-
-Azimuth has its own optional hierarchical deterministic wallet system, often
-referred to as a "master ticket".
-
-### [Data Flow](/system/identity/flow)
-
-Diagrams and explanations of how data flows between Bridge and the various
-components inside Urbit involved with layer 2.
-
 ### [Azimuth.eth](/system/identity/reference/azimuth-eth)
 
 A description of the `azimuth.eth` smart contract, which is the data store for
 Azimuth.
 
-### [Ecliptic.eth](/system/identity/ecliptic)
+### [Ecliptic.eth](/system/identity/reference/ecliptic)
 
 A description of the `ecliptic.eth` smart contract, which is the business logic
 for `azimuth.eth`. This includes an overview of all function calls available.
 
-### [Advanced Azimuth Tools](/system/identity/advanced-azimuth-tools)
+### [L2 Actions](/system/identity/reference/l2-actions)
 
-Expert-level tooling for generating, signing, and sending layer 1 Azimuth-related
-transactions from within Urbit itself.
+Technical documentation of the 11 layer 2 actions.
 
-### [Life and Rift](/system/identity/azimuth)
+### [L2 Transaction Format](/system/identity/reference/bytestring)
 
-An explanation of how Azimuth indexes networking keys and breaches to keep track
-of the most recent set of networking keys necessary to communicate with a ship.
+Details of the bytestring format for L2 transactions and batches.
+
+### [L2 Rollers](/system/identity/reference/roller)
+
+How the naive rollup rollers work.
+
+### [L2 Roller HTTP RPC-API](/system/identity/reference/layer2-api)
+
+Details of the roller API.

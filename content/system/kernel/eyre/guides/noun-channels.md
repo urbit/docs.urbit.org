@@ -1,5 +1,5 @@
 +++
-title = "Eyre noun channels"
+title = "Noun channels"
 description = "A low-level overview of talking to Eyre's channel system in noun mode."
 weight = 40
 +++

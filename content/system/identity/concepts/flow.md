@@ -17,7 +17,7 @@ HTTP API.
 ## Azimuth
 
 Azimuth was originally defined as a set of smart contracts on Ethereum that
-defines the [state](/system/identity/azimuth-eth) and [business
+defines the [state](/system/identity-eth) and [business
 logic](/system/identity/reference/ecliptic) of the PKI for layer 1. With the introduction of
 naive rollups, this has also come to include the set of components used for
 dealing with the PKI within Urbit, as now the complete PKI state is stored
@@ -178,7 +178,7 @@ format](/system/identity/reference/bytestring) for more information. This is use
 e.g. transactions on the Ropsten test network cannot be replayed on the mainnet.
 
 `state` is the current state of the PKI. This is structured similarly to the
-state held in [Azimuth.eth](/system/identity/azimuth-eth), but will differ in
+state held in [Azimuth.eth](/system/identity-eth), but will differ in
 general since `state` takes into account layer 2 transactions as well. See the
 [Layer 2 Overview](/system/identity/concepts/layer2#state) for more on how PKI state is handled.
 
@@ -218,7 +218,7 @@ general since `state` takes into account layer 2 transactions as well. See the
 ```
 
 `points` should be self-explanatory if you are already familiar with the
-structure of [Azimuth.eth](/system/identity/azimuth-eth). The only new addition is
+structure of [Azimuth.eth](/system/identity-eth). The only new addition is
 `dominion`, whose value says
 whether a ship is on layer 1, layer 2, or layer 1 with a layer 2 spawn proxy.
 See [Layer 2 actions](/system/identity/reference/l2-actions) for an overview of how

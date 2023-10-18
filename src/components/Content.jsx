@@ -41,7 +41,7 @@ export default function Content({
           labelMaxLength={26}
         />
       </Sidebar>
-      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-5 md:pr-8 xl:pr-5">
+      <div className="flex flex-col flex-1 min-w-0 px-5 md:pr-8 xl:pr-5">
         <Header className="md:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>

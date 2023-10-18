@@ -45,7 +45,7 @@ export default function Content({
         <Header className="md:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
-        <h1 className="text-5xl text-white mt-3 mb-10">{data.title}</h1>
+        <h1 className="font-medium text-5xl text-white mt-3 mb-10">{data.title}</h1>
         <div className="markdown technical">
           <Markdown.render content={md} />
         </div>

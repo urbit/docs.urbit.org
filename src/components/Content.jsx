@@ -38,7 +38,6 @@ export default function Content({
           posts={posts}
           root={root}
           firstCrumb={firstCrumb}
-          labelMaxLength={26}
         />
       </Sidebar>
       <div className="flex flex-col flex-1 min-w-0 px-5 md:pr-8 xl:pr-5">

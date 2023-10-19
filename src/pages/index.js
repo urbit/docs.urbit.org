@@ -41,25 +41,25 @@ export default function Home({ search }) {
                 imgSrc="https://s3-alpha-sig.figma.com/img/9836/a11a/881068fc8fe89b091e2507792dbdab91?Expires=1698624000&Signature=mFi3XGWqva49cMZyUjJbyrquzTdg-C3zlF1eWBAHZ2LEFKTFywcAHcmKjOPMU68mHHwiaZPEyNyNvbHYSliyByNUTXw-sT1nN~8vv4I3F6OqbdP-5nJo4TYTidZahaWj6QM41x9uZgc7dfSmHak~BGImcMLUoqH-71SzEYKUxwOB2DZDfS13RDAs7EVdAt9Ei608nhsyRWVs6LzQL57jc-lDesSBvhNkNDayETNnX5clyhObWQpdx0pvlFxnm~GkYYhO5Mkr1Nq7DwOKevHhPNGrKL4MiiutfgkFBbrP3E8mRyME346ywxfa1Brwltf~nfpgUrSdEFdfLHmPq7aJHg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                 small
               />
-              <FatBlock>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5">
-                  <ConceptCard
-                    title="Persistent Identity & Composability"
-                    description="Two line description of this concept that contributes to a larger narrative about the technology and links to the overview section."
-                    label="Learn more"
-                    icon="Arvo"
-                    href=""
-                  />
-                  <ConceptCard
-                    title="Persistent Identity & Composability"
-                    description="Two line description of this concept that contributes to a larger narrative about the technology and links to the overview section."
-                    label="Learn more"
-                    icon="Arvo"
-                    href=""
-                  />
-                </div>
+              <FatBlock className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <ConceptCard
+                  title="Persistent Identity & Composability"
+                  description="Two line description of this concept that contributes to a larger narrative about the technology and links to the overview section."
+                  label="Learn more"
+                  icon="Arvo"
+                  href=""
+                  small
+                />
+                <ConceptCard
+                  title="Persistent Identity & Composability"
+                  description="Two line description of this concept that contributes to a larger narrative about the technology and links to the overview section."
+                  label="Learn more"
+                  icon="Arvo"
+                  href=""
+                  small
+                />
               </FatBlock>
-              <FatBlock className="grid grid-cols-1 2xl:grid-cols-2 gap-2.5">
+              <FatBlock className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <ImageCard
                   colorScheme="gray"
                   title="Insert Card Style Headline"
@@ -87,7 +87,15 @@ export default function Home({ search }) {
                   imgSrc="https://s3-alpha-sig.figma.com/img/c5be/54df/e472e8cbce6c829aaa63faeef5f7678c?Expires=1698624000&Signature=jVwcFwzZq7XxBRR3r2mVpjV8Xu4XqllYMxusCkqtbOeO9p8hTwZwL1r3nanYLWTd0nUOBXcRTTWzz9G9um0i2B1w3ZxiPsAVjzc-YvZmNQ4tIXB~S8LGNN3fAaSt-hcQfbFka1S1epj7jqAcOlYDMqd23w3q3EnL3p7DabulnuJvGYyWKwoJ7nxs~V~v8WnnxjrBfjK-TjYGeZJJpz9qlO-AGJJmCMcoiPFiWt0zx89N6iPcbv4Eck26i7lSGXALHSIsTa6D5E8sXhY3vqPyZFDNtoZYHEOuGhyothoPY20Cexg42MRb76U-4LwToooxm45vwvQl~oOcjO4RXleamg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                 />
               </FatBlock>
-              <FatBlock className="grid grid-cols-1 xl:grid-cols-2 gap-2.5">
+              <FatBlock>
+                <ImageCard
+                  colorScheme="brite"
+                  title="Insert Card Style Headline"
+                  description="More Information Goes Here"
+                  href=""
+                />
+              </FatBlock>
+              <FatBlock className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <IconCard
                   title="Hoon School"
                   description="Learn the fundamentals of the Hoon programming language"
@@ -95,6 +103,15 @@ export default function Home({ search }) {
                   href="/courses/hoon-school"
                   icon="HoonSchool"
                 />
+                <IconCard
+                  title="App School"
+                  description="Learn app development"
+                  label="View Guide"
+                  href="/courses/app-school"
+                  icon="AppSchoolI"
+                />
+              </FatBlock>
+              <FatBlock>
                 <IconCard
                   title="App School"
                   description="Learn app development"

@@ -1,10 +1,13 @@
+import React from "react";
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <link rel="preconnect" href="https://3EVOAL3MOI-dsn.algolia.net" crossorigin />
+      </Head>
       <body>
         <Main />
         <NextScript />
@@ -30,6 +33,18 @@ export default function Document() {
               startup: {
                 typeset: false,
                 ready: () => {
+                  // setting data-theme so that @docsearch/react understands
+                  // whether it should be in dark mode or not
+                  if (window.matchMedia) {
+                    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                      document.querySelector("html").setAttribute("data-theme", "dark");
+                    }
+                  }
+                  // force docsearch dark-theme for now
+                  // delete this once light-mode is implemented
+                  // TODO: light-mode
+                  document.querySelector("html").setAttribute("data-theme", "dark");
+
                   MathJax.startup.defaultReady();
                   window.__MathJax_State__.isReady = true;
                   resolve();

@@ -15,7 +15,7 @@ import Footer from "../components/Footer";
 export default function Home({ search }) {
   return (
     <Container>
-      <IntraNav search={() => console.log("Search")} />
+      <IntraNav />
       <Main>
         <div className="flex h-full w-full">
           <Sidebar className="hidden md:flex" left />

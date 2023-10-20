@@ -1,0 +1,22 @@
+.DocSearch-Button {
+  @apply type-ui space-x-2;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--brite);
+  color: var(--gray);
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.DocSearch-Button:hover,
+.DocSearch-Button:active,
+.DocSearch-Button:focus {
+  background-color: var(--lite);
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  display: none;
+}

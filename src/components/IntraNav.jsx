@@ -1,5 +1,6 @@
 import React from "react";
 import { IntraNav as IntraNavFDS } from "@urbit/fdn-design-system";
+import { DocSearch } from '@docsearch/react';
 
 const ourSite = {
   title: "Docs",
@@ -39,7 +40,13 @@ export default function IntraNav({ search }) {
       ourSite={ourSite}
       sites={sites}
       pages={pages}
-      search={search}
+      search={
+        <DocSearch
+          appId="3EVOAL3MOI"
+          apiKey="00ccef825c17a672ef1c1a9bea3a9903"
+          indexName="developers-urbit"
+        />
+      }
     />
   );
 }

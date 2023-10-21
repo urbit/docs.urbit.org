@@ -38,30 +38,15 @@ export default function Content({
           posts={posts}
           root={root}
           firstCrumb={firstCrumb}
-          labelMaxLength={26}
         />
       </Sidebar>
-      <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-5 md:pr-8 xl:pr-5">
+      <div className="flex flex-col flex-1 min-w-0 px-5 md:pr-8 xl:pr-5">
         <Header className="md:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
-        <h1 className="text-5xl text-white mt-3 mb-10">{data.title}</h1>
+        <h1 className="font-medium text-5xl text-white mt-3 mb-10">{data.title}</h1>
         <div className="markdown technical">
           <Markdown.render content={md} />
-        </div>
-        <div className="flex justify-between items-center text-base mt-16 mb-2">
-          <a
-            className="font-semibold rounded-xl block p-2 text-gray hover:text-brite"
-            target="_blank"
-            href={`https:github.com/urbit/docs.urbit.org/blob/master/content/${root}/${
-              params.slug?.join("/") || "_index"
-            }.md`}
-          >
-            Edit this page on GitHub
-          </a>
-          <p className="font-semibold block p-2 text-gray">
-            Last modified {data.lastModified}
-          </p>
         </div>
       </div>
       <Sidebar className="hidden lg:flex" right>

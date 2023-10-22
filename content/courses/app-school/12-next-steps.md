@@ -28,7 +28,7 @@ following documents for help writing a web front-end for your app:
 - [The software distribution guide](/userspace/apps/guides/software-distribution) - This covers
   everything you need to know to distribute apps to other ships. It includes
   details of bundling a web front-end and serving it to the user in the browser.
-- [The HTTP API guide](/tools/http-api-guide) - This is a reference
+- [The HTTP API guide](/tools/js-libs/http-api-guide) - This is a reference
   and guide to using the `@urbit/http-api` NPM module.
 - [The Sail guide](/language/hoon/guides/sail) - Sail is a domain-specific language
   for composing XML structure in Hoon. It can be used to compose front-ends for

@@ -223,7 +223,7 @@ section.
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial
   walking through the basics of writing a modern React application.
 
-- [HTTP API Guide](/tools/http-api-guide) - Reference documentation for
+- [HTTP API Guide](/tools/js-libs/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
 
 - [React app source

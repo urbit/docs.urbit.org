@@ -1,32 +1,19 @@
 +++
-title = "Hoon"
+title = "Tools"
 +++
 
+This section of the docs is for developer documentation of additonal, external
+and/or third-party apps, libraries and tools.
 
-## [Arvo](/system/kernel/arvo){% class="!mb-0 !mt-12" %}
+### [JS Libraries](/tools/js-libs)
 
-Technical documentation on Arvo, Urbit's OS, and its components{% class="!mt-2" %}
+Javascript libraries for interacting with an Urbit ship.
 
-## [Hoon](/language/hoon){% class="!mb-0 !mt-12" %}
+### [Docs App](/tools/docs-app)
 
-Detailed documentation on the Hoon programming language and its nuances{% class="!mt-2" %}
+Reference documentation for distributing app documentation for the docs app.
 
-## [Nock](/language/nock){% class="!mb-0 !mt-12" %}
+### [Auth Server](/tools/auth-server)
 
-An explanation, example, and implementations of Nock, Urbit's low-level programming language{% class="!mt-2" %}
-
-## [Vere](/system/runtime){% class="!mb-0 !mt-12" %}
-
-Details on Urbit’s runtime, Vere{% class="!mt-2" %}
-
-## [Azimuth](/system/identity){% class="!mb-0 !mt-12" %}
-
-Details on Urbit’s general-purpose public-key infrastructure (PKI), Azimuth{% class="!mt-2" %}
-
-## [Glossary](/TODO-GLOSSARY){% class="!mb-0 !mt-12" %}
-
-Urbit-specific development nomenclature{% class="!mt-2" %}
-
-## [Additional References](/reference/additional){% class="!mb-0 !mt-12" %}
-
-Miscellaneous references{% class="!mt-2" %}
+Detailed documentation for the server-side API part of the Auth app, so people
+can use their Urbit ship to login to a website.

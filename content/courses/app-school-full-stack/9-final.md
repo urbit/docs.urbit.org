@@ -93,7 +93,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### React App Setup and Logic
 
-- [HTTP API Guide](/tools/http-api-guide) - Reference documentation for
+- [HTTP API Guide](/tools/js-libs/http-api-guide) - Reference documentation for
   `@urbit/http-api`.
 
 - [React app source

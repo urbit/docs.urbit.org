@@ -1,6 +1,6 @@
 +++
 title = "Courses"
-weight = 2
+weight = 80
 +++
 
 {% grid %}

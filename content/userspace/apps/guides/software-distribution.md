@@ -11,7 +11,7 @@ In this document we'll walk through an example of creating and publishing a desk
 *Note: You can skip this step if you already have the latest binary installed.*
 
 Follow the [CLI install
-instructions](https://urbit.org/getting-started/cli#2-install-urbit) appropriate
+instructions](https://urbit.org/manual/getting-started/cli#2-install-urbit) appropriate
 for your OS to download the `urbit` binary.
 
 ## Spin up fake ship

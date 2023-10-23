@@ -7,7 +7,7 @@ weight = 30
 +++
 
 Urbit can be run in a variety of contexts. Our [Getting Started
-Guide](https://urbit.org/getting-started/) covers how to run an Urbit locally
+Guide](https://urbit.org/manual/getting-started/) covers how to run an Urbit locally
 on your computer; this section covers alternative ways of running Urbit.
 
 ## [Cloud Hosting](/manual/running/hosting)

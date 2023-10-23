@@ -3,6 +3,7 @@ title = "App School II (Full-Stack)"
 weight = 7
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = false
 +++
 
 This series walks through the writing of a full Gall agent, and then the

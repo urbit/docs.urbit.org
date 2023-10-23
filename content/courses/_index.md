@@ -3,28 +3,22 @@ title = "Courses"
 weight = 2
 +++
 
-This section contains in-depth tutorials for learning Urbit development. It
-also has information about live, hands-on courses taught by an instructor. This
-is the best place to start if you want to build something on Urbit.
+{% grid %}
 
-## Urbit Academy
+  {% iconcard
+    title="Urbit Academy"
+    description="The Urbit Foundation offers a variety of cohort courses for those interested in learning development on Urbit."
+    label="Learn more"
+    href="/courses/urbit-academy"
+    icon="Apprenticeship"
+  /%}
 
-{% contentcard
-  title="Hoon Academy"
-  description="Hoon Academy teaches the fundamentals for Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
-  label="Learn more"
-  href="/courses/academy/ha"
-  imgSrc="https://media.urbit.org/developers/images/hoon-school-live.svg"
-/%}
+{% /grid %}
 
-{% contentcard
-  title="Hoon Academy"
-  description="Hoon Academy teaches the fundamentals for Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
-  label="Learn more"
-  href="/courses/academy/ha"
-  imgSrc="https://media.urbit.org/developers/images/app-school-live.svg"
-/%}
-## Core Curriculum
+## Tutorials
+
+These in-depth tutorials let you learn Hoon and Urbit app development at your
+own pace.
 
 {% grid %}
 
@@ -61,17 +55,3 @@ is the best place to start if you want to build something on Urbit.
   /%}
 
 {% /grid %}
-
-
-## [Urbit Academy](/courses/classes){% class="!mb-0 !mt-12" %}
-The Urbit Foundation offers a variety of cohort courses for those interested in learning development on Urbit. If you prefer to learn as part of a group with a hands-on instructor, regular exercises and discussions, and a completion certification, then these courses will be a good fit for you.
-
-### [Hoon Academy](/courses/academy/ha){% class="!mb-0 !mt-12" %}
-
-### [App Academy](/courses/academy/aa){% class="!mb-0 !mt-12" %}
-
-### [App Workshop](/courses/academy/aw){% class="!mb-0 !mt-12" %}
-
-### [Core Academy](/courses/academy/ca){% class="!mb-0 !mt-12" %}
-
-## [Education videos](https://www.youtube.com/@urbiteducation){% class="!mb-0 !mt-12" %}

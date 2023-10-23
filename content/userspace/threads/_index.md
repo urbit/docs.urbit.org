@@ -54,11 +54,11 @@ other sinks.
 
 This guide walks you through the fundamental things you need to know to write threads. They focus on basic thread composition and so don't touch on interacting with threads from gall agents and such. The included examples can all just be run from the dojo.
 
-1. [Thread Fundamentals](/userspace/threads/tutorial/basics/fundamentals) - Basic information and overview of threads, strands, `form` & `pure`.
-2. [Micgal and Bind](/userspace/threads/tutorial/basics/bind) - Covers using micgal and `bind` to chain strands.
-3. [Strand Input](/userspace/threads/tutorial/basics/input) - What strands receive as input
-4. [Strand Output](/userspace/threads/tutorial/basics/output) - What strands produce
-5. [Summary](/userspace/threads/tutorial/basics/summary)
+1. [Thread Fundamentals](/userspace/threads/tutorials/basics/fundamentals) - Basic information and overview of threads, strands, `form` & `pure`.
+2. [Micgal and Bind](/userspace/threads/tutorials/basics/bind) - Covers using micgal and `bind` to chain strands.
+3. [Strand Input](/userspace/threads/tutorials/basics/input) - What strands receive as input
+4. [Strand Output](/userspace/threads/tutorials/basics/output) - What strands produce
+5. [Summary](/userspace/threads/tutorials/basics/summary)
 
 ## Gall
 

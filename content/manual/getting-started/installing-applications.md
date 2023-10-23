@@ -24,16 +24,16 @@ Click and the search bar and search for the software provider’s Urbit ID.
 
 For example, to install the pals application, search for `~paldev` and then click on the result for `~paldev` to show the applications.
 
-![](https://media.urbit.org/site/manual/getting-started/install-apps-1.png)
+![](https://media.urbit.org/site/getting-started/install-apps-1.png)
 
-![](https://media.urbit.org/site/manual/getting-started/install-apps-2.png)
+![](https://media.urbit.org/site/getting-started/install-apps-2.png)
 
 ### 3. Get the Application
 
 Select the pals app, and a modal window will open that shows some information about the application. Go ahead and click the “Get App” button, and confirm the following modal window to begin the installation process.
 
-![](https://media.urbit.org/site/manual/getting-started/install-apps-3.png)
+![](https://media.urbit.org/site/getting-started/install-apps-3.png)
 
 Soon you’ll have a new application tile on your home screen.  Now you can add people you know on the network as your pals just by entering their Urbit ID.
 
-![](https://media.urbit.org/site/manual/getting-started/install-apps-4.png)
+![](https://media.urbit.org/site/getting-started/install-apps-4.png)

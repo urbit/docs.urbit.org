@@ -775,38 +775,38 @@ desc = "Dojo utility included in dojo.hoon"
 
 +++
 
-[path]: https://developers.urbit.org/TODO-GLOSSARY/path
-[ship]: https://developers.urbit.org/TODO-GLOSSARY/ship
-[desk]: https://developers.urbit.org/TODO-GLOSSARY/desk
-[clay]: https://developers.urbit.org/TODO-GLOSSARY/clay
-[dojo]: https://developers.urbit.org/TODO-GLOSSARY/dojo
-[gall]: https://developers.urbit.org/TODO-GLOSSARY/gall
-[agent]: https://developers.urbit.org/TODO-GLOSSARY/agent
-[scry]: https://developers.urbit.org/TODO-GLOSSARY/scry
-[case]: https://developers.urbit.org/TODO-GLOSSARY/case
-[arvo]: https://developers.urbit.org/TODO-GLOSSARY/arvo
-[kernel]: https://developers.urbit.org/TODO-GLOSSARY/kernel
-[mark]: https://developers.urbit.org/TODO-GLOSSARY/mark
-[hoon]: https://developers.urbit.org/TODO-GLOSSARY/hoon
-[generator]: https://developers.urbit.org/TODO-GLOSSARY/generator
-[thread]: https://developers.urbit.org/TODO-GLOSSARY/thread
-[care]: https://developers.urbit.org/TODO-GLOSSARY/care
-[path prefix]: https://developers.urbit.org/TODO-GLOSSARY/path-prefix
-[core]: https://developers.urbit.org/TODO-GLOSSARY/core
-[gate]: https://developers.urbit.org/TODO-GLOSSARY/gate
-[vane]: https://developers.urbit.org/TODO-GLOSSARY/vane
-[life]: https://developers.urbit.org/TODO-GLOSSARY/life
-[rift]: https://developers.urbit.org/TODO-GLOSSARY/rift
-[behn]: https://developers.urbit.org/TODO-GLOSSARY/behn
-[cord]: https://developers.urbit.org/TODO-GLOSSARY/cord
-[bowl]: https://developers.urbit.org/TODO-GLOSSARY/bowl
-[bridge]: https://developers.urbit.org/TODO-GLOSSARY/bridge
-[pill]: https://developers.urbit.org/TODO-GLOSSARY/pill
-[moon]: https://developers.urbit.org/TODO-GLOSSARY/moon
-[move]: https://developers.urbit.org/TODO-GLOSSARY/move
-[eyre]: https://developers.urbit.org/TODO-GLOSSARY/eyre
-[ames]: https://developers.urbit.org/TODO-GLOSSARY/ames
-[azimuth]: https://developers.urbit.org/TODO-GLOSSARY/azimuth
+[path]: https://developers.urbit.org/glossary/path
+[ship]: https://developers.urbit.org/glossary/ship
+[desk]: https://developers.urbit.org/glossary/desk
+[clay]: https://developers.urbit.org/glossary/clay
+[dojo]: https://developers.urbit.org/glossary/dojo
+[gall]: https://developers.urbit.org/glossary/gall
+[agent]: https://developers.urbit.org/glossary/agent
+[scry]: https://developers.urbit.org/glossary/scry
+[case]: https://developers.urbit.org/glossary/case
+[arvo]: https://developers.urbit.org/glossary/arvo
+[kernel]: https://developers.urbit.org/glossary/kernel
+[mark]: https://developers.urbit.org/glossary/mark
+[hoon]: https://developers.urbit.org/glossary/hoon
+[generator]: https://developers.urbit.org/glossary/generator
+[thread]: https://developers.urbit.org/glossary/thread
+[care]: https://developers.urbit.org/glossary/care
+[path prefix]: https://developers.urbit.org/glossary/path-prefix
+[core]: https://developers.urbit.org/glossary/core
+[gate]: https://developers.urbit.org/glossary/gate
+[vane]: https://developers.urbit.org/glossary/vane
+[life]: https://developers.urbit.org/glossary/life
+[rift]: https://developers.urbit.org/glossary/rift
+[behn]: https://developers.urbit.org/glossary/behn
+[cord]: https://developers.urbit.org/glossary/cord
+[bowl]: https://developers.urbit.org/glossary/bowl
+[bridge]: https://developers.urbit.org/glossary/bridge
+[pill]: https://developers.urbit.org/glossary/pill
+[moon]: https://developers.urbit.org/glossary/moon
+[move]: https://developers.urbit.org/glossary/move
+[eyre]: https://developers.urbit.org/glossary/eyre
+[ames]: https://developers.urbit.org/glossary/ames
+[azimuth]: https://developers.urbit.org/glossary/azimuth
 
 Below are the various [generators][generator], [threads][thread] and other tools
 included with the `%base` desk and usable in the [dojo][dojo]. These are

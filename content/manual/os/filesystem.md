@@ -20,7 +20,7 @@ This quick-start guide will walk you through some common commands. Follow along
 using your Dojo. When you get a `>=` message after entering a command, this means
 that the command was successful.
 
-A [`desk`](https://developers.urbit.org/TODO-GLOSSARY/desk) is something like an independently
+A [`desk`](https://developers.urbit.org/glossary/desk) is something like an independently
 revision-controlled branch of your urbit's file-system. Your urbit's system
 files live in the `%base` desk.
 

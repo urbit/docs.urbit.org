@@ -4,7 +4,7 @@ description = "Learn about scrying over the network"
 weight = 5
 +++
 
-To [scry](/TODO-GLOSSARY/scry) is to perform a *read* from Urbit's
+To [scry](/glossary/scry) is to perform a *read* from Urbit's
 referentially transparent namespace. In other words, it's a function from a
 `path` to a `noun` (although in some cases, the resulting type may be more
 constrained). Previously we only supported scrying within the same ship, but

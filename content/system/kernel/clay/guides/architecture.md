@@ -4,7 +4,7 @@ weight = 2
 +++
 
 Clay is the primary filesystem for the [Arvo](/system/kernel/arvo)
-operating system, which is the [core](/TODO-GLOSSARY/core/) of an
+operating system, which is the [core](/glossary/core/) of an
 urbit. The architecture of Clay is intrinsically connected with Arvo,
 but for this section we assume no knowledge of either Arvo or Urbit.
 We will point out only those features of Arvo that are necessary for

@@ -15,7 +15,7 @@ Let's walk through the process of finding and joining a public group.
 
 Once you’re on the network, you’ll see Landscape, which is filled with large applications tiles: Talk, Terminal, and Groups. Click on Groups.
 
-![](https://storage.googleapis.com/media.urbit.org/site/manual/getting-started/get-oriented.png)
+![](https://storage.googleapis.com/media.urbit.org/site/getting-started/get-oriented.png)
 
 ### 2. Enter the group shortcode
 

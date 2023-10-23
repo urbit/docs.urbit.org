@@ -9,11 +9,11 @@ weight = 14
 
 After you've logged into your Urbit for the first time, you'll have an interface called Landscape – a way interact with the network and applications.  You'll also see a few pre-installed applications: Terminal, Groups, and Talk. More on them in a moment.
 
-![](https://storage.googleapis.com/media.urbit.org/site/manual/getting-started/get-oriented.png)
+![](https://storage.googleapis.com/media.urbit.org/site/getting-started/get-oriented.png)
 
 Above those are buttons to view System Preferences and check out notifications for messages and application activity. The search bar helps you surface applications you already have installed, or discover developers and applications across the Urbit network.
 
-![](https://storage.googleapis.com/media.urbit.org/site/manual/getting-started/about-system.png)
+![](https://storage.googleapis.com/media.urbit.org/site/getting-started/about-system.png)
 
 You'll likely want to focus on finding and joining new communities, which you can do with the **Groups** app.
 

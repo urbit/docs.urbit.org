@@ -510,7 +510,7 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 (add 40 2)
 ```
 
-`|= *` constructs a [gate](/TODO-GLOSSARY/gate/) that takes a noun. This [gate](/TODO-GLOSSARY/gate/) will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
+`|= *` constructs a [gate](/glossary/gate/) that takes a noun. This [gate](/glossary/gate/) will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject.  Namely, a `%say` generator knows about `our`, `eny`, and `now`, as well as the current desk:
 

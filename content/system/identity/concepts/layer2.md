@@ -37,7 +37,7 @@ how they affect the end user. Later sections elaborate on this summary.
 
 ### Layer 1
 
-We briefly review how "Layer 1", i.e. the [Azimuth](/TODO-GLOSSARY/azimuth) smart
+We briefly review how "Layer 1", i.e. the [Azimuth](/glossary/azimuth) smart
 contract suite, functions. An update to the Azimuth PKI data stored on your urbit
 occurs with four steps:
 
@@ -293,7 +293,7 @@ invalid transaction. The worst an aggregator can do is not submit your transacti
 ## Multi-keyfiles
 
 As part of the layer 2 upgrade, Tlon has expanded the role of
-[keyfiles](/TODO-GLOSSARY/keyfile). One of our goals with layer 2 was to reduce
+[keyfiles](/glossary/keyfile). One of our goals with layer 2 was to reduce
 the amount of friction experienced when getting onto Urbit. The enormous
 reduction in fees has made a new boot method which allows instantaneous sale of
 layer 2 planets or stars to be cost effective.

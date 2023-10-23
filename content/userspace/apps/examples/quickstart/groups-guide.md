@@ -15,7 +15,7 @@ itself, but its API will be used by the other apps we'll build in these
 lightning tutorials.
 
 The front-end of the app will be written in
-[Sail](/TODO-GLOSSARY/sail), Urbit's XML language built into the Hoon
+[Sail](/glossary/sail), Urbit's XML language built into the Hoon
 compiler. Using Sail means we don't need to create a separate React front-end,
 and can instead serve pages directly from our back-end. This works well for
 static pages but a full JS-enabled front-end would be preferred for a dynamic

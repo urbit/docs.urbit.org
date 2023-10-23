@@ -35,7 +35,7 @@ ownership key and all of the related proxies.
 
 An ownership address has all rights over the assets deeded to it. These rights
 are on-chain actions described and implemented in
-[Ecliptic](/TODO-GLOSSARY/ecliptic), Azimuth's suite of governing
+[Ecliptic](/glossary/ecliptic), Azimuth's suite of governing
 smart-contracts.
 
 ## Proxies

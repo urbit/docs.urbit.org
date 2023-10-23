@@ -5,9 +5,9 @@ weight = 10
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
 
-A Gall agent is a [door](/TODO-GLOSSARY/door) with exactly ten [arms](/TODO-GLOSSARY/arm). Each arm is responsible for
+A Gall agent is a [door](/glossary/door) with exactly ten [arms](/glossary/arm). Each arm is responsible for
 handling certain kinds of events that Gall feeds in to the agent. A door is
-just a [core](/TODO-GLOSSARY/core) with a sample - it's made with the
+just a [core](/glossary/core) with a sample - it's made with the
 [barcab](/language/hoon/reference/rune/bar#_-barcab) rune (`|_`) instead of the
 usual [barcen](/language/hoon/reference/rune/bar#-barcen) rune (`|%`).
 

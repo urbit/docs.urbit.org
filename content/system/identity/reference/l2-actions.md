@@ -21,7 +21,7 @@ transferring ownership to layer 2.
 
 In order to move your ship from layer 1 to layer 2, transfer ownership of your
 ship to the address `0x1111111111111111111111111111111111111111`. The easiest
-way to accomplish this is using [Bridge](/TODO-GLOSSARY/bridge). The Azimuth
+way to accomplish this is using [Bridge](/glossary/bridge). The Azimuth
 smart contracts interpret any ship at this address as being on layer 2.
 
 ## Dominion
@@ -47,7 +47,7 @@ A planet in dominion `%l1` is said to exist on layer 1, which is the default
 state for all planets prior to the introduction of naive rollups. In addition to
 the ordinary layer 1 Azimuth actions a planet can perform, they may also choose to
 `%escape` or `%cancel-escape` on layer 2 using either their ownership key or
-[management proxy](/TODO-GLOSSARY/proxies). See the [layer 2 sponsorship](/system/identity/concepts/layer2#sponsorship)
+[management proxy](/glossary/proxies). See the [layer 2 sponsorship](/system/identity/concepts/layer2#sponsorship)
 section for more information on layer 1 ships performing layer 2
 sponsorship actions.
 

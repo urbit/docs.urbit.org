@@ -293,7 +293,7 @@ So legs are for data and arms are for computations.  But what _specifically_ is 
 
 An _arm_ is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can—it's just a noun like any other.  You almost always want to think of an arm simply as a way of running some Hoon code.
 
-Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/TODO-GLOSSARY/arm) is a Hoon expression to be evaluated against the core subject (i.e. its parent core is its subject).
+Every expression of Hoon is evaluated relative to a subject.  An [_arm_](/glossary/arm) is a Hoon expression to be evaluated against the core subject (i.e. its parent core is its subject).
 
 #### Arms for Gates
 
@@ -861,7 +861,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
     $(n (dec n), t (mul t n))
     ```
 
-    The above code should look familiar.  We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`.  The `|-` here is used to create a new gate with one [arm](/TODO-GLOSSARY/arm) `$` and immediately call it.  As before, think of `|-` as the recursion point.
+    The above code should look familiar.  We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`.  The `|-` here is used to create a new gate with one [arm](/glossary/arm) `$` and immediately call it.  As before, think of `|-` as the recursion point.
 
     We then evaluate `n` to see if it is 1. If it is, we return the value of `t`. In case that `n` is anything other than 1, we perform our recursion:
 

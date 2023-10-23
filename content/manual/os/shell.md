@@ -32,7 +32,7 @@ Tall-form Hoon may require multiple lines:
 ```
 
 Hoon uses something called [the
-subject](https://developers.urbit.org/TODO-GLOSSARY/subject).  The Dojo
+subject](https://developers.urbit.org/glossary/subject).  The Dojo
 has its own subject and that's where Hoon's equivalent of variables, called
 faces, are stored.
 
@@ -99,7 +99,7 @@ arguments.
 ~your-urbit:dojo> +code
 ```
 
-You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](https://developers.urbit.org/TODO-GLOSSARY/bridge)
+You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](https://developers.urbit.org/glossary/bridge)
 from being able to derive your code in the future.
 
 #### `+ls`

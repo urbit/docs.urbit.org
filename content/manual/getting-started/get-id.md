@@ -13,7 +13,7 @@ types](https://operators.urbit.org/guides/which-id-should-i-buy) of Urbit ID, bu
 **Comets** are free, temporary identities that you can issue yourself and are best-suited for
 short-term usage. **Planets** are permanent identities that are suitable for long-term use.
 
-![](https://storage.googleapis.com/media.urbit.org/site/manual/getting-started/comet-planet.png)
+![](https://storage.googleapis.com/media.urbit.org/site/getting-started/comet-planet.png)
 
 Planets have a unique, four syllable phonetic name and a [sigil](https://urbit.org/blog/creating-sigils), a visual representation of the name.
 
@@ -76,7 +76,7 @@ The first is an email invitation with an Urbit ID and a Master Ticket.
 
 The second, made available through our [L2 solution](https://operators.urbit.org/manual/id/layer-2-for-planets), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the Urbit ID management tool.
 
-![](https://media.urbit.org/site/manual/getting-started/Server-setup-1.jpg)
+![](https://media.urbit.org/site/getting-started/Server-setup-1.jpg)
 
 Clicking a link to activate a planet on Bridge will take you to page which will generate a Master Ticket for you. Follow the instructions which will prompt you to download a copy of your Passport: your Master Ticket, management proxy, and keyfile. Store your Master Ticket and management proxy somewhere safe, hold on to the keyfile, and proceed to the next step.
 

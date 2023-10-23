@@ -8,7 +8,7 @@ data related to Azimuth points and their ownership, and should be considered to
 be the ledger for Azimuth. This contract is just a data store - it only contains
 the bare minimum of business logic. See [Ecliptic.eth](/system/identity/reference/ecliptic)
 for the contract containing the business logic for this ledger. `Azimuth.eth`
-cannot be modified directly by [galaxy vote](/TODO-GLOSSARY/upgrade) - they are
+cannot be modified directly by [galaxy vote](/glossary/upgrade) - they are
 only eligible to modify the Ecliptic.
 
 ## Global state {% #global %}

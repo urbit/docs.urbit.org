@@ -32,6 +32,7 @@ const pages = [
   { title: "Tools", href: "/tools" },
   { title: "Courses", href: "/courses" },
   { title: "Manual", href: "/manual" },
+  { title: "Glossary", href: "/glossary" },
 ];
 
 export default function IntraNav({ search }) {

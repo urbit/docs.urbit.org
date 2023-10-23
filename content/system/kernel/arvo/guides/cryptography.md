@@ -24,20 +24,20 @@ blockchain, and as such is contained in a wallet whose private key you possess.
 If you are are utilizing a [master
 ticket](/system/identity#master-ticket), this private key is derived
 from a seed, which is what you use to login to
-[Bridge](/TODO-GLOSSARY/bridge). Otherwise, you have generated the key by
+[Bridge](/glossary/bridge). Otherwise, you have generated the key by
 some other process, of which there are too many to list here. Besides the
 private key which unlocks your ownership wallet address, you may have a few
 other private keys which unlock a wallet that corresponds to your ship's
-[proxies](/TODO-GLOSSARY/proxies). We refer collectively to these keys as
+[proxies](/glossary/proxies). We refer collectively to these keys as
 your _Azimuth keys_.
 
-Only [planets](/TODO-GLOSSARY/planet), [stars](/TODO-GLOSSARY/star), and
-[galaxies](/TODO-GLOSSARY/galaxy) have Azimuth keys.
-[Moons](/TODO-GLOSSARY/moon) and [comets](/TODO-GLOSSARY/comet) do not,
+Only [planets](/glossary/planet), [stars](/glossary/star), and
+[galaxies](/glossary/galaxy) have Azimuth keys.
+[Moons](/glossary/moon) and [comets](/glossary/comet) do not,
 as they do not exist on the Ethereum blockchain.
 
 It is important to note that no Azimuth keys are stored anywhere within your
-ship's [pier](/TODO-GLOSSARY/pier) - Ethereum and Urbit ID are entirely
+ship's [pier](/glossary/pier) - Ethereum and Urbit ID are entirely
 separate entities from Urbit itself, and so you lose access to your Azimuth
 private keys there is no way to retrieve them somehow from your ship.
 
@@ -46,18 +46,18 @@ the [Azimuth documentation](/system/identity).
 
 ### Networking keys
 
-All communications in Urbit over the [Ames](/TODO-GLOSSARY/ames) network
+All communications in Urbit over the [Ames](/glossary/ames) network
 are end-to-end encrypted, and thus your ship stores its own public/private pair
 of _networking keys_ utilized for encryption and authentication. Networking keys
-for all ship types are stored within the ship's [Jael](/TODO-GLOSSARY/jael)
-[vane](/TODO-GLOSSARY/vane).
+for all ship types are stored within the ship's [Jael](/glossary/jael)
+[vane](/glossary/vane).
 
 For planets, stars, and galaxies, your networking public key is configured on
 the Ethereum blockchain using one of your Azimuth private keys - either the one
 associated to the wallet which owns the ship, or the one which holds the
-[management proxy](/TODO-GLOSSARY/proxies). This is typically accomplished
+[management proxy](/glossary/proxies). This is typically accomplished
 with Bridge. Your networking private key (in the
-[keyfile](/TODO-GLOSSARY/keyfile)) is a necessary input for the initial boot
+[keyfile](/glossary/keyfile)) is a necessary input for the initial boot
 sequence of your ship (sometime called its `%dawn`), and this is also provided
 by Bridge.
 

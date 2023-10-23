@@ -14,9 +14,9 @@ just what is necessary to understand it from the perspective of userspace.
 ## Arvo and its Vanes
 
 [Arvo](/system/kernel/arvo) is the Urbit OS and kernel which is written in
-[Hoon](/TODO-GLOSSARY/hoon), compiled to [Nock](/TODO-GLOSSARY/nock), and
+[Hoon](/glossary/hoon), compiled to [Nock](/glossary/nock), and
 executed by the runtime environment and virtual machine
-[Vere](/TODO-GLOSSARY/vere). Arvo has eight kernel modules called vanes:
+[Vere](/glossary/vere). Arvo has eight kernel modules called vanes:
 [Ames](/system/kernel/ames), [Behn](/system/kernel/behn),
 [Clay](/system/kernel/clay), [Dill](/system/kernel/dill),
 [Eyre](/system/kernel/eyre), [Gall](/system/kernel/gall),

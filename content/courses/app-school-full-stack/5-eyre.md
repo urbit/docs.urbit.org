@@ -7,7 +7,7 @@ Now that we have our structure file, agent, `$json` conversion library and mark
 file, our back-end is complete. Before we start writing our front-end, though,
 we should give a brief overview of how Eyre works.
 
-[Eyre](/system/kernel/eyre) is the HTTP server [vane](/TODO-GLOSSARY/vane) of
+[Eyre](/system/kernel/eyre) is the HTTP server [vane](/glossary/vane) of
 Arvo. Eyre has a handful of different subsystems, but the main two are the
 channel system and the scry interface. These two are what we'll focus on here.
 

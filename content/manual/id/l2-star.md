@@ -5,7 +5,7 @@ template = "doc.html"
 +++
 
 This is a brief summary of the three possible options for star owners with
-respect to use of [layer 2](https://developers.urbit.org/TODO-GLOSSARY/rollups).
+respect to use of [layer 2](https://developers.urbit.org/glossary/rollups).
 
 ## One-way trip
 

@@ -21,6 +21,6 @@ How to get subscription updates from threads.
 
 How to cancel a thread from a Gall agent.
 
-## [Poke Thread](/userspace/threads/tutorial/gall/poke-thread)
+## [Poke Thread](/userspace/threads/tutorials/gall/poke-thread)
 
 How to poke a thread from a Gall agent.

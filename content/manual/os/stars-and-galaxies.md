@@ -6,7 +6,7 @@ aliases = ["/docs/using/operating-a-star/"]
 template = "doc.html"
 +++
 
-To boot your galaxy or star, follow our [installation instructions](https://urbit.org/getting-started/).
+To boot your galaxy or star, follow our [installation instructions](/manual/getting-started/).
 
 ### Hosting your star
 

@@ -42,7 +42,7 @@ When you first start your ship, you should make sure you put it a place where yo
 
 ### Keep up-to-date builds
 
-Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](https://urbit.org/getting-started/cli#updating).
+Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/manual/getting-started/cli#updating).
 
 ### `|hi` your star to see if you're connected
 
@@ -85,7 +85,7 @@ in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-commun
 You login to Landscape using the camel-case phrase obtained from dojo by
 entering `+code`. For security reasons you may wish to change this code
 regularly. You may do so by entering `|code %reset` into dojo. Doing this
-will prevent [Bridge](https://developers.urbit.org/TODO-GLOSSARY/bridge) from being able to derive your code,
+will prevent [Bridge](https://developers.urbit.org/glossary/bridge) from being able to derive your code,
 meaning you will only be able to check it from dojo in the future.
 
 ## Operation Issues {% #operation-issues %}

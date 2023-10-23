@@ -282,7 +282,7 @@ Unfortunately `/` fas runes don't work in the Dojo right now, so we need to buil
 
 ##  Desks
 
-A [desk](/TODO-GLOSSARY/desk) organizes a collection of files, including generators, libraries, agents, and system code, into one coherent bundle.  A desk is similar to a file drive in a conventional computer, or a Git branch.  Desks are supported by the Clay vane in Arvo, the Urbit OS.
+A [desk](/glossary/desk) organizes a collection of files, including generators, libraries, agents, and system code, into one coherent bundle.  A desk is similar to a file drive in a conventional computer, or a Git branch.  Desks are supported by the Clay vane in Arvo, the Urbit OS.
 
 At this point, you've likely only worked on the `%base` desk.  You can see data about any particular desk using the `+vats` generator:
 

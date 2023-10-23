@@ -1,52 +1,57 @@
 +++
-title = "Core Curriculum"
-weight = 2
-type = "tab"
+title = "Courses"
+weight = 80
 +++
-<<<<<<< Updated upstream
-=======
-## [Urbit Academy](/courses/classes){% class="!mb-0 !mt-12" %}
-The Urbit Foundation offers a variety of cohort courses for those interested in learning development on Urbit. If you prefer to learn as part of a group with a hands-on instructor, regular exercises and discussions, and a completion certification, then these courses will be a good fit for you.
 
-### [Hoon Academy](/courses/academy/ha){% class="!mb-0 !mt-12" %}
+{% grid %}
 
-### [App Academy](/courses/academy/aa){% class="!mb-0 !mt-12" %}
+  {% iconcard
+    title="Urbit Academy"
+    description="The Urbit Foundation offers a variety of cohort courses for those interested in learning development on Urbit."
+    label="Learn more"
+    href="/courses/urbit-academy"
+    icon="Apprenticeship"
+  /%}
 
-### [App Workshop](/courses/academy/aw){% class="!mb-0 !mt-12" %}
+{% /grid %}
 
-### [Core Academy](/courses/academy/ca){% class="!mb-0 !mt-12" %}
+## Tutorials
 
->>>>>>> Stashed changes
+These in-depth tutorials let you learn Hoon and Urbit app development at your
+own pace.
 
-## [Urbit Academy](/courses/classes){% class="!mb-0 !mt-12" %}
-The Urbit Foundation offers a variety of cohort courses for those interested in learning development on Urbit. If you prefer to learn as part of a group with a hands-on instructor, regular exercises and discussions, and a completion certification, then these courses will be a good fit for you.
+{% grid %}
 
-### [Hoon Academy](/courses/academy/ha){% class="!mb-0 !mt-12" %}
+  {% iconcard
+    title="Environment Setup"
+    description="Information about setting up a ship and editor for Urbit development."
+    label="View Course"
+    href="/courses/environment"
+    icon="EnvironmentSetup"
+  /%}
 
-### [App Academy](/courses/academy/aa){% class="!mb-0 !mt-12" %}
+  {% iconcard
+    title="Hoon School"
+    description="Learn the fundamentals of the Hoon programming language."
+    label="View Course"
+    href="/courses/hoon-school"
+    icon="HoonSchool"
+  /%}
 
-### [App Workshop](/courses/academy/aw){% class="!mb-0 !mt-12" %}
+  {% iconcard
+    title="App School"
+    description="Learn the basics of Urbit app development."
+    label="View Course"
+    href="/courses/app-school"
+    icon="AppSchoolI"
+  /%}
 
-### [Core Academy](/courses/academy/ca){% class="!mb-0 !mt-12" %}
+  {% iconcard
+    title="App School II"
+    description="Walk through building and publishing a full Urbit app with a React front-end."
+    label="View Course"
+    href="/courses/app-school-full-stack"
+    icon="AppSchoolII"
+  /%}
 
-
-## [Hoon School](/courses/hoon-school){% class="!mb-0 !mt-12" %}
-
-Learn the fundamentals of the Hoon programming language.{% class="!mt-2" %}
-
-## [App School](/courses/app-school){% class="!mb-0 !mt-12" %}
-
-Learn how to build Urbit userspace applications by writing your own Gall agents.{% class="!mt-2" %}
-
-## [App School II (Full Stack)](/courses/app-school-full-stack){% class="!mb-0 !mt-12" %}
-
-Learn how to create Gall agents and integrate them into a React front-end.{% class="!mt-2" %}
-
-## [Environment Setup](/courses/environment){% class="!mb-0 !mt-12" %}
-
-Learn how to get your urbit development environment configured.{% class="!mt-2" %}
-
-## [Overview](/courses/overview){% class="!mb-0 !mt-12" %}
-
-//TODO: #4 We need a good card design for the different sections here, we have the cohort classes, the schools (which are online guides) and we have external vidoes on youtube + intro guides like environment setup & overview
-## [Education videos](https://www.youtube.com/@urbiteducation){% class="!mb-0 !mt-12" %}
+{% /grid %}

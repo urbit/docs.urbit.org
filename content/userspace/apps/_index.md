@@ -1,32 +1,46 @@
 +++
-title = "Agents"
+title = "Apps"
 +++
 
+Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating
+system. Gall's purpose is to manage userspace applications called _agents_.
+**Agents** are the main kind of userspace application on Urbit. They have a
+persistent state and API that handles events and produces effects.Gall agents
+can variously be treated as databases with developer-defined logic, services,
+daemons, or a kind of state machine.
 
-## [Arvo](/system/kernel/arvo){% class="!mb-0 !mt-12" %}
+One or more Gall agents can be put together in a "desk" in Clay (the filesystem
+vane) and, along with a front-end, can be published and distributed as a
+cohesive app for users to install.
 
-Technical documentation on Arvo, Urbit's OS, and its components{% class="!mt-2" %}
+This section of the docs contains guides related to writing apps and
+[distributing them](/userspace/apps/guides/software-distribtion). It also
+contains a number of different [examples and
+exercises](/userspace/apps/examples) you can work through to learn how to build
+different kinds of apps.
 
-## [Hoon](/language/hoon){% class="!mb-0 !mt-12" %}
+Additionally, the [courses](/courses) section of the docs contain two in-depth
+app-building tutorials, which are the recommended place to start learning Urbit
+app development:
 
-Detailed documentation on the Hoon programming language and its nuances{% class="!mt-2" %}
 
-## [Nock](/language/nock){% class="!mb-0 !mt-12" %}
+{% grid %}
 
-An explanation, example, and implementations of Nock, Urbit's low-level programming language{% class="!mt-2" %}
 
-## [Vere](/system/runtime){% class="!mb-0 !mt-12" %}
+  {% iconcard
+    title="App School"
+    description="Learn the basics of app development."
+    label="View Guide"
+    href="/courses/app-school"
+    icon="AppSchoolI"
+  /%}
 
-Details on Urbit’s runtime, Vere{% class="!mt-2" %}
+  {% iconcard
+    title="App School II"
+    description="Learn to build and publish a full app, back-end and front-end."
+    label="View Guide"
+    href="/courses/app-school-full-stack"
+    icon="AppSchoolII"
+  /%}
 
-## [Azimuth](/system/identity){% class="!mb-0 !mt-12" %}
-
-Details on Urbit’s general-purpose public-key infrastructure (PKI), Azimuth{% class="!mt-2" %}
-
-## [Glossary](/TODO-GLOSSARY){% class="!mb-0 !mt-12" %}
-
-Urbit-specific development nomenclature{% class="!mt-2" %}
-
-## [Additional References](/reference/additional){% class="!mb-0 !mt-12" %}
-
-Miscellaneous references{% class="!mt-2" %}
+{% /grid %}

@@ -14,7 +14,7 @@ The primary way to interact with Azimuth is through
 depends on, [azimuth-js](https://github.com/urbit/azimuth-js) and
 [urbit-key-generation](https://github.com/urbit/urbit-key-generation). Take a
 look at the source and play around, or see [Getting
-Started](https://urbit.org/getting-started).
+Started](/manual/getting-started).
 
 ## Arvo vs. Azimuth
 

@@ -30,17 +30,17 @@ export default function Content({
 
   return (
     <div className="flex h-full w-full">
-      <MenuTray>
+      <MenuTray className="flex lg:hidden">
         <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </MenuTray>
-      <Sidebar className="hidden md:flex" left>
+      <Sidebar className="hidden lg:flex" left>
         <ContentNav
           posts={posts}
           root={root}
           firstCrumb={firstCrumb}
         />
       </Sidebar>
-      <div className="flex flex-col flex-1 min-w-0 px-5 md:pr-8 xl:pr-5">
+      <div className="flex flex-col flex-1 min-w-0 px-5">
         <Header className="md:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
@@ -49,7 +49,7 @@ export default function Content({
           <Markdown.render content={md} />
         </div>
       </div>
-      <Sidebar className="hidden lg:flex" right>
+      <Sidebar className="hidden xl:flex" right>
         <FragmentNav
           markdown={md}
           key={params.slug?.join("/") || Math.random()}

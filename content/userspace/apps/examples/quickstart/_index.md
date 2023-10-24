@@ -1,6 +1,7 @@
 +++
 title = "Lightning Tutorials"
 weight = 1
+auto_expand = true
 +++
 
 This series of quickstart guides will show you how decentralized, networked

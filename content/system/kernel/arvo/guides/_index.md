@@ -2,6 +2,7 @@
 title = "Guides"
 weight = 300
 sort_by = "weight"
+auto_expand = true
 +++
 
 Resources about the Urbit OS.

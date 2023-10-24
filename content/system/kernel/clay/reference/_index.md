@@ -3,6 +3,7 @@ title = "Reference"
 weight = 30
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 [Data Types](/system/kernel/arvo/clay/data-types)

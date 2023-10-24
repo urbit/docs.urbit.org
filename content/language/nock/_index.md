@@ -3,6 +3,7 @@ title = "Nock"
 weight = 500
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 > Last major revision of this tutorial: 2016.  Minor revisions were made in

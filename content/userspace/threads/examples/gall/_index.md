@@ -1,6 +1,7 @@
 +++
 title = "Gall"
 weight = 101
+auto_expand = true
 +++
 
 Examples of how to interact with threads from Gall agents.

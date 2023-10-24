@@ -3,7 +3,6 @@ title = "App School I"
 weight = 6
 sort_by = "weight"
 insert_anchor_links = "right"
-auto_expand = false
 +++
 
 This guide will walk through everything you need to know to write your own Gall

@@ -3,6 +3,7 @@ title = "Hoon"
 weight = 40
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 We are often asked why Urbit was written in a new language, rather than some

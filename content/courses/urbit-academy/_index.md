@@ -2,7 +2,6 @@
 title = "Core Curriculum"
 weight = 2
 type = "tab"
-auto_expand = false
 +++
 //TODO: should be like this: https://developers.urbit.org/courses 
 

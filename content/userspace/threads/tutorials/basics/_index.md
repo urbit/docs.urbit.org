@@ -4,6 +4,7 @@ description = "Learn to write asynchronous I/O functions"
 weight = 101
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 This tutorial walks through all the basic concepts you need to know to

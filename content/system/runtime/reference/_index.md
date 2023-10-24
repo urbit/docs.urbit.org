@@ -3,6 +3,7 @@ title = "Reference"
 weight = 600
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 The Nock runtime system, written in C.

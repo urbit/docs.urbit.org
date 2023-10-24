@@ -1,5 +1,6 @@
 +++
 title = "Apps"
+auto_expand = true
 +++
 
 Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating

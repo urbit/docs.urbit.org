@@ -3,6 +3,7 @@ title = "Reference"
 weight = 50
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 ## [External API Reference](/system/kernel/eyre/reference/external-api-ref)

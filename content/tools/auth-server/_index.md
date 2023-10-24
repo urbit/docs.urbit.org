@@ -1,6 +1,7 @@
 +++
 title = "Auth Server"
 weight = 999
+auto_expand = true
 +++
 
 Auth Server and Auth are a pair of Urbit apps that facilitate Urbit

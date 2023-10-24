@@ -3,6 +3,7 @@ title = "Concepts"
 weight = 700
 sort_by = "weight"
 insert_anchor_links = "right"
+auto_expand = true
 +++
 
 ### [Urbit HD Wallet](/system/identity/hd-wallet)

@@ -1,6 +1,7 @@
 +++
 title = "JS Libraries"
 weight = 1
+auto_expand = true
 +++
 
 This section contains documentation of JS libraries for interacting with an

@@ -3,7 +3,6 @@ title = "Hoon School"
 weight = 5
 sort_by = "weight"
 insert_anchor_links = "right"
-auto_expand = false
 +++
 
 Hoon School is designed to teach you Hoon without assuming you have an

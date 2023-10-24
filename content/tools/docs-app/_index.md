@@ -1,6 +1,7 @@
 +++
 title = "Docs App"
 weight = 100
+auto_expand = true
 +++
 
 The `%docs` app allows you to include documentation with the desks you

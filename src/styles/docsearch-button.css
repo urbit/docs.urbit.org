@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.DocSearch-Button .DocSearch-Button-Keys {
+  @apply hidden lg:inline;
+}
+
 .DocSearch-Button:hover,
 .DocSearch-Button:active,
 .DocSearch-Button:focus {

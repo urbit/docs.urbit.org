@@ -28,6 +28,7 @@ own pace.
     label="View Course"
     href="/courses/environment"
     icon="EnvironmentSetup"
+    small=true
   /%}
 
   {% iconcard
@@ -36,6 +37,7 @@ own pace.
     label="View Course"
     href="/courses/hoon-school"
     icon="HoonSchool"
+    small=true
   /%}
 
   {% iconcard
@@ -44,6 +46,7 @@ own pace.
     label="View Course"
     href="/courses/app-school"
     icon="AppSchoolI"
+    small=true
   /%}
 
   {% iconcard
@@ -52,6 +55,7 @@ own pace.
     label="View Course"
     href="/courses/app-school-full-stack"
     icon="AppSchoolII"
+    small=true
   /%}
 
 {% /grid %}

@@ -12,6 +12,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/arvo"
     icon="Arvo"
+    small=true
   /%}
 
   {% iconcard
@@ -20,6 +21,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/ames"
     icon="Ames"
+    small=true
   /%}
 
   {% iconcard
@@ -28,6 +30,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/behn"
     icon="Behn"
+    small=true
   /%}
 
   {% iconcard
@@ -36,6 +39,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/clay"
     icon="Clay"
+    small=true
   /%}
 
   {% iconcard
@@ -44,14 +48,16 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/dill"
     icon="Dill"
+    small=true
   /%}
-  
+
   {% iconcard
     title="Eyre"
     description="Eyre is our HTTP server. Unix sends HTTP messages to Eyre, and Eyre produces HTTP messages in response."
     label="View Section"
     href="/system/kernel/eyre"
     icon="Eyre"
+    small=true
   /%}
 
   {% iconcard
@@ -60,6 +66,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/gall"
     icon="Gall"
+    small=true
   /%}
 
   {% iconcard
@@ -68,6 +75,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/iris"
     icon="Iris"
+    small=true
   /%}
 
   {% iconcard
@@ -76,6 +84,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/jael"
     icon="Jael"
+    small=true
   /%}
 
   {% iconcard
@@ -84,6 +93,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/khan"
     icon="Khan"
+    small=true
   /%}
 
   {% iconcard
@@ -92,6 +102,7 @@ sort_by = "weight"
     label="View Section"
     href="/system/kernel/lick"
     icon="Lick"
+    small=true
   /%}
 
 {% /grid %}

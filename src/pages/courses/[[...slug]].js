@@ -1,6 +1,7 @@
 import React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import { Container, Main } from "@urbit/fdn-design-system";
+import { Container, Main, capitalize } from "@urbit/fdn-design-system";
 import IntraNav from "../../components/IntraNav";
 import Footer from "../../components/Footer";
 import Content, {
@@ -22,23 +23,35 @@ export default function Courses({
 }) {
   const router = useRouter();
 
+  console.log(data);
+  console.log(params);
+
   return (
-    <Container>
-      <IntraNav />
-      <Main>
-        <Content
-          posts={posts}
-          data={data}
-          markdown={markdown}
-          params={params}
-          previousPost={previousPost}
-          nextPost={nextPost}
-          root={root}
-          path={router.asPath}
-        />
-      </Main>
-      <Footer />
-    </Container>
+    <>
+      <Head>
+        <title>
+          {`${params?.slug ? data.title + " • " : ""}${capitalize(
+            root
+          )} • docs.urbit.org`}
+        </title>
+      </Head>
+      <Container>
+        <IntraNav />
+        <Main>
+          <Content
+            posts={posts}
+            data={data}
+            markdown={markdown}
+            params={params}
+            previousPost={previousPost}
+            nextPost={nextPost}
+            root={root}
+            path={router.asPath}
+          />
+        </Main>
+        <Footer />
+      </Container>
+    </>
   );
 }
 

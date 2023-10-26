@@ -14,6 +14,17 @@
     "text": "p, li, pre"
   },
   "custom_settings": {
-    "separatorsToIndex": "+:-^/=|;!$*%.~?><_&@"
+    "separatorsToIndex": "+:-^/=|;!$*%.~?><_&@",
+    "searchableAttributes": [
+      "unordered(hierarchy.lvl0)",
+      "unordered(hierarchy.lvl1)",
+      "unordered(hierarchy.lvl2)",
+      "unordered(hierarchy.lvl3)",
+      "unordered(hierarchy.lvl4)",
+      "unordered(hierarchy.lvl5)",
+      "unordered(hierarchy.lvl6)",
+      "content",
+      "text"
+    ]
   }
 }

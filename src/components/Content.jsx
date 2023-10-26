@@ -41,7 +41,7 @@ export default function Content({
         />
       </Sidebar>
       <div className="flex flex-col flex-1 min-w-0 px-5">
-        <Header className="md:hidden">
+        <Header className="lg:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
         <h1 className="font-medium text-5xl text-white mt-3 mb-10">{data.title}</h1>

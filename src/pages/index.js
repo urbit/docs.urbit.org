@@ -41,14 +41,12 @@ export default function Home({ search }) {
                 <IconCard
                   title="Urbit Academy"
                   description="The Urbit Foundation offers live courses for those interested in learning development on Urbit."
-                  label="Learn more"
                   href="/courses/urbit-academy"
                   icon="Apprenticeship"
                 />
                 <IconCard
                   title="Tutorials"
                   description="Learn the Hoon language or Urbit app development at your own pace."
-                  label="Learn more"
                   href="/courses"
                   icon="AppSchoolI"
                 />
@@ -66,7 +64,6 @@ export default function Home({ search }) {
                 <IconCard
                   title="Language"
                   description="Guides and reference material for the Hoon language as well as Nock."
-                  label="View"
                   href="/language"
                   icon="Hoon"
                   small
@@ -74,7 +71,6 @@ export default function Home({ search }) {
                 <IconCard
                   title="System"
                   description="Documentation of Urbit's kernel Arvo, the runtime Vere, and the identity system Azimuth."
-                  label="View"
                   href="/system"
                   icon="Arvo"
                   small
@@ -82,7 +78,6 @@ export default function Home({ search }) {
                 <IconCard
                   title="Userspace"
                   description="Information about building and publishing apps on Urbit."
-                  label="View"
                   href="/userspace"
                   icon="Gall"
                   small
@@ -90,7 +85,6 @@ export default function Home({ search }) {
                 <IconCard
                   title="Tools"
                   description="Documentation of additional and external Urbit-related libraries and apps."
-                  label="View"
                   href="/tools"
                   icon="OpenDistribution"
                   small
@@ -98,30 +92,30 @@ export default function Home({ search }) {
               </FatBlock>
             </Section>
             <Section className="mb-4" divider>
-            <h2 className="h2 text-white mb-20">User Docs</h2>
-            <p className="body-md text-lite mb-8">
-              If you want to get a planet, find a hosting provider, set up a
-              server or learn how to use the Dojo, the manual is the place to
-              go.
-            </p>
-            <FatBlock className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-              <ConceptCard
-                title="Getting Started"
-                description="You can obtain a planet and run Urbit yourself or let a hosting provider do it for you. How to do these things and more are documented in this section."
-                label="View"
-                icon="Apprenticeship"
-                href=""
-                small
-              />
-              <ConceptCard
-                title="User Manual"
-                description="Information on running your Urbit, using the Dojo (Urbit's command-line), managing your Urbit ID on Azimuth and more."
-                label="View"
-                icon="UrbitOS"
-                href=""
-                small
-              />
-            </FatBlock>
+              <h2 className="h2 text-white mb-20">User Docs</h2>
+              <p className="body-md text-lite mb-8">
+                If you want to get a planet, find a hosting provider, set up a
+                server or learn how to use the Dojo, the manual is the place to
+                go.
+              </p>
+              <FatBlock className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                <ConceptCard
+                  title="Getting Started"
+                  description="You can obtain a planet and run Urbit yourself or let a hosting provider do it for you. How to do these things and more are documented in this section."
+                  label="View"
+                  icon="Apprenticeship"
+                  href=""
+                  small
+                />
+                <ConceptCard
+                  title="User Manual"
+                  description="Information on running your Urbit, using the Dojo (Urbit's command-line), managing your Urbit ID on Azimuth and more."
+                  label="View"
+                  icon="UrbitOS"
+                  href=""
+                  small
+                />
+              </FatBlock>
             </Section>
             {/*
                 <ContentCard

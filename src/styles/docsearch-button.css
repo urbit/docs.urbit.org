@@ -3,9 +3,11 @@
   height: 100%;
   width: 100%;
   padding: 0.5rem;
-  border-radius: 0.75rem;
-  background-color: var(--brite);
-  color: var(--gray);
+  border-radius: 1.2rem;
+  border-width: 0.1rem;
+  border-color: var(--brite);
+  /* background-color: var(--brite); */
+  color: var(--brite);
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -18,7 +20,8 @@
 .DocSearch-Button:hover,
 .DocSearch-Button:active,
 .DocSearch-Button:focus {
-  background-color: var(--lite);
+  border-color: var(--lite);
+  color: var(--lite);
 }
 
 .DocSearch-Button .DocSearch-Search-Icon {

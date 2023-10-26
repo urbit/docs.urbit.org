@@ -14,7 +14,7 @@
 }
 
 .DocSearch-Button .DocSearch-Button-Keys {
-  @apply hidden lg:inline;
+  @apply hidden lg:flex items-center;
 }
 
 .DocSearch-Button:hover,

@@ -41,13 +41,13 @@ export default function IntraNav({ search }) {
       ourSite={ourSite}
       sites={sites}
       pages={pages}
-      /* search={ */
-      /*   <DocSearch */
-      /*     appId="3EVOAL3MOI" */
-      /*     apiKey="00ccef825c17a672ef1c1a9bea3a9903" */
-      /*     indexName="developers-urbit" */
-      /*   /> */
-      /* } */
+      search={
+        <DocSearch
+          appId="QT6KPZUJMB"
+          apiKey="c6e729e9e8ea804355cb61bca301e203"
+          indexName="docs"
+        />
+      }
     />
   );
 }

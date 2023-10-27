@@ -96,6 +96,8 @@ Functions are implemented in Hoon with a special kind of [core](/glossary/core/)
 
 ### Building a Gate
 
+{% video src="https://media.urbit.org/docs/hoon-school-videos/HS120 - Gates.mp4" /%}
+
 Syntactically, a gate is a [`|=` bartis](/language/hoon/reference/rune/bar#-bartis) rune with two children:  a [`spec`](/language/hoon/reference/stdlib/4o#spec) (specification of input) and a [`hoon`](/language/hoon/reference/stdlib/4o#hoon) (body).  Think of just replacing the `=/` tisfas with the `|=` bartis:
 
 ```hoon {% copy=true %}
@@ -241,6 +243,8 @@ In technical language, we describe Hoon as a _statically typed_ language.  This 
 
 
 ##  Coordinating Files
+
+{% video src="https://media.urbit.org/docs/hoon-school-videos/HS111 - Filesystem.mp4" /%}
 
 In pragmatic terms, an Urbit ship is what results when you successfully boot a new ship.  If you are in the host OS, what you see is an apparently-empty folder:
 

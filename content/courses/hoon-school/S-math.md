@@ -41,6 +41,8 @@ How can we actually treat other modes of interpreting numbers as mathematical qu
 
 ##  Floating-Point Mathematics
 
+{% video src="https://media.urbit.org/docs/hoon-school-videos/HS234 - Floating-Point Maths.mp4" /%}
+
 A number with a fractional part is called a “floating-point number” in computer science.  This derives from its solution to the problem of representing the part less than one.
 
 Consider for a moment how you would represent a regular decimal fraction if you only had integers available.  You would probably adopt one of three strategies:

@@ -6,6 +6,41 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
+If you're getting started learning Hoon, the best place to start is either the
+live tutored [Hoon Academy](/courses/urbit-academy-ha) or the self-taught [Hoon
+School](/courses/hoon-school) in the [Courses](/courses) section. Additionally,
+[Examples](/language/hoon/examples) contains a number of interesting exercises
+to hone your Hoon skills.
+
+{% grid %}
+
+  {% iconcard
+    title="Hoon Academy"
+    description="Learn the fundamentals of the Hoon programming language as part of a group with a hands-on instructor, regular exercises and discussions."
+    href="/courses/urbit-academy/ha"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Hoon School"
+    description="Learn the fundamentals of the Hoon programming language at your own pace with an in-depth tutorial including exercises."
+    href="/courses/hoon-school"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Hoon Workbook"
+    description="A number of interesting examples and exercises to hone your Hoon skills."
+    href="/hoon/language/examples"
+    small=true
+  /%}
+
+{% /grid %}
+
+---
+
+## Introduction
+
 We are often asked why Urbit was written in a new language, rather than some
 existing language like Haskell or C. This document provides the high-level
 rationale for that decision, and also covers some of the features of the

@@ -1,6 +1,7 @@
 +++
 title = "Guides"
 weight = 10
+auto_expand  = true
 +++
 
 This section contains guides to features of Gall agents and related utilities.

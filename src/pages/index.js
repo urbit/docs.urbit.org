@@ -31,7 +31,7 @@ export default function Home({ search }) {
                 Welcome to the Urbit docs. This site contains guides, tutorials
                 and reference documentation for all aspects of Urbit development
                 including the Hoon language, the Arvo kernel, the runtime Vere,
-                and the identity system Azimuth. There's also a user manual to
+                and the identity system Azimuth. There’s also a user manual to
                 help you get started running and operating your Urbit.
               </p>
               <Section className="mb-20" divider>

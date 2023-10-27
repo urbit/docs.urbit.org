@@ -42,7 +42,7 @@ When you first start your ship, you should make sure you put it a place where yo
 
 ### Keep up-to-date builds
 
-Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/manual/getting-started/cli#updating).
+Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/manual/getting-started/self-hosted/self-hosted/cli#updating).
 
 ### `|hi` your star to see if you're connected
 

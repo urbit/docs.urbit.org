@@ -1,5 +1,5 @@
 +++
-title = "App Academy"
+title = "App Workshop"
 weight = 30
 next_cohort = "Late 2023"
 image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-workshop-live.svg"

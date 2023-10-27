@@ -7,18 +7,63 @@ insert_anchor_links = "right"
 
 Hoon language examples and exercises.
 
-## [Competitive Programming](/language/hoon/examples/competitive)
+{% grid %}
 
-## [_Gleichniszahlenreihe_](/language/hoon/examples/gleichniszahlenreihe) (Audioactive Numbers)
+  {% iconcard
+    title="Competitive Programming"
+    description="Various exercises."
+    href="/language/hoon/examples/competitive"
+    small=true
+  /%}
 
-## [Rhonda Numbers](/language/hoon/examples/rhonda)
+  {% iconcard
+    title="Gleichniszahlenreihe"
+    description="Challenge: the look-and-say sequence."
+    href="/language/hoon/examples/gleichniszahlenreihe"
+    small=true
+  /%}
 
-## [Roman Numerals](/language/hoon/examples/roman)
+  {% iconcard
+    title="Rhonda Numbers"
+    description="Challenge: compute Rhonda Numbers."
+    href="/language/hoon/examples/rhonda"
+    small=true
+  /%}
 
-## [Solitaire Cipher](/language/hoon/examples/solitaire)
+  {% iconcard
+    title="Roman Numerals"
+    description="Challenge: printing and parsing roman numerals."
+    href="/language/hoon/examples/roman"
+    small=true
+  /%}
 
-## [Water between Towers](/language/hoon/examples/water-towers)
+  {% iconcard
+    title="Solitaire Cipher"
+    description="Challenge: solitaire encryption cipher."
+    href="/language/hoon/examples/solitaire"
+    small=true
+  /%}
 
-## [ABC Blocks](/language/hoon/examples/abc-blocks)
+  {% iconcard
+    title="Water Between Towers"
+    description="Challenge: fill convex areas of a tower with water."
+    href="/language/hoon/examples/water-towers"
+    small=true
+  /%}
 
-## [Luhn Number](/language/hoon/examples/luhn-number)
+  {% iconcard
+    title="ABC Blocks"
+    description="Challenge: spell words with blocks."
+    href="/language/hoon/examples/abc-blocks"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Luhn Number"
+    description="Challenge: compute Luhn numbers."
+    href="/language/hoon/examples/luhn-number"
+    small=true
+  /%}
+
+{% /grid %}
+

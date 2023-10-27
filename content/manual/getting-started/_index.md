@@ -1,7 +1,7 @@
 +++
 title = "Getting Started"
 weight = 0
-description = ""
+auto_expand=true
 +++
 
 The goal of Urbit is to make peer-to-peer software easy for developers to write
@@ -22,7 +22,7 @@ provider &mdash; that is, someone that provides you with an Urbit as a service.
 
 ## Next steps
 
-- [Run Urbit yourself](/manual/getting-started/self-host) or select a [hosting provider](/manual/getting-started/hosted)
-- Meet friendly people by [joining groups](/manual/getting-started/joining-groups)
-- [Install apps](/manual/getting-started/installing-applications) to experiment with
-- Explore [interfaces](/manual/getting-started/interfaces) for Urbit
+- [Run Urbit yourself](/manual/getting-started/self-hosted) or select a [hosting provider](/manual/getting-started/hosted)
+- Meet friendly people by [joining groups](/manual/getting-started/additional/joining-groups)
+- [Install apps](/manual/getting-started/additional/installing-applications) to experiment with
+- Explore [interfaces](/manual/getting-started/additional/interfaces) for Urbit

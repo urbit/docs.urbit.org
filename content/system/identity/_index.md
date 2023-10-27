@@ -1,8 +1,6 @@
 +++
 title = "Identity"
 weight = 700
-sort_by = "weight"
-insert_anchor_links = "right"
 +++
 
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum

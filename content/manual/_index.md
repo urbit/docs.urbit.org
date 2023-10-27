@@ -3,26 +3,48 @@ title = "Operator's Manual"
 weight = 90
 +++
 
-Welcome to the Operator's Manual for the Urbit project.
+Welcome to the Operator's Manual. These docs contain guides and reference
+material for users. If you're new to Urbit, the [Getting
+Started](/courses/getting-started) section is the place to go.
 
-This documentation provides a series of guides and reference material for
-assisting you in the usage and operations of your ship.
+{% grid %}
 
-## [Urbit OS](/manual/os/)
+  {% iconcard
+    title="Getting Started"
+    description="This section will help you obtain an Urbit ID, find a hosting provider, learn how to self-host, and other things to get you up and running."
+    href="/manual/getting-started"
+    icon="UrbitOS"
+  /%}
 
-This section describes how to interact with your running Urbit ship: this
-includes working with the filesystem, command line (`dojo`), resolving common
-issues, and more.
+{% /grid %}
 
-## [Urbit ID](/manual/id/)
+## Other Sections
 
-Urbit ID is our [public-key infrastructure](/manual/id), which is
-what allows you to truly own your identity. Here you'll find guides for
-interacting with your Urbit ID via our [Bridge](https://bridge.urbit.org)
-application.
+These docs contain additional useful information about using and running your Urbit.
 
-## [Running Urbit](/manual/running/)
+{% grid %}
 
-Urbit can be run in a variety of contexts. Our [Getting Started
-Guide](/manual/getting-started/) covers how to run an Urbit locally
-on your computer; this section covers alternative ways of running Urbit.
+  {% iconcard
+    title="Urbit OS"
+    description="This section describes how to interact with your running Urbit ship. This includes working with the filesystem, command line (Dojo), resolving common issues, and more."
+    href="/manual/os"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Urbit ID"
+    description="Urbit ID is our public-key infrastructure, which is what allows you to truly own your identity. Here you'll find guides for interacting with your Urbit ID via our Bridge application."
+    href="/manual/id"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Running Urbit"
+    description="This section contains information about running Urbit and related services in the cloud, as well as reference information for the runtime."
+    href="/manual/running"
+    small=true
+  /%}
+
+{% /grid %}
+
+

@@ -7,34 +7,63 @@ insert_anchor_links = "right"
 
 Guides to various features of the Hoon language.
 
-## [Style Guide](/language/hoon/guides/style)
+{% grid %}
 
-Best practices for writing Hoon code.
+  {% iconcard
+    title="Style Guide"
+    description="Best practices for writing Hoon code."
+    href="/language/hoon/guides/style"
+    small=true
+  /%}
 
-## [JSON](/language/hoon/guides/json-guide)
+  {% iconcard
+    title="JSON"
+    description="How to deal with JSON in Hoon."
+    href="/language/hoon/guides/json-guide"
+    small=true
+  /%}
 
-How to deal with JSON in Hoon.
+  {% iconcard
+    title="Generators"
+    description="How to write Hoon scripts called Generators."
+    href="/language/hoon/guides/generators"
+    small=true
+  /%}
 
-## [Generators](/language/hoon/guides/generators)
+  {% iconcard
+    title="Parsing Text"
+    description="How to write functional parsers."
+    href="/language/hoon/guides/parsing"
+    small=true
+  /%}
 
-How to write Hoon scripts called Generators.
+  {% iconcard
+    title="Sail"
+    description="How to use Sail, Hoon's domain-specific language for composing HTML."
+    href="/language/hoon/guides/sail"
+    small=true
+  /%}
 
-## [Parsing Text](/language/hoon/guides/parsing)
+  {% iconcard
+    title="Udon"
+    description="Urbit's markdown-like syntax for composing documents."
+    href="/language/hoon/guides/udon"
+    small=true
+  /%}
 
-How to write functional parsers.
+  {% iconcard
+    title="Strings"
+    description="How to deal with text strings in Hoon."
+    href="/language/hoon/guides/strings"
+    small=true
+  /%}
 
-## [Sail](/language/hoon/guides/sail)
+  {% iconcard
+    title="Vases"
+    description="Dynamic data types in Hoon."
+    href="/language/hoon/guides/vases"
+    small=true
+  /%}
 
-How to use Sail, Hoon's domain-specific language for composing HTML.
+{% /grid %}
 
-## [Udon](/language/hoon/guides/udon)
-
-Urbit's markdown-like syntax for composing documents.
-
-## [Strings](/language/hoon/guides/strings)
-
-How to deal with text strings in Hoon.
-
-## [Vases](/language/hoon/guides/vases)
-
-Dynamic data types in Hoon.

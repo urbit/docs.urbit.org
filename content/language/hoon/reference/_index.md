@@ -7,54 +7,97 @@ insert_anchor_links = "right"
 
 Reference information for Hoon language features.
 
-## [Cheat Sheet](/language/hoon/reference/cheat-sheet)
+{% grid %}
 
-A handy Hoon cheat-sheet you can download.
+  {% iconcard
+    title="Cheat Sheet"
+    description="A handy Hoon cheat-sheet you can download."
+    href="/language/hoon/reference/cheat-sheet"
+    small=true
+  /%}
 
-## [Cryptography](/language/hoon/reference/cryptography)
+  {% iconcard
+    title="Cryptography"
+    description="A survey of cryptographic functions in Hoon."
+    href="/language/hoon/reference/cryptography"
+    small=true
+  /%}
 
-A survey of cryptographic functions in Hoon.
+  {% iconcard
+    title="Irregular Forms"
+    description="Details of Hoon's irregular rune syntax."
+    href="/language/hoon/reference/irregular"
+    small=true
+  /%}
 
-## [Irregular Forms](/language/hoon/reference/irregular)
+  {% iconcard
+    title="Hoon Errors"
+    description="What Hoon compiler errors mean."
+    href="/language/hoon/reference/hoon-errors"
+    small=true
+  /%}
 
-Details of Hoon's irregular rune syntax.
+  {% iconcard
+    title="Basic Types"
+    description="Basic type structures in Hoon."
+    href="/language/hoon/reference/basic"
+    small=true
+  /%}
 
-## [Hoon Errors](/language/hoon/reference/hoon-errors)
+  {% iconcard
+    title="Advanced Types"
+    description="Advanced type structures in Hoon."
+    href="/language/hoon/reference/advanced"
+    small=true
+  /%}
 
-What Hoon compiler errors mean.
+  {% iconcard
+    title="Mips"
+    description="Documentation of the Mips (map of maps) library."
+    href="/language/hoon/reference/mips"
+    small=true
+  /%}
 
-## [Basic Types](/language/hoon/reference/basic)
+  {% iconcard
+    title="Auras"
+    description="Atomic auras."
+    href="/language/hoon/reference/auras"
+    small=true
+  /%}
 
-Basic type structures in Hoon.
+  {% iconcard
+    title="Arvo"
+    description="Reference documentation for a selection of arvo.hoon types and functions."
+    href="/language/hoon/reference/arvo"
+    small=true
+  /%}
 
-## [Advanced Types](/language/hoon/reference/advanced)
+  {% iconcard
+    title="Standard Library"
+    description="Reference documentation for the hoon.hoon standard library."
+    href="/language/hoon/reference/stdlib"
+    small=true
+  /%}
 
-Advanced type structures in Hoon.
+  {% iconcard
+    title="Runes"
+    description="Rune reference."
+    href="/language/hoon/reference/rune"
+    small=true
+  /%}
 
-## [Mips](/language/hoon/reference/mips)
+  {% iconcard
+    title="Limbs and wings"
+    description="Addressing the subject."
+    href="/language/hoon/reference/limbs"
+    small=true
+  /%}
 
-Documentation of the Mips (map of maps) library.
+  {% iconcard
+    title="Zuse"
+    description="Reference documentation for parts of zuse.hoon"
+    href="/language/hoon/reference/zuse"
+    small=true
+  /%}
 
-## [Auras](/language/hoon/reference/auras)
-
-Atomic auras.
-
-## [Arvo](/language/hoon/reference/arvo)
-
-Reference documentation for a selection of `arvo.hoon` types and functions.
-
-## [Standard Library](/language/hoon/reference/stdlib)
-
-Reference documentation for the `hoon.hoon` standard library.
-
-## [Runes](/language/hoon/reference/rune)
-
-Rune reference.
-
-## [Limbs and wings](/language/hoon/reference/limbs)
-
-Addressing the subject.
-
-## [Zuse](/language/hoon/reference/zuse)
-
-Reference documentation for parts of `zuse.hoon`.
+{% /grid %}

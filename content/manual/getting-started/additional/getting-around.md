@@ -19,18 +19,18 @@ You'll likely want to focus on finding and joining new communities, which you ca
 
 ### 2. Join a few groups
 
-Joining public groups is simple – just search for the group host's Urbit ID, and click join. Check out a walk-through of this process in the [Joining groups](/manual/getting-started/joining-groups) guide.
+Joining public groups is simple – just search for the group host's Urbit ID, and click join. Check out a walk-through of this process in the [Joining groups](/manual/getting-started/additional/joining-groups) guide.
 
 ### 3. Install some applications
 
 Groups are great, but Urbit goes way deeper with apps that are developed specifically for Urbit and use P2P networking for everything.
 
-Check out the [Installing apps](/manual/getting-started/installing-applications) guide for a walk-through on the process of installing Urbit applications.
+Check out the [Installing apps](/manual/getting-started/additional/installing-applications) guide for a walk-through on the process of installing Urbit applications.
 
 
 ### 4.  Explore interfaces
 
-The default Urbit experience is using Landscape in the browser, but Urbit is also available on native mobile and desktop applications through alternative interfaces.  [Learn more about Urbit interfaces](/manual/getting-started/interfaces).
+The default Urbit experience is using Landscape in the browser, but Urbit is also available on native mobile and desktop applications through alternative interfaces.  [Learn more about Urbit interfaces](/manual/getting-started/additional/interfaces).
 
 
 ### 5. Getting help

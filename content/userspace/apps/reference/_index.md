@@ -1,6 +1,7 @@
 +++
 title = "Reference"
 weight = 50
+auto_expand = true
 +++
 
 Reference information about Gall agents and related utilities.

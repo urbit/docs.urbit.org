@@ -3,7 +3,6 @@ title = "Software Distribution"
 weight = 900
 sort_by = "weight"
 insert_anchor_links = "right"
-auto_expand = true
 +++
 
 Urbit allows peer-to-peer distribution and installation of applications. A user

@@ -11,7 +11,7 @@ local case here. The runtime is what interprets the Urbit kernel code (Arvo)
 into commands your specific machine (macOS or Linux) understands.
 
 Note there is a much more comprehensive [cloud hosting
-guide](/manual/getting-started/cloud-hosting) which walks through setting up Urbit on a
+guide](/manual/getting-started/self-hosted/cloud-hosting) which walks through setting up Urbit on a
 [Digital Ocean](https://www.digitalocean.com/) VPS.
 
 ### 1. System Requirements {% #about-swap-space %}
@@ -287,4 +287,4 @@ Then `.run` should work as expected and future runtime upgrades can be done via
 ## Next steps
 
 Learn how to [get around your
-urbit](/manual/getting-started/getting-around).
+urbit](/manual/getting-started/additional/getting-around).

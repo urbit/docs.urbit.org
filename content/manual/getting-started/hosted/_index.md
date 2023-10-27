@@ -1,8 +1,7 @@
 +++
 title = "Hosted Urbit"
-weight = 2
-description = "Running Urbit with a hosting provider"
-tag = "hostprov"
+weight = 5
+auto_expand=true
 +++
 
 Hosting providers are companies that offer "Urbit as a Service".  They do the work of setting up your urbit in the cloud and making sure it's up to date and you don't have perform any technical steps or maintenance.
@@ -27,4 +26,5 @@ The two important points one should remember about hosting providers:
 
 ## Next steps
 
-[Explore Hosting Providers -&gt;](/manual/getting-started/hosting-providers)
+[Explore Hosting Providers -&gt;](/manual/getting-started/hosted/hosting-providers)
+

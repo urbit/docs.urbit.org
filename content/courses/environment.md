@@ -49,7 +49,7 @@ To do work with Hoon, we recommended using a "fake" ship — one that's not
 connected to the network.
 
 Because such a ship has no presence on the network, you don't need an Azimuth
-identity. You just need to have [installed the Urbit binary](/manual/getting-started/cli).
+identity. You just need to have [installed the Urbit binary](/manual/getting-started/self-hosted/self-hosted/cli).
 
 To create a fake ship named `~zod`, run the command below. You can replace `zod`
 with any valid Urbit ship-name.

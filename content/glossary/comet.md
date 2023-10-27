@@ -35,4 +35,4 @@ Some groups may also not allow comet membership.
 
 ### Further reading
 
-- [Creating a Comet](/manual/getting-started/cli): A guide to spinning up a comet of your own.
+- [Creating a Comet](/manual/getting-started/self-hosted/self-hosted/cli): A guide to spinning up a comet of your own.

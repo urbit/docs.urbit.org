@@ -1,4 +1,13 @@
 const variables = {
+  tooltip: {
+    azimuth: {
+      name: "Azimuth",
+      symbol: null,
+      usage: null,
+      desc: "Azimuth is Urbit's identity layer, built as a suite of smart contracts on the Ethereum blockchain and several apps run locally on your ship. It is Urbit's method of securing digital identities that are required to use the Arvo peer-to-peer network, without the need for a central authority. Azimuth identities exist as non-fungible tokens, which are owned by Ethereum addresses and can be transferred between such addresses. Identities can use the claims contract to make assertions – real-world or otherwise – about their owner.",
+      link: "/glossary/azimuth",
+    },
+  },
   links: {
     glossary: {
       agent: "/glossary/agent",

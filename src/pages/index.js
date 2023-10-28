@@ -48,7 +48,7 @@ export default function Home({ search }) {
                     title="Urbit Academy"
                     description="The Urbit Foundation offers live courses for those interested in learning development on Urbit."
                     href="/courses/urbit-academy"
-                    icon="Apprenticeship"
+                    icon="HoonSchool"
                   />
                   <IconCard
                     title="Tutorials"
@@ -120,6 +120,29 @@ export default function Home({ search }) {
                     icon="UrbitOS"
                     href=""
                     small
+                  />
+                </FatBlock>
+              </Section>
+              <Section className="mb-4" divider>
+                <h2 className="h2 text-white mb-20">Videos</h2>
+                <p className="body-md text-lite mb-8">
+                  We have two Youtube channels: @urbit_ and @urbiteducation.
+                  The former contains general Urbit-related content including a number of
+                  developer streams. The latter contains educational material including Urbit
+                  Academy lessons.
+                </p>
+                <FatBlock className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                  <IconCard
+                    title="@urbit_"
+                    description="General Urbit-related content including developer streams."
+                    icon="UrbitOS"
+                    href="https://www.youtube.com/@urbit_"
+                  />
+                  <IconCard
+                    title="@urbiteducation"
+                    description="Educational material including Urbit Academy lessons."
+                    icon="HoonSchool"
+                    href="https://www.youtube.com/@urbiteducation"
                   />
                 </FatBlock>
               </Section>

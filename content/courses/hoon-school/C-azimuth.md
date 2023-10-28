@@ -12,7 +12,7 @@ _This module introduces how Urbit ID is structured and provides practice in conv
 
 ##  A Public-Key Infrastructure
 
-What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)?  Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions.  Azimuth functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
+What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)?  Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. {% tooltip label="Azimuth" data=$tooltip.azimuth /%} functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
 
 Urbit ID (=Azimuth) provides persistent and stable futureproof identity to its users through a hierarchical address space.  Any particular Urbit ID plays a particular role in the overall Urbit system which is determined by its point number and classified into ranks.
 

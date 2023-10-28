@@ -29,5 +29,5 @@ The primary uses for threads are:
 
 ### Further Reading
 
-- [Threads guide](/userspace/threads/tutorial/basics/fundamentals): learn how to write
+- [Threads guide](/userspace/threads/tutorials/basics/fundamentals): learn how to write
   threads.

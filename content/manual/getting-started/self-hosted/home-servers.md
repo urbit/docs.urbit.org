@@ -10,18 +10,18 @@ There are a variety of tools that make running Urbit at home straightforward on 
 
 ## Native Planet
 
-[![Native Planet Tellurian](https://storage.googleapis.com/media.urbit.org/site/getting-started/native-planet.jpg)](https://www.nativeplanet.io/hardware)
+[![Native Planet Tellurian](https://media.urbit.org/site/getting-started/native-planet.jpg)](https://www.nativeplanet.io/hardware)
 
 Purchase a [computer designed to run Urbit](https://www.nativeplanet.io/hardware), out of the box.
 
 ## Groundseg & Startram
 
-[![Groundseg UI](https://storage.googleapis.com/media.urbit.org/site/getting-started/groundseg.png)](https://www.nativeplanet.io/software)
+[![Groundseg UI](https://media.urbit.org/site/getting-started/groundseg.png)](https://www.nativeplanet.io/software)
 
 Install these [Native Planet software packages](https://www.nativeplanet.io/software) to turn a Linux computer into an urbit that's accessible from anywhere in the world.
 
 ## Umbrel
 
-[![Umbrel Screenshot](https://storage.googleapis.com/media.urbit.org/site/getting-started/umbrel.png)](https://umbrel.com/)
+[![Umbrel Screenshot](https://media.urbit.org/site/getting-started/umbrel.png)](https://umbrel.com/)
 
 Install the [Urbit application](https://subject.network/posts/urbit-apps-umbrel/) on a Raspberry Pi running [Umbrel](https://umbrel.com/).

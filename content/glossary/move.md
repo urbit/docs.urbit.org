@@ -20,7 +20,7 @@ desc = "A kernel-level inter-vane message sent over ducts by Arvo."
 
 ### Further Reading
 
-- [The Arvo overview](/system/kernel/overview): a technical overview of Arvo
+- [The Arvo overview](/system/kernel): a technical overview of Arvo
   that covers moves.
 - [Move trace tutorial](/system/kernel/arvo/guides/move-trace): how to interpret
   move traces when such kernel verbosity is enabled.

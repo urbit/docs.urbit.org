@@ -2,7 +2,7 @@
 title = "Hoon Academy"
 weight = 100
 next_cohort = "March 20, 2023"
-image = "https://storage.googleapis.com/media.urbit.org/developers/images/hoon-school-live.svg"
+image = "https://media.urbit.org/developers/images/hoon-school-live.svg"
 description = "Hoon Academy teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
 +++
 

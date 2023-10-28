@@ -20,5 +20,5 @@ If a proxy or ownership address is compromised or has its keys lost, it can alwa
 
 ### Further Reading
 
-- [The Azimuth concepts page](/system/identity/azimuth): A more in-depth explanation of Azimuth.
+- [The Azimuth concepts page](/system/identity): A more in-depth explanation of Azimuth.
 - [Urbit HD Wallet](/system/identity/concepts/hd-wallet): An in-depth explanation of the HD wallet.

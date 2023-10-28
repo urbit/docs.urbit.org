@@ -7,7 +7,7 @@ auto_expand = true
 +++
 
 If you're getting started learning Hoon, the best place to start is either the
-live tutored [Hoon Academy](/courses/urbit-academy-ha) or the self-taught [Hoon
+live tutored [Hoon Academy](/courses/urbit-academy/ha) or the self-taught [Hoon
 School](/courses/hoon-school) in the [Courses](/courses) section. Additionally,
 [Examples](/language/hoon/examples) contains a number of interesting exercises
 to hone your Hoon skills.
@@ -31,7 +31,7 @@ to hone your Hoon skills.
   {% iconcard
     title="Hoon Workbook"
     description="A number of interesting examples and exercises to hone your Hoon skills."
-    href="/hoon/language/examples"
+    href="/language/hoon/examples"
     small=true
   /%}
 

@@ -170,9 +170,6 @@ Notice how the `,` com works to separate arguments and how the name of the optio
 We get a different value from the same generator between runs, something that isn't possible with a bare generator. Another
 novelty is the ability to choose to not use the second argument.
 
-- [Hoon School, “1.9 Generators”](/courses/hoon-school/generators)
-
-
 ##  `%ask` Generators
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than

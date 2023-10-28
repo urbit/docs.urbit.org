@@ -15,5 +15,5 @@ The Dojo is the first thing you encounter after successfully booting your
 
 ### Further Reading
 
-- [“Introduction to Hoon”](/courses/hoon-school/A-intro): A great way to get
+- [“Introduction to Hoon”](/courses/hoon-school): A great way to get
   started with using Hoon in the Dojo.

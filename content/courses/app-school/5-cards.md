@@ -123,7 +123,7 @@ The kinds of `task`s can be divided into two categories:
 
 **Examples**
 
-![subscription card examples](https://media.urbit.org/courses/app-school/sub-cards.svg)
+![subscription card examples](https://media.urbit.org/guides/core/app-school/sub-cards.svg)
 
 #### Pokes
 
@@ -140,7 +140,7 @@ in the `cage` to the `mark` you specify before sending it off.
 
 **Examples**
 
-![poke card examples](https://media.urbit.org/courses/app-school/poke-cards.svg)
+![poke card examples](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
 
 ### `note-arvo`
 
@@ -171,7 +171,7 @@ section in the [Arvo documentation](/system/kernel/arvo).
 
 #### Examples
 
-![arvo card examples](https://media.urbit.org/courses/app-school/arvo-cards.svg)
+![arvo card examples](https://media.urbit.org/guides/core/app-school/arvo-cards.svg)
 
 ## `%give`
 
@@ -210,7 +210,7 @@ if it does not. Therefore, you would not explicitly produce a `%watch-ack` or
 
 #### Examples
 
-![ack card examples](https://media.urbit.org/courses/app-school/ack-cards.svg)
+![ack card examples](https://media.urbit.org/guides/core/app-school/ack-cards.svg)
 
 ### Subscriptions
 
@@ -230,13 +230,13 @@ receive the `%fact`. The `cage` is the data itself - a cell of a `mark` and a
 
 #### Examples
 
-![gift card examples](https://media.urbit.org/courses/app-school/gift-cards.svg)
+![gift card examples](https://media.urbit.org/guides/core/app-school/gift-cards.svg)
 
 ## Summary
 
 Here's a diagram that summarizes the different kinds of `card`s:
 
-[![card diagram](https://media.urbit.org/courses/app-school/card-diagram.svg)](https://media.urbit.org/courses/app-school/card-diagram.svg)
+[![card diagram](https://media.urbit.org/guides/core/app-school/card-diagram.svg)](https://media.urbit.org/guides/core/app-school/card-diagram.svg)
 
 ## Exercises
 

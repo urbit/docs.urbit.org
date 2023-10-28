@@ -23,7 +23,7 @@ Ames protocol.
 
 ### Further Reading
 
-- [The Ames reference](/system/kernel/ames/ames): An in-depth technical guide
+- [The Ames reference](/system/kernel/ames): An in-depth technical guide
   to the Ames vane and protocol.
 - [A Guide to Factory Reset](https://urbit.org/using/id/guide-to-resets): Instructions on
   performing factory resets.

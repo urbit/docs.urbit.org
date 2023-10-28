@@ -19,5 +19,5 @@ number (or _life_), its factory reset number (or _rift_), and who the sponsor of
 
 #### Further reading
 
-- [The Jael technical reference](/system/kernel/jael/jael): In-depth technical
+- [The Jael technical reference](/system/kernel/jael): In-depth technical
   and developer documentation of Jael.

@@ -20,5 +20,5 @@ and other relevant information.
 
 - [Gall data-types reference](/system/kernel/gall/reference/data-types#bowl): Details of
   the `bowl` data structure used by Gall.
-- [The threads guide](/userspace/threads/tutorial/basics/input#bowl): This includes
+- [The threads guide](/userspace/threads/tutorials/basics/input#bowl): This includes
   details about the bowl given to threads.

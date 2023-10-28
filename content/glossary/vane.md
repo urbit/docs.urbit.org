@@ -25,8 +25,8 @@ A **vane** is an [Arvo](/glossary/arvo) kernel module that performs essential sy
 - [Iris](/glossary/iris), the server HTTP vane.
 - [Jael](/glossary/jael), the security vane.
 - [Khan](/glossary/khan), the control vane.
-- [Lick](/glossary/Lick), the interprocess communication (IPC) vane.
+- [Lick](/glossary/lick), the interprocess communication (IPC) vane.
 
 ### Further Reading
 
-- [The Arvo tutorial](/system/kernel/overview): An in-depth technical guide to Arvo and its vanes.
+- [The Arvo tutorial](/system/kernel): An in-depth technical guide to Arvo and its vanes.

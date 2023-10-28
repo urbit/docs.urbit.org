@@ -342,7 +342,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
     -find.$
     ```
 
-- [“Hoon Errors”](/language/hoon/language/hoon-errors)
+- [“Hoon Errors”](/language/hoon/reference/hoon-errors)
 
 ### Debugging Strategies
 

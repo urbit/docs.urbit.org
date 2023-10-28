@@ -114,7 +114,7 @@ referred to as a "master ticket".
 Diagrams and explanations of how data flows between Bridge and the various
 components inside Urbit involved with Azimuth and L2.
 
-### [Azimuth.eth](/system/identity-eth)
+### [Azimuth.eth](/system/identity/reference/azimuth-eth)
 
 A description of the `azimuth.eth` smart contract, which is the data store for
 Azimuth.

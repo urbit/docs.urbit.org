@@ -9,13 +9,13 @@ tag = "hostprov"
 ## Tlon
 [Tlon](https://tlon.io) is the company responsible for creating Urbit, Landscape, Groups and Talk. [Tlon](https://tlon.io) offers Urbit hosting for free, which includes a planet of your choice.
 
-[![Tlon](https://storage.googleapis.com/media.urbit.org/site/ecosystem/organizations/tlon-hosting-provider.png)](https://tlon.io/)
+[![Tlon](https://media.urbit.org/site/ecosystem/organizations/tlon-hosting-provider.png)](https://tlon.io/)
 
 ## Planet One
 
 [Planet One](https://planet.one), a [Tirrel](https://urbit.org/organizations/tirrel) service, offers Urbit hosting for $15/month. You can also obtain hosting through their native Desktop application, [Scene](https://planet.one/scene).
 
-[![Planet One Hosting](https://storage.googleapis.com/media.urbit.org/site/ecosystem/organizations/planetone-hosting.png)](https://planet.one/) 
+[![Planet One Hosting](https://media.urbit.org/site/ecosystem/organizations/planetone-hosting.png)](https://planet.one/) 
 
 ## Holium
 

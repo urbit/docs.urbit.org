@@ -13,7 +13,7 @@ types](https://operators.urbit.org/guides/which-id-should-i-buy) of Urbit ID, bu
 **Comets** are free, temporary identities that you can issue yourself and are best-suited for
 short-term usage. **Planets** are permanent identities that are suitable for long-term use.
 
-![](https://storage.googleapis.com/media.urbit.org/site/getting-started/comet-planet.png)
+![](https://media.urbit.org/site/getting-started/comet-planet.png)
 
 Planets have a unique, four syllable phonetic name and a [sigil](https://urbit.org/blog/creating-sigils), a visual representation of the name.
 
@@ -106,8 +106,8 @@ Now that you have your planet, you can create your keyfile (eg. `sample-palnet.k
 
 Now that you have a keyfile let's move on to booting the Urbit OS.
 
-- [CLI instructions](/manual/getting-started/self-hosted/self-hosted/cli) – Set up Vere, the Urbit runtime, using the command line.
+- [CLI instructions](/manual/getting-started/self-hosted/cli) – Set up Vere, the Urbit runtime, using the command line.
 
 - [Install on the cloud](/manual/getting-started/self-hosted/cloud-hosting) – A step-by-step guide to setting up Urbit on a VPS.
 
-- [Set up a home server](/manual/getting-started/self-hosted/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.
+- [Set up a home server](/manual/getting-started/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.

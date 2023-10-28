@@ -28,5 +28,5 @@ empty element for Unix.
 
 ### Further Reading
 
-- [Arvo overview](/system/kernel/overview): technical details of how Arvo
+- [Arvo overview](/system/kernel): technical details of how Arvo
   works.

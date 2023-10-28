@@ -55,5 +55,5 @@ A ship creates its own copy of Arvo via a bootstrap sequence known as a
 
 ### Further Reading
 
-- [The Arvo reference](/system/kernel/overview): An in-depth technical
+- [The Arvo reference](/system/kernel): An in-depth technical
   guide to Arvo and its vanes.

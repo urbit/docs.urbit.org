@@ -26,4 +26,4 @@ Eyre is located at `/base/sys/vane/eyre.hoon` within
 
 ### Further Reading
 
-- [The Eyre tutorial](/system/kernel/eyre/eyre): A technical guide to the Eyre vane.
+- [The Eyre tutorial](/system/kernel/eyre): A technical guide to the Eyre vane.

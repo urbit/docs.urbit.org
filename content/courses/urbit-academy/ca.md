@@ -2,7 +2,7 @@
 title = "Core Academy"
 weight = 10
 next_cohort = "Late Summer 2023"
-image = "https://storage.googleapis.com/media.urbit.org/developers/images/core-school-live.svg"
+image = "https://media.urbit.org/developers/images/core-school-live.svg"
 description = "Core Academy prepares experienced Hoon developers to work on the Arvo kernel, the Vere or New Mars runtime, and otherwise build the platform as a senior developer."
 +++
 

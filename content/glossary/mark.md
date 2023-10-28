@@ -18,7 +18,7 @@ diff routines, and patch algorithms.
 
 ### Further Reading
 
-- [The Clay reference](/system/kernel/clay/clay): Technical and developer
+- [The Clay reference](/system/kernel/clay): Technical and developer
   documentation of Clay.
-- [The marks reference](/system/kernel/clay/guides/marks/marks): Developer
+- [The marks reference](/system/kernel/clay/guides/marks): Developer
   documentation of marks.

@@ -16,5 +16,5 @@ wrapper is the `dbug` library, which adds debugging functionality to an agent.
 
 ### Further Reading
 
-- [App School](/courses/app-school/intro): A comprehensive guide to writing
+- [App School](/courses/app-school): A comprehensive guide to writing
   Gall agents.

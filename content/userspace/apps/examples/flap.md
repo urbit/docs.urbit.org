@@ -16,7 +16,7 @@ Our objective is to illustrate a minimum viable set of changes necessary to impl
 
 We will conceive of this app's communications structure as consisting of a _vertical_ component (which is the communication between the client in the browser and the Urbit ship as database) and a _horizontal_ component (which is the communication between Urbit peers).  Vertical communication will take place using JSON via the `%flap-action` mark, while horizontal communication will take place using the `%flap-update` mark.  Apps can achieve good data modularity using this separation.
 
-![](https://storage.googleapis.com/media.urbit.org/developers/vert-horz.svg)
+![](https://media.urbit.org/developers/vert-horz.svg)
 
 
 ##  Desk Setup

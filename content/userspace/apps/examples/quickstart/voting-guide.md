@@ -12,7 +12,7 @@ can be verified to have come from a group member and duplicate votes can be
 detected, but it cannot be determined who voted for what. The finished app will
 look like this:
 
-![tally screenshot](https://media.urbit.org/apps/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
+![tally screenshot](https://media.urbit.org/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
 
 The front-end of the app will be written in
 [Sail](/glossary/sail), Urbit's XML language built into the Hoon

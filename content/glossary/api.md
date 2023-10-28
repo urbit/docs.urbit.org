@@ -18,7 +18,7 @@ another. In Urbit, some notable APIs are the `task`s and `gift`s of
 
 #### Further reading
 
-- [The Arvo reference docs](/system/kernel/overview): These technical developer
+- [The Arvo reference docs](/system/kernel): These technical developer
   docs include API documentation for Arvo's vanes.
-- [App School](/courses/app-school/intro): This is a guide to writing Gall
+- [App School](/courses/app-school): This is a guide to writing Gall
   agents, and goes over the APIs of Gall agents in detail.

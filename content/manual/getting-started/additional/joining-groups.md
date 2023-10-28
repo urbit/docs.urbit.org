@@ -15,15 +15,15 @@ Let's walk through the process of finding and joining a public group.
 
 Once you’re on the network, you’ll see Landscape, which is filled with large applications tiles: Talk, Terminal, and Groups. Click on Groups.
 
-![](https://storage.googleapis.com/media.urbit.org/site/getting-started/get-oriented.png)
+![](https://media.urbit.org/site/getting-started/get-oriented.png)
 
 ### 2. Enter the group shortcode
 
 To join a group, you'll need to know its host Urbit ID (e.g. `~bitbet-bolbel`) or its full Urbit address, also called a shortcode (e.g. `~bitbet-bolbel/urbit-community`) .
 
-Check out some public groups in the [urbit.org groups directory](/ecosystem?type=groups)
+Check out some public groups in the [urbit.org groups directory](https://urbit.org/ecosystem?type=groups)
 
-As an example, we’ll start by joining [UF Public](/groups/~halbex-palheb/uf-public), the Urbit Foundation's official group.
+As an example, we’ll start by joining [UF Public](https://urbit.org/groups/~halbex-palheb/uf-public), the Urbit Foundation's official group.
 
 In the Groups app, click on "Find Groups" in the left column and enter `~halbex-palheb/uf-public`
 

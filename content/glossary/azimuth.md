@@ -37,7 +37,7 @@ identity system for other projects.
 
 ### Further Reading
 
-- [The Azimuth concepts page](/system/identity/azimuth): A more in-depth
+- [The Azimuth concepts page](/system/identity): A more in-depth
   explanation of Azimuth.
 - [Install instructions](/manual/getting-started): Guide to installing Urbit, which
   includes instructions on booting with your Urbit identity.

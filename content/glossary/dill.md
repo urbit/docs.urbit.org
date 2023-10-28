@@ -28,5 +28,5 @@ Dill is located at `/base/sys/vane/dill.hoon` within
 
 ### Further Reading
 
-- [The Dill tutorial](/system/kernel/dill/dill): A technical guide to the Dill
+- [The Dill tutorial](/system/kernel/dill): A technical guide to the Dill
   vane.

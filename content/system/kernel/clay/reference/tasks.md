@@ -376,7 +376,7 @@ policy ([`norm`](/system/kernel/clay/reference/data-types#norm)s).
 
 A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy
 for the given `desk` and `ship`. A
-[`norm`](/referende/arvo/clay/data-types#norm) is an `(axal ?)`. An
+[`norm`](/system/kernel/clay/reference/data-types#norm) is an `(axal ?)`. An
 `axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says
 whether to *keep* the given file or directory. You may want to look at the `+of`
 axal engine in `arvo.hoon` for constructing and manipulating the `norm`.

@@ -6,15 +6,15 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
-[Data Types](/system/kernel/arvo/clay/data-types)
+[Data Types](/system/kernel/clay/reference/data-types)
 
 Explanations of the many data types found throughout Clay.
 
-[Scry Reference](/system/kernel/arvo/clay/scry)
+[Scry Reference](/system/kernel/clay/reference/scry)
 
 Reference for Clay's various scry endpoints.
 
-[API Reference](/system/kernel/arvo/clay/tasks)
+[API Reference](/system/kernel/clay/reference/tasks)
 
 Details of the various `task`s you can use to interact with Clay.
 

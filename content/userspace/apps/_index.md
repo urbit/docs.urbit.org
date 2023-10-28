@@ -15,7 +15,7 @@ vane) and, along with a front-end, can be published and distributed as a
 cohesive app for users to install.
 
 This section of the docs contains guides related to writing apps and
-[distributing them](/userspace/apps/guides/software-distribtion). It also
+[distributing them](/userspace/apps/guides/software-distribution). It also
 contains a number of different [examples and
 exercises](/userspace/apps/examples) you can work through to learn how to build
 different kinds of apps.

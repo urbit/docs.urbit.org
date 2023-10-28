@@ -18,5 +18,5 @@ desc = "Data types and interface definitions for vanes."
 
 #### Further reading
 
-- [Arvo reference documentation](/system/kernel/overview): these docs include
+- [Arvo reference documentation](/system/kernel): these docs include
   API reference documentation for the various vanes.

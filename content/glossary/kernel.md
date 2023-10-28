@@ -24,4 +24,4 @@ non-kernel files in [Clay](/glossary/clay).
 
 #### Further reading
 
-- [Arvo overview](/system/kernel/overview): Technical overview of Arvo.
+- [Arvo overview](/system/kernel): Technical overview of Arvo.

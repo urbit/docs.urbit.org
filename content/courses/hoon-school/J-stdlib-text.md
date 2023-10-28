@@ -71,7 +71,7 @@ Special characters (non-ASCII, beyond the standard keyboard, basically) are repr
 
 There are some tools to work with atom `cord`s of text, but most of the time it is more convenient to unpack the atom into a `tape`.  A `tape` splits out the individual characters from a `cord` into a `list` of character values.
 
-![](https://storage.googleapis.com/media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
 We've hinted a bit at the structure of `list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig.  So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
 

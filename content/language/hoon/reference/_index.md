@@ -54,7 +54,7 @@ Reference information for Hoon language features.
   {% iconcard
     title="Mips"
     description="Documentation of the Mips (map of maps) library."
-    href="/language/hoon/reference/mips"
+    href="/language/hoon/reference/mip"
     small=true
   /%}
 

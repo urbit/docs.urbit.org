@@ -6,7 +6,7 @@ auto_expand=true
 
 Hosting providers are companies that offer "Urbit as a Service".  They do the work of setting up your urbit in the cloud and making sure it's up to date and you don't have perform any technical steps or maintenance.
 
-![Hosting Providers](https://storage.googleapis.com/media.urbit.org/site/getting-started/hosting-providers.png)
+![Hosting Providers](https://media.urbit.org/site/getting-started/hosting-providers.png)
 
 Generally, you'll get an Urbit ID by signing up with a hosting provider, but some allow you to bring your own Urbit ID, or even your pier (all your urbit data.)
 

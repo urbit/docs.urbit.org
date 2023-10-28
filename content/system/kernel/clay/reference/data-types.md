@@ -1070,8 +1070,8 @@ Delta
 +$  suba  (list [p=path q=misu])
 ```
 
-Same as a [`soba`](#soba) but with a [`misu`](misu)
-rather than [`miso`](miso).
+Same as a [`soba`](#soba) but with a [`misu`](#misu)
+rather than [`miso`](#miso).
 
 ---
 

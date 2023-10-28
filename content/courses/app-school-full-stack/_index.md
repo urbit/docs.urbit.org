@@ -22,7 +22,7 @@ The `Journal` app we'll be looking at can be installed on a live ship from
 `~pocwet/journal`, and its source code is available
 [here](https://github.com/urbit/docs-examples/tree/main/journal-app).
 
-![journal ui screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/entries.png)
+![journal ui screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
 
 This walkthrough does not contain exercises, nor does it completely cover every
 aspect of building the app in full depth. Rather, its purpose is to demonstrate
@@ -41,7 +41,7 @@ more comprehensive manner.
 Here is the basic structure of the app we'll be building:
 
 ![journal app
-diagram](https://media.urbit.org/courses/app-school-full-stack-guide/journal-app-diagram.svg)
+diagram](https://media.urbit.org/guides/core/app-school-full-stack-guide/journal-app-diagram.svg)
 
 ## Sections
 

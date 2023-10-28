@@ -21,4 +21,4 @@ Lick is located in `/base/sys/vane/lick.hoon` within [Arvo](/glossary/arvo).
 
 ### Further Reading
 
-- [The Lick reference](/system/kernel/lick/lick): A technical guide to the Lick vane.
+- [The Lick reference](/system/kernel/lick): A technical guide to the Lick vane.

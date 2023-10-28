@@ -26,6 +26,6 @@ are written this way, and the `unit` type and associate functions are similar to
 
 #### Further reading
 
-- [Threads guide](/userspace/threads/tutorial/basics/fundamentals): Learn how to write threads.
+- [Threads guide](/userspace/threads/tutorials/basics/fundamentals): Learn how to write threads.
 - [stdlib reference section 2a](/language/hoon/reference/stdlib/2a): These functions are
   for manipulating and composing units.

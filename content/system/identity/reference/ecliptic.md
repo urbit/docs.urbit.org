@@ -10,7 +10,7 @@ proxies are capable of, how keys are changed, or verifying that a request is
 valid.
 
 `Ecliptic.eth` uses external contracts such as
-[Azimuth.eth](/system/identity-eth) and
+[Azimuth.eth](/system/identity/reference/azimuth-eth) and
 [Polls](https://github.com/urbit/azimuth/blob/master/contracts/Polls.sol) for
 data storage so that it can easily be replaced in case the logic needs to be
 changed without affecting the data. These data contracts are owned by
@@ -52,7 +52,7 @@ standard functions that are part of the ERC-721 or ERC-165 interfaces.
 ### `Point`s interface
 
 These functions are available to each owner of a
-[`Point`](/system/identity-eth#points), and a subset of them are available
+[`Point`](/system/identity/reference/azimuth-eth#points), and a subset of them are available
 to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
 #### `configureKeys`
@@ -67,7 +67,7 @@ to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
 Configure `_point` with network public keys `_encryptionKey`,
 `_authenticationKey`, and corresponding `_cryptoSuiteVersion`, incrementing the
-`Point`'s [`keyRevisionNumber`](/system/identity-eth#points) if the keys
+`Point`'s [`keyRevisionNumber`](/system/identity/reference/azimuth-eth#points) if the keys
 have changed and `continuityNumber` number if `_discontinuous` is set to true
 (see [Life and Rift](/system/identity/concepts/life-and-rift)).
 
@@ -102,7 +102,7 @@ Corresponds to the layer 2 `%spawn` action.
 Transfer `_point` to `_target`, clearing all permissions data and keys if
 `_reset` is true. `_reset` set to true makes this transaction a
 [breach](https://urbit.org/using/id/guide-to-resets), and thus this action increments the
-[`continuityNumber`](/system/identity-eth#points) of `_point`, and usually
+[`continuityNumber`](/system/identity/reference/azimuth-eth#points) of `_point`, and usually
 the `keyRevisionNumber` as well (see [Life and
 Rift](/system/identity/concepts/life-and-rift)).
 
@@ -110,7 +110,7 @@ Requirements:
 
 - `:msg.sender` must be either `_point`'s current owner, authorized to transfer
   `_point`, or authorized to transfer the current owner's points (i.e. is
-  listed as an ERC-721 operator in [`operators`](/system/identity-eth#other)).
+  listed as an ERC-721 operator in [`operators`](/system/identity/reference/azimuth-eth#other)).
 - `_target` must not be the zero address.
 
 Corresponds to the layer 2 `%transfer-point` action.
@@ -407,7 +407,7 @@ Returns a `bool` that is true if `_point` could try to escape to `_sponsor`.
 
 #### `azimuth`
 
-Returns the address of the [Azimuth.eth](/system/identity-eth) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
+Returns the address of the [Azimuth.eth](/system/identity/reference/azimuth-eth) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
 
 #### `claims`
 

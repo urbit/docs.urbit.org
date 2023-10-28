@@ -21,5 +21,5 @@ services, daemons, or a kind of state machine.
 
 ### Further Reading
 
-- [App School](/courses/app-school/intro): A comprehensive guide to writing
+- [App School](/courses/app-school): A comprehensive guide to writing
   Gall agents.

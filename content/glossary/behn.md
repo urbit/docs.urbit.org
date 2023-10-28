@@ -23,4 +23,4 @@ Behn is located in `/base/sys/vane/behn.hoon` within [Arvo](/glossary/arvo).
 
 ### Further Reading
 
-- [The Behn reference](/system/kernel/behn/behn): A technical guide to the Behn vane.
+- [The Behn reference](/system/kernel/behn): A technical guide to the Behn vane.

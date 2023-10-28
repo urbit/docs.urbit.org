@@ -20,6 +20,6 @@ so its version number is used to represent the version of the kernel as a whole.
 
 ### Further Reading
 
-- [Zuse reference](/language/hoon/zuse): Developer
+- [Zuse reference](/language/hoon/reference/zuse): Developer
   documentation of various functions in `zuse.hoon`, particularly those relating
   to JSON.

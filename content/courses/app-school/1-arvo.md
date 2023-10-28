@@ -52,7 +52,7 @@ Here's a brief summary of each of the vanes:
   and functions rather than tasks to Dill, and CLI apps are mediated by a
   sub-module of the `%hood` system agent called `%drum`. CLI apps will not be touched
   on in this guide, but there's a separate [CLI
-  Apps](/userspace/apps/guides/cli-tutorial-tutorial) guide which covers them if you're
+  Apps](/userspace/apps/guides/cli-tutorial) guide which covers them if you're
   interested.
 - **Eyre**: Webserver vane. App web front-ends are served via Eyre. It's possible to
   handle HTTP requests directly in a Gall agent (see the [Eyre
@@ -82,7 +82,7 @@ and its nine vanes. Userspace is primarily Gall agents, generators, threads,
 front-ends, and all of their related files in Clay. The distinction looks
 something like this:
 
-[![kernelspace/userspace diagram](https://media.urbit.org/courses/app-school/kernelspace-userspace-diagram-v1.svg)](https://media.urbit.org/courses/app-school/kernelspace-userspace-diagram-v1.svg)
+[![kernelspace/userspace diagram](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)
 
 By and large, Gall _is_ the userspace vane - the majority of userspace is either
 Gall agents, or things used by Gall agents. Apart from the agents themselves,
@@ -280,7 +280,7 @@ There are also two basic things to interact with: vanes, and other agents.
 Here's a simplified diagram of the ways an agent can interact with other parts
 of the system:
 
-![api diagram](https://media.urbit.org/courses/app-school/api-diagram.svg)
+![api diagram](https://media.urbit.org/guides/core/app-school/api-diagram.svg)
 
 Things like `on-poke` are arms of the agent core. Don't worry about their
 meaning for now, we'll discuss them in detail later in the guide.

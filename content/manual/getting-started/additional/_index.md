@@ -12,7 +12,7 @@ got your Urbit up and running.
   {% iconcard
     title="Getting Around"
     description="First steps to orient yourself in your new Urbit."
-    href="/manual/getting-started/additional/getting-started"
+    href="/manual/getting-started/additional/getting-around"
     small=true
   /%}
 

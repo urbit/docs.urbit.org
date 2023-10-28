@@ -5,7 +5,7 @@ weight = 90
 
 Welcome to the Operator's Manual. These docs contain guides and reference
 material for users. If you're new to Urbit, the [Getting
-Started](/courses/getting-started) section is the place to go.
+Started](/manual/getting-started) section is the place to go.
 
 {% grid %}
 

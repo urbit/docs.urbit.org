@@ -6,14 +6,14 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
-### [API Reference](/system/kernel/arvo/dill/tasks)
+### [API Reference](/system/kernel/dill/reference/tasks)
 
 The `task`s Dill takes and the `gift`s it returns.
 
-### [Scry Reference](/system/kernel/arvo/dill/scry)
+### [Scry Reference](/system/kernel/dill/reference/scry)
 
 The scry endpoints of Dill.
 
-### [Data Types](/system/kernel/arvo/dill/data-types)
+### [Data Types](/system/kernel/dill/reference/data-types)
 
 Reference documentation of the data types used by Dill.

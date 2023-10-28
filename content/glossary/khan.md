@@ -9,6 +9,6 @@ affordances for external devices.
 
 #### Further reading
 
-- [Khan reference documentation](/system/kernel/khan/khan)
+- [Khan reference documentation](/system/kernel/khan)
 
 

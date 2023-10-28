@@ -20,5 +20,5 @@ Iris is located at `/base/sys/vane/iris.hoon` within [Arvo](/glossary/arvo).
 
 #### Further reading
 
-- [The Iris technical reference](/system/kernel/iris/iris): Detailed technical
+- [The Iris technical reference](/system/kernel/iris): Detailed technical
   and developer documentation of Iris.

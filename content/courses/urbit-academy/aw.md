@@ -2,7 +2,7 @@
 title = "App Workshop"
 weight = 30
 next_cohort = "Late 2023"
-image = "https://storage.googleapis.com/media.urbit.org/developers/images/app-workshop-live.svg"
+image = "https://media.urbit.org/developers/images/app-workshop-live.svg"
 description = "App Workshop will serve as a hands-on intensive course to build high-quality Urbit apps ready for end users. It serves as a follow-on to App Academy with more focus on building complex apps."
 +++
 

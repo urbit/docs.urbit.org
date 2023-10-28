@@ -75,7 +75,7 @@ errors later.
 
 ## Getting entries
 
-![entries screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/entries.png)
+![entries screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
 
 The `getEntries()` function scries our `%journal` agent for up to 10 entries
 before the oldest we currently have. We call this initially and then each time
@@ -262,7 +262,7 @@ useEffect(() => {
 
 ## Add, edit, delete
 
-![add screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/add.png)
+![add screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/add.png)
 
 When a user writes a new journal entry and hits submit, the `createEntry()`
 function is called. It uses the `Urbit.poke` method to poke our `%journal`
@@ -301,7 +301,7 @@ these cases.
 The `deleteEntry()` and `editEntry()` functions are similar to `createEntry()`,
 but for the `%del` and `%edit` actions rather than `%add`:
 
-![edit screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/edit.png)
+![edit screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/edit.png)
 
 ```javascript
 const editEntry = (id, txt) => {
@@ -319,7 +319,7 @@ const editEntry = (id, txt) => {
 };
 ```
 
-![delete screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/delete.png)
+![delete screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/delete.png)
 
 ```javascript
 const deleteEntry = (id) => {
@@ -339,7 +339,7 @@ our agent.
 
 ## Search
 
-![search screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/search.png)
+![search screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search.png)
 
 When searching for entries between two dates, the `searchEntries()` function is
 called, which uses the `Urbit.scry` method to scry for the results in a similar
@@ -378,12 +378,12 @@ trying to reconnect. On each attempt, it sets the connection `status` to
 `"try"`, as we specified for the `onRetry` callback. When this is set, a
 "reconnecting" message is displayed at the bottom of the screen:
 
-![reconnecting screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/reconnecting.png)
+![reconnecting screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnecting.png)
 
 If all three reconnection attempts fail, the `onError` callback is fired and we
 replace the "reconnecting" message with a "reconnect" button:
 
-![reconnect screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/reconnect.png)
+![reconnect screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnect.png)
 
 When clicked, the following function is called:
 
@@ -443,7 +443,7 @@ such as poke nacks or failed scries by printing error messages added to the
 kicks, scry failures, etc differently than just printing an error; it depends
 on the needs of your app.
 
-![search failed screenshot](https://media.urbit.org/courses/app-school-full-stack-guide/search-failed.png)
+![search failed screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search-failed.png)
 
 ## Resources
 

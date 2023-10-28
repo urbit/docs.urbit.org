@@ -516,7 +516,7 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 - [Parsing](/language/hoon/guides/parsing) - A guide to writing fully-fledged
   functional parsers in hoon.
   
-- [Developer Blog, "What Every Hooner Should Know About Text on Urbit"](/blog/text-overview)
+- [Developer Blog, "What Every Hooner Should Know About Text on Urbit"](https://urbit.org/blog/text-overview)
 
 - [Auras](/language/hoon/reference/auras) - Details of auras in hoon.
 

@@ -6,6 +6,6 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
-### [Examples](/system/kernel/arvo/behn/examples)
+### [Examples](/system/kernel/behn/examples)
 
 Practical examples of using Behn's `task`s.

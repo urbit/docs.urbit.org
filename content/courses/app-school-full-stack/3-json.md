@@ -33,7 +33,7 @@ string by Eyre using
 to the web client. The basic flow for both inbound messages (pokes) and outbound
 messages (facts and scry results) looks like this:
 
-![eyre mark flow diagram](https://media.urbit.org/courses/app-school-full-stack-guide/eyre-mark-flow-diagram.svg)
+![eyre mark flow diagram](https://media.urbit.org/guides/core/app-school-full-stack-guide/eyre-mark-flow-diagram.svg)
 
 The mark conversion will be done by the corresponding mark file in `/mar` on the
 agent's desk. In our case it would be `/mar/journal/action.hoon` and

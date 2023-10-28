@@ -9,6 +9,13 @@ and/or third-party apps, libraries and tools.
 {% grid %}
 
   {% iconcard
+    title="Useful Links"
+    description="Links to external app and library repos, documentation, and other tools."
+    href="/tools/links"
+    small=true
+  /%}
+
+  {% iconcard
     title="JS Libraries"
     description="Javascript libraries for interacting with an Urbit ship."
     href="/tools/js-libs"

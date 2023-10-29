@@ -13,11 +13,11 @@ const sites = [
     href: "https://urbit.org",
     theme: "grn",
   },
-  {
-    title: "Foundation",
-    href: "https://urbit.foundation",
-    theme: "mos",
-  },
+  // {
+  //   title: "Foundation",
+  //   href: "https://urbit.foundation",
+  //   theme: "mos",
+  // },
   {
     title: "Network Explorer ↗",
     href: "https://network.urbit.org",

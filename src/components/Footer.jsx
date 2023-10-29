@@ -9,26 +9,22 @@ const data = [
           title: "Home",
           href: "/",
         },
-        { title: "Get Started", href: "/getting-started" },
+        { title: "Get Started", href: "https://urbit.org/getting-started" },
         {
           title: "Overview",
-          href: "/overview",
+          href: "https://developer.urbit.org/overview",
         },
         {
           title: "Ecosystem",
-          href: "/ecosystem",
-        },
-        {
-          title: "Grants",
-          href: "/grants",
+          href: "https://urbit.org/ecosystem",
         },
         {
           title: "Events",
-          href: "/events",
+          href: "https://urbit.org/events",
         },
         {
           title: "Blog",
-          href: "/blog",
+          href: "https://urbit.org//blog",
         }
       ],
     },

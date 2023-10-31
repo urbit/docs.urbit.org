@@ -402,8 +402,8 @@ tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
 If no data are located at the given path, `+cat` simply shows `~` null:
 
 ```hoon
-> +cat /=garden=/gen/ls/hoon
-~ /~zod/garden/~2022.6.14..18.17.16..07ff/gen/ls/hoon
+> +cat /=landscape=/gen/ls/hoon
+~ /~zod/landscape/~2022.6.14..18.17.16..07ff/gen/ls/hoon
 ```
 
 Every desk has a standard directory structure:

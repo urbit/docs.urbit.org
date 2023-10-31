@@ -14,7 +14,7 @@ desc = "A bundle of front-end resources for an app."
 
 A **glob** is a bundle of front-end resources for an app which is served to a
 web client by the `%docket` [agent](/glossary/agent) in the
-[%garden](/glossary/garden) [desk](/glossary/desk). The glob
+[%landscape](/glossary/landscape) [desk](/glossary/desk). The glob
 will typically contain an `index.html` file, along with CSS, JS, and other
 resources the web app needs. The glob for an app will be retrieved when you
 install it, either over [Ames](/glossary/ames) or from an external web

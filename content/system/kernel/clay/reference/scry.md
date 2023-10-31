@@ -131,12 +131,12 @@ Example:
 > =domes .^(cone:clay %cx /=//=/domes)
 > ~(key by domes)
 { [~zod %landscape]
-  [~mister-dister-dozzod-dozzod %garden]
+  [~mister-dister-dozzod-dozzod %landscape]
   [~lander-dister-dozzod-dozzod %landscape]
   [~mister-dister-dozzod-dozzod %webterm]
   [~zod %bitcoin]
   [~zod %kids]
-  [~zod %garden]
+  [~zod %landscape]
   [~zod %base]
   [~zod %webterm]
   [~mister-dister-dozzod-dozzod %bitcoin]
@@ -161,7 +161,7 @@ Example:
   [p=%base q=[zest=%live wic={}]]
   [p=%landscape q=[zest=%live wic={}]]
   [p=%webterm q=[zest=%live wic={}]]
-  [p=%garden q=[zest=%live wic={}]]
+  [p=%landscape q=[zest=%live wic={}]]
   [p=%kids q=[zest=%dead wic={}]]
 }
 ```
@@ -236,7 +236,7 @@ Example:
 
 ```
 > .^((set desk) %cd /=//=)
-{%bitcoin %base %landscape %webterm %garden %kids}
+{%bitcoin %base %webterm %landscape %kids}
 ```
 
 ---

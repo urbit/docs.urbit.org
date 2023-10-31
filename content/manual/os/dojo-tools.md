@@ -833,7 +833,7 @@ desk
 #### Example
 
 ```
-> +agents %garden
+> +agents %landscape
 status: running   %hark-system-hook
 status: running   %treaty
 status: running   %docket
@@ -1089,7 +1089,7 @@ This prints the contents of `/sys/kelvin` and `/desk/bill`.
 #### Example
 
 ```
-> +show-vat %garden
+> +show-vat %landscape
 /sys/kelvin:
 [%zuse 418]
 /desk/bill:
@@ -2052,7 +2052,7 @@ filesystem.
 Export a brass pill with multiple desks:
 
 ```
-> .brass/pill +brass %base %garden %webterm
+> .brass/pill +brass %base %landscape %webterm
 %brass-parsing
 %brass-parsed
 %brass-compiling
@@ -2509,7 +2509,7 @@ filesystem.
 Export a solid pill with multiple desks:
 
 ```
-> .solid/pill +solid %base %garden %webterm
+> .solid/pill +solid %base %landscape %webterm
 %solid-start
 %solid-loaded
 %solid-parsed
@@ -2708,17 +2708,17 @@ of the `%base` desk at its most recent revision).
 
 #### Example
 
-Let's try changing to the root of the `%garden` [desk][desk]:
+Let's try changing to the root of the `%landscape` [desk][desk]:
 
 ```
-> =dir /=garden=
-=% /~zod/garden/~2022.9.4..13.15.48..5e81
+> =dir /=landscape=
+=% /~zod/landscape/~2022.9.4..13.15.48..5e81
 ```
 
 The dojo prompt will now look like:
 
 ```
-~zod:dojo/=/garden/~2022.9.4..13.15.48..5e81>
+~zod:dojo/=/landscape/~2022.9.4..13.15.48..5e81>
 ```
 
 `%` and `/===` now resolve to this location, so any commands like 
@@ -2905,23 +2905,23 @@ In the dojo:
 
 
 ```
-> |mount %garden
+> |mount %landscape
 >=
 
-> |autocommit %garden
+> |autocommit %landscape
 >=
 ```
 
 In a separate Unix shell session:
 
 ```
-echo "foo" > ~/piers/zod/garden/foo.txt
+echo "foo" > ~/piers/zod/landscape/foo.txt
 ```
 
 Back in the dojo:
 
 ```
-+ /~zod/garden/8/foo/txt
++ /~zod/landscape/8/foo/txt
 ```
 
 ---
@@ -2964,22 +2964,22 @@ Auto-commits can be disabled with [`|cancel-autocommit`](#cancel-autocommit).
 In the dojo:
 
 ```
-> |mount %garden
+> |mount %landscape
 >=
 ```
 
 In a separate Unix shell session:
 
 ```
-echo "foo" > ~/piers/zod/garden/foo.txt
+echo "foo" > ~/piers/zod/landscape/foo.txt
 ```
 
 Back in the dojo:
 
 ```
-> |commit %garden
+> |commit %landscape
 >=
-+ /~zod/garden/6/foo/txt
++ /~zod/landscape/6/foo/txt
 ```
 
 ---
@@ -3209,10 +3209,8 @@ The [path][path] is to a file or directory on the given `desk` on the given
   /: %.n
 ~tus/%kids:
 ~mister-dister-dozzod-dozzod/%webterm:
-~tus/%garden:
-~lander-dister-dozzod-dozzod/%landscape:
-~mister-dister-dozzod-dozzod/%garden:
 ~tus/%landscape:
+~mister-dister-dozzod-dozzod/%landscape:
 ```
 
 ---
@@ -3235,10 +3233,8 @@ Print tombstone policies for all desks.
   /: %.n
 ~tus/%kids:
 ~mister-dister-dozzod-dozzod/%webterm:
-~tus/%garden:
-~lander-dister-dozzod-dozzod/%landscape:
-~mister-dister-dozzod-dozzod/%garden:
 ~tus/%landscape:
+~mister-dister-dozzod-dozzod/%landscape:
 ```
 
 `%.y` means old revisions of the file or directory will be kept, `%.n` means
@@ -3284,7 +3280,7 @@ is a directory or file in the given desk.
 #### Example
 
 ```
-> |private %garden
+> |private %landscape
 >=
 
 > |private %base /ted/dns
@@ -3312,7 +3308,7 @@ is a directory or file in the given desk.
 #### Example
 
 ```
-> |public %garden
+> |public %landscape
 >=
 
 > |public %base /ted/dns
@@ -3346,9 +3342,9 @@ existing story file in the desk will be overwritten with a blank one.
 ```
 
 ```
-> |story-init, =desk %garden, =overwrite .y
+> |story-init, =desk %landscape, =overwrite .y
 >=
-+ /~tus/garden/2/story
++ /~tus/landscape/2/story
 ```
 
 ---
@@ -3369,7 +3365,7 @@ If the optional `=desk` argument is not specified, it'll infer the current desk
 #### Example
 
 ```
-> +story-list, =desk %garden
+> +story-list, =desk %landscape
 
 commit: 0v10.blbfu.8a414.qrjqo.ov847.gc6v7.6dpob.49i6s.ndi49.ve74j.a04qr
                                                                         some title
@@ -3401,7 +3397,7 @@ desk. If no argument is provided, it'll infer the current desk (typically
 #### Example
 
 ```
-> +story-read, =desk %garden
+> +story-read, =desk %landscape
 commit: 0v10.blbfu.8a414.qrjqo.ov847.gc6v7.6dpob.49i6s.ndi49.ve74j.a04qr
 some title
 
@@ -3453,11 +3449,11 @@ default to the most recent.
 #### Example
 
 ```
-> |story-write 'some title' 'some body', =desk %garden, =cas ud+1
+> |story-write 'some title' 'some body', =desk %landscape, =cas ud+1
 >=
-: /~tus/garden/3/story
+: /~tus/landscape/3/story
 
-> +story-read, =desk %garden
+> +story-read, =desk %landscape
 commit: 0v10.blbfu.8a414.qrjqo.ov847.gc6v7.6dpob.49i6s.ndi49.ve74j.a04qr
 some title
 

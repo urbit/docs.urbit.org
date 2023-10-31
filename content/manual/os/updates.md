@@ -7,7 +7,7 @@ weight = 2
 
 The OS/kernel in Urbit is called Arvo. Arvo is run inside a virtual machine
 called Vere - this is the `urbit` binary you execute in the terminal. You can
-also install a number of userspace applications such as Groups, Bitcoin, Studio,
+also install a number of userspace applications such as Groups, Studio,
 Pals, etc. Each of these layers—Vere, Arvo and apps—receive updates. In this
 guide, we'll look at how to deal with these updates, the meaning of the update
 notifications you'll get in Landscape, and how these layers depend on each other.
@@ -43,7 +43,7 @@ notifications you'll get in Landscape, and how these layers depend on each other
   Arvo update can be forced by suspending the blocking apps.
 ---
 * Apps
-* Groups, Bitcoin, Studio, Pals, etc
+* Groups, Studio, Pals, etc
 * `v1.0.14`
 * Arvo
 * Apps depend on Arvo. Every app specifies which Arvo version it is compatible

@@ -131,11 +131,7 @@ have to do it again each time. In the dojo:
 ```
 > |mount %base
 >=
-> |mount %garden
->=
 > |mount %landscape
->=
-> |mount %webterm
 >=
 ```
 
@@ -249,7 +245,7 @@ the default desks, among other things:
 cd ~/git/urbit/pkg
 ```
 
-The desks ending in `-dev`, like `base-dev` and `garden-dev`, contain files for
+The desks ending in `-dev`, like `base-dev` and `landscae-dev`, contain files for
 interfacing with those respective desks. If you're creating a new desk that has
 a tile and front-end, for example, you might like to use `base-dev` as a base. To create such a base, there's a `symbolic-merge.sh`
 script included in the directory. You can use it like so:

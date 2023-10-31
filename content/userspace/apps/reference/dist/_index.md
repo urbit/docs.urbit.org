@@ -63,14 +63,14 @@ desk. The `%base` desk includes agents such as `%dojo` and `%hood` (with Kiln
 as an informal sub-agent of `%hood` that manages desk installations).
 
 A "landscape app", i.e. a desk that defines a tile that the user can launch
-from the home screen, should also sync from the `%garden-dev` desk. This desk
+from the home screen, should also sync from the `%landscape-dev` desk. This desk
 includes the versioned `%docket-0` mark, which the app needs in order to
 include a `/desk/docket-0` file.
 
 The `%docket` agent reads the `/desk/docket-0` file to display an app tile on
 the home screen and hook up other front-end functionality, such as downloading
 the app's client bundle ([glob](/userspace/apps/reference/dist/glob)). Docket
-is a new agent, in the `%garden` desk, that manages app installations. Docket
+is a new agent, in the `%landscape` desk, that manages app installations. Docket
 serves the home screen, downloads client bundles, and communicates with Kiln to
 configure the apps on your system.
 

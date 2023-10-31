@@ -12,7 +12,6 @@ desc = "The desk that serves Landscape, manages app front-ends and handles notif
 
 +++
 
-`%garden` is the [desk](/glossary/desk) in
-[Arvo](/glossary/arvo) that serves
-[Landscape](/glossary/landscape). It also manages the front-end files
-for other apps, and handles notifications.
+`%garden` was the name of the [desk](/glossary/desk) that serves
+[Landscape](/glossary/landscape). Garden was renamed `%landscape` around the
+release of kernel version `[%zuse 412]`.

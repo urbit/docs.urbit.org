@@ -417,11 +417,11 @@ Hoon can of course be evaluated in its arguments as well:
 You'll most commonly see this used in constructing a `path` like:
 
 ```
-> /(scot %p our)/garden/(scot %da now)/foo/(scot %ud 123.456)
-[~.~zod %garden ~.~2021.10.4..07.43.14..a556 %foo ~.123.456 ~]
+> /(scot %p our)/landscape/(scot %da now)/foo/(scot %ud 123.456)
+[~.~zod %landscape ~.~2021.10.4..07.43.14..a556 %foo ~.123.456 ~]
 
-> `path`/(scot %p our)/garden/(scot %da now)/foo/(scot %ud 123.456)
-/~zod/garden/~2021.10.4..07.43.23..9a0f/foo/123.456
+> `path`/(scot %p our)/landscape/(scot %da now)/foo/(scot %ud 123.456)
+/~zod/landscape/~2021.10.4..07.43.23..9a0f/foo/123.456
 ```
 
 `+spat` simply encodes a `path` in a cord like:

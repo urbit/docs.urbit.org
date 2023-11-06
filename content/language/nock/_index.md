@@ -29,3 +29,7 @@ Learn Nock by example.
 ## [Nock Implementations](/language/nock/implementations)
 
 The many ways that Nock has been implemented.
+
+## [Fast Hints and Jets](/language/nock/jetting)
+
+Learn about jetting.

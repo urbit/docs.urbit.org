@@ -43,9 +43,9 @@ export default function IntraNav({ search }) {
       pages={pages}
       search={
         <DocSearch
-          appId="QT6KPZUJMB"
-          apiKey="c6e729e9e8ea804355cb61bca301e203"
-          indexName="docs"
+          appId="X99UXGCKE0"
+          apiKey="a70e321decc1707ae9ce2906bb9bab33"
+          indexName="urbit"
         />
       }
     />

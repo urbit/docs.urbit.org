@@ -6,7 +6,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="preconnect" href="https://QT6KPZUJMB-dsn.algolia.net" crossorigin />
+        <link rel="preconnect" href="https://X99UXGCKE0-dsn.algolia.net" crossorigin />
       </Head>
       <body>
         <Main />

@@ -59,9 +59,16 @@ Guides to various features of the Hoon language.
   /%}
 
   {% iconcard
-    title="Vases"
-    description="Dynamic data types in Hoon."
+    title="vases"
+    description="dynamic data types in hoon."
     href="/language/hoon/guides/vases"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Sets"
+    description="Explore set relations using the Hoon standard library."
+    href="/language/hoon/guides/sets"
     small=true
   /%}
 

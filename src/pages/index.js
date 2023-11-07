@@ -110,7 +110,7 @@ export default function Home({ search }) {
                     description="You can obtain a planet and run Urbit yourself or let a hosting provider do it for you. How to do these things and more are documented in this section."
                     label="View"
                     icon="Apprenticeship"
-                    href="https://urbit.org/getting-started"
+                    href="/manual/getting-started"
                     small
                   />
                   <ConceptCard

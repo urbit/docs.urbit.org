@@ -110,7 +110,7 @@ export default function Home({ search }) {
                     description="You can obtain a planet and run Urbit yourself or let a hosting provider do it for you. How to do these things and more are documented in this section."
                     label="View"
                     icon="Apprenticeship"
-                    href=""
+                    href="/manual/getting-started"
                     small
                   />
                   <ConceptCard
@@ -118,7 +118,7 @@ export default function Home({ search }) {
                     description="Information on running your Urbit, using the Dojo (Urbit's command-line), managing your Urbit ID on Azimuth and more."
                     label="View"
                     icon="UrbitOS"
-                    href=""
+                    href="/manual"
                     small
                   />
                 </FatBlock>

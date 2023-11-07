@@ -6,30 +6,33 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
-> Last major revision of this tutorial: 2016.  Minor revisions were made in
-> October 2018 to bring it in line with the new Nock 4K spec.
+Nock is the low-level functional programming language that is
+interpreted by Vere. You don't need to know Nock to write Hoon, or
+even to work on most parts of Vere.  But if you want to understand
+the foundations of Urbit and are mathematically-inclined, dive
+right in.
 
-Nock is the low-level functional programming language that is interpreted by
-Vere. You don't need to know Nock to write Hoon, or even to work on most parts
-of Vere.  But if you want to understand the foundations of Urbit and are
-mathematically-inclined, dive right in.
+{% grid %}
 
-## [Nock Definition](/language/nock/definition)
+  {% iconcard
+    title="Reference"
+    description="Details of the Nock definition and specification."
+    href="/language/nock/reference"
+    small=true
+  /%}
 
-The Nock specification.
+  {% iconcard
+    title="Guides"
+    description="Guides to aspects of Nock."
+    href="/language/nock/guides"
+    small=true
+  /%}
 
-## [An explanation of Nock](/language/nock/explanation)
+  {% iconcard
+    title="Examples"
+    description="Examples of Nock code and interpreter implementations."
+    href="/language/nock/examples"
+    small=true
+  /%}
 
-A comprehensive walkthrough of the Nock spec.
-
-## [Nock by hand](/language/nock/example)
-
-Learn Nock by example.
-
-## [Nock Implementations](/language/nock/implementations)
-
-The many ways that Nock has been implemented.
-
-## [Fast Hints and Jets](/language/nock/jetting)
-
-Learn about jetting.
+{% /grid %}

@@ -30,5 +30,5 @@ based on whether or not the constant exists:
   programming language.
   - [“Hoon Syntax”](/courses/hoon-school/B-syntax#nouns): A Hoon School
     lesson that explains how atoms work.
-- [The Nock explanation](/language/nock/explanation): Includes an explanation
+- [The Nock explanation](/language/nock/reference/specification): Includes an explanation
   of atoms.

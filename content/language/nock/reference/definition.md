@@ -1,5 +1,5 @@
 +++
-title = "Nock Definition"
+title = "Definition"
 weight = 1
 +++
 

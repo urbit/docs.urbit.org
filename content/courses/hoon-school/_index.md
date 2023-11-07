@@ -53,7 +53,7 @@ mathematical functions, making it
 and
 [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming).
 Such strong guarantees require an operating protocol, the [Nock virtual
-machine](/language/nock/definition), which will be persistent across
+machine](/language/nock/reference/definition), which will be persistent across
 hardware changes and always provide an upgrade path for necessary
 changes.
 

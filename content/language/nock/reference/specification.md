@@ -1,5 +1,5 @@
 +++
-title = "Explanation"
+title = "Specification"
 weight = 2
 +++
 

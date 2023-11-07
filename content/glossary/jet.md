@@ -26,4 +26,4 @@ this way.
 
 - [Jet writing reference](/system/runtime/guides/jetting): developer documentation
   on how to write jets.
-- [Nock documentation](/language/nock/definition): how Nock works.
+- [Nock documentation](/language/nock/reference/definition): how Nock works.

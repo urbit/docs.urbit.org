@@ -1,16 +1,7 @@
 +++
-title = "Example"
+title = "Decrement"
 weight = 3
 +++
-Some people write assembly language by hand.  Some of them have a
-good reason to do so.  But there's no good reason to write Nock by
-hand, ever.
-
-Except for the purposes of learning Nock.  It's not necessary to
-know Nock to program in Hoon.  But it's quite desirable.  The
-feeling of understanding the system at two levels is pleasant.
-
-## Decrement in Nock
 
 A good practice exercise for Nock is a decrement formula.  Ie, a
 formula `f` which implements the partial function that produces
@@ -19,14 +10,14 @@ terminate.
 
 As we know, the equivalent formula for increment is
 
-```
-[4 0 1]
+```hoon
+[%4 %0 1]
 ```
 
 Thus:
 
 ```
-~>zod:dojo .*(42 [4 0 1])
+> .*(42 [4 0 1])
 43
 ```
 
@@ -42,7 +33,7 @@ How do we decrement?  A good way to start is to gaze fondly on
 how we'd do it if we actually had a real language, ie, Hoon.
 Here is a minimal decrement in Hoon:
 
-```
+```hoon
 =>  a=.                     ::  line 1
 =+  b=0                     ::  line 2
 |-                          ::  line 3
@@ -53,14 +44,14 @@ $(b +(b))                   ::  line 6
 
 Or for fun, on one line:
 
-```
+```hoon
 =>(a=. =+(b=0 |-(?:(=(a +(b)) b $(b +(b))))))
 ```
 
 Does Hoon actually work?
 
 ```
-~zod:dojo>  =>(42 =>(a=. =+(b=0 |-(?:(=(a +(b)) b $(b +(b)))))))
+> =>(42 =>(a=. =+(b=0 |-(?:(=(a +(b)) b $(b +(b)))))))
 41
 ```
 
@@ -89,40 +80,40 @@ this new subject, we execute another formula.
 
 Since `0` is a constant, a formula that produces it is
 
-```
-[1 0]
+```hoon
+[%1 0]
 ```
 
 To combine `0` with the subject, we compute
 
-```
-[[1 0] [0 1]]
+```hoon
+[[%1 0] [%0 1]]
 ```
 
 which, if our subject is 42, gives us
 
-```
+```hoon
 [0 42]
 ```
 
 which we can use as the subject for an inner formula, `g`.
 Composing our new variable with `g`, we have `f` as
 
-```
-[2 [[1 0] [0 1]] [1 g]]
+```hoon
+[%2 [[%1 0] [%0 1]] [%1 g]]
 ```
 
 which seems a little funky for something so simple.  But we
 can simplify it with the composition macro, `7`:
 
-```
-[7 [[1 0] [0 1]] g]
+```hoon
+[%7 [[%1 0] [%0 1]] g]
 ```
 
 and still further with the augmentation macro, `8`:
 
-```
-[8 [1 0] g]
+```hoon
+[%8 [%1 0] g]
 ```
 
 If you refer back to the Nock definition, you'll see that all
@@ -146,7 +137,7 @@ other cores) and whose head is code (containing one or more
 formulas).  The tail is the **payload** and the head is the
 **battery**.  Hence your core is
 
-```
+```hoon
 [bat pay]
 ```
 
@@ -167,8 +158,8 @@ it.  To be precise, we need two formulas: a formula which
 produces the core, and one which activates its subject.  We can
 compose these functions with the handy `7` instruction:
 
-```
-[8 [1 0] [7 p a]]
+```hoon
+[%8 [%1 0] [%7 p a]]
 ```
 
 `p` produces our core, `a` activates it.  Let's take these in
@@ -178,21 +169,21 @@ Since we have only one formula, it's the battery itself.
 Thus we want to execute Nock with the whole core (already the
 subject, and the entire battery (slot `2`)).  Hence, `a` is
 
-```
-[2 [0 1] [0 2]]
+```hoon
+[%2 [%0 1] [%0 2]]
 ```
 
 We could also use the handy `9` macro - which almost seems
 designed for firing arms on cores:
 
-```
-[9 2 [0 1]]
+```hoon
+[%9 2 [%0 1]]
 ```
 
 Which leaves us seeking
 
-```
-[8 [1 0] [7 p [9 2 0 1]]]
+```hoon
+[%8 [%1 0] [%7 p [%9 2 %0 1]]]
 ```
 
 And all we have to do is build the core, `p`.  How do we build a
@@ -201,39 +192,39 @@ above.  The initial value of our counter was a constant, `0`.
 The initial (and permanent) value of our battery is a constant,
 the loop formula `l`.  So `p` is
 
-```
-[8 [1 l] [0 1]]
+```hoon
+[%8 [%1 l] [%0 1]]
 ```
 
 Which would leave us seeking
 
-```
-[8 [1 0] [7 [8 [1 l] [0 1]] [9 2 0 1]]]
+```hoon
+[%8 [%1 0] [%7 [%8 [%1 l] [%0 1]] [%9 2 %0 1]]]
 ```
 
 except that we have duplicated the `8` pattern again, since we
 know
 
-```
-[7 [8 [1 l] [0 1]] [9 2 0 1]]
+```hoon
+[%7 [%8 [%1 l] [%0 1]] [%9 2 %0 1]]
 ```
 
 is equivalent to
 
-```
-[8 [1 l] [9 2 0 1]]
+```hoon
+[%8 [%1 l] [%9 2 %0 1]]
 ```
 
 so the full value of `f` is
 
-```
-[8 [1 0] [8 [1 l] [9 2 0 1]]]
+```hoon
+[%8 [%1 0] [%8 [%1 l] [%9 2 %0 1]]]
 ```
 
 Thus our only formula to compose is the loop body, `l`.
 Its subject is the loop core:
 
-```
+```hoon
 [bat pay]
 ```
 
@@ -241,7 +232,7 @@ where `bat` is just the loop formula, and `pay` is the pair `[b
 a]`, `b` being the counter, and `a` the input subject.  Thus we
 could also write this subject as
 
-```
+```hoon
 [l b a]
 ```
 
@@ -256,103 +247,103 @@ $(b +(b))                   ::  line 6
 
 This is obviously an if statement, and it calls for `6`.  Ie:
 
-```
-[6 t y n]
+```hoon
+[%6 t y n]
 ```
 
 Giving our decrement program as:
 
-```
-[8 [1 0] [8 [1 6 t y n] [9 2 0 1]]]
+```hoon
+[%8 [%1 0] [%8 [%1 %6 t y n] [%9 2 %0 1]]]
 ```
 
 For `t`, how do we compute a flag that is yes (`0`) if `a` equals
 `b` plus one?  Equals, we recall, is `5`.  So `t` can only be
 
-```
-[5 [0 7] [4 0 6]]
+```hoon
+[%5 [%0 7] [%4 %0 6]]
 ```
 
 If so, our product `y` is just the counter `b`:
 
-```
-[0 6]
+```hoon
+[%0 6]
 ```
 
 And if not?  We have to re-execute the loop with the counter
 incremented.  If we were executing it with the same counter,
 obviously an infinite loop, we could use the same core:
 
-```
-[9 2 0 1]
+```hoon
+[%9 2 %0 1]
 ```
 
 But instead we need to construct a new core with the counter
 incremented:
 
-```
+```hoon
 [l +(b) a]
 ```
 
 ie,
 
-```
-[[0 2] [4 0 6] [0 7]]
+```hoon
+[[%0 2] [%4 %0 6] [%0 7]]
 ```
 
 and `n` is:
 
-```
-[9 2 [[0 2] [4 0 6] [0 7]]]
+```hoon
+[%9 2 [[%0 2] [%4 %0 6] [%0 7]]]
 ```
 
 Hence our complete decrement.  Let's reformat vertically so we
 can actually read it:
 
-```
-[8
-  [1 0]
-  [ 8
-    [ 1
-      [ 6
+```hoon
+[%8
+  [%1 0]
+  [ %8
+    [ %1
+      [ %6
         t
         y
         n
       ]
     ]
-    [9 2 0 1]
+    [%9 2 %0 1]
   ]
 ]
 ```
 
 which becomes
 
-```
-[8
-  [1 0]
-  [ 8
-    [ 1
-      [ 6
-        [5 [0 7] [4 0 6]]
-        [0 6]
-        [9 2 [[0 2] [4 0 6] [0 7]]]
+```hoon
+[%8
+  [%1 0]
+  [ %8
+    [ %1
+      [ %6
+        [%5 [%0 7] [%4 %0 6]]
+        [%0 6]
+        [%9 2 [[%0 2] [%4 %0 6] [%0 7]]]
       ]
     ]
-    [9 2 0 1]
+    [%9 2 %0 1]
   ]
 ]
 ```
 
 or, on one line without superfluous brackets:
 
-```
-[8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1]
+```hoon
+[%8 [%1 0] %8 [%1 %6 [%5 [%0 7] %4 %0 6] [%0 6] %9 2 [%0 2] [%4 %0 6] %0 7] %9 2 %0 1]
 ```
 
 which works for the important special case, 42:
 
 ```
-~zod:dojo> .*(42 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1])
+> .*(42 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1])
 41
 ```
 

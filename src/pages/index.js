@@ -118,7 +118,7 @@ export default function Home({ search }) {
                     description="Information on running your Urbit, using the Dojo (Urbit's command-line), managing your Urbit ID on Azimuth and more."
                     label="View"
                     icon="UrbitOS"
-                    href="https://operators.urbit.org/"
+                    href="/manual"
                     small
                   />
                 </FatBlock>

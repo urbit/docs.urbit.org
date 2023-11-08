@@ -35,6 +35,8 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 ## Hoon Libraries
 
+[John](https://github.com/litlep-nibbyt/john) - automatic JSON reparsing.
+
 [Manx Utils](https://github.com/tinnus-napbus/manx-utils) - tools for working with XML structures.
 
 [Mast](https://github.com/R-JG/mast) - a library for building fully dynamic Sail front-ends.

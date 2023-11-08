@@ -11,6 +11,8 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [Auth Server](https://github.com/tinnus-napbus/auth-server) - Login with Urbit (server).
 
+[Autoprop](https://github.com/urbit/urbit/tree/develop/pkg/autoprop) - automatically build pills.
+
 [Citadel](https://github.com/ryjm/citadel) - desk management on Urbit.
 
 [Deskjam](https://github.com/tinnus-napbus/deskjam) - import and export desks.
@@ -35,6 +37,8 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [Manx Utils](https://github.com/tinnus-napbus/manx-utils) - tools for working with XML structures.
 
+[Mast](https://github.com/R-JG/mast) - a library for building fully dynamic Sail front-ends.
+
 [Paldev Suite](https://github.com/Fang-/suite) - apps and libraries by ~paldev including Rudder & Gossip.
 
 [Regex](https://github.com/lynko/re.hoon) - an implementation of POSIX extended regular expressions.
@@ -44,6 +48,8 @@ A collection of links to external tools, libraries, app repos, and documentation
 [Saloon](https://github.com/sigilante/saloon) - transcendental and algebraic functions in Hoon (WIP).
 
 [TomeDB](https://github.com/holium/tome-db) - distributed p2p database for Urbit.
+
+[Yard](https://github.com/urbit/yard) - helpful utilities for app development.
 
 ## JS Libraries
 

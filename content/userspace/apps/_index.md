@@ -20,13 +20,37 @@ contains a number of different [examples and
 exercises](/userspace/apps/examples) you can work through to learn how to build
 different kinds of apps.
 
+{% grid %}
+
+  {% iconcard
+    title="Reference"
+    description="Reference information about apps and software distribution."
+    href="/userspace/apps/reference"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Guides"
+    description="Guides to things like software distribution, CLI apps and remote scries."
+    href="/userspace/apps/guides"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Examples"
+    description="A workbook of app exercises and examples."
+    href="/userspace/apps/examples"
+    small=true
+  /%}
+
+{% /grid %}
+
 Additionally, the [courses](/courses) section of the docs contain two in-depth
 app-building tutorials, which are the recommended place to start learning Urbit
 app development:
 
 
 {% grid %}
-
 
   {% iconcard
     title="App School"

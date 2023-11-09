@@ -7,13 +7,6 @@ Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum
 blockchain, used as a platform for _Urbit identities_. You need such an identity
 to use the Arvo network.
 
-The primary way to interact with Azimuth is through
-[Bridge](https://github.com/urbit/bridge) and the node libraries that it
-depends on, [azimuth-js](https://github.com/urbit/azimuth-js) and
-[urbit-key-generation](https://github.com/urbit/urbit-key-generation). Take a
-look at the source and play around, or see [Getting
-Started](/manual/getting-started).
-
 ## Arvo vs. Azimuth
 
 Urbit is a project, not a single computer system. It has multiple components:
@@ -82,15 +75,68 @@ Azimuth consists of the following smart contracts:
 
 Walkthroughs of some of the smart contracts are linked to [below](#other).
 
+## General Azimuth Resources
+
+These documents pertain to L1 and other general aspects of Azimuth. For L2
+docs, [see below](#naive-rollups).
+
+{% grid %}
+
+  {% iconcard
+    title="HD Wallet"
+    description="Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a \"master ticket\"."
+    href="/system/identity/concepts/hd-wallet"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Data Flow"
+    description="Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2."
+    href="/system/identity/concepts/flow"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Azimuth.eth"
+    description="A description of the azimuth.eth smart contract, which is the data store for Azimuth."
+    href="/system/identity/reference/azimuth-eth"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Ecliptic.eth"
+    description="A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available."
+    href="/system/identity/reference/ecliptic"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Advanced Azimuth Tools"
+    description="Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself."
+    href="/system/identity/guides/advanced-azimuth-tools"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Life and Rift"
+    description="An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship."
+    href="/system/identity/concepts/life-and-rift"
+    small=true
+  /%}
+
+{% /grid %}
+
+
 ## Naive rollups
 
-In 2021, Tlon introduced a new system to Azimuth intended to reduce gas costs
-for working with Urbit ID and friction associated with using cryptocurrency in
-general called **naive rollups**, often referred to as **layer 2** or L2. This system
-allows batches of Azimuth transactions to be submitted together as a single
-transaction using an Urbit node known as a "roller". The PKI state transitions
-resulting from these transactions are computed locally by your urbit rather than
-by the [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/).
+In 2021, a new system was introduced to Azimuth called **naive rollups**, and
+often referred to as **layer 2** or L2. It was intended to reduce gas costs for
+working with Urbit ID and friction associated with using cryptocurrency in
+general. This system allows batches of Azimuth transactions to be submitted
+together as a single transaction using an Urbit node known as a "roller". The
+PKI state transitions resulting from these transactions are computed locally by
+your urbit rather than by the [Ethereum Virtual
+Machine](https://ethereum.org/en/developers/docs/evm/).
 
 Due to the dramatically reduced cost, Tlon offers their own roller that is free
 for ordinary public use. This enables new users to get started with a permanent
@@ -98,40 +144,50 @@ Azimuth identity without any prior knowledge of Ethereum, cryptocurrency, or
 blockchains. However, anybody can run a roller, and even using your own ship as
 a roller to submit single transactions results in significant savings.
 
-A casual overview of the naive rollups system can be found on the
-[blog](https://urbit.org/blog/rollups). Developers are encouraged to read our Layer 2
-documentation, starting with the [Layer 2 Overview](/system/identity/concepts/layer2).
+L2 operator and developer resources:
 
-## Other resources {% #other %}
+{% grid %}
 
-### [Urbit HD Wallet](/system/identity/concepts/hd-wallet)
+  {% iconcard
+    title="Layer 2 Overview"
+    description="An overview of how naive rollups work."
+    href="/system/identity/concepts/layer2"
+    small=true
+  /%}
 
-Azimuth has its own optional hierarchical deterministic wallet system, often
-referred to as a "master ticket".
+  {% iconcard
+    title="Custom Roller Tutorial"
+    description="A guide to running your own L2 roller locally."
+    href="/system/identity/guides/roller-tutorial"
+    small=true
+  /%}
 
-### [Data Flow](/system/identity/concepts/flow)
+  {% iconcard
+    title="Actions Reference"
+    description="Details of the L2 API's possible actions."
+    href="/system/identity/reference/l2-actions"
+    small=true
+  /%}
 
-Diagrams and explanations of how data flows between Bridge and the various
-components inside Urbit involved with Azimuth and L2.
+  {% iconcard
+    title="Transaction Format Reference"
+    description="Details of the bytestring format for L2 transactions and batches."
+    href="/system/identity/reference/bytestring"
+    small=true
+  /%}
 
-### [Azimuth.eth](/system/identity/reference/azimuth-eth)
+  {% iconcard
+    title="Rollers"
+    description="Overview of the L2 roller system."
+    href="/system/identity/reference/roller"
+    small=true
+  /%}
 
-A description of the `azimuth.eth` smart contract, which is the data store for
-Azimuth.
+  {% iconcard
+    title="Roller HTTP RPC-API"
+    description="A diagram summarizing the L2 API calls."
+    href="/system/identity/reference/roller"
+    small=true
+  /%}
 
-### [Ecliptic.eth](/system/identity/reference/ecliptic)
-
-A description of the `ecliptic.eth` smart contract, which is the business logic
-for `azimuth.eth`. This includes an overview of all function calls available.
-
-### [Advanced Azimuth Tools](/system/identity/guides/advanced-azimuth-tools)
-
-Expert-level tooling for generating, signing, and sending layer 1 Azimuth
-transactions from within Urbit itself.
-
-### [Life and Rift](/system/identity)
-
-An explanation of how Azimuth indexes networking keys revisions and breaches to
-keep track of the most recent set of networking keys necessary to communicate
-with a ship.
-
+{% /grid %}

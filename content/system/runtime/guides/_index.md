@@ -6,10 +6,21 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
-### [Using conn.c](/system/runtime/guides/conn)
+{% grid %}
 
-Using `conn.c` to interact with a running ship from the outside.
+  {% iconcard
+    title="Conn.c Guide"
+    description="Using `conn.c` to interact with a running ship from the outside."
+    href="/system/runtime/guides/conn"
+    small=true
+  /%}
 
-### [How to write a jet](/system/runtime/guides/jetting)
+  {% iconcard
+    title="How to Write a Jet"
+    description="A jetting guide by for new Urbit developers."
+    href="/system/runtime/guides/jetting"
+    small=true
+  /%}
 
-A jetting guide by for new Urbit developers.
+{% /grid %}
+

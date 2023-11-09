@@ -5,40 +5,82 @@ sort_by = "weight"
 insert_anchor_links = "right"
 +++
 
-The Urbit interpreter is built on a Nock runtime system written
-in C, `u3`.  This section is a relatively complete description.
+This section of the docs is about Urbit's Nock interpreter and runtime system
+**Vere**, which is written in C. This is of interest if you're planning to work
+on the Urbit interpreter, you're a language implementation geek, or you don't
+really understand anything until you've seen the actual structs.
 
-You should keep reading if (a) you're planning to work on the
-Urbit interpreter; (b) you're a language implementation geek; or
-(c) you don't really understand anything until you've seen the
-actual structs.
+### Developer Docs
 
-## u3: Noun processing in C
+{% grid %}
 
-`u3` is the C library that makes Urbit work.  If it wasn't called
-`u3`, it might be called `libnoun` - it's a library for making
-and storing nouns.
+  {% iconcard
+    title="U3 Overview"
+    description="An overview of the noun-wrangling part of the runtime, U3."
+    href="/system/runtime/concepts/u3"
+    small=true
+  /%}
 
-What's a noun?  A noun is either a cell or an atom.  A cell is an
-ordered pair of any two nouns.  An atom is an unsigned integer of
-any size.
+  {% iconcard
+    title="Conn.c Guide"
+    description="Using `conn.c` to interact with a running ship from the outside."
+    href="/system/runtime/guides/conn"
+    small=true
+  /%}
 
-To the C programmer, this is not a terribly complicated data
-structure, so why do you need a library for it?
+  {% iconcard
+    title="How to Write a Jet"
+    description="A jetting guide by for new Urbit developers."
+    href="/system/runtime/guides/jetting"
+    small=true
+  /%}
 
-One: nouns have a well-defined computation kernel, Nock, whose
-spec fits on a page and gzips to 340 bytes.  But the only
-arithmetic operation in Nock is increment.  So it's nontrivial
-to compute both efficiently and correctly.
+  {% iconcard
+    title="C3: C in Urbit"
+    description="Under u3 is the simple c3 layer, which is just how we write C in Urbit."
+    href="/system/runtime/reference/c"
+    small=true
+  /%}
 
-Two: `u3` is designed to be a "solid-state interpreter," ie, a
-single-level store which is transparently snapshotted.  This
-implies a specialized memory-management model, etc, etc.
+  {% iconcard
+    title="U3: Lang of Nouns"
+    description="The division between c3 and u3 is that you could theoretically imagine using c3 as just a generic C environment. Anything to do with nouns is in u3."
+    href="/system/runtime/reference/nouns"
+    small=true
+  /%}
 
-(Does `u3` depend on the higher levels of Urbit, Arvo and Hoon?
-Yes and no.  `u3` expects you to load something shaped like an
-Arvo kernel, and use it as an event-processing function.  But you
-don't need to use this feature if you don't want, and your kernel
-doesn't have to be Arvo proper - just Arvo-compatible.  Think of
-`u3` as the BIOS and Arvo as the boot kernel.  And there are no
-dependencies at all between Hoon the language and `u3`.)
+  {% iconcard
+    title="U3: API Overview"
+    description="A walkthrough of each of the u3 modules."
+    href="/system/runtime/reference/api"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Cryptography"
+    description="References on the cryptography libraries utilized by jets."
+    href="/system/runtime/reference/cryptography"
+    small=true
+  /%}
+
+{% /grid %}
+
+### Additional Resources
+
+{% grid %}
+
+  {% iconcard
+    title="User Reference"
+    description="Reference for the utilities and options the runtime takes from the terminal."
+    href="/manual/running/vere"
+    small=true
+  /%}
+
+  {% iconcard
+    title="The Vere Repo"
+    description="Github repository for the runtime."
+    href="https://github.com/urbit/vere"
+    small=true
+  /%}
+
+{% /grid %}

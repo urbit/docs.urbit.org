@@ -6,32 +6,35 @@ insert_anchor_links = "right"
 auto_expand = true
 +++
 
-The Nock runtime system, written in C.
+{% grid %}
 
-Keep reading if you're planning to work on the Urbit interpreter, you're a
-language implementation geek, or you don't really understand anything until
-you've seen the actual structs.
+  {% iconcard
+    title="C3: C in Urbit"
+    description="Under u3 is the simple c3 layer, which is just how we write C in Urbit."
+    href="/system/runtime/reference/c"
+    small=true
+  /%}
 
-## [C runtime system](/system/runtime)
+  {% iconcard
+    title="U3: Lang of Nouns"
+    description="The division between c3 and u3 is that you could theoretically imagine using c3 as just a generic C environment. Anything to do with nouns is in u3."
+    href="/system/runtime/reference/nouns"
+    small=true
+  /%}
 
-The Urbit interpreter is built on a Nock runtime system written
-in C, `u3`. This section is a relatively complete description.
+  {% iconcard
+    title="U3: API Overview"
+    description="A walkthrough of each of the u3 modules."
+    href="/system/runtime/reference/api"
+    small=true
+  /%}
 
-## [c3: C in Urbit](/system/runtime/reference/c)
+  {% iconcard
+    title="Cryptography"
+    description="References on the cryptography libraries utilized by jets."
+    href="/system/runtime/reference/cryptography"
+    small=true
+  /%}
 
-Under `u3` is the simple `c3` layer, which is just how we write C
-in Urbit.
+{% /grid %}
 
-## [u3: Land of nouns](/system/runtime/reference/nouns)
-
-The division between `c3` and `u3` is that you could theoretically
-imagine using `c3` as just a generic C environment. Anything to do
-with nouns is in `u3`.
-
-## [u3: API overview by prefix](/system/runtime/reference/api)
-
-A walkthrough of each of the `u3` modules.
-
-## [Cryptography](/system/runtime/reference/cryptography)
-
-References on the cryptography libraries utilized by jets.

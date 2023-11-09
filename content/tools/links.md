@@ -65,8 +65,16 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [TomeDB](https://github.com/holium/tome-db) - distributed p2p database for Urbit.
 
+## Other Languages
+
+[go-urbit](https://github.com/stephenlacy/go-urbit/) - Golang Urbit interface over Ames.
+
+[pynoun](https://github.com/urbit/tools) - jam and cue nouns into Python data types.
+
 ## Other Tools
 
 [Bridge](https://github.com/urbit/bridge) - an application for interacting with Azimuth.
+
+[Click](https://github.com/urbit/tools) - bash thin client that runs threads.
 
 [GroundSeg](https://github.com/Native-Planet/GroundSeg) - a tool for managing Urbit instances.

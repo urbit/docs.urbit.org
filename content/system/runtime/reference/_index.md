@@ -16,7 +16,7 @@ auto_expand = true
   /%}
 
   {% iconcard
-    title="U3: Lang of Nouns"
+    title="U3: Land of Nouns"
     description="The division between c3 and u3 is that you could theoretically imagine using c3 as just a generic C environment. Anything to do with nouns is in u3."
     href="/system/runtime/reference/nouns"
     small=true

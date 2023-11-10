@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "npm run prebuild && next dev",
-    "prebuild": "npm run cache-posts && npm run glossary && npm run language && npm run userspace && npm run system && npm run tools && npm run courses && npm run manual && npm run glossary",
-    "cache-posts": "node src/lib/cache.js",
+    "prebuild": "npm run tooltip && npm run glossary && npm run language && npm run userspace && npm run system && npm run tools && npm run courses && npm run manual && npm run glossary",
+    "tooltip": "node src/lib/tooltip.js",
     "glossary": "node src/lib/buildPageTree glossary weight",
     "language": "node src/lib/buildPageTree language weight",
     "userspace": "node src/lib/buildPageTree userspace weight",

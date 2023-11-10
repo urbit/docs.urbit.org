@@ -34,17 +34,15 @@ export default function Content({
         <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </MenuTray>
       <Sidebar className="hidden lg:flex" left>
-        <ContentNav
-          posts={posts}
-          root={root}
-          firstCrumb={firstCrumb}
-        />
+        <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </Sidebar>
       <div className="flex flex-col flex-1 min-w-0 px-5">
         <Header className="lg:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
-        <h1 className="font-medium text-5xl text-white mt-3 mb-10">{data.title}</h1>
+        <h1 className="font-medium text-5xl text-white mt-3 mb-10">
+          {data.title}
+        </h1>
         <div className="markdown technical">
           <Markdown.render content={md} />
         </div>

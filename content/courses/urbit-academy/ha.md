@@ -1,41 +1,16 @@
 +++
 title = "Hoon Academy"
 weight = 100
-next_cohort = "March 20, 2023"
+next_cohort = "November 18, 2023"
 image = "https://media.urbit.org/developers/images/hoon-school-live.svg"
-description = "Hoon Academy teaches the fundamentals of Hoon with a hands-on instructor, regular exercises and discussions, and a completion certification."
+description = "Hoon Academy is our flagship live course and introduction to Urbit development."
 +++
 
-Periodically, the Urbit Foundation has offered synchronous cohort classes which
-cover the [Hoon Academy](/courses/hoon-school) curriculum.
+Hoon Academy is the live, cohort based Hoon course offered by the Urbit Foundation. With a hands-on instructor, exercises and feedback, office hours and discussions, Hoon Academy will be the best way for most to get started as an Urbit developer.
 
-If you prefer to learn as part of a group with a hands-on instructor, regular
-exercises and discussions, and a completion certification, then Hoon Academy
-will be a good fit for you.  We seek to offer it a few times a year.
+The course is offered a few times per year, with the next cohort starting November 18th, 2023. The syllabus for the course [is available here](https://docs.google.com/document/d/1LQL4B59B0uK75KFSErb-BFJ8pbhVxyoyA1tRiv4RBlc/edit?usp=sharing).
 
-By completing Hoon Academy as a cohort student, you should be able to read and
-interpret most nonspecialist Hoon code, produce useful standalone code, and
-explain subject-oriented programming.  We omit some of the written Hoon Academy
-content for time, but you should be well-equipped to understand the optional
-lessons.
+If you wish to sign up for the course, [do so here](https://airtable.com/appr051v1PWk2x1QF/shrqzaLRLzDsHDnCX).
 
-Hoon Academy cohorts are offered regularly throughout the year.  The next cohort
-will begin after [Assembly](https://assembly.urbit.org) in early November 2023.
-
-- [Complete this form](https://forms.gle/kgiPckuHaVtJng9r5) to get on our
-  mailing list about the next opportunity.
-
-Until then, feel free to work through the [Hoon Academy
-docs](/courses/hoon-school).
-
-
-###  What will you learn?
-
--   `hsl0`. 🌺 Hoon Syntax
--   `hsl1`. 🌿 Hoon Conventions
--   `hsl2`. 🌵 Text & Lists
--   `hsl3`. 🌳 Loops & Addresses
--   `hsl4`. 🌻 The Subject
--   `hsl5`. 🍁 Molds & Doors
--   `hsl6`. 🌹 The Standard Library
--   `hsl7`. 🌲 Managing State
+Hoon Academy graduates will be well-positioned to read and
+interpret Hoon code, produce useful standalone code of their own, and start exploring the Urbit system for app development or core development.

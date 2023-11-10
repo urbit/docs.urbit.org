@@ -10,7 +10,7 @@ Hoon Academy is the live, cohort based Hoon course offered by the Urbit Foundati
 
 The course is offered a few times per year, with the next cohort starting November 18th, 2023. 
 
-The November syllabus[is available here](https://docs.google.com/document/d/1LQL4B59B0uK75KFSErb-BFJ8pbhVxyoyA1tRiv4RBlc/edit?usp=sharing).
+The November syllabus [is available here](https://docs.google.com/document/d/1LQL4B59B0uK75KFSErb-BFJ8pbhVxyoyA1tRiv4RBlc/edit?usp=sharing).
 
 [Sign up for the course here](https://airtable.com/appr051v1PWk2x1QF/shrqzaLRLzDsHDnCX).
 

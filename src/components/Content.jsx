@@ -14,6 +14,7 @@ import {
   capitalize,
 } from "@urbit/fdn-design-system";
 import markdocVariables from "../lib/markdocVariables";
+import { index as tooltipData } from "../../cache/tooltip.js";
 
 export default function Content({
   posts,
@@ -44,7 +45,7 @@ export default function Content({
           {data.title}
         </h1>
         <div className="markdown technical">
-          <Markdown.render content={md} />
+          <Markdown.render content={md} tooltipData={tooltipData} />
         </div>
       </div>
       <Sidebar className="hidden xl:flex" right>

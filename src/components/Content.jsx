@@ -41,9 +41,7 @@ export default function Content({
         <Header className="lg:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
-        <h1 className="font-medium text-5xl text-white mt-3 mb-10">
-          {data.title}
-        </h1>
+        <h1 className="font-medium text-5xl mt-3 mb-10">{data.title}</h1>
         <div className="markdown technical">
           <Markdown.render content={md} tooltipData={tooltipData} />
         </div>
@@ -60,7 +58,10 @@ export default function Content({
 
 export const breadcrumbs = (posts, paths, root) => {
   const results = [
-    <Link className={paths.length > 0 ? "text-brite" : ""} href={`/${root}`}>
+    <Link
+      className={paths.length > 0 ? "text-gray dark:text-brite" : "text-black dark:text-lite"}
+      href={`/${root}`}
+    >
       {capitalize(root)}
     </Link>,
   ];
@@ -70,9 +71,13 @@ export const breadcrumbs = (posts, paths, root) => {
     posts = posts.children[path];
     thisLink = join(thisLink, path);
     results.push(
-      <span>/</span>,
+      <span className="text-gray dark:text-brite">/</span>,
       <Link
-        className={i + 1 < paths.length ? "text-brite" : ""}
+        className={
+          i + 1 < paths.length
+            ? "text-gray dark:text-brite"
+            : "text-black dark:text-lite"
+        }
         href={thisLink}
       >
         {posts?.title || page?.title}

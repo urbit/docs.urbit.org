@@ -20,6 +20,7 @@
   "dependencies": {
     "@docsearch/js": "^3.5.2",
     "@iarna/toml": "^2.2.5",
+    "@socialgouv/matomo-next": "^1.8.0",
     "@urbit/fdn-design-system": "github:urbit/fnd-design-system",
     "@urbit/markdoc": "^0.1.6",
     "autoprefixer": "10.4.15",

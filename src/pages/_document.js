@@ -6,11 +6,16 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="preconnect" href="https://X99UXGCKE0-dsn.algolia.net" crossorigin />
+        <link
+          rel="preconnect"
+          href="https://X99UXGCKE0-dsn.algolia.net"
+          crossorigin
+        />
       </Head>
       <body>
         <Main />
         <NextScript />
+        <Script strategy="beforeInteractive" src="/script/theme.js" />
         <Script
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
@@ -33,18 +38,6 @@ export default function Document() {
               startup: {
                 typeset: false,
                 ready: () => {
-                  // setting data-theme so that @docsearch/react understands
-                  // whether it should be in dark mode or not
-                  if (window.matchMedia) {
-                    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                      document.querySelector("html").setAttribute("data-theme", "dark");
-                    }
-                  }
-                  // force docsearch dark-theme for now
-                  // delete this once light-mode is implemented
-                  // TODO: light-mode
-                  document.querySelector("html").setAttribute("data-theme", "dark");
-
                   MathJax.startup.defaultReady();
                   window.__MathJax_State__.isReady = true;
                   resolve();

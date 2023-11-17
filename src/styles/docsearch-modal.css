@@ -330,7 +330,7 @@
   background-color: var(--docsearch-highlight-color);
 }
 
-.DocSearch-Hit[aria-selected='true'] mark {
+.DocSearch-Hit mark {
   text-decoration: underline;
 }
 
@@ -439,7 +439,7 @@ svg.DocSearch-Hit-Select-Icon {
 
 .DocSearch-Hit[aria-selected='true'] .DocSearch-Hit-title,
 .DocSearch-Hit[aria-selected='true'] mark {
-  color: var(--docsearch-muted-color) !important;
+  color: var(--docsearch-modal-background) !important;
 }
 
 .DocSearch-Hit[aria-selected='true'] .DocSearch-Hit-text,

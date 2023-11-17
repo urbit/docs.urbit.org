@@ -7,8 +7,19 @@
 @import "./docsearch-modal";
 
 :root {
-  /* Apply color scheme BLU */
-  @apply blu;
+  @apply bg-black text-lite;
+  --black: #F7FFFF;
+  --white: #14141E;
+  --gray: #A0DCE6;
+  --tint: #D1DEDF;
+  --lite: #383840;
+  --brite: #5A5A6E;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @apply blu;
+  }
 }
 
 .markdown h1,

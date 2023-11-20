@@ -27,7 +27,7 @@ export default function Home({ search }) {
             <Sidebar className="hidden lg:flex" left />
             <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-5">
               <h1 className="h1 mt-3 mb-24">Docs</h1>
-              <p className="body-lg mb-20">
+              <p className="text-4xl mb-20">
                 Welcome to the Urbit docs. This site contains guides, tutorials
                 and reference documentation for all aspects of Urbit development
                 including the Hoon language, the Arvo kernel, the runtime Vere,
@@ -36,7 +36,7 @@ export default function Home({ search }) {
               </p>
               <Section className="mb-20" divider>
                 <h2 className="h2 mb-20">Courses</h2>
-                <p className="body-md mb-8">
+                <p className="text-2xl mb-8">
                   There are both regular live tutored courses and in-depth
                   tutorials to teach you the Hoon language, Urbit app
                   development, and other aspects of the system. If you want to
@@ -60,7 +60,7 @@ export default function Home({ search }) {
               </Section>
               <Section className="mb-20" divider>
                 <h2 className="h2 mb-20">Developer Docs</h2>
-                <p className="body-md mb-8">
+                <p className="text-2xl mb-8">
                   The developer documentation contains a wealth of guides,
                   examples and reference material about all layers of Urbit,
                   from the Hoon Language to the kernel and runtime. These are
@@ -97,9 +97,9 @@ export default function Home({ search }) {
                   />
                 </FatBlock>
               </Section>
-              <Section className="mb-4" divider>
+              <Section className="mb-20" divider>
                 <h2 className="h2 mb-20">User Docs</h2>
-                <p className="body-md mb-8">
+                <p className="text-2xl mb-8">
                   If you want to get a planet, find a hosting provider, set up a
                   server or learn how to use the Dojo, the manual is the place
                   to go.
@@ -123,9 +123,9 @@ export default function Home({ search }) {
                   />
                 </FatBlock>
               </Section>
-              <Section className="mb-4" divider>
+              <Section className="!mb-0" divider>
                 <h2 className="h2 mb-20">Videos</h2>
-                <p className="body-md mb-8">
+                <p className="text-2xl mb-8">
                   We have two Youtube channels: @urbit_ and @urbiteducation.
                   The former contains general Urbit-related content including a number of
                   developer streams. The latter contains educational material including Urbit

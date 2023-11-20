@@ -1,5 +1,5 @@
 .DocSearch-Button {
-  @apply type-ui space-x-2 border-gray dark:border-brite text-gray dark:text-brite;
+  @apply type-ui space-x-2 border-brite text-brite;
   height: 100%;
   width: 100%;
   padding: 0.5rem;
@@ -17,7 +17,7 @@
 .DocSearch-Button:hover,
 .DocSearch-Button:active,
 .DocSearch-Button:focus {
-  @apply border-black dark:border-lite text-black dark:text-lite;
+  @apply border-lite text-lite;
 }
 
 .DocSearch-Button .DocSearch-Search-Icon {

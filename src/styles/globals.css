@@ -7,13 +7,7 @@
 @import "./docsearch-modal";
 
 :root {
-  @apply bg-black text-lite;
-  --black: #F7FFFF;
-  --white: #14141E;
-  --gray: #9ACCD4;
-  --tint: #D1DEDF;
-  --lite: #383840;
-  --brite: #5A5A6E;
+  @apply blu-light;
 }
 
 @media (prefers-color-scheme: dark) {

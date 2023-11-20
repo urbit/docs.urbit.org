@@ -59,7 +59,7 @@ export default function Content({
 export const breadcrumbs = (posts, paths, root) => {
   const results = [
     <Link
-      className={paths.length > 0 ? "text-gray dark:text-brite" : "text-black dark:text-lite"}
+      className={paths.length > 0 ? "text-brite" : "text-lite"}
       href={`/${root}`}
     >
       {capitalize(root)}
@@ -71,12 +71,12 @@ export const breadcrumbs = (posts, paths, root) => {
     posts = posts.children[path];
     thisLink = join(thisLink, path);
     results.push(
-      <span className="text-gray dark:text-brite">/</span>,
+      <span className="text-brite">/</span>,
       <Link
         className={
           i + 1 < paths.length
-            ? "text-gray dark:text-brite"
-            : "text-black dark:text-lite"
+            ? "text-brite"
+            : "text-lite"
         }
         href={thisLink}
       >

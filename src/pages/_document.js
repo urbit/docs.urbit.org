@@ -15,7 +15,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script strategy="beforeInteractive" src="/script/theme.js" />
         <Script strategy="beforeInteractive" src="/script/math.js" />
         <Script
           strategy="beforeInteractive"

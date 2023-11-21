@@ -36,7 +36,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 The actual production Nock interpreter. Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
 in the [runtime system documentation](/system/runtime).
-```
+```c
 /* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */
 static u3_noun
@@ -284,7 +284,7 @@ _n_nock_on(u3_noun bus, u3_noun fol)
 
 From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock/core.clj):
 
-```
+```clojure
 (ns anock.core
   (:import anock.NockException))
 
@@ -403,7 +403,7 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
 
 From [Julien Beasley](https://github.com/zass30/Nock5KCSharp):
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -875,7 +875,7 @@ namespace NockInterpreter
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/gnock/blob/master/gnock.groovy):
 
-```
+```groovy
 @Memoized
 def i(def a) {
   a.class in [
@@ -1075,7 +1075,7 @@ def tar(def a, def r) {
 
 From [Steve Dee](https://github.com/mrdomino/hsnock/blob/master/Language/Nock5K/Spec.hs):
 
-```
+```haskell
 module Language.Nock5K.Spec where
 import Control.Monad.Instances
 
@@ -1540,7 +1540,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
 From [James Tauber](https://github.com/jtauber/pynock/blob/master/nock.py):
 
-```py
+```python
 #!/usr/bin/env python3
 
 # []

@@ -7,12 +7,12 @@
 @import "./docsearch-modal";
 
 :root {
-  @apply blu-light;
+  @apply blu-light prism-light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    @apply blu;
+    @apply blu prism-dark;
   }
 }
 

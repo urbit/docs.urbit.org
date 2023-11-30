@@ -16,6 +16,14 @@
   }
 }
 
+:root[theme='light'] {
+  @apply blu-light prism-light;
+}
+
+:root[theme='dark'] {
+  @apply blu prism-dark;
+}
+
 .markdown h1,
 .markdown h2,
 .markdown h3 {

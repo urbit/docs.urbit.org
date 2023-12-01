@@ -1,7 +1,6 @@
 .DocSearch-Button {
-  @apply type-ui space-x-2 border-brite text-brite;
+  @apply flex-1 type-ui space-x-2 border-brite text-brite;
   height: 100%;
-  width: 100%;
   padding: 0.5rem;
   border-radius: 1.2rem;
   border-width: 0.1rem;

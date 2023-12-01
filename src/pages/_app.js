@@ -12,48 +12,7 @@ export default function App({ Component, pageProps }) {
       url: MATOMO_URL,
       siteId: MATOMO_SITE_ID,
     });
-
-    if (respectSystemPreference()) {
-      localStorage.removeItem("theme");
-      document.querySelector(":root").removeAttribute("theme");
-    } else {
-      if (hasSetDark()) {
-        document.querySelector(":root").setAttribute("theme", "dark");
-      } else {
-        document.querySelector(":root").setAttribute("theme", "light");
-      }
-    }
   });
-
-  const prefersDark = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  const hasSetDark = () => {
-    const theme = localStorage.getItem("theme");
-    return !!theme && theme === "dark";
-  };
-
-  const respectSystemPreference = () => !localStorage.getItem("theme");
-
-  const cycleTheme = () => {
-    if ((respectSystemPreference() && prefersDark()) || hasSetDark()) {
-      if (prefersDark()) {
-        localStorage.setItem("theme", "light");
-        document.querySelector(":root").setAttribute("theme", "light");
-      } else {
-        localStorage.removeItem("theme");
-        document.querySelector(":root").removeAttribute("theme");
-      }
-    } else {
-      if (!prefersDark()) {
-        localStorage.setItem("theme", "dark");
-        document.querySelector(":root").setAttribute("theme", "dark");
-      } else {
-        localStorage.removeItem("theme");
-        document.querySelector(":root").removeAttribute("theme");
-      }
-    }
-  };
 
   return (
     <>

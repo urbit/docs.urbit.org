@@ -90,6 +90,8 @@ export default function IntraNav({ search }) {
     setDarkMode(!darkMode);
   };
 
+  const iconUrl = darkMode ? "/images/lightmode.svg" : "/images/darkmode.svg";
+
   return (
     <IntraNavFDS
       ourSite={ourSite}
@@ -109,14 +111,22 @@ export default function IntraNav({ search }) {
           >
             <button
               className={classnames(
-                "aspect-square h-6 md:h-8 mx-0.5 rounded-full bg-gray",
+                "flex items-center aspect-square h-6 md:h-8 mx-0.5 rounded-full bg-gray",
                 {
                   "mr-auto": darkMode,
                   "ml-auto": !darkMode,
                 }
               )}
               onClick={cycleTheme}
-            />
+            >
+              <div
+                className={"inline-block aspect-square w-3/4 m-auto bg-brite"}
+                style={{
+                  "-webkit-mask-image": `url(${iconUrl})`,
+                  "mask-image": `url(${iconUrl})`,
+                }}
+              />
+            </button>
           </div>
         </div>
       }

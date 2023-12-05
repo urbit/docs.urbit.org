@@ -106,12 +106,12 @@ export default function IntraNav({ search }) {
           />
           <div
             className={
-              "hidden xs:flex items-center h-full w-12 md:w-14 rounded-full bg-brite"
+              "hidden xs:flex items-center h-full w-12 md:w-14 rounded-full bg-gray"
             }
           >
             <button
               className={classnames(
-                "flex items-center aspect-square h-6 md:h-8 mx-0.5 rounded-full bg-gray",
+                "flex items-center aspect-square h-6 md:h-8 mx-1 rounded-full bg-brite",
                 {
                   "mr-auto": darkMode,
                   "ml-auto": !darkMode,
@@ -120,7 +120,7 @@ export default function IntraNav({ search }) {
               onClick={cycleTheme}
             >
               <div
-                className={"inline-block aspect-square w-3/4 m-auto bg-brite"}
+                className={"inline-block aspect-square w-3/4 m-auto bg-gray"}
                 style={{
                   "-webkit-mask-image": `url(${iconUrl})`,
                   "mask-image": `url(${iconUrl})`,

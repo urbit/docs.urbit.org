@@ -41,7 +41,7 @@ export default function Content({
         <Header className="lg:hidden">
           {breadcrumbs(posts, params.slug || [], root)}
         </Header>
-        <h1 className="h1 mt-3 !mb-4 md:!mb-8">{data.title}</h1>
+        <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">{data.title}</h1>
         <div className="markdown technical">
           <Markdown.render content={md} tooltipData={tooltipData} />
         </div>

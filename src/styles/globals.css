@@ -24,14 +24,6 @@
   @apply blu prism-dark;
 }
 
-h1:not(.markdown h1) {
-  @apply mb-8 md:mb-12;
-}
-
-h2:not(.markdown h2) {
-  @apply mb-6 md:mb-10;
-}
-
 .markdown h1,
 .markdown h2,
 .markdown h3 {

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { join } from "path";
+import classnames from "classnames";
 import {
-  Header,
   Sidebar,
-  MenuTray,
   ContentNav,
   FragmentNav,
   Markdown,
@@ -15,6 +14,57 @@ import {
 } from "@urbit/fdn-design-system";
 import markdocVariables from "../lib/markdocVariables";
 import { index as tooltipData } from "../../cache/tooltip.js";
+
+function MobileNav({ children, nav }) {
+  const [isOpen, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+    return () => (document.body.style.overflow = "visible");
+  }, [isOpen]);
+
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickListener);
+    return () => {
+      document.removeEventListener("mousedown", handleClickListener);
+    };
+  }, []);
+
+  const handleClickListener = (event) => {
+    if (ref && ref.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <div className="flex flex-col h-12 md:h-16 w-full lg:hidden" ref={ref}>
+      <div className="flex flex-1 w-full justify-between items-center whitespace-nowrap type-ui">
+        <div className="flex h-full w-full items-center space-x-1.5 overflow-x-auto">
+          {children}
+        </div>
+        <button
+          className={classnames("h-full px-5 -mr-5 text-brite", { "rotate-45": isOpen })}
+          onClick={() => setOpen(!isOpen)}
+        >
+          ＋
+        </button>
+      </div>
+      <hr className="border-gray border-t-2 rounded-xl" />
+      {isOpen && (
+        <div className="absolute bg-black top-24 md:top-32 bottom-0 w-full pt-3.5 -ml-5 overflow-y-auto z-30 layout-pl">
+          {nav}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Content({
   posts,
@@ -31,17 +81,25 @@ export default function Content({
 
   return (
     <div className="flex h-full w-full">
-      <MenuTray className="flex lg:hidden">
-        <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
-      </MenuTray>
       <Sidebar className="hidden lg:flex" left>
         <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </Sidebar>
       <div className="flex flex-col flex-1 min-w-0 px-5">
-        <Header className="lg:hidden">
+        <MobileNav
+          nav={
+            <ContentNav
+              posts={posts}
+              root={root}
+              firstCrumb={firstCrumb}
+              mobile
+            />
+          }
+        >
           {breadcrumbs(posts, params.slug || [], root)}
-        </Header>
-        <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">{data.title}</h1>
+        </MobileNav>
+        <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">
+          {data.title}
+        </h1>
         <div className="markdown technical">
           <Markdown.render content={md} tooltipData={tooltipData} />
         </div>
@@ -73,11 +131,7 @@ export const breadcrumbs = (posts, paths, root) => {
     results.push(
       <span className="text-brite">/</span>,
       <Link
-        className={
-          i + 1 < paths.length
-            ? "text-brite"
-            : "text-lite"
-        }
+        className={i + 1 < paths.length ? "text-brite" : "text-lite"}
         href={thisLink}
       >
         {posts?.title || page?.title}

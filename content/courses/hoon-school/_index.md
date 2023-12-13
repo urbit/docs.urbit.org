@@ -31,9 +31,10 @@ The short version is that Hoon uses Urbit's provisions and protocols to
 enable very fast application development with shared primitives,
 sensible affordances, and straightforward distribution.
 
-Urbit consists of an identity protocol (“Azimuth”, or “Urbit ID”) and a
-system protocol (“Arvo”, or “Urbit OS”).  These two parts work
-hand-in-hand to build your hundred-year computer.
+Urbit consists of an identity protocol ({% tooltip label="\"Azimuth\""
+href="/glossary/azimuth" /%}, or “Urbit ID”) and a system protocol ({%
+tooltip label="\"Arvo\"" href="/glossary/arvo" /%}, or “Urbit OS”).
+These two parts work hand-in-hand to build your hundred-year computer.
 
 1. **Urbit ID (Azimuth)** is a general-purpose public-key infrastructure
    (PKI) on the Ethereum blockchain, used as a platform for Urbit
@@ -112,9 +113,10 @@ http: live (insecure, loopback) on 12321
 ```
 
 You just used a function from the Hoon standard library, `add`, which
-for reasons that will become clear later is frequently written
-[`++add`](/language/hoon/reference/stdlib/1a#add).  Next, quit Urbit by
-entering `|exit`:
+for reasons that will become clear later is frequently written {%
+tooltip label="++add" href="/language/hoon/reference/stdlib/1a#add" /%}.
+Next, quit Urbit by entering {% tooltip label="|exit"
+href="/manual/os/dojo-tools#exit" /%} :
 
 ```hoon {% copy=true %}
 > %-  add  [2 2]
@@ -146,7 +148,8 @@ You'll see:
 ```
 
 You asked Dojo to evaluate `17` and it echoed the number back at you.
-This value is a _noun_.  We'll talk more about nouns in the next lesson.
+This value is a {% tooltip label="noun" href="/glossary/noun" /%}. We'll
+talk more about nouns in the next lesson.
 
 Basically, every Hoon expression operates on the values it is given
 until it reduces to some form that can't evaluate any farther.  This is
@@ -159,17 +162,19 @@ One more:
 [1 2]
 ```
 
-This `:-` rune takes two values and composes them into a _cell_, a pair of values.
+This `:-` rune takes two values and composes them into a {% tooltip
+label="cell" href="/glossary/cell" /%}, a pair of values.
 
 
 ##  Pronouncing Hoon
 
-Hoon uses _runes_, or two-character ASCII symbols, to describe its
-structure.  (These are analogous to keywords in other programming
-languages.)  Because there has not really been a standard way of
-pronouncing, say, `#` (hash, pound, number, sharp, hatch) or `!`
-(exclamation point, bang, shriek, pling), the authors of Urbit decided
-to adopt a one-syllable mnemonic to uniquely refer to each.
+Hoon uses {% tooltip label="runes" href="/glossary/rune" /%}, or
+two-character ASCII symbols, to describe its structure.  (These are
+analogous to keywords in other programming languages.)  Because there
+has not really been a standard way of pronouncing, say, `#` (hash,
+pound, number, sharp, hatch) or `!` (exclamation point, bang, shriek,
+pling), the authors of Urbit decided to adopt a one-syllable mnemonic to
+uniquely refer to each.
 
 It is highly advisable for you to learn these pronunciations, as the
 documentation and other developers employ them frequently.  For

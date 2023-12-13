@@ -49,8 +49,8 @@ href="/glossary/core" /%} require you to refer to it by name:
 ```
 
 Since `/` fas runes don't work in the Dojo, you need to instead use the
-{% tooltip label="-build-file" href="/manual/os/dojo-tools#-build-file"
-/%} thread to load the code.  Most commonly, you will do this with
+{% tooltip label="-build-file" href="/manual/os/dojo-tools#-build-file" /%} thread
+to load the code. Most commonly, you will do this with
 library code when you need a particular {% tooltip label="gate's"
 href="/glossary/gate" /%} functionality for interactive coding.
 

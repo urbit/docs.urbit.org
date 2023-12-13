@@ -46,9 +46,8 @@ higher-addressed points.
   for the owning planet, but are currently only rarely used. Each planet
   has 2³² moons available to it.
 - **Comets** are zero-reputation instances, in principle spammers or
-  bots.  Comets require a star {% tooltip label="sponsor"
-  href="/glossary/sponsor" /%} to access the network, but once online
-  they are persistent.  They are also free to spin up.
+  bots.  Comets require a star sponsor to access the network, but once
+  online they are persistent.  They are also free to spin up.
 
 In total there are 2¹²⁸ addressable points, of which the vast majority
 are available as unclaimed “comet space.”
@@ -281,3 +280,4 @@ The first moon of ~sampel-palnet is:
 
 - What is the first planet of the star ~sampel?  (Check the above text
   to determine the offset.)
+

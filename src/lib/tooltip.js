@@ -58,6 +58,9 @@ function buildSearchIndex(dir, titleSlug = []) {
       page.name.replace(/.md$/, "")
     );
 
+    if (!indexData) {
+      return;
+    }
     let currentSection = {
       title: pageData.title,
       slug,

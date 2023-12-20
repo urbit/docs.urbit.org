@@ -3,13 +3,13 @@ import Head from "next/head";
 import {
   Container,
   Main,
-  Sidebar,
   FatBlock,
   ConceptCard,
   ContentCard,
   IconCard,
 } from "@urbit/fdn-design-system";
 import IntraNav from "../components/IntraNav";
+import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 
 export default function Home({ search }) {

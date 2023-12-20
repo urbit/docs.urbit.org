@@ -3,7 +3,6 @@ import Link from "next/link";
 import { join } from "path";
 import classnames from "classnames";
 import {
-  Sidebar,
   ContentNav,
   FragmentNav,
   Markdown,
@@ -12,6 +11,7 @@ import {
   getNextPost,
   capitalize,
 } from "@urbit/fdn-design-system";
+import Sidebar from "./Sidebar";
 import markdocVariables from "../lib/markdocVariables";
 import { index as tooltipData } from "../../cache/tooltip.js";
 

@@ -29,3 +29,17 @@
 .markdown h3 {
   @apply scroll-mt-16 md:scroll-mt-20;
 }
+
+.h-content {
+  height: calc(100vh - 3rem - 3rem);
+  @screen md {
+    height: calc(100vh - 4rem - 4rem);
+  }
+  @screen lg {
+    height: calc(100vh - 4rem);
+  }
+}
+
+.sidebar {
+  @apply sidebar-with-margin h-content type-ui;
+}

@@ -69,14 +69,15 @@ function buildSearchIndex(dir, titleSlug = []) {
     let currentContent = [];
 
     transform.children.forEach((c, i) => {
-      if (currentSection && c.name === "p") {
+      if (
+        (currentSection && c.name === "p") ||
+        (currentSection && c.name === "ul") ||
+        (currentSection && c.name === "ol") ||
+        (currentSection && c.name === "pre") ||
+        (currentSection && c.name === "table") ||
+        (currentSection && c.name === "blockquote")
+      ) {
         currentContent.push(c);
-        if (currentContent.length === 2) {
-          currentSection.content = markdoc.renderers.html(currentContent);
-          index[currentSection.slug] = currentSection;
-          currentSection = null;
-          currentContent = null;
-        }
       } else if (c.name === "h1" || c.name === "h2" || c.name === "h3") {
         if (currentContent) {
           currentSection.content = markdoc.renderers.html(currentContent);
@@ -98,6 +99,10 @@ function buildSearchIndex(dir, titleSlug = []) {
         currentContent = null;
       }
     });
+    if (currentSection && !index[currentSection.slug]) {
+      currentSection.content = markdoc.renderers.html(currentContent);
+      index[currentSection.slug] = currentSection;
+    }
   });
 
   Object.fromEntries(

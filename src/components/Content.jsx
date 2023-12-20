@@ -44,22 +44,22 @@ function MobileNav({ children, nav }) {
 
   return (
     <div
-      className="sticky top-[3rem] md:top-[4rem] z-40 flex flex-col h-12 md:h-16 w-full lg:hidden bg-black"
+      className="sticky top-[3rem] md:top-[4rem] z-40 flex flex-col h-12 md:h-16 w-full xl:hidden bg-black"
       ref={ref}
     >
       <div className="relative flex flex-1 w-full justify-between items-center whitespace-nowrap type-ui">
-        <div className="flex flex-row-reverse items-center h-full w-full bg-tint overflow-x-auto">
-          <div className="flex-1 space-x-1.5 layout-pl">{children}</div>
+        <div className="flex flex-row-reverse items-center h-full w-full bg-tint overflow-x-auto pl-5">
+          <div className="flex-1 space-x-1.5">{children}</div>
         </div>
         <button
-          className="h-full bg-tint text-brite hover:opacity-80 layout-px"
+          className="h-full bg-tint text-brite hover:opacity-80 px-5"
           onClick={() => setOpen(!isOpen)}
         >
           {isOpen ? "↑" : "↓"}
         </button>
       </div>
       {isOpen && (
-        <div className="absolute bg-black top-full w-full pt-3.5 pb-32 overflow-y-auto z-30 layout-pl h-content">
+        <div className="absolute bg-black top-full w-full pt-3.5 pb-32 overflow-y-auto z-30 pl-5 h-content">
           {nav}
         </div>
       )}
@@ -81,31 +81,33 @@ export default function Content({
   const md = JSON.parse(markdown);
 
   return (
-    <div className="flex flex-col lg:flex-row h-full w-full">
-      <Sidebar className="hidden lg:flex" left>
+    <div className="flex flex-row h-full w-full">
+      <Sidebar className="hidden xl:flex" left>
         <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </Sidebar>
-      <MobileNav
-        nav={
-          <ContentNav
-            posts={posts}
-            root={root}
-            firstCrumb={firstCrumb}
-            mobile
-          />
-        }
-      >
-        {breadcrumbs(posts, params.slug || [], root)}
-      </MobileNav>
-      <div className="flex flex-col flex-1 min-w-0 px-5">
-        <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">
-          {data.title}
-        </h1>
-        <div className="markdown technical">
-          <Markdown.render content={md} tooltipData={tooltipData} />
+      <div className="flex flex-col flex-1 min-w-0">
+        <MobileNav
+          nav={
+            <ContentNav
+              posts={posts}
+              root={root}
+              firstCrumb={firstCrumb}
+              mobile
+            />
+          }
+        >
+          {breadcrumbs(posts, params.slug || [], root)}
+        </MobileNav>
+        <div className="flex flex-col flex-1 px-5">
+          <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">
+            {data.title}
+          </h1>
+          <div className="markdown technical">
+            <Markdown.render content={md} tooltipData={tooltipData} />
+          </div>
         </div>
       </div>
-      <Sidebar className="hidden xl:flex" right>
+      <Sidebar className="hidden lg:flex" right>
         <FragmentNav
           markdown={md}
           key={params.slug?.join("/") || Math.random()}

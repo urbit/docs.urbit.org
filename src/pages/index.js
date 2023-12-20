@@ -22,7 +22,7 @@ export default function Home({ search }) {
         <IntraNav />
         <Main>
           <div className="flex h-full w-full">
-            <Sidebar className="hidden lg:flex" left />
+            <Sidebar className="hidden xl:flex" left />
             <div className="flex flex-col flex-1 overflow-y-auto min-w-0 px-5 space-y-8 md:space-y-12">
               <h1 className="h1 mt-3 mb-8">Docs</h1>
               <p className="body-xl">
@@ -140,7 +140,7 @@ export default function Home({ search }) {
                 />
               </FatBlock>
             </div>
-            <Sidebar className="hidden xl:flex" right />
+            <Sidebar className="hidden lg:flex" right />
           </div>
         </Main>
         <Footer />

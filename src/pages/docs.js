@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 import {
   Container,
   Main,
-  Sidebar,
   Markdown,
   getPage,
 } from "@urbit/fdn-design-system";
 import IntraNav from "../components/IntraNav";
+import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import Content, {
   getStaticProps as props,
@@ -30,7 +30,7 @@ export default function Home({ data, markdown }) {
         <IntraNav />
         <Main>
           <div className="flex h-full w-full">
-            <Sidebar className="hidden lg:flex" left />
+            <Sidebar className="hidden xl:flex" left />
             <div className="flex flex-col flex-1 min-w-0 px-5">
               <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">
                 {data.title}
@@ -39,7 +39,7 @@ export default function Home({ data, markdown }) {
                 <Markdown.render content={md} tooltipData={tooltipData} />
               </div>
             </div>
-            <Sidebar className="hidden xl:flex" right />
+            <Sidebar className="hidden lg:flex" right />
           </div>
         </Main>
         <Footer />

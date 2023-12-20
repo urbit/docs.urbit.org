@@ -28,7 +28,6 @@ function MobileNav({ children, nav }) {
     return () => (document.body.style.overflow = "visible");
   }, [isOpen]);
 
-
   useEffect(() => {
     document.addEventListener("mousedown", handleClickListener);
     return () => {
@@ -44,21 +43,23 @@ function MobileNav({ children, nav }) {
   };
 
   return (
-    <div className="flex flex-col h-12 md:h-16 w-full lg:hidden" ref={ref}>
-      <div className="flex flex-1 w-full justify-between items-center whitespace-nowrap type-ui">
-        <div className="flex h-full w-full items-center space-x-1.5 overflow-x-auto">
-          {children}
+    <div
+      className="sticky top-[3rem] md:top-[4rem] z-40 flex flex-col h-12 md:h-16 w-full lg:hidden bg-black"
+      ref={ref}
+    >
+      <div className="relative flex flex-1 w-full justify-between items-center whitespace-nowrap type-ui">
+        <div className="flex flex-row-reverse items-center h-full w-full bg-tint overflow-x-auto">
+          <div className="flex-1 space-x-1.5 layout-pl">{children}</div>
         </div>
         <button
-          className={classnames("h-full px-5 -mr-5 text-brite", { "rotate-45": isOpen })}
+          className="h-full bg-tint text-brite hover:opacity-80 layout-px"
           onClick={() => setOpen(!isOpen)}
         >
-          ＋
+          {isOpen ? "↑" : "↓"}
         </button>
       </div>
-      <hr className="border-gray border-t-2 rounded-xl" />
       {isOpen && (
-        <div className="absolute bg-black top-24 md:top-32 bottom-0 w-full pt-3.5 -ml-5 overflow-y-auto z-30 layout-pl">
+        <div className="absolute bg-black top-full w-full pt-3.5 pb-32 overflow-y-auto z-30 layout-pl h-content">
           {nav}
         </div>
       )}
@@ -80,23 +81,23 @@ export default function Content({
   const md = JSON.parse(markdown);
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex flex-col lg:flex-row h-full w-full">
       <Sidebar className="hidden lg:flex" left>
         <ContentNav posts={posts} root={root} firstCrumb={firstCrumb} />
       </Sidebar>
+      <MobileNav
+        nav={
+          <ContentNav
+            posts={posts}
+            root={root}
+            firstCrumb={firstCrumb}
+            mobile
+          />
+        }
+      >
+        {breadcrumbs(posts, params.slug || [], root)}
+      </MobileNav>
       <div className="flex flex-col flex-1 min-w-0 px-5">
-        <MobileNav
-          nav={
-            <ContentNav
-              posts={posts}
-              root={root}
-              firstCrumb={firstCrumb}
-              mobile
-            />
-          }
-        >
-          {breadcrumbs(posts, params.slug || [], root)}
-        </MobileNav>
         <h1 className="h1 mt-3 !mb-12 md:!mb-[4.6875rem] 3xl:!mb-[5.625rem]">
           {data.title}
         </h1>

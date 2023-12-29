@@ -210,8 +210,8 @@ Some lists are even empty.
 ```
 
 (Notice that all values are converted to the specified {% tooltip
-
 label="aura" href="/glossary/aura" /%}, in this case the empty aura.)
+
 A `list` is built with the `list` mold.  A `list` is actually a _mold
 builder_, a {% tooltip label="gate" href="/glossary/gate" /%} that
 produces a gate.  This is a common design pattern in Hoon.  (Remember

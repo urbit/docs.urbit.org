@@ -2,7 +2,7 @@
 title = "App Academy"
 date = "2023-12-05"
 weight = 90
-next_cohort = "February 2024"
+next_cohort = "June 2024"
 image = "https://media.urbit.org/developers/images/app-school-live.svg"
 description = "App Academy teaches you how to build a Gall agent and connect it to a front-end. The course will feature hands-on, interactive learning, and teach principles of good software design in Urbit."
 +++
@@ -16,7 +16,7 @@ is a good fit for you.
 
 By completing App Academy as a cohort student, you should be able to design, implement, and distribute basic user apps and start contributing to Urbit userspace bounties.
 
-The next cohort for App Academy will begin on Thursday, February 22, 2024. [Sign up here.](https://airtable.com/appr051v1PWk2x1QF/shrdZcSQrIIb6mAmx)
+The next cohort for App Academy will begin in June 2024. [Sign up here.](https://airtable.com/appr051v1PWk2x1QF/shrdZcSQrIIb6mAmx)
 
 Until then, feel free to work through our online [App School
 docs](/courses/app-school).

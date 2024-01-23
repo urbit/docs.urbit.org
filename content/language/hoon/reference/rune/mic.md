@@ -394,16 +394,6 @@ Two arguments, fixed.
 [%mcmc p=spec q=hoon]
 ```
 
-#### Expands to
-
-```hoon
-=+  a=(p q)
-?>  =(`*`a `*`q)
-a
-```
-
-> Note: the expansion implementation is hygienic -- it doesn't actually add the `a` face to the subject.
-
 #### Examples
 
 Fails because of auras:

@@ -1,6 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-import { Sidebar as SidebarFDN } from "@urbit/fdn-design-system";
 
 export default function Sidebar({
   className = "",
@@ -9,15 +8,18 @@ export default function Sidebar({
   right = false,
 }) {
   return (
-    <SidebarFDN
+    <div
       className={classnames(
         "sticky top-12 md:top-16 z-40 py-5 sidebar",
+        "flex overflow-x-hidden overflow-y-auto",
+        {
+          "border-l rounded-sm border-gray": right,
+          "border-r rounded-sm border-gray": left,
+        },
         className
       )}
-      left={left}
-      right={right}
     >
       {children}
-    </SidebarFDN>
+    </div>
   );
 }

@@ -103,7 +103,7 @@ export default function IntraNav({ search }) {
       sites={sites}
       pages={pages}
       search={
-        <div className="flex h-full w-full space-x-2">
+        <div className="flex h-full w-full space-x-2 p-2 md:p-3 bg-brite">
           <DocSearch
             appId="X99UXGCKE0"
             apiKey="a70e321decc1707ae9ce2906bb9bab33"

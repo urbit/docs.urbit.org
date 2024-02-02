@@ -33,7 +33,7 @@ export default function MobileNav({ children, nav }) {
       ref={ref}
     >
       <div className="relative flex flex-1 w-full justify-between items-center whitespace-nowrap type-ui">
-        <div className="flex flex-1 flex-row-reverse items-center h-full bg-tint overflow-x-auto pl-5">
+        <div className="flex flex-1 flex-row-reverse items-center h-full bg-tint overflow-x-auto layout-pl">
           <div className="flex-1 space-x-1.5">{children}</div>
         </div>
         <button

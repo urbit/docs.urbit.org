@@ -353,7 +353,7 @@ We also need to add appropriate handles for the C code. This consists of several
 
 The first two steps are fairly mechanical and straightforward.
 
-**Register the jet symbols and function names.** A jet registration may be carried out at in point in `tree.c`. The registration consists of marking the core
+**Register the jet symbols and function names.** A jet registration may be carried out at in point in `tree.c`. The registration consists of marking the core in the Hoon source and including the name in the C source.
 
 ```c
 /* Jet registration of ++factorial arm under trig */
@@ -381,7 +381,7 @@ static u3j_core _140_hex_d[] =
 };
 ```
 
-The numeric component of the title, `140`, indicates the Hoon Kelvin version. Library jets of this nature are registered as `hex` jets, meaning they live within the Arvo core. Other, more inner layers of `%zuse` and `%lull` utilize `pen` and other three-letter jet tokens. (These are loosely mnemonic from Greek antecedents.) The core is conventionally included here, then either a `d` suffix for the function association or a `ha` suffix for a jet hash.  (Jet hashes are a way of “signing” code.  They are not as of this writing actively used by the binary runtimes.)
+The numeric component of the title, `140`, indicates the Hoon Kelvin version. Library jets of this nature are registered as `hex` jets, meaning they live within the Arvo core. Other, more inner layers of `%zuse` and `%lull` utilize `pen` and other three-letter jet tokens. (These are loosely mnemonic from Greek antecedents.) The core is conventionally included here, then either a `d` suffix for the function association or a `ha` suffix for a jet hash.  (Jet hashes are a way of “signing” code.  They are not as of this writing actively used by the binary runtimes.)  Arms are marked with `_a` and child cores with `_d`. The structs used are defined in `jets.h`.
 
 The particular flavor of C mandated by the Vere kernel is quite lapidary, particularly when shorthand functions (such as `u3z`) are employed.  In this code, we see the following `u3` elements:
 

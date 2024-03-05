@@ -32,11 +32,11 @@ const sites = [
 ];
 
 const pages = [
+  { title: "Courses", href: "/courses" },
   { title: "Language", href: "/language" },
   { title: "System", href: "/system" },
   { title: "Userspace", href: "/userspace" },
   { title: "Tools", href: "/tools" },
-  { title: "Courses", href: "/courses" },
   { title: "Manual", href: "/manual" },
   { title: "Glossary", href: "/glossary" },
 ];

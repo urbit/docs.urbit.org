@@ -44,7 +44,7 @@ export default function Home({ search }) {
                 </p>
                 <div className="-mx-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <IconCard
-                    title="Courses"
+                    title="Tutorials"
                     description="Learn the Hoon language or Urbit app development at your own pace."
                     href="/courses"
                     icon="AppSchoolI"

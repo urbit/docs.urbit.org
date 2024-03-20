@@ -1,101 +1,23 @@
 +++
-title = "Water Towers"
+title = "Emirp"
 weight = 230
 +++
 
-## Challenge: Water between Towers
 
-In a two-dimensional world, we begin with a bar-chart, or rows of unit-width 'towers' of arbitrary height. Then it rains, completely filling all convex enclosures in the chart with water.
+A prime number is a number that is only divisible by 1 and itself, for example, `7`. An [emirp](https://en.wikipedia.org/wiki/Emirp) is a prime number that results in a different prime when its decimal digits are reversed. For example, `107` and `701` are a pair of emirps, and `3,049` and `9,403`.
 
-```
-9               ██       
-8               ██           
-7     ██        ██          
-6     ██  ██    ██           
-5 ██  ██  ██  ████      
-4 ██  ██  ████████      
-3 ██████  ████████     
-2 ████████████████  ██ 
-1 ████████████████████ 
-```
-```
-9               ██    
-8               ██    
-7     ██≈≈≈≈≈≈≈≈██    
-6     ██≈≈██≈≈≈≈██    
-5 ██≈≈██≈≈██≈≈████    
-4 ██≈≈██≈≈████████    
-3 ██████≈≈████████    
-2 ████████████████≈≈██
-1 ████████████████████
-```
+Palindromic numbers are not emirps. `101` is a prime and its reverse is itself -- it is not an emirp.
 
-Your task for this challenge is to write a generator `water-towers`. It will take as input a `(list @ud)`, with each number representing the height of a tower from left to right. It will output a `@ud` representing the units of water that can be contained within the structure.
+Your task for this challenge is write a generator that will add up all the first `n` emirps. To be precise, you should write a generator `emirp` which takes a `@ud` number `n` as an input, and returns a `@ud` number which is the sum of the first `n` emirps.
 
 Example usage:
 ```
-> +water-towers [5 3 7 2 6 4 5 9 1 2 ~]
-14
+> +emirp 10
+638
 ```
 
-##  Unit Tests
+The first 10 emirps are `13, 17, 31, 37, 71, 73, 79, 97, 107, 113`, and their sum is `638`.
 
-Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
-
-```hoon
-/+  *test
-/=  water-towers  /gen/water-towers
-|%
-++  test-01
-  %+  expect-eq
-    !>  `@ud`2
-    !>  (water-towers [1 5 3 7 2 ~])
-++  test-02
-  %+  expect-eq
-    !>  `@ud`14
-    !>  (water-towers [5 3 7 2 6 4 5 9 1 2 ~])
-++  test-03
-  %+  expect-eq
-    !>  `@ud`35
-    !>  (water-towers [2 6 3 5 2 8 1 4 2 2 5 3 5 7 4 1 ~])
-++  test-04
-  %+  expect-eq
-    !>  `@ud`0
-    !>  (water-towers [5 5 5 5 ~])
-++  test-05
-  %+  expect-eq
-    !>  `@ud`0
-    !>  (water-towers [5 6 7 8 ~])
-++  test-06
-  %+  expect-eq
-    !>  `@ud`0
-    !>  (water-towers [8 7 7 6 5 4 3 2 ~])
-++  test-07
-  %+  expect-eq
-    !>  `@ud`0
-    !>  (water-towers [0 1 6 7 10 7 6 1 0 ~])
-++  test-08
-  %+  expect-eq
-    !>  `@ud`0
-    !>  (water-towers [100 0 0 0 0 0 0 0 ~])
-++  test-09
-  %+  expect-eq
-    !>  `@ud`7
-    !>  (water-towers [100 0 0 0 0 0 0 0 1 ~])
-++  test-10
-  %+  expect-eq
-    !>  `@ud`50
-    !>  (water-towers [10 0 0 0 0 0 10 ~])
-++  test-11
-  %+  expect-eq
-    !>  `@ud`4
-    !>  (water-towers [8 7 8 7 8 7 8 7 8 ~])
-++  test-12
-  %+  expect-eq
-    !>  `@ud`40
-    !>  (water-towers [0 1 2 3 4 5 4 3 2 1 1 2 3 4 5 4 3 2 1 1 2 3 4 5 4 3 2 1 0 ~])
---
-```
 
 ##  Solutions
 

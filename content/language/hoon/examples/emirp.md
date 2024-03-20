@@ -3,6 +3,7 @@ title = "Emirp"
 weight = 230
 +++
 
+## Challenge: Emirp
 
 A prime number is a number that is only divisible by 1 and itself, for example, `7`. An [emirp](https://en.wikipedia.org/wiki/Emirp) is a prime number that results in a different prime when its decimal digits are reversed. For example, `107` and `701` are a pair of emirps, and `3,049` and `9,403`.
 
@@ -21,171 +22,75 @@ The first 10 emirps are `13, 17, 31, 37, 71, 73, 79, 97, 107, 113`, and their su
 
 ##  Solutions
 
-_These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
+_These solutions were submitted by the Urbit community as part of a competition in ~2024.3.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
 ### Solution #1
 
-_By ~dannul-bortux. A model for literate programming in Hoon._
+_By ~nodmel-todsyr. A very fast and efficient solution._
 
 ```hoon
+::  emirp.hoon
+::  Finds a sum of first n emirp numbers
+|^
+|=  [n=@ud]
+=/  i  0
+=/  sum  0
+=/  number  13
+=|  emirps=(set @ud)
+|-
+?:  =(i n)
+  sum
+=^  x=@ud  emirps  (find-emirp number emirps)
+%=  $
+  i  +(i)
+  sum  (add sum x)
+  :: iterating only over 6k +- 1 numbers
+  number  (add ?:(=((mod x 6) 1) 4 2) x)
+==
+::  Finds a smallest emirp which is greater than or equal to x.
+::  Adds flipped emirp to the set of emirps
+::  If emirp is in the set, returns it immediately
 ::
-::  A gate for computing volume of water collected between towers.
+++  find-emirp
+  |=  [x=@ud emirps=(set @ud)]
+  ^-  [@ud (set @ud)]
+  =/  flipped  (flip x)
+  ?:  (~(has in emirps) x)
+    [x emirps]
+  ?:  &(!=(x flipped) (is-prime x) (is-prime flipped))
+    [x (~(put in emirps) flipped)]
+  $(x (add ?:(=((mod x 6) 1) 4 2) x))
+::  Checks if x is a prime. 
 ::
-::    Take a list (of type list @ud), with each value representing the height of
-::    a tower from left to right. Outputs a @ud representing the units of water 
-::    that can be contained within the structure.
-::
-::    Our approach involves calculating the total volume of rainfall or water by
-::    aggregating the water volume from each tower location. For a specific 
-::    tower location. water volume is determined by subtracting the “height” 
-::    of the tower with maximum rainfall (“total height with water”) from the 
-::    height of the tower alone. Tower heights are given by corresponding values
-::    in the input list.
-::  
-::    The “total height with water” at a location is determined by the height of
-::    surrounding boundary towers within our structure. Each tower location will
-::    have at most two boundary towers: one boundary tower on either side (left 
-::    and right). The left boundary tower is defined as the highest tower to the
-::    left of our specified tower location. The right boundary tower is defined 
-::    as the highest tower to the right of our specified tower location. The 
-::    value of “total height with water” at a location is equal to the lesser of
-::    the two boundary tower heights (the minimum of the left boundary tower 
-::    height vs. right boundary tower height). When less than two boundary 
-::    towers are present, the “total height with water” is equal to the height
-::    of the tower itself because no water can be contained without boundaries.
-::
-|=  inlist=(list @ud)
-^-  @ud
-::  If, input list is empty
-::
-?:  =(0 (lent inlist))
-  ::  Then, throw error
-  ::
-  ~|  'Error - input list cannot be empty'
-  !!
-=<  (compute-totalvol inlist)
-|%
-::
-::  +compute-totalvol: Gets total volume of water by summing water at each 
-::  individual location.
-::
-::    Moves left to right iterating over each location (index in list). 
-::    Determines waterfall at each location and aggregates all waterfall to 
-::    find and return total volume.
-::
-++  compute-totalvol
-  |=  [n=(list @ud)]
-  ^-  @ud
-  ::  i is face for iterating over all index/locations
-  ::
-  =/  i  0
-  ::  tot is face for aggregating volume of water
-  ::
-  =/  tot  0
+++  is-prime
+  |=  [x=@ud]
+  ^-  ?
+  ?:  (lte x 3)
+    (gth x 1)
+  ?:  |(=((mod x 2) 0) =((mod x 3) 0))
+    %.n
+  =/  limit  p:(sqt x)
+  =/  j  5
   |-
-  ::  If, we're at end of input list
-  ::
-  ?:  =(i (lent n))
-    ::  then, return total
-    ::
-    tot
-  ::  else, compute water volume at current index, add to total, and increment i
-  ::
-  %=  $
-      tot  (add tot (compute-indvol i n))
-      i  +(i)
-  ==
+  ?:  (gth j limit)
+    %.y
+  ?:  |(=((mod x j) 0) =((mod x (add 2 j)) 0))
+    %.n
+  $(j (add j 6))
+::  Flips a number.
 ::
-::  +compute-indvol: Computes volume at an individual location.
-::   
-::    Computes volume at an individual location (index in input list) by 
-::    subtracting tower height from “total height with water”. “Total height 
-::    with water” will be determined at a particular location by the height of 
-::    “boundary towers” for that location. 
-::
-++  compute-indvol
-  |=  [loc=@ud n=(list @ud)]
+++  flip
+  |=  [number=@ud]
   ^-  @ud
-  (sub (compute-waterheight loc n) (snag loc `(list @ud)`n))
-::
-::  +compute-waterheight: Measures the “total height with water” at a specified 
-::  index/location.
-::
-::    “Total height with water” at a particular location is measured using the 
-::    heights (value) at the left and right boundary towers. The lesser of these
-::    two values (left height vs right height) is equal to the “total height 
-::    with water” at our input location. 
-::  
-::    Right boundary tower is the tallest tower to the right of the location--
-::    i.e. highest value (height) with higher index. The left boundary tower is
-::    the tallest tower to the left of the location i.e. highest value (height) 
-::    with lower index. 
-::
-::    The “find-boundaryheight” arm iterates left to right and works for 
-::    measuring height of the right boundary tower. For the left boundary tower 
-::    we can use a mirror approach. We reverse the input list and adjust the 
-::    input index accordinglyto move right-to-left. 
-::
-::    In the case where no right or left boundary tower exists, our 
-::    “find-boundaryheight” arm will return the tower height at our current 
-::    index (indicating no water present) and we correctly compute 0 water 
-::    volume in our compute-indvol arm.
-::
-++  compute-waterheight
-  |=  [loc=@ud n=(list @ud)]
-  ^-  @ud
-  ::  rbth is a face for our "right boundary tower height" computed using our 
-  ::  "find-boundaryheight" arm moving left to right
-  ::
-  =/  rbth  (find-boundaryheight loc n)
-  ::  lbth is a face for our "right boundary tower height" computed using our 
-  ::  "find-boundaryheight" arm moving (mirrored) right to left
-  ::
-  =/  lbth  (find-boundaryheight (sub (lent n) +(loc)) (flop n))
-  ::  If, right boundary tower height is less than left boundary tower height, 
-  ::
-  ?:  (lth rbth lbth)
-  ::  then, return right boundary tower height
-  ::
-    rbth
-  ::  else, return left boundary tower height
-  ::
-  lbth
-::
-::  +find-boundaryheight: Computes the height of the highest tower to the right 
-::  of the input location
-::
-::    Moves left to right starting at input location until the end of input 
-::    list. Tracks height of each tower location with a height greater than 
-::    height at corresponding input location.
-::
-++  find-boundaryheight
-  |=  [loc=@ud n=(list @ud)]
-  ^-  @ud
-  ::  i is face used to iterate over input list starting one past input index
-  ::
-  =/  i  +(loc)
-  ::  bheight is face used to measure boundary tower heights--i.e. any tower
-  ::  heights greater than height at input location. At start, bheight is set to
-  ::  input location height. If no greater heights are found, input location
-  ::  height is returned (indicating no higher boundary towers found).
-  ::
-  =/  bheight  (snag loc n)
+  =/  m  0
+  =/  rip  (curr div 10)
+  =/  last  (curr mod 10)
   |-
-  ::  If, we are at the end of our input
-  ::
-  ?:  (gte i (lent n))
-    ::  then, return boundary tower height
-    ::
-    bheight
-  ::  else, if current tower height is greater than currently stored boundary 
-  ::  tower height, replace boundary tower height. Incr iteration idx.
-  ::
+  ?:  =(number 0)
+    m
   %=  $
-      bheight  ?:  (gth (snag i n) bheight)
-                 (snag i n) 
-               bheight
-      i        +(i)
+    number  (rip number)
+    m  (add (mul 10 m) (last number))
   ==
 --
 ```
@@ -193,122 +98,135 @@ _By ~dannul-bortux. A model for literate programming in Hoon._
 
 
 ### Solution #2
-_By ~racfer-hattes. A short and elegant solution._
+_By ~ramteb-tinmut. Well-commented, easy to read, and fast._
 
 ```hoon
-=>
+::  emirp.hoon
+:: Return the sum of the first n emirp numbers
+::
+|=  target=@ud
+=/  emirp-candidate  13  :: starting at the first emirp makes sense
+=|  emirps=(list @ud)
+=<
+sieve
 |%
-++  go 
-  |=  [current=@ud previous=(list @ud) next=(list @ud)]
-  =/  left-peak  (roll previous max)
-  =/  right-peak  (roll next max)
-  =/  min-peak  (min left-peak right-peak)
-  =/  water-level  
-    ?:  (lth min-peak current)  0  
-    (sub min-peak current)
-  ?~  next  water-level
-  (add water-level $(current i.next, next t.next, previous [current previous]))
+++  sieve
+  :: When the target is reached, sum the list of emirps
+  ::
+  ?:  =(target (lent emirps))
+    |-
+    ?~  emirps
+      0
+    (add i.emirps $(emirps t.emirps))
+  :: Whilst below target, recurse on is-emirp after incrementing
+  :: 
+  %=  sieve
+    emirps  (is-emirp emirp-candidate)
+    emirp-candidate  (add emirp-candidate 1)
+  ==
+++  is-emirp
+  |=  candidate=@ud
+  =/  reversed  (reverse-ud candidate)
+  :: Check if candidate number is a palindrome
+  ::
+  ?:  !=(reversed candidate)
+    :: Is it also a prime?
+    ::
+    ?:  (is-prime [candidate (sqt candidate)])
+      :: Check if the reverse is also a prime:
+      ::
+      ?:  (is-prime [reversed (sqt reversed)])
+        :: Success! - store the emirp
+        ::
+        (into emirps 1 candidate)
+      :: The reverse is not a prime:
+      ::
+      emirps
+    :: Not prime
+    ::
+    emirps
+  :: Palindrome & invalid
+  ::  
+  emirps
+++  is-prime
+  =/  divisor  2
+  |=  [candidate=@ud root=[@ @]]  
+  
+  :: Fastest check first - has the divisor reached our input candidate? 
+  ::
+  ?:  =(candidate divisor)
+    %.y
+  :: Ensure non-zero modulo
+  ::
+  ?:  =((mod candidate divisor) 0)
+    %.n
+  :: If not a prime, then number must have a divisor less than or equal to its square root. There's an edge case if the square root is not a whole number, in which case we need to round up:
+  ::
+  ?:  &(=(+3.root 0) (gth divisor +2.root))
+    %.y
+  ?:  (gth divisor (add 1 +2.root))
+    %.y
+  :: Increment divisor and repeat
+  ::
+  %=  $
+    divisor  (add divisor 1)
+  ==
+
+++  reverse-ud
+  |=  number=@ud
+  ^-  @ud
+  =/  reversed  0
+  :: Return reversed @ud when number reaches zero
+  ::
+  |-
+    ?:  =(0 number)  
+      reversed
+    :: Otherwise loop until all digits are swapped:
+    ::
+    =.  reversed  (add (mul 10 reversed) (mod number 10))
+    $(number (div number 10))  
 --
-|=  xs=(list @ud)
-?~  xs  0
-%-  go  [i.xs ~ t.xs]
 ```
 
-### Solution #3
-_By ~dozreg-toplud. Another very literate and clean solution._
+##  Unit Tests
 
+Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](/userspace/apps/guides/unit-tests) section.
 
 ```hoon
-::  +water-towers: a solution to the HSL challenge #1
-::
-::    https://github.com/tamlut-modnys/template-hsl-water-towers
-::    Takes a (list @ud) of tower heights, returns the number of the units of
-::    water that can be held in the given structure.
-::
-|=  towers=(list @ud)
-^-  @ud
-=<
-::  x, y are horizontal and vertical axes
-::
-=|  water-counter=@ud
-=/  x-last-tower=@ud  (dec (lent towers))
-=/  y-highest-tower=@ud  (roll towers max)
-::  iterate along y axis from y=0
-::
-=/  y=@ud  0
-|-
-^-  @ud
-::  if, y > max(towers)
-::
-?:  (gth y y-highest-tower)
-  ::  then, return water-counter
-  ::
-  water-counter
-::  else, iterate along x axis from x=1
-::
-=/  x=@ud  1
-|-
-^-  @ud
-::  if, x = x(last tower)
-::
-?:  =(x x-last-tower)
-  ::  then, go to the next y
-  ::
-  ^$(y +(y))
-::  else, increment water-counter if the point [x y] is not occupied by a tower
-::  and has towers to the left and right on the same y, after go to the next x
-::
-=?  water-counter  ?&  (not-tower x y)
-                       (has-tower-left x y)
-                       (has-tower-right x y)
-                   ==
-  +(water-counter)
-$(x +(x))
-::
-::  Core with helping functions
-::
+/+  *test
+/=  emirp  /gen/emirp
 |%
-::  ++not-tower: returns %.y if the coordinate [x y] is free from a tower,
-::  %.n if occupied.
-::
-++  not-tower
-  |=  [x=@ud y=@ud]
-  ^-  ?
-  (gth y (snag x towers))
-::  ++has-tower-left: returns %.y if there is a tower with height >= y to
-::  the left from x, %.n otherwise. Enabled computation caching to only test
-::  each point once.
-::
-++  has-tower-left
-  |=  [x=@ud y=@ud]
-  ~+
-  ^-  ?
-  ::  no towers to the left from the 0th tower
-  ::
-  ?:  =(x 0)
-    %.n
-  ::  check recursively to the left
-  ::
-  ?|  (gte (snag (dec x) towers) y)
-      $(x (dec x))
-  ==
-::  ++has-tower-right: returns %.y if there is a tower with height >= y to
-::  the right from x, %.n otherwise. Enabled computation caching to only test
-::  each point once.
-::
-++  has-tower-right
-  |=  [x=@ud y=@ud]
-  ~+
-  ^-  ?
-  ::  no towers to the right from the last tower
-  ::
-  ?:  =(x (dec (lent towers)))
-    %.n
-  ::  check recursively to the right
-  ::
-  ?|  (gte (snag +(x) towers) y)
-      $(x +(x))
-  ==
-::
+++  test-01
+  %+  expect-eq
+    !>  `@ud`13
+    !>  (emirp 1)
+++  test-02
+  %+  expect-eq
+    !>  `@ud`30
+    !>  (emirp 2)
+++  test-03
+  %+  expect-eq
+    !>  `@ud`169
+    !>  (emirp 5)
+++  test-04
+  %+  expect-eq
+    !>  `@ud`638
+    !>  (emirp 10)
+++  test-05
+  %+  expect-eq
+    !>  `@ud`6.857
+    !>  (emirp 25)
+++  test-06
+  %+  expect-eq
+    !>  `@ud`32.090
+    !>  (emirp 50)
+++  test-07
+  %+  expect-eq
+    !>  `@ud`115.370
+    !>  (emirp 100)
+++  test-08
+  %+  expect-eq
+    !>  `@ud`4.509.726
+    !>  (emirp 500)
 --
 ```

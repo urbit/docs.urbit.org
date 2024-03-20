@@ -8,25 +8,25 @@ weight = 230
 In a two-dimensional world, we begin with a bar-chart, or rows of unit-width 'towers' of arbitrary height. Then it rains, completely filling all convex enclosures in the chart with water.
 
 ```
-9               █       
-8               █           
-7     █        █          
-6     █  █    █           
-5 █  █  █  ██      
-4 █  █  ████      
-3 ███  ████     
-2 ████████  █ 
+9        █       
+8        █           
+7   █    █          
+6   █ █  █           
+5 █ █ █ ██      
+4 █ █ ████      
+3 ███ ████     
+2 ████████ █ 
 1 ██████████ 
 ```
 ```
-9               █    
-8               █    
-7     █≈≈≈≈≈≈≈≈█    
-6     █≈≈█≈≈≈≈█    
-5 █≈≈█≈≈█≈≈██    
-4 █≈≈█≈≈████    
-3 ███≈≈████    
-2 ████████≈≈█
+9        █    
+8        █    
+7   █≈≈≈≈█    
+6   █≈█≈≈█    
+5 █≈█≈█≈██    
+4 █≈█≈████    
+3 ███≈████    
+2 ████████≈█
 1 ██████████
 ```
 

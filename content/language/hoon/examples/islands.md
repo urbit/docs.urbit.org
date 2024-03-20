@@ -2,8 +2,8 @@
 title = "Islands"
 weight = 230
 +++
+## Challenge: Largest Island
 
-## Challenge: Islands
 We are given a map of an island archipelago and want to determine the size of the largest island. We begin with a 2-dimensional grid which is represented as a `(list (list @ud))`. Each `@ud` entry is either a `0`, which represents water, or a `1`, which represents land. We consider two land squares to be part of the same island if they are connected horizontally or vertically, **not diagonally**. We assume that the area outside of the map is entirely water.
 
 

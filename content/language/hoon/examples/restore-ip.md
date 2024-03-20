@@ -42,7 +42,6 @@ dojo: naked generator failure
 dojo: naked generator failure
 ```
 
-
 ##  Solutions
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2024.3.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._

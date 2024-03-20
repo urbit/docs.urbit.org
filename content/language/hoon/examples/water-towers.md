@@ -8,26 +8,26 @@ weight = 230
 In a two-dimensional world, we begin with a bar-chart, or rows of unit-width 'towers' of arbitrary height. Then it rains, completely filling all convex enclosures in the chart with water.
 
 ```
-9               ██       
-8               ██           
-7     ██        ██          
-6     ██  ██    ██           
-5 ██  ██  ██  ████      
-4 ██  ██  ████████      
-3 ██████  ████████     
-2 ████████████████  ██ 
-1 ████████████████████ 
+9               █       
+8               █           
+7     █        █          
+6     █  █    █           
+5 █  █  █  ██      
+4 █  █  ████      
+3 ███  ████     
+2 ████████  █ 
+1 ██████████ 
 ```
 ```
-9               ██    
-8               ██    
-7     ██≈≈≈≈≈≈≈≈██    
-6     ██≈≈██≈≈≈≈██    
-5 ██≈≈██≈≈██≈≈████    
-4 ██≈≈██≈≈████████    
-3 ██████≈≈████████    
-2 ████████████████≈≈██
-1 ████████████████████
+9               █    
+8               █    
+7     █≈≈≈≈≈≈≈≈█    
+6     █≈≈█≈≈≈≈█    
+5 █≈≈█≈≈█≈≈██    
+4 █≈≈█≈≈████    
+3 ███≈≈████    
+2 ████████≈≈█
+1 ██████████
 ```
 
 Your task for this challenge is to write a generator `water-towers`. It will take as input a `(list @ud)`, with each number representing the height of a tower from left to right. It will output a `@ud` representing the units of water that can be contained within the structure.

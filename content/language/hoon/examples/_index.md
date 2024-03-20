@@ -65,5 +65,27 @@ Hoon language examples and exercises.
     small=true
   /%}
 
+  {% iconcard
+    title="Emirp"
+    description="Challenge: compute primes whose reverses are also primes."
+    href="/language/hoon/examples/emirp"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Restore IPs"
+    description="Challenge: restore IP addresses that have lost their dots."
+    href="/language/hoon/examples/restore-ip"
+    small=true
+  /%}
+
+  {% iconcard
+    title="Islands"
+    description="Challenge: find the size of the biggest island in a 2D grid."
+    href="/language/hoon/examples/islands"
+    small=true
+    
+  /%}
+
 {% /grid %}
 

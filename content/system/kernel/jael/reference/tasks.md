@@ -429,7 +429,7 @@ Public key information, diffs, and breach notifications. This is given
 to those who have subscribed with a [`%public-keys` task](#public-keys).
 
 See the
-[`$public-keys-result`](/system/kernel/dill/reference/data-types#public-keys-result)
+[`$public-keys-result`](/system/kernel/jael/reference/data-types#public-keys-result)
 entry in the data types reference for details of the data this gift
 contains.
 

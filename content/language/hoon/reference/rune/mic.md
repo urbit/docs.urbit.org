@@ -120,7 +120,7 @@ One fixed argument, then a variable number of arguments.
 Regular form:
 
 ```hoon
-%-(p a %-(p b %-(p c ...)))
+%+(p a %+(p b %+(p c ...)))
 ```
 
 Irregular form:

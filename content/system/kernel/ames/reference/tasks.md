@@ -248,15 +248,62 @@ This `task` returns no `gift`s.
 
 ### `%keen`
 
+Perform an unencrypted or multi-party encrypted remote scry.
+
 ```hoon
-[%keen =ship =path]
+[%keen sec=(unit [idx=@ key=@]) spar]
 ```
 
-A `%keen` `task` asks Ames to perform a remote scry, retrieving the value of
-`path` on the given `ship`. The `path` has the general format of
-`/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read into
-Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the empty element in
-between the agent and the rest of the path.
+A `%keen` `task` asks Ames to perform a remote scry, retrieving the
+value of `path` on the given `ship` in the `spar`. The `sec` field
+provides optional encryption details for multi-party encrypted scries.
+
+The `path` has the general format of
+`/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read
+into Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the
+empty element in between the agent and the rest of the path.
+
+Note that you would not use this task directly from userspace. For
+unencrypted or multi-party encrypted scries you'd use a [Gall `%keen`
+note](/system/kernel/gall/reference/gall-api#keen) and for two-party
+encrypted scries you'd use a [`%chum`](#chum) task.
+
+#### Returns
+
+A `%tune` gift. A `%tune` gift looks like:
+
+```hoon
+[%tune spar roar=(unit roar)]
+```
+
+It represents a *result*. The `roar` field is null if Ames doesn't have a
+response, but may have one in the future. The
+[`$roar`](/system/kernel/ames/reference/data-types#roar) contains a signature and the
+data. The data in the `$roar` will be null if there is no value at the path in
+question and will never be. These two cases are equivalent to `~` and `[~ ~]` of
+a local scry.
+
+---
+
+### `%chum`
+
+Perform a two-party encrypted remote scry.
+
+```hoon
+[%chum spar]
+```
+
+A `spar` is a pair of `ship` and remote scry `path` like
+`/c/x/4/base/sys/hoon/hoon`.
+
+The `path` has the general format of
+`/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read
+into Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the
+empty element in between the agent and the rest of the path.
+
+Note this is for two-party encrypted remote scries only. For unencrypted
+or multi-party encrypted scries you'd use a [Gall `%keen`
+note](/system/kernel/gall/reference/gall-api#keen).
 
 #### Returns
 
@@ -276,6 +323,8 @@ a local scry.
 ---
 
 ### `%yawn`
+
+Cancel a remote scry request.
 
 ```hoon
 [%keen =ship =path]

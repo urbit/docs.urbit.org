@@ -357,7 +357,7 @@ so it contains the entire subtree rather than just one level.
   =+  .^(=arch %cy (en-beam [our %base da+now] path))
   ^-  (axal @uvI)
   :-  fil.arch
-  (~(rut by dir.arch) |=([name=@ta ~] ^$(path (snoc path name))))
+  (~(urn by dir.arch) |=([name=@ta ~] ^$(path (snoc path name))))
 [ fil=~
     dir
   { [p=~.iris q=[fil=~ dir={[p=~.hoon q=[fil=[~ 0v15.r0nos.81rq5.8t24j.vfnll.8ej0n.knuej.maetm.vr9ja.s3opn.5gtpd] dir={}]]}]]

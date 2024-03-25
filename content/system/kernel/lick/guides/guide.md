@@ -308,7 +308,7 @@ cp -r zod/base/lib/{default-agent*,skeleton*} licker/desk/lib/
 Add a `desk.bill` `sys.kelvin` files:
 
 ``` {% copy=true %}
-echo "[%zuse 412]" > licker/desk/sys.kelvin
+echo "[%zuse 411]" > licker/desk/sys.kelvin
 echo "~[%licker]" > licker/desk/desk.bill
 ```
 

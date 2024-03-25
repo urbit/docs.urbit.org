@@ -17,6 +17,12 @@ one of:
       [%grow =spur =page]
       [%tomb =case =spur]
       [%cull =case =spur]
+  ::
+      [%tend =coop =path =page]
+      [%germ =coop]
+      [%snip =coop]
+  ::
+      [%keen secret=? spar:ames]
   ==
 ```
 
@@ -82,7 +88,7 @@ upgrade/installation to fail under some condition.
 
 ### `%grow`
 
-Publish remote scry file.
+Publish remote scry file without encryption.
 
 ```hoon
 [%grow =spur =page]
@@ -94,6 +100,9 @@ number will be determined implicitly. As an example, if the `spur` was
 remote scry path would be `/g/x/0/bar//foo`
 
 The `page` is the file, a pair of `[p=mark q=noun]`.
+
+Note the published file will not be encrypted. For the encrypted
+version, see [`%tend`](#tend)
 
 ---
 
@@ -125,6 +134,72 @@ All revisions of the remote scry file published at the `path` in `spur`
 up to and including the revision specified in `case` will be deleted.
 For example, if the `case` is `[%ud 2]`, then revisions `0`, `1`, and
 `2` will all be deleted.
+
+---
+
+### `%tend`
+
+Publish remote scry file with encryption.
+
+```hoon
+[%tend =coop =path =page]
+```
+
+The `coop` is a publisher-defined security context `path` like
+`/your/security/context`. The `path` is the path at which the file
+should be published like `/foo/bar/baz`.  The `page` is the file, a pair
+of `[p=mark q=noun]`.
+
+The security context must be registered with a [`%germ`](#germ) task
+before publishing the file.
+
+---
+
+### `%germ`
+
+Create an encrypted remote scry security context.
+
+```hoon
+[%germ =coop]
+````
+
+The `coop` is a publisher-defined security context `path` like
+`/your/security/context`.
+
+Once created, you can publish files to it with a [`%tend`](#tend) task.
+
+---
+
+### `%snip`
+
+Delete an encrypted remote scry security context.
+
+```hoon
+[%snip =coop]
+```
+
+The `coop` is a publisher-defined security context `path` like
+`/your/security/context`.
+
+---
+
+### `%keen`
+
+Perform either a multiparty encrypted remote scry or unencrypted remote
+scry.
+
+```hoon
+[%keen secret=? spar:ames]
+```
+
+`secret` specifies whether it should be encrypted or not. The `spar` is
+a pair of `ship` and the remote scry path like
+`/c/x/4/base/sys/hoon/hoon`.
+
+Note that multiparty encrypted scry (specified with a true `secret`)
+should only be used when you know the publisher expects it (i.e, as part
+of their application protocol). Otherwise, the two-party [Ames `%chum`
+task](/system/kernel/ames/reference/tasks#chum) should be used.
 
 ---
 

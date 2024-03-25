@@ -55,6 +55,20 @@ Gall uses this to keep track of nonces for subscriptions.
 
 ---
 
+## `fans`
+
+Revisions for a remote scry file published at a particular path.
+
+```hoon
++$  fans  ((mop @ud (pair @da (each page @uvI))) lte)
+```
+
+The `mop` is organized by file revision number. Each value includes the
+date-time of the entry, and then either the file as a `page` or just the
+`@uvI` hash of the file if it has been tombstoned.
+
+---
+
 ## `bowl`
 
 Additional agent state.
@@ -64,12 +78,11 @@ Additional agent state.
   $:  $:  our=ship                                    ::  host
           src=ship                                    ::  guest
           dap=term                                    ::  agent
+          sap=path                                    ::  provenance
       ==                                              ::
       $:  wex=boat                                    ::  outgoing subs
           sup=bitt                                    ::  incoming subs
-          $=  sky                                     ::  scry bindings
-          %+  map  path                               ::
-          ((mop @ud (pair @da (each page @uvI))) lte) ::
+          sky=(map path fans)                         ::  scry bindings
       ==                                              ::
       $:  act=@ud                                     ::  change number
           eny=@uvJ                                    ::  entropy
@@ -89,8 +102,8 @@ as follows:
 - `sup`: Incoming subscriptions. That is, subscriptions others have made to our
   agent. See the [`bitt`](#bitt) section for details of the type.
 - `sky`: Remote scry bindings. A map from binding paths to a
-  [`mop`](/language/hoon/reference/zuse/2m#mop) (ordered map) of files by revision
-  number. Tombstoned files have an `@uvI` hash rather than `page`.
+  [`fans`](#fans), an ordered map of files by revision number.
+  Tombstoned files have an `@uvI` hash rather than `page`.
 - `act`: The total number of [`move`](/system/kernel/arvo#move)s our agent has
   processed so far.
 - `eny`: 512 bits of entropy.
@@ -215,6 +228,18 @@ Verbosity flags.
 ```
 
 Flags to set Gall verbosity. Currently only `%odd` for unusual errors.
+
+---
+
+## `coop`
+
+Verbosity flags.
+
+```hoon
++$  coop  spur
+```
+
+A security context for remote scries.
 
 ---
 

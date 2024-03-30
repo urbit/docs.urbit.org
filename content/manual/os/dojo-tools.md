@@ -775,38 +775,38 @@ desc = "Dojo utility included in dojo.hoon"
 
 +++
 
-[path]: https://developers.urbit.org/glossary/path
-[ship]: https://developers.urbit.org/glossary/ship
-[desk]: https://developers.urbit.org/glossary/desk
-[clay]: https://developers.urbit.org/glossary/clay
-[dojo]: https://developers.urbit.org/glossary/dojo
-[gall]: https://developers.urbit.org/glossary/gall
-[agent]: https://developers.urbit.org/glossary/agent
-[scry]: https://developers.urbit.org/glossary/scry
-[case]: https://developers.urbit.org/glossary/case
-[arvo]: https://developers.urbit.org/glossary/arvo
-[kernel]: https://developers.urbit.org/glossary/kernel
-[mark]: https://developers.urbit.org/glossary/mark
-[hoon]: https://developers.urbit.org/glossary/hoon
-[generator]: https://developers.urbit.org/glossary/generator
-[thread]: https://developers.urbit.org/glossary/thread
-[care]: https://developers.urbit.org/glossary/care
-[path prefix]: https://developers.urbit.org/glossary/path-prefix
-[core]: https://developers.urbit.org/glossary/core
-[gate]: https://developers.urbit.org/glossary/gate
-[vane]: https://developers.urbit.org/glossary/vane
-[life]: https://developers.urbit.org/glossary/life
-[rift]: https://developers.urbit.org/glossary/rift
-[behn]: https://developers.urbit.org/glossary/behn
-[cord]: https://developers.urbit.org/glossary/cord
-[bowl]: https://developers.urbit.org/glossary/bowl
-[bridge]: https://developers.urbit.org/glossary/bridge
-[pill]: https://developers.urbit.org/glossary/pill
-[moon]: https://developers.urbit.org/glossary/moon
-[move]: https://developers.urbit.org/glossary/move
-[eyre]: https://developers.urbit.org/glossary/eyre
-[ames]: https://developers.urbit.org/glossary/ames
-[azimuth]: https://developers.urbit.org/glossary/azimuth
+[path]: https://docs.urbit.org/glossary/path
+[ship]: https://docs.urbit.org/glossary/ship
+[desk]: https://docs.urbit.org/glossary/desk
+[clay]: https://docs.urbit.org/glossary/clay
+[dojo]: https://docs.urbit.org/glossary/dojo
+[gall]: https://docs.urbit.org/glossary/gall
+[agent]: https://docs.urbit.org/glossary/agent
+[scry]: https://docs.urbit.org/glossary/scry
+[case]: https://docs.urbit.org/glossary/case
+[arvo]: https://docs.urbit.org/glossary/arvo
+[kernel]: https://docs.urbit.org/glossary/kernel
+[mark]: https://docs.urbit.org/glossary/mark
+[hoon]: https://docs.urbit.org/glossary/hoon
+[generator]: https://docs.urbit.org/glossary/generator
+[thread]: https://docs.urbit.org/glossary/thread
+[care]: https://docs.urbit.org/glossary/care
+[path prefix]: https://docs.urbit.org/glossary/path-prefix
+[core]: https://docs.urbit.org/glossary/core
+[gate]: https://docs.urbit.org/glossary/gate
+[vane]: https://docs.urbit.org/glossary/vane
+[life]: https://docs.urbit.org/glossary/life
+[rift]: https://docs.urbit.org/glossary/rift
+[behn]: https://docs.urbit.org/glossary/behn
+[cord]: https://docs.urbit.org/glossary/cord
+[bowl]: https://docs.urbit.org/glossary/bowl
+[bridge]: https://docs.urbit.org/glossary/bridge
+[pill]: https://docs.urbit.org/glossary/pill
+[moon]: https://docs.urbit.org/glossary/moon
+[move]: https://docs.urbit.org/glossary/move
+[eyre]: https://docs.urbit.org/glossary/eyre
+[ames]: https://docs.urbit.org/glossary/ames
+[azimuth]: https://docs.urbit.org/glossary/azimuth
 
 Below are the various [generators][generator], [threads][thread] and other tools
 included with the `%base` desk and usable in the [dojo][dojo]. These are
@@ -1472,7 +1472,7 @@ ship: processing azimuth snapshot (106.177 points)
 List all Azimuth sources.
 
 This will print a
-[`state-eth-node:jael`](https://developers.urbit.org/system/kernel/arvo/jael/data-types#state-eth-node)
+[`state-eth-node:jael`](https://docs.urbit.org/system/kernel/jael/reference/data-types#state-eth-node)
 structure. Its contents is mostly other ships who are sources for updates about
 moons, but it will also include `%azimuth`.
 
@@ -1977,7 +1977,7 @@ time. If `|ames-verb` is given no argument, it disables all Ames debug printing.
 
 For details of the meaning of these `verb`s, see its entry in the [Ames Data
 Types
-documentation](https://developers.urbit.org/system/kernel/arvo/ames/data-types#verb).
+documentation](https://docs.urbit.org/system/kernel/ames/reference/data-types#verb).
 
 #### Example
 
@@ -2197,7 +2197,7 @@ Query the state or [bowl][bowl] of a running agent.
 #### Arguments
 
 See the [dbug section of App School lesson
-3](https://developers.urbit.org/courses/app-school/3-imports-and-aliases#dbug)
+3](https://docs.urbit.org/courses/app-school/3-imports-and-aliases#dbug)
 for details of usage.
 
 #### Example
@@ -2387,9 +2387,9 @@ care ship desk case path
 - [care][care]: One of `%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z`,
   denoting a [Clay][clay] submodule. For details of their meaning, see the [Clay
   data types
-  documentation](https://developers.urbit.org/system/kernel/arvo/clay/data-types#careclay-clay-submode)
+  documentation](https://docs.urbit.org/system/kernel/clay/reference/data-types#careclay-clay-submode)
   and [Clay scry
-  reference](https://developers.urbit.org/system/kernel/arvo/clay/scry).
+  reference](https://docs.urbit.org/system/kernel/clay/reference/scry).
 - [ship][ship]: The target ship like `~sampel`, or `our` for the local ship.
 - [desk][desk]: The [desk] on that ship like `%base`.
 - [case][case]: The revision you're requesting. This can be one of:
@@ -2423,7 +2423,7 @@ Check for the existence of that same file:
 Bind a generator to a URL path.
 
 See the [Eyre
-Guide](https://developers.urbit.org/system/kernel/eyre/guides/guide#generators) for
+Guide](https://docs.urbit.org/system/kernel/eyre/guides/guide#generators) for
 details of writing web-facing generators.
 
 #### Arguments
@@ -2549,7 +2549,7 @@ prefix][path prefix].
 #### Example
 
 Refer to the [Unit Test
-Guide](https://developers.urbit.org/userspace/apps/guides/unit-tests) for details of
+Guide](https://docs.urbit.org/userspace/apps/guides/unit-tests) for details of
 using the `-test` thread.
 
 ---

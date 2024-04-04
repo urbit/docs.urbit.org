@@ -30,3 +30,7 @@ How to run an infrastructure node.
 ### [Ship Troubleshooting](/manual/os/ship-troubleshooting)
 
 How to resolve common problems.
+
+### [Dojo Tools](/manual/os/dojo-tools)
+
+Additional utilities that can be used from Urbit's command line environment.

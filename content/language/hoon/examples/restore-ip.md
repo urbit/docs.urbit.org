@@ -2,7 +2,6 @@
 title = "Restore IP"
 weight = 230
 +++
-
 ## Challenge: Restore IP Addresses
 
 An IPv4 address consists of exactly four non-negative whole numbers, separated by single dots. Each number is between 0 and 255 (inclusive) and cannot have leading zeros, unless it is 0.

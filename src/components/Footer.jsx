@@ -3,29 +3,40 @@ import { Footer as FooterFDS } from "@urbit/fdn-design-system";
 const data = [
   [
     {
-      title: "Urbit",
+      title: "Urbit Docs",
       links: [
         {
           title: "Home",
           href: "/",
         },
-        { title: "Get Started", href: "https://urbit.org/getting-started" },
         {
-          title: "Overview",
-          href: "https://developer.urbit.org/overview",
+          title: "Courses",
+          href: "/courses",
         },
         {
-          title: "Ecosystem",
-          href: "https://urbit.org/ecosystem",
+          title: "Language",
+          href: "/language",
         },
         {
-          title: "Events",
-          href: "https://urbit.org/events",
+          title: "System",
+          href: "/system",
         },
         {
-          title: "Blog",
-          href: "https://urbit.org//blog",
-        }
+          title: "Userspace",
+          href: "/userspace",
+        },
+        {
+          title: "Tools",
+          href: "/tools",
+        },
+        {
+          title: "Manual",
+          href: "/manual",
+        },
+        {
+          title: "Glossary",
+          href: "/glossary",
+        },
       ],
     },
     {
@@ -53,12 +64,12 @@ const data = [
     },
   ],
   [
-    { title: "Privacy Policy", href: "/privacy" },
-    { title: "Terms of Service", href: "/terms-of-service" },
+    { title: "Privacy Policy", href: "https://urbit.org/privacy" },
+    { title: "Terms of Service", href: "https://urbit.org/terms-of-service" },
     { title: "support@urbit.org", href: "mailto:support@urbit.org" },
   ],
 ];
 
 export default function Footer() {
-  return <FooterFDS data={data} />
+  return <FooterFDS data={data} />;
 }

@@ -12,7 +12,7 @@ const sites = [
   {
     title: "Urbit.org",
     href: "https://urbit.org",
-    theme: "grn",
+    theme: "wit",
   },
   // {
   //   title: "Foundation",
@@ -22,7 +22,7 @@ const sites = [
   {
     title: "Roadmap",
     href: "https://roadmap.urbit.org",
-    theme: "mos",
+    theme: "mos-light",
   },
   {
     title: "Network Explorer ↗",

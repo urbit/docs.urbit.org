@@ -6,6 +6,16 @@
 @import "./docsearch-button";
 @import "./docsearch-modal";
 
+.wit {
+  --black: #F8FAF8;
+  --white: #14140F;
+  --gray: #14140F;
+  --tint: #14140F;
+  --lite: #C8C8C8;
+  --brite: #F8FAF8;
+}
+
+
 :root {
   @apply blu-light prism-light;
 }

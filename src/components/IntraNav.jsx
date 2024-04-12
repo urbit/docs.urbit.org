@@ -10,7 +10,7 @@ const ourSite = {
 
 const sites = [
   {
-    title: "Urbit.org",
+    title: "Urbit",
     href: "https://urbit.org",
     theme: "wit",
   },

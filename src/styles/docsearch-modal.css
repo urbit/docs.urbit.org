@@ -181,7 +181,10 @@
   min-height: var(--docsearch-spacing);
   overflow-y: auto; /* firefox */
   overflow-y: overlay;
-  padding: var(--docsearch-spacing);
+  padding: 0
+    var(--docsearch-spacing)
+    var(--docsearch-spacing)
+    var(--docsearch-spacing);
   scrollbar-color: var(--docsearch-muted-color)
     var(--docsearch-modal-background);
   scrollbar-width: thin;

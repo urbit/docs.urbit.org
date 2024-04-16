@@ -356,7 +356,7 @@ such a complex expression.
 
 ## `;;` "micmic"
 
-Normalize with a mold, asserting fixpoint.
+Mold noun.
 
 #### Syntax
 
@@ -394,31 +394,39 @@ Two arguments, fixed.
 [%mcmc p=spec q=hoon]
 ```
 
+#### Discussion
+
+In an old version of Hoon, molds would return their bunt value when
+molding failed. Micmic was useful because it would make them crash
+rather than bunt on failure. In current Hoon, molds always crash on
+failure, so micmic is strictly unnecessary. However, it's still
+sometimes used for stylistic reasons, to clearly indicate "I'm molding"
+rather than "I'm merely calling a function".
+
+It can also sometimes be useful to force structure-mode parsing of cell
+molds when molding, rather than using buccol's irregular form.
+
 #### Examples
 
-Fails because of auras:
+Basic micmic molding (same as normal molding):
 
 ```
-> ^-(tape ~[97 98 99])
-mint-nice
--need.?(%~ [i=@tD t=""])
--have.[@ud @ud @ud %~]
-nest-fail
-dojo: hoon expression failed
+> ;;(@ud 123)
+123
 ```
 
-Succeeds because molds don't care about auras:
+Using buccol for a cell mold:
 
 ```
-> ;;(tape ~[97 98 99])
-"abc"
+> (,[@ @] [1 1])
+[1 1]
 ```
 
-Fails because not a fixpoint:
+Using micmic instead:
 
 ```
-> ;;(tape [50 51 52])
-dojo: hoon expression failed
+> ;;([@ @] [1 1])
+[1 1]
 ```
 
 ---

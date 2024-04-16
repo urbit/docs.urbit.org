@@ -4,18 +4,17 @@ template = "doc.html"
 weight = 0
 +++
 
-The Urbit runtime is named Vere. It's the binary executable you use to run your
-ship (`urbit` on Linux and MacOS, `urbit.exe` on Windows). Vere manages your
-ship's [pier](https://urbit.org/docs/glossary/pier), handles events, and runs
-the Nock virtual machine that performs your ship's computations.
+The Urbit runtime is named {% tooltup label="Vere" href="/glossary/vere" /%}.
+It's the binary executable you use to run your ship. Vere manages your ship's
+{% tooltip label="pier" href="/glossary/pier" /%}, handles events, and runs the
+Nock virtual machine that performs your ship's computations.
 
 Before version 1.9, Vere was split into two separate binaries: The `urbit`
 "king"/"urth" responsible for I/O and event persistence, and the `urbit-worker`
 "serf"/"mars" responsible for computations and state persistence. As of version
-1.9, these have been merged into a single `urbit` (or `urbit.exe`) binary,
-though under the hood there's still two separate processes. The alternative king
-written in Haskell, `urbit-king`, has also been deprecated, so there's now only
-one binary.
+1.9, these have been merged into a single binary, though under the hood there's
+still two separate processes. The alternative king written in Haskell,
+`urbit-king`, has also been deprecated, so there's now only one binary.
 
 Version 1.9 introduced a couple of new features. The first is the concept of
 "docking". When a new ship is booted, Vere will automatically copy itself into
@@ -27,10 +26,10 @@ binary, v1.9 or later will not automatically perform this step, so it must be
 done with the `dock` utility ([see below](#dock)).
 
 The `pace` mentioned in the path above is a new feature, and represents a
-release channel. At the time of writing, the default `pace` is `live`, which is
-for standard, stable releases. Alternative release channels will be introduced
-in the future, for things such as pre-release testing, nightly builds, etc. The
-`pace` is specified in a text file at `[pier]/.bin/pace`.
+release channel. The default `pace` is `live`, which is for standard, stable
+releases. There is also `soon` for pre-release candidates, and `edge` for
+unstable development builds (dangerous). The `pace` is specified in a text file
+at `[pier]/.bin/pace`.
 
 Along with docking, a binary upgrade feature has also been introduced. If you
 run the `next` utility ([described below](#next)), Vere will check if there is a
@@ -112,12 +111,13 @@ urbit -F zod
 
 ### Compact State
 
-**Note the ship should be shut down before using either of the utilities described below.**
+**Note the ship should be shut down before using either of the utilities
+described below.**
 
-Ships currently have a hard 2GB limit on the size of their state. Sometimes the
-state of long-running, heavily-used ships can exceed the 2GB limit and crash
-with a `bail: meme` error. To fix this, there are a couple of ways to reduce the
-size of the ship's state.
+Ships currently have a default 2GB limit on the size of their state. Sometimes
+the state of long-running, heavily-used ships can exceed the 2GB limit and
+crash with a `bail: meme` error. To fix this, there are a couple of ways to
+reduce the size of the ship's state.
 
 The first is the `pack` utility, which defragments the ship's snapshot. This
 usually only mildly compacts the state, but it is fast and uses little memory.
@@ -200,37 +200,35 @@ replaying all the events in the log. In practice, event logs become large and
 unwieldy over time. They can reach many GB in size, and when they're very large
 it takes an impractically long time to replay them.
 
-To reduce the size of the event log, the binary includes a [`chop`](#chop)
-utility. Chop wipes old events, and replaces them with a single event loading
-the whole current state of the ship. This *drastically* reduces the size of the
-log - typically down to less than a couple of GB from any larger size. Note this
-will irreversibly delete the old events, but most people don't need them anyway.
+In older versions of Vere, all events were stored in a single continuous event
+log file. Recently, the "epoch" system was introduced, where a separate,
+independent file is periodically created for new events - usually upon upgrade
+of the runtime. These separate event log portions are called epochs.
 
-To `chop` an event log, first shut down your ship with `ctrl+d` or `|exit` in
+To reduce the total size of the event log, the binary includes a
+[`chop`](#chop) utility to delete epochs older than the latest two.
+
+To `chop` the event log, first shut down your ship with `ctrl+d` or `|exit` in
 the Dojo. Next, run `urbit chop /path/to/pier` or `/path/to/pier/.run chop` if
 it's docked. You'll get an output that looks something like this:
 
 ```
 loom: mapped 2048MB
 boot: protected loom
-live: loaded: MB/140.541.952
-boot: installed 652 jets
-loom: image backup complete
+live: mapped: MB/425.787.392
+live: loaded: KB/16.384
+boot: installed 967 jets
+disk: loaded epoch 0i95037
+chop: deleting epoch 0i346
+chop: deleting epoch 0i0
 chop: event log truncation complete
-      event log backup written to ~/piers/zod/.urb/log/chop/data_1-449.mdb.bak
-      WARNING: ENSURE YOU CAN RESTART YOUR SHIP BEFORE DELETING YOUR EVENT LOG BACKUP FILE!
-      if you can't, restore your log by running:
-      `mv ~/piers/zod/.urb/log/chop/data_1-449.mdb.bak ~/piers/zod/.urb/log/data.mdb` then try again
 ```
 
-At this point the event log has been truncated but a backup has been saved, so
-the size of the pier hasn't yet been reduced. Before deleting the backup, try
-booting your ship and make sure it runs fine. **IT IS VERY IMPORTANT TO CHECK
-THIS**. Assuming your ship boots fine, delete the backup in
-`/path/to/pier/.urb/log/chop/data_XXXXX.mdb.bak`.
-
-If your ship failed to boot, you can restore the backup by moving it to
-`/path/to/pier/.urb/log/data.mdb` as described in Vere's print-out above.
+If only two or fewer epochs currently exist, chop won't do anything.
+Additionally, if most of the event log size is contained in the latest 2
+epochs, it won't be very effective. In order to create new epochs, and
+therefore shunt existing ones towards being removed by `chop`, you can use the
+[`roll`](#roll) utility before chopping.
 
 ---
 
@@ -243,21 +241,21 @@ of the previously separate `urbit-worker`.
 
 ### `chop` 
 
-Truncate the event log. Old events will be deleted and replaced with the current
-state of the ship. This can significantly reduce the size of the pier, but you
-won't be able to replay all events from the beginning (this shouldn't matter
-though).
+Truncate the event log by deleting old epochs (event log segments). Epochs
+older than the two latest will be deleted. This can significantly reduce the
+size of the pier, but you won't be able to replay all events from the very
+beginning (this shouldn't matter though).
 
 **You must shut down your ship before running this.**
 
 - Undocked: `urbit chop [pier]`
 - Docked: `[pier]/.run chop`
 
-This will save a backup of the event log to
-`/path/to/pier/.urb/log/chop/data.XXXXX.mdb.bak` when complete. Make sure your
-ship starts up again before deleting that backup file. If your ship fails to
-boot after running `chop`, move that `.bak` file back to
-`/path/to/pier/.urb/log/data.mdb` and try booting again.
+If there are two or fewer epochs, `chop` won't do anything. Additionally,
+if most of the event log data is contained in the latest two epochs, `chop`
+won't be very effective at reducing its size. You can use the
+[`roll`](#roll) utility to create new epochs, so `chop` can chop the
+existing ones.
 
 ### `cram`
 
@@ -398,6 +396,15 @@ previously with `cram` or `-n`.
 
 - Undocked: `urbit queu [pier] 10000`
 - Docked: `[pier]/.run queu 10000`
+
+### `roll`
+
+Create a new epoch. An epoch is a discrete, separate portion of the event log.
+This is useful in combination with [`chop`](#chop), to reduce the size of the
+event log on disk.
+
+- Undocked: `urbit roll [pier]`
+- Docked: `[pier]/.run roll`
 
 ### `vere ARGS DIR`
 

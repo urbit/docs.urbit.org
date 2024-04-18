@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import classnames from "classnames";
 import { join } from "path";
@@ -47,7 +47,7 @@ function NavItem({
         className={classnames(
           "flex justify-between body-sm",
           { "layout-pl": alignSig, "mb-2": isOpen && alignSig },
-          color(isUnderThis)
+          color(isUnderThis),
         )}
         href={href}
         onClick={(e) => {
@@ -71,7 +71,7 @@ function NavItem({
         className={classnames(
           "flex justify-between w-full body-sm",
           sigAlignment,
-          color(isUnderThis)
+          color(isUnderThis),
         )}
         href={href}
         onClick={(e) => {
@@ -119,6 +119,12 @@ function NavSection({
   const isUnderThisNotOn =
     `${path}/`.includes(`${root}/`) && `/${root}` !== path;
   const [isOpen, setOpen] = useState(posts.auto_expand || isUnderThis);
+
+  useEffect(() => {
+    if (`/${root}` === path) {
+      setOpen(true);
+    }
+  }, [path]);
 
   return (
     <>
@@ -188,7 +194,7 @@ export default function ContentNav({
     <nav
       className={classnames(
         "flex flex-col w-full overflow-y-auto overflow-x-hidden",
-        { "offset-r": !mobile }
+        { "offset-r": !mobile },
       )}
     >
       {posts.pages.sort(sort(posts)).map((page) => {

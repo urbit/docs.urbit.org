@@ -3,6 +3,160 @@ title = "Docs guide"
 name = "docs-guide"
 +++
 
+## FAQ Component
+
+{% markdocExample %}
+````md
+{% faq %}
+
+## Optional title
+
+And optional paragraph, or whatever. All the usual markdoc stuff works...
+
+{% faqSection question="Question 1?" %}
+Answer to question 1.
+{% /faqSection %}
+
+{% faqSection question="Question 2?" %}
+Answer to question 2.
+{% /faqSection %}
+
+.
+.
+.
+
+{% /faq %}
+````
+{% /markdocExample %}
+
+### Example
+
+#### Markdown
+
+{% markdocExample %}
+````md
+{% faq %}
+
+## FAQ
+
+{% faqSection question="How do I write a proposal?" %}
+Proposals should clearly articulate your idea and the value it
+will bring to the Urbit network.
+
+Good proposals all include the following:
+
+
+— A detailed and clear description of the proposal. If you're
+proposing something technical, user stories are a good idea.
+
+— An overview of why you are the right person for the job. A
+description of your background, familiarity with the project, and
+professional/education experience are all good starts.
+
+— Your estimate for date of completion.
+
+— The amount of funding you'd like for the project, denominated in
+stars. What specific deliverables will look like.
+
+
+It’s recommended to break your project into milestones, each of
+which must have its own completion dates, funding amounts and
+deliverables. In general, proposals should target a first
+deliverable within two months of the start of the project.
+Proposals should have a maximum of five milestones as scoping a
+project beyond that is impractical, and each milestone should
+constitute significant enough work to warrant the reward of a full
+star.
+{% /faqSection %}
+
+{% faqSection question="Question 2?" %}
+Answer to question 2.
+{% /faqSection %}
+
+{% faqSection question="Question 3?" %}
+Answer to question 3.
+{% /faqSection %}
+
+{% faqSection question="Question 4?" %}
+Answer to question 4.
+{% /faqSection %}
+
+{% /faq %}
+````
+{% /markdocExample %}
+
+#### Result
+
+{% faq %}
+
+## FAQ
+
+{% faqSection question="How do I write a proposal?" %}
+Proposals should clearly articulate your idea and the value it
+will bring to the Urbit network.
+
+Good proposals all include the following:
+
+
+— A detailed and clear description of the proposal. If you're
+proposing something technical, user stories are a good idea.
+
+— An overview of why you are the right person for the job. A
+description of your background, familiarity with the project, and
+professional/education experience are all good starts.
+
+— Your estimate for date of completion.
+
+— The amount of funding you'd like for the project, denominated in
+stars. What specific deliverables will look like.
+
+
+It’s recommended to break your project into milestones, each of
+which must have its own completion dates, funding amounts and
+deliverables. In general, proposals should target a first
+deliverable within two months of the start of the project.
+Proposals should have a maximum of five milestones as scoping a
+project beyond that is impractical, and each milestone should
+constitute significant enough work to warrant the reward of a full
+star.
+{% /faqSection %}
+
+{% faqSection question="Question 2?" %}
+Answer to question 2.
+{% /faqSection %}
+
+{% faqSection question="Question 3?" %}
+Answer to question 3.
+{% /faqSection %}
+
+{% faqSection question="Question 4?" %}
+Answer to question 4.
+{% /faqSection %}
+
+{% /faq %}
+
+## Button
+
+{% markdocExample %}
+````md
+{% button label="Click me" link="https://example.com" /%}
+
+{% button className="btn-dark" label="Click me" link="https://example.com" /%}
+````
+{% /markdocExample %}
+
+#### Markdown
+
+{% markdocExample %}
+````md
+This is a {% button label="Button" link="http://www.google.com" /%} and an {% button className="btn-dark" label="Other" link="http://www.google.com" /%}.
+````
+{% /markdocExample %}
+
+#### Result
+
+This is a {% button label="Button" link="http://www.google.com" /%} and an {% button className="btn-dark" label="Other" link="http://www.google.com" /%}.
+
 ## Code Block
 
 {% markdocExample %}

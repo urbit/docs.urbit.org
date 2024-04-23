@@ -21,7 +21,7 @@
     "@docsearch/js": "^3.5.2",
     "@iarna/toml": "^2.2.5",
     "@socialgouv/matomo-next": "^1.8.0",
-    "@urbit/fdn-design-system": "github:urbit/fnd-design-system#8ba733f",
+    "@urbit/fdn-design-system": "github:urbit/fnd-design-system#829f6f5",
     "@urbit/markdoc": "^0.1.6",
     "autoprefixer": "10.4.15",
     "classnames": "^2.3.2",

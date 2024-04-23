@@ -476,6 +476,7 @@ svg.DocSearch-Hit-Select-Icon {
 .DocSearch-Screen-Icon {
   color: var(--docsearch-muted-color);
   padding-bottom: 12px;
+  display: none;
 }
 
 .DocSearch-NoResults-Prefill-List {

@@ -8,7 +8,7 @@ description = "Hoon Academy is our flagship live course and introduction to Urbi
 
 Hoon Academy is the live, cohort based Hoon course offered by the Urbit Foundation. With a hands-on instructor, exercises and feedback, office hours and discussions, Hoon Academy will be the best way for most to get started as an Urbit developer.
 
-The course is offered a few times per year, with the next cohort starting in Fall of 2024. 
+Our next cohort starts on May 14, with classes running Tuesdays at 12pm noon for 9 weeks. Sessions will also be recorded, so you can enroll if you can't make it live.
 
 The syllabus from our last offering [is available here](https://docs.google.com/document/d/1LQL4B59B0uK75KFSErb-BFJ8pbhVxyoyA1tRiv4RBlc/edit?usp=sharing).
 

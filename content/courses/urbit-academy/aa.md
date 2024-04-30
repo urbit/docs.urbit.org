@@ -20,3 +20,15 @@ The next cohort for App Academy will begin in summer of 2024. [Sign up here.](ht
 
 Until then, feel free to work through our online [App School
 docs](/courses/app-school).
+
+{% grid %}
+
+  {% iconcard
+    title="Sign up for App Academy here"
+    description=""
+    href="https://airtable.com/appr051v1PWk2x1QF/shrqzaLRLzDsHDnCX"
+    icon="AppSchoolI"
+    small=true
+  /%}
+
+{% /grid %}

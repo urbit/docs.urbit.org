@@ -21,7 +21,7 @@ Hoon Academy graduates will be well-positioned to read and interpret most Hoon c
     description="Sign up here"
     href="https://airtable.com/appr051v1PWk2x1QF/shrqzaLRLzDsHDnCX"
     icon="HoonSchool"
-    small=true
+    small=false
   /%}
-  
+
 {% /grid %}

@@ -14,6 +14,7 @@ The syllabus from our last offering [is available here](https://docs.google.com/
 
 Hoon Academy graduates will be well-positioned to read and interpret most Hoon code, produce useful standalone code of their own, and start exploring the Urbit system for app development or core development.
 
+{% grid %}
 
   {% iconcard
     title=""
@@ -22,3 +23,5 @@ Hoon Academy graduates will be well-positioned to read and interpret most Hoon c
     icon="HoonSchool"
     small=true
   /%}
+  
+{% /grid %}

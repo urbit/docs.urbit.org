@@ -16,7 +16,7 @@ is a good fit for you.
 
 By completing App Academy as a cohort student, you should be able to design, implement, and distribute basic user apps and start contributing to Urbit userspace bounties.
 
-The next cohort for App Academy will begin in June 2024. [Sign up here.](https://airtable.com/appr051v1PWk2x1QF/shrdZcSQrIIb6mAmx)
+The next cohort for App Academy will begin in summer of 2024. [Sign up here.](https://airtable.com/appr051v1PWk2x1QF/shrdZcSQrIIb6mAmx)
 
 Until then, feel free to work through our online [App School
 docs](/courses/app-school).

@@ -1,7 +1,7 @@
 +++
 title = "Hoon Academy"
 weight = 100
-next_cohort = "Fall 2024"
+next_cohort = "May 14, 2024"
 image = "https://media.urbit.org/developers/images/hoon-school-live.svg"
 description = "Hoon Academy is our flagship live course and introduction to Urbit development."
 +++
@@ -12,7 +12,13 @@ The course is offered a few times per year, with the next cohort starting in Fal
 
 The syllabus from our last offering [is available here](https://docs.google.com/document/d/1LQL4B59B0uK75KFSErb-BFJ8pbhVxyoyA1tRiv4RBlc/edit?usp=sharing).
 
-[Sign up for the course here](https://airtable.com/appr051v1PWk2x1QF/shrqzaLRLzDsHDnCX).
+Hoon Academy graduates will be well-positioned to read and interpret most Hoon code, produce useful standalone code of their own, and start exploring the Urbit system for app development or core development.
 
-Hoon Academy graduates will be well-positioned to read and
-interpret most Hoon code, produce useful standalone code of their own, and start exploring the Urbit system for app development or core development.
+
+  {% iconcard
+    title="Sign up here"
+    description=""
+    href="https://airtable.com/appr051v1PWk2x1QF/shrqzaLRLzDsHDnCX"
+    icon="HoonSchool"
+    small=true
+  /%}

@@ -25,9 +25,15 @@ const sites = [
     theme: "mos-light",
   },
   {
+    title: "Technical Journal",
+    href: "https://ustj.urbit.org",
+    theme: "ylw",
+  },
+  {
     title: "Network Explorer ↗",
     href: "https://network.urbit.org",
     target: "_blank",
+    theme: "gry",
   },
 ];
 

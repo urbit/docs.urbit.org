@@ -324,7 +324,7 @@ it as a way of creating a random-value arm that we'll use later on with
 `++rads:random`.
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the
-unshuffled deck with {% tooltip label="++lent
+unshuffled deck with {% tooltip label="++lent"
 href="/language/hoon/reference/stdlib/2b#lent" /%}.
 
 `?:  =(remaining 1)` checks if we have only one card remaining. If

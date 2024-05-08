@@ -242,7 +242,7 @@ interpret it as an atom with aura `@p` and treat it accordingly.
 
 Here's another example of type inference at work:
 
-```unknown
+```hoon
 > (add 15 15)
 30
 
@@ -266,7 +266,7 @@ This is by design, however. Notice that when you `add` a decimal and a
 hexadecimal above, the correct answer is returned (pretty-printed as a
 decimal). This works for all of the unsigned auras:
 
-```unknown
+```hoon
 > (add 100 0b101)
 105
 
@@ -551,7 +551,7 @@ figure out which mold the Hoon compiler thinks something is to use the
 `!>` {% tooltip label="zapgar"
 href="/language/hoon/reference/rune/zap#-zapgar" /%} rune.
 
-```
+```hoon
 > !>(0xace2.bead)
 [#t/@ux q=2.900.541.101]
 ```
@@ -559,7 +559,7 @@ href="/language/hoon/reference/rune/zap#-zapgar" /%} rune.
 For reasons which will be elaborated in Trees, this is often employed as
 the so-called “type spear” `-:!>`:
 
-```
+```hoon
 > -:!>(0xace2.bead)
 #t/@ux
 ```

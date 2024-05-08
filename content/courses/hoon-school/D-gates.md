@@ -231,7 +231,7 @@ expression as valid Hoon code, but can't actually apply it to an input
 < 1.tfm
   [ [a=@ud b=@ud]
     [our=@p now=@da eny=@uvJ]
-    <17.bny 33.ehb 14.dyd 53.vlb 77.lrt 232.oiq 51.qbt 123.zao 46.hgz 1.pnw %140>
+    <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
   ]
 ```
 
@@ -454,7 +454,7 @@ In this section, we will compose our first generator.
 
 ### The Gate
 
-```
+```hoon
 ::  Square a number.
 |=  a=@ud
 ^-  @ud

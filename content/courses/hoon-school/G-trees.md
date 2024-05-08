@@ -512,7 +512,7 @@ address values in the subject.
 If you use a face that isn't in the subject you'll get a `find.[face]`
 crash:
 
-```
+```hoon
 > a:[b=12 c=14]
 -find.a
 [crash message]
@@ -677,7 +677,7 @@ core, applies certain changes, and re-evaluates the expression.
 ?:  =(n 1)
   n
 %+  mul
-n
+  n
 $(n (dec n))
 ```
 

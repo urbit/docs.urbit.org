@@ -363,12 +363,12 @@ What is `++rs`?  It's a door with 21 arms:
 
 ```hoon
 > rs
-<21|hqd [r=?(%d %n %u %z) <51.qbt 123.ppa 46.hgz 1.pnw %140>]>
+<21|ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>
 ```
 
 The {% tooltip label="battery" href="/glossary/battery" /%} of this {%
 tooltip label="core" href="/glossary/core" /%}, pretty-printed as
-`21|hqd`, has 21 arms that define functions specifically for `@rs`
+`21|ezj`, has 21 arms that define functions specifically for `@rs`
 atoms.  One of these arms is named `++add`; it's a different `add` from
 the standard one we've been using for vanilla atoms, and thus the one we
 used above.  When you invoke {% tooltip label="add:rs"
@@ -380,7 +380,7 @@ tooltip label="gate" href="/glossary/gate" /%} for adding `@rs` atoms:
 
 ```hoon
 > add:rs
-<1.uka [[a=@rs b=@rs] <21.hqd [r=?(%d %n %u %z) <51.qbt 123.ppa 46.hgz 1.pnw %140>]>]>
+<1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
 What about the sample of the `rs` {% tooltip label="door"
@@ -406,7 +406,7 @@ href="/glossary/sample" /%} to `%u` for 'round up':
 
 ```hoon
 > ~(add rs %u)
-<1.uka [[a=@rs b=@rs] <21.hqd [r=?(%d %n %u %z) <51.qbt 123.ppa 46.hgz 1.pnw %140>]>]>
+<1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
 This is the gate produced by `add`, and you can see that its sample is a

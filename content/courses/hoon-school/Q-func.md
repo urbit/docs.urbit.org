@@ -134,7 +134,7 @@ href="/glossary/list" /%} of atoms:
 
 We can rewrite the Caesar cipher program using turn:
 
-```hoon
+```hoon {% copy=true %}
 |=  [a=@ b=tape]
 ^-  tape
 ?:  (gth a 25)
@@ -162,7 +162,7 @@ applied, `++roll` and `++reel` produce an accumulated value.
 
 ```hoon
 > (roll `(list @)`[1 2 3 4 5 ~] add)
-q=15
+15
 
 > (reel `(list @)`[1 2 3 4 5 ~] mul)
 120

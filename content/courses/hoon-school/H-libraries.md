@@ -57,7 +57,7 @@ href="/glossary/gate" /%} functionality for interactive coding.
 `-build-file` accepts a file path and returns the built operational
 code.  For instance:
 
-```
+```hoon
 > =ntw -build-file %/lib/number-to-words/hoon
 
 > one-hundred:numbers:ntw  
@@ -552,7 +552,7 @@ you.
 
 ```hoon
 > |commit %base
-kiln: commit detected at %base (local)
+>=
 + /~zod/base/2/gen/demo/hoon
 ```
 

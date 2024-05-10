@@ -18,7 +18,7 @@ very simple and just set an initial value for the state, or even do nothing at
 all and return the agent core exactly as-is. It may also be more complicated,
 and perform some [scries](/system/kernel/arvo/guides/scry) to obtain extra data or
 check that another agent is also installed. It might send off some `card`s to
-other agents or vanes to do things like load data in to the `%settings-store`
+other agents or vanes to do things like load data in to the `%settings`
 agent, bind an Eyre endpoint, or anything else. It all depends on the needs of
 your particular application. If `on-init` fails for whatever reason, the agent
 installation will fail and be aborted.

@@ -313,15 +313,15 @@ dojo will print the `tang` in the `%poke-ack` nack:
 
 ```
 > :pokeme %dec
-/sys/vane/gall/hoon:<[1.372 9].[1.372 37]>
-/app/pokeme/hoon:<[31 3].[43 5]>
-/app/pokeme/hoon:<[32 3].[43 5]>
-/app/pokeme/hoon:<[34 5].[42 7]>
-/app/pokeme/hoon:<[35 5].[42 7]>
-/app/pokeme/hoon:<[38 7].[41 27]>
-/app/pokeme/hoon:<[39 9].[40 11]>
+/sys/vane/gall/hoon:<[1.828 9].[1.828 37]>
+/app/pokeme/hoon:<[35 3].[48 5]>
+/app/pokeme/hoon:<[36 3].[48 5]>
+/app/pokeme/hoon:<[38 5].[47 7]>
+/app/pokeme/hoon:<[39 5].[47 7]>
+/app/pokeme/hoon:<[43 7].[46 27]>
+/app/pokeme/hoon:<[44 9].[45 11]>
 "Can't decrement - already zero!"
-/app/pokeme/hoon:<[40 9].[40 11]>
+/app/pokeme/hoon:<[45 9].[45 11]>
 dojo: app poke failed
 ```
 
@@ -496,7 +496,7 @@ It could tell they were increments because the `%poke-ack`s came back on the
 >=
 ```
 
-Let's try decrementing `%pokeme` so it's an odd number, and then try a `%dec`
+Let's try decrementing `%pokeme` so val is 1, and then try a `%dec`
 via `%pokeit`:
 
 ```

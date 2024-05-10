@@ -16,11 +16,12 @@ just what is necessary to understand it from the perspective of userspace.
 [Arvo](/system/kernel/arvo) is the Urbit OS and kernel which is written in
 [Hoon](/glossary/hoon), compiled to [Nock](/glossary/nock), and
 executed by the runtime environment and virtual machine
-[Vere](/glossary/vere). Arvo has eight kernel modules called vanes:
+[Vere](/glossary/vere). Arvo has ten kernel modules called vanes:
 [Ames](/system/kernel/ames), [Behn](/system/kernel/behn),
 [Clay](/system/kernel/clay), [Dill](/system/kernel/dill),
 [Eyre](/system/kernel/eyre), [Gall](/system/kernel/gall),
-[Iris](/system/kernel/iris), and [Jael](/system/kernel/jael).
+[Iris](/system/kernel/iris), [Jael](/system/kernel/jael),
+[Khan](/system/kernel/khan), and [Lick](/system/kernel/lick).
 
 Arvo itself has its own small codebase in `/sys/arvo.hoon` which primarily
 implements the [transition function](/system/kernel/arvo#operating-function) `(State, Event) -> (State, Effects)` for
@@ -74,6 +75,10 @@ Here's a brief summary of each of the vanes:
   application to be able to run threads via a Unix socket and receive their
   results. Khan's external interface is still experimental, but it's also good
   for running threads internally.
+- **Lick**: Inter-process communication (IPC) vane. Lick manages IPC ports, and the
+  communication between Urbit applications and POSIX applications via these ports.
+  Other vanes and applications ask Lick to open an IPC port, notify it when something
+  is connected or disconnected, and transfer data between itself and the Unix application.
 
 ## Userspace
 
@@ -141,7 +146,7 @@ The result of this total persistence is that the filesystem—Clay—does not ha
 the same fundamental role as on an ordinary OS. In Arvo, very little of its data
 is actually stored in Clay. The vast majority is just in the state of Gall
 agents and vanes. For example, none of the chat messages, notebooks, etc, in the
-Groups app exist in Clay - they're all in the state of the `%graph-store` agent.
+Tlon app exist in Clay - they're all in the state of the `%channels` agent.
 For the most part, Clay just stores source code.
 
 Clay has a few unique features—it's a typed filesystem, with all file types
@@ -154,7 +159,7 @@ some of these features in more detail later in the guide.
 
 The fundamental unit in Clay is a desk. Desks are kind of like git
 repositories. By default, new urbits come with the following desks included:
-`%base`, `%landscape`, `%groups`, `%talk` and `%webterm`.
+`%base`, `%landscape`, `%groups` and `%webterm`.
 
 - `%base` - This desk contains the kernel as well as some core agents and utilities.
 - `%landscape` - This desk contains agents and utilities for managing apps, and the
@@ -213,7 +218,8 @@ sys
 │   ├── gall.hoon
 │   ├── iris.hoon
 │   ├── jael.hoon
-│   └── khan.hoon
+│   ├── khan.hoon
+│   └── lick.hoon
 └── zuse.hoon
 ```
 

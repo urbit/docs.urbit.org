@@ -182,16 +182,17 @@ Now, let's have a look:
 > skeleton
 < 10.fxw
   [   bowl
-    [ [our=@p src=@p dap=@tas]
+    [ [our=@p src=@p dap=@tas sap=/]
       [ wex=nlr([p=[wire=/ ship=@p term=@tas] q=[acked=?(%.y %.n) path=/]])
         sup=nlr([p=it(/) q=[p=@p q=/]])
+        sky=nlr([p=/ q=nlr([key=@ud val=[p=@da q=?([%.y p=[p=@tas q=*]] [%.n p=@uvI])]])])
       ]
       act=@ud
       eny=@uvJ
       now=@da
-      byk=[p=@p q=@tas r=?([%da p=@da] [%tas p=@tas] [%ud p=@ud])]
+      byk=[p=@p q=@tas r=?([%da p=@da] [%tas p=@tas] [%ud p=@ud] [%uv p=@uv])]
     ]
-    <17.zbp 33.wxp 14.dyd 53.vlb 77.wir 232.wfe 51.qbt 123.zao 46.hgz 1.pnw %140>
+    <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
   ]
 >
 ```
@@ -226,14 +227,14 @@ the tail is just all the usual standard library functions:
 ```
 > +.skeleton
 [   bowl
-  [ [our=~zod src=~zod dap=%$]
-    [wex={} sup={}]
+  [ [our=~zod src=~zod dap=%$ sap=/]
+    [wex=~ sup=~ sky=~]
     act=0
     eny=0v0
     now=~2000.1.1
-    byk=[p=~zod q=%$ r=[%ud p=0]]
+    byk=[p=~zod q=%$ r=[%uv p=0v0]]
   ]
-  <17.zbp 33.wxp 14.dyd 53.vlb 77.wir 232.wfe 51.qbt 123.zao 46.hgz 1.pnw %140>
+  <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
 ]
 ```
 
@@ -269,15 +270,15 @@ If we again examine our agent core's payload by looking at the tail of
 ```
 > +.skeleton
 [   bowl
-  [ [our=~zod src=~zod dap=%$]
-    [wex={} sup={}]
+  [ [our=~zod src=~zod dap=%$ sap=/]
+    [wex=~ sup=~ sky=~]
     act=0
     eny=0v0
     now=~2000.1.1
-    byk=[p=~zod q=%$ r=[%ud p=0]]
+    byk=[p=~zod q=%$ r=[%uv p=0v0]]
   ]
   foo=42
-  <17.zbp 33.wxp 14.dyd 53.vlb 77.wir 232.wfe 51.qbt 123.zao 46.hgz 1.pnw %140>
+  <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
 ]
 ```
 

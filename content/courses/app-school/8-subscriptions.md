@@ -584,7 +584,7 @@ currently exists, getting the new subscriber up to date.
 
 #### `/app/todo-watcher.hoon`
 
-```hoon
+```hoon {% copy=true mode="collapse" %}
 /-  todo
 /+  default-agent, dbug
 |%

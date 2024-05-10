@@ -329,26 +329,12 @@ do the following in the relevant agent arm:
 ?>  =(src.bowl our.bowl)
 ```
 
-A common permission is to allow messages from the local ship, as well as all of
-its moons, which can be done with the `team:title` standard library function:
-
-```hoon
-?>  (team:title our.bowl src.bowl)
-```
-
 If we want to only allow messages from a particular set of ships, we could, for
 example, have a `(set @p)` in our agent's state called `allowed`. Then, we can
 use the `has:in` set function to check:
 
 ```hoon
 ?>  (~(has in allowed) src.bowl)
-```
-
-If we wanted to check a ship was allowed in a particular group in the Groups
-app, we could scry our ship's `%group-store` agent and compare:
-
-```hoon
-?>  .^(? %gx /(scot %p our.bowl)/group-store/(scot %da now.bowl)/groups/ship/~bitbet-bolbel/urbit-community/join/(scot %p src.bowl)/noun)
 ```
 
 There are many ways to handle permissions, it all depends on your particular use
@@ -394,7 +380,7 @@ Permissions:
 - Permissions are most commonly enforced with wutgar (`?>`) and wutgal (`?<`)
   assertions in the relevant agent arms.
 - Messages can be restricted to the local ship with `?> =(src.bowl our.bowl)` or to
-  its moons as well with `?> (team:title our.bowl src.bowl)`.
+  its moons as well with `?> |(=(our src):bowl (moon:title our.bowl src.bowl))`.
 - There are many other ways to handle permissions, it just depends on the needs
   of the particular agent.
 

@@ -174,36 +174,6 @@ applied, `++roll` and `++reel` produce an accumulated value.
   href="/glossary/gate" /%} which calculates the factorial of a number.
 
 
-##  Aside on Wet Gates
-
-If you've already encountered [wet gates](/courses/hoon-school/R-metals)
-and how they handle their {% tooltip label="sample"
-href="/glossary/sample" /%}, you may eventually circle back around to
-attempting to write statements which curry a {% tooltip label="wet gate"
-href="/glossary/wet-gate" /%}.  For instance, here is an attempt to
-curry `++reel` which itself takes a gate (in this case {% tooltip
-label="++add" href="/language/hoon/reference/stdlib/1a#add" /%}) as an
-argument:
-
-```hoon
-> ((curr reel add) `(list @)`[1 2 3 4 ~])
-mull-grow
--find.i.a
-dojo: hoon expression failed
-```
-
-Unfortunately, `++cury` and `++curr` don't work with wet gates, and
-you'll see a `mull-grow` error.
-
-One solution is to “dry out” the wet gate using {% tooltip
-label="++bake" href="/language/hoon/reference/stdlib/2b#bake" /%}:
-
-```hoon
-> ((curr (bake reel ,[(list @) _add]) add) `(list @)`[1 2 3 4 ~])
-10
-```
-
-
 ##  Classic Operations
 
 Functional programmers frequently rely on three design patterns to

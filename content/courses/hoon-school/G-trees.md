@@ -743,7 +743,7 @@ One verbose Hoon program
 ==
 ```
 
-Save this as a file `/gen/num2digit.hoon`, `|commit %base`, and run it:
+Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 
 ```hoon
 > +num2dig 1.000
@@ -1038,7 +1038,7 @@ First, bind these faces.
     5.  `"four"`
     6.  `a="four"` - Note that this is different from the above!
     7.  `"four"`
-    8.  `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"]9]`
+    8.  `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]`
     9.  `%bweh`
     10.  `9` appears 3 times:
     

@@ -360,11 +360,11 @@ Here is a snippet of Hoon code:
  
 ```hoon {% copy=true %}
 ^-  list
-:~  [hen %lsip %e %init ~]
-    [hen %lsip %d %init ~]
-    [hen %lsip %g %init ~]
-    [hen %lsip %c %init ~]
-    [hen %lsip %a %init ~]
+:~  [hen %slip %e %init ~]
+    [hen %slip %d %init ~]
+    [hen %slip %g %init ~]
+    [hen %slip %c %init ~]
+    [hen %slip %a %init ~]
 ==
 ```
 

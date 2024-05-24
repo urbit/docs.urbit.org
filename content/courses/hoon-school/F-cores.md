@@ -251,7 +251,7 @@ regular runic form.
 
 ```hoon
 > !,  *hoon  (add 5 6)
-[%cncl p=[%wing p=~[%add]] q=~[[%sand p=%ud q=5] [%sand p=%ud q=6]]]
+[%cncl p=[%wing p=~[%add]] q=[i=[%sand p=%ud q=5] t=[i=[%sand p=%ud q=6] t=~]]]
 ```
 
 ```hoon
@@ -266,27 +266,27 @@ regular runic form.
  %=  $  
    n  (dec n)  
  ==  
-[ %brts  
- p=[%bcts p=term=%n q=[%base p=[%atom p=~.ud]]]  
-   q  
- [ %brhp  
-     p  
-   [ %sgpm  
-     p=0  
-     q=[%wing p=~[%n]]  
-       r  
-     [ %wtcl  
-       p=[%dtts p=[%wing p=~[%n]] q=[%sand p=%ud q=1]]  
-       q=[%wing p=~[%n]]  
-         r  
-       [ %cnls  
-         p=[%wing p=~[%mul]]  
-         q=[%wing p=~[%n]]  
-         r=[%cnts p=~[%$] q=~[[p=~[%n] q=[%cncl p=[%wing p=~[%dec]] q=~[[%wing p=~[%n]]]]]]]  
-       ]  
-     ]  
-   ]  
- ]  
+[ %brts
+  p=[%bcts p=term=%n q=[%base p=[%atom p=~.ud]]]
+    q
+  [ %brhp
+      p
+    [ %sgpm
+      p=0
+      q=[%wing p=~[%n]]
+        r
+      [ %wtcl
+        p=[%dtts p=[%wing p=~[%n]] q=[%sand p=%ud q=1]]
+        q=[%sand p=%ud q=1]
+          r
+        [ %cnls
+          p=[%wing p=~[%mul]]
+          q=[%wing p=~[%n]]
+          r=[%cnts p=~[%$] q=[i=[p=~[%n] q=[%cncl p=[%wing p=~[%dec]] q=[i=[%wing p=~[%n]] t=~]]] t=~]]
+        ]
+      ]
+    ]
+  ]
 ]
 ```
 
@@ -731,7 +731,7 @@ sample:
 < 1.mgz
   [ a=@
     [our=@p now=@da eny=@uvJ]
-    <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
+    <15.eah 40.lcv 14.tdo 54.dnu 77.mau 236.dqo 51.njr 139.hzy 33.uof 1.pnw %138>
   ]
 >
 ```

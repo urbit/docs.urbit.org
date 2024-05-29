@@ -88,13 +88,13 @@ The gate sample follows this pattern, with undesired elements stubbed out by `*`
             bec=beak            ::  clay beak
         ==
         ::                      ::  unnamed args
-        $=  
+        $:  
             $:  arg=@           ::  required arguments
             ==
             ~
         ==
         ::                      ::  named args
-        $=
+        $:
             $:  named-arg=@     ::  optional arguments
             ==
             ~

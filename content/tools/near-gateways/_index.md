@@ -40,7 +40,7 @@ You’ll need an Urbit server (called a “ship”) to deploy your gateway.
 
 {% callout %}
 
-Click here to get a hosted Urbit ship pre-configured to help you deploy to NEAR Gateways as fast as possible. Export the ship to your local machine, home server, or VPS at any time.
+[Click here](https://redhorizon.com/join/61c3b5a7-9eba-437c-8049-b5b217625bcf) to get a hosted Urbit ship pre-configured to help you deploy to NEAR Gateways as fast as possible. Export the ship to your local machine, home server, or VPS at any time.
 
 {% /callout %}
 

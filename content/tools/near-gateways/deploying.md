@@ -61,7 +61,7 @@ To deploy your gateway to the NEAR Gateways app, you’ll need to upload the glo
 
 {% callout %}
 
-If you get a Red Horizon ship at this link, you’ll have an Urbit app called Silo pre-loaded. To get S3 working with this app, you’ll need to click “Set S3 credentials” in your Red Horizon dashboard. This will set up S3 bucket for your whole ship; Silo will detect when this changes and configure to the new bucket. When that’s all working, upload your glob to any folder and click to chain icon to grab the link. (The correct link should end in `.glob`.)
+If you get a Red Horizon ship at [this link](https://redhorizon.com/join/61c3b5a7-9eba-437c-8049-b5b217625bcf), you’ll have an Urbit app called Silo pre-loaded. To get S3 working with this app, you’ll need to click “Set S3 credentials” in your Red Horizon dashboard. This will set up S3 bucket for your whole ship; Silo will detect when this changes and configure to the new bucket. When that’s all working, upload your glob to any folder and click to chain icon to grab the link. (The correct link should end in `.glob`.)
 
 {% /callout %}
 

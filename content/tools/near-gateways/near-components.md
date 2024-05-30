@@ -1,5 +1,5 @@
 +++
-title = "NEAR Components"
+title = "2. NEAR Components"
 weight = 11
 template = "doc.html"
 +++

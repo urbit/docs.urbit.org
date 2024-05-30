@@ -48,7 +48,7 @@ In the “Poke ~zod” component, you can enter the placeholder App, Mark, and J
 ```
 
 Some more pokes include:
-{more}
+- **App: "hood", Mark: "helm-hi", JSON: any string**: Ping your ship and, optionally, print a message to the Dojo.
 
 The “Scry to ~zod” component will fetch some data from any app on your fakeship, assuming you’re authenticated and an endpoint exists.
 

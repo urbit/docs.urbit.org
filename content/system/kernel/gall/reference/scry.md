@@ -218,7 +218,7 @@ A `egg-any` (versioned passthrough to `egg`)
 [ %16
   [ %live
       control-duct
-    [ i=/gall/use/hood/0wCu9kI/~linpel-litrul/kiln/vats/base/jolt/dbug
+    [ i=/gall/use/hood/0wCu9kI/~zod/kiln/vats/base/jolt/dbug
       t=[i=/dill t=~[//term/1]]
     ]
     run-nonce='0w1.iS8Gu'
@@ -234,7 +234,7 @@ A `egg-any` (versioned passthrough to `egg`)
     boar=~
     code=~
     old-state=[%.n #t/[%0 passcode=u(@t)] q=[0 0]]
-    beak=[p=~linpel-litrul q=%base r=[%da p=~2024.6.5..16.18.39..c0d8]]
+    beak=[p=~zod q=%base r=[%da p=~2024.6.5..16.18.39..c0d8]]
     marks=~
     sky=[%plot p=~ q=~]
     ken=~

@@ -1,0 +1,12 @@
+{
+"github": {
+    "silent": true
+},
+"redirects": [
+    {
+    "source": "/courses/:slug",
+    "destination": "/learn/:slug",
+    "permanent": false
+    }
+]
+}

@@ -3,12 +3,10 @@
     "silent": true
 },
 "redirects": [
-    
     {
     "source": "/courses/*",
     "destination": "/learn/*",
     "permanent": false
     }
 ]
-
 }

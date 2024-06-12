@@ -4,8 +4,8 @@
 },
 "redirects": [
     {
-    "source": "/courses/*",
-    "destination": "/learn/*",
+    "source": "/courses/:slug",
+    "destination": "/learn/:slug",
     "permanent": false
     }
 ]

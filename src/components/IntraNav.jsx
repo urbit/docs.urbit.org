@@ -33,7 +33,6 @@ const sites = [
 
 const pages = [
   { title: "Learn", href: "/learn" },
-  { title: "Courses", href: "/courses" },
   { title: "Language", href: "/language" },
   { title: "System", href: "/system" },
   { title: "Userspace", href: "/userspace" },

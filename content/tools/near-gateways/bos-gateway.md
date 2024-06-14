@@ -41,7 +41,7 @@ You can run `npm run dev` from the `hello-urbit` directory to preview your gatew
 
 The example components here allow you to send “pokes” and “scries” to your fakeship. For now, you can think of pokes as POST requests and scries as GET requests.
 
-In the “Poke ~zod” component, you can enter the placeholder App, Mark, and JSON values to show the following in your fakeship’s Dojo.
+In the “Poke ~zod” component, you can enter the placeholder App, Mark, and JSON values to send pokes to a ship. Entering the placeholder values in the form will show the following in your fakeship’s Dojo.
 
 ```
 < ~zod: hi ~zod

@@ -47,13 +47,12 @@ In the “Poke ~zod” component, you can enter the placeholder App, Mark, and J
 < ~zod: hi ~zod
 ```
 
-Some more pokes include:
-- **App: "hood", Mark: "helm-hi", JSON: any string**: Ping your ship and, optionally, print a message to the Dojo.
-
 The “Scry to ~zod” component will fetch some data from any app on your fakeship, assuming you’re authenticated and an endpoint exists.
 
 Some examples include:
 - **App: “docket”, Path: “/charges”**: See information about the apps installed on your ship.
+- **App: “groups”, Path: “/groups”**: See what Tlon groups you're in, including info about channels and roles.
+- **App: “storage”, Path: “/configuration”**: S3 bucket configuration for your ship.
 
 If you have the NEAR Gateways app on your ship, you can poke its `%near-storage` agent to store stringified JSON data. Gateways on Urbit can use this to store user data like settings. (Every Urbit app and gateway has root access to the ship, so don't store anything sensitive here. `%near-storage` only offers security through obscurity.)
 - **App: "near-storage", Mark: "near-store"**: Poke the `%near-storage` agent to add or remove data. Add data with `{"set-item": {"key": "foo", "val": "bar"}}`, where `"foo"` can be any string and `"bar"` can be any JSON object. Remove data by its key with `{"remove-item": {"key": "foo"}}`.

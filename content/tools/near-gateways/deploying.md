@@ -6,7 +6,7 @@ template = "doc.html"
 
 To deploy your gateway on Urbit, you’ll need to create a [glob](https://docs.urbit.org/userspace/apps/reference/dist/glob) containing the bundled frontend code and assets. After that, you can upload your gateway to the NEAR Gateways app for users on Urbit to use and mirror for themselves.
 
-### Creating the frontend glob
+## Creating the frontend glob
 
 First, run `npm run build`.
 
@@ -55,7 +55,7 @@ You should see something like this in the dojo:
 
 You can now `cd` to `/path/to/zod/.urb/put` where you’ll find a file like `glob-0v5.fdf99.nph65.qecq3.ncpjn.q13mb.glob`. This is your bundled frontend which we’ll upload to NEAR Gateways. Everything between `glob-` and `.glob` is a hash of the file’s content. You won’t need it for the rest of this process, so you could rename the file anything you like.
 
-### Deploying to NEAR Gateways
+## Deploying to NEAR Gateways
 
 To deploy your gateway to the NEAR Gateways app, you’ll need to upload the glob to an S3 bucket or some other publicly-available endpoint.
 
@@ -73,7 +73,7 @@ Once your glob is uploaded, open the NEAR Gateways app on your live ship and fil
 
 Click “Publish Gateway” and wait for your gateway to upload. This could take some time, but you don’t have to keep the window open while you wait; your ship is processing the glob in the background.
 
-### Sharing your gateway
+## Sharing your gateway
 
 The NEAR Gateways app gossips your gateways among your pals. What does that mean?
 

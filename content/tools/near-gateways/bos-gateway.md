@@ -55,6 +55,10 @@ The “Scry to ~zod” component will fetch some data from any app on your fakes
 Some examples include:
 - **App: “docket”, Path: “/charges”**: See information about the apps installed on your ship.
 
+If you have the NEAR Gateways app on your ship, you can poke its `%near-storage` agent to store stringified JSON data. Gateways on Urbit can use this to store user data like settings. (Every Urbit app and gateway has root access to the ship, so don't store anything sensitive here. `%near-storage` only offers security through obscurity.)
+- **App: "near-storage", Mark: "near-store"**: Poke the `%near-storage` agent to add or remove data. Add data with `{"set-item": {"key": "foo", "val": "bar"}}`, where `"foo"` can be any string and `"bar"` can be any JSON object. Remove data by its key with `{"remove-item": {"key": "foo"}}`.
+- **App: "near-storage", Path: any key**: Scry data you stored in `%near-storage`. After sending the `%set-item` poke above, scrying the path `/foo` would return `'bar'`. Scrying a key that does not exist will return an empty string.
+
 ## Developing and testing your BOS gateway
 
 You can now start modifying this default gateway. This gateway is an ideal environment to develop Urbit-aware components to deploy on the NEAR blockchain, or develop an entire gateway. Let’s go over the structure of the default gateway and see where you can find everything you need.

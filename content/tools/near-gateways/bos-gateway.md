@@ -1,5 +1,5 @@
 +++
-title = "1. Building a BOS Gateway"
+title = "1. Gateways"
 weight = 10
 template = "doc.html"
 +++

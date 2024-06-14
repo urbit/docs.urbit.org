@@ -1,5 +1,5 @@
 +++
-title = "3. Deploying BOS Gateways and Components on Urbit"
+title = "3. Deploying"
 weight = 12
 template = "doc.html"
 +++

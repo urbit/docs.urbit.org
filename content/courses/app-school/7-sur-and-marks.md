@@ -137,14 +137,6 @@ manner:
               !>(`update:todo`action)
           ==
       ==
-    ::
-        %allow
-      `state(friends (~(put in friends) who.action))
-    ::
-        %kick
-      :_  state(friends (~(del in friends) who.action))
-      :~  [%give %kick ~[/updates] `who.action]
-      ==
     ==
   --
 ```

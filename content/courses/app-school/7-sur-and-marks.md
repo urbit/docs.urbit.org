@@ -109,7 +109,7 @@ manner:
           ==
       ==
     ::
-         %del
+        %del
       :_  state(tasks (~(del by tasks) id.action))
       :~  :*  %give  %fact  ~[/updates]  %todo-update
               !>(`update:todo`action)

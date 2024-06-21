@@ -92,7 +92,7 @@ manner:
   |^
   ?>  =(src.bowl our.bowl)
   ?+    mark  (on-poke:def mark vase)
-      %todo-action
+      %noun
     =^  cards  state
       (handle-poke !<(action:todo vase))
     [cards this]

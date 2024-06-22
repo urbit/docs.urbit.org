@@ -201,6 +201,51 @@ A `?`
 
 ---
 
+### `%v`: get agent state
+
+A scry with a `%v` care will return the data of an agent whether it is running
+or not.  The agent is supplied as the `dude` (second) position of the `beak`.
+
+#### Produces
+
+A `egg-any` (versioned passthrough to `egg`)
+
+#### Examples
+
+
+```
+> .^(egg-any:gall %gv /=dbug=/$)
+[ %16
+  [ %live
+      control-duct
+    [ i=/gall/use/hood/0wCu9kI/~zod/kiln/vats/base/jolt/dbug
+      t=[i=/dill t=~[//term/1]]
+    ]
+    run-nonce='0w1.iS8Gu'
+    sub-nonce=1
+      stats
+    [ change=1.213
+        eny
+      0v1bl.j3urf.0mnnv.lit30.svf8h.rhql4.8f2mu.ausa3.sj19t.mimp1.oeefb.1p6qt.htqts.d147f.7qi4s.nf8jh.h0ng2.bb6ao.8fgnh.vhk42.gkio4
+      time=~2024.6.5..16.18.39..c0d8
+    ]
+    bitt=~
+    boat=~
+    boar=~
+    code=~
+    old-state=[%.n #t/[%0 passcode=u(@t)] q=[0 0]]
+    beak=[p=~zod q=%base r=[%da p=~2024.6.5..16.18.39..c0d8]]
+    marks=~
+    sky=[%plot p=~ q=~]
+    ken=~
+    pen=~
+    gem=~
+  ]
+]
+```
+
+---
+
 ### `%w`: latest revision of path
 
 A scry with a `%w` care and an agent in `q.beak` will get the latest revision

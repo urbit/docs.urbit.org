@@ -18,6 +18,8 @@ can learn more about the project at your own pace.
 [Atom](/glossary/atom)  
 [Aural Ascii](/glossary/aural-ascii)  
 [Aura](/glossary/aura)  
+[Axis](/glossary/axis)  
+[Axes](/glossary/axes)  
 [Azimuth](/glossary/azimuth)  
 
 ---
@@ -40,6 +42,7 @@ can learn more about the project at your own pace.
 [Cell](/glossary/cell)  
 [Censures](/glossary/censures)  
 [Claims](/glossary/claims)  
+[Clam](/glossary/clam)  
 [Clay](/glossary/clay)  
 [Cold Atom](/glossary/cold-atom)  
 [Comet](/glossary/comet)  
@@ -48,6 +51,7 @@ can learn more about the project at your own pace.
 [Context](/glossary/context)  
 [Cord](/glossary/cord)  
 [Core](/glossary/core)  
+[Cue](/glossary/cue)  
 
 ---
 
@@ -97,6 +101,7 @@ can learn more about the project at your own pace.
 ## H
 
 [Hdwallet](/glossary/hdwallet)  
+[Head](/glossary/head)  
 [Helm](/glossary/helm)  
 [Hood](/glossary/hood)  
 [Hoon](/glossary/hoon)  
@@ -111,6 +116,7 @@ can learn more about the project at your own pace.
 ## J
 
 [Jael](/glossary/jael)  
+[Jam](/glossary/jam)  
 [Jet](/glossary/jet)  
 
 ---
@@ -130,6 +136,7 @@ can learn more about the project at your own pace.
 
 [Landscape](/glossary/landscape)  
 [Leg](/glossary/leg)  
+[Lark](/glossary/lark)  
 [Lick](/glossary/lick)  
 [List](/glossary/list)  
 [Loobean](/glossary/loobean)  
@@ -206,7 +213,9 @@ can learn more about the project at your own pace.
 
 ## T
 
+[Tail](/glossary/tail)  
 [Tape](/glossary/tape)  
+[Term](/glossary/term)  
 [Thread](/glossary/thread)  
 [Trap](/glossary/trap)  
 

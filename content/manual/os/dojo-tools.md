@@ -689,7 +689,7 @@ usage = "Dojo"
 slug = "#code"
 desc = "Dojo utility included in the %base desk."
 
-[glossaryEntry."Print out your web login code"]
+[glossaryEntry."Print out your web login code (thread)"]
 name = "Print out your web login code"
 symbol = "-code"
 usage = "Dojo"

@@ -4172,13 +4172,13 @@ use |code %reset to invalidate this and generate a new code
 
 ### `-code`
 
-Print out your web login code.
+Print out your web login code (with leading `~`).
 
 #### Example
 
 ```
 > -code
-lidlut-tabwed-pillex-ridrup
+~lidlut-tabwed-pillex-ridrup
 ```
 
 ---

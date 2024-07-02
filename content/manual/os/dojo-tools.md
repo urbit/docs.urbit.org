@@ -3200,8 +3200,6 @@ Create a new [desk][desk] either from a blank template or from an existing desk.
 
 #### Arguments
 
-[from=$~(%base desk) hard=_| gall=_|]
-
 ```
 desk, =from desk, =hard ?, =gall ?
 ```

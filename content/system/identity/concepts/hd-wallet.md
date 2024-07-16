@@ -41,7 +41,7 @@ smart-contracts.
 ## Proxies
 
 Each permanent Urbit ID can designate one or more
-[proxies](manual/id/proxies), which are Ethereum addresses capable of a
+[proxies](/manual/id/proxies), which are Ethereum addresses capable of a
 limited subset of Urbit ID transactions, such as spawning planets or rotating
 keys. The HD wallet automatically generates additional addresses utilized as
 proxies according to what is appropriate for your Urbit ID.

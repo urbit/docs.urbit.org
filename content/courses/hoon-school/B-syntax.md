@@ -369,11 +369,8 @@ Here is a snippet of Hoon code:
 ```
 
 Without looking it up first, what does the `==` {% tooltip
-label="hephep"
-href="/language/hoon/reference/rune/terminators#---hephep" /%} and
-`--` {% tooltip label="tistis"
-href="/language/hoon/reference/rune/terminators#-tistis" /%} do for the
-`:~` {% tooltip label="colsig"
+label="tistis" href="/language/hoon/reference/rune/terminators#-tistis"
+/%} do for the `:~` {% tooltip label="colsig"
 href="/language/hoon/reference/rune/col#-colsig" /%} rune?  Hint: some
 runes can take any number of arguments.
 

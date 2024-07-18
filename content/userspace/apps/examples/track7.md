@@ -88,7 +88,7 @@ For instance, to produce a bold string with hex color `#123456`, we could produc
 
 ```hoon
 ^-  sole-effect:sole
-:-  klr
+:-  %klr
 ^-  styx
 ~[[[`%br ~ `[r=0x12 g=0x34 b=0x56]] 'Hello Mars!' ~]]
 ```

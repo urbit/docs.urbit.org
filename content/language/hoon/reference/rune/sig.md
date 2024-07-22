@@ -754,6 +754,9 @@ solely to create a side-effect: printing the value of `p` to the console.
 
 It's most useful for debugging programs.
 
+A logging level can be specified by including `>` markers, i.e. `>`, `>>`,
+`>>>`.
+
 #### Examples
 
 ```
@@ -764,6 +767,11 @@ It's most useful for debugging programs.
 > ~&  'halp'
   ~
 'halp'
+~
+
+> ~&  >>  'halp'
+  ~
+>>  'halp'
 ~
 ```
 

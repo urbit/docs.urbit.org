@@ -234,13 +234,13 @@ defined, so it's printing out null as a result. Let's try printing the `bowl`
 instead:
 
 ```
->   [ [our=~zod src=~zod dap=%skeleton]
-  [wex={} sup={}]
+>   [ [our=~zod src=~zod dap=%skeleton sap=/gall/dojo]
+  [wex=~ sup=~ sky=~]
   act=5
     eny
   0v209.tg795.bc2e8.uja0d.11eq9.qp3b3.mlttd.gmf09.q7ro3.6unfh.16jiu.m9lh9.6jlt8.4f847.f0qfh.up08t.3h4l2.qm39h.r3qdd.k1r11.bja8l
-  now=~2021.11.5..13.28.24..e20e
-  byk=[p=~zod q=%base r=[%da p=~2021.11.5..12.02.22..f99b]]
+  now=~2024.5.9..13.28.24..e20e
+  byk=[p=~zod q=%base r=[%da p=~2024.5.9..12.02.22..f99b]]
 ]
 > :skeleton +dbug %bowl
 >=
@@ -274,7 +274,7 @@ The key takeaways are:
   so already.
 - Have a read through the [Ford rune documentation](/language/hoon/reference/rune/fas)
   for details about importing libraries, structures and other things.
-- Try the `+dbug` generator out on some other agents, like `:settings-store +dbug`, `:btc-wallet +dbug`, etc, and try some of its options [described
+- Try the `+dbug` generator out on some other agents, like `:settings +dbug`, `:contacts +dbug`, etc, and try some of its options [described
   above](#dbug).
 - Have a quick look over the source of the `default-agent` library, located at
   `/lib/default-agent.hoon` in the `%base` desk. We've not yet covered what the

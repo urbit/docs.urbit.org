@@ -10,7 +10,7 @@ Hoon Academy is the live, cohort based Hoon course offered by the Urbit Foundati
 
 Our next cohort starts on May 14, with classes running Tuesdays at 12pm noon Eastern Time for 9 weeks. Sessions will also be recorded, so you can enroll if you can't make it live.
 
-The syllabus from our last offering [is available here](https://docs.google.com/document/d/1LQL4B59B0uK75KFSErb-BFJ8pbhVxyoyA1tRiv4RBlc/edit?usp=sharing).
+[Course syllabus is here.](https://docs.google.com/document/d/1wtlQT4sJiaegOpWo9yMzMx-ious3E-FR8rZ1-BcBvGk/edit?usp=sharing).
 
 Hoon Academy graduates will be well-positioned to read and interpret most Hoon code, produce useful standalone code of their own, and start exploring the Urbit system for app development or core development.
 

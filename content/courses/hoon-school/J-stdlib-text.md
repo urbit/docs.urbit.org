@@ -557,6 +557,7 @@ equivalent of a regular aura.  These are labeled as returning `cord`s
         ```hoon
         > 0x1234.5678.90ab.cdef
         0x1234.5678.90ab.cdef
+        > `@t`0x1234.5678.90ab.cdef
         [%bad-text "[39 239 205 171 144 120 86 52 92 49 50 39 0]"]
         ```
 

@@ -4,7 +4,7 @@ template = "doc.html"
 weight = 0
 +++
 
-The Urbit runtime is named {% tooltup label="Vere" href="/glossary/vere" /%}.
+The Urbit runtime is named {% tooltip label="Vere" href="/glossary/vere" /%}.
 It's the binary executable you use to run your ship. Vere manages your ship's
 {% tooltip label="pier" href="/glossary/pier" /%}, handles events, and runs the
 Nock virtual machine that performs your ship's computations.

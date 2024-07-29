@@ -42,6 +42,13 @@ and/or third-party apps, libraries and tools.
     description="Urbit library functions simplified and renamed for convenience."
     href="/tools/userspace-utils"
     small=true
+    /%}
+
+  {% iconcard
+    title="NEAR Gateways"
+    description="Step-by-step tutorial for building and deploying NEAR apps and components on Urbit."
+    href="/tools/near-gateways"
+    small=true
   /%}
 
 {% /grid %}

@@ -37,4 +37,11 @@ and/or third-party apps, libraries and tools.
     small=true
   /%}
 
+  {% iconcard
+    title="Userspace Utilities"
+    description="Urbit library functions simplified and renamed for convenience."
+    href="/tools/userspace-utils"
+    small=true
+  /%}
+
 {% /grid %}

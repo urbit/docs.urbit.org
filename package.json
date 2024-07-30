@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run prebuild && next dev",
-    "prebuild": "npm run tooltip && npm run glossary && npm run language && npm run userspace && npm run system && npm run tools && npm run learn && npm run manual && npm run glossary",
+    "prebuild": "npm run tooltip && npm run glossary && npm run language && npm run userspace && npm run system && npm run tools && npm run learn && npm run manual && npm run glossary && npm run guides && npm run reference",
     "tooltip": "node src/lib/tooltip.js",
     "glossary": "node src/lib/buildPageTree glossary weight",
     "language": "node src/lib/buildPageTree language weight",
@@ -12,6 +12,8 @@
     "system": "node src/lib/buildPageTree system weight",
     "tools": "node src/lib/buildPageTree tools weight",
     "learn": "node src/lib/buildPageTree learn weight",
+    "guides": "node src/lib/buildPageTree guides weight",
+    "reference": "node src/lib/buildPageTree reference weight",
     "manual": "node src/lib/buildPageTree manual weight",
     "build": "next build",
     "start": "next start",

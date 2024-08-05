@@ -1,7 +1,7 @@
 +++
-title = "Remote Scry"
+title = "Remote Scry: Reading the Namespace"
 description = "Learn about scrying over the network"
-weight = 5
+weight = 20
 +++
 
 To {% tooltip label="scry" href="/glossary/scry" /%} is to perform a

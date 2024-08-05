@@ -1,5 +1,5 @@
 +++
-title = "Glob"
+title = "Glob: Packaging Frontends"
 weight = 4
 template = "doc.html"
 +++

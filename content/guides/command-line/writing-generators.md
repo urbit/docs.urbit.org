@@ -1,6 +1,6 @@
 +++
-title = "Generators"
-weight = 73
+title = "Writing Generators"
+weight = 10
 +++
 
 Generator files provide a way for users to interact with code "scripts" through the Dojo prompt.  There are

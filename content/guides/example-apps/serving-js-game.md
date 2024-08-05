@@ -1,6 +1,6 @@
 +++
 title = "Serving a JS Game"
-weight = 193
+weight = 10
 +++
 
 In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](/courses) or the [written docs](/courses/hoon-school).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.

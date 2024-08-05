@@ -1,6 +1,7 @@
 +++
 title = "Example Apps"
-weight = 80
+weight = 20
+auto_expand = true
 +++
 
 TODO

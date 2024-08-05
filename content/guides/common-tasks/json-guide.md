@@ -1,7 +1,7 @@
 +++
-title = "JSON"
+title = "Working with JSON"
 description = "Learn how to handle this common data standard in Urbit"
-weight = 50
+weight = 10
 +++
 
 If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll examine in this document.

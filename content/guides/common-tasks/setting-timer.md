@@ -1,6 +1,6 @@
 +++
-title = "Examples"
-weight = 4
+title = "Setting Timers"
+weight = 40
 +++
 
 Here are a couple of practical examples of using Behn's `%wait` and `%rest` `task`s.

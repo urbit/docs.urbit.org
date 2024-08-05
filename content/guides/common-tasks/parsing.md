@@ -1,7 +1,7 @@
 +++
 title = "Parsing Text"
 description = "Learn to parse text with Hoon"
-weight = 80
+weight = 50
 +++
 
 This document serves as an introduction to parsing text with Hoon. No prior

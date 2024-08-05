@@ -1,6 +1,6 @@
 +++
-title = "Styled Text"
-weight = 199
+title = "Styling Text"
+weight = 40
 +++
 
 In this tutorial, we examine how to produce `styx` styled text strings and output them to the terminal from an agent.

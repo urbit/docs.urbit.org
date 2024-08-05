@@ -1,7 +1,7 @@
 +++
-title = "Noun channels"
+title = "Noun Channels"
 description = "A low-level overview of talking to Eyre's channel system in noun mode."
-weight = 40
+weight = 35
 +++
 
 So far, developers have typically used JSON to interact with Urbit ships through
@@ -15,8 +15,8 @@ work-in-progress [`json-bgon` PR for
 
 {% callout %}
 
-If you are not familiar with low-level Eyre channel mechanics, please have a
-read through the [Eyre guide](/system/kernel/eyre/guides/guide) first.
+If you are not familiar with Eyre channel mechanics, please have a
+read through the [Using Channels guide](/guides/http-server/using-channels) first.
 
 {% /callout %}
 

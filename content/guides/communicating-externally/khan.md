@@ -1,6 +1,6 @@
 +++
-title = "Example"
-weight = 4
+title = "Khan: Unix -> Urbit"
+weight = 10
 +++
 
 Here we'll look at a simple example of running a thread from a Gall agent via

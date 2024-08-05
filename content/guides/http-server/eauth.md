@@ -1,6 +1,6 @@
 +++
-title = "EAuth"
-weight = 100
+title = "Using EAuth"
+weight = 70
 +++
 
 EAuth is a system built into {% tooltip label="Eyre" href="/glossary/eyre" /%}

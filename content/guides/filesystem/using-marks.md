@@ -1,6 +1,6 @@
 +++
 title = "Using Marks"
-weight = 3
+weight = 20
 +++
 
 In the last document, [Writing Marks](/system/kernel/clay/guides/marks/writing-marks), we walked through writing `mark` files and touched on how Clay handles them. They needn't just be left to background vane processes though, you can also use them yourself in your code.

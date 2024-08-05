@@ -1,6 +1,6 @@
 +++
-title = "Guide"
-weight = 5
+title = "Lick: Urbit -> Unix"
+weight = 20
 +++
 
 In this guide we'll write a pair of simple apps to demonstrate how Lick

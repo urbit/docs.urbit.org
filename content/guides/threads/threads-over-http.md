@@ -1,6 +1,6 @@
 +++
 title = "HTTP API"
-weight = 2
+weight = 30
 +++
 
 Spider has an Eyre binding which allows threads to be run externally via [authenticated](/system/kernel/eyre/reference/external-api-ref#authentication) HTTP POST requests.

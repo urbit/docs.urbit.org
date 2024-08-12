@@ -1,7 +1,7 @@
 +++
 title = "Aqua Tests"
 description = "Learn to write tests with Aqua"
-weight = 5
+weight = 30
 +++
 
 ## Concepts

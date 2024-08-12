@@ -1,5 +1,5 @@
 +++
-title = "Sail (HTML)"
+title = "Writing HTML with Sail"
 description = "Learn the basics of Sail"
 weight = 95
 +++

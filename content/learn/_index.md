@@ -1,6 +1,6 @@
 +++
 title = "Learn"
-weight = 80
+weight = 10
 +++
 
 For a beginner at Urbit development, these in-depth, linearly ordered tutorials are the best way to start learning.

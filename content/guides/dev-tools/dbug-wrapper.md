@@ -1,6 +1,6 @@
 +++
-title = "Debugging Wrapper"
-weight = 42
+title = "Using the Debug Wrapper"
+weight = 10
 +++
 
 

@@ -1,5 +1,5 @@
 +++
-title = "Udon (Markdown-esque)"
+title = "Using Udon: Urbit-flavored Markdown"
 description = "Learn the basics of Udon"
 weight = 97
 +++

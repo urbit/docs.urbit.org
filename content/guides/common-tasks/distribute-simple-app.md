@@ -1,6 +1,6 @@
 +++
 title = "Distribute a Simple App"
-weight = 1
+weight = 5
 +++
 
 

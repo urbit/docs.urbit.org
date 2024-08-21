@@ -408,7 +408,7 @@ Hoon code is evaluated.
 For instance, when we first composed generators, we made what are called
 “naked generators”:  that is, they do not have access to any information
 outside of the base subject (Arvo, Hoon, and `%zuse`) and their {%
-tooltip labe="sample" href="/glossary/sample" /%} (arguments).  Other {%
+tooltip label="sample" href="/glossary/sample" /%} (arguments).  Other {%
 tooltip label="generators" href="/glossary/generator" /%} (such as
 `%say` generators, described below) can have more contextual
 information, including random number generators and optional arguments,

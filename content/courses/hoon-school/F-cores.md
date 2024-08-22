@@ -426,7 +426,7 @@ So legs are for data and arms are for computations.  But what
 _specifically_ is an arm, and how is it used for computation?  Let's
 begin with a preliminary explanation that we'll refine later.
 
-An {% tooltip label="arm" href="/glossary/arm" /%}} is some expression
+An {% tooltip label="arm" href="/glossary/arm" /%} is some expression
 of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean:
 'compiled to a Nock formula'.  But you don't need to know anything about
 {% tooltip label="Nock" href="/glossary/nock" /%} to understand Hoon.)

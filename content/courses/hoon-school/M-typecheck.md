@@ -409,7 +409,7 @@ of the `?` family are used for branch-specialized type inference.  The
 href="/language/hoon/reference/rune/wut#-wutpat" /%}, `?^` {% tooltip
 label="wutket" href="/language/hoon/reference/rune/wut#-wutket" /%}, and
 `?~` {% tooltip label="wutsig"
-href="/language/hoon/reference/rune/wut#-wutket" /%} conditionals each
+href="/language/hoon/reference/rune/wut#-wutsig" /%} conditionals each
 take three subexpressions, which play the same basic role as the
 corresponding subexpressions of `?:` wutcol—the first is the test
 condition, which evaluates to a flag `?`.  If the test condition is

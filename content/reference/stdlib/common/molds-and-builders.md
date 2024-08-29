@@ -1,5 +1,5 @@
 +++
-title = "1c: Molds and Mold-Builders"
+title = "Molds and Mold-Builders"
 weight = 30
 
 [glossaryEntry.Blocksize]

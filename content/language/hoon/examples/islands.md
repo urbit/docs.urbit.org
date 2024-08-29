@@ -1,6 +1,6 @@
 +++
 title = "Islands"
-weight = 230
+weight = 110
 +++
 ## Challenge: Largest Island
 

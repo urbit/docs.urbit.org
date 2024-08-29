@@ -1,6 +1,6 @@
 +++
 title = "ABC Blocks"
-weight = 11
+weight = 70
 +++
 
 ## Challenge: ABC Blocks

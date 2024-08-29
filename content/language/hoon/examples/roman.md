@@ -1,6 +1,6 @@
 +++
 title = "Roman Numerals"
-weight = 50
+weight = 40
 +++
 
 ## Challenge: Printing and Parsing Roman Numerals

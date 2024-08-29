@@ -273,7 +273,7 @@ of `/gen/cat/hoon`:
     href="/language/hoon/reference/rune/dot#-dotket" /%} loads a value
     from Arvo (called a {% tooltip label="\"scry\""
     href="/glossary/scry" /%}).
-  - {% tooltip label="++smyt" href="/language/hoon/reference/stdlib/4m#smyt" /%} h
+  - {% tooltip label="++smyt" href="/language/hoon/reference/stdlib/4m#smyt" /%}
     pretty-prints a path.
   - `=-` {% tooltip label="tishep"
     href="/language/hoon/reference/rune/tis#--tishep" /%} combines a {%
@@ -309,9 +309,9 @@ label="rune" href="/glossary/rune" /%} to contribute to the error
 description:
 
 ```hoon {% copy=true %}
-|=  [a=@ud]
-  ~_  leaf+"This code failed"
-  !!
+|=  a=@ud
+~_  leaf+"This code failed"
+!!
 ```
 
 When you compose your own library functions, consider including error

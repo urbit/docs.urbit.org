@@ -20,9 +20,9 @@ A **vane** is an [Arvo](/glossary/arvo) kernel module that performs essential sy
 - [Clay](/glossary/clay), the filesystem, revision-control and build
   system vane.
 - [Dill](/glossary/dill), the terminal-driver vane.
-- [Eyre](/glossary/eyre), the HTTP vane.
+- [Eyre](/glossary/eyre), the HTTP server vane.
 - [Gall](/glossary/gall), the application vane.
-- [Iris](/glossary/iris), the server HTTP vane.
+- [Iris](/glossary/iris), the HTTP client vane.
 - [Jael](/glossary/jael), the security vane.
 - [Khan](/glossary/khan), the control vane.
 - [Lick](/glossary/lick), the interprocess communication (IPC) vane.

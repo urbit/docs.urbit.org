@@ -159,7 +159,7 @@ You can do even better using _interpolation_:
     ?:  =(n 1)
       1
     %+  mul
-    n
+      n
     %=  $
       n  (dec n)
     ==
@@ -216,7 +216,7 @@ As we write more complicated programs, it is helpful to learn to read
 the {% tooltip label="runes" href="/glossary/rune" /%} by identifying
 which daughter expressions attach to which runes, e.g.:
 
-```
+```hoon
 =/
   n
   15
@@ -251,41 +251,42 @@ regular runic form.
 
 ```hoon
 > !,  *hoon  (add 5 6)
-[%cncl p=[%wing p=~[%add]] q=~[[%sand p=%ud q=5] [%sand p=%ud q=6]]]
+[%cncl p=[%wing p=~[%add]] q=[i=[%sand p=%ud q=5] t=[i=[%sand p=%ud q=6] t=~]]]
 ```
 
 ```hoon
-> !,  *hoon  |=  n=@ud  
+> !,  *hoon
+ |=  n=@ud
  |-  
  ~&  n  
  ?:  =(n 1)  
-   n 1
+   1
  %+  mul  
- n  
+   n
  %=  $  
    n  (dec n)  
  ==  
-[ %brts  
- p=[%bcts p=term=%n q=[%base p=[%atom p=~.ud]]]  
-   q  
- [ %brhp  
-     p  
-   [ %sgpm  
-     p=0  
-     q=[%wing p=~[%n]]  
-       r  
-     [ %wtcl  
-       p=[%dtts p=[%wing p=~[%n]] q=[%sand p=%ud q=1]]  
-       q=[%wing p=~[%n]]  
-         r  
-       [ %cnls  
-         p=[%wing p=~[%mul]]  
-         q=[%wing p=~[%n]]  
-         r=[%cnts p=~[%$] q=~[[p=~[%n] q=[%cncl p=[%wing p=~[%dec]] q=~[[%wing p=~[%n]]]]]]]  
-       ]  
-     ]  
-   ]  
- ]  
+[ %brts
+  p=[%bcts p=term=%n q=[%base p=[%atom p=~.ud]]]
+    q
+  [ %brhp
+      p
+    [ %sgpm
+      p=0
+      q=[%wing p=~[%n]]
+        r
+      [ %wtcl
+        p=[%dtts p=[%wing p=~[%n]] q=[%sand p=%ud q=1]]
+        q=[%sand p=%ud q=1]
+          r
+        [ %cnls
+          p=[%wing p=~[%mul]]
+          q=[%wing p=~[%n]]
+          r=[%cnts p=~[%$] q=[i=[p=~[%n] q=[%cncl p=[%wing p=~[%dec]] q=[i=[%wing p=~[%n]] t=~]]] t=~]]
+        ]
+      ]
+    ]
+  ]
 ]
 ```
 
@@ -407,7 +408,7 @@ Hoon code is evaluated.
 For instance, when we first composed generators, we made what are called
 “naked generators”:  that is, they do not have access to any information
 outside of the base subject (Arvo, Hoon, and `%zuse`) and their {%
-tooltip labe="sample" href="/glossary/sample" /%} (arguments).  Other {%
+tooltip label="sample" href="/glossary/sample" /%} (arguments).  Other {%
 tooltip label="generators" href="/glossary/generator" /%} (such as
 `%say` generators, described below) can have more contextual
 information, including random number generators and optional arguments,
@@ -425,7 +426,7 @@ So legs are for data and arms are for computations.  But what
 _specifically_ is an arm, and how is it used for computation?  Let's
 begin with a preliminary explanation that we'll refine later.
 
-An {% tooltip label="arm" href="/glossary/arm" /%}} is some expression
+An {% tooltip label="arm" href="/glossary/arm" /%} is some expression
 of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean:
 'compiled to a Nock formula'.  But you don't need to know anything about
 {% tooltip label="Nock" href="/glossary/nock" /%} to understand Hoon.)
@@ -637,7 +638,7 @@ Let's revisit our factorial code from above:
 ?:  =(n 1)
   1
 %+  mul
-n
+  n
 %=  $
   n  (dec n)
 ==
@@ -655,7 +656,7 @@ the gate:
 ?:  =(n 1)
   1
 %+  mul
-n
+  n
 %=  $
   n  (dec n)
 ==
@@ -692,7 +693,7 @@ see the actual noun of the `$` buc arm, enter `+2:inc` into the Dojo:
 
 ```hoon
 > +2:inc
-[8 [9 36 0 8.191] 9 2 10 [6 [7 [0 3] 1 1] 0 14] 0 2]
+[8 [9 36 0 4.095] 9 2 10 [6 [7 [0 3] 1 1] 0 14] 0 2]
 ```
 
 This is un-computed Nock. You don't need to understand any of this,
@@ -730,7 +731,7 @@ sample:
 < 1.mgz
   [ a=@
     [our=@p now=@da eny=@uvJ]
-    <17.bny 33.ehb 14.dyd 53.vlb 77.lrt 232.oiq 51.qbt 123.zao 46.hgz 1.pnw %140>
+    <15.eah 40.lcv 14.tdo 54.dnu 77.mau 236.dqo 51.njr 139.hzy 33.uof 1.pnw %138>
   ]
 >
 ```
@@ -777,11 +778,11 @@ Let's look at the context of inc:
 ```hoon
 > +7:inc
 [ [ our=~nec
-    now=~2022.6.21..19.26.59..9016
+    now=~2024.5.8..17.14.52..ef1e
       eny
     0v304.vhjvs.406g0.bn6ph.ggd02.buadd.2lot0.va6q0.fiqb1.a96gj.9jmb2.6kk07.5d75s.thpbg.9idrt.vmg9j.e748l.fea0l.7ckcf.ieesj.7q6lr
   ]
-  <17.bny 33.ehb 14.dyd 53.vlb 77.lrt 232.oiq 51.qbt 123.zao 46.hgz 1.pnw %140>
+  <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
 ]
 ```
 
@@ -1009,7 +1010,7 @@ and verify that our program correctly produces the sequence of numbers
     we can see that each additional number costs as much as the previous
     numbers:
 
-    ```
+    ```hoon
     (fibonacci 5)
     (add (fibonacci 4) (fibonacci 3))
     (add (add (fibonacci 3) (fibonacci 2)) (add (fibonacci 2) (fibonacci 1)))
@@ -1018,7 +1019,7 @@ and verify that our program correctly produces the sequence of numbers
     5
     ```
 
-    ```
+    ```hoon
     (fibonacci 6)
     (add (fibonacci 5) (fibonacci 4))
     ...
@@ -1060,7 +1061,7 @@ and verify that our program correctly produces the sequence of numbers
     This version is a little more complicated to compare using a diagram
     because of the {% trap, but yields something like this:
 
-    ```
+    ```hoon
     (fibonacci 5)
     ~[1]
     ~[1 1]
@@ -1103,7 +1104,7 @@ and verify that our program correctly produces the sequence of numbers
 
     Here's our diagram:
 
-    ```
+    ```hoon
     (fibonacci 5)
     ~[1]
     ~[1 1]

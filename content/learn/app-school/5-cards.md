@@ -70,6 +70,16 @@ The type of the next field is a `note:agent:gall` (henceforth just `note`), whic
   $%  [%agent [=ship name=term] =task]
       [%arvo note-arvo]
       [%pyre =tang]
+  ::
+      [%grow =spur =page]
+      [%tomb =case =spur]
+      [%cull =case =spur]
+  ::
+      [%tend =coop =path =page]
+      [%germ =coop]
+      [%snip =coop]
+  ::
+      [%keen secret=? spar:ames]
   ==
 ```
 
@@ -82,6 +92,8 @@ The type of the next field is a `note:agent:gall` (henceforth just `note`), whic
 - A `%pyre` `note` is used to abort an event. It's mostly used internally by
   `kiln` (a submodule of `%hood`), it's unlikely you'd use it in your own agent. The `tang` contains an
   error message.
+- The other notes are for [remote scry](/userspace/apps/guides/remote-scry).
+
 
 ### `task`
 
@@ -158,6 +170,7 @@ A `note-arvo` is defined in `lull.hoon` like so:
       [%i task:iris]
       [%j task:jael]
       [%k task:khan]
+      [%l task:lick]
       [%$ %whiz ~]
       [@tas %meta vase]
   ==

@@ -52,7 +52,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.:
 `(tree @)`, `(tree ^)`, `(tree [@ ?])`, etc.  Let's construct the tree
 in the diagram above in the dojo, casting it accordingly:
 
-```
+```hoon
 > `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
 {4 8 12 14 16}
 ```
@@ -63,7 +63,7 @@ Hoon inserts the faces for us.  Let's put this noun in the dojo {%
 tooltip label="subject" href="/glossary/subject" /%} with the face `b`
 and pull out the tree at the left child of the `12` node:
 
-```
+```hoon
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
 
 > b
@@ -71,7 +71,7 @@ and pull out the tree at the left child of the `12` node:
 
 > l.b
 -find.l.b
-find-fork-d
+find-fork
 ```
 
 This didn't work because we haven't first proved to Hoon that `b` is a
@@ -80,7 +80,7 @@ again, using `?~` {% tooltip label="wutsig"
 href="/language/hoon/reference/rune/wut#-wutsig" /%} to prove that `b`
 isn't null.  We can also look at `r` and `n`:
 
-```
+```hoon
 > ?~(b ~ l.b)
 {4 8}
 
@@ -110,7 +110,7 @@ $(hay r.hay)
 new atom with which to replace `nedl`.  Save this as
 `findreplacetree.hoon` and run in the dojo:
 
-```
+```hoon
 > b
 {4 8 12 14 16}
 
@@ -219,7 +219,7 @@ of `b`.
 Save this as `cartesian.hoon` in your urbit's {% tooltip label="pier"
 href="/glossary/pier" /%} and run in the dojo:
 
-```
+```hoon
 > =c `(set @)`(sy ~[1 2 3])
 
 > c
@@ -312,7 +312,7 @@ information.
 {% tooltip label="maps" href="/language/hoon/reference/stdlib/2o#map" /%} and
 {% tooltip label="sets" href="/language/hoon/reference/stdlib/2o#set" /%} are
 frequently used in the standard library and in the extended ecosystem.
-There are a some other common patterns which recur often enough that
+There are other common patterns which recur often enough that
 they have their own names:
 
 - {% tooltip label="++jar" href="/language/hoon/reference/stdlib/2o#jar" /%} is
@@ -405,10 +405,10 @@ label="payload" href="/glossary/payload" /%}:
 
 ```hoon
 > +:mul
-[[a=1 b=1] <46.hgz 1.pnw %140>]
+[[a=1 b=1] <33.uof 1.pnw %138>]
 
 > +:mul:rs
-[[a=.0 b=.0] <21.hqd [r=?(%d %n %u %z) <51.qbt 123.zao 46.hgz 1.pnw %140>]>]
+[[a=.0 b=.0] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]
 ```
 
 The correct behavior for {% tooltip label="++mul:rs"

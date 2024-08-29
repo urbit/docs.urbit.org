@@ -130,7 +130,7 @@ have.
 For instance, to change the representation of a regular decimal number
 like `32` to a binary representation (i.e. for 2⁵), use `@ub`:
 
-```
+```hoon
 > `@ub`32
 0b10.0000
 ```
@@ -169,7 +169,7 @@ href="/language/hoon/reference/rune/ket#--kethep" /%} rune is useful for
 ensuring that everything in the second child matches the type (aura) of
 the first, e.g.
 
-```
+```hoon
 ^-  @ux  0x1ab4
 ```
 
@@ -194,7 +194,7 @@ Cells are traditionally written using square brackets:  `[]`.  For now,
 just recall the square brackets and that cells are always _pairs_ of
 values.
 
-```
+```hoon
 [1 2]
 [@p @t]
 [[1 2] [3 4]]
@@ -203,13 +203,13 @@ values.
 This is actually a shorthand for a rune as well, `:-` {% tooltip
 label="colhep" href="/language/hoon/reference/rune/col#--colhep" /%}
 
-```
+```hoon
 :-  1  2
 ```
 
 produces a cell `[1 2]`.  You can chain these together:
 
-```
+```hoon
 :-  1  :-  2  3
 ```
 
@@ -360,20 +360,17 @@ Here is a snippet of Hoon code:
  
 ```hoon {% copy=true %}
 ^-  list
-:~  [hen %lsip %e %init ~]
-    [hen %lsip %d %init ~]
-    [hen %lsip %g %init ~]
-    [hen %lsip %c %init ~]
-    [hen %lsip %a %init ~]
+:~  [hen %slip %e %init ~]
+    [hen %slip %d %init ~]
+    [hen %slip %g %init ~]
+    [hen %slip %c %init ~]
+    [hen %slip %a %init ~]
 ==
 ```
 
 Without looking it up first, what does the `==` {% tooltip
-label="hephep"
-href="/language/hoon/reference/rune/terminators#---hephep" /%} and
-`--` {% tooltip label="tistis"
-href="/language/hoon/reference/rune/terminators#-tistis" /%} do for the
-`:~` {% tooltip label="colsig"
+label="tistis" href="/language/hoon/reference/rune/terminators#-tistis"
+/%} do for the `:~` {% tooltip label="colsig"
 href="/language/hoon/reference/rune/col#-colsig" /%} rune?  Hint: some
 runes can take any number of arguments.
 
@@ -543,7 +540,7 @@ procedural programming languages, a Hoon expression only knows what it
 has been told explicitly.  This means that as soon as we calculate a
 value, it returns and falls back into the ether.
 
-```
+```hoon
 %-  sub  [5 1]
 ```
 
@@ -769,7 +766,7 @@ Essentially, we have to be able to decide whether or not some value or expressio
 If we supply these with a pair of numbers to a `%-` cenhep call, we can
 see if the expression is considered `%.y` true or `%.n` false.
 
-```
+```hoon
 > %-  gth  [5 6]
 %.n
 > %-  lth  [7 6]

@@ -57,7 +57,7 @@ href="/glossary/gate" /%} functionality for interactive coding.
 `-build-file` accepts a file path and returns the built operational
 code.  For instance:
 
-```
+```hoon
 > =ntw -build-file %/lib/number-to-words/hoon
 
 > one-hundred:numbers:ntw  
@@ -324,7 +324,7 @@ it as a way of creating a random-value arm that we'll use later on with
 `++rads:random`.
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the
-unshuffled deck with {% tooltip label="++lent
+unshuffled deck with {% tooltip label="++lent"
 href="/language/hoon/reference/stdlib/2b#lent" /%}.
 
 `?:  =(remaining 1)` checks if we have only one card remaining. If
@@ -552,7 +552,7 @@ you.
 
 ```hoon
 > |commit %base
-kiln: commit detected at %base (local)
+>=
 + /~zod/base/2/gen/demo/hoon
 ```
 

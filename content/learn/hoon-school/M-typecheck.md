@@ -16,7 +16,7 @@ mean with a given data structure.  As you get in the habit of casting
 your data structures, it will not only help anyone reading your code,
 but it will help you in hunting down bugs in your code.
 
-{% tooltip label="++list" href="/language/hoon/reference/stdlib/1c#list" /$} is
+{% tooltip label="++list" href="/language/hoon/reference/stdlib/1c#list" /%} is
 a mold builder that is used to produce a {% tooltip label="mold"
 href="/glossary/mold" /%}, i.e. a list of a particular type (like `(list
 @)` for a list of atoms).  A list can be thought of as an ordered
@@ -409,7 +409,7 @@ of the `?` family are used for branch-specialized type inference.  The
 href="/language/hoon/reference/rune/wut#-wutpat" /%}, `?^` {% tooltip
 label="wutket" href="/language/hoon/reference/rune/wut#-wutket" /%}, and
 `?~` {% tooltip label="wutsig"
-href="/language/hoon/reference/rune/wut#-wutket" /%} conditionals each
+href="/language/hoon/reference/rune/wut#-wutsig" /%} conditionals each
 take three subexpressions, which play the same basic role as the
 corresponding subexpressions of `?:` wutcol—the first is the test
 condition, which evaluates to a flag `?`.  If the test condition is
@@ -560,7 +560,7 @@ To get just the inferred type of a expression, we only want the head of
 the `!>` product, `-`.  Thus we should use our mighty weapon, the type
 spear, `-:!>`.
 
-```
+```hoon
 > -:!>(15)
 #t/@ud
 
@@ -584,7 +584,7 @@ tooltip label="wutcol" href="/language/hoon/reference/rune/wut#-wutcol"
 
 … and with `b` as `[12 14]`:
 
-```
+```hoon
 > =/(b=* [12 14] ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
 [%.n #t/[* *]]
 ```
@@ -611,7 +611,7 @@ href="/language/hoon/reference/hoon-errors#mint-vain-and-mint-lost" /%}
 crash.  The same thing happens if `b` is initially defined to be a {%
 tooltip label="cell" href="/glossary/cell" /%} `^`:
 
-```
+```hoon
 > =/(b=@ 12 ?:(?=(@ b) [& b] [| b]))
 mint-vain
 
@@ -829,7 +829,7 @@ We can (and should) use these `i` and `t` faces in list functions.
 To illustrate: let's say that `b` is the list of the atoms `11`, `22`,
 and `33`.  Let's construct this in stages:
 
-```
+```hoon
 [i=11 t=[rest-of-list-b]]
 
 [i=11 t=[i=22 t=[rest-of-list-b]]]
@@ -901,7 +901,7 @@ We called this program `gulf.hoon` because it replicates the {% tooltip
 label="gulf" href="/language/hoon/reference/stdlib/2b#gulf" /%} function
 in the Hoon standard library:
 
-```
+```hoon
 > (gulf 1 10)
 ~[1 2 3 4 5 6 7 8 9 10]
 
@@ -933,7 +933,7 @@ non-null; otherwise, the expression will crash with a {% tooltip
 label="mint-vain"
 href="/language/hoon/reference/hoon-errors#mint-vain-and-mint-lost" /%}:
 
-```
+```hoon
 > =/(b=~ ~ ?~(b %null %not-null))
 mint-vain
 
@@ -981,7 +981,7 @@ It's important to note that if `a` is a list, you can only use `i.a` and
 `t.a` after Hoon has inferred that `a` is non-null.  A null list has no
 `i` or `t` in it!  You'll often use `?~` to distinguish the two kinds of
 list (null and non-null).  If you use `i.a` or `t.a` without showing
-that `a` is non-null you'll get a `find-fork-d` crash.
+that `a` is non-null you'll get a `find-fork` crash.
 
 A non-null `list` is called a `lest`.
 

@@ -256,9 +256,9 @@ has gone wrong.
     description:
 
     ```hoon {% copy=true %}
-    |=  [a=@ud]
-      ~_  leaf+"This code failed"
-      !!
+    |=  a=@ud
+    ~_  leaf+"This code failed"
+    !!
     ```
 - The `!:` {% tooltip label="zapcol"
   href="/language/hoon/reference/rune/zap#-zapcol" /%} rune turns on

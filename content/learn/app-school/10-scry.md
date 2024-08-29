@@ -40,13 +40,18 @@ mark conversion fails. The extra field specifying the mark is not passed
 through to the agent itself. Here's a couple of examples:
 
 ```
-> =store -build-file /=landscape=/sur/graph-store/hoon
+> =g -build-file /=groups=/sur/groups/hoon
 
-> .^(update:store %gx /=graph-store=/keys/noun)
-[p=~2021.11.18..10.50.41..c914 q=[%keys resources={[entity=~zod name=%dm-inbox]}]]
+> .^(groups:g %gx /=groups=/groups/noun)
+[   n
+  [ p=[p=~zod q=%test-group]
+      q
+    [ fleet=[n=[p=~zod q=[sects=[n=%admin l={} r={}] joined=~2000.1.1]] l=~ r=~]
+        cabals
+      ...
 
-> (crip (en-json:html .^(json %gx /=graph-store=/keys/json)))
-'{"graph-update":{"keys":[{"name":"dm-inbox","ship":"zod"}]}}'
+> (en:json:html .^(json %gx /=profile=/widgets/json/json))
+'{"groups":{"profile":"Profile Header","profile-bio":"Profile Bio","join-button":"\\"Join me\\" button"}}'
 ```
 
 The majority of Gall agents simply take `%x` `care`s in their scry endpoints,
@@ -59,8 +64,8 @@ endpoints are defined in its `on-peek` arm, which we'll look at next.
 When a scry is performed on a Gall agent, Gall will strip out some extraneous
 parts, and deliver it to the agent's `on-peek` arm as a `path`. The `path` will
 only have two components from the diagram above: The _care_ and the _path_. For
-example, a scry of `.^(update:store %gx /=graph-store=/keys/noun)` will come
-into the `on-peek` arm of `%graph-store` as `/x/keys`.
+example, a scry of `.^(groups:g %gx /=groups=/groups/noun)` will come
+into the `on-peek` arm of `%groups` as `/x/groups`.
 
 The `on-peek` arm produces a `(unit (unit cage))`. The reason for the double
 `unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved,
@@ -78,7 +83,7 @@ An ordinary `on-peek` arm, therefore, begins like so:
 ```
 
 Typically, you'd handle the `path` similarly to `on-watch`, as we discussed in
-the lesson on subscriptions. You'd use something like a wutlus expression to
+the lesson on subscriptions. You'd use something like a [wutlus](/language/hoon/reference/rune/wut#-wutlus) `?+` expression to
 test the value of the `path`, defining your scry endpoints like so:
 
 ```hoon
@@ -247,7 +252,7 @@ First, let's add some data to the map:
 Now if we use `dbug` to inspect the state, we'll see the data has been added:
 
 ```
->   {[p=~wet q='baz'] [p=~nut q='bar'] [p=~zod q='foo']}
+>   [n=[p=~zod q='foo'] l=[n=[p=~wet q='baz'] l={} r={[p=~nut q='bar']}] r=~]
 > :peeker +dbug [%state %data]
 >=
 ```
@@ -256,7 +261,7 @@ Next, let's try the `/x/all` scry endpoint:
 
 ```
 > .^((map @p @t) %gx /=peeker=/all/noun)
-{[p=~wet q='baz'] [p=~nut q='bar'] [p=~zod q='foo']}
+[n=[p=~zod q='foo'] l=[n=[p=~wet q='baz'] l={} r={[p=~nut q='bar']}] r=~]
 ```
 
 The `/x/has/[ship]` endpoint:
@@ -279,13 +284,14 @@ And finally, the `/x/get/[ship]` endpoint:
 'baz'
 ```
 
-We'll now try scrying for a ship that doesn't exist in the map. Note that due to
-a bug at the time of writing, the resulting crash will wipe the dojo's subject,
-so don't try this if you've got anything pinned there that you want to keep.
+We'll now try scrying for a ship that doesn't exist in the map.
 
 ```
 ~zod:dojo> .^(@t %gx /=peeker=/get/~nes/noun)
-crash!
+bail: 4
+
+bail: 2
+dojo: failed to process input
 ```
 
 ## Summary

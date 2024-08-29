@@ -458,6 +458,13 @@ usage = "Dojo"
 slug = "#mount"
 desc = "Dojo utility included in the %base desk."
 
+[glossaryEntry."Create a new desk"]
+name = "Create a new desk"
+symbol = "|new-desk"
+usage = "Dojo"
+slug = "#new-desk"
+desc = "Dojo utility included in the %base desk."
+
 [glossaryEntry."Add a tombstone policy rule"]
 name = "Add a tombstone policy rule"
 symbol = "|norm"
@@ -570,6 +577,13 @@ usage = "Dojo"
 slug = "#hello"
 desc = "Dojo utility included in the %base desk."
 
+[glossaryEntry."Display information about generators"]
+name = "Display information about generators"
+symbol = "+help"
+usage = "Dojo"
+slug = "#help"
+desc = "Dojo utility included in the %base desk."
+
 [glossaryEntry."Ping another ship with an optional message"]
 name = "Ping another ship with an optional message"
 symbol = "|hi"
@@ -671,6 +685,13 @@ desc = "Dojo utility included in the %base desk."
 [glossaryEntry."Change your web login code"]
 name = "Change your web login code"
 symbol = "|code"
+usage = "Dojo"
+slug = "#code"
+desc = "Dojo utility included in the %base desk."
+
+[glossaryEntry."Print out your web login code (thread)"]
+name = "Print out your web login code"
+symbol = "-code"
 usage = "Dojo"
 slug = "#code"
 desc = "Dojo utility included in the %base desk."
@@ -811,6 +832,12 @@ desc = "Dojo utility included in dojo.hoon"
 Below are the various [generators][generator], [threads][thread] and other tools
 included with the `%base` desk and usable in the [dojo][dojo]. These are
 organized into rough categories for convenience.
+
+These may be invoked in one of three ways:
+
+- `+` means a generator (standalone computation) which changes nothing in the system
+- `|` means a “Hood” generator which may make changes to the system
+- `-` means a thread
 
 ## Apps and updates
 
@@ -3167,6 +3194,60 @@ The `/gen` directory is now accessible at `<pier>/gen` in the host filesystem.
 
 ---
 
+### `|new-desk`
+
+Create a new [desk][desk] either from a blank template or from an existing desk.
+
+#### Arguments
+
+```
+desk, =from desk, =hard ?, =gall ?
+```
+
+The first `desk` is the name of the desk to be created.  The optional `=from` is
+the source desk if present.  The optional `=hard` specifies whether to overwrite
+an existing desk of the same name.  The optional `=gall` specifies whether to
+include common Gall support files like `/lib/skeleton`.
+
+#### Example
+
+Create a new desk:
+
+```
+> |new-desk %aa
+>=
+```
+
+The desk is now created in Clay.
+
+Create a new desk from the `%base` desk:
+
+```
+> |new-desk %pahoehoe, =from %base
+>=
+```
+
+The desk is now created in Clay and filled with the contents of `%base`.  (Note
+that you would want to clear the `desk.bill` file or never `|install` such a
+desk, since the `%base` agents would be erroneously superseded.)
+
+Create a new desk, overwriting any existing desk and including useful Gall files:
+
+```
+> |new-desk %aa, =hard &, =gall &
+>=
++ /~zod/aa/2/lib/default-agent/hoon
++ /~zod/aa/2/mar/bill/hoon
++ /~zod/aa/2/lib/skeleton/hoon
++ /~zod/aa/2/mar/json/hoon
++ /~zod/aa/2/lib/dbug/hoon
++ /~zod/aa/2/mar/mime/hoon
+```
+
+The desk is now created in Clay.
+
+---
+
 ### `|norm`
 
 Add a tombstone policy rule.
@@ -3621,6 +3702,33 @@ term
 
 ---
 
+### `+help`
+
+Display information about generators.
+
+#### Arguments
+
+```
+generator
+```
+
+#### Examples
+
+Show help message for all generators in `%base`:
+
+```
++help
+```
+
+Show help message for a specific generator in `%base`:
+
+```
++help 'help'
++help %help
+```
+
+---
+
 ### `|hi`
 
 Ping another ship with an optional message.
@@ -4056,6 +4164,19 @@ toppub-dosres-mirres-larpex
 current step=1
 use |code %reset to invalidate this and generate a new code
 >=
+```
+
+---
+
+### `-code`
+
+Print out your web login code (with leading `~`).
+
+#### Example
+
+```
+> -code
+~lidlut-tabwed-pillex-ridrup
 ```
 
 ---

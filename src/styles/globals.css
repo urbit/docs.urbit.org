@@ -6,13 +6,22 @@
 @import "./docsearch-button";
 @import "./docsearch-modal";
 
+/* urbit intranav color scheme  */
 .wit {
-  --black: #F8FAF8;
-  --white: #14140F;
   --gray: #14140F;
-  --tint: #14140F;
-  --lite: #C8C8C8;
   --brite: #F8FAF8;
+}
+
+/* ustj intranav color scheme  */
+.ylw {
+  --gray: #141A14;
+  --brite: #FFF450;
+}
+
+/* network explorer intranav color scheme  */
+.gry {
+  --gray: #141A14;
+  --brite: #C8C8C8
 }
 
 

@@ -90,11 +90,11 @@ tooltip label="subject" href="/glossary/subject" /%}.
 ```hoon
 > +1
 [ [ our=~zod
-    now=~2022.6.22..18.35.42..da35
+    now=~2024.5.7..21.47.30..818c
       eny
     0vb6.cve93.67frc.2gtoj.jfl3i.odojg.urrce.o53d3.44h4o.sf3o5.va2mh.ra1ec.jrkej.u512k.l4lin.f003v.li030.l2e6t.ah7ge.6t5cg.epuil
   ]
-  <17.bny 33.ehb 14.dyd 53.vlb 77.lrt 232.oiq 51.qbt 123.zao 46.hgz 1.pnw %140>
+  <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
 ]
 ```
 
@@ -118,7 +118,7 @@ refer to the whole core.
 
 ```hoon
 > ..add
-<46.hgz 1.pnw %140>
+<33.uof 1.pnw %138>
 ```
 
 #### Tutorial:  The Core Structure of `hoon.hoon`
@@ -135,7 +135,7 @@ label="payload" href="/glossary/payload" /%} of a {% tooltip
 label="gate" href="/glossary/gate" /%} is a cell of `[sample context]`.
 For example:
 
-```
+```hoon
 > =foo =>([1 2] |=(@ 15))
 
 > +3:foo
@@ -185,7 +185,7 @@ located, to see how this can be used.
 The first core listed here has just one arm.
 
 ```hoon
-=>  %140  =>
+=>  %138  =>
 |%
 ++  hoon-version  +
 --
@@ -196,7 +196,7 @@ href="/glossary/subject" /%} of `hoon-version`.
 
 ```hoon
 > ..hoon-version
-<1.pnw %140>
+<1.pnw %138>
 ```
 
 After several lines that we'll ignore for pedagogical purposes, we see
@@ -237,13 +237,13 @@ and so on, down to
 
 This core contains the arms in [sections 1a–1c of the standard library
 documentation](/language/hoon/reference/stdlib/1a).  If you count them,
-there are 46 arms in the core from `++  add` down to `++  unit`.  We
+there are 33 arms in the core from `++  add` down to `++  unit`.  We
 again can see this fact reflected in the dojo by looking at the subject
 of `add`.
 
 ```hoon
 > ..add
-<46.hgz 1.pnw %140>
+<33.uof 1.pnw %138>
 ```
 
 Here we see that core containing `hoon-version` is in the {% tooltip
@@ -257,7 +257,7 @@ Next, [section 2](/language/hoon/reference/stdlib/2a) starts:
 ::::  2: layer two                                      ::
 ```
 ...
-```
+```hoon
 |%
 ::                                                      ::
 ::::  2a: unit logic                                    ::
@@ -271,12 +271,12 @@ Next, [section 2](/language/hoon/reference/stdlib/2a) starts:
   (b u.a)
 ```
 
-If you counted the arms in this core by hand, you'll come up with 123
+If you counted the arms in this core by hand, you'll come up with 139
 arms. This is also reflected in the dojo:
 
 ```hoon
 > ..biff
-<123.zao 46.hgz 1.pnw %140>
+<139.oyl 33.uof 1.pnw %138>
 ```
 
 and we also see the section 1 core and the core containing
@@ -289,7 +289,7 @@ of {% tooltip label="++biff" href="/language/hoon/reference/stdlib/2a#biff"
 
 ```hoon
 > add:biff
-<1.otf [[a=@ b=@] <46.hgz 1.pnw %140>]>
+<1.otf [[a=@ b=@] <33.uof 1.pnw %138>]>
 ```
 
 and that `++biff` is not in the subject of `++add`.
@@ -300,11 +300,11 @@ and that `++biff` is not in the subject of `++add`.
 ```
 
 Lastly, let's check the subject of the last arm in `hoon.hoon` (as of
-June 2022):
+May 2024):
 
 ```hoon
 > ..pi-tell
-<77.lrt 232.oiq 51.qbt 123.zao 46.hgz 1.pnw %140>
+<77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
 ```
 
 This confirms for us, then, that `hoon.hoon` consists of six nested
@@ -827,7 +827,7 @@ label="desks" href="/glossary/desk" /%} on our current ship with the
 `%d` care of `%c` Clay:
 
 ```hoon
-> .^((set desk) %cd %)
+> .^((set desk) %cd /=//=)
 {%base %landscape %webterm %kids}
 ```
 

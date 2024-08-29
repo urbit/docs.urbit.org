@@ -86,7 +86,7 @@ href="/language/hoon/reference/rune/bar#-barcen" /%} rune.  Copy and
 paste the following into the {% tooltip label="Dojo"
 href="/glossary/dojo" /%}:
 
-```hoon
+```hoon {% copy=true %}
 =c |%
 ++  inc      |=(a=@ (add 1 a))
 ++  add-two  |=(a=@ (inc (inc a)))
@@ -513,7 +513,7 @@ different versions of the same gate:
     < 3.bnz
       [ b=@
         [our=@p now=@da eny=@uvJ]
-        <17.ayh 34.ozb 14.usy 54.uao 77.gmv 232.hhi 51.qbt 123.ppa 46.hgz 1.pnw %140>
+        <15.eah 40.ihi 14.tdo 54.xjm 77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
       ]
     >
   ]
@@ -548,7 +548,7 @@ label="buccab" href="/language/hoon/reference/rune/buc#_-buccab" /%}
 rune, whose irregular form is simply `_`. To create the door `c` with
 the sample `b=@` set to have the value `7` in the dojo, we would write
 
-```hoon
+```hoon {% copy=true %}
 =c |_  b=_7
 ++  plus  |=(a=@ (add a b))
 ++  times  |=(a=@ (mul a b))
@@ -930,10 +930,10 @@ href="/glossary/desk" /%}.
   ^-  (map @t @t)
   =|  chart=(map @t @t)
   ?.  =((lent key-position) (lent value-result))
-  ~|  %uneven-lengths  !!
+    ~|  %uneven-lengths  !!
   |-
   ?:  |(?=(~ key-position) ?=(~ value-result))
-  chart
+    chart
   $(chart (~(put by chart) i.key-position i.value-result), key-position t.key-position, value-result t.value-result)
 ::  Cycle an alphabet around, e.g. from
 ::  'ABCDEFGHIJKLMNOPQRSTUVWXYZ' to 'BCDEFGHIJKLMNOPQRSTUVWXYZA'
@@ -1111,7 +1111,7 @@ to the front, and the first part `p` is welded to the back.
   ^-  (map @t @t)
   =|  chart=(map @t @t)
   ?.  =((lent key-position) (lent value-result))
-  ~|  %uneven-lengths  !!
+    ~|  %uneven-lengths  !!
   |-
   ?:  |(?=(~ key-position) ?=(~ value-result))
     chart
@@ -1150,7 +1150,7 @@ href="/glossary/noun" /%} to the subject with the default value of the
 
 `?. =((lent key-position) (lent value-result))` checks if the two
 `tape`s are the same length. If not, the program crashes with an error
-message of `%uneven-lengths`, using `|~ %uneven-lengths !!`.
+message of `%uneven-lengths`, using `~| %uneven-lengths !!`.
 
 If the two `tape`s are of the same length, we continue on to create a
 trap. `|-` {% tooltip label="barhep"

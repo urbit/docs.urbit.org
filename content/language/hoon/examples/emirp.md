@@ -1,6 +1,6 @@
 +++
 title = "Emirp"
-weight = 90
+weight = 230
 +++
 ## Challenge: Reversible Primes
 

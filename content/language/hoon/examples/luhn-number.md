@@ -1,6 +1,6 @@
 +++
 title = "Luhn Number"
-weight = 80
+weight = 128
 +++
 
 ## Challenge: Luhn Number

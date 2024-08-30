@@ -1,6 +1,6 @@
 +++
 title = "Restore IP"
-weight = 100
+weight = 230
 +++
 ## Challenge: Restore IP Addresses
 

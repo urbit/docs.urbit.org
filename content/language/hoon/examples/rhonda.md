@@ -1,6 +1,6 @@
 +++
 title = "Rhonda Numbers"
-weight = 30
+weight = 48
 +++
 
 ## Challenge: Rhonda Numbers

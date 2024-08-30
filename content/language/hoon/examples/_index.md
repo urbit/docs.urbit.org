@@ -87,21 +87,5 @@ Hoon language examples and exercises.
     
   /%}
 
-  {% iconcard
-    title="Minimum Path Sum"
-    description="Challenge: find the least expensive path through a 2D grid."
-    href="/language/hoon/examples/min-path"
-    small=true
-    
-  /%}
-
-    {% iconcard
-    title="Phone Letters"
-    description="Challenge: return the strings that can be represented by numbers in a phonepad."
-    href="/language/hoon/examples/phone-letters"
-    small=true
-    
-  /%}
-
 {% /grid %}
 

@@ -1,6 +1,6 @@
 +++
 title = "Gleichniszahlenreihe"
-weight = 20
+weight = 30
 +++
 
 ## Challenge: The Look-and-Say Sequence

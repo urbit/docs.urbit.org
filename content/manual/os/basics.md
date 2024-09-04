@@ -235,6 +235,12 @@ The request will make take a little time to be fulfilled, but eventually the `sh
 
 Great! You're set up now. Try accessing your `ship.arvo.network` in your browser to use Landscape; we recommend Chrome or Brave.
 
+Most of the time, Urbit does a good job at guessing what your URL is in sufficient detail for EAuth (remote login) to work correctly.  Sometimes, however, you need to give it the address explicitly for things to work.
+
+```
+|pass [%e %eauth-host [~ 'https://your-url-here']]
+```
+
 ### Configuring SSL
 
 To enable SSL on your ship, you must poke the `%acme` agent with the domain encoded in a path and it will request a certificate. The path format is `/tld/your_domain/your_subdomain`, so if your domain is `sampel-palnet.arvo.network`, you'd use it like so:

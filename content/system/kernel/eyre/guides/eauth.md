@@ -105,6 +105,12 @@ If `host` is null it unsets any previous explicitly set host. Otherwise,
 it sets the URL given in the `@t`. This is stored separately to the
 inferred host, and overrides it.
 
+Most of the time, Urbit does a good job at guessing what the ship's URL is
+in sufficient detail for Eauth (remote login) to work correctly.  Sometimes,
+however, the address must be supplied explicitly (per the above) for things
+to work.
+
+
 ## Errors
 
 When an EAuth login attempt is initiated with an HTTP POST request, a

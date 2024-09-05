@@ -92,7 +92,7 @@ manner:
   |^
   ?>  =(src.bowl our.bowl)
   ?+    mark  (on-poke:def mark vase)
-      %todo-action
+      %noun
     =^  cards  state
       (handle-poke !<(action:todo vase))
     [cards this]
@@ -109,7 +109,7 @@ manner:
           ==
       ==
     ::
-         %del
+        %del
       :_  state(tasks (~(del by tasks) id.action))
       :~  :*  %give  %fact  ~[/updates]  %todo-update
               !>(`update:todo`action)
@@ -136,14 +136,6 @@ manner:
       :~  :*  %give  %fact  ~[/updates]  %todo-update
               !>(`update:todo`action)
           ==
-      ==
-    ::
-        %allow
-      `state(friends (~(put in friends) who.action))
-    ::
-        %kick
-      :_  state(friends (~(del in friends) who.action))
-      :~  [%give %kick ~[/updates] `who.action]
       ==
     ==
   --

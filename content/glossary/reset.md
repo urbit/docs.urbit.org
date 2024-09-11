@@ -43,10 +43,10 @@ used in some places. The notion is identical, only the name differs.
 
 ### Further Reading
 
-- [Guide to Factory Resets](https://urbit.org/using/id/guide-to-resets): A more in-depth
+- [Guide to Factory Resets](/manual/id/guide-to-resets): A more in-depth
   explanation of factory resets, including how to perform one.
-- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Ship Troubleshooting](/manual/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
 - [Life and Rift](/system/identity/concepts/life-and-rift)
-- [Using Bridge](https://urbit.org/using/id/using-bridge): A guide to starting out with Bridge.
+- [Using Bridge](/manual/id/using-bridge): A guide to starting out with Bridge.
 - [The Azimuth concepts page](/system/identity/guides/advanced-azimuth-tools): A more in-depth explanation of our identity layer.
 

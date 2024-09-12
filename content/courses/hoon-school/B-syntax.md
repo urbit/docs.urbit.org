@@ -488,7 +488,7 @@ results in a syntax error.
 
 Nearly all rune expressions can be written in either form, but there are
 exceptions.  `|%` {% tooltip label="barcen"
-href="/language/hoon/reference/rune/bar#-barcen" /%} and `|_` barcab {%
+href="/language/hoon/reference/rune/bar#-barcen" /%} and `|_` {%
 tooltip label="barcab" href="/language/hoon/reference/rune/bar#_-barcab"
 /%} expressions, for example, can only be written in tall form.  (Those
 are a bit too complicated to fit comfortably on one line anyway.)

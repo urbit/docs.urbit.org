@@ -1036,3 +1036,15 @@ we tend to call `u3v_do()` with these convenient aliases:
     #define  u3dt(txt_c, a, b, c)     u3v_do(txt_c, u3nt(a, b, c))
     #define  u3dq(txt_c, a, b, c, d)  u3v_do(txt_c, u3nt(a, b, c, d))
 ```
+
+##  Code Mnemonics
+
+| Shorthand | Expansion | Meaning |
+| --- | --- | --- |
+| `u3A` | `(&(u3v_Home->arv_u))` | Arvo |
+| `u3C` | `u3o_Config` | command line options |
+| `u3D` | `u3j_Dash` | jet dashboard |
+| `u3H` | `u3v_Home` | home road |
+| `u3P` | `u3e_Pool` | snapshotting system |
+| `u3R` | `u3a_Road` | current road |
+| `u3T` | `u3t_Trace` | tracing profiler |

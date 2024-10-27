@@ -39,7 +39,7 @@ we have to wade directly into a sea of new types and processes.  To wit:
 -   A {% tooltip label="tape" href="/glossary/tape" /%} is the string to
     be parsed.
 -   A `hair` is the position in the text the parser is at, as a cell of
-    column & line, `[p=@ud q=@ud]`.
+    line & column, `[p=@ud q=@ud]`.
 -   A `nail` is parser input, a cell of `hair` and `tape`.
 -   An `edge` is parser output, a cell of `hair` and a `unit` of `*`
     and `nail`.  (There are some subtleties around failure-to-parse here

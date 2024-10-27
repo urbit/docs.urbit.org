@@ -41,7 +41,7 @@ we have to wade directly into a sea of new types and processes.  To wit:
 -   A `hair` is the position in the text the parser is at, as a cell of
     column & line, `[p=@ud q=@ud]`.
 -   A `nail` is parser input, a cell of `hair` and `tape`.
--   An `edge` is parser output, a cell of `hair` and a `unit` of `hair`
+-   An `edge` is parser output, a cell of `hair` and a `unit` of `*`
     and `nail`.  (There are some subtleties around failure-to-parse here
     that we'll defer a moment.)
 -   A `rule` is a parser, a gate which applies a `nail` to yield an

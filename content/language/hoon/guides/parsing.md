@@ -100,7 +100,7 @@ A `hair` is a pair of `@ud` used to keep track of what has already been parsed
 for stack tracing purposes. This allows the parser to reveal where the problem
 is in case it hits something unexpected during parsing.
 
-`p` represents the column and `q` represents the line.
+`p` represents the line and `q` represents the column.
 
 ### `nail`
 

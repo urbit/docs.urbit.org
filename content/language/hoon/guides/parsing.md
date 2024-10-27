@@ -134,9 +134,9 @@ of the original input `tape `up to which the text has been parsed. If parsing
 failed, `p` will be the first `hair` at which parsing failed.
 
 `q` may be `~`, indicating that parsing has failed .
-If parsing did not fail, `p.q` is the data structure that is the result of the
-parse up to this point, while `q.q` is the `nail` which contains the remainder
-of what is to be parsed. If `q` is not null, `p` and `p.q.q` are identical.
+If parsing did not fail, `p.u.q` is the data structure that is the result of the
+parse up to this point, while `q.u.q` is the `nail` which contains the remainder
+of what is to be parsed. If `q` is not null, `p` and `p.q.u.q` are identical.
 
 ### `rule`
 

@@ -267,7 +267,7 @@ is `%foo`.
 
 ```
 > ((cold %foo (just 'a')) [[1 1] "abc"])
-[p=[p=1 q=2] q=[~ u=[p=%foo q=[p=[p=1 q=2] q="bc"]]]]
+[p=[p=1 q=2] q=[~ [p=%foo q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
 One common scenario where `+cold` sees play is when writing [command line

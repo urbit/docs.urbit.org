@@ -45,15 +45,31 @@ We need to be able to perform arithmetic and type conversion with `@udms` values
 At this point, we implement modular arithmetic and wrap the values properly in `++op`.  For instance, wrapping around at 360°=0° should work properly, similar to midnight.  Subtraction is liable to underflow, so we need a special handler for it in `++dg`; since we have one, we may as well handle `++add` the same way for consistency.
 
 {% math %}
-\begin{matrix}
-359° + 2° &= 1° \\
-59' + 1' &= 1° \\
-59'' + 1'' &= 1' \\
-1°59'59'' + 1'' &= 2° \\
-3° - 1° &= 2° \\
-1° - 3° &= 358° \\
-0° - 1'' &= 359°59'59'' \\
-\end{matrix}
+359° + 2° = 1°
+{% /math %}
+
+{% math %}
+59' + 1' = 1°
+{% /math %}
+
+{% math %}
+59'' + 1'' = 1'
+{% /math %}
+
+{% math %}
+1°59'59'' + 1'' = 2°
+{% /math %}
+
+{% math %}
+3° - 1° = 2°
+{% /math %}
+
+{% math %}
+1° - 3° = 358°
+{% /math %}
+
+{% math %}
+0° - 1'' = 359°59'59''
 {% /math %}
 
 Let's write some unit tests first.

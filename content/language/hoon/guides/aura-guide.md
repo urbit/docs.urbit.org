@@ -11,11 +11,7 @@ To implement an aura in Hoon, we follow these steps:
 
 2. **Implement the base logic in `/sys/hoon`.**  This, by and large, means providing a core or door which can correctly carry out arithmetic, conversion, processing, and so forth on your atom.
 
-3. **Implement a pretty-printer in `|co`.**  Two components are necessary:
-
-  1. **Produce a formatted text `tank`.**  Due to nesting rules, you will likely have to implement all of the necessary logic here if you are adding your base logic code to the end of `/sys/hoon`.
-
-  2. **Produce `tape`.** Take your `tank`-maker and wrap it in `%~ ram re`.
+3. **Implement a pretty-printer in `|co`.**  This should match the atom syntax from the next step.
 
 4. **Implement parser in `|so`.**  Compose a parsing rule which is distinct from all others and add it in the appropriate sections here.  (Finding a unique syntax that follows Hoon's rules, like URL-safe characters only and not parseable as Hoon code, can be rather challenging now.)  The aura parser prefixes elements with a type `term`; properly the pair is called a `dime`.  This will also allow you to type the literal atom in the Dojo.
 

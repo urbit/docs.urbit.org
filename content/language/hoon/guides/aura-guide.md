@@ -26,9 +26,7 @@ We prefer the parsed form and the prettyprinted form to coincide so we can copy 
 
 Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds.  Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_(angle)#Subdivisions) lends distinction and _gravitas_.
 
-$$
-5°6'7''
-$$
+{% math %}5°6'7''{% /math %}
 
 ### Preliminaries
 
@@ -46,7 +44,7 @@ We need to be able to perform arithmetic and type conversion with `@udms` values
 
 At this point, we implement modular arithmetic and wrap the values properly in `++op`.  For instance, wrapping around at 360°=0° should work properly, similar to midnight.  Subtraction is liable to underflow, so we need a special handler for it in `++dg`; since we have one, we may as well handle `++add` the same way for consistency.
 
-$$
+{% math %}
 \begin{matrix}
 359° + 2° &= 1° \\
 59' + 1' &= 1° \\
@@ -56,7 +54,7 @@ $$
 1° - 3° &= 358° \\
 0° - 1'' &= 359°59'59'' \\
 \end{matrix}
-$$
+{% /math %}
 
 Let's write some unit tests first.
 

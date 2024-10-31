@@ -26,7 +26,9 @@ We prefer the parsed form and the prettyprinted form to coincide so we can copy 
 
 Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds.  Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_(angle)#Subdivisions) lends distinction and _gravitas_.
 
-{% math %}5°6'7''{% /math %}
+{% math %}
+5°6'7''
+{% /math %}
 
 ### Preliminaries
 
@@ -48,25 +50,37 @@ At this point, we implement modular arithmetic and wrap the values properly in `
 359° + 2° = 1°
 {% /math %}
 
+<br/>
+
 {% math %}
 59' + 1' = 1°
 {% /math %}
+
+<br/>
 
 {% math %}
 59'' + 1'' = 1'
 {% /math %}
 
+<br/>
+
 {% math %}
 1°59'59'' + 1'' = 2°
 {% /math %}
+
+<br/>
 
 {% math %}
 3° - 1° = 2°
 {% /math %}
 
+<br/>
+
 {% math %}
 1° - 3° = 358°
 {% /math %}
+
+<br/>
 
 {% math %}
 0° - 1'' = 359°59'59''

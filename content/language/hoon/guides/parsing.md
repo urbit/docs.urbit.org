@@ -173,7 +173,7 @@ We note that `p.edg` is `[p=1 q=2]`, indicating that the next character to be
 parsed is in line 1, column 2. `q.edg` is not null, indicating that parsing
 succeeded. `p.q.edg` is `'a'`, which is the result of the parse. `p.q.q.edg` is the same as `p.edg`, which is always the case for
 `rule`s built using standard library functions when parsing succeeds. Lastly,
-`q.q.q.edg` is `"bc"`, which is the part of the input `tape` that has yet to be parsed.
+`q.q.u.q.edg` is `"bc"`, which is the part of the input `tape` that has yet to be parsed.
 
 Now let's see what happens when parsing fails.
 
@@ -208,7 +208,7 @@ Let's see what happens when we successfully parse the entire input `tape`.
 line 1, column 4. Of course, this does not exist since the input `tape` was only
 3 characters long, so this actually indicates that the entire `tape` has been
 successfully parsed (since the `hair` does not advance in the case of failure).
-`p.q.edg` is `'abc'`, as expected. `q.q.q.edg` is `""`, indicating that nothing
+`p.u.q.edg` is `'abc'`, as expected. `q.q.u.q.edg` is `""`, indicating that nothing
 remains to be parsed.
 
 What happens if we only match some of the input `tape`?

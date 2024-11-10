@@ -72,5 +72,12 @@ Guides to various features of the Hoon language.
     small=true
   /%}
 
+  {% iconcard
+    title="Implementing an Aura"
+    description="How to implement support for a new in Hoon."
+    href="/language/hoon/guides/aura-guide"
+    small=true
+  /%}
+
 {% /grid %}
 

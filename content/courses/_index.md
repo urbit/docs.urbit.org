@@ -51,6 +51,15 @@ own pace.
     small=true
   /%}
 
+  {% iconcard
+    title="Core Academy"
+    description="Prepare to contribute to the Arvo kernel and Vere runtime."
+    label="View Course"
+    href="/courses/core-academy"
+    icon="KernelSchool"
+    small=true
+  /%}
+
 {% /grid %}
 
 ## Urbit Academy

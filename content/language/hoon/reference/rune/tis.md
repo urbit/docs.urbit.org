@@ -609,7 +609,8 @@ Four arguments, fixed.
 
 This is a bit like doing `=/` and `=.` at the same time. It's useful for state
 machines, where you want to produce both effects and a new state. For example,
-many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip card _this)`. In the `++on-poke` arm, you might have something like:
+many arms of a Gall agent produce `[effects new-state]` in the form of a
+`(quip card _this)`. In the `++on-poke` arm, you might have something like:
 
 ```hoon
 =^  cards  state
@@ -618,6 +619,11 @@ many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip 
 ```
 
 This may also remind you of Haskell's State monad.
+
+Note that `=^` is subject to the same type nesting limitations as `=.`; e.g., if
+you have `?~` checked a list for null, you can no longer nest a regular list in
+the result.  (In this case, use `?:(=(~ ...))` instead to preserve the `list`
+rather than produce a `lest`.)
 
 #### Examples
 

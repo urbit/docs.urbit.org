@@ -226,7 +226,7 @@ For a planet or star's DNS request to be made and fulfilled, they must be hostin
 To initiate a DNS request, run the following thread in your ship's dojo, passing the IP address as an argument with .0.0.0.0 (`@if`) syntax. For example:
 
 ```
--dns-address [%if .1.2.3.4]
+%dns-address [%if .1.2.3.4]
 ```
 
 The `%dns-address` thread, running locally, will make an HTTP request to that IP address on port 80 to confirm that it is itself available at that IP and port. If that fails, you'll receive a `couldn't access ship on port 80` message in the terminal; this request will retry a few times. If the self-check is successful, the request is relayed to `~deg`, and you'll receive a message saying, `request for DNS sent to ~deg`. Once `~deg` has acknowledged receipt of the request, the `%dns-address` thread will print a terminal message saying `awaiting response from ~deg`.

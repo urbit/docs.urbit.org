@@ -34,30 +34,6 @@ export default function Home({ search }) {
                 help you get started running and operating your Urbit.
               </p>
               <Section divider="border-gray">
-                <h2 className="h2">Courses</h2>
-                <p className="body-md">
-                  There are both regular live tutored courses and in-depth
-                  tutorials to teach you the Hoon language, Urbit app
-                  development, and other aspects of the system. If you want to
-                  learn how to build things on Urbit, these are the best places
-                  to start.
-                </p>
-                <div className="-mx-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  <IconCard
-                    title="Tutorials"
-                    description="Learn the Hoon language or Urbit app development at your own pace."
-                    href="/courses"
-                    icon="AppSchoolI"
-                  />
-                  <IconCard
-                    title="Urbit Academy"
-                    description="The Urbit Foundation offers live courses for those interested in learning development on Urbit."
-                    href="/courses/urbit-academy"
-                    icon="HoonSchool"
-                  />
-                </div>
-              </Section>
-              <Section divider="border-gray">
                 <h2 className="h2">Developer Docs</h2>
                 <p className="body-md">
                   The developer documentation contains a wealth of guides,
@@ -93,6 +69,30 @@ export default function Home({ search }) {
                     href="/tools"
                     icon="OpenDistribution"
                     small
+                  />
+                </div>
+              </Section>
+              <Section divider="border-gray">
+                <h2 className="h2">Courses</h2>
+                <p className="body-md">
+                  There are in-depth
+                  tutorials to teach you the Hoon language, Urbit app
+                  development, and other aspects of the system. If you want to
+                  learn how to build things on Urbit, these are the best way
+                  to start.
+                </p>
+                <div className="-mx-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <IconCard
+                    title="Hoon Tutorials"
+                    description="Learn the Hoon language at your own pace."
+                    href="/courses/hoon-school"
+                    icon="HoonSchool"
+                  />
+                  <IconCard
+                    title="App & System Tutorials"
+                    description="Learn application and system development on Urbit."
+                    href="/courses"
+                    icon="AppSchoolII"
                   />
                 </div>
               </Section>

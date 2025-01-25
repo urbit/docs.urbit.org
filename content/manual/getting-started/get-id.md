@@ -47,16 +47,12 @@ Here are a few of the places where you can buy planets:
 * L2 Planet Markets
 ---
 *
-    - [Urbitex](https://urbitex.io)
     - [Urbit.live](https://urbit.live)
     - [Urbit.me](https://urbit.me)
 * 
     - [azimuth.shop](https://azimuth.shop)
     - [lanlyd](https://lanlyd.net/)
-    - [~mocbel house](https://mocbel.house)
     - [\_networked subject](https://subject.network)
-    - [Planet Market](https://planet.market)
-    - [Wexpert Systems](https://wexpert.systems)
 {% /table %}
 
 {% callout %}
@@ -111,3 +107,31 @@ Now that you have a keyfile let's move on to booting the Urbit OS.
 - [Install on the cloud](/manual/getting-started/self-hosted/cloud-hosting) – A step-by-step guide to setting up Urbit on a VPS.
 
 - [Set up a home server](/manual/getting-started/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.
+
+### Buying a star
+
+There are many places to buy a star using either crypto or fiat currency.
+
+- [OpenSea Urbit ID Star](https://opensea.io/collection/urbit-id-star)
+
+Stars were originally distributed as part of galaxy address space holdings, but many have changed hands from the original owner.  If you want to find the owner of a particular star today, you can use the Etherscan API to do so.  Build a query like the one below using the star ID number (rather than name).  (You will need an Etherscan API key.)
+
+```
+https://api.etherscan.io/api
+   ?module=logs
+   &action=getLogs
+   &fromBlock=6784943
+   &toBlock=latest
+   &topic0=0x16d0f539d49c6cad822b767a9445bfb1cf7ea6f2a6c2b120a7ea4cc7660d8fda
+   &topic0_1_opr=and
+   &topic1=0x00000000000000000000000000000000000000000000000000000000000063b8
+   &topic1_2_opr=and
+   &topic2=0x00000000000000000000000086cd9cd0992F04231751E3761De45cEceA5d1801
+   &page=1
+   &offset=1000
+   &apikey=<key here>
+
+Topic 0 = OwnerChanged
+Topic 1 = star number (ship number in hex)
+Topic 2 = linear star release contract
+```

@@ -49,6 +49,7 @@ Here are a few of the places where you can buy planets:
 *
     - [Urbit.live](https://urbit.live)
     - [Urbit.me](https://urbit.me)
+    - [OpenSea Urbit ID Planet](https://opensea.io/collection/urbit-id-planet)
 * 
     - [azimuth.shop](https://azimuth.shop)
     - [lanlyd](https://lanlyd.net/)
@@ -113,6 +114,7 @@ Now that you have a keyfile let's move on to booting the Urbit OS.
 There are many places to buy a star using either crypto or fiat currency.
 
 - [OpenSea Urbit ID Star](https://opensea.io/collection/urbit-id-star)
+- ~tirrel/the-marketplace on Urbit for person-to-person sales
 
 Stars were originally distributed as part of galaxy address space holdings, but many have changed hands from the original owner.  If you want to find the owner of a particular star today, you can use the Etherscan API to do so.  Build a query like the one below using the star ID number (rather than name).  (You will need an Etherscan API key.)
 

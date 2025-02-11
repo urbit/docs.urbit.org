@@ -176,6 +176,25 @@ document for details).
 ]
 ```
 
+---
+
+## `%cache`
+
+A scry with `cache` in place of the `desk` in the `beak` will return Eyre's
+entire cache. The type returned is as follows:
+
+```hoon
+(map url=@t [aeon=@ud val=(unit cache-entry:eyre)])
+```
+
+The map's `url` key is a URL path like `/foo/bar/baz.jpg` in a `cord`.
+The `aeon` is the revision number, and `val` is either the cache entry
+or null if it's been tombstoned. See the
+[$cache-entry](/system/kernel/eyre/reference/data-types#cache-entry)
+section of the Data Types document for details of its type.
+
+---
+
 ## `%connections`
 
 A scry with `connections` in place of the `desk` in the `beak` will return all

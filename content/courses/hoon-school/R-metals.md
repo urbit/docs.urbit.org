@@ -1112,7 +1112,7 @@ next value of the `++stream`.  The result here is a `++stream` that will
 only ever produce `n` items, even if the stream otherwise would have
 been infinite.
 
-##### `++take`
+##### `++to-list`
 
 ```hoon
 ++  to-list

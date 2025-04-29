@@ -12,7 +12,7 @@ In this tutorial, we examine how to produce `styx` styled text strings and outpu
 - `++command-parser` is the input parser, similar to the work we were carrying out just above.  This parses every input and only permits valid keystrokes (think of Dojo real-time parsing).
 - `++tab-list` provides autocompletion options.  We can ignore for now.
 - `++on-command` is called whenever a valid command is run.  This produces the actual effects.
-- `++can-connect` supports `|link` connexion to the app.
+- `++can-connect` supports `|dojo/link` connexion to the app.
 - `++on-connect` provides particular session support when a user connects.  We can ignore for now.
 - `++on-disconnect` provides particular session support when a user disconnects.  We can ignore for now.
 

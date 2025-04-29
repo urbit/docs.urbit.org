@@ -1374,7 +1374,7 @@ The only way to run the new code is to follow the following process:
 2. From the Dojo command line, load the Hoon files and compile them into a `pill` file:
 
     ```hoon
-    > .pill +solid
+    > .pill +pill/solid
     %solid-start
     %solid-loaded
     %solid-parsed
@@ -1408,7 +1408,7 @@ The only way to run the new code is to follow the following process:
 
 If booting takes more than about 90 seconds, you may have created a ‘poison pill’, which hangs things.  Try booting without the `-B` flag, and/or reverting your Hoon changes, generating a new pill based on that, and launching `urbit` with the known-clean pill.  If these steps and boot in <90 seconds, but a boot with a pill created from your own Hoon does not, you have a Hoon bug of some sort.
 
-Hoon bugs that disable booting can be as simple as the wrong number of spaces.  Many, but not all of them, will result in compile errors during the `.pill +solid` step.  If your booting takes >90 seconds, abort it, and debug at your Hoon code.
+Hoon bugs that disable booting can be as simple as the wrong number of spaces.  Many, but not all of them, will result in compile errors during the `.pill +pill/solid` step.  If your booting takes >90 seconds, abort it, and debug at your Hoon code.
 
 - Inside the Dojo, `|commit` the changed `hoon.hoon` or other system file.  It should automatically recompile if correct.
 

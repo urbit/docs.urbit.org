@@ -96,8 +96,8 @@ in its `approved` list and negatively for all others. Eyre will add origins in
 requests that it doesn't have in either its `approved` or `rejected` lists to
 its `requests` list. Eyre always allows all methods and headers over CORS.
 
-There are three generators - `+cors-registry`, `|cors-approve`, and
-`|cors-reject` to view, approve, and deny origins respectively from the dojo.
+There are three generators - `+eyre/cors/registry`, `|eyre/cors/approve`, and
+`|eyre/cors/reject` to view, approve, and deny origins respectively from the dojo.
 Eyre also has [tasks](/system/kernel/eyre/reference/tasks) to
 [approve](/system/kernel/eyre/reference/tasks#approve-origin) and
 [reject](/system/kernel/eyre/reference/tasks#reject-origin) origins

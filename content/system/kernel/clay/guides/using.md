@@ -53,7 +53,7 @@ Usage:
 ```
 |mount %/path/to/directory %mount-point
 |commit %mount-point
-|autocommit %mount-point
+|clay/autocommit %mount-point
 ```
 
 One of the primary functions of Clay is as a convenient user
@@ -71,7 +71,7 @@ elide the last argument, e.g. `|mount %/gen` mounts `/gen` to `/gen`.
 Every file is converted to `%mime` before it's written to Unix, and converted
 back when read from Unix. The entire directory is watched (a la Dropbox), and
 every change is committed once you run `|commit %mount-point`. Every change can
-be automatically committed with `|autocommit %mount-point`.
+be automatically committed with `|clay/autocommit %mount-point`.
 
 ## Merging
 

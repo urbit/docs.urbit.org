@@ -133,10 +133,10 @@ For this we add a helper arm to `/lib/rpn.hoon` which takes each entry, makes su
 
 ### Linking
 
-After a `%sole` agent has been `|install`ed, it should be registered for Dojo to cycle input to it using `|link`.
+After a `%sole` agent has been `|install`ed, it should be registered for Dojo to cycle input to it using `|dojo/link`.
 
 ```hoon
-|link %rpn
+|dojo/link %rpn
 ```
 
 Now `Ctrl`+`X` allows you to switch to that app and evaluate expressions using it.

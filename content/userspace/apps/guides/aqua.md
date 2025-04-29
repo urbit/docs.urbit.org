@@ -20,7 +20,7 @@ To run your first pH test, run the following commands:
 
 ```
 |start %aqua
-:aqua +solid
+:aqua +pill/solid
 -ph-add
 ```
 
@@ -68,7 +68,7 @@ other tests in `/ted/ph/` for inspiration.
 
 Aqua has the following commands:
 
-`:aqua +solid` Compiles a "pill" (kernel) for the guest ships and loads it into Aqua.
+`:aqua +pill/solid` Compiles a "pill" (kernel) for the guest ships and loads it into Aqua.
 
 `:aqua [%swap-files ~]` modifies the pill to use the files you have in
 your filesystem without rebuilding the whole pill.  For example, if you
@@ -77,4 +77,4 @@ in the pill.  This command will do that.
 
 `:aqua [%swap-vanes ~[%a]]` Modifies the pill to load a new version of a
 vane (`%a` == Ames in this example, but it can be any list of vanes).
-This is faster than running `:aqua +solid`.
+This is faster than running `:aqua +pill/solid`.

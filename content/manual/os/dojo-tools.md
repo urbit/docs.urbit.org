@@ -5,9 +5,9 @@ template = "doc.html"
 
 [glossaryEntry."Print out the status of Gall agents on a desk"]
 name = "Print out the status of Gall agents on a desk"
-symbol = "+agents"
+symbol = "+gall/agents"
 usage = "Dojo"
-slug = "#agents"
+slug = "#gallagents"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Try to apply a kernel update"]
@@ -52,25 +52,11 @@ usage = "Dojo"
 slug = "#rein"
 desc = "Dojo utility included in the %base desk."
 
-[glossaryEntry."Resume updates on a desk"]
-name = "Resume updates on a desk"
-symbol = "|resume"
-usage = "Dojo"
-slug = "#resume"
-desc = "Dojo utility included in the %base desk."
-
 [glossaryEntry."Revive all agents on a desk, migrating archived states"]
 name = "Revive all agents on a desk, migrating archived states"
 symbol = "|revive"
 usage = "Dojo"
 slug = "#revive"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Print kelvin version and manifest"]
-name = "Print kelvin version and manifest"
-symbol = "+show-vat"
-usage = "Dojo"
-slug = "#show-vat"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Start an agent"]
@@ -94,13 +80,6 @@ usage = "Dojo"
 slug = "#uninstall"
 desc = "Dojo utility included in the %base desk."
 
-[glossaryEntry."Print out the status of a single installed desk"]
-name = "Print out the status of a single installed desk"
-symbol = "+vat"
-usage = "Dojo"
-slug = "#vat"
-desc = "Dojo utility included in the %base desk."
-
 [glossaryEntry."Print out the status of each installed desk"]
 name = "Print out the status of each installed desk"
 symbol = "+trouble"
@@ -110,16 +89,9 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print the most recent Ethereum block that has been processed"]
 name = "Print the most recent Ethereum block that has been processed"
-symbol = "+azimuth-block"
+symbol = "+azimuth/block"
 usage = "Dojo"
-slug = "#azimuth-block"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Restart %eth-watcher, resubscribe, re-process snapshot and updates"]
-name = "Restart %eth-watcher, resubscribe, re-process snapshot and updates"
-symbol = ":azimuth|kick"
-usage = "Dojo"
-slug = "#azimuthkick"
+slug = "#azimuthblock"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Add a source for PKI updates for a list of ships"]
@@ -138,9 +110,9 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."List all Azimuth sources"]
 name = "List all Azimuth sources"
-symbol = "+azimuth-source"
+symbol = "+azimuth/sources"
 usage = "Dojo"
-slug = "#azimuth-sources"
+slug = "#azimuthsources"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Change node URL and network for Azimuth"]
@@ -157,8 +129,8 @@ usage = "Dojo"
 slug = "#dojoacl"
 desc = "Dojo utility included in the %base desk."
 
-[glossaryEntry."Allow a ship to |link your dojo"]
-name = "Allow a ship to |link your dojo"
+[glossaryEntry."Allow a ship to |dojo/link your dojo"]
+name = "Allow a ship to |dojo/link your dojo"
 symbol = ":dojo|allow-remote-login"
 usage = "Dojo"
 slug = "#dojoallow-remote-login"
@@ -171,8 +143,8 @@ usage = "Dojo"
 slug = "#dojowipe"
 desc = "Dojo utility included in the %base desk."
 
-[glossaryEntry."Revoke permission for a remote ship to |link your dojo"]
-name = "Revoke permission for a remote ship to |link your dojo"
+[glossaryEntry."Revoke permission for a remote ship to |dojo/link your dojo"]
+name = "Revoke permission for a remote ship to |dojo/link your dojo"
 symbol = ":dojo|revoke-remote-login"
 usage = "Dojo"
 slug = "#dojorevoke-remote-login"
@@ -180,72 +152,72 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Connect a local or remote CLI app"]
 name = "Connect a local or remote CLI app"
-symbol = "|link"
+symbol = "|dojo/link"
 usage = "Dojo"
-slug = "#link"
+slug = "#dojolink"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Disconnect a local or remote CLI app"]
 name = "Disconnect a local or remote CLI app"
-symbol = "|unlink"
+symbol = "|dojo/unlink"
 usage = "Dojo"
-slug = "#unlink"
+slug = "#dojounlink"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print details of Ames flows by ship"]
 name = "Print details of Ames flows by ship"
-symbol = "+ames-flows"
+symbol = "+ames/flows"
 usage = "Dojo"
-slug = "#ames-flows"
+slug = "#amesflows"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Reset Ames congestion control; re-send packets immediately"]
 name = "Reset Ames congestion control; re-send packets immediately"
-symbol = "|ames-prod"
+symbol = "|ames/prod"
 usage = "Dojo"
-slug = "#ames-prod"
+slug = "#amesprod"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Filter Ames debug printing by ship"]
 name = "Filter Ames debug printing by ship"
-symbol = "|ames-sift"
+symbol = "|ames/sift"
 usage = "Dojo"
-slug = "#ames-sift"
+slug = "#amessift"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Whitelist/blacklist ships in Ames"]
 name = "Whitelist/blacklist ships in Ames"
-symbol = "|ames-snub"
+symbol = "|ames/snub"
 usage = "Dojo"
-slug = "#ames-snub"
+slug = "#amessnub"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print Ames message-pump timers by ship"]
 name = "Print Ames message-pump timers by ship"
-symbol = "+ames-timers"
+symbol = "+ames/timers"
 usage = "Dojo"
-slug = "#ames-timers"
+slug = "#amestimers"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Enable verbose Ames debug printing"]
 name = "Enable verbose Ames debug printing"
-symbol = "|ames-verb"
+symbol = "|ames/verb"
 usage = "Dojo"
-slug = "#ames-verb"
+slug = "#amesverb"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Clean up Ames timers"]
 name = "Clean up Ames timers"
-symbol = "|ames-wake"
+symbol = "|ames/wake"
 usage = "Dojo"
-slug = "#ames-wake"
+slug = "#ameswake"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Build a brass pill"]
 name = "Build a brass pill"
-symbol = "+brass"
+symbol = "+pill/brass"
 usage = "Dojo"
-slug = "#brass"
+slug = "#pillbrass"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Build a static mark conversion gate"]
@@ -292,23 +264,23 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Clear pending Gall move queue from a ship"]
 name = "Clear pending Gall move queue from a ship"
-symbol = "|gall-sear"
+symbol = "|gall/sear"
 usage = "Dojo"
-slug = "#gall-sear"
+slug = "#gallsear"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Set Gall verbosity by agent"]
 name = "Set Gall verbosity by agent"
-symbol = "|gall-sift"
+symbol = "|gall/sift"
 usage = "Dojo"
-slug = "#gall-sift"
+slug = "#gallsift"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Toggle Gall debug printing"]
 name = "Toggle Gall debug printing"
-symbol = "|gall-verb"
+symbol = "|gall/verb"
 usage = "Dojo"
-slug = "#gall-verb"
+slug = "#gallverb"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Pass a task to a vane"]
@@ -327,16 +299,16 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Bind a generator to a URL path"]
 name = "Bind a generator to a URL path"
-symbol = "|serve"
+symbol = "|eyre/serve"
 usage = "Dojo"
-slug = "#serve"
+slug = "#eyreserve"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Build a solid pill"]
 name = "Build a solid pill"
-symbol = "+solid"
+symbol = "+pill/solid"
 usage = "Dojo"
-slug = "#solid"
+slug = "#pillsolid"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Run tests for a library"]
@@ -348,9 +320,9 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print out currently running Behn timers"]
 name = "Print out currently running Behn timers"
-symbol = "+timers"
+symbol = "+behn/timers"
 usage = "Dojo"
-slug = "#timers"
+slug = "#behntimers"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Read a file at the given location and print its contents in the dojo"]
@@ -383,7 +355,7 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Move a file from one location to another"]
 name = "Move a file from one location to another"
-symbol = "+mv"
+symbol = "|mv"
 usage = "Dojo"
 slug = "#mv"
 desc = "Dojo utility included in the %base desk."
@@ -404,16 +376,16 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Enable automatic commits for a mounted desk"]
 name = "Enable automatic commits for a mounted desk"
-symbol = "|autocommit"
+symbol = "|clay/autocommit"
 usage = "Dojo"
-slug = "#autocommit"
+slug = "#clayautocommit"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Cancel automatic commits for all mounted desks"]
 name = "Cancel automatic commits for all mounted desks"
-symbol = "|cancel-autocommit"
+symbol = "|clay/cancel-autocommit"
 usage = "Dojo"
-slug = "#cancel-autocommit"
+slug = "#claycancel-autocommit"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Commit changes to a mounted desk"]
@@ -425,16 +397,16 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Perform an octopus merge"]
 name = "Perform an octopus merge"
-symbol = "|fuse"
+symbol = "|clay/fuse"
 usage = "Dojo"
-slug = "#fuse"
+slug = "#clayfuse"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print tracked fuse sources for a desk"]
 name = "Print tracked fuse sources for a desk"
-symbol = "|fuse-list"
+symbol = "|clay/fuse-list"
 usage = "Dojo"
-slug = "#fuse-list"
+slug = "#clayfuse-list"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Add a label to a desk revision"]
@@ -467,16 +439,16 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Add a tombstone policy rule"]
 name = "Add a tombstone policy rule"
-symbol = "|norm"
+symbol = "|clay/norm"
 usage = "Dojo"
-slug = "#norm"
+slug = "#claynorm"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print tombstone policyies for all desk"]
 name = "Print tombstone policyies for all desk"
-symbol = "+norms"
+symbol = "+clay/norms"
 usage = "Dojo"
-slug = "#norms"
+slug = "#claynorms"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Apply tombstoning policies; collect garbage"]
@@ -498,41 +470,6 @@ name = "Make a desk, directory or file publicly readable (allow remote ships to 
 symbol = "|public"
 usage = "Dojo"
 slug = "#public"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Create a new story file (commit message log) for a desk"]
-name = "Create a new story file (commit message log) for a desk"
-symbol = "|story-init"
-usage = "Dojo"
-slug = "#story-init"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Print out a desk's story (commit messages), unordered"]
-name = "Print out a desk's story (commit messages), unordered"
-symbol = "+story-list"
-usage = "Dojo"
-slug = "#story-list"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Print out a desk's story (commit messages) in order"]
-name = "Print out a desk's story (commit messages) in order"
-symbol = "+story-read"
-usage = "Dojo"
-slug = "#story-read"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Remove commit message(s) for a given commit from a desk's story"]
-name = "Remove commit message(s) for a given commit from a desk's story"
-symbol = "|story-remove"
-usage = "Dojo"
-slug = "#story-remove"
-desc = "Dojo utility included in the %base desk."
-
-[glossaryEntry."Add a commit message to a desk's story"]
-name = "Add a commit message to a desk's story"
-symbol = "|story-write"
-usage = "Dojo"
-slug = "#story-write"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Continuously merge int local desk from another local or remote desk"]
@@ -698,23 +635,23 @@ desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Approve a CORS origin"]
 name = "Approve a CORS origin"
-symbol = "|cors-approve"
+symbol = "|eyre/cors/approve"
 usage = "Dojo"
-slug = "#cors-approve"
+slug = "#eyrecorsapprove"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Print approved, rejected and requested CORS origins"]
 name = "Print approved, rejected and requested CORS origins"
-symbol = "+cors-registry"
+symbol = "+eyre/cors/registry"
 usage = "Dojo"
-slug = "#cors-registry"
+slug = "#eyrecorsregistry"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Reject a CORS origin"]
 name = "Reject a CORS origin"
-symbol = "|cors-reject"
+symbol = "|eyre/cors/reject"
 usage = "Dojo"
-slug = "#cors-reject"
+slug = "#eyrecorsreject"
 desc = "Dojo utility included in the %base desk."
 
 [glossaryEntry."Requests a <ship>.arvo.network subdomain and configure SSL"]
@@ -844,7 +781,7 @@ These may be invoked in one of three ways:
 These tools are for managing [desks][desk], apps and updates. Install,
 uninstall, suspend, resume, pause updates, etc.
 
-### `+agents`
+### `+gall/agents`
 
 Print out the status of Gall agents on a desk.
 
@@ -860,7 +797,7 @@ desk
 #### Example
 
 ```
-> +agents %landscape
+> +gall/agents %landscape
 status: running   %hark-system-hook
 status: running   %treaty
 status: running   %docket
@@ -872,40 +809,18 @@ status: running   %hark-store
 
 ### `|bump`
 
-Try to apply a kernel update.
+Apply a kernel update.
 
-If `%zuse`'s kelvin version has decreased, try to apply the update. If any desks
-are incompatible with the new `%zuse` version, the update will fail. The update
-can be forced with the optional `force` argument, in which case incompatible
-desks will be `|suspend`ed. The `set` of desks to omit (and therefore suspend)
-can also be explicitly specified with the optional `except` argument.
-
-#### Arguments
-
-All optional:
-
-```
-, =force ?, =except (set desk)
-```
+If `%zuse`'s kelvin version has decreased, try to apply the update. If any
+desks are incompatible with the new `%zuse` version, they'll be suspended
+pending a compatible update.
 
 #### Examples
 
-Try to apply update, failing if blocked by any desks:
+Try to apply update, suspending any incompatible desks:
 
 ```
 |bump
-```
-
-Force the update, suspending incompatible desks:
-
-```
-|bump, =force &
-```
-
-Apply kernel update, omitting and suspending the specified desks:
-
-```
-|bump, =except (silt ~[%bitcoin %webterm])
 ```
 
 ---
@@ -1063,27 +978,6 @@ Revive a desk:
 
 ---
 
-### `|resume`
-
-Resume updates on a desk.
-
-Start tracking previously [`|pause`](#pause)d updates from a desk's upstream
-source.
-
-#### Arguments
-
-```
-desk
-```
-
-#### Examples
-
-```
-|resume %bitcoin
-```
-
----
-
 ### `|revive`
 
 Revive all agents on a desk, migrating archived states.
@@ -1103,24 +997,6 @@ desk
 
 ```
 |revive %bitcoin
-```
-
----
-
-### `+show-vat`
-
-Print kelvin version and manifest.
-
-This prints the contents of `/sys/kelvin` and `/desk/bill`.
-
-#### Example
-
-```
-> +show-vat %landscape
-/sys/kelvin:
-[%zuse 418]
-/desk/bill:
-~[%docket %treaty %hark-store %hark-system-hook %settings-store]
 ```
 
 ---
@@ -1193,55 +1069,6 @@ desk
 
 ```
 |uninstall %bitcoin
-```
-
----
-
-### `+vat`
-
-Print out the status of a single installed desk.
-
-Desks in Clay which aren't installed will be omitted. See the related
-[`+vats`](#vats) command for details of the individual status fields.
-
-#### Arguments
-
-`desk, =verb ?`
-
-The desk is mandatory while `=verb` is optional and sets verbosity. If `=verb`
-is `|`, the print-out will be brief. If `=verb` is `&` or not specified at all,
-the print-out will be more detailed.
-
-#### Examples
-
-Default verbosity (high):
-
-```
-> +vat %base
-/sys/kelvin:      [%zuse 414]
-base hash:        0v8.n40h1.hjn8c.e762q.ncgh0.e4gq3.6n3l5.5kt8l.6gtdr.ovbah.u3avd
-%cz hash:         0v8.n40h1.hjn8c.e762q.ncgh0.e4gq3.6n3l5.5kt8l.6gtdr.ovbah.u3avd
-app status:       running
-force on:         ~
-force off:        ~
-publishing ship:  ~
-updates:          local
-source ship:      ~
-source desk:      ~
-source aeon:      ~
-kids desk:        ~
-pending updates:  ~
-```
-
-Low verbosity:
-
-
-```
-> +vat %base, =verb |
-/sys/kelvin:      [%zuse 414]
-app status:       running
-publishing ship:  ~
-pending updates:  ~
 ```
 
 ---
@@ -1411,7 +1238,7 @@ See [`+vats`](#vats).
 
 Tools for managing PKI updates from [Azimuth][azimuth].
 
-### `+azimuth-block`
+### `+azimuth/block`
 
 Print the most recent Ethereum block that has been processed.
 
@@ -1422,24 +1249,8 @@ indicates a problem. Note it's normal for it to be a little behind.
 #### Example
 
 ```
-> +azimuth-block
+> +azimuth/block
 15.664.748
-```
-
----
-
-### `:azimuth|kick`
-
-Kick Azimuth.
-
-Restart `%eth-watcher`, resubscribe, re-process snapshot and updates.
-
-#### Example
-
-```
-> :azimuth|kick
->=
-ship: processing azimuth snapshot (0 points)
 ```
 
 ---
@@ -1494,7 +1305,7 @@ ship: processing azimuth snapshot (106.177 points)
 
 ---
 
-### `+azimuth-sources`
+### `+azimuth/sources`
 
 List all Azimuth sources.
 
@@ -1506,7 +1317,7 @@ moons, but it will also include `%azimuth`.
 #### Example
 
 ```
-> +azimuth-sources
+> +azimuth/sources
 [ top-source-id=0
   sources={}
   sources-reverse={}
@@ -1564,7 +1375,7 @@ Show which ships you've allowed remote access to your dojo.
 
 ### `:dojo|allow-remote-login`
 
-Allow a ship to `|link` your dojo.
+Allow a ship to `|dojo/link` your dojo.
 
 #### Arguments
 
@@ -1590,7 +1401,7 @@ Allow ~bus to link ~zod's dojo:
 Link ~zod's dojo on ~bus:
 
 ```
-~bus:dojo> |link ~zod %dojo
+~bus:dojo> |dojo/link ~zod %dojo
 >=
 [linked to [p=~zod q=%dojo]]
 
@@ -1626,7 +1437,7 @@ dojo: hoon expression failed
 
 ### `:dojo|revoke-remote-login`
 
-Revoke permission for a remote ship to `|link` your dojo.
+Revoke permission for a remote ship to `|dojo/link` your dojo.
 
 #### Arguments
 
@@ -1656,7 +1467,7 @@ ship
 
 ---
 
-### `|link`
+### `|dojo/link`
 
 Connect a local or remote CLI app.
 
@@ -1678,7 +1489,7 @@ Connect to the dojo on a remote ship (this is only possible if you have
 permission):
 
 ```
-|link ~sampel-palnet %dojo
+|dojo/link ~sampel-palnet %dojo
 >=
 [linked to [p=~sampel-palnet q=%dojo]]
 ~sampel-palnet:dojo>
@@ -1687,18 +1498,18 @@ permission):
 Connect to the `%chat-cli` app locally:
 
 ```
-|link %chat-cli
+|dojo/link %chat-cli
 >=
 [linked to [p=~zod q=%chat-cli]]
 ~zod:chat-cli/ 
 ```
 
 Note you can cycle between CLI apps with Ctrl+x. You can disconnect a CLI app
-with the [|unlink](#unlink) command.
+with the [|dojo/unlink](#dojounlink) command.
 
 ---
 
-### `|unlink`
+### `|dojo/unlink`
 
 Disconnect a local or remote CLI app.
 
@@ -1716,7 +1527,7 @@ The `ship` is optional, it's only necessary if the app is on a remote ship. The
 Disconnect the local `%chat-cli` app:
 
 ```
-> |unlink %chat-cli
+> |dojo/unlink %chat-cli
 >=
 [unlinked from [p=~zod q=%chat-cli]]
 ```
@@ -1724,7 +1535,7 @@ Disconnect the local `%chat-cli` app:
 Disconnect from a remote dojo session:
 
 ```
-> |unlink ~sampel-palnet %dojo
+> |dojo/unlink ~sampel-palnet %dojo
 >=
 [unlinked from [p=~sampel-palnet q=%dojo]]
 ```
@@ -1749,10 +1560,10 @@ path/extension noun
 #### Example
 
 This command is often used for writing pills to disk - see e.g.
-[`+solid`](#solid).
+[`+pill/solid`](#pillsolid).
 
 ```
-> .solid/pill +solid %base
+> .solid/pill +pill/solid %base
 ```
 
 You can also jam arbitrary nouns, e.g.
@@ -1789,7 +1600,7 @@ path @
 will create a file called `test.atom` in `pier/.urb/put/test.atom`. The contents
 of this file is a binary representation of the atom, `1111011`.
 
-### `+ames-flows`
+### `+ames/flows`
 
 Print details of [Ames][ames] flows by ship.
 
@@ -1810,7 +1621,7 @@ only print the top n results.
 All flows:
 
 ```
-> +ames-flows
+> +ames/flows
 ~[
   [ ship=~mister-dister-dozzod-dozzod
     open=[out-open=3 out-closing=0 in=0 nax=0]
@@ -1831,7 +1642,7 @@ All flows:
 Top 2 ships:
 
 ```
-> +ames-flows 2
+> +ames/flows 2
 ~[
   [ ship=~mister-dister-dozzod-dozzod
     open=[out-open=3 out-closing=0 in=0 nax=0]
@@ -1843,7 +1654,7 @@ Top 2 ships:
 
 ---
 
-### `|ames-prod`
+### `|ames/prod`
 
 Reset congestion control; re-send packets immediately.
 
@@ -1865,20 +1676,20 @@ be reset for flows to those ships.
 #### Example
 
 ```
-> |ames-prod
+> |ames/prod
 >=
 
-> |ames-prod ~bus ~wex
+> |ames/prod ~bus ~wex
 >=
 ```
 
 ---
 
-### `|ames-sift`
+### `|ames/sift`
 
 Filter Ames debug printing by ship.
 
-This filters the output controlled by [`|ames-verb`](#ames-verb).
+This filters the output controlled by [`|ames/verb`](#amesverb).
 
 #### Arguments
 
@@ -1894,20 +1705,20 @@ will be filter to only include the specified ships.
 Enable filtering:
 
 ```
-> |ames-sift ~nec ~bus
+> |ames/sift ~nec ~bus
 >=
 ```
 
 Disable filtering:
 
 ```
-> |ames-sift
+> |ames/sift
 >=
 ```
 
 ---
 
-### `|ames-snub`
+### `|ames/snub`
 
 Blacklist/whitelist ships in Ames.
 
@@ -1939,20 +1750,20 @@ doesn't just add or remove ships from an existing list.
 Create a blocklist:
 
 ```
-> |ames-snub %deny ~wet ~sampel ~sampel-palnet
+> |ames/snub %deny ~wet ~sampel ~sampel-palnet
 >=
 ```
 
 Create a whitelist (and therefore block everyone else):
 
 ```
-> |ames-snub %allow ~wet ~sampel ~sampel-palnet
+> |ames/snub %allow ~wet ~sampel ~sampel-palnet
 >=
 ```
 
 ---
 
-### `+ames-timers`
+### `+ames/timers`
 
 Print Ames message-pump timers by ship.
 
@@ -1971,7 +1782,7 @@ only print the top n results.
 Print all the Ames timers for all ships:
 
 ```
-> +ames-timers
+> +ames/timers
 ~[
   [~.~mister-dister-dozzod-dozzod 3]
   [~.~dister-dozzod-dozzod 2]
@@ -1982,13 +1793,13 @@ Print all the Ames timers for all ships:
 Print the top two ships:
 
 ```
-> +ames-timers 2
+> +ames/timers 2
 ~[[~.~mister-dister-dozzod-dozzod 3] [~.~dister-dozzod-dozzod 2]]
 ```
 
 ---
 
-### `|ames-verb`
+### `|ames/verb`
 
 Enable verbose Ames debug printing.
 
@@ -2000,7 +1811,7 @@ verb verb verb...
 
 A `verb:ames` is one of `%snd %rcv %odd %msg %ges %for %rot`. Each one enables
 printing of different kinds of events. You can enable as many as you want at one
-time. If `|ames-verb` is given no argument, it disables all Ames debug printing.
+time. If `|ames/verb` is given no argument, it disables all Ames debug printing.
 
 For details of the meaning of these `verb`s, see its entry in the [Ames Data
 Types
@@ -2009,20 +1820,20 @@ documentation](https://docs.urbit.org/system/kernel/ames/reference/data-types#ve
 #### Example
 
 ```
-> |ames-verb %msg
+> |ames/verb %msg
 >=
 
 > |hi ~nec
 >=
 ames: ~nec: plea [[~zod 1] [~nec 1] bone=[0 %g /ge/hood]]
 
-> |ames-verb
+> |ames/verb
 >=
 ```
 
 ---
 
-### `|ames-wake`
+### `|ames/wake`
 
 Clean up Ames timers.
 
@@ -2032,18 +1843,18 @@ that have them but shouldn't.
 #### Example
 
 ```
-> |ames-wake
+> |ames/wake
 >=
 ```
 
 ---
 
-### `+brass`
+### `+pill/brass`
 
 Build a brass [pill][pill].
 
 A *brass* pill is a complete bootstrap sequence that recompiles the vanes,
-unlike a [`+solid`](#solid) pill which does not.
+unlike a [`+pill/solid`](#pillsolid) pill which does not.
 
 #### Arguments
 
@@ -2065,7 +1876,7 @@ events in the pill to use an alternative compiler or Arvo source.
 Export a brass pill containing just the `%base` desk:
 
 ```
-> .brass/pill +brass %base
+> .brass/pill +pill/brass %base
 %brass-parsing
 %brass-parsed
 %brass-compiling
@@ -2079,7 +1890,7 @@ filesystem.
 Export a brass pill with multiple desks:
 
 ```
-> .brass/pill +brass %base %landscape %webterm
+> .brass/pill +pill/brass %base %landscape %webterm
 %brass-parsing
 %brass-parsed
 %brass-compiling
@@ -2239,7 +2050,7 @@ This is only used with an `:agent`, not by itself.
 
 ---
 
-### `|gall-sear`
+### `|gall/sear`
 
 Clear pending `move` queue from a ship.
 
@@ -2254,17 +2065,17 @@ The ship from which queued moves should be cleared.
 #### Example
 
 ```
-> |gall-sear ~nec
+> |gall/sear ~nec
 >=
 ```
 
 ---
 
-### `|gall-sift`
+### `|gall/sift`
 
 Set Gall verbosity by agent.
 
-This filters the debug output toggled by [`|gall-verb`](#gall-verb).
+This filters the debug output toggled by [`|gall/verb`](#gallverb).
 
 #### Arguments
 
@@ -2280,20 +2091,20 @@ no arguments are given, filtering will be disabled.
 Filter to just these agents:
 
 ```
-> |gall-sift %graph-store %dojo
+> |gall/sift %graph-store %dojo
 >=
 ```
 
 Disable filtering:
 
 ```
-> |gall-sift
+> |gall/sift
 >=
 ```
 
 ---
 
-### `|gall-verb`
+### `|gall/verb`
 
 Toggle Gall debug printing.
 
@@ -2314,7 +2125,7 @@ If no argument is given, such debug printing will be disabled.
 Turn on error messages:
 
 ```
-> |gall-verb %odd
+> |gall/verb %odd
 >=
 ```
 
@@ -2322,7 +2133,7 @@ Turn off error messages:
 
 ```
 hi ~nec successful
-> |gall-verb
+> |gall/verb
 >=
 ```
 
@@ -2445,7 +2256,7 @@ Check for the existence of that same file:
 
 ---
 
-### `|serve`
+### `|eyre/serve`
 
 Bind a generator to a URL path.
 
@@ -2468,7 +2279,7 @@ not include the [path prefix][path prefix]).
 Bind `/gen/who/hoon` in the `%base` desk to the `/who` URL path:
 
 ```
-> |serve /who %base /gen/who/hoon
+> |eyre/serve /who %base /gen/who/hoon
 >=
 bound: %.y
 ```
@@ -2482,11 +2293,11 @@ In a Unix terminal, try requesting it:
 
 ---
 
-### `+solid`
+### `+pill/solid`
 
 Build a solid [pill][pill].
 
-A *solid* pill is a partial [`+brass`](#brass) pill, it doesn't recompile the
+A *solid* pill is a partial [`+pill/brass`](#pillbrass) pill, it doesn't recompile the
 vanes and so boots faster. It is intended for development purposes, not
 production.
 
@@ -2510,7 +2321,7 @@ events in the pill to use an alternative compiler or Arvo source.
 Export a solid pill containing just the `%base` desk:
 
 ```
-> .solid/pill +solid %base
+> .solid/pill +pill/solid %base
 %solid-start
 %solid-loaded
 %solid-parsed
@@ -2536,7 +2347,7 @@ filesystem.
 Export a solid pill with multiple desks:
 
 ```
-> .solid/pill +solid %base %landscape %webterm
+> .solid/pill +pill/solid %base %landscape %webterm
 %solid-start
 %solid-loaded
 %solid-parsed
@@ -2581,14 +2392,14 @@ using the `-test` thread.
 
 ---
 
-### `+timers`
+### `+behn/timers`
 
 Print out currently running [Behn][behn] timers.
 
 #### Examples
 
 ```
-> +timers
+> +behn/timers
 ~[
   [ date=~2022.9.25..10.54.36..ac0c
     duct=~[/ames/pump/~pocwet/0 /ames]
@@ -2914,11 +2725,11 @@ The path must include the [path prefix][path prefix].
 
 These are more advanced desk and filesystem tools.
 
-### `|autocommit`
+### `|clay/autocommit`
 
 Enable automatic commits for a mounted [desk][desk].
 
-Auto-commits can be disabled with [`|cancel-autocommit`](#cancel-autocommit).
+Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancelautocommit).
 
 #### Arguments
 
@@ -2935,7 +2746,7 @@ In the dojo:
 > |mount %landscape
 >=
 
-> |autocommit %landscape
+> |clay/autocommit %landscape
 >=
 ```
 
@@ -2953,7 +2764,7 @@ Back in the dojo:
 
 ---
 
-### `|cancel-autocommit`
+### `|clay/cancel-autocommit`
 
 Cancel automatic commits for all mounted [desks][desk].
 
@@ -2963,7 +2774,7 @@ target a single desk.
 #### Examples
 
 ```
-> |cancel-autocommit
+> |clay/cancel-autocommit
 >=
 ```
 
@@ -2984,7 +2795,7 @@ The `desk` is mandatory, the `=auto` is optional.
 If `=auto` is `.y`, auto-commits will be enabled, meaning changes to that desk
 on the host side will automatically be committed as soon as they happen.
 
-Auto-commits can be disabled with [`|cancel-autocommit`](#cancel-autocommit).
+Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancelautocommit).
 
 #### Example
 
@@ -3011,7 +2822,7 @@ Back in the dojo:
 
 ---
 
-### `|fuse`
+### `|clay/fuse`
 
 Perform an octopus merge.
 
@@ -3020,9 +2831,9 @@ with the merge of the specified `beak`s according to their merge strategies.
 This has no dependence on the previous state of `%dest` so any commits/work
 there will be overwritten.
 
-`|fuse` extends this concept with the idea of a tracked source. When specifying
+`|clay/fuse` extends this concept with the idea of a tracked source. When specifying
 beaks to include in your fuse, specify `%track` instead of a [case][case]. This
-will tell `|fuse` to retrieve the latest version of the source beak *and* to
+will tell `|clay/fuse` to retrieve the latest version of the source beak *and* to
 rerun the `%fuse` request whenever that tracked source changes. A fuse can have
 many tracked sources, or none. The base may be tracked as well.
 
@@ -3049,34 +2860,34 @@ the remaining `[germ path]`, the `germ` is the merge strategy (for details run
 another `beak`.
 
 The optional `=overwrite` flag allows you to overwrite a currently ongoing fuse.
-Without this flag, attempting a fuse into a desk that you already `|fuse`'d into
+Without this flag, attempting a fuse into a desk that you already `|clay/fuse`'d into
 will error.
 
-For usage details, you can run `|fuse` without arguments and it'll print out a
+For usage details, you can run `|clay/fuse` without arguments and it'll print out a
 help text.
 
 #### Examples
 
 ```
-|fuse %dest /=kids= mate+/~nel/base= meet+/~zod/kids/track
+|clay/fuse %dest /=kids= mate+/~nel/base= meet+/~zod/kids/track
 
-|fuse %old-desk /=kids= only-that+/~nus/test=, =overwrite &
+|clay/fuse %old-desk /=kids= only-that+/~nus/test=, =overwrite &
 
-|fuse %desk-to-cancel-fuse-into %cancel
+|clay/fuse %desk-to-cancel-fuse-into %cancel
 ```
 
 ---
 
-### `|fuse-list`
+### `|clay/fuse-list`
 
 Print tracked fuse sources for a desk.
 
-See the [`|fuse`](#fuse) command for details.
+See the [`|clay/fuse`](#clayfuse) command for details.
 
 #### Example
 
 ```
-> |fuse-list %base
+> |clay/fuse-list %base
 >=
 no ongoing fuse for %base
 ```
@@ -3248,7 +3059,7 @@ The desk is now created in Clay.
 
 ---
 
-### `|norm`
+### `|clay/norm`
 
 Add a tombstone policy rule.
 
@@ -3267,19 +3078,19 @@ The [path][path] is to a file or directory on the given `desk` on the given
 #### Examples
 
 ```
-> |norm our %bitcoin /gen .n
+> |clay/norm our %bitcoin /gen .n
 >=
 
-> |norm our %bitcoin /app .y
+> |clay/norm our %bitcoin /app .y
 >=
 
-> |norm our %webterm / .n
+> |clay/norm our %webterm / .n
 >=
 
-> |norm our %webterm /gen .y
+> |clay/norm our %webterm /gen .y
 >=
 
-> +norms
+> +clay/norms
 ~tus/%bitcoin:
   /app: %.y
   /gen: %.n
@@ -3296,14 +3107,14 @@ The [path][path] is to a file or directory on the given `desk` on the given
 
 ---
 
-### `+norms`
+### `+clay/norms`
 
 Print tombstone policies for all desks.
 
 #### Example
 
 ```
-> +norms
+> +clay/norms
 ~tus/%bitcoin:
   /app: %.y
   /gen: %.n
@@ -3394,151 +3205,6 @@ is a directory or file in the given desk.
 
 > |public %base /ted/dns
 >=
-```
-
----
-
-### `|story-init`
-
-Create a new story file (commit message log) for a [desk][desk].
-
-#### Arguments
-
-All arguments are optional:
-
-```
-, =desk desk, =overwrite ?
-```
-
-If no desk is given, the current desk will be used (typically `%base`).
-Otherwise, the specified `=desk` will be used. If `=overwrite` is `.y`, any
-existing story file in the desk will be overwritten with a blank one.
-
-#### Example
-
-```
-> |story-init
->=
-+ /~tus/base/7/story
-```
-
-```
-> |story-init, =desk %landscape, =overwrite .y
->=
-+ /~tus/landscape/2/story
-```
-
----
-
-### `+story-list`
-
-Print out a [desk][desk]'s story (commit messages), unordered.
-
-#### Arguments
-
-```
-, =desk
-```
-
-If the optional `=desk` argument is not specified, it'll infer the current desk
-(typically `%base`).
-
-#### Example
-
-```
-> +story-list, =desk %landscape
-
-commit: 0v10.blbfu.8a414.qrjqo.ov847.gc6v7.6dpob.49i6s.ndi49.ve74j.a04qr
-                                                                        some title
-
-                                                                                  some body
-                                                                                           |||
-                                                                                              aaaaaaaaa
-
-                                                                                                       bbbbbbb
-    ---
-```
-
----
-
-### `+story-read`
-
-Print out a [desk][desk]'s story (commit messages) in order.
-
-#### Arguments
-
-```
-, =desk desk
-```
-
-If the optional `=desk` argument is provided, it'll print out the story for that
-desk. If no argument is provided, it'll infer the current desk (typically
-`%base`).
-
-#### Example
-
-```
-> +story-read, =desk %landscape
-commit: 0v10.blbfu.8a414.qrjqo.ov847.gc6v7.6dpob.49i6s.ndi49.ve74j.a04qr
-some title
-
-some body
-```
-
----
-
-### `|story-remove`
-
-Remove commit message(s) for a given commit from a desk's story.
-
-#### Arguments
-
-```
-cash, =desk desk, =prz prose
-```
-
-A `cash` is either a [case][case] like `ud+2`, `da+now`, etc, or a `[%tako
-tako:clay]` commit reference. If the optional `=desk` argument is not given,
-it'll infer the current desk (typically `%base`). The optional `=prz` argument
-is a `prose`, which is `[title=@t body=@t]`. If `=prz` is given, only that
-specific prose will be removed from the messsages of the specified commit.
-
-#### Example
-
----
-
-### `|story-write`
-
-Add a commit message to a desk's story.
-
-Note that you can run this more than once to add multiple messages to the same
-commit.
-
-#### Arguments
-
-```
-title=@t body=@t, =desk desk, =cas cash
-```
-
-Only the `title` is mandatory. If the `=desk` argument is not provided, it'll
-infer the current desk (typically `%base`).
-
-The optional `=cas` may either be a [case][case] like `da+now`, `ud+2`, etc, or
-else a `[%tako tako:clay]` commit reference. If a `=cas` is not provided, it'll
-default to the most recent.
-
-#### Example
-
-```
-> |story-write 'some title' 'some body', =desk %landscape, =cas ud+1
->=
-: /~tus/landscape/3/story
-
-> +story-read, =desk %landscape
-commit: 0v10.blbfu.8a414.qrjqo.ov847.gc6v7.6dpob.49i6s.ndi49.ve74j.a04qr
-some title
-
-some body
 ```
 
 ---
@@ -4181,7 +3847,7 @@ Print out your web login code (with leading `~`).
 
 ---
 
-### `|cors-approve`
+### `|eyre/cors/approve`
 
 Approve a CORS origin.
 
@@ -4196,19 +3862,19 @@ The argument is a [cord][cord] containing the origin to approve.
 #### Example
 
 ```
-> |cors-approve 'http://example.com'
+> |eyre/cors/approve 'http://example.com'
 >=
 
-> +cors-registry
+> +eyre/cors/registry
 [ requests={~~http~3a.~2f.~2f.localhost~3a.8081}
   approved={~~http~3a.~2f.~2f.example~.com}
   rejected={}
 ]
 
-> |cors-approve 'http://localhost:8081'
+> |eyre/cors/approve 'http://localhost:8081'
 >=
 
-> +cors-registry
+> +eyre/cors/registry
 [ requests={}
     approved
   { ~~http~3a.~2f.~2f.localhost~3a.8081
@@ -4220,14 +3886,14 @@ The argument is a [cord][cord] containing the origin to approve.
 
 ---
 
-### `+cors-registry`
+### `+eyre/cors/registry`
 
 Print approved, rejected and requested CORS origins.
 
 #### Example
 
 ```
-> +cors-registry
+> +eyre/cors/registry
 [ requests={~~http~3a.~2f.~2f.localhost~3a.8081}
   approved={}
   rejected={}
@@ -4236,7 +3902,7 @@ Print approved, rejected and requested CORS origins.
 
 ---
 
-### `|cors-reject`
+### `|eyre/cors/reject`
 
 Reject a CORS origin.
 
@@ -4251,10 +3917,10 @@ The argument is a [cord][cord] containing the origin to reject.
 #### Examples
 
 ```
-> |cors-reject 'http://foo.com'
+> |eyre/cors/reject 'http://foo.com'
 >=
 
-> +cors-registry
+> +eyre/cors/registry
 [ requests={}
     approved
   { ~~http~3a.~2f.~2f.localhost~3a.8081

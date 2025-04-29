@@ -46,7 +46,7 @@ interacts with sessions entirely separately from the Unix terminal and its
 
 `%drum` is Arvo's CLI app manager. By default you'll have one CLI application
 running: the `%dojo`. You may also have additional CLI apps which you have
-started or attached with the `|link` command. It's `%drum` that keeps track of
+started or attached with the `|dojo/link` command. It's `%drum` that keeps track of
 which one is active, which one input should be routed to, which one should be
 displayed, what each prompt should look like, and so forth. Dill itself is
 oblivious to the distinction between these CLI apps. It only sees the session

@@ -116,7 +116,7 @@ commands to set up the roller. At this point, if your roller is live on the
 network (as opposed to a fakezod) and everything has been performed correctly,
 it would be possible for others to submit transactions to it manually. All other
 settings are sensible defaults at time of writing. However, to utilize a
-front-end, one more command is needed: `|cors-approve 'https://YOUR_FRONTEND'`,
+front-end, one more command is needed: `|eyre/cors/approve 'https://YOUR_FRONTEND'`,
 where the url is the address of the front end you're using - probably a modified
 Bridge that you're hosting somewhere which you'll set up in the next step.
 fakezods can only accept transactions from other ships it can talk to, namely

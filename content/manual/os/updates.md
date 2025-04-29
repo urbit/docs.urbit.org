@@ -174,9 +174,8 @@ If the kernel update was blocked by an outdated runtime and you've since updated
 the runtime, you can tell it to try applying the update again by running `|bump`
 in the dojo.
 
-To check if you have unapplied kernel updates queued, you can run `+vat %base`
-in the dojo (or `+vats` if that doesn't work and look for the `%base` entry).
-You'll see an output like this:
+To check if you have unapplied kernel updates queued, you can run `+vats %base`
+in the dojo. You'll see an output like this:
 
 ```
 %base
@@ -227,16 +226,15 @@ their tile menu or the `|suspend` command, because they will not be
 automatically revived if they later receive a kernel-compatible update.
 
 Automatic app updates can be paused with the `|pause %the-desk` command in the
-dojo, and resumed with the `|resume %the-desk` command. The desk name may differ
-from the app name - you can find the desk name by clicking on "App Info" in the
-app tile's hamburger menu and looking for the "Installed into" entry.
+dojo. The desk name may differ from the app name - you can find the desk name
+by clicking on "App Info" in the app tile's hamburger menu and looking for the
+"Installed into" entry.
 
-To check the update status of an app, you can run the `+vat %the-desk` command
-in the dojo (or `+vats` if that doesn't work and look for the entry matching the
-desk name). It will give you a print-out like this:
+To check the update status of an app, you can run the `+vats %the-desk` command
+in the dojo. It will give you a print-out like this:
 
 ```
-> +vat %docs
+> +vats %docs
 %docs
   /sys/kelvin:      [%zuse 418]
   base hash:        0vu.moe96.kmq1d.a0nen.76vf6.t5qbc.aokqv.89fg5.avctv.pvq08.pdio0
@@ -255,9 +253,7 @@ desk name). It will give you a print-out like this:
 
 If there are `pending updates`, it usually means they're waiting for a kernel
 update before they can be applied. The `updates` entry tells you whether
-automatic updates are enabled - if it doesn't say `tracking` you can run
-`|resume %the-desk` to turn them back on, or else run `|install
-~the-publishing-ship %the-desk`.
+automatic updates are enabled.
 
 ## Further reading
 

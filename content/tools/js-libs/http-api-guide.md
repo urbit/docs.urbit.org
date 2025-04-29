@@ -303,7 +303,7 @@ following in the dojo (replacing `https://example.com` with the address in
 question):
 
 ```
-|cors-approve 'https://example.com'
+|eyre/cors/approve 'https://example.com'
 ```
 
 #### Example

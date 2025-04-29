@@ -72,10 +72,10 @@ You can control which port your fakeship is accessed from by using the `--http-p
 > ./urbit zod --http-port 8080
 ```
 
-In your fakeship’s dojo, run this command to approve CORS requests from your web browser at `localhost:8081`. If you want to run your test gateway on a port other than `:8081`, you’ll have to `|cors-approve` that port too.
+In your fakeship’s dojo, run this command to approve CORS requests from your web browser at `localhost:8081`. If you want to run your test gateway on a port other than `:8081`, you’ll have to `|eyre/cors/approve` that port too.
 
 ```
-> |cors-approve 'http://localhost:8081'
+> |eyre/cors/approve 'http://localhost:8081'
 ```
 
 Now that you're set up, let's create the BOS gateway itself.

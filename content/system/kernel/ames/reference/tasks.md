@@ -152,7 +152,7 @@ contained by Jael.
 [%sift ships=(list ship)]
 ```
 
-This `task` filters debug output by ship. This `task` is used internally when the `|ames-sift` `hood` generator is run from the dojo.
+This `task` filters debug output by ship. This `task` is used internally when the `|ames/sift` `hood` generator is run from the dojo.
 
 The `ships` field specifies the ships for which debug output is desired.
 
@@ -201,7 +201,7 @@ This `task` returns no `gift`s.
 [%spew veb=(list verb)]
 ```
 
-Sets verbosity toggles on debug output. This `task` is used internally when the `|ames-verb` `hood` generator is run from the dojo.
+Sets verbosity toggles on debug output. This `task` is used internally when the `|ames/verb` `hood` generator is run from the dojo.
 
 `%spew` takes in a `list` of [$verb](/system/kernel/ames/reference/data-types#verb), which are verbosity flags for Ames.
 

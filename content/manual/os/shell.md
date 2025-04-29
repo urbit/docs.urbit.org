@@ -111,7 +111,7 @@ Similar to Unix `ls`. Accepts a path.
 ~your-urbit:dojo> +ls /~talsur-todres/base/2/gen/program
 ```
 
-#### `+solid`
+#### `+pill/solid`
 
 Compile the current state of the kernel and output a noun. Usually downloaded to
 a file in unix. This generator takes a series of desks to include as its
@@ -119,7 +119,7 @@ argument. The first desk must be the base desk that contains the Arvo kernel,
 standard library and related files - typically `%base`.
 
 ```
-~your-urbit:dojo> .urbit/pill +solid %base %landscape %webterm
+~your-urbit:dojo> .urbit/pill +pill/solid %base %landscape %webterm
 ```
 
 #### `+tree`
@@ -141,13 +141,13 @@ an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quo
 ~your-urbit:dojo> |hi ~binzod "you there?"
 ```
 
-`|link` / `|unlink` - Link / unlink a CLI app - may or may not be remote.
+`|dojo/link` / `|dojo/unlink` - Link / unlink a CLI app - may or may not be remote.
 Accepts an optional ship name and a mandatory app name.
 
 ```
-~your-urbit:dojo> |link ~talsur-todres %octo
+~your-urbit:dojo> |dojo/link ~talsur-todres %octo
 
-~your-urbit:dojo> |link %chat-cli
+~your-urbit:dojo> |dojo/link %chat-cli
 ```
 
 `|mass` - Prints the current memory usage of all the kernel modules.
@@ -231,10 +231,10 @@ Export a noun to Unix with `.`:
 
 Which creates a file at `pier/.urb/put/foo/bar.baz`.
 
-This is very often used with `+solid`:
+This is very often used with `+pill/solid`:
 
 ```
-~your-urbit:dojo> .urbit/pill +solid
+~your-urbit:dojo> .urbit/pill +pill/solid
 ```
 
 Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`

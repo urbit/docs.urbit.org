@@ -135,7 +135,7 @@ are the ships on that list.
 
 
 ```
-> |ames-snub %deny ~wet ~sampel
+> |ames/snub %deny ~wet ~sampel
 >=
 
 > .^([form=?(%allow %deny) ships=(list ship)] %ax /=//=/snubbed)

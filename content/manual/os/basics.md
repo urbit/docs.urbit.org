@@ -159,7 +159,7 @@ or
 $ ./urbit -w <moon-name> -k <key-file> -c <pier-name>
 ```
 
-Note the `<moon-name>` excludes the leading `~`. The `-c <piername>` argument is not required, but it is recommended; otherwise, the resulting directory is a rather unwieldy moon name. Moons are automatically synced to their parent `%kids` desk, and can control applications on their parent planet using `|link`.
+Note the `<moon-name>` excludes the leading `~`. The `-c <piername>` argument is not required, but it is recommended; otherwise, the resulting directory is a rather unwieldy moon name. Moons are automatically synced to their parent `%kids` desk, and can control applications on their parent planet using `|dojo/link`.
 
 To factory reset a moon -- that is, to reset its presence on the network so that it's treated as a freshly spawned ship by others -- run from the parent ship:
 

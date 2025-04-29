@@ -624,7 +624,7 @@ This version of the app should run in your browser correctly once you `|commit %
 > CORS is a security policy that allows you to load resources dynamically with prior approval from the browser and server.  Sometimes when you are serving various game configurations during development, you may arrive a situation in which things aren't loading correctly to due to the CORS policy.  (When things are entirely served from your Urbit ship then this shouldn't be an issue.)  If you encounter this problem on your way, however, you can [set up CORS origins](/system/kernel/eyre/guides/guide#managing-cors-origins) for Eyre by telling your Urbit ship to allow `localhost` files to be served on the appropriate port.
 >
 > ```hoon {% copy=true %}
-> |cors-approve 'http://localhost:8080'
+> |eyre/cors/approve 'http://localhost:8080'
 > ```
 
 

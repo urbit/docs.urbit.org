@@ -513,7 +513,7 @@ blah blah blah
 
 Here we'll look at approving and rejecting a CORS origin by passing Clay a [%approve-origin](/system/kernel/eyre/reference/tasks#approve-origin) `task` and [%reject-origin](/system/kernel/eyre/reference/tasks#reject-origin) `task` respectively.
 
-In this example we'll use more manual methods for demonstrative purposes but note there are also the `|cors-approve` and `|cors-reject` generators to approve/reject origins from the dojo, and the `+cors-registry` generator for viewing the CORS configuration.
+In this example we'll use more manual methods for demonstrative purposes but note there are also the `|eyre/cors/approve` and `|eyre/cors/reject` generators to approve/reject origins from the dojo, and the `+eyre/cors/registry` generator for viewing the CORS configuration.
 
 First, using `|pass` in the dojo, let's approve the origin `http://foo.example` by sending Eyre a `%approve-origin` `task`:
 

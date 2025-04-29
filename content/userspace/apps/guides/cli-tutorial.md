@@ -182,7 +182,7 @@ go with `~nus`. Fake ships run locally are able to see each other, and our
 intention is to connect their `%shoe` apps.
 
 On each fake ship start `%shoe` by entering `|start %shoe` into dojo. Now that
-the agent is running, you can run `|link %shoe` to connect to its cli interface.
+the agent is running, you can run `|dojo/link %shoe` to connect to its cli interface.
 This will change the prompt to `~zod:shoe>` and `~nus:shoe>`. Type `demo` and
 watch the following appear:
 
@@ -194,7 +194,7 @@ watch the following appear:
 `~zod ran the command` should be displayed in bold green text, signifying that
 the command originated locally.
 
-Now we will connect the sessions. Switch `~zod` back to dojo with `Ctrl-X` and enter `|link ~nus %shoe`. If this succeeds you will see the following.
+Now we will connect the sessions. Switch `~zod` back to dojo with `Ctrl-X` and enter `|dojo/link ~nus %shoe`. If this succeeds you will see the following.
 
 ```
 >=
@@ -214,7 +214,7 @@ is originating from a remote session. Contrast this with entering `demo` from
 bold green text.
 
 Now try to link to `~zod`'s `%shoe` session from `~nus` by switching to the dojo
-on `~nus` and entering `|link ~zod %shoe`. You should see
+on `~nus` and entering `|dojo/link ~zod %shoe`. You should see
 
 ```
 >=
@@ -419,7 +419,7 @@ origin of the command is not our ship to just print it normally with the `%txt`
 makes the text green and bold).
 
 The following allows either `~zod`, or the host ship and its moons, to connect to
-this app's command line interface using `|link`.
+this app's command line interface using `|dojo/link`.
 
 ```hoon
 ++  can-connect

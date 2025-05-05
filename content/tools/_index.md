@@ -37,11 +37,4 @@ and/or third-party apps, libraries and tools.
     small=true
   /%}
 
-  {% iconcard
-    title="NEAR Gateways"
-    description="Step-by-step tutorial for building and deploying NEAR apps and components on Urbit."
-    href="/tools/near-gateways"
-    small=true
-  /%}
-
 {% /grid %}

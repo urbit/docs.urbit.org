@@ -31,13 +31,6 @@ and/or third-party apps, libraries and tools.
   /%}
 
   {% iconcard
-    title="Auth Server"
-    description="Detailed documentation for the server-side API part of the Auth app, so people can use their Urbit ship to login to a website."
-    href="/tools/auth-server"
-    small=true
-  /%}
-
-  {% iconcard
     title="NEAR Gateways"
     description="Step-by-step tutorial for building and deploying NEAR apps and components on Urbit."
     href="/tools/near-gateways"

@@ -112,11 +112,11 @@ implementation of floating-point math for four bitwidth representations.
 | `@rd` | Double-precision 64-bit mathematics | `.~4.5` |
 | `@rq` | Quadruple-precision 128-bit mathematics | `.~~~4.5` |
 
-There are also a few {% tooltip label="molds" href="/glossary/mold" /%}
+There are also a few [molds](/glossary/mold)
 which can represent the separate values of the FP representation.  These
 are used internally but mostly don't appear in userspace code.
 
-As the {% tooltip label="arms" href="/glossary/arm" /%} for the four
+As the [arms](/glossary/arm) for the four
 `@r` auras are identical within their appropriate core, we will use
 [`@rs` single-precision floating-point
 mathematics](/language/hoon/reference/stdlib/3b#rs) to demonstrate all
@@ -149,8 +149,7 @@ why:  to represent one exactly, we have to use {% math %}1.0 = (-1)^0
 `0b11.1111.1000.0000.0000.0000.0000.0000`.
 
 So to carry out this conversion from `@ud` to `@rs` correctly, we should
-use the {% tooltip label="++sun:rs"
-href="/language/hoon/reference/stdlib/3b#sunrs" /%} arm.
+use the [++sun:rs](/language/hoon/reference/stdlib/3b#sunrs) arm.
 
 ```hoon
 > (sun:rs 1)
@@ -159,8 +158,7 @@ href="/language/hoon/reference/stdlib/3b#sunrs" /%} arm.
 
 To go the other way requires us to use an algorithm for converting an
 arbitrary number with a fractional part back into `@ud` unsigned
-integers.  The {% tooltip label="++fl"
-href="/language/hoon/reference/stdlib/3b#fl" /%} named tuple
+integers.  The [++fl](/language/hoon/reference/stdlib/3b#fl) named tuple
 representation serves this purpose, and uses the [Dragon4
 algorithm](https://dl.acm.org/doi/10.1145/93548.93559) to accomplish the
 conversion:
@@ -178,8 +176,7 @@ conversion:
 
 It's up to you to decide how to handle this result, however!  Perhaps a
 better option for many cases is to round the answer to an `@s` integer
-with {% tooltip label="++toi:rs"
-href="/language/hoon/reference/stdlib/3b#toirs" /%}:
+with [++toi:rs](/language/hoon/reference/stdlib/3b#toirs):
 
 ```hoon
 > (toi:rs .3.1415926535)
@@ -190,7 +187,7 @@ href="/language/hoon/reference/stdlib/3b#toirs" /%}:
 
 ### Floating-point specific operations
 
-As with {% tooltip label="aura" href="/glossary/aura" /%} conversion,
+As with [aura](/glossary/aura) conversion,
 the standard mathematical operators don't work for `@rs`:
 
 ```hoon
@@ -201,9 +198,8 @@ the standard mathematical operators don't work for `@rs`:
 .1.0000001
 ```
 
-The {% tooltip label="++rs" href="/language/hoon/reference/stdlib/3b#rs"
-/%} core defines a set of `@rs`-affiliated operations which should be
-used instead:
+The [++rs](/language/hoon/reference/stdlib/3b#rs) core defines a set of
+`@rs`-affiliated operations which should be used instead:
 
 ```hoon
 > (add:rs .1 .1)
@@ -212,24 +208,22 @@ used instead:
 
 This includes:
 
-- {% tooltip label="++add:rs" href="/language/hoon/reference/stdlib/3b#addrs" /%}, addition
-- {% tooltip label="++sub:rs" href="/language/hoon/reference/stdlib/3b#subrs" /%}, subtraction
-- {% tooltip label="++mul:rs" href="/language/hoon/reference/stdlib/3b#mulrs" /%}, multiplication
-- {% tooltip label="++div:rs" href="/language/hoon/reference/stdlib/3b#divrs" /%}, division
-- {% tooltip label="++gth:rs" href="/language/hoon/reference/stdlib/3b#gthrs" /%}, greater than
-- {% tooltip label="++gte:rs" href="/language/hoon/reference/stdlib/3b#gters" /%}, greater than or equal to
-- {% tooltip label="++lth:rs" href="/language/hoon/reference/stdlib/3b#lthrs" /%}, less than
-- {% tooltip label="++lte:rs" href="/language/hoon/reference/stdlib/3b#lters" /%}, less than or equal to
-- {% tooltip label="++equ:rs" href="/language/hoon/reference/stdlib/3b#equrs" /%}, check equality (but not nearness!)
-- {% tooltip label="++sqt:rs" href="/language/hoon/reference/stdlib/3b#sqtrs" /%}, square root
+- [++add:rs](/language/hoon/reference/stdlib/3b#addrs), addition
+- [++sub:rs](/language/hoon/reference/stdlib/3b#subrs), subtraction
+- [++mul:rs](/language/hoon/reference/stdlib/3b#mulrs), multiplication
+- [++div:rs](/language/hoon/reference/stdlib/3b#divrs), division
+- [++gth:rs](/language/hoon/reference/stdlib/3b#gthrs), greater than
+- [++gte:rs](/language/hoon/reference/stdlib/3b#gters), greater than or equal to
+- [++lth:rs](/language/hoon/reference/stdlib/3b#lthrs), less than
+- [++lte:rs](/language/hoon/reference/stdlib/3b#lters), less than or equal to
+- [++equ:rs](/language/hoon/reference/stdlib/3b#equrs), check equality (but not nearness!)
+- [++sqt:rs](/language/hoon/reference/stdlib/3b#sqtrs), square root
 
 ### Exercise:  `++is-close`
 
-The {% tooltip label="++equ:rs"
-href="/language/hoon/reference/stdlib/3b#equrs" /%} arm checks for
-complete equality of two values.  The downside of this {% tooltip
-label="arm" href="/glossary/arm" /%} is that it doesn't find very close
-values:
+The [++equ:rs](/language/hoon/reference/stdlib/3b#equrs) arm checks for
+complete equality of two values.  The downside of this
+[arm](/glossary/arm) is that it doesn't find very close values:
 
 ```hoon
 > (equ:rs .1 .1)
@@ -249,7 +243,7 @@ values:
 
 #### Tutorial:  Length Converter
 
-- Write a {% tooltip label="generator" href="/glossary/generator" /%} to
+- Write a [generator](/glossary/generator) to
   take a `@tas` input measurement unit of length, a `@rs` value, and a
   `@tas` output unit to which we will convert the input measurement.
   For instance, this generator could convert a number of imperial feet
@@ -335,22 +329,19 @@ This program shows several interesting aspects, which we've covered
 before but highlight here:
 
 - Meters form the standard unit of length.
-- `~|` {% tooltip label="sigbar"
-  href="/language/hoon/reference/rune/sig#-sigbar" /%} produces an error
+- `~|` [sigbar](/language/hoon/reference/rune/sig#-sigbar) produces an error
   message in case of a bad input.
-- `+$` {% tooltip label="lusbuc"
-  href="/language/hoon/reference/rune/lus#-lusbuc" /%} is a type
+- `+$` [lusbuc](/language/hoon/reference/rune/lus#-lusbuc) is a type
   constructor arm, here for a type union over units of length.
 
 ### Exercise:  Measurement Converter
 
-- Add to this {% tooltip label="generator" href="/glossary/generator"
-  /%} the ability to convert some other measurement (volume, mass,
-  force, or another of your choosing).
-- Add an argument to the {% tooltip label="cell" href="/glossary/cell"
-  /%} required by the {% tooltip label="gate" href="/glossary/gate" /%}
-  that indicates whether the measurements are distance or your new
-  measurement.
+- Add to this [generator](/glossary/generator) the ability to convert
+  some other measurement (volume, mass, force, or another of your
+  choosing).
+- Add an argument to the [cell](/glossary/cell) required by the
+  [gate](/glossary/gate) that indicates whether the measurements are
+  distance or your new measurement.
 - Enforce strictly that the `fr-meas` and `to-meas` values are either
   lengths or your new type.
 - Create a new map of conversion values to handle your new measurement
@@ -366,29 +357,26 @@ What is `++rs`?  It's a door with 21 arms:
 <21|ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>
 ```
 
-The {% tooltip label="battery" href="/glossary/battery" /%} of this {%
-tooltip label="core" href="/glossary/core" /%}, pretty-printed as
-`21|ezj`, has 21 arms that define functions specifically for `@rs`
-atoms.  One of these arms is named `++add`; it's a different `add` from
-the standard one we've been using for vanilla atoms, and thus the one we
-used above.  When you invoke {% tooltip label="add:rs"
-href="/language/hoon/reference/stdlib/3b#addrs" /%} instead of just
-`add` in a function call, (1) the `rs` door is produced, and then (2)
-the name search for `add` resolves to the special `add` {% tooltip
-label="arm" href="/glossary/arm" /%} in `rs`. This produces the {%
-tooltip label="gate" href="/glossary/gate" /%} for adding `@rs` atoms:
+The [battery](/glossary/battery) of this [core](/glossary/core),
+pretty-printed as `21|ezj`, has 21 arms that define functions
+specifically for `@rs` atoms.  One of these arms is named `++add`; it's
+a different `add` from the standard one we've been using for vanilla
+atoms, and thus the one we used above.  When you invoke
+[add:rs](/language/hoon/reference/stdlib/3b#addrs) instead of just `add`
+in a function call, (1) the `rs` door is produced, and then (2) the name
+search for `add` resolves to the special `add` [arm](/glossary/arm) in
+`rs`. This produces the [gate](/glossary/gate) for adding `@rs` atoms:
 
 ```hoon
 > add:rs
 <1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
-What about the sample of the `rs` {% tooltip label="door"
-href="/glossary/door" /%}?  The pretty-printer shows `r=?(%d %n %u %z)`.
-The {% tooltip label="rs" href="/language/hoon/reference/stdlib/3b#rs"
-/%} sample can take one of four values: `%d`, `%n`, `%u`, and `%z`.
-These argument values represent four options for how to round `@rs`
-numbers:
+What about the sample of the `rs` [door](/glossary/door)?  The
+pretty-printer shows `r=?(%d %n %u %z)`. The
+[rs](/language/hoon/reference/stdlib/3b#rs) sample can take one of four
+values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four
+options for how to round `@rs` numbers:
 
 - `%d` rounds down
 - `%n` rounds to the nearest value
@@ -397,12 +385,11 @@ numbers:
 
 The default value is `%z`, round to zero.  When we invoke `++add:rs` to
 call the addition function, there is no way to modify the `rs` door
-sample, so the default rounding option is used.  How do we change it?
-We use the `~( )` notation: `~(arm door arg)`.
+sample, so the default rounding option is used.  How do we change it? We
+use the `~( )` notation: `~(arm door arg)`.
 
-Let's evaluate the `add` {% tooltip label="arm" href="/glossary/arm" /%}
-of `rs`, also modifying the door {% tooltip label="sample"
-href="/glossary/sample" /%} to `%u` for 'round up':
+Let's evaluate the `add` [arm](/glossary/arm) of `rs`, also modifying
+the door [sample](/glossary/sample) to `%u` for 'round up':
 
 ```hoon
 > ~(add rs %u)
@@ -410,22 +397,20 @@ href="/glossary/sample" /%} to `%u` for 'round up':
 ```
 
 This is the gate produced by `add`, and you can see that its sample is a
-pair of `@rs` atoms. But if you look in the context you'll see the {%
-tooltip label="rs" href="/language/hoon/reference/stdlib/3b#rs" /%}
-door. Let's look in the sample of that {% tooltip label="core"
-href="/glossary/core" /%} to make sure that it changed to `%u`. We'll
-use the wing `+6.+7` to look at the sample of the {% tooltip
-label="gate's" href="/glossary/gate" /%} context:
+pair of `@rs` atoms. But if you look in the context you'll see the
+[rs](/language/hoon/reference/stdlib/3b#rs) door. Let's look in the
+sample of that [core](/glossary/core) to make sure that it changed to
+`%u`. We'll use the wing `+6.+7` to look at the sample of the
+[gate's](/glossary/gate) context:
 
 ```hoon
 > +6.+7:~(add rs %u)
 r=%u
 ```
 
-It did indeed change.  We also see that the door {% tooltip
-label="sample" href="/glossary/sample"/%} uses the {% tooltip
-label="face" href="/glossary/face" /%} `r`, so let's use that instead of
-the unwieldy `+6.+7`:
+It did indeed change.  We also see that the door
+[sample](/glossary/sample) uses the [face](/glossary/face) `r`, so let's
+use that instead of the unwieldy `+6.+7`:
 
 ```hoon
 > r:~(add rs %u)
@@ -456,7 +441,7 @@ Why does this gap exist?  Single-precision floats are 32-bit and there's
 only so many distinctions that can be made in floats before you run out
 of bits.
 
-Just as there is a {% tooltip label="door" href="/glossary/door" /%} for
+Just as there is a [door](/glossary/door) for
 `@rs` functions, there is a Hoon standard library door for `@rd`
 functions (double-precision 64-bit floats), another for `@rq` functions
 (quad-precision 128-bit floats), and one more for `@rh` functions
@@ -498,11 +483,10 @@ mathematical operations.
 
 ### Hoon Operations
 
-`@u`-{% tooltip label="aura" href="/glossary/aura" /%} atoms are
-_unsigned_ values, but there is a complete set of _signed_ auras in the
-`@s` series.  ZigZag was chosen for Hoon's signed integer representation
-because it represents negative values with small absolute magnitude as
-short binary terms.
+`@u`-[aura](/glossary/aura) atoms are _unsigned_ values, but there is a
+complete set of _signed_ auras in the `@s` series.  ZigZag was chosen
+for Hoon's signed integer representation because it represents negative
+values with small absolute magnitude as short binary terms.
 
 | Aura | Meaning | Example |
 | ---- | ------- | ------- |
@@ -514,15 +498,14 @@ short binary terms.
 | `@sx` | signed hexadecimal | `--0x5f5.e138` (positive) |
 |       |                    | `-0x5f5.e138` (negative) |
 
-The {% tooltip label="++si" href="/language/hoon/reference/stdlib/3a#si"
-/%} core supports signed-integer operations correctly.  However, unlike
-the `@r` operations, `@s` operations have different names (likely to
-avoid accidental mental overloading).
+The [++si](/language/hoon/reference/stdlib/3a#si) core supports
+signed-integer operations correctly.  However, unlike the `@r`
+operations, `@s` operations have different names (likely to avoid
+accidental mental overloading).
 
-To produce a signed integer from an unsigned value, use {% tooltip
-label="++new:si" href="/language/hoon/reference/stdlib/3a#newsi" /%}
-with a sign flag, or simply use {% tooltip label="++sun:si"
-href="/language/hoon/reference/stdlib/3a#sunsi" /%}
+To produce a signed integer from an unsigned value, use
+[++new:si](/language/hoon/reference/stdlib/3a#newsi) with a sign flag,
+or simply use [++sun:si](/language/hoon/reference/stdlib/3a#sunsi)
 
 ```hoon
 > (new:si & 2)
@@ -535,9 +518,9 @@ href="/language/hoon/reference/stdlib/3a#sunsi" /%}
 --5
 ```
 
-To recover an unsigned integer from a signed integer, use {% tooltip
-label="++old:si" href="/language/hoon/reference/stdlib/3a#oldsi" /%},
-which returns the magnitude and the sign.
+To recover an unsigned integer from a signed integer, use
+[++old:si](/language/hoon/reference/stdlib/3a#oldsi), which returns the
+magnitude and the sign.
 
 ```hoon
 > (old:si --5)
@@ -547,20 +530,18 @@ which returns the magnitude and the sign.
 [%.n 5]
 ```
 
-- {% tooltip label="++sum:si" href="/language/hoon/reference/stdlib/3a#sumsi" /%}, addition
-- {% tooltip label="++dif:si" href="/language/hoon/reference/stdlib/3a#difsi" /%}, subtraction
-- {% tooltip label="++pro:si" href="/language/hoon/reference/stdlib/3a#prosi" /%}, multiplication
-- {% tooltip label="++fra:si" href="/language/hoon/reference/stdlib/3a#frasi" /%}, division
-- {% tooltip label="++rem:si" href="/language/hoon/reference/stdlib/3a#remsi" /%}, modulus (remainder after division), b modulo a as `@s`
-- {% tooltip label="++abs:si" href="/language/hoon/reference/stdlib/3a#abssi" /%}, absolute value
-- {% tooltip label="++cmp:si" href="/language/hoon/reference/stdlib/3a#synsi" /%}, test for greater value (as index, `>` → `--1`, `<` → `-1`, `=` → `--0`)
+- [++sum:si](/language/hoon/reference/stdlib/3a#sumsi), addition
+- [++dif:si](/language/hoon/reference/stdlib/3a#difsi), subtraction
+- [++pro:si](/language/hoon/reference/stdlib/3a#prosi), multiplication
+- [++fra:si](/language/hoon/reference/stdlib/3a#frasi), division
+- [++rem:si](/language/hoon/reference/stdlib/3a#remsi), modulus (remainder after division), b modulo a as `@s`
+- [++abs:si](/language/hoon/reference/stdlib/3a#abssi), absolute value
+- [++cmp:si](/language/hoon/reference/stdlib/3a#synsi), test for greater value (as index, `>` → `--1`, `<` → `-1`, `=` → `--0`)
 
-To convert a floating-point value from number (atom) to text, use {%
-tooltip label="++scow" href="/language/hoon/reference/stdlib/4m#scow"
-/%} or {% tooltip label="++r-co:co"
-href="/language/hoon/reference/stdlib/4k#r-coco" /%} with {% tooltip
-label="++rlys" href="/language/hoon/reference/stdlib/3b#rlys" /%} (and
-friends):
+To convert a floating-point value from number (atom) to text, use
+[++scow](/language/hoon/reference/stdlib/4m#scow) or
+[++r-co:co](/language/hoon/reference/stdlib/4k#r-coco) with
+[++rlys](/language/hoon/reference/stdlib/3b#rlys) (and friends):
 
 ```hoon
 > (scow %rs .3.14159)
@@ -575,8 +556,8 @@ friends):
 The Hoon standard library at the current time omits many [transcendental
 functions](https://en.wikipedia.org/wiki/Transcendental_function), such
 as the trigonometric functions.  It is useful to implement pure-Hoon
-versions of these, although they are not as efficient as {% tooltip
-label="jetted" href="/glossary/jet" /%} mathematical code would be.
+versions of these, although they are not as efficient as
+[jetted](/glossary/jet) mathematical code would be.
 
 - Produce a version of `++factorial` which can operate on `@rs` inputs
   correctly.
@@ -677,8 +658,8 @@ F_n = \frac{\varphi^n - (-\varphi)^{-n}}{\sqrt 5}
 F_n = \frac{\varphi^n-(-\varphi)^{-n}}{\sqrt 5} = \frac{\varphi^n-(-\varphi)^{-n}}{2 \varphi - 1}
 -->
 
-- Implement this analytical formula for the Fibonacci series as a {%
-  tooltip label="gate" href="/glossary/gate" /%}.
+- Implement this analytical formula for the Fibonacci series as a
+  [gate](/glossary/gate).
 
 ##  Date & Time Mathematics
 
@@ -702,10 +683,10 @@ since values are unsigned integers, no date before that time can be
 represented.
 
 Time values, often referred to as _timestamps_, are commonly represented
-by the [UTC](https://www.timeanddate.com/time/aboututc.html) value.
-Time representations are complicated by offset such as timezones,
-regular adjustments like daylight savings time, and irregular
-adjustments like leap seconds.  (Read [Dave Taubler's excellent
+by the [UTC](https://www.timeanddate.com/time/aboututc.html) value. Time
+representations are complicated by offset such as timezones, regular
+adjustments like daylight savings time, and irregular adjustments like
+leap seconds.  (Read [Dave Taubler's excellent
 overview](https://levelup.gitconnected.com/why-is-programming-with-dates-so-hard-7477b4aeff4c)
 of the challenges involved with calculating dates for further
 considerations, as well as [Martin Thoma's “What Every Developer Should
@@ -718,12 +699,10 @@ A timestamp can be separated into the time portion, which is the
 relative offset within a given day, and the date portion, which
 represents the absolute day.
 
-There are two {% tooltip label="molds" href="/glossary/mold" /%} to
-represent time in Hoon:  the `@d` {% tooltip label="aura"
-href="/glossary/aura" /%}, with `@da` for a full timestamp and `@dr` for
-an offset; and the {% tooltip label="+$date"
-href="/language/hoon/reference/stdlib/2q#date" /%}/{% tooltip
-label="+$tarp" href="/language/hoon/reference/stdlib/2q#tarp" /%}
+There are two [molds](/glossary/mold) to represent time in Hoon:  the
+`@d` [aura](/glossary/aura), with `@da` for a full timestamp and `@dr`
+for an offset; and the
+[+$date](/language/hoon/reference/stdlib/2q#date)/[+$tarp](/language/hoon/reference/stdlib/2q#tarp)
 structure:
 
 | Aura | Meaning | Example |
@@ -740,8 +719,8 @@ structure:
 
 `now` returns the `@da` of the current timestamp (in UTC).
 
-To go from a `@da` to a `+$tarp`, use {% tooltip label="++yell"
-href="/language/hoon/reference/stdlib/3c#yell" /%}:
+To go from a `@da` to a `+$tarp`, use
+[++yell](/language/hoon/reference/stdlib/3c#yell):
 
 ```hoon
 > *tarp
@@ -757,8 +736,8 @@ href="/language/hoon/reference/stdlib/3c#yell" /%}:
 [d=20 h=0 m=0 s=0 f=~]
 ```
 
-To go from a `@da` to a `+$date`, use {% tooltip label="++yore"
-href="/language/hoon/reference/stdlib/3c#yore" /%}:
+To go from a `@da` to a `+$date`, use
+[++yore](/language/hoon/reference/stdlib/3c#yore):
 
 ```hoon
 > (yore ~2014.6.6..21.09.15..0a16)
@@ -768,8 +747,8 @@ href="/language/hoon/reference/stdlib/3c#yore" /%}:
 [[a=%.y y=2.022] m=5 t=[d=24 h=16 m=20 s=57 f=~[0xbaec]]]
 ```
 
-To go from a `+$date` to a `@da`, use {% tooltip label="++year"
-href="/language/hoon/reference/stdlib/3c#year" /%}:
+To go from a `+$date` to a `@da`, use
+[++year](/language/hoon/reference/stdlib/3c#year):
 
 ```hoon
 > (year [[a=%.y y=2.014] m=8 t=[d=4 h=20 m=4 s=57 f=~[0xd940]]])
@@ -779,8 +758,8 @@ href="/language/hoon/reference/stdlib/3c#year" /%}:
 ~2022.5.24..16.24.16..d184
 ```
 
-To go from a `+$tarp` to a `@da`, use {% tooltip label="++yule"
-href="/language/hoon/reference/stdlib/3c#yule" /%}:
+To go from a `+$tarp` to a `@da`, use
+[++yule](/language/hoon/reference/stdlib/3c#yule):
 
 ```hoon
 > (yule (yell now))
@@ -803,9 +782,9 @@ The Urbit date system correctly compensates for the lack of Year Zero:
 ~1-.1.1
 ```
 
-The {% tooltip label="++yo" href="/language/hoon/reference/stdlib/3c#yo"
-/%} core contains constants useful for calculating time, but in general
-you should not hand-roll time or timezone calculations.
+The [++yo](/language/hoon/reference/stdlib/3c#yo) core contains
+constants useful for calculating time, but in general you should not
+hand-roll time or timezone calculations.
 
 ### Tutorial:  Julian Day
 
@@ -890,11 +869,11 @@ are in the same order as `@p`, however.  Thus:
 .~nec-dozzod-dozzod-dozzod-dozzod-dozzod-dozzod-dozzod-dozzod
 ```
 
-`@q` {% tooltip label="auras" href="/glossary/aura" /%} can be used as
+`@q` [auras](/glossary/aura) can be used as
 sequential mnemonic markers for values.
 
-The {% tooltip label="++po" href="/language/hoon/reference/stdlib/4a#po"
-/%} core contains tools for directly parsing `@q` atoms.
+The [++po](/language/hoon/reference/stdlib/4a#po) core contains tools
+for directly parsing `@q` atoms.
 
 ### Base-32 and Base-64
 
@@ -972,8 +951,7 @@ like keystroke typing latency to produce random bits.
 ### Random Numbers
 
 Given a source of entropy to seed a random number generator, one can
-then use the {% tooltip label="++og"
-href="/language/hoon/reference/stdlib/3d#og" /%} door to produce various
+then use the [++og](/language/hoon/reference/stdlib/3d#og) door to produce various
 kinds of random numbers.  The basic operations of `++og` are described
 in [the lesson on subject-oriented
 programming](/courses/hoon-school/O-subject).
@@ -1018,11 +996,11 @@ stream, as Cook illustrates in Python?
   numbers in the range [0, 1] with equal likelihood to machine
   precision.
 
-We use the LCG defined above, then chop out 23-bit slices using {%
-tooltip label="++rip" href="/language/hoon/reference/stdlib/2c#rip" /%}
-to produce each number, manually compositing the result into a valid
-floating-point number in the range [0, 1].  (We avoid producing special
-sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
+We use the LCG defined above, then chop out 23-bit slices using
+[++rip](/language/hoon/reference/stdlib/2c#rip) to produce each number,
+manually compositing the result into a valid floating-point number in
+the range [0, 1].  (We avoid producing special sequences like
+[`NaN`](https://en.wikipedia.org/wiki/NaN).)
 
 **`/gen/uniform.hoon`**
 
@@ -1057,8 +1035,7 @@ sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
 --
 ```
 
-- Convert the above to a `%say` {% tooltip label="generator"
-  href="/glossary/generator" /%} that can optionally accept a seed; if
+- Convert the above to a `%say` [generator](/glossary/generator) that can optionally accept a seed; if
   no seed is provided, use `eny`.
 
 - Produce a higher-quality Mersenne Twister uniform RNG, such as [per
@@ -1223,7 +1200,8 @@ Z = \text{sgn}\left(U-\frac{1}{2}\right) \left( t - \frac{c_{0}+c_{1} t+c_{2} t^
 $$
 -->
 
-- Implement this formula in Hoon to produce normally-distributed random numbers.
+- Implement this formula in Hoon to produce normally-distributed random
+  numbers.
 - How would you implement other random number generators?
 
 <!--
@@ -1363,8 +1341,7 @@ corresponds to it.  Hashes can be used for many purposes:
 4. **Data lookup**.  [Hash
    tables](https://en.wikipedia.org/wiki/Hash_table) are one way to
    implement a key→value mapping, such as the functionality offered by
-   Hoon's {% tooltip label="++map"
-   href="/language/hoon/reference/stdlib/2o#map" /%}.
+   Hoon's [++map](/language/hoon/reference/stdlib/2o#map).
 
 Theoretically, since the number of fixed-length hashes are finite, an
 infinite number of possible programs can yield any given hash.  This is
@@ -1374,10 +1351,9 @@ practical purposes such a collision is extremely unlikely.
 
 ### Hoon Operations
 
-The Hoon standard library supports fast insecure hashing with {% tooltip
-label="++mug" href="/language/hoon/reference/stdlib/2e#mug" /%}, which
-accepts any {% tooltip label="noun" href="/glossary/noun" /%} and
-produces an atom of the hash.
+The Hoon standard library supports fast insecure hashing with
+[++mug](/language/hoon/reference/stdlib/2e#mug), which accepts any
+[noun](/glossary/noun) and produces an atom of the hash.
 
 ```hoon
 > `@ux`(mug 1)
@@ -1410,12 +1386,11 @@ Hoon-specific metadata like aura:
 Hoon also includes [SHA-256 and
 SHA-512](https://en.wikipedia.org/wiki/SHA-2)
 [tooling](/language/hoon/reference/stdlib/3d).
-({% tooltip label="++og" href="/language/hoon/reference/stdlib/3d#og"
-/%}, the random number generator, is based on SHA-256 hashing.)
+([++og](/language/hoon/reference/stdlib/3d#og), the random number
+generator, is based on SHA-256 hashing.)
 
-- {% tooltip label="++shax" href="/language/hoon/reference/stdlib/3d#shax" /%} produces
-    a hashed atom of 256 bits from any {% tooltip label="atom"
-    href="/glossary/atom" /%}.
+- [++shax](/language/hoon/reference/stdlib/3d#shax) produces
+    a hashed atom of 256 bits from any [atom](/glossary/atom).
 
     ```hoon > (shax 1)
     69.779.012.276.202.546.540.741.613.998.220.636.891.790.827.476.075.440.677.599.814.057.037.833.368.907
@@ -1433,7 +1408,7 @@ SHA-512](https://en.wikipedia.org/wiki/SHA-2)
     0x84a4.929b.1d69.708e.d4b7.0fb8.ca97.cc85.c4a6.1aae.4596.f753.d0d2.6357.e7b9.eb0f
     ```
 
-- {% tooltip label="++shaz" href="/language/hoon/reference/stdlib/3d#shaz" /%} produces
+- [++shaz](/language/hoon/reference/stdlib/3d#shaz) produces
   a hashed atom of 512 bits from any atom.
 
     ```hoon

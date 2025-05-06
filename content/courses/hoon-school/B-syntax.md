@@ -33,7 +33,7 @@ An
 is a combination of characters that a language interprets and evaluates
 to produce a value.  All Hoon programs are built of expressions, rather
 like mathematical equations.  Hoon expressions are built along a
-backbone of {% tooltip label="runes" href="/glossary/rune" /%}, which
+backbone of [runes](/glossary/rune), which
 are two-character symbols that act like keywords in other programming
 languages to define the syntax, or grammar, of the expression.
 
@@ -56,19 +56,18 @@ smaller expressions.  Complex expressions are made up of smaller
 expressions (which are called **subexpressions**).
 
 The Urbit operating system hews to a conceptual model wherein each
-expression takes place in a certain context (the {% tooltip
-label="subject" href="/glossary/subject" /%}).  While sharing a lot of
-practicality with other programming paradigms and platforms, Urbit's
-model is mathematically well-defined and unambiguously specified.  Every
+expression takes place in a certain context (the
+[subject](/glossary/subject)).  While sharing a lot of practicality with
+other programming paradigms and platforms, Urbit's model is
+mathematically well-defined and unambiguously specified.  Every
 expression of Hoon is evaluated relative to its subject, a piece of data
 that represents the environment, or the context, of an expression.
 
-At its root, Urbit is completely specified by {% tooltip label="Nock"
-href="/glossary/nock" /%}, sort of a machine language for the Urbit
-virtual machine layer and event log.  However, Nock code is basically
-unreadable (and unwriteable) for a human.  [One worked
-example](/language/nock/examples/decrement) yields, for decrementing a
-value by one, the Nock formula:
+At its root, Urbit is completely specified by [Nock](/glossary/nock),
+sort of a machine language for the Urbit virtual machine layer and event
+log.  However, Nock code is basically unreadable (and unwriteable) for a
+human.  [One worked example](/language/nock/examples/decrement) yields,
+for decrementing a value by one, the Nock formula:
 
 ```hoon
 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1]
@@ -97,17 +96,17 @@ In a very similar sense, everything in a Hoon program is an atom or a
 bond.  Metaphorically, a Hoon program is a complex molecule, a digital
 chemistry that describes one mathematical representation of data.
 
-The most general data category in Hoon is a {% tooltip label="noun"
-href="/glossary/noun" /%}.  This is just about as broad as saying
-“thing”, so let's be more specific:
+The most general data category in Hoon is a [noun](/glossary/noun).
+This is just about as broad as saying “thing”, so let's be more
+specific:
 
 > A noun is an atom or a cell.
 
 Progress?  We can say, in plain English, that
 
-- An {% tooltip label="atom" href="/glossary/atom" /%} is a non-negative
+- An [atom](/glossary/atom) is a non-negative
   integer number (0 to +∞), e.g. `42`.
-- A {% tooltip label="cell" href="/glossary/cell" /%} is a pair of two
+- A [cell](/glossary/cell) is a pair of two
   nouns, written in square brackets, e.g. `[0
   1]`.
 
@@ -118,9 +117,9 @@ Nock rules to change the noun in well-defined mechanical ways.
 ### Atoms
 
 If an atom is a non-negative number, how do we represent anything else?
-Hoon provides each atom an {% tooltip label="aura" href="/glossary/aura"
-/%} , a tag which lets you treat a number as text, time, date, Urbit
-address, IP address, and much more.
+Hoon provides each atom an [aura](/glossary/aura) , a tag which lets you
+treat a number as text, time, date, Urbit address, IP address, and much
+more.
 
 An aura always begins with `@` pat, which denotes an atom (as opposed to
 a cell, `^` ket, or the general noun, `*` tar).  The next letter or
@@ -164,8 +163,7 @@ of representing the same underlying data values.
 There's a special value that recurs in many contexts in Hoon:  `~` sig
 is the null or zero value.
 
-The `^-` {% tooltip label="kethep"
-href="/language/hoon/reference/rune/ket#--kethep" /%} rune is useful for
+The `^-` [kethep](/language/hoon/reference/rune/ket#--kethep) rune is useful for
 ensuring that everything in the second child matches the type (aura) of
 the first, e.g.
 
@@ -178,8 +176,7 @@ useful tool in Hoon code.
 
 ### Exercise:  Aura Conversions
 
-Convert between some of the given auras at the {% tooltip label="Dojo"
-href="/glossary/dojo" /%} prompt, e.g.:
+Convert between some of the given auras at the [Dojo](/glossary/dojo) prompt, e.g.:
 
 - `100` to `@p`
 - `0b1100.0101` to `@p`
@@ -189,7 +186,7 @@ href="/glossary/dojo" /%} prompt, e.g.:
 
 ### Cells
 
-A {% tooltip label="cell" href="/glossary/cell" /%} is a pair of nouns.
+A [cell](/glossary/cell) is a pair of nouns.
 Cells are traditionally written using square brackets:  `[]`.  For now,
 just recall the square brackets and that cells are always _pairs_ of
 values.
@@ -200,8 +197,7 @@ values.
 [[1 2] [3 4]]
 ```
 
-This is actually a shorthand for a rune as well, `:-` {% tooltip
-label="colhep" href="/language/hoon/reference/rune/col#--colhep" /%}
+This is actually a shorthand for a rune as well, `:-` [colhep](/language/hoon/reference/rune/col#--colhep)
 
 ```hoon
 :-  1  2
@@ -236,26 +232,22 @@ structure of the operating function itself as a noun.
 
 {% video src="https://media.urbit.org/docs/hoon-school-videos/HS113 - Basic Coding.mp4" /%}
 
-The backbone of any Hoon expression is a scaffolding of {% tooltip
-label="runes" href="/glossary/rune" /%} , which are essentially
-mathematical relationships between daughter components.  If nouns are
-nouns, then runes are verbs:  they describe how nouns relate.  Runes
-provide the structural and logical relationship between noun values.
+The backbone of any Hoon expression is a scaffolding of
+[runes](/glossary/rune) , which are essentially mathematical
+relationships between daughter components.  If nouns are nouns, then
+runes are verbs:  they describe how nouns relate.  Runes provide the
+structural and logical relationship between noun values.
 
-A rune is just a pair of ASCII characters (a digraph).  We usually {%
-tooltip label="pronounce runes" href="/glossary/aural-ascii" /%} by
-combining their characters’ names, e.g.: {% tooltip label="\"kethep\""
-href="/language/hoon/reference/rune/ket#--kethep" /%} for `^-`, {%
-tooltip label="\"bartis\""
-href="/language/hoon/reference/rune/bar#-bartis" /%} for `|=`, and {%
-tooltip label="\"barcen\""
-href="/language/hoon/reference/rune/bar#-barcen" /%} for `|%`.
+A rune is just a pair of ASCII characters (a digraph).  We usually
+[pronounce runes](/glossary/aural-ascii) by combining their characters’
+names, e.g.: ["kethep"](/language/hoon/reference/rune/ket#--kethep) for
+`^-`, ["bartis"](/language/hoon/reference/rune/bar#-bartis) for `|=`,
+and ["barcen"](/language/hoon/reference/rune/bar#-barcen) for `|%`.
 
 For instance, when we called a function earlier (in Hoon parlance, we
-_slammed a gate_), we needed to provide the `%-` {% tooltip
-label="cenhep" href="/language/hoon/reference/rune/cen#-cenhep" /%} rune
-with two bits of information, a function name and the values to
-associate with it:
+_slammed a gate_), we needed to provide the `%-`
+[cenhep](/language/hoon/reference/rune/cen#-cenhep) rune with two bits
+of information, a function name and the values to associate with it:
 
 ```hoon {% copy=true %}
 %-
@@ -270,15 +262,14 @@ like [Clojure](https://en.wikipedia.org/wiki/Clojure).  Literally, we
 can interpret `%-  add  [1 2]` as “evaluate the `add` core on the input
 values `[1 2]`”.
 
-The {% tooltip label="++add"
-href="/language/hoon/reference/stdlib/1a#add" /%} function expects
-precisely two values (or _arguments_), which are provided by {% tooltip
-label="%-" href="/language/hoon/reference/rune/cen#-cenhep" /%} in the
-neighboring child expression as a cell.  There's really no limit to the
-complexity of Hoon expressions:  they can track deep and wide.  They
-also don't care much about layout, which leaves you a lot of latitude.
-The only hard-and-fast rule is that there are single spaces (`ace`s) and
-everything else (`gap`s).
+The [++add](/language/hoon/reference/stdlib/1a#add) function expects
+precisely two values (or _arguments_), which are provided by
+[%-](/language/hoon/reference/rune/cen#-cenhep) in the neighboring child
+expression as a cell.  There's really no limit to the complexity of Hoon
+expressions:  they can track deep and wide.  They also don't care much
+about layout, which leaves you a lot of latitude. The only hard-and-fast
+rule is that there are single spaces (`ace`s) and everything else
+(`gap`s).
 
 ```hoon {% copy=true %}
 %-
@@ -323,8 +314,7 @@ runes that yield 80% of the capability.
 ### Exercise:  Identifying Unknown Runes
 
 Here is a lightly-edited snippet of Hoon code.  Anything written after a
-`::` {% tooltip label="colcol"
-href="/language/hoon/reference/rune/col#-colcol" /%} is a _comment_ and
+`::` [colcol](/language/hoon/reference/rune/col#-colcol) is a _comment_ and
 is ignored by the computer.  (Comments are useful for human-language
 explanations.)
 
@@ -368,17 +358,15 @@ Here is a snippet of Hoon code:
 ==
 ```
 
-Without looking it up first, what does the `==` {% tooltip
-label="tistis" href="/language/hoon/reference/rune/terminators#-tistis"
-/%} do for the `:~` {% tooltip label="colsig"
-href="/language/hoon/reference/rune/col#-colsig" /%} rune?  Hint: some
-runes can take any number of arguments.
+Without looking it up first, what does the `==`
+[tistis](/language/hoon/reference/rune/terminators#-tistis) do for the
+`:~` [colsig](/language/hoon/reference/rune/col#-colsig) rune?  Hint:
+some runes can take any number of arguments.
 
 Most runes are used at the beginning of a complex expression, but there
-are exceptions. For example, the runes `--` {% tooltip label="hephep"
-href="/language/hoon/reference/rune/terminators#---hephep" /%} and
-`==` {% tooltip label="tistis"
-href="/language/hoon/reference/rune/terminators#-tistis" /%} are used at
+are exceptions. For example, the runes `--`
+[hephep](/language/hoon/reference/rune/terminators#---hephep) and `==`
+[tistis](/language/hoon/reference/rune/terminators#-tistis) are used at
 the end of certain expressions.
 
 #### Aside:  Writing Incorrect Code
@@ -403,15 +391,14 @@ Any time you see a `need`/`have` pair, this is what it means.
 
 Runes are classified by family (with the exceptions of `--` hephep and
 `==` tistis). The first of the two symbols indicates the family—e.g.,
-the `^-` kethep rune is in the `^` {% tooltip label="ket"
-href="/language/hoon/reference/rune/ket" /%} family of runes, and the
-`|=` bartis and `|%` barcen runes are in the `|` {% tooltip label="bar"
-href="/language/hoon/reference/rune/bar" /%} family.  The runes of
+the `^-` kethep rune is in the `^`
+[ket](/language/hoon/reference/rune/ket) family of runes, and the `|=`
+bartis and `|%` barcen runes are in the `|`
+[bar](/language/hoon/reference/rune/bar) family.  The runes of
 particular family usually have related meanings.  Two simple examples:
 the runes in the `|` bar family are all used to create cores, and the
-runes in the `:` {% tooltip label="col"
-href="/language/hoon/reference/rune/col" /%} family are all used to
-create cells.
+runes in the `:` [col](/language/hoon/reference/rune/col) family are all
+used to create cells.
 
 Rune expressions are usually complex, which means they usually have one
 or more subexpressions.  The appropriate syntax varies from rune to
@@ -487,19 +474,18 @@ inside are separated by a single space. Any more spacing than that
 results in a syntax error.
 
 Nearly all rune expressions can be written in either form, but there are
-exceptions.  `|%` {% tooltip label="barcen"
-href="/language/hoon/reference/rune/bar#-barcen" /%} and `|_` {%
-tooltip label="barcab" href="/language/hoon/reference/rune/bar#_-barcab"
-/%} expressions, for example, can only be written in tall form.  (Those
-are a bit too complicated to fit comfortably on one line anyway.)
+exceptions.  `|%` [barcen](/language/hoon/reference/rune/bar#-barcen)
+and `|_` [barcab](/language/hoon/reference/rune/bar#_-barcab)
+expressions, for example, can only be written in tall form.  (Those are
+a bit too complicated to fit comfortably on one line anyway.)
 
 ### Nesting Runes
 
 Since runes take a fixed number of children, one can visualize how Hoon
 expressions are built by thinking of each rune being followed by a
 series of boxes to be filled—one for each of its children.  Let us
-illustrate this with the `:-` {% tooltip label="colhep"
-href="/language/hoon/reference/rune/col#--colhep" /%} rune.
+illustrate this with the `:-`
+[colhep](/language/hoon/reference/rune/col#--colhep) rune.
 
 ![Colhep rune with two empty boxes for children.](https://media.urbit.org/docs/hoon-syntax/cell1.png)
 
@@ -552,12 +538,11 @@ to the subject”.  Hoon faces aren't exactly like variables in other
 programming languages, but for now we can treat them that way, with the
 caveat that they are only accessible to daughter or sister expressions.
 
-When we used {% tooltip label="++add"
-href="/language/hoon/reference/stdlib/1a#add" /%} or {% tooltip
-label="++sub" href="/language/hoon/reference/stdlib/1a#sub" /%}
-previously, we wanted an immediate answer.  There's not much more to say
-than `5 + 1`.  In contrast, pinning a face accepts three daughter
-expressions:  a name (or face), a value, and the rest of the expression.
+When we used [++add](/language/hoon/reference/stdlib/1a#add) or
+[++sub](/language/hoon/reference/stdlib/1a#sub) previously, we wanted an
+immediate answer.  There's not much more to say than `5 + 1`.  In
+contrast, pinning a face accepts three daughter expressions:  a name (or
+face), a value, and the rest of the expression.
 
 ```hoon {% copy=true %}
 =/  perfect-number  28
@@ -693,10 +678,9 @@ dojo: hoon expression failed
 
 ### Text
 
-There are two ways to represent text in Urbit:  cords (`@t` {% tooltip
-label="aura" href="/glossary/aura" /%} atoms) and {% tooltip
-label="tapes" href="/glossary/tape" /%} (lists of individual
-characters).  Both of these are commonly called
+There are two ways to represent text in Urbit:  cords (`@t`
+[aura](/glossary/aura) atoms) and [tapes](/glossary/tape) (lists of
+individual characters).  Both of these are commonly called
 [“strings”](https://en.wikipedia.org/wiki/String_%28computer_science%29).
 
 Why represent text?  What does that mean?  We have to have a way of
@@ -728,7 +712,7 @@ actual code is [ASCII](https://en.wikipedia.org/wiki/ASCII).
 
 ### Exercise:  ASCII Values in Text
 
-A {% tooltip label="cord" href="/glossary/cord" /%} (`@t`) represents
+A [cord](/glossary/cord) (`@t`) represents
 text as a sequence of characters.  If you know the
 [ASCII](https://en.wikipedia.org/wiki/ASCII) value for a particular
 character, you can identify how the text is structured as a number.
@@ -756,7 +740,11 @@ between two different Hoon expressions, like picking a fork in a road.
 Any computational process requires the ability to distinguish options.
 For this, we first require a basis for discrimination:  truthness.
 
-Essentially, we have to be able to decide whether or not some value or expression evaluates as `%.y` _true_ (in which case we will do one thing) or `%.n` _false_ (in which case we do another).  At this point, our basic expressions are always mathematical; later on we will check for existence, for equality of two values, etc.
+Essentially, we have to be able to decide whether or not some value or
+expression evaluates as `%.y` _true_ (in which case we will do one
+thing) or `%.n` _false_ (in which case we do another).  At this point,
+our basic expressions are always mathematical; later on we will check
+for existence, for equality of two values, etc.
 
 - [`++gth`](/language/hoon/reference/stdlib/1a#gth) (greater than `>`)
 - [`++lth`](/language/hoon/reference/stdlib/1a#lth) (less than `<`)

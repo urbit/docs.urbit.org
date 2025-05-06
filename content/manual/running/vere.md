@@ -4,10 +4,10 @@ template = "doc.html"
 weight = 0
 +++
 
-The Urbit runtime is named {% tooltip label="Vere" href="/glossary/vere" /%}.
-It's the binary executable you use to run your ship. Vere manages your ship's
-{% tooltip label="pier" href="/glossary/pier" /%}, handles events, and runs the
-Nock virtual machine that performs your ship's computations.
+The Urbit runtime is named [Vere](/glossary/vere). It's the binary executable
+you use to run your ship. Vere manages your ship's [pier](/glossary/pier),
+handles events, and runs the Nock virtual machine that performs your ship's
+computations.
 
 Before version 1.9, Vere was split into two separate binaries: The `urbit`
 "king"/"urth" responsible for I/O and event persistence, and the `urbit-worker`

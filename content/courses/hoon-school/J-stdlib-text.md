@@ -15,15 +15,14 @@ module](/courses/hoon-school/P-stdlib-io)._
 ##  Text in Hoon
 
 We've incidentally used `'messages written as cords'` and `"as tapes"`,
-but aside from taking a brief look at how {% tooltip label="lists"
-href="/glossary/list" /%} (and thus {% tooltip label="tapes"
-href="/glossary/tape" /%}) work with tree addressing, we haven't
+but aside from taking a brief look at how [lists](/glossary/list) (and
+thus [tapes](/glossary/tape)) work with tree addressing, we haven't
 discussed why these differ or how text works more broadly.
 
 There are four basic ways to represent text in Urbit:
 
-- `@t`, a {% tooltip label="cord" href="/glossary/cord" /%}, which is an
-  {% tooltip label="atom" href="/glossary/atom" /%} (single value)
+- `@t`, a [cord](/glossary/cord), which is an
+  [atom](/glossary/atom) (single value)
 - `@ta`, a `knot` used for URL-safe path elements, which is an atom
   (single value)
 - `@tas`, a `term` used primarily for constants, which is an atom
@@ -60,7 +59,7 @@ the [ASCII](https://en.wikipedia.org/wiki/ASCII) standard, which defines
 A   S   C   I   I
 ```
 
-A {% tooltip label="cord" href="/glossary/cord" /%} simply shunts these
+A [cord](/glossary/cord) simply shunts these
 values together in one-byte-wide slots and represents them as an
 integer.
 
@@ -72,10 +71,10 @@ integer.
 2.037.307.443.564.446.887.986.503.990.470.772
 ```
 
-It's very helpful to use the `@ux` {% tooltip label="aura"
-href="/glossary/aura" /%} if you are trying to see the internal
-structure of a `cord`.  Since the ASCII values align at the 8-bit wide
-characters, you can see each character delineated by a hexadecimal pair.
+It's very helpful to use the `@ux` [aura](/glossary/aura) if you are
+trying to see the internal structure of a `cord`.  Since the ASCII
+values align at the 8-bit wide characters, you can see each character
+delineated by a hexadecimal pair.
 
 ```hoon
 > `@ux`'HELLO'
@@ -110,9 +109,9 @@ uses UTF-8 for `@t` values (thus both `cord` and `tape`).
 ### `(list @t)` `tape`
 
 There are some tools to work with atom `cord`s of text, but most of the
-time it is more convenient to unpack the atom into a {% tooltip
-label="tape" href="/glossary/tape" /%}.  A `tape` splits out the
-individual characters from a `cord` into a `list` of character values.
+time it is more convenient to unpack the atom into a
+[tape](/glossary/tape).  A `tape` splits out the individual characters
+from a `cord` into a `list` of character values.
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
@@ -123,9 +122,8 @@ single atom, they are stored sequentially in a rightwards-branching
 binary tree of cells.
 
 A tape is a list of `@tD` atoms (i.e., characters).  (The upper-case
-character at the end of the {% tooltip label="aura"
-href="/glossary/aura" /%} hints that the `@t` values are D→3 so 2³=8
-bits wide.)
+character at the end of the [aura](/glossary/aura) hints that the `@t`
+values are D→3 so 2³=8 bits wide.)
 
 ```hoon
 > "this is a tape"
@@ -135,7 +133,7 @@ bits wide.)
 ~[116 104 105 115 32 105 115 32 97 32 116 97 112 101]
 ```
 
-Since a {% tooltip label="tape" href="/glossary/tape" /%} is a `(list
+Since a [tape](/glossary/tape) is a `(list
 @tD)`, all of the `list` tools we have seen before work on them.
 
 ### `@ta` `knot`
@@ -205,9 +203,8 @@ but it shows off a point.)
 --
 ```
 
-(See how that `=<` {% tooltip label="tisgal"
-href="/language/hoon/reference/rune/tis#-tisgal" /%} works with the
-helper {% tooltip label="core?" href="/glossary/core" /%})
+(See how that `=<` [tisgal](/language/hoon/reference/rune/tis#-tisgal)
+works with the helper [core?](/glossary/core))
 
 
 ##  Text Operations
@@ -225,9 +222,8 @@ String interpolation puts the result of an expression directly into a
 "11 is the answer."
 ```
 
-The {% tooltip label="++weld"
-href="/language/hoon/reference/stdlib/2b#weld" /%} function can be used
-to glue two `tape`s together:
+The [++weld](/language/hoon/reference/stdlib/2b#weld) function can be
+used to glue two `tape`s together:
 
 ```hoon
 > (weld "Hello" "Mars!")
@@ -243,14 +239,13 @@ to glue two `tape`s together:
 ### Manipulating Text
 
 If you have text but you need to change part of it or alter its form,
-you can use standard library `list` operators like {% tooltip
-label="++flop" href="/language/hoon/reference/stdlib/2b#flop" /%} as
-well as `tape`-specific arms.
+you can use standard library `list` operators like
+[++flop](/language/hoon/reference/stdlib/2b#flop) as well as
+`tape`-specific arms.
 
 Applicable `list` operations—some of which you've seen before—include:
 
-- The {% tooltip label="++flop"
-  href="/language/hoon/reference/stdlib/2b#flop" /%} function takes a
+- The [++flop](/language/hoon/reference/stdlib/2b#flop) function takes a
   list and returns it in reverse order:
 
     ```hoon
@@ -261,21 +256,21 @@ Applicable `list` operations—some of which you've seen before—include:
     "Hello!"
     ```
 
-- The {% tooltip label="++sort"
-  href="/language/hoon/reference/stdlib/2b#sort" /%} function uses the
-  [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort
-  a list.  It takes a `list` to sort and a gate that serves as a
+- The [++sort](/language/hoon/reference/stdlib/2b#sort) function uses
+  the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to
+  sort a list.  It takes a `list` to sort and a gate that serves as a
   comparator.  For example, if you want to sort the list `~[37 62 49 921
-  123]` from least to greatest, you would pass that list along with
-  the {% tooltip label="++lth" href="/language/hoon/reference/stdlib/1a#lth"
-  /%} gate (for “less than”):
+  123]` from least to greatest, you would pass that list along with the
+  [++lth](/language/hoon/reference/stdlib/1a#lth) gate (for “less
+  than”):
 
     ```hoon
     > (sort ~[37 62 49 921 123] lth)
     ~[37 49 62 123 921]
     ```
 
-    To sort the list from greatest to least, use the gth gate ("greater than") as the basis of comparison instead:
+    To sort the list from greatest to least, use the gth gate ("greater
+    than") as the basis of comparison instead:
 
     ```hoon
     > (sort ~[37 62 49 921 123] gth)
@@ -291,9 +286,8 @@ Applicable `list` operations—some of which you've seen before—include:
 
     The function passed to sort must produce a flag, i.e., `?`.
 
-- The {% tooltip label="++weld"
-  href="/language/hoon/reference/stdlib/2b#weld" /%} function takes two
-  lists of the same type and concatenates them:
+- The [++weld](/language/hoon/reference/stdlib/2b#weld) function takes
+  two lists of the same type and concatenates them:
 
     ```hoon
     > (weld "Happy " "Birthday!")
@@ -302,10 +296,9 @@ Applicable `list` operations—some of which you've seen before—include:
 
     It does not inject a separator character like a space.
 
-- The {% tooltip label="++snag"
-  href="/language/hoon/reference/stdlib/2b#snag" /%} function takes an
-  atom `n` and a list, and returns the `n`th item of the list, where 0
-  is the first item:
+- The [++snag](/language/hoon/reference/stdlib/2b#snag) function takes
+  an atom `n` and a list, and returns the `n`th item of the list, where
+  0 is the first item:
 
     ```hoon
     > (snag 3 "Hello!")
@@ -323,8 +316,7 @@ Applicable `list` operations—some of which you've seen before—include:
     - Without using `++snag`, write a gate that returns the `n`th item
       of a list.  There is a solution at the bottom of the page.
 
-- The {% tooltip label="++oust"
-  href="/language/hoon/reference/stdlib/2b#oust" /%} function takes a
+- The [++oust](/language/hoon/reference/stdlib/2b#oust) function takes a
   pair of atoms `[a=@ b=@]` and a list, and returns the list with b
   items removed, starting at item a:
 
@@ -342,8 +334,7 @@ Applicable `list` operations—some of which you've seen before—include:
     "Heo!"
     ```
 
-- The {% tooltip label="++lent"
-  href="/language/hoon/reference/stdlib/2b#lent" /%} function takes a
+- The [++lent](/language/hoon/reference/stdlib/2b#lent) function takes a
   list and returns the number of items in it:
 
     ```hoon
@@ -360,46 +351,41 @@ Applicable `list` operations—some of which you've seen before—include:
       characters in a `tape`.  Build your own `tape`-length character
       counting function without using `++lent`.
 
-    You may find the `?~` {% tooltip label="wutsig"
-    href="/language/hoon/reference/rune/wut#-wutsig" /%} rune to be
+    You may find the `?~`
+    [wutsig](/language/hoon/reference/rune/wut#-wutsig) rune to be
     helpful.  It tells you whether a value is `~` or not.  (How would
-    you do this with a regular `?:` {% tooltip label="wutcol"
-    href="/language/hoon/reference/rune/wut#-wutcol" /%}?)
+    you do this with a regular `?:`
+    [wutcol](/language/hoon/reference/rune/wut#-wutcol)?)
 
-The foregoing are {% tooltip label="list" href="/glossary/list" /%}
-operations.  The following, in contrast, are {% tooltip label="tape"
-href="/glossary/tape" /%}-specific operations:
+The foregoing are [list](/glossary/list) operations.  The following, in
+contrast, are [tape](/glossary/tape)-specific operations:
 
-- The {% tooltip label="++crip"
-  href="/language/hoon/reference/stdlib/4b#crip" /%} function converts a
-  `tape` to a `cord` (`tape`→`cord`).
+- The [++crip](/language/hoon/reference/stdlib/4b#crip) function
+  converts a `tape` to a `cord` (`tape`→`cord`).
 
     ```hoon
     > (crip "Mars")
     'Mars'
     ```
 
-- The {% tooltip label="++trip"
-  href="/language/hoon/reference/stdlib/4b#trip" /%} function converts a
-  `cord` to a `tape` (`cord`→`tape`).
+- The [++trip](/language/hoon/reference/stdlib/4b#trip) function
+  converts a `cord` to a `tape` (`cord`→`tape`).
 
     ```hoon
     > (trip 'Earth')
     "Earth"
     ```
 
-- The {% tooltip label="++cass"
-  href="/language/hoon/reference/stdlib/4b#cass" /%} function: convert
-  upper-case text to lower-case (`tape`→`tape`)
+- The [++cass](/language/hoon/reference/stdlib/4b#cass) function:
+  convert upper-case text to lower-case (`tape`→`tape`)
 
     ```hoon
     > (cass "Hello Mars")
     "hello mars"
     ```
 
-- The {% tooltip label="++cuss"
-  href="/language/hoon/reference/stdlib/4b#cuss" /%} function: convert
-  lower-case text to upper-case (`tape`→`tape`)
+- The [++cuss](/language/hoon/reference/stdlib/4b#cuss) function:
+  convert lower-case text to upper-case (`tape`→`tape`)
 
     ```hoon
     > (cuss "Hello Mars")
@@ -416,8 +402,7 @@ Given a string of text, what can you do with it?
 
 #### Search
 
-- The {% tooltip label="++find"
-  href="/language/hoon/reference/stdlib/2b#find" /%} function takes
+- The [++find](/language/hoon/reference/stdlib/2b#find) function takes
   `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in
   the list (`hstk`, haystack).  (`++find` starts counting from zero.)
 
@@ -454,9 +439,9 @@ Hoon has a very powerful text parsing engine, built to compile Hoon
 itself.  However, it tends to be quite obscure to new learners.  We can
 build a simple one using `list` tools.
 
-- Compose a {% tooltip label="gate" href="/glossary/gate" /%} which
-  parses a long `tape` into smaller `tape`s by splitting the text at
-  single spaces.  For example, given a `tape`
+- Compose a [gate](/glossary/gate) which parses a long `tape` into
+  smaller `tape`s by splitting the text at single spaces.  For example,
+  given a `tape`
  
     ```hoon {% copy=true %}
     "the sky above the port was the color of television tuned to a dead channel"
@@ -468,10 +453,10 @@ build a simple one using `list` tools.
     ~["the" "sky" "above" "the" ...]
     ```
     
-    To complete this, you'll need {% tooltip label="++scag"
-    href="/language/hoon/reference/stdlib/2b#scag" /%} and {% tooltip
-    label="++slag" href="/language/hoon/reference/stdlib/2b#slag" /%}
-    (who sound like villainous henchmen from a children's cartoon).
+    To complete this, you'll need
+    [++scag](/language/hoon/reference/stdlib/2b#scag) and
+    [++slag](/language/hoon/reference/stdlib/2b#slag) (who sound like
+    villainous henchmen from a children's cartoon).
 
     ```hoon {% copy=true %}
     |=  ex=tape
@@ -488,16 +473,14 @@ build a simple one using `list` tools.
 #### Convert
 
 If you have a Hoon value and you want to convert it into text as such,
-use {% tooltip label="++scot"
-href="/language/hoon/reference/stdlib/4m#scot" /%} and {% tooltip
-label="++scow" href="/language/hoon/reference/stdlib/4m#scow" /%}.
-These call for a value of type `+$dime`, which means the `@tas`
-equivalent of a regular aura.  These are labeled as returning `cord`s
-(`@t`s) but in practice seem to return `knot`s (`@ta`s).
+use [++scot](/language/hoon/reference/stdlib/4m#scot) and
+[++scow](/language/hoon/reference/stdlib/4m#scow). These call for a
+value of type `+$dime`, which means the `@tas` equivalent of a regular
+aura.  These are labeled as returning `cord`s (`@t`s) but in practice
+seem to return `knot`s (`@ta`s).
 
-- The {% tooltip label="++scot"
-  href="/language/hoon/reference/stdlib/4m#scot" /%} function renders a
-  `dime` as a `cord` (`dime`→`cord`); the user must include any
+- The [++scot](/language/hoon/reference/stdlib/4m#scot) function renders
+  a `dime` as a `cord` (`dime`→`cord`); the user must include any
   necessary aura transformation.
 
     ```hoon
@@ -516,20 +499,17 @@ equivalent of a regular aura.  These are labeled as returning `cord`s
     '~sampel-palnet'
     ```
 
-- The {% tooltip label="++scow"
-  href="/language/hoon/reference/stdlib/4m#scow" /%} function renders a
-  `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to {%
-  tooltip label="++scot" href="/language/hoon/reference/stdlib/4m#scot"
-  /%}.
+- The [++scow](/language/hoon/reference/stdlib/4m#scow) function renders
+  a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to
+  [++scot](/language/hoon/reference/stdlib/4m#scot).
 
-- The {% tooltip label="++sane"
-  href="/language/hoon/reference/stdlib/4b#sane" /%} function checks the
-  validity of a possible text string as a `knot` or `term`.  The usage
-  of `++sane` will feel a bit strange to you:  it doesn't apply directly
-  to the text you want to check, but it produces a gate that checks for
-  the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common
-  pattern in Hoon that we've started to hint at by using molds.)
-  `++sane` is also not infallible yet.
+- The [++sane](/language/hoon/reference/stdlib/4b#sane) function checks
+  the validity of a possible text string as a `knot` or `term`.  The
+  usage of `++sane` will feel a bit strange to you:  it doesn't apply
+  directly to the text you want to check, but it produces a gate that
+  checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a
+  fairly common pattern in Hoon that we've started to hint at by using
+  molds.) `++sane` is also not infallible yet.
 
     ```hoon
     > ((sane %ta) 'ångstrom')
@@ -586,29 +566,27 @@ Let's take some of the code we've built above for processing text and
 turn them into a library we can use in another generator.
 
 - Take the space-breaking code and the element-counting code gates from
-  above and include them in a `|%` {% tooltip label="barcen"
-  href="/language/hoon/reference/rune/bar#-barcen" /%} core.  Save this
-  file as `lib/text.hoon` in the `%base` {% tooltip label="desk"
-  href="/glossary/desk" /%} of your fakeship and commit.
+  above and include them in a `|%`
+  [barcen](/language/hoon/reference/rune/bar#-barcen) core.  Save this
+  file as `lib/text.hoon` in the `%base` [desk](/glossary/desk) of your
+  fakeship and commit.
 
-- Produce a generator `gen/text-user.hoon` which accepts a {% tooltip
-  label="tape" href="/glossary/tape" /%} and returns the number of words
-  in the text (separated by spaces).  (How would you obtain this from
-  those two operations?)
+- Produce a generator `gen/text-user.hoon` which accepts a
+  [tape](/glossary/tape) and returns the number of words in the text
+  (separated by spaces).  (How would you obtain this from those two
+  operations?)
 
 
 ##  Logging
 
 The most time-honored method of debugging is to simply output relevant
 values at key points throughout a program in order to make sure they are
-doing what you think they are doing.  To this end, we introduced `~&` {%
-tooltip label="sigpam" href="/language/hoon/reference/rune/sig#-sigpam"
-/%} in the last lesson.
+doing what you think they are doing.  To this end, we introduced `~&`
+[sigpam](/language/hoon/reference/rune/sig#-sigpam) in the last lesson.
 
-The `~&` {% tooltip label="sigpam"
-href="/language/hoon/reference/rune/sig#-sigpam" /%} rune offers some
-finer-grained output options than just printing a simple value to the
-screen.  For instance, you can use it with string interpolation to
+The `~&` [sigpam](/language/hoon/reference/rune/sig#-sigpam) rune offers
+some finer-grained output options than just printing a simple value to
+the screen.  For instance, you can use it with string interpolation to
 produce detailed error messages.
 
 There are also `>` modifiers which can be included to mark “debugging
@@ -649,34 +627,32 @@ Dojo:
 
 ##  `%say` Generators
 
-A naked {% tooltip label="generator" href="/glossary/generator" /%} is
-merely a {% tooltip label="gate" href="/glossary/gate" /%}:  a {%
-tooltip label="core" href="/glossary/core" /%} with a `$` arm that Dojo
-knows to call.  However, we can also invoke a generator which is a cell
-of a metadata tag and a core.  The next level-up for our generator
+A naked [generator](/glossary/generator) is merely a
+[gate](/glossary/gate):  a [core](/glossary/core) with a `$` arm that
+Dojo knows to call.  However, we can also invoke a generator which is a
+cell of a metadata tag and a core.  The next level-up for our generator
 skills is the `%say` generator, a cell of `[%say core]` that affords
 slightly more sophisticated evaluation.
 
-We use `%say` generators when we want to provide something else in {%
-tooltip label="Arvo" href="/glossary/arvo" /%}, the Urbit operating
-system, with metadata about the generator's output. This is useful when
-a generator is needed to pipe data to another program, a frequent
-occurrence.
+We use `%say` generators when we want to provide something else in
+[Arvo](/glossary/arvo), the Urbit operating system, with metadata about
+the generator's output. This is useful when a generator is needed to
+pipe data to another program, a frequent occurrence.
 
 To that end, `%say` generators use `mark`s to make it clear, to other
-Arvo computations, exactly what kind of data their output is. A {%
-tooltip label="mark" href="/glossary/mark" /%} is akin to a MIME type on
-the Arvo level. A `mark` describes the data in some way, indicating that
-it's an `%atom`, or that it's a standard such as `%json`, or even that
-it's an application-specific data structure like `%talk-command`.
-`mark`s are not specific to `%say` generators; whenever data moves
-between programs in Arvo, that data is marked.
+Arvo computations, exactly what kind of data their output is. A
+[mark](/glossary/mark) is akin to a MIME type on the Arvo level. A
+`mark` describes the data in some way, indicating that it's an `%atom`,
+or that it's a standard such as `%json`, or even that it's an
+application-specific data structure like `%talk-command`. `mark`s are
+not specific to `%say` generators; whenever data moves between programs
+in Arvo, that data is marked.
 
-So, more formally, a `%say` generator is a {% tooltip label="cell"
-href="/glossary/cell" /%}. The head of that cell is the `%say` tag, and
-the tail is a `gate` that produces a `cask` -- a pair of the output data
-and the `mark` describing that data. -- Save this example as `add.hoon`
-in the `/gen` directory of your `%base` desk:
+So, more formally, a `%say` generator is a [cell](/glossary/cell). The
+head of that cell is the `%say` tag, and the tail is a `gate` that
+produces a `cask` -- a pair of the output data and the `mark` describing
+that data. -- Save this example as `add.hoon` in the `/gen` directory of
+your `%base` desk:
 
 ```hoon {% copy=true %}
 :-  %say
@@ -703,8 +679,8 @@ something a `%say` generator.
 :-  %say
 ```
 
-Recall that the rune `:-` {% tooltip label="colhep"
-href="/language/hoon/reference/rune/col#--colhep" /%} produces a cell,
+Recall that the rune `:-`
+[colhep](/language/hoon/reference/rune/col#--colhep) produces a cell,
 with the first following expression as its head and the second following
 expression as its tail.
 
@@ -717,12 +693,12 @@ the `|= *` expression on the line that follows.
 (add 40 2)
 ```
 
-`|= *` constructs a {% tooltip label="gate" href="/glossary/gate" /%}
-that takes a noun. This `gate` will itself produce a `cask`, which is
-cell formed by the prepending `:-`. The head of that `cask` is `%noun`
-and the tail is the rest of the program, `(add 40 2)`. The tail of the
-`cask` will be our actual data produced by the body of the program: in
-this case, just adding 40 and 2 together.
+`|= *` constructs a [gate](/glossary/gate) that takes a noun. This
+`gate` will itself produce a `cask`, which is cell formed by the
+prepending `:-`. The head of that `cask` is `%noun` and the tail is the
+rest of the program, `(add 40 2)`. The tail of the `cask` will be our
+actual data produced by the body of the program: in this case, just
+adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and
 the Hoon standard subject.  Namely, a `%say` generator knows about
@@ -744,18 +720,18 @@ have if we just used a naked generator.
 
 Naked generators are limited because they have no way of accessing data
 that exists in Arvo, such as the date and time or pieces of fresh
-entropy.  In `%say` generators, however, we can access that kind of {%
-tooltip label="subject" href="/glossary/subject" /%} by identifying them
-in the gate's sample, which we only specified as `*` in the previous few
-examples. But we can do more with `%say` generators if we do more with
-that sample.  Any valid sample will follow this 3-tuple scheme:
+entropy.  In `%say` generators, however, we can access that kind of
+[subject](/glossary/subject) by identifying them in the gate's sample,
+which we only specified as `*` in the previous few examples. But we can
+do more with `%say` generators if we do more with that sample.  Any
+valid sample will follow this 3-tuple scheme:
 
 `[[now=@da eny=@uvJ bec=beak] [list of unnamed arguments] [list of named arguments]]`
 
-This entire structure is a {% tooltip label="noun" href="/glossary/noun"
-/%}, which is why `*` is a valid sample if we wish to not use any of the
-information here in a generator. But let's look at each of these three
-elements, piece by piece.
+This entire structure is a [noun](/glossary/noun), which is why `*` is a
+valid sample if we wish to not use any of the information here in a
+generator. But let's look at each of these three elements, piece by
+piece.
 
 ##  Exercise:  The Magic 8-Ball
 
@@ -797,8 +773,8 @@ response to a call.  In its entirety:
 
 `~(. og eny)` starts a random number generator with a seed from the
 current entropy.  Right now we don't know quite enough to interpret this
-line, but we'll revisit the {% tooltip label="++og"
-href="/language/hoon/reference/stdlib/3d#og" /%} aspect of this `%say`
+line, but we'll revisit the
+[++og](/language/hoon/reference/stdlib/3d#og) aspect of this `%say`
 generator in [the lesson on
 subject-oriented-programming](/courses/hoon-school/O-subject).  For now,
 just know that it allows us to produce a random (unpredictable) integer
@@ -836,8 +812,8 @@ Let's use it with a `%say` generator.
 ```
 
 Having already saved the library as `/lib/playing-cards.hoon`, you can
-import it with the `/+` {% tooltip label="faslus"
-href="/language/hoon/reference/rune/fas#-faslus" /%} rune.  When
+import it with the `/+`
+[faslus](/language/hoon/reference/rune/fas#-faslus) rune.  When
 `cards.hoon` gets built, the Hoon builder will pull in the requested
 library and also build that.  It will also create a dependency so that
 if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.

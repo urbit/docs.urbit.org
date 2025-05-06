@@ -31,10 +31,10 @@ The short version is that Hoon uses Urbit's provisions and protocols to
 enable very fast application development with shared primitives,
 sensible affordances, and straightforward distribution.
 
-Urbit consists of an identity protocol ({% tooltip label="\"Azimuth\""
-href="/glossary/azimuth" /%}, or “Urbit ID”) and a system protocol ({%
-tooltip label="\"Arvo\"" href="/glossary/arvo" /%}, or “Urbit OS”).
-These two parts work hand-in-hand to build your hundred-year computer.
+Urbit consists of an identity protocol (["Azimuth"](/glossary/azimuth),
+or “Urbit ID”) and a system protocol (["Arvo"](/glossary/arvo), or
+“Urbit OS”). These two parts work hand-in-hand to build your
+hundred-year computer.
 
 1. **Urbit ID (Azimuth)** is a general-purpose public-key infrastructure
    (PKI) on the Ethereum blockchain, used as a platform for Urbit
@@ -54,8 +54,8 @@ mathematical functions, making it
 and
 [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming).
 Such strong guarantees require an operating protocol, the [Nock virtual
-machine](/language/nock/reference/definition), which will be persistent across
-hardware changes and always provide an upgrade path for necessary
+machine](/language/nock/reference/definition), which will be persistent
+across hardware changes and always provide an upgrade path for necessary
 changes.
 
 It's hard to write a purely functional operating system on hardware
@@ -94,7 +94,8 @@ Before beginning, you'll need to get a development ship running and
 configure an appropriate editor.  See the [Environment
 Setup](/courses/environment) guide for details.
 
-Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
+Once you have a `dojo>` prompt, the system is ready to go and waiting on
+input.
 
 ##  Getting started
 
@@ -113,10 +114,9 @@ http: live (insecure, loopback) on 12321
 ```
 
 You just used a function from the Hoon standard library, `add`, which
-for reasons that will become clear later is frequently written {%
-tooltip label="++add" href="/language/hoon/reference/stdlib/1a#add" /%}.
-Next, quit Urbit by entering {% tooltip label="|exit"
-href="/manual/os/dojo-tools#exit" /%} :
+for reasons that will become clear later is frequently written
+[++add](/language/hoon/reference/stdlib/1a#add). Next, quit Urbit by
+entering [|exit](/manual/os/dojo-tools#exit) :
 
 ```hoon {% copy=true %}
 > %-  add  [2 2]
@@ -148,7 +148,7 @@ You'll see:
 ```
 
 You asked Dojo to evaluate `17` and it echoed the number back at you.
-This value is a {% tooltip label="noun" href="/glossary/noun" /%}. We'll
+This value is a [noun](/glossary/noun). We'll
 talk more about nouns in the next lesson.
 
 Basically, every Hoon expression operates on the values it is given
@@ -162,13 +162,13 @@ One more:
 [1 2]
 ```
 
-This `:-` rune takes two values and composes them into a {% tooltip
-label="cell" href="/glossary/cell" /%}, a pair of values.
+This `:-` rune takes two values and composes them into a
+[cell](/glossary/cell), a pair of values.
 
 
 ##  Pronouncing Hoon
 
-Hoon uses {% tooltip label="runes" href="/glossary/rune" /%}, or
+Hoon uses [runes](/glossary/rune), or
 two-character ASCII symbols, to describe its structure.  (These are
 analogous to keywords in other programming languages.)  Because there
 has not really been a standard way of pronouncing, say, `#` (hash,

@@ -8,9 +8,9 @@ objectives = ["Tokenize text simply using `find` and `trim`.", "Identify element
 _This module covers text parsing.  It may be considered optional and
 skipped if you are speedrunning Hoon School._
 
-We need to build a tool to accept a {% tooltip label="tape"
-href="/glossary/tape" /%} containing some characters, then turn it into
-something else, something computational.
+We need to build a tool to accept a [tape](/glossary/tape) containing
+some characters, then turn it into something else, something
+computational.
 
 For instance, a calculator could accept an input like `3+4` and return
 `7`.  A command-line interface may look for a program to evaluate (like
@@ -27,16 +27,15 @@ The basic problem all parsers face is this:
 
 ## The Hoon Parser
 
-We could build a simple parser out of a {% tooltip label="trap"
-href="/glossary/trap" /%} and {% tooltip label="++snag"
-href="/language/hoon/reference/stdlib/2b#snag" /%}, but it would be
+We could build a simple parser out of a [trap](/glossary/trap) and
+[++snag](/language/hoon/reference/stdlib/2b#snag), but it would be
 brittle and difficult to extend.  The Hoon parser is very sophisticated,
 since it has to take a file of ASCII characters (and some UTF-8 strings)
-and turn it via an AST into {% tooltip label="Nock"
-href="/glossary/nock" /%} code.  What makes parsing challenging is that
-we have to wade directly into a sea of new types and processes.  To wit:
+and turn it via an AST into [Nock](/glossary/nock) code.  What makes
+parsing challenging is that we have to wade directly into a sea of new
+types and processes.  To wit:
 
--   A {% tooltip label="tape" href="/glossary/tape" /%} is the string to
+-   A [tape](/glossary/tape) is the string to
     be parsed.
 -   A `hair` is the position in the text the parser is at, as a cell of
     column & line, `[p=@ud q=@ud]`.
@@ -60,12 +59,12 @@ goes into more detail than this quick overview.
 
 ## Scanning Through a `tape`
 
-{% tooltip label="++scan" href="/language/hoon/reference/stdlib/4g#scan" /%} parses
-a `tape` or crashes, simple enough.  It will be our workhorse.  All we
-really need to know in order to use it is how to build a `rule`.
+[++scan](/language/hoon/reference/stdlib/4g#scan) parses a `tape` or
+crashes, simple enough.  It will be our workhorse.  All we really need
+to know in order to use it is how to build a `rule`.
 
-Here we will preview using {% tooltip label="++shim"
-href="/language/hoon/reference/stdlib/4f#shim" /%} to match characters
+Here we will preview using
+[++shim](/language/hoon/reference/stdlib/4f#shim) to match characters
 with in a given range, here lower-case.  If you change the character
 range, e.g. putting `' '` in the `++shim` will span from ASCII `32`, `'
 '` to ASCII `122`, `'z'`.
@@ -87,7 +86,7 @@ together to achieve the desired effect.
 
 ### `rule`s to parse fixed strings
 
-- {% tooltip label="++just" href="/language/hoon/reference/stdlib/4f#just" /%} takes
+- [++just](/language/hoon/reference/stdlib/4f#just) takes
   in a single `char` and produces a `rule` that attempts to match that
   `char` to the first character in the `tape` of the input `nail`.
 
@@ -96,7 +95,7 @@ together to achieve the desired effect.
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-- {% tooltip label="++jest" href="/language/hoon/reference/stdlib/4f#jest" /%} matches
+- [++jest](/language/hoon/reference/stdlib/4f#jest) matches
   a `cord`. It takes an input `cord` and produces a `rule` that
   attempts to match that `cord` against the beginning of the input.
 
@@ -113,16 +112,16 @@ together to achieve the desired effect.
 
     (Keep an eye on the structure of the return `edge` there.)
 
-- {% tooltip label="++shim" href="/language/hoon/reference/stdlib/4f#shim" /%} parses
-  characters within a given range. It takes in two atoms and returns a `rule`.
+- [++shim](/language/hoon/reference/stdlib/4f#shim) parses characters
+  within a given range. It takes in two atoms and returns a `rule`.
 
     ```hoon
     > ((shim 'a' 'z') [[1 1] "abc"])
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-- {% tooltip label="++next" href="/language/hoon/reference/stdlib/4f#next" /%} is
-  a simple `rule` that takes in the next character and returns it as the parsing result.
+- [++next](/language/hoon/reference/stdlib/4f#next) is a simple `rule`
+  that takes in the next character and returns it as the parsing result.
 
     ```hoon
     > (next [[1 1] "abc"])
@@ -132,9 +131,8 @@ together to achieve the desired effect.
 ### `rule`s to parse flexible strings
 
 So far we can only parse one character at a time, which isn't much
-better than just using {% tooltip label="++snag"
-href="/language/hoon/reference/stdlib/2b#snag" /%} in a {% tooltip
-label="trap" href="/glossary/trap" /%}.
+better than just using [++snag](/language/hoon/reference/stdlib/2b#snag)
+in a [trap](/glossary/trap).
 
 ```hoon
 > (scan "a" (shim 'a' 'z'))  
@@ -149,8 +147,8 @@ dojo: hoon expression failed
 How do we parse multiple characters in order to break things up
 sensibly?
 
-- {% tooltip label="++star" href="/language/hoon/reference/stdlib/4f#star" /%} will
-  match a multi-character list of values.
+- [++star](/language/hoon/reference/stdlib/4f#star) will match a
+  multi-character list of values.
 
     ```hoon
     > (scan "a" (just 'a'))
@@ -165,18 +163,17 @@ sensibly?
     "aaaaa"
     ```
 
-- {% tooltip label="++plug" href="/language/hoon/reference/stdlib/4e#plug" /%} takes
-  the `nail` in the `edge` produced by one rule and passes it to the
-  next `rule`, forming a {% tooltip label="cell" href="/glossary/cell"
-  /%} of the results as it proceeds.
+- [++plug](/language/hoon/reference/stdlib/4e#plug) takes the `nail` in
+  the `edge` produced by one rule and passes it to the next `rule`,
+  forming a [cell](/glossary/cell) of the results as it proceeds.
 
     ```hoon
     > (scan "starship" ;~(plug (jest 'star') (jest 'ship')))
     ['star' 'ship']
     ```
 
-- {% tooltip label="++pose" href="/language/hoon/reference/stdlib/4e#pose" /%} tries
-    each `rule` you hand it successively until it finds one that works.
+- [++pose](/language/hoon/reference/stdlib/4e#pose) tries each `rule`
+  you hand it successively until it finds one that works.
 
     ```hoon
     > (scan "a" ;~(pose (just 'a') (just 'b')))
@@ -189,14 +186,13 @@ sensibly?
     [p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
     ```
 
-- {% tooltip label="++glue" href="/language/hoon/reference/stdlib/4e#glue" /%} parses
-  a delimiter (a `rule`) in between each `rule` and forms a {% tooltip
-  label="cell" href="/glossary/cell" /%} of the results of each
-  non-delimiter `rule`.  Delimiters representing each symbol used in
-  Hoon are named according to their [aural ASCII](/glossary/aural-ascii)
-  pronunciation. Sets of characters can also be used as delimiters, such
-  as `prn` for printable characters ([more
-  here](/language/hoon/reference/stdlib/4i)).
+- [++glue](/language/hoon/reference/stdlib/4e#glue) parses a delimiter
+  (a `rule`) in between each `rule` and forms a [cell](/glossary/cell)
+  of the results of each non-delimiter `rule`.  Delimiters representing
+  each symbol used in Hoon are named according to their [aural
+  ASCII](/glossary/aural-ascii) pronunciation. Sets of characters can
+  also be used as delimiters, such as `prn` for printable characters
+  ([more here](/language/hoon/reference/stdlib/4i)).
 
     ```hoon
     > (scan "a b" ;~((glue ace) (just 'a') (just 'b')))  
@@ -213,9 +209,8 @@ sensibly?
     ['a' 'b' 'a']
     ```
 
-- The `;~` {% tooltip label="micsig"
-  href="/language/hoon/reference/rune/mic#-micsig" /%} will create
-  `;~(combinator (list rule))` to use multiple `rule`s.
+- The `;~` [micsig](/language/hoon/reference/rune/mic#-micsig) will
+  create `;~(combinator (list rule))` to use multiple `rule`s.
 
     ```hoon
     > (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  
@@ -234,13 +229,12 @@ sensibly?
     -->
 
 At this point we have two problems:  we are just getting raw `@t` atoms
-back, and we can't iteratively process arbitrarily long strings. {%
-tooltip label="++cook" href="/language/hoon/reference/stdlib/4f#cook"
-/%} will help us with the first of these:
+back, and we can't iteratively process arbitrarily long strings.
+[++cook](/language/hoon/reference/stdlib/4f#cook) will help us with the
+first of these:
 
-- {% tooltip label="++cook" href="/language/hoon/reference/stdlib/4f#cook" /%} will
-  take a `rule` and a {% tooltip label="gate" href="/glossary/gate" /%}
-  to apply to the successful parse.
+- [++cook](/language/hoon/reference/stdlib/4f#cook) will take a `rule`
+  and a [gate](/glossary/gate) to apply to the successful parse.
 
     ```hoon
     > ((cook ,@ud (just 'a')) [[1 1] "abc"])
@@ -256,12 +250,11 @@ tooltip label="++cook" href="/language/hoon/reference/stdlib/4f#cook"
     [p=[p=1 q=2] q=[~ u=[p='b' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-However, to parse iteratively, we need to use the {% tooltip
-label="++knee" href="/language/hoon/reference/stdlib/4f#knee" /%}
-function, which takes a noun as the {% tooltip label="bunt"
-href="/glossary/bunt" /%} of the type the `rule` produces, and produces
-a `rule` that recurses properly.  (You'll probably want to treat this as
-a recipe for now and just copy it when necessary.)
+However, to parse iteratively, we need to use the
+[++knee](/language/hoon/reference/stdlib/4f#knee) function, which takes
+a noun as the [bunt](/glossary/bunt) of the type the `rule` produces,
+and produces a `rule` that recurses properly.  (You'll probably want to
+treat this as a recipe for now and just copy it when necessary.)
 
 ```hoon {% copy=true %}
 |-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
@@ -269,22 +262,22 @@ a recipe for now and just copy it when necessary.)
 
 There is an example of a calculator [in the parsing
 guide](/language/hoon/guides/parsing#recursive-parsers) that's worth a
-read at this point.  It uses {% tooltip label="++knee"
-href="/language/hoon/reference/stdlib/4f#knee" /%} to scan in a set of numbers
-at a time.
+read at this point.  It uses
+[++knee](/language/hoon/reference/stdlib/4f#knee) to scan in a set of
+numbers at a time.
 
 ### Example:  Parse a String of Numbers
 
-A simple {% tooltip label="++shim"
-href="/language/hoon/reference/stdlib/4f#shim" /%}-based parser:
+A simple [++shim](/language/hoon/reference/stdlib/4f#shim)-based parser:
 
 ```hoon
 > (scan "1234567890" (star (shim '0' '9')))  
 [i='1' t=<|2 3 4 5 6 7 8 9 0|>]
 ```
 
-A refined {% tooltip label="++cook"
-href="/language/hoon/reference/stdlib/4f#cook" /%}/{% tooltip label="++cury" href="/language/hoon/reference/stdlib/2n#cury" /%}/{% tooltip label="++jest" href="/language/hoon/reference/stdlib/4f#jest" /%} parser:
+A refined
+[++cook](/language/hoon/reference/stdlib/4f#cook)/[++cury](/language/hoon/reference/stdlib/2n#cury)/[++jest](/language/hoon/reference/stdlib/4f#jest)
+parser:
 
 ```hoon
 > ((cook (cury slaw %ud) (jest '1')) [[1 1] "123"])  

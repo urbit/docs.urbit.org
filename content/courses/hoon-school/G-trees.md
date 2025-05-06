@@ -14,9 +14,8 @@ a number of standard library operations._
 
 {% video src="https://media.urbit.org/docs/hoon-school-videos/HS135 - Trees.mp4" /%}
 
-Every {% tooltip label="noun" href="/glossary/noun" /%} in Urbit is a
-either an {% tooltip label="atom" href="/glossary/atom" /%} or a {%
-tooltip label="cell" href="/glossary/cell" /%}.  Since a cell has only
+Every [noun](/glossary/noun) in Urbit is a
+either an [atom](/glossary/atom) or a [cell](/glossary/cell).  Since a cell has only
 two elements, a head and a tail, we can derive that everything is
 representable as a [_binary
 tree_](https://en.wikipedia.org/wiki/Binary_tree).  We can draw this
@@ -30,8 +29,7 @@ children is a “leaf”.  You can think of a noun as a binary tree whose
 leaves are atoms, i.e., unsigned integers.  All non-leaf nodes are
 cells.  An atom is a trivial tree of just one node; e.g., `17`.
 
-For instance, if we produce a cell in the {% tooltip label="Dojo"
-href="/glossary/dojo" /%}
+For instance, if we produce a cell in the [Dojo](/glossary/dojo)
 
 ```hoon
 > =a [[[8 9] [10 11]] [[12 13] [14 15]]]
@@ -62,8 +60,7 @@ may be extended indefinitely downwards into ever-deeper tree
 representations.
 
 Most of any possible tree will be unoccupied for any actual data
-structure.  For instance, {% tooltip label="lists" href="/glossary/list"
-/%} (and thus {% tooltip label="tapes" href="/glossary/tape" /%}) are
+structure.  For instance, [lists](/glossary/list) (and thus [tapes](/glossary/tape)) are
 collections of values which occupy the tails of cells, leading to a
 rightwards-branching tree representation. (Although this may seem
 extravagant, it has effectively no bearing on efficiency in and of
@@ -82,7 +79,7 @@ itself—that's a function of the algorithms working with the data.)
 
 ### Exercise:  Produce a List of Numbers
 
-- Produce a {% tooltip label="generator" href="/glossary/generator" /%}
+- Produce a [generator](/glossary/generator)
   called `list.hoon` which accepts a single `@ud` number `n` as input
   and produces a list of numbers from `1` up to (but not including) `n`.
   For example, if the user provides the number `5`, the program will
@@ -197,25 +194,24 @@ dojo: hoon expression failed
 
 {% video src="https://media.urbit.org/docs/hoon-school-videos/HS140 - Lists.mp4" /%}
 
-We have used lists incidentally.  A {% tooltip label="list"
-href="/glossary/list" /%} is an ordered arrangement of elements ending
-in a `~` (null).  Most lists have the same kind of content in every
-element (for instance, a `(list @rs)`, a list of numbers with a
-fractional part), but some lists have many kinds of things within them.
-Some lists are even empty.
+We have used lists incidentally.  A [list](/glossary/list) is an ordered
+arrangement of elements ending in a `~` (null).  Most lists have the
+same kind of content in every element (for instance, a `(list @rs)`, a
+list of numbers with a fractional part), but some lists have many kinds
+of things within them. Some lists are even empty.
 
 ```hoon
 > `(list @)`['a' %b 100 ~]
 ~[97 98 100]
 ```
 
-(Notice that all values are converted to the specified {% tooltip
-label="aura" href="/glossary/aura" /%}, in this case the empty aura.)
+(Notice that all values are converted to the specified
+[aura](/glossary/aura), in this case the empty aura.)
 
 A `list` is built with the `list` mold.  A `list` is actually a _mold
-builder_, a {% tooltip label="gate" href="/glossary/gate" /%} that
+builder_, a [gate](/glossary/gate) that
 produces a gate.  This is a common design pattern in Hoon.  (Remember
-that a {% tooltip label="mold" href="/glossary/mold" /%} is a type and
+that a [mold](/glossary/mold) is a type and
 can be used as an enforcer:  it attempts to convert any data it receives
 into the given structure, and crashes if it fails to do so.)
 Lists are commonly written with a shorthand `~[]`:
@@ -250,22 +246,23 @@ to explicitly mark it as such:
 > -:!>(`(list @ud)`[3 4 5 ~])
 #t/it(@ud)
 ```
+
 A null-terminated tuple is almost the same thing as a list.  (That is,
 to Hoon all lists are null-terminated tuples, but not all
 null-terminated tuples are lists.  This gets rather involved in
 subtleties, but you should cast a value as `(list @)` or another type as
-appropriate whenever you need a `list`.  See also {% tooltip
-label="++limo" href="/language/hoon/reference/stdlib/2b#limo" /%} which
-explicitly marks a null-terminated tuple as a `list`.)
+appropriate whenever you need a `list`.  See also
+[++limo](/language/hoon/reference/stdlib/2b#limo) which explicitly marks
+a null-terminated tuple as a `list`.)
 
 ##  Addressing Limbs
 
 Everything in Urbit is a binary tree.  And all code in Urbit is also
 represented as data.  One corollary of these facts is that we can access
-any arbitrary part of an expression, gate, {% tooltip label="core"
-href="/glossary/core" /%}, whatever, via addressing (assuming proper
-permissions, of course).  (In fact, we can even hot-swap parts of cores,
-which is how [wet gates](/courses/hoon-school/R-metals#wet-gates) work.)
+any arbitrary part of an expression, gate, [core](/glossary/core),
+whatever, via addressing (assuming proper permissions, of course).  (In
+fact, we can even hot-swap parts of cores, which is how [wet
+gates](/courses/hoon-school/R-metals#wet-gates) work.)
 
 There are three different ways to access values:
 
@@ -293,7 +290,7 @@ it just happens.
 
 ### Exercise:  Tapes for Text
  
-A {% tooltip label="tape" href="/glossary/tape" /%} is one way of
+A [tape](/glossary/tape) is one way of
 representing a text message in Hoon.  It is written with double quotes:
  
 ```hoon {% copy=true %}
@@ -331,7 +328,7 @@ elements deep, but it can be helpful when working interactively with a
 complicated data structure like a JSON data object.
 
 When lark expressions resolve to the part of the subject containing an
-{% tooltip label="arm" href="/glossary/arm" /%}, they don't evaluate the
+[arm](/glossary/arm), they don't evaluate the
 arm.  They simply return the indicated noun fragment of the subject, as
 if it were a leg.
 
@@ -382,12 +379,11 @@ Solutions to these exercises may be found at the bottom of this lesson.
 
 ## Wings
 
-One can also identify a resource by a label, called a {% tooltip
-label="wing" href="/glossary/wing" /%}.  A wing represents a depth-first
-search into the current {% tooltip label="subject"
-href="/glossary/subject" /%} (context).  A wing is a limb resolution
-path into the subject. A wing expression indicates the path as a series
-of limb expressions separated by the `.` character. E.g.,
+One can also identify a resource by a label, called a
+[wing](/glossary/wing).  A wing represents a depth-first search into the
+current [subject](/glossary/subject) (context).  A wing is a limb
+resolution path into the subject. A wing expression indicates the path
+as a series of limb expressions separated by the `.` character. E.g.,
 
 ```hoon {% copy=true %}
 inner-limb.outer-limb.limb
@@ -461,7 +457,7 @@ computation is produced.  When a limb name resolves to a leg, the value
 of that leg is produced.
 
 Hoon doesn't have variables like other programming languages do; it has
-{% tooltip label="faces" href="/glossary/face" /%}.  Faces are like
+[faces](/glossary/face).  Faces are like
 variables in certain respects, but not in others.  Faces play various
 roles in Hoon, but most frequently faces are used simply as labels for
 legs.
@@ -639,15 +635,16 @@ We say that the inner face has been _shadowed_ when an outer name
 obscures it.
 
 If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's
-matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` {%
-tooltip label="centis" href="/language/hoon/reference/rune/cen#-centis"
-/%} loop/recursion of multiple cores with a `|-` {% tooltip
-label="barhep" href="/language/hoon/reference/rune/bar#--barhep" /%} {%
-tooltip label="trap" href="/glossary/trap" /%} nested inside of a
-`|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%} gate, for instance.
+matching the outer `$` buc arm.  `^$` is one way of setting up a `%=`
+[centis](/language/hoon/reference/rune/cen#-centis) loop/recursion of
+multiple cores with a `|-`
+[barhep](/language/hoon/reference/rune/bar#--barhep)
+[trap](/glossary/trap) nested inside of a `|=`
+[bartis](/language/hoon/reference/rune/bar#-bartis) gate, for instance.
 
-Solution #1 in the [Rhonda Numbers](/language/hoon/examples/rhonda) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
+Solution #1 in the [Rhonda Numbers](/language/hoon/examples/rhonda)
+tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc
+matches.
 
 ### Limb Resolution Operators
 
@@ -663,12 +660,12 @@ regular lookup, though.
 
 ### What `%=` Does
 
-Now we're equipped to go back and examine the syntax of the `%=` {%
-tooltip label="centis" href="/language/hoon/reference/rune/cen#-centis"
-/%} rune we have been using for recursion:  it _resolves a wing with
-changes_, which in this particular case means that it takes the `$`
-(default) arm of the {% tooltip label="trap" href="/glossary/trap" /%}
-core, applies certain changes, and re-evaluates the expression.
+Now we're equipped to go back and examine the syntax of the `%=`
+[centis](/language/hoon/reference/rune/cen#-centis) rune we have been
+using for recursion:  it _resolves a wing with changes_, which in this
+particular case means that it takes the `$` (default) arm of the
+[trap](/glossary/trap) core, applies certain changes, and re-evaluates
+the expression.
 
 ```hoon {% copy=true %}
 |=  n=@ud
@@ -681,9 +678,8 @@ core, applies certain changes, and re-evaluates the expression.
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the `%=` {%
-tooltip label="centis" href="/language/hoon/reference/rune/cen#-centis"
-/%} rune.
+The `$()` syntax is the commonly-used irregular form of the `%=`
+[centis](/language/hoon/reference/rune/cen#-centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns
 out that `$` is also the default arm for some other structures, like the
@@ -698,13 +694,11 @@ write something more compact like this:
 ```
 
 It's far more common to just use a trap, but you will see `$` buc used
-to manipulate a {% tooltip label="core" href="/glossary/core" /%} in
-many in-depth code instances.
+to manipulate a [core](/glossary/core) in many in-depth code instances.
 
 ### Expanding the Runes
  
-`|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%} produces a gate.
+`|=` [bartis](/language/hoon/reference/rune/bar#-bartis) produces a gate.
 It actually expands to
 
 ```hoon {% copy=true %}
@@ -713,20 +707,16 @@ It actually expands to
 --
 ``` 
 
-where `=|` {% tooltip label="tisbar"
-href="/language/hoon/reference/rune/tis#-tisbar" /%} means to add its
-sample to the current subject with the given {% tooltip label="face"
-href="/glossary/face" /%}.
+where `=|` [tisbar](/language/hoon/reference/rune/tis#-tisbar) means to add its
+sample to the current subject with the given [face](/glossary/face).
 
-Similarly, `|-` {% tooltip label="barhep"
-href="/language/hoon/reference/rune/bar#--barhep" /%} produces a {%
-tooltip label="core" href="/glossary/core" /%} with one arm `$`.  How
+Similarly, `|-` [barhep](/language/hoon/reference/rune/bar#--barhep) produces a [core](/glossary/core) with one arm `$`.  How
 could you write that in terms of `|%` and `++`?
 
 ### Example:  Number to Digits
 
 - Compose a generator which accepts a number as `@ud` unsigned decimal
-  and returns a {% tooltip label="list" href="/glossary/list" /%} of its
+  and returns a [list](/glossary/list) of its
   digits.
 
 One verbose Hoon program 
@@ -754,9 +744,8 @@ Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 ```
 
 A more idiomatic solution would use the `^` ket infix to compose a cell
-and build the list from the head first.  (This saves a call to {%
-tooltip label="++weld" href="/language/hoon/reference/stdlib/2b#weld"
-/%}.)
+and build the list from the head first.  (This saves a call to
+[++weld](/language/hoon/reference/stdlib/2b#weld).)
 
 ```hoon {% copy=true %}
 !:
@@ -784,15 +773,14 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 ==
 ```
 
-(Notice that we apply `@t` as a {% tooltip label="mold"
-href="/glossary/mold" /%} gate rather than using the tic notation.  This
-is because `^` ket is a rare case where the order of evaluation of
-operators would cause the intuitive writing to fail.)
+(Notice that we apply `@t` as a [mold](/glossary/mold) gate rather than
+using the tic notation.  This is because `^` ket is a rare case where
+the order of evaluation of operators would cause the intuitive writing
+to fail.)
 
-- Extend the above {% tooltip label="generator"
-  href="/glossary/generator" /%} so that it accepts a cell of type and
-  value (a `vase` as produced by the `!>` {% tooltip label="zapgar"
-  href="/language/hoon/reference/rune/zap#-zapgar" /%} rune).  Use the
+- Extend the above [generator](/glossary/generator) so that it accepts a
+  cell of type and value (a `vase` as produced by the `!>`
+  [zapgar](/language/hoon/reference/rune/zap#-zapgar) rune).  Use the
   type to determine which number base the digit string should be
   constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d'
   'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
@@ -827,8 +815,7 @@ Enter the following into dojo:
 Once you have your data in the form of a `list`, there are a lot of
 tools available to manipulate and analyze the data:
 
-- The {% tooltip label="++flop"
-  href="/language/hoon/reference/stdlib/2b#flop" /%} function reverses
+- The [++flop](/language/hoon/reference/stdlib/2b#flop) function reverses
   the order of the elements (exclusive of the `~`):
   
     ```hoon
@@ -840,19 +827,17 @@ tools available to manipulate and analyze the data:
   that takes a `(list @)` and returns it in reverse order.  There is a
   solution at the bottom of the page.
 
-- The {% tooltip label="++sort"
-  href="/language/hoon/reference/stdlib/2b#sort" /%} function uses a
-  `list` and a comparison function (like {% tooltip label="++lth"
-  href="/language/hoon/reference/stdlib/1a#lth" /%}) to order things:
+- The [++sort](/language/hoon/reference/stdlib/2b#sort) function uses a
+  `list` and a comparison function (like
+  [++lth](/language/hoon/reference/stdlib/1a#lth)) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- The {% tooltip label="++snag"
-  href="/language/hoon/reference/stdlib/2b#snag" /%} function takes an
-  index and a `list` to grab out a particular element (note that it
+- The [++snag](/language/hoon/reference/stdlib/2b#snag) function takes
+  an index and a `list` to grab out a particular element (note that it
   starts counting at zero):
 
     ```hoon
@@ -875,9 +860,8 @@ tools available to manipulate and analyze the data:
     '!'
     ```
 
-- The {% tooltip label="++weld"
-  href="/language/hoon/reference/stdlib/2b#weld" /%} function takes two
-  lists of the same type and concatenates them:
+- The [++weld](/language/hoon/reference/stdlib/2b#weld) function takes
+  two lists of the same type and concatenates them:
 
     ```hoon
     > (weld ~[1 2 3] ~[4 5 6])
@@ -894,8 +878,7 @@ tools available to manipulate and analyze the data:
 
 There are a couple of sometimes-useful `list` builders:
 
-- The {% tooltip label="++gulf"
-  href="/language/hoon/reference/stdlib/2b#gulf" /%} function spans
+- The [++gulf](/language/hoon/reference/stdlib/2b#gulf) function spans
   between two numeric values (inclusive of both):
 
     ```hoon
@@ -903,8 +886,7 @@ There are a couple of sometimes-useful `list` builders:
     ~[5 6 7 8 9 10]
     ```
 
-- The {% tooltip label="++reap"
-  href="/language/hoon/reference/stdlib/2b#reap" /%} function repeats a
+- The [++reap](/language/hoon/reference/stdlib/2b#reap) function repeats a
   value many times in a `list`:
 
     ```hoon
@@ -921,9 +903,8 @@ There are a couple of sometimes-useful `list` builders:
     ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
     ```
 
-- The {% tooltip label="++roll"
-  href="/language/hoon/reference/stdlib/2b#roll" /%} function takes a
-  list and a {% tooltip label="gate" href="/glossary/gate" /%}, and
+- The [++roll](/language/hoon/reference/stdlib/2b#roll) function takes a
+  list and a [gate](/glossary/gate), and
   accumulates a value of the list items using that gate. For example, if
   you want to add or multiply all the items in a list of atoms, you
   would use roll:
@@ -936,27 +917,22 @@ There are a couple of sometimes-useful `list` builders:
     19.326.120
     ```
 
-Once you have a `list` (including a {% tooltip label="tape"
-href="/glossary/tape" /%}), there are a lot of manipulation tools you
-can use to extract data from it or modify it:
+Once you have a `list` (including a [tape](/glossary/tape)), there are a
+lot of manipulation tools you can use to extract data from it or modify
+it:
 
-- The {% tooltip label="++lent"
-  href="/language/hoon/reference/stdlib/2b#lent" /%} function takes
+- The [++lent](/language/hoon/reference/stdlib/2b#lent) function takes
   `[a=(list)]` and gets the number of elements (length) of the list
-- The {% tooltip label="++find"
-  href="/language/hoon/reference/stdlib/2b#find" /%} function takes
+- The [++find](/language/hoon/reference/stdlib/2b#find) function takes
   `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in
   the list (`hstk`, haystack)
-- The {% tooltip label="++snap"
-  href="/language/hoon/reference/stdlib/2b#snap" /%} function takes
+- The [++snap](/language/hoon/reference/stdlib/2b#snap) function takes
   `[a=(list) b=@ c=*]` and replaces the element at an index in the list
   (zero-indexed) with something else
-- The {% tooltip label="++scag"
-  href="/language/hoon/reference/stdlib/2b#scag" /%} function takes
+- The [++scag](/language/hoon/reference/stdlib/2b#scag) function takes
   `[a=@ b=(list)]` and produces the first _a_ elements from the front of
   the list
-- The {% tooltip label="++slag"
-  href="/language/hoon/reference/stdlib/2b#slag" /%} function takes
+- The [++slag](/language/hoon/reference/stdlib/2b#slag) function takes
   `[a=@ b=(list)]` and produces all elements of the list including and
   after the element at index _a_
 
@@ -1002,8 +978,8 @@ First, bind these faces.
 ### Exercise:  Palindrome
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a
-  palindrome and `%.n` otherwise.  You may use the {% tooltip
-  label="++flop" href="/language/hoon/reference/stdlib/2b#flop" /%} function.
+  palindrome and `%.n` otherwise.  You may use the
+  [++flop](/language/hoon/reference/stdlib/2b#flop) function.
 
 ## Solutions to Exercises
 
@@ -1094,7 +1070,8 @@ First, bind these faces.
     <|moon planet star galaxy moon planet star galaxy|>
     ```
 
-    This will not run because `weld` expects the elements of both lists to be of the same type:
+    This will not run because `weld` expects the elements of both lists
+    to be of the same type:
 
     ```hoon
     > (weld b c)

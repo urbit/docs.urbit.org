@@ -14,8 +14,6 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [Emissary](https://github.com/sigilante/emissary) - allow a star to designate a planet as its representative.
 
-[Gato](https://github.com/midsum-salrux/gato) - a way to make chatbots for Urbit groups.
-
 [Herd](https://github.com/midsum-salrux/herd) - desk dependency management.
 
 [Paldev Suite](https://github.com/Fang-/suite) - apps and libraries by ~paldev including Pals and Rumors.

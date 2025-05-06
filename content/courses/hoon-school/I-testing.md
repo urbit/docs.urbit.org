@@ -34,16 +34,14 @@ layers:  fences and unit tests.
 
 _Fences_ are barriers employed to block program execution if the state
 isn’t adequate to the intended task. Typically, these are implemented
-with `assert` or similar enforcement.  In Hoon, this means `?>` {%
-tooltip label="wutgar" href="/language/hoon/reference/rune/wut#-wutgar"
-/%}, `?<` {% tooltip label="wutgal"
-href="/language/hoon/reference/rune/wut#-wutgal" /%}, and `?~` {%
-tooltip label="wutsig" href="/language/hoon/reference/rune/wut#-wutsig"
-/%}, or judicious use of `^-` {% tooltip label="kethep"
-href="/language/hoon/reference/rune/ket#--kethep" /%} and `^+` {%
-tooltip label="ketlus" href="/language/hoon/reference/rune/ket#-ketlus"
-/%}. For conditions that must succeed, the failure branch in Hoon should
-be `!!`, which crashes the program.
+with `assert` or similar enforcement.  In Hoon, this means `?>`
+[wutgar](/language/hoon/reference/rune/wut#-wutgar), `?<`
+[wutgal](/language/hoon/reference/rune/wut#-wutgal), and `?~`
+[wutsig](/language/hoon/reference/rune/wut#-wutsig), or judicious use of
+`^-` [kethep](/language/hoon/reference/rune/ket#--kethep) and `^+`
+[ketlus](/language/hoon/reference/rune/ket#-ketlus). For conditions that
+must succeed, the failure branch in Hoon should be `!!`, which crashes
+the program.
 
 ### Unit Tests
 
@@ -62,9 +60,8 @@ Unit tests typically contain setup, assertions, and tear-down. In
 academic terms, they’re a grading script.
 
 In Hoon, the `tests/` directory contains the relevant tests for the
-testing framework to grab and utilize.  These can be invoked with the {%
-tooltip label="-test" href="/manual/os/dojo-tools#-test" /%} {% tooltip
-label="thread" href="/glossary/thread" /%}:
+testing framework to grab and utilize.  These can be invoked with the
+[-test](/manual/os/dojo-tools#-test) [thread](/glossary/thread):
 
 ```hoon
 > -test /=landscape=/tests ~  
@@ -92,9 +89,8 @@ ok=%.y
 (Depending on when you built your fakeship, particular tests may or may
 not be present.  You can download them from [the Urbit
 repo](https://github.com/urbit/urbit) and add them manually if you like.
-Regarding the example above (`%landscape` {% tooltip label="desk"
-href="/glossary/desk" /%}), the tests are likely missing, so download
-them from
+Regarding the example above (`%landscape` [desk](/glossary/desk)), the
+tests are likely missing, so download them from
 [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you
 want to run them.)
 
@@ -200,16 +196,14 @@ is:
   result
 ```
 
-Test code deals in {% tooltip label="vases" href="/glossary/vase" /%},
-which are produced by `!>` {% tooltip label="zapgar"
-href="/language/hoon/reference/rune/zap#-zapgar" /%} as a {% tooltip
-label="cell" href="/glossary/cell" /%} of the type of a value and the
-value.
+Test code deals in [vases](/glossary/vase), which are produced by `!>`
+[zapgar](/language/hoon/reference/rune/zap#-zapgar) as a
+[cell](/glossary/cell) of the type of a value and the value.
 
-`++expect-fail` by contrast take a `|.` {% tooltip label="bardot"
-href="/language/hoon/reference/rune/bar#-bardot" /%} trap (a trap that
-has the `$` buc {% tooltip label="arm" href="/glossary/arm" /%} but
-hasn't been called yet) and verifies that the code within fails.
+`++expect-fail` by contrast take a `|.`
+[bardot](/language/hoon/reference/rune/bar#-bardot) trap (a trap that
+has the `$` buc [arm](/glossary/arm) but hasn't been called yet) and
+verifies that the code within fails.
 
 ```hoon
 > (expect-fail:test |.(!!))
@@ -241,16 +235,14 @@ notional point of computation.  When the code fails, any error hints
 currently on the stack are dumped to the terminal for you to see what
 has gone wrong.
 
-- The `~_` {% tooltip label="sigcab"
-  href="/language/hoon/reference/rune/sig#_-sigcab" /%} rune, described
-  as a “user-formatted tracing printf”, can include an error message for
-  you, requiring you to explicitly build the `tank`. (`printf` is a
-  reference to [C's I/O
+- The `~_` [sigcab](/language/hoon/reference/rune/sig#_-sigcab) rune,
+  described as a “user-formatted tracing printf”, can include an error
+  message for you, requiring you to explicitly build the `tank`.
+  (`printf` is a reference to [C's I/O
   library](https://en.wikipedia.org/wiki/Printf_format_string).)
-- The `~|` {% tooltip label="sigbar"
-  href="/language/hoon/reference/rune/sig#-sigbar" /%} rune, a “tracing
-  printf”, can include an error message from a simple `@t` {% tooltip
-  label="cord" href="/glossary/cord" /%}.
+- The `~|` [sigbar](/language/hoon/reference/rune/sig#-sigbar) rune, a
+  “tracing printf”, can include an error message from a simple `@t`
+  [cord](/glossary/cord).
     What this means is that these print to the stack trace if something
     fails, so you can use either rune to contribute to the error
     description:
@@ -260,13 +252,11 @@ has gone wrong.
     ~_  leaf+"This code failed"
     !!
     ```
-- The `!:` {% tooltip label="zapcol"
-  href="/language/hoon/reference/rune/zap#-zapcol" /%} rune turns on
-  line-by-line stack tracing, which is extremely helpful when debugging
-  programs.  Drop it in on the first Hoon line (after `/` {% tooltip
-  label="fas" href="/language/hoon/reference/rune/fas" /%} imports) of a
-  {% tooltip label="generator" href="/glossary/generator" /%} or library
-  while developing.
+- The `!:` [zapcol](/language/hoon/reference/rune/zap#-zapcol) rune
+  turns on line-by-line stack tracing, which is extremely helpful when
+  debugging programs.  Drop it in on the first Hoon line (after `/`
+  [fas](/language/hoon/reference/rune/fas) imports) of a
+  [generator](/glossary/generator) or library while developing.
 
     ```hoon
     > (sub 0 1)
@@ -279,9 +269,8 @@ has gone wrong.
     dojo: hoon expression failed
     ```
 
-When you compose your own library {% tooltip label="cores"
-href="/glossary/core" /%}, include error messages for likely failure
-modes.
+When you compose your own library [cores](/glossary/core), include error
+messages for likely failure modes.
 
 
 ##  Test-Driven Development
@@ -356,11 +345,9 @@ point:
 
 ### `nest-fail`
 
-A {% tooltip label="nest-fail"
-href="/language/hoon/reference/hoon-errors#nest-fail" /%} may be the
-most common.  Likely you are using an {% tooltip label="atom"
-href="/glossary/atom" /%} or a {% tooltip label="cell"
-href="/glossary/cell" /%} where the other is expected.
+A [nest-fail](/language/hoon/reference/hoon-errors#nest-fail) may be the
+most common.  Likely you are using an [atom](/glossary/atom) or a
+[cell](/glossary/cell) where the other is expected.
 
 ```hoon
 > (add 'a' 'b')
@@ -386,9 +373,8 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-Conversion without casting via {% tooltip label="auras"
-href="/glossary/aura" /%} fails because the atom types (auras) don't
-nest without explicit downcasting to `@`.
+Conversion without casting via [auras](/glossary/aura) fails because the
+atom types (auras) don't nest without explicit downcasting to `@`.
 
 ```hoon
 > `(list @ud)`~[0x0 0x1 0x2]
@@ -404,10 +390,9 @@ dojo: hoon expression failed
 
 ### `fish-loop`
 
-A `fish-loop` arises when using a recursive mold definition like {%
-tooltip label="list" href="/glossary/list" /%}. (The relevant mnemonic
-is that `++fish` goes fishing for the type of an expression.)  Alas,
-this fails today:
+A `fish-loop` arises when using a recursive mold definition like
+[list](/glossary/list). (The relevant mnemonic is that `++fish` goes
+fishing for the type of an expression.)  Alas, this fails today:
 
 ```hoon
 > ?=((list @) ~[1 2 3 4])
@@ -418,8 +403,8 @@ fish-loop
 ### `generator-build-fail`
 
 A `generator-build-fail` most commonly results from composing code with
-mismatched {% tooltip label="runes" href="/glossary/rune" /%} (and thus
-the wrong children including hanging expected-but-empty slots).
+mismatched [runes](/glossary/rune) (and thus the wrong children
+including hanging expected-but-empty slots).
 
 Also check if you are using Windows-style line endings, as Unix-style
 line endings should be employed throughout Urbit.
@@ -430,14 +415,12 @@ Another common mistake is to attempt to use the default `$` buc arm in
 something that doesn't have it.  This typically happens for one of two
 reasons:
 
-- `$.+2` means that `%-` {% tooltip label="cenhep"
-  href="/language/hoon/reference/rune/cen#-cenhep" /%} or equivalent
-  function call cannot locate a {% tooltip label="battery"
-  href="/glossary/battery" /%}.  This can occur when you try to use a
-  non-gate as a {% tooltip label="gate" href="/glossary/gate" /%}.  In
-  particular, if you mask the name of a {% tooltip label="mold"
-  href="/glossary/mold" /%} (such as {% tooltip label="list"
-  href="/glossary/list" /%}), then a subsequent expression that requires
+- `$.+2` means that `%-`
+  [cenhep](/language/hoon/reference/rune/cen#-cenhep) or equivalent
+  function call cannot locate a [battery](/glossary/battery).  This can
+  occur when you try to use a non-gate as a [gate](/glossary/gate).  In
+  particular, if you mask the name of a [mold](/glossary/mold) (such as
+  [list](/glossary/list)), then a subsequent expression that requires
   the mold will experience this problem.
     ```hoon
     > =/  list  ~[1 2 3]
@@ -446,9 +429,8 @@ reasons:
     -find.$.+2
     ```
 
-- `-find.$` similarly looks for a `$` buc {% tooltip label="arm"
-  href="/glossary/arm" /%} in something that _is_ a core but doesn't
-  have the `$` buc arm present.
+- `-find.$` similarly looks for a `$` buc [arm](/glossary/arm) in
+  something that _is_ a core but doesn't have the `$` buc arm present.
 
     ```hoon
     > *tape
@@ -465,26 +447,24 @@ reasons:
 
 What are some strategies for debugging?
 
--   **Debugging stack.**  Use the `!:` {% tooltip label="zapcol"
-    href="/language/hoon/reference/rune/zap#-zapcol" /%} rune to turn on
-    the debugging stack, `!.` {% tooltip label="zapdot"
-    href="/language/hoon/reference/rune/zap#-zapdot" /%} to turn it off
+-   **Debugging stack.**  Use the `!:`
+    [zapcol](/language/hoon/reference/rune/zap#-zapcol) rune to turn on
+    the debugging stack, `!.`
+    [zapdot](/language/hoon/reference/rune/zap#-zapdot) to turn it off
     again.  (Most of the time you just pop this on at the top of a
     generator and leave it there.)
 -   **`printf` debugging.**  If your code will compile and run, employ
-    `~&` {% tooltip label="sigpam"
-    href="/language/hoon/reference/rune/sig#-sigpam" /%} frequently to
-    make sure that your code is doing what you think it’s doing.
--   **Typecast.**  Include `^` {% tooltip label="ket"
-    href="/language/hoon/reference/rune/ket" /%} casts frequently
-    throughout your code.  Entire categories of error can be excluded by
-    satisfying the Hoon typechecker.
+    `~&` [sigpam](/language/hoon/reference/rune/sig#-sigpam) frequently
+    to make sure that your code is doing what you think it’s doing.
+-   **Typecast.**  Include `^` [ket](/language/hoon/reference/rune/ket)
+    casts frequently throughout your code.  Entire categories of error
+    can be excluded by satisfying the Hoon typechecker.
 -   **The only wolf in Alaska.**  Essentially a bisection search, you
     split your code into smaller modules and run each part until you
     know where the bug arose (where the wolf howled).  Then you keep
     fencing it in tighter and tighter until you know where it arose. You
-    can stub out arms with `!!` {% tooltip label="zapzap"
-    href="/language/hoon/reference/rune/zap#-zapzap" /%}.
+    can stub out arms with `!!`
+    [zapzap](/language/hoon/reference/rune/zap#-zapzap).
 -   **Build it again.**  Remove all of the complicated code from your
     program and add it in one line at a time.  For instance, replace a
     complicated function with either a `~&` sigpam and `!!` zapzap, or
@@ -494,10 +474,9 @@ What are some strategies for debugging?
 -  **Run without networking**.  If you run the Urbit executable with
    `-L`, you cut off external networking.  This is helpful if you want
    to mess with a _copy_ of an actual ship without producing remote
-   effects.  That is, if other parts of {% tooltip label="Ames"
-   href="/glossary/ames" /%} don’t know what you’re doing, then you can
-   delete that copy (COPY!) of your pier and continue with the original.
-   This is an alternative to using fakezods which is occasionally
-   helpful in debugging userspace apps in {% tooltip label="Gall"
-   href="/glossary/gall" /%}. You can also develop using a {% tooltip
-   label="moon" href="/glossary/moon" /%} if you want to.
+   effects.  That is, if other parts of [Ames](/glossary/ames) don’t
+   know what you’re doing, then you can delete that copy (COPY!) of your
+   pier and continue with the original. This is an alternative to using
+   fakezods which is occasionally helpful in debugging userspace apps in
+   [Gall](/glossary/gall). You can also develop using a
+   [moon](/glossary/moon) if you want to.

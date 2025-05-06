@@ -7,10 +7,10 @@ objectives = ["Produce loobean expressions.", "Reorder conditional arms.", "Swit
 
 {% video src="https://media.urbit.org/docs/hoon-school-videos/HS184 - Logical Operations.mp4" /%}
 
-_Although you've been using various of the `?` {% tooltip label="wut"
-href="/language/hoon/reference/rune/wut" /%} runes for a while now,
-let's wrap up some loose ends.  This module will cover the nature of
-loobean logic and the rest of the `?` wut runes._
+_Although you've been using various of the `?`
+[wut](/language/hoon/reference/rune/wut) runes for a while now, let's
+wrap up some loose ends.  This module will cover the nature of loobean
+logic and the rest of the `?` wut runes._
 
 
 ##  Loobean Logic
@@ -39,11 +39,10 @@ very uncommon for you to need to unpack them.
 
 ##  Noun Equality
 
-The most fundamental comparison in Hoon is provided by `.=` {% tooltip
-label="dottis" href="/language/hoon/reference/rune/dot#-dottis" /%}, a
-test for equality of two {% tooltip label="nouns" href="/glossary/noun"
-/%} using Nock 5.  This is almost always used in its irregular form of
-`=` tis.
+The most fundamental comparison in Hoon is provided by `.=`
+[dottis](/language/hoon/reference/rune/dot#-dottis), a test for equality
+of two [nouns](/glossary/noun) using Nock 5.  This is almost always used
+in its irregular form of `=` tis.
 
 ```hoon
 > =(0 0)
@@ -53,11 +52,10 @@ test for equality of two {% tooltip label="nouns" href="/glossary/noun"
 %.n
 ```
 
-Since {% tooltip label="Nock" href="/glossary/nock" /%} is unaware of
-the Hoon metadata type system, only bare {% tooltip label="atoms"
-href="/glossary/atom" /%} in the nouns are compared.  If you need to
-compare include type information, create vases with `!>` {% tooltip
-label="zapgar" href="/language/hoon/reference/rune/zap#-zapgar" /%}.
+Since [Nock](/glossary/nock) is unaware of the Hoon metadata type
+system, only bare [atoms](/glossary/atom) in the nouns are compared.  If
+you need to compare include type information, create vases with `!>`
+[zapgar](/language/hoon/reference/rune/zap#-zapgar).
 
 ```hoon
 > =('a' 97)
@@ -80,35 +78,33 @@ or `%.n` false (in which case we do another).  Some basic expressions
 are mathematical, but we also check for existence, for equality of two
 values, etc.
 
-- {% tooltip label="++gth" href="/language/hoon/reference/stdlib/1a#gth" /%} (greater than `>`)
-- {% tooltip label="++lth" href="/language/hoon/reference/stdlib/1a#lth" /%} (less than `<`)  
-- {% tooltip label="++gte" href="/language/hoon/reference/stdlib/1a#gte" /%} (greater than or equal to `≥`)
-- {% tooltip label="++lte" href="/language/hoon/reference/stdlib/1a#lte" /%} (less than or equal to `≤`)
-- `.=` {% tooltip label="dottis" href="/language/hoon/reference/rune/dot#-dottis" /%}, irregularly `=()` (check for equality)
+- [++gth](/language/hoon/reference/stdlib/1a#gth) (greater than `>`)
+- [++lth](/language/hoon/reference/stdlib/1a#lth) (less than `<`)  
+- [++gte](/language/hoon/reference/stdlib/1a#gte) (greater than or equal to `≥`)
+- [++lte](/language/hoon/reference/stdlib/1a#lte) (less than or equal to `≤`)
+- `.=` [dottis](/language/hoon/reference/rune/dot#-dottis), irregularly
+  `=()` (check for equality)
 
-The key conditional decision-making rune is `?:` {% tooltip
-label="wutcol" href="/language/hoon/reference/rune/wut#-wutcol" /%},
-which lets you branch between an `expression-if-true` and an
-`expression-if-false`. `?.` {% tooltip label="wutdot"
-href="/language/hoon/reference/rune/wut#-wutdot" /%} inverts the order
-of `?:`.  Good Hoon style prescribes that the heavier branch of a
+The key conditional decision-making rune is `?:`
+[wutcol](/language/hoon/reference/rune/wut#-wutcol), which lets you
+branch between an `expression-if-true` and an `expression-if-false`.
+`?.` [wutdot](/language/hoon/reference/rune/wut#-wutdot) inverts the
+order of `?:`.  Good Hoon style prescribes that the heavier branch of a
 logical expression should be lower in the file.
 
 There are also two long-form decision-making runes, which we will call
 [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by
 analogy with languages like C.
 
-- `?-` {% tooltip label="wuthep"
-  href="/language/hoon/reference/rune/wut#--wuthep" /%} lets you choose
-  between several possibilities, as with a type union.  Every case must
-  be handled and no case can be unreachable.
+- `?-` [wuthep](/language/hoon/reference/rune/wut#--wuthep) lets you
+  choose between several possibilities, as with a type union.  Every
+  case must be handled and no case can be unreachable.
 
     Since `@tas` terms are constants first, and not `@tas` unless marked
-    as such, `?-` {% tooltip label="wuthep"
-    href="/language/hoon/reference/rune/wut#--wuthep" /%} switches over
-    term unions can make it look like the expression is branching on the
-    value.  It's actually branching on the _type_.  These are almost
-    exclusively used with term type unions.
+    as such, `?-` [wuthep](/language/hoon/reference/rune/wut#--wuthep)
+    switches over term unions can make it look like the expression is
+    branching on the value.  It's actually branching on the _type_.
+    These are almost exclusively used with term type unions.
 
     ```hoon {% copy=true %}
     |=  p=?(%1 %2 %3)
@@ -119,11 +115,10 @@ analogy with languages like C.
     ==
     ```
 
-- `?+` {% tooltip label="wutlus"
-  href="/language/hoon/reference/rune/wut#-wutlus" /%} is similar to
+- `?+` [wutlus](/language/hoon/reference/rune/wut#-wutlus) is similar to
   `?-` but allows a default value in case no branch is taken.  Otherwise
-  these are similar to `?-` {% tooltip label="wuthep"
-  href="/language/hoon/reference/rune/wut#--wuthep"/%} switch
+  these are similar to `?-`
+  [wuthep](/language/hoon/reference/rune/wut#--wuthep) switch
   statements.
 
     ```hoon {% copy=true %}
@@ -142,8 +137,7 @@ other propositions.  In computer science, we use this functionality to
 determine which part of an expression is evaluated.  We can combine
 logical statements pairwise:
 
-- `?&` {% tooltip label="wutpam"
-  href="/language/hoon/reference/rune/wut#-wutpam" /%}, irregularly
+- `?&` [wutpam](/language/hoon/reference/rune/wut#-wutpam), irregularly
   `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g.
   both terms must be true.
 
@@ -160,8 +154,7 @@ logical statements pairwise:
     %.y
     ```
 
-- `?|` {% tooltip label="wutbar"
-  href="/language/hoon/reference/rune/wut#-wutbar" /%}, irregularly
+- `?|` [wutbar](/language/hoon/reference/rune/wut#-wutbar), irregularly
   `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g.
   either term may be true.
 
@@ -178,9 +171,8 @@ logical statements pairwise:
     %.y
     ```
 
-- `?!` {% tooltip label="wutzap"
-  href="/language/hoon/reference/rune/wut#-wutzap" /%}, irregularly `!`,
-  is a logical `NOT` (i.e. ¬*p*).  Sometimes it can be difficult to
+- `?!` [wutzap](/language/hoon/reference/rune/wut#-wutzap), irregularly
+  `!`, is a logical `NOT` (i.e. ¬*p*).  Sometimes it can be difficult to
   parse code including `!` because it operates without parentheses.
 
     |                              | `NOT` |
@@ -212,7 +204,7 @@ calculated by (_p_ ∧ ¬*q*) ∨ (¬*p* ∧ _q_).
 | `%.y`{% class="font-bold" %} | `%.n` | `%.y` |
 | `%.n`{% class="font-bold" %} | `%.y` | `%.n` |
 
-- Implement `XOR` as a {% tooltip label="gate" href="/glossary/gate" /%}
+- Implement `XOR` as a [gate](/glossary/gate)
   in Hoon.
 
     ```hoon {% copy=true %}
@@ -250,9 +242,8 @@ operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
 The boxcar function is a piecewise mathematical function which is equal
 to zero for inputs less than zero and one for inputs greater than or
 equal to zero.  We implemented the similar Heaviside function
-[previously](/courses/hoon-school/B-syntax) using the `?:` {% tooltip
-label="wutcol" href="/language/hoon/reference/rune/wut#-wutcol" /%}
-rune.
+[previously](/courses/hoon-school/B-syntax) using the `?:`
+[wutcol](/language/hoon/reference/rune/wut#-wutcol) rune.
 
 - Compose a gate which implements the boxcar function,
 

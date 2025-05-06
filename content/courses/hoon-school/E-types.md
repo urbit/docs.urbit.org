@@ -37,9 +37,9 @@ different kinds of things we could refer to as “type”.  It is
 instructive for learners to distinguish three kinds of types in Hoon:
 
 1. Atoms:  values with auras.
-2. {% tooltip label="Molds" href="/glossary/mold" /%}:  structures.
+2. [Molds](/glossary/mold):  structures.
    Think of cells, lists, and sets.
-3. {% tooltip label="Marks" href="/glossary/mark" /%}:  file types.
+3. [Marks](/glossary/mark):  file types.
    Compare to conventional files distinguished by extension and definite
    internal structure.
 
@@ -50,11 +50,10 @@ rule.  **All of these are molds, or Hoon types.  We are simply
 separating them by complexity as you learn.**
 
 You have seen and worked with the trivial atoms and cells.  We will
-leave marks until a later discussion of {% tooltip label="Gall"
-href="/glossary/gall" /%} {% tooltip label="agents"
-href="/glossary/agent" /%} or the {% tooltip label="Clay"
-href="/glossary/clay" /%} filesystem, which use marks to type file data.
-For now, we focus on {% tooltip label="molds" href="/glossary/mold" /%}.
+leave marks until a later discussion of [Gall](/glossary/gall)
+[agents](/glossary/agent) or the [Clay](/glossary/clay) filesystem,
+which use marks to type file data. For now, we focus on
+[molds](/glossary/mold).
 
 This lesson will talk about atoms, cells, then molds in a general sense.
 We allude to several topics which will be explored in Data Structures.
@@ -70,7 +69,7 @@ integer; but Hoon keeps track of type information about each atom, and
 this bit of metadata tells Hoon how to interpret the atom in question.
 
 The piece of type information that determines how Hoon interprets an
-atom is called an {% tooltip label="aura" href="/glossary/aura" /%}.
+atom is called an [aura](/glossary/aura).
 The set of all atoms is indicated with the symbol `@`.  An aura is
 indicated with `@` followed by some letters, e.g., `@ud` for unsigned
 decimal.  Accordingly, the Hoon type system does more than track sets of
@@ -113,8 +112,8 @@ Hoon know what the intended data type is?  The programmer must specify
 this explicitly by using a _cast_.  To cast for an unsigned decimal
 atom, you can use the `^-` kethep rune along with the `@ud` from above.
 
-What exactly does the `^-` {% tooltip label="kethep"
-href="/language/hoon/reference/rune/ket#--kethep" /%} rune do?  It
+What exactly does the `^-`
+[kethep](/language/hoon/reference/rune/ket#--kethep) rune do?  It
 compares the inferred type of some expression with the desired cast
 type.  If the expression's inferred type _nests_ under the desired type,
 then the product of the expression is returned.
@@ -128,10 +127,10 @@ Let's try one in the Dojo.
 
 Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice
 that the `^-` kethep expression never does anything to modify the
-underlying {% tooltip label="noun" href="/glossary/noun" /%} of the
+underlying [noun](/glossary/noun) of the
 second subexpression.  It's used simply to mandate a type-check on that
 expression.  This check occurs at compile-time (when the expression is
-compiled to {% tooltip label="Nock" href="/glossary/nock" /%}).
+compiled to [Nock](/glossary/nock)).
 
 What if the inferred type doesn't fit under the cast type?  You will see
 a `nest-fail` crash at compile-time:
@@ -258,13 +257,13 @@ Here's another example of type inference at work:
 36
 ```
 
-The {% tooltip label="add" href="/language/hoon/reference/stdlib/1a#add"
-/%} function in the Hoon standard library operates on all atoms,
-regardless of aura, and returns atoms with no aura specified. Hoon isn't
-able to infer anything more specific than `@` for the product of `add`.
-This is by design, however. Notice that when you `add` a decimal and a
-hexadecimal above, the correct answer is returned (pretty-printed as a
-decimal). This works for all of the unsigned auras:
+The [add](/language/hoon/reference/stdlib/1a#add) function in the Hoon
+standard library operates on all atoms, regardless of aura, and returns
+atoms with no aura specified. Hoon isn't able to infer anything more
+specific than `@` for the product of `add`. This is by design, however.
+Notice that when you `add` a decimal and a hexadecimal above, the
+correct answer is returned (pretty-printed as a decimal). This works for
+all of the unsigned auras:
 
 ```hoon
 > (add 100 0b101)
@@ -365,8 +364,8 @@ nest-fail
 ```
 
 The `[@ @]` cast accepts any expression that evaluates to a cell with
-exactly two atoms, and crashes with a {% tooltip label="nest-fail"
-href="/language/hoon/reference/hoon-errors#nest-fail" /%} for any
+exactly two atoms, and crashes with a
+[nest-fail](/language/hoon/reference/hoon-errors#nest-fail) for any
 expression that evaluates to something different.  The expression `12`
 doesn't evaluate to a cell; and while the expression `[[12 13] 14]` does
 evaluate to a cell, the left-hand side isn't an atom, but is instead
@@ -435,12 +434,12 @@ atoms as unsigned integers.
 
 {% video src="https://media.urbit.org/docs/hoon-school-videos/HS156 - Molds.mp4" /%}
 
-A {% tooltip label="mold" href="/glossary/mold" /%} is a template or
-rule for identifying actual type structures. They are actually gates,
-meaning that they operate on a value to coerce it to a particular
-structure.  Technically, a mold is a function from a noun to a noun.
-What this means is that we can use a mold to map any noun to a typed
-value—if this fails, then the mold crashes.
+A [mold](/glossary/mold) is a template or rule for identifying actual
+type structures. They are actually gates, meaning that they operate on a
+value to coerce it to a particular structure.  Technically, a mold is a
+function from a noun to a noun. What this means is that we can use a
+mold to map any noun to a typed value—if this fails, then the mold
+crashes.
 
 ```hoon
 > (^ [1 2])
@@ -469,15 +468,14 @@ We commonly need to do one of two things with a mold:
     dojo: hoon expression failed
     ```
 
-2.  Produce an example value ({% tooltip label="bunt"
-    href="/glossary/bunt" /%}).
+2.  Produce an example value ([bunt](/glossary/bunt)).
 
 We often use bunts to clam; for example `@ud` implicitly uses the `@ud`
 default value (`0`) as the type specimen which the computation must
 match.
 
-To _actually_ get the bunt value, use the `^*` {% tooltip label="kettar"
-href="/language/hoon/reference/rune/ket#-kettar" /%} rune, almost always
+To _actually_ get the bunt value, use the `^*`
+[kettar](/language/hoon/reference/rune/ket#-kettar) rune, almost always
 used in its irregular form `*` tar:
 
 ```hoon
@@ -495,10 +493,10 @@ used in its irregular form `*` tar:
 ```
 
 One more way to validate against type is to use an example instead of
-the extracted mold.  This uses the `^+` {% tooltip label="ketlus"
-href="/language/hoon/reference/rune/ket#-ketlus" /%} rune similarly to
-how we used `^-` {% tooltip label="kethep"
-href="/language/hoon/reference/rune/ket#--kethep" /%} previously:
+the extracted mold.  This uses the `^+`
+[ketlus](/language/hoon/reference/rune/ket#-ketlus) rune similarly to
+how we used `^-` [kethep](/language/hoon/reference/rune/ket#--kethep)
+previously:
 
 ```hoon {% copy=true %}
 ^+(1.000 100)
@@ -509,8 +507,7 @@ q)`.  Many runes we use actually reduce to other rune forms, and have
 been introduced for ease of use.)
 
 We can use more complex structures for molds though, including built-in
-types like {% tooltip label="lists" href="/glossary/list" /%} and {%
-tooltip label="tapes" href="/glossary/tape" /%}.  (A `tape` represents
+types like [lists](/glossary/list) and [tapes](/glossary/tape).  (A `tape` represents
 text.)
 
 ```hoon {% copy=true %}
@@ -548,8 +545,7 @@ and “mold builder” tools.  Thus a `list` needs an associated type `(list
 
 Besides `?` (which is a Dojo-specific tool), the programmatic way to
 figure out which mold the Hoon compiler thinks something is to use the
-`!>` {% tooltip label="zapgar"
-href="/language/hoon/reference/rune/zap#-zapgar" /%} rune.
+`!>` [zapgar](/language/hoon/reference/rune/zap#-zapgar) rune.
 
 ```hoon
 > !>(0xace2.bead)
@@ -566,10 +562,9 @@ the so-called “type spear” `-:!>`:
 
 ### Type Unions
 
-`$?` {% tooltip label="bucwut"
-href="/language/hoon/reference/rune/buc#-bucwut" /%} forms a type union.
-Most commonly these are used with types having different structures,
-such as an atom and a cell.
+`$?` [bucwut](/language/hoon/reference/rune/buc#-bucwut) forms a type
+union. Most commonly these are used with types having different
+structures, such as an atom and a cell.
 
 For instance, if you wanted a gate to accept an atom of an unsigned aura
 type, but no other type, you could define a type union thus:

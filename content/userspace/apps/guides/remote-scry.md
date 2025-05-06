@@ -4,25 +4,24 @@ description = "Learn about scrying over the network"
 weight = 5
 +++
 
-To {% tooltip label="scry" href="/glossary/scry" /%} is to perform a
-*read* from Urbit's referentially transparent namespace. In other words,
-it's a function from a `path` to a `noun` (although in some cases, the
-resulting type may be more constrained). Previously we only supported
-scrying within the same ship, but from Kernel version `[%zuse 413]`, it
-is possible to scry from *other* ships.
+To [scry](/glossary/scry) is to perform a *read* from Urbit's
+referentially transparent namespace. In other words, it's a function
+from a `path` to a `noun` (although in some cases, the resulting type
+may be more constrained). Previously we only supported scrying within
+the same ship, but from Kernel version `[%zuse 413]`, it is possible to
+scry from *other* ships.
 
 ## Lifecycle of a scry
 
-When you think of scry, you probably think of `.^` {% tooltip
-label="dotket" href="/language/hoon/reference/rune/dot#-dotket" /%}.
-However, since networking is asynchronous, this is not a suitable
-interface for remote scry. Instead, a ship that wants to read from a
-remote part of the namespace will have to (directly or indirectly) ask
-Ames to perform the scry, which then cooperates with {% tooltip
-label="Vere" href="/glossary/vere" /%} to produce the desired data. In
-some future event when the result is available, Ames gives it back as a
-`%tune` gift. From the requester's perspective, this is the entire
-default lifecycle of a remote scry request.
+When you think of scry, you probably think of `.^`
+[dotket](/language/hoon/reference/rune/dot#-dotket). However, since
+networking is asynchronous, this is not a suitable interface for remote
+scry. Instead, a ship that wants to read from a remote part of the
+namespace will have to (directly or indirectly) ask Ames to perform the
+scry, which then cooperates with [Vere](/glossary/vere) to produce the
+desired data. In some future event when the result is available, Ames
+gives it back as a `%tune` gift. From the requester's perspective, this
+is the entire default lifecycle of a remote scry request.
 
 Of course, you need to know how Ame's `%chum` and `%tune` look, as well
 as Gall's `%keen` note, to be able to use them. There are also a few
@@ -32,8 +31,7 @@ moment, but first, let's look at what kind of data is possible to scry.
 ## Publishing
 
 At the moment, there are two vanes that can handle remote scry requests:
-{% tooltip label="Clay" href="/glossary/clay" /%} and {% tooltip
-label="Gall" href="/glossary/gall" /%}. Clay uses it to distribute
+[Clay](/glossary/clay) and [Gall](/glossary/gall). Clay uses it to distribute
 source code in a more efficient manner than is possible with
 conventional Ames, but conceptually it only extends its [local
 scries](/system/kernel/clay/reference/scry) over the network, with the

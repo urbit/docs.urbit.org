@@ -3,12 +3,11 @@ title = "EAuth"
 weight = 100
 +++
 
-EAuth is a system built into {% tooltip label="Eyre" href="/glossary/eyre" /%}
-which allows one {% tooltip label="ship" href="/glossary/ship" /%} to log into
+EAuth is a system built into [Eyre](/glossary/eyre)
+which allows one [ship](/glossary/ship) to log into
 the web interface of another. Once logged in, all requests through Eyre will
-appear to Gall {% tooltip label="agents" href="/glossary/agent" /%} as having
-come from the foreign ship, in the `src` of the {% tooltip label="bowl"
-href="/glossary/bowl" /%}. The agents can apply whatever logic they want based
+appear to Gall [agents](/glossary/agent) as having
+come from the foreign ship, in the `src` of the [bowl](/glossary/bowl). The agents can apply whatever logic they want based
 on the foreign `src`. Most Urbit apps (including Landscape) don't currently
 allow requests from anyone but the local ship. Nevertheless, EAuth has many
 potential useful applications, such as a allowing comments from other ships on
@@ -16,15 +15,15 @@ a public-facing Urbit-hosted blog.
 
 ## When to use
 
-{% tooltip label="Landscape" href="/glossary/landscape" /%} and its `%docket`
+[Landscape](/glossary/landscape) and its `%docket`
 agent don't currently support access from foreign ships. You therefore cannot
 provide an app-launcher interface to foreign ships, nor serve them an ordinary
-{% tooltip label="globbed" href="/glossary/glob" /%} front-end. This leaves
+[globbed](/glossary/glob) front-end. This leaves
 three potential use-cases:
 
-1. A {%tooltip label="sail-based" href="/glossary/sail" /%} UI for a
+1. A [sail-based](/glossary/sail) UI for a
    public-facing Urbit-hosted app.
-2. A {% tooltip label="glob" href="/glossary/glob" /%}-based UI, but with the
+2. A [glob](/glossary/glob)-based UI, but with the
    front-end files served independently from `%docket`.
 3. As an authentication system for an externally hosted service, with an
    additional API for that service to talk to the ship.

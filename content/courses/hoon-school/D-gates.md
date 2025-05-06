@@ -14,9 +14,8 @@ Until this point in Hoon School, we have rigorously adhered to the
 regular syntax of runes so that you could get used to using them.  In
 fact, the only two irregular forms we used were these:
 
-- Cell definition `[a b]` which represents the `:-` {% tooltip
-  label="colhep" href="/language/hoon/reference/rune/col#--colhep" /%}
-  rune, `:-  a  b`.
+- Cell definition `[a b]` which represents the `:-`
+  [colhep](/language/hoon/reference/rune/col#--colhep) rune, `:-  a  b`.
 
     That is, these expressions are all the same for Hoon:
 
@@ -33,9 +32,9 @@ fact, the only two irregular forms we used were these:
     [1 2]
     ```
 
-- Aura application `` `@ux`500 `` which represents a double `^-` {%
-  tooltip label="kethep"
-  href="/language/hoon/reference/rune/ket#--kethep" /%}, like `^-  @ux  ^-  @  500`.
+- Aura application `` `@ux`500 `` which represents a double `^-`
+  [kethep](/language/hoon/reference/rune/ket#--kethep), like `^-  @ux
+  ^-  @  500`.
 
     These are equivalent in Hoon:
 
@@ -52,8 +51,8 @@ fact, the only two irregular forms we used were these:
 
 Hoon developers often employ irregular forms, sometimes called “sugar
 syntax”.  Besides the `:-` colhep and `^-` kethep forms, we will
-commonly use a new form for `%-` {% tooltip label="cenhep"
-href="/language/hoon/reference/rune/cen#-cenhep" /%} “function calls”:
+commonly use a new form for `%-`
+[cenhep](/language/hoon/reference/rune/cen#-cenhep) “function calls”:
 
 ```hoon
 > %-  add  [1 2]
@@ -102,13 +101,13 @@ code structures defining the behavior.
 This has no flexibility:  if we want to change `a` we have to rewrite
 the whole thing every time!
 
-(Note also our introduction of the `::` {% tooltip label="colcol"
-href="/language/hoon/reference/rune/col#-colcol" /%} digraph in the
-above code block.  This marks anything following it as a _comment_,
-meaning that it is meant for the developer and reader, and ignored by
-the computer.)
+(Note also our introduction of the `::`
+[colcol](/language/hoon/reference/rune/col#-colcol) digraph in the above
+code block.  This marks anything following it as a _comment_, meaning
+that it is meant for the developer and reader, and ignored by the
+computer.)
 
-Hoon uses {% tooltip label="gates" href="/glossary/gate" /%} as deferred
+Hoon uses [gates](/glossary/gate) as deferred
 computations.  What this means is that we can build a Hoon expression
 now and use it at need later on, perhaps many times.  More than that, we
 can also use it on different data values.  A gate is the Hoon analogue
@@ -131,24 +130,20 @@ property of functions. This property is called [referential
 transparency](https://en.wikipedia.org/wiki/Referential_transparency),
 and it's one of the key ingredients to building a secure Urbit stack.
 
-Functions are implemented in Hoon with a special kind of {% tooltip
-label="core" href="/glossary/core" /%} called a _gate_.  In this lesson
-you'll learn what a gate is and how a gate represents a function.  (We
-_won't_ talk about what a core is quite yet.)  Along the way you'll
-build some example gates of your own.
+Functions are implemented in Hoon with a special kind of
+[core](/glossary/core) called a _gate_.  In this lesson you'll learn
+what a gate is and how a gate represents a function.  (We _won't_ talk
+about what a core is quite yet.)  Along the way you'll build some
+example gates of your own.
 
 ### Building a Gate
 
 {% video src="https://media.urbit.org/docs/hoon-school-videos/HS120 - Gates.mp4" /%}
 
-Syntactically, a gate is a `|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%} rune with two
-children:  a {% tooltip label="spec"
-href="/language/hoon/reference/stdlib/4o#spec" /%} (specification of
-input) and a {% tooltip label="hoon"
-href="/language/hoon/reference/stdlib/4o#hoon" /%} (body). Think of just
-replacing the `=/` {% tooltip label="tisfas"
-href="/language/hoon/reference/rune/tis#-tisfas" /%} with the `|=`
+Syntactically, a gate is a `|=` [bartis](/language/hoon/reference/rune/bar#-bartis) rune with two
+children:  a [spec](/language/hoon/reference/stdlib/4o#spec) (specification of
+input) and a [hoon](/language/hoon/reference/stdlib/4o#hoon) (body). Think of just
+replacing the `=/` [tisfas](/language/hoon/reference/rune/tis#-tisfas) with the `|=`
 bartis:
 
 ```hoon {% copy=true %}
@@ -170,9 +165,8 @@ the gate.
 
 The `hoon` body expression evaluates and yields a result, ultimately
 sent back to the call site.  Frequently it is wise to explicitly require
-a particular type for the return value using the `^-` {% tooltip
-label="kethep" href="/language/hoon/reference/rune/ket#--kethep" /%}
-rune:
+a particular type for the return value using the `^-`
+[kethep](/language/hoon/reference/rune/ket#--kethep) rune:
 
 ```hoon {% copy=true %}
 ::  Confirm whether a value is greater than one.
@@ -208,8 +202,8 @@ Gates can take multiple arguments as a cell:
 b
 ```
 
-You can also call them different ways with raw `%` {% tooltip
-label="cen" href="/language/hoon/reference/rune/cen" /%} runes:
+You can also call them different ways with raw `%`
+[cen](/language/hoon/reference/rune/cen) runes:
 
 ```hoon {% copy=true %}
 %-  max  [100 200]
@@ -235,21 +229,19 @@ expression as valid Hoon code, but can't actually apply it to an input
   ]
 ```
 
-We need to attach a _name_ or a {% tooltip label="face"
-href="/glossary/face" /%} to the expression.  Then we'll be able to use
-it directly.  Somewhat confusingly, there are three common ways to do
-this:
+We need to attach a _name_ or a [face](/glossary/face) to the
+expression.  Then we'll be able to use it directly.  Somewhat
+confusingly, there are three common ways to do this:
 
 1. Attach the face (name) directly in Dojo.  (This is a good quick
    solution, and we'll use it when teaching and testing code, but it
    doesn't work inside of code files.)
-2. Save the gate as a {% tooltip label="generator"
-   href="/glossary/generator" /%} file and call it using the name of the
-   file.  (We'll do this in the next section of this lesson.)
-3. Attach the face (name) as an {% tooltip label="arm"
-   "href"="/glossary/arm" /%} in a {% tooltip label="core"
-   href="/glossary/core" /%}.  (We don't know what those are yet, so
-   we'll set them aside for a couple of lessons.)
+2. Save the gate as a [generator](/glossary/generator) file and call it
+   using the name of the file.  (We'll do this in the next section of
+   this lesson.)
+3. Attach the face (name) as an [arm](/glossary/arm") in a
+   [core](/glossary/core).  (We don't know what those are yet, so we'll
+   set them aside for a couple of lessons.)
 
 To name a gate in Dojo (or any expression resulting in a value, which is
 _every_ expression), you can use the Dojo-specific syntax `=name value`:
@@ -279,13 +271,12 @@ form:
 124
 ```
 
-To reiterate:  we typically use the `|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%} rune to create a
+To reiterate:  we typically use the `|=`
+[bartis](/language/hoon/reference/rune/bar#-bartis) rune to create a
 gate. In the expression above the `|=` is immediately followed by a set
 of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The
-first defines the gate's {% tooltip label="sample"
-href="/glossary/sample" /%} (input value type), and the second defines
-the gate's product (output value).
+first defines the gate's [sample](/glossary/sample) (input value type),
+and the second defines the gate's product (output value).
 
 In the example gate above, `inc`, the sample is defined by `a=@`.  This
 means that the sample is defined as an atom `@` meaning that the gate
@@ -330,8 +321,7 @@ specification.  Others, like Python and MATLAB, are _laissez-faire_.
 Hoon tends to be strict, but leaves some discretion over _how_ strict to
 you, the developer.
 
-Remember `^-` {% tooltip label="kethep"
-href="/language/hoon/reference/rune/ket#--kethep" /%}?  We will use `^-`
+Remember `^-` [kethep](/language/hoon/reference/rune/ket#--kethep)?  We will use `^-`
 as a _fence_, a way of making sure only data matching the appropriate
 structure get passed on.
 
@@ -422,7 +412,7 @@ On Mars:
 ```
 
 You can verify the contents of the copied files are the same using the
-{% tooltip label="+cat" href="/manual/os/dojo-tools#cat" /%} command:
+[+cat](/manual/os/dojo-tools#cat) command:
 
 ```hoon
 > +cat %/desk/bill
@@ -430,25 +420,25 @@ You can verify the contents of the copied files are the same using the
 > +cat %/desk/txt
 ```
 
-(Dojo does know what a `bill` file is, so it displays the contents slightly formatted.  They are actually identical.)
+(Dojo does know what a `bill` file is, so it displays the contents
+slightly formatted.  They are actually identical.)
 
-We will use this {% tooltip label="|commit"
-href="/manual/os/dojo-tools#commit" /%} pattern to store persistent code
-as files, editing on Earth and then synchronizing to Mars.
+We will use this [|commit](/manual/os/dojo-tools#commit) pattern to
+store persistent code as files, editing on Earth and then synchronizing
+to Mars.
 
 
 ##  Building Code
 
 The missing piece to really tie all of this together is the ability to
 store a gate and use it at a later time, not just in the same long Dojo
-session.  Enter the {% tooltip label="generator"
-href="/glossary/generator" /%}.
+session.  Enter the [generator](/glossary/generator).
 
 A generator is a simple program which can be called from the Dojo.  It
 is a gate, so it takes some input as sample and produces some result.
 Naked generators are the simplest generators possible, having access
-only to information passed to them directly in their {% tooltip
-label="sample" href="/glossary/sample" /%}.
+only to information passed to them directly in their
+[sample](/glossary/sample).
 
 In this section, we will compose our first generator.
 
@@ -526,14 +516,14 @@ program yet.
 A generator gives us on-demand access to code, but it is helpful to load
 and use code from files while we work in the Dojo.
 
-A conventional library import with `/+` {% tooltip label="faslus"
-href="/language/hoon/reference/rune/fas#-faslus" /%} will work in a
+A conventional library import with `/+`
+[faslus](/language/hoon/reference/rune/fas#-faslus) will work in a
 generator or another file, but won't work in Dojo, so you can't use `/+`
 faslus interactively.
 
-Instead, you need to use the {% tooltip label="-build-file"
-href="/manual/os/dojo-tools#-build-file" /%} thread to load the code.
-Most commonly, you will do this with library code when you need a
+Instead, you need to use the
+[-build-file](/manual/os/dojo-tools#-build-file) thread to load the
+code. Most commonly, you will do this with library code when you need a
 particular core's functionality.
 
 `-build-file` accepts a file path and returns the built operational

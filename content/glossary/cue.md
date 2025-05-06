@@ -3,10 +3,10 @@ title = "Cue"
 +++
 
 **Cue** is the deserialization function for nouns serialized into atoms with
-the {% tooltip label="jam" href="/glossary/jam" /%} function. Cue and Jam are
-used extensively by the kernel.
+the [jam](/glossary/jam) function. Cue and Jam are used extensively by the
+kernel.
 
-Example in the {%tooltip label="Dojo" href="/glossary/dojo" /%}:
+Example in the [Dojo](/glossary/dojo):
 
 ```
 > (jam [1 2 3])

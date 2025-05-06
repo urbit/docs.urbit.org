@@ -11,19 +11,19 @@ _This module will introduce the key Hoon data structure known as the
 The Hoon subject is a noun.  One way to look at this noun is to denote
 each fragment of is as either a computation or data.  By strictly
 separating these two kinds of things, we derive the data structure known
-within Hoon as a {% tooltip label="core" href="/glossary/core" /%}.
+within Hoon as a [core](/glossary/core).
 
 Cores are the most important data structure in Hoon.  They allow you to
 solve many coding problems by identifying a pattern and supplying a
 proper data structure apt to the challenge.  You have already started
-using cores with `|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%} {% tooltip
-label="gate" href="/glossary/gate" /%} construction and use.
+using cores with `|=`
+[bartis](/language/hoon/reference/rune/bar#-bartis)
+[gate](/glossary/gate) construction and use.
 
-This lesson will introduce another {% tooltip label="core"
-href="/glossary/core" /%} to solve a specific use case, then continue
-with a general discussion of cores.  Getting cores straight will be key
-to understanding why Hoon has the structure and internal logic it does.
+This lesson will introduce another [core](/glossary/core) to solve a
+specific use case, then continue with a general discussion of cores.
+Getting cores straight will be key to understanding why Hoon has the
+structure and internal logic it does.
 
 
 ##  Repeating Yourself Using a Trap
@@ -49,15 +49,15 @@ list.
 
 Hoon effects the concept of a loop using recursion, return to a
 particular point in an expression (presumably with some different
-values).  One way to do this is using the `|-` {% tooltip label="barhep"
-href="/language/hoon/reference/rune/bar#--barhep" /%} rune, which
-creates a structure called a {% tooltip label="trap"
-href="/glossary/trap" /%}.  (Think of the “trap” in the bottom of your
-sink.)  It means a point to which you can return again, perhaps with
-some key values (like a counter) changed.  Then you can repeat the
-calculation inside the trap again.  This continues until some single
-value, some noun, results, thereby handing a value back out of the
-expression.  (Remember that every Hoon expression results in a value.)
+values).  One way to do this is using the `|-`
+[barhep](/language/hoon/reference/rune/bar#--barhep) rune, which creates
+a structure called a [trap](/glossary/trap).  (Think of the “trap” in
+the bottom of your sink.)  It means a point to which you can return
+again, perhaps with some key values (like a counter) changed.  Then you
+can repeat the calculation inside the trap again.  This continues until
+some single value, some noun, results, thereby handing a value back out
+of the expression.  (Remember that every Hoon expression results in a
+value.)
 
 This program adds 1+2+3+4+5 and returns the sum:
 
@@ -106,9 +106,9 @@ Let's unroll it:
 And thus `sum` yields the final value of `15`.
 
 It is frequently helpful, when constructing these, to be able to output
-the values at each step of the process.  Use the `~&` {% tooltip
-label="sigpam" href="/language/hoon/reference/rune/sig#-sigpam" /%} rune
-to create output without changing any values:
+the values at each step of the process.  Use the `~&`
+[sigpam](/language/hoon/reference/rune/sig#-sigpam) rune to create
+output without changing any values:
 
 ```hoon {% copy=true %}
 =/  counter  1
@@ -148,8 +148,8 @@ You can do even better using _interpolation_:
   [factorial](https://mathworld.wolfram.com/Factorial.html).  The
   factorial of a number {% math %}n{% /math %} is {% math %}n \times
   (n-1) \times \ldots \times 2 \times 1{% /math %}.  We will introduce a
-  couple of new bits of syntax and a new gate ({% tooltip label="++dec"
-  href="/language/hoon/reference/stdlib/1a#dec" /%}).  Make this into a
+  couple of new bits of syntax and a new gate
+  ([++dec](/language/hoon/reference/stdlib/1a#dec)).  Make this into a
   generator `factorial.hoon`:
 
     ```hoon {% copy=true %}
@@ -165,9 +165,9 @@ You can do even better using _interpolation_:
     ==
     ```
 
-    - We are using the `=` irregular syntax for the `.=` {% tooltip
-      label="dottis" href="/language/hoon/reference/rune/dot#-dottis"
-      /%} rune, which tests for the equality of two expressions.
+    - We are using the `=` irregular syntax for the `.=`
+      [dottis](/language/hoon/reference/rune/dot#-dottis) rune, which
+      tests for the equality of two expressions.
 
     ```hoon
     > +factorial 5
@@ -213,7 +213,7 @@ You can do even better using _interpolation_:
 ### Exercise:  Tracking Expression Structure
 
 As we write more complicated programs, it is helpful to learn to read
-the {% tooltip label="runes" href="/glossary/rune" /%} by identifying
+the [runes](/glossary/rune) by identifying
 which daughter expressions attach to which runes, e.g.:
 
 ```hoon
@@ -243,11 +243,10 @@ human readers of the source code.  Here, we have also explicitly marked
 the expansion of the irregular forms.
 
 We will revert to the irregular form more and more.  If you would like
-to see exactly how an expression is structured, you can use the `!,` {%
-tooltip label="zapcom" href="/language/hoon/reference/rune/zap#-zapcom"
-/%} rune.  `!,` zapcom produces an annotated _abstract syntax tree_
-(AST) which labels every value and expands any irregular syntax into the
-regular runic form.
+to see exactly how an expression is structured, you can use the `!,`
+[zapcom](/language/hoon/reference/rune/zap#-zapcom) rune.  `!,` zapcom
+produces an annotated _abstract syntax tree_ (AST) which labels every
+value and expands any irregular syntax into the regular runic form.
 
 ```hoon
 > !,  *hoon  (add 5 6)
@@ -291,8 +290,8 @@ regular runic form.
 ```
 
 (_There's a lot going on in there._  Focus on the four-letter runic
-identifiers:  `%sgpm` for `~&` {% tooltip label="sigpam"
-href="/language/hoon/reference/rune/sig#-sigpam" /%}, for instance.)
+identifiers:  `%sgpm` for `~&`
+[sigpam](/language/hoon/reference/rune/sig#-sigpam), for instance.)
 
 ### Exercise:  Calculate a sequence of numbers
 
@@ -319,15 +318,13 @@ Calculate each one but only return the final value.
 
 ### Exercise:  Output each letter in a `tape`
 
-Produce a gate (generator) which accepts a {% tooltip label="tape"
-href="/glossary/tape" /%} value and returns a `(list @ud)` containing
-the ASCII value of each character.  Use a `|-` {% tooltip label="barhep"
-href="/language/hoon/reference/rune/bar#--barhep" /%} {% tooltip
-label="trap" href="/glossary/trap" /%}.
-The previous code simply modified a value by addition.  You can
-generalize this to other arithmetic processes, like multiplication, but
-you can also grow a data structure like a {% tooltip label="list"
-href="/glossary/list" /%}.
+Produce a gate (generator) which accepts a [tape](/glossary/tape) value
+and returns a `(list @ud)` containing the ASCII value of each character.
+Use a `|-` [barhep](/language/hoon/reference/rune/bar#--barhep)
+[trap](/glossary/trap). The previous code simply modified a value by
+addition.  You can generalize this to other arithmetic processes, like
+multiplication, but you can also grow a data structure like a
+[list](/glossary/list).
 
 For example, given the `tape` `"hello"`, the generator should return the
 list `[104 101 108 108 111 ~]`.  (A list is structurally a
@@ -337,10 +334,10 @@ special syntax reducing to the same thing.
 
 Two tools that may help:
 
-- You can retrieve the _n_^th^ element in a `tape` using the {% tooltip
-  label="++snag" href="/language/hoon/reference/stdlib/2b#snag" /%}
-  gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so
-  `++snag` is zero-indexed; it counts from zero).
+- You can retrieve the _n_^th^ element in a `tape` using the
+  [++snag](/language/hoon/reference/stdlib/2b#snag) gate, e.g. ``(snag 3
+  `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed;
+  it counts from zero).
 - You can join an element to a list using the
   [`++snoc`](/language/hoon/reference/stdlib/2b#snoc) gate, e.g. ``(snoc
   `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
@@ -375,11 +372,10 @@ Some of them are _data_, like raw values:  `0x1234.5678.abcd` and `[5 6
 7]`.  Others are _code_, programs that do something.  What unifies all
 of these under the hood?
 
-A {% tooltip label="core" href="/glossary/core" /%} is a cell pairing
-operations to data.  Formally, we'll say a core is a cell `[battery
-payload]`, where {% tooltip label="battery" href="/glossary/battery" /%}
-describes the things that can be done (the operations) and {% tooltip
-label="payload" href="/glossary/payload" /%} describes the data on which
+A [core](/glossary/core) is a cell pairing operations to data.
+Formally, we'll say a core is a cell `[battery payload]`, where
+[battery](/glossary/battery) describes the things that can be done (the
+operations) and [payload](/glossary/payload) describes the data on which
 those operations rely.  (For many English speakers, the word “battery”
 evokes a [voltaic pile](https://en.wikipedia.org/wiki/Voltaic_pile) more
 than a bank of guns, but the artillery metaphor is a better mnemonic for
@@ -389,36 +385,33 @@ than a bank of guns, but the artillery metaphor is a better mnemonic for
 Hoon.**  Everything nontrivial is a core.  Some of the runes you have
 used already produce cores, like the gate.  That is, a gate marries a
 `battery` (the operating code) to the `payload` (the input values AND
-the {% tooltip label="subject" href="/glossary/subject" /%} or
+the [subject](/glossary/subject) or
 operating context).
 
-Urbit adopts an innovative programming paradigm called {% tooltip
-label="subject-oriented programming"
-href="/glossary/subject-oriented-programming" /%}.  By and large, Hoon
-(and {% tooltip label="Nock" href="/glossary/nock" /%}) is a functional
-programming language in that running a piece of code twice will always
-yield the same result, and because runs cause a program to explicitly
-compose various subexpressions in a somewhat mathematical way.
+Urbit adopts an innovative programming paradigm called [subject-oriented
+programming](/glossary/subject-oriented-programming).  By and large,
+Hoon (and [Nock](/glossary/nock)) is a functional programming language
+in that running a piece of code twice will always yield the same result,
+and because runs cause a program to explicitly compose various
+subexpressions in a somewhat mathematical way.
 
 Hoon (and Nock) very carefully bounds the known context of any part of
-the program as the {% tooltip label="subject" href="/glossary/subject"
-/%}.  Basically, the subject is the noun against which any arbitrary
-Hoon code is evaluated.
+the program as the [subject](/glossary/subject).  Basically, the subject
+is the noun against which any arbitrary Hoon code is evaluated.
 
 For instance, when we first composed generators, we made what are called
 “naked generators”:  that is, they do not have access to any information
-outside of the base subject (Arvo, Hoon, and `%zuse`) and their {%
-tooltip label="sample" href="/glossary/sample" /%} (arguments).  Other {%
-tooltip label="generators" href="/glossary/generator" /%} (such as
-`%say` generators, described below) can have more contextual
-information, including random number generators and optional arguments,
-passed to them to form part of their subject.
+outside of the base subject (Arvo, Hoon, and `%zuse`) and their
+[sample](/glossary/sample) (arguments).  Other
+[generators](/glossary/generator) (such as `%say` generators, described
+below) can have more contextual information, including random number
+generators and optional arguments, passed to them to form part of their
+subject.
 
-Cores have two kinds of values attached:  {% tooltip label="arms"
-href="/glossary/arm" /%} and _legs_, both called limbs.  Arms describe
-known labeled addresses (with `++` luslus or `+$` lusbuc) which carry
-out computations.  Legs are limbs which store data (with e.g. `=/`
-tisfas).
+Cores have two kinds of values attached:  [arms](/glossary/arm) and
+_legs_, both called limbs.  Arms describe known labeled addresses (with
+`++` luslus or `+$` lusbuc) which carry out computations.  Legs are
+limbs which store data (with e.g. `=/` tisfas).
 
 ### Arms
 
@@ -426,30 +419,28 @@ So legs are for data and arms are for computations.  But what
 _specifically_ is an arm, and how is it used for computation?  Let's
 begin with a preliminary explanation that we'll refine later.
 
-An {% tooltip label="arm" href="/glossary/arm" /%} is some expression
+An [arm](/glossary/arm) is some expression
 of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean:
 'compiled to a Nock formula'.  But you don't need to know anything about
-{% tooltip label="Nock" href="/glossary/nock" /%} to understand Hoon.)
+[Nock](/glossary/nock) to understand Hoon.)
 You virtually never need to treat an arm as raw data, even though
 technically you can—it's just a noun like any other.  You almost always
 want to think of an arm simply as a way of running some Hoon code.
 
-Every expression of Hoon is evaluated relative to a subject.  An {%
-tooltip label="arm" href="/glossary/arm" /%} is a Hoon expression to be
-evaluated against the {% tooltip label="core" href="/glossary/core" /%}
-subject (i.e. its parent core is its subject).
+Every expression of Hoon is evaluated relative to a subject.  An
+[arm](/glossary/arm) is a Hoon expression to be evaluated against the
+[core](/glossary/core) subject (i.e. its parent core is its subject).
 
 #### Arms for Gates
 
 Within a core, we label arms as Hoon expressions (frequently `|=` bartis
-gates) using the `++` {% tooltip label="luslus"
-href="/language/hoon/reference/rune/lus#-luslus" /%} digraph.  (`++`
+gates) using the `++`
+[luslus](/language/hoon/reference/rune/lus#-luslus) digraph.  (`++`
 isn't formally a rune because it doesn't actually change the structure
 of a Hoon expression, it simply marks a name for an expression or value.
-The `--` {% tooltip label="hephep"
-href="/language/hoon/reference/rune/terminators#---hephep" /%} limiter
-digraph is used because `|%` {% tooltip label="barcen"
-href="/language/hoon/reference/rune/bar#-barcen" /%} can have any number
+The `--` [hephep](/language/hoon/reference/rune/terminators#---hephep)
+limiter digraph is used because `|%`
+[barcen](/language/hoon/reference/rune/bar#-barcen) can have any number
 of arms attached.  Like `++`, it is not formally a rune.)
 
 ```hoon {% copy=true %}
@@ -485,10 +476,10 @@ isn't the only way to address an arm, but it's the most common one.
 
 #### Arms for Types
 
-We can define custom types for a core using `+$` {% tooltip
-label="lusbuc" href="/language/hoon/reference/rune/lus#-lusbuc" /%}
-digraphs.  We won't do much with these yet but they will come in handy
-for custom types later on.
+We can define custom types for a core using `+$`
+[lusbuc](/language/hoon/reference/rune/lus#-lusbuc) digraphs.  We won't
+do much with these yet but they will come in handy for custom types
+later on.
 
 This core defines a set of types intended to work with playing cards:
 
@@ -504,10 +495,9 @@ This core defines a set of types intended to work with playing cards:
 #### Cores in Generators
 
 When we write generators, we can include helpful tools as arms either
-before the main code (with `=>` {% tooltip label="tisgar"
-href="/language/hoon/reference/rune/tis#-tisgar" /%}) or after the main
-code (with `=<` {% tooltip label="tisgal"
-href="/language/hoon/reference/rune/tis#-tisgal" /%}):
+before the main code (with `=>`
+[tisgar](/language/hoon/reference/rune/tis#-tisgar)) or after the main
+code (with `=<` [tisgal](/language/hoon/reference/rune/tis#-tisgal)):
 
 ```hoon {% copy=true %}
 |=  n=@ud
@@ -521,9 +511,8 @@ href="/language/hoon/reference/rune/tis#-tisgal" /%}):
 --
 ```
 
-A library (a file in `/lib`) is typically structured as a `|%` {%
-tooltip label="barcen" href="/language/hoon/reference/rune/bar#-barcen"
-/%} core.
+A library (a file in `/lib`) is typically structured as a `|%`
+[barcen](/language/hoon/reference/rune/bar#-barcen) core.
 
 ### Legs
 
@@ -549,8 +538,7 @@ other applications.
 
 Often a leg of the subject is produced with its value unchanged. But
 there is a way to produce a modified version of the leg as well. To do
-so, we use the `%=` {% tooltip label="centis"
-href="/language/hoon/reference/rune/cen#-centis" /%} rune:
+so, we use the `%=` [centis](/language/hoon/reference/rune/cen#-centis) rune:
 
 ```hoon {% copy=true %}
 %=  subject-limb
@@ -586,10 +574,9 @@ $(counter (add counter 1), sum (add sum counter))
 
 This statement means that we recalculate the `$` buc arm of the current
 subject with the indicated changes.  But what is `$` buc?  `$` buc is
-the _default arm_ for many core structures, including `|=` {% tooltip
-label="bartis" href="/language/hoon/reference/rune/bar#-bartis" /%} gate
-cores and `|-` {% tooltip label="barhep"
-href="/language/hoon/reference/rune/bar#--barhep" /%} trap cores.
+the _default arm_ for many core structures, including `|=`
+[bartis](/language/hoon/reference/rune/bar#-bartis) gate cores and `|-`
+[barhep](/language/hoon/reference/rune/bar#--barhep) trap cores.
 
 ### What is a Gate?
 
@@ -597,12 +584,12 @@ A core is a cell:  `[battery payload]`.
 
 A gate is a core with two distinctive properties:
 
-1.  The {% tooltip label="battery" href="/glossary/battery" /%} of a
+1.  The [battery](/glossary/battery) of a
     gate contains an arm which has the special name `$` buc.  The `$`
     buc arm contains the instructions for the function in question.
-2.  The {% tooltip label="payload" href="/glossary/payload" /%} of a
+2.  The [payload](/glossary/payload) of a
     gate consists of a cell of `[sample context]`.
-    1.  The {% tooltip label="sample" href="/glossary/sample" /%} is the
+    1.  The [sample](/glossary/sample) is the
         part of the payload that stores the "argument" (i.e., input
         value) of the function call.
     2.  The **context** contains all other data that is needed for
@@ -644,9 +631,9 @@ Let's revisit our factorial code from above:
 ==
 ```
 
-We can write this code in several ways using the `%=` {% tooltip
-label="centis" href="/language/hoon/reference/rune/cen#-centis" /%} plus
-`$` buc structure.
+We can write this code in several ways using the `%=`
+[centis](/language/hoon/reference/rune/cen#-centis) plus `$` buc
+structure.
 
 For instance, we can eliminate the trap by recursing straight back to
 the gate:
@@ -677,9 +664,8 @@ layout.)
 
 #### The `$` Buc Arm
 
-The (only) {% tooltip label="arm" href="/glossary/arm" /%} of a {%
-tooltip label="gate" href="/glossary/gate" /%} encodes the instructions
-for the Hoon function in question.
+The (only) [arm](/glossary/arm) of a [gate](/glossary/gate) encodes the
+instructions for the Hoon function in question.
 
 ```hoon
 > =inc |=(a=@ (add 1 a))
@@ -716,7 +702,7 @@ little better.
 
 #### The Sample
 
-The {% tooltip label="sample" href="/glossary/sample" /%} of a gate is
+The [sample](/glossary/sample) of a gate is
 the address reserved for storing the argument(s) to the Hoon function.
 Although we don't know about addressing yet, you saw above that `+2`
 referred to the battery.  The sample is always at the head of the gate's
@@ -746,7 +732,7 @@ a=0
 ```
 
 We see now that the sample of `inc` is the value `0`, and has `a` as a
-{% tooltip label="face" href="/glossary/face" /%}.  This is a
+[face](/glossary/face).  This is a
 placeholder value for the function argument.  If you evaluate the `$`
 buc arm of `inc` without passing it an argument the placeholder value is
 used for the computation, and the return value will thus be `0+1`:
@@ -757,7 +743,7 @@ used for the computation, and the return value will thus be `0+1`:
 ```
 
 The placeholder value, as you saw in the previous module, is sometimes
-called the {% tooltip label="bunt" href="/glossary/bunt" /%} value.  The
+called the [bunt](/glossary/bunt) value.  The
 bunt value is determined by the input type; for `@` atoms the bunt value
 is typically `0`.
 
@@ -787,11 +773,10 @@ Let's look at the context of inc:
 ```
 
 This is the default Dojo subject from before we put `inc` into the
-subject. The `|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%} expression defines
-the context as whatever the subject is.  This guarantees that the
-context has all the information it needs to have for the `$` buc arm to
-work correctly.
+subject. The `|=` [bartis](/language/hoon/reference/rune/bar#-bartis)
+expression defines the context as whatever the subject is.  This
+guarantees that the context has all the information it needs to have for
+the `$` buc arm to work correctly.
 
 #### Gates Define Functions of the Sample
 
@@ -821,11 +806,10 @@ core, the product is `235`.
 
 Notice that neither the arm nor the context is modified before the arm
 is evaluated.  That means that the only part of the gate that changes
-before the arm evaluation is the {% tooltip label="sample"
-href="/glossary/sample" /%}.  Hence, we may understand each gate as
-defining a function whose argument is the sample.  If you call a gate
-with the same sample, you'll get the same value returned to you every
-time.
+before the arm evaluation is the [sample](/glossary/sample).  Hence, we
+may understand each gate as defining a function whose argument is the
+sample.  If you call a gate with the same sample, you'll get the same
+value returned to you every time.
 
 Let's unbind inc to keep the subject tidy:
 
@@ -909,12 +893,11 @@ _Recursion_ refers to a return to the same logical point in a program
 again and again.  It's a common pattern for solving certain problems in
 most programming languages, and Hoon is no exception.
 
-In the following code, the `|-` {% tooltip label="barhep"
-href="/language/hoon/reference/rune/bar#--barhep" /%} {% tooltip
-label="trap" href="/glossary/trap" /%} serves as the point of recursion,
-and the return to that point (with changes) is indicated by the `%=`
-centis.  All this code does is count to the given number, then return
-that number.
+In the following code, the `|-`
+[barhep](/language/hoon/reference/rune/bar#--barhep)
+[trap](/glossary/trap) serves as the point of recursion, and the return
+to that point (with changes) is indicated by the `%=` centis.  All this
+code does is count to the given number, then return that number.
 
 ```hoon {% copy=true %}
 |=  n=@ud
@@ -925,9 +908,9 @@ that number.
 %=($ index +(index))
 ```
 
-We are using the `+` irregular syntax for the `.+` {% tooltip
-label="dotlus" href="/language/hoon/reference/rune/dot#-dotlus" /%}
-rune, which increments a value (adds one).
+We are using the `+` irregular syntax for the `.+`
+[dotlus](/language/hoon/reference/rune/dot#-dotlus) rune, which
+increments a value (adds one).
 
 In a formal sense, we have to make sure that there is always a base
 case, a way of actually ending the recursion—if there isn't, we end up
@@ -945,9 +928,9 @@ rely on such recursive humor.
 > This is the song that never ends
 > . . .
 
-You need to make sure when you compose a {% tooltip label="trap"
-href="/glossary/trap" /%} that it has a base case which returns a noun.
-The following trap results in an infinite loop:
+You need to make sure when you compose a [trap](/glossary/trap) that it
+has a base case which returns a noun. The following trap results in an
+infinite loop:
 
 ```hoon {% copy=true %}
 =/  index  1
@@ -984,8 +967,8 @@ F_n = F_{n-1} + F_{n-2}
 and verify that our program correctly produces the sequence of numbers
 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ….
 
-- Compose a Fibonacci sequence program which produces a {% tooltip
-  label="list" href="/glossary/list" /%} of the appropriate values.
+- Compose a Fibonacci sequence program which produces a
+  [list](/glossary/list) of the appropriate values.
 
     We can elide some details of working with `list`s until the next
     lesson; simply recall that they are a way of storing multiple values
@@ -1002,8 +985,8 @@ and verify that our program correctly produces the sequence of numbers
     (add $(n (dec n)) $(n (dec (dec n))))
     ```
 
-    We can use _two_ recursion points for `%=` {% tooltip label="centis"
-    href="/language/hoon/reference/rune/cen#-centis" /%}.  The first
+    We can use _two_ recursion points for `%=`
+    [centis](/language/hoon/reference/rune/cen#-centis).  The first
     calculate {% math %}F{% /math %} for {% math %}n-1{% /math %}; the
     second calculate {% math %}F{% /math %} for {% math %}n-2{% /math
     %}.  These are then added together.  If we diagram what's happening,
@@ -1033,8 +1016,7 @@ and verify that our program correctly produces the sequence of numbers
 
     An improved version stores each value in the sequence as an element
     in a list so that it can be used rather than re-calculated.  We use
-    the {% tooltip label="++snoc"
-    href="/language/hoon/reference/stdlib/2b#snoc" /%} gate to append a
+    the [++snoc](/language/hoon/reference/stdlib/2b#snoc) gate to append a
     noun to a `list`.
 
     ```hoon {% copy=true %}
@@ -1055,11 +1037,11 @@ and verify that our program correctly produces the sequence of numbers
     ```
 
     (As in an earlier code example, `(add index 1)` can be replaced by
-    the Nock increment rune, `.+` {% tooltip label="dotlus"
-    href="/language/hoon/reference/rune/dot#-dotlus" /%}.)
+    the Nock increment rune, `.+`
+    [dotlus](/language/hoon/reference/rune/dot#-dotlus).)
 
     This version is a little more complicated to compare using a diagram
-    because of the {% trap, but yields something like this:
+    because of the [trap](/glossary/trap), but yields something like this:
 
     ```hoon
     (fibonacci 5)
@@ -1072,8 +1054,8 @@ and verify that our program correctly produces the sequence of numbers
 
     The program can be improved somewhat again by appending to the head
     of the cell (rather than using `++snoc`).  This builds a list in a
-    backwards order, so we apply the {% tooltip label="++flop"
-    href="/language/hoon/reference/stdlib/2b#flop" /%} gate to flip the
+    backwards order, so we apply the
+    [++flop](/language/hoon/reference/stdlib/2b#flop) gate to flip the
     order of the list before we return it.
 
     ```hoon {% copy=true %}
@@ -1205,9 +1187,9 @@ recursion.
 
     The above code should look familiar.  We are still building a gate
     that takes one argument a `@ud` unsigned decimal integer `n`.  The
-    `|-` here is used to create a new gate with one {% tooltip
-    label="arm" href="/glossary/arm" /%} `$` and immediately call it.
-    As before, think of `|-` as the recursion point.
+    `|-` here is used to create a new gate with one [arm](/glossary/arm)
+    `$` and immediately call it. As before, think of `|-` as the
+    recursion point.
 
     We then evaluate `n` to see if it is 1. If it is, we return the
     value of `t`. In case that `n` is anything other than 1, we perform

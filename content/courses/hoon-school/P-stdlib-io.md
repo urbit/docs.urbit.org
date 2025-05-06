@@ -6,36 +6,33 @@ objectives = ["Identify tanks, tangs, wains, walls, and similar formatted printi
 +++
 
 _This module will elaborate on text representation in Hoon, including
-formatted text and `%ask` {% tooltip label="generators"
-href="/glossary/generator" /%}.  It may be considered optional and
-skipped if you are speedrunning Hoon School._
+formatted text and `%ask` [generators](/glossary/generator).  It may be
+considered optional and skipped if you are speedrunning Hoon School._
 
 
 ##  Text Conversions
 
 We frequently need to convert from text to data, and between different
-text-based representations.  Let's examine some specific {% tooltip
-label="arms" href="/glossary/arm" /%}:
+text-based representations.  Let's examine some specific
+[arms](/glossary/arm):
 
 - How do we convert text into all lower-case?
-    - {% tooltip label="++cass" href="/language/hoon/reference/stdlib/4b#cass" /%}
+    - [++cass](/language/hoon/reference/stdlib/4b#cass)
 
-- How do we turn a `cord` into a {% tooltip label="tape"
-  href="/glossary/tape" /%}?
-    - {% tooltip label="++trip" href="/language/hoon/reference/stdlib/4b#trip" /%}
+- How do we turn a `cord` into a [tape](/glossary/tape)?
+    - [++trip](/language/hoon/reference/stdlib/4b#trip)
 
-- How can we make a {% tooltip label="list" href="/glossary/list" /%} of
+- How can we make a [list](/glossary/list) of
   a null-terminated tuple?
-    - {% tooltip label="++le:nl" href="/language/hoon/reference/stdlib/2m#lenl" /%}
+    - [++le:nl](/language/hoon/reference/stdlib/2m#lenl)
 
-- How can we evaluate {% tooltip label="Nock" href="/glossary/nock" /%} expressions?
-    - {% tooltip label="++mink" href="/language/hoon/reference/stdlib/4n#mink" /%}
+- How can we evaluate [Nock](/glossary/nock) expressions?
+    - [++mink](/language/hoon/reference/stdlib/4n#mink)
 
-(If you see a `|*` {% tooltip label="bartar"
-href="/language/hoon/reference/rune/bar#-bartar" /%} rune in the code,
-it's similar to a `|=` {% tooltip label="bartis"
-href="/language/hoon/reference/rune/bar#-bartis" /%}, but produces
-what's called a [_wet gate_](/courses/hoon-school/R-metals).)
+(If you see a `|*` [bartar](/language/hoon/reference/rune/bar#-bartar)
+rune in the code, it's similar to a `|=`
+[bartis](/language/hoon/reference/rune/bar#-bartis), but produces what's
+called a [_wet gate_](/courses/hoon-school/R-metals).)
 
 The `++html` core of the standard libary contains some additional
 important tools for working with web-based data, such as [MIME
@@ -67,11 +64,10 @@ strings](https://en.wikipedia.org/wiki/JSON).
 
 ##  Formatted Text
 
-Hoon produces messages at the {% tooltip label="Dojo"
-href="/glossary/dojo" /%} (or otherwise) using an internal formatted
-text system, called `tank`s.  A `+$tank` is a formatted print tree.
-Error messages and the like are built of `tank`s.  `tank`s are defined
-in `hoon.hoon`:
+Hoon produces messages at the [Dojo](/glossary/dojo) (or otherwise)
+using an internal formatted text system, called `tank`s.  A `+$tank` is
+a formatted print tree. Error messages and the like are built of
+`tank`s.  `tank`s are defined in `hoon.hoon`:
 
 ```hoon
 ::  $tank: formatted print tree
@@ -93,10 +89,8 @@ in `hoon.hoon`:
 +$ tang (list tank) :: bottom-first error
 ```
 
-The {% tooltip label="++ram:re"
-href="/language/hoon/reference/stdlib/4c#ramre" /%} arm is used to
-convert these to actual formatted output as a {% tooltip label="tape"
-href="/glossary/tape" /%}, e.g.
+The [++ram:re](/language/hoon/reference/stdlib/4c#ramre) arm is used to
+convert these to actual formatted output as a [tape](/glossary/tape), e.g.
 
 ```hoon
 > ~(ram re leaf+"foo")
@@ -107,9 +101,8 @@ href="/glossary/tape" /%}, e.g.
 "[foo bar baz]"
 ```
 
-Many {% tooltip label="generators" href="/glossary/generator" /%} build
-sophisticated output using `tank`s and the short-format {% tooltip
-label="cell" href="/glossary/cell" /%} builder `+`, e.g. in
+Many [generators](/glossary/generator) build sophisticated output using
+`tank`s and the short-format [cell](/glossary/cell) builder `+`, e.g. in
 `/gen/azimuth-block/hoon`:
 
 ```hoon {% copy=true %}
@@ -128,9 +121,8 @@ you delve into the Urbit codebase.
 
 #### Tutorial:  Deep Dive into `ls.hoon`
 
-The {% tooltip label="+ls" href="/manual/os/dojo-tools#ls" /%} generator
-shows the contents at a particular path in {% tooltip label="Clay"
-href="/glossary/clay" /%}:
+The [+ls](/manual/os/dojo-tools#ls) generator shows the contents at a
+particular path in [Clay](/glossary/clay):
 
 ```hoon
 > +cat /===/gen/ls/hoon
@@ -175,40 +167,34 @@ A separator `%` is printed.
 :-  %say
 ```
 
-A `%say` {% tooltip label="generator" href="/glossary/generator" /%} is
-a cell with a metadata tag `%say` as the head and the {% tooltip
-label="gate" href="/glossary/gate" /%} as the tail.
+A `%say` [generator](/glossary/generator) is a cell with a metadata tag
+`%say` as the head and the [gate](/glossary/gate) as the tail.
 
 ```hoon
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
 This generator requires a path argument in its sample and optionally
-accepts a {% tooltip label="vane" href="/glossary/vane" /%} tag (`%g` {%
-tooltip label="Gall" href="/glossary/gall" /%} or `%c` {% tooltip
-label="Clay" href="/glossary/clay" /%}).  Most of the time, {% tooltip
-label="+cat" href="/manual/os/dojo-tools#cat" /%} is used with Clay, so
-`%c` as the last entry in the type union serves as the {% tooltip
-label="bunt" href="/glossary/bunt" /%} value.
+accepts a [vane](/glossary/vane) tag (`%g` [Gall](/glossary/gall) or
+`%c` [Clay](/glossary/clay)).  Most of the time,
+[+cat](/manual/os/dojo-tools#cat) is used with Clay, so `%c` as the last
+entry in the type union serves as the [bunt](/glossary/bunt) value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw `.^` {% tooltip label="dotket"
-href="/language/hoon/reference/rune/dot#-dotket" /%} for the first time
-in [the previous module](/courses/hoon-school/O-subject), where we
-learned that it performs a _peek_ or {% tooltip label="scry"
-href="/glossary/scry" /%} into the state of an Arvo {% tooltip
-label="vane" href="/glossary/vane" /%}.  Most of the time this
-functionality is used to ask `%c` {% tooltip label="Clay"
-href="/glossary/clay" /%} or `%g` {% tooltip label="Gall"
-href="/glossary/gall" /%} for information about a path, {% tooltip
-label="desk" href="/glossary/desk" /%}, {% tooltip label="agent"
-href="/glossary/agent" /%}, etc.  In this case, `(cat 3 %c %y)` is a
-fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or
-directory lookup.  The type of this lookup is `+$arch`, and the location
-of the file or directory is given by `arg` from the sample.
+We saw `.^` [dotket](/language/hoon/reference/rune/dot#-dotket) for the
+first time in [the previous module](/courses/hoon-school/O-subject),
+where we learned that it performs a _peek_ or [scry](/glossary/scry)
+into the state of an Arvo [vane](/glossary/vane).  Most of the time this
+functionality is used to ask `%c` [Clay](/glossary/clay) or `%g`
+[Gall](/glossary/gall) for information about a path,
+[desk](/glossary/desk), [agent](/glossary/agent), etc.  In this case,
+`(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into
+`%cy`, a Clay file or directory lookup.  The type of this lookup is
+`+$arch`, and the location of the file or directory is given by `arg`
+from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
@@ -220,9 +206,8 @@ depending on whether the request was `~` null or not.
 
 #### Tutorial:  Deep Dive into `cat.hoon`
 
-For instance, how does {% tooltip label="+cat"
-href="/manual/os/dojo-tools#cat" /%} work?  Let's look at the structure
-of `/gen/cat/hoon`:
+For instance, how does [+cat](/manual/os/dojo-tools#cat) work?  Let's
+look at the structure of `/gen/cat/hoon`:
 
 ```hoon {% copy=true mode="collapse" %}
 ::  ConCATenate file listings
@@ -260,28 +245,23 @@ of `/gen/cat/hoon`:
 ==
 ```
 
-- What is the top-level structure of the {% tooltip label="generator"
-  href="/glossary/generator" /%}?  (A {% tooltip label="cell"
-  href="/glossary/cell" /%} of `%say` and the {% tooltip label="gate"
-  href="/glossary/gate" /%}, what Dojo recognizes as a `%say`
+- What is the top-level structure of the
+  [generator](/glossary/generator)?  (A [cell](/glossary/cell) of `%say`
+  and the [gate](/glossary/gate), what Dojo recognizes as a `%say`
   generator.)
 
 - Some points of interest include:
-  - `/?` faswut pins the expected Arvo {% tooltip label="kelvin version"
-    href="/glossary/kelvin" /%}; right now it doesn't do anything.
-  - `.^` {% tooltip label="dotket"
-    href="/language/hoon/reference/rune/dot#-dotket" /%} loads a value
-    from Arvo (called a {% tooltip label="\"scry\""
-    href="/glossary/scry" /%}).
-  - {% tooltip label="++smyt" href="/language/hoon/reference/stdlib/4m#smyt" /%}
-    pretty-prints a path.
-  - `=-` {% tooltip label="tishep"
-    href="/language/hoon/reference/rune/tis#--tishep" /%} combines a {%
-    tooltip label="faced" href="/glossary/face" /%} noun with the {%
-    tooltip label="subject" href="/glossary/subject" /%}, inverted
-    relative to `=+` {% tooltip label="tislus"
-    href="/language/hoon/reference/rune/tis#-tislus" /%}/`=/` {% tooltip
-    label="tisfas" href="/language/hoon/reference/rune/tis#-tisfas" /%}.
+  - `/?` faswut pins the expected Arvo [kelvin
+    version](/glossary/kelvin); right now it doesn't do anything.
+  - `.^` [dotket](/language/hoon/reference/rune/dot#-dotket) loads a
+    value from Arvo (called a ["scry"](/glossary/scry)).
+  - [++smyt](/language/hoon/reference/stdlib/4m#smyt) pretty-prints a
+    path.
+  - `=-` [tishep](/language/hoon/reference/rune/tis#--tishep) combines a
+    [faced](/glossary/face) noun with the [subject](/glossary/subject),
+    inverted relative to `=+`
+    [tislus](/language/hoon/reference/rune/tis#-tislus)/`=/`
+    [tisfas](/language/hoon/reference/rune/tis#-tisfas).
 
 You can see how much of the generator is concerned with formatting the
 content of the file into a formatted text `tank` by prepending `%rose`
@@ -292,21 +272,20 @@ tags and so forth.
 
 ### Producing Error Messages
 
-Formal error messages in Urbit are built of tanks.  “A `tang` is a {%
-tooltip label="list" href="/glossary/list" /%} of `tank`s, and a `tank`
-is a structure for printing data.  There are three types of `tank`:
-`leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a
-`rose` is for printing rows of data, and a `palm` is for printing
-backstep-indented lists.”
+Formal error messages in Urbit are built of tanks.  “A `tang` is a
+[list](/glossary/list) of `tank`s, and a `tank` is a structure for
+printing data.  There are three types of `tank`: `leaf`, `palm`, and
+`rose`.  A `leaf` is for printing a single noun, a `rose` is for
+printing rows of data, and a `palm` is for printing backstep-indented
+lists.”
 
-One way to include an error message in your code is the `~_` {% tooltip
-label="sigcab" href="/language/hoon/reference/rune/sig#_-sigcab" /%}
-rune, described as a “user-formatted tracing printf”, or the `~|` {%
-tooltip label="sigbar" href="/language/hoon/reference/rune/sig#-sigbar"
-/%} rune, a “tracing printf”.  What this means is that these print to
-the stack trace if something fails, so you can use either {% tooltip
-label="rune" href="/glossary/rune" /%} to contribute to the error
-description:
+One way to include an error message in your code is the `~_`
+[sigcab](/language/hoon/reference/rune/sig#_-sigcab) rune, described as
+a “user-formatted tracing printf”, or the `~|`
+[sigbar](/language/hoon/reference/rune/sig#-sigbar) rune, a “tracing
+printf”.  What this means is that these print to the stack trace if
+something fails, so you can use either [rune](/glossary/rune) to
+contribute to the error description:
 
 ```hoon {% copy=true %}
 |=  a=@ud
@@ -320,11 +299,11 @@ messages for likely failure points.
 
 ##  `%ask` Generators
 
-Previously, we introduced the concept of a `%say` {% tooltip
-label="generator" href="/glossary/generator" /%} to produce a more
-versatile form of standalone single computation than a simple naked
-generator ({% tooltip label="gate" href="/glossary/gate" /%}) allowed.
-Another elaboration, the `%ask` generator, takes things further.
+Previously, we introduced the concept of a `%say`
+[generator](/glossary/generator) to produce a more versatile form of
+standalone single computation than a simple naked generator
+([gate](/glossary/gate)) allowed. Another elaboration, the `%ask`
+generator, takes things further.
 
 We use an `%ask` generator when we want to create an interactive program
 that prompts for inputs as it runs, rather than expecting arguments to
@@ -340,12 +319,10 @@ of relevant input/output issues.
 
 ##### Tutorial:  `%ask` Generator
 
-The code below is an `%ask` {% tooltip label="generator"
-href="/glossary/generator" /%} that checks if the user inputs `"blue"`
-when prompted [per a classic Monty Python
+The code below is an `%ask` [generator](/glossary/generator) that checks
+if the user inputs `"blue"` when prompted [per a classic Monty Python
 scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).  Save it as
-`/gen/axe.hoon` in your `%base` {% tooltip label="desk"
-href="/glossary/desk" /%}.
+`/gen/axe.hoon` in your `%base` [desk](/glossary/desk).
 
 ```hoon {% copy=true mode="collapse" %}
 /-  sole
@@ -367,8 +344,7 @@ href="/glossary/desk" /%}.
 ==
 ```
 
-Run the generator from the {% tooltip label="Dojo" href="/glossary/dojo"
-/%}:
+Run the generator from the [Dojo](/glossary/dojo):
 
 ```hoon
 > +axe
@@ -396,20 +372,17 @@ Let's go over what exactly is happening in this code.
 ```
 
 Here we bring in some of the types we are going to need from `/sur/sole`
-and gates we will use from `/lib/generators`. We use some special {%
-tooltip label="runes" href="/glossary/rune" /%} for this.
+and gates we will use from `/lib/generators`. We use some special
+[runes](/glossary/rune) for this.
 
-- `/-` {% tooltip label="fashep"
-  href="/language/hoon/reference/rune/fas#--fashep" /%} is a Ford rune
+- `/-` [fashep](/language/hoon/reference/rune/fas#--fashep) is a Ford rune
   used to import types from `/sur`.
-- `/+` {% tooltip label="faslus"
-  href="/language/hoon/reference/rune/fas#-faslus" /%} is a Ford rune
+- `/+` [faslus](/language/hoon/reference/rune/fas#-faslus) is a Ford rune
   used to import libraries from `/lib`.
-- `=,` {% tooltip label="tiscom"
-  href="/language/hoon/reference/rune/tis#-tiscol" /%} is a rune that
-  allows us to expose a namespace. We do this to avoid having to write
-  `sole-result:sole` instead of `sole-result` or `print:generators`
-  instead of `print`.
+- `=,` [tiscom](/language/hoon/reference/rune/tis#-tiscol) is a rune
+  that allows us to expose a namespace. We do this to avoid having to
+  write `sole-result:sole` instead of `sole-result` or
+  `print:generators` instead of `print`.
 
 ```hoon
 :-  %ask
@@ -420,29 +393,26 @@ This code might be familiar. Just as with their `%say` cousins, `%ask`
 generators need to produce a `cell`, the head of which specifies what
 kind of generator we are running.
 
-With `|= *`, we create a {% tooltip label="gate" href="/glossary/gate"
-/%} and ignore the standard arguments we are given, because we're not
-using them.
+With `|= *`, we create a [gate](/glossary/gate) and ignore the standard
+arguments we are given, because we're not using them.
 
 ```hoon
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` {% tooltip label="generators" href="/glossary/generator" /%} need
-to have the second half of the {% tooltip label="cell"
-href="/glossary/cell" /%} be a gate that produces a `sole-result`, one
-that in this case contains a `cask` of `tang`.  We use the `^-` {%
-tooltip label="kethep" href="/language/hoon/reference/rune/ket#--kethep"
-/%} rune to constrain the generator's output to such a `sole-result`.
+`%ask` [generators](/glossary/generator) need to have the second half of
+the [cell](/glossary/cell) be a gate that produces a `sole-result`, one
+that in this case contains a `cask` of `tang`.  We use the `^-`
+[kethep](/language/hoon/reference/rune/ket#--kethep) rune to constrain
+the generator's output to such a `sole-result`.
 
-A `cask` is a pair of a {% tooltip label="mark" href="/glossary/mark"
-/%} name and a {% tooltip label="noun" href="/glossary/noun" /%}.  We
-previously described a `mark` as a kind of complicated {% tooltip
-label="mold" href="/glossary/mold" /%}; here we add that a `mark` can be
+A `cask` is a pair of a [mark](/glossary/mark) name and a
+[noun](/glossary/noun).  We previously described a `mark` as a kind of
+complicated [mold](/glossary/mold); here we add that a `mark` can be
 thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME)
 type for data.
 
-A `tang` is a {% tooltip label="list" href="/glossary/list" /%} of
+A `tang` is a [list](/glossary/list) of
 `tank`, and a `tank` is a structure for printing data, as described
 above.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A
 `leaf` is for printing a single noun, a `rose` is for printing rows of
@@ -455,14 +425,14 @@ data, and a `palm` is for printing backstep-indented lists.
 %+  produce  %tang
 ```
 
-Because we imported {% tooltip label="generators"
-href="/glossary/generator" /%}, we can access its contained gates, three
-of which we use in `axe.hoon`: `++print`, `++prompt`, and `++produce`.
+Because we imported [generators](/glossary/generator), we can access its
+contained gates, three of which we use in `axe.hoon`: `++print`,
+`++prompt`, and `++produce`.
 
 - `print` is used for printing a `tank` to the console.
 
-    In our example, `%+` {% tooltip label="cenlus"
-    href="/language/hoon/reference/rune/cen#-cenlus" /%} is used to call
+    In our example, `%+`
+    [cenlus](/language/hoon/reference/rune/cen#-cenlus) is used to call
     the gate `++print`, with two arguments. The first argument is a
     `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What
     is your favorite color?"]` that just makes it easier to write. The
@@ -482,9 +452,9 @@ of which we use in `axe.hoon`: `++print`, `++prompt`, and `++produce`.
     information for use in creating autocomplete options for the prompt.
     This functionality is not yet implemented.
 
-    The third element of the `++prompt` sample is the {% tooltip
-    label="tape" href="/glossary/tape" /%} that we would like to use to
-    prompt the user. In the case of our example, we use `"color: "`.
+    The third element of the `++prompt` sample is the
+    [tape](/glossary/tape) that we would like to use to prompt the user.
+    In the case of our example, we use `"color: "`.
 
 - `produce` is used to construct the output of the generator. In our
   example, we produce a `tang`.
@@ -504,5 +474,5 @@ reverse order from how it is created.  The reason for this is that
 `tang` was originally created to display stack trace information, which
 should be produced in reverse order.  This leads to an annoyance: we
 either have to specify our messages backwards or construct them in the
-order we want and then {% tooltip label="++flop"
-href="/language/hoon/reference/stdlib/2b#flop" /%} the `list`.
+order we want and then [++flop](/language/hoon/reference/stdlib/2b#flop)
+the `list`.

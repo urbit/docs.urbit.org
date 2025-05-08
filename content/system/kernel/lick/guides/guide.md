@@ -294,11 +294,11 @@ wget -P licker/client https://raw.githubusercontent.com/urbit/tools/master/pkg/p
 
 Install additional python dependencies `bitstream`, `mmh3` and `numpy`:
 
-{% callout %}
+{% hint style="info" %}
 
 **NOTE:** At the time of writing, `bitstream` doesn't build against `python>3.10`. If you have `3.11` or newer, you may need to install a separate `python3.10` (how your distro packages it may vary).
 
-{% /callout %}
+{% endhint %}
 
 ``` {% copy=true %}
 python -m ensurepip

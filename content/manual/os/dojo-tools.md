@@ -1663,13 +1663,13 @@ All packets from either the blacklisted ships or all non-whitelisted ships (as t
 
 - `%allow` or `%deny` set whether the following ships are a whitelist or blacklist.
 
-{% callout %}
+{% hint style="info" %}
 
 Note that while `%deny` is ordinary blacklist blocking, `%allow` means *any* ships not on the list will be blocked.
 
 Note also that this generator totally overrides existing snub settings - it doesn't just add or remove ships from an existing list.
 
-{% /callout %}
+{% endhint %}
 
 #### Example
 
@@ -2040,13 +2040,13 @@ hi ~nec successful
 
 Pass a task to a vane.
 
-{% callout %}
+{% hint style="warning" %}
 
 **Warning**
 
 This is a powerful command and has the potential to break things if you're not careful.
 
-{% /callout %}
+{% endhint %}
 
 #### Arguments
 

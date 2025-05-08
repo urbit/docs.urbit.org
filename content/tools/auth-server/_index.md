@@ -119,11 +119,11 @@ The Auth Server front-end includes a simple tool to generate a `manifest` for a 
 
 Alternatively, you can make a scry request to the [`/proof/[turf]`](/tools/auth-server/scry#proof[turf]) scry path and then programmatically put resulting proof(s) in a `manifest` array and serve them on the `/.well-known/...` path. The `turf` in the path is your domain.
 
-{% callout %}
+{% hint style="info" %}
 
 [If your domain contains special characters, see the note at the bottom.](#additional note)
 
-{% /callout %}
+{% endhint %}
 
 The `manifest` is allowed to contain multiple proofs for the same ship,
 including different `live`s (key revisions), as well as for multiple different
@@ -142,11 +142,11 @@ If Auth Client successfully validates a domain for a particular ship, it'll reme
 
 When trying to retrieve the `manifest`, Auth Client will follow up to 5 redirects, and will retry up to 3 times if it doesn't get a `20x` status response. If it gets a `20x` response but the manifest is missing or malformed, it will give up immediately. If there are too many retries, too many redirects, or a `20x` response is malformed, the request will be shown to the user with a red unlock icon and a warning as described above.
 
-{% callout %}
+{% hint style="info" %}
 
 Auth Client cannot follow relative redirect URLs - redirects MUST be absolute URLs including protocol.
 
-{% /callout %}
+{% endhint %}
 
 ## Additional note
 

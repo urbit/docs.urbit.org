@@ -11,11 +11,11 @@ Note that for all agent scries and most vane scries, `q.beak`, where there'd usu
 .^(some-type %gx /=agent-name-here=/some/path/noun)
 ```
 
-{% callout %}
+{% hint style="warning" %}
 
 **Important:** Vane scries are differentiated from agent scries by an extra empty (`%$`) element at the beginning of the `spur` (the path after the `beak`), like: `/=agent-name/$` or `/=agent-name=//some/more/fields`. Without that empty element, Gall will try route the scry to an agent instead.
 
-{% /callout %}
+{% endhint %}
 
 ## Agent scries
 
@@ -26,11 +26,11 @@ In order to hit the `+on-peek` arm of a Gall agent, you need to:
 
 Any `care` can be used (dependent on what the agent accepts, of course). The most common is `%x`.
 
-{% callout %}
+{% hint style="info" %}
 
 Note that `%x` cares alone must include an extra `mark` field at the end of the `spur`. This mark field lets Gall perform any necessary mark conversions before returning your data. For plain unmarked data, you can just use the `%noun` mark. As an example, if an agent specifies an endpoint `/x/some/path` and just returns ordinary data, you'd do `.^(some-type %gx /=some-agent=/some/path/noun)`. If the endpoint returns a `%json` mark or whatever (and that's what you want), you'd put that at the end instead.
 
-{% /callout %}
+{% endhint %}
 
 ---
 

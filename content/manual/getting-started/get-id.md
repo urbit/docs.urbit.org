@@ -52,13 +52,13 @@ Here are a few of the places where you can buy planets:
     - [\_networked subject](https://subject.network)
 {% /table %}
 
-{% callout %}
+{% hint style="info" %}
 
 **Layer 2 for planets**
 
 Learn more about [layer 2 for planets](https://operators.urbit.org/manual/id/layer-2-for-planets) in the User's Manual page on the topic.
 
-{% /callout %}
+{% endhint %}
 
 
 ### Claiming your planet
@@ -73,13 +73,13 @@ The second, made available through our [L2 solution](https://operators.urbit.org
 
 Clicking a link to activate a planet on Bridge will take you to page which will generate a Master Ticket for you. Follow the instructions which will prompt you to download a copy of your Passport: your Master Ticket, management proxy, and keyfile. Store your Master Ticket and management proxy somewhere safe, hold on to the keyfile, and proceed to the next step.
 
-{% callout %}
+{% hint style="info" %}
 
 **Claiming L1 planets**
 
 If you’ve purchased an L1 planet, you won’t need to claim it because you already own it as an NFT. Simply log into Bridge using Metamask or your wallet of choice.
 
-{% /callout %}
+{% endhint %}
 
 
 ### Using Bridge to get your keyfile

@@ -94,11 +94,11 @@ be rendered as inline code.
 - **Hoon literals and wings**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `++foo:bar`, `+$baz`, and `+*foo:bar:baz, as inline code.`
 - **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `+$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document.
 
-{% callout %}
+{% hint style="info" %}
 
 Note that Udon is quite strict on its syntax, and may fail to parse if it's incorrect.
   
-{% /callout %}
+{% endhint %}
 
 ## Udon Mode
 

@@ -31,9 +31,9 @@ Another useful document is a changelog. For each version you release, you can ad
 
 Like user docs, you're free to document things as you see fit, but it's helpful to include particular things with a standard format. These are documented below.
 
-{% callout %}
+{% hint style="info" %}
 **Note**: If your desk has a dev version, it's advisable to link to it somewhere sensible in the developer documentation.
-{% /callout %}
+{% endhint %}
 
 ### API Reference
 

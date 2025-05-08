@@ -216,7 +216,7 @@ Pretend breach.
 
 This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](#public-keys-1) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
 
-{% callout %}
+{% hint style="warning" %}
 
 **WARNING**
 
@@ -224,7 +224,7 @@ This will break communications with the given ships, and is not reversible until
 
 Note it's better to use the [`%snub` Ames task](/system/kernel/ames/reference/tasks#snub) if you want to block packets from ships.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 

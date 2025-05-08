@@ -43,11 +43,11 @@ Gall has a single scry endpoint of its own to check for the existence of an agen
 
 Gall agents can expose scry endpoints with any `care`, but most commonly they'll take a `%x` `care`. Gall handles `%x` scries specially - it expects an extra field at the end of the `path` that specifies a `mark`. Gall will attempt to perform a `mark` conversion from the `mark` returned by the scry endpoint to the `mark` specified. Note the trailing `mark` in the `path` will not be passed through to the agent itself.
 
-{% callout %}
+{% hint style="info" %}
 
 **Note:** you should not perform agent scries from within the `++on-load` arm of your agent. All Gall agents are suspended during kernel upgrade, and then reloaded one-by-one. If the agent you scry wasn't reloaded before yours, the scry will fail.
 
-{% /callout %}
+{% endhint %}
 
 ## What is an endpoint?
 

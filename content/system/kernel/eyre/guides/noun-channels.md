@@ -6,11 +6,11 @@ weight = 40
 
 So far, developers have typically used JSON to interact with Urbit ships through Eyre's HTTP interface. As of kernel version `[%zuse 413]`, however, Eyre also supports sending and received nouns directly. At this stage, there are limited options for dealing with nouns in other languages, so this guide will only cover the channel mechanics on a low-level. You may, however, be interested in the [`@urbit/nockjs`](https://github.com/urbit/nockjs) package and the work-in-progress [`json-bgon` PR for `@urbit/js-http-api`](https://github.com/urbit/js-http-api/pull/4).
 
-{% callout %}
+{% hint style="info" %}
 
 If you are not familiar with low-level Eyre channel mechanics, please have a read through the [Eyre guide](/system/kernel/eyre/guides/guide) first.
 
-{% /callout %}
+{% endhint %}
 
 Eyre will create a noun channel if a `PUT` request to open a new channel includes the following HTTP header:
 

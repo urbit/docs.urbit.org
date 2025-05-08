@@ -149,7 +149,7 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 
 ##  Verbs (Runes)
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113 - Basic Coding.mp4" %}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113%20-%20Basic%20Coding.mp4" %}
 
 The backbone of any Hoon expression is a scaffolding of [runes](/glossary/rune) , which are essentially mathematical relationships between daughter components.  If nouns are nouns, then runes are verbs:  they describe how nouns relate.  Runes provide the structural and logical relationship between noun values.
 

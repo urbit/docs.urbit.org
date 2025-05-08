@@ -437,11 +437,11 @@ Delete agent.
 
 The agent in `dude` will be stopped and its state discarded.
 
-{% callout %}
+{% hint style="warning" %}
 
 **WARNING:** This will irreversibly erase all data stored in the state of the agent. Use with care and caution.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 

@@ -6,9 +6,9 @@ template = "doc.html"
 
 ## `%docu` mark
 
-{% callout %}
+{% hint style="info" %}
 **Note**: this section is mostly useful if you're writing a mark conversion method. For marks that are already supported and you can use directly, see further down this page.
-{% /callout %}
+{% endhint %}
 
 The `%docs` app supports any mark, as long as it has a conversion method to its `%docu` mark. The `%docu` mark is not expected to be used directly to write documentation, its purpose is to be a mark conversion target.
 
@@ -27,9 +27,9 @@ The `%docu` mark will technically accept any `$manx`, but the `%docs` agent itse
   - The `href` attribute in an `<a>` tag.
   - A `class` attribute in a `<pre>` tag beginning with `language-` (e.g. `class="language-hoon"`). This is not currently used for anything but will be used for syntax highlighting in the future.
 
-{% callout %}
+{% hint style="info" %}
 **Note**: table elements are not currently supported but will likely be added in a future release.
-{% /callout %}
+{% endhint %}
 
 ---
 
@@ -59,9 +59,9 @@ Udon is a markdown-like language native to hoon, with a parser built into the ho
 - **Hoon constants**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `++foo:bar`, `+$baz`, and `+*foo:bar:baz`, as inline code.
 - **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `+$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document. There is little formal sail documentation, but you can refer to the [`;` (mic) rune reference](/language/hoon/reference/rune/mic) for most of its runes and some rudimentary examples.
 
-{% callout %}
+{% hint style="info" %}
 **Note**: Udon is quite strict on its syntax, and may fail to parse if it's incorrect.
-{% /callout %}
+{% endhint %}
 
 ### `%txt`
 

@@ -154,13 +154,13 @@ The `form` field specifies whether the given ships should be blacklisted or whit
 
 The Ames `snub` settings can only have one form at a time: an `%allow` list or `%deny` list. If an `%allow` form is set, packets from **all ships not on the list will be blocked**. If a `%deny` form is set, packets from **any ship on the list will be blocked, and all others allowed**.
 
-{% callout %}
+{% hint style="info" %}
 
 Note: a `%snub` `task` overrides the existing snub list and form entirely, it does not merely add/remove ships from the existing list.
 
 If you just want to add/remove a ship from an existing blacklist/whitelist, you'll need to first [scry out the existing snub settings](/system/kernel/ames/reference/scry#snubbed), make your changes, and send the whole modified list and form in a new `%snub` `task`. 
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 

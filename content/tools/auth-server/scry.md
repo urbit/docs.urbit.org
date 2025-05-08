@@ -134,11 +134,11 @@ You'll receive an [`initShip`](/tools/auth-server/types#initship) update contain
     
 Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain).
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/turf/wood/[turf]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 
@@ -156,11 +156,11 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain) later than the specified Unix millisecond time.
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/turf/wood/[turf]/since/[time]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 
@@ -178,11 +178,11 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain) earlier than the specified Unix millisecond time.
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/turf/wood/[turf]/before/[time]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 

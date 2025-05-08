@@ -137,7 +137,7 @@ to produce `[1 [2 3]]` or `[1 2 3]`.
 
 We deal with cells in more detail below.
 
-{% callout %}
+{% hint style="info" %}
 
 **Hoon as Noun**
  
@@ -145,7 +145,7 @@ We mentioned earlier that everything in Urbit is a noun, including the program i
 
 For now, you can preview the structure of the Urbit OS as a noun by typing `.` dot at the Dojo prompt.  This displays a summary of the structure of the operating function itself as a noun.
 
-{% /callout %}
+{% endhint %}
 
 ##  Verbs (Runes)
 

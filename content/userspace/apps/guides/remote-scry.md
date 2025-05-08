@@ -20,11 +20,11 @@ Gall is more interesting. First, let's clear up a possible misunderstanding that
 
 Instead, agents *ask* Gall to `%grow` nouns to paths in the namespace on their behalf, and Gall stores the data in *its* state (not in the agent's state). Gall will take care of incrementing version numbers, so that the same path never maps to different nouns. The agent can also ask Gall to delete data, either at a specific version number, or everything up to and including a version number.
 
-{% callout %}
+{% hint style="info" %}
 
 Note: we'll only discuss the basic case of unencrypted and two-party encrypted scries here. Gall also supports multi-party encrypted scries with access control, which we'll look at in the next section.
 
-{% /callout %}
+{% endhint %}
 
 `$note:agent:gall` includes the following cases:
 
@@ -164,11 +164,11 @@ Now we've looking at the publisher side, let's look at actually performing remot
 
 The `%keen` note performs either an unencrypted scry or a multi-party encrypted scry.
 
-{% callout %}
+{% hint style="info" %}
 
 Note that this is a `$note:agent:gall`, and is not to be confused with the Ames task of the same name. Under the hood, Gall will still use the `%keen` Ames task, but this way you don't have to deal with encryption keys. You shouldn't use the Ames task directly.
 
-{% /callout %}
+{% endhint %}
 
 The `secret` boolean specifies whether it should be a multi-party encrypted scry or an ordinary unencrypted scry. The `spar` is a pair of `ship` and scry `path`.
 
@@ -184,13 +184,13 @@ For an unencrypted scry to the `%example` agent in Gall (`%g`) of the `~sampel` 
 [%pass /your/wire %keen %.n ~sampel /g/x/4/example//1/foo]
 ```
 
-{% callout %}
+{% hint style="info" %}
 
 Notice the `//` empty path element differentiating an agent scry from a Gall vane scry.
 
 Additionally, notice the `1` at the beginning of the path portion after the empty element. This is a path format version number introduced in `[%zuse 411]` to facilitate easier path format changes in the future. All remote scries to Gall agents must include the version number. Scries to places other than Gall agents are unaffected.
 
-{% /callout %}
+{% endhint %}
 
 For a multi-party encrypted scry to the `%example` agent in Gall (`%g`) of the `~sampel` ship at the `/foo` path, revision `4` in the `/my/context` security context, it would look like:
 

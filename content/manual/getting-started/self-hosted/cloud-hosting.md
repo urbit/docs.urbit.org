@@ -130,13 +130,13 @@ Hit this button to create the droplet.
 
 ## 2. Prepare for upload
 
-{% callout %}
+{% hint style="info" %}
 
 **Note**
 
 This step is necessary if you already have a ship running locally and want to move it to the cloud. If you don't, you can skip this step.
 
-{% /callout %}
+{% endhint %}
 
 In the Dojo, use either `"CTRL + D"` or `|exit` to shut down your ship.
 

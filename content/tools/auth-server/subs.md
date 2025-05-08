@@ -40,11 +40,11 @@ You'll receive [`entry`](/tools/auth-server/types#entry) and [`status`](/tools/a
 
 Subscribe for all new updates for the given [`turf`](/tools/auth-server/types#turf) (domain).
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/new/turf/wood/[turf]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 
@@ -70,11 +70,11 @@ For `foo.bar-baz.com`:
 
 Subscribe for all new updates for the given [`turf`](/tools/auth-server/types#turf) (domain), since the given Unix millisecond time.
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/new/turf/wood/[turf]/since/[time]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 
@@ -217,11 +217,11 @@ You'll initially receive an [`initAll`](/tools/auth-server/types#initall) update
 
 Get existing request state and subscribe to updates pertaining to the given [`turf`](/tools/auth-server/types#turf).
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/init/turf/wood/[turf]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 
@@ -239,11 +239,11 @@ You'll initially receive an [`initTurf`](/tools/auth-server/types#initturf) upda
 
 Get existing request state and subscribe to updates pertaining to the given [`turf`](/tools/auth-server/types#turf), for requests whose timestamps are later than the Unix millisecond time given.
 
-{% callout %}
+{% hint style="info" %}
 
 If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separators, see the `/init/turf/wood/[turf]/since/[time]` path instead.
 
-{% /callout %}
+{% endhint %}
 
 #### Returns
 

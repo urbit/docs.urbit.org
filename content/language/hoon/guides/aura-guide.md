@@ -22,9 +22,7 @@ We prefer the parsed form and the prettyprinted form to coincide so we can copy 
 
 Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds.  Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_(angle)#Subdivisions) lends distinction and _gravitas_.
 
-{% math %}
-5°6'7''
-{% /math %}
+$$5°6'7''$$
 
 ### Preliminaries
 
@@ -42,45 +40,31 @@ We need to be able to perform arithmetic and type conversion with `@udms` values
 
 At this point, we implement modular arithmetic and wrap the values properly in `++op`.  For instance, wrapping around at 360°=0° should work properly, similar to midnight.  Subtraction is liable to underflow, so we need a special handler for it in `++dg`; since we have one, we may as well handle `++add` the same way for consistency.
 
-{% math %}
-359° + 2° = 1°
-{% /math %}
+$$359° + 2° = 1°$$
 
 <br/>
 
-{% math %}
-59' + 1' = 1°
-{% /math %}
+$$59' + 1' = 1°$$
 
 <br/>
 
-{% math %}
-59'' + 1'' = 1'
-{% /math %}
+$$59'' + 1'' = 1'$$
 
 <br/>
 
-{% math %}
-1°59'59'' + 1'' = 2°
-{% /math %}
+$$1°59'59'' + 1'' = 2°$$
 
 <br/>
 
-{% math %}
-3° - 1° = 2°
-{% /math %}
+$$3° - 1° = 2°$$
 
 <br/>
 
-{% math %}
-1° - 3° = 358°
-{% /math %}
+$$1° - 3° = 358°$$
 
 <br/>
 
-{% math %}
-0° - 1'' = 359°59'59''
-{% /math %}
+$$0° - 1'' = 359°59'59''$$
 
 Let's write some unit tests first.
 

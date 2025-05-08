@@ -70,12 +70,9 @@ The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a de
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Integration_num_trapezes_notation.svg/573px-Integration_num_trapezes_notation.svg.png)
 
-<!-- equation too long to fit on page  so have to wrap with a div to make text smaller to compress it -->
-{% div class="text-xs" %}
-{% math block=true %}
+$$
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
-{% /math %}
-{% /div %}
+$$
 
 <!--
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)

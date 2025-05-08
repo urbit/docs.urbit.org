@@ -188,7 +188,7 @@ The boxcar function is a piecewise mathematical function which is equal to zero 
 
 - Compose a gate which implements the boxcar function,
 
-    {% math block=true %}
+    $$
     \text{boxcar}(x)
     :=
     \left(
@@ -197,7 +197,7 @@ The boxcar function is a piecewise mathematical function which is equal to zero 
     0, & \text{otherwise} \\\\
     \end{matrix}
     \right)
-    {% /math %}
+    $$
 
     <!--
     $$

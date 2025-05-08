@@ -514,11 +514,11 @@ Given a test expression like those above, we can use the `?:` wutcol rune to dec
 
 [Piecewise mathematical functions](https://en.wikipedia.org/wiki/Piecewise) require precisely this functionality.  For instance, the Heaviside function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.
 
-{% math block=true %}
+$$
 H(x)
 =
 \begin{cases} 1, & x > 0 \\\ 0, & x \le 0 \end{cases}
-{% /math %}
+$$
 
 <!--$$
 H(x)
@@ -528,11 +528,11 @@ $$-->
 
 _However_, we don't yet know how to represent a negative value!  All of the decimal values we have used thus far are unsigned (non-negative) values, `@ud`.  For now, the easiest solution is to just translate the Heaviside function so it activates at a different value:
 
-{% math block=true %}
+$$
 H_{10}(x)
 =
 \begin{cases} 1, & x > 10 \\\ 0, & x \le 10 \end{cases}
-{% /math %}
+$$
 
 <!--$$
 H_{10}(x)
@@ -555,12 +555,12 @@ Carefully map how the runes in that statement relate to each other, and notice h
 
 ### Exercise:  “Absolute” Value (Around Ten)
 
-Implement a version of the absolute value function, {% math %}|x|{% /math %}, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this {% math %}|x|_{10}{% /math %}.)
+Implement a version of the absolute value function, $$|x|$$, similar to the Heaviside implementation above.  (Translate it to 10 as well since we still can't deal with negative numbers; call this $$|x|_{10}$$.)
 
-{% math block=true %}
+$$
 |x|_{10}
 =
 \begin{cases} x-10, & x > 10 \\\ 10-x & 0 \le x \le 10 \end{cases}
-{% /math %}
+$$
 
 Test it on a few values like 8, 9, 10, 11, and 12.

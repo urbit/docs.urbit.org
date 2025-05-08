@@ -66,17 +66,13 @@ slug = "#tapbi"
 desc = "Used in /lib/mip.hoon"
 +++
 
-A `mip` is a map of maps. These can be constructed manually by nesting
-ordinary `map`s, but the `%landscape` desk contains a `/lib/mip.hoon` library which
-makes these a bit easier to deal with. You can copy the library into your own
-project. The various `mip` functions are documented below.
+A `mip` is a map of maps. These can be constructed manually by nesting ordinary `map`s, but the `%landscape` desk contains a `/lib/mip.hoon` library which makes these a bit easier to deal with. You can copy the library into your own project. The various `mip` functions are documented below.
 
 ## `++mip`
 
 Mip (map of maps) mold builder
 
-A `mip` is a map of maps. An outer `map` maps keys to inner `map`s, which
-themselves map keys to values.
+A `mip` is a map of maps. An outer `map` maps keys to inner `map`s, which themselves map keys to values.
 
 A `(mip kex key value)` is equivalent to `(map kex (map key value))`.
 
@@ -152,9 +148,7 @@ This is the container door for all the mip functions.
 
 Delete item in `mip`
 
-This takes two keys as its argument, `b` and `c`, and deletes `c` in the inner
-map that matches key `b` in the outer map . If this results in an empty inner
-map, then `b` is also deleted from the outer map.
+This takes two keys as its argument, `b` and `c`, and deletes `c` in the inner map that matches key `b` in the outer map . If this results in an empty inner map, then `b` is also deleted from the outer map.
 
 #### Accepts
 
@@ -166,8 +160,7 @@ map, then `b` is also deleted from the outer map.
 
 #### Produces
 
-A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended
-up empty.
+A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended up empty.
 
 #### Source
 
@@ -209,8 +202,7 @@ up empty.
 
 Maybe get value in `mip`
 
-Get the value of `c` in the map with key `b` in `mip` `a` as a unit. If
-there's no `c` in `b` or `b` in `a`, the unit is null.
+Get the value of `c` in the map with key `b` in `mip` `a` as a unit. If there's no `c` in `b` or `b` in `a`, the unit is null.
 
 #### Accepts
 
@@ -222,8 +214,7 @@ there's no `c` in `b` or `b` in `a`, the unit is null.
 
 #### Produces
 
-A `(unit [type])`, where `[type]` is the value type. The unit is null if there's
-no `c` in `b` or no `b` in `a`.
+A `(unit [type])`, where `[type]` is the value type. The unit is null if there's no `c` in `b` or no `b` in `a`.
 
 #### Source
 
@@ -255,8 +246,7 @@ no `c` in `b` or no `b` in `a`.
 
 Get value in `mip` or crash
 
-Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c`
-in `b` or `b` in `a`, crash.
+Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in `b` or `b` in `a`, crash.
 
 #### Accepts
 
@@ -299,8 +289,7 @@ dojo: hoon expression failed
 
 Get value in `mip` or default
 
-Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c`
-in `b` or `b` in `a`, produce default value `d`.
+Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in `b` or `b` in `a`, produce default value `d`.
 
 #### Accepts
 
@@ -386,8 +375,7 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
 
 Get keys of inner map in `mip`
 
-Get the `set` of keys of the inner map matching key `b` in the outer map. If
-`b` doesn't exist, an empty set is returned.
+Get the `set` of keys of the inner map matching key `b` in the outer map. If `b` doesn't exist, an empty set is returned.
 
 #### Accepts
 
@@ -427,9 +415,7 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
 
 Insert value in `mip`
 
-Add value `d` with key `c` to the inner map with key `b` in the outer map. If
-`b` doesn't exist, an inner map is also added with that key. If `c` already
-exists, its value is replaced with `d`.
+Add value `d` with key `c` to the inner map with key `b` in the outer map. If `b` doesn't exist, an inner map is also added with that key. If `c` already exists, its value is replaced with `d`.
 
 #### Accepts
 
@@ -475,8 +461,7 @@ A new, modified `mip`.
 
 Convert `mip` to `list`
 
-The `mip` is flattened to a `list` of the triple `[x y v]`, where `x` is a key
-in the outer map, `y` is a key in an inner map, and `v` is its value.
+The `mip` is flattened to a `list` of the triple `[x y v]`, where `x` is a key in the outer map, `y` is a key in an inner map, and `v` is its value.
 
 #### Accepts
 

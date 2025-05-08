@@ -80,11 +80,9 @@ desc = "<code>[%ktwt p=hoon]</code>: convert any core to a lead core (bivariant)
 
 +++
 
-[`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=`
-("kettis")](#-kettis) let us adjust types without violating type constraints.
+[`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=` ("kettis")](#-kettis) let us adjust types without violating type constraints.
 
-The `nest` algorithm which tests subtyping is conservative; it never allows
-invalid nests, it sometimes rejects valid nests.
+The `nest` algorithm which tests subtyping is conservative; it never allows invalid nests, it sometimes rejects valid nests.
 
 ## `^|` "ketbar"
 
@@ -133,13 +131,9 @@ One argument, fixed.
 
 An iron core is an opaque function (gate or door).
 
-Theorem: if type `x` nests within type `a`, and type `y` nests
-within type `b`, a core accepting `b` and producing `x` nests
-within a iron core accepting `y` and producing `a`.
+Theorem: if type `x` nests within type `a`, and type `y` nests within type `b`, a core accepting `b` and producing `x` nests within a iron core accepting `y` and producing `a`.
 
-Informally, a function fits an interface if the function has a
-more specific result and/or a less specific argument than the
-interface.
+Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
 #### Examples
 
@@ -198,26 +192,17 @@ One argument, fixed.
 
 #### Produces
 
-A gate that returns the sample value if it is of the correct type, but crashes
-otherwise.
+A gate that returns the sample value if it is of the correct type, but crashes otherwise.
 
 #### Discussion
 
 `^:` is used to produce a mold that crashes if its sample is of the wrong type.
 
-In structure mode, `[a=@ b=@]` is a mold for a cell, whereas in value mode it's
-a pair of molds.  Sometimes you need a structure in value mode, in which you can
-use `^:` or `,`.
+In structure mode, `[a=@ b=@]` is a mold for a cell, whereas in value mode it's a pair of molds.  Sometimes you need a structure in value mode, in which you can use `^:` or `,`.
 
-Molds used to produced their bunt value if they couldn't mold their sample. This
-is no longer the case: molds now crash if molding fails, so this rune is
-redundant in certain cases.
+Molds used to produced their bunt value if they couldn't mold their sample. This is no longer the case: molds now crash if molding fails, so this rune is redundant in certain cases.
 
-One may expect that `^:(path /foo)` would result in a syntax error since `^:`
-only takes one child, but instead it will parse as `=< ^ %:(path /foo)`. Since
-`:` is the irregular syntax for `=<` this is is parsed as "get `^` (i.e. the
-mold for cells) from a subject of `(path /foo)`", with `:` being the irregular
-syntax for `=<`.
+One may expect that `^:(path /foo)` would result in a syntax error since `^:` only takes one child, but instead it will parse as `=< ^ %:(path /foo)`. Since `:` is the irregular syntax for `=<` this is is parsed as "get `^` (i.e. the mold for cells) from a subject of `(path /foo)`", with `:` being the irregular syntax for `=<`.
 
 #### Examples
 
@@ -369,11 +354,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-It's a good practice to put a `^-` ("kethep") at the top of every arm
-(including gates, loops, etc). This cast is strictly necessary
-only in the presence of head recursion (otherwise you'll get a
-`rest-loop` error, or if you really screw up spectacularly an
-infinite loop in the compiler).
+It's a good practice to put a `^-` ("kethep") at the top of every arm (including gates, loops, etc). This cast is strictly necessary only in the presence of head recursion (otherwise you'll get a `rest-loop` error, or if you really screw up spectacularly an infinite loop in the compiler).
 
 #### Examples
 
@@ -437,8 +418,7 @@ Two arguments, fixed.
 
 #### Produces
 
-The value of `q` with the type of `p`, if the type of `q` nests within the type
-of `p`. Otherwise, `nest-fail`.
+The value of `q` with the type of `p`, if the type of `q` nests within the type of `p`. Otherwise, `nest-fail`.
 
 #### Examples
 
@@ -498,8 +478,7 @@ A zinc core has a read-only sample and an opaque context. See [Advanced types](/
 
 #### Examples
 
-The prettyprinter shows the core metal in the arm labels `1.xoz` and `1&xoz`
-below (`.` is gold, `&` is zinc):
+The prettyprinter shows the core metal in the arm labels `1.xoz` and `1&xoz` below (`.` is gold, `&` is zinc):
 
 ```
 > |=(@ 1)
@@ -715,9 +694,7 @@ Two arguments, fixed.
 
 #### Produces
 
-If `p` is a term, the product `q` with type `[%face p q]`. `p` may also be a
-tuple of terms, or a term-skin pair; the type of `q` must divide evenly into
-cells to match it.
+If `p` is a term, the product `q` with type `[%face p q]`. `p` may also be a tuple of terms, or a term-skin pair; the type of `q` must divide evenly into cells to match it.
 
 #### Examples
 
@@ -786,14 +763,11 @@ One argument, fixed.
 
 #### Discussion
 
-A lead core is an opaque generator; the payload can't be read or
-written.
+A lead core is an opaque generator; the payload can't be read or written.
 
-Theorem: if type `x` nests within type `a`, a lead core producing
-`x` nests within a lead core producing `a`.
+Theorem: if type `x` nests within type `a`, a lead core producing `x` nests within a lead core producing `a`.
 
-Informally, a more specific generator can be used as a less
-specific generator.
+Informally, a more specific generator can be used as a less specific generator.
 
 #### Examples
 

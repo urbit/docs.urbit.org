@@ -3,40 +3,25 @@ title = "Build a Chat App"
 weight = 3
 +++
 
-In this lightning tutorial, we're going to build a simple chat app named Hut. It'll
-look like this:
+In this lightning tutorial, we're going to build a simple chat app named Hut. It'll look like this:
 
 ![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot-reskin.png)
 
-We'll be able to create private chat rooms with members of our
-[Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate
-instantly and securely. Hut will be quite simple, it'll have a very basic UI and
-only store the last 50 messages in each chat, but it's a good demonstration of
-app development, networking, and front-end integration on Urbit.
+We'll be able to create private chat rooms with members of our [Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate instantly and securely. Hut will be quite simple, it'll have a very basic UI and only store the last 50 messages in each chat, but it's a good demonstration of app development, networking, and front-end integration on Urbit.
 
-If you'd like to check out the finished app, you can install it from
-`~pocwet/hut` by either searching for `~pocwet` in the search bar of your ship's
-homescreen, or by running `|install ~pocwet %hut`. Hut depends on the
-[Squad](https://urbit.org/applications/~pocwet/squad) app, which we wrote in
-[another lightning tutorial](/userspace/apps/examples/quickstart/groups-guide), so you should
-install that first with `|install ~pocwet %squad`.
+If you'd like to check out the finished app, you can install it from `~pocwet/hut` by either searching for `~pocwet` in the search bar of your ship's homescreen, or by running `|install ~pocwet %hut`. Hut depends on the [Squad](https://urbit.org/applications/~pocwet/squad) app, which we wrote in [another lightning tutorial](/userspace/apps/examples/quickstart/groups-guide), so you should install that first with `|install ~pocwet %squad`.
 
-The app source is available in the [`docs-examples` repo on
-Github](https://github.com/urbit/docs-examples), in the `chat-app` folder. It
-has three folders inside:
+The app source is available in the [`docs-examples` repo on Github](https://github.com/urbit/docs-examples), in the `chat-app` folder. It has three folders inside:
 
 1. `bare-desk`: just the hoon files created here without any dependencies.
-2. `full-desk`: `bare-desk` plus all dependencies. Note some files are
-   symlinked, so if you're copying them you'll need to do `cp -rL`.
+2. `full-desk`: `bare-desk` plus all dependencies. Note some files are symlinked, so if you're copying them you'll need to do `cp -rL`.
 3. `ui`: the React front-end files.
 
 Let's get started.
 
 ## Install binary
 
-If you've already got the `urbit` CLI runtime installed, you can skip this step.
-Otherwise, run one of the commands below, depending on your platform. It will
-fetch the binary and save it in the current directory.
+If you've already got the `urbit` CLI runtime installed, you can skip this step. Otherwise, run one of the commands below, depending on your platform. It will fetch the binary and save it in the current directory.
 
 #### Linux (`x86_64`)
 
@@ -64,22 +49,15 @@ curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 
 ## Development ship
 
-App development is typically done on a "fake" ship, which can be created with
-the `-F` flag. In this case, since our chat app will depend on the separate
-Squad app, we'll do it on a comet instead, so we can easily install that
-dependency. To create a comet, we can use the `-c` option, and specify a name
-for the *pier* (ship folder):
+App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, since our chat app will depend on the separate Squad app, we'll do it on a comet instead, so we can easily install that dependency. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
 ```shell {% copy=true %}
 ./urbit -c dev-comet
 ```
 
-It might take a few minutes to boot up, and will fetch updates for the default
-apps. Once that's done it'll take us to the Dojo (Urbit's shell), as indicated
-by the `~sampel_samzod:dojo>` prompt.
+It might take a few minutes to boot up, and will fetch updates for the default apps. Once that's done it'll take us to the Dojo (Urbit's shell), as indicated by the `~sampel_samzod:dojo>` prompt.
 
-Note: we'll use `~sampel_samzod` throughout this guide, but this will be
-different for you as a comet's ID is randomly generated.
+Note: we'll use `~sampel_samzod` throughout this guide, but this will be different for you as a comet's ID is randomly generated.
 
 ## Dependencies
 
@@ -89,20 +67,16 @@ Once in the Dojo, let's first install the Squad app:
 |install ~pocwet %squad
 ```
 
-It'll take a minute to retrieve the app, and will say `gall: installing %squad`
-once complete.
+It'll take a minute to retrieve the app, and will say `gall: installing %squad` once complete.
 
-Next, we'll mount a couple of desks so we can grab some of their files, which
-our new app will need. We can do this with the `|mount` command:
+Next, we'll mount a couple of desks so we can grab some of their files, which our new app will need. We can do this with the `|mount` command:
 
 ```{% copy=true %}
 |mount %squad
 |mount %landscape
 ```
 
-With those mounted, switch back to a normal shell in another terminal window.
-We'll create a folder to develop our app in, and then we'll copy a few files
-across that our app will depend on:
+With those mounted, switch back to a normal shell in another terminal window. We'll create a folder to develop our app in, and then we'll copy a few files across that our app will depend on:
 
 ```shell {% copy=true %}
 mkdir -p hut/{app,sur,mar,lib}
@@ -120,16 +94,11 @@ The first thing we typically do when developing an app is define:
 
 1. The basic types our app will deal with.
 2. The structure of our app's state.
-3. The app's interface - the types of requests it will accept and the types of
-   updates it will send out to subscribers.
+3. The app's interface - the types of requests it will accept and the types of updates it will send out to subscribers.
 
-We're making a chat app, so a message (`msg`) needs to contain the author and
-the text. A chat room (`hut`) will be identified by the Squad `gid` (group ID)
-it belongs to, as well as a name for the hut itself.
+We're making a chat app, so a message (`msg`) needs to contain the author and the text. A chat room (`hut`) will be identified by the Squad `gid` (group ID) it belongs to, as well as a name for the hut itself.
 
-Our app state will contain a map from `gid` to `hut`s for that group. It will
-also contain a map from `hut` to that hut's `msgs`. We also need to keep track
-of who has actually joined, so we'll add a map from `gid` to a `(set ship)`.
+Our app state will contain a map from `gid` to `hut`s for that group. It will also contain a map from `hut` to that hut's `msgs`. We also need to keep track of who has actually joined, so we'll add a map from `gid` to a `(set ship)`.
 
 For the actions/requests our app will accept, we'll need the following:
 
@@ -139,9 +108,7 @@ For the actions/requests our app will accept, we'll need the following:
 4. Unsubscribe.
 5. Delete an individual hut if we're the host.
 
-Remote ships will only be able to do #2, while our own ship and front-end will
-be able to perform any of these actions. The structure for these actions will be
-a `hut-act`.
+Remote ships will only be able to do #2, while our own ship and front-end will be able to perform any of these actions. The structure for these actions will be a `hut-act`.
 
 We also need to be able to send these events/updates out to subscribers:
 
@@ -151,9 +118,7 @@ We also need to be able to send these events/updates out to subscribers:
 
 This structure for these updates is called `hut-upd`.
 
-Type definitions are typically stored in a separate file in the `/sur` directory
-(for "**sur**face"), and named the same as the app. We'll therefore save the
-following code in `hut/sur/hut.hoon`:
+Type definitions are typically stored in a separate file in the `/sur` directory (for "**sur**face"), and named the same as the app. We'll therefore save the following code in `hut/sur/hut.hoon`:
 
 ```hoon {% copy=true mode="collapse" %}
 :: first we import the type definitions of
@@ -221,77 +186,27 @@ following code in `hut/sur/hut.hoon`:
 
 With all the types now defined, we can create the app itself.
 
-The kernel module that manages userspace applications is named Gall. Each
-application is called an *agent*. An agent has a state, and it has a fixed set
-of event handling functions called *arms*. When Arvo (Urbit's operating system)
-receives an event destined for our agent (maybe a message from the network, a
-keystroke, an HTTP request, a timer expiry, etc), the event is given to the
-appropriate arm for handling.
+The kernel module that manages userspace applications is named Gall. Each application is called an *agent*. An agent has a state, and it has a fixed set of event handling functions called *arms*. When Arvo (Urbit's operating system) receives an event destined for our agent (maybe a message from the network, a keystroke, an HTTP request, a timer expiry, etc), the event is given to the appropriate arm for handling.
 
-Most agent arms produce the same two things: a list of effects to be emitted,
-and a new version of the agent itself, typically with an updated state. It thus
-behaves much like a state machine, performing the function `(events, old-state)
-=> (effects, new-state)`.
+Most agent arms produce the same two things: a list of effects to be emitted, and a new version of the agent itself, typically with an updated state. It thus behaves much like a state machine, performing the function `(events, old-state) => (effects, new-state)`.
 
-Hut uses a [pub/sub
-pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern).
-Remote ships are able to subscribe to the huts for a group on our ship and
-receive updates such as new messages. They're also able to post new messages to
-a hut by poking our agent with a `%post` action. Likewise, we'll be able to
-subscribe to huts for groups on other ships and poke them to post messages.
-Remember, all Urbit ships are both clients and servers.
+Hut uses a [pub/sub pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern). Remote ships are able to subscribe to the huts for a group on our ship and receive updates such as new messages. They're also able to post new messages to a hut by poking our agent with a `%post` action. Likewise, we'll be able to subscribe to huts for groups on other ships and poke them to post messages. Remember, all Urbit ships are both clients and servers.
 
 There are three main agent arms we use for this:
 
-1. `on-poke`: This arm handles one-off actions/requests, such as posting a
-   message to a hut.
+1. `on-poke`: This arm handles one-off actions/requests, such as posting a message to a hut.
 2. `on-watch`: This arm handles incoming subscription requests.
 3. `on-agent`: This arm handles updates/events from people we've subscribed to.
 
-When you subscribe to an agent, you subscribe to a *path*. In our app's case, we
-use the `gid` (Squad group ID) as the path, like `/~sampel-palnet/my-squad-123`.
-A remote ship will send us a subscription request which will arrive in the
-`on-watch` arm. We'll check with `%squad` whether the remote ship is whitelisted
-for the requested `gid`, and then either accept or reject the subscription
-request. If accepted, we'll send them the initial state of huts for that `gid`,
-and then continue to send them updates as they happen (such as new messages
-being posted).
+When you subscribe to an agent, you subscribe to a *path*. In our app's case, we use the `gid` (Squad group ID) as the path, like `/~sampel-palnet/my-squad-123`. A remote ship will send us a subscription request which will arrive in the `on-watch` arm. We'll check with `%squad` whether the remote ship is whitelisted for the requested `gid`, and then either accept or reject the subscription request. If accepted, we'll send them the initial state of huts for that `gid`, and then continue to send them updates as they happen (such as new messages being posted).
 
-All network packets coming in from other ships are encrypted using our ship's
-public keys, and signed with the remote ship's keys. The networking keys of all
-ships are published on Azimuth, Urbit's identity system on the Ethereum
-blockchain. All ships listen for transactions on Azimuth, and keep their local
-PKI state up-to-date, so all ships know the keys of all other ships. When each
-packet arrives, it's decrypted and checked for a valid signature. This means we
-can be sure that all network traffic really comes from who it claims to come
-from. Ames, the inter-ship networking kernel module, handles this all
-automatically. When the message arrives at our agent, it'll just note the ship
-it came from. This means checking permissions can be as simple as `?> =(our
-src)` or `?> (~(has in src) allowed)`.
+All network packets coming in from other ships are encrypted using our ship's public keys, and signed with the remote ship's keys. The networking keys of all ships are published on Azimuth, Urbit's identity system on the Ethereum blockchain. All ships listen for transactions on Azimuth, and keep their local PKI state up-to-date, so all ships know the keys of all other ships. When each packet arrives, it's decrypted and checked for a valid signature. This means we can be sure that all network traffic really comes from who it claims to come from. Ames, the inter-ship networking kernel module, handles this all automatically. When the message arrives at our agent, it'll just note the ship it came from. This means checking permissions can be as simple as `?> =(our src)` or `?> (~(has in src) allowed)`.
 
-Just as other ships will subscribe to paths via our `on-watch` and then start
-receiving updates we send out, we'll do the same to them. Once subscribed, the
-updates will start arriving in our `on-agent` arm. In order to know what
-subscription the updates relate to, we'll specify a *wire* when we first
-subscribe. A wire is like a tag for responses. All updates we receive for a
-given subscription will come in on the wire we specified when we opened the
-subscription. A wire has the same format as a subscription path, and in this
-case we'll make it the same - `/~sampel-palnet/my-hut-123`. The `on-agent` arm
-will also handle updates from our `%squad` app installed locally, such as
-changes to group whitelists/blacklists.
+Just as other ships will subscribe to paths via our `on-watch` and then start receiving updates we send out, we'll do the same to them. Once subscribed, the updates will start arriving in our `on-agent` arm. In order to know what subscription the updates relate to, we'll specify a *wire* when we first subscribe. A wire is like a tag for responses. All updates we receive for a given subscription will come in on the wire we specified when we opened the subscription. A wire has the same format as a subscription path, and in this case we'll make it the same - `/~sampel-palnet/my-hut-123`. The `on-agent` arm will also handle updates from our `%squad` app installed locally, such as changes to group whitelists/blacklists.
 
-The last thing to note here is communications with the front-end. The web-server
-kernel module Eyre exposes the same poke and subscription mechanics to the
-front-end as JSON over a SSE (server-sent event) stream. Our front-end will
-therefore interact with our agent just like any other ship would. When pokes and
-subscription requests come in from the front-end, they'll have our own ship as
-the source. This means differentiating the front-end from other ships is as
-simple as checking that the source is us, like `?: =(our src) ...`. On Urbit,
-interacting with a remote ship is just as easy as interacting with the local
-ship.
+The last thing to note here is communications with the front-end. The web-server kernel module Eyre exposes the same poke and subscription mechanics to the front-end as JSON over a SSE (server-sent event) stream. Our front-end will therefore interact with our agent just like any other ship would. When pokes and subscription requests come in from the front-end, they'll have our own ship as the source. This means differentiating the front-end from other ships is as simple as checking that the source is us, like `?: =(our src) ...`. On Urbit, interacting with a remote ship is just as easy as interacting with the local ship.
 
-Gall agents live in the `/app` directory of a desk, so you can save this code in
-`hut/app/hut.hoon`:
+Gall agents live in the `/app` directory of a desk, so you can save this code in `hut/app/hut.hoon`:
 
 ```hoon {% copy=true mode="collapse" %}
 :: first we import the type defs for hut and also
@@ -1091,17 +1006,11 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 
 ## Marks
 
-The last piece of our backend are the *marks*. Marks are Urbit's version of
-filetypes/MIME types, but strongly typed and with inter-mark conversion methods.
+The last piece of our backend are the *marks*. Marks are Urbit's version of filetypes/MIME types, but strongly typed and with inter-mark conversion methods.
 
-We'll create two marks: one for handling poke actions with the type of `act` we
-defined previously, and one for handling updates with the type of `upd`. We'll
-call the first one `%hut-do`, and the second one `%hut-did`. The `%hut-did` mark
-will include conversion methods to JSON for our front-end, and the `%hut-do`
-mark will include conversion methods in the other direction.
+We'll create two marks: one for handling poke actions with the type of `act` we defined previously, and one for handling updates with the type of `upd`. We'll call the first one `%hut-do`, and the second one `%hut-did`. The `%hut-did` mark will include conversion methods to JSON for our front-end, and the `%hut-do` mark will include conversion methods in the other direction.
 
-Mark files live in the `/mar` directory of a desk. You can save the code below
-in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
+Mark files live in the `/mar` directory of a desk. You can save the code below in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
 
 #### `%hut-do`
 
@@ -1330,17 +1239,11 @@ in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
 
 ## React app
 
-Our back-end is complete, so we can now work on our React front-end. We'll just
-look at the basic setup process here, but you can get the full React app by
-cloning [this repo on Github](https://github.com/urbit/docs-examples) and run
-`npm i` in `chat-app/ui`. Additional commentary on the code is in the
-[additional commentary](#additional-commentary) section below.
+Our back-end is complete, so we can now work on our React front-end. We'll just look at the basic setup process here, but you can get the full React app by cloning [this repo on Github](https://github.com/urbit/docs-examples) and run `npm i` in `chat-app/ui`. Additional commentary on the code is in the [additional commentary](#additional-commentary) section below.
 
 #### Basic setup process
 
-When creating it from scratch, first make sure you have Node.js installed on
-your computer (you can download it from their
-[website](https://nodejs.org/en/download)) and then run `create-landscape-app`:
+When creating it from scratch, first make sure you have Node.js installed on your computer (you can download it from their [website](https://nodejs.org/en/download)) and then run `create-landscape-app`:
 
 ```shell
 npx @urbit/create-landscape-app
@@ -1348,26 +1251,21 @@ npx @urbit/create-landscape-app
 ✔ What URL do you use to access Urbit? … http://127.0.0.1:8080
 ```
 
-This will generate a React project in the `hut/ui` directory with all the
-basic necessities for Urbit front-end development. Next, run the following
-commands to install the project's dependencies:
+This will generate a React project in the `hut/ui` directory with all the basic necessities for Urbit front-end development. Next, run the following commands to install the project's dependencies:
 
 ```shell
 cd hut/ui
 npm i
 ```
 
-We can now open `src/app.jsx`, wipe its contents, and start writing our own
-app. The first thing is to import the `Urbit` class from `@urbit/http-api`:
+We can now open `src/app.jsx`, wipe its contents, and start writing our own app. The first thing is to import the `Urbit` class from `@urbit/http-api`:
 
 ```javascript
 import React, {useEffect, useState} from "react";
 import Urbit from "@urbit/http-api";
 ```
 
-We'll create an `App` component that will create a new `Urbit` instance on load
-to monitor our front-end's connection with our ship. Our app is simple and will
-just display the connection status in the top-left corner:
+We'll create an `App` component that will create a new `Urbit` instance on load to monitor our front-end's connection with our ship. Our app is simple and will just display the connection status in the top-left corner:
 
 ```javascript
 export function App() {
@@ -1394,8 +1292,7 @@ export function App() {
 }
 ```
 
-After we've finished writing our React app, we can build it and view the
-resulting files in the `dist` directory:
+After we've finished writing our React app, we can build it and view the resulting files in the `dist` directory:
 
 ```shell
 npm run build
@@ -1404,12 +1301,7 @@ ls dist
 
 #### Additional commentary
 
-There are a fair few functions in the
-[complete front-end source for `%hut`](https://github.com/urbit/docs-examples);
-we'll just look at a handful to cover the basics. The first is the `appPoke`
-in `src/lib.js`, which (as the name suggests) sends a poke to a ship. It takes
-the poke in JSON form and calls the `poke` method of our `Urbit` object to
-perform the poke:
+There are a fair few functions in the [complete front-end source for `%hut`](https://github.com/urbit/docs-examples); we'll just look at a handful to cover the basics. The first is the `appPoke` in `src/lib.js`, which (as the name suggests) sends a poke to a ship. It takes the poke in JSON form and calls the `poke` method of our `Urbit` object to perform the poke:
 
 ```javascript
 export function appPoke(jon) {
@@ -1421,8 +1313,7 @@ export function appPoke(jon) {
 }
 ```
 
-An example of sending a `poke` with a `%join`-type `act` in JSON form can be
-found in the `src/components/SelectGid.jsx` source file:
+An example of sending a `poke` with a `%join`-type `act` in JSON form can be found in the `src/components/SelectGid.jsx` source file:
 
 ```javascript
 const handleJoin = () => {
@@ -1438,12 +1329,7 @@ const handleJoin = () => {
 };
 ```
 
-Our front-end will subscribe to updates for all groups our `%hut` agent is
-currently tracking. To do so, it calls the `subscribe` method of the `Urbit`
-object (aliased to `api` in our example) with the `path` to subscribe to and an
-`event` callback to handle each update it receives. Our agent publishes all
-updates on the local-only `/all` path. Here's the source in the `src/app.jsx`
-file:
+Our front-end will subscribe to updates for all groups our `%hut` agent is currently tracking. To do so, it calls the `subscribe` method of the `Urbit` object (aliased to `api` in our example) with the `path` to subscribe to and an `event` callback to handle each update it receives. Our agent publishes all updates on the local-only `/all` path. Here's the source in the `src/app.jsx` file:
 
 ```javascript
 const subscription = api.subscribe({
@@ -1453,28 +1339,22 @@ const subscription = api.subscribe({
 });
 ```
 
-Notice that the above call to `subscribe` passes the `setSubEvent` function.
-This is part of a common pattern for Urbit React applications wherein a state
-variable is used to track new events and cause component re-rendering. The
-broad outline for this workflow is as follows:
+Notice that the above call to `subscribe` passes the `setSubEvent` function. This is part of a common pattern for Urbit React applications wherein a state variable is used to track new events and cause component re-rendering. The broad outline for this workflow is as follows:
 
 1. Create a component subscription event variable with:
    ```javascript
    const [subEvent, setSubEvent] = useState();
    ```
-2. Call the `subscribe` function, passing `setSubEvent` as the `event` keyword
-   argument:
+2. Call the `subscribe` function, passing `setSubEvent` as the `event` keyword argument:
    ```javascript
    urbit.subscribe({ /* ... */, event: setSubEvent });
    ```
-3. Create a subscription handler function that updates when new events are
-   available with:
+3. Create a subscription handler function that updates when new events are available with:
    ```javascript
    useEffect(() => {/* handler goes here */}, [subEvent]);
    ```
 
-The source for the final `useEffect` portion of this workflow (found in the
-`src/app.jsx` file) can be found below:
+The source for the final `useEffect` portion of this workflow (found in the `src/app.jsx` file) can be found below:
 
 ```javascript {% mode="collapse" %}
 useEffect(() => {
@@ -1587,28 +1467,22 @@ useEffect(() => {
 
 ## Desk config
 
-With our agent and front-end both complete, the last thing we need are some desk
-configuration files.
+With our agent and front-end both complete, the last thing we need are some desk configuration files.
 
-Firstly, we need to specify the kernel version our app is compatible with. We do
-this by adding a `sys.kelvin` file to the root of our `hut` directory:
+Firstly, we need to specify the kernel version our app is compatible with. We do this by adding a `sys.kelvin` file to the root of our `hut` directory:
 
 ```shell {% copy=true %}
 cd hut
 echo "[%zuse 414]" > sys.kelvin
 ```
 
-We also need to specify which agents to start when our desk is installed. We do
-this in a `desk.bill` file:
+We also need to specify which agents to start when our desk is installed. We do this in a `desk.bill` file:
 
 ```shell {% copy=true %}
 echo "~[%hut]" > desk.bill
 ```
 
-Lastly, we need to create a Docket file. Docket is the agent that manages app
-front-ends - it fetches & serves them, and it also configures the app tile and
-other metadata. Create a `desk.docket-0` file in the `hut` directory and add the
-following:
+Lastly, we need to create a Docket file. Docket is the agent that manages app front-ends - it fetches & serves them, and it also configures the app tile and other metadata. Create a `desk.docket-0` file in the `hut` directory and add the following:
 
 ```hoon {% copy=true %}
 :~
@@ -1623,19 +1497,11 @@ following:
 ==
 ```
 
-The main field of note is `glob-ames`. A glob is the bundle of front-end
-resources (our React app), and the `-ames` part means it'll be distributed via
-the normal inter-ship networking protocol, as opposed to `glob-http` where it
-would be fetched from a separate server. The two fields are the ship to fetch it
-from and the hash of the glob. We can get the full name of our comet by typing
-`our` in the Dojo (don't use the ship name above, it's just a sample). We're
-going to upload the glob in the next step, so we'll leave the hash as `0v0` for
-the moment.
+The main field of note is `glob-ames`. A glob is the bundle of front-end resources (our React app), and the `-ames` part means it'll be distributed via the normal inter-ship networking protocol, as opposed to `glob-http` where it would be fetched from a separate server. The two fields are the ship to fetch it from and the hash of the glob. We can get the full name of our comet by typing `our` in the Dojo (don't use the ship name above, it's just a sample). We're going to upload the glob in the next step, so we'll leave the hash as `0v0` for the moment.
 
 ## Put it together
 
-Our app is now complete, so let's try it out. In the Dojo of our comet,
-we'll create a new desk with the `|new-desk` generator:
+Our app is now complete, so let's try it out. In the Dojo of our comet, we'll create a new desk with the `|new-desk` generator:
 
 ``` {% copy=true %}
 |new-desk %hut
@@ -1647,9 +1513,7 @@ Next, we'll mount the desk so we can access it from the host OS:
 |mount %hut
 ```
 
-It'll have a handful of skeleton files in it, but we can just delete those and
-add our own instead. In the normal shell, do the
-following:
+It'll have a handful of skeleton files in it, but we can just delete those and add our own instead. In the normal shell, do the following:
 
 ```shell {% copy=true %}
 rm -rI dev-comet/hut/*
@@ -1663,36 +1527,20 @@ Back in the Dojo again, we can now commit those files and install the app:
 |install our %hut
 ```
 
-The last thing to do is upload our front-end resources. Open a browser and go
-to `localhost:8080` (or just `localhost` on a Mac). Login with the comet's web
-code, which you can get by running `+code` in the Dojo. Next, go to
-`localhost:8080/docket/upload` (or `localhost/docket/upload` on a Mac) and
-it'll bring up the Docket Globulator tool. Select the `hut` desk from the
-drop-down menu, then navigate to `hut/ui/dist` and select the whole folder.
-Finally, hit `glob!` and it'll upload our React app.
+The last thing to do is upload our front-end resources. Open a browser and go to `localhost:8080` (or just `localhost` on a Mac). Login with the comet's web code, which you can get by running `+code` in the Dojo. Next, go to `localhost:8080/docket/upload` (or `localhost/docket/upload` on a Mac) and it'll bring up the Docket Globulator tool. Select the `hut` desk from the drop-down menu, then navigate to `hut/ui/dist` and select the whole folder. Finally, hit `glob!` and it'll upload our React app.
 
-If we return to `localhost:8080` (or `localhost` on a Mac), we should see a
-tile for the Hut app. If we click on it, it'll open our React front-end and we
-can start using it.
+If we return to `localhost:8080` (or `localhost` on a Mac), we should see a tile for the Hut app. If we click on it, it'll open our React front-end and we can start using it.
 
-One thing we can also do is publish the app so others can install it from us.
-To do so, just run the following command:
+One thing we can also do is publish the app so others can install it from us. To do so, just run the following command:
 
 ``` {% copy=true %}
 :treaty|publish %hut
 ```
 
-Now our friends will be able to install it with `|install <our ship> %hut` or by
-searching for `<our ship>` on their ship's homescreen.
+Now our friends will be able to install it with `|install <our ship> %hut` or by searching for `<our ship>` on their ship's homescreen.
 
 ## Next steps
 
-To learn to create an app like this, the first thing to do is learn Hoon. [Hoon
-School](/courses/hoon-school) is a comprehensive guide to the
-language, and the best place to start. After learning the basics of Hoon, [App
-School](/courses/app-school) will teach you everything you need to
-know about app development.
+To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](/courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](/courses/app-school) will teach you everything you need to know about app development.
 
-Along with these self-directed guides, we also run regular courses on both Hoon
-and app development. You can check the [Courses](/courses) page for details, or
-join the `~hiddev-dannut/new-hooniverse` group on Urbit.
+Along with these self-directed guides, we also run regular courses on both Hoon and app development. You can check the [Courses](/courses) page for details, or join the `~hiddev-dannut/new-hooniverse` group on Urbit.

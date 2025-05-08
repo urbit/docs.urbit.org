@@ -5,8 +5,7 @@ weight = 3
 
 ## Agent Notes
 
-A `note` is a request to a vane or agent which you initiate. A `note` is
-one of:
+A `note` is a request to a vane or agent which you initiate. A `note` is one of:
 
 ```hoon
 +$  note
@@ -32,11 +31,9 @@ A `note` is always wrapped in a `%pass` `card`, like so:
 [%pass p=wire q=note]
 ```
 
-The `wire` is just a `path` like `/foo/bar/baz`. You use it as a tag to
-identify responses.
+The `wire` is just a `path` like `/foo/bar/baz`. You use it as a tag to identify responses.
 
-The possible cases of an `%agent` `note` are documented [separately
-below](#agent-tasks).
+The possible cases of an `%agent` `note` are documented [separately below](#agent-tasks).
 
 We'll look at the remaining cases here.
 
@@ -67,8 +64,7 @@ A `note-arvo` is defined as the following:
   ==
 ```
 
-The first part is vane letter (`%g` for Gall, `%i` for Iris, etc). The
-second part is a `task` belonging to that vane.
+The first part is vane letter (`%g` for Gall, `%i` for Iris, etc). The second part is a `task` belonging to that vane.
 
 ---
 
@@ -80,9 +76,7 @@ Abort event.
 [%pyre =tang]
 ```
 
-This `note` tells Gall to crash with the given `tang` in the stack
-trace. You'd use it in `++on-load` or `++on-init` when you wanted the
-upgrade/installation to fail under some condition.
+This `note` tells Gall to crash with the given `tang` in the stack trace. You'd use it in `++on-load` or `++on-init` when you wanted the upgrade/installation to fail under some condition.
 
 ---
 
@@ -94,15 +88,11 @@ Publish remote scry file without encryption.
 [%grow =spur =page]
 ```
 
-The `spur` is the `path` the file should be published at. The revision
-number will be determined implicitly. As an example, if the `spur` was
-`/foo`, the agent `%bar`, and it was the first revision, the resulting
-remote scry path would be `/g/x/0/bar//foo`
+The `spur` is the `path` the file should be published at. The revision number will be determined implicitly. As an example, if the `spur` was `/foo`, the agent `%bar`, and it was the first revision, the resulting remote scry path would be `/g/x/0/bar//foo`
 
 The `page` is the file, a pair of `[p=mark q=noun]`.
 
-Note the published file will not be encrypted. For the encrypted
-version, see [`%tend`](#tend)
+Note the published file will not be encrypted. For the encrypted version, see [`%tend`](#tend)
 
 ---
 
@@ -114,11 +104,9 @@ Delete remote scry file.
 [%tomb =case =spur]
 ```
 
-The `case` is the file revision, for example `[%ud 3]`. The spur is the
-`path` it's bound to, for example `/foo`.
+The `case` is the file revision, for example `[%ud 3]`. The spur is the `path` it's bound to, for example `/foo`.
 
-The file at the specified `spur` and specific `case` will be deleted and
-replaced by a simple hash.
+The file at the specified `spur` and specific `case` will be deleted and replaced by a simple hash.
 
 ---
 
@@ -130,10 +118,7 @@ Delete remote scry file up to the given revision.
 [%cull =case =spur]
 ```
 
-All revisions of the remote scry file published at the `path` in `spur`
-up to and including the revision specified in `case` will be deleted.
-For example, if the `case` is `[%ud 2]`, then revisions `0`, `1`, and
-`2` will all be deleted.
+All revisions of the remote scry file published at the `path` in `spur` up to and including the revision specified in `case` will be deleted. For example, if the `case` is `[%ud 2]`, then revisions `0`, `1`, and `2` will all be deleted.
 
 ---
 
@@ -145,13 +130,9 @@ Publish remote scry file with encryption.
 [%tend =coop =path =page]
 ```
 
-The `coop` is a publisher-defined security context `path` like
-`/your/security/context`. The `path` is the path at which the file
-should be published like `/foo/bar/baz`.  The `page` is the file, a pair
-of `[p=mark q=noun]`.
+The `coop` is a publisher-defined security context `path` like `/your/security/context`. The `path` is the path at which the file should be published like `/foo/bar/baz`.  The `page` is the file, a pair of `[p=mark q=noun]`.
 
-The security context must be registered with a [`%germ`](#germ) task
-before publishing the file.
+The security context must be registered with a [`%germ`](#germ) task before publishing the file.
 
 ---
 
@@ -163,8 +144,7 @@ Create an encrypted remote scry security context.
 [%germ =coop]
 ````
 
-The `coop` is a publisher-defined security context `path` like
-`/your/security/context`.
+The `coop` is a publisher-defined security context `path` like `/your/security/context`.
 
 Once created, you can publish files to it with a [`%tend`](#tend) task.
 
@@ -178,8 +158,7 @@ Delete an encrypted remote scry security context.
 [%snip =coop]
 ```
 
-The `coop` is a publisher-defined security context `path` like
-`/your/security/context`.
+The `coop` is a publisher-defined security context `path` like `/your/security/context`.
 
 ---
 
@@ -192,21 +171,15 @@ scry.
 [%keen secret=? spar:ames]
 ```
 
-`secret` specifies whether it should be encrypted or not. The `spar` is
-a pair of `ship` and the remote scry path like
-`/c/x/4/base/sys/hoon/hoon`.
+`secret` specifies whether it should be encrypted or not. The `spar` is a pair of `ship` and the remote scry path like `/c/x/4/base/sys/hoon/hoon`.
 
-Note that multiparty encrypted scry (specified with a true `secret`)
-should only be used when you know the publisher expects it (i.e, as part
-of their application protocol). Otherwise, the two-party [Ames `%chum`
-task](/system/kernel/ames/reference/tasks#chum) should be used.
+Note that multiparty encrypted scry (specified with a true `secret`) should only be used when you know the publisher expects it (i.e, as part of their application protocol). Otherwise, the two-party [Ames `%chum` task](/system/kernel/ames/reference/tasks#chum) should be used.
 
 ---
 
 ## Agent Tasks
 
-A `task` is a request to an agent you initiate, as opposed to a
-[`gift`](#agent-gifts), which is a response.
+A `task` is a request to an agent you initiate, as opposed to a [`gift`](#agent-gifts), which is a response.
 
 Passing an agent `task` looks like so:
 
@@ -214,11 +187,9 @@ Passing an agent `task` looks like so:
 [%pass p=wire q=[%agent [=ship name=term] =task]]
 ```
 
-- `wire`: this is just a `path` like `/foo/bar/baz`. You use it as a tag
-  to identify any [`gift`](#agent-gifts) that come back in response.
+- `wire`: this is just a `path` like `/foo/bar/baz`. You use it as a tag to identify any [`gift`](#agent-gifts) that come back in response.
 - `ship`: is the ship to pass the `task` to.
-- `name`: is the name of the agent on the specified ship that should
-  receive the `task`.
+- `name`: is the name of the agent on the specified ship that should receive the `task`.
 - `task`: the `task` itself, as described below.
 
 ### `%watch`
@@ -229,39 +200,23 @@ Subscribe to a path on an agent for updates.
 [%watch =path]
 ```
 
-The `path` is a subscription `path` like `/foo/bar/baz` which the
-receiving agent publishes updates on. The publisher's Gall will
-automatically respond with a [`%watch-ack`](#watch-ack). The
-`%watch-ack` will be positive (an "ack") if the agent did not crash
-processing the `%watch`, and will be negative (a "nack") if it crashed.
+The `path` is a subscription `path` like `/foo/bar/baz` which the receiving agent publishes updates on. The publisher's Gall will automatically respond with a [`%watch-ack`](#watch-ack). The `%watch-ack` will be positive (an "ack") if the agent did not crash processing the `%watch`, and will be negative (a "nack") if it crashed.
 
-Assuming the subscription request was successful (and therefore the
-`%watch-ack` was positive), the publisher will begin sending updates as
-[`%fact`](#fact) `gift`s to the subscriber. The publisher will continue
-sending updates until the subscriber [`%leave`](#leave)s or the
-publisher [`%kick`](#kick)s them.
+Assuming the subscription request was successful (and therefore the `%watch-ack` was positive), the publisher will begin sending updates as [`%fact`](#fact) `gift`s to the subscriber. The publisher will continue sending updates until the subscriber [`%leave`](#leave)s or the publisher [`%kick`](#kick)s them.
 
 ---
 
 ### `%watch-as`
 
-Subscribe to a path on an agent for updates, asking for the updates to
-have a specified `mark`.
+Subscribe to a path on an agent for updates, asking for the updates to have a specified `mark`.
 
 ```hoon
 [%watch-as =mark =path]
 ```
 
-The `path` is a subscription `path` like `/foo/bar/baz` which the
-receiving agent publishes updates on. The `mark` is the `mark` you want
-the publisher to use for the data it gives you in the updates.
+The `path` is a subscription `path` like `/foo/bar/baz` which the receiving agent publishes updates on. The `mark` is the `mark` you want the publisher to use for the data it gives you in the updates.
 
-This behaves the same as an ordinary [`%watch`](#watch) request, except
-the publisher's Gall will try to convert from the `mark` of the `%fact`s
-the agent produced to the `mark` you specified before sending it off. If
-the publisher's Gall is unable to perform the mark conversion, you'll
-get [`%kick`](#kick)ed from the subscription, and they'll send
-themselves a [`%leave`](#leave) on your behalf.
+This behaves the same as an ordinary [`%watch`](#watch) request, except the publisher's Gall will try to convert from the `mark` of the `%fact`s the agent produced to the `mark` you specified before sending it off. If the publisher's Gall is unable to perform the mark conversion, you'll get [`%kick`](#kick)ed from the subscription, and they'll send themselves a [`%leave`](#leave) on your behalf.
 
 ---
 
@@ -273,14 +228,9 @@ Unsubscribe from a subscription path on an agent.
 [%leave ~]
 ```
 
-The subscription to end is determined by the `wire`, `ship` and agent
-`name` in the `%pass` `card` this is wrapped in. That is, if you
-originally subscribed to subscription path `/foo/bar/baz` in agent
-`%foo` on ship `~zod` using `wire` `/x/y/z`, you'd unsubscribe by
-specifying `/x/y/z`, `~zod` and `%foo`.
+The subscription to end is determined by the `wire`, `ship` and agent `name` in the `%pass` `card` this is wrapped in. That is, if you originally subscribed to subscription path `/foo/bar/baz` in agent `%foo` on ship `~zod` using `wire` `/x/y/z`, you'd unsubscribe by specifying `/x/y/z`, `~zod` and `%foo`.
 
-Once sent, you'll stop receiving `%fact`s from the publisher for the
-subscription in question.
+Once sent, you'll stop receiving `%fact`s from the publisher for the subscription in question.
 
 ---
 
@@ -292,57 +242,31 @@ A one-off request/datagram to an agent.
 [%poke =cage]
 ```
 
-A `%poke` `task` is a one-off, unsolicited delivery of some data. This
-is in contrast to a [`%fact`](#fact) `gift`, the other basic method of
-passing data between agents, which is ultimately a solicited response to
-a past [`%watch`](#watch) request for subscription updates. Unlike a
-`%watch` request, the recipient of the `%poke` cannot directly send data
-back to the `%poke`-er (though they could conceivably send a new,
-separate `%poke` back). The only response you get to a `%poke` is a
-[`%poke-ack`](#poke-ack), indicating a simple success/failure result.
+A `%poke` `task` is a one-off, unsolicited delivery of some data. This is in contrast to a [`%fact`](#fact) `gift`, the other basic method of passing data between agents, which is ultimately a solicited response to a past [`%watch`](#watch) request for subscription updates. Unlike a `%watch` request, the recipient of the `%poke` cannot directly send data back to the `%poke`-er (though they could conceivably send a new, separate `%poke` back). The only response you get to a `%poke` is a [`%poke-ack`](#poke-ack), indicating a simple success/failure result.
 
-The data of the `%poke` is contained in the `cage`, which is a pair of
-`[p=mark q=vase]`. It's the basic way to pass around dynamically typed
-data.
+The data of the `%poke` is contained in the `cage`, which is a pair of `[p=mark q=vase]`. It's the basic way to pass around dynamically typed data.
 
 ---
 
 ### `%poke-as`
 
-A one-off request/datagram to an agent, asking the recipient's Gall to
-convert the data to the specified `mark` before delivering it to the
-agent.
+A one-off request/datagram to an agent, asking the recipient's Gall to convert the data to the specified `mark` before delivering it to the agent.
 
 ```hoon
 [%poke-as =mark =cage]
 ```
 
-This behaves the same as an ordinary [`%poke`](#poke) but with
-additional `mark` conversion to the `mark` you specify by the
-recipient's Gall.
+This behaves the same as an ordinary [`%poke`](#poke) but with additional `mark` conversion to the `mark` you specify by the recipient's Gall.
 
-The `mark` is the `mark` you want the `cage` converted *to* before
-delivery to the agent. The `cage` is the data itself, a pair of `[p=mark
-q=vase]`. The mark conversion will be performed by the recipient's Gall,
-not the sender's.
+The `mark` is the `mark` you want the `cage` converted *to* before delivery to the agent. The `cage` is the data itself, a pair of `[p=mark q=vase]`. The mark conversion will be performed by the recipient's Gall, not the sender's.
 
-If the `mark` conversion fails, the sender will be sent a negative
-[`%poke-ack`](#poke-ack) (nack). Otherwise, the recipient will receive a
-`%poke` with the target `mark` specified.
+If the `mark` conversion fails, the sender will be sent a negative [`%poke-ack`](#poke-ack) (nack). Otherwise, the recipient will receive a `%poke` with the target `mark` specified.
 
 ---
 
 ## Agent Gifts
 
-An agent `gift` is ultimately a response to an agent `task`. Sometimes
-it's an immediate, direct response, and other times it happens down the
-line, or there's an ongoing series of gifts, as in the case of
-subscriptions. They do all ultimately arise from an original `task`,
-though, be it a a `%watch` subscription request or a `%poke`. A `gift`
-cannot be sent out unsolicited to other agents. Where they are routed
-to, whether another local agent, an agent on a remote ship, or even to
-vanes or a browser-based front-end in some cases, is determined by the
-original `task`.
+An agent `gift` is ultimately a response to an agent `task`. Sometimes it's an immediate, direct response, and other times it happens down the line, or there's an ongoing series of gifts, as in the case of subscriptions. They do all ultimately arise from an original `task`, though, be it a a `%watch` subscription request or a `%poke`. A `gift` cannot be sent out unsolicited to other agents. Where they are routed to, whether another local agent, an agent on a remote ship, or even to vanes or a browser-based front-end in some cases, is determined by the original `task`.
 
 Giving a gift takes the general form of:
 
@@ -360,16 +284,11 @@ Produce a subscription update.
 [%fact paths=(list path) =cage]
 ```
 
-A `%fact` is a piece of data given to all subscribers on one or more
-subscription paths.
+A `%fact` is a piece of data given to all subscribers on one or more subscription paths.
 
 The fields are:
 
-- `paths`: a list of subscription paths to send the update on. In
-  `+on-watch` alone, if no path is given, then the update is given
-  exclusively to the source of the `%watch` request. This is useful for
-  giving initial state to new subscribers. In other contexts, one or
-  more subscription paths should be provided.
+- `paths`: a list of subscription paths to send the update on. In `+on-watch` alone, if no path is given, then the update is given exclusively to the source of the `%watch` request. This is useful for giving initial state to new subscribers. In other contexts, one or more subscription paths should be provided.
 - `cage`: the data. A `cage` is a pair of `[p=mark q=vase]`.
 
 ---
@@ -382,21 +301,9 @@ Close subscription.
 [%kick paths=(list path) ship=(unit ship)]
 ```
 
-If `ship` is null, all subscribers will be kicked from the specified
-subscription `paths` and will stop receiving updates. If `ship` is
-non-null, only the specified ship will be kicked from the given `paths`.
+If `ship` is null, all subscribers will be kicked from the specified subscription `paths` and will stop receiving updates. If `ship` is non-null, only the specified ship will be kicked from the given `paths`.
 
-It should be noted that `%kick` `gift`s are not *only* emitted
-intentionally by the publishing agent. Gall itself will `%kick` remote
-subscribers if too many undelivered outbound `%fact`s queue up due to
-network connectivity problems. On the subscriber side, their Gall will
-`%kick` themselves if they crash while processing an incoming `%fact`.
-It should therefore not be assumed the `%kick` was intentional.
-Typically agents will be designed to resubscribe on `%kick` with a new
-`%watch`, only giving up on negative `%watch-ack`. You should be careful
-with automatic resubscribe logic, though, because you can inadvertently
-create a network loop of infinite resubscribes and kicks if, for
-example, a crash on `%fact` is repeatable.
+It should be noted that `%kick` `gift`s are not *only* emitted intentionally by the publishing agent. Gall itself will `%kick` remote subscribers if too many undelivered outbound `%fact`s queue up due to network connectivity problems. On the subscriber side, their Gall will `%kick` themselves if they crash while processing an incoming `%fact`. It should therefore not be assumed the `%kick` was intentional. Typically agents will be designed to resubscribe on `%kick` with a new `%watch`, only giving up on negative `%watch-ack`. You should be careful with automatic resubscribe logic, though, because you can inadvertently create a network loop of infinite resubscribes and kicks if, for example, a crash on `%fact` is repeatable.
 
 ---
 
@@ -408,17 +315,9 @@ Acknowledge a subscription request.
 [%watch-ack p=(unit tang)]
 ```
 
-A `%watch-ack` is automatically given by Gall in response to a `%watch`
-`task`. A `%watch-ack` is either positive (an "ack") or negative (a
-"nack"). It's an ack when `p` is null, and a nack when `p` is non-null,
-instead containing a stack trace.
+A `%watch-ack` is automatically given by Gall in response to a `%watch` `task`. A `%watch-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `p` is null, and a nack when `p` is non-null, instead containing a stack trace.
 
-A `%watch-ack` is given *automatically* and *implicitly* by Gall itself,
-it is unnecessary for an agent to emit one explicitly. An ack will be
-given as long as `++on-watch` doesn't crash. A nack will be given if it
-*does* crash, with a trace of the crash in `p`. Your agent should
-therefore be designed to accept or reject a subscription request by
-crashing or not crashing, respectively.
+A `%watch-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `++on-watch` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a subscription request by crashing or not crashing, respectively.
 
 ---
 
@@ -430,25 +329,15 @@ Acknowledge a poke.
 [%poke-ack p=(unit tang)]
 ```
 
-A `%poke-ack` is automatically given by Gall in response to a `%poke`
-`task`. A `%poke-ack` is either positive (an "ack") or negative (a
-"nack"). It's an ack when `p` is null, and a nack when `p` is non-null,
-instead containing a stack trace.
+A `%poke-ack` is automatically given by Gall in response to a `%poke` `task`. A `%poke-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `p` is null, and a nack when `p` is non-null, instead containing a stack trace.
 
-A `%poke-ack` is given *automatically* and *implicitly* by Gall itself,
-it is unnecessary for an agent to emit one explicitly. An ack will be
-given as long as `++on-poke` doesn't crash. A nack will be given if it
-*does* crash, with a trace of the crash in `p`. Your agent should
-therefore be designed to accept or reject a poke by crashing or not
-crashing, respectively.
+A `%poke-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `++on-poke` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a poke by crashing or not crashing, respectively.
 
 ---
 
 ## Vane Tasks
 
-These are the Vane `task`s that can be `%pass`ed to Gall itself in an
-`%arvo` `note`. Most of these are only used internally by the kernel,
-though some app management `task`s might be of use in userspace.
+These are the Vane `task`s that can be `%pass`ed to Gall itself in an `%arvo` `note`. Most of these are only used internally by the kernel, though some app management `task`s might be of use in userspace.
 
 ### `%deal`
 
@@ -458,19 +347,13 @@ Full transmission.
 [%deal p=sock q=term r=deal]
 ```
 
-Gall translates agent
-[`task:agent`](/system/kernel/gall/reference/data-types#taskagent)s emitted by
-agents into `%deal` tasks, as well as requests from over the network.
-This `task` is kernel-level only, it cannot be used directly from
-userspace.
+Gall translates agent [`task:agent`](/system/kernel/gall/reference/data-types#taskagent)s emitted by agents into `%deal` tasks, as well as requests from over the network. This `task` is kernel-level only, it cannot be used directly from userspace.
 
 Its fields are:
 
 - `p`: A `sock`, a `(pair ship ship)`, the sending and receiving ships.
 - `q`: The source agent.
-- `r`: A [`deal`](/system/kernel/gall/reference/data-types#deal) is either a
-  [`task:agent`](/system/kernel/gall/reference/data-types#taskagent) or a
-  `%raw-poke`. This is the request itself.
+- `r`: A [`deal`](/system/kernel/gall/reference/data-types#deal) is either a [`task:agent`](/system/kernel/gall/reference/data-types#taskagent) or a `%raw-poke`. This is the request itself.
 
 #### Returns
 
@@ -486,9 +369,7 @@ Clear pending queues.
 [%sear =ship]
 ```
 
-This `task` clears blocked inbound `move`s from the given ship. Moves
-get blocked and queued when sent to an agent that isn't currently
-running.
+This `task` clears blocked inbound `move`s from the given ship. Moves get blocked and queued when sent to an agent that isn't currently running.
 
 #### Returns
 
@@ -504,8 +385,7 @@ Restart agent (deprecated).
 [%jolt =desk =dude]
 ```
 
-Restart agent `dude` on desk `desk`. This `task` is deprecated and now a
-no-op.
+Restart agent `dude` on desk `desk`. This `task` is deprecated and now a no-op.
 
 #### Returns
 
@@ -521,10 +401,7 @@ Suspend agent.
 [%idle =dude]
 ```
 
-The agent specified in `dude` will be suspended. Note it is usually
-better to suspend agents with a
-[`%rein`](/system/kernel/clay/reference/tasks#rein---force-apps) `task` to Clay
-rather than an `%idle` `task` to Gall.
+The agent specified in `dude` will be suspended. Note it is usually better to suspend agents with a [`%rein`](/system/kernel/clay/reference/tasks#rein---force-apps) `task` to Clay rather than an `%idle` `task` to Gall.
 
 #### Returns
 
@@ -540,11 +417,9 @@ Load agents.
 [%load =load]
 ```
 
-This `task` is given to Gall by Clay. It contains the compiled agents to
-be installed or updated. This `task` would not be used from userspace.
+This `task` is given to Gall by Clay. It contains the compiled agents to be installed or updated. This `task` would not be used from userspace.
 
-See the [`load`](/system/kernel/gall/reference/data-types#load) entry in the
-type reference for more details of the datastructure in this `task`.
+See the [`load`](/system/kernel/gall/reference/data-types#load) entry in the type reference for more details of the datastructure in this `task`.
 
 #### Returns
 
@@ -564,8 +439,7 @@ The agent in `dude` will be stopped and its state discarded.
 
 {% callout %}
 
-**WARNING:** This will irreversibly erase all data stored in the state
-of the agent. Use with care and caution.
+**WARNING:** This will irreversibly erase all data stored in the state of the agent. Use with care and caution.
 
 {% /callout %}
 
@@ -583,10 +457,7 @@ Kill old-style subscriptions.
 [%doff dude=(unit dude) ship=(unit ship)]
 ```
 
-Kills nonceless outgoing subscriptions. If `dude` is non-null, it only
-applies to the specified agent. If the `ship` is non-null, it only
-applies to subscriptions to the specified ship. Otherwise, it applies to
-all subscriptions.
+Kills nonceless outgoing subscriptions. If `dude` is non-null, it only applies to the specified agent. If the `ship` is non-null, it only applies to subscriptions to the specified ship. Otherwise, it applies to all subscriptions.
 
 You're unlikely to use this `task` from userspace.
 
@@ -604,10 +475,7 @@ Reclaim old subscriptions.
 [%rake dude=(unit dude) all=?]
 ```
 
-This sends an Ames `%cork` on any old subscription ducts. If `dude` is
-null, it applies to all agents, otherwise to the specified one. The
-`all` flag should only be set if you want the ship to try and kill an
-old subscription at sub-nonce zero.
+This sends an Ames `%cork` on any old subscription ducts. If `dude` is null, it applies to all agents, otherwise to the specified one. The `all` flag should only be set if you want the ship to try and kill an old subscription at sub-nonce zero.
 
 You are unlikely to use this `task`.
 
@@ -625,10 +493,7 @@ Set verbosity.
 [%spew veb=(list verb)]
 ```
 
-This sets verbosity flags for Gall. Currently there's only one
-[`verb`](/system/kernel/gall/reference/data-types#verb), `%odd`, which prints
-messages for unusual error cases. This overwrites the existing verbosity
-settings: an empty list will turn all verbosity flags off.
+This sets verbosity flags for Gall. Currently there's only one [`verb`](/system/kernel/gall/reference/data-types#verb), `%odd`, which prints messages for unusual error cases. This overwrites the existing verbosity settings: an empty list will turn all verbosity flags off.
 
 #### Returns
 
@@ -644,9 +509,7 @@ Filter verbose debug printing to certain agents.
 [%sift dudes=(list dude)]
 ```
 
-The `dudes` are the agents you want verbose debug printing for. An empty
-list enables it for all agents. See [`%spew`](#spew) for setting
-verbosity.
+The `dudes` are the agents you want verbose debug printing for. An empty list enables it for all agents. See [`%spew`](#spew) for setting verbosity.
 
 #### Returns
 

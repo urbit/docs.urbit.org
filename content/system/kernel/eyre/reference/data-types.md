@@ -21,11 +21,8 @@ This document describes the data types used by Eyre as defined in `/sys/lull.hoo
   ==  ==
 ```
 
-- `auth`: Whether the request must include a valid session cookie or otherwise
-  be authenticated. If this is false, the entry will be publicly accessible.
-- `body`: The HTTP response to give. This contains a `[%payload
-  =simple-payload:http]`. See the [`$simple-payload:http`](#simple-payloadhttp)
-  for more details of the data.
+- `auth`: Whether the request must include a valid session cookie or otherwise be authenticated. If this is false, the entry will be publicly accessible.
+- `body`: The HTTP response to give. This contains a `[%payload =simple-payload:http]`. See the [`$simple-payload:http`](#simple-payloadhttp) for more details of the data.
 
 ---
 
@@ -150,18 +147,15 @@ An unacknowledged event in the channel system.
 
 This is the state of a particular channel in the channel system.
 
-- `mode` says whether the channel sends/received JSON or
-  [nouns](/system/kernel/eyre/guides/noun-channels).
+- `mode` says whether the channel sends/received JSON or [nouns](/system/kernel/eyre/guides/noun-channels).
 - `state` is either the expiration time or the duct currently listening.
 - `next-id` is the next event ID to be used in the event stream.
-- `last-ack` is the date of the last client ack and is used for clog
-  calculations in combination with `unacked`.
+- `last-ack` is the date of the last client ack and is used for clog calculations in combination with `unacked`.
 - `events` queue contains all unacked events:
   - `id` is the server-set event ID.
   - `request-id` is the client-set request ID.
   - [$channel-event](#channel-event) is the event itself.
-- `unacked` `map` contains the unacked event count per `request-id` and is used
-  for clog calculations.
+- `unacked` `map` contains the unacked event count per `request-id` and is used for clog calculations.
 - `subscriptions` `map` contains gall subscriptions by `request-id`.
 - `heartbeat` is the SSE heartbeat [$timer](#timer).
 

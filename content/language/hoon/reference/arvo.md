@@ -284,10 +284,7 @@ desc = "Defined in arvo.hoon"
 
 +++
 
-The `arvo.hoon` file primarily contains the basic event processing and routing
-machinery of Arvo, but it also defines a number of useful types and other
-functions. Some of these have been excluded as they're obscure types only used
-internally by Arvo, but the rest are documented below.
+The `arvo.hoon` file primarily contains the basic event processing and routing machinery of Arvo, but it also defines a number of useful types and other functions. Some of these have been excluded as they're obscure types only used internally by Arvo, but the rest are documented below.
 
 ## `+$arch`
 
@@ -334,9 +331,7 @@ This represents a node in Clay, which may be a file or a directory.
 
 Fundamental node, recursive
 
-This mold builder creates a representation of a node in Clay like an
-[`arch`](#arch) or [`axil`](#axil), but the directory map contains more `axal`s,
-so it contains the entire subtree rather than just one level.
+This mold builder creates a representation of a node in Clay like an [`arch`](#arch) or [`axil`](#axil), but the directory map contains more `axal`s, so it contains the entire subtree rather than just one level.
 
 #### Source
 
@@ -379,8 +374,7 @@ so it contains the entire subtree rather than just one level.
 
 Fundamental node
 
-This is the mold builder used to create a representation of a node in Clay. It's
-used by [`arch`](#arch).
+This is the mold builder used to create a representation of a node in Clay. It's used by [`arch`](#arch).
 
 #### Source
 
@@ -418,9 +412,7 @@ used by [`arch`](#arch).
 
 Global context
 
-This is the unencoded global path prefix for a node in Clay. It's a triple of a
-[`ship`](#ship), [`desk`](#desk) and [`case`](#case). The `case` is a revision
-reference.
+This is the unencoded global path prefix for a node in Clay. It's a triple of a [`ship`](#ship), [`desk`](#desk) and [`case`](#case). The `case` is a revision reference.
 
 #### Source
 
@@ -450,9 +442,7 @@ reference.
 
 Global name
 
-An unencoded global path to a node in Clay. The [`beak`](#beak) denotes the
-[`ship`](#ship), [`desk`](#desk) and [`case`](#case) (revision reference), and
-then `s` is the path to the node therein.
+An unencoded global path to a node in Clay. The [`beak`](#beak) denotes the [`ship`](#ship), [`desk`](#desk) and [`case`](#case) (revision reference), and then `s` is the path to the node therein.
 
 #### Source
 
@@ -504,8 +494,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 - `%da`: a date.
 - `%tas`: a label (these are seldom used).
-- `%ud`: a revision number. The initial commit is 1, and then each subsequent
-  commit increments it.
+- `%ud`: a revision number. The initial commit is 1, and then each subsequent commit increments it.
 
 ```hoon
 +$  case
@@ -537,9 +526,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 Marked vase
 
-A pair of a [`mark`](#mark) and a [`vase`](/language/hoon/reference/stdlib/4o#vase)
-(type-value pair). These are extensively used for passing data around between
-vanes and agents.
+A pair of a [`mark`](#mark) and a [`vase`](/language/hoon/reference/stdlib/4o#vase) (type-value pair). These are extensively used for passing data around between vanes and agents.
 
 #### Source
 
@@ -563,9 +550,7 @@ vanes and agents.
 
 Marked data builder
 
-Like a [`cage`](#cage) except rather than a `vase`, the tail is whatever type
-was given to the mold builder. These are most frequently used for sending data
-over the network, as vases can only be used locally.
+Like a [`cage`](#cage) except rather than a `vase`, the tail is whatever type was given to the mold builder. These are most frequently used for sending data over the network, as vases can only be used locally.
 
 #### Source
 
@@ -619,8 +604,7 @@ The name of a desk in Clay.
 
 Message target
 
-A pair of a [`ship`](#ship) and Gall agent name. This is most frequently used
-when composing cards to other agents in a Gall agent.
+A pair of a [`ship`](#ship) and Gall agent name. This is most frequently used when composing cards to other agents in a Gall agent.
 
 #### Source
 
@@ -668,8 +652,7 @@ This is used internally by the Scry interfaces in Arvo and its vanes.
 
 Symbolic content type
 
-The name of a mark file. It will typically correspond to a file in the `/mar`
-directory of a desk.
+The name of a mark file. It will typically correspond to a file in the `/mar` directory of a desk.
 
 #### Source
 
@@ -693,8 +676,7 @@ directory of a desk.
 
 Orientation
 
-Some basic information given to Arvo: the local ship's name, the current time,
-and some entropy.
+Some basic information given to Arvo: the local ship's name, the current time, and some entropy.
 
 #### Source
 
@@ -715,8 +697,7 @@ and some entropy.
 
 Untyped cage
 
-A pair of a [mark](#mark) and a raw, untyped noun. This is primarily used in
-Clay.
+A pair of a [mark](#mark) and a raw, untyped noun. This is primarily used in Clay.
 
 #### Source
 
@@ -868,10 +849,8 @@ Dynamic kernel action
 This contains the action or response in a kernel [`move`](#move). One of:
 
 - `[%hurl [%error-tag stack-trace] wite=pass-or-gift]`: action failed; error.
-- `[%pass wire=/vane-name/etc note=[vane=%vane-name task=[%.y p=vase]]]`:
-  advance; request.
-- `[%slip note=[vane=%vane-name task=[%.y p=vase]]]`: lateral; make a request as
-  though you're a different vane.
+- `[%pass wire=/vane-name/etc note=[vane=%vane-name task=[%.y p=vase]]]`: advance; request.
+- `[%slip note=[vane=%vane-name task=[%.y p=vase]]]`: lateral; make a request as though you're a different vane.
 - `[%give gift=[%.y vase]`: retreat; response.
 
 #### Source
@@ -914,18 +893,9 @@ Note this is not the same as a `card:agent:gall` used in Gall agents.
 
 Causal history
 
-Arvo is designed to avoid the usual state of complex event networks: event
-spaghetti. We keep track of every event's cause so that we have a clear causal
-chain for every computation. At the bottom of every chain is a Unix I/O event,
-such as a network request, terminal input, file sync, or timer event. We push
-every step in the path the request takes onto the chain until we get to the
-terminal cause of the computation. Then we use this causal stack to route
-results back to the caller.
+Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
-The Arvo causal stack is called a `duct`. This is represented simply as a list
-of [`wire`](#wire)s (paths), where each path represents a step in the causal
-chain. The first element in the path is the vane handled that step in the
-computation, or an empty string for Unix.
+The Arvo causal stack is called a `duct`. This is represented simply as a list of [`wire`](#wire)s (paths), where each path represents a step in the causal chain. The first element in the path is the vane handled that step in the computation, or an empty string for Unix.
 
 #### Source
 
@@ -1011,8 +981,7 @@ Memory usage
 
 Cause and action
 
-Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct)
-is a call stack, and the [`ball`](#ball) contains the action or response.
+Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct) is a call stack, and the [`ball`](#ball) contains the action or response.
 
 #### Source
 
@@ -1138,8 +1107,7 @@ Namespace perspective
 
 Kernel action builder
 
-This is similar to [`wite`](#wite) but without the error case. It's most
-commonly used in the type of a `card:agent:gall`.
+This is similar to [`wite`](#wite) but without the error case. It's most commonly used in the type of a `card:agent:gall`.
 
 #### Source
 
@@ -1173,17 +1141,9 @@ commonly used in the type of a `card:agent:gall`.
 
 Event pretext
 
-Type-wise, a `wire` is the same as a [`path`](/language/hoon/reference/stdlib/2q#path); a
-`list` of [`knot`](/language/hoon/reference/stdlib/2q#knot)s with the syntax of
-`/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or
-subscription endpoint, a `wire` is used for responses.
+Type-wise, a `wire` is the same as a [`path`](/language/hoon/reference/stdlib/2q#path); a `list` of [`knot`](/language/hoon/reference/stdlib/2q#knot)s with the syntax of `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or subscription endpoint, a `wire` is used for responses.
 
-On the kernel-level, `wire`s are used in [`duct`](#duct)s to represent a causal
-step in a call stack for routing purposes. In userspace, they're used the same
-way under the hood, but practically speaking, they can be thought of as "tags"
-for responses. That is, when you make a request to a vane of Gall agent, you
-provide a `wire` for any responses you get back, and you can use this to
-identity what the response is for.
+On the kernel-level, `wire`s are used in [`duct`](#duct)s to represent a causal step in a call stack for routing purposes. In userspace, they're used the same way under the hood, but practically speaking, they can be thought of as "tags" for responses. That is, when you make a request to a vane of Gall agent, you provide a `wire` for any responses you get back, and you can use this to identity what the response is for.
 
 #### Source
 
@@ -1207,8 +1167,7 @@ identity what the response is for.
 
 Kernel action/error builder
 
-This is used by the kernel in [`move`](#move)s. See the [`ball`](#ball) entry
-for further details.
+This is used by the kernel in [`move`](#move)s. See the [`ball`](#ball) entry for further details.
 
 #### Source
 

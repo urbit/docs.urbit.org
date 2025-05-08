@@ -3,8 +3,7 @@ title = "Tools"
 weight = 60
 +++
 
-This section of the docs is for developer documentation of additonal, external
-and/or third-party apps, libraries and tools.
+This section of the docs is for developer documentation of additonal, external and/or third-party apps, libraries and tools.
 
 {% grid %}
 

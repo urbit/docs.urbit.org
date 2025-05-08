@@ -3,9 +3,7 @@ title = "Userspace"
 weight = 40
 +++
 
-The userspace docs contain guides, examples, exercises and reference
-documentation for writing Urbit apps and threads, the latter of which is useful
-for complex I/O operations.
+The userspace docs contain guides, examples, exercises and reference documentation for writing Urbit apps and threads, the latter of which is useful for complex I/O operations.
 
 {% grid %}
 

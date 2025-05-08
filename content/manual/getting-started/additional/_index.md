@@ -4,8 +4,7 @@ weight = 30
 auto_expand=true
 +++
 
-This section contains extra information to help you get started after you've
-got your Urbit up and running.
+This section contains extra information to help you get started after you've got your Urbit up and running.
 
 {% grid %}
 

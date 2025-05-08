@@ -33,15 +33,7 @@ There are two places where scry endpoints are defined:
 
 ### Vanes
 
-Each of Arvo's nine vanes (kernel modules) include a `+scry` arm which defines
-that vane's scry endpoints. The number of endpoints and extent of data available
-varies between vanes. For example, Clay has a very extensive set of scry
-endpoints which provide read access to all files in all desks across all
-revisions, as well as the ability to build files, perform `mark` conversions,
-and various other functions. Jael provides access to a great deal of PKI data.
-On the other hand, Dill has only a couple of endpoints which are mostly useful
-for debugging, and Iris has none at all (apart from standard memory reporting
-endpoints you'd not typically use in your applications).
+Each of Arvo's nine vanes (kernel modules) include a `+scry` arm which defines that vane's scry endpoints. The number of endpoints and extent of data available varies between vanes. For example, Clay has a very extensive set of scry endpoints which provide read access to all files in all desks across all revisions, as well as the ability to build files, perform `mark` conversions, and various other functions. Jael provides access to a great deal of PKI data. On the other hand, Dill has only a couple of endpoints which are mostly useful for debugging, and Iris has none at all (apart from standard memory reporting endpoints you'd not typically use in your applications).
 
 To explore what scry endpoints are available for vanes, you can refer to the Scry Reference section of each vane in the [Arvo](/system/kernel/arvo) section of the documents.
 
@@ -53,10 +45,7 @@ Gall agents can expose scry endpoints with any `care`, but most commonly they'll
 
 {% callout %}
 
-**Note:** you should not perform agent scries from within the
-`++on-load` arm of your agent. All Gall agents are suspended during
-kernel upgrade, and then reloaded one-by-one. If the agent you scry
-wasn't reloaded before yours, the scry will fail.
+**Note:** you should not perform agent scries from within the `++on-load` arm of your agent. All Gall agents are suspended during kernel upgrade, and then reloaded one-by-one. If the agent you scry wasn't reloaded before yours, the scry will fail.
 
 {% /callout %}
 

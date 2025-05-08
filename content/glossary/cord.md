@@ -12,10 +12,7 @@ desc = "An atom aura for a little-endian UTF-8 string."
 
 +++
 
-A **cord** is an [atom](/glossary/atom)
-[aura](/glossary/aura) for a little-endian UTF-8 string in
-[Hoon](/glossary/hoon). Its aura is `@t`, and its syntax is any string
-of text surrounded by single quotes like `'Foo bar baz!'`.
+A **cord** is an [atom](/glossary/atom) [aura](/glossary/aura) for a little-endian UTF-8 string in [Hoon](/glossary/hoon). Its aura is `@t`, and its syntax is any string of text surrounded by single quotes like `'Foo bar baz!'`.
 
 #### Further Reading
 

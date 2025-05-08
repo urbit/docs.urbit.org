@@ -268,8 +268,7 @@ The peer is pinged with a "hi" and must ack the poke before the timeout.
 
 #### Accepts
 
-A pair of `[ship @dr]`. The `@dr` is the amount of time the peer has to
-respond before failure.
+A pair of `[ship @dr]`. The `@dr` is the amount of time the peer has to respond before failure.
 
 #### Produces
 
@@ -341,8 +340,7 @@ Poke an agent, then await a positive ack.
 
 #### Accepts
 
-A pair of `[dock cage]`, where the `dock` is the ship and agent you want
-to poke, and the `cage` is the data.
+A pair of `[dock cage]`, where the `dock` is the ship and agent you want to poke, and the `cage` is the data.
 
 #### Produces
 
@@ -372,13 +370,11 @@ to poke, and the `cage` is the data.
 
 Poke an agent then await a (n)ack.
 
-This doesn't care whether the ack is positive or negative, unlike the
-ordinary [poke](#poke).
+This doesn't care whether the ack is positive or negative, unlike the ordinary [poke](#poke).
 
 #### Accepts
 
-A pair of `[dock cage]`, where the `dock` is the ship and agent to poke,
-and the `cage` is the data.
+A pair of `[dock cage]`, where the `dock` is the ship and agent to poke, and the `cage` is the data.
 
 #### Produces
 
@@ -419,13 +415,11 @@ and the `cage` is the data.
 
 Poke a local agent then await a (n)ack.
 
-This doesn't care whether the ack is positive or negative, unlike the
-ordinary [poke-our](#poke-our).
+This doesn't care whether the ack is positive or negative, unlike the ordinary [poke-our](#poke-our).
 
 #### Accepts
 
-A pair of `[app=term =cage]`, where `app` is the local agent to poke and
-`cage` is the data.
+A pair of `[app=term =cage]`, where `app` is the local agent to poke and `cage` is the data.
 
 #### Produces
 
@@ -458,8 +452,7 @@ Note this fails if it gets a nack back.
 
 #### Accepts
 
-A pair of `[=term =cage]` where `term` is the name of a local agent and
-`cage` is the data.
+A pair of `[=term =cage]` where `term` is the name of a local agent and `cage` is the data.
 
 #### Produces
 
@@ -574,8 +567,7 @@ Note this fails if it gets a watch nack back.
 
 #### Accepts
 
-A triple of `[=wire =dock =path]` where `dock` is the ship and agent,
-and `path` is the subscription path.
+A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path` is the subscription path.
 
 #### Produces
 
@@ -603,13 +595,11 @@ and `path` is the subscription path.
 
 ### `watch-one`
 
-Subscribe to a watch path on an agent, take a single fact, then await a
-kick.
+Subscribe to a watch path on an agent, take a single fact, then await a kick.
 
 #### Accepts
 
-A triple of `[=wire =dock =path]` where `dock` is a ship and agent, and
-`path` is the subscription path.
+A triple of `[=wire =dock =path]` where `dock` is a ship and agent, and `path` is the subscription path.
 
 #### Produces
 
@@ -645,8 +635,7 @@ This will fail if it gets a watch nack.
 
 #### Accepts
 
-A triple of `[=wire =term =path]` where `term` is the name of the agent
-and `path` is the subscription path.
+A triple of `[=wire =term =path]` where `term` is the name of the agent and `path` is the subscription path.
 
 #### Produces
 
@@ -738,13 +727,11 @@ A pair of `[=wire =term]` where `term` is the local agent.
 
 Resubscribe on kick.
 
-This waits for a kick on a given wire, then rewatches the given ship,
-agent and path on the same wire. It then waits for a positive watch ack.
+This waits for a kick on a given wire, then rewatches the given ship, agent and path on the same wire. It then waits for a positive watch ack.
 
 #### Accepts
 
-A triple of `[=wire =dock =path]` where `dock` is the ship and agent,
-and `path` is the subscription path.
+A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path` is the subscription path.
 
 #### Produces
 
@@ -776,9 +763,7 @@ Wait for a subscription update on a wire.
 
 #### Accepts
 
-A `wire` as the *prefix* of what you expect. E.g. if `/foo` is given, a
-fact with a wire of `/foo`, `/foo/bar`, `/foo/bar/baz`, etc, will be
-accepted.
+A `wire` as the *prefix* of what you expect. E.g. if `/foo` is given, a fact with a wire of `/foo`, `/foo/bar`, `/foo/bar/baz`, etc, will be accepted.
 
 #### Produces
 
@@ -965,8 +950,7 @@ Scry an agent or vane.
 
 #### Accepts
 
-A pair of `[=mold =path]` where `mold` is the type returned and `path`
-has the following format:
+A pair of `[=mold =path]` where `mold` is the type returned and `path` has the following format:
 
 ```hoon
 /[vane letter and care]/[desk]/[rest of path after beak]
@@ -1004,8 +988,7 @@ Data of the type produced by the mold you specified.
 
 Make a remote scry request.
 
-Note this doesn't wait for a response, you'd have to use a separate
-[take-tune](#take-tune) strand to receive the result.
+Note this doesn't wait for a response, you'd have to use a separate [take-tune](#take-tune) strand to receive the result.
 
 #### Accept
 
@@ -1178,9 +1161,7 @@ Make a strand fail if it takes too long.
 
 #### Accepts
 
-This takes the `mold` produced but the strand you're timing, and
-produces a gate. The gate takes a pair of the `@dr` timeout and the
-strand being timed.
+This takes the `mold` produced but the strand you're timing, and produces a gate. The gate takes a pair of the `@dr` timeout and the strand being timed.
 
 #### Produces
 
@@ -1280,8 +1261,7 @@ Retry a strand that produces a `unit` if the `unit` is null, with a backoff.
 
 #### Accepts
 
-`retry` first takes a `result=mold` of the return type and produces a gate.
-That gate takes two arguments:
+`retry` first takes a `result=mold` of the return type and produces a gate. That gate takes two arguments:
 
 - `crash-after=(unit @ud)`: the number of tries before failing.
 - `computation`: A strand that produces a `(unit result)`.
@@ -1323,8 +1303,7 @@ Wait for increasing amounts of time with each try.
 
 #### Accepts
 
-A pair of `[try=@ud limit=@dr]`, specifying the current try count and
-the maximum amount of time to wait.
+A pair of `[try=@ud limit=@dr]`, specifying the current try count and the maximum amount of time to wait.
 
 #### Produces
 
@@ -1354,12 +1333,9 @@ Rewrite a strand failure error.
 
 #### Accepts
 
-This function takes the return `mold` of the strand in question as its
-argument and returns a gate that takes two arguments:
+This function takes the return `mold` of the strand in question as its argument and returns a gate that takes two arguments:
 
-- `f`: a gate that takes a `[term tang]` and produces a `[term tang]`.
-  This is the `%error-tag` and stack trace of the failure you're
-  rewriting.
+- `f`: a gate that takes a `[term tang]` and produces a `[term tang]`. This is the `%error-tag` and stack trace of the failure you're rewriting.
 - `computation`: the strand whose errors you're rewriting.
 
 See the example below for usage.
@@ -1436,9 +1412,7 @@ A [`request:http`](/system/kernel/eyre/reference/data-types#requesthttp).
 
 Cancel a previous Iris HTTP request.
 
-This sends it on the `/request` wire used by
-[`send-request`](#send-request). It won't work if the original request
-was on a different wire.
+This sends it on the `/request` wire used by [`send-request`](#send-request). It won't work if the original request was on a different wire.
 
 #### Accepts
 
@@ -1467,11 +1441,9 @@ Nothing.
 
 ### `take-client-response`
 
-Take the HTTP response from a previous HTTP request made with
-[`send-request`](#send-request).
+Take the HTTP response from a previous HTTP request made with [`send-request`](#send-request).
 
-This listens on the `/request` wire, it won't work if you're made a
-request on a different wire.
+This listens on the `/request` wire, it won't work if you're made a request on a different wire.
 
 #### Accepts
 
@@ -1521,8 +1493,7 @@ Nothing
 
 #### Produces
 
-A `(unit httr:eyre)`. The `unit` is null if we failed to receive a
-response.
+A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 #### Source
 
@@ -1559,8 +1530,7 @@ Nothing
 
 #### Produces
 
-A `(unit client-response:iris)`. The `unit` is null if we failed to
-receive a response.
+A `(unit client-response:iris)`. The `unit` is null if we failed to receive a response.
 
 #### Source
 
@@ -1690,8 +1660,7 @@ Make a raw HTTP request, take a raw response.
 
 #### Produces
 
-A `(unit httr:eyre)`. The `unit` is null if we failed to receive a
-response.
+A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 #### Source
 
@@ -1726,8 +1695,7 @@ A `beam`.
 
 #### Produces
 
-A `(unit vase)`. The `vase` contains the compiled file, the `unit` is
-null if it failed.
+A `(unit vase)`. The `vase` contains the compiled file, the `unit` is null if it failed.
 
 #### Source
 
@@ -1834,8 +1802,7 @@ Build a dynamic mark conversion gate from file.
 
 #### Accepts
 
-A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* and *to*
-mark.
+A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* and *to* mark.
 
 #### Produces
 
@@ -1909,8 +1876,7 @@ Build a static mark conversion gate from file.
 
 #### Accepts
 
-A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and
-*to* mark.
+A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and *to* mark.
 
 #### Source
 
@@ -1943,11 +1909,7 @@ Evaluate some hoon and produce the result.
 
 #### Accepts
 
-A pair of `[gen=hoon bez=(list beam)]`. The `gen` argument is the hoon
-to be evaluated. If `bez` is empty, it will be evaluated against the
-standard `..zuse` subject. If a list of `beam`s are provided in `bez`,
-each one will be read from Clay, build, and pinned to the head of the
-subject, before `gen` is evaluated against it.
+A pair of `[gen=hoon bez=(list beam)]`. The `gen` argument is the hoon to be evaluated. If `bez` is empty, it will be evaluated against the standard `..zuse` subject. If a list of `beam`s are provided in `bez`, each one will be read from Clay, build, and pinned to the head of the subject, before `gen` is evaluated against it.
 
 #### Produces
 
@@ -2151,9 +2113,7 @@ A [`riot:clay`](/system/kernel/clay/reference/data-types#riot)
 
 Try next on failure.
 
-This produces a failure with an `%ignore` status, which
-[main-loop](#main-loop) uses to skip the strand and try the next one.
-This is of little use outside the context of a `main-loop`.
+This produces a failure with an `%ignore` status, which [main-loop](#main-loop) uses to skip the strand and try the next one. This is of little use outside the context of a `main-loop`.
 
 #### Accepts
 
@@ -2177,8 +2137,7 @@ Nothing.
 
 Convert skips to `%ignore` failures.
 
-This tells [main-loop](#main-loop) to try the next strand on skips.
-This would not be used outside of a `main-loop`.
+This tells [main-loop](#main-loop) to try the next strand on skips. This would not be used outside of a `main-loop`.
 
 #### Accepts
 
@@ -2221,9 +2180,7 @@ A `main-loop` can be used for three things:
 
 #### Accepts
 
-It first accepts a `mold`, specifying the return type, and produces a
-gate. The gate produced takes a `list` of gates that take an argument of
-the specified `mold`, and produce the `form` of a `strand` of that mold.
+It first accepts a `mold`, specifying the return type, and produces a gate. The gate produced takes a `list` of gates that take an argument of the specified `mold`, and produce the `form` of a `strand` of that mold.
 
 #### Produces
 
@@ -2295,9 +2252,7 @@ Echo a given message to the terminal every 2 seconds until told to stop.
 
 #### Accepts
 
-This strand takes nothing directly, but expects a poke with a `mark` of
-`%echo` and vase containing a `tape` with the message to echo. To
-finish, it expects a poke with a `mark` of `%over`.
+This strand takes nothing directly, but expects a poke with a `mark` of `%echo` and vase containing a `tape` with the message to echo. To finish, it expects a poke with a `mark` of `%over`.
 
 #### Produces
 
@@ -2470,8 +2425,7 @@ Then, optionally, print a `tang`.
 
 #### Accepts
 
-A triple of `[term cord tang]`. The `term` is the app name, the `cord`
-is the message, and the `tang` is any traceback.
+A triple of `[term cord tang]`. The `term` is the app name, the `cord` is the message, and the `tang` is any traceback.
 
 #### Produces
 
@@ -2617,8 +2571,7 @@ Start a thread with an argument, then await its result.
 
 #### Accepts
 
-A pair of `[term vase]` where `term` is the name of a thread in `/ted`
-of this desk, and `vase` contains the start argument.
+A pair of `[term vase]` where `term` is the name of a thread in `/ted` of this desk, and `vase` contains the start argument.
 
 #### Produces
 

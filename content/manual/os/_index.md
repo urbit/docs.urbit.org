@@ -6,14 +6,11 @@ template = "sections/docs/chapters.html"
 weight = 10
 +++
 
-This section describes how to interact with your running Urbit ship: this
-includes working with the filesystem, command line (`dojo`), resolving common
-issues, and more.
+This section describes how to interact with your running Urbit ship: this includes working with the filesystem, command line (`dojo`), resolving common issues, and more.
 
 ### [Basics](/manual/os/basics)
 
-An overview of common commands and useful general knowledge for operating your
-ship.
+An overview of common commands and useful general knowledge for operating your ship.
 
 ### [Configuring S3 Storage](/manual/os/s3)
 

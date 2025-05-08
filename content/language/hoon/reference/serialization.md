@@ -18,8 +18,7 @@ The main tools from `/sys/hoon` for noun serialization are:
 
 ### `++cue`
 
-It is more straightforward to see how to decode a noun than to encode it, so
-let's start there.
+It is more straightforward to see how to decode a noun than to encode it, so let's start there.
 
 ```hoon
 ++  cue                                                 ::  unpack
@@ -79,8 +78,7 @@ If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that 
 
 The cursor `a` is advanced to include `c` and the terminator bit.
 
-We pin `e`, the number of bits in `q`. This is encoded as a `c-1`-length
-sequence of bits following `a`, which is added to $2^{c-1}$. `p` (the number of bits consumed) is `c+c+e`.  The packaged atom `q` is the `e`-length bitfield at `a+c+c`.
+We pin `e`, the number of bits in `q`. This is encoded as a `c-1`-length sequence of bits following `a`, which is added to $2^{c-1}$. `p` (the number of bits consumed) is `c+c+e`.  The packaged atom `q` is the `e`-length bitfield at `a+c+c`.
 
 ### `++jam`
 
@@ -136,8 +134,7 @@ This cues as a noun, so it should be `;;` or clammed to a particular mold.
 
 ##  `eval` and newt encoding
 
-Newt encoding is a variation of this:  it is a jammed noun with a short header.  Newt encoding is
-used by `urbit eval`.
+Newt encoding is a variation of this:  it is a jammed noun with a short header.  Newt encoding is used by `urbit eval`.
 
 The format for a newt-encoded noun is:
 

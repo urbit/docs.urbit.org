@@ -28,8 +28,7 @@ The warning box should disappear.
 
 To fix canvas issues on Brave:
 
-- Click on the icon of an image in your URL bar, to the left of
-   `https://bridge.urbit.org`
+- Click on the icon of an image in your URL bar, to the left of `https://bridge.urbit.org`
 - Click `Allow Data access`
 - Click on Retry in Bridge
 

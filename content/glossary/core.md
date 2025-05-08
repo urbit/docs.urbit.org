@@ -12,9 +12,7 @@ desc = "A cell of battery and payload."
 
 +++
 
-A **core** is a cell of a [`battery`](/glossary/battery) and a
-[`payload`](/glossary/payload). It is a Hoon construct similar
-in use to objects in object-oriented programming languages.
+A **core** is a cell of a [`battery`](/glossary/battery) and a [`payload`](/glossary/payload). It is a Hoon construct similar in use to objects in object-oriented programming languages.
 
 ### Further Reading
 

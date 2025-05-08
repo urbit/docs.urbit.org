@@ -11,8 +11,7 @@ desc = "A strict, higher-order typed functional programming language that compil
 
 Hoon is a strict, higher-order typed functional programming language that compiles itself to [Nock](/glossary/nock). As a result Hoon code is effectively implemented by the interpreter [Vere](/glossary/vere). Programs for the Urbit operating system and kernel, [Arvo](/glossary/arvo), are written in Hoon.
 
-The Hoon standard library and compiler is located in `/base/sys/hoon.hoon`
-within your urbit.
+The Hoon standard library and compiler is located in `/base/sys/hoon.hoon` within your urbit.
 
 ### Further Reading
 

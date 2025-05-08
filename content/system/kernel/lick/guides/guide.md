@@ -3,16 +3,9 @@ title = "Guide"
 weight = 5
 +++
 
-In this guide we'll write a pair of simple apps to demonstrate how Lick
-works. One will be a Gall agent called [`licker.hoon`](#lickerhoon), and
-the other a Python script called `licker.py`.
+In this guide we'll write a pair of simple apps to demonstrate how Lick works. One will be a Gall agent called [`licker.hoon`](#lickerhoon), and the other a Python script called `licker.py`.
 
-The Gall agent will create a socket through Lick and the Python script
-will connect to it. When the Gall agent is poked with a message of
-`%ping`, it'll send it through the socket to the Python script. The
-Python script will print `ping!`, then send a `%pong` message back
-through the socket to the Gall agent, which will print `pong!` to the
-Dojo.
+The Gall agent will create a socket through Lick and the Python script will connect to it. When the Gall agent is poked with a message of `%ping`, it'll send it through the socket to the Python script. The Python script will print `ping!`, then send a `%pong` message back through the socket to the Gall agent, which will print `pong!` to the Dojo.
 
 First, we'll look at these two files.
 
@@ -61,8 +54,7 @@ First, we'll look at these two files.
 --
 ```
 
-Our Gall agent is extremely simple and has no state. It only uses three
-agent arms: `++on-init`, `++on-poke` and `++on-arvo`.
+Our Gall agent is extremely simple and has no state. It only uses three agent arms: `++on-init`, `++on-poke` and `++on-arvo`.
 
 ### `++on-init`
 
@@ -73,9 +65,7 @@ agent arms: `++on-init`, `++on-poke` and `++on-arvo`.
   [%pass /lick %arvo %l %spin /'licker.sock']~
 ```
 
-All `++on-init` does is pass Lick a
-[`%spin`](/system/kernel/lick/reference/tasks#spin) task to create a new
-`licker.sock` socket.
+All `++on-init` does is pass Lick a [`%spin`](/system/kernel/lick/reference/tasks#spin) task to create a new `licker.sock` socket.
 
 ### `++on-poke`
 
@@ -88,11 +78,7 @@ All `++on-init` does is pass Lick a
   [%pass /spit %arvo %l %spit /'licker.sock' %noun %ping]~
 ```
 
-When `++on-poke` receives a poke with a `mark` of `%noun` and data of
-`%ping`, it passes Lick a [`%spit`](/system/kernel/lick/reference/tasks#spit)
-task with the same data. Lick will send it on through to our
-`licker.sock` socket for our Python script. This lets us poke our agent
-from the Dojo like:
+When `++on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, it passes Lick a [`%spit`](/system/kernel/lick/reference/tasks#spit) task with the same data. Lick will send it on through to our `licker.sock` socket for our Python script. This lets us poke our agent from the Dojo like:
 
 ```
 > :licker %ping
@@ -113,19 +99,12 @@ from the Dojo like:
   ==
 ```
 
-`++on-arvo` expects a [`%soak`](/system/kernel/lick/reference/tasks#soak-1) gift
-from Lick. A `%soak` is primarily a message coming in from the socket,
-though connection status is also communicated in `%soak`s. The four
-cases we handle are:
+`++on-arvo` expects a [`%soak`](/system/kernel/lick/reference/tasks#soak-1) gift from Lick. A `%soak` is primarily a message coming in from the socket, though connection status is also communicated in `%soak`s. The four cases we handle are:
 
 - `%connect`: An external process has connected to the socket.
 - `%disconnect`: An external process has disconnected from the socket.
-- `%error`: An error has occurred. The error message is a `cord` in the
-  `noun`. The only time you'll get this is if you tried to `%spit` a
-  message to the socket but there was nothing connected to it. In that
-  case, the error message will be `'not connected'`.
-- `[%noun %pong]`: This is the successful response we expect from the
-  Python script.
+- `%error`: An error has occurred. The error message is a `cord` in the `noun`. The only time you'll get this is if you tried to `%spit` a message to the socket but there was nothing connected to it. In that case, the error message will be `'not connected'`.
+- `[%noun %pong]`: This is the successful response we expect from the Python script.
 
 In all cases we just `++slog` a message to the terminal.
 
@@ -179,16 +158,14 @@ while True:
     sock.send(output)
 ```
 
-Our Python script is also quite simple. We'll walk through it piece by
-piece.
+Our Python script is also quite simple. We'll walk through it piece by piece.
 
 ```python
 from noun import *
 import socket
 ```
 
-First, we import the `socket` library and
-[`noun.py`](https://github.com/urbit/tools).
+First, we import the `socket` library and [`noun.py`](https://github.com/urbit/tools).
 
 ```python
 def cue_data(data):
@@ -198,21 +175,15 @@ def cue_data(data):
     return (mark,noun)
 ```
 
-This function takes some data from the socket, decodes it, and returns a
-pair of the `mark` and `noun`. The data initially has the following
-format:
+This function takes some data from the socket, decodes it, and returns a pair of the `mark` and `noun`. The data initially has the following format:
 
 ```
 [1B: version][4B: size of jam in bytes][nB: jammed data]
 ```
 
-The version is always `0` (though this may change in the future). The
-`cue_data` function just strips off the the version and size headers,
-but you may wish to verify these.
+The version is always `0` (though this may change in the future). The `cue_data` function just strips off the the version and size headers, but you may wish to verify these.
 
-After that, `cue_data` converts the jam to an integer and passes it to
-the `cue` function in `noun.py` to decode. It converts the `mark` to a
-string, then returns it along with the raw noun.
+After that, `cue_data` converts the jam to an integer and passes it to the `cue` function in `noun.py` to decode. It converts the `mark` to a string, then returns it along with the raw noun.
 
 
 ```python
@@ -222,10 +193,7 @@ def jam_result(mark, msg):
     return intbytes(jam(Cell(mark, noun)))
 ```
 
-This function takes a `mark` string and `msg` string, converts them to
-integers, forms a cell and jams them with the `jam` function in
-`noun.py`. It's used to produce the jam when sending something back to
-the socket.
+This function takes a `mark` string and `msg` string, converts them to integers, forms a cell and jams them with the `jam` function in `noun.py`. It's used to produce the jam when sending something back to the socket.
 
 ```python
 def make_output(jammed):
@@ -234,9 +202,7 @@ def make_output(jammed):
     return version+length+jammed
 ```
 
-Once `jam_result` has been run, `make_output` calculates the length of
-the jam, sets the version number, and puts it all together so it can be
-sent off to the socket.
+Once `jam_result` has been run, `make_output` calculates the length of the jam, sets the version number, and puts it all together so it can be sent off to the socket.
 
 ```python
 sock_path = '/home/user/piers/zod/.urb/dev/licker/licker.sock'
@@ -244,8 +210,7 @@ sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 sock.connect(sock_path)
 ```
 
-Here we specify the path to the socket and open the connection. Lick
-sockets live in:
+Here we specify the path to the socket and open the connection. Lick sockets live in:
 
 ```
 <pier>/.urb/dev/<agent>/<socket name>
@@ -276,10 +241,7 @@ while True:
     sock.send(output)
 ```
 
-This is the main loop of our script. It listens for a message from the
-socket, calls `cue_data` to decode it, checks it's an expected `ping`,
-prints it, produces a `pong` in response and sends it back to the
-socket.
+This is the main loop of our script. It listens for a message from the socket, calls `cue_data` to decode it, checks it's an expected `ping`, prints it, produces a `pong` in response and sends it back to the socket.
 
 ---
 
@@ -312,22 +274,19 @@ echo "[%zuse 410]" > licker/desk/sys.kelvin
 echo "~[%licker]" > licker/desk/desk.bill
 ```
 
-Open a `licker.hoon` app in an editor, paste in the `licker.hoon` code
-above, and save it:
+Open a `licker.hoon` app in an editor, paste in the `licker.hoon` code above, and save it:
 
 ``` {% copy=true %}
 nano licker/desk/app/licker.hoon
 ```
 
-Open a `licker.py` file in an editor, paste in the `licker.py` code
-above, and save it:
+Open a `licker.py` file in an editor, paste in the `licker.py` code above, and save it:
 
 ``` {% copy=true %}
 nano licker/client/licker.py
 ```
 
-Download the `noun.py` dependency from the
-[urbit/tools](https://github.com/urbit/tools/tree/master) repo:
+Download the `noun.py` dependency from the [urbit/tools](https://github.com/urbit/tools/tree/master) repo:
 
 ``` {% copy=true %}
 wget -P licker/client https://raw.githubusercontent.com/urbit/tools/master/pkg/pynoun/noun.py
@@ -337,9 +296,7 @@ Install additional python dependencies `bitstream`, `mmh3` and `numpy`:
 
 {% callout %}
 
-**NOTE:** At the time of writing, `bitstream` doesn't build against
-`python>3.10`. If you have `3.11` or newer, you may need to install a
-separate `python3.10` (how your distro packages it may vary).
+**NOTE:** At the time of writing, `bitstream` doesn't build against `python>3.10`. If you have `3.11` or newer, you may need to install a separate `python3.10` (how your distro packages it may vary).
 
 {% /callout %}
 

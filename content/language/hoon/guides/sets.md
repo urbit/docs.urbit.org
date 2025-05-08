@@ -4,16 +4,9 @@ description = "Explore set relations using the Hoon standard library"
 weight = 120
 +++
 
-While the developer documentation on `$set`s and the `+in` core is
-comprehensive, it is organized alphabetically which can make it
-difficult to see what's going on with set relations.  This article will
-describe [set identities and
-relations](https://en.wikipedia.org/wiki/List_of_set_identities_and_relations)
-through the Hoon standard library.
+While the developer documentation on `$set`s and the `+in` core is comprehensive, it is organized alphabetically which can make it difficult to see what's going on with set relations.  This article will describe [set identities and relations](https://en.wikipedia.org/wiki/List_of_set_identities_and_relations) through the Hoon standard library.
 
-A `$set` is a tree with a particular internal order based on the hash of
-the value.  This tends to balance the values and make lookup and access
-more efficient over large sets.
+A `$set` is a tree with a particular internal order based on the hash of the value.  This tends to balance the values and make lookup and access more efficient over large sets.
 
 ##  Set Creation & Membership
 
@@ -21,8 +14,7 @@ more efficient over large sets.
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-identity.png)
 
-[`++silt`](/language/hoon/reference/stdlib/2l#silt) produces a `$set`
-from a `$list`.
+[`++silt`](/language/hoon/reference/stdlib/2l#silt) produces a `$set` from a `$list`.
 
 ```
 > `(set @tas)`(silt `(list @tas)`~[%a %b %c %a])
@@ -33,8 +25,7 @@ from a `$list`.
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-addition.png)
 
-[`++put:in`](/language/hoon/reference/stdlib/2h#putin) adds an element
-_x_ to a set _A_.
+[`++put:in`](/language/hoon/reference/stdlib/2h#putin) adds an element _x_ to a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -42,8 +33,7 @@ _x_ to a set _A_.
 {%b %d %a %c}
 ```
 
-[`++gas:in`](/language/hoon/reference/stdlib/2h#gasin) adds each element
-_x_, _y_, _z_ of a list to a set _A_.
+[`++gas:in`](/language/hoon/reference/stdlib/2h#gasin) adds each element _x_, _y_, _z_ of a list to a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -56,8 +46,7 @@ _x_, _y_, _z_ of a list to a set _A_.
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-deletion.png)
 
-[`++del:in`](/language/hoon/reference/stdlib/2h#delin) removes an
-element _x_ from a set _A_.
+[`++del:in`](/language/hoon/reference/stdlib/2h#delin) removes an element _x_ from a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c %d])
@@ -69,8 +58,7 @@ element _x_ from a set _A_.
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-membership.png)
 
-[`++has:in`](/language/hoon/reference/stdlib/2h#hasin) checks if an
-element _x_ is in a set _A_.
+[`++has:in`](/language/hoon/reference/stdlib/2h#hasin) checks if an element _x_ is in a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -84,8 +72,7 @@ element _x_ is in a set _A_.
 
 ### Size
 
-[`++wyt:in`](/language/hoon/reference/stdlib/2h#wytin) produces the
-number of elements in _A_ as an atom (width).
+[`++wyt:in`](/language/hoon/reference/stdlib/2h#wytin) produces the number of elements in _A_ as an atom (width).
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -95,10 +82,7 @@ number of elements in _A_ as an atom (width).
 
 ### Export as List
 
-[`++tap:in`](/language/hoon/reference/stdlib/2h#tapin) produces the
-elements of set _A_ as a `$list`.  The order is the same as a
-depth-first search of the `$set`'s representation as a `$tree`,
-reversed.
+[`++tap:in`](/language/hoon/reference/stdlib/2h#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -123,9 +107,7 @@ A \cup B \equiv \{ x : x \in A \text{ or } x \in B \}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-union.png)
 
-[`++uni:in`](/language/hoon/reference/stdlib/2h#uniin) produces a set
-containing all values from _A_ or _B_.  The types of _A_ and _B_ must
-match.
+[`++uni:in`](/language/hoon/reference/stdlib/2h#uniin) produces a set containing all values from _A_ or _B_.  The types of _A_ and _B_ must match.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -142,9 +124,7 @@ A \cap B \equiv \{ x : x \in A \text{ and } x \in B \}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-intersection.png)
 
-[`++int:in`](/language/hoon/reference/stdlib/2h#intin) produces a set
-containing all values from _A_ and _B_.  The types of _A_ and _B_ must
-match.
+[`++int:in`](/language/hoon/reference/stdlib/2h#intin) produces a set containing all values from _A_ and _B_.  The types of _A_ and _B_ must match.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -170,11 +150,9 @@ A^{\textrm{C}} = X \backslash A \equiv {x \in X; x \notin A}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-complement.png)
 
-The complement of a set _A_, _Aꟲ_, may be found using
-[`++dif`](/language/hoon/reference/stdlib/2h#difin) (difference).
+The complement of a set _A_, _Aꟲ_, may be found using [`++dif`](/language/hoon/reference/stdlib/2h#difin) (difference).
 
-For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then
-_Aꟲ_ = {_a_, _b_}.
+For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_a_, _b_}.
 
 ```
 > =/  x  `(set @tas)`(silt `(list @tas)`~[%a %b %c %d])
@@ -192,12 +170,9 @@ A \bigtriangleup B \equiv \{x : x \text{ belongs to exactly one of } A \text{ an
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-symmetric-difference.png)
 
-The symmetric difference of two sets _A_ and _B_ consists of those
-elements in exactly one of the sets.  Use `++uni:in` with `++dif:in` to
-identify this set.
+The symmetric difference of two sets _A_ and _B_ consists of those elements in exactly one of the sets.  Use `++uni:in` with `++dif:in` to identify this set.
 
-For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then
-_A_ Δ _B_ = {_a_, _b_, _d_, _e_}.
+For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B_ = {_a_, _b_, _d_, _e_}.
 
 ```hoon
 =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -212,9 +187,7 @@ _A_ Δ _B_ = {_a_, _b_, _d_, _e_}.
 
 ### Logical `AND` (∧)
 
-[`++all:in`](/language/hoon/reference/stdlib/2h#allin) computes the
-logical `AND` on every element in set _A_ against a logical function
-_f_, producing  a flag.
+[`++all:in`](/language/hoon/reference/stdlib/2h#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -224,9 +197,7 @@ _f_, producing  a flag.
 
 ### Logical `OR` (∨)
 
-[`++any:in`](/language/hoon/reference/stdlib/2h#anyin) computes the
-logical `OR` on every element in set _A_ against a logical function _f_,
-producing a flag.
+[`++any:in`](/language/hoon/reference/stdlib/2h#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -236,8 +207,7 @@ producing a flag.
 
 ### Operate with Function
 
-[`++run:in`](/language/hoon/reference/stdlib/2h#runin) applies a
-function _f_ to every member of set _A_.
+[`++run:in`](/language/hoon/reference/stdlib/2h#runin) applies a function _f_ to every member of set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -247,8 +217,7 @@ function _f_ to every member of set _A_.
 
 ### Accumulate with Function
 
-[`++rep:in`](/language/hoon/reference/stdlib/2h#repin) applies a binary
-function _f_ to every member of set _A_ and accumulates the result.
+[`++rep:in`](/language/hoon/reference/stdlib/2h#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
 
 ```
 =/  a  `(set @ud)`(silt `(list @ud)`~[1 2 3 4 5])
@@ -256,5 +225,4 @@ function _f_ to every member of set _A_ and accumulates the result.
 b=120
 ```
 
-While there are a few other set functions in `+in`, they are largely
-concerned with internal operations such as consistency checking.
+While there are a few other set functions in `+in`, they are largely concerned with internal operations such as consistency checking.

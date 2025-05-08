@@ -16,18 +16,11 @@ Irregular: `a.b.c`.  Read this as '`a` in `b` in `c`'. Finds limb `a` within lim
 
 ## Discussion
 
-Intuitively, Hoon wings are written in the opposite order
-from attribute dot-paths in most languages.  Hoon `a.b.c` is Java's
-`c.b.a`; it means "a within b within c."
+Intuitively, Hoon wings are written in the opposite order from attribute dot-paths in most languages.  Hoon `a.b.c` is Java's `c.b.a`; it means "a within b within c."
 
-Any item in the wing can resolve to a leg (fragment) or arm
-(computation).  But if a non-terminal item in the wing would
-resolve to an arm, it resolves instead to the subject of the arm
--- in other words, the core exporting that name.
+Any item in the wing can resolve to a leg (fragment) or arm (computation).  But if a non-terminal item in the wing would resolve to an arm, it resolves instead to the subject of the arm -- in other words, the core exporting that name.
 
-The mysterious idiom `..b` produces the leg `b` if `b`
-is a leg; the core exporting `b` if `b` is an arm.  Since `.`
-is the same limb as `+`, `..b` is the same wing as `+1.foo`.
+The mysterious idiom `..b` produces the leg `b` if `b` is a leg; the core exporting `b` if `b` is an arm.  Since `.` is the same limb as `+`, `..b` is the same wing as `+1.foo`.
 
 ## Examples
 
@@ -43,21 +36,16 @@ is the same limb as `+`, `..b` is the same wing as `+1.foo`.
 
 ##  Wing Resolution
 
-There are two common syntaxes used to resolve a wing path into the
-current subject:  `.` dot and `:` col.
+There are two common syntaxes used to resolve a wing path into the current subject:  `.` dot and `:` col.
 
-- `.` dot syntax, as `c.b.a`, resolves the wing path into the subject
-    at the right hand using Nock 0 (or possibly Nock 9 or Nock 10
-    depending on the expression).
+- `.` dot syntax, as `c.b.a`, resolves the wing path into the subject at the right hand using Nock 0 (or possibly Nock 9 or Nock 10 depending on the expression).
     
     ```hoon
     > !,(*hoon c.b.a)
     [%wing p=~[%c %b %a]]
     ```
 
-- The `:` col operator expands to a `=>` tisgar to resolve the wing path
-    against its right-hand side as the subject.  This can be a Nock 7
-    or possibly optimized by the compiler to a Nock 0.
+- The `:` col operator expands to a `=>` tisgar to resolve the wing path against its right-hand side as the subject.  This can be a Nock 7 or possibly optimized by the compiler to a Nock 0.
     
     ```hoon
     > !,(*hoon c:b:a)

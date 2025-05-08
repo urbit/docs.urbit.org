@@ -71,8 +71,7 @@ Application-level message, as a `%pass`.
 +$  spar  [=ship =path]
 ```
 
-Instead of a fully qualifying scry path, Ames infers rift and life based on the
-ship.
+Instead of a fully qualifying scry path, Ames infers rift and life based on the ship.
 
 ## `$bone`
 
@@ -335,10 +334,7 @@ Therefore, a `$roar` looks like:
 [dat=[p=/ q=~] syg=~]
 ```
 
-In `dat`, for the `(pair path (unit (cask)))`, the `path` is the remote scry
-path and the `(unit (cask))` contains the value, or is null if there's no value
-at this path and will never be one (equivalent to the `[~ ~]` case of a local
-scry).
+In `dat`, for the `(pair path (unit (cask)))`, the `path` is the remote scry path and the `(unit (cask))` contains the value, or is null if there's no value at this path and will never be one (equivalent to the `[~ ~]` case of a local scry).
 
 ## `$purr`
 

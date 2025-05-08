@@ -12,8 +12,7 @@ A conceptual overview of how Clay was designed.
 
 ### [Using Clay](/system/kernel/clay/guides/using)
 
-A quick overview of how the most common tasks involving Clay are performed:
-reading and subscribing, syncing to Unix, and merging.
+A quick overview of how the most common tasks involving Clay are performed: reading and subscribing, syncing to Unix, and merging.
 
 ### [Filesystem Hierarchy](/system/kernel/clay/guides/filesystem)
 

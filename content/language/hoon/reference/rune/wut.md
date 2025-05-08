@@ -101,29 +101,17 @@ desc = "<code>[%wtzp p=hoon]</code>: logical NOT."
 
 +++
 
-Hoon has the usual program control branches. It also has the usual logical
-operators: AND `?&`, OR `?|`, and NOT `?!`. It also has a `?=` rune that tests
-whether a value matches a given type. In the course of type inference, Hoon
-learns from `?=` tests in the test condition of [`?:` ("wutcol")](#-wutcol)
-expressions.
+Hoon has the usual program control branches. It also has the usual logical operators: AND `?&`, OR `?|`, and NOT `?!`. It also has a `?=` rune that tests whether a value matches a given type. In the course of type inference, Hoon learns from `?=` tests in the test condition of [`?:` ("wutcol")](#-wutcol) expressions.
 
 ## Overview
 
 All `?` runes reduce to `?:` and/or `?=`.
 
-If the condition of an `?:` is a `?=`, **and** the `?=` is
-testing a leg of the subject, the compiler specializes the subject
-type for the branches of the `?:`. Branch inference also works
-for expressions which expand to `?:`.
+If the condition of an `?:` is a `?=`, **and** the `?=` is testing a leg of the subject, the compiler specializes the subject type for the branches of the `?:`. Branch inference also works for expressions which expand to `?:`.
 
-The test does not have to be a single `?=`; the compiler can
-analyze arbitrary boolean logic ([`?&` ("wutpam")](#-wutpam),
-[`?|` ("wutbar")](#-wutbar), [`?!` ("wutzap")](#-wutzap)) with full
-short-circuiting. Equality tests ([`.=` ("dottis")](/language/hoon/reference/rune/dot#-dottis)) are **not**
-analyzed.
+The test does not have to be a single `?=`; the compiler can analyze arbitrary boolean logic ([`?&` ("wutpam")](#-wutpam), [`?|` ("wutbar")](#-wutbar), [`?!` ("wutzap")](#-wutzap)) with full short-circuiting. Equality tests ([`.=` ("dottis")](/language/hoon/reference/rune/dot#-dottis)) are **not** analyzed.
 
-If the compiler detects that the branch is degenerate (only one
-side is taken), it fails with an error.
+If the compiler detects that the branch is degenerate (only one side is taken), it fails with an error.
 
 ---
 
@@ -193,8 +181,7 @@ $(p t.p)
 
 #### Produces
 
-If any argument evaluates to true (`%.y`), true. If all arguments evaluate to
-false (`%.n`), false.
+If any argument evaluates to true (`%.y`), true. If all arguments evaluate to false (`%.n`), false.
 
 #### Examples
 
@@ -292,16 +279,11 @@ $(q t.q)
 
 #### Discussion
 
-The `?-` rune is for a conditional expression in which the type of `p`
-determines which branch is taken. Usually the type of `p` is a union of other
-types. There is no default branch.
+The `?-` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. There is no default branch.
 
-The compiler makes sure that your code neither misses a case of the union, nor
-includes a double case that isn't there. This is not special handling for `?-`,
-just a consequence of the semantics of `?:`, which `?-` reduces to.
+The compiler makes sure that your code neither misses a case of the union, nor includes a double case that isn't there. This is not special handling for `?-`, just a consequence of the semantics of `?:`, which `?-` reduces to.
 
-A missing case will throw the `mint-lost` error. An extra case will throw
-`mint-vain`.
+A missing case will throw the `mint-lost` error. An extra case will throw `mint-vain`.
 
 #### Examples
 
@@ -367,13 +349,11 @@ Three arguments, fixed.
 
 #### Produces
 
-If `p` produces true (`%.y`), then `q`. If `p` produces false (`%.n`), then `r`.
-If `p` is not a boolean, compiler yells at you.
+If `p` produces true (`%.y`), then `q`. If `p` produces false (`%.n`), then `r`. If `p` is not a boolean, compiler yells at you.
 
 #### Discussion
 
-If test analysis reveals that either branch is never taken, or if `p` is not a
-boolean, compilation fails. An untaken branch is indicated with `mint-lost`.
+If test analysis reveals that either branch is never taken, or if `p` is not a boolean, compilation fails. An untaken branch is indicated with `mint-lost`.
 
 Note also that all other branching expressions reduce to `?:`.
 
@@ -450,8 +430,7 @@ Three arguments, fixed.
 
 `?.` is just like `?:`, but with its last two subexpressions reversed.
 
-As is usual with inverted forms, use `?.` when the true-case expression is much
-taller and/or wider than the false-case expression.
+As is usual with inverted forms, use `?.` when the true-case expression is much taller and/or wider than the false-case expression.
 
 #### Examples
 
@@ -521,9 +500,7 @@ Three arguments, fixed.
 
 #### Discussion
 
-The type of the wing, `p`, must not be known to be either an atom or a cell, or
-else you'll get a `mint-vain` error at compile time. `mint-vain` means that one
-of the `?^` branches, `q` or `r`, is never taken.
+The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?^` branches, `q` or `r`, is never taken.
 
 #### Examples
 
@@ -589,9 +566,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-`?<` is used to force a crash when some condition `p` doesn't yield false
-(`%.n`). It can be used for type inference with the `?=` rune, much like the
-`?>` rune.
+`?<` is used to force a crash when some condition `p` doesn't yield false (`%.n`). It can be used for type inference with the `?=` rune, much like the `?>` rune.
 
 #### Examples
 
@@ -661,9 +636,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-`?>` is used to force a crash when some condition `p` doesn't yield true
-(`%.y`). It can be used for type inference, with the `?=` rune, to specify the
-type of a value.
+`?>` is used to force a crash when some condition `p` doesn't yield true (`%.y`). It can be used for type inference, with the `?=` rune, to specify the type of a value.
 
 #### Examples
 
@@ -769,10 +742,7 @@ $(r t.r)
 
 #### Discussion
 
-The `?+` rune is for a conditional expression in which the type of `p`
-determines which branch is taken. Usually the type of `p` is a union of other
-types. If `p`'s type doesn't match the case for any given branch, the default
-expression, `q`, is evaluated.
+The `?+` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. If `p`'s type doesn't match the case for any given branch, the default expression, `q`, is evaluated.
 
 If there is a case that is never taken you'll get a `mint-vain` error.
 
@@ -862,8 +832,7 @@ $(p t.p)
 
 #### Produces
 
-If ALL arguments evaluate to true (`%.y`), true (`%.y`). If one or more evalute
-to false (`%.n`), false (`%.n`).
+If ALL arguments evaluate to true (`%.y`), true (`%.y`). If one or more evalute to false (`%.n`), false (`%.n`).
 
 #### Examples
 
@@ -930,9 +899,7 @@ If `p` is an atom, `q`. If `p` is a cell, `r`.
 
 #### Discussion
 
-The type of the wing, `p`, must not be known to be either an atom or a cell, or
-else you'll get a `mint-vain` error at compile time. `mint-vain` means that one
-of the `?@` branches, `q` or `r`, is never taken.
+The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?@` branches, `q` or `r`, is never taken.
 
 #### Examples
 
@@ -1063,16 +1030,11 @@ Two arguments, fixed.
 
 #### Discussion
 
-`?=` is not as powerful as it might seem. For instance, it
-can't generate a loop -- you cannot (and should not) use it to
-test whether a `*` is a `(list @)`. Nor can it validate atomic
-auras.
+`?=` is not as powerful as it might seem. For instance, it can't generate a loop -- you cannot (and should not) use it to test whether a `*` is a `(list @)`. Nor can it validate atomic auras.
 
-Patterns should be as weak as possible. Unpack one layer of
-union at a time. Don't confirm things the type system knows.
+Patterns should be as weak as possible. Unpack one layer of union at a time. Don't confirm things the type system knows.
 
-For example, when matching from a tagged union for the type `[%foo p=@ q=[@ @]]`, the appropriate pattern is `[%foo *]`. You have one
-question, which is whether the head of the noun is `%foo`.
+For example, when matching from a tagged union for the type `[%foo p=@ q=[@ @]]`, the appropriate pattern is `[%foo *]`. You have one question, which is whether the head of the noun is `%foo`.
 
 A common error is `find.$`, meaning `p` is not a type.
 

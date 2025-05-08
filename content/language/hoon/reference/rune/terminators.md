@@ -24,8 +24,7 @@ desc = "The <code>==</code> rune is used to indicate the end of a 'jogging' or '
 
 +++
 
-The `--` and `==` are used as terminators: `--` for core expressions, and `==`
-for terminating a 'running' or 'jogging' series of Hoon expressions.
+The `--` and `==` are used as terminators: `--` for core expressions, and `==` for terminating a 'running' or 'jogging' series of Hoon expressions.
 
 ## `--` "hephep"
 
@@ -35,10 +34,7 @@ The `--` rune is used to indicate the end of a core expression.
 
 #### Discussion
 
-The `|%`, `|_`, and `|^` runes are used to create cores that can have
-arbitrarily many arms. When you have defined all the desired arms in a core
-expression (using the `++`, `+$`, and `+*` runes), use `--` to terminate the
-expression.
+The `|%`, `|_`, and `|^` runes are used to create cores that can have arbitrarily many arms. When you have defined all the desired arms in a core expression (using the `++`, `+$`, and `+*` runes), use `--` to terminate the expression.
 
 #### Examples
 
@@ -65,17 +61,11 @@ expression.
 
 #### Syntax
 
-The `==` rune is used to indicate the end of a 'jogging' or 'running' series of
-Hoon expressions (runes that take a variable number of arguments).
+The `==` rune is used to indicate the end of a 'jogging' or 'running' series of Hoon expressions (runes that take a variable number of arguments).
 
 #### Discussion
 
-Certain runes are used to create expressions that may include arbitrarily many
-subexpressions. Such expressions are terminated with the `==` rune. For example,
-the `:*` and `:~` runes are used to create a cell of any length. (The latter is
-just like the former except that it adds a null value at the end of the cell.)
-For another example, the `%=` rune used used to make arbitrarily many changes to
-a given wing value.
+Certain runes are used to create expressions that may include arbitrarily many subexpressions. Such expressions are terminated with the `==` rune. For example, the `:*` and `:~` runes are used to create a cell of any length. (The latter is just like the former except that it adds a null value at the end of the cell.) For another example, the `%=` rune used used to make arbitrarily many changes to a given wing value.
 
 #### Examples
 

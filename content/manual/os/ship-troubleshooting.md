@@ -7,8 +7,7 @@ aliases = ["docs/using/ship-troubleshooting/"]
 
 Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.
 
-This page contains resolutions to many of the most commonly encountered issues.
-If your issue is not covered here, please check out our [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki).
+This page contains resolutions to many of the most commonly encountered issues. If your issue is not covered here, please check out our [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki).
 
 ## Table of Contents
 
@@ -26,15 +25,11 @@ An ounce of prevention is worth a pound of cure, so let's first go over some bes
 
 Once your ship has been initialized (with the `-w` variation of the `./urbit` command), you should never do so a second time. If you do initialize it anew without special measures, you will experience trouble communicating with ships on the network you had talked to before.
 
-If you accidentally did this a second time, or want to intentionally start
-fresh, you need to perform a [factory reset](#factory-reset), which is explained in the next section.
+If you accidentally did this a second time, or want to intentionally start fresh, you need to perform a [factory reset](#factory-reset), which is explained in the next section.
 
 ### Do not delete your pier
 
-Urbit is stateful, meaning that it needs to hold onto all your data. If you
-delete your pier and start your ship again, you won't be able to talk to any
-ship you've talked to before. The only solution to this is performing a [factory
-reset](#factory-reset).
+Urbit is stateful, meaning that it needs to hold onto all your data. If you delete your pier and start your ship again, you won't be able to talk to any ship you've talked to before. The only solution to this is performing a [factory reset](#factory-reset).
 
 ### Keep track of the directory that you put your ship in
 
@@ -72,21 +67,13 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 A factory reset is when a ship tells the rest of the network to treat it as though the ship was just started for the first time again. Any ongoing or outstanding communication is forgotten and connections are reestablished from scratch.
 
-Factory resets often fix connectivity issues, but should only be used as a
-last resort. To find out how to perform a factory reset, check out our [Guide
-to Factory Resets](/manual/id/guide-to-resets). Before taking such a drastic measure, try
-other methods in this guide. You can also ask for help on
-in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community`.
+Factory resets often fix connectivity issues, but should only be used as a last resort. To find out how to perform a factory reset, check out our [Guide to Factory Resets](/manual/id/guide-to-resets). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community`.
 
 ### Reset `+code`
 
 **WARNING:** Do not reset your +code if you are using a hosted ship. You will be locked out. Please contact your hosting provider for more information.
 
-You login to Landscape using the camel-case phrase obtained from dojo by
-entering `+code`. For security reasons you may wish to change this code
-regularly. You may do so by entering `|code %reset` into dojo. Doing this
-will prevent [Bridge](https://developers.urbit.org/glossary/bridge) from being able to derive your code,
-meaning you will only be able to check it from dojo in the future.
+You login to Landscape using the camel-case phrase obtained from dojo by entering `+code`. For security reasons you may wish to change this code regularly. You may do so by entering `|code %reset` into dojo. Doing this will prevent [Bridge](https://developers.urbit.org/glossary/bridge) from being able to derive your code, meaning you will only be able to check it from dojo in the future.
 
 ## Operation Issues {% #operation-issues %}
 
@@ -108,26 +95,19 @@ Since version `0.8.0`, changes no longer automatically sync between the Unix sid
 
 ### I can't communicate with anyone
 
-Maybe you booted your ship twice, or ran it using old files. If this is the
-case, you must perform a [factory reset](#factory-reset).
+Maybe you booted your ship twice, or ran it using old files. If this is the case, you must perform a [factory reset](#factory-reset).
 
 ### I don't have the latest OTA
 
-You can check what build your ship is on by entering `+trouble` into dojo and
-reading the `%base` hash. If this does not match the latest hash published in
-the `urbit-dev` mailing list, you are behind.
+You can check what build your ship is on by entering `+trouble` into dojo and reading the `%base` hash. If this does not match the latest hash published in the `urbit-dev` mailing list, you are behind.
 
-Your sponsor may just be lagging behind, so sometimes this will resolve on its
-own with patience. Otherwise, try the procedure outlined [here](https://github.com/urbit/support/wiki/Missing-OTA).
+Your sponsor may just be lagging behind, so sometimes this will resolve on its own with patience. Otherwise, try the procedure outlined [here](https://github.com/urbit/support/wiki/Missing-OTA).
 
 ### I keep getting an `ames` error stack-trace
 
 You may see a message like this one: `/~zod/base/~2019.7.22..18.55.46..83a3/sys/vane/ames:<[line column].[line column]>`. This is a clay path to a Hoon file, pointing to the line and column where an expression crashed. This kind of error might be accompanied by a `crud` message.
 
-This means that another ship is sending invalid packets to you. This could be
-because one of the ships has not updated the other ship's "rift number", which
-is the number that starts at one and increments every time that ship performs a
-factory reset.
+This means that another ship is sending invalid packets to you. This could be because one of the ships has not updated the other ship's "rift number", which is the number that starts at one and increments every time that ship performs a factory reset.
 
 This can happen if they have the wrong keys of yours, or if you have the wrong keys of theirs. You can figure out who has the wrong keys by running this scry command in your dojo: `.^(* %j /=life=/shipname)`, where shipname is the other ship's name. Save that information. Then, go to the [Azimuth contract on Etherscan](https://etherscan.io/address/0x223c067f8cf28ae173ee5cafea60ca44c335fecb#readContract), scroll down to `32. points`, and put in the hexadecimal representation of the other ship's `@p`. You can find the hexadecimal representation by running ...
 
@@ -153,8 +133,7 @@ The above commands work if you have the wrong keys of other ships. If other ship
 
 ### I can talk to some ships, but I can't talk to my sponsor and some other ships
 
-This is usually the result of deleting your pier and starting your ship again. To fix
-this, you must perform a [factory reset](#factory-reset).
+This is usually the result of deleting your pier and starting your ship again. To fix this, you must perform a [factory reset](#factory-reset).
 
 ## Booting Issues {% #booting-issues %}
 
@@ -172,10 +151,7 @@ This means that you gave your development ship an invalid `@p`. So, you will get
 
 Try bringing it back up; it will often start working just fine again.
 
-However, if you get a `bail` error again, this is a serious issue and should be
-reported (see below). It's advised to keep the old files around to assist issue
-research. If you want to get back on the network immediately, you might want to
-perform a [factory reset](#factory-reset).
+However, if you get a `bail` error again, this is a serious issue and should be reported (see below). It's advised to keep the old files around to assist issue research. If you want to get back on the network immediately, you might want to perform a [factory reset](#factory-reset).
 
 #### Making a GitHub issue out of your `bail`
 
@@ -206,9 +182,7 @@ This means that your ship ran out of memory.
 
 2. Restart your ship. If you don't crash again, everything may be fine.
 
-3. If you **do** crash again, try running the following after your ship has shut down:
-   `./urbit-worker meld your-ship` (Replacing `your-ship` with the name/directory of your ship.)
-   This will attempt to compact the memory of your ship. Note that this may use large amounts of memory on the machine you are running it on, and will be very slow if the machine has little memory available.
+3. If you **do** crash again, try running the following after your ship has shut down: `./urbit-worker meld your-ship` (Replacing `your-ship` with the name/directory of your ship.) This will attempt to compact the memory of your ship. Note that this may use large amounts of memory on the machine you are running it on, and will be very slow if the machine has little memory available.
 
 4. If the above succeeds, but you still get `bail: meme` immediately, or after running for a little while, please [file an issue](https://github.com/urbit/urbit/issues). If you can, run `|mass` and share its output.
 

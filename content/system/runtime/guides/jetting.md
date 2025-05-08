@@ -49,8 +49,7 @@ $ <Nix build path>/bin/urbit -B urbit-v1.9.pill -F zod
 
 > As you work through this guide, version numbers will likely be older than the contemporary release version due to the pace of release.  We will update this guide if a version breaks the instructions.
 
-We will primarily work in the development ship (a fakeship or moon) on the files just mentioned, and in the `pkg/urbit` directory of the main Urbit repository, so we need a
-development process that allows us to quickly access each of these, move them into the appropriate location, and build necessary components. The basic development cycle will look like this:
+We will primarily work in the development ship (a fakeship or moon) on the files just mentioned, and in the `pkg/urbit` directory of the main Urbit repository, so we need a development process that allows us to quickly access each of these, move them into the appropriate location, and build necessary components. The basic development cycle will look like this:
 
 1.  Compose correct Hoon code.
 2.  Hint the Hoon code.
@@ -73,8 +72,7 @@ Inside of your development ship, sync `%clay` to Unix,
 > |mount %
 ```
 
-Then copy the entire `%base` desk out so that you can work with it and
-copy it back in as necessary.
+Then copy the entire `%base` desk out so that you can work with it and copy it back in as necessary.
 
 ```sh
 $ cp -r zod/base .
@@ -298,8 +296,7 @@ We will further define a few unit tests as checks on arm behavior in `tests/lib/
 
 (Here we are eliding a key point about contemporary Urbit development:  `/lib` code is considered userspace and thus ineligible for jet inclusion in the runtime.  This is a matter of development policy rather than technical capability.  We will zoom out to consider how to modify kernel code later.)
 
-Save the foregoing library code in `base/lib` and the generator code in
-`base/gen`; also, don't forget the unit tests!  Whenever you work in your preferred editor, you should work on the `base` copies, then move them back into the fakezod and synchronize before execution.
+Save the foregoing library code in `base/lib` and the generator code in `base/gen`; also, don't forget the unit tests!  Whenever you work in your preferred editor, you should work on the `base` copies, then move them back into the fakezod and synchronize before execution.
 
 ```sh
 $ cp -r base zod
@@ -315,12 +312,7 @@ OK      /lib/trig/test-factorial
 
 ### Jet construction
 
-Now that you have a developer cycle in place, let's examine what's
-necessary to produce a jet. A jet is a C function which replicates the
-behavior of a Hoon (Nock) gate. Jets have to be able to manipulate Urbit
-quantities within the binary, which requires both the proper affordances
-within the Hoon code (the interpreter hints) and support for
-manipulating Urbit nouns (atoms and cells) within C.
+Now that you have a developer cycle in place, let's examine what's necessary to produce a jet. A jet is a C function which replicates the behavior of a Hoon (Nock) gate. Jets have to be able to manipulate Urbit quantities within the binary, which requires both the proper affordances within the Hoon code (the interpreter hints) and support for manipulating Urbit nouns (atoms and cells) within C.
 
 Make a development branch for the jet changes first:
 
@@ -330,9 +322,7 @@ $ git branch example-jet
 $ git checkout example-jet
 ```
 
-Jet hints must provide a trail of symbols for the interpreter to know
-how to match the Hoon arms to the corresponding C code. Think of these
-as breadcrumbs. Here we have a two-deep scenario. Specifically, we mark the outermost arm with `~%` and an explicit reference to the Arvo core (the parent of `part`). We mark the inner arms with `~/` because their parent symbol can be determined from the context. The `@tas` token will tell the runtime (Vere) which C code matches the arm. All symbols in the nesting hierarchy must be included.
+Jet hints must provide a trail of symbols for the interpreter to know how to match the Hoon arms to the corresponding C code. Think of these as breadcrumbs. Here we have a two-deep scenario. Specifically, we mark the outermost arm with `~%` and an explicit reference to the Arvo core (the parent of `part`). We mark the inner arms with `~/` because their parent symbol can be determined from the context. The `@tas` token will tell the runtime (Vere) which C code matches the arm. All symbols in the nesting hierarchy must be included.
 
 ```hoon
 ~%  %trig  ..part  ~
@@ -348,8 +338,7 @@ We also need to add appropriate handles for the C code. This consists of several
 
 1.  Register the jet symbols and function names in `tree.c`.
 2.  Declare function prototypes in headers `q.h` and `w.h`.
-3.  Produce functions for compilation and linking in the
-    `pkg/noun/jets/e` directory.
+3.  Produce functions for compilation and linking in the `pkg/noun/jets/e` directory.
 
 The first two steps are fairly mechanical and straightforward.
 
@@ -396,15 +385,9 @@ For more information on `u3`, please check out the `u3` summary below or the off
 
 #### Declare function prototypes in headers.
 
-A `u3w` function is always the entry point for a jet. Every `u3w`
-function accepts a `u3noun` (a Hoon/Nock noun), validates it, and
-invokes the `u3q` function that implements the actual logic. The `u3q`
-function needs to accept the same number of atoms as the defining arm
-(since these same values will be extricated by the `u3w` function and
-passed to it).
+A `u3w` function is always the entry point for a jet. Every `u3w` function accepts a `u3noun` (a Hoon/Nock noun), validates it, and invokes the `u3q` function that implements the actual logic. The `u3q` function needs to accept the same number of atoms as the defining arm (since these same values will be extricated by the `u3w` function and passed to it).
 
-In this case, we have cited `u3we_trig_factorial` in `tree.c` and now
-must declare both it and `u3qe_trig_factorial`:
+In this case, we have cited `u3we_trig_factorial` in `tree.c` and now must declare both it and `u3qe_trig_factorial`:
 
 In `w.h`:
 
@@ -420,11 +403,7 @@ u3_noun u3qe_trig_factorial(u3_atom);
 
 #### Produce functions for compilation and linking.
 
-Given these function prototype declarations, all that remains is the
-actual definition of the function. Both functions will live in their own
-file; we find it the best convention to associate all arms of a core in
-a single file. In this case, create a file `pkg/noun/jets/e/trig.c` and
-define all of your `trig` jets therein.  (Here we show `++factorial` only.)
+Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig.c` and define all of your `trig` jets therein.  (Here we show `++factorial` only.)
 
 As with `++add`, we have to worry about direct and indirect atoms when carrying out arithmetic operations, prompting the use of GMP `mpz` operations.
 
@@ -481,9 +460,7 @@ As with `++add`, we have to worry about direct and indirect atoms when carrying 
   }
 ```
 
-This code merits ample discussion. Without focusing on the particular
-types used, read through the logic and look for the skeleton of a
-standard simple factorial algorithm.
+This code merits ample discussion. Without focusing on the particular types used, read through the logic and look for the skeleton of a standard simple factorial algorithm.
 
 `u3r` operations are used to extract Urbit-compatible types as C values.
 
@@ -521,8 +498,7 @@ Before proceeding to compose a more complicated floating-point jet, we should st
 
 The `u3` system allows you to extract Urbit nouns as atoms or cells.  Atoms may come in one of two forms: either they fit in 31 bits or less of a 32-bit unsigned integer, or they require more space. In the former case, you will use the singular functions such as `u3r_word` and `u3a_word` to extract and store information. If the atom is larger than this, however, you need to treat it a bit more like a C array, using the plural functions `u3r_words` and `u3a_words`. (For native sizes larger than 32 bits, such as double-precision floating-point numbers, replace `word` with `chub` in these.) Confusing a 31-bit-or-less integer with a 32+-bit integer means confusing a value with a pointer! Bad things will happen!
 
-An audit of the jet source code shows that the most commonly used `u3`
-functions include:
+An audit of the jet source code shows that the most commonly used `u3` functions include:
 
 1.  `u3a_free` frees memory allocated on the loom (Vere memory model).
 2.  `u3a_malloc` allocates memory on the loom (Vere memory model).
@@ -1055,26 +1031,17 @@ In the Hoon code we hinted some leaf node functions (`%ccc` for `++ccc` in our e
 
 There are 4 steps here.  Let's look at each in turn.
 
-1.  Section 1 names the C function that we want to invoke: `u3we_ccc()`.
-The precise manner in which it does this is by putting entries in an
-array of `u3j_harm`s.  The first one specifies the jet; the second one
-is empty and serves as a termination to the array, similar to how a C
-string is null terminated with a zero.  The jet registration supplies
-two fields `{".2", u3we_secp}`, but this does not initialize all of the
-fields of `u3j_harm`.  Other fields can be specified.
+1.  Section 1 names the C function that we want to invoke: `u3we_ccc()`. The precise manner in which it does this is by putting entries in an array of `u3j_harm`s.  The first one specifies the jet; the second one is empty and serves as a termination to the array, similar to how a C string is null terminated with a zero.  The jet registration supplies two fields `{".2", u3we_secp}`, but this does not initialize all of the fields of `u3j_harm`.  Other fields can be specified.
 
     The first field, with value ".2" in this example, is "arm 2".  `".2"` labels the axis of the arm in the core. With a `%fast` hint (`~/` sigfas ), we're hinting a gate, so the relevant arm formula is always just the entire battery at `+2`.
 
-    The second field, with value `u3we_ccc` in this example, is a function
-    pointer (to the C implementation of the jet).
+    The second field, with value `u3we_ccc` in this example, is a function pointer (to the C implementation of the jet).
 
-    The third field (absent here) is a flag to turn on verification of C
-    jet vs Hoon at run time.  It can take value `c3n` (which means verify at run time) or `c3y` (which means don't verify).  If not present, it is set to don't verify.
+    The third field (absent here) is a flag to turn on verification of C jet vs Hoon at run time.  It can take value `c3n` (which means verify at run time) or `c3y` (which means don't verify).  If not present, it is set to don't verify.
 
     There are additional flags; see ~/tlon/urbit/include/noun/jets.h
 
-2.  Section 2 associated the previous jet registration with the name
-`"ccc"`.  This must be the same symbol used in the Hoon hint.  We again have a “null terminated” (metaphorically) list, ending with `{}`.
+2.  Section 2 associated the previous jet registration with the name `"ccc"`.  This must be the same symbol used in the Hoon hint.  We again have a “null terminated” (metaphorically) list, ending with `{}`.
 
     Section 3 references structure built in step 2 and slots it under `bbb` (again, note that this is exactly the same symbol used in the hinting in Hoon).
 
@@ -1090,18 +1057,11 @@ fields of `u3j_harm`.  Other fields can be specified.
         { "bbb", 0,   _143_hex_hobo_bbb_d },
     ```
 
-    But note that the line in section 2 fill in the first 2 fields in the
-    struct, and the line in section 3 fills in the first three fields.
-    Section 2 is registering an array of `u3j_harm`, i.e. is registering an actual C
-    jet.
+    But note that the line in section 2 fill in the first 2 fields in the struct, and the line in section 3 fills in the first three fields. Section 2 is registering an array of `u3j_harm`, i.e. is registering an actual C jet.
 
-3.  Section 3 specifies `0` for the array of `u3j_harm` and is instead
-specifying an array of `u3j_core`, i.e. it is registering nesting of
-another core which is not a leaf node.
+3.  Section 3 specifies `0` for the array of `u3j_harm` and is instead specifying an array of `u3j_core`, i.e. it is registering nesting of another core which is not a leaf node.
 
-4.  Section 4 is much like section 3, but it's the root of this particular
-tree.  Section 4 is also an example of how a given node in the
-jet registration tree may have multiple children.
+4.  Section 4 is much like section 3, but it's the root of this particular tree.  Section 4 is also an example of how a given node in the jet registration tree may have multiple children.
 
 You should be able to register jets whether your nesting is 2 layers deep, 3 (like this example), or more.  You should also be able to register multiple jets at the same nesting level (e.g. a function `u3we_ddd()` which is a sibling of `u3we_ccc()` inside data structure `_143_hex_hobo_reco_d[]` ).
 
@@ -1109,8 +1069,7 @@ You should be able to register jets whether your nesting is 2 layers deep, 3 (li
 
 There are two C functions per jet, because separation of concerns is a good thing.
 
-The first C function—named `u3we_xxx()`—unpacks arguments from
-the Hoon code and gets them ready.
+The first C function—named `u3we_xxx()`—unpacks arguments from the Hoon code and gets them ready.
 
 The second C function -- named `u3qe_xxx()`—takes those arguments and actually performs the operations that parallel the Hoon code being jetted.
 
@@ -1425,10 +1384,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 
 1.  Live spot checks rely on you modifying the generator `trig-rs.hoon` and observing whether the jet works as expected.
 
-    When producing a library, one may use the `-build-file` thread to
-    build and load a library core through a face. Two fakezods can be
-    operated side-by-side in order to verify consistency between the
-    Hoon and C code.
+    When producing a library, one may use the `-build-file` thread to build and load a library core through a face. Two fakezods can be operated side-by-side in order to verify consistency between the Hoon and C code.
 
     ```hoon
     > =trig-rs -build-file %/lib/trig-rs/hoon

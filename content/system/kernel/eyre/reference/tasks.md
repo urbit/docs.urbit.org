@@ -234,39 +234,24 @@ See the [Managing CORS Origins](/system/kernel/eyre/guides/guide#managing-cors-o
 [%set-response url=@t entry=(unit cache-entry)]
 ```
 
-This `task` tells Eyre to set a cache entry for a URL path. Adding entries to
-Eyre's cache will make them much faster to load, and more capable of handling
-many connections.
+This `task` tells Eyre to set a cache entry for a URL path. Adding entries to Eyre's cache will make them much faster to load, and more capable of handling many connections.
 
-The `url` field is the URL path you want to bind with the cache entry. Note this
-will just be the URL path as a cord like `'/foo/bar/baz'`, it does not include
-the host, etc.
+The `url` field is the URL path you want to bind with the cache entry. Note this will just be the URL path as a cord like `'/foo/bar/baz'`, it does not include the host, etc.
 
-The `entry` field is a
-[`$cache-entry`](/system/kernel/eyre/reference/data-types#cache-entry) in a `unit`. If
-the unit is null, the specified `url` will be unbound and the cache entry
-removed. If non-null, the given `entry` will be added to the cache (or updated
-if the binding already exists).
+The `entry` field is a [`$cache-entry`](/system/kernel/eyre/reference/data-types#cache-entry) in a `unit`. If the unit is null, the specified `url` will be unbound and the cache entry removed. If non-null, the given `entry` will be added to the cache (or updated if the binding already exists).
 
-Each time the entry for a URL path is changed, its revision number will be
-incremented.
+Each time the entry for a URL path is changed, its revision number will be incremented.
 
-See the [`$cache-entry`](/system/kernel/eyre/reference/data-types#cache-entry) entry in
-Eyre's type reference for more details of the entry itself.
+See the [`$cache-entry`](/system/kernel/eyre/reference/data-types#cache-entry) entry in Eyre's type reference for more details of the entry itself.
 
 #### Returns
 
-Eyre gives a `%grow` `gift` in response to a `%set-response` `task`. A `%grow`
-`gift` looks like:
+Eyre gives a `%grow` `gift` in response to a `%set-response` `task`. A `%grow` `gift` looks like:
 
 ```hoon
 [%grow =path]
 ```
 
-The `path` will be of the format `/cache/[revision]/[url]`, for example
-`/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the
-entry is updated, including if it's removed, and is in `@ud` format. The url
-element uses `%t` [`++scot`](/language/hoon/reference/stdlib/4m#scot) encoding, so will
-need to be decoded with `%t` [`++slav`](/language/hoon/reference/stdlib/4m#slav).
+The `path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`++scot`](/language/hoon/reference/stdlib/4m#scot) encoding, so will need to be decoded with `%t` [`++slav`](/language/hoon/reference/stdlib/4m#slav).
 
 ---

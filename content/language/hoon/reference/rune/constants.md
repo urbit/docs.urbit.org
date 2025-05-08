@@ -3,9 +3,7 @@ title = "Constants (Atoms and Strings)"
 weight = 1
 +++
 
-The simplest expressions in every language are constants:
-atoms, strings, paths. (Strings and paths aren't all constants per
-se, because they have interpolations.)
+The simplest expressions in every language are constants: atoms, strings, paths. (Strings and paths aren't all constants per se, because they have interpolations.)
 
 ## Cold Atom
 
@@ -53,8 +51,7 @@ Path with interpolation.
 
 #### Produces
 
-A null-terminated list of the items, which are either constant `@ta` atoms
-(`knots`), or expressions producing a `knot`.
+A null-terminated list of the items, which are either constant `@ta` atoms (`knots`), or expressions producing a `knot`.
 
 #### Examples
 
@@ -185,8 +182,7 @@ Aura         Meaning                                 Example Literal Syntax
 
 #### Discussion
 
-A 'warm' atom is one whose type is inferred to be general, i.e., not just a
-single atom type.
+A 'warm' atom is one whose type is inferred to be general, i.e., not just a single atom type.
 
 ```
 > `@`12
@@ -198,8 +194,7 @@ nest-fail
 
 #### Produces
 
-A warm (variable) atom `q` with aura `p`. Use the Hoon compiler parser function
-`ream` to take a closer look:
+A warm (variable) atom `q` with aura `p`. Use the Hoon compiler parser function `ream` to take a closer look:
 
 ```
 > (ream '12')

@@ -53,14 +53,9 @@ Load from the Arvo namespace (scry) with a fake Nock instruction: Nock 12.
 
 #### Syntax
 
-Two arguments, with the second optionally split into an arbitrary number of
-elements.
+Two arguments, with the second optionally split into an arbitrary number of elements.
 
-While this rune technically takes a fixed number of arguments, `q` is usually
-split into at least two parts, and the tall form of this rune must be terminated
-with a `==`. Note also that the `==` does not make the arguments into a list as
-you might expect, so `q` must be explicitly null-terminated if its elements are
-specified separately.
+While this rune technically takes a fixed number of arguments, `q` is usually split into at least two parts, and the tall form of this rune must be terminated with a `==`. Note also that the `==` does not make the arguments into a list as you might expect, so `q` must be explicitly null-terminated if its elements are specified separately.
 
 {% table %}
 
@@ -104,9 +99,7 @@ The noun `q`, cast to the type `p`.
 
 #### Discussion
 
-Nock has no `12` instruction! But the virtual Nock
-used to run userspace code does. Nock `12` loads from a
-typed immutable namespace defined by its virtual context.
+Nock has no `12` instruction! But the virtual Nock used to run userspace code does. Nock `12` loads from a typed immutable namespace defined by its virtual context.
 
 Ordinarily a Hoon expression has access to no information but whatever can be found in the subject. The one exception is with the `.^` rune. It essentially allows you to request information from one of the Arvo vanes (modules).
 
@@ -278,8 +271,7 @@ Two arguments, fixed.
 
 Keep in mind that `p` and `q` can be arbitrary Hoon expressions, as long as they evaluate to the appropriate nouns for Nock evaluation.
 
-Note also that `.*` ("dottar") can be used to bypass the type system. It's
-therefore possible to use Hoon as a typeless language.
+Note also that `.*` ("dottar") can be used to bypass the type system. It's therefore possible to use Hoon as a typeless language.
 
 #### Examples
 
@@ -353,11 +345,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-Like Nock equality, `.=` ("dottis") tests whether two nouns are the same,
-ignoring invisible pointer structure. Because in a conventional noun
-implementation each noun has a lazy short hash, comparisons are fast unless the
-hash needs to be computed, or we are comparing separate copies of identical
-nouns. (Comparing large duplicates is a common cause of performance bugs.)
+Like Nock equality, `.=` ("dottis") tests whether two nouns are the same, ignoring invisible pointer structure. Because in a conventional noun implementation each noun has a lazy short hash, comparisons are fast unless the hash needs to be computed, or we are comparing separate copies of identical nouns. (Comparing large duplicates is a common cause of performance bugs.)
 
 #### Examples
 

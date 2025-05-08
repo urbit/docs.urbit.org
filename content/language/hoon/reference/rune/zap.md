@@ -108,10 +108,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-This produces the [`$hoon`](/language/hoon/reference/stdlib/4o#hoon) AST of
-expression `q`. The first argument, `p`, is always an example of the `$hoon`
-type, typically just the `*hoon` bunt value, and is used for type inference. The
-reason for `p` is just to handle transitions if the `$hoon` type changes.
+This produces the [`$hoon`](/language/hoon/reference/stdlib/4o#hoon) AST of expression `q`. The first argument, `p`, is always an example of the `$hoon` type, typically just the `*hoon` bunt value, and is used for type inference. The reason for `p` is just to handle transitions if the `$hoon` type changes.
 
 #### Examples
 
@@ -170,8 +167,7 @@ A cell whose tail is the product of `p`, and whose head is the static type of `p
 
 #### Discussion
 
-In Hoon, a dynamic type is a static type compiled at runtime. This type-noun
-cell is generally called a [`vase`](/language/hoon/reference/stdlib/4o#vase).
+In Hoon, a dynamic type is a static type compiled at runtime. This type-noun cell is generally called a [`vase`](/language/hoon/reference/stdlib/4o#vase).
 
 #### Examples
 
@@ -180,8 +176,7 @@ cell is generally called a [`vase`](/language/hoon/reference/stdlib/4o#vase).
 [#t/@ud q=1]
 ```
 
-If you want just the type value, use a 'type spear'. This is `-:!>`, i.e., the
-head of the cell produced by `!>`:
+If you want just the type value, use a 'type spear'. This is `-:!>`, i.e., the head of the cell produced by `!>`:
 
 ```
 > -:!>(1)
@@ -192,8 +187,7 @@ head of the cell produced by `!>`:
 
 ## `!<` "zapgal"
 
-Extracts a [`vase`](/language/hoon/reference/stdlib/4o#vase) to the given mold if
-its type nests.
+Extracts a [`vase`](/language/hoon/reference/stdlib/4o#vase) to the given mold if its type nests.
 
 #### Syntax
 
@@ -233,13 +227,11 @@ Two arguments, fixed.
 
 #### Produces
 
-The value of vase `q` typed with the type of mold `p` if possible, else a
-`nest-fail`.
+The value of vase `q` typed with the type of mold `p` if possible, else a `nest-fail`.
 
 #### Discussion
 
-This is something like a partial inverse to the `!>` rune and can be used to
-extract a typed value from a `vase`.
+This is something like a partial inverse to the `!>` rune and can be used to extract a typed value from a `vase`.
 
 #### Examples
 
@@ -298,17 +290,11 @@ Two arguments, fixed.
 
 #### Discussion
 
-This wraps the product of `q` in its inferred type. It's a raw version of
-[`!>`](#-zapgar). Unlike zapgar, `q` is not given a `p` face and its type
-information is not stripped to a raw noun.
+This wraps the product of `q` in its inferred type. It's a raw version of [`!>`](#-zapgar). Unlike zapgar, `q` is not given a `p` face and its type information is not stripped to a raw noun.
 
-The first field, `p`, must be an example of the
-[`$type`](/language/hoon/reference/stdlib/4o#type) type, typically just `*type` (the
-bunt of `$type`). The `p` argument is just so transitions can be handled if the
-`$type` type changes.
+The first field, `p`, must be an example of the [`$type`](/language/hoon/reference/stdlib/4o#type) type, typically just `*type` (the bunt of `$type`). The `p` argument is just so transitions can be handled if the `$type` type changes.
 
-It's unlikely you'd use this rune directly; [`!>`](#-zapgar) is much more
-typical.
+It's unlikely you'd use this rune directly; [`!>`](#-zapgar) is much more typical.
 
 #### Examples
 
@@ -392,8 +378,7 @@ Don't confuse the `!=` rune with:
 %.n
 ```
 
-The syntax difference is that a test for equality takes two subexpressions, and
-the `!=` rune only one.
+The syntax difference is that a test for equality takes two subexpressions, and the `!=` rune only one.
 
 ---
 
@@ -507,8 +492,7 @@ Three arguments, fixed.
 
 #### Discussion
 
-`p` is a wing reference like `foo`, `bar.foo`, etc. If `p` exists, `q`. If `p`
-does not exist, `r`. Essentially, this is like `?:` for wing existence.
+`p` is a wing reference like `foo`, `bar.foo`, etc. If `p` exists, `q`. If `p` does not exist, `r`. Essentially, this is like `?:` for wing existence.
 
 #### Examples
 
@@ -675,10 +659,7 @@ The product of `p`. If `p` crashes, no stack trace entries are given for that co
 
 #### Discussion
 
-`!.` is used to turn off a debugging stack trace option for any code you have in
-`p`. This rune can be embedded under a `!:` rune for inner loops of your code
-that you don't want or need to trace. This is especially useful if a trace
-overflows the stack.
+`!.` is used to turn off a debugging stack trace option for any code you have in `p`. This rune can be embedded under a `!:` rune for inner loops of your code that you don't want or need to trace. This is especially useful if a trace overflows the stack.
 
 #### Examples
 

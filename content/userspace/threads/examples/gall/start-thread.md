@@ -3,9 +3,7 @@ title = "Start Thread"
 weight = 1
 +++
 
-Here's an example of a barebones gall agent that just starts a thread.
-(This is not a generic thread starter, although it can be used as the
-basis for such.)
+Here's an example of a barebones gall agent that just starts a thread. (This is not a generic thread starter, although it can be used as the basis for such.)
 
 #### `thread-starter.hoon`
 

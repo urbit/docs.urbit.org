@@ -3,11 +3,9 @@ title = "Irregular forms"
 weight = 20
 +++
 
-While Hoon has a large amount of sugar syntax, some forms that may look irregular are
-actually regular wing syntax or another language feature, such as `,`.
+While Hoon has a large amount of sugar syntax, some forms that may look irregular are actually regular wing syntax or another language feature, such as `,`.
 
-When in doubt, you can use the [`!,` zapcom](/language/hoon/reference/rune/zap#-zapcom) rune to
-determine the AST to which Hoon parses an expression.
+When in doubt, you can use the [`!,` zapcom](/language/hoon/reference/rune/zap#-zapcom) rune to determine the AST to which Hoon parses an expression.
 
 ```
 > !,(*hoon c.b.a)
@@ -44,8 +42,7 @@ determine the AST to which Hoon parses an expression.
 
 ##### Reading guide
 
-Headings contain runes, phonetics and tokens. Description contains a link to the
-docs and a short description of the rune. Both regular and irregular forms are given.
+Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular and irregular forms are given.
 
 Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
@@ -381,8 +378,7 @@ See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular de
 
 `,` can serve in several capacities in Hoon programs:
 
-1. As sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode.
-    (Toggling out of structure mode is uncommon.)
+1. As sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode. (Toggling out of structure mode is uncommon.)
 
     ```
     > !,(*hoon ,[@t @t])
@@ -412,9 +408,7 @@ See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular de
     ]
     ```
     
-    (`$;` bucmic, or manual value mode, allows the use of value mode syntax to
-    construct a mold.  Concretely, it lets you build a mold out of `hoon` instead
-    of out of `spec`.  It is not commonly used.)
+    (`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `hoon` instead of out of `spec`.  It is not commonly used.)
     
     From value mode to structure mode:
 
@@ -430,8 +424,7 @@ See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular de
 
 2. As wing syntax for stripping a face.
 
-    For instance, a line similar to the following is present in many Gall agents
-    receiving HTTP requests via Eyre:
+    For instance, a line similar to the following is present in many Gall agents receiving HTTP requests via Eyre:
 
     ```
     =/  ,request-line:server  (parse-request-line:server url.request.inbound-request)

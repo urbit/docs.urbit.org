@@ -108,46 +108,19 @@ desc = "<code>[%bcwt p=(list spec)]</code>: form a type from a union of other ty
 
 +++
 
-The `$` family of runes is used for defining custom types. Strictly speaking,
-these runes are used to produce `spec`s, which we call 'structures'.
+The `$` family of runes is used for defining custom types. Strictly speaking, these runes are used to produce `spec`s, which we call 'structures'.
 
 ## Overview
 
-Structures are abstract syntax trees for `type`s (see the documentation on
-[basic](/language/hoon/reference/basic) and
-[advanced](/language/hoon/reference/advanced) types for the
-precise definition of `type`). Structures are compile-time values of `type` which
-at runtime may be used to produce a 'mold'.
+Structures are abstract syntax trees for `type`s (see the documentation on [basic](/language/hoon/reference/basic) and [advanced](/language/hoon/reference/advanced) types for the precise definition of `type`). Structures are compile-time values of `type` which at runtime may be used to produce a 'mold'.
 
-A mold is a function from nouns to nouns used to validate values of the type to
-which the structure defines. A mold can do two things at runtime. First, it may
-'clam' a noun, which validates the shape of the noun to be one that fits the
-abstract syntax tree given by the `spec` that produced the mold. Failing this
-validation results in a crash. Secondly, a mold may also be used to produce an
-example value of the type to which is corresponds, called the 'bunt value'. The
-bunt value is used as a placeholder for sample values that may be passed to a
-gate that accepts the corresponding type.
+A mold is a function from nouns to nouns used to validate values of the type to which the structure defines. A mold can do two things at runtime. First, it may 'clam' a noun, which validates the shape of the noun to be one that fits the abstract syntax tree given by the `spec` that produced the mold. Failing this validation results in a crash. Secondly, a mold may also be used to produce an example value of the type to which is corresponds, called the 'bunt value'. The bunt value is used as a placeholder for sample values that may be passed to a gate that accepts the corresponding type.
 
-A correct mold is a **normalizer**: an idempotent function across all nouns. If
-the sample of a gate has type `%noun`, and its body obeys the constraint that
-for any x, `=((mold x) (mold (mold x)))`, it's a normalizer and can be used as a
-mold. Hoon is not dependently typed and so can't check idempotence statically,
-so we can't actually tell if a mold matches this definition perfectly. This is
-not actually a problem.
+A correct mold is a **normalizer**: an idempotent function across all nouns. If the sample of a gate has type `%noun`, and its body obeys the constraint that for any x, `=((mold x) (mold (mold x)))`, it's a normalizer and can be used as a mold. Hoon is not dependently typed and so can't check idempotence statically, so we can't actually tell if a mold matches this definition perfectly. This is not actually a problem.
 
-In any case, since molds are just functions, we can use functional programming
-to assemble interesting molds. For instance, `(map foo bar)` is a table from
-mold `foo` to mold `bar`. `map` is not a mold; it's a function that makes a
-mold. Molds and mold builders are generally described together.
+In any case, since molds are just functions, we can use functional programming to assemble interesting molds. For instance, `(map foo bar)` is a table from mold `foo` to mold `bar`. `map` is not a mold; it's a function that makes a mold. Molds and mold builders are generally described together.
 
-`spec`s contain more information and draw finer distinctions than `type`s,
-which is to say that a given type may have more than one valid `spec` defining
-it, and thus downconversion from `spec` to `type` is lossy. Thus structure
-validation (done with [`$|`](#-bucbar), which is a more restrictive validation
-than that performed by molds, is a rare use case. Except for direct raw input,
-it's generally a faux pas to validate structure at runtime -- or even in userspace.
-Nonetheless they are sometimes utilized for types that will be more performant
-if they satisfy some validating gate.
+`spec`s contain more information and draw finer distinctions than `type`s, which is to say that a given type may have more than one valid `spec` defining it, and thus downconversion from `spec` to `type` is lossy. Thus structure validation (done with [`$|`](#-bucbar), which is a more restrictive validation than that performed by molds, is a rare use case. Except for direct raw input, it's generally a faux pas to validate structure at runtime -- or even in userspace. Nonetheless they are sometimes utilized for types that will be more performant if they satisfy some validating gate.
 
 ---
 
@@ -193,19 +166,9 @@ Two arguments, fixed.
 
 #### Discussion
 
-`$|` is used for validation of values at a finer level than that of types.
-Recall that a given value of `type` can be equivalently defined by more than one
-`spec`. For performance reasons, it may be beneficial to restrict oneself to
-values of a given type that adhere to an abstract syntax tree specified by some
-subset of those `spec`s that may be used to define a given type.
+`$|` is used for validation of values at a finer level than that of types. Recall that a given value of `type` can be equivalently defined by more than one `spec`. For performance reasons, it may be beneficial to restrict oneself to values of a given type that adhere to an abstract syntax tree specified by some subset of those `spec`s that may be used to define a given type.
 
-`$|` takes two arguments: a structure `a` and a gate `b` that produces a `flag`
-that is used to validate values produced by the mold generated by `a` at
-runtime. `$|(a b)` is a gate that takes in a noun `x` and first pins the product
-of clamming `a` with `x`, call this `foo`. Then it calls `b` on `foo`. It
-asserts that the product of `(b foo)` is `&`, and then produces `foo`. This is
-equivalent to the following (which is not how `$|` is actually defined but has
-the same behavior):
+`$|` takes two arguments: a structure `a` and a gate `b` that produces a `flag` that is used to validate values produced by the mold generated by `a` at runtime. `$|(a b)` is a gate that takes in a noun `x` and first pins the product of clamming `a` with `x`, call this `foo`. Then it calls `b` on `foo`. It asserts that the product of `(b foo)` is `&`, and then produces `foo`. This is equivalent to the following (which is not how `$|` is actually defined but has the same behavior):
 
 ```hoon
 |=  x=*
@@ -214,14 +177,7 @@ the same behavior):
 foo
 ```
 
-For example, the elements of a `set` are treated as being unordered, but the
-values will necessarily possess an order by where they are in the memory. Thus
-if every `set` is stored using the same order scheme then faster algorithms
-involving `set`s may be written. Furthermore, if you just place elements in the
-`set` randomly, it may be mistreated by algorithms already in place that are
-expecting a certain order. This is not the same thing as casting - it is forcing
-a type to have a more specific set of values than its mold would suggest. This
-rune should rarely be used, but it is extremely important when it is.
+For example, the elements of a `set` are treated as being unordered, but the values will necessarily possess an order by where they are in the memory. Thus if every `set` is stored using the same order scheme then faster algorithms involving `set`s may be written. Furthermore, if you just place elements in the `set` randomly, it may be mistreated by algorithms already in place that are expecting a certain order. This is not the same thing as casting - it is forcing a type to have a more specific set of values than its mold would suggest. This rune should rarely be used, but it is extremely important when it is.
 
 #### Examples
 
@@ -249,13 +205,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   |=(a=(tree) ?:(=(~ a) & ~(apt in a)))
 ```
 
-Here [`|$`](/language/hoon/reference/rune/bar#-barbuc) is used to define a mold
-builder that takes in a mold (given the face `item`) and creates a structure
-consisting of a `tree` of `item`s with `$|` that is validated with the gate
-`|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with
-functions for handling `set`s, and `apt` is an arm in that door that checks that
-the values in the `tree` are arranged in the particular way that `set`s are
-arranged in Hoon, namely 'ascending `+mug` hash order'.
+Here [`|$`](/language/hoon/reference/rune/bar#-barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
 
 ---
 
@@ -308,8 +258,7 @@ One argument, fixed.
 
 #### Discussion
 
-`$_` discards the sample it's supposedly normalizing and produces its
-**example** instead.
+`$_` discards the sample it's supposedly normalizing and produces its **example** instead.
 
 #### Examples
 
@@ -365,8 +314,7 @@ A variable number of arguments.
 - None.
 {% /table %}
 
-Each item may be an atom or (more commonly) a cell. The atom or head of the cell
-_must_ be a constant (`%foo`, `%1`, `%.y`, etc).
+Each item may be an atom or (more commonly) a cell. The atom or head of the cell _must_ be a constant (`%foo`, `%1`, `%.y`, etc).
 
 #### AST
 
@@ -382,9 +330,7 @@ The default of the last item `i` in `p`. Crashes if `p` is empty.
 
 A `$%` is a tagged union, a common data model.
 
-Make sure the last item in your `$%` terminates, or the default will
-be an infinite loop! Alteratively, you can use `$~` to define a custom
-type default value.
+Make sure the last item in your `$%` terminates, or the default will be an infinite loop! Alteratively, you can use `$~` to define a custom type default value.
 
 #### Examples
 
@@ -482,8 +428,7 @@ The tuple the length of `p`.
 
 ## `$<` "bucgal"
 
-Filters a pre-existing mold to obtain a mold that excludes a particular
-structure.
+Filters a pre-existing mold to obtain a mold that excludes a particular structure.
 
 #### Syntax
 
@@ -523,8 +468,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-This can be used to obtain type(s) from a list of types `q` that do not satisfy a
-requirement given by `p`.
+This can be used to obtain type(s) from a list of types `q` that do not satisfy a requirement given by `p`.
 
 #### Examples
 
@@ -590,8 +534,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-This can be used to obtain type(s) from a list of types `q` that satisfy a
-requirement given by `p`.
+This can be used to obtain type(s) from a list of types `q` that satisfy a requirement given by `p`.
 
 #### Examples
 
@@ -733,8 +676,7 @@ Two arguments, fixed.
 
 #### Normalizes to
 
-Default, if the sample is an atom; `p`, if the head of the sample
-is an atom; `q` otherwise.
+Default, if the sample is an atom; `p`, if the head of the sample is an atom; `q` otherwise.
 
 #### Defaults to
 
@@ -802,8 +744,7 @@ Two arguments, fixed.
 <!--
 #### Normalizes to
 
-Default, if the sample is an atom; `p`, if the head of the sample
-is an atom; `q` otherwise.
+Default, if the sample is an atom; `p`, if the head of the sample is an atom; `q` otherwise.
 
 #### Defaults to
 
@@ -859,9 +800,7 @@ Two arguments, fixed.
 $&(combined-mold=spec normalizing-gate=hoon)
 ```
 
-Here `combined-mold` is a tagged union type (typically made with `$%`) and
-`normalizing-gate` is a gate which accepts values of `combined-mold` and
-normalizes them to be of one particular type in `combined-mold`.
+Here `combined-mold` is a tagged union type (typically made with `$%`) and `normalizing-gate` is a gate which accepts values of `combined-mold` and normalizes them to be of one particular type in `combined-mold`.
 
 #### AST
 
@@ -879,9 +818,7 @@ The default of the last type listed in `p`, normalized with the normalizing gate
 
 #### Discussion
 
-This rune is used to "upgrade" or "repair" values of a structure, typically from
-an old version to a new version. For example, this may happen when migrating
-state after updating an app.
+This rune is used to "upgrade" or "repair" values of a structure, typically from an old version to a new version. For example, this may happen when migrating state after updating an app.
 
 #### Examples
 
@@ -892,8 +829,7 @@ state after updating an app.
 +$  adapting  $&(combined |=(?-(-.a %0 [%1 1 +.a], %1 a)))
 ```
 
-Here `adapting` is a structure that bunts to `[%1 ^]` but also normalizes from
-`[%0 @]` if called on such a noun.
+Here `adapting` is a structure that bunts to `[%1 ^]` but also normalizes from `[%0 @]` if called on such a noun.
 
 ---
 
@@ -950,12 +886,9 @@ The product of `p`.
 
 #### Discussion
 
-You should make sure that the product type of `p` nests under `q`. You can check
-the default value of some structure (custom type) `r` with `*r`. (See the [`^*`
-rune](/language/hoon/reference/rune/ket#-kettar).)
+You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](/language/hoon/reference/rune/ket#-kettar).)
 
-Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter
-uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
+Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
 
 #### Examples
 
@@ -1045,8 +978,7 @@ The default of `p`.
 
 #### Produces
 
-A structure which applies `p` if its sample is an atom, `q` if its sample is a
-cell.
+A structure which applies `p` if its sample is an atom, `q` if its sample is a cell.
 
 #### Examples
 
@@ -1116,9 +1048,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-Note that the Hoon compiler is at least slightly clever about
-compiling structures, and almost never has to actually put in a gate
-layer (as seen in the expansion above) to apply a `$=`.
+Note that the Hoon compiler is at least slightly clever about compiling structures, and almost never has to actually put in a gate layer (as seen in the expansion above) to apply a `$=`.
 
 #### Examples
 
@@ -1191,9 +1121,7 @@ The last item in `p`.
 
 #### Discussion
 
-For a union of atoms, a `$?` is fine. For more complex nouns, always try to use
-a [`$%`](#-buccen), [`$@`](#-bucpat) or [`$^`](#-bucket), at least if you expect
-your structure to be used as a normalizer.
+For a union of atoms, a `$?` is fine. For more complex nouns, always try to use a [`$%`](#-buccen), [`$@`](#-bucpat) or [`$^`](#-bucket), at least if you expect your structure to be used as a normalizer.
 
 #### Examples
 

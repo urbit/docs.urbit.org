@@ -5,7 +5,7 @@ nodes = [110, 113]
 objectives = ["Distinguish nouns, cells, and atoms.", "Apply auras to transform an atom.", "Identify common Hoon molds, such as cells, lists, and tapes.", "Pin a face to the subject.", "Make a decision at a branch point.", "Distinguish loobean from boolean operations.", "Slam a gate (call a function)."]
 +++
 
-{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS110 - Syntax.mp4" %}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}
 
 _This module will discuss the fundamental data concepts of Hoon and how programs handle control flow._
 

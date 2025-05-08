@@ -96,7 +96,7 @@ Functions are implemented in Hoon with a special kind of [core](/glossary/core) 
 
 ### Building a Gate
 
-{% video src="https://media.urbit.org/docs/hoon-school-videos/HS120 - Gates.mp4" /%}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS120%20-%20Gates.mp4" %}
 
 Syntactically, a gate is a `|=` [bartis](/language/hoon/reference/rune/bar#-bartis) rune with two children:  a [spec](/language/hoon/reference/stdlib/4o#spec) (specification of input) and a [hoon](/language/hoon/reference/stdlib/4o#hoon) (body). Think of just replacing the `=/` [tisfas](/language/hoon/reference/rune/tis#-tisfas) with the `|=` bartis:
 
@@ -244,7 +244,7 @@ In technical language, we describe Hoon as a _statically typed_ language.  This 
 
 ##  Coordinating Files
 
-{% video src="https://media.urbit.org/docs/hoon-school-videos/HS111 - Filesystem.mp4" /%}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS111%20-%20Filesystem.mp4" %}
 
 In pragmatic terms, an Urbit ship is what results when you successfully boot a new ship.  If you are in the host OS, what you see is an apparently-empty folder:
 
@@ -363,7 +363,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 ### Coding Piecemeal
 
-If you need to test code without completing it, you can stub out as-yet-undefined arms with the `!!` {% tolltip label="zapzap" href="/language/hoon/reference/rune/zap#-zapzap" /%} crash rune.  `!!` is the only rune which has no children, and it's helpful when you need something to satisfy Hoon syntax but aren't ready to flesh out the program yet.
+If you need to test code without completing it, you can stub out as-yet-undefined arms with the `!!` [zapzap](/language/hoon/reference/rune/zap#-zapzap) crash rune.  `!!` is the only rune which has no children, and it's helpful when you need something to satisfy Hoon syntax but aren't ready to flesh out the program yet.
 
 ### Building Code Generally
 

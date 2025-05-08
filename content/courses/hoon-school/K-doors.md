@@ -171,7 +171,7 @@ Basically, whenever you use `%-` [cenhep](/language/hoon/reference/rune/cen#-cen
 
 ##  Doors
 
-{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS150 - Doors.mp4" %}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS150 - Doors.mp4" %}
 
 [Doors](/glossary/door) are another kind of [core](/glossary/core) whose [arms](/glossary/arm) evaluate to make [gates](/glossary/gate), as we just discovered.  The difference is that a door also has its own [sample](/glossary/sample). A door is the most general case of a function in Hoon.  (You could say a "gate-building core" or a "function-building function" to clarify what the intent of most of these are.)
 
@@ -403,7 +403,7 @@ Recall the quadratic equation [door](/glossary/door).
 
 ##  Key-Value Pairs:  `map` as Door
 
-{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS183 - Maps and Sets.mp4" %}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183 - Maps and Sets.mp4" %}
 
 In general terms, a [map](/language/hoon/reference/stdlib/2o#map) is a pattern from a key to a value.  You can think of a dictionary, or an index, or a data table.  Essentially it scans for a particular key, then returns the data associated with that key (which may be any [noun](/glossary/noun)).
 

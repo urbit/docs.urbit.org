@@ -16,7 +16,7 @@ This lesson will introduce another [core](/glossary/core) to solve a specific us
 
 ##  Repeating Yourself Using a Trap
 
-{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS130 - Traps.mp4" %}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS130 - Traps.mp4" %}
 
 Computers were built and designed to carry out tasks which were too dainty and temperamental for humans to repeat consistently, or too prodigiously numerous for humans to ever complete.  At this point, you know how to build code that can make a decision between two branches, two different Hoon expressions.  Computers can decide between alternatives, but they also need to carry out a task until some condition is met.  (We can think of it as a recipe step, like “crack five eggs into a bowl”.  Until that process is complete, we as humans continue to carry out the equivalent action again and again until the process has been completed.)
 
@@ -267,7 +267,7 @@ Two tools that may help:
 
 ##  Cores
 
-{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS133 - Cores.mp4" %}
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS133 - Cores.mp4" %}
 
 So far we have introduced and worked with a few key structures:
 

@@ -5,7 +5,7 @@ nodes = [184]
 objectives = ["Produce loobean expressions.", "Reorder conditional arms.", "Switch against a union with or without default."]
 +++
 
-{% embed src="https://media.urbit.org/docs/hoon-school-videos/HS184 - Logical Operations.mp4" %}
+{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS184 - Logical Operations.mp4" %}
 
 _Although you've been using various of the `?` [wut](/language/hoon/reference/rune/wut) runes for a while now, let's wrap up some loose ends.  This module will cover the nature of loobean logic and the rest of the `?` wut runes._
 

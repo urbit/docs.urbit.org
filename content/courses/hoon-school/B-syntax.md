@@ -5,7 +5,7 @@ nodes = [110, 113]
 objectives = ["Distinguish nouns, cells, and atoms.", "Apply auras to transform an atom.", "Identify common Hoon molds, such as cells, lists, and tapes.", "Pin a face to the subject.", "Make a decision at a branch point.", "Distinguish loobean from boolean operations.", "Slam a gate (call a function)."]
 +++
 
-{% embed src="https://media.urbit.org/docs/hoon-school-videos/HS110 - Syntax.mp4" %}
+{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS110 - Syntax.mp4" %}
 
 _This module will discuss the fundamental data concepts of Hoon and how programs handle control flow._
 
@@ -149,7 +149,7 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 
 ##  Verbs (Runes)
 
-{% embed src="https://media.urbit.org/docs/hoon-school-videos/HS113 - Basic Coding.mp4" %}
+{% embed url="https://media.urbit.org/docs/hoon-school-videos/HS113 - Basic Coding.mp4" %}
 
 The backbone of any Hoon expression is a scaffolding of [runes](/glossary/rune) , which are essentially mathematical relationships between daughter components.  If nouns are nouns, then runes are verbs:  they describe how nouns relate.  Runes provide the structural and logical relationship between noun values.
 

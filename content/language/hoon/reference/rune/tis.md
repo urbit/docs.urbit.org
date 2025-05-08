@@ -108,23 +108,15 @@ desc = "<code>[$tswt p=wing q=hoon r=hoon s=hoon]</code>: conditionally change o
 
 +++
 
-These runes modify the subject. (Or more precisely, they
-evaluate at least one of their subexpressions with a modified subject.)
+These runes modify the subject. (Or more precisely, they evaluate at least one of their subexpressions with a modified subject.)
 
 ## Overview
 
-Hoon doesn't have variables in the ordinary sense. If you want to bind a name
-to a value, e.g., `a` to `12`, you do so by pinning `12` to the subject and
-associating the name with it. This sort of operation is done with the `=`
-family of runes.
+Hoon doesn't have variables in the ordinary sense. If you want to bind a name to a value, e.g., `a` to `12`, you do so by pinning `12` to the subject and associating the name with it. This sort of operation is done with the `=` family of runes.
 
-Let's say you have some old subject `p`. To 'pin' a value to the head means to
-modify the subject by repacing it with a cell of `[new-value p]`. The head of
-the cell is the new value. So to pin `12` with the face `a` the new subject
-would be: `[a=12 p]`.
+Let's say you have some old subject `p`. To 'pin' a value to the head means to modify the subject by repacing it with a cell of `[new-value p]`. The head of the cell is the new value. So to pin `12` with the face `a` the new subject would be: `[a=12 p]`.
 
-Of course there are many variations on ways to modify the subject, useful for
-different situations. Hence the whole family of `=` runes.
+Of course there are many variations on ways to modify the subject, useful for different situations. Hence the whole family of `=` runes.
 
 ---
 
@@ -198,8 +190,7 @@ the product of `q`, with the product of `p` taken as the subject.
 
 ## `=|` "tisbar"
 
-Combine a named noun with the subject by "bunting" (producing the default value)
-of a given mold.
+Combine a named noun with the subject by "bunting" (producing the default value) of a given mold.
 
 #### Syntax
 
@@ -245,11 +236,9 @@ Two arguments, fixed.
 
 #### Discussion
 
-The default (or 'bunt') value of `p` is pinned to the head of the subject.
-Usually `p` includes a name for ease of reference.
+The default (or 'bunt') value of `p` is pinned to the head of the subject. Usually `p` includes a name for ease of reference.
 
-Speaking more loosely, `=|` usually "declares a variable" which is
-"uninitialized," presumably because you'll set it in a loop or similar.
+Speaking more loosely, `=|` usually "declares a variable" which is "uninitialized," presumably because you'll set it in a loop or similar.
 
 #### Examples
 
@@ -371,15 +360,11 @@ Two arguments, fixed.
 
 #### Produces
 
-`p` evaluates to a noun with some namespace. From within `q` you may access
-`p`'s names without a wing path (i.e., you can use face `b` rather than `b.p`).
+`p` evaluates to a noun with some namespace. From within `q` you may access `p`'s names without a wing path (i.e., you can use face `b` rather than `b.p`).
 
 #### Discussion
 
-This is especially useful for calling arms from an imported library core or for
-calling arms from a stdlib core repeatedly. For example, JSON reparsers like
-`so:dejs:format` and `of:dejs:format` can be called as `so` and `of` after
-doing:
+This is especially useful for calling arms from an imported library core or for calling arms from a stdlib core repeatedly. For example, JSON reparsers like `so:dejs:format` and `of:dejs:format` can be called as `so` and `of` after doing:
 
 ```hoon
 =,  dejs:format
@@ -460,10 +445,7 @@ Three arguments, fixed.
 
 #### Discussion
 
-Technically the `=.` rune doesn't change the subject. It creates a new subject
-just like the old one except for a changed value at `p`. Note that the mutation
-uses [`%_` ("cencab")](/language/hoon/reference/rune/cen#_-cencab), so the type at `p`
-doesn't change. Trying to change the value type results in a `nest-fail`.
+Technically the `=.` rune doesn't change the subject. It creates a new subject just like the old one except for a changed value at `p`. Note that the mutation uses [`%_` ("cencab")](/language/hoon/reference/rune/cen#_-cencab), so the type at `p` doesn't change. Trying to change the value type results in a `nest-fail`.
 
 #### Examples
 
@@ -532,9 +514,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-`=-` is just like `=+` but its subexpressions are reversed. `=-` looks better
-than `=+` when the expression you're pinning to the subject is much larger than
-the expression that uses it.
+`=-` is just like `=+` but its subexpressions are reversed. `=-` looks better than `=+` when the expression you're pinning to the subject is much larger than the expression that uses it.
 
 #### Examples
 
@@ -607,9 +587,7 @@ Four arguments, fixed.
 - `r` is an expression that produces `[p-value new-q-value]`.
 - `s` is some more code to be evaluted against the modified subject.
 
-This is a bit like doing `=/` and `=.` at the same time. It's useful for state
-machines, where you want to produce both effects and a new state. For example,
-many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip card _this)`. In the `++on-poke` arm, you might have something like:
+This is a bit like doing `=/` and `=.` at the same time. It's useful for state machines, where you want to produce both effects and a new state. For example, many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip card _this)`. In the `++on-poke` arm, you might have something like:
 
 ```hoon
 =^  cards  state
@@ -621,9 +599,7 @@ This may also remind you of Haskell's State monad.
 
 #### Examples
 
-The `og` core is a stateful pseudo-random number generator.
-We have to change the core state every time we generate a
-random number, so we use `=^`:
+The `og` core is a stateful pseudo-random number generator. We have to change the core state every time we generate a random number, so we use `=^`:
 
 ```
 ~zod:dojo> =+  rng=~(. og 420)
@@ -754,9 +730,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-The subject of the `=+` expression, call it `a`, becomes the cell `[p a]` for
-the evaluation of `q`. That is, `=+` 'pins a value', `p`, to the head of the
-subject.
+The subject of the `=+` expression, call it `a`, becomes the cell `[p a]` for the evaluation of `q`. That is, `=+` 'pins a value', `p`, to the head of the subject.
 
 Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
@@ -777,8 +751,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ## `=;` "tismic"
 
-Combine a named noun with the subject, possibly with type annotation; inverted
-order.
+Combine a named noun with the subject, possibly with type annotation; inverted order.
 
 #### Syntax
 
@@ -825,8 +798,7 @@ Three arguments, fixed.
 
 #### Discussion
 
-`=;` is exactly like `=/` except that the order of its last two subexpressions
-is reversed.
+`=;` is exactly like `=/` except that the order of its last two subexpressions is reversed.
 
 #### Examples
 
@@ -909,9 +881,7 @@ r
 
 #### Discussion
 
-`p` can be either a name or a `name=type`. If it's just a name, `=/` ("tisfas")
-"declares a type-inferred variable." If it has a type, `=/` "declares a
-type-checked variable."
+`p` can be either a name or a `name=type`. If it's just a name, `=/` ("tisfas") "declares a type-inferred variable." If it has a type, `=/` "declares a type-checked variable."
 
 #### Examples
 
@@ -1059,13 +1029,9 @@ Three arguments, fixed.
 
 #### Discussion
 
-`=*` assigns a name to an expression that will be evaluated in each place the
-name is dereferenced. This allows you to "write" through it to the original
-subject `axis`. `q` is recorded in the type information of `p`, and `q` is
-calculated every time you use `p`.
+`=*` assigns a name to an expression that will be evaluated in each place the name is dereferenced. This allows you to "write" through it to the original subject `axis`. `q` is recorded in the type information of `p`, and `q` is calculated every time you use `p`.
 
-This rune has some similarities with macros, and some similarities with aliases,
-but it is not really either.
+This rune has some similarities with macros, and some similarities with aliases, but it is not really either.
 
 This rune is commonly used to give a Gall agent's state the name `state` like:
 
@@ -1073,9 +1039,7 @@ This rune is commonly used to give a Gall agent's state the name `state` like:
 =*  state  -
 ```
 
-This lets you reference the whole `state` while also being able to reference its
-individual elements like `foo` and `bar`, without having to do `foo.state`,
-`bar.state`, etc.
+This lets you reference the whole `state` while also being able to reference its individual elements like `foo` and `bar`, without having to do `foo.state`, `bar.state`, etc.
 
 #### Examples
 
@@ -1144,11 +1108,7 @@ s
 
 #### Discussion
 
-Use `=?` to replace the value of leg `p` with `r` on condition `q`. As
-usual, we are not actually mutating the subject, just creating
-a new subject with a changed value. The change in value includes a
-type check against the old subject; the type of `r` must nest under
-the type of `p`.
+Use `=?` to replace the value of leg `p` with `r` on condition `q`. As usual, we are not actually mutating the subject, just creating a new subject with a changed value. The change in value includes a type check against the old subject; the type of `r` must nest under the type of `p`.
 
 #### Examples
 

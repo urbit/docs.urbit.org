@@ -4,15 +4,11 @@ template = "doc.html"
 weight = 4
 +++
 
-The Dojo is our shell; it processes system commands and returns output. It's a
-good place to quickly experiment with Urbit. On the surface the Dojo is just a
-Hoon REPL. On the inside, the Dojo is a system for operating on and transforming
-data in Urbit.
+The Dojo is our shell; it processes system commands and returns output. It's a good place to quickly experiment with Urbit. On the surface the Dojo is just a Hoon REPL. On the inside, the Dojo is a system for operating on and transforming data in Urbit.
 
 ### Quickstart
 
-You can use the Dojo to run arbitrary Hoon code, as well as non-Hoon system
-commands.
+You can use the Dojo to run arbitrary Hoon code, as well as non-Hoon system commands.
 
 #### Math
 
@@ -31,10 +27,7 @@ Tall-form Hoon may require multiple lines:
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the
-subject](https://developers.urbit.org/glossary/subject).  The Dojo
-has its own subject and that's where Hoon's equivalent of variables, called
-faces, are stored.
+Hoon uses something called [the subject](https://developers.urbit.org/glossary/subject).  The Dojo has its own subject and that's where Hoon's equivalent of variables, called faces, are stored.
 
 Use `=var` to save faces to the Dojo subject.
 
@@ -42,8 +35,7 @@ Use `=var` to save faces to the Dojo subject.
 ~your-urbit:dojo> =foo (add 2 2)
 ```
 
-Note, however, that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a
-face in a `.hoon` file in this way.
+Note, however, that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a face in a `.hoon` file in this way.
 
 #### System commands
 
@@ -53,8 +45,7 @@ Use `=dir` to set the current working directory:
 ~your-urbit:dojo> =dir %/gen
 ```
 
-(`%` represents your current directory. For a complete explanation on urbit
-paths, see the [filesystem section](#filesystem).)
+(`%` represents your current directory. For a complete explanation on urbit paths, see the [filesystem section](#filesystem).)
 
 Generators (files in `/gen`) are run with `+`:
 
@@ -76,11 +67,7 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
 ### Generators
 
-Generators are short Hoon scripts, saved as `.hoon` files in the `/gen`
-directory. Many Dojo commands exist in the form of generators. The syntax for
-running a generator is `+genname` for a generator saved as `genname.hoon` in the
-`%base` desk. For generators on other desks, you can use the syntax
-`+desk!genname`.
+Generators are short Hoon scripts, saved as `.hoon` files in the `/gen` directory. Many Dojo commands exist in the form of generators. The syntax for running a generator is `+genname` for a generator saved as `genname.hoon` in the `%base` desk. For generators on other desks, you can use the syntax `+desk!genname`.
 
 #### `+cat`
 
@@ -92,15 +79,13 @@ Accepts a path and displays the file. Similar to Unix `cat`.
 
 #### `+code`
 
-Generates a code that is used to remotely log into your ship. No
-arguments.
+Generates a code that is used to remotely log into your ship. No arguments.
 
 ```
 ~your-urbit:dojo> +code
 ```
 
-You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](https://developers.urbit.org/glossary/bridge)
-from being able to derive your code in the future.
+You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](https://developers.urbit.org/glossary/bridge) from being able to derive your code in the future.
 
 #### `+ls`
 
@@ -113,10 +98,7 @@ Similar to Unix `ls`. Accepts a path.
 
 #### `+pill/solid`
 
-Compile the current state of the kernel and output a noun. Usually downloaded to
-a file in unix. This generator takes a series of desks to include as its
-argument. The first desk must be the base desk that contains the Arvo kernel,
-standard library and related files - typically `%base`.
+Compile the current state of the kernel and output a noun. Usually downloaded to a file in unix. This generator takes a series of desks to include as its argument. The first desk must be the base desk that contains the Arvo kernel, standard library and related files - typically `%base`.
 
 ```
 ~your-urbit:dojo> .urbit/pill +pill/solid %base %landscape %webterm
@@ -134,15 +116,13 @@ Generate a recursive directory listing. Takes a path.
 
 The hood is the system daemon. See `gen/hood` and `app/hood`.
 
-`|hi` - Sends a direct message. Sort of like Unix `write`. Accepts
-an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
+`|hi` - Sends a direct message. Sort of like Unix `write`. Accepts an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
 
 ```
 ~your-urbit:dojo> |hi ~binzod "you there?"
 ```
 
-`|dojo/link` / `|dojo/unlink` - Link / unlink a CLI app - may or may not be remote.
-Accepts an optional ship name and a mandatory app name.
+`|dojo/link` / `|dojo/unlink` - Link / unlink a CLI app - may or may not be remote. Accepts an optional ship name and a mandatory app name.
 
 ```
 ~your-urbit:dojo> |dojo/link ~talsur-todres %octo
@@ -150,15 +130,13 @@ Accepts an optional ship name and a mandatory app name.
 ~your-urbit:dojo> |dojo/link %chat-cli
 ```
 
-`|mass` - Prints the current memory usage of all the kernel modules.
-No arguments.
+`|mass` - Prints the current memory usage of all the kernel modules. No arguments.
 
 ```
 ~your-urbit:dojo> |mass
 ```
 
-`|breload` - Reloads a kernel module (vane) from source. Accepts any
-number of vane names.
+`|breload` - Reloads a kernel module (vane) from source. Accepts any number of vane names.
 
 ```
 ~your-urbit:dojo> |breload %clay %eyre
@@ -170,13 +148,9 @@ number of vane names.
 
 #### Sources and sinks
 
-A Dojo command is either a **source** or a **sink**. A source is just something
-that can be printed to your console or the result of some computation. A
-sink is an **effect**: a change to the filesystem, a network message, a
-change to your environment, or a typed message to an app.
+A Dojo command is either a **source** or a **sink**. A source is just something that can be printed to your console or the result of some computation. A sink is an **effect**: a change to the filesystem, a network message, a change to your environment, or a typed message to an app.
 
-Sources can be chained together, but we can only produce one effect per
-command.
+Sources can be chained together, but we can only produce one effect per command.
 
 #### Sinks
 
@@ -191,8 +165,7 @@ Set any environment variable:
 44
 ```
 
-Make sure to note that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a
-variable in a `.hoon` file in this way.
+Make sure to note that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a variable in a `.hoon` file in this way.
 
 #### Special variables
 
@@ -218,8 +191,7 @@ Save a new `.hoon` file in `gen`:
 ~your-urbit:dojo> *%/gen/foo/hoon '# hello'
 ```
 
-The last component of the path is expected to be the mark (or mime
-type).
+The last component of the path is expected to be the mark (or mime type).
 
 #### `.` - Export to Unix
 
@@ -263,34 +235,28 @@ Use a function to get the status code from an http request:
 
 `+http[s]://example.com` - sends a GET request
 
-`+http[s]://example.com &json [%s 'hi']` - sends a POST request with the
-JSON `"hi"` in the body.
+`+http[s]://example.com &json [%s 'hi']` - sends a POST request with the JSON `"hi"` in the body.
 
-`-http[s]://example.com &json [%s 'hi']` - sends a PUT request with the
-JSON `"hi"` in the body.
+`-http[s]://example.com &json [%s 'hi']` - sends a PUT request with the JSON `"hi"` in the body.
 
 Note that the first of these is a source while the last two are sinks.
 
 #### `+` - Generators
 
-Generators are simple Hoon scripts loaded from the filesystem. They live
-in `gen/`.
+Generators are simple Hoon scripts loaded from the filesystem. They live in `gen/`.
 
-An example of a generator that is built into your urbit is `+code`. It produces
-the code needed to log into your ship remotely.
+An example of a generator that is built into your urbit is `+code`. It produces the code needed to log into your ship remotely.
 
 ```
 ~your-urbit:dojo> +code
 fintyr-haldet-fassev-solhex
 ```
 
-Generators on desks other than `%base` can be run with the syntax
-`+desk!generator`.
+Generators on desks other than `%base` can be run with the syntax `+desk!generator`.
 
 ### Variables
 
-You can use `=` to set an environment variable in Dojo, but there are
-a few reserved names that have special uses.
+You can use `=` to set an environment variable in Dojo, but there are a few reserved names that have special uses.
 
 #### `dir`
 
@@ -339,6 +305,4 @@ The current urbit ship. Read-only.
 
 ### Troubleshooting
 
-If you encounter `%dy-edit-busy` while entering commands, it is
-because your Dojo is blocked on a timer or an HTTP request. Type backspace
-and your Dojo will end the blocked command.
+If you encounter `%dy-edit-busy` while entering commands, it is because your Dojo is blocked on a timer or an HTTP request. Type backspace and your Dojo will end the blocked command.

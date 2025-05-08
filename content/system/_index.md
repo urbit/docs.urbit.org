@@ -4,13 +4,9 @@ weight = 20
 sort_by = "weight"
 +++
 
-This section of the docs contains guides and reference material for the three
-basic components of the system: the Arvo kernel, the Vere runtime and Azimuth,
-the PKI and identity system on the Ethereum blockchain.
+This section of the docs contains guides and reference material for the three basic components of the system: the Arvo kernel, the Vere runtime and Azimuth, the PKI and identity system on the Ethereum blockchain.
 
-While most of the app-related documentation is in the [Userspace](/userspace)
-section, the [Kernel](/system/kernel) documentation is a useful reference when
-interacting with Vanes from apps.
+While most of the app-related documentation is in the [Userspace](/userspace) section, the [Kernel](/system/kernel) documentation is a useful reference when interacting with Vanes from apps.
 
 {% grid %}
 

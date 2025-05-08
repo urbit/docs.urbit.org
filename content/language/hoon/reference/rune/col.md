@@ -117,9 +117,7 @@ The cell of `p` and `q`.
 
 #### Discussion
 
-Hoon expressions actually use the same "autocons" pattern as Nock
-formulas. If you're assembling expressions (which usually only the
-compiler does), `[a b]` is the same as `:-(a b)`.
+Hoon expressions actually use the same "autocons" pattern as Nock formulas. If you're assembling expressions (which usually only the compiler does), `[a b]` is the same as `:-(a b)`.
 
 #### Examples
 
@@ -470,8 +468,7 @@ $(p t.p)
 
 #### Discussion
 
-Note that this does not produce a `list` type, it just produces a
-null-terminated n-tuple. To make it a proper `list` it must be cast or molded.
+Note that this does not produce a `list` type, it just produces a null-terminated n-tuple. To make it a proper `list` it must be cast or molded.
 
 #### Examples
 

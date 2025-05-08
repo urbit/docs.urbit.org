@@ -3,12 +3,9 @@ title = "Scry Reference"
 weight = 4
 +++
 
-Gall's scry interface is mainly used to scry into the individual agents it's
-running. The vane itself does have its own interface, however. Both [agent
-scries](#agent-scries) and [vane scries](#vane-scries) are documented below.
+Gall's scry interface is mainly used to scry into the individual agents it's running. The vane itself does have its own interface, however. Both [agent scries](#agent-scries) and [vane scries](#vane-scries) are documented below.
 
-Note that for all agent scries and most vane scries, `q.beak`, where there'd
-usually be a `desk`, will be the agent name instead, like:
+Note that for all agent scries and most vane scries, `q.beak`, where there'd usually be a `desk`, will be the agent name instead, like:
 
 ```
 .^(some-type %gx /=agent-name-here=/some/path/noun)
@@ -16,10 +13,7 @@ usually be a `desk`, will be the agent name instead, like:
 
 {% callout %}
 
-**Important:** Vane scries are differentiated from agent scries by an extra
-empty (`%$`) element at the beginning of the `spur` (the path after the
-`beak`), like: `/=agent-name/$` or `/=agent-name=//some/more/fields`. Without
-that empty element, Gall will try route the scry to an agent instead.
+**Important:** Vane scries are differentiated from agent scries by an extra empty (`%$`) element at the beginning of the `spur` (the path after the `beak`), like: `/=agent-name/$` or `/=agent-name=//some/more/fields`. Without that empty element, Gall will try route the scry to an agent instead.
 
 {% /callout %}
 
@@ -28,22 +22,13 @@ that empty element, Gall will try route the scry to an agent instead.
 In order to hit the `+on-peek` arm of a Gall agent, you need to:
 
 1. Put the agent in `q.beak` of the scry path (where the `desk` usually goes), like `/=some-agent=`.
-2. Make sure the beginning of the `spur` is *not* an empty `%$` element, as
-   that will route the scry to the [vane endpoints](#vane-scries) instead. An
-   agent scry must be `/=some-agent=/some/path` not `/=some-agent=//some/path`.
+2. Make sure the beginning of the `spur` is *not* an empty `%$` element, as that will route the scry to the [vane endpoints](#vane-scries) instead. An agent scry must be `/=some-agent=/some/path` not `/=some-agent=//some/path`.
 
-Any `care` can be used (dependent on what the agent accepts, of course). The
-most common is `%x`.
+Any `care` can be used (dependent on what the agent accepts, of course). The most common is `%x`.
 
 {% callout %}
 
-Note that `%x` cares alone must include an extra `mark` field at the end of the
-`spur`. This mark field lets Gall perform any necessary mark conversions before
-returning your data. For plain unmarked data, you can just use the `%noun`
-mark. As an example, if an agent specifies an endpoint `/x/some/path` and just
-returns ordinary data, you'd do `.^(some-type %gx
-/=some-agent=/some/path/noun)`. If the endpoint returns a `%json` mark or
-whatever (and that's what you want), you'd put that at the end instead.
+Note that `%x` cares alone must include an extra `mark` field at the end of the `spur`. This mark field lets Gall perform any necessary mark conversions before returning your data. For plain unmarked data, you can just use the `%noun` mark. As an example, if an agent specifies an endpoint `/x/some/path` and just returns ordinary data, you'd do `.^(some-type %gx /=some-agent=/some/path/noun)`. If the endpoint returns a `%json` mark or whatever (and that's what you want), you'd put that at the end instead.
 
 {% /callout %}
 
@@ -51,10 +36,7 @@ whatever (and that's what you want), you'd put that at the end instead.
 
 ## Vane scries
 
-Gall itself provides the special vane-level endpoints listed below. They are
-organized by the `care`. In order to hit the vane-level endpoints, the
-beginning of the the `spur` (e.g. the `path` after the `beak`) *must* be a `%$`
-empty element. For example:
+Gall itself provides the special vane-level endpoints listed below. They are organized by the `care`. In order to hit the vane-level endpoints, the beginning of the the `spur` (e.g. the `path` after the `beak`) *must* be a `%$` empty element. For example:
 
 ```hoon
 .^(desk %gd /=acme=/$)
@@ -62,15 +44,11 @@ empty element. For example:
 .^((list path) %gt /=acme=//foo)
 ```
 
-Note you can use `$` to make the last element empty since it won't allow a
-trailing `/`. Note how in the third example, the empty element is at the
-*beginning* of the `spur` and *after* the `beak`. If you fail to include this
-empty element, Gall will try route the scry to an agent for handling instead.
+Note you can use `$` to make the last element empty since it won't allow a trailing `/`. Note how in the third example, the empty element is at the *beginning* of the `spur` and *after* the `beak`. If you fail to include this empty element, Gall will try route the scry to an agent for handling instead.
 
 ### `%d`: get desk of app
 
-A scry with a `%d` care and an agent in `q.beak` will
-give you the desk that agent is on.
+A scry with a `%d` care and an agent in `q.beak` will give you the desk that agent is on.
 
 #### Produces
 
@@ -87,8 +65,7 @@ A `desk`
 
 ### `%e`: running apps
 
-A scry with an `%e` care will give you the agents on the desk given in
-`q.beak`.
+A scry with an `%e` care will give you the agents on the desk given in `q.beak`.
 
 #### Produces
 
@@ -115,9 +92,7 @@ A `(set [=dude live=?])`, where `live` is true if running and false if not.
 
 ### `%f`: nonces of apps
 
-A scry with a care of `%f` and anything in `q.beak` will produce the
-subscription nonces of all apps. You are unlikely to use this, it's
-mostly for kernel debugging.
+A scry with a care of `%f` and anything in `q.beak` will produce the subscription nonces of all apps. You are unlikely to use this, it's mostly for kernel debugging.
 
 #### Produces
 
@@ -145,9 +120,7 @@ A `(map dude @)` where the `@` is the nonce.
 
 ### `%n`: get nonce of subscription
 
-A scry with a care of `%n`, an agent in `q.beak` and a path of
-`//[ship]/[agent]/[wire]` will produce the nonce for that subscription.
-You are unlikely to use this, it's mostly for kernel debugging.
+A scry with a care of `%n`, an agent in `q.beak` and a path of `//[ship]/[agent]/[wire]` will produce the nonce for that subscription. You are unlikely to use this, it's mostly for kernel debugging.
 
 #### Produces
 
@@ -157,12 +130,9 @@ A `@`.
 
 ### `%t`: remote scry subpaths
 
-A scry with a `%t` care, an agent in `q.beak` and a path of `//some/path`
-will give you the list of remote scry subpaths bound under the given
-path.
+A scry with a `%t` care, an agent in `q.beak` and a path of `//some/path` will give you the list of remote scry subpaths bound under the given path.
 
-See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
-details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 
@@ -179,8 +149,7 @@ A `(list path)`
 
 ### `%u`: check if installed
 
-A scry with a `%u` care will check whether the given agent is installed and
-running.
+A scry with a `%u` care will check whether the given agent is installed and running.
 
 #### Produces
 
@@ -203,8 +172,7 @@ A `?`
 
 ### `%v`: get agent state
 
-A scry with a `%v` care will return the data of an agent whether it is running
-or not.  The agent is supplied as the `dude` (second) position of the `beak`.
+A scry with a `%v` care will return the data of an agent whether it is running or not.  The agent is supplied as the `dude` (second) position of the `beak`.
 
 #### Produces
 
@@ -248,11 +216,9 @@ A `egg-any` (versioned passthrough to `egg`)
 
 ### `%w`: latest revision of path
 
-A scry with a `%w` care and an agent in `q.beak` will get the latest revision
-number of the bound remote scry path given in the `spur`.
+A scry with a `%w` care and an agent in `q.beak` will get the latest revision number of the bound remote scry path given in the `spur`.
 
-See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
-details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 
@@ -262,32 +228,25 @@ A `cass:clay`, specifically the `%ud` kind.
 
 ### `%x`: remote scry file
 
-A scry with a `%x` care and an agent in `q.beak` will get the value
-bound at the remote scry path given in the `spur`. The revision of the
-file must be given in the `beak` portion of the scry path. The general
-format is therefore:
+A scry with a `%x` care and an agent in `q.beak` will get the value bound at the remote scry path given in the `spur`. The revision of the file must be given in the `beak` portion of the scry path. The general format is therefore:
 
 ```hoon
 [%gx /[ship]/[agent]/[file revision]//[file path]
 ```
 
-See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
-details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 
-The type returned is the raw `noun` from the `page`. If the file has
-been tombstoned or does not exist, the scry will fail.
+The type returned is the raw `noun` from the `page`. If the file has been tombstoned or does not exist, the scry will fail.
 
 ---
 
 ### `%z`: hash of value at path
 
-A scry with a `%z` care and an agent in `q.beak` will get the hash identifier
-of the value bound at the remote scry path given in the `spur`.
+A scry with a `%z` care and an agent in `q.beak` will get the hash identifier of the value bound at the remote scry path given in the `spur`.
 
-See the [remote scry guide](/userspace/apps/guides/remote-scry) for more
-details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 

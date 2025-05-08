@@ -199,9 +199,7 @@ Four arguments, fixed.
 
 #### Semantics
 
-A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided
-implementation of monadic bind. This rune takes a gate `bind` which takes a mold
-`mold` and produces an implementation of monadic bind.
+A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `bind` which takes a mold `mold` and produces an implementation of monadic bind.
 
 #### Desugaring
 
@@ -214,27 +212,17 @@ expr2
 
 #### Discussion
 
-`;<` is much like Haskell `do` notation. You have a sequence of events you'd
-like to run such that each past the first depends on the output of the previous
-one. The output of the previous one may not be of the correct type to use as an
-input to the next one, and so an adapter such as `+biff` is needed.
+`;<` is much like Haskell `do` notation. You have a sequence of events you'd like to run such that each past the first depends on the output of the previous one. The output of the previous one may not be of the correct type to use as an input to the next one, and so an adapter such as `+biff` is needed.
 
-`;<` differs from [`;~`](#-micsig) in that it takes a gate which takes a mold
-that produces an implementation of monadic bind, rather than taking an
-implementation of monadic bind directly.
+`;<` differs from [`;~`](#-micsig) in that it takes a gate which takes a mold that produces an implementation of monadic bind, rather than taking an implementation of monadic bind directly.
 
-`;<` can be used to glue a pipeline together to run an asynchronous function or
-event. This can be helpful when deferring parts of a computation based on
-external data.
+`;<` can be used to glue a pipeline together to run an asynchronous function or event. This can be helpful when deferring parts of a computation based on external data.
 
 We remark that you can switch binds in the middle of a sequence of `;<`.
 
 #### Examples
 
-[`+biff`](/language/hoon/reference/stdlib/2a/#biff) is the unit monad's
-implementation of monadic bind. That is to say, it takes a unit `a` and a gate
-`b` that accepts a noun that produces a unit, and extracts the value from `a` to
-pass as a sample to `b`.
+[`+biff`](/language/hoon/reference/stdlib/2a/#biff) is the unit monad's implementation of monadic bind. That is to say, it takes a unit `a` and a gate `b` that accepts a noun that produces a unit, and extracts the value from `a` to pass as a sample to `b`.
 
 We illustrate the usage of `;<` with `+biff` with a `map` of atoms:
 
@@ -244,8 +232,7 @@ We illustrate the usage of `;<` with `+biff` with a `map` of atoms:
 [~ 3]
 ```
 
-A single usage of `;<` only serves to apply the binding function to the output
-of `expr1`:
+A single usage of `;<` only serves to apply the binding function to the output of `expr1`:
 
 ```
 > ;<  a=@  _biff  (~(get by m) 1)
@@ -301,32 +288,24 @@ One argument, fixed.
 
 #### Produces
 
-A [`marl`](/language/hoon/reference/stdlib/5e#marl), i.e., a list of
-[`manx`](/language/hoon/reference/stdlib/5e#manx). A `manx` is a noun that
-represents a single XML node.
+A [`marl`](/language/hoon/reference/stdlib/5e#marl), i.e., a list of [`manx`](/language/hoon/reference/stdlib/5e#manx). A `manx` is a noun that represents a single XML node.
 
 #### Discussion
 
 tl;dr -- `;+` converts a `manx` to a `marl`.
 
-`;+` is a Sail rune. Sail is a part of Hoon used for creating and operating on
-nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail
-document can be used to generate a static website.
+`;+` is a Sail rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-In Sail a single XML node is represented by a `manx`. A single
-<code><p&gt;</code> node `manx` can be produced in the following way:
+In Sail a single XML node is represented by a `manx`. A single <code><p&gt;</code> node `manx` can be produced in the following way:
 
 ```
 > ;p: This will be rendered as an XML node.
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a
-single `manx` to a `marl`, use the `;+` rune.
+Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a single `manx` to a `marl`, use the `;+` rune.
 
-One interesting thing about Sail is that it allows you to use complex Hoon
-expressions to choose from among several nodes to render. The `;+` rune can take
-such a complex expression.
+One interesting thing about Sail is that it allows you to use complex Hoon expressions to choose from among several nodes to render. The `;+` rune can take such a complex expression.
 
 #### Examples
 
@@ -396,15 +375,9 @@ Two arguments, fixed.
 
 #### Discussion
 
-In an old version of Hoon, molds would return their bunt value when
-molding failed. Micmic was useful because it would make them crash
-rather than bunt on failure. In current Hoon, molds always crash on
-failure, so micmic is strictly unnecessary. However, it's still
-sometimes used for stylistic reasons, to clearly indicate "I'm molding"
-rather than "I'm merely calling a function".
+In an old version of Hoon, molds would return their bunt value when molding failed. Micmic was useful because it would make them crash rather than bunt on failure. In current Hoon, molds always crash on failure, so micmic is strictly unnecessary. However, it's still sometimes used for stylistic reasons, to clearly indicate "I'm molding" rather than "I'm merely calling a function".
 
-It can also sometimes be useful to force structure-mode parsing of cell
-molds when molding, rather than using buccol's irregular form.
+It can also sometimes be useful to force structure-mode parsing of cell molds when molding, rather than using buccol's irregular form.
 
 #### Examples
 
@@ -530,8 +503,7 @@ One fixed argument, then a variable number of arguments.
 
 #### Produces
 
-The gates in `q` are composed together using the gate `p` as an intermediate
-function, which transforms a `q` product and a `q` gate into a `q` sample.
+The gates in `q` are composed together using the gate `p` as an intermediate function, which transforms a `q` product and a `q` gate into a `q` sample.
 
 #### Expands to
 
@@ -569,21 +541,15 @@ function, which transforms a `q` product and a `q` gate into a `q` sample.
 
 #### Discussion
 
-Apparently `;~` is a "Kleisli arrow." It's also a close cousin of the infamous
-"monad." Don't let that bother you. Hoon doesn't know anything about category
-theory, so you don't need to either.
+Apparently `;~` is a "Kleisli arrow." It's also a close cousin of the infamous "monad." Don't let that bother you. Hoon doesn't know anything about category theory, so you don't need to either.
 
 `;~` is often used in parsers, but is not only for parsers.
 
-This can be thought of as user-defined function composition; instead of simply
-nesting the gates in `q`, each is passed individually to `p` with the product
-of the previous gate, allowing arbitrary filtering, transformation, or
-conditional application.
+This can be thought of as user-defined function composition; instead of simply nesting the gates in `q`, each is passed individually to `p` with the product of the previous gate, allowing arbitrary filtering, transformation, or conditional application.
 
 #### Examples
 
-A simple "parser." `trip` converts a `cord` (atomic string) to
-a `tape` (linked string).
+A simple "parser." `trip` converts a `cord` (atomic string) to a `tape` (linked string).
 
 ```
 > =cmp |=([a=tape b=$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
@@ -666,19 +632,13 @@ One argument, fixed.
 
 #### Produces
 
-A [`marl`](/language/hoon/reference/stdlib/5e#marl), i.e., a list of
-[`manx`](/language/hoon/reference/stdlib/5e#manx). A `manx` is a noun that
-represents a single XML node.
+A [`marl`](/language/hoon/reference/stdlib/5e#marl), i.e., a list of [`manx`](/language/hoon/reference/stdlib/5e#manx). A `manx` is a noun that represents a single XML node.
 
 #### Discussion
 
-`;*` is a Sail rune. Sail is a part of Hoon used for creating and operating on
-nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail
-document can be used to generate a static website.
+`;*` is a Sail rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.
-Often this rune is used with an expression, `p`, that includes one or more `;=`
-subexpressions.
+If you need a complex Hoon expression to produce a `marl`, use the `;*` rune. Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
 
 (See also [`;=`](#-mictis).)
 
@@ -751,26 +711,20 @@ A variable number of arguments.
 
 #### Produces
 
-A [`marl`](/language/hoon/reference/stdlib/5e#marl), i.e., a list of
-[`manx`](/language/hoon/reference/stdlib/5e#manx). A `manx` is a noun that
-represents a single XML node.
+A [`marl`](/language/hoon/reference/stdlib/5e#marl), i.e., a list of [`manx`](/language/hoon/reference/stdlib/5e#manx). A `manx` is a noun that represents a single XML node.
 
 #### Discussion
 
-`;=` is a [Sail](/language/hoon/guides/sail) rune. Sail is a part of Hoon used for
-creating and operating on nouns that represent XML nodes. With the appropriate
-rendering pipeline, a Sail document can be used to generate a static website.
+`;=` is a [Sail](/language/hoon/guides/sail) rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-In Sail a single XML node is represented by a `manx`. A single `<p>` node `manx`
-can be produced in the following way:
+In Sail a single XML node is represented by a `manx`. A single `<p>` node `manx` can be produced in the following way:
 
 ```
 > ;p: This will be rendered as an XML node.
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a
-series of `manx` nodes to a `marl`, use the `;=` rune.
+Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a series of `manx` nodes to a `marl`, use the `;=` rune.
 
 (See also [`;*`](#-mictar).)
 

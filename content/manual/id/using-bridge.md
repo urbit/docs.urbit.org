@@ -23,8 +23,7 @@ Alternatively, Bridge can be run locally. It's more complicated, but we recommen
 To use Bridge:
 
 - Unzip the .zip file that you downloaded (bridge-$version.zip).
-- Open up your command line interface (Terminal on
-  X, Command Prompt on Windows).
+- Open up your command line interface (Terminal on X, Command Prompt on Windows).
 - Navigate to the bridge-$version directory, where $version is the appropriate version number.
 - Run this command: `python3 -m http.server 5000 --bind 127.0.0.1.`
 
@@ -42,13 +41,7 @@ If you were given points by Tlon you likely already fully own them. But if someo
 
 After you access your Ethereum address, if a point was sent to that address, you'll come to a page that has an `Incoming Transfers` header, under which is a graphic. Click the `Details ->` link under that graphic.
 
-Now you'll be on the management page of your point. The transfer isn't completed
-yet, so click `Accept incoming transfer`. If you are transferring to yourself
-and do not wish to [factory reset](https://developers.urbit.org/glossary/reset), check the box labeled
-`Retain proxies and key configuration, in case of transferring to self`.
-Otherwise leave the box unchecked, ensuring that your ship will be factory reset upon
-transfer and thus no Azimuth data from the previous owner (namely proxies and
-networking keys) will be retained. Then press the `Generate and Sign Transaction` button, followed by the `Send Transaction` button.
+Now you'll be on the management page of your point. The transfer isn't completed yet, so click `Accept incoming transfer`. If you are transferring to yourself and do not wish to [factory reset](https://developers.urbit.org/glossary/reset), check the box labeled `Retain proxies and key configuration, in case of transferring to self`. Otherwise leave the box unchecked, ensuring that your ship will be factory reset upon transfer and thus no Azimuth data from the previous owner (namely proxies and networking keys) will be retained. Then press the `Generate and Sign Transaction` button, followed by the `Send Transaction` button.
 
 If you already own a point, click on the `Details ->` under your sigil in the `Your Points` section.
 
@@ -68,44 +61,27 @@ It should be noted that setting your network keys is an event on the Ethereum ne
 
 ### Generate your keyfile
 
-From the detail page associated with your point, click the `Generate Arvo Keyfile` link and you'll be taken to a page with a field titled `Network seed`. This field should already be filled in, and should match the hexadecimal string that you entered in the previous step. If it's not filled in or does not match, fill it in with the correct string.
-Click `Generate ->`, which will download a keyfile onto your machine.
+From the detail page associated with your point, click the `Generate Arvo Keyfile` link and you'll be taken to a page with a field titled `Network seed`. This field should already be filled in, and should match the hexadecimal string that you entered in the previous step. If it's not filled in or does not match, fill it in with the correct string. Click `Generate ->`, which will download a keyfile onto your machine.
 
 With that keyfile in hand, you can now exit Bridge and continue to the guide to [install the Urbit binary](/manual/getting-started/).
 
 ### Escaping your sponsor {% #escaping-your-sponsor %}
 
-As a planet or star, it behooves you to be sponsored by an active star or galaxy,
-respectively. If your sponsor isn't suiting your needs, you can escape to a
-different one.
+As a planet or star, it behooves you to be sponsored by an active star or galaxy, respectively. If your sponsor isn't suiting your needs, you can escape to a different one.
 
 #### Prerequisites
 
-- A little bit of ETH in your management proxy address to pay for the
-  transaction.
-- The `@p` of the sponsor you want to escape to. You should negotiate the
-  transfer with the sponsor ahead of time, as they will need to accept it on
-  their end. If you cannot find one, contact Tlon at support@urbit.org and we
-  will assist you in escaping to one of our stars/galaxies.
+- A little bit of ETH in your management proxy address to pay for the transaction.
+- The `@p` of the sponsor you want to escape to. You should negotiate the transfer with the sponsor ahead of time, as they will need to accept it on their end. If you cannot find one, contact Tlon at support@urbit.org and we will assist you in escaping to one of our stars/galaxies.
 
 #### Instructions
 
-1. Login to [Bridge](https://bridge.urbit.org) with the management proxy address
-   for the ship that will be escaping their sponsor. The ownership address will
-   also do, as will the master ticket if you have that.
+1. Login to [Bridge](https://bridge.urbit.org) with the management proxy address for the ship that will be escaping their sponsor. The ownership address will also do, as will the master ticket if you have that.
 2. Click on the "OS" button at the bottom of the screen.
-3. Below Network, you will find the `@p` of your current sponsor. Click "Change"
-   to the right of that.
+3. Below Network, you will find the `@p` of your current sponsor. Click "Change" to the right of that.
 4. Enter the `@p` of your new sponsor.
 5. Click the "Request" button and then complete the transaction.
 
-This action will consume a small amount of ETH. Your sponsor will then need to
-accept you via a similar process in Bridge, which will require ETH on their end.
-After the transaction is completed on Ethereum, it will still take some time for
-the information to propagate to the Urbit network. After 30 minutes or so, you
-may check that your sponsor has successfully been altered by running
-`(sein:title our now our)` in dojo and confirming that the `@p` matches that of
-your new sponsor.
+This action will consume a small amount of ETH. Your sponsor will then need to accept you via a similar process in Bridge, which will require ETH on their end. After the transaction is completed on Ethereum, it will still take some time for the information to propagate to the Urbit network. After 30 minutes or so, you may check that your sponsor has successfully been altered by running `(sein:title our now our)` in dojo and confirming that the `@p` matches that of your new sponsor.
 
-Once you change your sponsor, you will likely want to change your source of
-[OTAs](https://developers.urbit.org/glossary/ota-updates) to them as well. To accomplish this, enter `|ota ~sponsor %kids` in dojo, where `~sponsor` is the `@p` of your new sponsor.
+Once you change your sponsor, you will likely want to change your source of [OTAs](https://developers.urbit.org/glossary/ota-updates) to them as well. To accomplish this, enter `|ota ~sponsor %kids` in dojo, where `~sponsor` is the `@p` of your new sponsor.

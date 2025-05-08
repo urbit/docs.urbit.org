@@ -17,19 +17,13 @@ usage = "arvo"
 desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number) as a three-element tuple."
 +++
 
-A **path prefix** is the first three elements of a
-[Clay](/glossary/clay) [path](/glossary/path). These three
-fields encode a `beak` in `path` form. A `beak` is a three-element tuple of
-[ship](/glossary/ship), [desk](/glossary/desk), and
-[case](/glossary/case). Here's an example:
+A **path prefix** is the first three elements of a [Clay](/glossary/clay) [path](/glossary/path). These three fields encode a `beak` in `path` form. A `beak` is a three-element tuple of [ship](/glossary/ship), [desk](/glossary/desk), and [case](/glossary/case). Here's an example:
 
 ```hoon
 /~sampel-palnet/base/~2022.9.4..17.13.12..5835
 ```
 
-The first two fields are the ship and desk in which the target file resides.
-The third field (the `case`) is the desk revision. A `case` can be one
-of:
+The first two fields are the ship and desk in which the target file resides. The third field (the `case`) is the desk revision. A `case` can be one of:
 
 - The revision date-time in `@da` format, as in the example above.
 - A revision number like `42` (`1` is the first commit and it's numbered sequentially).
@@ -43,11 +37,6 @@ So you could do any of:
 /~sampel/base/foo
 ```
 
-In the dojo, there are a couple of short-hands for this prefix. The first is
-`%`, which is the local ship, current desk (typically `%base`) and the current
-date. The second short-hand is that any of these three elements can be replaced
-by `=`. Each `=` will be auto-filled with these defaults, for example
-`/=base=`, `/~sampel==`, etc. 
+In the dojo, there are a couple of short-hands for this prefix. The first is `%`, which is the local ship, current desk (typically `%base`) and the current date. The second short-hand is that any of these three elements can be replaced by `=`. Each `=` will be auto-filled with these defaults, for example `/=base=`, `/~sampel==`, etc. 
 
-A file path in the dojo would typically be entered like `%/gen/hood/code` or
-`/=landscape=/sys/kelvin`.
+A file path in the dojo would typically be entered like `%/gen/hood/code` or `/=landscape=/sys/kelvin`.

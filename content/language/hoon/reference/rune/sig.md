@@ -94,9 +94,7 @@ desc = "<code>[%sgzp p=hoon q=hoon]</code>: print type on compilation fail."
 
 +++
 
-Runes that use Nock `11` to pass non-semantic info to the interpreter. A
-mnemonic to remember what sig runes are for is "we're *sig*naling some
-information to the interpreter".
+Runes that use Nock `11` to pass non-semantic info to the interpreter. A mnemonic to remember what sig runes are for is "we're *sig*naling some information to the interpreter".
 
 ## `~>` "siggar"
 
@@ -144,14 +142,11 @@ Two arguments, fixed.
 
 #### Semantics
 
-`p` may either be a single `%term` or a pair of `[term hoon]`, the latter of
-which may optionally be be written `%foo.some-hoon`. `p` will be passed to the
-interpreter and `q` will be evaluated and its result produced like normal.
+`p` may either be a single `%term` or a pair of `[term hoon]`, the latter of which may optionally be be written `%foo.some-hoon`. `p` will be passed to the interpreter and `q` will be evaluated and its result produced like normal.
 
 #### Discussion
 
-Hoon has no way of telling what hints are used and what aren't.
-Hints are all conventions at the interpreter level.
+Hoon has no way of telling what hints are used and what aren't. Hints are all conventions at the interpreter level.
 
 #### Examples
 
@@ -281,9 +276,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-If profiling is on, adds 1 to the hit counter `p`, which is a `term` like
-`%foo`. Profiling is enabled by passing the `-P` flag to the `urbit` binary.
-Profiling results are saved in `/path/to/pier/.urb/put/profile/~some.date.txt`.
+If profiling is on, adds 1 to the hit counter `p`, which is a `term` like `%foo`. Profiling is enabled by passing the `-P` flag to the `urbit` binary. Profiling results are saved in `/path/to/pier/.urb/put/profile/~some.date.txt`.
 
 #### Examples
 
@@ -305,8 +298,7 @@ Assuming we have the binary running with the `-P` flag, if we do this:
 0
 ```
 
-...then look in `/path/to/pier/.urb/put/profile/~some.date.txt`, we'll see this
-line near the top of the file:
+...then look in `/path/to/pier/.urb/put/profile/~some.date.txt`, we'll see this line near the top of the file:
 
 ```
 my-hit-counter: 42
@@ -387,9 +379,7 @@ Jet registration.
 
 #### Syntax
 
-Four arguments. Two fixed arguments, then a third which may be `~` if empty or
-else a variable number of pairs sandwiched between two `==`s, then a fourth
-fixed argument.
+Four arguments. Two fixed arguments, then a third which may be `~` if empty or else a variable number of pairs sandwiched between two `==`s, then a fourth fixed argument.
 
 {% table %}
 
@@ -432,49 +422,23 @@ fixed argument.
 
 #### Convention
 
-Register a core with name `p`, with parent at leg `q`, exporting
-the named formulas `r`, constructed by `s`.
+Register a core with name `p`, with parent at leg `q`, exporting the named formulas `r`, constructed by `s`.
 
 #### Discussion
 
-`~%` is for registering cores. A registered core declares its
-formal identity to the interpreter, which may or may not be able
-to recognize and/or accelerate it.
+`~%` is for registering cores. A registered core declares its formal identity to the interpreter, which may or may not be able to recognize and/or accelerate it.
 
-Registered cores are organized in a containment hierarchy.
-The parent core is at any leg within the child core. When we
-register a core, we state the leg to its parent, in the form of
-wing `q`. We assume the parent is already registered -- as it
-must be, if (a) we registered it on creation, (b) the child was
-created by an arm defined on the parent.
+Registered cores are organized in a containment hierarchy. The parent core is at any leg within the child core. When we register a core, we state the leg to its parent, in the form of wing `q`. We assume the parent is already registered -- as it must be, if (a) we registered it on creation, (b) the child was created by an arm defined on the parent.
 
-(Cores are actually managed by their formula/battery. Any
-function call will create a new core with a new sample, but
-batteries are constant. But it is not sufficient to match the
-battery -- matching the semantics constrains the payload as well,
-since the semantics of a battery may depend on any parent core
-and/or payload constant.)
+(Cores are actually managed by their formula/battery. Any function call will create a new core with a new sample, but batteries are constant. But it is not sufficient to match the battery -- matching the semantics constrains the payload as well, since the semantics of a battery may depend on any parent core and/or payload constant.)
 
-The purpose of registration is always performance-related. It
-may involve (a) a special-purpose optimizer or "jet", written
-for a specific core and checked with a Merkle hash; (b) a
-general-purpose hotspot optimizer or "JIT"; or (c) merely a
-hotspot declaration for profiling.
+The purpose of registration is always performance-related. It may involve (a) a special-purpose optimizer or "jet", written for a specific core and checked with a Merkle hash; (b) a general-purpose hotspot optimizer or "JIT"; or (c) merely a hotspot declaration for profiling.
 
-As always with hints, the programmer has no idea which of (a),
-(b), and (c) will be applied. Use `~%`
-indiscriminately on all hotspots, bottlenecks, etc, real or
-suspected.
+As always with hints, the programmer has no idea which of (a), (b), and (c) will be applied. Use `~%` indiscriminately on all hotspots, bottlenecks, etc, real or suspected.
 
-The list `r` is a way for the Hoon programmer to help jet
-implementors with named Nock formulas that act on the core.
-In complex systems, jet implementations are often partial and
-want to call back into userspace.
+The list `r` is a way for the Hoon programmer to help jet implementors with named Nock formulas that act on the core. In complex systems, jet implementations are often partial and want to call back into userspace.
 
-The child core contains the parent, of course. When we register
-a core, we state the leg to its parent, in the form of wing `q`.
-We assume that the parent -- any core within the payload -- is
-already registered.
+The child core contains the parent, of course. When we register a core, we state the leg to its parent, in the form of wing `q`. We assume that the parent -- any core within the payload -- is already registered.
 
 `p` is the name of this core within its parent; `q` is the leg
 
@@ -535,8 +499,7 @@ Two arguments, fixed.
 - None.
 {% /table %}
 
-`p` may either be a a `term` or a pair of `[term hoon]`. If it's the latter, `p`
-may optionally be written as `%foo.some-hoon`.
+`p` may either be a a `term` or a pair of `[term hoon]`. If it's the latter, `p` may optionally be written as `%foo.some-hoon`.
 
 #### AST
 
@@ -550,9 +513,7 @@ may optionally be written as `%foo.some-hoon`.
 
 #### Discussion
 
-`~<` is only used for jet hints ([`~/`](#-sigfas) and [`~%`](#-sigcen)) at the
-moment; we are not telling the interpreter something about the computation we're
-about to perform, but rather about its product.
+`~<` is only used for jet hints ([`~/`](#-sigfas) and [`~%`](#-sigcen)) at the moment; we are not telling the interpreter something about the computation we're about to perform, but rather about its product.
 
 #### Examples
 
@@ -610,8 +571,7 @@ One argument, fixed.
 
 #### Convention
 
-Caches the formula and subject of `p` in a local cache (generally
-transient in the current event).
+Caches the formula and subject of `p` in a local cache (generally transient in the current event).
 
 #### Examples
 
@@ -749,8 +709,7 @@ Pretty-prints `p` on the console before computing `q`.
 
 #### Discussion
 
-This rune has no semantic effect beyond the Hoon expression `q`. It's used
-solely to create a side-effect: printing the value of `p` to the console.
+This rune has no semantic effect beyond the Hoon expression `q`. It's used solely to create a side-effect: printing the value of `p` to the console.
 
 It's most useful for debugging programs.
 
@@ -827,8 +786,7 @@ If `p` equals `q`, produce `p` instead of `q`.
 
 #### Discussion
 
-Duplicate nouns are especially bad news in Hoon, because comparing them
-takes O(n) time. Use `~=` to avoid this inefficiency.
+Duplicate nouns are especially bad news in Hoon, because comparing them takes O(n) time. Use `~=` to avoid this inefficiency.
 
 #### Examples
 

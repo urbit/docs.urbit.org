@@ -3,13 +3,9 @@ title = "Example"
 weight = 4
 +++
 
-Here we'll look at a simple example of running a thread from a Gall agent via
-Khan. The Gall agent will take a boolean poke. If it's `%.y`, the thread will
-succeed and return some text. If it's `%.n`, the thread will fail with an error
-message.
+Here we'll look at a simple example of running a thread from a Gall agent via Khan. The Gall agent will take a boolean poke. If it's `%.y`, the thread will succeed and return some text. If it's `%.n`, the thread will fail with an error message.
 
-Here's the thread, which you can save in the `/ted` directory of the `%base`
-desk on a fake ~zod:
+Here's the thread, which you can save in the `/ted` directory of the `%base` desk on a fake ~zod:
 
 #### `mythread.hoon`
 
@@ -26,8 +22,7 @@ desk on a fake ~zod:
 (pure:m !>('success!!!'))
 ```
 
-Here's the Gall agent, which you can save in the `/app` directory of the `%base`
-desk on a fake ~zod:
+Here's the Gall agent, which you can save in the `/app` directory of the `%base` desk on a fake ~zod:
 
 #### `myapp.hoon`
 
@@ -107,7 +102,6 @@ baz
 [mote=%thread-fail tang=~['i-have-failed' 'foo' 'bar' 'baz']]
 ```
 
-Khan automatically prints the error message, and our app has also pretty-printed
-the `goof` it received.
+Khan automatically prints the error message, and our app has also pretty-printed the `goof` it received.
 
 ---

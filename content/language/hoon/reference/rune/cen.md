@@ -73,10 +73,7 @@ desc = "Resolve a wing with changes."
 
 +++
 
-The `%` family of runes is used for making 'function calls' in Hoon. To be more
-precise, these runes evaluate the `$` arm in cores, usually after modifying the
-sample. (The default sample is replaced with the input values given in the
-call.)
+The `%` family of runes is used for making 'function calls' in Hoon. To be more precise, these runes evaluate the `$` arm in cores, usually after modifying the sample. (The default sample is replaced with the input values given in the call.)
 
 These runes reduce to the `%=` rune.
 
@@ -147,15 +144,11 @@ One fixed argument, then a variable number of pairs.
 
 #### Semantics
 
-A `%_` expression resolves to the value of the subject at wing `a`, but modified
-according to a series of changes: `b` is replaced with the product of `c`, `d`
-with the product of `e`, and so on. At compile time a type check is performed to
-ensure that the resulting value is of the same type as `a`.
+A `%_` expression resolves to the value of the subject at wing `a`, but modified according to a series of changes: `b` is replaced with the product of `c`, `d` with the product of `e`, and so on. At compile time a type check is performed to ensure that the resulting value is of the same type as `a`.
 
 #### Discussion
 
-`%_` is different from `%=` because `%=` can change the type of a wing with
-mutations. `%_` preserves the wing type.
+`%_` is different from `%=` because `%=` can change the type of a wing with mutations. `%_` preserves the wing type.
 
 See [how wings are resolved](/language/hoon/reference/limbs/).
 
@@ -227,11 +220,7 @@ One fixed argument, then a variable number of arguments.
 
 #### Semantics
 
-A `%:` expression calls a gate with many arguments. `a` is the gate to be
-called, and `b` through `d` are the arguments. If there is only one
-subexpression after `a`, its product is the sample. Otherwise, a single argument
-is constructed by evaluating all of `b` through `d` -- however many
-subexpressions there are -- and putting the result in a cell: `[b c ... d]`.
+A `%:` expression calls a gate with many arguments. `a` is the gate to be called, and `b` through `d` are the arguments. If there is only one subexpression after `a`, its product is the sample. Otherwise, a single argument is constructed by evaluating all of `b` through `d` -- however many subexpressions there are -- and putting the result in a cell: `[b c ... d]`.
 
 #### Discussion
 
@@ -306,8 +295,7 @@ Two arguments, fixed.
 
 #### Semantics
 
-The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
-`a` is for the desired sample value (i.e., input value), and `b` is the gate.
+The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function. `a` is for the desired sample value (i.e., input value), and `b` is the gate.
 
 #### Expands to
 
@@ -317,8 +305,7 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 
 #### Discussion
 
-`%.` is just like `%-`, but with its subexpressions reversed; the argument comes
-first, and then the gate.
+`%.` is just like `%-`, but with its subexpressions reversed; the argument comes first, and then the gate.
 
 #### Examples
 
@@ -373,9 +360,7 @@ Call a gate (function).
 
 #### Semantics
 
-This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a
-function. `a` is the gate, and `b` is the desired sample value (i.e., input
-value) for the gate.
+This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a function. `a` is the gate, and `b` is the desired sample value (i.e., input value) for the gate.
 
 #### Expands to
 
@@ -385,10 +370,7 @@ value) for the gate.
 
 #### Discussion
 
-`%-` is used to call a function; `a` is the function
-([`gate`](/language/hoon/reference/rune/bar#-bartis), `q` the argument. `%-` is a
-special case of [`%~` ("censig")](#-censig), and a gate is a special case of a
-[door](/language/hoon/reference/rune/bar#_-barcab).
+`%-` is used to call a function; `a` is the function ([`gate`](/language/hoon/reference/rune/bar#-bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](/language/hoon/reference/rune/bar#_-barcab).
 
 #### Examples
 
@@ -510,8 +492,7 @@ Three arguments, fixed.
 
 #### Semantics
 
-A `%+` expression is for calling a gate with a cell sample. `a` is the gate to
-be called, `b` is for the head of the sample, and `c` is for the sample tail.
+A `%+` expression is for calling a gate with a cell sample. `a` is the gate to be called, `b` is for the head of the sample, and `c` is for the sample tail.
 
 #### Expands to
 
@@ -566,22 +547,17 @@ Three arguments, fixed.
   ```
 {% /table %}
 
-In the irregular form, `r` may be split into multiple parts. Multiple parts of
-`r` will be formed into a cell.
+In the irregular form, `r` may be split into multiple parts. Multiple parts of `r` will be formed into a cell.
 
 #### Semantics
 
-A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `p`
-is a wing that resolves to the arm from within the door in question. `q` is the
-door itself. `r` is the sample of the door.
+A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `p` is a wing that resolves to the arm from within the door in question. `q` is the door itself. `r` is the sample of the door.
 
 #### Discussion
 
 `%~` is the general case of a function call, `%-`. In both, we replace the sample (`+6`) of a core. In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated. You must identify the arm to be run: `%~(arm door arg)`.
 
-Note also that `p` is a wing and can therefore be `.`, as in `~(. door
-sample)`. This little idiom lets you load your sample into the door once
-instead of over and over.
+Note also that `p` is a wing and can therefore be `.`, as in `~(. door sample)`. This little idiom lets you load your sample into the door once instead of over and over.
 
 See also [`|_`](/language/hoon/reference/rune/bar#_-barcab).
 
@@ -671,9 +647,7 @@ Two fixed arguments, then a variable number of pairs.
 
 #### Semantics
 
-A `%*` expression evaluates some arbitrary Hoon expression, `b`, and then
-resolves a wing of that result, with changes. `a` is the wing to be resolved,
-and one or more changes is defined by the subexpressions after `b`.
+A `%*` expression evaluates some arbitrary Hoon expression, `b`, and then resolves a wing of that result, with changes. `a` is the wing to be resolved, and one or more changes is defined by the subexpressions after `b`.
 
 #### Expands to
 
@@ -779,26 +753,15 @@ One fixed argument, then a variable number of pairs.
 
 A `%=` expression resolves a wing of the subject, but with changes made.
 
-If `a` resolves to a leg, a series of changes are made to wings of that leg
-(`b`, `d`, and `f` above are replaced with the respective products of `c`, `e`,
-and `g` above). The modified leg is returned.
+If `a` resolves to a leg, a series of changes are made to wings of that leg (`b`, `d`, and `f` above are replaced with the respective products of `c`, `e`, and `g` above). The modified leg is returned.
 
-If `a` resolves to an arm, a series of changes are made to wings of the parent
-core of that arm. (Again, `b`, `d`, and `f` are replaced with the respective
-products of `c`, `e`, and `g`.) The arm is computed with the modified core as
-the subject, and the product is returned.
+If `a` resolves to an arm, a series of changes are made to wings of the parent core of that arm. (Again, `b`, `d`, and `f` are replaced with the respective products of `c`, `e`, and `g`.) The arm is computed with the modified core as the subject, and the product is returned.
 
 #### Discussion
 
-Note that `a` is a wing, not just any expression. Knowing that a function call
-`(foo baz)` involves evaluating `foo`, replacing its sample at slot `+6` with
-`baz`, and then resolving to the `$` limb, you might think `(foo baz)` would
-mean `%=(foo +6 baz)`.
+Note that `a` is a wing, not just any expression. Knowing that a function call `(foo baz)` involves evaluating `foo`, replacing its sample at slot `+6` with `baz`, and then resolving to the `$` limb, you might think `(foo baz)` would mean `%=(foo +6 baz)`.
 
-But it's actually `=+(foo =>(%=(+2 +6 baz:+3) $))`. Even if `foo` is a wing, we
-would just be mutating `+6` within the core that defines the `foo` arm. Instead
-we want to modify the **product** of `foo`—the gate—so we have to pin it
-into the subject.
+But it's actually `=+(foo =>(%=(+2 +6 baz:+3) $))`. Even if `foo` is a wing, we would just be mutating `+6` within the core that defines the `foo` arm. Instead we want to modify the **product** of `foo`—the gate—so we have to pin it into the subject.
 
 Here's that again in tall form:
 

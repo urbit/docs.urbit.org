@@ -3,19 +3,15 @@ title = "Generators"
 weight = 73
 +++
 
-Generator files provide a way for users to interact with code "scripts" through the Dojo prompt.  There are
-three basic kinds of generators:
+Generator files provide a way for users to interact with code "scripts" through the Dojo prompt.  There are three basic kinds of generators:
 
 1. Bare or naked generators, standalone computations that can accept input and carry out a single calculation.
-2. `%say` generators, scripts which can utilize the full system knowledge (`now`, `our`, `eny`) and accept
-    optional input arguments.
+2. `%say` generators, scripts which can utilize the full system knowledge (`now`, `our`, `eny`) and accept optional input arguments.
 3. `%ask` generators, scripts driven by interactive prompts.
 
 (Threads have some commonalities with generators, _q.v._)
 
-Generators are a Dojo concept, although they can also be applied to agents (such as `+dbug`).  This guide will
-show you how to build and invoke all kinds of generators.
-
+Generators are a Dojo concept, although they can also be applied to agents (such as `+dbug`).  This guide will show you how to build and invoke all kinds of generators.
 
 ##  Bare Generators
 
@@ -23,8 +19,7 @@ A basic generator is a gate, a core with a `$` buc arm and a sample.
 
 The Dojo will supply the sample directly to the core in the `$` buc arm.
 
-A bare generator must be a gate but can have more complicated internal structure, as with all Hoon code.  It does
-not know about entropy `eny`, ship identity `our`, or the timestamp `now`.
+A bare generator must be a gate but can have more complicated internal structure, as with all Hoon code.  It does not know about entropy `eny`, ship identity `our`, or the timestamp `now`.
 
 **`/gen/add-one.hoon`**
 
@@ -47,8 +42,7 @@ You could in principle use a `|*` bartar wet gate as well, but other cores don't
 
 ##  `%say` Generators
 
-A `%say` generator can have zero, many, or optional arguments, unlike a bare generator.  It can also have access to
-system variables like `now`, `our`, and `eny`.
+A `%say` generator can have zero, many, or optional arguments, unlike a bare generator.  It can also have access to system variables like `now`, `our`, and `eny`.
 
 For instance, the following generator can be run with no arguments:
 
@@ -66,18 +60,13 @@ For instance, the following generator can be run with no arguments:
 42
 ```
 
-A `%say` generator is structurally a head-tagged cell of a gate which returns a head-tagged cell of a mark and a value
-(or a `cask`).
+A `%say` generator is structurally a head-tagged cell of a gate which returns a head-tagged cell of a mark and a value (or a `cask`).
 
 The head tag over the entire generator is always `%say`.  The `cask` tag is most commonly `%noun`.
 
-We use `%say` generators when we want to provide something else in Arvo, the Urbit operating system, with metadata about
-the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
+We use `%say` generators when we want to provide something else in Arvo, the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
   
-To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their
-output is. A `mark` is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that
-it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like
-`%talk-command`.
+To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A `mark` is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`.
 
 The gate sample follows this pattern, with undesired elements stubbed out by `*`:
 
@@ -102,8 +91,7 @@ The gate sample follows this pattern, with undesired elements stubbed out by `*`
     ==
 ```
 
-The Dojo will modify the sample by inserting `%~` (constant null) at the end of each collection, since the Dojo adapts
-the input arguments into a list (either the unnamed/required argument list or the named/optional argument list).
+The Dojo will modify the sample by inserting `%~` (constant null) at the end of each collection, since the Dojo adapts the input arguments into a list (either the unnamed/required argument list or the named/optional argument list).
 
 ### Zero arguments
 
@@ -142,9 +130,7 @@ Let's look at an example that uses all three parts.
 [(~(rad og eny) n) bet]
 ```
 
-This is a very simple dice program with an optional betting functionality. In the code, our sample specifies faces on all
-of the Arvo data, meaning that we can easily access them. We also require the argument `[n=@ud ~]`, and allow the
-_optional_ argument `[bet=@ud ~]`.
+This is a very simple dice program with an optional betting functionality. In the code, our sample specifies faces on all of the Arvo data, meaning that we can easily access them. We also require the argument `[n=@ud ~]`, and allow the _optional_ argument `[bet=@ud ~]`.
 
 We can run this generator like so:
 
@@ -167,18 +153,15 @@ nest-fail
 
 Notice how the `,` com works to separate arguments and how the name of the optional argument must be included.
 
-We get a different value from the same generator between runs, something that isn't possible with a bare generator. Another
-novelty is the ability to choose to not use the second argument.
+We get a different value from the same generator between runs, something that isn't possible with a bare generator. Another novelty is the ability to choose to not use the second argument.
 
 ##  `%ask` Generators
 
-We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than
-expecting arguments to be passed in at the time of initiation.
+We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
 Like `%say` generators, `%ask` generators are head-tagged cells of gates, but with `%ask`.
 
-The code below is an `%ask` generator that checks if the user inputs `"blue"` when prompted [per a classic Monty Python
-scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).
+The code below is an `%ask` generator that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).
 
 **`/gen/axe.hoon`**
 
@@ -211,8 +194,7 @@ What is your favorite color?
 : color:
 ```
 
-Instead of simply returning something, your Dojo's prompt changed from `~sampel-palnet:dojo>` to `~sampel-palnet:dojo: color:`,
-and now expects additional input.  Let's give it an answer:
+Instead of simply returning something, your Dojo's prompt changed from `~sampel-palnet:dojo>` to `~sampel-palnet:dojo: color:`, and now expects additional input.  Let's give it an answer:
 
 ```hoon
 : color: red

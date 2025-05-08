@@ -30,36 +30,24 @@ Irregular: `+<-` is "take the tail, then take the head of that, then the head of
 
 Name resolution happens by way of a search through the subject. The search traverse takes a name `q` and a **skip count** `p`.
 
-The search product may be an **arm** or a **leg**.  A **leg** is a subtree of the subject.  An arm is a Nock formula paired with a core to compute the result.  You can think of the limb as an attribute -- computation or subtree, "synthesized" or "natural"
--- of the subject.
+The search product may be an **arm** or a **leg**.  A **leg** is a subtree of the subject.  An arm is a Nock formula paired with a core to compute the result.  You can think of the limb as an attribute -- computation or subtree, "synthesized" or "natural" -- of the subject.
 
-We search the subject type headfirst, depth-first, and pre-order.
-If we descend to a `%face` type whose label matches the limb
-symbol, the descent address is a leg.   The type is the type
-beneath the label.  But if the `%face` label differs, the search
-skips this whole subtree.
+We search the subject type headfirst, depth-first, and pre-order. If we descend to a `%face` type whose label matches the limb symbol, the descent address is a leg.   The type is the type beneath the label.  But if the `%face` label differs, the search skips this whole subtree.
 
-If we descend into a `%core` type in which the limb symbol is an
-arm, we produce that arm.  If the limb symbol is not found, we
-descend into the payload (data) of the core.
+If we descend into a `%core` type in which the limb symbol is an arm, we produce that arm.  If the limb symbol is not found, we descend into the payload (data) of the core.
 
-If the skip count `p` is nonzero, we pretend our first `p`
-matches are actually mismatches.  This lets the programmer "look
-through" an overriding label.
+If the skip count `p` is nonzero, we pretend our first `p` matches are actually mismatches.  This lets the programmer "look through" an overriding label.
 
 ## Examples
 
-The Dojo prompt gives you a subject with a decent namespace.
-Try:
+The Dojo prompt gives you a subject with a decent namespace. Try:
 
 ```
 > now
 ~2016.4.25..01.39.59..a0f0
 ```
 
-You can also add variables to the subject, then use them.  (Note
-that `=variable value` is not Hoon (language) syntax; it's Dojo
-(shell) syntax.)
+You can also add variables to the subject, then use them.  (Note that `=variable value` is not Hoon (language) syntax; it's Dojo (shell) syntax.)
 
 ```
 > =a 12

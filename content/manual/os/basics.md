@@ -42,13 +42,9 @@ $ script urbit.log ./urbit your-urbit
 
 ## Moving your pier
 
-Piers are designed to be portable, but it _must_ be done while the urbit
-is not running. Urbit networking is stateful, so you can't run two copies
-of the same urbit in two places.
+Piers are designed to be portable, but it _must_ be done while the urbit is not running. Urbit networking is stateful, so you can't run two copies of the same urbit in two places.
 
-To move a pier, simply move the contents of the directory it lives in.
-To keep these files as small as possible we usually use the `--sparse`
-option in `tar`. With a pier `your-urbit/`, something like this should work:
+To move a pier, simply move the contents of the directory it lives in. To keep these files as small as possible we usually use the `--sparse` option in `tar`. With a pier `your-urbit/`, something like this should work:
 
 ```sh
 tar -Scvzf ~/your-urbit.tar.gz ~/your-urbit/
@@ -81,8 +77,7 @@ In the CLI, Urbit apps can process your input before you hit return. To see this
 
 `Ctrl-x` - Switches the prompt between running console apps
 
-`Ctrl-c` - Crash current event. Processed at the Unix layer and prints a stack
-trace.
+`Ctrl-c` - Crash current event. Processed at the Unix layer and prints a stack trace.
 
 `Ctrl-d` - From Chat or Dojo, stops your Urbit process.
 
@@ -118,12 +113,7 @@ If for some reason updates are not enabled or the current source is not online o
 
 #### Additional OTA Troubleshooting
 
-Please check the Support Wiki for additional OTA troubleshooting, such as:
-[OTA 1.0.71 failed](https://github.com/urbit/support/wiki/OTA-1.0.71-failed),
-[Missing OTA](https://github.com/urbit/support/wiki/Missing-OTA),
-[Stuck flow preventing planets from receiving
-OTAs](https://github.com/urbit/support/wiki/Stuck-flow-preventing-planets-from-receiving-OTAs),
-and [No content shows in Links page after OTA](https://github.com/urbit/support/wiki/No-content-shows-in-Links-page-after-OTA).
+Please check the Support Wiki for additional OTA troubleshooting, such as: [OTA 1.0.71 failed](https://github.com/urbit/support/wiki/OTA-1.0.71-failed), [Missing OTA](https://github.com/urbit/support/wiki/Missing-OTA), [Stuck flow preventing planets from receiving OTAs](https://github.com/urbit/support/wiki/Stuck-flow-preventing-planets-from-receiving-OTAs), and [No content shows in Links page after OTA](https://github.com/urbit/support/wiki/No-content-shows-in-Links-page-after-OTA).
 
 ## Web interface
 
@@ -204,18 +194,11 @@ Eventually, the PKI will populate through the network w/ the correct life #, rec
 
 ## Escaping A Sponsor {% #escape %}
 
-To use the network as a planet or star, you must be sponsored by an active star
-or galaxy, respectively. If your sponsor isn't suiting your needs, you can
-escape to a different one. This can be done with
-[Bridge](https://bridge.urbit.org/) following the instructions
-[here](/manual/id/using-bridge#escaping-your-sponsor).
+To use the network as a planet or star, you must be sponsored by an active star or galaxy, respectively. If your sponsor isn't suiting your needs, you can escape to a different one. This can be done with [Bridge](https://bridge.urbit.org/) following the instructions [here](/manual/id/using-bridge#escaping-your-sponsor).
 
 ## Life and rift number
 
-You can check your ship's _life_ and _rift_ number by running `+keys our` in
-dojo. You can inspect another ship's life and rift number by running `+keys
-~sampel-palnet`. For information on what life and rift are, see [Life and
-Rift](https://developers.urbit.org/reference/azimuth/life-and-rift).
+You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](https://developers.urbit.org/reference/azimuth/life-and-rift).
 
 ## DNS setup {% #dns-setup %}
 

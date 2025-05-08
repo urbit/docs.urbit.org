@@ -8,8 +8,7 @@ auto_expand = true
 
 ## [API Reference](/system/kernel/gall/reference/gall-api)
 
-Reference documentation of both Gall's vane API and the API available to
-agents.
+Reference documentation of both Gall's vane API and the API available to agents.
 
 ## [Scry Reference](/system/kernel/gall/reference/scry)
 

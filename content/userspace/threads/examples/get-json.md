@@ -7,9 +7,7 @@ Grabbing JSON from some url is very easy.
 
 `strandio` includes the `fetch-json` function which will handle the HTTP request, response, and parsing, producing `json`.
 
-The following thread fetches the current Bitcoin price from the [CoinGecko
-API](https://www.coingecko.com/en/api) in the specified currency and prints it
-to the terminal.
+The following thread fetches the current Bitcoin price from the [CoinGecko API](https://www.coingecko.com/en/api) in the specified currency and prints it to the terminal.
 
 #### `btc-price.hoon`
 
@@ -76,10 +74,7 @@ Next, we use the `fetch-json` function in `strandio` like so:
 ;<  =json  bind:m  (fetch-json (weld url (trip u.cur)))
 ```
 
-We convert the currency to a `tape` and `weld` it to the end of the `url`, which
-we give as an argument to `fetch-json`. The `fetch-json` function will make the
-request to the URL, receive the result, parse the JSON and produce the result as
-a `json` structure.
+We convert the currency to a `tape` and `weld` it to the end of the `url`, which we give as an argument to `fetch-json`. The `fetch-json` function will make the request to the URL, receive the result, parse the JSON and produce the result as a `json` structure.
 
 The JSON the API produces looks like:
 
@@ -91,11 +86,7 @@ The JSON the API produces looks like:
 }
 ```
 
-Since it's an object in an object, we decode them using nested
-[`ot:dejs-soft:format`](/language/hoon/reference/zuse/2d_7#otdejs-softformat)
-functions, and the price itself using
-[`no:dejs-soft:format`](/language/hoon/reference/zuse/2d_7#nodejs-softformat) to
-produce a `(unit @ta)`:
+Since it's an object in an object, we decode them using nested [`ot:dejs-soft:format`](/language/hoon/reference/zuse/2d_7#otdejs-softformat) functions, and the price itself using [`no:dejs-soft:format`](/language/hoon/reference/zuse/2d_7#nodejs-softformat) to produce a `(unit @ta)`:
 
 ```hoon
 =/  price=(unit @ta)  ((ot ~[bitcoin+(ot [u.cur no]~)]) json)
@@ -109,5 +100,4 @@ Finally, we check if the `unit` is null and either print an error or print the p
 (pure:m !>(~))
 ```
 
-For more information about working with `json`, see the [JSON
-Guide](/language/hoon/guides/json-guide).
+For more information about working with `json`, see the [JSON Guide](/language/hoon/guides/json-guide).

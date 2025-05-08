@@ -3,8 +3,7 @@ title = "Examples"
 weight = 999
 +++
 
-This section contains examples of building simple apps and additional exercises
-to help hone your skills.
+This section contains examples of building simple apps and additional exercises to help hone your skills.
 
 ## [Lightning Tutorials](/userspace/apps/examples/quickstart)
 

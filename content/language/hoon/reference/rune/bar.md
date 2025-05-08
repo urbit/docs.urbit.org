@@ -94,13 +94,9 @@ desc = "Produce a lead trap."
 
 +++
 
-Core expressions produce cores. A core is a cell of `[battery payload]`.
-The `battery` is code, a battery of Nock formulas. The `payload` is the data
-needed to run those formulas correctly.
+Core expressions produce cores. A core is a cell of `[battery payload]`. The `battery` is code, a battery of Nock formulas. The `payload` is the data needed to run those formulas correctly.
 
-Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a core with a single
-arm, named `$`. As with all arms, we can recompute `$` with changes, which is
-useful for recursion among other things.
+Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a core with a single arm, named `$`. As with all arms, we can recompute `$` with changes, which is useful for recursion among other things.
 
 ## `|$` "barbuc"
 
@@ -159,33 +155,17 @@ body
 
 #### Semantics
 
-`|$` is used to declare a wet gate mold builder that is polymorphic in its input
-molds. `a` is a `lest` of `term` used as identifiers for the input molds. `b` is
-a structure built from elements of `a`. The output of `|$` is a mold builder
-obtained by substituting the input molds parameterized by `a` into `b`.
+`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `lest` of `term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
 
 #### Discussion
 
-A mold builder is a wet gate from one or more molds to a mold. A mold is a
-function from nouns to nouns with types that may be partial, is always
-idempotent, and usually the identity function on the noun itself.
+A mold builder is a wet gate from one or more molds to a mold. A mold is a function from nouns to nouns with types that may be partial, is always idempotent, and usually the identity function on the noun itself.
 
-`|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as
-either could be used to make wet gates that are mold builders. The buc in `|$`
-is a hint that `|$` is closely related to buc runes, and thus `|$` should be
-used to make mold builders, while `|*` should be used for any other sort of wet
-gate. Unlike `|*`, the body of `|$` is parsed in pattern mode to a `$spec`.
-Thus, the second argument of `|$` is frequently a buc rune. For further
-discussion of wet gates, see the entry for [`|*`](#-bartar).
+`|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as either could be used to make wet gates that are mold builders. The buc in `|$` is a hint that `|$` is closely related to buc runes, and thus `|$` should be used to make mold builders, while `|*` should be used for any other sort of wet gate. Unlike `|*`, the body of `|$` is parsed in pattern mode to a `$spec`. Thus, the second argument of `|$` is frequently a buc rune. For further discussion of wet gates, see the entry for [`|*`](#-bartar).
 
-Like other single-arm cores, the arm for `|$` is named `$` and this can be used to
-define recursive structures. Note however that Hoon is evaluated eagerly, and so
-infinite structures are not permitted.
+Like other single-arm cores, the arm for `|$` is named `$` and this can be used to define recursive structures. Note however that Hoon is evaluated eagerly, and so infinite structures are not permitted.
 
-Proper style for `|$` is to enclose the first argument with brackets, even if it
-is only a single term. The interpeter will accept a single term without brackets
-just fine, but this style is for consistency with the fact that the first
-argument is a `lest`.
+Proper style for `|$` is to enclose the first argument with brackets, even if it is only a single term. The interpeter will accept a single term without brackets just fine, but this style is for consistency with the fact that the first argument is a `lest`.
 
 #### Examples
 
@@ -258,32 +238,19 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 #### Semantics
 
-The product of a `|_` expression is a **door**, a core with one or more arms
-whose payload includes a sample. That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
+The product of a `|_` expression is a **door**, a core with one or more arms whose payload includes a sample. That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
 
-`a` defines the door sample type and usually includes a name assignment (e.g.,
-`n=@`). `a` is followed by a series of arm definitions, each of which begins
-with a rune in the `+` family (most of `++`). There must be at least one arm,
-but there may be arbitrarily many. Each arm must include a name (`b`, `d`, and
-`f` above), which is followed by the expression (`c`, `e`, and `g` above) that
-defines the arm product.
+`a` defines the door sample type and usually includes a name assignment (e.g., `n=@`). `a` is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`b`, `d`, and `f` above), which is followed by the expression (`c`, `e`, and `g` above) that defines the arm product.
 
 The context of the door is the subject of the `|_` expression.
 
 #### Discussion
 
-A door is the general case of a gate (function). A gate is a door with only one
-arm, which has the name `$`.
+A door is the general case of a gate (function). A gate is a door with only one arm, which has the name `$`.
 
-Calling a door is like calling a gate except the caller also needs to specify
-the arm to be computed. So, for example, if you have some door `door` which
-contains some arm `arm`, and you want to pass some argument (i.e., input value
-`arg`), you would call it with `~(arm door arg)`.
+Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
-Because gates are also doors, you can call them the same way. To call the gate
-`foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is
-an irregular form for `%~($ foo baz)`,
-[%~](/language/hoon/reference/rune/cen#-censig).
+Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](/language/hoon/reference/rune/cen#-censig).
 
 #### Examples
 
@@ -376,8 +343,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-Pick your own default value for the sample. Note that `a` is an ordinary
-expression, not a type; `|:` doesn't bunt a sample as [`|=`](#-bartis) does.
+Pick your own default value for the sample. Note that `a` is an ordinary expression, not a type; `|:` doesn't bunt a sample as [`|=`](#-bartis) does.
 
 This is useful if you want a gate to have a sample of a particular type, but you don't want the default value of the gate to be the default value of that type.
 
@@ -441,31 +407,19 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 #### Semantics
 
-The product of a `|%` expression is a dry core with one or more arms in the
-battery.
+The product of a `|%` expression is a dry core with one or more arms in the battery.
 
-The `|%` rune is followed by a series of arm definitions, each of which begins
-with a rune in the `+` family (most of `++`). There must be at least one arm,
-but there may be arbitrarily many. Each arm must include a name (`a`, `c`, and
-`e` above), which is followed by the expression (`b`, `d`, and `f` above) that
-defines the arm product.
+The `|%` rune is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`a`, `c`, and `e` above), which is followed by the expression (`b`, `d`, and `f` above) that defines the arm product.
 
 The core payload is the subject of the `|%` expression.
 
 #### Discussion
 
-A core is a cell of `[battery payload]`, where the `battery` is code and the
-`payload` is data. The `battery` is one or more arms. An arm is a computation
-that takes the core itself as its subject.
+A core is a cell of `[battery payload]`, where the `battery` is code and the `payload` is data. The `battery` is one or more arms. An arm is a computation that takes the core itself as its subject.
 
-The `|%` rune is used to construct a core from a series of arm definitions. Each
-arm definition in the expression begins with an arm rune (`++`, `+$`, or `+*`).
-These arms make up the `battery`. The subject of the `|%` expression is used to
-make the core's `payload`.
+The `|%` rune is used to construct a core from a series of arm definitions. Each arm definition in the expression begins with an arm rune (`++`, `+$`, or `+*`). These arms make up the `battery`. The subject of the `|%` expression is used to make the core's `payload`.
 
-A core is like an "object" in a conventional language, but its attributes
-(_arms_) are functions on the core, not the core and an argument. A "method" on
-a core is an arm that produces a gate.
+A core is like an "object" in a conventional language, but its attributes (_arms_) are functions on the core, not the core and an argument. A "method" on a core is an arm that produces a gate.
 
 #### Examples
 
@@ -536,9 +490,7 @@ One argument, fixed.
 
 #### Semantics
 
-A `|.` expression produces a core with a single arm, `$`. The core isn't
-explicitly given a sample. `a` is a Hoon expression that defines the computation
-of the `$` arm.
+A `|.` expression produces a core with a single arm, `$`. The core isn't explicitly given a sample. `a` is a Hoon expression that defines the computation of the `$` arm.
 
 The payload of the core is the subject of the `|.` expression.
 
@@ -575,8 +527,7 @@ A more interesting trap:
 20
 ```
 
-Note that we can use `$()` to recurse back into the
-trap, since it's a core with an `$` arm.
+Note that we can use `$()` to recurse back into the trap, since it's a core with an `$` arm.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
@@ -642,16 +593,11 @@ $
 
 #### Semantics
 
-A `|^` expression produces a multi-arm core whose battery includes a `$` arm,
-which is evaluated immediately. `a` is a Hoon expression that defines the
-product of the `$` arm. `a` is followed by a series of arm definitions for the
-rest of the core battery arms. There must be at least one arm other than the `$`
-arm.
+A `|^` expression produces a multi-arm core whose battery includes a `$` arm, which is evaluated immediately. `a` is a Hoon expression that defines the product of the `$` arm. `a` is followed by a series of arm definitions for the rest of the core battery arms. There must be at least one arm other than the `$` arm.
 
 #### Discussion
 
-The `|^` rune is useful when you define a multi-arm core in your code and a
-particular arm in it is to be evaluated immediately.
+The `|^` rune is useful when you define a multi-arm core in your code and a particular arm in it is to be evaluated immediately.
 
 #### Examples
 
@@ -715,14 +661,11 @@ One argument, fixed.
 
 #### Semantics
 
-A `|-` expression produces a core with one arm named `$` and immediately
-evaluates `$`. `a` is a Hoon expression that determines what `$` evaluates to.
+A `|-` expression produces a core with one arm named `$` and immediately evaluates `$`. `a` is a Hoon expression that determines what `$` evaluates to.
 
 #### Discussion
 
-The `|-` rune can be thought of as a 'recursion point' or a 'loop starting
-point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named
-`$`, we can recurse back into it with `$()`.
+The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
@@ -799,8 +742,7 @@ Two arguments, fixed.
 
 #### Semantics
 
-A `|~` expression produces an iron gate. `a` defines the sample, and `b` defines
-the output value of the gate.
+A `|~` expression produces an iron gate. `a` defines the sample, and `b` defines the output value of the gate.
 
 #### Discussion
 
@@ -866,26 +808,19 @@ Two arguments, fixed.
 
 #### Semantics
 
-A `|*` expression produces a wet gate. `a` defines the gate's sample, and `b` is
-a Hoon expression that determines the output value of the gate.
+A `|*` expression produces a wet gate. `a` defines the gate's sample, and `b` is a Hoon expression that determines the output value of the gate.
 
 #### Discussion
 
-In a normal (dry) gate, your argument is converted into the
-sample type. In a generic (wet) gate, your argument type
-passes through the function, rather as if it were a macro (there
-is still only one copy of the code, however).
+In a normal (dry) gate, your argument is converted into the sample type. In a generic (wet) gate, your argument type passes through the function, rather as if it were a macro (there is still only one copy of the code, however).
 
-Genericity is a powerful and dangerous tool. Use wet gates only if
-you know what you're doing.
+Genericity is a powerful and dangerous tool. Use wet gates only if you know what you're doing.
 
-Just as with a [gate](#-bartis), we can recurse back into a wet gate
-with `$()`.
+Just as with a [gate](#-bartis), we can recurse back into a wet gate with `$()`.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](/language/hoon/reference/rune/cen#-centis)).
 
-`|*` can be used to make wet gates that produce structures, but this usage is
-discouraged in favor of `|$`.
+`|*` can be used to make wet gates that produce structures, but this usage is discouraged in favor of `|$`.
 
 #### Examples
 
@@ -903,8 +838,7 @@ Wet and dry gates in a nutshell:
 [%dog %cat]
 ```
 
-The dry gate does not preserve the type of `a` and `b`; the wet
-gate does.
+The dry gate does not preserve the type of `a` and `b`; the wet gate does.
 
 ---
 
@@ -960,9 +894,7 @@ Two arguments, fixed.
 
 The product of a `|=` expression is a dry **gate**, i.e., a Hoon function.
 
-`p` defines the gate sample type -- i.e., the input value type -- and usually
-includes a sample name assignment (e.g., `a=@`). `q` is an expression that
-determines the output value of the gate.
+`p` defines the gate sample type -- i.e., the input value type -- and usually includes a sample name assignment (e.g., `a=@`). `q` is an expression that determines the output value of the gate.
 
 #### Discussion
 
@@ -1041,16 +973,11 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 #### Semantics
 
-A `|@` expression produces a 'wet' core whose payload is the expression's
-subject. The various arms in the battery are each named (`a`, `c`, and `e`
-above) and defined explicitly with a Hoon expression (with `b`, `d`, and `f`
-above).
+A `|@` expression produces a 'wet' core whose payload is the expression's subject. The various arms in the battery are each named (`a`, `c`, and `e` above) and defined explicitly with a Hoon expression (with `b`, `d`, and `f` above).
 
 #### Discussion
 
-The `|@` rune is just like the `|%` rune except that instead of producing a
-'dry' core, it produces a 'wet' one. This allows for type polymorphism of its
-arms, using 'genericity'. See [Advanced types](/language/hoon/reference/advanced).
+The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one. This allows for type polymorphism of its arms, using 'genericity'. See [Advanced types](/language/hoon/reference/advanced).
 
 ---
 
@@ -1101,8 +1028,7 @@ One argument, fixed.
 
 #### Semantics
 
-A `|?` expression produces a lead trap (i.e., a lead core with one arm named
-`$`). `a` is a Hoon expression that defines what the `$` arm does.
+A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`). `a` is a Hoon expression that defines what the `$` arm does.
 
 #### Discussion
 

@@ -3,9 +3,7 @@ title = "Auras"
 weight = 70
 +++
 
-Auras are system of nested "soft types" on [atoms](/glossary/atom) that
-are used to track metadata about how a particular atom is to be interpreted.
-This is used for type checking as well as pretty printing.
+Auras are system of nested "soft types" on [atoms](/glossary/atom) that are used to track metadata about how a particular atom is to be interpreted. This is used for type checking as well as pretty printing.
 
 You can learn more about auras in [Hoon school](/courses/hoon-school/B-syntax#nouns).
 
@@ -79,8 +77,7 @@ but does not nest "sideways":
 %.n
 ```
 
-We call auras "soft types" since this nesting behavior can be ignored. Auras are
-non-coercive, but conversions may have to go via the empty aura, e.g.
+We call auras "soft types" since this nesting behavior can be ignored. Auras are non-coercive, but conversions may have to go via the empty aura, e.g.
 
 ```
 > ^-(@ud ^-(@ 'foo'))

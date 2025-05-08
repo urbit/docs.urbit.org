@@ -10,12 +10,9 @@ To boot your galaxy or star, follow our [installation instructions](/manual/gett
 
 ### Hosting your star
 
-If you plan to distribute planets in any capacity, we ask that you keep your star
-running. If you fail to do so, those planets will become orphans that are unable
-to communicate with the network unless they transfer to a new star.
+If you plan to distribute planets in any capacity, we ask that you keep your star running. If you fail to do so, those planets will become orphans that are unable to communicate with the network unless they transfer to a new star.
 
-See our [cloud hosting instructions](/manual/running/hosting) for
-instructions on settings up a Digital Ocean droplet.
+See our [cloud hosting instructions](/manual/running/hosting) for instructions on settings up a Digital Ocean droplet.
 
 ### Distributing planets
 
@@ -27,9 +24,7 @@ By default, your star accepts software updates from its galaxy and routes them t
 
 ### Star-owner etiquette
 
-- If you distribute planets, boot and run your star on the Arvo network, or the
-  planets won't be able to boot for the first time or connect unless they
-  transfer to a different star.
+- If you distribute planets, boot and run your star on the Arvo network, or the planets won't be able to boot for the first time or connect unless they transfer to a different star.
 - A star is networking infrastructure. For that reason, the machine running your star or galaxy must have sufficient bandwidth, storage, and processing power for your dependent planets. Until event log pruning is implemented, expect ships to consume more disk space every year; stars looking to serve around 100 planets will want to ensure around 50GB of space per year of operation.
 - When messaging others, communicate using your star only when speaking in an official/infrastructural capacity. Otherwise, use your personal planet.
 

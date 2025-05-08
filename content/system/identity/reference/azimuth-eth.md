@@ -3,13 +3,7 @@ title = "Azimuth.eth"
 weight = 5
 +++
 
-[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all
-data related to Azimuth points and their ownership, and should be considered to
-be the ledger for Azimuth. This contract is just a data store - it only contains
-the bare minimum of business logic. See [Ecliptic.eth](/system/identity/reference/ecliptic)
-for the contract containing the business logic for this ledger. `Azimuth.eth`
-cannot be modified directly by [galaxy vote](/glossary/upgrade) - they are
-only eligible to modify the Ecliptic.
+[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](/system/identity/reference/ecliptic) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by [galaxy vote](/glossary/upgrade) - they are only eligible to modify the Ecliptic.
 
 ## Global state {% #global %}
 
@@ -36,15 +30,11 @@ The global state of `Azimuth.eth` is given by the following.
   string[3] public dnsDomains;
 ```
 
-Urbit ID's are formalized as [ERC-721 non-fungible
-tokens](https://eips.ethereum.org/EIPS/eip-721) and are indexed by a number
-between `0` and `2^32-1`, e.g. a `uint32`. There are two data structures
-associated to a given `uint32`: a `Point` and a `Deed`.
+Urbit ID's are formalized as [ERC-721 non-fungible tokens](https://eips.ethereum.org/EIPS/eip-721) and are indexed by a number between `0` and `2^32-1`, e.g. a `uint32`. There are two data structures associated to a given `uint32`: a `Point` and a `Deed`.
 
 ## `Point`s {% #points %}
 
-A `Point` contains data about networking keys and sponsorship status, arranged
-in the following `struct`:
+A `Point` contains data about networking keys and sponsorship status, arranged in the following `struct`:
 
 ```solidity
   struct Point
@@ -102,8 +92,7 @@ in the following `struct`:
 
 ## `Deed`s {% #deeds %}
 
-A `Deed` says which Ethereum address owns a given `Point` as well as several
-[proxies](https://urbit.org/using/id/proxies) for that `Point`.
+A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](https://urbit.org/using/id/proxies) for that `Point`.
 
 ```solidity
 struct Deed
@@ -135,22 +124,8 @@ struct Deed
 
 ## Other state {% #other %}
 
-Finally, each Ethereum address may set for itself a number of `operators`, as
-defined and required by the [ERC-721
-standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/).
-These are for third party brokers/wallets/auctioneers/etc such as
-[OpenSea](http://opensea.io), which facilitate exchange of ERC-721 tokens.
+Finally, each Ethereum address may set for itself a number of `operators`, as defined and required by the [ERC-721 standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/). These are for third party brokers/wallets/auctioneers/etc such as [OpenSea](http://opensea.io), which facilitate exchange of ERC-721 tokens.
 
-`Azimuth.eth` also contains some other state—`dnsDomains`—which are domain names by
-which the IP address of a galaxy may be looked up, e.g. `zod.urbit.org` resolves
-to `35.247.119.159`. This is used for bootstrapping the network from DNS. Three
-domains may be listed here, but as of today they are all `urbit.org`. This may
-only be updated by the owner of Ecliptic, but arguably each galaxy ought to be
-able to set its own domain name and so we do not expect this to remain the case
-forever.
+`Azimuth.eth` also contains some other state—`dnsDomains`—which are domain names by which the IP address of a galaxy may be looked up, e.g. `zod.urbit.org` resolves to `35.247.119.159`. This is used for bootstrapping the network from DNS. Three domains may be listed here, but as of today they are all `urbit.org`. This may only be updated by the owner of Ecliptic, but arguably each galaxy ought to be able to set its own domain name and so we do not expect this to remain the case forever.
 
-All data in this ledger is stored and processed locally on your ship by the
-[`%azimuth` Gall agent](/system/identity/concepts/flow#azimuth), including [layer
-2](/system/identity/concepts/layer2) data. Because state transitions resulting from layer 2
-transactions are not included in this ledger, in general the local store will
-differ from what is kept in `Azimuth.eth`.
+All data in this ledger is stored and processed locally on your ship by the [`%azimuth` Gall agent](/system/identity/concepts/flow#azimuth), including [layer 2](/system/identity/concepts/layer2) data. Because state transitions resulting from layer 2 transactions are not included in this ledger, in general the local store will differ from what is kept in `Azimuth.eth`.

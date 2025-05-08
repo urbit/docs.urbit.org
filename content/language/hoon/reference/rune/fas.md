@@ -38,18 +38,11 @@ desc = "Ford rune. Import file, convert to mark, and wrap a face."
 
 +++
 
-Fas (`/`) runes are not technically hoon runes, but instead are instructions to
-Arvo's build system. In the past, the build system was its own vane called
-Ford. Ford has since been merged into the filesystem vane
-[Clay](/system/kernel/clay), but these are still referred to as "Ford
-runes".
+Fas (`/`) runes are not technically hoon runes, but instead are instructions to Arvo's build system. In the past, the build system was its own vane called Ford. Ford has since been merged into the filesystem vane [Clay](/system/kernel/clay), but these are still referred to as "Ford runes".
 
-Ford runes are used at the top of a hoon file, and they typically specify
-imports.
+Ford runes are used at the top of a hoon file, and they typically specify imports.
 
-The Dojo does not support Ford runes at the current time, so you should instead
-use the workaround expedient of the `-build-file` thread when working with Hoon
-interactively.
+The Dojo does not support Ford runes at the current time, so you should instead use the workaround expedient of the `-build-file` thread when working with Hoon interactively.
 
 ```hoon
 > =foo -build-file /===/lib/foo/hoon
@@ -72,13 +65,9 @@ Note there is only a single space between each item.
 
 #### Semantics
 
-Names correspond to files in the `/sur` directory of the same desk as this file, e.g.
-`/sur/foo.hoon` for `foo`. Names containing hyphens, e.g. `foo-abc`, will first
-resolve to `/sur/foo-abc.hoon`, and if that doesn't exist, it will try
-`/sur/foo/abc.hoon`.
+Names correspond to files in the `/sur` directory of the same desk as this file, e.g. `/sur/foo.hoon` for `foo`. Names containing hyphens, e.g. `foo-abc`, will first resolve to `/sur/foo-abc.hoon`, and if that doesn't exist, it will try `/sur/foo/abc.hoon`.
 
-Imports may be given a different face by doing `xyz=foo`. Imports may have their
-face stripped (so you can directly reference their wings) with `*foo`.
+Imports may be given a different face by doing `xyz=foo`. Imports may have their face stripped (so you can directly reference their wings) with `*foo`.
 
 ---
 
@@ -96,13 +85,9 @@ Note there is only a single space between each item.
 
 #### Semantics
 
-Names correspond to files in the `/lib` directory of the same desk as this file,
-e.g. `/lib/foo.hoon` for `foo`. Names containing hyphens, e.g. `foo-abc`, will
-first resolve to `/lib/foo-abc.hoon`, and if that doesn't exist, it will try
-`/lib/foo/abc.hoon`.
+Names correspond to files in the `/lib` directory of the same desk as this file, e.g. `/lib/foo.hoon` for `foo`. Names containing hyphens, e.g. `foo-abc`, will first resolve to `/lib/foo-abc.hoon`, and if that doesn't exist, it will try `/lib/foo/abc.hoon`.
 
-Imports may be given a different face by doing `xyz=foo`. Imports may have their
-face stripped (so you can directly reference their wings) with `*foo`.
+Imports may be given a different face by doing `xyz=foo`. Imports may have their face stripped (so you can directly reference their wings) with `*foo`.
 
 ---
 
@@ -122,9 +107,7 @@ Two arguments.
 
 This lets you build and import a hoon file from anywhere in the desk.
 
-The first argument is the face to pin it as. The second argument is the path to
-the file in the same desk as this file. The file must be a `%hoon` file, and the
-trailing mark (`hoon`) must be omitted from the path.
+The first argument is the face to pin it as. The second argument is the path to the file in the same desk as this file. The file must be a `%hoon` file, and the trailing mark (`hoon`) must be omitted from the path.
 
 #### Examples
 
@@ -150,13 +133,9 @@ Three arguments.
 
 #### Semantics
 
-The first argument is the face to pin it as. The second argument is the mark it
-should be converted to. The third argument is the path to the file in the same
-desk as this file, with the trailing mark included.
+The first argument is the face to pin it as. The second argument is the mark it should be converted to. The third argument is the path to the file in the same desk as this file, with the trailing mark included.
 
-The mark specified may be different to the mark of the file, as long as
-conversion is possible. Note that a `%hoon` file will not be built like with
-`/=`: the type of a `%hoon` file is a `@t` so that is what will be pinned.
+The mark specified may be different to the mark of the file, as long as conversion is possible. Note that a `%hoon` file will not be built like with `/=`: the type of a `%hoon` file is a `@t` so that is what will be pinned.
 
 #### Examples
 
@@ -184,15 +163,11 @@ Three arguments.
 
 #### Semantics
 
-The first argument is the face to pin it as. The second argument is the mark to
-convert _from_. The third argument is the mark to convert _to_.
+The first argument is the face to pin it as. The second argument is the mark to convert _from_. The third argument is the mark to convert _to_.
 
-The result will be a gate of `$-(type-1 type-2)`, pinned with the specified
-face. The types are the data types of the _from_ mark and _to_ mark,
-respectively.
+The result will be a gate of `$-(type-1 type-2)`, pinned with the specified face. The types are the data types of the _from_ mark and _to_ mark, respectively.
 
-The mark conversion gate will be built from marks in `/mar` on the same desk as
-this file.
+The mark conversion gate will be built from marks in `/mar` on the same desk as this file.
 
 #### Examples
 
@@ -226,20 +201,11 @@ Three arguments.
 
 #### Semantics
 
-The first argument is the face to pin the results with. The second argument is
-the type each hoon file produces when evaluated. The third argument is the path
-to a directory in the same desk as this file, containing `%hoon` files.
+The first argument is the face to pin the results with. The second argument is the type each hoon file produces when evaluated. The third argument is the path to a directory in the same desk as this file, containing `%hoon` files.
 
-Each hoon file in the specified directory will be built and evalutated. The
-result of evaluating each file will be added to a
-[`++map`](/language/hoon/reference/stdlib/2o#map) and pinned with the specified face
-(`some-face`). The keys of the map will be the name of each file, and the values
-of the map will be the result of evaluating each file and casting its result to
-the type specified (`some-type`).
+Each hoon file in the specified directory will be built and evalutated. The result of evaluating each file will be added to a [`++map`](/language/hoon/reference/stdlib/2o#map) and pinned with the specified face (`some-face`). The keys of the map will be the name of each file, and the values of the map will be the result of evaluating each file and casting its result to the type specified (`some-type`).
 
-All of the hoon files in the specified directory, when evaluated, must produce
-data of a type that nests under the type specified (`some-type`). File with a
-mark other than `%hoon` will be ignored.
+All of the hoon files in the specified directory, when evaluated, must produce data of a type that nests under the type specified (`some-type`). File with a mark other than `%hoon` will be ignored.
 
 The type of the map will be `(map knot some-type)`.
 
@@ -279,12 +245,9 @@ Two arguments.
 
 #### Semantics
 
-The first argument is a face to pin the mark core with. The second argument is a
-mark.
+The first argument is a face to pin the mark core with. The second argument is a mark.
 
-The static mark core (a `nave:clay`) for the specified mark (which resides in
-the same desk as the file) is built and pinned to the subject with the specified
-face.
+The static mark core (a `nave:clay`) for the specified mark (which resides in the same desk as the file) is built and pinned to the subject with the specified face.
 
 #### Examples
 

@@ -3,8 +3,7 @@ title = "Courses"
 weight = 80
 +++
 
-In-depth [tutorials](#tutorials) for learning the Hoon programming language
-and Urbit app development at your own pace.
+In-depth [tutorials](#tutorials) for learning the Hoon programming language and Urbit app development at your own pace.
 
 {% grid %}
 

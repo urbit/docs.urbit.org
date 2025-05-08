@@ -8,13 +8,11 @@ auto_expand = true
 
 ### [Azimuth.eth](/system/identity/reference/azimuth-eth)
 
-A description of the `azimuth.eth` smart contract, which is the data store for
-Azimuth.
+A description of the `azimuth.eth` smart contract, which is the data store for Azimuth.
 
 ### [Ecliptic.eth](/system/identity/reference/ecliptic)
 
-A description of the `ecliptic.eth` smart contract, which is the business logic
-for `azimuth.eth`. This includes an overview of all function calls available.
+A description of the `ecliptic.eth` smart contract, which is the business logic for `azimuth.eth`. This includes an overview of all function calls available.
 
 ### [L2 Actions](/system/identity/reference/l2-actions)
 

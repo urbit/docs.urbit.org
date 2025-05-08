@@ -2,8 +2,7 @@
 title = "Axis"
 +++
 
-An **axis** is a numerical tree address for a particular location in a
-[noun](/glossary/noun).
+An **axis** is a numerical tree address for a particular location in a [noun](/glossary/noun).
 
 For the noun `[a b c]`, the axes are as follow:
 
@@ -13,8 +12,7 @@ For the noun `[a b c]`, the axes are as follow:
 - `6`: `b`
 - `7`: `c`
 
-You can address things by axis with lus and a number, like `+7` for `c`, `+3`
-for `[b c]`, etc. This is an alternative to [lark](/glossary/lark) syntax.
+You can address things by axis with lus and a number, like `+7` for `c`, `+3` for `[b c]`, etc. This is an alternative to [lark](/glossary/lark) syntax.
 
 #### Further Reading
 

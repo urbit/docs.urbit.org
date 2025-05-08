@@ -7,17 +7,13 @@ tag = "selfhost"
 
 ### Types of ID
 
-There are [five different
-types](https://operators.urbit.org/guides/which-id-should-i-buy) of Urbit ID, but here we'll just be  discussing two types called comets and planets.
+There are [five different types](https://operators.urbit.org/guides/which-id-should-i-buy) of Urbit ID, but here we'll just be  discussing two types called comets and planets.
 
-**Comets** are free, temporary identities that you can issue yourself and are best-suited for
-short-term usage. **Planets** are permanent identities that are suitable for long-term use.
+**Comets** are free, temporary identities that you can issue yourself and are best-suited for short-term usage. **Planets** are permanent identities that are suitable for long-term use.
 
 ![](https://media.urbit.org/site/getting-started/comet-planet.png)
 
 Planets have a unique, four syllable phonetic name and a [sigil](https://urbit.org/blog/creating-sigils), a visual representation of the name.
-
-
 
 ### Where to get a planet
 
@@ -38,10 +34,10 @@ Layer 1 planets are the most available through marketplaces, however they can be
 
 Layer 2 planets do not require any crypto wallet management, but are only available on specific marketplaces.
 
-There is no difference between Layer 1 or Layer 2 in the quality of experience
-when using Urbit.
+There is no difference between Layer 1 or Layer 2 in the quality of experience when using Urbit.
 
 Here are a few of the places where you can buy planets:
+
 {% table .w-full .my-4 %}
 * L1 Planet Markets
 * L2 Planet Markets

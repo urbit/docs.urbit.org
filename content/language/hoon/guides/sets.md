@@ -101,9 +101,9 @@ First we consider the elementary operations between two sets.
 
 ### Union (_A_ ∪ _B_)
 
-{% math block=true %}
+$$
 A \cup B \equiv \{ x : x \in A \text{ or } x \in B \}
-{% /math %}
+$$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-union.png)
 
@@ -118,9 +118,9 @@ A \cup B \equiv \{ x : x \in A \text{ or } x \in B \}
 
 ### Intersection (_A_ ∩ _B_)
 
-{% math block=true %}
+$$
 A \cap B \equiv \{ x : x \in A \text{ and } x \in B \}
-{% /math %}
+$$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-intersection.png)
 
@@ -144,9 +144,9 @@ If two sets are disjoint, then their intersection is ∅.
 
 ### Complement (_Aꟲ_)
 
-{% math block=true %}
+$$
 A^{\textrm{C}} = X \backslash A \equiv {x \in X; x \notin A}
-{% /math %}
+$$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-complement.png)
 
@@ -164,9 +164,9 @@ For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_
 
 ### Symmetric Difference (_A_ Δ _B_)
 
-{% math block=true %}
+$$
 A \bigtriangleup B \equiv \{x : x \text{ belongs to exactly one of } A \text{ and } B\}
-{% /math %}
+$$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-symmetric-difference.png)
 

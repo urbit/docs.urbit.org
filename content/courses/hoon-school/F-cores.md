@@ -105,7 +105,7 @@ You can do even better using _interpolation_:
 
 ### Exercise:  Calculate a Factorial
 
-- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number {% math %}n{% /math %} is {% math %}n \times (n-1) \times \ldots \times 2 \times 1{% /math %}.  We will introduce a couple of new bits of syntax and a new gate ([++dec](/language/hoon/reference/stdlib/1a#dec)).  Make this into a generator `factorial.hoon`:
+- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$.  We will introduce a couple of new bits of syntax and a new gate ([++dec](/language/hoon/reference/stdlib/1a#dec)).  Make this into a generator `factorial.hoon`:
 
     ```hoon {% copy=true %}
     |=  n=@ud
@@ -221,12 +221,12 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 ### Exercise:  Calculate a sequence of numbers
 
-Produce a gate (generator) which accepts a `@ud` value and calculates the series where the {% math %}i^\text{th}{% /math %} term in the series is given by the equation
+Produce a gate (generator) which accepts a `@ud` value and calculates the series where the $$i^\text{th}$$ term in the series is given by the equation
 
-{% math block=true %}
+$$
 n_{i} = i^{2}
 \textrm{,}
-{% /math %}
+$$
 
 <!--
 $$
@@ -691,11 +691,11 @@ Recursion can be set up different ways.  A full treatment requires thinking abou
 
 #### Tutorial:  The Fibonacci Sequence
 
-For instance, let's talk about calculating the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence), which is a sequence of numbers wherein each is formed by adding the two previous numbers together.  Thus 1, 1, 1+1→2, 1+2→3, 2+3→5, and so forth.  We may write the {% math %}n^\text{th}{% /math %} Fibonacci number in a generic way as:
+For instance, let's talk about calculating the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence), which is a sequence of numbers wherein each is formed by adding the two previous numbers together.  Thus 1, 1, 1+1→2, 1+2→3, 2+3→5, and so forth.  We may write the $$n^\text{th}$$ Fibonacci number in a generic way as:
 
-{% math block=true %}
+$$
 F_n = F_{n-1} + F_{n-2}
-{% /math %}
+$$
 
 <!--
 F_n = F_{n-1} + F_{n-2}
@@ -717,7 +717,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     (add $(n (dec n)) $(n (dec (dec n))))
     ```
 
-    We can use _two_ recursion points for `%=` [centis](/language/hoon/reference/rune/cen#-centis).  The first calculate {% math %}F{% /math %} for {% math %}n-1{% /math %}; the second calculate {% math %}F{% /math %} for {% math %}n-2{% /math %}.  These are then added together.  If we diagram what's happening, we can see that each additional number costs as much as the previous numbers:
+    We can use _two_ recursion points for `%=` [centis](/language/hoon/reference/rune/cen#-centis).  The first calculate $$F$$ for $$n-1$$; the second calculate $$F$$ for $$n-2$$.  These are then added together.  If we diagram what's happening, we can see that each additional number costs as much as the previous numbers:
 
     ```hoon
     (fibonacci 5)
@@ -891,13 +891,13 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
 
 The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is one of the earliest examples of a function that is both totally computable—meaning that it can be solved—and not primitively recursive—meaning it can not be rewritten in an iterative fashion.
 
-{% math block=true %}
+$$
 \begin{array}{lcl}
 \operatorname{A}(0, n) & = & n + 1 \\\\
 \operatorname{A}(m+1, 0) & = & \operatorname{A}(m, 1) \\\\
 \operatorname{A}(m+1, n+1) & = & \operatorname{A}(m, \operatorname{A}(m+1, n))
 \end{array}
-{% /math %}
+$$
 
 <!--
 \begin{array}{lcl}
@@ -927,18 +927,18 @@ The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is on
 
 The Ackermann function is not terribly useful in and of itself, but it has an interesting history in mathematics.  When running this function the value grows rapidly even for very small input.  The value of computing this where `m` is `4` and `n` is `2` is an integer with 19,729 digits.
 
-- Calculate some of the {% math %}m{% /math %}/{% math %}n{% /math %} pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
+- Calculate some of the $$m$$/$$n$$ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
 
 ### Exercise:  The Sudan Function
 
 The [Sudan function](https://en.wikipedia.org/wiki/Sudan_function) is related to the Ackermann function.
 
-{% math block=true %}
+$$
 \begin{array}{lll}
 F_0 (x, y) & = x+y \\\\
 F_{n+1} (x, 0) & = x & \text{if } n \ge 0 \\\\
 F_{n+1} (x, y+1) & = F_n (F_{n+1} (x, y), F_{n+1} (x, y) + y + 1) & \text{if } n\ge 0
 \end{array}
-{% /math %}
+$$
 
 - Implement the Sudan function as a gate.

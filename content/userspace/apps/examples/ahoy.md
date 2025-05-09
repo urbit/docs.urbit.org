@@ -36,7 +36,7 @@ Three commands are supported:  to add a ship to the watchlist at a given watch i
 
 **`/sur/ahoy.hoon`**:
 
-```hoon {% copy=true, mode="collapse" %}
+```hoon
 |%
 +$  records
   $:  watchlist=(map ship @dr)
@@ -141,8 +141,9 @@ The `++abet` pattern itself is rather simple to construct.  It enables other arm
 
 Other arms (such as `++set-timer`) then simply construct cards which are inserted into the `++abet` core's list.
 
-
-```hoon {% mode="collapse" %}
+<details>
+<summary>Helper Core code</summary>
+```hoon
 =|  cards=(list card)
 |_  =bowl:gall
 ++  this  .
@@ -217,6 +218,7 @@ Other arms (such as `++set-timer`) then simply construct cards which are inserte
   [%pass /hark %agent [our.bowl %hark-store] %poke cage]~
 --
 ```
+</details>
 
 For `%ahoy`, the main arm we need to examine is `++on-update-interval`.  This arm resets the timer, sends checks to all of the ships, and then sends notifications to `%hark-store` for anything unresponsive.
 
@@ -269,7 +271,9 @@ The `++send-plea` status check is interesting:  it checks whether Ames is respon
 
 **`/app/ahoy.hoon`**:
 
-```hoon {% copy=true, mode="collapse" %}
+<details>
+<summary>/app/ahoy.hoon</summary>
+```hoon
 ::  ahoy: ship monitoring
 ::
 ::    get notified if last-contact with a ship
@@ -495,12 +499,14 @@ The `++send-plea` status check is interesting:  it checks whether Ames is respon
   [%pass /hark %agent [our.bowl %hark-store] %poke cage]~
 --
 ```
+</details>
 
-**`/lib/ahoy.hoon`**:
 
-This library file provides helper logic for determining ship status.  In particular, scries are simplified.  For instance, `(~(last-contact ahoy bowl) ship)` can be used instead of the scry below.
+The `/lib/ahoy.hoon` library file provides helper logic for determining ship status.  In particular, scries are simplified.  For instance, `(~(last-contact ahoy bowl) ship)` can be used instead of the scry below.
 
-```hoon {% copy=true, mode="collapse" %}
+<details>
+<summary>/lib/ahoy.hoon</summary>
+```hoon
 |_  =bowl:gall
 ++  ship-state
   |=  [who=ship]
@@ -527,10 +533,11 @@ This library file provides helper logic for determining ship status.  In particu
   `when
 --
 ```
+</details>
 
-**`/app/ahoy/webui/index.hoon`**:
-
-```hoon {% copy=true, mode="collapse" %}
+<details>
+<summary>/app/ahoy/webui/index.hoon</summary>
+```hoon
 /-  *ahoy, contact=contact-store
 /+  ahoy, rudder, ahoy-style, sigil-svg=sigil
 ::
@@ -663,12 +670,13 @@ This library file provides helper logic for determining ship status.  In particu
   --  ::  |^
 --    ::  |_
 ```
+</details>
 
 The CSS styling is included via a library core:
 
-**`/lib/ahoy/style.hoon`**:
-
-```hoon {% copy=true, mode="collapse" %}
+<details>
+<summary>/lib/ahoy/style.hoon</summary>
+```hoon
 |%
 ++  style
   '''
@@ -733,6 +741,7 @@ The CSS styling is included via a library core:
   '''
 --
 ```
+</details>
 
 ### Rendering Sigils
 
@@ -756,7 +765,7 @@ Some agents (notably `%helm`, a Dojo tool) are instrumented to work directly wit
 
 **`/gen/ahoy/add-watch.hoon`**
 
-```hoon {% mode="collapse" %}
+```hoon
   ::  :ahoy|add-watch ~sampel ~d1
   ::
   :-  %say

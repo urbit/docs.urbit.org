@@ -143,6 +143,7 @@ Other arms (such as `++set-timer`) then simply construct cards which are inserte
 
 <details>
 <summary>Helper Core code</summary>
+{% code title="Helper Core" lineNumbers="true" %}
 ```hoon
 =|  cards=(list card)
 |_  =bowl:gall
@@ -218,6 +219,7 @@ Other arms (such as `++set-timer`) then simply construct cards which are inserte
   [%pass /hark %agent [our.bowl %hark-store] %poke cage]~
 --
 ```
+{% endcode %}
 </details>
 
 For `%ahoy`, the main arm we need to examine is `++on-update-interval`.  This arm resets the timer, sends checks to all of the ships, and then sends notifications to `%hark-store` for anything unresponsive.
@@ -273,6 +275,7 @@ The `++send-plea` status check is interesting:  it checks whether Ames is respon
 
 <details>
 <summary>/app/ahoy.hoon</summary>
+{% code title="/app/ahoy.hoon" lineNumbers="true" %}
 ```hoon
 ::  ahoy: ship monitoring
 ::
@@ -499,6 +502,7 @@ The `++send-plea` status check is interesting:  it checks whether Ames is respon
   [%pass /hark %agent [our.bowl %hark-store] %poke cage]~
 --
 ```
+{% endcode %}
 </details>
 
 
@@ -506,6 +510,7 @@ The `/lib/ahoy.hoon` library file provides helper logic for determining ship sta
 
 <details>
 <summary>/lib/ahoy.hoon</summary>
+
 ```hoon
 |_  =bowl:gall
 ++  ship-state
@@ -533,10 +538,12 @@ The `/lib/ahoy.hoon` library file provides helper logic for determining ship sta
   `when
 --
 ```
+
 </details>
 
 <details>
 <summary>/app/ahoy/webui/index.hoon</summary>
+
 ```hoon
 /-  *ahoy, contact=contact-store
 /+  ahoy, rudder, ahoy-style, sigil-svg=sigil
@@ -670,12 +677,14 @@ The `/lib/ahoy.hoon` library file provides helper logic for determining ship sta
   --  ::  |^
 --    ::  |_
 ```
+
 </details>
 
 The CSS styling is included via a library core:
 
 <details>
 <summary>/lib/ahoy/style.hoon</summary>
+
 ```hoon
 |%
 ++  style
@@ -741,6 +750,7 @@ The CSS styling is included via a library core:
   '''
 --
 ```
+
 </details>
 
 ### Rendering Sigils

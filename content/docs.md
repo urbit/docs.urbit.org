@@ -3,6 +3,14 @@ title = "Docs guide"
 name = "docs-guide"
 +++
 
+<details>
+<summary>foo.hoon</summary>
+```hoon
+|=  a=@
+[a a]
+```
+</details>
+
 ## FAQ Component
 
 {% markdocExample %}

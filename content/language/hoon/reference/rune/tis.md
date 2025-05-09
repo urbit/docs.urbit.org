@@ -982,7 +982,7 @@ The product of the chain composition.
 
 ---
 
-## `=*` "tistar" {% #-tistar %}
+## `=*` "tistar" {#-tistar}
 
 Define a deferred expression.
 

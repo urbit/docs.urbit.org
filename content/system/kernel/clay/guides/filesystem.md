@@ -14,7 +14,7 @@ Here we describe what each of the primary folders present in a Clay desk. This o
 - `/ted` contains [threads](/userspace/threads). These may be run from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run with `-foo`. Threads on desks other than the `%base` desk can be run with `-desk!thread` like `-landscape!foo`.
 - `/tests` contains unit tests intended to be run using the `test` thread. To run a particular test `+test-bar` in `/tests/foo.hoon` in dojo, enter `-test %/tests/foo/test-bar ~`. If a file is specified, every test in that file will run. If a folder is specified, every test in that folder will run.
 
-## `/sys` {% #sys %}
+## `/sys` {#sys}
 
 `/sys` contains four files: `hoon.hoon`, `arvo.hoon`, `lull.hoon`, and `zuse.hoon`. These are the files used to construct kernelspace. Only the `%base` desk contains these files, other desks omit the `/sys` directory and instead just depend on `%base`. The chain of dependencies is `hoon.hoon` -> `arvo.hoon` -> `lull.hoon` -> `zuse.hoon`. We give a brief description of each of them.
 

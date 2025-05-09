@@ -11,7 +11,7 @@ Documentation for [Insecure Hashing](/language/hoon/reference/stdlib/2e) and the
 
 `zuse` contains several cryptosuites. The ones utilized by Ames are [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with the latter being the only one which is implemented as an [`+acru:ames`](/system/kernel/ames/guides/cryptography#crypto-core)-shaped core.
 
-## `+crub:crypto` {% #crub %}
+## `+crub:crypto` {#crub}
 
 `+crub:crypto` implements an [`+acru:ames`](/system/kernel/ames/guides/cryptography#crypto-core) core that implements [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
@@ -41,7 +41,7 @@ Forms a symmetric key using Diffie-Hellman key exchange with the secret key stor
 
 Crashes if `sek` is null.
 
-### `+sign:as` {% #sign-as %}
+### `+sign:as` {#sign-as}
 
 ```hoon
       ++  sign                                          ::
@@ -95,7 +95,7 @@ Crashes if `sek` is null.
 
 Same as `+dy`, but crashes in case of failure.
 
-### `+en` {% #en %}
+### `+en` {#en}
 
 ```hoon
     ++  en                                              ::  encrypt
@@ -120,7 +120,7 @@ Returns the concatenation of `sgn.pub` and `cry.pub`.
 
 Returns the concatenation of `sgn.u.sek` and `cry.u.sek`.
 
-### `+pit:nu` {% #nu %}
+### `+pit:nu` {#nu}
 
 ```hoon
       ++  pit                                           ::  create keypair
@@ -152,7 +152,7 @@ Takes in a `ring` from a `+sec:ex:crub` and generates a new `+crub` core with `s
 
 Takes in a `pass` from a `+pub:ex:crub` and generates a new `+crub` core with `pub` taken from `+pub:ex` and null `sek`.
 
-## `+ed:crypto` {% #ed %}
+## `+ed:crypto` {#ed}
 
 This core contains cryptographic primitives and helper functions for elliptic curve cryptography with [Curve25519](https://en.wikipedia.org/wiki/Curve25519).
 
@@ -160,7 +160,7 @@ This core contains cryptographic primitives and helper functions for elliptic cu
 
 Most gates in `+ed:crypto` are [jetted](/system/runtime/guides/jetting), meaning that an external reference library is utilized whenever these functions are called, rather than running in Nock natively. See the [Vere documentation](/system/runtime/reference/cryptography#ed) for more information about the library utilized by jets.
 
-## `+aes:crypto` {% #aes %}
+## `+aes:crypto` {#aes}
 
 This core contains cryptographic primitives and helper functions for [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption and decryption. As is the case with `ed:crypto`, these functionalities are utilized by [`+crub:crypto`](#crub), and most gates are jetted. See also the Vere documentation on [AES SIV](/system/runtime/reference/cryptography#aes) for more information about the library utilized by jets.
 

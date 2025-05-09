@@ -28,7 +28,7 @@ We briefly review how "Layer 1", i.e. the [Azimuth](/glossary/azimuth) smart con
 
 By default, step four always succeeds. It has always been possible in theory for your urbit to dispute what it read on Ethereum, but there has never been any reason to do so.
 
-### Layer 2 {% #layer-2 %}
+### Layer 2 {#layer-2}
 
 Layer 1 still functions identically today as it did before naive rollups. Naive rollups work via the following process.
 
@@ -66,7 +66,7 @@ Layer 2 ships can perform the same actions on layer 2 that they could on layer 1
 
 For a complete list of what layer 2 actions each ship rank, layer, and proxy can perform, see [Layer 2 Actions](/system/identity/reference/l2-actions). For an explicit description of the byte format of Layer 2 Ethereum transaction, see [Bytestring format](/system/identity/reference/bytestring).
 
-### Sponsorship {% #sponsorship %}
+### Sponsorship {#sponsorship}
 
 Due to the possibility of sponsors and sponsees existing on different layers, the precise logic of how sponsorship works is complex. However, under common circumstances it is simple.
 
@@ -76,11 +76,11 @@ If both sponsor and sponsee are on layer 1 then sponsorship actions may occur on
 
 In most cases this is sufficient to understand how sponsorship works. However there are a number of edge cases that make this more complicated that developers may need to concern themselves with in scenarios where layer 1 sponsor and sponsees are mixing layer 1 and layer 2 actions. In the [Sponsorship state transitions](#sponsorship-state-transitions) section below, we give a table that shows how the sponsor and escape status of a ship changes according to which actions are taken.
 
-### Smart contracts {% #smart-contracts %}
+### Smart contracts {#smart-contracts}
 
 Smart contracts are unable to own layer 2 ships, and thus cannot sign layer 2 transactions. This creates a hard requirement that layer 1 ships be allowed to perform a layer 1 detach operation on a layer 2 ships.
 
-## Azimuth state {% #state %}
+## Azimuth state {#state}
 
 The introduction of layer 2 presents additional complication in understanding Azimuth state. In order to be precise we define the following terminology:
 

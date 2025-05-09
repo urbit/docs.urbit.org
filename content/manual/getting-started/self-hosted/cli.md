@@ -9,7 +9,7 @@ This guide covers running the Urbit runtime (Vere) using the command line. This 
 
 Note there is a much more comprehensive [cloud hosting guide](/manual/getting-started/self-hosted/cloud-hosting) which walks through setting up Urbit on a [Digital Ocean](https://www.digitalocean.com/) VPS.
 
-### 1. System Requirements {% #about-swap-space %}
+### 1. System Requirements {#about-swap-space}
 
 - **Processor**: 1 core
 - **Memory**: 2GB

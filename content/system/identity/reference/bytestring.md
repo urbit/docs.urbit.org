@@ -15,7 +15,7 @@ We describe the byte format of a `batch` and its components in the following. Al
 
 For the purposes of concatenation, all atoms are encoded using `octs=(pair @ud @)`, which is a way to represent atoms with a fixed width in order to account for leading zeroes. Here `@ud` will be the length of the atom in bytes, while the `@` is actual atom.
 
-### Batches {% #batch %}
+### Batches {#batch}
 
 A `batch` is an atom that is the concatenation of several raw transactions, which are themselves atoms. `naive.hoon` starts reading the `batch` from the end and working backwards (little-endian). A `batch` looks like:
 
@@ -33,7 +33,7 @@ signature-1
 
 Be careful to distinguish between an "action" and an "unsigned transaction". An action is a short bytestring that describes an Azimuth action as given in the [following section](#actions), while an unsigned transaction is an action plus the nonce, chain ID, header. Actions are what are submitted to Ethereum, while unsigned transactions are what are signed and used as the signatures in the above `batch` format. When `naive.hoon` parses a batch it adds the appropriate nonce, chain ID, and header to a given action and uses that to verify the corresponding signature, rather than just the action itself. This reduces the number of bytes in the batch, making transactions cheaper.
 
-### Actions {% #actions %}
+### Actions {#actions}
 
 The byte format of an action as they appear in a `batch` is as follows. They are parsed by the `+parse-tx` arm in `naive.hoon`.
 
@@ -121,7 +121,7 @@ Each of these actions have the same argument - an Ethereum address:
 1 bit: padding
 ```
 
-### Unsigned transactions {% #unsigned %}
+### Unsigned transactions {#unsigned}
 
 An unsigned transaction is an atom consisting of the concatentation of an Ethereum signed message header, an Urbit ID header, a chain ID, a nonce, and an action. This has the following format:
 
@@ -144,7 +144,7 @@ Here `+cad` is a gate in `/lib/tiny.hoon` that concatenates atoms given in `octs
 
 Again we emphasize that unsigned transactions are _not_ what is submitted in a batch - an [action](#actions) and a [signature](#signatures) are. A ship submitting a layer 2 transaction to a roller signs an unsigned transaction and this signature is included along with the action, which does not include the additional data listed above. When a ship determines whether or not a given layer 2 action is valid, it adds the additional data to the action to form an unsigned transaction and verifies the signature against that.
 
-### Signatures {% #signatures %}
+### Signatures {#signatures}
 
 The signature is a 65-byte ECDSA signature as described in [EIP-191](https://eips.ethereum.org/EIPS/eip-191) and is compatible with `personal_sign`. The precise format of the signature depends on which wallet was used to sign it. Layer 2 supports all major signature formats, including Metamask, Trezor, Ledger, and others. Signatures in batches are obtained by signing an [unsigned transaction](#unsigned).
 

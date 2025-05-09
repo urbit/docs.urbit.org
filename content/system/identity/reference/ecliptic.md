@@ -13,7 +13,7 @@ You can read about [Urbit's first upgrade](https://github.com/urbit/azimuth/pull
 
 There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](/system/identity/reference/l2-actions), and/or can be performed using [Bridge](https://urbit.org/using/id/using-bridge). We note these facts where applicable.
 
-## Write functions {% #write %}
+## Write functions {#write}
 
 Here we briefly describe each function in `Ecliptic.eth` which allows one to write data to Ethereum. These can be called using [Etherscan](https://etherscan.io/address/ecliptic.eth#writeContract), but the most common functions may be called from within Bridge.
 
@@ -142,7 +142,7 @@ Corresponds to the layer 2 `%detach` action.
 
 Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` on a layer 2 sponsee. See the [Layer 2](/system/identity/concepts/layer2#sponsorship) section for more detail. The detach action available in Bridge is a layer 2 action, so a layer 1 detach must be done [manually](https://etherscan.io/address/ecliptic.eth#writeContract).
 
-### Proxy management {% #proxies %}
+### Proxy management {#proxies}
 
 These functions are used to manage the various [proxies](https://urbit.org/using/id/proxies). All of these actions may be performed from Bridge.
 
@@ -305,7 +305,7 @@ Grant `_target` ownership of the `_galaxy` and register it for voting. Galaxies 
 
 Sets 3 DNS domains by which galaxy IP addresses may be looked up as part of the bootstrap process to get on the network. Currently, all three domains are `urbit.org`.
 
-## Read functions {% #read %}
+## Read functions {#read}
 
 Here we briefly describe each function in the Ecliptic which allows one to read data from the contract. These can be called using [Etherscan](https://etherscan.io/address/ecliptic.eth#readContract).
 

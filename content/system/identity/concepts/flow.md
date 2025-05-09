@@ -25,7 +25,7 @@ The transaction processing library is [`/lib/naive.hoon`](#naive).
 
 ## Gall agents
 
-### `%azimuth` {% #azimuth %}
+### `%azimuth` {#azimuth}
 
 `%azimuth`, located at `/app/azimuth.hoon`, is a Gall agent and thread handler responsible for finding Azimuth transactions gathered by `%eth-watcher`, keeping track of the PKI state, and exposing that data via scries.
 
@@ -62,17 +62,17 @@ Scries can be inferred from the `+on-peek` arm:
   ==
 ```
 
-### `%azimuth-rpc` {% #azimuth-rpc %}
+### `%azimuth-rpc` {#azimuth-rpc}
 
 `%azimuth-rpc`, located at `app/azimuth-rpc.hoon`, is a JSON RPC-API for getting `point` and `dns` data from the Azimuth PKI state kept by `%azimuth`.
 
-### `%eth-watcher` {% #eth-watcher %}
+### `%eth-watcher` {#eth-watcher}
 
 `%eth-watcher`, located at `/app/eth-watcher.hoon`, is responsible for listening to an Ethereum node and collecting event logs from it. It is general-purpose and not particular to Azimuth. It sends collected transactions to `+on-agent` in `%azimuth`, which then obtains the resulting PKI state transitions by passing them to [`naive.hoon`](#naive).
 
 [![Eth-watcher](https://media.urbit.org/docs/layer2/roller-agents.png)](https://media.urbit.org/docs/layer2/roller-agents.png)
 
-### `%roller` {% #roller %}
+### `%roller` {#roller}
 
 `%roller`, stored at `/app/roller.hoon`, is a Gall agent responsible for collecting and submitting batches of layer 2 transactions to the Ethereum blockchain. Among other things, it keeps track of a list of pending transactions to be sent, transactions it has sent that are awaiting confirmation, history of transactions sent organized by Ethereum address, and when the next batch of transactions will be sent. See also [Rollers](/system/identity/reference/roller) for more information on the roller.
 
@@ -112,7 +112,7 @@ This app is not responsible for communicating with Bridge via HTTP. Instead, tha
 
 `%roller-rpc`, stored at `/app/roller-rpc.hoon`, is a very simple Gall app responsible for receiving HTTP RPC-API calls, typically sent from other Urbit ID users via Bridge. It then translates these API calls from JSON to a format understood by `%roller` and forwards them to `%roller`. This app does not keep any state - its only purpose is to act as an intermediary between Bridge and `%roller`. See [here](/system/identity/reference/layer2-api) for more information on the JSON RPC-API.
 
-## `naive.hoon` {% #naive %}
+## `naive.hoon` {#naive}
 
 `/lib/naive.hoon` consists of a gate whose sample is a `verifier`, `chain-id=@ud`, `state`, and `input`, which outputs a cell of `[effects state]`. This is the transition function which updates the state of the PKI stored in `%azimuth` which handles state transitions caused by both layer 1 and layer 2 transactions. A high-level overview of how `naive.hoon` functions can be found [here](/system/identity/concepts/layer2#layer-2).
 

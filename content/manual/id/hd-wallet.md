@@ -6,43 +6,43 @@ template = "doc.html"
 
 This document explains what the [Urbit HD wallet](https://developers.urbit.org/glossary/hdwallet) is and how to use it.
 
-### What is the Urbit HD Wallet? {% #urbit-hd-wallet %}
+### What is the Urbit HD Wallet? {#urbit-hd-wallet}
 
 The [Urbit Hierarchical Deterministic (HD) Wallet](https://developers.urbit.org/glossary/hdwallet) is a custom Ethereum wallet based on BIP39 and BIP44 – the same underlying technology used by wallet providers like Ledger, Trezor, Metamask, and MyEtherWallet. You can think of the Urbit HD wallet as a wallet of wallets, which lets you keep a single passphrase for all of your Urbit ID keys. Urbit ID uses multiple keys with different capabilities – a bit like permissions – so that you can keep the more valuable keys in cold storage while keeping less valuable keys, used in day-to-day operation, more easily accessible. If you're only operating a planet, you shouldn't have to worry about this: you can simply think of your "master ticket" as the password to your Urbit ID. If you're operating a star or galaxy, the Urbit HD Wallet allows you to implement a multi-tier key custody scheme.
 
 If you're interested, you can read the spec here: [Urbit HD Wallet Spec (UP 8)](https://github.com/urbit/proposals/blob/master/008-urbit-hd-wallet.md).
 
-### What is a master ticket? {% #master-ticket %}
+### What is a master ticket? {#master-ticket}
 
 The "master ticket" is the cryptographic seed from which your other Urbit ID keys are derived. It should be treated like a master password: **you should never share it with anyone, and you must store it very securely (see our practices below).** This ticket is used to derive the Ethereum wallet that holds your ownership keys, your [Urbit OS](#what-is-arvo) key – used to boot your Urbit – and the other keys associated with your identity. You’ll have a master ticket if you used the Urbit Wallet Generator or claimed a [ship](https://developers.urbit.org/glossary/ship) on our hosted version of Bridge.
 
 If you're operating a planet, you can use your master ticket to authenticate with Bridge.
 
-### What is an ownership address? {% #ownership-address %}
+### What is an ownership address? {#ownership-address}
 
 An ownership address is an Ethereum address that owns one or more of your Urbit IDs. The Urbit Wallet Generator creates one [Urbit HD Wallet](https://developers.urbit.org/glossary/hdwallet) and associated addresses for each of your identities. Using the ownership key associated with your ownership address, you can transfer identities to other people, meaning that it’s very important to store securely.
 
-### What are proxies? {% #proxies %}
+### What are proxies? {#proxies}
 
 See [Proxies](/manual/id/proxies).
 
-### What are seeds? {% #seeds %}
+### What are seeds? {#seeds}
 
 All Ethereum key-pairs in the Urbit wallet system, including [proxies](https://developers.urbit.org/glossary/proxies), are produced by 128-bit cryptographically random values called seeds. These seeds are the equivalent of the BIP39 mnemonic of an Ethereum wallet and are yours alone. An ownership key pair is derived from an ownership seed and, likewise, the various proxy key pairs are generated from their respective proxy seeds.
 
 For detailed information see the [Urbit HD Wallet Spec (UP 8)](https://github.com/urbit/proposals/blob/master/008-urbit-hd-wallet.md).
 
-### What does it mean to “set public keys”? {% #set-public-keys %}
+### What does it mean to “set public keys”? {#set-public-keys}
 
 This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](https://developers.urbit.org/glossary/azimuth), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](https://developers.urbit.org/glossary/ship) on the [Urbit OS](#what-is-arvo) network.
 
 You want to reset these keys if they are compromised, or if your ship has sunk. This is of little practical significance today, but resetting your networking keys resets your relationship with other ships on the network.
 
-### What do I do if I want to own multiple identities? {% #multiple-points %}
+### What do I do if I want to own multiple identities? {#multiple-points}
 
 We recommend using a different HD Wallet for each identity. You are able to assign any number of identities to a single Ethereum address, however, since they are just ERC-721 tokens.
 
-### How should I take care of my Urbit HD Wallet? {% #custody %}
+### How should I take care of my Urbit HD Wallet? {#custody}
 
 Urbit IDs have accompanying security realities that must be taken seriously. The responsibility for keeping cryptographic assets safe rests fully with the party that owns them.
 

@@ -25,7 +25,7 @@ To set up your fakezod to automatically receive Azimuth updates from the Infura 
 
 If you do not perform this step, you'll later see an error "roller not ready" when the first roller batch is about to be submitted.
 
-## 2. Starting and configuring `%roller` {% #step2 %}
+## 2. Starting and configuring `%roller` {#step2}
 
 This step must be performed whether you're using a fakezod or a live ship.
 

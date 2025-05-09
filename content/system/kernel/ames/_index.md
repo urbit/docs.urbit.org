@@ -111,7 +111,7 @@ There are two types of acks: fragment acks and message acks. Acks are not consid
 
 Acks are considered to be part of the flow in which that `%plea` or `%boon` lives, as the packets containing their fragments and packets acking the receipt of those packets are considered to be what makes up a given message. Thus a message-level ack must be received before the next message on the flow can begin. The full story is more complicated than this; see the section on [flows](#flows).
 
-#### Nacks {% #nacks %}
+#### Nacks {#nacks}
 
 A nack indicates a negative acknowledgement to a `%plea`, meaning that the requested action was not performed.
 

@@ -14,7 +14,7 @@ In [the `shoe` library](#the-shoe-library) we take a closer look at the `shoe` l
 
 This tutorial can be considered to be an application equivalent of the [Hoon school lesson](/courses/hoon-school/P-stdlib-io#ask-generators) on `sole` and `%ask` generators, which only covers the bare minimum necessary to write generators that take user input.
 
-## The `shoe` library {% #the-shoe-library %}
+## The `shoe` library {#the-shoe-library}
 
 Here we describe how sessions are identified, the specialized `card`s that Gall agents with the `shoe` library are able to utilize, and the different cores of `/lib/shoe.hoon` and their purpose.
 
@@ -110,7 +110,7 @@ This core contains the bare minimum implementation of the additional `shoe` arms
 
 This is a function for wrapping a `shoe` core, which has too many arms to be a valid Gall agent core. This turns it into a standard Gall agent core by integrating the additional arms into the standard ones.
 
-## The `sole` library {% #the-sole-library %}
+## The `sole` library {#the-sole-library}
 
 `shoe` apps may create specialized `card`s of the `[%shoe (list sole-id) shoe-effect]` shape, where `shoe-effect` currently just wrap `sole-effect`s, i.e. instructions for displaying text and producing other effects in the console.
 
@@ -127,7 +127,7 @@ For example, a `sole-effect` that displays `This is some text.` and beeps would 
 [%mor [%txt "This is some text."] [%bel ~] ~]
 ```
 
-## `%shoe` app walkthrough {% #shoe-app-walkthrough %}
+## `%shoe` app walkthrough {#shoe-app-walkthrough}
 
 Here we explore the capabilities of the `%shoe` example app and then go through the code, explaining what each line does.
 

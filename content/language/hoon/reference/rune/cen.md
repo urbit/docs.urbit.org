@@ -318,7 +318,7 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 
 ---
 
-## `%-` "cenhep" {% #-cenhep %}
+## `%-` "cenhep" {#-cenhep}
 
 Call a gate (function).
 

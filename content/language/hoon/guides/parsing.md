@@ -8,7 +8,7 @@ This document serves as an introduction to parsing text with Hoon. No prior know
 
 **Note:** For JSON printing/parsing and encoding/decoding, see the [JSON Guide](/language/hoon/guides/json-guide).
 
-## What is parsing? {% #what-is-parsing %}
+## What is parsing? {#what-is-parsing}
 
 A program which takes a raw sequence of characters as an input and produces a data structure as an output is known as a _parser_. The data structure produced depends on the use case, but often it may be represented as a tree and the output is thought of as a structural representation of the input. Parsers are ubiquitous in computing, commonly used for to perform tasks such as reading files, compiling source code, or understanding commands input in a command line interface.
 
@@ -254,7 +254,7 @@ The standard library provides a number of gates that take a `rule` and produce a
 
 `+pal` and `+par` are shorthand for `(just '(')` and `(just ')')`, respectively. All ASCII glyphs have counterparts of this sort, documented [here](/language/hoon/reference/stdlib/4h).
 
-### [`+star`](/language/hoon/reference/stdlib/4f/#star) {% #star %}
+### [`+star`](/language/hoon/reference/stdlib/4f/#star) {#star}
 
 `+star` is used to apply a `rule` repeatedly. Recall that `+just` only parses the first character in the input `tape.`
 
@@ -341,7 +341,7 @@ syntax error
 ['a' 'b' 'a']
 ```
 
-### [`;~`](/language/hoon/reference/rune/mic/#-micsig) {% #-micsig %}
+### [`;~`](/language/hoon/reference/rune/mic/#-micsig) {#-micsig}
 
 Understanding the rune `;~` is essential to building parsers with Hoon. Let's take this opportunity to think about it carefully.
 

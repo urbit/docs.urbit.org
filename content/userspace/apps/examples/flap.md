@@ -536,7 +536,7 @@ The import lines at the top of `/app/flap.hoon` build each file according to its
 Later in `/app/flap.hoon` we serve the files at particular endpoints:
 
 <details>
-<summary>/app/flap.hoon</summary>
+<summary>file serving code</summary>
 
 ```hoon
   [%apps %flap %game %js ~]

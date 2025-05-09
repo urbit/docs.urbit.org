@@ -91,9 +91,10 @@ E.g., for a given starting deck:
 "hello"
 ```
 
-**`/gen/pontifex.hoon`**
+<details>
+<summary>/gen/pontifex.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 !:
 :-  %say
 |=  [[now=@da eny=@uvJ bec=beak] [incometape=tape action=@tas ~] [customdeck=(list @ud) ~]]
@@ -244,3 +245,6 @@ E.g., for a given starting deck:
   !!
 --
 ```
+
+</details>
+

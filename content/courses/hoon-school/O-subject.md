@@ -266,7 +266,7 @@ Here are a couple of new runes for modifying the subject and chaining computatio
 
 In this section, we will write a [door](/glossary/door) that can act as a bank account with the ability to withdraw, deposit, and check the account's balance. This door replaces the sample of the door with the new values as each transaction proceeds.
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -391,7 +391,10 @@ Since the `rng` starts from the same seed value every single time, both of the n
 
 The Magic 8-Ball returns one of a variety of answers in response to a call.  In its entirety:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>Magic 8-Ball code</summary>
+
+```hoon
 !:
 :-  %say
 |=  [[* eny=@uvJ *] *]
@@ -423,6 +426,8 @@ The Magic 8-Ball returns one of a variety of answers in response to a call.  In 
 =/  val  (rad:rng (lent answers))
 (snag val answers)
 ```
+
+</details>
 
 Zoom in on these lines:
 

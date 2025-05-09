@@ -67,9 +67,10 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 
 ##  The Code
 
-**`/gen/dbug.hoon`**:
+<details>
+<summary>/gen/dbug.hoon</summary>
 
-```hoon {% mode="collapse" %}
+```hoon
 /+  *dbug
 :-  %say
 |=  $:  ::  environment
@@ -87,9 +88,12 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 ==
 ```
 
-**`/lib/dbug.hoon`**:
+</details>
 
-```hoon {% mode="collapse" %}
+<details>
+<summary>/lib/dbug.hoon</summary>
+
+```hoon
 ::  dbug: agent wrapper for generic debugging tools
 ::
 ::    usage: %-(agent:dbug your-agent)
@@ -247,6 +251,8 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 --
 ```
 
+</details>
+
 As we examine this code, there are two particularly interesting aspects:
 
 1. How `/lib/dbug.hoon` modifies an agent's arms by adding functionality over the top of them.
@@ -260,7 +266,10 @@ By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek`
 
 #### `++on-poke`
 
-```hoon {% mode="collapse" %}
+<details>
+<summary>++on-poke</summary>
+
+```hoon
 ++  on-poke
     |=  [=mark =vase]
     ^-  (quip card:agent:gall agent:gall)
@@ -334,6 +343,8 @@ By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek`
     ==
 ```
 
+</details>
+
 The `++on-poke` arm has several branches added to it after a check to see whether it is being used through the `+dbug` generator.  If it isn't (as determined by the associated `mark`), then the poke is passed through to the base agent.
 
 ```hoon
@@ -370,7 +381,10 @@ This branch includes the use of a rare [`=?` tiswut](/language/hoon/reference/ru
 
 #### `++on-peek`
 
-```hoon {% mode="collapse" %}
+<details>
+<summary>++on-peek</summary>
+
+```hoon
   ++  on-peek
     |=  =path
     ^-  (unit (unit cage))
@@ -382,6 +396,8 @@ This branch includes the use of a rare [`=?` tiswut](/language/hoon/reference/ru
       [%x %dbug %subscriptions ~]  ``noun+!>([wex sup]:bowl)
     ==
 ```
+
+</details>
 
 The `++on-peek` arm adds several peek endpoints which expose the state (via `++onsave:ag`) and the subscriptions.
 

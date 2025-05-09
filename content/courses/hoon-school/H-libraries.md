@@ -68,7 +68,10 @@ Watch for these being used in generators and libraries over the next few modules
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The [core](/glossary/core) below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](/courses/hoon-school/K-doors) to produce [randomness](/courses/hoon-school/O-subject).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` [wutcol](/language/hoon/reference/rune/wut#-wutcol) you may see `?.` [wutdot](/language/hoon/reference/rune/wut#-wutdot), which inverts the order of the true/false [arms](/glossary/arm), as well as other new constructions.
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>Playing Card Library code</summary>
+
+```hoon
 |%
 +$  suit  ?(%hearts %spades %clubs %diamonds)
 +$  darc  [sut=suit val=@ud]  :: see below about naming
@@ -120,6 +123,8 @@ In this exercise, we examine a library that can be used to represent a deck of 5
   (slag n d)
 --
 ```
+
+</details>
 
 The `|%` [barcen](/language/hoon/reference/rune/bar#-barcen) core created at the top of the file contains the entire library's code, and is closed by `--` [hephep](/language/hoon/reference/rune/terminators#---hephep) on the last line.
 

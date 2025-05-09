@@ -541,9 +541,10 @@ This program produces a list populated by the first ten elements of the `++fib` 
 - `++to-list` is a wet gate that converts a `++stream` to a [list](/glossary/list).
 - `++take` is a wet gate that takes a `++stream` and an atom and yields a modified [subject](/glossary/subject) (!) and another trap of `++stream`'s type.
 
-**`/gen/fib.hoon`**
+<details>
+<summary>/gen/fib.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 =<  (to-list (take fib 10))
 |%
 ++  stream
@@ -590,6 +591,8 @@ This program produces a list populated by the first ten elements of the `++fib` 
   ==
 --
 ```
+
+</details>
 
 Let's examine each arm in detail.
 

@@ -117,7 +117,7 @@ useEffect(() => {
 
 The last step is to return the HTML that will be used to render our component in the browser. This HTML must adhere to the syntactic rules of [JSX](https://en.wikipedia.org/wiki/JSX_(JavaScript)), which allow for greater flexibility through extensions like embedded JavaScript (contained in curly brace enclosures). Our component renders each app it found when scrying our ship as a tile accompanied by its title and description:
 
-```javascript {% mode="collapse" %}
+```javascript
 return (
   <main className="flex items-center justify-center min-h-screen">
     <div className="max-w-md space-y-6 py-20">

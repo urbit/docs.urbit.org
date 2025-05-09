@@ -135,7 +135,10 @@ The key piece of this architecture is the [`useEffect()`] trigger, which is call
 
 The trigger code is a bit complex, but in broad brushstrokes it just checks the header of the incoming JSON object (i.e. one of `add`, `edit`, `delete`, or `entries`) and then updates the state appropriately. The object it's receiving is just the `$update` structure converted to JSON by the mark conversion functions we wrote previously.
 
-```javascript {% mode="collapse" %}
+<details>
+<summary>useEffect</summary>
+
+```javascript
 useEffect(() => {
   const getDataIndex = (id, data) => {
     let low = 0;
@@ -208,6 +211,8 @@ useEffect(() => {
   }
 }, [subEvent]);
 ```
+
+</details>
 
 ## Add, edit, delete
 

@@ -128,9 +128,10 @@ The typical pattern is to first test the `wire` with something like a wutlus (`?
 
 Here's a very simple example that takes a poke of a `@dr` (a relative date-time value) and sends Behn a `%wait` `task:behn`, setting a timer to go off `@dr` in the future. When the timer goes off, `on-arvo` will take the `%wake` `gift:behn` and print "Ding!" to the terminal.
 
-**`/app/ding.hoon`**
+<details>
+<summary>/app/ding.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /+  default-agent, dbug
 |%
 +$  card  card:agent:gall
@@ -171,6 +172,8 @@ Here's a very simple example that takes a poke of a `@dr` (a relative date-time 
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 Let's examine the `on-poke` arm:
 

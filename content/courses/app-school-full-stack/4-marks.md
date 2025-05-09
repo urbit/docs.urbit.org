@@ -9,7 +9,7 @@ Note that a mark called `%foo-bar` will first be looked for in `/mar/foo-bar.hoo
 
 ## `%journal-action`
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  *journal
 /+  *journal
 |_  act=action
@@ -34,7 +34,7 @@ Lastly, `++grad` defines revision control methods, but can be delegated to anoth
 
 ## `%journal-update`
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  *journal
 /+  *journal
 |_  upd=update

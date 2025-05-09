@@ -95,7 +95,10 @@ You can add as many extra cores as you'd like before the agent core, but typical
 
 Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified with the concepts discussed here:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/skeleton (modified)</summary>
+
+```hoon
 /+  default-agent, dbug
 |%
 +$  card  card:agent:gall
@@ -119,6 +122,8 @@ Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified w
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them into the subject of our agent so they're available for use. You can read more about Ford runes in the [Fas section of the rune documentation](/language/hoon/reference/rune/fas).
 

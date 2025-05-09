@@ -163,9 +163,10 @@ Like `%say` generators, `%ask` generators are head-tagged cells of gates, but wi
 
 The code below is an `%ask` generator that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).
 
-**`/gen/axe.hoon`**
+<details>
+<summary>/gen/axe.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  sole
 /+  generators
 =,  [sole generators]
@@ -184,6 +185,8 @@ The code below is an `%ask` generator that checks if the user inputs `"blue"` wh
     leaf+"Into the Gorge of Eternal Peril with you!"
 ==                                                                                                                                                                              
 ```
+
+</details>
 
 Run the generator from the Dojo:
 

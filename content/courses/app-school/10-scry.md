@@ -89,9 +89,10 @@ In some cases, typically with scry `path`s that contain wildcards like the `[%x 
 
 Here's a simple example agent with three scry endpoints:
 
-**`/app/peeker.hoon`**
+<details>
+<summary>/app/peeker.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -159,6 +160,8 @@ Here's a simple example agent with three scry endpoints:
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 The agent's `on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `data`. The `on-peek` arm is:
 

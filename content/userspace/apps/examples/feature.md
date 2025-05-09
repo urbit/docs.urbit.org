@@ -29,9 +29,10 @@ The agent only maintains a state containing the page contents as a `cord.`
 
 The system only handles pokes:  there are no subscriptions or Arvo calls except for the Eyre binding.
 
-**`/app/feature.hoon`**:  
+<details>
+<summary>/app/feature.hoon</summary>
 
-```hoon {% mode="collapse" copy=true %}
+```hoon
 /-  feature
 /+  dbug, default-agent, server, schooner
 /*  feature-ui  %html  /app/feature-ui/html
@@ -159,13 +160,18 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
 --
 ```
 
+</details>
+
 ### Pokes
 
 `++on-poke` only responds to `%handle-http-request`, which is dealt with in a `|^` barket core.
 
 The most interesting part of the whole app is the `++handle-http` arm:
 
-```hoon {% mode="collapse" copy=true %}
+<details>
+<summary>++handle-http</summary>
+
+```hoon
 ++  handle-http
     |=  [eyre-id=@ta =inbound-request:eyre]
     ^-  (quip card _state)
@@ -216,6 +222,8 @@ The most interesting part of the whole app is the `++handle-http` arm:
       == 
     ==
 ```
+
+</details>
 
 This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
 

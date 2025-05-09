@@ -135,9 +135,10 @@ Finally, you can produce the `(quip card _this)`.
 
 We're going to look at a couple of agents to demonstrate both sending and receiving pokes. Here's the first, an agent that receives pokes:
 
-**`/app/pokeme.hoon`**
+<details>
+<summary>/app/pokeme.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -195,6 +196,8 @@ We're going to look at a couple of agents to demonstrate both sending and receiv
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 This is a very simple agent that just has `val`, a number, in its state. It will take pokes that either increment or decrement `val`. Here's its `on-poke` arm:
 
@@ -275,9 +278,10 @@ dojo: app poke failed
 
 Here's a second agent. It takes a poke of `%inc` or `%dec` like before, but rather than updating its own state, it sends two pokes to `%pokeme`, so `%pokeme`'s state will be incremented or decremented by two.
 
-**`/app/pokeit.hoon`**
+<details>
+<summary>/app/pokeit.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -362,6 +366,8 @@ Here's a second agent. It takes a poke of `%inc` or `%dec` like before, but rath
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 Here's the `on-poke` arm:
 

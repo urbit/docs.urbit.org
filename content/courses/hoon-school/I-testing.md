@@ -77,7 +77,7 @@ By convention any testing suite has the import line `/+  *test` at the top.
 
 **/tests/lib/absolute.hoon**
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /+  *test, *absolute
 |%
 ++  test-absolute
@@ -117,7 +117,10 @@ In `/lib/test.hoon` we find a core with a few gates:  `++expect`, `++expect-eq`,
 
 `++expect-eq` checks whether two vases are equal and pretty-prints the result of that test.  It is our workhorse.  The source for `++expect-eq` is:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>++expect-eq</summary>
+
+```hoon
 ++  expect-eq
   |=  [expected=vase actual=vase]
   ^-  tang
@@ -141,6 +144,8 @@ In `/lib/test.hoon` we find a core with a few gates:  `++expect`, `++expect-eq`,
     ==  ==
   result
 ```
+
+</details>
 
 Test code deals in [vases](/glossary/vase), which are produced by `!>` [zapgar](/language/hoon/reference/rune/zap#-zapgar) as a [cell](/glossary/cell) of the type of a value and the value.
 
@@ -204,9 +209,10 @@ For instance, one could publish a set of tests which characterize the
 behavior of a Roman numeral translation library sufficiently that when
 such a library is provided it is immediately demonstrable.
 
-**/tests/lib/roman.hoon**
+<details>
+<summary>/tests/lib/roman.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /+  *test, *roman
 |%
 ++  test-output-one
@@ -251,6 +257,8 @@ such a library is provided it is immediately demonstrable.
 :: and so forth
 --
 ```
+
+</details>
 
 By composing the unit tests ahead of time, you exercise a discipline of thinking carefully through details of the interface and implementation before you write a single line of implementation code.
 

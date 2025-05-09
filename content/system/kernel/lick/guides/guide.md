@@ -11,7 +11,10 @@ First, we'll look at these two files.
 
 ## `licker.hoon`
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>licker.hoon</summary>
+
+```hoon
 /+  default-agent
 |%
 +$  card  card:agent:gall
@@ -53,6 +56,8 @@ First, we'll look at these two files.
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 Our Gall agent is extremely simple and has no state. It only uses three agent arms: `++on-init`, `++on-poke` and `++on-arvo`.
 
@@ -112,7 +117,10 @@ In all cases we just `++slog` a message to the terminal.
 
 ## `licker.py`
 
-```python {% copy=true mode="collapse" %}
+<details>
+<summary>licker.py</summary>
+
+```python
 from noun import *
 import socket
 
@@ -157,6 +165,8 @@ while True:
 
     sock.send(output)
 ```
+
+</details>
 
 Our Python script is also quite simple. We'll walk through it piece by piece.
 

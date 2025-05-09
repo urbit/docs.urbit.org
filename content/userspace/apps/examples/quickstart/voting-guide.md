@@ -113,7 +113,10 @@ We'll also define an `update` structure, which will be the kinds of events that 
 
 Type definitions are typically stored in a separate file in the `/sur` directory (for "**sur**face"), and named the same as the app. Save the following code in `tally/sur/tally.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/sur/tally.hoon</summary>
+
+```hoon
 :: first we import both the type definitions for ring
 :: signatures and also for the squad app
 ::
@@ -180,6 +183,8 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 --
 ```
 
+</details>
+
 ## Ring Library
 
 The `%base` desk of ship includes a `ring.hoon` library for ring signatures. This implementation verifies signatures against a ship's most recent keys, which may cause problems verifying old polls if group members rotate their keys. To solve this, here is a slightly modified version that takes a ship's `life` (key revision) as an additional argument:
@@ -243,7 +248,10 @@ We differentiate between these two cases by testing the `wire`, which is a messa
 
 Gall agents live in the `/app` directory of a desk, so save this code in `tally/app/tally.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/tally.hoon</summary>
+
+```hoon
 :: first we import the type definitions we need, in this case
 :: for our app as well as ring signatures and squads
 ::
@@ -1089,6 +1097,8 @@ Gall agents live in the `/app` directory of a desk, so save this code in `tally/
 --
 ```
 
+</details>
+
 ## Marks
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with inter-mark conversion methods). We need to define a mark for the `action`s we'll send or receive, and the `update`s we'll send to subscribers or receive for subscriptions. These will be very simple since we don't need to do any conversions to things like JSON.
@@ -1165,7 +1175,10 @@ We could have put the front-end code directly in our Gall agent, but it tends to
 
 Save the code below in `tally/app/tally/index.hoon`.
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/tally/index.hoon</summary>
+
+```hoon
 :: first we import the type definitions tally.hoon and squad.hoon from /sur
 ::
 /-  *tally, *squad
@@ -1796,6 +1809,8 @@ Save the code below in `tally/app/tally/index.hoon`.
   '''
 --
 ```
+
+</details>
 
 ## Desk config
 

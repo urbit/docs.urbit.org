@@ -217,9 +217,10 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 
 ### Types and marks
 
-**`/sur/todo.hoon`**
+<details>
+<summary>/sur/todo.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 |%
 +$  id  @
 +$  name  @t
@@ -245,11 +246,13 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 --
 ```
 
+</details>
+
 This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `action`s and `update`s for subscribers.
 
 **`/mar/todo/action.hoon`**
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  todo
 |_  =action:todo
 ++  grab
@@ -268,7 +271,7 @@ This is a very simple mark file for the `action` type.
 
 **`/mar/todo/update.hoon`**
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  todo
 |_  =update:todo
 ++  grab
@@ -287,9 +290,10 @@ This is a very simple mark file for the `update` type.
 
 ### Publisher
 
-**`/app/todo.hoon`**
+<details>
+<summary>/app/todo.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  todo
 /+  default-agent, dbug
 |%
@@ -402,6 +406,8 @@ This is a very simple mark file for the `update` type.
 --
 ```
 
+</details>
+
 This is the publisher agent, `todo.hoon`. The bulk of its logic is in its `on-poke` arm, where it handles the various possible actions like `%add`ing a task, `%toggle`ing its "done" state, `%rename`ing a task, and so on. It also has a couple of `action`s for `%allow`ing and `%kick`ing subscribers.
 
 Most of these cases both update the state of the agent, as well as producing `%fact` cards to send out to subscribers with the new data.
@@ -442,7 +448,10 @@ When `on-watch` gets a subscription request, it checks whether the requesting sh
 
 #### `/app/todo-watcher.hoon`
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/todo-watcher.hoon</summary>
+
+```hoon
 /-  todo
 /+  default-agent, dbug
 |%
@@ -529,6 +538,8 @@ When `on-watch` gets a subscription request, it checks whether the requesting sh
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 This is the subscriber agent. Since it's just for demonstrative purposes, it has no state and just prints the updates it receives. In practice it would keep the `tasks` map it receives in its own state, and then update it as it receives new `%fact`s.
 

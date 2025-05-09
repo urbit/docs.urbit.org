@@ -228,7 +228,7 @@ A scry with `channel-state` in place of the `desk` in the `beak` will return det
 
 A scry with `host` in place of the `desk` in the `beak` will return host details of the ship. The type returned is a `hart:eyre`.
 
-#### Example {% #example-9 %}
+#### Example {#example-9}
 
 ```
 > .^(hart:eyre %e /=host=)

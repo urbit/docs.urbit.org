@@ -87,13 +87,13 @@ The [++ram:re](/language/hoon/reference/stdlib/4c#ramre) arm is used to convert 
 
 Many [generators](/glossary/generator) build sophisticated output using `tank`s and the short-format [cell](/glossary/cell) builder `+`, e.g. in `/gen/azimuth-block/hoon`:
 
-```hoon {% copy=true %}
+```hoon
 [leaf+(scow %ud block)]~
 ```
 
 which is equivalent to
 
-```hoon {% copy=true %}
+```hoon
 ~[[%leaf (scow %ud block)]]
 ```
 
@@ -226,7 +226,7 @@ Formal error messages in Urbit are built of tanks.  “A `tang` is a [list](/glo
 
 One way to include an error message in your code is the `~_` [sigcab](/language/hoon/reference/rune/sig#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](/language/hoon/reference/rune/sig#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either [rune](/glossary/rune) to contribute to the error description:
 
-```hoon {% copy=true %}
+```hoon
 |=  a=@ud
 ~_  leaf+"This code failed"
 !!

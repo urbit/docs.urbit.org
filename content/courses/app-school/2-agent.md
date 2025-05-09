@@ -79,7 +79,7 @@ What this means is that you can intentionally design your agent to crash in case
 
 Here's about the simplest valid Gall agent:
 
-```hoon {% copy=true %}
+```hoon
 |_  =bowl:gall
 ++  on-init   `..on-init
 ++  on-save   !>(~)
@@ -179,7 +179,7 @@ The battery's not too important, it's not something we'd ever touch in practice.
 
 Currently `skeleton` has no state, but of course in practice you'd want to store some actual data. We'll add `foo=42` as our state with the `=+` rune at the beginning of our agent:
 
-```hoon {% copy=true %}
+```hoon
 =+  foo=42
 |_  =bowl:gall
 ++  on-init   `..on-init

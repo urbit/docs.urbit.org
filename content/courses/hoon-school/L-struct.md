@@ -73,7 +73,7 @@ This didn't work because we haven't first proved to Hoon that `b` is a non-null 
 
 Here's a program that finds and replaces certain atoms in a `(tree @)`.
 
-```hoon {% copy=true %}
+```hoon
 |=  [nedl=@ hay=(tree @) new=@]
 ^-  (tree @)
 ?~  hay  ~
@@ -105,20 +105,20 @@ A [set](/language/hoon/reference/stdlib/2o#set) is rather like a [list](/glossar
 
 [++silt](/language/hoon/reference/stdlib/2l#silt) produces a `set` from a `list`:
 
-```hoon {% copy=true %}
+```hoon
 =primes (silt ~[2 3 5 7 11 13])
 ```
 
 [++put:in](/language/hoon/reference/stdlib/2h#putin) adds a value to a `set` (and null-ops when the value is already present):
 
-```hoon {% copy=true %}
+```hoon
 =primes (~(put in primes) 17)
 =primes (~(put in primes) 13)
 ```
 
 [++del:in](/language/hoon/reference/stdlib/2h#delin) removes a value from a `set`:
 
-```hoon {% copy=true %}
+```hoon
 =primes (~(put in primes) 18)
 =primes (~(del in primes) 18)
 ```
@@ -154,7 +154,7 @@ A [set](/language/hoon/reference/stdlib/2o#set) is rather like a [list](/glossar
 
 Here's a program that takes two [sets](/language/hoon/reference/stdlib/2o#set) of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
-```hoon {% copy=true %}
+```hoon
 |=  [a=(set @) b=(set @)]
 =/  c=(list @)  ~(tap in a)
 =/  d=(list @)  ~(tap in b)
@@ -366,7 +366,7 @@ For instance, in eval mode if you use the irregular form `p=1` this is an irregu
 
 In a [sample](/glossary/sample) definition, such as in a [gate](/glossary/gate), the statement is evaluated in structure mode; these are equivalent statements:
 
-```hoon {% copy=true %}
+```hoon
 |=(hello=@ hello)
 
 |=($=(hello @) hello)

@@ -48,7 +48,7 @@ For instance, the following generator can be run with no arguments:
 
 **`/gen/say.hoon`**
 
-```hoon {% copy=true %}
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -123,7 +123,7 @@ Let's look at an example that uses all three parts.
 
 **`/gen/dice.hoon`**
 
-```hoon {% copy=true %}
+```hoon
 :-  %say
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] [bet=@ud ~]]
 :-  %noun

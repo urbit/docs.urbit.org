@@ -17,7 +17,7 @@ A generator gives us on-demand access to code, but it is helpful to load and use
 
 A conventional library import with `/+` [faslus](/language/hoon/reference/rune/fas#-faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.  The first line of many generators will include an import line like this:
 
-```hoon {% copy=true %}
+```hoon
 /+  number-to-words
 ```
 
@@ -25,7 +25,7 @@ Subsequent invocations of the [core](/glossary/core) require you to refer to it 
 
 **/gen/n2w.hoon**
 
-```hoon {% copy=true %}
+```hoon
 /+  number-to-words
 |=  n=@ud
 (to-words:eng-us:numbers:number-to-words n)
@@ -138,7 +138,7 @@ To create three types we're going to need, we use `+$` [lusbuc](/language/hoon/r
 
 One way to get a feel for how a library works is to skim the `++` [luslus](/language/hoon/reference/rune/lus#-luslus) arm-names before diving into any specific [arm](/glossary/arm).  In this library, the arms are `++make-deck`, `++num-to-suit`, `++shuffle-deck`, and `++draw`. These names should be very clear, with the exception of `++num-to-suit` (although you could hazard a guess at what it does).  Let's take a closer look at it first:
 
-```hoon {% copy=true %}
+```hoon
 ++  num-to-suit
   |=  val=@ud
   ^-  suit
@@ -152,7 +152,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](/lang
 
 `++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `suit`.  The `?+` [wutlus](/language/hoon/reference/rune/wut#-wutlus) rune creates a structure to switch against a value with a default in case there are no matches.  (Here the default is to crash with `!!` [zapzap](/language/hoon/reference/rune/zap#-zapzap).)  We then have options 1–4 which each resulting in a different suit.
 
-```hoon {% copy=true %}
+```hoon
 ++  make-deck
   ^-  deck
   =/  mydeck  *deck
@@ -174,7 +174,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](/lang
 
 `?.` [wutdot](/language/hoon/reference/rune/wut#-wutdot) may be an unfamiliar rune; it is simply the inverted version of `?:` [wutcol](/language/hoon/reference/rune/wut#-wutcol), so the first branch is actually the if-false branch and the second is the if-true branch. This is done to keep the “heaviest” branch at the bottom, which makes for more idiomatic and readable Hoon code.
 
-```hoon {% copy=true %}
+```hoon
 ++  draw
   |=  [n=@ud d=deck]
   ^-  [hand=deck rest=deck]
@@ -184,7 +184,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](/lang
 
 `++draw` takes two arguments:  `n`, an unsigned integer, and `d`, a `deck`.  The gate will produce a cell of two `decks` using [++scag](/language/hoon/reference/stdlib/2b#scag) and [++slag](/language/hoon/reference/stdlib/2b#slag). [++scag](/language/hoon/reference/stdlib/2b#scag) is a standard library [gate](/glossary/gate) produces the first `n` elements from a [list](/glossary/list), while [++slag](/language/hoon/reference/stdlib/2b#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element.  So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
 
-```hoon {% copy=true %}
+```hoon
 ++  shuffle-deck
   |=  [unshuffled=deck entropy=@]
   ^-  deck
@@ -232,7 +232,7 @@ Unfortunately `/` [fas](/language/hoon/reference/rune/fas) runes don't work in t
 
     We first import the library:
 
-    ```hoon {% copy=true %}
+    ```hoon
     =playing-cards -build-file /===/lib/playing-cards/hoon
     ```
 
@@ -456,19 +456,19 @@ The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](/lan
     
     1.  With the default name:
 
-        ```hoon {% copy=true %}
+        ```hoon
         /+  apple
         ```
 
     2.  With no name:
 
-        ```hoon {% copy=true %}
+        ```hoon
         /-  *orange
         ```
 
     3.  With a new name:
 
-        ```hoon {% copy=true %}
+        ```hoon
         /+  pomme=apple
         ```
 

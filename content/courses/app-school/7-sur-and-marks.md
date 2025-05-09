@@ -163,7 +163,7 @@ In the context of Gall agents, you'll likely just use marks for sending and rece
 
 Here's a very simple mark file for the `action` structure we created in the [previous section](#sur):
 
-```hoon {% copy=true %}
+```hoon
 /-  todo
 |_  =action:todo
 ++  grab

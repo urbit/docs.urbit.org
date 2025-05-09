@@ -54,7 +54,7 @@ It's important to learn the difference, however, because for certain use cases y
 
 Let's make a core with arms that build [gates](/glossary/gate) of various kinds.  As we did in a previous lesson, we'll use the `|%` [barcen](/language/hoon/reference/rune/bar#-barcen) rune.  Copy and paste the following into the [Dojo](/glossary/dojo):
 
-```hoon {% copy=true %}
+```hoon
 =c |%
 ++  inc      |=(a=@ (add 1 a))
 ++  add-two  |=(a=@ (inc (inc a)))
@@ -158,7 +158,7 @@ If you check the docs on our now-familiar `%-` [cenhep](/language/hoon/reference
 > gate as a function. `a` is the gate, and `b` is the desired sample value
 > (i.e., input value) for the gate.
 >
-> ```hoon {% copy=true %}
+> ```hoon
 > %~($ a b)
 > ```
 
@@ -231,7 +231,7 @@ This will be used in two steps:  a gate-building step then a gate usage step.
 
 We produce a gate from a door's arm using the `%~` [censig](/language/hoon/reference/rune/cen#-censig) rune, almost always used in its irregular form, `~()`.  Here we prime the door with `[5 4 3]`, which yields a gate:
 
-```hoon {% copy=true %}
+```hoon
 ~(quad poly [5 4 3])
 ```
 
@@ -250,7 +250,7 @@ Doors will enable us to build some very powerful data storage tools by letting u
 
 Let's unpack what's going on more with this next [door](/glossary/door). Each of the [arms](/glossary/arm) in this example door will define a simple gate. Let's bind the door to `c`.  To make a door we use the `|_` [barcab](/language/hoon/reference/rune/bar#_-barcab) rune:
 
-```hoon {% copy=true %}
+```hoon
 =c |_  b=@
 ++  plus  |=(a=@ (add a b))
 ++  times  |=(a=@ (mul a b))
@@ -374,7 +374,7 @@ The standard library provides [currying functionality](/courses/hoon-school/Q-fu
 
 In the above example we created a [door](/glossary/door) `c` with [sample](/glossary/sample) `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](/language/hoon/reference/rune/buc#_-buccab) rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
-```hoon {% copy=true %}
+```hoon
 =c |_  b=_7
 ++  plus  |=(a=@ (add a b))
 ++  times  |=(a=@ (mul a b))
@@ -388,7 +388,7 @@ Here the type of `b` is inferred to be `@` based on the example value `7`, simil
 
 Recall the quadratic equation [door](/glossary/door).
 
-```hoon {% copy=true %}
+```hoon
 |_  [a=@ud b=@ud c=@ud]
 ++  quad
   |=  x=@ud
@@ -424,13 +424,13 @@ We'll build a color `map`, from a `@tas` of a [color's name](https://en.wikipedi
 
 We can produce a `map` from a [list](/glossary/list) of key-value cells using the [++malt](/language/hoon/reference/stdlib/2l#malt) function. Using `@tas` terms as keys (which is common) requires us to explicitly mark the list as `(list (pair @tas @ux))`:
 
-```hoon {% copy=true %}
+```hoon
 =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
 ```
 
 To insert one key-value pair at a time, we use [put](/language/hoon/reference/stdlib/2i#putby).  In Dojo, we need to either pin it into the subject or modify a copy of the map for the rest of the expression using `=/` [tisfas](/language/hoon/reference/rune/tis#-tisfas).
 
-```hoon {% copy=true %}
+```hoon
 =colors (~(put by colors) [%orange 0xff.8833])
 =colors (~(put by colors) [%violet 0x83.59a3])
 =colors (~(put by colors) [%black 0x0])
@@ -440,7 +440,7 @@ Note the pattern here:  there is a [++put](/language/hoon/reference/stdlib/2i#pu
 
 What happens if we try to add something that doesn't match the type?
 
-```hoon {% copy=true %}
+```hoon
 =colors (~(put by colors) [%cerulean '#02A4D3'])
 ```
 
@@ -738,7 +738,7 @@ Let's examine our caesar.hoon code piece by piece. We won't necessarily go in wr
 
 There are a few [runes](/glossary/rune) in this which we haven't seen yet; we will deal with them incidentally in the commentary.
 
-```hoon {% copy=true %}
+```hoon
 !:
 |=  [msg=tape steps=@ud]
 =<
@@ -750,7 +750,7 @@ The `!:` [zapcol](/language/hoon/reference/rune/zap#-zapcol) in the first line o
 
 `=<` [zapgal](/language/hoon/reference/rune/tis#-tisgal) is the rune that evaluates its first child expression with respect to its second child expression as the [subject](/glossary/subject). In this case, we evaluate the expressions in the code chunk below against the [core](/glossary/core) declared later, which allows us reference the core's contained [arms](/glossary/arm) before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
 
-```hoon {% copy=true %}
+```hoon
 =.  msg  (cass msg)
 :-  (shift msg steps)
     (unshift msg steps)
@@ -760,13 +760,13 @@ The `!:` [zapcol](/language/hoon/reference/rune/zap#-zapcol) in the first line o
 
 `:- (shift msg steps)` and `(unshift msg steps)` simply composes a [cell](/glossary/cell) of a right-shifted cipher and a left-shifted cipher of our original message. We will see how this is done using the [core](/glossary/core) described below, but this is the final output of our [generator](/glossary/generator). We have indented the lower line, which is not strictly good Hoon style but makes the intent clearer.
 
-```hoon {% copy=true %}
+```hoon
 |%
 ```
 
 `|%` [barcen](/language/hoon/reference/rune/bar#-barcen) creates a [core](/glossary/core), the second child of `=<` [tisgal](/language/hoon/reference/rune/tis#-tisgal). Everything after `|%` is part of that second child `core`, and will be used as the subject of the first child of `=<`, described above. The various parts, or [arms](/glossary/arm), of the `core` are denoted by `++` [luslus](/language/hoon/reference/rune/lus#-luslus) beneath it, for instance:
 
-```hoon {% copy=true %}
+```hoon
 ++  rotation
   |=  [my-alphabet=tape my-steps=@ud]
   =/  length=@ud  (lent my-alphabet)
@@ -792,7 +792,7 @@ The [++trim](/language/hoon/reference/stdlib/4b#trim) gate from the standard lib
 
 `(weld q p)` uses [++weld](/language/hoon/reference/stdlib/2b#weld), which combines two strings into one. Remember that `trim` has given us a split version of `my-alphabet` with `p` being the front half that was split off of `my-alphabet` and `q` being the back half. Here we are welding the two parts back together, but in reverse order: the second part `q` is welded to the front, and the first part `p` is welded to the back.
 
-```hoon {% copy=true %}
+```hoon
 ++  map-maker
   |=  [key-position=tape value-result=tape]
   ^-  (map @t @t)
@@ -827,7 +827,7 @@ If the above test finds that the `tape`s are not empty, we trigger a recursion t
 
 We have three related arms to look at next, `++decoder`, `++encoder`, and `++space-adder`. `++space-adder` is required for the other two, so we'll look at it first.
 
-```hoon {% copy=true %}
+```hoon
 ++  space-adder
   |=  [key-position=tape value-result=tape]
   ^-  (map @t @t)
@@ -838,7 +838,7 @@ We have three related arms to look at next, `++decoder`, `++encoder`, and `++spa
 
 We use the [put](/language/hoon/reference/stdlib/2i#putby) arm of the [by](/language/hoon/reference/stdlib/2i#by) core on the next line, giving it a [map](/language/hoon/reference/stdlib/2o#map) produced by the `map-maker` arm that we created before as its [sample](/glossary/sample). This adds an entry to the map where the space character (called `ace`) simply maps to itself. This is done to simplify the handling of spaces in [tapes](/glossary/tape) we want to encode, since we don't want to shift them.
 
-```hoon {% copy=true %}
+```hoon
 ++  encoder
   |=  [steps=@ud]
   ^-  (map @t @t)
@@ -863,7 +863,7 @@ If our two inputs to `space-adder` were `"abcdefghijklmnopqrstuvwxyz"` and `"bcd
 
 Still with us? Good. We are finally about to use all the stuff that we've walked through.
 
-```hoon {% copy=true %}
+```hoon
 ++  shift
   |=  [message=tape shift-steps=@ud]
   ^-  tape
@@ -878,7 +878,7 @@ Both `++shift` and `++unshift` take two arguments: our `message`, the `tape` tha
 
 `++shift` is for encoding, and `++unshift` is for decoding. Thus, `++shift` calls the `operate` arm with `(operate message (encoder shift-steps))`, and `++unshift` makes that call with `(operate message (decoder shift-steps))`. These both produce the final output of the core, to be called in the form of `(shift msg steps)` and `(unshift msg steps)` in the [cell](/glossary/cell) being created at the beginning of our code.
 
-```hoon {% copy=true %}
+```hoon
 ++  operate
   |=  [message=tape shift-map=(map @t @t)]
   ^-  tape
@@ -922,7 +922,7 @@ The `|^` [barket](/language/hoon/reference/rune/bar#-barket) rune is an example 
 
 This code calculates the volume of a cylinder, _A=πr²h_.
 
-```hoon {% copy=true %}
+```hoon
 =volume-of-cylinder |^
 (mul:rs (area-of-circle .2.0) height)
 ++  area-of-circle
@@ -937,7 +937,7 @@ Since all of the values either have to be pinned ahead of time or made available
 
 If you read the docs, you'll find that a `|-` [barhep](/language/hoon/reference/rune/bar#--barhep) rune “produces a [trap](/glossary/trap) (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` [barcen](/language/hoon/reference/rune/bar#-barcen) core with an arm `$`:
 
-```hoon {% copy=true %}
+```hoon
 :: count to five
 =/  index  1
 |-
@@ -947,7 +947,7 @@ $(index +(index))
 
 actually translates to
 
-```hoon {% copy=true %}
+```hoon
 :: count to five
 =/  index  1
 =<  $

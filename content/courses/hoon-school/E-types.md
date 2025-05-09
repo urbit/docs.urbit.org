@@ -355,7 +355,7 @@ To _actually_ get the bunt value, use the `^*` [kettar](/language/hoon/reference
 
 One more way to validate against type is to use an example instead of the extracted mold.  This uses the `^+` [ketlus](/language/hoon/reference/rune/ket#-ketlus) rune similarly to how we used `^-` [kethep](/language/hoon/reference/rune/ket#--kethep) previously:
 
-```hoon {% copy=true %}
+```hoon
 ^+(1.000 100)
 ```
 
@@ -363,7 +363,7 @@ One more way to validate against type is to use an example instead of the extrac
 
 We can use more complex structures for molds though, including built-in types like [lists](/glossary/list) and [tapes](/glossary/tape).  (A `tape` represents text.)
 
-```hoon {% copy=true %}
+```hoon
 `(list @)`[104 101 108 108 111 32 77 97 114 115 33 ~]
 `tape``(list @)`[104 101 108 108 111 32 77 97 114 115 33 ~]
 
@@ -375,7 +375,7 @@ We can use more complex structures for molds though, including built-in types li
 
 -   Why does this mold conversion fail?
 
-     ```hoon {% copy=true %}
+     ```hoon
      `(list @ux)`[1 2 3 ~]
      ```
 
@@ -383,7 +383,7 @@ We can use more complex structures for molds though, including built-in types li
 
 We can have more complex molds as well:
 
-```hoon {% copy=true %}
+```hoon
 ::  [[from-ship to-ship] points]
 [[@p @p] @ud]
 ```
@@ -412,13 +412,13 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 
 For instance, if you wanted a gate to accept an atom of an unsigned aura type, but no other type, you could define a type union thus:
 
-```hoon {% copy=true %}
+```hoon
 $?  [@ud @ux @ub ~]
 ```
 
 and use it in a gate:
 
-```hoon {% copy=true %}
+```hoon
 |=  [n=$?(@ud @ux @ub)]
 (add n 1)
 ```
@@ -441,7 +441,7 @@ Unfortunately, type unions of atoms are not helpful in filtering over produced v
 
 The irregular form of `$?` bucwut looks like this:
 
-```hoon {% copy=true %}
+```hoon
 ?(@ud @ux @ub)
 ```
 

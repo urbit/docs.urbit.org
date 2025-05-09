@@ -57,7 +57,7 @@ The following Hoon generator can be used to encrypt a message with a default or 
 
 A custom deck would look like `~[5 31 4 51 ...]` for all 54 values in a specified or random order.  One could compose a `shuffle` gate to randomize card order within that range:
 
-```hoon {% copy=true %}
+```hoon
 |=  [count=@ud eny=@uvJ]
 ^-  (list @ud)
 =/  rng  ~(. og eny)
@@ -75,7 +75,7 @@ A custom deck would look like `~[5 31 4 51 ...]` for all 54 values in a specifie
 
 and invoke this as
 
-```hoon {% copy=true %}
+```hoon
 +pontifex "hello" %encode, =customdeck (shuffle 52 eny)
 ```
 

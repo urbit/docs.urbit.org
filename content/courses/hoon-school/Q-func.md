@@ -85,7 +85,7 @@ Or to double each item in a [list](/glossary/list) of atoms:
 
 We can rewrite the Caesar cipher program using turn:
 
-```hoon {% copy=true %}
+```hoon
 |=  [a=@ b=tape]
 ^-  tape
 ?:  (gth a 25)

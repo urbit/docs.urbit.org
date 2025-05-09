@@ -17,7 +17,7 @@ npx @urbit/create-landscape-app
 
 We can then open our new directory:
 
-```sh {% copy=true %}
+```sh
 cd journal/ui
 ```
 
@@ -38,7 +38,7 @@ ui
 
 Inside our React app directory, let's install the NPM packages used by our project:
 
-```sh {% copy=true %}
+```sh
 npm i
 ```
 

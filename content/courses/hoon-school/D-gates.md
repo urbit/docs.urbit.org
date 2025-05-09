@@ -74,7 +74,7 @@ Convert each of the following regular forms into the correct irregular syntax.
 
 So far, every time we have calculated something, we have had to build it from scratch in Dojo.  This is completely untenable for nontrivial calculations, and clearly the Urbit OS itself is built on persistent code structures defining the behavior.
 
-```hoon {% copy=true %}
+```hoon
 ::  Confirm whether a value is greater than one.
 =/  a  5
 ?:  (gth a 1)
@@ -100,7 +100,7 @@ Functions are implemented in Hoon with a special kind of [core](/glossary/core) 
 
 Syntactically, a gate is a `|=` [bartis](/language/hoon/reference/rune/bar#-bartis) rune with two children:  a [spec](/language/hoon/reference/stdlib/4o#spec) (specification of input) and a [hoon](/language/hoon/reference/stdlib/4o#hoon) (body). Think of just replacing the `=/` [tisfas](/language/hoon/reference/rune/tis#-tisfas) with the `|=` bartis:
 
-```hoon {% copy=true %}
+```hoon
 ::  Confirm whether a value is greater than one.
 |=  a=@ud
 ?:  (gth a 1)
@@ -118,7 +118,7 @@ The `spec` gives the type as a mold and attaches a face to it for use in the gat
 
 The `hoon` body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the `^-` [kethep](/language/hoon/reference/rune/ket#--kethep) rune:
 
-```hoon {% copy=true %}
+```hoon
 ::  Confirm whether a value is greater than one.
 |=  a=@ud
 ^-  @t
@@ -135,7 +135,7 @@ Gates enforce the type of incoming and outgoing values.  In other words, a `spec
 
 Gates can take multiple arguments as a cell:
 
-```hoon {% copy=true %}
+```hoon
 ::  Return which of two numbers is larger.
 |=  [a=@ud b=@ud]
 ?:  (gth a b)
@@ -145,7 +145,7 @@ b
 
 You can also call them different ways with raw `%` [cen](/language/hoon/reference/rune/cen) runes:
 
-```hoon {% copy=true %}
+```hoon
 %-  max  [100 200]
 %+  max  100  200
 ```
@@ -228,7 +228,7 @@ How can we control what kind of value a gate returns?  Many programming language
 
 Remember `^-` [kethep](/language/hoon/reference/rune/ket#--kethep)?  We will use `^-` as a _fence_, a way of making sure only data matching the appropriate structure get passed on.
 
-```hoon {% copy=true %}
+```hoon
 ::  Confirm whether a value is greater than one by return 1 (if no) or 0 (if yes).
 |=  a=@ud
 ^-  @ud

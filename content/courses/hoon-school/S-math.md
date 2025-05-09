@@ -181,7 +181,7 @@ The [++equ:rs](/language/hoon/reference/stdlib/3b#equrs) arm checks for complete
 
 **`/gen/convert-length.hoon`**
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 |=  [fr-meas=@tas num=@rs to-meas=@tas]
 =<
 ^-  @rs
@@ -601,7 +601,10 @@ The [++yo](/language/hoon/reference/stdlib/3c#yo) core contains constants useful
 
 Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to uniquely denote days. (This is not to be confused with the Julian calendar.)  The following core demonstrates conversion to and from Julian days using signed integer (`@sd`) and date (`@da`) mathematics.
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>Julian days conversion core</summary>
+
+```hoon
 |%
 ++  ju
   |%
@@ -648,7 +651,7 @@ Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to un
 --
 ```
 
-
+</details>
 
 ##  Unusual Bases
 
@@ -741,7 +744,7 @@ The linear congruential random number generator produces a stream of random bits
 
 **`/gen/lcg.hoon`**
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 |=  n=@ud                 :: n is the number of bits to return
 =/  z  20.220.524         :: z is the seed
 =/  a  742.938.285        :: a is the multiplier
@@ -766,9 +769,10 @@ Can you verify that `1`s constitute about half of the values in this bit stream,
 
 We use the LCG defined above, then chop out 23-bit slices using [++rip](/language/hoon/reference/stdlib/2c#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1].  (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
 
-**`/gen/uniform.hoon`**
+<details>
+<summary>/gen/uniform.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 !:
 =<
 |=  n=@ud  :: n is the number of values to return
@@ -798,6 +802,8 @@ We use the LCG defined above, then chop out 23-bit slices using [++rip](/languag
   --
 --
 ```
+
+</details>
 
 - Convert the above to a `%say` [generator](/glossary/generator) that can optionally accept a seed; if no seed is provided, use `eny`.
 
@@ -833,9 +839,10 @@ $$
 
 To calculate an arbitrary power of a floating-point number, we require a few transcendental functions, in particular the natural logarithm and exponentiation of base $$e$$.  The following helper core contains relatively inefficient but clear implementations of standard numerical methods.
 
-**`/gen/normal.hoon`**
+<details>
+<summary>/gen/normal.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 !:
 =<
 |=  n=@ud  :: n is the number of values to return
@@ -922,6 +929,8 @@ To calculate an arbitrary power of a floating-point number, we require a few tra
   --
 --
 ```
+
+</details>
 
 ### Exercise:  Upgrade the normal RNG
 

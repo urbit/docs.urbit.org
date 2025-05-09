@@ -513,7 +513,10 @@ You can apply a gate to each value using [++run:by](/language/hoon/reference/std
 
     Add the following [arms](/glossary/arm) to the library [core](/glossary/core):
 
-    ```hoon {% copy=true mode="collapse" %}
+    <details>
+    <summary>arms</summary>
+
+    ```hoon
     ++  pp-card
       |=  c=darc
       (~(got by card-table) c)
@@ -575,6 +578,8 @@ You can apply a gate to each value using [++run:by](/language/hoon/reference/std
       ==
     ```
 
+    </details>
+
     Import the library in Dojo (or use `/+` [faslus](/language/hoon/reference/rune/fas#-faslus) in a [generator](/glossary/generator)) and build a deck:
 
     ```hoon
@@ -622,9 +627,10 @@ Right-shifted cipher: "ep opu hjwf xbz up bohfs"
 
 Below is a generator that performs a Caesar cipher on a [tape](/glossary/tape).  This example isn't the most compact implementation of such a cipher in Hoon, but it demonstrates important principles that more laconic code would not.  Save it as `/gen/caesar.hoon` on your `%base` [desk](/glossary/desk).
 
-**/gen/caesar.hoon**
+<details>
+<summary>/gen/caesar.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 !:
 |=  [msg=tape steps=@ud]
 =<
@@ -696,6 +702,8 @@ Below is a generator that performs a Caesar cipher on a [tape](/glossary/tape). 
   (weld q p)
 --
 ```
+
+</details>
 
 This generator takes two arguments:  a [tape](/glossary/tape), which is your plaintext message, and an unsigned integer, which is the shift-value of the cipher.  It produces a cell of two `tape`s:  one that has been shifted right by the value, and another that has been shifted left.  It also converts any uppercase input into lowercase.
 

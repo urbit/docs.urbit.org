@@ -167,7 +167,10 @@ The result of the lookup on the previous line is adapted into a formatted text b
 
 For instance, how does [+cat](/manual/os/dojo-tools#cat) work?  Let's look at the structure of `/gen/cat/hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/gen/cat.hoon</summary>
+
+```hoon
 ::  ConCATenate file listings
 ::
 ::::  /hoon/cat/gen
@@ -202,6 +205,8 @@ For instance, how does [+cat](/manual/os/dojo-tools#cat) work?  Let's look at th
   ==
 ==
 ```
+
+</details>
 
 - What is the top-level structure of the [generator](/glossary/generator)?  (A [cell](/glossary/cell) of `%say` and the [gate](/glossary/gate), what Dojo recognizes as a `%say` generator.)
 
@@ -242,7 +247,7 @@ This section will briefly walk through an `%ask` generator to give you a taste o
 
 The code below is an `%ask` [generator](/glossary/generator) that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).  Save it as `/gen/axe.hoon` in your `%base` [desk](/glossary/desk).
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 /-  sole
 /+  generators
 =,  [sole generators]

@@ -2188,7 +2188,10 @@ Data of the type produced by the given `mold`.
 
 #### Source
 
-```hoon {% mode="collapse" %}
+<details>
+<summary>main-loop code</summary>
+
+```hoon
 ++  main-loop
   |*  a=mold
   =/  m  (strand ,~)
@@ -2238,6 +2241,9 @@ Data of the type produced by the given `mold`.
     [(weld cards.res cards.output) next.output]
   --
 ```
+
+</details>
+
 #### Example
 
 See the [separate `main-loop`

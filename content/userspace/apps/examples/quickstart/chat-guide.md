@@ -120,7 +120,10 @@ This structure for these updates is called `hut-upd`.
 
 Type definitions are typically stored in a separate file in the `/sur` directory (for "**sur**face"), and named the same as the app. We'll therefore save the following code in `hut/sur/hut.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/sur/hut.hoon</summary>
+
+```hoon
 :: first we import the type definitions of
 :: the squad app and expose them
 ::
@@ -182,6 +185,8 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 --
 ```
 
+</details>
+
 ## Agent
 
 With all the types now defined, we can create the app itself.
@@ -208,7 +213,10 @@ The last thing to note here is communications with the front-end. The web-server
 
 Gall agents live in the `/app` directory of a desk, so you can save this code in `hut/app/hut.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/hut.hoon</summary>
+
+```hoon
 :: first we import the type defs for hut and also
 :: for the squad app
 ::
@@ -1004,6 +1012,8 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 --
 ```
 
+</details>
+
 ## Marks
 
 The last piece of our backend are the *marks*. Marks are Urbit's version of filetypes/MIME types, but strongly typed and with inter-mark conversion methods.
@@ -1014,7 +1024,10 @@ Mark files live in the `/mar` directory of a desk. You can save the code below i
 
 #### `%hut-do`
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/mar/hut/do.hoon</summary>
+
+```hoon
 :: import the hut type defs from /sur/hut.hoon
 ::
 /-  *hut
@@ -1091,9 +1104,14 @@ Mark files live in the `/mar` directory of a desk. You can save the code below i
 --
 ```
 
+</details>
+
 #### `%hut-did`
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/mar/hut/did.hoon</summary>
+
+```hoon
 :: first we import the type defs from /sur/hut.hoon
 ::
 /-  *hut
@@ -1237,6 +1255,8 @@ Mark files live in the `/mar` directory of a desk. You can save the code below i
 --
 ```
 
+</details>
+
 ## React app
 
 Our back-end is complete, so we can now work on our React front-end. We'll just look at the basic setup process here, but you can get the full React app by cloning [this repo on Github](https://github.com/urbit/docs-examples) and run `npm i` in `chat-app/ui`. Additional commentary on the code is in the [additional commentary](#additional-commentary) section below.
@@ -1356,7 +1376,10 @@ Notice that the above call to `subscribe` passes the `setSubEvent` function. Thi
 
 The source for the final `useEffect` portion of this workflow (found in the `src/app.jsx` file) can be found below:
 
-```javascript {% mode="collapse" %}
+<details>
+<summary>useEffect</summary>
+
+```javascript
 useEffect(() => {
   const updateFuns = {
     "initAll": (update) => {
@@ -1464,6 +1487,8 @@ useEffect(() => {
   }
 }, [subEvent]);
 ```
+
+</details>
 
 ## Desk config
 

@@ -241,9 +241,10 @@ Updates are sent between Urbit peers.
 
 The main app implements the logic for exposing and tracking data.
 
-**`/app/flap.hoon`** (version 1):
+<details>
+<summary>/app/flap.hoon (version 1)</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
   ::  flap.hoon
 ::::  Maintains leaderboard for Flappy Bird on Mars.
 ::
@@ -491,6 +492,8 @@ The main app implements the logic for exposing and tracking data.
 --
 ```
 
+</details>
+
 Then `|install our %flap` to install the app.
 
 Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game canvas is merely an empty box.  What can we do to fix this?
@@ -532,7 +535,10 @@ The import lines at the top of `/app/flap.hoon` build each file according to its
 
 Later in `/app/flap.hoon` we serve the files at particular endpoints:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/flap.hoon</summary>
+
+```hoon
   [%apps %flap %game %js ~]
 :_  this
 %-  send
@@ -582,6 +588,8 @@ Later in `/app/flap.hoon` we serve the files at particular endpoints:
   ~
 [%audio-wav flapaudiod]
 ```
+
+</details>
 
 In `index.html`:
 
@@ -744,9 +752,10 @@ Changes to `%pals` come in along the path `/newpals`, so we need to watch for in
 
 With all of the above, you should have a working `%flappy` instance at `http://localhost:8080/apps/flappy`.  Use `:flappy +dbug` to check that the score is being communicated back.
 
-**`/app/flap.hoon`** (version 2):
+<details>
+<summary>/app/flap.hoon (version 2)</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
   ::  flap.hoon
 ::::  Maintains leaderboard for Flappy Bird on Mars.
 ::
@@ -1048,6 +1057,8 @@ With all of the above, you should have a working `%flappy` instance at `http://l
 --
 ```
 
+</details>
+
 ### Changes to Front End
 
 Now that the a leaderboard is supported, we need a way to display it alongside the browser game.  To wit, we will add some `async` functions to retrieve key bits of information from the ship and display it in a table.
@@ -1112,9 +1123,10 @@ If you examine `++on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` re
 (on-poke %flap-action !>(axn))
 ```
 
-**`/app/flap/index.html`** (version 2):
+<details>
+<summary>/app/flap/index.html (version 2)</summary>
 
-```html {% copy=true mode="collapse" %}
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1145,9 +1157,12 @@ If you examine `++on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` re
 </html>
 ```
 
-**`/app/flap/game.js`** (version 2):
+</details>
 
-```js {% copy=true mode="collapse" %}
+<details>
+<summary>/app/flap/game.js (version 2)</summary>
+
+```javascript
 // URBIT STATE
 async function getmyship() {
     const response = await fetch('/apps/flap/whoami');
@@ -1593,6 +1608,8 @@ function loop(){
 loop();
 ```
 
+</details>
+
 At this point, if we refresh the page we will see our `%pals` data visible in the table.  You can set up multiple development comets with the desk and test it out.
 
 ```hoon
@@ -1604,9 +1621,10 @@ At this point, if we refresh the page we will see our `%pals` data visible in th
 
 There's a final set of changes we can make to the styling which makes this a much prettier app while still keeping these simple:
 
-**`/app/flap/index.html`** (version 3):
+<details>
+<summary>/app/flap/index.html (version 3)</summary>
 
-```html {% copy=true mode="collapse" %}
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1694,9 +1712,12 @@ There's a final set of changes we can make to the styling which makes this a muc
 </html>
 ```
 
-**`/app/flap/game.js`** (version 3):
+</details>
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/flap/game.js (version 3)</summary>
+
+```hoon
 // URBIT STATE
 async function getmyship() {
     const response = await fetch('/apps/flap/whoami');
@@ -2146,6 +2167,8 @@ function loop(){
 }
 loop();
 ```
+
+</details>
 
 
 ##  What's Next?

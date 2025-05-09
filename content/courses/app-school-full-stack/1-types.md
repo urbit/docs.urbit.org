@@ -115,9 +115,10 @@ We'll look at how to use ordered maps later when we get to writing the agent its
 
 When we put each of these parts together, we have our complete `/sur/journal.hoon` file:
 
-**`/sur/journal.hoon`**
+<details>
+<summary>/sur/journal.hoon</summary>
 
-```hoon {% copy=true mode="collapse" %}
+```hoon
 |%
 :: Basic types of the data we're dealing with
 ::
@@ -146,6 +147,8 @@ When we put each of these parts together, we have our complete `/sur/journal.hoo
 +$  log  ((mop @ action) lth)
 --
 ```
+
+</details>
 
 ## Resources
 

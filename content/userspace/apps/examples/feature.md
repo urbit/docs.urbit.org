@@ -169,7 +169,7 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
 The most interesting part of the whole app is the `++handle-http` arm:
 
 <details>
-<summary>`++handle-http`</summary>
+<summary>++handle-http</summary>
 
 ```hoon
 ++  handle-http

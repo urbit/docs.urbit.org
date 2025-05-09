@@ -120,7 +120,10 @@ The vase would be unpacked with a [zapgal](/language/hoon/reference/rune/zap#-za
 
 Here's a new agent to demonstrate the concepts we've discussed here:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>Example agent</summary>
+
+```hoon
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -162,6 +165,8 @@ Here's a new agent to demonstrate the concepts we've discussed here:
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 Let's break it down and have a look at the new parts we've added. First, the state core:
 
@@ -240,7 +245,10 @@ Let's try inspecting our state with `dbug`:
 
 Next, we're going to modify our agent and change the structure of the state so we can test out the upgrade process. Here's a modified version, which you can again save in `/app/lifecycle.hoon` and `|commit %base`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/lifecycle.hoon</summary>
+
+```hoon
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -285,6 +293,8 @@ Next, we're going to modify our agent and change the structure of the state so w
 ++  on-fail   on-fail:def
 --
 ```
+
+</details>
 
 As soon as you `|commit` it, Gall will immediately export the existing state with `on-save`, build the new version of the agent, then import the state back in with `on-load`.
 

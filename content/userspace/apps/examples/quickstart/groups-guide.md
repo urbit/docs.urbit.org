@@ -115,7 +115,10 @@ We also need to be able to send these events/updates out to subscribers in the f
 
 Type definitions are typically stored in a separate file in the `/sur` directory (for "**sur**face"), and named the same as the app. We'll therefore save the following code in `squad/sur/squad.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/sur/squad.hoon</summary>
+
+```hoon
 |%
 ::    --basic types for our app--
 ::
@@ -196,6 +199,8 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 --
 ```
 
+</details>
+
 ## Agent
 
 With all the types now defined, we can create the app itself.
@@ -249,7 +254,10 @@ Just as other ships will subscribe to paths via our `on-watch` and then start re
 
 Gall agents live in the `/app` directory of a desk, so you can save this code in `squad/app/squad.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/squad.hoon</summary>
+
+```hoon
 :: import our /sur/squad.hoon type definitions and expose
 :: its contents
 ::
@@ -1295,6 +1303,8 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 --
 ```
 
+</details>
+
 ## Marks
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with inter-mark conversion methods). We need to define a mark for the `act`ions we'll send or receive, and the `upd`ates we'll send to subscribers or receive for subscriptions. These will be very simple since we don't need to do any conversions to things like JSON.
@@ -1370,7 +1380,10 @@ We could have put the front-end code directly in our Gall agent, but it tends to
 
 Save the code below in `squad/app/squad/index.hoon`.
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/app/squad/index.hoon</summary>
+
+```hoon
 :: first we import our /sur/squad.hoon type definitions and expose them directly
 ::
 /-  *squad
@@ -1810,6 +1823,8 @@ Save the code below in `squad/app/squad/index.hoon`.
     '''
 --
 ```
+
+</details>
 
 ## Desk config
 

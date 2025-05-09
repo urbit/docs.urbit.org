@@ -537,7 +537,10 @@ This entire structure is a [noun](/glossary/noun), which is why `*` is a valid s
 
 This Magic 8-Ball generator returns one of a variety of answers in response to a call.  In its entirety:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>Magic 8-Ball generator code</summary>
+
+```hoon
 !:
 :-  %say
 |=  [[* eny=@uvJ *] *]
@@ -569,6 +572,8 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 =/  val  (rad:rng (lent answers))
 (snag val answers)
 ```
+
+</details>
 
 `~(. og eny)` starts a random number generator with a seed from the current entropy.  Right now we don't know quite enough to interpret this line, but we'll revisit the [++og](/language/hoon/reference/stdlib/3d#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](/courses/hoon-school/O-subject).  For now, just know that it allows us to produce a random (unpredictable) integer using `++rad:rng`.  We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 

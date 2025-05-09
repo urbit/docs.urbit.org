@@ -7,7 +7,10 @@ These are the files used in the [Writing Marks](/system/kernel/clay/guides/marks
 
 ## `/lib/csv-utils/hoon`
 
-```hoon {% mode="collapse" copy="true" %}
+<details>
+<summary>/lib/csv-utils.hoon</summary>
+
+```hoon
 |%
 ++  validate                                             ::  All rows same length?
   |=  csv=(list (list @t))
@@ -175,9 +178,14 @@ These are the files used in the [Writing Marks](/system/kernel/clay/guides/marks
 --
 ```
 
+</details>
+
 ## `/mar/csv/hoon`
 
-```hoon {% mode="collapse" copy="true" %}
+<details>
+<summary>/mar/csv.hoon</summary>
+
+```hoon
 /+  *csv-utils
 |_  csv=(list (list @t))
 ++  grab
@@ -229,6 +237,8 @@ These are the files used in the [Writing Marks](/system/kernel/clay/guides/marks
   --
 --
 ```
+
+</details>
 
 ## `/mar/csv-diff/hoon`
 

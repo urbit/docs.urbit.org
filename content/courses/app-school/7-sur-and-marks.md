@@ -21,7 +21,10 @@ With this approach, your agent can simply import the structures file and make us
 
 Let's look at a practical example. If we were creating a simple To-Do app, our agent might accept a few possible `action`s as pokes: Adding a new task, deleting a task, toggling a task's "done" status, and renaming an existing task. It might also be able to send `update`s out to subscribers when these events occur. If our agent were named `%todo`, it might have the following structure in `/sur/todo.hoon`:
 
-```hoon {% copy=true mode="collapse" %}
+<details>
+<summary>/sur/todo.hoon</summary>
+
+```hoon
 |%
 +$  id  @
 +$  name  @t
@@ -42,6 +45,8 @@ Let's look at a practical example. If we were creating a simple To-Do app, our a
   ==
 --
 ```
+
+</details>
 
 Our `%todo` agent could then import this structure file with a [fashep ford rune](/language/hoon/reference/rune/fas#--fashep) (`/-`) at the beginning of the agent like so:
 
@@ -158,7 +163,7 @@ In the context of Gall agents, you'll likely just use marks for sending and rece
 
 Here's a very simple mark file for the `action` structure we created in the [previous section](#sur):
 
-```hoon {% copy=true mode="collapse" %}
+```hoon {% copy=true %}
 /-  todo
 |_  =action:todo
 ++  grab

@@ -24,25 +24,25 @@ If you've already got the `urbit` CLI runtime installed, you can skip this step.
 
 #### Linux (`x86_64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 #### Linux (`aarch64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 #### macOS (`x86_64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 #### macOS (`aarch64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
@@ -50,7 +50,7 @@ curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, so we can test it on the live network right away, we'll do it on a comet instead. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
-```shell {% copy=true %}
+```shell
 ./urbit -c dev-comet
 ```
 
@@ -62,14 +62,14 @@ Note: we'll use `~sampel_samzod` throughout this guide, but this will be differe
 
 Our app needs a few standard files. We'll mount a couple of default desks so we can copy them across. We can do this with the `|mount` command:
 
-```{% copy=true %}
+```
 |mount %base
 |mount %landscape
 ```
 
 With those mounted, switch back to a normal shell in another terminal window. We'll create a folder to develop our app in, and then we'll copy a few files across that our app will depend on:
 
-```shell {% copy=true %}
+```shell
 mkdir -p squad/{app,sur,mar,lib}
 cp -r dev-comet/base/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*} squad/mar/
 cp -r dev-comet/base/lib/{agentio*,dbug*,default-agent*,skeleton*} squad/lib/
@@ -1313,7 +1313,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%squad-do` ma
 
 #### `%squad-do`
 
-```hoon {% copy=true %}
+```hoon
 :: first we import our /sur/squad.hoon type defs and expose them directly
 ::
 /-  *squad
@@ -1345,7 +1345,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%squad-do` ma
 
 #### `%squad-did`
 
-```hoon {% copy=true %}
+```hoon
 :: first we import our /sur/squad.hoon type defs and expose them directly
 ::
 /-  *squad
@@ -1832,20 +1832,20 @@ With our types, agent, mark files and front-end now complete, the last thing we 
 
 Firstly, we need to specify the kernel version our app is compatible with. We do this by adding a `sys.kelvin` file to the root of our `squad` directory:
 
-```shell {% copy=true %}
+```shell
 cd squad
 echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do this in a `desk.bill` file:
 
-```shell {% copy=true %}
+```shell
 echo "~[%squad]" > desk.bill
 ```
 
 Lastly, we need to create a Docket file. Docket is the agent that manages app front-ends - it fetches & serves them, and it also configures the app tile and other metadata. Create a `desk.docket-0` file in our `squad` working directory and add the following:
 
-```hoon {% copy=true %}
+```hoon
 :~
   title+'Squad'
   info+'A simple groups app.'
@@ -1881,26 +1881,26 @@ squad
 
 Let's now try it out. In the Dojo of our comet, we'll create a new desk with the `|new-desk` generator:
 
-``` {% copy=true %}
+```
 |new-desk %squad
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
 
-``` {% copy=true %}
+```
 |mount %squad
 ```
 
 Currently it just contains some skeleton files, but we can just delete those and add our own instead. In the normal shell, do the following:
 
-```shell {% copy=true %}
+```shell
 rm -r dev-comet/squad/*
 cp -r squad/* dev-comet/squad/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
 
-``` {% copy=true %}
+```
 |commit %squad
 |install our %squad
 ```

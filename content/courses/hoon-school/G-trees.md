@@ -56,7 +56,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
 - Produce a [generator](/glossary/generator) called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
-    ```hoon {% copy=true %}
+    ```hoon
     |=  end=@
     =/  count=@  1
     |-
@@ -207,7 +207,7 @@ Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to d
  
 A [tape](/glossary/tape) is one way of representing a text message in Hoon.  It is written with double quotes:
  
-```hoon {% copy=true %}
+```hoon
 "I am the very model of a modern Major-General"
 ```
 
@@ -225,7 +225,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](/courses/hoon-school/M-typecheck)):
 
-```hoon {% copy=true %}
+```hoon
 -:!>('hello Mars')
 ```
 
@@ -279,7 +279,7 @@ Solutions to these exercises may be found at the bottom of this lesson.
 
 One can also identify a resource by a label, called a [wing](/glossary/wing).  A wing represents a depth-first search into the current [subject](/glossary/subject) (context).  A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
 
-```hoon {% copy=true %}
+```hoon
 inner-limb.outer-limb.limb
 ```
 
@@ -497,7 +497,7 @@ Logically, `a:b` is two operations, while `a.b` is one operation.  The compiler 
 
 Now we're equipped to go back and examine the syntax of the `%=` [centis](/language/hoon/reference/rune/cen#-centis) rune we have been using for recursion:  it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](/glossary/trap) core, applies certain changes, and re-evaluates the expression.
 
-```hoon {% copy=true %}
+```hoon
 |=  n=@ud
 |-
 ~&  n
@@ -512,7 +512,7 @@ The `$()` syntax is the commonly-used irregular form of the `%=` [centis](/langu
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
-```hoon {% copy=true %}
+```hoon
 |=  n=@ud
 ?:  =(n 1)
   1
@@ -525,7 +525,7 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
  
 `|=` [bartis](/language/hoon/reference/rune/bar#-bartis) produces a gate. It actually expands to
 
-```hoon {% copy=true %}
+```hoon
 =|  a=spec
 |%  ++  $  b=hoon
 --
@@ -541,7 +541,7 @@ Similarly, `|-` [barhep](/language/hoon/reference/rune/bar#--barhep) produces a 
 
 One verbose Hoon program 
 
-```hoon {% copy=true %}
+```hoon
 !:
 |=  [n=@ud]
 =/  values  *(list @ud)
@@ -565,7 +565,7 @@ Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 
 A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first.  (This saves a call to [++weld](/language/hoon/reference/stdlib/2b#weld).)
 
-```hoon {% copy=true %}
+```hoon
 !:
 |=  [n=@ud]
 =/  values  *(list @ud)
@@ -579,7 +579,7 @@ A more idiomatic solution would use the `^` ket infix to compose a cell and buil
 
 A further tweak maps to `@t` ASCII characters instead of the digits.
 
-```hoon {% copy=true %}
+```hoon
 !:
 |=  [n=@ud]
 =/  values  *(list @t)
@@ -599,7 +599,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 Enter the following into dojo:
 
-```hoon {% copy=true %}
+```hoon
 =a [[[b=%bweh a=%.y c=8] b="no" c="false"] 9]
 ```
 
@@ -723,7 +723,7 @@ Using what we know to date, most operations that we would do on a collection of 
 
 - Without entering these expressions into the Dojo, what are the products of the following expressions?
 
-    ```hoon {% copy=true %}
+    ```hoon
     (lent ~[1 2 3 4 5])
     (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
     (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
@@ -733,7 +733,7 @@ Using what we know to date, most operations that we would do on a collection of 
 
 First, bind these faces.
 
-```hoon {% copy=true %}
+```hoon
 =b ~['moon' 'planet' 'star' 'galaxy']
 =c ~[1 2 3]
 ```
@@ -798,7 +798,7 @@ First, bind these faces.
 
 - Roll-Your-Own-`++flop`:
 
-    ```hoon {% copy=true %}
+    ```hoon
     ::  /gen/flop.hoon
     ::
     |=  a=(list @)
@@ -810,7 +810,7 @@ First, bind these faces.
 
 - Roll-Your-Own-`++weld`:
 
-    ```hoon {% copy=true %}
+    ```hoon
     ::  /gen/weld.hoon
     ::
     |=  [a=(list @) b=(list @)]

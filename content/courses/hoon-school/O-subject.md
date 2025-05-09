@@ -76,7 +76,7 @@ Here we have created a gate with `[1 2]` as its context that takes in an `@` and
 
 `=>` [tisgar](/language/hoon/reference/rune/tis#-tisgar) (and its reversed version `=<` [tisgal](/language/hoon/reference/rune/tis#-tisgal)) are used extensively to put cores into the context of other cores.
 
-```hoon {% copy=true %}
+```hoon
 =>
 |%
 ++  foo
@@ -291,7 +291,7 @@ In this section, we will write a [door](/glossary/door) that can act as a bank a
 
 We start with the three boilerplate lines we have in every `%say` [generator](/glossary/generator):
 
-```hoon {% copy=true %}
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -299,7 +299,7 @@ We start with the three boilerplate lines we have in every `%say` [generator](/g
 
 In the above code chunk, we're creating a [cell](/glossary/cell).  The head of this cell is `%say`.  The tail is a [gate](/glossary/gate) (`|= *`) that produces another cell (`:- %noun`) with a head of the [mark](/glossary/mark) of a the kind of data we are going to produce, a `%noun`; the tail of the second cell is the rest of the program.
 
-```hoon {% copy=true %}
+```hoon
 =<  =~  new-account
       (deposit 100)
       (deposit 100)
@@ -312,7 +312,7 @@ In this code above, we're going to compose two runes using `=<`, which has inver
 
 The `=~` [tissig](/language/hoon/reference/rune/tis#-tissig) rune composes multiple expressions together; we use it here to make the code more readable.  We take `new-account` and use that as the subject for the call to `deposit`.  `deposit` and `withdraw` both produce a new version of the [door](/glossary/door) that's used in subsequent calls, which is why we are able to chain them in this fashion.  The final reference is to `balance`, which is the account balance contained in the [core](/glossary/core) that we examine below.
 
-```hoon {% copy=true %}
+```hoon
 |%
 ++  new-account
   |_  balance=@ud
@@ -330,7 +330,7 @@ We've chosen here to wrap our [door](/glossary/door) in its own core to emulate 
 
 Each of these arms produces a [gate](/glossary/gate) which takes an `@ud` argument.  Each of these gates has a similar bit of code inside:
 
-```hoon {% copy=true %}
+```hoon
 +>.$(balance (add balance amount))
 ```
 
@@ -449,7 +449,7 @@ We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclu
 
 Let's look at an example that uses all three parts. Save the code below in a file called `dice.hoon` in the `/gen` directory of your `%base` [desk](/glossary/desk).
 
-```hoon {% copy=true %}
+```hoon
 :-  %say
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] [bet=@ud ~]]
 :-  %noun

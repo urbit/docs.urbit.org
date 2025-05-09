@@ -30,7 +30,7 @@ The `dbug` library lets you inspect the state and `bowl` of your agent from the 
 
 To use it, you just import `dbug` with a [faslus](/language/hoon/reference/rune/fas#-faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 
-```hoon {% copy=true %}
+```hoon
 %-  agent:dbug
 ```
 
@@ -64,7 +64,7 @@ An agent core must have exactly ten arms. However, there's a special kind of "vi
 
 A virtual arm in an agent often looks something like this:
 
-```hoon {% copy=true %}
+```hoon
 +*  this  .
     def   ~(. (default-agent this %.n) bowl)
 ```

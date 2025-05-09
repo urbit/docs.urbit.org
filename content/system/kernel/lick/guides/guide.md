@@ -259,46 +259,46 @@ This is the main loop of our script. It listens for a message from the socket, c
 
 Create the folders for the project:
 
-``` {% copy=true %}
+```
 mkdir -p licker/{desk,client}
 mkdir licker/desk/{app,lib,mar}
 ```
 
 In the Dojo of a fakezod, mount the `%base` desk:
 
-``` {% copy=true %}
+```
 |mount %base
 ```
 
 Copy across some dependencies (change the pier path if necessary):
 
-``` {% copy=true %}
+```
 cp -r zod/base/mar/{bill*,hoon*,kelvin*,mime*,noun*,txt*} licker/desk/mar/
 cp -r zod/base/lib/{default-agent*,skeleton*} licker/desk/lib/
 ```
 
 Add a `desk.bill` `sys.kelvin` files:
 
-``` {% copy=true %}
+```
 echo "[%zuse 410]" > licker/desk/sys.kelvin
 echo "~[%licker]" > licker/desk/desk.bill
 ```
 
 Open a `licker.hoon` app in an editor, paste in the `licker.hoon` code above, and save it:
 
-``` {% copy=true %}
+```
 nano licker/desk/app/licker.hoon
 ```
 
 Open a `licker.py` file in an editor, paste in the `licker.py` code above, and save it:
 
-``` {% copy=true %}
+```
 nano licker/client/licker.py
 ```
 
 Download the `noun.py` dependency from the [urbit/tools](https://github.com/urbit/tools/tree/master) repo:
 
-``` {% copy=true %}
+```
 wget -P licker/client https://raw.githubusercontent.com/urbit/tools/master/pkg/pynoun/noun.py
 ```
 
@@ -310,14 +310,14 @@ Install additional python dependencies `bitstream`, `mmh3` and `numpy`:
 
 {% endhint %}
 
-``` {% copy=true %}
+```
 python -m ensurepip
 pip install bitstream mmh3 numpy
 ```
 
 Create and mount the `%licker` desk in the Dojo:
 
-``` {% copy=true %}
+```
 |new-desk %licker
 |mount %licker
 ```
@@ -342,7 +342,7 @@ In the Dojo, commit the files and install the desk:
 
 First, run the Python script:
 
-``` {% copy=true %}
+```
 python licker/client/licker.py
 ```
 
@@ -354,7 +354,7 @@ socket connected
 
 Now, try poking the `%licker` agent with `%ping`:
 
-``` {% copy=true %}
+```
 :licker %ping
 ```
 

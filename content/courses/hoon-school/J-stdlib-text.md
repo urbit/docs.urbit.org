@@ -125,7 +125,7 @@ dojo: hoon expression failed
 
 For instance, imagine creating a function to ensure that only a certain [classical element](https://en.wikipedia.org/wiki/Classical_element) can pass through a gate.  (This gate is superfluous given how molds work, but it shows off a point.)
 
-```hoon {% copy=true %}
+```hoon
 |=  input=@t
 =<
 (validate-element input)
@@ -160,7 +160,7 @@ The [++weld](/language/hoon/reference/stdlib/2b#weld) function can be used to gl
 "HelloMars!"
 ```
 
-```hoon {% copy=true %}
+```hoon
 |=  [t1=tape t2=tape]
 ^-  tape
 (weld t1 t2)
@@ -329,7 +329,7 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
 
 - Compose a [gate](/glossary/gate) which parses a long `tape` into smaller `tape`s by splitting the text at single spaces.  For example, given a `tape`
  
-    ```hoon {% copy=true %}
+    ```hoon
     "the sky above the port was the color of television tuned to a dead channel"
     ```
     
@@ -344,7 +344,7 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
     [++slag](/language/hoon/reference/stdlib/2b#slag) (who sound like
     villainous henchmen from a children's cartoon).
 
-    ```hoon {% copy=true %}
+    ```hoon
     |=  ex=tape
     =/  index  0  
     =/  result  *(list tape)  
@@ -480,7 +480,7 @@ To that end, `%say` generators use `mark`s to make it clear, to other Arvo compu
 
 So, more formally, a `%say` generator is a [cell](/glossary/cell). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `cask` -- a pair of the output data and the `mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
-```hoon {% copy=true %}
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -498,7 +498,7 @@ Run it with:
 
 Notice that we used no argument, something that is possible with `%say` generators but impossible with naked generators. We'll explain that in a moment. For now, let's focus on the code that is necessary to make something a `%say` generator.
 
-```hoon {% copy=true %}
+```hoon
 :-  %say
 ```
 
@@ -506,7 +506,7 @@ Recall that the rune `:-` [colhep](/language/hoon/reference/rune/col#--colhep) p
 
 The expression above creates a cell with `%say` as the head. The tail is the `|= *` expression on the line that follows.
 
-```hoon {% copy=true %}
+```hoon
 |=  *
 :-  %noun
 (add 40 2)
@@ -596,7 +596,7 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 
 **`/gen/cards.hoon`**
 
-```hoon {% copy=true %}
+```hoon
 /+  playing-cards
 :-  %say
 |=  [[* eny=@uv *] *]
@@ -612,7 +612,7 @@ Below `/+  playing-cards`, you have the standard `say` generator boilerplate tha
 
 - Roll-Your-Own-`++snag`:
 
-    ```hoon {% copy=true %}
+    ```hoon
     ::  snag.hoon
     ::
     |=  [a=@ b=(list @)]

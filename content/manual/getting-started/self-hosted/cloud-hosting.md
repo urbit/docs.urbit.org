@@ -49,7 +49,7 @@ Leave this as default.
 
 In the "Authentication" field, select "SSH keys" and hit "New SSH Key". Run the following command in the terminal on your local machine, replacing `riclen-tinlyr` with the name of your ship (sans the leading `~`):
 
-```bash {% copy=true %}
+```bash
 SHIP="riclen-tinlyr" bash -c 'ssh-keygen -q -N "" -C $SHIP -f ~/.ssh/$SHIP && cat ~/.ssh/$SHIP.pub'
 ```
 
@@ -59,7 +59,7 @@ It should spit out a long string of letters and numbers beginning with `ssh-rsa`
 
 Click "+Advanced Options" check the box for "Add Initialization scripts (free)" and paste the script below into the field provided. This will automatically configure the server and install necessary software.
 
-```bash {% copy=true %}
+```bash
 #!/bin/bash
 
 # configure swap
@@ -146,7 +146,7 @@ Archive your pier by running `tar cvzf riclen-tinlyr.tar.gz ~/path/to/your/pier`
 
 To make connecting simple, you can add an alias to `~/.ssh/config` on your local machine. Open `~/.ssh/config` in an editor (you may need to create it if the file doesn't exist), and add the following to the bottom of the file (replacing the ship name with your own and the IP address with that of your droplet):
 
-``` {% copy=true %}
+```
 Host riclen-tinlyr
   HostName 161.35.148.247
   User urbit
@@ -161,7 +161,7 @@ Host riclen-tinlyr
 
 Copy the archived pier to the server with the following (substituting your ship name and Host):
 
-```bash {% copy=true %}
+```bash
 scp riclen-tinlyr.tar.gz riclen-tinlyr:
 ```
 
@@ -185,7 +185,7 @@ Hit "Download Backup (Passport)" and it'll have you download a file named like `
 
 Unzip the file with:
 
-```bash {% copy=true %}
+```bash
 unzip ~/path/to/download/folder/riclen-tinlyr-passport.zip
 ```
 
@@ -201,7 +201,7 @@ The next screen on the claim page will ask you to re-enter the master ticket to 
 
 This will leave only the `riclen-tinlyr-1.key` file. The key file contains your planet's private keys, which are necessary to boot it up for the first time. You'll need to copy that file to the server with the following command (again, replacing `riclen-tinlyr` with your own ship and Host):
 
-```bash {% copy=true %}
+```bash
 scp riclen-tinlyr-passport/riclen-tinlyr-1.key riclen-tinlyr:
 ```
 
@@ -213,7 +213,7 @@ Note: you should keep the `riclen-tinlyr-1.key` until you've completed this guid
 
 Once you've either uploaded your pier or uploaded your key file as the case may be, you can connect to your server:
 
-```bash {% copy=true %}
+```bash
 ssh riclen-tinlyr
 ```
 You'll be taken to the shell on your server.
@@ -226,7 +226,7 @@ You'll be taken to the shell on your server.
 
 In the previous section you ssh'd into the server. In the same ssh session, extract the pier archive you previously uploaded, then delete the archive:
 
-```bash {% copy=true %}
+```bash
 tar xvzf riclen-tinlyr.tar.gz && rm riclen-tinlyr.tar.gz
 ```
 
@@ -234,19 +234,19 @@ You'll now have a folder called `riclen-tinlyr`, which is your pier. Urbit is be
 
 Run tmux:
 
-```bash {% copy=true %}
+```bash
 tmux
 ```
 
 You should now be in tmux. First, dock your ship:
 
-```bash {% copy=true %}
+```bash
 ./urbit dock riclen-tinlyr
 ```
 
 That will copy the `urbit` runtime inside the pier, so you can now delete the separate binary:
 
-```bash {% copy=true %}
+```bash
 rm urbit
 ```
 
@@ -256,25 +256,25 @@ rm urbit
 
 In the previous section you ssh'd into the server. In the same ssh session, start tmux:
 
-```bash {% copy=true}
+```bash
 tmux
 ```
 
 You should now be in tmux. Boot a new ship with the following command, specifying the ship name and key file, as well as the Ames port that was previously opened in the firewall by the setup script:
 
-```bash {% copy=true %}
+```bash
 ./urbit -w riclen-tinlyr -k riclen-tinlyr-1.key -p 34543
 ```
 
 It may take several minutes to boot the new ship. Eventually, it'll take you to the Dojo (Urbit's shell) and show a prompt like `~riclen-tinlyr:dojo>`. Once booted, shut the ship down again by typing `|exit` in the Dojo. After it quits, it should print something like "docked successfully", which means the binary has been copied inside the pier. This means you can delete the separate binary:
 
-```bash {% copy=true %}
+```bash
 rm urbit
 ```
 
 The key file is only needed when you first boot the ship, so it's good practice to delete it after first boot:
 
-```bash {% copy=true %}
+```bash
 rm riclen-tinlyr-1.key
 ```
 
@@ -284,13 +284,13 @@ rm riclen-tinlyr-1.key
 
 Run the following to allow the runtime to bind ports 80 and 443:
 
-```bash {% copy=true %}
+```bash
 sudo setcap 'cap_net_bind_service=+ep' riclen-tinlyr/.run
 ```
 
 Now you can start your ship up with the following:
 
-```bash {% copy=true %}
+```bash
 ./riclen-tinlyr/.run -p 34543
 ```
 
@@ -300,7 +300,7 @@ After a few moments it'll show the Dojo prompt like `~riclen-tinlyr:dojo>`.
 
 To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo, replacing the IP address with your droplet's:
 
-``` {% copy=true %}
+```
 -dns-address [%if .161.35.148.247]
 ```
 
@@ -349,7 +349,7 @@ That means the domain has been registered and an SSL certificate has been instal
 
 In order to login to the web interface, you need to get the web login code. Run the following in the Dojo:
 
-``` {% copy=true %}
+```
 +code
 ```
 
@@ -365,7 +365,7 @@ Enter the web login code and you'll be taken to your ship's homescreen. Your shi
 
 You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the ship will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
-```bash {% copy=true %}
+```bash
 tmux a
 ```
 

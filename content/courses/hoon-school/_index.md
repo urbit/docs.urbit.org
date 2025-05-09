@@ -50,7 +50,7 @@ Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
 
 Once you've created your development ship, let's try a basic command. Type `%-  add  [2 2]` at the prompt and hit `Return`.  (Note the double spaces before and after `add`.)  Your screen now shows:
 
-```hoon {% copy=true %}
+```hoon
 fake: ~zod
 ames: czar: ~zod on 31337 (localhost only)
 http: live (insecure, public) on 80
@@ -62,7 +62,7 @@ http: live (insecure, loopback) on 12321
 
 You just used a function from the Hoon standard library, `add`, which for reasons that will become clear later is frequently written [++add](/language/hoon/reference/stdlib/1a#add). Next, quit Urbit by entering [|exit](/manual/os/dojo-tools#exit) :
 
-```hoon {% copy=true %}
+```hoon
 > %-  add  [2 2]
 4
 ~zod:dojo> |exit
@@ -71,7 +71,7 @@ $
 
 Your ship isn't running anymore and you're back at your computer's normal terminal prompt.  If your ship is ~zod, then you can restart the ship by typing:
 
-```hoon {% copy=true %}
+```hoon
 urbit zod
 ```
 
@@ -81,7 +81,7 @@ You've already used a standard library function to produce one value, in the Doj
 
 You'll see:
 
-```hoon {% copy=true %}
+```hoon
 > 17
 17
 ```
@@ -92,7 +92,7 @@ Basically, every Hoon expression operates on the values it is given until it red
 
 One more:
 
-```hoon {% copy=true %}
+```hoon
 > :-  1  2
 [1 2]
 ```

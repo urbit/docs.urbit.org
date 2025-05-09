@@ -37,7 +37,7 @@ At this point, you should have a directory structure containing the following:
 
 We now need to create a new clean desk in the development ship.  In the Dojo:
 
-```hoon {% copy=true %}
+```hoon
 |mount %base
 |mount %landscape
 |merge %flap our %base
@@ -46,7 +46,7 @@ We now need to create a new clean desk in the development ship.  In the Dojo:
 
 Back on Earth:
 
-```sh {% copy=true %}
+```sh
 rm -rf comet/flap/*
 echo "~[%flap]" > comet/flap/desk.bill
 echo "[%zuse 417]" > comet/flap/sys.kelvin
@@ -54,7 +54,7 @@ echo "[%zuse 417]" > comet/flap/sys.kelvin
 
 At this point, we need to take stock of what kind of file marks and libraries we need to make available:  `kelvin`, `docket-0`, and so forth.  While there are marks for `js` and `png`, there is no `wav` so we'll handle that directly.
 
-```sh {% copy=true %}
+```sh
 # Copy necessary %base files to %flap
 cp -r comet/base/lib comet/flap
 cp -r comet/base/sur comet/flap
@@ -78,7 +78,7 @@ cp schooner/lib/schooner.hoon comet/flap/lib
 
 Make an appropriate docket file `desk.docket-0`, e.g.:
 
-```hoon {% copy=true %}
+```hoon
 :~
   title+'Flappy Bird'
   info+'An insanely irritating, difficult and frustrating game which combines a super-steep difficulty curve with bad, boring graphics and jerky movement.'
@@ -123,7 +123,7 @@ The original authors of this clone, CodeExplained, provide [a walkthrough video]
 
 Since the game is served directly from the `index.html` file, we can simply copy that file into Urbit and have things work.  Other files also have appropriate marks except for the sound files which are `wav` files.  Since `wav` files are a standard MIME type for web browsers to handle, we don't need to do very much to represent them correctly:  by copying `/mar/png.hoon` to `/mar/wav.hoon` and modifying it to present an `/audio/wav` MIME type, you can correctly include 
 
-```hoon {% copy=true %}
+```hoon
 |_  dat=@
 ++  grow
   |%
@@ -164,7 +164,7 @@ The basic structure file defines friendship, which it will derive from `%pals`, 
 
 We `%gain` a `score` at the end of each game by an `%action`, and track our own `hiscore`.  We `%lord` a high score over others (or they over us) by sending and receiving `%update`s.  (So `%action`s are vertical between client and server, while `%update`s are horizontal between servers.)
 
-```hoon {% copy=true %}
+```hoon
 |%
 +$  fren    @p
 +$  score   @ud
@@ -194,7 +194,7 @@ Actions are sent from the client to the Urbit ship.  An incoming JSON will be of
 
 Given an action to `%gain` a score as a JSON, we process it in the mark and yield it as a `%flap-action`.
 
-```hoon {% copy=true %}
+```hoon
 /-  flap
 |_  =action:flap
 ++  grab
@@ -221,7 +221,7 @@ Given an action to `%gain` a score as a JSON, we process it in the mark and yiel
 
 Updates are sent between Urbit peers.
 
-```hoon {% copy=true %}
+```hoon
 /-  flap
 |_  =update:flap
 ++  grab
@@ -513,7 +513,7 @@ This is easiest if less elegant than serving the files from Urbit.
 
 If we want to serve our files from Urbit, we need to build the files and serve them to particular endpoints so that they are visible to the browser.  This means importing and serving these to make these available.  It also means renaming the files so that they are compatible with `@ta`-style path entries.
 
-```sh {% copy=true %}
+```sh
 mv comet/flap/app/flap/audio/sfx_point.wav comet/flap/app/flap/audio/sfx-point.wav
 mv comet/flap/app/flap/audio/sfx_flap.wav comet/flap/app/flap/audio/sfx-flap.wav
 mv comet/flap/app/flap/audio/sfx_hit.wav comet/flap/app/flap/audio/sfx-hit.wav
@@ -523,7 +523,7 @@ mv comet/flap/app/flap/audio/sfx_die.wav comet/flap/app/flap/audio/sfx-die.wav
 
 The import lines at the top of `/app/flap.hoon` build each file according to its mark:
 
-```hoon {% copy=true %}
+```hoon
 /*  flapjs  %js    /app/flap/game/js
 /*  flapsprite  %png   /app/flap/img/sprite/png
 /*  flapaudios  %wav   /app/flap/audio/sfx-point/wav
@@ -631,7 +631,7 @@ This version of the app should run in your browser correctly once you `|commit %
 >
 > CORS is a security policy that allows you to load resources dynamically with prior approval from the browser and server.  Sometimes when you are serving various game configurations during development, you may arrive a situation in which things aren't loading correctly to due to the CORS policy.  (When things are entirely served from your Urbit ship then this shouldn't be an issue.)  If you encounter this problem on your way, however, you can [set up CORS origins](/system/kernel/eyre/guides/guide#managing-cors-origins) for Eyre by telling your Urbit ship to allow `localhost` files to be served on the appropriate port.
 >
-> ```hoon {% copy=true %}
+> ```hoon
 > |eyre/cors/approve 'http://localhost:8080'
 > ```
 

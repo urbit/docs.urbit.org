@@ -416,7 +416,7 @@ The Hoon standard library at the current time omits many [transcendental functio
 
 - Produce an exponentiation function `++pow-n` which operates on integer `@rs` only.
 
-    ```hoon {% copy=true %}
+    ```hoon
     ++  pow-n
       ::  restricted power, based on integers only
       |=  [x=@rs n=@rs]
@@ -440,7 +440,7 @@ The Hoon standard library at the current time omits many [transcendental functio
     \sin(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
     -->
 
-    ```hoon {% copy=true %}
+    ```hoon
     ++  sine
       ::  sin x = x - x^3/3! + x^5/5! - x^7/7! + x^9/9! - ...
       |=  x=@rs

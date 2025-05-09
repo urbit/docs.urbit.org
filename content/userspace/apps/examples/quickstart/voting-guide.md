@@ -24,25 +24,25 @@ If you've already got the `urbit` CLI runtime installed, you can skip this step.
 
 #### Linux (`x86_64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 #### Linux (`aarch64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 #### macOS (`x86_64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 #### macOS (`aarch64`)
 
-```shell {% copy=true %}
+```shell
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
@@ -50,7 +50,7 @@ curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, since our chat app will depend on the separate Squad app, we'll do it on a comet instead, so we can easily install that dependency. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
-```shell {% copy=true %}
+```shell
 ./urbit -c dev-comet
 ```
 
@@ -62,7 +62,7 @@ Note: we'll use `~sampel_samzod` throughout this guide, but this will be differe
 
 Once in the Dojo, let's first install the Squad app:
 
-```{% copy=true %}
+```
 |install ~pocwet %squad
 ```
 
@@ -70,7 +70,7 @@ It'll take a minute to retrieve the app, and will say `gall: installing %squad` 
 
 Next, we'll mount a couple of desks so we can grab some of their files, which our new app will need. We can do this with the `|mount` command:
 
-```{% copy=true %}
+```
 |mount %squad
 |mount %base
 |mount %landscape
@@ -78,7 +78,7 @@ Next, we'll mount a couple of desks so we can grab some of their files, which ou
 
 With those mounted, switch back to a normal shell in another terminal window. We'll create a folder to develop our app in, and then we'll copy a few files across that our app will depend on:
 
-```shell {% copy=true %}
+```shell
 mkdir -p tally/{app,sur,mar,lib}
 cp -r dev-comet/squad/mar/{bill*,hoon*,json*,kelvin*,mime*,noun*,ship*,txt*,docket-0*} tally/mar/
 cp -r dev-comet/squad/lib/{agentio*,dbug*,default-agent*,skeleton*,docket*} tally/lib/
@@ -1107,7 +1107,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%tally-action
 
 #### `%tally-action`
 
-```hoon {% copy=true %}
+```hoon
 :: first we import our /sur/tally.hoon type defs and expose them directly
 ::
 /-  *tally
@@ -1139,7 +1139,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%tally-action
 
 #### `%tally-update`
 
-```hoon {% copy=true %}
+```hoon
 :: first we import our /sur/tally.hoon type defs and expose them directly
 ::
 /-  *tally
@@ -1818,20 +1818,20 @@ With our types, agent, mark files and front-end now complete, the last thing we 
 
 Firstly, we need to specify the kernel version our app is compatible with. We do this by adding a `sys.kelvin` file to the root of our `tally` directory:
 
-```shell {% copy=true %}
+```shell
 cd tally
 echo "[%zuse 414]" > sys.kelvin
 ```
 
 We also need to specify which agents to start when our desk is installed. We do this in a `desk.bill` file:
 
-```shell {% copy=true %}
+```shell
 echo "~[%tally]" > desk.bill
 ```
 
 Lastly, we need to create a Docket file. Docket is the agent that manages app front-ends - it fetches & serves them, and it also configures the app tile and other metadata. Create a `desk.docket-0` file in the `tally` directory and add the following:
 
-```shell {% copy=true %}
+```shell
 :~
   title+'Tally'
   info+'Ring signature voting for groups.'
@@ -1848,26 +1848,26 @@ Lastly, we need to create a Docket file. Docket is the agent that manages app fr
 
 Our app is now complete, so let's try it out. In the Dojo of our comet, we'll create a new desk with the `|new-desk` generator:
 
-```{% copy=true %}
+```
 |new-desk %tally
 ```
 
 Next, we'll mount the desk so we can access it from the host OS:
 
-```{% copy=true %}
+```
 |mount %tally
 ```
 
 Currently it just contains some skeleton files, but we can delete those and add our own instead. In the normal shell, do the following:
 
-```shell {% copy=true %}
+```shell
 rm -r dev-comet/tally/*
 cp -r tally/* dev-comet/tally/
 ```
 
 Back in the Dojo again, we can now commit those files and install the app:
 
-```{% copy=true %}
+```
 |commit %tally
 |install our %tally
 ```

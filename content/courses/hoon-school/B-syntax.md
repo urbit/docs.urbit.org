@@ -157,7 +157,7 @@ A rune is just a pair of ASCII characters (a digraph).  We usually [pronounce ru
 
 For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the `%-` [cenhep](/language/hoon/reference/rune/cen#-cenhep) rune with two bits of information, a function name and the values to associate with it:
 
-```hoon {% copy=true %}
+```hoon
 %-
 add  
 [1 2]
@@ -167,7 +167,7 @@ The operation you just completed is straightforward enough:  `1 + 2`, in many la
 
 The [++add](/language/hoon/reference/stdlib/1a#add) function expects precisely two values (or _arguments_), which are provided by [%-](/language/hoon/reference/rune/cen#-cenhep) in the neighboring child expression as a cell.  There's really no limit to the complexity of Hoon expressions:  they can track deep and wide.  They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
-```hoon {% copy=true %}
+```hoon
 %-
 add
 [%-(add [1 2]) 3]
@@ -197,7 +197,7 @@ We are only going to introduce a handful of runes in this lesson, but by the tim
 
 Here is a lightly-edited snippet of Hoon code.  Anything written after a `::` [colcol](/language/hoon/reference/rune/col#-colcol) is a _comment_ and is ignored by the computer.  (Comments are useful for human-language explanations.)
 
-```hoon {% copy=true %}
+```hoon
 %-  send
 ::  forwards compatibility with next-dill
 ?@  p.kyz  [%txt p.kyz ~]
@@ -225,7 +225,7 @@ One clue:  every rune in Hoon (except for one, not in the above code) has _at le
 
 Here is a snippet of Hoon code:
  
-```hoon {% copy=true %}
+```hoon
 ^-  list
 :~  [hen %slip %e %init ~]
     [hen %slip %d %init ~]
@@ -336,7 +336,7 @@ We are going to store the value as a variable, or in Hoon, “pin a face to the 
 
 When we used [++add](/language/hoon/reference/stdlib/1a#add) or [++sub](/language/hoon/reference/stdlib/1a#sub) previously, we wanted an immediate answer.  There's not much more to say than `5 + 1`.  In contrast, pinning a face accepts three daughter expressions:  a name (or face), a value, and the rest of the expression.
 
-```hoon {% copy=true %}
+```hoon
 =/  perfect-number  28
 %-  add  [perfect-number 10]
 ```
@@ -366,7 +366,7 @@ This syntax is a little bit strange in the Dojo because subsequent expressions, 
 
 The difference is that the Dojo “pin” is permanent until deleted:
 
-```hoon {% copy=true %}
+```hoon
 =perfect-number
 ```
 
@@ -403,7 +403,7 @@ Since almost all cells branch rightwards, the pretty-printer (the printing routi
 
 Enter the following cells:
 
-```hoon {% copy=true %}
+```hoon
 [1 2 3]
 [1 [2 3]]
 [[1 2] 3]
@@ -542,7 +542,7 @@ $$-->
 
 Thus equipped, we can evaluate the Heaviside function for particular values of `x`:
 
-```hoon {% copy=true %}
+```hoon
 =/  x  10
 ?:  %-  gte  [x 10]
   1

@@ -98,7 +98,7 @@ Note that at this point we don’t care what the function looks like, only how i
 
 **/lib/absolute.hoon**
 
-```hoon {% copy=true %}
+```hoon
 |%
 ++  absolute
   |=  a=@rs
@@ -180,7 +180,7 @@ As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of t
 - The `~_` [sigcab](/language/hoon/reference/rune/sig#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`. (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 - The `~|` [sigbar](/language/hoon/reference/rune/sig#-sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](/glossary/cord). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
-    ```hoon {% copy=true %}
+    ```hoon
     |=  a=@ud
     ~_  leaf+"This code failed"
     !!

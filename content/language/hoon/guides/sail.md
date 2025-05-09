@@ -42,20 +42,20 @@ It’s easy to see how Sail can directly translate to HTML:
 {% tab title="HTML" %}
 
 ```html
-  <html>
-    <head>
-      <title>My page</title>
-      <meta charset="utf-8" />
-    </head>
-    <body>
-      <h1>Welcome!</h1>
-      <p>Hello, world! Welcome to my
-        page. Here is an image:
-        <br />
-        <img src="/foo.png" />
-      </p>
-    </body>
-  </html>
+<html>
+  <head>
+    <title>My page</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <p>Hello, world! Welcome to my
+      page. Here is an image:
+      <br />
+      <img src="/foo.png" />
+    </p>
+  </body>
+</html>
 ```
 
 {% endtab %}

@@ -38,19 +38,9 @@ There is no difference between Layer 1 or Layer 2 in the quality of experience w
 
 Here are a few of the places where you can buy planets:
 
-{% table .w-full .my-4 %}
-* L1 Planet Markets
-* L2 Planet Markets
----
-*
-    - [Urbit.live](https://urbit.live)
-    - [Urbit.me](https://urbit.me)
-    - [OpenSea Urbit ID Planet](https://opensea.io/collection/urbit-id-planet)
-* 
-    - [azimuth.shop](https://azimuth.shop)
-    - [lanlyd](https://lanlyd.net/)
-    - [\_networked subject](https://subject.network)
-{% /table %}
+| L1 Planet Markets | L2 Planet Markets |
+|-------------------|-------------------|
+|[Urbit.live](https://urbit.live), [Urbit.me](https://urbit.me), [OpenSea Urbit ID Planet](https://opensea.io/collection/urbit-id-planet) | [azimuth.shop](https://azimuth.shop), [lanlyd](https://lanlyd.net/), [\_networked subject](https://subject.network) |
 
 {% hint style="info" %}
 

@@ -14,48 +14,53 @@ This document will walk through the basics of Sail and its syntax.
 
 It’s easy to see how Sail can directly translate to HTML:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
-
-- ```
-  ;html
-    ;head
-      ;title = My page
-      ;meta(charset "utf-8");
-    ==
-    ;body
-      ;h1: Welcome!
-      ;p
-        ; Hello, world!
-        ; Welcome to my page.
-        ; Here is an image:
-        ;br;
-        ;img@"/foo.png";
-      ==
+```hoon
+;html
+  ;head
+    ;title = My page
+    ;meta(charset "utf-8");
+  ==
+  ;body
+    ;h1: Welcome!
+    ;p
+      ; Hello, world!
+      ; Welcome to my page.
+      ; Here is an image:
+      ;br;
+      ;img@"/foo.png";
     ==
   ==
-  ```
-- ```
-    <html>
-      <head>
-        <title>My page</title>
-        <meta charset="utf-8" />
-      </head>
-      <body>
-        <h1>Welcome!</h1>
-        <p>Hello, world! Welcome to my
-          page. Here is an image:
-          <br />
-          <img src="/foo.png" />
-        </p>
-      </body>
-    </html>
-  ```
-{% /table %}
+==
+```
+
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```html
+  <html>
+    <head>
+      <title>My page</title>
+      <meta charset="utf-8" />
+    </head>
+    <body>
+      <h1>Welcome!</h1>
+      <p>Hello, world! Welcome to my
+        page. Here is an image:
+        <br />
+        <img src="/foo.png" />
+      </p>
+    </body>
+  </html>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Tags and Closing
 

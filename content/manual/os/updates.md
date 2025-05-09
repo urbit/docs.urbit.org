@@ -9,31 +9,11 @@ The OS/kernel in Urbit is called Arvo. Arvo is run inside a virtual machine call
 
 ## Quick overview
 
-{% table %}
-* Name
-* Description
-* Example version
-* Depends on
-* Behavior
----
-* Vere
-* The runtime aka `urbit` binary
-* `v1.10`
-* Nothing
-* Vere is typically backwards-compatible with older Arvo versions. Vere can be updated by either running its `next` command, or by downloading a new version and swapping them out. The ship must be shut down before performing either of these actions.
----
-* Arvo
-* The kernel and core libraries
-* `[%zuse 418]`
-* Vere
-* Arvo depends on Vere. If Vere is incompatible, it will fail to boot. Arvo lives in the `%base` desk and receives over-the-air updates, typically from your sponsor. If an update requires a new Vere version, the update will be queued until Vere is updated. Arvo uses *kelvin versioning*, which means its version number counts down towards zero (therefore 418 is newer than 419). Apps can also block Arvo updates if they're not compatible, though a blocked Arvo update can be forced by suspending the blocking apps.
----
-* Apps
-* Groups, Studio, Pals, etc
-* `v1.0.14`
-* Arvo
-* Apps depend on Arvo. Every app specifies which Arvo version it is compatible with. Apps receive updates over-the-air from their publisher. If you try to install an app which requires a newer version of Arvo than you have, the installation will fail. If an existing app receives an update which requires a newer Arvo version, that update will be queued until Arvo is updated.
-{% /table %}
+| Name | Description | Example version | Depends on | Behavior |
+|------|-------------|-----------------|------------|----------|
+| Vere | The runtime aka `urbit` binary | `v1.10` | Nothing | Vere is typically backwards-compatible with older Arvo versions. Vere can be updated by either running its `next` command, or by downloading a new version and swapping them out. The ship must be shut down before performing either of these actions. |
+| Arvo | The kernel and core libraries | `[%zuse 418]` | Vere | Arvo depends on Vere. If Vere is incompatible, it will fail to boot. Arvo lives in the `%base` desk and receives over-the-air updates, typically from your sponsor. If an update requires a new Vere version, the update will be queued until Vere is updated. Arvo uses *kelvin versioning*, which means its version number counts down towards zero (therefore 418 is newer than 419). Apps can also block Arvo updates if they're not compatible, though a blocked Arvo update can be forced by suspending the blocking apps. |
+| Apps | Groups, Studio, Pals, etc | `v1.0.14` | Arvo | Apps depend on Arvo. Every app specifies which Arvo version it is compatible with. Apps receive updates over-the-air from their publisher. If you try to install an app which requires a newer version of Arvo than you have, the installation will fail. If an existing app receives an update which requires a newer Arvo version, that update will be queued until Arvo is updated. |
 
 ## Update notifications
 

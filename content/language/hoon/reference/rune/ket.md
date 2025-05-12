@@ -94,7 +94,7 @@ One argument, fixed.
 
 | Tall form | Wide form | Irregular form |
 |-----------|-----------|----------------|
-| `^|  p`   | `^|(p)`   | None           |
+| `^\|  p`   | `^\|(p)`   | None           |
 
 #### AST
 

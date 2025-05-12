@@ -54,7 +54,7 @@ One argument, fixed.
 
 | Tall form   | Wide form | Irregular form |
 |-------------|-----------|----------------|
-| `+| %label` | None      | None           |
+| `+\| %label` | None      | None           |
 
 #### Discussion
 

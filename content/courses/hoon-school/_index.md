@@ -111,7 +111,7 @@ It is highly advisable for you to learn these pronunciations, as the documentati
 | `ace` | `␣`        |
 | `gap` | `␣␣`, `\n` |
 | `pat` | `@`        |
-| `bar` | `|`        |
+| `bar` | `\|`        |
 | `gar` | `>`        |
 | `sel` | `[`        |
 | `bas` | `\`        |

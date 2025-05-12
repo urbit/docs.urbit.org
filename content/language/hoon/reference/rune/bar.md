@@ -605,7 +605,7 @@ One argument, fixed.
 
 | Tall form | Wide form | Irregular form |
 |-----------|-----------|----------------|
-| `|-  a`   | `|-(a)`   | None           |
+| `\|-  a`   | `\|-(a)`   | None           |
 
 #### AST
 
@@ -728,7 +728,7 @@ Two arguments, fixed.
 
 | Tall form  | Wide form | Irregular form |
 |------------|-----------|----------------|
-| `|*  a  b` | `|*(a b)` | None           |
+| `\|*  a  b` | `\|*(a b)` | None           |
 
 #### AST
 
@@ -933,7 +933,7 @@ One argument, fixed.
 
 | Tall form | Wide form | Irregular form |
 |-----------|-----------|----------------|
-| `|?  a`   | `|?(a)`   | None           |
+| `\|?  a`   | `\|?(a)`   | None           |
 
 #### AST
 

@@ -98,8 +98,8 @@ Mathematical logic allows the collocation of propositions to determine other pro
 
     |             `AND`            | `%.y` | `%.n` |
     |------------------------------|-------|-------|
-    | `%.y`{% class="font-bold" %} | `%.y` | `%.n` |
-    | `%.n`{% class="font-bold" %} | `%.n` | `%.n` |
+    | `%.y` | `%.y` | `%.n` |
+    | `%.n` | `%.n` | `%.n` |
 
     <br>
 
@@ -113,8 +113,8 @@ Mathematical logic allows the collocation of propositions to determine other pro
 
     |             `OR`             | `%.y` | `%.n` |
     |------------------------------|-------|-------|
-    | `%.y`{% class="font-bold" %} | `%.y` | `%.y` |
-    | `%.n`{% class="font-bold" %} | `%.y` | `%.n` |
+    | `%.y` | `%.y` | `%.y` |
+    | `%.n` | `%.y` | `%.n` |
 
     <br>
 
@@ -128,8 +128,8 @@ Mathematical logic allows the collocation of propositions to determine other pro
 
     |                              | `NOT` |
     |------------------------------|-------|
-    | `%.y`{% class="font-bold" %} | `%.n` |
-    | `%.n`{% class="font-bold" %} | `%.y` |
+    | `%.y` | `%.n` |
+    | `%.n` | `%.y` |
 
     <br>
 
@@ -149,8 +149,8 @@ The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction) yields true
 
 |             `XOR`            | `%.y` | `%.n` |
 |------------------------------|-------|-------|
-| `%.y`{% class="font-bold" %} | `%.n` | `%.y` |
-| `%.n`{% class="font-bold" %} | `%.y` | `%.n` |
+| `%.y` | `%.n` | `%.y` |
+| `%.n` | `%.y` | `%.n` |
 
 - Implement `XOR` as a [gate](/glossary/gate) in Hoon.
 
@@ -166,8 +166,8 @@ The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands 
 
 |             `NAND`            | `%.y` | `%.n` |
 |-------------------------------|-------|-------|
-| `%.y`{% class="font-bold" %}  | `%.n` | `%.y` |
-| `%.n`{% class="font-bold" %}  | `%.y` | `%.y` |
+| `%.y`  | `%.n` | `%.y` |
+| `%.n`  | `%.y` | `%.y` |
 
 - Implement `NAND` as a gate in Hoon.
 
@@ -177,8 +177,8 @@ The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands ar
 
 |             `NOR`            | `%.y` | `%.n` |
 |------------------------------|-------|-------|
-| `%.y`{% class="font-bold" %} | `%.n` | `%.n` |
-| `%.n`{% class="font-bold" %} | `%.n` | `%.y` |
+| `%.y` | `%.n` | `%.n` |
+| `%.n` | `%.n` | `%.y` |
 
 - Implement `NAND` as a gate in Hoon.
 

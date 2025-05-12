@@ -123,36 +123,37 @@ Logical OR.
 
 Variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?|  p1
+    p2
+    p3
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  ?|  p1
-      p2
-      p3
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?|(p1 p2 p3 pn)
-  ```
+```hoon
+?|(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```hoon
-    |(p1 p2 p3 pn)
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+|(p1 p2 p3 pn)
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -203,50 +204,52 @@ Switch against a union, with no default.
 
 One fixed argument, then a variable number of pairs.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall style #1" %}
 
----
+```hoon
+?-  p
+  q1a  q1b
+  q2a  q2b
+  qna  qnb
+==
+```
 
-- Tall style #1
-- ```hoon
-  ?-  p
-    q1a  q1b
-    q2a  q2b
-    qna  qnb
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Tall style #2" %}
 
-- Tall style #2
-- ```hoon
-  ?-    p
-      q1a
-    q1b
-  ::
-      q2a
-    q2b
-  ::
-      qna
-    qnb
-  ==
-  ```
+```hoon
+?-    p
+    q1a
+  q1b
+::
+    q2a
+  q2b
+::
+    qna
+  qnb
+==
+```
 
----
+{% endtab %}
 
-- Wide
-- ```hoon
-  ?-(p q1a q1b, q2a q2b, qna qnb)
-  ```
+{% tab title="Wide form" %}
 
----
+```hoon
+?-(p q1a q1b, q2a q2b, qna qnb)
+```
 
-- Irregular
-- None.
-{% /table %}
+{% endtab %}
+
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -314,32 +317,33 @@ Branch on a boolean test.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?:  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  ?:  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?:(p q r)
-  ```
+```hoon
+?:(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -387,32 +391,33 @@ Branch on a boolean test, inverted.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?.  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  ?.  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?.(p q r)
-  ```
+```hoon
+?.(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -459,32 +464,33 @@ Branch on whether a wing of the subject is a cell.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?^  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  ?^  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?^(p q r)
-  ```
+```hoon
+?^(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -526,31 +532,32 @@ Negative assertion.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?<  p
+q
+```
 
-- Tall
-- ```hoon
-  ?<  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?<(p q)
-  ```
+```hoon
+?<(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -596,31 +603,32 @@ Positive assertion.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?>  p
+q
+```
 
-- Tall
-- ```hoon
-  ?>  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
+ 
+```hoon
+?>(p q)
+```
 
-- Wide
-- ```hoon
-  ?>(p q)
-  ```
+{% endtab %}
 
----
+{% tab title="Irregular form" %}
 
-- Irregular
-- None.
-{% /table %}
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -666,50 +674,52 @@ Switch against a union, with a default.
 
 Two fixed arguments, then a variable number of pairs.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall style #1" %}
 
----
+```hoon
+?+  p  q
+  r1a  r1b
+  r2a  r2b
+  rna  rnb
+==
+```
 
-- Tall style #1
-- ```hoon
-  ?+  p  q
-    r1a  r1b
-    r2a  r2b
-    rna  rnb
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Tall style #2" %}
 
-- Tall style #2
-- ```hoon
-  ?+    p  q
-      r1a
-    r1b
-  ::
-      r2a
-    r2b
-  ::
-      rna
-    rnb
-  ==
-  ```
+```hoon
+?+    p  q
+    r1a
+  r1b
+::
+    r2a
+  r2b
+::
+    rna
+  rnb
+==
+```
 
----
+{% endtab %}
 
-- Wide
-- ```hoon
-  ?+(p q r1a r1b, r2a r2b, rna rnb)
-  ```
+{% tab title="Wide form" %}
 
----
+```hoon
+?+(p q r1a r1b, r2a r2b, rna rnb)
+```
 
-- Irregular
-- None.
-{% /table %}
+{% endtab %}
+
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -775,35 +785,36 @@ Logical AND.
 
 Variable arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?&  p1
+    p2
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  ?&  p1
-      p2
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?&(p1 p2 pn)
-  ```
+```hoon
+?&(p1 p2 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    &(p1 p2 pn)
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```
+  &(p1 p2 pn)
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -854,32 +865,33 @@ Branch on whether a wing of the subject is an atom.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?@  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  ?@  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?@(p q r)
-  ```
+```hoon
+?@(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -925,32 +937,33 @@ Branch on whether a wing of the subject is null.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?~  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  ?~  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?~(p q r)
-  ```
+```hoon
+?~(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -992,31 +1005,30 @@ Test pattern match.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+?=  p
+q
+```
 
-- Tall
-- ```hoon
-  ?=  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ?=(p q)
-  ```
+```hoon
+?=(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -1056,32 +1068,9 @@ Logical NOT.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ?!  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ?!(p)
-  ```
-
----
-
-- Irregular
-- ```hoon
-    !p
-  ```
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `?!  p`   | `?!(p)`   | `!p`           |
 
 #### AST
 

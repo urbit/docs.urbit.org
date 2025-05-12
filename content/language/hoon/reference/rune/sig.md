@@ -104,31 +104,32 @@ Raw hint, applied to computation.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~>  p
+q
+```
 
-- Tall
-- ```hoon
-  ~>  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~>(p q)
-  ```
+```hoon
+~>(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -175,31 +176,32 @@ Tracing printf.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~|  p
+q
+```
 
-- Tall
-- ```hoon
-  ~|  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~|(p q)
-  ```
+```hoon
+~|(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -238,31 +240,32 @@ Profiling hit counter.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~&  p
+q
+```
 
-- Tall
-- ```hoon
-  ~&  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~&(p q)
-  ```
+```hoon
+~&(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -314,31 +317,32 @@ User-formatted tracing printf.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~_  p
+q
+```
 
-- Tall
-- ```hoon
-  ~_  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~_(p q)
-  ```
+```hoon
+~_(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -381,34 +385,35 @@ Jet registration.
 
 Four arguments. Two fixed arguments, then a third which may be `~` if empty or else a variable number of pairs sandwiched between two `==`s, then a fourth fixed argument.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~%  p  q
+  ==
+    r1a  r1b
+    r2a  r2b
+    rna  rnb
+  ==
+s
+```
 
-- Tall
-- ```hoon
-  ~%  p  q
-    ==
-      r1a  r1b
-      r2a  r2b
-      rna  rnb
-    ==
-  s
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- None.
+None
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -473,31 +478,32 @@ Raw hint, applied to product.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~<  p
+q
+```
 
-- Tall
-- ```hoon
-  ~<  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~<(p q)
-  ```
+```hoon
+~<(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 `p` may either be a a `term` or a pair of `[term hoon]`. If it's the latter, `p` may optionally be written as `%foo.some-hoon`.
 
@@ -534,30 +540,9 @@ Cache a computation.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ~+  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ~+(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `~+  p`   | `~+(p)`   | None           |
 
 #### AST
 
@@ -606,31 +591,32 @@ Jet registration for gate with registered context.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~/  p
+q
+```
 
-- Tall
-- ```hoon
-  ~/  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~/(p q)
-  ```
+```hoon
+~/(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -667,31 +653,32 @@ Debugging printf.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~&  p
+q
+```
 
-- Tall
-- ```hoon
-  ~&  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~&(p q)
-  ```
+```hoon
+~&(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -744,31 +731,32 @@ Detect duplicate.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~=  p
+q
+```
 
-- Tall
-- ```hoon
-  ~=  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~=(p q)
-  ```
+```hoon
+~=(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -813,32 +801,33 @@ Conditional debug printf.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~?  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  ~?  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~?(p q r)
-  ```
+```hoon
+~?(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -886,31 +875,32 @@ Print type on compilation fail.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+~!  p
+q
+```
 
-- Tall
-- ```hoon
-  ~!  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ~!(p q)
-  ```
+```hoon
+~!(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 

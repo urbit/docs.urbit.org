@@ -70,40 +70,42 @@ Construct a cell (2-tuple).
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+:-  p
+q
+```
 
-- Tall
-- ```hoon
-  :-  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  :-(p q)
-  ```
+```hoon
+:-(p q)
+```
 
----
+{% endtab %}
 
-- Irregular #1
-- ```hoon
-  [p q]
-  ```
+{% tab title="Irregular #1" %}
 
----
+```hoon
+[p q]
+```
 
-- Irregular #2
-- ```
-    p^q
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="Irregular #2" %}
+
+```hoon
+p^q
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -139,31 +141,32 @@ Construct a cell, inverted.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+:_  p
+q
+```
 
-- Tall
-- ```hoon
-  :_  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  :_(p q)
-  ```
+```hoon
+:_(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -194,34 +197,35 @@ Construct a triple (3-tuple).
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+:+  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  :+  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  :+(p q r)
-  ```
+```hoon
+:+(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```hoon
-    [p q r]
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+  [p q r]
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -257,35 +261,36 @@ Construct a quadruple (4-tuple).
 
 Four arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+:^    p
+    q
+  r
+s
+```
 
-- Tall
-- ```hoon
-  :^    p
-      q
-    r
-  s
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  :^(p q r s)
-  ```
+```hoon
+:^(p q r s)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```hoon
-    [p q r s]
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+  [p q r s]
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -322,36 +327,37 @@ Construct an n-tuple.
 
 Variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+:*  p1
+    p2
+    p3
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  :*  p1
-      p2
-      p3
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  :*(p1 p2 p3 pn)
-  ```
+```hoon
+:*(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    [p1 p2 p3 pn]
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+[p1 p2 p3 pn]
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -411,36 +417,37 @@ Construct a null-terminated list.
 
 Variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+:~  p1
+    p2
+    p3
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  :~  p1
-      p2
-      p3
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  :~(p1 p2 p3 pn)
-  ```
+```hoon
+:~(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    ~[p1 p2 p3 pn]
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+~[p1 p2 p3 pn]
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 

@@ -57,35 +57,36 @@ Two arguments, with the second optionally split into an arbitrary number of elem
 
 While this rune technically takes a fixed number of arguments, `q` is usually split into at least two parts, and the tall form of this rune must be terminated with a `==`. Note also that the `==` does not make the arguments into a list as you might expect, so `q` must be explicitly null-terminated if its elements are specified separately.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+.^  p
+  q1
+  q2
+  q3
+  qn
+==
+```
 
-- Tall
-- ```hoon
-  .^  p
-    q1
-    q2
-    q3
-    qn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  .^(p q1 q2)
-  ```
+```hoon
+.^(p q1 q2)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -164,34 +165,9 @@ Increment an atom with Nock `4`.
 
 #### Syntax
 
-One argument, fixed.
-
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  .+  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  .+(p)
-  ```
-
----
-
-- Irregular
-- ```hoon
-    +(p)
-  ```
-{% /table %}
+| Wide form | Tall form | Irregular form |
+|-----------|-----------|----------------|
+| `.+  p`   | `.+(p)`   | `+(p)`         |
 
 #### AST
 
@@ -233,31 +209,32 @@ Nock of formula `q` and subject `p`, with type `%noun`.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+.*  p
+q
+```
 
-- Tall
-- ```hoon
-  .*  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  .*(p q)
-  ```
+```hoon
+.*(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None.
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -305,33 +282,34 @@ Test for equality with Nock `5`.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+.=  p
+q
+```
 
-- Tall
-- ```hoon
-  .=  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  .=(p q)
-  ```
+```hoon
+.=(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```hoon
-    =(p q)
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+  =(p q)
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -376,30 +354,9 @@ Test for cell or atom with Nock `3`.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  .?  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  .?(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `.?  p`   | `.?(p)`   | None           |
 
 #### AST
 

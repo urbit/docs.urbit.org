@@ -76,36 +76,37 @@ Call a binary function as an n-ary function.
 
 One fixed argument, then a variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+;:  p
+  q1
+  q2
+  qn
+==
+```
 
-- Tall
-- ```hoon
-  ;:  p
-    q1
-    q2
-    qn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ;:(p q1 q2 qn)
-  ```
+```hoon
+;:(p q1 q2 qn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    :(p q1 q2 qn)
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+:(p q1 q2 qn)
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -166,30 +167,9 @@ Monadic do notation.
 
 Four arguments, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ;<  mold  bind  expr1  expr2
-  ```
-
----
-
-- Wide
-- ```hoon
-  ;<(mold bind expr1 expr2)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form                      | Wide form                   | Irregular form |
+|--------------------------------|-----------------------------|----------------|
+| `;<  mold  bind  expr1  expr2` | `;<(mold bind expr1 expr2)` | None           |
 
 #### AST
 
@@ -259,30 +239,9 @@ make a single XML node (Sail)
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ;+  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ;+(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `;+  p`   | `;+(p)`   | None           |
 
 `p` is a Hoon expression that produces a `manx`.
 
@@ -341,31 +300,32 @@ Mold noun.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+;;  p
+q
+```
 
-- Tall
-- ```hoon
-  ;;  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ;;(p q)
-  ```
+```hoon
+;;(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregualr form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -412,30 +372,9 @@ Tape as XML element.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ;/  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ;/(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `;/  p`   | `;/(p)`   | None           |
 
 #### AST
 
@@ -466,34 +405,35 @@ Glue a pipeline together with a product-sample adapter.
 
 One fixed argument, then a variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+;~  p
+  q1
+  q2
+  qn
+==
+```
 
-- Tall
-- ```hoon
-  ;~  p
-    q1
-    q2
-    qn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ;~(p q1 q2 qn)
-  ```
+```hoon
+;~(p q1 q2 qn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -603,30 +543,9 @@ make a list of XML nodes from complex Hoon expression (Sail)
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ;*  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ;*(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `;*  p`   | `;*(p)`   | None           |
 
 `p` is a Hoon expression that produces a `marl`.
 
@@ -678,34 +597,35 @@ make a list of XML nodes (Sail)
 
 A variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+;=  p1
+    p2
+    p3
+   pn
+==
+```
 
-- Tall
-- ```hoon
-  ;=  p1
-      p2
-      p3
-     pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ;=(p1 p2 p3 pn)
-  ```
+```hoon
+;=(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 `p1`-`pn` are Hoon expressions, each of which poduces a `manx`.
 

@@ -132,31 +132,33 @@ Structure that satisfies a validator.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
 
-- Tall
-- ```hoon
-  $|  p
-  q
-  ```
+```hoon
+$|  p
+q
+```
 
----
+{% endtab %}
 
-- Wide
-- ```hoon
-  $|(p q)
-  ```
+{% tab title="Wide form" %}
 
----
+```hoon
+$|(p q)
+```
 
-- Irregular
-- None.
-{% /table %}
+{% endtab %}
+
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -217,32 +219,9 @@ Structure that normalizes to an example.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  $_  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  $_(p)
-  ```
-
----
-
-- Irregular
-- ```
-    _p
-  ```
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `$_  p`   | `$_(p)`   | `_p`           |
 
 #### AST
 
@@ -285,34 +264,35 @@ Structure which recognizes a union tagged by head atom.
 
 A variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$%  [%p1 ...]
+    [%p2 ...]
+    [%p3 ...]
+    [%pn ...]
+==
+```
 
-- Tall
-- ```hoon
-  $%  [%p1 ...]
-      [%p2 ...]
-      [%p3 ...]
-      [%pn ...]
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $%([%p1 ...] [%p2 ...] [%p3 ...] [%pn ...])
-  ```
+```hoon
+$%([%p1 ...] [%p2 ...] [%p3 ...] [%pn ...])
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 Each item may be an atom or (more commonly) a cell. The atom or head of the cell _must_ be a constant (`%foo`, `%1`, `%.y`, etc).
 
@@ -357,43 +337,45 @@ Form a cell type.
 
 A variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$:  p1
+    p2
+    p3
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  $:  p1
-      p2
-      p3
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $:(p1 p2 p3 pn)
-  ```
+```hoon
+$:(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular (noun mode)
-- ```hoon
-  ,[p1 p2 p3 pn]
-  ```
+{% tab title="Irregular (noun mode)" %}
 
----
+```hoon
+,[p1 p2 p3 pn]
+```
 
-- Irregular (structure mode)
-- ```hoon
-    [p1 p2 p3 pn]
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="Irregular (structure mode)" %}
+
+```hoon
+  [p1 p2 p3 pn]
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -434,31 +416,32 @@ Filters a pre-existing mold to obtain a mold that excludes a particular structur
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$<  p
+q
+```
 
-- Tall
-- ```hoon
-  $<  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $<(p q)
-  ```
+```hoon
+$<(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -500,31 +483,32 @@ Filters a mold to obtain a new mold matching a particular structure.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$>  p
+q
+```
 
-- Tall
-- ```hoon
-  $>  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $>(p q)
-  ```
+```hoon
+$>(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -591,31 +575,32 @@ $_  ^|
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$-  p
+q
+```
 
-- Tall
-- ```hoon
-  $-  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $-(p q)
-  ```
+```hoon
+$-(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 `p` is the type the gate takes and `q` is the type the gate produces.
 
@@ -642,31 +627,32 @@ Structure which normalizes a union tagged by head depth (cell).
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$^  p
+q
+```
 
-- Tall
-- ```hoon
-  $^  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $^(p q)
-  ```
+```hoon
+$^(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -709,31 +695,32 @@ Specify a shorthand type name for use in prettyprinting.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$+  p
+q
+```
 
-- Tall
-- ```hoon
-  $+  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $+(p q)
-  ```
+```hoon
+$+(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -770,31 +757,32 @@ Repair a value of a tagged union type.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$&  p
+q
+```
 
-- Tall
-- ```hoon
-  $&  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $&(p q)
-  ```
+```hoon
+$&(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 ```hoon
 $&(combined-mold=spec normalizing-gate=hoon)
@@ -841,31 +829,32 @@ Define a custom type default value.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$~  p
+q
+```
 
-- Tall
-- ```hoon
-  $~  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $~(p q)
-  ```
+```hoon
+$~(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 `p` defines the default value, and `q` defines everything else about the
 structure.
@@ -936,31 +925,32 @@ Structure which normalizes a union tagged by head depth (atom).
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$@  p
+q
+```
 
-- Tall
-- ```hoon
-  $@  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $@(p q)
-  ```
+```hoon
+$@(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -1005,33 +995,34 @@ Structure which wraps a face around another structure.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$=  p
+q
+```
 
-- Tall
-- ```hoon
-  $=  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $=(p q)
-  ```
+```hoon
+$=(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    p=q
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```
+  p=q
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -1072,36 +1063,37 @@ Form a type from a union of other types.
 
 Variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+$?  p1
+    p2
+    p3
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  $?  p1
-      p2
-      p3
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  $?(p1 p2 p3 pn)
-  ```
+```hoon
+$?(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```hoon
-    ?(p1 p2 p3 pn)
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+  ?(p1 p2 p3 pn)
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 

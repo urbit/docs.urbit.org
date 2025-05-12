@@ -92,30 +92,9 @@ Convert a gold core to an iron core (contravariant).
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ^|  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ^|(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `^\|  p`   | `^\|(p)`   | None           |
 
 #### AST
 
@@ -157,32 +136,9 @@ Switch parser into structure mode (mold definition) and produce a gate for type 
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ^:  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ^:(p)
-  ```
-
----
-
-- Irregular
-- ```hoon
-  ,p
-  ```
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `^:  p`   | `^:(p)`   | `,p`           |
 
 #### AST
 
@@ -241,31 +197,32 @@ Typecast on value produced by passing `q` to `p`.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+^.  p
+q
+```
 
-- Tall
-- ```hoon
-  ^.  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ^.(p q)
-  ```
+```hoon
+^.(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -312,33 +269,34 @@ Typecast by explicit type label.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+^-  p
+q
+```
 
-- Tall
-- ```hoon
-  ^-  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ^-(p q)
-  ```
+```hoon
+^-(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    `p`q
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+`p`q
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -384,31 +342,32 @@ Typecast by inferred type.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+^+  p
+q
+```
 
-- Tall
-- ```hoon
-  ^+  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ^+(p q)
-  ```
+```hoon
+^+(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -437,30 +396,9 @@ Convert a core to a zinc core (covariant).
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ^&  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ^&(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `^&  p`   | `^&(p)`   | None           |
 
 #### AST
 
@@ -523,30 +461,9 @@ Fold constant at compile time.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ^~  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ^~(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `^~  p`   | `^~(p)`   | None           |
 
 #### AST
 
@@ -578,32 +495,9 @@ Produce example type value.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ^*  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ^*(p)
-  ```
-
----
-
-- Irregular
-- ```hoon
-    *p
-  ```
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `^*  p`   | `^*(p)`   | `*p`           |
 
 `p` is any structure expression.
 
@@ -658,33 +552,34 @@ Bind name to a value.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+^=  p
+q
+```
 
-- Tall
-- ```hoon
-  ^=  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  ^=(p q)
-  ```
+```hoon
+^=(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    p=q
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```hoon
+  p=q
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -726,30 +621,9 @@ Convert any core to a lead core (bivariant).
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ^?  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  ^?(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `^?  p`   | `^?(p)`   | None           |
 
 #### AST
 

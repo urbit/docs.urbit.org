@@ -106,31 +106,32 @@ Declares a mold builder wet gate with one or more molds as its sample.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|$  sample
+body
+```
 
-- Tall
-- ```hoon
-  |$  sample
-  body
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  |$(sample body)
-  ```
+```hoon
+|$(sample body)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -188,33 +189,34 @@ Produce a **door** (a core with a sample).
 
 One fixed argument, then a variable number of `+`-family expressions.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|_  a=spec
+++  b=term  c=hoon
+++  d=term  e=hoon
+     ...
+++  f=term  g=hoon
+--
+```
 
-- Tall
-- ```hoon
-  |_  a=spec
-  ++  b=term  c=hoon
-  ++  d=term  e=hoon
-       ...
-  ++  f=term  g=hoon
-  --
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- None.
+None
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 Note: The `++` rune may be replaced with any other rune in the `+` family.
 
@@ -298,31 +300,32 @@ Produce a gate with a custom sample.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|:  a
+b
+```
 
-- Tall
-- ```hoon
-  |:  a
-  b
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  |:(a b)
-  ```
+```hoon
+|:(a b)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -369,33 +372,34 @@ Produce a core, `[battery payload]`.
 
 Argument: a variable number of `+`-family expressions.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|%
+++  a=term  b=hoon
+++  c=term  d=hoon
+     ...
+++  e=term  f=hoon
+--
+```
 
-- Tall
-- ```hoon
-  |%
-  ++  a=term  b=hoon
-  ++  c=term  d=hoon
-       ...
-  ++  e=term  f=hoon
-  --
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- None.
+None
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 Note: The `++` rune may be replaced with any other rune in the `+` family.
 
@@ -450,30 +454,9 @@ Produce a trap (a core with one arm `$`).
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  |.  a
-  ```
-
----
-
-- Wide
-- ```hoon
-  |.(a)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `\| .  a` | `\| .(a)` | None           |
 
 #### AST
 
@@ -541,36 +524,34 @@ Produce a core whose battery includes a `$` arm and compute the latter.
 
 One fixed argument, then a variable number of `+`-family expressions.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|^  a=hoon
+++  b=term  c=hoon
+++  d=term  e=hoon
+     ...
+++  f=term  g=hoon
+--
+```
 
-- Tall
-- ```hoon
-  |^  a=hoon
-  ++  b=term  c=hoon
-  ++  d=term  e=hoon
-       ...
-  ++  f=term  g=hoon
-  --
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- None.
+None
 
----
+{% endtab %}
 
-- Irregular
-- None.
+{% tab title="Irregular form" %}
 
----
+None
 
-{% /table %}
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -622,30 +603,9 @@ Produce a trap (a core with one arm `$`) and evaluate it.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  |-  a
-  ```
-
----
-
-- Wide
-- ```hoon
-  |-(a)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `\|-  a`   | `\|-(a)`   | None           |
 
 #### AST
 
@@ -702,31 +662,32 @@ Produce an iron gate.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|~  a
+b
+```
 
-- Tall
-- ```hoon
-  |~  a
-  b
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  |~(a b)
-  ```
+```hoon
+|~(a b)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -765,30 +726,9 @@ Produce a wet gate (one-armed core with sample).
 
 Two arguments, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  |*  a  b
-  ```
-
----
-
-- Wide
-- ```hoon
-  |*(a b)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form  | Wide form | Irregular form |
+|------------|-----------|----------------|
+| `\|*  a  b` | `\|*(a b)` | None           |
 
 #### AST
 
@@ -850,31 +790,32 @@ Produce a gate (a one-armed core with a sample).
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|=  a
+b
+```
 
-- Tall
-- ```hoon
-  |=  a
-  b
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  |=(a b)
-  ```
+```hoon
+|=(a b)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -935,33 +876,34 @@ Produce a 'wet' core `[battery payload]`.
 
 Arguments: a variable number of `+`-family expressions.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+|@
+++  a=term  b=hoon
+++  c=term  d=hoon
+     ...
+++  e=term  f=hoon
+--
+```
 
-- Tall
-- ```hoon
-  |@
-  ++  a=term  b=hoon
-  ++  c=term  d=hoon
-       ...
-  ++  e=term  f=hoon
-  --
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- None.
+None
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 Note: The `++` rune may be replaced with any other rune in the `+` family.
 
@@ -989,30 +931,9 @@ Produce a lead trap.
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  |?  a
-  ```
-
----
-
-- Wide
-- ```hoon
-  |?(a)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `\|?  a`   | `\|?(a)`   | None           |
 
 #### AST
 

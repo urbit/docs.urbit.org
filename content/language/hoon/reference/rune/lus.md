@@ -52,28 +52,9 @@ Chapter label (not useful)
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  +|  %label
-  ```
-
----
-
-- Wide
-- None.
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form   | Wide form | Irregular form |
+|-------------|-----------|----------------|
+| `+\| %label` | None      | None           |
 
 #### Discussion
 
@@ -123,28 +104,9 @@ Produce a structure arm (type definition).
 
 Two arguments, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  +$  p=term  q=spec
-  ```
-
----
-
-- Wide
-- None.
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form            | Wide form | Irregular form |
+|----------------------|-----------|----------------|
+| `+$  p=term  q=spec` | None      | None           |
 
 `p` is an arm name, and `q` is any structure expression.
 
@@ -182,28 +144,9 @@ Produce a normal arm.
 
 Two arguments, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  ++  p=term  q=hoon
-  ```
-
----
-
-- Wide
-- None.
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form            | Wide form | Irregular form |
+|----------------------|-----------|----------------|
+| `++  p=term  q=hoon` | None      | None           |
 
 `p` is the arm name, and `q` is any Hoon expression.
 
@@ -238,31 +181,32 @@ Defines deferred expressions within doors.
 
 Arguments: A variable number of pairs.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
++*  a=term  b=hoon
+    c=term  d=hoon
+    ...
+    e=term  f=hoon
+```
 
-- Tall
-- ```hoon
-  +*  a=term  b=hoon
-      c=term  d=hoon
-      ...
-      e=term  f=hoon
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- None.
+None
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 `a`, `c`, `e` are arm names and `b`, `d`, `f` are any Hoon expression. Note that unlike all other runes with a variable number of arguments, the list of arguments of `+*` does not end with a terminator.
 

@@ -74,31 +74,32 @@ Produce the Hoon AST of an expression.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+!,  p
+q
+```
 
-- Tall
-- ```hoon
-  !,  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  !,(p q)
-  ```
+```hoon
+!,(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -130,30 +131,9 @@ Wrap a noun in its type (form a [`vase`](/language/hoon/reference/stdlib/4o#vase
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  !>  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  !>(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `!>  p`   | `!>(p)`   | None           |
 
 #### AST
 
@@ -193,31 +173,32 @@ Extracts a [`vase`](/language/hoon/reference/stdlib/4o#vase) to the given mold i
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+!<  p
+q
+```
 
-- Tall
-- ```hoon
-  !<  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  !<(p q)
-  ```
+```hoon
+!<(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -256,31 +237,32 @@ Wrap a noun in its type (raw).
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+!;  p
+q
+```
 
-- Tall
-- ```hoon
-  !;  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  !;(p q)
-  ```
+```hoon
+!;(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -316,30 +298,31 @@ Make the Nock formula for a Hoon expression.
 
 One argument, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+!=  p
+```
 
-- Tall
-- ```hoon
-  !=  p
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  !=(p)
-  ```
+```hoon
+!=(p)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -390,31 +373,32 @@ Restrict Hoon version.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+!?  p
+q
+```
 
-- Tall
-- ```hoon
-  !?  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  !?(p q)
-  ```
+```hoon
+!?(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -457,32 +441,33 @@ Branch on whether a wing exists.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+!@  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  !@  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  !@(p q r)
-  ```
+```hoon
+!@(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -516,30 +501,9 @@ Crash.
 
 No arguments.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  !!
-  ```
-
----
-
-- Wide
-- ```
-  !!
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `!!`      | `!!`      | None           |
 
 #### AST
 
@@ -572,30 +536,9 @@ Turn on stack trace.
 
 One argument, fixed
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  !:  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  !:(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `!:  p`   | `!:(p)`   | None           |
 
 #### Produces
 
@@ -628,30 +571,9 @@ Turn off stack trace for a subexpression `p`
 
 One argument, fixed.
 
-{% table %}
-
-- Form
-- Syntax
-
----
-
-- Tall
-- ```hoon
-  !.  p
-  ```
-
----
-
-- Wide
-- ```hoon
-  !.(p)
-  ```
-
----
-
-- Irregular
-- None.
-{% /table %}
+| Tall form | Wide form | Irregular form |
+|-----------|-----------|----------------|
+| `!.  p`   | `!.(p)`   | None           |
 
 #### Produces
 

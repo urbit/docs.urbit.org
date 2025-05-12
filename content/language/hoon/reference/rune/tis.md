@@ -128,31 +128,32 @@ Compose two expressions.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=>  p
+q
+```
 
-- Tall
-- ```hoon
-  =>  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =>(p q)
-  ```
+```hoon
+=>(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -196,31 +197,32 @@ Combine a named noun with the subject by "bunting" (producing the default value)
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=|  p
+q
+```
 
-- Tall
-- ```hoon
-  =|  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =|(p q)
-  ```
+```hoon
+=|(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+none
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -260,34 +262,35 @@ Change multiple legs in the subject.
 
 Two arguments: the first a variable number of pairs, the second is fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=:  p1a  p1b
+    p2a  p2b
+    p3a  p3b
+  ==
+q
+```
 
-- Tall
-- ```hoon
-  =:  p1a  p1b
-      p2a  p2b
-      p3a  p3b
-    ==
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =:(p1a p1b, p2a p2b, p3a p3b q)
-  ```
+```hoon
+=:(p1a p1b, p2a p2b, p3a p3b q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -326,31 +329,32 @@ Expose namespace.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=,  p
+q
+```
 
-- Tall
-- ```hoon
-  =,  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =,(p q)
-  ```
+```hoon
+=,(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -405,31 +409,32 @@ Change one leg in the subject.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=.  p  q
+r
+```
 
-- Tall
-- ```hoon
-  =.  p  q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =.(p q r)
-  ```
+```hoon
+=.(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -474,31 +479,32 @@ Combine a new noun with the subject, inverted.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=-  p
+q
+```
 
-- Tall
-- ```hoon
-  =-  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =-(p q)
-  ```
+```hoon
+=-(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -541,32 +547,33 @@ Pin the head of a pair; change a leg with the tail.
 
 Four arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=^  p  q
+  r
+s
+```
 
-- Tall
-- ```hoon
-  =^  p  q
-    r
-  s
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =^(p q r s)
-  ```
+```hoon
+=^(p q r s)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -619,33 +626,34 @@ Compose two expressions, inverted.
 
 Two arguments, fixed
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=<  p
+q
+```
 
-- Tall
-- ```hoon
-  =<  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =<(p q)
-  ```
+```hoon
+=<(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- ```
-    p:q
-  ```
-{% /table %}
+{% tab title="Irregular form" %}
+
+```
+p:q
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -690,31 +698,32 @@ Combine a new noun with the subject.
 
 Two arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=+  p
+q
+```
 
-- Tall
-- ```hoon
-  =+  p
-  q
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =+(p q)
-  ```
+```hoon
+=+(p q)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -757,32 +766,33 @@ Combine a named noun with the subject, possibly with type annotation; inverted o
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=;  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  =;  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =;(p q r)
-  ```
+```hoon
+=;(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -822,32 +832,33 @@ Combine a named noun with the subject, possibly with type annotation.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=/  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  =/  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =/(p q r)
-  ```
+```hoon
+=/(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -910,34 +921,35 @@ Compose many expressions.
 
 Variable number of arguments.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=~  p1
+    p2
+    p3
+    pn
+==
+```
 
-- Tall
-- ```hoon
-  =~  p1
-      p2
-      p3
-      pn
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =~(p1 p2 p3 pn)
-  ```
+```hoon
+=~(p1 p2 p3 pn)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -990,32 +1002,33 @@ Define a deferred expression.
 
 Three arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=*  p
+  q
+r
+```
 
-- Tall
-- ```hoon
-  =*  p
-    q
-  r
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =*(p q r)
-  ```
+```hoon
+=*(p q r)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 
@@ -1066,32 +1079,33 @@ Conditionally change one leg in the subject.
 
 Four arguments, fixed.
 
-{% table %}
+{% tabs %}
 
-- Form
-- Syntax
+{% tab title="Tall form" %}
 
----
+```hoon
+=?  p  q
+  r
+s
+```
 
-- Tall
-- ```hoon
-  =?  p  q
-    r
-  s
-  ```
+{% endtab %}
 
----
+{% tab title="Wide form" %}
 
-- Wide
-- ```hoon
-  =?(p q r s)
-  ```
+```hoon
+=?(p q r s)
+```
 
----
+{% endtab %}
 
-- Irregular
-- None.
-{% /table %}
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
 
 #### AST
 

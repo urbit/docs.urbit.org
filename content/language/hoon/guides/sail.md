@@ -14,48 +14,53 @@ This document will walk through the basics of Sail and its syntax.
 
 It’s easy to see how Sail can directly translate to HTML:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
-
-- ```
-  ;html
-    ;head
-      ;title = My page
-      ;meta(charset "utf-8");
-    ==
-    ;body
-      ;h1: Welcome!
-      ;p
-        ; Hello, world!
-        ; Welcome to my page.
-        ; Here is an image:
-        ;br;
-        ;img@"/foo.png";
-      ==
+```hoon
+;html
+  ;head
+    ;title = My page
+    ;meta(charset "utf-8");
+  ==
+  ;body
+    ;h1: Welcome!
+    ;p
+      ; Hello, world!
+      ; Welcome to my page.
+      ; Here is an image:
+      ;br;
+      ;img@"/foo.png";
     ==
   ==
-  ```
-- ```
-    <html>
-      <head>
-        <title>My page</title>
-        <meta charset="utf-8" />
-      </head>
-      <body>
-        <h1>Welcome!</h1>
-        <p>Hello, world! Welcome to my
-          page. Here is an image:
-          <br />
-          <img src="/foo.png" />
-        </p>
-      </body>
-    </html>
-  ```
-{% /table %}
+==
+```
+
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```html
+<html>
+  <head>
+    <title>My page</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <p>Hello, world! Welcome to my
+      page. Here is an image:
+      <br />
+      <img src="/foo.png" />
+    </p>
+  </body>
+</html>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Tags and Closing
 
@@ -81,51 +86,61 @@ If we nest lines of plain text with no tag, the text will be wrapped in a `<p>` 
 
 Example:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
+```hoon
+;body
+  ;h1: Blog title
+  This is some good content.
+==
+```
 
-- ```
-  ;body
-    ;h1: Blog title
-    This is some good content.
-  ==
-  ```
-- ```
-    <body>
-    <h1>Blog title</h1>
-    <p>This is some good content.</p>
-    </body>
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```
+<body>
+<h1>Blog title</h1>
+<p>This is some good content.</p>
+</body>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 If we want to write a string with no tag at all, then we can prepend those untagged lines with `;` and then a space:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
+```hoon
+;body
+  ;h1: Welcome!
+  ; Hello, world!
+  ; We’re on the web.
+==
+```
 
-- ```
-  ;body
-    ;h1: Welcome!
-    ; Hello, world!
-    ; We’re on the web.
-  ==
-  ```
-- ```
-    <body>
-      <h1>Welcome!</h1>
-      Hello, world!
-      We’re on the web.
-    </body>
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```html
+<body>
+  <h1>Welcome!</h1>
+  Hello, world!
+  We’re on the web.
+</body>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Attributes
 
@@ -135,43 +150,43 @@ Attributes can also be specified in tall form, with each key prefixed by `=`, fo
 
 ### Generic
 
-{% table %}
+{% tabs %}
 
-- Form
-- Example
+{% tab title="Wide" %}
 
----
+```hoon
+;div(title "a tooltip", style "color:red")
+  ;h1: Foo
+  foo bar baz
+==
+```
+{% endtab %}
 
-- Wide
-- ```
-  ;div(title "a tooltip", style "color:red")
-    ;h1: Foo
-    foo bar baz
-  ==
-  ```
+{% tab title="Tall" %}
 
----
+```hoon
+;div
+  =title  "a tooltip"
+  =style  "color:red"
+  ;h1: Foo
+  foo bar baz
+==
+```
 
-- Tall
-- ```
-  ;div
-    =title  "a tooltip"
-    =style  "color:red"
-    ;h1: Foo
-    foo bar baz
-  ==
-  ```
+{% endtab %}
 
----
+{% tab title="HTML" %}
 
-- HTML
-- ```
-    <div title="a tooltip" style="color:red">
-      <h1>Foo</h1>
-      <p>foo bar baz </p>
-    </div>
-  ```
-{% /table %}
+```
+<div title="a tooltip" style="color:red">
+  <h1>Foo</h1>
+  <p>foo bar baz </p>
+</div>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ### IDs
 
@@ -215,72 +230,80 @@ To add attributes to the image, like size specifications, add the desired attrib
 
 Add `/` after tag name to start an `href`.
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
+```hoon
+;a/"urbit.org": A link to Urbit.org
+```
 
-- ```
-  ;a/"urbit.org": A link to Urbit.org
-  ```
-- ```
-    <a href="urbit.org">A link to Urbit.org</a>
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```HTML
+<a href="urbit.org">A link to Urbit.org</a>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Interpolation
 
 The textual content of tags, despite not being enclosed in double-quotes, are actually tapes. This means they support interpolated Hoon expressions in the usual manner. For example:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
+```hoon
+=|  =time
+;p: foo {<time>} bar
+```
 
-- ```
-  =|  =time
-  ;p: foo {<time>} bar
-  ```
-- ```
-    <p>foo ~2000.1.1 baz</p>
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```HTML
+<p>foo ~2000.1.1 baz</p>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 Likewise:
 
-{% table .w-full %}
+{% tabs %}
 
-- Sail
+{% tab title="Sail" %}
 
----
+```hoon
+=/  txt=tape  " bananas"
+;article
+  ;b: {(a-co:co (mul 42 789))}
+  ; {txt}
+  {<our>} {<now>} {<`@ux`(end 6 eny)>}
+==
+```
 
-- ```
-    =/  txt=tape  " bananas"
-    ;article
-      ;b: {(a-co:co (mul 42 789))}
-      ; {txt}
-      {<our>} {<now>} {<`@ux`(end 6 eny)>}
-    ==
-  ```
-{% /table %}
+{% endtab %}
 
-{% table .w-full %}
+{% tab title="HTML" %}
 
-- HTML
+```HTML
+<article>
+  <b>33138</b> bananas
+  <p>~zod ~2022.2.21..09.54.21..5b63 0x9827.99c7.06f4.8ef9</p>
+</article>
+```
 
----
+{% endtab %}
 
-- ```
-    <article>
-      <b>33138</b> bananas
-      <p>~zod ~2022.2.21..09.54.21..5b63 0x9827.99c7.06f4.8ef9</p>
-    </article>
-  ```
-{% /table %}
+{% endtabs %}
 
 ## A note on CSS
 
@@ -414,63 +437,72 @@ Produces one of these depending on the value of `number`:
 
 The [mictar rune](/language/hoon/reference/rune/mic#-mictar) makes a `$marl` (a list of XML nodes) from a complex hoon expression. This rune lets you add many elements inside another Sail element. For example:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="hoon" %}
 
----
+```hoon
+=/  nums=(list @ud)  (gulf 1 9)
+;p
+  ;*  %+  turn  nums
+      |=  n=@ud
+      ?:  =(0 (mod n 2))
+        ;sup: {(a-co:co n)}
+      ;sub: {(a-co:co n)}
+==
+```
 
-- ```
-  =/  nums=(list @ud)  (gulf 1 9)
-  ;p
-    ;*  %+  turn  nums
-        |=  n=@ud
-        ?:  =(0 (mod n 2))
-          ;sup: {(a-co:co n)}
-        ;sub: {(a-co:co n)}
-  ==
-  ```
-- ```
-    <p>
-      <sub>1</sub><sup>2</sup>
-      <sub>3</sub><sup>4</sup>
-      <sub>5</sub><sup>6</sup>
-      <sub>7</sub><sup>8</sup>
-      <sub>9</sub>
-    </p>
-  ```
-{% /table %}
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```HTML
+<p>
+  <sub>1</sub><sup>2</sup>
+  <sub>3</sub><sup>4</sup>
+  <sub>5</sub><sup>6</sup>
+  <sub>7</sub><sup>8</sup>
+  <sub>9</sub>
+</p>
+```
+{% endtab %}
+
+{% entabs %}
 
 ### `;=` Mictis
 
 The [mictis rune](/language/hoon/reference/rune/mic#-mictis) makes a `$marl` (a list of XML nodes) from a series of `$manx`es. This is mostly useful if you want to make the list outside of an element and then be able to insert it afterwards. For example:
 
-{% table %}
+{% tabs %}
 
-- Sail
-- HTML
+{% tab title="Sail" %}
 
----
-
-- ```
-  =/  paras=marl
-    ;=  ;p: First node.
-        ;p: Second node.
-        ;p: Third node.
-    ==
-  ;main
-    ;*  paras
+```hoon
+=/  paras=marl
+  ;=  ;p: First node.
+      ;p: Second node.
+      ;p: Third node.
   ==
-  ```
-- ```
-    <main>
-      <p>First node.</p>
-      <p>Second node.</p>
-      <p>Third node.</p>
-    </main>
-  ```
-{% /table %}
+;main
+  ;*  paras
+==
+```
+
+{% endtab %}
+
+{% tab title="HTML" %}
+
+```HTML
+<main>
+  <p>First node.</p>
+  <p>Second node.</p>
+  <p>Third node.</p>
+</main>
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ### `;/` Micfas
 

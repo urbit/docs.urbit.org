@@ -456,7 +456,7 @@ One argument, fixed.
 
 | Tall form | Wide form | Irregular form |
 |-----------|-----------|----------------|
-| `| .  a`  | `| .(a)`  | None           |
+| `\| .  a` | `\| .(a)` | None           |
 
 #### AST
 

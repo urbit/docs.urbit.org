@@ -1,12 +1,12 @@
 # Lark
 
-**Lark** notation is a way to reference a relative tree address, an alternative to using a numerical [axis](/glossary/axis). It's valid syntax as part of a [wing](/glossary/wing) address.
+**Lark** notation is a way to reference a relative tree address, an alternative to using a numerical [axis](axis.md). It's valid syntax as part of a [wing](wing.md) address.
 
-The syntax alternates between using `-`/`+` and `<`/`>` for [head](/glossary/head)/[tail](/glossary/tail). It always starts with a `-`/`+`, then can follow with a `<`/`>`, then back to `-`/`+`, and so on. For example, `-<+>+` means "the tail of the tail of the tail of the head of the head of the subject" or, put another way, "descend into the head, then head, then tail, then tail, then tail."
+The syntax alternates between using `-`/`+` and `<`/`>` for [head](head.md)/[tail](tail.md). It always starts with a `-`/`+`, then can follow with a `<`/`>`, then back to `-`/`+`, and so on. For example, `-<+>+` means "the tail of the tail of the tail of the head of the head of the subject" or, put another way, "descend into the head, then head, then tail, then tail, then tail."
 
-Lark notation is usually only used for trivial cases, like `+<` or `-.foo`. It's generally bad practice to use long expressions like `+<->+<-<+>->-`. You should also use [faces](/glossary/face) like `p.foo` rather than lark notation like `-.foo` where possible.
+Lark notation is usually only used for trivial cases, like `+<` or `-.foo`. It's generally bad practice to use long expressions like `+<->+<-<+>->-`. You should also use [faces](face.md) like `p.foo` rather than lark notation like `-.foo` where possible.
 
-A couple of examples in the [dojo](/glossary/dojo):
+A couple of examples in the [dojo](dojo.md):
 
 ```
 :: get the 4th item in a cell
@@ -23,4 +23,4 @@ A couple of examples in the [dojo](/glossary/dojo):
 
 #### Further Reading
 
-- [Hoon School Lesson 6: Trees and Addressing](/courses/hoon-school/G-trees)
+- [Hoon School Lesson 6: Trees and Addressing](../courses/hoon-school/G-trees.md)

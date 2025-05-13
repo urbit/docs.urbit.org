@@ -1,7 +1,7 @@
 # Spider
 
-**Spider** is the [Gall](/glossary/gall) [agent](/glossary/agent) that manages [threads](/glossary/thread).
+**Spider** is the [Gall](gall.md) [agent](agent.md) that manages [threads](thread.md).
 
 ### Further Reading
 
-- [Threads guide](/userspace/threads/tutorials/basics/fundamentals): learn how to write threads.
+- [Threads guide](../userspace/threads/tutorials/basics/fundamentals.md): learn how to write threads.

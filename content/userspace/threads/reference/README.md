@@ -2,10 +2,10 @@
 
 Reference information related to Spider and threads.
 
-## [Spider API](/userspace/threads/reference/api)
+## [Spider API](api.md)
 
 Details of Spider's API for running and managing threads.
 
-## [Strandio](/userspace/threads/reference/strandio)
+## [Strandio](strandio.md)
 
 Comprehensive documentation of the threads helper library, `strandio.hoon`.

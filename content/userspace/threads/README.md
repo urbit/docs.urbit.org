@@ -26,36 +26,36 @@ A thread may also be run from the dojo by prefixing its name with `-` and giving
 ## Thread basics
 
 This guide walks you through the fundamental things you need to know to write threads. They focus on basic thread composition and so don't touch on interacting with threads from gall agents and such. The included examples can all just be run from the dojo.
-1. [Thread Fundamentals](/userspace/threads/tutorials/basics/fundamentals) - Basic information and overview of threads, strands, `form` & `pure`.
-2. [Micgal and Bind](/userspace/threads/tutorials/basics/bind) - Covers using micgal and `bind` to chain strands.
-3. [Strand Input](/userspace/threads/tutorials/basics/input) - What strands receive as input
-4. [Strand Output](/userspace/threads/tutorials/basics/output) - What strands produce
-5. [Summary](/userspace/threads/tutorials/basics/summary)
+1. [Thread Fundamentals](tutorials/basics/fundamentals.md) - Basic information and overview of threads, strands, `form` & `pure`.
+2. [Micgal and Bind](tutorials/basics/bind.md) - Covers using micgal and `bind` to chain strands.
+3. [Strand Input](tutorials/basics/input.md) - What strands receive as input
+4. [Strand Output](tutorials/basics/output.md) - What strands produce
+5. [Summary](tutorials/basics/summary.md)
 
 ## Gall
 
 These docs walk through the basics of interacting with threads from gall agents.
 
-1. [Start a thread](/userspace/threads/examples/gall/start-thread)
-2. [Subscribe for result](/userspace/threads/examples/gall/take-result)
-3. [Subscribe for facts](/userspace/threads/examples/gall/take-facts)
-4. [Stop a thread](/userspace/threads/examples/gall/stop-thread)
-5. [Poke a thread](/userspace/threads/examples/gall/poke-thread)
+1. [Start a thread](examples/gall/start-thread.md)
+2. [Subscribe for result](examples/gall/take-result.md)
+3. [Subscribe for facts](examples/gall/take-facts.md)
+4. [Stop a thread](examples/gall/stop-thread.md)
+5. [Poke a thread](examples/gall/poke-thread.md)
 
 ## How-tos & Examples
 
-- [Grab some JSON from a URL](/userspace/threads/examples/get-json) - Here's an example of chaining a couple of external http requests for JSON.
-- [Start a child thread](/userspace/threads/examples/child-thread) - Starting and managing child threads.
-- [Main Loop](/userspace/threads/examples/main-loop) - Some notes and examples of the `strandio` function `main-loop`.
-- [Poke an agent](/userspace/threads/examples/poke-agent) - Example of poking an agent from a thread.
-- [Scry](/userspace/threads/examples/scry) - Scry arvo or an agent.
-- [Take a fact](/userspace/threads/examples/take-fact) - Subscribe to an agent and receive a fact.
+- [Grab some JSON from a URL](examples/get-json.md) - Here's an example of chaining a couple of external http requests for JSON.
+- [Start a child thread](examples/child-thread.md) - Starting and managing child threads.
+- [Main Loop](examples/main-loop.md) - Some notes and examples of the `strandio` function `main-loop`.
+- [Poke an agent](examples/poke-agent.md) - Example of poking an agent from a thread.
+- [Scry](examples/scry.md) - Scry arvo or an agent.
+- [Take a fact](examples/take-fact.md) - Subscribe to an agent and receive a fact.
 
-## [Reference](/userspace/threads/reference/api)
+## [Reference](reference/api.md)
 
 Basic reference information. For usage of particular `strandio` functions just refer directly to `/lib/strandio/hoon` since they're largely self-explanatory.
 
-## [Strandio](/userspace/threads/reference/strandio)
+## [Strandio](reference/strandio.md)
 
 Reference documentation of the Strandio helper library.
 

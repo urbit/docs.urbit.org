@@ -7,7 +7,7 @@ _This module introduces how Urbit ID is structured and provides practice in conv
 
 ##  A Public-Key Infrastructure
 
-What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)? Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. [Azimuth](/glossary/azimuth) functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
+What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)? Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. [Azimuth](../../glossary/azimuth.md) functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
 
 Urbit ID (=Azimuth) provides persistent and stable futureproof identity to its users through a hierarchical address space.  Any particular Urbit ID plays a particular role in the overall Urbit system which is determined by its point number and classified into ranks.
 
@@ -42,7 +42,7 @@ Many points may be determined from the prefix and suffix alone, but planet names
 
 #### Galaxy
 
-The [Galaxies](/glossary/galaxy) span the first 2⁸ addresses of Azimuth.  There are 255 (`0xff` - 1) associated stars; counting the galaxy yields 256 points (not counting moons). Galaxy names are suffix-only.
+The [Galaxies](../../glossary/galaxy.md) span the first 2⁸ addresses of Azimuth.  There are 255 (`0xff` - 1) associated stars; counting the galaxy yields 256 points (not counting moons). Galaxy names are suffix-only.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -58,7 +58,7 @@ At the current time, galaxies play the role of network peer discovery, but at so
 
 Peer discovery, the primary role of stars besides planet allocation, is an important step in responsibly controlling network traffic. “The basic idea is, you need someone to sponsor your membership on the network. An address that can’t find a sponsor is probably a bot or a spammer” ([docs](https://urbit.org/understanding-urbit/)).
 
-The [Stars](/glossary/star) span the remaining addresses to 2¹⁶. There are thus 65,536 - 256 = 65,280 stars. Star names have prefix and suffix. They share the suffix with their sponsoring galaxy.
+The [Stars](../../glossary/star.md) span the remaining addresses to 2¹⁶. There are thus 65,536 - 256 = 65,280 stars. Star names have prefix and suffix. They share the suffix with their sponsoring galaxy.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -70,7 +70,7 @@ A star's sponsor can be calculated as modulo 2⁸. The first star of ~zod is `0x
 
 #### Planet
 
-The [Planets](/glossary/planet) span the remaining addresses to 2³².  There are thus 4,294,967,296 - 65,536 = 4,294,901,760 planets.  Planet names occur in pairs separated by a single hyphen.  A planet's name is obfuscated so it is not immediately apparent who its sponsor is.
+The [Planets](../../glossary/planet.md) span the remaining addresses to 2³².  There are thus 4,294,967,296 - 65,536 = 4,294,901,760 planets.  Planet names occur in pairs separated by a single hyphen.  A planet's name is obfuscated so it is not immediately apparent who its sponsor is.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -86,7 +86,7 @@ Star planets span the remaining space.  The first star planet (of ~marzod) is `0
 
 #### Moon
 
-The [Moons](/glossary/moon) occupy the block to 2⁶⁴, with 2³² moons for each planet.  Moon names have more than two blocks (three or four) separated by single hyphens.
+The [Moons](../../glossary/moon.md) occupy the block to 2⁶⁴, with 2³² moons for each planet.  Moon names have more than two blocks (three or four) separated by single hyphens.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -104,7 +104,7 @@ Any moon from ~dopzod-______-______ onwards is a planet moon.
 
 #### Comet
 
-The [Comets](/glossary/comet) occupy the upper portion of the Urbit address space.  There are approximately 3.4×10³⁸ comets, a fantastically large number.  Comet names occur in blocks of five to eight syllable pairs, separated by a double hyphen at the fourth.
+The [Comets](../../glossary/comet.md) occupy the upper portion of the Urbit address space.  There are approximately 3.4×10³⁸ comets, a fantastically large number.  Comet names occur in blocks of five to eight syllable pairs, separated by a double hyphen at the fourth.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -112,7 +112,7 @@ The [Comets](/glossary/comet) occupy the upper portion of the Urbit address spac
 | Hexadecimal  | `0x1.0000.0000.0000.0000` | `0xffff.ffff.ffff.ffff.ffff.ffff.ffff.ffff` |
 | @p           | ~doznec--dozzod-dozzod-dozzod-dozzod | ~fipfes-fipfes-fipfes-fipfes--fipfes-fipfes-fipfes-fipfes |
 
-A comet is sponsored by a star.  Currently star sponsors are determined randomly from a list supplied to `u3_dawn_come` in `pkg/urbit/vere/dawn.c` from a [jamfile](/language/hoon/reference/stdlib/2p#jam) provided by urbit.org at `https://bootstrap.urbit.org/comet-stars.jam`.
+A comet is sponsored by a star.  Currently star sponsors are determined randomly from a list supplied to `u3_dawn_come` in `pkg/urbit/vere/dawn.c` from a [jamfile](../../language/hoon/reference/stdlib/2p.md#jam) provided by urbit.org at `https://bootstrap.urbit.org/comet-stars.jam`.
 
 Comets cannot be breached or rekeyed:  possession of the comet is *ipso facto* attestation of ownership.
 

@@ -1,25 +1,25 @@
 # Reference
 
-### [Azimuth.eth](/system/identity/reference/azimuth-eth)
+### [Azimuth.eth](azimuth-eth.md)
 
 A description of the `azimuth.eth` smart contract, which is the data store for Azimuth.
 
-### [Ecliptic.eth](/system/identity/reference/ecliptic)
+### [Ecliptic.eth](ecliptic.md)
 
 A description of the `ecliptic.eth` smart contract, which is the business logic for `azimuth.eth`. This includes an overview of all function calls available.
 
-### [L2 Actions](/system/identity/reference/l2-actions)
+### [L2 Actions](l2-actions.md)
 
 Technical documentation of the 11 layer 2 actions.
 
-### [L2 Transaction Format](/system/identity/reference/bytestring)
+### [L2 Transaction Format](bytestring.md)
 
 Details of the bytestring format for L2 transactions and batches.
 
-### [L2 Rollers](/system/identity/reference/roller)
+### [L2 Rollers](roller.md)
 
 How the naive rollup rollers work.
 
-### [L2 Roller HTTP RPC-API](/system/identity/reference/layer2-api)
+### [L2 Roller HTTP RPC-API](layer2-api.md)
 
 Details of the roller API.

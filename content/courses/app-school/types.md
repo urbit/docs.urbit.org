@@ -1,6 +1,6 @@
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](/system/kernel/gall/reference/data-types) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](/system/kernel/gall/reference/data-types#agent) subsection, as well as [`bowl`](/system/kernel/gall/reference/data-types#bowl), [`boat`](/system/kernel/gall/reference/data-types#boat), and [`bitt`](/system/kernel/gall/reference/data-types#bitt).
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../system/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) subsection, as well as [`bowl`](../../system/kernel/gall/reference/data-types.md#bowl), [`boat`](../../system/kernel/gall/reference/data-types.md#boat), and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt).
 
 ## `vase`
 
@@ -25,7 +25,7 @@ There are two simple runes used to create and unpack vases. We'll look at each o
 
 ### Create a `vase`
 
-The [zapgar](/language/hoon/reference/rune/zap#-zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
+The [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
 
 ```
 > !>([1 2 3])
@@ -45,7 +45,7 @@ You would typically use `!>` as part of a [`cage`](#cage) when you're constructi
 
 ### Extract data from `vase`
 
-The [zapgal](/language/hoon/reference/rune/zap#-zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
+The [zapgal](../../language/hoon/reference/rune/zap.md#-zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
 
 Let's look at an example in the dojo. First, let's create a vase of `[@t @ux @ud]`:
 
@@ -89,7 +89,7 @@ You'd typically use `!<` on the data in `card`s that come in from other ships, a
 
 ## `mark`
 
-The `mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `mark` corresponds to a mark file in the `/mar` directory, so a `mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](/system/kernel/clay/guides/marks).
+The `mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `mark` corresponds to a mark file in the `/mar` directory, so a `mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../system/kernel/clay/guides/marks).
 
 ## `cage`
 
@@ -109,7 +109,7 @@ The `path` type is formally defined as:
 +$  path  (list knot)
 ```
 
-A knot is a `@ta` text atom (see the [Strings guide](/language/hoon/guides/strings) for details), so a `path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
+A knot is a `@ta` text atom (see the [Strings guide](../../language/hoon/guides/strings.md) for details), so a `path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
 
 A `path` is similar to a filesystem path in Unix, giving data a location in a nested hierarchy. In Arvo though, they're not only used for files, but are a more general type used for several different purposes. Its elements have no inherent significance, it depends on the context. In a Gall agent, a `path` is most commonly a subscription path - you might subscribe for updates to `/foo/bar` on another agent, or another agent might subscribe to `/baz` on your agent.
 
@@ -128,7 +128,7 @@ Then, when you get a subscription request, you might do something like:
   ...(rest of code)...
 ```
 
-See the [Encoding in text](/language/hoon/guides/strings#encoding-in-text) and [Decoding from text](/language/hoon/guides/strings#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
+See the [Encoding in text](../../language/hoon/guides/strings.md#encoding-in-text) and [Decoding from text](../../language/hoon/guides/strings.md#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
 
 Aside from using function calls when constructing a `path` as demonstrated above, you can also insert text you're previously stored with `=/` or what have you, simply by enclosing them in brackets. For example, in the dojo:
 
@@ -148,7 +148,7 @@ The type of a wire is formally defined as:
 
 So, a `wire` is just a [`path`](#path), type-wise they're exactly the same. The reason there's a separate `wire` type is just to differentiate their purpose. A `wire` is a path for responses to requests an agent initiates. If you subscribe to the `path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
 
-More formally, `wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`duct`](/system/kernel/arvo#duct). Inter-vane communications happen over `duct`s as [`move`](/system/kernel/arvo#moves)s, and Gall converts the `card`s produced by agents into such `move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](/system/kernel/arvo) and [move trace tutorial](/system/kernel/arvo/guides/move-trace).
+More formally, `wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`duct`](../../system/kernel/arvo#duct). Inter-vane communications happen over `duct`s as [`move`](../../system/kernel/arvo#moves)s, and Gall converts the `card`s produced by agents into such `move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../system/kernel/arvo) and [move trace tutorial](../../system/kernel/arvo/guides/move-trace.md).
 
 For agents, the `wire` is specified in the second argument of a `%pass` `card`. It's used for anything you can `%pass`, such as `%poke`s, `%watch`es, and `%arvo` notes. For example:
 

@@ -1,13 +1,13 @@
 # Reference
 
-## [API Reference](/system/kernel/gall/reference/gall-api)
+## [API Reference](gall-api.md)
 
 Reference documentation of both Gall's vane API and the API available to agents.
 
-## [Scry Reference](/system/kernel/gall/reference/scry)
+## [Scry Reference](scry.md)
 
 Reference documentation of Gall scry endpoints.
 
-## [Data Types](/system/kernel/gall/reference/data-types)
+## [Data Types](data-types.md)
 
 Reference documentation of Gall's types as defined in `lull.hoon`.

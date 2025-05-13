@@ -4,248 +4,248 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ## A
 
-[Agent](/glossary/agent)  
-[Ames](/glossary/ames)  
-[Api](/glossary/api)  
-[Aqua](/glossary/aqua)  
-[Arm](/glossary/arm)  
-[Arvo](/glossary/arvo)  
-[Atom](/glossary/atom)  
-[Aural Ascii](/glossary/aural-ascii)  
-[Aura](/glossary/aura)  
-[Axis](/glossary/axis)  
-[Axes](/glossary/axes)  
-[Azimuth](/glossary/azimuth)  
+[Agent](agent.md)  
+[Ames](ames.md)  
+[Api](api.md)  
+[Aqua](aqua.md)  
+[Arm](arm.md)  
+[Arvo](arvo.md)  
+[Atom](atom.md)  
+[Aural Ascii](aural-ascii.md)  
+[Aura](aura.md)  
+[Axis](axis.md)  
+[Axes](axes.md)  
+[Azimuth](azimuth.md)  
 
 ---
 
 ## B
 
-[Battery](/glossary/battery)  
-[Behn](/glossary/behn)  
-[Bowl](/glossary/bowl)  
-[Bridge](/glossary/bridge)  
-[Bunt](/glossary/bunt)  
+[Battery](battery.md)  
+[Behn](behn.md)  
+[Bowl](bowl.md)  
+[Bridge](bridge.md)  
+[Bunt](bunt.md)  
 
 ---
 
 ## C
 
-[Card](/glossary/card)  
-[Case](/glossary/case)  
-[Cask](/glossary/cask)  
-[Cell](/glossary/cell)  
-[Censures](/glossary/censures)  
-[Claims](/glossary/claims)  
-[Clam](/glossary/clam)  
-[Clay](/glossary/clay)  
-[Cold Atom](/glossary/cold-atom)  
-[Comet](/glossary/comet)  
-[Commit](/glossary/commit)  
-[Cons](/glossary/cons)  
-[Context](/glossary/context)  
-[Cord](/glossary/cord)  
-[Core](/glossary/core)  
-[Cue](/glossary/cue)  
+[Card](card.md)  
+[Case](case.md)  
+[Cask](cask.md)  
+[Cell](cell.md)  
+[Censures](censures.md)  
+[Claims](claims.md)  
+[Clam](clam.md)  
+[Clay](clay.md)  
+[Cold Atom](cold-atom.md)  
+[Comet](comet.md)  
+[Commit](commit.md)  
+[Cons](cons.md)  
+[Context](context.md)  
+[Cord](cord.md)  
+[Core](core.md)  
+[Cue](cue.md)  
 
 ---
 
 ## D
 
-[Delegated Sending](/glossary/delegated-sending)  
-[Desk](/glossary/desk)  
-[Dill](/glossary/dill)  
-[Docvote](/glossary/docvote)  
-[Dojo](/glossary/dojo)  
-[Door](/glossary/door)  
-[Double Boot](/glossary/double-boot)  
-[Dry Gate](/glossary/dry-gate)  
-[Duct](/glossary/duct)  
+[Delegated Sending](delegated-sending.md)  
+[Desk](desk.md)  
+[Dill](dill.md)  
+[Docvote](docvote.md)  
+[Dojo](dojo.md)  
+[Door](door.md)  
+[Double Boot](double-boot.md)  
+[Dry Gate](dry-gate.md)  
+[Duct](duct.md)  
 
 ---
 
 ## E
 
-[Ecliptic](/glossary/ecliptic)  
-[Entropy](/glossary/entropy)  
-[Eventlog](/glossary/eventlog)  
-[Eyre](/glossary/eyre)  
+[Ecliptic](ecliptic.md)  
+[Entropy](entropy.md)  
+[Eventlog](eventlog.md)  
+[Eyre](eyre.md)  
 
 ---
 
 ## F
 
-[Face](/glossary/face)  
-[Fact](/glossary/fact)  
-[Foo Bar Baz](/glossary/foo-bar-baz)  
+[Face](face.md)  
+[Fact](fact.md)  
+[Foo Bar Baz](foo-bar-baz.md)  
 
 ---
 
 ## G
 
-[Galaxy](/glossary/galaxy)  
-[Gall](/glossary/gall)  
-[Garden](/glossary/garden)  
-[Gate](/glossary/gate)  
-[Generator](/glossary/generator)  
-[Gift](/glossary/gift)  
-[Glob](/glossary/glob)  
+[Galaxy](galaxy.md)  
+[Gall](gall.md)  
+[Garden](garden.md)  
+[Gate](gate.md)  
+[Generator](generator.md)  
+[Gift](gift.md)  
+[Glob](glob.md)  
 
 ---
 
 ## H
 
-[Hdwallet](/glossary/hdwallet)  
-[Head](/glossary/head)  
-[Helm](/glossary/helm)  
-[Hood](/glossary/hood)  
-[Hoon](/glossary/hoon)  
+[Hdwallet](hdwallet.md)  
+[Head](head.md)  
+[Helm](helm.md)  
+[Hood](hood.md)  
+[Hoon](hoon.md)  
 
 ## I
 
-[Invite Tree](/glossary/invite-tree)  
-[Iris](/glossary/iris)  
+[Invite Tree](invite-tree.md)  
+[Iris](iris.md)  
 
 ---
 
 ## J
 
-[Jael](/glossary/jael)  
-[Jam](/glossary/jam)  
-[Jet](/glossary/jet)  
+[Jael](jael.md)  
+[Jam](jam.md)  
+[Jet](jet.md)  
 
 ---
 
 ## K
 
-[Kelvin](/glossary/kelvin)  
-[Kernel](/glossary/kernel)  
-[Keyfile](/glossary/keyfile)  
-[Keywords](/glossary/keywords)  
-[Khan](/glossary/khan)  
-[Kiln](/glossary/kiln)  
+[Kelvin](kelvin.md)  
+[Kernel](kernel.md)  
+[Keyfile](keyfile.md)  
+[Keywords](keywords.md)  
+[Khan](khan.md)  
+[Kiln](kiln.md)  
 
 ---
 
 ## L
 
-[Landscape](/glossary/landscape)  
-[Leg](/glossary/leg)  
-[Lark](/glossary/lark)  
-[Lick](/glossary/lick)  
-[List](/glossary/list)  
-[Loobean](/glossary/loobean)  
-[Lull](/glossary/lull)  
+[Landscape](landscape.md)  
+[Leg](leg.md)  
+[Lark](lark.md)  
+[Lick](lick.md)  
+[List](list.md)  
+[Loobean](loobean.md)  
+[Lull](lull.md)  
 
 ---
 
 ## M
 
-[Mark](/glossary/mark)  
-[Metals](/glossary/metals)  
-[Mold](/glossary/mold)  
-[Monad](/glossary/monad)  
-[Moon](/glossary/moon)  
-[Move](/glossary/move)  
+[Mark](mark.md)  
+[Metals](metals.md)  
+[Mold](mold.md)  
+[Monad](monad.md)  
+[Moon](moon.md)  
+[Move](move.md)  
 
 ## N
 
-[Nock](/glossary/nock)  
-[Noun](/glossary/noun)  
-[Null](/glossary/null)  
+[Nock](nock.md)  
+[Noun](noun.md)  
+[Null](null.md)  
 
 ## O
 
-[OTA Updates](/glossary/ota-updates)  
+[OTA Updates](ota-updates.md)  
 
 ---
 
 ## P
 
-[Path](/glossary/path)  
-[Path Prefix](/glossary/path-prefix)  
-[Patp](/glossary/patp)  
-[Payload](/glossary/payload)  
-[Peek](/glossary/peek)  
-[Ph](/glossary/ph)  
-[Pier](/glossary/pier)  
-[Pill](/glossary/pill)  
-[Planet](/glossary/planet)  
-[Poke](/glossary/poke)  
-[Proxies](/glossary/proxies)  
+[Path](path.md)  
+[Path Prefix](path-prefix.md)  
+[Patp](patp.md)  
+[Payload](payload.md)  
+[Peek](peek.md)  
+[Ph](ph.md)  
+[Pier](pier.md)  
+[Pill](pill.md)  
+[Planet](planet.md)  
+[Poke](poke.md)  
+[Proxies](proxies.md)  
 
 ---
 
 ## R
 
-[Remote Scry](/glossary/remote-scry)  
-[Replay](/glossary/replay)  
-[Reset](/glossary/reset)  
-[Roller](/glossary/roller)  
-[Rollups](/glossary/rollups)  
-[Rune](/glossary/rune)  
-[Runtime](/glossary/runtime)  
+[Remote Scry](remote-scry.md)  
+[Replay](replay.md)  
+[Reset](reset.md)  
+[Roller](roller.md)  
+[Rollups](rollups.md)  
+[Rune](rune.md)  
+[Runtime](runtime.md)  
 
 ---
 
 ## S
 
-[Sail](/glossary/sail)  
-[Sample](/glossary/sample)  
-[Scry](/glossary/scry)  
-[Senate](/glossary/senate)  
-[Ship](/glossary/ship)  
-[Slam](/glossary/slam)  
-[Spider](/glossary/spider)  
-[Sponsor](/glossary/sponsor)  
-[Star](/glossary/star)  
-[String](/glossary/string)  
-[Subject](/glossary/subject)  
-[Subject-oriented Programming](/glossary/subject-oriented-programming)  
-[Subscription](/glossary/subscription)  
+[Sail](sail.md)  
+[Sample](sample.md)  
+[Scry](scry.md)  
+[Senate](senate.md)  
+[Ship](ship.md)  
+[Slam](slam.md)  
+[Spider](spider.md)  
+[Sponsor](sponsor.md)  
+[Star](star.md)  
+[String](string.md)  
+[Subject](subject.md)  
+[Subject-oriented Programming](subject-oriented-programming.md)  
+[Subscription](subscription.md)  
 
 ---
 
 ## T
 
-[Tail](/glossary/tail)  
-[Tape](/glossary/tape)  
-[Term](/glossary/term)  
-[Thread](/glossary/thread)  
-[Trap](/glossary/trap)  
+[Tail](tail.md)  
+[Tape](tape.md)  
+[Term](term.md)  
+[Thread](thread.md)  
+[Trap](trap.md)  
 
 ---
 
 ## U
 
-[Udon](/glossary/udon)  
-[Upgrade](/glossary/upgrade)  
-[Userspace](/glossary/userspace)  
+[Udon](udon.md)  
+[Upgrade](upgrade.md)  
+[Userspace](userspace.md)  
 
 ---
 
 ## V
 
-[Vane](/glossary/vane)  
-[Vase](/glossary/vase)  
-[Vere](/glossary/vere)  
-[Voting](/glossary/voting)  
+[Vane](vane.md)  
+[Vase](vase.md)  
+[Vere](vere.md)  
+[Voting](voting.md)  
 
 ---
 
 ## W
 
-[Warm Atom](/glossary/warm-atom)  
-[Wet Gate](/glossary/wet-gate)  
-[Wing](/glossary/wing)  
-[Wire](/glossary/wire)  
-[Wrapper](/glossary/wrapper)  
+[Warm Atom](warm-atom.md)  
+[Wet Gate](wet-gate.md)  
+[Wing](wing.md)  
+[Wire](wire.md)  
+[Wrapper](wrapper.md)  
 
 ---
 
 ## Z
 
-[Zod](/glossary/zod)  
-[Zuse](/glossary/zuse)  
+[Zod](zod.md)  
+[Zuse](zuse.md)  
 
 ---

@@ -1,13 +1,13 @@
 # Reference
 
-### [API Reference](/system/kernel/dill/reference/tasks)
+### [API Reference](tasks.md)
 
 The `task`s Dill takes and the `gift`s it returns.
 
-### [Scry Reference](/system/kernel/dill/reference/scry)
+### [Scry Reference](scry.md)
 
 The scry endpoints of Dill.
 
-### [Data Types](/system/kernel/dill/reference/data-types)
+### [Data Types](data-types.md)
 
 Reference documentation of the data types used by Dill.

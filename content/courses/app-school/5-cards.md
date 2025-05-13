@@ -40,7 +40,7 @@ We'll consider each separately.
 
 The purpose of a `%pass` card is to send some kind of one-off request, action, task, or what have you, to another agent or vane. A `%pass` card is a request your agent _initiates_. This is in contrast to a [`%give`](#give) card, which is sent in _response_ to another agent or vane.
 
-The type of the first field in a `%pass` card is a `wire`. A `wire` is just a list of `@ta`, with a syntax of `/foo/bar/baz`. When you `%pass` something to an agent or vane, the response will come back on the `wire` you specify here. Your agent can then check the `wire` and maybe do different things depending on its content. The [`wire`](/courses/app-school/types#wire) type is covered in the [types reference](/courses/app-school/types). We'll show how `wire`s are practically used later on.
+The type of the first field in a `%pass` card is a `wire`. A `wire` is just a list of `@ta`, with a syntax of `/foo/bar/baz`. When you `%pass` something to an agent or vane, the response will come back on the `wire` you specify here. Your agent can then check the `wire` and maybe do different things depending on its content. The [`wire`](types.md#wire) type is covered in the [types reference](types.md). We'll show how `wire`s are practically used later on.
 
 The type of the next field is a `note:agent:gall` (henceforth just `note`), which `lull.hoon` defines as:
 
@@ -65,7 +65,7 @@ The type of the next field is a `note:agent:gall` (henceforth just `note`), whic
 - An `%agent` `note` is a request to another Gall agent, either local or on a remote ship. The `ship` and `name` fields are just the target ship and agent name. The `task` is the request itself, we'll discuss it separately [below](#task).
 - An `%arvo` `note` is a request to a vane. We'll discuss such requests [below](#note-arvo).
 - A `%pyre` `note` is used to abort an event. It's mostly used internally by `kiln` (a submodule of `%hood`), it's unlikely you'd use it in your own agent. The `tang` contains an error message.
-- The other notes are for [remote scry](/userspace/apps/guides/remote-scry).
+- The other notes are for [remote scry](../../userspace/apps/guides/remote-scry.md).
 
 
 ### `task`
@@ -82,7 +82,7 @@ A `task:agent:gall` (henceforth just `task`) is defined in `lull.hoon` as:
   ==
 ```
 
-Note a few of these include a `path` field. The `path` type is exactly the same as a `wire` - a list of `@ta` with a syntax of `/foo/bar/baz`. The reason for the `wire`/`path` distinction is just to indicate their separate purposes. While a `wire` is for _responses_, a `path` is for _requests_. The [`path`](/courses/app-school/types#path) type is also covered in the [types reference](/courses/app-school/types).
+Note a few of these include a `path` field. The `path` type is exactly the same as a `wire` - a list of `@ta` with a syntax of `/foo/bar/baz`. The reason for the `wire`/`path` distinction is just to indicate their separate purposes. While a `wire` is for _responses_, a `path` is for _requests_. The [`path`](types.md#path) type is also covered in the [types reference](types.md).
 
 The kinds of `task`s can be divided into two categories:
 
@@ -132,7 +132,7 @@ A `note-arvo` is defined in `lull.hoon` like so:
   ==
 ```
 
-The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Clay, etc. After the vane letter comes the task. Each vane has an API with a set of tasks that it will accept, and are defined in each vane's section of `lull.hoon`. Each vane's tasks are documented on the API Reference page of its section in the [Arvo documentation](/system/kernel/arvo).
+The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Clay, etc. After the vane letter comes the task. Each vane has an API with a set of tasks that it will accept, and are defined in each vane's section of `lull.hoon`. Each vane's tasks are documented on the API Reference page of its section in the [Arvo documentation](../../system/kernel/arvo).
 
 #### Examples
 
@@ -187,4 +187,4 @@ Here's a diagram that summarizes the different kinds of `card`s:
 
 ## Exercises
 
-- Have a read of the [`wire`](/courses/app-school/types#wire) and [`path`](/courses/app-school/types#path) entries in the type reference.
+- Have a read of the [`wire`](types.md#wire) and [`path`](types.md#path) entries in the type reference.

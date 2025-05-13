@@ -1,5 +1,5 @@
 # Delegated Sending
 
-The **Delegated Sending** [Azimuth](/glossary/azimuth) contract is a way that a [star](/glossary/star ) distributes [L1](/glossary/azimuth) [planets](/glossary/planet). After a star configures the Delegated Sending contract as its [spawn proxy](/glossary/proxies) it can give invites to planets, and those invitees can subsequently send additional planets from that star to their friends, and pass on this invite power indefinitely. This contract keeps track of those operations in the form of the [Invite Tree](/glossary/invite-tree), so the relationship between inviters and invitees is publicly known.
+The **Delegated Sending** [Azimuth](azimuth.md) contract is a way that a [star](star .md) distributes [L1](azimuth.md) [planets](planet.md). After a star configures the Delegated Sending contract as its [spawn proxy](proxies.md) it can give invites to planets, and those invitees can subsequently send additional planets from that star to their friends, and pass on this invite power indefinitely. This contract keeps track of those operations in the form of the [Invite Tree](invite-tree.md), so the relationship between inviters and invitees is publicly known.
 
-With the introduction of the [L2](/glossary/rollups) invite system, delegated sending is less commonly used.
+With the introduction of the [L2](rollups.md) invite system, delegated sending is less commonly used.

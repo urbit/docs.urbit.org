@@ -2,7 +2,7 @@
 
 While Hoon has a large amount of sugar syntax, some forms that may look irregular are actually regular wing syntax or another language feature, such as `,`.
 
-When in doubt, you can use the [`!,` zapcom](/language/hoon/reference/rune/zap#-zapcom) rune to determine the AST to which Hoon parses an expression.
+When in doubt, you can use the [`!,` zapcom](rune/zap.md#-zapcom) rune to determine the AST to which Hoon parses an expression.
 
 ```
 > !,(*hoon c.b.a)
@@ -13,25 +13,25 @@ When in doubt, you can use the [`!,` zapcom](/language/hoon/reference/rune/zap#-
 
 | Form | Regular Form |
 | ---- | ------------ |
-| `_foo` | [`$_`](/language/hoon/reference/rune/buc#_-buccab), normalizes to an example |
-| `foo=bar` | [`$=`](/language/hoon/reference/rune/buc#-buctis), wraps a face around a value |
-| `?(%foo %bar %baz)` | [`$?`](/language/hoon/reference/rune/buc#-bucwut), forms a type union |
-| `(fun a b c)` | [`%:`](/language/hoon/reference/rune/cen#-cencol), calls a gate with n arguments |
-| `~(arm core arg)` | [`%~`](/language/hoon/reference/rune/cen#-censig), pulls an arm in a door |
-| `foo(x 1, y 2, z 3)` | [`%=`](/language/hoon/reference/rune/cen#-centis), resolve a wing with changes |
-| `[a b c]` | [`:*`](/language/hoon/reference/rune/col#-coltar) or [`$:`](/language/hoon/reference/rune/buc#-buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
-| `~[a b c]` | [`:~`](/language/hoon/reference/rune/col#-colsig), constructs null-terminated list |
-| `+(42)` | [`.+`](/language/hoon/reference/rune/dot#-dotlus), increments with Nock 4 |
-| `=(a b)` | [`.=`](/language/hoon/reference/rune/dot#-dottis), tests for equality wiht Nock 5 |
-| `` `foo` bar`` | [`^-`](/language/hoon/reference/rune/ket#--kethep), typecasts by explicit type label |
-| `foo=bar` | [`^=`](/language/hoon/reference/rune/ket#-kettis), binds name to value |
-| `*foo` | [`^*`](/language/hoon/reference/rune/ket#-kettar), bunts (produces default mold value) |
-| `,foo` | [`^:`](/language/hoon/reference/rune/ket#-ketcol), produces “factory” gate for type |
-| `:(fun a b c d)` | [`;:`](/language/hoon/reference/rune/mic#-miccol), calls binary function as _n_-ary function |
-| `foo:bar` | [`=<`](/language/hoon/reference/rune/tis#-tisgal), composes two expressions, inverted |
-| `\|(foo bar baz)` | [`?\|`](/language/hoon/reference/rune/wut#-wutbar), logical OR (loobean) |
-| `&(foo bar baz)` | [`?&`](/language/hoon/reference/rune/wut#-wutpam), logical AND (loobean) |
-| `!foo` | [`?!`](/language/hoon/reference/rune/wut#-wutzap), logical NOT (loobean) |
+| `_foo` | [`$_`](rune/buc.md#_-buccab), normalizes to an example |
+| `foo=bar` | [`$=`](rune/buc.md#-buctis), wraps a face around a value |
+| `?(%foo %bar %baz)` | [`$?`](rune/buc.md#-bucwut), forms a type union |
+| `(fun a b c)` | [`%:`](rune/cen.md#-cencol), calls a gate with n arguments |
+| `~(arm core arg)` | [`%~`](rune/cen.md#-censig), pulls an arm in a door |
+| `foo(x 1, y 2, z 3)` | [`%=`](rune/cen.md#-centis), resolve a wing with changes |
+| `[a b c]` | [`:*`](rune/col.md#-coltar) or [`$:`](rune/buc.md#-buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
+| `~[a b c]` | [`:~`](rune/col.md#-colsig), constructs null-terminated list |
+| `+(42)` | [`.+`](rune/dot.md#-dotlus), increments with Nock 4 |
+| `=(a b)` | [`.=`](rune/dot.md#-dottis), tests for equality wiht Nock 5 |
+| `` `foo` bar`` | [`^-`](rune/ket.md#--kethep), typecasts by explicit type label |
+| `foo=bar` | [`^=`](rune/ket.md#-kettis), binds name to value |
+| `*foo` | [`^*`](rune/ket.md#-kettar), bunts (produces default mold value) |
+| `,foo` | [`^:`](rune/ket.md#-ketcol), produces “factory” gate for type |
+| `:(fun a b c d)` | [`;:`](rune/mic.md#-miccol), calls binary function as _n_-ary function |
+| `foo:bar` | [`=<`](rune/tis.md#-tisgal), composes two expressions, inverted |
+| `\|(foo bar baz)` | [`?\|`](rune/wut.md#-wutbar), logical OR (loobean) |
+| `&(foo bar baz)` | [`?&`](rune/wut.md#-wutpam), logical AND (loobean) |
+| `!foo` | [`?!`](rune/wut.md#-wutzap), logical NOT (loobean) |
 
 <br>
 
@@ -49,7 +49,7 @@ Anything Nock can do, Hoon can do also.
 
 ### `.+` dotlus
 
-[docs](/language/hoon/reference/rune/dot#-dotlus) \\+
+[docs](rune/dot.md#-dotlus) \\+
 
 `[%dtls p=atom]`: increment an atom with Nock 4.
 
@@ -59,7 +59,7 @@ Irregular: `+(p)`
 
 ### `.=` dottis
 
-[docs](/language/hoon/reference/rune/dot#-dottis) \\=
+[docs](rune/dot.md#-dottis) \\=
 
 `[%dtts p=hoon q=hoon]`: test for equality with Nock 5.
 
@@ -73,7 +73,7 @@ Miscellaneous useful macros.
 
 ### `;:` miccol
 
-[docs](/language/hoon/reference/rune/mic#-miccol) \\:
+[docs](rune/mic.md#-miccol) \\:
 
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
@@ -87,7 +87,7 @@ The cell runes.
 
 ### `:-` colhep
 
-[docs](/language/hoon/reference/rune/col#--colhep) \\[\\]\\^\\/\\+\\\`\\~
+[docs](rune/col.md#--colhep) \\[\\]\\^\\/\\+\\\`\\~
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -112,7 +112,7 @@ Flow hoons change the subject. All non-flow hoons (except cores) pass the subjec
 
 ### `=<` tisgal
 
-[docs](/language/hoon/reference/rune/tis#-tisgal) \\:
+[docs](rune/tis.md#-tisgal) \\:
 
 `[%tsgl p=hoon q=hoon]`: compose two hoons, inverted.
 
@@ -122,7 +122,7 @@ Irregular: `p:q`
 
 ## `|` bar (core)
 
-[docs](/language/hoon/reference/rune/bar) \\$
+[docs](rune/bar.md) \\$
 
 Core hoons are flow hoon.
 
@@ -141,7 +141,7 @@ The invocation family of runes.
 
 ### `%=` centis
 
-[docs](/language/hoon/reference/rune/cen#-centis) \\(\\)
+[docs](rune/cen.md#-centis) \\(\\)
 
 `[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
 
@@ -151,7 +151,7 @@ Irregular: `p(a 1)`
 
 ### `%~` censig
 
-[docs](/language/hoon/reference/rune/cen#-censig) \\~
+[docs](rune/cen.md#-censig) \\~
 
 `[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
@@ -161,7 +161,7 @@ Irregular: `~(p q r)`
 
 ### `%-` cenhep
 
-[docs](/language/hoon/reference/rune/cen#-cenhep) \\(\\)
+[docs](rune/cen.md#-cenhep) \\(\\)
 
 `[%cnhp p=hoon q=hoon]`: call a gate (function).
 
@@ -177,7 +177,7 @@ A mold is a gate (function) that helps us build simple and rigorous data structu
 
 ### `$?` bucwut
 
-[docs](/language/hoon/reference/rune/buc#-bucwut) \\?
+[docs](rune/buc.md#-bucwut) \\?
 
 `[%bcwt p=(list model)]`: mold which normalizes a general union.
 
@@ -187,7 +187,7 @@ Irregular: `?(p)`
 
 ### `$_` buccab
 
-[docs](/language/hoon/reference/rune/buc#_-buccab) \\\_
+[docs](rune/buc.md#_-buccab) \\\_
 
 `[%bccb p=value]`: mold which normalizes to an example.
 
@@ -197,7 +197,7 @@ Irregular: `_p`
 
 ### `$=` buctis
 
-[docs](/language/hoon/reference/rune/buc#-buctis)  \\=
+[docs](rune/buc.md#-buctis)  \\=
 
 `[%bcts p=skin q=spec]`: wraps a face around a structure.
 
@@ -216,7 +216,7 @@ Hoon has the usual branches and logical tests.
 
 ### `?!` wutzap
 
-[docs](/language/hoon/reference/rune/wut#-wutzap) \\!
+[docs](rune/wut.md#-wutzap) \\!
 
 `[%wtzp p=hoon]`: logical not.
 
@@ -226,7 +226,7 @@ Irregular: `!(p)`
 
 ### `?&` wutpam
 
-[docs](/language/hoon/reference/rune/wut#-wutpam) \\&
+[docs](rune/wut.md#-wutpam) \\&
 
 `[%wtpm p=(list hoon)]`: logical and.
 
@@ -236,7 +236,7 @@ Irregular: `&(p)`
 
 ### `?|` wutbar
 
-[docs](/language/hoon/reference/rune/wut#-wutbar) \\|
+[docs](rune/wut.md#-wutbar) \\|
 
 `[%wtbr p=(list hoon)]`: logical or.
 
@@ -250,7 +250,7 @@ Lets us adjust types without violating type constraints.
 
 ### `^:` ketcol
 
-[docs](/language/hoon/reference/rune/ket#-ketcol) \\,
+[docs](rune/ket.md#-ketcol) \\,
 
 `[%ktcl p=spec]`: mold gate for type `p`.
 
@@ -260,7 +260,7 @@ Irregular: `,p`
 
 ### `^-` kethep
 
-[docs](/language/hoon/reference/rune/ket#--kethep) \\\`
+[docs](rune/ket.md#--kethep) \\\`
 
 `[%kthp p=model q=value]`: typecast by mold.
 
@@ -270,7 +270,7 @@ Irregular: `` `p`q ``
 
 ### `^*` kettar
 
-[docs](/language/hoon/reference/rune/ket#-kettar) \\\*
+[docs](rune/ket.md#-kettar) \\\*
 
 `[%kttr p=spec]`: produce bunt value of mold.
 
@@ -280,7 +280,7 @@ Irregular: `*p`
 
 ### `^=` kettis
 
-[docs](/language/hoon/reference/rune/ket#-kettis) \\=
+[docs](rune/ket.md#-kettis) \\=
 
 `[%ktts p=toga q=value]`: name a value.
 
@@ -309,7 +309,7 @@ Irregular: `p=q`
 - `|` loobean false.
 - `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
 
-See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular definitions of atoms.
+See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 ### List addressing
 
@@ -320,7 +320,7 @@ See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular de
 
 ### Limbs
 
-[docs](/language/hoon/reference/limbs/limb) \\+\\.\\^\\-
+[docs](limbs/limb.md) \\+\\.\\^\\-
 
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
@@ -344,7 +344,7 @@ See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular de
 
 ### Wings
 
-[docs](/language/hoon/reference/limbs/wing) \\.
+[docs](limbs/wing.md) \\.
 
 `[%wing p=(list limb)]`; a limb search path.
 
@@ -354,14 +354,14 @@ See [%sand](/language/hoon/reference/rune/constants#warm) for other irregular de
 
 \\\<\\\>
 
-- `>a b c<` produces a [tank](/language/hoon/reference/stdlib/2q/#tank) of the output of the contents (wrapped in cell if more than 1 item), formatted in pretty-print.
+- `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than 1 item), formatted in pretty-print.
 
   ```hoon
   > >1 2 3<
   [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
   ```
 
-- `<a b c>` produces a [tape](/language/hoon/reference/stdlib/2q/#tape) of the tank above (ie `<1 2 3>` is same as `~(ram re >1 2 3<)`).
+- `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (ie `<1 2 3>` is same as `~(ram re >1 2 3<)`).
 
   ```hoon
   > <1 2 3>

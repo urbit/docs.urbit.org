@@ -1,5 +1,5 @@
 # Guides
 
-### [Guide](/system/kernel/lick/guides/guide)
+### [Guide](guide.md)
 
 Practical examples of the different ways of using Lick.

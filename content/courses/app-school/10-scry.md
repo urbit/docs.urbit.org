@@ -1,14 +1,14 @@
 # 10. Scries
 
-In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](/system/kernel/arvo/guides/scry), as well as the [dotket rune documentation](/language/hoon/reference/rune/dot#-dotket).
+In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md), as well as the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#-dotket).
 
 ## Scrying
 
 A scry is a read-only request to Arvo's global namespace. Vanes and agents define _scry endpoints_ which allow data to be requested from their states. The endpoints can process the data in any way before returning it, but they cannot alter the actual state - scries can only read, not modify.
 
-Gall itself defines some special vane-level endpoints [as described in its scry reference](/system/kernel/gall/reference/scry), but most scries to Gall are routed to particular agents and handled by them instead. Agent scries are what we'll focus on here. 
+Gall itself defines some special vane-level endpoints [as described in its scry reference](../../system/kernel/gall/reference/scry.md), but most scries to Gall are routed to particular agents and handled by them instead. Agent scries are what we'll focus on here. 
 
-Scries are performed with the [dotket](/language/hoon/reference/rune/dot#-dotket) (`.^`) rune. Here's a summary of their format:
+Scries are performed with the [dotket](../../language/hoon/reference/rune/dot.md#-dotket) (`.^`) rune. Here's a summary of their format:
 
 ![scry summary diagram](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
@@ -50,7 +50,7 @@ An ordinary `on-peek` arm, therefore, begins like so:
   ....
 ```
 
-Typically, you'd handle the `path` similarly to `on-watch`, as we discussed in the lesson on subscriptions. You'd use something like a [wutlus](/language/hoon/reference/rune/wut#-wutlus) `?+` expression to test the value of the `path`, defining your scry endpoints like so:
+Typically, you'd handle the `path` similarly to `on-watch`, as we discussed in the lesson on subscriptions. You'd use something like a [wutlus](../../language/hoon/reference/rune/wut.md#-wutlus) `?+` expression to test the value of the `path`, defining your scry endpoints like so:
 
 ```hoon
 ?+    path  (on-peek:def path)
@@ -78,7 +78,7 @@ If it requires a more complex expression to retrieve or compose the data, you ca
 'baz'
 ```
 
-Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](/courses/app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `mark` so it can easily be converted to JSON when accessed from the web.
+Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `mark` so it can easily be converted to JSON when accessed from the web.
 
 In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `vase` in a `unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
 
@@ -255,9 +255,9 @@ dojo: failed to process input
 
 ## Exercises
 
-- Have a read through the [Scry Guide](/system/kernel/arvo/guides/scry).
-- Have a look at Gall's [scry reference](/system/kernel/gall/reference/scry).
-- Have a read through the [dotket rune documentation](/language/hoon/reference/rune/dot#-dotket).
+- Have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md).
+- Have a look at Gall's [scry reference](../../system/kernel/gall/reference/scry.md).
+- Have a read through the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#-dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
-- Try adding another scry endpoint to the `peeker.hoon` agent, which uses a [`wyt:by`](/language/hoon/reference/stdlib/2i#wytby) map function to produce the number of items in the `data` map.
+- Try adding another scry endpoint to the `peeker.hoon` agent, which uses a [`wyt:by`](../../language/hoon/reference/stdlib/2i.md#wytby) map function to produce the number of items in the `data` map.
 - Have a look through the `on-peek` arms of some other agents on your ship, and try performing some scries to some of the endpoints.

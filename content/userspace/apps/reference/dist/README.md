@@ -2,7 +2,7 @@
 
 Urbit allows peer-to-peer distribution and installation of applications. A user can click on a link to an app hosted by another ship to install that app. The homescreen interface lets users manage their installed apps and launch their interfaces in new tabs.
 
-This document describes the architecture of Urbit's app distribution system. For a walkthrough of creating and distributing an app, see the [`Guide`](/userspace/apps/guides/software-distribution) document.
+This document describes the architecture of Urbit's app distribution system. For a walkthrough of creating and distributing an app, see the [`Guide`](../../guides/software-distribution.md) document.
 
 ## Architecture
 
@@ -24,7 +24,7 @@ Tlon has done this internally. Most desks will want to sync the `%base-dev` desk
 
 A "landscape app", i.e. a desk that defines a tile that the user can launch from the home screen, should also sync from the `%landscape-dev` desk. This desk includes the versioned `%docket-0` mark, which the app needs in order to include a `/desk/docket-0` file.
 
-The `%docket` agent reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](/userspace/apps/reference/dist/glob)). Docket is a new agent, in the `%landscape` desk, that manages app installations. Docket serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
+The `%docket` agent reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](glob.md)). Docket is a new agent, in the `%landscape` desk, that manages app installations. Docket serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
 
 For those of you familiar with the old `%glob` and `%file-server` agents, they have now been replaced by Docket.
 
@@ -76,9 +76,9 @@ For details of the generators for managing desks and agents in Kiln, see the [`D
 It's possible to create and distribute desks without a front-end, but typically you'll want to distribute an app with a user interface. Such an app has two primary components:
 
 - Gall agents and associated backend code which reside in the desk.
-- A client bundle called a [`glob`](/userspace/apps/reference/dist/glob), which contains the front-end files like HTML, CSS, JS, images, and so forth.
+- A client bundle called a [`glob`](glob.md), which contains the front-end files like HTML, CSS, JS, images, and so forth.
 
-When a desk is installed, Kiln will start up the Gall agents in the `desk.bill` manifest, and the `%docket` agent will read the `desk.docket-0` file. This file will specify the name of the app, various metadata, the appearance of the app's tile in the homescreen, and the source of the `glob` so it can serve the interface. For more details of the docket file, see the [Docket File](/userspace/apps/reference/dist/docket) document.
+When a desk is installed, Kiln will start up the Gall agents in the `desk.bill` manifest, and the `%docket` agent will read the `desk.docket-0` file. This file will specify the name of the app, various metadata, the appearance of the app's tile in the homescreen, and the source of the `glob` so it can serve the interface. For more details of the docket file, see the [Docket File](docket.md) document.
 
 ### Globs
 
@@ -88,14 +88,14 @@ If the glob is to be served over Ames, there is an HTTP-based glob uploader that
 
 Note that serving a glob over Ames might increase the install time for your app, since Ames is currently pretty slow compared to HTTP — but being able to serve a glob from your ship allows you to serve your whole app, both server-side and client-side, without setting up a CDN or any other external web tooling. Your ship can do it all on its own.
 
-For further details of globs, see the [Glob](/userspace/apps/reference/dist/glob) document.
+For further details of globs, see the [Glob](glob.md) document.
 
 ## Sections
 
-- [Glob](/userspace/apps/reference/dist/glob) - Documentation of `glob`s (client bundles).
+- [Glob](glob.md) - Documentation of `glob`s (client bundles).
 
-- [Docket Files](/userspace/apps/reference/dist/docket) - Documentation of docket files.
+- [Docket Files](docket.md) - Documentation of docket files.
 
-- [Guide](/userspace/apps/guides/software-distribution) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
+- [Guide](../../guides/software-distribution.md) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
 
 

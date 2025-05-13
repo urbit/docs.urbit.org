@@ -1,4 +1,4 @@
 # Examples
 
-- [Decrement](/language/nock/examples/decrement) - Walk through implementing decrement in Nock.
-- [Implementations](/language/nock/examples/implementations) - Nock interpreter implementations in various languages.
+- [Decrement](decrement.md) - Walk through implementing decrement in Nock.
+- [Implementations](implementations.md) - Nock interpreter implementations in various languages.

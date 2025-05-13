@@ -129,7 +129,7 @@ A `@`.
 
 A scry with a `%t` care, an agent in `q.beak` and a path of `//some/path` will give you the list of remote scry subpaths bound under the given path.
 
-See the [remote scry guide](../../../../userspace/apps/guides/remote-scry) for more details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 
@@ -215,7 +215,7 @@ A `egg-any` (versioned passthrough to `egg`)
 
 A scry with a `%w` care and an agent in `q.beak` will get the latest revision number of the bound remote scry path given in the `spur`.
 
-See the [remote scry guide](../../../../userspace/apps/guides/remote-scry) for more details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 
@@ -231,7 +231,7 @@ A scry with a `%x` care and an agent in `q.beak` will get the value bound at the
 [%gx /[ship]/[agent]/[file revision]//[file path]
 ```
 
-See the [remote scry guide](../../../../userspace/apps/guides/remote-scry) for more details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 
@@ -243,7 +243,7 @@ The type returned is the raw `noun` from the `page`. If the file has been tombst
 
 A scry with a `%z` care and an agent in `q.beak` will get the hash identifier of the value bound at the remote scry path given in the `spur`.
 
-See the [remote scry guide](../../../../userspace/apps/guides/remote-scry) for more details.
+See the [remote scry guide](/userspace/apps/guides/remote-scry) for more details.
 
 #### Produces
 

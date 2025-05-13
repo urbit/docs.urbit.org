@@ -1,14 +1,14 @@
 # Ecliptic.eth
 
-[Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](../../../glossary/upgrade). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
+[Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](/glossary/upgrade). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
 
-`Ecliptic.eth` uses external contracts such as [Azimuth.eth](azimuth-eth) and [Polls](https://github.com/urbit/azimuth/blob/master/contracts/Polls.sol) for data storage so that it can easily be replaced in case the logic needs to be changed without affecting the data. These data contracts are owned by `Ecliptic.eth`, and this ownership is passed to the new Ecliptic contract whenever it is replaced. Thus it is advised for clients to not store Ecliptic's contract address directly, but instead ask the `Azimuth.eth` contract for its `owner` attribute to ensure that transactions are sent to the latest Ecliptic contract. Alternatively, the [ENS](https://ens.domains/) name `Ecliptic.eth` will always resolve to the latest Ecliptic.
+`Ecliptic.eth` uses external contracts such as [Azimuth.eth](/system/identity/reference/azimuth-eth) and [Polls](https://github.com/urbit/azimuth/blob/master/contracts/Polls.sol) for data storage so that it can easily be replaced in case the logic needs to be changed without affecting the data. These data contracts are owned by `Ecliptic.eth`, and this ownership is passed to the new Ecliptic contract whenever it is replaced. Thus it is advised for clients to not store Ecliptic's contract address directly, but instead ask the `Azimuth.eth` contract for its `owner` attribute to ensure that transactions are sent to the latest Ecliptic contract. Alternatively, the [ENS](https://ens.domains/) name `Ecliptic.eth` will always resolve to the latest Ecliptic.
 
-You can read about [Urbit's first upgrade](https://github.com/urbit/azimuth/pull/35) to Ecliptic, which occurred in the summer of 2021, [here](https://urbit.org/blog/first-contract). The [second](https://github.com/urbit/azimuth/pull/43) occurred later in the year and consisted of several small modifications to ready the PKI for the introduction of [naive rollups](../concepts/layer2).
+You can read about [Urbit's first upgrade](https://github.com/urbit/azimuth/pull/35) to Ecliptic, which occurred in the summer of 2021, [here](https://urbit.org/blog/first-contract). The [second](https://github.com/urbit/azimuth/pull/43) occurred later in the year and consisted of several small modifications to ready the PKI for the introduction of [naive rollups](/system/identity/concepts/layer2).
 
 `Ecliptic.eth` implements the [ERC-721](https://eips.ethereum.org/EIPS/eip-721) interface for non-fungible tokens, as well as the [ERC-165](https://eips.ethereum.org/EIPS/eip-165) standard for interface detection.
 
-There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions), and/or can be performed using [Bridge](https://urbit.org/using/id/using-bridge). We note these facts where applicable.
+There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](/system/identity/reference/l2-actions), and/or can be performed using [Bridge](https://urbit.org/using/id/using-bridge). We note these facts where applicable.
 
 ## Write functions {#write}
 
@@ -18,7 +18,7 @@ We only document here the write functions specific to `Ecliptic.eth` and not the
 
 ### `Point`s interface
 
-These functions are available to each owner of a [`Point`](azimuth-eth#points), and a subset of them are available to its [proxies](#proxies). All of these actions may be performed from Bridge.
+These functions are available to each owner of a [`Point`](/system/identity/reference/azimuth-eth#points), and a subset of them are available to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
 #### `configureKeys`
 
@@ -30,7 +30,7 @@ These functions are available to each owner of a [`Point`](azimuth-eth#points), 
                            bool _discontinuous)
 ```
 
-Configure `_point` with network public keys `_encryptionKey`, `_authenticationKey`, and corresponding `_cryptoSuiteVersion`, incrementing the `Point`'s [`keyRevisionNumber`](azimuth-eth#points) if the keys have changed and `continuityNumber` number if `_discontinuous` is set to true (see [Life and Rift](../concepts/life-and-rift)).
+Configure `_point` with network public keys `_encryptionKey`, `_authenticationKey`, and corresponding `_cryptoSuiteVersion`, incrementing the `Point`'s [`keyRevisionNumber`](/system/identity/reference/azimuth-eth#points) if the keys have changed and `continuityNumber` number if `_discontinuous` is set to true (see [Life and Rift](/system/identity/concepts/life-and-rift)).
 
 Corresponds to the layer 2 `%configure-keys` action.
 
@@ -59,11 +59,11 @@ Corresponds to the layer 2 `%spawn` action.
     function transferPoint(uint32 _point, address _target, bool _reset)
 ```
 
-Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](https://urbit.org/using/id/guide-to-resets), and thus this action increments the [`continuityNumber`](azimuth-eth#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift)).
+Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](https://urbit.org/using/id/guide-to-resets), and thus this action increments the [`continuityNumber`](/system/identity/reference/azimuth-eth#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](/system/identity/concepts/life-and-rift)).
 
 Requirements:
 
-- `:msg.sender` must be either `_point`'s current owner, authorized to transfer `_point`, or authorized to transfer the current owner's points (i.e. is listed as an ERC-721 operator in [`operators`](azimuth-eth#other)).
+- `:msg.sender` must be either `_point`'s current owner, authorized to transfer `_point`, or authorized to transfer the current owner's points (i.e. is listed as an ERC-721 operator in [`operators`](/system/identity/reference/azimuth-eth#other)).
 - `_target` must not be the zero address.
 
 Corresponds to the layer 2 `%transfer-point` action.
@@ -137,7 +137,7 @@ Requirements:
 
 Corresponds to the layer 2 `%detach` action.
 
-Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` on a layer 2 sponsee. See the [Layer 2](../concepts/layer2#sponsorship) section for more detail. The detach action available in Bridge is a layer 2 action, so a layer 1 detach must be done [manually](https://etherscan.io/address/ecliptic.eth#writeContract).
+Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` on a layer 2 sponsee. See the [Layer 2](/system/identity/concepts/layer2#sponsorship) section for more detail. The detach action available in Bridge is a layer 2 action, so a layer 1 detach must be done [manually](https://etherscan.io/address/ecliptic.eth#writeContract).
 
 ### Proxy management {#proxies}
 
@@ -205,7 +205,7 @@ Corresponds to the layer 2 `%set-transfer-proxy` action.
 
 ### Poll actions
 
-Most of these are functions only available to galaxies. They are related to [voting](../../../glossary/voting). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
+Most of these are functions only available to galaxies. They are related to [voting](/glossary/voting). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
 
 Upgrade and document polls last for 30 days, or once a majority is achieved, whichever comes first. If a majority (129) of yes or no votes is achieved, the final vote cast in favor of the winning option also triggers `updateUpgradePoll` or `updateDocumentPoll` as appropriate. Otherwise, if a quorum of 64 votes is achieved, with a majority voting for yes, and the 30 day voting period has expired, then _any_ Ethereum address may call `updateUpgradePoll` or `updateDocumentPoll` as appropriate.
 
@@ -310,7 +310,7 @@ We only document here the read functions specific to Ecliptic and not the standa
 
 #### `depositAddress`
 
-This returns the deposit address for [layer 2](../concepts/layer2), which is `0x1111111111111111111111111111111111111111`. Ships sent to this address are controlled on layer 2 instead of via Ecliptic.
+This returns the deposit address for [layer 2](/system/identity/concepts/layer2), which is `0x1111111111111111111111111111111111111111`. Ships sent to this address are controlled on layer 2 instead of via Ecliptic.
 
 #### `canEscapeTo`
 
@@ -322,7 +322,7 @@ Returns a `bool` that is true if `_point` could try to escape to `_sponsor`.
 
 #### `azimuth`
 
-Returns the address of the [Azimuth.eth](azimuth-eth) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
+Returns the address of the [Azimuth.eth](/system/identity/reference/azimuth-eth) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
 
 #### `claims`
 
@@ -346,4 +346,4 @@ Returns a `uint32` that is the total number of children the `_point` is allowed 
 
 There is no limit for galaxies. Instead, for most galaxies, all stars have already been spawned and placed into one of the lockup contracts: [Linear Star Release](https://etherscan.io/address/0x86cd9cd0992f04231751e3761de45cecea5d1801) and [Conditional Star Release](https://etherscan.io/address/0x8c241098c3d3498fe1261421633fd57986d74aea).
 
-Beginning in 2019, stars may spawn at most 1024 planets. This limit doubles every subsequent year until the maximum is reached. However, this limit is not currently implemented on [Layer 2](../concepts/layer2).
+Beginning in 2019, stars may spawn at most 1024 planets. This limit doubles every subsequent year until the maximum is reached. However, this limit is not currently implemented on [Layer 2](/system/identity/concepts/layer2).

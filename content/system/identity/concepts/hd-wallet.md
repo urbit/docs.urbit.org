@@ -14,11 +14,11 @@ Think of your master ticket like a very high-value password. The master ticket i
 
 ## Ownership Address
 
-An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](../../../glossary/ecliptic), Azimuth's suite of governing smart-contracts.
+An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](/glossary/ecliptic), Azimuth's suite of governing smart-contracts.
 
 ## Proxies
 
-Each permanent Urbit ID can designate one or more [proxies](../../../manual/id/proxies), which are Ethereum addresses capable of a limited subset of Urbit ID transactions, such as spawning planets or rotating keys. The HD wallet automatically generates additional addresses utilized as proxies according to what is appropriate for your Urbit ID.
+Each permanent Urbit ID can designate one or more [proxies](/manual/id/proxies), which are Ethereum addresses capable of a limited subset of Urbit ID transactions, such as spawning planets or rotating keys. The HD wallet automatically generates additional addresses utilized as proxies according to what is appropriate for your Urbit ID.
 
 ## HD wallet generation
 
@@ -56,4 +56,4 @@ To finish the process, use Bridge to set your management, voting, and spawn prox
 
 A common security pattern is to have "hot" and "cold" wallets. For higher value points such as stars and galaxies, you may consider having your ownership address live on a "cold" wallet that never touches an internet-connected computer, and the various proxies on a "hot" wallet that is permitted to connect to internet-connected devices. This could be accomplished with multiple hardware wallets, a combination of paper and hardware wallet, a hardware cold wallet and Metamask hot wallet, etc. See the [User Manual](https://urbit.org/using/id/hd-wallet) for concrete suggestions on security practices.
 
-One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is used for making and signing Bridge transactions from an offline computer. A guide to using `claz` is available [here](../guides/advanced-azimuth-tools).
+One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is used for making and signing Bridge transactions from an offline computer. A guide to using `claz` is available [here](/system/identity/guides/advanced-azimuth-tools).

@@ -327,11 +327,11 @@ And then your style tag might look like:
 ;style: {style}
 ```
 
-A cord is used rather than a tape so you don't need to escape braces. The [ketsig](../reference/rune/ket#-ketsig) (`^~`) rune means `++trip` will be run at compile time rather than call time.
+A cord is used rather than a tape so you don't need to escape braces. The [ketsig](/language/hoon/reference/rune/ket#-ketsig) (`^~`) rune means `++trip` will be run at compile time rather than call time.
 
 ## Types and marks
 
-So far we've shown rendered HTML for demonstrative purposes, but Sail syntax doesn't directly produce HTML text. Instead, it produces a [$manx](../reference/stdlib/5e#manx). This is a Hoon type used to represent an XML hierarchical structure with a single root node. There are six XML-related types defined in the standard library:
+So far we've shown rendered HTML for demonstrative purposes, but Sail syntax doesn't directly produce HTML text. Instead, it produces a [$manx](/language/hoon/reference/stdlib/5e#manx). This is a Hoon type used to represent an XML hierarchical structure with a single root node. There are six XML-related types defined in the standard library:
 
 ```hoon
 +$  mane  $@(@tas [@tas @tas])                    ::  XML name+space
@@ -342,9 +342,9 @@ So far we've shown rendered HTML for demonstrative purposes, but Sail syntax doe
 +$  marx  $~([%$ ~] [n=mane a=mart])              ::  dynamic XML tag
 ```
 
-More information about these can be found in [section 5e of the standard library reference](../reference/stdlib/5e).
+More information about these can be found in [section 5e of the standard library reference](/language/hoon/reference/stdlib/5e).
 
-You don't need to understand these types in order to write Sail. The main thing to note is that a `$manx` is a node (a single tag) and its contents is a [$marl](../reference/stdlib/5e#marl), which is just a `(list manx)`.
+You don't need to understand these types in order to write Sail. The main thing to note is that a `$manx` is a node (a single tag) and its contents is a [$marl](/language/hoon/reference/stdlib/5e#marl), which is just a `(list manx)`.
 
 ### Rendering
 
@@ -406,7 +406,7 @@ In addition to the syntax so far described, there are also a few Sail-specific r
 
 ### `;+` Miclus
 
-The [miclus rune](../reference/rune/mic#-miclus) makes a `$marl` from a complex hoon expression that produces a single `$manx`. Its main use is nesting tall-form hoon logic in another Sail element. For example:
+The [miclus rune](/language/hoon/reference/rune/mic#-miclus) makes a `$marl` from a complex hoon expression that produces a single `$manx`. Its main use is nesting tall-form hoon logic in another Sail element. For example:
 
 ```hoon
 ;p
@@ -431,7 +431,7 @@ Produces one of these depending on the value of `number`:
 
 ### `;*` Mictar
 
-The [mictar rune](../reference/rune/mic#-mictar) makes a `$marl` (a list of XML nodes) from a complex hoon expression. This rune lets you add many elements inside another Sail element. For example:
+The [mictar rune](/language/hoon/reference/rune/mic#-mictar) makes a `$marl` (a list of XML nodes) from a complex hoon expression. This rune lets you add many elements inside another Sail element. For example:
 
 {% tabs %}
 
@@ -467,7 +467,7 @@ The [mictar rune](../reference/rune/mic#-mictar) makes a `$marl` (a list of XML 
 
 ### `;=` Mictis
 
-The [mictis rune](../reference/rune/mic#-mictis) makes a `$marl` (a list of XML nodes) from a series of `$manx`es. This is mostly useful if you want to make the list outside of an element and then be able to insert it afterwards. For example:
+The [mictis rune](/language/hoon/reference/rune/mic#-mictis) makes a `$marl` (a list of XML nodes) from a series of `$manx`es. This is mostly useful if you want to make the list outside of an element and then be able to insert it afterwards. For example:
 
 {% tabs %}
 
@@ -502,7 +502,7 @@ The [mictis rune](../reference/rune/mic#-mictis) makes a `$marl` (a list of XML 
 
 ### `;/` Micfas
 
-The [micfas rune](../reference/rune/mic#-micfas) turns an ordinary tape into a `$manx`. For example:
+The [micfas rune](/language/hoon/reference/rune/mic#-micfas) turns an ordinary tape into a `$manx`. For example:
 
 ```
 > %-  en-xml:html  ;/  "foobar"

@@ -2,7 +2,7 @@
 
 Udon is a domain-specific language for composing documents. Udon is very similar to Markdown, but with some minor variation in syntax and some additional Urbit-related affordances.
 
-Udon files are compiled to `manx`es (Urbit's XHTML/XML representation), so can easily be used to publish documents to the browser. Udon also allows you to embed arbitrary [Sail](sail) syntax, which itself allows embedding arbitrary Hoon, so it can be quite powerful for dynamic content when compiled against an appropriate subject.
+Udon files are compiled to `manx`es (Urbit's XHTML/XML representation), so can easily be used to publish documents to the browser. Udon also allows you to embed arbitrary [Sail](/language/hoon/guides/sail) syntax, which itself allows embedding arbitrary Hoon, so it can be quite powerful for dynamic content when compiled against an appropriate subject.
 
 This document will walk through the basics of Udon and its syntax.
 
@@ -119,7 +119,7 @@ To scry out a file, compile it against the standard library, and stringify the r
 
 Note you may want to provide more than just `..zuse` in the subject (like a `bowl`), or if you're automatically building untrusted code, you may want to provide less. It depends on your use case.
 
-You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](../reference/rune/fas#-fastar) specifying an `%elem` mark (which produces a `manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
+You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](/language/hoon/reference/rune/fas#-fastar) specifying an `%elem` mark (which produces a `manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
 
 ## Examples
 

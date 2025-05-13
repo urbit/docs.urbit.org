@@ -1,13 +1,13 @@
 # Reference
 
-### [API Reference](tasks)
+### [API Reference](/system/kernel/ames/reference/tasks)
 
 The `task`s Ames takes and the `gift`s it returns.
 
-### [Scry Reference](scry)
+### [Scry Reference](/system/kernel/ames/reference/scry)
 
 The scry endpoints of Ames.
 
-### [Data Types](data-types)
+### [Data Types](/system/kernel/ames/reference/data-types)
 
 Reference documentation of the various data types used by Ames.

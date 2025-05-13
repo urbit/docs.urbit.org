@@ -18,11 +18,11 @@ These docs primarily deal with the API of the Auth Server app, but first we'll q
 
 ## Auth Server Basics
 
-Auth Server is intended to be used via an Eyre airlock. The most common is the `@urbit/http-api` NPM package, which is documented [here](../js-libs/http-api-guide). There are a few airlocks for other languages too, some of which are listed [here](https://github.com/urbit/awesome-urbit#http-apis-airlock). Eyre's interfaces extend Urbit's [poke](../../glossary/poke), [scry](../../system/kernel/arvo/guides/scry) and [subscription](../../system/kernel/arvo/guides/subscriptions) mechanics to HTTP clients. You can read more about Eyre [here](../../system/kernel/eyre/guides/guide).
+Auth Server is intended to be used via an Eyre airlock. The most common is the `@urbit/http-api` NPM package, which is documented [here](/tools/js-libs/http-api-guide). There are a few airlocks for other languages too, some of which are listed [here](https://github.com/urbit/awesome-urbit#http-apis-airlock). Eyre's interfaces extend Urbit's [poke](/glossary/poke), [scry](/system/kernel/arvo/guides/scry) and [subscription](/system/kernel/arvo/guides/subscriptions) mechanics to HTTP clients. You can read more about Eyre [here](/system/kernel/eyre/guides/guide).
 
 ### Actions
 
-There are two actions you can poke into Auth Server: A [`new`](types#new) action to initiate a new request, and a [`cancel`](types#cancel) action to cancel an existing request. The `new` action looks something like this:
+There are two actions you can poke into Auth Server: A [`new`](/tools/auth-server/types#new) action to initiate a new request, and a [`cancel`](/tools/auth-server/types#cancel) action to cancel an existing request. The `new` action looks something like this:
 
 ```json
 {
@@ -41,9 +41,9 @@ There are two actions you can poke into Auth Server: A [`new`](types#new) action
 }
 ```
 
-The [`id`](types#id) field is a random unique ID for the request, and must be a v4 UUID (variant 1, RFC 4122/DCE 1.1).
+The [`id`](/tools/auth-server/types#id) field is a random unique ID for the request, and must be a v4 UUID (variant 1, RFC 4122/DCE 1.1).
 
-The fields in the [`request`](types#request) are as follows:
+The fields in the [`request`](/tools/auth-server/types#request) are as follows:
 
 - `ship`: The ship you're seeking approval from. Note it does not include the leading `~`.
 - `turf`: Your domain. Note it should not include any path, protocol, port etc. Just `foo.bar.baz`.
@@ -55,7 +55,7 @@ The fields in the [`request`](types#request) are as follows:
 
 ### Updates
 
-There are two main types of updates you'll receive from Auth Server: an [`entry`](types#entry) update and a [`status`](types#status) update. An `entry` update looks like this:
+There are two main types of updates you'll receive from Auth Server: an [`entry`](/tools/auth-server/types#entry) update and a [`status`](/tools/auth-server/types#status) update. An `entry` update looks like this:
 
 ```json
 {
@@ -75,9 +75,9 @@ There are two main types of updates you'll receive from Auth Server: an [`entry`
 }
 ```
 
-It contains the [`id`](types#id) and [`request`](types#request) from the `new` action above, and additionally shows the initial status in the [`result`](types#result) field. This will normally be `"sent"`, unless you set the expiry earlier than *now*, in which case it will immediately be `"expire"` and Auth Server won't bother sending it to the user.
+It contains the [`id`](/tools/auth-server/types#id) and [`request`](/tools/auth-server/types#request) from the `new` action above, and additionally shows the initial status in the [`result`](/tools/auth-server/types#result) field. This will normally be `"sent"`, unless you set the expiry earlier than *now*, in which case it will immediately be `"expire"` and Auth Server won't bother sending it to the user.
 
-After it's been sent you'll get [`status`](types#status) updates for it when its status changes. A `status` update looks like:
+After it's been sent you'll get [`status`](/tools/auth-server/types#status) updates for it when its status changes. A `status` update looks like:
 
 ```json
 {
@@ -88,19 +88,19 @@ After it's been sent you'll get [`status`](types#status) updates for it when its
 }
 ```
 
-Assuming it was initally `"sent"`, you'll get an update with a `"got"` [`result`](types#result) when the user receives it (but hasn't yet approved or denied it). If they approve it, you'll then get a `"yes"` update, or if they deny it you'll get `"no"`. If it expires before they receive it or before they approve/deny it, you'll get an `"expire"` update. If there was an error in them receiving the request or your Auth Server couldn't subscribe for the result, you'll get an `"error"` update. If you cancelled the request with a `cancel` action, you'll get an `"abort"` result.
+Assuming it was initally `"sent"`, you'll get an update with a `"got"` [`result`](/tools/auth-server/types#result) when the user receives it (but hasn't yet approved or denied it). If they approve it, you'll then get a `"yes"` update, or if they deny it you'll get `"no"`. If it expires before they receive it or before they approve/deny it, you'll get an `"expire"` update. If there was an error in them receiving the request or your Auth Server couldn't subscribe for the result, you'll get an `"error"` update. If you cancelled the request with a `cancel` action, you'll get an `"abort"` result.
 
 The normal flow is `"sent"` -> `"got"` -> `"yes"`/`"no"`, with `"expire"`,`"error"` and `"abort"` potentially terminating the flow at any point. The `"sent"` and `"got"` results are transitional, and the rest are terminal.
 
 ### Subscriptions
 
-Auth Server has a number of different subscription paths, but you'd likely only use one or two. There are two categories of subscription paths: [`/new/...`](subs#new) and [`/init/...`](subs#new). The `/new` paths will start giving you any updates that occur after you subscribe. The `/init` paths will do the same, but they'll also give you initial state. For each of these, there is a path to receive all updates, and there are also sub-paths to filter by [`turf`](types#turf) (domain), [`ship`](types#ship) and [`id`](types#id). Additionally, for each sub-path, you can specify a "since" time, and only receive updates and initial state for requests with `time`s *later* than the one you specify.
+Auth Server has a number of different subscription paths, but you'd likely only use one or two. There are two categories of subscription paths: [`/new/...`](/tools/auth-server/subs#new) and [`/init/...`](/tools/auth-server/subs#new). The `/new` paths will start giving you any updates that occur after you subscribe. The `/init` paths will do the same, but they'll also give you initial state. For each of these, there is a path to receive all updates, and there are also sub-paths to filter by [`turf`](/tools/auth-server/types#turf) (domain), [`ship`](/tools/auth-server/types#ship) and [`id`](/tools/auth-server/types#id). Additionally, for each sub-path, you can specify a "since" time, and only receive updates and initial state for requests with `time`s *later* than the one you specify.
 
 If you're only handling a single site in Auth Server, you can just subscribe to the `/init/all` path, retreiving initial state and then further updates as they occur. If your site loses connection to Auth Server, you can just resubscribe to `/init/all` to resync state, or, if you don't want all historical state, you could subscribe to `/init/all/since/1679787461389 ` where the `time` specified is the oldest time you think you could reasonably care about.
 
 ### Attestations
 
-As described at the beginning, Auth Client checks `<domain>/.well-known/appspecific/org.urbit.auth.json` to verify a request actually comes from the domain it claims. That `.json` file must contain a [`manifest`](types#manifest), which is just an array of [`proof`](types#proof)s. A `proof` looks like:
+As described at the beginning, Auth Client checks `<domain>/.well-known/appspecific/org.urbit.auth.json` to verify a request actually comes from the domain it claims. That `.json` file must contain a [`manifest`](/tools/auth-server/types#manifest), which is just an array of [`proof`](/tools/auth-server/types#proof)s. A `proof` looks like:
 
 ```json
 {
@@ -189,4 +189,4 @@ export function stringToTa(str: string): string {
 }
 ```
 
-You might also like to look at the Hoon reference for the `++wood` function [here](../../language/hoon/reference/stdlib/4b#wood).
+You might also like to look at the Hoon reference for the `++wood` function [here](/language/hoon/reference/stdlib/4b#wood).

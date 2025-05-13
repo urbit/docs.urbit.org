@@ -9,8 +9,8 @@ Since jetting code requires modifying the binary runtime, we will work some in H
 #### Additional Resources
 
 - [~timluc-miptev, “Jets in the Urbit Runtime”](https://github.com/timlucmiptev/docs-runtime/blob/master/jets1_current.md) (recommended to start here first)
-- [“`u3`: Land of Nouns”](../reference/nouns) (recommended as supplement to this document)
-- [“API overview by prefix”](../reference/api) (recommended as supplement after this document)
+- [“`u3`: Land of Nouns”](/system/runtime/reference/nouns/) (recommended as supplement to this document)
+- [“API overview by prefix”](/system/runtime/reference/api/) (recommended as supplement after this document)
 
 ##  Developer Environment 
 
@@ -91,7 +91,7 @@ $ cp -r zod-backup/.urb zod
 
 ##  Jet Walkthrough:  `++add`
 
-Given a Hoon gate, how can a developer produce a matching C jet? Let us illustrate the process using a simple `|%` core.  We assume the reader has achieved facility with both Hoon code and C code.  This tutorial aims to communicate the practical process of producing a jet, and many [`u3` noun concepts](../reference/nouns) are only briefly discussed or alluded to.
+Given a Hoon gate, how can a developer produce a matching C jet? Let us illustrate the process using a simple `|%` core.  We assume the reader has achieved facility with both Hoon code and C code.  This tutorial aims to communicate the practical process of producing a jet, and many [`u3` noun concepts](/system/runtime/reference/nouns) are only briefly discussed or alluded to.
 
 To this end, we begin by examining the Hoon `++add` gate, which accepts two values in its sample.
 
@@ -123,7 +123,7 @@ or in a more compact form (omitting the parent core and chapter label)
   $(a (dec a), b +(b))
 ```
 
-The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist.  By convention, the jet hint name matches the gate label.  Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below.  We will expand on the jet registration runes [`~/` sigfas](../../../language/hoon/reference/rune/sig#-sigfas) and [`~%` sigcen](../../../language/hoon/reference/rune/sig#-sigcen) later.
+The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist.  By convention, the jet hint name matches the gate label.  Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below.  We will expand on the jet registration runes [`~/` sigfas](/language/hoon/reference/rune/sig#-sigfas) and [`~%` sigcen](/language/hoon/reference/rune/sig#-sigcen) later.
 
 The following C code implements `++add` as a significantly faster operation including handling of >31-bit atoms.  It may be found in `urbit/pkg/noun/jets/a/add.c`:
 
@@ -226,7 +226,7 @@ In general, jet code feels a bit heavy and formal.  Jet code may call other jet 
 
 ##  Jet Composition:  Integer `++factorial`
 
-Similar to how we encountered recursion way back in [Hoon School](../../../courses/hoon-school/F-cores) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code.  We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise.  Create a file `lib/trig.hoon` with the following contents:
+Similar to how we encountered recursion way back in [Hoon School](/courses/hoon-school/F-cores) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code.  We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise.  Create a file `lib/trig.hoon` with the following contents:
 
 **`/lib/trig.hoon`**
 
@@ -378,7 +378,7 @@ The particular flavor of C mandated by the Vere kernel is quite lapidary, partic
 
 The numbers `7` and `31` refer to relative core addresses. In most cases—unless you're building a particularly complicated jet or modifying `%zuse` or `%lull`—you can follow the pattern laid out here.  `".2"` is a label for the axis in the core `[battery sample]`, so just the battery. The text labels for the `|%` core and the arm are included at their appropriate points. Finally, the jet function entry point `u3we_trig_factorial` is registered.
 
-For more information on `u3`, please check out the `u3` summary below or the official documentation at [`“u3`:  Land of Nouns”](../reference/nouns).
+For more information on `u3`, please check out the `u3` summary below or the official documentation at [`“u3`:  Land of Nouns”](/system/runtime/reference/nouns/).
 
 #### Declare function prototypes in headers.
 
@@ -905,8 +905,8 @@ Hoon jets are compiled into the Vere binary for distribution with the Urbit runt
 
 Jets are registered with the runtime so that Vere knows to check whether a particular jet exists when it encounters a marked Hoon arm.
 
-- [`~/` sigfas](../../../language/hoon/reference/rune/sig#-sigfas) registers a jet simply (using defaults).
-- [`~%` sigcen](../../../language/hoon/reference/rune/sig#-sigcen) registers a jet with all arguments specified.
+- [`~/` sigfas](/language/hoon/reference/rune/sig#-sigfas) registers a jet simply (using defaults).
+- [`~%` sigcen](/language/hoon/reference/rune/sig#-sigcen) registers a jet with all arguments specified.
 
 Typically we use `~/` sigfas to register jets within a core under the umbrella of a `~%` sigcen registration.  For instance, `++add` is registered under the Kelvin tag of `hoon.hoon`:
 
@@ -1179,7 +1179,7 @@ You have received a bunch of `u3_nouns` or `u3_atoms`, but you presumably want t
 
 A `u3_noun` will want to be further disassembled into atoms.
 
-A `u3_atom` represents a simple number, but the implementation may or may not be simple.  If the value held in the atom is 31 bits or less, it's stored directly in the atom.  If the value is 32 bits the atom holds a pointer into the loom where the actual value is stored. ( see [Nouns](../reference/nouns) )
+A `u3_atom` represents a simple number, but the implementation may or may not be simple.  If the value held in the atom is 31 bits or less, it's stored directly in the atom.  If the value is 32 bits the atom holds a pointer into the loom where the actual value is stored. ( see [Nouns](/system/runtime/reference/nouns) )
 
 You don't want to get bogged down in the details of this—you just want to get data out of your atoms.
 
@@ -1299,7 +1299,7 @@ There are two facets here:
     return(u3nt(a, b, u3_nul));    // for two atoms as a list
     ```
 
-2.  **Memory allocation.**  Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important.  More information is available in [the “Nouns” docs](../reference/nouns).
+2.  **Memory allocation.**  Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important.  More information is available in [the “Nouns” docs](/system/runtime/reference/nouns).
 
 
 ##  Pills
@@ -1391,7 +1391,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 
 2.  Comparison to the reference Urbit binary can be done with a second development ship and the same Hoon library and generator.
 
-3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../../../courses/hoon-school/I-testing) and the [testing guide](../../../userspace/apps/guides/unit-tests).
+3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](/courses/hoon-school/I-testing) and the [testing guide](/userspace/apps/guides/unit-tests).
 
     ```hoon
     > -test %/tests/lib/trig-rs ~
@@ -1410,11 +1410,11 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 
 We omit from the current discussion a few salient points:
 
-1.  Reference counting with transfer and retain semantics. (For everything the new developer does outside of real kernel shovel work, one will use transfer semantics.)  These are discussed in [the “Noun” docs](../reference/nouns).
+1.  Reference counting with transfer and retain semantics. (For everything the new developer does outside of real kernel shovel work, one will use transfer semantics.)  These are discussed in [the “Noun” docs](/system/runtime/reference/nouns).
 
-2.  The structure of memory: the loom, with outer and inner roads.  This is discussed in [the “Noun” docs](../reference/nouns).
+2.  The structure of memory: the loom, with outer and inner roads.  This is discussed in [the “Noun” docs](/system/runtime/reference/nouns).
 
-3.  Many details of C-side atom declaration and manipulation from the `u3` library.  These are discussed in [the API docs](../reference/api).
+3.  Many details of C-side atom declaration and manipulation from the `u3` library.  These are discussed in [the API docs](/system/runtime/reference/api).
 
 4.  `fprintf`-based output should be done using `fprintf()` to `stderr`.  Use both `\n` and `\r` to achieve line feed (move cursor down one line) and carriage return (move it to the left).  You can also use `u3l_log` which does not require `\r\n`, but should not be used in cases where the IO drivers have not yet been initialized or can no longer be relied upon, e.g. crashing or shutdown.
 

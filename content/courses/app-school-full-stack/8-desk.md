@@ -64,7 +64,7 @@ The fields are as follows:
 - `website` - a link to a website for the app. This would often be its Github repo.
 - `license` - the license of for the app.
 - `base` - the desk name of the app.
-- `glob-ames` - the ship to retrieve the front-end files from, and the hash of those files. We've put `~zod` here but this would be the actual ship distributing the app when it's live on the network. The hash is `0v0` initially, but once we upload the front-end files it will be updated to the hash of those files automatically. Note that it's also possible to distribute front-end files from a separate web server. In that case, you'd use `glob-http` rather than `glob-ames`. The [Glob documentation](../../userspace/apps/reference/dist/glob) covers this alternative approach in more detail.
+- `glob-ames` - the ship to retrieve the front-end files from, and the hash of those files. We've put `~zod` here but this would be the actual ship distributing the app when it's live on the network. The hash is `0v0` initially, but once we upload the front-end files it will be updated to the hash of those files automatically. Note that it's also possible to distribute front-end files from a separate web server. In that case, you'd use `glob-http` rather than `glob-ames`. The [Glob documentation](/userspace/apps/reference/dist/glob) covers this alternative approach in more detail.
 
 Our files should now look like this:
 
@@ -182,8 +182,8 @@ The last thing we need to do is publish our app, so other users can install it f
 
 ## Resources
 
-- [App publishing/distribution documentation](../../userspace/apps/reference/dist) - Documentation covering third party desk composition, publishing and distribution.
+- [App publishing/distribution documentation](/userspace/apps/reference/dist) - Documentation covering third party desk composition, publishing and distribution.
 
-- [Glob documentation](../../userspace/apps/reference/dist/glob) - Comprehensive documentation of handling front-end files.
+- [Glob documentation](/userspace/apps/reference/dist/glob) - Comprehensive documentation of handling front-end files.
 
-- [Desk publishing guide](../../userspace/apps/guides/software-distribution) - A step-by-step guide to creating and publishing a desk.
+- [Desk publishing guide](/userspace/apps/guides/software-distribution) - A step-by-step guide to creating and publishing a desk.

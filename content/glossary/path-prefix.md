@@ -1,6 +1,6 @@
 # Path Prefix
 
-A **path prefix** is the first three elements of a [Clay](clay) [path](path). These three fields encode a `beak` in `path` form. A `beak` is a three-element tuple of [ship](ship), [desk](desk), and [case](case). Here's an example:
+A **path prefix** is the first three elements of a [Clay](/glossary/clay) [path](/glossary/path). These three fields encode a `beak` in `path` form. A `beak` is a three-element tuple of [ship](/glossary/ship), [desk](/glossary/desk), and [case](/glossary/case). Here's an example:
 
 ```hoon
 /~sampel-palnet/base/~2022.9.4..17.13.12..5835

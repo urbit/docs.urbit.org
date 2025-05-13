@@ -1,4 +1,4 @@
-# Docs App
+# Docs App {#docs-app}
 
 The `%docs` app allows you to include documentation with the desks you distribute, making them available for easy browsing by users and developers.
 
@@ -17,7 +17,7 @@ For more details of these file formats, as well as details of the `%docu` mark a
 
 Apart from the `mark` and location requirements described above, there are no particular restrictions on how you organise your docs, or what docs you include. There are, however, some general recommendations detailed in the [Suggested Structure](structure.md) section.
 
-## Dev desk
+## Dev desk {#dev-desk}
 
 To include docs in your own desk, there are a few files you'll need (mark files, etc). These are included in the `docs-dev` dev desk in the [github repo](https://github.com/tinnus-napbus/docs-app). These files are all symlinked, so you'll need to clone the whole repo, then copy them across with something like:
 

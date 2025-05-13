@@ -1,32 +1,32 @@
-# Environment Setup
+# Environment Setup {#environment-setup}
 
 This guide covers best practices for preparing your environment to develop within the Urbit ecosystem.
 
-## Text editors
+## Text editors {#text-editors}
 
 A variety of plugins have been built to provide support for the Hoon language in different text editors. These are listed below.
 
 **Note:** The hoon compiler expects Unix-style line endings (LF) and will fail to parse Windows-style line endings (CRLF). Make sure your editor is set to use LF for line endings, especially if you're developing on Windows.
 
-#### Sublime Text
+#### Sublime Text {#sublime-text}
 
 Sublime Text is closed-source, but may be downloaded for free and there is no enforced time limit for evaluation. It runs on all major operating systems. It is available [here](https://www.sublimetext.com/).
 
-#### Visual Studio Code
+#### Visual Studio Code {#visual-studio-code}
 
 Visual Studio Code is free and open-source and runs on all major operating systems. It is available [here](https://code.visualstudio.com/). Hoon support may be acquired in the Extensions menu within the editor by searching for `Hoon`.
 
-#### Emacs
+#### Emacs {#emacs}
 
 Emacs is free and open-source and runs on all major operating systems. It is available [here](https://www.gnu.org/software/emacs/). Hoon support is available with [hoon-mode.el](https://github.com/urbit/hoon-mode.el).
 
-#### Vim
+#### Vim {#vim}
 
 Vim is free and open-source and runs on all major operating systems. It is available [here](https://www.vim.org/). Hoon support is available with [hoon.vim](https://github.com/urbit/hoon.vim).
 
-## Development ships
+## Development ships {#development-ships}
 
-### Creating a fake ship
+### Creating a fake ship {#creating-a-fake-ship}
 
 To do work with Hoon, we recommended using a "fake" ship — one that's not connected to the network.
 
@@ -40,7 +40,7 @@ To create a fake ship named `~zod`, run the command below. You can replace `zod`
 
 This should take a couple of minutes, during which you should see a block of boot messages, starting with the Urbit version number.
 
-### Fake ship networking
+### Fake ship networking {#fake-ship-networking}
 
 Fake ships on the same machine can automatically talk to one another. Having created a fakezod, you can create a fake `~bus` the same way:
 
@@ -56,7 +56,7 @@ Now in the fakezod's dojo, try:
 hi ~bus successful
 ```
 
-### Local Networking
+### Local Networking {#local-networking}
 
 Fake ships run on their own network using fake keys and do not communicate with live-net ships in any way. Multiple fake ships running on the same machine can network with each other. However, these fake ships still have 'realistic' packet routing: fake galaxies can talk to each other, but fake stars/planets cannot - unless they have the appropriate fake sponsors running, too.
 
@@ -82,7 +82,7 @@ For your convenience, note the following relationships of several convenient pla
 
 Other points can be calculated using [the layout of Azimuth](hoon-school/C-azimuth.md#the-urbit-address-space).
 
-### Faster fake ship booting
+### Faster fake ship booting {#faster-fake-ship-booting}
 
 While working with Hoon, you'll often want to delete an old fake ship and recreate a fresh one. Rather than having to wait a few minutes for the fresh ship to be initialized, you can instead create a backup copy of a fake ship. That way you can just delete the current copy, replace it with the backup, and reboot in a matter of seconds.
 
@@ -116,11 +116,11 @@ cp -r zod.new zod
 ./urbit zod
 ```
 
-## Working with desks
+## Working with desks {#working-with-desks}
 
 If you're just working in the dojo or experimenting with generators, committing to the `%base` desk on a fake ship is fine. If you're working on a Gall agent or developing a desk for distribution, you'll most likely want to work on a separate desk and it's slightly more complicated.
 
-### Mount a desk
+### Mount a desk {#mount-a-desk}
 
 To mount a desk to Unix so you can add files, you just need to run the `|mount` command in the dojo and specify the name of the desk to mount:
 
@@ -141,7 +141,7 @@ You can unmount it again by running the `|unmount` command in the dojo:
 |unmount %base
 ```
 
-### Create a new desk
+### Create a new desk {#create-a-new-desk}
 
 To create a new desk, you'll need to merge from an existing one, typically `%base`. In the dojo, run the following (you can change `%mydesk` to your preferred name):
 
@@ -153,7 +153,7 @@ If you now mount it, you'll have `/mydesk` directory in your pier with all the f
 
 Desks must contain all the `mark` files, libraries, etc, that they need. A `sys.kelvin` file is mandatory, and there are a few `mark` files necessary as well. In the next couple of sections we'll look at different ways to populate a new desk with the necessary files.
 
-### Minimal desk
+### Minimal desk {#minimal-desk}
 
 This is the absolute minimal desk you'll be able to commit:
 
@@ -177,7 +177,7 @@ echo "[%zuse 416]" > sys.kelvin
 
 The other `mark` files can just be copied across from the `%base` desk.
 
-### Using `dev` desks
+### Using `dev` desks {#using-dev-desks}
 
 If you're working on something more complex, for example a desk with agents and a front-end, there will be a number of `mark` files, libraries, etc, that will be necessary. Rather than having to manually copy all the files from the relevant default desks, the [Urbit OS repo](https://github.com/urbit/urbit) includes some dev desks which can be used as a base. To get these, make sure you have git installed and then clone the repo:
 
@@ -232,7 +232,7 @@ echo "[%zuse 416]" > mydesk/sys.kelvin
 
 And you'll be able to mount the desk with `|commit %mydesk`.
 
-## Project organization
+## Project organization {#project-organization}
 
 When you're developing a desk, it's best to structure your working directory with the same hierarchy as a real desk. For example, `~/project/mydesk` might look like:
 
@@ -268,7 +268,7 @@ And then just commit it in the dojo:
 
 If you're [using dev desks](#using-dev-desks) as a base, it's best to keep those files separate from your own code.
 
-### Syncing repos
+### Syncing repos {#syncing-repos}
 
 A useful pattern is to work from a git repo and sync your work with the pier of a fake ship. An easy way to do this is with the following command:
 

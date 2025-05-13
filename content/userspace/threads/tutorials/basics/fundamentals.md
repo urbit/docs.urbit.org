@@ -1,6 +1,6 @@
-# Fundamentals
+# Fundamentals {#fundamentals}
 
-## Introduction
+## Introduction {#introduction}
 
 A thread is like a transient gall agent. Unlike an agent, it can end and it can fail. The primary uses for threads are:
 
@@ -9,7 +9,7 @@ A thread is like a transient gall agent. Unlike an agent, it can end and it can 
 
 Threads are managed by the gall agent called `spider`.
 
-## Thread location
+## Thread location {#thread-location}
 
 Threads live in the `ted` directory of each desk. For example, in a desk named `%sandbox`:
 
@@ -30,7 +30,7 @@ From the dojo, `ted/baz.hoon` can be run with `-sandbox!baz`, and `ted/foo/bar.h
 
 **NOTE:** When the dojo sees the `-` prefix it automatically handles creating a thread ID, composing the argument, poking the `spider` gall agent and subscribing for the result. Running a thread from another context (eg. a gall agent) requires doing these things explicitly and is outside the scope of this particular tutorial.
 
-## Libraries and Structures
+## Libraries and Structures {#libraries-and-structures}
 
 There are three files that matter:
 
@@ -40,7 +40,7 @@ There are three files that matter:
 
 - `/lib/strandio/hoon` - this contains a large collection of ready-made functions for use in threads. You'll likely use many of these when you write threads, so it's very useful.
 
-## Thread definition
+## Thread definition {#thread-definition}
 
 `/sur/spider/hoon` defines a thread as:
 
@@ -54,7 +54,7 @@ That is, a gate which takes a `vase` and returns the `form` of a `strand` that p
 
 This is because threads typically do a bunch of I/O so it can't just immediately produce a result and end. Instead the strand will get some input, produce output, get some new input, produce new output, and so forth, until they eventually produce a `%done` with the actual final result.
 
-## Strands
+## Strands {#strands}
 
 Strands are the building blocks of threads. A thread will typically compose multiple strands.
 
@@ -79,9 +79,9 @@ Strands are conventionally given the face `m` like:
 
 **NOTE:** a comma prefix as in `,vase` is the irregular form of [`^:` ketcol](../../../../language/hoon/reference/rune/ket.md#-ketcol) which produces a gate that returns the sample value if it's of the correct type, but crashes otherwise.
 
-## Form and Pure
+## Form and Pure {#form-and-pure}
 
-### `form`
+### `form` {#form}
 
 The `form` arm is the mold of the strand, suitable for casting. The two other arms produce `form`s so you'll cast everything to this like:
 
@@ -91,13 +91,13 @@ The `form` arm is the mold of the strand, suitable for casting. The two other ar
 ...
 ```
 
-### `pure`
+### `pure` {#pure}
 
 Pure produces a strand that does nothing except return a value. So, `(pure:(strand ,@tas) %foo)` is a strand that produces `%foo` without doing any IO.
 
 We'll cover `bind` later.
 
-## A trivial thread
+## A trivial thread {#a-trivial-thread}
 
 ```hoon
 /-  spider
@@ -120,7 +120,7 @@ Save the above code as a file in `ted/mythread.hoon` and `|commit` it. Run it wi
 
 **NOTE:** The dojo wraps arguments in a unit so that's why it's `[~ 'foo']` rather than just `'foo'`.
 
-## Analysis
+## Analysis {#analysis}
 
 We'll go through it line-by line.
 

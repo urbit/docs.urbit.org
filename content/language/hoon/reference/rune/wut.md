@@ -1,8 +1,8 @@
-# ? wut · Conditionals
+# ? wut · Conditionals {#-wut-conditionals}
 
 Hoon has the usual program control branches. It also has the usual logical operators: AND `?&`, OR `?|`, and NOT `?!`. It also has a `?=` rune that tests whether a value matches a given type. In the course of type inference, Hoon learns from `?=` tests in the test condition of [`?:` ("wutcol")](#-wutcol) expressions.
 
-## Overview
+## Overview {#overview}
 
 All `?` runes reduce to `?:` and/or `?=`.
 
@@ -14,11 +14,11 @@ If the compiler detects that the branch is degenerate (only one side is taken), 
 
 ---
 
-## `?|` "wutbar"
+## `?|` "wutbar" {#-wutbar}
 
 Logical OR.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Variable number of arguments.
 
@@ -54,13 +54,13 @@ Variable number of arguments.
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtbr p=(list hoon)]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
@@ -68,7 +68,7 @@ Variable number of arguments.
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
 ```
 
-#### Desugaring
+#### Desugaring {#desugaring}
 
 ```hoon
 |-
@@ -79,11 +79,11 @@ Variable number of arguments.
 $(p t.p)
 ```
 
-#### Produces
+#### Produces {#produces}
 
 If any argument evaluates to true (`%.y`), true. If all arguments evaluate to false (`%.n`), false.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > |(=(6 42) =(42 42))
@@ -95,11 +95,11 @@ If any argument evaluates to true (`%.y`), true. If all arguments evaluate to fa
 
 ---
 
-## `?-` "wuthep"
+## `?-` "wuthep" {#--wuthep}
 
 Switch against a union, with no default.
 
-#### Syntax
+#### Syntax {#syntax}
 
 One fixed argument, then a variable number of pairs.
 
@@ -150,13 +150,13 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wthp p=wing q=(list (pair spec value))]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
 
@@ -168,7 +168,7 @@ None
 ~|(%mint-lost !!)
 ```
 
-#### Desugaring
+#### Desugaring {#desugaring}
 
 ```hoon
 |-
@@ -179,7 +179,7 @@ None
 $(q t.q)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 The `?-` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. There is no default branch.
 
@@ -187,7 +187,7 @@ The compiler makes sure that your code neither misses a case of the union, nor i
 
 A missing case will throw the `mint-lost` error. An extra case will throw `mint-vain`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =cor |=  vat=?(%a %b)
@@ -212,7 +212,7 @@ A missing case will throw the `mint-lost` error. An extra case will throw `mint-
 
 Branch on a boolean test.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -244,23 +244,23 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtcl p=hoon q=hoon r=hoon]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 If `p` produces true (`%.y`), then `q`. If `p` produces false (`%.n`), then `r`. If `p` is not a boolean, compiler yells at you.
 
-#### Discussion
+#### Discussion {#discussion}
 
 If test analysis reveals that either branch is never taken, or if `p` is not a boolean, compilation fails. An untaken branch is indicated with `mint-lost`.
 
 Note also that all other branching expressions reduce to `?:`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ?:((gth 1 0) 3 4)
@@ -282,11 +282,11 @@ Note also that all other branching expressions reduce to `?:`.
 
 ---
 
-## `?.` "wutdot"
+## `?.` "wutdot" {#-wutdot}
 
 Branch on a boolean test, inverted.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -318,25 +318,25 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtdt p=hoon q=hoon r=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ?:(p r q)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 `?.` is just like `?:`, but with its last two subexpressions reversed.
 
 As is usual with inverted forms, use `?.` when the true-case expression is much taller and/or wider than the false-case expression.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ?.((gth 1 2) 3 4)
@@ -355,11 +355,11 @@ As is usual with inverted forms, use `?.` when the true-case expression is much 
 
 ---
 
-## `?^` "wutket"
+## `?^` "wutket" {#-wutket}
 
 Branch on whether a wing of the subject is a cell.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -391,23 +391,23 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtkt p=wing q=hoon r=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ?:(?=(^ p) q r)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?^` branches, `q` or `r`, is never taken.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ?^(0 1 2)
@@ -423,11 +423,11 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ---
 
-## `?<` "wutgal"
+## `?<` "wutgal" {#-wutgal}
 
 Negative assertion.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -458,23 +458,23 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtgl p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ?:(p !! q)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 `?<` is used to force a crash when some condition `p` doesn't yield false (`%.n`). It can be used for type inference with the `?=` rune, much like the `?>` rune.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ?<(=(3 4) %foo)
@@ -494,11 +494,11 @@ nest-fail
 
 ---
 
-## `?>` "wutgar"
+## `?>` "wutgar" {#-wutgar}
 
 Positive assertion.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -529,23 +529,23 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtgr p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ?.(p !! q)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 `?>` is used to force a crash when some condition `p` doesn't yield true (`%.y`). It can be used for type inference, with the `?=` rune, to specify the type of a value.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ?>(=(3 3) %foo)
@@ -565,11 +565,11 @@ nest-fail
 
 ---
 
-## `?+` "wutlus"
+## `?+` "wutlus" {#-wutlus}
 
 Switch against a union, with a default.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two fixed arguments, then a variable number of pairs.
 
@@ -620,13 +620,13 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtls p=wing q=hoon r=(list (pair spec hoon))]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `r`:
 
@@ -638,7 +638,7 @@ None
 q
 ```
 
-#### Desugaring
+#### Desugaring {#desugaring}
 
 ```hoon
 |-
@@ -649,13 +649,13 @@ q
 $(r t.r)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 The `?+` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. If `p`'s type doesn't match the case for any given branch, the default expression, `q`, is evaluated.
 
 If there is a case that is never taken you'll get a `mint-vain` error.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =cor |=  vat=@tas
@@ -676,11 +676,11 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 
 ---
 
-## `?&` "wutpam"
+## `?&` "wutpam" {#-wutpam}
 
 Logical AND.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Variable arguments.
 
@@ -715,13 +715,13 @@ Variable arguments.
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtpm p=(list hoon)]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
@@ -729,7 +729,7 @@ Variable arguments.
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
 ```
 
-#### Desugaring
+#### Desugaring {#desugaring}
 
 ```hoon
 |-
@@ -740,11 +740,11 @@ Variable arguments.
 $(p t.p)
 ```
 
-#### Produces
+#### Produces {#produces}
 
 If ALL arguments evaluate to true (`%.y`), true (`%.y`). If one or more evalute to false (`%.n`), false (`%.n`).
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > &(=(6 6) =(42 42))
@@ -756,11 +756,11 @@ If ALL arguments evaluate to true (`%.y`), true (`%.y`). If one or more evalute 
 
 ---
 
-## `?@` "wutpat"
+## `?@` "wutpat" {#-wutpat}
 
 Branch on whether a wing of the subject is an atom.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -792,27 +792,27 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtpt p=wing q=hoon r=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ?:(?=(@ p) q r)
 ```
 
-#### Produces
+#### Produces {#produces}
 
 If `p` is an atom, `q`. If `p` is a cell, `r`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?@` branches, `q` or `r`, is never taken.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ?@(0 1 2)
@@ -828,11 +828,11 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ---
 
-## `?~` "wutsig"
+## `?~` "wutsig" {#-wutsig}
 
 Branch on whether a wing of the subject is null.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -864,28 +864,28 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtsg p=wing q=hoon r=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ?:(?=($~ p) q r)
 ```
 
-#### Produces
+#### Produces {#produces}
 
 If `p` is null (`~`), `q`. If `p` is non-null, `r`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 It's bad style to use `?~` to test for any zero atom. Use it only for a true
 null, `~`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo ""
@@ -896,11 +896,11 @@ null, `~`.
 
 ---
 
-## `?=` "wuttis"
+## `?=` "wuttis" {#-wuttis}
 
 Test pattern match.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -929,17 +929,17 @@ q
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtts p=spec q=wing]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 `%.y` (true) if the noun at `q` is in the type of `p`; `%.n` (false) otherwise.
 
-#### Discussion
+#### Discussion {#discussion}
 
 `?=` is not as powerful as it might seem. For instance, it can't generate a loop -- you cannot (and should not) use it to test whether a `*` is a `(list @)`. Nor can it validate atomic auras.
 
@@ -949,7 +949,7 @@ For example, when matching from a tagged union for the type `[%foo p=@ q=[@ @]]`
 
 A common error is `find.$`, meaning `p` is not a type.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =bar [%foo %bar %baz]
@@ -959,11 +959,11 @@ A common error is `find.$`, meaning `p` is not a type.
 
 ---
 
-## `?!` "wutzap"
+## `?!` "wutzap" {#-wutzap}
 
 Logical NOT.
 
-#### Syntax
+#### Syntax {#syntax}
 
 One argument, fixed.
 
@@ -971,23 +971,23 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `?!  p`   | `?!(p)`   | `!p`           |
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%wtzp p=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 .=(| p)
 ```
 
-#### Produces
+#### Produces {#produces}
 
 The logical NOT of `p`, which must evaluate to either `%.y` or `%.n`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 ~zod:dojo> ?!(.=(1 2))

@@ -1,6 +1,6 @@
-# Unit Tests
+# Unit Tests {#unit-tests}
 
-## Structure
+## Structure {#structure}
 
 The `%base` desk includes a `-test` thread which can run unit tests you've written. A test is a Hoon file which produces a `core`. The `-test` thread will look for any arms in the core whose name begin with `test-`, e.g:
 
@@ -35,7 +35,7 @@ The most commonly used function is `expect-eq`, which is used like:
 
 Of course, you'll want to test something else you've written rather than just expressions in the test file itself. To do that, you'd just import the file with `/=` or a similar Ford rune, and then call its functions in the test arms. You're free to do any compositions, import types, etc, as long as the file ultimately produces a `core` with `test-*` arms.
 
-## Running
+## Running {#running}
 
 The `-test` thread takes a `(list path)` in the Dojo, where each path is a path to a test file. The `path` _must_ include the full path prefix (`/[ship]/[desk]/[case]`). The `path` _may_ omit the mark, since a `.hoon` file is assumed. The `path` _may_ include the name of a test arm after the filename. In that case, only the specified test arm will be run.
 
@@ -76,7 +76,7 @@ OK      /lib/naive/test-deposit
 ok=%.y
 ```
 
-## More info
+## More info {#more-info}
 
 A good reference example is the test file for the `/lib/number-to-words.hoon` library, located in `/tests/lib/number-to-words.hoon`. Note that the `/tests` directory is not typically included in standard pills. If you want to have a look at existing tests as a reference, you may need to clone the `urbit/urbit` repo on [Github](https://github.com/urbit/urbit).
 

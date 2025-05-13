@@ -1,8 +1,8 @@
-# Take Result
+# Take Result {#take-result}
 
 Here we've added an extra card to subscribe for the result and a couple of lines in on-agent to test if it succeeded:
 
-#### `thread-starter.hoon`
+#### `thread-starter.hoon` {#thread-starterhoon}
 
 ```hoon
 /+  default-agent, dbug
@@ -67,7 +67,7 @@ Here we've added an extra card to subscribe for the result and a couple of lines
 --
 ```
 
-#### `test-thread.hoon`
+#### `test-thread.hoon` {#test-threadhoon}
 
 ```hoon
 /-  spider
@@ -97,7 +97,7 @@ Thread started successfully
 Thread failed: not-foo
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 In `on-poke` we've added an extra card _before_ the `%spider-start` poke to subscribe for the result:
 

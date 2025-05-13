@@ -1,6 +1,6 @@
-# ABC Blocks
+# ABC Blocks {#abc-blocks}
 
-## Challenge: ABC Blocks
+## Challenge: ABC Blocks {#challenge-abc-blocks}
 
 You are given a collection of blocks with two letters of the alphabet on each block. A complete alphabet is guaranteed among all sides of the blocks. You would like to check if a given word can be written with the provided set of blocks.
 
@@ -50,7 +50,7 @@ dojo: naked generator failure
 %.n
 ```
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
@@ -173,11 +173,11 @@ Following a principle of test-driven development, we compose a series of tests w
 --
 ```
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _By ~dozreg-toplud.  In the process, he found and fixed a bug in the implementation of `++curr`._
 
@@ -316,7 +316,7 @@ _By ~dozreg-toplud.  In the process, he found and fixed a bug in the implementat
 --
 ```
 
-### Solution #2
+### Solution #2 {#solution-2}
 
 _By ~bantus-follus_
 
@@ -407,7 +407,7 @@ spellcheck
     --
 ```
 
-### Solution #3
+### Solution #3 {#solution-3}
 _By ~dannul-bortux_
 
 ```hoon

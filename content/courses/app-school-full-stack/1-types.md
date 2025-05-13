@@ -1,4 +1,4 @@
-# 1. Types
+# 1. Types {#1-types}
 
 The best place to start when building a new agent is its type definitions in its `/sur` structure file. The main things to think through are:
 
@@ -9,7 +9,7 @@ The best place to start when building a new agent is its type definitions in its
 
 Let's look at each of these questions in turn, and put together our agent's `/sur` file, which we'll call `/sur/journal.hoon`.
 
-## 1. Basic types
+## 1. Basic types {#1-basic-types}
 
 Our journal entries will just be plain text, so a simple `@t` will work fine to store their contents. Entries will be organized by date, so we'll also need to decide a format for that.
 
@@ -23,7 +23,7 @@ The structure for a journal entry can therefore be:
 +$  entry  [=id =txt]
 ```
 
-## 2. Actions
+## 2. Actions {#2-actions}
 
 Now that we know what a journal entry looks like, we can think about what kind of actions/commands our agent will handle in its `++on-poke` arm. For our journal app, there are three basic things we might do:
 
@@ -41,7 +41,7 @@ We can create a tagged union structure for these actions, like so:
   ==
 ```
 
-## 3. Updates
+## 3. Updates {#3-updates}
 
 Updates are a little more complicated than our actions. Firstly, our front-end needs to be able to retrieve an initial list of journal entries to display. Once it has that, it also needs to be notified of any changes. For example, if a new entry is added, it needs to know so it can add it to the list it's displaying. If an entry gets deleted, it needs to remove it from the list. Etc.
 
@@ -72,7 +72,7 @@ We can define a logged update like so, where the `@` is the update timestamp in 
   ==
 ```
 
-## 4. State
+## 4. State {#4-state}
 
 We need to store two things in our state: the journal entries and the update log. We could just use a couple of `map`s like so:
 
@@ -108,7 +108,7 @@ The entries in `$journal` are arranged in ascending time order using `++gth`, so
 
 We'll look at how to use ordered maps later when we get to writing the agent itself.
 
-## Conclusion
+## Conclusion {#conclusion}
 
 When we put each of these parts together, we have our complete `/sur/journal.hoon` file:
 
@@ -147,7 +147,7 @@ When we put each of these parts together, we have our complete `/sur/journal.hoo
 
 </details>
 
-## Resources
+## Resources {#resources}
 
 - [App School I /sur section](../app-school/7-sur-and-marks.md#sur) - This section of App School covers writing a `/sur` structure library for an agent.
 

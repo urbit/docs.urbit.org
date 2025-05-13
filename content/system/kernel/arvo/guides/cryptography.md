@@ -1,14 +1,14 @@
-# Cryptography
+# Cryptography {#cryptography}
 
 Cryptography is central to the operation of Urbit. Here we give an overview of how it is utilized.
 
 There are two categories of keys and five components of the system involved with cryptography on Urbit. We first summarize the two categories of keys and how they are utilized by each ship type, then cover how different parts of Urbit are involved in cryptography.
 
-## Types of keys
+## Types of keys {#types-of-keys}
 
 The two categories of keys are your Azimuth/Ethereum keys and your networking keys. In both cases, these are public/private key pairs utilized for public key cryptography.
 
-### Azimuth keys
+### Azimuth keys {#azimuth-keys}
 
 Your Urbit ID exists as an ERC-721 non-fungible token on the Ethereum blockchain, and as such is contained in a wallet whose private key you possess. If you are are utilizing a [master ticket](../../../identity#master-ticket), this private key is derived from a seed, which is what you use to login to [Bridge](../../../../glossary/bridge.md). Otherwise, you have generated the key by some other process, of which there are too many to list here. Besides the private key which unlocks your ownership wallet address, you may have a few other private keys which unlock a wallet that corresponds to your ship's [proxies](../../../../glossary/proxies.md). We refer collectively to these keys as your _Azimuth keys_.
 
@@ -18,7 +18,7 @@ It is important to note that no Azimuth keys are stored anywhere within your shi
 
 For more information on the usage of these keys and the associated proxies, see the [Azimuth documentation](../../../identity).
 
-### Networking keys
+### Networking keys {#networking-keys}
 
 All communications in Urbit over the [Ames](../../../../glossary/ames.md) network are end-to-end encrypted, and thus your ship stores its own public/private pair of _networking keys_ utilized for encryption and authentication. Networking keys for all ship types are stored within the ship's [Jael](../../../../glossary/jael.md) [vane](../../../../glossary/vane.md).
 
@@ -28,7 +28,7 @@ Public keys for moons are not tracked on the blockchain; instead they are tracke
 
 For comets, their 128-bit `@p` name is the hash of their networking public key, and the "mining" process to generate a comet consists of guessing a private key for which the associated public key for which the last two bytes of their `@p` matches one of the stars on the comet sponsors list downloaded during boot. Thus, comets cannot change their networking keys - to get a new private networking key, a new comet must be generated. For a comet to perform an initial handshake with another ship, it utilizes its networking private key stored in Jael to sign an unencrypted attestation packet to verify that it is the owner of the associated public key. Because of this, it is currently impossible for a ship to initiate communication with a comet - the comet must always be the initiator. This means that ultimately two comets cannot communicate with one another unless they have somehow verified each others' public keys via some other method. This is merely a technical limitation imposed by the design of the system, not an intentional handicapping of comet abilities. A workaround to this limitation is slated to be implemented as of May 2021.
 
-## System components
+## System components {#system-components}
 
 [Ames](../../ames) is Arvo's networking vane. All packets sent by Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception to this are comet self-attestation packets utilized to transmit authentication of ownership of the private networking key associated to their public key. Ames is responsible for encryption, decryption, and authentication of all packets. By default, this utilizes AES symmetric key encryption, whose shared private key is got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
 
@@ -40,7 +40,7 @@ For comets, their 128-bit `@p` name is the hash of their networking public key, 
 
 [Azimuth](../../../identity) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
 
-## Additional documentation
+## Additional documentation {#additional-documentation}
 
 The following pages contained more detailed information about the cryptography utilized by each of the system components.
 

@@ -1,8 +1,8 @@
-# Stop Thread
+# Stop Thread {#stop-thread}
 
 Here we've added one last card to `on-poke` to stop the thread and a little extra to `on-agent` to print things for demonstrative purposes.
 
-#### `thread-starter.hoon`
+#### `thread-starter.hoon` {#thread-starterhoon}
 
 ```hoon
 /+  default-agent, dbug
@@ -87,7 +87,7 @@ Here we've added one last card to `on-poke` to stop the thread and a little extr
 
 We've also added a `sleep` to the thread to keep it running for demonstration.
 
-#### `test-thread.hoon`
+#### `test-thread.hoon` {#test-threadhoon}
 
 ```hoon
 /-  spider
@@ -137,7 +137,7 @@ Thread cancelled successfully
 Thread failed: cancelled
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 The card we've added to our agent:
 

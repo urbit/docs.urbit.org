@@ -1,4 +1,4 @@
-# Iris
+# Iris {#iris}
 
 Iris is the HTTP client vane.
 

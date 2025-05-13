@@ -1,4 +1,4 @@
-# Dojo Tools
+# Dojo Tools {#dojo-tools}
 
 [path]: https://docs.urbit.org/glossary/path
 [ship]: https://docs.urbit.org/glossary/ship
@@ -41,23 +41,23 @@ These may be invoked in one of three ways:
 - `|` means a “Hood” generator which may make changes to the system
 - `-` means a thread
 
-## Apps and updates
+## Apps and updates {#apps-and-updates}
 
 These tools are for managing [desks][desk], apps and updates. Install, uninstall, suspend, resume, pause updates, etc.
 
-### `+gall/agents`
+### `+gall/agents` {#gallagents}
 
 Print out the status of Gall agents on a desk.
 
 Agents may either be `archived` or `running`. Nuked or unstarted agents which are not on the manifest are omitted.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > +gall/agents %landscape
@@ -70,13 +70,13 @@ status: running   %hark-store
 
 ---
 
-### `|bump`
+### `|bump` {#bump}
 
 Apply a kernel update.
 
 If `%zuse`'s kelvin version has decreased, try to apply the update. If any desks are incompatible with the new `%zuse` version, they'll be suspended pending a compatible update.
 
-#### Examples
+#### Examples {#examples}
 
 Try to apply update, suspending any incompatible desks:
 
@@ -86,7 +86,7 @@ Try to apply update, suspending any incompatible desks:
 
 ---
 
-### `|install`
+### `|install` {#install}
 
 Install a desk, starting its agents and listening for updates.
 
@@ -94,13 +94,13 @@ If it's a remote desk we don't already have, it will be fetched. The agents star
 
 It takes a `ship` and `desk` as its mandatory arguments. The desk may be installed with a different name specified in the optional `local` argument.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship desk, =local desk
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 |install ~zod %bitcoin
@@ -116,19 +116,19 @@ ship desk, =local desk
 
 ---
 
-### `|nuke`
+### `|nuke` {#nuke}
 
 Shut down an agent and permanently delete its state.
 
 The default behaviour is to shut down the specified Gall agent and discard its state, similar to the now-deprecated `|fade` generator. **Note this irreversibly wipes the app's state**. Additionally, if the optional `desk` argument is `%.y`, it takes a desk rather than an agent name and nukes every agent on the specified desk.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @tas, =desk ?
 ```
 
-#### Examples
+#### Examples {#examples}
 
 Nuke a single agent:
 
@@ -144,35 +144,35 @@ Nuke every agent on a desk:
 
 ---
 
-### `|ota`
+### `|ota` {#ota}
 
 Set the source of updates for the `%base` desk (the kernel and core apps) to the specified ship. Automatic updates will be enabled, and any new updates available will be fetched and installed.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship
 ```
 
-#### Examples
+#### Examples {#examples}
 
 `|ota ~marzod` is equivalent to `|install ~marzod %kids, =local %base`.
 
 ---
 
-### `|pause`
+### `|pause` {#pause}
 
 Pause updates on a desk.
 
 The specified desk will stop tracking updates from its upstream source.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 |pause %bitcoin
@@ -180,19 +180,19 @@ desk
 
 ---
 
-### `|rein`
+### `|rein` {#rein}
 
 Adjust the state of a desk.
 
 This allows you to stop and start agents on a desk, regardless of whether they're on the manifest. Stopped agents have their states archived. It can also suspend and revive the whole desk with the optional `liv` argument.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk (list [? dude:gall]), =liv ?
 ```
 
-#### Examples
+#### Examples {#examples}
 
 Start an agent:
 
@@ -226,19 +226,19 @@ Revive a desk:
 
 ---
 
-### `|revive`
+### `|revive` {#revive}
 
 Revive all agents on a desk, migrating archived states.
 
 All agents specified in `desk.bill` which are suspended will be restarted. If updates to the agents have occurred since their states were archived, they'll be migrated with the state transition functions in the agent. This generator does the same thing as selecting "Resume App" from the app tile's hamburger menu.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 |revive %bitcoin
@@ -246,11 +246,11 @@ desk
 
 ---
 
-### `|start`
+### `|start` {#start}
 
 Start an [agent][agent].
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 term term
@@ -258,7 +258,7 @@ term term
 
 This first `term` is mandatory, the second is optional. If two terms are provided, the first is the [desk][desk] and the second is the agent on that desk to start. If only one term is provided, it's the name of the agent, and the desk is inferred to be the current desk (typically `%base`).
 
-#### Example
+#### Example {#example}
 
 ```
 > |start %landscape %chat-cli
@@ -267,19 +267,19 @@ This first `term` is mandatory, the second is optional. If two terms are provide
 
 ---
 
-### `|suspend`
+### `|suspend` {#suspend}
 
 Shut down all agents on a desk, archiving their states.
 
 The tile in the homescreen (if it has one) will turn gray and say "Suspended" in the top-left corner. This generator does the same thing as selecting "Suspend" from an app tile's hamburger menu.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 |suspend %bitcoin
@@ -287,7 +287,7 @@ desk
 
 ---
 
-### `|uninstall`
+### `|uninstall` {#uninstall}
 
 Uninstall a desk, suspending its agents and ignoring updates.
 
@@ -295,13 +295,13 @@ The specified desk will be retained in Clay, but its agents will all be stopped 
 
 Note that this will not remove the tile or glob from the homescreen, so if the desk has a tile it should be uninstalled with the "Remove App" button in the tile's hamburger menu.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 |uninstall %bitcoin
@@ -309,7 +309,7 @@ desk
 
 ---
 
-### `+vats`
+### `+vats` {#vats}
 
 Print out the status of each installed desk.
 
@@ -329,7 +329,7 @@ Fields:
 - `source aeon` - The revision number of the desk on the `source ship`.
 - `pending updates` - Updates waiting to be applied due to kernel incompatibility.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ?(%suspended %running %blocking %nonexistent), =verb ?, =show-suspended ?, =show-running ?, =show-blocking ?, =show-nonexistent ?
@@ -349,7 +349,7 @@ It may optionally take one of four filters as a primary argument:
 Alternatively, these filters can be *excluded* from the default output of everything by setting one or more of the `=show-*` arguments to `|`.
 
 
-#### Examples
+#### Examples {#examples}
 
 Print everything verbosely (no arguments):
 
@@ -448,29 +448,29 @@ Print everything with low verbosity except suspended desks and blocking desks:
 
 ---
 
-### `+trouble`
+### `+trouble` {#trouble}
 
 Print out the status of each installed desk.
 
 This is a synonym for [`+vats`](#vats).
 
-#### Example
+#### Example {#example}
 
 See [`+vats`](#vats).
 
 ---
 
-## Azimuth
+## Azimuth {#azimuth}
 
 Tools for managing PKI updates from [Azimuth][azimuth].
 
-### `+azimuth/block`
+### `+azimuth/block` {#azimuthblock}
 
 Print the most recent Ethereum block that has been processed.
 
 This is a good way to check if your ship's somehow got behind on PKI state. If the block printed is substantially behind the most recent Ethereum block, it indicates a problem. Note it's normal for it to be a little behind.
 
-#### Example
+#### Example {#example}
 
 ```
 > +azimuth/block
@@ -479,13 +479,13 @@ This is a good way to check if your ship's somehow got behind on PKI state. If t
 
 ---
 
-### `:azimuth|listen`
+### `:azimuth|listen` {#azimuthlisten}
 
 Add a source for PKI updates for a list of ships.
 
 Sets the source that the public keys for a set of ships should be obtained from. This can either be a Gall agent that communicates with an Ethereum node as in the case of galaxies, stars, and planets, or a ship, as in the case of moons.
 
-#### Arguments
+#### Arguments {#arguments}
 
 Either:
 
@@ -501,7 +501,7 @@ Or:
 
 The list of ships are those for which you want Azimuth updates from the specified source. The source is either a ship (`%ship ~sampel`) or an agent (`%app %some-agent`).
 
-#### Example
+#### Example {#example}
 
 ```
 > :azimuth|listen ~[~sampel ~palnet] %ship ~wet
@@ -510,11 +510,11 @@ The list of ships are those for which you want Azimuth updates from the specifie
 
 ---
 
-### `-azimuth-load`
+### `-azimuth-load` {#-azimuth-load}
 
 Refetch and load Azimuth snapshot.
 
-#### Example
+#### Example {#example}
 
 ```
 > -azimuth-load
@@ -525,13 +525,13 @@ ship: processing azimuth snapshot (106.177 points)
 
 ---
 
-### `+azimuth/sources`
+### `+azimuth/sources` {#azimuthsources}
 
 List all Azimuth sources.
 
 This will print a [`state-eth-node:jael`](https://docs.urbit.org/system/kernel/jael/reference/data-types#state-eth-node) structure. Its contents is mostly other ships who are sources for updates about moons, but it will also include `%azimuth`.
 
-#### Example
+#### Example {#example}
 
 ```
 > +azimuth/sources
@@ -546,11 +546,11 @@ This will print a [`state-eth-node:jael`](https://docs.urbit.org/system/kernel/j
 
 ---
 
-### `:azimuth|watch`
+### `:azimuth|watch` {#azimuthwatch}
 
 Change node URL and network for Azimuth.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 cord ?(%mainnet %ropsten %local %default)
@@ -558,7 +558,7 @@ cord ?(%mainnet %ropsten %local %default)
 
 The first argument is the note URL in a cord like `'http://eth-mainnet.urbit.org:8545' `. The second argument specifies the network.
 
-#### Example
+#### Example {#example}
 
 ```
 > :azimuth|watch 'http://eth-mainnet.urbit.org:8545' %default
@@ -567,15 +567,15 @@ The first argument is the note URL in a cord like `'http://eth-mainnet.urbit.org
 
 ---
 
-## CLI Apps
+## CLI Apps {#cli-apps}
 
 These commands are for managing the dojo and other CLI apps.
 
-### `:dojo|acl`
+### `:dojo|acl` {#dojoacl}
 
 Show which ships you've allowed remote access to your dojo.
 
-#### Example
+#### Example {#example}
 
 ```
 ~zod:dojo> :dojo|allow-remote-login ~bus
@@ -588,11 +588,11 @@ Show which ships you've allowed remote access to your dojo.
 
 ---
 
-### `:dojo|allow-remote-login`
+### `:dojo|allow-remote-login` {#dojoallow-remote-login}
 
 Allow a ship to `|dojo/link` your dojo.
 
-#### Arguments
+#### Arguments {#arguments}
 
 The ship you want to allow remote access.
 
@@ -600,7 +600,7 @@ The ship you want to allow remote access.
 ship
 ```
 
-#### Example
+#### Example {#example}
 
 Allow ~bus to link ~zod's dojo:
 
@@ -625,13 +625,13 @@ Link ~zod's dojo on ~bus:
 
 ---
 
-### `:dojo|wipe`
+### `:dojo|wipe` {#dojowipe}
 
 Clear the dojo's subject.
 
 This will clear all values pinned to the dojo's subject with commands like `=foo 42`.
 
-#### Example
+#### Example {#example}
 
 ```
 > =foo 42
@@ -649,11 +649,11 @@ dojo: hoon expression failed
 
 ---
 
-### `:dojo|revoke-remote-login`
+### `:dojo|revoke-remote-login` {#dojorevoke-remote-login}
 
 Revoke permission for a remote ship to `|dojo/link` your dojo.
 
-#### Arguments
+#### Arguments {#arguments}
 
 The ship whose permission you wish to revoke.
 
@@ -661,7 +661,7 @@ The ship whose permission you wish to revoke.
 ship
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 ~zod:dojo> :dojo|allow-remote-login ~bus
@@ -681,13 +681,13 @@ ship
 
 ---
 
-### `|dojo/link`
+### `|dojo/link` {#dojolink}
 
 Connect a local or remote CLI app.
 
 Note a ship's moons can automatically link its dojo, but other ships require explicit permission with [`:dojo|allow-remote-login`](#dojoallow-remote-login).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship term
@@ -695,7 +695,7 @@ ship term
 
 The `ship` is optional, it's only necessary if the app is on a remote ship. The `term` is mandatory, and is the name of the CLI app to connect.
 
-#### Example
+#### Example {#example}
 
 Connect to the dojo on a remote ship (this is only possible if you have permission):
 
@@ -719,11 +719,11 @@ Note you can cycle between CLI apps with Ctrl+x. You can disconnect a CLI app wi
 
 ---
 
-### `|dojo/unlink`
+### `|dojo/unlink` {#dojounlink}
 
 Disconnect a local or remote CLI app.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship term
@@ -731,7 +731,7 @@ ship term
 
 The `ship` is optional, it's only necessary if the app is on a remote ship. The `term` is mandatory, and is the name of the CLI app to disconnect.
 
-#### Example
+#### Example {#example}
 
 Disconnect the local `%chat-cli` app:
 
@@ -751,21 +751,21 @@ Disconnect from a remote dojo session:
 
 ---
 
-## Developer tools
+## Developer tools {#developer-tools}
 
 These tools are mostly useful to developers or similarly technical people.
 
-### `.`
+### `.` {#}
 
 Make a jamfile and write to disk. A noun is jammed and then written to `pier/.urb/put/path/extension` using a `%sag` `%blit`, saving it as a jamfile.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path/extension noun
 ```
 
-#### Example
+#### Example {#example}
 
 This command is often used for writing pills to disk - see e.g. [`+pill/solid`](#pillsolid).
 
@@ -786,17 +786,17 @@ This is the Nock formula for decrement. If you copy it from `/pier/.urb/put/decr
 99
 ```
 
-### `@`
+### `@` {#}
 
 Write atom to a file in binary.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path @
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > `@test/atom 123`
@@ -804,11 +804,11 @@ path @
 
 will create a file called `test.atom` in `pier/.urb/put/test.atom`. The contents of this file is a binary representation of the atom, `1111011`.
 
-### `+ames/flows`
+### `+ames/flows` {#amesflows}
 
 Print details of [Ames][ames] flows by ship.
 
-#### Arguments
+#### Arguments {#arguments}
 
 This argument is optional:
 
@@ -818,7 +818,7 @@ This argument is optional:
 
 If no argument is provided, it will print details of Ames flows for all ships, sorted by the number of flows. If a number n is provided as an argument, it'll only print the top n results.
 
-#### Example
+#### Example {#example}
 
 All flows:
 
@@ -856,13 +856,13 @@ Top 2 ships:
 
 ---
 
-### `|ames/prod`
+### `|ames/prod` {#amesprod}
 
 Reset congestion control; re-send packets immediately.
 
 Ames uses a backoff algorithm for congestion control. This can be inconvenient when debugging in certain cases, you may have to wait a couple of minutes before an unacknowledged packet is re-sent. This generator resets congestion control, causing at least one pending packet to be immediately re-sent for each flow.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship ship ship ...
@@ -870,7 +870,7 @@ ship ship ship ...
 
 If no argument is given, congestion control will be reset for all flows. Otherwise, you can specify a number of `ship`s, and congestion control will only be reset for flows to those ships.
 
-#### Example
+#### Example {#example}
 
 ```
 > |ames/prod
@@ -882,13 +882,13 @@ If no argument is given, congestion control will be reset for all flows. Otherwi
 
 ---
 
-### `|ames/sift`
+### `|ames/sift` {#amessift}
 
 Filter Ames debug printing by ship.
 
 This filters the output controlled by [`|ames/verb`](#amesverb).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship ship ship ....
@@ -896,7 +896,7 @@ ship ship ship ....
 
 If no argument is given, filtering is disabled. Otherwise, Ames debug printing will be filter to only include the specified ships.
 
-#### Example
+#### Example {#example}
 
 Enable filtering:
 
@@ -914,13 +914,13 @@ Disable filtering:
 
 ---
 
-### `|ames/snub`
+### `|ames/snub` {#amessnub}
 
 Blacklist/whitelist ships in Ames.
 
 All packets from either the blacklisted ships or all non-whitelisted ships (as the case may be) will be dropped.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ?(%allow %deny) ship ship ship ship ....
@@ -938,7 +938,7 @@ Note also that this generator totally overrides existing snub settings - it does
 
 {% endhint %}
 
-#### Example
+#### Example {#example}
 
 Create a blocklist:
 
@@ -956,11 +956,11 @@ Create a whitelist (and therefore block everyone else):
 
 ---
 
-### `+ames/timers`
+### `+ames/timers` {#amestimers}
 
 Print Ames message-pump timers by ship.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @ud
@@ -968,7 +968,7 @@ Print Ames message-pump timers by ship.
 
 If no argument is provided, it will print details of Ames timers for all ships, sorted by the number of timers. If a number n is provided as an argument, it'll only print the top n results.
 
-#### Example
+#### Example {#example}
 
 Print all the Ames timers for all ships:
 
@@ -990,11 +990,11 @@ Print the top two ships:
 
 ---
 
-### `|ames/verb`
+### `|ames/verb` {#amesverb}
 
 Enable verbose Ames debug printing.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 verb verb verb...
@@ -1004,7 +1004,7 @@ A `verb:ames` is one of `%snd %rcv %odd %msg %ges %for %rot`. Each one enables p
 
 For details of the meaning of these `verb`s, see its entry in the [Ames Data Types documentation](https://docs.urbit.org/system/kernel/ames/reference/data-types#verb).
 
-#### Example
+#### Example {#example}
 
 ```
 > |ames/verb %msg
@@ -1020,13 +1020,13 @@ ames: ~nec: plea [[~zod 1] [~nec 1] bone=[0 %g /ge/hood]]
 
 ---
 
-### `|ames/wake`
+### `|ames/wake` {#ameswake}
 
 Clean up Ames timers.
 
 Set timers for [Ames][ames] flows that lack them, cancel timers for Ames flows that have them but shouldn't.
 
-#### Example
+#### Example {#example}
 
 ```
 > |ames/wake
@@ -1035,13 +1035,13 @@ Set timers for [Ames][ames] flows that lack them, cancel timers for Ames flows t
 
 ---
 
-### `+pill/brass`
+### `+pill/brass` {#pillbrass}
 
 Build a brass [pill][pill].
 
 A *brass* pill is a complete bootstrap sequence that recompiles the vanes, unlike a [`+pill/solid`](#pillsolid) pill which does not.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 %base-desk %extra-desk-1 %extra-desk-2 ...
@@ -1051,7 +1051,7 @@ The first argument is the desk to be used as "base", containing the kernel etc. 
 
 The base desk may alternatively be specified as a [path][path] to a `/sys` directory including the [path prefix][path prefix] like `/=some-desk=/foo/bar/sys`. In that case, the path prefix from that path will be used to determine the base desk. This is only useful if you want the start-up events in the pill to use an alternative compiler or Arvo source.
 
-#### Example
+#### Example {#example}
 
 Export a brass pill containing just the `%base` desk:
 
@@ -1081,11 +1081,11 @@ Export a brass pill with multiple desks:
 
 ---
 
-### `-build-cast`
+### `-build-cast` {#-build-cast}
 
 Build a static mark conversion gate.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1093,7 +1093,7 @@ path
 
 The [path][path] is of the format `%/from-mark/to-mark`. It must being with the [path prefix][path prefix] denoting the desk that contains the specified mark files.
 
-#### Example
+#### Example {#example}
 
 ```
 > =tape-to-json -build-cast %/tape/json
@@ -1103,11 +1103,11 @@ The [path][path] is of the format `%/from-mark/to-mark`. It must being with the 
 
 ---
 
-### `-build-file`
+### `-build-file` {#-build-file}
 
 Build a Hoon file.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1115,7 +1115,7 @@ path
 
 The [path][path] points to a [Hoon][hoon] file in [Clay][clay]. It must begin with the [path prefix][path prefix].
 
-#### Example
+#### Example {#example}
 
 ```
 > =numbers -build-file %/lib/number-to-words/hoon
@@ -1125,13 +1125,13 @@ The [path][path] points to a [Hoon][hoon] file in [Clay][clay]. It must begin wi
 
 ---
 
-### `-build-mark`
+### `-build-mark` {#-build-mark}
 
 Build a dynamic mark core.
 
 A dynamic [mark][mark] [core][core] is one that deals with `vase`s rather direct values. Its type is a `dais:clay`.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1139,7 +1139,7 @@ path
 
 The path is a [path prefix][path prefix] followed by the mark, like `%/txt`. The mark in question must exist in the desk specified by the prefix.
 
-#### Example
+#### Example {#example}
 
 ```
 > =txt-dais -build-mark %/txt
@@ -1149,13 +1149,13 @@ The path is a [path prefix][path prefix] followed by the mark, like `%/txt`. The
 
 ---
 
-### `-build-nave`
+### `-build-nave` {#-build-nave}
 
 Build a static mark core.
 
 A static [mark][mark] [core][core] is one that deals with values directly rather than vases. Its type is a `nave:clay`.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1163,7 +1163,7 @@ path
 
 The path is a [path prefix][path prefix] followed by the mark, like `%/txt`. The mark in question must exist in the desk specified by the prefix.
 
-#### Example
+#### Example {#example}
 
 ```
 > =txt-nave -build-nave %/txt
@@ -1173,13 +1173,13 @@ The path is a [path prefix][path prefix] followed by the mark, like `%/txt`. The
 
 ---
 
-### `-build-tube`
+### `-build-tube` {#-build-tube}
 
 Build a dynamic mark conversion gate.
 
 A *dynamic* [mark][mark] conversion [gate][gate] is one that deals with `vase`s rather that plain nouns. Its type is a `tube:clay`.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1187,7 +1187,7 @@ path
 
 The [path][path] is of the format `%/from-mark/to-mark`. It must being with the [path prefix][path prefix] denoting the desk that contains the specified mark files.
 
-#### Example
+#### Example {#example}
 
 ```
 > =txt-mime-tube -build-tube %/txt/mime
@@ -1197,15 +1197,15 @@ The [path][path] is of the format `%/from-mark/to-mark`. It must being with the 
 
 ---
 
-### `+dbug`
+### `+dbug` {#dbug}
 
 Query the state or [bowl][bowl] of a running agent.
 
-#### Arguments
+#### Arguments {#arguments}
 
 See the [dbug section of App School lesson 3](https://docs.urbit.org/courses/app-school/3-imports-and-aliases#dbug) for details of usage.
 
-#### Example
+#### Example {#example}
 
 This is only used with an `:agent`, not by itself.
 
@@ -1217,11 +1217,11 @@ This is only used with an `:agent`, not by itself.
 
 ---
 
-### `|gall/sear`
+### `|gall/sear` {#gallsear}
 
 Clear pending `move` queue from a ship.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship
@@ -1229,7 +1229,7 @@ ship
 
 The ship from which queued moves should be cleared.
 
-#### Example
+#### Example {#example}
 
 ```
 > |gall/sear ~nec
@@ -1238,13 +1238,13 @@ The ship from which queued moves should be cleared.
 
 ---
 
-### `|gall/sift`
+### `|gall/sift` {#gallsift}
 
 Set Gall verbosity by agent.
 
 This filters the debug output toggled by [`|gall/verb`](#gallverb).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 %agent1 %agent2 %agent3....
@@ -1252,7 +1252,7 @@ This filters the debug output toggled by [`|gall/verb`](#gallverb).
 
 If agents are specified, debug prints will be filtered to only those agents. If no arguments are given, filtering will be disabled.
 
-#### Example
+#### Example {#example}
 
 Filter to just these agents:
 
@@ -1270,11 +1270,11 @@ Disable filtering:
 
 ---
 
-### `|gall/verb`
+### `|gall/verb` {#gallverb}
 
 Toggle Gall debug printing.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 %odd
@@ -1284,7 +1284,7 @@ If the `%odd` argument is provided, Gall will print debug information about erro
 
 If no argument is given, such debug printing will be disabled.
 
-#### Example
+#### Example {#example}
 
 Turn on error messages:
 
@@ -1303,7 +1303,7 @@ hi ~nec successful
 
 ---
 
-### `|pass`
+### `|pass` {#pass}
 
 Pass a task to a vane.
 
@@ -1315,7 +1315,7 @@ This is a powerful command and has the potential to break things if you're not c
 
 {% endhint %}
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 note-arvo
@@ -1344,7 +1344,7 @@ It's a [vane][vane] letter (`%a` for Ames, `%b` for Behn, etc) followed by one o
 
 Note that you can't receive any gifts in response.
 
-#### Example
+#### Example {#example}
 
 Run `-hi our "foo"` via Khan:
 
@@ -1364,7 +1364,7 @@ foo
 
 ---
 
-### `-read`
+### `-read` {#-read}
 
 Read a file, local or remote.
 
@@ -1372,7 +1372,7 @@ While [`+cat`](#cat) can only read text files, the `-read` [thread][thread] can 
 
 `-read` isn't limited to ordinary file reads, but can make requests using any [care][care]. Some `care`s might be useful, such as `%u` to check file existence. Others have obscure technical uses. The most common is `%x`, which is a normal read.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 care ship desk case path
@@ -1387,7 +1387,7 @@ care ship desk case path
   - `tas+foobar`: A revision label, these are rarely used.
 - [path][path]: The filepath like `/gen/code/hoon`. Note the Clay path prefix is not included since that data was specified separately.
 
-#### Example
+#### Example {#example}
 
 Read `sys.kelvin` in the `%base` desk on the local ship at the current revision:
 
@@ -1405,13 +1405,13 @@ Check for the existence of that same file:
 
 ---
 
-### `|eyre/serve`
+### `|eyre/serve` {#eyreserve}
 
 Bind a generator to a URL path.
 
 See the [Eyre Guide](https://docs.urbit.org/system/kernel/eyre/guides/guide#generators) for details of writing web-facing generators.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path desk path
@@ -1419,7 +1419,7 @@ path desk path
 
 The first [path][path] is the URL path to bind like `/foo/bar/baz`. The second `path` is the path to the generator in `desk` like `/gen/who/hoon` (note it does not include the [path prefix][path prefix]).
 
-#### Example
+#### Example {#example}
 
 Bind `/gen/who/hoon` in the `%base` desk to the `/who` URL path:
 
@@ -1438,13 +1438,13 @@ In a Unix terminal, try requesting it:
 
 ---
 
-### `+pill/solid`
+### `+pill/solid` {#pillsolid}
 
 Build a solid [pill][pill].
 
 A *solid* pill is a partial [`+pill/brass`](#pillbrass) pill, it doesn't recompile the vanes and so boots faster. It is intended for development purposes, not production.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 %base-desk %extra-desk-1 %extra-desk-2 ...
@@ -1454,7 +1454,7 @@ The first argument is the desk to be used as "base", containing the kernel etc. 
 
 The base desk may alternatively be specified as a [path][path] to a `/sys` directory including the [path prefix][path prefix] like `/=some-desk=/foo/bar/sys`. In that case, the path prefix from that path will be used to determine the base desk. This is only useful if you want the start-up events in the pill to use an alternative compiler or Arvo source.
 
-#### Example
+#### Example {#example}
 
 Export a solid pill containing just the `%base` desk:
 
@@ -1508,11 +1508,11 @@ vane: %khan: ~mosryp-donleg
 
 ---
 
-### `-test`
+### `-test` {#-test}
 
 Run tests for a library.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 (list path)
@@ -1520,17 +1520,17 @@ Run tests for a library.
 
 Each [path][path] is a path to a file to test, and must include the [path prefix][path prefix].
 
-#### Example
+#### Example {#example}
 
 Refer to the [Unit Test Guide](https://docs.urbit.org/userspace/apps/guides/unit-tests) for details of using the `-test` thread.
 
 ---
 
-### `+behn/timers`
+### `+behn/timers` {#behntimers}
 
 Print out currently running [Behn][behn] timers.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > +behn/timers
@@ -1546,11 +1546,11 @@ Print out currently running [Behn][behn] timers.
 
 ---
 
-## Filesystem (Basic)
+## Filesystem (Basic) {#filesystem-basic}
 
 These are basic tools for things like copying files, navigating directories, etc.
 
-### `+cat`
+### `+cat` {#cat}
 
 Read a file at the given location and print its contents in the dojo.
 
@@ -1558,7 +1558,7 @@ If the specified [path][path] points to a directory rather than file, it will li
 
 `+cat` can only print text-based files like `.hoon` source-code, `.txt`, `.html`, etc. It won't work for binary blobs or other non-text files.
 
-#### Arguments
+#### Arguments {#arguments}
 
 The `path` is mandatory, the `vane` is optional. 
 
@@ -1570,7 +1570,7 @@ The past must include a [path prefix][path prefix].
 
 It *can* query [Gall][gall] [agents][agent] rather than [Clay][clay] files if the optional `, =vase %g` argument is given. In that case, it will perform a `%gx` [scry][scry] to the given scry path. The type returned must be some kind of text file, either a `@t` or a `wain` (a `(list @t)`). Most agents do not have scry endpoints that produce text files so the `%g` feature is rarely useful.
 
-#### Example
+#### Example {#example}
 
 Read a [hoon][hoon] file:
 
@@ -1609,11 +1609,11 @@ List the files in a directory:
 ```
 
 ---
-### `|cp`
+### `|cp` {#cp}
 
 Copy a file.
 
-#### Arguments
+#### Arguments {#arguments}
 
 The first [path][path] is to the file and the second is where to copy it.
 
@@ -1625,7 +1625,7 @@ Both the input and output paths must include the full [path prefix][path prefix]
 
 The output path must end with an explicit filename and [mark][mark], you can't just point it at a directory.
 
-#### Example
+#### Example {#example}
 
 Copy the `code.hoon` generator to the root of `%base` with the name `foo.hoon`:
 
@@ -1652,13 +1652,13 @@ Let's list the files in the root of `%base`:
 
 ---
 
-### `=dir`
+### `=dir` {#dir}
 
 Change working directory.
 
 Note this is not a [generator][generator] or [thread][thread] as are most other tools documented. Rather, it is a special command built directly into the dojo.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1668,7 +1668,7 @@ The path must include the [path prefix][path prefix].
 
 If no path is specified, it will switch back to the default location (the root of the `%base` desk at its most recent revision).
 
-#### Example
+#### Example {#example}
 
 Let's try changing to the root of the `%landscape` [desk][desk]:
 
@@ -1693,11 +1693,11 @@ To switch back to the default location (the root of the `%base` desk at its most
 
 ---
 
-### `+ls`
+### `+ls` {#ls}
 
 List files and directories at the specified location.
 
-#### Arguments
+#### Arguments {#arguments}
 
 The `path` is mandatory, the `vane` is optional:
 
@@ -1709,7 +1709,7 @@ The path must include the [path prefix][path prefix].
 
 The default behavior of `+ls` is to query Clay, but [Gall][gall] [agents][agent] can also be queried by specifying the optional `=vane %g` argument like `+ls /=some-agent=/foo/bar, =vane %g`. This will perform a [scry][scry] of the form `.^(arch %gy /=some-agent=/foo/bar)`. Very few Gall agents implement `%y` scry endpoints that produce `arch` types, so this feature is almost entirely useless.
 
-#### Example
+#### Example {#example}
 
 ```
 > +ls %/sys/vane
@@ -1728,11 +1728,11 @@ Note the [mark][mark] (file type/extension) is separated with a `/` rather than 
 
 ---
 
-### `+mv`
+### `+mv` {#mv}
 
 Move a file from one location to another.
 
-#### Arguments
+#### Arguments {#arguments}
 
 The first [path][path] is to the file and the second is where to move it.
 
@@ -1744,7 +1744,7 @@ Both paths must include the [path prefix][path prefix].
 
 The output path must end with an explicit filename and [mark][mark], you can't just point it at a directory.
 
-#### Example
+#### Example {#example}
 
 Create a file:
 
@@ -1764,13 +1764,13 @@ Move it:
 
 ---
 
-### `|rm`
+### `|rm` {#rm}
 
 Delete a file.
 
 Note you cannot delete a directory, but a directory will be disappear once all its files are gone.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1778,7 +1778,7 @@ path
 
 The path must include the [path prefix][path prefix].
 
-#### Example
+#### Example {#example}
 
 Create a file:
 
@@ -1797,11 +1797,11 @@ Delete it:
 
 ---
 
-### `+tree`
+### `+tree` {#tree}
 
 Display all files in the given directory and its sub-directories.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path
@@ -1809,7 +1809,7 @@ path
 
 The path must include the [path prefix][path prefix].
 
-#### Example
+#### Example {#example}
 
 ```
 > +tree %/sys
@@ -1832,23 +1832,23 @@ The path must include the [path prefix][path prefix].
 ---
 
 
-## Filesystem (Advanced)
+## Filesystem (Advanced) {#filesystem-advanced}
 
 These are more advanced desk and filesystem tools.
 
-### `|clay/autocommit`
+### `|clay/autocommit` {#clayautocommit}
 
 Enable automatic commits for a mounted [desk][desk].
 
 Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancelautocommit).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk
 ```
 
-#### Example
+#### Example {#example}
 
 In the dojo:
 
@@ -1875,13 +1875,13 @@ Back in the dojo:
 
 ---
 
-### `|clay/cancel-autocommit`
+### `|clay/cancel-autocommit` {#claycancel-autocommit}
 
 Cancel automatic commits for all mounted [desks][desk].
 
 Note this will cancel automatic commits for all desks, it's not possible to target a single desk.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > |clay/cancel-autocommit
@@ -1890,11 +1890,11 @@ Note this will cancel automatic commits for all desks, it's not possible to targ
 
 ---
 
-### `|commit`
+### `|commit` {#commit}
 
 Commit changes to mounted [desk][desk].
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk, =auto ?
@@ -1906,7 +1906,7 @@ If `=auto` is `.y`, auto-commits will be enabled, meaning changes to that desk o
 
 Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancelautocommit).
 
-#### Example
+#### Example {#example}
 
 In the dojo:
 
@@ -1931,7 +1931,7 @@ Back in the dojo:
 
 ---
 
-### `|clay/fuse`
+### `|clay/fuse` {#clayfuse}
 
 Perform an octopus merge.
 
@@ -1939,7 +1939,7 @@ A `%fuse` request in [Clay][clay] replaces the contents of `%destination-desk` w
 
 `|clay/fuse` extends this concept with the idea of a tracked source. When specifying beaks to include in your fuse, specify `%track` instead of a [case][case]. This will tell `|clay/fuse` to retrieve the latest version of the source beak *and* to rerun the `%fuse` request whenever that tracked source changes. A fuse can have many tracked sources, or none. The base may be tracked as well.
 
-#### Arguments
+#### Arguments {#arguments}
 
 Either:
 
@@ -1959,7 +1959,7 @@ The optional `=overwrite` flag allows you to overwrite a currently ongoing fuse.
 
 For usage details, you can run `|clay/fuse` without arguments and it'll print out a help text.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 |clay/fuse %dest /=kids= mate+/~nel/base= meet+/~zod/kids/track
@@ -1971,13 +1971,13 @@ For usage details, you can run `|clay/fuse` without arguments and it'll print ou
 
 ---
 
-### `|clay/fuse-list`
+### `|clay/fuse-list` {#clayfuse-list}
 
 Print tracked fuse sources for a desk.
 
 See the [`|clay/fuse`](#clayfuse) command for details.
 
-#### Example
+#### Example {#example}
 
 ```
 > |clay/fuse-list %base
@@ -1987,13 +1987,13 @@ no ongoing fuse for %base
 
 ---
 
-### `|label`
+### `|label` {#label}
 
 Add a label to a [desk][desk] revision.
 
 Labels let you name particular commits, and then refer to them by that name rather than date or revision number.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk term, =aeon @ud
@@ -2001,7 +2001,7 @@ desk term, =aeon @ud
 
 The `desk` and `term` are mandatory, the `=aeon` is optional. The `term` is the label to give the revision. If an `aeon` is not specified, it will default to the most recent revision.
 
-#### Example
+#### Example {#example}
 
 ```
 > |label %base %foo
@@ -2021,11 +2021,11 @@ labeled /~zod/base/bar
 
 ---
 
-### `|merge`
+### `|merge` {#merge}
 
 Merge one desk into another.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk ship desk, =cas case, =gem ?(germ %auto)
@@ -2035,7 +2035,7 @@ The first `desk` is the local merge target. The second `desk` is the merge sourc
 
 For details of usage and all the different merge strategies, run `|merge` without arguments for a help text.
 
-#### Example
+#### Example {#example}
 
 ```
 > |merge %bitcoin ~bus %bitcoin, =gem %only-this
@@ -2045,11 +2045,11 @@ merged with strategy %only-this
 
 ---
 
-### `|mount`
+### `|mount` {#mount}
 
 Mount a [desk][desk] or directory to the host filesystem.
 
-#### Arguments
+#### Arguments {#arguments}
 
 A whole desk:
 
@@ -2067,7 +2067,7 @@ If it's a [path][path], it must include the full [path prefix][path prefix].
 
 Note you can't mount a single file directly.
 
-#### Example
+#### Example {#example}
 
 Mount the whole `%base` desk:
 
@@ -2089,11 +2089,11 @@ The `/gen` directory is now accessible at `<pier>/gen` in the host filesystem.
 
 ---
 
-### `|new-desk`
+### `|new-desk` {#new-desk}
 
 Create a new [desk][desk] either from a blank template or from an existing desk.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk, =from desk, =hard ?, =gall ?
@@ -2101,7 +2101,7 @@ desk, =from desk, =hard ?, =gall ?
 
 The first `desk` is the name of the desk to be created.  The optional `=from` is the source desk if present.  The optional `=hard` specifies whether to overwrite an existing desk of the same name.  The optional `=gall` specifies whether to include common Gall support files like `/lib/skeleton`.
 
-#### Example
+#### Example {#example}
 
 Create a new desk:
 
@@ -2138,13 +2138,13 @@ The desk is now created in Clay.
 
 ---
 
-### `|clay/norm`
+### `|clay/norm` {#claynorm}
 
 Add a tombstone policy rule.
 
 Note that the policy will not be automatically applied when set, you'll need to run [`|pick`](#pick) for the garbage collection to occur.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship desk path keep=?
@@ -2152,7 +2152,7 @@ ship desk path keep=?
 
 The [path][path] is to a file or directory on the given `desk` on the given `ship`. The `?` is `.n` if it should be tombstoned, `.y` if it should be kept.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > |clay/norm our %bitcoin /gen .n
@@ -2184,11 +2184,11 @@ The [path][path] is to a file or directory on the given `desk` on the given `shi
 
 ---
 
-### `+clay/norms`
+### `+clay/norms` {#claynorms}
 
 Print tombstone policies for all desks.
 
-#### Example
+#### Example {#example}
 
 ```
 > +clay/norms
@@ -2210,11 +2210,11 @@ Print tombstone policies for all desks.
 
 ---
 
-### `|pick`
+### `|pick` {#pick}
 
 Apply tombtoning policies; collect garbage.
 
-#### Example
+#### Example {#example}
 
 ```
 > |pick
@@ -2223,7 +2223,7 @@ Apply tombtoning policies; collect garbage.
 
 ---
 
-### `|private`
+### `|private` {#private}
 
 Make a [desk][desk], directory or file private (prevent remote ships from reading it).
 
@@ -2231,7 +2231,7 @@ Note that if a desk or directory is publicly readable, making any directories or
 
 Desks, files and directories can be made publicly readable again with [|public](#public).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk path
@@ -2239,7 +2239,7 @@ desk path
 
 The `desk` is mandatory, the [path][path] is optional. If specified, the `path` is a directory or file in the given desk.
 
-#### Example
+#### Example {#example}
 
 ```
 > |private %landscape
@@ -2251,13 +2251,13 @@ The `desk` is mandatory, the [path][path] is optional. If specified, the `path` 
 
 ---
 
-### `|public`
+### `|public` {#public}
 
 Make a [desk][desk], directory or file publicly readable (allow remote ships to read it).
 
 Things can be made private again with [`|private`](#private).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk path
@@ -2265,7 +2265,7 @@ desk path
 
 The `desk` is mandatory, the [path][path] is optional. If specified, the `path` is a directory or file in the given desk.
 
-#### Example
+#### Example {#example}
 
 ```
 > |public %landscape
@@ -2277,13 +2277,13 @@ The `desk` is mandatory, the [path][path] is optional. If specified, the `path` 
 
 ---
 
-### `|sync`
+### `|sync` {#sync}
 
 Continuously merge into local desk from another local or remote desk.
 
 Every change on the source desk will be merged into the local one. This tracking can be stopped with [`|unsync`](#unsync).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk ship desk
@@ -2291,7 +2291,7 @@ desk ship desk
 
 The first `desk` is the local target, the second is the source on the specified `ship`.
 
-#### Example
+#### Example {#example}
 
 ```
 > |sync %webterm ~bus %webterm
@@ -2304,11 +2304,11 @@ kiln: sync succeeded from %webterm on ~bus to %webterm
 
 ---
 
-### `|syncs`
+### `|syncs` {#syncs}
 
 List currently active desk syncs.
 
-#### Example
+#### Example {#example}
 
 ```
 > |syncs
@@ -2318,7 +2318,7 @@ kiln: sync configured from %webterm on ~bus to %webterm
 
 ---
 
-### `|tomb`
+### `|tomb` {#tomb}
 
 Tombstone a file at a particular revision.
 
@@ -2330,7 +2330,7 @@ The desk revision number specified cannot be the current revision, it must be an
 
 Note this will also execute any other unapplied tombstone policies as it sends Clay a `%pick` garbage collection task.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 path, =dry ?
@@ -2338,7 +2338,7 @@ path, =dry ?
 
 The [path][path] is mandatory, it's a path to a file including the full [path prefix][path prefix]. If the optional `=dry` argument is `.y`, it will perform a dry run and not actually tombstone the file.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > -read %x our %base ud+3 /foo/txt
@@ -2354,13 +2354,13 @@ tomb: [~tus %base /foo/txt 0vr.46d5h.ocj13.age48.mnpnd.567me.1f6uc.9haq8.5ihru.b
 
 ---
 
-### `|unmount`
+### `|unmount` {#unmount}
 
 Unmount a previously [mounted](#mount) desk or directory.
 
 Note that any uncommitted changes on the host side will be discarded.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 term
@@ -2368,7 +2368,7 @@ term
 
 If the thing you're unmount is a [desk][desk], you'll just specify the desk name. If it's a sub-directory of a desk, you must specify the mount-point, which is whatever the directory is called in the host filesystem. For example, if you mounted `%/gen` and it's at `<pier>/gen`, you'd specify `%gen` here.
 
-#### Example
+#### Example {#example}
 
 Unmount the `%base` desk:
 
@@ -2379,11 +2379,11 @@ Unmount the `%base` desk:
 
 ---
 
-### `|unsync`
+### `|unsync` {#unsync}
 
 Stop syncing a desk with another.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 desk ship desk
@@ -2391,7 +2391,7 @@ desk ship desk
 
 The first `desk` is the local one receiving updates, the second `desk` is the source for updates on the specified `ship`.
 
-#### Example
+#### Example {#example}
 
 ```
 > |unsync %webterm ~bus %webterm
@@ -2400,21 +2400,21 @@ kiln: ended autosync from %webterm on ~bus to %webterm
 ```
 
 ---
-## Miscellaneous
+## Miscellaneous {#miscellaneous}
 
 Miscellaneous utilities.
 
-### `+hello`
+### `+hello` {#hello}
 
 Hello, world.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 term
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > +hello %foo
@@ -2423,17 +2423,17 @@ term
 
 ---
 
-### `+help`
+### `+help` {#help}
 
 Display information about generators.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 generator
 ```
 
-#### Examples
+#### Examples {#examples}
 
 Show help message for all generators in `%base`:
 
@@ -2450,13 +2450,13 @@ Show help message for a specific generator in `%base`:
 
 ---
 
-### `|hi`
+### `|hi` {#hi}
 
 Ping another ship with an optional message.
 
 The hi and message will be displayed in that ship's dojo. This is useful for testing connectivity.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship tape
@@ -2464,7 +2464,7 @@ ship tape
 
 The target `ship` is mandatory, the `tape` is an optional message.
 
-#### Example
+#### Example {#example}
 
 Without a message:
 
@@ -2496,11 +2496,11 @@ hi ~bus successful
 
 ---
 
-### `+sponsor`
+### `+sponsor` {#sponsor}
 
 Print out the sponsor of this ship.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > +sponsor
@@ -2509,17 +2509,17 @@ Print out the sponsor of this ship.
 
 ---
 
-### `+keys`
+### `+keys` {#keys}
 
 Print the `life` (key revision number) and `rift` (continuity number aka factory reset number) for a ship.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > +keys our
@@ -2531,15 +2531,15 @@ ship
 
 ---
 
-## Moons
+## Moons {#moons}
 
 These tools are for spawning and managing [moons][moon].
 
-### `|moon`
+### `|moon` {#moon}
 
 Spawn a new moon.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship, =public-key pass
@@ -2557,7 +2557,7 @@ urbit -w sampel-sampel-sampel -k my-moon.key
 
 You can also give the runtime the key directly by using `-G` rather than `-k`.
 
-#### Example
+#### Example {#example}
 
 Spawn a random moon:
 
@@ -2586,13 +2586,13 @@ Register an existing moon with the given public key:
 
 ---
 
-### `|moon-breach`
+### `|moon-breach` {#moon-breach}
 
 Breach (factory reset) a [moon][moon].
 
 This is run on the moon's parent planet. Note that breaching a moon will require to you boot it from scratch with its original keys. Breaching a moon, unlike a planet, will not change its keys. If you no longer have its original keys you'll also need to run [`|moon-cycle-keys`](#moon-cycle-keys) to generate new ones.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship, =rift @ud
@@ -2600,7 +2600,7 @@ ship, =rift @ud
 
 The `ship` is mandatory, it's the moon to breach. The `=rift` is optional, it's the continuity number (factory reset number). You'd specify a `=rift` if you'd factory reset the parent planet and need to skip ahead to a particular rift to match the existing moon. Note you can't turn the rift backwards, only forwards.
 
-#### Example
+#### Example {#example}
 
 ```
 > +keys ~lisret-namdev-ralnup-ribsyr
@@ -2621,13 +2621,13 @@ The `ship` is mandatory, it's the moon to breach. The `=rift` is optional, it's 
 
 ---
 
-### `|moon-cycle-keys`
+### `|moon-cycle-keys` {#moon-cycle-keys}
 
 Change the keys of a [moon][moon].
 
 This is run on the moon's parent. Once you've cycled the moon's keys on its parent, you'll need to run [`|rekey`](#rekey) on the moon itself with the new keys that are printed.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 ship, =life life, =public-key pass
@@ -2637,7 +2637,7 @@ The `ship` is mandatory, it's the moon to rekey. The `=life` and `=public-key` a
 
 You'd only specify a `=life` if you needed to jump ahead to a particular key revision. You'd only specify a `=public-key` if you need the moon to have a particular public key. The only time you'd need either of these optional arguments is if you've breach the moon's planet and need to get it back in sync with the existing moon. Note you can only go forward with the `=life`, not backwards.
 
-#### Example
+#### Example {#example}
 
 Change the keys for a moon:
 
@@ -2667,15 +2667,15 @@ Rekey to a specific `life` and with a specific public key:
 
 ---
 
-## Spider
+## Spider {#spider}
 
 Tools for interacting with [threads][thread] and Spider.
 
-### `:spider|kill`
+### `:spider|kill` {#spiderkill}
 
 Kill all running threads.
 
-#### Example
+#### Example {#example}
 
 ```
 > :spider|kill
@@ -2684,11 +2684,11 @@ Kill all running threads.
 
 ---
 
-### `:spider|poke`
+### `:spider|poke` {#spiderpoke}
 
 Poke a running thread.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @ta mark vase
@@ -2698,11 +2698,11 @@ The `@ta` is a thread ID of a running thread. The `mark` and `vase` are the data
 
 ---
 
-### `:spider|start`
+### `:spider|start` {#spiderstart}
 
 Start a thread.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 term vase
@@ -2712,7 +2712,7 @@ The `term` is mandatory, it's the name of a thread in `/ted` in the current desk
 
 Note this tool looks for the thread in the *current desk*, so you'll have to change desk with `=dir` if you want to run one elsewhere.
 
-#### Example
+#### Example {#example}
 
 ```
 > :spider|start %hi !>([~ our "foo"])
@@ -2722,11 +2722,11 @@ Note this tool looks for the thread in the *current desk*, so you'll have to cha
 
 ---
 
-### `:spider|stop`
+### `:spider|stop` {#spiderstop}
 
 Stop a running thread.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @ta
@@ -2736,11 +2736,11 @@ The `@ta` is a thread ID of a running thread.
 
 ---
 
-### `+spider/tree`
+### `+spider/tree` {#spidertree}
 
 List all currently running threads.
 
-#### Example
+#### Example {#example}
 
 ```
 > +spider/tree
@@ -2749,17 +2749,17 @@ List all currently running threads.
 
 ---
 
-## System
+## System {#system}
 
 System information and management tools.
 
-### `|automass`
+### `|automass` {#automass}
 
 Print memory reports periodically.
 
 Automatic memory reports can be cancelled with [`|cancel-automass`](#cancel-automass).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @dr
@@ -2767,7 +2767,7 @@ Automatic memory reports can be cancelled with [`|cancel-automass`](#cancel-auto
 
 A `@dr` is a relative time, for example `~s30`, `~m5`, `~h1`, `~d1`, `~d1.h1.m5.s30`, etc.
 
-#### Example
+#### Example {#example}
 
 ```
 > |automass ~s30
@@ -2789,11 +2789,11 @@ sweep: MB/176.019.156
 
 ---
 
-### `|cancel-automass`
+### `|cancel-automass` {#cancel-automass}
 
 Cancel periodic memory reports (enabled by [`|automass`](#automass)).
 
-#### Example
+#### Example {#example}
 
 ```
 > |cancel-automass
@@ -2802,11 +2802,11 @@ Cancel periodic memory reports (enabled by [`|automass`](#automass)).
 
 ---
 
-### `+code`
+### `+code` {#code}
 
 Print out your web login code.
 
-#### Example
+#### Example {#example}
 
 ```
 > +code
@@ -2815,7 +2815,7 @@ lidlut-tabwed-pillex-ridrup
 
 ---
 
-### `|code`
+### `|code` {#code}
 
 Change your web login code.
 
@@ -2823,7 +2823,7 @@ You'll be logged out of all existing web sessions when you change the code.
 
 Note that [Bridge][bridge] won't be able to automatically derive your web login code if you change it.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 %reset
@@ -2831,7 +2831,7 @@ Note that [Bridge][bridge] won't be able to automatically derive your web login 
 
 With the `%reset` argument, the web login code will be changed. With no argument, it'll just print out your existing code and code revision number.
 
-#### Example
+#### Example {#example}
 
 With no argument:
 
@@ -2861,11 +2861,11 @@ use |code %reset to invalidate this and generate a new code
 
 ---
 
-### `-code`
+### `-code` {#-code}
 
 Print out your web login code (with leading `~`).
 
-#### Example
+#### Example {#example}
 
 ```
 > -code
@@ -2874,11 +2874,11 @@ Print out your web login code (with leading `~`).
 
 ---
 
-### `|eyre/cors/approve`
+### `|eyre/cors/approve` {#eyrecorsapprove}
 
 Approve a CORS origin.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @t
@@ -2886,7 +2886,7 @@ Approve a CORS origin.
 
 The argument is a [cord][cord] containing the origin to approve.
 
-#### Example
+#### Example {#example}
 
 ```
 > |eyre/cors/approve 'http://example.com'
@@ -2913,11 +2913,11 @@ The argument is a [cord][cord] containing the origin to approve.
 
 ---
 
-### `+eyre/cors/registry`
+### `+eyre/cors/registry` {#eyrecorsregistry}
 
 Print approved, rejected and requested CORS origins.
 
-#### Example
+#### Example {#example}
 
 ```
 > +eyre/cors/registry
@@ -2929,11 +2929,11 @@ Print approved, rejected and requested CORS origins.
 
 ---
 
-### `|eyre/cors/reject`
+### `|eyre/cors/reject` {#eyrecorsreject}
 
 Reject a CORS origin.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @t
@@ -2941,7 +2941,7 @@ Reject a CORS origin.
 
 The argument is a [cord][cord] containing the origin to reject.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > |eyre/cors/reject 'http://foo.com'
@@ -2959,7 +2959,7 @@ The argument is a [cord][cord] containing the origin to reject.
 
 ---
 
-### `-dns-address`
+### `-dns-address` {#-dns-address}
 
 Request a `<ship>.arvo.network` subdomain and configure SSL.
 
@@ -2967,7 +2967,7 @@ Note this only works for stars and planets. Note your ship must be accessible on
 
 If successful, you'll be able to access your ship's web interface at `https://<ship>.arvo.network`.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 [%if @if]
@@ -2976,7 +2976,7 @@ If successful, you'll be able to access your ship's web interface at `https://<s
 The `@if` is a *public* IPv4 address in the format `.x.x.x.x` like
 `.192.168.1.254`.
 
-#### Example
+#### Example {#example}
 
 ```
 > -dns-address [%if .150.230.14.135]
@@ -2988,11 +2988,11 @@ dns: confirmed access via ralnup-ribsyr.arvo.network
 
 ---
 
-### `|exit`
+### `|exit` {#exit}
 
 Shut down this ship.
 
-#### Example
+#### Example {#example}
 
 ```
 > |exit
@@ -3003,7 +3003,7 @@ Shut down this ship.
 
 ---
 
-### `|knob`
+### `|knob` {#knob}
 
 Adjust [vane][vane] error verbosity.
 
@@ -3013,7 +3013,7 @@ Note this only applies to `%crud` error messages that look something like:
 crud: %foo event failed
 ```
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 term ?(%hush %soft %loud)
@@ -3025,7 +3025,7 @@ The `term` is an error tag like `%foo`. The verbosity level for the specified ta
 - `%soft` - Just print `crud: %error-tag event failed`, ignore any `tang` given in the `%crud`.
 - `%loud` - Print the `%soft` message as well as the full `tang` given in the `%crud` `task`.
   
-#### Example
+#### Example {#example}
 
 Loud:
 
@@ -3061,11 +3061,11 @@ Hush:
 
 ---
 
-### `|mass`
+### `|mass` {#mass}
 
 Print a memory report.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 ~zod:dojo> |mass
@@ -3079,13 +3079,13 @@ sweep: MB/176.019.156
 
 ---
 
-### `|meld`
+### `|meld` {#meld}
 
 Deduplicate memory.
 
 Note this can take a large amount of memory to complete if the ship's existing memory footprint is large. If the host OS has limited memory, it may be more efficient to shut down the ship and [run it directly from the runtime](../running/vere.md#meld).
 
-#### Example
+#### Example {#example}
 
 ```
 > |meld
@@ -3108,13 +3108,13 @@ pier: meld complete
 
 ---
 
-### `|pack`
+### `|pack` {#pack}
 
 Defragment memory.
 
 This is lighter than [`|meld`](#meld) on memory usage but does not compact the ship's state as much.
 
-#### Example
+#### Example {#example}
 
 ```
 > |pack
@@ -3126,7 +3126,7 @@ pier: pack complete
 ---
 
 
-### `|rekey`
+### `|rekey` {#rekey}
 
 Rotate private keys.
 
@@ -3136,7 +3136,7 @@ Note also this is not for when you perform a factory reset, this is specifically
 
 If your ship is a [moon][moon], you'd do the key change on its parent planet rather than through Bridge, and then use `|rekey` on the moon itself.
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @t
@@ -3144,7 +3144,7 @@ If your ship is a [moon][moon], you'd do the key change on its parent planet rat
 
 This is the long code inside the `sampel-palnet-1.key` file you downloaded from Bridge (or the code that your planet printed out in the dojo if a moon). It'll look like `0w9oBR.dfY5Z.LSxut.YHe3u....`. You must wrap it in single-quotes when giving it to this generator, like `'0w9oBR.dfY5Z.LSxut.YHe3u...'`.
 
-#### Example
+#### Example {#example}
 
 ```
 |rekey '0w3.N7qWC.LmuS5.rY6Rb.DQxmF.ta3vf.sOQvP.xOnhv.3P7sL.SjQqb.IbAKo.EU2vM.04S6U.VStzI.RNXij.YntkC.RRG29.AqaLf'
@@ -3152,13 +3152,13 @@ This is the long code inside the `sampel-palnet-1.key` file you downloaded from 
 
 ---
 
-### `|verb`
+### `|verb` {#verb}
 
 Toggle kernel event tracing verbose mode.
 
 When enabled, this will print a [move][move] trace for every event in [Arvo][arvo].
 
-#### Example
+#### Example {#example}
 
 Toggle on:
 
@@ -3187,13 +3187,13 @@ Run `|verb` again to turn it off.
 
 ---
 
-### `|trim`
+### `|trim` {#trim}
 
 Trim kernel state.
 
 This command is used to reduce memory pressure. Currently, the only two [vanes][vane] that do anything with a `%trim` task are [Eyre][eyre] and [Clay][clay]. Eyre closes inactive channels and Clay clears its build cache. Typically these things use little memory so the impact of `|trim` is minimal and it is not useful. For significant memory reduction, see [`|meld`](#meld) and [`|pack`](#pack).
 
-#### Arguments
+#### Arguments {#arguments}
 
 ```
 @ud
@@ -3201,7 +3201,7 @@ This command is used to reduce memory pressure. Currently, the only two [vanes][
 
 You may *optionally* give a trim priority number as an argument. The lower the number, the higher the priority. Currently, none of the vanes do anything with this so there's no point in specifying it.
 
-#### Example
+#### Example {#example}
 
 ```
 > |trim

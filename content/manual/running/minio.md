@@ -1,4 +1,4 @@
-# Self-hosting S3 Storage with MinIO
+# Self-hosting S3 Storage with MinIO {#self-hosting-s3-storage-with-minio}
 
 Adding [S3](https://aws.amazon.com/s3/) storage to Urbit unlocks some great new features, such as the ability to upload & post your own media to chats straight from your own machine, and upload custom avatars. This is a guide to self-hosting [MinIO](https://min.io), an S3 compatible block storage solution.
 
@@ -17,15 +17,15 @@ and so on.
 
 Ideally, MinIO would be installed on the same machine that your Urbit planet is hosted on, and run alongside at no extra cost - although it can just as easily be hosted on a separate machine.
 
-## Steps
+## Steps {#steps}
 
-### (optional) Install Docker
+### (optional) Install Docker {#optional-install-docker}
 
 Hosting MinIO via Docker is the simplest option. To install Docker server, follow the relevant guide [here](https://docs.docker.com/engine/install/#server).
 
 If you don't want to install Docker, MinIO does offer independent binaries. The process for running these should be similar, but the next step assumes you are using Docker.
 
-### Install MinIO
+### Install MinIO {#install-minio}
 
 Once Docker is installed, we can install and run MinIO by following the steps [here](https://docs.min.io/docs/minio-docker-quickstart-guide.html).
 
@@ -50,7 +50,7 @@ Be sure to add the `MINIO_DOMAIN` environment variable; this tells MinIO to acce
 
 Your username and password can be anything of your choosing — make sure they're secure! Your username must be at least 4 characters long and your password at least 8 characters long.
 
-### Create DNS records
+### Create DNS records {#create-dns-records}
 
 Now, you'll need to point your own domain at your MinIO installation. Via your domain's DNS settings (usually configured on the registrar you bought your domain through), create three `A` records:
 
@@ -64,7 +64,7 @@ DNS records can take a little while to propagate, so don't worry if you type you
 
 _Note: if you plan to create multiple buckets, you will need a DNS record for each. Alternatively you can use a wildcard domain record, but for use with Urbit only one bucket is needed._
 
-### Set up the reverse proxy
+### Set up the reverse proxy {#set-up-the-reverse-proxy}
 
 Setting up a reverse proxy in front of MinIO allows us to configure domain names and TLS. In this guide we use caddy, an incredibly simple web server. If you have experience with other web servers, you are also able to use those in place of caddy.
 
@@ -83,7 +83,7 @@ s3.example.com BUCKET.s3.example.com {
 
 Remember to replace BUCKET with your chosen bucket name, and then run `caddy start` in the same directory as the Caddyfile.
 
-### Create an S3 bucket
+### Create an S3 bucket {#create-an-s3-bucket}
 
 Navigate to your MinIO admin endpoint (`https://console.s3.example.com`) in a browser and sign in using the username and password you entered in step 1.
 
@@ -91,19 +91,19 @@ Choose 'buckets' from the left-hand menu, and then 'create bucket' at the top of
 
 Then, you need to ensure your bucket is readable to the public, so that others can see your uploaded media. To do this, click 'manage' on your newly created bucket, and then navigate to 'access rules'. Click 'add access rule', enter `*` as the prefix and set access to `readonly`.
 
-### Configure your ship
+### Configure your ship {#configure-your-ship}
 
 Head over to Landscape and navigate to the S3 storage setup page at System preferences > Remote Storage, and enter your domain (with protocol) under endpoint, e.g. `https://s3.example.com`. Enter your username and password from step 1 under access key and secret, and then enter the name of the bucket. When the bucket name is combined with the endpoint, you get your bucket URL e.g. `https://media.s3.example.com`.
 
 You can also configure these settings through dojo as shown [here](../os/s3.md).
 
-### That's it!
+### That's it! {#thats-it}
 
 You should now be able to upload content using your self-hosted MinIO installation.
 
 Once your S3 config is added, you should see a paperclip icon next to the message input in your chats. Media can be uploaded and posted by clicking here.
 
-## Troubleshooting
+## Troubleshooting {#troubleshooting}
 
 Landscape chat will fail silently if it cannot connect to your S3 endpoint to upload media. To get an idea of what's going wrong, open the network tab of your browser dev tools, and observe the request when you try and upload media. You should see a failed request, hopefully with an error code or reason for failure.
 
@@ -119,7 +119,7 @@ curl https://media.s3.example.com
 
 You should get an XML response listing the contents of your bucket.
 
-## Running MinIO and Urbit on the same machine
+## Running MinIO and Urbit on the same machine {#running-minio-and-urbit-on-the-same-machine}
 
 You may wonder how it's possible to run Urbit alongside our MinIO set up if they both need ports 80/443. The answer is to proxy Urbit through caddy, exactly the same way as MinIO. You can create as many directives in your Caddyfile as needed, each pointing to a different port.
 

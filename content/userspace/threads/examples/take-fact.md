@@ -1,8 +1,8 @@
-# Take Fact
+# Take Fact {#take-fact}
 
 Taking a fact from an agent, arvo or whatever is easy. First you subscribe using `watch:strandio` or `watch-our:strandio`, then you use `take-fact:strandio` to receive the fact. Here's an example that takes an update from `graph-store` and prints the message to the dojo:
 
-#### `print-msg.hoon`
+#### `print-msg.hoon` {#print-msghoon}
 
 ```hoon
 /-  spider
@@ -40,7 +40,7 @@ Taking a fact from an agent, arvo or whatever is easy. First you subscribe using
 
 Create a chat on your fake zod if you don't have one already, then save the thread in `/ted` on the `%base` desk, `|commit %base`, and run `-print-msg`. Next, type some message in your chat and you'll see it printed in the dojo.
 
-### Analysis
+### Analysis {#analysis}
 
 First we call `watch-our` to subscribe:
 

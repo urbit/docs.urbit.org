@@ -1,12 +1,12 @@
-# . dot · Nock
+# . dot · Nock {#-dot-nock}
 
 Anything Nock can do, Hoon can do also. These runes are used for carrying out Nock operations in Hoon.
 
-## `.^` "dotket"
+## `.^` "dotket" {#-dotket}
 
 Load from the Arvo namespace (scry) with a fake Nock instruction: Nock 12.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, with the second optionally split into an arbitrary number of elements.
 
@@ -43,17 +43,17 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%dtkt p=spec q=hoon]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 The noun `q`, cast to the type `p`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Nock has no `12` instruction! But the virtual Nock used to run userspace code does. Nock `12` loads from a typed immutable namespace defined by its virtual context.
 
@@ -63,7 +63,7 @@ Ordinarily a Hoon expression has access to no information but whatever can be fo
 
 In principle `.^` takes two subexpressions, but in practice `q` is often given in two parts: the first part includes the vane to be queried (e.g., `%a` for Ames, `%b` for Behn, `%c` for Clay, etc.) and the kind of request. The second part is a path that corresponds to the kind of request.
 
-#### Examples
+#### Examples {#examples}
 
 In the dojo we can ask Clay -- the Arvo filesystem -- for a listing of the files at our current path, `%`:
 
@@ -114,27 +114,27 @@ You can modify the time of the file listing quite simply and ask for a listing f
 
 ---
 
-## `.+` "dotlus"
+## `.+` "dotlus" {#-dotlus}
 
 Increment an atom with Nock `4`.
 
-#### Syntax
+#### Syntax {#syntax}
 
 | Wide form | Tall form | Irregular form |
 |-----------|-----------|----------------|
 | `.+  p`   | `.+(p)`   | `+(p)`         |
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%dtls p=hoon]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 `p` plus `1` if `p` is an atom; otherwise, crashes. The product atom has no aura.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > .+(6)
@@ -152,15 +152,15 @@ nest-fail
 
 ---
 
-## `.*` "dottar"
+## `.*` "dottar" {#-dottar}
 
 Evaluate with Nock `2`.
 
-#### Produces
+#### Produces {#produces}
 
 Nock of formula `q` and subject `p`, with type `%noun`.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -191,13 +191,13 @@ None.
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%dttr p=hoon q=hoon]
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 `.*(p q)` is used to run Nock formula `q` on the subject `p` from within Hoon.
 
@@ -205,7 +205,7 @@ Keep in mind that `p` and `q` can be arbitrary Hoon expressions, as long as they
 
 Note also that `.*` ("dottar") can be used to bypass the type system. It's therefore possible to use Hoon as a typeless language.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > .*([20 30] [0 2])
@@ -229,11 +229,11 @@ Note also that `.*` ("dottar") can be used to bypass the type system. It's there
 
 ---
 
-## `.=` "dottis"
+## `.=` "dottis" {#-dottis}
 
 Test for equality with Nock `5`.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -266,21 +266,21 @@ q
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%dtts p=hoon q=hoon]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 `%.y` if `p` equals `q`; otherwise `%.n`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Like Nock equality, `.=` ("dottis") tests whether two nouns are the same, ignoring invisible pointer structure. Because in a conventional noun implementation each noun has a lazy short hash, comparisons are fast unless the hash needs to be computed, or we are comparing separate copies of identical nouns. (Comparing large duplicates is a common cause of performance bugs.)
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > .=(0 0)
@@ -301,11 +301,11 @@ Like Nock equality, `.=` ("dottis") tests whether two nouns are the same, ignori
 
 ---
 
-## `.?` "dotwut"
+## `.?` "dotwut" {#-dotwut}
 
 Test for cell or atom with Nock `3`.
 
-#### Syntax
+#### Syntax {#syntax}
 
 One argument, fixed.
 
@@ -313,17 +313,17 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `.?  p`   | `.?(p)`   | None           |
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%dtwt p=hoon]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 `%.y` if `p` is a cell; otherwise `%.n`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > .?(42)

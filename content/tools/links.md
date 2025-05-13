@@ -1,8 +1,8 @@
-# Useful Links
+# Useful Links {#useful-links}
 
 A collection of links to external tools, libraries, app repos, and documentation.
 
-## App Repos
+## App Repos {#app-repos}
 
 [Auth](https://github.com/tinnus-napbus/auth) - Login with Urbit (client).
 
@@ -24,13 +24,13 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [Paldev Suite](https://github.com/Fang-/suite) - apps and libraries by ~paldev including Pals and Rumors.
 
-## External Docs
+## External Docs {#external-docs}
 
 [Holium Docs](https://docs.holium.com/main/) - documentation of Holium products including Realm and TomeDB.
 
 [GroundSeg Docs](https://manual.groundseg.app/) - documentation for GroundSeg by Native Planet.
 
-## Hoon Libraries
+## Hoon Libraries {#hoon-libraries}
 
 [John](https://github.com/litlep-nibbyt/john) - automatic JSON reparsing.
 
@@ -50,7 +50,7 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [Yard](https://github.com/urbit/yard) - helpful utilities for app development.
 
-## JS Libraries
+## JS Libraries {#js-libraries}
 
 [HTTP API](https://github.com/urbit/js-http-api) - connect to an Urbit ship via a JS application.
 
@@ -62,13 +62,13 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [TomeDB](https://github.com/holium/tome-db) - distributed p2p database for Urbit.
 
-## Other Languages
+## Other Languages {#other-languages}
 
 [go-urbit](https://github.com/stephenlacy/go-urbit/) - Golang Urbit interface over Ames.
 
 [pynoun](https://github.com/urbit/tools) - jam and cue nouns into Python data types.
 
-## Other Tools
+## Other Tools {#other-tools}
 
 [Bridge](https://github.com/urbit/bridge) - an application for interacting with Azimuth.
 

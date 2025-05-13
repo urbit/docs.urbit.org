@@ -1,13 +1,13 @@
-# : col · Cells
+# : col · Cells {#-col-cells}
 
 The `:` ("col") expressions are used to produce cells, which are pairs of
 values. E.g., `:-(p q)` produces the cell `[p q]`. All `:` runes reduce to `:-`.
 
-## `:-` "colhep"
+## `:-` "colhep" {#--colhep}
 
 Construct a cell (2-tuple).
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -48,21 +48,21 @@ p^q
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%clhp p=hoon q=hoon]
 ```
 
-#### Produces
+#### Produces {#produces}
 
 The cell of `p` and `q`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Hoon expressions actually use the same "autocons" pattern as Nock formulas. If you're assembling expressions (which usually only the compiler does), `[a b]` is the same as `:-(a b)`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > :-(1 2)
@@ -74,11 +74,11 @@ Hoon expressions actually use the same "autocons" pattern as Nock formulas. If y
 
 ---
 
-## `:_` "colcab"
+## `:_` "colcab" {#_-colcab}
 
 Construct a cell, inverted.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -109,19 +109,19 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%clcb p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 :-(q p)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > :_(1 2)
@@ -130,11 +130,11 @@ None
 
 ---
 
-## `:+` "collus"
+## `:+` "collus" {#-collus}
 
 Construct a triple (3-tuple).
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -168,19 +168,19 @@ r
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%clls p=hoon q=hoon r=hoon]
 ```
 
-#### Expands to:
+#### Expands to: {#expands-to}
 
 ```hoon
 :-(p :-(q r))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > :+  1
@@ -194,11 +194,11 @@ r
 
 ---
 
-## `:^` "colket"
+## `:^` "colket" {#-colket}
 
 Construct a quadruple (4-tuple).
 
-#### Syntax
+#### Syntax {#syntax}
 
 Four arguments, fixed.
 
@@ -233,19 +233,19 @@ s
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%clkt p=hoon q=hoon r=hoon s=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 :-(p :-(q :-(r s)))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > :^(1 2 3 4)
@@ -260,11 +260,11 @@ s
 
 ---
 
-## `:*` "coltar"
+## `:*` "coltar" {#-coltar}
 
 Construct an n-tuple.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Variable number of arguments.
 
@@ -300,13 +300,13 @@ Variable number of arguments.
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%cltr p=(list hoon)]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
@@ -314,7 +314,7 @@ Variable number of arguments.
 :-(a :-(b :-(c :-(... z)))))
 ```
 
-#### Desugaring
+#### Desugaring {#desugaring}
 
 ```hoon
 |-
@@ -326,7 +326,7 @@ Variable number of arguments.
 $(p t.p)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > :*(5 3 4 1 4 9 0 ~ 'a')
@@ -350,11 +350,11 @@ $(p t.p)
 
 ---
 
-## `:~` "colsig"
+## `:~` "colsig" {#-colsig}
 
 Construct a null-terminated list.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Variable number of arguments.
 
@@ -390,13 +390,13 @@ Variable number of arguments.
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%clsg p=(list hoon)]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
@@ -404,7 +404,7 @@ Variable number of arguments.
 :-(a :-(b :-(c :-(... :-(z ~)))))
 ```
 
-#### Desugaring
+#### Desugaring {#desugaring}
 
 ```hoon
 |-
@@ -414,11 +414,11 @@ Variable number of arguments.
 $(p t.p)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 Note that this does not produce a `list` type, it just produces a null-terminated n-tuple. To make it a proper `list` it must be cast or molded.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > :~(5 3 4 2 1)
@@ -438,17 +438,17 @@ Note that this does not produce a `list` type, it just produces a null-terminate
 
 ---
 
-## `::` "colcol"
+## `::` "colcol" {#-colcol}
 
 Code comment.
 
-#### Syntax
+#### Syntax {#syntax}
 
 ```hoon
 ::  any text you like!
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```hoon
 ::

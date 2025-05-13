@@ -1,8 +1,8 @@
-# 7. React app logic
+# 7. React app logic {#7-react-app-logic}
 
 Now that we've reviewed the basics of setting up an Urbit React app, we can dive into the more complex logic that drives our [journal app's front-end](https://github.com/urbit/docs-examples/tree/main/journal-app/ui). We'll focus on the app's main component `App` (defined in [`src/app.jsx`](https://github.com/urbit/docs-examples/tree/main/journal-app/ui/src/app.jsx)) and how it leverages functions related to ship communications using the `Urbit` object. For more information on UI components and other helper functions, see the [resources section](#resources).
 
-## State
+## State {#state}
 
 In the previous section, we introduced how React components use [`useState()`] to declare state variables within components. The main `App` component in our journal app contains a number of these statements to manage its many constituents and sub-components:
 
@@ -31,7 +31,7 @@ const [searchMeta, setSearchMeta] = useState({
 
 We'll see how these are used subsequently.
 
-## Initialize
+## Initialize {#initialize}
 
 After defining its state, the next thing our `App` component does is define a function called `init()`, which is one of the first functions called during its bootstrapping process:
 
@@ -53,7 +53,7 @@ const init = () => {
 
 This function just calls `getEntries()` to retrieve the initial list of journal entries; then, if that succeeded, it publishes this update with `setSubEvent()` and `setLatestUpdate()` and then calls `subscribe()` to subscribe for new updates. If the initial entry retrieval failed, we set the connection `status` and save an error message in the `errors` map. We'll look at what we do with errors later.
 
-## Getting entries
+## Getting entries {#getting-entries}
 
 ![entries screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
 
@@ -81,7 +81,7 @@ The `Urbit.scry` method only allows JSON results, but note that scries done via 
 
 The `Urbit.scry` method returns a Promise which will contain an HTTP error message if the scry failed. We handle it with a `.then` expression back in the function that called it, either [`init()`](#initialize) or `moreEntries()`. If the Promise is successfully evaluated, the results are passed to the [`setSubEvent()`](#updates) function, which appends the new entries to the existing ones via a [`useEffect()`] hook (more on this [below](#updates)).
 
-## Subscription
+## Subscription {#subscription}
 
 A subscription to the `/updates` path of our `%journal` agent is opened with our `subscribe()` function:
 
@@ -111,7 +111,7 @@ We use the `Urbit.subscribe` method for this, which takes five arguments in an o
 
 Note that the `Urbit.subscribe` method returns a subscription ID number. Since we only have one subscription in our app which we never close, we don't bother to record it. If your app has multiple subscriptions to manage, you may wish to keep track of these IDs in your app's state.
 
-## Updates
+## Updates {#updates}
 
 The architecture for updating a React interface based on incoming facts from an `Urbit` subscription tends to follow a common pattern constituted of three major parts:
 
@@ -211,7 +211,7 @@ useEffect(() => {
 
 </details>
 
-## Add, edit, delete
+## Add, edit, delete {#add-edit-delete}
 
 ![add screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/add.png)
 
@@ -275,7 +275,7 @@ const deleteEntry = (id) => {
 
 Note that whether we're adding, editing or deleting entries, we update our state when we receive the update back on the `/updates` subscription, not when we poke our agent.
 
-## Search
+## Search {#search}
 
 ![search screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search.png)
 
@@ -306,7 +306,7 @@ const searchEntries = async () => {
 };
 ```
 
-## Error handling
+## Error handling {#error-handling}
 
 When the channel connection is interrupted, the `Urbit` object will begin trying to reconnect. On each attempt, it sets the connection `status` to `"try"`, as we specified for the `onRetry` callback. When this is set, a "reconnecting" message is displayed at the bottom of the screen:
 
@@ -359,7 +359,7 @@ Lastly, as well as handling channel connection errors, we also handle errors suc
 
 ![search failed screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search-failed.png)
 
-## Resources
+## Resources {#resources}
 
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
 

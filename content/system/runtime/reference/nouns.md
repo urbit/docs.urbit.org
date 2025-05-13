@@ -1,8 +1,8 @@
-# Land of Nouns
+# Land of Nouns {#land-of-nouns}
 
 The division between `c3` and `u3` is that you could theoretically imagine using `c3` as just a generic C environment.  Anything to do with nouns is in `u3`.
 
-## u3: a map of the system
+## u3: a map of the system {#u3-a-map-of-the-system}
 
 These are the symbols you'll need to know about to program in `u3`. All files listed below are found in the [`pkg/noun`](https://github.com/urbit/vere/tree/develop/pkg/noun) directory. Symbols follow this pattern:
 
@@ -32,7 +32,7 @@ u3w[a-g]  jets (retain, nock core)     jets/w.h      jets/[a-g]/*.c
 
 Additionally, various noun type definition are found in `pkg/noun/types.h`.
 
-## u3: noun internals
+## u3: noun internals {#u3-noun-internals}
 
 A noun is a `u3_noun` - currently defined as a 32-bit `c3_w`. (This is zero-indexed so bit `31` is the high bit.)
 
@@ -58,7 +58,7 @@ The only thing that should be mysterious here is `mug_w`, which is a 31-bit lazi
 
 Also, the value `0xffffffff` is `u3_none`, which is never a valid noun.  Use the type `u3_weak` to express that a noun variable may be `u3_none`.
 
-## u3: reference counts
+## u3: reference counts {#u3-reference-counts}
 
 The only really essential thing you need to know about `u3` is how to handle reference counts.  Everything else, you can skip and just get to work.
 
@@ -72,7 +72,7 @@ To tell `u3` that you've added a reference to a noun, call the function `u3a_gai
 
 (You can gain or lose a direct atom.  It does nothing.)
 
-## u3: reference protocols
+## u3: reference protocols {#u3-reference-protocols}
 
 **THIS IS THE MOST CRITICAL SECTION IN THE `u3` DOCUMENTATION.**
 
@@ -118,13 +118,13 @@ Transfer semantics are more appropriate for functions which make nouns, which is
 
 In general, though, in most places it's not worth thinking about what your function does.  There is a convention for it, which depends on where it is, not what it does.  Follow the convention.
 
-## u3: reference conventions
+## u3: reference conventions {#u3-reference-conventions}
 
 The `u3` convention is that, unless otherwise specified, **all functions have transfer semantics** - with the exception of the prefixes: `u3r`, `u3x`, `u3z`, `u3q` and `u3w`.  Also, within jet directories `a` through `f` (but not `g`), internal functions retain (for historical reasons).
 
 If functions outside this set have retain semantics, they need to be commented, both in the `.h` and `.c` file, with `RETAIN` in all caps.  Yes, it's this important.
 
-## u3: system architecture
+## u3: system architecture {#u3-system-architecture}
 
 If you just want to tinker with some existing code, it might be enough to understand the above.  If not, it's probably worth taking the time to look at `u3` as a whole.
 
@@ -141,7 +141,7 @@ Obviously almost any computing model - including, but not limited to, Urbit - ca
 - can abort any event without damaging the permanent state.
 - snapshot the permanent state periodically, and/or prune logs.
 
-## u3: the road model
+## u3: the road model {#u3-the-road-model}
 
 `u3` uses a memory design which I'm sure someone has invented somewhere before, because it's not very clever, but I've never seen it anywhere in particular.
 
@@ -197,7 +197,7 @@ To "leap" is to create a new inner road in the `###` free space. but in the reve
 
 `u3` keeps a global variable, `u3_Road` or its alias `u3R`, which points to the current road.  (If we ever run threads in inner roads - see below - this will become a thread-local variable.) Relative to `u3R`, `+` memory is called `junior` memory; `-` memory is `normal` memory; `~` is `senior` memory.
 
-## u3: explaining the road model
+## u3: explaining the road model {#u3-explaining-the-road-model}
 
 But... why?
 
@@ -215,11 +215,11 @@ Moreover, while the surface is most definitely single-threaded, we could easily 
 
 Moreover, in future, we'll experiment more with adding road control hints to the programmer's toolbox.  Reference counting is expensive.  We hypothesize that in many - if not most - cases, the programmer can identify procedural structures whose garbage should be discarded in one step by copying the results.  Then, within the procedure, we can switch the allocator into `sand` mode, and stop tracking references at all.
 
-## u3: rules for C programming
+## u3: rules for C programming {#u3-rules-for-c-programming}
 
 There are two levels at which we program in C: (1) above the interpreter; (2) within the interpreter or jets.  These have separate rules which need to be respected.
 
-## u3: rules above the interpreter
+## u3: rules above the interpreter {#u3-rules-above-the-interpreter}
 
 In its relations with Unix, Urbit follows a strict rule of "call me, I won't call you."  We do of course call Unix system calls, but only for the purpose of actually computing.
 
@@ -227,7 +227,7 @@ Above Urbit, you are in a normal C/Unix programming environment and can call any
 
 If you need threads which create nouns, you could use `u3m_hate()` and `u3m_love()` to run these threads in subroads. You'd need to make the global road pointer, `u3R`, a thread-local variable instead.  This seems perfectly practical, but we haven't done it because we haven't needed to.
 
-## u3: rules within the interpreter
+## u3: rules within the interpreter {#u3-rules-within-the-interpreter}
 
 Within the interpreter, your code can run either in the surface road or in a deep road.  You can test this by testing
 
@@ -245,7 +245,7 @@ A good example is the different meaning of `c3_assert()` inside and outside the 
 
 In deep execution, `c3_assert()` will issue an exception that queues an error event, complete with trace stack, on the Arvo event queue.   Let's see how this happens.
 
-## u3: exceptions
+## u3: exceptions {#u3-exceptions}
 
 You produce an exception with
 
@@ -280,7 +280,7 @@ Severe exceptions, or mild exceptions at the surface, terminate the entire execu
 
 For instance, `vere` uses this trace to construct a `%crud` event, which conveys our trace back toward the Arvo context where it crashed.  This lets any UI component anywhere, even on a remote node, render the stacktrace as a consequence of the user's action - even if its its direct cause was (for instance) a Unix SIGINT or SIGALRM.
 
-## u3: C structures on the loom
+## u3: C structures on the loom {#u3-c-structures-on-the-loom}
 
 Normally, all data on the loom is nouns.  Sometimes we break this rule just a little, though - eg, in the `u3h` hashtables.
 

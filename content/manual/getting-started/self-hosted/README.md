@@ -1,4 +1,4 @@
-# Self-hosting
+# Self-hosting {#self-hosting}
 
 To run Urbit on your own you need to be comfortable using a command line interface (CLI), and should have a basic understanding of how to interact with the Ethereum blockchain.
 
@@ -8,7 +8,7 @@ Running Urbit locally is good for experimentation, but in the long term you'll w
 
 **Remember, never run your Urbit in more than one place!** Doing so will necessitate a [factory reset](https://operators.urbit.org/manual/id/guide-to-resets).
 
-## Next Steps
+## Next Steps {#next-steps}
 
 - [Get an Urbit ID](../get-id.md) – Get a planet, a permanent Urbit ID, for the best networked experience.
 

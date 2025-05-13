@@ -1,4 +1,4 @@
-# Clay
+# Clay {#clay}
 
 Our filesystem.
 

@@ -1,4 +1,4 @@
-# Fetch JSON
+# Fetch JSON {#fetch-json}
 
 Grabbing JSON from some url is very easy.
 
@@ -6,7 +6,7 @@ Grabbing JSON from some url is very easy.
 
 The following thread fetches the current Bitcoin price from the [CoinGecko API](https://www.coingecko.com/en/api) in the specified currency and prints it to the terminal.
 
-#### `btc-price.hoon`
+#### `btc-price.hoon` {#btc-pricehoon}
 
 ```hoon
 /-  spider
@@ -49,7 +49,7 @@ You can try with other currencies as well:
 37319 GBP
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 The thread takes an `@tas` as its argument, which the dojo wraps in a `unit`. We extract the `vase` and check it's not empty:
 

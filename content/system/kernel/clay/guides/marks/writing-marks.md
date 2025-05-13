@@ -1,4 +1,4 @@
-# Writing Marks
+# Writing Marks {#writing-marks}
 
 Here we'll walk through a practical example of writing a `mark` file.
 
@@ -22,7 +22,7 @@ We'll represent such a structure in Hoon as a `(list (list @t))` like:
 
 We could perhaps create the type with a `$|` rune to include row-length validation in the mold itself, but a `(list (list @t))` is simpler for demonstrative purposes.
 
-## A simple mark
+## A simple mark {#a-simple-mark}
 
 Let's begin with the simplest `mark` file:
 
@@ -52,7 +52,7 @@ Finally we have the `+grad` arm. This arm specifies functions for revision contr
 
 So now we have a valid `%csv` `mark` file. If we save this as `csv.hoon` in the `/mar` directory we could store `%csv` data in Clay. This may be sufficient for some applications, but what if we want to import a CSV file from Unix or elsewhere? In the next section, we'll look at conversions to and from a `%mime` `mark` to address this.
 
-## `%mime` conversions
+## `%mime` conversions {#mime-conversions}
 
 The `$mime` type represents raw data from Unix or elsewhere. For example, if a text file from Unix containing the word `foo` were converted to a `$mime` type in Urbit, it would look something like:
 
@@ -173,7 +173,7 @@ ghi,jkl
 
 So now our `%csv` `mark` lets us move data in and out of Urbit. In the next section, we'll look at the `+grad` arm in more detail.
 
-## `+grad`
+## `+grad` {#grad}
 
 So far we've just delegated `+grad` functions to the `%noun` `mark`, but now we'll look at writing our own.
 
@@ -240,7 +240,7 @@ Here's the new `%csv` `mark` defintion:
 
 In our modified `+grad` arm, we've replaced the `%noun` delegation with a core containing five arms: `+form`, `+diff`, `+pact`, `+join`, and `+mash`. These arms are all required for a valid `+grad` if it's not delegated to another `mark`. We'll now look at each in detail.
 
-### `+form`
+### `+form` {#form}
 
 ```hoon
 ++  form  %csv-diff
@@ -266,7 +266,7 @@ Here's another `mark` file which can be saved as `csv-diff.hoon` in `/mar`:
 
 It's very bare-bones, we just need it for our `%csv` `mark` to work. In our `%csv` `mark`, we've specified it as `%csv-diff` in `+form`.
 
-### `+diff`
+### `+diff` {#diff}
 
 ```hoon
 ++  diff
@@ -279,7 +279,7 @@ It's very bare-bones, we just need it for our `%csv` `mark` to work. In our `%cs
 
 This arm produces the diff of two `%csv` files. The first `%csv` file will be given as the sample of the parent door, which if you'll recall we gave a face of `csv`. The second `%csv` file will be given as the sample of the gate in `+diff`, which we've named `bob` here. We then just produce the diff of these two files and return it as the type of the mark specified in `+form`, which in our case is `(urge:clay (list @t))` for a `%csv-diff`. Clay will use `+diff` when a file is revised, so it doesn't have to store a whole new copy of the file each time it's modified.
 
-### `+pact`
+### `+pact` {#pact}
 
 ```hoon
 ++  pact
@@ -292,7 +292,7 @@ This arm produces the diff of two `%csv` files. The first `%csv` file will be gi
 
 `+pact` patches a `%csv` file with the given diff. Its gate takes a diff and applies it to the `%csv` given as the sample of the parent door (which we gave a face of `csv`). If the patch succeeds, it will return a new `%csv` file - a valid `(list (list @t))`. When we read a file that's been modified in Clay, Clay will apply all the diffs it has with `+pact` and return the resulting file.
 
-### `+join`
+### `+join` {#join}
 
 ```hoon
 ++  join
@@ -305,7 +305,7 @@ This arm produces the diff of two `%csv` files. The first `%csv` file will be gi
 
 The `+join` arm merges two different diffs. It takes them both as the sample of its gate (which we've named `ali` and `bob`), and returns a new diff wrapped in a `unit` like `(unit (urge:clay (list @t)))`. The `unit` will be `~` if the merge failed due to a conflict. This is used by Clay in some cases when `desk`s are merged. If diff merges are not possible for your use case, you could just have it always return `~`.
 
-### `+mash`
+### `+mash` {#mash}
 
 ```hoon
 ++  mash
@@ -322,7 +322,7 @@ The `+mash` arm is not used by Clay in its file revision operations, so it's saf
 
 An example of its use would be the `%txt` `mark`, which includes a proper `+mash` function that produces a diff with any conflicts annotated, though how you have `+mash` handle conficts would depend on your use case. If there were no conflicts between the two diffs, it should produce the same diff as the `+join` arm.
 
-## Conclusion
+## Conclusion {#conclusion}
 
 So there you have it, a fully functional `mark` for CSV files. A `mark` file can be as complex or as simple as you'd like, they're very flexible depending on your use case. Additional conversion methods can always be added as they're needed. For example, with just a few lines of code we could add arms for converting CSV files to `%json` or `%txt` and vice versa.
 

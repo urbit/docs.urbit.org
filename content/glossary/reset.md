@@ -1,4 +1,4 @@
-# Factory Reset
+# Factory Reset {#factory-reset}
 
 Continuity on the [Ames](ames.md) network occasionally needs to be broken in order to correct a networking error. These infrequent events are known as **factory resets**, which causes an individual ship to forget its network message history and restores it to the state in which you booted it for the first time.
 
@@ -10,7 +10,7 @@ Historically, there were also "network resets" or "network breaches", which happ
 
 Factory resets used to be called "breaches", and you may still see this language used in some places. The notion is identical, only the name differs.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Guide to Factory Resets](../manual/id/guide-to-resets.md): A more in-depth explanation of factory resets, including how to perform one.
 - [Ship Troubleshooting](../manual/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.

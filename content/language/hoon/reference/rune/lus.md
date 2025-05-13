@@ -1,4 +1,4 @@
-# + lus · Arms
+# + lus · Arms {#-lus-arms}
 
 A core is a cell of `[battery payload]`. The battery is made of one or more arms, each of which is a computation on its parent core.
 
@@ -6,11 +6,11 @@ Arm runes are used to define arms in a core, and thus can only be used from with
 
 There are various arm runes you can use to produce different kinds of arms. Normal arms use `++`; arms defining a structure (or 'mold') use `+$`; and constructor arms use `+*`.
 
-## `+|` "lusbar"
+## `+|` "lusbar" {#-lusbar}
 
 Chapter label (not useful)
 
-#### Syntax
+#### Syntax {#syntax}
 
 One argument, fixed.
 
@@ -18,7 +18,7 @@ One argument, fixed.
 |-------------|-----------|----------------|
 | `+\| %label` | None      | None           |
 
-#### Discussion
+#### Discussion {#discussion}
 
 The `+|` doesn't produce an arm. It instead provides a label for the arms that follow it. The arms of a core can be divided into **chapters** for 'organization'. Chapter labels aren't part of the underlying noun of the core; they're stored as type system metadata only.
 
@@ -26,7 +26,7 @@ See [`tome`](../stdlib/4o.md#tome) in the Hoon standard library.
 
 **Note:** The `+|` rune has little practical utility. Chapter labels cannot be referenced short of manually processing the `$type` of a core.
 
-#### Examples
+#### Examples {#examples}
 
 Let's look at what the Hoon compiler's parser, `ream`, does with the `+|` rune:
 
@@ -58,11 +58,11 @@ Notice that `p.q` has the label `%numbers`. Contrast with:
 
 ---
 
-## `+$` "lusbuc"
+## `+$` "lusbuc" {#-lusbuc}
 
 Produce a structure arm (type definition).
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -72,13 +72,13 @@ Two arguments, fixed.
 
 `p` is an arm name, and `q` is any structure expression.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Arms produced by `+$` are essentially type definitions. They should be used when one wants to define custom types using core arms.
 
 The Hoon subexpression, `q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `tape`).
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =c |%
@@ -98,11 +98,11 @@ nest-fail
 
 ---
 
-## `++` "luslus"
+## `++` "luslus" {#-luslus}
 
 Produce a normal arm.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -112,13 +112,13 @@ Two arguments, fixed.
 
 `p` is the arm name, and `q` is any Hoon expression.
 
-#### Discussion
+#### Discussion {#discussion}
 
 All arms must have a name (e.g., `add`). An arm is computed by name resolution. (This resolution is implicit in the case of `$` arms. See `|=`, `|-`, and `|^`.) The `++` rune is used for explicitly giving a name to an arm.
 
 Any Hoon expression, `q`, may be used to define the arm computation.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =c |%
@@ -135,11 +135,11 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ---
 
-## `+*` "lustar"
+## `+*` "lustar" {#-lustar}
 
 Defines deferred expressions within doors.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Arguments: A variable number of pairs.
 
@@ -174,7 +174,7 @@ None
 
 `+*` arms must always come at the beginning of the battery, before any other type of lus arm.
 
-#### Discussion
+#### Discussion {#discussion}
 
 The primary use of `+*` is to create deferred expressions within doors (see Examples below). This is a name for an expressions that will be evaluated in each place the name is dereferenced. This is a similar concept to aliases or macros, but there are some subtle but important differences. Deferred expressions given by `+*` do not count towards the number of arms in the door and thus are also called "virtual arms", which can be important for things like Gall agent cores that require a fixed number of arms.
 
@@ -202,7 +202,7 @@ as being identical the Nock compiled from this one:
 --
 ```
 
-#### Examples
+#### Examples {#examples}
 
 To assign an alias to a door, we often write the following.
 

@@ -1,4 +1,4 @@
-# API Reference
+# API Reference {#api-reference}
 
 In this document we describe the public interface for Ames. Namely, we describe each `task` that Ames can be `%pass`ed, and which `gift`(s) Ames can `%give` in return.
 
@@ -6,9 +6,9 @@ Some `task`s appear to have more than one arm associated to them, e.g. there are
 
 Ames `task`s can be naturally divided into three categories: messaging tasks, system/lifecycle tasks, and remote scry tasks.
 
-## Messaging Tasks
+## Messaging Tasks {#messaging-tasks}
 
-### `%hear`
+### `%hear` {#hear}
 
 ```hoon
 [%hear =lane =blob]
@@ -22,13 +22,13 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:ev
 
 `%hear` takes in a [$blob](data-types.md#blob), which is essentially a large atom (around 1kB or less) that is the raw data of the message, and a [$lane](data-types.md#lane), which is the origin of the message (typically an IP address).
 
-#### Returns
+#### Returns {#returns}
 
 `%hear` can trigger a number of possible returns. It can trigger the release of zero or more additional packets via `%send` `gift`s. It may also trigger a `%boon` or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message.
 
 ---
 
-### `%heed`
+### `%heed` {#heed}
 
 ```hoon
 [%heed =ship]
@@ -40,13 +40,13 @@ Stop tracking a peer by sending Ames a [%jilt](#jilt) `task`.
 
 The `ship` field specifies the peer to be tracked.
 
-#### Returns
+#### Returns {#returns}
 
 If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s, Ames will `give` a `%clog` `gift` to the requesting vane containing the unresponsive peer's urbit address.
 
 ---
 
-### `%jilt`
+### `%jilt` {#jilt}
 
 ```hoon
 [%jilt =ship]
@@ -58,13 +58,13 @@ There are two `+on-jilt` arms, this `task` utilizes `+on-hear:event-core`.
 
 The `ship` field specifies the peer we want to stop tracking.
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-### `%plea`
+### `%plea` {#plea}
 
 ```hoon
 [%plea =ship =plea:ames]
@@ -78,15 +78,15 @@ Ultimately `%plea` causes `%send` `gift`(s) to be sent to Unix, which tells Unix
 
 A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](data-types.md#plea).
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-## System Tasks
+## System Tasks {#system-tasks}
 
-### `%born`
+### `%born` {#born}
 
 ```hoon
 [%born ~]
@@ -94,7 +94,7 @@ This `task` returns no `gift`s.
 
 Each time you start your Urbit, the Arvo kernel calls the `%born` `task` for Ames.
 
-#### Returns
+#### Returns {#returns}
 
 In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
 
@@ -102,7 +102,7 @@ The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send` `gif
 
 ---
 
-### `%init`
+### `%init` {#init}
 
 ```hoon
 [%init ~]
@@ -112,7 +112,7 @@ The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send` `gif
 
 In response to receiving the `%init` `task`, Ames subscribes to the information contained by Jael.
 
-#### Returns
+#### Returns {#returns}
 
 ```hoon
 =~  (emit duct %pass /turf %j %turf ~)
@@ -123,7 +123,7 @@ In response to receiving the `%init` `task`, Ames subscribes to the information 
 
 ---
 
-### `%sift`
+### `%sift` {#sift}
 
 ```hoon
 [%sift ships=(list ship)]
@@ -133,13 +133,13 @@ This `task` filters debug output by ship. This `task` is used internally when th
 
 The `ships` field specifies the ships for which debug output is desired.
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-### `%snub`
+### `%snub` {#snub}
 
 ```hoon
 [%snub form=?(%allow %deny) ships=(list ship)]
@@ -159,13 +159,13 @@ If you just want to add/remove a ship from an existing blacklist/whitelist, you'
 
 {% endhint %}
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-### `%spew`
+### `%spew` {#spew}
 
 ```hoon
 [%spew veb=(list verb)]
@@ -177,13 +177,13 @@ Sets verbosity toggles on debug output. This `task` is used internally when the 
 
 `%spew` flips each toggle given in `veb`.
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-### `%stir`
+### `%stir` {#stir}
 
 ```hoon
 [%stir arg=@t]
@@ -193,13 +193,13 @@ A `%stir` `task` starts timers for any flows that lack them.
 
 The `arg` field is unused.
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-### `%vega`
+### `%vega` {#vega}
 
 ```hoon
 [%vega ~]
@@ -207,15 +207,15 @@ This `task` returns no `gift`s.
 
 `%vega` is called whenever the kernel is updated. Ames currently does not do anything in response to this.
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-## Remote scry tasks
+## Remote scry tasks {#remote-scry-tasks}
 
-### `%keen`
+### `%keen` {#keen}
 
 Perform an unencrypted or multi-party encrypted remote scry.
 
@@ -229,7 +229,7 @@ The `path` has the general format of `/[vane-letter]/[care]/[revision]/[rest-of-
 
 Note that you would not use this task directly from userspace. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../../gall/reference/gall-api.md#keen) and for two-party encrypted scries you'd use a [`%chum`](#chum) task.
 
-#### Returns
+#### Returns {#returns}
 
 A `%tune` gift. A `%tune` gift looks like:
 
@@ -241,7 +241,7 @@ It represents a *result*. The `roar` field is null if Ames doesn't have a respon
 
 ---
 
-### `%chum`
+### `%chum` {#chum}
 
 Perform a two-party encrypted remote scry.
 
@@ -255,7 +255,7 @@ The `path` has the general format of `/[vane-letter]/[care]/[revision]/[rest-of-
 
 Note this is for two-party encrypted remote scries only. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../../gall/reference/gall-api.md#keen).
 
-#### Returns
+#### Returns {#returns}
 
 A `%tune` gift. A `%tune` gift looks like:
 
@@ -267,7 +267,7 @@ It represents a *result*. The `roar` field is null if Ames doesn't have a respon
 
 ---
 
-### `%yawn`
+### `%yawn` {#yawn}
 
 Cancel a remote scry request.
 
@@ -277,13 +277,13 @@ Cancel a remote scry request.
 
 A `%yawn` task asks Ames to cancel an existing remote scry request to the given `path` on the given `ship`.
 
-#### Returns
+#### Returns {#returns}
 
 This `task` returns no `gift`s.
 
 ---
 
-### `%wham`
+### `%wham` {#wham}
 
 ```hoon
 [%wham =ship =path]
@@ -291,7 +291,7 @@ This `task` returns no `gift`s.
 
 A `%wham` task asks Ames to cancel all existing remote scry requests from all vanes on all ducts for the given `path` on the given `ship`.
 
-#### Returns
+#### Returns {#returns}
 
 A `%tune` gift with a null `data` is given to all listeners. See the [`%keen`](#keen) entry for more details of the `%tune` gift.
 

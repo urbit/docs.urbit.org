@@ -1,22 +1,22 @@
-# L2 Actions
+# L2 Actions {#l2-actions}
 
 There are a total of eleven layer 2 actions, each corresponding to a familiar [layer 1 action](ecliptic.md): `%transfer-point`, `%spawn`, `%configure-keys`, `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`, `%set-management-proxy`, `%set-spawn-proxy`, and `%set-transfer-proxy`. Descriptions of what these actions do may be found by searching for them at [Azimuth.eth](azimuth-eth.md).
 
 Once a ship moves to layer 2, the owner will still utilize the same private keys they used before the transfer to perform Azimuth actions. This includes the ownership key as well as proxies. Stars and galaxies may move their spawn proxy to layer 2 while otherwise remaining on layer 1, but it is not possible to transfer only the management proxy to layer 2; it may only happen as a side-effect of transferring ownership to layer 2.
 
-## Moving a pre-existing ship to L2
+## Moving a pre-existing ship to L2 {#moving-a-pre-existing-ship-to-l2}
 
 In order to move your ship from layer 1 to layer 2, transfer ownership of your ship to the address `0x1111111111111111111111111111111111111111`. The easiest way to accomplish this is using [Bridge](../../../glossary/bridge.md). The Azimuth smart contracts interpret any ship at this address as being on layer 2.
 
-## Dominion
+## Dominion {#dominion}
 
 Layer 2 Azimuth data for a given ship includes which layer that ship is on. We call this the ship's _dominion_. There are three dominions: `%l1`, `l2`, and `%spawn`. Planets may exist in dominion `%l1` or `%l2`, stars may exist in any of the three dominions, and galaxies may exist in dominion `%l1` or `%spawn`. We detail what this means in each case in the following.
 
-## Planets
+## Planets {#planets}
 
 *Permitted dominions:* `%l1`, `%l2`.
 
-### `%l1` planets
+### `%l1` planets {#l1-planets}
 
 *Permitted layer 2 actions:* 
  - owner: `%escape`, `%cancel-escape`
@@ -27,7 +27,7 @@ A planet in dominion `%l1` is said to exist on layer 1, which is the default sta
 
 Layer 1 planets may also move to dominion `%l2` by depositing their ownership to the layer 2 deposit address.
 
-### `%l2` planets
+### `%l2` planets {#l2-planets}
 
 *Permitted layer 2 actions:*
  - owner: `%transfer-point`, `%configure-keys`,
@@ -40,11 +40,11 @@ A planet in dominion `%l2` is said to exist on layer 2. A planet may be on layer
 
 A layer 2 planet is no longer capable of performing any layer 1 actions, and cannot move to layer 1.
 
-## Stars
+## Stars {#stars}
 
 *Permitted dominions:* `%l1`, `%spawn`, `%l2`.
 
-### `%l1` stars
+### `%l1` stars {#l1-stars}
 
 *Permitted layer 2 actions:*
  - owner: `%escape`, `%cancel-escape`, `%adopt`,
@@ -58,7 +58,7 @@ A star in dominion `%l1` is said to exist on layer 1, which is the default state
 
 A `%l1` dominion star may move to dominion `%spawn` by depositing its spawn proxy to the layer 2 deposit address, or may move to dominion `%l2` by depositing its ownership to the layer 2 deposit address. Both actions are irreversible.
 
-### `%spawn` stars
+### `%spawn` stars {#spawn-stars}
 
 *Permitted layer 2 actions:*
  - owner: `%escape`, `%cancel-escape`, `%adopt`,
@@ -75,7 +75,7 @@ A star in dominion `%spawn` may spawn planets directly on layer 2, but will no l
 
 A star moving from `%l1` to `%spawn` has no effect on sponsorship status of any of its sponsored planets. Moving to `%spawn` from `%l1` is currently irreversible - the only further change to dominion permitted is moving to `%l2`.
 
-### `%l2` stars
+### `%l2` stars {#l2-stars}
 
 *Permitted layer 2 actions:*
  - owner: `%transfer-point`, `%spawn`, `%configure-keys`, `%escape`,
@@ -91,11 +91,11 @@ A star in dominion `%l2` is said to exist on layer 2. A star may exist on layer 
 
 A star in dominion `%l2` cannot perform any layer 1 actions.
 
-## Galaxies
+## Galaxies {#galaxies}
 
 *Permitted dominions:* `%l1`, `%spawn`.
 
-### `%l1` galaxies
+### `%l1` galaxies {#l1-galaxies}
 
 *Permitted layer 2 actions:*
  - owner: `%adopt`, `%reject`, `%detach`
@@ -108,7 +108,7 @@ A galaxy in dominion `%l1` is said to exist on layer 1, which is the default sta
 
 A `%l1` dominion galaxy may move to dominion `%spawn` by depositing its spawn proxy to the layer 2 deposit address. This action is irreversible. Note, however that the majority of galaxies already have all of their stars spawned in the [Linear Star Release Contract](https://etherscan.io/address/0x86cd9cd0992f04231751e3761de45cecea5d1801). Layer 2 has no interactions with this contract - all stars released in this manner are `%l1` dominion stars. Moving to the `%spawn` dominion has no effect on sponsorship status.
 
-### `%spawn` galaxies
+### `%spawn` galaxies {#spawn-galaxies}
 
 *Permitted layer 2 actions:*
  - owner: `%adopt`, `%reject`, `%detach`, `%spawn`, `%set-spawn-proxy`

@@ -1,4 +1,4 @@
-# Architecture
+# Architecture {#architecture}
 
 Clay is the primary filesystem for the [Arvo](../../arvo) operating system, which is the [core](../../../../glossary/core.md) of an urbit. The architecture of Clay is intrinsically connected with Arvo, but for this section we assume no knowledge of either Arvo or Urbit. We will point out only those features of Arvo that are necessary for an understanding of Clay, and we will do so only when they arise.
 
@@ -12,7 +12,7 @@ Second, Clay has a distributed revision-control system baked into it. Traditiona
 
 Clay has two other unique properties that we'll cover later on: it supports typed data and is referentially transparent.
 
-## Revision Control
+## Revision Control {#revision-control}
 
 Every urbit has one or more desks, which are independently revision-controlled branches. Each desk contains its own `mark` definitions, apps, and so forth.
 
@@ -36,7 +36,7 @@ There are three ways to refer to particular commits in the revision history. Fir
 
 Additionally, Clay is a global filesystem, so data on other urbits is easily accessible the same way as data on our local urbit. In general, the path to a particular revision of a desk is `/~urbit-name/desk-name/revision`. Thus, to get `/try/readme/md` from revision 5 of the `%base` desk on `~sampel-sipnym`, we refer to `/~sampel-sipnym/base/5/try/readme/md`. Clay's namespace is thus global and referentially transparent.
 
-## A Typed Filesystem
+## A Typed Filesystem {#a-typed-filesystem}
 
 Since Clay is a general filesystem for storing data of arbitrary types, in order to revision control correctly it needs to be aware of types all the way through. Traditional revision control does an excellent job of handling source code, so for source code we act very similar to traditional revision control. The challenge is to handle other data similarly well.
 
@@ -52,6 +52,6 @@ A text file wrapped at 80 columns also reacts suboptimally with unadorned Hunt-M
 
 As far as we are aware, Clay is the first generalized, type-aware revision control system. We'll go into the workings of this system in some detail.
 
-## Marks
+## Marks {#marks}
 
 Central to a typed filesystem is the idea of file types. In Clay, we call these `mark`s. See the [Marks](marks) section for more details.

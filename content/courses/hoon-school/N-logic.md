@@ -1,11 +1,11 @@
-# 13. Conditional Logic
+# 13. Conditional Logic {#13-conditional-logic}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
 
 _Although you've been using various of the `?` [wut](../../language/hoon/reference/rune/wut.md) runes for a while now, let's wrap up some loose ends.  This module will cover the nature of loobean logic and the rest of the `?` wut runes._
 
 
-##  Loobean Logic
+## Loobean Logic {#loobean-logic}
 
 Throughout Hoon School, you have been using `%.y` and `%.n`, often implicitly, every time you have asked a question like `?:  =(5 4)`.  The `=()` expression returns a loobean, a member of the type union `?(%.y %.n)`.  (There is a proper aura `@f` but unfortunately it can't be used outside of the compiler.)  These can also be written as `&` (`%.y`, true) and `|` (`%.n`, false), which is common in older code but should be avoided for clarity in your own compositions.
 
@@ -22,7 +22,7 @@ What are the actual values of these, _sans_ formatting?
 Pretty much all conditional operators rely on loobeans, although it is very uncommon for you to need to unpack them.
 
 
-##  Noun Equality
+## Noun Equality {#noun-equality}
 
 The most fundamental comparison in Hoon is provided by `.=` [dottis](../../language/hoon/reference/rune/dot.md#-dottis), a test for equality of two [nouns](../../glossary/noun.md) using Nock 5.  This is almost always used in its irregular form of `=` tis.
 
@@ -45,7 +45,7 @@ Since [Nock](../../glossary/nock.md) is unaware of the Hoon metadata type system
 ```
 
 
-##  Making Choices
+## Making Choices {#making-choices}
 
 You are familiar in everyday life with making choices on the basis of a decision expression.  For instance, you can compare two prices for similar products and select the cheaper one for purchase.
 
@@ -85,7 +85,7 @@ There are also two long-form decision-making runes, which we will call [_switch 
     ==
     ```
 
-##  Logical Operators
+## Logical Operators {#logical-operators}
 
 Mathematical logic allows the collocation of propositions to determine other propositions.  In computer science, we use this functionality to determine which part of an expression is evaluated.  We can combine logical statements pairwise:
 
@@ -138,7 +138,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 
 From these primitive operators, you can build other logical statements at need.
 
-### Exercise:  Design an `XOR` Function
+### Exercise:  Design an `XOR` Function {#exercise-design-an-xor-function}
 
 The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction) yields true if one but not both operands are true.  `XOR` can be calculated by (_p_ ∧ ¬*q*) ∨ (¬*p* ∧ _q_).
 
@@ -155,7 +155,7 @@ The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction) yields true
     |(&(p !q) &(!p q))
     ```
 
-### Exercise:  Design a `NAND` Function
+### Exercise:  Design a `NAND` Function {#exercise-design-a-nand-function}
 
 The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands are true.  `NAND` can be calculated by ¬(_p_ ∧ _q_).
 
@@ -166,7 +166,7 @@ The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands 
 
 - Implement `NAND` as a gate in Hoon.
 
-### Exercise:  Design a `NOR` Function
+### Exercise:  Design a `NOR` Function {#exercise-design-a-nor-function}
 
 The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands are false.  `NOR` can be calculated by ¬(_p_ ∨ _q_).
 
@@ -177,7 +177,7 @@ The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands ar
 
 - Implement `NAND` as a gate in Hoon.
 
-### Exercise:  Implement a Piecewise Boxcar Function
+### Exercise:  Implement a Piecewise Boxcar Function {#exercise-implement-a-piecewise-boxcar-function}
 
 The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.  We implemented the similar Heaviside function [previously](B-syntax.md) using the `?:` [wutcol](../../language/hoon/reference/rune/wut.md#-wutcol) rune.
 

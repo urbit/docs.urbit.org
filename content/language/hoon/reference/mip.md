@@ -1,8 +1,8 @@
-# Mips (Maps of Maps)
+# Mips (Maps of Maps) {#mips-maps-of-maps}
 
 A `mip` is a map of maps. These can be constructed manually by nesting ordinary `map`s, but the `%landscape` desk contains a `/lib/mip.hoon` library which makes these a bit easier to deal with. You can copy the library into your own project. The various `mip` functions are documented below.
 
-## `++mip`
+## `++mip` {#mip}
 
 Mip (map of maps) mold builder
 
@@ -10,7 +10,7 @@ A `mip` is a map of maps. An outer `map` maps keys to inner `map`s, which themse
 
 A `(mip kex key value)` is equivalent to `(map kex (map key value))`.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `kex` is a `mold`, the type of the outer map's key.
 
@@ -18,11 +18,11 @@ A `(mip kex key value)` is equivalent to `(map kex (map key value))`.
 
 `value` is a `mold`, the type of the value of the inner maps.
 
-#### Produces
+#### Produces {#produces}
 
 A `mold`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 |%
@@ -31,7 +31,7 @@ A `mold`.
   (map kex (map key value))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -45,17 +45,17 @@ A `mold`.
 
 ---
 
-## `++bi`
+## `++bi` {#bi}
 
 Mip engine
 
 This is the container door for all the mip functions.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip).
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  bi                                                  ::  mip engine
@@ -63,7 +63,7 @@ This is the container door for all the mip functions.
   |@
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -78,13 +78,13 @@ This is the container door for all the mip functions.
 
 ---
 
-### `++del:bi`
+### `++del:bi` {#delbi}
 
 Delete item in `mip`
 
 This takes two keys as its argument, `b` and `c`, and deletes `c` in the inner map that matches key `b` in the outer map . If this results in an empty inner map, then `b` is also deleted from the outer map.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the [`+bi`](#bi) door's sample.
 
@@ -92,11 +92,11 @@ This takes two keys as its argument, `b` and `c`, and deletes `c` in the inner m
 
 `c` is a key matching the key type of the inner maps.
 
-#### Produces
+#### Produces {#produces}
 
 A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended up empty.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  del
@@ -108,7 +108,7 @@ A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended 
   (~(put by a) b e)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -132,13 +132,13 @@ A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended 
 
 ---
 
-### `++get:bi`
+### `++get:bi` {#getbi}
 
 Maybe get value in `mip`
 
 Get the value of `c` in the map with key `b` in `mip` `a` as a unit. If there's no `c` in `b` or `b` in `a`, the unit is null.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
@@ -146,11 +146,11 @@ Get the value of `c` in the map with key `b` in `mip` `a` as a unit. If there's 
 
 `c` is a key matching the key type of the inner maps.
 
-#### Produces
+#### Produces {#produces}
 
 A `(unit [type])`, where `[type]` is the value type. The unit is null if there's no `c` in `b` or no `b` in `a`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  get
@@ -160,7 +160,7 @@ A `(unit [type])`, where `[type]` is the value type. The unit is null if there's
   (~(get by (~(gut by a) b ~)) c)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -176,13 +176,13 @@ A `(unit [type])`, where `[type]` is the value type. The unit is null if there's
 
 ---
 
-#### `++got:bi`
+#### `++got:bi` {#gotbi}
 
 Get value in `mip` or crash
 
 Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in `b` or `b` in `a`, crash.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
@@ -190,11 +190,11 @@ Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in 
 
 `c` is a key matching the key type of the inner maps.
 
-#### Produces
+#### Produces {#produces}
 
 A noun of the type of the values in the `mip`, or else crashes.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  got
@@ -202,7 +202,7 @@ A noun of the type of the values in the `mip`, or else crashes.
   (need (get b c))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -219,13 +219,13 @@ dojo: hoon expression failed
 
 ---
 
-### `++gut:bi`
+### `++gut:bi` {#gutbi}
 
 Get value in `mip` or default
 
 Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in `b` or `b` in `a`, produce default value `d`.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
@@ -235,11 +235,11 @@ Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in 
 
 `d` is a default value, which is produced if the value cannot be found.
 
-#### Produces
+#### Produces {#produces}
 
 A noun, either the type of the value in the map or `d`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  gut
@@ -247,7 +247,7 @@ A noun, either the type of the value in the map or `d`.
   (~(gut by (~(gut by a) b ~)) c d)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -263,13 +263,13 @@ A noun, either the type of the value in the map or `d`.
 
 ---
 
-### `++has:bi`
+### `++has:bi` {#hasbi}
 
 Check if `mip` contains
 
 Check if `mip` `a` contains `c` in `b`.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
@@ -277,11 +277,11 @@ Check if `mip` `a` contains `c` in `b`.
 
 `c` is a key matching the key type of the inner maps.
 
-#### Produces
+#### Produces {#produces}
 
 A `?` which is true if `c` in `b` exists, and false otherwise.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  has
@@ -289,7 +289,7 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
   !=(~ (get b c))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -305,23 +305,23 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
 
 ---
 
-### `++key:bi`
+### `++key:bi` {#keybi}
 
 Get keys of inner map in `mip`
 
 Get the `set` of keys of the inner map matching key `b` in the outer map. If `b` doesn't exist, an empty set is returned.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
-#### Produces
+#### Produces {#produces}
 
 A `(set [type])` where `[type]` is the type of the keys in the inner map.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  key
@@ -329,7 +329,7 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
   ~(key by (~(gut by a) b ~))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -345,13 +345,13 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
 
 ---
 
-### `++put:bi`
+### `++put:bi` {#putbi}
 
 Insert value in `mip`
 
 Add value `d` with key `c` to the inner map with key `b` in the outer map. If `b` doesn't exist, an inner map is also added with that key. If `c` already exists, its value is replaced with `d`.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
@@ -361,11 +361,11 @@ Add value `d` with key `c` to the inner map with key `b` in the outer map. If `b
 
 `d` is a noun matching the type of the values in the `mip`.
 
-#### Produces
+#### Produces {#produces}
 
 A new, modified `mip`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  put
@@ -376,7 +376,7 @@ A new, modified `mip`.
   (~(gut by a) b ~)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon
@@ -391,17 +391,17 @@ A new, modified `mip`.
 
 ---
 
-### `++tap:bi`
+### `++tap:bi` {#tapbi}
 
 Convert `mip` to `list`
 
 The `mip` is flattened to a `list` of the triple `[x y v]`, where `x` is a key in the outer map, `y` is a key in an inner map, and `v` is its value.
 
-#### Accepts
+#### Accepts {#accepts}
 
 `a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
 
-#### Produces
+#### Produces {#produces}
 
 A triple cell of `[x y v]`, where:
 
@@ -409,7 +409,7 @@ A triple cell of `[x y v]`, where:
 - `y` is a key in an inner map.
 - `v` is its value.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  tap
@@ -423,7 +423,7 @@ A triple cell of `[x y v]`, where:
 --
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =libmip -build-file /=landscape=/lib/mip/hoon

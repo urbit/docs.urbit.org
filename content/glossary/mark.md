@@ -1,8 +1,8 @@
-# Mark
+# Mark {#mark}
 
 A **mark** is a file-type in the [Clay](clay.md) filesystem. A mark is a file that defines filesystem information such as type, merge routines, diff routines, and patch algorithms.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [The Clay reference](../system/kernel/clay): Technical and developer documentation of Clay.
 - [The marks reference](../system/kernel/clay/guides/marks): Developer documentation of marks.

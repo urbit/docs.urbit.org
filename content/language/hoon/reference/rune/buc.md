@@ -1,8 +1,8 @@
-# $ buc · Structures
+# $ buc · Structures {#-buc-structures}
 
 The `$` family of runes is used for defining custom types. Strictly speaking, these runes are used to produce `spec`s, which we call 'structures'.
 
-## Overview
+## Overview {#overview}
 
 Structures are abstract syntax trees for `type`s (see the documentation on [basic](../basic.md) and [advanced](../advanced.md) types for the precise definition of `type`). Structures are compile-time values of `type` which at runtime may be used to produce a 'mold'.
 
@@ -16,11 +16,11 @@ In any case, since molds are just functions, we can use functional programming t
 
 ---
 
-## `$|` "bucbar"
+## `$|` "bucbar" {#-bucbar}
 
 Structure that satisfies a validator.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -52,13 +52,13 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcbr p=spec q=hoon]
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 `$|` is used for validation of values at a finer level than that of types. Recall that a given value of `type` can be equivalently defined by more than one `spec`. For performance reasons, it may be beneficial to restrict oneself to values of a given type that adhere to an abstract syntax tree specified by some subset of those `spec`s that may be used to define a given type.
 
@@ -73,7 +73,7 @@ foo
 
 For example, the elements of a `set` are treated as being unordered, but the values will necessarily possess an order by where they are in the memory. Thus if every `set` is stored using the same order scheme then faster algorithms involving `set`s may be written. Furthermore, if you just place elements in the `set` randomly, it may be mistreated by algorithms already in place that are expecting a certain order. This is not the same thing as casting - it is forcing a type to have a more specific set of values than its mold would suggest. This rune should rarely be used, but it is extremely important when it is.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo $|  (list @)
@@ -103,11 +103,11 @@ Here [`|$`](bar.md#-barbuc) is used to define a mold builder that takes in a mol
 
 ---
 
-## `$_` "buccab"
+## `$_` "buccab" {#_-buccab}
 
 Structure that normalizes to an example.
 
-#### Syntax
+#### Syntax {#syntax}
 
 One argument, fixed.
 
@@ -115,23 +115,23 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `$_  p`   | `$_(p)`   | `_p`           |
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bccb p=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 |=(* p)
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 `$_` discards the sample it's supposedly normalizing and produces its **example** instead.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo $_([%foobaz %moobaz])
@@ -148,11 +148,11 @@ One argument, fixed.
 
 ---
 
-## `$%` "buccen"
+## `$%` "buccen" {#-buccen}
 
 Structure which recognizes a union tagged by head atom.
 
-#### Syntax
+#### Syntax {#syntax}
 
 A variable number of arguments.
 
@@ -188,23 +188,23 @@ None
 
 Each item may be an atom or (more commonly) a cell. The atom or head of the cell _must_ be a constant (`%foo`, `%1`, `%.y`, etc).
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bccn p=(list spec)]
 ```
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The default of the last item `i` in `p`. Crashes if `p` is empty.
 
-#### Discussion
+#### Discussion {#discussion}
 
 A `$%` is a tagged union, a common data model.
 
 Make sure the last item in your `$%` terminates, or the default will be an infinite loop! Alteratively, you can use `$~` to define a custom type default value.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo $%([%foo p=@ud q=@ud] [%baz p=@ud])
@@ -221,11 +221,11 @@ Make sure the last item in your `$%` terminates, or the default will be an infin
 
 ---
 
-## `$:` "buccol"
+## `$:` "buccol" {#-buccol}
 
 Form a cell type.
 
-#### Syntax
+#### Syntax {#syntax}
 
 A variable number of arguments.
 
@@ -269,21 +269,21 @@ $:(p1 p2 p3 pn)
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bccl p=(list spec)]
 ```
 
-#### Normalizes to
+#### Normalizes to {#normalizes-to}
 
 The tuple the length of `p`, normalizing each item.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The tuple the length of `p`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo $:(p=@ud q=@tas)
@@ -300,11 +300,11 @@ The tuple the length of `p`.
 
 ---
 
-## `$<` "bucgal"
+## `$<` "bucgal" {#-bucgal}
 
 Filters a pre-existing mold to obtain a mold that excludes a particular structure.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -335,17 +335,17 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcgl p=spec q=spec]
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 This can be used to obtain type(s) from a list of types `q` that do not satisfy a requirement given by `p`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
@@ -367,11 +367,11 @@ ford: %ride failed to execute:
 
 ---
 
-## `$>` "bucgar"
+## `$>` "bucgar" {#-bucgar}
 
 Filters a mold to obtain a new mold matching a particular structure.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -402,17 +402,17 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcgr p=spec q=spec]
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 This can be used to obtain type(s) from a list of types `q` that satisfy a requirement given by `p`.
 
-#### Examples
+#### Examples {#examples}
 
 Examples with `$%`:
 
@@ -446,24 +446,24 @@ ford: %ride failed to execute:
 
 ---
 
-## `$-` "buchep"
+## `$-` "buchep" {#--buchep}
 
 Structure that normalizes to an example gate.
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bchp p=spec q=spec]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 $_  ^|
 |=(p $:q)
 ```
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -496,11 +496,11 @@ None
 
 `p` is the type the gate takes and `q` is the type the gate produces.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Since a `$-` reduces to a [`$_`](#_-buccab), it is not useful for normalizing, just for typechecking. In particular, the existence of `$-`s does **not** let us send gates or other cores over the network!
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =foo $-(%foo %baz)
@@ -511,11 +511,11 @@ Since a `$-` reduces to a [`$_`](#_-buccab), it is not useful for normalizing, j
 
 ---
 
-## `$^` "bucket"
+## `$^` "bucket" {#-bucket}
 
 Structure which normalizes a union tagged by head depth (cell).
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -546,21 +546,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bckt p=spec q=spec]
 ```
 
-#### Normalizes to
+#### Normalizes to {#normalizes-to}
 
 Default, if the sample is an atom; `p`, if the head of the sample is an atom; `q` otherwise.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The default of `p`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =a $%([%foo p=@ud q=@ud] [%baz p=@ud])
@@ -579,11 +579,11 @@ The default of `p`.
 
 ---
 
-## `$+` "buclus"
+## `$+` "buclus" {#-buclus}
 
 Specify a shorthand type name for use in prettyprinting.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -614,23 +614,23 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcls p=stud q=spec]
 ```
 
 <!--
-#### Normalizes to
+#### Normalizes to {#normalizes-to}
 
 Default, if the sample is an atom; `p`, if the head of the sample is an atom; `q` otherwise.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The default of `p`.
 -->
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =/  my-type  $+(my-alias [@ @])
@@ -641,11 +641,11 @@ The default of `p`.
 
 ---
 
-## `$&` "bucpam"
+## `$&` "bucpam" {#-bucpam}
 
 Repair a value of a tagged union type.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -682,25 +682,25 @@ $&(combined-mold=spec normalizing-gate=hoon)
 
 Here `combined-mold` is a tagged union type (typically made with `$%`) and `normalizing-gate` is a gate which accepts values of `combined-mold` and normalizes them to be of one particular type in `combined-mold`.
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcpm p=spec q=hoon]
 ```
 
-#### Normalizes to
+#### Normalizes to {#normalizes-to}
 
 The product of the normalizing gate and sample.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The default of the last type listed in `p`, normalized with the normalizing gate.
 
-#### Discussion
+#### Discussion {#discussion}
 
 This rune is used to "upgrade" or "repair" values of a structure, typically from an old version to a new version. For example, this may happen when migrating state after updating an app.
 
-#### Examples
+#### Examples {#examples}
 
 ```hoon
 +$  old  [%0 @]
@@ -713,11 +713,11 @@ Here `adapting` is a structure that bunts to `[%1 ^]` but also normalizes from `
 
 ---
 
-## `$~` "bucsig"
+## `$~` "bucsig" {#-bucsig}
 
 Define a custom type default value.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -751,27 +751,27 @@ None
 `p` defines the default value, and `q` defines everything else about the
 structure.
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcsg p=hoon q=spec]
 ```
 
-#### Product
+#### Product {#product}
 
 Creates a structure (custom type) just like `q`, except its default value is `p`.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The product of `p`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](ket.md#-kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
 
-#### Examples
+#### Examples {#examples}
 
 First, let's define a type without using `$~`:
 
@@ -809,11 +809,11 @@ Using `$~`:
 
 ---
 
-## `$@` "bucpat"
+## `$@` "bucpat" {#-bucpat}
 
 Structure which normalizes a union tagged by head depth (atom).
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -844,25 +844,25 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcpt p=spec q=spec]
 ```
 
-#### Normalizes to
+#### Normalizes to {#normalizes-to}
 
 `p`, if the sample is an atom; `q`, if the sample is a cell.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The default of `p`.
 
-#### Produces
+#### Produces {#produces}
 
 A structure which applies `p` if its sample is an atom, `q` if its sample is a cell.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =a $@(%foo $:(p=%baz q=@ud))
@@ -879,11 +879,11 @@ A structure which applies `p` if its sample is an atom, `q` if its sample is a c
 
 ---
 
-## `$=` "buctis"
+## `$=` "buctis" {#-buctis}
 
 Structure which wraps a face around another structure.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -916,24 +916,24 @@ $=(p q)
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcts p=skin q=spec]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 |=  *
 ^=(p %-(q +6))
 ```
 
-#### Discussion
+#### Discussion {#discussion}
 
 Note that the Hoon compiler is at least slightly clever about compiling structures, and almost never has to actually put in a gate layer (as seen in the expansion above) to apply a `$=`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =a $=(p %foo)
@@ -947,11 +947,11 @@ ford: %ride failed to execute:
 
 ---
 
-## `$?` "bucwut"
+## `$?` "bucwut" {#-bucwut}
 
 Form a type from a union of other types.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Variable number of arguments.
 
@@ -987,27 +987,27 @@ $?(p1 p2 p3 pn)
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%bcwt p=(list spec)]
 ```
 
-#### Normalizes to
+#### Normalizes to {#normalizes-to}
 
 The last item in `p` which normalizes the sample to itself.
 
 Void, if `p` is empty.
 
-#### Defaults to
+#### Defaults to {#defaults-to}
 
 The last item in `p`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 For a union of atoms, a `$?` is fine. For more complex nouns, always try to use a [`$%`](#-buccen), [`$@`](#-bucpat) or [`$^`](#-bucket), at least if you expect your structure to be used as a normalizer.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > =a ?(%foo %baz %baz)

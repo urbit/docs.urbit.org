@@ -1,10 +1,10 @@
-# Types
+# Types {#types}
 
-## `logs`
+## `logs` {#logs}
 
 A list of [`request`](#request)s, their [`id`](#id)s, and their current [`result`](#result)s. These are given in the various initialization [`updates`](#updates).
 
-#### Example
+#### Example {#example}
 
 ```json
 [
@@ -52,11 +52,11 @@ A list of [`request`](#request)s, their [`id`](#id)s, and their current [`result
 
 ---
 
-## `manifest`
+## `manifest` {#manifest}
 
 An array of [`proof`](#proof)s. This is published at `<domain>/.well-known/appspecific/org.urbit.auth.json`, and then Auth Client uses it to validate requests.
 
-#### Example
+#### Example {#example}
 
 ```json
 [
@@ -71,11 +71,11 @@ An array of [`proof`](#proof)s. This is published at `<domain>/.well-known/appsp
 
 ---
 
-## `proof`
+## `proof` {#proof}
 
 An attestation that a ship is an agent of a site. An array of such `proof`s are published at `<domain>/.well-known/appspecific/org.urbit.auth.json` in a [`manifest`](#manifest), and then Auth Client uses them to validate requests.
 
-#### Example
+#### Example {#example}
 
 ```json
 {
@@ -86,11 +86,11 @@ An attestation that a ship is an agent of a site. An array of such `proof`s are 
 }
 ```
 
-## `request`
+## `request` {#request}
 
 An authorization request. The `user`, `code` and `msg` fields are all optional and may be `null` if not used. The `expire` field is the date-time that the request should expire, as milliseconds since the Unix Epoch. The `time` field is the timestamp of the request - you'd typically use now.
 
-#### Examples
+#### Examples {#examples}
 
 ```json
 {
@@ -118,7 +118,7 @@ An authorization request. The `user`, `code` and `msg` fields are all optional a
 
 ---
 
-## `result`
+## `result` {#result}
 
 The status of an authorization request. It may be one of:
 
@@ -135,11 +135,11 @@ The typical flow is `"sent"` -> `"got"` -> `"yes"` or `"no"`. At any point in th
 
 ---
 
-## `ship`
+## `ship` {#ship}
 
 An Urbit ship. The ship is a string and **does not include the leading ~**.
 
-#### Examples
+#### Examples {#examples}
 
 ```json
 "zod"
@@ -155,13 +155,13 @@ An Urbit ship. The ship is a string and **does not include the leading ~**.
 
 ---
 
-## `sign`
+## `sign` {#sign}
 
 Ed25519 signature of the domain name with the ship's keys, encoded in a string as Base64.
 
 This is used in a [`proof`](#proof) to attest that a particular ship is an agent of a particular site.
 
-#### Example
+#### Example {#example}
 
 ```json
 "jtvkTK0JMizoY12Kw51R11OSKzmtCt2WHB3ev32R+k32O+Y6rJ7jHtrRizm0/0aKwJIO8X5PbDHwdti296XLCQ=="
@@ -169,13 +169,13 @@ This is used in a [`proof`](#proof) to attest that a particular ship is an agent
 
 ---
 
-## `id`
+## `id` {#id}
 
 A request ID. The [`id`](types.md#id) field is a random unique ID for the request, and must be a v4 UUID (variant 1, RFC 4122/DCE 1.1).
 
 Note this is decoded into a 122-bit `@ux` atom by `%auth-server` - the UUID form is only used in JSON, scry paths and subscription paths.
 
-#### Example
+#### Example {#example}
 
 ```json
 "6360904f-7645-4747-91a1-8d7844f11d18"
@@ -183,21 +183,21 @@ Note this is decoded into a 122-bit `@ux` atom by `%auth-server` - the UUID form
 
 ---
 
-## `turf`
+## `turf` {#turf}
 
 A domain. This must be just the domain like `localhost`, `example.com`, `foo.bar.baz`, etc, without any protocol, forward slashes, port, paths, etc.
 
 ---
 
-## Actions
+## Actions {#actions}
 
 Ask Auth Server to either initiate a new authorization request, or cancel an existing one. These are given to Auth Server as pokes.
 
-### `new`
+### `new` {#new}
 
 Initiate a new authorization request. The `new` action contains a [`request`](#request) structure and a request [`id`](#id).
 
-#### Example
+#### Example {#example}
 
 ```json
 {
@@ -216,11 +216,11 @@ Initiate a new authorization request. The `new` action contains a [`request`](#r
 }
 ```
 
-### `cancel`
+### `cancel` {#cancel}
 
 Cancel an existing request. The [`id`](#id) in the ID of the request you want to cancel.
 
-#### Example
+#### Example {#example}
 
 ```json
 {"cancel": {"id": "6360904f-7645-4747-91a1-8d7844f11d18"}}
@@ -228,15 +228,15 @@ Cancel an existing request. The [`id`](#id) in the ID of the request you want to
 
 ---
 
-## Updates
+## Updates {#updates}
 
 The types of event/update that Auth Server can send back to you.
 
-### `entry`
+### `entry` {#entry}
 
 This will be sent back to you whenever you make a new request with a [`new`](#new) action. It contains the request [`id`](#id), [`request`](#request) and initial [`result`](#result). The initial result will typically be `sent`, unless you specified an expiration time before the current time, in which case it'll be `expire`.
 
-#### Example
+#### Example {#example}
 
 ```json
 {
@@ -256,11 +256,11 @@ This will be sent back to you whenever you make a new request with a [`new`](#ne
 }
 ```
 
-### `status`
+### `status` {#status}
 
 A `status` update will be sent back whenever the status of a request changes, for example if the user receives the request, the user approves or denies the request, the request expires, etc. It contains a request [`id`](#id) and a [`result`](#result).
 
-#### Examples
+#### Examples {#examples}
 
 ```json
 {
@@ -280,13 +280,13 @@ A `status` update will be sent back whenever the status of a request changes, fo
 }
 ```
 
-### `initAll`
+### `initAll` {#initall}
 
 This is sent as the inital update when you first subscribe to one of the `/init/all/...` paths. It's also returned by some of the scry paths. It contains existing entries, possibly limited to entries before or after a specific timestamp.
 
 It contains a [`logs`](#logs) field with the entries themselves, and also `before` and `after` fields which will either contain Unix millisecond times or else be null if no such limits were specified.
 
-#### Example
+#### Example {#example}
 
 ```json
 {
@@ -325,13 +325,13 @@ It contains a [`logs`](#logs) field with the entries themselves, and also `befor
 }
 ```
 
-### `initTurf`
+### `initTurf` {#initturf}
 
 This is sent as the inital update when you first subscribe to one of the `/init/turf/...` paths. It's also returned by some of the scry paths. It contains existing entries for a specific [`turf`](#turf) (domain), possibly limited to entries before or after a specific timestamp.
 
 It contains a [`turf`](#turf) field showing which domain it's for, a [`logs`](#logs) field with the entries themselves, and also `before` and `after` fields which will either contain Unix millisecond timestamps or else be null if no such limits were specified.
 
-#### Example
+#### Example {#example}
 
 ```json
 {
@@ -371,13 +371,13 @@ It contains a [`turf`](#turf) field showing which domain it's for, a [`logs`](#l
 }
 ```
 
-### `initShip`
+### `initShip` {#initship}
 
 This is sent as the inital update when you first subscribe to one of the `/init/ship/...` paths. It's also returned by some of the scry paths. It contains existing entries for a specific [`ship`](#ship), possibly limited to entries before or after a specific timestamp.
 
 It contains a [`ship`](#ship) field showing which ship it's for, a [`logs`](#logs) field with the entries themselves, and also `before` and `after` fields which will either contain Unix millisecond timestamps or else be null if no such limits were specified.
 
-#### Example
+#### Example {#example}
 
 ```json
 {

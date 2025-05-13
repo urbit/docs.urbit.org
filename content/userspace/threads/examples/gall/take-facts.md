@@ -1,10 +1,10 @@
-# Take Facts
+# Take Facts {#take-facts}
 
 Most of the time you'll just want the final result like how we did previously. Sometimes, though, you might want to send out facts while the thread runs rather than just at the end.
 
 Here we've added another card to subscribe for any facts sent by the thread and some small changes to `on-agent`:
 
-#### `thread-starter.hoon`
+#### `thread-starter.hoon` {#thread-starterhoon}
 
 ```hoon
 /+  default-agent, dbug
@@ -76,7 +76,7 @@ Here we've added another card to subscribe for any facts sent by the thread and 
 
 We've also made some changes to the thread:
 
-#### `test-thread.hoon`
+#### `test-thread.hoon` {#test-threadhoon}
 
 ```hoon
 /-  spider
@@ -123,7 +123,7 @@ message 4
 Thread failed: not-foo
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 In our agent's `on-poke` arm we've added another card to subscribe to `/thread/[tid]/updates`:
 

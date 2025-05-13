@@ -1,4 +1,4 @@
-# Additional Information
+# Additional Information {#additional-information}
 
 This section contains extra information to help you get started after you've got your Urbit up and running.
 

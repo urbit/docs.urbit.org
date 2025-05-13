@@ -1,4 +1,4 @@
-# Irregular forms
+# Irregular forms {#irregular-forms}
 
 While Hoon has a large amount of sugar syntax, some forms that may look irregular are actually regular wing syntax or another language feature, such as `,`.
 
@@ -9,7 +9,7 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#-zapcom) rune to determ
 [%wing p=~[%c %b %a]]
 ```
 
-## Quick Lookup of Irregular Forms
+## Quick Lookup of Irregular Forms {#quick-lookup-of-irregular-forms}
 
 | Form | Regular Form |
 | ---- | ------------ |
@@ -37,17 +37,17 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#-zapcom) rune to determ
 
 <br>
 
-##### Reading guide
+##### Reading guide {#reading-guide}
 
 Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular and irregular forms are given.
 
 Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
-## `.` dot (nock)
+## `.` dot (nock) {#-dot-nock}
 
 Anything Nock can do, Hoon can do also.
 
-### `.+` dotlus
+### `.+` dotlus {#-dotlus}
 
 [docs](rune/dot.md#-dotlus) \\+
 
@@ -57,7 +57,7 @@ Regular: `.+(p)`
 
 Irregular: `+(p)`
 
-### `.=` dottis
+### `.=` dottis {#-dottis}
 
 [docs](rune/dot.md#-dottis) \\=
 
@@ -67,11 +67,11 @@ Regular: `.=(p q)`
 
 Irregular: `=(p q)`
 
-## `;` mic (make)
+## `;` mic (make) {#-mic-make}
 
 Miscellaneous useful macros.
 
-### `;:` miccol
+### `;:` miccol {#-miccol}
 
 [docs](rune/mic.md#-miccol) \\:
 
@@ -81,11 +81,11 @@ Regular: `;:(p q)`
 
 Irregular: `:(p q)`
 
-## `:` col (cells)
+## `:` col (cells) {#-col-cells}
 
 The cell runes.
 
-### `:-` colhep
+### `:-` colhep {#--colhep}
 
 [docs](rune/col.md#--colhep) \\[\\]\\^\\/\\+\\\`\\~
 
@@ -106,11 +106,11 @@ Irregular:
   [a b]~  ==>   [[a b] ~]
 ```
 
-## `=` tis (flow)
+## `=` tis (flow) {#-tis-flow}
 
 Flow hoons change the subject. All non-flow hoons (except cores) pass the subject down unchanged.
 
-### `=<` tisgal
+### `=<` tisgal {#-tisgal}
 
 [docs](rune/tis.md#-tisgal) \\:
 
@@ -120,7 +120,7 @@ Regular: `=<(p q)`
 
 Irregular: `p:q`
 
-## `|` bar (core)
+## `|` bar (core) {#-bar-core}
 
 [docs](rune/bar.md) \\$
 
@@ -135,11 +135,11 @@ Technically not irregular syntax, but worth mentioning.
 
 The above runes produce a core with a single arm, named `$` ("buc"). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=`, `:make`, like so: `$()`.
 
-## `%` cen (call)
+## `%` cen (call) {#-cen-call}
 
 The invocation family of runes.
 
-### `%=` centis
+### `%=` centis {#-centis}
 
 [docs](rune/cen.md#-centis) \\(\\)
 
@@ -149,7 +149,7 @@ Regular: `%=(p a 1)`
 
 Irregular: `p(a 1)`
 
-### `%~` censig
+### `%~` censig {#-censig}
 
 [docs](rune/cen.md#-censig) \\~
 
@@ -159,7 +159,7 @@ Regular: `%~(p q r)`
 
 Irregular: `~(p q r)`
 
-### `%-` cenhep
+### `%-` cenhep {#--cenhep}
 
 [docs](rune/cen.md#-cenhep) \\(\\)
 
@@ -171,11 +171,11 @@ Irregular: `(p q)`
 
 Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (func call w/o args).
 
-## `$` buc (mold)
+## `$` buc (mold) {#-buc-mold}
 
 A mold is a gate (function) that helps us build simple and rigorous data structures.
 
-### `$?` bucwut
+### `$?` bucwut {#-bucwut}
 
 [docs](rune/buc.md#-bucwut) \\?
 
@@ -185,7 +185,7 @@ Regular: `$?(p)`
 
 Irregular: `?(p)`
 
-### `$_` buccab
+### `$_` buccab {#_-buccab}
 
 [docs](rune/buc.md#_-buccab) \\\_
 
@@ -195,7 +195,7 @@ Regular: `$_(p)`
 
 Irregular: `_p`
 
-### `$=` buctis
+### `$=` buctis {#-buctis}
 
 [docs](rune/buc.md#-buctis)  \\=
 
@@ -210,11 +210,11 @@ Irregular:
 =p=q   ==>   p-q=q
 ```
 
-## `?` wut (test)
+## `?` wut (test) {#-wut-test}
 
 Hoon has the usual branches and logical tests.
 
-### `?!` wutzap
+### `?!` wutzap {#-wutzap}
 
 [docs](rune/wut.md#-wutzap) \\!
 
@@ -224,7 +224,7 @@ Regular: `?!(p)`
 
 Irregular: `!(p)`
 
-### `?&` wutpam
+### `?&` wutpam {#-wutpam}
 
 [docs](rune/wut.md#-wutpam) \\&
 
@@ -234,7 +234,7 @@ Regular: `?&(p)`
 
 Irregular: `&(p)`
 
-### `?|` wutbar
+### `?|` wutbar {#-wutbar}
 
 [docs](rune/wut.md#-wutbar) \\|
 
@@ -244,11 +244,11 @@ Regular: `?|(p)`
 
 Irregular: `|(p)`
 
-## `^` ket (cast)
+## `^` ket (cast) {#-ket-cast}
 
 Lets us adjust types without violating type constraints.
 
-### `^:` ketcol
+### `^:` ketcol {#-ketcol}
 
 [docs](rune/ket.md#-ketcol) \\,
 
@@ -258,7 +258,7 @@ Regular: `^:(p)`
 
 Irregular: `,p`
 
-### `^-` kethep
+### `^-` kethep {#--kethep}
 
 [docs](rune/ket.md#--kethep) \\\`
 
@@ -268,7 +268,7 @@ Regular: `^-(p q)`
 
 Irregular: `` `p`q ``
 
-### `^*` kettar
+### `^*` kettar {#-kettar}
 
 [docs](rune/ket.md#-kettar) \\\*
 
@@ -278,7 +278,7 @@ Regular: `^*(p)`
 
 Irregular: `*p`
 
-### `^=` kettis
+### `^=` kettis {#-kettis}
 
 [docs](rune/ket.md#-kettis) \\=
 
@@ -288,9 +288,9 @@ Regular: `^=(p q)`
 
 Irregular: `p=q`
 
-## Miscellaneous
+## Miscellaneous {#miscellaneous}
 
-### Trivial molds
+### Trivial molds {#trivial-molds}
 
 \\\*\\@\\^\\?\\~
 
@@ -300,7 +300,7 @@ Irregular: `p=q`
 - `?` loobean.
 - `~` null.
 
-### Values
+### Values {#values}
 
 \\~\\&\\|\\%
 
@@ -311,14 +311,14 @@ Irregular: `p=q`
 
 See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
-### List addressing
+### List addressing {#list-addressing}
 
 \\&\\|
 
 - `&n` nth element of a list.
 - `|n` tail of list after nth element (i.e. n is the head).
 
-### Limbs
+### Limbs {#limbs}
 
 [docs](limbs/limb.md) \\+\\.\\^\\-
 
@@ -342,7 +342,7 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 ...
 ```
 
-### Wings
+### Wings {#wings}
 
 [docs](limbs/wing.md) \\.
 
@@ -350,7 +350,7 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 
-### Printing stuff
+### Printing stuff {#printing-stuff}
 
 \\\<\\\>
 
@@ -371,7 +371,7 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
   "~[1 2 3]"
   ```
 
-### `,` com
+### `,` com {#-com}
 
 `,` can serve in several capacities in Hoon programs:
 
@@ -443,6 +443,6 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 3. As a separator, e.g. between pairs in an inline `%=` centis expression, `$(i +(i), j (dec j))`.
 
-## Commentary
+## Commentary {#commentary}
 
 In our in-house examples throughout our documentation, we use irregular forms instead of regular for the sake of verbosity. But remember with irregular forms: everything is just runes! Like magic. In general, irregular forms (usually) read better, but of course regular forms provide more information about what you're doing by showing you the full rune. Of course, it's up to you, the Hoon programmer, as to whether or not you want to use these.

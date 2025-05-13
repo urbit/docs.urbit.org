@@ -1,4 +1,4 @@
-# Metals
+# Metals {#metals}
 
 "Variance" describes the four possible relationships that type rules for [cores](core.md) are able to have to each other. [Hoon](hoon.md) imaginatively designates these by **metals**. Briefly:
 
@@ -13,6 +13,6 @@
 A `%gold` core can be cast or converted to any metal, and any metal can be cast or converted to `%lead`.
 
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Hoon School: metals](../courses/hoon-school/R-metals.md): This lesson covers core variance.

@@ -1,14 +1,14 @@
-# Dill
+# Dill {#dill}
 
 The terminal driver vane.
 
 Keyboard events and the like from Unix are received by Dill as [%belt](reference/tasks.md#belt) `task`s, and Dill sends `%blit` `gift`s containing [$blit](reference/data-types.md#blit)s back to the runtime to be displayed in the Unix terminal. The manner of interacting with Dill differs depending on whether you're in userspace or kernelspace, as we'll explore below.
 
-## Kernelspace
+## Kernelspace {#kernelspace}
 
 For technical reasons, Dill performs a handful of system tasks related to booting a ship and some memory operations. Aside from those, other Vanes mostly just pass Dill [tasks](reference/tasks.md) to print error messages and the like to the terminal.
 
-## Userspace
+## Userspace {#userspace}
 
 Unlike in kernelspace, userspace applications are unlikely to `%pass` Dill `task`s directly. Instead, Dill looks at things in terms of sessions. A session is a pipeline between a client and a handler, where:
 

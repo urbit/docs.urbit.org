@@ -1,4 +1,4 @@
-# Core Academy
+# Core Academy {#core-academy}
 
 Core Academy (CA) prepares developers to become kernel developers.  Although not relying on App Workshop, Core Academy participants should be capable of composing fairly complex applications in Hoon.  C experience is also a prerequisite for the runtime material (Rust for Sword, née Ares).
 

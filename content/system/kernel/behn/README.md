@@ -1,4 +1,4 @@
-# Behn
+# Behn {#behn}
 
 Urbit's timer vane.
 

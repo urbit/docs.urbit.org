@@ -1,8 +1,8 @@
-# Data Types
+# Data Types {#data-types}
 
 Here are the data types used by Ames, as defined in `lull.hoon`.
 
-## `$address`
+## `$address` {#address}
 
 ```hoon
 +$  address  @uxaddress
@@ -10,7 +10,7 @@ Here are the data types used by Ames, as defined in `lull.hoon`.
 
 Opaque atomic transport address to or from Unix. For Ames over UDP, it will encode the IP address and port.
 
-## `$verb`
+## `$verb` {#verb}
 
 ```hoon
 +$  verb  ?(%snd %rcv %odd %msg %ges %for %rot)
@@ -26,7 +26,7 @@ Verbosity flag for Ames. Use with `|ames/verb %flag1 %flag2 ...` and turn off wi
 - `%for` - Packet forwarding.
 - `%rot` - Routing attempts.
 
-## `$blob`
+## `$blob` {#blob}
 
 ```hoon
 +$  blob  @uxblob
@@ -34,7 +34,7 @@ Verbosity flag for Ames. Use with `|ames/verb %flag1 %flag2 ...` and turn off wi
 
 Raw atom to or from Unix, representing a packet.
 
-## `$error`
+## `$error` {#error}
 
 ```hoon
 +$  error  [tag=@tas =tang]
@@ -42,7 +42,7 @@ Raw atom to or from Unix, representing a packet.
 
 Tagged diagnostic trace.
 
-## `$lane`
+## `$lane` {#lane}
 
 ```hoon
 +$  lane  (each @pC address)
@@ -50,7 +50,7 @@ Tagged diagnostic trace.
 
 Ship transport address; either opaque [$address](#address) or galaxy. The runtime knows how to look up galaxies, so we don't need to know their transport addresses.
 
-## `$plea`
+## `$plea` {#plea}
 
 ```hoon
 +$  plea  [vane=@tas =path payload=*]
@@ -62,7 +62,7 @@ Application-level message, as a `%pass`.
 - `path` - Internal route on the receiving ship.
 - `payload` - Semantic message contents.
 
-## `$spar`
+## `$spar` {#spar}
 
 ```hoon
 +$  spar  [=ship =path]
@@ -70,7 +70,7 @@ Application-level message, as a `%pass`.
 
 Instead of a fully qualifying scry path, Ames infers rift and life based on the ship.
 
-## `$bone`
+## `$bone` {#bone}
 
 ```hoon
 +$  bone  @udbone
@@ -87,7 +87,7 @@ The least significant bit of a `bone` is:
 
 The second-least significant bit is 1 if the `bone` is a naxplanation `bone`, and 0 otherwise. Only naxplanation messages can be sent on a naxplanation `bone`, as `%boon`s.
 
-## `$fragment`
+## `$fragment` {#fragment}
 
 ```hoon
 +$  fragment  @uwfragment
@@ -95,7 +95,7 @@ The second-least significant bit is 1 if the `bone` is a naxplanation `bone`, an
 
 A message fragment.
 
-## `$fragment-num`
+## `$fragment-num` {#fragment-num}
 
 ```hoon
 +$  fragment-num  @udfragmentnum
@@ -103,7 +103,7 @@ A message fragment.
 
 Message fragment count.
 
-## `$message-blob`
+## `$message-blob` {#message-blob}
 
 ```hoon
 +$  message-blob  @udmessageblob
@@ -111,7 +111,7 @@ Message fragment count.
 
 Unfragmented message blob.
 
-## `$message-num`
+## `$message-num` {#message-num}
 
 ```hoon
 +$  message-num  @udmessagenum
@@ -119,7 +119,7 @@ Unfragmented message blob.
 
 Message count.
 
-## `$public-key`
+## `$public-key` {#public-key}
 
 ```hoon
 +$  public-key  @uwpublickey
@@ -127,7 +127,7 @@ Message count.
 
 A peer's public key.
 
-## `$symmetric-key`
+## `$symmetric-key` {#symmetric-key}
 
 ```hoon
 +$  symmetric-key  @uwsymmetrickey
@@ -135,7 +135,7 @@ A peer's public key.
 
 A symmetric key for encrypting messages to a peer. This is produced by performing an elliptic curve Diffie-Hellman using our private key and the peer's public key.
 
-## `$ack`
+## `$ack` {#ack}
 
 ```hoon
 +$  ack
@@ -151,7 +151,7 @@ A message acknowledgement.
 - `%nack` - Negative acknowledgement.
 - `%naxplanation` - Nack trace.
 
-## `$ship-state`
+## `$ship-state` {#ship-state}
 
 ```hoon
 +$  ship-state
@@ -165,7 +165,7 @@ All Ames knows about a peer.
 - `%alien` - No PKI data, so enqueue actions to perform once we learn it.
 - `%known` - We know their `life` and public keys, so we have a channel.
 
-## `$alien-agenda`
+## `$alien-agenda` {#alien-agenda}
 
 ```hoon
 +$  alien-agenda
@@ -183,7 +183,7 @@ What to do when Ames learns a peer's life and keys.
 - `heeds` - Local tracking requests; passed through into [$peer-state](#peer-state).
 - `keens` - Subscribers to remote scry paths.
 
-## `$peer-state`
+## `$peer-state` {#peer-state}
 
 ```hoon
 +$  peer-state
@@ -219,7 +219,7 @@ State for a peer with known life and keys.
 - `corked`: Bones closed on both sender and receiver.
 - `keens`: Remote scry state.
 
-## `$keen-state`
+## `$keen-state` {#keen-state}
 
 ```hoon
 +$  keen-state
@@ -245,7 +245,7 @@ Remote scry state for a peer.
 - `listeners`: Ducts waiting for a response.
 - `metrics`: Stats.
 
-## `$want`
+## `$want` {#want}
 
 ```hoon
 +$  want
@@ -257,7 +257,7 @@ Remote scry state for a peer.
 
 Remote scry request fragment.
 
-## `$have`
+## `$have` {#have}
 
 ```hoon
 +$  have
@@ -268,7 +268,7 @@ Remote scry request fragment.
 
 Remote scry response fragment.
 
-## `$meow`
+## `$meow` {#meow}
 
 ```hoon
 +$  meow
@@ -284,7 +284,7 @@ Remote scry response fragment data.
 - `num`: number of fragments.
 - `dat`: contents.
 
-## `$peep`
+## `$peep` {#peep}
 
 ```hoon
 +$  peep
@@ -295,7 +295,7 @@ Remote scry response fragment data.
 
 Remote scry fragment request.
 
-## `$wail`
+## `$wail` {#wail}
 
 ```hoon
 +$  wail
@@ -305,7 +305,7 @@ Remote scry fragment request.
 
 Tagged remote scry request fragment.
 
-## `$roar`
+## `$roar` {#roar}
 
 ```hoon
 +$  roar
@@ -333,7 +333,7 @@ Therefore, a `$roar` looks like:
 
 In `dat`, for the `(pair path (unit (cask)))`, the `path` is the remote scry path and the `(unit (cask))` contains the value, or is null if there's no value at this path and will never be one (equivalent to the `[~ ~]` case of a local scry).
 
-## `$purr`
+## `$purr` {#purr}
 
 ```hoon
 +$  purr
@@ -344,7 +344,7 @@ In `dat`, for the `(pair path (unit (cask)))`, the `path` is the remote scry pat
 
 Response packet payload.
 
-## `$qos`
+## `$qos` {#qos}
 
 ```hoon
 +$  qos
@@ -359,7 +359,7 @@ Quality of service; how is the connection to a peer doing?
 - `%unborn` - Peer is sunken.
 - `last-contact` - Last time Ames heard from the peer, or if `%unborn`, the time when we first started tracking then.
 
-## `$ossuary`
+## `$ossuary` {#ossuary}
 
 ```hoon
 +$  ossuary
@@ -371,7 +371,7 @@ Quality of service; how is the connection to a peer doing?
 
 [$bone](#bone) to `duct` mapping, `next` is the next `bone` to map to a `duct`.
 
-## `$message-pump-state`
+## `$message-pump-state` {#message-pump-state}
 
 ```hoon
 +$  message-pump-state
@@ -393,7 +393,7 @@ Persistent state for a `|message-pump`.
 - `queued-message-acks` - Future message acks to be applied after current.
 - `packet-pump-state` - State of corresponding `|packet-pump`.
 
-## `$static-fragment`
+## `$static-fragment` {#static-fragment}
 
 ```hoon
 +$  static-fragment
@@ -406,7 +406,7 @@ Persistent state for a `|message-pump`.
 
 A packet; a fragment of a message and metadata.
 
-## `$packet-pump-state`
+## `$packet-pump-state` {#packet-pump-state}
 
 ```hoon
 +$  packet-pump-state
@@ -422,7 +422,7 @@ Persistent state for a `|packet-pump`.
 - `live` - Packets in flight; sent but not yet acked.
 - `metrics` - Congestion control information.
 
-## `$pump-metrics`
+## `$pump-metrics` {#pump-metrics}
 
 ```hoon
 +$  pump-metrics
@@ -445,7 +445,7 @@ Congestion control state for a `|packet-pump`.
 - `ssthresh` - Slow-start threshold.
 - `cwnd` - Congestion window; max unacked packets.
 
-## `$live-packet`
+## `$live-packet` {#live-packet}
 
 ```hoon
 +$  live-packet
@@ -456,7 +456,7 @@ Congestion control state for a `|packet-pump`.
 
 A packet in flight, as tracked in the [$packet-pump-state](#packet-pump-state).
 
-## `$live-packet-key`
+## `$live-packet-key` {#live-packet-key}
 
 ```hoon
 +$  live-packet-key
@@ -467,7 +467,7 @@ A packet in flight, as tracked in the [$packet-pump-state](#packet-pump-state).
 
 Identifier of a packet in flight.
 
-## `$live-packet-val`
+## `$live-packet-val` {#live-packet-val}
 
 ```hoon
 +$  live-packet-val
@@ -479,7 +479,7 @@ Identifier of a packet in flight.
 
 Content and metadata about a packet in flight.
 
-## `$packet-state`
+## `$packet-state` {#packet-state}
 
 ```hoon
 +$  packet-state
@@ -491,7 +491,7 @@ Content and metadata about a packet in flight.
 
 Sending statistics about a packet in flight.
 
-## `$message-sink-state`
+## `$message-sink-state` {#message-sink-state}
 
 ```hoon
 +$  message-sink-state
@@ -510,7 +510,7 @@ State of a `|message-sink` to assemble received messages.
 - `pending-vane-ack` - Heard but not processed by local vane.
 - `live-messages` - Partially received messages.
 
-## `$partial-rcv-message`
+## `$partial-rcv-message` {#partial-rcv-message}
 
 ```hoon
 +$  partial-rcv-message

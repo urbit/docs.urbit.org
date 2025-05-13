@@ -1,6 +1,6 @@
-# Get an Urbit ID
+# Get an Urbit ID {#get-an-urbit-id}
 
-### Types of ID
+### Types of ID {#types-of-id}
 
 There are [five different types](https://operators.urbit.org/guides/which-id-should-i-buy) of Urbit ID, but here we'll just be  discussing two types called comets and planets.
 
@@ -10,7 +10,7 @@ There are [five different types](https://operators.urbit.org/guides/which-id-sho
 
 Planets have a unique, four syllable phonetic name and a [sigil](https://urbit.org/blog/creating-sigils), a visual representation of the name.
 
-### Where to get a planet
+### Where to get a planet {#where-to-get-a-planet}
 
 There are a few ways to get your own planet:
 
@@ -21,7 +21,7 @@ There are a few ways to get your own planet:
 
 This guide will cover the last case and what to do after receiving one.
 
-### Buying a planet
+### Buying a planet {#buying-a-planet}
 
 There are many places to buy a planet using either crypto or fiat currency.
 
@@ -62,7 +62,7 @@ Learn more about [layer 2 for planets](https://operators.urbit.org/manual/id/lay
 {% endhint %}
 
 
-### Claiming your planet
+### Claiming your planet {#claiming-your-planet}
 
 An invitation to claim your planet comes in one of two forms.
 
@@ -83,7 +83,7 @@ If you’ve purchased an L1 planet, you won’t need to claim it because you alr
 {% endhint %}
 
 
-### Using Bridge to get your keyfile
+### Using Bridge to get your keyfile {#using-bridge-to-get-your-keyfile}
 
 Now that you have your planet, you can create your keyfile (eg. `sample-palnet.key`), which is the cryptographic signature required to encrypt and decrypt messages on Urbit's P2P network.
 
@@ -96,7 +96,7 @@ Now that you have your planet, you can create your keyfile (eg. `sample-palnet.k
 - **L1 Planet Purchasers**  
   Log in to Bridge with your Ethereum wallet using Metamask or the wallet of your choice with WalletConnect. Click the “OS” box on the bottom of the page to open the OS page, and then click the **Download Keyfile** button.
 
-### Next steps
+### Next steps {#next-steps}
 
 Now that you have a keyfile let's move on to booting the Urbit OS.
 
@@ -106,7 +106,7 @@ Now that you have a keyfile let's move on to booting the Urbit OS.
 
 - [Set up a home server](self-hosted/home-servers.md) – Explore options for running your own dedicated physical Urbit computer.
 
-### Buying a star
+### Buying a star {#buying-a-star}
 
 There are many places to buy a star using either crypto or fiat currency.
 

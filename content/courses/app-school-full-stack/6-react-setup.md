@@ -1,8 +1,8 @@
-# 6. React app setup
+# 6. React app setup {#6-react-app-setup}
 
 Now that we have a basic idea of how Eyre works, we can begin working on our React app front-end.
 
-## Create React app
+## Create React app {#create-react-app}
 
 Node.js must be installed, and can be downloaded from their [website](https://nodejs.org/en/download). With that installed, we'll have the `npm` package manager available and its utility binaries like `npx` to help set up our project. The first thing we'll do is create a project using the [`create-landscape-app`](https://www.npmjs.com/package/@urbit/create-landscape-app) template with the following command:
 
@@ -31,7 +31,7 @@ ui
 └── src
 ```
 
-## Install dependencies
+## Install dependencies {#install-dependencies}
 
 Inside our React app directory, let's install the NPM packages used by our project:
 
@@ -41,11 +41,11 @@ npm i
 
 This command will install the Urbit interface package (i.e. `@urbit/http-api`) and all the other packages used by our React application. When building from scratch with `create-landscape-app`, this includes a number of useful development libraries that enable automatic refresh on file edits (i.e. `vite` and `@vitejs/plugin-react-refresh`) and simple page styling (i.e. `tailwindcss`). The remainder of this tutorial will focus primarily on how the Urbit interface package is used to communicate with a live ship from within a React application.
 
-## Basic app setup
+## Basic app setup {#basic-app-setup}
 
 With all the basics now in place, we can begin work on the app itself. For this simple demonstration, we'll be working just with the `src/app.jsx` file, which contains the rendering logic for our React application. Before we look at the full front-end source for our journal app, let's first review the simpler default code provided by `create-landscape-app` to cover some Urbit API and React basics.
 
-### Urbit API setup
+### Urbit API setup {#urbit-api-setup}
 
 First, let's open up `src/app.jsx` and look at the import statements at the top of this file:
 
@@ -81,7 +81,7 @@ While not referenced in the `create-landscape-app` default code, the `Urbit` cla
 
 We'll look at how we can use these callbacks in the next section.  Note that it's not mandatory to set these callbacks, but leaving connection problems unhandled is usually a bad idea.
 
-### React app setup
+### React app setup {#react-app-setup}
 
 Finally, let's take a quick look at the React rendering logic for our application. React rendering occurs within components, which are defined either as classes (e.g. `class A extends Component { /* ... */ }`) or functions (e.g. `function A() { /* ... */ }`). While recent React versions support both styles, the latter "modern" style is preferred and used by most Urbit React applications.
 
@@ -142,7 +142,7 @@ return (
 
 With this brief primer complete, we'll take a closer look at our journal application's front-end and how it utilizes the Urbit HTTP API in the next section.
 
-## Resources
+## Resources {#resources}
 
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
 

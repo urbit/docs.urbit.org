@@ -1,10 +1,10 @@
-# Advanced Types
+# Advanced Types {#advanced-types}
 
 The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.
 
 The good news is that you can **skip this section**, at least when you're first learning Hoon.  Polymorphism and aliasing are mainly for advanced programmers writing complex infrastructure and/or large functions.  Don't worry about them for a little while.
 
-## The Full Version of `$type`
+## The Full Version of `$type` {#the-full-version-of-type}
 
 ```hoon
 +$  type  $~  %noun
@@ -40,7 +40,7 @@ If you compare this to the basic `type`, you'll see that we've changed two parts
 
 (We also added `%hint` for hint expressions.)
 
-## `%core`: advanced polymorphism
+## `%core`: advanced polymorphism {#core-advanced-polymorphism}
 
 If cores never changed, we wouldn't need polymorphism.  Of course, nouns are immutable and never change, but we use them as templates to construct new nouns around.
 
@@ -52,7 +52,7 @@ The full core stores both payload types.  The type that describes the payload cu
 
 In the Bertrand Meyer tradition of type theory, there are two forms of polymorphism: variance and genericity.  In Hoon this choice is per core, hence the `poly` label in `p.q`: it can be either `%wet` or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on genericity.
 
-### Dry arms
+### Dry arms {#dry-arms}
 
 For a dry arm, we apply the Liskov substitution principle: we ask, "can we use any `p` as if it was a `q.q`?"  This is the same test as in `^-` ("kethep") or any type comparison (`nest`).  Intuitively, we ask: "is the new payload compatible with the old payload?"
 
@@ -60,7 +60,7 @@ For a core `a`, if `p.a` fits in `q.q.a`, we can use arms on the core.  The prod
 
 In other words, the subject of the arm computation is the original core type.  The type of the modified payload, `p`, is thrown away.  This is of course the normal behavior of a function call in most languages.
 
-### Dry polymorphism and core nesting rules
+### Dry polymorphism and core nesting rules {#dry-polymorphism-and-core-nesting-rules}
 
 Dry polymorphism works by substituting cores.  Typically, the the programmer uses one core as an interface definition, then replaces it with another core which does something useful.
 
@@ -80,7 +80,7 @@ An iron core `a` has a write-only sample (payload head, `+6.a`) and an opaque co
 
 A zinc core `a` has a read-only sample (payload head, `+6.a`) and an opaque context (payload tail, `+7.a`).  A core `b` which nests within it must be a gold or zinc core, such that `+6.b` nests within `+6.a`.  Hence, **covariant**.
 
-### Wet arms
+### Wet arms {#wet-arms}
 
 For a wet arm, we ask: "suppose this core was actually compiled using `p` instead of `q.q`?"  Would the Nock formula we generated for `q.q` actually work for a `p` payload?
 
@@ -98,11 +98,11 @@ A Haskeller might say that in a sense, `q.q` and `q.r.q` (the original payload a
 
 Like typeclasses, wet arms / gates are a powerful tool.  Don't use them unless you know what you're doing.
 
-### Constant folding
+### Constant folding {#constant-folding}
 
 There's only one field of the `coil` we haven't explained yet: `p.r.q`.  This is simply the compiled battery, if available.  (Of course, we compile the hoons in a core against the core itself, and the formulas can't be available while we're compiling them.) External users of the core want this battery constant, though: it lets us fold constants by executing arms at compile time.
 
-## `%face`: aliases and bridges
+## `%face`: aliases and bridges {#face-aliases-and-bridges}
 
 In the advanced `tune` form, the `%face` type also has a couple of secret superpowers for hacking the namespace.  Remember that Hoon doesn't have anything like a symbol table; to resolve a limb, we just search the type depth-first.
 

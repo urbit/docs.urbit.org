@@ -1,12 +1,12 @@
-# API Reference
+# API Reference {#api-reference}
 
 This document details all the tasks you may wish to send Jael, as well as the gifts you'll receive in response.
 
 You may also wish to reference the [Data Types](data-types.md) document for details of the types referenced here, and the [Examples](../examples/examples.md) document for practical examples of using these tasks.
 
-## Tasks
+## Tasks {#tasks}
 
-### `%dawn`
+### `%dawn` {#dawn}
 
 Boot from keys.
 
@@ -31,13 +31,13 @@ This task takes a [$dawn-event](data-types.md#dawn-event) as its argument.
 
 You would not use this task manually.
 
-#### Returns
+#### Returns {#returns}
 
 Jael `%give`s an `%init` gift to Unix. This occurs after the Dill `%slip` init.
 
 ---
 
-### `%fake`
+### `%fake` {#fake}
 
 Boot fake ship.
 
@@ -53,13 +53,13 @@ The `ship` field specifies the `@p` of the fake ship being created.
 
 You would not use this task manually.
 
-#### Returns
+#### Returns {#returns}
 
 Jael `%give`s a `%init` gift to Unix.
 
 ---
 
-### `%listen`
+### `%listen` {#listen}
 
 Set Ethereum source.
 
@@ -73,13 +73,13 @@ Sets the source that the public keys for a set of `ship`s should be obtained fro
 
 You are unlikely to use this task manually.
 
-#### Returns
+#### Returns {#returns}
 
 Jael will not return any gifts in response to a `%listen` task.
 
 ---
 
-### `%meet`
+### `%meet` {#meet}
 
 This task is deprecated and does not perform any actions.
 
@@ -89,7 +89,7 @@ This task is deprecated and does not perform any actions.
 
 ---
 
-### `%moon`
+### `%moon` {#moon}
 
 Register moon keys or otherwise administer a moon.
 
@@ -99,13 +99,13 @@ Register moon keys or otherwise administer a moon.
 
 This is what is sent to Jael by `%hood` behind the scenes when you run `|moon`, `|moon-breach` or `|moon-cycle-keys`. The `ship` field is the moon's `@p`. The [$udiff:point](data-types.md#udiffpoint) will contain the bunt of an [$id:block](data-types.md#idblock) (since moons aren't registered in Azimuth) and one of the `udiff` actions depending on what you want to do.
 
-#### Returns
+#### Returns {#returns}
 
 Jael does not return any gifts in response to a `%moon` task.
 
 ---
 
-### `%nuke`
+### `%nuke` {#nuke}
 
 Cancel subscription to public or private key updates.
 
@@ -117,17 +117,17 @@ If you've subscribed to public or private key updates from Jael with a [%private
 
 To cancel a subscription to the ship's private keys you must leave `whos` empty like `[%nuke ~]`.
 
-#### Returns
+#### Returns {#returns}
 
 Jael does not return a gift in response to a `%nuke` task.
 
-#### Examples
+#### Examples {#examples}
 
 See the [%public-keys and %nuke](../examples/examples.md#public-keys-and-nuke) section of the Examples document for an example of using `%nuke` to cancel a `%public-keys` subscription. See the thread in the [%private-keys](../examples/examples.md#private-keys) example for cancelling a `%private-keys` subscription.
 
 ---
 
-### `%private-keys`
+### `%private-keys` {#private-keys}
 
 Subscribe to private key updates.
 
@@ -137,19 +137,19 @@ Subscribe to private key updates.
 
 Subscribe to be notified of private key updates for the local ship. The subscription will continue until Jael receives a [%nuke](#nuke) task to cancel it.
 
-#### Returns
+#### Returns {#returns}
 
 Jael responds to a `%private-keys` task with a [`%private-keys` gift](#private-keys-1).
 
 Jael will immediately respond with a `%private-keys` gift. Then, whenever the ship's private keys are changed, it'll send a new and updated `%private-keys` gift.
 
-#### Example
+#### Example {#example}
 
 See the [%private-keys](../examples/examples.md#private-keys) section of the Examples document for a practical example.
 
 ---
 
-### `%public-keys`
+### `%public-keys` {#public-keys}
 
 Subscribe to public key (and related) updates from Jael.
 
@@ -159,19 +159,19 @@ Subscribe to public key (and related) updates from Jael.
 
 An agent or thread can subscribe to be notified of public key updates, sponsorship changes and continuity breaches for the `set` of `ship`s specified in the `ships` field. The subscription will continue until Jael receives a [%nuke](#nuke) task to cancel it.
 
-#### Returns
+#### Returns {#returns}
 
 Jael responds to a `%public-keys` task with [`%public-keys` gift](#public-keys-1).
 
 Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](data-types.md#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
 
-#### Example
+#### Example {#example}
 
 See the [%public-keys and %nuke](../examples/examples.md#public-keys-and-nuke) section of the Examples document for a practical example.
 
 ---
 
-### `%rekey`
+### `%rekey` {#rekey}
 
 Update private keys.
 
@@ -181,13 +181,13 @@ Update private keys.
 
 This is what is sent to Jael by `%hood` when you run `|rekey`, as you must after setting new Azimuth keys or running `|cycle-moon-keys` on a moon's parent. It will update your `life` (key revision number) and private keys. The `life` field is the new `life` (typically an increment of the current `life`) and the `ring` is a private key `@`.
 
-#### Returns
+#### Returns {#returns}
 
 Jael does not return any gift in response to a `%rekey` task.
 
 ---
 
-### `%resend`
+### `%resend` {#resend}
 
 Resend private keys.
 
@@ -197,13 +197,13 @@ Resend private keys.
 
 This task asks Jael to resend our private keys to subscribers who have subscribed with a [`%private-keys` task](#private-keys).
 
-#### Returns
+#### Returns {#returns}
 
 Jael doesn't return any gifts in response to a `%rekey` task, but `%private-keys` subscribers will receive a [`%private-keys` gift](#private-keys-1).
 
 ---
 
-### `%ruin`
+### `%ruin` {#ruin}
 
 Pretend breach.
 
@@ -223,13 +223,13 @@ Note it's better to use the [`%snub` Ames task](../../ames/reference/tasks.md#sn
 
 {% endhint %}
 
-#### Returns
+#### Returns {#returns}
 
 Jael doesn't return any gifts in response to a `%ruin` task.
 
 ---
 
-### `%turf`
+### `%turf` {#turf}
 
 View domains.
 
@@ -239,18 +239,18 @@ View domains.
 
 The domains returned by a `%turf` task are used as the base for individual galaxy domain names (e.g. from `urbit.org` you get `zod.urbit.org`, `bus.urbit.org`, etc). Jael gets these from Azimuth, then Ames gets them from Jael and passes them to the runtime, which will perform the DNS lookups and give Ames back the galaxy IP addresses. A `%turf` task takes no additional arguments. You're unlikely to use this manually - if you want the current `turf`s you'd likely want to do a [turf scry](scry.md#turf) instead.
 
-#### Returns
+#### Returns {#returns}
 
 Jael will respond to a `%turf` task with a [`%turf` gift](#turf-1).
 
-#### Example
+#### Example {#example}
 
 See the [%turf section of the Examples
 document](../examples/examples.md#turf) for a practical example.
 
 ---
 
-### `%step`
+### `%step` {#step}
 
 Reset web login code.
 
@@ -260,19 +260,19 @@ Reset web login code.
 
 Jael maintains a `step` value that represents the web login code revision number, and uses it to derive the code itself. It begins at `0` and is incremented each time the code is changed. When Jael updates the web login code, it sends Eyre a `%code-changed` `task:eyre` so that Eyre can throw away all of its current cookies and sessions. A `%step` task takes no additional argument.
 
-#### Returns
+#### Returns {#returns}
 
 Jael does not return a gift in response to a `%step` task.
 
-#### Example
+#### Example {#example}
 
 See the [%step](../examples/examples.md#step) section of the Examples document for a practical example.
 
 ---
 
-## Gifts
+## Gifts {#gifts}
 
-### `%done`
+### `%done` {#done}
 
 Ames message (n)ack.
 
@@ -284,7 +284,7 @@ This is given in response to a `%plea` from Ames. You would not use this from us
 
 ---
 
-### `%boon`
+### `%boon` {#boon}
 
 Ames response.
 
@@ -296,7 +296,7 @@ This is given in response to a request from Ames. You would not use this from us
 
 ---
 
-### `%private-keys`
+### `%private-keys` {#private-keys}
 
 Private keys.
 
@@ -310,7 +310,7 @@ The `life` is our current key revision number, and the `vein` contains a map fro
 
 ---
 
-### `%public-keys`
+### `%public-keys` {#public-keys}
 
 Ethereum changes.
 
@@ -324,7 +324,7 @@ See the [`$public-keys-result`](data-types.md#public-keys-result) entry in the d
 
 ---
 
-### `%turf`
+### `%turf` {#turf}
 
 Domains.
 

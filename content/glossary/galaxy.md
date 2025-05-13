@@ -1,4 +1,4 @@
-# Galaxy
+# Galaxy {#galaxy}
 
 A **galaxy** can be one of two related things:
 

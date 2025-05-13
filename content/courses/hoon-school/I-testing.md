@@ -1,4 +1,4 @@
-# 8. Testing Code
+# 8. Testing Code {#8-testing-code}
 
 _This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.  It may be considered optional and skipped if you are speedrunning Hoon School._
 
@@ -12,11 +12,11 @@ _This module will discuss how we can have confidence that a program does what it
 
 When you produce software, how much confidence do you have that it does what you think it does?  Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected. We can classify a testing regimen for Urbit code into a couple of layers:  fences and unit tests.
 
-### Fences
+### Fences {#fences}
 
 _Fences_ are barriers employed to block program execution if the state isn’t adequate to the intended task. Typically, these are implemented with `assert` or similar enforcement.  In Hoon, this means `?>` [wutgar](../../language/hoon/reference/rune/wut.md#-wutgar), `?<` [wutgal](../../language/hoon/reference/rune/wut.md#-wutgal), and `?~` [wutsig](../../language/hoon/reference/rune/wut.md#-wutsig), or judicious use of `^-` [kethep](../../language/hoon/reference/rune/ket.md#--kethep) and `^+` [ketlus](../../language/hoon/reference/rune/ket.md#-ketlus). For conditions that must succeed, the failure branch in Hoon should be `!!`, which crashes the program.
 
-### Unit Tests
+### Unit Tests {#unit-tests}
 
 > Unit tests are so called because they exercise the functionality of the code by interrogating individual functions and methods. Functions and methods can often be considered the atomic units of software because they are indivisible. However, what is considered to be the smallest code unit is subjective. The body of a function can be long are short, and shorter functions are arguably more unit-like than long ones.
 >
@@ -58,7 +58,7 @@ Hoon unit tests come in two categories:
 
 Let's look at a practical example first, then dissect these.
 
-### Exercise:  Testing a Library
+### Exercise:  Testing a Library {#exercise-testing-a-library}
 
 Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for `++absolute` should accomplish a few things:
 
@@ -106,7 +106,7 @@ Note that at this point we don’t care what the function looks like, only how i
 
 The dcSpark blog post [“Writing Robust Hoon — A Guide To Urbit Unit Testing”](https://medium.com/dcspark/writing-robust-hoon-a-guide-to-urbit-unit-testing-82b2631fe20a) covers some more good ideas about testing Hoon code.
 
-### `/lib/test.hoon`
+### `/lib/test.hoon` {#libtesthoon}
 
 In `/lib/test.hoon` we find a core with a few gates:  `++expect`, `++expect-eq`, and `++expect-fail`, among others.
 
@@ -160,7 +160,7 @@ Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [
 (Recall that `~` null is `%.y` true.)
 
 
-##  Producing Error Messages
+## Producing Error Messages {#producing-error-messages}
 
 Formal error messages in Urbit are built of tanks.
 
@@ -196,7 +196,7 @@ As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of t
 When you compose your own library [cores](../../glossary/core.md), include error messages for likely failure modes.
 
 
-##  Test-Driven Development
+## Test-Driven Development {#test-driven-development}
 
 _In extremis_, rigorous unit testing yields test-driven development (TDD). Test-driven development refers to the practice of fully specifying desired function behavior before composing the function itself. The advantage of this approach is that it forces you to clarify ahead of time what you expect, rather than making it up on the fly.
 
@@ -258,11 +258,11 @@ such a library is provided it is immediately demonstrable.
 By composing the unit tests ahead of time, you exercise a discipline of thinking carefully through details of the interface and implementation before you write a single line of implementation code.
 
 
-##  Debugging Common Errors
+## Debugging Common Errors {#debugging-common-errors}
 
 Let’s enumerate the errors you are likely to have encountered by this point:
 
-### `nest-fail`
+### `nest-fail` {#nest-fail}
 
 A [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) may be the most common.  Likely you are using an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md) where the other is expected.
 
@@ -277,7 +277,7 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-### `mint-nice`
+### `mint-nice` {#mint-nice}
 
 `mint-nice` arises from typechecking errors:
 
@@ -304,7 +304,7 @@ dojo: hoon expression failed
 ~[0 1 2]
 ```
 
-### `fish-loop`
+### `fish-loop` {#fish-loop}
 
 A `fish-loop` arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `++fish` goes fishing for the type of an expression.)  Alas, this fails today:
 
@@ -314,13 +314,13 @@ A `fish-loop` arises when using a recursive mold definition like [list](../../gl
 fish-loop
 ```
 
-### `generator-build-fail`
+### `generator-build-fail` {#generator-build-fail}
 
 A `generator-build-fail` most commonly results from composing code with mismatched [runes](../../glossary/rune.md) (and thus the wrong children including hanging expected-but-empty slots).
 
 Also check if you are using Windows-style line endings, as Unix-style line endings should be employed throughout Urbit.
 
-### Misusing the `$` buc Arm
+### Misusing the `$` buc Arm {#misusing-the-buc-arm}
 
 Another common mistake is to attempt to use the default `$` buc arm in something that doesn't have it.  This typically happens for one of two reasons:
 
@@ -345,7 +345,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 
 - [“Hoon Errors”](../../language/hoon/reference/hoon-errors.md)
 
-### Debugging Strategies
+### Debugging Strategies {#debugging-strategies}
 
 What are some strategies for debugging?
 

@@ -1,4 +1,4 @@
-# Apps
+# Apps {#apps}
 
 Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating system. Gall's purpose is to manage userspace applications called _agents_. **Agents** are the main kind of userspace application on Urbit. They have a persistent state and API that handles events and produces effects.Gall agents can variously be treated as databases with developer-defined logic, services, daemons, or a kind of state machine.
 

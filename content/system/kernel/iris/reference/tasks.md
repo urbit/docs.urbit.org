@@ -1,8 +1,8 @@
-# API Reference
+# API Reference {#api-reference}
 
 This document details the `task`s used by Iris. Iris only has three `task`s besides the standard vane `task`s: [%request](#request), [%cancel-request](#cancel-request), and [%receive](#receive). The `%receive` `task` is only sent to Iris by the runtime, so you're likely to only use `%request` and `%cancel-request`.
 
-## `%request`
+## `%request` {#request}
 
 ```hoon
 [%request =request:http =outbound-config]
@@ -14,7 +14,7 @@ The [$request:http](../../eyre/reference/data-types.md#requesthttp) is the reque
 
 The [$outbound-config](data-types.md#outbound-config) specifies the number of redirects to follow before failing and the number of retries to attempt before giving up. The default values are `5` and `3` respectively. As of writing, **retries and auto-following redirects are not implemented**, so what you specify here is irrelevant and you can just use the bunt value of `outbound-config`.
 
-#### Returns
+#### Returns {#returns}
 
 Iris returns a `%http-response` `gift` in response to a `%request` task. A `%response` `gift` looks like:
 
@@ -28,11 +28,11 @@ The `client-response` structure specifies three kinds of responses - `%progress`
 
 Note that neither `%progress` partial messages nor `%cancel` responses have been implemented in Vere at the time of writing, so **you will only ever receive a single `%http-response` `gift` with a `%finished` `client-response`**. If the request fails for some reason, you'll still get an empty `%finished` `client-response` with a `504` status code.
 
-#### Example
+#### Example {#example}
 
 See the [Example](../examples/example.md) document.
 
-## `%cancel-request`
+## `%cancel-request` {#cancel-request}
 
 ```hoon
 [%cancel-request ~]
@@ -42,11 +42,11 @@ Cancel a previous request to fetch a remote HTTP resource.
 
 A `%cancel-request` `task` does not take any arguments, the [request](#request) to cancel is determined implicitly.
 
-#### Returns
+#### Returns {#returns}
 
 Iris does not return any `gift` in response to a `%cancel-request` `task`. You will also not receive any `gift` back from the original `%request` `task` you've cancelled.
 
-## `%receive`
+## `%receive` {#receive}
 
 ```hoon
 [%receive id=@ud =http-event:http]

@@ -1,4 +1,4 @@
-# Strings
+# Strings {#strings}
 
 This document discusses hoon's two main string types: `cord`s (as well as its subsets `knot` and `term`) and `tape`s. The focus of this document is on their basic properties, syntax and the most common text-related functions you'll regularly encounter. In particular, it discusses conversions and the encoding/decoding of atom auras in strings.
 
@@ -6,7 +6,7 @@ Hoon has a system for writing more elaborate functional parsers, but that is not
 
 There are a good deal more text manipulation functions than are discussed here. See the [Further Reading](#further-reading) section for details.
 
-## `tape`s vs. text atoms
+## `tape`s vs. text atoms {#tapes-vs-text-atoms}
 
 As mentioned, urbit mainly deals with two kinds of strings: `tape`s and `cord`/`knot`/`term`s. The former is a list of individual UTF-8 characters. The latter three encode UTF-8 strings in a single atom.
 
@@ -18,9 +18,9 @@ In light of this, a general rule of thumb is to use cords for simple things like
 
 Next we'll look at these different types of strings in more detail.
 
-## Text atoms
+## Text atoms {#text-atoms}
 
-### `cord`
+### `cord` {#cord}
 
 A [`cord`](../reference/stdlib/2q.md#cord) has an aura of `@t`. It denotes UTF-8 text encoded in an atom, little-endian. That is, the first character in the text is the least-significant byte. A cord may contain any UTF-8 characters, there are no restrictions.
 
@@ -68,7 +68,7 @@ This will be parsed to:
 'foobarbaz'
 ```
 
-### `knot`
+### `knot` {#knot}
 
 A [`knot`](../reference/stdlib/2q.md#knot) has an aura of `@ta`, and is a subset of a [`cord`](#cord). It allows lower-case letters, numbers, and four special characters: Hyphen, tilde, underscore and period. Its restricted set of characters is intended to be URL-safe.
 
@@ -78,7 +78,7 @@ The `hoon` syntax for a knot is a string containing any of the aforementioned ch
 ~.abc-123.def_456~ghi
 ```
 
-### `term`
+### `term` {#term}
 
 A [`term`](../reference/stdlib/2q.md#term) has an aura of `@tas`, and is a subset of a [`knot`](#knot). It only allows lower-case letters, numbers, and hyphens. Additionally, the first character cannot be a hyphen or number. This is a very restricted text atom, and is intended for naming data structures and the like.
 
@@ -88,7 +88,7 @@ The `hoon` syntax for a term is a string conforming to the prior description, pr
 %foo-123
 ```
 
-#### A note about `term` type inference
+#### A note about `term` type inference {#a-note-about-term-type-inference}
 
 There is actually an even more restricted text atom form with the same `%foo` syntax as a term, where the type of the text is the text itself. For example, in the dojo:
 
@@ -135,7 +135,7 @@ However, this will actually form a set of the union `?(%foo %bar %baz)` due to t
 
 One further note about the type-as-itself form: Ocassionally you may wish to form a union of strings which contain characters disallowed in `term`s. To get around this, you can enclose the text after the `%` with single-quotes like `%'HELLO!'`.
 
-### Aura type validity
+### Aura type validity {#aura-type-validity}
 
 The hoon parser will balk at `cord`s, `knot`s and `term`s containing invalid characters. However, because they're merely auras, any atom can be cast to them. When cast (or clammed), they will **not** be validated in terms of whether the characters are allowed in the specified aura.
 
@@ -166,7 +166,7 @@ The `+sand` function does the same thing, but rather than returning a `?` it ret
 ~
 ```
 
-## `tape`
+## `tape` {#tape}
 
 A [`tape`](../reference/stdlib/2q.md#tape) is the other main string type in hoon. Rather than a single atom, it's instead a list of individual `@tD` characters (the `D` specifies a bit-length of 8, see the [Auras](../reference/auras.md#bitwidth) documentation for details). The head of the list is the first character in the string.
 
@@ -214,11 +214,11 @@ This means they can be manipulated with ordinary list functions:
 "gppcbs"
 ```
 
-### Interpolation
+### Interpolation {#interpolation}
 
 Tapes, unlike cords, allow string interpolation. Arbitrary `hoon` may be embedded in the tape syntax and its product will be included in the resulting tape. There are two ways to do it:
 
-#### Manual
+#### Manual {#manual}
 
 In the first case, the code to be evaluated is enclosed in braces. The type of the product of the code must itself be a tape. For example, if the `@p` of our ship is stored in `our`, simply doing `"{our}"` will fail because its type will be `@p` rather than `tape`. Instead, we must explicitly use the [`+scow`](../reference/stdlib/4m.md#scow) function to render `our` as a tape:
 
@@ -234,7 +234,7 @@ Another example:
 "[~zod ~2021.10.3..08.59.10..2335]"
 ```
 
-#### Automatic
+#### Automatic {#automatic}
 
 Rather than having to manually render data as a `tape`, angle brackets _inside_ the braces tell the interpreter to automatically pretty-print the product of the expression as a tape. This way we needn't use functions like `+scow` and can just reference things like `our` directly:
 
@@ -257,7 +257,7 @@ And another:
 "[~zod ~2021.10.3..09.01.14..1654]"
 ```
 
-## Conversions
+## Conversions {#conversions}
 
 Tapes can easily be converted to cords and vice versa. There are two stdlib functions for this purpose: [`+crip`](../reference/stdlib/4b.md#crip) and [`+trip`](../reference/stdlib/4b.md#trip). The former converts a `tape` to a `cord` and the latter does the opposite. For example:
 
@@ -288,11 +288,11 @@ Likewise, the output of `+crip` can be cast to a knot or term:
 %foobar
 ```
 
-## Encoding in text
+## Encoding in text {#encoding-in-text}
 
 It's common to encode atoms in cords or knots, particularly when constructing a [scry](../../../system/kernel/arvo/guides/scry.md) [`path`](../reference/stdlib/2q.md#path) or just a `path` in general. There are two main functions for this purpose: [`+scot`](../reference/stdlib/4m.md#scot) and [`+scow`](../reference/stdlib/4m.md#scow). The former produces a `knot`, and the latter produces a `tape`. Additionally, there are two more functions for encoding `path`s in cords and tapes respectively: [`+spat`](../reference/stdlib/4m.md#spat) and [`+spud`](../reference/stdlib/4m.md#spud).
 
-### `+scot` and `+spat`
+### `+scot` and `+spat` {#scot-and-spat}
 
 `+scot` encodes atoms of various auras in a `knot` (or `cord`/`term` with casting). It takes two arguments: the aura in a `@tas` and the atom to be encoded. For example:
 
@@ -338,7 +338,7 @@ You'll most commonly see this used in constructing a `path` like:
 '/foo/bar/baz'
 ```
 
-### `+scow` and `+spud`
+### `+scow` and `+spud` {#scow-and-spud}
 
 `+scow` is the same as [`+scot`](#scot-and-spat) except it produces a tape rather than a knot. For example:
 
@@ -360,7 +360,7 @@ You'll most commonly see this used in constructing a `path` like:
 "/foo/bar/baz"
 ```
 
-## Decoding from text
+## Decoding from text {#decoding-from-text}
 
 For decoding atoms of particular auras encoded in cords, there are three functions: [`+slat`](../reference/stdlib/4m.md#slat), [`+slav`](../reference/stdlib/4m.md#slav), and [`+slaw`](../reference/stdlib/4m.md#slaw). Additionally, there is [`+stab`](../reference/stdlib/4m.md#stab) for decoding a cord to a path.
 
@@ -410,7 +410,7 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 /foo/bar/baz
 ```
 
-## Further reading
+## Further reading {#further-reading}
 
 - [Parsing](parsing.md) - A guide to writing fully-fledged functional parsers in hoon.
   

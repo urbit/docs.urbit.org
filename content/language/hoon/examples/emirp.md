@@ -1,6 +1,6 @@
-# Emirp
+# Emirp {#emirp}
 
-## Challenge: Reversible Primes
+## Challenge: Reversible Primes {#challenge-reversible-primes}
 
 A prime number is a number that is only divisible by 1 and itself, for example, `7`. An [emirp](https://en.wikipedia.org/wiki/Emirp) is a prime number that results in a different prime when its decimal digits are reversed. For example, `107` and `701` are a pair of emirps, and `3,049` and `9,403`.
 
@@ -16,11 +16,11 @@ Example usage:
 
 The first 10 emirps are `13, 17, 31, 37, 71, 73, 79, 97, 107, 113`, and their sum is `638`.
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2024.3.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _By ~nodmel-todsyr. A very fast and efficient solution._
 
@@ -93,7 +93,7 @@ _By ~nodmel-todsyr. A very fast and efficient solution._
 
 
 
-### Solution #2
+### Solution #2 {#solution-2}
 _By ~ramteb-tinmut. Well-commented, easy to read, and fast._
 
 ```hoon
@@ -184,7 +184,7 @@ sieve
 --
 ```
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../../userspace/apps/guides/unit-tests.md) section.
 

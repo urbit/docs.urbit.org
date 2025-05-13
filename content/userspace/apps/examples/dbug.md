@@ -1,4 +1,4 @@
-# Debugging Wrapper
+# Debugging Wrapper {#debugging-wrapper}
 
 The `/lib/dbug.hoon` agent wrapper adds support to view the state of a Gall agent.  It is applied to an existing Gall agent as a single drop-in line, `%-  agent:dbug`.
 
@@ -61,7 +61,7 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 3. `:app +dbug [%state 'hoon']` exposes data in the state, including evaluated Hoon like `(lent values)`.
 4. `:app +dbug [?(%incoming outgoing) specifics]` reveals details about the subscriptions.
 
-##  The Code
+## The Code {#the-code}
 
 <details>
 <summary>/gen/dbug.hoon</summary>
@@ -256,11 +256,11 @@ As we examine this code, there are two particularly interesting aspects:
 
 There is also extensive use of `tank`/`tang` formatted error messaging.
 
-## How the library works
+## How the library works {#how-the-library-works}
 
 By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek` arms can be modified.  (In fact, all of the arms can be modified but most of the arms are pass-throughs to the modified agent.)
 
-#### `++on-poke`
+#### `++on-poke` {#on-poke}
 
 <details>
 <summary>++on-poke</summary>
@@ -375,7 +375,7 @@ This branch includes the use of a rare [`=?` tiswut](../../../language/hoon/refe
 - [`++slap`](../../../language/hoon/reference/stdlib/5c.md#slap) compiles a Hoon expression and produces a `vase` of the result.
 - [`++ream`](../../../language/hoon/reference/stdlib/5d.md#ream) parses a `cord` to a Hoon expression.
 
-#### `++on-peek`
+#### `++on-peek` {#on-peek}
 
 <details>
 <summary>++on-peek</summary>
@@ -402,7 +402,7 @@ The `++on-peek` arm adds several peek endpoints which expose the state (via `++o
 [0 0]
 ```
 
-## How the generator works
+## How the generator works {#how-the-generator-works}
 
 The generator explicitly injects the `%dbug` mark in its return `cask` (`[mark noun]`).  This is a valid if uncommon operation, and it works here because the mark is never used as a transforming gate but only as a marker to see whether the arms need to pass through the values.  The no-argument input is routed through the `%state` with an empty `cord`.
 

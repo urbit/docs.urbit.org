@@ -1,6 +1,6 @@
-# API Reference
+# API Reference {#api-reference}
 
-## Agent Notes
+## Agent Notes {#agent-notes}
 
 A `note` is a request to a vane or agent which you initiate. A `note` is one of:
 
@@ -34,7 +34,7 @@ The possible cases of an `%agent` `note` are documented [separately below](#agen
 
 We'll look at the remaining cases here.
 
-### `%arvo`
+### `%arvo` {#arvo}
 
 Pass a vane `task` to a vane (kernel module).
 
@@ -65,7 +65,7 @@ The first part is vane letter (`%g` for Gall, `%i` for Iris, etc). The second pa
 
 ---
 
-### `%pyre`
+### `%pyre` {#pyre}
 
 Abort event.
 
@@ -77,7 +77,7 @@ This `note` tells Gall to crash with the given `tang` in the stack trace. You'd 
 
 ---
 
-### `%grow`
+### `%grow` {#grow}
 
 Publish remote scry file without encryption.
 
@@ -93,7 +93,7 @@ Note the published file will not be encrypted. For the encrypted version, see [`
 
 ---
 
-### `%tomb`
+### `%tomb` {#tomb}
 
 Delete remote scry file.
 
@@ -107,7 +107,7 @@ The file at the specified `spur` and specific `case` will be deleted and replace
 
 ---
 
-### `%cull`
+### `%cull` {#cull}
 
 Delete remote scry file up to the given revision.
 
@@ -119,7 +119,7 @@ All revisions of the remote scry file published at the `path` in `spur` up to an
 
 ---
 
-### `%tend`
+### `%tend` {#tend}
 
 Publish remote scry file with encryption.
 
@@ -133,7 +133,7 @@ The security context must be registered with a [`%germ`](#germ) task before publ
 
 ---
 
-### `%germ`
+### `%germ` {#germ}
 
 Create an encrypted remote scry security context.
 
@@ -147,7 +147,7 @@ Once created, you can publish files to it with a [`%tend`](#tend) task.
 
 ---
 
-### `%snip`
+### `%snip` {#snip}
 
 Delete an encrypted remote scry security context.
 
@@ -159,7 +159,7 @@ The `coop` is a publisher-defined security context `path` like `/your/security/c
 
 ---
 
-### `%keen`
+### `%keen` {#keen}
 
 Perform either a multiparty encrypted remote scry or unencrypted remote
 scry.
@@ -174,7 +174,7 @@ Note that multiparty encrypted scry (specified with a true `secret`) should only
 
 ---
 
-## Agent Tasks
+## Agent Tasks {#agent-tasks}
 
 A `task` is a request to an agent you initiate, as opposed to a [`gift`](#agent-gifts), which is a response.
 
@@ -189,7 +189,7 @@ Passing an agent `task` looks like so:
 - `name`: is the name of the agent on the specified ship that should receive the `task`.
 - `task`: the `task` itself, as described below.
 
-### `%watch`
+### `%watch` {#watch}
 
 Subscribe to a path on an agent for updates.
 
@@ -203,7 +203,7 @@ Assuming the subscription request was successful (and therefore the `%watch-ack`
 
 ---
 
-### `%watch-as`
+### `%watch-as` {#watch-as}
 
 Subscribe to a path on an agent for updates, asking for the updates to have a specified `mark`.
 
@@ -217,7 +217,7 @@ This behaves the same as an ordinary [`%watch`](#watch) request, except the publ
 
 ---
 
-### `%leave`
+### `%leave` {#leave}
 
 Unsubscribe from a subscription path on an agent.
 
@@ -231,7 +231,7 @@ Once sent, you'll stop receiving `%fact`s from the publisher for the subscriptio
 
 ---
 
-### `%poke`
+### `%poke` {#poke}
 
 A one-off request/datagram to an agent.
 
@@ -245,7 +245,7 @@ The data of the `%poke` is contained in the `cage`, which is a pair of `[p=mark 
 
 ---
 
-### `%poke-as`
+### `%poke-as` {#poke-as}
 
 A one-off request/datagram to an agent, asking the recipient's Gall to convert the data to the specified `mark` before delivering it to the agent.
 
@@ -261,7 +261,7 @@ If the `mark` conversion fails, the sender will be sent a negative [`%poke-ack`]
 
 ---
 
-## Agent Gifts
+## Agent Gifts {#agent-gifts}
 
 An agent `gift` is ultimately a response to an agent `task`. Sometimes it's an immediate, direct response, and other times it happens down the line, or there's an ongoing series of gifts, as in the case of subscriptions. They do all ultimately arise from an original `task`, though, be it a a `%watch` subscription request or a `%poke`. A `gift` cannot be sent out unsolicited to other agents. Where they are routed to, whether another local agent, an agent on a remote ship, or even to vanes or a browser-based front-end in some cases, is determined by the original `task`.
 
@@ -273,7 +273,7 @@ Giving a gift takes the general form of:
 
 Each possible `gift` is detailed below.
 
-### `%fact`
+### `%fact` {#fact}
 
 Produce a subscription update.
 
@@ -290,7 +290,7 @@ The fields are:
 
 ---
 
-### `%kick`
+### `%kick` {#kick}
 
 Close subscription.
 
@@ -304,7 +304,7 @@ It should be noted that `%kick` `gift`s are not *only* emitted intentionally by 
 
 ---
 
-### `%watch-ack`
+### `%watch-ack` {#watch-ack}
 
 Acknowledge a subscription request.
 
@@ -318,7 +318,7 @@ A `%watch-ack` is given *automatically* and *implicitly* by Gall itself, it is u
 
 ---
 
-### `%poke-ack`
+### `%poke-ack` {#poke-ack}
 
 Acknowledge a poke.
 
@@ -332,11 +332,11 @@ A `%poke-ack` is given *automatically* and *implicitly* by Gall itself, it is un
 
 ---
 
-## Vane Tasks
+## Vane Tasks {#vane-tasks}
 
 These are the Vane `task`s that can be `%pass`ed to Gall itself in an `%arvo` `note`. Most of these are only used internally by the kernel, though some app management `task`s might be of use in userspace.
 
-### `%deal`
+### `%deal` {#deal}
 
 Full transmission.
 
@@ -352,13 +352,13 @@ Its fields are:
 - `q`: The source agent.
 - `r`: A [`deal`](data-types.md#deal) is either a [`task:agent`](data-types.md#taskagent) or a `%raw-poke`. This is the request itself.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%deal`.
 
 ---
 
-### `%sear`
+### `%sear` {#sear}
 
 Clear pending queues.
 
@@ -368,13 +368,13 @@ Clear pending queues.
 
 This `task` clears blocked inbound `move`s from the given ship. Moves get blocked and queued when sent to an agent that isn't currently running.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%sear`.
 
 ---
 
-### `%jolt`
+### `%jolt` {#jolt}
 
 Restart agent (deprecated).
 
@@ -384,13 +384,13 @@ Restart agent (deprecated).
 
 Restart agent `dude` on desk `desk`. This `task` is deprecated and now a no-op.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%jolt`.
 
 ---
 
-### `%idle`
+### `%idle` {#idle}
 
 Suspend agent.
 
@@ -400,13 +400,13 @@ Suspend agent.
 
 The agent specified in `dude` will be suspended. Note it is usually better to suspend agents with a [`%rein`](../../clay/reference/tasks.md#rein---force-apps) `task` to Clay rather than an `%idle` `task` to Gall.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to an `%idle`.
 
 ---
 
-### `%load`
+### `%load` {#load}
 
 Load agents.
 
@@ -418,13 +418,13 @@ This `task` is given to Gall by Clay. It contains the compiled agents to be inst
 
 See the [`load`](data-types.md#load) entry in the type reference for more details of the datastructure in this `task`.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%load`.
 
 ---
 
-### `%nuke`
+### `%nuke` {#nuke}
 
 Delete agent.
 
@@ -440,13 +440,13 @@ The agent in `dude` will be stopped and its state discarded.
 
 {% endhint %}
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%nuke`.
 
 ---
 
-### `%doff`
+### `%doff` {#doff}
 
 Kill old-style subscriptions.
 
@@ -458,13 +458,13 @@ Kills nonceless outgoing subscriptions. If `dude` is non-null, it only applies t
 
 You're unlikely to use this `task` from userspace.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%doff`.
 
 ---
 
-### `%rake`
+### `%rake` {#rake}
 
 Reclaim old subscriptions.
 
@@ -476,13 +476,13 @@ This sends an Ames `%cork` on any old subscription ducts. If `dude` is null, it 
 
 You are unlikely to use this `task`.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%rake`.
 
 ---
 
-### `%spew`
+### `%spew` {#spew}
 
 Set verbosity.
 
@@ -492,13 +492,13 @@ Set verbosity.
 
 This sets verbosity flags for Gall. Currently there's only one [`verb`](data-types.md#verb), `%odd`, which prints messages for unusual error cases. This overwrites the existing verbosity settings: an empty list will turn all verbosity flags off.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%spew`.
 
 ---
 
-### `%sift`
+### `%sift` {#sift}
 
 Filter verbose debug printing to certain agents.
 
@@ -508,7 +508,7 @@ Filter verbose debug printing to certain agents.
 
 The `dudes` are the agents you want verbose debug printing for. An empty list enables it for all agents. See [`%spew`](#spew) for setting verbosity.
 
-#### Returns
+#### Returns {#returns}
 
 Gall returns no `gift` in response to a `%sift`.
 

@@ -1,8 +1,8 @@
-# Styled Text
+# Styled Text {#styled-text}
 
 In this tutorial, we examine how to produce `styx` styled text strings and output them to the terminal from an agent.
 
-##  `%shoe` CLI Session Manager
+## `%shoe` CLI Session Manager {#shoe-cli-session-manager}
 
 `%shoe` is responsible to manage attached agent sessions.  It adds a few arms to the standard Gall agent, namely:
 
@@ -18,7 +18,7 @@ To get started with text parsers and CLI agents, we need to focus on `++command-
 
 The agent will adopt a two-stage process, wherein a value is put on the stack then the stack is checked for any valid operations.
 
-### `++command-parser`
+### `++command-parser` {#command-parser}
 
 The input parser can simply accept whole words or single inputs, or parse complex expressions (as Dojo does with Hoon).
 
@@ -47,19 +47,19 @@ where the unfamiliar parser components are:
 - `++stag` adds a label, here `&` pam `TRUE`/`%.y` to indicate that the command should be run immediately when it matches.  (We won't want this below so we will `++stag` a `|` `FALSE`/`%.n`.)
 - `++perk` parses a fork in the type.
 
-### `++on-command`
+### `++on-command` {#on-command}
 
 This arm accepts a session ID and a command resulting from `++command-parser`.  It produces a regular `(quip card _this)` so you can modify agent state and produce effects here.
 
 
-##  `%sole` Effects
+## `%sole` Effects {#sole-effects}
 
 `%sole` is responsible for producing effects.  If you want to yield effects to the command line from your CLI agent (which you often do), this is a great place to work.
 
 `%sole-effect`s are head-tagged by time and produce a variety of terminal effects, from text to bells, colors, and other screen effects.
 
 
-##  `$styx` Styled Text String
+## `$styx` Styled Text String {#styx-styled-text-string}
 
 A `klr` effect uses a `styx`, or styled text string.  The relevant data structures are in `/sys/lull.hoon`:
 
@@ -93,7 +93,7 @@ For instance, to produce a bold string with hex color `#123456`, we could produc
 - [~ropdeb-sormyr, "Styled output - requirements and progress" ~2016.8.2 Urbit fora post](https://github.com/urbit/fora-posts/blob/0238536650dfc284f14295d350f9acada0341480/archive/posts/~2016.8.2..21.19.29..2ab8~.md)
 
 
-##  Agent Logic
+## Agent Logic {#agent-logic}
 
 Here is an agent that will accept a single character and produce a line with varying random colors of that character.
 

@@ -1,4 +1,4 @@
-# 12. Next Steps
+# 12. Next Steps {#12-next-steps}
 
 We've now covered all the arms of a Gall agent, and everything you need to know to start writing your own agent.
 

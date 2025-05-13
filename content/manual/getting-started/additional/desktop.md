@@ -1,4 +1,4 @@
-# Desktop app
+# Desktop app {#desktop-app}
 
 In the past we recommended [Port](https://github.com/urbit/port/releases), a desktop Urbit client.
 

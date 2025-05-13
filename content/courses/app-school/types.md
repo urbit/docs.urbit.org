@@ -1,8 +1,8 @@
-# Appendix: Types
+# Appendix: Types {#appendix-types}
 
 This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../system/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) subsection, as well as [`bowl`](../../system/kernel/gall/reference/data-types.md#bowl), [`boat`](../../system/kernel/gall/reference/data-types.md#boat), and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt).
 
-## `vase`
+## `vase` {#vase}
 
 Vases are used to encapsulate _dynamically typed_ data - they let typed data be moved around in contexts where you can't know the type ahead of time, and therefore can't have a _static_ type.
 
@@ -23,7 +23,7 @@ Here's what it looks like if we bunt a vase in the dojo:
 
 There are two simple runes used to create and unpack vases. We'll look at each of these next.
 
-### Create a `vase`
+### Create a `vase` {#create-a-vase}
 
 The [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
 
@@ -43,7 +43,7 @@ The [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune (`!>`) take
 
 You would typically use `!>` as part of a [`cage`](#cage) when you're constructing a `card` like a poke or a `%fact` `gift` to be sent off.
 
-### Extract data from `vase`
+### Extract data from `vase` {#extract-data-from-vase}
 
 The [zapgal](../../language/hoon/reference/rune/zap.md#-zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
 
@@ -87,21 +87,21 @@ The only problem is that you can't tell if the auras were wrong:
 
 You'd typically use `!<` on the data in `card`s that come in from other ships, agents, etc.
 
-## `mark`
+## `mark` {#mark}
 
 The `mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `mark` corresponds to a mark file in the `/mar` directory, so a `mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../system/kernel/clay/guides/marks).
 
-## `cage`
+## `cage` {#cage}
 
 A `cage` is a cell of a [`mark`](#mark) and a [`vase`](#vase), like `[%foo !>('bar')]`. The data in the vase should match the data type of the specified mark.
 
 Most data an agent sends will be in a `cage`, and most data it receives will arrive in a `cage`. The `mark` may be used to validate or convert the data in the `vase`, depending on the context.
 
-## `quip`
+## `quip` {#quip}
 
 `quip` is a mold-builder. A `(quip a b)` is equivalent to `[(list a) b]`, it's just a more convenient way to specify it. Most arms of an agent return a `(quip card _this)`, which is a list of effects and a new state.
 
-## `path`
+## `path` {#path}
 
 The `path` type is formally defined as:
 
@@ -138,7 +138,7 @@ Aside from using function calls when constructing a `path` as demonstrated above
 /foo/bar/baz
 ```
 
-## `wire`
+## `wire` {#wire}
 
 The type of a wire is formally defined as:
 

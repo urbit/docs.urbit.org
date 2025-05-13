@@ -1,4 +1,4 @@
-# Star
+# Star {#star}
 
 A **star** is the kind of Urbit identity that sits between the [galaxy](galaxy.md) and [planets](planet.md) in the identity hierarchy. Stars act as infrastructure for the [Arvo](arvo.md) network, providing planets with [Ames](ames.md)-related services, such as peer-to-peer routing and distributing [over-the-air software updates](ota-updates.md). Stars rely on galaxies for these services in the way that planets rely on stars.
 

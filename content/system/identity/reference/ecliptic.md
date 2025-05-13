@@ -1,4 +1,4 @@
-# Ecliptic.eth
+# Ecliptic.eth {#eclipticeth}
 
 [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](../../../glossary/upgrade.md). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
 
@@ -16,11 +16,11 @@ Here we briefly describe each function in `Ecliptic.eth` which allows one to wri
 
 We only document here the write functions specific to `Ecliptic.eth` and not the standard functions that are part of the ERC-721 or ERC-165 interfaces.
 
-### `Point`s interface
+### `Point`s interface {#points-interface}
 
 These functions are available to each owner of a [`Point`](azimuth-eth.md#points), and a subset of them are available to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
-#### `configureKeys`
+#### `configureKeys` {#configurekeys}
 
 ```solidity
     function configureKeys(uint32 _point,
@@ -34,7 +34,7 @@ Configure `_point` with network public keys `_encryptionKey`, `_authenticationKe
 
 Corresponds to the layer 2 `%configure-keys` action.
 
-#### `spawn`
+#### `spawn` {#spawn}
 
 ```solidity
     function spawn(uint32 _point, address _target)
@@ -53,7 +53,7 @@ Requirements:
 
 Corresponds to the layer 2 `%spawn` action.
 
-#### `transferPoint`
+#### `transferPoint` {#transferpoint}
 
 ```solidity
     function transferPoint(uint32 _point, address _target, bool _reset)
@@ -68,7 +68,7 @@ Requirements:
 
 Corresponds to the layer 2 `%transfer-point` action.
 
-#### `escape`
+#### `escape` {#escape}
 
 ```solidity
     function escape(uint32 _point, uint32 _sponsor)
@@ -85,7 +85,7 @@ Requirements:
 
 Corresponds to the layer 2 `%escape` action.
 
-#### `cancelEscape`
+#### `cancelEscape` {#cancelescape}
 
 ```solidity
     function cancelEscape(uint32 _point)
@@ -95,7 +95,7 @@ Cancel the currently set escape for `_point`.
 
 Corresponds to the layer 2 `%cancel-escape` action.
 
-#### `adopt`
+#### `adopt` {#adopt}
 
 ```solidity
     function adopt(uint32 _point)
@@ -109,7 +109,7 @@ Requirements:
 
 Corresponds to the layer 2 `%adopt` action.
 
-#### `reject`
+#### `reject` {#reject}
 
 ```solidity
     function reject(uint32 _point)
@@ -123,7 +123,7 @@ Requirements:
 
 Corresponds to the layer 2 `%reject` action.
 
-#### `detach`
+#### `detach` {#detach}
 
 ```solidity
     function detach(uint32 _point)
@@ -143,7 +143,7 @@ Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` o
 
 These functions are used to manage the various [proxies](https://urbit.org/using/id/proxies). All of these actions may be performed from Bridge.
 
-#### `setManagementProxy`
+#### `setManagementProxy` {#setmanagementproxy}
 
 ```solidity
     function setManagementProxy(uint32 _point, address _manager)
@@ -159,7 +159,7 @@ Requirements:
 
 Corresponds to the layer 2 `%set-management-proxy` action.
 
-#### `setSpawnProxy`
+#### `setSpawnProxy` {#setspawnproxy}
 
 ```solidity
     function setSpawnProxy(uint16 _prefix, address _spawnProxy)
@@ -173,7 +173,7 @@ Requirements:
 
 Corresponds to the layer 2 `%set-spawn-proxy` action.
 
-#### `setVotingProxy`
+#### `setVotingProxy` {#setvotingproxy}
 
 ```solidity
     function setVotingProxy(uint8 _galaxy, address _voter)
@@ -189,7 +189,7 @@ Requirements:
 
 There is no corresponding layer 2 action since voting must occur on layer 1.
 
-#### `setTransferProxy`
+#### `setTransferProxy` {#settransferproxy}
 
 ```solidity
     function setTransferProxy(uint32 _point, address _transferProxy)
@@ -203,13 +203,13 @@ Requirements:
 
 Corresponds to the layer 2 `%set-transfer-proxy` action.
 
-### Poll actions
+### Poll actions {#poll-actions}
 
 Most of these are functions only available to galaxies. They are related to [voting](../../../glossary/voting.md). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
 
 Upgrade and document polls last for 30 days, or once a majority is achieved, whichever comes first. If a majority (129) of yes or no votes is achieved, the final vote cast in favor of the winning option also triggers `updateUpgradePoll` or `updateDocumentPoll` as appropriate. Otherwise, if a quorum of 64 votes is achieved, with a majority voting for yes, and the 30 day voting period has expired, then _any_ Ethereum address may call `updateUpgradePoll` or `updateDocumentPoll` as appropriate.
 
-#### `startUpgradePoll`
+#### `startUpgradePoll` {#startupgradepoll}
 
 ```solidity
     function startUpgradePoll(uint8 _galaxy, EclipticBase _proposal)
@@ -224,7 +224,7 @@ Requirements:
 
 This action must be performed manually - it is not available in Bridge.
 
-#### `startDocumentPoll`
+#### `startDocumentPoll` {#startdocumentpoll}
 
 ```solidity
     function startDocumentPoll(uint8 _galaxy, bytes32 _proposal)
@@ -236,7 +236,7 @@ The `_proposal` argument is the keccak-256 hash of any arbitrary document or str
 
 This action must be performed manually - it is not available in Bridge.
 
-#### `castUpgradeVote`
+#### `castUpgradeVote` {#castupgradevote}
 
 ```solidity
     function castUpgradeVote(uint8 _galaxy,
@@ -250,7 +250,7 @@ As `_galaxy`, cast a `_vote` on the Ecliptic upgrade `_proposal`.
 
 This action may be performed from Bridge.
 
-#### `castDocumentVote`
+#### `castDocumentVote` {#castdocumentvote}
 
 ```solidity
     function castDocumentVote(uint8 _galaxy, bytes32 _proposal, bool _vote)
@@ -262,7 +262,7 @@ As `_galaxy`, cast a `_vote` on the `_proposal`.
 
 This action may be performed from Bridge.
 
-#### `updateUpgradePoll`
+#### `updateUpgradePoll` {#updateupgradepoll}
 
 ```solidity
     function updateUpgradePoll(EclipticBase _proposal)
@@ -272,7 +272,7 @@ Check whether the `_proposal` has achieved majority, upgrading to it if it has. 
 
 This action eiher occurs as part of a vote that achieves a majority, or must be performed manually. It is not available in Bridge.
 
-#### `updateDocumentPoll`
+#### `updateDocumentPoll` {#updatedocumentpoll}
 
 ```solidity
     function updateDocumentPoll(bytes32 _proposal)
@@ -282,11 +282,11 @@ Check whether the `_proposal` has achieved majority. Any Ethereum address may ca
 
 This action eiher occurs as part of a vote that achieves a majority, or must be performed manually. It is not available in Bridge.
 
-### Contract owner operations
+### Contract owner operations {#contract-owner-operations}
 
 The following functions may only be performed by the owner of the contract. There are only two such functions, one of which is to spawn galaxies. As all galaxies have already been spawned, it is no longer of any use. Thus only `setDnsDomains` is relevant today.
 
-#### `createGalaxy`
+#### `createGalaxy` {#creategalaxy}
 
 ```solidity
     function createGalaxy(uint8 _galaxy, address _target)
@@ -294,7 +294,7 @@ The following functions may only be performed by the owner of the contract. Ther
 
 Grant `_target` ownership of the `_galaxy` and register it for voting. Galaxies are given by a `uint8`, and since all 256 galaxies have already been spawned, this function has no valid arguments.
 
-#### `setDnsDomains`
+#### `setDnsDomains` {#setdnsdomains}
 
 ```solidity
     function setDnsDomains(string _primary, string _secondary, string _tertiary)
@@ -308,11 +308,11 @@ Here we briefly describe each function in the Ecliptic which allows one to read 
 
 We only document here the read functions specific to Ecliptic and not the standard functions that are part of the ERC-721 or ERC-165 interfaces.
 
-#### `depositAddress`
+#### `depositAddress` {#depositaddress}
 
 This returns the deposit address for [layer 2](../concepts/layer2.md), which is `0x1111111111111111111111111111111111111111`. Ships sent to this address are controlled on layer 2 instead of via Ecliptic.
 
-#### `canEscapeTo`
+#### `canEscapeTo` {#canescapeto}
 
 ```solidity
     function canEscapeTo(uint32 _point, uint32 _sponsor)
@@ -320,23 +320,23 @@ This returns the deposit address for [layer 2](../concepts/layer2.md), which is 
 
 Returns a `bool` that is true if `_point` could try to escape to `_sponsor`.
 
-#### `azimuth`
+#### `azimuth` {#azimuth}
 
 Returns the address of the [Azimuth.eth](azimuth-eth.md) contract: `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`.
 
-#### `claims`
+#### `claims` {#claims}
 
 Returns the address of the [Claims](https://etherscan.io/address/0xe7e7f69b34d7d9bd8d61fb22c33b22708947971a) contract: `0x1df4ea30e0b1359c9692a161c5f30cd1a6b64ebf`.
 
-#### `polls`
+#### `polls` {#polls}
 
 Returns the address of the [Polls](https://etherscan.io/address/0x7fecab617c868bb5996d99d95200d2fa708218e4) contract: `0x7fecab617c868bb5996d99d95200d2fa708218e4`.
 
-#### `previousEcliptic`
+#### `previousEcliptic` {#previousecliptic}
 
 Returns the address of the previous Ecliptic address.
 
-#### `getSpawnLimit`
+#### `getSpawnLimit` {#getspawnlimit}
 
 ```solidity
     function getSpawnLimit(uint32 _point, uint256 _time)

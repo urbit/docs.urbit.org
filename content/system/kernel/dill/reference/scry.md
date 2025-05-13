@@ -1,14 +1,14 @@
-# Scry Reference
+# Scry Reference {#scry-reference}
 
 Here are the scry endpoints of Dill. They require the `desk` in the path prefix be empty, so the general format is `.^([type] %d[care] /=//=/[some-path])`.
 
-## `%x` - `/sessions`
+## `%x` - `/sessions` {#x---sessions}
 
 Get all sessions.
 
 A scy with a `care` of `%x` and a `path` of `/sessions` returns a `(set @tas)` of the current sessions. The `%$` session is the default session.
 
-#### Example
+#### Example {#example}
 
 ```
 > .^((set @tas) %dy /=//=/sessions)
@@ -17,13 +17,13 @@ A scy with a `care` of `%x` and a `path` of `/sessions` returns a `(set @tas)` o
 
 ---
 
-## `%u` - `/sessions/[ses]`
+## `%u` - `/sessions/[ses]` {#u---sessionsses}
 
 Does session exist?
 
 A scry with a `care` of `%x` and a `path` of `/sessions/[ses]` where `[ses]` is a session name returns a `?` of whether `[ses]` exists.
 
-#### Example
+#### Example {#example}
 
 ```
 > .^(? %du /=//=/sessions/$)

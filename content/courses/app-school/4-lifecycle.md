@@ -1,8 +1,8 @@
-# 4. Lifecycle
+# 4. Lifecycle {#4-lifecycle}
 
 In the last lesson we looked at a couple of useful things used as boilerplate in most agents. Now we're going to get into the guts of how agents work, and start looking at what the agent arms do. The first thing we'll look at is the agent's state, and the three arms for managing it: `on-init`, `on-save`, and `on-load`. These arms handle what we call an agent's "lifecycle".
 
-## Lifecycle
+## Lifecycle {#lifecycle}
 
 An agent's lifecycle starts when it's first installed. At this point, the agent's `on-init` arm is called. This is the _only_ time `on-init` is ever called - its purpose is just to initialize the agent. The `on-init` arm might be very simple and just set an initial value for the state, or even do nothing at all and return the agent core exactly as-is. It may also be more complicated, and perform some [scries](../../system/kernel/arvo/guides/scry.md) to obtain extra data or check that another agent is also installed. It might send off some `card`s to other agents or vanes to do things like load data in to the `%settings` agent, bind an Eyre endpoint, or anything else. It all depends on the needs of your particular application. If `on-init` fails for whatever reason, the agent installation will fail and be aborted.
 
@@ -16,7 +16,7 @@ A `vase` is just a cell of `[type-of-the-noun the-noun]`. Most data an agent sen
 
 We'll look at the three arms described here in a little more detail, but first we need to touch on the state itself.
 
-## Versioned state type
+## Versioned state type {#versioned-state-type}
 
 In the previous lesson we introduced the idea of composing additional cores into the subject of the agent core. Here we'll look at using such a core to define the type of the agent's state. In principle, we could make it as simple as this:
 
@@ -70,7 +70,7 @@ When you later update your agent with a new state version, you'd change it to:
 
 Another reason for versioning the state type is that there may be cases where the state type doesn't change, but you still want to apply special transition logic for an old state during upgrade. For example, you may need to reprocess the data for a new feature or to fix a bug.
 
-## Adding the state
+## Adding the state {#adding-the-state}
 
 Along with a core defining the type of the state, we also need to actually add it to the subject of the core. The conventional way to do this is by adding the following immediately before the agent core itself:
 
@@ -83,11 +83,11 @@ The first line bunts (produces the default value) of the state type we defined i
 
 Note that adding the state like this only happens when the agent is built - from then on the arms of our agent will just modify it.
 
-## State management arms
+## State management arms {#state-management-arms}
 
 We've described the basic lifecycle process and the purpose of each state management arm. Now let's look at each arm in detail:
 
-### `on-init`
+### `on-init` {#on-init}
 
 This arm takes no argument, and produces a `(quip card _this)`. It's called exactly once, when the agent is first installed. Its purpose is to initialize the agent.
 
@@ -99,7 +99,7 @@ A `card` is a message to another agent or vane. We'll discuss `card`s in detail 
 
 Recall that in the last lesson, we said that most arms return a cell of `[effects new-agent-core]`. That's exactly what `(quip card _this)` is.
 
-### `on-save`
+### `on-save` {#on-save}
 
 This arm takes no argument, and produces a `vase`. Its purpose is to export the state of an agent - the state is packed into the vase it produces. The main time it's called is when an agent is upgraded. When that happens, the agent's state is exported with `on-save`, the new version of the agent is compiled and loaded, and then the state is imported back into the new version of the agent via the [`on-load`](#on-load) arm.
 
@@ -107,13 +107,13 @@ As well as the agent upgrade process, `on-save` is also used when an agent is su
 
 The state is packed in a vase with the [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) (`!>`) rune, like `!>(state)`.
 
-### `on-load`
+### `on-load` {#on-load}
 
 This arm takes a `vase` and produces a `(quip card _this)`. Its purpose is to import a state previously exported with [`on-save`](#on-save). Typically you'd have used a [versioned state](#versioned-state-type) as described above, so this arm would test which state version the imported data has, convert data from an old version to the new version if necessary, and load it into the `state` wing of the subject.
 
 The vase would be unpacked with a [zapgal](../../language/hoon/reference/rune/zap.md#-zapgal) (`!<`) rune, and then typically you'd test its version with a [wuthep](../../language/hoon/reference/rune/wut.md#--wuthep) (`?-`) expression.
 
-## Example
+## Example {#example}
 
 Here's a new agent to demonstrate the concepts we've discussed here:
 
@@ -358,7 +358,7 @@ Let's now use `dbug` to confirm our state has successfully been updated to the n
 >=
 ```
 
-## Summary
+## Summary {#summary}
 
 - The app lifecycle rougly consists of initialization, state export, upgrade, state import and state version transition.
 - This is managed by three arms: `on-init`, `on-save` and `on-load`.
@@ -371,7 +371,7 @@ Let's now use `dbug` to confirm our state has successfully been updated to the n
 - A `vase` is a cell of `[type-of-the-noun the-noun]`.
 - `(quip a b)` is the same as `[(list a) b]`, and is the `[effects new-agent-core]` pair returned by many arms of an agent core.
 
-## Exercises
+## Exercises {#exercises}
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
 - Have a look at the [`vase` entry in the type reference](types.md#vase).

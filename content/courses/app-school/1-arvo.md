@@ -1,8 +1,8 @@
-# 1. Arvo
+# 1. Arvo {#1-arvo}
 
 This document is a prologue to App School I. If you've worked though [Hoon School](../hoon-school) (or have otherwise learned the basics of Hoon), you'll likely be familiar with generators, but not with all the other parts of the Arvo operating system or the way it fits together. We'll go over the basic details here so you're better oriented to learn Gall agent development. We'll not go into the internal workings of the kernel much, but just what is necessary to understand it from the perspective of userspace.
 
-## Arvo and its Vanes
+## Arvo and its Vanes {#arvo-and-its-vanes}
 
 [Arvo](../../system/kernel/arvo) is the Urbit OS and kernel which is written in [Hoon](../../glossary/hoon.md), compiled to [Nock](../../glossary/nock.md), and executed by the runtime environment and virtual machine [Vere](../../glossary/vere.md). Arvo has ten kernel modules called vanes: [Ames](../../system/kernel/ames), [Behn](../../system/kernel/behn), [Clay](../../system/kernel/clay), [Dill](../../system/kernel/dill), [Eyre](../../system/kernel/eyre), [Gall](../../system/kernel/gall), [Iris](../../system/kernel/iris), [Jael](../../system/kernel/jael), [Khan](../../system/kernel/khan), and [Lick](../../system/kernel/lick).
 
@@ -23,7 +23,7 @@ Here's a brief summary of each of the vanes:
 - **Khan**: Control plane vane. The main purpose of Khan is for external application to be able to run threads via a Unix socket and receive their results. Khan's external interface is still experimental, but it's also good for running threads internally.
 - **Lick**: Inter-process communication (IPC) vane. Lick manages IPC ports, and the communication between Urbit applications and POSIX applications via these ports. Other vanes and applications ask Lick to open an IPC port, notify it when something is connected or disconnected, and transfer data between itself and the Unix application.
 
-## Userspace
+## Userspace {#userspace}
 
 Gall agents live in "userspace" as opposed to "kernelspace". Kernelspace is Arvo and its nine vanes. Userspace is primarily Gall agents, generators, threads, front-ends, and all of their related files in Clay. The distinction looks something like this:
 
@@ -36,7 +36,7 @@ By and large, Gall _is_ the userspace vane - the majority of userspace is either
 
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests directly and dynamically produce responses, but it's also possible to have a static [glob](../../userspace/apps/reference/dist/glob.md) of HTML, CSS, Javascript, images, etc, which are served to the client like an ordinary web app. Such front-end files are typically managed by the `%docket` agent which serves them via Eyre. The [software distribution guide](../../userspace/apps/guides/software-distribution.md) covers this in detail, and you might like to work through it after completing App School I.
 
-## The Filesystem
+## The Filesystem {#the-filesystem}
 
 On an ordinary OS, you have persistent disk storage and volatile memory. An application is launched by reading an executable file on disk, loading it into memory and running it. The application will maybe read some more files from disk, deserialize them into data structures in memory, perform some computations and manipulate the data, then serialize the new data and write it back to disk. This process is necessary because persistent storage is too slow to operate on directly and the fast memory is wiped when it loses power. The result is that all non-ephemeral data is ultimately stored as files in the filesystem on disk. Arvo on the other hand is completely different.
 
@@ -46,7 +46,7 @@ The result of this total persistence is that the filesystem—Clay—does not ha
 
 Clay has a few unique features—it's a typed filesystem, with all file types defined in `mark` files. It's revision controlled, in a similar way to Git. It also has a built-in build system (formerly a separate vane called Ford, but was merged with Clay in 2020 to make atomicity of upgrades easier). We'll look at some of these features in more detail later in the guide.
 
-## Desk Anatomy
+## Desk Anatomy {#desk-anatomy}
 
 The fundamental unit in Clay is a desk. Desks are kind of like git repositories. By default, new urbits come with the following desks included: `%base`, `%landscape`, `%groups` and `%webterm`.
 
@@ -120,7 +120,7 @@ In addition to the directories discussed, there's a handful of special files a d
 
 Each desk must be self-contained; it must include all the `mark`s, libraries, threads, etc, that it needs. The one exception is the kernel and standard libraries from the `%base` desk. Agents, threads and generators in other desks all have these libraries available to them in their subject.
 
-## APIs
+## APIs {#apis}
 
 You should now have a general idea of the different parts of Arvo, but how does a Gall agent interact with these things?
 
@@ -139,6 +139,6 @@ Things like `on-poke` are arms of the agent core. Don't worry about their meanin
 
 Inter-agent messaging can occur over the network, so you can interact with agents on other ships as well as local ones. You can only talk to local vanes, but some vanes like Clay are able to make requests to other ships on your behalf. Note this summary is simplified - vanes don't just talk in `task`s and `gift`s in all cases. For example, requests from HTTP clients through Eyre (the webserver vane) behave more like those from agents than vanes, and a couple of other vanes also have some different behaviours. Agent interactions are also a little more complicated, and we'll discuss that later, but the basic patterns described here cover the majority of cases.
 
-## Environment Setup
+## Environment Setup {#environment-setup}
 
 Before proceeding with App School, you'll need to have an appropriate text editor installed and configured, and know how to work with a fake ship for development. Best practices are described in the [environment setup guide](../environment.md). Example agents and other code throughout this guide will just be committed to the `%base` desk of a fake ship, but it's a good idea to have a read through that guide for when you begin work on your own apps.

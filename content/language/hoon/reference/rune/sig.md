@@ -1,12 +1,12 @@
-# ~ sig · Hints
+# ~ sig · Hints {#-sig-hints}
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter. A mnemonic to remember what sig runes are for is "we're *sig*naling some information to the interpreter".
 
-## `~>` "siggar"
+## `~>` "siggar" {#-siggar}
 
 Raw hint, applied to computation.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -37,25 +37,25 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sggr p=$@(term [p=term q=hoon]) q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Semantics
+#### Semantics {#semantics}
 
 `p` may either be a single `%term` or a pair of `[term hoon]`, the latter of which may optionally be be written `%foo.some-hoon`. `p` will be passed to the interpreter and `q` will be evaluated and its result produced like normal.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Hoon has no way of telling what hints are used and what aren't. Hints are all conventions at the interpreter level.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ~>(%a 42)
@@ -74,11 +74,11 @@ Running the compiler:
 
 ---
 
-## `~|` "sigbar"
+## `~|` "sigbar" {#-sigbar}
 
 Tracing printf.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -109,21 +109,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgbr p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Convention
+#### Convention {#convention}
 
 Prettyprints `p` in stack trace if `q` crashes.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ~|('sample error message' !!)
@@ -138,11 +138,11 @@ dojo: hoon expression failed
 
 ---
 
-## `~$` "sigbuc"
+## `~$` "sigbuc" {#-sigbuc}
 
 Profiling hit counter.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -173,21 +173,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgbc p=term q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 If profiling is on, adds 1 to the hit counter `p`, which is a `term` like `%foo`. Profiling is enabled by passing the `-P` flag to the `urbit` binary. Profiling results are saved in `/path/to/pier/.urb/put/profile/~some.date.txt`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ~$(%foo 3)
@@ -215,11 +215,11 @@ my-hit-counter: 42
 
 ---
 
-## `~_` "sigcab"
+## `~_` "sigcab" {#_-sigcab}
 
 User-formatted tracing printf.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -250,25 +250,25 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgcb p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Convention
+#### Convention {#convention}
 
 Shows `p` in stacktrace if `q` crashes.
 
-#### Discussion
+#### Discussion {#discussion}
 
 `p` must produce a `tank` (pretty-print source).
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ~_([%leaf "sample error message"] !!)
@@ -283,11 +283,11 @@ dojo: hoon expression failed
 
 ---
 
-## `~%` "sigcen"
+## `~%` "sigcen" {#-sigcen}
 
 Jet registration.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Four arguments. Two fixed arguments, then a third which may be `~` if empty or else a variable number of pairs sandwiched between two `==`s, then a fourth fixed argument.
 
@@ -321,21 +321,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgcn p=chum q=hoon r=tyre s=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `s`.
 
-#### Convention
+#### Convention {#convention}
 
 Register a core with name `p`, with parent at leg `q`, exporting the named formulas `r`, constructed by `s`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 `~%` is for registering cores. A registered core declares its formal identity to the interpreter, which may or may not be able to recognize and/or accelerate it.
 
@@ -355,7 +355,7 @@ The child core contains the parent, of course. When we register a core, we state
 
 Registers a jet in core `s` so that it can be called when that code is run.
 
-#### Examples
+#### Examples {#examples}
 
 Here's the beginning of the AES core in `zuse.hoon`:
 
@@ -376,11 +376,11 @@ Here we label the entire `++aes` core for optimization.
 
 ---
 
-## `~<` "siggal"
+## `~<` "siggal" {#-siggal}
 
 Raw hint, applied to product.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -413,21 +413,21 @@ None
 
 `p` may either be a a `term` or a pair of `[term hoon]`. If it's the latter, `p` may optionally be written as `%foo.some-hoon`.
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sggl p=$@(term [p=term q=hoon]) q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 `~<` is only used for jet hints ([`~/`](#-sigfas) and [`~%`](#-sigcen)) at the moment; we are not telling the interpreter something about the computation we're about to perform, but rather about its product.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > (make '~<(%a 42)')
@@ -438,11 +438,11 @@ None
 
 ---
 
-## `~+` "siglus"
+## `~+` "siglus" {#-siglus}
 
 Cache a computation.
 
-#### Syntax
+#### Syntax {#syntax}
 
 One argument, fixed.
 
@@ -450,21 +450,21 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `~+  p`   | `~+(p)`   | None           |
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgls p=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `p`.
 
-#### Convention
+#### Convention {#convention}
 
 Caches the formula and subject of `p` in a local cache (generally transient in the current event).
 
-#### Examples
+#### Examples {#examples}
 
 This may pause for a second:
 
@@ -489,11 +489,11 @@ This should work fine:
 
 ---
 
-## `~/` "sigfas"
+## `~/` "sigfas" {#-sigfas}
 
 Jet registration for gate with registered context.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -524,19 +524,19 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgfs p=term q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 ```hoon
 ~%(p +7 ~ q)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 From the kernel:
 
@@ -551,11 +551,11 @@ From the kernel:
 
 ---
 
-## `~&` "sigpam"
+## `~&` "sigpam" {#-sigpam}
 
 Debugging printf.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -586,21 +586,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgpm p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Product
+#### Product {#product}
 
 Pretty-prints `p` on the console before computing `q`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 This rune has no semantic effect beyond the Hoon expression `q`. It's used solely to create a side-effect: printing the value of `p` to the console.
 
@@ -609,7 +609,7 @@ It's most useful for debugging programs.
 A logging level can be specified by including `>` markers, i.e. `>`, `>>`,
 `>>>`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ~&('halp' ~)
@@ -629,11 +629,11 @@ A logging level can be specified by including `>` markers, i.e. `>`, `>>`,
 
 ---
 
-## `~=` "sigtis"
+## `~=` "sigtis" {#-sigtis}
 
 Detect duplicate.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -664,25 +664,25 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgts p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Convention
+#### Convention {#convention}
 
 If `p` equals `q`, produce `p` instead of `q`.
 
-#### Discussion
+#### Discussion {#discussion}
 
 Duplicate nouns are especially bad news in Hoon, because comparing them takes O(n) time. Use `~=` to avoid this inefficiency.
 
-#### Examples
+#### Examples {#examples}
 
 This code traverses a tree and replaces all instances of `32` with
 `320`:
@@ -699,11 +699,11 @@ Without `~=`, it would build a copy of a completely unchanged tree. Sad!
 
 ---
 
-## `~?` "sigwut"
+## `~?` "sigwut" {#-sigwut}
 
 Conditional debug printf.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Three arguments, fixed.
 
@@ -735,21 +735,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgwt p=hoon q=hoon r=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `r`.
 
-#### Convention
+#### Convention {#convention}
 
 If `p` is true, prettyprints `q` on the console before computing `r`.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > ~?((gth 1 2) 'oops' ~)
@@ -773,11 +773,11 @@ If `p` is true, prettyprints `q` on the console before computing `r`.
 
 ---
 
-## `~!` "sigzap"
+## `~!` "sigzap" {#-sigzap}
 
 Print type on compilation fail.
 
-#### Syntax
+#### Syntax {#syntax}
 
 Two arguments, fixed.
 
@@ -808,21 +808,21 @@ None
 
 {% endtabs %}
 
-#### AST
+#### AST {#ast}
 
 ```hoon
 [%sgzp p=hoon q=hoon]
 ```
 
-#### Expands to
+#### Expands to {#expands-to}
 
 `q`.
 
-#### Convention
+#### Convention {#convention}
 
 If compilation of `q` fails, prints the type of `p` in the trace.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > a

@@ -1,10 +1,10 @@
-# Creating an Invite Pool
+# Creating an Invite Pool {#creating-an-invite-pool}
 
 If you're a star owner, you have the ability to create **invite pools**. These invite pools let you give your friends a piece of the network in the form of a planet. This document will give you an explanation of how to create an invite pool and how to share it with your friends using our tool [Bridge](https://bridge.urbit.org).
 
 For more general tips on using your star, check out the [Star and Galaxy Operations page](..).
 
-## Anatomy of an Invite Pool
+## Anatomy of an Invite Pool {#anatomy-of-an-invite-pool}
 
 An invite pool is a set of planet invites that can be distributed via email or URL; each invite is worth one planet when redeemed. An invite pool can be as big as you'd like, providing that you have enough planets left to spawn. All invite pools must be created by a star, but they must be given to a planet. If you're interested in how this works technically, take a look at the [DelegatedSending.sol contract](https://github.com/urbit/azimuth/blob/master/contracts/DelegatedSending.sol).
 
@@ -12,7 +12,7 @@ Keep in mind that all planets will have access to the invite pool until the invi
 
 For example: As `~marzod`, I spawn `~wicdev-wisryt` and give it an invite pool of 100 planets. `~wicdev-wisryt` can now send an invite to a friend at galen@tlon.io. When Galen claims his planet (`~ravmel-ropdyl`), `~ravmel-ropdyl` can now invite his friend — or 99 of them. `~wicdev-wisryt` may also continue to use the invite pool, as can anybody they invite.
 
-## How To Create an Invite Pool
+## How To Create an Invite Pool {#how-to-create-an-invite-pool}
 
 Giving your friends a piece of Urbit only takes a few minutes: send an invite pool to a planet, and then that planet can email an invite to a friend (or friends)
 
@@ -32,7 +32,7 @@ Giving your friends a piece of Urbit only takes a few minutes: send an invite po
 
 Once the transaction is complete, the planet will have access to the invite pool.
 
-## How to Send an Invite
+## How to Send an Invite {#how-to-send-an-invite}
 
 1. Log into Bridge using the planet assigned an invite pool above using the planet's Master Ticket or ownership address.
 
@@ -44,7 +44,7 @@ Once the transaction is complete, the planet will have access to the invite pool
 
    If you selected "URL", click "Generate Invite URL" to create an invitation URL that you can then share.
 
-## FAQ
+## FAQ {#faq}
 
 Q. What happens if the spawn proxy address is changed away from `0xF7908Ab1F1e352F83c5ebc75051c0565AEaea5FB` after an invite pool has been created? Will outstanding invite pool(s) still function?
 A. They won't. Existing balances will remain, but Bridge (and `azimuth-js`) won't consider any of the invites from that star usable, and trying to send one of their planets anyway will result in a failed transaction.

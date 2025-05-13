@@ -1,8 +1,8 @@
-# Data Types
+# Data Types {#data-types}
 
 Khan only uses a handful of types, described below.
 
-## `+avow`
+## `+avow` {#avow}
 
 Thread result mold builder
 
@@ -22,7 +22,7 @@ If the `each` is `%.n`, the thread failed and `p` contains a `goof`, which is:
 
 The `mote` is an error code like `%foobar` and the `tang` contains something like a stack trace.
 
-#### Example
+#### Example {#example}
 
 ```
 > `(avow:khan cage)`[%.y %noun !>('foo')]
@@ -34,7 +34,7 @@ The `mote` is an error code like `%foobar` and the `tang` contains something lik
 
 ---
 
-## `$bear`
+## `$bear` {#bear}
 
 Thread location
 
@@ -44,7 +44,7 @@ $@(desk beak)
 
 This is tells Khan where to look for a thread. It's either a `desk` or a full `beak`. Khan will look in the `/ted` directory of the specified location.
 
-#### Example
+#### Example {#example}
 
 ```
 > `bear:khan`%base
@@ -56,7 +56,7 @@ This is tells Khan where to look for a thread. It's either a `desk` or a full `b
 
 ---
 
-## `$cast`
+## `$cast` {#cast}
 
 External thread argument
 
@@ -66,7 +66,7 @@ External thread argument
 
 This is only used if you're running a thread via Khan's external interface. The `mark` specifies the output mark, and a `page` is a pair of input `mark` and raw noun.
 
-#### Example
+#### Example {#example}
 
 ```
 > `cast:khan`[%noun %noun 123]
@@ -75,7 +75,7 @@ This is only used if you're running a thread via Khan's external interface. The 
 
 ---
 
-## `+fyrd`
+## `+fyrd` {#fyrd}
 
 Mold builder for a thread run request
 
@@ -89,7 +89,7 @@ The fields are:
 - `name`: thread name. Khan will look in `/ted` for this. If it's in a subdirectory like `/ted/foo/bar.hoon`, you'd say `%foo-bar`.
 - `args`: a `cage` if it's an internal request, and a [`cast`](#cast) if it's an external request.
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > `(fyrd:khan cage)`[%base %mythread %noun !>(123)]

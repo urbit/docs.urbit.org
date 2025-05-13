@@ -1,6 +1,6 @@
-# Gleichniszahlenreihe
+# Gleichniszahlenreihe {#gleichniszahlenreihe}
 
-## Challenge: The Look-and-Say Sequence
+## Challenge: The Look-and-Say Sequence {#challenge-the-look-and-say-sequence}
 
 _Gleichniszahlenreihe_, or the [look-and-say sequence](https://en.wikipedia.org/wiki/Look-and-say_sequence), is constructed from an aural description of a sequence of numbers.
 
@@ -10,11 +10,11 @@ This is a fairly complicated program.  You need a few parts:  the ability to tak
 
 - Compose a `%say` generator which carries out the look-and-say sequence calculation for a given input.  The input should be a number which indicates which value in the sequence is desired (e.g. 1→1, 2→11, 3→21).
 
-## Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of the Hoon School Live ~2022.2 cohort.  They are made available under both the [MIT license](https://mit-license.org/) and the [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0).  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _This solution was produced by ~midsum-salrux.  This code exhibits good core structure and code encapsulation in arms._
 
@@ -89,7 +89,7 @@ Usage:
 ```
 
 
-### Solution #2
+### Solution #2 {#solution-2}
 
 _This solution was produced by ~nallux-dozryl.  This code exemplifies parsimonious use of parsing rules and can parse any arbitrary sequence of digits._
 

@@ -1,10 +1,10 @@
-# API Reference
+# API Reference {#api-reference}
 
 This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Most sections have a corresponding practical example in the [Examples](../examples/examples.md) document. Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 
 The focus of this document is on interacting with Clay from userspace applications and threads, so it doesn't delve into the internal mechanics of Clay from a kernel development perspective.
 
-## `%warp` - Read and track
+## `%warp` - Read and track {#warp---read-and-track}
 
 ```hoon
 [%warp wer=ship rif=riff]
@@ -21,7 +21,7 @@ The `wer` field is the target ship. The `(unit rave)` of the [riff](data-types.m
 
 We'll look at each of these in more detail below.
 
-#### Returns
+#### Returns {#returns}
 
 Clay responds to a `%mult` request with a `%wris` `gift`, and the rest with a `%writ` `gift`.
 
@@ -41,7 +41,7 @@ The `unit` of the [riot](data-types.md#riot) will be null if the target file can
 
 Now we'll look at each of the `rave` request types in turn.
 
-### `%sing` - Read
+### `%sing` - Read {#sing---read}
 
 ```hoon
 [%sing =mood]
@@ -53,13 +53,13 @@ The `care` of the [mood](data-types.md#mood) will determine what you can read an
 
 The [case](data-types.md#case) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %sing.](../examples/examples.md#sing)
 
 ---
 
-### `%next` - Await next
+### `%next` - Await next {#next---await-next}
 
 ```hoon
 [%next =mood]  ::  await next version
@@ -69,13 +69,13 @@ This subscribes to the next version of the specified file. See [here](data-types
 
 If you subscribe to the current `case` of the `desk`, Clay will not respond until the file changes. If you subscribe to a previous `case` of the `desk` and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at `case` `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at `case` `60`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %next.](../examples/examples.md#next)
 
 ---
 
-### `%mult` - Next of any
+### `%mult` - Next of any {#mult---next-of-any}
 
 ```hoon
 [%mult =mool]
@@ -93,13 +93,13 @@ The `mool` specified in the request is this structure:
 
 You can use a different `care` for each of the files specified by the `path` if you like. Significantly, the `care` will determine whether Clay sends a response for a given change. For example, if you subscribe to an existing `/foo/txt` with a `%u` `care` and `/foo/txt` is modified but isn't deleted, Clay will _not_ tell you. However, if you subscribe with an `%x` `care`, it _will_ tell you.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %mult.](../examples/examples.md#mult)
 
 ---
 
-### `%many` - Track range
+### `%many` - Track range {#many---track-range}
 
 ```hoon
 [%many track=? =moat]
@@ -127,25 +127,25 @@ When you reach the end of the subscribed range of `case`s, Clay will send you a 
 [%writ p=~]
 ```
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %many.](../examples/examples.md#many)
 
 ---
 
-### Cancel Subscription
+### Cancel Subscription {#cancel-subscription}
 
 To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in the `riff`. Clay will cancel the subscription based on the `wire`. The request is exactly the same regardless of which type of `rave` you subscribed with originally.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of cancelling a subscription.](../examples/examples.md#cancel-subscription)
 
 ---
 
-## Write and Modify
+## Write and Modify {#write-and-modify}
 
-### `%info` - Write
+### `%info` - Write {#info---write}
 
 ```hoon
 [%info des=desk dit=nori]
@@ -162,11 +162,11 @@ If the head of the `nori` is `%&`, it's a request to add, delete or modify one o
 - `%dif` - This has not yet been implemented so will crash with a `%dif-not-implemented` error.
 - `%mut` - Change a file. At the time of writing this behaves identically to `%ins` so its use merely informs the reader.
 
-#### Returns
+#### Returns {#returns}
 
 Clay does not give any response to an `%info` `task` so don't expect a `sign` back.
 
-#### Example
+#### Example {#example}
 
 Here are examples of using each of these as well as making multiple changes in one request:
 
@@ -177,9 +177,9 @@ Here are examples of using each of these as well as making multiple changes in o
 
 ---
 
-## Apps and updates
+## Apps and updates {#apps-and-updates}
 
-### `%rein` - Force apps
+### `%rein` - Force apps {#rein---force-apps}
 
 ```hoon
 [%rein des=desk ren=rein]
@@ -191,7 +191,7 @@ Note that the given `rein` overrides the existing one set by a previous `%rein` 
 
 ---
 
-### `%tire` - App state sub
+### `%tire` - App state sub {#tire---app-state-sub}
 
 ```hoon
 [%tire p=(unit ~)]
@@ -229,7 +229,7 @@ It's an app state delta for a particular desk.
 
 ---
 
-### `%wick` - Bump kernel
+### `%wick` - Bump kernel {#wick---bump-kernel}
 
 ```hoon
 [%wick ~]
@@ -239,7 +239,7 @@ Try to apply a queued kernel update.
 
 ---
 
-### `%zest` - App state
+### `%zest` - App state {#zest---app-state}
 
 ```hoon
 [%zest des=desk liv=zest]
@@ -253,7 +253,7 @@ A `%zest` `task` suspends or unsuspends a desk. the [`zest`](data-types.md#zest)
 
 ---
 
-## `%tomb` - Tombstoning
+## `%tomb` - Tombstoning {#tomb---tombstoning}
 
 ```hoon
 [%tomb =clue]
@@ -274,7 +274,7 @@ Tombstoning is the deletion of data for old desk revisions. Clay has a single `%
 
 We'll look at each of these in turn.
 
-### `%lobe` - Specific page
+### `%lobe` - Specific page {#lobe---specific-page}
 
 ```hoon
 [%lobe =lobe]
@@ -284,7 +284,7 @@ A `%tomb` `task` with a `%lobe` `clue` will tombstone the `page` matching the gi
 
 ---
 
-### `%all` - Everything
+### `%all` - Everything {#all---everything}
 
 ```hoon
 [%all ~]
@@ -294,7 +294,7 @@ A `%tomb` `task` with an `%all` `clue` will tombstone everything that's not used
 
 ---
 
-### `%pick` - Collect garbage
+### `%pick` - Collect garbage {#pick---collect-garbage}
 
 ```hoon
 [%pick ~]
@@ -304,7 +304,7 @@ A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombston
 
 ---
 
-### `%norm` - Default policy
+### `%norm` - Default policy {#norm---default-policy}
 
 ```hoon
 [%norm =ship =desk =norm]
@@ -316,7 +316,7 @@ Note the given `norm` will overwrite the existing one for the the ship/desk in q
 
 ---
 
-### `%worn` - Commit policy
+### `%worn` - Commit policy {#worn---commit-policy}
 
 ```hoon
 [%worn =ship =desk =tako =norm]
@@ -326,7 +326,7 @@ A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](#norm---default-policy)
 
 ---
 
-### `%seek` - Backfill
+### `%seek` - Backfill {#seek---backfill}
 
 ```hoon
 [%seek =ship =desk =cash]
@@ -336,7 +336,7 @@ A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombsto
 
 ---
 
-## Manage Mounts
+## Manage Mounts {#manage-mounts}
 
 Here we'll look at managing Clay unix mounts programmatically.
 
@@ -347,7 +347,7 @@ There are four Clay `task`s relevant to mounts:
 - [%ogre](#ogre---unmount) - Unmount something.
 - [%dirk](#dirk---commit) - Commit changes.
 
-### `%boat` - List mounts
+### `%boat` - List mounts {#boat---list-mounts}
 
 ```hoon
 [%boat ~]
@@ -355,7 +355,7 @@ There are four Clay `task`s relevant to mounts:
 
 A `%boat` `task` requests the list of existing mounts and does not take any arguments.
 
-#### Returns
+#### Returns {#returns}
 
 The type it returns is a `%hill` `gift`, which looks like:
 
@@ -365,13 +365,13 @@ The type it returns is a `%hill` `gift`, which looks like:
 
 ...where the `@tas` is the name of the mount point.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %boat.](../examples/examples.md#boat)
 
 ---
 
-### `%mont` - Mount
+### `%mont` - Mount {#mont---mount}
 
 ```hoon
 [%mont pot=term bem=beam]
@@ -387,17 +387,17 @@ A `beam` is the following structure:
 
 You can mount the whole desk with a `path` of `/`, and you can also mount subdirectories or even individual files. If you want to mount an individual file, you must exclude its `mark` from the path. For example, if you want to mount `/gen/hood/hi/hoon`, you'd specify `/gen/hood/hi`. It will automatically be given the correct file extension when mounted. If you include the `hoon` mark it will crash (and currently crash your ship).
 
-#### Returns
+#### Returns {#returns}
 
 Clay does not return a `gift` in response to a `%mont` `%task`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %mont.](../examples/examples.md#mont)
 
 ---
 
-### `%ogre` - Unmount
+### `%ogre` - Unmount {#ogre---unmount}
 
 ```hoon
 [%ogre pot=$@(desk beam)]
@@ -407,17 +407,17 @@ A `%ogre` `task` unmounts the specified mount.
 
 It's defined in `lull.hoon` as taking `$@(desk beam)` but in fact it will only unmount the target when specified as a `term` mount name. Passing it a `desk` will incidentally work if the mount is named the same as the `desk` but otherwise it won't work. Passing it a `beam` will simply not work.
 
-#### Returns
+#### Returns {#returns}
 
 Clay does not return a `gift` in response to a `%ogre` `task`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %ogre.](../examples/examples.md#ogre)
 
 ---
 
-### `%dirk` - Commit
+### `%dirk` - Commit {#dirk---commit}
 
 ```hoon
 [%dirk des=desk]
@@ -427,19 +427,19 @@ A `%dirk` `task` commits changes in the target mount.
 
 It's defined in `lull.hoon` as taking a `desk` but like [%ogre](#ogre---unmount), it actually takes the name of a mount point rather than a `desk` as is specified.
 
-#### Returns
+#### Returns {#returns}
 
 Clay does not return a `gift` in response to a `%dirk` `task`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %dirk.](../examples/examples.md#dirk)
 
 ---
 
-## Merge Desks
+## Merge Desks {#merge-desks}
 
-### `%merg` - Merge
+### `%merg` - Merge {#merg---merge}
 
 ```hoon
 $:  %merg
@@ -455,7 +455,7 @@ The `germ` specifies the merge strategy. You can refer to the [Strategies](../gu
 
 If you're merging into a new `desk` you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
 
-#### Returns
+#### Returns {#returns}
 
 Clay will respond to the request with a `%mere` `gift` which looks like:
 
@@ -476,13 +476,13 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
 ]
 ```
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %merg.](../examples/examples.md#merg)
 
 ---
 
-## Permissions
+## Permissions {#permissions}
 
 For each file or directory, there is both a read permission and a write permission. Each may be set separately and is either a whitelist or a blacklist (but not both). The whitelist/blacklist contains a `set` of ships and/or groups which are allowed or banned respectively. If it's an empty whitelist it means all foreign ships are denied. If it's an empty blacklist it means all foreign ships are allowed.
 
@@ -524,7 +524,7 @@ A `%perm` `task` is for setting permissions, and the other three are for managin
 
 We'll look at each of these in turn.
 
-### `%perm` - Set perms
+### `%perm` - Set perms {#perm---set-perms}
 
 ```hoon
 [%perm des=desk pax=path rit=rite]
@@ -558,17 +558,17 @@ Where a `rule` is this structure:
 
 As the comment suggests, the `@ta` is the name of a `crew` (group).
 
-#### Returns
+#### Returns {#returns}
 
 Clay does not return a `gift` in response to a `%perm` `task`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %perm.](../examples/examples.md#perm)
 
 ---
 
-### `%cred` - Add group
+### `%cred` - Add group {#cred---add-group}
 
 ```hoon
 [%cred nom=@ta cew=crew]
@@ -582,17 +582,17 @@ The `nom` is a name for the group and the `crew` is just a `(set ship)`:
 +$  crew  (set ship)  ::  permissions group
 ```
 
-#### Returns
+#### Returns {#returns}
 
 Clay does not return a `gift` in response to a `%cred` `task`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %cred.](../examples/examples.md#cred)
 
 ---
 
-### `%crew` - Get groups
+### `%crew` - Get groups {#crew---get-groups}
 
 ```hoon
 [%crew ~]
@@ -602,7 +602,7 @@ This retrieves all permission groups.
 
 A `%crew` `task` takes no arguments.
 
-#### Returns
+#### Returns {#returns}
 
 Clay wil return a `%cruz` `gift`. It looks like:
 
@@ -612,13 +612,13 @@ Clay wil return a `%cruz` `gift`. It looks like:
 
 The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %crew.](../examples/examples.md#crew)
 
 ---
 
-### `%crow` - Group files
+### `%crow` - Group files {#crow---group-files}
 
 ```hoon
 [%crow nom=@ta]
@@ -628,7 +628,7 @@ A `%crow` `task` retrieves all files and directories in all `desk`s which have p
 
 The `nom` is the name of a `crew`.
 
-#### Returns
+#### Returns {#returns}
 
 The `gift` you get back is a `%croz` which looks like:
 
@@ -642,19 +642,19 @@ The `gift` you get back is a `%croz` which looks like:
 +$  regs  (map path rule)  ::  rules for paths
 ```
 
-#### Example
+#### Example {#example}
 
 [See here for an example of using %crow.](../examples/examples.md#crow)
 
 ---
 
-## Foreign Ships
+## Foreign Ships {#foreign-ships}
 
 Here we'll looking at making Clay requests to a foreign ship.
 
 As it currently stands, it's not possible to write to a foreign `desk`. Additionally, remote scries are not implemented. That leaves requests to read files (`%warp`) and merge desks (`%merg`), which we'll look at next.
 
-### `%warp` - Remote
+### `%warp` - Remote {#warp---remote}
 
 To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](#warp---read-and-track) section.
 
@@ -677,11 +677,11 @@ Note that if you're reading a whole `desk` or directory, all subfolders and file
 
 ---
 
-#### Example
+#### Example {#example}
 
 [See here for examples of requests to foreign ships.](../examples/examples.md#foreign-ships)
 
-### `%merg` - Remote
+### `%merg` - Remote {#merg---remote}
 
 To merge a foreign `desk` into a local one, you just send Clay a `%merg` `task` (as you would for a local merge) and specify the foreign ship in the `her` field. For details on making such requests, see the [Merge Desks](#merge-desks) section.
 
@@ -689,7 +689,7 @@ The foreign ship will respond only if correct permissions have been set. See the
 
 Note that all subfolders and individual files within the `desk` must permit your reading in order for the merge to succeed. If even one file does not permit you reading it, the remote ship will not respond to the request at all.
 
-#### Example
+#### Example {#example}
 
 [See here for examples of requests to foreign ships.](../examples/examples.md#foreign-ships)
 

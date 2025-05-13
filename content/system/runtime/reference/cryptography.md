@@ -1,4 +1,4 @@
-# Cryptography
+# Cryptography {#cryptography}
 
 All cryptographic primitives utilized by Arvo are [jetted](../guides/jetting.md). This is done for performance-related reasons in other parts of the system, but for cryptography this is also extremely important because it allows us to utilize standard reference implementations for the primitives written in C.
 

@@ -1,4 +1,4 @@
-# Urbit ID
+# Urbit ID {#urbit-id}
 
 ![](https://media.urbit.org/site/posts/essays/pki-maze.png)
 

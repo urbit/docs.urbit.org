@@ -1,4 +1,4 @@
-# Main-loop
+# Main-loop {#main-loop}
 
 `main-loop` is a useful function included in `strandio` that:
 
@@ -8,13 +8,13 @@
 
 `main-loop` takes a list of functions as its argument but only moves to the next item in the list on a `[%fail %ignore ~]` (whose usage we'll describe in the second example). In other cases it restarts from the top, so providing multiple functions is only useful for trying the same input against multiple functions.
 
-## Create a loop
+## Create a loop {#create-a-loop}
 
 This is useful if you want to (for example) take an arbitrary number of facts.
 
 Here's an example of a thread that subscribes to `graph-store` for updates and nicely prints the messages (an extremely basic chat reader):
 
-#### `chat-watch.hoon`
+#### `chat-watch.hoon` {#chat-watchhoon}
 
 ```hoon
 /-  spider
@@ -95,7 +95,7 @@ First we subscribe to graph-store for updates with `watch-our`, then we call the
 
 Once this is done, main-loop will just call the same function again which will again wait for a fact and so on. So you see how it creates a loop. The only way to exit the loop is with a `%fail` or else by poking spider with a `%spider-stop` and the thread's `tid`.
 
-## Try input against multiple functions
+## Try input against multiple functions {#try-input-against-multiple-functions}
 
 To try the same input against multiple function you must use another `strandio` function `handle`. Handle converts a `%skip` into a `[fail %ignore ~]`. When `main-loop` sees a `[fail %ignore ~]` it tries the next function in its list with the same input.
 
@@ -107,7 +107,7 @@ baz
 ~
 ```
 
-#### `tester.hoon`
+#### `tester.hoon` {#testerhoon}
 
 ```hoon
 /-  spider
@@ -125,7 +125,7 @@ baz
 (pure:m !>(~))
 ```
 
-#### `tested.hoon`
+#### `tested.hoon` {#testedhoon}
 
 ```hoon
 /-  spider

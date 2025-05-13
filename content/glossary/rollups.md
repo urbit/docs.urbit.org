@@ -1,4 +1,4 @@
-# Naive rollups
+# Naive rollups {#naive-rollups}
 
 **Naive rollups**, also referred to as **layer 2**, is an upgrade to [Azimuth](azimuth.md) implemented in 2021 that reduces Ethereum gas costs associated with Urbit ID transactions and friction associated with using cryptocurrency in general.
 
@@ -6,7 +6,7 @@ This system allows batches of Urbit ID transactions to be submitted together as 
 
 Due to the dramatically reduced cost, Tlon offers their own roller that is free for ordinary public use. This enables new users to get started with a permanent Urbit ID without any prior knowledge of Ethereum, cryptocurrency, or blockchains.
 
-### Further reading
+### Further reading {#further-reading}
 
 - [Layer 2 for planets](../manual/id/layer-2-for-planets.md): Essential information for planet owners on layer 2 or considering a move to layer 2
 - [The Gang Solves the Gas Crisis](https://urbit.org/blog/rollups): A casual overview of how naive rollups works.

@@ -1,20 +1,20 @@
-# Arvo
+# Arvo {#arvo}
 
 The `arvo.hoon` file primarily contains the basic event processing and routing machinery of Arvo, but it also defines a number of useful types and other functions. Some of these have been excluded as they're obscure types only used internally by Arvo, but the rest are documented below.
 
-## `+$arch`
+## `+$arch` {#arch}
 
 Node identity
 
 This represents a node in Clay, which may be a file or a directory.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  arch  (axil @uvI)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *arch
@@ -43,13 +43,13 @@ This represents a node in Clay, which may be a file or a directory.
 
 ---
 
-## `++axal`
+## `++axal` {#axal}
 
 Fundamental node, recursive
 
 This mold builder creates a representation of a node in Clay like an [`arch`](#arch) or [`axil`](#axil), but the directory map contains more `axal`s, so it contains the entire subtree rather than just one level.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  axal
@@ -57,7 +57,7 @@ This mold builder creates a representation of a node in Clay like an [`arch`](#a
   [fil=(unit item) dir=(map @ta $)]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(axal @uvI)
@@ -86,13 +86,13 @@ This mold builder creates a representation of a node in Clay like an [`arch`](#a
 
 ---
 
-## `++axil`
+## `++axil` {#axil}
 
 Fundamental node
 
 This is the mold builder used to create a representation of a node in Clay. It's used by [`arch`](#arch).
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  axil
@@ -100,7 +100,7 @@ This is the mold builder used to create a representation of a node in Clay. It's
   [fil=(unit item) dir=(map @ta ~)]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(axil @uvI)
@@ -124,19 +124,19 @@ This is the mold builder used to create a representation of a node in Clay. It's
 
 ---
 
-## `+$beak`
+## `+$beak` {#beak}
 
 Global context
 
 This is the unencoded global path prefix for a node in Clay. It's a triple of a [`ship`](#ship), [`desk`](#desk) and [`case`](#case). The `case` is a revision reference.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  beak  (trel ship desk case)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *beak
@@ -154,19 +154,19 @@ This is the unencoded global path prefix for a node in Clay. It's a triple of a 
 
 ---
 
-## `+$beam`
+## `+$beam` {#beam}
 
 Global name
 
 An unencoded global path to a node in Clay. The [`beak`](#beak) denotes the [`ship`](#ship), [`desk`](#desk) and [`case`](#case) (revision reference), and then `s` is the path to the node therein.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  beam  [beak s=path]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *beam
@@ -178,19 +178,19 @@ An unencoded global path to a node in Clay. The [`beak`](#beak) denotes the [`sh
 
 ---
 
-## `+$bone`
+## `+$bone` {#bone}
 
 Opaque duct handle
 
 This is used by Ames to identify a particular message flow over the network.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  bone  @ud
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *bone
@@ -202,7 +202,7 @@ This is used by Ames to identify a particular message flow over the network.
 
 ---
 
-## `+$case`
+## `+$case` {#case}
 
 Global version
 
@@ -220,7 +220,7 @@ A reference to a particular revision in Clay. It may be one of:
   ==
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *case
@@ -238,19 +238,19 @@ A reference to a particular revision in Clay. It may be one of:
 
 ---
 
-## `+$cage`
+## `+$cage` {#cage}
 
 Marked vase
 
 A pair of a [`mark`](#mark) and a [`vase`](stdlib/4o.md#vase) (type-value pair). These are extensively used for passing data around between vanes and agents.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  cage  (cask vase)
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > *cage
@@ -262,19 +262,19 @@ A pair of a [`mark`](#mark) and a [`vase`](stdlib/4o.md#vase) (type-value pair).
 
 ---
 
-## `++cask`
+## `++cask` {#cask}
 
 Marked data builder
 
 Like a [`cage`](#cage) except rather than a `vase`, the tail is whatever type was given to the mold builder. These are most frequently used for sending data over the network, as vases can only be used locally.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  cask  |$  [a]  (pair mark a)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(cask)
@@ -292,19 +292,19 @@ Like a [`cage`](#cage) except rather than a `vase`, the tail is whatever type wa
 
 ---
 
-## `+$desk`
+## `+$desk` {#desk}
 
 Local workspace
 
 The name of a desk in Clay.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  desk  @tas
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *desk
@@ -316,19 +316,19 @@ The name of a desk in Clay.
 
 ---
 
-## `+$dock`
+## `+$dock` {#dock}
 
 Message target
 
 A pair of a [`ship`](#ship) and Gall agent name. This is most frequently used when composing cards to other agents in a Gall agent.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  dock  (pair @p term)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *dock
@@ -340,19 +340,19 @@ A pair of a [`ship`](#ship) and Gall agent name. This is most frequently used wh
 
 ---
 
-## `+$gang`
+## `+$gang` {#gang}
 
 Infinite set of peers
 
 This is used internally by the Scry interfaces in Arvo and its vanes.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  gang  (unit (set ship))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *gang
@@ -364,19 +364,19 @@ This is used internally by the Scry interfaces in Arvo and its vanes.
 
 ---
 
-## `+$mark`
+## `+$mark` {#mark}
 
 Symbolic content type
 
 The name of a mark file. It will typically correspond to a file in the `/mar` directory of a desk.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  mark  @tas
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *mark
@@ -388,19 +388,19 @@ The name of a mark file. It will typically correspond to a file in the `/mar` di
 
 ---
 
-## `+$mien`
+## `+$mien` {#mien}
 
 Orientation
 
 Some basic information given to Arvo: the local ship's name, the current time, and some entropy.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  mien  [our=ship now=@da eny=@uvJ]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *mien
@@ -409,19 +409,19 @@ Some basic information given to Arvo: the local ship's name, the current time, a
 
 ---
 
-## `+$page`
+## `+$page` {#page}
 
 Untyped cage
 
 A pair of a [mark](#mark) and a raw, untyped noun. This is primarily used in Clay.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  page  (cask)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *page
@@ -433,17 +433,17 @@ A pair of a [mark](#mark) and a raw, untyped noun. This is primarily used in Cla
 
 ---
 
-## `++omen`
+## `++omen` {#omen}
 
 Namespace path and data
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  omen  |$  [a]  (pair path (cask a))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(omen @t)
@@ -452,19 +452,19 @@ Namespace path and data
 
 ---
 
-## `+$ship`
+## `+$ship` {#ship}
 
 Network identity
 
 Another name for an `@p`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  ship  @p
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *ship
@@ -476,19 +476,19 @@ Another name for an `@p`.
 
 ---
 
-## `+$sink`
+## `+$sink` {#sink}
 
 Subscription
 
 A triple of a [`bone`](#bone), [`ship`](#ship) and `path`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  sink  (trel bone ship path)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *sink
@@ -497,13 +497,13 @@ A triple of a [`bone`](#bone), [`ship`](#ship) and `path`.
 
 ---
 
-## `++hypo`
+## `++hypo` {#hypo}
 
 Type-associated builder
 
 A pair of a type and some value.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  hypo
@@ -511,7 +511,7 @@ A pair of a type and some value.
   (pair type a)
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > *(hypo)
@@ -520,17 +520,17 @@ A pair of a type and some value.
 
 ---
 
-## `+$meta`
+## `+$meta` {#meta}
 
 Meta-vase
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  meta  (pair)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *meta
@@ -539,17 +539,17 @@ Meta-vase
 
 ---
 
-## `+$maze`
+## `+$maze` {#maze}
 
 Vase, or [meta-vase](#meta)
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  maze  (each vase meta)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *maze
@@ -558,7 +558,7 @@ Vase, or [meta-vase](#meta)
 
 ---
 
-## `+$ball`
+## `+$ball` {#ball}
 
 Dynamic kernel action
 
@@ -569,13 +569,13 @@ This contains the action or response in a kernel [`move`](#move). One of:
 - `[%slip note=[vane=%vane-name task=[%.y p=vase]]]`: lateral; make a request as though you're a different vane.
 - `[%give gift=[%.y vase]`: retreat; response.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  ball  (wite [vane=term task=maze] maze)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *ball
@@ -584,19 +584,19 @@ This contains the action or response in a kernel [`move`](#move). One of:
 
 ---
 
-## `+$card`
+## `+$card` {#card}
 
 Tagged, untyped event
 
 Note this is not the same as a `card:agent:gall` used in Gall agents.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  card  (cask)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *card
@@ -605,7 +605,7 @@ Note this is not the same as a `card:agent:gall` used in Gall agents.
 
 ---
 
-## `+$duct`
+## `+$duct` {#duct}
 
 Causal history
 
@@ -613,13 +613,13 @@ Arvo is designed to avoid the usual state of complex event networks: event spagh
 
 The Arvo causal stack is called a `duct`. This is represented simply as a list of [`wire`](#wire)s (paths), where each path represents a step in the causal chain. The first element in the path is the vane handled that step in the computation, or an empty string for Unix.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  duct  (list wire)
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > `duct`-:~(tap in .^((set duct) %cx /=//=/tyre))
@@ -628,11 +628,11 @@ The Arvo causal stack is called a `duct`. This is represented simply as a list o
 
 ---
 
-## `++hobo`
+## `++hobo` {#hobo}
 
 `%soft` task builder
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  hobo
@@ -643,7 +643,7 @@ The Arvo causal stack is called a `duct`. This is represented simply as a list o
   ==
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(hobo maze)
@@ -652,17 +652,17 @@ The Arvo causal stack is called a `duct`. This is represented simply as a list o
 
 ---
 
-## `+$goof`
+## `+$goof` {#goof}
 
 Crash label and trace
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  goof  [mote=term =tang]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *goof
@@ -671,20 +671,20 @@ Crash label and trace
 
 ---
 
-## `+$mass`
+## `+$mass` {#mass}
 
 Memory usage
 
 `+whey` produces a `(list mass)` for its memory report.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  mass  $~  $+|+~
           (pair cord (each * (list mass)))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *mass
@@ -693,19 +693,19 @@ Memory usage
 
 ---
 
-## `+$move`
+## `+$move` {#move}
 
 Cause and action
 
 Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct) is a call stack, and the [`ball`](#ball) contains the action or response.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  move  [=duct =ball]
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > *move
@@ -714,17 +714,17 @@ Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct)
 
 ---
 
-## `+$ovum`
+## `+$ovum` {#ovum}
 
 [card](#card) with cause
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  ovum  [=wire =card]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *ovum
@@ -733,11 +733,11 @@ Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct)
 
 ---
 
-## `+$roof`
+## `+$roof` {#roof}
 
 Namespace
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  roof  (room vase)                                   ::  namespace
@@ -745,11 +745,11 @@ Namespace
 
 ---
 
-## `+$rook`
+## `+$rook` {#rook}
 
 Meta-namespace (super advanced)
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  rook  (room meta)                                   ::  meta-namespace
@@ -757,13 +757,13 @@ Meta-namespace (super advanced)
 
 ---
 
-## `++room`
+## `++room` {#room}
 
 Generic namespace
 
 This is used internally for scry handlers.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  room                                                ::  either namespace
@@ -780,11 +780,11 @@ This is used internally for scry handlers.
 
 ---
 
-## `+$roon`
+## `+$roon` {#roon}
 
 Partial namespace
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  roon                                                ::  partial namespace
@@ -795,11 +795,11 @@ Partial namespace
 
 ---
 
-## `+$root`
+## `+$root` {#root}
 
 Raw namespace
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  root  $-(^ (unit (unit)))
@@ -807,11 +807,11 @@ Raw namespace
 
 ---
 
-## `+$view`
+## `+$view` {#view}
 
 Namespace perspective
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  view  $@(term [way=term car=term])
@@ -819,13 +819,13 @@ Namespace perspective
 
 ---
 
-## `++wind`
+## `++wind` {#wind}
 
 Kernel action builder
 
 This is similar to [`wite`](#wite) but without the error case. It's most commonly used in the type of a `card:agent:gall`.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ::
@@ -844,7 +844,7 @@ This is similar to [`wite`](#wite) but without the error case. It's most commonl
   ==
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(wind note:agent:gall gift:agent:gall)
@@ -853,7 +853,7 @@ This is similar to [`wite`](#wite) but without the error case. It's most commonl
 
 ---
 
-## `+$wire`
+## `+$wire` {#wire}
 
 Event pretext
 
@@ -861,13 +861,13 @@ Type-wise, a `wire` is the same as a [`path`](stdlib/2q.md#path); a `list` of [`
 
 On the kernel-level, `wire`s are used in [`duct`](#duct)s to represent a causal step in a call stack for routing purposes. In userspace, they're used the same way under the hood, but practically speaking, they can be thought of as "tags" for responses. That is, when you make a request to a vane of Gall agent, you provide a `wire` for any responses you get back, and you can use this to identity what the response is for.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 +$  wire  path
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *wire
@@ -879,13 +879,13 @@ On the kernel-level, `wire`s are used in [`duct`](#duct)s to represent a causal 
 
 ---
 
-## `++wite`
+## `++wite` {#wite}
 
 Kernel action/error builder
 
 This is used by the kernel in [`move`](#move)s. See the [`ball`](#ball) entry for further details.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  wite
@@ -908,7 +908,7 @@ This is used by the kernel in [`move`](#move)s. See the [`ball`](#ball) entry fo
   ==
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > *(wite [vane=term task=maze] maze)
@@ -917,26 +917,26 @@ This is used by the kernel in [`move`](#move)s. See the [`ball`](#ball) entry fo
 
 ---
 
-## `++en-beam`
+## `++en-beam` {#en-beam}
 
 Encode a [`beam`](#beam) in a `path`
 
-#### Accepts
+#### Accepts {#accepts}
 
 A [`beam`](#beam)
 
-#### Produces
+#### Produces {#produces}
 
 A `path`
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  en-beam
   |=(b=beam =*(s scot `path`[(s %p p.b) q.b (s r.b) s.b]))
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > (en-beam [~zod %base da+now] /foo/bar)
@@ -945,19 +945,19 @@ A `path`
 
 ---
 
-## `++de-beam`
+## `++de-beam` {#de-beam}
 
 Decode a [`beam`](#beam) from a `path`
 
-#### Accepts
+#### Accepts {#accepts}
 
 A `path`
 
-#### Produces
+#### Produces {#produces}
 
 A `beam` in a `unit`, which is null if parsing failed.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  de-beam
@@ -971,7 +971,7 @@ A `beam` in a `unit`, which is null if parsing failed.
   `[[`ship`u.who `desk`u.des u.ved] t.t.t.p]
 ```
 
-#### Examples
+#### Examples {#examples}
 
 ```
 > (de-beam /~zod/base/~2023.1.9..10.35.30..f55a/foo/bar)
@@ -980,19 +980,19 @@ A `beam` in a `unit`, which is null if parsing failed.
 
 ---
 
-## `++de-case`
+## `++de-case` {#de-case}
 
 Parse a [`case`](#case)
 
-#### Accepts
+#### Accepts {#accepts}
 
 A `knot`
 
-#### Produces
+#### Produces {#produces}
 
 A [`case`](#case) in a `unit`, which is null if parsing failed.
 
-#### Source
+#### Source {#source}
 
 ```hoon
 ++  de-case
@@ -1005,7 +1005,7 @@ A [`case`](#case) in a `unit`, which is null if parsing failed.
   `[%tas u.lab]
 ```
 
-#### Example
+#### Example {#example}
 
 ```
 > (de-case '2')

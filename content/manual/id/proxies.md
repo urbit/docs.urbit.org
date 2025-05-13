@@ -1,4 +1,4 @@
-# Proxies
+# Proxies {#proxies}
 
 Proxy addresses allow you to execute non-ownership related actions like spawning child identities, voting, and setting networking keys without jeopardizing the keys you've designated with ownership rights. Setting proxy rights is optional, but it is recommended for on-chain actions you will execute more frequently.
 
@@ -6,7 +6,7 @@ Setting proxies is a good security practice. For instance, you might keep your o
 
 The [Urbit HD Wallet](https://developers.urbit.org/glossary/hdwallet) automatically sets proxies for your Urbit ID.
 
-### Types of proxies
+### Types of proxies {#types-of-proxies}
 
 There are three main types of proxy: management, spawn, and voting. Their capabilities are detailed in the following. In addition, each proxy is able to transfer itself to another address - e.g. the management proxy can set a new address to be the management proxy.
 
@@ -22,7 +22,7 @@ There are three main types of proxy: management, spawn, and voting. Their capabi
 
   Galaxies only. Galaxies are the part of the [Galactic Senate](https://developers.urbit.org/glossary/senate), and this means they can cast votes on new proposals including changes to Ecliptic.
 
-### Transfer proxy
+### Transfer proxy {#transfer-proxy}
 
 There is also a fourth proxy called the transfer proxy which is considered to be of a different sort than the other three, since it generally only set on a temporary basis to make ownership transfer less mistake-prone, and cleared once ownership has finished.
 

@@ -1,8 +1,8 @@
-# Hoon Errors
+# Hoon Errors {#hoon-errors}
 
 In this section we explore strategies for debugging and understanding what your Hoon code is doing. We cover common errors that Dojo may spit out, how to turn on debugging and verbose mode, and how to use debugging printfs.
 
-## Syntax errors
+## Syntax errors {#syntax-errors}
 
 When you get a syntax error, you'll see a message like:
 
@@ -31,11 +31,11 @@ bar
 
 When this happens, don't panic! Binary search actually works quite well. Any reference can be stubbed out as `!!`. Find the prefix of your file that compiles, then work forward until the actual error appears.
 
-## Semantic errors
+## Semantic errors {#semantic-errors}
 
 Now your code parses but doesn't compile.
 
-### Turn on debugging or verbose mode
+### Turn on debugging or verbose mode {#turn-on-debugging-or-verbose-mode}
 
 Your first step should be to put a `!:` ("zapcol") rune at the top of the file. This is like calling the C compiler with `-g`; it tells the Hoon compiler to generate tracing references.
 
@@ -43,7 +43,7 @@ Bear in mind that `!:` breaks tail-call optimization. This is a bug, but a relat
 
 You may also find it helpful to turn on verbose mode by entering `|verb` into Dojo, which prints (almost) everything happening in the kernel to the console. This is useful for performing stack trace. An extensive stack trace tutorial is [below](#stack-trace-tutorial).
 
-### Error trace
+### Error trace {#error-trace}
 
 If you have `!:` on, you'll see an error trace, like:
 
@@ -63,11 +63,11 @@ Hoon does not believe in inundating you with possibly irrelevant debugging infor
 
 (Consider the opposite extreme; imagine if you had a magic bot that always fixed your compiler errors for you. Pro: no time wasted on compiler errors. Con: you never learn Hoon.)
 
-## Common errors
+## Common errors {#common-errors}
 
 Moral fiber is all very well and good, but sometimes you're stumped. Couldn't the compiler help a little? These messages do mean something. Here are the three most common:
 
-### `nest-fail`
+### `nest-fail` {#nest-fail}
 
 This is a type mismatch (`nest` is the Hoon typechecker). It means you tried to pound a square peg into a round hole.
 
@@ -83,17 +83,17 @@ For instance, you wrote `(foo bar)` and got a `nest-fail`. Change your code to b
 
 You'll get the same `nest-fail`, but this will show the type of `bar`, then the type of the sample of the `foo` gate.
 
-### `find.foo`
+### `find.foo` {#findfoo}
 
 A `find.foo` error means limb `foo` wasn't found in the subject. In other words, "undeclared variable".
 
 The most common subspecies of `find` error is `find.$`, meaning the empty name `$` was not found. This often happens when you use a reference that does not produce a gate/mold, as a gate/mold. For instance, `(foo bar)` will give `find.$` if `foo` is not actually a function.
 
-### `mint-vain` and `mint-lost`
+### `mint-vain` and `mint-lost` {#mint-vain-and-mint-lost}
 
 These are errors caused by type inference in pattern matching. `mint-vain` means this hoon is never executed. `mint-lost` means there's a case in a `?-` ([**wuthep**](rune/wut.md#--wuthep)) that isn't handled.
 
-## Runtime crashes
+## Runtime crashes {#runtime-crashes}
 
 If your code crashes at runtime or overflows the stack, you'll see a stack trace that looks just like the trace above. Don't confuse runtime crashes with compilation errors, though.
 
@@ -108,7 +108,7 @@ The counterpart of `~!` for runtime crashes is `~|` ([**sigbar**](rune/sig.md#-s
 
 If `(foo bar)` crashes, the value of `foo` is printed in the stack trace. Otherwise, the `~|` has no effect.
 
-## Debugging printfs
+## Debugging printfs {#debugging-printfs}
 
 The worst possibility, of course, is that your code runs but does the wrong thing. This is relatively unusual in a typed functional language, but it still happens.
 

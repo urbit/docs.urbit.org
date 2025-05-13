@@ -1,4 +1,4 @@
-# Filesystem
+# Filesystem {#filesystem}
 
 Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global, referentially transparent namespace. An easy way to think about it is like typed `git`.
 
@@ -6,7 +6,7 @@ The most common way to use Clay is to mount a Clay node in a Unix directory. The
 
 For more information on Clay, see the [Overview](https://developers.urbit.org/system/kernel/clay), and additional usage information at [Using Clay](https://developers.urbit.org/system/kernel/arvo/clay/using).
 
-### Quickstart
+### Quickstart {#quickstart}
 
 This quick-start guide will walk you through some common commands. Follow along using your Dojo. When you get a `>=` message after entering a command, this means that the command was successful.
 
@@ -56,11 +56,11 @@ The ship that you sync from will get their own message indicating that you're bo
 
 ---
 
-### Clay manual
+### Clay manual {#clay-manual}
 
 The following constitutes an explanation of handy commands that most Urbit pilots will want to know at some point. Reading this section will get you to the point that you can navigate the file system, sync with Unix, merge your desk, and other basic tasks familiar to novice users of the Unix terminal.
 
-#### Paths
+#### Paths {#paths}
 
 A path in Clay is a list of URL-safe text, restricted to the characters `[a z]`,`[0 9]`, `.`, `-`, `_`, and `~`. This path is a list of strings each prepended by `/`. In other words, paths are expressed as `/foo/bar/baz`. File extensions are separated from file names with `/`, not `.`. Extensions are syntactically identical to subdirectories, except that they must terminate the path.
 
@@ -78,7 +78,7 @@ Here we see that the revision consists of the date, time, and a short hash.
 
 We use this format because, unlike the current internet, the Urbit network uses a global namespace. That means that a file named `example.hoon` in the `/gen` directory on the `%base` desk of your ship `~lodleb-ritrul` would have a universal address to anyone else on the network: `/~lodleb-ritrul/base/186/gen/example/hoon`. That, of course, doesn't mean that everyone on the network has privileges to access that path. But given the revision-controlled and immutable nature of Urbit, this means that if the file requested is available, it will always be the same. This means that if an Urbit is serving a webpage, that exact version will always be retrievable (assuming you have access to it).
 
-#### Relative paths
+#### Relative paths {#relative-paths}
 
 The `%` command, which we gestured at in the above section, represents the **relative path**, which is the path where you are currently working.
 
@@ -92,7 +92,7 @@ You'll notice that it only has your ship name and the empty list. The two additi
 
 There are no local relative paths. `/foo/bar` must be written as `%/foo/bar`.
 
-#### Substitution
+#### Substitution {#substitution}
 
 You don't need to write out the explicit path every time you want to reference somewhere outside of your working directory. You can substitute `=` for the segments of a path.
 
@@ -136,7 +136,7 @@ We can do the same thing between desks. If `%sandbox` has been merged with `%bas
 
 Most commonly this is used to avoid having to know the current revision number in the `dojo`: `/~lodleb-ritrul/base/~2021.3.19..16.11.20..0c60/gen/example/hoon`
 
-#### Changing directories
+#### Changing directories {#changing-directories}
 
 Change the working directory with `=dir`. It's our equivalent of the Unix `cd`.
 
@@ -167,9 +167,9 @@ To go up levels in the path hierarchy, recall the relative path expression `%`. 
 ~sampel-palnet:dojo/=/=/~2021.3.19..16.11.20..0c60/gen> =dir %%
 ```
 
-### Revision-control
+### Revision-control {#revision-control}
 
-#### Mount
+#### Mount {#mount}
 
 Syntax: `|mount %/clay/path %mount-point`
 
@@ -183,7 +183,7 @@ Mount the `/clay/path` at the Unix mount point `mount-point` with your pier as r
 
 Mounts `%/gen` to `/generators` inside your pier directory.
 
-#### Unmount
+#### Unmount {#unmount}
 
 ```
 |unmount %mount-point
@@ -199,7 +199,7 @@ Unmount the the mount point from Unix.
 
 Unmounts the Unix path `/foo`.
 
-#### Merge
+#### Merge {#merge}
 
 ```
 |merge %target-desk ~source-ship %source-desk
@@ -233,7 +233,7 @@ Merge the `%examples` `desk` from `~waxbex-ribmex`
 
 Merge `/=base=` into `%work` using merge strategy `%fine`.
 
-#### Sync
+#### Sync {#sync}
 
 ```
 |sync %target-desk ~source-ship %target-desk
@@ -247,7 +247,7 @@ Subscribe to continuous updates from remote `desk` on local `desk`.
 |sync %foo ~dozbud %kids
 ```
 
-#### Unsync
+#### Unsync {#unsync}
 
 ```
 |unsync %target-desk ~source-ship %source-desk
@@ -261,15 +261,15 @@ Example:
 |unsync %foo ~dozbud %kids
 ```
 
-### Manipulation
+### Manipulation {#manipulation}
 
-#### `+cat`
+#### `+cat` {#cat}
 
 Syntax: `+cat path [path ...]`
 
 Similar to Unix `cat`. `+cat` takes one or more `path`s, and prints their contents. If that `path` is a file, the contents of the file is printed. If the `path` terminates in a directory, the list of names at that path is produced.
 
-#### `+ls`
+#### `+ls` {#ls}
 
 Syntax: `+ls path`
 
@@ -281,19 +281,19 @@ Produces a list of names at the `path`.
 ~sampel-palnet:dojo> +cat %/our/base/gen/curl/hoon
 ```
 
-#### `|rm`
+#### `|rm` {#rm}
 
 Syntax: `|rm path`
 
 Remove the data at `path`. `Path` must be a path to the actual node, not a 'directory'.
 
-#### `|cp`
+#### `|cp` {#cp}
 
 Syntax: `|cp to from`
 
 Copy the file at `from` into the path `to`.
 
-#### `|mv`
+#### `|mv` {#mv}
 
 Syntax: `|mv to from`
 

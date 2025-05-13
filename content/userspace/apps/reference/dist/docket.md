@@ -1,4 +1,4 @@
-# Docket File
+# Docket File {#docket-file}
 
 The docket file sets various options for desks with a tile and (usually) a browser-based front-end of some kind. Mainly it configures the appearance of an app's tile, the source of its [glob](glob.md), and some additional metadata.
 
@@ -48,19 +48,19 @@ Details of each clause and their purpose are described below.
 
 ---
 
-## `%title`
+## `%title` {#title}
 
 _required_
 
 The `%title` field specifies the name of the app. The title will be the name shown on the app's tile, as well as the name of the app when others search for it.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%title title=@t]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 title+'Bitcoin'
@@ -68,19 +68,19 @@ title+'Bitcoin'
 
 ---
 
-## `%info`
+## `%info` {#info}
 
 _required_
 
 The `%info` field is a brief summary of what the app does. It will be shown as the subtitle in _App Info_.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%info info=@t]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 info+'A Bitcoin Wallet that lets you send and receive Bitcoin directly to and from other Urbit users'
@@ -88,19 +88,19 @@ info+'A Bitcoin Wallet that lets you send and receive Bitcoin directly to and fr
 
 ---
 
-## `%color`
+## `%color` {#color}
 
 _required_
 
 The `%color` field specifies the color of the app tile as an `@ux`-formatted hex value.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%color color=@ux]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 color+0xf9.8e40
@@ -108,19 +108,19 @@ color+0xf9.8e40
 
 ---
 
-## `%glob-http`
+## `%glob-http` {#glob-http}
 
 _exactly one of either this, [glob-ames](#glob-ames) or [site](#site) is required_
 
 The `%glob-http` field specifies the URL and hash of the app's [glob](glob.md) if it is distributed via HTTP.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%glob-http url=cord hash=@uvH]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 glob-http+['https://example.com/glob-0v1.s0me.h4sh.glob' 0v1.s0me.h4sh]
@@ -128,19 +128,19 @@ glob-http+['https://example.com/glob-0v1.s0me.h4sh.glob' 0v1.s0me.h4sh]
 
 ---
 
-## `%glob-ames`
+## `%glob-ames` {#glob-ames}
 
 _exactly one of either this, [glob-http](#glob-http) or [site](#site) is required_
 
 The `%glob-ames` field specifies the ship and hash of the app's [glob](glob.md) if it is distributed from a ship over Ames. If the glob will be distributed from our ship, the hash can initially be `0v0` as it will be overwritten with the hash produced by the [Globulator](glob.md#globulator).
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%glob-ames =ship hash=@uvH]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 glob-ames+[~zod 0v0]
@@ -148,7 +148,7 @@ glob-ames+[~zod 0v0]
 
 ---
 
-## `%site`
+## `%site` {#site}
 
 _exactly one of either this, [glob-ames](#glob-ames) or [glob-http](#glob-http) is required_
 
@@ -156,13 +156,13 @@ It's possible for an app to handle HTTP requests from the client directly rather
 
 For more information on direct HTTP handling with a Gall agent or generator, see the [Eyre Internal API Reference](../../../../system/kernel/eyre/reference/tasks.md) documentation.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%site =path]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 site+/foo/bar
@@ -170,7 +170,7 @@ site+/foo/bar
 
 ---
 
-## `%image`
+## `%image` {#image}
 
 _optional_
 
@@ -180,7 +180,7 @@ The given image will be displayed on top of the [color](#color)ed tile. The app 
 
 It may be tempting to set the image URL as a root-relative path like `/apps/myapp/img/tile.svg` and bundle it in the glob. While this would work locally, it means the image would fail to load for those browsing apps to install. Therefore, the image should be hosted somewhere globally available.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%image =url]
@@ -192,7 +192,7 @@ The `url` type is a simple `cord`:
 +$  url  cord
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 image+'http://example.com/icon.svg'
@@ -200,19 +200,19 @@ image+'http://example.com/icon.svg'
 
 ---
 
-## `%base`
+## `%base` {#base}
 
 _required_
 
 The `%base` field specifies the base of the URL path of the glob resources. In the browser, the path will begin with `/apps`, then the specified base, then the rest of the path to the particular glob resource like `http://localhost:8080/apps/my-base/index.html`. Note the `path`s of the glob contents themselves should not include this base element.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%base base=term]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 base+'bitcoin'
@@ -220,13 +220,13 @@ base+'bitcoin'
 
 ---
 
-## `%version`
+## `%version` {#version}
 
 _required_
 
 The `%version` field specifies the current version of the app. It's a triple of three `@ud` numbers representing the major version, minor version and patch version. In the client, `[1 2 3]` will be rendered as `1.2.3`. You would typically increase the appropriate number each time you published a change to the app.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%version =version]
@@ -239,7 +239,7 @@ The `version` type is just a triple of three numbers:
   [major=@ud minor=@ud patch=@ud]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 version+[0 0 1]
@@ -247,13 +247,13 @@ version+[0 0 1]
 
 ---
 
-## `%website`
+## `%website` {#website}
 
 _required_
 
 The `%website` field is for a link to a relevant website. This might be a link to the app's github repo, company website, or whatever is appropriate. This field will be displayed when people are browsing apps to install.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%website website=url]
@@ -265,7 +265,7 @@ The `url` type is a simple `cord`:
 +$  url  cord
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 website+'https://example.com'
@@ -273,19 +273,19 @@ website+'https://example.com'
 
 ---
 
-## `%license`
+## `%license` {#license}
 
 _required_
 
 The `%license` field specifies the license for the app in question. It would typically be a short name like `MIT`, `GPLv2`, or what have you. The field just takes a `cord` so any license can be specified.
 
-#### Type
+#### Type {#type}
 
 ```hoon
 [%license license=cord]
 ```
 
-#### Example
+#### Example {#example}
 
 ```hoon
 license+'MIT'

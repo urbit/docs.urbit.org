@@ -1,4 +1,4 @@
-# Pill
+# Pill {#pill}
 
 A **Pill** is a bootstrap sequence to launch an Urbit ship for the first time. The [event log](eventlog.md) begins with the bootstrap sequence of a Pill.
 

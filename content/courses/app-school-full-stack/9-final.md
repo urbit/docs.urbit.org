@@ -1,4 +1,4 @@
-# 9. Summary
+# 9. Summary {#9-summary}
 
 That's it! We've built our agent and React front-end, put together a desk and published it. We hope this walkthrough has helped you see how all the pieces for together for building and distributing an app in Urbit.
 
@@ -8,17 +8,17 @@ In this guide we've built a separate React app for the front-end, but Hoon also 
 
 Along with `@urbit/http-api`, there's also the `@urbit/api` NPM package, which contains a large number of helpful functions for dealing with Hoon data types and interacting with a number of agents - particularly those used by the Groups app. Its source code is [available here](https://github.com/urbit/urbit/tree/master/pkg/npm/api).
 
-## Reference material
+## Reference material {#reference-material}
 
 Here is the reference material for each section of this walkthrough.
 
-### Types
+### Types {#types}
 
 - [App School /sur section](../app-school/7-sur-and-marks.md#sur) - This section of App School covers writing a `/sur` structure library for an agent.
 
 - [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `mop`s, and is well commented.
 
-### Agent
+### Agent {#agent}
 
 - [App School I](../app-school) - App School I covers all aspects of writing Gall agents in detail.
 
@@ -26,7 +26,7 @@ Here is the reference material for each section of this walkthrough.
 
 - [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The `agentio` library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.
 
-### JSON
+### JSON {#json}
 
 - [The JSON Guide](../../language/hoon/guides/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
 - [The Zuse Reference](../../language/hoon/reference/zuse) - The `zuse.hoon` reference documents all JSON-related functions in detail.
@@ -37,21 +37,21 @@ Here is the reference material for each section of this walkthrough.
 
 - [Eyre Overview](../../system/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
 
-### Marks
+### Marks {#marks}
 
 - [The Marks section of the Clay documentation](../../system/kernel/clay/guides/marks) - This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall Guide](../app-school/7-sur-and-marks.md#mark-files) - This part of App School goes through the basics of mark files.
 
 - [The JSON Guide](../../language/hoon/guides/json-guide.md) - This also covers writing mark files to convert to/from JSON.
 
-### Eyre
+### Eyre {#eyre}
 
 - [The Eyre vane documentation](../../system/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
 - [Eyre External API Reference](../../system/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
 
 - [The Eyre Guide](../../system/kernel/eyre/guides/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).
 
-### React App Setup and Logic
+### React App Setup and Logic {#react-app-setup-and-logic}
 
 - [HTTP API Guide](../../tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
 
@@ -59,7 +59,7 @@ Here is the reference material for each section of this walkthrough.
 
 - [`@urbit/http-api` source code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The source code for the `@urbit/http-api` NPM package.
 
-### Desk and Glob
+### Desk and Glob {#desk-and-glob}
 
 - [App publishing/distribution docs](../../userspace/apps/guides/software-distribution.md) - Documentation covering third party desk composition, publishing and distribution.
 

@@ -1,17 +1,17 @@
-# Basics
+# Basics {#basics}
 
 This document deals with:
 
 - Running an Urbit ship with the ordinary runtime [from the command line](../getting-started/self-hosted/cli.md).
 - Basic setup, configuration and usage in Urbit's shell called the `dojo`.
 
-## Shutdown
+## Shutdown {#shutdown}
 
 You can turn your urbit off with `Ctrl-d` from the Chat or Dojo prompts.
 
 You can force-quit your urbit with `Ctrl-z` from anywhere.
 
-## Restart
+## Restart {#restart}
 
 To restart your urbit simply pass the name of your pier:
 
@@ -25,7 +25,7 @@ or
 $ ./urbit comet
 ```
 
-## Logging
+## Logging {#logging}
 
 To log an urbit's command line output to a file, use `script`:
 
@@ -33,7 +33,7 @@ To log an urbit's command line output to a file, use `script`:
 $ script urbit.log ./urbit your-urbit
 ```
 
-## Moving your pier
+## Moving your pier {#moving-your-pier}
 
 Piers are designed to be portable, but it _must_ be done while the urbit is not running. Urbit networking is stateful, so you can't run two copies of the same urbit in two places.
 
@@ -56,13 +56,13 @@ Delete the tar file, and, after installing Urbit on your new server, start your 
 ./urbit your-urbit
 ```
 
-## Hardware requirements
+## Hardware requirements {#hardware-requirements}
 
 Urbit can run on any x86 computer (unofficial, unsupported [ARM binaries](https://botter-nidnul.github.io/AArch64_Urbit_Static_Binaries.html) are also available), ideally with at least 2GB of RAM.
 
 Urbit maintains a persistent log of the history of your ship. Eventually this log will be automatically trimmed when necessary, but for now it only increases in size. An actively used planet will consume 5-50 GB of storage space per year of operation.
 
-## Console
+## Console {#console}
 
 Your Urbit terminal is separated into two parts: the prompt (the bottom line) and the record (everything above that). The record is shared; all the output from all the apps in your command set appears in it. The prompt is multiplexed.
 
@@ -96,7 +96,7 @@ Ctrl-u    Kill to beginning of line
 Ctrl-y    Yank from kill buffer
 ```
 
-## Updates
+## Updates {#updates}
 
 By default, your `%base` [desk](https://developers.urbit.org/glossary/desk) (which contains the [Arvo](https://developers.urbit.org/glossary/arvo) kernel and core apps) receives updates ([OTAs](https://developers.urbit.org/glossary/ota-updates)) from your sponsor. Other desks will receive updates from their respective publishers. To check the OTA source for each desk, run `+vats` in the [dojo](https://developers.urbit.org/glossary/dojo). It will print out details for each desk - the `source` field shows which ship the desk gets updates from and the `updates` field shows `tracking` if automatic updates are enabled.
 
@@ -104,11 +104,11 @@ If for some reason updates are not enabled or the current source is not online o
 
 `|install (sein:title our now our) %landscape` will enable updates to the `%landscape` desk from your sponsor. `|install ~some-ship %landscape` will enable updates to the landscape desk from whatever ship is specified in place of `~some-ship`. For third party apps, make sure to correctly specify the publisher's ship. Each desk's updates are managed separately, so you'll need to run this for each desk separately. For the `%base` desk specifically, you sync from `%kids` rather than `%base` on the remote ship, so must specify it like `|install (sein:title our now our) %kids, =local %base`.
 
-#### Additional OTA Troubleshooting
+#### Additional OTA Troubleshooting {#additional-ota-troubleshooting}
 
 Please check the Support Wiki for additional OTA troubleshooting, such as: [OTA 1.0.71 failed](https://github.com/urbit/support/wiki/OTA-1.0.71-failed), [Missing OTA](https://github.com/urbit/support/wiki/Missing-OTA), [Stuck flow preventing planets from receiving OTAs](https://github.com/urbit/support/wiki/Stuck-flow-preventing-planets-from-receiving-OTAs), and [No content shows in Links page after OTA](https://github.com/urbit/support/wiki/No-content-shows-in-Links-page-after-OTA).
 
-## Web interface
+## Web interface {#web-interface}
 
 On startup, urbit tries to bind to `localhost:80`. If you're already running something on port `80`, or your host OS will not allow urbit to bind port `80`, urbit will try `8080`, then `8081`, `8082`, and so on. For planets only, we also provide subdomains of `arvo.network` for free. Any planet `~your-urbit` is also at `your-urbit.arvo.network`, but only after you [set up DNS](#dns-setup).
 
@@ -189,7 +189,7 @@ Eventually, the PKI will populate through the network w/ the correct life #, rec
 
 To use the network as a planet or star, you must be sponsored by an active star or galaxy, respectively. If your sponsor isn't suiting your needs, you can escape to a different one. This can be done with [Bridge](https://bridge.urbit.org/) following the instructions [here](../id/using-bridge.md#escaping-your-sponsor).
 
-## Life and rift number
+## Life and rift number {#life-and-rift-number}
 
 You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](https://developers.urbit.org/reference/azimuth/life-and-rift).
 
@@ -217,7 +217,7 @@ Most of the time, Urbit does a good job at guessing what your URL is in sufficie
 |pass [%e %eauth-host [~ 'https://your-url-here']]
 ```
 
-### Configuring SSL
+### Configuring SSL {#configuring-ssl}
 
 To enable SSL on your ship, you must poke the `%acme` agent with the domain encoded in a path and it will request a certificate. The path format is `/tld/your_domain/your_subdomain`, so if your domain is `sampel-palnet.arvo.network`, you'd use it like so:
 
@@ -225,7 +225,7 @@ To enable SSL on your ship, you must poke the `%acme` agent with the domain enco
 :acme &path /network/arvo/sampel-palnet
 ```
 
-### Galaxies
+### Galaxies {#galaxies}
 
 Galaxies are already required to have separate DNS entry at galaxy.urbit.org. There's no automated process for getting that binding, so if you're a galaxy-holder, get in touch with us at support@urbit.org.
 
@@ -239,6 +239,6 @@ This will make HTTP-requests to self-check availability over `galaxy.$AMES-DOMAI
 
 Otherwise, `-dns-auto` works the same as `-dns-address` does with stars and planets: if it's available or unavailable, terminal messages, and so on.
 
-### Ports
+### Ports {#ports}
 
 The built-in logic for listening on port 80 is to try to bind to port 80; if it cannot, it tries 8080, then increments until it can bind a port. Port 80 is available to unprivileged process on recent versions of macOS. Otherwise, the process needs to either be run as root, or be given special permission (`sudo setcap 'cap_net_bind_service=+ep' /path/to/urbit/binary` on Linux).

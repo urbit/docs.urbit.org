@@ -1,8 +1,8 @@
-# Cold atom
+# Cold atom {#cold-atom}
 
 A **cold atom** is an [atom](atom.md) whose type is an exact value equal to itself. This in contrast to a [warm atom](warm-atom.md), whose type is a general [aura](aura.md). Cold atoms have a `%` prefix, for example `%foo`, `%123`, `%0xdead.beef`, etc.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Atoms and Strings](../language/hoon/reference/rune/constants.md): A guide to atoms.
 - [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.

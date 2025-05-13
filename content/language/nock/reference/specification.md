@@ -1,8 +1,8 @@
-# Specification
+# Specification {#specification}
 
 To make Nock make sense, let's work through the spec line by line. First the data model:
 
-## Nouns
+## Nouns {#nouns}
 
 ```
 An atom is any natural number.
@@ -20,13 +20,13 @@ It's also important to note that, unlike Lisp, Nock cannot create cyclical data 
 
 There is also no single syntax for nouns.  If you have nouns you have Nock; if you have Nock you have Hoon; if you have Hoon, you can write whatever parser you like.
 
-## Reductions
+## Reductions {#reductions}
 
 It's important to recognize that the pseudocode of the Nock spec is just that: pseudocode.  It looks a little like Hoon.  It isn't Hoon - it's just pseudocode.  Or in other words, just English. At the bottom of every formal system is a system of axioms, which can only be written in English.  (Why pseudocode, not Hoon?  Since Hoon is defined in Nock, this would only give a false impression of nonexistent precision.)
 
 The logic of this pseudocode is a pattern-matching reduction, matching from the top down.  To compute Nock, repeatedly reduce with the first line that matches.   Let's jump right in!
 
-### Nock principles
+### Nock principles {#nock-principles}
 
 ```
 nock(a)  *a
@@ -46,7 +46,7 @@ Normally `a` in `nock(a)` is a cell `[s f]`, or as we say
 
 Intuitively, the formula is your function and the subject is its argument.  We call them something different because Hoon, or any other high-level language built on Nock, will build its own function calling convention which **does not** map directly to `*[subject formula]`.
 
-### Noun syntax
+### Noun syntax {#noun-syntax}
 
 ```
 [a b c]  [a [b c]]
@@ -72,7 +72,7 @@ which is equivalent to
 
 Note that we can and do use unnecessary brackets anyway, for emphasis.  Let's move on to the axiomatic functions:
 
-### Trivial operators
+### Trivial operators {#trivial-operators}
 
 ```
 ?[a b]  0
@@ -87,7 +87,7 @@ Here we define more pseudocode operators, which we'll use in reductions further 
 
 We should note that in Nock and Hoon, `0` (pronounced "yes") is true, and `1` ("no") is false.  Why?  As in Unix, using zero for success generalizes smoothly to multiple error codes.  And it's strange for success not to equal truth.   Or at least, this is our official excuse.
 
-### Tree addressing
+### Tree addressing {#tree-addressing}
 
 ```
 /[1 a]            a
@@ -142,7 +142,7 @@ is `[14 15]`
 
 Hopefully this isn't terribly hard to follow.
 
-### Editing a Noun, `#`
+### Editing a Noun, `#` {#editing-a-noun-}
 
 ```
 #[1 a b]            a
@@ -188,11 +188,11 @@ is
 [22 123 456]
 ```
 
-## Instructions
+## Instructions {#instructions}
 
 These rules define Nock itself - ie, the `*` operator.
 
-### `0`, slot
+### `0`, slot {#0-slot}
 
 ```
 *[a 0 b]  /[b a]
@@ -214,7 +214,7 @@ So, to reuse our slot example, let's try the interpreter:
 
 produces `[14 15]`.
 
-### `1`, constant
+### `1`, constant {#1-constant}
 
 ```
 *[a 1 b]  b
@@ -228,7 +228,7 @@ produces `[14 15]`.
 
 yields `[153 218]`.
 
-### `2`, evaluate
+### `2`, evaluate {#2-evaluate}
 
 `2` is the Nock instruction:
 
@@ -246,7 +246,7 @@ Let's convert the previous example into a stupid use of `2`, with constant subje
 
 This gives the same `[153 218]`
 
-### `3`, `4`, and `5`, axiomatic functions
+### `3`, `4`, and `5`, axiomatic functions {#3-4-and-5-axiomatic-functions}
 
 ```
 *[a 3 b]  ?*[a b]
@@ -272,7 +272,7 @@ Similarly,
 20
 ```
 
-### Distribution
+### Distribution {#distribution}
 
 ```
 *[a [b c] d]  [*[a b c] *[a d]]
@@ -319,7 +319,7 @@ Except for the crash defaults, we've actually completed all the _essential_ aspe
 
 Operators 6 through 11 are sugar.  They exist because Nock is not a toy, but a practical interpreter.  Let's see them all together:
 
-## Sugar
+## Sugar {#sugar}
 
 ```
 *[a 6 b c d]        *[a *[[c d] 0 *[[2 3] 0 *[a 4 4 b]]]]
@@ -334,7 +334,7 @@ Operators 6 through 11 are sugar.  They exist because Nock is not a toy, but a p
 
 Let's try to figure out what these do, simplest first:
 
-### `11`, hint
+### `11`, hint {#11-hint}
 
 ```
 *[a 11 b c]  *[a c]
@@ -360,7 +360,7 @@ This complex hint throws away an arbitrary `b`, but computes the formula `c` aga
 
 (Why do we even care that `c` is computed?  Because `c` could crash.  A correct Nock cannot simply ignore it, and treat both variants of `11` as equivalent.)
 
-### `7`, compose
+### `7`, compose {#7-compose}
 
 ```
 *[a 7 b c]          *[*[a b] c]
@@ -375,7 +375,7 @@ Suppose we have two formulas, `b` and `c`.  What is the formula `[7 b c]`?  This
 
 Good old composition, on Nock formulas.  It's easy to see how this is a variant of Nock `2`.  The data to evaluate is simply `b`, and the formula is `c` quoted.
 
-### `8`, extend
+### `8`, extend {#8-extend}
 
 ```
 *[a 8 b c]          *[[*[a b] a] c]
@@ -395,7 +395,7 @@ Good old composition, on Nock formulas.  It's easy to see how this is a variant 
 
 Why would we want to do this?  Imagine a higher-level language in which the programmer declares a variable.  This language is likely to generate an `8`, because the variable is computed against the present subject, and used in a calculation which depends both on the original subject and the new variable.
 
-### `9`, invoke
+### `9`, invoke {#9-invoke}
 
 `9` is a calling convention:
 
@@ -405,7 +405,7 @@ Why would we want to do this?  Imagine a higher-level language in which the prog
 
 With `c`, we produce a noun which contains both code and data - a **core**.  We use this core as the subject, and evaluate the formula within it at slot `b`.
 
-### `10`, replace at address
+### `10`, replace at address {#10-replace-at-address}
 
 `10` is how Nock updates a tree by altering a particular slot.
 
@@ -423,7 +423,7 @@ This replaces the memory slot `mem-slot` in `target-tree` with `new-val`.
 
 So all together, `10` means that we calculate `*[a c]` and `*[a d]`, then replace memory slot `b` in the latter with the result of the former.
 
-### `6`, if-then-else
+### `6`, if-then-else {#6-if-then-else}
 
 This looks much scarier than it is:
 

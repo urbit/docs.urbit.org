@@ -1,10 +1,10 @@
-# Software Distribution
+# Software Distribution {#software-distribution}
 
 Urbit allows peer-to-peer distribution and installation of applications. A user can click on a link to an app hosted by another ship to install that app. The homescreen interface lets users manage their installed apps and launch their interfaces in new tabs.
 
 This document describes the architecture of Urbit's app distribution system. For a walkthrough of creating and distributing an app, see the [`Guide`](../../guides/software-distribution.md) document.
 
-## Architecture
+## Architecture {#architecture}
 
 The unit of software distribution is the desk. A desk is a lot like a git branch, but full of typed files, and designed to work with the Arvo kernel. In addition to files full of source code, a desk specifies the Kelvin version of the kernel that it's expecting to interact with, and it includes a manifest file describing which of the Gall agents it defines should be run by default.
 
@@ -28,7 +28,7 @@ The `%docket` agent reads the `/desk/docket-0` file to display an app tile on th
 
 For those of you familiar with the old `%glob` and `%file-server` agents, they have now been replaced by Docket.
 
-### Anatomy of a Desk
+### Anatomy of a Desk {#anatomy-of-a-desk}
 
 Desks still contain helper files in `/lib` and `/sur`, generators in `/gen`, marks in `/mar`, threads in `/ted`, tests in `/tests`, and agents in `/app`. In addition, desks now also contain these files:
 
@@ -41,7 +41,7 @@ Desks still contain helper files in `/lib` and `/sur`, generators in `/gen`, mar
 
 Only the `%base` desk contains a `/sys` directory with the standard library, zuse, Arvo code and vanes. All other desks simply specify the kernel version with which they're compatible in the `/sys/kelvin` file.
 
-### Updates
+### Updates {#updates}
 
 The main idea is that an app should only ever be run by a kernel that knows how to run it. For now, since there are not yet kernels that know how to run apps designed for an older kernel, this constraint boils down to ensuring that all live desks have the same kernel Kelvin version as the running kernel itself.
 
@@ -65,13 +65,13 @@ If not all live desks have an enqueued commit at the new kernel Kelvin, then Kil
 
 Suspending a desk turns off all its agents, saving their states in Gall. If there are no agents running from a desk, that desk doesn't force the kernel to be at the same Kelvin version. It's just inert data. If a later upstream update allows this desk to be run with a newer kernel, the user can revive the desk, and the system will migrate the old state into the new agent.
 
-### Managing Apps and Desks in Kiln
+### Managing Apps and Desks in Kiln {#managing-apps-and-desks-in-kiln}
 
 Turning agents on and off is managed declaratively, rather than imperatively. Kiln maintains state for each desk about which agents should be forced on and which should be forced off. The set of running agents is now a function of the desk's `/desk/bill` manifest file and that user configuration state in Kiln. This means starting or stopping an agent is idempotent, both in Kiln and Gall.
 
 For details of the generators for managing desks and agents in Kiln, see the [`Dojo Tools`](https://urbit.org/using/os/dojo-tools#desks-apps-and-updates) document.
 
-### Landscape apps
+### Landscape apps {#landscape-apps}
 
 It's possible to create and distribute desks without a front-end, but typically you'll want to distribute an app with a user interface. Such an app has two primary components:
 
@@ -80,7 +80,7 @@ It's possible to create and distribute desks without a front-end, but typically 
 
 When a desk is installed, Kiln will start up the Gall agents in the `desk.bill` manifest, and the `%docket` agent will read the `desk.docket-0` file. This file will specify the name of the app, various metadata, the appearance of the app's tile in the homescreen, and the source of the `glob` so it can serve the interface. For more details of the docket file, see the [Docket File](docket.md) document.
 
-### Globs
+### Globs {#globs}
 
 The reason to separate a glob from Clay is that Clay is a revision-controlled system. Like in most revision control systems, deleting data from it is nontrivial due to newer commits referencing old commits. If Clay grows the ability to delete data, perhaps glob data could be moved into it. Until then, since client bundles tend to be updated frequently, it's best practice not to put your glob in your app host ship's Clay at all to make sure it doesn't fill up your ship's "loom" memory arena.
 
@@ -90,7 +90,7 @@ Note that serving a glob over Ames might increase the install time for your app,
 
 For further details of globs, see the [Glob](glob.md) document.
 
-## Sections
+## Sections {#sections}
 
 - [Glob](glob.md) - Documentation of `glob`s (client bundles).
 

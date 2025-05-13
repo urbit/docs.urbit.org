@@ -1,18 +1,18 @@
-# Updates
+# Updates {#updates}
 
 The OS/kernel in Urbit is called Arvo. Arvo is run inside a virtual machine called Vere - this is the `urbit` binary you execute in the terminal. You can also install a number of userspace applications such as Groups, Studio, Pals, etc. Each of these layers—Vere, Arvo and apps—receive updates. In this guide, we'll look at how to deal with these updates, the meaning of the update notifications you'll get in Landscape, and how these layers depend on each other.
 
-## Quick overview
+## Quick overview {#quick-overview}
 
 - **Vere** is the runtime, aka the `urbit` binary. Its version format is `v3.2`. Vere is typically backwards-compatible with older Arvo versions. Vere can be updated by either running its `next` command, or by downloading a new version and swapping them out. The ship must be shut down before performing either of these actions.
 
 - **Arvo** is the kernel and core libraries. Its version format is `[%zuse 410]`. Arvo depends on Vere. If Vere is incompatible, it will fail to boot. Arvo lives in the `%base` desk and receives over-the-air updates, typically from your sponsor. If an update requires a new Vere version, the update will be queued until Vere is updated. Arvo uses *kelvin versioning*, which means its version number counts down towards zero (therefore 410 is newer than 411). Apps can also block Arvo updates if they're not compatible, though a blocked Arvo update can be forced by suspending the blocking apps.
 
-## Update notifications
+## Update notifications {#update-notifications}
 
 Update-related notifications will be shown in the notifications area of Landscape. You may see one of these three messages:
 
-#### The following (n) apps blocked a System Update
+#### The following (n) apps blocked a System Update {#the-following-n-apps-blocked-a-system-update}
 
 ![apply system update screenshot](https://media.urbit.org/operators/manual/os/updates/apply-system-update.png)
 
@@ -20,7 +20,7 @@ This means you've received an over-the-air kernel update, e.g. an update from `[
 
 If the blocking apps are important to you and you don't want to suspend them, you may want to hold off on applying the kernel update and wait to receive updates for those apps. You may also want to double-check you have automatic updates enabled for the given apps. See the [app updates](#app-updates) section below for more details.
 
-#### App: "abc" is blocked from upgrading
+#### App: "abc" is blocked from upgrading {#app-abc-is-blocked-from-upgrading}
 
 ![app blocking messages screenshot](https://media.urbit.org/operators/manual/os/updates/app-blocked-messages.png)
 
@@ -34,13 +34,13 @@ Such updates may be blocked because:
    
 These kinds of messages don't usually require action. App developers will typically ship app updates ahead of the kernel update release, so you'll see these messages in the days before the release.
 
-#### The runtime blocked a System Update
+#### The runtime blocked a System Update {#the-runtime-blocked-a-system-update}
 
 ![runtime blocked system update screenshot](https://media.urbit.org/operators/manual/os/updates/runtime-blocked-update.png)
 
 This means you tried to apply a kernel update, but the runtime (the `urbit` binary) is not compatible with the new kernel version. In this case, you'll need to update the runtime. See the [runtime updates](#runtime-updates) section below for how to do this.
 
-## Runtime updates
+## Runtime updates {#runtime-updates}
 
 As of version 1.9, the runtime has a built-in update mechanism. First, shut your ship down. Then, run either `urbit next /path/to/your/pier` or `./your/pier/.run next`, depending on whether it's docked. When you run `next`, it'll check for an update, download it, and apply it. You can then start your ship up again. If the update fails, check that `/your/pier/.bin/pace` contains `live`. If it has `once`, edit it to say `live` and try running `next` again. Once you boot the ship back up after updating the runtime, you may need to run `|bump` in the dojo to apply any queued kernel updates.
 
@@ -53,7 +53,7 @@ If you're still running a binary older than 1.9, you'll need to:
 
 To check the current version of the runtime, the first line when you start up a ship will say something like `urbit 1.10`. If you run the `urbit` binary without specifying a pier or other arguments, it'll also say its version at the top of the print-out.
 
-## Kernel updates
+## Kernel updates {#kernel-updates}
 
 Kernel updates are delivered in OTAs (over-the-air updates). For anything other than a comet, this should be automatically configured with your sponsor as the source. If you're running a comet, you may need to run `|ota (sein:title our now our)` to enable them.
 
@@ -90,7 +90,7 @@ To check if you have unapplied kernel updates queued, you can run `+vats %base` 
 
 The `updates` entry says whether automatic updates are enabled. If it doesn't say `tracking`, you can run `|ota (sein:title our now our)` to enable them. The `pending updates` section will list any blocked updates, it'll look something like `~[[%zuse 417]]`. The `/sys/kelvin` line says the version it's currently on.
 
-## App updates
+## App updates {#app-updates}
 
 Apps (such as Groups, Studio, Pals, etc) receive OTA (over-the-air) updates from their respective publishers. Automatic updates for each app should be enabled by default when you install them. Normal updates (those unrelated to a kernel update) should not require any user action - when you see the update notification in Landscape it's already been done.
 
@@ -122,7 +122,7 @@ To check the update status of an app, you can run the `+vats %the-desk` command 
 
 If there are `pending updates`, it usually means they're waiting for a kernel update before they can be applied. The `updates` entry tells you whether automatic updates are enabled.
 
-## Further reading
+## Further reading {#further-reading}
 
 - [Runtime Reference](https://operators.urbit.org/manual/running/vere) - this documents all the options and utilities of the `urbit` binary, such as `next`.
 - [Dojo Tools](https://operators.urbit.org/manual/os/dojo-tools) - this includes documentation of many update and desk-related dojo commands.

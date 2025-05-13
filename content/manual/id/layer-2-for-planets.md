@@ -1,10 +1,10 @@
-# Layer 2 for planets
+# Layer 2 for planets {#layer-2-for-planets}
 
 What does Layer 2 mean for planets? Cheap transaction fees which make it inexpensive to get on the network and stay on the network.
 
 Performing transactions directly on the Ethereum blockchain, ‘Layer 1’, has become prohibitively expensive over the past year due to ETH’s value and network congestion. As a result, spawning a planet or performing simple operations in Bridge can be very costly. Urbit’s [Layer 2](https://urbit.org/docs/azimuth/l2/layer2) solution, called [naive rollups](https://urbit.org/blog/rollups), makes performing these transactions cheap or free. Planets can take advantage of this in the form of cheaper planet prices, as well as cheap or free Azimuth transactions.
 
-### What to know
+### What to know {#what-to-know}
 
 - Migration is currently **one-way**.<br /><br />You cannot move a Layer 2 ID back to Layer 1. This includes planets that are spawned on Layer 2.
 - You cannot interact with Layer 2 IDs using Layer 1 tools like OpenSea or Metamask.<br /><br />You will not be able to use your ID with smart contracts, or ‘see’ it using wallets other than Bridge. **Bridge is currently the only software that can see or interact with Layer 2 IDs.**
@@ -15,7 +15,7 @@ Performing transactions directly on the Ethereum blockchain, ‘Layer 1’, has 
 
 If you already had a planet before the launch of L2, you don’t have to do anything. Your ship will continue to function normally and you will still be able to communicate with the entire network without any additional intervention. However, you have the option of migrating your planet to Layer 2 in order to take advantage of the reduced costs and subsidized transactions available through Tlon’s roller.
 
-### Should I move?
+### Should I move? {#should-i-move}
 
 If you have a planet on Layer 1, migrating is entirely optional. The **benefits** of migrating a planet to Layer 2 are free or cheap Azimuth transactions. Ships on Layer 2 can use Tlon’s roller to perform operations in Bridge for free up to a weekly limit. These operations might be resetting networking keys, or changing sponsors.
 
@@ -24,7 +24,7 @@ The **trade-offs** for migrating a planet to Layer 2 include:
 - The migration process is currently irreversible. If you migrate to Layer 2, you cannot go back to Layer 1.
 - Ships on Layer 2 are not visible to Layer 1 tools like wallets or chain explorers; Bridge is currently the only software that can ‘see’ Layer 2 IDs.
 
-### Which Layer am I on?
+### Which Layer am I on? {#which-layer-am-i-on}
 
 You can tell at a glance which layer your asset occupies in Bridge:
 
@@ -34,7 +34,7 @@ You can tell at a glance which layer your asset occupies in Bridge:
 
 A single ownership address can own ships on both Layer 1 and Layer 2.
 
-### Migrating
+### Migrating {#migrating}
 
 To migrate:
 
@@ -47,7 +47,7 @@ Migrating to Layer 2 does not change the address that owns a point. **You will s
 
 The migration itself does not need to be submitted to a roller – it should complete within a few minutes. Once it has, you can submit planets and transactions to the roller’s queue immediately.
 
-### Activating a Layer 2 planet
+### Activating a Layer 2 planet {#activating-a-layer-2-planet}
 
 **Planet codes** are one-time passphrases used to claim a master ticket through Bridge. These can be standalone text phrases, or embedded in a URL that begins with `bridge.urbit.org`. **Master tickets** are passphrases used to log into Bridge to manage an ID that has already been claimed.
 
@@ -67,7 +67,7 @@ An important consideration for new users with regard to Layer 2 planets: your ow
 
 The first time you boot, the key from the first half of the keyfile is used; but when the next roll batch is processed, the ID will be modified with a second key. This key is kept secret from the star that spawned you, and once this transaction clears, your planet is definitively and cryptographically yours. All of this is **taken care of in the background and requires no intervention**. You don’t even need to restart your planet after the ownership transfer has been finalized.
 
-### Running your planet
+### Running your planet {#running-your-planet}
 
 Once you’ve activated your planet and downloaded your keyfile, you can use it to [boot your ship immediately](../getting-started/self-hosted/cli.md).
 
@@ -77,7 +77,7 @@ You may also opt to [host your planet](../getting-started#hosting-providers) wit
 
 In addition to importing a fresh planet, UrbitHost allows you to migrate an existing pier to your hosted account. If you’ve booted a planet on your PC but want to make the switch to hosting, you can upload it and hit the ground running without having to reset your networking keys.
 
-### Transaction history
+### Transaction history {#transaction-history}
 
 A new feature in Bridge is the ability to see the transaction history of your asset. This is particularly important because with Layer 2, much of the Azimuth state is no longer visible on the Ethereum blockchain, but is maintained by the Urbit network. This means you might not be able to directly observe “who owns what” by looking at the Azimuth contracts with something like a [blockchain explorer](https://etherscan.io/address/azimuth.eth). Activities like setting networking keys, issuing planets, or moving your proxy keys will show up in this log. Note that the transaction history menu in Bridge is currently the only way to examine Azimuth operations that take place on Layer 2.
 

@@ -1,4 +1,4 @@
-# Custom Roller Tutorial
+# Custom Roller Tutorial {#custom-roller-tutorial}
 
 This tutorial is an outline for how to set up your own L2 roller for Urbit. Some familiarity with how L2 works in general, as well as the role of the roller, is expected. See [Layer 2 Overview](../concepts/layer2.md) for a technical overview of L2, [Azimuth Data Flow](../concepts/flow.md) to gain an understanding of how Azimuth data handling and processing is done on Urbit, and [Rollers](../reference/roller.md) for a short summary of what the different Gall agents involved for rollers are. This tutorial is focused on setting up a roller to work on the main Ethereum network, but only minor changes are needed to utilize the Ropsten Ethereum network. We also explain how to set up a front end (Bridge) from which transactions to be batched by the roller are sent, but use of a front end is not mandatory.
 
@@ -12,7 +12,7 @@ There are three main steps involved with setting up a roller:
 - starting and configuring `%roller`,
 - aiming your front-end at the roller
 
-## 1. Make sure `%azimuth` state is up to date
+## 1. Make sure `%azimuth` state is up to date {#1-make-sure-azimuth-state-is-up-to-date}
 
 If you are using an ordinary live ship on the network as the roller, you should already have the latest `%azimuth` state and this step should not be necessary and you may move to step 2.
 
@@ -51,7 +51,7 @@ The `:roller|endpoint` and `:roller|setkey` commands are the only mandatory comm
 
 We cover the additional settings for `%roller` at the end.
 
-## 3. Aiming Bridge at the roller
+## 3. Aiming Bridge at the roller {#3-aiming-bridge-at-the-roller}
 
 The last step is to set up the web interface by which users can submit transactions to be batched by the roller, which we refer to as the front-end. We presume here that you'll be using [Bridge](https://github.com/urbit/bridge), by which we mean you'll be hosting a custom version of Bridge modified to use the roller you set up above instead of Tlon's roller.
 
@@ -65,7 +65,7 @@ REACT_APP_ROLLER_HOST=https://myroller.sampel-pal.net/v1/roller npm run pilot-ma
 
 This will launch a server running Bridge that utilizes the mainnet roller you set up at `https://myroller.sampel-pal.net/v1/roller`.
 
-## Additional `%roller` commmands
+## Additional `%roller` commmands {#additional-roller-commmands}
 
 `%roller` has a few other settings and commands for managing things like the rate at which transactions are submitted and manually submitting batches. These can be modified using the following generators:
 

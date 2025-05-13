@@ -1,4 +1,4 @@
-# HTTP API
+# HTTP API {#http-api}
 
 Spider has an Eyre binding which allows threads to be run externally via [authenticated](../../../system/kernel/eyre/reference/external-api-ref.md#authentication) HTTP POST requests.
 
@@ -22,7 +22,7 @@ When Spider receives an HTTP request, the following steps happen:
 
 Thus, it's important to understand that the original HTTP request and final HTTP response must contain JSON data, and therefore the input & output `mark`s you specify must each have a `mark` file in `/mar` that includes a conversion method for `json -> inputMark` and `outputMark -> json` respectively.
 
-## Example
+## Example {#example}
 
 Here we'll look at running Spider threads through Eyre.
 

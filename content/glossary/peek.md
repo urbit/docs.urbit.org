@@ -1,7 +1,7 @@
-# Peek
+# Peek {#peek}
 
 **Peek** is another word for a [scry](scry.md), which is a read-only request to the namespace of a local [vane](vane.md) or [agent](agent.md).
 
-#### Further Reading
+#### Further Reading {#further-reading}
 
 - [Scry reference](../system/kernel/arvo/guides/scry.md): developer documentation of how scries work and how to use them.

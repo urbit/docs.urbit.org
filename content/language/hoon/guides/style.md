@@ -1,14 +1,14 @@
-# Hoon Style Guide
+# Hoon Style Guide {#hoon-style-guide}
 
 Welcome to the Hoon style guide. It’s important to familiarize yourself with our way of writing Hoon code.
 
-## Layout
+## Layout {#layout}
 
 Hoon’s position on layout is: so long as your code is (a) correctly commented, (b) free from blank or overlong lines, (c) parses, and (d) looks good, it’s good layout.
 
 When a layout standard or other fundamental coding convention is not perfectly rigid, code can develop some individual flavor. But Hoon’s layout rules, though not rigid, are still strict. The flavor should never overwhelm the content.
 
-### General outline of Hoon syntax
+### General outline of Hoon syntax {#general-outline-of-hoon-syntax}
 
 There are two forms of syntax in Hoon: wide and tall. Wide forms fit on a single line, use single spaces to separate syntax, and generally use enclosing terminators (like parentheses to close an expression). Tall forms can use multiple lines, separate syntax with two spaces at minimum and arbitrary whitespace at maximum, and avoid terminators when the content has a fixed structure.
 
@@ -30,13 +30,13 @@ These are regular forms -- every rune can be written this way. Hoon also has a v
 
 The goal of wide/tall forms is to resemble the look of procedural code, with its statement/expression distinction, in a purely functional language. In particular, complex code in functional languages tends to develop a diagonal shape, since child nodes in the syntax tree are indented right.
 
-### Tall layout conventions
+### Tall layout conventions {#tall-layout-conventions}
 
 In wide form, the parser allows no freedom of layout (and no comments, either). In tall form, there is too much freedom, and so we need conventions. These conventions aren’t absolute, but you shouldn’t defy them unless you have a good reason to do so.
 
 Syntactically, there are three kinds of runes: fixed sequences, variable sequences, and cores/engines. Let’s talk about each.
 
-#### Fixed sequences and backstep indentation
+#### Fixed sequences and backstep indentation {#fixed-sequences-and-backstep-indentation}
 
 A fixed sequence is a rune with a fixed number of children. Most runes are fixed sequences. In wide mode we terminate a fixed sequence with a right-parenthesis (“par”). In tall mode there is no terminator.
 
@@ -75,7 +75,7 @@ d
 
 It is sometimes acceptable to not backstep -- especially in tuple runes: `:-`, `:_`, `:+` and `+^`. But you should have a specific reason: for example: emphasizing symmetry in a tuple.
 
-#### Variable sequences
+#### Variable sequences {#variable-sequences}
 
 Variable sequences can have an arbitrary number of elements, so they can’t self-terminate. They are terminated by a `==` marker. The sequence, or its variable part, is indented and vertical:
 
@@ -140,7 +140,7 @@ We sometimes end up with multiple terminators on separate lines, two or more spa
 ==         ==
 ```
 
-## General naming style
+## General naming style {#general-naming-style}
 
 Modern Hoon naming is **verbose**.
 
@@ -148,7 +148,7 @@ Modern Hoon naming is **verbose**.
 
 It can’t be repeated too often: **do not abbreviate words, unless you would use the same abbreviations in written English**. To save a trivial, one-time amount of work in typing, you are adding a nontrivial amount of work and ambiguity in reading.
 
-### Comments and unparsed bytes
+### Comments and unparsed bytes {#comments-and-unparsed-bytes}
 
 Hoon comments are 80-column lines which contain whitespace, then `::`, then optional text.
 
@@ -158,7 +158,7 @@ Empty lines are lines containing `::` only. There must never be two empty lines 
 
 Whitespace is semi-significant. The difference between a space and a gap (more than one space) is significant. But two or more spaces, newlines, or comments are one gap.
 
-#### Comment conventions
+#### Comment conventions {#comment-conventions}
 
 Hoon suggests “breathing comments.” There should always be an empty comment line between a comment and the line **below** it:
 
@@ -189,7 +189,7 @@ Crowded comments are comments on lines which also contain code. Older code has a
 
 Crowded comments are considered harmful -- don’t use them. Hoon, like any higher-order functional language, can be very dense and powerful. We almost never want it to be **more** dense.
 
-#### Megalithic comments
+#### Megalithic comments {#megalithic-comments}
 
 In older code you’ll also see attempts to produce large, visually salient geometries as separators, like:
 
@@ -207,7 +207,7 @@ or
 
 Please don’t do this in new code. Normal conventions should be legible. Use more deeply qualified positions if your code is hard to navigate.
 
-### Structure of all comments, formal and informal
+### Structure of all comments, formal and informal {#structure-of-all-comments-formal-and-informal}
 
 If any comment cannot be parsed as a formal comment, we treat it as an informal comment and ignore it.
 
@@ -236,7 +236,7 @@ A complex formal comment is the headline; then an empty line; then an udon body 
 
 The point is: sometimes we want to see a deep explanation; sometimes we just want a summary. So we require you to either (a) provide a line-length explanation, or (b) a long screed but with a line-length summary/headline.
 
-### Feature comments
+### Feature comments {#feature-comments}
 
 A feature headline is `::`, then two spaces, then a qualified location, then `:`, then a freeform string. Like:
 
@@ -248,7 +248,7 @@ A feature headline is `::`, then two spaces, then a qualified location, then `:`
 
 We find the feature `$foo` relative to the current location and move the comment there, as described above. In most cases it becomes a product comment. For a `|chapter` (which does not resolve to any data value) it becomes the chapter description.
 
-### Product comments
+### Product comments {#product-comments}
 
 Product comments describe the product of the expression below. The headline is a string in parentheses:
 
@@ -258,11 +258,11 @@ Product comments describe the product of the expression below. The headline is a
 make:a:strange:foo
 ```
 
-### Flow comments and legends
+### Flow comments and legends {#flow-comments-and-legends}
 
 Flow comments use a new commenting concept called **legends**.
 
-#### Legends
+#### Legends {#legends}
 
 One of the problems with Hoon as a language is that it takes some time to learn to look at a tree of runes and “see the function.” Seeing the function is beautiful and pleasant. But until the new Hoon student has put in a lot of practice, this experience is inaccessible. And tracing runes with a manual is hard.
 
@@ -288,7 +288,7 @@ For someone who doesn’t know Hoon, these pseudo-keywords are a lifesaver. For 
 
 Of course, to use this we need to write useful “leg ends” for all appropriate legs of all appropriate runes. But that will probably help us document them, anyway.
 
-#### Flow promotion
+#### Flow promotion {#flow-promotion}
 
 Sometimes, just for cosmetic reasons, we like to raise the comment on the first leg of a rune up above the parent:
 
@@ -324,13 +324,13 @@ This can make flow comments collide, as in “else, if,” below:
 visit-holland
 ```
 
-#### Flow comments, traces, and interpolation
+#### Flow comments, traces, and interpolation {#flow-comments-traces-and-interpolation}
 
 Flow comments, because they describe what your code is doing, are embedded in the stack trace, using the same hint mechanism as `~|`. A trace is an explanation of everything your code was doing when it crashed.
 
 And data interpolation, in `{}`, also works in flow comments. Your flow comments just describe what your code is doing, in English, including data.
 
-## Grading
+## Grading {#grading}
 
 How do we define the superficial quality of Hoon code? (Setting aside, of course, the question of whether the code is computing the right thing in the right way.)
 

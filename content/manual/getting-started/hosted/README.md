@@ -1,4 +1,4 @@
-# Hosted Urbit
+# Hosted Urbit {#hosted-urbit}
 
 Hosting providers are companies that offer "Urbit as a Service".  They do the work of setting up your urbit in the cloud and making sure it's up to date and you don't have perform any technical steps or maintenance.
 
@@ -11,7 +11,7 @@ The two important points one should remember about hosting providers:
 - Because the provider has access to the resources that run your Urbit experience, you must trust them with your data.
 - Urbit is designed to be portable, so your hosting provider will allow you to export all your data and boot up elsewhere if you choose.
 
-## Next steps
+## Next steps {#next-steps}
 
 [Explore Hosting Providers -&gt;](hosting-providers.md)
 

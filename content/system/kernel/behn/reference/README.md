@@ -1,10 +1,10 @@
 # Reference
 
-## [API Reference](/system/kernel/behn/reference/tasks)
+## [API Reference](tasks)
 
 The `task`s Behn takes and the `gift`s it returns.
 
-## [Scry Reference](/system/kernel/behn/reference/scry)
+## [Scry Reference](scry)
 
 The scry endpoints of Behn.
 

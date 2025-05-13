@@ -20,7 +20,7 @@ An ownership address is an Ethereum address that owns one or more of your Urbit 
 
 ### What are proxies? {#proxies}
 
-See [Proxies](/manual/id/proxies).
+See [Proxies](proxies).
 
 ### What are seeds? {#seeds}
 

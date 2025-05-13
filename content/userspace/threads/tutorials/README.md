@@ -2,6 +2,6 @@
 
 In-depth tutorials about threads.
 
-## [Basics](/userspace/threads/tutorials/basics)
+## [Basics](basics)
 
 All the basic information you need to know to write threads.

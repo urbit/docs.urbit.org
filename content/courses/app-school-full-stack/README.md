@@ -1,6 +1,6 @@
 # App School II (Full-Stack)
 
-This series walks through the writing of a full Gall agent, and then the process of integrating it with a React front-end. This series follows on from [App School I](/courses/app-school). If you haven't completed that, or otherwise aren't familiar with the basics of writing Gall agents, it's strongly recommended to work through that guide first.
+This series walks through the writing of a full Gall agent, and then the process of integrating it with a React front-end. This series follows on from [App School I](../app-school). If you haven't completed that, or otherwise aren't familiar with the basics of writing Gall agents, it's strongly recommended to work through that guide first.
 
 The app we'll be looking at is a simple journal with an agent called `%journal`. In the browser, users will be able to add plain text journal entries organized by date. Entries may be scrolled through in ascending date order, with more entries loaded each time the bottom of the list is reached. Old entries will be able to be edited and deleted, and users will be able to search through entries by specifying a date range.
 
@@ -20,42 +20,42 @@ Here is the basic structure of the app we'll be building:
 
 ## Sections
 
-#### [Introduction](/courses/app-school-full-stack)
+#### [Introduction](.)
 
 An overview of the guide and table of contents.
 
-#### [1. Types](/courses/app-school-full-stack/1-types)
+#### [1. Types](1-types)
 
 Creating the `/sur` structure file for our `%journal` agent.
 
-#### [2. Agent](/courses/app-school-full-stack/2-agent)
+#### [2. Agent](2-agent)
 
 Creating the `%journal` agent itself.
 
-#### [3. JSON](/courses/app-school-full-stack/3-json)
+#### [3. JSON](3-json)
 
 Writing a library to convert between our agent's marks and JSON. This lets our React front-end poke our agent, and our agent send updates back to it.
 
-#### [4. Marks](/courses/app-school-full-stack/4-marks)
+#### [4. Marks](4-marks)
 
 Creating the mark files for the pokes our agent takes and updates it sends out.
 
-#### [5. Eyre](/courses/app-school-full-stack/5-eyre)
+#### [5. Eyre](5-eyre)
 
 A brief overview of how the webserver vane Eyre works.
 
-#### [6. React App Setup](/courses/app-school-full-stack/6-react-setup)
+#### [6. React App Setup](6-react-setup)
 
 Creating a new React app, installing the required packages, and setting up some basic things for our front-end.
 
-#### [7. React App Logic](/courses/app-school-full-stack/7-app-logic)
+#### [7. React App Logic](7-app-logic)
 
 Analyzing the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
 
-#### [8. Desk and Glob](/courses/app-school-full-stack/8-desk)
+#### [8. Desk and Glob](8-desk)
 
 Building and "globbing" our front-end, and putting together a desk for distribution.
 
-#### [9. Summary](/courses/app-school-full-stack/9-final)
+#### [9. Summary](9-final)
 
 Some final comments and additional resources.

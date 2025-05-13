@@ -1,6 +1,6 @@
 # Definition
 
-Nock is a Turing-complete function that maps a cell `[subject formula]` to a [noun](/glossary/noun/) `product`, where `subject` is the data, `formula` is the code, and `product` is the result.
+Nock is a Turing-complete function that maps a cell `[subject formula]` to a [noun](../../../glossary/noun) `product`, where `subject` is the data, `formula` is the code, and `product` is the result.
 
 To program in Hoon, this is all you need to know about Nock. It's probably at least worth skimming the definition, though.
 

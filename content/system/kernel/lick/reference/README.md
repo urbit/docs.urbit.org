@@ -1,9 +1,9 @@
 # Reference
 
-### [API Reference](/system/kernel/lick/reference/tasks)
+### [API Reference](tasks)
 
 Details of Lick's API.
 
-### [Scry Reference](/system/kernel/lick/reference/scry)
+### [Scry Reference](scry)
 
 The scry endpoints of Eyre.

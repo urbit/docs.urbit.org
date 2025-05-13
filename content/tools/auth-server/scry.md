@@ -4,11 +4,11 @@ Below are all the scry paths you can query. All paths are `%x` scries.
 
 ## `/proof/[turf]`
 
-Make a [`proof`](/tools/auth-server/types#proof) for the given [`turf`](/tools/auth-server/types#turf) (domain). This is put in a [`manifest`](/tools/auth-server/types#manifest) and published at `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to validate requests.
+Make a [`proof`](types#proof) for the given [`turf`](types#turf) (domain). This is put in a [`manifest`](types#manifest) and published at `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to validate requests.
 
 #### Returns
 
-A [`proof`](/tools/auth-server/types#proof).
+A [`proof`](types#proof).
 
 #### Example
 
@@ -20,11 +20,11 @@ A [`proof`](/tools/auth-server/types#proof).
 
 ## `/proof/wood/[turf]`
 
-Make a [`proof`](/tools/auth-server/types#proof) for the given [`++wood`-encoded](/tools/auth-server#additional-note) [`turf`](/tools/auth-server/types#turf) (domain). This is put in a [`manifest`](/tools/auth-server/types#manifest) and published at `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to validate requests.
+Make a [`proof`](types#proof) for the given [`++wood`-encoded](../auth-server#additional-note) [`turf`](types#turf) (domain). This is put in a [`manifest`](types#manifest) and published at `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to validate requests.
 
 #### Returns
 
-A [`proof`](/tools/auth-server/types#proof).
+A [`proof`](types#proof).
 
 #### Example
 
@@ -40,7 +40,7 @@ Get the complete state of all existing requests.
 
 #### Returns
 
-You'll receive an [`initAll`](/tools/auth-server/types#initall) update containing the current state.
+You'll receive an [`initAll`](types#initall) update containing the current state.
 
 ---
 
@@ -50,7 +50,7 @@ Get all requests later than the specified Unix millisecond time, and their statu
 
 #### Returns
 
-You'll receive an [`initAll`](/tools/auth-server/types#initall) update containing the current state of requests later than the one specified.
+You'll receive an [`initAll`](types#initall) update containing the current state of requests later than the one specified.
 
 #### Example
 
@@ -66,7 +66,7 @@ Get all requests before the specified Unix millisecond time, and their statuses.
 
 #### Returns
 
-You'll receive an [`initAll`](/tools/auth-server/types#initall) update containing the current state of requests earlier than the one specified.
+You'll receive an [`initAll`](types#initall) update containing the current state of requests earlier than the one specified.
 
 #### Example
 
@@ -78,11 +78,11 @@ You'll receive an [`initAll`](/tools/auth-server/types#initall) update containin
 
 ## `/ship/[ship]`
 
-Get the state of all existing requests for the specifed [`ship`](/tools/auth-server/types#ship).
+Get the state of all existing requests for the specifed [`ship`](types#ship).
 
 #### Returns
 
-You'll receive an [`initShip`](/tools/auth-server/types#initship) update containing all requests for the specified `ship`, and their statuses.
+You'll receive an [`initShip`](types#initship) update containing all requests for the specified `ship`, and their statuses.
 
 #### Example
 
@@ -96,11 +96,11 @@ Note the leading `~` is omitted:
 
 ## `/ship/[ship]/since/[time]`
 
-Get the state of all existing requests for the specifed [`ship`](/tools/auth-server/types#ship) later than the specified Unix millisecond time.
+Get the state of all existing requests for the specifed [`ship`](types#ship) later than the specified Unix millisecond time.
 
 #### Returns
 
-You'll receive an [`initShip`](/tools/auth-server/types#initship) update containing all entries for the specified `ship` with `time `s later than the one specified.
+You'll receive an [`initShip`](types#initship) update containing all entries for the specified `ship` with `time `s later than the one specified.
 
 #### Example
 
@@ -112,11 +112,11 @@ You'll receive an [`initShip`](/tools/auth-server/types#initship) update contain
 
 ## `/ship/[ship]/before/[time]`
 
-Get the state of all existing requests for the specifed [`ship`](/tools/auth-server/types#ship) earlier than the specified Unix millisecond time.
+Get the state of all existing requests for the specifed [`ship`](types#ship) earlier than the specified Unix millisecond time.
 
 #### Returns
 
-You'll receive an [`initShip`](/tools/auth-server/types#initship) update containing all entries for the specified `ship` with `time `s before the one specified.
+You'll receive an [`initShip`](types#initship) update containing all entries for the specified `ship` with `time `s before the one specified.
 
 #### Example
 
@@ -128,7 +128,7 @@ You'll receive an [`initShip`](/tools/auth-server/types#initship) update contain
 
 ## `/turf/[turf]`
     
-Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain).
+Get the state of all existing requests for the specifed [`turf`](types#turf) (domain).
 
 {% hint style="info" %}
 
@@ -138,7 +138,7 @@ If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separato
 
 #### Returns
 
-You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update containing all requests for the specified `turf`, and their statuses.
+You'll receive an [`initTurf`](types#initturf) update containing all requests for the specified `turf`, and their statuses.
 
 #### Example
 
@@ -150,7 +150,7 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 ## `/turf/[turf]/since/[time]`
 
-Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain) later than the specified Unix millisecond time.
+Get the state of all existing requests for the specifed [`turf`](types#turf) (domain) later than the specified Unix millisecond time.
 
 {% hint style="info" %}
 
@@ -160,7 +160,7 @@ If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separato
 
 #### Returns
 
-You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update containing all entries with timestamps later than the one specified.
+You'll receive an [`initTurf`](types#initturf) update containing all entries with timestamps later than the one specified.
 
 #### Example
 
@@ -172,7 +172,7 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 ## `/turf/[turf]/before/[time]`
 
-Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain) earlier than the specified Unix millisecond time.
+Get the state of all existing requests for the specifed [`turf`](types#turf) (domain) earlier than the specified Unix millisecond time.
 
 {% hint style="info" %}
 
@@ -182,7 +182,7 @@ If your domain contains characters apart from `a-z`, `0-9`, `-` and `.` separato
 
 #### Returns
 
-You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update containing all entries for the specified `turf` (domain) with timestamps earlier than the one specified.
+You'll receive an [`initTurf`](types#initturf) update containing all entries for the specified `turf` (domain) with timestamps earlier than the one specified.
 
 #### Example
 
@@ -194,11 +194,11 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 ## `/turf/wood/[turf]`
     
-Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain), with [`++wood` encoding](/tools/auth-server#additonal-note).
+Get the state of all existing requests for the specifed [`turf`](types#turf) (domain), with [`++wood` encoding](../auth-server#additonal-note).
 
 #### Returns
 
-You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update containing all requests for the specified `turf`, and their statuses.
+You'll receive an [`initTurf`](types#initturf) update containing all requests for the specified `turf`, and their statuses.
 
 #### Example
 
@@ -210,11 +210,11 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 ## `/turf/wood/[turf]/since/[time]`
 
-Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain) later than the specified Unix millisecond time. With [`++wood` encoding](/tools/auth-server#additonal-note).
+Get the state of all existing requests for the specifed [`turf`](types#turf) (domain) later than the specified Unix millisecond time. With [`++wood` encoding](../auth-server#additonal-note).
 
 #### Returns
 
-You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update containing all entries with timestamps later than the one specified.
+You'll receive an [`initTurf`](types#initturf) update containing all entries with timestamps later than the one specified.
 
 #### Example
 
@@ -226,11 +226,11 @@ You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update contain
 
 ## `/turf/wood/[turf]/before/[time]`
 
-Get the state of all existing requests for the specifed [`turf`](/tools/auth-server/types#turf) (domain) earlier than the specified Unix millisecond time. With [`++wood` encoding](/tools/auth-server#additonal-note).
+Get the state of all existing requests for the specifed [`turf`](types#turf) (domain) earlier than the specified Unix millisecond time. With [`++wood` encoding](../auth-server#additonal-note).
 
 #### Returns
 
-You'll receive an [`initTurf`](/tools/auth-server/types#initturf) update containing all entries for the specified `turf` (domain) with timestamps earlier than the one specified.
+You'll receive an [`initTurf`](types#initturf) update containing all entries for the specified `turf` (domain) with timestamps earlier than the one specified.
 
 #### Example
 
@@ -246,7 +246,7 @@ Get a particular request and its current status, by UUID.
 
 #### Returns
 
-An [`entry`](/tools/auth-server/types#entry) update containing the request in question and its current status.
+An [`entry`](types#entry) update containing the request in question and its current status.
 
 #### Example
 
@@ -263,7 +263,7 @@ Get the status of a particular request.
 
 #### Returns
 
-A [`status`](/tools/auth-server/types#status) update containing the status of the request with the specified [`id`](/tools/auth-server/types#id).
+A [`status`](types#status) update containing the status of the request with the specified [`id`](types#id).
 
 #### Example
 

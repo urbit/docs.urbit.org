@@ -22,7 +22,7 @@ One argument, fixed.
 
 The `+|` doesn't produce an arm. It instead provides a label for the arms that follow it. The arms of a core can be divided into **chapters** for 'organization'. Chapter labels aren't part of the underlying noun of the core; they're stored as type system metadata only.
 
-See [`tome`](/language/hoon/reference/stdlib/4o#tome) in the Hoon standard library.
+See [`tome`](../stdlib/4o#tome) in the Hoon standard library.
 
 **Note:** The `+|` rune has little practical utility. Chapter labels cannot be referenced short of manually processing the `$type` of a core.
 
@@ -178,7 +178,7 @@ None
 
 The primary use of `+*` is to create deferred expressions within doors (see Examples below). This is a name for an expressions that will be evaluated in each place the name is dereferenced. This is a similar concept to aliases or macros, but there are some subtle but important differences. Deferred expressions given by `+*` do not count towards the number of arms in the door and thus are also called "virtual arms", which can be important for things like Gall agent cores that require a fixed number of arms.
 
-Under the hood, `+*` gets compiled as [`=*`'s](/language/hoon/reference/rune/tis#-tistar) (see here for more discussion on deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the core to include `=* foo bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
+Under the hood, `+*` gets compiled as [`=*`'s](tis#-tistar) (see here for more discussion on deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the core to include `=* foo bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
 
 ```hoon
 |_  z=@ud

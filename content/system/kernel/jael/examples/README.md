@@ -1,5 +1,5 @@
 # Examples
 
-### [Examples](/system/kernel/jael/examples/examples)
+### [Examples](examples)
 
 Practical examples of using Jael's `task`s.

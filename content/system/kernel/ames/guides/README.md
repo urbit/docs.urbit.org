@@ -1,5 +1,5 @@
 # Guides
 
-### [Cryptography](/system/kernel/ames/guides/cryptography)
+### [Cryptography](cryptography)
 
 A technical overview of how Ames implements cryptography.

@@ -79,7 +79,7 @@ A `%_` expression resolves to the value of the subject at wing `a`, but modified
 
 `%_` is different from `%=` because `%=` can change the type of a wing with mutations. `%_` preserves the wing type.
 
-See [how wings are resolved](/language/hoon/reference/limbs/).
+See [how wings are resolved](../limbs).
 
 #### Examples
 
@@ -280,7 +280,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 #### Discussion
 
-`%-` is used to call a function; `a` is the function ([`gate`](/language/hoon/reference/rune/bar#-bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](/language/hoon/reference/rune/bar#_-barcab).
+`%-` is used to call a function; `a` is the function ([`gate`](bar#-bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar#_-barcab).
 
 #### Examples
 
@@ -471,7 +471,7 @@ A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `p` 
 
 Note also that `p` is a wing and can therefore be `.`, as in `~(. door sample)`. This little idiom lets you load your sample into the door once instead of over and over.
 
-See also [`|_`](/language/hoon/reference/rune/bar#_-barcab).
+See also [`|_`](bar#_-barcab).
 
 #### Examples
 

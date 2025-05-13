@@ -4,7 +4,7 @@ A type is usually understood to be a set of values.  Hoon values are all nouns, 
 
 Hoon's type system conducts various type-checks at compile time in order to ensure type safety.  For example, one's program might have an integer squaring function, such that given some atom `n` the return value is `n^2`.  The output value should be an unsigned integer (i.e., an atom).  Hoon uses type inference on the expression that defines the squaring function in to determine what possible values it could produce.  If the inferred type 'nests' under the desired type then the program compiles; otherwise the compile fails with a `nest-fail` crash.
 
-(For an introduction on how to use Hoon's type system, see [Chapter 4](/courses/hoon-school/E-types) of the Hoon tutorial.)
+(For an introduction on how to use Hoon's type system, see [Chapter 4](../../../courses/hoon-school/E-types) of the Hoon tutorial.)
 
 In this document we discuss the recursive data structure Hoon uses for type inference.  Because the Hoon compiler is written in Hoon this structure is likewise defined in Hoon.
 
@@ -12,7 +12,7 @@ In this document we discuss the recursive data structure Hoon uses for type infe
 
 Below is a simplified version the `+$  type` arm, which defines the data structure Hoon uses to keep track of types.  But this data structure is used for more than simply type inference.  It also handles the resolution of names, including both faces and arm names.  (See Chapter 1 of the Hoon tutorial for an introduction to name resolution.)
 
-As noted, this is a simplified version of `type`.  We undo and explain the simplifications in the [advanced types](/language/hoon/reference/advanced) section.
+As noted, this is a simplified version of `type`.  We undo and explain the simplifications in the [advanced types](advanced) section.
 
 ```hoon
 +$  term  @tas

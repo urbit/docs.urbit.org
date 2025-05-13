@@ -170,7 +170,7 @@ scry.
 
 `secret` specifies whether it should be encrypted or not. The `spar` is a pair of `ship` and the remote scry path like `/c/x/4/base/sys/hoon/hoon`.
 
-Note that multiparty encrypted scry (specified with a true `secret`) should only be used when you know the publisher expects it (i.e, as part of their application protocol). Otherwise, the two-party [Ames `%chum` task](/system/kernel/ames/reference/tasks#chum) should be used.
+Note that multiparty encrypted scry (specified with a true `secret`) should only be used when you know the publisher expects it (i.e, as part of their application protocol). Otherwise, the two-party [Ames `%chum` task](../../ames/reference/tasks#chum) should be used.
 
 ---
 
@@ -344,13 +344,13 @@ Full transmission.
 [%deal p=sock q=term r=deal]
 ```
 
-Gall translates agent [`task:agent`](/system/kernel/gall/reference/data-types#taskagent)s emitted by agents into `%deal` tasks, as well as requests from over the network. This `task` is kernel-level only, it cannot be used directly from userspace.
+Gall translates agent [`task:agent`](data-types#taskagent)s emitted by agents into `%deal` tasks, as well as requests from over the network. This `task` is kernel-level only, it cannot be used directly from userspace.
 
 Its fields are:
 
 - `p`: A `sock`, a `(pair ship ship)`, the sending and receiving ships.
 - `q`: The source agent.
-- `r`: A [`deal`](/system/kernel/gall/reference/data-types#deal) is either a [`task:agent`](/system/kernel/gall/reference/data-types#taskagent) or a `%raw-poke`. This is the request itself.
+- `r`: A [`deal`](data-types#deal) is either a [`task:agent`](data-types#taskagent) or a `%raw-poke`. This is the request itself.
 
 #### Returns
 
@@ -398,7 +398,7 @@ Suspend agent.
 [%idle =dude]
 ```
 
-The agent specified in `dude` will be suspended. Note it is usually better to suspend agents with a [`%rein`](/system/kernel/clay/reference/tasks#rein---force-apps) `task` to Clay rather than an `%idle` `task` to Gall.
+The agent specified in `dude` will be suspended. Note it is usually better to suspend agents with a [`%rein`](../../clay/reference/tasks#rein---force-apps) `task` to Clay rather than an `%idle` `task` to Gall.
 
 #### Returns
 
@@ -416,7 +416,7 @@ Load agents.
 
 This `task` is given to Gall by Clay. It contains the compiled agents to be installed or updated. This `task` would not be used from userspace.
 
-See the [`load`](/system/kernel/gall/reference/data-types#load) entry in the type reference for more details of the datastructure in this `task`.
+See the [`load`](data-types#load) entry in the type reference for more details of the datastructure in this `task`.
 
 #### Returns
 
@@ -490,7 +490,7 @@ Set verbosity.
 [%spew veb=(list verb)]
 ```
 
-This sets verbosity flags for Gall. Currently there's only one [`verb`](/system/kernel/gall/reference/data-types#verb), `%odd`, which prints messages for unusual error cases. This overwrites the existing verbosity settings: an empty list will turn all verbosity flags off.
+This sets verbosity flags for Gall. Currently there's only one [`verb`](data-types#verb), `%odd`, which prints messages for unusual error cases. This overwrites the existing verbosity settings: an empty list will turn all verbosity flags off.
 
 #### Returns
 

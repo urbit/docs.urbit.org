@@ -102,7 +102,7 @@ A `%vein` scry gets your ship's private key for the specified `life`. It takes a
 
 ## `%vile`
 
-A `%vile` scry gets your `jam`mmed private boot parameters at your ship's current `life`. It takes no additional arguments in its `path`. The type returned is a `@` which is a `jam`med [$seed](/system/kernel/jael/reference/data-types#seed).
+A `%vile` scry gets your `jam`mmed private boot parameters at your ship's current `life`. It takes no additional arguments in its `path`. The type returned is a `@` which is a `jam`med [$seed](data-types#seed).
 
 #### Examples
 
@@ -137,7 +137,7 @@ A `%deed` scry gets the `life`, pubkey and maybe a signature if the ship in ques
 
 ## `%earl`
 
-A `%earl` scry deterministically derives a private key for a moon. Note this is a holdover from an old version of moon infrastructure, the current `|moon` generator doesn't use this and instead generates moon private keys non-deterministically. It takes the moon name and your ship's current `life` (not the moon's `life`) as its `path` like `/~doznec-dozzod-dozzod-dozzod/1`. The type returned is a [$seed](/system/kernel/jael/reference/data-types#seed), the `life` of the moon in the `lyf` field of the `seed` will always be `1`.
+A `%earl` scry deterministically derives a private key for a moon. Note this is a holdover from an old version of moon infrastructure, the current `|moon` generator doesn't use this and instead generates moon private keys non-deterministically. It takes the moon name and your ship's current `life` (not the moon's `life`) as its `path` like `/~doznec-dozzod-dozzod-dozzod/1`. The type returned is a [$seed](data-types#seed), the `life` of the moon in the `lyf` field of the `seed` will always be `1`.
 
 #### Example
 
@@ -175,7 +175,7 @@ A `%saxo` scry gets the sponsorship chain for the target ship (including the tar
 
 ## `%subscriptions`
 
-A `%subscriptions` scry gets the current state of subscriptions to public key updates (typically initiated with a [%public-keys task](/system/kernel/jael/reference/tasks#public-keys)). It takes a `life` as its `path` and returns a triple consisting of the following:
+A `%subscriptions` scry gets the current state of subscriptions to public key updates (typically initiated with a [%public-keys task](tasks#public-keys)). It takes a `life` as its `path` and returns a triple consisting of the following:
 
 ```hoon
 yen=(jug duct ship)  ::  trackers
@@ -194,7 +194,7 @@ The `yen` `jug` maps subscribed `duct`s to the `ship`s they're tracking, and `ne
 
 ## `%sources`
 
-A `%sources` scry gets the current state of Jael's sources for PKI updates. It takes no additional arguments in its `path` and returns a [$state-eth-node](/system/kernel/jael/reference/data-types#state-eth-node).
+A `%sources` scry gets the current state of Jael's sources for PKI updates. It takes no additional arguments in its `path` and returns a [$state-eth-node](data-types#state-eth-node).
 
 #### Example
 

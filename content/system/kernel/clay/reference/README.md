@@ -1,14 +1,14 @@
 # Reference
 
-[Data Types](/system/kernel/clay/reference/data-types)
+[Data Types](data-types)
 
 Explanations of the many data types found throughout Clay.
 
-[Scry Reference](/system/kernel/clay/reference/scry)
+[Scry Reference](scry)
 
 Reference for Clay's various scry endpoints.
 
-[API Reference](/system/kernel/clay/reference/tasks)
+[API Reference](tasks)
 
 Details of the various `task`s you can use to interact with Clay.
 

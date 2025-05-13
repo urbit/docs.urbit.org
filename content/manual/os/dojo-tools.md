@@ -3083,7 +3083,7 @@ sweep: MB/176.019.156
 
 Deduplicate memory.
 
-Note this can take a large amount of memory to complete if the ship's existing memory footprint is large. If the host OS has limited memory, it may be more efficient to shut down the ship and [run it directly from the runtime](/manual/running/vere#meld).
+Note this can take a large amount of memory to complete if the ship's existing memory footprint is large. If the host OS has limited memory, it may be more efficient to shut down the ship and [run it directly from the runtime](../running/vere#meld).
 
 #### Example
 

@@ -1,9 +1,9 @@
 # Reference
 
-### [API Reference](/system/kernel/khan/reference/tasks)
+### [API Reference](tasks)
 
 The `task`s Khan takes and the `gift`s it returns.
 
-### [Data Types](/system/kernel/khan/reference/types)
+### [Data Types](types)
 
 Reference documentation of the data types used by Khan.

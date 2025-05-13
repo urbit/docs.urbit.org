@@ -4,9 +4,9 @@ In this lightning tutorial, we're going to build a voting app for groups called 
 
 ![tally screenshot](https://media.urbit.org/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
 
-The front-end of the app will be written in [Sail](/glossary/sail), Urbit's XML language built into the Hoon compiler. Using Sail means we don't need to create a separate React front-end, and can instead serve pages directly from our back-end. This works well for static pages but a full JS-enabled front-end would be preferred for a dynamic page.
+The front-end of the app will be written in [Sail](../../../../glossary/sail), Urbit's XML language built into the Hoon compiler. Using Sail means we don't need to create a separate React front-end, and can instead serve pages directly from our back-end. This works well for static pages but a full JS-enabled front-end would be preferred for a dynamic page.
 
-This app depends on the groups app [Squad](https://urbit.org/applications/~pocwet/docs), which we wrote in [another lightning tutorial](/userspace/apps/examples/quickstart/groups-guide). If you'd like to check out the finished app, you can install it from `~pocwet/tally` with the `|install ~pocwet %tally` command in your ship's Dojo, or else install it from your ship's homescreen. Before installing Tally, you should first install Squad from `~pocwet/squad`.
+This app depends on the groups app [Squad](https://urbit.org/applications/~pocwet/docs), which we wrote in [another lightning tutorial](groups-guide). If you'd like to check out the finished app, you can install it from `~pocwet/tally` with the `|install ~pocwet %tally` command in your ship's Dojo, or else install it from your ship's homescreen. Before installing Tally, you should first install Squad from `~pocwet/squad`.
 
 The app source is available in the [`docs-examples` repo on Github](https://github.com/urbit/docs-examples), in the `voting-app` folder. It has two folders inside:
 
@@ -1881,6 +1881,6 @@ Now our friends will be able to install it directly from us with `|install <our 
 
 ## Next steps
 
-To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](/courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](/courses/app-school) will teach you everything you need to know about app development.
+To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](../../../../courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](../../../../courses/app-school) will teach you everything you need to know about app development.
 
-Along with these self-directed guides, we also run regular courses on both Hoon and app development. You can check the [Courses](/courses) page for details, or join the `~hiddev-dannut/new-hooniverse` group on Urbit.
+Along with these self-directed guides, we also run regular courses on both Hoon and app development. You can check the [Courses](../../../../courses) page for details, or join the `~hiddev-dannut/new-hooniverse` group on Urbit.

@@ -74,7 +74,7 @@ Text string with interpolation.
 
 #### Syntax
 
-A [$tape](/language/hoon/reference/stdlib/2q#tape)
+A [$tape](../stdlib/2q#tape)
 
 `"abcdefg"`
 

@@ -2,18 +2,18 @@
 
 Resources about the Urbit OS.
 
-### [Move Trace](/system/kernel/arvo/guides/move-trace)
+### [Move Trace](move-trace)
 
 How to run an interpret a move trace.
 
-### [Scries](/system/kernel/arvo/guides/scry)
+### [Scries](scry)
 
 An overview of Arvo's scry system.
 
-### [Cryptography](/system/kernel/arvo/guides/cryptography)
+### [Cryptography](cryptography)
 
 An overview of cryptography in Arvo.
 
-### [Subscriptions](/system/kernel/arvo/guides/subscriptions)
+### [Subscriptions](subscriptions)
 
 A conceptual overview of subscriptions in Arvo.

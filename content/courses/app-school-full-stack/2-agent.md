@@ -215,7 +215,7 @@ Here we have our `++on-peek` arm. The scry endpoints we've defined are divided i
 
 - `/x/entries/all` - Retrieve all entries in the `$journal`. Our front-end will use lazy-loading and only get a few at a time, so it won't use this. It's nice to have it though, in case other agents want to get that data.
 
-- `/x/entries/before/[before]/[max]` - Retrieve at most `[max]` entries older than the entry on `[before]` date. This is so our lazy-loading front-end can progressively load more as the user scrolls down the page. The Javascript front-end will format numbers without dot separators, so the path will look like `/x/entries/before/1648051573109/10`. We therefore have to use the [`++dem`](/language/hoon/reference/stdlib/4i#dem) parsing `rule` in a [`++rash`](/language/hoon/reference/stdlib/4g#rash) parser to convert it to an ordinary atom. We then use the `++tap:log-orm` `mop` function to retrieve the requested range as a list and return it as an `$update` with a `%journal-update` mark.
+- `/x/entries/before/[before]/[max]` - Retrieve at most `[max]` entries older than the entry on `[before]` date. This is so our lazy-loading front-end can progressively load more as the user scrolls down the page. The Javascript front-end will format numbers without dot separators, so the path will look like `/x/entries/before/1648051573109/10`. We therefore have to use the [`++dem`](../../language/hoon/reference/stdlib/4i#dem) parsing `rule` in a [`++rash`](../../language/hoon/reference/stdlib/4g#rash) parser to convert it to an ordinary atom. We then use the `++tap:log-orm` `mop` function to retrieve the requested range as a list and return it as an `$update` with a `%journal-update` mark.
 
 - `/x/entries/between/[start]/[end]` - Retrieve all journal entries between two dates. This is so our front-end can have a search function, where the user can enter a start and end date and get all the entries in between. The `++lot:j-orm` `mop` function returns the subset of a `mop` between the two given keys as a `mop`, and then we call `++tap:j-orm` to convert it to a list. The `++lot:j-orm function` excludes the start and end values, so we subtract 1 from the start and add 1 to the end to make sure it includes the full range.
 
@@ -237,7 +237,7 @@ The full agent source can be viewed [here](https://github.com/urbit/docs-example
 
 ## Resources
 
-- [App School I](/courses/app-school) - App School I covers all aspects of writing Gall agents in detail.
+- [App School I](../app-school) - App School I covers all aspects of writing Gall agents in detail.
 
 - [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `mop`s, and is well commented.
 

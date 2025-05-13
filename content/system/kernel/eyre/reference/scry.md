@@ -8,7 +8,7 @@ All examples are run from the dojo.
 
 ## `/cors`
 
-An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](/system/kernel/eyre/reference/data-types#cors-registry) which contains the `set`s of approved, rejected and requested origins.
+An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](data-types#cors-registry) which contains the `set`s of approved, rejected and requested origins.
 
 #### Example {#example-1}
 
@@ -131,7 +131,7 @@ The `[url]` must be a knot-encoded `@t` rather than just a plain `@t`, so you'll
 
 ## `%bindings`
 
-A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's URL path bindings. The type returned is a `(list [binding:eyre duct action:eyre])` (see the [$binding](/system/kernel/eyre/reference/data-types#binding) & [$action](/system/kernel/eyre/reference/data-types#action) sections of the Data Types document for details).
+A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's URL path bindings. The type returned is a `(list [binding:eyre duct action:eyre])` (see the [$binding](data-types#binding) & [$action](data-types#action) sections of the Data Types document for details).
 
 #### Example {#example-5}
 
@@ -160,13 +160,13 @@ A scry with `cache` in place of the `desk` in the `beak` will return Eyre's enti
 (map url=@t [aeon=@ud val=(unit cache-entry:eyre)])
 ```
 
-The map's `url` key is a URL path like `/foo/bar/baz.jpg` in a `cord`. The `aeon` is the revision number, and `val` is either the cache entry or null if it's been tombstoned. See the [$cache-entry](/system/kernel/eyre/reference/data-types#cache-entry) section of the Data Types document for details of its type.
+The map's `url` key is a URL path like `/foo/bar/baz.jpg` in a `cord`. The `aeon` is the revision number, and `val` is either the cache entry or null if it's been tombstoned. See the [$cache-entry](data-types#cache-entry) section of the Data Types document for details of its type.
 
 ---
 
 ## `%connections`
 
-A scry with `connections` in place of the `desk` in the `beak` will return all open HTTP connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [$outstanding-connection](/system/kernel/eyre/reference/data-types#outstanding-connection) section of the Data Types document for details).
+A scry with `connections` in place of the `desk` in the `beak` will return all open HTTP connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [$outstanding-connection](data-types#outstanding-connection) section of the Data Types document for details).
 
 #### Example {#example-6}
 
@@ -179,7 +179,7 @@ A scry with `connections` in place of the `desk` in the `beak` will return all o
 
 ## `%authentication-state`
 
-A scry with `authentication-state` in place of the `desk` in the `beak` will return authentication details of all current sessions. The type returned is a [$authentication-state](/system/kernel/eyre/reference/data-types#authentication-state). The `p` field is the cookie sans the `urbauth-[ship]=` part.
+A scry with `authentication-state` in place of the `desk` in the `beak` will return authentication details of all current sessions. The type returned is a [$authentication-state](data-types#authentication-state). The `p` field is the cookie sans the `urbauth-[ship]=` part.
 
 #### Example {#example-7}
 
@@ -196,7 +196,7 @@ A scry with `authentication-state` in place of the `desk` in the `beak` will ret
 
 ## `%channel-state`
 
-A scry with `channel-state` in place of the `desk` in the `beak` will return details of the state of each channel. The type returned is a [channel-state](/system/kernel/eyre/reference/data-types#channel-state).
+A scry with `channel-state` in place of the `desk` in the `beak` will return details of the state of each channel. The type returned is a [channel-state](data-types#channel-state).
 
 #### Example {#example-8}
 

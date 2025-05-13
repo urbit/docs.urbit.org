@@ -94,7 +94,7 @@ Where:
 
 The output of a `%peek` command is `[%peek (unit (unit scry-output))]`, where `~` means that the scry endpoint is invalid, and `[~ ~]` means that the scry resolved to nothing.
 
-See [here](/courses/app-school/10-scry) for more information on scrying.
+See [here](../../../courses/app-school/10-scry) for more information on scrying.
 
 #### `%peel`
 
@@ -144,7 +144,7 @@ All three produce the same output if an error occured while running the thread: 
 
 If the thread succeeded, `%fard` and `%lard` produce `[%arow %& %noun vase]`. `%fyrd` produces `[%avow %& mark noun]`, where `mark` is the output mark and `noun` is the output as a raw noun after mark conversion.
 
-See [here](/userspace/threads/tutorials/basics/fundamentals) for more information about threads.
+See [here](../../../userspace/threads/tutorials/basics/fundamentals) for more information about threads.
 
 ### `urbit eval`
 

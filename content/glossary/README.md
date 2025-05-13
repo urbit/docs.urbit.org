@@ -4,248 +4,248 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ## A
 
-[Agent](/glossary/agent)  
-[Ames](/glossary/ames)  
-[Api](/glossary/api)  
-[Aqua](/glossary/aqua)  
-[Arm](/glossary/arm)  
-[Arvo](/glossary/arvo)  
-[Atom](/glossary/atom)  
-[Aural Ascii](/glossary/aural-ascii)  
-[Aura](/glossary/aura)  
-[Axis](/glossary/axis)  
-[Axes](/glossary/axes)  
-[Azimuth](/glossary/azimuth)  
+[Agent](agent)  
+[Ames](ames)  
+[Api](api)  
+[Aqua](aqua)  
+[Arm](arm)  
+[Arvo](arvo)  
+[Atom](atom)  
+[Aural Ascii](aural-ascii)  
+[Aura](aura)  
+[Axis](axis)  
+[Axes](axes)  
+[Azimuth](azimuth)  
 
 ---
 
 ## B
 
-[Battery](/glossary/battery)  
-[Behn](/glossary/behn)  
-[Bowl](/glossary/bowl)  
-[Bridge](/glossary/bridge)  
-[Bunt](/glossary/bunt)  
+[Battery](battery)  
+[Behn](behn)  
+[Bowl](bowl)  
+[Bridge](bridge)  
+[Bunt](bunt)  
 
 ---
 
 ## C
 
-[Card](/glossary/card)  
-[Case](/glossary/case)  
-[Cask](/glossary/cask)  
-[Cell](/glossary/cell)  
-[Censures](/glossary/censures)  
-[Claims](/glossary/claims)  
-[Clam](/glossary/clam)  
-[Clay](/glossary/clay)  
-[Cold Atom](/glossary/cold-atom)  
-[Comet](/glossary/comet)  
-[Commit](/glossary/commit)  
-[Cons](/glossary/cons)  
-[Context](/glossary/context)  
-[Cord](/glossary/cord)  
-[Core](/glossary/core)  
-[Cue](/glossary/cue)  
+[Card](card)  
+[Case](case)  
+[Cask](cask)  
+[Cell](cell)  
+[Censures](censures)  
+[Claims](claims)  
+[Clam](clam)  
+[Clay](clay)  
+[Cold Atom](cold-atom)  
+[Comet](comet)  
+[Commit](commit)  
+[Cons](cons)  
+[Context](context)  
+[Cord](cord)  
+[Core](core)  
+[Cue](cue)  
 
 ---
 
 ## D
 
-[Delegated Sending](/glossary/delegated-sending)  
-[Desk](/glossary/desk)  
-[Dill](/glossary/dill)  
-[Docvote](/glossary/docvote)  
-[Dojo](/glossary/dojo)  
-[Door](/glossary/door)  
-[Double Boot](/glossary/double-boot)  
-[Dry Gate](/glossary/dry-gate)  
-[Duct](/glossary/duct)  
+[Delegated Sending](delegated-sending)  
+[Desk](desk)  
+[Dill](dill)  
+[Docvote](docvote)  
+[Dojo](dojo)  
+[Door](door)  
+[Double Boot](double-boot)  
+[Dry Gate](dry-gate)  
+[Duct](duct)  
 
 ---
 
 ## E
 
-[Ecliptic](/glossary/ecliptic)  
-[Entropy](/glossary/entropy)  
-[Eventlog](/glossary/eventlog)  
-[Eyre](/glossary/eyre)  
+[Ecliptic](ecliptic)  
+[Entropy](entropy)  
+[Eventlog](eventlog)  
+[Eyre](eyre)  
 
 ---
 
 ## F
 
-[Face](/glossary/face)  
-[Fact](/glossary/fact)  
-[Foo Bar Baz](/glossary/foo-bar-baz)  
+[Face](face)  
+[Fact](fact)  
+[Foo Bar Baz](foo-bar-baz)  
 
 ---
 
 ## G
 
-[Galaxy](/glossary/galaxy)  
-[Gall](/glossary/gall)  
-[Garden](/glossary/garden)  
-[Gate](/glossary/gate)  
-[Generator](/glossary/generator)  
-[Gift](/glossary/gift)  
-[Glob](/glossary/glob)  
+[Galaxy](galaxy)  
+[Gall](gall)  
+[Garden](garden)  
+[Gate](gate)  
+[Generator](generator)  
+[Gift](gift)  
+[Glob](glob)  
 
 ---
 
 ## H
 
-[Hdwallet](/glossary/hdwallet)  
-[Head](/glossary/head)  
-[Helm](/glossary/helm)  
-[Hood](/glossary/hood)  
-[Hoon](/glossary/hoon)  
+[Hdwallet](hdwallet)  
+[Head](head)  
+[Helm](helm)  
+[Hood](hood)  
+[Hoon](hoon)  
 
 ## I
 
-[Invite Tree](/glossary/invite-tree)  
-[Iris](/glossary/iris)  
+[Invite Tree](invite-tree)  
+[Iris](iris)  
 
 ---
 
 ## J
 
-[Jael](/glossary/jael)  
-[Jam](/glossary/jam)  
-[Jet](/glossary/jet)  
+[Jael](jael)  
+[Jam](jam)  
+[Jet](jet)  
 
 ---
 
 ## K
 
-[Kelvin](/glossary/kelvin)  
-[Kernel](/glossary/kernel)  
-[Keyfile](/glossary/keyfile)  
-[Keywords](/glossary/keywords)  
-[Khan](/glossary/khan)  
-[Kiln](/glossary/kiln)  
+[Kelvin](kelvin)  
+[Kernel](kernel)  
+[Keyfile](keyfile)  
+[Keywords](keywords)  
+[Khan](khan)  
+[Kiln](kiln)  
 
 ---
 
 ## L
 
-[Landscape](/glossary/landscape)  
-[Leg](/glossary/leg)  
-[Lark](/glossary/lark)  
-[Lick](/glossary/lick)  
-[List](/glossary/list)  
-[Loobean](/glossary/loobean)  
-[Lull](/glossary/lull)  
+[Landscape](landscape)  
+[Leg](leg)  
+[Lark](lark)  
+[Lick](lick)  
+[List](list)  
+[Loobean](loobean)  
+[Lull](lull)  
 
 ---
 
 ## M
 
-[Mark](/glossary/mark)  
-[Metals](/glossary/metals)  
-[Mold](/glossary/mold)  
-[Monad](/glossary/monad)  
-[Moon](/glossary/moon)  
-[Move](/glossary/move)  
+[Mark](mark)  
+[Metals](metals)  
+[Mold](mold)  
+[Monad](monad)  
+[Moon](moon)  
+[Move](move)  
 
 ## N
 
-[Nock](/glossary/nock)  
-[Noun](/glossary/noun)  
-[Null](/glossary/null)  
+[Nock](nock)  
+[Noun](noun)  
+[Null](null)  
 
 ## O
 
-[OTA Updates](/glossary/ota-updates)  
+[OTA Updates](ota-updates)  
 
 ---
 
 ## P
 
-[Path](/glossary/path)  
-[Path Prefix](/glossary/path-prefix)  
-[Patp](/glossary/patp)  
-[Payload](/glossary/payload)  
-[Peek](/glossary/peek)  
-[Ph](/glossary/ph)  
-[Pier](/glossary/pier)  
-[Pill](/glossary/pill)  
-[Planet](/glossary/planet)  
-[Poke](/glossary/poke)  
-[Proxies](/glossary/proxies)  
+[Path](path)  
+[Path Prefix](path-prefix)  
+[Patp](patp)  
+[Payload](payload)  
+[Peek](peek)  
+[Ph](ph)  
+[Pier](pier)  
+[Pill](pill)  
+[Planet](planet)  
+[Poke](poke)  
+[Proxies](proxies)  
 
 ---
 
 ## R
 
-[Remote Scry](/glossary/remote-scry)  
-[Replay](/glossary/replay)  
-[Reset](/glossary/reset)  
-[Roller](/glossary/roller)  
-[Rollups](/glossary/rollups)  
-[Rune](/glossary/rune)  
-[Runtime](/glossary/runtime)  
+[Remote Scry](remote-scry)  
+[Replay](replay)  
+[Reset](reset)  
+[Roller](roller)  
+[Rollups](rollups)  
+[Rune](rune)  
+[Runtime](runtime)  
 
 ---
 
 ## S
 
-[Sail](/glossary/sail)  
-[Sample](/glossary/sample)  
-[Scry](/glossary/scry)  
-[Senate](/glossary/senate)  
-[Ship](/glossary/ship)  
-[Slam](/glossary/slam)  
-[Spider](/glossary/spider)  
-[Sponsor](/glossary/sponsor)  
-[Star](/glossary/star)  
-[String](/glossary/string)  
-[Subject](/glossary/subject)  
-[Subject-oriented Programming](/glossary/subject-oriented-programming)  
-[Subscription](/glossary/subscription)  
+[Sail](sail)  
+[Sample](sample)  
+[Scry](scry)  
+[Senate](senate)  
+[Ship](ship)  
+[Slam](slam)  
+[Spider](spider)  
+[Sponsor](sponsor)  
+[Star](star)  
+[String](string)  
+[Subject](subject)  
+[Subject-oriented Programming](subject-oriented-programming)  
+[Subscription](subscription)  
 
 ---
 
 ## T
 
-[Tail](/glossary/tail)  
-[Tape](/glossary/tape)  
-[Term](/glossary/term)  
-[Thread](/glossary/thread)  
-[Trap](/glossary/trap)  
+[Tail](tail)  
+[Tape](tape)  
+[Term](term)  
+[Thread](thread)  
+[Trap](trap)  
 
 ---
 
 ## U
 
-[Udon](/glossary/udon)  
-[Upgrade](/glossary/upgrade)  
-[Userspace](/glossary/userspace)  
+[Udon](udon)  
+[Upgrade](upgrade)  
+[Userspace](userspace)  
 
 ---
 
 ## V
 
-[Vane](/glossary/vane)  
-[Vase](/glossary/vase)  
-[Vere](/glossary/vere)  
-[Voting](/glossary/voting)  
+[Vane](vane)  
+[Vase](vase)  
+[Vere](vere)  
+[Voting](voting)  
 
 ---
 
 ## W
 
-[Warm Atom](/glossary/warm-atom)  
-[Wet Gate](/glossary/wet-gate)  
-[Wing](/glossary/wing)  
-[Wire](/glossary/wire)  
-[Wrapper](/glossary/wrapper)  
+[Warm Atom](warm-atom)  
+[Wet Gate](wet-gate)  
+[Wing](wing)  
+[Wire](wire)  
+[Wrapper](wrapper)  
 
 ---
 
 ## Z
 
-[Zod](/glossary/zod)  
-[Zuse](/glossary/zuse)  
+[Zod](zod)  
+[Zuse](zuse)  
 
 ---

@@ -14,9 +14,9 @@ These are the Dill `task`s not otherwise categorized as [session tasks](#session
 [%boot lit=? p=*]
 ```
 
-This `task` is used only once, when Arvo first enters the [adult stage](/system/kernel/arvo#structural-interface-core). Dill is technically the first vane to be activated, via the `%boot` `task`, which then sends Jael (considered the "true" first vane) the `%dawn` or `%fake` `task` wrapped in the `%boot` `task`. Jael then goes on to call `%init` `task`s for other vanes (including Dill).
+This `task` is used only once, when Arvo first enters the [adult stage](../../arvo#structural-interface-core). Dill is technically the first vane to be activated, via the `%boot` `task`, which then sends Jael (considered the "true" first vane) the `%dawn` or `%fake` `task` wrapped in the `%boot` `task`. Jael then goes on to call `%init` `task`s for other vanes (including Dill).
 
-`lit` specifies whether to boot in lite mode. `p` is either a [%dawn](/system/kernel/jael/reference/tasks#dawn) or [%fake](/system/kernel/jael/reference/tasks#fake) `task:jael`. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
+`lit` specifies whether to boot in lite mode. `p` is either a [%dawn](../../jael/reference/tasks#dawn) or [%fake](../../jael/reference/tasks#fake) `task:jael`. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
 
 This `task` would not be used from userspace.
 
@@ -50,7 +50,7 @@ Dill returns no `gift` in response to a `%crop` `task`.
 
 A `%flog` `task` is a wrapper over a `task` sent by another vane. Dill removes the wrapper and sends the bare `task` to itself over the default `duct`.
 
-A `%flog` `task` takes a [$flog](/system/kernel/dill/reference/data-types#flog) as its argument. A `$flog` is a subset of Dill's `task`s.
+A `%flog` `task` takes a [$flog](data-types#flog) as its argument. A `$flog` is a subset of Dill's `task`s.
 
 #### Returns
 
@@ -92,7 +92,7 @@ Dill does not immediately return anything, but will give you a `%logs` gifts eac
 [%logs =told]
 ```
 
-A `$told` is either a [`%crud`](#crud), [`%talk`](#talk) or [`%text`](#text) task. See the [`$told`](/system/kernel/dill/reference/data-types#dill-belt) entry in the data types reference for more details.
+A `$told` is either a [`%crud`](#crud), [`%talk`](#talk) or [`%text`](#text) task. See the [`$told`](data-types#dill-belt) entry in the data types reference for more details.
 
 ---
 
@@ -152,7 +152,7 @@ Task for session.
 [%shot ses=@tas task=session-task]
 ```
 
-A `$session-task` is one of these `task`s: [`%belt`](#belt), [`%blew`](#blew), [`%flee`](#flee), [`%hail`](#hail), [`%open`](#open), [`%shut`](#shut), [`%view`](#view). See the [`$session-task`](/system/kernel/dill/reference/data-types#session-task) entry in the data types reference.
+A `$session-task` is one of these `task`s: [`%belt`](#belt), [`%blew`](#blew), [`%flee`](#flee), [`%hail`](#hail), [`%open`](#open), [`%shut`](#shut), [`%view`](#view). See the [`$session-task`](data-types#session-task) entry in the data types reference.
 
 ---
 
@@ -164,7 +164,7 @@ Toggle Arvo verbose mode.
 [%verb ~]
 ```
 
-This `task` toggles verbose mode for all of Arvo, which is located here since Dill is the vane that prints errors. To be precise, `%verb` toggles the laconic bit `lac` in the [Arvo state](/system/kernel/arvo#the-state) by passing a `%verb` `waif` to Arvo.
+This `task` toggles verbose mode for all of Arvo, which is located here since Dill is the vane that prints errors. To be precise, `%verb` toggles the laconic bit `lac` in the [Arvo state](../../arvo#the-state) by passing a `%verb` `waif` to Arvo.
 
 #### Returns
 
@@ -176,7 +176,7 @@ Dill does not return a `gift` in response to a `%verb` `task`.
 
 These `task`s are for interacting with a particular session. These all would normally be wrapped in a [`%shot`](#shot) `task` to specify the session, rather than sent directly.
 
-This subset of Dill's `task`s are defined in the [`$session-task` type](/system/kernel/dill/reference/data-types#session-task).
+This subset of Dill's `task`s are defined in the [`$session-task` type](data-types#session-task).
 
 ### `%belt`
 
@@ -186,7 +186,7 @@ Terminal input.
 [%belt p=belt]
 ```
 
-The [$belt](/system/kernel/dill/reference/data-types#belt) in `p` contains the input such as which key was pressed. Dill will convert the `$belt` into a [$dill-belt](/system/kernel/dill/reference/data-types#dill-belt) and `%poke` it into the session handler agent for the session in question.
+The [$belt](data-types#belt) in `p` contains the input such as which key was pressed. Dill will convert the `$belt` into a [$dill-belt](data-types#dill-belt) and `%poke` it into the session handler agent for the session in question.
 
 This `task` should be wrapped in a [`%shot`](#shot) `task` to specify the session. Without the `%shot` wrapper, it will use the default session (`%$`).
 
@@ -204,9 +204,9 @@ Terminal resized.
 [%blew p=blew]
 ```
 
-The [$blew](/system/kernel/dill/reference/data-types#blew) specifies the new dimensions.
+The [$blew](data-types#blew) specifies the new dimensions.
 
-Dill will convert the `$blew` into a `%rez` [$dill-belt](/system/kernel/dill/reference/data-types#dill-belt) and `%poke`s the session handler (typically `drum`) with it.
+Dill will convert the `$blew` into a `%rez` [$dill-belt](data-types#dill-belt) and `%poke`s the session handler (typically `drum`) with it.
 
 This `task` would not typically be used from userspace. Instead, it would come in from the runtime for the default session (`%$`) when the actual terminal were resized. If in an odd scenario it were used from userspace, it would need to be wrapped in a [`%shot`](#shot) `task` to specify a session other than `%$`.
 
@@ -240,7 +240,7 @@ Refresh.
 [%hail ~]
 ```
 
-Dill converts a `%hail` `task` into a `%hey` [$dill-belt](/system/kernel/dill/reference/data-types#dill-belt) and `%poke`s the session handler (typically `%drum`) with it.
+Dill converts a `%hail` `task` into a `%hey` [$dill-belt](data-types#dill-belt) and `%poke`s the session handler (typically `%drum`) with it.
 
 This `task` would not typically be used from userspace. If in an odd scenario it were used from userspace, it would need to be wrapped in a [`%shot`](#shot) `task` to specify a session other than `%$`.
 
@@ -262,7 +262,7 @@ This `task` is always wrapped in a [`%shot`](#shot) `task`, and creates the new 
 
 The Gall agent specified in `p` is the session handler or stand-alone application. The `q` field contains a list of `gill:gall`, which are pairs of `[ship term]`, representing an app on a ship. The `gill`s in `q` are the list of apps being managed by the session handler `q` that should be notified of being connected to this session. If `p` were a stand-alone application, `q` could be empty, or else just contain that one app.
 
-Dill will poke every agent listed in  `q` (local or remote) with a [`%yow` `$dill-belt`](/system/kernel/dill/reference/data-types#dill-belt), to let it know it's been connected. It will also `%watch` the agent `p` for [`$dill-blit`](/system/kernel/dill/reference/data-types#dill-blit)s in `%fact`s with a `%dill-blit` `mark` on the `path` `/dill/[ses]` where `ses` is the session specified in the [`%shot`](#shot) wrapper.
+Dill will poke every agent listed in  `q` (local or remote) with a [`%yow` `$dill-belt`](data-types#dill-belt), to let it know it's been connected. It will also `%watch` the agent `p` for [`$dill-blit`](data-types#dill-blit)s in `%fact`s with a `%dill-blit` `mark` on the `path` `/dill/[ses]` where `ses` is the session specified in the [`%shot`](#shot) wrapper.
 
 Additionally, the source of the `%open` request (as determined by the `duct`, typically the agent in `p`) will begin receiving terminal output gifts for the session in question. Essentially, it behaves as though you also passed it a [`%view`](#view) task.
 
@@ -274,7 +274,7 @@ Dill does not give a `gift` in direct response to an `%open` `task`. It will, ho
 [%blit p=(list blit)]
 ```
 
-See the [`$blit`](/system/kernel/dill/reference/data-types#blit) entry in the data type reference for details of what it can contain.
+See the [`$blit`](data-types#blit) entry in the data type reference for details of what it can contain.
 
 This subscription for `$blit`s can be stopped with a [`%flee`](#flee) `task` at any time.
 
@@ -316,7 +316,7 @@ Dill will begin giving a copy of all `%blit`s for the session specified in the [
 [%blit p=(list blit)]
 ```
 
-See the [`$blit`](/system/kernel/dill/reference/data-types#blit) entry in the data type reference for more details.
+See the [`$blit`](data-types#blit) entry in the data type reference for more details.
 
 The subscription can be ended with a [`%flee`](#flee) `task`.
 
@@ -324,7 +324,7 @@ The subscription can be ended with a [`%flee`](#flee) `task`.
 
 ## Told Tasks
 
-This subset of Dill `task`s are for printing things. They are defined in the [`$told` type](/system/kernel/dill/reference/data-types#told).
+This subset of Dill `task`s are for printing things. They are defined in the [`$told` type](data-types#told).
 
 ### `%crud`
 

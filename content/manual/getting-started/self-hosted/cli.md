@@ -2,7 +2,7 @@
 
 This guide covers running the Urbit runtime (Vere) using the command line. This can be run on your local machine or a server in the cloud, we just cover the local case here. The runtime is what interprets the Urbit kernel code (Arvo) into commands your specific machine (macOS or Linux) understands.
 
-Note there is a much more comprehensive [cloud hosting guide](/manual/getting-started/self-hosted/cloud-hosting) which walks through setting up Urbit on a [Digital Ocean](https://www.digitalocean.com/) VPS.
+Note there is a much more comprehensive [cloud hosting guide](cloud-hosting) which walks through setting up Urbit on a [Digital Ocean](https://www.digitalocean.com/) VPS.
 
 ### 1. System Requirements {#about-swap-space}
 
@@ -67,7 +67,7 @@ An Urbit instance is intrinsically tied to a unique identity called an **Urbit I
 
 - **Comet:** A comet is an identity which anyone can generate themselves, for free. It's a good option to try out Urbit. Comets are limited by the fact they cannot be "factory reset", meaning if your urbit somehow becomes broken or corrupted then you'll have to start again with a new identity. In that sense, they are impermanent.
 
-- **Planet:** A planet is a permanent identity which you own forever. Planets are the class intended for individuals. While there are essentially an unlimited number of comets, planets are more scarce (preventing spamming, among other things). This scarcity means they usually aren't free (though sometimes nice people give them away). This guide will assume you've already acquired a planet. If you haven't, you can refer to the ["Get an Urbit ID" guide](/manual/getting-started/get-id) before continuing.
+- **Planet:** A planet is a permanent identity which you own forever. Planets are the class intended for individuals. While there are essentially an unlimited number of comets, planets are more scarce (preventing spamming, among other things). This scarcity means they usually aren't free (though sometimes nice people give them away). This guide will assume you've already acquired a planet. If you haven't, you can refer to the ["Get an Urbit ID" guide](../get-id) before continuing.
 
 Follow the instructions for your case:
 
@@ -212,4 +212,4 @@ Then `.run` should work as expected and future runtime upgrades can be done via 
 
 ## Next steps
 
-Learn how to [get around your urbit](/manual/getting-started/additional/getting-around).
+Learn how to [get around your urbit](../additional/getting-around).

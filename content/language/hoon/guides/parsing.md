@@ -2,7 +2,7 @@
 
 This document serves as an introduction to parsing text with Hoon. No prior knowledge of parsing is required, and we will explain the basic structure of how parsing works in a purely functional language such as Hoon before moving on to how it is implemented in Hoon.
 
-**Note:** For JSON printing/parsing and encoding/decoding, see the [JSON Guide](/language/hoon/guides/json-guide).
+**Note:** For JSON printing/parsing and encoding/decoding, see the [JSON Guide](language/hoon/guides/json-guide).
 
 ## What is parsing? {#what-is-parsing}
 
@@ -89,9 +89,9 @@ A `rule` is a gate which takes in a `nail` and returns an `edge` - in other word
 
 ## Parser builders
 
-These functions are used to build `rule`s (i.e. parsers), and thus are often called rule-builders. For a complete list of parser builders, see [4f: Parsing (Rule-Builders)](/language/hoon/reference/stdlib/4f), but also the more specific functions in [4h: Parsing (ASCII Glyphs)](/language/hoon/reference/stdlib/4h), [4i: Parsing (Useful Idioms)](/language/hoon/reference/stdlib/4i), [4j: Parsing (Bases and Base Digits)](/language/hoon/reference/stdlib/4j), [4l: Atom Parsing](/language/hoon/reference/stdlib/4l).
+These functions are used to build `rule`s (i.e. parsers), and thus are often called rule-builders. For a complete list of parser builders, see [4f: Parsing (Rule-Builders)](language/hoon/reference/stdlib/4f), but also the more specific functions in [4h: Parsing (ASCII Glyphs)](language/hoon/reference/stdlib/4h), [4i: Parsing (Useful Idioms)](language/hoon/reference/stdlib/4i), [4j: Parsing (Bases and Base Digits)](language/hoon/reference/stdlib/4j), [4l: Atom Parsing](language/hoon/reference/stdlib/4l).
 
-### [`+just`](/language/hoon/reference/stdlib/4f/#just)
+### [`+just`](language/hoon/reference/stdlib/4f/#just)
 
 The most basic rule builder, `+just` takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `tape` of the input `nail`.
 
@@ -115,7 +115,7 @@ Now we have that `p.edg` is the same as the input `hair`, `[1 1]`, meaning the p
 
 Later we will use [+star](#star) to string together a sequence of `+just`s in order to parse multiple characters at once.
 
-### [`+jest`](/language/hoon/reference/stdlib/4f/#jest)
+### [`+jest`](language/hoon/reference/stdlib/4f/#jest)
 
 `+jest` is a `rule` builder used to match a `cord`. It takes an input `cord` and produces a `rule` that attempts to match that `cord` against the beginning of the input.
 
@@ -148,7 +148,7 @@ What happens when `+jest` fails?
 
 Despite the fact that `'bc'` appears in `"abc"`, because it was not at the beginning the parse failed. We will see in [parser combinators](#parser-combinators) how to modify this `rule` so that it finds `bc` successfully.
 
-### [`+shim`](/language/hoon/reference/stdlib/4f/#shim)
+### [`+shim`](language/hoon/reference/stdlib/4f/#shim)
 
 `+shim` is used to parse characters within a given range. It takes in two atoms and returns a `rule`.
 
@@ -157,7 +157,7 @@ Despite the fact that `'bc'` appears in `"abc"`, because it was not at the begin
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-### [`+next`](/language/hoon/reference/stdlib/4f/#next)
+### [`+next`](language/hoon/reference/stdlib/4f/#next)
 
 `+next` is a simple `rule` that takes in the next character and returns it as the parsing result.
 
@@ -166,7 +166,7 @@ Despite the fact that `'bc'` appears in `"abc"`, because it was not at the begin
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-### [`+cold`](/language/hoon/reference/stdlib/4f/#cold)
+### [`+cold`](language/hoon/reference/stdlib/4f/#cold)
 
 `+cold` is a `rule` builder that takes in a constant noun we'll call `cus` and a `rule` we'll call `sef`. It returns a `rule` identical to the `sef` except it replaces the parsing result with `cus`.
 
@@ -177,9 +177,9 @@ Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
 [p=[p=1 q=2] q=[~ u=[p=%foo q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](/userspace/apps/guides/cli-tutorial). We usher the reader there to find an example where `+cold` is used.
+One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](userspace/apps/guides/cli-tutorial). We usher the reader there to find an example where `+cold` is used.
 
-### [`+less`](/language/hoon/reference/stdlib/4f/#less)
+### [`+less`](language/hoon/reference/stdlib/4f/#less)
 
 `+less` builds a `rule` to exclude matches to its first argument.  It is commonly used to filter out an undesired match.
 
@@ -195,7 +195,7 @@ Here we see that the first case refuses to parse `buc` `$` (which is not present
 
 The second case attempts to parse the excluded character `ace` ` ` and fails on the first character as it should.
 
-### [`+knee`](/language/hoon/reference/stdlib/4f/#knee)
+### [`+knee`](language/hoon/reference/stdlib/4f/#knee)
 
 Another important function in the parser builder library is `+knee`, used for building recursive parsers. We delay discussion of `+knee` to the [section below](#recursive-parsers) as more context is needed to explain it properly.
 
@@ -205,11 +205,11 @@ Since `hair`s, `nail`s, etc. are only utilized within the context of writing par
 
 These functions take in either a `tape` or a `cord`, alongside a `rule`, and attempt to parse the input with the `rule`. If the parse succeeds, it returns the result. There are crashing and unitized versions of each caller, corresponding to what happens when a parse fails.
 
-For additional information including examples see [4g: Parsing (Outside Caller)](/language/hoon/reference/stdlib/4g).
+For additional information including examples see [4g: Parsing (Outside Caller)](language/hoon/reference/stdlib/4g).
 
 ### Parsing `tape`s
 
-[`+scan`](/language/hoon/reference/stdlib/4g/#scan) takes in a `tape` and a `rule` and attempts to parse the `tape` with the
+[`+scan`](language/hoon/reference/stdlib/4g/#scan) takes in a `tape` and a `rule` and attempts to parse the `tape` with the
 `rule`.
 
 ```
@@ -220,7 +220,7 @@ For additional information including examples see [4g: Parsing (Outside Caller)]
 'syntax-error'
 ```
 
-[`+rust`](/language/hoon/reference/stdlib/4g/#rust) is the unitized version of `+scan`.
+[`+rust`](language/hoon/reference/stdlib/4g/#rust) is the unitized version of `+scan`.
 
 ```
 > (rust "a" (just 'a'))
@@ -233,13 +233,13 @@ For the remainder of this tutorial we will make use of `+scan` so that we do not
 
 ### Parsing atoms
 
-[Recall from Hoon School](/courses/hoon-school/E-types) that `cord`s are atoms with the aura `@t` and are typically used to represent strings internally as data, as atoms are faster for the computer to work with than `tape`s, which are `list`s of `@tD` atoms. [`+rash`](/language/hoon/reference/stdlib/4g/#rash) and [`+rush`](/language/hoon/reference/stdlib/4g/#rush) are for parsing atoms, with `+rash` being analogous to `+scan` and `+rush` being analogous to `+rust`. Under the hood, `+rash` calls `+scan` after converting the input atom to a `tape`, and `+rush` does similary for `+rust`.
+[Recall from Hoon School](courses/hoon-school/E-types) that `cord`s are atoms with the aura `@t` and are typically used to represent strings internally as data, as atoms are faster for the computer to work with than `tape`s, which are `list`s of `@tD` atoms. [`+rash`](language/hoon/reference/stdlib/4g/#rash) and [`+rush`](language/hoon/reference/stdlib/4g/#rush) are for parsing atoms, with `+rash` being analogous to `+scan` and `+rush` being analogous to `+rust`. Under the hood, `+rash` calls `+scan` after converting the input atom to a `tape`, and `+rush` does similary for `+rust`.
 
 ## Parser modifiers
 
-The standard library provides a number of gates that take a `rule` and produce a new modified `rule` according to some process. We call these _parser modifiers_. These are documented among the [parser builders](/language/hoon/reference/stdlib/4f).
+The standard library provides a number of gates that take a `rule` and produce a new modified `rule` according to some process. We call these _parser modifiers_. These are documented among the [parser builders](language/hoon/reference/stdlib/4f).
 
-### [`+ifix`](/language/hoon/reference/stdlib/4f/#ifix)
+### [`+ifix`](language/hoon/reference/stdlib/4f/#ifix)
 
 `+ifix` modifies a `rule` so that it matches that `rule` only when it is surrounded on both sides by text that matches a pair of `rule`s, which is discarded.
 
@@ -248,9 +248,9 @@ The standard library provides a number of gates that take a `rule` and produce a
 '42'
 ```
 
-`+pal` and `+par` are shorthand for `(just '(')` and `(just ')')`, respectively. All ASCII glyphs have counterparts of this sort, documented [here](/language/hoon/reference/stdlib/4h).
+`+pal` and `+par` are shorthand for `(just '(')` and `(just ')')`, respectively. All ASCII glyphs have counterparts of this sort, documented [here](language/hoon/reference/stdlib/4h).
 
-### [`+star`](/language/hoon/reference/stdlib/4f/#star) {#star}
+### [`+star`](language/hoon/reference/stdlib/4f/#star) {#star}
 
 `+star` is used to apply a `rule` repeatedly. Recall that `+just` only parses the first character in the input `tape.`
 
@@ -280,7 +280,7 @@ We can combine `+star` with `+next` to just return the whole input:
 [p=[p=1 q=6] q=[~ [p=[i='a' t=<|a a b c|>] q=[p=[p=1 q=6] q=""]]]]
 ```
 
-### [`+cook`](/language/hoon/reference/stdlib/4f/#cook)
+### [`+cook`](language/hoon/reference/stdlib/4f/#cook)
 
 `+cook` takes a `rule` and a gate and produces a modified version of the `rule` that passes the result of a successful parse through the given gate.
 
@@ -293,7 +293,7 @@ Let's modify the rule `(just 'a')` so that it when it successfully parses `a`, i
 
 ## Parser combinators
 
-Building complex parsers from simpler parsers is accomplished in Hoon with the use of two tools: the monadic applicator rune [`;~`](/language/hoon/reference/rune/mic/#-micsig) and [parsing combinators](/language/hoon/reference/stdlib/4e). First we introduce a few combinators, then we examine more closely how `;~` is used to chain them together.
+Building complex parsers from simpler parsers is accomplished in Hoon with the use of two tools: the monadic applicator rune [`;~`](language/hoon/reference/rune/mic/#-micsig) and [parsing combinators](language/hoon/reference/stdlib/4e). First we introduce a few combinators, then we examine more closely how `;~` is used to chain them together.
 
 The syntax to combine `rule`s is
 
@@ -303,7 +303,7 @@ The syntax to combine `rule`s is
 
 The `rule`s are composed together using the combinator as an intermediate function, which takes the product of a `rule` (an `edge`) and a `rule` and turns it into a sample (a `nail`) for the next `rule` to handle. We elaborate on this behavior [below](#-micsig).
 
-### [`+plug`](/language/hoon/reference/stdlib/4e/#plug)
+### [`+plug`](language/hoon/reference/stdlib/4e/#plug)
 
 `+plug` simply takes the `nail` in the `edge` produced by one rule and passes it to the next `rule`, forming a cell of the results as it proceeds.
 
@@ -312,7 +312,7 @@ The `rule`s are composed together using the combinator as an intermediate functi
 ['star' 'ship']
 ```
 
-### [`+pose`](/language/hoon/reference/stdlib/4e/#pose)
+### [`+pose`](language/hoon/reference/stdlib/4e/#pose)
 
 `+pose` tries each `rule` you hand it successively until it finds one that works.
 
@@ -323,7 +323,7 @@ The `rule`s are composed together using the combinator as an intermediate functi
 'b'
 ```
 
-### [`+glue`](/language/hoon/reference/stdlib/4e/#glue)
+### [`+glue`](language/hoon/reference/stdlib/4e/#glue)
 
 `+glue` parses a delimiter in between each `rule` and forms a cell of the results of each `rule`.
 
@@ -337,7 +337,7 @@ syntax error
 ['a' 'b' 'a']
 ```
 
-### [`;~`](/language/hoon/reference/rune/mic/#-micsig) {#-micsig}
+### [`;~`](language/hoon/reference/rune/mic/#-micsig) {#-micsig}
 
 Understanding the rune `;~` is essential to building parsers with Hoon. Let's take this opportunity to think about it carefully.
 
@@ -374,7 +374,7 @@ syntax error
 
 ## Parsing numbers
 
-Functions for parsing numbers are documented in [4j: Parsing (Bases and Base Digits)](/language/hoon/reference/stdlib/4j). In particular, [`dem`](/language/hoon/reference/stdlib/4i/#dem) is a `rule` for parsing decimal numbers.
+Functions for parsing numbers are documented in [4j: Parsing (Bases and Base Digits)](language/hoon/reference/stdlib/4j). In particular, [`dem`](language/hoon/reference/stdlib/4i/#dem) is a `rule` for parsing decimal numbers.
 
 ```
 > (scan "42" dem)
@@ -399,9 +399,9 @@ results in an error:
 rest-loop
 ```
 
-Here, [`+prn`](/language/hoon/reference/stdlib/4i/#prn) is a `rule` used to parse any printable character, and [`+easy`](/language/hoon/reference/stdlib/4f/#easy) is a `rule` that always returns a constant (`~` in this case) regardless of the input.
+Here, [`+prn`](language/hoon/reference/stdlib/4i/#prn) is a `rule` used to parse any printable character, and [`+easy`](language/hoon/reference/stdlib/4f/#easy) is a `rule` that always returns a constant (`~` in this case) regardless of the input.
 
-Thus some special sauce is required, the [`+knee`](/language/hoon/reference/stdlib/4f/#knee) function.
+Thus some special sauce is required, the [`+knee`](language/hoon/reference/stdlib/4f/#knee) function.
 
 `+knee` takes in a noun that is the default value of the parser, typically given as the bunt value of the type that the `rule` produces, as well as a gate that accepts a `rule`. `+knee` produces a `rule` that implements any recursive calls in the `rule` in a manner acceptable to the compiler. Thus the preferred manner to write the above `rule` is as follows:
 
@@ -492,7 +492,7 @@ Then follows the definition of the gate utilized by `+knee`:
 
 An _expression_ is either a term plus an expression or a term.
 
-In the case of a term plus an expression, we actually must compute what that equals. Thus we will make use of [`+slug`](/language/hoon/reference/stdlib/4f#slug), which parses a delimited list into `tape`s separated by a given delimiter and then composes them by folding with a binary gate. In this case, our delimiter is `+` and our binary gate is `+add`. That is to say, we will split the input string into terms and expressions separated by luses, parse each term and expression until they reduce to a `@ud`, and then add them together. This is accomplished with the `rule` `((slug add) lus ;~(pose term expr))`.
+In the case of a term plus an expression, we actually must compute what that equals. Thus we will make use of [`+slug`](language/hoon/reference/stdlib/4f#slug), which parses a delimited list into `tape`s separated by a given delimiter and then composes them by folding with a binary gate. In this case, our delimiter is `+` and our binary gate is `+add`. That is to say, we will split the input string into terms and expressions separated by luses, parse each term and expression until they reduce to a `@ud`, and then add them together. This is accomplished with the `rule` `((slug add) lus ;~(pose term expr))`.
 
 If the above `rule` does not parse the expression, it must be a `term`, so the `tape` is automatically passed to `+term` to be evaluated. Again we use `;~` and `pose` to accomplish this:
 

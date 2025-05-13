@@ -1,10 +1,10 @@
 # Reference
 
-### [API Reference](/system/kernel/iris/reference/tasks)
+### [API Reference](system/kernel/iris/reference/tasks)
 
 The `task`s Iris takes and the `gift`s it returns.
 
-### [Data Types](/system/kernel/iris/reference/data-types)
+### [Data Types](system/kernel/iris/reference/data-types)
 
 Reference documentation of the data types used by Iris.
 

@@ -1,9 +1,9 @@
 # Khan
 
-**Khan** is the [vane](/glossary/vane) that offers thread control affordances for external devices.
+**Khan** is the [vane](glossary/vane) that offers thread control affordances for external devices.
 
 #### Further reading
 
-- [Khan reference documentation](/system/kernel/khan)
+- [Khan reference documentation](system/kernel/khan)
 
 

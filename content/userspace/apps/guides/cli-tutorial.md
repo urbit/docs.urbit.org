@@ -8,7 +8,7 @@ There are three CLI apps that currently ship with urbit - `%dojo`, `%chat-cli`, 
 
 In [the `shoe` library](#the-shoe-library) we take a closer look at the `shoe` library and its cores and how they are utilized in CLI apps. Then in [the `sole` library](#the-sole-library) we look at what `shoe` effects ultimately break down into. Finally in [`%shoe` app walkthrough](#shoe-app-walkthrough) we explore the functionality of the `%shoe` app and then go through the code line-by-line.
 
-This tutorial can be considered to be an application equivalent of the [Hoon school lesson](/courses/hoon-school/P-stdlib-io#ask-generators) on `sole` and `%ask` generators, which only covers the bare minimum necessary to write generators that take user input.
+This tutorial can be considered to be an application equivalent of the [Hoon school lesson](courses/hoon-school/P-stdlib-io#ask-generators) on `sole` and `%ask` generators, which only covers the bare minimum necessary to write generators that take user input.
 
 ## The `shoe` library {#the-shoe-library}
 
@@ -255,7 +255,7 @@ Here begins the implementation of the additional arms required by the `(shoe:sho
   (cold [& ~] (jest 'demo'))
 ```
 
-`+command-parser` is of central importance - it is what is used to parse user input and transform it into `command`s for the app to execute. Writing a proper command parser requires understanding of the Hoon parsing functions found in the standard library. How to do so may be found in the [parsing tutorial](/language/hoon/guides/parsing). For now, it is sufficient to know that this arm matches the text "demo" and produces a `[? command]`-shaped noun in response. Note how the `&` signifies that the command will be run as soon as it has been entered, without waiting for the user to press return.
+`+command-parser` is of central importance - it is what is used to parse user input and transform it into `command`s for the app to execute. Writing a proper command parser requires understanding of the Hoon parsing functions found in the standard library. How to do so may be found in the [parsing tutorial](language/hoon/guides/parsing). For now, it is sufficient to know that this arm matches the text "demo" and produces a `[? command]`-shaped noun in response. Note how the `&` signifies that the command will be run as soon as it has been entered, without waiting for the user to press return.
 
 ```hoon
 ++  tab-list

@@ -10,11 +10,11 @@ Running Urbit locally is good for experimentation, but in the long term you'll w
 
 ## Next Steps
 
-- [Get an Urbit ID](urbit-docs/manual/getting-started/get-id) – Get a planet, a permanent Urbit ID, for the best networked experience.
+- [Get an Urbit ID](manual/getting-started/get-id) – Get a planet, a permanent Urbit ID, for the best networked experience.
 
-- [CLI instructions](urbit-docs/manual/getting-started/self-hosted/cli) – Set up Vere, the Urbit runtime, using the command line.
+- [CLI instructions](manual/getting-started/self-hosted/cli) – Set up Vere, the Urbit runtime, using the command line.
 
-- [Install on the cloud](urbit-docs/manual/getting-started/self-hosted/cloud-hosting) – A step-by-step guide to setting up Urbit on a VPS.
+- [Install on the cloud](manual/getting-started/self-hosted/cloud-hosting) – A step-by-step guide to setting up Urbit on a VPS.
 
-- [Set up a home server](urbit-docs/manual/getting-started/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.
+- [Set up a home server](manual/getting-started/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.
 

@@ -2,7 +2,7 @@
 
 This document deals with:
 
-- Running an Urbit ship with the ordinary runtime [from the command line](urbit-docs/manual/getting-started/self-hosted/cli).
+- Running an Urbit ship with the ordinary runtime [from the command line](manual/getting-started/self-hosted/cli).
 - Basic setup, configuration and usage in Urbit's shell called the `dojo`.
 
 ## Shutdown
@@ -130,7 +130,7 @@ The `moon:` part is the name of the moon, in this case `~faswep-navred-sampel-pa
 
 You can just copy the key (which in this case would be the `0w5[...]600g1` part) to the clipboard, or save it in a `.key` file, for example `faswep-navred-sampel-palnet.key`.
 
-You can use the key and moon name in the same installation flow from the [Command line installation](urbit-docs/manual/getting-started/self-hosted/cli) guide, following the same scheme as for booting a planet. That scheme is:
+You can use the key and moon name in the same installation flow from the [Command line installation](manual/getting-started/self-hosted/cli) guide, following the same scheme as for booting a planet. That scheme is:
 
 ```sh
 $ ./urbit -w <moon-name> -G <key> -c <pier-name>
@@ -187,7 +187,7 @@ Eventually, the PKI will populate through the network w/ the correct life #, rec
 
 ## Escaping A Sponsor {#escape}
 
-To use the network as a planet or star, you must be sponsored by an active star or galaxy, respectively. If your sponsor isn't suiting your needs, you can escape to a different one. This can be done with [Bridge](https://bridge.urbit.org/) following the instructions [here](urbit-docs/manual/id/using-bridge#escaping-your-sponsor).
+To use the network as a planet or star, you must be sponsored by an active star or galaxy, respectively. If your sponsor isn't suiting your needs, you can escape to a different one. This can be done with [Bridge](https://bridge.urbit.org/) following the instructions [here](manual/id/using-bridge#escaping-your-sponsor).
 
 ## Life and rift number
 

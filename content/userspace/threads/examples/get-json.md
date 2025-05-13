@@ -83,7 +83,7 @@ The JSON the API produces looks like:
 }
 ```
 
-Since it's an object in an object, we decode them using nested [`ot:dejs-soft:format`](urbit-docs/language/hoon/reference/zuse/2d_7#otdejs-softformat) functions, and the price itself using [`no:dejs-soft:format`](urbit-docs/language/hoon/reference/zuse/2d_7#nodejs-softformat) to produce a `(unit @ta)`:
+Since it's an object in an object, we decode them using nested [`ot:dejs-soft:format`](language/hoon/reference/zuse/2d_7#otdejs-softformat) functions, and the price itself using [`no:dejs-soft:format`](language/hoon/reference/zuse/2d_7#nodejs-softformat) to produce a `(unit @ta)`:
 
 ```hoon
 =/  price=(unit @ta)  ((ot ~[bitcoin+(ot [u.cur no]~)]) json)
@@ -97,4 +97,4 @@ Finally, we check if the `unit` is null and either print an error or print the p
 (pure:m !>(~))
 ```
 
-For more information about working with `json`, see the [JSON Guide](urbit-docs/language/hoon/guides/json-guide).
+For more information about working with `json`, see the [JSON Guide](language/hoon/guides/json-guide).

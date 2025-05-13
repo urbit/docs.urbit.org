@@ -1,6 +1,6 @@
 # Runtime Reference
 
-The Urbit runtime is named [Vere](urbit-docs/glossary/vere). It's the binary executable you use to run your ship. Vere manages your ship's [pier](urbit-docs/glossary/pier), handles events, and runs the Nock virtual machine that performs your ship's computations.
+The Urbit runtime is named [Vere](glossary/vere). It's the binary executable you use to run your ship. Vere manages your ship's [pier](glossary/pier), handles events, and runs the Nock virtual machine that performs your ship's computations.
 
 Before version 1.9, Vere was split into two separate binaries: The `urbit` "king"/"urth" responsible for I/O and event persistence, and the `urbit-worker` "serf"/"mars" responsible for computations and state persistence. As of version 1.9, these have been merged into a single binary, though under the hood there's still two separate processes. The alternative king written in Haskell, `urbit-king`, has also been deprecated, so there's now only one binary.
 
@@ -390,7 +390,7 @@ Set the HTTP port to `PORT`. This is the port you'd insecurely access Landscape 
 
 ### `--https-port PORT`
 
-Set the HTTPS port to `PORT`. This is the port you'd securely access Landscape on. Note that this requires an SSL certificate to be configured, see the [Configuring SSL guide](urbit-docs/manual/os/basics#configuring-ssl) for details. Note that if your ship is behind a reverse proxy (nginx, Caddy, etc) and an SSL certificate is configured _there_, you'd not usually enable HTTPS on the ship itself.
+Set the HTTPS port to `PORT`. This is the port you'd securely access Landscape on. Note that this requires an SSL certificate to be configured, see the [Configuring SSL guide](manual/os/basics#configuring-ssl) for details. Note that if your ship is behind a reverse proxy (nginx, Caddy, etc) and an SSL certificate is configured _there_, you'd not usually enable HTTPS on the ship itself.
 
 Note this is for secure HTTPS only, see `--http-port` for insecure HTTP.
 

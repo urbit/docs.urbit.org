@@ -1,3 +1,3 @@
 # ~
 
-The **`~`** symbol ("sig") represents *null* in [Hoon](urbit-docs/glossary/hoon).
+The **`~`** symbol ("sig") represents *null* in [Hoon](glossary/hoon).

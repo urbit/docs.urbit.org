@@ -13,9 +13,9 @@ Let's look at each in more detail:
 The `default-agent` library contains a basic agent with sane default behaviours for each arm. In some cases it just crashes and prints an error message to the terminal, and in others it succeeds but does nothing. It has two primary uses:
 
 - For any agent arms you don't need, you can just have them call the matching function in `default-agent`, rather than having to manually handle events on those arms.
-- A common pattern in an agent is to switch on the input of an arm with [wutlus](urbit-docs/language/hoon/reference/rune/wut#-wutlus) (`?+`) runes or maybe [wutcol](urbit-docs/language/hoon/reference/rune/wut#-wutcol) (`?:`) runes. For any unexpected input, you can just pass it to the relevant arm of `default-agent` rather than handling it manually.
+- A common pattern in an agent is to switch on the input of an arm with [wutlus](language/hoon/reference/rune/wut#-wutlus) (`?+`) runes or maybe [wutcol](language/hoon/reference/rune/wut#-wutcol) (`?:`) runes. For any unexpected input, you can just pass it to the relevant arm of `default-agent` rather than handling it manually.
 
-The `default-agent` library lives in `/lib/default-agent/hoon` of the `%base` desk, and you would typically include a copy in any new desk you created. It's imported at the beginning of an agent with the [faslus](urbit-docs/language/hoon/reference/rune/fas#-faslus) (`/+`) rune.
+The `default-agent` library lives in `/lib/default-agent/hoon` of the `%base` desk, and you would typically include a copy in any new desk you created. It's imported at the beginning of an agent with the [faslus](language/hoon/reference/rune/fas#-faslus) (`/+`) rune.
 
 The library is a wet gate which takes two arguments: `agent` and `help`. The first is your agent core itself, and the second is a `?`. If `help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `help` as `%.n`.
 
@@ -25,7 +25,7 @@ The wet gate returns an `agent:gall` door with a sample of `bowl:gall` - a typic
 
 The `dbug` library lets you inspect the state and `bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
-To use it, you just import `dbug` with a [faslus](urbit-docs/language/hoon/reference/rune/fas#-faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
+To use it, you just import `dbug` with a [faslus](language/hoon/reference/rune/fas#-faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 
 ```hoon
 %-  agent:dbug
@@ -57,7 +57,7 @@ We haven't yet covered some of the concepts described here, so don't worry if yo
 
 ## Virtual arms
 
-An agent core must have exactly ten arms. However, there's a special kind of "virtual arm" that can be added without actually increasing the core's arm count, since it really just adds code to the other arms in the core. A virtual arm is created with the [lustar](urbit-docs/language/hoon/reference/rune/lus#-lustar) (`+*`) rune, and its purpose is to define _deferred expressions_. It takes a list of pairs of names and Hoon expressions. When compiled, the deferred expressions defined in the virtual arm are implicitly inserted at the beginning of every other arm of the core, so they all have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](urbit-docs/language/hoon/reference/rune/tis#-tistar) reference for more information on deferred expressions.
+An agent core must have exactly ten arms. However, there's a special kind of "virtual arm" that can be added without actually increasing the core's arm count, since it really just adds code to the other arms in the core. A virtual arm is created with the [lustar](language/hoon/reference/rune/lus#-lustar) (`+*`) rune, and its purpose is to define _deferred expressions_. It takes a list of pairs of names and Hoon expressions. When compiled, the deferred expressions defined in the virtual arm are implicitly inserted at the beginning of every other arm of the core, so they all have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](language/hoon/reference/rune/tis#-tistar) reference for more information on deferred expressions.
 
 A virtual arm in an agent often looks something like this:
 
@@ -84,7 +84,7 @@ This sets up the `default-agent` library we [described above](#default-agent), s
 
 While Gall expects a single 10-arm agent core, it's possible to include additional cores by composing them into the subject of the agent core itself. The contents of these cores will then be available to arms of the agent core.
 
-Usually to compose cores in this way, you'd have to do something like insert [tisgar](urbit-docs/language/hoon/reference/rune/tis#-tisgar) (`=>`) runes in between them. However, Clay's build system implicitly composes everything in a file by wrapping it in a [tissig](urbit-docs/language/hoon/reference/rune/tis#-tissig) (`=~`) expression, which means you can just butt separate cores up against one another and they'll all still get composed.
+Usually to compose cores in this way, you'd have to do something like insert [tisgar](language/hoon/reference/rune/tis#-tisgar) (`=>`) runes in between them. However, Clay's build system implicitly composes everything in a file by wrapping it in a [tissig](language/hoon/reference/rune/tis#-tissig) (`=~`) expression, which means you can just butt separate cores up against one another and they'll all still get composed.
 
 You can add as many extra cores as you'd like before the agent core, but typically you'd just add one containing type definitions for the agent's state, as well as any other useful structures. We'll look at the state in more detail in the next lesson.
 
@@ -122,7 +122,7 @@ Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified w
 
 </details>
 
-The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them into the subject of our agent so they're available for use. You can read more about Ford runes in the [Fas section of the rune documentation](urbit-docs/language/hoon/reference/rune/fas).
+The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them into the subject of our agent so they're available for use. You can read more about Ford runes in the [Fas section of the rune documentation](language/hoon/reference/rune/fas).
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `card` arm, which makes it simpler to reference the `card:agent:gall` type.
 
@@ -177,7 +177,7 @@ The key takeaways are:
 - Libraries are imported with `/+`.
 - `default-agent` is a library that provides default behaviors for Gall agent arms.
 - `dbug` is a library that lets you inspect the state and `bowl` of an agent from the dojo, with the `+dbug` generator.
-- Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](urbit-docs/language/hoon/reference/rune/lus#-lustar) (`+*`) rune.
+- Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](language/hoon/reference/rune/lus#-lustar) (`+*`) rune.
 - `this` is a conventional deferred expression name for the agent core itself.
 - `def` is a conventional deferred expression name for accessing arms in the `default-agent` library.
 - Extra cores can be composed into the subject of the agent core. The composition is done implicitly by the build system. Typically we'd include one extra core that defines types for our agent's state and maybe other useful types as well.
@@ -185,6 +185,6 @@ The key takeaways are:
 ## Exercises
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
-- Have a read through the [Ford rune documentation](urbit-docs/language/hoon/reference/rune/fas) for details about importing libraries, structures and other things.
+- Have a read through the [Ford rune documentation](language/hoon/reference/rune/fas) for details about importing libraries, structures and other things.
 - Try the `+dbug` generator out on some other agents, like `:settings +dbug`, `:contacts +dbug`, etc, and try some of its options [described above](#dbug).
 - Have a quick look over the source of the `default-agent` library, located at `/lib/default-agent.hoon` in the `%base` desk. We've not yet covered what the different arms do but it's still useful to get a general idea, and you'll likely want to refer back to it later.

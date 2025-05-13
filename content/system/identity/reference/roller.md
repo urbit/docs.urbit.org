@@ -16,11 +16,11 @@ The roller communicates with the outside world via a JSON-RPC API, which is impl
 
 ## `%roller`
 
-`%roller` is the Gall agent which collects layer 2 Azimuth **transactions**, which are a concatenation of an [action](urbit-docs/system/identity/reference/bytestring#actions) and a [signature](urbit-docs/system/identity/reference/bytestring#signatures) and forms them into [batches](urbit-docs/system/identity/reference/bytestring#batch) to be submitted periodically to the Ethereum blockchain.
+`%roller` is the Gall agent which collects layer 2 Azimuth **transactions**, which are a concatenation of an [action](system/identity/reference/bytestring#actions) and a [signature](system/identity/reference/bytestring#signatures) and forms them into [batches](system/identity/reference/bytestring#batch) to be submitted periodically to the Ethereum blockchain.
 
 ### Transaction format
 
-See [Bytestring Format](urbit-docs/system/identity/reference/bytestring) for a technical description of how layer 2 transactions are formatted.
+See [Bytestring Format](system/identity/reference/bytestring) for a technical description of how layer 2 transactions are formatted.
 
 ### Pending transactions
 

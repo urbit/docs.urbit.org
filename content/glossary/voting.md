@@ -1,6 +1,6 @@
 # Voting
 
-**Voting** is a power available to [galaxies](urbit-docs/glossary/galaxy), in their capacities as members of the [Galactic Senate](urbit-docs/glossary/senate), through an [Azimuth](urbit-docs/glossary/azimuth) smart contract. Galaxies collectively make decisions about the governance of Azimuth and the [Arvo](urbit-docs/glossary/arvo) network by voting. There are two types of proposals that can be voted on: an [upgrade proposal](urbit-docs/glossary/upgrade) and a [document proposal](urbit-docs/glossary/docvote).
+**Voting** is a power available to [galaxies](glossary/galaxy), in their capacities as members of the [Galactic Senate](glossary/senate), through an [Azimuth](glossary/azimuth) smart contract. Galaxies collectively make decisions about the governance of Azimuth and the [Arvo](glossary/arvo) network by voting. There are two types of proposals that can be voted on: an [upgrade proposal](glossary/upgrade) and a [document proposal](glossary/docvote).
 
 A proposal is always a Yes/No vote. The vote concludes at the end of 30 days, or whenever an absolute majority is reached, whichever comes first. Assuming a quorum of at least 64 galaxies (1/4 of the Senate) has been achieved, at the end of 30 days the option that has received the most votes is chosen. If a quorum is not achieved then no action is taken.
 

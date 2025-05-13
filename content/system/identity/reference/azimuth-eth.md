@@ -1,6 +1,6 @@
 # Azimuth.eth
 
-[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](urbit-docs/system/identity/reference/ecliptic) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by [galaxy vote](urbit-docs/glossary/upgrade) - they are only eligible to modify the Ecliptic.
+[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](system/identity/reference/ecliptic) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by [galaxy vote](glossary/upgrade) - they are only eligible to modify the Ecliptic.
 
 ## Global state {#global}
 
@@ -125,4 +125,4 @@ Finally, each Ethereum address may set for itself a number of `operators`, as de
 
 `Azimuth.eth` also contains some other state—`dnsDomains`—which are domain names by which the IP address of a galaxy may be looked up, e.g. `zod.urbit.org` resolves to `35.247.119.159`. This is used for bootstrapping the network from DNS. Three domains may be listed here, but as of today they are all `urbit.org`. This may only be updated by the owner of Ecliptic, but arguably each galaxy ought to be able to set its own domain name and so we do not expect this to remain the case forever.
 
-All data in this ledger is stored and processed locally on your ship by the [`%azimuth` Gall agent](urbit-docs/system/identity/concepts/flow#azimuth), including [layer 2](urbit-docs/system/identity/concepts/layer2) data. Because state transitions resulting from layer 2 transactions are not included in this ledger, in general the local store will differ from what is kept in `Azimuth.eth`.
+All data in this ledger is stored and processed locally on your ship by the [`%azimuth` Gall agent](system/identity/concepts/flow#azimuth), including [layer 2](system/identity/concepts/layer2) data. Because state transitions resulting from layer 2 transactions are not included in this ledger, in general the local store will differ from what is kept in `Azimuth.eth`.

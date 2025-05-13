@@ -8,7 +8,7 @@ Urbit is a project, not a single computer system. It has multiple components: Ar
 
 **Arvo** is an operating system that provides the software for a personal server. These personal servers together constitute the peer-to-peer Arvo network. To make this network work on the social level, Arvo is built to work with a system of scarce and immutable identities.
 
-**Azimuth** is the public-key infrastructure built to be a system of scarce and immutable identities. It consists of a suite of [smart contracts on the Ethereum blockchain](https://github.com/urbit/azimuth) as well as [several apps](urbit-docs/system/identity/concepts/flow) run locally on your urbit. Togeter, they determine which Ethereum addresses own which Urbit ID's as well as the public keys needed to communicate with those ID's. All identity-related operations, such as transfers, are governed by Azimuth. Azimuth isn't built strictly for Arvo -- the smart contracts on Ethereum are sufficient to be used as a generalized identity system for other projects. Azimuth is considered to be the technical nomenclature for the PKI, while Urbit ID is the common nomenclature.
+**Azimuth** is the public-key infrastructure built to be a system of scarce and immutable identities. It consists of a suite of [smart contracts on the Ethereum blockchain](https://github.com/urbit/azimuth) as well as [several apps](system/identity/concepts/flow) run locally on your urbit. Togeter, they determine which Ethereum addresses own which Urbit ID's as well as the public keys needed to communicate with those ID's. All identity-related operations, such as transfers, are governed by Azimuth. Azimuth isn't built strictly for Arvo -- the smart contracts on Ethereum are sufficient to be used as a generalized identity system for other projects. Azimuth is considered to be the technical nomenclature for the PKI, while Urbit ID is the common nomenclature.
 
 These otherwise-parallel systems meet when you want to connect to the Arvo network. Your Arvo personal server, called your _ship_, needs to be able to prove cryptographically that it is who it says it is. This proof comes in the form of a keyfile, derived from your identity, that you use to start your ship.
 
@@ -33,12 +33,12 @@ Walkthroughs of some of the smart contracts are linked to [below](#other).
 
 These documents pertain to L1 and other general aspects of Azimuth. For L2 docs, [see below](#naive-rollups).
 
-- [HD Wallet](urbit-docs/system/identity/concepts/hd-wallet) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
-- [Data Flow](urbit-docs/system/identity/concepts/flow) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
-- [Azimuth.eth](urbit-docs/system/identity/reference/azimuth-eth) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
-- [Ecliptic.eth](urbit-docs/system/identity/reference/ecliptic) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
-- [Advanced Azimuth Tools](urbit-docs/system/identity/guides/advanced-azimuth-tools) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
-- [Life and Rift](urbit-docs/system/identity/concepts/life-and-rift) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
+- [HD Wallet](system/identity/concepts/hd-wallet) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
+- [Data Flow](system/identity/concepts/flow) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
+- [Azimuth.eth](system/identity/reference/azimuth-eth) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
+- [Ecliptic.eth](system/identity/reference/ecliptic) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
+- [Advanced Azimuth Tools](system/identity/guides/advanced-azimuth-tools) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
+- [Life and Rift](system/identity/concepts/life-and-rift) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
 
 ## Naive rollups
 
@@ -48,9 +48,9 @@ Due to the dramatically reduced cost, Tlon offers their own roller that is free 
 
 L2 operator and developer resources:
 
-- [Layer 2 Overview](urbit-docs/system/identity/concepts/layer2) - An overview of how naive rollups work.
-- [Custom Roller Tutorial](urbit-docs/system/identity/guides/roller-tutorial) - A guide to running your own L2 roller locally.
-- [Actions Reference](urbit-docs/system/identity/reference/l2-actions) - Details of the L2 API's possible actions.
-- [Transaction Format Reference](urbit-docs/system/identity/reference/bytestring) - Details of the bytestring format for L2 transactions and batches.
-- [Rollers](urbit-docs/system/identity/reference/roller) - Overview of the L2 roller system.
-- [Roller HTTP RPC-API](urbit-docs/system/identity/reference/roller) - A diagram summarizing the L2 API calls.
+- [Layer 2 Overview](system/identity/concepts/layer2) - An overview of how naive rollups work.
+- [Custom Roller Tutorial](system/identity/guides/roller-tutorial) - A guide to running your own L2 roller locally.
+- [Actions Reference](system/identity/reference/l2-actions) - Details of the L2 API's possible actions.
+- [Transaction Format Reference](system/identity/reference/bytestring) - Details of the bytestring format for L2 transactions and batches.
+- [Rollers](system/identity/reference/roller) - Overview of the L2 roller system.
+- [Roller HTTP RPC-API](system/identity/reference/roller) - A diagram summarizing the L2 API calls.

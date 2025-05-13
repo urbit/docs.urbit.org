@@ -12,7 +12,7 @@ There are three main types of proxy: management, spawn, and voting. Their capabi
 
 - **Management proxy**
 
-  Can configure or set Arvo networking keys, [factory reset](urbit-docs/manual/id/guide-to-resets), and conduct sponsorship related operations. Planets, stars, and galaxies may all set a management proxy.
+  Can configure or set Arvo networking keys, [factory reset](manual/id/guide-to-resets), and conduct sponsorship related operations. Planets, stars, and galaxies may all set a management proxy.
 
 - **Spawn proxy**
 

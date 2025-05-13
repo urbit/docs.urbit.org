@@ -1,16 +1,4 @@
-+++
-title = "Cold atom"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry."cold atom"]
-name = "cold atom"
-symbol = ""
-usage = "hoon-nock"
-desc = "An atom whose type is an exact value rather than a general aura."
-
-+++
+# Cold atom
 
 A **cold atom** is an [atom](/glossary/atom) whose type is an exact value equal to itself. This in contrast to a [warm atom](/glossary/warm-atom), whose type is a general [aura](/glossary/aura). Cold atoms have a `%` prefix, for example `%foo`, `%123`, `%0xdead.beef`, etc.
 

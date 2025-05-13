@@ -1,7 +1,4 @@
-+++
-title = "Build a Voting App"
-weight = 4
-+++
+# Build a Voting App
 
 In this lightning tutorial, we're going to build a voting app for groups called Tally, which uses [linkable ring signatures](https://en.wikipedia.org/wiki/Ring_signature). If the group host has Tally installed, members may make proposals, and other members may vote yea or nay on them. Linkable ring signatures allow votes to be anonymous - each vote can be verified to have come from a group member and duplicate votes can be detected, but it cannot be determined who voted for what. The finished app will look like this:
 

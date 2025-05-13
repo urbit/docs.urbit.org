@@ -1,7 +1,4 @@
-+++
-title = "ABC Blocks"
-weight = 70
-+++
+# ABC Blocks
 
 ## Challenge: ABC Blocks
 

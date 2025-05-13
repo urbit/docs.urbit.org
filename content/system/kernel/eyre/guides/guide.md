@@ -1,7 +1,4 @@
-+++
-title = "Low-Level Guide"
-weight = 6
-+++
+# Low-Level Guide
 
 This document walks through practical examples of the various ways of interacting with Eyre. The [Basic](#basic) sections goes over the common methods of interacting through Eyre from an HTTP client, and the [Advanced](#advanced) section explains how to handle HTTP directly with generators and Gall agents.
 

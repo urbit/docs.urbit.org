@@ -1,7 +1,5 @@
-+++
-title = "Phone Letters"
-weight = 130
-+++
+# Phone Letters
+
 ## Challenge: Phone Letters
 
 

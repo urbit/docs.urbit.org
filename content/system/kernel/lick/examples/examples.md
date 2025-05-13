@@ -1,7 +1,4 @@
-+++
-title = "Examples"
-weight = 4
-+++
+# Examples
 
 ## %receipt
 

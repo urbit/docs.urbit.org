@@ -1,8 +1,4 @@
-+++
-title = "Layer 2 for planets"
-weight = 50
-description = "Getting started with a permanent Urbit identity."
-+++
+# Layer 2 for planets
 
 What does Layer 2 mean for planets? Cheap transaction fees which make it inexpensive to get on the network and stay on the network.
 

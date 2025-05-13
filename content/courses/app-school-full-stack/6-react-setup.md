@@ -1,7 +1,4 @@
-+++
-title = "6. React app setup"
-weight = 7
-+++
+# 6. React app setup
 
 Now that we have a basic idea of how Eyre works, we can begin working on our React app front-end.
 

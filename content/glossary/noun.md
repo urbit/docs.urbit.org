@@ -1,16 +1,4 @@
-+++
-title = "Noun"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.noun]
-name = "noun"
-symbol = ""
-usage = "hoon-nock"
-desc = "An atom or a cell. The basic data structure in Nock."
-
-+++
+# Noun
 
 A **noun** is an [atom](/glossary/atom) or a cell, which is an ordered pair of nouns. This definition is recursive and ultimately means that a noun is a finite size binary tree whose leaves are atoms. A noun is the basic data structure in [Nock](/glossary/nock).
 

@@ -1,8 +1,4 @@
-+++
-title = "Unit Tests"
-description = "Learn to write unit tests in Hoon"
-weight = 105
-+++
+# Unit Tests
 
 ## Structure
 

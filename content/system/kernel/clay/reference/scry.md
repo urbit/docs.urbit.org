@@ -1,7 +1,4 @@
-+++
-title = "Scry Reference"
-weight = 5
-+++
+# Scry Reference
 
 The normal Clay scries are specified by a `care`, which is a single character corresponding with a Clay submodule. Apart from `%s` they just take a `path` to a `desk`, file or directory. All examples are dojo commands, the %'s in the path are automatically populated by the dojo like:
 

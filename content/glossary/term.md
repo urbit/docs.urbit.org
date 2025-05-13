@@ -1,6 +1,4 @@
-+++
-title = "Term"
-+++
+# Term
 
 A **term** is an [atom](/glossary/atom) with an [aura](/glossary/aura) of `@tas`. It's for strings, but with a highly-restricted character set: lower-case letters, numbers, and the hyphen symbol. Additionally, the first character must be a letter. It's used mostly for naming and tagging.
 

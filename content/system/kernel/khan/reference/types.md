@@ -1,7 +1,4 @@
-+++
-title = "Data Types"
-weight = 3
-+++
+# Data Types
 
 Khan only uses a handful of types, described below.
 

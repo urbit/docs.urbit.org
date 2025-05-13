@@ -1,9 +1,4 @@
-+++
-title = "Get an Urbit ID"
-weight = 0
-description = "How to acquire an Urbit ID"
-tag = "selfhost"
-+++
+# Get an Urbit ID
 
 ### Types of ID
 

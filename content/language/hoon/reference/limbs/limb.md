@@ -1,7 +1,5 @@
-+++
-title = "Limbs"
-weight = 1
-+++
+# Limbs
+
 A limb is an attribute of subject.
 
 ## Produces

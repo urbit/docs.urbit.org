@@ -1,8 +1,4 @@
-+++
-title = "Runtime Reference"
-template = "doc.html"
-weight = 0
-+++
+# Runtime Reference
 
 The Urbit runtime is named [Vere](/glossary/vere). It's the binary executable you use to run your ship. Vere manages your ship's [pier](/glossary/pier), handles events, and runs the Nock virtual machine that performs your ship's computations.
 

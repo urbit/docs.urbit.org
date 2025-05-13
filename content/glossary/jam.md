@@ -1,6 +1,4 @@
-+++
-title = "Jam"
-+++
+# Jam
 
 **Jam** is the primary [noun](/glossary/noun) serialization function. It allows any noun to be packed into an [atom](/glossary/atom) for tranmission over the network or storage on disk. The jammed noun can be unpacked again with the [cue](/glossary/cue) function. Jam and Cue are used extensively by the kernel.
 

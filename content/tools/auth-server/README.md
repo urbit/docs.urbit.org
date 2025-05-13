@@ -1,8 +1,4 @@
-+++
-title = "Auth Server"
-weight = 999
-auto_expand = true
-+++
+# Auth Server
 
 Auth Server and Auth are a pair of Urbit apps that facilitate Urbit authentication for external web apps. Users of the site `example.com` can login to their `example.com` accounts with their Urbit ships using the Auth app, assuming the developers of `example.com` have integrated their site with the Auth Server app.
 

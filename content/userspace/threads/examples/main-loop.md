@@ -1,7 +1,4 @@
-+++
-title = "Main-loop"
-weight = 3
-+++
+# Main-loop
 
 `main-loop` is a useful function included in `strandio` that:
 

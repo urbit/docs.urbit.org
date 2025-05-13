@@ -1,21 +1,4 @@
-+++
-title = "Path Prefix"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry."path prefix"]
-name = "path prefix"
-symbol = ""
-usage = "arvo"
-desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number)."
-
-[glossaryEntry."beak"]
-name = "beak"
-symbol = "beak"
-usage = "arvo"
-desc = "The first three elements of a Clay file path denoting ship, desk and case (revision number) as a three-element tuple."
-+++
+# Path Prefix
 
 A **path prefix** is the first three elements of a [Clay](/glossary/clay) [path](/glossary/path). These three fields encode a `beak` in `path` form. A `beak` is a three-element tuple of [ship](/glossary/ship), [desk](/glossary/desk), and [case](/glossary/case). Here's an example:
 

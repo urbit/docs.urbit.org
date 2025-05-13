@@ -1,9 +1,4 @@
-+++
-title = "17. Text Processing III"
-weight = 27
-nodes = [283, 383]
-objectives = ["Tokenize text simply using `find` and `trim`.", "Identify elements of parsing:  `nail`, `rule`, etc.", "Use `++scan` to parse `tape` into atoms.", "Construct new rules and parse arbitrary text fields."]
-+++
+# 17. Text Processing III
 
 _This module covers text parsing.  It may be considered optional and skipped if you are speedrunning Hoon School._
 

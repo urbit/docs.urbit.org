@@ -1,9 +1,4 @@
-+++
-title = "Guides"
-weight = 60
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Guides
 
 Guides to various features of the Hoon language.
 

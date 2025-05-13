@@ -1,8 +1,4 @@
-+++
-title = "HTTP API"
-description = "Learn how to interact with ships through Eyre's web API"
-weight = 40
-+++
+# HTTP API
 
 [Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's kernel and operating system. In this guide, we'll look at interacting with a ship through Eyre's web API using the [@urbit/http-api] Javascript module.
 

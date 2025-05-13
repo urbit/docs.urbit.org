@@ -1,8 +1,4 @@
-+++
-title = "Docket File"
-weight = 3
-template = "doc.html"
-+++
+# Docket File
 
 The docket file sets various options for desks with a tile and (usually) a browser-based front-end of some kind. Mainly it configures the appearance of an app's tile, the source of its [glob](/userspace/apps/reference/dist/glob), and some additional metadata.
 

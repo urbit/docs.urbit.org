@@ -1,7 +1,4 @@
-+++
-title = "Examples"
-weight = 999
-+++
+# Examples
 
 This section contains examples of building simple apps and additional exercises to help hone your skills.
 

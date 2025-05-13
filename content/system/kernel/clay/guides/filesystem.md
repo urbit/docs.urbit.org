@@ -1,7 +1,4 @@
-+++
-title = "Filesystem Hierarchy"
-weight = 20
-+++
+# Filesystem Hierarchy
 
 Here we describe what each of the primary folders present in a Clay desk. This organization is merely a convention, and the exact location of any file does not affect its operation. That being said, some [Ford runes](/language/hoon/reference/rune/fas) are designed with this structure in mind, and applications such as dojo and spider look in specific folders for code to run. Furthermore, this organization is not perfectly adhered to - sometimes you may find structure definitions in `/lib`, for example.
 

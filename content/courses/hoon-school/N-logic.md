@@ -1,9 +1,4 @@
-+++
-title = "13. Conditional Logic"
-weight = 23
-nodes = [184]
-objectives = ["Produce loobean expressions.", "Reorder conditional arms.", "Switch against a union with or without default."]
-+++
+# 13. Conditional Logic
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
 

@@ -1,8 +1,4 @@
-+++
-title = "Installing apps"
-tag = "around"
-weight = 16
-+++
+# Installing apps
 
 Installing Urbit applications is simple. Search for the developer and download the application directly from them.  We'll walk you through it.
 

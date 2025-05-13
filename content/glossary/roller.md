@@ -1,16 +1,4 @@
-+++
-title = "Roller"
-
-[extra]
-category = "azimuth"
-
-[glossaryEntry.roller]
-name = "roller"
-symbol = ""
-usage = "azimuth"
-desc = "A service that batches L2 transactions and submits them to Azimuth on the Ethereum blockchain"
-
-+++
+# Roller
 
 A **roller** is a service that can be run on a [ship](/glossary/ship) that accepts [L2](/glossary/rollups) [Azimuth](/glossary/azimuth) transactions, bundles them together, and submits the batch to Azimuth on the Ethereum blockchain. Tlon runs the roller used by the default [Bridge](/glossary/bridge) instance at [bridge.urbit.org](https://bridge.urbit.org), but anyone can run their own - especially if they want to submit large volumes of transactions.
 

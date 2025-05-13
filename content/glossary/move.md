@@ -1,16 +1,4 @@
-+++
-title = "Move"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.move]
-name = "move"
-symbol = ""
-usage = "arvo"
-desc = "A kernel-level inter-vane message sent over ducts by Arvo."
-
-+++
+# Move
 
 **Moves** are kernel-level inter-vane messages sent over [ducts](/glossary/duct) by [Arvo](/glossary/arvo). The [cards](/glossary/card) produced by [agents](/glossary/agent) are converted into moves by [Gall](/glossary/gall).
 

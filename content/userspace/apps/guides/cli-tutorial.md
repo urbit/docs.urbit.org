@@ -1,8 +1,4 @@
-+++
-title = "Command-Line Apps"
-description = "Learn to build command line applications"
-weight = 15
-+++
+# Command-Line Apps
 
 ## Introduction
 

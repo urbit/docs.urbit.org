@@ -1,11 +1,4 @@
-+++
-title = "Reference"
-description = "Learn to write asynchronous I/O functions"
-weight = 101
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Reference
 
 Reference information related to Spider and threads.
 

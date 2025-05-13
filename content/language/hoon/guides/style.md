@@ -1,7 +1,4 @@
-+++
-title = "Hoon Style Guide"
-weight = 40
-+++
+# Hoon Style Guide
 
 Welcome to the Hoon style guide. It’s important to familiarize yourself with our way of writing Hoon code.
 

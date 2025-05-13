@@ -1,16 +1,4 @@
-+++
-title = "Planet"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.planet]
-name = "planet"
-symbol = ""
-usage = "arvo"
-desc = "An Urbit identity at the bottom of the identity hierarchy. Issued by stars."
-
-+++
+# Planet
 
 A **planet** is can be one of two related things:
 

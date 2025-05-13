@@ -1,7 +1,4 @@
-+++
-title = "Writing Marks"
-weight = 2
-+++
+# Writing Marks
 
 Here we'll walk through a practical example of writing a `mark` file.
 

@@ -1,8 +1,4 @@
-+++
-title = "Layer 2 for stars"
-weight = 60
-template = "doc.html"
-+++
+# Layer 2 for stars
 
 This is a brief summary of the three possible options for star owners with respect to use of [layer 2](https://developers.urbit.org/glossary/rollups).
 

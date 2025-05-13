@@ -1,8 +1,4 @@
-+++
-title = "Hosted Urbit"
-weight = 5
-auto_expand=true
-+++
+# Hosted Urbit
 
 Hosting providers are companies that offer "Urbit as a Service".  They do the work of setting up your urbit in the cloud and making sure it's up to date and you don't have perform any technical steps or maintenance.
 

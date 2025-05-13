@@ -1,16 +1,4 @@
-+++
-title = "Ames"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.ames]
-name = "ames"
-symbol = ""
-usage = "Arvo"
-desc = "The name of the Urbit network and the vane that communicates over it."
-
-+++
+# Ames
 
 **Ames** is the name of the Urbit network and the [vane](/glossary/vane) that communicates over it. It's an encrypted peer-to-peer network composed of instances of the [Arvo](/glossary/arvo) operating system. Each point ([galaxy](/glossary/galaxy), [star](/glossary/star), [planet](/glossary/planet), [moon](/glossary/moon), or [comet](/glossary/comet)) communicates over the network utilizing the Ames protocol.
 

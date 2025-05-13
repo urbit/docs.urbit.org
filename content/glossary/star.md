@@ -1,16 +1,4 @@
-+++
-title = "Star"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.star]
-name = "star"
-symbol = ""
-usage = "arvo"
-desc = "An Urbit identity sitting between stars and galaxies in the identity hierarchy. Infrastructural nodes for child planets."
-
-+++
+# Star
 
 A **star** is the kind of Urbit identity that sits between the [galaxy](/glossary/galaxy) and [planets](/glossary/planet) in the identity hierarchy. Stars act as infrastructure for the [Arvo](/glossary/arvo) network, providing planets with [Ames](/glossary/ames)-related services, such as peer-to-peer routing and distributing [over-the-air software updates](/glossary/ota-updates). Stars rely on galaxies for these services in the way that planets rely on stars.
 

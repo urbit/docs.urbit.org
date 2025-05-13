@@ -1,7 +1,5 @@
-+++
-title = "Emirp"
-weight = 90
-+++
+# Emirp
+
 ## Challenge: Reversible Primes
 
 A prime number is a number that is only divisible by 1 and itself, for example, `7`. An [emirp](https://en.wikipedia.org/wiki/Emirp) is a prime number that results in a different prime when its decimal digits are reversed. For example, `107` and `701` are a pair of emirps, and `3,049` and `9,403`.

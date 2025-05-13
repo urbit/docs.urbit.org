@@ -1,7 +1,4 @@
-+++
-title = "11. Failure"
-weight = 55
-+++
+# 11. Failure
 
 In this lesson we'll cover the last agent arm we haven't touched on yet: `on-fail`. We'll also touch on one last concept, which is the _helper core_.
 

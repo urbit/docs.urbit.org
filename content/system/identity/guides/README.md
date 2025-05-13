@@ -1,10 +1,4 @@
-+++
-title = "Guides"
-weight = 700
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Guides
 
 ### [Advanced Azimuth Tools](/system/identity/guides/advanced-azimuth-tools)
 

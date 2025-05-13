@@ -1,16 +1,4 @@
-+++
-title = "Warm atom"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry."warm atom"]
-name = "warm atom"
-symbol = ""
-usage = "hoon-nock"
-desc = "An atom with an ordinary aura."
-
-+++
+# Warm atom
 
 A **warm atom** is an [atom](/glossary/atom) with an ordinary [aura](/glossary/aura). The type of a warm atom is, conceptually, the set of all possible values for that aura. For example, the [cord](/glossary/cord) `'foo'` nests under the type of the cord `'bar'` - they both have `@t` auras. This is in contrast to a [cold atom](/glossary/cold-atom), where its type is an exact value.
 

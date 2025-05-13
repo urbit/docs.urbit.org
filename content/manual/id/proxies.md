@@ -1,8 +1,4 @@
-+++
-title = "Proxies"
-weight = 8
-template = "doc.html"
-+++
+# Proxies
 
 Proxy addresses allow you to execute non-ownership related actions like spawning child identities, voting, and setting networking keys without jeopardizing the keys you've designated with ownership rights. Setting proxy rights is optional, but it is recommended for on-chain actions you will execute more frequently.
 

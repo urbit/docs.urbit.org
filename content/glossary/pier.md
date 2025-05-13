@@ -1,16 +1,4 @@
-+++
-title = "Pier"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.pier]
-name = "pier"
-symbol = ""
-usage = "arvo"
-desc = "The stored state of an Urbit ship on disk."
-
-+++
+# Pier
 
 A **pier** is the directory which contains the state of an Urbit [ship](/glossary/ship). It is automatically created in the current directory when booting a ship for the first time.
 

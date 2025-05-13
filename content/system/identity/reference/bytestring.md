@@ -1,7 +1,4 @@
-+++
-title = "L2 Transaction Format"
-weight = 8
-+++
+# L2 Transaction Format
 
 This document gives the bytestring format for layer 2 transactions and batches.
 

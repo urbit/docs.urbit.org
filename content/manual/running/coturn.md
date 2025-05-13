@@ -1,9 +1,4 @@
-+++
-title = "Coturn Operator Guide"
-description = "Instructions for running a coturn server on your star."
-weight = 4
-template = "doc.html"
-+++
+# Coturn Operator Guide
 
 To make voice and video calls through urbit we use a protocol called WebRTC which allows ships to connect directly to each other. Most times one or both ships are behind NATs and firewalls and often they are unable to connect. To get around this, instead of connecting directly to each other the ships can all connect to a TURN server (Transversal Using Relays around NATs) which will relay all the data between all the participants. Since this is relaying a bunch of data there are no free TURN servers on the internet. Thus a nice service that a star can provide is to run a TURN server and allow it's sponsored planets to use it. This guide will show you how to set one up.
 

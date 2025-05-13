@@ -1,7 +1,4 @@
-+++
-title = "Examples"
-weight = 4
-+++
+# Examples
 
 These are the files used in the [Writing Marks](/system/kernel/clay/guides/marks/writing-marks) guide.
 

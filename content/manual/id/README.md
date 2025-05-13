@@ -1,10 +1,4 @@
-+++
-title = "Urbit ID"
-template = "sections/docs/chapters.html"
-sort_by = "weight"
-description = "How to interact with Urbit ID."
-weight = 20
-+++
+# Urbit ID
 
 ![](https://media.urbit.org/site/posts/essays/pki-maze.png)
 

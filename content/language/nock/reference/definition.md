@@ -1,7 +1,4 @@
-+++
-title = "Definition"
-weight = 1
-+++
+# Definition
 
 Nock is a Turing-complete function that maps a cell `[subject formula]` to a [noun](/glossary/noun/) `product`, where `subject` is the data, `formula` is the code, and `product` is the result.
 

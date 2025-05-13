@@ -1,10 +1,4 @@
-+++
-title = "Urbit OS"
-sort_by = "weight"
-description = "How to use Urbit OS"
-template = "sections/docs/chapters.html"
-weight = 10
-+++
+# Urbit OS
 
 This section describes how to interact with your running Urbit ship: this includes working with the filesystem, command line (`dojo`), resolving common issues, and more.
 

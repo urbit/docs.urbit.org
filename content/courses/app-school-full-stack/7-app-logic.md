@@ -1,7 +1,4 @@
-+++
-title = "7. React app logic"
-weight = 8
-+++
+# 7. React app logic
 
 Now that we've reviewed the basics of setting up an Urbit React app, we can dive into the more complex logic that drives our [journal app's front-end](https://github.com/urbit/docs-examples/tree/main/journal-app/ui). We'll focus on the app's main component `App` (defined in [`src/app.jsx`](https://github.com/urbit/docs-examples/tree/main/journal-app/ui/src/app.jsx)) and how it leverages functions related to ship communications using the `Urbit` object. For more information on UI components and other helper functions, see the [resources section](#resources).
 

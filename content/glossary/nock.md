@@ -1,13 +1,4 @@
-+++
-title = "Nock"
-
-[glossaryEntry.nock]
-name = "nock"
-symbol = ""
-usage = "hoon-nock"
-desc = "A purely functional typeless programming language, and Urbit's lowest-level language."
-
-+++
+# Nock
 
 **Nock** is a purely functional typeless programming language and acts as Urbit's lowest-level language. To be more precise, it is a minimalist Turing complete [combinator calculus](https://en.wikipedia.org/wiki/Combinatory_logic). Nock can be thought of as the assembly-level language specification for Urbit. Nock is evaluated by the runtime system [Vere](/glossary/vere).
 

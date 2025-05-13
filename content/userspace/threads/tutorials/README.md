@@ -1,9 +1,4 @@
-+++
-title = "Tutorials"
-description = "Learn to write asynchronous I/O functions"
-weight = 101
-auto_expand = true
-+++
+# Tutorials
 
 In-depth tutorials about threads.
 

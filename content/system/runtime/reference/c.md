@@ -1,7 +1,5 @@
-+++
-title = "C in Urbit"
-weight = 4
-+++
+# C in Urbit
+
 Under `u3` is the simple `c3` layer, which is just how we write C in Urbit.
 
 When writing C in u3, please of course follow the conventions of the code around you as regards indentation, etc.  It's especially important that every function have a header comment, even if it says nothing interesting.

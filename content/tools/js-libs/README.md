@@ -1,8 +1,4 @@
-+++
-title = "JS Libraries"
-weight = 1
-auto_expand = true
-+++
+# JS Libraries
 
 This section contains documentation of JS libraries for interacting with an Urbit ship.
 

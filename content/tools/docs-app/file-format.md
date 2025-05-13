@@ -1,8 +1,4 @@
-+++
-title = "File Format"
-weight = 5
-template = "doc.html"
-+++
+# File Format
 
 ## `%docu` mark
 

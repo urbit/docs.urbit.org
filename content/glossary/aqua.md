@@ -1,16 +1,4 @@
-+++
-title = "Aqua"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.aqua]
-name = "aqua"
-symbol = ""
-usage = "Arvo"
-desc = "A virtualization tool whose primary purpose is testing and development."
-
-+++
+# Aqua
 
 **Aqua** is something like Docker but for Urbit; it is a virtualization tool whose primary purpose is testing and development.
 

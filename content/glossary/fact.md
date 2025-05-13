@@ -1,16 +1,4 @@
-+++
-title = "Fact"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.fact]
-name = "fact"
-symbol = ""
-usage = "arvo"
-desc = "An update sent to subscribers by a Gall agent."
-
-+++
+# Fact
 
 A **%fact** is a [gift](/glossary/gift) given to subscribers by a [Gall](/glossary/gall) [agent](/glossary/agent). It is the primary medium for subscription updates.
 

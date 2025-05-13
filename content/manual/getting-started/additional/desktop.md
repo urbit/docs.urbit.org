@@ -1,8 +1,4 @@
-+++
-title = "Desktop app"
-weight = 24
-description = ""
-+++
+# Desktop app
 
 In the past we recommended [Port](https://github.com/urbit/port/releases), a desktop Urbit client.
 

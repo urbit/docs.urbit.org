@@ -1,9 +1,4 @@
-+++
-title = "15. Text Processing II"
-weight = 25
-nodes = [185]
-objectives = ["Identify tanks, tangs, wains, walls, and similar formatted printing data structures.", "Interpret logging message structures (`%leaf`, `$rose`, `$palm`).", "Interpolate to tanks with `><` syntax.", "Produce useful error annotations using `~|` sigbar."]
-+++
+# 15. Text Processing II
 
 _This module will elaborate on text representation in Hoon, including formatted text and `%ask` [generators](/glossary/generator).  It may be considered optional and skipped if you are speedrunning Hoon School._
 

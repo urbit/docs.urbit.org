@@ -1,10 +1,4 @@
-+++
-title = "Hosting Providers"
-weight = 4
-description = "Companies that provide Urbit hosting as a service"
-tag = "hostprov"
-+++
-
+# Hosting Providers
 
 ## Tlon
 [Tlon](https://tlon.io) is the company responsible for creating Urbit, Landscape, Groups and Talk. Tlon offers Urbit hosting for free, which includes a planet of your choice.

@@ -1,20 +1,4 @@
-+++
-title = "Factory Reset"
-[extra]
-category = "arvo"
-
-[glossaryEntry.breach]
-name = "breach"
-symbol = ""
-usage = "azimuth"
-desc = "A factory reset generating a new public/private key pair."
-
-[glossaryEntry."factory reset"]
-  name = "factory reset"
-  symbol = ""
-  usage = "azimuth"
-  desc = "A factory reset generating a new public/private key pair."
-+++
+# Factory Reset
 
 Continuity on the [Ames](/glossary/ames) network occasionally needs to be broken in order to correct a networking error. These infrequent events are known as **factory resets**, which causes an individual ship to forget its network message history and restores it to the state in which you booted it for the first time.
 

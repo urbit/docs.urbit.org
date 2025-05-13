@@ -1,16 +1,4 @@
-+++
-title = "Keyfile"
-
-[extra]
-category = "azimuth"
-
-[glossaryEntry.keyfile]
-name = "keyfile"
-symbol = ""
-usage = "azimuth"
-desc = "A piece of information used to associate a ship with an Urbit identity."
-
-+++
+# Keyfile
 
 A **keyfile** is a piece of information used to associate a [ship](/glossary/ship) with an Urbit identity so that the ship can use the [Arvo](/glossary/arvo) network. A keyfile is dependent upon the [networking keys](/glossary/bridge) that have been set for the identity; we recommend using [Bridge](/glossary/bridge) to set the networking keys and to generate the corresponding keyfile.
 

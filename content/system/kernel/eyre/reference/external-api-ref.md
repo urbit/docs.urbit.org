@@ -1,7 +1,4 @@
-+++
-title = "External API Reference"
-weight = 2
-+++
+# External API Reference
 
 This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](/system/kernel/eyre/guides/guide) document.
 

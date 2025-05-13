@@ -1,9 +1,4 @@
-+++
-title = "5. Cores"
-weight = 15
-nodes = [130, 133]
-objectives = ["Employ a trap to produce a reentrant block of code.", "Produce a recursive gate.", "Distinguish head and tail recursion.", "Consider Hoon structures as cores.", "Identify the special role of the `$` buc arm in many cores.", "Order neighboring cores within the subject for addressibility.", "Produce a type arm."]
-+++
+# 5. Cores
 
 _This module will introduce the key Hoon data structure known as the **core**, as well as ramifications._
 

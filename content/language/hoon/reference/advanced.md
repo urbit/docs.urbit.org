@@ -1,7 +1,5 @@
-+++
-title = "Advanced Types"
-weight = 60
-+++
+# Advanced Types
+
 The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.
 
 The good news is that you can **skip this section**, at least when you're first learning Hoon.  Polymorphism and aliasing are mainly for advanced programmers writing complex infrastructure and/or large functions.  Don't worry about them for a little while.

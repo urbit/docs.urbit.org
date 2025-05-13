@@ -1,7 +1,4 @@
-+++
-title = "Examples"
-weight = 30
-+++
+# Examples
 
 A collection of how-tos and examples for threads.
 

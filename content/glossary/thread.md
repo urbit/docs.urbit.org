@@ -1,16 +1,4 @@
-+++
-title = "Thread"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.thread]
-name = "thread"
-symbol = ""
-usage = "arvo"
-desc = "A transient service used primarily for complex I/O operations by Gall agents."
-
-+++
+# Thread
 
 A **thread** is like a transient [Gall](/glossary/gall) [agent](/glossary/agent). Unlike an agent, it can end and it can fail. The primary uses for threads are:
 

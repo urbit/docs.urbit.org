@@ -1,7 +1,4 @@
-+++
-title = "Cryptography"
-weight = 6
-+++
+# Cryptography
 
 All cryptographic primitives utilized by Arvo are [jetted](/system/runtime/guides/jetting). This is done for performance-related reasons in other parts of the system, but for cryptography this is also extremely important because it allows us to utilize standard reference implementations for the primitives written in C.
 

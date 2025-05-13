@@ -1,16 +1,4 @@
-+++
-title = "Proxies"
-
-[extra]
-category = "azimuth"
-
-[glossaryEntry.proxies]
-name = "proxies"
-symbol = ""
-usage = "azimuth"
-desc = "Ethereum addresses in the Urbit HD Wallet that have limited powers."
-
-+++
+# Proxies
 
 **Proxies** are Ethereum addresses in the [Urbit ID](/glossary/azimuth) system that have limited powers. They are lower-powered "siblings" of the ownership key, which has the sole power to transfer the assigned Urbit identity. Using [Bridge](/glossary/bridge), you can change the Ethereum addresses used for your proxies. If you use the [Urbit HD wallet](/glossary/hdwallet), your proxies have already been set.
 

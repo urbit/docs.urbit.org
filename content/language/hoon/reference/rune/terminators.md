@@ -1,28 +1,4 @@
-+++
-title = "--, == Terminators"
-weight = 120
-
-[glossaryEntry.terminators]
-name = "terminators"
-symbol = "--"
-usage = "Terminators"
-desc = "Runes used to terminate expressions."
-
-[glossaryEntry.hephep]
-name = "hephep"
-symbol = "--"
-usage = "Terminators"
-slug = "#---hephep"
-desc = "The <code>--</code> rune is used to indicate the end of a core expression."
-
-[glossaryEntry.tistis]
-name = "tistis"
-symbol = "=="
-usage = "Terminators"
-slug = "#-tistis"
-desc = "The <code>==</code> rune is used to indicate the end of a 'jogging' or 'running' series of Hoon expressions."
-
-+++
+# --, == Terminators
 
 The `--` and `==` are used as terminators: `--` for core expressions, and `==` for terminating a 'running' or 'jogging' series of Hoon expressions.
 

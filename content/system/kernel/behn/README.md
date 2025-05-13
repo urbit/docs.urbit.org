@@ -1,9 +1,4 @@
-+++
-title = "Behn"
-weight = 20
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Behn
 
 Urbit's timer vane.
 

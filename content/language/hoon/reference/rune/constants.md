@@ -1,7 +1,4 @@
-+++
-title = "Constants (Atoms and Strings)"
-weight = 1
-+++
+# Constants (Atoms and Strings)
 
 The simplest expressions in every language are constants: atoms, strings, paths. (Strings and paths aren't all constants per se, because they have interpolations.)
 

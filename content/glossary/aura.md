@@ -1,13 +1,4 @@
-+++
-title = "Aura"
-
-[glossaryEntry.aura]
-name = "aura"
-symbol = ""
-usage = "hoon-nock"
-desc = "Types for atoms."
-
-+++
+# Aura
 
 **Auras** are types of [atoms](/glossary/atom). A generic atom (`@`) is a non-negative decimal integer. Auras allow such atoms to be defined more specifically, such as `@t` for little-endian UTF-8 strings, `@ux` for hexadecimal and `@p` for a [ship](/glossary/ship) name like `~sampel-palnet`. Auras do three things:
 

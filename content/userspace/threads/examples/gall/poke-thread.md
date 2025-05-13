@@ -1,7 +1,4 @@
-+++
-title = "Poke Thread"
-weight = 5
-+++
+# Poke Thread
 
 Here's a modified agent that pokes our thread. I've replaced some off the previous stuff because it was getting a little unwieldly.
 

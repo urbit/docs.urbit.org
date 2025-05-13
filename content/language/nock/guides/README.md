@@ -1,7 +1,3 @@
-+++
-title = "Guides"
-weight = 20
-auto_expand = true
-+++
+# Guides
 
 - [Fast Hints and Jets](/language/nock/guides/jetting) - Learn about jetting in Nock.

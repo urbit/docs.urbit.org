@@ -1,8 +1,4 @@
-+++
-title = "Types"
-weight = 14
-template = "doc.html"
-+++
+# Types
 
 ## `logs`
 

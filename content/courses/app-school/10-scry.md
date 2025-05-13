@@ -1,7 +1,4 @@
-+++
-title = "10. Scries"
-weight = 50
-+++
+# 10. Scries
 
 In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](/system/kernel/arvo/guides/scry), as well as the [dotket rune documentation](/language/hoon/reference/rune/dot#-dotket).
 

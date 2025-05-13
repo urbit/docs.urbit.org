@@ -1,42 +1,4 @@
-+++
-title = "/ fas · Imports"
-weight = 60
-
-[glossaryEntry.fas]
-name = "fas"
-symbol = "/"
-usage = "Ford"
-desc = "Runes specific to Ford, not considered to be Hoon runes."
-
-[glossaryEntry.faslus]
-name = "faslus"
-symbol = "/+"
-usage = "Ford"
-slug = "#-faslus"
-desc = "Ford rune. Import from <code>lib/</code>"
-
-[glossaryEntry.fashep]
-name = "fashep"
-symbol = "/-"
-usage = "Ford"
-slug = "#--fashep"
-desc = "Ford rune. Import from <code>sur/</code>"
-
-[glossaryEntry.fastis]
-name = "fastis"
-symbol = "/="
-usage = "Ford"
-slug = "#-fastis"
-desc = "Ford rune. Wrap a face around an included horn."
-
-[glossaryEntry.fastar]
-name = "fastar"
-symbol = "/*"
-usage = "Ford"
-slug = "#-fastar"
-desc = "Ford rune. Import file, convert to mark, and wrap a face."
-
-+++
+# / fas · Imports
 
 Fas (`/`) runes are not technically hoon runes, but instead are instructions to Arvo's build system. In the past, the build system was its own vane called Ford. Ford has since been merged into the filesystem vane [Clay](/system/kernel/clay), but these are still referred to as "Ford runes".
 

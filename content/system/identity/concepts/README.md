@@ -1,10 +1,4 @@
-+++
-title = "Concepts"
-weight = 700
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Concepts
 
 ### [Urbit HD Wallet](/system/identity/concepts/hd-wallet)
 

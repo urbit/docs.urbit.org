@@ -1,9 +1,4 @@
-+++
-title = "Jael"
-weight = 90
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Jael
 
 Jael is the networking key infrastructure vane.
 

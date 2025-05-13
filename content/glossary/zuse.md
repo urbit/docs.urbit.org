@@ -1,13 +1,4 @@
-+++
-title = "Zuse"
-
-[glossaryEntry.zuse]
-name = "zuse"
-symbol = ""
-usage = "arvo"
-desc = "A utility library included in the kernel, primarily dealing with cryptography and HTML/JSON parsing/printing."
-
-+++
+# Zuse
 
 **Zuse** is a utility library included with the [kernel](/glossary/kernel) at `/sys/zuse.hoon` in the `%base` [desk](/glossary/zuse). Zuse contains a large number of useful functions, most prominently those relating to cryptography and HTML/JSON parsing/printing.
 

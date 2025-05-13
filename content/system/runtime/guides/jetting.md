@@ -1,7 +1,4 @@
-+++
-title = "Writing Jets"
-weight = 5
-+++
+# Writing Jets
 
 #   Writing Jets
 

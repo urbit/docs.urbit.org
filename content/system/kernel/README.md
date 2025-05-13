@@ -1,8 +1,4 @@
-+++
-title = "Kernel"
-weight = 300
-auto_expand = true
-+++
+# Kernel
 
 - [Arvo](/system/kernel/arvo) - Arvo is the kernel itself.
 - [Ames](/system/kernel/ames) - Ames is the name of our network and the vane that communicates over it. It's an encrypted P2P network composed of instances of the Arvo operating system.

@@ -1,9 +1,4 @@
-+++
-title = "App School II (Full-Stack)"
-weight = 7
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# App School II (Full-Stack)
 
 This series walks through the writing of a full Gall agent, and then the process of integrating it with a React front-end. This series follows on from [App School I](/courses/app-school). If you haven't completed that, or otherwise aren't familiar with the basics of writing Gall agents, it's strongly recommended to work through that guide first.
 

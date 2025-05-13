@@ -1,7 +1,4 @@
-+++
-title = "Urbit HD Wallet"
-weight = 3
-+++
+# Urbit HD Wallet
 
 Owners of Urbit identities need safeguards that allow for the use of Urbit without jeopardizing cryptographic ownership of their assets. Toward this end, we created the **Urbit Hierarchical Deterministic (HD) Wallet** for the storage of identities. The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Arvo network to transferring ownership of identities.
 

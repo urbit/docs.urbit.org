@@ -1,9 +1,4 @@
-+++
-title = "Command-line install"
-weight = 8
-description = "Installation instructions for technical users"
-tag = "selfhost"
-+++
+# Command-line install
 
 This guide covers running the Urbit runtime (Vere) using the command line. This can be run on your local machine or a server in the cloud, we just cover the local case here. The runtime is what interprets the Urbit kernel code (Arvo) into commands your specific machine (macOS or Linux) understands.
 

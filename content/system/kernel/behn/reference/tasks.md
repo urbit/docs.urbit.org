@@ -1,7 +1,4 @@
-+++
-title = "API Reference"
-weight = 2
-+++
+# API Reference
 
 In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.
 

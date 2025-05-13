@@ -1,16 +1,4 @@
-+++
-title = "Keywords"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.keywords]
-name = "keywords"
-symbol = ""
-usage = "hoon-nock"
-desc = "Reserved words in a programming language."
-
-+++
+# Keywords
 
 In programming languages, a **keyword** is a predefined, reserved word with special meaning to the compiler. Keywords are part of the syntax of a language and cannot be used as identifiers, like `int` in C.
 

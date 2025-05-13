@@ -1,16 +1,4 @@
-+++
-title = "Censures"
-
-[extra]
-category = "azimuth"
-
-[glossaryEntry.censure]
-name = "censure"
-symbol = ""
-usage = "azimuth"
-desc = "Allows stars and galaxies to assign negative reputation information to other points of equal or lower rank."
-
-+++
+# Censures
 
 The **Censures** [Azimuth](/glossary/azimuth) contract allows [stars](/glossary/star) and [galaxies](/glossary/galaxy) to assign negative reputation information to other points of equal or lower rank. This information is publicly visible and is intended to create an economic deterrent to bad behavior.
 

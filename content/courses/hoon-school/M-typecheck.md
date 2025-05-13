@@ -1,9 +1,4 @@
-+++
-title = "12. Type Checking"
-weight = 22
-nodes = [183]
-objectives = ["Use assertions to enforce type constraints."]
-+++
+# 12. Type Checking
 
 _In this module we'll cover how the Hoon compiler infers type, as well as various cases in which a type check is performed._
 

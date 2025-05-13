@@ -1,8 +1,4 @@
-+++
-title = "Spider API"
-weight = 50
-template = "doc.html"
-+++
+# Spider API
 
 ## Start thread
 

@@ -1,8 +1,4 @@
-+++
-title = "Arvo"
-weight = 5
-sort_by = "weight"
-+++
+# Arvo
 
 Arvo, also called Urbit OS, is our operating system.
 

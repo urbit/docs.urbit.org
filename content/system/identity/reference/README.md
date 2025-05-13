@@ -1,10 +1,4 @@
-+++
-title = "Reference"
-weight = 700
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Reference
 
 ### [Azimuth.eth](/system/identity/reference/azimuth-eth)
 

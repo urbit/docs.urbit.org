@@ -1,8 +1,4 @@
-+++
-title = "Guides"
-weight = 10
-auto_expand  = true
-+++
+# Guides
 
 This section contains guides to features of Gall agents and related utilities.
 

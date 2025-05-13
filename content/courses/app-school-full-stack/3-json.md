@@ -1,7 +1,4 @@
-+++
-title = "3. JSON"
-weight = 4
-+++
+# 3. JSON
 
 Data sent between our agent and our front-end will all be encoded as JSON. In this section, we'll briefly look at how JSON works in Urbit, and write a library to convert our agent's structures to and from JSON for our front-end.
 

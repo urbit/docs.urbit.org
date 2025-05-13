@@ -1,7 +1,4 @@
-+++
-title = "Water Towers"
-weight = 60
-+++
+# Water Towers
 
 ## Challenge: Water between Towers
 

@@ -1,7 +1,4 @@
-+++
-title = "Solitaire Cipher"
-weight = 50
-+++
+# Solitaire Cipher
 
 ## Challenge: Solitaire Encryption Cipher
 

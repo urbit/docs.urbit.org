@@ -1,8 +1,4 @@
-+++
-title = "Debugging Wrapper"
-weight = 42
-+++
-
+# Debugging Wrapper
 
 The `/lib/dbug.hoon` agent wrapper adds support to view the state of a Gall agent.  It is applied to an existing Gall agent as a single drop-in line, `%-  agent:dbug`.
 

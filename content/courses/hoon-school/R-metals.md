@@ -1,9 +1,4 @@
-+++
-title = "18. Generic and Variant Cores"
-weight = 28
-nodes = [288, 299]
-objectives = ["Distinguish dry and wet cores.", "Describe use cases for wet gates (using genericity).", "Enumerate and distinguish use cases for dry cores (using variance):", "- Covariant (`%zinc`)", "- Contravariant (`%iron`)", "- Bivariant (`%lead`)", "- Invariant (`%gold`)"]
-+++
+# 18. Generic and Variant Cores
 
 _This module introduces how [cores](/glossary/core) can be extended for different behavioral patterns.  It may be considered optional and skipped if you are speedrunning Hoon School._
 

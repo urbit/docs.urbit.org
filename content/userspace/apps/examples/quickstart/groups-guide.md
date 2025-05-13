@@ -1,7 +1,4 @@
-+++
-title = "Build a Groups App"
-weight = 2
-+++
+# Build a Groups App
 
 In this lightning tutorial, we're going to build an app to create groups called Squad. It'll look like this:
 

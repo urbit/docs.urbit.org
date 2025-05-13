@@ -1,16 +1,4 @@
-+++
-title = "Mold"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.mold]
-name = "mold"
-symbol = ""
-usage = "hoon-nock"
-desc = "Data types in Hoon."
-
-+++
+# Mold
 
 **Molds** are data types in [Hoon](/glossary/hoon). [Atom](/glossary/atom) [auras](/glossary/aura) like `@ud` are molds, as are more complex structures like `json`, `path`, `(list @ud)`, `(unit manx)`, `card:agent:gall`, `(map @tas (pair @t @ux))`, etc. Raw values may be type-cast to a mold, and molds can also be called as functions to coerce a value to its type (this is called "molding" or "clamming"). Molds may be create with "mold builder" functions, or with `$`-family runes.
 

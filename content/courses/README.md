@@ -1,7 +1,4 @@
-+++
-title = "Courses"
-weight = 80
-+++
+# Courses
 
 In-depth [tutorials](#tutorials) for learning the Hoon programming language and Urbit app development at your own pace.
 

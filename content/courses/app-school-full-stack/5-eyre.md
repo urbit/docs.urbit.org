@@ -2,7 +2,7 @@
 
 Now that we have our structure file, agent, `$json` conversion library and mark file, our back-end is complete. Before we start writing our front-end, though, we should give a brief overview of how Eyre works.
 
-[Eyre](/system/kernel/eyre) is the HTTP server [vane](/glossary/vane) of Arvo. Eyre has a handful of different subsystems, but the main two are the channel system and the scry interface. These two are what we'll focus on here.
+[Eyre](system/kernel/eyre) is the HTTP server [vane](glossary/vane) of Arvo. Eyre has a handful of different subsystems, but the main two are the channel system and the scry interface. These two are what we'll focus on here.
 
 In order to use the channel system or perform scries, a web client must have authenticated with the ship's web login code (e.g. `lidlut-tabwed-pillex-ridrup`) and obtained a session cookie. Our front-end will be served directly from the ship by the `%docket` agent, so we can assume a session cookie was already obtained when the user logged into landscape, and skip over authentication.
 
@@ -26,7 +26,7 @@ The `@urbit/http-api` library we'll use includes a function for performing scrie
 
 ## Resources
 
-- [The Eyre vane documentation](/system/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
-- [Eyre External API Reference](/system/kernel/eyre/reference/external-api-ref) - This section of the Eyre documentation contains reference material for Eyre's external API.
+- [The Eyre vane documentation](system/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
+- [Eyre External API Reference](system/kernel/eyre/reference/external-api-ref) - This section of the Eyre documentation contains reference material for Eyre's external API.
 
-- [The Eyre Guide](/system/kernel/eyre/guides/guide) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).
+- [The Eyre Guide](system/kernel/eyre/guides/guide) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).

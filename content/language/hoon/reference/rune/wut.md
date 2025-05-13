@@ -8,7 +8,7 @@ All `?` runes reduce to `?:` and/or `?=`.
 
 If the condition of an `?:` is a `?=`, **and** the `?=` is testing a leg of the subject, the compiler specializes the subject type for the branches of the `?:`. Branch inference also works for expressions which expand to `?:`.
 
-The test does not have to be a single `?=`; the compiler can analyze arbitrary boolean logic ([`?&` ("wutpam")](#-wutpam), [`?|` ("wutbar")](#-wutbar), [`?!` ("wutzap")](#-wutzap)) with full short-circuiting. Equality tests ([`.=` ("dottis")](/language/hoon/reference/rune/dot#-dottis)) are **not** analyzed.
+The test does not have to be a single `?=`; the compiler can analyze arbitrary boolean logic ([`?&` ("wutpam")](#-wutpam), [`?|` ("wutbar")](#-wutbar), [`?!` ("wutzap")](#-wutzap)) with full short-circuiting. Equality tests ([`.=` ("dottis")](language/hoon/reference/rune/dot#-dottis)) are **not** analyzed.
 
 If the compiler detects that the branch is degenerate (only one side is taken), it fails with an error.
 

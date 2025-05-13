@@ -2,11 +2,11 @@
 
 The terminal driver vane.
 
-Keyboard events and the like from Unix are received by Dill as [%belt](/system/kernel/dill/reference/tasks#belt) `task`s, and Dill sends `%blit` `gift`s containing [$blit](/system/kernel/dill/reference/data-types#blit)s back to the runtime to be displayed in the Unix terminal. The manner of interacting with Dill differs depending on whether you're in userspace or kernelspace, as we'll explore below.
+Keyboard events and the like from Unix are received by Dill as [%belt](system/kernel/dill/reference/tasks#belt) `task`s, and Dill sends `%blit` `gift`s containing [$blit](system/kernel/dill/reference/data-types#blit)s back to the runtime to be displayed in the Unix terminal. The manner of interacting with Dill differs depending on whether you're in userspace or kernelspace, as we'll explore below.
 
 ## Kernelspace
 
-For technical reasons, Dill performs a handful of system tasks related to booting a ship and some memory operations. Aside from those, other Vanes mostly just pass Dill [tasks](/system/kernel/dill/reference/tasks) to print error messages and the like to the terminal.
+For technical reasons, Dill performs a handful of system tasks related to booting a ship and some memory operations. Aside from those, other Vanes mostly just pass Dill [tasks](system/kernel/dill/reference/tasks) to print error messages and the like to the terminal.
 
 ## Userspace
 
@@ -19,11 +19,11 @@ Currently, Dill supports multiple *sessions*, but Vere (the runtime) only suppor
 
 `%drum` is Arvo's CLI app manager. By default you'll have one CLI application running: the `%dojo`. You may also have additional CLI apps which you have started or attached with the `|dojo/link` command. It's `%drum` that keeps track of which one is active, which one input should be routed to, which one should be displayed, what each prompt should look like, and so forth. Dill itself is oblivious to the distinction between these CLI apps. It only sees the session with `%drum`, so it just passes all input to `%drum` and display whatever `%drum` gives it.
 
-While `%drum` talks with Dill in `$dill-belt`s and `$dill-blit`s, it talks to CLI apps with `$sole-action`s and `$sole-event`s, which are defined in the `sole` library. For more information on the `sole` library and the related `shoe` library, and for information on how to build CLI apps, you can refer to the [CLI app tutorial](/userspace/apps/guides/cli-tutorial).
+While `%drum` talks with Dill in `$dill-belt`s and `$dill-blit`s, it talks to CLI apps with `$sole-action`s and `$sole-event`s, which are defined in the `sole` library. For more information on the `sole` library and the related `shoe` library, and for information on how to build CLI apps, you can refer to the [CLI app tutorial](userspace/apps/guides/cli-tutorial).
 
 To give a basic idea of how keyboard events flow through these systems and produce terminal output, here's a diagram showing the messages in pseudo-Hoon:
 
 ![Dill userspace diagram](https://media.urbit.org/docs/arvo/dill/dill-userspace.svg)
 
-You can use a [move trace](/system/kernel/arvo/guides/move-trace) to get a hands-on feel for this data flow.
+You can use a [move trace](system/kernel/arvo/guides/move-trace) to get a hands-on feel for this data flow.
 

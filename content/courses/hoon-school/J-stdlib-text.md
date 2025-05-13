@@ -1,14 +1,14 @@
 # 9. Text Processing I
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.  We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion.  Formatted text and text parsing are covered [in a later module](/courses/hoon-school/P-stdlib-io)._
+_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type.  We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion.  Formatted text and text parsing are covered [in a later module](courses/hoon-school/P-stdlib-io)._
 
 ##  Text in Hoon
 
-We've incidentally used `'messages written as cords'` and `"as tapes"`, but aside from taking a brief look at how [lists](/glossary/list) (and thus [tapes](/glossary/tape)) work with tree addressing, we haven't discussed why these differ or how text works more broadly.
+We've incidentally used `'messages written as cords'` and `"as tapes"`, but aside from taking a brief look at how [lists](glossary/list) (and thus [tapes](glossary/tape)) work with tree addressing, we haven't discussed why these differ or how text works more broadly.
 
 There are four basic ways to represent text in Urbit:
 
-- `@t`, a [cord](/glossary/cord), which is an [atom](/glossary/atom) (single value)
+- `@t`, a [cord](glossary/cord), which is an [atom](glossary/atom) (single value)
 - `@ta`, a `knot` used for URL-safe path elements, which is an atom (single value)
 - `@tas`, a `term` used primarily for constants, which is an atom (single value)
 - `tape`, which is a `(list @t)`
@@ -28,7 +28,7 @@ One way to handle text is to assign a code value to each letter, then represent 
 A   S   C   I   I
 ```
 
-A [cord](/glossary/cord) simply shunts these values together in one-byte-wide slots and represents them as an integer.
+A [cord](glossary/cord) simply shunts these values together in one-byte-wide slots and represents them as an integer.
 
 ```hoon
 > 'this is a cord'
@@ -38,7 +38,7 @@ A [cord](/glossary/cord) simply shunts these values together in one-byte-wide sl
 2.037.307.443.564.446.887.986.503.990.470.772
 ```
 
-It's very helpful to use the `@ux` [aura](/glossary/aura) if you are trying to see the internal structure of a `cord`.  Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
+It's very helpful to use the `@ux` [aura](glossary/aura) if you are trying to see the internal structure of a `cord`.  Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
 
 ```hoon
 > `@ux`'HELLO'
@@ -64,13 +64,13 @@ Special characters (non-ASCII, beyond the standard keyboard, basically) are repr
 
 ### `(list @t)` `tape`
 
-There are some tools to work with atom `cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](/glossary/tape).  A `tape` splits out the individual characters from a `cord` into a `list` of character values.
+There are some tools to work with atom `cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](glossary/tape).  A `tape` splits out the individual characters from a `cord` into a `list` of character values.
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
 We've hinted a bit at the structure of `list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig. So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
 
-A tape is a list of `@tD` atoms (i.e., characters).  (The upper-case character at the end of the [aura](/glossary/aura) hints that the `@t` values are D→3 so 2³=8 bits wide.)
+A tape is a list of `@tD` atoms (i.e., characters).  (The upper-case character at the end of the [aura](glossary/aura) hints that the `@t` values are D→3 so 2³=8 bits wide.)
 
 ```hoon
 > "this is a tape"
@@ -80,7 +80,7 @@ A tape is a list of `@tD` atoms (i.e., characters).  (The upper-case character a
 ~[116 104 105 115 32 105 115 32 97 32 116 97 112 101]
 ```
 
-Since a [tape](/glossary/tape) is a `(list @tD)`, all of the `list` tools we have seen before work on them.
+Since a [tape](glossary/tape) is a `(list @tD)`, all of the `list` tools we have seen before work on them.
 
 ### `@ta` `knot`
 
@@ -101,7 +101,7 @@ A further tweak of the ASCII-only concept, the `@tas` `term` permits only “tex
 
 `term`s are rarely used for message-like text, but they are used all the time for internal labels in code.  They differ from regular text in a couple of key ways that can confuse you until you're used to them.
 
-For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](/courses/hoon-school/N-logic) to filter for acceptable values.
+For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](courses/hoon-school/N-logic) to filter for acceptable values.
 
 ```hoon
 > ^-  @tas  %5
@@ -132,7 +132,7 @@ For instance, imagine creating a function to ensure that only a certain [classic
 --
 ```
 
-(See how that `=<` [tisgal](/language/hoon/reference/rune/tis#-tisgal) works with the helper [core?](/glossary/core))
+(See how that `=<` [tisgal](language/hoon/reference/rune/tis#-tisgal) works with the helper [core?](glossary/core))
 
 
 ##  Text Operations
@@ -148,7 +148,7 @@ String interpolation puts the result of an expression directly into a `tape`:
 "11 is the answer."
 ```
 
-The [++weld](/language/hoon/reference/stdlib/2b#weld) function can be used to glue two `tape`s together:
+The [++weld](language/hoon/reference/stdlib/2b#weld) function can be used to glue two `tape`s together:
 
 ```hoon
 > (weld "Hello" "Mars!")
@@ -163,11 +163,11 @@ The [++weld](/language/hoon/reference/stdlib/2b#weld) function can be used to gl
 
 ### Manipulating Text
 
-If you have text but you need to change part of it or alter its form, you can use standard library `list` operators like [++flop](/language/hoon/reference/stdlib/2b#flop) as well as `tape`-specific arms.
+If you have text but you need to change part of it or alter its form, you can use standard library `list` operators like [++flop](language/hoon/reference/stdlib/2b#flop) as well as `tape`-specific arms.
 
 Applicable `list` operations—some of which you've seen before—include:
 
-- The [++flop](/language/hoon/reference/stdlib/2b#flop) function takes a list and returns it in reverse order:
+- The [++flop](language/hoon/reference/stdlib/2b#flop) function takes a list and returns it in reverse order:
 
     ```hoon
     > (flop "Hello!")
@@ -177,7 +177,7 @@ Applicable `list` operations—some of which you've seen before—include:
     "Hello!"
     ```
 
-- The [++sort](/language/hoon/reference/stdlib/2b#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list.  It takes a `list` to sort and a gate that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [++lth](/language/hoon/reference/stdlib/1a#lth) gate (for “less than”):
+- The [++sort](language/hoon/reference/stdlib/2b#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list.  It takes a `list` to sort and a gate that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [++lth](language/hoon/reference/stdlib/1a#lth) gate (for “less than”):
 
     ```hoon
     > (sort ~[37 62 49 921 123] lth)
@@ -200,7 +200,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     The function passed to sort must produce a flag, i.e., `?`.
 
-- The [++weld](/language/hoon/reference/stdlib/2b#weld) function takes two lists of the same type and concatenates them:
+- The [++weld](language/hoon/reference/stdlib/2b#weld) function takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld "Happy " "Birthday!")
@@ -209,7 +209,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     It does not inject a separator character like a space.
 
-- The [++snag](/language/hoon/reference/stdlib/2b#snag) function takes an atom `n` and a list, and returns the `n`th item of the list, where 0 is the first item:
+- The [++snag](language/hoon/reference/stdlib/2b#snag) function takes an atom `n` and a list, and returns the `n`th item of the list, where 0 is the first item:
 
     ```hoon
     > (snag 3 "Hello!")
@@ -226,7 +226,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - Without using `++snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of the page.
 
-- The [++oust](/language/hoon/reference/stdlib/2b#oust) function takes a pair of atoms `[a=@ b=@]` and a list, and returns the list with b items removed, starting at item a:
+- The [++oust](language/hoon/reference/stdlib/2b#oust) function takes a pair of atoms `[a=@ b=@]` and a list, and returns the list with b items removed, starting at item a:
 
     ```hoon
     > (oust [0 1] `(list @)`~[11 22 33 44])
@@ -242,7 +242,7 @@ Applicable `list` operations—some of which you've seen before—include:
     "Heo!"
     ```
 
-- The [++lent](/language/hoon/reference/stdlib/2b#lent) function takes a list and returns the number of items in it:
+- The [++lent](language/hoon/reference/stdlib/2b#lent) function takes a list and returns the number of items in it:
 
     ```hoon
     > (lent ~[11 22 33 44])
@@ -256,32 +256,32 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - There is a built-in `++lent` function that counts the number of characters in a `tape`.  Build your own `tape`-length character counting function without using `++lent`.
 
-    You may find the `?~` [wutsig](/language/hoon/reference/rune/wut#-wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` [wutcol](/language/hoon/reference/rune/wut#-wutcol)?)
+    You may find the `?~` [wutsig](language/hoon/reference/rune/wut#-wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` [wutcol](language/hoon/reference/rune/wut#-wutcol)?)
 
-The foregoing are [list](/glossary/list) operations.  The following, in contrast, are [tape](/glossary/tape)-specific operations:
+The foregoing are [list](glossary/list) operations.  The following, in contrast, are [tape](glossary/tape)-specific operations:
 
-- The [++crip](/language/hoon/reference/stdlib/4b#crip) function converts a `tape` to a `cord` (`tape`→`cord`).
+- The [++crip](language/hoon/reference/stdlib/4b#crip) function converts a `tape` to a `cord` (`tape`→`cord`).
 
     ```hoon
     > (crip "Mars")
     'Mars'
     ```
 
-- The [++trip](/language/hoon/reference/stdlib/4b#trip) function converts a `cord` to a `tape` (`cord`→`tape`).
+- The [++trip](language/hoon/reference/stdlib/4b#trip) function converts a `cord` to a `tape` (`cord`→`tape`).
 
     ```hoon
     > (trip 'Earth')
     "Earth"
     ```
 
-- The [++cass](/language/hoon/reference/stdlib/4b#cass) function: convert upper-case text to lower-case (`tape`→`tape`)
+- The [++cass](language/hoon/reference/stdlib/4b#cass) function: convert upper-case text to lower-case (`tape`→`tape`)
 
     ```hoon
     > (cass "Hello Mars")
     "hello mars"
     ```
 
-- The [++cuss](/language/hoon/reference/stdlib/4b#cuss) function: convert lower-case text to upper-case (`tape`→`tape`)
+- The [++cuss](language/hoon/reference/stdlib/4b#cuss) function: convert lower-case text to upper-case (`tape`→`tape`)
 
     ```hoon
     > (cuss "Hello Mars")
@@ -298,14 +298,14 @@ Given a string of text, what can you do with it?
 
 #### Search
 
-- The [++find](/language/hoon/reference/stdlib/2b#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack).  (`++find` starts counting from zero.)
+- The [++find](language/hoon/reference/stdlib/2b#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack).  (`++find` starts counting from zero.)
 
     ```hoon
     > (find "brillig" "'Twas brillig and the slithy toves")
     [~ 6]
     ```
 
-    `++find` returns a `unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `unit`s are discussed in more detail in [a later lesson](/courses/hoon-school/L-struct).
+    `++find` returns a `unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `unit`s are discussed in more detail in [a later lesson](courses/hoon-school/L-struct).
 
 #### Tokenize/Parse
 
@@ -316,13 +316,13 @@ To _tokenize_ text is to break it into pieces according to some rule. For instan
  1   2   3     4   5    6   7   8     9  10         11    12 13 14  15
 ```
 
-Hoon has a sophisticated parser built into it that [we'll use later](/courses/hoon-school/P-stdlib-io).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
+Hoon has a sophisticated parser built into it that [we'll use later](courses/hoon-school/P-stdlib-io).  There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other.  We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
 
 ##  Exercise: Break Text at a Space
 
 Hoon has a very powerful text parsing engine, built to compile Hoon itself.  However, it tends to be quite obscure to new learners.  We can build a simple one using `list` tools.
 
-- Compose a [gate](/glossary/gate) which parses a long `tape` into smaller `tape`s by splitting the text at single spaces.  For example, given a `tape`
+- Compose a [gate](glossary/gate) which parses a long `tape` into smaller `tape`s by splitting the text at single spaces.  For example, given a `tape`
  
     ```hoon
     "the sky above the port was the color of television tuned to a dead channel"
@@ -335,8 +335,8 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
     ```
     
     To complete this, you'll need
-    [++scag](/language/hoon/reference/stdlib/2b#scag) and
-    [++slag](/language/hoon/reference/stdlib/2b#slag) (who sound like
+    [++scag](language/hoon/reference/stdlib/2b#scag) and
+    [++slag](language/hoon/reference/stdlib/2b#slag) (who sound like
     villainous henchmen from a children's cartoon).
 
     ```hoon
@@ -353,9 +353,9 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself.  How
 
 #### Convert
 
-If you have a Hoon value and you want to convert it into text as such, use [++scot](/language/hoon/reference/stdlib/4m#scot) and [++scow](/language/hoon/reference/stdlib/4m#scow). These call for a value of type `+$dime`, which means the `@tas` equivalent of a regular aura.  These are labeled as returning `cord`s (`@t`s) but in practice seem to return `knot`s (`@ta`s).
+If you have a Hoon value and you want to convert it into text as such, use [++scot](language/hoon/reference/stdlib/4m#scot) and [++scow](language/hoon/reference/stdlib/4m#scow). These call for a value of type `+$dime`, which means the `@tas` equivalent of a regular aura.  These are labeled as returning `cord`s (`@t`s) but in practice seem to return `knot`s (`@ta`s).
 
-- The [++scot](/language/hoon/reference/stdlib/4m#scot) function renders a `dime` as a `cord` (`dime`→`cord`); the user must include any necessary aura transformation.
+- The [++scot](language/hoon/reference/stdlib/4m#scot) function renders a `dime` as a `cord` (`dime`→`cord`); the user must include any necessary aura transformation.
 
     ```hoon
     > `@t`(scot %ud 54.321)
@@ -373,9 +373,9 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
     '~sampel-palnet'
     ```
 
-- The [++scow](/language/hoon/reference/stdlib/4m#scow) function renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to [++scot](/language/hoon/reference/stdlib/4m#scot).
+- The [++scow](language/hoon/reference/stdlib/4m#scow) function renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to [++scot](language/hoon/reference/stdlib/4m#scot).
 
-- The [++sane](/language/hoon/reference/stdlib/4b#sane) function checks the validity of a possible text string as a `knot` or `term`.  The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `++sane` is also not infallible yet.
+- The [++sane](language/hoon/reference/stdlib/4b#sane) function checks the validity of a possible text string as a `knot` or `term`.  The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`).  (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `++sane` is also not infallible yet.
 
     ```hoon
     > ((sane %ta) 'ångstrom')
@@ -424,16 +424,16 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
-- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](/language/hoon/reference/rune/bar#-barcen) core.  Save this file as `lib/text.hoon` in the `%base` [desk](/glossary/desk) of your fakeship and commit.
+- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](language/hoon/reference/rune/bar#-barcen) core.  Save this file as `lib/text.hoon` in the `%base` [desk](glossary/desk) of your fakeship and commit.
 
-- Produce a generator `gen/text-user.hoon` which accepts a [tape](/glossary/tape) and returns the number of words in the text (separated by spaces).  (How would you obtain this from those two operations?)
+- Produce a generator `gen/text-user.hoon` which accepts a [tape](glossary/tape) and returns the number of words in the text (separated by spaces).  (How would you obtain this from those two operations?)
 
 
 ##  Logging
 
-The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing.  To this end, we introduced `~&` [sigpam](/language/hoon/reference/rune/sig#-sigpam) in the last lesson.
+The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing.  To this end, we introduced `~&` [sigpam](language/hoon/reference/rune/sig#-sigpam) in the last lesson.
 
-The `~&` [sigpam](/language/hoon/reference/rune/sig#-sigpam) rune offers some finer-grained output options than just printing a simple value to the screen.  For instance, you can use it with string interpolation to produce detailed error messages.
+The `~&` [sigpam](language/hoon/reference/rune/sig#-sigpam) rune offers some finer-grained output options than just printing a simple value to the screen.  For instance, you can use it with string interpolation to produce detailed error messages.
 
 There are also `>` modifiers which can be included to mark “debugging levels”, really just color-coding the output:
 
@@ -467,13 +467,13 @@ You can use these to differentiate messages when debugging or otherwise auditing
 
 ##  `%say` Generators
 
-A naked [generator](/glossary/generator) is merely a [gate](/glossary/gate):  a [core](/glossary/core) with a `$` arm that Dojo knows to call.  However, we can also invoke a generator which is a cell of a metadata tag and a core.  The next level-up for our generator skills is the `%say` generator, a cell of `[%say core]` that affords slightly more sophisticated evaluation.
+A naked [generator](glossary/generator) is merely a [gate](glossary/gate):  a [core](glossary/core) with a `$` arm that Dojo knows to call.  However, we can also invoke a generator which is a cell of a metadata tag and a core.  The next level-up for our generator skills is the `%say` generator, a cell of `[%say core]` that affords slightly more sophisticated evaluation.
 
-We use `%say` generators when we want to provide something else in [Arvo](/glossary/arvo), the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
+We use `%say` generators when we want to provide something else in [Arvo](glossary/arvo), the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
 
-To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](/glossary/mark) is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
+To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](glossary/mark) is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
 
-So, more formally, a `%say` generator is a [cell](/glossary/cell). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `cask` -- a pair of the output data and the `mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
+So, more formally, a `%say` generator is a [cell](glossary/cell). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `cask` -- a pair of the output data and the `mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
 ```hoon
 :-  %say
@@ -497,7 +497,7 @@ Notice that we used no argument, something that is possible with `%say` generato
 :-  %say
 ```
 
-Recall that the rune `:-` [colhep](/language/hoon/reference/rune/col#--colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
+Recall that the rune `:-` [colhep](language/hoon/reference/rune/col#--colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
 
 The expression above creates a cell with `%say` as the head. The tail is the `|= *` expression on the line that follows.
 
@@ -507,7 +507,7 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 (add 40 2)
 ```
 
-`|= *` constructs a [gate](/glossary/gate) that takes a noun. This `gate` will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
+`|= *` constructs a [gate](glossary/gate) that takes a noun. This `gate` will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject.  Namely, a `%say` generator knows about `our`, `eny`, and `now`, as well as the current desk:
 
@@ -522,11 +522,11 @@ These values can be stubbed out with `*` or `^` if they are not needed in a part
 
 We can modify the boilerplate code to allow arguments to be passed into a `%say` generator, but in a way that gives us more power than we would have if we just used a naked generator.
 
-Naked generators are limited because they have no way of accessing data that exists in Arvo, such as the date and time or pieces of fresh entropy.  In `%say` generators, however, we can access that kind of [subject](/glossary/subject) by identifying them in the gate's sample, which we only specified as `*` in the previous few examples. But we can do more with `%say` generators if we do more with that sample.  Any valid sample will follow this 3-tuple scheme:
+Naked generators are limited because they have no way of accessing data that exists in Arvo, such as the date and time or pieces of fresh entropy.  In `%say` generators, however, we can access that kind of [subject](glossary/subject) by identifying them in the gate's sample, which we only specified as `*` in the previous few examples. But we can do more with `%say` generators if we do more with that sample.  Any valid sample will follow this 3-tuple scheme:
 
 `[[now=@da eny=@uvJ bec=beak] [list of unnamed arguments] [list of named arguments]]`
 
-This entire structure is a [noun](/glossary/noun), which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
+This entire structure is a [noun](glossary/noun), which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
 
 ##  Exercise:  The Magic 8-Ball
 
@@ -570,7 +570,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 
 </details>
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy.  Right now we don't know quite enough to interpret this line, but we'll revisit the [++og](/language/hoon/reference/stdlib/3d#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](/courses/hoon-school/O-subject).  For now, just know that it allows us to produce a random (unpredictable) integer using `++rad:rng`.  We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy.  Right now we don't know quite enough to interpret this line, but we'll revisit the [++og](language/hoon/reference/stdlib/3d#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](courses/hoon-school/O-subject).  For now, just know that it allows us to produce a random (unpredictable) integer using `++rad:rng`.  We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive.  This gives us a random value from the list of possible answers.
 
 Since this is a `%say` generator, we can run it without arguments:
 
@@ -599,7 +599,7 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 (shuffle-deck:playing-cards make-deck:playing-cards eny)
 ```
 
-Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](/language/hoon/reference/rune/fas#-faslus) rune.  When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that.  It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
+Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](language/hoon/reference/rune/fas#-faslus) rune.  When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that.  It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
 Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `deck`.
 

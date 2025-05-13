@@ -1,9 +1,4 @@
-+++
-title = "Dojo"
-
-[extra]
-category = "arvo"
-+++
+# Dojo
 
 The **Dojo** is Urbit's command-line application that processes system commands and returns output. It also runs [Hoon](/glossary/hoon) and [Nock](/glossary/nock) code, making it a good place to play around with those languages.
 

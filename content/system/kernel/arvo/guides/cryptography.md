@@ -1,7 +1,4 @@
-+++
-title = "Cryptography"
-weight = 50
-+++
+# Cryptography
 
 Cryptography is central to the operation of Urbit. Here we give an overview of how it is utilized.
 

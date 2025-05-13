@@ -1,9 +1,4 @@
-+++
-title = "Clay"
-weight = 30
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Clay
 
 Our filesystem.
 

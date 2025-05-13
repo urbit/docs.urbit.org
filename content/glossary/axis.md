@@ -1,6 +1,4 @@
-+++
-title = "Axis"
-+++
+# Axis
 
 An **axis** is a numerical tree address for a particular location in a [noun](/glossary/noun).
 

@@ -1,7 +1,5 @@
-+++
-title = "Minimum Path Sum"
-weight = 120
-+++
+# Minimum Path Sum
+
 ## Challenge: Minimum Path Sum
 
 You are given a 2D grid of positive whole numbers, represented as a `(list (list @ud))` You start in the top left corner of the grid, and your goal is to walk to the botttom right corner by taking steps either down or to the right. Your goal is to find the path that minimizes the sum of the numbers on the path.

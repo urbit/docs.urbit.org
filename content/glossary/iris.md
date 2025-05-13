@@ -1,16 +1,4 @@
-+++
-title = "Iris"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.iris]
-name = "iris"
-symbol = ""
-usage = "arvo"
-desc = "The server-side HTTP vane of Arvo. Its client-facing counterpart is Eyre."
-
-+++
+# Iris
 
 **Iris** is the web client [vane](/glossary/vane) that handles HTTP requests to remote web servers. It is the counterpart to [Eyre](/glossary/eyre), which is the web server vane.
 

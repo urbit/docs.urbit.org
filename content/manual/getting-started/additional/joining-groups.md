@@ -1,8 +1,4 @@
-+++
-title = "Joining groups"
-tag = "around"
-weight = 18
-+++
+# Joining groups
 
 Joining public groups is straightforward: search for the group host's Urbit ID, and join. Some groups are private, so you'll need approval to join.
 

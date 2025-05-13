@@ -1,8 +1,4 @@
-+++
-title = "Vases"
-description = "Learn about dynamically typed data"
-weight = 115
-+++
+# Vases
 
 ## Overview
 

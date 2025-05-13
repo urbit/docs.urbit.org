@@ -1,7 +1,4 @@
-+++
-title = "Ecliptic.eth"
-weight = 6
-+++
+# Ecliptic.eth
 
 [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](/glossary/upgrade). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
 

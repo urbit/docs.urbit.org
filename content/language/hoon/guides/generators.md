@@ -1,7 +1,4 @@
-+++
-title = "Generators"
-weight = 73
-+++
+# Generators
 
 Generator files provide a way for users to interact with code "scripts" through the Dojo prompt.  There are three basic kinds of generators:
 

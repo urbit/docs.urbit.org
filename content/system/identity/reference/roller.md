@@ -1,7 +1,4 @@
-+++
-title = "L2 Rollers"
-weight = 9
-+++
+# L2 Rollers
 
 Here we outline how the naive rollup rollers work. This page is only a quick summary - the full documentation of the API is coming soon.
 

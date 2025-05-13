@@ -1,7 +1,4 @@
-+++
-title = "Output"
-weight = 4
-+++
+# Output
 
 A strand produces a `[(list card) <response>]`. The first part is a list of cards to be sent off immediately, and `<response>` is one of:
 

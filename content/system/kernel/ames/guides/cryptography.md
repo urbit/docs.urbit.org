@@ -1,7 +1,4 @@
-+++
-title = "Cryptography"
-weight = 2
-+++
+# Cryptography
 
 Here we give a technical overview of how Ames implements cryptography.
 

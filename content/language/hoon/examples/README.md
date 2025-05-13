@@ -1,9 +1,4 @@
-+++
-title = "Examples"
-description = "Additional Hoon challenges and explication"
-weight = 100
-insert_anchor_links = "right"
-+++
+# Examples
 
 Hoon language examples and exercises.
 

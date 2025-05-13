@@ -1,7 +1,4 @@
-+++
-title = "L2 Actions"
-weight = 6
-+++
+# L2 Actions
 
 There are a total of eleven layer 2 actions, each corresponding to a familiar [layer 1 action](/system/identity/reference/ecliptic): `%transfer-point`, `%spawn`, `%configure-keys`, `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`, `%set-management-proxy`, `%set-spawn-proxy`, and `%set-transfer-proxy`. Descriptions of what these actions do may be found by searching for them at [Azimuth.eth](/system/identity/reference/azimuth-eth).
 

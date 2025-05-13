@@ -1,9 +1,4 @@
-+++
-title = "Iris"
-weight = 80
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Iris
 
 Iris is the HTTP client vane.
 

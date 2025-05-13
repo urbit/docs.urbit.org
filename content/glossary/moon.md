@@ -1,16 +1,4 @@
-+++
-title = "Moon"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.moon]
-name = "moon"
-symbol = ""
-usage = "arvo"
-desc = "A kind of ship on the Arvo network, issued by planets."
-
-+++
+# Moon
 
 A **moon** is a kind of [ship](/glossary/ship) on the [Arvo](/glossary/arvo) network. Moons are child identities issued by [planets](/glossary/planet), [stars](/glossary/star), and [galaxies](/glossary/galaxy). A moon is not independent; it is always subordinate to the ship that issued it. By this we mean that the networking keys for the moon are controlled by the parent, and may be altered or revoked at any time by that parent.
 

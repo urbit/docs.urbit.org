@@ -1,7 +1,4 @@
-+++
-title = "Examples"
-weight = 5
-+++
+# Examples
 
 This documents contains practical examples of a number of Jael's `task`s.
 

@@ -1,8 +1,4 @@
-+++
-title = "Strandio"
-weight = 60
-template = "doc.html"
-+++
+# Strandio
 
 Documented below are the many useful functions in the
 `/lib/strandio.hoon` helper library. 

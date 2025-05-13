@@ -1,7 +1,4 @@
-+++
-title = "Data Types"
-weight = 5
-+++
+# Data Types
 
 Here are the data types used by Ames, as defined in `lull.hoon`.
 

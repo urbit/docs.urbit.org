@@ -1,16 +1,4 @@
-+++
-title = "Generator"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.generator]
-name = "generator"
-symbol = ""
-usage = "arvo"
-desc = "A generator is kind of Hoon script you can run from the dojo."
-
-+++
+# Generator
 
 A **generator** is something like a script in [Arvo](/glossary/arvo). Generators are written in [Hoon](/glossary/hoon) and run from the [dojo](/glossary/dojo) like `+code`, `|hi ~zod`, `+vats`, etc. They are usually used for two things: printing system information and passing commands to the system or apps. Generators are either ordinary [gates](/glossary/gate) (a "naked generator") or a `%say`/`%ask` generator with a more particular structure.
 

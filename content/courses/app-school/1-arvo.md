@@ -1,7 +1,4 @@
-+++
-title = "1. Arvo"
-weight = 5
-+++
+# 1. Arvo
 
 This document is a prologue to App School I. If you've worked though [Hoon School](/courses/hoon-school) (or have otherwise learned the basics of Hoon), you'll likely be familiar with generators, but not with all the other parts of the Arvo operating system or the way it fits together. We'll go over the basic details here so you're better oriented to learn Gall agent development. We'll not go into the internal workings of the kernel much, but just what is necessary to understand it from the perspective of userspace.
 

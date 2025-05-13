@@ -1,7 +1,4 @@
-+++
-title = "Scries"
-weight = 40
-+++
+# Scries
 
 This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](/userspace/apps/guides/remote-scry).
 

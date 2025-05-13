@@ -1,16 +1,4 @@
-+++
-title = "Payload"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.payload]
-name = "payload"
-symbol = ""
-usage = "payload"
-desc = "The set of data needed to run computations in a core."
-
-+++
+# Payload
 
 A **payload** is the [subject](/glossary/subject) of a [core](/glossary/core). It is exists in the tail of the [cell](/glossary/cell) that makes up a core, with the core's [battery](/glossary/battery) in the head.
 

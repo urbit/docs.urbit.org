@@ -1,9 +1,4 @@
-+++
-title = "Reference"
-weight = 40
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Reference
 
 Reference information for Hoon language features.
 

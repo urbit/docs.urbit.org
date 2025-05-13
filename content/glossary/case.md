@@ -1,16 +1,4 @@
-+++
-title = "Case"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.case]
-name = "case"
-symbol = ""
-usage = "arvo"
-desc = "A reference to a commit in Clay"
-
-+++
+# Case
 
 [Clay](/glossary/clay) is [Arvo's](/glossary/arvo) revision-controlled filesystem, and a **case** is a reference to a particular revision. A case may be a reference to a revision number, the date-time of the revision, or a revision tag.
 

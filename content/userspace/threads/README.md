@@ -1,9 +1,4 @@
-+++
-title = "Threads"
-description = "Learn to write asynchronous I/O functions"
-weight = 101
-auto_expand = true
-+++
+# Threads
 
 Urbit code lives in the following basic categories:
 

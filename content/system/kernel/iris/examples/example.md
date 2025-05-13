@@ -1,7 +1,4 @@
-+++
-title = "Example"
-weight = 4
-+++
+# Example
 
 Here we'll look at a simple example of fetching a remote HTTP resource with Iris. We'll use the following thread, which you can save in the `/ted` directory of your `%base` desk:
 

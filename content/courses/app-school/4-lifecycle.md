@@ -1,7 +1,4 @@
-+++
-title = "4. Lifecycle"
-weight = 20
-+++
+# 4. Lifecycle
 
 In the last lesson we looked at a couple of useful things used as boilerplate in most agents. Now we're going to get into the guts of how agents work, and start looking at what the agent arms do. The first thing we'll look at is the agent's state, and the three arms for managing it: `on-init`, `on-save`, and `on-load`. These arms handle what we call an agent's "lifecycle".
 

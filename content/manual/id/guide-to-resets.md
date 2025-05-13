@@ -1,8 +1,4 @@
-+++
-title = "Guide to Factory Resets"
-weight = 40
-template = "doc.html"
-+++
+# Guide to Factory Resets
 
 An important concept on the [Ames](https://developers.urbit.org/system/kernel/ames) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _factory reset_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.
 

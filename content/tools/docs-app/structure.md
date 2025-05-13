@@ -1,8 +1,4 @@
-+++
-title = "Suggested Structure"
-weight = 15
-template = "doc.html"
-+++
+# Suggested Structure
 
 Here we'll discuss recommendations and best practices for your docs. The %docs app doesn't impose any restrictions on the structure of your docs, so you're free to do things differently if you feel it's appropriate.
 

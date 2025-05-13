@@ -1,9 +1,4 @@
-+++
-title = "Runes"
-weight = 20
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Runes
 
 Runes are a way to form expressions in Hoon.
 

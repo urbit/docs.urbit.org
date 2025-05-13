@@ -1,8 +1,4 @@
-+++
-title = "HD Wallet (Master Ticket)"
-weight = 11
-template = "doc.html"
-+++
+# HD Wallet (Master Ticket)
 
 This document explains what the [Urbit HD wallet](https://developers.urbit.org/glossary/hdwallet) is and how to use it.
 

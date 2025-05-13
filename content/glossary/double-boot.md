@@ -1,16 +1,4 @@
-+++
-title = "Double-boot"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.double-boot]
-name = "double-boot"
-symbol = ""
-usage = "arvo"
-desc = "When you boot an old copy of your pier on the live network."
-
-+++
+# Double-boot
 
 **Double-booting** is when you have a second, older copy of your [pier](/glossary/pier) and spin it up on the live network. This creates irreparable networking problems and requires you to perform a [factory reset](/glossary/reset).
 

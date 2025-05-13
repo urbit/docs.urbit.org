@@ -1,5 +1,3 @@
-+++
-title = "Axes"
-+++
+# Axes
 
 Plural form of [axis](/gossary/axis).

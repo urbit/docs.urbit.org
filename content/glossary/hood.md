@@ -1,16 +1,4 @@
-+++
-title = "Hood"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.hood]
-name = "hood"
-symbol = ""
-usage = "arvo"
-desc = "The system app: comprised of Kiln, Drum and Helm."
-
-+++
+# Hood
 
 **Hood** is the "system app", it controls various basic functions of Arvo and provides an interface for some of those functions with [generators](/glossary/generator) in the [dojo](/glossary/dojo). While Hood is technically a single app, it's really three different apps under the hood:
 

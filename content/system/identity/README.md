@@ -1,7 +1,4 @@
-+++
-title = "Identity"
-weight = 700
-+++
+# Identity
 
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for _Urbit identities_. You need such an identity to use the Arvo network.
 

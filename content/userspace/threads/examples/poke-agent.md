@@ -1,7 +1,4 @@
-+++
-title = "Poke Agent"
-weight = 4
-+++
+# Poke Agent
 
 Here's a thread that lets you post a message to a chat in graph-store:
 

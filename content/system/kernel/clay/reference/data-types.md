@@ -1,7 +1,4 @@
-+++
-title = "Data Types"
-weight = 4
-+++
+# Data Types
 
 This section will be reference documentation for the data types used by our filesystem.
 

@@ -1,8 +1,4 @@
-+++
-title = "Getting Started"
-weight = 0
-auto_expand=true
-+++
+# Getting Started
 
 The goal of Urbit is to make peer-to-peer software easy for developers to write and for users to run on their own. The code is [completely open source](https://github.com/urbit), [actively maintained](https://github.com/urbit/urbit/graphs/code-frequency), supported by a [growing ecosystem](https://urbit.org/ecosystem), and [used daily by thousands](https://network.urbit.org).
 

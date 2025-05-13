@@ -1,16 +1,4 @@
-+++
-title = "Vase"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.vase]
-name = "vase"
-symbol = ""
-usage = "hoon-nock"
-desc = "A pair of a type and noun, where the type describes the noun."
-
-+++
+# Vase
 
 A **vase** is a pair of [`$type`](/language/hoon/reference/stdlib/4o#type) and [`$noun`](/language/hoon/reference/stdlib/2q#noun), where the type describes the noun.
 

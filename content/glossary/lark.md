@@ -1,6 +1,4 @@
-+++
-title = "Lark"
-+++
+# Lark
 
 **Lark** notation is a way to reference a relative tree address, an alternative to using a numerical [axis](/glossary/axis). It's valid syntax as part of a [wing](/glossary/wing) address.
 

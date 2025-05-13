@@ -1,9 +1,4 @@
-+++
-title = "Software Distribution"
-weight = 900
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Software Distribution
 
 Urbit allows peer-to-peer distribution and installation of applications. A user can click on a link to an app hosted by another ship to install that app. The homescreen interface lets users manage their installed apps and launch their interfaces in new tabs.
 

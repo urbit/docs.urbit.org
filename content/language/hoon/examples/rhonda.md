@@ -1,7 +1,4 @@
-+++
-title = "Rhonda Numbers"
-weight = 30
-+++
+# Rhonda Numbers
 
 ## Challenge: Rhonda Numbers
 

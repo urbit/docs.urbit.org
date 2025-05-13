@@ -1,10 +1,4 @@
-+++
-title = "Examples"
-weight = 94
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Examples
 
 ### [Example](/system/kernel/iris/examples/example)
 

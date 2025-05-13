@@ -1,9 +1,4 @@
-+++
-title = "Gall"
-weight = 70
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Gall
 
 This document describes Gall, the Arvo userspace vane.
 

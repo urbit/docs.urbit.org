@@ -1,9 +1,4 @@
-+++
-title = "Getting Around"
-description = "Getting around your urbit"
-tag = "around"
-weight = 14
-+++
+# Getting Around
 
 ### 1. Get oriented
 

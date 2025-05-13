@@ -1,16 +1,4 @@
-+++
-title = "Gift"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.gift]
-name = "gift"
-symbol = ""
-usage = "arvo"
-desc = "A gift is an effect produced by agents and threads in response to a request from another agent or vane."
-
-+++
+# Gift
 
 A `%gift` [card](/glossary/card) is an effect produced by [agents](/glossary/agent) and [threads](/glossary/thread). It is a *response* to a request from another agent or [vane](/glossary/vane), as opposed to a `%pass` card, which is a *request*. The main kind of gift is a [fact](/glossary/fact), which is an update given to subscribers.
 

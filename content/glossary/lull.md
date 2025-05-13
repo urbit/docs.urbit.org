@@ -1,16 +1,4 @@
-+++
-title = "Lull"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.lull]
-name = "lull"
-symbol = ""
-usage = "arvo"
-desc = "Data types and interface definitions for vanes."
-
-+++
+# Lull
 
 **`lull.hoon`** is a library in the `/sys` folder of the `%base` [desk](/glossary/desk) that defines the interfaces of the [vanes](/glossary/vane) and the data-types those vanes use.
 

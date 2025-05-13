@@ -1,13 +1,4 @@
-+++
-title = "Azimuth"
-
-[glossaryEntry.azimuth]
-name = "azimuth"
-symbol = ""
-usage = "azimuth"
-desc = "Urbit's identity layer, built as a suite of smart contracts on the Ethereum blockchain."
-
-+++
+# Azimuth
 
 **Azimuth** is Urbit's identity layer, built as a suite of smart contracts on the Ethereum blockchain and several apps run locally on your [ship](/glossary/ship). It is Urbit's method of securing digital identities that are required to use the [Arvo](/glossary/arvo) peer-to-peer network, without the need for a central authority. Azimuth identities exist as non-fungible tokens, which are owned by Ethereum addresses and can be transferred between such addresses. Identities can use the [claims](/glossary/claims) contract to make assertions – real-world or otherwise – about their owner.
 

@@ -1,16 +1,4 @@
-+++
-title = "Trap"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.trap]
-name = "trap"
-symbol = ""
-usage = "trap"
-desc = "A core with one arm named $ and no sample."
-
-+++
+# Trap
 
 A **trap** is a [core](/glossary/core) with one arm named `$` and no sample. They are often used in similar ways to looping structures in other programming languages.
 

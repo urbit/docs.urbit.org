@@ -1,7 +1,4 @@
-+++
-title = "9. Summary"
-weight = 10
-+++
+# 9. Summary
 
 That's it! We've built our agent and React front-end, put together a desk and published it. We hope this walkthrough has helped you see how all the pieces for together for building and distributing an app in Urbit.
 

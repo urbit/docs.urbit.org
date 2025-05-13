@@ -1,16 +1,4 @@
-+++
-title = "Card"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.card]
-name = "card"
-symbol = ""
-usage = "hoon-nock"
-desc = "The type of effects produced by agents and threads."
-
-+++
+# Card
 
 A **card** is the data type for effects produced by
 [Gall](/glossary/gall) [agents](/glossary/agent) and

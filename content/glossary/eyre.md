@@ -1,16 +1,4 @@
-+++
-title = "Eyre"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.eyre]
-name = "eyre"
-symbol = ""
-usage = "arvo"
-desc = "The web-server vane of Arvo. Handles all HTTP messages."
-
-+++
+# Eyre
 
 **Eyre** is the web-server [vane](/glossary/vane) (kernel module) that handles client-facing HTTP operations. Unix sends HTTP messages though to Eyre and Eyre produces HTTP messages in response. It is the counterpart to [Iris](/glossary/iris), which is the server-facing HTTP vane.
 

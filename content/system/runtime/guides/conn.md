@@ -1,7 +1,4 @@
-+++
-title = "Using conn.c"
-weight = 2
-+++
+# Using conn.c
 
 ## Background
 

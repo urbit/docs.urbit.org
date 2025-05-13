@@ -1,16 +1,4 @@
-+++
-title = "Bridge"
-
-[extra]
-category = "azimuth"
-
-[glossaryEntry.bridge]
-name = "bridge"
-symbol = ""
-usage = "azimuth"
-desc = "A client made for interacting with Azimuth."
-
-+++
+# Bridge
 
 **Bridge** is a client made for interacting with [Azimuth](/glossary/azimuth). It's the recommended way to receive, send, and manage your Urbit identity, and it's by far the easiest way to generate the [keyfile](/glossary/keyfile) required to boot your [ship](/glossary/ship). Most Bridge functions are accessed by "logging in" to an identity's ownership address or one of its [proxy addresses](/glossary/proxies). It's accessed at [bridge.urbit.org](https://bridge.urbit.org/).
 

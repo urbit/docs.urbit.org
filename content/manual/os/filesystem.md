@@ -1,8 +1,4 @@
-+++
-title = "Filesystem"
-template = "doc.html"
-weight = 5
-+++
+# Filesystem
 
 Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global, referentially transparent namespace. An easy way to think about it is like typed `git`.
 

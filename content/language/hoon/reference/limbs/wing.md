@@ -1,7 +1,5 @@
-+++
-title = "Wings"
-weight = 2
-+++
+# Wings
+
 `[%wing p=(list limb)]`
 
 A wing is a limb search path into the subject.

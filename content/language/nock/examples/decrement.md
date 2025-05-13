@@ -1,7 +1,4 @@
-+++
-title = "Decrement"
-weight = 3
-+++
+# Decrement
 
 A good practice exercise for Nock is a decrement formula.  Ie, a formula `f` which implements the partial function that produces `(s - 1)` if `s` is a nonzero atom, and otherwise does not terminate.
 

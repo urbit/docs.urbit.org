@@ -1,7 +1,4 @@
-+++
-title = "Roman Numerals"
-weight = 40
-+++
+# Roman Numerals
 
 ## Challenge: Printing and Parsing Roman Numerals
 

@@ -1,10 +1,4 @@
-+++
-title = "Star and Galaxy Operations"
-description = "Additional information and suggested ettiquette for Star and Galaxy owners."
-weight = 6
-aliases = ["/docs/using/operating-a-star/"]
-template = "doc.html"
-+++
+# Star and Galaxy Operations
 
 To boot your galaxy or star, follow our [installation instructions](/manual/getting-started/).
 

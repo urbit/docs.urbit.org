@@ -1,10 +1,4 @@
-+++
-title = "Reference"
-weight = 90
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Reference
 
 ## [API Reference](/system/kernel/jael/reference/tasks)
 

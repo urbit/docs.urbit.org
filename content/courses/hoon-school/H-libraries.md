@@ -1,9 +1,4 @@
-+++
-title = "7. Libraries"
-weight = 17
-nodes = [145, 153, 175]
-objectives = ["Import a library using `/+` faslus.", "Create a new library in `/lib`.", "Identify the role of a desk in the Clay filesystem.", "Identify the components of a beak.", "Identify filesystem locations (including desks).", "Identify the components of a path.", "Build code samples with `-build-file` thread.", "Discuss Ford import runes."]
-+++
+# 7. Libraries
 
 _Libraries allow you to import and share processing code.  This module will discuss how libraries can be produced, imported, and used._
 

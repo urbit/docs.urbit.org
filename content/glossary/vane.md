@@ -1,16 +1,4 @@
-+++
-title = "Vane"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.vane]
-name = "vane"
-symbol = ""
-usage = "arvo"
-desc = "An Arvo kernel module that performs essential system operations."
-
-+++
+# Vane
 
 A **vane** is an [Arvo](/glossary/arvo) kernel module that performs essential system operations. The vanes are:
 

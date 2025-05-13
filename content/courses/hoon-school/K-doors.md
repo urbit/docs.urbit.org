@@ -1,9 +1,4 @@
-+++
-title = "10. Cores and Doors"
-weight = 20
-nodes = [150, 155]
-objectives = ["Identify the structure of a door and relate it to a core.", "Pull an arm in a door.", "Build cores for later use and with custom samples.", "Identify the `$` buc arm in several structures and its role."]
-+++
+# 10. Cores and Doors
 
 _Hoon is statically typed, which means (among other things) that [auras](/glossary/aura) are subject to strict nesting rules, [molds](/glossary/mold) are crash-only, and the whole thing is rather cantankerous about matching types.  However, since gate-building arms are possible, Hoon developers frequently employ them as templates to build type-appropriate [cores](/glossary/core), including [gates](/glossary/gate).  This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include [doors](/glossary/door); finally it will introduce a common door, the [++map](/language/hoon/reference/stdlib/2o#map), to illustrate how doors work._
 

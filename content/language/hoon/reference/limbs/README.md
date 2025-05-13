@@ -1,8 +1,5 @@
-+++
-title = "Limbs and wings"
-weight = 30
-sort_by = "weight"
-+++
+# Limbs and wings
+
 One feature Hoon lacks: a context that isn't a first-class value. Hoon has no concept of scope, environment, etc.  An expression has exactly one data source, the **subject**, a noun like any other.
 
 ## [Limbs](/language/hoon/reference/limbs/limb)

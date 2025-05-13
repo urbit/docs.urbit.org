@@ -1,7 +1,4 @@
-+++
-title = "2. Agent"
-weight = 3
-+++
+# 2. Agent
 
 Now that we have our agent's types defined and have thought through its behavior, we can write the `%journal` agent itself.
 

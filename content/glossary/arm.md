@@ -1,16 +1,4 @@
-+++
-title = "Arm"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.arm]
-name = "arm"
-symbol = ""
-usage = "arm"
-desc = "A Hoon expression encoded as a noun. Part of a core."
-
-+++
+# Arm
 
 An **arm** is a named Hoon expression in a [core](/glossary/core). A core contains one or more arms. If a core is thought of as an object in an object-oriented language, its arms can be thought of as its methods.
 

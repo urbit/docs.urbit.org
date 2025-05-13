@@ -1,16 +1,4 @@
-+++
-title = "Dill"
-
-[extra]
-category = "arvo"
-
-[glossaryEntry.dill]
-name = "dill"
-symbol = ""
-usage = "arvo"
-desc = "The terminal-driver vane of Arvo."
-
-+++
+# Dill
 
 **Dill** is the terminal-driver [vane](/glossary/vane). You run your urbit in your Unix terminal, and Unix sends every event—such as a keystroke or a change in the dimensions of the terminal window—to be handled by Dill.
 

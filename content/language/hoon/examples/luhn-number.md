@@ -1,7 +1,4 @@
-+++
-title = "Luhn Number"
-weight = 80
-+++
+# Luhn Number
 
 ## Challenge: Luhn Number
 

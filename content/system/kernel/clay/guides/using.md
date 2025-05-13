@@ -1,7 +1,4 @@
-+++
-title = "Using Clay"
-weight = 3
-+++
+# Using Clay
 
 ## Reading and Subscribing
 

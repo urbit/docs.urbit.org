@@ -1,7 +1,4 @@
-+++
-title = "Appendix: Types"
-weight = 65
-+++
+# Appendix: Types
 
 This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](/system/kernel/gall/reference/data-types) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](/system/kernel/gall/reference/data-types#agent) subsection, as well as [`bowl`](/system/kernel/gall/reference/data-types#bowl), [`boat`](/system/kernel/gall/reference/data-types#boat), and [`bitt`](/system/kernel/gall/reference/data-types#bitt).
 

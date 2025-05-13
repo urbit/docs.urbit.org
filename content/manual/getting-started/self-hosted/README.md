@@ -1,8 +1,4 @@
-+++
-title = "Self-hosting"
-weight = 10
-auto_expand=true
-+++
+# Self-hosting
 
 To run Urbit on your own you need to be comfortable using a command line interface (CLI), and should have a basic understanding of how to interact with the Ethereum blockchain.
 

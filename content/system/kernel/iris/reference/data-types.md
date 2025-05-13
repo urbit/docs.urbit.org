@@ -1,7 +1,4 @@
-+++
-title = "Data Types"
-weight = 3
-+++
+# Data Types
 
 Iris itself only has three structures defined in `lull.hoon`, but it also uses `$http` structures which are shared between Iris and Eyre. The `$http` structures are detailed in the [Eyre](/system/kernel/eyre/reference/data-types#http) Data Types documentation.
 

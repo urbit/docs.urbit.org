@@ -1,8 +1,4 @@
-+++
-title = "Gall"
-weight = 101
-auto_expand = true
-+++
+# Gall
 
 Examples of how to interact with threads from Gall agents.
 

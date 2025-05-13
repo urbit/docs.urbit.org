@@ -1,7 +1,4 @@
-+++
-title = "Gleichniszahlenreihe"
-weight = 20
-+++
+# Gleichniszahlenreihe
 
 ## Challenge: The Look-and-Say Sequence
 

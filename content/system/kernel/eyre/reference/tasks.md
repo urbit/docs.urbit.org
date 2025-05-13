@@ -1,7 +1,4 @@
-+++
-title = "Internal API Reference"
-weight = 3
-+++
+# Internal API Reference
 
 This document details all the `task`s you're likely to use to interact with Eyre, as well as the `gift`s you'll receive in response.
 

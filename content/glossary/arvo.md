@@ -1,13 +1,4 @@
-+++
-title = "Arvo"
-
-[glossaryEntry.arvo]
-name = "arvo"
-symbol = ""
-usage = "Arvo"
-desc = "The Urbit operating system and kernel."
-
-+++
+# Arvo
 
 **Arvo** is the Urbit operating system and kernel. Arvo's state is a pure function of its [event log](/glossary/eventlog), and it serves as the Urbit event manager. It contains [vanes](/glossary/vane), which are kernel modules that perform essential system operations.
 

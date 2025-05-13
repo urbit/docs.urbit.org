@@ -1,16 +1,4 @@
-+++
-title = "Atom"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.atom]
-name = "atom"
-symbol = ""
-usage = "hoon-nock"
-desc = "The most basic data type in Hoon and Nock, a non-negative integer of any size."
-
-+++
+# Atom
 
 An **atom** is any non-negative integer of any size. The atom is the most basic data type in [Nock](/glossary/nock) and [Hoon](/glossary/hoon).
 

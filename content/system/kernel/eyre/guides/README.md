@@ -1,10 +1,4 @@
-+++
-title = "Guides"
-weight = 50
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Guides
 
 ### [Low-level Guide](/system/kernel/eyre/guides/guide)
 

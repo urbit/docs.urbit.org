@@ -1,13 +1,4 @@
-+++
-title = "Bowl"
-
-[glossaryEntry.bowl]
-name = "bowl"
-symbol = ""
-usage = "arvo"
-desc = "Useful data given to a Gall agent or thread."
-
-+++
+# Bowl
 
 The **bowl** contains useful data about the current [ship](/glossary/ship) and context. It is given to a [thread](/glossary/thread) or [Gall](/glossary/gall) [agent](/glossary/agent) whenever it processes an event. It contains the current time, some entropy, the name of the ship, the source of the event, and other relevant information.
 

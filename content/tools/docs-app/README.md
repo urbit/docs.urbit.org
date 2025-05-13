@@ -1,8 +1,4 @@
-+++
-title = "Docs App"
-weight = 100
-auto_expand = true
-+++
+# Docs App
 
 The `%docs` app allows you to include documentation with the desks you distribute, making them available for easy browsing by users and developers.
 

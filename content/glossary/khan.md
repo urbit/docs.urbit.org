@@ -1,8 +1,4 @@
-+++
-title = "Khan"
-[extra]
-category = "arvo"
-+++
+# Khan
 
 **Khan** is the [vane](/glossary/vane) that offers thread control affordances for external devices.
 

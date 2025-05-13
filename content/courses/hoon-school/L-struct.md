@@ -1,9 +1,4 @@
-+++
-title = "11. Data Structures"
-weight = 21
-nodes = [183]
-objectives = ["Identify units, sets, maps, and compound structures like jars and jugs.", "Explain why units and vases are necessary.", "Use helper arms and syntax:  `` ` ``, `biff`, `some`, etc."]
-+++
+# 11. Data Structures
 
 _This module will introduce you to several useful data structures built on the [door](/glossary/door), then discuss how the compiler handles types and the [sample](/glossary/sample)._
 

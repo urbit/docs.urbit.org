@@ -1,10 +1,4 @@
-+++
-title = "Basics"
-description = "Learn to write asynchronous I/O functions"
-weight = 101
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# Basics
 
 This tutorial walks through all the basic concepts you need to know to
 start writing threads.

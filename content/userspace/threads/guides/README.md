@@ -1,11 +1,4 @@
-+++
-title = "Guides"
-description = "Learn to write asynchronous I/O functions"
-weight = 101
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Guides
 
 This section contains in-depth walk-throughs of thread features and tools.
 

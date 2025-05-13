@@ -1,7 +1,4 @@
-+++
-title = "6. Pokes"
-weight = 30
-+++
+# 6. Pokes
 
 In this lesson we'll look at sending and receiving one-off messages called `%poke`s. We'll look at the `on-poke` agent arm which handles incoming pokes. We'll also introduce the `on-agent` arm, and look at the one kind of response it can take - a `%poke-ack`.
 

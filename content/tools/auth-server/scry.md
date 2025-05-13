@@ -1,8 +1,4 @@
-+++
-title = "Scry Paths"
-weight = 13
-template = "doc.html"
-+++
+# Scry Paths
 
 Below are all the scry paths you can query. All paths are `%x` scries.
 

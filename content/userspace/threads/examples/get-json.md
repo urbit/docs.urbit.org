@@ -1,7 +1,4 @@
-+++
-title = "Fetch JSON"
-weight = 1
-+++
+# Fetch JSON
 
 Grabbing JSON from some url is very easy.
 

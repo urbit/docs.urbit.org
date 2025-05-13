@@ -1,16 +1,4 @@
-+++
-title = "Scry"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry."Remote scry"]
-name = "remote scry"
-symbol = ""
-usage = "hoon-nock"
-desc = "A remote scry is a read-only request to the namespace of a remote ship."
-
-+++
+# Scry
 
 A **remote scry** is a read-only request to the namespace of a remote [vane](/glossary/vane) or [agent](/glossary/agent). These differ from ordinary [local scries](/glossary/scry) and are not performed with the `.^` [rune](/glossary/rune).
 

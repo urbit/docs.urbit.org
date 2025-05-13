@@ -1,9 +1,4 @@
-+++
-title = "Guides"
-weight = 300
-sort_by = "weight"
-auto_expand = true
-+++
+# Guides
 
 Resources about the Urbit OS.
 

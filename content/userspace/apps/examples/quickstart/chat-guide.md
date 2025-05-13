@@ -1,7 +1,4 @@
-+++
-title = "Build a Chat App"
-weight = 3
-+++
+# Build a Chat App
 
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll look like this:
 

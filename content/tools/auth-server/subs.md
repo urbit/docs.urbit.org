@@ -1,8 +1,4 @@
-+++
-title = "Subscriptions"
-weight = 12
-template = "doc.html"
-+++
+# Subscriptions
 
 Below are all the paths you can subscribe to in Auth Server.
 

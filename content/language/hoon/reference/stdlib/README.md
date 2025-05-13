@@ -1,7 +1,3 @@
-+++
-title = "Standard Library"
-weight = 0
-sort_by = "weight"
-+++
+# Standard Library
 
 Comprehensive documentation for the Hoon standard library.

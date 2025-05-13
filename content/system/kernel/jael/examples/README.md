@@ -1,10 +1,4 @@
-+++
-title = "Examples"
-weight = 90
-sort_by = "weight"
-insert_anchor_links = "right"
-auto_expand = true
-+++
+# Examples
 
 ### [Examples](/system/kernel/jael/examples/examples)
 

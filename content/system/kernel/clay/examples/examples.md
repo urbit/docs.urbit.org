@@ -1,7 +1,4 @@
-+++
-title = "Examples"
-weight = 7
-+++
+# Examples
 
 This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](/system/kernel/clay/reference/tasks) document.
 

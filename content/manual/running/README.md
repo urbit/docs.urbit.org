@@ -1,10 +1,4 @@
-+++
-title = "Running Urbit"
-sort_by = "weight"
-description = "How to run Urbit in various environments."
-template = "sections/docs/chapters.html"
-weight = 30
-+++
+# Running Urbit
 
 Urbit can be run in a variety of contexts. Our [Getting Started Guide](/manual/getting-started/) covers how to run an Urbit locally on your computer; this section covers alternative ways of running Urbit.
 

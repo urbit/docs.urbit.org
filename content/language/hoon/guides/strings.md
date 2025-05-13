@@ -1,8 +1,4 @@
-+++
-title = "Strings"
-description = "Learn about Hoon's two main string types"
-weight = 99
-+++
+# Strings
 
 This document discusses hoon's two main string types: `cord`s (as well as its subsets `knot` and `term`) and `tape`s. The focus of this document is on their basic properties, syntax and the most common text-related functions you'll regularly encounter. In particular, it discusses conversions and the encoding/decoding of atom auras in strings.
 

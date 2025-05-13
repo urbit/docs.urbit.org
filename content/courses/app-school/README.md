@@ -1,9 +1,4 @@
-+++
-title = "App School I"
-weight = 6
-sort_by = "weight"
-insert_anchor_links = "right"
-+++
+# App School I
 
 This guide will walk through everything you need to know to write your own Gall agents.
 

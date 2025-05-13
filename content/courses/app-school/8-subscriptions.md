@@ -1,7 +1,4 @@
-+++
-title = "8. Subscriptions"
-weight = 40
-+++
+# 8. Subscriptions
 
 In this lesson we're going to look at subscriptions. Subscriptions are probably the most complicated part of writing agents, so there's a fair bit to cover. Before we get into the nitty-gritty details, we'll give a brief overview of Gall's subscription mechanics.
 

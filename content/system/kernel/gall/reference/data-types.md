@@ -1,7 +1,4 @@
-+++
-title = "Data Types"
-weight = 5
-+++
+# Data Types
 
 This document describes the data types for Gall defined in `lull.hoon`.
 

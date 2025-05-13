@@ -1,7 +1,4 @@
-+++
-title = "Data Types"
-weight = 4
-+++
+# Data Types
 
 Here are the data types used by Dill, as defined in `/sys/lull.hoon`.
 

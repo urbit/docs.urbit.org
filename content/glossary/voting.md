@@ -1,16 +1,4 @@
-+++
-title = "Voting"
-
-[extra]
-category = "azimuth"
-
-[glossaryEntry.vote]
-name = "vote"
-symbol = ""
-usage = "azimuth"
-desc = "Voting is a power available to galaxies in their capacities as members of the Galactic Senate."
-
-+++
+# Voting
 
 **Voting** is a power available to [galaxies](/glossary/galaxy), in their capacities as members of the [Galactic Senate](/glossary/senate), through an [Azimuth](/glossary/azimuth) smart contract. Galaxies collectively make decisions about the governance of Azimuth and the [Arvo](/glossary/arvo) network by voting. There are two types of proposals that can be voted on: an [upgrade proposal](/glossary/upgrade) and a [document proposal](/glossary/docvote).
 

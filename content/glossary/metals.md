@@ -1,16 +1,4 @@
-+++
-title = "Metals"
-
-[extra]
-category = "hoon-nock"
-
-[glossaryEntry.metals]
-name = "metals"
-symbol = ""
-usage = "hoon-nock"
-desc = "Core type variance."
-
-+++
+# Metals
 
 "Variance" describes the four possible relationships that type rules for [cores](/glossary/core) are able to have to each other. [Hoon](/glossary/hoon) imaginatively designates these by **metals**. Briefly:
 

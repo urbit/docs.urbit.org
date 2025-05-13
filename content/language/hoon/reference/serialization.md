@@ -6,12 +6,12 @@ Noun serialization refers to a uniquely-defined technique for converting a noun 
 
 The main tools from `/sys/hoon` for noun serialization are:
 
-- [`++cue`](language/hoon/reference/stdlib/2p#cue), unpack a jammed noun
-- [`++jam`](language/hoon/reference/stdlib/2p#jam), pack a jammed noun
-- [`++mat`](language/hoon/reference/stdlib/2p#mat), length-encode a noun
-- [`++rub`](language/hoon/reference/stdlib/2p#rub), length-decode a noun
+- [`++cue`](/language/hoon/reference/stdlib/2p#cue), unpack a jammed noun
+- [`++jam`](/language/hoon/reference/stdlib/2p#jam), pack a jammed noun
+- [`++mat`](/language/hoon/reference/stdlib/2p#mat), length-encode a noun
+- [`++rub`](/language/hoon/reference/stdlib/2p#rub), length-decode a noun
 
-`++jam` and `++cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](system/kernel/eyre/guides/noun-channels).
+`++jam` and `++cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](/system/kernel/eyre/guides/noun-channels).
 
 ### `++cue`
 

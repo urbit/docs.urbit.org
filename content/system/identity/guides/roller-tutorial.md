@@ -1,6 +1,6 @@
 # Custom Roller Tutorial
 
-This tutorial is an outline for how to set up your own L2 roller for Urbit. Some familiarity with how L2 works in general, as well as the role of the roller, is expected. See [Layer 2 Overview](system/identity/concepts/layer2) for a technical overview of L2, [Azimuth Data Flow](system/identity/concepts/flow) to gain an understanding of how Azimuth data handling and processing is done on Urbit, and [Rollers](system/identity/reference/roller) for a short summary of what the different Gall agents involved for rollers are. This tutorial is focused on setting up a roller to work on the main Ethereum network, but only minor changes are needed to utilize the Ropsten Ethereum network. We also explain how to set up a front end (Bridge) from which transactions to be batched by the roller are sent, but use of a front end is not mandatory.
+This tutorial is an outline for how to set up your own L2 roller for Urbit. Some familiarity with how L2 works in general, as well as the role of the roller, is expected. See [Layer 2 Overview](/system/identity/concepts/layer2) for a technical overview of L2, [Azimuth Data Flow](/system/identity/concepts/flow) to gain an understanding of how Azimuth data handling and processing is done on Urbit, and [Rollers](/system/identity/reference/roller) for a short summary of what the different Gall agents involved for rollers are. This tutorial is focused on setting up a roller to work on the main Ethereum network, but only minor changes are needed to utilize the Ropsten Ethereum network. We also explain how to set up a front end (Bridge) from which transactions to be batched by the roller are sent, but use of a front end is not mandatory.
 
 Note that this process involves giving the private key of an Ethereum wallet to the ship running the roller so that it may spend ETH to submit transactions. If you do not fully understand what this entails, we recommend against running your own roller on the Ethereum mainnet. See [below](#step2) for more information on this.
 
@@ -16,7 +16,7 @@ There are three main steps involved with setting up a roller:
 
 If you are using an ordinary live ship on the network as the roller, you should already have the latest `%azimuth` state and this step should not be necessary and you may move to step 2.
 
-If your roller is a fakezod, you will need to configure `%azimuth` to pull the latest [Azimuth](system/identity/reference/azimuth-eth) data from Ethereum. The most common way to do this is via an Infura node, but you could instead use e.g. your own Ethereum node. A free tier Infura node ought to be sufficient for most people and is easy to set up using their tutorials.
+If your roller is a fakezod, you will need to configure `%azimuth` to pull the latest [Azimuth](/system/identity/reference/azimuth-eth) data from Ethereum. The most common way to do this is via an Infura node, but you could instead use e.g. your own Ethereum node. A free tier Infura node ought to be sufficient for most people and is easy to set up using their tutorials.
 
 To set up your fakezod to automatically receive Azimuth updates from the Infura node, enter the following commands in dojo: `:azimuth %resub` followed by `:azimuth|watch 'https://MAINNET_INFURA_URL' %default`. Here, the url can be found under the Setting page for the node on infura.io listed under `ENDPOINTS`.
 

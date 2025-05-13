@@ -23,7 +23,7 @@ Each of the possible `[path]`s are described below.
 
 ### `/sweep` - Cache check
 
-A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`leak`](system/kernel/clay/reference/data-types#leak) is a Ford cache key used internally by Clay.
+A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`leak`](/system/kernel/clay/reference/data-types#leak) is a Ford cache key used internally by Clay.
 
 Example:
 
@@ -37,7 +37,7 @@ Example:
 ### `/rang` - Get `rang`
 
 A buc scry with a path of `/rang` will return the full
-[`rang`](system/kernel/clay/reference/data-types#rang) from Clay's state.
+[`rang`](/system/kernel/clay/reference/data-types#rang) from Clay's state.
 
 Example:
 
@@ -74,7 +74,7 @@ The type returned is:
 (set [@p rave:clay])
 ```
 
-See the [`$rave:clay`](system/kernel/clay/reference/data-types#rave) data type entry for more details of the `$rave` structure.
+See the [`$rave:clay`](/system/kernel/clay/reference/data-types#rave) data type entry for more details of the `$rave` structure.
 
 Example:
 
@@ -89,7 +89,7 @@ Example:
 
 ### `/flow` - Build cache
 
-A buc scry with a path of `/flow` will return the global build cache. The type returned is a [`$flow:clay`](system/kernel/clay/reference/data-types#flow).
+A buc scry with a path of `/flow` will return the global build cache. The type returned is a [`$flow:clay`](/system/kernel/clay/reference/data-types#flow).
 
 Example:
 
@@ -102,7 +102,7 @@ Example:
 
 ### `/domes` - All domes
 
-A buc scry with a path of `/domes` will return a [`cone`](system/kernel/clay/reference/data-types#cone) containing the `dome`s and associated metadata for all desks, foreign and local.
+A buc scry with a path of `/domes` will return a [`cone`](/system/kernel/clay/reference/data-types#cone) containing the `dome`s and associated metadata for all desks, foreign and local.
 
 Example:
 
@@ -126,7 +126,7 @@ Example:
 
 ### `/tire` - App state
 
-A buc scry with a path of `/tire` will return the `rock:tire:clay` for all domestic desks, which is a `(map desk [=zest wic=(set weft)])`. The [`zest`](system/kernel/clay/reference/data-types#zest) specifies whether apps on the desk are running or suspended. The `wic` set contains the `weft`s (kernel versions) of any queued updates.
+A buc scry with a path of `/tire` will return the `rock:tire:clay` for all domestic desks, which is a `(map desk [=zest wic=(set weft)])`. The [`zest`](/system/kernel/clay/reference/data-types#zest) specifies whether apps on the desk are running or suspended. The `wic` set contains the `weft`s (kernel versions) of any queued updates.
 
 Example:
 
@@ -282,11 +282,11 @@ Rather than just a `path` to a file, the head of the `path` is tagged with one o
 
 ### `%yaki` - Commit
 
-This will return the [yaki:clay](system/kernel/clay/reference/data-types#yaki) of the specified commit. It takes a [tako:clay](system/kernel/clay/reference/data-types#tako).
+This will return the [yaki:clay](/system/kernel/clay/reference/data-types#yaki) of the specified commit. It takes a [tako:clay](/system/kernel/clay/reference/data-types#tako).
 
 Example:
 
-Here we scry the [dome:clay](system/kernel/clay/reference/data-types#dome) for `%`, get the latest `tako` and the do a `%s` scry for the `yaki` in question.
+Here we scry the [dome:clay](/system/kernel/clay/reference/data-types#dome) for `%`, get the latest `tako` and the do a `%s` scry for the `yaki` in question.
 
 ```
 > =/  =dome:clay  .^(dome:clay %cv %)
@@ -309,7 +309,7 @@ Here we scry the [dome:clay](system/kernel/clay/reference/data-types#dome) for `
 
 ### `%blob` - File blob
 
-This will return the [page:clay](system/kernel/clay/reference/data-types#page) of some file. It takes a [lobe:clay](system/kernel/clay/reference/data-types#lobe).
+This will return the [page:clay](/system/kernel/clay/reference/data-types#page) of some file. It takes a [lobe:clay](/system/kernel/clay/reference/data-types#lobe).
 
 Example:
 
@@ -330,11 +330,11 @@ Here we grab the `lobe` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to 
 
 ### `%hash` - Commit hash
 
-This will return the `@uvI` (256-bit) content hash of the specified commit. It takes a [`tako`](system/kernel/clay/reference/data-types#tako).
+This will return the `@uvI` (256-bit) content hash of the specified commit. It takes a [`tako`](/system/kernel/clay/reference/data-types#tako).
 
 Example:
 
-Here we grab the [`dome`](system/kernel/clay/reference/data-types#dome) for `%` with a `%v` scry, get the latest [`tako`](system/kernel/clay/reference/data-types#tako) and then do a `%s` `%hash` scry for it.
+Here we grab the [`dome`](/system/kernel/clay/reference/data-types#dome) for `%` with a `%v` scry, get the latest [`tako`](/system/kernel/clay/reference/data-types#tako) and then do a `%s` `%hash` scry for it.
 
 ```
 > =/  =dome:clay  .^(dome:clay %cv %)
@@ -377,7 +377,7 @@ This is like a `%a` scry but it only compiles the prelude to the file, e.g. the 
 
 ### `%late` - Latest case
 
-This will return the most recent revision number of a `desk` that has been fully downloaded. The type it returns is a [`cass`](system/kernel/clay/reference/data-types#cass). The `case` in the `beak` must be a revision number rather than a date. You can just provide a case of `1` since it returns the latest regardless. If we have nothing for the specified `desk`, this will just return the bunt of a `cass` like `cass=[ud=0 da=~2000.1.1]`.
+This will return the most recent revision number of a `desk` that has been fully downloaded. The type it returns is a [`cass`](/system/kernel/clay/reference/data-types#cass). The `case` in the `beak` must be a revision number rather than a date. You can just provide a case of `1` since it returns the latest regardless. If we have nothing for the specified `desk`, this will just return the bunt of a `cass` like `cass=[ud=0 da=~2000.1.1]`.
 
 Example:
 
@@ -466,7 +466,7 @@ Examples:
 
 ## `%v` - Desk state
 
-A scry with a care of `%v` will return the entire state of a `desk` as a [`dome`](system/kernel/clay/reference/data-types#dome).
+A scry with a care of `%v` will return the entire state of a `desk` as a [`dome`](/system/kernel/clay/reference/data-types#dome).
 
 Example:
 
@@ -482,7 +482,7 @@ Note: If you try printing this it will take forever and probably OOM your ship.
 
 ## `%w` - Revision number
 
-A scry with a `care` of `%w` will return the revision number and date of a given `case`. The type returned is a [`cass`](system/kernel/clay/reference/data-types#cass) like `[ud=@ud da=@da]` where `ud` is the revision number and `da` is the date.
+A scry with a `care` of `%w` will return the revision number and date of a given `case`. The type returned is a [`cass`](/system/kernel/clay/reference/data-types#cass) like `[ud=@ud da=@da]` where `ud` is the revision number and `da` is the date.
 
 Example:
 
@@ -520,7 +520,7 @@ Crash!
 
 A scry with a `care` of `%y` will return the `arch` of a file or directory.
 
-An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain the [`lobe`](system/kernel/clay/reference/data-types#lobe) hash if it's a file, otherwise it will be null. The `dir` will contain a map of the files and directories it contains, otherwise it will be null.
+An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain the [`lobe`](/system/kernel/clay/reference/data-types#lobe) hash if it's a file, otherwise it will be null. The `dir` will contain a map of the files and directories it contains, otherwise it will be null.
 
 It will return the bunt of an `arch` if the file or directory is not found.
 

@@ -4,7 +4,7 @@ In this lightning tutorial, we're going to build an app to create groups called 
 
 ![squad screenshot](https://media.urbit.org/guides/quickstart/groups-app/squad-screenshot-reskin.png) We'll be able to create either public groups or private groups. Private groups will have a whitelist of allowed ships, and public groups will have a blacklist of banned ships. Other ships will be able to join groups we create, and we'll be able to join groups hosted by other ships too. This app isn't terribly useful by itself, but its API will be used by the other apps we'll build in these lightning tutorials.
 
-The front-end of the app will be written in [Sail](glossary/sail), Urbit's XML language built into the Hoon compiler. Using Sail means we don't need to create a separate React front-end, and can instead serve pages directly from our back-end. This works well for static pages but a full JS-enabled front-end would be preferred for a dynamic page.
+The front-end of the app will be written in [Sail](/glossary/sail), Urbit's XML language built into the Hoon compiler. Using Sail means we don't need to create a separate React front-end, and can instead serve pages directly from our back-end. This works well for static pages but a full JS-enabled front-end would be preferred for a dynamic page.
 
 If you'd like to check out the finished app, you can install it from `~pocwet/squad` by either searching for `~pocwet` in the search bar of your ship's homescreen, or by running `|install ~pocwet %squad`.
 
@@ -1915,6 +1915,6 @@ Now our friends will be able to install it directly from us with `|install <our 
 
 ## Next steps
 
-To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](courses/app-school) will teach you everything you need to know about app development.
+To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](/courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](/courses/app-school) will teach you everything you need to know about app development.
 
-Along with these self-directed guides, we also run regular courses on both Hoon and app development. You can check the [Courses](courses) page for details, or join the `~hiddev-dannut/new-hooniverse` group on Urbit.
+Along with these self-directed guides, we also run regular courses on both Hoon and app development. You can check the [Courses](/courses) page for details, or join the `~hiddev-dannut/new-hooniverse` group on Urbit.

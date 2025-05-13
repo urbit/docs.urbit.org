@@ -10,7 +10,7 @@ Terminal dimension.
 +$  blew  [p=@ud q=@ud]
 ```
 
-`p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [%blew](system/kernel/dill/reference/tasks#blew) `task` whenever the dimensions of the terminal changes.
+`p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [%blew](/system/kernel/dill/reference/tasks#blew) `task` whenever the dimensions of the terminal changes.
 
 ---
 
@@ -27,7 +27,7 @@ Terminal client input.
   ==                                                  :: 
 ```
 
-A `$belt` is passed to Dill in a [%belt](system/kernel/dill/reference/tasks#belt) `task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [$dill-belt](#dill-belt) is used between Dill and Arvo.
+A `$belt` is passed to Dill in a [%belt](/system/kernel/dill/reference/tasks#belt) `task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [$dill-belt](#dill-belt) is used between Dill and Arvo.
 
 May either be a [$bolt](#bolt) or one of:
 
@@ -161,7 +161,7 @@ Wrapped Dill `task`s.
   ==                                                  ::
 ```
 
-These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. See the [API Reference](system/kernel/dill/reference/tasks) document for details of each of these `task`s.
+These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. See the [API Reference](/system/kernel/dill/reference/tasks) document for details of each of these `task`s.
 
 ---
 
@@ -182,7 +182,7 @@ A [`$dill-belt`](#dill-belt) (client input) for a particular session.
 
 ## `$session-task`
 
-A subset of [Dill's `task`s](system/kernel/dill/reference/tasks#session-tasks) for interacting with a particular session.
+A subset of [Dill's `task`s](/system/kernel/dill/reference/tasks#session-tasks) for interacting with a particular session.
 
 ```hoon
 +$  session-task                                      ::  session request
@@ -196,15 +196,15 @@ A subset of [Dill's `task`s](system/kernel/dill/reference/tasks#session-tasks) f
   ==                                                  ::
 ```
 
-This type is used in the [`%shot`](system/kernel/dill/reference/tasks#shot) wrapper `task`.
+This type is used in the [`%shot`](/system/kernel/dill/reference/tasks#shot) wrapper `task`.
 
-See the [Session Tasks](system/kernel/dill/reference/tasks#session-tasks) entry in the API reference for more details of these `task`s.
+See the [Session Tasks](/system/kernel/dill/reference/tasks#session-tasks) entry in the API reference for more details of these `task`s.
 
 ---
 
 ## `$told`
 
-A subset of [Dill's `task`s](system/kernel/dill/reference/tasks#session-tasks) for basic text printing.
+A subset of [Dill's `task`s](/system/kernel/dill/reference/tasks#session-tasks) for basic text printing.
 
 ```hoon
 +$  told                                              ::  system output
@@ -214,6 +214,6 @@ A subset of [Dill's `task`s](system/kernel/dill/reference/tasks#session-tasks) f
   ==                                                  ::
 ```
 
-See the [Told Tasks](system/kernel/dill/reference/tasks#told-tasks) entry in the API reference for more details of these `task`s.
+See the [Told Tasks](/system/kernel/dill/reference/tasks#told-tasks) entry in the API reference for more details of these `task`s.
 
 ---

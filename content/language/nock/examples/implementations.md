@@ -30,7 +30,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 ## C Implementation
 
-The actual production Nock interpreter. Note gotos for tail-call elimination, and manual reference counting.  More about the C environment can be found in the [runtime system documentation](system/runtime).
+The actual production Nock interpreter. Note gotos for tail-call elimination, and manual reference counting.  More about the C environment can be found in the [runtime system documentation](/system/runtime).
 ```c
 /* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */

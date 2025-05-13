@@ -15,7 +15,7 @@ Whenever something tries to poke your agent, Gall calls your agent's `on-poke` a
 
 The sample of the gate is usually specified as a cell of `mark` and `vase` rather than just `cage`, simply because it's easier to work with.
 
-Typically, you'd first test the `mark` with something like a [wutlus](language/hoon/reference/rune/wut#-wutlus) `?+` expression, passing unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom `mark`s in a subsequent lesson, but the basic pattern looks like:
+Typically, you'd first test the `mark` with something like a [wutlus](/language/hoon/reference/rune/wut#-wutlus) `?+` expression, passing unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom `mark`s in a subsequent lesson, but the basic pattern looks like:
 
 ```hoon
 ?+  mark  (on-poke:def mark vase)
@@ -65,7 +65,7 @@ Note that the `tang` in the nack is just for debugging purposes, you should not 
 
 ## Sending a poke
 
-An agent can send pokes to other agents by producing [`%poke` `card`s](courses/app-school/5-cards#pokes). Any agent arm apart from `on-peek` and `on-save` can produce such `card`s. The arms would typically produce the `(quip card _this)` like so:
+An agent can send pokes to other agents by producing [`%poke` `card`s](/courses/app-school/5-cards#pokes). Any agent arm apart from `on-peek` and `on-save` can produce such `card`s. The arms would typically produce the `(quip card _this)` like so:
 
 ```hoon
 :_  this
@@ -73,7 +73,7 @@ An agent can send pokes to other agents by producing [`%poke` `card`s](courses/a
 ==
 ```
 
-The [colcab](language/hoon/reference/rune/col#_-colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`this`), so it makes it more readable.
+The [colcab](/language/hoon/reference/rune/col#_-colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`this`), so it makes it more readable.
 
 ### Receiving the `%poke-ack`
 
@@ -97,7 +97,7 @@ A `sign:agent:gall` (henceforth just `sign`) is defined in `lull.hoon` as:
   ==
 ```
 
-It's basically the same as a [`gift`](courses/app-school/5-cards#give), but incoming instead of outgoing.
+It's basically the same as a [`gift`](/courses/app-school/5-cards#give), but incoming instead of outgoing.
 
 The simplest way to handle a `%poke-ack` by passing it to `default-agent`'s `on-agent` arm, which will just print an error message to the terminal if it's a nack, and otherwise do nothing. Sometimes you'll want your agent to do something different depending on whether the poke failed or succeeded (and therefore whether it's a nack or an ack).
 

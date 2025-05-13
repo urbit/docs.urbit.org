@@ -103,7 +103,7 @@ Formal state
 
 This is the state of the vane. Anything that must be remembered between calls to Clay is stored in this state.
 
-- `rom`: the state for all local desks. It consists of a `duct` to [Dill](system/kernel/dill) and a collection of `desk`s.
+- `rom`: the state for all local desks. It consists of a `duct` to [Dill](/system/kernel/dill) and a collection of `desk`s.
 - `hoy`: the state for all foreign desks.
 - `ran`: the global, hash-addressed object store. It has maps of commit hashes to commits and content hashes to content.
 - `fad`: the global build cache. Each desk has its own fast-lookup index over this global cache.
@@ -228,7 +228,7 @@ Filesystem per domestic ship
 
 This is the representation of the filesystem of a ship on our pier.
 
-- `hun`: the duct we use to send messages to [Dill](system/kernel/dill) to display notifications of filesystem changes. Only `%note` `%gift`s should be produced along this `duct`. This is set by the `%init` `move`.
+- `hun`: the duct we use to send messages to [Dill](/system/kernel/dill) to display notifications of filesystem changes. Only `%note` `%gift`s should be produced along this `duct`. This is set by the `%init` `move`.
 - `dos`: the set of `desk`s on this ship, mapped to their `desk` state.
 
 ---
@@ -372,7 +372,7 @@ This specifies what type of information is requested in a subscription or a scry
 - `%z`: requests a recursive hash of a node and all its children, returned as a
   `@uxI`.
 
-See the [scry reference](system/kernel/clay/reference/scry) for more details.
+See the [scry reference](/system/kernel/clay/reference/scry) for more details.
 
 ---
 
@@ -527,7 +527,7 @@ Merge strategy
   ==                ::
 ```
 
-See the [Strategies](system/kernel/clay/guides/using#strategies) section of "Using Clay" for further details of their meaning.
+See the [Strategies](/system/kernel/clay/guides/using#strategies) section of "Using Clay" for further details of their meaning.
 
 ---
 

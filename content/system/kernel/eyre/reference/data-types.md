@@ -144,7 +144,7 @@ An unacknowledged event in the channel system.
 
 This is the state of a particular channel in the channel system.
 
-- `mode` says whether the channel sends/received JSON or [nouns](system/kernel/eyre/guides/noun-channels).
+- `mode` says whether the channel sends/received JSON or [nouns](/system/kernel/eyre/guides/noun-channels).
 - `state` is either the expiration time or the duct currently listening.
 - `next-id` is the next event ID to be used in the event stream.
 - `last-ack` is the date of the last client ack and is used for clog calculations in combination with `unacked`.

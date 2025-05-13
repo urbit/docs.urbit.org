@@ -47,7 +47,7 @@ As of version 1.9, the runtime has a built-in update mechanism. First, shut your
 If you're still running a binary older than 1.9, you'll need to:
 
 1. Shut down your ship with `Ctrl+d` or by typing `|exit` in the dojo.
-2. Download the new binary with the command given for your operating system in the [command line install guide](manual/getting-started/self-hosted/cli).
+2. Download the new binary with the command given for your operating system in the [command line install guide](/manual/getting-started/self-hosted/cli).
 3. Start your ship back up with the new `urbit` binary you downloaded.
 4. If you have a kernel update that was blocked, run `|bump` in the dojo to apply it.
 

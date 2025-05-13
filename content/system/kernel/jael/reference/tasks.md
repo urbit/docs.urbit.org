@@ -2,7 +2,7 @@
 
 This document details all the tasks you may wish to send Jael, as well as the gifts you'll receive in response.
 
-You may also wish to reference the [Data Types](system/kernel/jael/reference/data-types) document for details of the types referenced here, and the [Examples](system/kernel/jael/examples/examples) document for practical examples of using these tasks.
+You may also wish to reference the [Data Types](/system/kernel/jael/reference/data-types) document for details of the types referenced here, and the [Examples](/system/kernel/jael/examples/examples) document for practical examples of using these tasks.
 
 ## Tasks
 
@@ -14,7 +14,7 @@ Boot from keys.
 [%dawn dawn-event]
 ```
 
-This task is called once per ship during the vane initialization phase immediately following the beginning of the [adult stage](system/kernel/arvo#structural-interface-core). This task is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for technical reasons, though we consider Jael to be the true "first" vane. This task is only used for ships that will join the Ames network - fake ships (i.e. made with `./urbit -F zod`) use the [%fake](#fake) task instead.
+This task is called once per ship during the vane initialization phase immediately following the beginning of the [adult stage](/system/kernel/arvo#structural-interface-core). This task is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for technical reasons, though we consider Jael to be the true "first" vane. This task is only used for ships that will join the Ames network - fake ships (i.e. made with `./urbit -F zod`) use the [%fake](#fake) task instead.
 
 `%dawn` is used to perform a sequence of initialization tasks related to saving information about Azimuth and the Ames network and booting other vanes for the first time. Upon receipt of a `%dawn` task, Jael will:
 
@@ -27,7 +27,7 @@ This task is called once per ship during the vane initialization phase immediate
 - set Jael to subscribe to `%azimuth-tracker`,
 - `%slip` a `%init` task to Ames, Clay, Gall, Dill, and Eyre, and `%give` an `%init` gift to Arvo, which then informs Unix that the initialization process has concluded.
 
-This task takes a [$dawn-event](system/kernel/jael/reference/data-types#dawn-event) as its argument.
+This task takes a [$dawn-event](/system/kernel/jael/reference/data-types#dawn-event) as its argument.
 
 You would not use this task manually.
 
@@ -69,7 +69,7 @@ Set Ethereum source.
 
 Sets the source that the public keys for a set of `ship`s should be obtained from. This can either be a Gall app that communicates with an Ethereum node such as `%azimuth-tracker`, as in the case of galaxies, stars, and planets, or a ship, as in the case of moons.
 
-`whos` is the set of ships whose key data source is to be monitored. The [$source](system/kernel/jael/reference/data-types#source) is either a ship or the name of a Gall app to use as a source. A `%listen` task with empty `whos` will set the default source. When the `source` is a ship, Jael will obtain public keys for ships in `(set ship)` from the given ship. By default, the `source` for a moon will be the planet that spawned that moon.
+`whos` is the set of ships whose key data source is to be monitored. The [$source](/system/kernel/jael/reference/data-types#source) is either a ship or the name of a Gall app to use as a source. A `%listen` task with empty `whos` will set the default source. When the `source` is a ship, Jael will obtain public keys for ships in `(set ship)` from the given ship. By default, the `source` for a moon will be the planet that spawned that moon.
 
 You are unlikely to use this task manually.
 
@@ -97,7 +97,7 @@ Register moon keys or otherwise administer a moon.
 [%moon =ship =udiff:point]
 ```
 
-This is what is sent to Jael by `%hood` behind the scenes when you run `|moon`, `|moon-breach` or `|moon-cycle-keys`. The `ship` field is the moon's `@p`. The [$udiff:point](system/kernel/jael/reference/data-types#udiffpoint) will contain the bunt of an [$id:block](system/kernel/jael/reference/data-types#idblock) (since moons aren't registered in Azimuth) and one of the `udiff` actions depending on what you want to do.
+This is what is sent to Jael by `%hood` behind the scenes when you run `|moon`, `|moon-breach` or `|moon-cycle-keys`. The `ship` field is the moon's `@p`. The [$udiff:point](/system/kernel/jael/reference/data-types#udiffpoint) will contain the bunt of an [$id:block](/system/kernel/jael/reference/data-types#idblock) (since moons aren't registered in Azimuth) and one of the `udiff` actions depending on what you want to do.
 
 #### Returns
 
@@ -123,7 +123,7 @@ Jael does not return a gift in response to a `%nuke` task.
 
 #### Examples
 
-See the [%public-keys and %nuke](system/kernel/jael/examples/examples#public-keys-and-nuke) section of the Examples document for an example of using `%nuke` to cancel a `%public-keys` subscription. See the thread in the [%private-keys](system/kernel/jael/examples/examples#private-keys) example for cancelling a `%private-keys` subscription.
+See the [%public-keys and %nuke](/system/kernel/jael/examples/examples#public-keys-and-nuke) section of the Examples document for an example of using `%nuke` to cancel a `%public-keys` subscription. See the thread in the [%private-keys](/system/kernel/jael/examples/examples#private-keys) example for cancelling a `%private-keys` subscription.
 
 ---
 
@@ -145,7 +145,7 @@ Jael will immediately respond with a `%private-keys` gift. Then, whenever the sh
 
 #### Example
 
-See the [%private-keys](system/kernel/jael/examples/examples#private-keys) section of the Examples document for a practical example.
+See the [%private-keys](/system/kernel/jael/examples/examples#private-keys) section of the Examples document for a practical example.
 
 ---
 
@@ -163,11 +163,11 @@ An agent or thread can subscribe to be notified of public key updates, sponsorsh
 
 Jael responds to a `%public-keys` task with [`%public-keys` gift](#public-keys-1).
 
-Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](system/kernel/jael/reference/data-types#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
+Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](/system/kernel/jael/reference/data-types#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
 
 #### Example
 
-See the [%public-keys and %nuke](system/kernel/jael/examples/examples#public-keys-and-nuke) section of the Examples document for a practical example.
+See the [%public-keys and %nuke](/system/kernel/jael/examples/examples#public-keys-and-nuke) section of the Examples document for a practical example.
 
 ---
 
@@ -219,7 +219,7 @@ This simulates a breach locally for the given `set` of `ship`s. Jael will blast 
 
 This will break communications with the given ships, and is not reversible until they actually breach. **Use with extreme caution.**
 
-Note it's better to use the [`%snub` Ames task](system/kernel/ames/reference/tasks#snub) if you want to block packets from ships.
+Note it's better to use the [`%snub` Ames task](/system/kernel/ames/reference/tasks#snub) if you want to block packets from ships.
 
 {% endhint %}
 
@@ -237,7 +237,7 @@ View domains.
 [%turf ~]
 ```
 
-The domains returned by a `%turf` task are used as the base for individual galaxy domain names (e.g. from `urbit.org` you get `zod.urbit.org`, `bus.urbit.org`, etc). Jael gets these from Azimuth, then Ames gets them from Jael and passes them to the runtime, which will perform the DNS lookups and give Ames back the galaxy IP addresses. A `%turf` task takes no additional arguments. You're unlikely to use this manually - if you want the current `turf`s you'd likely want to do a [turf scry](system/kernel/jael/reference/scry#turf) instead.
+The domains returned by a `%turf` task are used as the base for individual galaxy domain names (e.g. from `urbit.org` you get `zod.urbit.org`, `bus.urbit.org`, etc). Jael gets these from Azimuth, then Ames gets them from Jael and passes them to the runtime, which will perform the DNS lookups and give Ames back the galaxy IP addresses. A `%turf` task takes no additional arguments. You're unlikely to use this manually - if you want the current `turf`s you'd likely want to do a [turf scry](/system/kernel/jael/reference/scry#turf) instead.
 
 #### Returns
 
@@ -246,7 +246,7 @@ Jael will respond to a `%turf` task with a [`%turf` gift](#turf-1).
 #### Example
 
 See the [%turf section of the Examples
-document](system/kernel/jael/examples/examples#turf) for a practical example.
+document](/system/kernel/jael/examples/examples#turf) for a practical example.
 
 ---
 
@@ -266,7 +266,7 @@ Jael does not return a gift in response to a `%step` task.
 
 #### Example
 
-See the [%step](system/kernel/jael/examples/examples#step) section of the Examples document for a practical example.
+See the [%step](/system/kernel/jael/examples/examples#step) section of the Examples document for a practical example.
 
 ---
 
@@ -320,7 +320,7 @@ Ethereum changes.
 
 Public key information, diffs, and breach notifications. This is given to those who have subscribed with a [`%public-keys` task](#public-keys).
 
-See the [`$public-keys-result`](system/kernel/jael/reference/data-types#public-keys-result) entry in the data types reference for details of the data this gift contains.
+See the [`$public-keys-result`](/system/kernel/jael/reference/data-types#public-keys-result) entry in the data types reference for details of the data this gift contains.
 
 ---
 

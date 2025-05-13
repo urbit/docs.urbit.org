@@ -4,7 +4,7 @@ The `$` family of runes is used for defining custom types. Strictly speaking, th
 
 ## Overview
 
-Structures are abstract syntax trees for `type`s (see the documentation on [basic](language/hoon/reference/basic) and [advanced](language/hoon/reference/advanced) types for the precise definition of `type`). Structures are compile-time values of `type` which at runtime may be used to produce a 'mold'.
+Structures are abstract syntax trees for `type`s (see the documentation on [basic](/language/hoon/reference/basic) and [advanced](/language/hoon/reference/advanced) types for the precise definition of `type`). Structures are compile-time values of `type` which at runtime may be used to produce a 'mold'.
 
 A mold is a function from nouns to nouns used to validate values of the type to which the structure defines. A mold can do two things at runtime. First, it may 'clam' a noun, which validates the shape of the noun to be one that fits the abstract syntax tree given by the `spec` that produced the mold. Failing this validation results in a crash. Secondly, a mold may also be used to produce an example value of the type to which is corresponds, called the 'bunt value'. The bunt value is used as a placeholder for sample values that may be passed to a gate that accepts the corresponding type.
 
@@ -99,7 +99,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   |=(a=(tree) ?:(=(~ a) & ~(apt in a)))
 ```
 
-Here [`|$`](language/hoon/reference/rune/bar#-barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
+Here [`|$`](/language/hoon/reference/rune/bar#-barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
 
 ---
 
@@ -767,7 +767,7 @@ The product of `p`.
 
 #### Discussion
 
-You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](language/hoon/reference/rune/ket#-kettar).)
+You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](/language/hoon/reference/rune/ket#-kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
 

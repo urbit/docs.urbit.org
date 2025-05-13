@@ -34,7 +34,7 @@ Behn does not return any `gift` in response to a `%rest` `task`.
 
 #### Example
 
-See the [%rest](system/kernel/behn/examples/examples#rest) section of the Examples document.
+See the [%rest](/system/kernel/behn/examples/examples#rest) section of the Examples document.
 
 ## `%drip`
 
@@ -134,7 +134,7 @@ The `error` `unit` will be `~` if successful, or contain a traceback in the `tan
 
 #### Example
 
-See the [%wait](system/kernel/behn/reference/tasks#wait) section of the Examples document.
+See the [%wait](/system/kernel/behn/reference/tasks#wait) section of the Examples document.
 
 ## `%wake`
 

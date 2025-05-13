@@ -32,7 +32,7 @@ When you first start your ship, you should make sure you put it a place where yo
 
 ### Keep up-to-date builds
 
-Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](manual/getting-started/self-hosted/cli#updating).
+Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/manual/getting-started/self-hosted/cli#updating).
 
 ### `|hi` your star to see if you're connected
 
@@ -62,7 +62,7 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 A factory reset is when a ship tells the rest of the network to treat it as though the ship was just started for the first time again. Any ongoing or outstanding communication is forgotten and connections are reestablished from scratch.
 
-Factory resets often fix connectivity issues, but should only be used as a last resort. To find out how to perform a factory reset, check out our [Guide to Factory Resets](manual/id/guide-to-resets). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community`.
+Factory resets often fix connectivity issues, but should only be used as a last resort. To find out how to perform a factory reset, check out our [Guide to Factory Resets](/manual/id/guide-to-resets). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community`.
 
 ### Reset `+code`
 

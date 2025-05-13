@@ -8,7 +8,7 @@ Using Urbit requires having access to a running **ship**: an Urbit OS running wi
 
 ## Next steps
 
-- [Run Urbit yourself](manual/getting-started/self-hosted) or select a [hosting provider](manual/getting-started/hosted)
-- Meet friendly people by [joining groups](manual/getting-started/additional/joining-groups)
-- [Install apps](manual/getting-started/additional/installing-applications) to experiment with
-- Explore [interfaces](manual/getting-started/additional/interfaces) for Urbit
+- [Run Urbit yourself](/manual/getting-started/self-hosted) or select a [hosting provider](/manual/getting-started/hosted)
+- Meet friendly people by [joining groups](/manual/getting-started/additional/joining-groups)
+- [Install apps](/manual/getting-started/additional/installing-applications) to experiment with
+- Explore [interfaces](/manual/getting-started/additional/interfaces) for Urbit

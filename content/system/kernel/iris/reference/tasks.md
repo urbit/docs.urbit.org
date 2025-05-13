@@ -10,9 +10,9 @@ This document details the `task`s used by Iris. Iris only has three `task`s besi
 
 Fetch a remote HTTP resource.
 
-The [$request:http](system/kernel/eyre/reference/data-types#requesthttp) is the request itself and contains the HTTP method, the fully qualified target URL, a list of HTTP headers to be included and maybe the data for the body of the request.
+The [$request:http](/system/kernel/eyre/reference/data-types#requesthttp) is the request itself and contains the HTTP method, the fully qualified target URL, a list of HTTP headers to be included and maybe the data for the body of the request.
 
-The [$outbound-config](system/kernel/iris/reference/data-types#outbound-config) specifies the number of redirects to follow before failing and the number of retries to attempt before giving up. The default values are `5` and `3` respectively. As of writing, **retries and auto-following redirects are not implemented**, so what you specify here is irrelevant and you can just use the bunt value of `outbound-config`.
+The [$outbound-config](/system/kernel/iris/reference/data-types#outbound-config) specifies the number of redirects to follow before failing and the number of retries to attempt before giving up. The default values are `5` and `3` respectively. As of writing, **retries and auto-following redirects are not implemented**, so what you specify here is irrelevant and you can just use the bunt value of `outbound-config`.
 
 #### Returns
 
@@ -22,7 +22,7 @@ Iris returns a `%http-response` `gift` in response to a `%request` task. A `%res
 [%http-response =client-response]
 ```
 
-The [$client-response](system/kernel/iris/reference/data-types#client-response) contains the HTTP response from the server including the status code, HTTP headers and any data along with its mime type.
+The [$client-response](/system/kernel/iris/reference/data-types#client-response) contains the HTTP response from the server including the status code, HTTP headers and any data along with its mime type.
 
 The `client-response` structure specifies three kinds of responses - `%progress`, `%finished` and `%cancel`. The `%progress` response would contain each chunk of the message as it came in, `%finished` would contain the final assembled message from Vere's buffer, and `%cancel` would be sent if the runtime cancels the request.
 
@@ -30,7 +30,7 @@ Note that neither `%progress` partial messages nor `%cancel` responses have been
 
 #### Example
 
-See the [Example](system/kernel/iris/examples/example) document.
+See the [Example](/system/kernel/iris/examples/example) document.
 
 ## `%cancel-request`
 
@@ -54,4 +54,4 @@ Iris does not return any `gift` in response to a `%cancel-request` `task`. You w
 
 Receives HTTP data from outside. This `task` is sent to Iris by the runtime, you would not use it manually.
 
-The `id` is a sequential ID for the event and the [$http-event:http](system/kernel/eyre/reference/data-types#http-eventhttp) contains the HTTP headers and data.
+The `id` is a sequential ID for the event and the [$http-event:http](/system/kernel/eyre/reference/data-types#http-eventhttp) contains the HTTP headers and data.

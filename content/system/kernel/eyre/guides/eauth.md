@@ -1,13 +1,13 @@
 # EAuth
 
-EAuth is a system built into [Eyre](glossary/eyre) which allows one [ship](glossary/ship) to log into the web interface of another. Once logged in, all requests through Eyre will appear to Gall [agents](glossary/agent) as having come from the foreign ship, in the `src` of the [bowl](glossary/bowl). The agents can apply whatever logic they want based on the foreign `src`. Most Urbit apps (including Landscape) don't currently allow requests from anyone but the local ship. Nevertheless, EAuth has many potential useful applications, such as a allowing comments from other ships on a public-facing Urbit-hosted blog.
+EAuth is a system built into [Eyre](/glossary/eyre) which allows one [ship](/glossary/ship) to log into the web interface of another. Once logged in, all requests through Eyre will appear to Gall [agents](/glossary/agent) as having come from the foreign ship, in the `src` of the [bowl](/glossary/bowl). The agents can apply whatever logic they want based on the foreign `src`. Most Urbit apps (including Landscape) don't currently allow requests from anyone but the local ship. Nevertheless, EAuth has many potential useful applications, such as a allowing comments from other ships on a public-facing Urbit-hosted blog.
 
 ## When to use
 
-[Landscape](glossary/landscape) and its `%docket` agent don't currently support access from foreign ships. You therefore cannot provide an app-launcher interface to foreign ships, nor serve them an ordinary [globbed](glossary/glob) front-end. This leaves three potential use-cases:
+[Landscape](/glossary/landscape) and its `%docket` agent don't currently support access from foreign ships. You therefore cannot provide an app-launcher interface to foreign ships, nor serve them an ordinary [globbed](/glossary/glob) front-end. This leaves three potential use-cases:
 
-1. A [sail-based](glossary/sail) UI for a public-facing Urbit-hosted app.
-2. A [glob](glossary/glob)-based UI, but with the front-end files served independently from `%docket`.
+1. A [sail-based](/glossary/sail) UI for a public-facing Urbit-hosted app.
+2. A [glob](/glossary/glob)-based UI, but with the front-end files served independently from `%docket`.
 3. As an authentication system for an externally hosted service, with an additional API for that service to talk to the ship.
 
  The first case is the most common one.

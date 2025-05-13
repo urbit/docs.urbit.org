@@ -7,101 +7,16 @@ insert_anchor_links = "right"
 
 Hoon language examples and exercises.
 
-{% grid %}
-
-  {% iconcard
-    title="Competitive Programming"
-    description="Various exercises."
-    href="/language/hoon/examples/competitive"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Gleichniszahlenreihe"
-    description="Challenge: the look-and-say sequence."
-    href="/language/hoon/examples/gleichniszahlenreihe"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Rhonda Numbers"
-    description="Challenge: compute Rhonda Numbers."
-    href="/language/hoon/examples/rhonda"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Roman Numerals"
-    description="Challenge: printing and parsing roman numerals."
-    href="/language/hoon/examples/roman"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Solitaire Cipher"
-    description="Challenge: solitaire encryption cipher."
-    href="/language/hoon/examples/solitaire"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Water Between Towers"
-    description="Challenge: fill convex areas of a tower with water."
-    href="/language/hoon/examples/water-towers"
-    small=true
-  /%}
-
-  {% iconcard
-    title="ABC Blocks"
-    description="Challenge: spell words with blocks."
-    href="/language/hoon/examples/abc-blocks"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Luhn Number"
-    description="Challenge: compute Luhn numbers."
-    href="/language/hoon/examples/luhn-number"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Emirp"
-    description="Challenge: compute primes whose reverses are also primes."
-    href="/language/hoon/examples/emirp"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Restore IPs"
-    description="Challenge: restore IP addresses that have lost their dots."
-    href="/language/hoon/examples/restore-ip"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Islands"
-    description="Challenge: find the size of the biggest island in a 2D grid."
-    href="/language/hoon/examples/islands"
-    small=true
-    
-  /%}
-
-  {% iconcard
-    title="Minimum Path Sum"
-    description="Challenge: find the least expensive path through a 2D grid."
-    href="/language/hoon/examples/min-path"
-    small=true
-    
-  /%}
-
-    {% iconcard
-    title="Phone Letters"
-    description="Challenge: return the strings that can be represented by numbers in a phonepad."
-    href="/language/hoon/examples/phone-letters"
-    small=true
-    
-  /%}
-
-{% /grid %}
-
+- [Competitive Programming](/language/hoon/examples/competitive) - Various exercises.
+- [Gleichniszahlenreihe](/language/hoon/examples/gleichniszahlenreihe) - Challenge: the look-and-say sequence.
+- [Rhonda Numbers](/language/hoon/examples/rhonda) - Challenge: compute Rhonda Numbers.
+- [Roman Numerals](/language/hoon/examples/roman) - Challenge: printing and parsing roman numerals.
+- [Solitaire Cipher](/language/hoon/examples/solitaire) - Challenge: solitaire encryption cipher.
+- [Water Between Towers](/language/hoon/examples/water-towers) - Challenge: fill convex areas of a tower with water.
+- [ABC Blocks](/language/hoon/examples/abc-blocks) - Challenge: spell words with blocks.
+- [Luhn Number](/language/hoon/examples/luhn-number) - Challenge: compute Luhn numbers.
+- [Emirp](/language/hoon/examples/emirp) - Challenge: compute primes whose reverses are also primes.
+- [Restore IPs](/language/hoon/examples/restore-ip) - Challenge: restore IP addresses that have lost their dots.
+- [Islands](/language/hoon/examples/islands) - Challenge: find the size of the biggest island in a 2D grid.
+- [Minimum Path Sum](/language/hoon/examples/min-path) - Challenge: find the least expensive path through a 2D grid.
+- [Phone Letters](/language/hoon/examples/phone-letters) - Challenge: return the strings that can be represented by numbers in a phonepad.

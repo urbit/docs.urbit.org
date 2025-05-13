@@ -8,30 +8,9 @@ auto_expand = true
 
 If you're getting started learning Hoon, the best place to start is either the live tutored [Hoon Academy](/courses/urbit-academy/ha) or the self-taught [Hoon School](/courses/hoon-school) in the [Courses](/courses) section. Additionally, [Examples](/language/hoon/examples) contains a number of interesting exercises to hone your Hoon skills.
 
-{% grid %}
-
-  {% iconcard
-    title="Hoon Academy"
-    description="Learn the fundamentals of the Hoon programming language as part of a group with a hands-on instructor, regular exercises and discussions."
-    href="/courses/urbit-academy/ha"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Hoon School"
-    description="Learn the fundamentals of the Hoon programming language at your own pace with an in-depth tutorial including exercises."
-    href="/courses/hoon-school"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Hoon Workbook"
-    description="A number of interesting examples and exercises to hone your Hoon skills."
-    href="/language/hoon/examples"
-    small=true
-  /%}
-
-{% /grid %}
+- [Hoon Academy](/courses/urbit-academy/ha) - Learn the fundamentals of the Hoon programming language as part of a group with a hands-on instructor, regular exercises and discussions.
+- [Hoon School](/courses/hoon-school) - Learn the fundamentals of the Hoon programming language at your own pace with an in-depth tutorial including exercises.
+- [Hoon Workbook](/language/hoon/examples) - A number of interesting examples and exercises to hone your Hoon skills.
 
 ---
 

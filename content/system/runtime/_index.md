@@ -9,75 +9,15 @@ This section of the docs is about Urbit's Nock interpreter and runtime system **
 
 ### Developer Docs
 
-{% grid %}
-
-  {% iconcard
-    title="U3 Overview"
-    description="An overview of the noun-wrangling part of the runtime, U3."
-    href="/system/runtime/concepts/u3"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Conn.c Guide"
-    description="Using `conn.c` to interact with a running ship from the outside."
-    href="/system/runtime/guides/conn"
-    small=true
-  /%}
-
-  {% iconcard
-    title="How to Write a Jet"
-    description="A jetting guide by for new Urbit developers."
-    href="/system/runtime/guides/jetting"
-    small=true
-  /%}
-
-  {% iconcard
-    title="C3: C in Urbit"
-    description="Under u3 is the simple c3 layer, which is just how we write C in Urbit."
-    href="/system/runtime/reference/c"
-    small=true
-  /%}
-
-  {% iconcard
-    title="U3: Land of Nouns"
-    description="The division between c3 and u3 is that you could theoretically imagine using c3 as just a generic C environment. Anything to do with nouns is in u3."
-    href="/system/runtime/reference/nouns"
-    small=true
-  /%}
-
-  {% iconcard
-    title="U3: API Overview"
-    description="A walkthrough of each of the u3 modules."
-    href="/system/runtime/reference/api"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Cryptography"
-    description="References on the cryptography libraries utilized by jets."
-    href="/system/runtime/reference/cryptography"
-    small=true
-  /%}
-
-{% /grid %}
+- [U3 Overview](/system/runtime/concepts/u3) - An overview of the noun-wrangling part of the runtime, U3.
+- [Conn.c Guide](/system/runtime/guides/conn) - Using `conn.c` to interact with a running ship from the outside.
+- [How to Write a Jet](/system/runtime/guides/jetting) - A jetting guide by for new Urbit developers.
+- [C3: C in Urbit](/system/runtime/reference/c) - Under u3 is the simple c3 layer, which is just how we write C in Urbit.
+- [U3: Land of Nouns](/system/runtime/reference/nouns) - The division between c3 and u3 is that you could theoretically imagine using c3 as just a generic C environment. Anything to do with nouns is in u3.
+- [U3: API Overview](/system/runtime/reference/api) - A walkthrough of each of the u3 modules.
+- [Cryptography](/system/runtime/reference/cryptography) - References on the cryptography libraries utilized by jets.
 
 ### Additional Resources
 
-{% grid %}
-
-  {% iconcard
-    title="User Reference"
-    description="Reference for the utilities and options the runtime takes from the terminal."
-    href="/manual/running/vere"
-    small=true
-  /%}
-
-  {% iconcard
-    title="The Vere Repo"
-    description="Github repository for the runtime."
-    href="https://github.com/urbit/vere"
-    small=true
-  /%}
-
-{% /grid %}
+- [User Reference](/manual/running/vere) - Reference for the utilities and options the runtime takes from the terminal.
+- [The Vere Repo](https://github.com/urbit/vere) - Github repository for the runtime.

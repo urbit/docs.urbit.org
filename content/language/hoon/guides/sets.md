@@ -10,7 +10,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-identity.png)
 
-[`++silt`](language/hoon/reference/stdlib/2l#silt) produces a `$set` from a `$list`.
+[`++silt`](urbit-docs/language/hoon/reference/stdlib/2l#silt) produces a `$set` from a `$list`.
 
 ```
 > `(set @tas)`(silt `(list @tas)`~[%a %b %c %a])
@@ -21,7 +21,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-addition.png)
 
-[`++put:in`](language/hoon/reference/stdlib/2h#putin) adds an element _x_ to a set _A_.
+[`++put:in`](urbit-docs/language/hoon/reference/stdlib/2h#putin) adds an element _x_ to a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -29,7 +29,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%b %d %a %c}
 ```
 
-[`++gas:in`](language/hoon/reference/stdlib/2h#gasin) adds each element _x_, _y_, _z_ of a list to a set _A_.
+[`++gas:in`](urbit-docs/language/hoon/reference/stdlib/2h#gasin) adds each element _x_, _y_, _z_ of a list to a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -42,7 +42,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-deletion.png)
 
-[`++del:in`](language/hoon/reference/stdlib/2h#delin) removes an element _x_ from a set _A_.
+[`++del:in`](urbit-docs/language/hoon/reference/stdlib/2h#delin) removes an element _x_ from a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c %d])
@@ -54,7 +54,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-membership.png)
 
-[`++has:in`](language/hoon/reference/stdlib/2h#hasin) checks if an element _x_ is in a set _A_.
+[`++has:in`](urbit-docs/language/hoon/reference/stdlib/2h#hasin) checks if an element _x_ is in a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -68,7 +68,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ### Size
 
-[`++wyt:in`](language/hoon/reference/stdlib/2h#wytin) produces the number of elements in _A_ as an atom (width).
+[`++wyt:in`](urbit-docs/language/hoon/reference/stdlib/2h#wytin) produces the number of elements in _A_ as an atom (width).
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -78,7 +78,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ### Export as List
 
-[`++tap:in`](language/hoon/reference/stdlib/2h#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
+[`++tap:in`](urbit-docs/language/hoon/reference/stdlib/2h#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -103,7 +103,7 @@ $$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-union.png)
 
-[`++uni:in`](language/hoon/reference/stdlib/2h#uniin) produces a set containing all values from _A_ or _B_.  The types of _A_ and _B_ must match.
+[`++uni:in`](urbit-docs/language/hoon/reference/stdlib/2h#uniin) produces a set containing all values from _A_ or _B_.  The types of _A_ and _B_ must match.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -120,7 +120,7 @@ $$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-intersection.png)
 
-[`++int:in`](language/hoon/reference/stdlib/2h#intin) produces a set containing all values from _A_ and _B_.  The types of _A_ and _B_ must match.
+[`++int:in`](urbit-docs/language/hoon/reference/stdlib/2h#intin) produces a set containing all values from _A_ and _B_.  The types of _A_ and _B_ must match.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -146,7 +146,7 @@ $$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-complement.png)
 
-The complement of a set _A_, _Aꟲ_, may be found using [`++dif`](language/hoon/reference/stdlib/2h#difin) (difference).
+The complement of a set _A_, _Aꟲ_, may be found using [`++dif`](urbit-docs/language/hoon/reference/stdlib/2h#difin) (difference).
 
 For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_a_, _b_}.
 
@@ -183,7 +183,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Logical `AND` (∧)
 
-[`++all:in`](language/hoon/reference/stdlib/2h#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
+[`++all:in`](urbit-docs/language/hoon/reference/stdlib/2h#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -193,7 +193,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Logical `OR` (∨)
 
-[`++any:in`](language/hoon/reference/stdlib/2h#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
+[`++any:in`](urbit-docs/language/hoon/reference/stdlib/2h#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -203,7 +203,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Operate with Function
 
-[`++run:in`](language/hoon/reference/stdlib/2h#runin) applies a function _f_ to every member of set _A_.
+[`++run:in`](urbit-docs/language/hoon/reference/stdlib/2h#runin) applies a function _f_ to every member of set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -213,7 +213,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Accumulate with Function
 
-[`++rep:in`](language/hoon/reference/stdlib/2h#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
+[`++rep:in`](urbit-docs/language/hoon/reference/stdlib/2h#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
 
 ```
 =/  a  `(set @ud)`(silt `(list @ud)`~[1 2 3 4 5])

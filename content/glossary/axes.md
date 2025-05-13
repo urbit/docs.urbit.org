@@ -1,3 +1,3 @@
 # Axes
 
-Plural form of [axis](gossary/axis).
+Plural form of [axis](urbit-docs/gossary/axis).

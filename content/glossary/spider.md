@@ -1,7 +1,7 @@
 # Spider
 
-**Spider** is the [Gall](glossary/gall) [agent](glossary/agent) that manages [threads](glossary/thread).
+**Spider** is the [Gall](urbit-docs/glossary/gall) [agent](urbit-docs/glossary/agent) that manages [threads](urbit-docs/glossary/thread).
 
 ### Further Reading
 
-- [Threads guide](userspace/threads/tutorials/basics/fundamentals): learn how to write threads.
+- [Threads guide](urbit-docs/userspace/threads/tutorials/basics/fundamentals): learn how to write threads.

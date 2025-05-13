@@ -26,7 +26,7 @@ or
     =+  a  b
 ```
 
-These are regular forms -- every rune can be written this way. Hoon also has a variety of wide [irregular forms](language/hoon/reference/irregular). All tall forms are regular. All code within a wide form is wide. Almost all code has both wide and tall forms, the exception being named [cores](glossary/core/).
+These are regular forms -- every rune can be written this way. Hoon also has a variety of wide [irregular forms](urbit-docs/language/hoon/reference/irregular). All tall forms are regular. All code within a wide form is wide. Almost all code has both wide and tall forms, the exception being named [cores](urbit-docs/glossary/core/).
 
 The goal of wide/tall forms is to resemble the look of procedural code, with its statement/expression distinction, in a purely functional language. In particular, complex code in functional languages tends to develop a diagonal shape, since child nodes in the syntax tree are indented right.
 

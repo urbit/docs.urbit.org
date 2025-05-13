@@ -52,7 +52,7 @@ Next we have our `%journal-update` mark file. The sample of our mark door is our
 
 ## Resources
 
-- [The Marks section of the Clay documentation](system/kernel/clay/guides/marks) - This section of the Clay vane documentation covers mark files comprehensively.
-- [The mark file section of the Gall Guide](courses/app-school/7-sur-and-marks#mark-files) - This part of App School goes through the basics of mark files.
+- [The Marks section of the Clay documentation](urbit-docs/system/kernel/clay/guides/marks) - This section of the Clay vane documentation covers mark files comprehensively.
+- [The mark file section of the Gall Guide](urbit-docs/courses/app-school/7-sur-and-marks#mark-files) - This part of App School goes through the basics of mark files.
 
-- [The JSON Guide](language/hoon/guides/json-guide/) - This also covers writing mark files to convert to/from JSON.
+- [The JSON Guide](urbit-docs/language/hoon/guides/json-guide/) - This also covers writing mark files to convert to/from JSON.

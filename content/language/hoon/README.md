@@ -1,16 +1,16 @@
 # Hoon
 
-If you're getting started learning Hoon, the best place to start is either the live tutored [Hoon Academy](courses/urbit-academy/ha) or the self-taught [Hoon School](courses/hoon-school) in the [Courses](courses) section. Additionally, [Examples](language/hoon/examples) contains a number of interesting exercises to hone your Hoon skills.
+If you're getting started learning Hoon, the best place to start is either the live tutored [Hoon Academy](urbit-docs/courses/urbit-academy/ha) or the self-taught [Hoon School](urbit-docs/courses/hoon-school) in the [Courses](urbit-docs/courses) section. Additionally, [Examples](urbit-docs/language/hoon/examples) contains a number of interesting exercises to hone your Hoon skills.
 
-- [Hoon Academy](courses/urbit-academy/ha) - Learn the fundamentals of the Hoon programming language as part of a group with a hands-on instructor, regular exercises and discussions.
-- [Hoon School](courses/hoon-school) - Learn the fundamentals of the Hoon programming language at your own pace with an in-depth tutorial including exercises.
-- [Hoon Workbook](language/hoon/examples) - A number of interesting examples and exercises to hone your Hoon skills.
+- [Hoon Academy](urbit-docs/courses/urbit-academy/ha) - Learn the fundamentals of the Hoon programming language as part of a group with a hands-on instructor, regular exercises and discussions.
+- [Hoon School](urbit-docs/courses/hoon-school) - Learn the fundamentals of the Hoon programming language at your own pace with an in-depth tutorial including exercises.
+- [Hoon Workbook](urbit-docs/language/hoon/examples) - A number of interesting examples and exercises to hone your Hoon skills.
 
 ---
 
 ## Introduction
 
-We are often asked why Urbit was written in a new language, rather than some existing language like Haskell or C. This document provides the high-level rationale for that decision, and also covers some of the features of the language that set it apart from others. If you're looking to learn Hoon, check out our tutorial series called [Hoon School](courses/hoon-school/).
+We are often asked why Urbit was written in a new language, rather than some existing language like Haskell or C. This document provides the high-level rationale for that decision, and also covers some of the features of the language that set it apart from others. If you're looking to learn Hoon, check out our tutorial series called [Hoon School](urbit-docs/courses/hoon-school/).
 
 ## What can Hoon do that other languages can't?
 

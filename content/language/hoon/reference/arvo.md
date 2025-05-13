@@ -242,7 +242,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 Marked vase
 
-A pair of a [`mark`](#mark) and a [`vase`](language/hoon/reference/stdlib/4o#vase) (type-value pair). These are extensively used for passing data around between vanes and agents.
+A pair of a [`mark`](#mark) and a [`vase`](urbit-docs/language/hoon/reference/stdlib/4o#vase) (type-value pair). These are extensively used for passing data around between vanes and agents.
 
 #### Source
 
@@ -857,7 +857,7 @@ This is similar to [`wite`](#wite) but without the error case. It's most commonl
 
 Event pretext
 
-Type-wise, a `wire` is the same as a [`path`](language/hoon/reference/stdlib/2q#path); a `list` of [`knot`](language/hoon/reference/stdlib/2q#knot)s with the syntax of `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or subscription endpoint, a `wire` is used for responses.
+Type-wise, a `wire` is the same as a [`path`](urbit-docs/language/hoon/reference/stdlib/2q#path); a `list` of [`knot`](urbit-docs/language/hoon/reference/stdlib/2q#knot)s with the syntax of `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or subscription endpoint, a `wire` is used for responses.
 
 On the kernel-level, `wire`s are used in [`duct`](#duct)s to represent a causal step in a call stack for routing purposes. In userspace, they're used the same way under the hood, but practically speaking, they can be thought of as "tags" for responses. That is, when you make a request to a vane of Gall agent, you provide a `wire` for any responses you get back, and you can use this to identity what the response is for.
 

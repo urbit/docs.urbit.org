@@ -20,11 +20,11 @@ In this lesson we're going to look at interacting with vanes (kernel modules). T
   ==
 ```
 
-The API of each vane is documented in its respective section of the [Arvo documentation](system/kernel/arvo). Each vane has a detailed API reference and examples of their usage. There are far too many `task`s and `gift`s across the vanes to cover here, so in the [`Example`](#example) section of this document, we'll just look at a single, simple example with a Behn timer. The basic pattern in the example is broadly applicable to the other vanes as well.
+The API of each vane is documented in its respective section of the [Arvo documentation](urbit-docs/system/kernel/arvo). Each vane has a detailed API reference and examples of their usage. There are far too many `task`s and `gift`s across the vanes to cover here, so in the [`Example`](#example) section of this document, we'll just look at a single, simple example with a Behn timer. The basic pattern in the example is broadly applicable to the other vanes as well.
 
 ## Sending a vane task
 
-A `task` can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on these in the [Cards](courses/app-school/5-cards) lesson, but we'll briefly recap it here. The type of the card is as follows:
+A `task` can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on these in the [Cards](urbit-docs/courses/app-school/5-cards) lesson, but we'll briefly recap it here. The type of the card is as follows:
 
 ```hoon
 [%pass path %arvo note-arvo]
@@ -232,7 +232,7 @@ After approximately five seconds, we see the timer fired successfully:
 
 - Each vane has an API composed of `task`s it takes and `gift`s it produces.
 - Each vane's `task`s and `gift`s are defined in `lull.hoon`
-- Each vane's section of the [Arvo documentation](system/kernel/arvo) includes an API reference that explains its `task`s and `gift`s, as well as an Examples section demonstrating their usage.
+- Each vane's section of the [Arvo documentation](urbit-docs/system/kernel/arvo) includes an API reference that explains its `task`s and `gift`s, as well as an Examples section demonstrating their usage.
 - Vane `task`s can be sent to vanes by `%pass`ing them an `%arvo` `card`.
 - Vane `gift`s come back to the `on-arvo` arm of the agent core in a `sign-arvo`.
 
@@ -240,4 +240,4 @@ After approximately five seconds, we see the timer fired successfully:
 
 - Run through the [Example](#example) yourself if you've not done so already.
 - Have a look at some vane sections of `lull.hoon` to familiarize yourself with its structure.
-- Have a quick look at the API reference sections of a couple of vanes in the [Arvo documentation](system/kernel/arvo).
+- Have a quick look at the API reference sections of a couple of vanes in the [Arvo documentation](urbit-docs/system/kernel/arvo).

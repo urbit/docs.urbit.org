@@ -2,7 +2,7 @@
 
 Adding [S3](https://aws.amazon.com/s3/) storage to Urbit unlocks some great new features, such as the ability to upload & post your own media to chats straight from your own machine, and upload custom avatars. This is a guide to self-hosting [MinIO](https://min.io), an S3 compatible block storage solution.
 
-You can read more about S3 in [Configuring S3 Storage](manual/os/s3).
+You can read more about S3 in [Configuring S3 Storage](urbit-docs/manual/os/s3).
 
 Cloud providers offer off-the-shelf S3 solutions that you can get started with almost immediately. However, if you do not wish to trust them with your uploaded files, you can self-host an S3 solution.
 
@@ -95,7 +95,7 @@ Then, you need to ensure your bucket is readable to the public, so that others c
 
 Head over to Landscape and navigate to the S3 storage setup page at System preferences > Remote Storage, and enter your domain (with protocol) under endpoint, e.g. `https://s3.example.com`. Enter your username and password from step 1 under access key and secret, and then enter the name of the bucket. When the bucket name is combined with the endpoint, you get your bucket URL e.g. `https://media.s3.example.com`.
 
-You can also configure these settings through dojo as shown [here](manual/os/s3).
+You can also configure these settings through dojo as shown [here](urbit-docs/manual/os/s3).
 
 ### That's it!
 

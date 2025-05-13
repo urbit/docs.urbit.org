@@ -14,18 +14,18 @@ You'll likely want to focus on finding and joining new communities, which you ca
 
 ### 2. Join a few groups
 
-Joining public groups is simple – just search for the group host's Urbit ID, and click join. Check out a walk-through of this process in the [Joining groups](manual/getting-started/additional/joining-groups) guide.
+Joining public groups is simple – just search for the group host's Urbit ID, and click join. Check out a walk-through of this process in the [Joining groups](urbit-docs/manual/getting-started/additional/joining-groups) guide.
 
 ### 3. Install some applications
 
 Groups are great, but Urbit goes way deeper with apps that are developed specifically for Urbit and use P2P networking for everything.
 
-Check out the [Installing apps](manual/getting-started/additional/installing-applications) guide for a walk-through on the process of installing Urbit applications.
+Check out the [Installing apps](urbit-docs/manual/getting-started/additional/installing-applications) guide for a walk-through on the process of installing Urbit applications.
 
 
 ### 4.  Explore interfaces
 
-The default Urbit experience is using Landscape in the browser, but Urbit is also available on native mobile and desktop applications through alternative interfaces.  [Learn more about Urbit interfaces](manual/getting-started/additional/interfaces).
+The default Urbit experience is using Landscape in the browser, but Urbit is also available on native mobile and desktop applications through alternative interfaces.  [Learn more about Urbit interfaces](urbit-docs/manual/getting-started/additional/interfaces).
 
 
 ### 5. Getting help
@@ -45,6 +45,6 @@ If you're having trouble with your planet or the hosting provider that's running
 
 **Stay updated**: [Subscribe](https://urbit.us11.list-manage.com/subscribe/post?u=972a03db9e0c6c25bb58de8c8&id=be143888d2) to the Urbit Newsletter for news, blog posts, and upcoming events.
 
-**Meet up**: Many of the organizations and people behind Urbit host virtual and in-person events on a regular basis — check out the latest on our [Events feed](events/), or a local [Meetup group](https://urbit.org/ecosystem?type=communities).
+**Meet up**: Many of the organizations and people behind Urbit host virtual and in-person events on a regular basis — check out the latest on our [Events feed](urbit-docs/events/), or a local [Meetup group](https://urbit.org/ecosystem?type=communities).
 
 **Build**: If you're the kind of person who wants to build applications directly for discerning communities with built-in identity and networking primitives, or even jump into the Urbit kernel's core, visit [Urbit Developers](https://developers.urbit.org/) to learn more.

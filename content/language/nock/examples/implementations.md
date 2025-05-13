@@ -30,7 +30,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 ## C Implementation
 
-The actual production Nock interpreter. Note gotos for tail-call elimination, and manual reference counting.  More about the C environment can be found in the [runtime system documentation](system/runtime).
+The actual production Nock interpreter. Note gotos for tail-call elimination, and manual reference counting.  More about the C environment can be found in the [runtime system documentation](urbit-docs/system/runtime).
 ```c
 /* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */
@@ -1426,9 +1426,9 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
     if (idx > 10) throw new Error('invalid formula: ' + idx)
 
-    if (useMacros) return macroFormulas[idx](s, f[1])
+    if (useMacros) return macroFormulas[idx](urbit-docs/s, f[1])
 
-    return formulas[idx](s, f[1])
+    return formulas[idx](urbit-docs/s, f[1])
   }
 
   /* construct a JS noun (group an array into pairs, associating right) */

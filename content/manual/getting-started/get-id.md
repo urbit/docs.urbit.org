@@ -100,11 +100,11 @@ Now that you have your planet, you can create your keyfile (eg. `sample-palnet.k
 
 Now that you have a keyfile let's move on to booting the Urbit OS.
 
-- [CLI instructions](manual/getting-started/self-hosted/cli) – Set up Vere, the Urbit runtime, using the command line.
+- [CLI instructions](urbit-docs/manual/getting-started/self-hosted/cli) – Set up Vere, the Urbit runtime, using the command line.
 
-- [Install on the cloud](manual/getting-started/self-hosted/cloud-hosting) – A step-by-step guide to setting up Urbit on a VPS.
+- [Install on the cloud](urbit-docs/manual/getting-started/self-hosted/cloud-hosting) – A step-by-step guide to setting up Urbit on a VPS.
 
-- [Set up a home server](manual/getting-started/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.
+- [Set up a home server](urbit-docs/manual/getting-started/self-hosted/home-servers) – Explore options for running your own dedicated physical Urbit computer.
 
 ### Buying a star
 

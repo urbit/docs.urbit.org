@@ -6,7 +6,7 @@ In this document we'll walk through an example of creating and publishing a desk
 
 *Note: You can skip this step if you already have the latest binary installed.*
 
-Follow the [CLI install instructions](manual/getting-started/self-hosted/cli#2-install-urbit) appropriate for your OS to download the `urbit` binary.
+Follow the [CLI install instructions](urbit-docs/manual/getting-started/self-hosted/cli#2-install-urbit) appropriate for your OS to download the `urbit` binary.
 
 ## Spin up fake ship
 
@@ -120,13 +120,13 @@ In the text editor, we'll add the following:
 ==
 ```
 
-You can refer to the [Docket File](userspace/apps/reference/dist/docket) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](userspace/apps/reference/dist/docket) which configure the appearance of the app tile, the source of the [glob](userspace/apps/reference/dist/glob), and some other metadata.
+You can refer to the [Docket File](urbit-docs/userspace/apps/reference/dist/docket) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](urbit-docs/userspace/apps/reference/dist/docket) which configure the appearance of the app tile, the source of the [glob](urbit-docs/userspace/apps/reference/dist/glob), and some other metadata.
 
-We've given the app a [`%title`](userspace/apps/reference/dist/docket#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](userspace/apps/reference/dist/docket#color) of `#8188C9`, and also specified the URL of an [`%image`](userspace/apps/reference/dist/docket#image) to display on the tile.
+We've given the app a [`%title`](urbit-docs/userspace/apps/reference/dist/docket#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](urbit-docs/userspace/apps/reference/dist/docket#color) of `#8188C9`, and also specified the URL of an [`%image`](urbit-docs/userspace/apps/reference/dist/docket#image) to display on the tile.
 
-The [`%base`](userspace/apps/reference/dist/docket#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](userspace/apps/reference/dist/glob), we've used a clause of [`%glob-ames`](userspace/apps/reference/dist/docket#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](userspace/apps/reference/dist/docket#glob-http) clause or having an Eyre binding with a [`%site`](userspace/apps/reference/dist/docket#site) clause. You can refer to the [glob](userspace/apps/reference/dist/glob) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
+The [`%base`](urbit-docs/userspace/apps/reference/dist/docket#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](urbit-docs/userspace/apps/reference/dist/glob), we've used a clause of [`%glob-ames`](urbit-docs/userspace/apps/reference/dist/docket#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](urbit-docs/userspace/apps/reference/dist/docket#glob-http) clause or having an Eyre binding with a [`%site`](urbit-docs/userspace/apps/reference/dist/docket#site) clause. You can refer to the [glob](urbit-docs/userspace/apps/reference/dist/glob) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
 
-The [`%version`](userspace/apps/reference/dist/docket#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
+The [`%version`](urbit-docs/userspace/apps/reference/dist/docket#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
 
 So let's save that to the `desk.docket-0` file and have a look at our desk:
 
@@ -165,7 +165,7 @@ You should see a message like:
 docket: awaiting manual glob for %hello desk
 ```
 
-That's because our `desk.docket-0` file includes a [`%glob-ames`](userspace/apps/reference/dist/docket#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob of front-end files.
+That's because our `desk.docket-0` file includes a [`%glob-ames`](urbit-docs/userspace/apps/reference/dist/docket#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob of front-end files.
 
 ## Create files for glob
 
@@ -234,7 +234,7 @@ Once you login, you'll notice you have the `Hello` app tile, but it still says "
 
 ## Upload to glob
 
-We can now create a glob from the `hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](userspace/apps/reference/dist/glob#globulator) tool:
+We can now create a glob from the `hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](urbit-docs/userspace/apps/reference/dist/glob#globulator) tool:
 
 ![Globulator](https://media.urbit.org/guides/additional/dist/2-globulator.png)
 

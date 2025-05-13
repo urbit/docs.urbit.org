@@ -67,7 +67,7 @@ Our Gall agent is extremely simple and has no state. It only uses three agent ar
   [%pass /lick %arvo %l %spin /'licker.sock']~
 ```
 
-All `++on-init` does is pass Lick a [`%spin`](system/kernel/lick/reference/tasks#spin) task to create a new `licker.sock` socket.
+All `++on-init` does is pass Lick a [`%spin`](urbit-docs/system/kernel/lick/reference/tasks#spin) task to create a new `licker.sock` socket.
 
 ### `++on-poke`
 
@@ -80,7 +80,7 @@ All `++on-init` does is pass Lick a [`%spin`](system/kernel/lick/reference/tasks
   [%pass /spit %arvo %l %spit /'licker.sock' %noun %ping]~
 ```
 
-When `++on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, it passes Lick a [`%spit`](system/kernel/lick/reference/tasks#spit) task with the same data. Lick will send it on through to our `licker.sock` socket for our Python script. This lets us poke our agent from the Dojo like:
+When `++on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, it passes Lick a [`%spit`](urbit-docs/system/kernel/lick/reference/tasks#spit) task with the same data. Lick will send it on through to our `licker.sock` socket for our Python script. This lets us poke our agent from the Dojo like:
 
 ```
 > :licker %ping
@@ -101,7 +101,7 @@ When `++on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, i
   ==
 ```
 
-`++on-arvo` expects a [`%soak`](system/kernel/lick/reference/tasks#soak-1) gift from Lick. A `%soak` is primarily a message coming in from the socket, though connection status is also communicated in `%soak`s. The four cases we handle are:
+`++on-arvo` expects a [`%soak`](urbit-docs/system/kernel/lick/reference/tasks#soak-1) gift from Lick. A `%soak` is primarily a message coming in from the socket, though connection status is also communicated in `%soak`s. The four cases we handle are:
 
 - `%connect`: An external process has connected to the socket.
 - `%disconnect`: An external process has disconnected from the socket.

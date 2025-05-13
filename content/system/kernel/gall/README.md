@@ -25,7 +25,7 @@ We often think of state machines as finite state machines, but of course in this
 
 ## Specification
 
-An agent is defined as a [core](glossary/core/) with a set of [arms](glossary/arm/) to handle various events. These handlers usually produce a list of effects and the next state of the agent. The interface definition can be found in `sys/lull.hoon`, which at the time of writing is:
+An agent is defined as a [core](urbit-docs/glossary/core/) with a set of [arms](urbit-docs/glossary/arm/) to handle various events. These handlers usually produce a list of effects and the next state of the agent. The interface definition can be found in `sys/lull.hoon`, which at the time of writing is:
 
 ```hoon
 ++  agent
@@ -273,7 +273,7 @@ A subscription close closes the subscription for all subscribers on a given `pat
 
 ### Vases and cages
 
-A `vase` is a piece of dynamic data. Structurally, it's a pair of an explicit reification of a type and an untyped [noun](glossary/noun/). This lets us represent a value which has a type that isn't known at compile time. A vase has three operations:
+A `vase` is a piece of dynamic data. Structurally, it's a pair of an explicit reification of a type and an untyped [noun](urbit-docs/glossary/noun/). This lets us represent a value which has a type that isn't known at compile time. A vase has three operations:
 
 - `!>` is a unary rune that lifts a statically typed value to a dynamically-typed `vase`. For example, `!>('hi')` gives `[#t/@t q=26.984]`.
 

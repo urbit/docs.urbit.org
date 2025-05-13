@@ -2,7 +2,7 @@
 
 This document details the `task`s used by Iris. Iris only has three `task`s besides the standard vane `task`s: [%request](#request), [%cancel-request](#cancel-request), and [%receive](#receive). The `%receive` `task` is only sent to Iris by the runtime, so you're likely to only use `%request` and `%cancel-request`.
 
-## `%request`
+## `%request` {#request}
 
 ```hoon
 [%request =request:http =outbound-config]
@@ -32,7 +32,7 @@ Note that neither `%progress` partial messages nor `%cancel` responses have been
 
 See the [Example](../examples/example.md) document.
 
-## `%cancel-request`
+## `%cancel-request` {#cancel-request}
 
 ```hoon
 [%cancel-request ~]
@@ -46,7 +46,7 @@ A `%cancel-request` `task` does not take any arguments, the [request](#request) 
 
 Iris does not return any `gift` in response to a `%cancel-request` `task`. You will also not receive any `gift` back from the original `%request` `task` you've cancelled.
 
-## `%receive`
+## `%receive` {#receive}
 
 ```hoon
 [%receive id=@ud =http-event:http]

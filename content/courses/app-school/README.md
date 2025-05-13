@@ -4,7 +4,7 @@ This guide will walk through everything you need to know to write your own Gall 
 
 App School I is suitable for anyone with an intermediate knowledge of Hoon. If you've worked through [Hoon School](../hoon-school) or something equivalent, you should be fine.
 
-## What are Gall agents?
+## What are Gall agents? {#what-are-gall-agents}
 
 Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating system. Gall's purpose is to manage userspace applications called _agents_.
 
@@ -16,7 +16,7 @@ On the other hand, an agent is also a lot like what many systems call a "service
 
 But the best way to think about an agent is as a state machine. Like a state machine, any input could happen at any time, and it must react coherently to that input. Output (effects) and the next state of the machine are a pure function of the previous state and the input event.
 
-## Table of Contents
+## Table of Contents {#table-of-contents}
 
 #### Lessons
 

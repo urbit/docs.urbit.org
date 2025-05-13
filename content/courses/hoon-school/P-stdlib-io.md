@@ -3,7 +3,7 @@
 _This module will elaborate on text representation in Hoon, including formatted text and `%ask` [generators](../../glossary/generator.md).  It may be considered optional and skipped if you are speedrunning Hoon School._
 
 
-##  Text Conversions
+## Text Conversions {#text-conversions}
 
 We frequently need to convert from text to data, and between different text-based representations.  Let's examine some specific [arms](../../glossary/arm.md):
 
@@ -45,7 +45,7 @@ The `++html` core of the standard libary contains some additional important tool
     ```
 
 
-##  Formatted Text
+## Formatted Text {#formatted-text}
 
 Hoon produces messages at the [Dojo](../../glossary/dojo.md) (or otherwise) using an internal formatted text system, called `tank`s.  A `+$tank` is a formatted print tree. Error messages and the like are built of `tank`s.  `tank`s are defined in `hoon.hoon`:
 
@@ -215,7 +215,7 @@ You can see how much of the generator is concerned with formatting the content o
 
 - Work line-by-line through the file and clarify parts that are muddy to you at first glance.
 
-### Producing Error Messages
+### Producing Error Messages {#producing-error-messages}
 
 Formal error messages in Urbit are built of tanks.  “A `tang` is a [list](../../glossary/list.md) of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
 
@@ -230,7 +230,7 @@ One way to include an error message in your code is the `~_` [sigcab](../../lang
 When you compose your own library functions, consider including error messages for likely failure points.
 
 
-##  `%ask` Generators
+## `%ask` Generators {#ask-generators}
 
 Previously, we introduced the concept of a `%say` [generator](../../glossary/generator.md) to produce a more versatile form of standalone single computation than a simple naked generator ([gate](../../glossary/gate.md)) allowed. Another elaboration, the `%ask` generator, takes things further.
 

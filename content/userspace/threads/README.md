@@ -23,7 +23,7 @@ Thus, for anything that needs to be permament, use an agent. When you need to do
 
 A thread may also be run from the dojo by prefixing its name with `-` and giving it any arguments it requires. If alone, any result will be printed to the screen; else the output may be piped into an agent or other sinks.
 
-## Thread basics
+## Thread basics {#thread-basics}
 
 This guide walks you through the fundamental things you need to know to write threads. They focus on basic thread composition and so don't touch on interacting with threads from gall agents and such. The included examples can all just be run from the dojo.
 1. [Thread Fundamentals](tutorials/basics/fundamentals.md) - Basic information and overview of threads, strands, `form` & `pure`.
@@ -32,7 +32,7 @@ This guide walks you through the fundamental things you need to know to write th
 4. [Strand Output](tutorials/basics/output.md) - What strands produce
 5. [Summary](tutorials/basics/summary.md)
 
-## Gall
+## Gall {#gall}
 
 These docs walk through the basics of interacting with threads from gall agents.
 
@@ -42,7 +42,7 @@ These docs walk through the basics of interacting with threads from gall agents.
 4. [Stop a thread](examples/gall/stop-thread.md)
 5. [Poke a thread](examples/gall/poke-thread.md)
 
-## How-tos & Examples
+## How-tos & Examples {#how-tos-examples}
 
 - [Grab some JSON from a URL](examples/get-json.md) - Here's an example of chaining a couple of external http requests for JSON.
 - [Start a child thread](examples/child-thread.md) - Starting and managing child threads.
@@ -51,11 +51,11 @@ These docs walk through the basics of interacting with threads from gall agents.
 - [Scry](examples/scry.md) - Scry arvo or an agent.
 - [Take a fact](examples/take-fact.md) - Subscribe to an agent and receive a fact.
 
-## [Reference](reference/api.md)
+## [Reference](reference/api.md) {#referencereferenceapimd}
 
 Basic reference information. For usage of particular `strandio` functions just refer directly to `/lib/strandio/hoon` since they're largely self-explanatory.
 
-## [Strandio](reference/strandio.md)
+## [Strandio](reference/strandio.md) {#strandioreferencestrandiomd}
 
 Reference documentation of the Strandio helper library.
 

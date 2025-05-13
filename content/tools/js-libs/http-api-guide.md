@@ -2,11 +2,11 @@
 
 [Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's kernel and operating system. In this guide, we'll look at interacting with a ship through Eyre's web API using the [@urbit/http-api] Javascript module.
 
-## Background
+## Background {#background}
 
 Before we dig into the details of Eyre's API, we'll first give a quick run-down of some concepts in Arvo. Eyre's API is a fairly thin overlay on some of Arvo's internal systems, so there's some basic things to understand.
 
-### Clay
+### Clay {#clay}
 
 [Clay] is the filesystem vane. It's typed, and it's revision-controlled in a similar way to git. Clay is comprised of a number of [desk]s, which are a bit like git repositories. Each app on your ship's home screen corresponds to a desk in Clay. That desk contains the source code and resources for that app.
 
@@ -18,7 +18,7 @@ When you send a [poke](#pokes) or run a [thread](#threads) through Eyre, it will
 
 Note that Eyre makes a best effort attempt to convert data to and from JSON. If the marks in question do not contain appropriate JSON conversion functions, it will fail. Not all [scry endpoints](#scry-endpoints), [subscription paths](#subscriptions), pokes, etc, are intended to be used from a front-end, so not all use marks which can be converted to and from JSON (the `noun` mark for example). If documentation is available for the agent or thread in question, it should note in some fashion whether it can take or produce JSON. The majority of things you'll want to interact with through Eyre will work with JSON.
 
-### Gall agents
+### Gall agents {#gall-agents}
 
 An _agent_ is a userspace application managed by the [Gall] vane. A desk may contain multiple agents that do different things. The Groups app, for example, has `graph-store`, `group-store`, `contact-store`, and others in its desk. Agents are the main thing you'll interact with through Eyre. They have a simple interface with three main parts:
 
@@ -54,17 +54,17 @@ Scry endpoints are defined in the `on-peek` section of an agent's source, and wi
 
 `http-api` includes a `scry` function which allows you to perform scries through Eyre, and is [detailed below](#scry).
 
-### Threads
+### Threads {#threads}
 
 A thread is a monadic function in Arvo that takes arguments and produces a result. Threads are conceptually similar to Javascript promises - they can perform a series of asynchronous I/O operations and may succeed or fail. Threads are often used to handle complex I/O operations for agents. Threads live in the `/ted` directory of a desk.
 
 `http-api` includes a `thread` function which allows you to run threads through Eyre, and is [detailed below](#thread).
 
-## `http-api` basics
+## `http-api` basics {#http-api-basics}
 
 The `http-api` module provides convenient functions to interact with a ship through Eyre. In this section we'll discuss the basics of how it works.
 
-### Importing the module
+### Importing the module {#importing-the-module}
 
 The `http-api` module is available in npm as `@urbit/http-api`, and can be installed with:
 
@@ -80,7 +80,7 @@ import Urbit from '@urbit/http-api';
 
 Note that the examples in this guide are simple HTML documents with vanilla Javascript in `<script>` tags, so they use [unpkg.com](https://unpkg.com) to import `@urbit/http-api`. This is not typical, and is just done here for purposes of simplicity.
 
-### `Urbit`
+### `Urbit` {#urbit}
 
 All functionality is contained within the `Urbit` class. There are two ways to instantiate it, depending on whether your web app is served directly from the ship or whether it's served externally. The reason for the difference is that you require a session cookie to talk to the ship. If your app is served from the ship, the user will already have a cookie. If it's not, they'll need to authenticate, which is [detailed separately below](#authentication).
 
@@ -104,7 +104,7 @@ If you want to specify a desk, you can do:
 const api = new Urbit("", "", "landscape");
 ```
 
-### `/session.js`
+### `/session.js` {#sessionjs}
 
 Most functions of the `Urbit` class need to know the ship name or they will fail. This is given explicitly with the external authentication method [detailed below](#authentication), but not when using the `Urbit` constructor in a web app served directly from the ship. Rather than having the user manually enter it, Urbit ships serve a JS library at `/session.js` that contains the following:
 
@@ -125,7 +125,7 @@ const api = new Urbit("");
 api.ship = window.ship;
 ```
 
-### Channels
+### Channels {#channels}
 
 With the exception of scries and threads, all communication with Eyre happens through its channel system.
 
@@ -135,7 +135,7 @@ Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for 
 
 Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[a new channel ID]`. If your web app is served external to the ship and you use the `authenticate` function [described below](#authentication), the function will automatically send a poke and open the channel. If your web app is served directly from the ship and you use `Urbit` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
 
-### Connection state
+### Connection state {#connection-state}
 
 `Urbit` class includes three optional callbacks that fire when the SSE connection state changes:
 
@@ -157,7 +157,7 @@ How you use these (if you do at all) is up to you and depends on the nature of y
 
 If you don't want to account for the possibility of the channel having been deleted in your app's logic, you can also just call the [`reset()`](#reset) function before you try reconnecting and consequently open a brand new channel.
 
-### Authentication
+### Authentication {#authentication}
 
 **If your front-end is served directly from the Urbit ship, this step can be skipped.** If your web app is served externally to the ship, you must authenticate and obtain a session cookie before commencing communications with the ship.
 
@@ -212,11 +212,11 @@ Here's a simple example that will run `authenticate` for a fakezod when the _Con
 
 `window.api` can then be used for further communications.
 
-## Functions
+## Functions {#functions}
 
 The various functions you can use in the `Urbit` object are described below.
 
-### Poke
+### Poke {#poke}
 
 For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. The `poke` function takes six arguments in a object:
 
@@ -341,7 +341,7 @@ This example will, upon clicking the "Subscribe" button, subscribe to the `/upda
 </html>
 ````
 
-### Subscribe Once
+### Subscribe Once {#subscribe-once}
 
 The `subscribeOnce` function in the `Urbit` class of `http-api` is a variation on the ordinary [`subscribe`](#subscribe) function. Rather than keeping the subscription going and receiving an arbitrary number of updates, instead it waits to receive a single update and then closes the subscription. This is useful if, for example, you send a poke and just want a response to that one poke.
 
@@ -390,7 +390,7 @@ Here's a variation on the ordinary [subscribe](#subscribe) function. Rather than
 </html>
 ````
 
-### Scries
+### Scries {#scries}
 
 To scry agents on the ship, the `Urbit` class in `http-api` includes a `scry` function. The `scry` function takes two arguments in a object:
 
@@ -427,7 +427,7 @@ Upon pressing the "Scry Graphs" button, this example will scry the `graph-store`
 </html>
 ````
 
-### Thread
+### Thread {#thread}
 
 To run a thread, the `Urbit` class in `http-api` includes a `thread` function. The `thread` function takes five arguments in an object:
 
@@ -485,21 +485,21 @@ This example takes a hoon expression (such as `(add 1 1)`), evalutes it with the
 </html>
 ````
 
-### Delete Channel
+### Delete Channel {#delete-channel}
 
 Rather than just closing individual subscriptions, the entire channel can be closed with the `delete` function in the `Urbit` class of `http-api`. The function takes no arguments, and can be called like `api.cancel()` (replacing `api` with whatever you've named the `Urbit` object you previously instantiated). When a channel is closed, all subscriptions will be cancelled and all pending updates will be discarded.
 
-### Reset
+### Reset {#reset}
 
 An existing instance of `http-api`'s `Urbit` class can be reset with its `reset` function. This function takes no arguments, and can be called like `api.reset()` (replacing `api` with whatever you've named the `Urbit` object you previously instantiated). When called, the channel will be closed and all subscriptions cancelled. Additionally, all outstanding outbound pokes will be discarded and a fresh channel ID will be generated.
 
-## Further reading
+## Further reading {#further-reading}
 
 - [Eyre External API Reference][eyre-ext-ref] - Lower-level documentation of Eyre's external API.
 - [Eyre Guide][eyre-guide] - Lower-level examples of using Eyre's external API with `curl`.
 - [`http-api` on Github][http-api-src] - The source code for `@urbit/http-api`.
 
-## Examples
+## Examples {#examples}
 
 Here are some examples which make use of `@urbit/http-api` that might be useful as a reference:
 

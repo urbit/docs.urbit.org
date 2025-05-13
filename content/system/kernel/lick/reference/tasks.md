@@ -4,11 +4,11 @@ In this document we describe the public interface for Lick. Namely, we describe 
 
 The only novel data type is `name`, which is just a `path` representing the name of a socket.
 
-## Tasks
+## Tasks {#tasks}
 
 Lick's `task`s are documented below. Some of them are only used by the kernel or Vere. The ones you'd use from userspace are [`%spin`](#spin`), [`%shut`](#shut), and [`%spit`](#spit).
 
-### `%born`
+### `%born` {#born}
 
 New Unix process.
 
@@ -26,7 +26,7 @@ Lick may give [`%spin`](#spin-1) gifts to Vere and [`%soak`](#soak-1) gifts with
 
 ---
 
-### `%spin`
+### `%spin` {#spin}
 
 Open an IPC port.
 
@@ -46,7 +46,7 @@ See the [example agent](../examples/examples.md).
 
 ---
 
-### `%shut`
+### `%shut` {#shut}
 
 Close an IPC port.
 
@@ -66,7 +66,7 @@ See the [example agent](../examples/examples.md).
 
 ---
 
-### `%spit`
+### `%spit` {#spit}
 
 Send a noun to the IPC port. 
 
@@ -86,7 +86,7 @@ See the [example agent](../examples/examples.md).
 
 ---
 
-### `%trim`
+### `%trim` {#trim}
 
 Trim state (no-op).
 
@@ -102,7 +102,7 @@ Lick does not return any `gift` in response to a `%trim` task.
 
 ---
 
-### `%vega`
+### `%vega` {#vega}
 
 ```hoon
 [%vega ~]
@@ -118,7 +118,7 @@ Lick does not return any `gift` in response to a `%vega` task.
 
 ---
 
-### `%soak`
+### `%soak` {#soak}
 
 Receive data from outside.
 
@@ -132,11 +132,11 @@ The socket `name` is associated with the `duct` that registered it. The `%soak` 
 
 ---
 
-## Gifts
+## Gifts {#gifts}
 
 Below are the `gift`s that Lick can give. Only the [`%soak`](#soak-1) gift would be given to an agent, the rest are only given to Vere.
 
-### `%spin`
+### `%spin` {#spin}
 
 Open an IPC port.
 
@@ -148,7 +148,7 @@ Lick gives this `gift` to Vere in order to register a socket with the `path` spe
 
 ---
 
-### `%shut`
+### `%shut` {#shut}
 
 Close an IPC port.
 
@@ -160,7 +160,7 @@ Lick gives this `gift` to Vere in order to close and remove the socket with the 
 
 ---
 
-### `%spit`
+### `%spit` {#spit}
 
 Spit a noun to the IPC port.
 
@@ -172,7 +172,7 @@ Lick converts a [`%spit` task](#spit) to this `gift` and gives it to Vere.
 
 ---
 
-### `%soak`
+### `%soak` {#soak}
 
 Soak a noun from the IPC port.
 

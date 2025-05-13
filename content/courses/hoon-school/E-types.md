@@ -2,7 +2,7 @@
 
 _This module will introduce the Hoon type system and illustrate how type checking and type inference work._
 
-##  The Hoon Type System
+## The Hoon Type System {#the-hoon-type-system}
 
 Programming languages use data types to distinguish different kinds of data and associated rules.  For instance, what does it mean to add 3 to the letter A?  Depending on your programming language, you could see `A3`, `D`, or an error.
 
@@ -25,7 +25,7 @@ You have seen and worked with the trivial atoms and cells.  We will leave marks 
 This lesson will talk about atoms, cells, then molds in a general sense. We allude to several topics which will be explored in Data Structures.
 
 
-##  Atoms and Auras
+## Atoms and Auras {#atoms-and-auras}
 
 In the most straightforward sense, atoms simply are unsigned integers. But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more.  Every atom is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each atom, and this bit of metadata tells Hoon how to interpret the atom in question.
 
@@ -78,7 +78,7 @@ Why `nest-fail`?  The inferred type of `[13 14]` doesn't nest under the cast typ
 
 A cell of atoms is a noun, so the inferred type of `[13 14]` nests under `*`.  Every product of a Hoon expression nests under `*` because every product is a noun.
 
-### What Auras are There?
+### What Auras are There? {#what-auras-are-there}
 
 Hoon has a wide (but not extensible) variety of atom literal syntaxes. Each literal syntax indicates to the Hoon type checker which predefined aura is intended.  Hoon can also pretty-print any aura literal it can parse.  Because atoms make great path nodes and paths make great URLs, all regular atom literal syntaxes use only URL-safe characters.  The pretty-printer is convenient when you are used to it, but may surprise you occasionally as a learner.
 
@@ -115,7 +115,7 @@ Some of these auras nest under others.  For example, `@u` is for all unsigned au
 
 `knot` and `term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
 
-### Aura Inference in Hoon
+### Aura Inference in Hoon {#aura-inference-in-hoon}
 
 Let's work a few more examples in the Dojo using the `?` operator. We'll focus on just the unsigned auras for now:
 
@@ -175,11 +175,11 @@ The [add](../../language/hoon/reference/stdlib/1a.md#add) function in the Hoon s
 The reason these add up correctly is that unsigned auras all map directly to the 'correct' atom underneath. For example, `16`, `0b1.0000`, and `0x10` are all the exact same atom, just with different literal syntax. (This doesn't hold for signed versions of the auras!)
 
 
-##  Cells
+## Cells {#cells}
 
 Let's move on to consider cells.  For now we'll limit ourselves to simple cell types made up of various atom types.
 
-### Generic Cells
+### Generic Cells {#generic-cells}
 
 The `^` ket symbol is used to indicate the type for cells (i.e., the set of all cells).  We can use it for casting as we did with atom auras, like `@ux` and `@t`:
 
@@ -222,7 +222,7 @@ When we use the `?` operator to see the type inferred by Hoon for the expression
 
 Yet the cell `[[12 13] [14 15 16]]` is a bit more complex than the cell `[12 13]`.  Can we use the type system to distinguish them?  Yes.
 
-### Getting More Specific
+### Getting More Specific {#getting-more-specific}
 
 What if you want to cast for a particular kind of cell?  You can use square brackets when casting for a specific cell type.  For example, if you want to cast for a cell in which the head and the tail must each be an atom, then simply cast using `[@ @]`:
 
@@ -295,7 +295,7 @@ You can also be highly specific with certain parts of the type structure, leavin
 Because every piece of Hoon data is a noun, everything nests under `*`. When you cast to `*` you can see the raw noun with cells as brackets and atoms as unsigned integers.
 
 
-##  Molds
+## Molds {#molds}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS156%20-%20Molds.mp4" %}
 
@@ -385,7 +385,7 @@ We can have more complex molds as well:
 
 Most of the time, we will define such complex types using specific runes and “mold builder” tools.  Thus a `list` needs an associated type `(list @)` to correctly denote the data type.
 
-### Identifying Molds
+### Identifying Molds {#identifying-molds}
 
 Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune.
 
@@ -401,7 +401,7 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 #t/@ux
 ```
 
-### Type Unions
+### Type Unions {#type-unions}
 
 `$?` [bucwut](../../language/hoon/reference/rune/buc.md#-bucwut) forms a type union. Most commonly these are used with types having different structures, such as an atom and a cell.
 

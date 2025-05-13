@@ -3,7 +3,7 @@
 _In this module we'll cover how the Hoon compiler infers type, as well as various cases in which a type check is performed._
 
 
-## Type Casting
+## Type Casting {#type-casting}
 
 Casting is used to explain to the Hoon compiler exactly what it is we mean with a given data structure.  As you get in the habit of casting your data structures, it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
 
@@ -77,7 +77,7 @@ Any time we see a `find-fork` error, it means that the type checker considers th
 It's important to note that performing tests like this will actually transform a [list](../../glossary/list.md) into a `lest`, a non-null list.  Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
 
-### Casting Nouns (`^` ket Runes)
+### Casting Nouns (`^` ket Runes) {#casting-nouns-ket-runes}
 
 As the Hoon compiler compiles your Hoon code, it does a type check on certain expressions to make sure they are guaranteed to produce a value of the correct type.  If it cannot be proved that the output value is correctly typed, the compile will fail with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) crash.  In order to figure out what type of value is produced by a given expression, the compiler uses type inference on that code.
 
@@ -147,7 +147,7 @@ nest-fail
 [123 12 14]
 ```
 
-### Arm Checks
+### Arm Checks {#arm-checks}
 
 Whenever an [arm](../../glossary/arm.md) is evaluated in Hoon it expects to have some version of its parent [core](../../glossary/core.md) as the [subject](../../glossary/subject.md).  Specifically, a type check is performed to see whether the arm subject is of the appropriate type.  We see this in action whenever a [gate](../../glossary/gate.md) or a multi-arm [door](../../glossary/door.md) is called.
 
@@ -175,11 +175,11 @@ We'll talk in more detail about the various kinds of type-checking that can occu
 This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are `=.` [tisdot](../../language/hoon/reference/rune/tis.md#-tisdot) and `%_` [cencab](../../language/hoon/reference/rune/cen.md#_-cencab).
 
 
-##  Type Inference
+## Type Inference {#type-inference}
 
 Hoon infers the type of any given expression.  How does this inference work?  Hoon has available various tools for inferring the type of any given expression:  literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
 
-### Literals
+### Literals {#literals}
 
 [Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values.  [Atom](../../glossary/atom.md) and [cell](../../glossary/cell.md) literals are supported in Hoon, and every supported [aura](../../glossary/aura.md) has an unambiguous representation that allows the parser to directly infer the type from the form.  Here are a few examples of auras and associated literal formats:
 
@@ -191,7 +191,7 @@ Hoon infers the type of any given expression.  How does this inference work?  Ho
 | `[@ud @ud]` | `[12 14]` |
 | `[@ux @t ?]` | `[0x1f 'hello' %.y]` |
 
-### Casts
+### Casts {#casts}
 
 Casting with `^` [ket](../../language/hoon/reference/rune/ket.md) runes also shape how Hoon understands an expression type, as outlined above.  The inferred type of a cast expression is just the type being cast for.  It can be inferred that, if the cast didn't result in a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail), the value produced must be of the cast type. Here are some examples of cast expressions with the inferred output type on the right:
 
@@ -213,7 +213,7 @@ Since casts can throw away type information, if the cast type is more general, t
 
 It's important to remember to include a cast [rune](../../glossary/rune.md) with each [gate](../../glossary/gate.md) and [trap](../../glossary/trap.md) expression.  That way it's clear what the inferred product type will be for calls to that core.
 
-### (Dry) Gate Sample Definitions
+### (Dry) Gate Sample Definitions {#dry-gate-sample-definitions}
 
 By now you've used the `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) rune to define several [gates](../../glossary/gate.md).  This rune is used to produce a _dry gate_, which has different type-checking and type-inference properties than a _wet gate_ does.  We won't explain the distinction until [a later module](R-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
@@ -241,7 +241,7 @@ nest-fail
 
 If you try to call this gate with the wrong kind of argument, you get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail).  If the call succeeds, then the argument takes on the type of the [sample](../../glossary/sample.md) definition: `[a=@ b=@]`. Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of [aura](../../glossary/aura.md).
 
-### Inferring Type (`?` wut Runes)
+### Inferring Type (`?` wut Runes) {#inferring-type-wut-runes}
 
 #### Using Conditionals for Inference by Branch
 
@@ -522,7 +522,7 @@ What makes this program is little harder to follow is that it recurses within a 
 
 Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`.  We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
 
-### Lists
+### Lists {#lists}
 
 You learned about lists earlier in the chapter, but we left out a little bit of information about the way Hoon understands [list](../../glossary/list.md) types.
 
@@ -674,7 +674,7 @@ Save the above code as `/gen/listleaf.hoon` and run it from the Dojo:
 ~[12 13 33 22 12 11 33]
 ```
 
-### Other Kinds of Type Inference
+### Other Kinds of Type Inference {#other-kinds-of-type-inference}
 
 So far you've learned about four kinds of type inference:
 
@@ -690,7 +690,7 @@ More subtly, the `=+` [tislus](../../language/hoon/reference/rune/tis.md#-tislus
 In general, anything that modifies the subject modifies the type of the subject.  Type inference can work in subtle ways for various expressions.  However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 
 
-## Auras as 'Soft' Types
+## Auras as 'Soft' Types {#auras-as-soft-types}
 
 It's important to understand that Hoon's type system doesn't enforce [auras](../../glossary/aura.md) as strictly as it does other types. Auras are 'soft' type information. To see how this works, we'll take you through the process of converting the aura of an [atom](../../glossary/atom.md) to another aura.
 
@@ -804,7 +804,7 @@ You can cast `b` back to `(list)` to work around this:
 11
 ```
 
-### Pattern Matching and Assertions
+### Pattern Matching and Assertions {#pattern-matching-and-assertions}
 
 To summarize, as values get passed around and checked at various points, the Hoon compiler tracks what the possible data structure or [mold](../../glossary/mold.md) looks like.  The following runes are particularly helpful when inducing the compiler to infer what it needs to know:
 

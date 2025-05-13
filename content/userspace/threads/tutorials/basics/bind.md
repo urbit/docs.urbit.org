@@ -2,7 +2,7 @@
 
 Having looked at `form` and `pure`, we'll now look at the last `strand` arm `bind`. Bind is typically used in combination with micgal (`;<`).
 
-## Micgal
+## Micgal {#micgal}
 
 Micgal takes four arguments like `spec hoon hoon hoon`. Given `;< a b c d`, it composes them like `((b ,a) c |=(a d))`. So, for example, these two expressions are equivalent:
 
@@ -28,7 +28,7 @@ j
 
 ...as opposed to this monstrosity: `((b ,a) c |=(a ((e ,d) f |=(d ((h ,g) i |=(g j))))))`
 
-## bind
+## bind {#bind}
 
 Bind by itself must be specialised like `(bind:m ,<type>)` and it takes two arguments:
 
@@ -41,7 +41,7 @@ Bind calls the first function then, if it succeeded, calls the second gate with 
 
 Since the second gate may itself contain another `;< <type> bind:m ...`, you can see how this allows you to glue together an arbitrarily large pipeline, where subsequent gates depend on the previous ones.
 
-## strandio
+## strandio {#strandio}
 
 `/lib/strandio/hoon` contains a large collection of useful, ready-made functions for use in threads. For example:
 
@@ -56,7 +56,7 @@ Since the second gate may itself contain another `;< <type> bind:m ...`, you can
 
 ...and many more.
 
-## Putting it together
+## Putting it together {#putting-it-together}
 
 Here's a simple thread with a couple of `strandio` functions:
 
@@ -80,7 +80,7 @@ Save it as `/ted/mythread.hoon` of `%base`, `|commit` it and run it with `-mythr
 [~zod ~2021.3.8..14.52.15..bdfe]
 ```
 
-## Analysis
+## Analysis {#analysis}
 
 To use `strandio` functions we've imported the library with `/+ strandio`.
 

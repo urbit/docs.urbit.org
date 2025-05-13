@@ -2,7 +2,7 @@
 
 This page covers common issues encountered with the [Bridge](https://bridge.urbit.org) application.
 
-### Canvas Issues
+### Canvas Issues {#canvas-issues}
 
 Bridge uses an HTML element called canvas to create your wallets. Unfortunately malicious websites can use canvas to identify and track users. As a result, some browsers and anti-tracking extensions can interfere with Bridge's ability to generate wallets. 
 

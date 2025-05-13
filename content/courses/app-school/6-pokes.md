@@ -2,7 +2,7 @@
 
 In this lesson we'll look at sending and receiving one-off messages called `%poke`s. We'll look at the `on-poke` agent arm which handles incoming pokes. We'll also introduce the `on-agent` arm, and look at the one kind of response it can take - a `%poke-ack`.
 
-## Receiving a poke
+## Receiving a poke {#receiving-a-poke}
 
 Whenever something tries to poke your agent, Gall calls your agent's `on-poke` arm and give it the `cage` from the poke as its sample. The `on-poke` arm will produce a `(quip card _this)`. Here's how it would typically begin:
 
@@ -63,7 +63,7 @@ This will produce a trace that looks something like:
 
 Note that the `tang` in the nack is just for debugging purposes, you should not try to pass actual data by encoding it in the nack `tang`.
 
-## Sending a poke
+## Sending a poke {#sending-a-poke}
 
 An agent can send pokes to other agents by producing [`%poke` `card`s](5-cards.md#pokes). Any agent arm apart from `on-peek` and `on-save` can produce such `card`s. The arms would typically produce the `(quip card _this)` like so:
 
@@ -75,7 +75,7 @@ An agent can send pokes to other agents by producing [`%poke` `card`s](5-cards.m
 
 The [colcab](../../language/hoon/reference/rune/col.md#_-colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`this`), so it makes it more readable.
 
-### Receiving the `%poke-ack`
+### Receiving the `%poke-ack` {#receiving-the-poke-ack}
 
 The pokes will be processed by their targets [as described in the previous section](#receiving-a-poke), and they'll `%give` back a `%poke-ack` on the `wire` you specified (`/some/wire` in the previous example). When Gall gets the `%poke-ack` back, it will call the `on-agent` arm of your agent, with the `wire` it came in on and the `%poke-ack` itself in a `sign:agent:gall`. Your `on-agent` arm would therefore begin like so:
 
@@ -128,7 +128,7 @@ Then, you can tell whether it's an ack or a nack by testing whether the `(unit t
 
 Finally, you can produce the `(quip card _this)`.
 
-## Example
+## Example {#example}
 
 We're going to look at a couple of agents to demonstrate both sending and receiving pokes. Here's the first, an agent that receives pokes:
 
@@ -451,7 +451,7 @@ Let's try decrementing `%pokeme` so val is 1, and then try a `%dec` via `%pokeit
 
 The `on-agent` arm of `%pokeit` has received one ack and one nack. The first took `val` to zero, and the second crashed trying to decrement below zero.
 
-## Summary
+## Summary {#summary}
 
 - Incoming pokes go to the `on-poke` arm of an agent.
 - The `on-poke` arm takes a `cage` and produces an `(quip card _this)`.
@@ -460,7 +460,7 @@ The `on-agent` arm of `%pokeit` has received one ack and one nack. The first too
 - `%poke-ack`s in response to pokes you've sent will come in to the `on-agent` arm in a `sign`, on the `wire` you specified in the original `%poke` `card`.
 - You can poke agents from the dojo with a syntax of `:agent &mark ['some' 'noun']`.
 
-## Exercises
+## Exercises {#exercises}
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
 - Have a look at the `on-agent` arm of `/lib/default-agent.hoon` to see how `default-agent` handles incoming `sign`s.

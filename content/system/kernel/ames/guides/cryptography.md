@@ -2,7 +2,7 @@
 
 Here we give a technical overview of how Ames implements cryptography.
 
-## Summary
+## Summary {#summary}
 
 By default, all [packets are encrypted](#packets) with 256-bit [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption, whose key is obtained by [Diffie-Hellman key exchange](#key-exchange), with public/private keys generated using elliptic curve [Curve25519](https://en.wikipedia.org/wiki/Curve25519). The only exception to this are comet [self-attestation packets](#comets), which are unencrypted.
 

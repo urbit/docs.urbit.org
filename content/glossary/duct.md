@@ -4,6 +4,6 @@
 
 The Arvo causal stack is called a **duct**. This is represented simply as a list of [paths](path.md), where each path represents a step in the causal chain. The first element in the path is the first letter of whichever [vane](vane.md) handled that step in the computation, or an empty element for Unix.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Arvo overview](../system/kernel): technical details of how Arvo works.

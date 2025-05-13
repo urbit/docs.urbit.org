@@ -11,11 +11,11 @@ There are two kinds of cores that Clay can build for you: A `mark` conversion ga
 
 You can either use these by `%pass`ing Clay a [%warp task](../../reference/tasks.md#warp) with the appropriate `care`, or else with a [Clay scry](../../reference/scry.md). In the examples here we've used the latter.
 
-## mark conversion gates
+## mark conversion gates {#mark-conversion-gates}
 
 `mark` conversion gates simply convert from one `mark` to another.
 
-### Static
+### Static {#static}
 
 A static `mark` conversion gate looks like `$-(a b)`, where `a` is the type of the `mark` you're converting _from_, and `b` is type of the `mark` you're converting _to_. For example, a `mark` conversion gate from `%txt` to `%mime` would look like `$-(wain mime)`. You'd simply feed it a `wain` and get a `$mime` in return.
 
@@ -36,7 +36,7 @@ Now that we have our conversion gate, we can just call it with a valid `wain` an
 [p=/text/plain q=[p=3 q=7.303.014]]
 ```
 
-### Dynamic
+### Dynamic {#dynamic}
 
 A dynamically typed `mark` conversion gate is called a `$tube:clay`, and looks like:
 
@@ -63,11 +63,11 @@ And then we can again feed it the `wain` that a `%txt` `mark` wants, only this t
 
 We then get our `$mime` back, but also in a `vase`.
 
-## mark cores
+## mark cores {#mark-cores}
 
 While a `mark` conversion gate is built from functions defined in `+grab` and `+grow`, a `mark` core gives you everything in `+grad` so you can create diffs, merge diffs, patch files, etc. An extra arm `+vale` is also included that lets you convert a `noun` to the type the `%mark` takes by running the `+noun` arm of `+grab` in the original `mark` file.
 
-### Static
+### Static {#static}
 
 A statically typed `mark` core is a `(nave:clay a b)` where `a` is the type of the `mark` and `b` is the type for diffs (which is the type of the `mark` specified in `+form:grad`). For example, a static `mark` core for a `%txt` `mark` looks like `(nave:clay wain (urge:clay cord))`.
 
@@ -185,7 +185,7 @@ Finally, we can patch our `wain` with diff `a` and get a new, modified `wain`:
 <|foo zoo baz|>
 ```
 
-### Dynamic
+### Dynamic {#dynamic}
 
 A dynamically typed `mark` core is a `$dais:clay`, which looks like:
 

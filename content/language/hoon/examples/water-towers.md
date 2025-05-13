@@ -1,6 +1,6 @@
 # Water Towers
 
-## Challenge: Water between Towers
+## Challenge: Water between Towers {#challenge-water-between-towers}
 
 In a two-dimensional world, we begin with a bar-chart, or rows of unit-width 'towers' of arbitrary height. Then it rains, completely filling all convex enclosures in the chart with water.
 
@@ -35,7 +35,7 @@ Example usage:
 14
 ```
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
@@ -94,11 +94,11 @@ Following a principle of test-driven development, we compose a series of tests w
 --
 ```
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _By ~dannul-bortux. A model for literate programming in Hoon._
 
@@ -267,7 +267,7 @@ _By ~dannul-bortux. A model for literate programming in Hoon._
 
 
 
-### Solution #2
+### Solution #2 {#solution-2}
 _By ~racfer-hattes. A short and elegant solution._
 
 ```hoon
@@ -289,7 +289,7 @@ _By ~racfer-hattes. A short and elegant solution._
 %-  go  [i.xs ~ t.xs]
 ```
 
-### Solution #3
+### Solution #3 {#solution-3}
 _By ~dozreg-toplud. Another very literate and clean solution._
 
 

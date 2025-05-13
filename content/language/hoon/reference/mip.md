@@ -2,7 +2,7 @@
 
 A `mip` is a map of maps. These can be constructed manually by nesting ordinary `map`s, but the `%landscape` desk contains a `/lib/mip.hoon` library which makes these a bit easier to deal with. You can copy the library into your own project. The various `mip` functions are documented below.
 
-## `++mip`
+## `++mip` {#mip}
 
 Mip (map of maps) mold builder
 
@@ -45,7 +45,7 @@ A `mold`.
 
 ---
 
-## `++bi`
+## `++bi` {#bi}
 
 Mip engine
 
@@ -78,7 +78,7 @@ This is the container door for all the mip functions.
 
 ---
 
-### `++del:bi`
+### `++del:bi` {#delbi}
 
 Delete item in `mip`
 
@@ -132,7 +132,7 @@ A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended 
 
 ---
 
-### `++get:bi`
+### `++get:bi` {#getbi}
 
 Maybe get value in `mip`
 
@@ -219,7 +219,7 @@ dojo: hoon expression failed
 
 ---
 
-### `++gut:bi`
+### `++gut:bi` {#gutbi}
 
 Get value in `mip` or default
 
@@ -263,7 +263,7 @@ A noun, either the type of the value in the map or `d`.
 
 ---
 
-### `++has:bi`
+### `++has:bi` {#hasbi}
 
 Check if `mip` contains
 
@@ -305,7 +305,7 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
 
 ---
 
-### `++key:bi`
+### `++key:bi` {#keybi}
 
 Get keys of inner map in `mip`
 
@@ -345,7 +345,7 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
 
 ---
 
-### `++put:bi`
+### `++put:bi` {#putbi}
 
 Insert value in `mip`
 
@@ -391,7 +391,7 @@ A new, modified `mip`.
 
 ---
 
-### `++tap:bi`
+### `++tap:bi` {#tapbi}
 
 Convert `mip` to `list`
 

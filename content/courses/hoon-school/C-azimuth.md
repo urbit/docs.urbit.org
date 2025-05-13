@@ -5,13 +5,13 @@
 _This module introduces how Urbit ID is structured and provides practice in converting and working with `@p` identity points.  It may be considered optional and skipped if you are speedrunning Hoon School._
 
 
-##  A Public-Key Infrastructure
+## A Public-Key Infrastructure {#a-public-key-infrastructure}
 
 What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)? Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. [Azimuth](../../glossary/azimuth.md) functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
 
 Urbit ID (=Azimuth) provides persistent and stable futureproof identity to its users through a hierarchical address space.  Any particular Urbit ID plays a particular role in the overall Urbit system which is determined by its point number and classified into ranks.
 
-### The Urbit Address Space
+### The Urbit Address Space {#the-urbit-address-space}
 
 Each Urbit ID point is a 128-bit address.  Urbit is structured with a hierarchy of addressable points, and bands of smaller values (preceded by many zeroes) have more “weight” in the system and broker access for higher-addressed points.
 
@@ -116,9 +116,9 @@ A comet is sponsored by a star.  Currently star sponsors are determined randomly
 
 Comets cannot be breached or rekeyed:  possession of the comet is *ipso facto* attestation of ownership.
 
-##  Calculating with Addresses
+## Calculating with Addresses {#calculating-with-addresses}
 
-### Sponsors
+### Sponsors {#sponsors}
 
 Each point other than a galaxy has a sponsor.  To determine the sponsor of any point, use `++sein:title`:
 
@@ -134,7 +134,7 @@ where ~marzod is the point in question; or more succinctly:
 
 (This previews the irregular syntax of `%-` cenhep; it is equivalent to `%-  sein:title  [our now ~marzod]`.)
 
-### Exercise:  Finding neighbors
+### Exercise:  Finding neighbors {#exercise-finding-neighbors}
 
 A neighbor of a point is a point which occupies the point immediately above or below that point's `@ud` number.
 
@@ -157,7 +157,7 @@ The previous neighbor of ~sampel-palnet is thus:
 
 - Find the next neighbor of ~sampel-palnet.
 
-### Exercise:  Finding the sponsor of a neighbor
+### Exercise:  Finding the sponsor of a neighbor {#exercise-finding-the-sponsor-of-a-neighbor}
 
 The sponsor of ~sampel-palnet may be found by:
 
@@ -181,7 +181,7 @@ The sponsor of the previous neighbor of ~sampel-palnet is thus:
 
 - Find the sponsor of the next neighbor of ~sampel-palnet.
 
-### Exercise:  Finding the child of a point
+### Exercise:  Finding the child of a point {#exercise-finding-the-child-of-a-point}
 
 A point has many children, but the first moon of a planet is located at that point plus 2³² = `4.294.967.296`.
 

@@ -6,7 +6,7 @@ The most common way to use Clay is to mount a Clay node in a Unix directory. The
 
 For more information on Clay, see the [Overview](https://developers.urbit.org/system/kernel/clay), and additional usage information at [Using Clay](https://developers.urbit.org/system/kernel/arvo/clay/using).
 
-### Quickstart
+### Quickstart {#quickstart}
 
 This quick-start guide will walk you through some common commands. Follow along using your Dojo. When you get a `>=` message after entering a command, this means that the command was successful.
 
@@ -56,7 +56,7 @@ The ship that you sync from will get their own message indicating that you're bo
 
 ---
 
-### Clay manual
+### Clay manual {#clay-manual}
 
 The following constitutes an explanation of handy commands that most Urbit pilots will want to know at some point. Reading this section will get you to the point that you can navigate the file system, sync with Unix, merge your desk, and other basic tasks familiar to novice users of the Unix terminal.
 
@@ -167,7 +167,7 @@ To go up levels in the path hierarchy, recall the relative path expression `%`. 
 ~sampel-palnet:dojo/=/=/~2021.3.19..16.11.20..0c60/gen> =dir %%
 ```
 
-### Revision-control
+### Revision-control {#revision-control}
 
 #### Mount
 
@@ -261,7 +261,7 @@ Example:
 |unsync %foo ~dozbud %kids
 ```
 
-### Manipulation
+### Manipulation {#manipulation}
 
 #### `+cat`
 

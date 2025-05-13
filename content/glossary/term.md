@@ -4,6 +4,6 @@ A **term** is an [atom](atom.md) with an [aura](aura.md) of `@tas`. It's for str
 
 Note that the aura alone doesn't restrict the characters, and if necessary should be enforced with [++sane](../language/hoon/reference/stdlib/4b.md#sane) and [++sand](../language/hoon/reference/stdlib/4b.md#sand).
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [String Guide](../language/hoon/guides/strings.md)

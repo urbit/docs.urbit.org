@@ -48,7 +48,7 @@ Details of each clause and their purpose are described below.
 
 ---
 
-## `%title`
+## `%title` {#title}
 
 _required_
 
@@ -68,7 +68,7 @@ title+'Bitcoin'
 
 ---
 
-## `%info`
+## `%info` {#info}
 
 _required_
 
@@ -88,7 +88,7 @@ info+'A Bitcoin Wallet that lets you send and receive Bitcoin directly to and fr
 
 ---
 
-## `%color`
+## `%color` {#color}
 
 _required_
 
@@ -108,7 +108,7 @@ color+0xf9.8e40
 
 ---
 
-## `%glob-http`
+## `%glob-http` {#glob-http}
 
 _exactly one of either this, [glob-ames](#glob-ames) or [site](#site) is required_
 
@@ -128,7 +128,7 @@ glob-http+['https://example.com/glob-0v1.s0me.h4sh.glob' 0v1.s0me.h4sh]
 
 ---
 
-## `%glob-ames`
+## `%glob-ames` {#glob-ames}
 
 _exactly one of either this, [glob-http](#glob-http) or [site](#site) is required_
 
@@ -148,7 +148,7 @@ glob-ames+[~zod 0v0]
 
 ---
 
-## `%site`
+## `%site` {#site}
 
 _exactly one of either this, [glob-ames](#glob-ames) or [glob-http](#glob-http) is required_
 
@@ -170,7 +170,7 @@ site+/foo/bar
 
 ---
 
-## `%image`
+## `%image` {#image}
 
 _optional_
 
@@ -200,7 +200,7 @@ image+'http://example.com/icon.svg'
 
 ---
 
-## `%base`
+## `%base` {#base}
 
 _required_
 
@@ -220,7 +220,7 @@ base+'bitcoin'
 
 ---
 
-## `%version`
+## `%version` {#version}
 
 _required_
 
@@ -247,7 +247,7 @@ version+[0 0 1]
 
 ---
 
-## `%website`
+## `%website` {#website}
 
 _required_
 
@@ -273,7 +273,7 @@ website+'https://example.com'
 
 ---
 
-## `%license`
+## `%license` {#license}
 
 _required_
 

@@ -23,7 +23,7 @@ But the best way to think about an agent is as a state machine. Like a state mac
 
 We often think of state machines as finite state machines, but of course in this instance, the state is not actually finite (though it should be definable in a regular recursive data type).
 
-## Specification
+## Specification {#specification}
 
 An agent is defined as a [core](../../../glossary/core.md) with a set of [arms](../../../glossary/arm.md) to handle various events. These handlers usually produce a list of effects and the next state of the agent. The interface definition can be found in `sys/lull.hoon`, which at the time of writing is:
 
@@ -186,15 +186,15 @@ We also supply a `default-agent` library, which is useful if you don't want to h
 
 So, an agent is a core with 10 arms. The handlers correspond to different sorts of input. We'll discuss each of these in detail, but first a few general concepts.
 
-## Basic concepts
+## Basic concepts {#basic-concepts}
 
-### Interacting with an agent
+### Interacting with an agent {#interacting-with-an-agent}
 
 There are two basic ways programs can interact with an agent: you may subscribe to data as described above, or you may "poke" an agent to send it a command. Suppose there is an agent for a calendar service; then, pokes would likely include `%create-event`, `%modify-event`, `%delete-event`, and `%change-time-zone` (along with assocated data). Subscription paths could include `/next-event` and `/all-events`.
 
 Agents generally conform to CQRS -- pokes may change state, but subscriptions generally shouldn't. In practice, there may be state changes required to properly initialize the subscription, but these shouldn't change the essential state of the agent.
 
-### Cards
+### Cards {#cards}
 
 Most of the handlers produce a `(quip card agent:gall)`, which is just `[(list card) agent:gall]`. The first allows us to produce effects, and the second allows us to maintain state.
 
@@ -271,7 +271,7 @@ A subscription update is a new piece of subscription content for all subscribers
 
 A subscription close closes the subscription for all subscribers on a given `path`. If no `path` is given, then the update is only given to the program that instigated this request. Typical use of this mode would be in `+on-watch` to produce a single update to a subscription then close the subscription.
 
-### Vases and cages
+### Vases and cages {#vases-and-cages}
 
 A `vase` is a piece of dynamic data. Structurally, it's a pair of an explicit reification of a type and an untyped [noun](../../../glossary/noun.md). This lets us represent a value which has a type that isn't known at compile time. A vase has three operations:
 
@@ -291,7 +291,7 @@ In agents, we use vases to represent types which Gall doesn't know about when it
 
 - The state of an agent is also unique to each agent. Most of the time, Gall doesn't interact directly with agent's state, but when upgrading an agent, it must pass the state of the old version of the agent to the new version of the agent. This is the output of `+on-save` and the input to `+on-load`.
 
-### State
+### State {#state}
 
 In the definition of an agent, the entire core is wrapped with the `^|` rune, which corresponds to the "iron" variance mode. This means it's "contravariant" in the input, which allows Gall to write to the new bowl on every event. It also means that the context of the core is opaque to Gall, which means you can store state in your context in whatever structure you want.
 
@@ -333,47 +333,47 @@ It's useful to tag your state with a version number so that the `+upgrade-state`
   s.old
 ```
 
-### Bowl
+### Bowl {#bowl}
 
 The core takes as input a `bowl`, which includes useful info like the current ship, the current time, and a renewable source of entropy. This information is available to any of the handlers.
 
-## Arms
+## Arms {#arms}
 
 A description of each of the handler arms follows.
 
-### +on-init
+### +on-init {#on-init}
 
 This arm is called once when the agent is started. It has no input and lets you perform any initial IO.
 
-### +on-save
+### +on-save {#on-save}
 
 This arm is called immediately before the agent is upgraded. It packages the permament state of the agent in a `vase` for the next version of the agent. Unlike most handlers, this cannot produce effects.
 
-### +on-load
+### +on-load {#on-load}
 
 This arm is called immediately after the agent is upgraded. It receives a `vase` of the state of the previously-running version of the agent, which allows it to cleanly upgrade from the old agent.
 
-### +on-poke
+### +on-poke {#on-poke}
 
 This arm is called when the agent is "poked". The input is a `cage`, so it's a pair of a mark and a dynamic `vase`.
 
-### +on-watch
+### +on-watch {#on-watch}
 
 This arm is called when a program wants to subscribe to the agent on a particular `path`. The agent may or may not need to perform setup steps to intialize the subscription. It may produce a `%give` `%subscription-result` to the subscriber to get it up to date, but after this event is complete, it cannot give further updates to a specific subscriber. It must give all further updates to all subscribers on a specific `path`.
 
 If this arm crashes, then the subscription is immediately terminated. More specifcally, it never started -- the subscriber will receive a negative `%watch-ack`. You may also produce an explicit `%kick` to close the subscription without crashing -- for example, you could produce a single update followed by a `%kick`.
 
-### +on-leave
+### +on-leave {#on-leave}
 
 This arm is called when a program becomes unsubscribed to you. Subscriptions may close because the subscriber intentionally unsubscribed, but they also could be closed by an intermediary. For example, if a subscription is from another ship which is currently unreachable, Ames may choose to close the subscription to avoid queueing updates indefinitely. If the program crashes while processing an update, this may also generate an unsubscription. You should consider subscriptions to be closable at any time.
 
-### +on-peek
+### +on-peek {#on-peek}
 
 This arm is called when a program reads from the agent's "scry" namespace, which should be referentially transparent. Unlike most handlers, this cannot perform IO, and it cannot change the state. All it can do is produce a piece of data to the caller, or not.
 
 If this arm produces `[~ ~ data]`, then `data` is the value at the the given `path`. If it produces `[~ ~]`, then there is no data at the given `path` and never will be. If it produces `~`, then we don't know yet whether there is or will be data at the given `path`.
 
-### +on-agent
+### +on-agent {#on-agent}
 
 This arm is called to handle responses to `%give` moves to other agents. It will be one of the following types of response:
 
@@ -385,11 +385,11 @@ This arm is called to handle responses to `%give` moves to other agents. It will
 
 - `%kick`: notification that the subscription has ended.
 
-### +on-arvo
+### +on-arvo {#on-arvo}
 
 This arm is called to handle responses to `%pass` `move`s to vanes. The list of possible responses from the system is statically defined in `sys/lull.hoon` (grep for `+$ sign-arvo`).
 
-### +on-fail
+### +on-fail {#on-fail}
 
 If an error happens in `+on-poke`, the crash report goes into the `%poke-ack` response. Similarly, if an error happens in `+on-subscription`, the crash report goes into the `%watch-ack` response. If a crash happens in any of the other handlers, the report is passed into this arm.
 

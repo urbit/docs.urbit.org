@@ -4,7 +4,7 @@ This document details all the `task`s you're likely to use to interact with Clay
 
 The focus of this document is on interacting with Clay from userspace applications and threads, so it doesn't delve into the internal mechanics of Clay from a kernel development perspective.
 
-## `%warp` - Read and track
+## `%warp` - Read and track {#warp---read-and-track}
 
 ```hoon
 [%warp wer=ship rif=riff]
@@ -41,7 +41,7 @@ The `unit` of the [riot](data-types.md#riot) will be null if the target file can
 
 Now we'll look at each of the `rave` request types in turn.
 
-### `%sing` - Read
+### `%sing` - Read {#sing---read}
 
 ```hoon
 [%sing =mood]
@@ -59,7 +59,7 @@ The [case](data-types.md#case) specifies the `desk` revision and you can use whi
 
 ---
 
-### `%next` - Await next
+### `%next` - Await next {#next---await-next}
 
 ```hoon
 [%next =mood]  ::  await next version
@@ -75,7 +75,7 @@ If you subscribe to the current `case` of the `desk`, Clay will not respond unti
 
 ---
 
-### `%mult` - Next of any
+### `%mult` - Next of any {#mult---next-of-any}
 
 ```hoon
 [%mult =mool]
@@ -99,7 +99,7 @@ You can use a different `care` for each of the files specified by the `path` if 
 
 ---
 
-### `%many` - Track range
+### `%many` - Track range {#many---track-range}
 
 ```hoon
 [%many track=? =moat]
@@ -133,7 +133,7 @@ When you reach the end of the subscribed range of `case`s, Clay will send you a 
 
 ---
 
-### Cancel Subscription
+### Cancel Subscription {#cancel-subscription}
 
 To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in the `riff`. Clay will cancel the subscription based on the `wire`. The request is exactly the same regardless of which type of `rave` you subscribed with originally.
 
@@ -143,9 +143,9 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 ---
 
-## Write and Modify
+## Write and Modify {#write-and-modify}
 
-### `%info` - Write
+### `%info` - Write {#info---write}
 
 ```hoon
 [%info des=desk dit=nori]
@@ -177,9 +177,9 @@ Here are examples of using each of these as well as making multiple changes in o
 
 ---
 
-## Apps and updates
+## Apps and updates {#apps-and-updates}
 
-### `%rein` - Force apps
+### `%rein` - Force apps {#rein---force-apps}
 
 ```hoon
 [%rein des=desk ren=rein]
@@ -191,7 +191,7 @@ Note that the given `rein` overrides the existing one set by a previous `%rein` 
 
 ---
 
-### `%tire` - App state sub
+### `%tire` - App state sub {#tire---app-state-sub}
 
 ```hoon
 [%tire p=(unit ~)]
@@ -229,7 +229,7 @@ It's an app state delta for a particular desk.
 
 ---
 
-### `%wick` - Bump kernel
+### `%wick` - Bump kernel {#wick---bump-kernel}
 
 ```hoon
 [%wick ~]
@@ -239,7 +239,7 @@ Try to apply a queued kernel update.
 
 ---
 
-### `%zest` - App state
+### `%zest` - App state {#zest---app-state}
 
 ```hoon
 [%zest des=desk liv=zest]
@@ -253,7 +253,7 @@ A `%zest` `task` suspends or unsuspends a desk. the [`zest`](data-types.md#zest)
 
 ---
 
-## `%tomb` - Tombstoning
+## `%tomb` - Tombstoning {#tomb---tombstoning}
 
 ```hoon
 [%tomb =clue]
@@ -274,7 +274,7 @@ Tombstoning is the deletion of data for old desk revisions. Clay has a single `%
 
 We'll look at each of these in turn.
 
-### `%lobe` - Specific page
+### `%lobe` - Specific page {#lobe---specific-page}
 
 ```hoon
 [%lobe =lobe]
@@ -284,7 +284,7 @@ A `%tomb` `task` with a `%lobe` `clue` will tombstone the `page` matching the gi
 
 ---
 
-### `%all` - Everything
+### `%all` - Everything {#all---everything}
 
 ```hoon
 [%all ~]
@@ -294,7 +294,7 @@ A `%tomb` `task` with an `%all` `clue` will tombstone everything that's not used
 
 ---
 
-### `%pick` - Collect garbage
+### `%pick` - Collect garbage {#pick---collect-garbage}
 
 ```hoon
 [%pick ~]
@@ -304,7 +304,7 @@ A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombston
 
 ---
 
-### `%norm` - Default policy
+### `%norm` - Default policy {#norm---default-policy}
 
 ```hoon
 [%norm =ship =desk =norm]
@@ -316,7 +316,7 @@ Note the given `norm` will overwrite the existing one for the the ship/desk in q
 
 ---
 
-### `%worn` - Commit policy
+### `%worn` - Commit policy {#worn---commit-policy}
 
 ```hoon
 [%worn =ship =desk =tako =norm]
@@ -326,7 +326,7 @@ A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](#norm---default-policy)
 
 ---
 
-### `%seek` - Backfill
+### `%seek` - Backfill {#seek---backfill}
 
 ```hoon
 [%seek =ship =desk =cash]
@@ -336,7 +336,7 @@ A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombsto
 
 ---
 
-## Manage Mounts
+## Manage Mounts {#manage-mounts}
 
 Here we'll look at managing Clay unix mounts programmatically.
 
@@ -347,7 +347,7 @@ There are four Clay `task`s relevant to mounts:
 - [%ogre](#ogre---unmount) - Unmount something.
 - [%dirk](#dirk---commit) - Commit changes.
 
-### `%boat` - List mounts
+### `%boat` - List mounts {#boat---list-mounts}
 
 ```hoon
 [%boat ~]
@@ -371,7 +371,7 @@ The type it returns is a `%hill` `gift`, which looks like:
 
 ---
 
-### `%mont` - Mount
+### `%mont` - Mount {#mont---mount}
 
 ```hoon
 [%mont pot=term bem=beam]
@@ -397,7 +397,7 @@ Clay does not return a `gift` in response to a `%mont` `%task`.
 
 ---
 
-### `%ogre` - Unmount
+### `%ogre` - Unmount {#ogre---unmount}
 
 ```hoon
 [%ogre pot=$@(desk beam)]
@@ -417,7 +417,7 @@ Clay does not return a `gift` in response to a `%ogre` `task`.
 
 ---
 
-### `%dirk` - Commit
+### `%dirk` - Commit {#dirk---commit}
 
 ```hoon
 [%dirk des=desk]
@@ -437,9 +437,9 @@ Clay does not return a `gift` in response to a `%dirk` `task`.
 
 ---
 
-## Merge Desks
+## Merge Desks {#merge-desks}
 
-### `%merg` - Merge
+### `%merg` - Merge {#merg---merge}
 
 ```hoon
 $:  %merg
@@ -482,7 +482,7 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
 
 ---
 
-## Permissions
+## Permissions {#permissions}
 
 For each file or directory, there is both a read permission and a write permission. Each may be set separately and is either a whitelist or a blacklist (but not both). The whitelist/blacklist contains a `set` of ships and/or groups which are allowed or banned respectively. If it's an empty whitelist it means all foreign ships are denied. If it's an empty blacklist it means all foreign ships are allowed.
 
@@ -524,7 +524,7 @@ A `%perm` `task` is for setting permissions, and the other three are for managin
 
 We'll look at each of these in turn.
 
-### `%perm` - Set perms
+### `%perm` - Set perms {#perm---set-perms}
 
 ```hoon
 [%perm des=desk pax=path rit=rite]
@@ -568,7 +568,7 @@ Clay does not return a `gift` in response to a `%perm` `task`.
 
 ---
 
-### `%cred` - Add group
+### `%cred` - Add group {#cred---add-group}
 
 ```hoon
 [%cred nom=@ta cew=crew]
@@ -592,7 +592,7 @@ Clay does not return a `gift` in response to a `%cred` `task`.
 
 ---
 
-### `%crew` - Get groups
+### `%crew` - Get groups {#crew---get-groups}
 
 ```hoon
 [%crew ~]
@@ -618,7 +618,7 @@ The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 
 ---
 
-### `%crow` - Group files
+### `%crow` - Group files {#crow---group-files}
 
 ```hoon
 [%crow nom=@ta]
@@ -648,13 +648,13 @@ The `gift` you get back is a `%croz` which looks like:
 
 ---
 
-## Foreign Ships
+## Foreign Ships {#foreign-ships}
 
 Here we'll looking at making Clay requests to a foreign ship.
 
 As it currently stands, it's not possible to write to a foreign `desk`. Additionally, remote scries are not implemented. That leaves requests to read files (`%warp`) and merge desks (`%merg`), which we'll look at next.
 
-### `%warp` - Remote
+### `%warp` - Remote {#warp---remote}
 
 To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](#warp---read-and-track) section.
 
@@ -681,7 +681,7 @@ Note that if you're reading a whole `desk` or directory, all subfolders and file
 
 [See here for examples of requests to foreign ships.](../examples/examples.md#foreign-ships)
 
-### `%merg` - Remote
+### `%merg` - Remote {#merg---remote}
 
 To merge a foreign `desk` into a local one, you just send Clay a `%merg` `task` (as you would for a local merge) and specify the foreign ship in the `her` field. For details on making such requests, see the [Merge Desks](#merge-desks) section.
 

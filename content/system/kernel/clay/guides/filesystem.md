@@ -20,7 +20,7 @@ Here we describe what each of the primary folders present in a Clay desk. This o
 - `lull.hoon` primarily contains structures shared among the kernel and its vanes, as well as a few functions. In particular, this includes the definitions of the `task`s and `gift`s utilized by each vane, each of which are documented in their respective documentation. `lull.hoon` is loaded by the kernel during the [larval stage](../../arvo#larval-stage-core) in order to prepare to create the vanes. `arvo.hoon` is the subject of `lull.hoon`.
 - `zuse.hoon` is the Arvo standard library. It consists primarily of functions shared by the kernel and vanes, such as the ones related to [cryptography](../../../../language/hoon/reference/cryptography.md). `zuse.hoon` is loaded by the larval kernel following `lull.hoon`. `lull.hoon` is the subject of `zuse.hoon`. Then `zuse` is the subject of the vanes. Some of the functions in Zuse are documented [here](../../../../language/hoon/reference/zuse).
 
-## Desks
+## Desks {#desks}
 
 A desk is an independently revision-controlled branch of a ship that uses the Clay filesystem. Each desk contains its own apps, mark definitions, files, and so forth. The basic filesystem structure is the same for all desks, with the exception that only the `%base` desk contains a [`/sys`](#sys) directory. Additionally, there are a handful of special files related to the management of desks and their Gall agents:
 

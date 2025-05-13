@@ -8,11 +8,11 @@ If you're getting started learning Hoon, the best place to start is either the l
 
 ---
 
-## Introduction
+## Introduction {#introduction}
 
 We are often asked why Urbit was written in a new language, rather than some existing language like Haskell or C. This document provides the high-level rationale for that decision, and also covers some of the features of the language that set it apart from others. If you're looking to learn Hoon, check out our tutorial series called [Hoon School](../../courses/hoon-school).
 
-## What can Hoon do that other languages can't?
+## What can Hoon do that other languages can't? {#what-can-hoon-do-that-other-languages-cant}
 
 The short answer is: implement a purely functional operating system. Try to do this in a principled way in Haskell, and the problems you'll run into will make design decisions in Hoon and Nock make a lot more sense.
 
@@ -22,11 +22,11 @@ In particular, the problems Hoon solves that aren't solved by other functional l
 - Typesafe metaprogramming, and
 - Hot code reload and online data migration.
 
-## What is Hoon good at?
+## What is Hoon good at? {#what-is-hoon-good-at}
 
 Hoon is mostly good at compiling and running other Hoon code. Urbit consists of many layers of bootstrapping. Several of these layers lean heavily on this feature, including the Gall application runner, the Ford build system, the Dojo shell, and the Arvo kernel itself. Even Urbit's chat application lets you run Hoon expressions and share the results with your friends.
 
-## Why did we write the OS in Hoon?
+## Why did we write the OS in Hoon? {#why-did-we-write-the-os-in-hoon}
 
 The chain of reasoning goes something like this:
 
@@ -42,11 +42,11 @@ Since Urbit is an operating system, its main purpose is to load and run programs
 
 There aren't any other languages out there that are purely functional, purely axiomatic, performant enough for practical personal use, universally serializable, and good at runtime metaprogramming. Nock is Urbit's solution to these design constraints. Some Lisps come close to meeting these criteria — and Nock is very Lisp-like — but no practical Lisp dialects are nearly as pure or axiomatic as Nock.
 
-## What is special about Hoon?
+## What is special about Hoon? {#what-is-special-about-hoon}
 
 It's a purely functional systems language. Calling it a functional analog of C is not too far off in several ways. Almost all code throughout Urbit's kernelspace and userspace is written in Hoon.
 
-## What properties does Hoon have? What type of language is it?
+## What properties does Hoon have? What type of language is it? {#what-properties-does-hoon-have-what-type-of-language-is-it}
 
 Hoon is a statically typed, purely functional, strictly evaluated programming language.
 
@@ -80,7 +80,7 @@ Hoon and Nock have several unusual properties:
 
 - **Inert**. Because Nock is purely functional, Hoon compiles to it so directly, everything is homoiconic, and Hoon is intensional, there's a very nice feeling that everything is just a stationary tree. There are no special objects that can't be manipulated; everything in your environment is just a subtree, and you could grab it and print it out if you wanted to. There's nothing like a "database handle", "websocket connection object", or other mystical constructs. The calmness of working with such inert building blocks is addictive, as many Hoon programmers will attest.
 
-## Why is Hoon the way it is?
+## Why is Hoon the way it is? {#why-is-hoon-the-way-it-is}
 
 Minimalism, mostly.
 

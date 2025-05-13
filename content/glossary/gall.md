@@ -4,7 +4,7 @@
 
 Gall is located at `/base/sys/vane/gall.hoon` within Arvo.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [App School](../courses/app-school): Our guide to learning how to build apps on the Urbit platform using the Hoon programming language.
 - [Gall vane documentation](../system/kernel/gall): Documentation of the Gall vane.

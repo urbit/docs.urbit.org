@@ -3,11 +3,11 @@
 _This module will introduce you to several useful data structures built on the [door](../../glossary/door.md), then discuss how the compiler handles types and the [sample](../../glossary/sample.md)._
 
 
-##  Key Data Structures and Molds
+## Key Data Structures and Molds {#key-data-structures-and-molds}
 
 [++maps](../../language/hoon/reference/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `++map`s were documented in [the previous module](K-doors.md).
 
-### `tree`
+### `tree` {#tree}
 
 We use [tree](../../language/hoon/reference/stdlib/1c.md#tree) to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of atoms.
 
@@ -92,7 +92,7 @@ $(hay r.hay)
 {4 8 12 94 16}
 ```
 
-### `set`
+### `set` {#set}
 
 A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](../../glossary/list.md) except that each entry can only be represented once.  As with a [map](../../language/hoon/reference/stdlib/2o.md#map), a `set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values.  (`set`s also don't have an order, so they're basically a bag of unique values.)
 
@@ -183,7 +183,7 @@ Save this as `cartesian.hoon` in your urbit's [pier](../../glossary/pier.md) and
 {[2 6] [1 6] [3 6] [1 4] [1 5] [2 4] [3 5] [3 4] [2 5]}
 ```
 
-### `unit` Redux (and `vase`)
+### `unit` Redux (and `vase`) {#unit-redux-and-vase}
 
 We encountered the [unit](../../language/hoon/reference/stdlib/1c.md#unit) briefly as a tool for distinguishing null results from actual zeroes: using a `unit` allows you to specify something that may not be there. For this reason, `unit`s are commonly used for operations that sometimes fail, such as search functions, database lookups, remote data requests, etc.
 
@@ -231,7 +231,7 @@ Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), on
 
 A [vase](../../glossary/vase.md) is a pair of type and value, such as that returned by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar).  A `vase` is useful when transmitting data in a way that may lose its type information.
 
-### Containers of Containers
+### Containers of Containers {#containers-of-containers}
 
 [maps](../../language/hoon/reference/stdlib/2o.md#map) and [sets](../../language/hoon/reference/stdlib/2o.md#set) are frequently used in the standard library and in the extended ecosystem. There are other common patterns which recur often enough that they have their own names:
 
@@ -276,9 +276,9 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 - [++mop](../../language/hoon/reference/zuse/2m.md#mop) ordered maps are discussed in [the App School guides](../app-school).
 
 
-##  Molds and Samples
+## Molds and Samples {#molds-and-samples}
 
-### Modifying Gate Behavior
+### Modifying Gate Behavior {#modifying-gate-behavior}
 
 Sometimes you need to modify parts of a [core](../../glossary/core.md) (like a [gate](../../glossary/gate.md)) on-the-fly to get the desired behavior.  For instance, if you are using [++roll](../../language/hoon/reference/stdlib/2b.md#roll) to calculate the multiplicative product of the elements of a list, this “just works”:
 
@@ -308,7 +308,7 @@ is a cell of `[battery payload]`, let's take a look at the
 
 The correct behavior for [++mul:rs](../../language/hoon/reference/stdlib/3b.md#mulrs) is really to multiply starting from one, not zero, so that [++roll](../../language/hoon/reference/stdlib/2b.md#roll) doesn't wipe out the entire product.
 
-### Custom Samples
+### Custom Samples {#custom-samples}
 
 In an earlier exercise we created a [door](../../glossary/door.md) with [sample](../../glossary/sample.md) `[a=@ud b=@ud c=@ud]`.  If we investigated, we would find that the initial value of each is `0`, the bunt value of `@ud`.
 
@@ -339,11 +339,11 @@ For our earlier example with [++roll](../../language/hoon/reference/stdlib/2b.md
 .483840
 ```
 
-### Named Tuples
+### Named Tuples {#named-tuples}
 
 A named tuple is a structured collection of values with [faces](../../glossary/face.md).  The `$:` [buccol](../../language/hoon/reference/rune/buc.md#-buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` [buccol](../../language/hoon/reference/rune/buc.md#-buccol) expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
 
-### Structure Mode
+### Structure Mode {#structure-mode}
 
 Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call _noun mode_ (or _normal mode_).  However, sample definitions and `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#-lusbuc) mold specification arms evaluate in what is called _structure mode_. (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
 

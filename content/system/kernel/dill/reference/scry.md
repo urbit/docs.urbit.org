@@ -2,7 +2,7 @@
 
 Here are the scry endpoints of Dill. They require the `desk` in the path prefix be empty, so the general format is `.^([type] %d[care] /=//=/[some-path])`.
 
-## `%x` - `/sessions`
+## `%x` - `/sessions` {#x---sessions}
 
 Get all sessions.
 
@@ -17,7 +17,7 @@ A scy with a `care` of `%x` and a `path` of `/sessions` returns a `(set @tas)` o
 
 ---
 
-## `%u` - `/sessions/[ses]`
+## `%u` - `/sessions/[ses]` {#u---sessionsses}
 
 Does session exist?
 

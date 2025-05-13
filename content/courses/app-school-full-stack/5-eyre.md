@@ -6,7 +6,7 @@ Now that we have our structure file, agent, `$json` conversion library and mark 
 
 In order to use the channel system or perform scries, a web client must have authenticated with the ship's web login code (e.g. `lidlut-tabwed-pillex-ridrup`) and obtained a session cookie. Our front-end will be served directly from the ship by the `%docket` agent, so we can assume a session cookie was already obtained when the user logged into landscape, and skip over authentication.
 
-## Channels
+## Channels {#channels}
 
 Eyre's channel system is the main way to interact with agents from a web client. It provides a JSON interface to the ordinary poke and subscription system for Gall agents.
 
@@ -18,13 +18,13 @@ A channel will timeout after 12 hours of inactivity, and the timeout is reset ev
 
 Eyre expects a particular JSON object structure for each of these different requests, but the `@urbit/http-api` library we'll use includes functions to send pokes, subscription requests, etc, so we won't need to manually construct the JSON objects in our front-end.
 
-## Scries
+## Scries {#scries}
 
 Eyre's scry interface is separate to the channel system. Scries are performed by a simple GET request to a path with a format of `/~/scry/{agent}{path}.{mark}`. If successful, the HTTP response will contain the result with the mark specified. If unsuccessful, an HTTP error will be thrown in response.
 
 The `@urbit/http-api` library we'll use includes a function for performing scries, so we'll not need to manually send GET requests to the ship.
 
-## Resources
+## Resources {#resources}
 
 - [The Eyre vane documentation](../../system/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
 - [Eyre External API Reference](../../system/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.

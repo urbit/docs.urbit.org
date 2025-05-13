@@ -2,11 +2,11 @@
 
 _Libraries allow you to import and share processing code.  This module will discuss how libraries can be produced, imported, and used._
 
-##  Importing a Library
+## Importing a Library {#importing-a-library}
 
 If you have only built [generators](../../glossary/generator.md), you will soon or later become frustrated with the apparent requirement that you manually reproduce helper cores and arms every time you need them in a different generator. Libraries are [cores](../../glossary/core.md) stored in `/lib` which provide access to [arms](../../glossary/arm.md) and legs (operations and data).  While the Hoon standard library is directly available in the regular [subject](../../glossary/subject.md), many other elements of functionality have been introduced by software authors.
 
-### Building Code Generally
+### Building Code Generally {#building-code-generally}
 
 A generator gives us on-demand access to code, but it is helpful to load and use code from files while we work in the [Dojo](../../glossary/dojo.md).
 
@@ -44,13 +44,13 @@ There are also a number of other import [runes](../../glossary/rune.md) which ma
 
 For simplicity, everything we do will take place on the `%base` [desk](../../glossary/desk.md) for now.  We will learn how to create a library in a subsequent lesson.
 
-### Exercise: Loading a Library
+### Exercise: Loading a Library {#exercise-loading-a-library}
 
 In a [generator](../../glossary/generator.md), load the `number-to-words` library using the `/+` [tislus](../../language/hoon/reference/rune/tis.md#-tislus) rune.  (This must take place at the very top of your file.)
 
 Use this to produce a [gate](../../glossary/gate.md) which accepts an unsigned decimal integer and returns the text interpretation of its increment.
 
-## Helper Cores
+## Helper Cores {#helper-cores}
 
 Another common design pattern besides creating a library is to sequester core-specific behavior in a helper [core](../../glossary/core.md), which sits next to the interface operations. Two runes are used to compose expressions together so that the subject has everything it needs to carry out the desired calculations.
 
@@ -59,7 +59,7 @@ Another common design pattern besides creating a library is to sequester core-sp
 
 Watch for these being used in generators and libraries over the next few modules.
 
-### Exercise:  A Playing Card Library
+### Exercise:  A Playing Card Library {#exercise-a-playing-card-library}
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards.  The [core](../../glossary/core.md) below builds such a library, and can be accessed by programs.  You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](K-doors.md) to produce [randomness](O-subject.md).  This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression.  This means that instead of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#-wutcol) you may see `?.` [wutdot](../../language/hoon/reference/rune/wut.md#-wutdot), which inverts the order of the true/false [arms](../../glossary/arm.md), as well as other new constructions.
 
@@ -219,7 +219,7 @@ With that completed, we use `%=` [centis](../../language/hoon/reference/rune/cen
 This is a very naive shuffling algorithm.  We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
 
-### Exercise:  Using the Playing Card Library
+### Exercise:  Using the Playing Card Library {#exercise-using-the-playing-card-library}
 
 Unfortunately `/` [fas](../../language/hoon/reference/rune/fas.md) runes don't work in the [Dojo](../../glossary/dojo.md) right now, so we need to build code using the [-build-file](../../manual/os/dojo-tools.md#-build-file) thread if we want to use the library directly.
 
@@ -280,7 +280,7 @@ Unfortunately `/` [fas](../../language/hoon/reference/rune/fas.md) runes don't w
     Of course, since the deck was shuffled once, any time we draw from the same deck we will get the same hand.  But if we replace the deck with the `rest` remaining, then we can continue to draw new hands.
 
 
-##  Desks
+## Desks {#desks}
 
 A [desk](../../glossary/desk.md) organizes a collection of files, including [generators](../../glossary/generator.md), libraries, [agents](../../glossary/agent.md), and system code, into one coherent bundle. A desk is similar to a file drive in a conventional computer, or a Git branch.  Desks are supported by the [Clay](../../glossary/clay.md) [vane](../../glossary/vane.md) in [Arvo](../../glossary/arvo.md), the Urbit OS.
 
@@ -314,7 +314,7 @@ At this point, you've likely only worked on the `%base` desk.  You can see data 
 
 You'll see a slightly different configuration on the particular [ship](../../glossary/ship.md) you are running.
 
-### Aside:  Filesystems
+### Aside:  Filesystems {#aside-filesystems}
 
 A filesystem is responsible for providing access to blobs of data somewhere on a disk drive.  If you have worked with Windows or macOS, you have become accustomed to using a file browser to view and interact with files.  Mobile devices tend to obscure the nature of files more, in favor of just providing an end-user interface for working with or viewing the data.  To use files effectively, you need to know a few things:
 
@@ -334,7 +334,7 @@ An Earth filesystem and path orients itself around some key metaphor:
 
 Once you have located a particular file, you need to load the data. Conventionally, _file extensions_ indicate what kind of file you are dealing with:  `.jpg`, `.png`, and `.gif` are image files, for instance; `.txt`, `.docx`, and `.pdf` are different kinds of documents; and `.mp3` and `.ogg` are audio files.  Simply changing the extension on the file doesn't change the underlying data, but it can either elicit a stern warning from the OS or confuse it, depending on the OS.  Normally you have to open the file in an appropriate program and save it as a new type if such a conversion is possible.
 
-### File Data in Urbit
+### File Data in Urbit {#file-data-in-urbit}
 
 On Mars, we treat a filesystem as a way of organizing arbitrary access to blocks of persistent data.  There are some concessions to Earth-style filesystems, but [Clay](../../glossary/clay.md) (Urbit's filesystem) organizes everything with respect to a [desk](../../glossary/desk.md), a discrete collection of static data on a particular [ship](../../glossary/ship.md). Of course, like everything else in Hoon, a desk is a tree as well.
 
@@ -373,7 +373,7 @@ You'll also sometimes see `%` cen stand in for the whole including the “curren
 [~.~zod ~.base ~.~2022.6.14..18.15.10..698c ~]
 ```
 
-### Paths and Files
+### Paths and Files {#paths-and-files}
 
 A `path` is a `(list @ta)`, a list of text identifiers.  The first three are always the beak and the last one conventionally refers to the mark by which the file is represented.
 
@@ -433,14 +433,14 @@ you are in 0 group(s):
 you are hosting 0 group(s):
 ```
 
-### Marks
+### Marks {#marks}
 
 [Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade:  they are actually [molds](../../glossary/mold.md) and define conversion paths.  We won't write them in Hoon School, but you will encounter them when you begin writing apps. They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
 
 In brief, each mark has a `++grab` arm to convert from other types to it; a `++grow` arm to convert it to other types; and a `++grad` arm for some standard operations across marks.  You can explore the marks in `/mar`.
 
 
-##  Other Ford Runes
+## Other Ford Runes {#other-ford-runes}
 
 The `++ford` arm of Clay builds Hoon code.  It provides [a number of runes](../../language/hoon/reference/rune/fas.md) which allow fine-grained control over building and importing files.  These must be in the specific order at the top of any file.  (They also don't work in Dojo; see [-build-file](../../manual/os/dojo-tools.md#-build-file) for a workaround.) The runes include:
 

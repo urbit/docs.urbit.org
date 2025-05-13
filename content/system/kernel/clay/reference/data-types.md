@@ -2,11 +2,11 @@
 
 This section will be reference documentation for the data types used by our filesystem.
 
-## Internal types
+## Internal types {#internal-types}
 
 These types are only used inside of Clay. These are only relevant if you're working directly on Clay itself, or trying to understand its inner workings.
 
-### `cane`
+### `cane` {#cane}
 
 The set of changes between the mergebase and one of the desks being merged.
 
@@ -26,7 +26,7 @@ The set of changes between the mergebase and one of the desks being merged.
 
 ---
 
-### `melt`
+### `melt` {#melt}
 
 State for ongoing `%fuse` merges.
 
@@ -40,7 +40,7 @@ State for ongoing `%fuse` merges.
 
 ---
 
-### `dojo`
+### `dojo` {#dojo}
 
 Domestic desk state
 
@@ -64,7 +64,7 @@ This is the all the data that is specific to a particular `desk` on a domestic s
 
 ---
 
-### `nako`
+### `nako` {#nako}
 
 New desk data
 
@@ -81,7 +81,7 @@ Sent to other ships to update them about a particular desk. Includes a map of al
 
 ---
 
-### `raft`
+### `raft` {#raft}
 
 Formal state
 
@@ -117,7 +117,7 @@ This is the state of the vane. Anything that must be remembered between calls to
 
 ---
 
-### `rand`
+### `rand` {#rand}
 
 Unvalidated response to a request.
 
@@ -133,7 +133,7 @@ Like a [`$rant`](#rant), but with a page of data rather than a cage of it.
 
 ---
 
-### `rede`
+### `rede` {#rede}
 
 Generic desk state
 
@@ -161,7 +161,7 @@ This is our knowledge of the state of a desk, either foreign or domestic.
 
 ---
 
-### `rind`
+### `rind` {#rind}
 
 Foreign request manager
 
@@ -183,7 +183,7 @@ When we send a request to a foreign ship, we keep track of it in here.
 
 ---
 
-### `bill`
+### `bill` {#bill}
 
 The list of agents that should be automatically started on a desk
 
@@ -191,7 +191,7 @@ The list of agents that should be automatically started on a desk
 +$  bill  (list dude:gall)
 ```
 
-### `update-state`
+### `update-state` {#update-state}
 
 State of outstanding foreign request
 
@@ -215,7 +215,7 @@ An `update-state` is used to represent the status of an outstanding request to a
 
 ---
 
-### `room`
+### `room` {#room}
 
 Filesystem per domestic ship
 
@@ -233,7 +233,7 @@ This is the representation of the filesystem of a ship on our pier.
 
 ---
 
-### `cach`
+### `cach` {#cach}
 
 Cached result of a request
 
@@ -243,7 +243,7 @@ Cached result of a request
 
 ---
 
-### `wove`
+### `wove` {#wove}
 
 Stored source and request
 
@@ -253,7 +253,7 @@ Stored source and request
  
 ---
 
-### `rove`
+### `rove` {#rove}
 
 Stored request
 
@@ -275,7 +275,7 @@ Like a [`$rave`](#rave) but with caches of current versions for `%next` and `%ma
 
 ---
 
-### `rung`
+### `rung` {#rung}
 
 Foreign desk data
 
@@ -289,11 +289,11 @@ This contains the filesystem of a neighbour ship. The keys to this `map` are all
 
 ---
 
-## External types
+## External types {#external-types}
 
 These types are defined in `lull.hoon`, and are used in Clay's external interface.
 
-### `aeon`
+### `aeon` {#aeon}
 
 Desk revision number
 
@@ -303,7 +303,7 @@ Desk revision number
 
 ---
 
-### `beam`
+### `beam` {#beam}
 
 Global name
 
@@ -315,7 +315,7 @@ The full path to a file or directory.
 
 ---
 
-### `beak`
+### `beak` {#beak}
 
 Path prefix
 
@@ -327,7 +327,7 @@ A [`$beam`](#beam) sans the specific file path.
 
 ---
 
-### `cable`
+### `cable` {#cable}
 
 `/lib`, `/sur` or `mark` reference
 
@@ -340,7 +340,7 @@ A [`$beam`](#beam) sans the specific file path.
 
 ---
 
-### `care`
+### `care` {#care}
 
 Clay submodule
 
@@ -376,7 +376,7 @@ See the [scry reference](scry.md) for more details.
 
 ---
 
-### `cash`
+### `cash` {#cash}
 
 `case` or `tako`
 
@@ -389,7 +389,7 @@ See the [scry reference](scry.md) for more details.
 
 ---
 
-### `cass`
+### `cass` {#cass}
 
 Cases for revision
 
@@ -401,7 +401,7 @@ This is returned by a `%w` read.
 
 ---
 
-### `clue`
+### `clue` {#clue}
 
 Tombstone target
 
@@ -425,7 +425,7 @@ Tombstone target
 
 ---
 
-### `cone`
+### `cone` {#cone}
 
 Domes
 
@@ -435,7 +435,7 @@ Domes
 
 ---
 
-### `dome`
+### `dome` {#dome}
 
 Desk data
 
@@ -469,7 +469,7 @@ A `dome` is the state of a `desk` and associated data.
   
 ---
 
-### `crew`
+### `crew` {#crew}
 
 Permission group
 
@@ -479,7 +479,7 @@ Permission group
 
 ---
 
-### `dict`
+### `dict` {#dict}
 
 Effective permission
 
@@ -489,7 +489,7 @@ Effective permission
 
 ---
 
-### `domo`
+### `domo` {#domo}
 
 Project state
 
@@ -507,7 +507,7 @@ Project state
 
 ---
 
-### `germ`
+### `germ` {#germ}
 
 Merge strategy
 
@@ -531,7 +531,7 @@ See the [Strategies](../guides/using.md#strategies) section of "Using Clay" for 
 
 ---
 
-### `lobe`
+### `lobe` {#lobe}
 
 File reference
 
@@ -543,7 +543,7 @@ This is a hash of a [`page`](#page). These are most notably used in [`lat.rang`]
 
 ---
 
-### `miso`
+### `miso` {#miso}
 
 File delta
 
@@ -565,7 +565,7 @@ There are four kinds of changes that may be made to a node in a `desk`.
 
 ---
 
-### `misu`
+### `misu` {#misu}
 
 Computed delta
 
@@ -583,7 +583,7 @@ Computed delta
 
 ---
 
-### `mizu`
+### `mizu` {#mizu}
 
 New state
 
@@ -593,7 +593,7 @@ New state
 
 ---
 
-### `moar`
+### `moar` {#moar}
 
 Normal change range
 
@@ -603,7 +603,7 @@ Normal change range
 
 ---
 
-### `moat`
+### `moat` {#moat}
 
 Range subscription request
 
@@ -615,7 +615,7 @@ This represents a request for all changes between `from` and `to` on `path`. You
 
 ---
 
-### `mode`
+### `mode` {#mode}
 
 External files
 
@@ -627,7 +627,7 @@ This is used when there's a commit from the host system.
 
 ---
 
-### `mood`
+### `mood` {#mood}
 
 Single subscription request
 
@@ -639,7 +639,7 @@ This represents a request for data related to the state of the `desk` at a parti
 
 ---
 
-### `mool`
+### `mool` {#mool}
 
 Requests in desk
 
@@ -651,7 +651,7 @@ This is used in a `%mult` [`rave`](#rave) to specify the next version of multipl
 
 ---
 
-### `nori`
+### `nori` {#nori}
 
 Repository action
 
@@ -668,7 +668,7 @@ In the `&` case, we will apply the given changes. In the `|` case, we will apply
 
 ---
 
-### `nuri`
+### `nuri` {#nuri}
 
 Repository action
 
@@ -684,7 +684,7 @@ than [`soba`](#soba).
 
 ---
 
-### `norm`
+### `norm` {#norm}
 
 Tombstone policy.
 
@@ -696,7 +696,7 @@ An `axal` is a recursive directory structure. For each file, a `?` says whether 
 
 ---
 
-### `open`
+### `open` {#open}
 
 Get prelude
 
@@ -708,7 +708,7 @@ This defines the type of a function for retrieving imported files.
 
 ---
 
-### `page`
+### `page` {#page}
 
 A raw, unvalidated file.
 
@@ -720,7 +720,7 @@ This is just the `page` defined in `arvo.hoon`: a pair of a mark and a noun.
 
 ---
 
-### `pour`
+### `pour` {#pour}
 
 Ford build with content.
 
@@ -742,7 +742,7 @@ Like a [`$mist`](#mist) except the leaf nodes (files and directories) contain th
 
 ---
 
-### `rang`
+### `rang` {#rang}
 
 Data repository
 
@@ -761,7 +761,7 @@ This is a data repository keyed by hash. Thus, this is where the "real" data is 
 
 ---
 
-### `rant`
+### `rant` {#rant}
 
 Response data
 
@@ -783,7 +783,7 @@ This is the data associated to the response to a request.
 
 ---
 
-### `rave`
+### `rave` {#rave}
 
 General subscription request
 
@@ -805,7 +805,7 @@ This represents a subscription request for a `desk`.
 
 ---
 
-### `real`
+### `real` {#real}
 
 Resolved permissions
 
@@ -821,7 +821,7 @@ Resolved permissions
 
 ---
 
-### `regs`
+### `regs` {#regs}
 
 Permission rules for paths
 
@@ -833,7 +833,7 @@ A map from file/directory paths to permission [`rule`](#rule)s.
 
 ---
 
-### `rein`
+### `rein` {#rein}
 
 Forced on/off apps
 
@@ -845,7 +845,7 @@ A `dude:gall` is the name of a Gall agent and the `?` is whether it's forced on 
 
 ---
 
-### `riff`
+### `riff` {#riff}
 
 Request/desist
 
@@ -857,7 +857,7 @@ This represents a request for data about a particular `desk`. If `q` contains a 
 
 ---
 
-### `riff-any`
+### `riff-any` {#riff-any}
 
 Versioned [`riff`](#riff)
 
@@ -871,7 +871,7 @@ Currently there's only one version.
 
 ---
 
-### `rite`
+### `rite` {#rite}
 
 New permissions
 
@@ -889,7 +889,7 @@ New permissions
 
 ---
 
-### `riot`
+### `riot` {#riot}
 
 Response
 
@@ -901,7 +901,7 @@ A `riot` is a response to a subscription. If null, the subscription has been com
 
 ---
 
-### `rule`
+### `rule` {#rule}
 
 Node permission
 
@@ -914,7 +914,7 @@ Node permission
 
 ---
 
-### `rump`
+### `rump` {#rump}
 
 Relative path
 
@@ -924,7 +924,7 @@ Relative path
 
 ---
 
-### `saba`
+### `saba` {#saba}
 
 Patch plus merge
 
@@ -934,7 +934,7 @@ Patch plus merge
 
 ---
 
-### `soak`
+### `soak` {#soak}
 
 Ford result
 
@@ -952,7 +952,7 @@ The actual data in the Ford cache.
 
 ---
 
-### `soba`
+### `soba` {#soba}
 
 Delta
 
@@ -964,7 +964,7 @@ This describes a `list` of changes to make to a `desk`. The `path`s are `path`s 
 
 ---
 
-### `suba`
+### `suba` {#suba}
 
 Delta
 
@@ -976,7 +976,7 @@ Same as a [`soba`](#soba) but with a [`misu`](#misu) rather than [`miso`](#miso)
 
 ---
 
-### `tako`
+### `tako` {#tako}
 
 Commit reference
 
@@ -988,7 +988,7 @@ This is a hash of a [`yaki`](#yaki), a commit. These are most notably used as th
 
 ---
 
-### `toro`
+### `toro` {#toro}
 
 General change
 
@@ -998,7 +998,7 @@ General change
 
 ---
 
-### `unce`
+### `unce` {#unce}
 
 Change part of a list.
 
@@ -1017,7 +1017,7 @@ This is a single change in a list of elements of type `a`. For example, `(unce @
 
 ---
 
-### `urge`
+### `urge` {#urge}
 
 List change
 
@@ -1029,7 +1029,7 @@ This is a parametrized type for list changes. For example, `(urge @t)` is a list
 
 ---
 
-### `waft`
+### `waft` {#waft}
 
 Kelvin range
 
@@ -1047,7 +1047,7 @@ A `waft` is the result of reading a `sys.kelvin` file in a desk. It lists all th
 
 ---
 
-### `whom`
+### `whom` {#whom}
 
 Ship or named crew
 
@@ -1059,7 +1059,7 @@ Either a single ship or a set of ships in a [`crew`](#crew) (permission group). 
 
 ---
 
-### `yoki`
+### `yoki` {#yoki}
 
 Commit
 
@@ -1071,7 +1071,7 @@ Either a [`yuki`](#yuki) or a [`yaki`](#yaki). A `yuki` is a proto-commit, a `ya
 
 ---
 
-### `yuki`
+### `yuki` {#yuki}
 
 Proto-commit
 
@@ -1089,7 +1089,7 @@ A `yuki` is a proto-commit: a new, proposed commit that has not yet been finaliz
 
 ---
 
-### `yaki`
+### `yaki` {#yaki}
 
 Finalized commit
 
@@ -1109,7 +1109,7 @@ Finalized commit
 
 ---
 
-### `zest`
+### `zest` {#zest}
 
 How live
 
@@ -1125,7 +1125,7 @@ This represents the state of apps on the desk.
 
 ---
 
-### `rock:tire`
+### `rock:tire` {#rocktire}
 
 App states
 
@@ -1138,7 +1138,7 @@ App states
 
 ---
 
-### `wave:tire`
+### `wave:tire` {#wavetire}
 
 App state changes
 
@@ -1156,7 +1156,7 @@ App state changes
 
 ---
 
-### `leak`
+### `leak` {#leak}
 
 Ford cache key
 
@@ -1172,7 +1172,7 @@ This includes all build inputs, including transitive dependencies, recursively.
 
 ---
 
-### `flow`
+### `flow` {#flow}
 
 Global Ford cache
 
@@ -1186,7 +1186,7 @@ This is optimized for minimizing the number of rebuilds, and given that, minimiz
 
 ---
 
-### `flue`
+### `flue` {#flue}
 
 Per-desk build cache
 
@@ -1199,7 +1199,7 @@ Per-desk build cache
 
 ---
 
-### `mist`
+### `mist` {#mist}
 
 Ford build without content
 
@@ -1219,7 +1219,7 @@ This is used at the index of `sprig`s in [`$flue`](#flue)s.
 
 ---
 
-### `pile`
+### `pile` {#pile}
 
 Preprocessed hoon source file
 
@@ -1247,7 +1247,7 @@ Preprocessed hoon source file
 
 ---
 
-### `taut`
+### `taut` {#taut}
 
 File import from `/lib` or `/sur`
 
@@ -1257,7 +1257,7 @@ File import from `/lib` or `/sur`
 
 ---
 
-### `mars`
+### `mars` {#mars}
 
 Mark conversion request
 
@@ -1269,7 +1269,7 @@ From `a` to `b`.
 
 ---
 
-### `tube`
+### `tube` {#tube}
 
 Mark conversion gate
 

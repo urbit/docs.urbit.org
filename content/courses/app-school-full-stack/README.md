@@ -18,7 +18,7 @@ Here is the basic structure of the app we'll be building:
 
 ![journal app diagram](https://media.urbit.org/guides/core/app-school-full-stack-guide/journal-app-diagram.svg)
 
-## Sections
+## Sections {#sections}
 
 #### [Introduction](.)
 

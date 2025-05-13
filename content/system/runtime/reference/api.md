@@ -2,7 +2,7 @@
 
 Let's run through the `u3` modules one by one.  All public functions are commented, but the comments may be cryptic.
 
-## u3m: main control
+## u3m: main control {#u3m-main-control}
 
 To start `u3`, run
 
@@ -42,7 +42,7 @@ Other miscellaneous tools in `u3m`: `u3m_file()` loads a Unix file as a Nock ato
 
 It's sometimes nice to run a mark-and-sweep garbage collector, `u3m_grab()`, which collects the world from a list of roots, and asserts if it finds any leaks or incorrect refcounts.  This tool is for debugging and long-term maintenance only; refcounts should never err.
 
-## u3j: jets
+## u3j: jets {#u3j-jets}
 
 The jet system, `u3j`, is what makes `u3` and `nock` in any sense a useful computing environment.  Except perhaps `u3a` (there is really no such thing as a trivial allocator, though `u3a` is dumber than most) - `u3j` is the most interesting code in `u3`.
 
@@ -50,7 +50,7 @@ Let's consider the minor miracle of driver-to-battery binding which lets `u3j` w
 
 It's easy to assume that jets represent an architectural coupling between Hoon language semantics and Nock interpreter internals. Indeed such a coupling would be wholly wrongtious and un-Urbit. But the jet system is not Hoon-specific.  It is specific to nock runtime systems that use a design pattern we call a `core`.
 
-### u3j: core structure
+### u3j: core structure {#u3j-core-structure}
 
 A core is no more than a cell `[code data]`, in which a `code` is either a Nock formula or a cell of `code`s, and `data` is anything. In a proper core, the subject each formula expects is the core itself.
 
@@ -103,7 +103,7 @@ ie, a solid stack of nested libraries without any dynamic data. The typical gate
 
 but we would be most foolish to restrict the jet mechanism to cores of this particular structure.  We cannot constrain a payload to be `[sample static-core]`, or even `[sample core]`. Any such constraint would not be rich enough to handle Hoon, let alone other languages.
 
-### u3j: jet state
+### u3j: jet state {#u3j-jet-state}
 
 There are two fundamental rules of computer science: (1) every system is best understood through its state; (2) less state is better than more state.  Sadly, a pier has three different jet state systems: `cold`, `warm` and `hot`.  It needs all of them.
 
@@ -187,7 +187,7 @@ For instance, when we're on an inner road, we can't allocate on an outer road, o
 
 Mitigating this problem, when we leave an inner road (with `u3m_love()`), we call `u3j_reap()` to promote jet information in the dying road.  Reaping promotes anything we've learned about any battery that either (a) already existed in the outer road, or (b) is being saved to the outer road.
 
-### u3j: jet binding
+### u3j: jet binding {#u3j-jet-binding}
 
 Jet binding starts with a `%fast` hint.  (In Hoon, this is produced by the runes `~%`, for the general case, or `~/` for simple functions.)  To bind a jet, execute a formula of the form:
 
@@ -221,7 +221,7 @@ In any case, all the information in the `%fast` hint goes to `u3j_mine()`, which
 
 It's essential to understand that the `%fast` hint has to be, well, fast - because we apply it whenever we build a core.  For instance, if the core is a Hoon gate - a function - we will call `u3j_mine` every time the function is called.
 
-### u3j: the cold jet dashboard
+### u3j: the cold jet dashboard {#u3j-the-cold-jet-dashboard}
 
 For even more fun, the jet tree is not actually a tree of batteries.  It's a tree of battery **labels**, where a label is an [axis term] path from the root of the tree.  (At the root, if the core pattern is always followed properly, is a core whose payload is an atomic constant, conventionally the Hoon version.)
 
@@ -267,7 +267,7 @@ Ie, a `corp` is `[0 core]` or `[1 batt]`.  If it's static - meaning that the jet
 
 Note that there is at present no way to force a jet to depend on static **data**.
 
-### u3j: the warm jet dashboard
+### u3j: the warm jet dashboard {#u3j-the-warm-jet-dashboard}
 
 We don't use the cold state to match jets as we call them.  We use the cold state to register jets as we find them, and also to rebuild the warm state after the hot state is reset.
 
@@ -283,7 +283,7 @@ But we do often have fast cores with more complex arm structure, and it would be
 
 `jit`, as its name suggests, is a stub where any sort of optimization data computed on battery registration might go.  To use it, fill in the `_cj_jit()` function.
 
-### u3j: the hot dashboard
+### u3j: the hot dashboard {#u3j-the-hot-dashboard}
 
 Now it should be easy to see how we actually invoke jets.  Every time we run a nock `9` instruction (pretty often, obviously), we have a core and an axis.  We pass these to `u3j_kick()`, which will try to execute them.
 
@@ -309,7 +309,7 @@ It should be easy to see how the tree of cores gets declared - precisely, in `j/
 
 In `u3j_boot()`, we traverse the hierarchy, fill in parent pointers `par_u`, and enumerate all `u3j_core` structures into a single flat array `u3j_dash.ray_u`.  Our hot state then appears ready for action.
 
-### u3j: jet functions
+### u3j: jet functions {#u3j-jet-functions}
 
 At present, all drivers are compiled statically into `u3`.  This is not a long-term permanent solution or anything.  However, it will always be the case with a certain amount of core functionality.
 
@@ -327,7 +327,7 @@ For instance, `++add` is `u3wa_add(cor)`, `u3qa_add(a, b)`, or `u3ka_add(a, b)`,
 
 For historical reasons, all internal jet code in `j/[a-f]` **retains** noun arguments, and **transfers** noun results.  Please do not do this in new `g` jets!  The new standard protocol is to transfer both arguments and results.
 
-## u3a: allocation functions
+## u3a: allocation functions {#u3a-allocation-functions}
 
 `u3a` allocates on the current road (u3R).  Its internal structures are uninteresting and typical of a naive allocator.
 
@@ -391,7 +391,7 @@ Of course, we don't always know how large our atom will be. Therefore, the stand
 
 Once again, **do not call `malloc()`** (or C++ `new`) within any code that may be run within a jet.  This will cause rare sporadic corruption when we interrupt execution within a `malloc()`.  We'd just override the symbol, but `libuv` uses `malloc()` across threads within its own synchronization primitives - for this to work with `u3a_malloc()`, we'd have to introduce our own locks on the surface-level road (which might be a viable solution).
 
-## u3n: nock execution
+## u3n: nock execution {#u3n-nock-execution}
 
 The `u3n` routines execute Nock itself.  On the inside, they have a surprising resemblance to the spec proper (the only interesting detail is how we handle tail-call elimination) and are, as one would expect, quite slow.  (There is no such thing as a fast tree interpreter.)
 
@@ -491,11 +491,11 @@ In any case, the simplest `mock` functions are `u3n_nock_un()` and `u3n_slam_un(
 
 The `fly` is added as the first argument to `u3n_nock_in()` and `u3n_slam_in()`.  Of course, logically, `fly` executes in the caller's exception layer.  (Maintaining this illusion is slightly nontrivial.)  Finally, `u3n_nock_an()` is a sandbox with a null namespace.
 
-## u3e: persistence
+## u3e: persistence {#u3e-persistence}
 
 The only `u3e` function you should need to call is `u3e_save()`, which saves the loom.  As it can be restored on any platform, please make sure you don't have any state in the loom that is bound to your process or architecture - except for exceptions like the warm jet state, which is actively purged on reboot.
 
-## u3r: reading nouns (weak)
+## u3r: reading nouns (weak) {#u3r-reading-nouns-weak}
 
 As befits accessors they don't make anything, `u3r` noun reading functions always retain their arguments and their returns.  They never bail; rather, when they don't work, they return a `u3_weak` result.
 
@@ -509,11 +509,11 @@ Most of these functions are straightforward and do only what their comments say.
 
 It's important to remember that `u3r_mug()`, which produces a 31-bit, nonzero insecure hash, uses the `mug_w` slot in any boxed noun as a lazy cache.  There are a number of variants of `u3r_mug()` that can get you out of building unneeded nouns.
 
-## u3x: reading nouns (bail)
+## u3x: reading nouns (bail) {#u3x-reading-nouns-bail}
 
 `u3x` functions are like `u3r` functions, but instead of returning `u3_none` when (for instance) we try to take the head of an atom, they bail with `%exit`.  In other words, they do what the same operation would do in Nock.
 
-## u3h: hash tables.
+## u3h: hash tables. {#u3h-hash-tables}
 
 We can of course use the Hoon `map` structure as an associative array.  This is a balanced treap and reasonably fast.  However, it's considerably inferior to a custom structure like an HAMT (hash array-mapped trie).  We use `u3_post` to allocate HAMT structures on the loom.
 
@@ -523,7 +523,7 @@ There's no particular rocket science in the API. `u3h_new()` creates a hashtable
 
 The only funky function is `u3h_gut()`, which unifies keys with `u3r_sung()`.  As with all cases of `u3r_sung()`, this must be used with extreme caution.
 
-## u3z: memoization
+## u3z: memoization {#u3z-memoization}
 
 Connected to the `~+` rune in Hoon, via the Nock `%memo` hint, the memoization facility is a general-purpose cache.
 
@@ -558,11 +558,11 @@ where the value is the last argument.  To eliminate duplicate nouns, there is al
 
 The `u3z` cache, built on `u3h` hashes, is part of the current road, and goes away when it goes away.  (In future, we may wish to promote keys/values which outlive the road, as we do with jet state.)  There is no cache reclamation at present, so be careful.
 
-## u3t: tracing and profiling.
+## u3t: tracing and profiling. {#u3t-tracing-and-profiling}
 
 TBD.
 
-## u3v: the Arvo kernel
+## u3v: the Arvo kernel {#u3v-the-arvo-kernel}
 
 An Arvo kernel - or at least, a core that compiles with the Arvo interface - is part of the global `u3` state.  What is an Arvo core?  Slightly pseudocoded:
 
@@ -620,7 +620,7 @@ Now that we understand the Arvo kernel interface, let's look at the `u3v` API.  
     #define  u3dq(txt_c, a, b, c, d)  u3v_do(txt_c, u3nt(a, b, c, d))
 ```
 
-##  Code Mnemonics
+## Code Mnemonics {#code-mnemonics}
 
 | Shorthand | Expansion | Meaning |
 | --- | --- | --- |

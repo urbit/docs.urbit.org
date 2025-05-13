@@ -4,7 +4,7 @@ Here are Lick's scry endpoints. There's only a few and they're mostly just usefu
 
 The only novel data type is a `name`, which is just a `path` representing the name of a socket.
 
-## `%a` - Read ports
+## `%a` - Read ports {#a---read-ports}
 
 A scry with a `care` of `%a` will return a list of all registered IPC ports.
 
@@ -15,7 +15,7 @@ A scry with a `care` of `%a` will return a list of all registered IPC ports.
 
 ---
 
-## `%d` - Port owner
+## `%d` - Port owner {#d---port-owner}
 
 A scry with a `care` of `%d` and the socket `name` in the `spur` will return the `duct` of the IPC port owner in a `unit`, which is null if the socket doesn't exist.
 
@@ -26,7 +26,7 @@ A scry with a `care` of `%d` and the socket `name` in the `spur` will return the
 
 ---
 
-## `%u` - Port existance
+## `%u` - Port existance {#u---port-existance}
 
 A scry with a `care` of `%u` and the socket `name` in the `spur` will return a `?` which is `%.y` if the socket exists in Lick's state.
 

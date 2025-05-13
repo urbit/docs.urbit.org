@@ -2,11 +2,11 @@
 
 Below are all the paths you can subscribe to in Auth Server.
 
-## `/new/...`
+## `/new/...` {#new}
 
 Subscription paths beginning with `/new` will not give you any initial state, you'll just get events that happen after you've subscribed.
 
-### `/new/all`
+### `/new/all` {#newall}
 
 Subscribe for all new updates.
 
@@ -16,7 +16,7 @@ You'll receive [`entry`](types.md#entry) and [`status`](types.md#status) updates
 
 ---
 
-### `/new/all/since/[time]`
+### `/new/all/since/[time]` {#newallsincetime}
 
 Subscribe for all new updates since the given Unix millisecond time.
 
@@ -32,7 +32,7 @@ You'll receive [`entry`](types.md#entry) and [`status`](types.md#status) updates
 
 ---
 
-### `/new/turf/[turf]`
+### `/new/turf/[turf]` {#newturfturf}
 
 Subscribe for all new updates for the given [`turf`](types.md#turf) (domain).
 
@@ -62,7 +62,7 @@ For `foo.bar-baz.com`:
 
 ---
 
-### `/new/turf/[turf]/since/[time]`
+### `/new/turf/[turf]/since/[time]` {#newturfturfsincetime}
 
 Subscribe for all new updates for the given [`turf`](types.md#turf) (domain), since the given Unix millisecond time.
 
@@ -84,7 +84,7 @@ You'll receive [`entry`](types.md#entry) and [`status`](types.md#status) updates
 
 ---
 
-### `/new/turf/wood/[turf]`
+### `/new/turf/wood/[turf]` {#newturfwoodturf}
 
 Subscribe for all new updates for the given [`turf`](types.md#turf) (domain), with [`++wood` encoding](.#additonal-note).
 
@@ -109,7 +109,7 @@ For `foo.bar-baz.com`:
 
 ---
 
-### `/new/turf/wood/[turf]/since/[time]`
+### `/new/turf/wood/[turf]/since/[time]` {#newturfwoodturfsincetime}
 
 Subscribe for all new updates for the given [`turf`](types.md#turf) (domain), since the given Unix millisecond time. With [`++wood` encoding](.#additonal-note).
 
@@ -125,7 +125,7 @@ You'll receive [`entry`](types.md#entry) and [`status`](types.md#status) updates
 
 ---
 
-### `/new/ship/[ship]`
+### `/new/ship/[ship]` {#newshipship}
 
 Subscribe for all new updates for the given [`ship`](types.md#ship).
 
@@ -143,7 +143,7 @@ Note that the ship does not include the leading `~`:
 
 ---
 
-### `/new/ship/[ship]/since/[time]`
+### `/new/ship/[ship]/since/[time]` {#newshipshipsincetime}
 
 Subscribe for all new updates for the given [`ship`](types.md#ship), since the given Unix millisecond time.
 
@@ -162,7 +162,7 @@ Note that the ship does not include the leading `~`:
 
 ---
 
-### `/new/id/[uuid]`
+### `/new/id/[uuid]` {#newiduuid}
 
 Subscribe for all new updates for the given [`id`](types.md#id).
 
@@ -178,11 +178,11 @@ You'll receive [`entry`](types.md#entry) updates and any [`status`](types.md#sta
 
 ---
 
-## `/init/...`
+## `/init/...` {#init}
 
 Subscription paths beginning with `/init` do the same as [`/new`](#new) except they also give you initial state when you first subscribe.
 
-### `/init/all`
+### `/init/all` {#initall}
 
 Subscribe for all new updates, and get the complete existing state of all requests.
 
@@ -192,7 +192,7 @@ You'll initially receive an [`initAll`](types.md#initall) update containing the 
 
 ---
 
-### `/init/all/since/[time]`
+### `/init/all/since/[time]` {#initallsincetime}
 
 Subscribe to updates for requests that occurred after the specified Unix millisecond time, and get the existing state of all requests with timestamps later than the one specified.
 
@@ -209,7 +209,7 @@ You'll initially receive an [`initAll`](types.md#initall) update containing the 
 
 ---
 
-### `/init/turf/[turf]`
+### `/init/turf/[turf]` {#initturfturf}
 
 Get existing request state and subscribe to updates pertaining to the given [`turf`](types.md#turf).
 
@@ -231,7 +231,7 @@ You'll initially receive an [`initTurf`](types.md#initturf) update containing th
 
 ---
 
-### `/init/turf/[turf]/since/[time]`
+### `/init/turf/[turf]/since/[time]` {#initturfturfsincetime}
 
 Get existing request state and subscribe to updates pertaining to the given [`turf`](types.md#turf), for requests whose timestamps are later than the Unix millisecond time given.
 
@@ -253,7 +253,7 @@ You'll initially receive an [`initTurf`](types.md#initturf) update containing th
 
 ---
 
-### `/init/turf/wood/[turf]`
+### `/init/turf/wood/[turf]` {#initturfwoodturf}
 
 Get existing state request state and subscribe to updates pertaining to the given [`turf`](types.md#turf).  With [`++wood` encoding](.#additonal-note).
 
@@ -269,7 +269,7 @@ You'll initially receive an [`initTurf`](types.md#initturf) update containing th
 
 ---
 
-### `/init/turf/wood/[turf]/since/[time]`
+### `/init/turf/wood/[turf]/since/[time]` {#initturfwoodturfsincetime}
 
 Get existing request state and subscribe to updates pertaining to the given [`turf`](types.md#turf), for requests whose timestamps are later than the Unix millisecond time given.  With [`++wood` encoding](.#additonal-note).
 
@@ -284,7 +284,7 @@ You'll initially receive an [`initTurf`](types.md#initturf) update containing th
 ```
 
 ---
-### `/init/ship/[ship]`
+### `/init/ship/[ship]` {#initshipship}
 
 Subscribe to updates for requests pertaining to the given [`ship`](types.md#ship), and get the existing state of all requests pertaining to that `ship`.
 
@@ -300,7 +300,7 @@ You'll initially receive an [`initShip`](types.md#initship) update containing th
 
 ---
 
-### `/init/ship/[ship]/since/[time]`
+### `/init/ship/[ship]/since/[time]` {#initshipshipsincetime}
 
 Subscribe to updates for requests pertaining to the given [`ship`](types.md#ship), and get the existing state of all requests pertaining to that `ship`, as long as the timestamp is later than the Unix millisecond time given.
 

@@ -2,9 +2,9 @@
 
 _Hoon is statically typed, which means (among other things) that [auras](../../glossary/aura.md) are subject to strict nesting rules, [molds](../../glossary/mold.md) are crash-only, and the whole thing is rather cantankerous about matching types.  However, since gate-building arms are possible, Hoon developers frequently employ them as templates to build type-appropriate [cores](../../glossary/core.md), including [gates](../../glossary/gate.md).  This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include [doors](../../glossary/door.md); finally it will introduce a common door, the [++map](../../language/hoon/reference/stdlib/2o.md#map), to illustrate how doors work._
 
-##  Gate-Building Gates
+## Gate-Building Gates {#gate-building-gates}
 
-### Calling Gates
+### Calling Gates {#calling-gates}
 
 There are two ways of making a function call in Hoon. First, you can call a gate in the [subject](../../glossary/subject.md) by name.  For instance, we can produce a gate `inc` which adds `1` to an input:
 
@@ -45,7 +45,7 @@ Often the difference doesn't matter much. Either way you can do a function call 
 
 It's important to learn the difference, however, because for certain use cases you'll want the extra flexibility that comes with having an already produced [core](../../glossary/core.md) in the subject.
 
-### Building Gates
+### Building Gates {#building-gates}
 
 Let's make a core with arms that build [gates](../../glossary/gate.md) of various kinds.  As we did in a previous lesson, we'll use the `|%` [barcen](../../language/hoon/reference/rune/bar.md#-barcen) rune.  Copy and paste the following into the [Dojo](../../glossary/dojo.md):
 
@@ -145,7 +145,7 @@ dojo: hoon expression failed
 
 As before with `++double`, Hoon can't find an `a` to modify in a [gate](../../glossary/gate.md) that doesn't exist yet.
 
-### Slamming a Gate
+### Slamming a Gate {#slamming-a-gate}
 
 If you check the docs on our now-familiar `%-` [cenhep](../../language/hoon/reference/rune/cen.md#-cenhep), you'll find that it is actually sugar syntax for another [rune](../../glossary/rune.md):
 
@@ -164,7 +164,7 @@ The `%~` [censig](../../language/hoon/reference/rune/cen.md#-censig) rune accept
 Basically, whenever you use `%-` [cenhep](../../language/hoon/reference/rune/cen.md#-cenhep), it actually looks up a wing in a door using `%~` [censig](../../language/hoon/reference/rune/cen.md#-censig), which is a more general type of core than a gate.  Whatever that wing resolves to is then provided a [sample](../../glossary/sample.md). The resulting Hoon expression is evaluated and the value is returned.
 
 
-##  Doors
+## Doors {#doors}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS150%20-%20Doors.mp4" %}
 
@@ -379,7 +379,7 @@ In the above example we created a [door](../../glossary/door.md) `c` with [sampl
 
 Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example.  You will learn more about how types are inferred in the [next module](L-struct.md).
 
-### Exercise:  Adding Arms to a Door
+### Exercise:  Adding Arms to a Door {#exercise-adding-arms-to-a-door}
 
 Recall the quadratic equation [door](../../glossary/door.md).
 
@@ -396,7 +396,7 @@ Recall the quadratic equation [door](../../glossary/door.md).
 - Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
 
 
-##  Key-Value Pairs:  `map` as Door
+## Key-Value Pairs:  `map` as Door {#key-value-pairs-map-as-door}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183%20-%20Maps%20and%20Sets.mp4" %}
 
@@ -500,7 +500,7 @@ You can apply a gate to each value using [++run:by](../../language/hoon/referenc
 }
 ```
 
-### Exercise:  Display Cards
+### Exercise:  Display Cards {#exercise-display-cards}
 
 - Recall the `/lib/playing-cards.hoon` library.  Use a map to pretty-print the `darc`s as Unicode card symbols.
 
@@ -911,7 +911,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 4.  Modify the example generator into a `%say` generator.
 
 
-##  A Bit More on Cores
+## A Bit More on Cores {#a-bit-more-on-cores}
 
 The `|^` [barket](../../language/hoon/reference/rune/bar.md#-barket) rune is an example of what we can call a _convenience rune_, similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner).  `|^` [barket](../../language/hoon/reference/rune/bar.md#-barket) produces a core with _at least_ a `$` buc arm and computes it immediately, called a _cork_. (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
 

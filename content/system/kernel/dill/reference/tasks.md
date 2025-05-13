@@ -4,11 +4,11 @@ In this document we describe the public interface for Dill. Namely, we describe 
 
 Dill's `task`s are organized into three categories: [Session `task`s](#session-tasks) for interacting with a particular session, [Told `task`s](#told-tasks) for basic terminal printing, and [system/miscellaneous `task`s](#system-misc-tasks) which are a combination of general system `task`s and Dill `task`s which don't fit in the previous two categories.
 
-## System & Misc. Tasks
+## System & Misc. Tasks {#system-misc-tasks}
 
 These are the Dill `task`s not otherwise categorized as [session tasks](#session-tasks) or [told tasks](#told-tasks). Most of them are interfaces for Vere or Arvo and do thing like toggle verbose mode, defragment state, etc. The most notable Dill-specific `task` is [`%shot`](#shot), which is used as a wrapper for the [session tasks](#session-tasks) to specify the session. The [`%logs`](#logs) `task` is also useful, letting you subscribe to all system output.
 
-### `%boot`
+### `%boot` {#boot}
 
 ```hoon
 [%boot lit=? p=*]
@@ -26,7 +26,7 @@ Dill returns no `gift` in response to a `%boot` `task`, but it will `%pass` the 
 
 ---
 
-### `%crop`
+### `%crop` {#crop}
 
 Trim kernel state.
 
@@ -42,7 +42,7 @@ Dill returns no `gift` in response to a `%crop` `task`.
 
 ---
 
-### `%flog`
+### `%flog` {#flog}
 
 ```hoon
 [%flog p=flog]
@@ -58,7 +58,7 @@ Dill does not return a `gift` in response to a `%flog` `task`.
 
 ---
 
-### `%heft`
+### `%heft` {#heft}
 
 Produce memory report.
 
@@ -74,7 +74,7 @@ Dill does not return a `gift` in response to a `%heft` `task`.
 
 ---
 
-### `%logs`
+### `%logs` {#logs}
 
 Watch system output.
 
@@ -96,7 +96,7 @@ A `$told` is either a [`%crud`](#crud), [`%talk`](#talk) or [`%text`](#text) tas
 
 ---
 
-### `%meld`
+### `%meld` {#meld}
 
 Deduplicate persistent state.
 
@@ -112,7 +112,7 @@ Dill does not return a `gift` in response to a `%meld` `task`.
 
 ---
 
-### `%pack`
+### `%pack` {#pack}
 
 Defragment persistent state.
 
@@ -128,7 +128,7 @@ Dill does not return a `gift` in response to a `%meld` `task`.
 
 ---
 
-### `%seat`
+### `%seat` {#seat}
 
 Install desk.
 
@@ -144,7 +144,7 @@ Dill does not return a `gift` in response to a `%seat` `task`.
 
 ---
 
-### `%shot`
+### `%shot` {#shot}
 
 Task for session.
 
@@ -156,7 +156,7 @@ A `$session-task` is one of these `task`s: [`%belt`](#belt), [`%blew`](#blew), [
 
 ---
 
-### `%verb`
+### `%verb` {#verb}
 
 Toggle Arvo verbose mode.
 
@@ -172,13 +172,13 @@ Dill does not return a `gift` in response to a `%verb` `task`.
 
 ---
 
-## Session Tasks
+## Session Tasks {#session-tasks}
 
 These `task`s are for interacting with a particular session. These all would normally be wrapped in a [`%shot`](#shot) `task` to specify the session, rather than sent directly.
 
 This subset of Dill's `task`s are defined in the [`$session-task` type](data-types.md#session-task).
 
-### `%belt`
+### `%belt` {#belt}
 
 Terminal input.
 
@@ -196,7 +196,7 @@ Dill returns no `gift` in response to a `%belt` `task`.
 
 ---
 
-### `%blew`
+### `%blew` {#blew}
 
 Terminal resized.
 
@@ -216,7 +216,7 @@ Dill returns no `gift` in response to a `%blew` `task`.
 
 ---
 
-### `%flee`
+### `%flee` {#flee}
 
 Unwatch a session to which you've previously subscribed with [%view](#view).
 
@@ -232,7 +232,7 @@ Dill does not return a `gift` in response to a `%flee` `task`.
 
 ---
 
-### `%hail`
+### `%hail` {#hail}
 
 Refresh.
 
@@ -250,7 +250,7 @@ Dill returns no `gift` in response to a `%hail` `task`.
 
 ---
 
-### `%open`
+### `%open` {#open}
 
 Setup session.
 
@@ -280,7 +280,7 @@ This subscription for `$blit`s can be stopped with a [`%flee`](#flee) `task` at 
 
 ---
 
-### `%shut`
+### `%shut` {#shut}
 
 Close session.
 
@@ -298,7 +298,7 @@ Dill does not give a `gift` in response to a `%shut` `task`. It will, however, p
 
 ---
 
-### `%view`
+### `%view` {#view}
 
 Watch session.
 
@@ -322,11 +322,11 @@ The subscription can be ended with a [`%flee`](#flee) `task`.
 
 ---
 
-## Told Tasks
+## Told Tasks {#told-tasks}
 
 This subset of Dill `task`s are for printing things. They are defined in the [`$told` type](data-types.md#told).
 
-### `%crud`
+### `%crud` {#crud}
 
 Print error.
 
@@ -342,7 +342,7 @@ Dill does not return a `gift` in response to a `%crud` `task`.
 
 ---
 
-### `%talk`
+### `%talk` {#talk}
 
 Print `tang` to terminal.
 
@@ -358,7 +358,7 @@ Dill does not return a `gift` in response to a `%talk` `task`.
 
 ---
 
-### `%text`
+### `%text` {#text}
 
 Print `tape` to terminal.
 

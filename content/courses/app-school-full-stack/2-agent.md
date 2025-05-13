@@ -2,7 +2,7 @@
 
 Now that we have our agent's types defined and have thought through its behavior, we can write the `%journal` agent itself.
 
-## Imports
+## Imports {#imports}
 
 ```hoon
 /-  *journal
@@ -13,7 +13,7 @@ We first import the `/sur/journal.hoon` file we previously created and expose it
 
 Agentio contains a number of convenience functions to make common agent tasks simpler. For example, rather than writing out the full `$card`s when sending `%fact`s to subscribers, we can call `++fact` in `agentio` with the `cage` and `path`s and it will compose them for us. There are many more functions in `agentio` than we'll use here - you can have a look through the library in [`/base/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) to see what else it can do.
 
-## State and type core
+## State and type core {#state-and-type-core}
 
 ```hoon
 |%
@@ -59,7 +59,7 @@ This is quite a cumbersome expression to use every time we want to interact with
 
 The last arm in our state definition core is `++unique-time`. Since we'll use `now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `mop`. To avoid this, `++unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `mop`, ensuring all updates get unique timestamps and there are no collisions.
 
-## Agent core setup
+## Agent core setup {#agent-core-setup}
 
 ```hoon
 %-  agent:dbug
@@ -84,7 +84,7 @@ The last arm in our state definition core is `++unique-time`. Since we'll use `n
 
 Here we setup our agent core and define the three lifecycle arms. Since we only have a single state version at present, these are very simple functions. You'll notice in our `+*` arm, along with the usual `this` and `def`, we've also setup the `agentio` library we imported, giving it the bowl and an alias of `io`.
 
-## Pokes
+## Pokes {#pokes}
 
 ```hoon
 ++  on-poke
@@ -144,7 +144,7 @@ Back in the main part of `++on-poke`, `++poke-action` updates the state with the
 
 We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `++put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a vase and add the mark to make it a `$cage`. Notice we're using the `++fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.
 
-## Subscriptions
+## Subscriptions {#subscriptions}
 
 ```hoon
 ++  on-watch
@@ -161,7 +161,7 @@ Our subscription logic is extremely simple - we just have a single `/updates` pa
 
 We could have had our `++on-watch` arm send out some initial state to new subscribers, but for our front-end we'll instead fetch the initial state separately with a scry. This just makes it slightly easier if our front-end needs to resubscribe at some point - it'll already have some state in that case so we don't want it to get sent again.
 
-## Scry Endpoints
+## Scry Endpoints {#scry-endpoints}
 
 ```hoon
 ++  on-peek
@@ -235,7 +235,7 @@ We don't use any of the other agent arms, so the remainder have all been passed 
 
 The full agent source can be viewed [here](https://github.com/urbit/docs-examples/blob/main/journal-app/bare-desk/app/journal.hoon).
 
-## Resources
+## Resources {#resources}
 
 - [App School I](../app-school) - App School I covers all aspects of writing Gall agents in detail.
 

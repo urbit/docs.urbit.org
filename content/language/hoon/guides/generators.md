@@ -10,7 +10,7 @@ Generator files provide a way for users to interact with code "scripts" through 
 
 Generators are a Dojo concept, although they can also be applied to agents (such as `+dbug`).  This guide will show you how to build and invoke all kinds of generators.
 
-##  Bare Generators
+## Bare Generators {#bare-generators}
 
 A basic generator is a gate, a core with a `$` buc arm and a sample.
 
@@ -37,7 +37,7 @@ Invoke as `+add-one 5`.
 You could in principle use a `|*` bartar wet gate as well, but other cores don't pattern-match to what Dojo expects.
 
 
-##  `%say` Generators
+## `%say` Generators {#say-generators}
 
 A `%say` generator can have zero, many, or optional arguments, unlike a bare generator.  It can also have access to system variables like `now`, `our`, and `eny`.
 
@@ -90,7 +90,7 @@ The gate sample follows this pattern, with undesired elements stubbed out by `*`
 
 The Dojo will modify the sample by inserting `%~` (constant null) at the end of each collection, since the Dojo adapts the input arguments into a list (either the unnamed/required argument list or the named/optional argument list).
 
-### Zero arguments
+### Zero arguments {#zero-arguments}
 
 `/gen/vats.hoon` is commonly used to check on the status of installed desks.  It can be invoked with optional arguments:
 
@@ -114,7 +114,7 @@ The Dojo will modify the sample by inserting `%~` (constant null) at the end of 
 > +vats, =filt %suspended
 ```
 
-### Optional arguments
+### Optional arguments {#optional-arguments}
 
 Let's look at an example that uses all three parts.
 
@@ -152,7 +152,7 @@ Notice how the `,` com works to separate arguments and how the name of the optio
 
 We get a different value from the same generator between runs, something that isn't possible with a bare generator. Another novelty is the ability to choose to not use the second argument.
 
-##  `%ask` Generators
+## `%ask` Generators {#ask-generators}
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
@@ -207,7 +207,7 @@ Aaaaagh!
 `%ask` generators can also accept arguments, although this is uncommon.
 
 
-##  Generators for Agents
+## Generators for Agents {#generators-for-agents}
 
 Generators can furthermore interact specifically with agents.
 

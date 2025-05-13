@@ -3,7 +3,7 @@
 The `:` ("col") expressions are used to produce cells, which are pairs of
 values. E.g., `:-(p q)` produces the cell `[p q]`. All `:` runes reduce to `:-`.
 
-## `:-` "colhep"
+## `:-` "colhep" {#colhep}
 
 Construct a cell (2-tuple).
 
@@ -74,7 +74,7 @@ Hoon expressions actually use the same "autocons" pattern as Nock formulas. If y
 
 ---
 
-## `:_` "colcab"
+## `:_` "colcab" {#colcab}
 
 Construct a cell, inverted.
 
@@ -130,7 +130,7 @@ None
 
 ---
 
-## `:+` "collus"
+## `:+` "collus" {#collus}
 
 Construct a triple (3-tuple).
 
@@ -194,7 +194,7 @@ r
 
 ---
 
-## `:^` "colket"
+## `:^` "colket" {#colket}
 
 Construct a quadruple (4-tuple).
 
@@ -260,7 +260,7 @@ s
 
 ---
 
-## `:*` "coltar"
+## `:*` "coltar" {#coltar}
 
 Construct an n-tuple.
 
@@ -350,7 +350,7 @@ $(p t.p)
 
 ---
 
-## `:~` "colsig"
+## `:~` "colsig" {#colsig}
 
 Construct a null-terminated list.
 
@@ -438,7 +438,7 @@ Note that this does not produce a `list` type, it just produces a null-terminate
 
 ---
 
-## `::` "colcol"
+## `::` "colcol" {#colcol}
 
 Code comment.
 

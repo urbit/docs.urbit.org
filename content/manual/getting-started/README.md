@@ -6,7 +6,7 @@ Urbit consists of two high-level components: an operating system (Urbit OS) and 
 
 Using Urbit requires having access to a running **ship**: an Urbit OS running with a supplied Urbit ID. You can run Urbit yourself if you're comfortable at a command-line or willing to learn. Otherwise you should probably use a hosting provider &mdash; that is, someone that provides you with an Urbit as a service.
 
-## Next steps
+## Next steps {#next-steps}
 
 - [Run Urbit yourself](self-hosted) or select a [hosting provider](hosted)
 - Meet friendly people by [joining groups](additional/joining-groups.md)

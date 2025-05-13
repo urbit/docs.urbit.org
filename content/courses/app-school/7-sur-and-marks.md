@@ -2,7 +2,7 @@
 
 Before we get into subscription mechanics, there's three things we need to touch on that are very commonly used in Gall agents. The first is defining an agent's types in a `/sur` structure file, the second is `mark` files, and the third is permissions. Note the example code presented in this lesson will not yet build a fully functioning Gall agent, we'll get to that in the next lesson.
 
-## `/sur`
+## `/sur` {#sur}
 
 In the [previous lesson on pokes](6-pokes.md), we used a very simple union in the `vase` for incoming pokes:
 
@@ -137,7 +137,7 @@ This might seem a little convoluted, but it's a common pattern we do for two rea
 
 You can of course structure your `on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
 
-## `mark` files
+## `mark` files {#mark-files}
 
 So far we've just used a `%noun` mark for pokes - we haven't really delved into what such `mark`s represent, or considered writing custom ones.
 
@@ -198,7 +198,7 @@ This simple mark file isn't all that useful. Typically, you'd add `json` arms to
 
 One further note on marks - while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
 
-## Permissions
+## Permissions {#permissions}
 
 In example agents so far, we haven't bothered to check where events such as pokes are actually coming from - our example agents would accept data from anywhere, including random foreign ships. We'll now have a look at how to handle such permission checks.
 
@@ -220,7 +220,7 @@ If we want to only allow messages from a particular set of ships, we could, for 
 
 There are many ways to handle permissions, it all depends on your particular use case.
 
-## Summary
+## Summary {#summary}
 
 Type definitions:
 
@@ -249,7 +249,7 @@ Permissions:
 - Messages can be restricted to the local ship with `?> =(src.bowl our.bowl)` or to its moons as well with `?> |(=(our src):bowl (moon:title our.bowl src.bowl))`.
 - There are many other ways to handle permissions, it just depends on the needs of the particular agent.
 
-## Exercises
+## Exercises {#exercises}
 
 - Have a quick look at the [tisket documentation](../../language/hoon/reference/rune/tis.md#-tisket).
 - Try writing a mark file for the `update:todo` type, in a similar fashion to the `action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.

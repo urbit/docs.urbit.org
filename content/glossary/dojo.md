@@ -4,6 +4,6 @@ The **Dojo** is Urbit's command-line application that processes system commands 
 
 The Dojo is the first thing you encounter after successfully booting your [ship](ship.md).
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [“Introduction to Hoon”](../courses/hoon-school): A great way to get started with using Hoon in the Dojo.

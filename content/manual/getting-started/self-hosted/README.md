@@ -8,7 +8,7 @@ Running Urbit locally is good for experimentation, but in the long term you'll w
 
 **Remember, never run your Urbit in more than one place!** Doing so will necessitate a [factory reset](https://operators.urbit.org/manual/id/guide-to-resets).
 
-## Next Steps
+## Next Steps {#next-steps}
 
 - [Get an Urbit ID](../get-id.md) – Get a planet, a permanent Urbit ID, for the best networked experience.
 

@@ -4,7 +4,7 @@ Urbit is still in the development stage, so there's a chance that your ship won'
 
 This page contains resolutions to many of the most commonly encountered issues. If your issue is not covered here, please check out our [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki).
 
-## Table of Contents
+## Table of Contents {#table-of-contents}
 
 - [Best practices](#best-practices)
 - [Operation issues](#operation-issues)
@@ -16,33 +16,33 @@ This page contains resolutions to many of the most commonly encountered issues. 
 
 An ounce of prevention is worth a pound of cure, so let's first go over some best practices to keep your ship in working order.
 
-### Only initialize your ship once
+### Only initialize your ship once {#only-initialize-your-ship-once}
 
 Once your ship has been initialized (with the `-w` variation of the `./urbit` command), you should never do so a second time. If you do initialize it anew without special measures, you will experience trouble communicating with ships on the network you had talked to before.
 
 If you accidentally did this a second time, or want to intentionally start fresh, you need to perform a [factory reset](#factory-reset), which is explained in the next section.
 
-### Do not delete your pier
+### Do not delete your pier {#do-not-delete-your-pier}
 
 Urbit is stateful, meaning that it needs to hold onto all your data. If you delete your pier and start your ship again, you won't be able to talk to any ship you've talked to before. The only solution to this is performing a [factory reset](#factory-reset).
 
-### Keep track of the directory that you put your ship in
+### Keep track of the directory that you put your ship in {#keep-track-of-the-directory-that-you-put-your-ship-in}
 
 When you first start your ship, you should make sure you put it a place where you can find it again and where it won't get accidentally deleted.
 
-### Keep up-to-date builds
+### Keep up-to-date builds {#keep-up-to-date-builds}
 
 Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](../getting-started/self-hosted/cli.md#updating).
 
-### `|hi` your star to see if you're connected
+### `|hi` your star to see if you're connected {#hi-your-star-to-see-if-youre-connected}
 
 Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star's name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you're in a Chat channel with.
 
-### Turn your ship off and on again
+### Turn your ship off and on again {#turn-your-ship-off-and-on-again}
 
 Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
 
-### Use the `|knob` command to customize your error messages
+### Use the `|knob` command to customize your error messages {#use-the-knob-command-to-customize-your-error-messages}
 
 Error messages can be by overwhelming, so the `|knob` command is intended to remedy this. It's used to silence errors that aren't important.
 
@@ -64,7 +64,7 @@ A factory reset is when a ship tells the rest of the network to treat it as thou
 
 Factory resets often fix connectivity issues, but should only be used as a last resort. To find out how to perform a factory reset, check out our [Guide to Factory Resets](../id/guide-to-resets.md). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community`.
 
-### Reset `+code`
+### Reset `+code` {#reset-code}
 
 **WARNING:** Do not reset your +code if you are using a hosted ship. You will be locked out. Please contact your hosting provider for more information.
 
@@ -72,33 +72,33 @@ You login to Landscape using the camel-case phrase obtained from dojo by enterin
 
 ## Operation Issues {#operation-issues}
 
-### My urbit is frozen
+### My urbit is frozen {#my-urbit-is-frozen}
 
 Sometimes this happens if you're processing a very large event, or if you're in an infinite loop, or for a variety of other reasons.
 
 Before doing anything, try waiting for a minute: an event might finish processing. If it doesn't clear up, then use the Unix kill-command, `ctrl-z`, to end your ship's process. Then restart your ship.
 
-### When I try to type into the Dojo, it prints `%dy-edit-busy` or `%dy-no-prompt`
+### When I try to type into the Dojo, it prints `%dy-edit-busy` or `%dy-no-prompt` {#when-i-try-to-type-into-the-dojo-it-prints-dy-edit-busy-or-dy-no-prompt}
 
 This happens when your Dojo is waiting on a request, such as an HTTP request. You can fix it simply by typing `backspace` or (`delete` on Mac).
 
-### My ship doesn't recognize file changes that I make in my pier
+### My ship doesn't recognize file changes that I make in my pier {#my-ship-doesnt-recognize-file-changes-that-i-make-in-my-pier}
 
 Since version `0.8.0`, changes no longer automatically sync between the Unix side (your pier) and your ship. To sync your file changes, you must run `|commit %desk` in your Dojo, where `%desk` is the desk you'd like to sync.
 
 ## Connectivity Issues {#connectivity-issues}
 
-### I can't communicate with anyone
+### I can't communicate with anyone {#i-cant-communicate-with-anyone}
 
 Maybe you booted your ship twice, or ran it using old files. If this is the case, you must perform a [factory reset](#factory-reset).
 
-### I don't have the latest OTA
+### I don't have the latest OTA {#i-dont-have-the-latest-ota}
 
 You can check what build your ship is on by entering `+trouble` into dojo and reading the `%base` hash. If this does not match the latest hash published in the `urbit-dev` mailing list, you are behind.
 
 Your sponsor may just be lagging behind, so sometimes this will resolve on its own with patience. Otherwise, try the procedure outlined [here](https://github.com/urbit/support/wiki/Missing-OTA).
 
-### I keep getting an `ames` error stack-trace
+### I keep getting an `ames` error stack-trace {#i-keep-getting-an-ames-error-stack-trace}
 
 You may see a message like this one: `/~zod/base/~2019.7.22..18.55.46..83a3/sys/vane/ames:<[line column].[line column]>`. This is a clay path to a Hoon file, pointing to the line and column where an expression crashed. This kind of error might be accompanied by a `crud` message.
 
@@ -126,23 +126,23 @@ The last line above syncs from an Ethereum node for _all_ ships on the network. 
 
 The above commands work if you have the wrong keys of other ships. If other ships have wrong keys of _yours_, you need to somehow ask them to to run such a command.
 
-### I can talk to some ships, but I can't talk to my sponsor and some other ships
+### I can talk to some ships, but I can't talk to my sponsor and some other ships {#i-can-talk-to-some-ships-but-i-cant-talk-to-my-sponsor-and-some-other-ships}
 
 This is usually the result of deleting your pier and starting your ship again. To fix this, you must perform a [factory reset](#factory-reset).
 
 ## Booting Issues {#booting-issues}
 
-### My ship booted for the first time, but it turned into a comet instead of my planet or star
+### My ship booted for the first time, but it turned into a comet instead of my planet or star {#my-ship-booted-for-the-first-time-but-it-turned-into-a-comet-instead-of-my-planet-or-star}
 
 You may have used the wrong arguments when booting your ship for the first time. Delete this comet and try again.
 
-### My development ship ("fakezod") gets a `boot: malformed` failure
+### My development ship ("fakezod") gets a `boot: malformed` failure {#my-development-ship-fakezod-gets-a-boot-malformed-failure}
 
 This means that you gave your development ship an invalid `@p`. So, you will get this error if you write, for example, `urbit -F zodzod` instead of `urbit -F zod`.
 
 ## Crashing Issues {#crashing-issues}
 
-### I got a `bail` error and my ship crashed
+### I got a `bail` error and my ship crashed {#i-got-a-bail-error-and-my-ship-crashed}
 
 Try bringing it back up; it will often start working just fine again.
 
@@ -169,7 +169,7 @@ Navigate to the folder containing your core dumps. Find the most recent core dum
 
 Copy this stack trace and include it in your GitHub issue.
 
-### My ship crashed with a `bail: meme` error.
+### My ship crashed with a `bail: meme` error. {#my-ship-crashed-with-a-bail-meme-error}
 
 This means that your ship ran out of memory.
 
@@ -183,12 +183,12 @@ This means that your ship ran out of memory.
 
 5. As a last resort, you may perform a [factory reset](#factory-reset).
 
-### My ship crashed with a `bail: oops` error
+### My ship crashed with a `bail: oops` error {#my-ship-crashed-with-a-bail-oops-error}
 
 Restart your ship. These issues often just go away on their own. If this error repeats after restart two or more times, post the messages in an issue at [github.com/urbit/urbit](https://github.com/urbit/urbit/issues).
 
 This same error might also appear with a message like `Assertion '0'`.
 
-### My ship crashed with an `pier: work error` error
+### My ship crashed with an `pier: work error` error {#my-ship-crashed-with-an-pier-work-error-error}
 
 This means that the Urbit worker process has shut down for one reason or another. Just restart your ship; this is not a notable or reportable error.

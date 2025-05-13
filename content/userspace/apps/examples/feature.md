@@ -4,7 +4,7 @@
 
 `%feature` presents a web page from `/app/feature-ui` at `/apps/feature/feature-ui`.  These paths are both configurable by the developer.
 
-## `/sur` Structure Files
+## `/sur` Structure Files {#sur-structure-files}
 
 Our primary event in this case is simply an `%action` to create a page.
 
@@ -20,7 +20,7 @@ Our primary event in this case is simply an `%action` to create a page.
 
 No special mark files are necessary for `%feature` other than `%html`.
 
-## `/app` Agent Files
+## `/app` Agent Files {#app-agent-files}
 
 The agent only maintains a state containing the page contents as a `cord.`
 
@@ -159,7 +159,7 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
 
 </details>
 
-### Pokes
+### Pokes {#pokes}
 
 `++on-poke` only responds to `%handle-http-request`, which is dealt with in a `|^` barket core.
 
@@ -224,17 +224,17 @@ The most interesting part of the whole app is the `++handle-http` arm:
 
 This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
 
-### `POST`
+### `POST` {#post}
 
 In response to a `POST` request, the default page in the state can be changed.  This is the only state change supported by the agent.
 
-### `GET`
+### `GET` {#get}
 
 A `GET` request defaults to a `404` error.
 
 - `/apps/feature/public` returns `200` success and the default page in the state.
 - `/apps/feature` returns `200` success and the target page, statically compiled on agent build.
 
-### `/lib/schooner`
+### `/lib/schooner` {#libschooner}
 
 The [Schooner library](https://github.com/dalten-collective/schooner/) simplifies raw HTTP handling for Gall agents, in particular for MIME returns.

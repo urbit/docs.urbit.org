@@ -2,7 +2,7 @@
 
 Anything Nock can do, Hoon can do also. These runes are used for carrying out Nock operations in Hoon.
 
-## `.^` "dotket"
+## `.^` "dotket" {#dotket}
 
 Load from the Arvo namespace (scry) with a fake Nock instruction: Nock 12.
 
@@ -114,7 +114,7 @@ You can modify the time of the file listing quite simply and ask for a listing f
 
 ---
 
-## `.+` "dotlus"
+## `.+` "dotlus" {#dotlus}
 
 Increment an atom with Nock `4`.
 
@@ -152,7 +152,7 @@ nest-fail
 
 ---
 
-## `.*` "dottar"
+## `.*` "dottar" {#dottar}
 
 Evaluate with Nock `2`.
 
@@ -229,7 +229,7 @@ Note also that `.*` ("dottar") can be used to bypass the type system. It's there
 
 ---
 
-## `.=` "dottis"
+## `.=` "dottis" {#dottis}
 
 Test for equality with Nock `5`.
 
@@ -301,7 +301,7 @@ Like Nock equality, `.=` ("dottis") tests whether two nouns are the same, ignori
 
 ---
 
-## `.?` "dotwut"
+## `.?` "dotwut" {#dotwut}
 
 Test for cell or atom with Nock `3`.
 

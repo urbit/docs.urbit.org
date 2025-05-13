@@ -2,11 +2,11 @@
 
 Here we'll discuss recommendations and best practices for your docs. The %docs app doesn't impose any restrictions on the structure of your docs, so you're free to do things differently if you feel it's appropriate.
 
-## User docs
+## User docs {#user-docs}
 
 For the most part, user documentation depends on the nature of your app, so it's up to you how you document it. There are, however, a couple of things that are advisable to include:
 
-### General info
+### General info {#general-info}
 
 You should include some of the following information (as appropriate) in either a distinct informational document or at the top of the first document:
 
@@ -17,13 +17,13 @@ You should include some of the following information (as appropriate) in either 
 - **Group**: If you have a group associated with your app (for support, discussion, or what have you), you can include the `~host/group-name`.
 - Any other metadata, links, info, etc, you feel are appropriate to include.
 
-### Changelog
+### Changelog {#changelog}
 
 Another useful document is a changelog. For each version you release, you can add a new section at the top with the version number, release date, and a brief summary of the changes.
 
 ---
 
-## Developer docs
+## Developer docs {#developer-docs}
 
 Like user docs, you're free to document things as you see fit, but it's helpful to include particular things with a standard format. These are documented below.
 
@@ -31,7 +31,7 @@ Like user docs, you're free to document things as you see fit, but it's helpful 
 **Note**: If your desk has a dev version, it's advisable to link to it somewhere sensible in the developer documentation.
 {% endhint %}
 
-### API Reference
+### API Reference {#api-reference}
 
 If there's any chance other developers will want to interface with agents on your desk, you should include reference information about the scry endpoints, pokes, subscription paths, and (if appropriate) data types of each agent.
 

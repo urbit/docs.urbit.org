@@ -6,7 +6,7 @@ Arm runes are used to define arms in a core, and thus can only be used from with
 
 There are various arm runes you can use to produce different kinds of arms. Normal arms use `++`; arms defining a structure (or 'mold') use `+$`; and constructor arms use `+*`.
 
-## `+|` "lusbar"
+## `+|` "lusbar" {#lusbar}
 
 Chapter label (not useful)
 
@@ -58,7 +58,7 @@ Notice that `p.q` has the label `%numbers`. Contrast with:
 
 ---
 
-## `+$` "lusbuc"
+## `+$` "lusbuc" {#lusbuc}
 
 Produce a structure arm (type definition).
 
@@ -98,7 +98,7 @@ nest-fail
 
 ---
 
-## `++` "luslus"
+## `++` "luslus" {#luslus}
 
 Produce a normal arm.
 
@@ -135,7 +135,7 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ---
 
-## `+*` "lustar"
+## `+*` "lustar" {#lustar}
 
 Defines deferred expressions within doors.
 

@@ -11,7 +11,7 @@ Hoon School is designed to teach you Hoon without assuming you have an extensive
 There are two flavors of Hoon School:  the Hoon School Live cohort class, in which you work through lessons with other students and receive a certification (`%gora`) for completion, and these written Hoon School docs.  To sign up for a future cohort of Hoon School Live, please [let us know of your interest here](..) and we'll be in touch.
 
 
-##  Why Hoon?
+## Why Hoon? {#why-hoon}
 
 The short version is that Hoon uses Urbit's provisions and protocols to enable very fast application development with shared primitives, sensible affordances, and straightforward distribution.
 
@@ -29,7 +29,7 @@ Hoon School introduces and explains the fundamental concepts you need in order t
 
 Once you have completed Hoon School, you should work through [App School](../app-school) to learn how to build full applications on Urbit.
 
-##  Environment Setup
+## Environment Setup {#environment-setup}
 
 An Urbit ship is a particular realization of an _identity_ and an _event log_ or _state_.  Both of these are necessary.
 
@@ -41,7 +41,7 @@ Before beginning, you'll need to get a development ship running and configure an
 
 Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
 
-##  Getting started
+## Getting started {#getting-started}
 
 Once you've created your development ship, let's try a basic command. Type `%-  add  [2 2]` at the prompt and hit `Return`.  (Note the double spaces before and after `add`.)  Your screen now shows:
 
@@ -95,7 +95,7 @@ One more:
 This `:-` rune takes two values and composes them into a [cell](../../glossary/cell.md), a pair of values.
 
 
-##  Pronouncing Hoon
+## Pronouncing Hoon {#pronouncing-hoon}
 
 Hoon uses [runes](../../glossary/rune.md), or two-character ASCII symbols, to describe its structure.  (These are analogous to keywords in other programming languages.)  Because there has not really been a standard way of pronouncing, say, `#` (hash, pound, number, sharp, hatch) or `!` (exclamation point, bang, shriek, pling), the authors of Urbit decided to adopt a one-syllable mnemonic to uniquely refer to each.
 

@@ -3,7 +3,7 @@
 With our React app now complete, we can put together the final desk and publish
 it.
 
-## Config files
+## Config files {#config-files}
 
 So far we've written the following files for the back-end:
 
@@ -85,7 +85,7 @@ ourfiles
 └── sys.kelvin
 ```
 
-## New desk
+## New desk {#new-desk}
 
 Next, we'll create a new `%journal` desk on our ship by forking an existing one. Once created, we can mount it to the unix filesystem.
 
@@ -148,7 +148,7 @@ Finally, in the dojo, we can commit the whole lot:
 |commit %journal
 ```
 
-## Glob
+## Glob {#glob}
 
 The next step is to build our front-end and upload the files to our ship. If you haven't yet downloaded the journal front-end source files, you can grab them from [their repository](https://github.com/urbit/docs-examples). In the folder containing our React app (`journal-app/ui` relative to the repository base directory), we can run:
 
@@ -172,7 +172,7 @@ If we now return to the homescreen of our ship, we'll see our tile displayed, an
 
 ![tiles screenshot](https://m.tinnus-napbus.xyz/pub/tiles.png)
 
-## Publishing
+## Publishing {#publishing}
 
 The last thing we need to do is publish our app, so other users can install it from our ship. To do that, we just run the following command in the dojo:
 
@@ -180,7 +180,7 @@ The last thing we need to do is publish our app, so other users can install it f
 :treaty|publish %journal
 ```
 
-## Resources
+## Resources {#resources}
 
 - [App publishing/distribution documentation](../../userspace/apps/reference/dist) - Documentation covering third party desk composition, publishing and distribution.
 

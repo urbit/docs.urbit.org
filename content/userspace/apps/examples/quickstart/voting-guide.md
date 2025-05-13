@@ -15,7 +15,7 @@ The app source is available in the [`docs-examples` repo on Github](https://gith
 
 Let's get started.
 
-## Install binary
+## Install binary {#install-binary}
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step. Otherwise, run one of the commands below, depending on your platform. It will fetch the binary and save it in the current directory.
 
@@ -43,7 +43,7 @@ curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-## Development ship
+## Development ship {#development-ship}
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, since our chat app will depend on the separate Squad app, we'll do it on a comet instead, so we can easily install that dependency. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
@@ -55,7 +55,7 @@ It might take a few minutes to boot up, and will fetch updates for the default a
 
 Note: we'll use `~sampel_samzod` throughout this guide, but this will be different for you as a comet's ID is randomly generated.
 
-## Dependencies
+## Dependencies {#dependencies}
 
 Once in the Dojo, let's first install the Squad app:
 
@@ -86,7 +86,7 @@ cp -r dev-comet/landscape/lib/mip.hoon tally/lib/
 
 Now we can start working on the app itself.
 
-## Types
+## Types {#types}
 
 The first thing we need to do is define the data types our app will use. We'll define the basic types for polls, votes, poll IDs, etc. We'll also define the types of actions/requests we might send or receive, and the types of updates/events we might send to subscribers or receive from subscriptions.
 
@@ -182,7 +182,7 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 
 </details>
 
-## Ring Library
+## Ring Library {#ring-library}
 
 The `%base` desk of ship includes a `ring.hoon` library for ring signatures. This implementation verifies signatures against a ship's most recent keys, which may cause problems verifying old polls if group members rotate their keys. To solve this, here is a slightly modified version that takes a ship's `life` (key revision) as an additional argument:
 
@@ -190,7 +190,7 @@ The `%base` desk of ship includes a `ring.hoon` library for ring signatures. Thi
 
 Save that file in the `tally/lib/` directory.
 
-## Agent
+## Agent {#agent}
 
 Now we'll write the main app.
 
@@ -1096,7 +1096,7 @@ Gall agents live in the `/app` directory of a desk, so save this code in `tally/
 
 </details>
 
-## Marks
+## Marks {#marks}
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with inter-mark conversion methods). We need to define a mark for the `action`s we'll send or receive, and the `update`s we'll send to subscribers or receive for subscriptions. These will be very simple since we don't need to do any conversions to things like JSON.
 
@@ -1166,7 +1166,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%tally-action
 --
 ```
 
-## Front-end
+## Front-end {#front-end}
 
 We could have put the front-end code directly in our Gall agent, but it tends to be quite large so it's convenient to have it in a separate file and just import it. Most of this file consists of Sail code, which is the internal HTML representation, similar to other server-side renderings like Clojure's Hiccup.
 
@@ -1809,7 +1809,7 @@ Save the code below in `tally/app/tally/index.hoon`.
 
 </details>
 
-## Desk config
+## Desk config {#desk-config}
 
 With our types, agent, mark files and front-end now complete, the last thing we need are some desk configuration files.
 
@@ -1841,7 +1841,7 @@ Lastly, we need to create a Docket file. Docket is the agent that manages app fr
 ==
 ```
 
-## Put it together
+## Put it together {#put-it-together}
 
 Our app is now complete, so let's try it out. In the Dojo of our comet, we'll create a new desk with the `|new-desk` generator:
 
@@ -1879,7 +1879,7 @@ One thing we can also do is publish the app so others can install it from us. To
 
 Now our friends will be able to install it directly from us with `|install <our ship> %tally` or by searching for `<our ship>` on their ship's homescreen.
 
-## Next steps
+## Next steps {#next-steps}
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](../../../../courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](../../../../courses/app-school) will teach you everything you need to know about app development.
 

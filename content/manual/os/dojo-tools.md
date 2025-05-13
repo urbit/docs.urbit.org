@@ -41,11 +41,11 @@ These may be invoked in one of three ways:
 - `|` means a “Hood” generator which may make changes to the system
 - `-` means a thread
 
-## Apps and updates
+## Apps and updates {#apps-and-updates}
 
 These tools are for managing [desks][desk], apps and updates. Install, uninstall, suspend, resume, pause updates, etc.
 
-### `+gall/agents`
+### `+gall/agents` {#gallagents}
 
 Print out the status of Gall agents on a desk.
 
@@ -70,7 +70,7 @@ status: running   %hark-store
 
 ---
 
-### `|bump`
+### `|bump` {#bump}
 
 Apply a kernel update.
 
@@ -86,7 +86,7 @@ Try to apply update, suspending any incompatible desks:
 
 ---
 
-### `|install`
+### `|install` {#install}
 
 Install a desk, starting its agents and listening for updates.
 
@@ -116,7 +116,7 @@ ship desk, =local desk
 
 ---
 
-### `|nuke`
+### `|nuke` {#nuke}
 
 Shut down an agent and permanently delete its state.
 
@@ -144,7 +144,7 @@ Nuke every agent on a desk:
 
 ---
 
-### `|ota`
+### `|ota` {#ota}
 
 Set the source of updates for the `%base` desk (the kernel and core apps) to the specified ship. Automatic updates will be enabled, and any new updates available will be fetched and installed.
 
@@ -160,7 +160,7 @@ ship
 
 ---
 
-### `|pause`
+### `|pause` {#pause}
 
 Pause updates on a desk.
 
@@ -180,7 +180,7 @@ desk
 
 ---
 
-### `|rein`
+### `|rein` {#rein}
 
 Adjust the state of a desk.
 
@@ -226,7 +226,7 @@ Revive a desk:
 
 ---
 
-### `|revive`
+### `|revive` {#revive}
 
 Revive all agents on a desk, migrating archived states.
 
@@ -246,7 +246,7 @@ desk
 
 ---
 
-### `|start`
+### `|start` {#start}
 
 Start an [agent][agent].
 
@@ -267,7 +267,7 @@ This first `term` is mandatory, the second is optional. If two terms are provide
 
 ---
 
-### `|suspend`
+### `|suspend` {#suspend}
 
 Shut down all agents on a desk, archiving their states.
 
@@ -287,7 +287,7 @@ desk
 
 ---
 
-### `|uninstall`
+### `|uninstall` {#uninstall}
 
 Uninstall a desk, suspending its agents and ignoring updates.
 
@@ -309,7 +309,7 @@ desk
 
 ---
 
-### `+vats`
+### `+vats` {#vats}
 
 Print out the status of each installed desk.
 
@@ -448,7 +448,7 @@ Print everything with low verbosity except suspended desks and blocking desks:
 
 ---
 
-### `+trouble`
+### `+trouble` {#trouble}
 
 Print out the status of each installed desk.
 
@@ -460,11 +460,11 @@ See [`+vats`](#vats).
 
 ---
 
-## Azimuth
+## Azimuth {#azimuth}
 
 Tools for managing PKI updates from [Azimuth][azimuth].
 
-### `+azimuth/block`
+### `+azimuth/block` {#azimuthblock}
 
 Print the most recent Ethereum block that has been processed.
 
@@ -479,7 +479,7 @@ This is a good way to check if your ship's somehow got behind on PKI state. If t
 
 ---
 
-### `:azimuth|listen`
+### `:azimuth|listen` {#azimuthlisten}
 
 Add a source for PKI updates for a list of ships.
 
@@ -510,7 +510,7 @@ The list of ships are those for which you want Azimuth updates from the specifie
 
 ---
 
-### `-azimuth-load`
+### `-azimuth-load` {#azimuth-load}
 
 Refetch and load Azimuth snapshot.
 
@@ -525,7 +525,7 @@ ship: processing azimuth snapshot (106.177 points)
 
 ---
 
-### `+azimuth/sources`
+### `+azimuth/sources` {#azimuthsources}
 
 List all Azimuth sources.
 
@@ -546,7 +546,7 @@ This will print a [`state-eth-node:jael`](https://docs.urbit.org/system/kernel/j
 
 ---
 
-### `:azimuth|watch`
+### `:azimuth|watch` {#azimuthwatch}
 
 Change node URL and network for Azimuth.
 
@@ -567,11 +567,11 @@ The first argument is the note URL in a cord like `'http://eth-mainnet.urbit.org
 
 ---
 
-## CLI Apps
+## CLI Apps {#cli-apps}
 
 These commands are for managing the dojo and other CLI apps.
 
-### `:dojo|acl`
+### `:dojo|acl` {#dojoacl}
 
 Show which ships you've allowed remote access to your dojo.
 
@@ -588,7 +588,7 @@ Show which ships you've allowed remote access to your dojo.
 
 ---
 
-### `:dojo|allow-remote-login`
+### `:dojo|allow-remote-login` {#dojoallow-remote-login}
 
 Allow a ship to `|dojo/link` your dojo.
 
@@ -625,7 +625,7 @@ Link ~zod's dojo on ~bus:
 
 ---
 
-### `:dojo|wipe`
+### `:dojo|wipe` {#dojowipe}
 
 Clear the dojo's subject.
 
@@ -649,7 +649,7 @@ dojo: hoon expression failed
 
 ---
 
-### `:dojo|revoke-remote-login`
+### `:dojo|revoke-remote-login` {#dojorevoke-remote-login}
 
 Revoke permission for a remote ship to `|dojo/link` your dojo.
 
@@ -681,7 +681,7 @@ ship
 
 ---
 
-### `|dojo/link`
+### `|dojo/link` {#dojolink}
 
 Connect a local or remote CLI app.
 
@@ -719,7 +719,7 @@ Note you can cycle between CLI apps with Ctrl+x. You can disconnect a CLI app wi
 
 ---
 
-### `|dojo/unlink`
+### `|dojo/unlink` {#dojounlink}
 
 Disconnect a local or remote CLI app.
 
@@ -751,11 +751,11 @@ Disconnect from a remote dojo session:
 
 ---
 
-## Developer tools
+## Developer tools {#developer-tools}
 
 These tools are mostly useful to developers or similarly technical people.
 
-### `.`
+### `.` {#}
 
 Make a jamfile and write to disk. A noun is jammed and then written to `pier/.urb/put/path/extension` using a `%sag` `%blit`, saving it as a jamfile.
 
@@ -786,7 +786,7 @@ This is the Nock formula for decrement. If you copy it from `/pier/.urb/put/decr
 99
 ```
 
-### `@`
+### `@` {#}
 
 Write atom to a file in binary.
 
@@ -804,7 +804,7 @@ path @
 
 will create a file called `test.atom` in `pier/.urb/put/test.atom`. The contents of this file is a binary representation of the atom, `1111011`.
 
-### `+ames/flows`
+### `+ames/flows` {#amesflows}
 
 Print details of [Ames][ames] flows by ship.
 
@@ -856,7 +856,7 @@ Top 2 ships:
 
 ---
 
-### `|ames/prod`
+### `|ames/prod` {#amesprod}
 
 Reset congestion control; re-send packets immediately.
 
@@ -882,7 +882,7 @@ If no argument is given, congestion control will be reset for all flows. Otherwi
 
 ---
 
-### `|ames/sift`
+### `|ames/sift` {#amessift}
 
 Filter Ames debug printing by ship.
 
@@ -914,7 +914,7 @@ Disable filtering:
 
 ---
 
-### `|ames/snub`
+### `|ames/snub` {#amessnub}
 
 Blacklist/whitelist ships in Ames.
 
@@ -956,7 +956,7 @@ Create a whitelist (and therefore block everyone else):
 
 ---
 
-### `+ames/timers`
+### `+ames/timers` {#amestimers}
 
 Print Ames message-pump timers by ship.
 
@@ -990,7 +990,7 @@ Print the top two ships:
 
 ---
 
-### `|ames/verb`
+### `|ames/verb` {#amesverb}
 
 Enable verbose Ames debug printing.
 
@@ -1020,7 +1020,7 @@ ames: ~nec: plea [[~zod 1] [~nec 1] bone=[0 %g /ge/hood]]
 
 ---
 
-### `|ames/wake`
+### `|ames/wake` {#ameswake}
 
 Clean up Ames timers.
 
@@ -1035,7 +1035,7 @@ Set timers for [Ames][ames] flows that lack them, cancel timers for Ames flows t
 
 ---
 
-### `+pill/brass`
+### `+pill/brass` {#pillbrass}
 
 Build a brass [pill][pill].
 
@@ -1081,7 +1081,7 @@ Export a brass pill with multiple desks:
 
 ---
 
-### `-build-cast`
+### `-build-cast` {#build-cast}
 
 Build a static mark conversion gate.
 
@@ -1103,7 +1103,7 @@ The [path][path] is of the format `%/from-mark/to-mark`. It must being with the 
 
 ---
 
-### `-build-file`
+### `-build-file` {#build-file}
 
 Build a Hoon file.
 
@@ -1125,7 +1125,7 @@ The [path][path] points to a [Hoon][hoon] file in [Clay][clay]. It must begin wi
 
 ---
 
-### `-build-mark`
+### `-build-mark` {#build-mark}
 
 Build a dynamic mark core.
 
@@ -1149,7 +1149,7 @@ The path is a [path prefix][path prefix] followed by the mark, like `%/txt`. The
 
 ---
 
-### `-build-nave`
+### `-build-nave` {#build-nave}
 
 Build a static mark core.
 
@@ -1173,7 +1173,7 @@ The path is a [path prefix][path prefix] followed by the mark, like `%/txt`. The
 
 ---
 
-### `-build-tube`
+### `-build-tube` {#build-tube}
 
 Build a dynamic mark conversion gate.
 
@@ -1197,7 +1197,7 @@ The [path][path] is of the format `%/from-mark/to-mark`. It must being with the 
 
 ---
 
-### `+dbug`
+### `+dbug` {#dbug}
 
 Query the state or [bowl][bowl] of a running agent.
 
@@ -1217,7 +1217,7 @@ This is only used with an `:agent`, not by itself.
 
 ---
 
-### `|gall/sear`
+### `|gall/sear` {#gallsear}
 
 Clear pending `move` queue from a ship.
 
@@ -1238,7 +1238,7 @@ The ship from which queued moves should be cleared.
 
 ---
 
-### `|gall/sift`
+### `|gall/sift` {#gallsift}
 
 Set Gall verbosity by agent.
 
@@ -1270,7 +1270,7 @@ Disable filtering:
 
 ---
 
-### `|gall/verb`
+### `|gall/verb` {#gallverb}
 
 Toggle Gall debug printing.
 
@@ -1303,7 +1303,7 @@ hi ~nec successful
 
 ---
 
-### `|pass`
+### `|pass` {#pass}
 
 Pass a task to a vane.
 
@@ -1364,7 +1364,7 @@ foo
 
 ---
 
-### `-read`
+### `-read` {#read}
 
 Read a file, local or remote.
 
@@ -1405,7 +1405,7 @@ Check for the existence of that same file:
 
 ---
 
-### `|eyre/serve`
+### `|eyre/serve` {#eyreserve}
 
 Bind a generator to a URL path.
 
@@ -1438,7 +1438,7 @@ In a Unix terminal, try requesting it:
 
 ---
 
-### `+pill/solid`
+### `+pill/solid` {#pillsolid}
 
 Build a solid [pill][pill].
 
@@ -1508,7 +1508,7 @@ vane: %khan: ~mosryp-donleg
 
 ---
 
-### `-test`
+### `-test` {#test}
 
 Run tests for a library.
 
@@ -1526,7 +1526,7 @@ Refer to the [Unit Test Guide](https://docs.urbit.org/userspace/apps/guides/unit
 
 ---
 
-### `+behn/timers`
+### `+behn/timers` {#behntimers}
 
 Print out currently running [Behn][behn] timers.
 
@@ -1546,11 +1546,11 @@ Print out currently running [Behn][behn] timers.
 
 ---
 
-## Filesystem (Basic)
+## Filesystem (Basic) {#filesystem-basic}
 
 These are basic tools for things like copying files, navigating directories, etc.
 
-### `+cat`
+### `+cat` {#cat}
 
 Read a file at the given location and print its contents in the dojo.
 
@@ -1609,7 +1609,7 @@ List the files in a directory:
 ```
 
 ---
-### `|cp`
+### `|cp` {#cp}
 
 Copy a file.
 
@@ -1652,7 +1652,7 @@ Let's list the files in the root of `%base`:
 
 ---
 
-### `=dir`
+### `=dir` {#dir}
 
 Change working directory.
 
@@ -1693,7 +1693,7 @@ To switch back to the default location (the root of the `%base` desk at its most
 
 ---
 
-### `+ls`
+### `+ls` {#ls}
 
 List files and directories at the specified location.
 
@@ -1728,7 +1728,7 @@ Note the [mark][mark] (file type/extension) is separated with a `/` rather than 
 
 ---
 
-### `+mv`
+### `+mv` {#mv}
 
 Move a file from one location to another.
 
@@ -1764,7 +1764,7 @@ Move it:
 
 ---
 
-### `|rm`
+### `|rm` {#rm}
 
 Delete a file.
 
@@ -1797,7 +1797,7 @@ Delete it:
 
 ---
 
-### `+tree`
+### `+tree` {#tree}
 
 Display all files in the given directory and its sub-directories.
 
@@ -1832,11 +1832,11 @@ The path must include the [path prefix][path prefix].
 ---
 
 
-## Filesystem (Advanced)
+## Filesystem (Advanced) {#filesystem-advanced}
 
 These are more advanced desk and filesystem tools.
 
-### `|clay/autocommit`
+### `|clay/autocommit` {#clayautocommit}
 
 Enable automatic commits for a mounted [desk][desk].
 
@@ -1875,7 +1875,7 @@ Back in the dojo:
 
 ---
 
-### `|clay/cancel-autocommit`
+### `|clay/cancel-autocommit` {#claycancel-autocommit}
 
 Cancel automatic commits for all mounted [desks][desk].
 
@@ -1890,7 +1890,7 @@ Note this will cancel automatic commits for all desks, it's not possible to targ
 
 ---
 
-### `|commit`
+### `|commit` {#commit}
 
 Commit changes to mounted [desk][desk].
 
@@ -1931,7 +1931,7 @@ Back in the dojo:
 
 ---
 
-### `|clay/fuse`
+### `|clay/fuse` {#clayfuse}
 
 Perform an octopus merge.
 
@@ -1971,7 +1971,7 @@ For usage details, you can run `|clay/fuse` without arguments and it'll print ou
 
 ---
 
-### `|clay/fuse-list`
+### `|clay/fuse-list` {#clayfuse-list}
 
 Print tracked fuse sources for a desk.
 
@@ -1987,7 +1987,7 @@ no ongoing fuse for %base
 
 ---
 
-### `|label`
+### `|label` {#label}
 
 Add a label to a [desk][desk] revision.
 
@@ -2021,7 +2021,7 @@ labeled /~zod/base/bar
 
 ---
 
-### `|merge`
+### `|merge` {#merge}
 
 Merge one desk into another.
 
@@ -2045,7 +2045,7 @@ merged with strategy %only-this
 
 ---
 
-### `|mount`
+### `|mount` {#mount}
 
 Mount a [desk][desk] or directory to the host filesystem.
 
@@ -2089,7 +2089,7 @@ The `/gen` directory is now accessible at `<pier>/gen` in the host filesystem.
 
 ---
 
-### `|new-desk`
+### `|new-desk` {#new-desk}
 
 Create a new [desk][desk] either from a blank template or from an existing desk.
 
@@ -2138,7 +2138,7 @@ The desk is now created in Clay.
 
 ---
 
-### `|clay/norm`
+### `|clay/norm` {#claynorm}
 
 Add a tombstone policy rule.
 
@@ -2184,7 +2184,7 @@ The [path][path] is to a file or directory on the given `desk` on the given `shi
 
 ---
 
-### `+clay/norms`
+### `+clay/norms` {#claynorms}
 
 Print tombstone policies for all desks.
 
@@ -2210,7 +2210,7 @@ Print tombstone policies for all desks.
 
 ---
 
-### `|pick`
+### `|pick` {#pick}
 
 Apply tombtoning policies; collect garbage.
 
@@ -2223,7 +2223,7 @@ Apply tombtoning policies; collect garbage.
 
 ---
 
-### `|private`
+### `|private` {#private}
 
 Make a [desk][desk], directory or file private (prevent remote ships from reading it).
 
@@ -2251,7 +2251,7 @@ The `desk` is mandatory, the [path][path] is optional. If specified, the `path` 
 
 ---
 
-### `|public`
+### `|public` {#public}
 
 Make a [desk][desk], directory or file publicly readable (allow remote ships to read it).
 
@@ -2277,7 +2277,7 @@ The `desk` is mandatory, the [path][path] is optional. If specified, the `path` 
 
 ---
 
-### `|sync`
+### `|sync` {#sync}
 
 Continuously merge into local desk from another local or remote desk.
 
@@ -2304,7 +2304,7 @@ kiln: sync succeeded from %webterm on ~bus to %webterm
 
 ---
 
-### `|syncs`
+### `|syncs` {#syncs}
 
 List currently active desk syncs.
 
@@ -2318,7 +2318,7 @@ kiln: sync configured from %webterm on ~bus to %webterm
 
 ---
 
-### `|tomb`
+### `|tomb` {#tomb}
 
 Tombstone a file at a particular revision.
 
@@ -2354,7 +2354,7 @@ tomb: [~tus %base /foo/txt 0vr.46d5h.ocj13.age48.mnpnd.567me.1f6uc.9haq8.5ihru.b
 
 ---
 
-### `|unmount`
+### `|unmount` {#unmount}
 
 Unmount a previously [mounted](#mount) desk or directory.
 
@@ -2379,7 +2379,7 @@ Unmount the `%base` desk:
 
 ---
 
-### `|unsync`
+### `|unsync` {#unsync}
 
 Stop syncing a desk with another.
 
@@ -2400,11 +2400,11 @@ kiln: ended autosync from %webterm on ~bus to %webterm
 ```
 
 ---
-## Miscellaneous
+## Miscellaneous {#miscellaneous}
 
 Miscellaneous utilities.
 
-### `+hello`
+### `+hello` {#hello}
 
 Hello, world.
 
@@ -2423,7 +2423,7 @@ term
 
 ---
 
-### `+help`
+### `+help` {#help}
 
 Display information about generators.
 
@@ -2450,7 +2450,7 @@ Show help message for a specific generator in `%base`:
 
 ---
 
-### `|hi`
+### `|hi` {#hi}
 
 Ping another ship with an optional message.
 
@@ -2496,7 +2496,7 @@ hi ~bus successful
 
 ---
 
-### `+sponsor`
+### `+sponsor` {#sponsor}
 
 Print out the sponsor of this ship.
 
@@ -2509,7 +2509,7 @@ Print out the sponsor of this ship.
 
 ---
 
-### `+keys`
+### `+keys` {#keys}
 
 Print the `life` (key revision number) and `rift` (continuity number aka factory reset number) for a ship.
 
@@ -2531,11 +2531,11 @@ ship
 
 ---
 
-## Moons
+## Moons {#moons}
 
 These tools are for spawning and managing [moons][moon].
 
-### `|moon`
+### `|moon` {#moon}
 
 Spawn a new moon.
 
@@ -2586,7 +2586,7 @@ Register an existing moon with the given public key:
 
 ---
 
-### `|moon-breach`
+### `|moon-breach` {#moon-breach}
 
 Breach (factory reset) a [moon][moon].
 
@@ -2621,7 +2621,7 @@ The `ship` is mandatory, it's the moon to breach. The `=rift` is optional, it's 
 
 ---
 
-### `|moon-cycle-keys`
+### `|moon-cycle-keys` {#moon-cycle-keys}
 
 Change the keys of a [moon][moon].
 
@@ -2667,11 +2667,11 @@ Rekey to a specific `life` and with a specific public key:
 
 ---
 
-## Spider
+## Spider {#spider}
 
 Tools for interacting with [threads][thread] and Spider.
 
-### `:spider|kill`
+### `:spider|kill` {#spiderkill}
 
 Kill all running threads.
 
@@ -2684,7 +2684,7 @@ Kill all running threads.
 
 ---
 
-### `:spider|poke`
+### `:spider|poke` {#spiderpoke}
 
 Poke a running thread.
 
@@ -2698,7 +2698,7 @@ The `@ta` is a thread ID of a running thread. The `mark` and `vase` are the data
 
 ---
 
-### `:spider|start`
+### `:spider|start` {#spiderstart}
 
 Start a thread.
 
@@ -2722,7 +2722,7 @@ Note this tool looks for the thread in the *current desk*, so you'll have to cha
 
 ---
 
-### `:spider|stop`
+### `:spider|stop` {#spiderstop}
 
 Stop a running thread.
 
@@ -2736,7 +2736,7 @@ The `@ta` is a thread ID of a running thread.
 
 ---
 
-### `+spider/tree`
+### `+spider/tree` {#spidertree}
 
 List all currently running threads.
 
@@ -2749,11 +2749,11 @@ List all currently running threads.
 
 ---
 
-## System
+## System {#system}
 
 System information and management tools.
 
-### `|automass`
+### `|automass` {#automass}
 
 Print memory reports periodically.
 
@@ -2789,7 +2789,7 @@ sweep: MB/176.019.156
 
 ---
 
-### `|cancel-automass`
+### `|cancel-automass` {#cancel-automass}
 
 Cancel periodic memory reports (enabled by [`|automass`](#automass)).
 
@@ -2802,7 +2802,7 @@ Cancel periodic memory reports (enabled by [`|automass`](#automass)).
 
 ---
 
-### `+code`
+### `+code` {#code}
 
 Print out your web login code.
 
@@ -2815,7 +2815,7 @@ lidlut-tabwed-pillex-ridrup
 
 ---
 
-### `|code`
+### `|code` {#code}
 
 Change your web login code.
 
@@ -2861,7 +2861,7 @@ use |code %reset to invalidate this and generate a new code
 
 ---
 
-### `-code`
+### `-code` {#code}
 
 Print out your web login code (with leading `~`).
 
@@ -2874,7 +2874,7 @@ Print out your web login code (with leading `~`).
 
 ---
 
-### `|eyre/cors/approve`
+### `|eyre/cors/approve` {#eyrecorsapprove}
 
 Approve a CORS origin.
 
@@ -2913,7 +2913,7 @@ The argument is a [cord][cord] containing the origin to approve.
 
 ---
 
-### `+eyre/cors/registry`
+### `+eyre/cors/registry` {#eyrecorsregistry}
 
 Print approved, rejected and requested CORS origins.
 
@@ -2929,7 +2929,7 @@ Print approved, rejected and requested CORS origins.
 
 ---
 
-### `|eyre/cors/reject`
+### `|eyre/cors/reject` {#eyrecorsreject}
 
 Reject a CORS origin.
 
@@ -2959,7 +2959,7 @@ The argument is a [cord][cord] containing the origin to reject.
 
 ---
 
-### `-dns-address`
+### `-dns-address` {#dns-address}
 
 Request a `<ship>.arvo.network` subdomain and configure SSL.
 
@@ -2988,7 +2988,7 @@ dns: confirmed access via ralnup-ribsyr.arvo.network
 
 ---
 
-### `|exit`
+### `|exit` {#exit}
 
 Shut down this ship.
 
@@ -3003,7 +3003,7 @@ Shut down this ship.
 
 ---
 
-### `|knob`
+### `|knob` {#knob}
 
 Adjust [vane][vane] error verbosity.
 
@@ -3061,7 +3061,7 @@ Hush:
 
 ---
 
-### `|mass`
+### `|mass` {#mass}
 
 Print a memory report.
 
@@ -3079,7 +3079,7 @@ sweep: MB/176.019.156
 
 ---
 
-### `|meld`
+### `|meld` {#meld}
 
 Deduplicate memory.
 
@@ -3108,7 +3108,7 @@ pier: meld complete
 
 ---
 
-### `|pack`
+### `|pack` {#pack}
 
 Defragment memory.
 
@@ -3126,7 +3126,7 @@ pier: pack complete
 ---
 
 
-### `|rekey`
+### `|rekey` {#rekey}
 
 Rotate private keys.
 
@@ -3152,7 +3152,7 @@ This is the long code inside the `sampel-palnet-1.key` file you downloaded from 
 
 ---
 
-### `|verb`
+### `|verb` {#verb}
 
 Toggle kernel event tracing verbose mode.
 
@@ -3187,7 +3187,7 @@ Run `|verb` again to turn it off.
 
 ---
 
-### `|trim`
+### `|trim` {#trim}
 
 Trim kernel state.
 

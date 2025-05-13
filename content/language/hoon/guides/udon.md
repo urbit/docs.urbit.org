@@ -6,7 +6,7 @@ Udon files are compiled to `manx`es (Urbit's XHTML/XML representation), so can e
 
 This document will walk through the basics of Udon and its syntax.
 
-## Basic example
+## Basic example {#basic-example}
 
 Here's an example of an Udon file and its various allowed syntax.
 
@@ -15,9 +15,9 @@ Here's an example of an Udon file and its various allowed syntax.
 
 # H1
 
-## H2
+## H2 {#h2}
 
-### H3
+### H3 {#h3}
 
 #### H4
 
@@ -70,7 +70,7 @@ be rendered as inline code.
 ==
 ````
 
-## Syntax summary
+## Syntax summary {#syntax-summary}
 
 - The first line of a `.udon` document *must* be a single rune: `;>`. This tells the compiler to interpret everything following as udon.
 - **Paragraphs**: Content on a single line will be made into a paragraph. Paragraphs may be hard-wrapped, so consecutive lines of text will become a single paragraph. The paragraph will be ended by an empty line or other block element.
@@ -96,7 +96,7 @@ Note that Udon is quite strict on its syntax, and may fail to parse if it's inco
   
 {% endhint %}
 
-## Udon Mode
+## Udon Mode {#udon-mode}
 
 An Udon file has a `.udon` extension (an `%udon` mark).
 
@@ -121,6 +121,6 @@ Note you may want to provide more than just `..zuse` in the subject (like a `bow
 
 You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](../reference/rune/fas.md#-fastar) specifying an `%elem` mark (which produces a `manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
 
-## Examples
+## Examples {#examples}
 
 The [Docs App](https://urbit.org/applications/~pocwet/docs) includes a [a few files written in Udon](https://github.com/tinnus-napbus/docs-app/tree/main/bare-desk/doc) which are useful as a reference.

@@ -17,11 +17,11 @@ In the [Bertrand Meyer tradition of type theory](https://en.wikipedia.org/wiki/O
 This lesson discusses both genericity and variance for core management. These two sections may be read separately or in either order, and all of this content is not a requirement for working extensively with Gall agents.  If you're just starting off, [wet gates](../../glossary/wet-gate.md) (genericity) make the most sense to have in your toolkit now.
 
 
-##  Genericity
+## Genericity {#genericity}
 
 Polymorphism is a programming concept that allows a piece of code to use different types at different times.  It's a common technique in most languages to make code that can be reused for many different situations, and Hoon is no exception.
 
-### Dry Cores
+### Dry Cores {#dry-cores}
 
 A dry gate is the kind of gate that you're already familiar with:  a one-armed [core](../../glossary/core.md) with a sample.  A [wet gate](../../glossary/wet-gate.md) is also a one-armed core with a [sample](../../glossary/sample.md), but there is a difference in how types are handled.  With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the [gate](../../glossary/gate.md); if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) error.
 
@@ -31,7 +31,7 @@ There is a type check for each [arm](../../glossary/arm.md) of a dry core, inten
 
 When the `$` buc arm of a dry [gate](../../glossary/gate.md) is evaluated it takes its parent core—the dry gate itself—as the [subject](../../glossary/subject.md), often with a modified sample value.  But any change in sample type should be conservative; the modified sample value must be of the same type as the default sample value (or possibly a subtype).  When the `$` buc arm is evaluated it should have a subject of a type it knows how to use.
 
-### Wet Gates
+### Wet Gates {#wet-gates}
 
 When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site.  In other words, for a wet gate, we ask:  “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified `payload`?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”—they defer the actual substitution in the [sample](../../glossary/sample.md).  Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
 
@@ -59,7 +59,7 @@ Wet gates are therefore used when incoming type information is not well known an
 
 - [~timluc-miptev, “Wet Gates”](https://blog.timlucmiptev.space/wetgates.html)
 
-### Exercise:  The Trapezoid Rule
+### Exercise:  The Trapezoid Rule {#exercise-the-trapezoid-rule}
 
 The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a definite integral.  It approximates the area under the curve by a trapezoid or (commonly) a series of trapezoids.  The rule requires a function as one of the inputs, i.e. it applies _for a specific function_.  We will use [wet gates](../../glossary/wet-gate.md) to accomplish this without stripping type information of the input [gate](../../glossary/gate.md) core.
 
@@ -125,7 +125,7 @@ This returns the value in the `unit` since we now know it exists.
 
 `++need` is wet because we don't want to lose type information when we extract from the `unit`.
 
-### Parametric Polymorphism
+### Parametric Polymorphism {#parametric-polymorphism}
 
 We encountered `|$` [barbuc](../../language/hoon/reference/rune/bar.md#-barbuc) above as a [wet gate](../../glossary/wet-gate.md) that is a mold builder rune which takes in a list of [molds](../../glossary/mold.md) and produces a new mold.  Here we take another look at this rune as an implementation of _parametric polymorphism_ in Hoon.
 
@@ -162,7 +162,7 @@ Conversely, a `(list *)` should not nest under `(list @)`, because `*` does not 
 nest-fail
 ```
 
-### Drying Out a Gate
+### Drying Out a Gate {#drying-out-a-gate}
 
 Some functional tools like [++cury](../../language/hoon/reference/stdlib/2n.md#cury) don't work with [wet gates](../../glossary/wet-gate.md).  It is, however, possible to “dry out“ a wet gate using [++bake](../../language/hoon/reference/stdlib/2b.md#bake):
 
@@ -178,7 +178,7 @@ mull-grow
 Typically it's better to find another way to express your problem than to `++bake` a wet gate, however.  As we said before, wet gates are powerful and for that reason not apt for every purpose.
 
 
-##  Variance
+## Variance {#variance}
 
 Dry polymorphism works by substituting [cores](../../glossary/core.md). Typically, one core is used as the interface definition, then replaced with another core which does something useful.
 
@@ -213,7 +213,7 @@ would be nice to explain similar to aura nesting rules, but at the core level
 https://medium.com/@thejameskyle/type-systems-covariance-contravariance-bivariance-and-invariance-explained-35f43d1110f8
 -->
 
-### `%zinc` Covariance
+### `%zinc` Covariance {#zinc-covariance}
 
 Covariance means that specific types nest inside of generic types: `%tree` nests inside of `%plant`.  Covariant data types are sources, or read-only values.
 
@@ -240,7 +240,7 @@ Informally, a function fits an interface if the function has a more specific res
 
 The `^&` [ketpam](../../language/hoon/reference/rune/ket.md#-ketpam) rune converts a core to a `%zinc` covariant core.
 
-### `%iron` Contravariance
+### `%iron` Contravariance {#iron-contravariance}
 
 Contravariance means that generic types nest inside of specific types. Contravariant data types are sinks, or write-only values.
 
@@ -254,7 +254,7 @@ For instance, the archetypal [Gall](../../glossary/gall.md) agents in `/sys/lull
 
 The `|~` [barsig](../../language/hoon/reference/rune/bar.md#-barsig) rune produces an iron gate.  The `^|` [ketbar](../../language/hoon/reference/rune/ket.md#-ketbar) rune converts a `%gold` invariant core to an iron core.
 
-### `%lead` Bivariance
+### `%lead` Bivariance {#lead-bivariance}
 
 Bivariance means that both covariance and contravariance apply. Bivariant data types have an opaque [payload](../../glossary/payload.md) that can neither be read or written to.
 
@@ -270,7 +270,7 @@ For instance, several archetypal cores in `/sys/lull.hoon` which define operatio
 
 The `|?` [barwut](../../language/hoon/reference/rune/bar.md#-barwut) rune produces a lead trap.  The `^?` [ketwut](../../language/hoon/reference/rune/ket.md#-ketwut) rune converts any core to a `%lead` bivariant core.
 
-### `%gold` Invariance
+### `%gold` Invariance {#gold-invariance}
 
 Invariance means that type nesting is disallowed.  Invariant data types have a read-write [payload](../../glossary/payload.md).
 
@@ -279,7 +279,7 @@ A `%gold` [core](../../glossary/core.md) `g` has a read-write payload; another c
 By default, cores are `%gold` invariant cores.
 
 
-### Illustrations
+### Illustrations {#illustrations}
 
 #### Tutorial:  `%gold` Invariant Polymorphism
 
@@ -694,6 +694,6 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 
 This example is a bit overkill for simply calculating the Fibonacci series, but it illustrates how you could use `%lead` cores.  Instead of `++fib`, you can supply any infinite sequence and `++stream` will correctly handle it.
 
-### Exercise:  `%lead` Bivariant Polymorphism
+### Exercise:  `%lead` Bivariant Polymorphism {#exercise-lead-bivariant-polymorphism}
 
 - Produce a `%say` [generator](../../glossary/generator.md) that yields another self-referential sequence, like the [Lucas numbers](https://en.wikipedia.org/wiki/Lucas_number) or the [Thue–Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).

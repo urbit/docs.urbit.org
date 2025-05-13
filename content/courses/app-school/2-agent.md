@@ -4,11 +4,11 @@ In this lesson we'll look at the basic type and structure of a Gall agent.
 
 A Gall agent is a [door](../../glossary/door.md) with exactly ten [arms](../../glossary/arm.md). Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a [core](../../glossary/core.md) with a sample - it's made with the [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune (`|_`) instead of the usual [barcen](../../language/hoon/reference/rune/bar.md#-barcen) rune (`|%`).
 
-## The ten arms
+## The ten arms {#the-ten-arms}
 
 We'll discuss each of the arms in detail later. For now, here's a quick summary. The arms of an agent can be be roughly grouped by purpose:
 
-### State management
+### State management {#state-management}
 
 These arms are primarily for initializing and upgrading an agent.
 
@@ -16,7 +16,7 @@ These arms are primarily for initializing and upgrading an agent.
 - `on-save`: Handles exporting an agent's state - typically as part of the upgrade process but also when suspending, uninstalling and debugging.
 - `on-load`: Handles loading a previously exported agent state - typically as part of the upgrade process but also when resuming or reinstalling an agent.
 
-### Request handlers
+### Request handlers {#request-handlers}
 
 These arms handle requests initiated by outside entities, e.g. other agents, HTTP requests from the front-end, etc.
 
@@ -24,34 +24,34 @@ These arms handle requests initiated by outside entities, e.g. other agents, HTT
 - `on-watch`: Handles subscription requests from other entities.
 - `on-leave`: Handles unsubscribe notifications from other, previously subscribed entities.
 
-### Response handlers
+### Response handlers {#response-handlers}
 
 These two arms handle responses to requests our agent previously initiated.
 
 - `on-agent`: Handles request acknowledgements and subscription updates from other agents.
 - `on-arvo`: Handles responses from vanes.
 
-### Scry handler
+### Scry handler {#scry-handler}
 
 - `on-peek`: Handles local read-only requests.
 
-### Failure handler
+### Failure handler {#failure-handler}
 
 - `on-fail`: Handles certain kinds of crash reports from Gall.
 
-## Bowl
+## Bowl {#bowl}
 
 The sample of a Gall agent door is always a `bowl:gall`. Every time an event triggers the agent, Gall populates the bowl with things like the current date-time, fresh entropy, subscription information, which ship the request came from, etc, so that all the arms of the agent have access to that data. For the exact structure and contents of the bowl, have a read through [its entry in the Gall vane types documentation](../../system/kernel/gall/reference/data-types.md#bowl).
 
 One important thing to note is that the bowl is only repopulated when there's a new Arvo event. If a local agent or web client were to send multiple messages to your agent at the same time, these would all arrive in the same event. This means if your agent depended on a unique date-time or entropy to process each message, you could run into problems if your agent doesn't account for this possibility.
 
-## State
+## State {#state}
 
 If you've worked through [Hoon School](../hoon-school), you may recall that a core is a cell of `[battery payload]`. The battery is the core itself compiled to Nock, and the payload is the subject which it operates on.
 
 For an agent, the payload will at least contain the bowl, the usual Hoon and `zuse` standard library functions, and the **state** of the agent. For example, if your agent were for an address book app, it might keep a `map` of ships to address book entries. It might add entries, delete entries, and modify entries. This address book `map` would be part of the state stored in the payload.
 
-## Transition function
+## Transition function {#transition-function}
 
 If you recall from the prologue, the whole Arvo operating system works on the basis of a simple transition function `(event, oldState) -> (effects, newState)`. Gall agents also function the same way. Eight of an agent's ten arms produce the same thing, a cell of:
 
@@ -66,13 +66,13 @@ It goes something like this:
 4. Gall sends the `card`s off and saves the modified agent core.
 5. Rinse and repeat.
 
-## Virtualization
+## Virtualization {#virtualization}
 
 When a crash occurs in the kernel, the system usually aborts the computation and discards the event as though it never happened. Gall on the other hand virtualizes all its agents, so this doesn't happen. Instead, when a crash occurs in an agent, Gall intercepts the crash and takes appropriate action depending on the kind of event that caused it. For example, if a poke from another ship caused a crash in the `on-poke` arm, Gall will respond to the poke with a "nack", a negative acknowledgement, telling the original ship the poke was rejected.
 
 What this means is that you can intentionally design your agent to crash in cases it can't handle. For example, if a poke comes in with an unexpected `mark`, it crashes. If a permission check fails, it crashes. This is quite different to most programs written in procedural languages, which must handle all exceptions to avoid crashing.
 
-## Example
+## Example {#example}
 
 Here's about the simplest valid Gall agent:
 
@@ -215,7 +215,7 @@ If we again examine our agent core's payload by looking at the tail of `skeleton
 ]
 ```
 
-## Summary
+## Summary {#summary}
 
 - A Gall agent is a door with exactly ten specific arms and a sample of `bowl:gall`.
 - Each of the ten arms handle different kinds of events - Gall calls the
@@ -229,7 +229,7 @@ If we again examine our agent core's payload by looking at the tail of `skeleton
 - The state of an agent—the data it's storing—lives in the core's payload.
 - Most arms produce a list of effects called `card`s, and a new agent core with a modified state in its payload.
 
-## Exercises
+## Exercises {#exercises}
 
 - Run through the [Example](#example) yourself on a fake ship if you've not done so already.
 - Have a look at the [`bowl` entry in the Gall data types documentation](../../system/kernel/gall/reference/data-types.md#bowl) if you've not done so already.

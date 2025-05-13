@@ -6,7 +6,7 @@ The Ethereum address that has full powers over a given Urbit identity, including
 
 If a proxy or ownership address is compromised or has its keys lost, it can always be rederived using the master ticket, which is the piece of entropy that was initially used to derive the HD wallet.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [The Azimuth concepts page](../system/identity): A more in-depth explanation of Azimuth.
 - [Urbit HD Wallet](../system/identity/concepts/hd-wallet.md): An in-depth explanation of the HD wallet.

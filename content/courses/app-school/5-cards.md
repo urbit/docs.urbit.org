@@ -2,7 +2,7 @@
 
 As we previously discussed, most arms of an agent core produce a cell of `[effects new-agent-core]`, and the type we use for this is typically `(quip card _this)`. We've covered `_this`, but we haven't yet looked at `card` effects in detail. That's what we'll do here. In explaining `card`s we'll touch on some concepts relating to the mechanics of pokes, subscriptions and other things we've not yet covered. Don't worry if you don't understand how it all fits together yet, we just want to give you a basic idea of `card`s so we can then dig into how they work in practice.
 
-## `card` type
+## `card` type {#card-type}
 
 The `card:agent:gall` type (henceforth just `card`) has a slightly complex structure, so we'll walk through it step-by-step.
 
@@ -32,7 +32,7 @@ Gall will not accept a `%slip`, so we can ignore that. A `card`, then, is one of
 
 We'll consider each separately.
 
-## `%pass`
+## `%pass` {#pass}
 
 ```hoon
 [%pass wire note]
@@ -68,7 +68,7 @@ The type of the next field is a `note:agent:gall` (henceforth just `note`), whic
 - The other notes are for [remote scry](../../userspace/apps/guides/remote-scry.md).
 
 
-### `task`
+### `task` {#task}
 
 A `task:agent:gall` (henceforth just `task`) is defined in `lull.hoon` as:
 
@@ -110,7 +110,7 @@ The `%poke-as` task is the same as `%poke` except Gall will convert the `mark` i
 
 ![poke card examples](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
 
-### `note-arvo`
+### `note-arvo` {#note-arvo}
 
 A `note-arvo` is defined in `lull.hoon` like so:
 
@@ -138,7 +138,7 @@ The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Cl
 
 ![arvo card examples](https://media.urbit.org/guides/core/app-school/arvo-cards.svg)
 
-## `%give`
+## `%give` {#give}
 
 ```hoon
 [%give gift]
@@ -159,7 +159,7 @@ A `%give` card contains a `gift:agent:gall` (henceforth just `gift`), which is d
 
 These can be divided into two categories:
 
-### Acknowledgements
+### Acknowledgements {#acknowledgements}
 
 `%watch-ack` is sent in response to a `%watch` or `%watch-as` request, and `%poke-ack` is sent in response to a `%poke` or `%poke-as` request. If the `(unit tang)` is null, it's an ack - a positive acknowledgement. If the `(unit tang)` is non-null, it's a nack - a negative acknowledgement, and the `tang` contains an error message. Gall automatically sends a nack with a stack trace if your agent crashes while processing the request, and automatically sends an ack if it does not. Therefore, you would not explicitly produce a `%watch-ack` or `%poke-ack` gift.
 
@@ -167,7 +167,7 @@ These can be divided into two categories:
 
 ![ack card examples](https://media.urbit.org/guides/core/app-school/ack-cards.svg)
 
-### Subscriptions
+### Subscriptions {#subscriptions}
 
 `%fact` and `%kick` are both sent out to existing subscribers - entities that have previously `%watch`ed a path on your ship.
 
@@ -179,12 +179,12 @@ A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which i
 
 ![gift card examples](https://media.urbit.org/guides/core/app-school/gift-cards.svg)
 
-## Summary
+## Summary {#summary}
 
 Here's a diagram that summarizes the different kinds of `card`s:
 
 [![card diagram](https://media.urbit.org/guides/core/app-school/card-diagram.svg)](https://media.urbit.org/guides/core/app-school/card-diagram.svg)
 
-## Exercises
+## Exercises {#exercises}
 
 - Have a read of the [`wire`](types.md#wire) and [`path`](types.md#path) entries in the type reference.

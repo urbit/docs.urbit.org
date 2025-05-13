@@ -2,7 +2,7 @@
 
 Miscellaneous useful macros.
 
-## `;:` "miccol"
+## `;:` "miccol" {#miccol}
 
 Call a binary function as an n-ary function.
 
@@ -93,7 +93,7 @@ Irregular form:
 
 ---
 
-## `;<` "micgal"
+## `;<` "micgal" {#micgal}
 
 Monadic do notation.
 
@@ -165,7 +165,7 @@ Here we see the result of chaining them together:
 
 ---
 
-## `;+` "miclus"
+## `;+` "miclus" {#miclus}
 
 make a single XML node (Sail)
 
@@ -226,7 +226,7 @@ One interesting thing about Sail is that it allows you to use complex Hoon expre
 
 ---
 
-## `;;` "micmic"
+## `;;` "micmic" {#micmic}
 
 Mold noun.
 
@@ -298,7 +298,7 @@ Using micmic instead:
 
 ---
 
-## `;/` "micfas"
+## `;/` "micfas" {#micfas}
 
 Tape as XML element.
 
@@ -331,7 +331,7 @@ One argument, fixed.
 
 ---
 
-## `;~` "micsig"
+## `;~` "micsig" {#micsig}
 
 Glue a pipeline together with a product-sample adapter.
 
@@ -469,7 +469,7 @@ A more complicated example:
 
 ---
 
-## `;*` "mictar"
+## `;*` "mictar" {#mictar}
 
 make a list of XML nodes from complex Hoon expression (Sail)
 
@@ -523,7 +523,7 @@ If you need a complex Hoon expression to produce a `marl`, use the `;*` rune. Of
 
 ---
 
-## `;=` "mictis"
+## `;=` "mictis" {#mictis}
 
 make a list of XML nodes (Sail)
 

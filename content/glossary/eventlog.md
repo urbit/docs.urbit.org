@@ -12,6 +12,6 @@ Persistence, in the context of storing data in a computer system, means that dat
 
 The initial entries of the event log are created during the bootstrap sequence contained in a [Pill](pill.md).
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Pier](pier.md): The directory on disk which contains the ship's state.

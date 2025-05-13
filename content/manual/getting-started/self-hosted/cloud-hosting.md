@@ -6,7 +6,7 @@ Most Urbit users start out running their ship locally on one machine in order to
 
 This guide uses Digital Ocean as the cloud provider, but others can be used. If using another provider, the setup script provided and other server configuration instructions may need to be modified or done manually.
 
-## 1. Create a Droplet
+## 1. Create a Droplet {#1-create-a-droplet}
 
 Create an account on [Digital Ocean](https://digitalocean.com). Once you make an account, choose "Deploy a virtual machine".
 
@@ -123,7 +123,7 @@ Leave as the default.
 
 Hit this button to create the droplet.
 
-## 2. Prepare for upload
+## 2. Prepare for upload {#2-prepare-for-upload}
 
 {% hint style="info" %}
 
@@ -137,7 +137,7 @@ In the Dojo, use either `"CTRL + D"` or `|exit` to shut down your ship.
 
 Archive your pier by running `tar cvzf riclen-tinlyr.tar.gz ~/path/to/your/pier` (substitute your own ship name and pier location).
 
-## 3. Connect to the server
+## 3. Connect to the server {#3-connect-to-the-server}
 
 To make connecting simple, you can add an alias to `~/.ssh/config` on your local machine. Open `~/.ssh/config` in an editor (you may need to create it if the file doesn't exist), and add the following to the bottom of the file (replacing the ship name with your own and the IP address with that of your droplet):
 
@@ -213,7 +213,7 @@ ssh riclen-tinlyr
 ```
 You'll be taken to the shell on your server.
 
-## 5. Boot your ship
+## 5. Boot your ship {#5-boot-your-ship}
 
 {% tabs %}
 
@@ -291,7 +291,7 @@ Now you can start your ship up with the following:
 
 After a few moments it'll show the Dojo prompt like `~riclen-tinlyr:dojo>`.
 
-## 6. Get a domain
+## 6. Get a domain {#6-get-a-domain}
 
 To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo, replacing the IP address with your droplet's:
 
@@ -340,7 +340,7 @@ http: loopback live on http://localhost:12321
 
 That means the domain has been registered and an SSL certificate has been installed, so you can access the web interface securely with HTTPS.
 
-## 7. Log in to Landscape
+## 7. Log in to Landscape {#7-log-in-to-landscape}
 
 In order to login to the web interface, you need to get the web login code. Run the following in the Dojo:
 
@@ -356,7 +356,7 @@ The server configuration should now be complete, and you can access Landscape in
 
 Enter the web login code and you'll be taken to your ship's homescreen. Your ship is now running in the cloud, and you can access it from any device by visiting its URL.
 
-## 8. Disconnect
+## 8. Disconnect {#8-disconnect}
 
 You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the ship will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
@@ -366,14 +366,14 @@ tmux a
 
 Finally, you can disconnect from the ssh session completely by hitting `CTRL+d`.
 
-## 9. Cleanup
+## 9. Cleanup {#9-cleanup}
 
 If you booted a new ship by uploading a key file, it's a good idea to now delete the key file on your local machine.
 
 If you uploaded an existing pier, you should delete the old copy of both the pier directory and the `.tar.gz` archive on your local machine. You might be tempted to keep one of these as a backup, but note that **you must never again boot the old copy on the live network**. Doing so will create unfixable networking problems and require you to perform a factory reset through Bridge, wiping your ship's data. We therefore don't recommend you keep duplicates of your pier lying around.
 
 
-## Next steps
+## Next steps {#next-steps}
 
 - Kep your Urbit runtime up-to-date to take advantage of the latest Landscape and Application over-the-air updates.  See [Step #5 in the CLI guide](cli.md#5-runtime-upgrades) to update your runtime.
 

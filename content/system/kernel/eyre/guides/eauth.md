@@ -2,7 +2,7 @@
 
 EAuth is a system built into [Eyre](../../../../glossary/eyre.md) which allows one [ship](../../../../glossary/ship.md) to log into the web interface of another. Once logged in, all requests through Eyre will appear to Gall [agents](../../../../glossary/agent.md) as having come from the foreign ship, in the `src` of the [bowl](../../../../glossary/bowl.md). The agents can apply whatever logic they want based on the foreign `src`. Most Urbit apps (including Landscape) don't currently allow requests from anyone but the local ship. Nevertheless, EAuth has many potential useful applications, such as a allowing comments from other ships on a public-facing Urbit-hosted blog.
 
-## When to use
+## When to use {#when-to-use}
 
 [Landscape](../../../../glossary/landscape.md) and its `%docket` agent don't currently support access from foreign ships. You therefore cannot provide an app-launcher interface to foreign ships, nor serve them an ordinary [globbed](../../../../glossary/glob.md) front-end. This leaves three potential use-cases:
 
@@ -12,7 +12,7 @@ EAuth is a system built into [Eyre](../../../../glossary/eyre.md) which allows o
 
  The first case is the most common one.
 
-## How it works
+## How it works {#how-it-works}
 
 1.  Eyre's `/~/login` endpoint receives an HTTP POST request asking for EAuth login with `~sampel-palnet`.
 2.  Eyre asks `~sampel-palnet` for its EAuth endpoint URL.
@@ -29,7 +29,7 @@ There are some additional semantics around tokens and nonces to associate sessio
 
 The user can logout from the session with a simple GET request to Eyre's `/~/logout` endpoint.
 
-## How to use it
+## How to use it {#how-to-use-it}
 
 The HTTP POST request to initiate an EAuth login request is very simple. It's made to the `/~/login` URL of your ship, and its body is standard `form-data` query parameter encoding. The three fields are:
 
@@ -43,7 +43,7 @@ In order to log out, you can simply make an HTTP GET request to `/~/logout`. The
 
 In general, you'll want to serve an initial fully public page that gives the user the opportunity to login. Once logged in, you can then serve identity-specific data.
 
-## The endpoint
+## The endpoint {#the-endpoint}
 
 Ships implicitly determine the host for the EAuth endpoint URL by looking at the `Host` header of the HTTP request of the last successful login attempt.
 
@@ -60,7 +60,7 @@ If `host` is null it unsets any previous explicitly set host. Otherwise, it sets
 Most of the time, Urbit does a good job at guessing what the ship's URL is in sufficient detail for Eauth (remote login) to work correctly.  Sometimes, however, the address must be supplied explicitly (per the above) for things to work.
 
 
-## Errors
+## Errors {#errors}
 
 When an EAuth login attempt is initiated with an HTTP POST request, a response will not be returned until your ship can contact the remote ship for its EAuth endpoint. If the ship is unknown, it may take a little time to discover a route. If the ship cannot be contacted, the request will eventually time out and return a 50x error message. If the foreign ship *does* respond, but it doesn't have any EAuth endpoint set, it will also fail.
 

@@ -10,6 +10,6 @@ The _protocol_ indicates what kind of thing of the claim is. `Twitter` for a Twi
 
 Points are limited to a maximum of 16 claims. It's good practice to remove any claims associated with a ship when it is about to be transferred to a new owner.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [The Claims contract](https://github.com/urbit/azimuth/blob/master/contracts/Claims.sol): The code on GitHub.

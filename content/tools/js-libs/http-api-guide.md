@@ -241,35 +241,46 @@ This example lets you "hi" your ship with a given message, which will be printed
   </head>
   <body>
     <input id="msg" type="text" placeholder="Message for ship" />
-    <button id="submit" type="button" onClick="doPoke()" >Submit</button>
-    <p id="err"></p>
+    <button id="submit" type="button" onClick="doPoke()">Submit</button>
+    <p id="status"></p>
   </body>
   <script>
-    document.getElementById("msg")
-      .addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) {
-          document.getElementById("submit").click();
-        }
-      })
+    document.getElementById("msg").addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        document.getElementById("submit").click();
+      }
+    });
+
     const api = new UrbitHttpApi.Urbit("");
-    api.ship = window.ship;
+    api.ship = "zod";
+    api.url = "http://localhost:8080";
+    api.code = "lidlut-tabwed-pillex-ridrup";
+
     function doPoke() {
       const msg = document.getElementById("msg").value;
-      api.poke({
-        app: "hood",
-        mark: "helm-hi",
-        json: msg,
-        onSuccess: success,
-        onError: error
-      });
+
+      try {
+        api.poke({
+          app: "hood",
+          mark: "helm-hi",
+          json: msg,
+          onSuccess: success,
+          onError: error,
+        });
+      } catch (err) {
+        document.getElementById("status").innerHTML =
+          "Poke error: " + err.message;
+      }
     }
+
     function success() {
       document.getElementById("msg").value = "";
-      document.getElementById("err").innerHTML = "";
+      document.getElementById("status").innerHTML = "Poke succeeded!";
     }
-    function error() {
+
+    function error(err) {
       document.getElementById("msg").value = "";
-      document.getElementById("err").innerHTML = "Poke failed!";
+      document.getElementById("status").innerHTML = "Poke failed!";
     }
   </script>
 </html>

@@ -1,4 +1,4 @@
-# Jael {#jael}
+# Jael
 
 Jael is the networking key infrastructure vane.
 

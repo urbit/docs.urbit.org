@@ -1,18 +1,18 @@
-# Wings {#wings}
+# Wings
 
 `[%wing p=(list limb)]`
 
 A wing is a limb search path into the subject.
 
-## Produces {#produces}
+## Produces
 
 A wing is a list of limbs (including a trivial list of one limb).  The limbs are resolved in succession.  The result of the last limb resolution is the value produced by the wing expression.
 
-## Syntax {#syntax}
+## Syntax
 
 Irregular: `a.b.c`.  Read this as '`a` in `b` in `c`'. Finds limb `a` within limb `b` within limb `c` of the subject.
 
-## Discussion {#discussion}
+## Discussion
 
 Intuitively, Hoon wings are written in the opposite order from attribute dot-paths in most languages.  Hoon `a.b.c` is Java's `c.b.a`; it means "a within b within c."
 
@@ -20,7 +20,7 @@ Any item in the wing can resolve to a leg (fragment) or arm (computation).  But 
 
 The mysterious idiom `..b` produces the leg `b` if `b` is a leg; the core exporting `b` if `b` is an arm.  Since `.` is the same limb as `+`, `..b` is the same wing as `+1.foo`.
 
-## Examples {#examples}
+## Examples
 
 ```
 ~zod:dojo> =a [fod=3 bat=[baz=1 moo=2]]
@@ -32,7 +32,7 @@ The mysterious idiom `..b` produces the leg `b` if `b` is a leg; the core export
 2
 ```
 
-## Wing Resolution {#wing-resolution}
+##  Wing Resolution
 
 There are two common syntaxes used to resolve a wing path into the current subject:  `.` dot and `:` col.
 

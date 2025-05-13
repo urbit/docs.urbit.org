@@ -1,4 +1,4 @@
-# Galaxy {#galaxy}
+# Galaxy
 
 A **galaxy** can be one of two related things:
 

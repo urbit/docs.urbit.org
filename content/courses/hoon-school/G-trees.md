@@ -1,8 +1,8 @@
-# 6. Trees and Addressing {#6-trees-and-addressing}
+# 6. Trees and Addressing
 
 _Every noun in Urbit is an atom or a cell.  This module will elaborate how we can use this fact to locate data and evaluate code in a given expression.  It will also discuss the important `list` mold builder and a number of standard library operations._
 
-## Trees {#trees}
+##  Trees
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS135%20-%20Trees.mp4" %}
 
@@ -37,7 +37,7 @@ We can refer to any data stored anywhere in this tree.  The numbers in the label
 
 Most of any possible tree will be unoccupied for any actual data structure.  For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself—that's a function of the algorithms working with the data.)
 
-### Exercise:  Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
+### Exercise:  Map Nouns to Tree Diagrams
 
 - Consider each of the following nouns.  Which tree diagram do they correspond to?  (This is a matching exercise.)
 
@@ -47,7 +47,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
     | 2. `[[1 2] 3 4]` | B. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
     | 3. `[1 2 3 4]` | C. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
-### Exercise:  Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
+### Exercise:  Produce a List of Numbers
 
 - Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -93,7 +93,7 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
                  4   ~
     ```
 
-### Tuples as Trees {#tuples-as-trees}
+### Tuples as Trees
 
 What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar.  Basically it's a cell series which doesn't necessarily end in `~`.
 
@@ -137,7 +137,7 @@ dojo: hoon expression failed
 ~
 ```
 
-### Lists as Trees {#lists-as-trees}
+### Lists as Trees
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS140%20-%20Lists.mp4" %}
 
@@ -180,7 +180,7 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 
 A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [++limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `list`.)
 
-## Addressing Limbs {#addressing-limbs}
+##  Addressing Limbs
 
 Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, [core](../../glossary/core.md), whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](R-metals.md#wet-gates) work.)
 
@@ -190,7 +190,7 @@ There are three different ways to access values:
 2. [Positional addressing](G-trees.md#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
 3. [Wing addressing](G-trees.md#wings) is a way of attaching a name to the address so that you can access it directly.
 
-### Numeric Addressing {#numeric-addressing}
+### Numeric Addressing
 
 We have already seen numeric addressing used to refer to parts of a binary tree.
 
@@ -198,7 +198,7 @@ We have already seen numeric addressing used to refer to parts of a binary tree.
 
 Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to decide if the contents of a node is a direct value or a tree: it just happens.
 
-### Exercise:  Tapes for Text {#exercise-tapes-for-text}
+### Exercise:  Tapes for Text
  
 A [tape](../../glossary/tape.md) is one way of representing a text message in Hoon.  It is written with double quotes:
  
@@ -212,7 +212,7 @@ A `tape` is actually a `(list @t)`, a binary tree of single characters which onl
 
 - What are the addresses of each letter in the tree for the Gilbert & Sullivan quote above?  Can you see the pattern?  Can you get the address of EVERY letter through `l`?
 
-### Positional Addressing (Lark Notation) {#positional-addressing-lark-notation}
+### Positional Addressing (Lark Notation)
 
 Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `>` (right).
 
@@ -228,7 +228,7 @@ Lark notation is not preferred in modern Hoon for more than one or two elements 
 
 When lark expressions resolve to the part of the subject containing an [arm](../../glossary/arm.md), they don't evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
-### Exercise:  Address the Fruit Tree {#exercise-address-the-fruit-tree}
+### Exercise:  Address the Fruit Tree
 
 Produce the numeric and lark-notated equivalent addresses for each of the following nodes in the binary fruit tree:
 
@@ -246,7 +246,7 @@ Produce the numeric and lark-notated equivalent addresses for each of the follow
 
 There is a solution at the bottom of the page.
 
-### Exercise:  Lark Notation {#exercise-lark-notation}
+### Exercise:  Lark Notation
 
 - Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
@@ -270,7 +270,7 @@ There is a solution at the bottom of the page.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 
-## Wings {#wings}
+## Wings
 
 One can also identify a resource by a label, called a [wing](../../glossary/wing.md).  A wing represents a depth-first search into the current [subject](../../glossary/subject.md) (context).  A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
 
@@ -332,7 +332,7 @@ A wing is a limb resolution path into the subject.  This definition includes as 
 
 We mention this because it is convenient to refer to all limbs and non-trivial wings as simply “wings”.
 
-### Names and Faces {#names-and-faces}
+### Names and Faces
 
 A name can resolve either an arm or a leg of the subject.  Recall that arms are for computations and legs are for data.  When a name resolves to an arm, the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.
 
@@ -386,7 +386,7 @@ You can even give faces to faces:
 c=123
 ```
 
-### Duplicate Faces {#duplicate-faces}
+### Duplicate Faces
 
 There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables:
 
@@ -478,7 +478,7 @@ If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the o
 
 Solution #1 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
-### Limb Resolution Operators {#limb-resolution-operators}
+### Limb Resolution Operators
 
 There are two symbols we use to search for a face or limb:
 
@@ -488,7 +488,7 @@ There are two symbols we use to search for a face or limb:
 
 Logically, `a:b` is two operations, while `a.b` is one operation.  The compiler is smart about `:` col wing resolutions and reduces it to a regular lookup, though.
 
-### What `%=` Does {#what-does}
+### What `%=` Does
 
 Now we're equipped to go back and examine the syntax of the `%=` [centis](../../language/hoon/reference/rune/cen.md#-centis) rune we have been using for recursion:  it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
 
@@ -516,7 +516,7 @@ Now, we noted that `$` buc is the default arm for the trap.  It turns out that `
 
 It's far more common to just use a trap, but you will see `$` buc used to manipulate a [core](../../glossary/core.md) in many in-depth code instances.
 
-### Expanding the Runes {#expanding-the-runes}
+### Expanding the Runes
  
 `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) produces a gate. It actually expands to
 
@@ -530,7 +530,7 @@ where `=|` [tisbar](../../language/hoon/reference/rune/tis.md#-tisbar) means to 
 
 Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#--barhep) produces a [core](../../glossary/core.md) with one arm `$`.  How could you write that in terms of `|%` and `++`?
 
-### Example:  Number to Digits {#example-number-to-digits}
+### Example:  Number to Digits
 
 - Compose a generator which accepts a number as `@ud` unsigned decimal and returns a [list](../../glossary/list.md) of its digits.
 
@@ -590,7 +590,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 - Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
-### Exercise:  Resolving Wings {#exercise-resolving-wings}
+### Exercise:  Resolving Wings
 
 Enter the following into dojo:
 
@@ -613,7 +613,7 @@ Enter the following into dojo:
 
     The answers are at the bottom of the page.
 
-## List operations {#list-operations}
+## List operations
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
@@ -714,7 +714,7 @@ There are a few more that you should pick up eventually, but these are enough to
 
 Using what we know to date, most operations that we would do on a collection of data require a trap.
 
-### Exercise:  Evaluating Expressions {#exercise-evaluating-expressions}
+### Exercise:  Evaluating Expressions
 
 - Without entering these expressions into the Dojo, what are the products of the following expressions?
 
@@ -724,7 +724,7 @@ Using what we know to date, most operations that we would do on a collection of 
     (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
     ```
 
-### Exercise:  Welding Nouns {#exercise-welding-nouns}
+### Exercise:  Welding Nouns
 
 First, bind these faces.
 
@@ -745,11 +745,11 @@ First, bind these faces.
     > (add (lent b) (lent c))
     ```
 
-### Exercise:  Palindrome {#exercise-palindrome}
+### Exercise:  Palindrome
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise.  You may use the [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
 
-## Solutions to Exercises {#solutions-to-exercises}
+## Solutions to Exercises
 
 - Fruit Tree:
 

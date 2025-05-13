@@ -1,4 +1,4 @@
-# Event Log {#event-log}
+# Event Log
 
 The **event log** of a [ship](ship.md) is a totally ordered list of every single [Arvo](arvo.md) event that ship has undergone. The state of a ship is a pure function of the event log.
 
@@ -12,6 +12,6 @@ Persistence, in the context of storing data in a computer system, means that dat
 
 The initial entries of the event log are created during the bootstrap sequence contained in a [Pill](pill.md).
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [Pier](pier.md): The directory on disk which contains the ship's state.

@@ -1,5 +1,5 @@
-# Examples {#examples}
+# Examples
 
-### [Examples](.) {#examples}
+### [Examples](.)
 
 Practical examples of using Behn's `task`s.

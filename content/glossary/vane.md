@@ -1,4 +1,4 @@
-# Vane {#vane}
+# Vane
 
 A **vane** is an [Arvo](arvo.md) kernel module that performs essential system operations. The vanes are:
 
@@ -14,6 +14,6 @@ A **vane** is an [Arvo](arvo.md) kernel module that performs essential system op
 - [Khan](khan.md), the control vane.
 - [Lick](lick.md), the interprocess communication (IPC) vane.
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [The Arvo tutorial](../system/kernel): An in-depth technical guide to Arvo and its vanes.

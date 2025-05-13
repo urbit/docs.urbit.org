@@ -1,8 +1,8 @@
-# Data Types {#data-types}
+# Data Types
 
 Iris itself only has three structures defined in `lull.hoon`, but it also uses `$http` structures which are shared between Iris and Eyre. The `$http` structures are detailed in the [Eyre](../../eyre/reference/data-types.md#http) Data Types documentation.
 
-## `$client-response` {#client-response}
+## `$client-response`
 
 ```hoon
 +$  client-response
@@ -26,7 +26,7 @@ In a `%progress` `client-response`, the [$response-header:http](../../eyre/refer
 
 In a `%finished` `client-response`, the `full-file` is the complete body of the HTTP message as a (maybe) [$mime-data](#mime-data).
 
-## `$mime-data` {#mime-data}
+## `$mime-data`
 
 ```hoon
 +$  mime-data
@@ -35,7 +35,7 @@ In a `%finished` `client-response`, the `full-file` is the complete body of the 
 
 Unvalidated mime data that has been fetched from a remote HTTP resource.
 
-## `$outbound-config` {#outbound-config}
+## `$outbound-config`
 
 ```hoon
 +$  outbound-config

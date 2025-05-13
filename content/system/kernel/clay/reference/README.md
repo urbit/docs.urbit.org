@@ -1,4 +1,4 @@
-# Reference {#reference}
+# Reference
 
 [Data Types](data-types.md)
 

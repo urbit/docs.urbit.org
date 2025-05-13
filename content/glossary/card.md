@@ -1,4 +1,4 @@
-# Card {#card}
+# Card
 
 A **card** is the data type for effects produced by
 [Gall](gall.md) [agents](agent.md) and
@@ -7,7 +7,7 @@ A **card** is the data type for effects produced by
 [pokes](poke.md) to other agents,
 [facts](fact.md) for subscribers, etc.
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [Gall data types reference](../system/kernel/gall/reference/data-types.md#cardagent): Documentation of the `card` type.
 - [App school: cards lesson](../courses/app-school/5-cards.md): A lesson on cards.

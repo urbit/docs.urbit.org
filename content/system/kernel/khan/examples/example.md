@@ -1,10 +1,10 @@
-# Example {#example}
+# Example
 
 Here we'll look at a simple example of running a thread from a Gall agent via Khan. The Gall agent will take a boolean poke. If it's `%.y`, the thread will succeed and return some text. If it's `%.n`, the thread will fail with an error message.
 
 Here's the thread, which you can save in the `/ted` directory of the `%base` desk on a fake ~zod:
 
-#### `mythread.hoon` {#mythreadhoon}
+#### `mythread.hoon`
 
 ```hoon
 /-  spider
@@ -21,7 +21,7 @@ Here's the thread, which you can save in the `/ted` directory of the `%base` des
 
 Here's the Gall agent, which you can save in the `/app` directory of the `%base` desk on a fake ~zod:
 
-#### `myapp.hoon` {#myapphoon}
+#### `myapp.hoon`
 
 ```hoon
 /+  default-agent

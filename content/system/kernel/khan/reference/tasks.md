@@ -1,12 +1,12 @@
-# API Reference {#api-reference}
+# API Reference
 
 These are the `task`s Khan can be passed and the `gift`s it can give.
 
-## Tasks {#tasks}
+## Tasks
 
 Here are the `task`s you can pass Khan. You'd either use [`%fard`](#fard) to run a thread from a file or [`%lard`](#lard) to run an in-line thread.
 
-### `%fard` {#fard}
+### `%fard`
 
 Run a thread from within Arvo.
 
@@ -16,13 +16,13 @@ Run a thread from within Arvo.
 
 `p` contains the thread location, name, and start arguments. See the [`fyrd`](types.md#fyrd) data type reference entry for details.
 
-#### Returns {#returns}
+#### Returns
 
 When the thread finishes, either by succeeding or failing, Khan will return an [`%arow`](#arow) gift.
 
 ---
 
-### `%fyrd` {#fyrd}
+### `%fyrd`
 
 External thread.
 
@@ -34,7 +34,7 @@ This is passed to Khan by the runtime when a thread is run externally. You would
 
 ---
 
-### `%lard` {#lard}
+### `%lard`
 
 In-line thread.
 
@@ -44,17 +44,17 @@ In-line thread.
 
 The [`bear`](types.md#bear) is either a `desk` or `beak`. The [`shed`](types.md#shed) is the thread itself. Since Spider doesn't need to read out the thread from Clay, the `bear` doesn't do much apart from be included in the thread name that Spider generates. Khan will have Spider run the given thread, and eventually give an [`%arow`](#arow) gift back with the result.
 
-#### Returns {#returns}
+#### Returns
 
 When the thread eventually finishes (or if it fails), Khan with give an [`%arow`](#arow) gift back with the result.
 
 ---
 
-## Gifts {#gifts}
+## Gifts
 
 These are the two `gift`s Khan can give. In userspace, you'd only receive an [`%arow`](#arow).
 
-### `%arow` {#arow}
+### `%arow`
 
 In-arvo result.
 
@@ -66,7 +66,7 @@ This gift contains the result of a finished thread if successful, or an error an
 
 ---
 
-### `%avow` {#avow}
+### `%avow`
 
 External result.
 

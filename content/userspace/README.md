@@ -1,4 +1,4 @@
-# Userspace {#userspace}
+# Userspace
 
 The userspace docs contain guides, examples, exercises and reference documentation for writing Urbit apps and threads, the latter of which is useful for complex I/O operations.
 

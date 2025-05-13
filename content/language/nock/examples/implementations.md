@@ -1,8 +1,8 @@
-# Implementations {#implementations}
+# Implementations
 
 We use a C implementation for our Nock interpreter. But building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations, shown below our official C implementation.  (Note: the community implementations were written for a slightly older version of Nock, Nock 5K.  The current version is Nock 4K.):
 
-## Table of Contents {#table-of-contents}
+## Table of Contents
 
 - [C](#C)
 
@@ -28,7 +28,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 - [Swift](#swift)
 
-## C Implementation {#c-implementation}
+## C Implementation
 
 The actual production Nock interpreter. Note gotos for tail-call elimination, and manual reference counting.  More about the C environment can be found in the [runtime system documentation](../../../system/runtime).
 ```c
@@ -275,7 +275,7 @@ _n_nock_on(u3_noun bus, u3_noun fol)
 }
 ```
 
-## Clojure {#clojure}
+## Clojure
 
 From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock/core.clj):
 
@@ -394,7 +394,7 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
     (apply* bracket nouns)))
 ```
 
-## C# {#c}
+## C#
 
 From [Julien Beasley](https://github.com/zass30/Nock5KCSharp):
 
@@ -866,7 +866,7 @@ namespace NockInterpreter
 }
 ```
 
-## Groovy {#groovy}
+## Groovy
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/gnock/blob/master/gnock.groovy):
 
@@ -1066,7 +1066,7 @@ def tar(def a, def r) {
 }
 ```
 
-## Haskell {#haskell}
+## Haskell
 
 From [Steve Dee](https://github.com/mrdomino/hsnock/blob/master/Language/Nock5K/Spec.hs):
 
@@ -1123,7 +1123,7 @@ tar (a :- Atom 10 :- b :- c)         = tar (a :- c)
 tar a                                = Left "*a"
 ```
 
-## Hoon {#hoon}
+## Hoon
 
 ```hoon
 |=  {sub/* fol/*}
@@ -1172,7 +1172,7 @@ tar a                                = Left "*a"
 ==
 ```
 
-## JavaScript {#javascript}
+## JavaScript
 
 From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
@@ -1531,14 +1531,14 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 }))
 ```
 
-## Python {#python}
+## Python
 
 From [James Tauber](https://github.com/jtauber/pynock/blob/master/nock.py):
 
 ```python
 #!/usr/bin/env python3
 
-# [] {#}
+# []
 def l(*lst):
     if len(lst) == 1:
         return(lst[0], 0)
@@ -1547,11 +1547,11 @@ def l(*lst):
     else:
         return (lst[0], l(*lst[1:]))
 
-# * {#}
+# *
 def nock(noun):
     return tar(noun)
 
-# ? {#}
+# ?
 def wut(noun):
     if isinstance(noun, int):
         return 1
@@ -1559,7 +1559,7 @@ def wut(noun):
         return 0
 
 
-# + {#}
+# +
 def lus(noun):
     if isinstance(noun, int):
         return 1 + noun
@@ -1567,7 +1567,7 @@ def lus(noun):
         return noun
 
 
-# = {#}
+# =
 def tis(noun):
     if noun[0] == noun[1]:
         return 0
@@ -1575,7 +1575,7 @@ def tis(noun):
         return 1
 
 
-# / {#}
+# /
 def slot(noun):
     if noun[0] == 1:
         return noun[1]
@@ -1620,7 +1620,7 @@ def tar(noun):
         return (nock((noun[0], noun[1][0])), nock((noun[0], noun[1][1])))
 ```
 
-## Ruby {#ruby}
+## Ruby
 
 From [T.J. Corcoran](https://github.com/TJamesCorcoran/nock/blob/master/nock.rb):
 
@@ -1753,7 +1753,7 @@ def nock(arr)
 end
 ```
 
-## Rust {#rust}
+## Rust
 
 From [Peter McEvoy](https://github.com/mcevoypeter/nock/tree/main/src):
 
@@ -2308,7 +2308,7 @@ impl Tar for Cell {
 }
 ```
 
-## Scala {#scala}
+## Scala
 
 From [Steve Randy Waldman](https://github.com/swaldman/nnnock/blob/master/src/main/scala/com/mchange/sc/v1/nnnock/package.scala):
 
@@ -2390,7 +2390,7 @@ package object nnnock {
   }
 ```
 
-## Scheme {#scheme}
+## Scheme
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock.ss):
 
@@ -2512,7 +2512,7 @@ From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock
                       (else (raise 13)))))))))))))
 ```
 
-## Swift {#swift}
+## Swift
 
 ```swift
 import Foundation

@@ -1,4 +1,4 @@
-# Aura {#aura}
+# Aura
 
 **Auras** are types of [atoms](atom.md). A generic atom (`@`) is a non-negative decimal integer. Auras allow such atoms to be defined more specifically, such as `@t` for little-endian UTF-8 strings, `@ux` for hexadecimal and `@p` for a [ship](ship.md) name like `~sampel-palnet`. Auras do three things:
 
@@ -8,7 +8,7 @@
    
 Note that auras do not enforce the validity of an encoding scheme, so you can type-cast the `@t` `'!!!'` to `@ta` despite `!` not being allowed in an `@ta` literal. They are ultimately just metadata given to compiler.
 
-#### Further reading {#further-reading}
+#### Further reading
 
 - [Aura reference](../language/hoon/reference/auras.md): Additional information about auras.
 - [Hoon School: syntax lesson](../courses/hoon-school/B-syntax.md): Includes details of atoms and auras.

@@ -1,8 +1,8 @@
-# Child Thread {#child-thread}
+# Child Thread
 
 Here's a simple example of a thread that starts another thread:
 
-#### `parent.hoon` {#parenthoon}
+#### `parent.hoon`
 
 ```hoon
 /-  spider
@@ -16,7 +16,7 @@ Here's a simple example of a thread that starts another thread:
 (pure:m !>(~))
 ```
 
-#### `child.hoon` {#childhoon}
+#### `child.hoon`
 
 ```hoon
 /-  spider
@@ -50,11 +50,11 @@ See here how we gave `start-thread` the name of the thread to run. It returns th
 
 Note that threads we start this way will be a child of the thread that started them, and so will be killed when the parent thread ends.
 
-## Start thread and get its result {#start-thread-and-get-its-result}
+## Start thread and get its result
 
 If we want to actually get the result of the thread we started, it's slightly more complicated. We note that this is mostly the same as `await-thread:strandio`.
 
-#### `parent.hoon` {#parenthoon}
+#### `parent.hoon`
 
 ```hoon
 /-  spider
@@ -80,7 +80,7 @@ If we want to actually get the result of the thread we started, it's slightly mo
 ==
 ```
 
-#### `child.hoon` {#childhoon}
+#### `child.hoon`
 
 ```hoon
 /-  spider
@@ -157,9 +157,9 @@ Spider will kick us from the subscription when it ends the thread so we also tak
 
 Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`. These are the two possible marks produced by spider when it returns the results of a thread. A `%thread-done` will contain a vase with the result, and a `%thread-fail` will contain an error message and traceback, so we see which it is and then either produce the result with `pure` or trigger a `%thread-fail` with the error we got from the child.
 
-## Stop a thread {#stop-a-thread}
+## Stop a thread
 
-#### `parent.hoon` {#parenthoon}
+#### `parent.hoon`
 
 ```hoon
 /-  spider
@@ -188,7 +188,7 @@ Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`
 (pure:m !>("Done"))
 ```
 
-#### `child.hoon` {#childhoon}
+#### `child.hoon`
 
 ```hoon
 /-  spider

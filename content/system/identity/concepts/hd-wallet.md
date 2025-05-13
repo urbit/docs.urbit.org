@@ -1,4 +1,4 @@
-# Urbit HD Wallet {#urbit-hd-wallet}
+# Urbit HD Wallet
 
 Owners of Urbit identities need safeguards that allow for the use of Urbit without jeopardizing cryptographic ownership of their assets. Toward this end, we created the **Urbit Hierarchical Deterministic (HD) Wallet** for the storage of identities. The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Arvo network to transferring ownership of identities.
 
@@ -8,19 +8,19 @@ Another HD wallet option you may wish to utilize to store your Urbit are hardwar
 
 Urbit HD wallets are composed of the following items, which are each assigned to their own individual Ethereum key-pairs.
 
-## Master Ticket {#master-ticket}
+## Master Ticket
 
 Think of your master ticket like a very high-value password. The master ticket is the secret code from which all of your other keys are derived. Technically, your master ticket is a cryptographic seed. You should never share it with anyone, and store it very securely. This ticket can derive all of your other keys: your ownership key and all of the related proxies.
 
-## Ownership Address {#ownership-address}
+## Ownership Address
 
 An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](../../../glossary/ecliptic.md), Azimuth's suite of governing smart-contracts.
 
-## Proxies {#proxies}
+## Proxies
 
 Each permanent Urbit ID can designate one or more [proxies](../../../manual/id/proxies.md), which are Ethereum addresses capable of a limited subset of Urbit ID transactions, such as spawning planets or rotating keys. The HD wallet automatically generates additional addresses utilized as proxies according to what is appropriate for your Urbit ID.
 
-## HD wallet generation {#hd-wallet-generation}
+## HD wallet generation
 
 Your Urbit HD wallet is generated from a `@q` seed called `T`, which looks something like `~sampel-ticket-bucbel-sipnem`. This is the string known as your "Master Ticket" that you input into Bridge to sign in. This is put through a series of algorithms that ultimately generate your keys and the Ethereum addresses at which they are stored.
 
@@ -30,7 +30,7 @@ First, your `@q` is converted into a numeric value `E` as an intermediary step b
 
 One of the wallets will store your Azimuth point, an [ERC-721](#erc-721) token, which will be known as your ownership address. Bridge then automatically uses your ownership address to assign the other proxies to the other wallets generated.
 
-## ERC-721 {#erc-721}
+## ERC-721
 
 Most Ethereum tokens use the ERC-20 standard for smart contracts. Urbit identities are, however, essentially different from most Ethereum tokens, due to identities not being fungible. Since any two stars will handle social-networking realities in a different way, they will carry a different reputation.
 
@@ -40,7 +40,7 @@ Identities, and all of their blockchain operations, are governed by Ecliptic. Ec
 
 For the technical implementation details, take a look at Azimuth's [Github repository](https://github.com/urbit/azimuth).
 
-## Hardware HD wallet {#hardware-hd-wallet}
+## Hardware HD wallet
 
 You may also store your Urbit using a hardware HD wallet such as a Trezor or Ledger. This option is used instead of a master ticket - it is a totally separate process from that outlined above. How hardware wallets work are outside of the scope of this document, but here we explain how you may utilize your hardware wallet in a similar fashion to the Urbit HD wallet.
 
@@ -52,7 +52,7 @@ Next, login to Bridge using your hardware wallet. While Bridge supports Trezor a
 
 To finish the process, use Bridge to set your management, voting, and spawn proxies to the other addresses you generated as applicable. You are now using your hardware HD wallet in an analogous fashion to the Urbit HD wallet.
 
-## Heightened security practices {#heightened-security-practices}
+## Heightened security practices
 
 A common security pattern is to have "hot" and "cold" wallets. For higher value points such as stars and galaxies, you may consider having your ownership address live on a "cold" wallet that never touches an internet-connected computer, and the various proxies on a "hot" wallet that is permitted to connect to internet-connected devices. This could be accomplished with multiple hardware wallets, a combination of paper and hardware wallet, a hardware cold wallet and Metamask hot wallet, etc. See the [User Manual](https://urbit.org/using/id/hd-wallet) for concrete suggestions on security practices.
 

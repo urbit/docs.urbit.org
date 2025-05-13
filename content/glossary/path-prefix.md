@@ -1,4 +1,4 @@
-# Path Prefix {#path-prefix}
+# Path Prefix
 
 A **path prefix** is the first three elements of a [Clay](clay.md) [path](path.md). These three fields encode a `beak` in `path` form. A `beak` is a three-element tuple of [ship](ship.md), [desk](desk.md), and [case](case.md). Here's an example:
 

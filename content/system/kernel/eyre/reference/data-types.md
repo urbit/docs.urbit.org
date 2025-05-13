@@ -1,4 +1,4 @@
-# Data Types {#data-types}
+# Data Types
 
 This document describes the data types used by Eyre as defined in `/sys/lull.hoon`. It's separated into two sections:
 
@@ -6,9 +6,9 @@ This document describes the data types used by Eyre as defined in `/sys/lull.hoo
 
 [HTTP](#http) - HTTP data types shared between Eyre and Iris.
 
-## Eyre {#eyre}
+## Eyre
 
-### `$cache-entry` {#cache-entry}
+### `$cache-entry`
 
 ```hoon
 +$  cache-entry
@@ -23,7 +23,7 @@ This document describes the data types used by Eyre as defined in `/sys/lull.hoo
 
 ---
 
-### `$origin` {#origin}
+### `$origin`
 
 ```hoon
 +$  origin  @torigin
@@ -33,7 +33,7 @@ A single CORS origin as used in an HTTP Origin header and the [$cors-registry](#
 
 ---
 
-### `$cors-registry` {#cors-registry}
+### `$cors-registry`
 
 ```hoon
 +$  cors-registry
@@ -47,7 +47,7 @@ CORS origins categorised by approval status. The `requests` `set` contains all [
 
 ---
 
-### `$outstanding-connection` {#outstanding-connection}
+### `$outstanding-connection`
 
 ```hoon
 +$  outstanding-connection
@@ -62,7 +62,7 @@ An HTTP connection that is currently open. The [$action](#action) is how it's be
 
 ---
 
-### `$authentication-state` {#authentication-state}
+### `$authentication-state`
 
 ```hoon
 +$  authentication-state  sessions=(map @uv session)
@@ -72,7 +72,7 @@ This represents the authentication state of all sessions. It maps session cookie
 
 ---
 
-### `$session` {#session}
+### `$session`
 
 ```hoon
 +$  session
@@ -85,7 +85,7 @@ This represents server-side data about a session. The `expiry-time` is when the 
 
 ---
 
-### `$channel-state` {#channel-state}
+### `$channel-state`
 
 ```hoon
 +$  channel-state
@@ -98,7 +98,7 @@ The state used by the channel system. The `session` is a `map` between channel n
 
 ---
 
-### `$timer` {#timer}
+### `$timer`
 
 ```hoon
 +$  timer
@@ -111,7 +111,7 @@ A reference to a timer so it can be cancelled or updated. The `date` is when it 
 
 ---
 
-### `$channel-event` {#channel-event}
+### `$channel-event`
 
 ```hoon
 +$  channel-event
@@ -126,7 +126,7 @@ An unacknowledged event in the channel system.
 
 ---
 
-### `$channel` {#channel}
+### `$channel`
 
 ```hoon
   +$  channel
@@ -158,7 +158,7 @@ This is the state of a particular channel in the channel system.
 
 ---
 
-### `$binding` {#binding}
+### `$binding`
 
 ```hoon
 +$  binding
@@ -171,7 +171,7 @@ A `binding` is a rule to match a URL `path` and optional `site` domain which can
 
 ---
 
-### `$action` {#action}
+### `$action`
 
 ```hoon
   +$  action
@@ -190,7 +190,7 @@ The action to take when a [$binding](#binding) matches an incoming HTTP request.
 
 ---
 
-### `$generator` {#generator}
+### `$generator`
 
 ```hoon
 +$  generator
@@ -204,7 +204,7 @@ This refers to a generator on a local ship that can handle requests. Note that s
 
 ---
 
-### `$http-config` {#http-config}
+### `$http-config`
 
 ```hoon
 +$  http-config
@@ -219,7 +219,7 @@ The configuration of the runtime HTTP server itself. The `secure` field contains
 
 ---
 
-### `$http-rule` {#http-rule}
+### `$http-rule`
 
 ```hoon
 +$  http-rule
@@ -232,7 +232,7 @@ This is for updating the server configuration. In the case of `%cert`, a `cert` 
 
 ---
 
-### `$address` {#address}
+### `$address`
 
 ```hoon
 +$  address
@@ -245,7 +245,7 @@ A client IP address.
 
 ---
 
-### `$inbound-request` {#inbound-request}
+### `$inbound-request`
 
 ```hoon
 +$  inbound-request
@@ -260,9 +260,9 @@ An inbound HTTP request and metadata. The `authenticated` field says whether the
 
 ---
 
-## HTTP {#http}
+## HTTP
 
-### `$header-list:http` {#header-listhttp}
+### `$header-list:http`
 
 ```hoon
 +$  header-list  (list [key=@t value=@t])
@@ -272,7 +272,7 @@ An ordered list of HTTP headers. The `key` is the header name e.g `'Content-Type
 
 ---
 
-### `$method:http` {#methodhttp}
+### `$method:http`
 
 ```hoon
 +$  method
@@ -291,7 +291,7 @@ An HTTP method.
 
 ---
 
-### `$request:http` {#requesthttp}
+### `$request:http`
 
 ```hoon
 +$  request
@@ -306,7 +306,7 @@ A single HTTP request. The [$method:http](#methodhttp) is the HTTP method, the `
 
 ---
 
-### `$response-header:http` {#response-headerhttp}
+### `$response-header:http`
 
 ```hoon
 +$  response-header
@@ -319,7 +319,7 @@ The status code and [$header-list:http](#header-listhttp) of an HTTP response.
 
 ---
 
-### `$http-event:http` {#http-eventhttp}
+### `$http-event:http`
 
 ```hoon
 +$  http-event
@@ -344,7 +344,7 @@ Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding
 
 ---
 
-### `$simple-payload:http` {#simple-payloadhttp}
+### `$simple-payload:http`
 
 ```hoon
 +$  simple-payload

@@ -1,4 +1,4 @@
-# Build a Chat App {#build-a-chat-app}
+# Build a Chat App
 
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll look like this:
 
@@ -16,35 +16,35 @@ The app source is available in the [`docs-examples` repo on Github](https://gith
 
 Let's get started.
 
-## Install binary {#install-binary}
+## Install binary
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step. Otherwise, run one of the commands below, depending on your platform. It will fetch the binary and save it in the current directory.
 
-#### Linux (`x86_64`) {#linux-x86_64}
+#### Linux (`x86_64`)
 
 ```shell
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### Linux (`aarch64`) {#linux-aarch64}
+#### Linux (`aarch64`)
 
 ```shell
 curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### macOS (`x86_64`) {#macos-x86_64}
+#### macOS (`x86_64`)
 
 ```shell
 curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-#### macOS (`aarch64`) {#macos-aarch64}
+#### macOS (`aarch64`)
 
 ```shell
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-## Development ship {#development-ship}
+## Development ship
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, since our chat app will depend on the separate Squad app, we'll do it on a comet instead, so we can easily install that dependency. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
@@ -56,7 +56,7 @@ It might take a few minutes to boot up, and will fetch updates for the default a
 
 Note: we'll use `~sampel_samzod` throughout this guide, but this will be different for you as a comet's ID is randomly generated.
 
-## Dependencies {#dependencies}
+## Dependencies
 
 Once in the Dojo, let's first install the Squad app:
 
@@ -85,7 +85,7 @@ cp dev-comet/landscape/lib/mip.hoon hut/lib/
 
 Now we can start working on the app itself.
 
-## Types {#types}
+## Types
 
 The first thing we typically do when developing an app is define:
 
@@ -184,7 +184,7 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 
 </details>
 
-## Agent {#agent}
+## Agent
 
 With all the types now defined, we can create the app itself.
 
@@ -1011,7 +1011,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 
 </details>
 
-## Marks {#marks}
+## Marks
 
 The last piece of our backend are the *marks*. Marks are Urbit's version of filetypes/MIME types, but strongly typed and with inter-mark conversion methods.
 
@@ -1019,7 +1019,7 @@ We'll create two marks: one for handling poke actions with the type of `act` we 
 
 Mark files live in the `/mar` directory of a desk. You can save the code below in `hut/mar/hut/do.hoon` and `hut/mar/hut/did.hoon` respectively.
 
-#### `%hut-do` {#hut-do}
+#### `%hut-do`
 
 <details>
 <summary>/mar/hut/do.hoon</summary>
@@ -1103,7 +1103,7 @@ Mark files live in the `/mar` directory of a desk. You can save the code below i
 
 </details>
 
-#### `%hut-did` {#hut-did}
+#### `%hut-did`
 
 <details>
 <summary>/mar/hut/did.hoon</summary>
@@ -1254,11 +1254,11 @@ Mark files live in the `/mar` directory of a desk. You can save the code below i
 
 </details>
 
-## React app {#react-app}
+## React app
 
 Our back-end is complete, so we can now work on our React front-end. We'll just look at the basic setup process here, but you can get the full React app by cloning [this repo on Github](https://github.com/urbit/docs-examples) and run `npm i` in `chat-app/ui`. Additional commentary on the code is in the [additional commentary](#additional-commentary) section below.
 
-#### Basic setup process {#basic-setup-process}
+#### Basic setup process
 
 When creating it from scratch, first make sure you have Node.js installed on your computer (you can download it from their [website](https://nodejs.org/en/download)) and then run `create-landscape-app`:
 
@@ -1316,7 +1316,7 @@ npm run build
 ls dist
 ```
 
-#### Additional commentary {#additional-commentary}
+#### Additional commentary
 
 There are a fair few functions in the [complete front-end source for `%hut`](https://github.com/urbit/docs-examples); we'll just look at a handful to cover the basics. The first is the `appPoke` in `src/lib.js`, which (as the name suggests) sends a poke to a ship. It takes the poke in JSON form and calls the `poke` method of our `Urbit` object to perform the poke:
 
@@ -1487,7 +1487,7 @@ useEffect(() => {
 
 </details>
 
-## Desk config {#desk-config}
+## Desk config
 
 With our agent and front-end both complete, the last thing we need are some desk configuration files.
 
@@ -1521,7 +1521,7 @@ Lastly, we need to create a Docket file. Docket is the agent that manages app fr
 
 The main field of note is `glob-ames`. A glob is the bundle of front-end resources (our React app), and the `-ames` part means it'll be distributed via the normal inter-ship networking protocol, as opposed to `glob-http` where it would be fetched from a separate server. The two fields are the ship to fetch it from and the hash of the glob. We can get the full name of our comet by typing `our` in the Dojo (don't use the ship name above, it's just a sample). We're going to upload the glob in the next step, so we'll leave the hash as `0v0` for the moment.
 
-## Put it together {#put-it-together}
+## Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our comet, we'll create a new desk with the `|new-desk` generator:
 
@@ -1561,7 +1561,7 @@ One thing we can also do is publish the app so others can install it from us. To
 
 Now our friends will be able to install it with `|install <our ship> %hut` or by searching for `<our ship>` on their ship's homescreen.
 
-## Next steps {#next-steps}
+## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](../../../../courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](../../../../courses/app-school) will teach you everything you need to know about app development.
 

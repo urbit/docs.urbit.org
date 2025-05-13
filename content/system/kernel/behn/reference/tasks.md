@@ -1,10 +1,10 @@
-# API Reference {#api-reference}
+# API Reference
 
 In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.
 
 Most of Behn's `task`s are only used by the kernel or runtime. The two `task`s you're likely to use from userspace are [%wait](#wait) for setting a timer and [%rest](#rest) for cancelling a timer.
 
-## `%born` {#born}
+## `%born`
 
 ```hoon
 [%born ~]
@@ -14,11 +14,11 @@ Each time you start your urbit, the Arvo kernel calls the `%born` task for Behn.
 
 You would not use this `task` from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 Behn does not return any `gift` in response to a `%born` `task`.
 
-## `%rest` {#rest}
+## `%rest`
 
 ```hoon
 [%rest p=@da]
@@ -28,15 +28,15 @@ Cancel a timer.
 
 Behn takes in a `@da` and cancels the timer at that time if one had been set through that `wire`, then adjusts the next wakeup call from Unix if necessary.
 
-#### Returns {#returns}
+#### Returns
 
 Behn does not return any `gift` in response to a `%rest` `task`.
 
-#### Example {#example}
+#### Example
 
 See the [%rest](../examples/examples.md#rest) section of the Examples document.
 
-## `%drip` {#drip}
+## `%drip`
 
 ```hoon
 [%drip p=vase]
@@ -58,15 +58,15 @@ Here the `%meta` `move` is a wrapper for the `%gift` inside of the initial `%dri
 
 A `%drip` `task` is not likely to be used from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 In response to a `%drip` `task`, Behn will `%pass` a `%wait` to itself, which then triggers a `%wake` `gift` to itself, which then causes Behn to `%give` a `%meta` `gift` containing the `gift` originally `%give`n to Behn when `%drip` was first called. That makes Behn its own client for `%drip`.
 
-#### Example {#example}
+#### Example
 
 Say an app (the Target) is subscribed to updates from Clay (the Client). If Clay `%give`s updates to the app directly and the app crashes, this may cause Clay to crash as well. If instead Clay `%pass`es Behn a `%drip` `task` wrapping the update `gift`, Behn will set a timer for `now` that, when fired, will cause the update `gift` to be given. If it causes a crash then it will have been in response to the `%drip` move, thereby isolating Clay from the crash. Thus `%drip` acts as a sort of buffer against cascading sequences of crashes.
 
-## `%huck` {#huck}
+## `%huck`
 
 ```hoon
 [%huck syn=sign-arvo]
@@ -76,7 +76,7 @@ Immediately gives back a `sign-arvo`.
 
 You would not use this `task` from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 Behn returns the input `sign-arvo` as a `%heck` `gift`:
 
@@ -84,7 +84,7 @@ Behn returns the input `sign-arvo` as a `%heck` `gift`:
 [%heck syn=sign-arvo]
 ```
 
-## `%trim` {#trim}
+## `%trim`
 
 ```hoon
 [%trim p=@ud]
@@ -94,11 +94,11 @@ This `task` is sent by the interpreter in order to free up memory. Behn does not
 
 You would not use this `task` from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 Behn does not return any `gift` in response to a `%trim` `task`.
 
-## `%vega` {#vega}
+## `%vega`
 
 ```hoon
 [%vega ~]
@@ -108,11 +108,11 @@ This `task` informs the vane that the kernel has been upgraded. Behn does not do
 
 You would not use this `task` from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 Behn does not return any `gift` in response to a `%vega` `task`.
 
-## `%wait` {#wait}
+## `%wait`
 
 ```hoon
 [%wait p=@da]
@@ -122,7 +122,7 @@ Set timer.
 
 This `task` sets a timer to fire at the `@da` specified in `p`.
 
-#### Returns {#returns}
+#### Returns
 
 Behn returns a `%wake` `gift` in response to a `%wait` `task`, once the timer has fired. A `%wake` `gift` looks like:
 
@@ -132,11 +132,11 @@ Behn returns a `%wake` `gift` in response to a `%wait` `task`, once the timer ha
 
 The `error` `unit` will be `~` if successful, or contain a traceback in the `tang` if the timer failed for some reason.
 
-#### Example {#example}
+#### Example
 
 See the [%wait](tasks.md#wait) section of the Examples document.
 
-## `%wake` {#wake}
+## `%wake`
 
 ```hoon
 [%wake ~]
@@ -146,6 +146,6 @@ This `task` is sent by the kernel when the Unix timer tells the kernel that it i
 
 You would not use this `task` from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 In response to receiving this `task`, Behn may `%give` a `%doze` `gift` containing the `@da` of the next timer to elapse. Behn may also `%give` a `%wake` `gift` to itself.

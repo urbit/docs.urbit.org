@@ -1,8 +1,8 @@
-# Examples {#examples}
+# Examples
 
 Here are a couple of practical examples of using Behn's `%wait` and `%rest` `task`s.
 
-## %wait {#wait}
+## %wait
 
 Here we'll look at setting a timer by passing Behn a `%wait` `task` and taking the `%wake` `gift` it returns when the timer fires.
 
@@ -45,7 +45,7 @@ Time elapsed: ~s2..0154
 
 As you can see, the timer has fired successfully after `~s2` and Behn has given us a `%wake` `gift`.
 
-## %rest {#rest}
+## %rest
 
 Here we'll look at cancelling a previously set timer by passing Behn a `%rest` `task`.
 

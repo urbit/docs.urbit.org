@@ -1,4 +1,4 @@
-# Examples {#examples}
+# Examples
 
 Hoon language examples and exercises.
 

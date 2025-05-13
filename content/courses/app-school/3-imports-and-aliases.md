@@ -1,14 +1,14 @@
-# 3. Imports and Aliases {#3-imports-and-aliases}
+# 3. Imports and Aliases
 
 In the last lesson we looked at the most basic aspects of a Gall agent's structure. Before we get into the different agent arms in detail, there's some boilerplate to cover that makes life easier when writing Gall agents.
 
-## Useful libraries {#useful-libraries}
+## Useful libraries
 
 There are a couple of libraries that you'll very likely use in every agent you write. These are [`default-agent`](#default-agent) and [`dbug`](#dbug). In brief, `default-agent` provides simple default behaviours for each agent arm, and `dbug` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
 
 Let's look at each in more detail:
 
-### `default-agent` {#default-agent}
+### `default-agent`
 
 The `default-agent` library contains a basic agent with sane default behaviours for each arm. In some cases it just crashes and prints an error message to the terminal, and in others it succeeds but does nothing. It has two primary uses:
 
@@ -21,7 +21,7 @@ The library is a wet gate which takes two arguments: `agent` and `help`. The fir
 
 The wet gate returns an `agent:gall` door with a sample of `bowl:gall` - a typical agent core. Usually you would define an alias for it in a virtual arm ([explained below](#virtual-arms)) so it's simple to call.
 
-### `dbug` {#dbug}
+### `dbug`
 
 The `dbug` library lets you inspect the state and `bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
@@ -55,7 +55,7 @@ By default it will retrieve your agent's state by using its `on-save` arm, but i
 
 We haven't yet covered some of the concepts described here, so don't worry if you don't fully understand `dbug`'s functionality - you can refer back here later.
 
-## Virtual arms {#virtual-arms}
+## Virtual arms
 
 An agent core must have exactly ten arms. However, there's a special kind of "virtual arm" that can be added without actually increasing the core's arm count, since it really just adds code to the other arms in the core. A virtual arm is created with the [lustar](../../language/hoon/reference/rune/lus.md#-lustar) (`+*`) rune, and its purpose is to define _deferred expressions_. It takes a list of pairs of names and Hoon expressions. When compiled, the deferred expressions defined in the virtual arm are implicitly inserted at the beginning of every other arm of the core, so they all have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](../../language/hoon/reference/rune/tis.md#-tistar) reference for more information on deferred expressions.
 
@@ -80,7 +80,7 @@ def  ~(. (default-agent this %.n) bowl)
 
 This sets up the `default-agent` library we [described above](#default-agent), so you can easily call its arms like `on-poke:def`, `on-agent:def`, etc.
 
-## Additional cores {#additional-cores}
+## Additional cores
 
 While Gall expects a single 10-arm agent core, it's possible to include additional cores by composing them into the subject of the agent core itself. The contents of these cores will then be available to arms of the agent core.
 
@@ -88,7 +88,7 @@ Usually to compose cores in this way, you'd have to do something like insert [ti
 
 You can add as many extra cores as you'd like before the agent core, but typically you'd just add one containing type definitions for the agent's state, as well as any other useful structures. We'll look at the state in more detail in the next lesson.
 
-## Example {#example}
+## Example
 
 Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified with the concepts discussed here:
 
@@ -170,7 +170,7 @@ It just printed out `~`. Our dummy `skeleton` agent doesn't have any state defin
 
 We'll use `dbug` more throughout the guide, but hopefully you should now have an idea of its basic usage.
 
-## Summary {#summary}
+## Summary
 
 The key takeaways are:
 
@@ -182,7 +182,7 @@ The key takeaways are:
 - `def` is a conventional deferred expression name for accessing arms in the `default-agent` library.
 - Extra cores can be composed into the subject of the agent core. The composition is done implicitly by the build system. Typically we'd include one extra core that defines types for our agent's state and maybe other useful types as well.
 
-## Exercises {#exercises}
+## Exercises
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
 - Have a read through the [Ford rune documentation](../../language/hoon/reference/rune/fas.md) for details about importing libraries, structures and other things.

@@ -1,32 +1,32 @@
-# Examples {#examples}
+# Examples
 
 A collection of how-tos and examples for threads.
 
-## [Gall](gall) {#gallgall}
+## [Gall](gall)
 
 Examples of interacting with threads from Gall agents.
 
-## [Fetch JSON](get-json.md) {#fetch-jsonget-jsonmd}
+## [Fetch JSON](get-json.md)
 
 Get some JSON from an external website.
 
-## [Child Thread](child-thread.md) {#child-threadchild-threadmd}
+## [Child Thread](child-thread.md)
 
 Spawn and manage threads from within threads.
 
-## [Main-loop](main-loop.md) {#main-loopmain-loopmd}
+## [Main-loop](main-loop.md)
 
 Create a loop - useful for long-running threads and for trying the same input
 against multiple functions.
 
-## [Poke Agent](poke-agent.md) {#poke-agentpoke-agentmd}
+## [Poke Agent](poke-agent.md)
 
 Poke an agent from a thread.
 
-## [Scry](scry.md) {#scryscrymd}
+## [Scry](scry.md)
 
 Scry example.
 
-## [Take Fact](take-fact.md) {#take-facttake-factmd}
+## [Take Fact](take-fact.md)
 
 Take a fact from arvo or an agent.

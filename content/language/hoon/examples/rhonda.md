@@ -1,6 +1,6 @@
-# Rhonda Numbers {#rhonda-numbers}
+# Rhonda Numbers
 
-## Challenge: Rhonda Numbers {#challenge-rhonda-numbers}
+## Challenge: Rhonda Numbers
 
 A Rhonda number is a positive integer _n_ that satisfies the property that, for [a given base _b_](https://en.wikipedia.org/wiki/Radix), the product of the base-_b_ digits of _n_ is equal to _b_ times the sum of _n_'s prime factors.  Only composite bases (non-prime bases) have Rhonda numbers.
 
@@ -25,7 +25,7 @@ The [Wolfram MathWorld entry for “Rhonda Number”](https://mathworld.wolfram.
 
         You should provide a `%say` generator at `/gen/rhonda-series/hoon` which accepts a `@ud` unsigned decimal value `b` and a `@ud` unsigned decimal value `n`, where `b` is the base _b_, and returns the first _n_ Rhonda numbers in that base.
 
-## Unit Tests {#unit-tests}
+##  Unit Tests
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
@@ -227,11 +227,11 @@ Following a principle of test-driven development, we compose a series of tests w
 --
 ```
 
-## Solutions {#solutions}
+##  Solutions
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2022.6.  They are made available under both the [MIT license](https://mit-license.org/) and the [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0).  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1 {#solution-1}
+### Solution #1
 
 _This solution was produced by ~mocmex-pollen.  This code includes the `~_` sigcab error message rune and demonstrates the use of a helper core in a library and shows `^` ket skipping of `$` buc._
 
@@ -395,7 +395,7 @@ _This solution was produced by ~mocmex-pollen.  This code includes the `~_` sigc
 [%noun (series b n)]
 ```
 
-### Solution #2 {#solution-2}
+### Solution #2
 
 _This solution was produced by ~ticlys-monlun.  This code demonstrates using a `++map` data structure and a different square-root solution algorithm._
 
@@ -589,7 +589,7 @@ _This solution was produced by ~ticlys-monlun.  This code demonstrates using a `
 (series base many)
 ```
 
-### Solution #3 {#solution-3}
+### Solution #3
 
 _This solution was produced by ~tamlut-modnys.  This code demonstrates a clean prime factorization algorithm and the use of `++roll`._
 
@@ -754,7 +754,7 @@ _This solution was produced by ~tamlut-modnys.  This code demonstrates a clean p
 (series:rhonda [base n])
 ```
 
-### Solution #4 {#solution-4}
+### Solution #4
 
 _This solution was produced by ~sidnym-ladrut.  This code demonstrates using multiple cores in a library._
 

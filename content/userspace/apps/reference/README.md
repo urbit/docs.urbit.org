@@ -1,7 +1,7 @@
-# Reference {#reference}
+# Reference
 
 Reference information about Gall agents and related utilities.
 
-## [Software Distribution](dist) {#software-distributiondist}
+## [Software Distribution](dist)
 
 Details of publishing and distributing apps.

@@ -1,14 +1,14 @@
-# Bridge Troubleshooting {#bridge-troubleshooting}
+# Bridge Troubleshooting
 
 This page covers common issues encountered with the [Bridge](https://bridge.urbit.org) application.
 
-### Canvas Issues {#canvas-issues}
+### Canvas Issues
 
 Bridge uses an HTML element called canvas to create your wallets. Unfortunately malicious websites can use canvas to identify and track users. As a result, some browsers and anti-tracking extensions can interfere with Bridge's ability to generate wallets. 
 
 If there are no instructions for your browser, or the instructions don't work, please file a ticket on the [issue tracker](https://github.com/urbit/bridge/issues)
 
-#### Brave Users {#brave-users}
+#### Brave Users
 
 To fix canvas issues on Brave:
 
@@ -19,7 +19,7 @@ To fix canvas issues on Brave:
 
 The warning box should disappear.
 
-#### Firefox Users {#firefox-users}
+#### Firefox Users
 
 To fix canvas issues on Brave:
 

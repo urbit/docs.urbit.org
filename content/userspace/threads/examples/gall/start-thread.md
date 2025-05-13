@@ -1,8 +1,8 @@
-# Start Thread {#start-thread}
+# Start Thread
 
 Here's an example of a barebones gall agent that just starts a thread. (This is not a generic thread starter, although it can be used as the basis for such.)
 
-#### `thread-starter.hoon` {#thread-starterhoon}
+#### `thread-starter.hoon`
 
 ```hoon
 /+  default-agent, dbug
@@ -56,7 +56,7 @@ Here's an example of a barebones gall agent that just starts a thread. (This is 
 
 And here's a minimal thread to test it with:
 
-#### `test-thread.hoon` {#test-threadhoon}
+#### `test-thread.hoon`
 
 ```hoon
 /-  spider
@@ -105,7 +105,7 @@ Thread failed to start
 /sys/vane/gall/hoon:<[1.370 9].[1.370 37]>
 ```
 
-### Analysis {#analysis}
+### Analysis
 
 We can ignore the input logic, here's the important part:
 

@@ -1,4 +1,4 @@
-# 3. JSON {#3-json}
+# 3. JSON
 
 Data sent between our agent and our front-end will all be encoded as JSON. In this section, we'll briefly look at how JSON works in Urbit, and write a library to convert our agent's structures to and from JSON for our front-end.
 
@@ -23,7 +23,7 @@ The mark conversion will be done by the corresponding mark file in `/mar` on the
 
 Mark conversion functions can be included directly in the mark file, or they can be written in a separate library, then imported and called by the mark file. We will do the latter in this case, so before we create the mark files themselves, we'll write a library called `/lib/journal.hoon` with the conversion functions.
 
-## `$json` utilities {#json-utilities}
+## `$json` utilities
 
 [`zuse.hoon`](../../language/hoon/reference/zuse) contains three main cores for converting to and from `$json`:
 
@@ -31,11 +31,11 @@ Mark conversion functions can be included directly in the mark file, or they can
 - [`++dejs:format`](../../language/hoon/reference/zuse/2d_6.md#dejsformat) - Functions to decode `$json` to other data structures.
 - [`++dejs-soft:format`](../../language/hoon/reference/zuse/2d_7.md#dejs-softformat) - Mostly the same as `++dejs:format` except the functions produce units which are null if decoding fails, rather than just crashing.
 
-### `++enjs:format` {#enjsformat}
+### `++enjs:format`
 
 This contains ten functions for encoding `$json`. Most of them are for specific hoon data types, such as `++tape:enjs:format`, `++ship:enjs:format`, `++path:enjs:format`, etc. We'll just have a look at the two most general and useful ones: `++frond:enjs:format` and `++pairs:enjs:format`.
 
-#### `++frond` {#frond}
+#### `++frond`
 
 This function is for forming a JSON object from a single key-value pair. For example:
 
@@ -50,7 +50,7 @@ When stringified by Eyre, this will look like:
 { "foo": "bar" }
 ```
 
-#### `++pairs` {#pairs}
+#### `++pairs`
 
 This is similar to `++frond` and also forms a JSON object, but it takes multiple key-value pairs rather than just one:
 
@@ -71,11 +71,11 @@ When stringified by Eyre, this will look like:
 
 Notice that we used a knot for the value of `foo` (`n+~.123`). Numbers in JSON can be signed or unsigned and integers or floating point values. The `$json` structure uses a knot so that you can decide whether a particular number should be treated as `@ud`, `@sd`, `@rs`, etc.
 
-### `++dejs:format` {#dejsformat}
+### `++dejs:format`
 
 This core contains many functions for decoding `$json`. We'll touch on some useful families of `++dejs` functions in brief, but because there's so many, in practice you'll need to look through the [`++dejs` reference](../../language/hoon/reference/zuse/2d_6.md) to find the correct functions for your use case.
 
-#### Number functions {#number-functions}
+#### Number functions
 
 - `++ne` - decode a number to a `@rd`.
 - `++ni` - decode a number to a `@ud`.
@@ -89,7 +89,7 @@ For example:
 123
 ```
 
-#### String functions {#string-functions}
+#### String functions
 
 - `++sa` - decode a string to a `tape`.
 - `++sd` - decode a string containing a `@da` aura date value to a `@da`.
@@ -97,7 +97,7 @@ For example:
 - `++so` - decode a string to a `@t`.
 - `++su` - decode a string by parsing it with the given [parsing rule](../../language/hoon/reference/stdlib/4f.md).
 
-#### Array functions {#array-functions}
+#### Array functions
 
 `++ar`, `++as`, and `++at` decode a `$json` array to a `list`, `set`, and n-tuple respectively. These gates take other `++dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
 
@@ -110,7 +110,7 @@ Notice that `++so` is given as the argument to `++ar`. `++so` is a `++dejs` func
 
 Many `++dejs` functions take other `++dejs` functions as their arguments. A complex nested `$json` decoding function can be built up in this manner.
 
-#### Object functions {#object-functions}
+#### Object functions
 
 - `++of` - decode an object containing a single key-value pair to a head-tagged cell.
 - `++ot` - decode an object to a n-tuple.
@@ -135,11 +135,11 @@ For example:
 ['hello' 123]
 ```
 
-## Our types as JSON {#our-types-as-json}
+## Our types as JSON
 
 We need to decide how our `$action` and `$update` types will be represented as JSON in order to write our conversion functions. There are many ways to do this, but in this case we'll do it as follows:
 
-### Actions {#actions}
+### Actions
 
 | JSON                                              | Noun                                           |
 | ------------------------------------------------- | ---------------------------------------------- |
@@ -147,7 +147,7 @@ We need to decide how our `$action` and `$update` types will be represented as J
 | `{"edit":{"id":1648366311070,"txt":"some text"}}` | `[%edit id=1.648.366.034.844 txt='some text']` |
 | `{"del":{"id":1648366311070}}`                    | `[%del id=1.648.366.034.844]`                  |
 
-### Updates {#updates}
+### Updates
 
 | Noun                                                                                            | JSON                                                                                                 |
 | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -159,7 +159,7 @@ We need to decide how our `$action` and `$update` types will be represented as J
 
 Now let's write our library of encoding/decoding functions.
 
-## `/lib/journal.hoon` {#libjournalhoon}
+## `/lib/journal.hoon`
 
 ```hoon
 /-  *journal
@@ -168,7 +168,7 @@ Now let's write our library of encoding/decoding functions.
 
 First, we'll import the `/sur/journal.hoon` structures we previously created. Next, we'll create two arms in our core, `++dejs-action` and `++enjs-update`, to handle incoming poke `$action`s and outgoing facts or scry result `$update`s.
 
-### `$json` to `$action` {#json-to-action}
+### `$json` to `$action`
 
 ```hoon
 ++  dejs-action
@@ -191,7 +191,7 @@ For each key, we specify a function to handle its value. Ours will be objects, s
 
 You'll notice the nesting of these `++dejs` functions approximately reflects the nested structure of the `$json` it's decoding.
 
-### `$update` to `$json` {#update-to-json}
+### `$update` to `$json`
 
 ```hoon
 ++  enjs-update
@@ -262,7 +262,7 @@ We primarily use `++pairs` to form the object, though sometimes `++frond` if it 
 
 You'll notice more of our encoding function is done manually than our previous decoding function. For example, we form arrays by tagging an ordinary `list` with `%a`, and strings by tagging an ordinary `cord` with `%s`. This is typical when you write `$json` encoding functions, and is the reason there are far fewer `+enjs` functions than `+dejs` functions.
 
-## Resources {#resources}
+## Resources
 
 - [The JSON Guide](../../language/hoon/guides/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
 - [The Zuse reference](../../language/hoon/reference/zuse) - The `zuse.hoon` reference documents all JSON-related functions in detail.

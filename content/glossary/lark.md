@@ -1,4 +1,4 @@
-# Lark {#lark}
+# Lark
 
 **Lark** notation is a way to reference a relative tree address, an alternative to using a numerical [axis](axis.md). It's valid syntax as part of a [wing](wing.md) address.
 
@@ -21,6 +21,6 @@ A couple of examples in the [dojo](dojo.md):
 [a=0 b=0]
 ```
 
-#### Further Reading {#further-reading}
+#### Further Reading
 
 - [Hoon School Lesson 6: Trees and Addressing](../courses/hoon-school/G-trees.md)

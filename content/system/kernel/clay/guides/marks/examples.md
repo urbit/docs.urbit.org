@@ -1,8 +1,8 @@
-# Examples {#examples}
+# Examples
 
 These are the files used in the [Writing Marks](writing-marks.md) guide.
 
-## `/lib/csv-utils/hoon` {#libcsv-utilshoon}
+## `/lib/csv-utils/hoon`
 
 <details>
 <summary>/lib/csv-utils.hoon</summary>
@@ -177,7 +177,7 @@ These are the files used in the [Writing Marks](writing-marks.md) guide.
 
 </details>
 
-## `/mar/csv/hoon` {#marcsvhoon}
+## `/mar/csv/hoon`
 
 <details>
 <summary>/mar/csv.hoon</summary>
@@ -237,7 +237,7 @@ These are the files used in the [Writing Marks](writing-marks.md) guide.
 
 </details>
 
-## `/mar/csv-diff/hoon` {#marcsv-diffhoon}
+## `/mar/csv-diff/hoon`
 
 ```hoon {% copy="true" %}
 |_  dif=(urge:clay (list @t))

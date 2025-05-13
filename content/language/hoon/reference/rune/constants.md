@@ -1,26 +1,26 @@
-# Constants (Atoms and Strings) {#constants-atoms-and-strings}
+# Constants (Atoms and Strings)
 
 The simplest expressions in every language are constants: atoms, strings, paths. (Strings and paths aren't all constants per se, because they have interpolations.)
 
-## Cold Atom {#cold-atom}
+## Cold Atom
 
 A constant, cold atom.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Any [warm atom](#warm) form, prefixed with `%`.
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%rock p=term q=*]
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 A cold atom is one whose type is inferred to be of a single atom constant.
 
-#### Examples {#examples}
+#### Examples
 
 We can see the contrast with warm atoms by using the compiler parser function,
 `ream`:
@@ -38,19 +38,19 @@ We can see the contrast with warm atoms by using the compiler parser function,
 
 ---
 
-## Paths {#paths}
+## Paths
 
 Path with interpolation.
 
-#### Syntax {#syntax}
+#### Syntax
 
 `/this/is/a/path`
 
-#### Produces {#produces}
+#### Produces
 
 A null-terminated list of the items, which are either constant `@ta` atoms (`knots`), or expressions producing a `knot`.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > `path`/this/is/a/path
@@ -68,11 +68,11 @@ A null-terminated list of the items, which are either constant `@ta` atoms (`kno
 
 ---
 
-## Strings with Interpolation {#strings-with-interpolation}
+## Strings with Interpolation
 
 Text string with interpolation.
 
-#### Syntax {#syntax}
+#### Syntax
 
 A [$tape](../stdlib/2q.md#tape)
 
@@ -91,17 +91,17 @@ A [$tape](../stdlib/2q.md#tape)
 [%knit p=~[97 98 99 100 101 102 103]]
 ```
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%knit p=(list woof)]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 A tape.
 
-#### Examples {#examples}
+#### Examples
 
 String:
 
@@ -130,7 +130,7 @@ String with interpolated prettyprinting:
 
 A constant, warm atom.
 
-#### Syntax {#syntax}
+#### Syntax
 
 A table of examples:
 
@@ -171,13 +171,13 @@ Aura         Meaning                                 Example Literal Syntax
   @ux           unsigned hexadecimal                 0x5f5.e138
 ```
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%sand p=term q=*]
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 A 'warm' atom is one whose type is inferred to be general, i.e., not just a single atom type.
 
@@ -189,7 +189,7 @@ A 'warm' atom is one whose type is inferred to be general, i.e., not just a sing
 nest-fail
 ```
 
-#### Produces {#produces}
+#### Produces
 
 A warm (variable) atom `q` with aura `p`. Use the Hoon compiler parser function `ream` to take a closer look:
 

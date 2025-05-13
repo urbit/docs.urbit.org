@@ -1,10 +1,10 @@
-# 10. Cores and Doors {#10-cores-and-doors}
+# 10. Cores and Doors
 
 _Hoon is statically typed, which means (among other things) that [auras](../../glossary/aura.md) are subject to strict nesting rules, [molds](../../glossary/mold.md) are crash-only, and the whole thing is rather cantankerous about matching types.  However, since gate-building arms are possible, Hoon developers frequently employ them as templates to build type-appropriate [cores](../../glossary/core.md), including [gates](../../glossary/gate.md).  This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include [doors](../../glossary/door.md); finally it will introduce a common door, the [++map](../../language/hoon/reference/stdlib/2o.md#map), to illustrate how doors work._
 
-## Gate-Building Gates {#gate-building-gates}
+##  Gate-Building Gates
 
-### Calling Gates {#calling-gates}
+### Calling Gates
 
 There are two ways of making a function call in Hoon. First, you can call a gate in the [subject](../../glossary/subject.md) by name.  For instance, we can produce a gate `inc` which adds `1` to an input:
 
@@ -45,7 +45,7 @@ Often the difference doesn't matter much. Either way you can do a function call 
 
 It's important to learn the difference, however, because for certain use cases you'll want the extra flexibility that comes with having an already produced [core](../../glossary/core.md) in the subject.
 
-### Building Gates {#building-gates}
+### Building Gates
 
 Let's make a core with arms that build [gates](../../glossary/gate.md) of various kinds.  As we did in a previous lesson, we'll use the `|%` [barcen](../../language/hoon/reference/rune/bar.md#-barcen) rune.  Copy and paste the following into the [Dojo](../../glossary/dojo.md):
 
@@ -76,7 +76,7 @@ Let's try out these arms, using them for function calls:
 
 Notice that each [arm](../../glossary/arm.md) in core `c` is able to call the other arms of `c`—`++add-two` uses the `++inc` arm to increment a number twice.  As a reminder, each arm is evaluated with its parent core as the [subject](../../glossary/subject.md).  In the case of `++add-two` the parent core is `c`, which has `++inc` in it.
 
-#### Mutating a Gate {#mutating-a-gate}
+#### Mutating a Gate
 
 Let's say you want to modify the default [sample](../../glossary/sample.md) of the gate for `double`. We can infer the default sample by calling `double` with no argument:
 
@@ -145,7 +145,7 @@ dojo: hoon expression failed
 
 As before with `++double`, Hoon can't find an `a` to modify in a [gate](../../glossary/gate.md) that doesn't exist yet.
 
-### Slamming a Gate {#slamming-a-gate}
+### Slamming a Gate
 
 If you check the docs on our now-familiar `%-` [cenhep](../../language/hoon/reference/rune/cen.md#-cenhep), you'll find that it is actually sugar syntax for another [rune](../../glossary/rune.md):
 
@@ -164,7 +164,7 @@ The `%~` [censig](../../language/hoon/reference/rune/cen.md#-censig) rune accept
 Basically, whenever you use `%-` [cenhep](../../language/hoon/reference/rune/cen.md#-cenhep), it actually looks up a wing in a door using `%~` [censig](../../language/hoon/reference/rune/cen.md#-censig), which is a more general type of core than a gate.  Whatever that wing resolves to is then provided a [sample](../../glossary/sample.md). The resulting Hoon expression is evaluated and the value is returned.
 
 
-## Doors {#doors}
+##  Doors
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS150%20-%20Doors.mp4" %}
 
@@ -191,7 +191,7 @@ Doors are created with the `|_` [barcab](../../language/hoon/reference/rune/bar.
 
 One BIG pitfall for thinking about doors is thinking of them as “containing” gates, as if they were more like “objects”.  Instead, think of them the same way as you think of gates, just that they can be altered at a higher level.
 
-#### Example:  The Quadratic Equation {#example-the-quadratic-equation}
+#### Example:  The Quadratic Equation
 
 First, a mathematical example.  If we wanted to calculate a quadratic polynomial, _y = a x² + b x + c_, then we need to know two kinds of things:  the unknown or variable _x_, AND the parameters _a_, _b_, and _c_.  These aren't really the same kind of thing.  When we calculate a particular curve _y_(_x_), we assume that the parameters _a_, _b_, and _c_ stay constant across evaluations of _x_, and it's inconvenient for us to specify them every single time.
 
@@ -241,7 +241,7 @@ By hand:  5×2² + 4×2 + 3 = 31, so that's correct.
 
 Doors will enable us to build some very powerful data storage tools by letting us defer parts of a gate calculation to other stages of building and calculating the gate.
 
-#### Example:  A Calculator {#example-a-calculator}
+#### Example:  A Calculator
 
 Let's unpack what's going on more with this next [door](../../glossary/door.md). Each of the [arms](../../glossary/arm.md) in this example door will define a simple gate. Let's bind the door to `c`.  To make a door we use the `|_` [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune:
 
@@ -365,7 +365,7 @@ Thus, you may think of the `c` door as a function for making functions. Use the 
 
 The standard library provides [currying functionality](Q-func.md) outside of the context of doors.
 
-#### Creating Doors with a Modified Sample {#creating-doors-with-a-modified-sample}
+#### Creating Doors with a Modified Sample
 
 In the above example we created a [door](../../glossary/door.md) `c` with [sample](../../glossary/sample.md) `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
@@ -379,7 +379,7 @@ In the above example we created a [door](../../glossary/door.md) `c` with [sampl
 
 Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example.  You will learn more about how types are inferred in the [next module](L-struct.md).
 
-### Exercise:  Adding Arms to a Door {#exercise-adding-arms-to-a-door}
+### Exercise:  Adding Arms to a Door
 
 Recall the quadratic equation [door](../../glossary/door.md).
 
@@ -396,7 +396,7 @@ Recall the quadratic equation [door](../../glossary/door.md).
 - Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
 
 
-## Key-Value Pairs:  `map` as Door {#key-value-pairs-map-as-door}
+##  Key-Value Pairs:  `map` as Door
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183%20-%20Maps%20and%20Sets.mp4" %}
 
@@ -500,7 +500,7 @@ You can apply a gate to each value using [++run:by](../../language/hoon/referenc
 }
 ```
 
-### Exercise:  Display Cards {#exercise-display-cards}
+### Exercise:  Display Cards
 
 - Recall the `/lib/playing-cards.hoon` library.  Use a map to pretty-print the `darc`s as Unicode card symbols.
 
@@ -609,7 +609,7 @@ You can apply a gate to each value using [++run:by](../../language/hoon/referenc
     <|🂭 🂨 🂵 🃒 🃊|>
     ```
 
-#### Tutorial:  Caesar Cipher {#tutorial-caesar-cipher}
+#### Tutorial:  Caesar Cipher
 
 The Caesar cipher is a shift cipher ([that was indeed used anciently](https://en.wikipedia.org/wiki/Caesar_cipher)) wherein each letter in a message is encrypted by replacing it with one shifted some number of positions down the alphabet.  For example, with a “right-shift” of `1`, `a` would become `b`, `j` would become `k`, and `z` would wrap around back to `a`.
 
@@ -727,7 +727,7 @@ Try it out in the Dojo:
 nest-fail
 ```
 
-##### Examining the Code {#examining-the-code}
+##### Examining the Code
 
 Let's examine our caesar.hoon code piece by piece. We won't necessarily go in written order; instead, we'll cover code in the intuitive order of the program.  For each chunk that we cover, try to read and understand the code itself before reading the explanation.
 
@@ -903,7 +903,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 ["i came i saw i conquered" "a usew a kso a ugfimwjwv"]
 ```
 
-##### Further Exercise {#further-exercise}
+##### Further Exercise
 
 1.  Take the example [generator](../../glossary/generator.md) and modify it to add a second layer of shifts.
 2.  Extend the example generator to allow for use of characters other than a-z. Make it shift the new characters independently of the alpha characters, such that punctuation is only encoded as other punctuation marks.
@@ -911,7 +911,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 4.  Modify the example generator into a `%say` generator.
 
 
-## A Bit More on Cores {#a-bit-more-on-cores}
+##  A Bit More on Cores
 
 The `|^` [barket](../../language/hoon/reference/rune/bar.md#-barket) rune is an example of what we can call a _convenience rune_, similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner).  `|^` [barket](../../language/hoon/reference/rune/bar.md#-barket) produces a core with _at least_ a `$` buc arm and computes it immediately, called a _cork_. (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
 
@@ -969,6 +969,6 @@ What is a [gate](../../glossary/gate.md)?  It is a [door](../../glossary/door.md
 
 A _gate_ and a _trap_ are actually very similar:  a gate simply has a [sample](../../glossary/sample.md) (and can actively change when evaluated or via a `%=` [centis](../../language/hoon/reference/rune/cen.md#-centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
 
-#### Example:  Hoon Workbook {#example-hoon-workbook}
+#### Example:  Hoon Workbook
 
 Other examples demonstrating [++map](../../language/hoon/reference/stdlib/2o.md#map) are available in the [Hoon Workbook](../../language/hoon/examples), such as Solution #2 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial.

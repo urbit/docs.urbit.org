@@ -1,8 +1,8 @@
-# 11. Failure {#11-failure}
+# 11. Failure
 
 In this lesson we'll cover the last agent arm we haven't touched on yet: `on-fail`. We'll also touch on one last concept, which is the _helper core_.
 
-# Failures {#failures}
+# Failures
 
 When crashes or errors occur in certain cases, Gall passes them to an agent's `on-fail` arm for handling. This arm is very seldom used, almost all agents leave it for `default-agent` to handle, which just prints the error message to the terminal. While you're unlikely to use this arm, we'll briefly go over its behavior for completeness.
 
@@ -32,7 +32,7 @@ For a `%watch` failure, the `term` will be `%watch-not-unique`. The `tang` will 
 
 How you might handle these cases (if you wanted to manually handle them) depends on the purpose of your particular agent.
 
-## Helper core {#helper-core}
+## Helper core
 
 Back in the lesson on lustar virtual arms, we briefly mentioned a common pattern is to define a deferred expression for a helper core named `hc` like:
 
@@ -86,7 +86,7 @@ hc  ~(. +>  bowl)
 
 To get to the helper core we composed from within the door, we use a [censig](../../language/hoon/reference/rune/cen.md#-censig) expression to call `+>` of the subject (`.`) with the `bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
 
-## Summary {#summary}
+## Summary
 
 - `on-fail` is called in certain cases of crashes or failures.
 - Crashes in the `on-agent`, `on-arvo`, or `on-watch` arms will trigger a call to `on-fail`.

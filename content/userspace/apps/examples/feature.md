@@ -1,10 +1,10 @@
-# Host a Website {#host-a-website}
+# Host a Website
 
 [`%feature`](https://github.com/hanfel-dovned/Feature) by [~hanfel-dovned](https://urbit.org/ids/~hanfel-dovned) hosts a simple HTML page from an Urbit ship at an associated URL.  This tutorial examines how it uses the middleware [`%schooner`](https://github.com/dalten-collective/schooner/) library by Quartus to return a web page when contacted by a web browser.  You will learn how a basic site hosting app can handle HTTP requests and render a page using an `%html` mark.
 
 `%feature` presents a web page from `/app/feature-ui` at `/apps/feature/feature-ui`.  These paths are both configurable by the developer.
 
-## `/sur` Structure Files {#sur-structure-files}
+## `/sur` Structure Files
 
 Our primary event in this case is simply an `%action` to create a page.
 
@@ -20,7 +20,7 @@ Our primary event in this case is simply an `%action` to create a page.
 
 No special mark files are necessary for `%feature` other than `%html`.
 
-## `/app` Agent Files {#app-agent-files}
+## `/app` Agent Files
 
 The agent only maintains a state containing the page contents as a `cord.`
 
@@ -159,7 +159,7 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
 
 </details>
 
-### Pokes {#pokes}
+### Pokes
 
 `++on-poke` only responds to `%handle-http-request`, which is dealt with in a `|^` barket core.
 
@@ -224,17 +224,17 @@ The most interesting part of the whole app is the `++handle-http` arm:
 
 This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
 
-### `POST` {#post}
+### `POST`
 
 In response to a `POST` request, the default page in the state can be changed.  This is the only state change supported by the agent.
 
-### `GET` {#get}
+### `GET`
 
 A `GET` request defaults to a `404` error.
 
 - `/apps/feature/public` returns `200` success and the default page in the state.
 - `/apps/feature` returns `200` success and the target page, statically compiled on agent build.
 
-### `/lib/schooner` {#libschooner}
+### `/lib/schooner`
 
 The [Schooner library](https://github.com/dalten-collective/schooner/) simplifies raw HTTP handling for Gall agents, in particular for MIME returns.

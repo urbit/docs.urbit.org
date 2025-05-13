@@ -1,4 +1,4 @@
-# Guides {#guides}
+# Guides
 
 Guides to various features of the Hoon language.
 

@@ -1,9 +1,9 @@
-# 12. Type Checking {#12-type-checking}
+# 12. Type Checking
 
 _In this module we'll cover how the Hoon compiler infers type, as well as various cases in which a type check is performed._
 
 
-## Type Casting {#type-casting}
+## Type Casting
 
 Casting is used to explain to the Hoon compiler exactly what it is we mean with a given data structure.  As you get in the habit of casting your data structures, it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
 
@@ -77,7 +77,7 @@ Any time we see a `find-fork` error, it means that the type checker considers th
 It's important to note that performing tests like this will actually transform a [list](../../glossary/list.md) into a `lest`, a non-null list.  Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
 
-### Casting Nouns (`^` ket Runes) {#casting-nouns-ket-runes}
+### Casting Nouns (`^` ket Runes)
 
 As the Hoon compiler compiles your Hoon code, it does a type check on certain expressions to make sure they are guaranteed to produce a value of the correct type.  If it cannot be proved that the output value is correctly typed, the compile will fail with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) crash.  In order to figure out what type of value is produced by a given expression, the compiler uses type inference on that code.
 
@@ -85,7 +85,7 @@ Let's enumerate the most common cases where a type check is called for in Hoon.
 
 The most obvious case is when there is a casting `^` [ket](../../language/hoon/reference/rune/ket.md) rune in your code.  These runes don't directly have any effect on the compiled result of your code; they simply indicate that a type check should be performed on a piece of code at compile-time.
 
-#### `^-` kethep Cast with a Type {#--kethep-cast-with-a-type}
+#### `^-` kethep Cast with a Type
 
 You've already seen one rune that calls for a type check: `^-` [kethep](../../language/hoon/reference/rune/ket.md#--kethep):
 
@@ -115,7 +115,7 @@ nest-fail
 nest-fail
 ```
 
-#### `^+` ketlus Cast with an Example Value {#-ketlus-cast-with-an-example-value}
+#### `^+` ketlus Cast with an Example Value
 
 The rune `^+` [ketlus](../../language/hoon/reference/rune/ket.md#-ketlus) is like `^-` [kethep](../../language/hoon/reference/rune/ket.md#--kethep), except that instead of using a type name for the cast, it uses an example value of the type in question.  E.g.:
 
@@ -147,7 +147,7 @@ nest-fail
 [123 12 14]
 ```
 
-### Arm Checks {#arm-checks}
+### Arm Checks
 
 Whenever an [arm](../../glossary/arm.md) is evaluated in Hoon it expects to have some version of its parent [core](../../glossary/core.md) as the [subject](../../glossary/subject.md).  Specifically, a type check is performed to see whether the arm subject is of the appropriate type.  We see this in action whenever a [gate](../../glossary/gate.md) or a multi-arm [door](../../glossary/door.md) is called.
 
@@ -175,11 +175,11 @@ We'll talk in more detail about the various kinds of type-checking that can occu
 This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are `=.` [tisdot](../../language/hoon/reference/rune/tis.md#-tisdot) and `%_` [cencab](../../language/hoon/reference/rune/cen.md#_-cencab).
 
 
-## Type Inference {#type-inference}
+##  Type Inference
 
 Hoon infers the type of any given expression.  How does this inference work?  Hoon has available various tools for inferring the type of any given expression:  literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
 
-### Literals {#literals}
+### Literals
 
 [Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values.  [Atom](../../glossary/atom.md) and [cell](../../glossary/cell.md) literals are supported in Hoon, and every supported [aura](../../glossary/aura.md) has an unambiguous representation that allows the parser to directly infer the type from the form.  Here are a few examples of auras and associated literal formats:
 
@@ -191,7 +191,7 @@ Hoon infers the type of any given expression.  How does this inference work?  Ho
 | `[@ud @ud]` | `[12 14]` |
 | `[@ux @t ?]` | `[0x1f 'hello' %.y]` |
 
-### Casts {#casts}
+### Casts
 
 Casting with `^` [ket](../../language/hoon/reference/rune/ket.md) runes also shape how Hoon understands an expression type, as outlined above.  The inferred type of a cast expression is just the type being cast for.  It can be inferred that, if the cast didn't result in a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail), the value produced must be of the cast type. Here are some examples of cast expressions with the inferred output type on the right:
 
@@ -213,7 +213,7 @@ Since casts can throw away type information, if the cast type is more general, t
 
 It's important to remember to include a cast [rune](../../glossary/rune.md) with each [gate](../../glossary/gate.md) and [trap](../../glossary/trap.md) expression.  That way it's clear what the inferred product type will be for calls to that core.
 
-### (Dry) Gate Sample Definitions {#dry-gate-sample-definitions}
+### (Dry) Gate Sample Definitions
 
 By now you've used the `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) rune to define several [gates](../../glossary/gate.md).  This rune is used to produce a _dry gate_, which has different type-checking and type-inference properties than a _wet gate_ does.  We won't explain the distinction until [a later module](R-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
@@ -241,15 +241,15 @@ nest-fail
 
 If you try to call this gate with the wrong kind of argument, you get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail).  If the call succeeds, then the argument takes on the type of the [sample](../../glossary/sample.md) definition: `[a=@ b=@]`. Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of [aura](../../glossary/aura.md).
 
-### Inferring Type (`?` wut Runes) {#inferring-type-wut-runes}
+### Inferring Type (`?` wut Runes)
 
-#### Using Conditionals for Inference by Branch {#using-conditionals-for-inference-by-branch}
+#### Using Conditionals for Inference by Branch
 
 You have learned about a few conditional runes (e.g., `?:` [wutcol](../../language/hoon/reference/rune/wut.md#-wutcol) and `?.` [wutdot](../../language/hoon/reference/rune/wut.md#-wutdot)), but other runes of the `?` family are used for branch-specialized type inference.  The `?@` [wutpat](../../language/hoon/reference/rune/wut.md#-wutpat), `?^` [wutket](../../language/hoon/reference/rune/wut.md#-wutket), and `?~` [wutsig](../../language/hoon/reference/rune/wut.md#-wutsig) conditionals each take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` wutcol—the first is the test condition, which evaluates to a flag `?`.  If the test condition is true, the second subexpression is evaluated; otherwise the third.  These second and third subexpressions are the ‘branches’ of the conditional.
 
 There is also a `?=` [wuttis](../../language/hoon/reference/rune/wut.md#-wuttis) rune for pattern-matching expressions by type, returning `%.y` for a match and `%.n` otherwise.
 
-##### `?=` wuttis Non-recursive Type Match Test {#-wuttis-non-recursive-type-match-test}
+##### `?=` wuttis Non-recursive Type Match Test
 
 The `?=` [wuttis](../../language/hoon/reference/rune/wut.md#-wuttis) rune takes two subexpressions.  The first subexpression should be a type.  The second subexpression is evaluated and the resulting value is compared to the first type.  If the value is an instance of the type, `%.y` is produced. Otherwise, `%.n`.  Examples:
 
@@ -325,7 +325,7 @@ You can't see it here, but the inferred type of `b` in `[& b]` is `@`. That sube
 
 You can't see it here either, but the inferred type of `b` in `[| b]` is `^`.  That subexpression is only evaluated if `?=(@ b)` evaluates as false, so `b` can't be an atom there.  It follows that it must be a [cell](../../glossary/cell.md).
 
-##### The Type Spear {#the-type-spear}
+##### The Type Spear
 
 What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with the _type spear_.  The `!>` [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune takes one subexpression and constructs a [cell](../../glossary/cell.md) from it.  The subexpression is evaluated and becomes the tail of the product cell, with a `q` [face](../../glossary/face.md) attached.  The head of the product cell is the inferred type of the subexpression.
 
@@ -371,7 +371,7 @@ Now let's try using `?=` [wuttis](../../language/hoon/reference/rune/wut.md#-wut
 
 In both cases, `b` is defined initially as a generic [noun](../../glossary/noun.md), `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an [atom](../../glossary/atom.md), `@`, when the condition is true; otherwise `b` is inferred to be a [cell](../../glossary/cell.md), `^` (identical to `[* *]`).
 
-###### `mint-vain` {#mint-vain}
+###### `mint-vain`
 
 Expressions of the form `?:(?=(a b) c d)` should only be used when the previously inferred type of `b` isn't specific enough to determine whether it nests under `a`.  This kind of expression is only to be used when `?=` can reveal new type information about `b`, not to confirm information Hoon already has.
 
@@ -387,7 +387,7 @@ mint-vain
 
 In the first case it's already known that `b` is an atom.  In the second case it's already known that `b` isn't an atom.  Either way, the check is superfluous and thus one of the `?:` wutcol branches will never be taken.  The `mint-vain` crash indicates that it's provably the case one of the branches will never be taken.
 
-#### `?@` wutpat Atom Match Tests {#-wutpat-atom-match-tests}
+#### `?@` wutpat Atom Match Tests
 
 The `?@` [wutpat](../../language/hoon/reference/rune/wut.md#-wutpat) rune takes three subexpressions.  The first is evaluated, and if its value is an instance of `@`, the second subexpression is evaluated.  Otherwise, the third subexpression is evaluated.
 
@@ -427,7 +427,7 @@ mint-vain
 
 `?@` [wutpat](../../language/hoon/reference/rune/wut.md#-wutpat) should only be used when it allows for Hoon to infer new type information; it shouldn't be used to confirm type information Hoon already knows.
 
-#### `?^` wutket Cell Match Tests {#-wutket-cell-match-tests}
+#### `?^` wutket Cell Match Tests
 
 The `?^` [wutket](../../language/hoon/reference/rune/wut.md#-wutket) rune is just like `?@` [wutpat](../../language/hoon/reference/rune/wut.md#-wutpat) except it tests for a cell match instead of for an atom match.  The first subexpression is evaluated, and if the resulting value is an instance of `^` the second subexpression is evaluated. Otherwise, the third is run.
 
@@ -449,7 +449,7 @@ mint-vain
 nest-fail
 ```
 
-#### Tutorial:  Leaf Counting {#tutorial-leaf-counting}
+#### Tutorial:  Leaf Counting
 
 [Nouns](../../glossary/noun.md) can be understood as binary trees in which each 'leaf' of the tree is an [atom](../../glossary/atom.md).  Let's look at a program that takes a noun and returns the number of leaves in it, i.e., the number of atoms.
 
@@ -478,7 +478,7 @@ This program is pretty simple.  If the noun `a` is an atom, then it's a tree of 
 
 We have been careful to use `-.a` and `+.a` only on a branch for which `a` is proved to be a [cell](../../glossary/cell.md) -- then it's safe to treat `a` as having a head and a tail.
 
-#### Tutorial:  Cell Counting {#tutorial-cell-counting}
+#### Tutorial:  Cell Counting
 
 Here's a program that counts the number of cells in a noun:
 
@@ -522,7 +522,7 @@ What makes this program is little harder to follow is that it recurses within a 
 
 Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`.  We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
 
-### Lists {#lists}
+### Lists
 
 You learned about lists earlier in the chapter, but we left out a little bit of information about the way Hoon understands [list](../../glossary/list.md) types.
 
@@ -540,7 +540,7 @@ To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.
 
 (There are lists of every type.  Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc.  We can even have lists of lists of `@`, `^`, or `?`, etc.)
 
-#### Tutorial:  List Spanning Values {#tutorial-list-spanning-values}
+#### Tutorial:  List Spanning Values
 
 Here's a program that takes atoms `a` and `b` and returns a list of all atoms from `a` to `b`:
 
@@ -591,7 +591,7 @@ We called this program `gulf.hoon` because it replicates the [gulf](../../langua
 ~[10 11 12 13 14 15 16 17 18 19 20]
 ```
 
-#### `?~` wutsig Null Match Test {#-wutsig-null-match-test}
+#### `?~` wutsig Null Match Test
 
 The `?~` [wutsig](../../language/hoon/reference/rune/wut.md#-wutsig) rune is a lot like `?@` [wutpat](../../language/hoon/reference/rune/wut.md#-wutpat) and `?^` [wutket](../../language/hoon/reference/rune/wut.md#-wutket).  It takes three subexpressions, the first of which is evaluated to see whether the result is `~` null. If so, the second subexpression is evaluated. Otherwise, the third one is evaluated.
 
@@ -618,7 +618,7 @@ mint-vain
 
 Hoon will infer that `b` either is or isn't null based on which `?~` branch is evaluated after the test.
 
-##### Using `?~` wutsig With Lists {#using-wutsig-with-lists}
+##### Using `?~` wutsig With Lists
 
 `?~` [wutsig](../../language/hoon/reference/rune/wut.md#-wutsig) is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question. Above, we used a pattern of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#-wutcol) and `?=` [wuttis](../../language/hoon/reference/rune/wut.md#-wuttis) to answer the question, but `?~` wutsig will let us know in one step. Here's a program using `?~` wutsig to calculate the number of items in a list of atoms:
 
@@ -650,7 +650,7 @@ Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 4
 ```
 
-#### Tutorial:  Converting a Noun to a List of its Leaves {#tutorial-converting-a-noun-to-a-list-of-its-leaves}
+#### Tutorial:  Converting a Noun to a List of its Leaves
 
 Here's a program that takes a noun and returns a [list](../../glossary/list.md) of its 'leaves' (atoms) in order of their appearance:
 
@@ -674,7 +674,7 @@ Save the above code as `/gen/listleaf.hoon` and run it from the Dojo:
 ~[12 13 33 22 12 11 33]
 ```
 
-### Other Kinds of Type Inference {#other-kinds-of-type-inference}
+### Other Kinds of Type Inference
 
 So far you've learned about four kinds of type inference:
 
@@ -690,7 +690,7 @@ More subtly, the `=+` [tislus](../../language/hoon/reference/rune/tis.md#-tislus
 In general, anything that modifies the subject modifies the type of the subject.  Type inference can work in subtle ways for various expressions.  However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 
 
-## Auras as 'Soft' Types {#auras-as-soft-types}
+## Auras as 'Soft' Types
 
 It's important to understand that Hoon's type system doesn't enforce [auras](../../glossary/aura.md) as strictly as it does other types. Auras are 'soft' type information. To see how this works, we'll take you through the process of converting the aura of an [atom](../../glossary/atom.md) to another aura.
 
@@ -804,7 +804,7 @@ You can cast `b` back to `(list)` to work around this:
 11
 ```
 
-### Pattern Matching and Assertions {#pattern-matching-and-assertions}
+### Pattern Matching and Assertions
 
 To summarize, as values get passed around and checked at various points, the Hoon compiler tracks what the possible data structure or [mold](../../glossary/mold.md) looks like.  The following runes are particularly helpful when inducing the compiler to infer what it needs to know:
 

@@ -1,6 +1,6 @@
-# File Format {#file-format}
+# File Format
 
-## `%docu` mark {#docu-mark}
+## `%docu` mark
 
 {% hint style="info" %}
 **Note**: this section is mostly useful if you're writing a mark conversion method. For marks that are already supported and you can use directly, see further down this page.
@@ -29,11 +29,11 @@ The `%docu` mark will technically accept any `$manx`, but the `%docs` agent itse
 
 ---
 
-## Included marks {#included-marks}
+## Included marks
 
 The following marks are supported by the %docs app and you can use them to write docs right away.
 
-### `%udon` {#udon}
+### `%udon`
 
 Udon is a markdown-like language native to hoon, with a parser built into the hoon compiler. Here is its syntax in brief:
 
@@ -59,15 +59,15 @@ Udon is a markdown-like language native to hoon, with a parser built into the ho
 **Note**: Udon is quite strict on its syntax, and may fail to parse if it's incorrect.
 {% endhint %}
 
-### `%txt` {#txt}
+### `%txt`
 
 The `%docs` app supports plain `.txt` files. The file will be rendered as a preformatted codeblock with wrapping.
 
-### `%html` {#html}
+### `%html`
 
 Ordinary HTML files may be used, but note the tag and structural restrictions described in the `%docu` mark description above.
 
-### `%gmi` {#gmi}
+### `%gmi`
 
 Gemtext is an ultra-minimal markup format developed for the [Gemini
 project](https://gemini.circumlunar.space/), an internet protocol for serving

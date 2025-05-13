@@ -1,4 +1,4 @@
-# L2 Roller HTTP RPC-API {#l2-roller-http-rpc-api}
+# L2 Roller HTTP RPC-API
 
 With the introduction of Layer 2 arrived a new set of Gall agents equipped with an HTTP RPC-API primarily intended for interacting with Bridge. The documentation for this API is coming soon.
 

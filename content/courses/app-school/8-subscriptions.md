@@ -1,4 +1,4 @@
-# 8. Subscriptions {#8-subscriptions}
+# 8. Subscriptions
 
 In this lesson we're going to look at subscriptions. Subscriptions are probably the most complicated part of writing agents, so there's a fair bit to cover. Before we get into the nitty-gritty details, we'll give a brief overview of Gall's subscription mechanics.
 
@@ -10,7 +10,7 @@ Note it's not strictly necessary to define subscription paths explicitly. As lon
 
 For a deeper explanation of subscription mechanics in Arvo, you can refer to Arvo's [Subscriptions](../../system/kernel/arvo/guides/subscriptions.md) section.
 
-## Incoming subscriptions {#incoming-subscriptions}
+## Incoming subscriptions
 
 Subscription requests from other entities arrive in your agent's `on-watch` arm. The `on-watch` arm takes the `path` to which they're subscribing, and produces a `(quip card _this)`:
 
@@ -62,7 +62,7 @@ Updates to subscribers would usually be sent from other arms, but there's one sp
 ==
 ```
 
-## Sending updates to subscribers {#sending-updates-to-subscribers}
+## Sending updates to subscribers
 
 Once your agent has subscribers, it's easy to send them out updates. All you need to do is produce `card`s with `%fact`s in them:
 
@@ -76,7 +76,7 @@ Once your agent has subscribers, it's easy to send them out updates. All you nee
 
 The `(list path)` in the `%fact` specifies which subscription `path`s the `%fact` should be sent on. All subscribers of all `path`s specified will receive the `%fact`. Any agent arm which produces a `(quip card _this)` can send `%fact`s to subscribers. Most often they will be produced in the `on-poke` arm, since new data will often be added in `poke`s.
 
-## Kicking subscribers {#kicking-subscribers}
+## Kicking subscribers
 
 To kick a subscriber, you just send a `%kick` `card`:
 
@@ -94,7 +94,7 @@ In this case, all subscribers to the specified `path`s will be kicked.
 
 Note that `%kick`s are not exclusively sent by the agent itself - Gall itself can also kick subscribers under certain network conditions. Because of this, `%kick`s are not assumed to be intentional, and the usual behavior is for a kicked agent to try and resubscribe. Therefore, if you want to disallow a particular subscriber, your agent's `on-watch` arm should reject further subscription requests from them - your agent should not just `%kick` them and call it a day.
 
-## Outgoing subscriptions {#outgoing-subscriptions}
+## Outgoing subscriptions
 
 Now that we've covered incoming subscriptions, we'll look at the other side of it: Subscribing to other agents. This is done by `%pass`ing the target agent a `%watch` task in a `card`:
 
@@ -139,7 +139,7 @@ The `on-agent` arm produces a `(quip card _this)`, so you can produce new `card`
 
 One further thing to note with subscriptions is that you can subscribe multiple times to the same `path` on the same ship and agent, as long as the `wire` is unique. If the ship, agent, `path` and `wire` are all the same as an existing subscription, Gall will not allow the request to be sent, and instead fail with an error message fed into the `on-fail` arm of your agent.
 
-## Receiving updates {#receiving-updates}
+## Receiving updates
 
 Assuming the `%watch` succeeded, your agent will now begin receiving any `%fact`s the other agent publishes on the `path` to which you've subscribed. These `%fact`s will also come in to your agent's `on-agent` arm in a `sign`, just like the initial `%watch-ack`. The `%fact` `sign` will have the following format:
 
@@ -168,7 +168,7 @@ Note that Gall will not allow `sign`s to come into `on-agent` unsolicited, so yo
 
 The `on-agent` arm produces a `(quip card _this)`, so you can produce new `card`s and update your agent's state, as appropriate.
 
-## Getting kicked {#getting-kicked}
+## Getting kicked
 
 For whatever reason, the agent you're `%watch`ing might want to kick your agent from a `path` to which it's subscribed, ending your subscription and ceasing to send your agent `%fact`s. To do this, it will send your agent a `%kick` card [as described above](#kicking-subscribers). The `%kick` will come in to your agent's `on-agent` arm in a `sign`, like `%watch-ack`s and `%fact`s do. The `%kick` `sign` will have the following format:
 
@@ -192,7 +192,7 @@ Since the `%kick` itself contains no information, you'll need to consider the `w
   .......
 ```
 
-## Leaving a subscription {#leaving-a-subscription}
+## Leaving a subscription
 
 Eventually you may wish to unsubscribe from a `path` in another agent and stop receiving updates. This is done by `%pass`ing a `%leave` task to the agent in question:
 
@@ -202,7 +202,7 @@ Eventually you may wish to unsubscribe from a `path` in another agent and stop r
 
 The subscription to be ended is determined by the combination of the `wire`, ship and agent, so the `%leave` task itself always just has `~` at the end.
 
-## Example {#example}
+## Example
 
 Here we're going to give a pretty well fleshed out example. It will demonstrate both inbound and outbound subscriptions, most of the concepts we've discussed here, as well as some from the previous lesson - `/sur` files, `mark` files, and permission checks.
 
@@ -212,7 +212,7 @@ The example will be composed of two separate agents - a publisher called `/app/t
 
 Before we get into trying it out, we'll first walk through the `/sur` file, mark files, and each agent.
 
-### Types and marks {#types-and-marks}
+### Types and marks
 
 <details>
 <summary>/sur/todo.hoon</summary>
@@ -285,7 +285,7 @@ This is a very simple mark file for the `action` type.
 
 This is a very simple mark file for the `update` type.
 
-### Publisher {#publisher}
+### Publisher
 
 <details>
 <summary>/app/todo.hoon</summary>
@@ -441,9 +441,9 @@ Let's now look at `on-watch`:
 
 When `on-watch` gets a subscription request, it checks whether the requesting ship is in the `friends` set, and crashes if it is not. If they're in `friends`, it produces a `%fact` card with a null `(list path)`, which means it goes only to the new subscriber. This `%fact` contains the entire `tasks` map as it currently exists, getting the new subscriber up to date.
 
-### Subscriber {#subscriber}
+### Subscriber
 
-#### `/app/todo-watcher.hoon` {#apptodo-watcherhoon}
+#### `/app/todo-watcher.hoon`
 
 <details>
 <summary>/app/todo-watcher.hoon</summary>
@@ -544,7 +544,7 @@ The `on-poke` arm is fairly simple - it accepts two pokes, to either `[%sub ~som
 
 The `on-agent` arm will print whether a subscription request succeeded or failed, as well as printing a message when it gets kicked. When it receives a `%fact` from the publisher agent, it will just print it to the terminal with a `~&` expression.
 
-### Trying it out {#trying-it-out}
+### Trying it out
 
 We're going to try this between two different ships. The first ship will be the usual fakezod. We'll add both `mark` files, the `/sur` file, and the `todo.hoon` agent to the `%base` desk of our fakezod, putting them in the following directories:
 
@@ -717,7 +717,7 @@ On `~nut`, we'll see it got the `%kick`, tried resubscribing automatically, but 
 %todo-watcher: Subscribe failed!
 ```
 
-## Summary {#summary}
+## Summary
 
 - Incoming subscription requests arrive in an agent's `on-watch` arm.
 - An agent will define various subscription `path`s in its `on-watch` arm, which others can subscribe to.
@@ -735,7 +735,7 @@ On `~nut`, we'll see it got the `%kick`, tried resubscribing automatically, but 
 - The `wire` for subscription updates to arrive on is specified in the initial `%watch` card.
 - A subscriber can unsubscribe by passing a `%leave` card on the original `wire`.
 
-## Exercises {#exercises}
+## Exercises
 
 - Have a look at the [Strings Guide](../../language/hoon/guides/strings.md) if you're not already familiar with decoding/encoding atoms in strings.
 - Try running through the [example](#example) yourself, if you've not done so already.

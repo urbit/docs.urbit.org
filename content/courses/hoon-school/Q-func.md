@@ -1,4 +1,4 @@
-# 16. Functional Programming {#16-functional-programming}
+# 16. Functional Programming
 
 _This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools._
 
@@ -6,7 +6,7 @@ Given a [gate](../../glossary/gate.md), you can manipulate it to accept a differ
 
 Functional programming, as a paradigm, tends to prefer rather mathematical expressions with explicit modification of function behavior.  It works as a formal system of symbolic expressions manipulated according to given rules and properties.  FP was derived from the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus), a cousin of combinator calculi like [Nock](../../glossary/nock.md).  (See also [APL](https://en.wikipedia.org/wiki/APL_%28programming_language%29).)
 
-## Changing Arity {#changing-arity}
+##  Changing Arity
 
 If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the `;:` [miccol](../../language/hoon/reference/rune/mic.md#-miccol) rune.
 
@@ -27,7 +27,7 @@ If a gate accepts only two values in its sample, for instance, you can chain tog
 This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of the gate.  (Does this work on [++mul:rs](../../language/hoon/reference/stdlib/3b.md#mulrs)?)
 
 
-## Binding the Sample {#binding-the-sample}
+##  Binding the Sample
 
 [_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument.  _Binding_, an allied process, is used to set the value of some of those arguments permanently.
 
@@ -54,15 +54,15 @@ One can also [++cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, o
 0x13
 ```
 
-### Exercise:  Bind Gate Arguments {#exercise-bind-gate-arguments}
+### Exercise:  Bind Gate Arguments
 
 - Create a gate `++inc` which increments a value in one step, analogous to [++dec](../../language/hoon/reference/stdlib/1a.md#dec).
 
-### Exercise:  Chain Gate Values {#exercise-chain-gate-values}
+### Exercise:  Chain Gate Values
 
 - Write an expression which yields the parent [galaxy](../../glossary/galaxy.md) of a [planet's](../../glossary/planet.md) sponsoring [star](../../glossary/star.md) by composing two gates.
 
-## Working Across `list`s {#working-across-lists}
+##  Working Across `list`s
 
 The [++turn](../../language/hoon/reference/stdlib/2b.md#turn) function takes a list and a [gate](../../glossary/gate.md), and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of [atoms](../../glossary/atom.md):
 
@@ -108,12 +108,12 @@ c
 120
 ```
 
-### Exercise:  Calculate a Factorial {#exercise-calculate-a-factorial}
+### Exercise:  Calculate a Factorial
 
 - Use `++reel` to produce a [gate](../../glossary/gate.md) which calculates the factorial of a number.
 
 
-## Classic Operations {#classic-operations}
+##  Classic Operations
 
 Functional programmers frequently rely on three design patterns to produce operations on collections of data:
 

@@ -1,14 +1,14 @@
-# ^ ket · Casts {#-ket-casts}
+# ^ ket · Casts
 
 [`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=` ("kettis")](#-kettis) let us adjust types without violating type constraints.
 
 The `nest` algorithm which tests subtyping is conservative; it never allows invalid nests, it sometimes rejects valid nests.
 
-## `^|` "ketbar" {#-ketbar}
+## `^|` "ketbar"
 
 Convert a gold core to an iron core (contravariant).
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -16,17 +16,17 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `^\|  p`   | `^\|(p)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktbr p=hoon]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 `p` as an iron core; crash if not a gold core.
 
-#### Discussion {#discussion}
+#### Discussion
 
 An iron core is an opaque function (gate or door).
 
@@ -34,7 +34,7 @@ Theorem: if type `x` nests within type `a`, and type `y` nests within type `b`, 
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-#### Examples {#examples}
+#### Examples
 
 The prettyprinter shows the core metal (`.` gold, `|` iron):
 
@@ -48,11 +48,11 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 
 ---
 
-## `^:` "ketcol" {#-ketcol}
+## `^:` "ketcol"
 
 Switch parser into structure mode (mold definition) and produce a gate for type `p`.  (See [`,` com]() which toggles modes.)
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -60,17 +60,17 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `^:  p`   | `^:(p)`   | `,p`           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktcl p=spec]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 A gate that returns the sample value if it is of the correct type, but crashes otherwise.
 
-#### Discussion {#discussion}
+#### Discussion
 
 `^:` is used to produce a mold that crashes if its sample is of the wrong type.
 
@@ -80,7 +80,7 @@ Molds used to produced their bunt value if they couldn't mold their sample. This
 
 One may expect that `^:(path /foo)` would result in a syntax error since `^:` only takes one child, but instead it will parse as `=< ^ %:(path /foo)`. Since `:` is the irregular syntax for `=<` this is is parsed as "get `^` (i.e. the mold for cells) from a subject of `(path /foo)`", with `:` being the irregular syntax for `=<`.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > ^:  @
@@ -109,11 +109,11 @@ ford: %ride failed to execute:
 
 ---
 
-## `^.` "ketdot" {#-ketdot}
+## `^.` "ketdot"
 
 Typecast on value produced by passing `q` to `p`.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -144,25 +144,25 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktdt p=hoon q=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 ^+(%:(p q) q)
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 `p` produces a gate and q is any Hoon expression.
 
 `^.` is particularly useful when `p` is a gate that 'cleans up' the type information about some piece of data. For example, `limo` is used to turn a raw noun of the appropriate shape into a genuine list. Hence we can use `^.` to cast with `limo` and similar gates, ensuring that the product has the desired type.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > =mylist [11 22 33 ~]
@@ -181,11 +181,11 @@ mint-vain
 
 ---
 
-## `^-` "kethep" {#--kethep}
+## `^-` "kethep"
 
 Typecast by explicit type label.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -218,23 +218,23 @@ q
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%kthp p=spec q=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 ^+(^*(p) q)
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 It's a good practice to put a `^-` ("kethep") at the top of every arm (including gates, loops, etc). This cast is strictly necessary only in the presence of head recursion (otherwise you'll get a `rest-loop` error, or if you really screw up spectacularly an infinite loop in the compiler).
 
-#### Examples {#examples}
+#### Examples
 
 ```
 ~zod:dojo> (add 90 7)
@@ -254,11 +254,11 @@ It's a good practice to put a `^-` ("kethep") at the top of every arm (including
 [~ ~.a]
 ```
 
-## `^+` "ketlus" {#-ketlus}
+## `^+` "ketlus"
 
 Typecast by inferred type.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -289,17 +289,17 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktls p=hoon q=hoon]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 The value of `q` with the type of `p`, if the type of `q` nests within the type of `p`. Otherwise, `nest-fail`.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 ~zod:dojo> ^+('text' %a)
@@ -308,11 +308,11 @@ The value of `q` with the type of `p`, if the type of `q` nests within the type 
 
 ---
 
-## `^&` "ketpam" {#-ketpam}
+## `^&` "ketpam"
 
 Convert a core to a zinc core (covariant).
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -320,21 +320,21 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `^&  p`   | `^&(p)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktpm p=hoon]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 `p` as a zinc core; crash if `p` isn't a gold or zinc core.
 
-#### Discussion {#discussion}
+#### Discussion
 
 A zinc core has a read-only sample and an opaque context. See [Advanced types](../advanced.md).
 
-#### Examples {#examples}
+#### Examples
 
 The prettyprinter shows the core metal in the arm labels `1.xoz` and `1&xoz` below (`.` is gold, `&` is zinc):
 
@@ -373,11 +373,11 @@ ford: %ride failed to compute type:
 
 ---
 
-## `^~` "ketsig" {#-ketsig}
+## `^~` "ketsig"
 
 Fold constant at compile time.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -385,17 +385,17 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `^~  p`   | `^~(p)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktsg p=hoon]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 `p`, folded as a constant if possible.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > (make '|-(42)')
@@ -407,11 +407,11 @@ One argument, fixed.
 
 ---
 
-## `^*` "kettar" {#-kettar}
+## `^*` "kettar"
 
 Produce example type value.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -421,17 +421,17 @@ One argument, fixed.
 
 `p` is any structure expression.
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%kttr p=spec]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 A default value (i.e., 'bunt value') of the type `p`.
 
-#### Examples {#examples}
+#### Examples
 
 Regular:
 
@@ -464,11 +464,11 @@ Irregular:
 
 ---
 
-## `^=` "kettis" {#-kettis}
+## `^=` "kettis"
 
 Bind name to a value.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -501,17 +501,17 @@ q
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktts p=skin q=hoon]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 If `p` is a term, the product `q` with type `[%face p q]`. `p` may also be a tuple of terms, or a term-skin pair; the type of `q` must divide evenly into cells to match it.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > a=1
@@ -533,11 +533,11 @@ a=1
 
 ---
 
-## `^?` "ketwut" {#-ketwut}
+## `^?` "ketwut"
 
 Convert any core to a lead core (bivariant).
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -545,17 +545,17 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `^?  p`   | `^?(p)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%ktwt p=hoon]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 `p` as a lead core; crash if not a core.
 
-#### Discussion {#discussion}
+#### Discussion
 
 A lead core is an opaque generator; the payload can't be read or written.
 
@@ -563,7 +563,7 @@ Theorem: if type `x` nests within type `a`, a lead core producing `x` nests with
 
 Informally, a more specific generator can be used as a less specific generator.
 
-#### Examples {#examples}
+#### Examples
 
 The prettyprinter shows the core metal (`.` gold, `?` lead):
 

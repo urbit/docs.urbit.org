@@ -1,10 +1,10 @@
-# Cryptography {#cryptography}
+# Cryptography
 
 This is a summary of the cryptography functions found in `sys/zuse.hoon`, Arvo's standard library. This page currently only documents cryptographic functions directly utilized by [Ames](../../../system/kernel/ames). `zuse` also contains cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core, but they are currently undocumented.
 
 Documentation for [Insecure Hashing](stdlib/2e.md) and the [SHA Hash Family](stdlib/3d.md) is found in the Hoon standard library reference.
 
-## Summary {#summary}
+## Summary
 
 `zuse` contains several cryptosuites. The ones utilized by Ames are [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with the latter being the only one which is implemented as an [`+acru:ames`](../../../system/kernel/ames/guides/cryptography.md#crypto-core)-shaped core.
 
@@ -26,7 +26,7 @@ A `+crub:crypto` core's payload contains public encryption and authentication ke
 
 `+crub` cores (because they follow the `+acru` interface) are typically created using one of the constructors in [`+nu:crub`](#nu).
 
-### `+seal:as` {#sealas}
+### `+seal:as`
 
 ```hoon
       ++  seal                                          ::
@@ -50,7 +50,7 @@ Signs message `msg=@` using the secret authentication key `sgn.u.sek`, then form
 
 Crashes if `sek` is null.
 
-### `+sure:as` {#sureas}
+### `+sure:as`
 
 ```hoon
       ++  sure                                          ::
@@ -60,7 +60,7 @@ Crashes if `sek` is null.
 
 `+cue`s `txt` to get a signature `sig=@` and message `msg=@`. Verifies that `sig` was `msg` signed using the secret key associated to the public key stored at `sgn.pub`. Returns `(unit msg)` if so, null otherwise.
 
-### `+tear:as` {#tearas}
+### `+tear:as`
 
 ```hoon
       ++  tear                                          ::
@@ -72,7 +72,7 @@ Forms a secret symmetric key using Diffie-Hellman key exchange using the secret 
 
 Crashes if `sek` is null.
 
-### `+de` {#de}
+### `+de`
 
 ```hoon
     ++  de                                              ::  decrypt
@@ -82,7 +82,7 @@ Crashes if `sek` is null.
 
 `+cue`s `txt` then decrypts with the symmetric key `key` using `+de:sivc:aes`. Returns null in case of failure.
 
-### `+dy` {#dy}
+### `+dy`
 
 ```hoon
     ++  dy                                              ::  need decrypt
@@ -101,19 +101,19 @@ Same as `+dy`, but crashes in case of failure.
 
 Encrypts `msg` with the symmetric key `key` using `en:sivc:aes`, then `+jam`s it.
 
-### `+fig:ex` {#figex}
+### `+fig:ex`
 
 Returns the fingerprint (SHA-256) of `+pub:ex`.
 
-### `+pac:ex` {#pacex}
+### `+pac:ex`
 
 Returns the fingerprint (SHA-256) of `+sec:ex`. Crashes if `sek` is null.
 
-### `+pub:ex` {#pubex}
+### `+pub:ex`
 
 Returns the concatenation of `sgn.pub` and `cry.pub`.
 
-### `+sec:ex` {#secex}
+### `+sec:ex`
 
 Returns the concatenation of `sgn.u.sek` and `cry.u.sek`.
 
@@ -129,7 +129,7 @@ Creates a `+crub` core with encryption and authentication public/private keypair
 
 This is how one typically generates a brand new `+crub` core for signing and encrypting your own messages.
 
-### `+nol:nu` {#nolnu}
+### `+nol:nu`
 
 ```hoon
       ++  nol                                           ::  activate secret
@@ -139,7 +139,7 @@ This is how one typically generates a brand new `+crub` core for signing and enc
 
 Takes in a `ring` from a `+sec:ex:crub` and generates a new `+crub` core with `sek` taken from `+sec:ex` and `pub` generated with `+puck:ed:crypto`. Crashes if `+sec:ex` is not a `+crub` secret key.
 
-### `+com:nu` {#comnu}
+### `+com:nu`
 
 ```hoon
       ++  com                                           ::  activate public

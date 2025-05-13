@@ -1,4 +1,4 @@
-# Implementing an Aura {#implementing-an-aura}
+# Implementing an Aura
 
 An aura is a metadata tag for Hoon to identify and manipulate atoms correctly.  Auras nest inside of each other logically:  `@uvJ` nests inside of `@uv`, which in turn nests in `@u` then `@`.  Auras allow programmers to encode intent into their handling of values.
 
@@ -15,23 +15,23 @@ To implement an aura in Hoon, we follow these steps:
 We prefer the parsed form and the prettyprinted form to coincide so we can copy and paste a result directly back in as valid Hoon.  (This is generally true for atoms but not for other molds; consider `set` for instance.)
 
 
-## Example:  Sexagesimal Degrees {#example-sexagesimal-degrees}
+##  Example:  Sexagesimal Degrees
 
 Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds.  Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_(angle)#Subdivisions) lends distinction and _gravitas_.
 
 $$5°6'7''$$
 
-### Preliminaries {#preliminaries}
+### Preliminaries
 
 You should fork the [Urbit repo](https://github.com/urbit/urbit) and create a working branch for this project.  While per the guide you will not be PRing this code back against the main repo, this is the standard working environment setup.
 
-### Design {#design}
+### Design
 
 In this example, we will produce a degree–minute–second (DMS) aura.  We will call it `@udms`.  It will have the visual form of three integers prefixed with `.` dots, e.g. `.359.59.59` for 359°59'59''.  This distinguishes it from `@rs`, which has two similarly-separated values, e.g. `.1.2`; and from `@if`, which has four, e.g. `.1.2.3.4`.  For atoms, the literal input form and literal output form should be the same.
 
 It will have the bit-logical form of an integer of arbitrary size, with each whole-number increment representing a second.  This would permit overflow, i.e. values greater than 360° such as 720°; however, we will supply a `++norm` arm to enforce modular arithmetic at 360°.
 
-### Base Logic {#base-logic}
+### Base Logic
 
 We need to be able to perform arithmetic and type conversion with `@udms` values.  Some value representations have an “unpacked“ tuple form, like dates and floating-point values.  This makes it easier to shunt the values between auxiliary functions.  We'll define one as well here, `+$sexa` (for _sexagesimal_, base-60).
 
@@ -211,7 +211,7 @@ The Hoon logic will be located in a `++dg` arm.  This needs to be sufficiently h
   --
 ```
 
-### Pretty-Printing {#pretty-printing}
+### Pretty-Printing
 
 The atom literal should be constructed in `++rend`, which has a cascade of switch statements over the atom aura.   Let's adopt the output syntax to be the same as the input syntax, `.ddd.mm.ss`.
 
@@ -251,7 +251,7 @@ The atom literal should be constructed in `++rend`, which has a cascade of switc
 
 Every type has its own special conventions, so you need to adapt to follow whatever those may be.
 
-### Parsing {#parsing}
+### Parsing
 
 A parsing rule which correctly handles the aura is:
 
@@ -325,7 +325,7 @@ At this point, a compiled `/sys/hoon` should detect the typed atom syntax correc
 3.723
 ```
 
-## Exercises {#exercises}
+##  Exercises
 
 What else should be implemented?
 

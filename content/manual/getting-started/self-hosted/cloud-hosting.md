@@ -1,4 +1,4 @@
-# Cloud hosting {#cloud-hosting}
+# Cloud hosting
 
 The goal of this guide is to have clear and easy to follow best practices for deploying an Urbit node to a server you control in the cloud. Deploying in the cloud allows you to access your Urbit from any device.
 
@@ -6,7 +6,7 @@ Most Urbit users start out running their ship locally on one machine in order to
 
 This guide uses Digital Ocean as the cloud provider, but others can be used. If using another provider, the setup script provided and other server configuration instructions may need to be modified or done manually.
 
-## 1. Create a Droplet {#1-create-a-droplet}
+## 1. Create a Droplet
 
 Create an account on [Digital Ocean](https://digitalocean.com). Once you make an account, choose "Deploy a virtual machine".
 
@@ -16,11 +16,11 @@ You should see the page below where you can create your Droplet, aka Virtual Mac
 
 Fill out the options like so:
 
-#### Image {#image}
+#### Image
 
 Ubuntu 22.04 x64
 
-#### Plan {#plan}
+#### Plan
 
 - Shared CPU: Basic
 - CPU options: Regular with SSD
@@ -28,19 +28,19 @@ Ubuntu 22.04 x64
 
 You can choose a more powerful option if you'd like but the $12 option should be sufficient. Note Urbit needs 2GB of memory; it's possible to choose a cheaper option and run it with less memory by using swap but it will impact performance.
 
-#### Add block storage {#add-block-storage}
+#### Add block storage
 
 The $12 plan includes 50GB which should be sufficient for quite some time, so you can skip this.
 
-#### Datacenter region {#datacenter-region}
+#### Datacenter region
 
 Choose the region closest to you.
 
-#### VPC Network {#vpc-network}
+#### VPC Network
 
 Leave this as default.
 
-#### Authentication {#authentication}
+#### Authentication
 
 In the "Authentication" field, select "SSH keys" and hit "New SSH Key". Run the following command in the terminal on your local machine, replacing `riclen-tinlyr` with the name of your ship (sans the leading `~`):
 
@@ -50,40 +50,40 @@ SHIP="riclen-tinlyr" bash -c 'ssh-keygen -q -N "" -C $SHIP -f ~/.ssh/$SHIP && ca
 
 It should spit out a long string of letters and numbers beginning with `ssh-rsa` and ending with your ship name. Copy the whole thing and paste it into the "SSH key content" field on Digital Ocean. In the "Name" field, enter your ship name.
 
-#### Additional options {#additional-options}
+#### Additional options
 
 Click "+Advanced Options" check the box for "Add Initialization scripts (free)" and paste the script below into the field provided. This will automatically configure the server and install necessary software.
 
 ```bash
 #!/bin/bash
 
-# configure swap {#configure-swap}
+# configure swap
 fallocate -l 2G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 
-# setup firewall {#setup-firewall}
+# setup firewall
 ufw allow OpenSSH
 ufw allow www
 ufw allow https
 ufw allow 34543/udp
 ufw enable
 
-# create and configure user {#create-and-configure-user}
+# create and configure user
 useradd -s /bin/bash -d /home/urbit -m -G sudo urbit
 passwd -d urbit
 echo "urbit ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# configure ssh keys for user {#configure-ssh-keys-for-user}
+# configure ssh keys for user
 mkdir -p /home/urbit/.ssh
 chmod 700 /home/urbit/.ssh
 cp /root/.ssh/authorized_keys /home/urbit/.ssh/authorized_keys
 chmod 600 /home/urbit/.ssh/authorized_keys
 chown -R urbit:urbit /home/urbit/.ssh
 
-# configure sshd {#configure-sshd}
+# configure sshd
 mkdir -p /etc/ssh/sshd_config.d
 cat > /etc/ssh/sshd_config.d/override.conf <<EOF
 PermitRootLogin no
@@ -91,39 +91,39 @@ PubkeyAuthentication yes
 PasswordAuthentication no
 EOF
 
-# fetch and extract urbit binary {#fetch-and-extract-urbit-binary}
+# fetch and extract urbit binary
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g' -C /home/urbit/
 chown urbit:urbit /home/urbit/urbit
 
-# install tmux {#install-tmux}
+# install tmux
 apt -y update
 apt install -y tmux
 
-# reboot {#reboot}
+# reboot
 systemctl reboot
 ```
 
-#### How many Droplets? {#how-many-droplets}
+#### How many Droplets?
 
 1
 
-#### Choose a hostname {#choose-a-hostname}
+#### Choose a hostname
 
 This will be the name the server calls itself locally, you can put in whatever you want. Your planet name is a good choice.
 
-#### Add tags {#add-tags}
+#### Add tags
 
 Leave empty.
 
-#### Select project {#select-project}
+#### Select project
 
 Leave as the default.
 
-#### Create Droplet {#create-droplet}
+#### Create Droplet
 
 Hit this button to create the droplet.
 
-## 2. Prepare for upload {#2-prepare-for-upload}
+## 2. Prepare for upload
 
 {% hint style="info" %}
 
@@ -137,7 +137,7 @@ In the Dojo, use either `"CTRL + D"` or `|exit` to shut down your ship.
 
 Archive your pier by running `tar cvzf riclen-tinlyr.tar.gz ~/path/to/your/pier` (substitute your own ship name and pier location).
 
-## 3. Connect to the server {#3-connect-to-the-server}
+## 3. Connect to the server
 
 To make connecting simple, you can add an alias to `~/.ssh/config` on your local machine. Open `~/.ssh/config` in an editor (you may need to create it if the file doesn't exist), and add the following to the bottom of the file (replacing the ship name with your own and the IP address with that of your droplet):
 
@@ -213,7 +213,7 @@ ssh riclen-tinlyr
 ```
 You'll be taken to the shell on your server.
 
-## 5. Boot your ship {#5-boot-your-ship}
+## 5. Boot your ship
 
 {% tabs %}
 
@@ -291,7 +291,7 @@ Now you can start your ship up with the following:
 
 After a few moments it'll show the Dojo prompt like `~riclen-tinlyr:dojo>`.
 
-## 6. Get a domain {#6-get-a-domain}
+## 6. Get a domain
 
 To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo, replacing the IP address with your droplet's:
 
@@ -340,7 +340,7 @@ http: loopback live on http://localhost:12321
 
 That means the domain has been registered and an SSL certificate has been installed, so you can access the web interface securely with HTTPS.
 
-## 7. Log in to Landscape {#7-log-in-to-landscape}
+## 7. Log in to Landscape
 
 In order to login to the web interface, you need to get the web login code. Run the following in the Dojo:
 
@@ -356,7 +356,7 @@ The server configuration should now be complete, and you can access Landscape in
 
 Enter the web login code and you'll be taken to your ship's homescreen. Your ship is now running in the cloud, and you can access it from any device by visiting its URL.
 
-## 8. Disconnect {#8-disconnect}
+## 8. Disconnect
 
 You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the ship will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
@@ -366,14 +366,14 @@ tmux a
 
 Finally, you can disconnect from the ssh session completely by hitting `CTRL+d`.
 
-## 9. Cleanup {#9-cleanup}
+## 9. Cleanup
 
 If you booted a new ship by uploading a key file, it's a good idea to now delete the key file on your local machine.
 
 If you uploaded an existing pier, you should delete the old copy of both the pier directory and the `.tar.gz` archive on your local machine. You might be tempted to keep one of these as a backup, but note that **you must never again boot the old copy on the live network**. Doing so will create unfixable networking problems and require you to perform a factory reset through Bridge, wiping your ship's data. We therefore don't recommend you keep duplicates of your pier lying around.
 
 
-## Next steps {#next-steps}
+## Next steps
 
 - Kep your Urbit runtime up-to-date to take advantage of the latest Landscape and Application over-the-air updates.  See [Step #5 in the CLI guide](cli.md#5-runtime-upgrades) to update your runtime.
 

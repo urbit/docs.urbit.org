@@ -1,8 +1,8 @@
-# 5. Cards {#5-cards}
+# 5. Cards
 
 As we previously discussed, most arms of an agent core produce a cell of `[effects new-agent-core]`, and the type we use for this is typically `(quip card _this)`. We've covered `_this`, but we haven't yet looked at `card` effects in detail. That's what we'll do here. In explaining `card`s we'll touch on some concepts relating to the mechanics of pokes, subscriptions and other things we've not yet covered. Don't worry if you don't understand how it all fits together yet, we just want to give you a basic idea of `card`s so we can then dig into how they work in practice.
 
-## `card` type {#card-type}
+## `card` type
 
 The `card:agent:gall` type (henceforth just `card`) has a slightly complex structure, so we'll walk through it step-by-step.
 
@@ -32,7 +32,7 @@ Gall will not accept a `%slip`, so we can ignore that. A `card`, then, is one of
 
 We'll consider each separately.
 
-## `%pass` {#pass}
+## `%pass`
 
 ```hoon
 [%pass wire note]
@@ -68,7 +68,7 @@ The type of the next field is a `note:agent:gall` (henceforth just `note`), whic
 - The other notes are for [remote scry](../../userspace/apps/guides/remote-scry.md).
 
 
-### `task` {#task}
+### `task`
 
 A `task:agent:gall` (henceforth just `task`) is defined in `lull.hoon` as:
 
@@ -86,7 +86,7 @@ Note a few of these include a `path` field. The `path` type is exactly the same 
 
 The kinds of `task`s can be divided into two categories:
 
-#### Subscriptions {#subscriptions}
+#### Subscriptions
 
 `%watch`, `%watch-as` and `%leave` all pertain to subscriptions.
 
@@ -98,7 +98,7 @@ The kinds of `task`s can be divided into two categories:
 
 ![subscription card examples](https://media.urbit.org/guides/core/app-school/sub-cards.svg)
 
-#### Pokes {#pokes}
+#### Pokes
 
 Pokes are requests, actions, or just some data which you send to another agent. Unlike subscriptions, these are just one-off messages.
 
@@ -110,7 +110,7 @@ The `%poke-as` task is the same as `%poke` except Gall will convert the `mark` i
 
 ![poke card examples](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
 
-### `note-arvo` {#note-arvo}
+### `note-arvo`
 
 A `note-arvo` is defined in `lull.hoon` like so:
 
@@ -134,11 +134,11 @@ A `note-arvo` is defined in `lull.hoon` like so:
 
 The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Clay, etc. After the vane letter comes the task. Each vane has an API with a set of tasks that it will accept, and are defined in each vane's section of `lull.hoon`. Each vane's tasks are documented on the API Reference page of its section in the [Arvo documentation](../../system/kernel/arvo).
 
-#### Examples {#examples}
+#### Examples
 
 ![arvo card examples](https://media.urbit.org/guides/core/app-school/arvo-cards.svg)
 
-## `%give` {#give}
+## `%give`
 
 ```hoon
 [%give gift]
@@ -159,15 +159,15 @@ A `%give` card contains a `gift:agent:gall` (henceforth just `gift`), which is d
 
 These can be divided into two categories:
 
-### Acknowledgements {#acknowledgements}
+### Acknowledgements
 
 `%watch-ack` is sent in response to a `%watch` or `%watch-as` request, and `%poke-ack` is sent in response to a `%poke` or `%poke-as` request. If the `(unit tang)` is null, it's an ack - a positive acknowledgement. If the `(unit tang)` is non-null, it's a nack - a negative acknowledgement, and the `tang` contains an error message. Gall automatically sends a nack with a stack trace if your agent crashes while processing the request, and automatically sends an ack if it does not. Therefore, you would not explicitly produce a `%watch-ack` or `%poke-ack` gift.
 
-#### Examples {#examples}
+#### Examples
 
 ![ack card examples](https://media.urbit.org/guides/core/app-school/ack-cards.svg)
 
-### Subscriptions {#subscriptions}
+### Subscriptions
 
 `%fact` and `%kick` are both sent out to existing subscribers - entities that have previously `%watch`ed a path on your ship.
 
@@ -175,16 +175,16 @@ A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which i
 
 `%fact`s are how updates are sent out to subscribers. The `paths` field is a list of subscription paths - all subscribers of the specified `path`s will receive the `%fact`. The `cage` is the data itself - a cell of a `mark` and a `vase`.
 
-#### Examples {#examples}
+#### Examples
 
 ![gift card examples](https://media.urbit.org/guides/core/app-school/gift-cards.svg)
 
-## Summary {#summary}
+## Summary
 
 Here's a diagram that summarizes the different kinds of `card`s:
 
 [![card diagram](https://media.urbit.org/guides/core/app-school/card-diagram.svg)](https://media.urbit.org/guides/core/app-school/card-diagram.svg)
 
-## Exercises {#exercises}
+## Exercises
 
 - Have a read of the [`wire`](types.md#wire) and [`path`](types.md#path) entries in the type reference.

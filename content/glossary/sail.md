@@ -1,4 +1,4 @@
-# Sail {#sail}
+# Sail
 
 **Sail** is a domain specific language for Hoon.
 

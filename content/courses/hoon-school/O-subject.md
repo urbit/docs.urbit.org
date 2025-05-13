@@ -1,9 +1,9 @@
-# 14. Subject-Oriented Programming {#14-subject-oriented-programming}
+# 14. Subject-Oriented Programming
 
 _This module discusses how Urbit's subject-oriented programming paradigm structures how cores and values are used and maintain state, as well as how deferred computations and remote value lookups (["scrying"](../../glossary/scry.md)) are handled.  This module does not cover [core](../../glossary/core.md) genericity and variance, which will be explained in [a later module](R-metals.md)._
 
 
-## The Subject {#the-subject}
+##  The Subject
 
 As we've said before:
 
@@ -22,7 +22,7 @@ Generally speaking, the following [rune](../../glossary/rune.md) families allow 
 
 Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model.  We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](R-metals.md) as well.
 
-### Accessing the Subject {#accessing-the-subject}
+### Accessing the Subject
 
 Usually the subject of a Hoon expression isn't shown explicitly.  In fact, only when using `:`/`.` wing lookup expressions have we made the [subject](../../glossary/subject.md) explicit.
 
@@ -54,7 +54,7 @@ Another use case for the `..arm` syntax is when there is a core in the subject w
 <33.uof 1.pnw %138>
 ```
 
-#### Tutorial:  The Core Structure of `hoon.hoon` {#tutorial-the-core-structure-of-hoonhoon}
+#### Tutorial:  The Core Structure of `hoon.hoon`
 
 Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../language/hoon/reference/rune/tis.md#-tisgar) to build up larger structures.  `=>  p=hoon  q=hoon` yields the product of `q` with the product of `p` taken as the subject; i.e. it composes Hoon statements, like [cores](../../glossary/core.md).
 
@@ -206,12 +206,12 @@ Lastly, let's check the subject of the last arm in `hoon.hoon` (as of May 2024):
 
 This confirms for us, then, that `hoon.hoon` consists of six nested cores, with one inside the [payload](../../glossary/payload.md) of the next, with the `hoon-version` core most deeply nested.
 
-### Exercise:  Explore `hoon.hoon` {#exercise-explore-hoonhoon}
+### Exercise:  Explore `hoon.hoon`
 
 - Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in its parent [core](../../glossary/core.md) or core(s) that have the parent core put in its context via the `=>` or `=<` runes.
 
 
-### Axes of the Subject {#axes-of-the-subject}
+### Axes of the Subject
 
 The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of `+$axis` which is the tree address) in the [subject](../../glossary/subject.md).  You've encountered these before:
 
@@ -238,7 +238,7 @@ The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of 
     ```
 
 
-## State and Applications {#state-and-applications}
+##  State and Applications
 
 Default Hoon expressions are stateless.  This means that they don't really make reference to any other transactions or events in the system. They don't preserve the results of previous calculations beyond their own transient existence.
 
@@ -257,7 +257,7 @@ Here are a couple of new runes for modifying the subject and chaining computatio
 - `=.` [tisdot](../../language/hoon/reference/rune/tis.md#-tisdot) is used to change a leg in the [subject](../../glossary/subject.md).
 - `=~` [tissig](../../language/hoon/reference/rune/tis.md#-tissig) composes many expressions together serially.
 
-#### Tutorial:  Bank Account {#tutorial-bank-account}
+#### Tutorial:  Bank Account
 
 In this section, we will write a [door](../../glossary/door.md) that can act as a bank account with the ability to withdraw, deposit, and check the account's balance. This door replaces the sample of the door with the new values as each transaction proceeds.
 
@@ -333,11 +333,11 @@ Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud
 
 It's important to notice that the sample, `balance`, is stored as part of the [door](../../glossary/door.md) rather than existing outside of it.
 
-### Exercise:  Bank Account {#exercise-bank-account}
+### Exercise:  Bank Account
 
 - Modify the `%say` [generator](../../glossary/generator.md) above to accept a `@ud` unsigned decimal dollar amount and a `?(%deposit %withdraw)` term and returns the result of only that operation on the starting balance of the bank account.  (Note that this will only work once on the [door](../../glossary/door.md), and the state will not persist between generator calls.)
 
-### Deferred Computations {#deferred-computations}
+### Deferred Computations
 
 _Deferred computation_ means that parts of the [subject](../../glossary/subject.md) have changes that may be underdetermined at first.  These must be calculated later using the appropriate [runes](../../glossary/rune.md) as new or asynchronous information becomes available.
 
@@ -350,7 +350,7 @@ We have some more tools available for managing deferred or chained computations,
 - `;<` [micgal](../../language/hoon/reference/rune/mic.md#-micgal) sequences two computations, particularly for an asynchronous event like a remote system call.  (Used in [threads](../../glossary/thread.md).)
 - `;~` [micsig](../../language/hoon/reference/rune/mic.md#-micsig) produces a pipeline, a way of piping the output of one [gate](../../glossary/gate.md) into another in a chain.  (This is particularly helpful when parsing text.)
 
-### `++og` Randomness {#og-randomness}
+### `++og` Randomness
 
 A _random number generator_ provides a stream of calculable but unpredictable values from some _distribution_.  In [a later lesson](S-math.md), we explain how random numbers can be generated from entropy; for now, let's see what's necessary to use such a random-number generator.
 
@@ -382,7 +382,7 @@ Since the `rng` starts from the same seed value every single time, both of the n
 [21 47]
 ```
 
-#### Tutorial:  Magic 8-Ball {#tutorial-magic-8-ball}
+#### Tutorial:  Magic 8-Ball
 
 The Magic 8-Ball returns one of a variety of answers in response to a call.  In its entirety:
 
@@ -440,7 +440,7 @@ We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclu
 "Ask again later."
 ```
 
-## Tutorial:  Dice Roll {#tutorial-dice-roll}
+##  Tutorial:  Dice Roll
 
 Let's look at an example that uses all three parts. Save the code below in a file called `dice.hoon` in the `/gen` directory of your `%base` [desk](../../glossary/desk.md).
 
@@ -474,11 +474,11 @@ nest-fail
 
 We get a different value from the same generator between runs, something that isn't possible with a naked generator. Another novelty is the ability to choose to not use the second argument.
 
-## Scrying (In Brief) {#scrying-in-brief}
+##  Scrying (In Brief)
 
 A _peek_ or a [scry](../../glossary/scry.md) is a request to Arvo to tell you something about the state of part of the Urbit OS.  Scries are used to determine the state of an agent or a vane. The `.^` [dotket](../../language/hoon/reference/rune/dot.md#-dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry.  The request is then routed to a particular path in that [vane](../../glossary/vane.md). Scries are discused in detail in [App School](../app-school/10-scry.md).  We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and [agent](../../glossary/agent.md) state.
 
-### `%c` Clay {#c-clay}
+### `%c` Clay
 
 The [Clay](../../glossary/clay.md) filesystem stores nouns persistently at hierarchical path addresses.  These [nouns](../../glossary/noun.md) can be accessed using [marks](../../glossary/mark.md), which are rules for structuring the data.  We call the nouns “files” and the path addresses “folders”.
 

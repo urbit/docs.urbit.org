@@ -1,4 +1,4 @@
-# App School II (Full-Stack) {#app-school-ii-full-stack}
+# App School II (Full-Stack)
 
 This series walks through the writing of a full Gall agent, and then the process of integrating it with a React front-end. This series follows on from [App School I](../app-school). If you haven't completed that, or otherwise aren't familiar with the basics of writing Gall agents, it's strongly recommended to work through that guide first.
 
@@ -18,44 +18,44 @@ Here is the basic structure of the app we'll be building:
 
 ![journal app diagram](https://media.urbit.org/guides/core/app-school-full-stack-guide/journal-app-diagram.svg)
 
-## Sections {#sections}
+## Sections
 
-#### [Introduction](.) {#introduction}
+#### [Introduction](.)
 
 An overview of the guide and table of contents.
 
-#### [1. Types](1-types.md) {#1-types1-typesmd}
+#### [1. Types](1-types.md)
 
 Creating the `/sur` structure file for our `%journal` agent.
 
-#### [2. Agent](2-agent.md) {#2-agent2-agentmd}
+#### [2. Agent](2-agent.md)
 
 Creating the `%journal` agent itself.
 
-#### [3. JSON](3-json.md) {#3-json3-jsonmd}
+#### [3. JSON](3-json.md)
 
 Writing a library to convert between our agent's marks and JSON. This lets our React front-end poke our agent, and our agent send updates back to it.
 
-#### [4. Marks](4-marks.md) {#4-marks4-marksmd}
+#### [4. Marks](4-marks.md)
 
 Creating the mark files for the pokes our agent takes and updates it sends out.
 
-#### [5. Eyre](5-eyre.md) {#5-eyre5-eyremd}
+#### [5. Eyre](5-eyre.md)
 
 A brief overview of how the webserver vane Eyre works.
 
-#### [6. React App Setup](6-react-setup.md) {#6-react-app-setup6-react-setupmd}
+#### [6. React App Setup](6-react-setup.md)
 
 Creating a new React app, installing the required packages, and setting up some basic things for our front-end.
 
-#### [7. React App Logic](7-app-logic.md) {#7-react-app-logic7-app-logicmd}
+#### [7. React App Logic](7-app-logic.md)
 
 Analyzing the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
 
-#### [8. Desk and Glob](8-desk.md) {#8-desk-and-glob8-deskmd}
+#### [8. Desk and Glob](8-desk.md)
 
 Building and "globbing" our front-end, and putting together a desk for distribution.
 
-#### [9. Summary](9-final.md) {#9-summary9-finalmd}
+#### [9. Summary](9-final.md)
 
 Some final comments and additional resources.

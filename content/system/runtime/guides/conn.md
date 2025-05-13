@@ -1,12 +1,12 @@
-# Using conn.c {#using-connc}
+# Using conn.c
 
-## Background {#background}
+## Background
 
 Prior to 2022, the only way to interact with a running ship from Earth was via HTTP requests sent to the `%lens` agent. In addition to `%lens`, there was a Python script helper named `herb` which would automatically format HTTP requests for `%lens` based on user inputs. However, there were several pain points for using `%lens` and `herb`. `%lens`, `herb`, and the difficulties of using them are documented more fully [here](https://github.com/urbit/urbit/issues/6418).
 
 Unrelated to the above, inconveniences around writing boilerplate code to interact with the `%spider` agent was hampering adoption of threads outside of the Arvo kernel.
 
-## Present {#present}
+## Present
 
 Starting in 2022, tools for solving the above issues began to appear (though work on them began in 2021). In order, they are:
 - `conn.c`
@@ -17,7 +17,7 @@ Starting in 2022, tools for solving the above issues began to appear (though wor
 
 Together, these tools are the building blocks for performing any action on a running ship (poke, scry, or command) from Earth, and receiving back programmatically usable output.
 
-### `conn.c` {#connc}
+### `conn.c`
 
 [`conn.c`](https://github.com/urbit/vere/blob/develop/pkg/vere/io/conn.c) is a driver in Vere. It is a part of the "King" (a.k.a. "Urth") process. It exposes a [Unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket) at `/path/to/pier/.urb/conn.sock` for sending/receiving data from external processes.
 
@@ -44,7 +44,7 @@ For an invalid command, the output from `conn.c` is a newt-encoded jammed noun w
 - It will be able to sufficiently recover from the error to guarantee this output
 - It will produce a meaningful error code and message
 
-#### `%ovum` {#ovum}
+#### `%ovum`
 
 The argument to an `%ovum` command is a raw kernel move which is injected directly into the Arvo event loop. This is a very powerful - and potentially dangerous - tool. For example, if a ship somehow got into a state where Clay was no longer working properly (meaning new files could not be compiled to fix the state of the kernel), the source code for a new, working Clay could be directly injected into the ship using an `%ovum`.
 
@@ -53,7 +53,7 @@ The output of an `%ovum` command is:
 - `[%news %drop]` if the move was dropped
 - `[%bail goof]` if an error occurred
 
-#### `%fyrd` {#fyrd}
+#### `%fyrd`
 
 `%fyrd` is a direct shortcut to the Khan vane. The Khan vane coordinates and manages threads, and is described in further detail below. The arguments to a `%fyrd` command are (in order):
 1. The name of the desk in which the thread lives (e.g. `%base`) or `beak` for the thread (e.g. `[%zod %base %10]`)
@@ -64,13 +64,13 @@ The output of an `%ovum` command is:
 
 The output of a `%fyrd` command is `[%avow (each page goof)]`, the value of `each` depending on whether the thread succeeded or not.
 
-#### `%urth` {#urth}
+#### `%urth`
 
 The argument to the `%urth` command is a subcommand for the action to perform. Currently, the only valid commands are `%pack` and `%meld`.
 
 `%urth` will return `%&` if given a valid command as input, otherwise it will return `[0 %bail 0xfffffff9 %urth-bad]`. No other output is emitted.
 
-#### `%peek` {#peek}
+#### `%peek`
 
 The `%peek` command is used to perform a namespace read request (a.k.a. scry) using Arvo's external peek interface ([arm +22 in arvo.hoon](https://github.com/urbit/urbit/blob/develop/pkg/arvo/sys/arvo.hoon#L1774)). The argument to `%peek` is the `nom` input to `+peek` in `arvo.hoon` (`lyc` is auto-filled as `[~ ~]`, i.e. "request from self"). That is to say that the argument to `%peek` must have type:
 ```
@@ -96,7 +96,7 @@ The output of a `%peek` command is `[%peek (unit (unit scry-output))]`, where `~
 
 See [here](../../../courses/app-school/10-scry.md) for more information on scrying.
 
-#### `%peel` {#peel}
+#### `%peel`
 
 `%peel` attempts to emulate a scry-like namespace, like the one used by Arvo and accessed by `%peek`. The argument to `%peel` should be a path. Valid paths result in a non-null `unit` containing the result of the scry. Invalid paths result in null (i.e. `~`). The valid paths and the data they return are:
 ```
@@ -110,7 +110,7 @@ See [here](../../../courses/app-school/10-scry.md) for more information on scryi
 
 Note that the pier info above is returned as a `mass` report, i.e. type `(pair cord (each * (list mass)))`. This is not the same as the `|mass` memory report. `/mass` is meant to be a valid `%peel` path which returns the `|mass` memory report, but it is currently unimplemented.
 
-### Khan {#khan}
+### Khan
 
 The Khan vane is a command / response interface for running threads. Khan was introduced to make running threads a kernel-level feature, as simple as poking an agent or setting a timer. Threads allow users to run arbitrarily complex code on their ships in the same way that bash allows them to do so on Linux.
 
@@ -146,7 +146,7 @@ If the thread succeeded, `%fard` and `%lard` produce `[%arow %& %noun vase]`. `%
 
 See [here](../../../userspace/threads/tutorials/basics/fundamentals.md) for more information about threads.
 
-### `urbit eval` {#urbit-eval}
+### `urbit eval`
 
 `eval` is a utility command in the Urbit binary. Originally, it was introduced to evaluate snippets of Hoon code using the binary to emulate Arvo from the associated ivory pill. This allowed it to run any Hoon code fragments that used kernel and STL functions (e.g. anything in `hoon.hoon`, `arvo.hoon`, `lull.hoon`, and `zuse.hoon`). Notably, this did not (and does not) evaluate any Hoon fragments that require pier state (e.g. scries, `our`, `now`, etc.).
 
@@ -162,7 +162,7 @@ eval (run):
 ```
 The result (i.e. `4`) is printed to `stdout`. If the command had failed to compile, the stack trace would have been printed to `stdout` instead. All other messages are printed to `stderr`.
 
-#### Options {#options}
+#### Options
 
 `eval` was extended with several options that make it useful for processing Hoon nouns as input to or output from `conn.c`:
 - `-j`, `--jam`: output result as a jammed noun
@@ -170,7 +170,7 @@ The result (i.e. `4`) is printed to `stdout`. If the command had failed to compi
 - `-n`, `--newt`: write output / read input as a newt-encoded jammed noun, when paired with `-j` or `-c` respectively
 - `-k`: treat the input as the jammed noun input of a `%fyrd` request to `conn.c`; if the result is a `goof`, pretty-print it to `stderr` instead of returning it
 
-### `-eval` and `-khan-eval` {#-eval-and--khan-eval}
+### `-eval` and `-khan-eval`
 
 Two threads that evaluate arbitrary Hoon were added to the suite of threads included with Arvo: [`ted/eval.hoon`](https://github.com/urbit/urbit/blob/develop/pkg/arvo/ted/eval.hoon) and [`ted/khan-eval.hoon`](https://github.com/urbit/urbit/blob/develop/pkg/arvo/ted/khan-eval.hoon).
 
@@ -190,7 +190,7 @@ Examples:
     - Where `my-add` is defined in `lib/my-add.hoon` in `%my-desk`
 - `-khan-eval '=/  m  (strand ,vase)  ;<  ~  bind:m  (poke [~zod %hood] %helm-hi !>(\'\'))  (pure:m !>(\'success\'))'`
 
-### click {#click}
+### click
 
 [click](https://github.com/urbit/vere/blob/develop/bin/click) is a `bash` thin client which auto-formats `-eval` and `-khan-eval` thread calls via `%fyrd` requests to `conn.c` and coordinates chaining together the appropriate commands to execute those requests on a running ship.
 
@@ -229,15 +229,15 @@ Usage:
         -x                  Jam to hex
 ```
 
-## Using these tools {#using-these-tools}
+## Using these tools
 
 Below are examples of how to execute common commands on a running ship from Earth.
 
-### `|mass` {#mass}
+### `|mass`
 
 Blocked by issues; not currently doable in a way that returns the results as data.
 
-### `|pack` {#pack}
+### `|pack`
 
 ```
 echo "[0 %urth %pack]" |
@@ -256,7 +256,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  ~  bind:m  (flog [%pack ~])  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `|meld` {#meld}
+### `|meld`
 
 ```
 echo "[0 %urth %meld]" |
@@ -275,9 +275,9 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  ~  bind:m  (flog [%meld ~])  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `|ota` {#ota}
+### `|ota`
 
-#### `|ota ~bus` {#ota-bus}
+#### `|ota ~bus`
 
 ```
 echo "[0 %ovum [%g /test [%deal [~zod ~zod] %hood %raw-poke %kiln-install %base ~bus %kids]]]" |
@@ -290,7 +290,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%base ~bus %kids]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-#### `|ota %disable` {#ota-disable}
+#### `|ota %disable`
 
 ```
 echo "[0 %ovum [%g /test [%deal [~zod ~zod] %hood %raw-poke %kiln-install %base ~zod %base]]]" |
@@ -303,7 +303,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%base our %base]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-#### `|ota ~bus %desk` {#ota-bus-desk}
+#### `|ota ~bus %desk`
 
 ```
 echo "[0 %ovum [%g /test [%deal [~zod ~zod] %hood %raw-poke %kiln-install %base ~zod %desk]]]" |
@@ -316,9 +316,9 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%base ~bus %desk]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `|install` {#install}
+### `|install`
 
-#### `|install ~sampel-palnet %desk` {#install-sampel-palnet-desk}
+#### `|install ~sampel-palnet %desk`
 
 ```
 echo "[0 %ovum [%g /test [%deal [~zod ~zod] %hood %raw-poke %kiln-install %desk ~sampel-palnet %desk]]]" |
@@ -331,7 +331,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%desk ~sampel-palnet %desk]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-#### `|install ~sampel-palnet %desk, =local %my-desk` {#install-sampel-palnet-desk-local-my-desk}
+#### `|install ~sampel-palnet %desk, =local %my-desk`
 
 ```
 echo "[0 %ovum [%g /test [%deal [~zod ~zod] %hood %raw-poke %kiln-install %my-desk ~sampel-palnet %desk]]]" |
@@ -344,38 +344,38 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%my-desk ~sampel-palnet %desk]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `+code` {#code}
+### `+code`
 
 ```
 /path/to/click -kp /path/to/pier/zod \
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  code=@p  bind:m  (scry @p /j/code/(scot %p our))  (pure:m !>((crip (slag 1 (scow %p code)))))'
 ```
 
-### `+vats` {#vats}
+### `+vats`
 
-#### `+vats %base %kids` {#vats-base-kids}
+#### `+vats %base %kids`
 ```
 /path/to/click -kp /path/to/pier/zod \
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  now=@da  bind:m  get-time  (pure:m !>((crip ~(ram re [%rose [~ ~ ~] (report-vats our now [%base %kids ~] %$ |)]))))' \
 '/sur/hood/hoon'
 ```
 
-#### `+vats, =filt %exists` {#vats-filt-exists}
+#### `+vats, =filt %exists`
 ```
 /path/to/click -kp /path/to/pier/zod \
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  now=@da  bind:m  get-time  (pure:m !>((crip ~(ram re [%rose [~ ~ ~] (report-vats our now ~ %exists |)]))))' \
 '/sur/hood/hoon'
 ```
 
-#### `+vats %base, =verb &, =filt %running` {#vats-base-verb-filt-running}
+#### `+vats %base, =verb &, =filt %running`
 ```
 /path/to/click -kp /path/to/pier/zod \
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  now=@da  bind:m  get-time  (pure:m !>((crip ~(ram re [%rose [~ ~ ~] (report-vats our now [%base ~] %exists &)]))))' \
 '/sur/hood/hoon'
 ```
-### Additional Notes {#additional-notes}
+### Additional Notes
 
-#### Alternative click calls {#alternative-click-calls}
+#### Alternative click calls
 
 Any example above that uses click has two additional options that have been omitted for brevity, since the actual code for the call would be identical in each example:
 
@@ -392,7 +392,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 /path/to/bin/click -k -i path/to/thread.hoon /path/to/pier/zod
 ```
 
-#### Undocked ships {#undocked-ships}
+#### Undocked ships
 
 click assumes that the ship at the given pier is docked (i.e. that `/path/to/pier/.run` exists). If for whatever reason the running ship is undocked, it's still possible to work around this assumption using the click-format helper script. For example, the call for `+vats` becomes:
 ```
@@ -404,7 +404,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 /path/to/urbit eval -ckn
 ```
 
-## Issues and Future Work {#issues-and-future-work}
+## Issues and Future Work
 
 Currently, there are a number of minor issues and one major issue impacting interactions between Earth and Mars.
 

@@ -1,71 +1,71 @@
-# Runes {#runes}
+# Runes
 
 Runes are a way to form expressions in Hoon.
 
-## Non-Rune Expressions {#non-rune-expressions}
+## Non-Rune Expressions
 
-### [Constants](constants.md) {#constantsconstantsmd}
+### [Constants](constants.md)
 
 Hoon uses runes to form expressions, but not all expressions have runes in them. First, we have constant expressions (and also expressions that would be constant, but that they allow for interpolations).
 
-### [Limbs and Wings](../limbs) {#limbs-and-wingslimbs}
+### [Limbs and Wings](../limbs)
 
 Limb and wing expressions also lack runes.
 
-### [`+ lus` (Arms)](lus.md) {#-lus-armslusmd}
+### [`+ lus` (Arms)](lus.md)
 
 Runes (digraphs) used to define arms in a core.
 
-## Runes Proper {#runes-proper}
+## Runes Proper
 
-### [`| bar` (Cores)](bar.md) {#-bar-coresbarmd}
+### [`| bar` (Cores)](bar.md)
 
 Runes used to produce cores.
 
-### [`$ buc` (Structures)](buc.md) {#-buc-structuresbucmd}
+### [`$ buc` (Structures)](buc.md)
 
 Runes used for defining custom types.
 
-### [`% cen` (Calls)](cen.md) {#-cen-callscenmd}
+### [`% cen` (Calls)](cen.md)
 
 Runes used for making function calls in Hoon.
 
-### [`: col` (Cells)](col.md) {#-col-cellscolmd}
+### [`: col` (Cells)](col.md)
 
 Runes used to produce cells, which are pairs of nouns.
 
-### [`. dot` (Nock)](dot.md) {#-dot-nockdotmd}
+### [`. dot` (Nock)](dot.md)
 
 Runes used for carrying out Nock operations in Hoon.
 
-### [`/ fas` (Imports)](fas.md) {#-fas-importsfasmd}
+### [`/ fas` (Imports)](fas.md)
 
 Ford runes which import files.
 
-### [`^ ket` (Casts)](ket.md) {#-ket-castsketmd}
+### [`^ ket` (Casts)](ket.md)
 
 Runes that let us adjust types without violating type constraints.
 
-### [`; mic` (Make)](mic.md) {#-mic-makemicmd}
+### [`; mic` (Make)](mic.md)
 
 Miscellaneous useful macros.
 
-### [`~ sig` (Hints)](sig.md) {#-sig-hintssigmd}
+### [`~ sig` (Hints)](sig.md)
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
-### [`= tis` (Subject Modification)](tis.md) {#-tis-subject-modificationtismd}
+### [`= tis` (Subject Modification)](tis.md)
 
 Runes used to modify the subject.
 
-### [`? wut` (Conditionals)](wut.md) {#-wut-conditionalswutmd}
+### [`? wut` (Conditionals)](wut.md)
 
 Runes used for branching on conditionals.
 
-### [`! zap` (wild)](zap.md) {#-zap-wildzapmd}
+### [`! zap` (wild)](zap.md)
 
 Wildcard category. Expressions that don't fit anywhere else go here.
 
-### [`--`, `==` (Terminators)](terminators.md) {#---terminatorsterminatorsmd}
+### [`--`, `==` (Terminators)](terminators.md)
 
 Runes used to terminate expressions.

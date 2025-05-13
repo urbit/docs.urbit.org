@@ -1,8 +1,8 @@
-# Data Types {#data-types}
+# Data Types
 
 Here are the data types used by Dill, as defined in `/sys/lull.hoon`.
 
-## `$blew` {#blew}
+## `$blew`
 
 Terminal dimension.
 
@@ -14,7 +14,7 @@ Terminal dimension.
 
 ---
 
-## `$belt` {#belt}
+## `$belt`
 
 Terminal client input.
 
@@ -36,7 +36,7 @@ May either be a [$bolt](#bolt) or one of:
 
 --
 
-## `$bolt` {#bolt}
+## `$bolt`
 
 Simple input.
 
@@ -61,7 +61,7 @@ Either a single UTF-32 character or one of:
 
 ---
 
-## `$blit` {#blit}
+## `$blit`
 
 Terminal client output.
 
@@ -101,7 +101,7 @@ A `$blit` is one of:
 
 ---
 
-## `$dill-belt` {#dill-belt}
+## `$dill-belt`
 
 Terminal input for Arvo.
 
@@ -126,7 +126,7 @@ a `$dill-belt` is either [`$belt`](#belt) or one of:
 
 ---
 
-## `$dill-blit` {#dill-blit}
+## `$dill-blit`
 
 Terminal output from Arvo.
 
@@ -145,7 +145,7 @@ A `$dill-blit` is either a [`$blit`](#blit) or a:
 
 ---
 
-## `$flog` {#flog}
+## `$flog`
 
 Wrapped Dill `task`s.
 
@@ -165,7 +165,7 @@ These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. S
 
 ---
 
-## `$poke` {#poke}
+## `$poke`
 
 Dill to userspace.
 
@@ -180,7 +180,7 @@ A [`$dill-belt`](#dill-belt) (client input) for a particular session.
 
 ---
 
-## `$session-task` {#session-task}
+## `$session-task`
 
 A subset of [Dill's `task`s](tasks.md#session-tasks) for interacting with a particular session.
 
@@ -202,7 +202,7 @@ See the [Session Tasks](tasks.md#session-tasks) entry in the API reference for m
 
 ---
 
-## `$told` {#told}
+## `$told`
 
 A subset of [Dill's `task`s](tasks.md#session-tasks) for basic text printing.
 

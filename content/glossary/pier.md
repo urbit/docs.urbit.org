@@ -1,4 +1,4 @@
-# Pier {#pier}
+# Pier
 
 A **pier** is the directory which contains the state of an Urbit [ship](ship.md). It is automatically created in the current directory when booting a ship for the first time.
 
@@ -6,7 +6,7 @@ Your pier should be kept safe - if it's deleted, you will need to perform a [fac
 
 Note that a backup should usually _not_ be taken of your pier as a means of keeping it safe - once the ship is run on the network, the backup will be outdated and running from it will necessitate a factory reset. A running ship automatically backs up its own state within the pier directory for recovery purposes, so as long as the pier is preserved, recovery from most problems is possible.
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [Event Log](eventlog.md): The main important content of the pier directory.
 - [Guide to Factory Resets](https://urbit.org/using/id/guide-to-resets): Instructions on performing a factory reset.

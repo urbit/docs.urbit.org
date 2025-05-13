@@ -1,8 +1,8 @@
-# Runtime {#runtime}
+# Runtime
 
 This section of the docs is about Urbit's Nock interpreter and runtime system **Vere**, which is written in C. This is of interest if you're planning to work on the Urbit interpreter, you're a language implementation geek, or you don't really understand anything until you've seen the actual structs.
 
-### Developer Docs {#developer-docs}
+### Developer Docs
 
 - [U3 Overview](concepts/u3.md) - An overview of the noun-wrangling part of the runtime, U3.
 - [Conn.c Guide](guides/conn.md) - Using `conn.c` to interact with a running ship from the outside.
@@ -12,7 +12,7 @@ This section of the docs is about Urbit's Nock interpreter and runtime system **
 - [U3: API Overview](reference/api.md) - A walkthrough of each of the u3 modules.
 - [Cryptography](reference/cryptography.md) - References on the cryptography libraries utilized by jets.
 
-### Additional Resources {#additional-resources}
+### Additional Resources
 
 - [User Reference](../../manual/running/vere.md) - Reference for the utilities and options the runtime takes from the terminal.
 - [The Vere Repo](https://github.com/urbit/vere) - Github repository for the runtime.

@@ -1,4 +1,4 @@
-# Thread {#thread}
+# Thread
 
 A **thread** is like a transient [Gall](gall.md) [agent](agent.md). Unlike an agent, it can end and it can fail. The primary uses for threads are:
 
@@ -9,6 +9,6 @@ A **thread** is like a transient [Gall](gall.md) [agent](agent.md). Unlike an ag
 [agent](agent.md) that manages
 [threads](thread.md).
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [Threads guide](../userspace/threads/tutorials/basics/fundamentals.md): learn how to write threads.

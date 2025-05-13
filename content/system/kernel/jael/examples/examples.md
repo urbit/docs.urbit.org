@@ -1,10 +1,10 @@
-# Examples {#examples}
+# Examples
 
 This documents contains practical examples of a number of Jael's `task`s.
 
 General documentation of the `task`s demonstrated here can be found in the [API Reference](../reference/tasks.md) document, and details of the data types mentioned can be found in the [Data Types](../reference/data-types.md) document.
 
-## `%private-keys` {#private-keys}
+## `%private-keys`
 
 Here we'll look at subscribing to private key updates from Jael. We'll use a thread to pass Jael a `%private-keys` `task`, take the `%private-keys` `gift` it returns, debug print it to the terminal and finally unsubscribe with a `%nuke` `task`.
 
@@ -52,7 +52,7 @@ You should see the `%private-key` `gift` it returns in the Dojo:
 
 At this point our thread unsubscribes again with a `%nuke` `task` but without that it would send a new `%private-key` `gift` each time the private keys were changed.
 
-## `%public-keys` and `%nuke` {#public-keys-and-nuke}
+## `%public-keys` and `%nuke`
 
 Here we'll look at both subscribing and unsubscribing to updates of a ship's public keys in Jael. We'll subscribe by sending Jael a `%public-keys` `task`, take the `%public-keys` `gift` it responds with, print it to the terminal, scry for the `set` of `duct`s subscribed to the ship in question, print them to the terminal, and finally send Jael a `%nuke` `task` to unsubscribe.
 
@@ -167,7 +167,7 @@ At this point our thread will send a `%nuke` `task` like `[%nuke (silt ~[~dopzod
 
 As you can see the `set` is now empty, so we know the `%nuke` succeeded and Jael will no longer send us pubkey updates for `~dopzod`. One thing to note about `%nuke` is that it _must_ come from the same `duct` as the original subscription. You can't unsubscribe another app, ship, thread or what have you, so if we'd tried `%nuke`ing the subscription from a separate thread it wouldn't have worked.
 
-## `%turf` {#turf}
+## `%turf`
 
 Here we'll look at using a `%turf` `task` to get Jael's list of domains. Note on a fake ship the list will be empty, so you may wish to run it on a comet or moon.
 
@@ -202,7 +202,7 @@ Save in in the `/ted` directory of your ship and `|commit %base`. Next, let's tr
 
 As you see, the `%turf` `gift` contains `urbit.org` as `~['org' 'urbit']`.
 
-## `%step` {#step}
+## `%step`
 
 Here we'll look at changing the web login code with a `%step` task.
 

@@ -1,3 +1,3 @@
-# Standard Library {#standard-library}
+# Standard Library
 
 Comprehensive documentation for the Hoon standard library.

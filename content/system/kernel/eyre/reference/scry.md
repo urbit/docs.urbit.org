@@ -1,4 +1,4 @@
-# Scry Reference {#scry-reference}
+# Scry Reference
 
 Here are all of Eyre's scry endpoints. There's not too many and they mostly deal with either CORS settings or aspects of the state of connections.
 
@@ -6,7 +6,7 @@ The first few have a `care` of `x` and are a scry like `.^([type] %ex /=//=/[som
 
 All examples are run from the dojo.
 
-## `/cors` {#cors}
+## `/cors`
 
 An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](data-types.md#cors-registry) which contains the `set`s of approved, rejected and requested origins.
 
@@ -22,7 +22,7 @@ An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. Th
 
 ---
 
-## `/cors/requests` {#corsrequests}
+## `/cors/requests`
 
 An `x` scry with a `path` of `/cors/requests` will return the `set` of pending origin requests. These are origins that were in an `Origin: ...` HTTP header but weren't in the existing approved or rejected sets. The type returned is a `(set origin:eyre)`.
 
@@ -35,7 +35,7 @@ requests={~~http~3a.~2f.~2f.baz~.example}
 
 ---
 
-## `/cors/approved` {#corsapproved}
+## `/cors/approved`
 
 An `x` scry with a `path` of `/cors/approved` will return the `set` of approved CORS origins. The type returned is a `(set origin:eyre)`.
 
@@ -48,7 +48,7 @@ approved={~~http~3a.~2f.~2f.foo~.example}
 
 ---
 
-## `/cors/approved/[origin]` {#corsapprovedorigin}
+## `/cors/approved/[origin]`
 
 An `x` scry whose `path` is `/cors/approved/[origin]` tests whether the given origin URL is in the `approved` set of the CORS registry. The type returned is a simple `?`.
 
@@ -68,7 +68,7 @@ The origin URL is a `@t`, but since `@t` may not be valid in a path, it must be 
 
 ---
 
-## `/cors/rejected` {#corsrejected}
+## `/cors/rejected`
 
 An `x` scry with a `path` of `/cors/rejected` will return the `set` of rejected CORS origins. The type returned is a `(set origin:eyre)`.
 
@@ -81,7 +81,7 @@ rejected={~~http~3a.~2f.~2f.bar~.example}
 
 ---
 
-## `/cors/rejected/[origin]` {#corsrejectedorigin}
+## `/cors/rejected/[origin]`
 
 An `x` scry whose `path` is `/cors/rejected/[origin]` tests whether the given origin URL is in the `rejected` set of the CORS registry. The type returned is a simple `?`.
 
@@ -101,7 +101,7 @@ The origin URL must be a cord-encoded `@t` rather than just the plain `@t`, so y
 
 ---
 
-## `/authenticated/cookie` {#authenticatedcookie}
+## `/authenticated/cookie`
 
 An `x` scry whose `path` is `/authenticated/cookie/[cookie]` tests whether the given cookie is currently valid. The type returned is a `?`.
 
@@ -121,7 +121,7 @@ The cookie must be the full cookie including the `urbauth-{SHIP}=` part. The coo
 
 ---
 
-## `/cache/[aeon]/[url]` {#cacheaeonurl}
+## `/cache/[aeon]/[url]`
 
 An `%x` `/cache` scry will return the cached value for the given `[url]` at the given `[aeon]` if it exists.
 
@@ -129,7 +129,7 @@ The `[url]` must be a knot-encoded `@t` rather than just a plain `@t`, so you'll
 
 ---
 
-## `%bindings` {#bindings}
+## `%bindings`
 
 A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's URL path bindings. The type returned is a `(list [binding:eyre duct action:eyre])` (see the [$binding](data-types.md#binding) & [$action](data-types.md#action) sections of the Data Types document for details).
 
@@ -152,7 +152,7 @@ A scry with `bindings` in place of the `desk` in the `beak` will return Eyre's U
 
 ---
 
-## `%cache` {#cache}
+## `%cache`
 
 A scry with `cache` in place of the `desk` in the `beak` will return Eyre's entire cache. The type returned is as follows:
 
@@ -164,7 +164,7 @@ The map's `url` key is a URL path like `/foo/bar/baz.jpg` in a `cord`. The `aeon
 
 ---
 
-## `%connections` {#connections}
+## `%connections`
 
 A scry with `connections` in place of the `desk` in the `beak` will return all open HTTP connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [$outstanding-connection](data-types.md#outstanding-connection) section of the Data Types document for details).
 
@@ -177,7 +177,7 @@ A scry with `connections` in place of the `desk` in the `beak` will return all o
 
 ---
 
-## `%authentication-state` {#authentication-state}
+## `%authentication-state`
 
 A scry with `authentication-state` in place of the `desk` in the `beak` will return authentication details of all current sessions. The type returned is a [$authentication-state](data-types.md#authentication-state). The `p` field is the cookie sans the `urbauth-[ship]=` part.
 
@@ -194,7 +194,7 @@ A scry with `authentication-state` in place of the `desk` in the `beak` will ret
 
 ---
 
-## `%channel-state` {#channel-state}
+## `%channel-state`
 
 A scry with `channel-state` in place of the `desk` in the `beak` will return details of the state of each channel. The type returned is a [channel-state](data-types.md#channel-state).
 
@@ -221,7 +221,7 @@ A scry with `channel-state` in place of the `desk` in the `beak` will return det
 
 ---
 
-## `%host` {#host}
+## `%host`
 
 A scry with `host` in place of the `desk` in the `beak` will return host details of the ship. The type returned is a `hart:eyre`.
 

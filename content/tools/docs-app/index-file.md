@@ -1,4 +1,4 @@
-# Index File {#index-file}
+# Index File
 
 Each desk with docs may include a `doc.toc` file in its root. A `doc.toc` file looks something like this:
 

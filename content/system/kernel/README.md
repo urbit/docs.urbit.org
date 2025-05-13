@@ -1,4 +1,4 @@
-# Kernel {#kernel}
+# Kernel
 
 - [Arvo](arvo) - Arvo is the kernel itself.
 - [Ames](ames) - Ames is the name of our network and the vane that communicates over it. It's an encrypted P2P network composed of instances of the Arvo operating system.

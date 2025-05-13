@@ -1,4 +1,4 @@
-# Command-line install {#command-line-install}
+# Command-line install
 
 This guide covers running the Urbit runtime (Vere) using the command line. This can be run on your local machine or a server in the cloud, we just cover the local case here. The runtime is what interprets the Urbit kernel code (Arvo) into commands your specific machine (macOS or Linux) understands.
 
@@ -15,7 +15,7 @@ Note there is a much more comprehensive [cloud hosting guide](cloud-hosting.md) 
 
 **A note on storage**: Urbit saves every event it processes to its [Event Log](https://developers.urbit.org/reference/glossary/eventlog). This means its disk usage slowly grows over time. Until event log truncation is implemented, it's advisable to have 40 or 50GB of disk space available, so you don't have to worry about running out for a long time. If you don't have that much, your ship will still run fine, but you may run out of space some months down the line.
 
-### 2. Install Urbit {#2-install-urbit}
+### 2. Install Urbit
 
 Choose your operating system and run the given command in your terminal to download the Urbit runtime, this command downloads the latest build, unpacks it, and runs the binary with no arguments to show you the help output:
 
@@ -61,7 +61,7 @@ If successful, you will see a block of output beginning with the line:
 Urbit: a personal server operating function
 ```
 
-### 3. Boot Urbit {#3-boot-urbit}
+### 3. Boot Urbit
 
 An Urbit instance is intrinsically tied to a unique identity called an **Urbit ID**. There are five classes of Urbit ID, but we will consider two here: comets and planets.
 
@@ -168,7 +168,7 @@ One last thing: The `sampel-palnet-1.key` keyfile is only needed once, when you 
 
 {% /tabs %}
 
-### 4. Login {#4-login}
+### 4. Login
 
 While your urbit is running, the web interface called *Landscape* can be accessed in the browser. Its URL will usually be either `localhost` or `localhost:8080`, depending on your platform. To check the address, you can look at the boot messages in the terminal. You should see a line like:
 
@@ -180,7 +180,7 @@ Whichever address and port it says there is the one to open in the browser.
 
 Once open, you'll be presented with the login screen. Paste in the web login code you copied from the dojo in the previous step and hit "continue". You'll now be taken to your homescreen, with tiles for the default apps such as Groups, Talk, and Terminal.
 
-### 5. Runtime Upgrades {#5-runtime-upgrades}
+### 5. Runtime Upgrades
 
 When new versions of the Urbit runtime (Vere) are available, you'll have to shutdown your urbit and then run the `next` command in order to upgrade.
 
@@ -210,6 +210,6 @@ If you've been running Urbit for a while (from before runtime version 1.9) and t
 
 Then `.run` should work as expected and future runtime upgrades can be done via `next`.
 
-## Next steps {#next-steps}
+## Next steps
 
 Learn how to [get around your urbit](../additional/getting-around.md).

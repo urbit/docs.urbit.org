@@ -1,14 +1,14 @@
-# | bar · Cores {#-bar-cores}
+# | bar · Cores
 
 Core expressions produce cores. A core is a cell of `[battery payload]`. The `battery` is code, a battery of Nock formulas. The `payload` is the data needed to run those formulas correctly.
 
 Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a core with a single arm, named `$`. As with all arms, we can recompute `$` with changes, which is useful for recursion among other things.
 
-## `|$` "barbuc" {#-barbuc}
+## `|$` "barbuc"
 
 Declares a mold builder wet gate with one or more molds as its sample.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -39,13 +39,13 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brbc sample=(lest term) body=spec]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 |$  [a b]
@@ -60,11 +60,11 @@ becomes
 body
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 `|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `lest` of `term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
 
-#### Discussion {#discussion}
+#### Discussion
 
 A mold builder is a wet gate from one or more molds to a mold. A mold is a function from nouns to nouns with types that may be partial, is always idempotent, and usually the identity function on the noun itself.
 
@@ -74,7 +74,7 @@ Like other single-arm cores, the arm for `|$` is named `$` and this can be used 
 
 Proper style for `|$` is to enclose the first argument with brackets, even if it is only a single term. The interpeter will accept a single term without brackets just fine, but this style is for consistency with the fact that the first argument is a `lest`.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > =foo |$([a b] [b a])
@@ -87,11 +87,11 @@ Proper style for `|$` is to enclose the first argument with brackets, even if it
 
 ---
 
-## `|_` "barcab" {#_-barcab}
+## `|_` "barcab"
 
 Produce a **door** (a core with a sample).
 
-#### Syntax {#syntax}
+#### Syntax
 
 One fixed argument, then a variable number of `+`-family expressions.
 
@@ -126,13 +126,13 @@ None
 
 Note: The `++` rune may be replaced with any other rune in the `+` family.
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brcb p=spec q=alas r=(map term tome)]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 =|  a=spec
@@ -144,7 +144,7 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 --
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 The product of a `|_` expression is a **door**, a core with one or more arms whose payload includes a sample. That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
 
@@ -152,7 +152,7 @@ The product of a `|_` expression is a **door**, a core with one or more arms who
 
 The context of the door is the subject of the `|_` expression.
 
-#### Discussion {#discussion}
+#### Discussion
 
 A door is the general case of a gate (function). A gate is a door with only one arm, which has the name `$`.
 
@@ -160,7 +160,7 @@ Calling a door is like calling a gate except the caller also needs to specify th
 
 Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#-censig).
 
-#### Examples {#examples}
+#### Examples
 
 A trivial door:
 
@@ -198,11 +198,11 @@ The `ne` door prints a digit in base 10, 16, 32 or 64:
 
 ---
 
-## `|:` "barcol" {#-barcol}
+## `|:` "barcol"
 
 Produce a gate with a custom sample.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -233,30 +233,30 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brcl p=hoon q=hoon]
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 `a` is a Hoon expression whose product type defines which values the gate accepts, and it usually includes a name (e.g., `n=1`). The product of `a` also serves as the default value of the sample. `b` is a Hoon expression that determines the product value of the gate.
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 =+  a
 |.  b
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 Pick your own default value for the sample. Note that `a` is an ordinary expression, not a type; `|:` doesn't bunt a sample as [`|=`](#-bartis) does.
 
 This is useful if you want a gate to have a sample of a particular type, but you don't want the default value of the gate to be the default value of that type.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > =add-ten |:(n=`@`2 (add n 10))
@@ -270,11 +270,11 @@ This is useful if you want a gate to have a sample of a particular type, but you
 
 ---
 
-## `|%` "barcen" {#-barcen}
+## `|%` "barcen"
 
 Produce a core, `[battery payload]`.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Argument: a variable number of `+`-family expressions.
 
@@ -309,13 +309,13 @@ None
 
 Note: The `++` rune may be replaced with any other rune in the `+` family.
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brcn p=(unit term) q=(map term tome)]
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 The product of a `|%` expression is a dry core with one or more arms in the battery.
 
@@ -323,7 +323,7 @@ The `|%` rune is followed by a series of arm definitions, each of which begins w
 
 The core payload is the subject of the `|%` expression.
 
-#### Discussion {#discussion}
+#### Discussion
 
 A core is a cell of `[battery payload]`, where the `battery` is code and the `payload` is data. The `battery` is one or more arms. An arm is a computation that takes the core itself as its subject.
 
@@ -331,7 +331,7 @@ The `|%` rune is used to construct a core from a series of arm definitions. Each
 
 A core is like an "object" in a conventional language, but its attributes (_arms_) are functions on the core, not the core and an argument. A "method" on a core is an arm that produces a gate.
 
-#### Examples {#examples}
+#### Examples
 
 A trivial core:
 
@@ -352,11 +352,11 @@ A trivial core:
 
 ---
 
-## `|.` "bardot" {#-bardot}
+## `|.` "bardot"
 
 Produce a trap (a core with one arm `$`).
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -364,30 +364,30 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `\| .  a` | `\| .(a)` | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brdt p=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 |%  ++  $  a=hoon
 --
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|.` expression produces a core with a single arm, `$`. The core isn't explicitly given a sample. `a` is a Hoon expression that defines the computation of the `$` arm.
 
 The payload of the core is the subject of the `|.` expression.
 
-#### Discussion {#discussion}
+#### Discussion
 
 A trap is generally used to defer a computation.
 
-#### Examples {#examples}
+#### Examples
 
 A trivial trap:
 
@@ -422,11 +422,11 @@ Note that we can use `$()` to recurse back into the trap, since it's a core with
 
 ---
 
-## `|^` "barket" {#-barket}
+## `|^` "barket"
 
 Produce a core whose battery includes a `$` arm and compute the latter.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One fixed argument, then a variable number of `+`-family expressions.
 
@@ -459,13 +459,13 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brkt p=hoon q=(map term tome)]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 =>  |%
@@ -478,15 +478,15 @@ None
 $
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|^` expression produces a multi-arm core whose battery includes a `$` arm, which is evaluated immediately. `a` is a Hoon expression that defines the product of the `$` arm. `a` is followed by a series of arm definitions for the rest of the core battery arms. There must be at least one arm other than the `$` arm.
 
-#### Discussion {#discussion}
+#### Discussion
 
 The `|^` rune is useful when you define a multi-arm core in your code and a particular arm in it is to be evaluated immediately.
 
-#### Examples {#examples}
+#### Examples
 
 A trivial example:
 
@@ -501,11 +501,11 @@ A trivial example:
 
 ---
 
-## `|-` "barhep" {#--barhep}
+## `|-` "barhep"
 
 Produce a trap (a core with one arm `$`) and evaluate it.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -513,29 +513,29 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `\|-  a`   | `\|-(a)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brhp p=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 =<($ |.(a=hoon))
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|-` expression produces a core with one arm named `$` and immediately evaluates `$`. `a` is a Hoon expression that determines what `$` evaluates to.
 
-#### Discussion {#discussion}
+#### Discussion
 
 The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
 
-#### Examples {#examples}
+#### Examples
 
 A trivial computation doesn't recurse:
 
@@ -560,11 +560,11 @@ The classic loop is a decrement:
 
 ---
 
-## `|~` "barsig" {#-barsig}
+## `|~` "barsig"
 
 Produce an iron gate.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -595,27 +595,27 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brsg p=spec q=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 ^|  |=(a b)
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|~` expression produces an iron gate. `a` defines the sample, and `b` defines the output value of the gate.
 
-#### Discussion {#discussion}
+#### Discussion
 
 See [this discussion of core variance models](../advanced.md)
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > =>  ~  ^+(|~(a=@ *@) |=(a=* *@))
@@ -624,11 +624,11 @@ See [this discussion of core variance models](../advanced.md)
 
 ---
 
-## `|*` "bartar" {#-bartar}
+## `|*` "bartar"
 
 Produce a wet gate (one-armed core with sample).
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -636,13 +636,13 @@ Two arguments, fixed.
 |------------|-----------|----------------|
 | `\|*  a  b` | `\|*(a b)` | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brtr p=spec q=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 =|  a
@@ -652,11 +652,11 @@ Two arguments, fixed.
 --
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|*` expression produces a wet gate. `a` defines the gate's sample, and `b` is a Hoon expression that determines the output value of the gate.
 
-#### Discussion {#discussion}
+#### Discussion
 
 In a normal (dry) gate, your argument is converted into the sample type. In a generic (wet) gate, your argument type passes through the function, rather as if it were a macro (there is still only one copy of the code, however).
 
@@ -668,7 +668,7 @@ Just as with a [gate](#-bartis), we can recurse back into a wet gate with `$()`.
 
 `|*` can be used to make wet gates that produce structures, but this usage is discouraged in favor of `|$`.
 
-#### Examples {#examples}
+#### Examples
 
 Wet and dry gates in a nutshell:
 
@@ -688,11 +688,11 @@ The dry gate does not preserve the type of `a` and `b`; the wet gate does.
 
 ---
 
-## `|=` "bartis" {#-bartis}
+## `|=` "bartis"
 
 Produce a gate (a one-armed core with a sample).
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -723,13 +723,13 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brts p=spec q=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 =+  ^~(*a=spec)
@@ -737,13 +737,13 @@ None
 --
 ```
 
-#### Definition {#definition}
+#### Definition
 
 The product of a `|=` expression is a dry **gate**, i.e., a Hoon function.
 
 `p` defines the gate sample type -- i.e., the input value type -- and usually includes a sample name assignment (e.g., `a=@`). `q` is an expression that determines the output value of the gate.
 
-#### Discussion {#discussion}
+#### Discussion
 
 Dry gates are used for the vast majority of ordinary functions in Hoon.
 
@@ -751,7 +751,7 @@ A gate is a core with one arm named `$`, so we can recurse back into it with `$(
 
 > `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
 
-#### Examples {#examples}
+#### Examples
 
 A trivial gate:
 
@@ -774,11 +774,11 @@ A slightly less trivial gate:
 
 ---
 
-## `|@` "barpat" {#-barpat}
+## `|@` "barpat"
 
 Produce a 'wet' core `[battery payload]`.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Arguments: a variable number of `+`-family expressions.
 
@@ -813,27 +813,27 @@ None
 
 Note: The `++` rune may be replaced with any other rune in the `+` family.
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brpt p=(unit term) q=(map term tome)]
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|@` expression produces a 'wet' core whose payload is the expression's subject. The various arms in the battery are each named (`a`, `c`, and `e` above) and defined explicitly with a Hoon expression (with `b`, `d`, and `f` above).
 
-#### Discussion {#discussion}
+#### Discussion
 
 The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one. This allows for type polymorphism of its arms, using 'genericity'. See [Advanced types](../advanced.md).
 
 ---
 
-## `|?` "barwut" {#-barwut}
+## `|?` "barwut"
 
 Produce a lead trap.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -841,27 +841,27 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `\|?  a`   | `\|?(a)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%brwt p=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 ^?  |.  a
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`). `a` is a Hoon expression that defines what the `$` arm does.
 
-#### Discussion {#discussion}
+#### Discussion
 
 See this [discussion of the core variance model](../advanced.md).
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > =>  ~  ^+  |?(%a)  |.(%a)

@@ -1,10 +1,10 @@
-# Auras {#auras}
+# Auras
 
 Auras are system of nested "soft types" on [atoms](../../../glossary/atom.md) that are used to track metadata about how a particular atom is to be interpreted. This is used for type checking as well as pretty printing.
 
 You can learn more about auras in [Hoon school](../../../courses/hoon-school/B-syntax.md#nouns).
 
-## Table of Auras {#table-of-auras}
+## Table of Auras
 
 ```
 Aura         Meaning                                 Example Literal Syntax
@@ -43,7 +43,7 @@ Aura         Meaning                                 Example Literal Syntax
   @ux           unsigned hexadecimal                 0x5f5.e138
 ```
 
-## Bitwidth {#bitwidth}
+## Bitwidth
 
 Capital letters at the end of auras indicate the bitwidth in binary powers of
 two, starting from A.
@@ -56,7 +56,7 @@ two, starting from A.
         @uvJ    unsigned, 512-bit integer (frequently used for entropy)
 ```
 
-## Nesting {#nesting}
+## Nesting
 
 A given aura nests under any aura whose name is a substring or extension of the
 given aura:
@@ -88,7 +88,7 @@ This is implicitly done by the irregular form of `^-`.
 7.303.014
 ```
 
-## Bunting {#bunting}
+## Bunting
 
 The bunt value for all auras is 0 except for `@da`.
 

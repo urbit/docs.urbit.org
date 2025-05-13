@@ -1,8 +1,8 @@
-# Poke Agent {#poke-agent}
+# Poke Agent
 
 Here's a thread that lets you post a message to a chat in graph-store:
 
-#### `post-msg.hoon` {#post-msghoon}
+#### `post-msg.hoon`
 
 ```hoon
 /-  spider
@@ -51,6 +51,6 @@ Save it in `/ted` of the `%base` desk, `|commit %base`, and run it like:
 
 (obviously change the channel name to whatever you have)
 
-### Analysis {#analysis}
+### Analysis
 
 Pretty simple, just use `on-poke` with an argument of `[ship term] cage` where `term` is the agent and `cage` is whatever the particular agent expects.

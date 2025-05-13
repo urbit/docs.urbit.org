@@ -1,4 +1,4 @@
-# Build a Groups App {#build-a-groups-app}
+# Build a Groups App
 
 In this lightning tutorial, we're going to build an app to create groups called Squad. It'll look like this:
 
@@ -15,35 +15,35 @@ The app source is available in the [`docs-examples` repo on Github](https://gith
 
 Let's get started.
 
-## Install binary {#install-binary}
+## Install binary
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step. Otherwise, run one of the commands below, depending on your platform. It will fetch the binary and save it in the current directory.
 
-#### Linux (`x86_64`) {#linux-x86_64}
+#### Linux (`x86_64`)
 
 ```shell
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### Linux (`aarch64`) {#linux-aarch64}
+#### Linux (`aarch64`)
 
 ```shell
 curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### macOS (`x86_64`) {#macos-x86_64}
+#### macOS (`x86_64`)
 
 ```shell
 curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-#### macOS (`aarch64`) {#macos-aarch64}
+#### macOS (`aarch64`)
 
 ```shell
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-## Development ship {#development-ship}
+## Development ship
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, so we can test it on the live network right away, we'll do it on a comet instead. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
@@ -55,7 +55,7 @@ It might take a few minutes to boot up, and will fetch updates for the default a
 
 Note: we'll use `~sampel_samzod` throughout this guide, but this will be different for you as a comet's ID is randomly generated.
 
-## Dependencies {#dependencies}
+## Dependencies
 
 Our app needs a few standard files. We'll mount a couple of default desks so we can copy them across. We can do this with the `|mount` command:
 
@@ -77,7 +77,7 @@ cp -r dev-comet/landscape/sur/docket.hoon squad/sur/
 
 Now we can start working on the app itself.
 
-## Types {#types}
+## Types
 
 The first thing we typically do when developing an app is define:
 
@@ -198,7 +198,7 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 
 </details>
 
-## Agent {#agent}
+## Agent
 
 With all the types now defined, we can create the app itself.
 
@@ -216,7 +216,7 @@ There are three main agent arms we use for this:
    
 Let's look at each part in a little more detail.
 
-#### `on-poke` {#on-poke}
+#### `on-poke`
 
 For this app, the `on-poke` will only allow pokes from the local ship - either other agents using Squad's API or Squad's front-end. It will accept pokes with either a `%squad-do` mark containing an `act` action we defined earlier, or a `%handle-http-request` mark from the front-end. The latter case will be handles by the `handle-http` arm. We'll check which URL path the request was sent to (`/squad/join`, `/squad/new`, etc), extract the key-value pairs from the body of the request, convert them to an `act` action, and then call the `handle-action` arm to process. If we get a `%squad-do`, we pass it directly to the `handle-action` arm.
 
@@ -236,18 +236,18 @@ For this app, the `on-poke` will only allow pokes from the local ship - either o
 
 `handle-action` will handle each kind of request as appropriate, updating the agent's state and sending out updates to subscribers.
 
-#### `on-watch` {#on-watch}
+#### `on-watch`
 
 When you subscribe to an agent, you subscribe to a *path*. In our app's case, we use the `gid` (group ID) as the path, like `/~sampel-palnet/my-squad-123`. A remote ship will send us a subscription request which will arrive in the `on-watch` arm. We'll check whether the remote ship is whitelisted (or not blacklisted if public) for the requested `gid`, and then either accept or reject the subscription request. If accepted, we'll send them the initial state of that `gid`, and then continue to send them updates as they happen.
 
 All network packets coming in from other ships are encrypted using our ship's public keys, and signed with the remote ship's keys. The networking keys of all ships are published on Azimuth, Urbit's identity system on the Ethereum blockchain. All ships listen for transactions on Azimuth, and keep their local PKI state up-to-date, so all ships know the keys of all other ships. When each packet arrives, it's decrypted and checked for a valid signature. This means we can be sure that all network traffic really comes from who it claims to come from. Ames, the inter-ship networking kernel module, handles this all automatically. When the message arrives at our agent, it'll just note the ship it came from. This means checking permissions can be as simple as `?> =(our src)` or `?> (~(has in src) allowed)`.
 
-#### `on-agent` {#on-agent}
+#### `on-agent`
 
 Just as other ships will subscribe to paths via our `on-watch` and then start receiving updates we send out, we'll do the same to them. Once subscribed, the updates will start arriving in our `on-agent` arm. In order to know what subscription the updates relate to, we'll specify a *wire* when we first subscribe. A wire is like a tag for responses. All updates we receive for a given subscription will come in on the wire we specified when we opened the subscription. A wire has the same format as a subscription path, and in this case we'll make it the same - `/~sampel-palnet/my-squad-123`.
 
 
-#### The code {#the-code}
+#### The code
 
 Gall agents live in the `/app` directory of a desk, so you can save this code in `squad/app/squad.hoon`:
 
@@ -1302,13 +1302,13 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 
 </details>
 
-## Marks {#marks}
+## Marks
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with inter-mark conversion methods). We need to define a mark for the `act`ions we'll send or receive, and the `upd`ates we'll send to subscribers or receive for subscriptions. These will be very simple since we don't need to do any conversions to things like JSON.
 
 Mark files are stored in the `/mar` directory of a desk. Save the `%squad-do` mark in `squad/mar/squad/do.hoon`, and the `%squad-did` mark in `squad/mar/squad/did.hoon`.
 
-#### `%squad-do` {#squad-do}
+#### `%squad-do`
 
 ```hoon
 :: first we import our /sur/squad.hoon type defs and expose them directly
@@ -1340,7 +1340,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%squad-do` ma
 --
 ```
 
-#### `%squad-did` {#squad-did}
+#### `%squad-did`
 
 ```hoon
 :: first we import our /sur/squad.hoon type defs and expose them directly
@@ -1371,7 +1371,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%squad-do` ma
 ++  grad  %noun
 --
 ```
-## Front-end {#front-end}
+## Front-end
 
 We could have put the front-end code directly in our Gall agent, but it tends to be quite large so it's convenient to have it in a separate file and just import it. Most of this file consists of Sail code, which is the internal HTML representation, similar to other server-side renderings like Clojure's Hiccup.
 
@@ -1823,7 +1823,7 @@ Save the code below in `squad/app/squad/index.hoon`.
 
 </details>
 
-## Desk config {#desk-config}
+## Desk config
 
 With our types, agent, mark files and front-end now complete, the last thing we need are some desk configuration files.
 
@@ -1855,7 +1855,7 @@ Lastly, we need to create a Docket file. Docket is the agent that manages app fr
 ==
 ```
 
-## Put it together {#put-it-together}
+## Put it together
 
 Our app is now complete. In the `squad` working directory, we should have the following files, as well as the dependencies we copied in at the beginning:
 
@@ -1913,7 +1913,7 @@ One thing we can also do is publish the app so others can install it from us. To
 Now our friends will be able to install it directly from us with `|install <our ship> %squad` or by searching for `<our ship>` on their ship's homescreen.
 
 
-## Next steps {#next-steps}
+## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](../../../../courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](../../../../courses/app-school) will teach you everything you need to know about app development.
 

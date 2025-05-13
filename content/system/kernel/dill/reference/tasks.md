@@ -1,14 +1,14 @@
-# API Reference {#api-reference}
+# API Reference
 
 In this document we describe the public interface for Dill. Namely, we describe each `task` that Dill can be `pass`ed, and which `gift`(s) Dill can `give` in return.
 
 Dill's `task`s are organized into three categories: [Session `task`s](#session-tasks) for interacting with a particular session, [Told `task`s](#told-tasks) for basic terminal printing, and [system/miscellaneous `task`s](#system-misc-tasks) which are a combination of general system `task`s and Dill `task`s which don't fit in the previous two categories.
 
-## System & Misc. Tasks {#system-misc-tasks}
+## System & Misc. Tasks
 
 These are the Dill `task`s not otherwise categorized as [session tasks](#session-tasks) or [told tasks](#told-tasks). Most of them are interfaces for Vere or Arvo and do thing like toggle verbose mode, defragment state, etc. The most notable Dill-specific `task` is [`%shot`](#shot), which is used as a wrapper for the [session tasks](#session-tasks) to specify the session. The [`%logs`](#logs) `task` is also useful, letting you subscribe to all system output.
 
-### `%boot` {#boot}
+### `%boot`
 
 ```hoon
 [%boot lit=? p=*]
@@ -20,13 +20,13 @@ This `task` is used only once, when Arvo first enters the [adult stage](../../ar
 
 This `task` would not be used from userspace.
 
-#### Returns {#returns}
+#### Returns
 
 Dill returns no `gift` in response to a `%boot` `task`, but it will `%pass` the wrapped `%dawn` or `%fake` `task` to Jael.
 
 ---
 
-### `%crop` {#crop}
+### `%crop`
 
 Trim kernel state.
 
@@ -36,13 +36,13 @@ Trim kernel state.
 
 This `task` is the same as the `%trim` vane `task`. Like `%trim`, Dill does nothing with it.
 
-#### Returns {#returns}
+#### Returns
 
 Dill returns no `gift` in response to a `%crop` `task`.
 
 ---
 
-### `%flog` {#flog}
+### `%flog`
 
 ```hoon
 [%flog p=flog]
@@ -52,13 +52,13 @@ A `%flog` `task` is a wrapper over a `task` sent by another vane. Dill removes t
 
 A `%flog` `task` takes a [$flog](data-types.md#flog) as its argument. A `$flog` is a subset of Dill's `task`s.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%flog` `task`.
 
 ---
 
-### `%heft` {#heft}
+### `%heft`
 
 Produce memory report.
 
@@ -68,13 +68,13 @@ Produce memory report.
 
 When Dill receives a `%heft` `task` it passes Arvo a `%whey` `waif` to obtain a memory report and prints it to the terminal.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%heft` `task`.
 
 ---
 
-### `%logs` {#logs}
+### `%logs`
 
 Watch system output.
 
@@ -84,7 +84,7 @@ Watch system output.
 
 A non-null `p` subscribes to system output, and a null `p` unsubscribes. While subscribed, you'll receive each piece of output in a `%logs` gift as it occurs.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not immediately return anything, but will give you a `%logs` gifts each time system output occurs. A `%logs` gift looks like:
 
@@ -96,7 +96,7 @@ A `$told` is either a [`%crud`](#crud), [`%talk`](#talk) or [`%text`](#text) tas
 
 ---
 
-### `%meld` {#meld}
+### `%meld`
 
 Deduplicate persistent state.
 
@@ -106,13 +106,13 @@ Deduplicate persistent state.
 
 Dill asks the runtime to perform the memory deduplication.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%meld` `task`.
 
 ---
 
-### `%pack` {#pack}
+### `%pack`
 
 Defragment persistent state.
 
@@ -122,13 +122,13 @@ Defragment persistent state.
 
 Dill asks the runtime to perform the defragmentation.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%meld` `task`.
 
 ---
 
-### `%seat` {#seat}
+### `%seat`
 
 Install desk.
 
@@ -138,13 +138,13 @@ Install desk.
 
 This indirectly pokes `%hood` with a `%kiln-install` `mark` to install the specified `desk`. You should just poke `%hood` directly rather than using this.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%seat` `task`.
 
 ---
 
-### `%shot` {#shot}
+### `%shot`
 
 Task for session.
 
@@ -156,7 +156,7 @@ A `$session-task` is one of these `task`s: [`%belt`](#belt), [`%blew`](#blew), [
 
 ---
 
-### `%verb` {#verb}
+### `%verb`
 
 Toggle Arvo verbose mode.
 
@@ -166,19 +166,19 @@ Toggle Arvo verbose mode.
 
 This `task` toggles verbose mode for all of Arvo, which is located here since Dill is the vane that prints errors. To be precise, `%verb` toggles the laconic bit `lac` in the [Arvo state](../../arvo#the-state) by passing a `%verb` `waif` to Arvo.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%verb` `task`.
 
 ---
 
-## Session Tasks {#session-tasks}
+## Session Tasks
 
 These `task`s are for interacting with a particular session. These all would normally be wrapped in a [`%shot`](#shot) `task` to specify the session, rather than sent directly.
 
 This subset of Dill's `task`s are defined in the [`$session-task` type](data-types.md#session-task).
 
-### `%belt` {#belt}
+### `%belt`
 
 Terminal input.
 
@@ -190,13 +190,13 @@ The [$belt](data-types.md#belt) in `p` contains the input such as which key was 
 
 This `task` should be wrapped in a [`%shot`](#shot) `task` to specify the session. Without the `%shot` wrapper, it will use the default session (`%$`).
 
-#### Returns {#returns}
+#### Returns
 
 Dill returns no `gift` in response to a `%belt` `task`.
 
 ---
 
-### `%blew` {#blew}
+### `%blew`
 
 Terminal resized.
 
@@ -210,13 +210,13 @@ Dill will convert the `$blew` into a `%rez` [$dill-belt](data-types.md#dill-belt
 
 This `task` would not typically be used from userspace. Instead, it would come in from the runtime for the default session (`%$`) when the actual terminal were resized. If in an odd scenario it were used from userspace, it would need to be wrapped in a [`%shot`](#shot) `task` to specify a session other than `%$`.
 
-#### Returns {#returns}
+#### Returns
 
 Dill returns no `gift` in response to a `%blew` `task`.
 
 ---
 
-### `%flee` {#flee}
+### `%flee`
 
 Unwatch a session to which you've previously subscribed with [%view](#view).
 
@@ -226,13 +226,13 @@ Unwatch a session to which you've previously subscribed with [%view](#view).
 
 This `task` must be wrapped in a [`%shot`](#shot) `task` in order to specify the session. Without that, it will default to the default session (`%$`). The subscription to end will be determined implicitly by the `duct`.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%flee` `task`.
 
 ---
 
-### `%hail` {#hail}
+### `%hail`
 
 Refresh.
 
@@ -244,13 +244,13 @@ Dill converts a `%hail` `task` into a `%hey` [$dill-belt](data-types.md#dill-bel
 
 This `task` would not typically be used from userspace. If in an odd scenario it were used from userspace, it would need to be wrapped in a [`%shot`](#shot) `task` to specify a session other than `%$`.
 
-#### Returns {#returns}
+#### Returns
 
 Dill returns no `gift` in response to a `%hail` `task`.
 
 ---
 
-### `%open` {#open}
+### `%open`
 
 Setup session.
 
@@ -266,7 +266,7 @@ Dill will poke every agent listed in  `q` (local or remote) with a [`%yow` `$dil
 
 Additionally, the source of the `%open` request (as determined by the `duct`, typically the agent in `p`) will begin receiving terminal output gifts for the session in question. Essentially, it behaves as though you also passed it a [`%view`](#view) task.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not give a `gift` in direct response to an `%open` `task`. It will, however, start giving terminal output `%blit` `gift`s to the requester as the occur for the session. A `%blit` `gift` looks like:
 
@@ -280,7 +280,7 @@ This subscription for `$blit`s can be stopped with a [`%flee`](#flee) `task` at 
 
 ---
 
-### `%shut` {#shut}
+### `%shut`
 
 Close session.
 
@@ -292,13 +292,13 @@ This `task` needs to be wrapped in [`%shot`](#shot) `task` to specify the sessio
 
 The session handler will be passed a `%leave`. Subscribers for `$blit`s will not be notified, they'll just stop receiving `$blit`s.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not give a `gift` in response to a `%shut` `task`. It will, however, pass a `%leave` to the session handler agent.
 
 ---
 
-### `%view` {#view}
+### `%view`
 
 Watch session.
 
@@ -308,7 +308,7 @@ Watch session.
 
 A `%view` `task` subscribes for a copy of all `%blit` `gift`s which Dill `%give`s for the session in question. This `task` must be wrapped in a [`%shot`](#shot) `task` which specifies the session if you want to subscribe to anything other than the default session (`%$`).
 
-#### Returns {#returns}
+#### Returns
 
 Dill will begin giving a copy of all `%blit`s for the session specified in the [`%shot`](#shot) wrapper, or the default session (`%$`) if a `%shot` wrapper is not used. A `%blit` `gift` is:
 
@@ -322,11 +322,11 @@ The subscription can be ended with a [`%flee`](#flee) `task`.
 
 ---
 
-## Told Tasks {#told-tasks}
+## Told Tasks
 
 This subset of Dill `task`s are for printing things. They are defined in the [`$told` type](data-types.md#told).
 
-### `%crud` {#crud}
+### `%crud`
 
 Print error.
 
@@ -336,13 +336,13 @@ Print error.
 
 Dill prints the given error to the terminal.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%crud` `task`.
 
 ---
 
-### `%talk` {#talk}
+### `%talk`
 
 Print `tang` to terminal.
 
@@ -352,13 +352,13 @@ Print `tang` to terminal.
 
 The `tank`s in `p` will be printed to the terminal, first to last.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%talk` `task`.
 
 ---
 
-### `%text` {#text}
+### `%text`
 
 Print `tape` to terminal.
 
@@ -368,7 +368,7 @@ Print `tape` to terminal.
 
 The `tape` in `p` will be printed to the terminal.
 
-#### Returns {#returns}
+#### Returns
 
 Dill does not return a `gift` in response to a `%text` `task`.
 

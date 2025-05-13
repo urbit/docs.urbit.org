@@ -1,4 +1,4 @@
-# System {#system}
+# System
 
 This section of the docs contains guides and reference material for the three basic components of the system: the Arvo kernel, the Vere runtime and Azimuth, the PKI and identity system on the Ethereum blockchain.
 

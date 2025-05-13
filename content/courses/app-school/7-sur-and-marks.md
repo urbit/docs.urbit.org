@@ -1,8 +1,8 @@
-# 7. Structures and Marks {#7-structures-and-marks}
+# 7. Structures and Marks
 
 Before we get into subscription mechanics, there's three things we need to touch on that are very commonly used in Gall agents. The first is defining an agent's types in a `/sur` structure file, the second is `mark` files, and the third is permissions. Note the example code presented in this lesson will not yet build a fully functioning Gall agent, we'll get to that in the next lesson.
 
-## `/sur` {#sur}
+## `/sur`
 
 In the [previous lesson on pokes](6-pokes.md), we used a very simple union in the `vase` for incoming pokes:
 
@@ -14,7 +14,7 @@ A real Gall agent is likely to have a more complicated API. The most common appr
 
 With this approach, your agent can simply import the structures file and make use of its types. Additionally, if someone else wants to write an agent that interfaces with yours, they can include your structure file in their own desk to interact with your agent's API in a type-safe way.
 
-#### Example {#example}
+#### Example
 
 Let's look at a practical example. If we were creating a simple To-Do app, our agent might accept a few possible `action`s as pokes: Adding a new task, deleting a task, toggling a task's "done" status, and renaming an existing task. It might also be able to send `update`s out to subscribers when these events occur. If our agent were named `%todo`, it might have the following structure in `/sur/todo.hoon`:
 
@@ -137,7 +137,7 @@ This might seem a little convoluted, but it's a common pattern we do for two rea
 
 You can of course structure your `on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
 
-## `mark` files {#mark-files}
+## `mark` files
 
 So far we've just used a `%noun` mark for pokes - we haven't really delved into what such `mark`s represent, or considered writing custom ones.
 
@@ -156,7 +156,7 @@ A mark file is a door with exactly three arms. The door's sample is the data typ
 
 In the context of Gall agents, you'll likely just use marks for sending and receiving data, and not for actually storing files in Clay. Therefore, it's unlikely you'll need to write custom revision control functions in the `grad` arm. Instead, you can simply delegate `grad` functions to another mark - typically `%noun`. If you want to learn more about writing such `grad` functions, you can refer to the [Marks Guide](../../system/kernel/clay/guides/marks) in the Clay vane documentation, which is much more comprehensive, but it's not necessary for our purposes here.
 
-#### Example {#example}
+#### Example
 
 Here's a very simple mark file for the `action` structure we created in the [previous section](#sur):
 
@@ -198,7 +198,7 @@ This simple mark file isn't all that useful. Typically, you'd add `json` arms to
 
 One further note on marks - while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
 
-## Permissions {#permissions}
+## Permissions
 
 In example agents so far, we haven't bothered to check where events such as pokes are actually coming from - our example agents would accept data from anywhere, including random foreign ships. We'll now have a look at how to handle such permission checks.
 
@@ -220,7 +220,7 @@ If we want to only allow messages from a particular set of ships, we could, for 
 
 There are many ways to handle permissions, it all depends on your particular use case.
 
-## Summary {#summary}
+## Summary
 
 Type definitions:
 
@@ -249,7 +249,7 @@ Permissions:
 - Messages can be restricted to the local ship with `?> =(src.bowl our.bowl)` or to its moons as well with `?> |(=(our src):bowl (moon:title our.bowl src.bowl))`.
 - There are many other ways to handle permissions, it just depends on the needs of the particular agent.
 
-## Exercises {#exercises}
+## Exercises
 
 - Have a quick look at the [tisket documentation](../../language/hoon/reference/rune/tis.md#-tisket).
 - Try writing a mark file for the `update:todo` type, in a similar fashion to the `action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.

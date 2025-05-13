@@ -1,4 +1,4 @@
-# Arvo {#arvo}
+# Arvo
 
 **Arvo** is the Urbit operating system and kernel. Arvo's state is a pure function of its [event log](eventlog.md), and it serves as the Urbit event manager. It contains [vanes](vane.md), which are kernel modules that perform essential system operations.
 
@@ -26,6 +26,6 @@ Vanes and other programs for Arvo are written in [Hoon](hoon.md).
 
 A ship creates its own copy of Arvo via a bootstrap sequence known as a [Pill](pill.md).
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [The Arvo reference](../system/kernel): An in-depth technical guide to Arvo and its vanes.

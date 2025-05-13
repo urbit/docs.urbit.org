@@ -1,8 +1,8 @@
-# Guide to Factory Resets {#guide-to-factory-resets}
+# Guide to Factory Resets
 
 An important concept on the [Ames](https://developers.urbit.org/system/kernel/ames) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _factory reset_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.
 
-## Factory Resets {#factory-resets}
+## Factory Resets
 
 Ships on the Ames network sometimes need to reset their continuity. A factory reset (hereafter just called a _reset_) is when an individual ship announces to the network: "I forgot who I am, let's start over from scratch." That is, it clears its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone on the network has forgotten about it.
 
@@ -33,12 +33,12 @@ If you are transferring a ship to a new Ethereum ownership address you will have
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 
-## Network Resets {#network-resets}
+## Network Resets
 
 Network resets were events where all ships on the network were required to update to a new continuity era. Network resets happened when an Arvo update was released that could not be implemented via an [OTA update](https://developers.urbit.org/glossary/ota-updates). The continuity era is given by an integer in Ames that is incremented when the network resets. Only ships with the same such value are able to communicate with one another. The most recent network reset occurred in December 2020, and we expect it to have been the final one.
 
 If another network reset does occur, we will provide accompanying documentation on what to do to transfer your ship and all of its data to the new era.
 
-## Breaches {#breaches}
+## Breaches
 
 Factory resets used to be called _breaches_, and you may find this terminology still used in some places. This is an identical concept - only the name differs.

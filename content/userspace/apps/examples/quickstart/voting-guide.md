@@ -1,4 +1,4 @@
-# Build a Voting App {#build-a-voting-app}
+# Build a Voting App
 
 In this lightning tutorial, we're going to build a voting app for groups called Tally, which uses [linkable ring signatures](https://en.wikipedia.org/wiki/Ring_signature). If the group host has Tally installed, members may make proposals, and other members may vote yea or nay on them. Linkable ring signatures allow votes to be anonymous - each vote can be verified to have come from a group member and duplicate votes can be detected, but it cannot be determined who voted for what. The finished app will look like this:
 
@@ -15,35 +15,35 @@ The app source is available in the [`docs-examples` repo on Github](https://gith
 
 Let's get started.
 
-## Install binary {#install-binary}
+## Install binary
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step. Otherwise, run one of the commands below, depending on your platform. It will fetch the binary and save it in the current directory.
 
-#### Linux (`x86_64`) {#linux-x86_64}
+#### Linux (`x86_64`)
 
 ```shell
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### Linux (`aarch64`) {#linux-aarch64}
+#### Linux (`aarch64`)
 
 ```shell
 curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
-#### macOS (`x86_64`) {#macos-x86_64}
+#### macOS (`x86_64`)
 
 ```shell
 curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-#### macOS (`aarch64`) {#macos-aarch64}
+#### macOS (`aarch64`)
 
 ```shell
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-## Development ship {#development-ship}
+## Development ship
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, since our chat app will depend on the separate Squad app, we'll do it on a comet instead, so we can easily install that dependency. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
@@ -55,7 +55,7 @@ It might take a few minutes to boot up, and will fetch updates for the default a
 
 Note: we'll use `~sampel_samzod` throughout this guide, but this will be different for you as a comet's ID is randomly generated.
 
-## Dependencies {#dependencies}
+## Dependencies
 
 Once in the Dojo, let's first install the Squad app:
 
@@ -86,7 +86,7 @@ cp -r dev-comet/landscape/lib/mip.hoon tally/lib/
 
 Now we can start working on the app itself.
 
-## Types {#types}
+## Types
 
 The first thing we need to do is define the data types our app will use. We'll define the basic types for polls, votes, poll IDs, etc. We'll also define the types of actions/requests we might send or receive, and the types of updates/events we might send to subscribers or receive from subscriptions.
 
@@ -182,7 +182,7 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 
 </details>
 
-## Ring Library {#ring-library}
+## Ring Library
 
 The `%base` desk of ship includes a `ring.hoon` library for ring signatures. This implementation verifies signatures against a ship's most recent keys, which may cause problems verifying old polls if group members rotate their keys. To solve this, here is a slightly modified version that takes a ship's `life` (key revision) as an additional argument:
 
@@ -190,7 +190,7 @@ The `%base` desk of ship includes a `ring.hoon` library for ring signatures. Thi
 
 Save that file in the `tally/lib/` directory.
 
-## Agent {#agent}
+## Agent
 
 Now we'll write the main app.
 
@@ -213,7 +213,7 @@ The `by-group` structure is `mip`, which is a map of map. The first set of keys 
 
 A Gall agent has ten event handler *arms*. Most agent arms produce the same two things: a list of effects to be emitted, and a new version of the agent itself, typically with an updated state. It thus behaves much like a state machine, performing the function `(events, old-state) => (effects, new-state)`. We'll look at some of our agent's significant arms.
 
-#### `on-init` {#on-init}
+#### `on-init`
 
 This arm is called exactly once, when the agent is first installed. Our
 `on-init` does two things:
@@ -221,7 +221,7 @@ This arm is called exactly once, when the agent is first installed. Our
 - Pass a `task` to Eyre, the web-server vane, to bind the `/tally` URL path so visiting that will load our front-end.
 - Send a subscription request to the `%squad` agent so we can keep up-to-date with the state of our groups.
 
-#### `on-poke` {#on-poke}
+#### `on-poke`
 
 This arm handles *pokes*, which will either contain `action`s or HTTP requests from the web interface. Our `on-poke` tests the mark to see which it is, and then calls either `handle-http` or `handle-action` as the case may be.
 
@@ -231,17 +231,17 @@ For `handle-http`, if it's a GET request, it calls `index.hoon` to produce the w
 
 Updates will also be sent out to our subscribers when the events occur to inform them of the changes.
 
-#### `on-watch` {#on-watch}
+#### `on-watch`
 
 This arm handles subscription requests, which will either come from Eyre when waiting for a response to an HTTP request, or from other ships who want to subscribe to polls for a group we host. In the latter case, we make sure they're a member and then send them out the current state of the polls for that group.
 
-#### `on-agent` {#on-agent}
+#### `on-agent`
 
 This arm handles updates from people we've subscribed to, which will be other groups we're a member of. It additionally handles group updates from the `%squad` agent. In the former case, the events we'll receive will contain `update`s, which we'll process in a similar manner to the `action`s in `on-poke`. All incoming votes will be validated here also. In the latter case, we'll receive `%squad` `upd` updates, such as members joining or leaving groups, and we'll handle them as appropriate.
 
 We differentiate between these two cases by testing the `wire`, which is a message tag we set when we initially subscribed. For `%squad` updates it will be `/squad`, and for the rest it'll be the group ID we've subscribed to.
 
-#### The code {#the-code}
+#### The code
 
 Gall agents live in the `/app` directory of a desk, so save this code in `tally/app/tally.hoon`:
 
@@ -1096,13 +1096,13 @@ Gall agents live in the `/app` directory of a desk, so save this code in `tally/
 
 </details>
 
-## Marks {#marks}
+## Marks
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with inter-mark conversion methods). We need to define a mark for the `action`s we'll send or receive, and the `update`s we'll send to subscribers or receive for subscriptions. These will be very simple since we don't need to do any conversions to things like JSON.
 
 Mark files are stored in the `/mar` directory of a desk. Save the `%tally-action` mark in `tally/mar/tally/action.hoon`, and the `%tally-update` mark in `tally/mar/tally/update.hoon`.
 
-#### `%tally-action` {#tally-action}
+#### `%tally-action`
 
 ```hoon
 :: first we import our /sur/tally.hoon type defs and expose them directly
@@ -1134,7 +1134,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%tally-action
 --
 ```
 
-#### `%tally-update` {#tally-update}
+#### `%tally-update`
 
 ```hoon
 :: first we import our /sur/tally.hoon type defs and expose them directly
@@ -1166,7 +1166,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%tally-action
 --
 ```
 
-## Front-end {#front-end}
+## Front-end
 
 We could have put the front-end code directly in our Gall agent, but it tends to be quite large so it's convenient to have it in a separate file and just import it. Most of this file consists of Sail code, which is the internal HTML representation, similar to other server-side renderings like Clojure's Hiccup.
 
@@ -1809,7 +1809,7 @@ Save the code below in `tally/app/tally/index.hoon`.
 
 </details>
 
-## Desk config {#desk-config}
+## Desk config
 
 With our types, agent, mark files and front-end now complete, the last thing we need are some desk configuration files.
 
@@ -1841,7 +1841,7 @@ Lastly, we need to create a Docket file. Docket is the agent that manages app fr
 ==
 ```
 
-## Put it together {#put-it-together}
+## Put it together
 
 Our app is now complete, so let's try it out. In the Dojo of our comet, we'll create a new desk with the `|new-desk` generator:
 
@@ -1879,7 +1879,7 @@ One thing we can also do is publish the app so others can install it from us. To
 
 Now our friends will be able to install it directly from us with `|install <our ship> %tally` or by searching for `<our ship>` on their ship's homescreen.
 
-## Next steps {#next-steps}
+## Next steps
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](../../../../courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](../../../../courses/app-school) will teach you everything you need to know about app development.
 

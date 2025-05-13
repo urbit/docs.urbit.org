@@ -1,4 +1,4 @@
-# Ames {#ames}
+# Ames
 
 Our networking protocol.
 
@@ -6,7 +6,7 @@ Ames is the name of both our network and the vane that communicates over it. Whe
 
 Ames includes several significant components. Although the actual crypto algorithms are defined in `zuse`, they're used extensively in Ames for encrypting and decrypting packets. Congestion control and routing is handled entirely in Ames. Finally, the actual Ames protocol itself, including how to route incoming packets to the correct vane or app, is defined in Ames.
 
-## Technical Overview {#technical-overview}
+## Technical Overview
 
 This section summarizes the design of Ames. Beyond this section are deeper elaborations on the concepts presented here.
 
@@ -44,15 +44,15 @@ A vane can pass Ames a `%heed` `$task` to request Ames track a peer's responsive
 
 Debug output can be adjusted using `%sift` and `%spew` `$task`'s.
 
-## Packets {#packets}
+## Packets
 
 Ames datagram packets are handled as nouns internally by Arvo but as serial data by Unix. In this section we describe how packets are formed, serialized, and relayed.
 
-### Packet format {#packet-format}
+### Packet format
 
 There is a 32-bit header followed by a variable width body.
 
-#### Header {#header}
+#### Header
 
 The 32-bit header is given by the following data, presented in order:
 
@@ -67,7 +67,7 @@ The 32-bit header is given by the following data, presented in order:
 
 Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
 
-#### Body {#body}
+#### Body
 
 The body is of variable length and consists of the following parts in this order:
 
@@ -86,7 +86,7 @@ The body is of variable length and consists of the following parts in this order
 
 The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../language/hoon/reference/cryptography.md#en).
 
-### Packeting {#packeting}
+### Packeting
 
 When Ames has a message to be sent it must first determine how many packets are required to send the message. To do this, it first `+jam`s the message, producing an atom. Ames checks how large the atom is, and if it is bigger than a kilobyte it will split it into packets whose payloads are 1 kB or less. It then numbers each one - this is message 17, packet 12, this is message 17, packet 13, etc., so that when the receiver receives these packets it knows which number they are. Finally it encrypts each individual packet and enqueues them to be sent along their stated flow.
 
@@ -94,11 +94,11 @@ Network packets aren't always received in order, so this numbering is important 
 
 As each packet in a message is received, Ames decrypts it and stores the message fragment. Once it's received every packet for a message, Ames concatenates the fragments back into a single large atom and uses `+cue` to deserialize that back into the original message noun.
 
-### Acks and Nacks {#acks-and-nacks}
+### Acks and Nacks
 
 In this section we discuss acks and nacks. In Ames, an "ack", short for "acknowledgment", is a small packet attesting that a piece of information (either a packet or a whole message) was received. Ames makes use of acks to maintain synchronization between two communicating parties. Nacks are 'negative acknowledgments' and are used when something goes wrong.
 
-#### Acks {#acks}
+#### Acks
 
 Every message (i.e. a `%plea` or `%boon`) is split up by Ames into some number of _fragments_ that are 1kB in size or less. The fragments are then encrypted and encapsulated into packets and sent along a flow. The message will be considered successfully received once the sender has received the appropriate set of acks in response, defined as follows.
 
@@ -114,7 +114,7 @@ A nack indicates a negative acknowledgement to a `%plea`, meaning that the reque
 
 A nack will be accompanied by a naxplanation, which is a special type of`%boon` that uses its own `bone` (see [flows](#flows)). Ames won't give the vane that requested the initial `%plea` a nack until it also receives the naxplanation, which it will send to the vane as a `%done` gift. Naxplanations may only be acked, never nacked. Furthermore, naxplanations can only ever be sent as a rejection of a `%plea` - the receiver will never both perform a `%plea` and return a naxplanation.
 
-#### (N)ack packets {#nack-packets}
+#### (N)ack packets
 
 A fragment ack's contents (before encryption) are a pure function of the following noun:
 
@@ -136,7 +136,7 @@ A message (n)ack is a different kind of ack that is obtained by encrypting the `
 
 `ok` is a flag that is set to `%.y` for a message ack and `%.n` for a message nack. In the future, `lag` will be used to describe the time it took to process a message, but for now it is always zero.
 
-### Flows {#flows}
+### Flows
 
 Flows are asymmetric communication channels along which two ships send and receive packets, and all Ames packets are part of some flow.
 
@@ -161,7 +161,7 @@ Another reason to separate bones is to avoid race conditions. If `~worwel-sipnum
 
 Naxplanations can potentially be very large, as they often contain things like stack traces or other crash reports. Thus it is undesirable to have them share a bone with `%boon`s and create congestion there. So naxplanations have their own bone, and so do acks to packets that make up a naxplanation, as well as the message-level naxplanation ack.
 
-### Packet relaying and peer discovery {#packet-relaying-and-peer-discovery}
+### Packet relaying and peer discovery
 
 Here we describes how the Ames network relays packets and does peer discovery. We ignore all details about UDP, which occurs at a lower layer than Ames.
 
@@ -199,13 +199,13 @@ In this scenario, of course, the message is so short that a single packet would 
 
 But if the message were not short enough to be contained in a single packet, each packet would need to be decrypted and `+cue`d to obtain the message fragments that are then put together and `+cue`d again to obtain the complete message.
 
-## The Serf and the King {#the-serf-and-the-king}
+## The Serf and the King
 
 Urbit's functionality is split between the two binaries `urbit-worker` (sometimes called the Serf) and `urbit-king` (sometimes called the King). This division of labor is currently not well-documented outside of the [Vere documents](../../runtime), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and then informs the King of the new state. The King manages snapshots of the Arvo state and handles I/O with Unix, among other things. The Serf only ever talks to the King, while the King talks with both the Serf and Unix.
 
-### Ames I/O submodule {#ames-io-submodule}
+### Ames I/O submodule
 
 The King has several submodules, one of them being an Ames I/O submodule. This submodule is responsible for wrapping outgoing Ames packets as UDP packets, and unwrapping incoming UDP packets into Ames packets and forwarding them to the worker. It also maintains an incoming packet queue.
 

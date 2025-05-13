@@ -1,4 +1,4 @@
-# Basic Types {#basic-types}
+# Basic Types
 
 A type is usually understood to be a set of values.  Hoon values are all nouns, so a Hoon type is a set of nouns.
 
@@ -8,7 +8,7 @@ Hoon's type system conducts various type-checks at compile time in order to ensu
 
 In this document we discuss the recursive data structure Hoon uses for type inference.  Because the Hoon compiler is written in Hoon this structure is likewise defined in Hoon.
 
-## `$type` {#type}
+## `$type`
 
 Below is a simplified version the `+$  type` arm, which defines the data structure Hoon uses to keep track of types.  But this data structure is used for more than simply type inference.  It also handles the resolution of names, including both faces and arm names.  (See Chapter 1 of the Hoon tutorial for an introduction to name resolution.)
 
@@ -31,31 +31,31 @@ As noted, this is a simplified version of `type`.  We undo and explain the simpl
 
 Effectively this structure defines a set of nouns that Hoon uses to keep track track of (1) type information, and (2) name resolution information.  This set of nouns is recursively defined.
 
-### `?(%noun %void)` {#noun-void}
+### `?(%noun %void)`
 
 `%noun` is the label for a noun about which nothing else is known.  Every piece of Hoon data is a noun, so everything nests under `%noun`.
 
 `%void` is the label for the empty set.
 
-### `[%cell p=type q=type]` {#cell-ptype-qtype}
+### `[%cell p=type q=type]`
 
 `[%cell p=type q=type]` is for cells.  The `type` of the head is labelled `p` and the tail `type` is `q`.
 
-### `[%fork p=(set type)]` {#fork-pset-type}
+### `[%fork p=(set type)]`
 
 `[%fork p=(set type)]` is for the union of all types in the set `p`.  That is, when the type of an expression is known to be a `%fork`, the expression must evaluate as one of the types in `p`.
 
 Hoon uses branching (usually with conditional runes of the `?` family) for type inference in order to rule out which of the types in `p` can apply.
 
-### `[%hold p=type q=hoon]` {#hold-ptype-qhoon}
+### `[%hold p=type q=hoon]`
 
 A `%hold` type, with type `p` and hoon `q`, is a lazy reference to the type of `(mint p q)`.  In English, it means: "the type of the product when we compile Hoon expression `q` against a subject with type `p`."
 
-### `[%face p=term q=type]` {#face-pterm-qtype}
+### `[%face p=term q=type]`
 
 A `[%face p=term q=type]` wraps the label `p` around the type `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen, first character must be a lowercase letter.
 
-### `[%atom p=term q=(unit atom))]` {#atom-pterm-qunit-atom}
+### `[%atom p=term q=(unit atom))]`
 
 `%atom` is for an atom, with two twists.  `q` is a `unit`, Hoon's equivalent of a nullable pointer or a Haskell `Maybe`.  If `q` is `~`, null, the type is **warm**; any atom is in the type. If `q` is `[~ x]`, where `x` is any atom, the type is **cold**; its only legal value is the constant `x`.
 
@@ -98,7 +98,7 @@ You can make up your own auras and are encouraged to do so, but here are some co
 
 Auras are truly soft; you can turn any aura into any other, statically, by casting through the empty aura `@`.  Hoon is not dependently typed and can't statically enforce data constraints (for example, it can't enforce that a `@tas` is really a symbol).
 
-### `[%core p=type q=(map term hoon)]` {#core-ptype-qmap-term-hoon}
+### `[%core p=type q=(map term hoon)]`
 
 `%core` is for a code-data cell.  The data (or **payload**) is the tail; the code (or **battery**) is the head.  `p`, a type, is the type of the payload.  `q` is a mapping of arm names and Hoon expressions.  It is the source code for the core battery.
 

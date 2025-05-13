@@ -1,4 +1,4 @@
-# Guide {#guide}
+# Guide
 
 In this guide we'll write a pair of simple apps to demonstrate how Lick works. One will be a Gall agent called [`licker.hoon`](#lickerhoon), and the other a Python script called `licker.py`.
 
@@ -6,7 +6,7 @@ The Gall agent will create a socket through Lick and the Python script will conn
 
 First, we'll look at these two files.
 
-## `licker.hoon` {#lickerhoon}
+## `licker.hoon`
 
 <details>
 <summary>licker.hoon</summary>
@@ -58,7 +58,7 @@ First, we'll look at these two files.
 
 Our Gall agent is extremely simple and has no state. It only uses three agent arms: `++on-init`, `++on-poke` and `++on-arvo`.
 
-### `++on-init` {#on-init}
+### `++on-init`
 
 ```hoon
 ++  on-init
@@ -69,7 +69,7 @@ Our Gall agent is extremely simple and has no state. It only uses three agent ar
 
 All `++on-init` does is pass Lick a [`%spin`](../reference/tasks.md#spin) task to create a new `licker.sock` socket.
 
-### `++on-poke` {#on-poke}
+### `++on-poke`
 
 ```hoon
 ++  on-poke
@@ -86,7 +86,7 @@ When `++on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, i
 > :licker %ping
 ```
 
-### `++on-arvo` {#on-arvo}
+### `++on-arvo`
 
 ```hoon
 ++  on-arvo
@@ -112,7 +112,7 @@ In all cases we just `++slog` a message to the terminal.
 
 ---
 
-## `licker.py` {#lickerpy}
+## `licker.py`
 
 <details>
 <summary>licker.py</summary>
@@ -252,7 +252,7 @@ This is the main loop of our script. It listens for a message from the socket, c
 
 ---
 
-## Setup {#setup}
+## Setup
 
 Create the folders for the project:
 
@@ -335,7 +335,7 @@ In the Dojo, commit the files and install the desk:
 
 ---
 
-## Try it out {#try-it-out}
+## Try it out
 
 First, run the Python script:
 

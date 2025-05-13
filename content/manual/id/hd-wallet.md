@@ -1,4 +1,4 @@
-# HD Wallet (Master Ticket) {#hd-wallet-master-ticket}
+# HD Wallet (Master Ticket)
 
 This document explains what the [Urbit HD wallet](https://developers.urbit.org/glossary/hdwallet) is and how to use it.
 
@@ -48,7 +48,7 @@ Nobody can force you to follow good security practices. At most, they can give y
 
 Below we list some good practices for storing keys, strictest first. Higher-value assets should be secured with stricter measures.
 
-#### Security Tier 1: Cold storage {#security-tier-1-cold-storage}
+#### Security Tier 1: Cold storage
 
 Cold storage refers to any method in which secrets are stored in a way that is not accessible to any network. Cold-stored keys should only ever be generated offline.
 
@@ -66,13 +66,13 @@ Places to store your cold-storage media:
 
 It’s a good idea to store your keys redundantly; for example, on both a USB stick and a piece of paper in the safe, in case one of those methods fails. If you deem a key to be valuable enough, you can **shard** it into thirds (or other splits) and store each third in secure, geographically distributed locations. Urbit HD wallets for galaxies automatically provide a 3-way sharded master ticket.
 
-#### Security Tier 2: Hardware wallet or paper wallet {#security-tier-2-hardware-wallet-or-paper-wallet}
+#### Security Tier 2: Hardware wallet or paper wallet
 
 A hardware wallet is a digital storage device that’s purpose-built to store cryptographic secrets. They are unaffected by typical key-stealing malware and have built-in security mechanisms that other digital devices lack. Do your research and make sure that you are buying an authentic device manufactured by trustworthy, technically competent security experts with a good reputation. Trezor and Ledger are two popular brands of hardware wallets.
 
 A "paper wallet" is a physical medium printed or engraved with a secret. These are resistent to network attacks, but the downside is that the secret must be entered into a computer by hand, exposing the user to attacks from malware and eavesdroppers.
 
-#### Security Tier 3: On your computer {#security-tier-3-on-your-computer}
+#### Security Tier 3: On your computer
 
 This tier includes any method where secrets are stored on an everyday computing platform. Some such methods are:
 

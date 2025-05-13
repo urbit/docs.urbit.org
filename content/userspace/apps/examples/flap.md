@@ -1,4 +1,4 @@
-# Serving a JS Game {#serving-a-js-game}
+# Serving a JS Game
 
 In this tutorial, we will take an off-the-shelf JavaScript game which runs in the browser and connect it to an Urbit back-end.  This page assumes that you have completed some version of Hoon School and App School, whether the [live courses](../../../courses) or the [written docs](../../../courses/hoon-school).  Our goal is to show you one way of directly serving client code from an Urbit ship as server.
 
@@ -16,7 +16,7 @@ We will conceive of this app's communications structure as consisting of a _vert
 ![](https://media.urbit.org/developers/vert-horz.svg)
 
 
-## Desk Setup {#desk-setup}
+##  Desk Setup
 
 As with all Urbit development, you should set up a development ship.  In this case, it will be more convenient to have this ship be on the live network:  a comet or a moon.  Below, we refer to this as `comet`.
 
@@ -52,23 +52,23 @@ echo "[%zuse 417]" > comet/flap/sys.kelvin
 At this point, we need to take stock of what kind of file marks and libraries we need to make available:  `kelvin`, `docket-0`, and so forth.  While there are marks for `js` and `png`, there is no `wav` so we'll handle that directly.
 
 ```sh
-# Copy necessary %base files to %flap {#copy-necessary-base-files-to-flap}
+# Copy necessary %base files to %flap
 cp -r comet/base/lib comet/flap
 cp -r comet/base/sur comet/flap
 cp -r comet/base/mar comet/flap
 
-# Copy necessary %landscape files to %flap {#copy-necessary-landscape-files-to-flap}
+# Copy necessary %landscape files to %flap
 yes | cp -r comet/landscape/lib comet/flap
 yes | cp -r comet/landscape/sur comet/flap
 yes | cp -r comet/landscape/mar comet/flap
 
-# Create empty directories for planned files {#create-empty-directories-for-planned-files}
+# Create empty directories for planned files
 mkdir -p comet/flap/app/flap
 mkdir -p comet/flap/mar/flap
 
-# Include the Schooner library by Quartus/Dalten for HTTP handling. {#include-the-schooner-library-by-quartusdalten-for-http-handling}
+# Include the Schooner library by Quartus/Dalten for HTTP handling.
 #git clone https://github.com/dalten-collective/schooner.git
-# We actually should instead pull a slightly modified version of `schooner.hoon` pending some upstream changes {#we-actually-should-instead-pull-a-slightly-modified-version-of-schoonerhoon-pending-some-upstream-changes}
+# We actually should instead pull a slightly modified version of `schooner.hoon` pending some upstream changes
 git clone https://github.com/hoon-school/schooner.git
 cp schooner/lib/schooner.hoon comet/flap/lib
 ```
@@ -110,7 +110,7 @@ At this point, your overall directory structure (not showing most of the files) 
 `|commit %flap` to include all of these files.
 
 
-## Front End {#front-end}
+##  Front End
 
 If you open `index.html` in `Original-Flappy-bird-JavaScript/` in a web browser, the game should work interactively.  Only mouse clicks are recorded as events.  The only termination condition is death.
 
@@ -145,7 +145,7 @@ and `|commit %flap`.
 
 The `index.html` file will still work if you open it in the browser directly, but it doesn't have any connection to Urbit yet.  Clay doesn't know where to build everything and hook it up, so at a minimum we have to load and display the front-end using `/app/flap.hoon`.
 
-## Data Model {#data-model}
+##  Data Model
 
 Different parts of the system need to converge on their shared vision of the world.  Thus, `/sur` and `/mar`.  We aren't interested in calculating the gameplay mechanics, only in the scores.  So we expect to be able to track our state including:
 
@@ -234,7 +234,7 @@ Updates are sent between Urbit peers.
 ```
 
 
-## Back End {#back-end}
+##  Back End
 
 The main app implements the logic for exposing and tracking data.
 
@@ -495,7 +495,7 @@ Then `|install our %flap` to install the app.
 
 Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game canvas is merely an empty box.  What can we do to fix this?
 
-### Serving Correctly {#serving-correctly}
+### Serving Correctly
 
 If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source or serve the resource from Urbit.
 
@@ -633,11 +633,11 @@ This version of the app should run in your browser correctly once you `|commit %
 > ```
 
 
-## Communications Protocol {#communications-protocol}
+##  Communications Protocol
 
-### Changes to Back End {#changes-to-back-end}
+### Changes to Back End
 
-#### Urbit as Database {#urbit-as-database}
+#### Urbit as Database
 
 Our app's state should retain a list of _all_ high scores it receives.  To that end, we will transition from a single high-score state to using a `(map fren score)`.
 
@@ -679,14 +679,14 @@ We will include an upgrade path for the old agent:
 
 These values will be changed when peer state changes are received using `%pals`.
 
-#### Adding Friends {#adding-friends}
+#### Adding Friends
 
 `%pals` is a very simple contact manager which recognizes outgoing requests, incoming requests, and mutually recognized peers.  Let's integrate knowledge of other friends (and thus the ability to maintain a leaderboard of our friends).  We will base our leaderboard on outgoing requests for simplicity.
 
 You should copy `%pals` support files over to our working desk.
 
 ```sh
-# Include the %pals tooling by ~paldev. {#include-the-pals-tooling-by-paldev}
+# Include the %pals tooling by ~paldev.
 git clone https://github.com/Fang-/suite.git
 cp suite/lib/pals.hoon comet/flap/lib
 cp suite/sur/pals.hoon comet/flap/sur
@@ -1056,7 +1056,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
 
 </details>
 
-### Changes to Front End {#changes-to-front-end}
+### Changes to Front End
 
 Now that the a leaderboard is supported, we need a way to display it alongside the browser game.  To wit, we will add some `async` functions to retrieve key bits of information from the ship and display it in a table.
 
@@ -1614,7 +1614,7 @@ At this point, if we refresh the page we will see our `%pals` data visible in th
 :treaty|publish %flap
 ```
 
-### Beautification {#beautification}
+### Beautification
 
 There's a final set of changes we can make to the styling which makes this a much prettier app while still keeping these simple:
 
@@ -2168,7 +2168,7 @@ loop();
 </details>
 
 
-## What's Next? {#whats-next}
+##  What's Next?
 
 After completing this tutorial, you should think about how to apply what you've seen to other applications.  Some things to think about:
 

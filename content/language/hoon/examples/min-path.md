@@ -1,6 +1,6 @@
-# Minimum Path Sum {#minimum-path-sum}
+# Minimum Path Sum
 
-## Challenge: Minimum Path Sum {#challenge-minimum-path-sum}
+## Challenge: Minimum Path Sum
 
 You are given a 2D grid of positive whole numbers, represented as a `(list (list @ud))` You start in the top left corner of the grid, and your goal is to walk to the botttom right corner by taking steps either down or to the right. Your goal is to find the path that minimizes the sum of the numbers on the path.
 
@@ -20,11 +20,11 @@ Here you can see the above grid represented visually, and the minimum path total
 4  2  1
 ```
 
-## Solutions {#solutions}
+##  Solutions
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2024.8.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1 {#solution-1}
+### Solution #1
 
 _The speed winner, and a very effective and clear solution by ~diblud-ricbet._
 
@@ -123,7 +123,7 @@ column-index  (sub column-index 1)
 
 
 
-### Solution #2 {#solution-2}
+### Solution #2
 _Another good solution by ~norweg-rivlex._
 
 ```hoon
@@ -216,7 +216,7 @@ _Another good solution by ~norweg-rivlex._
   $(frontier (add-frontier-pts t.frontier pts-to-add))
 ```
 
-## Unit Tests {#unit-tests}
+##  Unit Tests
 
 Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../../userspace/apps/guides/unit-tests.md) section.
 

@@ -1,12 +1,12 @@
-# Azimuth Data Flow {#azimuth-data-flow}
+# Azimuth Data Flow
 
 This document summarizes the various components involved with Azimuth and how they communicate with each other. This also constitutes an explanation for how Urbit implements the data flow of naive rollups.
 
-## Bridge {#bridge}
+## Bridge
 
 The primary way in which users interact with Azimuth is via [Bridge](https://bridge.urbit.org). Bridge is responsible for collecting transactions from users, signing them, and forwarding them to a roller via an HTTP API.
 
-## Azimuth {#azimuth}
+## Azimuth
 
 Azimuth was originally defined as a set of smart contracts on Ethereum that defines the [state](../reference/azimuth-eth.md) and [business logic](../reference/ecliptic.md) of the PKI for layer 1. With the introduction of naive rollups, this has also come to include the set of components used for dealing with the PKI within Urbit, as now the complete PKI state is stored offchain (though this state is derived entirely from on-chain data). The following sections outline what each component is responsible for and how it communicates with the others.
 
@@ -20,7 +20,7 @@ The Gall agents involved with Azimuth are summarized as follows:
 
 The transaction processing library is [`/lib/naive.hoon`](#naive).
 
-## Gall agents {#gall-agents}
+## Gall agents
 
 ### `%azimuth` {#azimuth}
 
@@ -105,7 +105,7 @@ The relationship between the roller and other agents is outlined in the followin
 
 This app is not responsible for communicating with Bridge via HTTP. Instead, that is handled by `%roller-rpc`. The scries are also communicated to Bridge via `%roller-rpc`.
 
-### `%roller-rpc` {#roller-rpc}
+### `%roller-rpc`
 
 `%roller-rpc`, stored at `/app/roller-rpc.hoon`, is a very simple Gall app responsible for receiving HTTP RPC-API calls, typically sent from other Urbit ID users via Bridge. It then translates these API calls from JSON to a format understood by `%roller` and forwards them to `%roller`. This app does not keep any state - its only purpose is to act as an intermediary between Bridge and `%roller`. See [here](../reference/layer2-api.md) for more information on the JSON RPC-API.
 

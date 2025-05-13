@@ -1,4 +1,4 @@
-# Reference {#reference}
+# Reference
 
 Reference information for Hoon language features.
 

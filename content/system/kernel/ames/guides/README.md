@@ -1,5 +1,5 @@
-# Guides {#guides}
+# Guides
 
-### [Cryptography](cryptography.md) {#cryptographycryptographymd}
+### [Cryptography](cryptography.md)
 
 A technical overview of how Ames implements cryptography.

@@ -1,4 +1,4 @@
-# Auth Server {#auth-server}
+# Auth Server
 
 Auth Server and Auth are a pair of Urbit apps that facilitate Urbit authentication for external web apps. Users of the site `example.com` can login to their `example.com` accounts with their Urbit ships using the Auth app, assuming the developers of `example.com` have integrated their site with the Auth Server app.
 
@@ -16,11 +16,11 @@ These docs primarily deal with the API of the Auth Server app, but first we'll q
 8. Auth Server notifies `example.com` that the request was authorized.
 9. `example.com` logs the user in.
 
-## Auth Server Basics {#auth-server-basics}
+## Auth Server Basics
 
 Auth Server is intended to be used via an Eyre airlock. The most common is the `@urbit/http-api` NPM package, which is documented [here](../js-libs/http-api-guide.md). There are a few airlocks for other languages too, some of which are listed [here](https://github.com/urbit/awesome-urbit#http-apis-airlock). Eyre's interfaces extend Urbit's [poke](../../glossary/poke.md), [scry](../../system/kernel/arvo/guides/scry.md) and [subscription](../../system/kernel/arvo/guides/subscriptions.md) mechanics to HTTP clients. You can read more about Eyre [here](../../system/kernel/eyre/guides/guide.md).
 
-### Actions {#actions}
+### Actions
 
 There are two actions you can poke into Auth Server: A [`new`](types.md#new) action to initiate a new request, and a [`cancel`](types.md#cancel) action to cancel an existing request. The `new` action looks something like this:
 
@@ -53,7 +53,7 @@ The fields in the [`request`](types.md#request) are as follows:
 - `expire`: This is the time the request should expire, in milliseconds since the Unix epoch. You can have it expire whenever you want, but setting it unreasonably soon (like seconds) may mean the user can't get to it in time, especially if there's network latency. At least a few minutes from now is a good idea.
 - `time`: This is the timestamp of the request in milliseconds since the Unix epoch. You would typically just set it to now.
 
-### Updates {#updates}
+### Updates
 
 There are two main types of updates you'll receive from Auth Server: an [`entry`](types.md#entry) update and a [`status`](types.md#status) update. An `entry` update looks like this:
 
@@ -92,13 +92,13 @@ Assuming it was initally `"sent"`, you'll get an update with a `"got"` [`result`
 
 The normal flow is `"sent"` -> `"got"` -> `"yes"`/`"no"`, with `"expire"`,`"error"` and `"abort"` potentially terminating the flow at any point. The `"sent"` and `"got"` results are transitional, and the rest are terminal.
 
-### Subscriptions {#subscriptions}
+### Subscriptions
 
 Auth Server has a number of different subscription paths, but you'd likely only use one or two. There are two categories of subscription paths: [`/new/...`](subs.md#new) and [`/init/...`](subs.md#new). The `/new` paths will start giving you any updates that occur after you subscribe. The `/init` paths will do the same, but they'll also give you initial state. For each of these, there is a path to receive all updates, and there are also sub-paths to filter by [`turf`](types.md#turf) (domain), [`ship`](types.md#ship) and [`id`](types.md#id). Additionally, for each sub-path, you can specify a "since" time, and only receive updates and initial state for requests with `time`s *later* than the one you specify.
 
 If you're only handling a single site in Auth Server, you can just subscribe to the `/init/all` path, retreiving initial state and then further updates as they occur. If your site loses connection to Auth Server, you can just resubscribe to `/init/all` to resync state, or, if you don't want all historical state, you could subscribe to `/init/all/since/1679787461389 ` where the `time` specified is the oldest time you think you could reasonably care about.
 
-### Attestations {#attestations}
+### Attestations
 
 As described at the beginning, Auth Client checks `<domain>/.well-known/appspecific/org.urbit.auth.json` to verify a request actually comes from the domain it claims. That `.json` file must contain a [`manifest`](types.md#manifest), which is just an array of [`proof`](types.md#proof)s. A `proof` looks like:
 
@@ -144,7 +144,7 @@ Auth Client cannot follow relative redirect URLs - redirects MUST be absolute UR
 
 {% endhint %}
 
-## Additional note {#additional-note}
+## Additional note
 
 The manifest generator along with the `/proof/[turf]` scry path and `turf` subscription paths expect a domain with only lowercase `a-z`, `0-9`, `-` and `.` separators. If your domain contains other characters, you'll have to use the altenative `wood` paths with `++wood` encoding.
 

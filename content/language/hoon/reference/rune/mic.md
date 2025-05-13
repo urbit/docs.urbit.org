@@ -1,12 +1,12 @@
-# ; mic · Make {#-mic-make}
+# ; mic · Make
 
 Miscellaneous useful macros.
 
-## `;:` "miccol" {#-miccol}
+## `;:` "miccol"
 
 Call a binary function as an n-ary function.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One fixed argument, then a variable number of arguments.
 
@@ -42,13 +42,13 @@ One fixed argument, then a variable number of arguments.
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%mccl p=hoon q=(list hoon)]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
 
@@ -64,7 +64,7 @@ Irregular form:
 (p a (p b (p c ...)))
 ```
 
-#### Desugaring {#desugaring}
+#### Desugaring
 
 ```hoon
 |-
@@ -75,7 +75,7 @@ Irregular form:
 (p i.q $(q t.q))
 ```
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > (add 3 (add 4 5))
@@ -93,11 +93,11 @@ Irregular form:
 
 ---
 
-## `;<` "micgal" {#-micgal}
+## `;<` "micgal"
 
 Monadic do notation.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Four arguments, fixed.
 
@@ -105,17 +105,17 @@ Four arguments, fixed.
 |--------------------------------|-----------------------------|----------------|
 | `;<  mold  bind  expr1  expr2` | `;<(mold bind expr1 expr2)` | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%mcgl p=spec q=hoon r=hoon s=hoon]
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `bind` which takes a mold `mold` and produces an implementation of monadic bind.
 
-#### Desugaring {#desugaring}
+#### Desugaring
 
 ```hoon
 %+  (bind mold)
@@ -124,7 +124,7 @@ A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided
 expr2
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 `;<` is much like Haskell `do` notation. You have a sequence of events you'd like to run such that each past the first depends on the output of the previous one. The output of the previous one may not be of the correct type to use as an input to the next one, and so an adapter such as `+biff` is needed.
 
@@ -134,7 +134,7 @@ expr2
 
 We remark that you can switch binds in the middle of a sequence of `;<`.
 
-#### Examples {#examples}
+#### Examples
 
 [`+biff`](../stdlib/2a.md#biff) is the unit monad's implementation of monadic bind. That is to say, it takes a unit `a` and a gate `b` that accepts a noun that produces a unit, and extracts the value from `a` to pass as a sample to `b`.
 
@@ -165,11 +165,11 @@ Here we see the result of chaining them together:
 
 ---
 
-## `;+` "miclus" {#-miclus}
+## `;+` "miclus"
 
 make a single XML node (Sail)
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -179,11 +179,11 @@ One argument, fixed.
 
 `p` is a Hoon expression that produces a `manx`.
 
-#### Produces {#produces}
+#### Produces
 
 A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx). A `manx` is a noun that represents a single XML node.
 
-#### Discussion {#discussion}
+#### Discussion
 
 tl;dr -- `;+` converts a `manx` to a `marl`.
 
@@ -200,7 +200,7 @@ Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a singl
 
 One interesting thing about Sail is that it allows you to use complex Hoon expressions to choose from among several nodes to render. The `;+` rune can take such a complex expression.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > ^-  marl
@@ -226,11 +226,11 @@ One interesting thing about Sail is that it allows you to use complex Hoon expre
 
 ---
 
-## `;;` "micmic" {#-micmic}
+## `;;` "micmic"
 
 Mold noun.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments, fixed.
 
@@ -261,19 +261,19 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%mcmc p=spec q=hoon]
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 In an old version of Hoon, molds would return their bunt value when molding failed. Micmic was useful because it would make them crash rather than bunt on failure. In current Hoon, molds always crash on failure, so micmic is strictly unnecessary. However, it's still sometimes used for stylistic reasons, to clearly indicate "I'm molding" rather than "I'm merely calling a function".
 
 It can also sometimes be useful to force structure-mode parsing of cell molds when molding, rather than using buccol's irregular form.
 
-#### Examples {#examples}
+#### Examples
 
 Basic micmic molding (same as normal molding):
 
@@ -298,11 +298,11 @@ Using micmic instead:
 
 ---
 
-## `;/` "micfas" {#-micfas}
+## `;/` "micfas"
 
 Tape as XML element.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -310,19 +310,19 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `;/  p`   | `;/(p)`   | None           |
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%mcnt p=hoon]
 ```
 
-#### Expands to {#expands-to}
+#### Expands to
 
 ```hoon
 ~[%$ ~[%$ 'p']]
 ```
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > ;/  "foo"
@@ -331,11 +331,11 @@ One argument, fixed.
 
 ---
 
-## `;~` "micsig" {#-micsig}
+## `;~` "micsig"
 
 Glue a pipeline together with a product-sample adapter.
 
-#### Syntax {#syntax}
+#### Syntax
 
 One fixed argument, then a variable number of arguments.
 
@@ -369,17 +369,17 @@ None
 
 {% endtabs %}
 
-#### AST {#ast}
+#### AST
 
 ```hoon
 [%mcsg p=hoon q=(list hoon)]
 ```
 
-#### Produces {#produces}
+#### Produces
 
 The gates in `q` are composed together using the gate `p` as an intermediate function, which transforms a `q` product and a `q` gate into a `q` sample.
 
-#### Expands to {#expands-to}
+#### Expands to
 
 **Note: these are structurally correct, but elide some type-system complexity.**
 
@@ -401,7 +401,7 @@ The gates in `q` are composed together using the gate `p` as an intermediate fun
 |.  (a (c arg) d(+6 arg))
 ```
 
-#### Desugaring {#desugaring}
+#### Desugaring
 
 ```hoon
 ?~  q  !!
@@ -413,7 +413,7 @@ The gates in `q` are composed together using the gate `p` as an intermediate fun
 |.  (p (b c) a(,.+6 c))
 ```
 
-#### Discussion {#discussion}
+#### Discussion
 
 Apparently `;~` is a "Kleisli arrow." It's also a close cousin of the infamous "monad." Don't let that bother you. Hoon doesn't know anything about category theory, so you don't need to either.
 
@@ -421,7 +421,7 @@ Apparently `;~` is a "Kleisli arrow." It's also a close cousin of the infamous "
 
 This can be thought of as user-defined function composition; instead of simply nesting the gates in `q`, each is passed individually to `p` with the product of the previous gate, allowing arbitrary filtering, transformation, or conditional application.
 
-#### Examples {#examples}
+#### Examples
 
 A simple "parser." `trip` converts a `cord` (atomic string) to a `tape` (linked string).
 
@@ -469,11 +469,11 @@ A more complicated example:
 
 ---
 
-## `;*` "mictar" {#-mictar}
+## `;*` "mictar"
 
 make a list of XML nodes from complex Hoon expression (Sail)
 
-#### Syntax {#syntax}
+#### Syntax
 
 One argument, fixed.
 
@@ -483,11 +483,11 @@ One argument, fixed.
 
 `p` is a Hoon expression that produces a `marl`.
 
-#### Produces {#produces}
+#### Produces
 
 A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx). A `manx` is a noun that represents a single XML node.
 
-#### Discussion {#discussion}
+#### Discussion
 
 `;*` is a Sail rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
@@ -495,7 +495,7 @@ If you need a complex Hoon expression to produce a `marl`, use the `;*` rune. Of
 
 (See also [`;=`](#-mictis).)
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > ;*  ?:  (gth 3 2)
@@ -523,11 +523,11 @@ If you need a complex Hoon expression to produce a `marl`, use the `;*` rune. Of
 
 ---
 
-## `;=` "mictis" {#-mictis}
+## `;=` "mictis"
 
 make a list of XML nodes (Sail)
 
-#### Syntax {#syntax}
+#### Syntax
 
 A variable number of arguments.
 
@@ -563,11 +563,11 @@ None
 
 `p1`-`pn` are Hoon expressions, each of which poduces a `manx`.
 
-#### Produces {#produces}
+#### Produces
 
 A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx). A `manx` is a noun that represents a single XML node.
 
-#### Discussion {#discussion}
+#### Discussion
 
 `;=` is a [Sail](../../guides/sail.md) rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
@@ -582,7 +582,7 @@ Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a serie
 
 (See also [`;*`](#-mictar).)
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > ;=  ;p: This is the first node.

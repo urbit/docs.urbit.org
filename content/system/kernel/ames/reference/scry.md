@@ -1,34 +1,34 @@
-# Scry Reference {#scry-reference}
+# Scry Reference
 
 Here are the scry endpoints of Ames. All of them take a `%x` `care` and require the `desk` in the path prefix be empty, so the general format is `.^([type] %ax /=//=/[some-path])`.
 
-## /protocol/version {#protocolversion}
+## /protocol/version
 
 A scry with a `%x` `care` and a `path` of `/protocol/version` will return the current Ames protocol version as a `@`.
 
-#### Example {#example}
+#### Example
 
 ```
 > .^(@ %ax /=//=/protocol/version)
 0
 ```
 
-## /peers {#peers}
+## /peers
 
 A scry with a `%x` `care` and a `path` of `/peers` will return all ships that Ames is aware of. The type returned is a `(map ship ?(%alien %known))`, where `%known` means we have PKI data for them and `%alien` means we don't.
 
-#### Example {#example}
+#### Example
 
 ```
 > .^((map ship ?(%alien %known)) %ax /=//=/peers)
 {[p=~wet q=%known] [p=~nes q=%known]}
 ```
 
-## /peers/[ship] {#peersship}
+## /peers/[ship]
 
 A scry with a `%x` `care` and a `path` of `/peers/[ship]` where `[ship]` is a ship name like `~dopzod` will return everything Ames knows about that ship, or crash if the ship is unknown to Ames. The type returned is a [$ship-state](data-types.md#ship-state).
 
-#### Example {#example}
+#### Example
 
 ```
 > .^(ship-state:ames %ax /=//=/peers/~nes)
@@ -67,11 +67,11 @@ A scry with a `%x` `care` and a `path` of `/peers/[ship]` where `[ship]` is a sh
 ]
 ```
 
-## /peers/[ship]/forward-lane {#peersshipforward-lane}
+## /peers/[ship]/forward-lane
 
 A scry with a `%x` `care` and a `path` of `/peers/[ship]/forward-lane` where `[ship]` is a ship name like `~dopzod` will return outbound routes to the given ship, or `~` if there are none. The type returned is a `(list lane:ames)`, see [$lane](data-types.md#lane) for type details.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > .^((list lane:ames) %ax /=//=/peers/~nes/forward-lane)
@@ -83,22 +83,22 @@ A scry with a `%x` `care` and a `path` of `/peers/[ship]/forward-lane` where `[s
 ~
 ```
 
-## /bones/[ship] {#bonesship}
+## /bones/[ship]
 
 A scry with a `%x` `care` and a `path` of `/bones/[ship]` where `[ship]` is a ship name like `~dopzod` will return inbound and outbound [$bone](data-types.md#bone)s, which index message flows. If the ship in question is unknown to Ames, the scry will fail. The type returned is `[snd=(set bone) rcv=(set bone)]`.
 
-#### Example {#example}
+#### Example
 
 ```
 > .^([snd=(set bone) rcv=(set bone)] %ax /=//=/bones/~nes)
 [snd={0} rcv={}]
 ```
 
-## /snd-bones/[ship]/[bone] {#snd-bonesshipbone}
+## /snd-bones/[ship]/[bone]
 
 A scry with a `%x` `care` and a `path` of `/snd-bones/[ship]/[bone]`, where `[ship]` is a ship name like `~dopzod` and `[bone]` is an outbound [$bone](data-types.md#bone), will return message flow details for that `bone`. If the ship in question is unknown to Ames or the `bone` does not exist, the scry will fail. The type returned is a [$message-pump-state](data-types.md#message-pump-state) wrapped in a `vase`.
 
-#### Example {#example}
+#### Example
 
 ```
 > !<  message-pump-state:ames  .^(vase %ax /=//=/snd-bones/~nes/0)
@@ -121,11 +121,11 @@ A scry with a `%x` `care` and a `path` of `/snd-bones/[ship]/[bone]`, where `[sh
 ]
 ```
 
-## /snubbed {#snubbed}
+## /snubbed
 
 A scry with a `%x` `care` and a `path` of `/snubbed` will return Ames' current ship whitelist/blacklist. The type is a `[form=?(%allow %deny) ships=(list ship)]`, where `form` says whether it's a whitelist or blacklist and `ships` are the ships on that list.
 
-#### Example {#example}
+#### Example
 
 
 ```

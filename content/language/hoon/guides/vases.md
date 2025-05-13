@@ -1,6 +1,6 @@
-# Vases {#vases}
+# Vases
 
-## Overview {#overview}
+## Overview
 
 A [`$vase`](../reference/stdlib/4o.md#vase) is a pair of [`$type`](../reference/stdlib/4o.md#type) and [`$noun`](../reference/stdlib/2q.md#noun), where the type describes the noun. They're used all over Urbit to represent data whose type we can't know ahead of time. This often comes up when being asked to compile and run other Hoon code. It's also used to store data that could be any type, but where we want to know the type, so we tag the value with its type to form a vase.
 
@@ -10,7 +10,7 @@ A [`$vase`](../reference/stdlib/4o.md#vase) is a pair of [`$type`](../reference/
 - The [Dojo](../../../glossary/dojo.md) shell uses vases to compile and run shell expressions and to run generators.
 - The [Spider](../../../glossary/spider.md) agent uses vases to run [threads](../../../glossary/thread.md) (scripts written in an IO monad).
 
-## Types and Molds {#types-and-molds}
+## Types and Molds
 
 A Hoon `$type` is a data structure that specifies a set of nouns. Remember, everything in Urbit is a noun, so a `$type` can be thought of as a way of representing a boolean predicate that determines whether some noun is within the set.
 
@@ -51,23 +51,23 @@ One can "evaluate" a hold by asking the compiler to "play" the hoon against the 
 
 Consider the type `(list @ud)`. This is a hold. Just as any instance of this list type is either `~` or a non-null list `[i=@ud t=(list @ud)]`, when you evaluate the list's hold, you get a fork of `[%atom %n [~ ~]]` and `[%cell [%face %i [%atom %ud ~]] [%face %t [%hold ...]]]`, where the hold is the same as the original hold.
 
-### Cores {#cores}
+### Cores
 
 All executable Hoon code is found in a [core](../../../glossary/core.md). This core stores a map from [arm](../../../glossary/arm.md) name (like an OOP getter function) to result type, along with some other information about the core. If the core is a [door](../../../glossary/door.md) (like an OOP object) or a [gate](../../../glossary/gate.md) (like an anonymous function), then slot 6 (the head of the tail) of the core is a "sample" slot, which is overwritten with instance data or function argument, respectively. Whether this core expects a sample, and if so, what the sample's type is, is represented in the `$type` data structure for cores of that type.
 
 Core types are more complex than this simplified explanation, but this description is hopefully enough detail to be able to work with cores from vase mode.
 
-## "Slap'n'Slop" Vase Algebra {#slapnslop-vase-algebra}
+## "Slap'n'Slop" Vase Algebra
 
 The vase operations form a relatively simple algebra. This algebra can be thought of as a dynamically typed programming language. Each value in the language is a vase (a dynamically typed datum), and the basic operations are [`+slap`](../reference/stdlib/5c.md#slap) and [`+slop`](../reference/stdlib/5c.md#slop).
 
 For example, the Hoon expression `(slap (slop v1 (slop v2 (slap v3 h1)) v4) h2)` takes in four vases and two hoon expressions, and produces a vase. A pseudocode version of this would be `h2([v1 v2 h1(v3)])`
 
-### Introduction Forms {#introduction-forms}
+### Introduction Forms
 
 The primary introduction form for a vase is the [`!>`](../reference/rune/zap.md#-zapgar) rune, which produces a vase of its input. A vase can also be constructed manually as a cell whose head nests in `$type`, like `[[%atom %ud ~] 3]`.
 
-### Elimination Forms {#elimination-forms}
+### Elimination Forms
 
 An elimination form for a vase is something that converts a vase to a statically typed value.
 
@@ -77,7 +77,7 @@ The lack of a safe general-purpose elimination form stems from the fact that Hoo
 
 Despite this limitation, it's relatively straightforward to convert vases to statically typed outputs safely, and plenty of Hoon code does it, in both kernelspace and userspace.
 
-### Fundamental Operations {#fundamental-operations}
+### Fundamental Operations
 
 The `+slap` gate runs a hoon expression against a vase, producing a vase of the result. The `+slop` gate combines a pair of vases into a vase of a pair. These operations can be composed arbitrarily, and higher-level operations can be built out of them.
 
@@ -99,7 +99,7 @@ The `+slap` gate runs a hoon expression against a vase, producing a vase of the 
 
 `+slap` first compiles a parsed Hoon expression (`gen`) using `+mint:ut`, with the type of the subject.
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > (slop !>('foo') !>('bar'))
@@ -114,11 +114,11 @@ The `+slap` gate runs a hoon expression against a vase, producing a vase of the 
 [#t/@ q=2]
 ```
 
-### Higher-Level Operations {#higher-level-operations}
+### Higher-Level Operations
 
 There are a lot of higher-level operations on vases, mostly in `/sys/hoon/hoon` and some in `/sys/arvo/hoon`. Here's a sampling for instructional purposes.
 
-#### `+slam` {#slam}
+#### `+slam`
 
 Slam a gate with a sample
 
@@ -133,7 +133,7 @@ Slam a gate with a sample
   [p.gun (slum q.gat q.sam)]
 ```
 
-#### `+slot` {#slot}
+#### `+slot`
 
 Got noun at axis (tree address)
 
@@ -143,7 +143,7 @@ Got noun at axis (tree address)
   [(~(peek ut p.vax) %free axe) .*(q.vax [0 axe])]
 ```
 
-#### Examples {#examples}
+#### Examples
 
 ```
 > (slam !>(add) !>([1 1]))
@@ -155,6 +155,6 @@ Got noun at axis (tree address)
 [#t/@ud q=2]
 ```
 
-## Further Reading {#further-reading}
+## Further Reading
 
 - [Standard library section 5c](../reference/stdlib/5c.md): This contains most of the vase functions in the standard library.

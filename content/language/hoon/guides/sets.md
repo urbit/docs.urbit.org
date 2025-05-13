@@ -1,12 +1,12 @@
-# Sets {#sets}
+# Sets
 
 While the developer documentation on `$set`s and the `+in` core is comprehensive, it is organized alphabetically which can make it difficult to see what's going on with set relations.  This article will describe [set identities and relations](https://en.wikipedia.org/wiki/List_of_set_identities_and_relations) through the Hoon standard library.
 
 A `$set` is a tree with a particular internal order based on the hash of the value.  This tends to balance the values and make lookup and access more efficient over large sets.
 
-## Set Creation & Membership {#set-creation-membership}
+##  Set Creation & Membership
 
-### Define a Set {#define-a-set}
+### Define a Set
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-identity.png)
 
@@ -17,7 +17,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%b %a %c}
 ```
 
-### Add Members {#add-members}
+### Add Members
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-addition.png)
 
@@ -38,7 +38,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%e %b %d %f %a %c}
 ```
 
-### Remove Members {#remove-members}
+### Remove Members
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-deletion.png)
 
@@ -50,7 +50,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%b %a %c}
 ```
 
-### Membership {#membership}
+### Membership
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-membership.png)
 
@@ -66,7 +66,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 %.n
 ```
 
-### Size {#size}
+### Size
 
 [`++wyt:in`](../reference/stdlib/2h.md#wytin) produces the number of elements in _A_ as an atom (width).
 
@@ -76,7 +76,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 3
 ```
 
-### Export as List {#export-as-list}
+### Export as List
 
 [`++tap:in`](../reference/stdlib/2h.md#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
 
@@ -91,11 +91,11 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 ~[%c %a %f %d %b %e]
 ```
 
-## Set Relations {#set-relations}
+##  Set Relations
 
 First we consider the elementary operations between two sets.
 
-### Union (_A_ ∪ _B_) {#union-_a_-_b_}
+### Union (_A_ ∪ _B_)
 
 $$
 A \cup B \equiv \{ x : x \in A \text{ or } x \in B \}
@@ -112,7 +112,7 @@ $$
 {%e %b %d %a %c}
 ```
 
-### Intersection (_A_ ∩ _B_) {#intersection-_a_-_b_}
+### Intersection (_A_ ∩ _B_)
 
 $$
 A \cap B \equiv \{ x : x \in A \text{ and } x \in B \}
@@ -138,7 +138,7 @@ If two sets are disjoint, then their intersection is ∅.
 {}
 ```
 
-### Complement (_Aꟲ_) {#complement-_aꟲ_}
+### Complement (_Aꟲ_)
 
 $$
 A^{\textrm{C}} = X \backslash A \equiv {x \in X; x \notin A}
@@ -158,7 +158,7 @@ For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_
 ```
 
 
-### Symmetric Difference (_A_ Δ _B_) {#symmetric-difference-_a_-δ-_b_}
+### Symmetric Difference (_A_ Δ _B_)
 
 $$
 A \bigtriangleup B \equiv \{x : x \text{ belongs to exactly one of } A \text{ and } B\}
@@ -179,9 +179,9 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 ```
 
 
-## Set Operations {#set-operations}
+##  Set Operations
 
-### Logical `AND` (∧) {#logical-and-}
+### Logical `AND` (∧)
 
 [`++all:in`](../reference/stdlib/2h.md#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
 
@@ -191,7 +191,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 %.y
 ```
 
-### Logical `OR` (∨) {#logical-or-}
+### Logical `OR` (∨)
 
 [`++any:in`](../reference/stdlib/2h.md#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
 
@@ -201,7 +201,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 %.y
 ```
 
-### Operate with Function {#operate-with-function}
+### Operate with Function
 
 [`++run:in`](../reference/stdlib/2h.md#runin) applies a function _f_ to every member of set _A_.
 
@@ -211,7 +211,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 {98 97 99}
 ```
 
-### Accumulate with Function {#accumulate-with-function}
+### Accumulate with Function
 
 [`++rep:in`](../reference/stdlib/2h.md#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
 

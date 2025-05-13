@@ -1,4 +1,4 @@
-# Aqua {#aqua}
+# Aqua
 
 **Aqua** is something like Docker but for Urbit; it is a virtualization tool whose primary purpose is testing and development.
 

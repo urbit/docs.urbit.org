@@ -1,4 +1,4 @@
-# Udon {#udon}
+# Udon
 
 **Udon** is a domain specific language for Hoon.
 

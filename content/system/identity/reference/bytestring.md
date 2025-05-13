@@ -1,4 +1,4 @@
-# L2 Transaction Format {#l2-transaction-format}
+# L2 Transaction Format
 
 This document gives the bytestring format for layer 2 transactions and batches.
 
@@ -6,7 +6,7 @@ This document gives the bytestring format for layer 2 transactions and batches.
 
 We remark that each transaction from a given ship in a batch needs a separate signature, since data such as the nonce are not included in the transaction but are used in the signature. Thus a ship cannot submit multiple transactions with a single signature for all of them - a different signature is needed for each transaction.
 
-## Byte format {#byte-format}
+## Byte format
 
 We describe the byte format of a `batch` and its components in the following. All atoms described here are read by the parser as little-endian - i.e. it reads the last digit first and proceeds backwards.
 
@@ -74,14 +74,14 @@ The operation is an atom between `0` and `10` corresponding as follows:
 
 Since the operation is represented with 7 bits, to complete the byte the arguments either use the remaining bit as a binary flag or as padding.
 
-#### `%transfer-point` {#transfer-point}
+#### `%transfer-point`
 
 ```
 20 bytes: address to transfer to
 1 bit: breach?
 ```
 
-#### `%spawn` {#spawn}
+#### `%spawn`
 
 As before, the length of the ship argument is always 4 bytes.
 
@@ -91,7 +91,7 @@ As before, the length of the ship argument is always 4 bytes.
 1 bit: padding
 ```
 
-#### `%configure-keys` {#configure-keys}
+#### `%configure-keys`
 
 ```
 4 bytes: crypto suite
@@ -100,7 +100,7 @@ As before, the length of the ship argument is always 4 bytes.
 1 bit: breach?
 ```
 
-#### `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach` {#escape-cancel-escape-adopt-reject-detach}
+#### `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`
 
 Each of these actions have the same argument - a single ship. Again, the length of the ship argument is always 4 bytes.
 
@@ -109,7 +109,7 @@ Each of these actions have the same argument - a single ship. Again, the length 
 1 bit: padding
 ```
 
-#### `%set-management-proxy`, `%set-spawn-proxy`, `%set-transfer-proxy` {#set-management-proxy-set-spawn-proxy-set-transfer-proxy}
+#### `%set-management-proxy`, `%set-spawn-proxy`, `%set-transfer-proxy`
 
 Each of these actions have the same argument - an Ethereum address:
 

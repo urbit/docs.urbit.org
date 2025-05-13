@@ -1,4 +1,4 @@
-# Lightning Tutorials {#lightning-tutorials}
+# Lightning Tutorials
 
 This series of quickstart guides will show you how decentralized, networked applications can be quickly built and published on Urbit. These guides are intended for developers with limited knowledge of Urbit and who aren't fluent in Hoon (Urbit's programming language). They don't delve deeply into the code, but instead focus on the broader process, to give you a basic idea of the platform. If instead you want to learn Hoon and app development on Urbit, the best place to start is [Hoon School](../../../../courses/hoon-school), and then after that [App School](../../../../courses/app-school).
 

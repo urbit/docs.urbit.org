@@ -1,8 +1,8 @@
-# Poke Thread {#poke-thread}
+# Poke Thread
 
 Here's a modified agent that pokes our thread. I've replaced some off the previous stuff because it was getting a little unwieldly.
 
-#### `thread-starter.hoon` {#thread-starterhoon}
+#### `thread-starter.hoon`
 
 ```hoon
 /+  default-agent, dbug
@@ -66,7 +66,7 @@ Here's a modified agent that pokes our thread. I've replaced some off the previo
 
 And here we've modified the thread to take the poke and return it as the result:
 
-#### `test-thread.hoon` {#test-threadhoon}
+#### `test-thread.hoon`
 
 ```hoon
 /-  spider
@@ -87,7 +87,7 @@ Result: blah
 > :thread-starter [%test-thread %blah]
 ```
 
-### Analysis {#analysis}
+### Analysis
 
 In our agent we've added this card:
 

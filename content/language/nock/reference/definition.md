@@ -1,4 +1,4 @@
-# Definition {#definition}
+# Definition
 
 Nock is a Turing-complete function that maps a cell `[subject formula]` to a [noun](../../../glossary/noun.md) `product`, where `subject` is the data, `formula` is the code, and `product` is the result.
 
@@ -6,7 +6,7 @@ To program in Hoon, this is all you need to know about Nock. It's probably at le
 
 (Also, the Hoon programmer should know that (a) tail call elimination in Nock is straightforward; and (b) tail calls in Hoon always become tail calls in Nock.)
 
-## Rules {#rules}
+## Rules
 
 Nock is a combinator interpreter defined by the specification below.
 
@@ -64,7 +64,7 @@ nock(a)             *a
 *a                  *a
 ```
 
-## Operators {#operators}
+## Operators
 
 The pseudocode notation defines six prefix operators: `?`, `+`, `=`, `/`, `#`, and `*`.
 
@@ -86,7 +86,7 @@ For instance, `#[2 11 [22 33]]` is `[11 33]`; `#[3 11 [22 33]]` is `[22 11]`; `#
 
 An invalid use of any operator (eg, incrementing a cell) crashes. This is specified as an infinite loop, but in practice you get a crash.
 
-## Instructions {#instructions}
+## Instructions
 
 A valid Nock formula is always a cell. If the head of the formula is a cell, Nock treats both head and tail as formulas, resolves each against the subject, and produces the cell of their products.  In other words, the Lisp program `(cons x y)` becomes the Nock formula `[x y]`.
 
@@ -118,7 +118,7 @@ In a formula `[10 [b c] d]`, `c` and `d` are computed with the current subject, 
 
 A practical interpreter can do anything with discarded data, so long as the result it computes complies with the semantics of Nock.  For example, the simplest use of hints is the ordinary "debug printf."  It is erroneous for an interpreter to skip computing dynamic hints; they might crash.
 
-## Implementation {#implementation}
+## Implementation
 
 The reader might wonder how an interpreter whose only arithmetic operation is increment can ever be practical.
 

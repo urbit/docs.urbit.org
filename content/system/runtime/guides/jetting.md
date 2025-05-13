@@ -1,20 +1,20 @@
-# Writing Jets {#writing-jets}
+# Writing Jets
 
-# Writing Jets {#writing-jets}
+#   Writing Jets
 
 Many operations are inefficient when implemented in Nock, and it is efficacious to treat Nock as a standard of behavior rather than the implementation.  This tutorial aims to teach you how to read existing jet code; produce a jet matching a Hoon gate with a single argument; and produce a more complex jet involving multiple values and floating-point arithmetic.  It will then discuss jetting more generically.
 
 Since jetting code requires modifying the binary runtime, we will work some in Hoon but much more in C.  While you can build whatever you like as experimental or personal work, if you intend to submit your jetted code back to the main Urbit developer community then you should coordinate with the Urbit Foundation.
 
-#### Additional Resources {#additional-resources}
+#### Additional Resources
 
 - [~timluc-miptev, “Jets in the Urbit Runtime”](https://github.com/timlucmiptev/docs-runtime/blob/master/jets1_current.md) (recommended to start here first)
 - [“`u3`: Land of Nouns”](../reference/nouns.md) (recommended as supplement to this document)
 - [“API overview by prefix”](../reference/api.md) (recommended as supplement after this document)
 
-## Developer Environment {#developer-environment}
+##  Developer Environment 
 
-### Basic Setup (_Mise en place_) {#basic-setup-_mise-en-place_}
+### Basic Setup (_Mise en place_)
 
 All of Urbit's source code is available in the main Github repo.  We will presumptively work in a folder called `~/jetting` which contains a copy of the full Urbit repo.  Create a new branch within the repo named `example-jet`.
 
@@ -57,7 +57,7 @@ We will primarily work in the development ship (a fakeship or moon) on the files
 
 - [“Contributor Guidelines”](https://github.com/urbit/vere/blob/master/CONTRIBUTING.md)
 
-### Conveniences {#conveniences}
+### Conveniences
 
 You should consider using a terminal utility like `tmux` or `screen` which allows you to work in several locations on your file system simultaneously:  one for file system operations (copying files in and out of the `home` directory), one for running the development ship, and one for editing the files, or an IDE or text editor if preferred.
 
@@ -89,7 +89,7 @@ $ cp -r zod-backup/.urb zod
 ```
 
 
-## Jet Walkthrough:  `++add` {#jet-walkthrough-add}
+##  Jet Walkthrough:  `++add`
 
 Given a Hoon gate, how can a developer produce a matching C jet? Let us illustrate the process using a simple `|%` core.  We assume the reader has achieved facility with both Hoon code and C code.  This tutorial aims to communicate the practical process of producing a jet, and many [`u3` noun concepts](../reference/nouns.md) are only briefly discussed or alluded to.
 
@@ -224,7 +224,7 @@ The procedure to solve the problem in the C jet does not need to follow the same
 In general, jet code feels a bit heavy and formal.  Jet code may call other jet code, however, so much as with Hoon layers of complexity can be appropriately encapsulated.  Once you are used to the conventions of the u3 library, you will be in a good position to produce working and secure jet code.
 
 
-## Jet Composition:  Integer `++factorial` {#jet-composition-integer-factorial}
+##  Jet Composition:  Integer `++factorial`
 
 Similar to how we encountered recursion way back in [Hoon School](../../../courses/hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code.  We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise.  Create a file `lib/trig.hoon` with the following contents:
 
@@ -307,7 +307,7 @@ built   /tests/lib/trig/hoon
 OK      /lib/trig/test-factorial
 ```
 
-### Jet construction {#jet-construction}
+### Jet construction
 
 Now that you have a developer cycle in place, let's examine what's necessary to produce a jet. A jet is a C function which replicates the behavior of a Hoon (Nock) gate. Jets have to be able to manipulate Urbit quantities within the binary, which requires both the proper affordances within the Hoon code (the interpreter hints) and support for manipulating Urbit nouns (atoms and cells) within C.
 
@@ -380,7 +380,7 @@ The numbers `7` and `31` refer to relative core addresses. In most cases—unles
 
 For more information on `u3`, please check out the `u3` summary below or the official documentation at [`“u3`:  Land of Nouns”](../reference/nouns.md).
 
-#### Declare function prototypes in headers. {#declare-function-prototypes-in-headers}
+#### Declare function prototypes in headers.
 
 A `u3w` function is always the entry point for a jet. Every `u3w` function accepts a `u3noun` (a Hoon/Nock noun), validates it, and invokes the `u3q` function that implements the actual logic. The `u3q` function needs to accept the same number of atoms as the defining arm (since these same values will be extricated by the `u3w` function and passed to it).
 
@@ -398,7 +398,7 @@ In `q.h`:
 u3_noun u3qe_trig_factorial(u3_atom);
 ```
 
-#### Produce functions for compilation and linking. {#produce-functions-for-compilation-and-linking}
+#### Produce functions for compilation and linking.
 
 Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig.c` and define all of your `trig` jets therein.  (Here we show `++factorial` only.)
 
@@ -464,11 +464,11 @@ This code merits ample discussion. Without focusing on the particular types used
 `u3i` operations wrap C values back into Urbit-compatible types.
 
 
-## `u3` Overview {#u3-overview}
+## `u3` Overview
 
 Before proceeding to compose a more complicated floating-point jet, we should step back and examine the zoo of `u3` functions that jets use to formally structure atom access and manipulation.
 
-#### `u3` Functions {#u3-functions}
+#### `u3` Functions
 
 `u3` defines a number of functions for extracting data from Urbit types into C types for ready manipulation, then wrapping those same values back up for Urbit to handle. These fall into several categories:
 
@@ -491,7 +491,7 @@ Before proceeding to compose a more complicated floating-point jet, we should st
 | `u3x_` | Retrieval; crashes on error | `xtract.c` | `u3x_cell` |
 | `u3z_` | Memoize | `zave.c` | `u3z_uniq` |
 
-#### `u3` Nouns {#u3-nouns}
+#### `u3` Nouns
 
 The `u3` system allows you to extract Urbit nouns as atoms or cells.  Atoms may come in one of two forms: either they fit in 31 bits or less of a 32-bit unsigned integer, or they require more space. In the former case, you will use the singular functions such as `u3r_word` and `u3a_word` to extract and store information. If the atom is larger than this, however, you need to treat it a bit more like a C array, using the plural functions `u3r_words` and `u3a_words`. (For native sizes larger than 32 bits, such as double-precision floating-point numbers, replace `word` with `chub` in these.) Confusing a 31-bit-or-less integer with a 32+-bit integer means confusing a value with a pointer! Bad things will happen!
 
@@ -519,7 +519,7 @@ An audit of the jet source code shows that the most commonly used `u3` functions
 19. `u3r_word` retrieves a value from an atom as a C `uint32_t`.
 20. `u3r_words` is the multi-element (array) retriever like `u3r_word`.
 
-#### `u3` Samples {#u3-samples}
+#### `u3` Samples
 
 Defining jets which have a different sample size requires querying the correct nodes of the sample as binary tree:
 
@@ -542,7 +542,7 @@ requires
 u3x_sam_2, u3x_sam_12, u3x_sam_13, u3x_sam_14, u3x_sam_15
 ```
 
-#### Exercise:  Review Jet Code {#exercise-review-jet-code}
+#### Exercise:  Review Jet Code
 
 - We commend to the reader the exercise of selecting particular Hoon-language library functions provided with the system, such as [`++cut`](https://github.com/urbit/urbit/blob/ceed4b78d068d7cb70350b3cd04e7525df1c7e2d/pkg/arvo/sys/hoon.hoon#L854), locating the corresponding jet code in:
 
@@ -554,7 +554,7 @@ u3x_sam_2, u3x_sam_12, u3x_sam_13, u3x_sam_14, u3x_sam_15
     and learning in detail how particular operations are realized in `u3` C.  Note in particular that jets do not need to follow the same solution algorithm and logic as the Hoon code; they merely need to reliably produce the same result.
 
 
-## Jet Composition:  Floating-Point `++factorial` {#jet-composition-floating-point-factorial}
+## Jet Composition:  Floating-Point `++factorial`
 
 Let us examine jet composition using a more complicated floating-point operation.  The Urbit runtime uses [SoftFloat](http://www.jhauser.us/arithmetic/SoftFloat-3/doc/SoftFloat.html) to provide a reference software implementation of floating-point mathematics.  This is slower than hardware FP but more portable.
 
@@ -661,7 +661,7 @@ We will further define a few unit tests as checks on arm behavior:
 --
 ```
 
-### Jet Composition {#jet-composition}
+### Jet Composition
 
 As before, the jet hints must provide a breadcrumb trail of symbols for the interpreter to know how to match the Hoon arms to the corresponding C code.
 
@@ -688,7 +688,7 @@ As before, the jet hints must provide a breadcrumb trail of symbols for the inte
 3.  Produce functions for compilation and linking in the
     `pkg/noun/jets/e` directory.
 
-#### Register the jet symbols and function names. {#register-the-jet-symbols-and-function-names}
+#### Register the jet symbols and function names.
 
 A jet registration may be carried out at any point in `tree.c`. The registration consists of marking the core
 
@@ -720,7 +720,7 @@ static u3j_core _140_hex_d[] =
 };
 ```
 
-#### Declare function prototypes in headers. {#declare-function-prototypes-in-headers}
+#### Declare function prototypes in headers.
 
 We must declare `u3we_trigrs_factorial`  and `u3qe_trigrs_factorial`:
 
@@ -736,7 +736,7 @@ In `q.h`:
 u3_noun u3qe_trigrs_factorial(u3_atom);
 ```
 
-#### Produce functions for compilation and linking. {#produce-functions-for-compilation-and-linking}
+#### Produce functions for compilation and linking.
 
 Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig-rs.c` and define all of your `trig-rs` jets therein.  (Here we show `++factorial` only.)
 
@@ -823,7 +823,7 @@ We have made use of `u3r_word` to convert a 32-bit (really, 31-bit or smaller) H
 
 `f32_mul` and its sisters (`f32_add`, `f64_mul`, `f128_div`, etc.) are floating-point operations defined in software ([Berkeley SoftFloat](http://www.jhauser.us/arithmetic/SoftFloat.html)). These are not as efficient as native hardware operations would be, but allow Urbit to guarantee cross-platform compatibility of operations and not rely on hardware-specific implementations.  Currently all Urbit floating-point operations involving `@r` values use SoftFloat.
 
-### Compiling and Using the Jet {#compiling-and-using-the-jet}
+### Compiling and Using the Jet
 
 With this one jet for `++factorial` in place, compile the jet and take note of where Nix produces the binary.
 
@@ -892,14 +892,14 @@ Among the other output values, you should observe any `stderr` messages emitted 
 
 The type union `sing` remains necessary to easily convert the floating-point result back into an unsigned integer atom.
 
-#### Exercise:  Implement the Other Jets {#exercise-implement-the-other-jets}
+#### Exercise:  Implement the Other Jets
 
 - We leave the implementation of the other jets to the reader as an exercise. (Please do not skip this: the exercise will both solidify your understanding and raise new important situational questions.)
 
     Again, the C jet code need not follow the same logic as the Hoon source code; in this case, we simply use the built-in `math.h` `pow` function. (We could—arguably should—have used SoftFloat-native implementations, but that is more involved than this tutorial intends.)
 
 
-## Jetting the Kernel {#jetting-the-kernel}
+##  Jetting the Kernel
 
 Hoon jets are compiled into the Vere binary for distribution with the Urbit runtime.  Per current development policy, this is the only way to actually share jets with other developers.
 
@@ -953,7 +953,7 @@ When hinting your own code, make sure to hint each nesting arm.  Skipping any ne
 
 You do not need to provide C implementations for everything you hint.  In the above, we hint `%aaa`, `%bbb`, and `%ccc`—even if our intent is only to jet `++ccc`.
 
-### Editing the C Source Code {#editing-the-c-source-code}
+### Editing the C Source Code
 
 Having hinted our Hoon, we now need to write the matching C code.  If we don't, there isn't a problem—hinting code merely tells the interpreter to look for a jet, but if a jet is not found, the Hoon still runs just fine.
 
@@ -966,7 +966,7 @@ There are two distinct tasks to be done C-side:
 
 For each jet you will write one `u3we()` function and one `u3qe()` function.
 
-#### Edit the C Source Code to Add Registration {#edit-the-c-source-code-to-add-registration}
+#### Edit the C Source Code to Add Registration
 
 - Edit the header file `include/jets/w.h` to have a declaration for each of your `u3we()` functions.  Every `u3we()` function looks the same, e.g.
 
@@ -1062,7 +1062,7 @@ There are 4 steps here.  Let's look at each in turn.
 
 You should be able to register jets whether your nesting is 2 layers deep, 3 (like this example), or more.  You should also be able to register multiple jets at the same nesting level (e.g. a function `u3we_ddd()` which is a sibling of `u3we_ccc()` inside data structure `_143_hex_hobo_reco_d[]` ).
 
-#### Edit the C Source Code to Add the `u3we_()` Function {#edit-the-c-source-code-to-add-the-u3we_-function}
+#### Edit the C Source Code to Add the `u3we_()` Function
 
 There are two C functions per jet, because separation of concerns is a good thing.
 
@@ -1167,9 +1167,9 @@ return u3m_bail(c3__exit);
 
 Otherwise, pass the arguments into your inner jet function and return the results of that.
 
-#### Edit the C Source Code to Add the `u3qe_()` Function {#edit-the-c-source-code-to-add-the-u3qe_-function}
+#### Edit the C Source Code to Add the `u3qe_()` Function
 
-##### Unpacking Nouns {#unpacking-nouns}
+##### Unpacking Nouns
 
 The `u3qe_xxx()` function is the real jet—the C code that replaces the Hoon.
 
@@ -1211,7 +1211,7 @@ Cells have their own set of characteristic functions for accessing interior noun
 
 The actual meat of the function is up to you.  What is the function supposed to do for Hoon?
 
-##### Packing Nouns {#packing-nouns}
+##### Packing Nouns
 
 Now we move on to return semantics.
 
@@ -1302,7 +1302,7 @@ There are two facets here:
 2.  **Memory allocation.**  Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important.  More information is available in [the “Nouns” docs](../reference/nouns.md).
 
 
-## Pills {#pills}
+##  Pills
 
 A _pill_ is a Nock “binary blob”, really a parsed Hoon abstract syntax tree. Pills are used to bypass the bootstrapping procedure for a new ship, and are particularly helpful when jetting code in `hoon.hoon`, `%zuse`, `%lull`, or the main Arvo vanes.
 
@@ -1310,7 +1310,7 @@ An Urbit ship has to boot into the Arvo kernel—a Nock core with a particular i
 
 You don't strictly need to use pills in producing jets in `/lib`, but it can speed up your development cycle significantly.  However, you _must_ use pills when working on the core kernel (`hoon.hoon`, `zuse.hoon`, `arvo.hoon`).
 
-### Producing a Pill {#producing-a-pill}
+### Producing a Pill
 
 Having edited the C code, you now need to compile it to build a new runtime executable.
 
@@ -1352,7 +1352,7 @@ The only way to run the new code is to follow the following process:
     $ cp zod/.urb/put/.pill  ./mypill.pill
     ```
 
-#### Run the Compiled C/Compiled Hoon Pill {#run-the-compiled-ccompiled-hoon-pill}
+#### Run the Compiled C/Compiled Hoon Pill
 
 5. Prepare a new fakezod (you can't use a backup fakezod here because the point is to boot from scratch again):
 
@@ -1375,7 +1375,7 @@ You now have created a galaxy fakezod, on its own detached network, running your
 (As an aside, should you see “biblical” names like `noah`, this means that you are using a feature of the kernel in a core before it is available.  You'll need to move things to a later point in the file or change your code if that happens.)
 
 
-## Testing Jets {#testing-jets}
+##  Testing Jets
 
 All nontrivial code should be thoroughly tested to ensure software quality. To rigorously verify the jet's behavior and performance, we will combine live testing in a single Urbit session, comparative behavior between a reference Urbit binary and our modified binary, and unit testing.
 
@@ -1406,7 +1406,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 5.  There are integration tests available for the Urbit repository; you should investigate the now-current standard of practice for implementing and including these with your jetted code submission.
 
 
-## Et Cetera {#et-cetera}
+## Et Cetera
 
 We omit from the current discussion a few salient points:
 

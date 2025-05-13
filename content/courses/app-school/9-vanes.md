@@ -1,4 +1,4 @@
-# 9. Vanes {#9-vanes}
+# 9. Vanes
 
 In this lesson we're going to look at interacting with vanes (kernel modules). The API for each vane consists of `task`s it can take, and `gift`s it can return. The `task`s and `gift`s for each vane are defined in its section of `lull.hoon`. Here's the `task:iris`s and `gift:iris`s for Iris, the HTTP client vane, as an example:
 
@@ -22,7 +22,7 @@ In this lesson we're going to look at interacting with vanes (kernel modules). T
 
 The API of each vane is documented in its respective section of the [Arvo documentation](../../system/kernel/arvo). Each vane has a detailed API reference and examples of their usage. There are far too many `task`s and `gift`s across the vanes to cover here, so in the [`Example`](#example) section of this document, we'll just look at a single, simple example with a Behn timer. The basic pattern in the example is broadly applicable to the other vanes as well.
 
-## Sending a vane task {#sending-a-vane-task}
+## Sending a vane task
 
 A `task` can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on these in the [Cards](5-cards.md) lesson, but we'll briefly recap it here. The type of the card is as follows:
 
@@ -57,7 +57,7 @@ The letter tags just specify which vane it goes to, and then follows the `task` 
 [%pass /some/wire %arvo %c %warp our.bowl %base ~ %sing %u da+now.bowl /sys/kelvin]
 ```
 
-## Receiving a vane gift {#receiving-a-vane-gift}
+## Receiving a vane gift
 
 Once a `task` has been sent to a vane, any `gift`s the vane sends back in response will arrive in the `on-arvo` arm of your agent. The `on-arvo` arm exclusively handles such vane `gift`s. The `gift`s will arrive in a `sign-arvo`, along with the `wire` specified in the original request. The `on-arvo` arm produces a `(quip card _this)` like usual, so it would look like:
 
@@ -121,7 +121,7 @@ The typical pattern is to first test the `wire` with something like a wutlus (`?
 ....
 ```
 
-## Example {#example}
+## Example
 
 Here's a very simple example that takes a poke of a `@dr` (a relative date-time value) and sends Behn a `%wait` `task:behn`, setting a timer to go off `@dr` in the future. When the timer goes off, `on-arvo` will take the `%wake` `gift:behn` and print "Ding!" to the terminal.
 
@@ -228,7 +228,7 @@ After approximately five seconds, we see the timer fired successfully:
 > Ding!
 ```
 
-## Summary {#summary}
+## Summary
 
 - Each vane has an API composed of `task`s it takes and `gift`s it produces.
 - Each vane's `task`s and `gift`s are defined in `lull.hoon`
@@ -236,7 +236,7 @@ After approximately five seconds, we see the timer fired successfully:
 - Vane `task`s can be sent to vanes by `%pass`ing them an `%arvo` `card`.
 - Vane `gift`s come back to the `on-arvo` arm of the agent core in a `sign-arvo`.
 
-## Exercises {#exercises}
+## Exercises
 
 - Run through the [Example](#example) yourself if you've not done so already.
 - Have a look at some vane sections of `lull.hoon` to familiarize yourself with its structure.

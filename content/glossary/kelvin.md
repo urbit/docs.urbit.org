@@ -1,4 +1,4 @@
-# Kelvin versioning {#kelvin-versioning}
+# Kelvin versioning
 
 Typical software versioning schemes (e.g. v3.1.45) count ever upwards with each new revision. **Kelvin versioning** does the opposite, counting down towards absolute zero. When the code in question reaches version 0, it is considered final and frozen, and there will be no further revisions. This system is used when a piece of code is intended to become a permanent fixed standard, that can be depended upon to not change ever.
 

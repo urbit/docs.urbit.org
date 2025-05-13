@@ -1,5 +1,5 @@
-# Guides {#guides}
+# Guides
 
-### [Guide](guide.md) {#guideguidemd}
+### [Guide](guide.md)
 
 Practical examples of the different ways of using Lick.

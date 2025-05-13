@@ -1,8 +1,8 @@
-# Cryptography {#cryptography}
+# Cryptography
 
 Here we give a technical overview of how Ames implements cryptography.
 
-## Summary {#summary}
+## Summary
 
 By default, all [packets are encrypted](#packets) with 256-bit [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption, whose key is obtained by [Diffie-Hellman key exchange](#key-exchange), with public/private keys generated using elliptic curve [Curve25519](https://en.wikipedia.org/wiki/Curve25519). The only exception to this are comet [self-attestation packets](#comets), which are unencrypted.
 
@@ -60,18 +60,18 @@ The `+crypto-core` in `$ames-state` is an `+acru:ames` core, a [lead](../../../.
 
 As the `+acru` core is merely an interface, the details on how it is implemented may vary according to the cryptosuite. We summarize what each core is utilized for here, but see [`crub:crypto`](../../../../language/hoon/reference/cryptography.md#crub) for more details on how the specific cryptosuite utilized by Ames is implemented.
 
-#### `+as:acru` {#asacru}
+#### `+as:acru`
 
 This core is used for the standard asymmetric cryptographic operations: encrypting (`+seal`), signing (`+sign`), authenticating (`+sure`), and decrypting (`+tear`).
 
-#### `+ex:acru` {#exacru}
+#### `+ex:acru`
 
 This core is used to extract keys and their fingerprints. `+sec` is the secret key (which may be empty), `+pub` is the public key associated to the secret key, `+pac` is the fingerprint associated to the secret key, and `+fig` is the fingerprint associated to the public key. We note that when the core contains both encryption and authentication keys, they are typically concatenated to be returned as a single atom.
 
-#### `+nu:acru` {#nuacru}
+#### `+nu:acru`
 
 This core contains constructors for the `+acru` core. `+pit:nu` is used to construct an `+acru` core with both a private and public key (i.e. both `+sec:ex` and `+pub:ex` are set) from a bitlength and seed. `+nol:nu` can then be called from an `+acru` core created with `+pit:nu` to get an `+acru` core with only the secret key, while `+com:nu` can be called to get an `+acru` core with only the public key.
 
-#### `+en:acru`, `+de:acru`, and `+dy:acru` {#enacru-deacru-and-dyacru}
+#### `+en:acru`, `+de:acru`, and `+dy:acru`
 
 These arms are for symmetric encryption (`+en`) and decryption (`+de` and `+dy`). The difference between the decryption arms is that `+de` returns null and `+dy` crashes upon failure.

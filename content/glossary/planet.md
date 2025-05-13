@@ -1,4 +1,4 @@
-# Planet {#planet}
+# Planet
 
 A **planet** is can be one of two related things:
 

@@ -1,4 +1,4 @@
-# JSON {#json}
+# JSON
 
 If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll examine in this document.
 
@@ -21,7 +21,7 @@ The relationship between these types and functions look like this:
 
 Note this diagram is a simplification - the `+dejs:format` and `+enjs:format` collections in particular are tools to be used in writing conversion functions rather than simply being used by themselves, but it demonstrates the basic relationships. Additionally, it is less common to do printing/parsing manually - this would typically be handled automatically by Eyre, though it may be necessary if you're retrieving JSON data via the web client vane Iris.
 
-### In practice {#in-practice}
+### In practice
 
 A typical Gall agent will have a number of structures defined in a file in the `/sur` directory. These will define the type of data it expects to be `%poke`ed with, the type of data it will `%give` to subscribers, and the type of data its scry endpoints produce.
 
@@ -35,7 +35,7 @@ With this approach, an agent would take and/or produce data with some `mark` lik
 
 For details of creating a `mark` file for this purpose, the [mark file example](#mark-file-example) section below walks through a practical example.
 
-## The `$json` type {#the-json-type}
+## The `$json` type
 
 Urbit represents JSON data with the `$json` structure (defined in `/sys/lull.hoon`):
 
@@ -63,11 +63,11 @@ The correspondence of `$json` to JSON types is fairly self-evident, but here's a
 
 Since the `$json` `%o` object and `%a` array types may themselves contain any `$json`, you can see how JSON structures of arbitrary complexity can be represented. Note the `%n` number type is a `@ta` rather than something like a `@ud` that you might expect. This is because JSON's number type may be either an integer or floating point, so it's left as a `knot` which can then be parsed to a `@ud` or `@rd` with the appropriate [`+dejs:format`](../reference/zuse/2d_6.md) function.
 
-## `$json` encoding and decoding example {#json-encoding-and-decoding-example}
+## `$json` encoding and decoding example
 
 Let's have a look at a practical example. Here's a core with three arms. It has the structure arm `$user`, and then two more: `+to-js` converts a `$user` structure to `$json`, and `+from-js` does the opposite. Usually we'd define the structure in a separate `/sur` file, but for simplicity it's all in the one core.
 
-#### `json-test.hoon` {#json-testhoon}
+#### `json-test.hoon`
 
 ```hoon
 |%
@@ -110,7 +110,7 @@ Let's have a look at a practical example. Here's a core with three arms. It has 
 
 **Note**: This example (and a couple of others in this guide) sometimes use a syntax of `foo+bar`. This is just syntactic sugar to tag the head of `bar` with the `term` constant `%foo`, and is equivalent to `[%foo bar]`. Since `json` data is a union with head tags of `%b`, `%n`, `%s`, `%a`, or `%o`, it's sometimes convenient to do `s+'some string'`, `b+&`, etc.
 
-### Try it out {#try-it-out}
+### Try it out
 
 First we'll try using our `$json` encoding/decoding library, and afterwards we'll take a closer look at its construction. To begin, save the code above in `/lib/json-test.hoon` of the `%base` desk on a fake ship and `|commit` it:
 
@@ -171,9 +171,9 @@ Finally, let's try converting the `$json` back to a `$user` again with our `+fro
 ]
 ```
 
-### Analysis {#analysis}
+### Analysis
 
-#### Converting to `$json` {#converting-to-json}
+#### Converting to `$json`
 
 Here's our arm that converts a `$user` structure to `$json`:
 
@@ -206,7 +206,7 @@ For the `joined` field, we've used the [`+sect`](../reference/zuse/2d_1-5.md#sec
 
 For the `name` field we've just formed a cell of `%a` and a list of `$json` strings, since a `$json` array is `[%a p=(list json)]`. Note we've separated this part into its own arm and wrapped the whole thing in a `|^` - a core with a `$` arm that's computed immediately. This is simply for readability - our structure here is quite simple but when dealing with deeply-nested `$json` structures or complex logic, having a single giant function can quickly become unwieldy.
 
-#### Converting from `$json` {#converting-from-json}
+#### Converting from `$json`
 
 Here's our arm that converts `$json` to our `$user` structure:
 
@@ -237,17 +237,17 @@ Notice how `+ot` takes in other `+dejs` functions in its argument. One of its ar
 
 There are dozens of different functions in [`+dejs:format`](../reference/zuse/2d_6.md) that will cover a great many use cases. If there isn't a `+dejs` function for a particular case, you can also just write a custom function - it just has to take `$json`. Note there's also the [`+dejs-soft:format`](../reference/zuse/2d_7.md) functions - these are similar to `+dejs` functions except they produce `unit`s rather than simply crashing if decoding fails.
 
-## More `+dejs` {#more-dejs}
+## More `+dejs`
 
 We looked at the commonly used `+ot` function in the [first example](#converting-from-json), now let's look at a couple more common `+dejs` functions.
 
-### `+of` {#of}
+### `+of`
 
 The [`+of`](../reference/zuse/2d_6.md#ofdejsformat) function takes an object containing a single key-value pair, decodes the value with the corresponding `+dejs` function in a key-function list, and produces a key-value tuple. This is useful when there are multiple possible objects you might receive, and tagged unions are a common data structure in hoon.
 
 Let's look at an example. Here's a gate that takes in some `$json`, decodes it with an `+of` function that can handle three possible objects, casts the result to a tagged union, switches against its head with `?-`, performs some transformation and finally returns the result. You can save it as `gen/of-test.hoon` in the `%base` desk of a fake ship and `|commit %base`.
 
-#### `of-test.hoon` {#of-testhoon}
+#### `of-test.hoon`
 
 ```hoon
 |=  jon=json
@@ -287,7 +287,7 @@ Let's try it:
 'abc'
 ```
 
-### `+ou` {#ou}
+### `+ou`
 
 The [`+ou`](../reference/zuse/2d_6.md#oudejsformat) function decodes a `$json` object to an n-tuple using the matching functions in a key-function list. Additionally, it lets you set some key-value pairs in an object as optional and others as mandatory. The mandatory ones crash if they're missing and the optional ones are replaced with a given noun.
 
@@ -299,7 +299,7 @@ The [`+ou`](../reference/zuse/2d_6.md#oudejsformat) function decodes a `$json` o
 
 Let's look at a practical example. Here's a generator you can save in the `%base` desk of a fake ship in `gen/ou-test.hoon` and `|commit %base`. It takes in a `$json` object and produces a triple. The `+ou` in `+decode` has three key-function pairs - the first two are mandatory and the last is optional, producing the bunt of a set if the `%baz` key is missing.
 
-#### `ou-test.hoon` {#ou-testhoon}
+#### `ou-test.hoon`
 
 ```hoon
 |=  jon=json
@@ -329,7 +329,7 @@ Let's try it:
 dojo: hoon expression failed
 ```
 
-### `+su` {#su}
+### `+su`
 
 The [`+su`](../reference/zuse/2d_6.md#sudejsformat) function parses a string with the given parsing `rule`. Hoon's functional parsing library is very powerful and lets you create arbitrarily complex parsers. JSON will often have data types encoded in strings, so this function can be very useful. The writing of parsers is outside the scope of this guide, but you can see the [Parsing Guide](parsing.md) and sections 4e to 4j of the standard library documentation for details.
 
@@ -348,7 +348,7 @@ Here are some simple examples of using `+su` to parse strings:
 
 Here's a more complex parser that will parse a GUID like `824e7749-4eac-9c00-db16-4cb816cd6f19` to a `@ux`:
 
-#### `su-test.hoon` {#su-testhoon}
+#### `su-test.hoon`
 
 ```hoon
 |=  jon=json
@@ -387,11 +387,11 @@ syntax error
 dojo: naked generator failure
 ```
 
-## `mark` file example {#mark-file-example}
+## `mark` file example
 
 Here's a simple `mark` file for the `$user` structure we created in the [first example](#json-encoding-and-decoding-example). It imports the [json-test.hoon](#json-testhoon) library we created and saved in our `%base` desk's `/lib` directory.
 
-#### `user.hoon` {#userhoon}
+#### `user.hoon`
 
 ```hoon
 /+  *json-test
@@ -416,7 +416,7 @@ In brief, a mark file contains a `door` with three arms. The door's sample type 
 
 From this mark file, Clay can build mark conversion gates between the `%json` mark and our `%user` mark, allowing the conversion of `$json` data to a `$user` structure and vice versa.
 
-### Try it out {#try-it-out}
+### Try it out
 
 First, we'll save the code above as `user.hoon` in the `/mar` directory our of `%base` desk:
 
@@ -494,7 +494,7 @@ Finally, let's see how that looks as JSON encoded in text:
 
 Usually (though not in all cases) these mark conversions will be performed implicitly by Gall or Eyre and you'd not deal with the mark conversion gates directly, but it's still informative to see them work explicitly.
 
-## Further reading {#further-reading}
+## Further reading
 
 [The Zuse library reference](../reference/zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
 

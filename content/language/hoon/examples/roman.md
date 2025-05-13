@@ -1,6 +1,6 @@
-# Roman Numerals {#roman-numerals}
+# Roman Numerals
 
-## Challenge: Printing and Parsing Roman Numerals {#challenge-printing-and-parsing-roman-numerals}
+## Challenge: Printing and Parsing Roman Numerals
 
 Roman numerals constitute a numeral system capable of expressing positive integers by additive values (rather than place-number notation).  Additive series are produced by summing values in a series, as `iii` → 3, while subtractive values are produced by prepending certain smaller values ahead of a larger value, as `ix` → 9.
 
@@ -33,7 +33,7 @@ Roman numerals constitute a numeral system capable of expressing positive intege
 
         **Note**:  This design pattern is not optimal since analysis over a union of some types can be difficult to carry out, and it would be better to either separate the generators or use a flag.  In this case, the pattern works because we are distinguishing an atom from a cell.
 
-## Unit Tests {#unit-tests}
+## Unit Tests
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
@@ -863,11 +863,11 @@ Following a principle of test-driven development, we compose a series of tests w
 --
 ```
 
-## Solutions {#solutions}
+## Solutions
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2022.6.  They are made available under both the [MIT license](https://mit-license.org/) and the [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0).  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1 {#solution-1}
+### Solution #1
 
 _This solution was produced by ~sidnym-ladrut.  This code utilizes the Hoon parser tools like `++cook` and `++scan`, and in particular illustrates a strong ethic of [function encapsulation](https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29)._
 
@@ -1003,7 +1003,7 @@ _This solution was produced by ~sidnym-ladrut.  This code utilizes the Hoon pars
 ==
 ```
 
-### Solution #2 {#solution-2}
+### Solution #2
 
 _This solution was produced by ~mocmex-pollen.  It particularly illustrates the use of `++cook` and `++pose` in constructing a parser-based solution._
 
@@ -1149,7 +1149,7 @@ _This solution was produced by ~mocmex-pollen.  It particularly illustrates the 
 (parse value)
 ```
 
-### Solution #3 {#solution-3}
+### Solution #3
 
 _This solution was produced by ~mashex-masrex.  Notice how it utilizes a well-structured parser based on `++jest` and `++cold`._
 
@@ -1310,7 +1310,7 @@ _This solution was produced by ~mashex-masrex.  Notice how it utilizes a well-st
 (yield arabic-or-roman)
 ```
 
-### Solution #4 {#solution-4}
+### Solution #4
 
 _This solution was produced by ~fonnyx-nopmer.  It comes sans comments, and particularly demonstrates how to produce legible and idiomatic Hoon code without requiring comments._
 

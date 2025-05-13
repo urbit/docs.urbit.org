@@ -1,10 +1,10 @@
-# Examples {#examples}
+# Examples
 
-## %receipt {#receipt}
+## %receipt
 
 Below is an example of an application that spins up a lick port on its init call. When it recieves a `%connected` soak it subscribes to `%rumors`. whenever a `%rumor` is recieved it will spit it out to the Lick port and which will forward it to a reciept printer. When the receipt printer disconnects the application will unsubscribe to `%rumors` and wait.
 
-### `receipt.hoon` {#receipthoon}
+### `receipt.hoon`
 
 ```hoon
 /+  default-agent, dbug

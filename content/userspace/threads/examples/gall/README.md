@@ -1,23 +1,23 @@
-# Gall {#gall}
+# Gall
 
 Examples of how to interact with threads from Gall agents.
 
-## [Start Thread](start-thread.md) {#start-threadstart-threadmd}
+## [Start Thread](start-thread.md)
 
 How to run a thread from a Gall agent.
 
-## [Take Result](take-result.md) {#take-resulttake-resultmd}
+## [Take Result](take-result.md)
 
 How to handle the results of a completed thread.
 
-## [Take Facts](take-facts.md) {#take-factstake-factsmd}
+## [Take Facts](take-facts.md)
 
 How to get subscription updates from threads.
 
-## [Stop Thread](stop-thread.md) {#stop-threadstop-threadmd}
+## [Stop Thread](stop-thread.md)
 
 How to cancel a thread from a Gall agent.
 
-## [Poke Thread](poke-thread.md) {#poke-threadpoke-threadmd}
+## [Poke Thread](poke-thread.md)
 
 How to poke a thread from a Gall agent.

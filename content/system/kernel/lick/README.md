@@ -1,4 +1,4 @@
-# Lick {#lick}
+# Lick
 
 Urbit's inter-process communication (IPC) vane.
 

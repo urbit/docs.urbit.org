@@ -1,14 +1,14 @@
-# Software Distribution {#software-distribution}
+# Software Distribution
 
 In this document we'll walk through an example of creating and publishing a desk that others can install. We'll create a simple "Hello World!" front-end with a "Hello" tile to launch it. For simplicity, the desk won't include an actual Gall agent, but we'll note everything necessary if there were one.
 
-## Install binary {#install-binary}
+## Install binary
 
 *Note: You can skip this step if you already have the latest binary installed.*
 
 Follow the [CLI install instructions](../../../manual/getting-started/self-hosted/cli.md#2-install-urbit) appropriate for your OS to download the `urbit` binary.
 
-## Spin up fake ship {#spin-up-fake-ship}
+## Spin up fake ship
 
 *Note: You can skip this step if you already have a fake `zod`.*
 
@@ -24,7 +24,7 @@ It will take a couple of minutes to spin up, but it should eventually take you t
 ~zod:dojo>
 ```
 
-## Create desk {#create-desk}
+## Create desk
 
 In the Dojo of your fake `zod`, run the following to create a new desk called `%hello`:
 
@@ -43,7 +43,7 @@ If you now run `+tree` on the desk, you'll see it now exists and has a handful o
 /sys/kelvin
 ```
 
-## Copy in extra files {#copy-in-extra-files}
+## Copy in extra files
 
 Each desk must be self-contained in terms of its `mark` files and libraries. There's a couple of extra mark files and such that we'll need to add, so run the following commands in the Dojo:
 
@@ -57,7 +57,7 @@ Each desk must be self-contained in terms of its `mark` files and libraries. The
 |cp /=landscape=/lib/docket/hoon /=hello=/lib/docket/hoon
 ```
 
-## Mount the desk {#mount-the-desk}
+## Mount the desk
 
 Now we have all the basic files we need, we can mount the desk to the host. Run the following in the Dojo:
 
@@ -71,13 +71,13 @@ Now, in an ordinary terminal (not the Dojo), navigate to the mounted desk:
 cd zod/hello
 ```
 
-## Config files {#config-files}
+## Config files
 
-### `sys.kelvin` {#syskelvin}
+### `sys.kelvin`
 
 Our desk must include a `sys.kelvin` file which specifies the kernel version it's compatible with. The `|new-desk` generator automatically added that, so we can leave it as-is.
 
-### `desk.ship` {#deskship}
+### `desk.ship`
 
 We can optionally add a `desk.ship` file to specify the original publisher of this desk. We're using a fake `zod` so let's just add `~zod` as the publisher:
 
@@ -85,7 +85,7 @@ We can optionally add a `desk.ship` file to specify the original publisher of th
 echo "~zod" > desk.ship
 ```
 
-### `desk.bill` {#deskbill}
+### `desk.bill`
 
 If we had Gall agents in this desk which should be automatically started when the desk is installed, we'd add them to a `hoon` list in the `desk.bill` file. It would look something like this:
 
@@ -97,7 +97,7 @@ If we had Gall agents in this desk which should be automatically started when th
 
 In this example we're not adding any agents, so we'll simply omit the `desk.bill` file.
 
-### `desk.docket-0` {#deskdocket-0}
+### `desk.docket-0`
 
 The final file we need is `desk.docket-0`. This one's more complicated, so we'll open it in our preferred text editor:
 
@@ -135,7 +135,7 @@ ls
 desk.docket-0  desk.ship  lib  mar  sur  sys.kelvin
 ```
 
-## Commit {#commit}
+## Commit
 
 Now we've added out configuration files, we can commit them to the desk. Back in the fake `zod`'s Dojo, run the following:
 
@@ -151,7 +151,7 @@ You should see something like this as the result:
 + /~zod/hello/9/desk/docket-0
 ```
 
-## Install {#install}
+## Install
 
 The next step is to install the desk as an app. Run the following in the Dojo:
 
@@ -167,7 +167,7 @@ docket: awaiting manual glob for %hello desk
 
 That's because our `desk.docket-0` file includes a [`%glob-ames`](../reference/dist/docket.md#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob of front-end files.
 
-## Create files for glob {#create-files-for-glob}
+## Create files for glob
 
 We'll now create the files for the glob. We'll use a very simple static HTML page that just displayes "Hello World!" and an image. Typically we'd have a more complex JS web app that talked to apps on our ship through Eyre's channel system, but for the sake of simplicity we'll forgo that. Let's hop back in the Unix terminal and run a few commands:
 
@@ -224,7 +224,7 @@ hello-glob
 └── index.html
 ```
 
-## Login to Landscape {#login-to-landscape}
+## Login to Landscape
 
 Open a web browser and navigate to `localhost:8080`, or just `localhost` if port `8080` doesn't work. It should take you to the fake `zod`'s login screen. Login with the default code of `lidlut-tabwed-pillex-ridrup`.
 
@@ -232,7 +232,7 @@ Once you login, you'll notice you have the `Hello` app tile, but it still says "
 
 ![hello installing tile](https://media.urbit.org/guides/additional/dist/2-installing.png)
 
-## Upload to glob {#upload-to-glob}
+## Upload to glob
 
 We can now create a glob from the `hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](../reference/dist/glob.md#globulator) tool:
 
@@ -250,7 +250,7 @@ And if we click on the tile, it'll load the `index.html` in our glob:
 
 Our app is working!
 
-## Publish {#publish}
+## Publish
 
 The final step is publishing our desk with the `%treaty` agent so others can install it. To do this, there's a simple command in the dojo:
 
@@ -261,7 +261,7 @@ The final step is publishing our desk with the `%treaty` agent so others can ins
 
 Note: For desks without a docket file (and therefore without a tile and glob), treaty can't be used. Instead you can make the desk public with `|public %desk-name`.
 
-## Remote install {#remote-install}
+## Remote install
 
 Let's spin up another fake ship in the terminal so we can try install it:
 

@@ -1,4 +1,4 @@
-# Ship Monitoring {#ship-monitoring}
+# Ship Monitoring
 
 The `%ahoy` desk by [~midden-fabler](https://urbit.org/ids/~midden-fabler) provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using [Behn](../../../glossary/behn.md).
 
@@ -10,7 +10,7 @@ The `%ahoy` desk by [~midden-fabler](https://urbit.org/ids/~midden-fabler) provi
 :ahoy|set-update-interval ~m30
 ```
 
-## `/sur` Structure Files {#sur-structure-files}
+##  `/sur` Structure Files
 
 As with other agents, we think about our data structures and actions before we dive into the agent code.  The structure file here defines the state for the agent, `records`, which is a collection of ships to watch and the update interval for sending notifications.
 
@@ -49,13 +49,13 @@ Three commands are supported:  to add a ship to the watchlist at a given watch i
 
 No special mark files are necessary for `%ahoy`.
 
-## `/app` Agent Files {#app-agent-files}
+##  `/app` Agent Files
 
 The agent itself is simple:  it maintains `records` as state and processes pokes from generators or the front-end and gifts from `%behn` in particular.
 
 In addition, `%ahoy` sends notifications using `%hark-store`, the notification process integrated with Landscape and Grid.
 
-### Pokes {#pokes}
+### Pokes
 
 At the macro level, `++on-poke` recognizes three poke cages:
 
@@ -117,7 +117,7 @@ A number of other facilities in `rudder` are employed here as well:
 ['Processed succesfully.' cards +.state]
 ```
 
-### Gifts {#gifts}
+### Gifts
 
 The agent expects to receive a `%wake` gift periodically from Behn on the wire `%update-interval`.  It handles this by means of an arm in the agent's helper core, `++on-update-interval`.
 
@@ -748,7 +748,7 @@ The CSS styling is included via a library core:
 
 </details>
 
-### Rendering Sigils {#rendering-sigils}
+### Rendering Sigils
 
 [Sigils](https://urbit.org/blog/creating-sigils) are unique visual representations of `@p` ship identifiers.  Many Urbit apps use sigils in small or large sizes as ship icons.
 
@@ -760,7 +760,7 @@ A sigil library is provided with ~paldev's Suite tools.  We do not include the c
 The sigils are rendered in `/app/ahoy/webui/index.hoon`.
 
 
-## `/gen` Generator Files {#gen-generator-files}
+##  `/gen` Generator Files
 
 Some agents (notably `%helm`, a Dojo tool) are instrumented to work directly with generators at the command line.  The `%ahoy` agent demonstrates this with several generator files such as `/gen/add-watch.hoon`, used thus:
 
@@ -793,6 +793,6 @@ is the equivalent of
 :ahoy &ahoy-command [%add-watch ~zod ~h2]
 ```
 
-### Exercise:  Compose a Generator {#exercise-compose-a-generator}
+### Exercise:  Compose a Generator
 
 - Without consulting the `%ahoy` source code, compose a generator `/gen/ahoy/del-watch.hoon` which removes a ship from the watchlist.

@@ -1,4 +1,4 @@
-# Decrement {#decrement}
+# Decrement
 
 A good practice exercise for Nock is a decrement formula.  Ie, a formula `f` which implements the partial function that produces `(s - 1)` if `s` is a nonzero atom, and otherwise does not terminate.
 
@@ -19,7 +19,7 @@ Of course, increment is built into Nock.  So, ha, that's easy.
 
 The best way to learn Nock is to **stop reading right now**, and go write your own decrement formula.  There's no substitute for doing it yourself.  But the second best way is faster...
 
-## Decrement in Hoon {#decrement-in-hoon}
+## Decrement in Hoon
 
 How do we decrement?  A good way to start is to gaze fondly on how we'd do it if we actually had a real language, ie, Hoon. Here is a minimal decrement in Hoon:
 

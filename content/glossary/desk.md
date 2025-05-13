@@ -1,4 +1,4 @@
-# Desk {#desk}
+# Desk
 
 A **desk** is an independently revision-controlled branch of a [ship](ship.md) that uses the [Clay](clay.md) filesystem. Each desk contains its own apps, [mark](mark.md) definitions, files, and so forth.
 
@@ -8,6 +8,6 @@ Traditionally a ship has at least a `%base` desk, and typically `%landscape` and
 2. A list of zero or more parents.
 3. A map from paths to data.
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [Using Your Ship](https://urbit.org/using/os/filesystem): A user guide that includes instructions for using desks.

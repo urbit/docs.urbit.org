@@ -1,4 +1,4 @@
-# HD Wallet {#hd-wallet}
+# HD Wallet
 
 The **Urbit HD Wallet** (_Hierarchical Deterministic_ Wallet) is a system of related Ethereum addresses that's used to store and manage an Urbit identity. Each of these Ethereum addresses have different powers over the same identity, from setting networking keys for communicating in the [Arvo](arvo.md) network to transferring ownership of identities.
 
@@ -6,7 +6,7 @@ The Ethereum address that has full powers over a given Urbit identity, including
 
 If a proxy or ownership address is compromised or has its keys lost, it can always be rederived using the master ticket, which is the piece of entropy that was initially used to derive the HD wallet.
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [The Azimuth concepts page](../system/identity): A more in-depth explanation of Azimuth.
 - [Urbit HD Wallet](../system/identity/concepts/hd-wallet.md): An in-depth explanation of the HD wallet.

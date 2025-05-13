@@ -1,8 +1,8 @@
-# Identity {#identity}
+# Identity
 
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for _Urbit identities_. You need such an identity to use the Arvo network.
 
-## Arvo vs. Azimuth {#arvo-vs-azimuth}
+## Arvo vs. Azimuth
 
 Urbit is a project, not a single computer system. It has multiple components: Arvo, the operating system, and Azimuth, the identity system. Let's compare them.
 
@@ -14,7 +14,7 @@ These otherwise-parallel systems meet when you want to connect to the Arvo netwo
 
 A metaphor might help illustrate the relationship between these two systems: the Arvo network is the neighborhood that you live in; Azimuth is the bank vault that stores the deed to your house.
 
-## Smart contracts {#smart-contracts}
+## Smart contracts
 
 Azimuth consists of the following smart contracts:
 
@@ -29,7 +29,7 @@ Azimuth consists of the following smart contracts:
 
 Walkthroughs of some of the smart contracts are linked to [below](#other).
 
-## General Azimuth Resources {#general-azimuth-resources}
+## General Azimuth Resources
 
 These documents pertain to L1 and other general aspects of Azimuth. For L2 docs, [see below](#naive-rollups).
 
@@ -40,7 +40,7 @@ These documents pertain to L1 and other general aspects of Azimuth. For L2 docs,
 - [Advanced Azimuth Tools](guides/advanced-azimuth-tools.md) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
 - [Life and Rift](concepts/life-and-rift.md) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
 
-## Naive rollups {#naive-rollups}
+## Naive rollups
 
 In 2021, a new system was introduced to Azimuth called **naive rollups**, and often referred to as **layer 2** or L2. It was intended to reduce gas costs for working with Urbit ID and friction associated with using cryptocurrency in general. This system allows batches of Azimuth transactions to be submitted together as a single transaction using an Urbit node known as a "roller". The PKI state transitions resulting from these transactions are computed locally by your urbit rather than by the [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/).
 

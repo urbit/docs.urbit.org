@@ -1,4 +1,4 @@
-# Voting {#voting}
+# Voting
 
 **Voting** is a power available to [galaxies](galaxy.md), in their capacities as members of the [Galactic Senate](senate.md), through an [Azimuth](azimuth.md) smart contract. Galaxies collectively make decisions about the governance of Azimuth and the [Arvo](arvo.md) network by voting. There are two types of proposals that can be voted on: an [upgrade proposal](upgrade.md) and a [document proposal](docvote.md).
 

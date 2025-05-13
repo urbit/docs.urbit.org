@@ -1,4 +1,4 @@
-# 5. Cores {#5-cores}
+# 5. Cores
 
 _This module will introduce the key Hoon data structure known as the **core**, as well as ramifications._
 
@@ -9,7 +9,7 @@ Cores are the most important data structure in Hoon.  They allow you to solve ma
 This lesson will introduce another [core](../../glossary/core.md) to solve a specific use case, then continue with a general discussion of cores. Getting cores straight will be key to understanding why Hoon has the structure and internal logic it does.
 
 
-## Repeating Yourself Using a Trap {#repeating-yourself-using-a-trap}
+##  Repeating Yourself Using a Trap
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS130%20-%20Traps.mp4" %}
 
@@ -98,7 +98,7 @@ You can do even better using _interpolation_:
 ==
 ```
 
-### Exercise:  Calculate a Factorial {#exercise-calculate-a-factorial}
+### Exercise:  Calculate a Factorial
 
 - Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$.  We will introduce a couple of new bits of syntax and a new gate ([++dec](../../language/hoon/reference/stdlib/1a.md#dec)).  Make this into a generator `factorial.hoon`:
 
@@ -143,7 +143,7 @@ You can do even better using _interpolation_:
 
     - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
 
-### Exercise:  Tracking Expression Structure {#exercise-tracking-expression-structure}
+### Exercise:  Tracking Expression Structure
 
 As we write more complicated programs, it is helpful to learn to read the [runes](../../glossary/rune.md) by identifying which daughter expressions attach to which runes, e.g.:
 
@@ -214,7 +214,7 @@ We will revert to the irregular form more and more.  If you would like to see ex
 
 (_There's a lot going on in there._  Focus on the four-letter runic identifiers:  `%sgpm` for `~&` [sigpam](../../language/hoon/reference/rune/sig.md#-sigpam), for instance.)
 
-### Exercise:  Calculate a sequence of numbers {#exercise-calculate-a-sequence-of-numbers}
+### Exercise:  Calculate a sequence of numbers
 
 Produce a gate (generator) which accepts a `@ud` value and calculates the series where the $$i^\text{th}$$ term in the series is given by the equation
 
@@ -234,7 +234,7 @@ that is, the first numbers are 0, 1, 4, 9, 16, 25, etc.
 
 For this exercise, you do not need to store these values in a list. Calculate each one but only return the final value.
 
-### Exercise:  Output each letter in a `tape` {#exercise-output-each-letter-in-a-tape}
+### Exercise:  Output each letter in a `tape`
 
 Produce a gate (generator) which accepts a [tape](../../glossary/tape.md) value and returns a `(list @ud)` containing the ASCII value of each character. Use a `|-` [barhep](../../language/hoon/reference/rune/bar.md#--barhep) [trap](../../glossary/trap.md). The previous code simply modified a value by addition.  You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a [list](../../glossary/list.md).
 
@@ -260,7 +260,7 @@ Two tools that may help:
 ```
 
 
-## Cores {#cores}
+##  Cores
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS133%20-%20Cores.mp4" %}
 
@@ -285,7 +285,7 @@ For instance, when we first composed generators, we made what are called “nake
 
 Cores have two kinds of values attached:  [arms](../../glossary/arm.md) and _legs_, both called limbs.  Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations.  Legs are limbs which store data (with e.g. `=/` tisfas).
 
-### Arms {#arms}
+### Arms
 
 So legs are for data and arms are for computations.  But what _specifically_ is an arm, and how is it used for computation?  Let's begin with a preliminary explanation that we'll refine later.
 
@@ -293,7 +293,7 @@ An [arm](../../glossary/arm.md) is some expression of Hoon encoded as a noun.  (
 
 Every expression of Hoon is evaluated relative to a subject.  An [arm](../../glossary/arm.md) is a Hoon expression to be evaluated against the [core](../../glossary/core.md) subject (i.e. its parent core is its subject).
 
-#### Arms for Gates {#arms-for-gates}
+#### Arms for Gates
 
 Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the `++` [luslus](../../language/hoon/reference/rune/lus.md#-luslus) digraph.  (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value. The `--` [hephep](../../language/hoon/reference/rune/terminators.md#---hephep) limiter digraph is used because `|%` [barcen](../../language/hoon/reference/rune/bar.md#-barcen) can have any number of arms attached.  Like `++`, it is not formally a rune.)
 
@@ -322,11 +322,11 @@ Give the name `adder` to the above, and use it thus:
 
 Notice here that we read the arm resolution from right-to-left.  This isn't the only way to address an arm, but it's the most common one.
 
-### Exercise:  Produce a Gate Arm {#exercise-produce-a-gate-arm}
+### Exercise:  Produce a Gate Arm
 
 - Compose a core which contains arms for multiplying a value by two and for dividing a value by two.
 
-#### Arms for Types {#arms-for-types}
+#### Arms for Types
 
 We can define custom types for a core using `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#-lusbuc) digraphs.  We won't do much with these yet but they will come in handy for custom types later on.
 
@@ -341,7 +341,7 @@ This core defines a set of types intended to work with playing cards:
 --
 ```
 
-#### Cores in Generators {#cores-in-generators}
+#### Cores in Generators
 
 When we write generators, we can include helpful tools as arms either before the main code (with `=>` [tisgar](../../language/hoon/reference/rune/tis.md#-tisgar)) or after the main code (with `=<` [tisgal](../../language/hoon/reference/rune/tis.md#-tisgal)):
 
@@ -359,7 +359,7 @@ When we write generators, we can include helpful tools as arms either before the
 
 A library (a file in `/lib`) is typically structured as a `|%` [barcen](../../language/hoon/reference/rune/bar.md#-barcen) core.
 
-### Legs {#legs}
+### Legs
 
 A _leg_ is a data value.  They tend to be trivial but useful ways to pin constants.  `=/` tisfas values are legs, for instance.
 
@@ -371,7 +371,7 @@ A _leg_ is a data value.  They tend to be trivial but useful ways to pin constan
 
 Under the hood, legs and arms are distinguished by the Nock instructions used in each case.  A leg is evaluated by Nock 0, while an arm is evaluated by Nock 9.
 
-### Recalculating a Limb {#recalculating-a-limb}
+### Recalculating a Limb
 
 Arms and legs are both _limbs_.  Either one can be replaced in a given subject.  This turns out to be very powerful, and permits Hoon to implement gates (functions) in a mathematically rigorous way, among other applications.
 
@@ -408,7 +408,7 @@ $(counter (add counter 1), sum (add sum counter))
 
 This statement means that we recalculate the `$` buc arm of the current subject with the indicated changes.  But what is `$` buc?  `$` buc is the _default arm_ for many core structures, including `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) gate cores and `|-` [barhep](../../language/hoon/reference/rune/bar.md#--barhep) trap cores.
 
-### What is a Gate? {#what-is-a-gate}
+### What is a Gate?
 
 A core is a cell:  `[battery payload]`.
 
@@ -434,7 +434,7 @@ Like all arms, `$` buc is computed with its parent core as the subject. When `$`
 
 We will always call the values supplied to the gate the “sample” since we will later discover that this technical meaning (`[battery [sample context]]`) holds throughout more advanced cores.
 
-### Exercise:  Another Way to Calculate a Factorial {#exercise-another-way-to-calculate-a-factorial}
+### Exercise:  Another Way to Calculate a Factorial
 
 Let's revisit our factorial code from above:
 
@@ -476,7 +476,7 @@ This can be collapsed into a shorter equivalent form by employing the irregular 
 
 (Sugar syntax like `$()` does not affect code efficiency, merely visual layout.)
 
-#### The `$` Buc Arm {#the-buc-arm}
+#### The `$` Buc Arm
 
 The (only) [arm](../../glossary/arm.md) of a [gate](../../glossary/gate.md) encodes the instructions for the Hoon function in question.
 
@@ -505,7 +505,7 @@ It's worth pointing out that the arm named `$` buc can be used like any other na
 
 This result may seem a bit strange.  We didn't call `inc` or in any other way pass it a number.  Yet using `$` buc to evaluate `inc`'s arm seems to work—sort of, anyway.  Why is it giving us `1` as the return value?  We can answer this question after we understand gate samples a little better.
 
-#### The Sample {#the-sample}
+#### The Sample
 
 The [sample](../../glossary/sample.md) of a gate is the address reserved for storing the argument(s) to the Hoon function. Although we don't know about addressing yet, you saw above that `+2` referred to the battery.  The sample is always at the head of the gate's tail, `+6`.  (We'll look at addressing in more depth in [the next module](G-trees.md).)
 
@@ -539,7 +539,7 @@ The placeholder value, as you saw in the previous module, is sometimes called th
 
 The face value of `a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`.  This was so we can use `a` to refer to the sample to generate the product with `(add 1 a)`.
 
-#### The Context {#the-context}
+#### The Context
 
 The context of a gate contains other data that may be necessary for the `$` buc arm to evaluate correctly.  The context is always located at the tail of the tail of the gate, i.e., `+7` of the gate.  There is no requirement for the context to have any particular arrangement, though often it does.
 
@@ -558,7 +558,7 @@ Let's look at the context of inc:
 
 This is the default Dojo subject from before we put `inc` into the subject. The `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) expression defines the context as whatever the subject is.  This guarantees that the context has all the information it needs to have for the `$` buc arm to work correctly.
 
-#### Gates Define Functions of the Sample {#gates-define-functions-of-the-sample}
+#### Gates Define Functions of the Sample
 
 The value of a function's output depends solely upon the input value. This is one of the features that make functions desirable in many programming contexts.  It's worth going over how Hoon function calls implement this feature.
 
@@ -584,7 +584,7 @@ Let's unbind inc to keep the subject tidy:
 -find.inc
 ```
 
-#### Modifying the Context of a Gate {#modifying-the-context-of-a-gate}
+#### Modifying the Context of a Gate
 
 It is possible to modify the context of a gate when you make a function call; or, to be more precise, it's possible to call a _mutant copy_ of the gate in which the context is modified.  To illustrate this let's use another example gate.  Let's write a gate which uses a value from the context to generate the product.  Bind `b` to the value 10:
 
@@ -644,7 +644,7 @@ Before finishing the lesson let's unbind ten:
 > =ten
 ```
 
-### Recursion {#recursion}
+### Recursion
 
 _Recursion_ refers to a return to the same logical point in a program again and again.  It's a common pattern for solving certain problems in most programming languages, and Hoon is no exception.
 
@@ -684,7 +684,7 @@ If you find yourself caught in such a loop, press `Ctrl`+`C` to stop execution.
 
 Recursion can be set up different ways.  A full treatment requires thinking about [algorithmic complexity and efficiency](https://en.wikipedia.org/wiki/Big_O_notation), but we can highlight some good rules of thumb here.
 
-#### Tutorial:  The Fibonacci Sequence {#tutorial-the-fibonacci-sequence}
+#### Tutorial:  The Fibonacci Sequence
 
 For instance, let's talk about calculating the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence), which is a sequence of numbers wherein each is formed by adding the two previous numbers together.  Thus 1, 1, 1+1→2, 1+2→3, 2+3→5, and so forth.  We may write the $$n^\text{th}$$ Fibonacci number in a generic way as:
 
@@ -815,7 +815,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     - Produce a diagram of how this last implementation yields a Fibonacci sequence for *F*₅, `(fibonacci 5)`.
 
-#### Tutorial:  Tail-Call Optimization of the Factorial Gate {#tutorial-tail-call-optimization-of-the-factorial-gate}
+#### Tutorial:  Tail-Call Optimization of the Factorial Gate
 
 The last factorial gate we produced looked like this:
 
@@ -882,7 +882,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
 
     We simply multiply `t` and `n` to produce the new value of `t`, and then decrement `n` before repeating. Since this `$` call is the final and solitary thing that is run in the default case and since we are doing all computation before the call, this version is properly tail-recursive. We don't need to do anything to the result of the recursion except recurse it again. That means that each iteration can be replaced instead of held in memory.
 
-#### Tutorial:  The Ackermann Function {#tutorial-the-ackermann-function}
+#### Tutorial:  The Ackermann Function
 
 The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is one of the earliest examples of a function that is both totally computable—meaning that it can be solved—and not primitively recursive—meaning it can not be rewritten in an iterative fashion.
 
@@ -924,7 +924,7 @@ The Ackermann function is not terribly useful in and of itself, but it has an in
 
 - Calculate some of the $$m$$/$$n$$ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
 
-### Exercise:  The Sudan Function {#exercise-the-sudan-function}
+### Exercise:  The Sudan Function
 
 The [Sudan function](https://en.wikipedia.org/wiki/Sudan_function) is related to the Ackermann function.
 

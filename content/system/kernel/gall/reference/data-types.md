@@ -1,9 +1,9 @@
-# Data Types {#data-types}
+# Data Types
 
 This document describes the data types for Gall defined in `lull.hoon`.
 
 
-## `bitt` {#bitt}
+## `bitt`
 
 Incoming subscriptions.
 
@@ -15,7 +15,7 @@ This is the structure Gall uses to keep track of incoming subscriptions for a Ga
 
 ---
 
-## `boat` {#boat}
+## `boat`
 
 Outgoing subscriptions.
 
@@ -31,7 +31,7 @@ The `acked` field is `%.y` if they have acknowledged our subscription request wi
 
 ---
 
-## `boar` {#boar}
+## `boar`
 
 Subscription nonces.
 
@@ -43,7 +43,7 @@ Gall uses this to keep track of nonces for subscriptions.
 
 ---
 
-## `fans` {#fans}
+## `fans`
 
 Revisions for a remote scry file published at a particular path.
 
@@ -55,7 +55,7 @@ The `mop` is organized by file revision number. Each value includes the date-tim
 
 ---
 
-## `bowl` {#bowl}
+## `bowl`
 
 Additional agent state.
 
@@ -92,7 +92,7 @@ A `bowl` is given to the agent core each time an event comes in. The fields are 
 
 ---
 
-## `dude` {#dude}
+## `dude`
 
 Agent name.
 
@@ -102,7 +102,7 @@ Agent name.
 
 ---
 
-## `gill` {#gill}
+## `gill`
 
 A general contact.
 
@@ -114,7 +114,7 @@ A pair of the ship and agent name.
 
 ---
 
-## `load` {#load}
+## `load`
 
 Loadout.
 
@@ -126,7 +126,7 @@ The [`dude`](#dude) is the agent name, the `beak` is the ship/desk/case in which
 
 ---
 
-## `scar` {#scar}
+## `scar`
 
 Opaque duct - used internally.
 
@@ -140,7 +140,7 @@ Opaque duct - used internally.
 
 ---
 
-## `suss` {#suss}
+## `suss`
 
 Configuration report.
 
@@ -150,7 +150,7 @@ Configuration report.
 
 ---
 
-## `well` {#well}
+## `well`
 
 Desk and agent.
 
@@ -158,7 +158,7 @@ Desk and agent.
 +$  well  (pair desk term)
 ```
 
-## `deal` {#deal}
+## `deal`
 
 An agent task or raw poke.
 
@@ -173,7 +173,7 @@ The additional `%raw-poke` is for pokes which haven't yet been converted to an o
 
 ---
 
-## `unto` {#unto}
+## `unto`
 
 An agent gift or a raw fact.
 
@@ -188,7 +188,7 @@ The additional `%raw-fact` is for facts which haven't yet been converted to an o
 
 ---
 
-## `verb` {#verb}
+## `verb`
 
 Verbosity flags.
 
@@ -200,7 +200,7 @@ Flags to set Gall verbosity. Currently only `%odd` for unusual errors.
 
 ---
 
-## `coop` {#coop}
+## `coop`
 
 Verbosity flags.
 
@@ -212,7 +212,7 @@ A security context for remote scries.
 
 ---
 
-## `agent` {#agent}
+## `agent`
 
 ```hoon
 ++  agent
@@ -222,7 +222,7 @@ A security context for remote scries.
 
 Container for Gall agent types. The most significant arm is [`form:agent`](#formagent), which specifies the structure of the agent itself. There are also some additional structures defined here, mostly defining the kinds of messages agents can send. The different arms of the core in `agent` are considered separately below.
 
-### `step:agent` {#stepagent}
+### `step:agent`
 
 ```hoon
 +$  step  (quip card form)
@@ -232,7 +232,7 @@ A cell of [`card:agent`](#cardagent)s to be sent and a new agent state. This is 
 
 ---
 
-### `card:agent` {#cardagent}
+### `card:agent`
 
 ```hoon
 +$  card  (wind note gift)
@@ -258,7 +258,7 @@ For `%pass`, `p` specifies the `wire` on which a response should be returned. Se
 
 ---
 
-### `note:agent` {#noteagent}
+### `note:agent`
 
 ```hoon
 +$  note
@@ -300,7 +300,7 @@ A `note:agent` is always wrapped in a `%pass` [`card:agent`](#cardagent).
 
 ---
 
-### `task:agent` {#taskagent}
+### `task:agent`
 
 The types of messages initiated by our agent and sent to another agent.
 
@@ -326,7 +326,7 @@ A `task:agent` is always wrapped in a `%pass` [`card:agent`](#cardagent).
 
 ---
 
-### `gift:agent` {#giftagent}
+### `gift:agent`
 
 The types of messages our agent can either send in response to messages from other agents, or send to subscribed agents.
 
@@ -350,7 +350,7 @@ A `gift:agent` is always wrapped in a `%give` [`card:agent`](#cardagent).
 
 ---
 
-### `sign:agent` {#signagent}
+### `sign:agent`
 
 A `sign` is like a [`gift:agent`](#giftagent) but it's something that comes _in_ to our agent from another agent rather than something we send out.
 
@@ -372,7 +372,7 @@ The possible types are:
 
 ---
 
-### `form:agent` {#formagent}
+### `form:agent`
 
 This defines the structure of the agent itself.
 
@@ -423,49 +423,49 @@ This defines the structure of the agent itself.
 
 The agent is a door with a [`bowl`](#bowl) as its sample and exactly ten arms. Below we'll describe each arm briefly.
 
-#### `on-init` {#on-init}
+#### `on-init`
 
 - Accepts: Nothing.
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when the agent is initially installed.
 
-#### `on-poke` {#on-poke}
+#### `on-poke`
 
 - Accepts: `cage`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent pokes our agent.
 
-#### `on-watch` {#on-watch}
+#### `on-watch`
 
 - Accepts: `path`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent subscribes to our agent.
 
-#### `on-leave` {#on-leave}
+#### `on-leave`
 
 - Accepts: `path`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent unsubscribes from a subscription path on our agent.
 
-#### `on-peek` {#on-peek}
+#### `on-peek`
 
 - Accepts: `path`
 - Produces: `(unit (unit cage))`
 
 This arm is called when a [scry](../../arvo/guides/scry.md) is performed on our agent.
 
-#### `on-agent` {#on-agent}
+#### `on-agent`
 
 - Accepts: `[wire sign:agent]`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent give our agent a [`sign:agent`](#signagent).
 
-#### `on-arvo` {#on-arvo}
+#### `on-arvo`
 
 - Accepts: `[wire sign-arvo]`
 - Produces: [`step:agent`](#stepagent)
@@ -495,7 +495,7 @@ This arm is called when a vane gives our agent a `gift`. A `sign-arvo` is:
 
 You can refer to the `/sys/lull.hoon` source code, or the API Reference of each vane in the [Arvo documentation](../../arvo).
 
-#### `on-fail` {#on-fail}
+#### `on-fail`
 
 - Accepts: `[term tang]`
 - Produces: [`step:agent`](#stepagent)

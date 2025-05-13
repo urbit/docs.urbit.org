@@ -1,23 +1,23 @@
-# Strandio {#strandio}
+# Strandio
 
 Documented below are the many useful functions in the
 `/lib/strandio.hoon` helper library. 
 
-## Send Cards {#send-cards}
+## Send Cards
 
-### `send-raw-cards` {#send-raw-cards}
+### `send-raw-cards`
 
 Send a list of `card`s.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `(list card:agent:gall)`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  send-raw-cards
@@ -28,7 +28,7 @@ A `(list card:agent:gall)`.
   [cards %done ~]
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;~  now=@da  bind:m  get-time
@@ -41,19 +41,19 @@ A `(list card:agent:gall)`.
 
 ---
 
-### `send-raw-card` {#send-raw-card}
+### `send-raw-card`
 
 Send a single `card`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `card:agent:gall`
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  send-raw-card
@@ -63,7 +63,7 @@ A `card:agent:gall`
   (send-raw-cards card ~)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 =/  card  [%pass /foo %agent [~zod %foo] %poke %noun !>(~)]
@@ -72,21 +72,21 @@ A `card:agent:gall`
 
 ---
 
-## Bowl {#bowl}
+## Bowl
 
-### `get-bowl` {#get-bowl}
+### `get-bowl`
 
 Get the bowl.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A `bowl:rand`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  get-bowl
@@ -96,7 +96,7 @@ A `bowl:rand`.
   `[%done bowl.tin]
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =bowl:rand  bind:m  get-bowl
@@ -104,19 +104,19 @@ A `bowl:rand`.
 
 ---
 
-### `get-beak` {#get-beak}
+### `get-beak`
 
 Get the beak.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A `beak`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  get-beak
@@ -126,7 +126,7 @@ A `beak`.
   `[%done [our q.byk da+now]:bowl.tin]
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =beak  bind:m  get-beak
@@ -134,19 +134,19 @@ A `beak`.
 
 ---
 
-### `get-time` {#get-time}
+### `get-time`
 
 Get the current date-time.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A `@da`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  get-time
@@ -156,7 +156,7 @@ A `@da`.
   `[%done now.bowl.tin]
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -164,19 +164,19 @@ A `@da`.
 
 ---
 
-### `get-our` {#get-our}
+### `get-our`
 
 Get our ship.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A `@p`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  get-our
@@ -186,7 +186,7 @@ A `@p`.
   `[%done our.bowl.tin]
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  our=@p  bind:m  get-our
@@ -194,19 +194,19 @@ A `@p`.
 
 ---
 
-### `get-entropy` {#get-entropy}
+### `get-entropy`
 
 Get some entropy.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A `@uvJ`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  get-entropy
@@ -216,7 +216,7 @@ A `@uvJ`.
   `[%done eny.bowl.tin]
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  eny=@uvJ  bind:m  get-entropy
@@ -224,21 +224,21 @@ A `@uvJ`.
 
 ---
 
-## Misc {#misc}
+## Misc
 
-### `install-domain` {#install-domain}
+### `install-domain`
 
 Install a domain in Eyre, triggering the setup of an SSL certificate.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `turf`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  install-domain
@@ -248,7 +248,7 @@ A `turf`.
   (send-raw-card %pass / %arvo %e %rule %turf %put turf)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (install-domain 'com' 'example' ~)
@@ -256,21 +256,21 @@ A `turf`.
 
 ---
 
-### `check-online` {#check-online}
+### `check-online`
 
 Require that a peer respond before timeout.
 
 The peer is pinged with a "hi" and must ack the poke before the timeout.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[ship @dr]`. The `@dr` is the amount of time the peer has to respond before failure.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  check-online
@@ -284,7 +284,7 @@ A pair of `[ship @dr]`. The `@dr` is the amount of time the peer has to respond 
   (pure:m ~)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (check-online ~zod ~s10)
@@ -292,19 +292,19 @@ A pair of `[ship @dr]`. The `@dr` is the amount of time the peer has to respond 
 
 ---
 
-### `take-sign-arvo` {#take-sign-arvo}
+### `take-sign-arvo`
 
 Wait for a sign from Arvo.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A pair of `[wire sign-arvo]`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-sign-arvo
@@ -320,7 +320,7 @@ A pair of `[wire sign-arvo]`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  [=wire =sign-arvo]  bind:m  take-sign-arvo
@@ -328,21 +328,21 @@ A pair of `[wire sign-arvo]`.
 
 ---
 
-## Pokes {#pokes}
+## Pokes
 
-### `poke` {#poke}
+### `poke`
 
 Poke an agent, then await a positive ack.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[dock cage]`, where the `dock` is the ship and agent you want to poke, and the `cage` is the data.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  poke
@@ -354,7 +354,7 @@ A pair of `[dock cage]`, where the `dock` is the ship and agent you want to poke
   (take-poke-ack /poke)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (poke [~zod %foo] %noun !>(~))
@@ -362,21 +362,21 @@ A pair of `[dock cage]`, where the `dock` is the ship and agent you want to poke
 
 ---
 
-### `raw-poke` {#raw-poke}
+### `raw-poke`
 
 Poke an agent then await a (n)ack.
 
 This doesn't care whether the ack is positive or negative, unlike the ordinary [poke](#poke).
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[dock cage]`, where the `dock` is the ship and agent to poke, and the `cage` is the data.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  raw-poke
@@ -399,7 +399,7 @@ A pair of `[dock cage]`, where the `dock` is the ship and agent to poke, and the
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (raw-poke [~zod %foo] %noun !>(~))
@@ -407,21 +407,21 @@ A pair of `[dock cage]`, where the `dock` is the ship and agent to poke, and the
 
 ---
 
-### `raw-poke-our` {#raw-poke-our}
+### `raw-poke-our`
 
 Poke a local agent then await a (n)ack.
 
 This doesn't care whether the ack is positive or negative, unlike the ordinary [poke-our](#poke-our).
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[app=term =cage]`, where `app` is the local agent to poke and `cage` is the data.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  raw-poke-our
@@ -432,7 +432,7 @@ A pair of `[app=term =cage]`, where `app` is the local agent to poke and `cage` 
   (raw-poke [our.bowl app] cage)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (raw-poke-our %foo %noun !>(~))
@@ -440,21 +440,21 @@ A pair of `[app=term =cage]`, where `app` is the local agent to poke and `cage` 
 
 ---
 
-### `poke-our` {#poke-our}
+### `poke-our`
 
 Poke a local agent then await an ack.
 
 Note this fails if it gets a nack back.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[=term =cage]` where `term` is the name of a local agent and `cage` is the data.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  poke-our
@@ -465,7 +465,7 @@ A pair of `[=term =cage]` where `term` is the name of a local agent and `cage` i
   (poke [our term] cage)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (poke-our %foo %noun !>(~))
@@ -473,21 +473,21 @@ A pair of `[=term =cage]` where `term` is the name of a local agent and `cage` i
 
 ---
 
-### `take-poke-ack` {#take-poke-ack}
+### `take-poke-ack`
 
 Take a poke ack on the given wire.
 
 If the ack is a nack, the strand fails.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `wire`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-poke-ack
@@ -506,7 +506,7 @@ A `wire`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (take-poke-ack /foo)
@@ -514,19 +514,19 @@ A `wire`.
 
 ---
 
-### `take-poke` {#take-poke}
+### `take-poke`
 
 Wait for a poke with a particular mark.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `mark`.
 
-#### Produces {#produces}
+#### Produces
 
 A `vase`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-poke
@@ -545,7 +545,7 @@ A `vase`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =vase  bind:m  (take-poke %noun)
@@ -553,23 +553,23 @@ A `vase`.
 
 ---
 
-## Subscriptions {#subscriptions}
+## Subscriptions
 
-### `watch` {#watch}
+### `watch`
 
 Watch a subscription path on an agent, then await a positive watch ack.
 
 Note this fails if it gets a watch nack back.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path` is the subscription path.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  watch
@@ -581,7 +581,7 @@ A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path`
   (take-watch-ack wire)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (watch /foo [~zod %foo] /some/path)
@@ -589,19 +589,19 @@ A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path`
 
 ---
 
-### `watch-one` {#watch-one}
+### `watch-one`
 
 Subscribe to a watch path on an agent, take a single fact, then await a kick.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of `[=wire =dock =path]` where `dock` is a ship and agent, and `path` is the subscription path.
 
-#### Produces {#produces}
+#### Produces
 
 The `cage` of the received fact.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  watch-one
@@ -614,7 +614,7 @@ The `cage` of the received fact.
   (pure:m cage)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  [=mark =vase]  bind:m  (watch-one /foo [~zod %foo] /some/path)
@@ -622,22 +622,22 @@ The `cage` of the received fact.
 
 ---
 
-### `watch-our` {#watch-our}
+### `watch-our`
 
 Subscribe to a watch path on a local agent, then wait for a positive
 ack.
 
 This will fail if it gets a watch nack.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of `[=wire =term =path]` where `term` is the name of the agent and `path` is the subscription path.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ::
@@ -649,7 +649,7 @@ A triple of `[=wire =term =path]` where `term` is the name of the agent and `pat
   (watch wire [our term] path)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (watch-our /foo %foo /some/path)
@@ -657,19 +657,19 @@ A triple of `[=wire =term =path]` where `term` is the name of the agent and `pat
 
 ---
 
-### `leave` {#leave}
+### `leave`
 
 Leave a subscription.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[=wire =dock]` where `dock` is the ship and agent in question.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  leave
@@ -680,7 +680,7 @@ A pair of `[=wire =dock]` where `dock` is the ship and agent in question.
   (send-raw-card card)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (leave /foo ~zod %foo)
@@ -688,19 +688,19 @@ A pair of `[=wire =dock]` where `dock` is the ship and agent in question.
 
 ---
 
-### `leave-our` {#leave-our}
+### `leave-our`
 
 Unsubscribe from a local agent.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[=wire =term]` where `term` is the local agent.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  leave-our
@@ -711,7 +711,7 @@ A pair of `[=wire =term]` where `term` is the local agent.
   (leave wire [our term])
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (leave-our /foo %foo)
@@ -719,21 +719,21 @@ A pair of `[=wire =term]` where `term` is the local agent.
 
 ---
 
-### `rewatch` {#rewatch}
+### `rewatch`
 
 Resubscribe on kick.
 
 This waits for a kick on a given wire, then rewatches the given ship, agent and path on the same wire. It then waits for a positive watch ack.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path` is the subscription path.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  rewatch
@@ -745,7 +745,7 @@ A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path`
   (pure:m ~)
 ```
 
-#### Exmaple {#exmaple}
+#### Exmaple
 
 ```hoon
 ;<  ~  bind:m  (rewatch /foo [~zod %foo] /some/path)
@@ -753,19 +753,19 @@ A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path`
 
 ---
 
-### `take-fact-prefix` {#take-fact-prefix}
+### `take-fact-prefix`
 
 Wait for a subscription update on a wire.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `wire` as the *prefix* of what you expect. E.g. if `/foo` is given, a fact with a wire of `/foo`, `/foo/bar`, `/foo/bar/baz`, etc, will be accepted.
 
-#### Produces {#produces}
+#### Produces
 
 A cell of `[wire cage]`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-fact-prefix
@@ -782,7 +782,7 @@ A cell of `[wire cage]`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  [=wire =mark =vase]  bind:m  (take-fact-prefix /foo)
@@ -790,19 +790,19 @@ A cell of `[wire cage]`.
 
 ---
 
-### `take-fact` {#take-fact}
+### `take-fact`
 
 Wait for a subscription update on a wire.
 
-#### Accepts {#accepts}
+#### Accepts
 
 The `wire` you want to listen on.
 
-#### Produces {#produces}
+#### Produces
 
 A `cage`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-fact
@@ -819,7 +819,7 @@ A `cage`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  [=mark =vase]  bind:m  (take-fact /foo)
@@ -827,19 +827,19 @@ A `cage`.
 
 ---
 
-### `take-kick` {#take-kick}
+### `take-kick`
 
 Wait for a subscription close.
 
-#### Accepts {#accepts}
+#### Accepts
 
 The `wire` you want to listen on.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-kick
@@ -856,7 +856,7 @@ The `wire` you want to listen on.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (take-kick /foo)
@@ -864,21 +864,21 @@ The `wire` you want to listen on.
 
 ---
 
-### `take-watch-ack` {#take-watch-ack}
+### `take-watch-ack`
 
 Take a watch ack on a given wire.
 
 If the watch ack is a nack, the strand fails.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `wire`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-watch-ack
@@ -897,7 +897,7 @@ A `wire`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (take-watch-ack /foo)
@@ -905,19 +905,19 @@ A `wire`.
 
 ---
 
-### `take-watch` {#take-watch}
+### `take-watch`
 
 Wait for a subscription request.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 The subscription `path`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-watch
@@ -930,7 +930,7 @@ The subscription `path`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =path  bind:m  take-watch
@@ -938,13 +938,13 @@ The subscription `path`.
 
 ---
 
-## Scries {#scries}
+## Scries
 
-### `scry` {#scry}
+### `scry`
 
 Scry an agent or vane.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[=mold =path]` where `mold` is the type returned and `path` has the following format:
 
@@ -954,11 +954,11 @@ A pair of `[=mold =path]` where `mold` is the type returned and `path` has the f
 
 The strand implicitly fills in `our` and `now` in the beak.
 
-#### Produces {#produces}
+#### Produces
 
 Data of the type produced by the mold you specified.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  scry
@@ -972,7 +972,7 @@ Data of the type produced by the mold you specified.
   .^(mold i.path (scot %p our.bowl) i.t.path (scot %da now.bowl) t.t.path)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  has=?  bind:m  (scry ? %cu %base /gen/vats/hoon)
@@ -980,21 +980,21 @@ Data of the type produced by the mold you specified.
 
 ---
 
-### `keen` {#keen}
+### `keen`
 
 Make a remote scry request.
 
 Note this doesn't wait for a response, you'd have to use a separate [take-tune](#take-tune) strand to receive the result.
 
-#### Accept {#accept}
+#### Accept
 
 A pair of `[=wire =spar:ames]`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  keen
@@ -1004,7 +1004,7 @@ A pair of `[=wire =spar:ames]`.
   (send-raw-card %pass wire %arvo %a %keen spar)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (keen /foo ~sampel /c/x/4/base/sys/hoon/hoon)
@@ -1012,19 +1012,19 @@ A pair of `[=wire =spar:ames]`.
 
 ---
 
-### `take-tune` {#take-tune}
+### `take-tune`
 
 Wait for a remote scry result on a particular wire.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `wire`.
 
-#### Produces {#produces}
+#### Produces
 
 A `[spar:ames (unit roar:ames)]`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-tune
@@ -1042,7 +1042,7 @@ A `[spar:ames (unit roar:ames)]`
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  [spar roar=(unit roar)]  bind:m  (take-tune /foo)
@@ -1050,24 +1050,24 @@ A `[spar:ames (unit roar:ames)]`
 
 ---
 
-## Time {#time}
+## Time
 
-### `wait` {#wait}
+### `wait`
 
 Send a `%wait` to Behn and wait for the `%wake`.
 
 Note there's also [sleep](#sleep) to wait for a relative amount of time
 rather than having to specify an absolute time.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `@da` of when the timer should fire.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  wait
@@ -1078,7 +1078,7 @@ A `@da` of when the timer should fire.
   (take-wake `until)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -1087,19 +1087,19 @@ A `@da` of when the timer should fire.
 
 ---
 
-### `sleep` {#sleep}
+### `sleep`
 
 Wait for a relative amount of time.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `@dr`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  sleep
@@ -1110,7 +1110,7 @@ A `@dr`.
   (wait (add now for))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (sleep ~s2)
@@ -1118,19 +1118,19 @@ A `@dr`.
 
 ---
 
-### `send-wait` {#send-wait}
+### `send-wait`
 
 Send Behn a `%wait` but don't wait for the `%wake`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `@da`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  send-wait
@@ -1142,7 +1142,7 @@ A `@da`.
   (send-raw-card card)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -1151,19 +1151,19 @@ A `@da`.
 
 ---
 
-### `set-timeout` {#set-timeout}
+### `set-timeout`
 
 Make a strand fail if it takes too long.
 
-#### Accepts {#accepts}
+#### Accepts
 
 This takes the `mold` produced but the strand you're timing, and produces a gate. The gate takes a pair of the `@dr` timeout and the strand being timed.
 
-#### Produces {#produces}
+#### Produces
 
 Data of the type produced by the strand being timed.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  set-timeout
@@ -1192,7 +1192,7 @@ Data of the type produced by the strand being timed.
   c-res
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  ((set-timeout ,~) ~s10 (poke-our %foo %noun !>(~)))
@@ -1200,25 +1200,25 @@ Data of the type produced by the strand being timed.
 
 ---
 
-### `take-wake` {#take-wake}
+### `take-wake`
 
 Wait for a wake from Behn.
 
 This is meant for internal use by [wait](#wait), you'd not typically
 use it directly.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `(unit @da)`. If the unit is non-null, it'll only accept a `%wake`
 whose wire is of the form `/wait/(scot %da the-given-time)`. If the unit
 is null, it'll accept a `%wake` with a wire of `/wait/(scot %da
 any-time)`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ::
@@ -1238,7 +1238,7 @@ any-time)`.
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -1249,24 +1249,24 @@ any-time)`.
 
 ---
 
-## Errors {#errors}
+## Errors
 
-### `retry` {#retry}
+### `retry`
 
 Retry a strand that produces a `unit` if the `unit` is null, with a backoff.
 
-#### Accepts {#accepts}
+#### Accepts
 
 `retry` first takes a `result=mold` of the return type and produces a gate. That gate takes two arguments:
 
 - `crash-after=(unit @ud)`: the number of tries before failing.
 - `computation`: A strand that produces a `(unit result)`.
 
-#### Produces {#produces}
+#### Produces
 
 The type of `result`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  retry
@@ -1285,7 +1285,7 @@ The type of `result`.
   loop(try +(try))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 =/  =hiss:eyre  [(need (de-purl:html 'http://example.com')) %get ~ ~]
@@ -1293,19 +1293,19 @@ The type of `result`.
 ```
 ---
 
-### `backoff` {#backoff}
+### `backoff`
 
 Wait for increasing amounts of time with each try.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[try=@ud limit=@dr]`, specifying the current try count and the maximum amount of time to wait.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  backoff
@@ -1323,11 +1323,11 @@ A pair of `[try=@ud limit=@dr]`, specifying the current try count and the maximu
 
 ---
 
-### `map-err` {#map-err}
+### `map-err`
 
 Rewrite a strand failure error.
 
-#### Accepts {#accepts}
+#### Accepts
 
 This function takes the return `mold` of the strand in question as its argument and returns a gate that takes two arguments:
 
@@ -1336,11 +1336,11 @@ This function takes the return `mold` of the strand in question as its argument 
 
 See the example below for usage.
 
-#### Produces {#produces}
+#### Produces
 
 Data of the type produced by the strand in question.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  map-err
@@ -1358,7 +1358,7 @@ Data of the type produced by the strand in question.
   c-res(err.next (f err.next.c-res))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m
@@ -1372,21 +1372,21 @@ Data of the type produced by the strand in question.
 
 ---
 
-## HTTP {#http}
+## HTTP
 
-### `send-request` {#send-request}
+### `send-request`
 
 Make an HTTP request via Iris, but don't wait for the response.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A [`request:http`](../../../system/kernel/eyre/reference/data-types.md#requesthttp).
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  send-request
@@ -1396,7 +1396,7 @@ A [`request:http`](../../../system/kernel/eyre/reference/data-types.md#requestht
   (send-raw-card %pass /request %arvo %i %request request *outbound-config:iris)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (send-request %'GET' 'http://example.com' ~ ~)
@@ -1404,21 +1404,21 @@ A [`request:http`](../../../system/kernel/eyre/reference/data-types.md#requestht
 
 ---
 
-### `send-cancel-request` {#send-cancel-request}
+### `send-cancel-request`
 
 Cancel a previous Iris HTTP request.
 
 This sends it on the `/request` wire used by [`send-request`](#send-request). It won't work if the original request was on a different wire.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  send-cancel-request
@@ -1427,7 +1427,7 @@ Nothing.
   (send-raw-card %pass /request %arvo %i %cancel-request ~)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  send-cancel-request
@@ -1435,21 +1435,21 @@ Nothing.
 
 ---
 
-### `take-client-response` {#take-client-response}
+### `take-client-response`
 
 Take the HTTP response from a previous HTTP request made with [`send-request`](#send-request).
 
 This listens on the `/request` wire, it won't work if you're made a request on a different wire.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 A [`client-response:iris`](../../../system/kernel/iris/reference/data-types.md#client-response).
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-client-response
@@ -1471,7 +1471,7 @@ A [`client-response:iris`](../../../system/kernel/iris/reference/data-types.md#c
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  res=client-response:iris  bind:m  take-client-response
@@ -1479,19 +1479,19 @@ A [`client-response:iris`](../../../system/kernel/iris/reference/data-types.md#c
 
 ---
 
-### `take-maybe-sigh` {#take-maybe-sigh}
+### `take-maybe-sigh`
 
 Take a unitized raw HTTP response.
 
-#### Accepts {#accepts}
+#### Accepts
  
 Nothing
 
-#### Produces {#produces}
+#### Produces
 
 A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-maybe-sigh
@@ -1508,7 +1508,7 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
   (pure:m (some (to-httr:iris +.u.rep)))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  res=(unit httr:eyre)  bind:m  take-maybe-sigh
@@ -1516,19 +1516,19 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 ---
 
-### `take-maybe-response` {#take-maybe-response}
+### `take-maybe-response`
 
 Take a unitized HTTP response.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing
 
-#### Produces {#produces}
+#### Produces
 
 A `(unit client-response:iris)`. The `unit` is null if we failed to receive a response.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-maybe-response
@@ -1544,7 +1544,7 @@ A `(unit client-response:iris)`. The `unit` is null if we failed to receive a re
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  res=(unit client-response:iris)  bind:m  take-maybe-response
@@ -1552,19 +1552,19 @@ A `(unit client-response:iris)`. The `unit` is null if we failed to receive a re
 
 ---
 
-### `extract-body` {#extract-body}
+### `extract-body`
 
 Extract body from an HTTP response.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `client-response:iris`
 
-#### Produces {#produces}
+#### Produces
 
 A `cord`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  extract-body
@@ -1579,19 +1579,19 @@ A `cord`.
 
 ---
 
-### `fetch-cord` {#fetch-cord}
+### `fetch-cord`
 
 Get the HTTP response body from a URL.
 
-#### Accepts {#accepts}
+#### Accepts
 
 The URL in a `tape`.
 
-#### Produces {#produces}
+#### Produces
 
 A `cord` of the response body.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  fetch-cord
@@ -1604,7 +1604,7 @@ A `cord` of the response body.
   (extract-body client-response)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  bod=@t  bind:m  (fetch-cord "http://example.com")
@@ -1612,19 +1612,19 @@ A `cord` of the response body.
 
 ---
 
-### `fetch-json` {#fetch-json}
+### `fetch-json`
 
 Get some JSON from a URL.
 
-#### Accepts {#accepts}
+#### Accepts
 
 The URL as a `tape`.
 
-#### Produces {#produces}
+#### Produces
 
 A `json` structure.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  fetch-json
@@ -1638,7 +1638,7 @@ A `json` structure.
   (pure:m u.json)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =json  bind:m  (fetch-json "http://example.com")
@@ -1646,19 +1646,19 @@ A `json` structure.
 
 ---
 
-### `hiss-request` {#hiss-request}
+### `hiss-request`
 
 Make a raw HTTP request, take a raw response.
 
-#### Accepts {#accepts}
+#### Accepts
 
 `hiss:eyre`
 
-#### Produces {#produces}
+#### Produces
 
 A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ::
@@ -1670,7 +1670,7 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
   take-maybe-sigh
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 =/  =hiss:eyre  [(need (de-purl:html 'http://example.com')) %get ~ ~]
@@ -1679,21 +1679,21 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 ---
 
-## Build {#build}
+## Build
 
-### `build-file` {#build-file}
+### `build-file`
 
 Build a source file at the specified `beam`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `beam`.
 
-#### Produces {#produces}
+#### Produces
 
 A `(unit vase)`. The `vase` contains the compiled file, the `unit` is null if it failed.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  build-file
@@ -1709,7 +1709,7 @@ A `(unit vase)`. The `vase` contains the compiled file, the `unit` is null if it
   (pure:m (some !<(vase q.r.u.riot)))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da          bind:m  get-time
@@ -1718,19 +1718,19 @@ A `(unit vase)`. The `vase` contains the compiled file, the `unit` is null if it
 
 ---
 
-### `build-file-hard` {#build-file-hard}
+### `build-file-hard`
 
 Build a source file at the specified `beam`, crashing if it fails.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `beam`.
 
-#### Produces {#produces}
+#### Produces
 
 A `vase`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  build-file-hard
@@ -1746,7 +1746,7 @@ A `vase`.
   (pure:m !<(vase q.r.u.riot))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -1755,19 +1755,19 @@ A `vase`.
 
 ---
 
-### `build-mark` {#build-mark}
+### `build-mark`
 
 Build a dynamic mark core from file.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[beak mark]`.
 
-#### Produces {#produces}
+#### Produces
 
 A `dais:clay`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  build-mark
@@ -1783,7 +1783,7 @@ A `dais:clay`
   (pure:m !<(dais:clay q.r.u.riot))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da     bind:m  get-time
@@ -1792,19 +1792,19 @@ A `dais:clay`
 
 ---
 
-### `build-tube` {#build-tube}
+### `build-tube`
 
 Build a dynamic mark conversion gate from file.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* and *to* mark.
 
-#### Produces {#produces}
+#### Produces
 
 A `tube:clay`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  build-tube
@@ -1820,7 +1820,7 @@ A `tube:clay`
   (pure:m !<(tube:clay q.r.u.riot))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da     bind:m  get-time
@@ -1829,19 +1829,19 @@ A `tube:clay`
 
 ---
 
-### `build-nave` {#build-nave}
+### `build-nave`
 
 Build a static mark core from file.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[beak mark]`.
 
-#### Produces {#produces}
+#### Produces
 
 A `vase`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  build-nave
@@ -1857,7 +1857,7 @@ A `vase`.
   (pure:m q.r.u.riot)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da     bind:m  get-time
@@ -1866,15 +1866,15 @@ A `vase`.
 
 ---
 
-### `build-cast` {#build-cast}
+### `build-cast`
 
 Build a static mark conversion gate from file.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and *to* mark.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  build-cast
@@ -1890,7 +1890,7 @@ A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and *to* mar
   (pure:m q.r.u.riot)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -1899,19 +1899,19 @@ A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and *to* mar
 
 ---
 
-### `eval-hoon` {#eval-hoon}
+### `eval-hoon`
 
 Evaluate some hoon and produce the result.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[gen=hoon bez=(list beam)]`. The `gen` argument is the hoon to be evaluated. If `bez` is empty, it will be evaluated against the standard `..zuse` subject. If a list of `beam`s are provided in `bez`, each one will be read from Clay, build, and pinned to the head of the subject, before `gen` is evaluated against it.
 
-#### Produces {#produces}
+#### Produces
 
 A `vase` of the result.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  eval-hoon
@@ -1926,7 +1926,7 @@ A `vase` of the result.
   $(bez t.bez, sut (slop vax sut))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =vase  bind:m  (eval-hoon !,(*hoon (add 1 1)))
@@ -1934,21 +1934,21 @@ A `vase` of the result.
 
 ---
 
-## Clay {#clay}
+## Clay
 
-### `warp` {#warp}
+### `warp`
 
 Raw read from Clay.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `ship` and [`riff:clay`](../../../system/kernel/clay/reference/data-types.md#riff).
 
-#### Produces {#produces}
+#### Produces
 
 A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot).
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  warp
@@ -1958,7 +1958,7 @@ A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot).
   (take-writ /warp)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -1967,19 +1967,19 @@ A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot).
 
 ---
 
-### `read-file` {#read-file}
+### `read-file`
 
 Read a file from Clay.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `beam`.
 
-#### Produces {#produces}
+#### Produces
 
 A `cage`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  read-file
@@ -1992,7 +1992,7 @@ A `cage`.
   (pure:m r.u.riot)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -2001,19 +2001,19 @@ A `cage`.
 
 ---
 
-### `check-for-file` {#check-for-file}
+### `check-for-file`
 
 Check for the existence of a file in Clay.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `beam`.
 
-#### Produces {#produces}
+#### Produces
 
 A `?` which is `%.y` if the file exists, and `%.n` if not.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  check-for-file
@@ -2023,7 +2023,7 @@ A `?` which is `%.y` if the file exists, and `%.n` if not.
   (pure:m ?=(^ riot))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -2032,19 +2032,19 @@ A `?` which is `%.y` if the file exists, and `%.n` if not.
 
 ---
 
-### `list-tree` {#list-tree}
+### `list-tree`
 
 Get a list of all files in the given Clay directory.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `beam`.
 
-#### Produces {#produces}
+#### Produces
 
 A `(list path)`.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  list-tree
@@ -2057,7 +2057,7 @@ A `(list path)`.
   (pure:m !<((list path) q.r.u.riot))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da            bind:m  get-time
@@ -2066,19 +2066,19 @@ A `(list path)`.
 
 ---
 
-### `take-writ` {#take-writ}
+### `take-writ`
 
 Take a Clay read result.
 
-#### Accepts {#accepts}
+#### Accepts
 
 The `wire` to listen on.
 
-#### Produces {#produces}
+#### Produces
 
 A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot)
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  take-writ
@@ -2095,7 +2095,7 @@ A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot)
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =riot-clay  bind:m  (take-writ /warp)
@@ -2103,23 +2103,23 @@ A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot)
 
 ---
 
-## Main Loop {#main-loop}
+## Main Loop
 
-### `ignore` {#ignore}
+### `ignore`
 
 Try next on failure.
 
 This produces a failure with an `%ignore` status, which [main-loop](#main-loop) uses to skip the strand and try the next one. This is of little use outside the context of a `main-loop`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 Nothing.
 
-#### Produces {#produces}
+#### Produces
 
 Nothing.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  ignore
@@ -2129,21 +2129,21 @@ Nothing.
 
 ---
 
-### `handle` {#handle}
+### `handle`
 
 Convert skips to `%ignore` failures.
 
 This tells [main-loop](#main-loop) to try the next strand on skips. This would not be used outside of a `main-loop`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 `+handle` takes a mold and produces a gate that takes another strand.
 
-#### Produces {#produces}
+#### Produces
 
 Data of the type produced by the given mold.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  handle
@@ -2158,7 +2158,7 @@ Data of the type produced by the given mold.
   res
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =vase  bind:m  ((handle ,vase) (take-poke %foo))
@@ -2166,7 +2166,7 @@ Data of the type produced by the given mold.
 
 ---
 
-### `main-loop` {#main-loop}
+### `main-loop`
 
 A `main-loop` can be used for three things:
 
@@ -2174,15 +2174,15 @@ A `main-loop` can be used for three things:
 2. try the same input against multiple strands.
 3. Queue input on `%skip` and then dequeue from the beginning on `%done`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 It first accepts a `mold`, specifying the return type, and produces a gate. The gate produced takes a `list` of gates that take an argument of the specified `mold`, and produce the `form` of a `strand` of that mold.
 
-#### Produces {#produces}
+#### Produces
 
 Data of the type produced by the given `mold`.
 
-#### Source {#source}
+#### Source
 
 <details>
 <summary>main-loop code</summary>
@@ -2240,7 +2240,7 @@ Data of the type produced by the given `mold`.
 
 </details>
 
-#### Example {#example}
+#### Example
 
 See the [separate `main-loop`
 example](../examples/main-loop.md) or the
@@ -2248,19 +2248,19 @@ example](../examples/main-loop.md) or the
 
 ---
 
-### `echo` {#echo}
+### `echo`
 
 Echo a given message to the terminal every 2 seconds until told to stop.
 
-#### Accepts {#accepts}
+#### Accepts
 
 This strand takes nothing directly, but expects a poke with a `mark` of `%echo` and vase containing a `tape` with the message to echo. To finish, it expects a poke with a `mark` of `%over`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  echo
@@ -2286,21 +2286,21 @@ This strand takes nothing directly, but expects a poke with a `mark` of `%echo` 
 
 ---
 
-## Printing {#printing}
+## Printing
 
-### `flog` {#flog}
+### `flog`
 
 Send a wrapped Dill task to Dill.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A [`flog:dill`](../../../system/kernel/dill/reference/data-types.md#flog)
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  flog
@@ -2310,7 +2310,7 @@ A [`flog:dill`](../../../system/kernel/dill/reference/data-types.md#flog)
   (send-raw-card %pass / %arvo %d %flog flog)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (flog %text "foo")
@@ -2318,19 +2318,19 @@ A [`flog:dill`](../../../system/kernel/dill/reference/data-types.md#flog)
 
 ---
 
-### `flog-text` {#flog-text}
+### `flog-text`
 
 Print a message to the terminal via Dill.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `tape`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  flog-text
@@ -2340,7 +2340,7 @@ A `tape`.
   (flog %text tape)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (flog-text "foo")
@@ -2348,19 +2348,19 @@ A `tape`.
 
 ---
 
-### `flog-tang` {#flog-tang}
+### `flog-tang`
 
 Print a `tang` to the terminal via Dill.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `tang`
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  flog-tang
@@ -2377,7 +2377,7 @@ A `tang`
   loop(wall t.wall)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (flog-tang 'foo' 'bar' 'baz' ~)
@@ -2385,19 +2385,19 @@ A `tang`
 
 ---
 
-### `trace` {#trace}
+### `trace`
 
 Slog a `tang` to the terminal.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `tang`.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  trace
@@ -2407,7 +2407,7 @@ A `tang`.
   (pure:m ((slog tang) ~))
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (trace 'foo' 'bar' 'baz' ~)
@@ -2415,7 +2415,7 @@ A `tang`.
 
 ---
 
-### `app-message` {#app-message}
+### `app-message`
 
 Print a message to the terminal tagged with an app name, like:
 
@@ -2425,15 +2425,15 @@ my-app: foo bar baz
 
 Then, optionally, print a `tang`.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of `[term cord tang]`. The `term` is the app name, the `cord` is the message, and the `tang` is any traceback.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  app-message
@@ -2445,7 +2445,7 @@ A triple of `[term cord tang]`. The `term` is the app name, the `cord` is the me
   (flog-tang tang)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (app-message %foo 'foo bar baz' ~)
@@ -2453,13 +2453,13 @@ A triple of `[term cord tang]`. The `term` is the app name, the `cord` is the me
 
 ---
 
-## Threads {#threads}
+## Threads
 
-### `send-thread` {#send-thread}
+### `send-thread`
 
 Run an inline thread via Khan.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of:
 
@@ -2467,11 +2467,11 @@ A triple of:
 - `shed:khan`: the thread itself.
 - `wire`: the wire for responses from Khan.
 
-#### Produces {#produces}
+#### Produces
 
 `~`
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  send-thread
@@ -2483,19 +2483,19 @@ A triple of:
 
 ---
 
-### `start-thread` {#start-thread}
+### `start-thread`
 
 Start a child thread.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A `term`, the name of a thread in `/ted` of this desk.
 
-#### Produces {#produces}
+#### Produces
 
 A `tid:spider`, the ID of the child thread.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  start-thread
@@ -2505,7 +2505,7 @@ A `tid:spider`, the ID of the child thread.
   (start-thread-with-args byk.bowl file *vase)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  ~  bind:m  (start-thread %foo)
@@ -2513,11 +2513,11 @@ A `tid:spider`, the ID of the child thread.
 
 ---
 
-### `start-thread-with-args` {#start-thread-with-args}
+### `start-thread-with-args`
 
 Start a child thread with arguments.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A triple of:
 
@@ -2525,11 +2525,11 @@ A triple of:
 - `term`: the name of the thread in `/ted` of the given desk.
 - `vase`: the start argument.
 
-#### Produces {#produces}
+#### Produces
 
 A `tid:spider`, the ID of the child thread.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  start-thread-with-args
@@ -2545,7 +2545,7 @@ A `tid:spider`, the ID of the child thread.
   (pure:m tid)
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  now=@da  bind:m  get-time
@@ -2554,11 +2554,11 @@ A `tid:spider`, the ID of the child thread.
 
 ---
 
-### `thread-result` {#thread-result}
+### `thread-result`
 
 Type definition of a thread result.
 
-#### Source {#source}
+#### Source
 
 ```hoon
 +$  thread-result
@@ -2567,19 +2567,19 @@ Type definition of a thread result.
 
 ---
 
-### `await-thread` {#await-thread}
+### `await-thread`
 
 Start a thread with an argument, then await its result.
 
-#### Accepts {#accepts}
+#### Accepts
 
 A pair of `[term vase]` where `term` is the name of a thread in `/ted` of this desk, and `vase` contains the start argument.
 
-#### Produces {#produces}
+#### Produces
 
 A [`thread-result`](#thread-result)
 
-#### Source {#source}
+#### Source
 
 ```hoon
 ++  await-thread
@@ -2600,7 +2600,7 @@ A [`thread-result`](#thread-result)
   ==
 ```
 
-#### Example {#example}
+#### Example
 
 ```hoon
 ;<  =thread-result  bind:m  (await-thread %foo !>(~))

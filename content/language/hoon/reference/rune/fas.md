@@ -1,4 +1,4 @@
-# / fas · Imports {#-fas-imports}
+# / fas · Imports
 
 Fas (`/`) runes are not technically hoon runes, but instead are instructions to Arvo's build system. In the past, the build system was its own vane called Ford. Ford has since been merged into the filesystem vane [Clay](../../../../system/kernel/clay), but these are still referred to as "Ford runes".
 
@@ -13,11 +13,11 @@ The Dojo does not support Ford runes at the current time, so you should instead 
 'baz'
 ```
 
-## `/-` "fashep" {#--fashep}
+## `/-` "fashep"
 
 Import structure libraries from `/sur`.
 
-#### Syntax {#syntax}
+#### Syntax
 
 ```hoon
 /-  foo, bar, baz
@@ -25,7 +25,7 @@ Import structure libraries from `/sur`.
 
 Note there is only a single space between each item.
 
-#### Semantics {#semantics}
+#### Semantics
 
 Names correspond to files in the `/sur` directory of the same desk as this file, e.g. `/sur/foo.hoon` for `foo`. Names containing hyphens, e.g. `foo-abc`, will first resolve to `/sur/foo-abc.hoon`, and if that doesn't exist, it will try `/sur/foo/abc.hoon`.
 
@@ -33,11 +33,11 @@ Imports may be given a different face by doing `xyz=foo`. Imports may have their
 
 ---
 
-## `/+` "faslus" {#-faslus}
+## `/+` "faslus"
 
 Import libraries from `/lib`.
 
-#### Syntax {#syntax}
+#### Syntax
 
 ```hoon
 /+  foo, bar, baz
@@ -45,7 +45,7 @@ Import libraries from `/lib`.
 
 Note there is only a single space between each item.
 
-#### Semantics {#semantics}
+#### Semantics
 
 Names correspond to files in the `/lib` directory of the same desk as this file, e.g. `/lib/foo.hoon` for `foo`. Names containing hyphens, e.g. `foo-abc`, will first resolve to `/lib/foo-abc.hoon`, and if that doesn't exist, it will try `/lib/foo/abc.hoon`.
 
@@ -53,11 +53,11 @@ Imports may be given a different face by doing `xyz=foo`. Imports may have their
 
 ---
 
-## `/=` "fastis" {#-fastis}
+## `/=` "fastis"
 
 Build and import a hoon file at the specified path.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments.
 
@@ -65,13 +65,13 @@ Two arguments.
 /=  some-face  /path/to/file
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 This lets you build and import a hoon file from anywhere in the desk.
 
 The first argument is the face to pin it as. The second argument is the path to the file in the same desk as this file. The file must be a `%hoon` file, and the trailing mark (`hoon`) must be omitted from the path.
 
-#### Examples {#examples}
+#### Examples
 
 To build and import `/foo/bar.hoon` you would do:
 
@@ -81,11 +81,11 @@ To build and import `/foo/bar.hoon` you would do:
 
 ---
 
-## `/*` "fastar" {#-fastar}
+## `/*` "fastar"
 
 Import the file at the specified path as the specified mark.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Three arguments.
 
@@ -93,13 +93,13 @@ Three arguments.
 /*  some-face  %as-mark  /path/to/file
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 The first argument is the face to pin it as. The second argument is the mark it should be converted to. The third argument is the path to the file in the same desk as this file, with the trailing mark included.
 
 The mark specified may be different to the mark of the file, as long as conversion is possible. Note that a `%hoon` file will not be built like with `/=`: the type of a `%hoon` file is a `@t` so that is what will be pinned.
 
-#### Examples {#examples}
+#### Examples
 
 To import `/foo/bar.hoon` you would do:
 
@@ -111,11 +111,11 @@ To import `/foo/bar.hoon` you would do:
 
 ---
 
-## `/$` "fasbuc" {#-fasbuc}
+## `/$` "fasbuc"
 
 Import mark conversion gate.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Three arguments.
 
@@ -123,7 +123,7 @@ Three arguments.
 /$  some-face   %from-mark   %to-mark
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 The first argument is the face to pin it as. The second argument is the mark to convert _from_. The third argument is the mark to convert _to_.
 
@@ -131,7 +131,7 @@ The result will be a gate of `$-(type-1 type-2)`, pinned with the specified face
 
 The mark conversion gate will be built from marks in `/mar` on the same desk as this file.
 
-#### Examples {#examples}
+#### Examples
 
 To build a mark conversion gate from `%txt` to `%mime`, you would do:
 
@@ -149,11 +149,11 @@ like:
 
 ---
 
-## `/~` "fassig" {#-fassig}
+## `/~` "fassig"
 
 Import, build, evaluate and pin the results of many hoon files in a directory.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Three arguments.
 
@@ -161,7 +161,7 @@ Three arguments.
 /~  some-face  some-type  /some/directory
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 The first argument is the face to pin the results with. The second argument is the type each hoon file produces when evaluated. The third argument is the path to a directory in the same desk as this file, containing `%hoon` files.
 
@@ -171,7 +171,7 @@ All of the hoon files in the specified directory, when evaluated, must produce d
 
 The type of the map will be `(map knot some-type)`.
 
-#### Examples {#examples}
+#### Examples
 
 If the `/foo/bar` directory contains three files:
 
@@ -193,11 +193,11 @@ Then the following `/~` expression:
 
 ---
 
-## `/%` "fascen" {#-fascen}
+## `/%` "fascen"
 
 Build and import a mark core.
 
-#### Syntax {#syntax}
+#### Syntax
 
 Two arguments.
 
@@ -205,13 +205,13 @@ Two arguments.
 /%  some-face  %some-mark
 ```
 
-#### Semantics {#semantics}
+#### Semantics
 
 The first argument is a face to pin the mark core with. The second argument is a mark.
 
 The static mark core (a `nave:clay`) for the specified mark (which resides in the same desk as the file) is built and pinned to the subject with the specified face.
 
-#### Examples {#examples}
+#### Examples
 
 To build the mark core for the `%txt` mark:
 

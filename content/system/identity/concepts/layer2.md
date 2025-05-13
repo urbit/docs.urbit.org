@@ -1,4 +1,4 @@
-# Layer 2 Overview {#layer-2-overview}
+# Layer 2 Overview
 
 This document provides technical details on Azimuth's "Layer 2" scaling solution for Azimuth, known more formally as "naive rollups". We focus here primarily on the "Hoon smart contract" located at `/lib/naive.hoon` in your ship's pier, as well as other proximal topics.
 
@@ -8,13 +8,13 @@ This is not intended for everyday users who only wish to know how to either tran
 
 This page is also not where to find instruction on how to run your own "aggregator"/"roller". Documentation for this process is found [here](../guides/roller-tutorial.md). However, this page does contain essential background information for anybody in this category.
 
-## Summary {#summary}
+## Summary
 
 Naive rollups were developed in response to rising gas costs for performing Azimuth actions. They also serve the dual purpose of making onboarding easier, as it is now possible to acquire a planet and get on Urbit without any knowledge of Ethereum or cryptocurrency.
 
 In this section we give a high-level summary of how naive rollups function and how they affect the end user. Later sections elaborate on this summary.
 
-### Layer 1 {#layer-1}
+### Layer 1
 
 We briefly review how "Layer 1", i.e. the [Azimuth](../../../glossary/azimuth.md) smart contract suite, functions. An update to the Azimuth PKI data stored on your urbit occurs with four steps:
 
@@ -42,7 +42,7 @@ A roller is any urbit node - even a moon, comet, or fakezod will do - to which b
 
 Computing the resulting state transitions obtained from downloaded Ethereum transactions is done using `/lib/naive.hoon`, which is a gate that accepts both layer 1 transaction logs and layer 2 batches, and then computes the resulting state transitions and updates the ship's internal Azimuth data held in the Gall agent `/app/azimuth.hoon` accordingly.
 
-### Savings in gas costs {#savings-in-gas-costs}
+### Savings in gas costs
 
 There are several dimensions by which naive rollups saves on gas over layer 1. They are:
 
@@ -53,11 +53,11 @@ There are several dimensions by which naive rollups saves on gas over layer 1. T
 
 Put together, these create a reduction in gas costs of at least 65x when adding a transaction to a sufficiently large batch (approximately 30 or more transactions). A single transaction submitted as a batch is approximately 5x cheaper, while 10 transaction submitted as a batch is approximately 30x cheaper. Thus using one's own ship to submit a single-transaction batch is still a cost-saving measure.
 
-### One way trip {#one-way-trip}
+### One way trip
 
 Moving to layer 2 is a one-way trip for now. This means that once a ship moves to layer 2, it cannot be moved back to layer 1. We believe it to be technically possible to engineer a return trip, and expect that someday this will be the case, but there are no plans to implement this in the near future.
 
-## Interacting with L2 {#interacting-with-l2}
+## Interacting with L2
 
 Layer 2 ships can perform the same actions on layer 2 that they could on layer 1, but are no longer able to perform any layer 1 actions. Layer 1 ships can also perform a subset of layer 2 actions - namely the ones related to sponsorship.
 
@@ -91,7 +91,7 @@ Layer 2 Azimuth state is held by the Azimuth Gall app located at `/lib/azimuth.h
 
 For more information on how Azimuth state is handled, including how this integrates with Bridge and Ethereum, see [Azimuth data flow](flow.md).
 
-### Sponsorship state transitions {#sponsorship-state-transitions}
+### Sponsorship state transitions
 
 When either a sponsor or sponsee is on layer 2, then all sponsorship actions occur on layer 2 and layer 1 Azimuth state is ignored. The exception to this, as noted [above](#sponsorship), is when a layer 1 sponsor performs a layer 1 detach action on a layer 2 sponsee. Furthermore, any time a ship moves from layer 1 to layer 2, its sponsorship status is automatically maintained in layer 2.
 
@@ -127,7 +127,7 @@ L2-detach A1 | *   | *   | *   | A2  | -> | *   | *   | *   | A2
 L2-detach A1 | *   | *   | *   | ~   | -> | *   | *   | *   | ~
 ```
 
-## Aggregators {#aggregators}
+## Aggregators
 
 An "aggregator" or "roller" is any Urbit node that collects signed layer 2 transactions (typically via `/app/azimuth-rpc.hoon`), combines them into a "batch", and then submits the batch as an Ethereum transaction. Any urbit can be a roller, including moons, comets, and even fakezods. You can also use your own ship as a roller.
 
@@ -135,7 +135,7 @@ Tlon has set up our own roller that is free to use by the community. Using Bridg
 
 There are no security risks in utilizing an aggregator. The transactions you submit to it are signed with your private key, and so if an aggregator alters them the signature will no longer match and `naive.hoon` will reject it as an invalid transaction. The worst an aggregator can do is not submit your transaction.
 
-## Multi-keyfiles {#multi-keyfiles}
+## Multi-keyfiles
 
 As part of the layer 2 upgrade, Tlon has expanded the role of [keyfiles](../../../glossary/keyfile.md). One of our goals with layer 2 was to reduce the amount of friction experienced when getting onto Urbit. The enormous reduction in fees has made a new boot method which allows instantaneous sale of layer 2 planets or stars to be cost effective.
 
@@ -147,23 +147,23 @@ This process introduces a short period of time in which both the buyer and selle
 
 Multi-keyfiles were possible before layer 2, but as the cost of configuring keys was comparable to the cost of buying a planet, they were not practical.
 
-## Security measures {#security-measures}
+## Security measures
 
 In the process of designing naive rollups, we felt it to be of the utmost importance that there not be any loss in the security of a layer 2 ship over a layer 1 ship. In this section we outline several relevant facets of Urbit as well as particular measures that were taken to ensure that naive rollups were free of bugs and exploits. We think of `naive.hoon` as being the first "Hoon smart contract", and thus its functionality needs to be as rock-solid and guaranteed as the Azimuth Ethereum smart contracts.
 
-### Arvo is deterministic {#arvo-is-deterministic}
+### Arvo is deterministic
 
 Crucial to the functionality of Ethereum smart contracts is that they work the same way every time since the Ethereum Virtual Machine is deterministic. Similarly, as the state of Arvo is evolved via [a single pure function](../../kernel/arvo#an-operating-function), Arvo is deterministic as well. This property makes it well-suited for cases where side effects are unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the name "Hoon smart contract".
 
-### Restricted standard library {#restricted-standard-library}
+### Restricted standard library
 
 A standard security practice is to reduce the surface area of attack to be as minimal as possible. One common source of exploits among all programming languages are issues with the standard library of functions, and this is one factor that leads to the existence of multiple implementations of standard library functions for a given programming language. For instance, `glibc` is the most widely used standard library for the C programming language, but sheer size gives a large surface area in which to find exploits. Thus, other standard libraries have been written such as `musl` that are much smaller, and some argue to be more secure at least partially due to fewer lines of code. Hoon is not yet popular enough to have multiple standard library implementations, but `naive.hoon` shucks the usual standard library and so its subject contains only the exact standard library functions needed for it to function. This library is known as `tiny` and is found at `/lib/tiny.hoon`.
 
-### Unit tests {#unit-tests}
+### Unit tests
 
 `naive.hoon` is among the most well-tested software in Urbit. The test suite, which may be run with `-test %/lib/tests/naive ~` from dojo, is larger than any other test suite both in number of lines of code and number of tests. We believe branch coverage to be at or very close to 100%
 
-### Nonces {#nonces}
+### Nonces
 
 In the Layer 2 Azimuth state, each proxy belonging to a given ship (including the ownership "proxy") has a non-negative integer associated to it called a "nonce". Each transaction submitted by a given proxy also have a nonce value. If the current nonce of a proxy in the Layer 2 Azimuth state is `n`, then only a transaction from that proxy with a nonce of `n+1` will be considered valid. Otherwise the transaction is discarded. A valid transaction, by which we mean one in which the nonce and signature are correct, will increment the nonce of the proxy in the Layer 2 Azimuth state by one once processed by `naive.hoon`. Note that "valid transactions" also include ones where the action will fail, such as a planet attempting to `%spawn` another planet. For the purposes of incrementing the nonce, only the nonce and signature matter.
 

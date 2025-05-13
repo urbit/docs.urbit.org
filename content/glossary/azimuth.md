@@ -1,4 +1,4 @@
-# Azimuth {#azimuth}
+# Azimuth
 
 **Azimuth** is Urbit's identity layer, built as a suite of smart contracts on the Ethereum blockchain and several apps run locally on your [ship](ship.md). It is Urbit's method of securing digital identities that are required to use the [Arvo](arvo.md) peer-to-peer network, without the need for a central authority. Azimuth identities exist as non-fungible tokens, which are owned by Ethereum addresses and can be transferred between such addresses. Identities can use the [claims](claims.md) contract to make assertions – real-world or otherwise – about their owner.
 
@@ -8,7 +8,7 @@ There are a limited number of Azimuth identities which results in identities hav
 
 It should be noted that Azimuth isn't built just for Arvo. It can be used as an identity system for other projects.
 
-### Further Reading {#further-reading}
+### Further Reading
 
 - [The Azimuth concepts page](../system/identity): A more in-depth explanation of Azimuth.
 - [Install instructions](../manual/getting-started): Guide to installing Urbit, which includes instructions on booting with your Urbit identity.

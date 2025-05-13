@@ -1,8 +1,8 @@
-# Scry {#scry}
+# Scry
 
 Here's an example of a thread that scries ames for the IP address & port of a ship and nicely prints it:
 
-#### `get-ip.hoon` {#get-iphoon}
+#### `get-ip.hoon`
 
 ```hoon
 /-  spider
@@ -47,7 +47,7 @@ Save as `ted/get-ip.hoon` in the `%base` desk, `|commit %base`, and run it with 
 34.83.113.220:60659
 ```
 
-### Analysis {#analysis}
+### Analysis
 
 Here we use the `strandio` function `scry` which takes an argument of `[mold path]` where:
 

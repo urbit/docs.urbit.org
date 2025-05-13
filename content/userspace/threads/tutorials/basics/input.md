@@ -51,7 +51,7 @@ Since it never does any IO, `t1` and `t2` are the same: `[~2021.3.17..07.47.39..
 
 Now let's look at the contents of `bowl` and `input` in detail:
 
-## bowl
+## bowl {#bowl}
 
 `bowl` is the following:
 
@@ -103,7 +103,7 @@ You can also write a function with a gate whose sample is `strand-input:strand` 
 (pure:m !>(res))
 ```
 
-## input
+## input {#input}
 
 `input` is defined in libstrand as:
 

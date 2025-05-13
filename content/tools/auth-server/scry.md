@@ -2,7 +2,7 @@
 
 Below are all the scry paths you can query. All paths are `%x` scries.
 
-## `/proof/[turf]`
+## `/proof/[turf]` {#proofturf}
 
 Make a [`proof`](types.md#proof) for the given [`turf`](types.md#turf) (domain). This is put in a [`manifest`](types.md#manifest) and published at `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to validate requests.
 
@@ -18,7 +18,7 @@ A [`proof`](types.md#proof).
 
 ---
 
-## `/proof/wood/[turf]`
+## `/proof/wood/[turf]` {#proofwoodturf}
 
 Make a [`proof`](types.md#proof) for the given [`++wood`-encoded](.#additional-note) [`turf`](types.md#turf) (domain). This is put in a [`manifest`](types.md#manifest) and published at `<domain>/.well-known/appspecific/org.urbit.auth.json`. Auth Client uses it to validate requests.
 
@@ -34,7 +34,7 @@ A [`proof`](types.md#proof).
 
 ---
 
-## `/all`
+## `/all` {#all}
 
 Get the complete state of all existing requests.
 
@@ -44,7 +44,7 @@ You'll receive an [`initAll`](types.md#initall) update containing the current st
 
 ---
 
-## `/all/since/[time]`
+## `/all/since/[time]` {#allsincetime}
 
 Get all requests later than the specified Unix millisecond time, and their statuses.
 
@@ -60,7 +60,7 @@ You'll receive an [`initAll`](types.md#initall) update containing the current st
 
 ---
 
-## `/all/before/[time]`
+## `/all/before/[time]` {#allbeforetime}
 
 Get all requests before the specified Unix millisecond time, and their statuses.
 
@@ -76,7 +76,7 @@ You'll receive an [`initAll`](types.md#initall) update containing the current st
 
 ---
 
-## `/ship/[ship]`
+## `/ship/[ship]` {#shipship}
 
 Get the state of all existing requests for the specifed [`ship`](types.md#ship).
 
@@ -94,7 +94,7 @@ Note the leading `~` is omitted:
 
 ---
 
-## `/ship/[ship]/since/[time]`
+## `/ship/[ship]/since/[time]` {#shipshipsincetime}
 
 Get the state of all existing requests for the specifed [`ship`](types.md#ship) later than the specified Unix millisecond time.
 
@@ -110,7 +110,7 @@ You'll receive an [`initShip`](types.md#initship) update containing all entries 
 
 ---
 
-## `/ship/[ship]/before/[time]`
+## `/ship/[ship]/before/[time]` {#shipshipbeforetime}
 
 Get the state of all existing requests for the specifed [`ship`](types.md#ship) earlier than the specified Unix millisecond time.
 
@@ -126,7 +126,7 @@ You'll receive an [`initShip`](types.md#initship) update containing all entries 
 
 ---
 
-## `/turf/[turf]`
+## `/turf/[turf]` {#turfturf}
     
 Get the state of all existing requests for the specifed [`turf`](types.md#turf) (domain).
 
@@ -148,7 +148,7 @@ You'll receive an [`initTurf`](types.md#initturf) update containing all requests
 
 ---
 
-## `/turf/[turf]/since/[time]`
+## `/turf/[turf]/since/[time]` {#turfturfsincetime}
 
 Get the state of all existing requests for the specifed [`turf`](types.md#turf) (domain) later than the specified Unix millisecond time.
 
@@ -170,7 +170,7 @@ You'll receive an [`initTurf`](types.md#initturf) update containing all entries 
 
 ---
 
-## `/turf/[turf]/before/[time]`
+## `/turf/[turf]/before/[time]` {#turfturfbeforetime}
 
 Get the state of all existing requests for the specifed [`turf`](types.md#turf) (domain) earlier than the specified Unix millisecond time.
 
@@ -192,7 +192,7 @@ You'll receive an [`initTurf`](types.md#initturf) update containing all entries 
 
 ---
 
-## `/turf/wood/[turf]`
+## `/turf/wood/[turf]` {#turfwoodturf}
     
 Get the state of all existing requests for the specifed [`turf`](types.md#turf) (domain), with [`++wood` encoding](.#additonal-note).
 
@@ -208,7 +208,7 @@ You'll receive an [`initTurf`](types.md#initturf) update containing all requests
 
 ---
 
-## `/turf/wood/[turf]/since/[time]`
+## `/turf/wood/[turf]/since/[time]` {#turfwoodturfsincetime}
 
 Get the state of all existing requests for the specifed [`turf`](types.md#turf) (domain) later than the specified Unix millisecond time. With [`++wood` encoding](.#additonal-note).
 
@@ -224,7 +224,7 @@ You'll receive an [`initTurf`](types.md#initturf) update containing all entries 
 
 ---
 
-## `/turf/wood/[turf]/before/[time]`
+## `/turf/wood/[turf]/before/[time]` {#turfwoodturfbeforetime}
 
 Get the state of all existing requests for the specifed [`turf`](types.md#turf) (domain) earlier than the specified Unix millisecond time. With [`++wood` encoding](.#additonal-note).
 
@@ -240,7 +240,7 @@ You'll receive an [`initTurf`](types.md#initturf) update containing all entries 
 
 ---
 
-## `/id/[uuid]`
+## `/id/[uuid]` {#iduuid}
 
 Get a particular request and its current status, by UUID.
 
@@ -257,7 +257,7 @@ An [`entry`](types.md#entry) update containing the request in question and its c
 
 ---
 
-## `/id/status/[time]`
+## `/id/status/[time]` {#idstatustime}
 
 Get the status of a particular request.
 

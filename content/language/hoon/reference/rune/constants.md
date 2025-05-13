@@ -2,7 +2,7 @@
 
 The simplest expressions in every language are constants: atoms, strings, paths. (Strings and paths aren't all constants per se, because they have interpolations.)
 
-## Cold Atom
+## Cold Atom {#cold-atom}
 
 A constant, cold atom.
 
@@ -38,7 +38,7 @@ We can see the contrast with warm atoms by using the compiler parser function,
 
 ---
 
-## Paths
+## Paths {#paths}
 
 Path with interpolation.
 
@@ -68,7 +68,7 @@ A null-terminated list of the items, which are either constant `@ta` atoms (`kno
 
 ---
 
-## Strings with Interpolation
+## Strings with Interpolation {#strings-with-interpolation}
 
 Text string with interpolation.
 

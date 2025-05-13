@@ -46,7 +46,7 @@ The first is a `+mime` arm for converting to and from the `%mime` `mark`. When y
 
 The second case of interest is the `+json` arm for converting to and from a `%json` `mark`. If, for example, you want to write a Gall agent to which you can subscribe through Eyre's channel system, it must produce data with a `mark` containing `%json` conversion routines. If it doesn't, Eyre will not be able to deliver the data to the subscribed HTTP client in the SSE stream.
 
-## Sections
+## Sections {#sections}
 
 [Writing Marks](writing-marks.md) - A practical walkthrough of writing a `mark` file.
 

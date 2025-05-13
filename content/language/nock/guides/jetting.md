@@ -15,9 +15,9 @@ The registerization of cores is stateful. There are three stateful structures:
 - Hot state is ephemeral and entirely dependent on the runtime. It maps core labels and arm axes to jets in the runtime.
 - Warm state is the join of the mappings of cold and hot state, and should be regenerated whenever either changes.
 
-## Cold state
+## Cold state {#cold-state}
 
-Cold state is the assignment of core hierarchies to labels. It is accumulated as a side effect, as computations hinted with `%fast` are evaluated. (This hint is emitted by Hoon's [`~%` sigcen](../../hoon/reference/rune/sig.md#-sigcen) and [`~/` sigfas](../../hoon/reference/rune/sig.md#-sigfas) runes).
+Cold state is the assignment of core hierarchies to labels. It is accumulated as a side effect, as computations hinted with `%fast` are evaluated. (This hint is emitted by Hoon's [`~%` sigcen](../../hoon/reference/rune/sig.md#sigcen) and [`~/` sigfas](../../hoon/reference/rune/sig.md#sigfas) runes).
 
 A cold state has one or more *roots*. In the case of the Hoon standard library, the root is the kelvin version. In our running example, our root will be:
 
@@ -158,11 +158,11 @@ Thus, evaluating `%fast` hints has the *side effect* of updating the cold state.
 
 The result is a forest of trees where paths are denoted by lists of terms (for instance: `%baz` -> `%bar` -> `[%puny 314]`) and nodes are batteries of cores. Child nodes are cores which contain parent cores in their payloads. 
 
-### Cold state in the portable snapshot
+### Cold state in the portable snapshot {#cold-state-in-the-portable-snapshot}
 
 The Hoon type of the noun jammed as a portable snapshot is `[%arvo arvo-core %hashboard (list ^)]`. The list at axis 15 is the `tap:by` of the registry map in the runtime. (No type exists for this in the Hoon standard library, but the type is written out in a comment in [`jets.h`](https://github.com/urbit/vere/blob/1384f9d01dc187eaade3a256babdf28ad7dcc312/pkg/noun/jets.h#L13-L38).) An example of traversing the cold state is in [`_cj_ream()`](https://github.com/urbit/vere/blob/develop/pkg/noun/jets.c#L2086). There is a lot of cruft in the current vere representation.
 
-## Hot state
+## Hot state {#hot-state}
 
 Cold state is entirely a function of the nock execution history of a pier: specifically, all of the `%fast` hints that have been evaluated. It is thus necessarily persistent. Once we evaluate a `%fast` hint we may retain the resulting core indefinitely, and to avoid jet misses we must retain the information provided by the hint. 
 
@@ -176,7 +176,7 @@ The hot state associates core names, and axes into core batteries, with procedur
 - An axis into the battery of the named core (2 in our example, since the named core is a gate)
 - A function pointer or other identifier of the procedure to invoke in place of interpreting the arm of the core.
 
-## Warm state
+## Warm state {#warm-state}
 
 Warm state is entirely a function of cold state and hot state, and is not strictly conceptually necessary. Anytime an arm of a core is invoked we could check the cold state for a matching entry, and then check the hot state for an entry corresponding to the tree path, finally checking that the formula we are invoking matches the formula at the hot state's specified axis in the core. This however would be almost intolerably slow.
 

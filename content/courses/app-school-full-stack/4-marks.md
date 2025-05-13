@@ -4,7 +4,7 @@ In this section we'll write the mark files for our agent. We'll need two marks, 
 
 Note that a mark called `%foo-bar` will first be looked for in `/mar/foo-bar.hoon`, and if it's not there it will be looked for in `/mar/foo/bar.hoon`. That's why we can have a single name like `%journal-action` but have it in `/mar/journal/action.hoon`
 
-## `%journal-action`
+## `%journal-action` {#journal-action}
 
 ```hoon
 /-  *journal
@@ -29,7 +29,7 @@ First we import our `/sur/journal.hoon` structure file and also our `/lib/journa
 
 Lastly, `++grad` defines revision control methods, but can be delegated to another mark. Since this mark will never be used for actually storing files in Clay, we can just delegate it to the generic `%noun` mark rather than writing a proper set of `++grad` methods.
 
-## `%journal-update`
+## `%journal-update` {#journal-update}
 
 ```hoon
 /-  *journal
@@ -50,7 +50,7 @@ Lastly, `++grad` defines revision control methods, but can be delegated to anoth
 
 Next we have our `%journal-update` mark file. The sample of our mark door is our `$update` structure. Our `$update`s are always outbound, never inbound, so we only need to define a method for converting our `$update` structure to `$json` in the `++grow` arm, and not the opposite direction in `++grad`. Our `/lib/journal.hoon` library contains the `++enjs-update` function for performing this conversion, so we can call it with the sample `$update` as its argument. We can add `%noun` conversion methods and delegate revision control to the `%noun` mark in the same manner as our `%journal-action` mark above.
 
-## Resources
+## Resources {#resources}
 
 - [The Marks section of the Clay documentation](../../system/kernel/clay/guides/marks) - This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall Guide](../app-school/7-sur-and-marks.md#mark-files) - This part of App School goes through the basics of mark files.

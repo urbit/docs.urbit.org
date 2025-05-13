@@ -1,6 +1,6 @@
 # Islands
 
-## Challenge: Largest Island
+## Challenge: Largest Island {#challenge-largest-island}
 
 We are given a map of an island archipelago and want to determine the size of the largest island. We begin with a 2-dimensional grid which is represented as a `(list (list @ud))`. Each `@ud` entry is either a `0`, which represents water, or a `1`, which represents land. We consider two land squares to be part of the same island if they are connected horizontally or vertically, **not diagonally**. We assume that the area outside of the map is entirely water.
 
@@ -25,11 +25,11 @@ dojo: naked generator failure
 dojo: naked generator failure
 ```
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2024.3.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _An efficient and clear solution by ~dabmul-matdel._
 
@@ -221,7 +221,7 @@ inner(j +(j))
 
 
 
-### Solution #2
+### Solution #2 {#solution-2}
 _An excellent solution by ~ramteb-tinmut._
 
 ```hoon
@@ -311,7 +311,7 @@ _An excellent solution by ~ramteb-tinmut._
 --
 ```
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../../userspace/apps/guides/unit-tests.md) section.
 

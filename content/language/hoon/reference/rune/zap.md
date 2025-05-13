@@ -1,6 +1,6 @@
 # ! zap · Wild
 
-## `!,` "zapcom"
+## `!,` "zapcom" {#zapcom}
 
 Produce the Hoon AST of an expression.
 
@@ -57,7 +57,7 @@ This produces the [`$hoon`](../stdlib/4o.md#hoon) AST of expression `q`. The fir
 
 ---
 
-## `!>` "zapgar"
+## `!>` "zapgar" {#zapgar}
 
 Wrap a noun in its type (form a [`vase`](../stdlib/4o.md#vase)).
 
@@ -99,7 +99,7 @@ If you want just the type value, use a 'type spear'. This is `-:!>`, i.e., the h
 
 ---
 
-## `!<` "zapgal"
+## `!<` "zapgal" {#zapgal}
 
 Extracts a [`vase`](../stdlib/4o.md#vase) to the given mold if its type nests.
 
@@ -163,7 +163,7 @@ nest-fail
 
 ---
 
-## `!;` "zapmic"
+## `!;` "zapmic" {#zapmic}
 
 Wrap a noun in its type (raw).
 
@@ -224,7 +224,7 @@ It's unlikely you'd use this rune directly; [`!>`](#-zapgar) is much more typica
 
 ---
 
-## `!=` "zaptis"
+## `!=` "zaptis" {#zaptis}
 
 Make the Nock formula for a Hoon expression.
 
@@ -299,7 +299,7 @@ The syntax difference is that a test for equality takes two subexpressions, and 
 
 ---
 
-## `!?` "zapwut"
+## `!?` "zapwut" {#zapwut}
 
 Restrict Hoon version.
 
@@ -367,7 +367,7 @@ When `p` is a cell:
 
 ---
 
-## `!@` "zappat"
+## `!@` "zappat" {#zappat}
 
 Branch on whether a wing exists.
 
@@ -427,7 +427,7 @@ None
 
 ---
 
-## `!!` "zapzap"
+## `!!` "zapzap" {#zapzap}
 
 Crash.
 
@@ -462,7 +462,7 @@ dojo: hoon expression failed
 
 ---
 
-## `!:` "zapcol"
+## `!:` "zapcol" {#zapcol}
 
 Turn on stack trace.
 
@@ -497,7 +497,7 @@ dojo: hoon expression failed
 
 ---
 
-## `!.` "zapdot"
+## `!.` "zapdot" {#zapdot}
 
 Turn off stack trace for a subexpression `p`
 

@@ -8,6 +8,6 @@ Traditionally a ship has at least a `%base` desk, and typically `%landscape` and
 2. A list of zero or more parents.
 3. A map from paths to data.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Using Your Ship](https://urbit.org/using/os/filesystem): A user guide that includes instructions for using desks.

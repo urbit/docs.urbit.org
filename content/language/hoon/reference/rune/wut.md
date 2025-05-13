@@ -2,19 +2,19 @@
 
 Hoon has the usual program control branches. It also has the usual logical operators: AND `?&`, OR `?|`, and NOT `?!`. It also has a `?=` rune that tests whether a value matches a given type. In the course of type inference, Hoon learns from `?=` tests in the test condition of [`?:` ("wutcol")](#-wutcol) expressions.
 
-## Overview
+## Overview {#overview}
 
 All `?` runes reduce to `?:` and/or `?=`.
 
 If the condition of an `?:` is a `?=`, **and** the `?=` is testing a leg of the subject, the compiler specializes the subject type for the branches of the `?:`. Branch inference also works for expressions which expand to `?:`.
 
-The test does not have to be a single `?=`; the compiler can analyze arbitrary boolean logic ([`?&` ("wutpam")](#-wutpam), [`?|` ("wutbar")](#-wutbar), [`?!` ("wutzap")](#-wutzap)) with full short-circuiting. Equality tests ([`.=` ("dottis")](dot.md#-dottis)) are **not** analyzed.
+The test does not have to be a single `?=`; the compiler can analyze arbitrary boolean logic ([`?&` ("wutpam")](#-wutpam), [`?|` ("wutbar")](#-wutbar), [`?!` ("wutzap")](#-wutzap)) with full short-circuiting. Equality tests ([`.=` ("dottis")](dot.md#dottis)) are **not** analyzed.
 
 If the compiler detects that the branch is degenerate (only one side is taken), it fails with an error.
 
 ---
 
-## `?|` "wutbar"
+## `?|` "wutbar" {#wutbar}
 
 Logical OR.
 
@@ -95,7 +95,7 @@ If any argument evaluates to true (`%.y`), true. If all arguments evaluate to fa
 
 ---
 
-## `?-` "wuthep"
+## `?-` "wuthep" {#wuthep}
 
 Switch against a union, with no default.
 
@@ -208,7 +208,7 @@ A missing case will throw the `mint-lost` error. An extra case will throw `mint-
 
 ---
 
-## `?:` "wutcol" {#-wutcol}
+## `?:` "wutcol" {#wutcol}
 
 Branch on a boolean test.
 
@@ -282,7 +282,7 @@ Note also that all other branching expressions reduce to `?:`.
 
 ---
 
-## `?.` "wutdot"
+## `?.` "wutdot" {#wutdot}
 
 Branch on a boolean test, inverted.
 
@@ -355,7 +355,7 @@ As is usual with inverted forms, use `?.` when the true-case expression is much 
 
 ---
 
-## `?^` "wutket"
+## `?^` "wutket" {#wutket}
 
 Branch on whether a wing of the subject is a cell.
 
@@ -423,7 +423,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ---
 
-## `?<` "wutgal"
+## `?<` "wutgal" {#wutgal}
 
 Negative assertion.
 
@@ -494,7 +494,7 @@ nest-fail
 
 ---
 
-## `?>` "wutgar"
+## `?>` "wutgar" {#wutgar}
 
 Positive assertion.
 
@@ -565,7 +565,7 @@ nest-fail
 
 ---
 
-## `?+` "wutlus"
+## `?+` "wutlus" {#wutlus}
 
 Switch against a union, with a default.
 
@@ -676,7 +676,7 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 
 ---
 
-## `?&` "wutpam"
+## `?&` "wutpam" {#wutpam}
 
 Logical AND.
 
@@ -756,7 +756,7 @@ If ALL arguments evaluate to true (`%.y`), true (`%.y`). If one or more evalute 
 
 ---
 
-## `?@` "wutpat"
+## `?@` "wutpat" {#wutpat}
 
 Branch on whether a wing of the subject is an atom.
 
@@ -828,7 +828,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ---
 
-## `?~` "wutsig"
+## `?~` "wutsig" {#wutsig}
 
 Branch on whether a wing of the subject is null.
 
@@ -896,7 +896,7 @@ null, `~`.
 
 ---
 
-## `?=` "wuttis"
+## `?=` "wuttis" {#wuttis}
 
 Test pattern match.
 
@@ -959,7 +959,7 @@ A common error is `find.$`, meaning `p` is not a type.
 
 ---
 
-## `?!` "wutzap"
+## `?!` "wutzap" {#wutzap}
 
 Logical NOT.
 

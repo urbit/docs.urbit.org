@@ -12,7 +12,7 @@ We will utilize the basic calculator app logic from the [parsing guide](../../..
 We will leave all regular Gall arms as their defaults, but of course poking, subscribing, and peeking should be supported in a full application.
 
 
-##  Agent Logic
+## Agent Logic {#agent-logic}
 
 **`/sur/rpn.hoon`**
 
@@ -128,7 +128,7 @@ For this we add a helper arm to `/lib/rpn.hoon` which takes each entry, makes su
   ==
 ```
 
-### Linking
+### Linking {#linking}
 
 After a `%sole` agent has been `|install`ed, it should be registered for Dojo to cycle input to it using `|dojo/link`.
 
@@ -178,7 +178,7 @@ gall: booted %rpn
 ```
 
 
-##  Exercises
+## Exercises {#exercises}
 
 - Extend the calculator app to support modulus as `%` cen.
 - Extend the calculator app so it instead operates on `@rd` values.  Either use `++cook` to automatically convert the input values from a `1.23`-style input to the `.~1.23` `@rd` style or build a different input parser from the entries in `++royl:so`.

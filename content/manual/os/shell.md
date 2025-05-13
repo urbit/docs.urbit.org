@@ -2,7 +2,7 @@
 
 The Dojo is our shell; it processes system commands and returns output. It's a good place to quickly experiment with Urbit. On the surface the Dojo is just a Hoon REPL. On the inside, the Dojo is a system for operating on and transforming data in Urbit.
 
-### Quickstart
+### Quickstart {#quickstart}
 
 You can use the Dojo to run arbitrary Hoon code, as well as non-Hoon system commands.
 
@@ -61,7 +61,7 @@ Run system commands from `:hood`, like `reload`, using `|`:
 ~your-urbit:dojo> |reload %eyre
 ```
 
-### Generators
+### Generators {#generators}
 
 Generators are short Hoon scripts, saved as `.hoon` files in the `/gen` directory. Many Dojo commands exist in the form of generators. The syntax for running a generator is `+genname` for a generator saved as `genname.hoon` in the `%base` desk. For generators on other desks, you can use the syntax `+desk!genname`.
 
@@ -108,7 +108,7 @@ Generate a recursive directory listing. Takes a path.
 ~your-urbit:dojo> +tree %/sys
 ```
 
-### Hood
+### Hood {#hood}
 
 The hood is the system daemon. See `gen/hood` and `app/hood`.
 
@@ -140,7 +140,7 @@ The hood is the system daemon. See `gen/hood` and `app/hood`.
 
 ---
 
-### Dojo manual
+### Dojo manual {#dojo-manual}
 
 #### Sources and sinks
 
@@ -207,7 +207,7 @@ This is very often used with `+pill/solid`:
 
 Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`
 
-### Sources
+### Sources {#sources}
 
 #### `_` - Run a function
 
@@ -250,7 +250,7 @@ fintyr-haldet-fassev-solhex
 
 Generators on desks other than `%base` can be run with the syntax `+desk!generator`.
 
-### Variables
+### Variables {#variables}
 
 You can use `=` to set an environment variable in Dojo, but there are a few reserved names that have special uses.
 
@@ -299,6 +299,6 @@ The current urbit ship. Read-only.
 0v27k.n4atp.fovm6.f7ggm.jdkn5.elct5.11tna.4qtid.g4so7.a1h6g.grp7u.qml4i.0ed1v.sl0r0.97d4b.6aepr.6v6qm.ls5ve.60kgb.j6521.2fqcb
 ```
 
-### Troubleshooting
+### Troubleshooting {#troubleshooting}
 
 If you encounter `%dy-edit-busy` while entering commands, it is because your Dojo is blocked on a timer or an HTTP request. Type backspace and your Dojo will end the blocked command.

@@ -15,6 +15,6 @@ If you wish to change your networking keys, we suggest generating a new comet. M
 
 Some groups may also not allow comet membership.
 
-### Further reading
+### Further reading {#further-reading}
 
 - [Creating a Comet](../manual/getting-started/self-hosted/cli.md): A guide to spinning up a comet of your own.

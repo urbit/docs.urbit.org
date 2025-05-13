@@ -8,7 +8,7 @@ This article is intended to provide a thorough summary of all of the most import
 
 The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of it are now either out of date or not yet implemented.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 The conceptual section titled [What is Arvo?](#what-is-arvo) can be understood without knowing Hoon, the Urbit programming language. The technical section titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](../../../courses/hoon-school) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](/overview/).
 
@@ -44,7 +44,7 @@ L: History -> State.
 
 Which perspective is more fruitful depends on the problem being considered.
 
-### Determinism
+### Determinism {#determinism}
 
 We consider Arvo to be deterministic at a high level. By that we mean that it is stacked on top of a frozen instruction set known as Nock. Frozen instruction sets are a new idea for an operating system, but not for computing in general. For instance, the CPU instruction sets such as [x86-64](https://en.wikipedia.org/wiki/X86-64) are frozen at the level of the chip. A given operating system may be adapted to run on more than one CPU instruction set, we merely freeze the instruction set at a higher level in order to enable deterministic computation.
 
@@ -54,7 +54,7 @@ Because Arvo is run on a VM, nondeterministic information such as the stack trac
 
 Being deterministic at a high level enables many things that are out of reach of any other operating system. For instance, we are able to do [over-the-air](#over-the-air-updates) (OTA) updates, which allows software updates to be implemented across the network without needing to worry whether it won't work on someone's ship, since Arvo is an [interpreter](#solid-state-intrepeter) that can accept source code to update itself instead of requiring a pre-compiled binary. This essential property is why Urbit is able to act as a personal server while having a user experience as accessible as a browser.
 
-### Event log
+### Event log {#event-log}
 
 The formal state of an Arvo instance is an event history, as a linked list of [nouns](../../../glossary/noun.md) from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the self-compiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
 
@@ -64,7 +64,7 @@ The beginning of the event log starting from the very first time a ship is boote
 
 More information on the structure of the Arvo event log and the Arvo state is given in the section on [the kernel](#the-kernel).
 
-## Solid state interpreter
+## Solid state interpreter {#solid-state-interpreter}
 
 Arvo is a _solid state interpreter_. In this section we describe what is meant by this new term, and how this behavior derives from the fact that Arvo is an [ACID database](#acid-database) and a [single-level store](#single-level-store).
 
@@ -78,7 +78,7 @@ How Arvo handles loss of power is closer to that of an SSD. Since it is an [ACID
 
 Another way to describe a solid state interpreter is to think of it as a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an [ACID transaction](#acid-database).
 
-### Over-the-air updates
+### Over-the-air updates {#over-the-air-updates}
 
 Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
 
@@ -86,7 +86,7 @@ Typically, updates to an operating system are given via a pre-compiled binary, w
 
 Some subtleties regarding types arise when handling OTA updates, since they can potentially alter the type system. Put more concretely, the type of `type` may be updated. In that case, the update is an untyped Nock formula from the perspective of the old kernel, but ordinary typed Hoon code from the perspective of the new kernel. Besides this one detail, the only functionality of the Arvo kernel proper that is untyped are its interactions with the Unix runtime.
 
-### ACID Database
+### ACID Database {#acid-database}
 
 In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to act as databases.
 
@@ -104,13 +104,13 @@ Database theory studies in precise terms the possible properties of anything tha
 
 It is easy to think that "completed transaction will survive permanently" along with "the state of Arvo is pure function of its event log" implies that nothing can ever be deleted. This is not quite true. [Clay](../clay) is our [referentially transparency](https://en.wikipedia.org/wiki/Referential_transparency) file system, which could naively be thought to mean that since data must be immutable, files cannot be deleted. However, Clay can replace a file with a "tombstone" that causes Clay to crash whenever it is accessed. Referential transparency only guarantees that there won't be new data at a previously accessed location - not that it will still be available.
 
-### Single-level store
+### Single-level store {#single-level-store}
 
 A kernel which presents the abstraction of a single layer of permanent state is also called a _single-level store_. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
 
 Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
-### Non-preemptive
+### Non-preemptive {#non-preemptive}
 
 Most operating systems are preemptive, meaning that they regularly interrupt tasks being performed with the intention of resuming that task at a later time, without the task explicitly yielding control. Arvo does not do this - tasks run until they are complete or are cancelled due to some heuristic, such as taking too long or because the user pressed Ctrl-C. This is known as [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) or cooperative multitasking.
 
@@ -125,7 +125,7 @@ This section requires an understanding of Hoon of at least the level of Chapter 
 
 After concluding this section, the reader is encouraged to follow along with the [move trace tutorial](guides/move-trace.md), which applies many of the concepts covered below.
 
-## Overall structure
+## Overall structure {#overall-structure}
 
 `arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single [gate](../../../glossary/gate.md) that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
 
@@ -138,7 +138,7 @@ After concluding this section, the reader is encouraged to follow along with the
 
 See [Hoon School “Subject-Oriented Programming”](../../../courses/hoon-school/O-subject.md#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
 
-### Formal interface
+### Formal interface {#formal-interface}
 
 The formal interface is a single gate that takes in the current time and a noun that encodes the input. This input, referred to as an _event_, is then put into action by the `+poke` arm, and a new noun denoting the current [state of Arvo](#the-state) is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types defined in the type core are not visible to the formal interface.
 
@@ -156,7 +156,7 @@ The formal interface is a single gate that takes in the current time and a noun 
     .(+> +:(poke now ovo))
 ```
 
-### Types
+### Types {#types}
 
 This core contains the most basic types utilized in Arvo. We discuss a number of them here.
 
@@ -250,7 +250,7 @@ This mold is used to represent both steps and actions.
 
 A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Additionally, upgrading the kernel may alter the type system and thus may not be able to be described within the current type system. Then the `wire` here is the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
 
-### Arvo cores
+### Arvo cores {#arvo-cores}
 
 `arvo.hoon` has four additional cores that encode the functionality of Arvo. The [larval core](#larval-stage-core), [structural interface core](#structural-interface-core), and [implementation core](#implementation-core) each have five arms, called `+come`, `+load`, `+peek`, `+poke`, and `+wish`. Of these five arms, only `+poke` affects the [Arvo state](#the-state), while the rest leave the state invariant. Thus `+poke` is the aforementioned transition function that sends Arvo from one state to the next.
 
@@ -287,7 +287,7 @@ This core is in use only during the larval stage of Arvo, which is after the Arv
 
 Once the larval stage has passed its functionality will never be used again.
 
-## The state
+## The state {#the-state}
 
 As we follow functional programming paradigms, the state of Arvo is considered to be the entire Arvo kernel core currently in operation (whether it be the larval stage or adult stage). Thus when `+poke` is performed, a new core with the updated state is produced, rather than modifying the existing core as would be expected to happen in an imperative setting.
 
@@ -334,7 +334,7 @@ This is where the real state of the Arvo kernel is kept. `lac` detemines whether
 
 As you can see, the state of Arvo itself is quite simple. Its primary role is that of a traffic cop, and most of the interesting part of the state lies in `vanes`.
 
-## Vanes
+## Vanes {#vanes}
 
 The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
 

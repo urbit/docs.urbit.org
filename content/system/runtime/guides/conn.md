@@ -1,12 +1,12 @@
 # Using conn.c
 
-## Background
+## Background {#background}
 
 Prior to 2022, the only way to interact with a running ship from Earth was via HTTP requests sent to the `%lens` agent. In addition to `%lens`, there was a Python script helper named `herb` which would automatically format HTTP requests for `%lens` based on user inputs. However, there were several pain points for using `%lens` and `herb`. `%lens`, `herb`, and the difficulties of using them are documented more fully [here](https://github.com/urbit/urbit/issues/6418).
 
 Unrelated to the above, inconveniences around writing boilerplate code to interact with the `%spider` agent was hampering adoption of threads outside of the Arvo kernel.
 
-## Present
+## Present {#present}
 
 Starting in 2022, tools for solving the above issues began to appear (though work on them began in 2021). In order, they are:
 - `conn.c`
@@ -17,7 +17,7 @@ Starting in 2022, tools for solving the above issues began to appear (though wor
 
 Together, these tools are the building blocks for performing any action on a running ship (poke, scry, or command) from Earth, and receiving back programmatically usable output.
 
-### `conn.c`
+### `conn.c` {#connc}
 
 [`conn.c`](https://github.com/urbit/vere/blob/develop/pkg/vere/io/conn.c) is a driver in Vere. It is a part of the "King" (a.k.a. "Urth") process. It exposes a [Unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket) at `/path/to/pier/.urb/conn.sock` for sending/receiving data from external processes.
 
@@ -110,7 +110,7 @@ See [here](../../../courses/app-school/10-scry.md) for more information on scryi
 
 Note that the pier info above is returned as a `mass` report, i.e. type `(pair cord (each * (list mass)))`. This is not the same as the `|mass` memory report. `/mass` is meant to be a valid `%peel` path which returns the `|mass` memory report, but it is currently unimplemented.
 
-### Khan
+### Khan {#khan}
 
 The Khan vane is a command / response interface for running threads. Khan was introduced to make running threads a kernel-level feature, as simple as poking an agent or setting a timer. Threads allow users to run arbitrarily complex code on their ships in the same way that bash allows them to do so on Linux.
 
@@ -146,7 +146,7 @@ If the thread succeeded, `%fard` and `%lard` produce `[%arow %& %noun vase]`. `%
 
 See [here](../../../userspace/threads/tutorials/basics/fundamentals.md) for more information about threads.
 
-### `urbit eval`
+### `urbit eval` {#urbit-eval}
 
 `eval` is a utility command in the Urbit binary. Originally, it was introduced to evaluate snippets of Hoon code using the binary to emulate Arvo from the associated ivory pill. This allowed it to run any Hoon code fragments that used kernel and STL functions (e.g. anything in `hoon.hoon`, `arvo.hoon`, `lull.hoon`, and `zuse.hoon`). Notably, this did not (and does not) evaluate any Hoon fragments that require pier state (e.g. scries, `our`, `now`, etc.).
 
@@ -170,7 +170,7 @@ The result (i.e. `4`) is printed to `stdout`. If the command had failed to compi
 - `-n`, `--newt`: write output / read input as a newt-encoded jammed noun, when paired with `-j` or `-c` respectively
 - `-k`: treat the input as the jammed noun input of a `%fyrd` request to `conn.c`; if the result is a `goof`, pretty-print it to `stderr` instead of returning it
 
-### `-eval` and `-khan-eval`
+### `-eval` and `-khan-eval` {#eval-and--khan-eval}
 
 Two threads that evaluate arbitrary Hoon were added to the suite of threads included with Arvo: [`ted/eval.hoon`](https://github.com/urbit/urbit/blob/develop/pkg/arvo/ted/eval.hoon) and [`ted/khan-eval.hoon`](https://github.com/urbit/urbit/blob/develop/pkg/arvo/ted/khan-eval.hoon).
 
@@ -190,7 +190,7 @@ Examples:
     - Where `my-add` is defined in `lib/my-add.hoon` in `%my-desk`
 - `-khan-eval '=/  m  (strand ,vase)  ;<  ~  bind:m  (poke [~zod %hood] %helm-hi !>(\'\'))  (pure:m !>(\'success\'))'`
 
-### click
+### click {#click}
 
 [click](https://github.com/urbit/vere/blob/develop/bin/click) is a `bash` thin client which auto-formats `-eval` and `-khan-eval` thread calls via `%fyrd` requests to `conn.c` and coordinates chaining together the appropriate commands to execute those requests on a running ship.
 
@@ -229,15 +229,15 @@ Usage:
         -x                  Jam to hex
 ```
 
-## Using these tools
+## Using these tools {#using-these-tools}
 
 Below are examples of how to execute common commands on a running ship from Earth.
 
-### `|mass`
+### `|mass` {#mass}
 
 Blocked by issues; not currently doable in a way that returns the results as data.
 
-### `|pack`
+### `|pack` {#pack}
 
 ```
 echo "[0 %urth %pack]" |
@@ -256,7 +256,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  ~  bind:m  (flog [%pack ~])  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `|meld`
+### `|meld` {#meld}
 
 ```
 echo "[0 %urth %meld]" |
@@ -275,7 +275,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  ~  bind:m  (flog [%meld ~])  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `|ota`
+### `|ota` {#ota}
 
 #### `|ota ~bus`
 
@@ -316,7 +316,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%base ~bus %desk]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `|install`
+### `|install` {#install}
 
 #### `|install ~sampel-palnet %desk`
 
@@ -344,14 +344,14 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  ~  bind:m  (poke [our %hood] %kiln-install !>([%my-desk ~sampel-palnet %desk]))  (pure:m !>(\\\'success\\\'))'
 ```
 
-### `+code`
+### `+code` {#code}
 
 ```
 /path/to/click -kp /path/to/pier/zod \
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  code=@p  bind:m  (scry @p /j/code/(scot %p our))  (pure:m !>((crip (slag 1 (scow %p code)))))'
 ```
 
-### `+vats`
+### `+vats` {#vats}
 
 #### `+vats %base %kids`
 ```
@@ -373,7 +373,7 @@ $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  now=@da  bind:m  get-t
 $'=/  m  (strand ,vase)  ;<  our=@p  bind:m  get-our  ;<  now=@da  bind:m  get-time  (pure:m !>((crip ~(ram re [%rose [~ ~ ~] (report-vats our now [%base ~] %exists &)]))))' \
 '/sur/hood/hoon'
 ```
-### Additional Notes
+### Additional Notes {#additional-notes}
 
 #### Alternative click calls
 
@@ -404,7 +404,7 @@ nc -U -W 1 /path/to/pier/zod/.urb/conn.sock |
 /path/to/urbit eval -ckn
 ```
 
-## Issues and Future Work
+## Issues and Future Work {#issues-and-future-work}
 
 Currently, there are a number of minor issues and one major issue impacting interactions between Earth and Mars.
 

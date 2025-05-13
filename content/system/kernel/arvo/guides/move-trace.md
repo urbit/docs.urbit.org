@@ -2,7 +2,7 @@
 
 In this tutorial we will run a simple "move trace" and use the output to get a picture of what the Arvo kernel proper does during the routine task of setting a timer. Some level of familiarity with the kernel is required for this section, which can be obtained in our [Arvo kernel tutorial](..#the-kernel).
 
-## Running a move trace
+## Running a move trace {#running-a-move-trace}
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one another. Here we look at how a simple command, `-time ~s1`, goes from pressing Enter on your keyboard in Dojo towards returning a notification that one second has elapsed.
 
@@ -50,11 +50,11 @@ The main process that is occurring here is a sequence of `%pass` `move`s initiat
 
 It is important to note that this move trace should be thought of as being from the "point of view" of the kernel - each line represents the kernel taking in a message from one source and passing it along to its destination. It is then processed at that destination (which could be a vane or an app), and the return of that process is sent back to Arvo in the form of another `move` to perform and the loop begins again. Thus this move trace does not display information about what is going on inside of the vane or app such as private function calls, only what the kernel itself sees.
 
-## Interpreting the move trace
+## Interpreting the move trace {#interpreting-the-move-trace}
 
 In this section we will go over the move trace line-by-line, explaining how the move trace is printed, what each line means (including some things not found in the move trace), and a particular focus on what code is being activated in the first few lines that should equip you well enough to unravel the rest of the move trace in as much detail as you desire.
 
-### The call
+### The call {#the-call}
 
 Let's put the first part of the move trace into a diagram to make following along a little easier.
 
@@ -234,7 +234,7 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 
 Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer [for one second from now]. At this point Arvo may rest.
 
-### The return
+### The return {#the-return}
 
 Now Unix sets a timer for one second, waits one second, and then informs Behn that a second has passed, leading to a chain of `%give` `move`s that ultimately prints `~s1..0007`.
 

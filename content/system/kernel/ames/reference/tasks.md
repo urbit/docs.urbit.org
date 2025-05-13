@@ -6,9 +6,9 @@ Some `task`s appear to have more than one arm associated to them, e.g. there are
 
 Ames `task`s can be naturally divided into three categories: messaging tasks, system/lifecycle tasks, and remote scry tasks.
 
-## Messaging Tasks
+## Messaging Tasks {#messaging-tasks}
 
-### `%hear`
+### `%hear` {#hear}
 
 ```hoon
 [%hear =lane =blob]
@@ -28,7 +28,7 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:ev
 
 ---
 
-### `%heed`
+### `%heed` {#heed}
 
 ```hoon
 [%heed =ship]
@@ -46,7 +46,7 @@ If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s, A
 
 ---
 
-### `%jilt`
+### `%jilt` {#jilt}
 
 ```hoon
 [%jilt =ship]
@@ -64,7 +64,7 @@ This `task` returns no `gift`s.
 
 ---
 
-### `%plea`
+### `%plea` {#plea}
 
 ```hoon
 [%plea =ship =plea:ames]
@@ -84,9 +84,9 @@ This `task` returns no `gift`s.
 
 ---
 
-## System Tasks
+## System Tasks {#system-tasks}
 
-### `%born`
+### `%born` {#born}
 
 ```hoon
 [%born ~]
@@ -102,7 +102,7 @@ The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send` `gif
 
 ---
 
-### `%init`
+### `%init` {#init}
 
 ```hoon
 [%init ~]
@@ -123,7 +123,7 @@ In response to receiving the `%init` `task`, Ames subscribes to the information 
 
 ---
 
-### `%sift`
+### `%sift` {#sift}
 
 ```hoon
 [%sift ships=(list ship)]
@@ -139,7 +139,7 @@ This `task` returns no `gift`s.
 
 ---
 
-### `%snub`
+### `%snub` {#snub}
 
 ```hoon
 [%snub form=?(%allow %deny) ships=(list ship)]
@@ -165,7 +165,7 @@ This `task` returns no `gift`s.
 
 ---
 
-### `%spew`
+### `%spew` {#spew}
 
 ```hoon
 [%spew veb=(list verb)]
@@ -183,7 +183,7 @@ This `task` returns no `gift`s.
 
 ---
 
-### `%stir`
+### `%stir` {#stir}
 
 ```hoon
 [%stir arg=@t]
@@ -199,7 +199,7 @@ This `task` returns no `gift`s.
 
 ---
 
-### `%vega`
+### `%vega` {#vega}
 
 ```hoon
 [%vega ~]
@@ -213,9 +213,9 @@ This `task` returns no `gift`s.
 
 ---
 
-## Remote scry tasks
+## Remote scry tasks {#remote-scry-tasks}
 
-### `%keen`
+### `%keen` {#keen}
 
 Perform an unencrypted or multi-party encrypted remote scry.
 
@@ -241,7 +241,7 @@ It represents a *result*. The `roar` field is null if Ames doesn't have a respon
 
 ---
 
-### `%chum`
+### `%chum` {#chum}
 
 Perform a two-party encrypted remote scry.
 
@@ -267,7 +267,7 @@ It represents a *result*. The `roar` field is null if Ames doesn't have a respon
 
 ---
 
-### `%yawn`
+### `%yawn` {#yawn}
 
 Cancel a remote scry request.
 
@@ -283,7 +283,7 @@ This `task` returns no `gift`s.
 
 ---
 
-### `%wham`
+### `%wham` {#wham}
 
 ```hoon
 [%wham =ship =path]

@@ -12,7 +12,7 @@ A ship can be one of five classes:
 
 To be able to use the Arvo network, planets, stars, and galaxies must be combined with an [Azimuth](azimuth.md)-based Urbit identity in the form of a [keyfile](keyfile.md).
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Install instructions](../manual/getting-started): Guide to installing Urbit, which includes instructions on booting with your Urbit identity.
 - [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.

@@ -7,13 +7,13 @@ And still other groups are secret!  Which means you can't find them, and you'll 
 Let's walk through the process of finding and joining a public group.
 
 
-### 1. Open the Groups app
+### 1. Open the Groups app {#1-open-the-groups-app}
 
 Once you’re on the network, you’ll see Landscape, which is filled with large applications tiles: Talk, Terminal, and Groups. Click on Groups.
 
 ![](https://media.urbit.org/site/getting-started/get-oriented.png)
 
-### 2. Enter the group shortcode
+### 2. Enter the group shortcode {#2-enter-the-group-shortcode}
 
 To join a group, you'll need to know its host Urbit ID (e.g. `~bitbet-bolbel`) or its full Urbit address, also called a shortcode (e.g. `~bitbet-bolbel/urbit-community`) .
 
@@ -28,7 +28,7 @@ Then click on the "Join" button once the group appears.
 ![](https://media.urbit.org/site/additional-guides/groups-2.png)
 
 
-### 3. Join channels
+### 3. Join channels {#3-join-channels}
 
 After a few moments the default channels will load. For groups with a large backlog, such as Urbit Community (~bitbet-bolbel/urbit-community), this may take a few minutes.
 
@@ -41,7 +41,7 @@ We can join more channels in the group by clicking on the "All Channels" link in
 
 
 
-### 4. Chat and post on the network
+### 4. Chat and post on the network {#4-chat-and-post-on-the-network}
 
 In addition to posting text, you can now react, start threads, and reference messages by hovering over chat messages.  And you can leave comments in notebooks if they are enabled.
 

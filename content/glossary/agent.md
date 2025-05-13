@@ -4,6 +4,6 @@
 
 Gall agents can variously be treated as databases with developer-defined logic, services, daemons, or a kind of state machine.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [App School](../courses/app-school): A comprehensive guide to writing Gall agents.

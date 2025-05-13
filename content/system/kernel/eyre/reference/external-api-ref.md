@@ -2,7 +2,7 @@
 
 This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](../guides/guide.md) document.
 
-## Authentication
+## Authentication {#authentication}
 
 To use Eyre's channel system, run threads or perform scries you must first obtain a session cookie by authenticating with the following HTTP request:
 
@@ -24,7 +24,7 @@ The `urbauth-{...}` cookie provided must be included in a `cookie` header with a
 cookie: urbauth-~zod=0v4.ilskp.psv00.t09r0.l8rps.3n97v
 ```
 
-## Channels
+## Channels {#channels}
 
 Eyre's channel system is the primary way of interacting with Gall agents from outside of Urbit.
 
@@ -49,7 +49,7 @@ When you're finished with a channel, you can send Eyre a [delete action](#delete
 
 See the [Using the Channel System](../guides/guide.md#using-channels) section of the [Guide](../guides/guide.md) document for a practical example.
 
-### HTTP Requests
+### HTTP Requests {#http-requests}
 
 [Actions](#actions) are sent to Eyre in HTTP PUT requests:
 
@@ -61,9 +61,9 @@ The `cookie` header contains the session cookie obtained by [authenticating](#au
 
 If successful, Eyre will respond with a status code of 204. Note the HTTP response will have no content, any [responses](#responses) will be sent as SSEs on the channel event stream.
 
-## Actions
+## Actions {#actions}
 
-### Poke
+### Poke {#poke}
 
 This is for poking a Gall agent.
 
@@ -93,7 +93,7 @@ This is for poking a Gall agent.
 
 Eyre will send a [poke ack](#poke-ack) as an SSE event on the channel event stream.
 
-### Subscribe
+### Subscribe {#subscribe}
 
 This is for subscribing to a watch `path` of a Gall agent.
 
@@ -121,7 +121,7 @@ This is for subscribing to a watch `path` of a Gall agent.
 
 Eyre will send back a [watch ack](#watch-ack). If subscribing was successful, you will also begin receiving any [diff](#diff)s sent by the Gall agent on the specified `path`.
 
-### Ack
+### Ack {#ack}
 
 This is for acknowledging an SSE event. If you `ack` one event, you also implicitly `ack` all previous events. Events _must_ be `ack`ed so that Eyre can forget them. If you leave `fact`s (as [diff](#diff)s) un`ack`ed long enough, Eyre will consider the subscription clogged and automatically unsubscribe you.
 
@@ -145,7 +145,7 @@ This is for acknowledging an SSE event. If you `ack` one event, you also implici
 
 Eyre will not respond to an `ack` action.
 
-### Unsubscribe
+### Unsubscribe {#unsubscribe}
 
 This is for unsubscribing from a Gall agent watch `path` to which you've previously subscribed.
 
@@ -169,7 +169,7 @@ This is for unsubscribing from a Gall agent watch `path` to which you've previou
 
 Eyre will not respond to an `unsubscribe` action.
 
-### Delete Channel
+### Delete Channel {#delete-channel}
 
 This is for deleting the channel itself.
 
@@ -191,9 +191,9 @@ This is for deleting the channel itself.
 
 Eyre will not respond to a `delete` action.
 
-## Responses
+## Responses {#responses}
 
-### Poke Ack
+### Poke Ack {#poke-ack}
 
 This acknowledgement comes in response to a [poke](#poke) action. A poke ack with an `ok` key means the poke succeeded. A poke ack with an `err` key means the poke failed.
 
@@ -237,7 +237,7 @@ This acknowledgement comes in response to a [poke](#poke) action. A poke ack wit
 
 You must ack the event.
 
-### Watch Ack
+### Watch Ack {#watch-ack}
 
 This acknowledgement comes in response to a [subscribe](#subscribe) action. A watch ack with an `ok` key means the subscription was successful. A watch ack with an `err` key means the subscription failed.
 
@@ -281,7 +281,7 @@ This acknowledgement comes in response to a [subscribe](#subscribe) action. A wa
 
 You must ack the event.
 
-### Diff
+### Diff {#diff}
 
 All `fact`s sent by a Gall agent on the `path` to which you've subscribed are delivered as `diff`s. Note that Eyre makes a best effort to convert the `fact` to a `json` mark. If it can't, Eyre will crash and close the subscription, and you won't receive any `diff` for the `fact`.
 
@@ -305,7 +305,7 @@ All `fact`s sent by a Gall agent on the `path` to which you've subscribed are de
 
 You must [ack](#ack) each `diff` that comes in the event stream.
 
-### Quit
+### Quit {#quit}
 
 A `quit` comes in when a subscription has been ended. You may be intentionally kicked by the Gall agent to which you're subscribed, but certain network conditions can also trigger a `quit`. As a result, it's best to try and re[subscribe](#subscribe) when you get a `quit`, and if the resulting [watch ack](#watch-ack) is negative you can then conclude the `quit` was intentional and give up.
 
@@ -327,7 +327,7 @@ A `quit` comes in when a subscription has been ended. You may be intentionally k
 
 You must ack the event and you may wish to try and re[subscribe](#subscribe).
 
-## Scry
+## Scry {#scry}
 
 A scry is a read-only request for some data.
 
@@ -350,6 +350,6 @@ If your session cookie is invalid or missing, Eyre will respond with a 403 Forbi
 
 See the [Scrying](../guides/guide.md#scrying) section of the [Guide](../guides/guide.md) document for a practical example.
 
-## Spider
+## Spider {#spider}
 
 See the [HTTP API](../../../../userspace/threads/guides/http-api.md) section of the [Threads](../../../../userspace/threads) documentation.

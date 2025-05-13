@@ -4,13 +4,13 @@ This document walks through practical examples of the various ways of interactin
 
 General documentation of the `task`s and methods described here are available in the [External API Reference](../reference/external-api-ref.md) document and the [Internal API Reference](../reference/tasks.md) document.
 
-## Basic
+## Basic {#basic}
 
 Eyre's channel system is the typical way of interacting with Gall agents from an HTTP client. It provides a simple JSON API for actions like pokes, watches, etc, and an SSE event stream for subscription updates. Additionally, Eyre has a scry interface so you can retrieve data in a more ad-hoc manner. These examples use `curl` to be more language agnostic and to show the nitty-gritty details. In practice you'd probably use an "airlock" library (like [http-api](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) for Javascript) which abstracts things like ack'ing events, incrementing event IDs, manually composing the JSON for actions, etc.
 
 It's advisable to have a read through the [External API Reference](../reference/external-api-ref.md) before going through these examples.
 
-### Authenticating
+### Authenticating {#authenticating}
 
 You must have a valid session cookie in order to use Eyre's interfaces (such as the channel system or scry interface). If your HTTP client is served from your ship, your browser will automatically add the session cookie it obtained upon login, so there's no need to worry about authentication in practice. If your client does not run in the browser or is not served by your ship, [authenticating](../reference/external-api-ref.md#authentication) with your web login code (which can be obtained by running `+code` in the dojo) is necessary.
 
@@ -34,7 +34,7 @@ set-cookie: urbauth-~zod=0v3.j2062.1prp1.qne4e.goq3h.ksudm; Path=/; Max-Age=6048
 
 The `urbauth-....` cookie can be now be included in subsequent requests (e.g. to the channel system) by providing it in a Cookie HTTP header.
 
-### Using Channels
+### Using Channels {#using-channels}
 
 Here we'll look at a practical example of Eyre's channel system. You can refer to the [Channels](../reference/external-api-ref.md#channels) section of the [External API Reference](../reference/external-api-ref.md) document for relevant details.
 
@@ -149,7 +149,7 @@ curl --header "Content-Type: application/json" \
 
 With our channel deleted, we can now close the connection on the client side.
 
-### Scrying
+### Scrying {#scrying}
 
 Here we'll look at performing scries through Eyre. You can refer to the [Scry](../reference/external-api-ref.md#scry) section of the [External API Reference](../reference/external-api-ref.md) document for relevant details.
 
@@ -203,11 +203,11 @@ content-type: text/html
 <html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>There was an error while handling the request for /foo/bar/baz.json.</p><code>no scry result</code></body></html>
 ```
 
-## Advanced
+## Advanced {#advanced}
 
 Rather than using things like Eyre's channel system described in the [Basic](#basic) section, it's possible to handle HTTP requests directly in Gall agents or generators. This is useful if you want to implement a custom API or work with `sail` to dynamically compose HTML inside an agent.
 
-### Agents: Direct HTTP
+### Agents: Direct HTTP {#agents-direct-http}
 
 Here we'll look at handling HTTP requests directly in Gall agents rather than using Eyre's channel system.
 
@@ -426,7 +426,7 @@ Eyre subscribed to /http-response/~.eyre_0v3.1knjk.l544e.5uds6.fn9l2.f8929.
 
 This is a very rudimentary app but it demonstrates the basic mechanics of dealing with HTTP requests and serving responses.
 
-### Generators
+### Generators {#generators}
 
 Here we'll look at running a generator via Eyre. Eyre doesn't have a mediated JSON API for generators, instead it just passes through the HTTP request and returns the HTTP response composed by the generator.
 
@@ -506,7 +506,7 @@ Content-Length: 41
 blah blah blah
 ```
 
-## Managing CORS Origins
+## Managing CORS Origins {#managing-cors-origins}
 
 Here we'll look at approving and rejecting a CORS origin by passing Clay a [%approve-origin](../reference/tasks.md#approve-origin) `task` and [%reject-origin](../reference/tasks.md#reject-origin) `task` respectively.
 

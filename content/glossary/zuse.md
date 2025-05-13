@@ -4,6 +4,6 @@
 
 Zuse is the farthest downstream component of the kernel in terms of dependency, so its version number is used to represent the version of the kernel as a whole.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Zuse reference](../language/hoon/reference/zuse): Developer documentation of various functions in `zuse.hoon`, particularly those relating to JSON.

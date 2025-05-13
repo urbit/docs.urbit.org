@@ -3,9 +3,9 @@
 Documented below are the many useful functions in the
 `/lib/strandio.hoon` helper library. 
 
-## Send Cards
+## Send Cards {#send-cards}
 
-### `send-raw-cards`
+### `send-raw-cards` {#send-raw-cards}
 
 Send a list of `card`s.
 
@@ -41,7 +41,7 @@ A `(list card:agent:gall)`.
 
 ---
 
-### `send-raw-card`
+### `send-raw-card` {#send-raw-card}
 
 Send a single `card`.
 
@@ -72,9 +72,9 @@ A `card:agent:gall`
 
 ---
 
-## Bowl
+## Bowl {#bowl}
 
-### `get-bowl`
+### `get-bowl` {#get-bowl}
 
 Get the bowl.
 
@@ -104,7 +104,7 @@ A `bowl:rand`.
 
 ---
 
-### `get-beak`
+### `get-beak` {#get-beak}
 
 Get the beak.
 
@@ -134,7 +134,7 @@ A `beak`.
 
 ---
 
-### `get-time`
+### `get-time` {#get-time}
 
 Get the current date-time.
 
@@ -164,7 +164,7 @@ A `@da`.
 
 ---
 
-### `get-our`
+### `get-our` {#get-our}
 
 Get our ship.
 
@@ -194,7 +194,7 @@ A `@p`.
 
 ---
 
-### `get-entropy`
+### `get-entropy` {#get-entropy}
 
 Get some entropy.
 
@@ -224,9 +224,9 @@ A `@uvJ`.
 
 ---
 
-## Misc
+## Misc {#misc}
 
-### `install-domain`
+### `install-domain` {#install-domain}
 
 Install a domain in Eyre, triggering the setup of an SSL certificate.
 
@@ -256,7 +256,7 @@ A `turf`.
 
 ---
 
-### `check-online`
+### `check-online` {#check-online}
 
 Require that a peer respond before timeout.
 
@@ -292,7 +292,7 @@ A pair of `[ship @dr]`. The `@dr` is the amount of time the peer has to respond 
 
 ---
 
-### `take-sign-arvo`
+### `take-sign-arvo` {#take-sign-arvo}
 
 Wait for a sign from Arvo.
 
@@ -328,9 +328,9 @@ A pair of `[wire sign-arvo]`.
 
 ---
 
-## Pokes
+## Pokes {#pokes}
 
-### `poke`
+### `poke` {#poke}
 
 Poke an agent, then await a positive ack.
 
@@ -362,7 +362,7 @@ A pair of `[dock cage]`, where the `dock` is the ship and agent you want to poke
 
 ---
 
-### `raw-poke`
+### `raw-poke` {#raw-poke}
 
 Poke an agent then await a (n)ack.
 
@@ -407,7 +407,7 @@ A pair of `[dock cage]`, where the `dock` is the ship and agent to poke, and the
 
 ---
 
-### `raw-poke-our`
+### `raw-poke-our` {#raw-poke-our}
 
 Poke a local agent then await a (n)ack.
 
@@ -440,7 +440,7 @@ A pair of `[app=term =cage]`, where `app` is the local agent to poke and `cage` 
 
 ---
 
-### `poke-our`
+### `poke-our` {#poke-our}
 
 Poke a local agent then await an ack.
 
@@ -473,7 +473,7 @@ A pair of `[=term =cage]` where `term` is the name of a local agent and `cage` i
 
 ---
 
-### `take-poke-ack`
+### `take-poke-ack` {#take-poke-ack}
 
 Take a poke ack on the given wire.
 
@@ -514,7 +514,7 @@ A `wire`.
 
 ---
 
-### `take-poke`
+### `take-poke` {#take-poke}
 
 Wait for a poke with a particular mark.
 
@@ -553,9 +553,9 @@ A `vase`.
 
 ---
 
-## Subscriptions
+## Subscriptions {#subscriptions}
 
-### `watch`
+### `watch` {#watch}
 
 Watch a subscription path on an agent, then await a positive watch ack.
 
@@ -589,7 +589,7 @@ A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path`
 
 ---
 
-### `watch-one`
+### `watch-one` {#watch-one}
 
 Subscribe to a watch path on an agent, take a single fact, then await a kick.
 
@@ -622,7 +622,7 @@ The `cage` of the received fact.
 
 ---
 
-### `watch-our`
+### `watch-our` {#watch-our}
 
 Subscribe to a watch path on a local agent, then wait for a positive
 ack.
@@ -657,7 +657,7 @@ A triple of `[=wire =term =path]` where `term` is the name of the agent and `pat
 
 ---
 
-### `leave`
+### `leave` {#leave}
 
 Leave a subscription.
 
@@ -688,7 +688,7 @@ A pair of `[=wire =dock]` where `dock` is the ship and agent in question.
 
 ---
 
-### `leave-our`
+### `leave-our` {#leave-our}
 
 Unsubscribe from a local agent.
 
@@ -719,7 +719,7 @@ A pair of `[=wire =term]` where `term` is the local agent.
 
 ---
 
-### `rewatch`
+### `rewatch` {#rewatch}
 
 Resubscribe on kick.
 
@@ -753,7 +753,7 @@ A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path`
 
 ---
 
-### `take-fact-prefix`
+### `take-fact-prefix` {#take-fact-prefix}
 
 Wait for a subscription update on a wire.
 
@@ -790,7 +790,7 @@ A cell of `[wire cage]`.
 
 ---
 
-### `take-fact`
+### `take-fact` {#take-fact}
 
 Wait for a subscription update on a wire.
 
@@ -827,7 +827,7 @@ A `cage`.
 
 ---
 
-### `take-kick`
+### `take-kick` {#take-kick}
 
 Wait for a subscription close.
 
@@ -864,7 +864,7 @@ The `wire` you want to listen on.
 
 ---
 
-### `take-watch-ack`
+### `take-watch-ack` {#take-watch-ack}
 
 Take a watch ack on a given wire.
 
@@ -905,7 +905,7 @@ A `wire`.
 
 ---
 
-### `take-watch`
+### `take-watch` {#take-watch}
 
 Wait for a subscription request.
 
@@ -938,9 +938,9 @@ The subscription `path`.
 
 ---
 
-## Scries
+## Scries {#scries}
 
-### `scry`
+### `scry` {#scry}
 
 Scry an agent or vane.
 
@@ -980,7 +980,7 @@ Data of the type produced by the mold you specified.
 
 ---
 
-### `keen`
+### `keen` {#keen}
 
 Make a remote scry request.
 
@@ -1012,7 +1012,7 @@ A pair of `[=wire =spar:ames]`.
 
 ---
 
-### `take-tune`
+### `take-tune` {#take-tune}
 
 Wait for a remote scry result on a particular wire.
 
@@ -1050,9 +1050,9 @@ A `[spar:ames (unit roar:ames)]`
 
 ---
 
-## Time
+## Time {#time}
 
-### `wait`
+### `wait` {#wait}
 
 Send a `%wait` to Behn and wait for the `%wake`.
 
@@ -1087,7 +1087,7 @@ A `@da` of when the timer should fire.
 
 ---
 
-### `sleep`
+### `sleep` {#sleep}
 
 Wait for a relative amount of time.
 
@@ -1118,7 +1118,7 @@ A `@dr`.
 
 ---
 
-### `send-wait`
+### `send-wait` {#send-wait}
 
 Send Behn a `%wait` but don't wait for the `%wake`.
 
@@ -1151,7 +1151,7 @@ A `@da`.
 
 ---
 
-### `set-timeout`
+### `set-timeout` {#set-timeout}
 
 Make a strand fail if it takes too long.
 
@@ -1200,7 +1200,7 @@ Data of the type produced by the strand being timed.
 
 ---
 
-### `take-wake`
+### `take-wake` {#take-wake}
 
 Wait for a wake from Behn.
 
@@ -1249,9 +1249,9 @@ any-time)`.
 
 ---
 
-## Errors
+## Errors {#errors}
 
-### `retry`
+### `retry` {#retry}
 
 Retry a strand that produces a `unit` if the `unit` is null, with a backoff.
 
@@ -1293,7 +1293,7 @@ The type of `result`.
 ```
 ---
 
-### `backoff`
+### `backoff` {#backoff}
 
 Wait for increasing amounts of time with each try.
 
@@ -1323,7 +1323,7 @@ A pair of `[try=@ud limit=@dr]`, specifying the current try count and the maximu
 
 ---
 
-### `map-err`
+### `map-err` {#map-err}
 
 Rewrite a strand failure error.
 
@@ -1372,9 +1372,9 @@ Data of the type produced by the strand in question.
 
 ---
 
-## HTTP
+## HTTP {#http}
 
-### `send-request`
+### `send-request` {#send-request}
 
 Make an HTTP request via Iris, but don't wait for the response.
 
@@ -1404,7 +1404,7 @@ A [`request:http`](../../../system/kernel/eyre/reference/data-types.md#requestht
 
 ---
 
-### `send-cancel-request`
+### `send-cancel-request` {#send-cancel-request}
 
 Cancel a previous Iris HTTP request.
 
@@ -1435,7 +1435,7 @@ Nothing.
 
 ---
 
-### `take-client-response`
+### `take-client-response` {#take-client-response}
 
 Take the HTTP response from a previous HTTP request made with [`send-request`](#send-request).
 
@@ -1479,7 +1479,7 @@ A [`client-response:iris`](../../../system/kernel/iris/reference/data-types.md#c
 
 ---
 
-### `take-maybe-sigh`
+### `take-maybe-sigh` {#take-maybe-sigh}
 
 Take a unitized raw HTTP response.
 
@@ -1516,7 +1516,7 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 ---
 
-### `take-maybe-response`
+### `take-maybe-response` {#take-maybe-response}
 
 Take a unitized HTTP response.
 
@@ -1552,7 +1552,7 @@ A `(unit client-response:iris)`. The `unit` is null if we failed to receive a re
 
 ---
 
-### `extract-body`
+### `extract-body` {#extract-body}
 
 Extract body from an HTTP response.
 
@@ -1579,7 +1579,7 @@ A `cord`.
 
 ---
 
-### `fetch-cord`
+### `fetch-cord` {#fetch-cord}
 
 Get the HTTP response body from a URL.
 
@@ -1612,7 +1612,7 @@ A `cord` of the response body.
 
 ---
 
-### `fetch-json`
+### `fetch-json` {#fetch-json}
 
 Get some JSON from a URL.
 
@@ -1646,7 +1646,7 @@ A `json` structure.
 
 ---
 
-### `hiss-request`
+### `hiss-request` {#hiss-request}
 
 Make a raw HTTP request, take a raw response.
 
@@ -1679,9 +1679,9 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 ---
 
-## Build
+## Build {#build}
 
-### `build-file`
+### `build-file` {#build-file}
 
 Build a source file at the specified `beam`.
 
@@ -1718,7 +1718,7 @@ A `(unit vase)`. The `vase` contains the compiled file, the `unit` is null if it
 
 ---
 
-### `build-file-hard`
+### `build-file-hard` {#build-file-hard}
 
 Build a source file at the specified `beam`, crashing if it fails.
 
@@ -1755,7 +1755,7 @@ A `vase`.
 
 ---
 
-### `build-mark`
+### `build-mark` {#build-mark}
 
 Build a dynamic mark core from file.
 
@@ -1792,7 +1792,7 @@ A `dais:clay`
 
 ---
 
-### `build-tube`
+### `build-tube` {#build-tube}
 
 Build a dynamic mark conversion gate from file.
 
@@ -1829,7 +1829,7 @@ A `tube:clay`
 
 ---
 
-### `build-nave`
+### `build-nave` {#build-nave}
 
 Build a static mark core from file.
 
@@ -1866,7 +1866,7 @@ A `vase`.
 
 ---
 
-### `build-cast`
+### `build-cast` {#build-cast}
 
 Build a static mark conversion gate from file.
 
@@ -1899,7 +1899,7 @@ A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and *to* mar
 
 ---
 
-### `eval-hoon`
+### `eval-hoon` {#eval-hoon}
 
 Evaluate some hoon and produce the result.
 
@@ -1934,9 +1934,9 @@ A `vase` of the result.
 
 ---
 
-## Clay
+## Clay {#clay}
 
-### `warp`
+### `warp` {#warp}
 
 Raw read from Clay.
 
@@ -1967,7 +1967,7 @@ A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot).
 
 ---
 
-### `read-file`
+### `read-file` {#read-file}
 
 Read a file from Clay.
 
@@ -2001,7 +2001,7 @@ A `cage`.
 
 ---
 
-### `check-for-file`
+### `check-for-file` {#check-for-file}
 
 Check for the existence of a file in Clay.
 
@@ -2032,7 +2032,7 @@ A `?` which is `%.y` if the file exists, and `%.n` if not.
 
 ---
 
-### `list-tree`
+### `list-tree` {#list-tree}
 
 Get a list of all files in the given Clay directory.
 
@@ -2066,7 +2066,7 @@ A `(list path)`.
 
 ---
 
-### `take-writ`
+### `take-writ` {#take-writ}
 
 Take a Clay read result.
 
@@ -2103,9 +2103,9 @@ A [`riot:clay`](../../../system/kernel/clay/reference/data-types.md#riot)
 
 ---
 
-## Main Loop
+## Main Loop {#main-loop}
 
-### `ignore`
+### `ignore` {#ignore}
 
 Try next on failure.
 
@@ -2129,7 +2129,7 @@ Nothing.
 
 ---
 
-### `handle`
+### `handle` {#handle}
 
 Convert skips to `%ignore` failures.
 
@@ -2166,7 +2166,7 @@ Data of the type produced by the given mold.
 
 ---
 
-### `main-loop`
+### `main-loop` {#main-loop}
 
 A `main-loop` can be used for three things:
 
@@ -2248,7 +2248,7 @@ example](../examples/main-loop.md) or the
 
 ---
 
-### `echo`
+### `echo` {#echo}
 
 Echo a given message to the terminal every 2 seconds until told to stop.
 
@@ -2286,9 +2286,9 @@ This strand takes nothing directly, but expects a poke with a `mark` of `%echo` 
 
 ---
 
-## Printing
+## Printing {#printing}
 
-### `flog`
+### `flog` {#flog}
 
 Send a wrapped Dill task to Dill.
 
@@ -2318,7 +2318,7 @@ A [`flog:dill`](../../../system/kernel/dill/reference/data-types.md#flog)
 
 ---
 
-### `flog-text`
+### `flog-text` {#flog-text}
 
 Print a message to the terminal via Dill.
 
@@ -2348,7 +2348,7 @@ A `tape`.
 
 ---
 
-### `flog-tang`
+### `flog-tang` {#flog-tang}
 
 Print a `tang` to the terminal via Dill.
 
@@ -2385,7 +2385,7 @@ A `tang`
 
 ---
 
-### `trace`
+### `trace` {#trace}
 
 Slog a `tang` to the terminal.
 
@@ -2415,7 +2415,7 @@ A `tang`.
 
 ---
 
-### `app-message`
+### `app-message` {#app-message}
 
 Print a message to the terminal tagged with an app name, like:
 
@@ -2453,9 +2453,9 @@ A triple of `[term cord tang]`. The `term` is the app name, the `cord` is the me
 
 ---
 
-## Threads
+## Threads {#threads}
 
-### `send-thread`
+### `send-thread` {#send-thread}
 
 Run an inline thread via Khan.
 
@@ -2483,7 +2483,7 @@ A triple of:
 
 ---
 
-### `start-thread`
+### `start-thread` {#start-thread}
 
 Start a child thread.
 
@@ -2513,7 +2513,7 @@ A `tid:spider`, the ID of the child thread.
 
 ---
 
-### `start-thread-with-args`
+### `start-thread-with-args` {#start-thread-with-args}
 
 Start a child thread with arguments.
 
@@ -2554,7 +2554,7 @@ A `tid:spider`, the ID of the child thread.
 
 ---
 
-### `thread-result`
+### `thread-result` {#thread-result}
 
 Type definition of a thread result.
 
@@ -2567,7 +2567,7 @@ Type definition of a thread result.
 
 ---
 
-### `await-thread`
+### `await-thread` {#await-thread}
 
 Start a thread with an argument, then await its result.
 

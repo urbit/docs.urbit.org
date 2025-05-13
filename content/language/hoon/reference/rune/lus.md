@@ -6,7 +6,7 @@ Arm runes are used to define arms in a core, and thus can only be used from with
 
 There are various arm runes you can use to produce different kinds of arms. Normal arms use `++`; arms defining a structure (or 'mold') use `+$`; and constructor arms use `+*`.
 
-## `+|` "lusbar"
+## `+|` "lusbar" {#lusbar}
 
 Chapter label (not useful)
 
@@ -58,7 +58,7 @@ Notice that `p.q` has the label `%numbers`. Contrast with:
 
 ---
 
-## `+$` "lusbuc"
+## `+$` "lusbuc" {#lusbuc}
 
 Produce a structure arm (type definition).
 
@@ -98,7 +98,7 @@ nest-fail
 
 ---
 
-## `++` "luslus"
+## `++` "luslus" {#luslus}
 
 Produce a normal arm.
 
@@ -135,7 +135,7 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ---
 
-## `+*` "lustar"
+## `+*` "lustar" {#lustar}
 
 Defines deferred expressions within doors.
 
@@ -178,7 +178,7 @@ None
 
 The primary use of `+*` is to create deferred expressions within doors (see Examples below). This is a name for an expressions that will be evaluated in each place the name is dereferenced. This is a similar concept to aliases or macros, but there are some subtle but important differences. Deferred expressions given by `+*` do not count towards the number of arms in the door and thus are also called "virtual arms", which can be important for things like Gall agent cores that require a fixed number of arms.
 
-Under the hood, `+*` gets compiled as [`=*`'s](tis.md#-tistar) (see here for more discussion on deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the core to include `=* foo bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
+Under the hood, `+*` gets compiled as [`=*`'s](tis.md#tistar) (see here for more discussion on deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the core to include `=* foo bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
 
 ```hoon
 |_  z=@ud

@@ -6,7 +6,7 @@ The primary way of interacting with Eyre is from the outside with HTTP requests.
 
 Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `+eyre` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 
-## `%live`
+## `%live` {#live}
 
 ```hoon
 [%live insecure=@ud secure=(unit @ud)]
@@ -22,7 +22,7 @@ Eyre returns no `gift` in response to a `%live` `task`.
 
 ---
 
-## `%rule`
+## `%rule` {#rule}
 
 ```hoon
 [%rule =http-rule]
@@ -38,7 +38,7 @@ Eyre returns no `gift` in response to a `%rule` `task`.
 
 ---
 
-## `%request`
+## `%request` {#request}
 
 ```hoon
 [%request secure=? =address =request:http]
@@ -54,7 +54,7 @@ Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the 
 
 ---
 
-## `%request-local`
+## `%request-local` {#request-local}
 
 ```hoon
 [%request-local secure=? =address =request:http]
@@ -68,7 +68,7 @@ Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the 
 
 ---
 
-## `%cancel-request`
+## `%cancel-request` {#cancel-request}
 
 ```hoon
 [%cancel-request ~]
@@ -84,7 +84,7 @@ Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the 
 
 ---
 
-## `%connect`
+## `%connect` {#connect}
 
 ```hoon
 [%connect =binding app=term]
@@ -120,7 +120,7 @@ See the [Agents: Direct HTTP](../guides/guide.md#agents-direct-http) section of 
 
 ---
 
-## `%serve`
+## `%serve` {#serve}
 
 ```hoon
 [%serve =binding =generator]
@@ -158,7 +158,7 @@ See the [Generators](../guides/guide.md#generators) section of the [Guide](../gu
 
 ---
 
-## `%disconnect`
+## `%disconnect` {#disconnect}
 
 ```hoon
 [%disconnect =binding]
@@ -174,7 +174,7 @@ Eyre returns no `gift` in response to a `%disconnect` `task`.
 
 ---
 
-## `%code-changed`
+## `%code-changed` {#code-changed}
 
 ```hoon
 [%code-changed ~]
@@ -188,7 +188,7 @@ This `task` takes no arguments.
 
 Eyre returns no `gift` in response to a `%code-changed` `task`.
 
-## `%approve-origin`
+## `%approve-origin` {#approve-origin}
 
 ```hoon
 [%approve-origin =origin]
@@ -206,7 +206,7 @@ Eyre returns no `gift` in response to a `%approve-origin` `task`.
 
 See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
 
-## `%reject-origin`
+## `%reject-origin` {#reject-origin}
 
 ```hoon
 [%reject-origin =origin]
@@ -225,7 +225,7 @@ Eyre returns no `gift` in response to a `%reject-origin` `task`.
 See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
 
 ---
-## `%set-response`
+## `%set-response` {#set-response}
 
 ```hoon
 [%set-response url=@t entry=(unit cache-entry)]

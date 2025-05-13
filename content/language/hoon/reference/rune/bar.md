@@ -4,7 +4,7 @@ Core expressions produce cores. A core is a cell of `[battery payload]`. The `ba
 
 Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a core with a single arm, named `$`. As with all arms, we can recompute `$` with changes, which is useful for recursion among other things.
 
-## `|$` "barbuc"
+## `|$` "barbuc" {#barbuc}
 
 Declares a mold builder wet gate with one or more molds as its sample.
 
@@ -87,7 +87,7 @@ Proper style for `|$` is to enclose the first argument with brackets, even if it
 
 ---
 
-## `|_` "barcab"
+## `|_` "barcab" {#barcab}
 
 Produce a **door** (a core with a sample).
 
@@ -158,7 +158,7 @@ A door is the general case of a gate (function). A gate is a door with only one 
 
 Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
-Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#-censig).
+Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#censig).
 
 #### Examples
 
@@ -198,7 +198,7 @@ The `ne` door prints a digit in base 10, 16, 32 or 64:
 
 ---
 
-## `|:` "barcol"
+## `|:` "barcol" {#barcol}
 
 Produce a gate with a custom sample.
 
@@ -270,7 +270,7 @@ This is useful if you want a gate to have a sample of a particular type, but you
 
 ---
 
-## `|%` "barcen"
+## `|%` "barcen" {#barcen}
 
 Produce a core, `[battery payload]`.
 
@@ -352,7 +352,7 @@ A trivial core:
 
 ---
 
-## `|.` "bardot"
+## `|.` "bardot" {#bardot}
 
 Produce a trap (a core with one arm `$`).
 
@@ -418,11 +418,11 @@ A more interesting trap:
 
 Note that we can use `$()` to recurse back into the trap, since it's a core with an `$` arm.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 ---
 
-## `|^` "barket"
+## `|^` "barket" {#barket}
 
 Produce a core whose battery includes a `$` arm and compute the latter.
 
@@ -501,7 +501,7 @@ A trivial example:
 
 ---
 
-## `|-` "barhep"
+## `|-` "barhep" {#barhep}
 
 Produce a trap (a core with one arm `$`) and evaluate it.
 
@@ -533,7 +533,7 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 
 The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 #### Examples
 
@@ -560,7 +560,7 @@ The classic loop is a decrement:
 
 ---
 
-## `|~` "barsig"
+## `|~` "barsig" {#barsig}
 
 Produce an iron gate.
 
@@ -624,7 +624,7 @@ See [this discussion of core variance models](../advanced.md)
 
 ---
 
-## `|*` "bartar"
+## `|*` "bartar" {#bartar}
 
 Produce a wet gate (one-armed core with sample).
 
@@ -664,7 +664,7 @@ Genericity is a powerful and dangerous tool. Use wet gates only if you know what
 
 Just as with a [gate](#-bartis), we can recurse back into a wet gate with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 `|*` can be used to make wet gates that produce structures, but this usage is discouraged in favor of `|$`.
 
@@ -688,7 +688,7 @@ The dry gate does not preserve the type of `a` and `b`; the wet gate does.
 
 ---
 
-## `|=` "bartis"
+## `|=` "bartis" {#bartis}
 
 Produce a gate (a one-armed core with a sample).
 
@@ -749,7 +749,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 #### Examples
 
@@ -774,7 +774,7 @@ A slightly less trivial gate:
 
 ---
 
-## `|@` "barpat"
+## `|@` "barpat" {#barpat}
 
 Produce a 'wet' core `[battery payload]`.
 
@@ -829,7 +829,7 @@ The `|@` rune is just like the `|%` rune except that instead of producing a 'dry
 
 ---
 
-## `|?` "barwut"
+## `|?` "barwut" {#barwut}
 
 Produce a lead trap.
 

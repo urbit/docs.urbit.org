@@ -4,6 +4,6 @@ A **keyfile** is a piece of information used to associate a [ship](ship.md) with
 
 The keyfile is used as an argument in the command line when booting a ship. During the boot process, [Vere](vere.md) passes the keyfile into the Arvo state.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Installation Guide](../manual/getting-started): Instructions on using a keyfile to boot a ship.

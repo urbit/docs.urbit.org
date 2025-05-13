@@ -4,7 +4,7 @@ In this document we describe the public interface for Behn. Namely, we describe 
 
 Most of Behn's `task`s are only used by the kernel or runtime. The two `task`s you're likely to use from userspace are [%wait](#wait) for setting a timer and [%rest](#rest) for cancelling a timer.
 
-## `%born`
+## `%born` {#born}
 
 ```hoon
 [%born ~]
@@ -18,7 +18,7 @@ You would not use this `task` from userspace.
 
 Behn does not return any `gift` in response to a `%born` `task`.
 
-## `%rest`
+## `%rest` {#rest}
 
 ```hoon
 [%rest p=@da]
@@ -36,7 +36,7 @@ Behn does not return any `gift` in response to a `%rest` `task`.
 
 See the [%rest](../examples/examples.md#rest) section of the Examples document.
 
-## `%drip`
+## `%drip` {#drip}
 
 ```hoon
 [%drip p=vase]
@@ -66,7 +66,7 @@ In response to a `%drip` `task`, Behn will `%pass` a `%wait` to itself, which th
 
 Say an app (the Target) is subscribed to updates from Clay (the Client). If Clay `%give`s updates to the app directly and the app crashes, this may cause Clay to crash as well. If instead Clay `%pass`es Behn a `%drip` `task` wrapping the update `gift`, Behn will set a timer for `now` that, when fired, will cause the update `gift` to be given. If it causes a crash then it will have been in response to the `%drip` move, thereby isolating Clay from the crash. Thus `%drip` acts as a sort of buffer against cascading sequences of crashes.
 
-## `%huck`
+## `%huck` {#huck}
 
 ```hoon
 [%huck syn=sign-arvo]
@@ -84,7 +84,7 @@ Behn returns the input `sign-arvo` as a `%heck` `gift`:
 [%heck syn=sign-arvo]
 ```
 
-## `%trim`
+## `%trim` {#trim}
 
 ```hoon
 [%trim p=@ud]
@@ -98,7 +98,7 @@ You would not use this `task` from userspace.
 
 Behn does not return any `gift` in response to a `%trim` `task`.
 
-## `%vega`
+## `%vega` {#vega}
 
 ```hoon
 [%vega ~]
@@ -112,7 +112,7 @@ You would not use this `task` from userspace.
 
 Behn does not return any `gift` in response to a `%vega` `task`.
 
-## `%wait`
+## `%wait` {#wait}
 
 ```hoon
 [%wait p=@da]
@@ -136,7 +136,7 @@ The `error` `unit` will be `~` if successful, or contain a traceback in the `tan
 
 See the [%wait](tasks.md#wait) section of the Examples document.
 
-## `%wake`
+## `%wake` {#wake}
 
 ```hoon
 [%wake ~]

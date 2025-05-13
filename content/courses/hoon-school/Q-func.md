@@ -6,9 +6,9 @@ Given a [gate](../../glossary/gate.md), you can manipulate it to accept a differ
 
 Functional programming, as a paradigm, tends to prefer rather mathematical expressions with explicit modification of function behavior.  It works as a formal system of symbolic expressions manipulated according to given rules and properties.  FP was derived from the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus), a cousin of combinator calculi like [Nock](../../glossary/nock.md).  (See also [APL](https://en.wikipedia.org/wiki/APL_%28programming_language%29).)
 
-##  Changing Arity
+## Changing Arity {#changing-arity}
 
-If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the `;:` [miccol](../../language/hoon/reference/rune/mic.md#-miccol) rune.
+If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the `;:` [miccol](../../language/hoon/reference/rune/mic.md#miccol) rune.
 
 ```hoon
 > (add 3 (add 4 5))
@@ -27,7 +27,7 @@ If a gate accepts only two values in its sample, for instance, you can chain tog
 This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of the gate.  (Does this work on [++mul:rs](../../language/hoon/reference/stdlib/3b.md#mulrs)?)
 
 
-##  Binding the Sample
+## Binding the Sample {#binding-the-sample}
 
 [_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument.  _Binding_, an allied process, is used to set the value of some of those arguments permanently.
 
@@ -47,22 +47,22 @@ Consider calculating _a x² + b x + c_, a situation we earlier resolved using a 
 117
 ```
 
-One can also [++cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` [miccol](../../language/hoon/reference/rune/mic.md#-miccol).  (There is also [++corl](../../language/hoon/reference/stdlib/2n.md#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
+One can also [++cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` [miccol](../../language/hoon/reference/rune/mic.md#miccol).  (There is also [++corl](../../language/hoon/reference/stdlib/2n.md#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
 
 ```hoon
 > ((cork dec @ux) 20)  
 0x13
 ```
 
-### Exercise:  Bind Gate Arguments
+### Exercise:  Bind Gate Arguments {#exercise-bind-gate-arguments}
 
 - Create a gate `++inc` which increments a value in one step, analogous to [++dec](../../language/hoon/reference/stdlib/1a.md#dec).
 
-### Exercise:  Chain Gate Values
+### Exercise:  Chain Gate Values {#exercise-chain-gate-values}
 
 - Write an expression which yields the parent [galaxy](../../glossary/galaxy.md) of a [planet's](../../glossary/planet.md) sponsoring [star](../../glossary/star.md) by composing two gates.
 
-##  Working Across `list`s
+## Working Across `list`s {#working-across-lists}
 
 The [++turn](../../language/hoon/reference/stdlib/2b.md#turn) function takes a list and a [gate](../../glossary/gate.md), and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of [atoms](../../glossary/atom.md):
 
@@ -108,12 +108,12 @@ c
 120
 ```
 
-### Exercise:  Calculate a Factorial
+### Exercise:  Calculate a Factorial {#exercise-calculate-a-factorial}
 
 - Use `++reel` to produce a [gate](../../glossary/gate.md) which calculates the factorial of a number.
 
 
-##  Classic Operations
+## Classic Operations {#classic-operations}
 
 Functional programmers frequently rely on three design patterns to produce operations on collections of data:
 

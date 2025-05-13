@@ -2,7 +2,7 @@
 
 Short articles about key concepts in the Urbit project. Each definition connects you with more specific information within the documentation, so you can learn more about the project at your own pace.
 
-## A
+## A {#a}
 
 [Agent](agent.md)  
 [Ames](ames.md)  
@@ -19,7 +19,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## B
+## B {#b}
 
 [Battery](battery.md)  
 [Behn](behn.md)  
@@ -29,7 +29,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## C
+## C {#c}
 
 [Card](card.md)  
 [Case](case.md)  
@@ -50,7 +50,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## D
+## D {#d}
 
 [Delegated Sending](delegated-sending.md)  
 [Desk](desk.md)  
@@ -64,7 +64,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## E
+## E {#e}
 
 [Ecliptic](ecliptic.md)  
 [Entropy](entropy.md)  
@@ -73,7 +73,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## F
+## F {#f}
 
 [Face](face.md)  
 [Fact](fact.md)  
@@ -81,7 +81,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## G
+## G {#g}
 
 [Galaxy](galaxy.md)  
 [Gall](gall.md)  
@@ -93,7 +93,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## H
+## H {#h}
 
 [Hdwallet](hdwallet.md)  
 [Head](head.md)  
@@ -101,14 +101,14 @@ Short articles about key concepts in the Urbit project. Each definition connects
 [Hood](hood.md)  
 [Hoon](hoon.md)  
 
-## I
+## I {#i}
 
 [Invite Tree](invite-tree.md)  
 [Iris](iris.md)  
 
 ---
 
-## J
+## J {#j}
 
 [Jael](jael.md)  
 [Jam](jam.md)  
@@ -116,7 +116,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## K
+## K {#k}
 
 [Kelvin](kelvin.md)  
 [Kernel](kernel.md)  
@@ -127,7 +127,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## L
+## L {#l}
 
 [Landscape](landscape.md)  
 [Leg](leg.md)  
@@ -139,7 +139,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## M
+## M {#m}
 
 [Mark](mark.md)  
 [Metals](metals.md)  
@@ -148,19 +148,19 @@ Short articles about key concepts in the Urbit project. Each definition connects
 [Moon](moon.md)  
 [Move](move.md)  
 
-## N
+## N {#n}
 
 [Nock](nock.md)  
 [Noun](noun.md)  
 [Null](null.md)  
 
-## O
+## O {#o}
 
 [OTA Updates](ota-updates.md)  
 
 ---
 
-## P
+## P {#p}
 
 [Path](path.md)  
 [Path Prefix](path-prefix.md)  
@@ -176,7 +176,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## R
+## R {#r}
 
 [Remote Scry](remote-scry.md)  
 [Replay](replay.md)  
@@ -188,7 +188,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## S
+## S {#s}
 
 [Sail](sail.md)  
 [Sample](sample.md)  
@@ -206,7 +206,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## T
+## T {#t}
 
 [Tail](tail.md)  
 [Tape](tape.md)  
@@ -216,7 +216,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## U
+## U {#u}
 
 [Udon](udon.md)  
 [Upgrade](upgrade.md)  
@@ -224,7 +224,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## V
+## V {#v}
 
 [Vane](vane.md)  
 [Vase](vase.md)  
@@ -233,7 +233,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## W
+## W {#w}
 
 [Warm Atom](warm-atom.md)  
 [Wet Gate](wet-gate.md)  
@@ -243,7 +243,7 @@ Short articles about key concepts in the Urbit project. Each definition connects
 
 ---
 
-## Z
+## Z {#z}
 
 [Zod](zod.md)  
 [Zuse](zuse.md)  

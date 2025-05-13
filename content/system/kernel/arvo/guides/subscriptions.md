@@ -6,29 +6,29 @@ We have many application-level styles of subscription, but we only have three tr
 
 For our purposes, a subscription is a stream of events from a publisher to a subscriber, where (1) the subscriber has indicated interest in that stream, (2) any update sent to one subscriber is sent to all subscribers on the same stream, and (3) when the publisher has a new update ready, they send it immediately to their subscribers instead of waiting for a later request.
 
-## Basic properties
+## Basic properties {#basic-properties}
 
-### Exactly-once updates
+### Exactly-once updates {#exactly-once-updates}
 
 Some subscriptions need the subscriber to receive each update separately instead of collapsing them into a single diff. Sometimes a subscription is really a sequence of commands, in which case there's no meaningful way to collapse them. Similarly, software updates may be expected to be applied in order.
 
-### Syncing data
+### Syncing data {#syncing-data}
 
 Other times, it's more natural to think of a subscription as communicating a data structure, where the only goal is to keep the data structure on the subscriber's side up-to-date with what's on the publisher's side. In this case, it's perfectly fine to collapse several updates into one large update, or even to resend the entire data structure. Partial updates exist only as an optimization.
 
 For this sort of subscription, we commonly use terms like "diff" instead of "message" or "update", and we say that we "apply a diff" instead of "process an update". We also often identify the subscription with the data structure itself.
 
-## Memory pressure
+## Memory pressure {#memory-pressure}
 
 Naively implemented, subscriptions pose a memory leak risk if the subscriber can't receive updates as fast as the publisher wants to send them. This commonly happens when the subscriber goes offline for an extended period of time (possibly forever; especially for comets). It's sufficient to bound the amount of memory dedicated to any particular subscriber.
 
 In a synchronous system, you don't have to worry about what happens if one side or the other ceases to be available. All of our subscriptions, though, can happen between ships.
 
-### Small data
+### Small data {#small-data}
 
 For particularly low-volume subscriptions, it may be acceptable to ignore the problem. Jael uses this approach, since the only time it's used across ships is to update moon keys, which is very low-volume and less than 1KB per update. If these subscriptions are used for more, this strategy will have to be revisited.
 
-### Buffers
+### Buffers {#buffers}
 
 A common solution to this problem is the venerable buffer. If more than N updates need to be sent, start dropping updates. There are several options for what to do when the buffer is full and the publisher wishes to send another message:
 
@@ -42,7 +42,7 @@ Gall subscriptions use the last of these. The buffer is bounded by a simple heur
 
 Buffers are commonly bounded by size, but this puts constraints on the types of messages may be sent. They may also be bounded in time: if the subscriber stops taking messages for at least X time, the buffer is full. Gall takes a hybrid approach; currently the heuristic is that the buffer counts as full if it has at least five messages and it has been 30 seconds since a message was acknowledged.
 
-### One at a time
+### One at a time {#one-at-a-time}
 
 Another scheme is to avoid multi-message subscriptions. Instead of allowing the subscriber to subscribe to all future updates on a path, allow them to "subscribe" to the _next_ update only. When they get that update, they subscribe to the new next update, so that they ultimately get every message.
 

@@ -2,13 +2,13 @@
 
 To [scry](../../../glossary/scry.md) is to perform a *read* from Urbit's referentially transparent namespace. In other words, it's a function from a `path` to a `noun` (although in some cases, the resulting type may be more constrained). Previously we only supported scrying within the same ship, but from Kernel version `[%zuse 413]`, it is possible to scry from *other* ships.
 
-## Lifecycle of a scry
+## Lifecycle of a scry {#lifecycle-of-a-scry}
 
-When you think of scry, you probably think of `.^` [dotket](../../../language/hoon/reference/rune/dot.md#-dotket). However, since networking is asynchronous, this is not a suitable interface for remote scry. Instead, a ship that wants to read from a remote part of the namespace will have to (directly or indirectly) ask Ames to perform the scry, which then cooperates with [Vere](../../../glossary/vere.md) to produce the desired data. In some future event when the result is available, Ames gives it back as a `%tune` gift. From the requester's perspective, this is the entire default lifecycle of a remote scry request.
+When you think of scry, you probably think of `.^` [dotket](../../../language/hoon/reference/rune/dot.md#dotket). However, since networking is asynchronous, this is not a suitable interface for remote scry. Instead, a ship that wants to read from a remote part of the namespace will have to (directly or indirectly) ask Ames to perform the scry, which then cooperates with [Vere](../../../glossary/vere.md) to produce the desired data. In some future event when the result is available, Ames gives it back as a `%tune` gift. From the requester's perspective, this is the entire default lifecycle of a remote scry request.
 
 Of course, you need to know how Ame's `%chum` and `%tune` look, as well as Gall's `%keen` note, to be able to use them. There are also a few exceptions to this default lifecycle. We'll go through all of this in a moment, but first, let's look at what kind of data is possible to scry.
 
-## Publishing
+## Publishing {#publishing}
 
 At the moment, there are two vanes that can handle remote scry requests: [Clay](../../../glossary/clay.md) and [Gall](../../../glossary/gall.md). Clay uses it to distribute source code in a more efficient manner than is possible with conventional Ames, but conceptually it only extends its [local scries](../../../system/kernel/clay/reference/scry.md) over the network, with the notable difference that you can't scry at the *current* time, since the requester doesn't know when the request reaches the publisher. Additionally, the paths are modified so that the vane and care are specified separately, like so: `/c/x/1/base/sys/hoon/hoon`.
 
@@ -71,7 +71,7 @@ What's that lone `/` before the path? It signifies that this data is published b
 
 As long as the extra `/` is included, Gall will serve scries with care `%x` at both specific revision numbers and at arbitrary times. If the extra `/` is not included, the scry has to happen at the current time, since we don't cache old results of calling `+on-peek`.
 
-### Additional Gall cares
+### Additional Gall cares {#additional-gall-cares}
 
 Apart from supporting reads using the `%x` care, Gall now also supports three new cares:
 
@@ -81,7 +81,7 @@ Apart from supporting reads using the `%x` care, Gall now also supports three ne
 
 All of these require the extra `/` to be present in the path, just as with `%x`.
 
-## Encryption
+## Encryption {#encryption}
 
 As well as ordinary unencrypted scries, Ames also supports two-party and multi-party encrypted scries. Two-party encryption doesn't require any additional steps on the publisher's side, but multi-party encryption does:
 
@@ -122,7 +122,7 @@ Example:
 
 The `%tend` note publishes the given `page` to the given `path` in the given `coop` security context. This is the same as a `%grow` note, just with the addition of the security context. The only difference is that access is limited to those allowed in the `coop`.
 
-### Access control
+### Access control {#access-control}
 
 For each security context created with the `%tend` task described above, the `++on-peek` arm of the agent should provide a scry handler for it, to decide whether a ship is allowed to access the resource or not. The scry path looks like:
 
@@ -146,11 +146,11 @@ It has a `%c` `care`, the security context (in this case `/your/security/context
 
 Note this is unnecessary for unencrypted and two-party encrypted remote scries, only for files you publish in a security context with the [`%tend`](#tend) note.
 
-## Scrying
+## Scrying {#scrying}
 
 Now we've looking at the publisher side, let's look at actually performing remote scries. There is one `$note:agent:gall` for performing unencrypted and multi-party encrypted remote scries, one Ames task for performing two-party encrypted remote scries, and two Ames tasks for cancelling pending remote scries. We'll look at each of these.
 
-### Tasks and Notes
+### Tasks and Notes {#tasks-and-notes}
 
 #### `%keen`
 
@@ -246,7 +246,7 @@ Example:
 
 Everything on the ship with pending requests to the given `spar` will receive a [`%tune`](#tune) gift from Ames with a null `roar`.
 
-### Gifts
+### Gifts {#gifts}
 
 There is only one kind of response you can receive from Ames for any kind of remote scry: a [`%tune`](#tune) gift.
 
@@ -262,7 +262,7 @@ The `spar` is the `ship` and `path` the request was made to, and the `roar` is t
 
 You'll receive a `%tune` whether it failed or succeeded on the target ship, as well as if the request was cancelled locally.
 
-## `-keen`
+## `-keen` {#keen}
 
 In addition to the above interface offered to agents, there is also support for making scry requests from threads using `+keen` in `lib/strandio`. It accepts a `[=ship =path]` and returns a `(unit page)`. There is also a [thread `ted/keen` that demonstrates this](https://github.com/urbit/urbit/blob/i/5788/remote-scry/pkg/arvo/ted/keen.hoon). You can run it from the dojo using `-keen [ship path]`. For example, this reads the `%noun` mark's source code out of `~zod`'s `%kids` desk, try it!
 
@@ -270,7 +270,7 @@ In addition to the above interface offered to agents, there is also support for 
 -keen [~zod /c/x/1/kids/mar/noun/hoon]
 ```
 
-## Additional reading
+## Additional reading {#additional-reading}
 
 - [Gall scry reference](../../../system/kernel/gall/reference/scry.md): Reference documentation of Gall's vane-level and agent-level scry interface.
 

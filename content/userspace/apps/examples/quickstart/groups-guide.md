@@ -15,7 +15,7 @@ The app source is available in the [`docs-examples` repo on Github](https://gith
 
 Let's get started.
 
-## Install binary
+## Install binary {#install-binary}
 
 If you've already got the `urbit` CLI runtime installed, you can skip this step. Otherwise, run one of the commands below, depending on your platform. It will fetch the binary and save it in the current directory.
 
@@ -43,7 +43,7 @@ curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
-## Development ship
+## Development ship {#development-ship}
 
 App development is typically done on a "fake" ship, which can be created with the `-F` flag. In this case, so we can test it on the live network right away, we'll do it on a comet instead. To create a comet, we can use the `-c` option, and specify a name for the *pier* (ship folder):
 
@@ -55,7 +55,7 @@ It might take a few minutes to boot up, and will fetch updates for the default a
 
 Note: we'll use `~sampel_samzod` throughout this guide, but this will be different for you as a comet's ID is randomly generated.
 
-## Dependencies
+## Dependencies {#dependencies}
 
 Our app needs a few standard files. We'll mount a couple of default desks so we can copy them across. We can do this with the `|mount` command:
 
@@ -77,7 +77,7 @@ cp -r dev-comet/landscape/sur/docket.hoon squad/sur/
 
 Now we can start working on the app itself.
 
-## Types
+## Types {#types}
 
 The first thing we typically do when developing an app is define:
 
@@ -198,7 +198,7 @@ Type definitions are typically stored in a separate file in the `/sur` directory
 
 </details>
 
-## Agent
+## Agent {#agent}
 
 With all the types now defined, we can create the app itself.
 
@@ -1302,7 +1302,7 @@ Gall agents live in the `/app` directory of a desk, so you can save this code in
 
 </details>
 
-## Marks
+## Marks {#marks}
 
 Marks are Urbit's version of filetypes/MIME types (but strongly typed and with inter-mark conversion methods). We need to define a mark for the `act`ions we'll send or receive, and the `upd`ates we'll send to subscribers or receive for subscriptions. These will be very simple since we don't need to do any conversions to things like JSON.
 
@@ -1371,7 +1371,7 @@ Mark files are stored in the `/mar` directory of a desk. Save the `%squad-do` ma
 ++  grad  %noun
 --
 ```
-## Front-end
+## Front-end {#front-end}
 
 We could have put the front-end code directly in our Gall agent, but it tends to be quite large so it's convenient to have it in a separate file and just import it. Most of this file consists of Sail code, which is the internal HTML representation, similar to other server-side renderings like Clojure's Hiccup.
 
@@ -1823,7 +1823,7 @@ Save the code below in `squad/app/squad/index.hoon`.
 
 </details>
 
-## Desk config
+## Desk config {#desk-config}
 
 With our types, agent, mark files and front-end now complete, the last thing we need are some desk configuration files.
 
@@ -1855,7 +1855,7 @@ Lastly, we need to create a Docket file. Docket is the agent that manages app fr
 ==
 ```
 
-## Put it together
+## Put it together {#put-it-together}
 
 Our app is now complete. In the `squad` working directory, we should have the following files, as well as the dependencies we copied in at the beginning:
 
@@ -1913,7 +1913,7 @@ One thing we can also do is publish the app so others can install it from us. To
 Now our friends will be able to install it directly from us with `|install <our ship> %squad` or by searching for `<our ship>` on their ship's homescreen.
 
 
-## Next steps
+## Next steps {#next-steps}
 
 To learn to create an app like this, the first thing to do is learn Hoon. [Hoon School](../../../../courses/hoon-school) is a comprehensive guide to the language, and the best place to start. After learning the basics of Hoon, [App School](../../../../courses/app-school) will teach you everything you need to know about app development.
 

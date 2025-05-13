@@ -49,7 +49,7 @@ You can try with other currencies as well:
 37319 GBP
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 The thread takes an `@tas` as its argument, which the dojo wraps in a `unit`. We extract the `vase` and check it's not empty:
 

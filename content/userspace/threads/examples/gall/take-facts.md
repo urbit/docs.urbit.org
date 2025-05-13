@@ -123,7 +123,7 @@ message 4
 Thread failed: not-foo
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 In our agent's `on-poke` arm we've added another card to subscribe to `/thread/[tid]/updates`:
 

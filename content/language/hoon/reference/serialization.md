@@ -2,7 +2,7 @@
 
 Noun serialization refers to a uniquely-defined technique for converting a noun into a single atom.  The basic noun serialization process in Urbit, called “jamming”, includes supporting internal references so that there is a minor compression effect included.
 
-##  Serialization Arms
+## Serialization Arms {#serialization-arms}
 
 The main tools from `/sys/hoon` for noun serialization are:
 
@@ -13,7 +13,7 @@ The main tools from `/sys/hoon` for noun serialization are:
 
 `++jam` and `++cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](../../../system/kernel/eyre/guides/noun-channels.md).
 
-### `++cue`
+### `++cue` {#cue}
 
 It is more straightforward to see how to decode a noun than to encode it, so let's start there.
 
@@ -49,7 +49,7 @@ Otherwise, we have a cell, so we have to expand the second bit at `a`.  If it is
 
 If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that case, expand at `c` (the head), as `$(b c)` and pin the cursor after as `v`.  `w` is the cell of `q.u` and `q.v`.  `p` is the lengths of `u` and `v` plus 2.  `q` is `w`, with `r` is the cache with `w` inserted.
 
-### `++rub`
+### `++rub` {#rub}
 
 ```hoon
 ++  rub                                                 ::  length-decode
@@ -77,7 +77,7 @@ The cursor `a` is advanced to include `c` and the terminator bit.
 
 We pin `e`, the number of bits in `q`. This is encoded as a `c-1`-length sequence of bits following `a`, which is added to $2^{c-1}$. `p` (the number of bits consumed) is `c+c+e`.  The packaged atom `q` is the `e`-length bitfield at `a+c+c`.
 
-### `++jam`
+### `++jam` {#jam}
 
 The basic idea of `++jam` is to produce a serial noun (in order of head/tail).  This requires a recursive examination of the encoded noun:
 
@@ -129,7 +129,7 @@ To cue a jamfile:
 
 This cues as a noun, so it should be `;;` or clammed to a particular mold.
 
-##  `eval` and newt encoding
+## `eval` and newt encoding {#eval-and-newt-encoding}
 
 Newt encoding is a variation of this:  it is a jammed noun with a short header.  Newt encoding is used by `urbit eval`.
 

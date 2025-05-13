@@ -2,7 +2,7 @@
 
 Khan only uses a handful of types, described below.
 
-## `+avow`
+## `+avow` {#avow}
 
 Thread result mold builder
 
@@ -34,7 +34,7 @@ The `mote` is an error code like `%foobar` and the `tang` contains something lik
 
 ---
 
-## `$bear`
+## `$bear` {#bear}
 
 Thread location
 
@@ -56,7 +56,7 @@ This is tells Khan where to look for a thread. It's either a `desk` or a full `b
 
 ---
 
-## `$cast`
+## `$cast` {#cast}
 
 External thread argument
 
@@ -75,7 +75,7 @@ This is only used if you're running a thread via Khan's external interface. The 
 
 ---
 
-## `+fyrd`
+## `+fyrd` {#fyrd}
 
 Mold builder for a thread run request
 

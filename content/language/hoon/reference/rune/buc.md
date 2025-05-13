@@ -2,7 +2,7 @@
 
 The `$` family of runes is used for defining custom types. Strictly speaking, these runes are used to produce `spec`s, which we call 'structures'.
 
-## Overview
+## Overview {#overview}
 
 Structures are abstract syntax trees for `type`s (see the documentation on [basic](../basic.md) and [advanced](../advanced.md) types for the precise definition of `type`). Structures are compile-time values of `type` which at runtime may be used to produce a 'mold'.
 
@@ -16,7 +16,7 @@ In any case, since molds are just functions, we can use functional programming t
 
 ---
 
-## `$|` "bucbar"
+## `$|` "bucbar" {#bucbar}
 
 Structure that satisfies a validator.
 
@@ -99,11 +99,11 @@ The definition of `+set` in `hoon.hoon` is the following:
   |=(a=(tree) ?:(=(~ a) & ~(apt in a)))
 ```
 
-Here [`|$`](bar.md#-barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
+Here [`|$`](bar.md#barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
 
 ---
 
-## `$_` "buccab"
+## `$_` "buccab" {#buccab}
 
 Structure that normalizes to an example.
 
@@ -148,7 +148,7 @@ One argument, fixed.
 
 ---
 
-## `$%` "buccen"
+## `$%` "buccen" {#buccen}
 
 Structure which recognizes a union tagged by head atom.
 
@@ -221,7 +221,7 @@ Make sure the last item in your `$%` terminates, or the default will be an infin
 
 ---
 
-## `$:` "buccol"
+## `$:` "buccol" {#buccol}
 
 Form a cell type.
 
@@ -300,7 +300,7 @@ The tuple the length of `p`.
 
 ---
 
-## `$<` "bucgal"
+## `$<` "bucgal" {#bucgal}
 
 Filters a pre-existing mold to obtain a mold that excludes a particular structure.
 
@@ -367,7 +367,7 @@ ford: %ride failed to execute:
 
 ---
 
-## `$>` "bucgar"
+## `$>` "bucgar" {#bucgar}
 
 Filters a mold to obtain a new mold matching a particular structure.
 
@@ -446,7 +446,7 @@ ford: %ride failed to execute:
 
 ---
 
-## `$-` "buchep"
+## `$-` "buchep" {#buchep}
 
 Structure that normalizes to an example gate.
 
@@ -511,7 +511,7 @@ Since a `$-` reduces to a [`$_`](#_-buccab), it is not useful for normalizing, j
 
 ---
 
-## `$^` "bucket"
+## `$^` "bucket" {#bucket}
 
 Structure which normalizes a union tagged by head depth (cell).
 
@@ -579,7 +579,7 @@ The default of `p`.
 
 ---
 
-## `$+` "buclus"
+## `$+` "buclus" {#buclus}
 
 Specify a shorthand type name for use in prettyprinting.
 
@@ -641,7 +641,7 @@ The default of `p`.
 
 ---
 
-## `$&` "bucpam"
+## `$&` "bucpam" {#bucpam}
 
 Repair a value of a tagged union type.
 
@@ -713,7 +713,7 @@ Here `adapting` is a structure that bunts to `[%1 ^]` but also normalizes from `
 
 ---
 
-## `$~` "bucsig"
+## `$~` "bucsig" {#bucsig}
 
 Define a custom type default value.
 
@@ -767,7 +767,7 @@ The product of `p`.
 
 #### Discussion
 
-You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](ket.md#-kettar).)
+You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](ket.md#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
 
@@ -809,7 +809,7 @@ Using `$~`:
 
 ---
 
-## `$@` "bucpat"
+## `$@` "bucpat" {#bucpat}
 
 Structure which normalizes a union tagged by head depth (atom).
 
@@ -879,7 +879,7 @@ A structure which applies `p` if its sample is an atom, `q` if its sample is a c
 
 ---
 
-## `$=` "buctis"
+## `$=` "buctis" {#buctis}
 
 Structure which wraps a face around another structure.
 
@@ -947,7 +947,7 @@ ford: %ride failed to execute:
 
 ---
 
-## `$?` "bucwut"
+## `$?` "bucwut" {#bucwut}
 
 Form a type from a union of other types.
 

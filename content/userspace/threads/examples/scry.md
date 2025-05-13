@@ -47,7 +47,7 @@ Save as `ted/get-ip.hoon` in the `%base` desk, `|commit %base`, and run it with 
 34.83.113.220:60659
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 Here we use the `strandio` function `scry` which takes an argument of `[mold path]` where:
 

@@ -97,7 +97,7 @@ Thread started successfully
 Thread failed: not-foo
 ```
 
-### Analysis
+### Analysis {#analysis}
 
 In `on-poke` we've added an extra card _before_ the `%spider-start` poke to subscribe for the result:
 

@@ -1,6 +1,6 @@
 # Using Clay
 
-## Reading and Subscribing
+## Reading and Subscribing {#reading-and-subscribing}
 
 When reading from Clay, there are three types of requests. A `%sing` request asks for data at a single revision. A `%next` request asks to be notified the next time there's a change to given file. A `%many` request asks to be notified on every change in a `desk` for a range of changes.
 
@@ -12,7 +12,7 @@ A `%next` request checks the query at the given revision, and it produces the re
 
 A `%many` request is triggered every time the given `desk` has a new revision. Unlike a `%next`, a `%many` has both a start and an end revision, after which it stops returning. For `%next`, a single change is reported, and if the caller wishes to hear of the next change, it must resubscribe. For `%many`, every revision from the start to the end triggers a response. Since a `%many` request doesn't ask for any particular data, there aren't `%u`, `%x`, and `%y` versions for it.
 
-## Unix sync
+## Unix sync {#unix-sync}
 
 Usage:
 
@@ -28,7 +28,7 @@ From the dojo, you can run `|mount %/path/to/directory %mount-point`, and this w
 
 Every file is converted to `%mime` before it's written to Unix, and converted back when read from Unix. The entire directory is watched (a la Dropbox), and every change is committed once you run `|commit %mount-point`. Every change can be automatically committed with `|clay/autocommit %mount-point`.
 
-## Merging
+## Merging {#merging}
 
 Usage:
 
@@ -44,7 +44,7 @@ Unless otherwise specified, all of the following create a new commit with the so
 
 Several strategies need a "merge-base". They find it by identifying the most recent common ancestor of the two `desk`s. If none, fail with `%merge-no-merge-base`; if there are two or more, pick one.
 
-### Strategies
+### Strategies {#strategies}
 
 **`%init`**: the only way to create a `desk`. Not a true merge, since it simply assigns the source commit to the destination.
 
@@ -68,7 +68,7 @@ Several strategies need a "merge-base". They find it by identifying the most rec
 
 **`%meet-that`**: merge as in `%meet`, except if both sides changed the same file, use the version in the source commit.
 
-### Examples and notes
+### Examples and notes {#examples-and-notes}
 
 The most common merge strategy is `%mate`, which is a normal 3-way merge which aborts on conflict.
 
@@ -98,7 +98,7 @@ If you get a `%merge-no-merge-base` error, this means you're trying to merge two
 
 `%meet-this` and `%meet-that` imply the existence of `%mate-this` and `%mate-that`, but those don't exist yet.
 
-## Autosync
+## Autosync {#autosync}
 
 Usage:
 

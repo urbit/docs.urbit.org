@@ -4,6 +4,6 @@ The **Censures** [Azimuth](azimuth.md) contract allows [stars](star.md) and [gal
 
 Positive reputation information cannot be similarly assigned to Urbit identities but it may be inferred from a lack of censures.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [The Censures contract](https://github.com/urbit/azimuth/blob/master/contracts/Censures.sol): The code on GitHub.

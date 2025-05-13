@@ -26,6 +26,6 @@ Vanes and other programs for Arvo are written in [Hoon](hoon.md).
 
 A ship creates its own copy of Arvo via a bootstrap sequence known as a [Pill](pill.md).
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [The Arvo reference](../system/kernel): An in-depth technical guide to Arvo and its vanes.

@@ -7,7 +7,7 @@ A Hoon atom type consists of a Nock atom with two additional pieces of metadata:
 - A Hoon atom type is [warm](warm-atom.md) if the constant is `~` (null), any atom is in the type.
 - A Hoon atom type is [cold](cold-atom.md) if the constant is `[~ atom]`, its only legal value is the exact value of the atom.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
   - [“Hoon Syntax”](../courses/hoon-school/B-syntax.md#nouns): A Hoon School lesson that explains how atoms work.

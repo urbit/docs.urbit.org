@@ -16,7 +16,7 @@ Here we briefly describe each function in `Ecliptic.eth` which allows one to wri
 
 We only document here the write functions specific to `Ecliptic.eth` and not the standard functions that are part of the ERC-721 or ERC-165 interfaces.
 
-### `Point`s interface
+### `Point`s interface {#points-interface}
 
 These functions are available to each owner of a [`Point`](azimuth-eth.md#points), and a subset of them are available to its [proxies](#proxies). All of these actions may be performed from Bridge.
 
@@ -203,7 +203,7 @@ Requirements:
 
 Corresponds to the layer 2 `%set-transfer-proxy` action.
 
-### Poll actions
+### Poll actions {#poll-actions}
 
 Most of these are functions only available to galaxies. They are related to [voting](../../../glossary/voting.md). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
 
@@ -282,7 +282,7 @@ Check whether the `_proposal` has achieved majority. Any Ethereum address may ca
 
 This action eiher occurs as part of a vote that achieves a majority, or must be performed manually. It is not available in Bridge.
 
-### Contract owner operations
+### Contract owner operations {#contract-owner-operations}
 
 The following functions may only be performed by the owner of the contract. There are only two such functions, one of which is to spawn galaxies. As all galaxies have already been spawned, it is no longer of any use. Thus only `setDnsDomains` is relevant today.
 

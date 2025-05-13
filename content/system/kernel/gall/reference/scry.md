@@ -14,7 +14,7 @@ Note that for all agent scries and most vane scries, `q.beak`, where there'd usu
 
 {% endhint %}
 
-## Agent scries
+## Agent scries {#agent-scries}
 
 In order to hit the `+on-peek` arm of a Gall agent, you need to:
 
@@ -31,7 +31,7 @@ Note that `%x` cares alone must include an extra `mark` field at the end of the 
 
 ---
 
-## Vane scries
+## Vane scries {#vane-scries}
 
 Gall itself provides the special vane-level endpoints listed below. They are organized by the `care`. In order to hit the vane-level endpoints, the beginning of the the `spur` (e.g. the `path` after the `beak`) *must* be a `%$` empty element. For example:
 
@@ -43,7 +43,7 @@ Gall itself provides the special vane-level endpoints listed below. They are org
 
 Note you can use `$` to make the last element empty since it won't allow a trailing `/`. Note how in the third example, the empty element is at the *beginning* of the `spur` and *after* the `beak`. If you fail to include this empty element, Gall will try route the scry to an agent for handling instead.
 
-### `%d`: get desk of app
+### `%d`: get desk of app {#d-get-desk-of-app}
 
 A scry with a `%d` care and an agent in `q.beak` will give you the desk that agent is on.
 
@@ -60,7 +60,7 @@ A `desk`
 
 ---
 
-### `%e`: running apps
+### `%e`: running apps {#e-running-apps}
 
 A scry with an `%e` care will give you the agents on the desk given in `q.beak`.
 
@@ -87,7 +87,7 @@ A `(set [=dude live=?])`, where `live` is true if running and false if not.
 
 ---
 
-### `%f`: nonces of apps
+### `%f`: nonces of apps {#f-nonces-of-apps}
 
 A scry with a care of `%f` and anything in `q.beak` will produce the subscription nonces of all apps. You are unlikely to use this, it's mostly for kernel debugging.
 
@@ -115,7 +115,7 @@ A `(map dude @)` where the `@` is the nonce.
 
 ---
 
-### `%n`: get nonce of subscription
+### `%n`: get nonce of subscription {#n-get-nonce-of-subscription}
 
 A scry with a care of `%n`, an agent in `q.beak` and a path of `//[ship]/[agent]/[wire]` will produce the nonce for that subscription. You are unlikely to use this, it's mostly for kernel debugging.
 
@@ -125,7 +125,7 @@ A `@`.
 
 ---
 
-### `%t`: remote scry subpaths
+### `%t`: remote scry subpaths {#t-remote-scry-subpaths}
 
 A scry with a `%t` care, an agent in `q.beak` and a path of `//some/path` will give you the list of remote scry subpaths bound under the given path.
 
@@ -144,7 +144,7 @@ A `(list path)`
 
 ---
 
-### `%u`: check if installed
+### `%u`: check if installed {#u-check-if-installed}
 
 A scry with a `%u` care will check whether the given agent is installed and running.
 
@@ -167,7 +167,7 @@ A `?`
 
 ---
 
-### `%v`: get agent state
+### `%v`: get agent state {#v-get-agent-state}
 
 A scry with a `%v` care will return the data of an agent whether it is running or not.  The agent is supplied as the `dude` (second) position of the `beak`.
 
@@ -211,7 +211,7 @@ A `egg-any` (versioned passthrough to `egg`)
 
 ---
 
-### `%w`: latest revision of path
+### `%w`: latest revision of path {#w-latest-revision-of-path}
 
 A scry with a `%w` care and an agent in `q.beak` will get the latest revision number of the bound remote scry path given in the `spur`.
 
@@ -223,7 +223,7 @@ A `cass:clay`, specifically the `%ud` kind.
 
 ---
 
-### `%x`: remote scry file
+### `%x`: remote scry file {#x-remote-scry-file}
 
 A scry with a `%x` care and an agent in `q.beak` will get the value bound at the remote scry path given in the `spur`. The revision of the file must be given in the `beak` portion of the scry path. The general format is therefore:
 
@@ -239,7 +239,7 @@ The type returned is the raw `noun` from the `page`. If the file has been tombst
 
 ---
 
-### `%z`: hash of value at path
+### `%z`: hash of value at path {#z-hash-of-value-at-path}
 
 A scry with a `%z` care and an agent in `q.beak` will get the hash identifier of the value bound at the remote scry path given in the `spur`.
 

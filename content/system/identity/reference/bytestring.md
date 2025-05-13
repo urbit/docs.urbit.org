@@ -6,7 +6,7 @@ This document gives the bytestring format for layer 2 transactions and batches.
 
 We remark that each transaction from a given ship in a batch needs a separate signature, since data such as the nonce are not included in the transaction but are used in the signature. Thus a ship cannot submit multiple transactions with a single signature for all of them - a different signature is needed for each transaction.
 
-## Byte format
+## Byte format {#byte-format}
 
 We describe the byte format of a `batch` and its components in the following. All atoms described here are read by the parser as little-endian - i.e. it reads the last digit first and proceeds backwards.
 

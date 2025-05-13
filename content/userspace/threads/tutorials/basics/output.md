@@ -94,22 +94,22 @@ thread failed: %not-foo
 
 Now let's look at the meaning of each of the response codes.
 
-### wait
+### wait {#wait}
 
 Wait tells spider not to move on from the current strand, and to wait for some new input. For example, `sleep:strandio` will return a `[%wait ~]` along with a card to start a behn timer. Spider passes the card to behn, and when behn sends a wake back to spider, the new input will be given back to `sleep` as a `%sign`. Sleep will then issue `[~ %done ~]` and (assuming it's in a `bind`) `bind` will proceed to the next strand.
 
-### skip
+### skip {#skip}
 
 Spider will normally treat a `%skip` the same as a `%wait` and just wait for some new input. When used inside a `main-loop:strandio`, however, it will instead tell `main-loop` to skip this function and try the next one with the same input. This is very useful when you want to call different functions depending on the mark of a poke or some other condition.
 
-### cont
+### cont {#cont}
 
 Cont means continue computation. When a `%cont` is issued, the issuing gate will be called again with the new value provided. Therefore `%cont` essentially creates a loop.
 
-### fail
+### fail {#fail}
 
 Fail says to end the thread here and don't call any subsequent strands. It includes an error message and optional traceback. When spider gets a `%fail` it will send a fact with mark `%thread-fail` containing the error and traceback to its subscribers, and then end the thread.
 
-### done
+### done {#done}
 
 Done means the computation was completed successfully and includes the result. When `spider` recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `bind` receives a `%done` it will extract the result and call the next gate with it.

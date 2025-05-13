@@ -13,7 +13,7 @@ Looking towards the future, we expect moons to also be utilized as identities fo
 
 Unlike planets, stars, and galaxies, moons have no presence on [Azimuth](azimuth.md). Moons are representable with 64 bits and have long names like `~doznec-salfun-naptul-habrys`, the latter half of which is inherited from their parent planet.
 
-### Further Reading
+### Further Reading {#further-reading}
 
 - [User manual: Basics](../manual/os/basics.md#moons): The "Moons" section contains instructions for creating and managing moons.
 - [Lunar Urbit and the Internet of Things](https://urbit.org/blog/iot): Blog post on the past, present, and future of moons.

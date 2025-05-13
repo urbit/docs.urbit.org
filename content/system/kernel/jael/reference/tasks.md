@@ -4,9 +4,9 @@ This document details all the tasks you may wish to send Jael, as well as the gi
 
 You may also wish to reference the [Data Types](data-types.md) document for details of the types referenced here, and the [Examples](../examples/examples.md) document for practical examples of using these tasks.
 
-## Tasks
+## Tasks {#tasks}
 
-### `%dawn`
+### `%dawn` {#dawn}
 
 Boot from keys.
 
@@ -37,7 +37,7 @@ Jael `%give`s an `%init` gift to Unix. This occurs after the Dill `%slip` init.
 
 ---
 
-### `%fake`
+### `%fake` {#fake}
 
 Boot fake ship.
 
@@ -59,7 +59,7 @@ Jael `%give`s a `%init` gift to Unix.
 
 ---
 
-### `%listen`
+### `%listen` {#listen}
 
 Set Ethereum source.
 
@@ -79,7 +79,7 @@ Jael will not return any gifts in response to a `%listen` task.
 
 ---
 
-### `%meet`
+### `%meet` {#meet}
 
 This task is deprecated and does not perform any actions.
 
@@ -89,7 +89,7 @@ This task is deprecated and does not perform any actions.
 
 ---
 
-### `%moon`
+### `%moon` {#moon}
 
 Register moon keys or otherwise administer a moon.
 
@@ -105,7 +105,7 @@ Jael does not return any gifts in response to a `%moon` task.
 
 ---
 
-### `%nuke`
+### `%nuke` {#nuke}
 
 Cancel subscription to public or private key updates.
 
@@ -127,7 +127,7 @@ See the [%public-keys and %nuke](../examples/examples.md#public-keys-and-nuke) s
 
 ---
 
-### `%private-keys`
+### `%private-keys` {#private-keys}
 
 Subscribe to private key updates.
 
@@ -149,7 +149,7 @@ See the [%private-keys](../examples/examples.md#private-keys) section of the Exa
 
 ---
 
-### `%public-keys`
+### `%public-keys` {#public-keys}
 
 Subscribe to public key (and related) updates from Jael.
 
@@ -171,7 +171,7 @@ See the [%public-keys and %nuke](../examples/examples.md#public-keys-and-nuke) s
 
 ---
 
-### `%rekey`
+### `%rekey` {#rekey}
 
 Update private keys.
 
@@ -187,7 +187,7 @@ Jael does not return any gift in response to a `%rekey` task.
 
 ---
 
-### `%resend`
+### `%resend` {#resend}
 
 Resend private keys.
 
@@ -203,7 +203,7 @@ Jael doesn't return any gifts in response to a `%rekey` task, but `%private-keys
 
 ---
 
-### `%ruin`
+### `%ruin` {#ruin}
 
 Pretend breach.
 
@@ -229,7 +229,7 @@ Jael doesn't return any gifts in response to a `%ruin` task.
 
 ---
 
-### `%turf`
+### `%turf` {#turf}
 
 View domains.
 
@@ -250,7 +250,7 @@ document](../examples/examples.md#turf) for a practical example.
 
 ---
 
-### `%step`
+### `%step` {#step}
 
 Reset web login code.
 
@@ -270,9 +270,9 @@ See the [%step](../examples/examples.md#step) section of the Examples document f
 
 ---
 
-## Gifts
+## Gifts {#gifts}
 
-### `%done`
+### `%done` {#done}
 
 Ames message (n)ack.
 
@@ -284,7 +284,7 @@ This is given in response to a `%plea` from Ames. You would not use this from us
 
 ---
 
-### `%boon`
+### `%boon` {#boon}
 
 Ames response.
 
@@ -296,7 +296,7 @@ This is given in response to a request from Ames. You would not use this from us
 
 ---
 
-### `%private-keys`
+### `%private-keys` {#private-keys}
 
 Private keys.
 
@@ -310,7 +310,7 @@ The `life` is our current key revision number, and the `vein` contains a map fro
 
 ---
 
-### `%public-keys`
+### `%public-keys` {#public-keys}
 
 Ethereum changes.
 
@@ -324,7 +324,7 @@ See the [`$public-keys-result`](data-types.md#public-keys-result) entry in the d
 
 ---
 
-### `%turf`
+### `%turf` {#turf}
 
 Domains.
 

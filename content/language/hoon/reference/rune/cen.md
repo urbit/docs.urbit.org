@@ -4,7 +4,7 @@ The `%` family of runes is used for making 'function calls' in Hoon. To be more 
 
 These runes reduce to the `%=` rune.
 
-## `%_` "cencab"
+## `%_` "cencab" {#cencab}
 
 Resolve a wing with changes, preserving type.
 
@@ -101,7 +101,7 @@ See [how wings are resolved](../limbs).
 
 ---
 
-## `%:` "cencol"
+## `%:` "cencol" {#cencol}
 
 Call a gate with many arguments.
 
@@ -184,7 +184,7 @@ When `%:` is used in tall-form syntax, the series of expressions after `p` must 
 
 ---
 
-## `%.` "cendot"
+## `%.` "cendot" {#cendot}
 
 Call a gate (function), inverted.
 
@@ -227,7 +227,7 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 
 ---
 
-## `%-` "cenhep" {#-cenhep}
+## `%-` "cenhep" {#cenhep}
 
 Call a gate (function).
 
@@ -280,7 +280,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 #### Discussion
 
-`%-` is used to call a function; `a` is the function ([`gate`](bar.md#-bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar.md#_-barcab).
+`%-` is used to call a function; `a` is the function ([`gate`](bar.md#bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar.md#_-barcab).
 
 #### Examples
 
@@ -296,7 +296,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 ---
 
-## `%^` "cenket"
+## `%^` "cenket" {#cenket}
 
 Call gate with triple sample.
 
@@ -358,7 +358,7 @@ d
 
 ---
 
-## `%+` "cenlus"
+## `%+` "cenlus" {#cenlus}
 
 Call gate with a cell sample.
 
@@ -422,7 +422,7 @@ A `%+` expression is for calling a gate with a cell sample. `a` is the gate to b
 
 ---
 
-## `%~` "censig"
+## `%~` "censig" {#censig}
 
 Evaluate an arm in a door.
 
@@ -497,7 +497,7 @@ See also [`|_`](bar.md#_-barcab).
 
 ---
 
-## `%*` "centar"
+## `%*` "centar" {#centar}
 
 Evaluate an expression, then resolve a wing with changes.
 
@@ -601,7 +601,7 @@ A `%*` expression evaluates some arbitrary Hoon expression, `b`, and then resolv
 
 ---
 
-## `%=` "centis"
+## `%=` "centis" {#centis}
 
 Resolve a wing with changes.
 

@@ -1,6 +1,6 @@
 # Luhn Number
 
-## Challenge: Luhn Number
+## Challenge: Luhn Number {#challenge-luhn-number}
 
 The Luhn test is used by some credit card companies to distinguish valid credit card numbers from what could be a random selection of digits.
 
@@ -73,7 +73,7 @@ Some notes:
 
 * Don't worry about numbers with less than 2 digits, or improperly formatted input (with letters and spaces etc.). You can assume that the input tape will have the correct format.
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, we compose a series of tests which allow us to rigorously check for expected behavior.
 
@@ -203,11 +203,11 @@ Following a principle of test-driven development, we compose a series of tests w
 --
 ```
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2023.6.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _By ~dozreg-toplud._
 
@@ -286,7 +286,7 @@ _By ~dozreg-toplud._
 (cork (cury (cury dry-snap a) u.index-tar) this-gate)
 ```
 
-### Solution #2
+### Solution #2 {#solution-2}
 
 _By ~pardun-nollev._
 
@@ -393,7 +393,7 @@ _By ~pardun-nollev._
 --
 ```
 
-### Solution #3
+### Solution #3 {#solution-3}
 
 _By ~motdeg-bintul_
 

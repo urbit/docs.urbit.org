@@ -2,7 +2,7 @@
 
 These runes modify the subject. (Or more precisely, they evaluate at least one of their subexpressions with a modified subject.)
 
-## Overview
+## Overview {#overview}
 
 Hoon doesn't have variables in the ordinary sense. If you want to bind a name to a value, e.g., `a` to `12`, you do so by pinning `12` to the subject and associating the name with it. This sort of operation is done with the `=` family of runes.
 
@@ -12,7 +12,7 @@ Of course there are many variations on ways to modify the subject, useful for di
 
 ---
 
-## `=>` "tisgar"
+## `=>` "tisgar" {#tisgar}
 
 Compose two expressions.
 
@@ -81,7 +81,7 @@ the product of `q`, with the product of `p` taken as the subject.
 
 ---
 
-## `=|` "tisbar"
+## `=|` "tisbar" {#tisbar}
 
 Combine a named noun with the subject by "bunting" (producing the default value) of a given mold.
 
@@ -146,7 +146,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 
 ---
 
-## `=:` "tiscol"
+## `=:` "tiscol" {#tiscol}
 
 Change multiple legs in the subject.
 
@@ -213,7 +213,7 @@ This rune is like `=.`, but for modifying the values of multiple legs of the sub
 
 ---
 
-## `=,` "tiscom"
+## `=,` "tiscom" {#tiscom}
 
 Expose namespace.
 
@@ -293,7 +293,7 @@ With a dojo-defined face:
 
 ---
 
-## `=.` "tisdot"
+## `=.` "tisdot" {#tisdot}
 
 Change one leg in the subject.
 
@@ -363,7 +363,7 @@ nest-fail
 
 ---
 
-## `=-` "tishep"
+## `=-` "tishep" {#tishep}
 
 Combine a new noun with the subject, inverted.
 
@@ -431,7 +431,7 @@ None
 
 ---
 
-## `=^` "tisket"
+## `=^` "tisket" {#tisket}
 
 Pin the head of a pair; change a leg with the tail.
 
@@ -510,7 +510,7 @@ The `og` core is a stateful pseudo-random number generator. We have to change th
 
 ---
 
-## `=<` "tisgal"
+## `=<` "tisgal" {#tisgal}
 
 Compose two expressions, inverted.
 
@@ -582,7 +582,7 @@ p:q
 
 ---
 
-## `=+` "tislus"
+## `=+` "tislus" {#tislus}
 
 Combine a new noun with the subject.
 
@@ -650,7 +650,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ---
 
-## `=;` "tismic"
+## `=;` "tismic" {#tismic}
 
 Combine a named noun with the subject, possibly with type annotation; inverted order.
 
@@ -716,7 +716,7 @@ None
 
 ---
 
-## `=/` "tisfas"
+## `=/` "tisfas" {#tisfas}
 
 Combine a named noun with the subject, possibly with type annotation.
 
@@ -805,7 +805,7 @@ r
 
 ---
 
-## `=~` "tissig"
+## `=~` "tissig" {#tissig}
 
 Compose many expressions.
 
@@ -886,7 +886,7 @@ The product of the chain composition.
 
 ---
 
-## `=*` "tistar" {#-tistar}
+## `=*` "tistar" {#tistar}
 
 Define a deferred expression.
 
@@ -963,7 +963,7 @@ This lets you reference the whole `state` while also being able to reference its
 
 ---
 
-## `=?` "tiswut"
+## `=?` "tiswut" {#tiswut}
 
 Conditionally change one leg in the subject.
 

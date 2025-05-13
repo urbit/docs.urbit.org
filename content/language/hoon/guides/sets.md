@@ -4,9 +4,9 @@ While the developer documentation on `$set`s and the `+in` core is comprehensive
 
 A `$set` is a tree with a particular internal order based on the hash of the value.  This tends to balance the values and make lookup and access more efficient over large sets.
 
-##  Set Creation & Membership
+## Set Creation & Membership {#set-creation-membership}
 
-### Define a Set
+### Define a Set {#define-a-set}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-identity.png)
 
@@ -17,7 +17,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%b %a %c}
 ```
 
-### Add Members
+### Add Members {#add-members}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-addition.png)
 
@@ -38,7 +38,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%e %b %d %f %a %c}
 ```
 
-### Remove Members
+### Remove Members {#remove-members}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-deletion.png)
 
@@ -50,7 +50,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%b %a %c}
 ```
 
-### Membership
+### Membership {#membership}
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-membership.png)
 
@@ -66,7 +66,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 %.n
 ```
 
-### Size
+### Size {#size}
 
 [`++wyt:in`](../reference/stdlib/2h.md#wytin) produces the number of elements in _A_ as an atom (width).
 
@@ -76,7 +76,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 3
 ```
 
-### Export as List
+### Export as List {#export-as-list}
 
 [`++tap:in`](../reference/stdlib/2h.md#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
 
@@ -91,11 +91,11 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 ~[%c %a %f %d %b %e]
 ```
 
-##  Set Relations
+## Set Relations {#set-relations}
 
 First we consider the elementary operations between two sets.
 
-### Union (_A_ ∪ _B_)
+### Union (_A_ ∪ _B_) {#union-a-b}
 
 $$
 A \cup B \equiv \{ x : x \in A \text{ or } x \in B \}
@@ -112,7 +112,7 @@ $$
 {%e %b %d %a %c}
 ```
 
-### Intersection (_A_ ∩ _B_)
+### Intersection (_A_ ∩ _B_) {#intersection-a-b}
 
 $$
 A \cap B \equiv \{ x : x \in A \text{ and } x \in B \}
@@ -138,7 +138,7 @@ If two sets are disjoint, then their intersection is ∅.
 {}
 ```
 
-### Complement (_Aꟲ_)
+### Complement (_Aꟲ_) {#complement-a}
 
 $$
 A^{\textrm{C}} = X \backslash A \equiv {x \in X; x \notin A}
@@ -158,7 +158,7 @@ For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_
 ```
 
 
-### Symmetric Difference (_A_ Δ _B_)
+### Symmetric Difference (_A_ Δ _B_) {#symmetric-difference-a-b}
 
 $$
 A \bigtriangleup B \equiv \{x : x \text{ belongs to exactly one of } A \text{ and } B\}
@@ -179,9 +179,9 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 ```
 
 
-##  Set Operations
+## Set Operations {#set-operations}
 
-### Logical `AND` (∧)
+### Logical `AND` (∧) {#logical-and-}
 
 [`++all:in`](../reference/stdlib/2h.md#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
 
@@ -191,7 +191,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 %.y
 ```
 
-### Logical `OR` (∨)
+### Logical `OR` (∨) {#logical-or-}
 
 [`++any:in`](../reference/stdlib/2h.md#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
 
@@ -201,7 +201,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 %.y
 ```
 
-### Operate with Function
+### Operate with Function {#operate-with-function}
 
 [`++run:in`](../reference/stdlib/2h.md#runin) applies a function _f_ to every member of set _A_.
 
@@ -211,7 +211,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 {98 97 99}
 ```
 
-### Accumulate with Function
+### Accumulate with Function {#accumulate-with-function}
 
 [`++rep:in`](../reference/stdlib/2h.md#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
 

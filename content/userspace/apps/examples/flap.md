@@ -16,7 +16,7 @@ We will conceive of this app's communications structure as consisting of a _vert
 ![](https://media.urbit.org/developers/vert-horz.svg)
 
 
-##  Desk Setup
+## Desk Setup {#desk-setup}
 
 As with all Urbit development, you should set up a development ship.  In this case, it will be more convenient to have this ship be on the live network:  a comet or a moon.  Below, we refer to this as `comet`.
 
@@ -110,7 +110,7 @@ At this point, your overall directory structure (not showing most of the files) 
 `|commit %flap` to include all of these files.
 
 
-##  Front End
+## Front End {#front-end}
 
 If you open `index.html` in `Original-Flappy-bird-JavaScript/` in a web browser, the game should work interactively.  Only mouse clicks are recorded as events.  The only termination condition is death.
 
@@ -145,7 +145,7 @@ and `|commit %flap`.
 
 The `index.html` file will still work if you open it in the browser directly, but it doesn't have any connection to Urbit yet.  Clay doesn't know where to build everything and hook it up, so at a minimum we have to load and display the front-end using `/app/flap.hoon`.
 
-##  Data Model
+## Data Model {#data-model}
 
 Different parts of the system need to converge on their shared vision of the world.  Thus, `/sur` and `/mar`.  We aren't interested in calculating the gameplay mechanics, only in the scores.  So we expect to be able to track our state including:
 
@@ -234,7 +234,7 @@ Updates are sent between Urbit peers.
 ```
 
 
-##  Back End
+## Back End {#back-end}
 
 The main app implements the logic for exposing and tracking data.
 
@@ -495,7 +495,7 @@ Then `|install our %flap` to install the app.
 
 Now when we navigate to `localhost:8080/apps/flap`, what do we see?  The game canvas is merely an empty box.  What can we do to fix this?
 
-### Serving Correctly
+### Serving Correctly {#serving-correctly}
 
 If we investigate the Developer Tools console in our browser, we see messages to the effect that resources are unable to be located.  Resource paths (for `js`, `png`, and `wav` files) tell the browser from whence the resources will come when they are loaded.  We have two options here as well:  hot-link the resource from its GitHub or other source or serve the resource from Urbit.
 
@@ -633,9 +633,9 @@ This version of the app should run in your browser correctly once you `|commit %
 > ```
 
 
-##  Communications Protocol
+## Communications Protocol {#communications-protocol}
 
-### Changes to Back End
+### Changes to Back End {#changes-to-back-end}
 
 #### Urbit as Database
 
@@ -1056,7 +1056,7 @@ With all of the above, you should have a working `%flappy` instance at `http://l
 
 </details>
 
-### Changes to Front End
+### Changes to Front End {#changes-to-front-end}
 
 Now that the a leaderboard is supported, we need a way to display it alongside the browser game.  To wit, we will add some `async` functions to retrieve key bits of information from the ship and display it in a table.
 
@@ -1614,7 +1614,7 @@ At this point, if we refresh the page we will see our `%pals` data visible in th
 :treaty|publish %flap
 ```
 
-### Beautification
+### Beautification {#beautification}
 
 There's a final set of changes we can make to the styling which makes this a much prettier app while still keeping these simple:
 
@@ -2168,7 +2168,7 @@ loop();
 </details>
 
 
-##  What's Next?
+## What's Next? {#whats-next}
 
 After completing this tutorial, you should think about how to apply what you've seen to other applications.  Some things to think about:
 

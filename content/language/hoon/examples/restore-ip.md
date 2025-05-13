@@ -1,6 +1,6 @@
 # Restore IP
 
-## Challenge: Restore IP Addresses
+## Challenge: Restore IP Addresses {#challenge-restore-ip-addresses}
 
 An IPv4 address consists of exactly four non-negative whole numbers, separated by single dots. Each number is between 0 and 255 (inclusive) and cannot have leading zeros, unless it is 0.
 
@@ -39,11 +39,11 @@ dojo: naked generator failure
 dojo: naked generator failure
 ```
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2024.3.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _By ~nodsup-halnux. Clearly written, well-commented, and very Hoonish._
 
@@ -286,7 +286,7 @@ _By ~nodsup-halnux. Clearly written, well-commented, and very Hoonish._
 
 
 
-### Solution #2
+### Solution #2 {#solution-2}
 _By ~ramteb-tinmut. Another great solution, well written and commented._
 
 ```hoon
@@ -382,7 +382,7 @@ _By ~ramteb-tinmut. Another great solution, well written and commented._
 --
 ```
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../../userspace/apps/guides/unit-tests.md) section.
 

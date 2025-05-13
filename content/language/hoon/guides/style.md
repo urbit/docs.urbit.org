@@ -2,13 +2,13 @@
 
 Welcome to the Hoon style guide. It’s important to familiarize yourself with our way of writing Hoon code.
 
-## Layout
+## Layout {#layout}
 
 Hoon’s position on layout is: so long as your code is (a) correctly commented, (b) free from blank or overlong lines, (c) parses, and (d) looks good, it’s good layout.
 
 When a layout standard or other fundamental coding convention is not perfectly rigid, code can develop some individual flavor. But Hoon’s layout rules, though not rigid, are still strict. The flavor should never overwhelm the content.
 
-### General outline of Hoon syntax
+### General outline of Hoon syntax {#general-outline-of-hoon-syntax}
 
 There are two forms of syntax in Hoon: wide and tall. Wide forms fit on a single line, use single spaces to separate syntax, and generally use enclosing terminators (like parentheses to close an expression). Tall forms can use multiple lines, separate syntax with two spaces at minimum and arbitrary whitespace at maximum, and avoid terminators when the content has a fixed structure.
 
@@ -30,7 +30,7 @@ These are regular forms -- every rune can be written this way. Hoon also has a v
 
 The goal of wide/tall forms is to resemble the look of procedural code, with its statement/expression distinction, in a purely functional language. In particular, complex code in functional languages tends to develop a diagonal shape, since child nodes in the syntax tree are indented right.
 
-### Tall layout conventions
+### Tall layout conventions {#tall-layout-conventions}
 
 In wide form, the parser allows no freedom of layout (and no comments, either). In tall form, there is too much freedom, and so we need conventions. These conventions aren’t absolute, but you shouldn’t defy them unless you have a good reason to do so.
 
@@ -140,7 +140,7 @@ We sometimes end up with multiple terminators on separate lines, two or more spa
 ==         ==
 ```
 
-## General naming style
+## General naming style {#general-naming-style}
 
 Modern Hoon naming is **verbose**.
 
@@ -148,7 +148,7 @@ Modern Hoon naming is **verbose**.
 
 It can’t be repeated too often: **do not abbreviate words, unless you would use the same abbreviations in written English**. To save a trivial, one-time amount of work in typing, you are adding a nontrivial amount of work and ambiguity in reading.
 
-### Comments and unparsed bytes
+### Comments and unparsed bytes {#comments-and-unparsed-bytes}
 
 Hoon comments are 80-column lines which contain whitespace, then `::`, then optional text.
 
@@ -207,7 +207,7 @@ or
 
 Please don’t do this in new code. Normal conventions should be legible. Use more deeply qualified positions if your code is hard to navigate.
 
-### Structure of all comments, formal and informal
+### Structure of all comments, formal and informal {#structure-of-all-comments-formal-and-informal}
 
 If any comment cannot be parsed as a formal comment, we treat it as an informal comment and ignore it.
 
@@ -236,7 +236,7 @@ A complex formal comment is the headline; then an empty line; then an udon body 
 
 The point is: sometimes we want to see a deep explanation; sometimes we just want a summary. So we require you to either (a) provide a line-length explanation, or (b) a long screed but with a line-length summary/headline.
 
-### Feature comments
+### Feature comments {#feature-comments}
 
 A feature headline is `::`, then two spaces, then a qualified location, then `:`, then a freeform string. Like:
 
@@ -248,7 +248,7 @@ A feature headline is `::`, then two spaces, then a qualified location, then `:`
 
 We find the feature `$foo` relative to the current location and move the comment there, as described above. In most cases it becomes a product comment. For a `|chapter` (which does not resolve to any data value) it becomes the chapter description.
 
-### Product comments
+### Product comments {#product-comments}
 
 Product comments describe the product of the expression below. The headline is a string in parentheses:
 
@@ -258,7 +258,7 @@ Product comments describe the product of the expression below. The headline is a
 make:a:strange:foo
 ```
 
-### Flow comments and legends
+### Flow comments and legends {#flow-comments-and-legends}
 
 Flow comments use a new commenting concept called **legends**.
 
@@ -330,7 +330,7 @@ Flow comments, because they describe what your code is doing, are embedded in th
 
 And data interpolation, in `{}`, also works in flow comments. Your flow comments just describe what your code is doing, in English, including data.
 
-## Grading
+## Grading {#grading}
 
 How do we define the superficial quality of Hoon code? (Setting aside, of course, the question of whether the code is computing the right thing in the right way.)
 

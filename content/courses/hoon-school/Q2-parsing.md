@@ -13,7 +13,7 @@ The basic problem all parsers face is this:
 3. You need to loop back to #1 again and again until you are out of
    characters.
 
-## The Hoon Parser
+## The Hoon Parser {#the-hoon-parser}
 
 We could build a simple parser out of a [trap](../../glossary/trap.md) and [++snag](../../language/hoon/reference/stdlib/2b.md#snag), but it would be brittle and difficult to extend.  The Hoon parser is very sophisticated, since it has to take a file of ASCII characters (and some UTF-8 strings) and turn it via an AST into [Nock](../../glossary/nock.md) code.  What makes parsing challenging is that we have to wade directly into a sea of new types and processes.  To wit:
 
@@ -29,7 +29,7 @@ A substantial swath of the standard library is built around parsing for various 
 
 There is a [full guide on parsing](../../language/hoon/guides/parsing.md) which goes into more detail than this quick overview.
 
-## Scanning Through a `tape`
+## Scanning Through a `tape` {#scanning-through-a-tape}
 
 [++scan](../../language/hoon/reference/stdlib/4g.md#scan) parses a `tape` or crashes, simple enough.  It will be our workhorse.  All we really need to know in order to use it is how to build a `rule`.
 
@@ -45,11 +45,11 @@ syntax error
 dojo: hoon expression failed
 ```
 
-## `rule` Building
+## `rule` Building {#rule-building}
 
 The `rule`-building system is vast and often requires various components together to achieve the desired effect.
 
-### `rule`s to parse fixed strings
+### `rule`s to parse fixed strings {#rules-to-parse-fixed-strings}
 
 - [++just](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `tape` of the input `nail`.
 
@@ -87,7 +87,7 @@ The `rule`-building system is vast and often requires various components togethe
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-### `rule`s to parse flexible strings
+### `rule`s to parse flexible strings {#rules-to-parse-flexible-strings}
 
 So far we can only parse one character at a time, which isn't much better than just using [++snag](../../language/hoon/reference/stdlib/2b.md#snag) in a [trap](../../glossary/trap.md).
 
@@ -155,7 +155,7 @@ How do we parse multiple characters in order to break things up sensibly?
     ['a' 'b' 'a']
     ```
 
-- The `;~` [micsig](../../language/hoon/reference/rune/mic.md#-micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
+- The `;~` [micsig](../../language/hoon/reference/rune/mic.md#micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
 
     ```hoon
     > (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  
@@ -199,7 +199,7 @@ However, to parse iteratively, we need to use the [++knee](../../language/hoon/r
 
 There is an example of a calculator [in the parsing guide](../../language/hoon/guides/parsing.md#recursive-parsers) that's worth a read at this point.  It uses [++knee](../../language/hoon/reference/stdlib/4f.md#knee) to scan in a set of numbers at a time.
 
-### Example:  Parse a String of Numbers
+### Example:  Parse a String of Numbers {#example-parse-a-string-of-numbers}
 
 A simple [++shim](../../language/hoon/reference/stdlib/4f.md#shim)-based parser:
 
@@ -218,6 +218,6 @@ A refined [++cook](../../language/hoon/reference/stdlib/4f.md#cook)/[++cury](../
 [p=[p=1 q=3] q=[~ u=[p=[~ 12] q=[p=[p=1 q=3] q="3"]]]]
 ```
 
-### Example:  Hoon Workbook
+### Example:  Hoon Workbook {#example-hoon-workbook}
 
 More examples demonstrating parser usage are available in the [Hoon Workbook](../../language/hoon/examples), such as the [Roman Numeral](../../language/hoon/examples/roman.md) tutorial.

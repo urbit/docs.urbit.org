@@ -1,6 +1,6 @@
 # Phone Letters
 
-## Challenge: Phone Letters
+## Challenge: Phone Letters {#challenge-phone-letters}
 
 
 Previously, people typed words on a phone by pressing combinations of numbers. Each number mapped to a few different possible letters, as shown below.
@@ -31,11 +31,11 @@ Example usage:
 <<"aw" "ax" "ay" "az" "bw" "bx" "by" "bz" "cw" "cx" "cy" "cz">>
 ```
 
-##  Solutions
+## Solutions {#solutions}
 
 _These solutions were submitted by the Urbit community as part of a competition in ~2024.8.  They are made available under the MIT License and CC0.  We ask you to acknowledge authorship should you utilize these elsewhere._
 
-### Solution #1
+### Solution #1 {#solution-1}
 
 _Our style winner, a clean and well-commented solution by ~norweg-rivlex._
 
@@ -107,7 +107,7 @@ _Our style winner, a clean and well-commented solution by ~norweg-rivlex._
 
 
 
-### Solution #2
+### Solution #2 {#solution-2}
 _The speed winner by ~diblud-ricbet._
 
 ```hoon
@@ -147,7 +147,7 @@ output
 ==
 ```
 
-##  Unit Tests
+## Unit Tests {#unit-tests}
 
 Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../../userspace/apps/guides/unit-tests.md) section.
 

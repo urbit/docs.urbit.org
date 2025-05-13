@@ -8,7 +8,7 @@ The primary way in which users interact with Azimuth is via [Bridge](https://bri
 
 ## Azimuth
 
-Azimuth was originally defined as a set of smart contracts on Ethereum that defines the [state](/system/identity/reference/azimuth-eth) and [business logic](/system/identity/reference/ecliptic) of the PKI for layer 1. With the introduction of naive rollups, this has also come to include the set of components used for dealing with the PKI within Urbit, as now the complete PKI state is stored offchain (though this state is derived entirely from on-chain data). The following sections outline what each component is responsible for and how it communicates with the others.
+Azimuth was originally defined as a set of smart contracts on Ethereum that defines the [state](system/identity/reference/azimuth-eth) and [business logic](system/identity/reference/ecliptic) of the PKI for layer 1. With the introduction of naive rollups, this has also come to include the set of components used for dealing with the PKI within Urbit, as now the complete PKI state is stored offchain (though this state is derived entirely from on-chain data). The following sections outline what each component is responsible for and how it communicates with the others.
 
 The Gall agents involved with Azimuth are summarized as follows:
 
@@ -71,7 +71,7 @@ Scries can be inferred from the `+on-peek` arm:
 
 ### `%roller` {#roller}
 
-`%roller`, stored at `/app/roller.hoon`, is a Gall agent responsible for collecting and submitting batches of layer 2 transactions to the Ethereum blockchain. Among other things, it keeps track of a list of pending transactions to be sent, transactions it has sent that are awaiting confirmation, history of transactions sent organized by Ethereum address, and when the next batch of transactions will be sent. See also [Rollers](/system/identity/reference/roller) for more information on the roller.
+`%roller`, stored at `/app/roller.hoon`, is a Gall agent responsible for collecting and submitting batches of layer 2 transactions to the Ethereum blockchain. Among other things, it keeps track of a list of pending transactions to be sent, transactions it has sent that are awaiting confirmation, history of transactions sent organized by Ethereum address, and when the next batch of transactions will be sent. See also [Rollers](system/identity/reference/roller) for more information on the roller.
 
 The following diagram illustrates how the roller interacts with Bridge and Ethereum at a high level.
 
@@ -107,11 +107,11 @@ This app is not responsible for communicating with Bridge via HTTP. Instead, tha
 
 ### `%roller-rpc`
 
-`%roller-rpc`, stored at `/app/roller-rpc.hoon`, is a very simple Gall app responsible for receiving HTTP RPC-API calls, typically sent from other Urbit ID users via Bridge. It then translates these API calls from JSON to a format understood by `%roller` and forwards them to `%roller`. This app does not keep any state - its only purpose is to act as an intermediary between Bridge and `%roller`. See [here](/system/identity/reference/layer2-api) for more information on the JSON RPC-API.
+`%roller-rpc`, stored at `/app/roller-rpc.hoon`, is a very simple Gall app responsible for receiving HTTP RPC-API calls, typically sent from other Urbit ID users via Bridge. It then translates these API calls from JSON to a format understood by `%roller` and forwards them to `%roller`. This app does not keep any state - its only purpose is to act as an intermediary between Bridge and `%roller`. See [here](system/identity/reference/layer2-api) for more information on the JSON RPC-API.
 
 ## `naive.hoon` {#naive}
 
-`/lib/naive.hoon` consists of a gate whose sample is a `verifier`, `chain-id=@ud`, `state`, and `input`, which outputs a cell of `[effects state]`. This is the transition function which updates the state of the PKI stored in `%azimuth` which handles state transitions caused by both layer 1 and layer 2 transactions. A high-level overview of how `naive.hoon` functions can be found [here](/system/identity/concepts/layer2#layer-2).
+`/lib/naive.hoon` consists of a gate whose sample is a `verifier`, `chain-id=@ud`, `state`, and `input`, which outputs a cell of `[effects state]`. This is the transition function which updates the state of the PKI stored in `%azimuth` which handles state transitions caused by both layer 1 and layer 2 transactions. A high-level overview of how `naive.hoon` functions can be found [here](system/identity/concepts/layer2#layer-2).
 
 A `verifier` is a gate whose sample is of the form `[dat=octs v=@ r=@ s=@]` and which returns `(unit address)`:
 
@@ -119,11 +119,11 @@ A `verifier` is a gate whose sample is of the form `[dat=octs v=@ r=@ s=@]` and 
 +$  verifier  $-([dat=octs v=@ r=@ s=@] (unit address))
 ```
 
-The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to verify that `dat` is data signed by the ECDSA signature given by the `[v r s]` tuple, according to the format for signed transactions outlined in the [bytestring format](/system/identity/reference/bytestring) documentation.
+The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to verify that `dat` is data signed by the ECDSA signature given by the `[v r s]` tuple, according to the format for signed transactions outlined in the [bytestring format](system/identity/reference/bytestring) documentation.
 
-`chain-id` is the ID used by the Ethereum blockchain, which is `1337`. See [bytestring format](/system/identity/reference/bytestring) for more information. This is used so that e.g. transactions on the Ropsten test network cannot be replayed on the mainnet.
+`chain-id` is the ID used by the Ethereum blockchain, which is `1337`. See [bytestring format](system/identity/reference/bytestring) for more information. This is used so that e.g. transactions on the Ropsten test network cannot be replayed on the mainnet.
 
-`state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](/system/identity/reference/azimuth-eth), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](/system/identity/concepts/layer2#state) for more on how PKI state is handled.
+`state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](system/identity/reference/azimuth-eth), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](system/identity/concepts/layer2#state) for more on how PKI state is handled.
 
 ```hoon
 +$  state
@@ -160,7 +160,7 @@ The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to 
 +$  operators  (jug address address)
 ```
 
-`points` should be self-explanatory if you are already familiar with the structure of [Azimuth.eth](/system/identity/reference/azimuth-eth). The only new addition is `dominion`, whose value says whether a ship is on layer 1, layer 2, or layer 1 with a layer 2 spawn proxy. See [Layer 2 actions](/system/identity/reference/l2-actions) for an overview of how `dominion` determines the PKI actions available to a ship.
+`points` should be self-explanatory if you are already familiar with the structure of [Azimuth.eth](system/identity/reference/azimuth-eth). The only new addition is `dominion`, whose value says whether a ship is on layer 1, layer 2, or layer 1 with a layer 2 spawn proxy. See [Layer 2 actions](system/identity/reference/l2-actions) for an overview of how `dominion` determines the PKI actions available to a ship.
 
 `operators` already existed on layer 1 and are defined as a part of the [ERC-721 standard](https://eips.ethereum.org/EIPS/eip-721).
 

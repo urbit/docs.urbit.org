@@ -146,7 +146,7 @@ With this brief primer complete, we'll take a closer look at our journal applica
 
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
 
-- [HTTP API Guide](/tools/js-libs/http-api-guide) - Reference documentation for `@urbit/http-api`.
+- [HTTP API Guide](tools/js-libs/http-api-guide) - Reference documentation for `@urbit/http-api`.
 
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
 

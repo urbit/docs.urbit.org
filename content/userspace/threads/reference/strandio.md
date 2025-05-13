@@ -1380,7 +1380,7 @@ Make an HTTP request via Iris, but don't wait for the response.
 
 #### Accepts
 
-A [`request:http`](/system/kernel/eyre/reference/data-types#requesthttp).
+A [`request:http`](system/kernel/eyre/reference/data-types#requesthttp).
 
 #### Produces
 
@@ -1447,7 +1447,7 @@ Nothing.
 
 #### Produces
 
-A [`client-response:iris`](/system/kernel/iris/reference/data-types#client-response).
+A [`client-response:iris`](system/kernel/iris/reference/data-types#client-response).
 
 #### Source
 
@@ -1942,11 +1942,11 @@ Raw read from Clay.
 
 #### Accepts
 
-A pair of `ship` and [`riff:clay`](/system/kernel/clay/reference/data-types#riff).
+A pair of `ship` and [`riff:clay`](system/kernel/clay/reference/data-types#riff).
 
 #### Produces
 
-A [`riot:clay`](/system/kernel/clay/reference/data-types#riot).
+A [`riot:clay`](system/kernel/clay/reference/data-types#riot).
 
 #### Source
 
@@ -2076,7 +2076,7 @@ The `wire` to listen on.
 
 #### Produces
 
-A [`riot:clay`](/system/kernel/clay/reference/data-types#riot)
+A [`riot:clay`](system/kernel/clay/reference/data-types#riot)
 
 #### Source
 
@@ -2243,7 +2243,7 @@ Data of the type produced by the given `mold`.
 #### Example
 
 See the [separate `main-loop`
-example](/userspace/threads/examples/main-loop) or the
+example](userspace/threads/examples/main-loop) or the
 [`echo`](#echo) example below.
 
 ---
@@ -2294,7 +2294,7 @@ Send a wrapped Dill task to Dill.
 
 #### Accepts
 
-A [`flog:dill`](/system/kernel/dill/reference/data-types#flog)
+A [`flog:dill`](system/kernel/dill/reference/data-types#flog)
 
 #### Produces
 

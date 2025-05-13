@@ -2,7 +2,7 @@
 
 Our networking protocol.
 
-Ames is the name of both our network and the vane that communicates over it. When Unix receives a packet over the correct UDP port, it pipes it straight into Ames for handling. Also, all packets sent over the Ames network are sent by the Ames vane. Apps and vanes may use Ames to directly send messages to other ships. In general, apps use [Gall](system/kernel/gall) and [Clay](system/kernel/clay) to communicate with other ships rather than using Ames directly, but this isn't a requirement. Of course, Gall and Clay use Ames behind the scenes to communicate across the network. Jael is the only other vane to utilize Ames.
+Ames is the name of both our network and the vane that communicates over it. When Unix receives a packet over the correct UDP port, it pipes it straight into Ames for handling. Also, all packets sent over the Ames network are sent by the Ames vane. Apps and vanes may use Ames to directly send messages to other ships. In general, apps use [Gall](../gall) and [Clay](../clay) to communicate with other ships rather than using Ames directly, but this isn't a requirement. Of course, Gall and Clay use Ames behind the scenes to communicate across the network. Jael is the only other vane to utilize Ames.
 
 Ames includes several significant components. Although the actual crypto algorithms are defined in `zuse`, they're used extensively in Ames for encrypting and decrypting packets. Congestion control and routing is handled entirely in Ames. Finally, the actual Ames protocol itself, including how to route incoming packets to the correct vane or app, is defined in Ames.
 
@@ -10,7 +10,7 @@ Ames includes several significant components. Although the actual crypto algorit
 
 This section summarizes the design of Ames. Beyond this section are deeper elaborations on the concepts presented here.
 
-Ames extends [Arvo's](system/kernel/arvo) `%pass`/`%give` `move` semantics across the network.
+Ames extends [Arvo's](../arvo) `%pass`/`%give` `move` semantics across the network.
 
 Ames receives packets as Arvo events and emits packets as Arvo effects. The runtime is responsible for transferring the bytes in an Ames packet across a physical network to another ship.
 
@@ -62,7 +62,7 @@ The 32-bit header is given by the following data, presented in order:
 - 3 bits: Ames protocol version (currently 0)
 - 2 bits: sender address size
 - 2 bits: receiver address size
-- 20 bits: checksum (truncated insecure hash of the body, done with [`+mug`](language/hoon/reference/stdlib/2e#mug)
+- 20 bits: checksum (truncated insecure hash of the body, done with [`+mug`](../../../language/hoon/reference/stdlib/2e.md#mug)
 - 1 bit: is this relayed? (if set, `origin` will be present in the body)
 
 Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
@@ -82,9 +82,9 @@ The body is of variable length and consists of the following parts in this order
 
 `origin` is the IP and port of the original sender if the packet was proxied through a relay.
 
-`SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](system/kernel/ames/guides/cryptography)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](system/identity/concepts/life-and-rift) for information on what `life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
+`SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](guides/cryptography.md)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](../../identity/concepts/life-and-rift.md) for information on what `life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
 
-The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](language/hoon/reference/cryptography#en).
+The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../language/hoon/reference/cryptography.md#en).
 
 ### Packeting
 
@@ -126,7 +126,7 @@ This means all re-sends of an ack packet will be bitwise identical to each other
 
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests under `@ud`.
 
-Here, `our-life` refers to the [`life`](system/identity/concepts/life-and-rift), or revision number, of the acking ship's networking keys, and `her-life` is the `life` of the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow. `message-num` denotes the number of the message in the flow identified by `bone`. `fragment-num` denotes the number of the fragment of the message identified by `message-num` that is being acked.
+Here, `our-life` refers to the [`life`](../../identity/concepts/life-and-rift.md), or revision number, of the acking ship's networking keys, and `her-life` is the `life` of the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow. `message-num` denotes the number of the message in the flow identified by `bone`. `fragment-num` denotes the number of the fragment of the message identified by `message-num` that is being acked.
 
 A message (n)ack is a different kind of ack that is obtained by encrypting the `+jam` of the following noun:
 
@@ -201,7 +201,7 @@ But if the message were not short enough to be contained in a single packet, eac
 
 ## The Serf and the King
 
-Urbit's functionality is split between the two binaries `urbit-worker` (sometimes called the Serf) and `urbit-king` (sometimes called the King). This division of labor is currently not well-documented outside of the [Vere documents](system/runtime/), but we summarize it here.
+Urbit's functionality is split between the two binaries `urbit-worker` (sometimes called the Serf) and `urbit-king` (sometimes called the King). This division of labor is currently not well-documented outside of the [Vere documents](../../runtime), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and then informs the King of the new state. The King manages snapshots of the Arvo state and handles I/O with Unix, among other things. The Serf only ever talks to the King, while the King talks with both the Serf and Unix.
 

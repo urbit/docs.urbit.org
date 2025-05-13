@@ -1,5 +1,5 @@
 # Examples
 
-### [Examples](system/kernel/clay/examples/examples)
+### [Examples](examples.md)
 
 Example usage of the various Clay `task`s.

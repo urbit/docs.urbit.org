@@ -202,7 +202,7 @@ Into the Gorge of Eternal Peril with you!
 Aaaaagh!
 ```
 
-`%ask` generators return `sole-effect`s.  For more information on these, consult the [guide on command-line agents](userspace/apps/guides/cli-tutorial).
+`%ask` generators return `sole-effect`s.  For more information on these, consult the [guide on command-line agents](../../../userspace/apps/guides/cli-tutorial.md).
 
 `%ask` generators can also accept arguments, although this is uncommon.
 
@@ -211,9 +211,9 @@ Aaaaagh!
 
 Generators can furthermore interact specifically with agents.
 
-The [`+dbug` agent](userspace/apps/examples/dbug) is invoked against an agent to display internal state.
+The [`+dbug` agent](../../../userspace/apps/examples/dbug.md) is invoked against an agent to display internal state.
 
-Any app can implement generators to wrap raw pokes (see [`%ahoy`](userspace/apps/examples/ahoy) for instance).
+Any app can implement generators to wrap raw pokes (see [`%ahoy`](../../../userspace/apps/examples/ahoy.md) for instance).
 
 For instance, `:dojo|wipe` is equivalent to `:dojo +dojo/wipe`.  This pokes the `%dojo` agent with the output from running the generator located at `/gen/dojo/wipe.hoon`.
 

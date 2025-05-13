@@ -6,6 +6,6 @@ These notes are from the 2023 cohort of Core Academy.  This course delves into e
 
 Preliminary material:
 
-- [Hoon School, Text Parsing III](courses/hoon-school/Q2-parsing)
-- [Hoon School, Generic and Variant Cores](courses/hoon-school/R-metals)
+- [Hoon School, Text Parsing III](../hoon-school/Q2-parsing.md)
+- [Hoon School, Generic and Variant Cores](../hoon-school/R-metals.md)
 - [The Nested Cores Pattern](https://developers.urbit.org/blog/nested-core-pattern) (archive link)

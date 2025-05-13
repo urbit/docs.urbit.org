@@ -1,6 +1,6 @@
 # Using Marks
 
-In the last document, [Writing Marks](system/kernel/clay/guides/marks/writing-marks), we walked through writing `mark` files and touched on how Clay handles them. They needn't just be left to background vane processes though, you can also use them yourself in your code.
+In the last document, [Writing Marks](writing-marks.md), we walked through writing `mark` files and touched on how Clay handles them. They needn't just be left to background vane processes though, you can also use them yourself in your code.
 
 There are two kinds of cores that Clay can build for you: A `mark` conversion gate and a `mark` core. Each has two kinds: Statically typed and dynamically typed. Clay has a `care` for producing each of these:
 
@@ -9,7 +9,7 @@ There are two kinds of cores that Clay can build for you: A `mark` conversion ga
 - `%e` - Build a statically typed `mark` core.
 - `%f` - Build a statically typed `mark` conversion gate.
 
-You can either use these by `%pass`ing Clay a [%warp task](system/kernel/clay/reference/tasks#warp) with the appropriate `care`, or else with a [Clay scry](system/kernel/clay/reference/scry). In the examples here we've used the latter.
+You can either use these by `%pass`ing Clay a [%warp task](../../reference/tasks.md#warp) with the appropriate `care`, or else with a [Clay scry](../../reference/scry.md). In the examples here we've used the latter.
 
 ## mark conversion gates
 

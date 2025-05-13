@@ -2,8 +2,8 @@
 
 This section contains extra information to help you get started after you've got your Urbit up and running.
 
-- [Getting Around](manual/getting-started/additional/getting-around) - First steps to orient yourself in your new Urbit.
-- [Joining Groups](manual/getting-started/additional/joining-groups) - How to join groups and engage with the Urbit community.
-- [Installing Applications](manual/getting-started/additional/installing-applications) - How to install apps from the Urbit ecosystem.
-- [Interfaces](manual/getting-started/additional/interfaces) - Information on alternative Urbit interfaces.
-- [Desktop](manual/getting-started/additional/desktop) - Information on the now-deprecated desktop application.
+- [Getting Around](getting-around.md) - First steps to orient yourself in your new Urbit.
+- [Joining Groups](joining-groups.md) - How to join groups and engage with the Urbit community.
+- [Installing Applications](installing-applications.md) - How to install apps from the Urbit ecosystem.
+- [Interfaces](interfaces.md) - Information on alternative Urbit interfaces.
+- [Desktop](desktop.md) - Information on the now-deprecated desktop application.

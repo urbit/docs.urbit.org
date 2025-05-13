@@ -342,7 +342,7 @@ None
 
 #### Discussion
 
-Technically the `=.` rune doesn't change the subject. It creates a new subject just like the old one except for a changed value at `p`. Note that the mutation uses [`%_` ("cencab")](language/hoon/reference/rune/cen#_-cencab), so the type at `p` doesn't change. Trying to change the value type results in a `nest-fail`.
+Technically the `=.` rune doesn't change the subject. It creates a new subject just like the old one except for a changed value at `p`. Note that the mutation uses [`%_` ("cencab")](cen.md#_-cencab), so the type at `p` doesn't change. Trying to change the value type results in a `nest-fail`.
 
 #### Examples
 

@@ -171,7 +171,7 @@ This is used in a [`proof`](#proof) to attest that a particular ship is an agent
 
 ## `id`
 
-A request ID. The [`id`](tools/auth-server/types#id) field is a random unique ID for the request, and must be a v4 UUID (variant 1, RFC 4122/DCE 1.1).
+A request ID. The [`id`](types.md#id) field is a random unique ID for the request, and must be a v4 UUID (variant 1, RFC 4122/DCE 1.1).
 
 Note this is decoded into a 122-bit `@ux` atom by `%auth-server` - the UUID form is only used in JSON, scry paths and subscription paths.
 

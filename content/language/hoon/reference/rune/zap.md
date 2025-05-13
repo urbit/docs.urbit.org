@@ -43,7 +43,7 @@ None
 
 #### Discussion
 
-This produces the [`$hoon`](language/hoon/reference/stdlib/4o#hoon) AST of expression `q`. The first argument, `p`, is always an example of the `$hoon` type, typically just the `*hoon` bunt value, and is used for type inference. The reason for `p` is just to handle transitions if the `$hoon` type changes.
+This produces the [`$hoon`](../stdlib/4o.md#hoon) AST of expression `q`. The first argument, `p`, is always an example of the `$hoon` type, typically just the `*hoon` bunt value, and is used for type inference. The reason for `p` is just to handle transitions if the `$hoon` type changes.
 
 #### Examples
 
@@ -59,7 +59,7 @@ This produces the [`$hoon`](language/hoon/reference/stdlib/4o#hoon) AST of expre
 
 ## `!>` "zapgar"
 
-Wrap a noun in its type (form a [`vase`](language/hoon/reference/stdlib/4o#vase)).
+Wrap a noun in its type (form a [`vase`](../stdlib/4o.md#vase)).
 
 #### Syntax
 
@@ -81,7 +81,7 @@ A cell whose tail is the product of `p`, and whose head is the static type of `p
 
 #### Discussion
 
-In Hoon, a dynamic type is a static type compiled at runtime. This type-noun cell is generally called a [`vase`](language/hoon/reference/stdlib/4o#vase).
+In Hoon, a dynamic type is a static type compiled at runtime. This type-noun cell is generally called a [`vase`](../stdlib/4o.md#vase).
 
 #### Examples
 
@@ -101,7 +101,7 @@ If you want just the type value, use a 'type spear'. This is `-:!>`, i.e., the h
 
 ## `!<` "zapgal"
 
-Extracts a [`vase`](language/hoon/reference/stdlib/4o#vase) to the given mold if its type nests.
+Extracts a [`vase`](../stdlib/4o.md#vase) to the given mold if its type nests.
 
 #### Syntax
 
@@ -208,7 +208,7 @@ None
 
 This wraps the product of `q` in its inferred type. It's a raw version of [`!>`](#-zapgar). Unlike zapgar, `q` is not given a `p` face and its type information is not stripped to a raw noun.
 
-The first field, `p`, must be an example of the [`$type`](language/hoon/reference/stdlib/4o#type) type, typically just `*type` (the bunt of `$type`). The `p` argument is just so transitions can be handled if the `$type` type changes.
+The first field, `p`, must be an example of the [`$type`](../stdlib/4o.md#type) type, typically just `*type` (the bunt of `$type`). The `p` argument is just so transitions can be handled if the `$type` type changes.
 
 It's unlikely you'd use this rune directly; [`!>`](#-zapgar) is much more typical.
 

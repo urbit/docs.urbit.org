@@ -149,6 +149,6 @@ When we put each of these parts together, we have our complete `/sur/journal.hoo
 
 ## Resources
 
-- [App School I /sur section](courses/app-school/7-sur-and-marks#sur) - This section of App School covers writing a `/sur` structure library for an agent.
+- [App School I /sur section](../app-school/7-sur-and-marks.md#sur) - This section of App School covers writing a `/sur` structure library for an agent.
 
 - [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `mop`s, and is well commented.

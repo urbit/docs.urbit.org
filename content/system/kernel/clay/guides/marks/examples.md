@@ -1,6 +1,6 @@
 # Examples
 
-These are the files used in the [Writing Marks](system/kernel/clay/guides/marks/writing-marks) guide.
+These are the files used in the [Writing Marks](writing-marks.md) guide.
 
 ## `/lib/csv-utils/hoon`
 

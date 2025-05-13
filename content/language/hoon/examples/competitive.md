@@ -177,8 +177,8 @@ Perhaps surprisingly, many text conversion operations live here.  To parse a hex
 
 There are operations for JSON, [Base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58), and XML/HTML as well.
 
-- [JSON](language/hoon/guides/json-guide)
-- [Sail (HTML)](language/hoon/guides/sail)
+- [JSON](../guides/json-guide.md)
+- [Sail (HTML)](../guides/sail.md)
 
 Urbit furthermore has a notion of _jammed noun_, which is essentially a serialization (marshaling, pickling) of a noun into an atom.
 
@@ -233,8 +233,8 @@ Now that we can find factors, it should be straightforward to find primes.  In t
 
 While Hoon has a sophisticated text parsing library, the primitives are rather low-level and we won't assume that you want to directly implement a parser using them in a rapid-fire competitive environment.
 
-- [Text Processing III](courses/hoon-school/Q2-parsing) - This module will cover text parsing.
-- [Parsing Text](language/hoon/guides/parsing)
+- [Text Processing III](../../../courses/hoon-school/Q2-parsing.md) - This module will cover text parsing.
+- [Parsing Text](../guides/parsing.md)
 
 Fortunately, there is a regular expression library you can incorporate into your program which will allow you to match and work with code.
 
@@ -262,7 +262,7 @@ Hoon is a functional programming language, so naturally it supports the basic co
 
 ### Map
 
-The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`++turn`](language/hoon/reference/stdlib/2b#turn) for a `list`, [`++run:in`](language/hoon/reference/stdlib/2h#repin) for a `set`, and [`++run:by`](language/hoon/reference/stdlib/2i#runby) for a `map`.
+The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`++turn`](../reference/stdlib/2b.md#turn) for a `list`, [`++run:in`](../reference/stdlib/2h.md#repin) for a `set`, and [`++run:by`](../reference/stdlib/2i.md#runby) for a `map`.
 
 ```hoon
 > (turn `(list @ud)`~[1 2 3 4 5] one)
@@ -270,7 +270,7 @@ The Map operation describes applying a function to each item of a set or iterabl
 
 ### Reduce
 
-The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`++roll`](language/hoon/reference/stdlib/2b#roll) and [`++reel`](language/hoon/reference/stdlib/2b#reel) for a `list`, [`++rep:in`](language/hoon/reference/stdlib/2h#repin) for a `set`, and [`++rep:by`](language/hoon/reference/stdlib/2i#repby) for a `map`.
+The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`++roll`](../reference/stdlib/2b.md#roll) and [`++reel`](../reference/stdlib/2b.md#reel) for a `list`, [`++rep:in`](../reference/stdlib/2h.md#repin) for a `set`, and [`++rep:by`](../reference/stdlib/2i.md#repby) for a `map`.
 
 ```hoon
 > =my-set (silt `(list @ud)`~[1 2 3 4 5])
@@ -281,7 +281,7 @@ b=120
 
 ### Filter
 
-The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`++skim`](language/hoon/reference/stdlib/2b#skim), [`++skid`](language/hoon/reference/stdlib/2b#skid), [`++murn`](language/hoon/reference/stdlib/2b#murn) for a `list`, and [`++rib:by`](language/hoon/reference/stdlib/2i#ribby) for a `map`.
+The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`++skim`](../reference/stdlib/2b.md#skim), [`++skid`](../reference/stdlib/2b.md#skid), [`++murn`](../reference/stdlib/2b.md#murn) for a `list`, and [`++rib:by`](../reference/stdlib/2i.md#ribby) for a `map`.
 
 ```hoon
 > `(list @ud)`(skim `(list @ud)`~[1 2 3 4 5] (curr gth 2))
@@ -290,7 +290,7 @@ The Filter operation applies a true/false function to each member of a collectio
 
 An interesting feature of Hoon is that it really prefers functions-that-produce-functions, which feels very functional once you get used to the idiom.  Here you can see that done with `++curr`.
 
-- [Functional Programming](courses/hoon-school/Q-func) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
+- [Functional Programming](../../../courses/hoon-school/Q-func.md) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
 
 ## Floating-Point Operations
 
@@ -323,7 +323,7 @@ Equivalent mathematical operations for `@rs` values are available in the `++rs` 
 .3.3333333
 ```
 
-- [Mathematics](courses/hoon-school/S-math) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
+- [Mathematics](../../../courses/hoon-school/S-math.md) - This module introduces how non-`@ud` mathematics are instrumented in Hoon.
 
 (I picked the above set of examples after perusing the excellent book [Antti Laaksonen (2017) _Guide to Competitive Programming:  Learning and Improving Algorithms Through Contests_](https://link.springer.com/book/10.1007/978-3-319-72547-5).)
 
@@ -372,5 +372,5 @@ This last case can be handled with a couple of expedients:
     
     In general, if you see an error like `find.fork`, it means that the type system is confused by your use of a too general of a type for a particular case.  Use the assertion runes to correct its assumption.
 
-- [Testing Code](courses/hoon-school/I-testing) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
-- [Unit Tests](userspace/apps/guides/unit-tests)
+- [Testing Code](../../../courses/hoon-school/I-testing.md) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
+- [Unit Tests](../../../userspace/apps/guides/unit-tests.md)

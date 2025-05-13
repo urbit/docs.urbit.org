@@ -13,5 +13,5 @@ The two important points one should remember about hosting providers:
 
 ## Next steps
 
-[Explore Hosting Providers -&gt;](manual/getting-started/hosted/hosting-providers)
+[Explore Hosting Providers -&gt;](hosting-providers.md)
 

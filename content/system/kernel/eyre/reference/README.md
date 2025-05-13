@@ -1,17 +1,17 @@
 # Reference
 
-## [External API Reference](system/kernel/eyre/reference/external-api-ref)
+## [External API Reference](external-api-ref.md)
 
 Details of Eyre's external API including the channel system's JSON API.
 
-## [Internal API Reference](system/kernel/eyre/reference/tasks)
+## [Internal API Reference](tasks.md)
 
 The `task`s Eyre takes and the `gift`s it returns.
 
-## [Scry Reference](system/kernel/eyre/reference/scry)
+## [Scry Reference](scry.md)
 
 The scry endpoints of Eyre.
 
-## [Data Types](system/kernel/eyre/reference/data-types)
+## [Data Types](data-types.md)
 
 Reference documentation of the various data types used by Eyre.

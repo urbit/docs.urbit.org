@@ -375,7 +375,7 @@ If you uploaded an existing pier, you should delete the old copy of both the pie
 
 ## Next steps
 
-- Kep your Urbit runtime up-to-date to take advantage of the latest Landscape and Application over-the-air updates.  See [Step #5 in the CLI guide](manual/getting-started/self-hosted/cli#5-runtime-upgrades) to update your runtime.
+- Kep your Urbit runtime up-to-date to take advantage of the latest Landscape and Application over-the-air updates.  See [Step #5 in the CLI guide](cli.md#5-runtime-upgrades) to update your runtime.
 
 - Learn how to [get around your
-urbit](manual/getting-started/additional/getting-around).
+urbit](../additional/getting-around.md).

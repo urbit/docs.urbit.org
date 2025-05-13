@@ -2,7 +2,7 @@
 
 This document gives the bytestring format for layer 2 transactions and batches.
 
-[Recall](system/identity/concepts/layer2) that a layer 2 transaction is a compact representation of an Azimuth action (format given below), along with a 65-byte ECDSA signature. A `batch` is an atom that is a concatenation of one or more layer 2 transactions and associated signatures. This atom is what is posted on the Ethereum blockchain by a roller.
+[Recall](../concepts/layer2.md) that a layer 2 transaction is a compact representation of an Azimuth action (format given below), along with a 65-byte ECDSA signature. A `batch` is an atom that is a concatenation of one or more layer 2 transactions and associated signatures. This atom is what is posted on the Ethereum blockchain by a roller.
 
 We remark that each transaction from a given ship in a batch needs a separate signature, since data such as the nonce are not included in the transaction but are used in the signature. Thus a ship cannot submit multiple transactions with a single signature for all of them - a different signature is needed for each transaction.
 

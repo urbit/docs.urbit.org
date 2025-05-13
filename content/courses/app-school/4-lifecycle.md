@@ -12,7 +12,7 @@ Once initialized, an agent will just go on doing its thing - processing events, 
 - The new version of the agent is built and loaded into Gall.
 - The previously exported `vase` is passed to the `on-load` arm of the newly built agent. The `on-load` arm will process it, convert it to the new version of the state if necessary, and load it back into the state of the agent.
 
-A `vase` is just a cell of `[type-of-the-noun the-noun]`. Most data an agent sends or receives will be encapsulated in a vase. A vase is made with the [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) (`!>`) rune like `!>(some-data)`, and unpacked with the [zapgal](../../language/hoon/reference/rune/zap.md#-zapgal) (`!<`) rune like `!<(type-to-extract vase)`. Have a read through the [`vase` section of the type reference for details](types.md#vase).
+A `vase` is just a cell of `[type-of-the-noun the-noun]`. Most data an agent sends or receives will be encapsulated in a vase. A vase is made with the [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) (`!>`) rune like `!>(some-data)`, and unpacked with the [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) (`!<`) rune like `!<(type-to-extract vase)`. Have a read through the [`vase` section of the type reference for details](types.md#vase).
 
 We'll look at the three arms described here in a little more detail, but first we need to touch on the state itself.
 
@@ -42,7 +42,7 @@ At some point, you might want to add a third status to represent "in progress", 
 
 The conventional way to keep this managable and reliably differentiate possible state types is to have _versioned states_. The first version of the state would typically be called `state-0`, and its head would be tagged with `%0`. Then, when you change the state's type in an update, you'd add a new structure called `state-1` and tag its head with `%1`. The next would then be `state-2`, and so on.
 
-In addition to each of those individual state versions, you'd also define a structure called `versioned-state`, which just contains a union of all the possible states. This way, the vase `on-load` receives can be unpacked to a `versioned-state` type, and then a [wuthep](../../language/hoon/reference/rune/wut.md#--wuthep) (`?-`) expression can switch on the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
+In addition to each of those individual state versions, you'd also define a structure called `versioned-state`, which just contains a union of all the possible states. This way, the vase `on-load` receives can be unpacked to a `versioned-state` type, and then a [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) (`?-`) expression can switch on the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
 
 For example, your state definition core might initially look like:
 
@@ -79,7 +79,7 @@ Along with a core defining the type of the state, we also need to actually add i
 =*  state  -
 ```
 
-The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#-tistar) to give it the name of `state`. You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `state` when necessary.
+The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of `state`. You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `state` when necessary.
 
 Note that adding the state like this only happens when the agent is built - from then on the arms of our agent will just modify it.
 
@@ -105,13 +105,13 @@ This arm takes no argument, and produces a `vase`. Its purpose is to export the 
 
 As well as the agent upgrade process, `on-save` is also used when an agent is suspended or an app is uninstalled, so that the state can be restored when it's resumed or reinstalled.
 
-The state is packed in a vase with the [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) (`!>`) rune, like `!>(state)`.
+The state is packed in a vase with the [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) (`!>`) rune, like `!>(state)`.
 
 ### `on-load` {#on-load}
 
 This arm takes a `vase` and produces a `(quip card _this)`. Its purpose is to import a state previously exported with [`on-save`](#on-save). Typically you'd have used a [versioned state](#versioned-state-type) as described above, so this arm would test which state version the imported data has, convert data from an old version to the new version if necessary, and load it into the `state` wing of the subject.
 
-The vase would be unpacked with a [zapgal](../../language/hoon/reference/rune/zap.md#-zapgal) (`!<`) rune, and then typically you'd test its version with a [wuthep](../../language/hoon/reference/rune/wut.md#--wuthep) (`?-`) expression.
+The vase would be unpacked with a [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) (`!<`) rune, and then typically you'd test its version with a [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) (`?-`) expression.
 
 ## Example {#example}
 
@@ -186,7 +186,7 @@ After that core, we have the usual `agent:dbug` call, and then we have this:
 =*  state  -
 ```
 
-We've just bunted the `state-0` type, which will produce `[%0 val=0]`, pinning it to the head of the subject. Then, we've use [tistar](../../language/hoon/reference/rune/tis.md#-tistar) (`=*`) to give it a name of `state`.
+We've just bunted the `state-0` type, which will produce `[%0 val=0]`, pinning it to the head of the subject. Then, we've use [tistar](../../language/hoon/reference/rune/tis.md#tistar) (`=*`) to give it a name of `state`.
 
 Inside our agent core, we have `on-init`:
 
@@ -196,7 +196,7 @@ Inside our agent core, we have `on-init`:
   `this(val 42)
 ```
 
-The `a(b c)` syntax is the irregular form of the [centis](../../language/hoon/reference/rune/cen.md#-centis) (`%=`) rune. You'll likely be familiar with this from recursive functions, where you'll typically call the buc arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying `this` (our agent core) with `val` replaced by `42`. Since `on-init` is only called when the agent is first installed, we're just initializing the state.
+The `a(b c)` syntax is the irregular form of the [centis](../../language/hoon/reference/rune/cen.md#centis) (`%=`) rune. You'll likely be familiar with this from recursive functions, where you'll typically call the buc arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying `this` (our agent core) with `val` replaced by `42`. Since `on-init` is only called when the agent is first installed, we're just initializing the state.
 
 Next we have `on-save`:
 

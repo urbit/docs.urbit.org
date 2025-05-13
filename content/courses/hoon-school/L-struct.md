@@ -51,7 +51,7 @@ Notice that we don't have to insert the faces manually; by casting the [noun](..
 find-fork
 ```
 
-This didn't work because we haven't first proved to Hoon that `b` is a non-null tree.  A null tree has no `l` in it, after all.  Let's try again, using `?~` [wutsig](../../language/hoon/reference/rune/wut.md#-wutsig) to prove that `b` isn't null.  We can also look at `r` and `n`:
+This didn't work because we haven't first proved to Hoon that `b` is a non-null tree.  A null tree has no `l` in it, after all.  Let's try again, using `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) to prove that `b` isn't null.  We can also look at `r` and `n`:
 
 ```hoon
 > ?~(b ~ l.b)
@@ -229,7 +229,7 @@ Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), on
 
 (There are several others tools listed [on that page](../../language/hoon/reference/stdlib/2a.md) which may be potentially useful to you.)
 
-A [vase](../../glossary/vase.md) is a pair of type and value, such as that returned by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar).  A `vase` is useful when transmitting data in a way that may lose its type information.
+A [vase](../../glossary/vase.md) is a pair of type and value, such as that returned by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar).  A `vase` is useful when transmitting data in a way that may lose its type information.
 
 ### Containers of Containers {#containers-of-containers}
 
@@ -341,13 +341,13 @@ For our earlier example with [++roll](../../language/hoon/reference/stdlib/2b.md
 
 ### Named Tuples {#named-tuples}
 
-A named tuple is a structured collection of values with [faces](../../glossary/face.md).  The `$:` [buccol](../../language/hoon/reference/rune/buc.md#-buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` [buccol](../../language/hoon/reference/rune/buc.md#-buccol) expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
+A named tuple is a structured collection of values with [faces](../../glossary/face.md).  The `$:` [buccol](../../language/hoon/reference/rune/buc.md#buccol) rune forms a named tuple.  We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` [buccol](../../language/hoon/reference/rune/buc.md#buccol) expression for `[a=@ b=@]`.  Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
 
 ### Structure Mode {#structure-mode}
 
-Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call _noun mode_ (or _normal mode_).  However, sample definitions and `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#-lusbuc) mold specification arms evaluate in what is called _structure mode_. (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
+Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call _noun mode_ (or _normal mode_).  However, sample definitions and `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc) mold specification arms evaluate in what is called _structure mode_. (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
 
-For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the `^=` [kettis](../../language/hoon/reference/rune/ket.md#-kettis) rune.  This is one way to define a variable using a `=+` [tislus](../../language/hoon/reference/rune/tis.md#-tislus); these are equivalent statements:
+For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the `^=` [kettis](../../language/hoon/reference/rune/ket.md#kettis) rune.  This is one way to define a variable using a `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus); these are equivalent statements:
 
 ```hoon
 > =+(hello=1 hello)
@@ -357,7 +357,7 @@ For instance, in eval mode if you use the irregular form `p=1` this is an irregu
 1
 ```
 
-(Normally we have preferred `=/` [tisfas](../../language/hoon/reference/rune/tis.md#-tisfas) in the Hoon School docs, but that is just for consistency.)
+(Normally we have preferred `=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas) in the Hoon School docs, but that is just for consistency.)
 
 In a [sample](../../glossary/sample.md) definition, such as in a [gate](../../glossary/gate.md), the statement is evaluated in structure mode; these are equivalent statements:
 

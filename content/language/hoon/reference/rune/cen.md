@@ -280,7 +280,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 #### Discussion
 
-`%-` is used to call a function; `a` is the function ([`gate`](bar.md#-bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar.md#_-barcab).
+`%-` is used to call a function; `a` is the function ([`gate`](bar.md#bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar.md#_-barcab).
 
 #### Examples
 

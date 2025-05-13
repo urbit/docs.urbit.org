@@ -132,7 +132,7 @@ For instance, imagine creating a function to ensure that only a certain [classic
 --
 ```
 
-(See how that `=<` [tisgal](../../language/hoon/reference/rune/tis.md#-tisgal) works with the helper [core?](../../glossary/core.md))
+(See how that `=<` [tisgal](../../language/hoon/reference/rune/tis.md#tisgal) works with the helper [core?](../../glossary/core.md))
 
 
 ## Text Operations {#text-operations}
@@ -256,7 +256,7 @@ Applicable `list` operations—some of which you've seen before—include:
 
     - There is a built-in `++lent` function that counts the number of characters in a `tape`.  Build your own `tape`-length character counting function without using `++lent`.
 
-    You may find the `?~` [wutsig](../../language/hoon/reference/rune/wut.md#-wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` [wutcol](../../language/hoon/reference/rune/wut.md#-wutcol)?)
+    You may find the `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) rune to be helpful.  It tells you whether a value is `~` or not.  (How would you do this with a regular `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol)?)
 
 The foregoing are [list](../../glossary/list.md) operations.  The following, in contrast, are [tape](../../glossary/tape.md)-specific operations:
 
@@ -424,16 +424,16 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
-- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../language/hoon/reference/rune/bar.md#-barcen) core.  Save this file as `lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
+- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) core.  Save this file as `lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
 
 - Produce a generator `gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces).  (How would you obtain this from those two operations?)
 
 
 ## Logging {#logging}
 
-The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing.  To this end, we introduced `~&` [sigpam](../../language/hoon/reference/rune/sig.md#-sigpam) in the last lesson.
+The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing.  To this end, we introduced `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) in the last lesson.
 
-The `~&` [sigpam](../../language/hoon/reference/rune/sig.md#-sigpam) rune offers some finer-grained output options than just printing a simple value to the screen.  For instance, you can use it with string interpolation to produce detailed error messages.
+The `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) rune offers some finer-grained output options than just printing a simple value to the screen.  For instance, you can use it with string interpolation to produce detailed error messages.
 
 There are also `>` modifiers which can be included to mark “debugging levels”, really just color-coding the output:
 
@@ -497,7 +497,7 @@ Notice that we used no argument, something that is possible with `%say` generato
 :-  %say
 ```
 
-Recall that the rune `:-` [colhep](../../language/hoon/reference/rune/col.md#--colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
+Recall that the rune `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
 
 The expression above creates a cell with `%say` as the head. The tail is the `|= *` expression on the line that follows.
 
@@ -599,7 +599,7 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 (shuffle-deck:playing-cards make-deck:playing-cards eny)
 ```
 
-Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../language/hoon/reference/rune/fas.md#-faslus) rune.  When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that.  It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
+Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) rune.  When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that.  It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
 Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `deck`.
 

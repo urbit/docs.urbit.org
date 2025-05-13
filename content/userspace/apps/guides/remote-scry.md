@@ -4,7 +4,7 @@ To [scry](../../../glossary/scry.md) is to perform a *read* from Urbit's referen
 
 ## Lifecycle of a scry {#lifecycle-of-a-scry}
 
-When you think of scry, you probably think of `.^` [dotket](../../../language/hoon/reference/rune/dot.md#-dotket). However, since networking is asynchronous, this is not a suitable interface for remote scry. Instead, a ship that wants to read from a remote part of the namespace will have to (directly or indirectly) ask Ames to perform the scry, which then cooperates with [Vere](../../../glossary/vere.md) to produce the desired data. In some future event when the result is available, Ames gives it back as a `%tune` gift. From the requester's perspective, this is the entire default lifecycle of a remote scry request.
+When you think of scry, you probably think of `.^` [dotket](../../../language/hoon/reference/rune/dot.md#dotket). However, since networking is asynchronous, this is not a suitable interface for remote scry. Instead, a ship that wants to read from a remote part of the namespace will have to (directly or indirectly) ask Ames to perform the scry, which then cooperates with [Vere](../../../glossary/vere.md) to produce the desired data. In some future event when the result is available, Ames gives it back as a `%tune` gift. From the requester's perspective, this is the entire default lifecycle of a remote scry request.
 
 Of course, you need to know how Ame's `%chum` and `%tune` look, as well as Gall's `%keen` note, to be able to use them. There are also a few exceptions to this default lifecycle. We'll go through all of this in a moment, but first, let's look at what kind of data is possible to scry.
 

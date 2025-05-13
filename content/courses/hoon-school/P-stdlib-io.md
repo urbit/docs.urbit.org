@@ -19,7 +19,7 @@ We frequently need to convert from text to data, and between different text-base
 - How can we evaluate [Nock](../../glossary/nock.md) expressions?
     - [++mink](../../language/hoon/reference/stdlib/4n.md#mink)
 
-(If you see a `|*` [bartar](../../language/hoon/reference/rune/bar.md#-bartar) rune in the code, it's similar to a `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis), but produces what's called a [_wet gate_](R-metals.md).)
+(If you see a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune in the code, it's similar to a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis), but produces what's called a [_wet gate_](R-metals.md).)
 
 The `++html` core of the standard libary contains some additional important tools for working with web-based data, such as [MIME types](https://en.wikipedia.org/wiki/Media_type) and [JSON strings](https://en.wikipedia.org/wiki/JSON).
 
@@ -150,7 +150,7 @@ This generator requires a path argument in its sample and optionally accepts a [
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#-dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a _peek_ or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md).  Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a _peek_ or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md).  Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
@@ -207,9 +207,9 @@ For instance, how does [+cat](../../manual/os/dojo-tools.md#cat) work?  Let's lo
 
 - Some points of interest include:
   - `/?` faswut pins the expected Arvo [kelvin version](../../glossary/kelvin.md); right now it doesn't do anything.
-  - `.^` [dotket](../../language/hoon/reference/rune/dot.md#-dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
+  - `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
   - [++smyt](../../language/hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
-  - `=-` [tishep](../../language/hoon/reference/rune/tis.md#--tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../language/hoon/reference/rune/tis.md#-tislus)/`=/` [tisfas](../../language/hoon/reference/rune/tis.md#-tisfas).
+  - `=-` [tishep](../../language/hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas).
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `tank` by prepending `%rose` tags and so forth.
 
@@ -219,7 +219,7 @@ You can see how much of the generator is concerned with formatting the content o
 
 Formal error messages in Urbit are built of tanks.  “A `tang` is a [list](../../glossary/list.md) of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
 
-One way to include an error message in your code is the `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../language/hoon/reference/rune/sig.md#-sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
+One way to include an error message in your code is the `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
 
 ```hoon
 |=  a=@ud
@@ -289,9 +289,9 @@ Let's go over what exactly is happening in this code.
 
 Here we bring in some of the types we are going to need from `/sur/sole` and gates we will use from `/lib/generators`. We use some special [runes](../../glossary/rune.md) for this.
 
-- `/-` [fashep](../../language/hoon/reference/rune/fas.md#--fashep) is a Ford rune used to import types from `/sur`.
-- `/+` [faslus](../../language/hoon/reference/rune/fas.md#-faslus) is a Ford rune used to import libraries from `/lib`.
-- `=,` [tiscom](../../language/hoon/reference/rune/tis.md#-tiscol) is a rune that allows us to expose a namespace. We do this to avoid having to write `sole-result:sole` instead of `sole-result` or `print:generators` instead of `print`.
+- `/-` [fashep](../../language/hoon/reference/rune/fas.md#fashep) is a Ford rune used to import types from `/sur`.
+- `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) is a Ford rune used to import libraries from `/lib`.
+- `=,` [tiscom](../../language/hoon/reference/rune/tis.md#tiscol) is a rune that allows us to expose a namespace. We do this to avoid having to write `sole-result:sole` instead of `sole-result` or `print:generators` instead of `print`.
 
 ```hoon
 :-  %ask
@@ -306,7 +306,7 @@ With `|= *`, we create a [gate](../../glossary/gate.md) and ignore the standard 
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `cask` of `tang`.  We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#--kethep) rune to constrain the generator's output to such a `sole-result`.
+`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `cask` of `tang`.  We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
 
 A `cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md).  We previously described a `mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
 
@@ -323,7 +323,7 @@ Because we imported [generators](../../glossary/generator.md), we can access its
 
 - `print` is used for printing a `tank` to the console.
 
-    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#-cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
+    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
 
 - `prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
 

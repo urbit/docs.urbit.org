@@ -88,7 +88,7 @@ Hearkening back to our discussion of interchangeable representations in Lesson -
 
 There's a special value that recurs in many contexts in Hoon:  `~` sig is the null or zero value.
 
-The `^-` [kethep](../../language/hoon/reference/rune/ket.md#--kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
+The `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
 
 ```hoon
 ^-  @ux  0x1ab4
@@ -116,7 +116,7 @@ A [cell](../../glossary/cell.md) is a pair of nouns. Cells are traditionally wri
 [[1 2] [3 4]]
 ```
 
-This is actually a shorthand for a rune as well, `:-` [colhep](../../language/hoon/reference/rune/col.md#--colhep)
+This is actually a shorthand for a rune as well, `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep)
 
 ```hoon
 :-  1  2
@@ -148,9 +148,9 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 
 The backbone of any Hoon expression is a scaffolding of [runes](../../glossary/rune.md) , which are essentially mathematical relationships between daughter components.  If nouns are nouns, then runes are verbs:  they describe how nouns relate.  Runes provide the structural and logical relationship between noun values.
 
-A rune is just a pair of ASCII characters (a digraph).  We usually [pronounce runes](../../glossary/aural-ascii.md) by combining their characters’ names, e.g.: ["kethep"](../../language/hoon/reference/rune/ket.md#--kethep) for `^-`, ["bartis"](../../language/hoon/reference/rune/bar.md#-bartis) for `|=`, and ["barcen"](../../language/hoon/reference/rune/bar.md#-barcen) for `|%`.
+A rune is just a pair of ASCII characters (a digraph).  We usually [pronounce runes](../../glossary/aural-ascii.md) by combining their characters’ names, e.g.: ["kethep"](../../language/hoon/reference/rune/ket.md#kethep) for `^-`, ["bartis"](../../language/hoon/reference/rune/bar.md#bartis) for `|=`, and ["barcen"](../../language/hoon/reference/rune/bar.md#barcen) for `|%`.
 
-For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the `%-` [cenhep](../../language/hoon/reference/rune/cen.md#-cenhep) rune with two bits of information, a function name and the values to associate with it:
+For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the `%-` [cenhep](../../language/hoon/reference/rune/cen.md#cenhep) rune with two bits of information, a function name and the values to associate with it:
 
 ```hoon
 %-
@@ -160,7 +160,7 @@ add
 
 The operation you just completed is straightforward enough:  `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure).  Literally, we can interpret `%-  add  [1 2]` as “evaluate the `add` core on the input values `[1 2]`”.
 
-The [++add](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#-cenhep) in the neighboring child expression as a cell.  There's really no limit to the complexity of Hoon expressions:  they can track deep and wide.  They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
+The [++add](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#cenhep) in the neighboring child expression as a cell.  There's really no limit to the complexity of Hoon expressions:  they can track deep and wide.  They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
 ```hoon
 %-
@@ -190,7 +190,7 @@ We are only going to introduce a handful of runes in this lesson, but by the tim
 
 ### Exercise:  Identifying Unknown Runes {#exercise-identifying-unknown-runes}
 
-Here is a lightly-edited snippet of Hoon code.  Anything written after a `::` [colcol](../../language/hoon/reference/rune/col.md#-colcol) is a _comment_ and is ignored by the computer.  (Comments are useful for human-language explanations.)
+Here is a lightly-edited snippet of Hoon code.  Anything written after a `::` [colcol](../../language/hoon/reference/rune/col.md#colcol) is a _comment_ and is ignored by the computer.  (Comments are useful for human-language explanations.)
 
 ```hoon
 %-  send
@@ -230,9 +230,9 @@ Here is a snippet of Hoon code:
 ==
 ```
 
-Without looking it up first, what does the `==` [tistis](../../language/hoon/reference/rune/terminators.md#-tistis) do for the `:~` [colsig](../../language/hoon/reference/rune/col.md#-colsig) rune?  Hint: some runes can take any number of arguments.
+Without looking it up first, what does the `==` [tistis](../../language/hoon/reference/rune/terminators.md#tistis) do for the `:~` [colsig](../../language/hoon/reference/rune/col.md#colsig) rune?  Hint: some runes can take any number of arguments.
 
-Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes `--` [hephep](../../language/hoon/reference/rune/terminators.md#---hephep) and `==` [tistis](../../language/hoon/reference/rune/terminators.md#-tistis) are used at the end of certain expressions.
+Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes `--` [hephep](../../language/hoon/reference/rune/terminators.md#hephep) and `==` [tistis](../../language/hoon/reference/rune/terminators.md#tistis) are used at the end of certain expressions.
 
 #### Aside:  Writing Incorrect Code
 
@@ -289,11 +289,11 @@ Usually one or more line breaks are used to break up a tall form expression. Thi
 
 This is the preferred way to write an expression on a single line. The rune itself is followed by a set of parentheses, and the subexpressions inside are separated by a single space. Any more spacing than that results in a syntax error.
 
-Nearly all rune expressions can be written in either form, but there are exceptions.  `|%` [barcen](../../language/hoon/reference/rune/bar.md#-barcen) and `|_` [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) expressions, for example, can only be written in tall form.  (Those are a bit too complicated to fit comfortably on one line anyway.)
+Nearly all rune expressions can be written in either form, but there are exceptions.  `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) and `|_` [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) expressions, for example, can only be written in tall form.  (Those are a bit too complicated to fit comfortably on one line anyway.)
 
 ### Nesting Runes {#nesting-runes}
 
-Since runes take a fixed number of children, one can visualize how Hoon expressions are built by thinking of each rune being followed by a series of boxes to be filled—one for each of its children.  Let us illustrate this with the `:-` [colhep](../../language/hoon/reference/rune/col.md#--colhep) rune.
+Since runes take a fixed number of children, one can visualize how Hoon expressions are built by thinking of each rune being followed by a series of boxes to be filled—one for each of its children.  Let us illustrate this with the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune.
 
 ![Colhep rune with two empty boxes for children.](https://media.urbit.org/docs/hoon-syntax/cell1.png)
 

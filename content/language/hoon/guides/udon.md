@@ -119,7 +119,7 @@ To scry out a file, compile it against the standard library, and stringify the r
 
 Note you may want to provide more than just `..zuse` in the subject (like a `bowl`), or if you're automatically building untrusted code, you may want to provide less. It depends on your use case.
 
-You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](../reference/rune/fas.md#-fastar) specifying an `%elem` mark (which produces a `manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
+You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](../reference/rune/fas.md#fastar) specifying an `%elem` mark (which produces a `manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
 
 ## Examples {#examples}
 

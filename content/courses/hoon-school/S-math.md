@@ -253,8 +253,8 @@ The [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for 
 This program shows several interesting aspects, which we've covered before but highlight here:
 
 - Meters form the standard unit of length.
-- `~|` [sigbar](../../language/hoon/reference/rune/sig.md#-sigbar) produces an error message in case of a bad input.
-- `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#-lusbuc) is a type constructor arm, here for a type union over units of length.
+- `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) produces an error message in case of a bad input.
+- `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc) is a type constructor arm, here for a type union over units of length.
 
 ### Exercise:  Measurement Converter {#exercise-measurement-converter}
 

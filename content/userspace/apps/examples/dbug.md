@@ -368,7 +368,7 @@ The following `?-` wuthep handles the input arguments:  `%state` is the most int
 (ream grab.dbug)
 ```
 
-This branch includes the use of a rare [`=?` tiswut](../../../language/hoon/reference/rune/tis.md#-tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../language/hoon/reference/rune/tis.md#-tismic).  There is also some direct compilation of `cord`s taking place:
+This branch includes the use of a rare [`=?` tiswut](../../../language/hoon/reference/rune/tis.md#tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../language/hoon/reference/rune/tis.md#tismic).  There is also some direct compilation of `cord`s taking place:
 
 - [`++sell`](../../../language/hoon/reference/stdlib/5c.md#sell) is a `vase` pretty-printer.
 - [`++slop`](../../../language/hoon/reference/stdlib/5c.md#slop) conses two `vase`s together as a cell. 

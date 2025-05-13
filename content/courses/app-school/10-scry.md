@@ -1,6 +1,6 @@
 # 10. Scries
 
-In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md), as well as the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#-dotket).
+In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md), as well as the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#dotket).
 
 ## Scrying {#scrying}
 
@@ -8,7 +8,7 @@ A scry is a read-only request to Arvo's global namespace. Vanes and agents defin
 
 Gall itself defines some special vane-level endpoints [as described in its scry reference](../../system/kernel/gall/reference/scry.md), but most scries to Gall are routed to particular agents and handled by them instead. Agent scries are what we'll focus on here. 
 
-Scries are performed with the [dotket](../../language/hoon/reference/rune/dot.md#-dotket) (`.^`) rune. Here's a summary of their format:
+Scries are performed with the [dotket](../../language/hoon/reference/rune/dot.md#dotket) (`.^`) rune. Here's a summary of their format:
 
 ![scry summary diagram](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
@@ -50,7 +50,7 @@ An ordinary `on-peek` arm, therefore, begins like so:
   ....
 ```
 
-Typically, you'd handle the `path` similarly to `on-watch`, as we discussed in the lesson on subscriptions. You'd use something like a [wutlus](../../language/hoon/reference/rune/wut.md#-wutlus) `?+` expression to test the value of the `path`, defining your scry endpoints like so:
+Typically, you'd handle the `path` similarly to `on-watch`, as we discussed in the lesson on subscriptions. You'd use something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression to test the value of the `path`, defining your scry endpoints like so:
 
 ```hoon
 ?+    path  (on-peek:def path)
@@ -257,7 +257,7 @@ dojo: failed to process input
 
 - Have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md).
 - Have a look at Gall's [scry reference](../../system/kernel/gall/reference/scry.md).
-- Have a read through the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#-dotket).
+- Have a read through the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
 - Try adding another scry endpoint to the `peeker.hoon` agent, which uses a [`wyt:by`](../../language/hoon/reference/stdlib/2i.md#wytby) map function to produce the number of items in the `data` map.
 - Have a look through the `on-peek` arms of some other agents on your ship, and try performing some scries to some of the endpoints.

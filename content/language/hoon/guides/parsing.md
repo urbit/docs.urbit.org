@@ -293,7 +293,7 @@ Let's modify the rule `(just 'a')` so that it when it successfully parses `a`, i
 
 ## Parser combinators {#parser-combinators}
 
-Building complex parsers from simpler parsers is accomplished in Hoon with the use of two tools: the monadic applicator rune [`;~`](../reference/rune/mic.md#-micsig) and [parsing combinators](../reference/stdlib/4e.md). First we introduce a few combinators, then we examine more closely how `;~` is used to chain them together.
+Building complex parsers from simpler parsers is accomplished in Hoon with the use of two tools: the monadic applicator rune [`;~`](../reference/rune/mic.md#micsig) and [parsing combinators](../reference/stdlib/4e.md). First we introduce a few combinators, then we examine more closely how `;~` is used to chain them together.
 
 The syntax to combine `rule`s is
 
@@ -337,7 +337,7 @@ syntax error
 ['a' 'b' 'a']
 ```
 
-### [`;~`](../reference/rune/mic.md#-micsig) {#-micsig}
+### [`;~`](../reference/rune/mic.md#micsig) {#-micsig}
 
 Understanding the rune `;~` is essential to building parsers with Hoon. Let's take this opportunity to think about it carefully.
 

@@ -178,7 +178,7 @@ None
 
 The primary use of `+*` is to create deferred expressions within doors (see Examples below). This is a name for an expressions that will be evaluated in each place the name is dereferenced. This is a similar concept to aliases or macros, but there are some subtle but important differences. Deferred expressions given by `+*` do not count towards the number of arms in the door and thus are also called "virtual arms", which can be important for things like Gall agent cores that require a fixed number of arms.
 
-Under the hood, `+*` gets compiled as [`=*`'s](tis.md#-tistar) (see here for more discussion on deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the core to include `=* foo bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
+Under the hood, `+*` gets compiled as [`=*`'s](tis.md#tistar) (see here for more discussion on deferred expressions). `+* foo bar` rewrites each `++` arm beneath it in the core to include `=* foo bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
 
 ```hoon
 |_  z=@ud

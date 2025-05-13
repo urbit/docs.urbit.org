@@ -155,7 +155,7 @@ How do we parse multiple characters in order to break things up sensibly?
     ['a' 'b' 'a']
     ```
 
-- The `;~` [micsig](../../language/hoon/reference/rune/mic.md#-micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
+- The `;~` [micsig](../../language/hoon/reference/rune/mic.md#micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
 
     ```hoon
     > (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  

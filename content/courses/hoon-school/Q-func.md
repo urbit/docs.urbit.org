@@ -8,7 +8,7 @@ Functional programming, as a paradigm, tends to prefer rather mathematical expre
 
 ## Changing Arity {#changing-arity}
 
-If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the `;:` [miccol](../../language/hoon/reference/rune/mic.md#-miccol) rune.
+If a gate accepts only two values in its sample, for instance, you can chain together multiple calls automatically using the `;:` [miccol](../../language/hoon/reference/rune/mic.md#miccol) rune.
 
 ```hoon
 > (add 3 (add 4 5))
@@ -47,7 +47,7 @@ Consider calculating _a x² + b x + c_, a situation we earlier resolved using a 
 117
 ```
 
-One can also [++cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` [miccol](../../language/hoon/reference/rune/mic.md#-miccol).  (There is also [++corl](../../language/hoon/reference/stdlib/2n.md#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
+One can also [++cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or arrange it such that it applies to the result of the next gate.  This pairs well with `;:` [miccol](../../language/hoon/reference/rune/mic.md#miccol).  (There is also [++corl](../../language/hoon/reference/stdlib/2n.md#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
 
 ```hoon
 > ((cork dec @ux) 20)  

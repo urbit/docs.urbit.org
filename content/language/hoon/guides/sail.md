@@ -327,7 +327,7 @@ And then your style tag might look like:
 ;style: {style}
 ```
 
-A cord is used rather than a tape so you don't need to escape braces. The [ketsig](../reference/rune/ket.md#-ketsig) (`^~`) rune means `++trip` will be run at compile time rather than call time.
+A cord is used rather than a tape so you don't need to escape braces. The [ketsig](../reference/rune/ket.md#ketsig) (`^~`) rune means `++trip` will be run at compile time rather than call time.
 
 ## Types and marks {#types-and-marks}
 
@@ -406,7 +406,7 @@ In addition to the syntax so far described, there are also a few Sail-specific r
 
 ### `;+` Miclus {#miclus}
 
-The [miclus rune](../reference/rune/mic.md#-miclus) makes a `$marl` from a complex hoon expression that produces a single `$manx`. Its main use is nesting tall-form hoon logic in another Sail element. For example:
+The [miclus rune](../reference/rune/mic.md#miclus) makes a `$marl` from a complex hoon expression that produces a single `$manx`. Its main use is nesting tall-form hoon logic in another Sail element. For example:
 
 ```hoon
 ;p
@@ -431,7 +431,7 @@ Produces one of these depending on the value of `number`:
 
 ### `;*` Mictar {#mictar}
 
-The [mictar rune](../reference/rune/mic.md#-mictar) makes a `$marl` (a list of XML nodes) from a complex hoon expression. This rune lets you add many elements inside another Sail element. For example:
+The [mictar rune](../reference/rune/mic.md#mictar) makes a `$marl` (a list of XML nodes) from a complex hoon expression. This rune lets you add many elements inside another Sail element. For example:
 
 {% tabs %}
 
@@ -467,7 +467,7 @@ The [mictar rune](../reference/rune/mic.md#-mictar) makes a `$marl` (a list of X
 
 ### `;=` Mictis {#mictis}
 
-The [mictis rune](../reference/rune/mic.md#-mictis) makes a `$marl` (a list of XML nodes) from a series of `$manx`es. This is mostly useful if you want to make the list outside of an element and then be able to insert it afterwards. For example:
+The [mictis rune](../reference/rune/mic.md#mictis) makes a `$marl` (a list of XML nodes) from a series of `$manx`es. This is mostly useful if you want to make the list outside of an element and then be able to insert it afterwards. For example:
 
 {% tabs %}
 
@@ -502,7 +502,7 @@ The [mictis rune](../reference/rune/mic.md#-mictis) makes a `$marl` (a list of X
 
 ### `;/` Micfas {#micfas}
 
-The [micfas rune](../reference/rune/mic.md#-micfas) turns an ordinary tape into a `$manx`. For example:
+The [micfas rune](../reference/rune/mic.md#micfas) turns an ordinary tape into a `$manx`. For example:
 
 ```
 > %-  en-xml:html  ;/  "foobar"

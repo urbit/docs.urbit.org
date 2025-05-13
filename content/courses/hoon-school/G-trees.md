@@ -474,7 +474,7 @@ How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=1
 
 We say that the inner face has been _shadowed_ when an outer name obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#-centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#--barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) gate, for instance.
+If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
 
 Solution #1 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
@@ -490,7 +490,7 @@ Logically, `a:b` is two operations, while `a.b` is one operation.  The compiler 
 
 ### What `%=` Does {#what-does}
 
-Now we're equipped to go back and examine the syntax of the `%=` [centis](../../language/hoon/reference/rune/cen.md#-centis) rune we have been using for recursion:  it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
+Now we're equipped to go back and examine the syntax of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune we have been using for recursion:  it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
 
 ```hoon
 |=  n=@ud
@@ -503,7 +503,7 @@ Now we're equipped to go back and examine the syntax of the `%=` [centis](../../
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../language/hoon/reference/rune/cen.md#-centis) rune.
+The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
@@ -518,7 +518,7 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
 
 ### Expanding the Runes {#expanding-the-runes}
  
-`|=` [bartis](../../language/hoon/reference/rune/bar.md#-bartis) produces a gate. It actually expands to
+`|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) produces a gate. It actually expands to
 
 ```hoon
 =|  a=spec
@@ -526,9 +526,9 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
 --
 ``` 
 
-where `=|` [tisbar](../../language/hoon/reference/rune/tis.md#-tisbar) means to add its sample to the current subject with the given [face](../../glossary/face.md).
+where `=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) means to add its sample to the current subject with the given [face](../../glossary/face.md).
 
-Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#--barhep) produces a [core](../../glossary/core.md) with one arm `$`.  How could you write that in terms of `|%` and `++`?
+Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`.  How could you write that in terms of `|%` and `++`?
 
 ### Example:  Number to Digits {#example-number-to-digits}
 
@@ -588,7 +588,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation.  This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise:  Resolving Wings {#exercise-resolving-wings}
 

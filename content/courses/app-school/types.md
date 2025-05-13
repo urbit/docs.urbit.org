@@ -25,7 +25,7 @@ There are two simple runes used to create and unpack vases. We'll look at each o
 
 ### Create a `vase` {#create-a-vase}
 
-The [zapgar](../../language/hoon/reference/rune/zap.md#-zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
+The [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
 
 ```
 > !>([1 2 3])
@@ -45,7 +45,7 @@ You would typically use `!>` as part of a [`cage`](#cage) when you're constructi
 
 ### Extract data from `vase` {#extract-data-from-vase}
 
-The [zapgal](../../language/hoon/reference/rune/zap.md#-zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
+The [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
 
 Let's look at an example in the dojo. First, let's create a vase of `[@t @ux @ud]`:
 

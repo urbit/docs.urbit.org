@@ -65,13 +65,13 @@ For example, the Hoon expression `(slap (slop v1 (slop v2 (slap v3 h1)) v4) h2)`
 
 ### Introduction Forms {#introduction-forms}
 
-The primary introduction form for a vase is the [`!>`](../reference/rune/zap.md#-zapgar) rune, which produces a vase of its input. A vase can also be constructed manually as a cell whose head nests in `$type`, like `[[%atom %ud ~] 3]`.
+The primary introduction form for a vase is the [`!>`](../reference/rune/zap.md#zapgar) rune, which produces a vase of its input. A vase can also be constructed manually as a cell whose head nests in `$type`, like `[[%atom %ud ~] 3]`.
 
 ### Elimination Forms {#elimination-forms}
 
 An elimination form for a vase is something that converts a vase to a statically typed value.
 
-One unsafe elimination form is the [`!<`](../reference/rune/zap.md#-zapgal) rune, which takes a mold and a value and (unsafely) converts the value to a typed value. The more traditional elimination form has no syntactic support, but involves pattern-matching on the type data structure, e.g. dispatching based on whether the type is atom, cell, or something else, and coercing the value to a specific type using a mold function.
+One unsafe elimination form is the [`!<`](../reference/rune/zap.md#zapgal) rune, which takes a mold and a value and (unsafely) converts the value to a typed value. The more traditional elimination form has no syntactic support, but involves pattern-matching on the type data structure, e.g. dispatching based on whether the type is atom, cell, or something else, and coercing the value to a specific type using a mold function.
 
 The lack of a safe general-purpose elimination form stems from the fact that Hoon's structural type system cannot guarantee that the value in a vase's tail is an instance of the type in the vase's head, i.e. is an instance of that type. If not, the vase is said to be "evil".
 

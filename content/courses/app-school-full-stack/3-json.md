@@ -183,7 +183,7 @@ First, we'll import the `/sur/journal.hoon` structures we previously created. Ne
   ==
 ```
 
-The first thing we do is use the [`=,` rune](../../language/hoon/reference/rune/tis.md#-tiscom) to expose the `++dejs:format` namespace. This allows us to reference `ot`, `ni`, etc rather than having to write `ot:dejs:format` every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
+The first thing we do is use the [`=,` rune](../../language/hoon/reference/rune/tis.md#tiscom) to expose the `++dejs:format` namespace. This allows us to reference `ot`, `ni`, etc rather than having to write `ot:dejs:format` every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
 
 We then create a gate that takes `$json` and returns a `$action` structure. Since we'll only take one action at a time, we can use the `++of` function, which takes a single key-value pair. `++of` takes a list of all possible `$json` objects it will receive, tagged by key.
 

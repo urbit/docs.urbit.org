@@ -158,7 +158,7 @@ A door is the general case of a gate (function). A gate is a door with only one 
 
 Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
-Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#-censig).
+Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#censig).
 
 #### Examples
 
@@ -418,7 +418,7 @@ A more interesting trap:
 
 Note that we can use `$()` to recurse back into the trap, since it's a core with an `$` arm.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 ---
 
@@ -533,7 +533,7 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 
 The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](#-bardot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 #### Examples
 
@@ -664,7 +664,7 @@ Genericity is a powerful and dangerous tool. Use wet gates only if you know what
 
 Just as with a [gate](#-bartis), we can recurse back into a wet gate with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 `|*` can be used to make wet gates that produce structures, but this usage is discouraged in favor of `|$`.
 
@@ -749,7 +749,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#-centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](cen.md#centis)).
 
 #### Examples
 

@@ -15,7 +15,7 @@ Whenever something tries to poke your agent, Gall calls your agent's `on-poke` a
 
 The sample of the gate is usually specified as a cell of `mark` and `vase` rather than just `cage`, simply because it's easier to work with.
 
-Typically, you'd first test the `mark` with something like a [wutlus](../../language/hoon/reference/rune/wut.md#-wutlus) `?+` expression, passing unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom `mark`s in a subsequent lesson, but the basic pattern looks like:
+Typically, you'd first test the `mark` with something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression, passing unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom `mark`s in a subsequent lesson, but the basic pattern looks like:
 
 ```hoon
 ?+  mark  (on-poke:def mark vase)

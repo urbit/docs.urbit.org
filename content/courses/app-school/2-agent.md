@@ -2,7 +2,7 @@
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
 
-A Gall agent is a [door](../../glossary/door.md) with exactly ten [arms](../../glossary/arm.md). Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a [core](../../glossary/core.md) with a sample - it's made with the [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune (`|_`) instead of the usual [barcen](../../language/hoon/reference/rune/bar.md#-barcen) rune (`|%`).
+A Gall agent is a [door](../../glossary/door.md) with exactly ten [arms](../../glossary/arm.md). Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a [core](../../glossary/core.md) with a sample - it's made with the [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune (`|_`) instead of the usual [barcen](../../language/hoon/reference/rune/bar.md#barcen) rune (`|%`).
 
 ## The ten arms {#the-ten-arms}
 
@@ -93,7 +93,7 @@ Here's about the simplest valid Gall agent:
 
 This is just a dummy agent that does absolutely nothing - it has no state and rejects all messages by crashing. Typically we'd cast this to an `agent:gall`, but in this instance we won't so it's easier to examine its structure in the dojo. We'll get to what each of the arms do later. For now, we'll just consider a few particular points.
 
-Firstly, note its structure - it's a door (created with `|_`) with a sample of `bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../language/hoon/reference/irregular.md#-buctis)).
+Firstly, note its structure - it's a door (created with `|_`) with a sample of `bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../language/hoon/reference/irregular.md#buctis)).
 
 Secondly, you'll notice some of the arms return:
 

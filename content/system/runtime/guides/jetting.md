@@ -123,7 +123,7 @@ or in a more compact form (omitting the parent core and chapter label)
   $(a (dec a), b +(b))
 ```
 
-The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist.  By convention, the jet hint name matches the gate label.  Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below.  We will expand on the jet registration runes [`~/` sigfas](../../../language/hoon/reference/rune/sig.md#-sigfas) and [`~%` sigcen](../../../language/hoon/reference/rune/sig.md#-sigcen) later.
+The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist.  By convention, the jet hint name matches the gate label.  Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below.  We will expand on the jet registration runes [`~/` sigfas](../../../language/hoon/reference/rune/sig.md#sigfas) and [`~%` sigcen](../../../language/hoon/reference/rune/sig.md#sigcen) later.
 
 The following C code implements `++add` as a significantly faster operation including handling of >31-bit atoms.  It may be found in `urbit/pkg/noun/jets/a/add.c`:
 
@@ -905,8 +905,8 @@ Hoon jets are compiled into the Vere binary for distribution with the Urbit runt
 
 Jets are registered with the runtime so that Vere knows to check whether a particular jet exists when it encounters a marked Hoon arm.
 
-- [`~/` sigfas](../../../language/hoon/reference/rune/sig.md#-sigfas) registers a jet simply (using defaults).
-- [`~%` sigcen](../../../language/hoon/reference/rune/sig.md#-sigcen) registers a jet with all arguments specified.
+- [`~/` sigfas](../../../language/hoon/reference/rune/sig.md#sigfas) registers a jet simply (using defaults).
+- [`~%` sigcen](../../../language/hoon/reference/rune/sig.md#sigcen) registers a jet with all arguments specified.
 
 Typically we use `~/` sigfas to register jets within a core under the umbrella of a `~%` sigcen registration.  For instance, `++add` is registered under the Kelvin tag of `hoon.hoon`:
 

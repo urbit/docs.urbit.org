@@ -99,7 +99,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   |=(a=(tree) ?:(=(~ a) & ~(apt in a)))
 ```
 
-Here [`|$`](bar.md#-barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
+Here [`|$`](bar.md#barbuc) is used to define a mold builder that takes in a mold (given the face `item`) and creates a structure consisting of a `tree` of `item`s with `$|` that is validated with the gate `|=(a=(tree) ?:(=(~ a) & ~(apt in a)))`. `in` is a door in `hoon.hoon` with functions for handling `set`s, and `apt` is an arm in that door that checks that the values in the `tree` are arranged in the particular way that `set`s are arranged in Hoon, namely 'ascending `+mug` hash order'.
 
 ---
 
@@ -767,7 +767,7 @@ The product of `p`.
 
 #### Discussion
 
-You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](ket.md#-kettar).)
+You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](ket.md#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
 

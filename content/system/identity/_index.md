@@ -36,52 +36,12 @@ Walkthroughs of some of the smart contracts are linked to [below](#other).
 
 These documents pertain to L1 and other general aspects of Azimuth. For L2 docs, [see below](#naive-rollups).
 
-{% grid %}
-
-  {% iconcard
-    title="HD Wallet"
-    description="Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a \"master ticket\"."
-    href="/system/identity/concepts/hd-wallet"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Data Flow"
-    description="Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2."
-    href="/system/identity/concepts/flow"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Azimuth.eth"
-    description="A description of the azimuth.eth smart contract, which is the data store for Azimuth."
-    href="/system/identity/reference/azimuth-eth"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Ecliptic.eth"
-    description="A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available."
-    href="/system/identity/reference/ecliptic"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Advanced Azimuth Tools"
-    description="Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself."
-    href="/system/identity/guides/advanced-azimuth-tools"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Life and Rift"
-    description="An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship."
-    href="/system/identity/concepts/life-and-rift"
-    small=true
-  /%}
-
-{% /grid %}
-
+- [HD Wallet](/system/identity/concepts/hd-wallet) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
+- [Data Flow](/system/identity/concepts/flow) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
+- [Azimuth.eth](/system/identity/reference/azimuth-eth) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
+- [Ecliptic.eth](/system/identity/reference/ecliptic) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
+- [Advanced Azimuth Tools](/system/identity/guides/advanced-azimuth-tools) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
+- [Life and Rift](/system/identity/concepts/life-and-rift) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
 
 ## Naive rollups
 
@@ -91,48 +51,9 @@ Due to the dramatically reduced cost, Tlon offers their own roller that is free 
 
 L2 operator and developer resources:
 
-{% grid %}
-
-  {% iconcard
-    title="Layer 2 Overview"
-    description="An overview of how naive rollups work."
-    href="/system/identity/concepts/layer2"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Custom Roller Tutorial"
-    description="A guide to running your own L2 roller locally."
-    href="/system/identity/guides/roller-tutorial"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Actions Reference"
-    description="Details of the L2 API's possible actions."
-    href="/system/identity/reference/l2-actions"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Transaction Format Reference"
-    description="Details of the bytestring format for L2 transactions and batches."
-    href="/system/identity/reference/bytestring"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Rollers"
-    description="Overview of the L2 roller system."
-    href="/system/identity/reference/roller"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Roller HTTP RPC-API"
-    description="A diagram summarizing the L2 API calls."
-    href="/system/identity/reference/roller"
-    small=true
-  /%}
-
-{% /grid %}
+- [Layer 2 Overview](/system/identity/concepts/layer2) - An overview of how naive rollups work.
+- [Custom Roller Tutorial](/system/identity/guides/roller-tutorial) - A guide to running your own L2 roller locally.
+- [Actions Reference](/system/identity/reference/l2-actions) - Details of the L2 API's possible actions.
+- [Transaction Format Reference](/system/identity/reference/bytestring) - Details of the bytestring format for L2 transactions and batches.
+- [Rollers](/system/identity/reference/roller) - Overview of the L2 roller system.
+- [Roller HTTP RPC-API](/system/identity/reference/roller) - A diagram summarizing the L2 API calls.

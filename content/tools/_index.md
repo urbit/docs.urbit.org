@@ -5,35 +5,7 @@ weight = 60
 
 This section of the docs is for developer documentation of additonal, external and/or third-party apps, libraries and tools.
 
-{% grid %}
-
-  {% iconcard
-    title="Useful Links"
-    description="Links to external app and library repos, documentation, and other tools."
-    href="/tools/links"
-    small=true
-  /%}
-
-  {% iconcard
-    title="JS Libraries"
-    description="Javascript libraries for interacting with an Urbit ship."
-    href="/tools/js-libs"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Docs App"
-    description="Reference documentation for distributing app documentation for the docs app."
-    label="View"
-    href="/tools/docs-app"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Auth Server"
-    description="Detailed documentation for the server-side API part of the Auth app, so people can use their Urbit ship to login to a website."
-    href="/tools/auth-server"
-    small=true
-  /%}
-
-{% /grid %}
+- [Useful Links](/tools/links) - Links to external app and library repos, documentation, and other tools.
+- [JS Libraries](/tools/js-libs) - Javascript libraries for interacting with an Urbit ship.
+- [Docs App](/tools/docs-app) - Reference documentation for distributing app documentation for the docs app.
+- [Auth Server](/tools/auth-server) - Detailed documentation for the server-side API part of the Auth app, so people can use their Urbit ship to login to a website.

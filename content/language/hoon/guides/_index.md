@@ -7,77 +7,13 @@ insert_anchor_links = "right"
 
 Guides to various features of the Hoon language.
 
-{% grid %}
-
-  {% iconcard
-    title="Style Guide"
-    description="Best practices for writing Hoon code."
-    href="/language/hoon/guides/style"
-    small=true
-  /%}
-
-  {% iconcard
-    title="JSON"
-    description="How to deal with JSON in Hoon."
-    href="/language/hoon/guides/json-guide"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Generators"
-    description="How to write Hoon scripts called Generators."
-    href="/language/hoon/guides/generators"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Parsing Text"
-    description="How to write functional parsers."
-    href="/language/hoon/guides/parsing"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Sail"
-    description="How to use Sail, Hoon's domain-specific language for composing HTML."
-    href="/language/hoon/guides/sail"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Udon"
-    description="Urbit's markdown-like syntax for composing documents."
-    href="/language/hoon/guides/udon"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Strings"
-    description="How to deal with text strings in Hoon."
-    href="/language/hoon/guides/strings"
-    small=true
-  /%}
-
-  {% iconcard
-    title="vases"
-    description="dynamic data types in hoon."
-    href="/language/hoon/guides/vases"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Sets"
-    description="Explore set relations using the Hoon standard library."
-    href="/language/hoon/guides/sets"
-    small=true
-  /%}
-
-  {% iconcard
-    title="Implementing an Aura"
-    description="How to implement support for a new in Hoon."
-    href="/language/hoon/guides/aura-guide"
-    small=true
-  /%}
-
-{% /grid %}
-
+- [Style Guide](/language/hoon/guides/style) - Best practices for writing Hoon code.
+- [JSON](/language/hoon/guides/json-guide) - How to deal with JSON in Hoon.
+- [Generators](/language/hoon/guides/generators) - How to write Hoon scripts called Generators.
+- [Parsing Text](/language/hoon/guides/parsing) - How to write functional parsers.
+- [Sail](/language/hoon/guides/sail) - How to use Sail, Hoon's domain-specific language for composing HTML.
+- [Udon](/language/hoon/guides/udon) - Urbit's markdown-like syntax for composing documents.
+- [Strings](/language/hoon/guides/strings) - How to deal with text strings in Hoon.
+- [vases](/language/hoon/guides/vases) - dynamic data types in hoon.
+- [Sets](/language/hoon/guides/sets) - Explore set relations using the Hoon standard library.
+- [Implementing an Aura](/language/hoon/guides/aura-guide) - How to implement support for a new in Hoon.

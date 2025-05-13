@@ -4,14 +4,4 @@ weight = 20
 auto_expand = true
 +++
 
-{% grid %}
-
-  {% iconcard
-    title="Fast Hints and Jets"
-    description="Learn about jetting in Nock."
-    href="/language/nock/guides/jetting"
-    small=true
-  /%}
-
-{% /grid %}
-
+- [Fast Hints and Jets](/language/nock/guides/jetting) - Learn about jetting in Nock.

@@ -178,10 +178,10 @@ The `authenticate` function takes four arguments in an object: `ship`, `url`, `c
 
 This function returns a promise that if successful, produces an `Urbit` object which can then be used for communications with the ship.
 
-**Note:** An Urbit ship will deny CORS requests from external URLs by default. In order to allow CORS for an external web app, the user will need to run the following in the dojo (replacing `https://example.com` with the address in question):
+**Note:** An Urbit ship will deny CORS requests from external URLs by default. In order to run the examples below, you'll need to serve them from a URL (with Python's http-server module, for example) and approve that URL in the dojo. If serving the example page from `http://localhost:8000`, you'll need to run:
 
 ```
-|eyre/cors/approve 'https://example.com'
+|eyre/cors/approve 'http://localhost:8000'
 ```
 
 #### Example

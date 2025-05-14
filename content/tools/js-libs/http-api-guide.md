@@ -25,8 +25,8 @@ An _agent_ is a userspace application managed by the [Gall] vane. A desk may con
 | Interface     | Description                                                                                                                                                                                                                                                     |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Pokes         | One-off message to an agent. Pokes often represent actions, commands, requests, etc.                                                                                                                                                                            |
-| Subscriptions | An agent may have a number of different paths to which you may subscribe. If a subscription request is accepted, you'll continue to receive update/events the agent sends out on that path until you either cancel the subscription or are kicked by the agent. |
-| Scries        | Scries are one-off requests for data. Like subscriptions, they are organized by path. Scry requests will be fulfilled immediately. Scries are "read-only", they cannot alter the state of an agent.                                                             |
+| Subscriptions | An agent may have a number of different paths to which you may subscribe. |
+| Scries        | Scries are one-time, read-only requests for data. Like subscriptions, they are organized by path. Scry requests will be fulfilled immediately.                                                             |
 
 #### Pokes {#pokes}
 
@@ -468,7 +468,7 @@ The `authenticate` function takes four arguments in an object: `ship`, `url`, `c
 | Argument  | Type      | Description                                                                            | Example                           |
 | --------- | --------- | -------------------------------------------------------------------------------------- | --------------------------------- |
 | `ship`    | `string`  | The ship ID (`@p`) without the leading `~`.                                            | `"sampel-palnet"` or `"zod"`      |
-| `url`     | `string`  | The base URL for the ship.                                        | `http://localhost:8080` or `example.com` |
+| `url`     | `string`  | The base URL for the ship.                                        | `"http://localhost:8080"` or `"example.com"` |
 | `code`    | `string`  | The user's web login code.                                                             | `"lidlut-tabwed-pillex-ridrup"`   |
 | `verbose` | `boolean` | Whether to log details to the console. This field is optional and defaults to `false`. | `true`                            |
 
@@ -507,12 +507,12 @@ For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. T
 
 | Argument    | Type        | Description                                                                                                                  | Example                 |
 | ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| `app`       | `string`    | The Gall agent to poke.                                                                                                      | `"graph-store"`         |
-| `mark`      | `string`    | The mark of the data to poke the agent with.                                                                                 | `"graph-update-3"`      |
-| `json`      | any JSON    | The data to poke the agent with.                                                                                             | `{foo: "bar", baz: 42}` |
-| `ship`      | `string`    | The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object. | `"sampel-palnet"`       |
-| `onSuccess` | A function. | This is called if the poke succeeded (the ship ack'd the poke).                                                              | `someFunction`          |
-| `onError`   | A function. | This is called if the poke failed (the ship nack'd the poke).                                                                | `anotherFunction`       |
+| `app`       | `string`    | The Gall agent to poke.                                                                                                      | `"api-demo"`         |
+| `mark`      | `string`    | The mark of the data to poke the agent with.                                                                                 | `"api-action"`      |
+| `json`      | any JSON    | The data to poke the agent with.                                                                                             | `{ put: { key: "foo", val: "bar" } }` |
+| `ship`      | `string`    | The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object. | `"zod"`       |
+| `onSuccess` | A function. | This is called if the poke succeeded (the ship ack'd the poke).                                                              | `someFunction()`          |
+| `onError`   | A function. | This is called if the poke failed (the ship nack'd the poke).                                                                | `anotherFunction()`       |
 
 #### Poke example {#poke-example}
 
@@ -624,8 +624,8 @@ To scry agents on the ship, the `Urbit` class in `http-api` includes a `scry` fu
 
 | Argument | Type     | Description                        | Example         |
 | -------- | -------- | ---------------------------------- | --------------- |
-| `app`    | `string` | The agent to scry.                 | `"graph-store"` |
-| `path`   | `string` | The path to scry, sans the `care`. | `"/keys"`       |
+| `app`    | `string` | The agent to scry.                 | `"api-demo"` |
+| `path`   | `string` | The path to scry, sans the `care`. | `"/store"`       |
 
 The `scry` function returns a promise that, if successful, contains the requested data as JSON. If the scry failed, for example due to a non-existent scry endpoint, connection problem, or mark conversion failure, the promise will fail.
 
@@ -746,12 +746,12 @@ For subscribing to a particular path in an agent, the `Urbit` class in `http-api
 
 | Argument | Type        | Description                                                                                                                      | Example              |
 | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| `app`    | `string`    | The Gall agent to which you'll subscribe.                                                                                        | `"graph-store"`      |
+| `app`    | `string`    | The Gall agent to which you'll subscribe.                                                                                        | `"api-demo"`      |
 | `path`   | `string`    | The subscription path.                                                                                                           | `"/updates"`         |
-| `ship`   | `string`    | The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object.     | `"sampel-palnet"`    |
-| `err`    | A function. | This is called if the subscription request fails.                                                                                | `someFunction`       |
-| `event`  | A function. | This is the function to handle each update you receive for this subscription. The function's argument is the update's JSON data. | `anotherFunction`    |
-| `quit`   | A function. | This is called if you are kicked from the subscription.                                                                          | `yetAnotherFunction` |
+| `ship`   | `string`    | The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object.     | `"zod"`    |
+| `err`    | A function. | This is called if the subscription request fails.                                                                                | `someFunction()`       |
+| `event`  | A function. | This is the function to handle each update you receive for this subscription. The function's argument is the update's JSON data. | `anotherFunction()`    |
+| `quit`   | A function. | This is called if you are kicked from the subscription.                                                                          | `yetAnotherFunction()` |
 
 The `subscribe` function returns a subscription ID, which is just a number. This ID can be used to unsubscribe down the line.
 
@@ -926,7 +926,7 @@ The `subscribeOnce` function also takes an optional `timeout` argument, which sp
 
 | Argument  | Type     | Description                                                                                                              | Example         |
 | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------- |
-| `app`     | `string` | The Gall agent to which you'll subscribe.                                                                                | `"graph-store"` |
+| `app`     | `string` | The Gall agent to which you'll subscribe.                                                                                | `"api-demo"` |
 | `path`    | `string` | The subscription path.                                                                                                   | `"/updates"`    |
 | `timeout` | `number` | The number of milliseconds to wait for an update before closing the subscription. If omitted, it will wait indefinitely. | `5000`          |
 
@@ -1001,11 +1001,11 @@ To run a thread, the `Urbit` class in `http-api` includes a `thread` function. T
 
 | Argument     | Type     | Description                                                                                                   | Example                 |
 | ------------ | -------- | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| `inputMark`  | `string` | The mark to convert your JSON data to before giving it to the thread as its argument.                         | `"graph-view-action"`   |
+| `inputMark`  | `string` | The mark to convert your JSON data to before giving it to the thread as its argument.                         | `"ship"`   |
 | `outputMark` | `string` | The result of the thread should be converted to this mark before being converted to JSON and returned to you. | `"tang"`                |
-| `threadName` | `string` | The name of the thread to run.                                                                                | `"graph-eval"`          |
-| `body`       | any JSON | The data to give to the thread as its argument.                                                               | `{foo: "bar", baz: 42}` |
-| `desk`       | `string` | The desk in which the thread resides. This may be ommitted if previously set for the whole `Urbit` object.    | `"landscape"`           |
+| `threadName` | `string` | The name of the thread to run.                                                                                | `"hi"`          |
+| `body`       | any JSON | The data to give to the thread as its argument.                                                               | `"~bud"` |
+| `desk`       | `string` | The desk in which the thread resides. This may be ommitted if previously set for the whole `Urbit` object.    | `"base"`           |
 
 The `thread` function will produce a promise that, if successful, contains the JSON result of the thread. If the thread failed, a connection error occurred, or mark conversion failed, the promise will fail.
 

@@ -28,7 +28,7 @@ An _agent_ is a userspace application managed by the [Gall] vane. A desk may con
 | Subscriptions | An agent may have a number of different paths to which you may subscribe. If a subscription request is accepted, you'll continue to receive update/events the agent sends out on that path until you either cancel the subscription or are kicked by the agent. |
 | Scries        | Scries are one-off requests for data. Like subscriptions, they are organized by path. Scry requests will be fulfilled immediately. Scries are "read-only", they cannot alter the state of an agent.                                                             |
 
-#### Pokes
+#### Pokes {#pokes}
 
 Pokes are single, standalone messages to agents. Pokes are how you send data and requests to agents. Agents will send back either a positive acknowledgement (ack) or a negative acknowledgement (nack). The agent can't send actual data back in the acks. If they have any response to give back, it will be sent out to subscribers on a subscription path instead.
 
@@ -36,7 +36,7 @@ The pokes an agent accepts will be defined in the `+on-poke` section of its sour
 
 `@urbit/http-api` includes a `poke()` function which allows you to perform pokes through Eyre, and is [detailed below](#poke).
 
-#### Subscriptions
+#### Subscriptions {#subscriptions}
 
 Agents define subscription paths which you can subscribe to through Eyre. A path might be simple and fixed like `/foo/bar`, or it might have dynamic elements where you can specify a date, a user, a key in a key-value store, etc. Each agent will define its subscription paths in the `+on-watch` section of its source code.
 
@@ -46,7 +46,7 @@ Agents can kick subscribers, and you can unsubscribe at any time.
 
 `@urbit/http-api` includes a `subscribe()` function which allows you to subscribe and unsubscribe to paths through Eyre, and is [detailed below](#subscribe).
 
-#### Scry Endpoints
+#### Scry Endpoints {#scry-endpoints}
 
 Pokes and subscriptions can modify the state of the agent. A third kind of interaction called a _scry_ does not. It simply retrieves data from the agent without any side-effects. Agents can define _scry endpoints_ which, like subscriptions, are paths. A scry to one of these endpoints will retrieve some data as determined by the agent. Like subscription paths, scry paths can be simple like `/foo/bar` or contain dynamic elements. Unlike subscriptions, a scry is a one-off request and the data will come back immediately.
 

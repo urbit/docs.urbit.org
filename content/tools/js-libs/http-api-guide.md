@@ -429,7 +429,13 @@ In the `%base` desk's `/app` directory, create a new file called `/api-demo.hoon
 Finally, run `|commit %base` in the ship's dojo to commit your changes to the desk, then run `|start %api-demo` to initialise the agent.
 
 ## Using the HTTP API {#using-the-http-api}
-lorem ipsum
+Create and serve the HTML examples below from a local URL to talk to your fake ~zod via the HTTP API.
+
+An Urbit ship will deny CORS requests from external URLs by default. **In order to run the examples below, you'll need to serve them from a URL (for example, with Python's http.server module) and approve that URL in the ship's dojo.** If serving the example page from `http://localhost:8000`, you'll need to run:
+
+```
+|eyre/cors/approve 'http://localhost:8000'
+```
 
 ### Importing the HTTP API {#importing-the-http-api}
 The `http-api` module is available in npm as `@urbit/http-api`, and can be installed with:
@@ -467,14 +473,6 @@ The `authenticate` function takes four arguments in an object: `ship`, `url`, `c
 | `verbose` | `boolean` | Whether to log details to the console. This field is optional and defaults to `false`. | `true`                            |
 
 This function returns a promise that if successful, produces an `Urbit` object which can then be used for communications with the ship.
-
-#### CORS approval {#cors-approval}
-
-An Urbit ship will deny CORS requests from external URLs by default. **In order to run the examples below, you'll need to serve them from a URL (for example, with Python's http-server module) and approve that URL in the ship's dojo.** If serving the example page from `http://localhost:8000`, you'll need to run:
-
-```
-|eyre/cors/approve 'http://localhost:8000'
-```
 
 #### Example
 

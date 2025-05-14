@@ -8,11 +8,11 @@ Eyre's API is a fairly thin overlay on some of Arvo's internal systems, so there
 
 ### Clay {#clay}
 
-[Clay] is the filesystem vane. It's typed, and it's revision-controlled in a similar way to git. Clay contains a number of [desk]s, which are a bit like git repositories. Each app on your ship's home screen corresponds to a desk in Clay. That desk contains the source code and resources for that app.
+Clay is the filesystem vane. It's typed, and it's revision-controlled in a similar way to git. Clay contains a number of desks, which are a bit like git repositories. Each app on your ship's home screen corresponds to a desk in Clay. That desk contains the source code and resources for that app.
 
 #### Marks
 
-Most of Clay's workings aren't relevant to frontend development, but there's one important concept to understand: [mark]s. Clay is a typed filesystem, and marks are the filetypes. There's a mark for `.hoon` files, a mark for `.txt` files, and so on. The mark specifies the datatype for those files, and it also specifies conversion methods between different types. Marks aren't just used for files saved in Clay, but also for data that goes to and from the web through Eyre.
+Most of Clay's workings aren't relevant to frontend development, but there's one important concept to understand: marks. Clay is a typed filesystem, and marks are the filetypes. There's a mark for `.hoon` files, a mark for `.txt` files, and so on. The mark specifies the datatype for those files, and it also specifies conversion methods between different types. Marks aren't just used for files saved in Clay, but also for data that goes to and from the web through Eyre.
 
 When you send a [poke](#pokes) or run a [thread](#threads) through Eyre's HTTP API, Clay will look at the mark specified (for example `ui-action`, `contact-action-1`, etc.) and use the corresponding mark file in the relevant desk to convert the given JSON to that type, before passing it to the target [agent](#gall-agents) or thread. The same conversion will happen in reverse for responses.
 
@@ -20,7 +20,7 @@ Note that Eyre makes a best effort attempt to convert data to and from JSON. If 
 
 ### Gall agents {#gall-agents}
 
-An _agent_ is a userspace application managed by the [Gall] vane. A desk may contain multiple agents that do different things. The [Tlon Messenger](https://github.com/tloncorp/tlon-apps) app, for example, has the `%contacts`, `%profile`, and `%lanyard` agents in its desk, among others. Agents are the main thing you'll interact with through Eyre. They have a simple interface with three main parts:
+An _agent_ is a userspace application managed by the Gall vane. A desk may contain multiple agents that do different things. The [Tlon Messenger](https://github.com/tloncorp/tlon-apps) app, for example, has the `%contacts`, `%profile`, and `%lanyard` agents in its desk, among others. Agents are the main thing you'll interact with through Eyre. They have a simple interface with three main parts:
 
 | Interface     | Description                                                                                                                                                                                                                                                     |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -118,7 +118,7 @@ With the exception of scries and threads, all communication with Eyre happens th
 
 When it's constructed, the `Urbit()` object will generate a random channel ID like `1646295453-e1bdfd`, and use a path of `/~/channel/1646295453-e1bdfd` to talk to Eyre. Pokes and subscription requests will be sent to that channel. Responses and subscription updates will be sent out to the frontend on that channel too.
 
-Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for that channel. The `Urbit()` object handles this internally with an `eventSource` object, so you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit()` object handles event acknowledgement automatically.
+Eyre sends out updates and responses on an SSE (Server Sent Event) stream for that channel. The `Urbit()` object handles this internally with an `eventSource` object, so you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit()` object handles event acknowledgement automatically.
 
 Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[unknown-channel-id]`. If your web app is served outside a ship, you could use the `authenticate()` function [described below](#authenticate) which will automatically send a poke and open the new channel. If your web app is served directly from the ship and you use the `Urbit()` object, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
 

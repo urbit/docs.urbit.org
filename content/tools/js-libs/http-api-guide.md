@@ -1,22 +1,22 @@
 # HTTP API
 
-[Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's kernel and operating system. In this guide, we'll look at interacting with a ship through Eyre's web API using the [@urbit/http-api] Javascript module.
+[Eyre] is the web-server [vane] (kernel module) of [Arvo], an Urbit ship's kernel and operating system. In this guide, we'll look at interacting with a ship through Eyre's HTTP API using the [@urbit/http-api] Javascript module.
 
 ## Background {#background}
 
-Before we dig into the details of Eyre's API, we'll first give a quick run-down of some concepts in Arvo. Eyre's API is a fairly thin overlay on some of Arvo's internal systems, so there's some basic things to understand.
+Eyre's API is a fairly thin overlay on some of Arvo's internal systems, so there's some basic things to understand.
 
 ### Clay {#clay}
 
-[Clay] is the filesystem vane. It's typed, and it's revision-controlled in a similar way to git. Clay is comprised of a number of [desk]s, which are a bit like git repositories. Each app on your ship's home screen corresponds to a desk in Clay. That desk contains the source code and resources for that app.
+[Clay] is the filesystem vane. It's typed, and it's revision-controlled in a similar way to git. Clay contains a number of [desk]s, which are a bit like git repositories. Each app on your ship's home screen corresponds to a desk in Clay. That desk contains the source code and resources for that app.
 
 #### Marks
 
-Most of Clay's workings aren't relevant to front-end development, but there's one important concept to understand: [mark]s. Clay is a typed filesystem, and marks are the filetypes. There's a mark for `.hoon` files, a mark for `.txt` files, and so on. The mark specifies the hoon datatype for those files, and it also specifies conversion methods between different marks. Marks aren't just used for files saved in Clay, but also for data that goes to and from the web through Eyre.
+Most of Clay's workings aren't relevant to frontend development, but there's one important concept to understand: [mark]s. Clay is a typed filesystem, and marks are the filetypes. There's a mark for `.hoon` files, a mark for `.txt` files, and so on. The mark specifies the datatype for those files, and it also specifies conversion methods between different types. Marks aren't just used for files saved in Clay, but also for data that goes to and from the web through Eyre.
 
-When you send a [poke](#pokes) or run a [thread](#threads) through Eyre, it will look at the mark specified (for example `%ui-action`, `%contact-action-1`, etc.) and use the corresponding mark file in the desk to convert the given JSON to that datatype before passing it to the target [agent](#gall-agents) or thread. The same conversion will happen in reverse for responses.
+When you send a [poke](#pokes) or run a [thread](#threads) through Eyre's HTTP API, Clay will look at the mark specified (for example `ui-action`, `contact-action-1`, etc.) and use the corresponding mark file in the relevant desk to convert the given JSON to that type, before passing it to the target [agent](#gall-agents) or thread. The same conversion will happen in reverse for responses.
 
-Note that Eyre makes a best effort attempt to convert data to and from JSON. If the marks in question do not contain appropriate JSON conversion functions, it will fail. Not all [scry endpoints](#scry-endpoints), [subscription paths](#subscriptions), pokes, etc, are intended to be used from a front-end, so not all use marks which can be converted to and from JSON (the `noun` mark for example). If documentation is available for the agent or thread in question, it should note in some fashion whether it can take or produce JSON. The majority of things you'll want to interact with through Eyre will work with JSON.
+Note that Eyre makes a best effort attempt to convert data to and from JSON. If the marks in question do not contain appropriate JSON conversion functions, it will fail. Not all [scry endpoints](#scry-endpoints), [subscription paths](#subscriptions), and pokes are intended to be used from a frontend, so not all of them use marks which can convert to and from JSON. (The `noun` mark for example). The majority of things you'll want to interact with through Eyre will work with JSON.
 
 ### Gall agents {#gall-agents}
 
@@ -30,67 +30,54 @@ An _agent_ is a userspace application managed by the [Gall] vane. A desk may con
 
 #### Pokes
 
-Pokes are single, stand-alone messages to agents. Pokes are how you send data and requests to agents. Agents will send back either a positive acknowledgement (ack) or a negative acknowledgement (nack). The agent can't send actual data back in the acks. If they have any response to give back, it will be sent out to subscribers on a subscription path instead.
+Pokes are single, standalone messages to agents. Pokes are how you send data and requests to agents. Agents will send back either a positive acknowledgement (ack) or a negative acknowledgement (nack). The agent can't send actual data back in the acks. If they have any response to give back, it will be sent out to subscribers on a subscription path instead.
 
-The pokes an agent accepts will be defined in the `on-poke` section of its source in the desk's `/app` directory, and typically in its type definition file in the `/sur` directory too. If the agent has documentation, the data structures and marks of its pokes should be listed there.
+The pokes an agent accepts will be defined in the `+on-poke` section of its source code in the desk's `/app` directory, or maybe in its type definition file in the `/sur` directory.
 
-`http-api` includes a `poke` function which allows you to perform pokes through Eyre, and is [detailed below](#poke).
+`@urbit/http-api` includes a `poke()` function which allows you to perform pokes through Eyre, and is [detailed below](#poke).
 
 #### Subscriptions
 
-Agents define subscription paths which you can subscribe to through Eyre. A path might be simple and fixed like `/foo/bar`, or it might have variable elements where you can specify a date, ship, or what have you. Each agent will define its subscription paths in the `on-watch` section of its source, and if it has documentation the paths should also be listed there.
+Agents define subscription paths which you can subscribe to through Eyre. A path might be simple and fixed like `/foo/bar`, or it might have dynamic elements where you can specify a date, a user, a key in a key-value store, etc. Each agent will define its subscription paths in the `+on-watch` section of its source code.
 
-You can subscribe by sending a watch request to the agent with the desired path specifed. The agent will apply some logic (such as checking permissions) to the request and then ack or nack it. If acked, you'll be subscribed and begin receiving any updates the agent sends out on that path. What you'll receive on a given path depends entirely on the agent.
+You can subscribe by sending a request to the agent with the desired path specifed. The agent will apply some logic (such as checking permissions) to the request and then ack or nack it. If acked, you'll be subscribed. You might receive an initial payload of data defined in `+on-watch`. Then you'll begin receiving any updates the agent sends out on that path in future. What you'll receive on a given path depends entirely on the agent.
 
-Agents can kick subscribers, and you can also unsubscribe at any time.
+Agents can kick subscribers, and you can unsubscribe at any time.
 
-`http-api` includes a `subscribe` function which allows you to perform pokes through Eyre, and is [detailed below](#subscribe).
+`@urbit/http-api` includes a `subscribe()` function which allows you to subscribe and unsubscribe to paths through Eyre, and is [detailed below](#subscribe).
 
 #### Scry Endpoints
 
-Pokes and subscriptions can modify the state of the agent. A third kind of interaction called a _scry_ does not - it simply retrieves data from the agent without any side-effects. Agents can define _scry endpoints_ which (like subscriptions) are paths. A scry to one of these endpoints will retrieve some data (as determined by the agent's design) from the agent's state. Like subscription paths, scry paths can be simple like `/foo/bar` or contain variable elements. Unlike subscriptions, a scry is a one-off request and the data will come back immediately.
+Pokes and subscriptions can modify the state of the agent. A third kind of interaction called a _scry_ does not. It simply retrieves data from the agent without any side-effects. Agents can define _scry endpoints_ which, like subscriptions, are paths. A scry to one of these endpoints will retrieve some data as determined by the agent. Like subscription paths, scry paths can be simple like `/foo/bar` or contain dynamic elements. Unlike subscriptions, a scry is a one-off request and the data will come back immediately.
 
-Scry endpoints are defined in the `on-peek` section of an agent's source, and will likely be listed in the agent's documentation if it has any. Scry endpoints will often be written with a leading letter like `/x/foo/bar`. All scries through Eyre are `x` scries, so that letter (called a `care`) needn't be specified.
+Scry endpoints are defined in the `+on-peek` section of an agent's source code. Scry endpoints will be written with a leading letter like `/x/foo/bar`. That letter is a `care` which tells Gall what kind of request this is. All scries through Eyre have a care of `/x`, so that letter needn't be specified.
 
-`http-api` includes a `scry` function which allows you to perform scries through Eyre, and is [detailed below](#scry).
+`@urbit/http-api` includes a `scry()` function which allows you to perform scries through Eyre, and is [detailed below](#scry).
 
 ### Threads {#threads}
 
-A thread is a monadic function in Arvo that takes arguments and produces a result. Threads are conceptually similar to Javascript promises - they can perform a series of asynchronous I/O operations and may succeed or fail. Threads are often used to handle complex I/O operations for agents. Threads live in the `/ted` directory of a desk.
+A thread is a monadic function in Arvo that takes arguments and produces a result. Threads are conceptually similar to Javascript promises: they can perform one or more asynchronous I/O operations, which can be chained together, and will notify the agent that started them whether they succeedeed or failed. Threads are often used to handle complex I/O operations for agents. Threads live in the `/ted` directory of a desk.
 
-`http-api` includes a `thread` function which allows you to run threads through Eyre, and is [detailed below](#thread).
+`@urbit/http-api` includes a `thread()` function which allows you to run threads through Eyre, and is [detailed below](#thread).
 
-## `http-api` basics {#http-api-basics}
+## HTTP API basics {#http-api-basics}
+Now that we've covered the backend concepts, let's see how `@urbit/http-api` communicates with the server.
 
-The `http-api` module provides convenient functions to interact with a ship through Eyre. In this section we'll discuss the basics of how it works.
+### The `Urbit` class {#the-urbit-class}
 
-### Importing the module {#importing-the-module}
+All functionality is contained within the `Urbit` class. There are two ways to instantiate it, depending on whether your web app is served directly from the ship or whether it's served externally. The reason for the difference is that you require a session cookie to talk to the ship.
 
-The `http-api` module is available in npm as `@urbit/http-api`, and can be installed with:
+If your app is served from the ship, the user will already be logged in and they'll have a session cookie that the `Urbit` class will use automatically.
 
-```
-npm i @urbit/http-api
-```
+If your app isn't served from the ship, you'll need to authenticate with the user's ship, which is [detailed separately below](#authentication).
 
-Once installed, you can import it into your app with:
-
-```
-import Urbit from '@urbit/http-api';
-```
-
-Note that the examples in this guide are simple HTML documents with vanilla Javascript in `<script>` tags, so they use [unpkg.com](https://unpkg.com) to import `@urbit/http-api`. This is not typical, and is just done here for purposes of simplicity.
-
-### `Urbit` {#urbit}
-
-All functionality is contained within the `Urbit` class. There are two ways to instantiate it, depending on whether your web app is served directly from the ship or whether it's served externally. The reason for the difference is that you require a session cookie to talk to the ship. If your app is served from the ship, the user will already have a cookie. If it's not, they'll need to authenticate, which is [detailed separately below](#authentication).
-
-In the case of a front-end served from the ship, the `Urbit` class contains a `constructor` which takes three arguments:
+In the case of a frontend served from the ship, the `Urbit` class contains a `constructor` which takes 1-3 arguments:
 
 | Argument | Type     | Description                                                                                                                                                                                                                         | Example                                   |
 | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| `url`    | `string` | The host of the ship without the protocol. This is mandatory but would typically be left blank as requests will still work if they're root-relative paths.                                                                          | `"example.com"`, `"localhost:8080"`, `""` |
-| `code`   | `string` | The web login code of the ship. You'll typically use this constructor when it's served directly from the ship and therefore you'll already have a session cookie, so this field is optional and is typically omitted or left empty. | `""`, `"lidlut-tabwed-pillex-ridrup"`     |
-| `desk`   | `string` | The desk on which you want to run threads. This field is optional and is only used if you want to run threads, no other function uses it. If you're not running threads, you can omit it or leave it empty.                         | `"landscape"`, `""`                       |
+| `url`    | `string` | The host of the ship. This string is mandatory, but is typically left empty as requests will still work if they're root-relative paths.                                                                          | `"example.com"`, `"http://localhost:8080"`, `""` |
+| `code`   | `string` | (Optional.) The web login code of the ship. Not needed if your frontend is served from the ship. In practice this should never be set by the frontend (if you need the user to log into their ship, use EAuth), but if you had to you'd want to import this from a secure environment variable to avoid putting it in the source code. | `""`, `"lidlut-tabwed-pillex-ridrup"`     |
+| `desk`   | `string` | (Optional.) The desk on which you want to run threads. This is only used if you want to run threads from the frontend, rather than run them from the agent.                         | `"landscape"`, `""`                       |
 
 To create an `Urbit` instance, you can simply do:
 
@@ -106,13 +93,13 @@ const api = new Urbit("", "", "landscape");
 
 ### `/session.js` {#sessionjs}
 
-Most functions of the `Urbit` class need to know the ship name or they will fail. This is given explicitly with the external authentication method [detailed below](#authentication), but not when using the `Urbit` constructor in a web app served directly from the ship. Rather than having the user manually enter it, Urbit ships serve a JS library at `/session.js` that contains the following:
+Most functions of the `Urbit` class need to know the ship's Urbit ID or they will fail. This is given explicitly with the external authentication method [detailed below](#authentication), but that's unnecessary when using the `Urbit` constructor in a web app served directly from the ship, because the ship serves a JS library at `/session.js` that contains the following:
 
 ```javascript
 window.ship = "zod";
 ```
 
-`"zod"` will be replaced with the actual name of the ship in question. You can include this file like:
+`"zod"` will be replaced with the actual name of the ship in question. You can import this file like so:
 
 ```
 <script src="/session.js"></script>
@@ -129,37 +116,340 @@ api.ship = window.ship;
 
 With the exception of scries and threads, all communication with Eyre happens through its channel system.
 
-The `Urbit` object will generate a random channel ID that looks like `1646295453-e1bdfd`, and use a path of `/~/channel/1646295453-e1bdfd` for channel communications. Pokes will and subscription requests will be sent to that channel. Responses and subscription updates will be sent out to you on that channel too.
+When it's constructed, the `Urbit` object will generate a random channel ID like `1646295453-e1bdfd`, and use a path of `/~/channel/1646295453-e1bdfd` to talk to Eyre. Pokes and subscription requests will be sent to that channel. Responses and subscription updates will be sent out to the frontend on that channel too.
 
-Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for the channel. The `Urbit` object handles this internally with an `eventSource` object, but you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit` object handles event acknowledgement automatically, so you don't need to worry about this.
+Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for that channel. The `Urbit` object handles this internally with an `eventSource` object, so you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit` object handles event acknowledgement automatically.
 
-Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[a new channel ID]`. If your web app is served external to the ship and you use the `authenticate` function [described below](#authentication), the function will automatically send a poke and open the channel. If your web app is served directly from the ship and you use `Urbit` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
+Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[unknown-channel-id]`. If your web app is served outside a ship, you could use the `authenticate()` function [described below](#authentication) which will automatically send a poke and open the new channel. If your web app is served directly from the ship and you use the `Urbit` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
 
 ### Connection state {#connection-state}
 
-`Urbit` class includes three optional callbacks that fire when the SSE connection state changes:
+The `Urbit` class constructor includes three optional callback functions that fire when the SSE connection state changes:
 
-| Callback        | Description                                                                                                               |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `Urbit.onOpen`  | Called when an SSE channel connection is successfully established.                                                        |
-| `Urbit.onRetry` | This is called whenever a reconnection attempt is made due to an interruption, for example if there are network problems. |
-| `Urbit.onError` | This is called when there is an unrecoverable error, for example after enough reconnection attemps have failed.           |
+| Callback        | Description                                                                                                                 |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `Urbit.onOpen()`  | Called when an SSE channel connection is successfully established.                                                        |
+| `Urbit.onRetry()` | Called when a reconnection attempt is made due to an interruption, e.g. if there are network problems.                    |
+| `Urbit.onError()` | Called when there is an unrecoverable error, e.g. after enough reconnection attemps have failed.                          |
 
-As mentioned in the previous section, typically a channel will be opened and an SSE connection established after you first poke the ship or make a subscription request. If successful, whatever function you provided to `onOpen` will be called. If at some point the connection is interrupted, a reconnection attempt will be made three times:
+As mentioned in the previous section, typically a channel will be opened and an SSE connection established after you first poke the ship or make a subscription request. If successful, whatever function you provided to `onOpen()` will be called. If at some point the connection is interrupted, a reconnection attempt will be made three times:
 
 1. Instantly.
 2. 750ms after the first.
 3. 3000ms after the second.
 
-Each attempt will call the function you provided to `onRetry`, if any. If all three reconnection attempts failed, or if a fatal error occurred, the function you provided `onError` will be called with an `Error` object containing an error message as its argument.
+Each attempt will call the function you provided to `onRetry()`, if any. If all three reconnection attempts failed, or if a fatal error occurred, the function you provided `onError()` will be called with an `Error` object containing an error message as its argument.
 
-How you use these (if you do at all) is up to you and depends on the nature of your app. If you want to try reconnecting when `onError` fires, note that Eyre will delete a channel if it's had no messages from the client in the last 12 hours. The timeout is reset whenever it receives a message, including the acks that are automatically sent by the `Urbit` object in response to subscription updates.
+How you use these, if at all, is up to you. If you want to try reconnecting when `onError()` fires, note that Eyre will delete a channel if it's had no messages from the client in the last 12 hours. The timeout is reset whenever it receives a message, including the acks that are automatically sent by the `Urbit` object in response to subscription updates.
 
-If you don't want to account for the possibility of the channel having been deleted in your app's logic, you can also just call the [`reset()`](#reset) function before you try reconnecting and consequently open a brand new channel.
+If you don't want to account for the possibility of the channel having been deleted, you can just call the [`reset()`](#reset) function before you try reconnecting and consequently open a brand new channel.
 
-### Authentication {#authentication}
+## Tutorial setup {#tutorial-setup}
 
-**If your front-end is served directly from the Urbit ship, this step can be skipped.** If your web app is served externally to the ship, you must authenticate and obtain a session cookie before commencing communications with the ship.
+Start a fake ~zod and we'll add a Gall agent to its `%base` desk. This agent will store a trivial key-value database. It will provide endpoints for pokes, scries, and subscriptions. We'll define its poke and update types in a `/sur` file, and create marks that convert those types to and from JSON. We'll use `@urbit/http-api` to interact with the agent.
+
+### Types {#types}
+
+In the `/sur` folder of the `%base` desk, create a file `/api-demo.hoon` and define the following types:
+- `$api-action`: User actions sent from the frontend to the Gall agent. We just want to put new k-v pairs into the state, and delete them by their keys.
+- `$api-update`: Updates sent from the Gall agent to the frontend. Updates tagged with `%store` will contain the entire updated k-v store. Updates tagged with `%key-value` will contain one key and a unit of a value.
+
+```hoon
+|%
++$  api-action
+  $%  [%put key=@tas val=@t]
+      [%del key=@tas]
+  ==
++$  api-update
+  $%  [%store store=(map @tas @t)]
+      [%key-value key=@tas val=(unit @t)]
+  ==
+--
+```
+
+### Marks {#marks}
+
+In the `/mar` folder of the `%base` desk, create two new files `/api-action.hoon` and `/api-update.hoon`. Both of these marks will contain functions for converting their respective types in `/sur` to and from JSON. Don't worry if you don't understand every line of this.
+
+{% code title="/mar/api-action.hoon" overflow="nowrap" lineNumbers="true" %}
+
+```hoon
+/-  *api-demo
+|_  act=api-action
+++  grab
+  |%
+  ++  noun  api-action
+  ++  json
+    |=  jon=^json
+    %-  api-action
+    =,  format
+    %.  jon
+    %-  of:dejs
+    :~  :-  %put
+        %-  ot:dejs
+        :~  [%key (se:dejs %tas)]
+            [%val so:dejs]
+        ==
+        :-  %del
+        %-  ot:dejs
+        :~  [%key (se:dejs %tas)]
+        ==
+    ==
+  --
+++  grow
+  |%
+  ++  noun  act
+  ++  json
+    ^-  ^json
+    =,  format
+    ?-  -.act
+        %put
+      %-  frond:enjs
+      :-  'put'
+      %-  pairs:enjs
+      :~  ['key' [%s key.act]]
+          ['val' [%s val.act]]
+      ==
+    ::
+        %del
+      %-  frond:enjs
+      :-  'del'
+      %-  frond:enjs
+      :-  'key'
+      [%s key.act]
+    ==
+  --
+++  grad  %noun
+--
+```
+
+{% endcode %}
+
+{% code title="/mar/api-update.hoon" overflow="nowrap" lineNumbers="true" %}
+
+```hoon
+/-  *api-demo
+|_  upd=api-update
+++  grab
+  |%
+  ++  noun  api-update
+  --
+++  grow
+  |%
+  ++  noun  upd
+  ++  json
+    =,  format
+    ^-  ^json
+    ?-  -.upd
+        %store
+      %-  frond:enjs
+      :-  'store'
+      %-  pairs:enjs
+      %+  turn
+        ~(tap by store.upd)
+      |=  [k=@tas v=@t]
+      [(@t k) [%s v]]
+    ::
+        %key-value
+      %-  frond:enjs
+      :-  'key-value'
+      %-  pairs:enjs
+      :~  ['key' [%s (@t key.upd)]]
+          ['val' ?~(val.upd [%s ''] [%s u.val.upd])]
+      ==
+    ==
+  --
+++  grad  %noun
+--
+```
+
+{% endcode %}
+
+### Agent {#agent}
+
+In the `%base` desk's `/app` directory, create a new file called `/api-demo.hoon` and paste in the code below.
+
+{% code title="/app/api-demo.hoon" overflow="nowrap" lineNumbers="true" %}
+
+```hoon
+/-  *api-demo
+/+  default-agent, dbug
+::
+|%
++$  card  card:agent:gall
++$  versioned-state
+  $%  state-0
+  ==
++$  state-0
+  $:  %0
+      store=(map @tas @t)
+  ==
+--
+::
+%-  agent:dbug
+=|  state-0
+=*  state  -
+::
+^-  agent:gall
+|_  =bowl:gall
++*  this  .
+    def   ~(. (default-agent this %.n) bowl)
+::
+++  on-init
+  ^-  (quip card _this)
+  :-  ~
+  %=  this
+    state  [%0 ~]
+  ==
+::
+++  on-save  !>(state)
+++  on-load
+  |=  old-state=vase
+  ^-  (quip card _this)
+  =/  old  !<(versioned-state old-state)
+  ?-  -.old
+      %0  `this(state old)
+  ==
+::
+++  on-poke
+  |=  [=mark =vase]
+  ^-  (quip card _this)
+  ?+  mark
+    (on-poke:def mark vase)
+  ::
+      %api-action
+    =/  act  !<(api-action vase)
+    ?-  -.act
+        %put
+      ~&  >  "api-demo: putting [{<key.act>} {<val.act>}]"
+      =/  new-store
+        (~(put by store) key.act val.act)
+      :_  %=  this
+            store  new-store
+          ==
+      :~  :*  %give
+              %fact
+              [/updates]~
+              %api-update
+              !>  ^-  api-update
+              [%store new-store]
+          ==
+          :*  %give
+              %fact
+              [(welp /updates [key.act]~)]~
+              %api-update
+              !>  ^-  api-update
+              [%key-value key.act (some val.act)]
+          ==
+      ==
+    ::
+        %del
+      ~&  >  "api-demo: deleting {<key.act>}"
+      :_  %=  this
+            store  (~(del by store) key.act)
+          ==
+      :~  :*  %give
+              %fact
+              [(welp /updates [key.act]~)]~
+              %api-update
+              !>  ^-  api-update
+              [%key-value key.act ~]
+          ==
+      ==
+    ==
+  ==
+::
+++  on-watch
+  |=  =(pole knot)
+  ^-  (quip card _this)
+  ?+  pole
+    (on-watch:def pole)
+  ::
+      [%updates ~]
+    ~&  >  "api-demo: subscribed to /updates"
+    :_  this
+    :~  :*  %give
+            %fact
+            ~
+            %api-update
+            !>  ^-  api-update
+            [%store store]
+        ==
+    ==
+  ::
+      [%updates key=@tas ~]
+    ~&  >  "api-demo: subscribed to {<`path`(welp /updates [key.pole]~)>}"
+    :_  this
+    :~  :*  %give
+            %fact
+            ~
+            %api-update
+            !>  ^-  api-update
+            [%key-value key.pole (~(get by store) key.pole)]
+        ==
+    ==
+  ==
+::
+++  on-peek
+  |=  =(pole knot)
+  ^-  (unit (unit cage))
+  ~&  >  "api-demo: scry on {<`path`pole>}"
+  ?+  pole
+    (on-peek:def pole)
+  ::
+      [%x %store ~]
+    %-  some
+    %-  some
+    :-  %api-update
+    !>  ^-  api-update
+    [%store store]
+  ::
+      [%x %store key=@tas ~]
+    %-  some
+    %-  some
+    :-  %api-update
+    !>  ^-  api-update
+    [%key-value key.pole (~(get by store) key.pole)]
+  ==
+::
+++  on-leave
+  |=  =(pole knot)
+  ~&  >  "api-demo: unsubscribed from {<`path`pole>}"
+  `this
+::
+++  on-agent  on-agent:def
+++  on-arvo   on-arvo:def
+++  on-fail   on-fail:def
+--
+```
+
+{% endcode %}
+
+### Committing the code {#committing-the-code}
+Finally, run `|commit %base` in the ship's dojo to commit your changes to the desk, then run `|start %api-demo` to initialise the agent.
+
+## Using the HTTP API {#using-the-http-api}
+lorem ipsum
+
+### Importing the HTTP API {#importing-the-http-api}
+The `http-api` module is available in npm as `@urbit/http-api`, and can be installed with:
+
+```
+npm i @urbit/http-api
+```
+
+Once installed, you can import it into your app with:
+
+```
+import Urbit from '@urbit/http-api';
+```
+
+Note that the examples in this guide are simple HTML documents with vanilla Javascript in `<script>` tags, so they use [unpkg.com](https://unpkg.com) to import `@urbit/http-api`. This is not typical, and is just done here for purposes of simplicity.
+
+### Authenticate {#authenticate}
+**If your frontend is served directly from the Urbit ship, this can be skipped.**
+
+If your web app is served externally to the ship, you must authenticate and obtain a session cookie before commencing communications with the ship.
 
 The `Urbit` class in `http-api` includes an `authenticate` function which does the following:
 
@@ -172,13 +462,15 @@ The `authenticate` function takes four arguments in an object: `ship`, `url`, `c
 | Argument  | Type      | Description                                                                            | Example                           |
 | --------- | --------- | -------------------------------------------------------------------------------------- | --------------------------------- |
 | `ship`    | `string`  | The ship ID (`@p`) without the leading `~`.                                            | `"sampel-palnet"` or `"zod"`      |
-| `url`     | `string`  | The base URL for the ship without the protocol.                                        | `localhost:8080` or `example.com` |
+| `url`     | `string`  | The base URL for the ship.                                        | `http://localhost:8080` or `example.com` |
 | `code`    | `string`  | The user's web login code.                                                             | `"lidlut-tabwed-pillex-ridrup"`   |
 | `verbose` | `boolean` | Whether to log details to the console. This field is optional and defaults to `false`. | `true`                            |
 
 This function returns a promise that if successful, produces an `Urbit` object which can then be used for communications with the ship.
 
-**Note:** An Urbit ship will deny CORS requests from external URLs by default. In order to run the examples below, you'll need to serve them from a URL (with Python's http-server module, for example) and approve that URL in the dojo. If serving the example page from `http://localhost:8000`, you'll need to run:
+#### CORS approval {#cors-approval}
+
+An Urbit ship will deny CORS requests from external URLs by default. **In order to run the examples below, you'll need to serve them from a URL (for example, with Python's http-server module) and approve that URL in the ship's dojo.** If serving the example page from `http://localhost:8000`, you'll need to run:
 
 ```
 |eyre/cors/approve 'http://localhost:8000'
@@ -186,9 +478,9 @@ This function returns a promise that if successful, produces an `Urbit` object w
 
 #### Example
 
-Here's a simple example that will run `authenticate` for a fakezod when the _Connect_ button is pressed:
+{% code title="auth-test.html" overflow="nowrap" lineNumbers="true" %}
 
-```
+```html
 <html>
   <head>
     <script src="https://unpkg.com/@urbit/http-api"></script>
@@ -200,7 +492,7 @@ Here's a simple example that will run `authenticate` for a fakezod when the _Con
     async function connect() {
       window.api = await UrbitHttpApi.Urbit.authenticate({
           ship: "zod",
-          url: "localhost:8080",
+          url: "http://localhost:8080",
           code: "lidlut-tabwed-pillex-ridrup",
           verbose: true
       });
@@ -210,14 +502,9 @@ Here's a simple example that will run `authenticate` for a fakezod when the _Con
 </html>
 ```
 
-`window.api` can then be used for further communications.
-
-## Functions {#functions}
-
-The various functions you can use in the `Urbit` object are described below.
+{% endcode %}
 
 ### Poke {#poke}
-
 For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. The `poke` function takes six arguments in a object:
 
 | Argument    | Type        | Description                                                                                                                  | Example                 |
@@ -231,63 +518,232 @@ For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. T
 
 #### Example
 
-This example lets you "hi" your ship with a given message, which will be printed in the terminal. It pokes the `hood` agent (the system agent) with a `helm-hi` mark. The `json` argument just contains the message in a string. If for some reason the `hood` agent rejects the poke, "Poke failed!" will be displayed on the page.
+{% code title="poke-test.html" overflow="nowrap" lineNumbers="true" %}
 
-```
+```html
 <html>
   <head>
     <script src="https://unpkg.com/@urbit/http-api"></script>
-    <script src="/session.js"></script>
   </head>
   <body>
-    <input id="msg" type="text" placeholder="Message for ship" />
-    <button id="submit" type="button" onClick="doPoke()">Submit</button>
+    <h2>HTTP API - Pokes</h2>
+    <br>
+    <div>
+      <input id="put-key" type="text" placeholder="Key" />
+      <input id="put-value" type="text" placeholder="Value" />
+      <button id="put-button" type="button" onClick="putByKey()">Store Value</button>
+    </div>
+    <br>
+    <div>
+      <input id="del-key" type="text" placeholder="Key to delete" />
+      <button id="del-button" type="button" onClick="delByKey()">Delete Value</button>
+    </div>
+    <br>
     <p id="status"></p>
   </body>
   <script>
-    document.getElementById("msg").addEventListener("keyup", function (event) {
-      if (event.keyCode === 13) {
-        document.getElementById("submit").click();
-      }
-    });
-
     const api = new UrbitHttpApi.Urbit("");
     api.ship = "zod";
     api.url = "http://localhost:8080";
     api.code = "lidlut-tabwed-pillex-ridrup";
 
-    function doPoke() {
-      const msg = document.getElementById("msg").value;
+    function putByKey() {
+      const key = document.getElementById("put-key").value;
+      const value = document.getElementById("put-value").value;
+      
+      if (!key) {
+        document.getElementById("status").innerHTML = "Error: Key is required";
+        return;
+      }
+
+      if (!value) {
+        document.getElementById("status").innerHTML = "Error: Value is required for deletion";
+        return;
+      }
 
       try {
+        console.log(key)
+        console.log(value)
+
         api.poke({
-          app: "hood",
-          mark: "helm-hi",
-          json: msg,
-          onSuccess: success,
-          onError: error,
+          app: "api-demo",
+          mark: "api-action",
+          json: { put: { key: key, val: value } },
+          onSuccess: pokeSuccess,
+          onError: pokeError,
         });
       } catch (err) {
-        document.getElementById("status").innerHTML =
-          "Poke error: " + err.message;
+        document.getElementById("status").innerHTML = "Poke error: " + err.message;
       }
     }
 
-    function success() {
-      document.getElementById("msg").value = "";
-      document.getElementById("status").innerHTML = "Poke succeeded!";
+    function delByKey() {
+      const key = document.getElementById("del-key").value;
+
+      if (!key) {
+        document.getElementById("status").innerHTML = "Error: Key is required for deletion";
+        return;
+      }
+
+      try {
+        api.poke({
+          app: "api-demo",
+          mark: "api-action",
+          json: { del: { key: key } },
+          onSuccess: successDelete,
+          onError: pokeError,
+        });
+      } catch (err) {
+        document.getElementById("status").innerHTML = "Poke error: " + err.message;
+      }
     }
 
-    function error(err) {
-      document.getElementById("msg").value = "";
-      document.getElementById("status").innerHTML = "Poke failed!";
+    function pokeSuccess() {
+      document.getElementById("put-key").value = "";
+      document.getElementById("put-value").value = "";
+      document.getElementById("del-key").value = "";
+      document.getElementById("status").innerHTML = "Value stored successfully!";
+    }
+
+    function successDelete() {
+      document.getElementById("put-key").value = "";
+      document.getElementById("put-value").value = "";
+      document.getElementById("del-key").value = "";
+      document.getElementById("status").innerHTML = "Value deleted successfully!";
+    }
+
+    function pokeError() {
+      document.getElementById("status").innerHTML = "Poke failed, see dojo";
     }
   </script>
 </html>
 ```
 
-### Subscribe and Unsubscribe {#subscribe}
+{% endcode %}
 
+### Scry {#scry}
+To scry agents on the ship, the `Urbit` class in `http-api` includes a `scry` function. The `scry` function takes two arguments in a object:
+
+| Argument | Type     | Description                        | Example         |
+| -------- | -------- | ---------------------------------- | --------------- |
+| `app`    | `string` | The agent to scry.                 | `"graph-store"` |
+| `path`   | `string` | The path to scry, sans the `care`. | `"/keys"`       |
+
+The `scry` function returns a promise that, if successful, contains the requested data as JSON. If the scry failed, for example due to a non-existent scry endpoint, connection problem, or mark conversion failure, the promise will fail.
+
+#### Example
+
+{% code title="scry-test.html" overflow="nowrap" lineNumbers="true" %}
+
+```html
+<html>
+  <head>
+    <script src="https://unpkg.com/@urbit/http-api"></script>
+  </head>
+  <body>
+    <h1>HTTP API - Scry Endpoints</h1>
+    <div>
+      <h2>Fetch entire store</h2>
+      <div>
+        <button
+          id="store-scry-btn"
+          type="button"
+          onClick="scryStore()"
+        >
+          Scry /store
+        </button>
+      </div>
+      <br />
+      <div id="store-status">No data requested yet</div>
+      <pre id="store-data">Results will appear here</pre>
+    </div>
+    <br />
+    <div>
+      <h2>Fetch a specific key</h2>
+      <input
+        id="key-input"
+        type="text"
+        placeholder="Enter key to fetch"
+      />
+      <div>
+      <br />
+        <button
+          id="key-scry-btn"
+          type="button"
+          onClick="scryKey()"
+        >
+          Scry key
+        </button>
+      </div>
+      <br />
+      <div id="key-status">No data requested yet</div>
+      <pre id="key-data">Results will appear here</pre>
+    </div>
+  </body>
+  <script>
+    const api = new UrbitHttpApi.Urbit("");
+    api.ship = "zod";
+    api.url = "http://localhost:8080";
+    api.code = "lidlut-tabwed-pillex-ridrup";
+
+    // Scry the entire store
+    async function scryStore() {
+      const statusEl = document.getElementById("store-status");
+      const dataEl = document.getElementById("store-data");
+      
+      statusEl.innerText = "Fetching data...";
+      
+      try {
+        const result = await api.scry({
+          app: "api-demo",
+          path: "/store"
+        });
+        
+        statusEl.innerText = "Data fetched successfully";
+        dataEl.innerText = JSON.stringify(result, null, 2);
+      } catch (err) {
+        statusEl.innerText = "Error fetching data";
+        dataEl.innerText = "Error: " + (err.message || "Unknown error");
+      }
+    }
+
+    // Scry a specific key
+    async function scryKey() {
+      const key = document.getElementById("key-input").value;
+      const statusEl = document.getElementById("key-status");
+      const dataEl = document.getElementById("key-data");
+      
+      if (!key) {
+        statusEl.innerText = "Error: Please enter a key";
+        return;
+      }
+      
+      statusEl.innerText = "Fetching data...";
+      
+      try {
+        const result = await api.scry({
+          app: "api-demo",
+          path: `/store/${key}`
+        });
+        
+        statusEl.innerText = "Data fetched successfully";
+        if (result === null) {
+          dataEl.innerText = "Key not found";
+        } else {
+          dataEl.innerText = JSON.stringify(result, null, 2);
+        }
+      } catch (err) {
+        statusEl.innerText = "Error fetching data";
+        dataEl.innerText = "Error: " + (err.message || "Unknown error");
+      }
+    }
+  </script>
+</html>
+```
+
+{% endcode %}
+
+### Subscribe and unsubscribe {#subscribe-and-unsubscribe}
 For subscribing to a particular path in an agent, the `Urbit` class in `http-api` includes a `subscribe` function. The `subscribe` function takes six arguments in a object:
 
 | Argument | Type        | Description                                                                                                                      | Example              |
@@ -307,53 +763,163 @@ If you wish to unsubscribe from a particular subscription, the `Urbit` class in 
 
 #### Example
 
-This example will, upon clicking the "Subscribe" button, subscribe to the `/updates` path of the `graph-store` agent, and print the raw JSON of each update it receives. You can test it by doing something like posting a message in a chat. You can also unsubscribe by clicking the "Unsubscribe" button.
+{% code title="subscribe-test.html" overflow="nowrap" lineNumbers="true" %}
 
-````
+```html
 <html>
   <head>
     <script src="https://unpkg.com/@urbit/http-api"></script>
-    <script src="/session.js"></script>
   </head>
   <body>
-    <button id="toggle" type="button" onClick="doSub()" >Subscribe</button>
-    <pre id="event">```
+    <h1>HTTP API - Subscriptions</h1>
+    <div>
+      <h2>Subscribe to the /updates wire</h2>
+      <div>
+        <button
+          id="store-sub-btn"
+          type="button"
+          onClick="toggleStoreSubscription()"
+        >
+          Subscribe to /updates
+        </button>
+      </div>
+      <br />
+      <div id="store-status">Not subscribed</div>
+      <pre id="store-data">No data yet</pre>
+    </div>
+    <br />
+    <div>
+      <h2>Subscribe to a wire for a specific key</h2>
+      <input
+        id="key-input"
+        type="text"
+        placeholder="Enter key to subscribe to"
+      />
+      <div>
+      <br />
+        <button
+          id="key-sub-btn"
+          type="button"
+          onClick="toggleKeySubscription()"
+        >
+          Subscribe to key
+        </button>
+      </div>
+      <br />
+      <div id="key-status">Not subscribed</div>
+      <pre id="key-data">No data yet</pre>
+    </div>
   </body>
   <script>
     const api = new UrbitHttpApi.Urbit("");
-    api.ship = window.ship;
-    const toggle = document.getElementById("toggle");
-    const event = document.getElementById("event");
-    function doSub() {
-      window.id = api.subscribe({
-        app: "graph-store",
-        path: "/updates",
-        event: printEvent,
-        quit: doSub,
-        err: subFail
-      });
-      toggle.innerHTML = "Unsubscribe";
-      toggle.onclick = doUnsub;
-      event.innerHTML = "Awaiting event";
-    };
-    function doUnsub() {
-      api.unsubscribe(window.id);
-      toggle.innerHTML = "Subscribe";
-      toggle.onclick = doSub;
-      event.innerHTML = "Subscription closed";
-    };
-    function printEvent(update) {
-      event.innerHTML = JSON.stringify(update, null, 2);
-    };
-    function subFail() {
-      event.innerHTML = "Subscription failed!";
-    };
+    api.ship = "zod";
+    api.url = "http://localhost:8080";
+    api.code = "lidlut-tabwed-pillex-ridrup";
+
+    let storeSubId = null;
+    let keySubId = null;
+    let keyName = null;
+
+    // Subscribe to all store updates
+    function toggleStoreSubscription() {
+      const statusEl = document.getElementById("store-status");
+      const btnEl = document.getElementById("store-sub-btn");
+      const dataEl = document.getElementById("store-data");
+
+      if (storeSubId === null) {
+        // Subscribe
+        statusEl.innerText = "Subscribing...";
+
+        storeSubId = api.subscribe({
+          app: "api-demo",
+          path: "/updates",
+          err: () => {
+            storeSubId = null;
+            statusEl.innerText = "Subscription failed!";
+            btnEl.innerText = "Subscribe to /updates";
+          },
+          event: (update) => {
+            statusEl.innerText = "Receiving updates";
+            dataEl.innerText = JSON.stringify(update, null, 2);
+          },
+          quit: () => {
+            storeSubId = null;
+            statusEl.innerText = "Kicked from subscription";
+            btnEl.innerText = "Subscribe to /updates";
+            dataEl.innerText = "No data - subscription ended";
+          },
+        });
+
+        btnEl.innerText = "Unsubscribe from /updates";
+        statusEl.innerText = "Subscribed, awaiting events...";
+      } else {
+        // Unsubscribe
+        api.unsubscribe(storeSubId);
+        storeSubId = null;
+        btnEl.innerText = "Subscribe to /updates";
+        statusEl.innerText = "Not subscribed";
+        dataEl.innerText = "No data - unsubscribed";
+      }
+    }
+
+    // Subscribe to a specific key
+    function toggleKeySubscription() {
+      const key = document.getElementById("key-input").value;
+      const statusEl = document.getElementById("key-status");
+      const btnEl = document.getElementById("key-sub-btn");
+      const dataEl = document.getElementById("key-data");
+
+      if (!key) {
+        statusEl.innerText = "Error: Please enter a key";
+        return;
+      }
+
+      if (keySubId === null) {
+        // Subscribe
+        statusEl.innerText = "Subscribing...";
+
+        keySubId = api.subscribe({
+          app: "api-demo",
+          path: `/updates/${key}`,
+          err: () => {
+            keySubId = null;
+            keyName = null;
+            statusEl.innerText = "Subscription failed!";
+            btnEl.innerText = "Subscribe to key";
+          },
+          event: (update) => {
+            statusEl.innerText = "Receiving updates";
+            dataEl.innerText = JSON.stringify(update, null, 2);
+          },
+          quit: () => {
+            keySubId = null;
+            keyName = null;
+            statusEl.innerText = "Kicked from subscription";
+            btnEl.innerText = "Subscribe to key";
+            dataEl.innerText = "No data";
+          },
+        });
+
+        keyName = key;
+        btnEl.innerText = `Unsubscribe from ${key}`;
+        statusEl.innerText = "Subscribed, awaiting events...";
+      } else {
+        // Unsubscribe
+        api.unsubscribe(keySubId);
+        keySubId = null;
+        keyName = null;
+        btnEl.innerText = "Subscribe to key";
+        statusEl.innerText = "Unsubscribed";
+        dataEl.innerText = "No data";
+      }
+    }
   </script>
 </html>
-````
+```
 
-### Subscribe Once {#subscribe-once}
+{% endcode %}
 
+### Subscribe once {#subscribe-once}
 The `subscribeOnce` function in the `Urbit` class of `http-api` is a variation on the ordinary [`subscribe`](#subscribe) function. Rather than keeping the subscription going and receiving an arbitrary number of updates, instead it waits to receive a single update and then closes the subscription. This is useful if, for example, you send a poke and just want a response to that one poke.
 
 The `subscribeOnce` function also takes an optional `timeout` argument, which specifies the number of milliseconds to wait for an update before closing the subscription. If omitted, `subscribeOnce` will wait indefinitely.
@@ -370,76 +936,69 @@ The `subscribeOnce` function also takes an optional `timeout` argument, which sp
 
 #### Example
 
-Here's a variation on the ordinary [subscribe](#subscribe) function. Rather than printing every `graph-store` update it receives, it will instead just print the first one it receives and close the subscription. Additionally, it sets a five second timeout, and prints an error message if it times out.
+{% code title="auth-test.html" overflow="nowrap" lineNumbers="true" %}
 
-````
+```html
 <html>
   <head>
     <script src="https://unpkg.com/@urbit/http-api"></script>
-    <script src="/session.js"></script>
   </head>
   <body>
-    <button type="button" onClick="doSub()" >Subscribe Once</button>
-    <pre id="event">```
+    <h1>HTTP API - Subscribe Once</h1>
+    <div>
+      <h2>Subscribe once to the /updates wire</h2>
+      <div>
+        <button
+          id="store-sub-btn"
+          type="button"
+          onClick="subscribeOnceToStore()"
+        >
+          Subscribe to /updates and unsubscribe
+        </button>
+      </div>
+      <br />
+      <div id="store-status">No data requested yet</div>
+      <pre id="store-data">Results will appear here</pre>
+    </div>
   </body>
   <script>
     const api = new UrbitHttpApi.Urbit("");
-    api.ship = window.ship;
-    const event = document.getElementById("event");
-    function doSub() {
-      event.innerHTML = "";
-      api.subscribeOnce("graph-store","/updates",5000)
-        .then(printEvent, noEvent);
-    };
-    function printEvent(update) {
-      event.innerHTML = JSON.stringify(update, null, 2);
-    };
-    function noEvent(error) {
-      event.innerHTML = error;
-    };
-  </script>
-</html>
-````
+    api.ship = "zod";
+    api.url = "http://localhost:8080";
+    api.code = "lidlut-tabwed-pillex-ridrup";
 
-### Scries {#scries}
+    // Subscribe once to all store updates
+    async function subscribeOnceToStore() {
+      const statusEl = document.getElementById("store-status");
+      const dataEl = document.getElementById("store-data");
 
-To scry agents on the ship, the `Urbit` class in `http-api` includes a `scry` function. The `scry` function takes two arguments in a object:
+      statusEl.innerText = "Subscribing once...";
+      dataEl.innerText = "Waiting for one update...";
 
-| Argument | Type     | Description                        | Example         |
-| -------- | -------- | ---------------------------------- | --------------- |
-| `app`    | `string` | The agent to scry.                 | `"graph-store"` |
-| `path`   | `string` | The path to scry, sans the `care`. | `"/keys"`       |
-
-The `scry` function returns a promise that, if successful, contains the requested data as JSON. If the scry failed, for example due to a non-existent scry endpoint, connection problem, or mark conversion failure, the promise will fail.
-
-#### Example
-
-Upon pressing the "Scry Graphs" button, this example will scry the `graph-store` agent's `/keys` endpoint for the list of graphs, and print the resulting JSON data.
-
-````
-<html>
-  <head>
-    <script src="https://unpkg.com/@urbit/http-api"></script>
-    <script src="/session.js"></script>
-  </head>
-  <body>
-    <button id="scry" type="button" onClick="doScry()" >Scry Graphs</button>
-    <pre id="result">```
-  </body>
-  <script>
-    const api = new UrbitHttpApi.Urbit("");
-    api.ship = window.ship;
-    async function doScry() {
-      var groups = await api.scry({app: "graph-store", path: "/keys"});
-      document.getElementById("result")
-        .innerHTML = JSON.stringify(groups, null, 2);
+      try {
+        const result = await api.subscribeOnce("api-demo", "/updates", 5000);
+        statusEl.innerText = "Received one update and closed subscription";
+        dataEl.innerText = JSON.stringify(result, null, 2);
+      } catch (err) {
+        if (err === "timeout") {
+          statusEl.innerText = "Subscription timed out";
+          dataEl.innerText = "No update received within the timeout period";
+        } else if (err === "quit") {
+          statusEl.innerText = "Kicked from subscription";
+          dataEl.innerText = "The agent kicked us from the subscription";
+        } else {
+          statusEl.innerText = "Subscription error";
+          dataEl.innerText = "Error: " + (err.message || "Unknown error");
+        }
+      }
     }
   </script>
 </html>
-````
+```
 
-### Thread {#thread}
+{% endcode %}
 
+### Run a thread {#run-a-thread}
 To run a thread, the `Urbit` class in `http-api` includes a `thread` function. The `thread` function takes five arguments in an object:
 
 | Argument     | Type     | Description                                                                                                   | Example                 |
@@ -454,80 +1013,82 @@ The `thread` function will produce a promise that, if successful, contains the J
 
 #### Example
 
-This example takes a hoon expression (such as `(add 1 1)`), evalutes it with the `graph-eval` thread in the `landscape` desk, and prints the result.
+{% code title="thread-test.html" overflow="nowrap" lineNumbers="true" %}
 
-````
+```html
 <html>
   <head>
     <script src="https://unpkg.com/@urbit/http-api"></script>
-    <script src="/session.js"></script>
   </head>
   <body>
-    <input id="hoon" type="text" placeholder="Hoon to evaluate" />
-    <button id="submit" type="button" onClick="runThread()" >Submit</button>
-    <pre id="expr">```
-    <pre id="result">```
+    <h1>HTTP API - Threads</h1>
+    <div>
+      <h2>Run the "hi" thread in %base</h2>
+      <div>
+        <input id="name-input" type="text" placeholder="~bud" />
+        <br />
+        <br />
+        <button id="run-thread-btn" type="button" onClick="runHiThread()">
+          Say hi
+        </button>
+      </div>
+      <br />
+      <div id="thread-status">No thread run yet</div>
+      <pre id="thread-result">Results will appear here</pre>
+    </div>
   </body>
   <script>
-    document.getElementById("hoon")
-      .addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) {
-          document.getElementById("submit").click();
+    const api = new UrbitHttpApi.Urbit("");
+    api.ship = "zod";
+    api.desk = "base";
+    api.url = "http://localhost:8080";
+    api.code = "lidlut-tabwed-pillex-ridrup";
+
+    async function runHiThread() {
+      const name = document.getElementById("name-input").value;
+      const statusEl = document.getElementById("thread-status");
+      const resultEl = document.getElementById("thread-result");
+
+      if (!name) {
+        statusEl.innerText = "Input cannot be empty";
+        return;
+      }
+
+      statusEl.innerText = "Running thread...";
+      resultEl.innerText = "Waiting for thread to complete...";
+
+      try {
+        const result = await api.thread({
+          inputMark: "ship",
+          outputMark: "tang",
+          threadName: "hi",
+          body: name,
+        });
+
+        if (result) {
+          statusEl.innerText = "Thread completed!";
+          resultEl.innerText = "Check the recipient's dojo";
         }
-      });
-    const hoon = document.getElementById("hoon");
-    const expr = document.getElementById("expr");
-    const result = document.getElementById("result");
-    const desk = "landscape";
-    const api = new UrbitHttpApi.Urbit("", "", desk);
-    api.ship = window.ship;
-    async function runThread() {
-      const threadResult = await api.thread({
-        inputMark: "graph-view-action",
-        outputMark: "tang",
-        threadName: "graph-eval",
-        body: {eval: hoon.value}
-      });
-      result.innerHTML = threadResult[0].join("\n");
-      expr.innerHTML = hoon.value;
-      hoon.value = "";
-    };
+      } catch (err) {
+        statusEl.innerText = "Thread error";
+        resultEl.innerText = "Error: " + (err.message || "Unknown error");
+      }
+    }
   </script>
 </html>
-````
+```
 
-### Delete Channel {#delete-channel}
+{% endcode %}
 
-Rather than just closing individual subscriptions, the entire channel can be closed with the `delete` function in the `Urbit` class of `http-api`. The function takes no arguments, and can be called like `api.cancel()` (replacing `api` with whatever you've named the `Urbit` object you previously instantiated). When a channel is closed, all subscriptions will be cancelled and all pending updates will be discarded.
+### Delete a channel {#delete-a-channel}
+Rather than just closing individual subscriptions, the entire channel can be closed with the `delete()` function in the `Urbit` class of `@urbit/http-api`. When a channel is closed, all subscriptions are cancelled and all pending updates are discarded. The function takes no arguments, and can be called like `api.cancel()`.
 
 ### Reset {#reset}
-
-An existing instance of `http-api`'s `Urbit` class can be reset with its `reset` function. This function takes no arguments, and can be called like `api.reset()` (replacing `api` with whatever you've named the `Urbit` object you previously instantiated). When called, the channel will be closed and all subscriptions cancelled. Additionally, all outstanding outbound pokes will be discarded and a fresh channel ID will be generated.
+An existing instance of `Urbit` class can be reset with its `reset()` function. This function takes no arguments, and can be called like `api.reset()`. When a channel is reset, all subscriptions are cancelled and all pending updates are discarded. Additionally, all outstanding outbound pokes to the agent will be discarded, and a fresh channel ID will be generated.
 
 ## Further reading {#further-reading}
 
+- [`@urbit/http-api` on Github][http-api-src] - The source code for the JS HTTP API package.
 - [Eyre External API Reference][eyre-ext-ref] - Lower-level documentation of Eyre's external API.
 - [Eyre Guide][eyre-guide] - Lower-level examples of using Eyre's external API with `curl`.
-- [`http-api` on Github][http-api-src] - The source code for `@urbit/http-api`.
 
-## Examples {#examples}
-
-Here are some examples which make use of `@urbit/http-api` that might be useful as a reference:
-
-- [Bitcoin Wallet](https://github.com/urbit/bitcoin-wallet)
-- [Web Terminal](https://github.com/urbit/urbit/tree/master/pkg/interface/webterm)
-- [UrChatFM](https://github.com/urbit/urbit-webrtc/tree/master/urchatfm)
-
-[eyre-ext-ref]: /system/kernel/eyre/reference/external-api-ref
-[eyre-guide]: /system/kernel/eyre/guides/guide
-[http-api-src]: https://github.com/urbit/js-http-api
-[eyre]: /glossary/eyre
-[vane]: /glossary/vane
-[arvo]: /glossary/arvo
-[hoon]: /glossary/hoon
-[gall]: /glossary/gall
-[clay]: /glossary/clay
-[desk]: /glossary/desk
-[mark]: /glossary/mark
-[sse]: https://html.spec.whatwg.org/#server-sent-events
-[@urbit/http-api]: https://github.com/urbit/urbit/tree/master/pkg/npm/http-api

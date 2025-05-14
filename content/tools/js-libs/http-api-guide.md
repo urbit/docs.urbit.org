@@ -71,7 +71,7 @@ If your app is served from the ship, the user will already be logged in and they
 
 If your app isn't served from the ship, you'll need to authenticate with the user's ship, which is [detailed separately below](#authenticate).
 
-In the case of a frontend served from the ship, the `Urbit()` class contains a `constructor` which takes 1-3 arguments:
+In the case of a frontend served from the ship, the `Urbit()` class contains a constructor which takes 1-3 arguments:
 
 | Argument | Type     | Description                                                                                                                                                                                                                         | Example                                   |
 | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |

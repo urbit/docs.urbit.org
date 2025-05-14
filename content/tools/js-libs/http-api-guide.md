@@ -101,7 +101,7 @@ window.ship = "zod";
 
 `"zod"` will be replaced with the actual name of the ship in question. You can import this file like so:
 
-```
+```html
 <script src="/session.js"></script>
 ```
 
@@ -446,7 +446,7 @@ npm i @urbit/http-api
 
 Once installed, you can import it into your app with:
 
-```
+```javascript
 import Urbit from '@urbit/http-api';
 ```
 

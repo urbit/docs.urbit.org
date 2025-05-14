@@ -98,50 +98,54 @@ You can do even better using _interpolation_:
 ==
 ```
 
+{% hint style="info" %}
+
 ### Exercise:  Calculate a Factorial {#exercise-calculate-a-factorial}
 
-- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$.  We will introduce a couple of new bits of syntax and a new gate ([++dec](../../language/hoon/reference/stdlib/1a.md#dec)).  Make this into a generator `factorial.hoon`:
+Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html).  The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$.  We will introduce a couple of new bits of syntax and a new gate ([++dec](../../language/hoon/reference/stdlib/1a.md#dec)).  Make this into a generator `factorial.hoon`:
 
-    ```hoon
-    |=  n=@ud
-    |-
-    ~&  n
-    ?:  =(n 1)
-      1
-    %+  mul
-      n
-    %=  $
-      n  (dec n)
-    ==
-    ```
+```hoon
+|=  n=@ud
+|-
+~&  n
+?:  =(n 1)
+  1
+%+  mul
+  n
+%=  $
+  n  (dec n)
+==
+```
 
-    - We are using the `=` irregular syntax for the `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis) rune, which tests for the equality of two expressions.
+- We are using the `=` irregular syntax for the `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis) rune, which tests for the equality of two expressions.
 
-    ```hoon
-    > +factorial 5
-    120
-    ```
+```hoon
+> +factorial 5
+120
+```
 
-    Let's visualize the operation of this gate using pseudocode (fake code that's explanatory but may not be operational).  Here's basically what's happening when `factorial` receives the value `5`:
+Let's visualize the operation of this gate using pseudocode (fake code that's explanatory but may not be operational).  Here's basically what's happening when `factorial` receives the value `5`:
 
-    ```hoon
-    (factorial 5)
-    (mul 5 (factorial 4))
-    (mul 5 (mul 4 (factorial 3)))
-    (mul 5 (mul 4 (mul 3 (factorial 2))))
-    (mul 5 (mul 4 (mul 3 (mul 2 (factorial 1)))))
-    (mul 5 (mul 4 (mul 3 (mul 2 1))))
-    (mul 5 (mul 4 (mul 3 2)))
-    (mul 5 (mul 4 6))
-    (mul 5 24)
-    120
-    ```
+```hoon
+(factorial 5)
+(mul 5 (factorial 4))
+(mul 5 (mul 4 (factorial 3)))
+(mul 5 (mul 4 (mul 3 (factorial 2))))
+(mul 5 (mul 4 (mul 3 (mul 2 (factorial 1)))))
+(mul 5 (mul 4 (mul 3 (mul 2 1))))
+(mul 5 (mul 4 (mul 3 2)))
+(mul 5 (mul 4 6))
+(mul 5 24)
+120
+```
 
-    We're “floating” gate calls until we reach the final iteration of such calls that only produces a value.  The `mul n` component of the gate leaves `mul 5` waiting for the final series of terms to be operated upon.  The `%=($ n (dec n)))` component expands the expression outwards, as illustrated by `(factorial 4)`.  This continues until the expression is not expanded further, at which point the operations work backwards, successively feeding values into the `mul` functions behind them.
+We're “floating” gate calls until we reach the final iteration of such calls that only produces a value.  The `mul n` component of the gate leaves `mul 5` waiting for the final series of terms to be operated upon.  The `%=($ n (dec n)))` component expands the expression outwards, as illustrated by `(factorial 4)`.  This continues until the expression is not expanded further, at which point the operations work backwards, successively feeding values into the `mul` functions behind them.
 
-    The pyramid-shaped illustration approximates what's happening on the _call stack_, a memory structure that tracks the instructions of the program.  In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame.  This process continues until a value is produced instead of a function, completing the stack.
+The pyramid-shaped illustration approximates what's happening on the _call stack_, a memory structure that tracks the instructions of the program.  In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame.  This process continues until a value is produced instead of a function, completing the stack.
 
-    - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
+- Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
+
+{% endhint %}
 
 ### Exercise:  Tracking Expression Structure {#exercise-tracking-expression-structure}
 

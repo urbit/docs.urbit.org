@@ -23,7 +23,7 @@ While `%drum` talks with Dill in `$dill-belt`s and `$dill-blit`s, it talks to CL
 
 To give a basic idea of how keyboard events flow through these systems and produce terminal output, here's a diagram showing the messages in pseudo-Hoon:
 
-![Dill userspace diagram](https://media.urbit.org/docs/arvo/dill/dill-userspace.svg)
+![](https://media.urbit.org/docs/arvo/dill/dill-userspace.svg)
 
 You can use a [move trace](../arvo/guides/move-trace.md) to get a hands-on feel for this data flow.
 

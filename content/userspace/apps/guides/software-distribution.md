@@ -230,23 +230,23 @@ Open a web browser and navigate to `localhost:8080`, or just `localhost` if port
 
 Once you login, you'll notice you have the `Hello` app tile, but it still says "installing" because we haven't uploaded the glob yet:
 
-![hello installing tile](https://media.urbit.org/guides/additional/dist/2-installing.png)
+![](https://media.urbit.org/guides/additional/dist/2-installing.png)
 
 ## Upload to glob {#upload-to-glob}
 
 We can now create a glob from the `hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](../reference/dist/glob.md#globulator) tool:
 
-![Globulator](https://media.urbit.org/guides/additional/dist/2-globulator.png)
+![](https://media.urbit.org/guides/additional/dist/2-globulator.png)
 
 Simply select the `hello` desk from the drop-down, click `Choose file` and select the `hello-glob` folder in the the file browser, then hit `glob!`.
 
 Now if we return to our ship's homescreen, we should see the tile looks as we specified in the docket file:
 
-![Installed Tile](https://media.urbit.org/guides/additional/dist/2-installed-tile.png)
+![](https://media.urbit.org/guides/additional/dist/2-installed-tile.png)
 
 And if we click on the tile, it'll load the `index.html` in our glob:
 
-![Hello World!](https://media.urbit.org/guides/additional/dist/2-hello-world.png)
+![](https://media.urbit.org/guides/additional/dist/2-hello-world.png)
 
 Our app is working!
 
@@ -274,16 +274,16 @@ Note: For desks without a docket file (and therefore without a tile and glob), u
 
 In the browser, navigate to `localhost:8081` (or `localhost:8080` if that doesn't work)  and login with `~bus`'s code `riddec-bicrym-ridlev-pocsef`. Next, type `~zod` in the search bar and click on the matching result. It should pop up a list of `zod`'s published apps, which in this case is our `Hello` app:
 
-![Remote install search](https://media.urbit.org/guides/additional/dist/2-zod-apps.png)
+![](https://media.urbit.org/guides/additional/dist/2-zod-apps.png)
 
 When we click on the app, it'll show some of the information from the clauses in the docket file:
 
-![Remote app info](https://media.urbit.org/guides/additional/dist/2-hello-info.png)
+![](https://media.urbit.org/guides/additional/dist/2-hello-info.png)
 
 Click `Get App` and it'll ask as if we want to install it:
 
-![Remote app install](https://media.urbit.org/guides/additional/dist/2-install-hello.png)
+![](https://media.urbit.org/guides/additional/dist/2-install-hello.png)
 
 Finally, click `Get "Hello"` and it'll be installed as a tile on `~bus` which can then be opened:
 
-![Remote app finished](https://media.urbit.org/guides/additional/dist/2-hello-installed-bus.png)
+![](https://media.urbit.org/guides/additional/dist/2-hello-installed-bus.png)

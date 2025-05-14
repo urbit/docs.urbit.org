@@ -55,7 +55,7 @@ This function just calls `getEntries()` to retrieve the initial list of journal 
 
 ## Getting entries {#getting-entries}
 
-![entries screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/entries.png)
 
 The `getEntries()` function scries our `%journal` agent for up to 10 entries before the oldest we currently have. We call this initially and then each time the user scrolls to the bottom of the list.
 
@@ -213,7 +213,7 @@ useEffect(() => {
 
 ## Add, edit, delete {#add-edit-delete}
 
-![add screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/add.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/add.png)
 
 When a user writes a new journal entry and hits submit, the `createEntry()` function is called. It uses the `Urbit.poke` method to poke our `%journal` agent.
 
@@ -241,7 +241,7 @@ The `Urbit.poke` method takes five arguments:
 
 The `deleteEntry()` and `editEntry()` functions are similar to `createEntry()`, but for the `%del` and `%edit` actions rather than `%add`:
 
-![edit screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/edit.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/edit.png)
 
 ```javascript
 const editEntry = (id, txt) => {
@@ -259,7 +259,7 @@ const editEntry = (id, txt) => {
 };
 ```
 
-![delete screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/delete.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/delete.png)
 
 ```javascript
 const deleteEntry = (id) => {
@@ -277,7 +277,7 @@ Note that whether we're adding, editing or deleting entries, we update our state
 
 ## Search {#search}
 
-![search screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/search.png)
 
 When searching for entries between two dates, the `searchEntries()` function is called, which uses the `Urbit.scry` method to scry for the results in a similar fashion to [`getEntries`](#getting-entries), but using the `/x/entries/between/[start]/[end]` endpoint.
 
@@ -310,11 +310,11 @@ const searchEntries = async () => {
 
 When the channel connection is interrupted, the `Urbit` object will begin trying to reconnect. On each attempt, it sets the connection `status` to `"try"`, as we specified for the `onRetry` callback. When this is set, a "reconnecting" message is displayed at the bottom of the screen:
 
-![reconnecting screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnecting.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnecting.png)
 
 If all three reconnection attempts fail, the `onError` callback is fired and we replace the "reconnecting" message with a "reconnect" button:
 
-![reconnect screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnect.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnect.png)
 
 When clicked, the following function is called:
 
@@ -357,7 +357,7 @@ This function uses the `Urbit.scry` method to scry the `/x/updates/since/[since]
 
 Lastly, as well as handling channel connection errors, we also handle errors such as poke nacks or failed scries by printing error messages added to the `error` map by the `setErrorMsg()` function. You could of course handle nacks, kicks, scry failures, etc differently than just printing an error; it depends on the needs of your app.
 
-![search failed screenshot](https://media.urbit.org/guides/core/app-school-full-stack-guide/search-failed.png)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/search-failed.png)
 
 ## Resources {#resources}
 

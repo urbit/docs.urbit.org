@@ -8,7 +8,7 @@ _Every noun in Urbit is an atom or a cell.  This module will elaborate how we ca
 
 Every [noun](../../glossary/noun.md) in Urbit is a either an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md).  Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree).  We can draw this layout naturally:
 
-![Binary tree with labeled nodes](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
 
 A binary tree has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a “leaf”.  You can think of a noun as a binary tree whose leaves are atoms, i.e., unsigned integers.  All non-leaf nodes are cells.  An atom is a trivial tree of just one node; e.g., `17`.
 
@@ -20,11 +20,11 @@ For instance, if we produce a cell in the [Dojo](../../glossary/dojo.md)
 
 it can be represented as a tree with the contents
 
-![Binary tree with bottom row only populated](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row.png)
 
 We will use the convention in these graphics that black-text-on-white-circle represents an address, and that green-text-on-black-circle represents the content at that address.  So another way to represent the same data would be this:
 
-![Binary tree with bottom row only populated](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row-full.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row-full.png)
 
 When we input the above cell representation into the Dojo, the pretty-printer hides the rightwards-branching `[]` sel/ser brackets.
 
@@ -99,7 +99,7 @@ What we've been calling a running cell would more conventionally be named a _tup
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
-![A binary tree of the cell [1 2 3 4 ~].](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
+![].](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
 
 At this point, you should start to be able to work this out in your head, at least for the first few rows.  The `+` lus operator can be used to return the limb of the subject at a given numeric address.  If there is no such limb, the result is a crash.
 
@@ -194,7 +194,7 @@ There are three different ways to access values:
 
 We have already seen numeric addressing used to refer to parts of a binary tree.
 
-![Binary tree with labeled nodes](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
 
 Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to decide if the contents of a node is a direct value or a tree: it just happens.
 
@@ -232,7 +232,7 @@ When lark expressions resolve to the part of the subject containing an [arm](../
 
 Produce the numeric and lark-notated equivalent addresses for each of the following nodes in the binary fruit tree:
 
-![A fruit tree](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-fruit.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-fruit.png)
 
 - 🍇
 - 🍌

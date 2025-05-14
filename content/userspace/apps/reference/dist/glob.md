@@ -69,7 +69,7 @@ There are a couple of different methods depending on whether the glob will be di
 
 For globs distributed over Ames from our ship, the client bundle can be uploaded directly with `%docket`'s Globulator tool, which is available in the browser at `http[s]://[host]/docket/upload`. It looks like this:
 
-![Globulator](https://media.urbit.org/docs/userspace/dist/globulator.png)
+![](https://media.urbit.org/docs/userspace/dist/globulator.png)
 
 Simply select the target desk, select the folder to be globulated, and hit `glob!`.
 

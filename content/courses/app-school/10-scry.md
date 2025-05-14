@@ -10,7 +10,7 @@ Gall itself defines some special vane-level endpoints [as described in its scry 
 
 Scries are performed with the [dotket](../../language/hoon/reference/rune/dot.md#dotket) (`.^`) rune. Here's a summary of their format:
 
-![scry summary diagram](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
+![](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
 A note on `care`s: Cares are most carefully implemented by Clay, where they specify submodules and have tightly defined behaviors. For Gall agents, most of these don't have any special behavior, and are just used to indicate the general kind of data produced by the endpoint, with the exception of the `%x` care:
 

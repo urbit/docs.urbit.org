@@ -810,11 +810,11 @@ We use the LCG defined above, then chop out 23-bit slices using [++rip](../../la
 
 The normal distribution, or bell curve, describes the randomness of measurement.  The mean, or average value, is at zero, while points fall farther and farther away with increasingly less likelihood.
 
-![A normal distribution curve with standard deviations marked](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/640px-Standard_deviation_diagram.svg.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/640px-Standard_deviation_diagram.svg.png)
 
 One way to get from a uniform random number to a normal random number is [to use the uniform random number as the _cumulative distribution function_ (CDF)](https://www.omscs-notes.com/simulation/generating-uniform-random-numbers/), an index into “how far” the value is along the normal curve.
 
-![A cumulative distribution function for three normal distributions](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Normal_Distribution_CDF.svg/640px-Normal_Distribution_CDF.svg.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Normal_Distribution_CDF.svg/640px-Normal_Distribution_CDF.svg.png)
 
 This is an approximation which is accurate to one decimal place:
 

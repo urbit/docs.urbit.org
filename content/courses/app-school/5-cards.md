@@ -96,7 +96,7 @@ The kinds of `task`s can be divided into two categories:
 
 **Examples**
 
-![subscription card examples](https://media.urbit.org/guides/core/app-school/sub-cards.svg)
+![](https://media.urbit.org/guides/core/app-school/sub-cards.svg)
 
 #### Pokes
 
@@ -108,7 +108,7 @@ The `%poke-as` task is the same as `%poke` except Gall will convert the `mark` i
 
 **Examples**
 
-![poke card examples](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
+![](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
 
 ### `note-arvo` {#note-arvo}
 
@@ -136,7 +136,7 @@ The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Cl
 
 #### Examples
 
-![arvo card examples](https://media.urbit.org/guides/core/app-school/arvo-cards.svg)
+![](https://media.urbit.org/guides/core/app-school/arvo-cards.svg)
 
 ## `%give` {#give}
 
@@ -165,7 +165,7 @@ These can be divided into two categories:
 
 #### Examples
 
-![ack card examples](https://media.urbit.org/guides/core/app-school/ack-cards.svg)
+![](https://media.urbit.org/guides/core/app-school/ack-cards.svg)
 
 ### Subscriptions {#subscriptions}
 
@@ -177,13 +177,13 @@ A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which i
 
 #### Examples
 
-![gift card examples](https://media.urbit.org/guides/core/app-school/gift-cards.svg)
+![](https://media.urbit.org/guides/core/app-school/gift-cards.svg)
 
 ## Summary {#summary}
 
 Here's a diagram that summarizes the different kinds of `card`s:
 
-[![card diagram](https://media.urbit.org/guides/core/app-school/card-diagram.svg)](https://media.urbit.org/guides/core/app-school/card-diagram.svg)
+[![](https://media.urbit.org/guides/core/app-school/card-diagram.svg)](https://media.urbit.org/guides/core/app-school/card-diagram.svg)
 
 ## Exercises {#exercises}
 

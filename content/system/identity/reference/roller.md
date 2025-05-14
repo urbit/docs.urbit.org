@@ -6,7 +6,7 @@ Here we outline how the naive rollup rollers work. This page is only a quick sum
 
 The following diagram illustrates the most important parts of the plumbing present in the roller.
 
-[![Roller internals](https://media.urbit.org/docs/layer2/roller-internal.png)](https://media.urbit.org/docs/layer2/roller-internal.png)
+[![](https://media.urbit.org/docs/layer2/roller-internal.png)](https://media.urbit.org/docs/layer2/roller-internal.png)
 
 We elaborate on the components of this diagram below.
 

@@ -14,7 +14,7 @@ Update-related notifications will be shown in the notifications area of Landscap
 
 #### The following (n) apps blocked a System Update
 
-![apply system update screenshot](https://media.urbit.org/operators/manual/os/updates/apply-system-update.png)
+![](https://media.urbit.org/operators/manual/os/updates/apply-system-update.png)
 
 This means you've received an over-the-air kernel update, e.g. an update from `[%zuse 419]` to `[%zuse 418]`. The update could not be applied because the given apps are not compatible with the new kernel version, nor do they have compatible updates pending. If you hit "Archive (n) apps and Apply System Update", the blocking apps will be suspended and the kernel upgrade applied. Once the apps in question receive compatible updates, they'll automatically be updated and unsuspended.
 
@@ -22,7 +22,7 @@ If the blocking apps are important to you and you don't want to suspend them, yo
 
 #### App: "abc" is blocked from upgrading
 
-![app blocking messages screenshot](https://media.urbit.org/operators/manual/os/updates/app-blocked-messages.png)
+![](https://media.urbit.org/operators/manual/os/updates/app-blocked-messages.png)
 
 These messages happen when an app has received an update, but it's for a newer kernel version than you currently have, so it can't be installed. The update will be queued until the kernel is updated, at which point it will be automatically applied.
 
@@ -36,7 +36,7 @@ These kinds of messages don't usually require action. App developers will typica
 
 #### The runtime blocked a System Update
 
-![runtime blocked system update screenshot](https://media.urbit.org/operators/manual/os/updates/runtime-blocked-update.png)
+![](https://media.urbit.org/operators/manual/os/updates/runtime-blocked-update.png)
 
 This means you tried to apply a kernel update, but the runtime (the `urbit` binary) is not compatible with the new kernel version. In this case, you'll need to update the runtime. See the [runtime updates](#runtime-updates) section below for how to do this.
 

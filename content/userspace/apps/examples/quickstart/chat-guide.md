@@ -2,7 +2,7 @@
 
 In this lightning tutorial, we're going to build a simple chat app named Hut. It'll look like this:
 
-![hut screenshot](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot-reskin.png)
+![](https://media.urbit.org/guides/quickstart/chat-guide/hut-screenshot-reskin.png)
 
 We'll be able to create private chat rooms with members of our [Squad](https://urbit.org/applications/~pocwet/squad) groups, and communicate instantly and securely. Hut will be quite simple, it'll have a very basic UI and only store the last 50 messages in each chat, but it's a good demonstration of app development, networking, and front-end integration on Urbit.
 

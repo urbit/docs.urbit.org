@@ -77,7 +77,7 @@ The `cage` in the `riot` of the `%writ` contains the file's data due to our use 
 
 Here's a breakdown of the `task` we sent:
 
-![%sing diagram](https://media.urbit.org/docs/arvo/clay/sing.png "%sing diagram")
+![](https://media.urbit.org/docs/arvo/clay/sing.png "%sing diagram")
 
 ### `%next` {#next}
 
@@ -113,7 +113,7 @@ You can see the `riot` is just `~` due to the file being deleted.
 
 Here's a breakdown of the task we sent:
 
-![%next diagram](https://media.urbit.org/docs/arvo/clay/next.png "%next diagram")
+![](https://media.urbit.org/docs/arvo/clay/next.png "%next diagram")
 
 ### `%mult` {#mult}
 
@@ -172,7 +172,7 @@ As you can see, a relevant change to any of the subscribed files will trigger a 
 
 Here's a breakdown of the `task` we sent:
 
-![subscribe mult diagram](https://media.urbit.org/docs/arvo/clay/sub-mult.png "subscribe mult diagram")
+![](https://media.urbit.org/docs/arvo/clay/sub-mult.png "subscribe mult diagram")
 
 ### `%many` {#many}
 
@@ -266,7 +266,7 @@ Run `:spider|kill` to stop the thread.
 
 Here's a breakdown of the `task` we sent:
 
-![subscribe many diagram](https://media.urbit.org/docs/arvo/clay/sub-many.png "subscribe many diagram")
+![](https://media.urbit.org/docs/arvo/clay/sub-many.png "subscribe many diagram")
 
 ### Cancel Subscription {#cancel-subscription}
 
@@ -310,7 +310,7 @@ Run `:spider|kill` to stop the thread.
 
 Here's a breakdown of the `task` we sent:
 
-![cancel subscription diagram](https://media.urbit.org/docs/arvo/clay/stop-sub.png "cancel subscription diagram")
+![](https://media.urbit.org/docs/arvo/clay/stop-sub.png "cancel subscription diagram")
 
 ## `%info` {#info}
 
@@ -333,7 +333,7 @@ We've created the `cage` of the content like `[%txt !>(~['foo'])]`, if you want 
 
 Here's a breakdown of the `task` we sent:
 
-![%ins diagram](https://media.urbit.org/docs/arvo/clay/ins.png)
+![](https://media.urbit.org/docs/arvo/clay/ins.png)
 
 ### `%del` {#del}
 
@@ -350,7 +350,7 @@ If you have a look in the base of your pier you'll see the `foo.txt` file is now
 
 Here's a breakdown of the `task` we sent:
 
-![%del diagram](https://media.urbit.org/docs/arvo/clay/del.png)
+![](https://media.urbit.org/docs/arvo/clay/del.png)
 
 ### `%mut` {#mut}
 
@@ -652,7 +652,7 @@ As you can see it's back to the default inherited from `/`.
 
 Here's a breakdown of a `%perm` task:
 
-![perm diagram](https://media.urbit.org/docs/arvo/clay/perm-diagram.png)
+![](https://media.urbit.org/docs/arvo/clay/perm-diagram.png)
 
 ### `%cred` {#cred}
 

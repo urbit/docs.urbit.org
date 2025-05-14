@@ -164,13 +164,13 @@ This will create a `build` directory containing the compiled front-end files. To
 
 Next, in the browser, we navigate to the `%docket` globulator at `http://localhost:8080/docket/upload` (replacing localhost with the actual host):
 
-![globulator screenshot](https://m.tinnus-napbus.xyz/pub/globulator.png)
+![](https://m.tinnus-napbus.xyz/pub/globulator.png)
 
 We select our `journal` desk, then we hit `Choose file`, and select the whole `build` directory which was created when we build our React app. Finally, we hit `glob!` to upload it.
 
 If we now return to the homescreen of our ship, we'll see our tile displayed, and we can open our app by clicking on it:
 
-![tiles screenshot](https://m.tinnus-napbus.xyz/pub/tiles.png)
+![](https://m.tinnus-napbus.xyz/pub/tiles.png)
 
 ## Publishing {#publishing}
 

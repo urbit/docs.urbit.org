@@ -61,7 +61,7 @@ We will primarily work in the development ship (a fakeship or moon) on the files
 
 You should consider using a terminal utility like `tmux` or `screen` which allows you to work in several locations on your file system simultaneously:  one for file system operations (copying files in and out of the `home` directory), one for running the development ship, and one for editing the files, or an IDE or text editor if preferred.
 
-![A recommended screen layout.](https://raw.githubusercontent.com/sigilante/pixiesticks/master/layout.png)
+![](https://raw.githubusercontent.com/sigilante/pixiesticks/master/layout.png)
 
 Inside of your development ship, sync `%clay` to Unix,
 

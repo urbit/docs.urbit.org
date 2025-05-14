@@ -2,7 +2,7 @@
 
 In this lightning tutorial, we're going to build a voting app for groups called Tally, which uses [linkable ring signatures](https://en.wikipedia.org/wiki/Ring_signature). If the group host has Tally installed, members may make proposals, and other members may vote yea or nay on them. Linkable ring signatures allow votes to be anonymous - each vote can be verified to have come from a group member and duplicate votes can be detected, but it cannot be determined who voted for what. The finished app will look like this:
 
-![tally screenshot](https://media.urbit.org/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
+![](https://media.urbit.org/guides/quickstart/voting-app-guide/tally-screenshot-reskin.png)
 
 The front-end of the app will be written in [Sail](../../../../glossary/sail.md), Urbit's XML language built into the Hoon compiler. Using Sail means we don't need to create a separate React front-end, and can instead serve pages directly from our back-end. This works well for static pages but a full JS-enabled front-end would be preferred for a dynamic page.
 

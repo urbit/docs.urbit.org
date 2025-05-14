@@ -295,23 +295,23 @@ Nearly all rune expressions can be written in either form, but there are excepti
 
 Since runes take a fixed number of children, one can visualize how Hoon expressions are built by thinking of each rune being followed by a series of boxes to be filled—one for each of its children.  Let us illustrate this with the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune.
 
-![Colhep rune with two empty boxes for children.](https://media.urbit.org/docs/hoon-syntax/cell1.png)
+![](https://media.urbit.org/docs/hoon-syntax/cell1.png)
 
 Here we have drawn the `:-` colhep rune followed by a box for each of its two children.  We can fill these boxes with either a value or an additional rune. The following figure corresponds to the Hoon expression `:-  2  3`.
 
-![Colhep rune with two boxes for children containing 2 and 3.](https://media.urbit.org/docs/hoon-syntax/cell2.png)
+![](https://media.urbit.org/docs/hoon-syntax/cell2.png)
 
 This, of course, evaluates to the cell `[2 3]`.
 
 The next figure corresponds to the Hoon expression `:-  :-  2  3  4`.
 
-![Colhep rune with two boxes for children, one containing a colhep rune with two boxes for children containing 2 and 3, and 4.](https://media.urbit.org/docs/hoon-syntax/cell3.png)
+![](https://media.urbit.org/docs/hoon-syntax/cell3.png)
 
 This evaluates to `[[2 3] 4]`, and we can think of the second `:-` colhep as being “nested” inside of the first `:-` colhep.
 
 What Hoon expression does the following figure correspond to, and what does it evaluate to?
 
-![Colhep rune with two boxes for children containing 2 and  a colhep rune with two boxes for children containing 3 and 4.](https://media.urbit.org/docs/hoon-syntax/cell4.png)
+![](https://media.urbit.org/docs/hoon-syntax/cell4.png)
 
 This represents the Hoon expression `:-  2  :-  3  4`, and evaluates to `[2 [3 4]]`.  (If you input this into dojo it will print as `[2 3 4]`, which we'll consider later.)
 

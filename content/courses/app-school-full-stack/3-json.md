@@ -17,7 +17,7 @@ JSON data comes into Eyre as a string, and Eyre parses it with the [`++de:json:h
 
 Once Eyre has converted the raw JSON string to a `$json` structure, it will be converted to the mark the web client specified and then delivered to the target agent (unless the mark specified is already `%json`, in which case it will be delivered directly). Outbound facts will go through the same process in reverse - converted from the agent's native mark to `$json`, then encoded in a string by Eyre using [`++en:json:html`](../../language/hoon/reference/zuse/2e_2-3.md#enjsonhtml) and delivered to the web client. The basic flow for both inbound messages (pokes) and outbound messages (facts and scry results) looks like this:
 
-![eyre mark flow diagram](https://media.urbit.org/guides/core/app-school-full-stack-guide/eyre-mark-flow-diagram.svg)
+![](https://media.urbit.org/guides/core/app-school-full-stack-guide/eyre-mark-flow-diagram.svg)
 
 The mark conversion will be done by the corresponding mark file in `/mar` on the agent's desk. In our case it would be `/mar/journal/action.hoon` and `/mar/journal/update.hoon` in the `%journal` desk for our `%journal-action` and `%journal-update` marks, which are for the `$action` and `$update` structures we defined previously.
 

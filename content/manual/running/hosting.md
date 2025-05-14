@@ -12,7 +12,7 @@ Create an account on [Digital Ocean](https://digitalocean.com). Once you make an
 
 You should see the page below where you can create your Droplet, aka Virtual Machine:
 
-![do screenshot](https://media.urbit.org/operators/manual/running/hosting/do-screenshot.png)
+![](https://media.urbit.org/operators/manual/running/hosting/do-screenshot.png)
 
 Fill out the options like so:
 
@@ -170,11 +170,11 @@ If you have obtained a planet and want to boot it for the first time, you'll nee
 
 If you've received a planet invite via email or a claim link like `https://bridge.urbit.org/#labfur-batteg-dapnex-binsup-riclen-tinlyr`, open it in a browser and you should see a page like the following:
 
-![claim planet screenshot](https://media.urbit.org/operators/manual/running/hosting/claim-planet.png)
+![](https://media.urbit.org/operators/manual/running/hosting/claim-planet.png)
 
 If you hit "Claim", it'll bring you here:
 
-![download passport screenshot](https://media.urbit.org/operators/manual/running/hosting/download-passport.png)
+![](https://media.urbit.org/operators/manual/running/hosting/download-passport.png)
 
 Hit "Download Backup (Passport)" and it'll have you download a file named like `riclen-tinlyr-passport.zip`.
 
@@ -352,7 +352,7 @@ It'll spit out something like `ropnys-batwyd-nossyt-mapwet`. That's your web log
 
 The server configuration should now be complete, and you can access Landscape in the browser. Navigate to the domain you configured previously, in this case `riclen-tinlyr.arvo.network`. You should see the Landscape login screen:
 
-![landscape login screen](https://media.urbit.org/operators/manual/running/hosting/landscape-login.png)
+![](https://media.urbit.org/operators/manual/running/hosting/landscape-login.png)
 
 Enter the web login code and you'll be taken to your ship's homescreen. Your ship is now running in the cloud, and you can access it from any device by visiting its URL.
 

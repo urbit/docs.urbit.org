@@ -514,7 +514,7 @@ For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. T
 | `onSuccess` | A function. | (Optional.) This is called if the poke succeeded (the ship ack'd the poke).                                                              | `someFunction()`          |
 | `onError`   | A function. | (Optional.) This is called if the poke failed (the ship nack'd the poke).                                                                | `anotherFunction()`       |
 
-#### Poke example {#poke-example}
+#### Poke() example {#poke-example}
 
 {% code title="poke-test.html" overflow="nowrap" lineNumbers="true" %}
 
@@ -629,7 +629,7 @@ To scry agents on the ship, the `Urbit` class in `http-api` includes a `scry` fu
 
 The `scry` function returns a promise that, if successful, contains the requested data as JSON. If the scry failed, for example due to a non-existent scry endpoint, connection problem, or mark conversion failure, the promise will fail.
 
-#### Scry example {#scry-example}
+#### Scry() example {#scry-example}
 
 {% code title="scry-test.html" overflow="nowrap" lineNumbers="true" %}
 
@@ -759,7 +759,7 @@ If the subscription request is successful, you'll continue to receive updates un
 
 If you wish to unsubscribe from a particular subscription, the `Urbit` class in `http-api` includes an `unsubscribe` function. This function just takes a single argument: the subscription ID number of an existing subscription. Once unsubscribed, you'll stop receiving updates for the specified subscription.
 
-#### Subscribe example {#subscribe-example}
+#### Subscribe() example {#subscribe-example}
 
 {% code title="subscribe-test.html" overflow="nowrap" lineNumbers="true" %}
 
@@ -932,7 +932,7 @@ The `subscribeOnce()` function also takes an optional `timeout` argument, which 
 
 `subscribeOnce()` returns a Promise. If successful, the Promise produces the JSON data of the update it received. If it failed due to either timing out or getting kicked from the subscription, it will return an error message of either `"timeout"` or `"quit"`.
 
-#### SubscribeOnce example {#subscribe-once-example}
+#### SubscribeOnce() example {#subscribe-once-example}
 
 {% code title="auth-test.html" overflow="nowrap" lineNumbers="true" %}
 
@@ -1009,7 +1009,7 @@ To run a thread, the `Urbit` class in `http-api` includes a `thread` function. T
 
 The `thread` function will produce a promise that, if successful, contains the JSON result of the thread. If the thread failed, a connection error occurred, or mark conversion failed, the promise will fail.
 
-#### Thread example {#thread-example}
+#### Thread() example {#thread-example}
 
 {% code title="thread-test.html" overflow="nowrap" lineNumbers="true" %}
 

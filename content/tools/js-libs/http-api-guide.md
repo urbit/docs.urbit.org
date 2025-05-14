@@ -128,9 +128,9 @@ The `Urbit` class constructor includes three optional callback functions that fi
 
 | Callback        | Description                                                                                                                 |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `Urbit.onOpen()`  | Called when an SSE channel connection is successfully established.                                                        |
-| `Urbit.onRetry()` | Called when a reconnection attempt is made due to an interruption, e.g. if there are network problems.                    |
-| `Urbit.onError()` | Called when there is an unrecoverable error, e.g. after enough reconnection attemps have failed.                          |
+| `onOpen()`  | Called when an SSE channel connection is successfully established.                                                        |
+| `onRetry()` | Called when a reconnection attempt is made due to an interruption, e.g. if there are network problems.                    |
+| `onError()` | Called when there is an unrecoverable error, e.g. after enough reconnection attemps have failed.                          |
 
 As mentioned in the previous section, typically a channel will be opened and an SSE connection established after you first poke the ship or make a subscription request. If successful, whatever function you provided to `onOpen()` will be called. If at some point the connection is interrupted, a reconnection attempt will be made three times:
 
@@ -467,10 +467,10 @@ The `authenticate` function takes four arguments in an object: `ship`, `url`, `c
 
 | Argument  | Type      | Description                                                                            | Example                           |
 | --------- | --------- | -------------------------------------------------------------------------------------- | --------------------------------- |
-| `ship`    | `string`  | The ship ID (`@p`) without the leading `~`.                                            | `"sampel-palnet"` or `"zod"`      |
+| `ship`    | `string`  | (Optional.) The ship ID (`@p`) without the leading `~`.                                            | `"sampel-palnet"` or `"zod"`      |
 | `url`     | `string`  | The base URL for the ship.                                        | `"http://localhost:8080"` or `"example.com"` |
-| `code`    | `string`  | The user's web login code.                                                             | `"lidlut-tabwed-pillex-ridrup"`   |
-| `verbose` | `boolean` | Whether to log details to the console. This field is optional and defaults to `false`. | `true`                            |
+| `code`    | `string`  | (Optional.) The user's web login code.                                                             | `"lidlut-tabwed-pillex-ridrup"`   |
+| `verbose` | `boolean` | (Optional.) Whether to log details to the console. This field is optional and defaults to `false`. | `true`                            |
 
 This function returns a promise that if successful, produces an `Urbit` object which can then be used for communications with the ship.
 
@@ -510,9 +510,9 @@ For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. T
 | `app`       | `string`    | The Gall agent to poke.                                                                                                      | `"api-demo"`         |
 | `mark`      | `string`    | The mark of the data to poke the agent with.                                                                                 | `"api-action"`      |
 | `json`      | any JSON    | The data to poke the agent with.                                                                                             | `{ put: { key: "foo", val: "bar" } }` |
-| `ship`      | `string`    | The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object. | `"zod"`       |
-| `onSuccess` | A function. | This is called if the poke succeeded (the ship ack'd the poke).                                                              | `someFunction()`          |
-| `onError`   | A function. | This is called if the poke failed (the ship nack'd the poke).                                                                | `anotherFunction()`       |
+| `ship`      | `string`    | (Optional.) The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object. | `"zod"`       |
+| `onSuccess` | A function. | (Optional.) This is called if the poke succeeded (the ship ack'd the poke).                                                              | `someFunction()`          |
+| `onError`   | A function. | (Optional.) This is called if the poke failed (the ship nack'd the poke).                                                                | `anotherFunction()`       |
 
 #### Poke example {#poke-example}
 
@@ -748,10 +748,10 @@ For subscribing to a particular path in an agent, the `Urbit` class in `http-api
 | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | `app`    | `string`    | The Gall agent to which you'll subscribe.                                                                                        | `"api-demo"`      |
 | `path`   | `string`    | The subscription path.                                                                                                           | `"/updates"`         |
-| `ship`   | `string`    | The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object.     | `"zod"`    |
-| `err`    | A function. | This is called if the subscription request fails.                                                                                | `someFunction()`       |
-| `event`  | A function. | This is the function to handle each update you receive for this subscription. The function's argument is the update's JSON data. | `anotherFunction()`    |
-| `quit`   | A function. | This is called if you are kicked from the subscription.                                                                          | `yetAnotherFunction()` |
+| `ship`   | `string`    | (Optional.) The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object.     | `"zod"`    |
+| `err`    | A function. | (Optional.) This is called if the subscription request fails.                                                                                | `someFunction()`       |
+| `event`  | A function. | (Optional.) This is the function to handle each update you receive for this subscription. The function's argument is the update's JSON data. | `anotherFunction()`    |
+| `quit`   | A function. | (Optional.) This is called if you are kicked from the subscription.                                                                          | `yetAnotherFunction()` |
 
 The `subscribe` function returns a subscription ID, which is just a number. This ID can be used to unsubscribe down the line.
 
@@ -928,7 +928,7 @@ The `subscribeOnce()` function also takes an optional `timeout` argument, which 
 | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------- |
 | `app`     | `string` | The Gall agent to which you'll subscribe.                                                                                | `"api-demo"` |
 | `path`    | `string` | The subscription path.                                                                                                   | `"/updates"`    |
-| `timeout` | `number` | The number of milliseconds to wait for an update before closing the subscription. If omitted, it will wait indefinitely. | `5000`          |
+| `timeout` | `number` | (Optional.) The number of milliseconds to wait for an update before closing the subscription. If omitted, it will wait indefinitely. | `5000`          |
 
 `subscribeOnce()` returns a Promise. If successful, the Promise produces the JSON data of the update it received. If it failed due to either timing out or getting kicked from the subscription, it will return an error message of either `"timeout"` or `"quit"`.
 
@@ -1005,7 +1005,7 @@ To run a thread, the `Urbit` class in `http-api` includes a `thread` function. T
 | `outputMark` | `string` | The result of the thread should be converted to this mark before being converted to JSON and returned to you. | `"tang"`                |
 | `threadName` | `string` | The name of the thread to run.                                                                                | `"hi"`          |
 | `body`       | any JSON | The data to give to the thread as its argument.                                                               | `"~bud"` |
-| `desk`       | `string` | The desk in which the thread resides. This may be ommitted if previously set for the whole `Urbit` object.    | `"base"`           |
+| `desk`       | `string` | (Optional.) The desk in which the thread resides. This may be ommitted if previously set for the whole `Urbit` object.    | `"base"`           |
 
 The `thread` function will produce a promise that, if successful, contains the JSON result of the thread. If the thread failed, a connection error occurred, or mark conversion failed, the promise will fail.
 

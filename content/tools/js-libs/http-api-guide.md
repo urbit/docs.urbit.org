@@ -63,15 +63,15 @@ A thread is a monadic function in Arvo that takes arguments and produces a resul
 ## HTTP API basics {#http-api-basics}
 Now that we've covered the backend concepts, let's see how `@urbit/http-api` communicates with the server.
 
-### The `Urbit` class {#the-urbit-class}
+### The `Urbit()` class {#the-urbit-class}
 
-All functionality is contained within the `Urbit` class. There are two ways to instantiate it, depending on whether your web app is served directly from the ship or whether it's served externally. The reason for the difference is that you require a session cookie to talk to the ship.
+All functionality is contained within the `Urbit()` class. There are two ways to instantiate it, depending on whether your web app is served directly from the ship or whether it's served externally. The reason for the difference is that you require a session cookie to talk to the ship.
 
-If your app is served from the ship, the user will already be logged in and they'll have a session cookie that the `Urbit` class will use automatically.
+If your app is served from the ship, the user will already be logged in and they'll have a session cookie that the `Urbit()` class will use automatically.
 
 If your app isn't served from the ship, you'll need to authenticate with the user's ship, which is [detailed separately below](#authenticate).
 
-In the case of a frontend served from the ship, the `Urbit` class contains a `constructor` which takes 1-3 arguments:
+In the case of a frontend served from the ship, the `Urbit()` class contains a `constructor` which takes 1-3 arguments:
 
 | Argument | Type     | Description                                                                                                                                                                                                                         | Example                                   |
 | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
@@ -79,7 +79,7 @@ In the case of a frontend served from the ship, the `Urbit` class contains a `co
 | `code`   | `string` | (Optional.) The web login code of the ship. Not needed if your frontend is served from the ship. In practice this should never be set by the frontend (if you need the user to log into their ship, use EAuth), but if you had to you'd want to import this from a secure environment variable to avoid putting it in the source code. | `""`, `"lidlut-tabwed-pillex-ridrup"`     |
 | `desk`   | `string` | (Optional.) The desk on which you want to run threads. This is only used if you want to run threads from the frontend, rather than run them from the agent.                         | `"landscape"`, `""`                       |
 
-To create an `Urbit` instance, you can simply do:
+To create an `Urbit()` instance, you can simply do:
 
 ```javascript
 const api = new Urbit("");
@@ -93,7 +93,7 @@ const api = new Urbit("", "", "landscape");
 
 ### `/session.js` {#sessionjs}
 
-Most functions of the `Urbit` class need to know the ship's Urbit ID or they will fail. This is given explicitly with the external authentication method [detailed below](#authenticate), but that's unnecessary when using the `Urbit` constructor in a web app served directly from the ship, because the ship serves a JS library at `/session.js` that contains the following:
+Most functions of the `Urbit()` class need to know the ship's Urbit ID or they will fail. This is given explicitly with the external authentication method [detailed below](#authenticate), but that's unnecessary when using the `Urbit()` constructor in a web app served directly from the ship, because the ship serves a JS library at `/session.js` that contains the following:
 
 ```javascript
 window.ship = "zod";
@@ -105,7 +105,7 @@ window.ship = "zod";
 <script src="/session.js"></script>
 ```
 
-Then you need to set the `ship` field in the `Urbit` object. You would typically do it immediately after instantiating it:
+Then you need to set the `ship` field in the `Urbit()` object. You would typically do it immediately after instantiating it:
 
 ```javascript
 const api = new Urbit("");
@@ -116,15 +116,15 @@ api.ship = window.ship;
 
 With the exception of scries and threads, all communication with Eyre happens through its channel system.
 
-When it's constructed, the `Urbit` object will generate a random channel ID like `1646295453-e1bdfd`, and use a path of `/~/channel/1646295453-e1bdfd` to talk to Eyre. Pokes and subscription requests will be sent to that channel. Responses and subscription updates will be sent out to the frontend on that channel too.
+When it's constructed, the `Urbit()` object will generate a random channel ID like `1646295453-e1bdfd`, and use a path of `/~/channel/1646295453-e1bdfd` to talk to Eyre. Pokes and subscription requests will be sent to that channel. Responses and subscription updates will be sent out to the frontend on that channel too.
 
-Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for that channel. The `Urbit` object handles this internally with an `eventSource` object, so you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit` object handles event acknowledgement automatically.
+Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for that channel. The `Urbit()` object handles this internally with an `eventSource` object, so you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit()` object handles event acknowledgement automatically.
 
-Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[unknown-channel-id]`. If your web app is served outside a ship, you could use the `authenticate()` function [described below](#authenticate) which will automatically send a poke and open the new channel. If your web app is served directly from the ship and you use the `Urbit` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
+Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[unknown-channel-id]`. If your web app is served outside a ship, you could use the `authenticate()` function [described below](#authenticate) which will automatically send a poke and open the new channel. If your web app is served directly from the ship and you use the `Urbit()` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
 
 ### Connection state {#connection-state}
 
-The `Urbit` class constructor includes three optional callback functions that fire when the SSE connection state changes:
+The `Urbit()` class constructor includes three optional callback functions that fire when the SSE connection state changes:
 
 | Callback        | Description                                                                                                                 |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -140,7 +140,7 @@ As mentioned in the previous section, typically a channel will be opened and an 
 
 Each attempt will call the function you provided to `onRetry()`, if any. If all three reconnection attempts failed, or if a fatal error occurred, the function you provided `onError()` will be called with an `Error` object containing an error message as its argument.
 
-How you use these, if at all, is up to you. If you want to try reconnecting when `onError()` fires, note that Eyre will delete a channel if it's had no messages from the client in the last 12 hours. The timeout is reset whenever it receives a message, including the acks that are automatically sent by the `Urbit` object in response to subscription updates.
+How you use these, if at all, is up to you. If you want to try reconnecting when `onError()` fires, note that Eyre will delete a channel if it's had no messages from the client in the last 12 hours. The timeout is reset whenever it receives a message, including the acks that are automatically sent by the `Urbit()` object in response to subscription updates.
 
 If you don't want to account for the possibility of the channel having been deleted, you can just call the [`reset()`](#reset) function before you try reconnecting and consequently open a brand new channel.
 
@@ -457,7 +457,7 @@ Note that the examples in this guide are simple HTML documents with vanilla Java
 
 If your web app is served externally to the ship, you must authenticate and obtain a session cookie before commencing communications with the ship.
 
-The `Urbit` class in `http-api` includes an `authenticate` function which does the following:
+The `Urbit()` class in `http-api` includes an `authenticate` function which does the following:
 
 1. Login to the user's ship with their `code` and obtain a session cookie.
 2. Generate a random channel ID for the connection.
@@ -472,7 +472,7 @@ The `authenticate` function takes four arguments in an object: `ship`, `url`, `c
 | `code`    | `string`  | (Optional.) The user's web login code.                                                             | `"lidlut-tabwed-pillex-ridrup"`   |
 | `verbose` | `boolean` | (Optional.) Whether to log details to the console. This field is optional and defaults to `false`. | `true`                            |
 
-This function returns a promise that if successful, produces an `Urbit` object which can then be used for communications with the ship.
+This function returns a promise that if successful, produces an `Urbit()` object which can then be used for communications with the ship.
 
 #### `authenticate()` example {#authenticate-example}
 
@@ -503,14 +503,14 @@ This function returns a promise that if successful, produces an `Urbit` object w
 {% endcode %}
 
 ### Poke {#poke}
-For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. The `poke` function takes six arguments in a object:
+For poking a ship, the `Urbit()` class in `http-api` includes a `poke` function. The `poke` function takes six arguments in a object:
 
 | Argument    | Type        | Description                                                                                                                  | Example                 |
 | ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `app`       | `string`    | The Gall agent to poke.                                                                                                      | `"api-demo"`         |
 | `mark`      | `string`    | The mark of the data to poke the agent with.                                                                                 | `"api-action"`      |
 | `json`      | any JSON    | The data to poke the agent with.                                                                                             | `{ put: { key: "foo", val: "bar" } }` |
-| `ship`      | `string`    | (Optional.) The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object. | `"zod"`       |
+| `ship`      | `string`    | (Optional.) The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit()` object. | `"zod"`       |
 | `onSuccess` | A function. | (Optional.) This is called if the poke succeeded (the ship ack'd the poke).                                                              | `someFunction()`          |
 | `onError`   | A function. | (Optional.) This is called if the poke failed (the ship nack'd the poke).                                                                | `anotherFunction()`       |
 
@@ -620,7 +620,7 @@ For poking a ship, the `Urbit` class in `http-api` includes a `poke` function. T
 {% endcode %}
 
 ### Scry {#scry}
-To scry agents on the ship, the `Urbit` class in `http-api` includes a `scry` function. The `scry` function takes two arguments in a object:
+To scry agents on the ship, the `Urbit()` class in `http-api` includes a `scry` function. The `scry` function takes two arguments in a object:
 
 | Argument | Type     | Description                        | Example         |
 | -------- | -------- | ---------------------------------- | --------------- |
@@ -742,13 +742,13 @@ The `scry` function returns a promise that, if successful, contains the requeste
 {% endcode %}
 
 ### Subscribe and unsubscribe {#subscribe-and-unsubscribe}
-For subscribing to a particular path in an agent, the `Urbit` class in `http-api` includes a `subscribe` function. The `subscribe` function takes six arguments in a object:
+For subscribing to a particular path in an agent, the `Urbit()` class in `http-api` includes a `subscribe` function. The `subscribe` function takes six arguments in a object:
 
 | Argument | Type        | Description                                                                                                                      | Example              |
 | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | `app`    | `string`    | The Gall agent to which you'll subscribe.                                                                                        | `"api-demo"`      |
 | `path`   | `string`    | The subscription path.                                                                                                           | `"/updates"`         |
-| `ship`   | `string`    | (Optional.) The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit` object.     | `"zod"`    |
+| `ship`   | `string`    | (Optional.) The Urbit ID (`@p`) of the ship without the `~`. This may be ommitted if it's already been set for the whole `Urbit()` object.     | `"zod"`    |
 | `err`    | A function. | (Optional.) This is called if the subscription request fails.                                                                                | `someFunction()`       |
 | `event`  | A function. | (Optional.) This is the function to handle each update you receive for this subscription. The function's argument is the update's JSON data. | `anotherFunction()`    |
 | `quit`   | A function. | (Optional.) This is called if you are kicked from the subscription.                                                                          | `yetAnotherFunction()` |
@@ -757,7 +757,7 @@ The `subscribe` function returns a subscription ID, which is just a number. This
 
 If the subscription request is successful, you'll continue to receive updates until you either unsubscribe or are kicked by the agent. You may subscribe to multiple different agents and subscription paths by calling the `subscribe` function for each one.
 
-If you wish to unsubscribe from a particular subscription, the `Urbit` class in `http-api` includes an `unsubscribe` function. This function just takes a single argument: the subscription ID number of an existing subscription. Once unsubscribed, you'll stop receiving updates for the specified subscription.
+If you wish to unsubscribe from a particular subscription, the `Urbit()` class in `http-api` includes an `unsubscribe` function. This function just takes a single argument: the subscription ID number of an existing subscription. Once unsubscribed, you'll stop receiving updates for the specified subscription.
 
 #### `subscribe()` example {#subscribe-example}
 
@@ -922,7 +922,7 @@ The `subscribeOnce()` function is a variation on the ordinary [`subscribe`](#sub
 
 The `subscribeOnce()` function also takes an optional `timeout` argument, which specifies the number of milliseconds to wait for an update before closing the subscription. If omitted, `subscribeOnce()` will wait indefinitely.
 
-`subscribeOnce()` takes three arguments (these can't be in an object like most other `Urbit` functions):
+`subscribeOnce()` takes three arguments (these can't be in an object like most other `Urbit()` functions):
 
 | Argument  | Type     | Description                                                                                                              | Example         |
 | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------- |
@@ -997,7 +997,7 @@ The `subscribeOnce()` function also takes an optional `timeout` argument, which 
 {% endcode %}
 
 ### Run a thread {#thread}
-To run a thread, the `Urbit` class in `http-api` includes a `thread` function. The `thread` function takes five arguments in an object:
+To run a thread, the `Urbit()` class in `http-api` includes a `thread` function. The `thread` function takes five arguments in an object:
 
 | Argument     | Type     | Description                                                                                                   | Example                 |
 | ------------ | -------- | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
@@ -1005,7 +1005,7 @@ To run a thread, the `Urbit` class in `http-api` includes a `thread` function. T
 | `outputMark` | `string` | The result of the thread should be converted to this mark before being converted to JSON and returned to you. | `"tang"`                |
 | `threadName` | `string` | The name of the thread to run.                                                                                | `"hi"`          |
 | `body`       | any JSON | The data to give to the thread as its argument.                                                               | `"~bud"` |
-| `desk`       | `string` | (Optional.) The desk in which the thread resides. This may be ommitted if previously set for the whole `Urbit` object.    | `"base"`           |
+| `desk`       | `string` | (Optional.) The desk in which the thread resides. This may be ommitted if previously set for the whole `Urbit()` object.    | `"base"`           |
 
 The `thread` function will produce a promise that, if successful, contains the JSON result of the thread. If the thread failed, a connection error occurred, or mark conversion failed, the promise will fail.
 
@@ -1079,10 +1079,10 @@ The `thread` function will produce a promise that, if successful, contains the J
 {% endcode %}
 
 ### Delete a channel {#delete-a-channel}
-Rather than just closing individual subscriptions, the entire channel can be closed with the `delete()` function in the `Urbit` class of `@urbit/http-api`. When a channel is closed, all subscriptions are cancelled and all pending updates are discarded. The function takes no arguments, and can be called like `api.delete()`.
+Rather than just closing individual subscriptions, the entire channel can be closed with the `delete()` function in the `Urbit()` class of `@urbit/http-api`. When a channel is closed, all subscriptions are cancelled and all pending updates are discarded. The function takes no arguments, and can be called like `api.delete()`.
 
 ### Reset {#reset}
-An existing instance of `Urbit` class can be reset with its `reset()` function. This function takes no arguments, and can be called like `api.reset()`. When a channel is reset, all subscriptions are cancelled and all pending updates are discarded. Additionally, all outstanding outbound pokes to the agent will be discarded, and a fresh channel ID will be generated.
+An existing instance of `Urbit()` class can be reset with its `reset()` function. This function takes no arguments, and can be called like `api.reset()`. When a channel is reset, all subscriptions are cancelled and all pending updates are discarded. Additionally, all outstanding outbound pokes to the agent will be discarded, and a fresh channel ID will be generated.
 
 ## Further reading {#further-reading}
 

@@ -99,7 +99,7 @@ What we've been calling a running cell would more conventionally be named a _tup
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
-![].](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
+![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
 
 At this point, you should start to be able to work this out in your head, at least for the first few rows.  The `+` lus operator can be used to return the limb of the subject at a given numeric address.  If there is no such limb, the result is a crash.
 

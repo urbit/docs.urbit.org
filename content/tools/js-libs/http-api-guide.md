@@ -1087,6 +1087,6 @@ An existing `Urbit()` object can be reset with its `reset()` function. This func
 ## Further reading {#further-reading}
 
 - [`@urbit/http-api` on Github](https://github.com/urbit/js-http-api) - The source code for the JS HTTP API package.
-- [Eyre External API Reference][eyre-ext-ref] - Lower-level documentation of Eyre's external API.
-- [Eyre Guide][eyre-guide] - Lower-level examples of using Eyre's external API with `curl`.
+- [Eyre External API Reference][/system/kernel/eyre/reference/external-api-ref] - Lower-level documentation of Eyre's external API.
+- [Eyre Guide][/system/kernel/eyre/guides/guide] - Lower-level examples of using Eyre's external API with `curl`.
 

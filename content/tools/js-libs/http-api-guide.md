@@ -44,7 +44,7 @@ You can subscribe by sending a request to the agent with the desired path specif
 
 Agents can kick subscribers, and you can unsubscribe at any time.
 
-`@urbit/http-api` includes a `subscribe()` function which allows you to subscribe and unsubscribe to paths through Eyre, and is [detailed below](#subscribe).
+`@urbit/http-api` includes a `subscribe()` function which allows you to subscribe and unsubscribe to paths through Eyre, and is [detailed below](#subscribe-and-unsubscribe).
 
 #### Scry Endpoints {#scry-endpoints}
 
@@ -69,7 +69,7 @@ All functionality is contained within the `Urbit` class. There are two ways to i
 
 If your app is served from the ship, the user will already be logged in and they'll have a session cookie that the `Urbit` class will use automatically.
 
-If your app isn't served from the ship, you'll need to authenticate with the user's ship, which is [detailed separately below](#authentication).
+If your app isn't served from the ship, you'll need to authenticate with the user's ship, which is [detailed separately below](#authenticate).
 
 In the case of a frontend served from the ship, the `Urbit` class contains a `constructor` which takes 1-3 arguments:
 
@@ -93,7 +93,7 @@ const api = new Urbit("", "", "landscape");
 
 ### `/session.js` {#sessionjs}
 
-Most functions of the `Urbit` class need to know the ship's Urbit ID or they will fail. This is given explicitly with the external authentication method [detailed below](#authentication), but that's unnecessary when using the `Urbit` constructor in a web app served directly from the ship, because the ship serves a JS library at `/session.js` that contains the following:
+Most functions of the `Urbit` class need to know the ship's Urbit ID or they will fail. This is given explicitly with the external authentication method [detailed below](#authenticate), but that's unnecessary when using the `Urbit` constructor in a web app served directly from the ship, because the ship serves a JS library at `/session.js` that contains the following:
 
 ```javascript
 window.ship = "zod";
@@ -120,7 +120,7 @@ When it's constructed, the `Urbit` object will generate a random channel ID like
 
 Eyre sends out updates and responses on an [SSE] (Server Sent Event) stream for that channel. The `Urbit` object handles this internally with an `eventSource` object, so you won't deal with it directly. Eyre requires all events it sends out be acknowledged by the client, and will eventually close the channel if enough unacknowledged events accumulate. The `Urbit` object handles event acknowledgement automatically.
 
-Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[unknown-channel-id]`. If your web app is served outside a ship, you could use the `authenticate()` function [described below](#authentication) which will automatically send a poke and open the new channel. If your web app is served directly from the ship and you use the `Urbit` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
+Eyre automatically creates a channel when a poke or subscription request is first sent to `/~/channel/[unknown-channel-id]`. If your web app is served outside a ship, you could use the `authenticate()` function [described below](#authenticate) which will automatically send a poke and open the new channel. If your web app is served directly from the ship and you use the `Urbit` class constructor, it won't open the channel right away. Instead, the channel will be opened whenever you first send a poke or subscription request.
 
 ### Connection state {#connection-state}
 
@@ -918,7 +918,7 @@ If you wish to unsubscribe from a particular subscription, the `Urbit` class in 
 {% endcode %}
 
 ### Subscribe once {#subscribe-once}
-The `subscribeOnce()` function is a variation on the ordinary [`subscribe`](#subscribe) function. Rather than keeping the subscription going and receiving an arbitrary number of updates, instead it waits to receive a single update and then closes the subscription. This is useful if, for example, you send a poke and just want a response to that one poke.
+The `subscribeOnce()` function is a variation on the ordinary [`subscribe`](#subscribe-and-unsubscribe) function. Rather than keeping the subscription going and receiving an arbitrary number of updates, instead it waits to receive a single update and then closes the subscription. This is useful if, for example, you send a poke and just want a response to that one poke.
 
 The `subscribeOnce()` function also takes an optional `timeout` argument, which specifies the number of milliseconds to wait for an update before closing the subscription. If omitted, `subscribeOnce()` will wait indefinitely.
 
@@ -996,7 +996,7 @@ The `subscribeOnce()` function also takes an optional `timeout` argument, which 
 
 {% endcode %}
 
-### Run a thread {#run-a-thread}
+### Run a thread {#thread}
 To run a thread, the `Urbit` class in `http-api` includes a `thread` function. The `thread` function takes five arguments in an object:
 
 | Argument     | Type     | Description                                                                                                   | Example                 |

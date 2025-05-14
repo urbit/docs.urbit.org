@@ -141,7 +141,9 @@ We're “floating” gate calls until we reach the final iteration of such calls
 
 The pyramid-shaped illustration approximates what's happening on the _call stack_, a memory structure that tracks the instructions of the program.  In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame.  This process continues until a value is produced instead of a function, completing the stack.
 
-**Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?**
+{% hint style="info" %}
+Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
+{% endhint %}
 
 ### Exercise:  Tracking Expression Structure {#exercise-tracking-expression-structure}
 
@@ -697,7 +699,9 @@ F_n = F_{n-1} + F_{n-2}
 
 and verify that our program correctly produces the sequence of numbers 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ….
 
-**Compose a Fibonacci sequence program which produces a [list](../../glossary/list.md) of the appropriate values.**
+{% hint style="info" %}
+Compose a Fibonacci sequence program which produces a [list](../../glossary/list.md) of the appropriate values.
+{% endhint %}
 
 We can elide some details of working with `list`s until the next lesson; simply recall that they are a way of storing multiple values in a cell of cells of cells….
 
@@ -812,7 +816,9 @@ Finally (and then we'll move along) here's a very efficient implementation, whic
 [f1 $(f0 f1, f1 (add f0 f1), n (dec n))]
 ```
 
-**Produce a diagram of how this last implementation yields a Fibonacci sequence for *F*₅, `(fibonacci 5)`.**
+{% hint style="info" %}
+Produce a diagram of how this last implementation yields a Fibonacci sequence for *F*₅, `(fibonacci 5)`.
+{% endhint %}
 
 #### Tutorial:  Tail-Call Optimization of the Factorial Gate
 
@@ -844,7 +850,9 @@ To reiterate:  if you have to manipulate the result of a recursion as the last e
 
 But the Hoon compiler, like most compilers, is smart enough to notice when the last statement of a parent can reuse the same frame instead of needing to add new ones onto the stack.  If we write our code properly, we can use a single frame that simply has its values replaced with each recursion.
 
-**Change the order of the aspects of the call in such a way that the compiler can produce a more [tail-recursive](https://en.wikipedia.org/wiki/Tail_call) program.**
+{% hint style="info" %}
+Change the order of the aspects of the call in such a way that the compiler can produce a more [tail-recursive](https://en.wikipedia.org/wiki/Tail_call) program.
+{% endhint %}
 
 With a bit of refactoring, we can write a version of our factorial gate that is tail-recursive and can take advantage of this feature:
 
@@ -901,7 +909,9 @@ $$
 \end{array}
 -->
 
-**Compose a gate that computes the Ackermann function.**
+{% hint style="info" %}
+Compose a gate that computes the Ackermann function.
+{% endhint %}
 
 ```hoon
 |=  [m=@ n=@]
@@ -921,7 +931,9 @@ There are three cases to consider:
 
 The Ackermann function is not terribly useful in and of itself, but it has an interesting history in mathematics.  When running this function the value grows rapidly even for very small input.  The value of computing this where `m` is `4` and `n` is `2` is an integer with 19,729 digits.
 
-**Calculate some of the $$m$$/$$n$$ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).**
+{% hint style="info" %}
+Calculate some of the $$m$$/$$n$$ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
+{% endhint %}
 
 ### Exercise:  The Sudan Function {#exercise-the-sudan-function}
 
@@ -935,4 +947,6 @@ F_{n+1} (x, y+1) & = F_n (F_{n+1} (x, y), F_{n+1} (x, y) + y + 1) & \text{if } n
 \end{array}
 $$
 
-**Implement the Sudan function as a gate.**
+{% hint style="info" %}
+Implement the Sudan function as a gate.
+{% endhint %}

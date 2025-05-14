@@ -918,11 +918,11 @@ If you wish to unsubscribe from a particular subscription, the `Urbit` class in 
 {% endcode %}
 
 ### Subscribe once {#subscribe-once}
-The `subscribeOnce` function in the `Urbit` class of `http-api` is a variation on the ordinary [`subscribe`](#subscribe) function. Rather than keeping the subscription going and receiving an arbitrary number of updates, instead it waits to receive a single update and then closes the subscription. This is useful if, for example, you send a poke and just want a response to that one poke.
+The `subscribeOnce()` function is a variation on the ordinary [`subscribe`](#subscribe) function. Rather than keeping the subscription going and receiving an arbitrary number of updates, instead it waits to receive a single update and then closes the subscription. This is useful if, for example, you send a poke and just want a response to that one poke.
 
-The `subscribeOnce` function also takes an optional `timeout` argument, which specifies the number of milliseconds to wait for an update before closing the subscription. If omitted, `subscribeOnce` will wait indefinitely.
+The `subscribeOnce()` function also takes an optional `timeout` argument, which specifies the number of milliseconds to wait for an update before closing the subscription. If omitted, `subscribeOnce()` will wait indefinitely.
 
-`subscribeOnce` takes three arguments (these can't be in an object like most other `Urbit` functions):
+`subscribeOnce()` takes three arguments (these can't be in an object like most other `Urbit` functions):
 
 | Argument  | Type     | Description                                                                                                              | Example         |
 | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------- |
@@ -930,7 +930,7 @@ The `subscribeOnce` function also takes an optional `timeout` argument, which sp
 | `path`    | `string` | The subscription path.                                                                                                   | `"/updates"`    |
 | `timeout` | `number` | The number of milliseconds to wait for an update before closing the subscription. If omitted, it will wait indefinitely. | `5000`          |
 
-`subscribeOnce` returns a Promise. If successful, the Promise produces the JSON data of the update it received. If it failed due to either timing out or getting kicked from the subscription, it will return an error message of either `"timeout"` or `"quit"`.
+`subscribeOnce()` returns a Promise. If successful, the Promise produces the JSON data of the update it received. If it failed due to either timing out or getting kicked from the subscription, it will return an error message of either `"timeout"` or `"quit"`.
 
 #### SubscribeOnce example {#subscribe-once-example}
 

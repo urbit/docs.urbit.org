@@ -1079,7 +1079,7 @@ The `thread` function will produce a promise that, if successful, contains the J
 {% endcode %}
 
 ### Delete a channel {#delete-a-channel}
-Rather than just closing individual subscriptions, the entire channel can be closed with the `delete()` function in the `Urbit` class of `@urbit/http-api`. When a channel is closed, all subscriptions are cancelled and all pending updates are discarded. The function takes no arguments, and can be called like `api.cancel()`.
+Rather than just closing individual subscriptions, the entire channel can be closed with the `delete()` function in the `Urbit` class of `@urbit/http-api`. When a channel is closed, all subscriptions are cancelled and all pending updates are discarded. The function takes no arguments, and can be called like `api.delete()`.
 
 ### Reset {#reset}
 An existing instance of `Urbit` class can be reset with its `reset()` function. This function takes no arguments, and can be called like `api.reset()`. When a channel is reset, all subscriptions are cancelled and all pending updates are discarded. Additionally, all outstanding outbound pokes to the agent will be discarded, and a fresh channel ID will be generated.

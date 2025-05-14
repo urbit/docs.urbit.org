@@ -4,10 +4,6 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 ## App Repos {#app-repos}
 
-[Auth](https://github.com/tinnus-napbus/auth) - Login with Urbit (client).
-
-[Auth Server](https://github.com/tinnus-napbus/auth-server) - Login with Urbit (server).
-
 [Autoprop](https://github.com/urbit/urbit/tree/develop/pkg/autoprop) - automatically build pills.
 
 [Citadel](https://github.com/ryjm/citadel) - desk management on Urbit.

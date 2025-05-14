@@ -1013,7 +1013,72 @@ The `thread` function will produce a promise that, if successful, contains the J
 
 #### Example
 
-examnple
+{% code title="thread-test.html" overflow="nowrap" lineNumbers="true" %}
+
+```html
+<html>
+  <head>
+    <script src="https://unpkg.com/@urbit/http-api"></script>
+  </head>
+  <body>
+    <h1>HTTP API - Threads</h1>
+    <div>
+      <h2>Run the "hi" thread in %base</h2>
+      <div>
+        <input id="name-input" type="text" placeholder="~bud" />
+        <br />
+        <br />
+        <button id="run-thread-btn" type="button" onClick="runHiThread()">
+          Say hi
+        </button>
+      </div>
+      <br />
+      <div id="thread-status">No thread run yet</div>
+      <pre id="thread-result">Results will appear here</pre>
+    </div>
+  </body>
+  <script>
+    const api = new UrbitHttpApi.Urbit("");
+    api.ship = "zod";
+    api.desk = "base";
+    api.url = "http://localhost:8080";
+    api.code = "lidlut-tabwed-pillex-ridrup";
+
+    async function runHiThread() {
+      const name = document.getElementById("name-input").value;
+      const statusEl = document.getElementById("thread-status");
+      const resultEl = document.getElementById("thread-result");
+
+      if (!name) {
+        statusEl.innerText = "Input cannot be empty";
+        return;
+      }
+
+      statusEl.innerText = "Running thread...";
+      resultEl.innerText = "Waiting for thread to complete...";
+
+      try {
+        const result = await api.thread({
+          inputMark: "ship",
+          outputMark: "tang",
+          threadName: "hi",
+          body: name,
+        });
+
+        if (result) {
+          statusEl.innerText = "Thread completed!";
+          resultEl.innerText = "Check the recipient's dojo";
+        }
+      } catch (err) {
+        statusEl.innerText = "Thread error";
+        resultEl.innerText = "Error: " + (err.message || "Unknown error");
+      }
+    }
+  </script>
+</html>
+```
+
+{% endcode %}
 
 ### Delete a channel {#delete-a-channel}
 Rather than just closing individual subscriptions, the entire channel can be closed with the `delete()` function in the `Urbit` class of `@urbit/http-api`. When a channel is closed, all subscriptions are cancelled and all pending updates are discarded. The function takes no arguments, and can be called like `api.cancel()`.

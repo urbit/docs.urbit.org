@@ -6,7 +6,7 @@ Urbit OS is comprised of a virtual operating system (Arvo) and a runtime called 
 
 Running Urbit locally is good for experimentation, but in the long term you'll want to run it as a server — always on and accessible from anywhere. The nice thing about Urbit is that's easy to start local, and later move to cloud hosting or a home server. Or you can start with the latter options.
 
-**Remember, never run your Urbit in more than one place!** Doing so will necessitate a [factory reset](https://operators.urbit.org/manual/id/guide-to-resets).
+**Remember, never run your Urbit in more than one place!** Doing so will necessitate a [factory reset](../../../manual/id/guide-to-resets.md).
 
 ## Next Steps {#next-steps}
 

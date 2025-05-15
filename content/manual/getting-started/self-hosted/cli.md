@@ -202,7 +202,7 @@ Note that `<pier>` in this case is the folder that was created when you first bo
 > sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 > ```
 
-If you've been running Urbit for a while (from before runtime version 1.9) and these `.run` commands don't work for you, it probably means you need to [dock](https://operators.urbit.org/manual/running/vere#dock) your pier. You can do this with the following command:
+If you've been running Urbit for a while (from before runtime version 1.9) and these `.run` commands don't work for you, it probably means you need to [dock](../../../manual/running/vere.md#dock) your pier. You can do this with the following command:
 
 ```
 ./urbit dock <pier>

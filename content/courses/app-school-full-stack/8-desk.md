@@ -168,6 +168,8 @@ Next, in the browser, we navigate to the `%docket` globulator at `http://localho
 
 We select our `journal` desk, then we hit `Choose file`, and select the whole `build` directory which was created when we build our React app. Finally, we hit `glob!` to upload it.
 
+(For real production apps, you might prefer to use the [`-make-glob` thread](../../userspace/apps/reference/dist/glob.md#-make-glob) in the `%landscape` desk.)
+
 If we now return to the homescreen of our ship, we'll see our tile displayed, and we can open our app by clicking on it:
 
 ![](https://m.tinnus-napbus.xyz/pub/tiles.png)
@@ -183,7 +185,6 @@ The last thing we need to do is publish our app, so other users can install it f
 ## Resources {#resources}
 
 - [App publishing/distribution documentation](../../userspace/apps/reference/dist) - Documentation covering third party desk composition, publishing and distribution.
-
 - [Glob documentation](../../userspace/apps/reference/dist/glob.md) - Comprehensive documentation of handling front-end files.
-
 - [Desk publishing guide](../../userspace/apps/guides/software-distribution.md) - A step-by-step guide to creating and publishing a desk.
+- [-make-glob guide](../../userspace/apps/reference/dist/glob.md#-make-glob)

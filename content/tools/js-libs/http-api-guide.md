@@ -154,6 +154,8 @@ In the `/sur` folder of the `%base` desk, create a file `/api-demo.hoon` and def
 - `$api-action`: User actions sent from the frontend to the Gall agent. We just want to put new k-v pairs into the state, and delete them by their keys.
 - `$api-update`: Updates sent from the Gall agent to the frontend. Updates tagged with `%store` will contain the entire updated k-v store. Updates tagged with `%key-value` will contain one key and a unit of a value.
 
+{% code title="/sur/api-demo.hoon" overflow="nowrap" lineNumbers="true" %}
+
 ```hoon
 |%
 +$  api-action
@@ -166,6 +168,8 @@ In the `/sur` folder of the `%base` desk, create a file `/api-demo.hoon` and def
   ==
 --
 ```
+
+{% endcode %}
 
 ### Marks {#marks}
 

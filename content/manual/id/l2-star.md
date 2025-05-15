@@ -1,6 +1,6 @@
 # Layer 2 for stars
 
-This is a brief summary of the three possible options for star owners with respect to use of [layer 2](https://developers.urbit.org/glossary/rollups).
+This is a brief summary of the three possible options for star owners with respect to use of [layer 2](../../system/identity/concepts/layer2.md).
 
 ## One-way trip {#one-way-trip}
 

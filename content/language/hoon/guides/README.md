@@ -12,4 +12,4 @@ Guides to various features of the Hoon language.
 - [vases](vases.md) - dynamic data types in hoon.
 - [Sets](sets.md) - Explore set relations using the Hoon standard library.
 - [Implementing an Aura](aura-guide.md) - How to implement support for a new in Hoon.
-- [Nested Core Pattern](nested-core-pattern.md) - Introduction to the nested core pattern.
+- [The Engine Pattern](engine-pattern.md) - Introduction to the engine pattern.

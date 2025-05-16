@@ -20,7 +20,7 @@ Eyre expects a particular JSON object structure for each of these different requ
 
 ## Scries {#scries}
 
-Eyre's scry interface is separate to the channel system. Scries are performed by a simple GET request to a path with a format of `/~/scry/{agent}{path}.{mark}`. If successful, the HTTP response will contain the result with the mark specified. If unsuccessful, an HTTP error will be thrown in response.
+Eyre's scry interface is separate to the channel system. Scries are performed by a simple GET request to a path with a format of `/~/scry/{agent}{path}.{mark}`. The specified `mark` must include a `+mime` arm in its `+grow` core which converts this datatype to a MIME, which will be included in the HTTP response. If successful, the HTTP response will contain the result with the mark specified. If unsuccessful, an HTTP error will be thrown in response.
 
 The `@urbit/http-api` library we'll use includes a function for performing scries, so we'll not need to manually send GET requests to the ship.
 
@@ -28,5 +28,4 @@ The `@urbit/http-api` library we'll use includes a function for performing scrie
 
 - [The Eyre vane documentation](../../system/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
 - [Eyre External API Reference](../../system/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
-
 - [The Eyre Guide](../../system/kernel/eyre/guides/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).

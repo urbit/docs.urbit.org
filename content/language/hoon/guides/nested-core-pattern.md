@@ -23,7 +23,9 @@ Thus, a very simple engine core could look like this, from an old version of the
   ++  ca-abet
     %_  cor
         chats
-      ?:(gone (~(del by chats) flag) (~(put by chats) flag chat))
+      ?:  gone
+        (~(del by chats) flag)
+      (~(put by chats) flag chat)
     ==
   ++  ca-abed
     |=  f=flag:c
@@ -142,19 +144,26 @@ Gall uses two nested cores to manage agents: `+mo` handles Arvo-level `$move`s, 
 ::
 ++  mo-core  .
 ::  +mo-abed: initialize state with the provided duct
-++  mo-abed  |=(hun=duct mo-core(hen hun))
+++  mo-abed
+  |=(hun=duct mo-core(hen hun))
 ::  +mo-abet: finalize, reversing moves
-++  mo-abet  [(flop moves) gall-payload]
+++  mo-abet
+  [(flop moves) gall-payload]
 ::  +mo-give: prepend a standard %give to the current list of moves
-++  mo-give  |=(g=gift mo-core(moves [[hen give+g] moves]))
+++  mo-give
+  |=(g=gift mo-core(moves [[hen give+g] moves]))
 ::  +mo-pass: prepend a standard %pass to the current list of moves
-++  mo-pass  |=(p=[wire note-arvo] mo-core(moves [[hen pass+p] moves]))
+++  mo-pass
+  |=(p=[wire note-arvo] mo-core(moves [[hen pass+p] moves]))
 ::  +mo-slip: prepend a %slip move to the current list of moves
-++  mo-slip  |=(p=note-arvo mo-core(moves [[hen slip+p] moves]))
-::  +mo-past: ???
-++  mo-past  |=(=(list [wire note-arvo]) ?~(list mo-core =.(mo-core (mo-pass i.list) $(list t.list))))
+++  mo-slip
+  |=(p=note-arvo mo-core(moves [[hen slip+p] moves]))
+::  +mo-past: prepend several %pass moves to the current list of moves
+++  mo-past
+  |=(=(list [wire note-arvo]) ?~(list mo-core =.(mo-core (mo-pass i.list) $(list t.list))))
 ::  +mo-jolt: (re)start agent if not already started on this desk
-++  mo-jolt  |=([dap=term =ship =desk] (mo-boot dap ship desk))
+++  mo-jolt
+  |=([dap=term =ship =desk] (mo-boot dap ship desk))
 ```
 
 {% endcode %}
@@ -181,19 +190,22 @@ Behn exemplifies a clear and simple usage of the `+abet` pattern with stacked co
     ::  any prepended %doze is emitted first
     ::
     =.  moves  (flop moves)
-    =/  new=(unit @da)  (bind (pry:timer-map timers.state) head)
+    =/  new=(unit @da)
+      (bind (pry:timer-map timers.state) head)
     ::  emit %doze if needed
     ::
     =?    ..this
         ?~  unix-duct.state  |
-        =/  dif=[old=(unit @da) new=(unit @da)]  [next-wake.state new]
+        =/  dif=[old=(unit @da) new=(unit @da)]
+          [next-wake.state new]
         ?+  dif  ~|([%unpossible dif] !!)
           [~ ~]  |                        :: no-op
           [~ ^]  &                        :: set
           [^ ~]  &                        :: clear
           [^ ^]  !=(u.old.dif u.new.dif)  :: set if changed
         ==
-      (emit(next-wake.state new) [unix-duct.state %give %doze new])
+      %-  emit(next-wake.state new)
+      [unix-duct.state %give %doze new]
     ::
     [moves state]
 :: * * *
@@ -268,7 +280,13 @@ Classically, a single card would be bundled with any necessary state changes:
 
 ```hoon
 :_  this(messages ~[new-message messages])
-~[[%give %fact ~[/update] %chat-effect !>(`chat-effect`[new-message])]]
+:~  :*  %give  %fact
+        ~[/update]
+        %chat-effect
+        !>  ^-  chat-effect
+        new-message
+    ==
+==
 ```
 
 {% endcode %}
@@ -279,8 +297,14 @@ Much like a single card, a list of cards can be produced and returned from an ar
 
 ```hoon
 :_  this
-:~  [%pass wire %agent [our.bowl %spider] %watch /thread-result/[tid]]                        
-    [%pass wire %agent [our.bowl %spider] %poke %spider-start !>(args)]
+:~  :*  %pass   wire
+        %agent  [our.bowl %spider]
+        %watch  /thread-result/[tid]
+    ==
+    :*  %pass   wire
+        %agent  [our.bowl %spider]
+        %poke   %spider-start  !>(args)
+    ==
 ==
 ```
 
@@ -347,9 +371,12 @@ You've seen the basic nested core pattern above. For the case of a chat app with
 |_  [=bowl:gall cards=(list card)]
   ++  abet  [(flop cards) state]
   ++  cor   .
-  ++  emit  |=(=card cor(cards [card cards]))
-  ++  emil  |=(caz=(list card) cor(cards (welp (flop caz) cards)))
-  ++  give  |=(=gift:agent:gall (emit %give gift))
+  ++  emit
+    |=(=card cor(cards [card cards]))
+  ++  emil
+    |=(caz=(list card) cor(cards (welp (flop caz) cards)))
+  ++  give
+    |=(=gift:agent:gall (emit %give gift))
   ++  now-id   `id:c`[our now]:bowl
   ::  ...
   ++  poke

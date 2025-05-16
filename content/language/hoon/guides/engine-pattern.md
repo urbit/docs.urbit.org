@@ -1,6 +1,10 @@
 # The Engine Pattern
 
-*Adapted from "The Nested Core Design Pattern (As Seen Through `++abet`)", a 2022 blog post by \~lagrev-nocfep, which was written in collaboration with \~rovnys-ricfer.*
+*The following is lightly adapted from "The Nested Core Design Pattern (As Seen Through `++abet`)", a 2022 blog post by \~lagrev-nocfep, which was written in collaboration with \~rovnys-ricfer.*
+
+*They discuss the engine pattern in detail in this video which accompanied the blog post.*
+
+{% embed url="https://youtu.be/T4VyW72zX0w" %}
 
 The [core](../../../glossary/core.md) is one of the key elements of Urbit's subject-oriented programming paradigm. As a way of organizing code and data in a homoiconic language, the core pattern allows Hoon developers to encapsulate processes and lexically scope code while relying on a well-structured fundament. Simple core patterns like gates and traps have only one arm in their battery and possibly no sample at all (for a trap). More complex core patterns (such as the `|^` barket core, and doors) can consist of inner cores and outer cores, as well as stacking samples (such as for a gate in a door).
 

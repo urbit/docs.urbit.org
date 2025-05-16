@@ -18,7 +18,7 @@ For the moment, every live desk must have the same Kelvin version as the kernel.
 
 Each desk defines its own filetypes (called `mark`s), in its `/mar` folder. There are no longer shared system marks that all userspace code knows, nor common libraries in `/lib` or `/sur` — each desk is completely self-contained.
 
-It's common for a desk to want to use files that were originally defined in another desk, so that it can interact with agents on that desk. The convention is that if I'm publishing an app that I expect other devs to build client apps for (on other desks), I split out a "dev desk" containing just the external interface to my desk. Typically, both my app desk and clients' app desks will sync from this dev desk.
+It's common for a desk to want to use files that were originally defined in another desk, so that it can interact with agents on that desk. The convention is that if you're publishing an app that you expect other devs to build client apps for (on other desks), you split out a "dev desk" containing just the external interface to your desk. Typically, both your app desk and clients' app desks will sync from this dev desk.
 
 Tlon has done this internally. Most desks will want to sync the `%base-dev` desk so they can easily interact with the kernel and system apps in the `%base` desk. The `%base` desk includes agents such as `%dojo` and `%hood` (with Kiln as an informal sub-agent of `%hood` that manages desk installations).
 

@@ -99,6 +99,7 @@
             * [Vases](language/hoon/guides/vases.md)
             * [Sets](language/hoon/guides/sets.md)
             * [Implementing an Aura](language/hoon/guides/aura-guide.md)
+            * [The Engine Pattern](language/hoon/guides/engine-pattern.md)
         * [Examples](language/hoon/examples/README.md)
             * [Competitive Programming](language/hoon/examples/competitive.md)
             * [Gleichniszahlenreihe](language/hoon/examples/gleichniszahlenreihe.md)

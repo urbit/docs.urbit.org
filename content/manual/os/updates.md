@@ -124,5 +124,5 @@ If there are `pending updates`, it usually means they're waiting for a kernel up
 
 ## Further reading {#further-reading}
 
-- [Runtime Reference](https://operators.urbit.org/manual/running/vere) - this documents all the options and utilities of the `urbit` binary, such as `next`.
-- [Dojo Tools](https://operators.urbit.org/manual/os/dojo-tools) - this includes documentation of many update and desk-related dojo commands.
+- [Runtime Reference](../../manual/running/vere.md) - this documents all the options and utilities of the `urbit` binary, such as `next`.
+- [Dojo Tools](../../manual/os/dojo-tools.md) - this includes documentation of many update and desk-related dojo commands.

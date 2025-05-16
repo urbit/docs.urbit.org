@@ -1,6 +1,6 @@
 # Guide to Factory Resets
 
-An important concept on the [Ames](https://developers.urbit.org/system/kernel/ames) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _factory reset_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.
+An important concept on the [Ames](../../system/kernel/ames/README.md) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _factory reset_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.
 
 ## Factory Resets {#factory-resets}
 
@@ -8,7 +8,7 @@ Ships on the Ames network sometimes need to reset their continuity. A factory re
 
 Resets often fix connectivity issues, but should only be used as a last resort. Before performing a reset, look at alternative fixes in the [Ship Troubleshooting](../os/ship-troubleshooting.md) guide. Also reach out for help in the Help channel in the Urbit Community group `~bitbet-bolbel/urbit-community` to see if there is another option. Connectivity issues are typically related to a bug, and you may be able to help us fix it by emailing us at `support@urbit.org`.
 
-There are two separate sequences of actions you need to take in order to reset. One flow is for when you wish to keep Ethereum ownership address of the ship the same, and the other is for when you are transferring the ship to a new Ethereum ownership address. We make the emphasis about the Ethereum _ownership_ address as changing your [proxies](https://developers.urbit.org/glossary/proxies) does not require a reset.
+There are two separate sequences of actions you need to take in order to reset. One flow is for when you wish to keep Ethereum ownership address of the ship the same, and the other is for when you are transferring the ship to a new Ethereum ownership address. We make the emphasis about the Ethereum _ownership_ address as changing your [proxies](../../manual/id/proxies.md) does not require a reset.
 
 If you will be keeping your ship at the same Ethereum ownership address and would like to perform a reset, follow the steps below.
 
@@ -16,7 +16,7 @@ If you will be keeping your ship at the same Ethereum ownership address and woul
 - Click on `OS: Urbit OS Settings` at the bottom, then click `Reset Networking Keys`.
 - Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction` and wait for the progress bar to appear.
 - Download your new keyfile following these instructions: [Generate your keyfile](using-bridge.md#generate-your-keyfile).
-- Delete or archive your old [pier](https://developers.urbit.org/glossary/pier).
+- Delete or archive your old [pier](../../glossary/pier.md).
 - Proceed to [boot your ship](../getting-started/self-hosted/cli.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
@@ -28,14 +28,14 @@ If you are transferring a ship to a new Ethereum ownership address you will have
 - Enter the new Ethereum address you would like to transfer ownership to. Click `Generate & Sign Transaction`, then click `Send Transaction` and wait for the progress bar to complete.
 - Logout of your current session in Bridge by clicking `Logout` at the top, and then login to your new ownership address.
 - From here, following the directions on how to [Accept your transfer](using-bridge.md#accept-your-transfer), [Set your networking keys](using-bridge.md#set-your-networking-keys), and [Generate your keyfile](using-bridge.md#generate-your-keyfile). The option whether or not to reset is in the Accept your Transfer step.
-- Delete or archive your old [pier](https://developers.urbit.org/glossary/pier).
+- Delete or archive your old [pier](../../glossary/pier.md).
 - Proceed to [boot your ship](../getting-started/self-hosted/cli.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 
 ## Network Resets {#network-resets}
 
-Network resets were events where all ships on the network were required to update to a new continuity era. Network resets happened when an Arvo update was released that could not be implemented via an [OTA update](https://developers.urbit.org/glossary/ota-updates). The continuity era is given by an integer in Ames that is incremented when the network resets. Only ships with the same such value are able to communicate with one another. The most recent network reset occurred in December 2020, and we expect it to have been the final one.
+Network resets were events where all ships on the network were required to update to a new continuity era. Network resets happened when an Arvo update was released that could not be implemented via an [OTA update](../../glossary/ota-updates.md). The continuity era is given by an integer in Ames that is incremented when the network resets. Only ships with the same such value are able to communicate with one another. The most recent network reset occurred in December 2020, and we expect it to have been the final one.
 
 If another network reset does occur, we will provide accompanying documentation on what to do to transfer your ship and all of its data to the new era.
 

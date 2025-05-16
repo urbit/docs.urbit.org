@@ -13,7 +13,7 @@ Note there is a much more comprehensive [cloud hosting guide](cloud-hosting.md) 
 
 **A note on memory**: By default, the Urbit runtime needs 2GB of free memory, and will fail to boot without it. Urbit usually only uses a portion of this, so it's possible to use a swap file to makeup for a shortfall without degrading performance. For instructions on how to configure a swap file on Linux, see [this linuxize.com guide](https://linuxize.com/post/create-a-linux-swap-file/).
 
-**A note on storage**: Urbit saves every event it processes to its [Event Log](https://developers.urbit.org/reference/glossary/eventlog). This means its disk usage slowly grows over time. Until event log truncation is implemented, it's advisable to have 40 or 50GB of disk space available, so you don't have to worry about running out for a long time. If you don't have that much, your ship will still run fine, but you may run out of space some months down the line.
+**A note on storage**: Urbit saves every event it processes to its [Event Log](../../../glossary/eventlog.md). This means its disk usage slowly grows over time. Until event log truncation is implemented, it's advisable to have 40 or 50GB of disk space available, so you don't have to worry about running out for a long time. If you don't have that much, your ship will still run fine, but you may run out of space some months down the line.
 
 ### 2. Install Urbit {#2-install-urbit}
 
@@ -202,7 +202,7 @@ Note that `<pier>` in this case is the folder that was created when you first bo
 > sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 > ```
 
-If you've been running Urbit for a while (from before runtime version 1.9) and these `.run` commands don't work for you, it probably means you need to [dock](https://operators.urbit.org/manual/running/vere#dock) your pier. You can do this with the following command:
+If you've been running Urbit for a while (from before runtime version 1.9) and these `.run` commands don't work for you, it probably means you need to [dock](../../../manual/running/vere.md#dock) your pier. You can do this with the following command:
 
 ```
 ./urbit dock <pier>

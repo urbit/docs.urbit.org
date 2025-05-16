@@ -4,13 +4,13 @@ Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global,
 
 The most common way to use Clay is to mount a Clay node in a Unix directory. The mounted directory is always at the root of your pier directory.
 
-For more information on Clay, see the [Overview](https://developers.urbit.org/system/kernel/clay), and additional usage information at [Using Clay](https://developers.urbit.org/system/kernel/arvo/clay/using).
+For more information on Clay, see the [Overview](../../system/kernel/clay/README.md), and additional usage information at [Using Clay](../../system/kernel/clay/guides/using.md).
 
 ### Quickstart {#quickstart}
 
 This quick-start guide will walk you through some common commands. Follow along using your Dojo. When you get a `>=` message after entering a command, this means that the command was successful.
 
-A [`desk`](https://developers.urbit.org/glossary/desk) is something like an independently revision-controlled branch of your urbit's file-system. Your urbit's system files live in the `%base` desk.
+A [`desk`](../../glossary/desk.md) is something like an independently revision-controlled branch of your urbit's file-system. Your urbit's system files live in the `%base` desk.
 
 It's important to note that whenever you want to sync changes from your Unix directory to your ship, you must use the `|commit %desk` command, where `%desk` is the `desk` that you'd like to sync to.
 
@@ -207,7 +207,7 @@ Unmounts the Unix path `/foo`.
 
 Merges a source `desk` into a target `desk`.
 
-This can optionally include a [merge strategy](https://developers.urbit.org/system/kernel/arvo/clay/using#merging):
+This can optionally include a [merge strategy](../../system/kernel/clay/guides/using.md#merging):
 
 ```
 |merge %target-desk ~source-ship %source-desk, =gem %strategy

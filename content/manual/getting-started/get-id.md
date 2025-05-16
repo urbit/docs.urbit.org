@@ -2,9 +2,17 @@
 
 ### Types of ID {#types-of-id}
 
-There are [five different types](https://operators.urbit.org/guides/which-id-should-i-buy) of Urbit ID, but here we'll just be  discussing two types called comets and planets.
+There are five types of Urbit IDs, only three of which should be purchased, each with a different role in the network:
 
-**Comets** are free, temporary identities that you can issue yourself and are best-suited for short-term usage. **Planets** are permanent identities that are suitable for long-term use.
+**Galaxies** are likely candidates for large organizations, countries, or any group that wants to have complete control over their own networking. They spawn and sponsor stars, perform peer discovery and NAT traversal similar to DNS, provide provider-style services, and vote on changes to the Urbit smart contracts that run Urbit ID. There are 2^8 (256) galaxies and each can spawn 255 stars.
+
+**Stars** are for businesses, communities, or metropolises. Stars spawn and sponsor planets, perform peer routing, provide hosting or infrastructural services. There are 2^16 (~65K) stars and each can sponsor ~65K planets.
+
+**Planets** are for individuals. They are your username, domain name, and crypto wallet, all wrapped into one asset. Each can spawn 2^32 (~4B) moons.
+
+**Moons** are for devices. They are the IoT of Urbit. These are not independent identities. They cannot change sponsors. Never buy these.
+
+**Comets** are free, temporary identities that you can issue yourself and are best-suited for short-term, anonymous usage. Never buy these.
 
 ![](https://media.urbit.org/site/getting-started/comet-planet.png)
 
@@ -57,7 +65,7 @@ Here are a few of the places where you can buy planets:
 
 **Layer 2 for planets**
 
-Learn more about [layer 2 for planets](https://operators.urbit.org/manual/id/layer-2-for-planets) in the User's Manual page on the topic.
+Learn more about layer 2 planets [here](../../system/identity/reference/README.md).
 
 {% endhint %}
 
@@ -68,7 +76,7 @@ An invitation to claim your planet comes in one of two forms.
 
 The first is an email invitation with an Urbit ID and a Master Ticket.
 
-The second, made available through our [L2 solution](https://operators.urbit.org/manual/id/layer-2-for-planets), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the Urbit ID management tool.
+The second, made available through our [L2 solution](../../system/identity/reference/README.md), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the Urbit ID management tool.
 
 ![](https://media.urbit.org/site/getting-started/Server-setup-1.jpg)
 

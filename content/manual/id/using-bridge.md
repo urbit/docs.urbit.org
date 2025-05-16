@@ -35,7 +35,7 @@ If you were given points by Tlon you likely already fully own them. But if someo
 
 After you access your Ethereum address, if a point was sent to that address, you'll come to a page that has an `Incoming Transfers` header, under which is a graphic. Click the `Details ->` link under that graphic.
 
-Now you'll be on the management page of your point. The transfer isn't completed yet, so click `Accept incoming transfer`. If you are transferring to yourself and do not wish to [factory reset](https://developers.urbit.org/glossary/reset), check the box labeled `Retain proxies and key configuration, in case of transferring to self`. Otherwise leave the box unchecked, ensuring that your ship will be factory reset upon transfer and thus no Azimuth data from the previous owner (namely proxies and networking keys) will be retained. Then press the `Generate and Sign Transaction` button, followed by the `Send Transaction` button.
+Now you'll be on the management page of your point. The transfer isn't completed yet, so click `Accept incoming transfer`. If you are transferring to yourself and do not wish to [factory reset](../../manual/id/guide-to-resets.md), check the box labeled `Retain proxies and key configuration, in case of transferring to self`. Otherwise leave the box unchecked, ensuring that your ship will be factory reset upon transfer and thus no Azimuth data from the previous owner (namely proxies and networking keys) will be retained. Then press the `Generate and Sign Transaction` button, followed by the `Send Transaction` button.
 
 If you already own a point, click on the `Details ->` under your sigil in the `Your Points` section.
 
@@ -78,4 +78,4 @@ As a planet or star, it behooves you to be sponsored by an active star or galaxy
 
 This action will consume a small amount of ETH. Your sponsor will then need to accept you via a similar process in Bridge, which will require ETH on their end. After the transaction is completed on Ethereum, it will still take some time for the information to propagate to the Urbit network. After 30 minutes or so, you may check that your sponsor has successfully been altered by running `(sein:title our now our)` in dojo and confirming that the `@p` matches that of your new sponsor.
 
-Once you change your sponsor, you will likely want to change your source of [OTAs](https://developers.urbit.org/glossary/ota-updates) to them as well. To accomplish this, enter `|ota ~sponsor %kids` in dojo, where `~sponsor` is the `@p` of your new sponsor.
+Once you change your sponsor, you will likely want to change your source of [OTAs](../../glossary/ota-updates.md) to them as well. To accomplish this, enter `|ota ~sponsor %kids` in dojo, where `~sponsor` is the `@p` of your new sponsor.

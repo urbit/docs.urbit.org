@@ -115,7 +115,7 @@ In the text editor, we'll add the following:
     base+'hello'
     glob-ames+[~zod 0v0]
     version+[0 0 1]
-    website+'https://developers.urbit.org/userspace/apps/guides/software-distribution'
+    website+'https://urbit.org'
     license+'MIT'
 ==
 ```

@@ -9,5 +9,5 @@ Note that a backup should usually _not_ be taken of your pier as a means of keep
 ### Further Reading {#further-reading}
 
 - [Event Log](eventlog.md): The main important content of the pier directory.
-- [Guide to Factory Resets](https://urbit.org/using/id/guide-to-resets): Instructions on performing a factory reset.
-- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [Guide to Factory Resets](../manual/id/guide-to-resets.md): Instructions on performing a factory reset.
+- [Ship Troubleshooting](../manual/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.

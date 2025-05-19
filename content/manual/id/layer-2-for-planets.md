@@ -2,7 +2,7 @@
 
 What does Layer 2 mean for planets? Cheap transaction fees which make it inexpensive to get on the network and stay on the network.
 
-Performing transactions directly on the Ethereum blockchain, ‘Layer 1’, has become prohibitively expensive over the past year due to ETH’s value and network congestion. As a result, spawning a planet or performing simple operations in Bridge can be very costly. Urbit’s [Layer 2](https://urbit.org/docs/azimuth/l2/layer2) solution, called [naive rollups](https://urbit.org/blog/rollups), makes performing these transactions cheap or free. Planets can take advantage of this in the form of cheaper planet prices, as well as cheap or free Azimuth transactions.
+Performing transactions directly on the Ethereum blockchain, ‘Layer 1’, has become prohibitively expensive over the past year due to ETH’s value and network congestion. As a result, spawning a planet or performing simple operations in Bridge can be very costly. Urbit’s [Layer 2 solution](../../system/identity/concepts/layer2.md), called [naive rollups](https://urbit.org/blog/rollups), makes performing these transactions cheap or free. Planets can take advantage of this in the form of cheaper planet prices, as well as cheap or free Azimuth transactions.
 
 ### What to know {#what-to-know}
 

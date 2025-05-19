@@ -2,10 +2,6 @@
 
 This section contains examples of building simple apps and additional exercises to help hone your skills.
 
-## [Lightning Tutorials](quickstart) {#lightning-tutorialsquickstart}
-
-Quick walk-throughs of building a groups, chat and voting app.
-
 ## [Building a CLI App](rpn.md) {#building-a-cli-apprpnmd}
 
 Building a simple calculator you can use from the command line.

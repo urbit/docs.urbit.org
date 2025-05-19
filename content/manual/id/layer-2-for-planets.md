@@ -73,9 +73,9 @@ Once you’ve activated your planet and downloaded your keyfile, you can use it 
 
 Treat your planet like the precious object it is. Do not share your landscape login code or master key with anybody. Never run it in two places at the same time. This will knock it out of sequence with the network, and cause it to become ‘brain damaged’, unable to communicate with the outside world. Don’t delete the directory that contains your asset’s data. If you are shutting down your ship for a while, keep the data folder somewhere safe, and you can pick up where you left off in the future.
 
-You may also opt to [host your planet](../getting-started#hosting-providers) with a provider. Ships hosted by providers are always-on and come with support. After you’ve activated your planet code, but before you’ve booted with your keyfile, you can create an account with a hosting provider like [UrbitHost](https://urbithost.com/) and use your keyfile to boot your ship with their service – known as ‘bring your own planet’.
+You may also opt to [host your planet](../getting-started#hosting-providers) with a provider. Ships hosted by providers are always-on and come with support. After you’ve activated your planet code, but before you’ve booted with your keyfile, you can create an account with a hosting provider like [Tlon](https://tlon.io/) and use your keyfile to boot your ship with their service – known as ‘bring your own planet’.
 
-In addition to importing a fresh planet, UrbitHost allows you to migrate an existing pier to your hosted account. If you’ve booted a planet on your PC but want to make the switch to hosting, you can upload it and hit the ground running without having to reset your networking keys.
+In addition to importing a fresh planet, Tlon allows you to migrate an existing pier to your hosted account. If you’ve booted a planet on your PC but want to make the switch to hosting, you can upload it and hit the ground running without having to reset your networking keys. Just email support@tlon.io.
 
 ### Transaction history {#transaction-history}
 

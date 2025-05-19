@@ -9,7 +9,7 @@ Our objective is to illustrate a minimum viable set of changes necessary to impl
 1. A front end.  We will start with the JS browser app and make some adjustments so it can communicate with Urbit and display shared results.
 2. A data model.  Structure and mark files will allow the components of the system to seamlessly communicate.
 3. A back end.  Urbit will serve as the database for storing and propagating scores.  Urbit will also serve the front end.
-4. A communications protocol.  The leaderboard will need to know who to watch and track as peers.  We will utilize [~paldev](https://urbit.org/ids/~paldev)'s [`%pals`](https://urbit.org/applications/~paldev/pals) contact list.
+4. A communications protocol.  The leaderboard will need to know who to watch and track as peers.  We will utilize ~paldev's `%pals` contact list.
 
 We will conceive of this app's communications structure as consisting of a _vertical_ component (which is the communication between the client in the browser and the Urbit ship as database) and a _horizontal_ component (which is the communication between Urbit peers).  Vertical communication will take place using JSON via the `%flap-action` mark, while horizontal communication will take place using the `%flap-update` mark.  Apps can achieve good data modularity using this separation.
 
@@ -20,7 +20,7 @@ We will conceive of this app's communications structure as consisting of a _vert
 
 As with all Urbit development, you should set up a development ship.  In this case, it will be more convenient to have this ship be on the live network:  a comet or a moon.  Below, we refer to this as `comet`.
 
-On that ship, `|install ~paldev %pals`.  Optionally, download [~paldev](https://urbit.org/ids/~paldev)'s [Suite repo](https://github.com/Fang-/suite) in case you need to refer to `%pals`-related code.
+On that ship, `|install ~paldev %pals`.  Optionally, download ~paldev's [Suite repo](https://github.com/Fang-/suite) in case you need to refer to `%pals`-related code.
 
 Download the [Flappy Bird repo](https://github.com/CodeExplainedRepo/Original-Flappy-bird-JavaScript/).  Although we will follow this clone, other versions and other games follow a similar structure and the below approach is highly transferrable.
 

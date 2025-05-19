@@ -205,7 +205,7 @@ return u3i_words(1, &c);
 
 There's a second trivial case to handle one of the values being zero.  (It is unclear to the author of this tutorial why both cases as-zero are not being handled; the speed change may be too trivial to matter.)
 
-Finally, the general case of adding the values at two loom addresses is dealt with.  This requires general pointer-based arithmetic with [GMP multi-precision integer operations](https://gnu.huihoo.org/gmp-3.1.1/html_chapter/gmp_4.html).
+Finally, the general case of adding the values at two loom addresses is dealt with.  This requires general pointer-based arithmetic with GMP multi-precision integer operations.
 
 ```c
 mpz_t a_mp, b_mp;             # mpz_t is a GMP multi-precision integer type

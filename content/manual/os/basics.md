@@ -58,7 +58,7 @@ Delete the tar file, and, after installing Urbit on your new server, start your 
 
 ## Hardware requirements {#hardware-requirements}
 
-Urbit can run on any x86 computer (unofficial, unsupported [ARM binaries](https://botter-nidnul.github.io/AArch64_Urbit_Static_Binaries.html) are also available), ideally with at least 2GB of RAM.
+Urbit can run on any x86 or ARM computer, ideally with at least 2GB of RAM.
 
 Urbit maintains a persistent log of the history of your ship. Eventually this log will be automatically trimmed when necessary, but for now it only increases in size. An actively used planet will consume 5-50 GB of storage space per year of operation.
 

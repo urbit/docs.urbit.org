@@ -10,4 +10,4 @@ Traditionally a ship has at least a `%base` desk, and typically `%landscape` and
 
 ### Further Reading {#further-reading}
 
-- [Using Your Ship](https://urbit.org/using/os/filesystem): A user guide that includes instructions for using desks.
+- [Using Your Ship](../manual/os/filesystem.md): A user guide that includes instructions for using desks.

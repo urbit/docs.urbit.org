@@ -383,7 +383,6 @@
         * [Runtime Reference](manual/running/vere.md)
         * [Cloud Hosting](manual/running/hosting.md)
         * [Self-hosting S3 Storage with MinIO](manual/running/minio.md)
-        * [Coturn Operator Guide](manual/running/coturn.md)
 * [Glossary](glossary/README.md)
     * [@p](glossary/patp.md)
     * [Agent](glossary/agent.md)

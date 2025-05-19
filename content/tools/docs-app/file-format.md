@@ -69,9 +69,7 @@ Ordinary HTML files may be used, but note the tag and structural restrictions de
 
 ### `%gmi` {#gmi}
 
-Gemtext is an ultra-minimal markup format developed for the [Gemini
-project](https://gemini.circumlunar.space/), an internet protocol for serving
-light-weight hypertext, inspired by Gopher. Its file extension is `.gmi`.
+Gemtext is an ultra-minimal markup format developed for the [Gemini project](https://en.wikipedia.org/wiki/Gemini_(protocol)), an internet protocol for servinglight-weight hypertext, inspired by Gopher. Its file extension is `.gmi`.
 
 Gemtext interprets things on a line-by-line basis, and does not support different types on a single line. Every line is a separate element, with the exception of fenced codeblocks which may span multiple lines. In brief, here is the syntax:
 

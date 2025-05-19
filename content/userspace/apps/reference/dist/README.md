@@ -26,8 +26,6 @@ A "landscape app", i.e. a desk that defines a tile that the user can launch from
 
 The `%docket` agent reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](glob.md)). Docket is a new agent, in the `%landscape` desk, that manages app installations. Docket serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
 
-For those of you familiar with the old `%glob` and `%file-server` agents, they have now been replaced by Docket.
-
 ### Anatomy of a Desk {#anatomy-of-a-desk}
 
 Desks still contain helper files in `/lib` and `/sur`, generators in `/gen`, marks in `/mar`, threads in `/ted`, tests in `/tests`, and agents in `/app`. In addition, desks now also contain these files:

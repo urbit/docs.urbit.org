@@ -1,37 +1,37 @@
 # Dojo Tools
 
-[path]: https://docs.urbit.org/glossary/path
-[ship]: https://docs.urbit.org/glossary/ship
-[desk]: https://docs.urbit.org/glossary/desk
-[clay]: https://docs.urbit.org/glossary/clay
-[dojo]: https://docs.urbit.org/glossary/dojo
-[gall]: https://docs.urbit.org/glossary/gall
-[agent]: https://docs.urbit.org/glossary/agent
-[scry]: https://docs.urbit.org/glossary/scry
-[case]: https://docs.urbit.org/glossary/case
-[arvo]: https://docs.urbit.org/glossary/arvo
-[kernel]: https://docs.urbit.org/glossary/kernel
-[mark]: https://docs.urbit.org/glossary/mark
-[hoon]: https://docs.urbit.org/glossary/hoon
-[generator]: https://docs.urbit.org/glossary/generator
-[thread]: https://docs.urbit.org/glossary/thread
-[care]: https://docs.urbit.org/glossary/care
-[path prefix]: https://docs.urbit.org/glossary/path-prefix
-[core]: https://docs.urbit.org/glossary/core
-[gate]: https://docs.urbit.org/glossary/gate
-[vane]: https://docs.urbit.org/glossary/vane
-[life]: https://docs.urbit.org/glossary/life
-[rift]: https://docs.urbit.org/glossary/rift
-[behn]: https://docs.urbit.org/glossary/behn
-[cord]: https://docs.urbit.org/glossary/cord
-[bowl]: https://docs.urbit.org/glossary/bowl
-[bridge]: https://docs.urbit.org/glossary/bridge
-[pill]: https://docs.urbit.org/glossary/pill
-[moon]: https://docs.urbit.org/glossary/moon
-[move]: https://docs.urbit.org/glossary/move
-[eyre]: https://docs.urbit.org/glossary/eyre
-[ames]: https://docs.urbit.org/glossary/ames
-[azimuth]: https://docs.urbit.org/glossary/azimuth
+[path]: ../../glossary/path.md
+[ship]: ../../glossary/ship.md
+[desk]: ../../glossary/desk.md
+[clay]: ../../glossary/clay.md
+[dojo]: ../../glossary/dojo.md
+[gall]: ../../glossary/gall.md
+[agent]: ../../glossary/agent.md
+[scry]: ../../glossary/scry.md
+[case]: ../../glossary/case.md
+[arvo]: ../../glossary/arvo.md
+[kernel]: ../../glossary/kernel.md
+[mark]: ../../glossary/mark.md
+[hoon]: ../../glossary/hoon.md
+[generator]: ../../glossary/generator.md
+[thread]: ../../glossary/thread.md
+[care]: ../../glossary/care.md
+[path prefix]: ../../glossary/path-prefix.md
+[core]: ../../glossary/core.md
+[gate]: ../../glossary/gate.md
+[vane]: ../../glossary/vane.md
+[life]: ../../glossary/life.md
+[rift]: ../../glossary/rift.md
+[behn]: ../../glossary/behn.md
+[cord]: ../../glossary/cord.md
+[bowl]: ../../glossary/bowl.md
+[bridge]: ../../glossary/bridge.md
+[pill]: ../../glossary/pill.md
+[moon]: ../../glossary/moon.md
+[move]: ../../glossary/move.md
+[eyre]: ../../glossary/eyre.md
+[ames]: ../../glossary/ames.md
+[azimuth]: ../../glossary/azimuth.md
 
 Below are the various [generators][generator], [threads][thread] and other tools included with the `%base` desk and usable in the [dojo][dojo]. These are organized into rough categories for convenience.
 

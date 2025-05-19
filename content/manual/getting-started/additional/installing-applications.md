@@ -4,21 +4,15 @@ Installing Urbit applications is simple. Search for the developer and download t
 
 ### 1. Finding applications {#1-finding-applications}
 
-To install an application, you'll need to know the ship it is distributed from, which is often its developer's Urbit ID, *e.g.* `~paldev` or `~dister-fabnev-hinmur`. If you know the application, you can enter the full shortcode, e.g. `~paldev/pals`. 
-
-You can find a [public directory of applications](https://urbit.org/ecosystem?type=applications) in the Ecosystem section of urbit.org.
-
-Not all applications are listed on urbit.org, so you’ll discover more by actively using Urbit and meeting people.
-
-However, we can get started by using a simple app from Urbit developer [`~paldev`](https://urbit.org/ids/~paldev).
+To install an application, you'll need to know the ship it is distributed from, which is often its developer's Urbit ID, *e.g.* \~paldev or \~dister-fabnev-hinmur. If you know the application's name and the developer's Urbit ID, you can enter the full shortcode, e.g. \~paldev/pals. 
 
 ### 2. Search for a Developer {#2-search-for-a-developer}
 
-Once you’re on the network, you’ll see a large tiled interface with a few applications and a search bar on the top of the page.
+If you want to find applications without knowing the shortcode, check the "Get Urbit Apps" menu in the Landscape grid, the tiled interface you see when you open Urbit.
 
 Click and the search bar and search for the software provider’s Urbit ID.
 
-For example, to install the pals application, search for `~paldev` and then click on the result for `~paldev` to show the applications.
+For example, to install the pals application, search for \~paldev and then click on the result for \~paldev to show the applications.
 
 ![](https://media.urbit.org/site/getting-started/install-apps-1.png)
 

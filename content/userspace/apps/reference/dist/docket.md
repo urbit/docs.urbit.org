@@ -4,7 +4,7 @@ The docket file sets various options for desks with a tile and (usually) a brows
 
 The docket file is read by the `%docket` agent when a desk is `|install`ed. The `%docket` agent will fetch the glob if applicable and create the tile as specified on the homescreen. If the desk is published with `:treaty|publish`, the information specified in the docket file will also be displayed for others who are browsing apps to install on your ship.
 
-The docket file is _optional_ in the general case. If it is omitted, however, the app cannot have a tile in the homescreen, nor can it be published with the `%treaty` agent, so others will not be able to browse for it from their homescreens.
+The docket file is _optional_ in the general case. If it is omitted, however, the app cannot have a tile in Landscape, nor can it be published with the `%treaty` agent, so others will not be able to browse for it in Landscape.
 
 The docket file must be named `desk.docket-0`. The `%docket` `mark` is versioned to facilitate changes down the line, so the `-0` suffix may be incremented in the future.
 

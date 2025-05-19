@@ -143,7 +143,7 @@ You can save the code above in `/app/skeleton.hoon` of your `%base` desk like be
 > |rein %base [& %skeleton]
 ```
 
-For details of using the `|rein` generator, see the [Dojo Tools](https://urbit.org/using/os/dojo-tools#rein) documentation.
+For details of using the `|rein` generator, see the [Dojo Tools](../../manual/os/dojo-tools.md#rein) documentation.
 
 Now our agent should be running, so let's try out `dbug`. In the dojo, let's try poking our agent with the `+dbug` generator:
 

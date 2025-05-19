@@ -56,7 +56,7 @@ At the current time, galaxies play the role of network peer discovery, but at so
 
 #### Star
 
-Peer discovery, the primary role of stars besides planet allocation, is an important step in responsibly controlling network traffic. “The basic idea is, you need someone to sponsor your membership on the network. An address that can’t find a sponsor is probably a bot or a spammer” ([docs](https://urbit.org/understanding-urbit/)).
+Peer discovery, the primary role of stars besides planet allocation, is an important step in responsibly controlling network traffic. You need someone trustworthy to sponsor your membership on the network. An address that can’t find a sponsor may reasonably be considered to be a bot or a spammer.
 
 The [Stars](../../glossary/star.md) span the remaining addresses to 2¹⁶. There are thus 65,536 - 256 = 65,280 stars. Star names have prefix and suffix. They share the suffix with their sponsoring galaxy.
 

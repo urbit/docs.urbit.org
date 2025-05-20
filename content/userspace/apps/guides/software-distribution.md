@@ -10,29 +10,43 @@ Follow the [CLI install instructions](../../../manual/getting-started/self-hoste
 
 ## Spin up fake ship {#spin-up-fake-ship}
 
-*Note: You can skip this step if you already have a fake `zod`.*
+*Note: You can skip this step if you already have a fake ~zod.*
 
-With the `urbit` binary installed, run the following in the terminal to spin up a fake `zod`:
+With the `urbit` binary installed, run the following in the terminal to spin up a fake ~zod:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```sh
 ./urbit -F zod
 ```
 
+{% endcode %}
+
 It will take a couple of minutes to spin up, but it should eventually take you to a Dojo prompt like:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 ~zod:dojo>
 ```
 
+{% endcode %}
+
 ## Create desk {#create-desk}
 
-In the Dojo of your fake `zod`, run the following to create a new desk called `%hello`:
+In the Dojo of your fake ~zod, run the following to create a new desk called `%hello`:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 |new-desk %hello
 ```
 
+{% endcode %}
+
 If you now run `+tree` on the desk, you'll see it now exists and has a handful of files in it:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 > +tree /=hello=
@@ -43,9 +57,13 @@ If you now run `+tree` on the desk, you'll see it now exists and has a handful o
 /sys/kelvin
 ```
 
+{% endcode %}
+
 ## Copy in extra files {#copy-in-extra-files}
 
 Each desk must be self-contained in terms of its `mark` files and libraries. There's a couple of extra mark files and such that we'll need to add, so run the following commands in the Dojo:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 |cp %/mar/mime/hoon /=hello=/mar/mime/hoon
@@ -57,19 +75,29 @@ Each desk must be self-contained in terms of its `mark` files and libraries. The
 |cp /=landscape=/lib/docket/hoon /=hello=/lib/docket/hoon
 ```
 
+{% endcode %}
+
 ## Mount the desk {#mount-the-desk}
 
 Now we have all the basic files we need, we can mount the desk to the host. Run the following in the Dojo:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 |mount %hello
 ```
 
+{% endcode %}
+
 Now, in an ordinary terminal (not the Dojo), navigate to the mounted desk:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```sh
 cd zod/hello
 ```
+
+{% endcode %}
 
 ## Config files {#config-files}
 
@@ -81,31 +109,46 @@ Our desk must include a `sys.kelvin` file which specifies the kernel version it'
 
 We can optionally add a `desk.ship` file to specify the original publisher of this desk. We're using a fake `zod` so let's just add `~zod` as the publisher:
 
+{% code title="Unix" overflow="nowrap" %}
+
 ```sh
 echo "~zod" > desk.ship
 ```
 
+{% endcode %}
+
 ### `desk.bill` {#deskbill}
 
-If we had Gall agents in this desk which should be automatically started when the desk is installed, we'd add them to a `hoon` list in the `desk.bill` file. It would look something like this:
+If we had Gall agents in this desk which should be automatically started when the desk is installed, we'd add them to a list in the `desk.bill` file. It would look something like this:
+
+{% code title="/desk.bill" overflow="nowrap" %}
 
 ```hoon
-:~  %some-app
-    %another
+:~  %some-agent
+    %another-agent
 ==
 ```
 
-In this example we're not adding any agents, so we'll simply omit the `desk.bill` file.
+{% endcode %}
+
+In this example we're not adding any agents, so we'll simply omit the `/desk.bill` file.
 
 ### `desk.docket-0` {#deskdocket-0}
 
-The final file we need is `desk.docket-0`. This one's more complicated, so we'll open it in our preferred text editor:
+The final file we need is `/desk.docket-0`. This one's more complicated, so we'll open it in our preferred text editor:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```sh
 nano desk.docket-0
 ```
 
+{% endcode %}
+
 In the text editor, we'll add the following:
+
+{% code title="/desk.docket-0" overflow="nowrap" %}
+
 ```hoon
 
 :~  title+'Hello'
@@ -120,6 +163,8 @@ In the text editor, we'll add the following:
 ==
 ```
 
+{% endcode %}
+
 You can refer to the [Docket File](../reference/dist/docket.md) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](../reference/dist/docket.md) which configure the appearance of the app tile, the source of the [glob](../reference/dist/glob.md), and some other metadata.
 
 We've given the app a [`%title`](../reference/dist/docket.md#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](../reference/dist/docket.md#color) of `#8188C9`, and also specified the URL of an [`%image`](../reference/dist/docket.md#image) to display on the tile.
@@ -130,20 +175,30 @@ The [`%version`](../reference/dist/docket.md#version) clause specifies the versi
 
 So let's save that to the `desk.docket-0` file and have a look at our desk:
 
+{% code title="Unix" overflow="nowrap" %}
+
 ```sh
 ls
 desk.docket-0  desk.ship  lib  mar  sur  sys.kelvin
 ```
 
+{% endcode %}
+
 ## Commit {#commit}
 
 Now we've added out configuration files, we can commit them to the desk. Back in the fake `zod`'s Dojo, run the following:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 |commit %hello
 ```
 
+{% endcode %}
+
 You should see something like this as the result:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 >=
@@ -151,25 +206,37 @@ You should see something like this as the result:
 + /~zod/hello/9/desk/docket-0
 ```
 
+{% endcode %}
+
 ## Install {#install}
 
 The next step is to install the desk as an app. Run the following in the Dojo:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 |install our %hello
 ```
 
+{% endcode %}
+
 You should see a message like:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 docket: awaiting manual glob for %hello desk
 ```
+
+{% endcode %}
 
 That's because our `desk.docket-0` file includes a [`%glob-ames`](../reference/dist/docket.md#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob of front-end files.
 
 ## Create files for glob {#create-files-for-glob}
 
 We'll now create the files for the glob. We'll use a very simple static HTML page that just displayes "Hello World!" and an image. Typically we'd have a more complex JS web app that talked to apps on our ship through Eyre's channel system, but for the sake of simplicity we'll forgo that. Let's hop back in the Unix terminal and run a few commands:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```sh
 cd ~
@@ -179,7 +246,11 @@ mkdir img
 wget -P img https://media.urbit.org/guides/additional/dist/pot.svg
 ```
 
+{% endcode %}
+
 We should now have the following file structure in our home directory:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```
 hello-glob
@@ -187,13 +258,21 @@ hello-glob
     └── pot.svg
 ```
 
+{% endcode %}
+
 We've grabbed an image to use in our "Hello world!" page. The next thing we need to add is an `index.html` file in the root of the folder. The `index.html` file is mandatory; it's what will be loaded when the app's tile is clicked. Let's open our preferred editor and create it:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```sh
 nano index.html
 ```
 
+{% endcode %}
+
 In the editor, paste in the following HTML and save it:
+
+{% code title="index.html" overflow="nowrap" %}
 
 ```html
 <!DOCTYPE html>
@@ -215,7 +294,11 @@ In the editor, paste in the following HTML and save it:
 </html>
 ```
 
+{% endcode %}
+
 Our `hello-glob` folder should now look like this:
+
+{% code title="Unix" overflow="nowrap" %}
 
 ```
 hello-glob
@@ -223,6 +306,8 @@ hello-glob
 │   └── pot.svg
 └── index.html
 ```
+
+{% endcode %}
 
 ## Login to Landscape {#login-to-landscape}
 
@@ -254,10 +339,14 @@ Our app is working!
 
 The final step is publishing our desk with the `%treaty` agent so others can install it. To do this, there's a simple command in the dojo:
 
+{% code title="Dojo" overflow="nowrap" %}
+
 ```
 > :treaty|publish %hello
 >=
 ```
+
+{% endcode %}
 
 Note: For desks without a docket file (and therefore without a tile and glob), treaty can't be used. Instead you can make the desk public with `|public %desk-name`.
 
@@ -265,10 +354,14 @@ Note: For desks without a docket file (and therefore without a tile and glob), t
 
 Let's spin up another fake ship in the terminal so we can try install it:
 
+{% code title="Unix" overflow="nowrap" %}
+
 ```sh
 cd ~
 ./urbit -F bus
 ```
+
+{% endcode %}
 
 Note: For desks without a docket file (and therefore without a tile and glob), users cannot install them through the web interface. Instead remote users can install it from the dojo with `|install ~our-ship %desk-name`.
 

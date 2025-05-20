@@ -60,7 +60,7 @@ When an app is started, `%docket` will read the `desk.docket-0` file in the desk
 
 If the glob is to be served over Ames, the Docket globulator at the `/docket/upload` URL will let you upload the front-end files. It'll automatically update the `desk.docket-0` file with the name and hash so people who install the desk know where to get it.
 
-If the glob is to be served over HTTP, the `-make-glob` thread can be used to assemble it from the individual front-end files and output the resulting `.glob` file to the host filesystem. You can then upload the glob to an s3 bucket or wherever else you'd like to serve it from. You can then update the `desk.docket-0` file with the URL.
+If the glob is to be served over HTTP, the [`-make-glob`](glob.md#make-glob) thread can be used to assemble it from the individual front-end files and output the resulting `.glob` file to the host filesystem. You can then upload the glob to an s3 bucket or wherever else you'd like to serve it from. You can then update the `desk.docket-0` file with the URL.
 
 Note that serving a glob over Ames might increase the install time for your app, since Ames is currently pretty slow compared to HTTP — but being able to serve a glob from your ship allows you to serve your whole app, both server-side and client-side, without setting up a CDN or any other external web tooling. Your ship can do it all on its own.
 

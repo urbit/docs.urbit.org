@@ -362,6 +362,16 @@ In addition to the above interface offered to agents, there is also a thread `/t
 
 That trailing `~` specifies the task to use, which depends on the security status: either `[%chum ~]` for a two-party encrypted remote scry, `[%shut idx=@ key=@]` for a multi-party encrypted remote scry, or `~` to do a regular `%keen` to a public path.
 
+If there were a `%test` agent on ~sampel with path `/foo/bar` that you wanted to scry with this thread, you'd do so like this:
+
+{% code title="Dojo" wrap="nowrap" %}
+
+```
+-peek [[~sampel /g/x/1/test//1/foo/bar] ~]
+```
+
+{% endcode %}
+
 ## Additional reading {#additional-reading}
 
 - [Gall scry reference](../../../system/kernel/gall/reference/scry.md): Reference documentation of Gall's vane-level and agent-level scry interface.

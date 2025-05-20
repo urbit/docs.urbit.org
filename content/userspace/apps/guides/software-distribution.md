@@ -61,7 +61,7 @@ If you now run `+tree` on the desk, you'll see it now exists and has a handful o
 
 ## Copy in extra files {#copy-in-extra-files}
 
-Each desk must be self-contained in terms of its `mark` files and libraries. There's a couple of extra mark files and such that we'll need to add, so run the following commands in the Dojo:
+Each desk must be self-contained in terms of its mark files and libraries. There's a couple of extra mark files and such that we'll need to add, so run the following commands in the Dojo:
 
 {% code title="Dojo" overflow="nowrap" %}
 
@@ -107,7 +107,7 @@ Our desk must include a `sys.kelvin` file which specifies the kernel version it'
 
 ### `desk.ship` {#deskship}
 
-We can optionally add a `desk.ship` file to specify the original publisher of this desk. We're using a fake `zod` so let's just add `~zod` as the publisher:
+We can optionally add a `desk.ship` file to specify the original publisher of this desk. We're using a fake \~zod so let's just add ~zod as the publisher:
 
 {% code title="Unix" overflow="nowrap" %}
 
@@ -121,7 +121,7 @@ echo "~zod" > desk.ship
 
 If we had Gall agents in this desk which should be automatically started when the desk is installed, we'd add them to a list in the `desk.bill` file. It would look something like this:
 
-{% code title="/desk.bill" overflow="nowrap" %}
+{% code title="desk.bill" overflow="nowrap" %}
 
 ```hoon
 :~  %some-agent
@@ -131,11 +131,11 @@ If we had Gall agents in this desk which should be automatically started when th
 
 {% endcode %}
 
-In this example we're not adding any agents, so we'll simply omit the `/desk.bill` file.
+In this example we're not adding any agents, so we'll simply omit the `desk.bill` file.
 
 ### `desk.docket-0` {#deskdocket-0}
 
-The final file we need is `/desk.docket-0`. This one's more complicated, so we'll open it in our preferred text editor:
+The final file we need is `desk.docket-0`. This one's more complicated, so we'll open it in our preferred text editor:
 
 {% code title="Unix" overflow="nowrap" %}
 
@@ -147,7 +147,7 @@ nano desk.docket-0
 
 In the text editor, we'll add the following:
 
-{% code title="/desk.docket-0" overflow="nowrap" %}
+{% code title="desk.docket-0" overflow="nowrap" %}
 
 ```hoon
 
@@ -169,7 +169,7 @@ You can refer to the [Docket File](../reference/dist/docket.md) documentation fo
 
 We've given the app a [`%title`](../reference/dist/docket.md#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](../reference/dist/docket.md#color) of `#8188C9`, and also specified the URL of an [`%image`](../reference/dist/docket.md#image) to display on the tile.
 
-The [`%base`](../reference/dist/docket.md#base) clause specifies the base URL path for the app. We've specified "hello" so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](../reference/dist/glob.md), we've used a clause of [`%glob-ames`](../reference/dist/docket.md#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](../reference/dist/docket.md#glob-http) clause or having an Eyre binding with a [`%site`](../reference/dist/docket.md#site) clause. You can refer to the [glob](../reference/dist/glob.md) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since `~zod` is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the `glob`, so we can just specify `0v0` here as it'll get overwritten later.
+The [`%base`](../reference/dist/docket.md#base) clause specifies the base URL path for the app. We've specified `'hello'` so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](../reference/dist/glob.md), we've used a clause of [`%glob-ames`](../reference/dist/docket.md#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](../reference/dist/docket.md#glob-http) clause or having an Eyre binding with a [`%site`](../reference/dist/docket.md#site) clause. You can refer to the [glob](../reference/dist/glob.md) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since ~zod is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the glob, so we can just specify `0v0` here as it'll get overwritten later.
 
 The [`%version`](../reference/dist/docket.md#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
 
@@ -186,7 +186,7 @@ desk.docket-0  desk.ship  lib  mar  sur  sys.kelvin
 
 ## Commit {#commit}
 
-Now we've added out configuration files, we can commit them to the desk. Back in the fake `zod`'s Dojo, run the following:
+Now we've added out configuration files, we can commit them to the desk. Back in the fake ~zod's Dojo, run the following:
 
 {% code title="Dojo" overflow="nowrap" %}
 
@@ -296,7 +296,7 @@ In the editor, paste in the following HTML and save it:
 
 {% endcode %}
 
-Our `hello-glob` folder should now look like this:
+Our `/hello-glob` folder should now look like this:
 
 {% code title="Unix" overflow="nowrap" %}
 
@@ -311,19 +311,19 @@ hello-glob
 
 ## Login to Landscape {#login-to-landscape}
 
-Open a web browser and navigate to `localhost:8080`, or just `localhost` if port `8080` doesn't work. It should take you to the fake `zod`'s login screen. Login with the default code of `lidlut-tabwed-pillex-ridrup`.
+Open a web browser and navigate to `localhost:8080`, or just `localhost` if port `8080` doesn't work. It should take you to the fake ~zod's login screen. Login with the fake ~zod's default code of `lidlut-tabwed-pillex-ridrup`.
 
-Once you login, you'll notice you have the `Hello` app tile, but it still says "installing" because we haven't uploaded the glob yet:
+Once you login, you'll notice you have the Hello app's tile, but it still says "installing" because we haven't uploaded the glob yet:
 
 ![](https://media.urbit.org/guides/additional/dist/2-installing.png)
 
 ## Upload to glob {#upload-to-glob}
 
-We can now create a glob from the `hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](../reference/dist/glob.md#globulator) tool:
+We can now create a glob from the `/hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](../reference/dist/glob.md#globulator) tool:
 
 ![](https://media.urbit.org/guides/additional/dist/2-globulator.png)
 
-Simply select the `hello` desk from the drop-down, click `Choose file` and select the `hello-glob` folder in the the file browser, then hit `glob!`.
+Simply select "hello" from the drop-down, click "Choose file" and select the `/hello-glob` folder in the the file browser, then click the "glob!" button.
 
 Now if we return to our ship's homescreen, we should see the tile looks as we specified in the docket file:
 
@@ -348,7 +348,7 @@ The final step is publishing our desk with the `%treaty` agent so others can ins
 
 {% endcode %}
 
-Note: For desks without a docket file (and therefore without a tile and glob), treaty can't be used. Instead you can make the desk public with `|public %desk-name`.
+Note: For desks without a docket file (and therefore without a tile and glob), `%treaty` can't be used. Instead you can make the desk public with `|public %desk-name`, which will enable other ships to install it with the Dojo command `|install ~sampel %desk-name`.
 
 ## Remote install {#remote-install}
 
@@ -363,9 +363,7 @@ cd ~
 
 {% endcode %}
 
-Note: For desks without a docket file (and therefore without a tile and glob), users cannot install them through the web interface. Instead remote users can install it from the dojo with `|install ~our-ship %desk-name`.
-
-In the browser, navigate to `localhost:8081` (or `localhost:8080` if that doesn't work)  and login with `~bus`'s code `riddec-bicrym-ridlev-pocsef`. Next, type `~zod` in the search bar and click on the matching result. It should pop up a list of `zod`'s published apps, which in this case is our `Hello` app:
+In the browser, navigate to `localhost:8081` (or `localhost:8080` if that doesn't work)  and login with \~bus's code `riddec-bicrym-ridlev-pocsef`. Next, type "~zod" in the search bar and click on the matching result. It should pop up a list of ~zod's published apps, which in this case is our "Hello" app:
 
 ![](https://media.urbit.org/guides/additional/dist/2-zod-apps.png)
 
@@ -373,10 +371,10 @@ When we click on the app, it'll show some of the information from the clauses in
 
 ![](https://media.urbit.org/guides/additional/dist/2-hello-info.png)
 
-Click `Get App` and it'll ask as if we want to install it:
+Click "Get App" and it'll ask as if we want to install it:
 
 ![](https://media.urbit.org/guides/additional/dist/2-install-hello.png)
 
-Finally, click `Get "Hello"` and it'll be installed as a tile on `~bus` which can then be opened:
+Finally, click "Get 'Hello'" and it'll be installed as a tile on ~bus which can then be opened:
 
 ![](https://media.urbit.org/guides/additional/dist/2-hello-installed-bus.png)

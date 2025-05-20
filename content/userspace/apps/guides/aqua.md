@@ -69,4 +69,4 @@ Aqua has the following commands:
 
 `:aqua [%swap-files ~]` modifies the pill to use the files you have in your filesystem without rebuilding the whole pill. For example, if you change an app and you want to test the new version, you must install it in the pill. This command will do that.
 
-`:aqua [%swap-vanes ~[%a]]` Modifies the pill to load a new version of a vane (`%a` == Ames in this example, but it can be any list of vanes). This is faster than running `:aqua +pill/solid`.
+`:aqua [%swap-vanes ~[%a]]` Modifies the pill to load a new version of a vane (`%a` = Ames in this example, but it can be any list of vanes). This is faster than running `:aqua +pill/solid`.

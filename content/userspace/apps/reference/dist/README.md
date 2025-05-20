@@ -16,9 +16,9 @@ Each desk defines its own filetypes (called `mark`s), in its `/mar` folder. Ther
 
 It's common for a apps to interact with apps on other desks, and therefore need marks and libraries by the other desk's developer. Since direct cross-desk dependencies are not currently supported, the typical approach is for app developers to publish a "dev" folder on their git repo with the files need for developers interfacing with their app.
 
-Most desks will want to include the `%base-dev` desk in the [urbit/urbit](https://github.com/urbit/urbit) repo so they can easily interact with system apps in the `%base` desk.
+Most desks will want to include the `base-dev` folder from the [urbit/urbit](https://github.com/urbit/urbit) repo so they can easily interact with system apps in the `%base` desk.
 
-landscape app (those with frontends launched from a tile in Landscape), should also include `desk-dev` in the [Landscape repo](https://github.com/tloncorp/landscape). This desk includes the `%docket-0` mark, which the app needs in order to include a `/desk/docket-0` file.
+Landscape apps (those with frontends launched from a tile in Landscape), should also include `desk-dev` from the [Landscape repo](https://github.com/tloncorp/landscape). This folder includes the `%docket-0` mark, which the app needs in order to include a `/desk/docket-0` file.
 
 The `%docket` agent in Landscape reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](glob.md)). Docket also manages app installs, serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
 

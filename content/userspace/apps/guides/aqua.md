@@ -10,15 +10,21 @@ pH is a library of functions designed to make it easy to write integration tests
 
 To run your first pH test, run the following commands:
 
+{% code title="Dojo" wrap="nowrap" %}
+
 ```
 |start %aqua
 :aqua +pill/solid
 -ph-add
 ```
 
-This will start Aqua, compile a new kernel for it, and then compile and run /ted/ph/add.hoon.  Here are the contents of that file:
+{% endcode %}
 
-```
+This will start Aqua, compile a new kernel for it, and then compile and run `/ted/ph/add.hoon`.  Here are the contents of that file:
+
+{% code title="/ted/ph/add.hoon" wrap="nowrap" %}
+
+```hoon
 /-  spider
 /+  *ph-io
 =,  strand=strand:spider
@@ -33,13 +39,19 @@ This will start Aqua, compile a new kernel for it, and then compile and run /ted
 (pure:m *vase)
 ```
 
+{% endcode %}
+
 There's a few lines of boilerplate, with three important lines defining the test.
+
+{% code title="/ted/ph/add.hoon" wrap="nowrap" %}
 
 ```
 ;<  ~  bind:m  (raw-ship ~bud ~)
 ;<  ~  bind:m  (dojo ~bud "[%test-result (add 2 3)]")
 ;<  ~  bind:m  (wait-for-output ~bud "[%test-result 5]")
 ```
+
+{% endcode %}
 
 We boot a ship with `+raw-ship`. In this case the ship we are booting will be `~bud`. These ships exist in a virtual environment so you could use any valid `@p`.
 

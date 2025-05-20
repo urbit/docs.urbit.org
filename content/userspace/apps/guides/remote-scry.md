@@ -348,17 +348,19 @@ The `$spar` is the `[ship path]` the request was made to, and the `$roar` is the
 
 You'll receive a `%tune` whether it failed or succeeded on the target ship, as well as if the request was cancelled locally.
 
-## `-keen` {#keen}
+## `-peek` {#peek}
 
-In addition to the above interface offered to agents, there is also support for making scry requests from threads using `+keen` in `/lib/strandio.hoon`. It accepts a `$spar` and returns a `(unit page)`. There is also a [thread `/ted/keen.hoon` that demonstrates this](https://github.com/urbit/urbit/blob/i/5788/remote-scry/pkg/arvo/ted/keen.hoon). You can run it from the Dojo using `-keen [ship path]`, which reads the `%noun` mark's source code out of ~zod's `%kids` desk.
+In addition to the above interface offered to agents, there is also a thread `/ted/peek.hoon` in the `%base` desk. You can run it from the Dojo to read the `%noun` mark's source code out of ~zod's `%kids` desk.
 
 {% code title="Dojo" wrap="nowrap" %}
 
 ```
--keen [~zod /c/x/1/kids/mar/noun/hoon]
+-peek [[~zod /c/x/1/kids/mar/noun/hoon] ~]
 ```
 
 {% endcode %}
+
+That trailing `~` specifies the task to use, which depends on the security status: either `[%chum ~]` for a two-party encrypted remote scry, `[%shut idx=@ key=@]` for a multi-party encrypted remote scry, or `~` to do a regular `%keen` to a public path.
 
 ## Additional reading {#additional-reading}
 

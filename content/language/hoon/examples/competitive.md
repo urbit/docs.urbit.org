@@ -60,7 +60,7 @@ We'll use `'Wild Hearts Can\'t Be Broken'` as our source atom.  As `@ux` the ASC
 
 Here are a few ways to slice and dice binary atom data.
 
-[`++rip`](https://urbit.org/docs/hoon/reference/stdlib/2c#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
+[`++rip`](../reference/stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'  
@@ -76,7 +76,7 @@ Here are a few ways to slice and dice binary atom data.
 ~[0x6165.4820.646c.6957 0x276e.6143.2073.7472 0x6f72.4220.6542.2074 0x6e.656b]
 ```
 
-[`++rap`](https://urbit.org/docs/hoon/reference/stdlib/2c#rap) is the opposite operation, producing an atom from a list of atoms `b` with a block size `2^a`.
+[`++rap`](../reference/stdlib/2c.md#rap) is the opposite operation, producing an atom from a list of atoms `b` with a block size `2^a`.
 
 ```hoon
 > `(list @ux)`(rip 3 'Mars')
@@ -92,7 +92,7 @@ Here are a few ways to slice and dice binary atom data.
 0x73.0000.0000.0000.0072.0000.0000.0000.0061.0000.0000.0000.004d
 ```
 
-[`++cut`](https://urbit.org/docs/hoon/reference/stdlib/2c#cut) slices `2^a`-sized chunks from `b` to `c` out of atom `d`.
+[`++cut`](../reference/stdlib/2c.md#cut) slices `2^a`-sized chunks from `b` to `c` out of atom `d`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'
@@ -108,21 +108,21 @@ Here are a few ways to slice and dice binary atom data.
 
 Standard bitwise logical operations are available:
 
-- `OR` is [`++con`](https://urbit.org/docs/hoon/reference/stdlib/2d#con) (conjoint):
+- `OR` is [`++con`](../reference/stdlib/2d.md#con) (conjoint):
 
     ```hoon
     > `@ub`(con 0b10.0001.0110 0b11.1101.1011)
     0b11.1101.1111
     ```
 
-- `AND` is [`++dis`](https://urbit.org/docs/hoon/reference/stdlib/2d#dis) (disjoint):
+- `AND` is [`++dis`](../reference/stdlib/2d.md#dis) (disjoint):
 
     ```hoon
     > `@ub`(dis 0b10.0001.0110 0b11.1101.1011)
     0b10.0001.0010
     ```
 
-- `XOR` is [`++mix`](https://urbit.org/docs/hoon/reference/stdlib/2d#mix):
+- `XOR` is [`++mix`](../reference/stdlib/2d.md#mix):
 
     ```hoon
     > `@ub`534
@@ -135,7 +135,7 @@ Standard bitwise logical operations are available:
     0b1.1100.1101
     ```
 
-- `NOT` is [`++not`](https://urbit.org/docs/hoon/reference/stdlib/2d#not); it requires a block size (powers of 2) because leading zeroes are always stripped in Hoon (and thus `NOT` is implicitly based on block size):
+- `NOT` is [`++not`](../reference/stdlib/2d.md#not); it requires a block size (powers of 2) because leading zeroes are always stripped in Hoon (and thus `NOT` is implicitly based on block size):
 
     ```hoon
     > `@ub`(not 2 1 0b1011)
@@ -347,9 +347,9 @@ This last case can be handled with a couple of expedients:
 
 - Use of assertions to enforce type constraints.  Assertions are a form of `?` wut rune which check the structure of a value.  Ultimately they all reduce back to `?:` wutcol, but are very useful in this sugar form:
 
-    - [`?>` wutgar](https://urbit.org/docs/hoon/reference/rune/wut#-wutgar) is a positive assertion, that a condition _must_ be true.
-    - [`?<` wutgal](https://urbit.org/docs/hoon/reference/rune/wut#-wutgal) is a negative assertion, that a condition _must_ be false.
-    - [`?~` wutsig](https://urbit.org/docs/hoon/reference/rune/wut#-wutsig) is a branch on null.
+    - [`?>` wutgar](../reference/rune/wut.md#-wutgar) is a positive assertion, that a condition _must_ be true.
+    - [`?<` wutgal](../reference/rune/wut.md#-wutgal) is a negative assertion, that a condition _must_ be false.
+    - [`?~` wutsig](../reference/rune/wut.md#-wutsig) is a branch on null.
 
     For instance, some operations require a `lest`, a `list` guaranteed to be non-null (that is, `^-  (list)  ~` is excluded).
 

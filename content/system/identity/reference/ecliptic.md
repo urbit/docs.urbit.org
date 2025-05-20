@@ -8,7 +8,7 @@ You can read about [Urbit's first upgrade](https://github.com/urbit/azimuth/pull
 
 `Ecliptic.eth` implements the [ERC-721](https://eips.ethereum.org/EIPS/eip-721) interface for non-fungible tokens, as well as the [ERC-165](https://eips.ethereum.org/EIPS/eip-165) standard for interface detection.
 
-There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions.md), and/or can be performed using [Bridge](https://urbit.org/using/id/using-bridge). We note these facts where applicable.
+There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions.md), and/or can be performed using [Bridge](../../../manual/id/using-bridge.md). We note these facts where applicable.
 
 ## Write functions {#write}
 
@@ -59,7 +59,7 @@ Corresponds to the layer 2 `%spawn` action.
     function transferPoint(uint32 _point, address _target, bool _reset)
 ```
 
-Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](https://urbit.org/using/id/guide-to-resets), and thus this action increments the [`continuityNumber`](azimuth-eth.md#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift.md)).
+Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](../../../manual/id/guide-to-resets.md), and thus this action increments the [`continuityNumber`](azimuth-eth.md#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift.md)).
 
 Requirements:
 
@@ -141,7 +141,7 @@ Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` o
 
 ### Proxy management {#proxies}
 
-These functions are used to manage the various [proxies](https://urbit.org/using/id/proxies). All of these actions may be performed from Bridge.
+These functions are used to manage the various [proxies](../../../manual/id/proxies.md). All of these actions may be performed from Bridge.
 
 #### `setManagementProxy`
 

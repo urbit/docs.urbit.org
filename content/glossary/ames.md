@@ -5,5 +5,5 @@
 ### Further Reading {#further-reading}
 
 - [The Ames reference](../system/kernel/ames): An in-depth technical guide to the Ames vane and protocol.
-- [A Guide to Factory Reset](https://urbit.org/using/id/guide-to-resets): Instructions on performing factory resets.
-- [Ship Troubleshooting](https://urbit.org/using/os/ship-troubleshooting): General instructions on getting your ship to work, which includes network connectivity issues.
+- [A Guide to Factory Reset](../manual/id/guide-to-resets.md): Instructions on performing factory resets.
+- [Ship Troubleshooting](../manual/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.

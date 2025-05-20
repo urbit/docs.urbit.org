@@ -414,8 +414,6 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 - [Parsing](parsing.md) - A guide to writing fully-fledged functional parsers in hoon.
   
-- [Developer Blog, "What Every Hooner Should Know About Text on Urbit"](https://urbit.org/blog/text-overview)
-
 - [Auras](../reference/auras.md) - Details of auras in hoon.
 
 - [stdlib 2b: List logic](../reference/stdlib/2b.md) - Standard library functions for manipulating lists, which are useful for dealing with tapes.

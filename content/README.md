@@ -27,7 +27,9 @@ If you want to get a planet, find a hosting provider, set up a server or learn h
 
 ## Videos
 
-We have two Youtube channels: @urbit_ and @urbiteducation. The former contains general Urbit-related content including a number of developer streams. The latter contains educational material including Urbit Academy lessons.
+Our YouTube channel features general Urbit-related content, including playlists with recordings of all our courses.
+- [Urbit on YouTube](https://www.youtube.com/@urbit_) - General Urbit-related content including developer streams.
+- [Hoon School](https://www.youtube.com/playlist?list=PLYGEMSwLguIEivFINNsHIsi0AbieRZIdk) - General introduction to Hoon. Recorded in 2023.
+- [App School](https://www.youtube.com/playlist?list=PLYGEMSwLguIEF4JxBG2E-BmPfpcjeu0DX) - Introducing app development on Urbit using the Gall vane. Recorded in 2023.
+- [Core Academy](https://www.youtube.com/playlist?list=PLYGEMSwLguIGgrEGwxu2AAbESpfF_LRKx) - In-depth look at Nock, Arvo, and the runtime. Recorded in 2023.
 
-- [@urbit_](https://www.youtube.com/@urbit_) - General Urbit-related content including developer streams.
-- [@urbiteducation](https://www.youtube.com/@urbiteducation) - Educational material including Urbit Academy lessons.

@@ -89,7 +89,7 @@ A `Point` contains data about networking keys and sponsorship status, arranged i
 
 ## `Deed`s {#deeds}
 
-A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](https://urbit.org/using/id/proxies) for that `Point`.
+A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../../../manual/id/proxies.md) for that `Point`.
 
 ```solidity
 struct Deed

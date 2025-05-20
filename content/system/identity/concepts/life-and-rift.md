@@ -1,6 +1,6 @@
 # Life and Rift
 
-Associated to every Azimuth point are two non-negative integers known as _life_ and _rift_. This numbering system partition messages according to the quantity of networking key changes and quantity of [breaches](https://urbit.org/using/id/guide-to-resets), respectively. This is explained in more detail below. These values are utilized by [Ames](../../kernel/ames) and [Jael](../../kernel/jael) to ensure that communication between ships is always done with the most recent set of networking keys, and that networking state is appropriately reset when a breach has occurred.
+Associated to every Azimuth point are two non-negative integers known as _life_ and _rift_. This numbering system partition messages according to the quantity of networking key changes and quantity of [breaches](../../../manual/id/guide-to-resets.md), respectively. This is explained in more detail below. These values are utilized by [Ames](../../kernel/ames) and [Jael](../../kernel/jael) to ensure that communication between ships is always done with the most recent set of networking keys, and that networking state is appropriately reset when a breach has occurred.
 
 Every ship begins with a `life` and `rift` of 0. For galaxies, stars, and planets, these values are stored in the [Azimuth PKI](../reference/azimuth-eth.md#points) as `keyRevisionNumber` and `continuityNumber`, while for moons, these values are stored by their parent. Comets cannot change their networking keys, nor can they breach, and so their `life` and `rift` are always 0.
 

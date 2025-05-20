@@ -51,7 +51,7 @@ hexdump -n 32 -e '4/4 "%08X"' /dev/random
 
 and use the result.
 
-It should be noted that setting your network keys is an event on the Ethereum network and will therefore cost a trivial, but non-zero, amount of [gas](https://eth.wiki/en/fundamentals/design-rationale#gas-and-fees) to complete.
+It should be noted that setting your network keys is an event on the Ethereum network and will therefore cost a trivial, but non-zero, amount of Ethereum gas to complete.
 
 ### Generate your keyfile {#generate-your-keyfile}
 

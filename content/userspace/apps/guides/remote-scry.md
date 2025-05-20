@@ -190,7 +190,27 @@ Note this is unnecessary for unencrypted and two-party encrypted remote scries, 
 
 ## Scrying {#scrying}
 
-Now we've looking at the publisher side, let's look at actually performing remote scries. There is one `$note:agent:gall` for performing unencrypted and multi-party encrypted remote scries, one Ames task for performing two-party encrypted remote scries, and two Ames tasks for cancelling pending remote scries. We'll look at each of these.
+Now we've looked at the publisher side, let's look at actually performing remote scries.
+
+It's not currently possible to perform a remote scry on yourself, unless your ship has an Ames route to itself which is an edge-case. If you need to perform a dotket scry on a remote scry path, you can do so with this syntax.
+
+{% code title="Dojo" wrap="nowrap" %}
+
+```
+.^(* %gx /=/test/1//1/foo/bar)
+```
+
+{% endcode %}
+
+{% hint style="info" %}
+
+Notice the `//` empty path element differentiating an agent scry from a Gall vane scry.
+
+Additionally, notice the `1` after the `//`. This is a path format version number introduced in `[%zuse 411]` to facilitate easier path format changes in the future. _All remote scries to Gall agents must include the path format version number._ Scries to places other than Gall agents are unaffected.
+
+{% endhint %}
+
+There is one `$note:agent:gall` for performing unencrypted and multi-party encrypted remote scries, one Ames task for performing two-party encrypted remote scries, and two Ames tasks for cancelling pending remote scries. We'll look at each of these.
 
 ### Tasks and Notes {#tasks-and-notes}
 
@@ -233,14 +253,6 @@ For an unencrypted scry to the `%example` agent in Gall (`%g`) of the ~sampel sh
 ```
 
 {% endcode %}
-
-{% hint style="info" %}
-
-Notice the `//` empty path element differentiating an agent scry from a Gall vane scry.
-
-Additionally, notice the `1` at the beginning of the path portion after the empty element. This is a path format version number introduced in `[%zuse 411]` to facilitate easier path format changes in the future. _All remote scries to Gall agents must include the path format version number._ Scries to places other than Gall agents are unaffected.
-
-{% endhint %}
 
 For a multi-party encrypted scry to the `%example` agent in Gall (`%g`) of the ~sampel ship at the `/foo` path, revision `4` in the `/my/context` security context, it would look like:
 

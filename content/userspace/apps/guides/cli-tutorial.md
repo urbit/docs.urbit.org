@@ -22,9 +22,13 @@ An app using the `shoe` library will automatically track sessions by their `sole
 
 Gall agents with the `shoe` library are able to utilize `%shoe` `card`s. These additions to the standard set of `cards` have the following shape:
 
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
+
 ```hoon
 [%shoe sole-ids=(list sole-id) effect=shoe-effect]
 ```
+
+{% endcode %}
 
 `sole-ids` is the `list` of session ids that the following `effect` is emitted to. An empty `sole-ids` sends the effect to all connected sessions. `shoe-effect`s, for now, are always of the shape `[%sole effect=sole-effect]`, where `sole-effect`s are basic console events such as displaying text, changing the prompt, beeping, etc. These are described in the section on the [`sole` library](#the-sole-library).
 
@@ -40,15 +44,21 @@ The additional arms are described below. The Hoon code shows their expected type
 
 #### `+command-parser`
 
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
+
 ```hoon
   ++  command-parser
     |~  =sole-id
     |~(nail *(like [? command-type]))
 ```
 
+{% endcode %}
+
 Input parser for a specific command-line session. Will be run on whatever the user tries to input into the command prompt, and won't let them type anything that doesn't parse. If the head of the result is true, instantly run the command. If it's false, require the user to press return.
 
 #### `+tab-list`
+
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   ++  tab-list
@@ -56,9 +66,13 @@ Input parser for a specific command-line session. Will be run on whatever the us
     *(list (option:auto tank))
 ```
 
+{% endcode %}
+
 Autocomplete options for the command-line session (to match `+command-parser`).
 
 #### `+on-command`
+
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   ++  on-command
@@ -66,9 +80,13 @@ Autocomplete options for the command-line session (to match `+command-parser`).
     *(quip card _this)
 ```
 
+{% endcode %}
+
 Called when a valid command is run.
 
 #### `+can-connect`
+
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   ++  can-connect
@@ -76,9 +94,13 @@ Called when a valid command is run.
     *?
 ```
 
+{% endcode %}
+
 Called to determine whether a session may be opened or connected to. For example, you may only want the local ship to be able to connect.
 
 #### `+on-connect`
+
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   ++  on-connect
@@ -86,15 +108,21 @@ Called to determine whether a session may be opened or connected to. For example
     *(quip card _^|(..on-init))
 ```
 
+{% endcode %}
+
 Called when a session is opened or connected to.
 
 #### `+on-disconnect`
+
+{% code title="/lib/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   ++  on-disconnect
     |~  =sole-id
     *(quip card _^|(..on-init))
 ```
+
+{% endcode %}
 
 Called when a previously made session gets disconnected from.
 
@@ -135,14 +163,20 @@ Start two fake ships, one named `~zod` and the other can have any name - we will
 
 On each fake ship start `%shoe` by entering `|start %shoe` into dojo. Now that the agent is running, you can run `|dojo/link %shoe` to connect to its cli interface. This will change the prompt to `~zod:shoe>` and `~nus:shoe>`. Type `demo` and watch the following appear:
 
+{% code title="Dojo" overflow="nowrap" %}
+
 ```
 ~zod ran the command
 ~zod:shoe>
 ```
 
+{% endcode %}
+
 `~zod ran the command` should be displayed in bold green text, signifying that the command originated locally.
 
 Now we will connect the sessions. Switch `~zod` back to dojo with `Ctrl-X` and enter `|dojo/link ~nus %shoe`. If this succeeds you will see the following.
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 >=
@@ -150,18 +184,26 @@ Now we will connect the sessions. Switch `~zod` back to dojo with `Ctrl-X` and e
 [linked to [p=~nus q=%shoe]]
 ```
 
+{% endcode %}
+
 Now `~zod` will have two `%shoe` sessions running - one local one on `~zod` and one remote one on `~nus`, which you can access by pressing `Ctrl-X` until you see `~nus:shoe>` from `~zod`'s console. On the other hand, you should not see `~zod:shoe>` on `~nus`'s side, since you have not connected `~nus` to `~zod`'s `%shoe` app. When you enter `demo` from `~nus:shoe>` on `~zod`'s console you will again see `~zod ran the command`, but this time it should be in the ordinary font used by the console, signifying that the command is originating from a remote session. Contrast this with entering `demo` from `~nus:shoe>` in `~nus`'s console, which will display `~nus ran the command` in bold green text.
 
 Now try to link to `~zod`'s `%shoe` session from `~nus` by switching to the dojo on `~nus` and entering `|dojo/link ~zod %shoe`. You should see
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 >=
 [unlinked from [p=~zod q=%shoe]]
 ```
 
+{% endcode %}
+
 and if you press `Ctrl-X` you will not get a `~zod:shoe>` prompt. This is because the example app is set up to always allow `~zod` to connect (as well as subject moons if the ship happens to be a planet) but not `~nus`, so this message means that `~nus` failed to connect to `~zod`'s `%shoe` session.
 
 ### `%shoe`'s code {#shoes-code}
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ::  shoe: example usage of /lib/shoe
@@ -172,12 +214,16 @@ and if you press `Ctrl-X` you will not get a `~zod:shoe>` prompt. This is becaus
 /+  shoe, verb, dbug, default-agent
 ```
 
+{% endcode %}
+
 `/+` is the Ford rune which imports libraries from the `/lib` directory into the subject.
 
 - `shoe` is the `shoe` library.
 - `verb` is a library used to print what a Gall agent is doing.
 - `dbug` is a library of debugging tools.
 - `default-agent` contains a Gall agent core with minimal implementations of required Gall arms.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 |%
@@ -187,6 +233,8 @@ and if you press `Ctrl-X` you will not get a `~zod:shoe>` prompt. This is becaus
 +$  card  card:shoe
 --
 ```
+
+{% endcode %}
 
 The types used by the app.
 
@@ -198,13 +246,19 @@ In a non-trivial context, a `command` is commonly given by `[%name data]`, where
 
 `card` is either an ordinary Gall agent `card` or a `%shoe` `card`, which takes the shape `[%shoe sole-ids=(list sole-id) effect=shoe-effect]`. A `%shoe` `card` is sent to all sessions listed in `sole-ids`, making them run the `sole-effect` specified by `effect` (i.e. printing some text). Here we can reference `card:shoe` because of `/+ shoe` at the beginning of the app.
 
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
+
 ```hoon
 =|  state-0
 =*  state  -
 ::
 ```
 
+{% endcode %}
+
 Add the bunt value of `state-0` to the head of the subject, then give it the macro `state`. The `-` here is a lark expression referring to the head of the subject. This allows us to use `state` to refer to the state elsewhere in the code no matter what version we're using, while also getting direct access to the contents of `state` (if it had any).
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 %+  verb  |
@@ -214,7 +268,11 @@ Add the bunt value of `state-0` to the head of the subject, then give it the mac
 ^-  (shoe:shoe command)
 ```
 
+{% endcode %}
+
 The casts here are just reminders of what is being produced. So let's focus on what the `%` runes are doing, from bottom to top. We call `(agent:shoe command)` on what follows (i.e. the rest of the app), producing a standard Gall agent core. Then we call wrap the Gall agent core with `agent:dbug`, endowing it with additional arms useful for debugging, and then wrap again with `verb`.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 |_  =bowl:gall
@@ -223,9 +281,13 @@ The casts here are just reminders of what is being produced. So let's focus on w
     des   ~(. (default:shoe this command) bowl)
 ```
 
+{% endcode %}
+
 This is boilerplate Gall agent core code. We set `this` to be a macro for the subject, which is the Gall agent core itself. We set `def` and `des` to be macros for initialized `default-agent` and `default:shoe` doors respectively.
 
 Next we implement all of the arms required for a `shoe` agent. Starting with the standard Gall arms:
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  on-init   on-init:def
@@ -244,9 +306,13 @@ Next we implement all of the arms required for a `shoe` agent. Starting with the
 ++  on-fail   on-fail:def
 ```
 
+{% endcode %}
+
 These are minimalist Gall app arm implementations using the default behavior found in `def`.
 
 Here begins the implementation of the additional arms required by the `(shoe:shoe command)` interface.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  command-parser
@@ -255,7 +321,11 @@ Here begins the implementation of the additional arms required by the `(shoe:sho
   (cold [& ~] (jest 'demo'))
 ```
 
+{% endcode %}
+
 `+command-parser` is of central importance - it is what is used to parse user input and transform it into `command`s for the app to execute. Writing a proper command parser requires understanding of the Hoon parsing functions found in the standard library. How to do so may be found in the [parsing tutorial](../../../language/hoon/guides/parsing.md). For now, it is sufficient to know that this arm matches the text "demo" and produces a `[? command]`-shaped noun in response. Note how the `&` signifies that the command will be run as soon as it has been entered, without waiting for the user to press return.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  tab-list
@@ -265,18 +335,26 @@ Here begins the implementation of the additional arms required by the `(shoe:sho
   ==
 ```
 
+{% endcode %}
+
 `+tab-list` is pretty much plug-n-play. For each command you want to be tab completed, add an entry to the `list` begun by `:~` of the form `[%command leaf+"description"]`. Now whenever the user types a partial command and presses tab, the console will display the list of commmands that match the partial command as well as the descriptions given here.
 
 Thus here we have that starting to type `demo` and pressing tab will result in the following output in the console:
+
+{% code title="Dojo" overflow="nowrap" %}
 
 ```
 demo  run example command
 ~zod:shoe> demo
 ```
 
+{% endcode %}
+
 with the remainder of `demo` now added to the input line.
 
 Next we have `+on-command`, which is called whenever `+command-parser` recognizes that `demo` has been entered by a user.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  on-command
@@ -284,19 +362,31 @@ Next we have `+on-command`, which is called whenever `+command-parser` recognize
   ^-  (quip card _this)
 ```
 
+{% endcode %}
+
 This is a gate that takes in the `sole-id` corresponding to the session and the `command` noun parsed by `+command-parser` and returns a `list` of `card`s and `_this`, which is our shoe agent core including its state.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   =-  [[%shoe ~ %sole -]~ this]
 ```
 
+{% endcode %}
+
 This creates a cell of a `%shoe` card that triggers a `sole-effect` given by the head of the subject `-`, then the Gall agent core `this` - i.e. the return result of this gate. The use of the `=-` rune means that what follows this expression is actually run first, which puts the desired `sole-effect` into the head of the subject.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   =/  =tape  "{(scow %p src.bowl)} ran the command"
 ```
 
+{% endcode %}
+
 We define the `tape` that we want to be printed.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
   ?.  =(src our):bowl
@@ -304,9 +394,13 @@ We define the `tape` that we want to be printed.
   [%klr [[`%br ~ `%g] [(crip tape)]~]~]
 ```
 
+{% endcode %}
+
 We cannot just produce the `tape` we want printed, - it needs to fit the `sole-effect` type. This tells us that if the origin of the command is not our ship to just print it normally with the `%txt` `sole-effect`. Otherwise we use `%klr`, which prints it stylistically (here it makes the text green and bold).
 
 The following allows either `~zod`, or the host ship and its moons, to connect to this app's command line interface using `|dojo/link`.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  can-connect
@@ -317,12 +411,18 @@ The following allows either `~zod`, or the host ship and its moons, to connect t
   ==
 ```
 
+{% endcode %}
+
 We use the minimal implementations for the final two `shoe` arms, since we don't want to do anything special when users connect or disconnect.
+
+{% code title="/app/shoe.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  on-connect      on-connect:des
 ++  on-disconnect   on-disconnect:des
 --
 ```
+
+{% endcode %}
 
 This concludes our review of the code of the `%shoe` app. To continue learning how to build your own CLI app, we recommend checking out `/app/chat-cli.hoon`.

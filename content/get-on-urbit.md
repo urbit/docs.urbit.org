@@ -133,6 +133,8 @@ This will take you to your homescreen. Open the Tlon app to find your way around
 
 If you want to run Urbit without buying an Urbit ID, you can use an anonymous, disposable ID called a comet for free.
 
+To prevent spam, Urbit requires that your machine successfully completes a proof-of-work challenge to "mine" a comet, similar to how Bitcoin is mined. To start, run this command, where "mycomet" is the name of the folder you'd like to create for your comet.
+
 {% code %}
 
 ```sh
@@ -141,7 +143,7 @@ If you want to run Urbit without buying an Urbit ID, you can use an anonymous, d
 
 {% endcode %}
 
-This will take a few minutes. You'll know your comet has booted when you see something like this.
+This will take a few minutes. If you're running this on a laptop it might warm up, but it's nothing a base-model MacBook can't easily handle. You'll know your comet has booted when you see something like this.
 
 {% code %}
 

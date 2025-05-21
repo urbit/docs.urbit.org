@@ -1,7 +1,7 @@
 # Summary
 
 * [Urbit Docs](README.md)
-*  [Get on Urbit](get-on-urbit.md)
+* [Get on Urbit](get-on-urbit.md)
 * [Language](language/README.md)
     * [Hoon](language/hoon/README.md)
         * [Reference](language/hoon/reference/README.md)

@@ -348,7 +348,7 @@
         * [14. Vanes VII:  Jael, Azimuth](courses/core-academy/ca13.md)
 * [Operator's Manual](manual/README.md)
     * [Getting Started](manual/getting-started/README.md)
-        * [Get an Urbit ID](manual/getting-started/get-id.md)
+        * [Get an Urbit ID](manual/id/get-id.md)
         * [Hosted Urbit](manual/getting-started/hosted/README.md)
             * [Hosting Providers](manual/getting-started/hosted/hosting-providers.md)
         * [Self-hosting](manual/getting-started/self-hosted/README.md)

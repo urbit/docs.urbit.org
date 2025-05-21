@@ -11,4 +11,3 @@ Using Urbit requires having access to a running **ship**: an Urbit OS running wi
 - [Run Urbit yourself](self-hosted) or select a [hosting provider](hosted)
 - Meet friendly people by [joining groups](additional/joining-groups.md)
 - [Install apps](additional/installing-applications.md) to experiment with
-- Explore [interfaces](additional/interfaces.md) for Urbit

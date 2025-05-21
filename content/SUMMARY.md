@@ -359,7 +359,6 @@
             * [Getting Around](manual/getting-started/additional/getting-around.md)
             * [Installing apps](manual/getting-started/additional/installing-applications.md)
             * [Joining groups](manual/getting-started/additional/joining-groups.md)
-            * [Interfaces](manual/getting-started/additional/interfaces.md)
             * [Desktop app](manual/getting-started/additional/desktop.md)
     * [Urbit OS](manual/os/README.md)
         * [Basics](manual/os/basics.md)

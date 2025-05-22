@@ -203,7 +203,7 @@ http: loopback live on http://localhost:12321
 
 You can shut the comet down by typing `|exit` or pressing `Ctrl+D`.
 
-Once you've booted for the first time, you can run your ship again with `./urbit zod`.
+Once you've booted for the first time, you can run your ship again with `./urbit zod`. (For ease of portability, the `zod` folder now has a copy of the runtime inside it, which you can run with `./zod/.run`.)
 
 Run `./urbit` with no arguments to see a full list of commands available to you.
 

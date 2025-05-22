@@ -11,7 +11,7 @@ Now that we have our agent's types defined and have thought through its behavior
 
 We first import the `/sur/journal.hoon` file we previously created and expose its structures. We import the standard `default-agent` and `+dbug`, and also an additional library called `agentio`.
 
-Agentio contains a number of convenience functions to make common agent tasks simpler. For example, rather than writing out the full `$card`s when sending `%fact`s to subscribers, we can call `++fact` in `agentio` with the `$cage` and `$path`s and it will compose them for us. There are many more functions in `agentio` than we'll use here - you can have a look through the library in [`/base/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) to see what else it can do.
+Agentio contains a number of convenience functions to make common agent tasks simpler. For example, rather than writing out the full `$card`s when sending `%fact`s to subscribers, we can call `+fact` in `agentio` with the `$cage` and `$path`s and it will compose them for us. There are many more functions in `agentio` than we'll use here - you can have a look through the library in [`/base/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) to see what else it can do.
 
 ## State and type core {#state-and-type-core}
 
@@ -38,13 +38,13 @@ Agentio contains a number of convenience functions to make common agent tasks si
 
 As we discussed in the previous section, our state will contain a `$journal` structure containing all our journal entries, and a `$log` structure containing the update log. These are both _ordered maps_, defined as `((mop id txt) gth)` and `((mop @ action) lth)` respectively. We can therefore define our "versioned state" as `[%0 =journal =log]`, in the usual manner.
 
-We've define `$card` for convenience as usual, and we've also added three more arms. The first two relate to our two ordered maps. If you'll recall, an ordinary `map` is called with the `++by` door in the standard library, like so:
+We've define `$card` for convenience as usual, and we've also added three more arms. The first two relate to our two ordered maps. If you'll recall, an ordinary `map` is called with the `+by` door in the standard library, like so:
 
 ```hoon
 (~(get by foo) %bar)
 ```
 
-An ordered map uses the `++on` gate in `zuse.hoon` rather than `++by`, and its invocation is slightly different. It must first be setup in a similar manner to the `mop` type, by providing it the key/value molds and comparator gates. Once that's done, its individual functions can be called with the `mop` and arguments, like:
+An ordered map uses the `+on` gate in `zuse.hoon` rather than `+by`, and its invocation is slightly different. It must first be setup in a similar manner to the `mop` type, by providing it the key/value molds and comparator gates. Once that's done, its individual functions can be called with the `mop` and arguments, like:
 
 ```hoon
 (get:((on @ud @ud) gth) foo %bar)
@@ -57,7 +57,7 @@ This is quite a cumbersome expression to use every time we want to interact with
 ++  log-orm  ((on @ action) lth)
 ```
 
-The last arm in our state definition core is `++unique-time`. Since we'll use `now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `mop`. To avoid this, `++unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `mop`, ensuring all updates get unique timestamps and there are no collisions.
+The last arm in our state definition core is `+unique-time`. Since we'll use `now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `mop`. To avoid this, `+unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `mop`, ensuring all updates get unique timestamps and there are no collisions.
 
 ## Agent core setup {#agent-core-setup}
 
@@ -119,30 +119,30 @@ Here we setup our agent core and define the three lifecycle arms. Since we only 
 ::
 ```
 
-Here we have our `++on-poke` arm, where we handle `$action`s. Since our `%journal` agent is intended for local use only, we make sure only our ship or our moons may perform actions with:
+Here we have our `+on-poke` arm, where we handle `$action`s. Since our `%journal` agent is intended for local use only, we make sure only our ship or our moons may perform actions with:
 
 ```hoon
 ?>  (team:title our.bowl src.bowl)
 ```
 
-We haven't yet written our mark files, but our mark for `$action`s will be `%journal-action`, so we make sure that's what we've received and if not, call `++on-poke:def` to crash with an error message. We make sure the the timestamps are unique with our `++unique-time` function described earlier, and then we extract the poke's vase to an `$action` structure and call `++poke-action` to handle it. We've made `++on-poke` a door with a separate `++poke-action` arm to make the logic a little simpler, but in principle we could have had it all directly inside the main `++poke-action` gate, or even separated it out into a helper core below.
+We haven't yet written our mark files, but our mark for `$action`s will be `%journal-action`, so we make sure that's what we've received and if not, call `+on-poke:def` to crash with an error message. We make sure the the timestamps are unique with our `+unique-time` function described earlier, and then we extract the poke's vase to an `$action` structure and call `+poke-action` to handle it. We've made `+on-poke` a door with a separate `+poke-action` arm to make the logic a little simpler, but in principle we could have had it all directly inside the main `+poke-action` gate, or even separated it out into a helper core below.
 
-The logic in `++poke-action` is very simple, with three cases for each of the possible `$action`s:
+The logic in `+poke-action` is very simple, with three cases for each of the possible `$action`s:
 
-- `%add` - Add a new journal entry. We check it doesn't already exist with `++has:j-orm`, and then add it to our `$journal` with `++put:j-orm`.
+- `%add` - Add a new journal entry. We check it doesn't already exist with `+has:j-orm`, and then add it to our `$journal` with `+put:j-orm`.
 
-- `%edit` - Edit an existing journal entry. We make sure it _does_ exist with `++has:j-orm`, and then override the old entry with the new one using `++put:j-orm` again.
+- `%edit` - Edit an existing journal entry. We make sure it _does_ exist with `+has:j-orm`, and then override the old entry with the new one using `+put:j-orm` again.
 
-- `%del` - Delete an existing journal entry. We make sure it exists again with `++has:j-orm`, and then use `++del:j-orm` to delete it from our `$journal` `mop`.
+- `%del` - Delete an existing journal entry. We make sure it exists again with `+has:j-orm`, and then use `+del:j-orm` to delete it from our `$journal` `mop`.
 
-Back in the main part of `++on-poke`, `++poke-action` updates the state with the new `$journal`, then we proceed to:
+Back in the main part of `+on-poke`, `+poke-action` updates the state with the new `$journal`, then we proceed to:
 
 ```hoon
 :_  this(log (put:log-orm log now act))
 ~[(fact:io journal-update+!>(`update`[now act]) ~[/updates])]
 ```
 
-We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `++put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a vase and add the mark to make it a `$cage`. Notice we're using the `++fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.
+We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `+put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a vase and add the mark to make it a `$cage`. Notice we're using the `+fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.
 
 ## Subscriptions {#subscriptions}
 
@@ -159,7 +159,7 @@ We add the timestamp to the action, converting it to a logged update. We add it 
 
 Our subscription logic is extremely simple - we just have a single `/updates` path, which the front-end or other local agents may subscribe to. All updates get sent out on this path. We enforce local-only with the `team:title` check.
 
-We could have had our `++on-watch` arm send out some initial state to new subscribers, but for our front-end we'll instead fetch the initial state separately with a scry. This just makes it slightly easier if our front-end needs to resubscribe at some point - it'll already have some state in that case so we don't want it to get sent again.
+We could have had our `+on-watch` arm send out some initial state to new subscribers, but for our front-end we'll instead fetch the initial state separately with a scry. This just makes it slightly easier if our front-end needs to resubscribe at some point - it'll already have some state in that case so we don't want it to get sent again.
 
 ## Scry Endpoints {#scry-endpoints}
 
@@ -211,13 +211,13 @@ We could have had our `++on-watch` arm send out some initial state to new subscr
 ::
 ```
 
-Here we have our `++on-peek` arm. The scry endpoints we've defined are divided into two parts: querying the update `$log` and retrieving entries from the `$journal`. Each end-point is as follows:
+Here we have our `+on-peek` arm. The scry endpoints we've defined are divided into two parts: querying the update `$log` and retrieving entries from the `$journal`. Each end-point is as follows:
 
 - `/x/entries/all` - Retrieve all entries in the `$journal`. Our front-end will use lazy-loading and only get a few at a time, so it won't use this. It's nice to have it though, in case other agents want to get that data.
 
-- `/x/entries/before/[before]/[max]` - Retrieve at most `[max]` entries older than the entry on `[before]` date. This is so our lazy-loading front-end can progressively load more as the user scrolls down the page. The Javascript front-end will format numbers without dot separators, so the path will look like `/x/entries/before/1648051573109/10`. We therefore have to use the [`++dem`](../../language/hoon/reference/stdlib/4i.md#dem) parsing `rule` in a [`++rash`](../../language/hoon/reference/stdlib/4g.md#rash) parser to convert it to an ordinary atom. We then use the `++tap:log-orm` `mop` function to retrieve the requested range as a list and return it as an `$update` with a `%journal-update` mark.
+- `/x/entries/before/[before]/[max]` - Retrieve at most `[max]` entries older than the entry on `[before]` date. This is so our lazy-loading front-end can progressively load more as the user scrolls down the page. The Javascript front-end will format numbers without dot separators, so the path will look like `/x/entries/before/1648051573109/10`. We therefore have to use the [`+dem`](../../language/hoon/reference/stdlib/4i.md#dem) parsing `rule` in a [`+rash`](../../language/hoon/reference/stdlib/4g.md#rash) parser to convert it to an ordinary atom. We then use the `+tap:log-orm` `mop` function to retrieve the requested range as a list and return it as an `$update` with a `%journal-update` mark.
 
-- `/x/entries/between/[start]/[end]` - Retrieve all journal entries between two dates. This is so our front-end can have a search function, where the user can enter a start and end date and get all the entries in between. The `++lot:j-orm` `mop` function returns the subset of a `mop` between the two given keys as a `mop`, and then we call `++tap:j-orm` to convert it to a list. The `++lot:j-orm function` excludes the start and end values, so we subtract 1 from the start and add 1 to the end to make sure it includes the full range.
+- `/x/entries/between/[start]/[end]` - Retrieve all journal entries between two dates. This is so our front-end can have a search function, where the user can enter a start and end date and get all the entries in between. The `+lot:j-orm` `mop` function returns the subset of a `mop` between the two given keys as a `mop`, and then we call `+tap:j-orm` to convert it to a list. The `+lot:j-orm function` excludes the start and end values, so we subtract 1 from the start and add 1 to the end to make sure it includes the full range.
 
 - `/x/updates/all` - Retrieve the entire update `$log`. Our front-end won't use this but it might be useful for other agents, so we've included it here.
 

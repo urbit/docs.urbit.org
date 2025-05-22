@@ -100,7 +100,7 @@ You can do even better using _interpolation_:
 
 ### Exercise: Calculate a Factorial {#exercise-calculate-a-factorial}
 
-- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html). The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$. We will introduce a couple of new bits of syntax and a new gate ([++dec](../../language/hoon/reference/stdlib/1a.md#dec)). Make this into a generator `factorial.hoon`:
+- Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html). The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$. We will introduce a couple of new bits of syntax and a new gate ([+dec](../../language/hoon/reference/stdlib/1a.md#dec)). Make this into a generator `factorial.hoon`:
 
     ```hoon
     |=  n=@ud
@@ -242,8 +242,8 @@ For example, given the `$tape` `"hello"`, the generator should return the list `
 
 Two tools that may help:
 
-- You can retrieve the _n_^th^ element in a `$tape` using the [++snag](../../language/hoon/reference/stdlib/2b.md#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
-- You can join an element to a list using the [`++snoc`](../../language/hoon/reference/stdlib/2b.md#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
+- You can retrieve the _n_^th^ element in a `$tape` using the [+snag](../../language/hoon/reference/stdlib/2b.md#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `+snag` is zero-indexed; it counts from zero).
+- You can join an element to a list using the [`+snoc`](../../language/hoon/reference/stdlib/2b.md#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon
 |=  [input=tape]
@@ -734,7 +734,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     This fully recursive version of the Fibonacci calculation is very wasteful because it keeps no intermediate results.
 
-    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated. We use the [++snoc](../../language/hoon/reference/stdlib/2b.md#snoc) gate to append a noun to a `list`.
+    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated. We use the [+snoc](../../language/hoon/reference/stdlib/2b.md#snoc) gate to append a noun to a `list`.
 
     ```hoon
     |=  n=@ud
@@ -766,7 +766,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ~[1 1 2 3 5]
     ```
 
-    The program can be improved somewhat again by appending to the head of the cell (rather than using `++snoc`). This builds a list in a backwards order, so we apply the [++flop](../../language/hoon/reference/stdlib/2b.md#flop) gate to flip the order of the list before we return it.
+    The program can be improved somewhat again by appending to the head of the cell (rather than using `+snoc`). This builds a list in a backwards order, so we apply the [+flop](../../language/hoon/reference/stdlib/2b.md#flop) gate to flip the order of the list before we return it.
 
     ```hoon
     |=  n=@ud

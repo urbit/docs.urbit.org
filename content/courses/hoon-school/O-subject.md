@@ -85,9 +85,9 @@ Here we have created a gate with `[1 2]` as its context that takes in an `@` and
 --
 ```
 
-At the level of [arms](../../glossary/arm.md), `++foo` is in the [subject](../../glossary/subject.md) of `++bar`, and so `++bar` is able to call `++foo`. On the other hand, `+bar` is not in the subject of `++foo`, so `++foo` cannot call `++bar` - you will get a `-find.bar` error.
+At the level of [arms](../../glossary/arm.md), `+foo` is in the [subject](../../glossary/subject.md) of `+bar`, and so `+bar` is able to call `+foo`. On the other hand, `+bar` is not in the subject of `+foo`, so `+foo` cannot call `+bar` - you will get a `-find.bar` error.
 
-At the level of cores, the `=>` sets the context of the core containing `++bar` to be the core containing `++foo`. Recall that arms are evaluated with the parent [core](../../glossary/core.md) as the subject. Thus `++bar` is evaluated with the core containing it as the subject, which has the core containing `++foo` in its context. This is why `++foo` is in the scope of `++bar` but not vice versa.
+At the level of cores, the `=>` sets the context of the core containing `+bar` to be the core containing `+foo`. Recall that arms are evaluated with the parent [core](../../glossary/core.md) as the subject. Thus `+bar` is evaluated with the core containing it as the subject, which has the core containing `+foo` in its context. This is why `+foo` is in the scope of `+bar` but not vice versa.
 
 Let's look inside `/sys/hoon.hoon`, where the standard library is located, to see how this can be used.
 
@@ -183,14 +183,14 @@ If you counted the arms in this core by hand, you'll come up with 139 arms. This
 
 and we also see the section 1 core and the core containing `hoon-version` in the subject.
 
-We can also confirm that [++add](../../language/hoon/reference/stdlib/1a.md#add) is in the subject of [++biff](../../language/hoon/reference/stdlib/2a.md#biff)
+We can also confirm that [+add](../../language/hoon/reference/stdlib/1a.md#add) is in the subject of [+biff](../../language/hoon/reference/stdlib/2a.md#biff)
 
 ```hoon
 > add:biff
 <1.otf [[a=@ b=@] <33.uof 1.pnw %138>]>
 ```
 
-and that `++biff` is not in the subject of `++add`.
+and that `+biff` is not in the subject of `+add`.
 
 ```hoon
 > biff:add
@@ -229,7 +229,7 @@ The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of 
     now=~2022.6.22..20.41.18..82f4
     ```
 
-- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`++shax`](../../language/hoon/reference/stdlib/3d.md#shax). (`eny` is shared between [vanes](../../glossary/vane.md) during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each [Gall](../../glossary/gall.md) agent activation.)
+- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax). (`eny` is shared between [vanes](../../glossary/vane.md) during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each [Gall](../../glossary/gall.md) agent activation.)
 
     ```hoon
     > ->+..
@@ -321,7 +321,7 @@ The `=~` [tissig](../../language/hoon/reference/rune/tis.md#tissig) rune compose
 --
 ```
 
-We've chosen here to wrap our [door](../../glossary/door.md) in its own core to emulate the style of programming that is used when creating libraries. `++new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two [arms](../../glossary/arm.md) `++deposit` and `++withdraw`.
+We've chosen here to wrap our [door](../../glossary/door.md) in its own core to emulate the style of programming that is used when creating libraries. `+new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two [arms](../../glossary/arm.md) `+deposit` and `+withdraw`.
 
 Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud` argument. Each of these gates has a similar bit of code inside:
 
@@ -329,7 +329,7 @@ Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud
 +>.$(balance (add balance amount))
 ```
 
-`+>` is a kind of wing syntax, lark notation. This particular wing construction looks for the tail of the tail (the third element) in `$` buc, the [subject](../../glossary/subject.md) of the gate we are in. The `++withdraw` and `++deposit` arms create gates with the entire `new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `balance` to be the result of adding `balance` and `amount` and produce the door as the result. `++withdraw` functions the same way only doing subtraction instead of addition.
+`+>` is a kind of wing syntax, lark notation. This particular wing construction looks for the tail of the tail (the third element) in `$` buc, the [subject](../../glossary/subject.md) of the gate we are in. The `+withdraw` and `+deposit` arms create gates with the entire `new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `balance` to be the result of adding `balance` and `amount` and produce the door as the result. `+withdraw` functions the same way only doing subtraction instead of addition.
 
 It's important to notice that the sample, `balance`, is stored as part of the [door](../../glossary/door.md) rather than existing outside of it.
 
@@ -350,7 +350,7 @@ We have some more tools available for managing deferred or chained computations,
 - `;<` [micgal](../../language/hoon/reference/rune/mic.md#micgal) sequences two computations, particularly for an asynchronous event like a remote system call. (Used in [threads](../../glossary/thread.md).)
 - `;~` [micsig](../../language/hoon/reference/rune/mic.md#micsig) produces a pipeline, a way of piping the output of one [gate](../../glossary/gate.md) into another in a chain. (This is particularly helpful when parsing text.)
 
-### `++og` Randomness {#og-randomness}
+### `+og` Randomness {#og-randomness}
 
 A _random number generator_ provides a stream of calculable but unpredictable values from some _distribution_. In [a later lesson](S-math.md), we explain how random numbers can be generated from entropy; for now, let's see what's necessary to use such a random-number generator.
 
@@ -364,7 +364,7 @@ Every time you start this “random” number generator with a given seed, it wi
 
 While RNGs don't work like our _π_-based example, a given seed will reliably produce the same result every time it is run.
 
-The basic RNG core in Hoon is [++og](../../language/hoon/reference/stdlib/3d.md#og). `++og` is a door whose sample is its seed. We need to use `eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket). [++rads:rng](../../language/hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
+The basic RNG core in Hoon is [+og](../../language/hoon/reference/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket). [+rads:rng](../../language/hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
 
 ```hoon
 > =+  rng=~(. og eny)
@@ -372,7 +372,7 @@ The basic RNG core in Hoon is [++og](../../language/hoon/reference/stdlib/3d.md#
 [60 60]
 ```
 
-Since the `rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `++rads:og`'s return [cell](../../glossary/cell.md)) to the subject using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket), e.g.,
+Since the `rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `+rads:og`'s return [cell](../../glossary/cell.md)) to the subject using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket), e.g.,
 
 ```hoon
 > =/  rng  ~(. og eny)
@@ -431,9 +431,9 @@ Zoom in on these lines:
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [++og](../../language/hoon/reference/stdlib/3d.md#og), the randomness [core](../../glossary/core.md) in Hoon, to start the RNG. An RNG like `++og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [+og](../../language/hoon/reference/stdlib/3d.md#og), the randomness [core](../../glossary/core.md) in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
 
-We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
+We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 
 ```hoon
 > +magic-8

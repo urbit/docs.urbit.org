@@ -51,7 +51,7 @@ http: live (insecure, loopback) on 12321
 ~zod:dojo>
 ```
 
-You just used a function from the Hoon standard library, `+add`, which for reasons that will become clear later is frequently written [++add](../../language/hoon/reference/stdlib/1a.md#add). Next, quit Urbit by entering [|exit](../../manual/os/dojo-tools.md#exit) :
+You just used a function from the Hoon standard library, `+add`, which for reasons that will become clear later is frequently written [+add](../../language/hoon/reference/stdlib/1a.md#add). Next, quit Urbit by entering [|exit](../../manual/os/dojo-tools.md#exit) :
 
 ```hoon
 > %-  add  [2 2]

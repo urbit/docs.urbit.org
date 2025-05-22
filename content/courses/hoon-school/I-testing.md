@@ -53,20 +53,20 @@ ok=%.y
 
 Hoon unit tests come in two categories:
 
-1.  `++expect-eq` (equality of two values)
-2.  `++expect-fail` (failure/crash)
+1.  `+expect-eq` (equality of two values)
+2.  `+expect-fail` (failure/crash)
 
 Let's look at a practical example first, then dissect these.
 
 ### Exercise: Testing a Library {#exercise-testing-a-library}
 
-Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for `++absolute` should accomplish a few things:
+Consider an absolute value arm `+absolute` for `@rs` values. The unit tests for `+absolute` should accomplish a few things:
 
 -   Verify correct behavior for positive numeric input.
 -   Verify correct behavior for negative numeric input.
--   For the purpose of demonstrating `++expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
+-   For the purpose of demonstrating `+expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `unit` are a way of dealing with failed computations.)
 
-(You may also think we would need to verify `++absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type. So even if you wanted to add an `++expect-fail` test for it, your test file would not build.)
+(You may also think we would need to verify `+absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type. So even if you wanted to add an `+expect-fail` test for it, your test file would not build.)
 
 By convention any testing suite has the import line `/+  *test` at the top.
 
@@ -108,12 +108,12 @@ The dcSpark blog post [“Writing Robust Hoon — A Guide To Urbit Unit Testing�
 
 ### `/lib/test.hoon` {#libtesthoon}
 
-In `/lib/test.hoon` we find a core with a few gates: `++expect`, `++expect-eq`, and `++expect-fail`, among others.
+In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, and `+expect-fail`, among others.
 
-`++expect-eq` checks whether two vases are equal and pretty-prints the result of that test. It is our workhorse. The source for `++expect-eq` is:
+`+expect-eq` checks whether two vases are equal and pretty-prints the result of that test. It is our workhorse. The source for `+expect-eq` is:
 
 <details>
-<summary>++expect-eq</summary>
+<summary>+expect-eq</summary>
 
 ```hoon
 ++  expect-eq
@@ -144,7 +144,7 @@ In `/lib/test.hoon` we find a core with a few gates: `++expect`, `++expect-eq`, 
 
 Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) as a [cell](../../glossary/cell.md) of the type of a value and the value.
 
-`++expect-fail` by contrast take a `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc [arm](../../glossary/arm.md) but hasn't been called yet) and verifies that the code within fails.
+`+expect-fail` by contrast take a `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc [arm](../../glossary/arm.md) but hasn't been called yet) and verifies that the code within fails.
 
 ```hoon
 > (expect-fail:test |.(!!))
@@ -306,7 +306,7 @@ dojo: hoon expression failed
 
 ### `fish-loop` {#fish-loop}
 
-A `fish-loop` arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `++fish` goes fishing for the type of an expression.)  Alas, this fails today:
+A `fish-loop` arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.)  Alas, this fails today:
 
 ```hoon
 > ?=((list @) ~[1 2 3 4])

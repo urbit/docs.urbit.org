@@ -25,7 +25,7 @@ The structure for a journal entry can therefore be:
 
 ## 2. Actions {#2-actions}
 
-Now that we know what a journal entry looks like, we can think about what kind of actions/commands our agent will handle in its `++on-poke` arm. For our journal app, there are three basic things we might do:
+Now that we know what a journal entry looks like, we can think about what kind of actions/commands our agent will handle in its `+on-poke` arm. For our journal app, there are three basic things we might do:
 
 1. Add a new journal entry.
 2. Edit an existing journal entry.
@@ -104,7 +104,7 @@ The gate is a binary gate which takes two keys and produces a `?`. The comparato
 +$  log  ((mop @ action) lth)
 ```
 
-The entries in `$journal` are arranged in ascending time order using `++gth`, so the right-most item is the newest. The `$log` `mop` contains the update log, and is arranged in descending time order, so the right-most item is the oldest.
+The entries in `$journal` are arranged in ascending time order using `+gth`, so the right-most item is the newest. The `$log` `mop` contains the update log, and is arranged in descending time order, so the right-most item is the oldest.
 
 We'll look at how to use ordered maps later when we get to writing the agent itself.
 

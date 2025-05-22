@@ -35,7 +35,7 @@ When the `$` buc arm of a dry [gate](../../glossary/gate.md) is evaluated it tak
 
 When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site. In other words, for a wet gate, we ask: “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified `payload`?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”; they defer the actual substitution in the [sample](../../glossary/sample.md). Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
 
-Consider a function like [++turn](../../language/hoon/reference/stdlib/2b.md#turn) which transforms each element of a list. To use `++turn`, we install a [list](../../glossary/list.md) and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
+Consider a function like [+turn](../../language/hoon/reference/stdlib/2b.md#turn) which transforms each element of a list. To use `+turn`, we install a [list](../../glossary/list.md) and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
 A wet gate is defined by a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune rather than a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis). More generally, cores that contain wet arms **must** be defined using `|@` [barpat](../../language/hoon/reference/rune/bar.md#barpat) instead of `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) (`|*` expands to a `|@` core with `$` buc arm). There is also `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) which defines the wet gate [mold](../../glossary/mold.md) builder (remember, we like gates that build gates).
 
@@ -88,11 +88,11 @@ $$
 
 The meat of this gate is concerned with correctly implementing the mathematical equation. In particular, wetness is required because `b` can be _any_ gate (although it should only be a gate with one argument, lest the whole thing `mull-grow` fail). If you attempt to create the equivalent dry gate (`|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis)), Hoon fails to build it with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) due to the loss of type information from the gate `b`.
 
-#### Tutorial: `++need`
+#### Tutorial: `+need`
 
-[Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [++maps](../../language/hoon/reference/stdlib/2o.md#map) or [++sets](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [++by](../../language/hoon/reference/stdlib/2i.md#by) and [++in](../../language/hoon/reference/stdlib/2h.md#in), as well as most [++list](../../glossary/list.md) tools, are wet gates.
+[Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [+maps](../../language/hoon/reference/stdlib/2o.md#map) or [+sets](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [+by](../../language/hoon/reference/stdlib/2i.md#by) and [+in](../../language/hoon/reference/stdlib/2h.md#in), as well as most [+list](../../glossary/list.md) tools, are wet gates.
 
-Let's take a look at a particular wet gate from the Hoon standard library, [++need](../../language/hoon/reference/stdlib/2a.md#need). `++need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
+Let's take a look at a particular wet gate from the Hoon standard library, [+need](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
 ```hoon
 ++  need                                                ::  demand
@@ -121,7 +121,7 @@ u.a
 
 This returns the value in the `unit` since we now know it exists.
 
-`++need` is wet because we don't want to lose type information when we extract from the `unit`.
+`+need` is wet because we don't want to lose type information when we extract from the `unit`.
 
 ### Parametric Polymorphism {#parametric-polymorphism}
 
@@ -162,7 +162,7 @@ nest-fail
 
 ### Drying Out a Gate {#drying-out-a-gate}
 
-Some functional tools like [++cury](../../language/hoon/reference/stdlib/2n.md#cury) don't work with [wet gates](../../glossary/wet-gate.md). It is, however, possible to “dry out“ a wet gate using [++bake](../../language/hoon/reference/stdlib/2b.md#bake):
+Some functional tools like [+cury](../../language/hoon/reference/stdlib/2n.md#cury) don't work with [wet gates](../../glossary/wet-gate.md). It is, however, possible to “dry out“ a wet gate using [+bake](../../language/hoon/reference/stdlib/2b.md#bake):
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
@@ -173,7 +173,7 @@ mull-grow
 10
 ```
 
-Typically it's better to find another way to express your problem than to `++bake` a wet gate, however. As we said before, wet gates are powerful and for that reason not apt for every purpose.
+Typically it's better to find another way to express your problem than to `+bake` a wet gate, however. As we said before, wet gates are powerful and for that reason not apt for every purpose.
 
 
 ## Variance {#variance}
@@ -248,7 +248,7 @@ If type `x` nests within type `xx`, and type `y` nests within type `yy`, then a 
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-For instance, the archetypal [Gall](../../glossary/gall.md) agents in `/sys/lull.hoon` are composed using iron gates since they will be used as examples for building actual [agent](../../glossary/agent.md) cores. The [++rs](../../language/hoon/reference/stdlib/3b.md#rs) and sister gates in `/sys/hoon.hoon` are built using iron doors with specified rounding behavior so when you actually use the core (like [++add:rs](../../language/hoon/reference/stdlib/3b.md#addrs)) the core you are using has been built as an example.
+For instance, the archetypal [Gall](../../glossary/gall.md) agents in `/sys/lull.hoon` are composed using iron gates since they will be used as examples for building actual [agent](../../glossary/agent.md) cores. The [+rs](../../language/hoon/reference/stdlib/3b.md#rs) and sister gates in `/sys/hoon.hoon` are built using iron doors with specified rounding behavior so when you actually use the core (like [+add:rs](../../language/hoon/reference/stdlib/3b.md#addrs)) the core you are using has been built as an example.
 
 The `|~` [barsig](../../language/hoon/reference/rune/bar.md#barsig) rune produces an iron gate. The `^|` [ketbar](../../language/hoon/reference/rune/ket.md#ketbar) rune converts a `%gold` invariant core to an iron core.
 
@@ -526,13 +526,13 @@ But don't try to read the sample:
 
 - Calculate the Fibonacci series using `%lead` and `%iron` cores.
 
-This program produces a list populated by the first ten elements of the `++fib` [arm](../../glossary/arm.md). It consists of five arms; in brief:
+This program produces a list populated by the first ten elements of the `+fib` [arm](../../glossary/arm.md). It consists of five arms; in brief:
 
-- `++fib` is a trap (core with no sample and default arm `$` buc)
-- `++stream` is a [mold](../../glossary/mold.md) builder that produces a trap, a function with no argument. This [trap](../../glossary/trap.md) can yield a value or a `~`.
-- `++stream-type` is a [wet gate](../../glossary/wet-gate.md) that produces the type of items stored in `++stream`.
-- `++to-list` is a wet gate that converts a `++stream` to a [list](../../glossary/list.md).
-- `++take` is a wet gate that takes a `++stream` and an atom and yields a modified [subject](../../glossary/subject.md) (!) and another trap of `++stream`'s type.
+- `+fib` is a trap (core with no sample and default arm `$` buc)
+- `+stream` is a [mold](../../glossary/mold.md) builder that produces a trap, a function with no argument. This [trap](../../glossary/trap.md) can yield a value or a `~`.
+- `+stream-type` is a [wet gate](../../glossary/wet-gate.md) that produces the type of items stored in `+stream`.
+- `+to-list` is a wet gate that converts a `+stream` to a [list](../../glossary/list.md).
+- `+take` is a wet gate that takes a `+stream` and an atom and yields a modified [subject](../../glossary/subject.md) (!) and another trap of `+stream`'s type.
 
 <details>
 <summary>/gen/fib.hoon</summary>
@@ -589,7 +589,7 @@ This program produces a list populated by the first ten elements of the `++fib` 
 
 Let's examine each arm in detail.
 
-##### `++stream`
+##### `+stream`
 
 ```hoon
 ++  stream
@@ -599,7 +599,7 @@ Let's examine each arm in detail.
   ~
 ```
 
-`++stream` is a mold-builder. It's a [wet gate](../../glossary/wet-gate.md) that takes one argument, `of`, which is a [mold](../../glossary/mold.md), and produces a `%lead` [trap](../../glossary/trap.md): a function with no `sample` and an arm `$` buc, with opaque [payload](../../glossary/payload.md).
+`+stream` is a mold-builder. It's a [wet gate](../../glossary/wet-gate.md) that takes one argument, `of`, which is a [mold](../../glossary/mold.md), and produces a `%lead` [trap](../../glossary/trap.md): a function with no `sample` and an arm `$` buc, with opaque [payload](../../glossary/payload.md).
 
 `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) is a rune that produces a type from an example; `^?` [ketwut](../../language/hoon/reference/rune/ket.md#ketwut) converts (casts) a core to lead; `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) forms the [trap](../../glossary/trap.md). So to follow this sequence we read it backwards: we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example from which to produce a type.
 
@@ -607,9 +607,9 @@ With the line `^- $@(~ [item=of more=^$])`, the output of the trap will be cast 
 
 The final `~` here is used as the type produced when initially calling this wet gate. This is valid because it nests within the type we defined on the previous line.
 
-Now you can see that a `++stream` is either `~` or a pair of a value of some type and a `++stream`. This type represents an infinite series.
+Now you can see that a `+stream` is either `~` or a pair of a value of some type and a `+stream`. This type represents an infinite series.
 
-##### `++stream-type`
+##### `+stream-type`
 
 ```hoon
 ++  stream-type
@@ -619,11 +619,11 @@ Now you can see that a `++stream` is either `~` or a pair of a value of some typ
   item
 ```
 
-`++stream-type` is a wet gate that produces the type of items stored in the `stream` [arm](../../glossary/arm.md). The `(stream)` syntax is a shortcut for `(stream *)`; a stream of some type.
+`+stream-type` is a wet gate that produces the type of items stored in the `stream` [arm](../../glossary/arm.md). The `(stream)` syntax is a shortcut for `(stream *)`; a stream of some type.
 
-Calling a `++stream`, which is a [trap](../../glossary/trap.md), will either produce `item` and `more` or it will produce `~`. If it does produce `~`, the `++stream` is empty and we can't find what type it is, so we simply crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).
+Calling a `+stream`, which is a [trap](../../glossary/trap.md), will either produce `item` and `more` or it will produce `~`. If it does produce `~`, the `+stream` is empty and we can't find what type it is, so we simply crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).
 
-##### `++take`
+##### `+take`
 
 ```hoon
 ++  take
@@ -641,11 +641,11 @@ Calling a `++stream`, which is a [trap](../../glossary/trap.md), will either pro
   ==
 ```
 
-`++take` is another wet gate. This time it takes a `++stream` `s` and an atom `n`. We add an atom to the [subject](../../glossary/subject.md) and then make sure that the [trap](../../glossary/trap.md) we are creating is going to be of the same type as `s`, the `++stream` we passed in.
+`+take` is another wet gate. This time it takes a `+stream` `s` and an atom `n`. We add an atom to the [subject](../../glossary/subject.md) and then make sure that the [trap](../../glossary/trap.md) we are creating is going to be of the same type as `s`, the `+stream` we passed in.
 
-If `i` and `n` are equal, the trap will produce `~`. If not, `s` is called and has its result put on the front of the subject. If its value is `~`, then the trap again produces `~`. Otherwise the trap produces a cell of `item`, the first part of the value of `s`, and a new trap that increments `i`, and sets `s` to be the `more` trap which produces the next value of the `++stream`. The result here is a `++stream` that will only ever produce `n` items, even if the stream otherwise would have been infinite.
+If `i` and `n` are equal, the trap will produce `~`. If not, `s` is called and has its result put on the front of the subject. If its value is `~`, then the trap again produces `~`. Otherwise the trap produces a cell of `item`, the first part of the value of `s`, and a new trap that increments `i`, and sets `s` to be the `more` trap which produces the next value of the `+stream`. The result here is a `+stream` that will only ever produce `n` items, even if the stream otherwise would have been infinite.
 
-##### `++to-list`
+##### `+to-list`
 
 ```hoon
 ++  to-list
@@ -661,11 +661,11 @@ If `i` and `n` are equal, the trap will produce `~`. If not, `s` is called and h
   ==
 ```
 
-`++to-list` is a wet gate that takes `s`, a `++stream`, only here it will, as you may expect, produce a [list](../../glossary/list.md). The rest of this wet gate is straightforward but we can examine it quickly anyway. As is the proper style, this list that is produced will be reversed, so [flop](../../language/hoon/reference/stdlib/2b.md#flop) is used to put it in the order it is in the stream. Recall that adding to the front of a list is cheap, while adding to the back is expensive.
+`+to-list` is a wet gate that takes `s`, a `+stream`, only here it will, as you may expect, produce a [list](../../glossary/list.md). The rest of this wet gate is straightforward but we can examine it quickly anyway. As is the proper style, this list that is produced will be reversed, so [flop](../../language/hoon/reference/stdlib/2b.md#flop) is used to put it in the order it is in the stream. Recall that adding to the front of a list is cheap, while adding to the back is expensive.
 
 `r` is added to the [subject](../../glossary/subject.md) as an empty [list](../../glossary/list.md) of whatever type is produced by `s`. A new [trap](../../glossary/trap.md) is formed and called, and it will produce the same type as `r`. Then `s` is called and has its value added to the subject. If the result is `~`, the trap produces `r`. Otherwise, we want to call the trap again, adding `item` to the front of `r` and changing `s` to `more`. Now the utility of `take` should be clear. We don't want to feed `to-list` an infinite stream as it would never terminate.
 
-##### `++fib`
+##### `+fib`
 
 ```hoon
 ++  fib
@@ -678,7 +678,7 @@ If `i` and `n` are equal, the trap will produce `~`. If not, `s` is called and h
   ==
 ```
 
-The final arm in our core is `++fib`, which is a `++stream` of `@ud` and therefore is a `%lead` [core](../../glossary/core.md). Its subject contains `p` and `q`, which will not be accessible outside of this [trap](../../glossary/trap.md), but because of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) will be retained in their modified form in the product trap. The product of the trap is a pair (`:-` [colhep](../../language/hoon/reference/rune/col.md#colhep)) of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
+The final arm in our core is `+fib`, which is a `+stream` of `@ud` and therefore is a `%lead` [core](../../glossary/core.md). Its subject contains `p` and `q`, which will not be accessible outside of this [trap](../../glossary/trap.md), but because of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) will be retained in their modified form in the product trap. The product of the trap is a pair (`:-` [colhep](../../language/hoon/reference/rune/col.md#colhep)) of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
 
 ```hoon
 =<  (to-list (take fib 10))
@@ -690,7 +690,7 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 ~[1 1 2 3 5 8 13 21 34 55]
 ```
 
-This example is a bit overkill for simply calculating the Fibonacci series, but it illustrates how you could use `%lead` cores. Instead of `++fib`, you can supply any infinite sequence and `++stream` will correctly handle it.
+This example is a bit overkill for simply calculating the Fibonacci series, but it illustrates how you could use `%lead` cores. Instead of `+fib`, you can supply any infinite sequence and `+stream` will correctly handle it.
 
 ### Exercise: `%lead` Bivariant Polymorphism {#exercise-lead-bivariant-polymorphism}
 

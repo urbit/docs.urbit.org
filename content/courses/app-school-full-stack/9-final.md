@@ -31,9 +31,9 @@ Here is the reference material for each section of this walkthrough.
 - [The JSON Guide](../../language/hoon/guides/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
 - [The Zuse Reference](../../language/hoon/reference/zuse) - The `zuse.hoon` reference documents all JSON-related functions in detail.
 
-- [`++enjs:format` reference](../../language/hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
+- [`+enjs:format` reference](../../language/hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
 
-- [`++dejs:format` reference](../../language/hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
+- [`+dejs:format` reference](../../language/hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
 
 - [Eyre Overview](../../system/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
 

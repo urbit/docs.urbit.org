@@ -61,7 +61,7 @@ Watch for these being used in generators and libraries over the next few modules
 
 ### Exercise: A Playing Card Library {#exercise-a-playing-card-library}
 
-In this exercise, we examine a library that can be used to represent a deck of 52 playing cards. The [core](../../glossary/core.md) below builds such a library, and can be accessed by programs. You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](K-doors.md) to produce [randomness](O-subject.md). This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression. This means that instead of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) you may see `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot), which inverts the order of the true/false [arms](../../glossary/arm.md), as well as other new constructions.
+In this exercise, we examine a library that can be used to represent a deck of 52 playing cards. The [core](../../glossary/core.md) below builds such a library, and can be accessed by programs. You should recognize most of the things this program does aside from the `+shuffle-deck` arm which uses a [door](K-doors.md) to produce [randomness](O-subject.md). This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression. This means that instead of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) you may see `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot), which inverts the order of the true/false [arms](../../glossary/arm.md), as well as other new constructions.
 
 <details>
 <summary>Playing Card Library code</summary>
@@ -131,7 +131,7 @@ To create three types we're going to need, we use `+$` [lusbuc](../../language/h
 
 - `+$  deck  (list darc)` is simply a [list](../../glossary/list.md) of `$darc`.
 
-One way to get a feel for how a library works is to skim the `++` [luslus](../../language/hoon/reference/rune/lus.md#luslus) arm-names before diving into any specific [arm](../../glossary/arm.md). In this library, the arms are `++make-deck`, `++num-to-suit`, `++shuffle-deck`, and `++draw`. These names should be very clear, with the exception of `++num-to-suit` (although you could hazard a guess at what it does). Let's take a closer look at it first:
+One way to get a feel for how a library works is to skim the `++` [luslus](../../language/hoon/reference/rune/lus.md#luslus) arm-names before diving into any specific [arm](../../glossary/arm.md). In this library, the arms are `+make-deck`, `+num-to-suit`, `+shuffle-deck`, and `+draw`. These names should be very clear, with the exception of `+num-to-suit` (although you could hazard a guess at what it does). Let's take a closer look at it first:
 
 ```hoon
 ++  num-to-suit
@@ -145,7 +145,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-`++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `$suit`. The `?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) rune creates a structure to switch against a value with a default in case there are no matches. (Here the default is to crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).)  We then have options 1–4 which each resulting in a different suit.
+`+num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `$suit`. The `?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) rune creates a structure to switch against a value with a default in case there are no matches. (Here the default is to crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).)  We then have options 1–4 which each resulting in a different suit.
 
 ```hoon
 ++  make-deck
@@ -165,7 +165,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-`++make-deck` assembles a deck of 52 cards by cycling through every possible suit and number and combining them. It uses `++num-to-suit` and a couple of loops to go through the counters. It has an interesting `^$` loop skip where when `j` is greater than 14 it jumps instead to the outer loop, incrementing `i`.
+`+make-deck` assembles a deck of 52 cards by cycling through every possible suit and number and combining them. It uses `+num-to-suit` and a couple of loops to go through the counters. It has an interesting `^$` loop skip where when `j` is greater than 14 it jumps instead to the outer loop, incrementing `i`.
 
 `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot) may be an unfamiliar rune; it is simply the inverted version of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol), so the first branch is actually the if-false branch and the second is the if-true branch. This is done to keep the “heaviest” branch at the bottom, which makes for more idiomatic and readable Hoon code.
 
@@ -177,7 +177,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   (slag n d)
 ```
 
-`++draw` takes two arguments: `n`, an unsigned integer, and `d`, a `$deck`. The gate will produce a cell of two `decks` using [++scag](../../language/hoon/reference/stdlib/2b.md#scag) and [++slag](../../language/hoon/reference/stdlib/2b.md#slag). [++scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [++slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
+`+draw` takes two arguments: `n`, an unsigned integer, and `d`, a `$deck`. The gate will produce a cell of two `decks` using [+scag](../../language/hoon/reference/stdlib/2b.md#scag) and [+slag](../../language/hoon/reference/stdlib/2b.md#slag). [+scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [+slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `+scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `+slag` to produce the remaining deck in the tail of the cell as `rest`.
 
 ```hoon
 ++  shuffle-deck
@@ -198,11 +198,11 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-Finally we come to `++shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `$deck`.
+Finally we come to `+shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `$deck`.
 
-We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `++rads:random`.
+We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `+rads:random`.
 
-With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [++lent](../../language/hoon/reference/stdlib/2b.md#lent).
+With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [+lent](../../language/hoon/reference/stdlib/2b.md#lent).
 
 `?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `shuffled` and the one card left in `unshuffled`. We use the `:_` [colcab](../../language/hoon/reference/rune/col.md#_-colcab) rune here, so that the “heavier” expression is at the bottom.
 
@@ -212,9 +212,9 @@ With that completed, we use `%=` [centis](../../language/hoon/reference/rune/cen
 
 - `shuffled` gets the `$darc` from `unshuffled` at `index` added to the front of it.
 
-- `remaining` gets decremented. Why are we using a counter here instead of just checking the length of `unshuffled` on each loop? [++lent](../../language/hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
+- `remaining` gets decremented. Why are we using a counter here instead of just checking the length of `unshuffled` on each loop? [+lent](../../language/hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
 
-- `unshuffled` becomes the result of using [++oust](../../language/hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `index` on `unshuffled`.
+- `unshuffled` becomes the result of using [+oust](../../language/hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `index` on `unshuffled`.
 
 This is a very naive shuffling algorithm. We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
@@ -437,12 +437,12 @@ you are hosting 0 group(s):
 
 [Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade: they are actually [molds](../../glossary/mold.md) and define conversion paths. We won't write them in Hoon School, but you will encounter them when you begin writing apps. They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
 
-In brief, each mark has a `++grab` arm to convert from other types to it; a `++grow` arm to convert it to other types; and a `++grad` arm for some standard operations across marks. You can explore the marks in `/mar`.
+In brief, each mark has a `+grab` arm to convert from other types to it; a `+grow` arm to convert it to other types; and a `+grad` arm for some standard operations across marks. You can explore the marks in `/mar`.
 
 
 ## Other Ford Runes {#other-ford-runes}
 
-The `++ford` arm of Clay builds Hoon code. It provides [a number of runes](../../language/hoon/reference/rune/fas.md) which allow fine-grained control over building and importing files. These must be in the specific order at the top of any file. (They also don't work in Dojo; see [-build-file](../../manual/os/dojo-tools.md#build-file) for a workaround.) The runes include:
+The `+ford` arm of Clay builds Hoon code. It provides [a number of runes](../../language/hoon/reference/rune/fas.md) which allow fine-grained control over building and importing files. These must be in the specific order at the top of any file. (They also don't work in Dojo; see [-build-file](../../manual/os/dojo-tools.md#build-file) for a workaround.) The runes include:
 
 - `/-` [fashep](../../language/hoon/reference/rune/fas.md#fashep) imports a structure file from `/sur`. Structure files are a way to share common data structures (across agents, for instance).
 - `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) imports a library file from `/lib`.

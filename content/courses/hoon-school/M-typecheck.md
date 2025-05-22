@@ -7,7 +7,7 @@ _In this module we'll cover how the Hoon compiler infers type, as well as variou
 
 Casting is used to explain to the Hoon compiler exactly what it is we mean with a given data structure. As you get in the habit of casting your data structures, it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
 
-[++list](../../language/hoon/reference/stdlib/1c.md#list) is a mold builder that is used to produce a [mold](../../glossary/mold.md), i.e. a list of a particular type (like `(list @)` for a list of atoms). A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `list` of some kind and a null-terminated tuple.
+[+list](../../language/hoon/reference/stdlib/1c.md#list) is a mold builder that is used to produce a [mold](../../glossary/mold.md), i.e. a list of a particular type (like `(list @)` for a list of atoms). A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `list` of some kind and a null-terminated tuple.
 
 ```hoon
 > -:!>(~[1 2 3])
@@ -795,7 +795,7 @@ Now let's use `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) to
 nest-fail
 ```
 
-The problem is that [++snag](../../language/hoon/reference/stdlib/2b.md#snag) is expecting a raw list, not a list that is known to be non-null.
+The problem is that [+snag](../../language/hoon/reference/stdlib/2b.md#snag) is expecting a raw list, not a list that is known to be non-null.
 
 You can cast `b` back to `(list)` to work around this:
 

@@ -5,7 +5,7 @@ _This module will introduce you to several useful data structures built on the [
 
 ## Key Data Structures and Molds {#key-data-structures-and-molds}
 
-[++maps](../../language/hoon/reference/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `++map`s were documented in [the previous module](K-doors.md).
+[+maps](../../language/hoon/reference/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `+map`s were documented in [the previous module](K-doors.md).
 
 ### `tree` {#tree}
 
@@ -96,29 +96,29 @@ $(hay r.hay)
 
 A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](../../glossary/list.md) except that each entry can only be represented once. As with a [map](../../language/hoon/reference/stdlib/2o.md#map), a `set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values. (`set`s also don't have an order, so they're basically a bag of unique values.)
 
-`set` operations are provided by [++in](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `map`/[++by](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
+`set` operations are provided by [+in](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `map`/[+by](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
 
-[++silt](../../language/hoon/reference/stdlib/2l.md#silt) produces a `set` from a `list`:
+[+silt](../../language/hoon/reference/stdlib/2l.md#silt) produces a `set` from a `list`:
 
 ```hoon
 =primes (silt ~[2 3 5 7 11 13])
 ```
 
-[++put:in](../../language/hoon/reference/stdlib/2h.md#putin) adds a value to a `set` (and null-ops when the value is already present):
+[+put:in](../../language/hoon/reference/stdlib/2h.md#putin) adds a value to a `set` (and null-ops when the value is already present):
 
 ```hoon
 =primes (~(put in primes) 17)
 =primes (~(put in primes) 13)
 ```
 
-[++del:in](../../language/hoon/reference/stdlib/2h.md#delin) removes a value from a `set`:
+[+del:in](../../language/hoon/reference/stdlib/2h.md#delin) removes a value from a `set`:
 
 ```hoon
 =primes (~(put in primes) 18)
 =primes (~(del in primes) 18)
 ```
 
-[++has:in](../../language/hoon/reference/stdlib/2h.md#hasin) checks for existence:
+[+has:in](../../language/hoon/reference/stdlib/2h.md#hasin) checks for existence:
 
 ```hoon
 > (~(has in primes) 15)
@@ -128,7 +128,7 @@ A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](
 %.y
 ```
 
-[++tap:in](../../language/hoon/reference/stdlib/2h.md#tapin) yields a `list` of the values:
+[+tap:in](../../language/hoon/reference/stdlib/2h.md#tapin) yields a `list` of the values:
 
 ```hoon
 > ~(tap in primes)
@@ -138,7 +138,7 @@ A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](
 ~[2 3 5 7 11 13 17]
 ```
 
-[++run:in](../../language/hoon/reference/stdlib/2h.md#runin) applies a function across all values:
+[+run:in](../../language/hoon/reference/stdlib/2h.md#runin) applies a function across all values:
 
 ```hoon
 > (~(run in primes) dec)
@@ -187,7 +187,7 @@ Save this as `cartesian.hoon` in your urbit's [pier](../../glossary/pier.md) and
 
 We encountered the [unit](../../language/hoon/reference/stdlib/1c.md#unit) briefly as a tool for distinguishing null results from actual zeroes: using a `unit` allows you to specify something that may not be there. For this reason, `unit`s are commonly used for operations that sometimes fail, such as search functions, database lookups, remote data requests, etc.
 
-You can build a `unit` using the tic special notation or [++some](../../language/hoon/reference/stdlib/2a.md#some):
+You can build a `unit` using the tic special notation or [+some](../../language/hoon/reference/stdlib/2a.md#some):
 
 ```hoon
 > `%mars
@@ -197,9 +197,9 @@ You can build a `unit` using the tic special notation or [++some](../../language
 [~ u=%mars]
 ```
 
-While [++got:by](../../language/hoon/reference/stdlib/2i.md#gotby) is one way to get a value back without wrapping it in a `unit`, it's better practice to use the [`unit` logic](../../language/hoon/reference/stdlib/2a.md) gates to manipulate gates to work correctly with `unit`s.
+While [+got:by](../../language/hoon/reference/stdlib/2i.md#gotby) is one way to get a value back without wrapping it in a `unit`, it's better practice to use the [`unit` logic](../../language/hoon/reference/stdlib/2a.md) gates to manipulate gates to work correctly with `unit`s.
 
-For example, use [++need](../../language/hoon/reference/stdlib/2a.md#need) to unwrap a `unit`, or crash if the `unit` is `~` null.
+For example, use [+need](../../language/hoon/reference/stdlib/2a.md#need) to unwrap a `unit`, or crash if the `unit` is `~` null.
 
 ```hoon
 > =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
@@ -217,7 +217,7 @@ For example, use [++need](../../language/hoon/reference/stdlib/2a.md#need) to un
 dojo: hoon expression failed
 ```
 
-Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), one can modify gates to work with `unit`s directly even if they're not natively set up that way. For instance, one cannot decrement a `unit` because [++dec](../../language/hoon/reference/stdlib/1a.md#dec) doesn't accept a `unit`. [++bind](../../language/hoon/reference/stdlib/2a.md#bind) can bind a non-`unit` function, another gate-building gate!.
+Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), one can modify gates to work with `unit`s directly even if they're not natively set up that way. For instance, one cannot decrement a `unit` because [+dec](../../language/hoon/reference/stdlib/1a.md#dec) doesn't accept a `unit`. [+bind](../../language/hoon/reference/stdlib/2a.md#bind) can bind a non-`unit` function, another gate-building gate!.
 
 ```hoon
 > (bind ((unit @ud) [~ 2]) dec)  
@@ -235,11 +235,11 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 
 [maps](../../language/hoon/reference/stdlib/2o.md#map) and [sets](../../language/hoon/reference/stdlib/2o.md#set) are frequently used in the standard library and in the extended ecosystem. There are other common patterns which recur often enough that they have their own names:
 
-- [++jar](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `map` of `list`s. `++jar` uses the [++ja](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
+- [+jar](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `map` of `list`s. `+jar` uses the [+ja](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
 
-- [++jug](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `map` of `set`s. `++jug` uses the [++ju](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
+- [+jug](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `map` of `set`s. `+jug` uses the [+ju](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
 
-- [++mip](../../language/hoon/reference/mip.md#mip) is a mold for a map of maps. `++mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
+- [+mip](../../language/hoon/reference/mip.md#mip) is a mold for a map of maps. `+mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
 
     ```hoon
     > =mip -build-file /=landscape=/lib/mip/hoon
@@ -273,14 +273,14 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 
     `mip`s are unjetted and quite slow but serve as a proof of concept.
 
-- [++mop](../../language/hoon/reference/zuse/2m.md#mop) ordered maps are discussed in [the App School guides](../app-school).
+- [+mop](../../language/hoon/reference/zuse/2m.md#mop) ordered maps are discussed in [the App School guides](../app-school).
 
 
 ## Molds and Samples {#molds-and-samples}
 
 ### Modifying Gate Behavior {#modifying-gate-behavior}
 
-Sometimes you need to modify parts of a [core](../../glossary/core.md) (like a [gate](../../glossary/gate.md)) on-the-fly to get the desired behavior. For instance, if you are using [++roll](../../language/hoon/reference/stdlib/2b.md#roll) to calculate the multiplicative product of the elements of a list, this “just works”:
+Sometimes you need to modify parts of a [core](../../glossary/core.md) (like a [gate](../../glossary/gate.md)) on-the-fly to get the desired behavior. For instance, if you are using [+roll](../../language/hoon/reference/stdlib/2b.md#roll) to calculate the multiplicative product of the elements of a list, this “just works”:
 
 ```hoon
 > (roll `(list @ud)`~[10 12 14 16 18] mul)  
@@ -306,7 +306,7 @@ is a cell of `[battery payload]`, let's take a look at the
 [[a=.0 b=.0] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]
 ```
 
-The correct behavior for [++mul:rs](../../language/hoon/reference/stdlib/3b.md#mulrs) is really to multiply starting from one, not zero, so that [++roll](../../language/hoon/reference/stdlib/2b.md#roll) doesn't wipe out the entire product.
+The correct behavior for [+mul:rs](../../language/hoon/reference/stdlib/3b.md#mulrs) is really to multiply starting from one, not zero, so that [+roll](../../language/hoon/reference/stdlib/2b.md#roll) doesn't wipe out the entire product.
 
 ### Custom Samples {#custom-samples}
 
@@ -330,7 +330,7 @@ What if we wish to define a door with a chosen sample value directly? We can mak
 31
 ```
 
-For our earlier example with [++roll](../../language/hoon/reference/stdlib/2b.md#roll), if we wanted to set the default sample to have a different value than the [bunt](../../glossary/bunt.md) of the type, we could use `_` cab:
+For our earlier example with [+roll](../../language/hoon/reference/stdlib/2b.md#roll), if we wanted to set the default sample to have a different value than the [bunt](../../glossary/bunt.md) of the type, we could use `_` cab:
 
 ```hoon
 > =mmul |=([a=_.1 b=_.1] (mul:rs a b))

@@ -178,7 +178,7 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`. See also [++limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `list`.)
+A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`. See also [+limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `list`.)
 
 ## Addressing Limbs {#addressing-limbs}
 
@@ -558,7 +558,7 @@ Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 ~[1 2 3 4 5 6 7 8 9]
 ```
 
-A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [++weld](../../language/hoon/reference/stdlib/2b.md#weld).)
+A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [+weld](../../language/hoon/reference/stdlib/2b.md#weld).)
 
 ```hoon
 !:
@@ -617,23 +617,23 @@ Enter the following into dojo:
 
 Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
 
-- The [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
+- The [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
   
     ```hoon
     > (flop ~[1 2 3 4 5])
     ~[5 4 3 2 1]
     ```
 
-  **Exercise: `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
+  **Exercise: `+flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
-- The [++sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `list` and a comparison function (like [++lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
+- The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `list` and a comparison function (like [+lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- The [++snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `list` to grab out a particular element (note that it starts counting at zero):
+- The [+snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `list` to grab out a particular element (note that it starts counting at zero):
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -655,7 +655,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     '!'
     ```
 
-- The [++weld](../../language/hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
+- The [+weld](../../language/hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
 
     ```hoon
     > (weld ~[1 2 3] ~[4 5 6])
@@ -665,18 +665,18 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     "Happy Birthday!"
     ```
 
-    **Exercise: `++weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
+    **Exercise: `+weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
 
 There are a couple of sometimes-useful `list` builders:
 
-- The [++gulf](../../language/hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
+- The [+gulf](../../language/hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
 
     ```hoon
     > (gulf 5 10)  
     ~[5 6 7 8 9 10]
     ```
 
-- The [++reap](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `list`:
+- The [+reap](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `list`:
 
     ```hoon
     > (reap 5 0x0)
@@ -692,7 +692,7 @@ There are a couple of sometimes-useful `list` builders:
     ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
     ```
 
-- The [++roll](../../language/hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+- The [+roll](../../language/hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
     ```hoon
     > (roll `(list @)`~[11 22 33 44 55] add)
@@ -704,11 +704,11 @@ There are a couple of sometimes-useful `list` builders:
 
 Once you have a `list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
-- The [++lent](../../language/hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
-- The [++find](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
-- The [++snap](../../language/hoon/reference/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
-- The [++scag](../../language/hoon/reference/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
-- The [++slag](../../language/hoon/reference/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
+- The [+lent](../../language/hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
+- The [+find](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
+- The [+snap](../../language/hoon/reference/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
+- The [+scag](../../language/hoon/reference/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
+- The [+slag](../../language/hoon/reference/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
@@ -747,7 +747,7 @@ First, bind these faces.
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-- Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
+- Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 
@@ -791,7 +791,7 @@ First, bind these faces.
     [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
     ```
 
-- Roll-Your-Own-`++flop`:
+- Roll-Your-Own-`+flop`:
 
     ```hoon
     ::  /gen/flop.hoon
@@ -803,7 +803,7 @@ First, bind these faces.
     $(b [i.a b], a t.a)
     ```
 
-- Roll-Your-Own-`++weld`:
+- Roll-Your-Own-`+weld`:
 
     ```hoon
     ::  /gen/weld.hoon
@@ -814,7 +814,7 @@ First, bind these faces.
     [i.a $(a t.a)]
     ```
 
-- `++lent` expressions
+- `+lent` expressions
 
     Running each one in the Dojo:
 
@@ -829,7 +829,7 @@ First, bind these faces.
     3
     ```
 
-- `++weld` expressions
+- `+weld` expressions
 
     Running each one in the Dojo:
 

@@ -120,7 +120,7 @@ Comets cannot be breached or rekeyed: possession of the comet is *ipso facto* at
 
 ### Sponsors {#sponsors}
 
-Each point other than a galaxy has a sponsor. To determine the sponsor of any point, use `++sein:title`:
+Each point other than a galaxy has a sponsor. To determine the sponsor of any point, use `+sein:title`:
 
 ```hoon
 %-(sein:title [our now ~marzod])

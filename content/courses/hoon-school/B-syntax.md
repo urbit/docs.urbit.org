@@ -56,7 +56,7 @@ _Everything_ in Hoon (and Nock, and Urbit) is a noun. The Urbit OS itself is a n
 
 ### Atoms {#atoms}
 
-If an atom is a non-negative number, how do we represent anything else? Hoon provides each atom an [aura](../../glossary/aura.md) , a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
+If an atom is a non-negative number, how do we represent anything else? Hoon provides each atom an [aura](../../glossary/aura.md), a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
 
 An aura always begins with `@` pat, which denotes an atom (as opposed to a cell, `^` ket, or the general noun, `*` tar). The next letter or letters tells you what kind of representation you want the value to have.
 
@@ -146,7 +146,7 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113%20-%20Basic%20Coding.mp4" %}
 
-The backbone of any Hoon expression is a scaffolding of [runes](../../glossary/rune.md) , which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs:  they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
+The backbone of any Hoon expression is a scaffolding of [runes](../../glossary/rune.md), which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs:  they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
 
 A rune is just a pair of ASCII characters (a digraph). We usually [pronounce runes](../../glossary/aural-ascii.md) by combining their characters’ names, e.g.: ["kethep"](../../language/hoon/reference/rune/ket.md#kethep) for `^-`, ["bartis"](../../language/hoon/reference/rune/bar.md#bartis) for `|=`, and ["barcen"](../../language/hoon/reference/rune/bar.md#barcen) for `|%`.
 

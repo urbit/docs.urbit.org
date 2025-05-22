@@ -9,13 +9,13 @@ The Hoon standard library provides a complete suite of functions for working wit
 ### Mathematics and Tree Addressing {#mathematics-and-tree-addressing}
 - [1a: Basic Arithmetic](1a.md) - Unsigned arithmetic operations including addition, subtraction, multiplication, division, and comparison functions.
 - [1b: Tree Addressing](1b.md) - Functions for addressing and navigating tree structures using Nock's tree addressing scheme.
-- [1c: Basic Types](1c.md) - Fundamental container types and molds including `list`, `unit`, `tree`, `gate`, `mold`, and other essential type definitions.
+- [1c: Containers](1c.md) - Fundamental container types and molds including `+pair`, `+list`, `+unit`, `+tree`, `+gate`, and other essential type definitions.
 
 ## Layer 2: Data Structures and Operations {#layer-2-data-structures-and-operations}
 
 ### Unit and List Operations {#unit-and-list-operations}
-- [2a: Unit Logic](2a.md) - Functions for working with units (optional values), including binding, combining, and transforming unit values.
-- [2b: List Operations](2b.md) - Comprehensive list manipulation functions including creation, traversal, filtering, sorting, and transformation operations.
+- [2a: Unit Logic](2a.md) - Functions for working with units (optional values).
+- [2b: List Logic](2b.md) - List manipulation functions.
 
 ### Bit and Logic Operations {#bit-and-logic-operations}
 - [2c: Bit Arithmetic](2c.md) - Functions for assembling, disassembling, and manipulating atoms at the bit level.
@@ -25,16 +25,16 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [2g: Unsigned Powers](2g.md) - Exponentiation and power-related operations for unsigned integers.
 
 ### Container Data Structures {#container-data-structures}
-- [2h: Set Operations](2h.md) - Set data structure operations including union, intersection, difference, and membership testing.
-- [2i: Map Operations](2i.md) - Functions for working with key-value maps, including insertion, deletion, lookup, and map transformations.
-- [2j: Jar and Jug Operations](2j.md) - Operations for jar (map of lists) and jug (map of sets) data structures.
-- [2k: Queue Operations](2k.md) - Queue data structure operations for first-in, first-out data handling.
+- [2h: Set Logic](2h.md) - Set data structure operations including union, intersection, difference, and membership testing.
+- [2i: Map Logic](2i.md) - Functions for working with key-value maps, including insertion, deletion, lookup, and map transformations.
+- [2j: Jar and Jug Logic](2j.md) - Operations for jar (map of lists) and jug (map of sets) data structures.
+- [2k: Queue Logic](2k.md) - Queue data structure operations for first-in, first-out data handling.
 - [2l: Container from Container](2l.md) - Functions for transforming one container type into another.
 - [2m: Container from Noun](2m.md) - Functions for creating containers from raw noun data.
 - [2n: Functional Hacks](2n.md) - Utility functions and functional programming helpers.
-- [2o: Containers](2o.md) - Additional container types and operations.
+- [2o: Normalizing Containers](2o.md) - Additional container types and operations.
 - [2p: Serialization](2p.md) - Functions for serializing and deserializing data structures.
-- [2q: Molds and Mold Builders](2q.md) - Type construction and validation functions for creating and working with Hoon types.
+- [2q: Molds and Mold-builders (Layer 2)](2q.md) - Type construction and validation functions for creating and working with Hoon types.
 
 ## Layer 3: Advanced Operations {#layer-3-advanced-operations}
 
@@ -45,7 +45,7 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [3d: SHA Hash Family](3d.md) - Cryptographic hash functions from the SHA family.
 - [3e: AES Encryption](3e.md) - Advanced Encryption Standard functions (removed from current stdlib).
 - [3f: Scrambling](3f.md) - Functions for data scrambling, obfuscation, and pseudo-random transformations.
-- [3g: Molds and Mold Builders](3g.md) - Advanced type system operations and mold construction utilities.
+- [3g: Molds and Mold-builders (Layer 3)](3g.md) - Advanced type system operations and mold construction utilities.
 
 ## Layer 4: Text Processing and I/O {#layer-4-text-processing-and-io}
 
@@ -64,7 +64,7 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [4l: Atom Parsing](4l.md) - Functions for parsing text into atoms with various auras.
 - [4m: Formatting Functions](4m.md) - Text formatting and pretty-printing utilities.
 - [4n: Virtualization](4n.md) - Virtualization and abstraction utilities for code execution.
-- [4o: Molds and Mold Builders](4o.md) - Advanced mold operations and type system utilities for complex type manipulation.
+- [4o: Molds and Mold-builders](4o.md) - Advanced mold operations and type system utilities for complex type manipulation.
 
 ## Layer 5: Compiler and System Operations {#layer-5-compiler-and-system-operations}
 
@@ -73,5 +73,5 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [5b: Macro Expansion](5b.md) - Functions for macro expansion and code transformation.
 - [5c: Compiler Backend](5c.md) - Backend compilation functions and code generation utilities.
 - [5d: Parser](5d.md) - Core parsing functions for the Hoon language syntax.
-- [5e: Molds and Mold Builders](5e.md) - System-level type operations and mold construction.
+- [5e: Molds and Mold-builders](5e.md) - System-level type operations and mold construction.
 - [5f: Profiling Support](5f.md) - Profiling tools and debugging utilities for performance analysis.

@@ -1,11 +1,11 @@
 # 15. Text Processing II
 
-_This module will elaborate on text representation in Hoon, including formatted text and `%ask` [generators](../../glossary/generator.md).  It may be considered optional and skipped if you are speedrunning Hoon School._
+_This module will elaborate on text representation in Hoon, including formatted text and `%ask` [generators](../../glossary/generator.md). It may be considered optional and skipped if you are speedrunning Hoon School._
 
 
 ## Text Conversions {#text-conversions}
 
-We frequently need to convert from text to data, and between different text-based representations.  Let's examine some specific [arms](../../glossary/arm.md):
+We frequently need to convert from text to data, and between different text-based representations. Let's examine some specific [arms](../../glossary/arm.md):
 
 - How do we convert text into all lower-case?
     - [++cass](../../language/hoon/reference/stdlib/4b.md#cass)
@@ -47,7 +47,7 @@ The `++html` core of the standard libary contains some additional important tool
 
 ## Formatted Text {#formatted-text}
 
-Hoon produces messages at the [Dojo](../../glossary/dojo.md) (or otherwise) using an internal formatted text system, called `tank`s.  A `+$tank` is a formatted print tree. Error messages and the like are built of `tank`s.  `tank`s are defined in `hoon.hoon`:
+Hoon produces messages at the [Dojo](../../glossary/dojo.md) (or otherwise) using an internal formatted text system, called `tank`s. A `+$tank` is a formatted print tree. Error messages and the like are built of `tank`s. `tank`s are defined in `hoon.hoon`:
 
 ```hoon
 ::  $tank: formatted print tree
@@ -124,7 +124,7 @@ Let's go line by line:
 /+    show-dir
 ```
 
-The first line `/?` faswut represents now-future functionality which will allow the version number of the kernel to be pinned.  It is currently non-functioning but you will see it in many Urbit-shipped files.
+The first line `/?` faswut represents now-future functionality which will allow the version number of the kernel to be pinned. It is currently non-functioning but you will see it in many Urbit-shipped files.
 
 Then the `show-dir` library is imported.
 
@@ -144,13 +144,13 @@ A `%say` [generator](../../glossary/generator.md) is a cell with a metadata tag 
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
-This generator requires a path argument in its sample and optionally accepts a [vane](../../glossary/vane.md) tag (`%g` [Gall](../../glossary/gall.md) or `%c` [Clay](../../glossary/clay.md)).  Most of the time, [+cat](../../manual/os/dojo-tools.md#cat) is used with Clay, so `%c` as the last entry in the type union serves as the [bunt](../../glossary/bunt.md) value.
+This generator requires a path argument in its sample and optionally accepts a [vane](../../glossary/vane.md) tag (`%g` [Gall](../../glossary/gall.md) or `%c` [Clay](../../glossary/clay.md)). Most of the time, [+cat](../../manual/os/dojo-tools.md#cat) is used with Clay, so `%c` as the last entry in the type union serves as the [bunt](../../glossary/bunt.md) value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a _peek_ or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md).  Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc.  In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup.  The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a _peek_ or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md). Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc. In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup. The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
@@ -217,9 +217,9 @@ You can see how much of the generator is concerned with formatting the content o
 
 ### Producing Error Messages {#producing-error-messages}
 
-Formal error messages in Urbit are built of tanks.  “A `tang` is a [list](../../glossary/list.md) of `tank`s, and a `tank` is a structure for printing data.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
+Formal error messages in Urbit are built of tanks. “A `tang` is a [list](../../glossary/list.md) of `tank`s, and a `tank` is a structure for printing data. There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
 
-One way to include an error message in your code is the `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”.  What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
+One way to include an error message in your code is the `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”. What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
 
 ```hoon
 |=  a=@ud
@@ -236,11 +236,11 @@ Previously, we introduced the concept of a `%say` [generator](../../glossary/gen
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
-This section will briefly walk through an `%ask` generator to give you a taste of how they work.  The [CLI app guide](../../userspace/apps/guides/cli-tutorial.md) walks through the libraries necessary for working with `%ask` generators in greater detail.  We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
+This section will briefly walk through an `%ask` generator to give you a taste of how they work. The [CLI app guide](../../userspace/apps/guides/cli-tutorial.md) walks through the libraries necessary for working with `%ask` generators in greater detail. We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
 
 ##### Tutorial:  `%ask` Generator
 
-The code below is an `%ask` [generator](../../glossary/generator.md) that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0).  Save it as `/gen/axe.hoon` in your `%base` [desk](../../glossary/desk.md).
+The code below is an `%ask` [generator](../../glossary/generator.md) that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0). Save it as `/gen/axe.hoon` in your `%base` [desk](../../glossary/desk.md).
 
 ```hoon
 /-  sole
@@ -271,7 +271,7 @@ What is your favorite color?
 : color:
 ```
 
-Something new has happened.  Instead of simply returning something, your Dojo's prompt changed from `~your-urbit:dojo>` to `~your-urbit:dojo: color:`, and now expects additional input.  Let's give it an answer:
+Something new has happened. Instead of simply returning something, your Dojo's prompt changed from `~your-urbit:dojo>` to `~your-urbit:dojo: color:`, and now expects additional input. Let's give it an answer:
 
 ```hoon
 : color: red
@@ -306,11 +306,11 @@ With `|= *`, we create a [gate](../../glossary/gate.md) and ignore the standard 
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `cask` of `tang`.  We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
+`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `cask` of `tang`. We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
 
-A `cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md).  We previously described a `mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
+A `cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md). We previously described a `mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
 
-A `tang` is a [list](../../glossary/list.md) of `tank`, and a `tank` is a structure for printing data, as described above.  There are three types of `tank`: `leaf`, `palm`, and `rose`.  A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.
+A `tang` is a [list](../../glossary/list.md) of `tank`, and a `tank` is a structure for printing data, as described above. There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.
 
 ```hoon
 %+  print    leaf+"What is your favorite color?"
@@ -323,7 +323,7 @@ Because we imported [generators](../../glossary/generator.md), we can access its
 
 - `print` is used for printing a `tank` to the console.
 
-    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print.  The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
+    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print. The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
 
 - `prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
 
@@ -339,8 +339,8 @@ Because we imported [generators](../../glossary/generator.md), we can access its
 |=  t=tape
 ```
 
-Our gate here takes a `tape` that was produced by `++prompt`.  If we needed another type of data we could use `++parse` to obtain it.
+Our gate here takes a `tape` that was produced by `++prompt`. If we needed another type of data we could use `++parse` to obtain it.
 
 The rest of this generator should be intelligible to those with Hoon knowledge at this point.
 
-One quirk that you should be aware of, though, is that `tang` prints in reverse order from how it is created.  The reason for this is that `tang` was originally created to display stack trace information, which should be produced in reverse order.  This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [++flop](../../language/hoon/reference/stdlib/2b.md#flop) the `list`.
+One quirk that you should be aware of, though, is that `tang` prints in reverse order from how it is created. The reason for this is that `tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [++flop](../../language/hoon/reference/stdlib/2b.md#flop) the `list`.

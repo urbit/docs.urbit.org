@@ -1,16 +1,16 @@
 # 6. Trees and Addressing
 
-_Every noun in Urbit is an atom or a cell.  This module will elaborate how we can use this fact to locate data and evaluate code in a given expression.  It will also discuss the important `list` mold builder and a number of standard library operations._
+_Every noun in Urbit is an atom or a cell. This module will elaborate how we can use this fact to locate data and evaluate code in a given expression. It will also discuss the important `list` mold builder and a number of standard library operations._
 
 ## Trees {#trees}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS135%20-%20Trees.mp4" %}
 
-Every [noun](../../glossary/noun.md) in Urbit is a either an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md).  Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree).  We can draw this layout naturally:
+Every [noun](../../glossary/noun.md) in Urbit is a either an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md). Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree). We can draw this layout naturally:
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
 
-A binary tree has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a “leaf”.  You can think of a noun as a binary tree whose leaves are atoms, i.e., unsigned integers.  All non-leaf nodes are cells.  An atom is a trivial tree of just one node; e.g., `17`.
+A binary tree has a single base node, and each node of the tree may have up to two child nodes (but it need not have any). A node without children is a “leaf”. You can think of a noun as a binary tree whose leaves are atoms, i.e., unsigned integers. All non-leaf nodes are cells. An atom is a trivial tree of just one node; e.g., `17`.
 
 For instance, if we produce a cell in the [Dojo](../../glossary/dojo.md)
 
@@ -22,7 +22,7 @@ it can be represented as a tree with the contents
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row.png)
 
-We will use the convention in these graphics that black-text-on-white-circle represents an address, and that green-text-on-black-circle represents the content at that address.  So another way to represent the same data would be this:
+We will use the convention in these graphics that black-text-on-white-circle represents an address, and that green-text-on-black-circle represents the content at that address. So another way to represent the same data would be this:
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row-full.png)
 
@@ -33,13 +33,13 @@ When we input the above cell representation into the Dojo, the pretty-printer hi
 [[[8 9] 10 11] [12 13] 14 15]
 ```
 
-We can refer to any data stored anywhere in this tree.  The numbers in the labeled diagram above are the _numerical addresses_ of the tree, and may be extended indefinitely downwards into ever-deeper tree representations.
+We can refer to any data stored anywhere in this tree. The numbers in the labeled diagram above are the _numerical addresses_ of the tree, and may be extended indefinitely downwards into ever-deeper tree representations.
 
-Most of any possible tree will be unoccupied for any actual data structure.  For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself—that's a function of the algorithms working with the data.)
+Most of any possible tree will be unoccupied for any actual data structure. For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself—that's a function of the algorithms working with the data.)
 
 ### Exercise:  Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
 
-- Consider each of the following nouns.  Which tree diagram do they correspond to?  (This is a matching exercise.)
+- Consider each of the following nouns. Which tree diagram do they correspond to?  (This is a matching exercise.)
 
     | Noun | Tree Diagram |
     | ---- | ------------ |
@@ -75,9 +75,9 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
     ~
     ```
 
-    OK, we've seen these runes before.  This time we want to focus on the list, the thing that's being built here.
+    OK, we've seen these runes before. This time we want to focus on the list, the thing that's being built here.
 
-    This program works by having each iteration of the list create a cell.  In each of these cells, the head—the cell's first position—is filled with the current-iteration value of `count`.  The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`.  This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration.  This process continues until `?:` branches to `~` (`null`).  When that happens, it terminates the list and the expression ends.  A built-out list of nested cells can be visualized like this:
+    This program works by having each iteration of the list create a cell. In each of these cells, the head—the cell's first position—is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
 
     ```
       [1 [2 [3 [4 ~]]]]
@@ -95,13 +95,13 @@ Most of any possible tree will be unoccupied for any actual data structure.  For
 
 ### Tuples as Trees {#tuples-as-trees}
 
-What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar.  Basically it's a cell series which doesn't necessarily end in `~`.
+What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar. Basically it's a cell series which doesn't necessarily end in `~`.
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
 
-At this point, you should start to be able to work this out in your head, at least for the first few rows.  The `+` lus operator can be used to return the limb of the subject at a given numeric address.  If there is no such limb, the result is a crash.
+At this point, you should start to be able to work this out in your head, at least for the first few rows. The `+` lus operator can be used to return the limb of the subject at a given numeric address. If there is no such limb, the result is a crash.
 
 ```hoon
 > =data ~[1 2 3 4]
@@ -141,7 +141,7 @@ dojo: hoon expression failed
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS140%20-%20Lists.mp4" %}
 
-We have used lists incidentally.  A [list](../../glossary/list.md) is an ordered arrangement of elements ending in a `~` (null).  Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
+We have used lists incidentally. A [list](../../glossary/list.md) is an ordered arrangement of elements ending in a `~` (null). Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
 
 ```hoon
 > `(list @)`['a' %b 100 ~]
@@ -150,7 +150,7 @@ We have used lists incidentally.  A [list](../../glossary/list.md) is an ordered
 
 (Notice that all values are converted to the specified [aura](../../glossary/aura.md), in this case the empty aura.)
 
-A `list` is built with the `list` mold.  A `list` is actually a _mold builder_, a [gate](../../glossary/gate.md) that produces a gate.  This is a common design pattern in Hoon.  (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer:  it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `list` is built with the `list` mold. A `list` is actually a _mold builder_, a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer:  it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
 
 ```hoon
 > `(list)`~['a' %b 100]
@@ -162,7 +162,7 @@ A `list` is built with the `list` mold.  A `list` is actually a _mold builder_, 
 ~[~[1 2 3] ~[4 5 6]]
 ```
 
-True `list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the _head_ is the first element while the _tail_ is everything else.  If something has the same _structure_ as a `list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `list`.  In such cases, you'll need to explicitly mark it as such:
+True `list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the _head_ is the first element while the _tail_ is everything else. If something has the same _structure_ as a `list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `list`. In such cases, you'll need to explicitly mark it as such:
 
 ```hoon
 > [3 4 5 ~]
@@ -178,16 +178,16 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list.  (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists.  This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`.  See also [++limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `list`.)
+A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`. See also [++limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `list`.)
 
 ## Addressing Limbs {#addressing-limbs}
 
-Everything in Urbit is a binary tree.  And all code in Urbit is also represented as data.  One corollary of these facts is that we can access any arbitrary part of an expression, gate, [core](../../glossary/core.md), whatever, via addressing (assuming proper permissions, of course).  (In fact, we can even hot-swap parts of cores, which is how [wet gates](R-metals.md#wet-gates) work.)
+Everything in Urbit is a binary tree. And all code in Urbit is also represented as data. One corollary of these facts is that we can access any arbitrary part of an expression, gate, [core](../../glossary/core.md), whatever, via addressing (assuming proper permissions, of course). (In fact, we can even hot-swap parts of cores, which is how [wet gates](R-metals.md#wet-gates) work.)
 
 There are three different ways to access values:
 
 1. [Numeric addressing](G-trees.md#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
-2. [Positional addressing](G-trees.md#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value.  This is like knowing the directions somewhere even if you don't know the house number.
+2. [Positional addressing](G-trees.md#positional-addressing-(lark-notation)) is helpful when you don't want to figure out the room number, but you know how to navigate to the value. This is like knowing the directions somewhere even if you don't know the house number.
 3. [Wing addressing](G-trees.md#wings) is a way of attaching a name to the address so that you can access it directly.
 
 ### Numeric Addressing {#numeric-addressing}
@@ -200,7 +200,7 @@ Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to d
 
 ### Exercise:  Tapes for Text {#exercise-tapes-for-text}
  
-A [tape](../../glossary/tape.md) is one way of representing a text message in Hoon.  It is written with double quotes:
+A [tape](../../glossary/tape.md) is one way of representing a text message in Hoon. It is written with double quotes:
  
 ```hoon
 "I am the very model of a modern Major-General"
@@ -214,11 +214,11 @@ A `tape` is actually a `(list @t)`, a binary tree of single characters which onl
 
 ### Positional Addressing (Lark Notation) {#positional-addressing-lark-notation}
 
-Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree.  These are written using `-` (left) and `+` (right) alternating with `<` (left) and `>` (right).
+Much like relative directions, one can also state “left, left, right, left” or similar to locate a particular node in the tree. These are written using `-` (left) and `+` (right) alternating with `<` (left) and `>` (right).
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size.  However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](M-typecheck.md)):
+Lark notation can locate a position in a tree of any size. However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](M-typecheck.md)):
 
 ```hoon
 -:!>('hello Mars')
@@ -226,7 +226,7 @@ Lark notation can locate a position in a tree of any size.  However, it is most 
 
 Lark notation is not preferred in modern Hoon for more than one or two elements deep, but it can be helpful when working interactively with a complicated data structure like a JSON data object.
 
-When lark expressions resolve to the part of the subject containing an [arm](../../glossary/arm.md), they don't evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
+When lark expressions resolve to the part of the subject containing an [arm](../../glossary/arm.md), they don't evaluate the arm. They simply return the indicated noun fragment of the subject, as if it were a leg.
 
 ### Exercise:  Address the Fruit Tree {#exercise-address-the-fruit-tree}
 
@@ -272,7 +272,7 @@ Solutions to these exercises may be found at the bottom of this lesson.
 
 ## Wings {#wings}
 
-One can also identify a resource by a label, called a [wing](../../glossary/wing.md).  A wing represents a depth-first search into the current [subject](../../glossary/subject.md) (context).  A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
+One can also identify a resource by a label, called a [wing](../../glossary/wing.md). A wing represents a depth-first search into the current [subject](../../glossary/subject.md) (context). A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
 
 ```hoon
 inner-limb.outer-limb.limb
@@ -280,7 +280,7 @@ inner-limb.outer-limb.limb
 
 You can read this as `inner-limb` in `outer-limb` in `limb`, etc. Notice that these read left-to-right!
 
-A wing is a resolution path pointing to a limb.  It's a search path, like an index to a particular labeled part of the subject.
+A wing is a resolution path pointing to a limb. It's a search path, like an index to a particular labeled part of the subject.
 
 Here are some examples:
 
@@ -328,19 +328,19 @@ To locate a value in a named tuple data structure:
 1
 ```
 
-A wing is a limb resolution path into the subject.  This definition includes as a trivial case a path of just one limb.  Thus, all limbs are wings, and all limb expressions are wing expressions.
+A wing is a limb resolution path into the subject. This definition includes as a trivial case a path of just one limb. Thus, all limbs are wings, and all limb expressions are wing expressions.
 
 We mention this because it is convenient to refer to all limbs and non-trivial wings as simply “wings”.
 
 ### Names and Faces {#names-and-faces}
 
-A name can resolve either an arm or a leg of the subject.  Recall that arms are for computations and legs are for data.  When a name resolves to an arm, the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.
+A name can resolve either an arm or a leg of the subject. Recall that arms are for computations and legs are for data. When a name resolves to an arm, the relevant computation is run and the product of the computation is produced. When a limb name resolves to a leg, the value of that leg is produced.
 
-Hoon doesn't have variables like other programming languages do; it has [faces](../../glossary/face.md).  Faces are like variables in certain respects, but not in others.  Faces play various roles in Hoon, but most frequently faces are used simply as labels for legs.
+Hoon doesn't have variables like other programming languages do; it has [faces](../../glossary/face.md). Faces are like variables in certain respects, but not in others. Faces play various roles in Hoon, but most frequently faces are used simply as labels for legs.
 
-A face is a limb expression that consists of a series of alphanumeric characters.  A face has a combination of lowercase letters, numbers, and the `-` character. Some example faces: `b`, `c3`, `var`, `this-is-kebab-case123`. Faces must begin with a letter.
+A face is a limb expression that consists of a series of alphanumeric characters. A face has a combination of lowercase letters, numbers, and the `-` character. Some example faces: `b`, `c3`, `var`, `this-is-kebab-case123`. Faces must begin with a letter.
 
-There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`.  An expression of this form is equivalent in value to simply `value`.  Hoon registers the given `face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
+There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`. An expression of this form is equivalent in value to simply `value`. Hoon registers the given `face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
 
 Now we have several ways to access values:
 
@@ -398,25 +398,25 @@ There is no restriction against using the same face name for multiple limbs of t
 5
 ```
 
-Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject.  If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail.  The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
+Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
 
-1.  `[[4 b=5] [b=6 b=[14 15]]]`
-2.  `[4 b=5]`
-3.  `4`
-4.  `b=5`
-5.  `[b=6 b=[14 15]]`
-6.  `b=6`
-7.  `b=[14 15]`
+1. `[[4 b=5] [b=6 b=[14 15]]]`
+2. `[4 b=5]`
+3. `4`
+4. `b=5`
+5. `[b=6 b=[14 15]]`
+6. `b=6`
+7. `b=[14 15]`
 
 There are matches at steps 4, 6, and 7 of the total search path, but the search ends when the first match is found at step 4.
 
 The children of legs bearing names aren't included in the search path. For example, the search path of `[[4 a=5] b=[c=14 15]]` is:
 
-1.  `[[4 a=5] b=[c=14 15]]`
-2.  `[4 a=5]`
-3.  `4`
-4.  `a=5`
-5.  `b=[c=14 15]`
+1. `[[4 a=5] b=[c=14 15]]`
+2. `[4 a=5]`
+3. `4`
+4. `a=5`
+5. `b=[c=14 15]`
 
 Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `c` of `[[4 a=5] b=[c=14 15]]` fails:
 
@@ -425,7 +425,7 @@ Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `c` of 
 -find.c [crash message]
 ```
 
-In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `list`) are likely.  There is no restriction against using the same face name for multiple limbs of the subject.  This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them.  In other words, there are cases when you don't want the limb of the first matching face.  You can ‘skip’ the first match by prepending `^` to the face.  Upon discovery of the first match at address `n`, the search skips `n` (as well as its children) and continues the search elsewhere:
+In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `list`) are likely. There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them. In other words, there are cases when you don't want the limb of the first matching face. You can ‘skip’ the first match by prepending `^` to the face. Upon discovery of the first match at address `n`, the search skips `n` (as well as its children) and continues the search elsewhere:
 
 ```hoon
 > ^b:[[4 b=5] [b=6 b=[14 15]]]
@@ -434,13 +434,13 @@ In any programming paradigm, good names are valuable and collisions (repetitions
 
 Recall that the search path for this noun is:
 
-1.  `[[4 b=5] [b=6 b=[14 15]]]`
-2.  `[4 b=5]`
-3.  `4`
-4.  `b=5`
-5.  `[b=6 b=[14 15]]`
-6.  `b=6`
-7.  `b=[14 15]`
+1. `[[4 b=5] [b=6 b=[14 15]]]`
+2. `[4 b=5]`
+3. `4`
+4. `b=5`
+5. `[b=6 b=[14 15]]`
+6. `b=6`
+7. `b=[14 15]`
 
 The second match in the search path is step 6, `b=6`, so the value at that leg is produced. You can stack `^` characters to skip more than one matching face:
 
@@ -474,7 +474,7 @@ How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=1
 
 We say that the inner face has been _shadowed_ when an outer name obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm.  `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
+If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
 
 Solution #1 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
@@ -486,7 +486,7 @@ There are two symbols we use to search for a face or limb:
 - `:` col resolves the wing path with the right-hand-side as the
   subject.
 
-Logically, `a:b` is two operations, while `a.b` is one operation.  The compiler is smart about `:` col wing resolutions and reduces it to a regular lookup, though.
+Logically, `a:b` is two operations, while `a.b` is one operation. The compiler is smart about `:` col wing resolutions and reduces it to a regular lookup, though.
 
 ### What `%=` Does {#what-does}
 
@@ -505,7 +505,7 @@ $(n (dec n))
 
 The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune.
 
-Now, we noted that `$` buc is the default arm for the trap.  It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
+Now, we noted that `$` buc is the default arm for the trap. It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
 ```hoon
 |=  n=@ud
@@ -528,7 +528,7 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
 
 where `=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) means to add its sample to the current subject with the given [face](../../glossary/face.md).
 
-Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`.  How could you write that in terms of `|%` and `++`?
+Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`. How could you write that in terms of `|%` and `++`?
 
 ### Example:  Number to Digits {#example-number-to-digits}
 
@@ -558,7 +558,7 @@ Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 ~[1 2 3 4 5 6 7 8 9]
 ```
 
-A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first.  (This saves a call to [++weld](../../language/hoon/reference/stdlib/2b.md#weld).)
+A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [++weld](../../language/hoon/reference/stdlib/2b.md#weld).)
 
 ```hoon
 !:
@@ -586,9 +586,9 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 ==
 ```
 
-(Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation.  This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
+(Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation. This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune).  Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise:  Resolving Wings {#exercise-resolving-wings}
 
@@ -600,15 +600,15 @@ Enter the following into dojo:
 
 - Test your knowledge from this lesson by evaluating the following expressions and then checking your answer in the dojo or see the solutions below.
 
-    1.  `b:a(a [b=%skrt a="four"])`
-    2.  `^b:a(a [b=%skrt a="four"])`
-    3.  `^^b:a(a [b=%skrt a="four"])`
-    4.  `b.a:a(a [b=%skrt a="four"])`
-    5.  `a.a:a(a [b=%skrt a="four"])`
-    6.  `+.a:a(a [b=%skrt a="four"])`
-    7.  `a:+.a:a(a [b=%skrt a="four"])`
-    8.  `a(a a)`
-    9.  `b:-<.a(a a)`
+    1. `b:a(a [b=%skrt a="four"])`
+    2. `^b:a(a [b=%skrt a="four"])`
+    3. `^^b:a(a [b=%skrt a="four"])`
+    4. `b.a:a(a [b=%skrt a="four"])`
+    5. `a.a:a(a [b=%skrt a="four"])`
+    6. `+.a:a(a [b=%skrt a="four"])`
+    7. `a:+.a:a(a [b=%skrt a="four"])`
+    8. `a(a a)`
+    9. `b:-<.a(a a)`
     10. How many times does the atom `9` appear in `a(a a(a a))`?
 
     The answers are at the bottom of the page.
@@ -624,7 +624,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     ~[5 4 3 2 1]
     ```
 
-  **Exercise:  `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of the page.
+  **Exercise:  `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
 - The [++sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `list` and a comparison function (like [++lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
 
@@ -665,7 +665,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     "Happy Birthday!"
     ```
 
-    **Exercise:  `++weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists.  There is a solution at the bottom of the page.
+    **Exercise:  `++weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
 
 There are a couple of sometimes-useful `list` builders:
 
@@ -747,7 +747,7 @@ First, bind these faces.
 
 ### Exercise:  Palindrome {#exercise-palindrome}
 
-- Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise.  You may use the [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
+- Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 
@@ -775,16 +775,16 @@ First, bind these faces.
 
 - Resolving Wing Expressions
 
-    1.  `%bweh`
-    2.  `"no"`
-    3.  Error: `ford: %slim failed:`
-    4.  `%skrt`
-    5.  `"four"`
-    6.  `a="four"` - Note that this is different from the above!
-    7.  `"four"`
-    8.  `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]`
-    9.  `%bweh`
-    10.  `9` appears 3 times:
+    1. `%bweh`
+    2. `"no"`
+    3. Error: `ford: %slim failed:`
+    4. `%skrt`
+    5. `"four"`
+    6. `a="four"` - Note that this is different from the above!
+    7. `"four"`
+    8. `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]`
+    9. `%bweh`
+    10. `9` appears 3 times:
     
     ```hoon
     > a(a a(a a))
@@ -844,7 +844,7 @@ First, bind these faces.
     > (weld b c)
     ```
 
-    This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were.  In that case, it would return `7`.
+    This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
 
     ```hoon
     > (lent (weld b c))

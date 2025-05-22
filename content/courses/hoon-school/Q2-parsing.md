@@ -1,10 +1,10 @@
 # 17. Text Processing III
 
-_This module covers text parsing.  It may be considered optional and skipped if you are speedrunning Hoon School._
+_This module covers text parsing. It may be considered optional and skipped if you are speedrunning Hoon School._
 
 We need to build a tool to accept a [tape](../../glossary/tape.md) containing some characters, then turn it into something else, something computational.
 
-For instance, a calculator could accept an input like `3+4` and return `7`.  A command-line interface may look for a program to evaluate (like Bash and `ls`).  A search bar may apply logic to the query (like Google and `-` for `NOT`).
+For instance, a calculator could accept an input like `3+4` and return `7`. A command-line interface may look for a program to evaluate (like Bash and `ls`). A search bar may apply logic to the query (like Google and `-` for `NOT`).
 
 The basic problem all parsers face is this:
 
@@ -15,25 +15,25 @@ The basic problem all parsers face is this:
 
 ## The Hoon Parser {#the-hoon-parser}
 
-We could build a simple parser out of a [trap](../../glossary/trap.md) and [++snag](../../language/hoon/reference/stdlib/2b.md#snag), but it would be brittle and difficult to extend.  The Hoon parser is very sophisticated, since it has to take a file of ASCII characters (and some UTF-8 strings) and turn it via an AST into [Nock](../../glossary/nock.md) code.  What makes parsing challenging is that we have to wade directly into a sea of new types and processes.  To wit:
+We could build a simple parser out of a [trap](../../glossary/trap.md) and [++snag](../../language/hoon/reference/stdlib/2b.md#snag), but it would be brittle and difficult to extend. The Hoon parser is very sophisticated, since it has to take a file of ASCII characters (and some UTF-8 strings) and turn it via an AST into [Nock](../../glossary/nock.md) code. What makes parsing challenging is that we have to wade directly into a sea of new types and processes. To wit:
 
 -   A [tape](../../glossary/tape.md) is the string to be parsed.
 -   A `hair` is the position in the text the parser is at, as a cell of column & line, `[p=@ud q=@ud]`.
 -   A `nail` is parser input, a cell of `hair` and `tape`.
--   An `edge` is parser output, a cell of `hair` and a `unit` of `hair` and `nail`.  (There are some subtleties around failure-to-parse here that we'll defer a moment.)
+-   An `edge` is parser output, a cell of `hair` and a `unit` of `hair` and `nail`. (There are some subtleties around failure-to-parse here that we'll defer a moment.)
 -   A `rule` is a parser, a gate which applies a `nail` to yield an `edge`.
 
 Basically, one uses a `rule` on `[hair tape]` to yield an `edge`.
 
-A substantial swath of the standard library is built around parsing for various scenarios, and there's a lot to know to effectively use these tools.  **If you can parse arbitrary input using Hoon after this lesson, you're in fantastic shape for building things later.**  It's worth spending extra effort to understand how these programs work.
+A substantial swath of the standard library is built around parsing for various scenarios, and there's a lot to know to effectively use these tools. **If you can parse arbitrary input using Hoon after this lesson, you're in fantastic shape for building things later.**  It's worth spending extra effort to understand how these programs work.
 
 There is a [full guide on parsing](../../language/hoon/guides/parsing.md) which goes into more detail than this quick overview.
 
 ## Scanning Through a `tape` {#scanning-through-a-tape}
 
-[++scan](../../language/hoon/reference/stdlib/4g.md#scan) parses a `tape` or crashes, simple enough.  It will be our workhorse.  All we really need to know in order to use it is how to build a `rule`.
+[++scan](../../language/hoon/reference/stdlib/4g.md#scan) parses a `tape` or crashes, simple enough. It will be our workhorse. All we really need to know in order to use it is how to build a `rule`.
 
-Here we will preview using [++shim](../../language/hoon/reference/stdlib/4f.md#shim) to match characters with in a given range, here lower-case.  If you change the character range, e.g. putting `' '` in the `++shim` will span from ASCII `32`, `' '` to ASCII `122`, `'z'`.
+Here we will preview using [++shim](../../language/hoon/reference/stdlib/4f.md#shim) to match characters with in a given range, here lower-case. If you change the character range, e.g. putting `' '` in the `++shim` will span from ASCII `32`, `' '` to ASCII `122`, `'z'`.
 
 ```hoon
 > `(list)`(scan "after" (star (shim 'a' 'z')))  
@@ -138,7 +138,7 @@ How do we parse multiple characters in order to break things up sensibly?
     [p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
     ```
 
-- [++glue](../../language/hoon/reference/stdlib/4e.md#glue) parses a delimiter (a `rule`) in between each `rule` and forms a [cell](../../glossary/cell.md) of the results of each non-delimiter `rule`.  Delimiters representing each symbol used in Hoon are named according to their [aural ASCII](../../glossary/aural-ascii.md) pronunciation. Sets of characters can also be used as delimiters, such as `prn` for printable characters ([more here](../../language/hoon/reference/stdlib/4i.md)).
+- [++glue](../../language/hoon/reference/stdlib/4e.md#glue) parses a delimiter (a `rule`) in between each `rule` and forms a [cell](../../glossary/cell.md) of the results of each non-delimiter `rule`. Delimiters representing each symbol used in Hoon are named according to their [aural ASCII](../../glossary/aural-ascii.md) pronunciation. Sets of characters can also be used as delimiters, such as `prn` for printable characters ([more here](../../language/hoon/reference/stdlib/4i.md)).
 
     ```hoon
     > (scan "a b" ;~((glue ace) (just 'a') (just 'b')))  
@@ -191,13 +191,13 @@ At this point we have two problems:  we are just getting raw `@t` atoms back, an
     [p=[p=1 q=2] q=[~ u=[p='b' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-However, to parse iteratively, we need to use the [++knee](../../language/hoon/reference/stdlib/4f.md#knee) function, which takes a noun as the [bunt](../../glossary/bunt.md) of the type the `rule` produces, and produces a `rule` that recurses properly.  (You'll probably want to treat this as a recipe for now and just copy it when necessary.)
+However, to parse iteratively, we need to use the [++knee](../../language/hoon/reference/stdlib/4f.md#knee) function, which takes a noun as the [bunt](../../glossary/bunt.md) of the type the `rule` produces, and produces a `rule` that recurses properly. (You'll probably want to treat this as a recipe for now and just copy it when necessary.)
 
 ```hoon
 |-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
 ```
 
-There is an example of a calculator [in the parsing guide](../../language/hoon/guides/parsing.md#recursive-parsers) that's worth a read at this point.  It uses [++knee](../../language/hoon/reference/stdlib/4f.md#knee) to scan in a set of numbers at a time.
+There is an example of a calculator [in the parsing guide](../../language/hoon/guides/parsing.md#recursive-parsers) that's worth a read at this point. It uses [++knee](../../language/hoon/reference/stdlib/4f.md#knee) to scan in a set of numbers at a time.
 
 ### Example:  Parse a String of Numbers {#example-parse-a-string-of-numbers}
 

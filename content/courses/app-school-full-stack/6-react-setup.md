@@ -79,7 +79,7 @@ While not referenced in the `create-landscape-app` default code, the `Urbit` cla
 - `onRetry` is called when a channel connection has been interrupted (such as by network issues) and the `Urbit` object is trying to reconnect. Reconnection will be attempted up to three times: immediately, after 750ms, and after 3000ms.
 - `onError` is called with an `Error` message once all retries have failed, or otherwise when a fatal error occurs.
 
-We'll look at how we can use these callbacks in the next section.  Note that it's not mandatory to set these callbacks, but leaving connection problems unhandled is usually a bad idea.
+We'll look at how we can use these callbacks in the next section. Note that it's not mandatory to set these callbacks, but leaving connection problems unhandled is usually a bad idea.
 
 ### React app setup {#react-app-setup}
 

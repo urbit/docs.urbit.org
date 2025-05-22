@@ -1,10 +1,10 @@
 # 19. Mathematics
 
-_This module introduces how non-`@ud` mathematics are instrumented in Hoon.  It may be considered optional and skipped if you are speedrunning Hoon School._
+_This module introduces how non-`@ud` mathematics are instrumented in Hoon. It may be considered optional and skipped if you are speedrunning Hoon School._
 
-All of the math we've done until this point relied on unsigned integers: there was no negative value possible, and there were no numbers with a fractional part.  How can we work with mathematics that require more than just bare unsigned integers?
+All of the math we've done until this point relied on unsigned integers: there was no negative value possible, and there were no numbers with a fractional part. How can we work with mathematics that require more than just bare unsigned integers?
 
-`@u` unsigned integers (whether `@ud` decimal, `@ux` hexadecimal, etc.) simply count upwards by binary place value from zero.  However, if we apply a different interpretive rule to the resulting value, we can treat the integer (in memory) _as if_ it corresponded to a different real value, such as a [negative number](https://en.wikipedia.org/wiki/Integer) or a [number with a fractional part](https://en.wikipedia.org/wiki/Rational_number).  Auras make this straightforward to explore:
+`@u` unsigned integers (whether `@ud` decimal, `@ux` hexadecimal, etc.) simply count upwards by binary place value from zero. However, if we apply a different interpretive rule to the resulting value, we can treat the integer (in memory) _as if_ it corresponded to a different real value, such as a [negative number](https://en.wikipedia.org/wiki/Integer) or a [number with a fractional part](https://en.wikipedia.org/wiki/Rational_number). Auras make this straightforward to explore:
 
 ```hoon
 > `@ud`1.000.000
@@ -38,15 +38,15 @@ How can we actually treat other modes of interpreting numbers as mathematical qu
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS234%20-%20Floating-Point%20Maths.mp4" %}
 
-A number with a fractional part is called a “floating-point number” in computer science.  This derives from its solution to the problem of representing the part less than one.
+A number with a fractional part is called a “floating-point number” in computer science. This derives from its solution to the problem of representing the part less than one.
 
-Consider for a moment how you would represent a regular decimal fraction if you only had integers available.  You would probably adopt one of three strategies:
+Consider for a moment how you would represent a regular decimal fraction if you only had integers available. You would probably adopt one of three strategies:
 
-1. [**Rational numbers**](https://en.wikipedia.org/wiki/Fraction). Track whole-number ratios like fractions.  Thus $$1.25 = \frac{5}{4}$$, thence the pair `(5, 4)`.  Two numbers have to be tracked:  the numerator and the denominator.
-2. [**Fixed-point**](https://en.wikipedia.org/wiki/Fixed-point_arithmetic). Track the value in smaller fixed units (such as thousandths).  By defining the base unit to be $$\frac{1}{1000}$$ , $$1.25$$ may be written $$1250$$.  One number needs to be tracked:  the value in terms of the scale.  (This is equivalent to rational numbers with only a fixed denominator allowed.)
-3. [**Floating-point**](https://en.wikipedia.org/wiki/Floating-point_arithmetic). Track the value at adjustable scale.  In this case, one needs to represent $$1.25$$ as something like $$125 \times 10^{-2}$$.  Two numbers have to be tracked:  the significand ($$125$$) and the exponent ($$-2$$).
+1. [**Rational numbers**](https://en.wikipedia.org/wiki/Fraction). Track whole-number ratios like fractions. Thus $$1.25 = \frac{5}{4}$$, thence the pair `(5, 4)`. Two numbers have to be tracked:  the numerator and the denominator.
+2. [**Fixed-point**](https://en.wikipedia.org/wiki/Fixed-point_arithmetic). Track the value in smaller fixed units (such as thousandths). By defining the base unit to be $$\frac{1}{1000}$$ , $$1.25$$ may be written $$1250$$. One number needs to be tracked:  the value in terms of the scale. (This is equivalent to rational numbers with only a fixed denominator allowed.)
+3. [**Floating-point**](https://en.wikipedia.org/wiki/Floating-point_arithmetic). Track the value at adjustable scale. In this case, one needs to represent $$1.25$$ as something like $$125 \times 10^{-2}$$. Two numbers have to be tracked:  the significand ($$125$$) and the exponent ($$-2$$).
 
-Most systems use floating-point mathematics to solve this problem.  For instance, single-precision floating-point mathematics designate one bit for the sign, eight bits for the exponent (which has 127 subtracted from it), and twenty-three bits for the significand.
+Most systems use floating-point mathematics to solve this problem. For instance, single-precision floating-point mathematics designate one bit for the sign, eight bits for the exponent (which has 127 subtracted from it), and twenty-three bits for the significand.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/640px-Float_example.svg.png)
 
@@ -66,7 +66,7 @@ Hoon utilizes the [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) implementat
 | `@rd` | Double-precision 64-bit mathematics | `.~4.5` |
 | `@rq` | Quadruple-precision 128-bit mathematics | `.~~~4.5` |
 
-There are also a few [molds](../../glossary/mold.md) which can represent the separate values of the FP representation.  These are used internally but mostly don't appear in userspace code.
+There are also a few [molds](../../glossary/mold.md) which can represent the separate values of the FP representation. These are used internally but mostly don't appear in userspace code.
 
 As the [arms](../../glossary/arm.md) for the four `@r` auras are identical within their appropriate core, we will use [`@rs` single-precision floating-point mathematics](../../language/hoon/reference/stdlib/3b.md#rs) to demonstrate all operations.
 
@@ -79,7 +79,7 @@ Any `@ud` unsigned decimal integer can be directly cast as an `@rs`.
 1.065.353.216
 ```
 
-However, as you can see here, the conversion is not “correct” for the perceived values.  Examining the `@ux` hexadecimal and `@ub` binary representation shows why:
+However, as you can see here, the conversion is not “correct” for the perceived values. Examining the `@ux` hexadecimal and `@ub` binary representation shows why:
 
 ```hoon
 > `@ux`.1
@@ -98,7 +98,7 @@ So to carry out this conversion from `@ud` to `@rs` correctly, we should use the
 .1
 ```
 
-To go the other way requires us to use an algorithm for converting an arbitrary number with a fractional part back into `@ud` unsigned integers.  The [++fl](../../language/hoon/reference/stdlib/3b.md#fl) named tuple representation serves this purpose, and uses the [Dragon4 algorithm](https://dl.acm.org/doi/10.1145/93548.93559) to accomplish the conversion:
+To go the other way requires us to use an algorithm for converting an arbitrary number with a fractional part back into `@ud` unsigned integers. The [++fl](../../language/hoon/reference/stdlib/3b.md#fl) named tuple representation serves this purpose, and uses the [Dragon4 algorithm](https://dl.acm.org/doi/10.1145/93548.93559) to accomplish the conversion:
 
 ```hoon
 > (drg:rs .1)
@@ -154,7 +154,7 @@ This includes:
 
 ### Exercise:  `++is-close` {#exercise-is-close}
 
-The [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for complete equality of two values.  The downside of this [arm](../../glossary/arm.md) is that it doesn't find very close values:
+The [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for complete equality of two values. The downside of this [arm](../../glossary/arm.md) is that it doesn't find very close values:
 
 ```hoon
 > (equ:rs .1 .1)
@@ -164,7 +164,7 @@ The [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for 
 %.n
 ```
 
-- Produce an arm which check for two values to be close to each other by an absolute amount.  It should accept three values:  `a`, `b`, and `atol`.  It should return the result of the following comparison:
+- Produce an arm which check for two values to be close to each other by an absolute amount. It should accept three values:  `a`, `b`, and `atol`. It should return the result of the following comparison:
 
     $$
     |a-b| \leq \texttt{atol}
@@ -273,7 +273,7 @@ What is `++rs`?  It's a door with 21 arms:
 <21|ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>
 ```
 
-The [battery](../../glossary/battery.md) of this [core](../../glossary/core.md), pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms.  One of these arms is named `++add`; it's a different `add` from the standard one we've been using for vanilla atoms, and thus the one we used above.  When you invoke [add:rs](../../language/hoon/reference/stdlib/3b.md#addrs) instead of just `add` in a function call, (1) the `rs` door is produced, and then (2) the name search for `add` resolves to the special `add` [arm](../../glossary/arm.md) in `rs`. This produces the [gate](../../glossary/gate.md) for adding `@rs` atoms:
+The [battery](../../glossary/battery.md) of this [core](../../glossary/core.md), pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `++add`; it's a different `add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [add:rs](../../language/hoon/reference/stdlib/3b.md#addrs) instead of just `add` in a function call, (1) the `rs` door is produced, and then (2) the name search for `add` resolves to the special `add` [arm](../../glossary/arm.md) in `rs`. This produces the [gate](../../glossary/gate.md) for adding `@rs` atoms:
 
 ```hoon
 > add:rs
@@ -287,7 +287,7 @@ What about the sample of the `rs` [door](../../glossary/door.md)?  The pretty-pr
 - `%u` rounds up
 - `%z` rounds to zero
 
-The default value is `%z`, round to zero.  When we invoke `++add:rs` to call the addition function, there is no way to modify the `rs` door sample, so the default rounding option is used.  How do we change it? We use the `~( )` notation: `~(arm door arg)`.
+The default value is `%z`, round to zero. When we invoke `++add:rs` to call the addition function, there is no way to modify the `rs` door sample, so the default rounding option is used. How do we change it? We use the `~( )` notation: `~(arm door arg)`.
 
 Let's evaluate the `add` [arm](../../glossary/arm.md) of `rs`, also modifying the door [sample](../../glossary/sample.md) to `%u` for 'round up':
 
@@ -303,7 +303,7 @@ This is the gate produced by `add`, and you can see that its sample is a pair of
 r=%u
 ```
 
-It did indeed change.  We also see that the door [sample](../../glossary/sample.md) uses the [face](../../glossary/face.md) `r`, so let's use that instead of the unwieldy `+6.+7`:
+It did indeed change. We also see that the door [sample](../../glossary/sample.md) uses the [face](../../glossary/face.md) `r`, so let's use that instead of the unwieldy `+6.+7`:
 
 ```hoon
 > r:~(add rs %u)
@@ -327,17 +327,17 @@ Let's see the rounding differences in action. Because `~(add rs %u)` produces a 
 .4.2527037
 ```
 
-This difference between rounding up and rounding down might seem strange at first.  There is a difference of 0.0000003 between the two answers. Why does this gap exist?  Single-precision floats are 32-bit and there's only so many distinctions that can be made in floats before you run out of bits.
+This difference between rounding up and rounding down might seem strange at first. There is a difference of 0.0000003 between the two answers. Why does this gap exist?  Single-precision floats are 32-bit and there's only so many distinctions that can be made in floats before you run out of bits.
 
 Just as there is a [door](../../glossary/door.md) for `@rs` functions, there is a Hoon standard library door for `@rd` functions (double-precision 64-bit floats), another for `@rq` functions (quad-precision 128-bit floats), and one more for `@rh` functions (half-precision 16-bit floats).
 
 
 ## Signed Integer Mathematics {#signed-integer-mathematics}
 
-Similar to floating-point representations, [signed integer](https://en.wikipedia.org/wiki/Signed_number_representations) representations use an internal bitwise convention to indicate whether a number should be treated as having a negative sign in front of the magnitude or not.  There are several ways to represent signed integers:
+Similar to floating-point representations, [signed integer](https://en.wikipedia.org/wiki/Signed_number_representations) representations use an internal bitwise convention to indicate whether a number should be treated as having a negative sign in front of the magnitude or not. There are several ways to represent signed integers:
 
-1. [**Sign-magnitude**](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude). Use the first bit in a fixed-bit-width representation to indicate whether the whole should be multiplied by $$-1$$, e.g. `0010.1011` for $$43_{10}$$ and `1010.1011` for $$-43_{10}$$.  (This is similar to the floating-point solution.)
-2. [**One's complement**](https://en.wikipedia.org/wiki/Ones%27_complement).  Use the bitwise `NOT` operation to represent the value, e.g. `0010.1011` for $$43_{10}$$ and `1101.0100` for $$-43_{10}$$.  This has the advantage that arithmetic operations are trivial, e.g. $$43_{10} - 41_{10}$$ = `0010.1011` + `1101.0110` = `1.0000.0001`, end-around carry the overflow to yield `0000.0010` = 2.  (This is commonly used in hardware.)
+1. [**Sign-magnitude**](https://en.wikipedia.org/wiki/Signed_number_representations#Sign%E2%80%93magnitude). Use the first bit in a fixed-bit-width representation to indicate whether the whole should be multiplied by $$-1$$, e.g. `0010.1011` for $$43_{10}$$ and `1010.1011` for $$-43_{10}$$. (This is similar to the floating-point solution.)
+2. [**One's complement**](https://en.wikipedia.org/wiki/Ones%27_complement). Use the bitwise `NOT` operation to represent the value, e.g. `0010.1011` for $$43_{10}$$ and `1101.0100` for $$-43_{10}$$. This has the advantage that arithmetic operations are trivial, e.g. $$43_{10} - 41_{10}$$ = `0010.1011` + `1101.0110` = `1.0000.0001`, end-around carry the overflow to yield `0000.0010` = 2. (This is commonly used in hardware.)
 3. [**Offset binary**](https://en.wikipedia.org/wiki/Offset_binary). This represents a number normally in binary _except_ that it counts from a point other than zero, like `-256`.
 4. [**ZigZag**](https://developers.google.com/protocol-buffers/docs/encoding?hl=en#signed-ints). Positive signed integers correspond to even atoms of twice their absolute value, and negative signed integers correspond to odd atoms of twice their absolute value minus one.
 
@@ -345,7 +345,7 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 
 ### Hoon Operations {#hoon-operations}
 
-`@u`-[aura](../../glossary/aura.md) atoms are _unsigned_ values, but there is a complete set of _signed_ auras in the `@s` series.  ZigZag was chosen for Hoon's signed integer representation because it represents negative values with small absolute magnitude as short binary terms.
+`@u`-[aura](../../glossary/aura.md) atoms are _unsigned_ values, but there is a complete set of _signed_ auras in the `@s` series. ZigZag was chosen for Hoon's signed integer representation because it represents negative values with small absolute magnitude as short binary terms.
 
 | Aura | Meaning | Example |
 | ---- | ------- | ------- |
@@ -357,7 +357,7 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 | `@sx` | signed hexadecimal | `--0x5f5.e138` (positive) |
 |       |                    | `-0x5f5.e138` (negative) |
 
-The [++si](../../language/hoon/reference/stdlib/3a.md#si) core supports signed-integer operations correctly.  However, unlike the `@r` operations, `@s` operations have different names (likely to avoid accidental mental overloading).
+The [++si](../../language/hoon/reference/stdlib/3a.md#si) core supports signed-integer operations correctly. However, unlike the `@r` operations, `@s` operations have different names (likely to avoid accidental mental overloading).
 
 To produce a signed integer from an unsigned value, use [++new:si](../../language/hoon/reference/stdlib/3a.md#newsi) with a sign flag, or simply use [++sun:si](../../language/hoon/reference/stdlib/3a.md#sunsi)
 
@@ -405,7 +405,7 @@ To convert a floating-point value from number (atom) to text, use
 
 ### Beyond Arithmetic {#beyond-arithmetic}
 
-The Hoon standard library at the current time omits many [transcendental functions](https://en.wikipedia.org/wiki/Transcendental_function), such as the trigonometric functions.  It is useful to implement pure-Hoon versions of these, although they are not as efficient as [jetted](../../glossary/jet.md) mathematical code would be.
+The Hoon standard library at the current time omits many [transcendental functions](https://en.wikipedia.org/wiki/Transcendental_function), such as the trigonometric functions. It is useful to implement pure-Hoon versions of these, although they are not as efficient as [jetted](../../glossary/jet.md) mathematical code would be.
 
 - Produce a version of `++factorial` which can operate on `@rs` inputs correctly.
 
@@ -473,7 +473,7 @@ The Hoon standard library at the current time omits many [transcendental functio
     \tan(x) = \frac{\sin(x)}{\cos(x)}
     -->
 
-- As a stretch exercise, look up definitions for [exp (e^x)](https://en.wikipedia.org/wiki/Exponentiation#The_exponential_function) and [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), and implement these.  You can implement a general-purpose exponentiation function using the formula
+- As a stretch exercise, look up definitions for [exp (e^x)](https://en.wikipedia.org/wiki/Exponentiation#The_exponential_function) and [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), and implement these. You can implement a general-purpose exponentiation function using the formula
 
     $$
     x^n = \exp(n \\, \text{ln} \\, x)
@@ -506,9 +506,9 @@ Date and time calculations are challenging for a number of reasons: What is the 
 
 One particularly complicating factor is that there is no [Year Zero](https://en.wikipedia.org/wiki/Year_zero); 1 B.C. is immediately followed by A.D. 1. (The date systems used in astronomy [differ](https://en.wikipedia.org/wiki/Julian_day#cite_note-7) from standard time in this regard, for instance.)
 
-In computing, absolute dates are calculated with respect to some base value; we refer to this as the _epoch_.  Unix/Linux systems count time forward from Thursday 1 January 1970 00:00:00 UT, for instance.  Windows systems count in 10⁻⁷ s intervals from 00:00:00 1 January 1601.  The Urbit epoch is `~292277024401-.1.1`, or 1 January 292,277,024,401 B.C.; since values are unsigned integers, no date before that time can be represented.
+In computing, absolute dates are calculated with respect to some base value; we refer to this as the _epoch_. Unix/Linux systems count time forward from Thursday 1 January 1970 00:00:00 UT, for instance. Windows systems count in 10⁻⁷ s intervals from 00:00:00 1 January 1601. The Urbit epoch is `~292277024401-.1.1`, or 1 January 292,277,024,401 B.C.; since values are unsigned integers, no date before that time can be represented.
 
-Time values, often referred to as _timestamps_, are commonly represented by the [UTC](https://www.timeanddate.com/time/aboututc.html) value. Time representations are complicated by offset such as timezones, regular adjustments like daylight savings time, and irregular adjustments like leap seconds.  (Read [Dave Taubler's excellent overview](https://levelup.gitconnected.com/why-is-programming-with-dates-so-hard-7477b4aeff4c) of the challenges involved with calculating dates for further considerations, as well as [Martin Thoma's “What Every Developer Should Know About Time” (PDF)](https://zenodo.org/record/1443533/files/2018-10-06-what-developers-should-know-about-time.pdf).)
+Time values, often referred to as _timestamps_, are commonly represented by the [UTC](https://www.timeanddate.com/time/aboututc.html) value. Time representations are complicated by offset such as timezones, regular adjustments like daylight savings time, and irregular adjustments like leap seconds. (Read [Dave Taubler's excellent overview](https://levelup.gitconnected.com/why-is-programming-with-dates-so-hard-7477b4aeff4c) of the challenges involved with calculating dates for further considerations, as well as [Martin Thoma's “What Every Developer Should Know About Time” (PDF)](https://zenodo.org/record/1443533/files/2018-10-06-what-developers-should-know-about-time.pdf).)
 
 ### Hoon Operations {#hoon-operations}
 
@@ -652,7 +652,7 @@ Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to un
 
 ### Phonetic Base {#phonetic-base}
 
-The `@q` aura is similar to `@p` except for two details:  it doesn't obfuscate names (as planets do) and it can be used for any size of atom without adjust its width to fill the same size.  Prefixes and suffixes are in the same order as `@p`, however.  Thus:
+The `@q` aura is similar to `@p` except for two details:  it doesn't obfuscate names (as planets do) and it can be used for any size of atom without adjust its width to fill the same size. Prefixes and suffixes are in the same order as `@p`, however. Thus:
 
 ```hoon
 > `@q`0
@@ -677,7 +677,7 @@ The [++po](../../language/hoon/reference/stdlib/4a.md#po) core contains tools fo
 
 ### Base-32 and Base-64 {#base-32-and-base-64}
 
-The base-32 representation uses the characters `0123456789abcdefghijklmnopqrstuv` to represent values.  The digits are separated into collections of five characters separated by `.` dot.
+The base-32 representation uses the characters `0123456789abcdefghijklmnopqrstuv` to represent values. The digits are separated into collections of five characters separated by `.` dot.
 
 ```hoon
 > `@uv`0
@@ -693,7 +693,7 @@ The base-32 representation uses the characters `0123456789abcdefghijklmnopqrstuv
 0vt3a.aa400
 ```
 
-The base-64 representation uses the characters `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-~` to represent values.  The digits are separated into collections of five characters separated by `.` dot.
+The base-64 representation uses the characters `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-~` to represent values. The digits are separated into collections of five characters separated by `.` dot.
 
 ```hoon
 > `@uw`0
@@ -717,17 +717,17 @@ The base-64 representation uses the characters `0123456789abcdefghijklmnopqrstuv
 
 ### Entropy {#entropy}
 
-You previously saw entropy introduced when we discussed stateful random number generation.  Let's dig into what's actually going on with entropy.
+You previously saw entropy introduced when we discussed stateful random number generation. Let's dig into what's actually going on with entropy.
 
-It is not straightforward for a computer, a deterministic machine, to produce an unpredictable sequence.  We can either use a source of true randomness (such as the third significant digit of chip temperature or another [hardware source](https://en.wikipedia.org/wiki/Hardware_random_number_generator)) or a source of artificial randomness (such as a sequence of numbers the user cannot predict).
+It is not straightforward for a computer, a deterministic machine, to produce an unpredictable sequence. We can either use a source of true randomness (such as the third significant digit of chip temperature or another [hardware source](https://en.wikipedia.org/wiki/Hardware_random_number_generator)) or a source of artificial randomness (such as a sequence of numbers the user cannot predict).
 
-For instance, consider the sequence _3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3_. If you recognize the pattern as the constant π, you can predict the first few digits, but almost certainly not more than that.  The sequence is deterministic (as it is derived from a well-characterized mathematical process) but unpredictable (as you cannot _a priori_ guess what the next digit will be).
+For instance, consider the sequence _3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3_. If you recognize the pattern as the constant π, you can predict the first few digits, but almost certainly not more than that. The sequence is deterministic (as it is derived from a well-characterized mathematical process) but unpredictable (as you cannot _a priori_ guess what the next digit will be).
 
-Computers often mix both deterministic processes (called “pseudorandom number generators”) with random inputs, such as the current timestamp, to produce high-quality random numbers for use in games, modeling, cryptography, and so forth.  The Urbit entropy value `eny` is derived from the underlying host OS's `/dev/urandom` device, which uses sources like keystroke typing latency to produce random bits.
+Computers often mix both deterministic processes (called “pseudorandom number generators”) with random inputs, such as the current timestamp, to produce high-quality random numbers for use in games, modeling, cryptography, and so forth. The Urbit entropy value `eny` is derived from the underlying host OS's `/dev/urandom` device, which uses sources like keystroke typing latency to produce random bits.
 
 ### Random Numbers {#random-numbers}
 
-Given a source of entropy to seed a random number generator, one can then use the [++og](../../language/hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers.  The basic operations of `++og` are described in [the lesson on subject-oriented programming](O-subject.md).
+Given a source of entropy to seed a random number generator, one can then use the [++og](../../language/hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers. The basic operations of `++og` are described in [the lesson on subject-oriented programming](O-subject.md).
 
 ### Exercise:  Implement a random-number generator from scratch {#exercise-implement-a-random-number-generator-from-scratch}
 
@@ -762,7 +762,7 @@ Can you verify that `1`s constitute about half of the values in this bit stream,
 
 - Using entropy as the source, produce uniform random numbers:  that is, numbers in the range [0, 1] with equal likelihood to machine precision.
 
-We use the LCG defined above, then chop out 23-bit slices using [++rip](../../language/hoon/reference/stdlib/2c.md#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1].  (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
+We use the LCG defined above, then chop out 23-bit slices using [++rip](../../language/hoon/reference/stdlib/2c.md#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1]. (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
 
 <details>
 <summary>/gen/uniform.hoon</summary>
@@ -808,7 +808,7 @@ We use the LCG defined above, then chop out 23-bit slices using [++rip](../../la
 
 - Produce a normally-distributed random number generator using the uniform RNG described above.
 
-The normal distribution, or bell curve, describes the randomness of measurement.  The mean, or average value, is at zero, while points fall farther and farther away with increasingly less likelihood.
+The normal distribution, or bell curve, describes the randomness of measurement. The mean, or average value, is at zero, while points fall farther and farther away with increasingly less likelihood.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/640px-Standard_deviation_diagram.svg.png)
 
@@ -832,7 +832,7 @@ Z = \frac{U^{0.135}-(1-U)^{0.135}}{0.1975}
 $$
 -->
 
-To calculate an arbitrary power of a floating-point number, we require a few transcendental functions, in particular the natural logarithm and exponentiation of base $$e$$.  The following helper core contains relatively inefficient but clear implementations of standard numerical methods.
+To calculate an arbitrary power of a floating-point number, we require a few transcendental functions, in particular the natural logarithm and exponentiation of base $$e$$. The following helper core contains relatively inefficient but clear implementations of standard numerical methods.
 
 <details>
 <summary>/gen/normal.hoon</summary>
@@ -1070,14 +1070,14 @@ $$
 
 ## Hashing {#hashing}
 
-A [hash function](https://en.wikipedia.org/wiki/Hash_function) is a tool which can take any input data and produce a fixed-length value that corresponds to it.  Hashes can be used for many purposes:
+A [hash function](https://en.wikipedia.org/wiki/Hash_function) is a tool which can take any input data and produce a fixed-length value that corresponds to it. Hashes can be used for many purposes:
 
-1. **Encryption**.  A [cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function) leans into the one-way nature of a hash calculation to produce a fast, practically-irreversible hash of a message.  They are foundational to modern cryptography.
-2. **Attestation or preregistration**.  If you wish to demonstrate that you produced a particular message at a later time (including a hypothesis or prediction), or that you solved a particular problem, hashing the text of the solution and posting the hash publicly allows you to verifiably timestamp your work.
-3. **Integrity verification**.  By comparing the hash of data to its expected hash, you can verify that two copies of data are equivalent (such as a downloaded executable file).  The [MD5](https://en.wikipedia.org/wiki/MD5) hash algorithm is frequently used for this purpose as [`md5sum`](https://en.wikipedia.org/wiki/Md5sum).
-4. **Data lookup**.  [Hash tables](https://en.wikipedia.org/wiki/Hash_table) are one way to implement a key→value mapping, such as the functionality offered by Hoon's [++map](../../language/hoon/reference/stdlib/2o.md#map).
+1. **Encryption**. A [cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function) leans into the one-way nature of a hash calculation to produce a fast, practically-irreversible hash of a message. They are foundational to modern cryptography.
+2. **Attestation or preregistration**. If you wish to demonstrate that you produced a particular message at a later time (including a hypothesis or prediction), or that you solved a particular problem, hashing the text of the solution and posting the hash publicly allows you to verifiably timestamp your work.
+3. **Integrity verification**. By comparing the hash of data to its expected hash, you can verify that two copies of data are equivalent (such as a downloaded executable file). The [MD5](https://en.wikipedia.org/wiki/MD5) hash algorithm is frequently used for this purpose as [`md5sum`](https://en.wikipedia.org/wiki/Md5sum).
+4. **Data lookup**. [Hash tables](https://en.wikipedia.org/wiki/Hash_table) are one way to implement a key→value mapping, such as the functionality offered by Hoon's [++map](../../language/hoon/reference/stdlib/2o.md#map).
 
-Theoretically, since the number of fixed-length hashes are finite, an infinite number of possible programs can yield any given hash.  This is called a [_hash collision_](https://en.wikipedia.org/wiki/Hash_collision), but for many practical purposes such a collision is extremely unlikely.
+Theoretically, since the number of fixed-length hashes are finite, an infinite number of possible programs can yield any given hash. This is called a [_hash collision_](https://en.wikipedia.org/wiki/Hash_collision), but for many practical purposes such a collision is extremely unlikely.
 
 ### Hoon Operations {#hoon-operations}
 
@@ -1151,4 +1151,4 @@ Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [t
 
 ### Exercise:  Produce a secure password tool {#exercise-produce-a-secure-password-tool}
 
-- Produce a basic secure password tool.  It should accept a password, salt it (add a predetermined value to the password), and hash it. _That_ hash is then compared to a reference hash to determine whether or not the password is correct.
+- Produce a basic secure password tool. It should accept a password, salt it (add a predetermined value to the password), and hash it. _That_ hash is then compared to a reference hash to determine whether or not the password is correct.

@@ -18,7 +18,7 @@ An [**expression**](https://en.wikipedia.org/wiki/Expression_%28computer_science
 
 Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes and other Hoon expressions are all separated from one another by either two spaces or a line break.
 
-All runes take a fixed number of “children” or “daughters”. Children can themselves be runes with children, and Hoon programs work by chaining through these until a value—not another rune—is arrived at. For this reason, we very rarely need to close expressions. Keep this scheme in mind when examining Hoon code.
+All runes take a fixed number of “children” or “daughters”. Children can themselves be runes with children, and Hoon programs work by chaining through these until a value, not another rune, is arrived at. For this reason, we very rarely need to close expressions. Keep this scheme in mind when examining Hoon code.
 
 Hoon expressions can be either basic or complex. Basic expressions of Hoon are fundamental, meaning that they can’t be broken down into smaller expressions. Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
@@ -173,7 +173,7 @@ add
 For instance, here are some of the standard library functions which have a similar architecture in common:
 
 - [`++add`](../../language/hoon/reference/stdlib/1a.md#add) (addition)
-- [`++sub`](../../language/hoon/reference/stdlib/1a.md#sub) (subtraction, positive results only—what happens if you subtract past zero?)
+- [`++sub`](../../language/hoon/reference/stdlib/1a.md#sub) (subtraction, positive results only... whappens if you subtract past zero?)
 - [`++mul`](../../language/hoon/reference/stdlib/1a.md#mul) (multiplication)
 - [`++div`](../../language/hoon/reference/stdlib/1a.md#div) (integer division, no remainder)
 - [`++pow`](../../language/hoon/reference/stdlib/2g.md#pow) (power or exponentiation)
@@ -250,11 +250,11 @@ So this statement above is _syntactically_ correct (for the `%-` rune) but in pr
 
 ### Rune Families {#rune-families}
 
-Runes are classified by family (with the exceptions of `--` hephep and `==` tistis). The first of the two symbols indicates the family—e.g., the `^-` kethep rune is in the `^` [ket](../../language/hoon/reference/rune/ket.md) family of runes, and the `|=` bartis and `|%` barcen runes are in the `|` [bar](../../language/hoon/reference/rune/bar.md) family. The runes of particular family usually have related meanings. Two simple examples: the runes in the `|` bar family are all used to create cores, and the runes in the `:` [col](../../language/hoon/reference/rune/col.md) family are all used to create cells.
+Runes are classified by family (with the exceptions of `--` hephep and `==` tistis). The first of the two symbols indicates the family; the `^-` kethep rune is in the `^` [ket](../../language/hoon/reference/rune/ket.md) family of runes, and the `|=` bartis and `|%` barcen runes are in the `|` [bar](../../language/hoon/reference/rune/bar.md) family. The runes of particular family usually have related meanings. Two simple examples: the runes in the `|` bar family are all used to create cores, and the runes in the `:` [col](../../language/hoon/reference/rune/col.md) family are all used to create cells.
 
 Rune expressions are usually complex, which means they usually have one or more subexpressions. The appropriate syntax varies from rune to rune; after all, they’re used for different purposes. To see the syntax rules for a particular rune, consult the rune reference. Nevertheless, there are some general principles that hold of all rune expressions.
 
-Runes generally have a fixed number of expected children, and thus do not need to be closed. In other languages you’ll see an abundance of terminators, such as opening and closing parentheses, and this way of doing this is largely absent from Urbit. That’s because all runes take a fixed number of children. Children of runes can themselves be runes (with more children), and Hoon programs work by chaining through these series of children until a value—not another rune—is arrived at. This makes Hoon code nice and neat to look at.
+Runes generally have a fixed number of expected children, and thus do not need to be closed. In other languages you’ll see an abundance of terminators, such as opening and closing parentheses, and this way of doing this is largely absent from Urbit. That’s because all runes take a fixed number of children. Children of runes can themselves be runes (with more children), and Hoon programs work by chaining through these series of children until a value (not another rune) is arrived at. This makes Hoon code nice and neat to look at.
 
 ### Tall and Wide Forms {#tall-and-wide-forms}
 
@@ -278,7 +278,7 @@ Seeing an example will help you understand the difference. The `:-` colhep rune 
 [11 22]
 ```
 
-All of these expressions do the same thing. The first example shows that, if you want to, you can write tall form code on a single line. Notice that there are two spaces between the `:-` colhep rune and `11`, and also between `11` and `22`. This is the minimum spacing necessary between the various parts of a tall form expression—any fewer will result in a syntax error.
+All of these expressions do the same thing. The first example shows that, if you want to, you can write tall form code on a single line. Notice that there are two spaces between the `:-` colhep rune and `11`, and also between `11` and `22`. This is the minimum spacing necessary between the various parts of a tall form expression: any fewer will result in a syntax error.
 
 Usually one or more line breaks are used to break up a tall form expression. This is especially useful when the subexpressions are themselves long stretches of code. The same `:-` colhep expression in wide form is:
 
@@ -293,7 +293,7 @@ Nearly all rune expressions can be written in either form, but there are excepti
 
 ### Nesting Runes {#nesting-runes}
 
-Since runes take a fixed number of children, one can visualize how Hoon expressions are built by thinking of each rune being followed by a series of boxes to be filled—one for each of its children. Let us illustrate this with the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune.
+Since runes take a fixed number of children, one can visualize how Hoon expressions are built by thinking of each rune being followed by a series of boxes to be filled: one for each of its children. Let us illustrate this with the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune.
 
 ![](https://media.urbit.org/docs/hoon-syntax/cell1.png)
 
@@ -392,7 +392,7 @@ A cell is formally a pair of two objects, but as long as the second (right-hand)
 
 This convention keeps the notation from getting too cluttered. For now, let's call this a “running cell” because it consists of several cells run together.
 
-Since almost all cells branch rightwards, the pretty-printer (the printing routine that the Dojo uses) prefers to omit `[]` brackets marking the rightmost cells in a running cell. These read to the right—that is, `[1 2 3]` is the same as `[1 [2 3]]`.
+Since almost all cells branch rightwards, the pretty-printer (the printing routine that the Dojo uses) prefers to omit `[]` brackets marking the rightmost cells in a running cell. These read to the right; that is, `[1 2 3]` is the same as `[1 [2 3]]`.
 
 ### Exercise:  Comparing Cells {#exercise-comparing-cells}
 

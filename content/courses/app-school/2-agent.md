@@ -226,7 +226,7 @@ If we again examine our agent core's payload by looking at the tail of `skeleton
   - Response handlers.
   - Scry handler.
   - Failure handler.
-- The state of an agent—the data it's storing—lives in the core's payload.
+- The state of an agent&mdash;the data it's storing&mdash;lives in the core's payload.
 - Most arms produce a list of effects called `card`s, and a new agent core with a modified state in its payload.
 
 ## Exercises {#exercises}

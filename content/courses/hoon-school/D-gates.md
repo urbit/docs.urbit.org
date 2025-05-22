@@ -196,7 +196,7 @@ To reiterate:  we typically use the `|=` [bartis](../../language/hoon/reference/
 
 In the example gate above, `inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The `sample` is given the face `a`. With a face it's easier to refer to the `sample` value in later code.
 
-The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go. In `inc`, the product is defined by `(add 1 a)`. There's not much to it—it returns the value of `a+1`!
+The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go. In `inc`, the product is defined by `(add 1 a)`. There's not much to it: it returns the value of `a+1`!
 
 ### Exercise:  Double a Value {#exercise-double-a-value}
 

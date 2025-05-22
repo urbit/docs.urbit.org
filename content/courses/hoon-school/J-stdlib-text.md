@@ -19,7 +19,7 @@ What are the applications of each?
 
 ### `@t` `cord` {#t-cord}
 
-What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol:  there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.)  Characters can be combined—particularly in ideographic languages like Mandarin Chinese.
+What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol:  there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.)  Characters can be combined, particularly in ideographic languages like Mandarin Chinese.
 
 One way to handle text is to assign a code value to each letter, then represent these as subsequent values in memory. (Think, for instance, of [Morse code](https://en.wikipedia.org/wiki/Morse_code).)  On all modern computers, the numeric values used for each letter are given by the [ASCII](https://en.wikipedia.org/wiki/ASCII) standard, which defines 128 unique characters (2⁷ = 128).
 
@@ -165,7 +165,7 @@ The [++weld](../../language/hoon/reference/stdlib/2b.md#weld) function can be us
 
 If you have text but you need to change part of it or alter its form, you can use standard library `list` operators like [++flop](../../language/hoon/reference/stdlib/2b.md#flop) as well as `tape`-specific arms.
 
-Applicable `list` operations—some of which you've seen before—include:
+Applicable `list` operations, some of which you've seen before, include:
 
 - The [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function takes a list and returns it in reverse order:
 

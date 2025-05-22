@@ -42,9 +42,9 @@ On an ordinary OS, you have persistent disk storage and volatile memory. An appl
 
 Arvo has no concept of volatile memory - its whole state is assumed to be persistent. This means it's unnecessary for a Gall agent to write its data to the filesystem or read it in from the filesystem - an agent can just modify its state in situ and leave it there. The urbit runtime writes events to disk and backs up Arvo's state on the host OS to ensure data integrity but Arvo itself isn't concerned with such details.
 
-The result of this total persistence is that the filesystem—Clay—does not have the same fundamental role as on an ordinary OS. In Arvo, very little of its data is actually stored in Clay. The vast majority is just in the state of Gall agents and vanes. For example, none of the chat messages, notebooks, etc, in the Tlon app exist in Clay - they're all in the state of the `%channels` agent. For the most part, Clay just stores source code.
+The result of this total persistence is that the filesystem&mdash;Clay&mdash;does not have the same fundamental role as on an ordinary OS. In Arvo, very little of its data is actually stored in Clay. The vast majority is just in the state of Gall agents and vanes. For example, none of the chat messages, notebooks, etc, in the Tlon app exist in Clay - they're all in the state of the `%channels` agent. For the most part, Clay just stores source code.
 
-Clay has a few unique features—it's a typed filesystem, with all file types defined in `mark` files. It's revision controlled, in a similar way to Git. It also has a built-in build system (formerly a separate vane called Ford, but was merged with Clay in 2020 to make atomicity of upgrades easier). We'll look at some of these features in more detail later in the guide.
+Clay has a few unique features&mdash;it's a typed filesystem, with all file types defined in `mark` files. It's revision controlled, in a similar way to Git. It also has a built-in build system (formerly a separate vane called Ford, but was merged with Clay in 2020 to make atomicity of upgrades easier). We'll look at some of these features in more detail later in the guide.
 
 ## Desk Anatomy {#desk-anatomy}
 

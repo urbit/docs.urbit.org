@@ -289,7 +289,7 @@ Cores have two kinds of values attached:  [arms](../../glossary/arm.md) and "leg
 
 So legs are for data and arms are for computations. But what _specifically_ is an arm, and how is it used for computation?  Let's begin with a preliminary explanation that we'll refine later.
 
-An [arm](../../glossary/arm.md) is some expression of Hoon encoded as a noun. (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'. But you don't need to know anything about [Nock](../../glossary/nock.md) to understand Hoon.) You virtually never need to treat an arm as raw data, even though technically you can—it's just a noun like any other. You almost always want to think of an arm simply as a way of running some Hoon code.
+An [arm](../../glossary/arm.md) is some expression of Hoon encoded as a noun. (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'. But you don't need to know anything about [Nock](../../glossary/nock.md) to understand Hoon.) You virtually never need to treat an arm as raw data, even though technically you can, it's just a noun like any other. You almost always want to think of an arm simply as a way of running some Hoon code.
 
 Every expression of Hoon is evaluated relative to a subject. An [arm](../../glossary/arm.md) is a Hoon expression to be evaluated against the [core](../../glossary/core.md) subject (i.e. its parent core is its subject).
 
@@ -494,7 +494,7 @@ The pretty printer represents the `$` buc arm of `inc` as `1.yop`. To see the ac
 [8 [9 36 0 4.095] 9 2 10 [6 [7 [0 3] 1 1] 0 14] 0 2]
 ```
 
-This is un-computed Nock. You don't need to understand any of this, except that code and data are homoiconic—they are in a sense the same for Urbit programs.
+This is un-computed Nock. You don't need to understand any of this, except that code and data are homoiconic: they are in a sense the same for Urbit programs.
 
 It's worth pointing out that the arm named `$` buc can be used like any other name. We can compute `$` buc directly with `$:inc` in the Dojo:
 
@@ -503,7 +503,7 @@ It's worth pointing out that the arm named `$` buc can be used like any other na
 1
 ```
 
-This result may seem a bit strange. We didn't call `inc` or in any other way pass it a number. Yet using `$` buc to evaluate `inc`'s arm seems to work—sort of, anyway. Why is it giving us `1` as the return value?  We can answer this question after we understand gate samples a little better.
+This result may seem a bit strange. We didn't call `inc` or in any other way pass it a number. Yet using `$` buc to evaluate `inc`'s arm seems to work... sort of, anyway. Why is it giving us `1` as the return value?  We can answer this question after we understand gate samples a little better.
 
 #### The Sample
 
@@ -661,7 +661,7 @@ In the following code, the `|-` [barhep](../../language/hoon/reference/rune/bar.
 
 We are using the `+` irregular syntax for the `.+` [dotlus](../../language/hoon/reference/rune/dot.md#dotlus) rune, which increments a value (adds one).
 
-In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion—if there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)! Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
+In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion. If there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)! Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
 
 > This is the song that never ends
 > Yes, it goes on and on, my friends
@@ -884,7 +884,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
 
 #### Tutorial:  The Ackermann Function
 
-The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is one of the earliest examples of a function that is both totally computable—meaning that it can be solved—and not primitively recursive—meaning it can not be rewritten in an iterative fashion.
+The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is one of the earliest examples of a function that is both totally computabl, meaning that it can be solved, and not primitively recursive, meaning it can not be rewritten in an iterative fashion.
 
 $$
 \begin{array}{lcl}

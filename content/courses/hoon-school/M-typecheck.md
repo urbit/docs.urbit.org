@@ -132,7 +132,7 @@ nest-fail
 
 The `^+` [ketlus](../../language/hoon/reference/rune/ket.md#ketlus) rune takes two subexpressions. The first subexpression is evaluated and its type is inferred. The second subexpression is evaluated and its inferred type is compared against the type of the first. If the type of the second provably nests under the type of the first, the result of the `^+` ketlus expression is just the value of its second subexpression. Otherwise, the code fails to compile.
 
-This rune is useful for casting when you already have a noun—or an expression producing a noun—whose type you may not know or be able to construct easily. If you want your output value to be of the same type, you can use `^+` ketlus.
+This rune is useful for casting when you already have a noun, or an expression producing a noun, whose type you may not know or be able to construct easily. If you want your output value to be of the same type, you can use `^+` ketlus.
 
 More examples:
 
@@ -215,7 +215,7 @@ It's important to remember to include a cast [rune](../../glossary/rune.md) with
 
 ### (Dry) Gate Sample Definitions {#dry-gate-sample-definitions}
 
-By now you've used the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to define several [gates](../../glossary/gate.md). This rune is used to produce a "dry gate", which has different type-checking and type-inference properties than a "wet gate" does. We won't explain the distinction until [a later module](R-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
+By now you've used the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to define several [gates](../../glossary/gate.md). This rune is used to produce a "dry gate", which has different type-checking and type-inference properties than a "wet gate" does. We won't explain the distinction until [a later module](R-metals.md); for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
 The first subexpression after the `|=` defines the [sample](../../glossary/sample.md) type. Any faces used in this definition have the type declared for it in this definition. Consider an addition generator `/gen/sum.hoon`:
 
@@ -245,7 +245,7 @@ If you try to call this gate with the wrong kind of argument, you get a [nest-fa
 
 #### Using Conditionals for Inference by Branch
 
-You have learned about a few conditional runes (e.g., `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) and `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot)), but other runes of the `?` family are used for branch-specialized type inference. The `?@` [wutpat](../../language/hoon/reference/rune/wut.md#wutpat), `?^` [wutket](../../language/hoon/reference/rune/wut.md#wutket), and `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) conditionals each take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` wutcol—the first is the test condition, which evaluates to a flag `?`. If the test condition is true, the second subexpression is evaluated; otherwise the third. These second and third subexpressions are the ‘branches’ of the conditional.
+You have learned about a few conditional runes (e.g., `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) and `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot)), but other runes of the `?` family are used for branch-specialized type inference. The `?@` [wutpat](../../language/hoon/reference/rune/wut.md#wutpat), `?^` [wutket](../../language/hoon/reference/rune/wut.md#wutket), and `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) conditionals each take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` wutcol. The first is the test condition, which evaluates to a flag `?`. If the test condition is true, the second subexpression is evaluated; otherwise the third. These second and third subexpressions are the ‘branches’ of the conditional.
 
 There is also a `?=` [wuttis](../../language/hoon/reference/rune/wut.md#wuttis) rune for pattern-matching expressions by type, returning `%.y` for a match and `%.n` otherwise.
 

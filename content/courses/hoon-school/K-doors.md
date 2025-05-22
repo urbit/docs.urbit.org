@@ -74,7 +74,7 @@ Let's try out these arms, using them for function calls:
 30
 ```
 
-Notice that each [arm](../../glossary/arm.md) in core `c` is able to call the other arms of `c`—`++add-two` uses the `++inc` arm to increment a number twice. As a reminder, each arm is evaluated with its parent core as the [subject](../../glossary/subject.md). In the case of `++add-two` the parent core is `c`, which has `++inc` in it.
+Notice that each [arm](../../glossary/arm.md) in core `c` is able to call the other arms of `c`; `++add-two` uses the `++inc` arm to increment a number twice. As a reminder, each arm is evaluated with its parent core as the [subject](../../glossary/subject.md). In the case of `++add-two` the parent core is `c`, which has `++inc` in it.
 
 #### Mutating a Gate
 
@@ -361,7 +361,7 @@ Readers with some mathematical background may notice that `~( )` expressions all
 17
 ```
 
-Thus, you may think of the `c` door as a function for making functions. Use the `~(arm c arg)` syntax—`arm` defines which kind of gate is produced (i.e., which arm of the door is used to create the gate), and `arg` defines the value of `b` in that gate, which in turn affects the product value of the gate produced.
+Thus, you may think of the `c` door as a function for making functions. Use the `~(arm c arg)` syntax. `arm` defines which kind of gate is produced (i.e., which arm of the door is used to create the gate), and `arg` defines the value of `b` in that gate, which in turn affects the product value of the gate produced.
 
 The standard library provides [currying functionality](Q-func.md) outside of the context of doors.
 

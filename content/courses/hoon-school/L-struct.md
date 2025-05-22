@@ -217,7 +217,7 @@ For example, use [++need](../../language/hoon/reference/stdlib/2a.md#need) to un
 dojo: hoon expression failed
 ```
 
-Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), one can modify gates to work with `unit`s directly even if they're not natively set up that way. For instance, one cannot decrement a `unit` because [++dec](../../language/hoon/reference/stdlib/1a.md#dec) doesn't accept a `unit`. [++bind](../../language/hoon/reference/stdlib/2a.md#bind) can bind a non-`unit` function—another gate-building gate!.
+Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), one can modify gates to work with `unit`s directly even if they're not natively set up that way. For instance, one cannot decrement a `unit` because [++dec](../../language/hoon/reference/stdlib/1a.md#dec) doesn't accept a `unit`. [++bind](../../language/hoon/reference/stdlib/2a.md#bind) can bind a non-`unit` function, another gate-building gate!.
 
 ```hoon
 > (bind ((unit @ud) [~ 2]) dec)  

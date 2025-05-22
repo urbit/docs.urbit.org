@@ -35,7 +35,7 @@ When we input the above cell representation into the Dojo, the pretty-printer hi
 
 We can refer to any data stored anywhere in this tree. The numbers in the labeled diagram above are the _numerical addresses_ of the tree, and may be extended indefinitely downwards into ever-deeper tree representations.
 
-Most of any possible tree will be unoccupied for any actual data structure. For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself—that's a function of the algorithms working with the data.)
+Most of any possible tree will be unoccupied for any actual data structure. For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself; that's a function of the algorithms working with the data.)
 
 ### Exercise:  Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
 
@@ -77,7 +77,7 @@ Most of any possible tree will be unoccupied for any actual data structure. For 
 
     OK, we've seen these runes before. This time we want to focus on the list, the thing that's being built here.
 
-    This program works by having each iteration of the list create a cell. In each of these cells, the head—the cell's first position—is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
+    This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
 
     ```
       [1 [2 [3 [4 ~]]]]

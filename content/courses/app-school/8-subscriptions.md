@@ -50,9 +50,9 @@ In the last case of `[%bar %baz *]`, we're allowing a variable number of element
 
 Permissions can be checked as described in the previous lesson, comparing the source `@p` of the request in `src.bowl` to `our.bowl` or any other logic you find appropriate.
 
-If a permission check fails, the path is not valid, or any other reason you want to reject the subscription request, your agent can simply crash. The behavior here is the same as with `on-poke` - Gall will send a `%watch-ack` card in response, which is either an ack (positive acknowledgement) or a nack (negative acknowledgement). The `(unit tang)` in the `%watch-ack` will be null if processing succeeded, and non-null if it crashed, with a stack trace in the `tang`. Like with `poke-ack`s, you don't need to explicitly send a `%watch-ack` - Gall will do it automatically.
+If a permission check fails, the path is not valid, or any other reason you want to reject the subscription request, your agent can simply crash. The behavior here is the same as with `on-poke` - Gall will send a `%watch-ack` card in response, which is either an ack (positive acknowledgement) or a nack (negative acknowledgement). The `(unit tang)` in the `%watch-ack` will be null if processing succeeded, and non-null if it crashed, with a stack trace in the `$tang`. Like with `poke-ack`s, you don't need to explicitly send a `%watch-ack` - Gall will do it automatically.
 
-As well as sending a `%watch-ack`, Gall will also record the subscription in the `sup` field of the `bowl`, if it succeeded. Then, when you send updates out to subscribers of the `path` in question, the new subscriber will begin receiving them as well.
+As well as sending a `%watch-ack`, Gall will also record the subscription in the `sup` field of the `$bowl`, if it succeeded. Then, when you send updates out to subscribers of the `path` in question, the new subscriber will begin receiving them as well.
 
 Updates to subscribers would usually be sent from other arms, but there's one special case for `on-watch` which is very useful. Normally updates can only be sent to all subscribers of a particular path - you can't target a specific subscriber. There's one exception to this: In `on-watch`, when there's a new subscription, you can send a `%fact` back with an empty `(list path)`, and it'll only go to the new subscriber. This is most useful when you want to give the subscriber some initial state, which you otherwise couldn't do without sending it to everyone. It might look something like this:
 
@@ -64,7 +64,7 @@ Updates to subscribers would usually be sent from other arms, but there's one sp
 
 ## Sending updates to subscribers {#sending-updates-to-subscribers}
 
-Once your agent has subscribers, it's easy to send them out updates. All you need to do is produce `card`s with `%fact`s in them:
+Once your agent has subscribers, it's easy to send them out updates. All you need to do is produce `$card`s with `%fact`s in them:
 
 ```hoon
 :_  this
@@ -74,11 +74,11 @@ Once your agent has subscribers, it's easy to send them out updates. All you nee
 ==
 ```
 
-The `(list path)` in the `%fact` specifies which subscription `path`s the `%fact` should be sent on. All subscribers of all `path`s specified will receive the `%fact`. Any agent arm which produces a `(quip card _this)` can send `%fact`s to subscribers. Most often they will be produced in the `on-poke` arm, since new data will often be added in `poke`s.
+The `(list path)` in the `%fact` specifies which subscription `path`s the `%fact` should be sent on. All subscribers of all `path`s specified will receive the `%fact`. Any agent arm which produces a `(quip card _this)` can send `%fact`s to subscribers. Most often they will be produced in the `on-poke` arm, since new data will often be added in `$poke`s.
 
 ## Kicking subscribers {#kicking-subscribers}
 
-To kick a subscriber, you just send a `%kick` `card`:
+To kick a subscriber, you just send a `%kick` `$card`:
 
 ```hoon
 [%give %kick ~[/some/path] `~sampel-palnet]
@@ -96,15 +96,15 @@ Note that `%kick`s are not exclusively sent by the agent itself - Gall itself ca
 
 ## Outgoing subscriptions {#outgoing-subscriptions}
 
-Now that we've covered incoming subscriptions, we'll look at the other side of it: Subscribing to other agents. This is done by `%pass`ing the target agent a `%watch` task in a `card`:
+Now that we've covered incoming subscriptions, we'll look at the other side of it: Subscribing to other agents. This is done by `%pass`ing the target agent a `%watch` task in a `$card`:
 
 ```hoon
 [%pass /some/wire %agent [~some-ship %some-agent] %watch /some/path]
 ```
 
-If your agent's subscription request is successful, updates will come in to your agent's `on-agent` arm on the `wire` specified (`/some/wire` in this example). The `wire` can be anything you like - its purpose is for your agent to figure out which subscription the updates came from. The `[ship term]` pair specifies the ship and agent you're trying to subscribe to, and the final `path` (`/some/path` in this example) is the path you want to subscribe to - a `path` the target agent has defined in its `on-watch` arm.
+If your agent's subscription request is successful, updates will come in to your agent's `on-agent` arm on the `$wire` specified (`/some/wire` in this example). The `$wire` can be anything you like - its purpose is for your agent to figure out which subscription the updates came from. The `[ship term]` pair specifies the ship and agent you're trying to subscribe to, and the final `path` (`/some/path` in this example) is the path you want to subscribe to - a `path` the target agent has defined in its `on-watch` arm.
 
-Gall will deliver the `card` to the target agent and call that agent's `on-watch` arm, which will process the request [as described above](#incoming-subscription-requests), accept or reject it, and send back either a positive or negative `%watch-ack`. The `%watch-ack` will come back in to your agent's `on-agent` arm in a `sign`, along with the `wire` you specified (`/some/wire` in this example). Recall in the lesson on pokes, the `on-agent` arm starts with:
+Gall will deliver the `$card` to the target agent and call that agent's `on-watch` arm, which will process the request [as described above](#incoming-subscription-requests), accept or reject it, and send back either a positive or negative `%watch-ack`. The `%watch-ack` will come back in to your agent's `on-agent` arm in a `$sign`, along with the `$wire` you specified (`/some/wire` in this example). Recall in the lesson on pokes, the `on-agent` arm starts with:
 
 ```hoon
 ++  on-agent
@@ -113,13 +113,13 @@ Gall will deliver the `card` to the target agent and call that agent's `on-watch
   .....
 ```
 
-The `sign` will be of the following format:
+The `$sign` will be of the following format:
 
 ```hoon
 [%watch-ack p=(unit tang)]
 ```
 
-How you want to handle the `%watch-ack` really depends on the particular agent. In the simplest case, you can just pass it to the `on-agent` arm of `default-agent`, which will just accept it and do nothing apart from printing the error in the `%watch-ack` `tang` if it's a nack. You shouldn't have your agent crash on a `%watch-ack` - even if it's a nack your agent should process it successfully. If you wanted to apply some additional logic on receipt of the `%watch-ack`, you'd typically first test the `wire`, then test whether it's a `%watch-ack`, then test whether it's an ack or a nack and do whatever's appropriate:
+How you want to handle the `%watch-ack` really depends on the particular agent. In the simplest case, you can just pass it to the `on-agent` arm of `default-agent`, which will just accept it and do nothing apart from printing the error in the `%watch-ack` `$tang` if it's a nack. You shouldn't have your agent crash on a `%watch-ack` - even if it's a nack your agent should process it successfully. If you wanted to apply some additional logic on receipt of the `%watch-ack`, you'd typically first test the `$wire`, then test whether it's a `%watch-ack`, then test whether it's an ack or a nack and do whatever's appropriate:
 
 ```hoon
 ++  on-agent
@@ -135,19 +135,19 @@ How you want to handle the `%watch-ack` really depends on the particular agent. 
   ......
 ```
 
-The `on-agent` arm produces a `(quip card _this)`, so you can produce new `card`s and update your agent's state, as appropriate.
+The `on-agent` arm produces a `(quip card _this)`, so you can produce new `$card`s and update your agent's state, as appropriate.
 
-One further thing to note with subscriptions is that you can subscribe multiple times to the same `path` on the same ship and agent, as long as the `wire` is unique. If the ship, agent, `path` and `wire` are all the same as an existing subscription, Gall will not allow the request to be sent, and instead fail with an error message fed into the `on-fail` arm of your agent.
+One further thing to note with subscriptions is that you can subscribe multiple times to the same `path` on the same ship and agent, as long as the `$wire` is unique. If the ship, agent, `path` and `$wire` are all the same as an existing subscription, Gall will not allow the request to be sent, and instead fail with an error message fed into the `on-fail` arm of your agent.
 
 ## Receiving updates {#receiving-updates}
 
-Assuming the `%watch` succeeded, your agent will now begin receiving any `%fact`s the other agent publishes on the `path` to which you've subscribed. These `%fact`s will also come in to your agent's `on-agent` arm in a `sign`, just like the initial `%watch-ack`. The `%fact` `sign` will have the following format:
+Assuming the `%watch` succeeded, your agent will now begin receiving any `%fact`s the other agent publishes on the `path` to which you've subscribed. These `%fact`s will also come in to your agent's `on-agent` arm in a `$sign`, just like the initial `%watch-ack`. The `%fact` `$sign` will have the following format:
 
 ```hoon
 [%fact =cage]
 ```
 
-You would typically handle such `%fact`s in the following manner: Test the `wire`, test whether the `sign` is a `%fact`, test the `mark` in the `cage`, extract the data from the `vase` in the `cage`, and apply your logic. For example:
+You would typically handle such `%fact`s in the following manner: Test the `$wire`, test whether the `$sign` is a `%fact`, test the `mark` in the `$cage`, extract the data from the `$vase` in the `$cage`, and apply your logic. For example:
 
 ```hoon
 ++  on-agent
@@ -164,19 +164,19 @@ You would typically handle such `%fact`s in the following manner: Test the `wire
   ......
 ```
 
-Note that Gall will not allow `sign`s to come into `on-agent` unsolicited, so you don't necessarily need to include permission logic in this arm.
+Note that Gall will not allow `$sign`s to come into `on-agent` unsolicited, so you don't necessarily need to include permission logic in this arm.
 
-The `on-agent` arm produces a `(quip card _this)`, so you can produce new `card`s and update your agent's state, as appropriate.
+The `on-agent` arm produces a `(quip card _this)`, so you can produce new `$card`s and update your agent's state, as appropriate.
 
 ## Getting kicked {#getting-kicked}
 
-For whatever reason, the agent you're `%watch`ing might want to kick your agent from a `path` to which it's subscribed, ending your subscription and ceasing to send your agent `%fact`s. To do this, it will send your agent a `%kick` card [as described above](#kicking-subscribers). The `%kick` will come in to your agent's `on-agent` arm in a `sign`, like `%watch-ack`s and `%fact`s do. The `%kick` `sign` will have the following format:
+For whatever reason, the agent you're `%watch`ing might want to kick your agent from a `path` to which it's subscribed, ending your subscription and ceasing to send your agent `%fact`s. To do this, it will send your agent a `%kick` card [as described above](#kicking-subscribers). The `%kick` will come in to your agent's `on-agent` arm in a `$sign`, like `%watch-ack`s and `%fact`s do. The `%kick` `$sign` will have the following format:
 
 ```hoon
 [%kick ~]
 ```
 
-Since the `%kick` itself contains no information, you'll need to consider the `wire` it comes in on to know what it pertains to. As explained previously, `%kick`s aren't always intentional - sometimes Gall will kick subscribers due to network issues. Your `on-agent` arm therefore has no way to know whether the other agent actually intended to kick it. This means _your agent should almost always try to resubscribe if it gets kicked_. Then, if the resubscribe `%watch` request is rejected with a negative `%watch-ack`, you can conclude that it was intentional and give up. The logic would look something like this:
+Since the `%kick` itself contains no information, you'll need to consider the `$wire` it comes in on to know what it pertains to. As explained previously, `%kick`s aren't always intentional - sometimes Gall will kick subscribers due to network issues. Your `on-agent` arm therefore has no way to know whether the other agent actually intended to kick it. This means _your agent should almost always try to resubscribe if it gets kicked_. Then, if the resubscribe `%watch` request is rejected with a negative `%watch-ack`, you can conclude that it was intentional and give up. The logic would look something like this:
 
 ```hoon
 ++  on-agent
@@ -200,7 +200,7 @@ Eventually you may wish to unsubscribe from a `path` in another agent and stop r
 [%pass /some/wire %agent [~some-ship %some-agent] %leave ~]
 ```
 
-The subscription to be ended is determined by the combination of the `wire`, ship and agent, so the `%leave` task itself always just has `~` at the end.
+The subscription to be ended is determined by the combination of the `$wire`, ship and agent, so the `%leave` task itself always just has `~` at the end.
 
 ## Example {#example}
 
@@ -245,7 +245,7 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 
 </details>
 
-This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `action`s and `update`s for subscribers.
+This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `action`s and `update`s for subscribers.
 
 **`/mar/todo/action.hoon`**
 
@@ -722,18 +722,18 @@ On `~nut`, we'll see it got the `%kick`, tried resubscribing automatically, but 
 - Incoming subscription requests arrive in an agent's `on-watch` arm.
 - An agent will define various subscription `path`s in its `on-watch` arm, which others can subscribe to.
 - Gall will automatically produce a negative `%watch-ack` if `on-watch` crashed, and a positive one if it was successful.
-- Incoming subscribers are recorded in the `sup` field of the `bowl`.
+- Incoming subscribers are recorded in the `sup` field of the `$bowl`.
 - `on-watch` can produce a `%fact` with a null `(list path)` which will go only to the new subscriber.
-- Updates are sent to subscribers in `%fact` cards, and contain a `cage` with a `mark` and some data in a `vase`.
+- Updates are sent to subscribers in `%fact` cards, and contain a `$cage` with a `mark` and some data in a `$vase`.
 - `%fact`s are sent to all subscribers of the paths specified in the `(list path)`.
 - A subscriber can be kicked from subscription paths with a `%kick` card specifying the ship in the `(unit ship)`. All subscribers of the specified paths will be kicked if the `(unit ship)` is null.
 - An outgoing subscription can be initiated with a `%watch` card.
-- The `%watch-ack` will come back in to the subscriber's `on-agent` arm as a `sign`, and may be positive or negative, depending on whether the `(unit tang)` is null.
-- `%kick`s will also arrive in the subscriber's `on-agent` arm as a `sign`. Since kicks may not be intentional, the subscriber should attempt to resubscribe and only give up if the subsequent `%watch-ack` is negative.
+- The `%watch-ack` will come back in to the subscriber's `on-agent` arm as a `$sign`, and may be positive or negative, depending on whether the `(unit tang)` is null.
+- `%kick`s will also arrive in the subscriber's `on-agent` arm as a `$sign`. Since kicks may not be intentional, the subscriber should attempt to resubscribe and only give up if the subsequent `%watch-ack` is negative.
 - `%fact`s will also arrive in the subscriber's `on-agent` arm.
-- All such `sign`s that arrive in `on-agent` will also have a `wire`.
-- The `wire` for subscription updates to arrive on is specified in the initial `%watch` card.
-- A subscriber can unsubscribe by passing a `%leave` card on the original `wire`.
+- All such `$sign`s that arrive in `on-agent` will also have a `$wire`.
+- The `$wire` for subscription updates to arrive on is specified in the initial `%watch` card.
+- A subscriber can unsubscribe by passing a `%leave` card on the original `$wire`.
 
 ## Exercises {#exercises}
 

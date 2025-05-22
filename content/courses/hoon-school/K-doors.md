@@ -502,7 +502,7 @@ You can apply a gate to each value using [++run:by](../../language/hoon/referenc
 
 ### Exercise: Display Cards {#exercise-display-cards}
 
-- Recall the `/lib/playing-cards.hoon` library. Use a map to pretty-print the `darc`s as Unicode card symbols.
+- Recall the `/lib/playing-cards.hoon` library. Use a map to pretty-print the `$darc`s as Unicode card symbols.
 
     The map type should be `(map darc @t)`. We'll use [++malt](../../language/hoon/reference/stdlib/2l.md#malt) to build it and associate the fancy (if tiny) [Unicode playing card symbols](https://en.wikipedia.org/wiki/Playing_cards_in_Unicode).
 
@@ -700,7 +700,7 @@ Below is a generator that performs a Caesar cipher on a [tape](../../glossary/ta
 
 </details>
 
-This generator takes two arguments: a [tape](../../glossary/tape.md), which is your plaintext message, and an unsigned integer, which is the shift-value of the cipher. It produces a cell of two `tape`s: one that has been shifted right by the value, and another that has been shifted left. It also converts any uppercase input into lowercase.
+This generator takes two arguments: a [tape](../../glossary/tape.md), which is your plaintext message, and an unsigned integer, which is the shift-value of the cipher. It produces a cell of two `$tape`s: one that has been shifted right by the value, and another that has been shifted left. It also converts any uppercase input into lowercase.
 
 Try it out in the Dojo:
 
@@ -741,7 +741,7 @@ There are a few [runes](../../glossary/rune.md) in this which we haven't seen ye
 
 The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) in the first line of the above code enables a full stack trace in the event of an error.
 
-`|= [msg=tape steps=@ud]` creates a [gate](../../glossary/gate.md) that takes a [cell](../../glossary/cell.md). The head of this cell is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](../../glossary/atom.md) -- that we give the [face](../../glossary/face.md) `steps`.
+`|= [msg=tape steps=@ud]` creates a [gate](../../glossary/gate.md) that takes a [cell](../../glossary/cell.md). The head of this cell is a `$tape`, which is a string type that's a list of `$cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](../../glossary/atom.md) -- that we give the [face](../../glossary/face.md) `steps`.
 
 `=<` [zapgal](../../language/hoon/reference/rune/tis.md#tisgal) is the rune that evaluates its first child expression with respect to its second child expression as the [subject](../../glossary/subject.md). In this case, we evaluate the expressions in the code chunk below against the [core](../../glossary/core.md) declared later, which allows us reference the core's contained [arms](../../glossary/arm.md) before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
 
@@ -771,11 +771,11 @@ The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) in the first
 
 The `++rotation` arm takes takes a specified number of characters off of a [tape](../../glossary/tape.md) and puts them on the end of the tape. We're going to use this to create our shifted alphabet, based on the number of `steps` given as an argument to our gate.
 
-`|= [my-alphabet=tape my-steps=@ud]` creates a gate that takes two arguments: `my-alphabet`, a `tape`, and `my-steps`, a `@ud`.
+`|= [my-alphabet=tape my-steps=@ud]` creates a gate that takes two arguments: `my-alphabet`, a `$tape`, and `my-steps`, a `@ud`.
 
 `=/ length=@ud (lent my-alphabet)` stores the length of `my-alphabet` to make the following code a little clearer.
 
-The [++trim](../../language/hoon/reference/stdlib/4b.md#trim) gate from the standard library splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `my-alphabet` into two parts, `p` and `q`, which are now directly available in the [subject](../../glossary/subject.md). We call the modulus operation `+mod` to make sure that the point at which we split our `tape` is a valid point inside of `my-alphabet` even if `my-steps` is greater than `length`, the length of `my-alphabet`. Try trim in the dojo:
+The [++trim](../../language/hoon/reference/stdlib/4b.md#trim) gate from the standard library splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `my-alphabet` into two parts, `p` and `q`, which are now directly available in the [subject](../../glossary/subject.md). We call the modulus operation `+mod` to make sure that the point at which we split our `$tape` is a valid point inside of `my-alphabet` even if `my-steps` is greater than `length`, the length of `my-alphabet`. Try trim in the dojo:
 
 ```hoon
 > (trim 2 "abcdefg")
@@ -804,21 +804,21 @@ The `++map-maker` arm, as the name implies, takes two tapes and creates a [map](
 
 `|= [a=tape b=tape]` builds a gate that takes two tapes, `a` and `b`, as its sample.
 
-`^- (map @t @t)` casts the gate to a `map` with a `cord` (or `@t`) key and a `cord` value.
+`^- (map @t @t)` casts the gate to a `map` with a `$cord` (or `@t`) key and a `$cord` value.
 
-You might wonder, if our gate in this arm takes `tape`s, why then are we producing a map of `cord` keys and values?
+You might wonder, if our gate in this arm takes `$tape`s, why then are we producing a map of `$cord` keys and values?
 
-As we discussed earlier, a [tape](../../glossary/tape.md) is a list of `cord`s. In this case what we are going to do is map a single element of a `tape` (either our alphabet or shifted-alphabet) to an element of a different `tape` (either our shifted-alphabet or our alphabet). This pair will therefore be a pair of `cord`s. When we go to use this `map` to convert our incoming `msg`, we will take each element (`cord`) of our `msg` `tape`, use it as a `key` when accessing our `map` and get the corresponding `value` from that position in the `map`. This is how we're going to encode or decode our `msg` `tape`.
+As we discussed earlier, a [tape](../../glossary/tape.md) is a list of `$cord`s. In this case what we are going to do is map a single element of a `$tape` (either our alphabet or shifted-alphabet) to an element of a different `$tape` (either our shifted-alphabet or our alphabet). This pair will therefore be a pair of `$cord`s. When we go to use this `map` to convert our incoming `msg`, we will take each element (`$cord`) of our `msg` `$tape`, use it as a `key` when accessing our `map` and get the corresponding `value` from that position in the `map`. This is how we're going to encode or decode our `msg` `$tape`.
 
 `=| chart=(map @t @t)` adds a [noun](../../glossary/noun.md) to the subject with the default value of the `(map @t @t)` type, and gives that noun the face `chart`.
 
-`?. =((lent key-position) (lent value-result))` checks if the two `tape`s are the same length. If not, the program crashes with an error message of `%uneven-lengths`, using `~| %uneven-lengths !!`.
+`?. =((lent key-position) (lent value-result))` checks if the two `$tape`s are the same length. If not, the program crashes with an error message of `%uneven-lengths`, using `~| %uneven-lengths !!`.
 
-If the two `tape`s are of the same length, we continue on to create a trap. `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) creates a [trap](../../glossary/trap.md), a gate with no arguments that is called immediately.
+If the two `$tape`s are of the same length, we continue on to create a trap. `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) creates a [trap](../../glossary/trap.md), a gate with no arguments that is called immediately.
 
-`?: |(?=(~ key-position) ?=(~ value-result))` checks if either `tape` is empty. If this is true, the `map-maker` arm is finished and can return `chart`, the [map](../../language/hoon/reference/stdlib/2o.md#map) that we have been creating.
+`?: |(?=(~ key-position) ?=(~ value-result))` checks if either `$tape` is empty. If this is true, the `map-maker` arm is finished and can return `chart`, the [map](../../language/hoon/reference/stdlib/2o.md#map) that we have been creating.
 
-If the above test finds that the `tape`s are not empty, we trigger a recursion that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `map` where the head of the `tape` `a` maps to the value of the head of `tape` `b` with `~(put by chart)`, our calling of the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) map-engine [core](../../glossary/core.md) (note that `~(<wing> <door> <sample>`) is a shorthand for `%~ <wing> <door> <sample>` (see the `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `a` and `b` to their tails using `a t.a, b t.b`.
+If the above test finds that the `$tape`s are not empty, we trigger a recursion that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `map` where the head of the `$tape` `a` maps to the value of the head of `$tape` `b` with `~(put by chart)`, our calling of the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) map-engine [core](../../glossary/core.md) (note that `~(<wing> <door> <sample>`) is a shorthand for `%~ <wing> <door> <sample>` (see the `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `a` and `b` to their tails using `a t.a, b t.b`.
 
 We have three related arms to look at next, `++decoder`, `++encoder`, and `++space-adder`. `++space-adder` is required for the other two, so we'll look at it first.
 
@@ -848,7 +848,7 @@ We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [b
 
 `++encoder` and `++decoder` utilize the `+rotation` and `space-adder` arms. These [gates](../../glossary/gate.md) are essentially identical, with the arguments passed to `space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `maps` that we can use to encode and decode messages.
 
-In both cases, we create a gate that accepts a `@ud` named `steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `alpha`. `alpha` is our arm which contains a `tape` of the entire alphabet. The `value-tape` will be the list of `value`s in our [map](../../language/hoon/reference/stdlib/2o.md#map).
+In both cases, we create a gate that accepts a `@ud` named `steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `alpha`. `alpha` is our arm which contains a `$tape` of the entire alphabet. The `value-tape` will be the list of `value`s in our [map](../../language/hoon/reference/stdlib/2o.md#map).
 
 In `+decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `space-adder` it will be the list of `key`s in our `map`.
 
@@ -869,7 +869,7 @@ Still with us? Good. We are finally about to use all the stuff that we've walked
   (operate message (decoder shift-steps))
 ```
 
-Both `++shift` and `++unshift` take two arguments: our `message`, the `tape` that we want to manipulate; and our `shift-steps`, the number of positions of the alphabet by which we want to shift our message.
+Both `++shift` and `++unshift` take two arguments: our `message`, the `$tape` that we want to manipulate; and our `shift-steps`, the number of positions of the alphabet by which we want to shift our message.
 
 `++shift` is for encoding, and `++unshift` is for decoding. Thus, `++shift` calls the `+operate` arm with `(operate message (encoder shift-steps))`, and `++unshift` makes that call with `(operate message (decoder shift-steps))`. These both produce the final output of the core, to be called in the form of `(shift msg steps)` and `(unshift msg steps)` in the [cell](../../glossary/cell.md) being created at the beginning of our code.
 
@@ -882,9 +882,9 @@ Both `++shift` and `++unshift` take two arguments: our `message`, the `tape` tha
   (~(got by shift-map) a)
 ```
 
-`++operate` produces a `tape`. The `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../language/hoon/reference/stdlib/2b.md#turn). This arm takes two arguments, a [list](../../glossary/list.md) and a [gate](../../glossary/gate.md) to apply to each element of the `list`.
+`++operate` produces a `$tape`. The `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../language/hoon/reference/stdlib/2b.md#turn). This arm takes two arguments, a [list](../../glossary/list.md) and a [gate](../../glossary/gate.md) to apply to each element of the `list`.
 
-In this case, the `gate` we are applying to our `message` uses the [got](../../language/hoon/reference/stdlib/2i.md#gotby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) door with our `shift-map` as the [sample](../../glossary/sample.md) (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `cord` in our `message`, one by one and replace it with the `value` from our `map` (either the encoded or decoded version).
+In this case, the `gate` we are applying to our `message` uses the [got](../../language/hoon/reference/stdlib/2i.md#gotby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) door with our `shift-map` as the [sample](../../glossary/sample.md) (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `$cord` in our `message`, one by one and replace it with the `value` from our `map` (either the encoded or decoded version).
 
 Let's give our arm Caesar's famous statement (translated into English!) and get our left-cipher and right-cipher.
 
@@ -907,7 +907,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 
 1. Take the example [generator](../../glossary/generator.md) and modify it to add a second layer of shifts.
 2. Extend the example generator to allow for use of characters other than a-z. Make it shift the new characters independently of the alpha characters, such that punctuation is only encoded as other punctuation marks.
-3. Build a gate that can take a Caesar shifted `tape` and produce all possible unshifted `tapes`.
+3. Build a gate that can take a Caesar shifted `$tape` and produce all possible unshifted `tapes`.
 4. Modify the example generator into a `%say` generator.
 
 

@@ -10,7 +10,7 @@ We frequently need to convert from text to data, and between different text-base
 - How do we convert text into all lower-case?
     - [++cass](../../language/hoon/reference/stdlib/4b.md#cass)
 
-- How do we turn a `cord` into a [tape](../../glossary/tape.md)?
+- How do we turn a `$cord` into a [tape](../../glossary/tape.md)?
     - [++trip](../../language/hoon/reference/stdlib/4b.md#trip)
 
 - How can we make a [list](../../glossary/list.md) of a null-terminated tuple?
@@ -23,14 +23,14 @@ We frequently need to convert from text to data, and between different text-base
 
 The `++html` core of the standard libary contains some additional important tools for working with web-based data, such as [MIME types](https://en.wikipedia.org/wiki/Media_type) and [JSON strings](https://en.wikipedia.org/wiki/JSON).
 
-- To convert a `@ux` hexadecimal value to a `cord`:
+- To convert a `@ux` hexadecimal value to a `$cord`:
 
     ```hoon
     > (en:base16:mimes:html [3 0x12.3456])  
     '123456'
     ```
 
-- To convert a `cord` to a `@ux` hexadecimal value:
+- To convert a `$cord` to a `@ux` hexadecimal value:
 
     ```hoon
     > `@ux`q.+>:(de:base16:mimes:html '123456')
@@ -47,7 +47,7 @@ The `++html` core of the standard libary contains some additional important tool
 
 ## Formatted Text {#formatted-text}
 
-Hoon produces messages at the [Dojo](../../glossary/dojo.md) (or otherwise) using an internal formatted text system, called `tank`s. A `+$tank` is a formatted print tree. Error messages and the like are built of `tank`s. `tank`s are defined in `hoon.hoon`:
+Hoon produces messages at the [Dojo](../../glossary/dojo.md) (or otherwise) using an internal formatted text system, called `$tank`s. A `+$tank` is a formatted print tree. Error messages and the like are built of `$tank`s. `$tank`s are defined in `hoon.hoon`:
 
 ```hoon
 ::  $tank: formatted print tree
@@ -80,7 +80,7 @@ The [++ram:re](../../language/hoon/reference/stdlib/4c.md#ramre) arm is used to 
 "[foo bar baz]"
 ```
 
-Many [generators](../../glossary/generator.md) build sophisticated output using `tank`s and the short-format [cell](../../glossary/cell.md) builder `+`, e.g. in `/gen/azimuth-block/hoon`:
+Many [generators](../../glossary/generator.md) build sophisticated output using `$tank`s and the short-format [cell](../../glossary/cell.md) builder `+`, e.g. in `/gen/azimuth-block/hoon`:
 
 ```hoon
 [leaf+(scow %ud block)]~
@@ -92,7 +92,7 @@ which is equivalent to
 ~[[%leaf (scow %ud block)]]
 ```
 
-`tank`s are the primary output mechanism for more advanced generators. Even if you don't end up writing them much, you will encounter them as you delve into the Urbit codebase.
+`$tank`s are the primary output mechanism for more advanced generators. Even if you don't end up writing them much, you will encounter them as you delve into the Urbit codebase.
 
 #### Tutorial: Deep Dive into `ls.hoon`
 
@@ -211,13 +211,13 @@ For instance, how does [+cat](../../manual/os/dojo-tools.md#cat) work?  Let's lo
   - [++smyt](../../language/hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
   - `=-` [tishep](../../language/hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas).
 
-You can see how much of the generator is concerned with formatting the content of the file into a formatted text `tank` by prepending `%rose` tags and so forth.
+You can see how much of the generator is concerned with formatting the content of the file into a formatted text `$tank` by prepending `%rose` tags and so forth.
 
 - Work line-by-line through the file and clarify parts that are muddy to you at first glance.
 
 ### Producing Error Messages {#producing-error-messages}
 
-Formal error messages in Urbit are built of tanks. “A `tang` is a [list](../../glossary/list.md) of `tank`s, and a `tank` is a structure for printing data. There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.”
+Formal error messages in Urbit are built of tanks. “A `$tang` is a [list](../../glossary/list.md) of `$tank`s, and a `$tank` is a structure for printing data. There are three types of `$tank`: `$leaf`, `$palm`, and `$rose`. A `$leaf` is for printing a single noun, a `$rose` is for printing rows of data, and a `$palm` is for printing backstep-indented lists.”
 
 One way to include an error message in your code is the `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”. What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
 
@@ -306,11 +306,11 @@ With `|= *`, we create a [gate](../../glossary/gate.md) and ignore the standard 
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `cask` of `tang`. We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
+`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `$cask` of `$tang`. We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
 
-A `cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md). We previously described a `mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
+A `$cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md). We previously described a `mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
 
-A `tang` is a [list](../../glossary/list.md) of `tank`, and a `tank` is a structure for printing data, as described above. There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for printing a single noun, a `rose` is for printing rows of data, and a `palm` is for printing backstep-indented lists.
+A `$tang` is a [list](../../glossary/list.md) of `$tank`, and a `$tank` is a structure for printing data, as described above. There are three types of `$tank`: `$leaf`, `$palm`, and `$rose`. A `$leaf` is for printing a single noun, a `$rose` is for printing rows of data, and a `$palm` is for printing backstep-indented lists.
 
 ```hoon
 %+  print    leaf+"What is your favorite color?"
@@ -321,9 +321,9 @@ A `tang` is a [list](../../glossary/list.md) of `tank`, and a `tank` is a struct
 
 Because we imported [generators](../../glossary/generator.md), we can access its contained gates, three of which we use in `axe.hoon`: `++print`, `++prompt`, and `++produce`.
 
-- `+print` is used for printing a `tank` to the console.
+- `+print` is used for printing a `$tank` to the console.
 
-    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print. The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
+    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `$tank` to print. The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
 
 - `+prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
 
@@ -333,14 +333,14 @@ Because we imported [generators](../../glossary/generator.md), we can access its
 
     The third element of the `++prompt` sample is the [tape](../../glossary/tape.md) that we would like to use to prompt the user. In the case of our example, we use `"color: "`.
 
-- `+produce` is used to construct the output of the generator. In our example, we produce a `tang`.
+- `+produce` is used to construct the output of the generator. In our example, we produce a `$tang`.
 
 ```hoon
 |=  t=tape
 ```
 
-Our gate here takes a `tape` that was produced by `++prompt`. If we needed another type of data we could use `++parse` to obtain it.
+Our gate here takes a `$tape` that was produced by `++prompt`. If we needed another type of data we could use `++parse` to obtain it.
 
 The rest of this generator should be intelligible to those with Hoon knowledge at this point.
 
-One quirk that you should be aware of, though, is that `tang` prints in reverse order from how it is created. The reason for this is that `tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [++flop](../../language/hoon/reference/stdlib/2b.md#flop) the `list`.
+One quirk that you should be aware of, though, is that `$tang` prints in reverse order from how it is created. The reason for this is that `$tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [++flop](../../language/hoon/reference/stdlib/2b.md#flop) the `list`.

@@ -164,15 +164,15 @@ Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [
 
 Formal error messages in Urbit are built of tanks.
 
-- A `tank` is a structure for printing data.
-  - `leaf` is for printing a single noun.
-  - `palm` is for printing backstep-indented lists.
-  - `rose` is for printing rows of data.
-- A `tang` is a `(list tank)`.
+- A `$tank` is a structure for printing data.
+  - `$leaf` is for printing a single noun.
+  - `$palm` is for printing backstep-indented lists.
+  - `$rose` is for printing rows of data.
+- A `$tang` is a `(list tank)`.
 
 As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-- The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `tank`. (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+- The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 - The `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
     ```hoon

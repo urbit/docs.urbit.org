@@ -1,6 +1,6 @@
 # 9. Text Processing I
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered [in a later module](P-stdlib-io.md)._
+_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered [in a later module](P-stdlib-io.md)._
 
 ## Text in Hoon {#text-in-hoon}
 
@@ -9,15 +9,15 @@ We've incidentally used `'messages written as cords'` and `"as tapes"`, but asid
 There are four basic ways to represent text in Urbit:
 
 - `@t`, a [cord](../../glossary/cord.md), which is an [atom](../../glossary/atom.md) (single value)
-- `@ta`, a `knot` used for URL-safe path elements, which is an atom (single value)
-- `@tas`, a `term` used primarily for constants, which is an atom (single value)
-- `tape`, which is a `(list @t)`
+- `@ta`, a `$knot` used for URL-safe path elements, which is an atom (single value)
+- `@tas`, a `$term` used primarily for constants, which is an atom (single value)
+- `$tape`, which is a `(list @t)`
 
 This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_%28computer_science%29), however.
 
 What are the applications of each?
 
-### `@t` `cord` {#t-cord}
+### `@t` `$cord` {#t-cord}
 
 What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol: there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.)  Characters can be combined, particularly in ideographic languages like Mandarin Chinese.
 
@@ -38,7 +38,7 @@ A [cord](../../glossary/cord.md) simply shunts these values together in one-byte
 2.037.307.443.564.446.887.986.503.990.470.772
 ```
 
-It's very helpful to use the `@ux` [aura](../../glossary/aura.md) if you are trying to see the internal structure of a `cord`. Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
+It's very helpful to use the `@ux` [aura](../../glossary/aura.md) if you are trying to see the internal structure of a `$cord`. Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
 
 ```hoon
 > `@ux`'HELLO'
@@ -60,11 +60,11 @@ You can think of this a couple of different ways. One way is to simple think of 
 
 This way, each value slots in after the preceding value.
 
-Special characters (non-ASCII, beyond the standard keyboard, basically) are represented using a more complex numbering convention. [Unicode](https://en.wikipedia.org/wiki/Unicode) defines a standard specification for _code points_ or numbers assigned to characters, and a few specific bitwise _encodings_ (such as the ubiquitous UTF-8). Urbit uses UTF-8 for `@t` values (thus both `cord` and `tape`).
+Special characters (non-ASCII, beyond the standard keyboard, basically) are represented using a more complex numbering convention. [Unicode](https://en.wikipedia.org/wiki/Unicode) defines a standard specification for _code points_ or numbers assigned to characters, and a few specific bitwise _encodings_ (such as the ubiquitous UTF-8). Urbit uses UTF-8 for `@t` values (thus both `$cord` and `$tape`).
 
-### `(list @t)` `tape` {#list-t-tape}
+### `(list @t)` `$tape` {#list-t-tape}
 
-There are some tools to work with atom `cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](../../glossary/tape.md). A `tape` splits out the individual characters from a `cord` into a `list` of character values.
+There are some tools to work with atom `$cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](../../glossary/tape.md). A `$tape` splits out the individual characters from a `$cord` into a `list` of character values.
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
@@ -82,9 +82,9 @@ A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at
 
 Since a [tape](../../glossary/tape.md) is a `(list @tD)`, all of the `list` tools we have seen before work on them.
 
-### `@ta` `knot` {#ta-knot}
+### `@ta` `$knot` {#ta-knot}
 
-If we restrict the character set to certain ASCII characters instead of UTF-8, we can use this restricted representation for system labels as well (such as URLs, file system paths, permissions). `@ta` `knot`s and `@tas` `term`s both fill this role for Hoon.
+If we restrict the character set to certain ASCII characters instead of UTF-8, we can use this restricted representation for system labels as well (such as URLs, file system paths, permissions). `@ta` `$knot`s and `@tas` `$term`s both fill this role for Hoon.
 
 ```hoon
 > `@ta`'hello'
@@ -93,13 +93,13 @@ If we restrict the character set to certain ASCII characters instead of UTF-8, w
 
 Every valid `@ta` is a valid `@t`, but `@ta` does not permit spaces or a number of other characters. (See `++sane`, discussed below.)
 
-### `@tas` `term` {#tas-term}
+### `@tas` `$term` {#tas-term}
 
-A further tweak of the ASCII-only concept, the `@tas` `term` permits only “text constants”, values that are first and foremost only _themselves_.
+A further tweak of the ASCII-only concept, the `@tas` `$term` permits only “text constants”, values that are first and foremost only _themselves_.
 
 > [`@tas` permits only] a restricted text atom for Hoon constants. The only characters permitted are lowercase ASCII letters, `-`, and `0-9`, the latter two of which cannot be the first character. The syntax for `@tas` is the text itself, always preceded by `%`. The empty `@tas` has a special syntax, `$`.
 
-`term`s are rarely used for message-like text, but they are used all the time for internal labels in code. They differ from regular text in a couple of key ways that can confuse you until you're used to them.
+`$term`s are rarely used for message-like text, but they are used all the time for internal labels in code. They differ from regular text in a couple of key ways that can confuse you until you're used to them.
 
 For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](N-logic.md) to filter for acceptable values.
 
@@ -141,14 +141,14 @@ Text-based data commonly needs to be _produced_, _manipulated_, or _analyzed_ (i
 
 ### Producing Text {#producing-text}
 
-String interpolation puts the result of an expression directly into a `tape`:
+String interpolation puts the result of an expression directly into a `$tape`:
 
 ```hoon
 > "{<(add 5 6)>} is the answer."
 "11 is the answer."
 ```
 
-The [++weld](../../language/hoon/reference/stdlib/2b.md#weld) function can be used to glue two `tape`s together:
+The [++weld](../../language/hoon/reference/stdlib/2b.md#weld) function can be used to glue two `$tape`s together:
 
 ```hoon
 > (weld "Hello" "Mars!")
@@ -163,7 +163,7 @@ The [++weld](../../language/hoon/reference/stdlib/2b.md#weld) function can be us
 
 ### Manipulating Text {#manipulating-text}
 
-If you have text but you need to change part of it or alter its form, you can use standard library `list` operators like [++flop](../../language/hoon/reference/stdlib/2b.md#flop) as well as `tape`-specific arms.
+If you have text but you need to change part of it or alter its form, you can use standard library `list` operators like [++flop](../../language/hoon/reference/stdlib/2b.md#flop) as well as `$tape`-specific arms.
 
 Applicable `list` operations, some of which you've seen before, include:
 
@@ -254,34 +254,34 @@ Applicable `list` operations, some of which you've seen before, include:
 
     **Exercise: Count the Number of Characters in Text**
 
-    - There is a built-in `++lent` function that counts the number of characters in a `tape`. Build your own `tape`-length character counting function without using `++lent`.
+    - There is a built-in `++lent` function that counts the number of characters in a `$tape`. Build your own `$tape`-length character counting function without using `++lent`.
 
     You may find the `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) rune to be helpful. It tells you whether a value is `~` or not. (How would you do this with a regular `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol)?)
 
 The foregoing are [list](../../glossary/list.md) operations. The following, in contrast, are [tape](../../glossary/tape.md)-specific operations:
 
-- The [++crip](../../language/hoon/reference/stdlib/4b.md#crip) function converts a `tape` to a `cord` (`tape`→`cord`).
+- The [++crip](../../language/hoon/reference/stdlib/4b.md#crip) function converts a `$tape` to a `$cord` (`$tape`→`$cord`).
 
     ```hoon
     > (crip "Mars")
     'Mars'
     ```
 
-- The [++trip](../../language/hoon/reference/stdlib/4b.md#trip) function converts a `cord` to a `tape` (`cord`→`tape`).
+- The [++trip](../../language/hoon/reference/stdlib/4b.md#trip) function converts a `$cord` to a `$tape` (`$cord`→`$tape`).
 
     ```hoon
     > (trip 'Earth')
     "Earth"
     ```
 
-- The [++cass](../../language/hoon/reference/stdlib/4b.md#cass) function: convert upper-case text to lower-case (`tape`→`tape`)
+- The [++cass](../../language/hoon/reference/stdlib/4b.md#cass) function: convert upper-case text to lower-case (`$tape`→`$tape`)
 
     ```hoon
     > (cass "Hello Mars")
     "hello mars"
     ```
 
-- The [++cuss](../../language/hoon/reference/stdlib/4b.md#cuss) function: convert lower-case text to upper-case (`tape`→`tape`)
+- The [++cuss](../../language/hoon/reference/stdlib/4b.md#cuss) function: convert lower-case text to upper-case (`$tape`→`$tape`)
 
     ```hoon
     > (cuss "Hello Mars")
@@ -322,7 +322,7 @@ Hoon has a sophisticated parser built into it that [we'll use later](P-stdlib-io
 
 Hoon has a very powerful text parsing engine, built to compile Hoon itself. However, it tends to be quite obscure to new learners. We can build a simple one using `list` tools.
 
-- Compose a [gate](../../glossary/gate.md) which parses a long `tape` into smaller `tape`s by splitting the text at single spaces. For example, given a `tape`
+- Compose a [gate](../../glossary/gate.md) which parses a long `$tape` into smaller `$tape`s by splitting the text at single spaces. For example, given a `$tape`
  
     ```hoon
     "the sky above the port was the color of television tuned to a dead channel"
@@ -353,9 +353,9 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself. Howe
 
 #### Convert
 
-If you have a Hoon value and you want to convert it into text as such, use [++scot](../../language/hoon/reference/stdlib/4m.md#scot) and [++scow](../../language/hoon/reference/stdlib/4m.md#scow). These call for a value of type `+$dime`, which means the `@tas` equivalent of a regular aura. These are labeled as returning `cord`s (`@t`s) but in practice seem to return `knot`s (`@ta`s).
+If you have a Hoon value and you want to convert it into text as such, use [++scot](../../language/hoon/reference/stdlib/4m.md#scot) and [++scow](../../language/hoon/reference/stdlib/4m.md#scow). These call for a value of type `+$dime`, which means the `@tas` equivalent of a regular aura. These are labeled as returning `$cord`s (`@t`s) but in practice seem to return `$knot`s (`@ta`s).
 
-- The [++scot](../../language/hoon/reference/stdlib/4m.md#scot) function renders a `dime` as a `cord` (`dime`→`cord`); the user must include any necessary aura transformation.
+- The [++scot](../../language/hoon/reference/stdlib/4m.md#scot) function renders a `$dime` as a `$cord` (`$dime`→`$cord`); the user must include any necessary aura transformation.
 
     ```hoon
     > `@t`(scot %ud 54.321)
@@ -373,9 +373,9 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
     '~sampel-palnet'
     ```
 
-- The [++scow](../../language/hoon/reference/stdlib/4m.md#scow) function renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to [++scot](../../language/hoon/reference/stdlib/4m.md#scot).
+- The [++scow](../../language/hoon/reference/stdlib/4m.md#scow) function renders a `$dime` as a `$tape` (`$dime`→`$tape`); it is otherwise identical to [++scot](../../language/hoon/reference/stdlib/4m.md#scot).
 
-- The [++sane](../../language/hoon/reference/stdlib/4b.md#sane) function checks the validity of a possible text string as a `knot` or `term`. The usage of `++sane` will feel a bit strange to you: it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `++sane` is also not infallible yet.
+- The [++sane](../../language/hoon/reference/stdlib/4b.md#sane) function checks the validity of a possible text string as a `$knot` or `$term`. The usage of `++sane` will feel a bit strange to you: it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `++sane` is also not infallible yet.
 
     ```hoon
     > ((sane %ta) 'ångstrom')
@@ -393,7 +393,7 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
 
     Why is this sort of check necessary?  Two reasons:
 
-    1. `@ta` `knot`s and `@tas` `term`s have strict rules, such as being ASCII-only.
+    1. `@ta` `$knot`s and `@tas` `$term`s have strict rules, such as being ASCII-only.
     2. Not every sequence of bits has a conversion to a text representation. That is, ASCII and Unicode have structural rules that limit the possible conversions which can be made. If things don't work, you'll get a `%bad-text` response.
 
         ```hoon
@@ -403,7 +403,7 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
         [%bad-text "[39 239 205 171 144 120 86 52 92 49 50 39 0]"]
         ```
 
-    There's a minor bug in Hoon that will let you produce an erroneous `term` (`@tas`):
+    There's a minor bug in Hoon that will let you produce an erroneous `$term` (`@tas`):
 
     ```hoon
     > `@tas`'hello mars'
@@ -473,7 +473,7 @@ We use `%say` generators when we want to provide something else in [Arvo](../../
 
 To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](../../glossary/mark.md) is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
 
-So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `cask` -- a pair of the output data and the `mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
+So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `$cask` -- a pair of the output data and the `mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
 ```hoon
 :-  %say
@@ -507,7 +507,7 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 (add 40 2)
 ```
 
-`|= *` constructs a [gate](../../glossary/gate.md) that takes a noun. This `gate` will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
+`|= *` constructs a [gate](../../glossary/gate.md) that takes a noun. This `gate` will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `$cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject. Namely, a `%say` generator knows about `our`, `eny`, and `now`, as well as the current desk:
 
@@ -601,7 +601,7 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 
 Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) rune. When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that. It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
-Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `deck`.
+Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `$deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `$deck`.
 
 #### Solutions to Exercises
 

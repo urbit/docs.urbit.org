@@ -1,8 +1,8 @@
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../system/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) subsection, as well as [`bowl`](../../system/kernel/gall/reference/data-types.md#bowl), [`boat`](../../system/kernel/gall/reference/data-types.md#boat), and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt).
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../system/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) subsection, as well as [`$bowl`](../../system/kernel/gall/reference/data-types.md#bowl), [`boat`](../../system/kernel/gall/reference/data-types.md#boat), and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt).
 
-## `vase` {#vase}
+## `$vase` {#vase}
 
 Vases are used to encapsulate _dynamically typed_ data - they let typed data be moved around in contexts where you can't know the type ahead of time, and therefore can't have a _static_ type.
 
@@ -23,7 +23,7 @@ Here's what it looks like if we bunt a vase in the dojo:
 
 There are two simple runes used to create and unpack vases. We'll look at each of these next.
 
-### Create a `vase` {#create-a-vase}
+### Create a `$vase` {#create-a-vase}
 
 The [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
 
@@ -41,9 +41,9 @@ The [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune (`!>`) takes
 [#t/foo=@t q=7.496.034]
 ```
 
-You would typically use `!>` as part of a [`cage`](#cage) when you're constructing a `card` like a poke or a `%fact` `gift` to be sent off.
+You would typically use `!>` as part of a [`$cage`](#cage) when you're constructing a `$card` like a poke or a `%fact` `$gift` to be sent off.
 
-### Extract data from `vase` {#extract-data-from-vase}
+### Extract data from `$vase` {#extract-data-from-vase}
 
 The [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
 
@@ -85,17 +85,17 @@ The only problem is that you can't tell if the auras were wrong:
 [p=~sibtel-tallyd q=43.981 r=0x7b]
 ```
 
-You'd typically use `!<` on the data in `card`s that come in from other ships, agents, etc.
+You'd typically use `!<` on the data in `$card`s that come in from other ships, agents, etc.
 
 ## `mark` {#mark}
 
 The `mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `mark` corresponds to a mark file in the `/mar` directory, so a `mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../system/kernel/clay/guides/marks).
 
-## `cage` {#cage}
+## `$cage` {#cage}
 
-A `cage` is a cell of a [`mark`](#mark) and a [`vase`](#vase), like `[%foo !>('bar')]`. The data in the vase should match the data type of the specified mark.
+A `$cage` is a cell of a [`mark`](#mark) and a [`$vase`](#vase), like `[%foo !>('bar')]`. The data in the vase should match the data type of the specified mark.
 
-Most data an agent sends will be in a `cage`, and most data it receives will arrive in a `cage`. The `mark` may be used to validate or convert the data in the `vase`, depending on the context.
+Most data an agent sends will be in a `$cage`, and most data it receives will arrive in a `$cage`. The `mark` may be used to validate or convert the data in the `$vase`, depending on the context.
 
 ## `+quip` {#quip}
 
@@ -138,7 +138,7 @@ Aside from using function calls when constructing a `path` as demonstrated above
 /foo/bar/baz
 ```
 
-## `wire` {#wire}
+## `$wire` {#wire}
 
 The type of a wire is formally defined as:
 
@@ -146,11 +146,11 @@ The type of a wire is formally defined as:
 +$  wire  path
 ```
 
-So, a `wire` is just a [`path`](#path), type-wise they're exactly the same. The reason there's a separate `wire` type is just to differentiate their purpose. A `wire` is a path for responses to requests an agent initiates. If you subscribe to the `path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
+So, a `$wire` is just a [`path`](#path), type-wise they're exactly the same. The reason there's a separate `$wire` type is just to differentiate their purpose. A `$wire` is a path for responses to requests an agent initiates. If you subscribe to the `$path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
 
-More formally, `wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`duct`](../../system/kernel/arvo#duct). Inter-vane communications happen over `duct`s as [`move`](../../system/kernel/arvo#moves)s, and Gall converts the `card`s produced by agents into such `move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../system/kernel/arvo) and [move trace tutorial](../../system/kernel/arvo/guides/move-trace.md).
+More formally, `$wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`duct`](../../system/kernel/arvo#duct). Inter-vane communications happen over `duct`s as [`move`](../../system/kernel/arvo#moves)s, and Gall converts the `$card`s produced by agents into such `move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../system/kernel/arvo) and [move trace tutorial](../../system/kernel/arvo/guides/move-trace.md).
 
-For agents, the `wire` is specified in the second argument of a `%pass` `card`. It's used for anything you can `%pass`, such as `%poke`s, `%watch`es, and `%arvo` notes. For example:
+For agents, the `$wire` is specified in the second argument of a `%pass` `$card`. It's used for anything you can `%pass`, such as `%poke`s, `%watch`es, and `%arvo` notes. For example:
 
 ```hoon
 [%pass /this/is/wire %agent [~zod %foobar] %watch /this/is/path]
@@ -160,4 +160,4 @@ For agents, the `wire` is specified in the second argument of a `%pass` `card`. 
 [%pass /this/is/wire %arvo %b %wait (add now.bowl ~m1)]
 ```
 
-The `on-agent` and `on-arvo` arms of the agent core include a `wire` in their respective sample. Responses from agents come in to the former, and responses from vanes come in to the latter.
+The `on-agent` and `on-arvo` arms of the agent core include a `$wire` in their respective sample. Responses from agents come in to the former, and responses from vanes come in to the latter.

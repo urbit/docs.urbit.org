@@ -127,9 +127,9 @@ To create three types we're going to need, we use `+$` [lusbuc](../../language/h
 
 - `+$  suit  ?(%hearts %spades %clubs %diamonds)` defines `+$suit`, which can be either `%hearts`, `%spades`, `%clubs`, or `%diamonds`. It's a type union created by the irregular form of `$?` [bucwut](../../language/hoon/reference/rune/buc.md#bucwut).
 
-- `+$  darc  [sut=suit val=@ud]` defines `+$darc`, which is a pair of `suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `darc` and not `card`?  Because `card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
+- `+$  darc  [sut=suit val=@ud]` defines `+$darc`, which is a pair of `$suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `$darc` and not `$card`?  Because `$card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
 
-- `+$  deck  (list darc)` is simply a [list](../../glossary/list.md) of `darc`.
+- `+$  deck  (list darc)` is simply a [list](../../glossary/list.md) of `$darc`.
 
 One way to get a feel for how a library works is to skim the `++` [luslus](../../language/hoon/reference/rune/lus.md#luslus) arm-names before diving into any specific [arm](../../glossary/arm.md). In this library, the arms are `++make-deck`, `++num-to-suit`, `++shuffle-deck`, and `++draw`. These names should be very clear, with the exception of `++num-to-suit` (although you could hazard a guess at what it does). Let's take a closer look at it first:
 
@@ -145,7 +145,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-`++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `suit`. The `?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) rune creates a structure to switch against a value with a default in case there are no matches. (Here the default is to crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).)  We then have options 1–4 which each resulting in a different suit.
+`++num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `$suit`. The `?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) rune creates a structure to switch against a value with a default in case there are no matches. (Here the default is to crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).)  We then have options 1–4 which each resulting in a different suit.
 
 ```hoon
 ++  make-deck
@@ -177,7 +177,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   (slag n d)
 ```
 
-`++draw` takes two arguments: `n`, an unsigned integer, and `d`, a `deck`. The gate will produce a cell of two `decks` using [++scag](../../language/hoon/reference/stdlib/2b.md#scag) and [++slag](../../language/hoon/reference/stdlib/2b.md#slag). [++scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [++slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
+`++draw` takes two arguments: `n`, an unsigned integer, and `d`, a `$deck`. The gate will produce a cell of two `decks` using [++scag](../../language/hoon/reference/stdlib/2b.md#scag) and [++slag](../../language/hoon/reference/stdlib/2b.md#slag). [++scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [++slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
 
 ```hoon
 ++  shuffle-deck
@@ -198,9 +198,9 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-Finally we come to `++shuffle-deck`. This gate takes two arguments: a `deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `deck`.
+Finally we come to `++shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `$deck`.
 
-We add a bunted `deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `++rads:random`.
+We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `++rads:random`.
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [++lent](../../language/hoon/reference/stdlib/2b.md#lent).
 
@@ -210,11 +210,11 @@ If the above conditional evaluates to `%.n` false, we need to do a little work. 
 
 With that completed, we use `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) to call `$` buc to recurse back up to `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) with a few changes:
 
-- `shuffled` gets the `darc` from `unshuffled` at `index` added to the front of it.
+- `shuffled` gets the `$darc` from `unshuffled` at `index` added to the front of it.
 
 - `remaining` gets decremented. Why are we using a counter here instead of just checking the length of `unshuffled` on each loop? [++lent](../../language/hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
 
-- `unshuffled` becomes the result of using [++oust](../../language/hoon/reference/stdlib/2b.md#oust) to remove 1 `darc` at `index` on `unshuffled`.
+- `unshuffled` becomes the result of using [++oust](../../language/hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `index` on `unshuffled`.
 
 This is a very naive shuffling algorithm. We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 

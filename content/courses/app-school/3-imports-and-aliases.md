@@ -23,7 +23,7 @@ The wet gate returns an `agent:gall` door with a sample of `bowl:gall` - a typic
 
 ### `dbug` {#dbug}
 
-The `+dbug` library lets you inspect the state and `bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
+The `+dbug` library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
 To use it, you just import `+dbug` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 
@@ -153,7 +153,7 @@ Now our agent should be running, so let's try out `+dbug`. In the dojo, let's tr
 >=
 ```
 
-It just printed out `~`. Our dummy `skeleton` agent doesn't have any state defined, so it's printing out null as a result. Let's try printing the `bowl` instead:
+It just printed out `~`. Our dummy `skeleton` agent doesn't have any state defined, so it's printing out null as a result. Let's try printing the `$bowl` instead:
 
 ```
 >   [ [our=~zod src=~zod dap=%skeleton sap=/gall/dojo]
@@ -176,7 +176,7 @@ The key takeaways are:
 
 - Libraries are imported with `/+`.
 - `default-agent` is a library that provides default behaviors for Gall agent arms.
-- `+dbug` is a library that lets you inspect the state and `bowl` of an agent from the dojo, with the `+dbug` generator.
+- `+dbug` is a library that lets you inspect the state and `$bowl` of an agent from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](../../language/hoon/reference/rune/lus.md#lustar) (`+*`) rune.
 - `this` is a conventional deferred expression name for the agent core itself.
 - `def` is a conventional deferred expression name for accessing arms in the `default-agent` library.

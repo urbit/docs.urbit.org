@@ -91,7 +91,7 @@ For example:
 
 #### String functions
 
-- `++sa` - decode a string to a `tape`.
+- `++sa` - decode a string to a `$tape`.
 - `++sd` - decode a string containing a `@da` aura date value to a `@da`.
 - `++se` - decode a string containing the specified aura to that aura.
 - `++so` - decode a string to a `@t`.
@@ -106,7 +106,7 @@ For example:
 <|foo bar baz|>
 ```
 
-Notice that `++so` is given as the argument to `++ar`. `++so` is a `++dejs` function that decodes a `$json` string to a `cord`. The gate resulting from `(ar so)` is then called with a `$json` array as its argument, and its product is a `(list @t)` of the elements of the array.
+Notice that `++so` is given as the argument to `++ar`. `++so` is a `++dejs` function that decodes a `$json` string to a `$cord`. The gate resulting from `(ar so)` is then called with a `$json` array as its argument, and its product is a `(list @t)` of the elements of the array.
 
 Many `++dejs` functions take other `++dejs` functions as their arguments. A complex nested `$json` decoding function can be built up in this manner.
 
@@ -260,7 +260,7 @@ We first test the head of the `$update`, and if it's `%jrnl` (a list of entries)
 
 We primarily use `++pairs` to form the object, though sometimes `++frond` if it only contains a single key-value pair. We also use `++numb` to encode numerical values.
 
-You'll notice more of our encoding function is done manually than our previous decoding function. For example, we form arrays by tagging an ordinary `list` with `%a`, and strings by tagging an ordinary `cord` with `%s`. This is typical when you write `$json` encoding functions, and is the reason there are far fewer `+enjs` functions than `+dejs` functions.
+You'll notice more of our encoding function is done manually than our previous decoding function. For example, we form arrays by tagging an ordinary `list` with `%a`, and strings by tagging an ordinary `$cord` with `%s`. This is typical when you write `$json` encoding functions, and is the reason there are far fewer `+enjs` functions than `+dejs` functions.
 
 ## Resources {#resources}
 

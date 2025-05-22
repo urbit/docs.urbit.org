@@ -206,7 +206,7 @@ A [tape](../../glossary/tape.md) is one way of representing a text message in Ho
 "I am the very model of a modern Major-General"
 ```
 
-A `tape` is actually a `(list @t)`, a binary tree of single characters which only branches rightwards and ends in a `~`:
+A `$tape` is actually a `(list @t)`, a binary tree of single characters which only branches rightwards and ends in a `~`:
  
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
@@ -588,7 +588,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation. This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise: Resolving Wings {#exercise-resolving-wings}
 

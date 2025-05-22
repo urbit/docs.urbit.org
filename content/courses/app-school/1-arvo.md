@@ -106,7 +106,7 @@ sys
 - `arvo.hoon`: Source code for Arvo itself.
 - `hoon.hoon`: Hoon standard library and compiler.
 - `lull.hoon`: Mostly structures and type definitions for interacting with vanes.
-- `vane`: This directory contains the source code for each of the vanes.
+- `$vane`: This directory contains the source code for each of the vanes.
 - `zuse.hoon`: This is an extra utility library. It mostly contains cryptographic functions and functions for dealing with web data like JSON.
 
 The chain of dependency for the core kernel files is `hoon.hoon` -> `arvo.hoon` -> `lull.hoon` -> `zuse.hoon`. For more information, see the [Filesystem Hierarchy](../../system/kernel/clay/guides/filesystem.md) documentation.
@@ -128,7 +128,7 @@ There are two basic ways of interacting with other parts of the system: by scryi
 
 - Scries: The scry system allows you to access the state of other agents and vanes in a read-only fashion. Scries can be performed from any context with the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you can read, and these are comprehensively documented in the Scry Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo). Agents define scry endpoints in the `+on-peek` arm of their agent core. Scries can only be done on the local ship; it is not yet possible to perform scries over the network (but this functionality is planned for the future). There is a separate [guide to scries](../../system/kernel/arvo/guides/scry.md) which you might like to read through for more details.
 - Messages:
-  - Vanes: Each vane has a number of `task`s it can be passed and `gift`s it can respond with in its respective section of `lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The `task`s and `gift`s of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo).
+  - Vanes: Each vane has a number of `$task`s it can be passed and `$gift`s it can respond with in its respective section of `lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The `$task`s and `$gift`s of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo).
   - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed, which means to subscribe for updates. We'll discuss these in detail later in the guide.
 
 Here's a simplified diagram of the ways an agent can interact with other parts of the system:
@@ -137,7 +137,7 @@ Here's a simplified diagram of the ways an agent can interact with other parts o
 
 Things like `on-poke` are arms of the agent core. Don't worry about their meaning for now, we'll discuss them in detail later in the guide.
 
-Inter-agent messaging can occur over the network, so you can interact with agents on other ships as well as local ones. You can only talk to local vanes, but some vanes like Clay are able to make requests to other ships on your behalf. Note this summary is simplified - vanes don't just talk in `task`s and `gift`s in all cases. For example, requests from HTTP clients through Eyre (the webserver vane) behave more like those from agents than vanes, and a couple of other vanes also have some different behaviours. Agent interactions are also a little more complicated, and we'll discuss that later, but the basic patterns described here cover the majority of cases.
+Inter-agent messaging can occur over the network, so you can interact with agents on other ships as well as local ones. You can only talk to local vanes, but some vanes like Clay are able to make requests to other ships on your behalf. Note this summary is simplified - vanes don't just talk in `$task`s and `$gift`s in all cases. For example, requests from HTTP clients through Eyre (the webserver vane) behave more like those from agents than vanes, and a couple of other vanes also have some different behaviours. Agent interactions are also a little more complicated, and we'll discuss that later, but the basic patterns described here cover the majority of cases.
 
 ## Environment Setup {#environment-setup}
 

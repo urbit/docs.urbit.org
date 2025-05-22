@@ -101,9 +101,9 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@sv`  | signed base32                | `-0v1df64.49beg` |
 | `@sw`  | signed base64                | `--0wbnC.8haTg` |
 | `@sx`  | signed hexadecimal           | `-0x5f5.e138` |
-| `@t`   | UTF-8 text (`cord`)          | `'howdy'` |
-| `@ta`  | ASCII text (subset) (`knot`)          | `~.howdy` |
-| `@tas` | ASCII text symbol (subset) (`term`)   | `%howdy` |
+| `@t`   | UTF-8 text (`$cord`)          | `'howdy'` |
+| `@ta`  | ASCII text (subset) (`$knot`)          | `~.howdy` |
+| `@tas` | ASCII text symbol (subset) (`$term`)   | `%howdy` |
 | `@u`   | unsigned integer             | no literal |
 | `@ub`  | unsigned binary              | `0b11.1000` |
 | `@ud`  | unsigned decimal             | `1.000.056` |
@@ -113,7 +113,7 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 
 Some of these auras nest under others. For example, `@u` is for all unsigned auras. But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc. (For a more complete list of auras, see [Auras](../../language/hoon/reference/auras.md).)
 
-`knot` and `term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
+`$knot` and `$term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
 
 ### Aura Inference in Hoon {#aura-inference-in-hoon}
 
@@ -356,7 +356,7 @@ One more way to validate against type is to use an example instead of the extrac
 
 (This is what `^-` is actually doing: `^-(p q)` reduces to `^+(^*(p) q)`. Many runes we use actually reduce to other rune forms, and have been introduced for ease of use.)
 
-We can use more complex structures for molds though, including built-in types like [lists](../../glossary/list.md) and [tapes](../../glossary/tape.md). (A `tape` represents text.)
+We can use more complex structures for molds though, including built-in types like [lists](../../glossary/list.md) and [tapes](../../glossary/tape.md). (A `$tape` represents text.)
 
 ```hoon
 `(list @)`[104 101 108 108 111 32 77 97 114 115 33 ~]
@@ -366,7 +366,7 @@ We can use more complex structures for molds though, including built-in types li
 `(list @p)``(list @)`[144 57 195 46 200 165 186 88 118 99 ~]
 ```
 
-(Sometimes you see a `%bad-text` when using `tape`s, which means that you've tried to convert a number into text which isn't text. More on `tape`s in Trees.)
+(Sometimes you see a `%bad-text` when using `$tape`s, which means that you've tried to convert a number into text which isn't text. More on `$tape`s in Trees.)
 
 -   Why does this mold conversion fail?
 

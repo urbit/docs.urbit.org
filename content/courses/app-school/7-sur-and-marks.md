@@ -4,7 +4,7 @@ Before we get into subscription mechanics, there's three things we need to touch
 
 ## `/sur` {#sur}
 
-In the [previous lesson on pokes](6-pokes.md), we used a very simple union in the `vase` for incoming pokes:
+In the [previous lesson on pokes](6-pokes.md), we used a very simple union in the `$vase` for incoming pokes:
 
 ```hoon
 =/  action  !<(?(%inc %dec) vase)
@@ -121,7 +121,7 @@ Then, in its `on-poke` arm, it could handle these actions in the following manne
   --
 ```
 
-Let's break this down a bit. Firstly, our `on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `card` for now - we'll cover subscriptions in the next lesson.
+Let's break this down a bit. Firstly, our `on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
 
 Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(quip card _this)`. The call to `handle-poke` is also part of the following expression:
 
@@ -131,9 +131,9 @@ Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(
 [cards this]
 ```
 
-The [tisket](../../language/hoon/reference/rune/tis.md#tisket) (`=^`) expression takes two arguments: A new named noun to pin to the subject (`cards` in this case), and an existing wing of the subject to modify (`state` in this case). Since `handle-poke` produces `(quip card _state)`, we're saving the `card`s it produces to `cards` and replacing the existing `state` with its new one. Finally, we produce `[cards this]`, where `this` will now contain the modified `state`. The `[cards this]` is a `(quip card _this)`, which our `on-poke` arm is expected to produce.
+The [tisket](../../language/hoon/reference/rune/tis.md#tisket) (`=^`) expression takes two arguments: A new named noun to pin to the subject (`cards` in this case), and an existing wing of the subject to modify (`state` in this case). Since `handle-poke` produces `(quip card _state)`, we're saving the `$card`s it produces to `cards` and replacing the existing `state` with its new one. Finally, we produce `[cards this]`, where `this` will now contain the modified `state`. The `[cards this]` is a `(quip card _this)`, which our `on-poke` arm is expected to produce.
 
-This might seem a little convoluted, but it's a common pattern we do for two reasons. Firstly, it's not ideal to be passing around the entire `this` agent core - it's much tidier just passing around the `state`, until you actually want to return it to Gall. Secondly, It's much easier to read when the poke handling logic is separated into its own arm. This is a fairly simple example but if your agent is more complex, handling multiple marks and containing additional logic before it gets to the actual contents of the `vase`, structuring things this way can be useful.
+This might seem a little convoluted, but it's a common pattern we do for two reasons. Firstly, it's not ideal to be passing around the entire `this` agent core - it's much tidier just passing around the `state`, until you actually want to return it to Gall. Secondly, It's much easier to read when the poke handling logic is separated into its own arm. This is a fairly simple example but if your agent is more complex, handling multiple marks and containing additional logic before it gets to the actual contents of the `$vase`, structuring things this way can be useful.
 
 You can of course structure your `on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
 
@@ -202,9 +202,9 @@ One further note on marks - while data from remote ships must have a matching ma
 
 In example agents so far, we haven't bothered to check where events such as pokes are actually coming from - our example agents would accept data from anywhere, including random foreign ships. We'll now have a look at how to handle such permission checks.
 
-Back in [lesson 2](2-agent.md#bowl) we discussed the [bowl](../../system/kernel/gall/reference/data-types.md#bowl). The `bowl` includes a couple of useful fields: `our` and `src`. The `our` field just contains the `@p` of the local ship. The `src` field contains the `@p` of the ship from which the event originated, and is updated for every new event.
+Back in [lesson 2](2-agent.md#bowl) we discussed the [bowl](../../system/kernel/gall/reference/data-types.md#bowl). The `$bowl` includes a couple of useful fields: `our` and `src`. The `our` field just contains the `@p` of the local ship. The `src` field contains the `@p` of the ship from which the event originated, and is updated for every new event.
 
-When messages come in over Ames from other ships on the network, they're [encrypted](../../system/kernel/ames/guides/cryptography.md) with our ship's public keys and signed by the ship which sent them. The Ames vane decrypts and verifies the messages using keys in the Jael vane, which are obtained from the [Azimuth Ethereum contract](../../system/identity/reference/azimuth-eth.md) and [Layer 2 data](../../system/identity/concepts/layer2.md) where Urbit ID ownership and keys are recorded. This means the originating `@p` of all messages are cryptographically validated before being passed on to Gall, so the `@p` specified in the `src` field of the `bowl` can be trusted to be correct, which makes checking permissions very simple.
+When messages come in over Ames from other ships on the network, they're [encrypted](../../system/kernel/ames/guides/cryptography.md) with our ship's public keys and signed by the ship which sent them. The Ames vane decrypts and verifies the messages using keys in the Jael vane, which are obtained from the [Azimuth Ethereum contract](../../system/identity/reference/azimuth-eth.md) and [Layer 2 data](../../system/identity/concepts/layer2.md) where Urbit ID ownership and keys are recorded. This means the originating `@p` of all messages are cryptographically validated before being passed on to Gall, so the `@p` specified in the `src` field of the `$bowl` can be trusted to be correct, which makes checking permissions very simple.
 
 You're free to use whatever logic you want for this, but the most common way is to use [wutgar](../../language/hoon/reference/rune/wut.md#wutgar) (`?>`) and [wutgal](../../language/hoon/reference/rune/wut.md#wutgal) (`?<`) runes, which are respectively True and False assertions that crash if they don't evaluate to the expected truth value. To only allow messages from the local ship, you can just do the following in the relevant agent arm:
 
@@ -244,7 +244,7 @@ Mark files:
 
 Permissions:
 
-- The source of incoming messages from remote ships are cryptographically validated by Ames and provided to Gall, which then populates the `src` field of the `bowl` with the `@p`.
+- The source of incoming messages from remote ships are cryptographically validated by Ames and provided to Gall, which then populates the `src` field of the `$bowl` with the `@p`.
 - Permissions are most commonly enforced with wutgar (`?>`) and wutgal (`?<`) assertions in the relevant agent arms.
 - Messages can be restricted to the local ship with `?> =(src.bowl our.bowl)` or to its moons as well with `?> |(=(our src):bowl (moon:title our.bowl src.bowl))`.
 - There are many other ways to handle permissions, it just depends on the needs of the particular agent.

@@ -234,15 +234,15 @@ that is, the first numbers are 0, 1, 4, 9, 16, 25, etc.
 
 For this exercise, you do not need to store these values in a list. Calculate each one but only return the final value.
 
-### Exercise: Output each letter in a `tape` {#exercise-output-each-letter-in-a-tape}
+### Exercise: Output each letter in a `$tape` {#exercise-output-each-letter-in-a-tape}
 
 Produce a gate (generator) which accepts a [tape](../../glossary/tape.md) value and returns a `(list @ud)` containing the ASCII value of each character. Use a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md). The previous code simply modified a value by addition. You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a [list](../../glossary/list.md).
 
-For example, given the `tape` `"hello"`, the generator should return the list `[104 101 108 108 111 ~]`. (A list is structurally a null-terminated tuple, or rightwards-branching cell ending in `~` or `0`.)  We can equivalently write `~[104 101 108 108 111]` which is a special syntax reducing to the same thing.
+For example, given the `$tape` `"hello"`, the generator should return the list `[104 101 108 108 111 ~]`. (A list is structurally a null-terminated tuple, or rightwards-branching cell ending in `~` or `0`.)  We can equivalently write `~[104 101 108 108 111]` which is a special syntax reducing to the same thing.
 
 Two tools that may help:
 
-- You can retrieve the _n_^th^ element in a `tape` using the [++snag](../../language/hoon/reference/stdlib/2b.md#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
+- You can retrieve the _n_^th^ element in a `$tape` using the [++snag](../../language/hoon/reference/stdlib/2b.md#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `++snag` is zero-indexed; it counts from zero).
 - You can join an element to a list using the [`++snoc`](../../language/hoon/reference/stdlib/2b.md#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon

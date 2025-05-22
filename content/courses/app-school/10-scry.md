@@ -12,7 +12,7 @@ Scries are performed with the [dotket](../../language/hoon/reference/rune/dot.md
 
 ![](https://media.urbit.org/docs/arvo/scry-diagram-v2.svg)
 
-A note on `care`s: Cares are most carefully implemented by Clay, where they specify submodules and have tightly defined behaviors. For Gall agents, most of these don't have any special behavior, and are just used to indicate the general kind of data produced by the endpoint, with the exception of the `%x` care:
+A note on `$care`s: Cares are most carefully implemented by Clay, where they specify submodules and have tightly defined behaviors. For Gall agents, most of these don't have any special behavior, and are just used to indicate the general kind of data produced by the endpoint, with the exception of the `%x` care:
 
 #### `%x`
 
@@ -33,7 +33,7 @@ Gall handles `%x` specially, and expects an extra field at the end of the `path`
 '{"groups":{"profile":"Profile Header","profile-bio":"Profile Bio","join-button":"\\"Join me\\" button"}}'
 ```
 
-The majority of Gall agents simply take `%x` `care`s in their scry endpoints, but in principle it's possible for a Gall agent to define a scry endpoint that takes any one of the `care`s listed in the diagram above. An agent's scry endpoints are defined in its `on-peek` arm, which we'll look at next.
+The majority of Gall agents simply take `%x` `$care`s in their scry endpoints, but in principle it's possible for a Gall agent to define a scry endpoint that takes any one of the `$care`s listed in the diagram above. An agent's scry endpoints are defined in its `on-peek` arm, which we'll look at next.
 
 ## Handling scries {#handling-scries}
 
@@ -80,7 +80,7 @@ If it requires a more complex expression to retrieve or compose the data, you ca
 
 Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `mark` so it can easily be converted to JSON when accessed from the web.
 
-In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `vase` in a `unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
+In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `$vase` in a `unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
 
 ## Example {#example}
 
@@ -182,7 +182,7 @@ The agent's `on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's 
   ==
 ```
 
-It defines three scry endpoints, all using a `%x` `care`: `/x/all`, `/x/has/[ship]`, and `/x/get/[ship]`. The first will simply return the entire `(map @p @t)` in the agent's state. The second will check whether the given ship is in the map and produce a `?`. The third will produce the `@t` for the given `@p` if it exists in the map, or else return `[~ ~]` to indicate the data doesn't exist, producing a crash in the dotket expression.
+It defines three scry endpoints, all using a `%x` `$care`: `/x/all`, `/x/has/[ship]`, and `/x/get/[ship]`. The first will simply return the entire `(map @p @t)` in the agent's state. The second will check whether the given ship is in the map and produce a `?`. The third will produce the `@t` for the given `@p` if it exists in the map, or else return `[~ ~]` to indicate the data doesn't exist, producing a crash in the dotket expression.
 
 Let's try it out. Save the agent above as `/app/peeker.hoon` in the `%base` desk, `|commit %base` and start the agent with `|rein %base [& %peeker]`.
 
@@ -249,7 +249,7 @@ dojo: failed to process input
 - Scries will fail if the scry endpoint does not exist, the requested data does not exist, or the data does not nest in the return type specified.
 - Scries can only be performed on the local ship, not on remote ships.
 - Gall scries with an agent name in the `desk` field and without an extra empty element at the beginning of the path will be passed to that agent's `on-peek` arm for handling.
-- Gall scries with a `%x` `care` take a `mark` at the end of the scry `path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
+- Gall scries with a `%x` `$care` take a `mark` at the end of the scry `path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
 - The `on-peek` arm takes a `path` with the `care` in the head and the `path` part of the scry in the tail, like `/x/some/path`.
 - The `on-peek` arm produces a `(unit (unit cage))`. The outer `unit` is null if the scry endpoint does not exist, and the inner `unit` is null if the data does not exist.
 

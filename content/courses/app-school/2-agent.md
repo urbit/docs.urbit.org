@@ -55,15 +55,15 @@ For an agent, the payload will at least contain the bowl, the usual Hoon and `zu
 
 If you recall from the prologue, the whole Arvo operating system works on the basis of a simple transition function `(event, oldState) -> (effects, newState)`. Gall agents also function the same way. Eight of an agent's ten arms produce the same thing, a cell of:
 
-- **Head**: A list of effects called `card`s (which we'll discuss later).
+- **Head**: A list of effects called `$card`s (which we'll discuss later).
 - **Tail**: A new agent core, possibly with a modified payload.
 
 It goes something like this:
 
 1. An event is routed to Gall.
 2. Gall calls the appropriate arm of the agent, depending on the kind of event.
-3. That arm processes the event, returning a list `card`s to be sent off, and the agent core itself with a modified state in the payload.
-4. Gall sends the `card`s off and saves the modified agent core.
+3. That arm processes the event, returning a list `$card`s to be sent off, and the agent core itself with a modified state in the payload.
+4. Gall sends the `$card`s off and saves the modified agent core.
 5. Rinse and repeat.
 
 ## Virtualization {#virtualization}
@@ -108,7 +108,7 @@ A backtick at the beginning is an irregular syntax meaning "prepend with null", 
 [~ 50]
 ```
 
-The next part has `..on-init`, which means "the subject of the `on-init` arm". The subject of the `on-init` arm is our whole agent. In the [transition function](#transition-function) section we mentioned that most arms return a list of effects called `card`s and a new agent core. Since an empty list is `~`, we've created a cell that fits that description.
+The next part has `..on-init`, which means "the subject of the `on-init` arm". The subject of the `on-init` arm is our whole agent. In the [transition function](#transition-function) section we mentioned that most arms return a list of effects called `$card`s and a new agent core. Since an empty list is `~`, we've created a cell that fits that description.
 
 Let's examine our agent. In the dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the dojo, commit the file to the desk with `|commit %base`.
 
@@ -227,9 +227,9 @@ If we again examine our agent core's payload by looking at the tail of `skeleton
   - Scry handler.
   - Failure handler.
 - The state of an agent&mdash;the data it's storing&mdash;lives in the core's payload.
-- Most arms produce a list of effects called `card`s, and a new agent core with a modified state in its payload.
+- Most arms produce a list of effects called `$card`s, and a new agent core with a modified state in its payload.
 
 ## Exercises {#exercises}
 
 - Run through the [Example](#example) yourself on a fake ship if you've not done so already.
-- Have a look at the [`bowl` entry in the Gall data types documentation](../../system/kernel/gall/reference/data-types.md#bowl) if you've not done so already.
+- Have a look at the [`$bowl` entry in the Gall data types documentation](../../system/kernel/gall/reference/data-types.md#bowl) if you've not done so already.

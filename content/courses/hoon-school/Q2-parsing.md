@@ -19,7 +19,7 @@ We could build a simple parser out of a [trap](../../glossary/trap.md) and [++sn
 
 -   A [tape](../../glossary/tape.md) is the string to be parsed.
 -   A `hair` is the position in the text the parser is at, as a cell of column & line, `[p=@ud q=@ud]`.
--   A `nail` is parser input, a cell of `hair` and `tape`.
+-   A `nail` is parser input, a cell of `hair` and `$tape`.
 -   An `edge` is parser output, a cell of `hair` and a `unit` of `hair` and `nail`. (There are some subtleties around failure-to-parse here that we'll defer a moment.)
 -   A `rule` is a parser, a gate which applies a `nail` to yield an `edge`.
 
@@ -29,9 +29,9 @@ A substantial swath of the standard library is built around parsing for various 
 
 There is a [full guide on parsing](../../language/hoon/guides/parsing.md) which goes into more detail than this quick overview.
 
-## Scanning Through a `tape` {#scanning-through-a-tape}
+## Scanning Through a `$tape` {#scanning-through-a-tape}
 
-[++scan](../../language/hoon/reference/stdlib/4g.md#scan) parses a `tape` or crashes, simple enough. It will be our workhorse. All we really need to know in order to use it is how to build a `rule`.
+[++scan](../../language/hoon/reference/stdlib/4g.md#scan) parses a `$tape` or crashes, simple enough. It will be our workhorse. All we really need to know in order to use it is how to build a `rule`.
 
 Here we will preview using [++shim](../../language/hoon/reference/stdlib/4f.md#shim) to match characters with in a given range, here lower-case. If you change the character range, e.g. putting `' '` in the `++shim` will span from ASCII `32`, `' '` to ASCII `122`, `'z'`.
 
@@ -51,14 +51,14 @@ The `rule`-building system is vast and often requires various components togethe
 
 ### `rule`s to parse fixed strings {#rules-to-parse-fixed-strings}
 
-- [++just](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `tape` of the input `nail`.
+- [++just](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `$tape` of the input `nail`.
 
     ```hoon
     > ((just 'a') [[1 1] "abc"])
     [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
     ```
 
-- [++jest](../../language/hoon/reference/stdlib/4f.md#jest) matches a `cord`. It takes an input `cord` and produces a `rule` that attempts to match that `cord` against the beginning of the input.
+- [++jest](../../language/hoon/reference/stdlib/4f.md#jest) matches a `$cord`. It takes an input `$cord` and produces a `rule` that attempts to match that `$cord` against the beginning of the input.
 
     ```hoon
     > ((jest 'abc') [[1 1] "abc"])

@@ -6,7 +6,7 @@ In this lesson we'll cover the last agent arm we haven't touched on yet: `on-fai
 
 When crashes or errors occur in certain cases, Gall passes them to an agent's `on-fail` arm for handling. This arm is very seldom used, almost all agents leave it for `default-agent` to handle, which just prints the error message to the terminal. While you're unlikely to use this arm, we'll briefly go over its behavior for completeness.
 
-`on-fail` takes a `term` error message and a `tang`, typically containing a stack trace, and often with additional messages about the error. If it weren't delegated to `on-fail:def`, it would begin with:
+`on-fail` takes a `$term` error message and a `$tang`, typically containing a stack trace, and often with additional messages about the error. If it weren't delegated to `on-fail:def`, it would begin with:
 
 ```hoon
 ++  on-fail
@@ -20,15 +20,15 @@ Gall calls `on-fail` in four cases:
 - When there's a crash in the `on-arvo` arm.
 - When there's a crash in the `on-agent` arm.
 - When there's a crash in the `on-leave` arm.
-- When an agent produces a `%watch` card but the `wire`, ship, agent and `path` specified are the same as an existing subscription.
+- When an agent produces a `%watch` card but the `$wire`, ship, agent and `path` specified are the same as an existing subscription.
 
-For an `on-arvo` failure, the `term` will always be `%arvo-response`, and the `tang` will contain a stack trace.
+For an `on-arvo` failure, the `$term` will always be `%arvo-response`, and the `$tang` will contain a stack trace.
 
-For `on-agent`, the `term` will be the head of the `sign` (`%poke-ack`, `%fact`, etc). The `tang` will contain a stack trace and a message of "closing subscription".
+For `on-agent`, the `$term` will be the head of the `$sign` (`%poke-ack`, `%fact`, etc). The `$tang` will contain a stack trace and a message of "closing subscription".
 
-For an `on-leave` failure, the `term` will always be `%leave`, and the `tang` will contain a stack trace.
+For an `on-leave` failure, the `$term` will always be `%leave`, and the `$tang` will contain a stack trace.
 
-For a `%watch` failure, the `term` will be `%watch-not-unique`. The `tang` will include a message of "subscribe wire not unique", as well as the agent name, the `wire`, the target ship and the target agent.
+For a `%watch` failure, the `$term` will be `%watch-not-unique`. The `$tang` will include a message of "subscribe wire not unique", as well as the agent name, the `$wire`, the target ship and the target agent.
 
 How you might handle these cases (if you wanted to manually handle them) depends on the purpose of your particular agent.
 
@@ -68,7 +68,7 @@ Recall that the build system will implicitly compose any discrete expressions. I
 .....
 ```
 
-We can then add the helper core below the agent core. The helper core is most typically a door like the agent core, also with the `bowl` as its sample. This is just so any functions you define in it have ready access to the `bowl`. It would look like:
+We can then add the helper core below the agent core. The helper core is most typically a door like the agent core, also with the `$bowl` as its sample. This is just so any functions you define in it have ready access to the `$bowl`. It would look like:
 
 ```hoon
 |_  =bowl:gall
@@ -84,15 +84,15 @@ Back in the lustar virtual arm of the agent core, we give it a deferred expressi
 hc  ~(. +>  bowl)
 ```
 
-To get to the helper core we composed from within the door, we use a [censig](../../language/hoon/reference/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
+To get to the helper core we composed from within the door, we use a [censig](../../language/hoon/reference/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `$bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
 
 ## Summary {#summary}
 
 - `on-fail` is called in certain cases of crashes or failures.
 - Crashes in the `on-agent`, `on-arvo`, or `on-watch` arms will trigger a call to `on-fail`.
-- A non-unique `%watch` `card` will also trigger a call to `on-fail`.
+- A non-unique `%watch` `$card` will also trigger a call to `on-fail`.
 - `on-fail` is seldom used - most agents just leave it to `%default-agent` to handle, which just prints the error to the terminal.
 - A helper core is an extra core of useful functions, composed into the subject of the agent core.
 - Helper cores are typically placed below the agent core, and composed with a tisgal (`=<`) rune.
-- The helper core is typically a door with the `bowl` as a sample.
+- The helper core is typically a door with the `$bowl` as a sample.
 - The helper core is typically given a name of `hc` or `do` in the lustar virtual arm of the agent core.

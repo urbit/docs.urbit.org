@@ -229,7 +229,7 @@ Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), on
 
 (There are several others tools listed [on that page](../../language/hoon/reference/stdlib/2a.md) which may be potentially useful to you.)
 
-A [vase](../../glossary/vase.md) is a pair of type and value, such as that returned by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar). A `vase` is useful when transmitting data in a way that may lose its type information.
+A [vase](../../glossary/vase.md) is a pair of type and value, such as that returned by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar). A `$vase` is useful when transmitting data in a way that may lose its type information.
 
 ### Containers of Containers {#containers-of-containers}
 

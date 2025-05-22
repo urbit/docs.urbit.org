@@ -35,7 +35,7 @@ Two fakeships can communicate with each other on the same machine, but have no a
 
 Before beginning, you'll need to get a development ship running and configure an appropriate editor. See the [Environment Setup](../environment.md) guide for details.
 
-Once you have a `dojo>` prompt, the system is ready to go and waiting on input.
+Once you have a "...dojo>" prompt, the system is ready to go and waiting on input.
 
 ## Getting started {#getting-started}
 
@@ -63,7 +63,7 @@ $
 Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is ~zod, then you can restart the ship by typing:
 
 ```hoon
-urbit zod
+./urbit zod
 ```
 
 You've already used a standard library function to produce one value, in the Dojo. Now that your ship is running again, let's try another. Enter the number `17`.
@@ -102,7 +102,7 @@ It is highly advisable for you to learn these pronunciations, as the documentati
 | `ace` | `␣`        |
 | `gap` | `␣␣`, `\n` |
 | `pat` | `@`        |
-| `bar` | `\|`        |
+| `bar` | `\|`       |
 | `gar` | `>`        |
 | `sel` | `[`        |
 | `bas` | `\`        |
@@ -134,4 +134,4 @@ It is highly advisable for you to learn these pronunciations, as the documentati
 | `gal` | `<`        |
 | `par` | `)`        |
 
-Note that the list includes two separate whitespace forms: `ace` for a single space `␣`; `gap` is either two or more spaces `␣␣` or a line break `\n`. In Hoon, the only whitespace significance is the distinction between `ace` and `gap`—i.e., the distinction between one space and more than one.
+Note that the list includes two separate whitespace forms: `ace` for a single space `␣`; `gap` is either two or more spaces `␣␣` or a line break `\n`. In Hoon, the only whitespace significance is the distinction between `ace` and `gap`: the distinction between "one space" and "more than one space".

@@ -42,13 +42,13 @@ This will take a couple of minutes, during which you should see a block of boot 
 
 ### Fake ship networking {#fake-ship-networking}
 
-Fake ships on the same machine can automatically talk to one another. Having created a fakezod, you can create a fake ~bus the same way:
+Fake ships on the same machine can automatically talk to one another. Having created a fake ~zod, you can create a fake ~bus the same way:
 
 ```
 ./urbit -F bus
 ```
 
-Now in the fakezod's dojo, try:
+Now in the fake ~bus's dojo, try:
 
 ```
 > |hi ~bus
@@ -86,7 +86,7 @@ cp -r zod.new zod
 ./urbit zod
 ```
 
-Now whenever you want a fresh fakezod, you can just shut it down and do:
+Now whenever you want a new fake ~zod, you can just shut it down and do:
 
 ```
 rm -r zod

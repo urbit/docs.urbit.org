@@ -546,7 +546,7 @@ The `on-agent` arm will print whether a subscription request succeeded or failed
 
 ### Trying it out {#trying-it-out}
 
-We're going to try this between two different ships. The first ship will be the usual fakezod. We'll add both `mark` files, the `/sur` file, and the `todo.hoon` agent to the `%base` desk of our fakezod, putting them in the following directories:
+We're going to try this between two different ships. The first ship will be the usual fakeship. We'll add both `mark` files, the `/sur` file, and the `todo.hoon` agent to the `%base` desk of our fakeship, putting them in the following directories:
 
 ```
 base

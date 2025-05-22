@@ -29,7 +29,7 @@ Once you have completed Hoon School, you should work through [App School](../app
 
 An Urbit ship is a particular realization of an _identity_ and an _event log_ (state). Both of these are necessary.
 
-Since live network identities ("liveships") are finite, scarce, and valuable, most developers prefer to write new code using fake identities ("fakeships" or "fakezods"). A fakeship is also different from a comet, which is an unkeyed liveship.
+Since live network identities ("live ships") are finite, scarce, and valuable, most developers prefer to write new code using fake identities ("fakeships"). A fakeship is also different from a comet, which is an unkeyed live ship.
 
 Two fakeships can communicate with each other on the same machine, but have no awareness of the broader Urbit network. We won't need to use this capability in Hoon School Live, but it will be helpful later when you start developing networked apps.
 

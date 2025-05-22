@@ -231,7 +231,7 @@ Unfortunately `/` [fas](../../language/hoon/reference/rune/fas.md) runes don't w
     =playing-cards -build-file /===/lib/playing-cards/hoon
     ```
 
-    We then invoke it using the _entropy_ or system randomness. (This is an unpredictable value we will use when we want a process to be random. We will discuss it in detail when we talk about [subject-oriented programming](O-subject.md).)
+    We then invoke it using the "entropy" or system randomness. (This is an unpredictable value we will use when we want a process to be random. We will discuss it in detail when we talk about [subject-oriented programming](O-subject.md).)
 
     ```hoon
     > =deck (shuffle-deck:playing-cards make-deck:playing-cards eny)
@@ -324,7 +324,7 @@ A filesystem is responsible for providing access to blobs of data somewhere on a
 
 Files are identified by a _file name_, which is typically a short descriptor like `Waterfall Visit 5.jpg` (if produced by a human) or `DSC_54694.jpg` (if produced by a machine).
 
-Files are located using the _path_ or _file path_. Colloquially, this is what we mean when we ask which folder or directory a file is located in. It's an address that users and programs can use to uniquely locate a particular file, even if that file has the same name as another file.
+Files are located using the "path" or "file path". Colloquially, this is what we mean when we ask which folder or directory a file is located in. It's an address that users and programs can use to uniquely locate a particular file, even if that file has the same name as another file.
 
 An Earth filesystem and path orients itself around some key metaphor:
 - Windows machines organize the world by drive, e.g. `C:\`.

@@ -339,7 +339,7 @@ It's important to notice that the sample, `balance`, is stored as part of the [d
 
 ### Deferred Computations {#deferred-computations}
 
-_Deferred computation_ means that parts of the [subject](../../glossary/subject.md) have changes that may be underdetermined at first. These must be calculated later using the appropriate [runes](../../glossary/rune.md) as new or asynchronous information becomes available.
+"Deferred computation" means that parts of the [subject](../../glossary/subject.md) have changes that may be underdetermined at first. These must be calculated later using the appropriate [runes](../../glossary/rune.md) as new or asynchronous information becomes available.
 
 For instance, a network service call may take a while or may fail. How should the calculation deal with these outcomes?  In addition, the successful result of the network data is unpredictable in content (but should not be unpredictable in format!).
 
@@ -476,7 +476,7 @@ We get a different value from the same generator between runs, something that is
 
 ## Scrying (In Brief) {#scrying-in-brief}
 
-A _peek_ or a [scry](../../glossary/scry.md) is a request to Arvo to tell you something about the state of part of the Urbit OS. Scries are used to determine the state of an agent or a vane. The `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) rune sends the scry request to a particular vane with a certain _care_ or type of scry. The request is then routed to a particular path in that [vane](../../glossary/vane.md). Scries are discused in detail in [App School](../app-school/10-scry.md). We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and [agent](../../glossary/agent.md) state.
+A "peek" or a [scry](../../glossary/scry.md) is a request to Arvo to tell you something about the state of part of the Urbit OS. Scries are used to determine the state of an agent or a vane. The `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) rune sends the scry request to a particular vane with a certain "care" or type of scry. The request is then routed to a particular path in that [vane](../../glossary/vane.md). Scries are discused in detail in [App School](../app-school/10-scry.md). We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and [agent](../../glossary/agent.md) state.
 
 ### `%c` Clay {#c-clay}
 

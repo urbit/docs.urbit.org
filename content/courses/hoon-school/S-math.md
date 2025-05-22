@@ -506,9 +506,9 @@ Date and time calculations are challenging for a number of reasons: What is the 
 
 One particularly complicating factor is that there is no [Year Zero](https://en.wikipedia.org/wiki/Year_zero); 1 B.C. is immediately followed by A.D. 1. (The date systems used in astronomy [differ](https://en.wikipedia.org/wiki/Julian_day#cite_note-7) from standard time in this regard, for instance.)
 
-In computing, absolute dates are calculated with respect to some base value; we refer to this as the _epoch_. Unix/Linux systems count time forward from Thursday 1 January 1970 00:00:00 UT, for instance. Windows systems count in 10⁻⁷ s intervals from 00:00:00 1 January 1601. The Urbit epoch is `~292277024401-.1.1`, or 1 January 292,277,024,401 B.C.; since values are unsigned integers, no date before that time can be represented.
+In computing, absolute dates are calculated with respect to some base value; we refer to this as the "epoch". Unix/Linux systems count time forward from Thursday 1 January 1970 00:00:00 UT, for instance. Windows systems count in 10⁻⁷ s intervals from 00:00:00 1 January 1601. The Urbit epoch is `~292277024401-.1.1`, or 1 January 292,277,024,401 B.C.; since values are unsigned integers, no date before that time can be represented.
 
-Time values, often referred to as _timestamps_, are commonly represented by the [UTC](https://www.timeanddate.com/time/aboututc.html) value. Time representations are complicated by offset such as timezones, regular adjustments like daylight savings time, and irregular adjustments like leap seconds. (Read [Dave Taubler's excellent overview](https://levelup.gitconnected.com/why-is-programming-with-dates-so-hard-7477b4aeff4c) of the challenges involved with calculating dates for further considerations, as well as [Martin Thoma's “What Every Developer Should Know About Time” (PDF)](https://zenodo.org/record/1443533/files/2018-10-06-what-developers-should-know-about-time.pdf).)
+Time values, often referred to as "timestamps", are commonly represented by the [UTC](https://www.timeanddate.com/time/aboututc.html) value. Time representations are complicated by offset such as timezones, regular adjustments like daylight savings time, and irregular adjustments like leap seconds. (Read [Dave Taubler's excellent overview](https://levelup.gitconnected.com/why-is-programming-with-dates-so-hard-7477b4aeff4c) of the challenges involved with calculating dates for further considerations, as well as [Martin Thoma's “What Every Developer Should Know About Time” (PDF)](https://zenodo.org/record/1443533/files/2018-10-06-what-developers-should-know-about-time.pdf).)
 
 ### Hoon Operations {#hoon-operations}
 
@@ -1077,7 +1077,7 @@ A [hash function](https://en.wikipedia.org/wiki/Hash_function) is a tool which c
 3. **Integrity verification**. By comparing the hash of data to its expected hash, you can verify that two copies of data are equivalent (such as a downloaded executable file). The [MD5](https://en.wikipedia.org/wiki/MD5) hash algorithm is frequently used for this purpose as [`md5sum`](https://en.wikipedia.org/wiki/Md5sum).
 4. **Data lookup**. [Hash tables](https://en.wikipedia.org/wiki/Hash_table) are one way to implement a key→value mapping, such as the functionality offered by Hoon's [++map](../../language/hoon/reference/stdlib/2o.md#map).
 
-Theoretically, since the number of fixed-length hashes are finite, an infinite number of possible programs can yield any given hash. This is called a [_hash collision_](https://en.wikipedia.org/wiki/Hash_collision), but for many practical purposes such a collision is extremely unlikely.
+Theoretically, since the number of fixed-length hashes are finite, an infinite number of possible programs can yield any given hash. This is called a ["hash collision"](https://en.wikipedia.org/wiki/Hash_collision), but for many practical purposes such a collision is extremely unlikely.
 
 ### Hoon Operations {#hoon-operations}
 

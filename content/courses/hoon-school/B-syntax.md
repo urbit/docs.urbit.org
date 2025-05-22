@@ -108,7 +108,7 @@ Convert between some of the given auras at the [Dojo](../../glossary/dojo.md) pr
 
 ### Cells {#cells}
 
-A [cell](../../glossary/cell.md) is a pair of nouns. Cells are traditionally written using square brackets:  `[]`. For now, just recall the square brackets and that cells are always _pairs_ of values.
+A [cell](../../glossary/cell.md) is a pair of nouns. Cells are traditionally written using square brackets:  `[]`. For now, just recall the square brackets and that cells are always "pairs" of values.
 
 ```hoon
 [1 2]

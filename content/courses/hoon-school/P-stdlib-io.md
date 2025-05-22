@@ -19,7 +19,7 @@ We frequently need to convert from text to data, and between different text-base
 - How can we evaluate [Nock](../../glossary/nock.md) expressions?
     - [++mink](../../language/hoon/reference/stdlib/4n.md#mink)
 
-(If you see a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune in the code, it's similar to a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis), but produces what's called a [_wet gate_](R-metals.md).)
+(If you see a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune in the code, it's similar to a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis), but produces what's called a ["wet gate"](R-metals.md).)
 
 The `++html` core of the standard libary contains some additional important tools for working with web-based data, such as [MIME types](https://en.wikipedia.org/wiki/Media_type) and [JSON strings](https://en.wikipedia.org/wiki/JSON).
 
@@ -150,7 +150,7 @@ This generator requires a path argument in its sample and optionally accepts a [
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a _peek_ or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md). Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc. In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup. The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a "peek" or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md). Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc. In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup. The type of this lookup is `+$arch`, and the location of the file or directory is given by `arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~

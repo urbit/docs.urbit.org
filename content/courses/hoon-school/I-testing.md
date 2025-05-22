@@ -14,7 +14,7 @@ When you produce software, how much confidence do you have that it does what you
 
 ### Fences {#fences}
 
-_Fences_ are barriers employed to block program execution if the state isn’t adequate to the intended task. Typically, these are implemented with `assert` or similar enforcement. In Hoon, this means `?>` [wutgar](../../language/hoon/reference/rune/wut.md#wutgar), `?<` [wutgal](../../language/hoon/reference/rune/wut.md#wutgal), and `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig), or judicious use of `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) and `^+` [ketlus](../../language/hoon/reference/rune/ket.md#ketlus). For conditions that must succeed, the failure branch in Hoon should be `!!`, which crashes the program.
+"Fences" are barriers employed to block program execution if the state isn’t adequate to the intended task. Typically, these are implemented with `assert` or similar enforcement. In Hoon, this means `?>` [wutgar](../../language/hoon/reference/rune/wut.md#wutgar), `?<` [wutgal](../../language/hoon/reference/rune/wut.md#wutgal), and `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig), or judicious use of `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) and `^+` [ketlus](../../language/hoon/reference/rune/ket.md#ketlus). For conditions that must succeed, the failure branch in Hoon should be `!!`, which crashes the program.
 
 ### Unit Tests {#unit-tests}
 

@@ -58,7 +58,7 @@ There's one drawback to this structure. Suppose either an agent on a remote ship
 
 The only way to resynchronize their state with ours is to discard their existing state, refetch the entire initial state once again, and then resubscribe for updates. This might be fine if the state of our agent is small, but it becomes a problem if it's very large. For example, if our agent holds tens of thousands of chat messages, having to resend them all every time anyone has connectivity issues is quite inefficient.
 
-One solution to this is to keep an _update log_. Each update can be tagged with the time it occurred, and stored in our agent's state, separately to the entries. If an agent or web client needs to resynchronize with our agent, it can just request all updates since the last one it received. Our agent is local-only and doesn't have a huge state so it might not be strictly necessary, but we'll use it to demonstrate the approach.
+One solution to this is to keep an "update log". Each update can be tagged with the time it occurred, and stored in our agent's state, separately to the entries. If an agent or web client needs to resynchronize with our agent, it can just request all updates since the last one it received. Our agent is local-only and doesn't have a huge state so it might not be strictly necessary, but we'll use it to demonstrate the approach.
 
 We can define a logged update like so, where the `@` is the update timestamp in milliseconds since the Unix Epoch:
 

@@ -30,7 +30,7 @@ find-fork
 dojo: hoon expression failed
 ```
 
-What's going on?  Formally, a [list](../../glossary/list.md) can be either null or non-null. When the list contains only `~` and no items, it's the null list. Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called _lests_, are [cells](../../glossary/cell.md) in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sublist is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
+What's going on?  Formally, a [list](../../glossary/list.md) can be either null or non-null. When the list contains only `~` and no items, it's the null list. Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called "lests", are [cells](../../glossary/cell.md) in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sublist is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
 
 ```hoon
 [1 [2 [3 [4 ~]]]]
@@ -215,7 +215,7 @@ It's important to remember to include a cast [rune](../../glossary/rune.md) with
 
 ### (Dry) Gate Sample Definitions {#dry-gate-sample-definitions}
 
-By now you've used the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to define several [gates](../../glossary/gate.md). This rune is used to produce a _dry gate_, which has different type-checking and type-inference properties than a _wet gate_ does. We won't explain the distinction until [a later module](R-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
+By now you've used the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to define several [gates](../../glossary/gate.md). This rune is used to produce a "dry gate", which has different type-checking and type-inference properties than a "wet gate" does. We won't explain the distinction until [a later module](R-metals.md)—for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
 The first subexpression after the `|=` defines the [sample](../../glossary/sample.md) type. Any faces used in this definition have the type declared for it in this definition. Consider an addition generator `/gen/sum.hoon`:
 
@@ -327,7 +327,7 @@ You can't see it here either, but the inferred type of `b` in `[| b]` is `^`. Th
 
 ##### The Type Spear
 
-What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with the _type spear_. The `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune takes one subexpression and constructs a [cell](../../glossary/cell.md) from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` [face](../../glossary/face.md) attached. The head of the product cell is the inferred type of the subexpression.
+What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with the "type spear". The `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune takes one subexpression and constructs a [cell](../../glossary/cell.md) from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` [face](../../glossary/face.md) attached. The head of the product cell is the inferred type of the subexpression.
 
 ```hoon
 > !>(15)

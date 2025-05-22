@@ -2,7 +2,7 @@
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS102%20-%20Azimuth.mp4" %}
 
-_This module introduces how Urbit ID is structured and provides practice in converting and working with `@p` identity points. It may be considered optional and skipped if you are speedrunning Hoon School._
+"This module introduces how Urbit ID is structured and provides practice in converting and working with `@p` identity points. It may be considered optional and skipped if you are speedrunning Hoon School."
 
 
 ## A Public-Key Infrastructure {#a-public-key-infrastructure}

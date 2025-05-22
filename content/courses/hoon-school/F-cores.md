@@ -1,6 +1,6 @@
 # 5. Cores
 
-_This module will introduce the key Hoon data structure known as the **core**, as well as ramifications._
+"This module will introduce the key Hoon data structure known as the **core**, as well as ramifications."
 
 The Hoon subject is a noun. One way to look at this noun is to denote each fragment of is as either a computation or data. By strictly separating these two kinds of things, we derive the data structure known within Hoon as a [core](../../glossary/core.md).
 
@@ -139,7 +139,7 @@ You can do even better using _interpolation_:
 
     We're “floating” gate calls until we reach the final iteration of such calls that only produces a value. The `mul n` component of the gate leaves `mul 5` waiting for the final series of terms to be operated upon. The `%=($ n (dec n)))` component expands the expression outwards, as illustrated by `(factorial 4)`. This continues until the expression is not expanded further, at which point the operations work backwards, successively feeding values into the `mul` functions behind them.
 
-    The pyramid-shaped illustration approximates what's happening on the _call stack_, a memory structure that tracks the instructions of the program. In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame. This process continues until a value is produced instead of a function, completing the stack.
+    The pyramid-shaped illustration approximates what's happening on the "call stack", a memory structure that tracks the instructions of the program. In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame. This process continues until a value is produced instead of a function, completing the stack.
 
     - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
 
@@ -283,7 +283,7 @@ Hoon (and Nock) very carefully bounds the known context of any part of the progr
 
 For instance, when we first composed generators, we made what are called “naked generators”:  that is, they do not have access to any information outside of the base subject (Arvo, Hoon, and `%zuse`) and their [sample](../../glossary/sample.md) (arguments). Other [generators](../../glossary/generator.md) (such as `%say` generators, described below) can have more contextual information, including random number generators and optional arguments, passed to them to form part of their subject.
 
-Cores have two kinds of values attached:  [arms](../../glossary/arm.md) and _legs_, both called limbs. Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations. Legs are limbs which store data (with e.g. `=/` tisfas).
+Cores have two kinds of values attached:  [arms](../../glossary/arm.md) and "legs", both called limbs. Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations. Legs are limbs which store data (with e.g. `=/` tisfas).
 
 ### Arms {#arms}
 
@@ -361,7 +361,7 @@ A library (a file in `/lib`) is typically structured as a `|%` [barcen](../../la
 
 ### Legs {#legs}
 
-A _leg_ is a data value. They tend to be trivial but useful ways to pin constants. `=/` tisfas values are legs, for instance.
+A "leg" is a data value. They tend to be trivial but useful ways to pin constants. `=/` tisfas values are legs, for instance.
 
 ```hoon
 > =/  a  1
@@ -373,7 +373,7 @@ Under the hood, legs and arms are distinguished by the Nock instructions used in
 
 ### Recalculating a Limb {#recalculating-a-limb}
 
-Arms and legs are both _limbs_. Either one can be replaced in a given subject. This turns out to be very powerful, and permits Hoon to implement gates (functions) in a mathematically rigorous way, among other applications.
+Arms and legs are both "limbs". Either one can be replaced in a given subject. This turns out to be very powerful, and permits Hoon to implement gates (functions) in a mathematically rigorous way, among other applications.
 
 Often a leg of the subject is produced with its value unchanged. But there is a way to produce a modified version of the leg as well. To do so, we use the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune:
 
@@ -406,7 +406,7 @@ which can equivalently be expressed as
 $(counter (add counter 1), sum (add sum counter))
 ```
 
-This statement means that we recalculate the `$` buc arm of the current subject with the indicated changes. But what is `$` buc?  `$` buc is the _default arm_ for many core structures, including `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate cores and `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) trap cores.
+This statement means that we recalculate the `$` buc arm of the current subject with the indicated changes. But what is `$` buc?  `$` buc is the "default arm" for many core structures, including `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate cores and `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) trap cores.
 
 ### What is a Gate? {#what-is-a-gate}
 
@@ -646,7 +646,7 @@ Before finishing the lesson let's unbind ten:
 
 ### Recursion {#recursion}
 
-_Recursion_ refers to a return to the same logical point in a program again and again. It's a common pattern for solving certain problems in most programming languages, and Hoon is no exception.
+"Recursion" refers to a return to the same logical point in a program again and again. It's a common pattern for solving certain problems in most programming languages, and Hoon is no exception.
 
 In the following code, the `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) serves as the point of recursion, and the return to that point (with changes) is indicated by the `%=` centis. All this code does is count to the given number, then return that number.
 
@@ -826,7 +826,7 @@ The last factorial gate we produced looked like this:
 (mul n $(n (dec n)))
 ```
 
-This example isn't a very efficient use of computing resources. The pyramid-shaped illustration from up above approximates what's happening on the _call stack_, a memory structure that tracks the instructions of the program. In our example code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame. This process continues until a value is produced instead of a function, completing the stack.
+This example isn't a very efficient use of computing resources. The pyramid-shaped illustration from up above approximates what's happening on the "call stack", a memory structure that tracks the instructions of the program. In our example code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame. This process continues until a value is produced instead of a function, completing the stack.
 
 ```
                   Push order      Pop order

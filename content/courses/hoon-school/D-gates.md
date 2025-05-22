@@ -1,6 +1,6 @@
 # 3. Gates (Functions)
 
-_This module will teach you how to produce deferred computations for later use, like functions in other languages._
+"This module will teach you how to produce deferred computations for later use, like functions in other languages."
 
 ## A Spoonful of Sugar {#a-spoonful-of-sugar}
 
@@ -87,7 +87,7 @@ The word "function" is used in various ways, but let's start by talking about th
 
 That output value depends solely upon input value(s) is an important property of functions. This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and it's one of the key ingredients to building a secure Urbit stack.
 
-Functions are implemented in Hoon with a special kind of [core](../../glossary/core.md) called a _gate_. In this lesson you'll learn what a gate is and how a gate represents a function. (We _won't_ talk about what a core is quite yet.)  Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of [core](../../glossary/core.md) called a "gate". In this lesson you'll learn what a gate is and how a gate represents a function. (We _won't_ talk about what a core is quite yet.)  Along the way you'll build some example gates of your own.
 
 ### Building a Gate {#building-a-gate}
 
@@ -221,7 +221,7 @@ The second subexpression after the `|=` bartis rune is used to build the gate's 
 
 How can we control what kind of value a gate returns?  Many programming languages (such as C and Java) are _extremely_ concerned about this specification. Others, like Python and MATLAB, are _laissez-faire_. Hoon tends to be strict, but leaves some discretion over _how_ strict to you, the developer.
 
-Remember `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep)?  We will use `^-` as a _fence_, a way of making sure only data matching the appropriate structure get passed on.
+Remember `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep)?  We will use `^-` as a "fence", a way of making sure only data matching the appropriate structure get passed on.
 
 ```hoon
 ::  Confirm whether a value is greater than one by return 1 (if no) or 0 (if yes).
@@ -234,7 +234,7 @@ Remember `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep)?  We wi
 
 **This is the correct way to define a gate.**  Frequent annotation of type with `^-` kethep fences is _essential_ to producing good Hoon code. From this point forward in Hoon School, we will hew to this standard.
 
-In technical language, we describe Hoon as a _statically typed_ language. This means that it enforces type constraints on all values very aggressively. If you are used to a dynamic language like Python or Ruby, this will seem very restrictive at first. The flip side is that once your code compiles correctly, you will often find that it is very much along the way towards being a working correct product.
+In technical language, we describe Hoon as a "statically typed" language. This means that it enforces type constraints on all values very aggressively. If you are used to a dynamic language like Python or Ruby, this will seem very restrictive at first. The flip side is that once your code compiles correctly, you will often find that it is very much along the way towards being a working correct product.
 
 
 ## Coordinating Files {#coordinating-files}
@@ -257,7 +257,7 @@ Contrast that apparently empty folder with what the `+ls %` command shows you fr
 app/ desk/bill gen/ lib/ mar/ sur/ sys/ ted/
 ```
 
-Urbit organizes its internal view of data and files as _desks_, which are associated collections of code and data. These are not visible to the host operating system unless you explicitly mount them, and changes on one side are not made clear to the other until you “commit” them. (Think of Dropbox, except that you have to explicitly synchronize to see changes somewhere else.)
+Urbit organizes its internal view of data and files as "desks", which are associated collections of code and data. These are not visible to the host operating system unless you explicitly mount them, and changes on one side are not made clear to the other until you “commit” them. (Think of Dropbox, except that you have to explicitly synchronize to see changes somewhere else.)
 
 Inside of your ship (“Mars”), you can mount a particular desk to the host operating system (“Earth”):
 

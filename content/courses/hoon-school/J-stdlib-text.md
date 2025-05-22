@@ -309,7 +309,7 @@ Given a string of text, what can you do with it?
 
 #### Tokenize/Parse
 
-To _tokenize_ text is to break it into pieces according to some rule. For instance, to count words one needs to break at some delimiter.
+To "tokenize" text is to break it into pieces according to some rule. For instance, to count words one needs to break at some delimiter.
 
 ```
 "the sky above the port was the color of television tuned to a dead channel"

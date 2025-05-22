@@ -95,7 +95,7 @@ Most of any possible tree will be unoccupied for any actual data structure. For 
 
 ### Tuples as Trees {#tuples-as-trees}
 
-What we've been calling a running cell would more conventionally be named a _tuple_, so we'll switch to that syntax now that the idea is more familiar. Basically it's a cell series which doesn't necessarily end in `~`.
+What we've been calling a running cell would more conventionally be named a "tuple", so we'll switch to that syntax now that the idea is more familiar. Basically it's a cell series which doesn't necessarily end in `~`.
 
 Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form for a null-terminated tuple or list), what tree address does each value occupy?
 
@@ -150,7 +150,7 @@ We have used lists incidentally. A [list](../../glossary/list.md) is an ordered 
 
 (Notice that all values are converted to the specified [aura](../../glossary/aura.md), in this case the empty aura.)
 
-A `list` is built with the `list` mold. A `list` is actually a _mold builder_, a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer:  it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `list` is built with the `list` mold. A `list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer:  it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
 
 ```hoon
 > `(list)`~['a' %b 100]
@@ -162,7 +162,7 @@ A `list` is built with the `list` mold. A `list` is actually a _mold builder_, a
 ~[~[1 2 3] ~[4 5 6]]
 ```
 
-True `list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the _head_ is the first element while the _tail_ is everything else. If something has the same _structure_ as a `list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `list`. In such cases, you'll need to explicitly mark it as such:
+True `list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `list`. In such cases, you'll need to explicitly mark it as such:
 
 ```hoon
 > [3 4 5 ~]
@@ -218,7 +218,7 @@ Much like relative directions, one can also state “left, left, right, left” 
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-lark.png)
 
-Lark notation can locate a position in a tree of any size. However, it is most commonly used to grab the head or tail of a cell, e.g. in the _type spear_ (on which [more later](M-typecheck.md)):
+Lark notation can locate a position in a tree of any size. However, it is most commonly used to grab the head or tail of a cell, e.g. in the "type spear" (on which [more later](M-typecheck.md)):
 
 ```hoon
 -:!>('hello Mars')
@@ -472,7 +472,7 @@ The first `b`, `b=[a=1 b=2 c=3]`, is skipped; so the entire head of the subject 
 
 How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=14 15]]`? In each case you should use a wing.
 
-We say that the inner face has been _shadowed_ when an outer name obscures it.
+We say that the inner face has been "shadowed" when an outer name obscures it.
 
 If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
 

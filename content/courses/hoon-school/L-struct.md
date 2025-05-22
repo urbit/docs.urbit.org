@@ -345,7 +345,7 @@ A named tuple is a structured collection of values with [faces](../../glossary/f
 
 ### Structure Mode {#structure-mode}
 
-Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call _noun mode_ (or _normal mode_). However, sample definitions and `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc) mold specification arms evaluate in what is called _structure mode_. (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
+Most Hoon expressions evaluate normally (that's what “normal” means), what we'll call "noun mode" (or "normal mode"). However, sample definitions and `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc) mold specification arms evaluate in what is called "structure mode". (You may occasionally see this the older term “spec mode”.)  Structure mode expressions use a similar syntax to regular Hoon expressions but create structure definitions instead.
 
 For instance, in eval mode if you use the irregular form `p=1` this is an irregular form of the `^=` [kettis](../../language/hoon/reference/rune/ket.md#kettis) rune. This is one way to define a variable using a `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus); these are equivalent statements:
 

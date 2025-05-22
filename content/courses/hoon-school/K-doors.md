@@ -172,7 +172,7 @@ Basically, whenever you use `%-` [cenhep](../../language/hoon/reference/rune/cen
 
 A core is a [cell](../../glossary/cell.md) of code and data, called `[battery payload]`. The [battery](../../glossary/battery.md) contains a series of arms, and the [payload](../../glossary/payload.md) contains all the data necessary to run those arms correctly.
 
-A _door_ is a core with a sample. That is, a door is a core whose payload is a cell of [sample](../../glossary/sample.md) and context:  `[sample context]`. A door's overall sample can affect how its gate-building arms work.
+A "door" is a core with a sample. That is, a door is a core whose payload is a cell of [sample](../../glossary/sample.md) and context:  `[sample context]`. A door's overall sample can affect how its gate-building arms work.
 
 ```
         door
@@ -913,7 +913,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 
 ## A Bit More on Cores {#a-bit-more-on-cores}
 
-The `|^` [barket](../../language/hoon/reference/rune/bar.md#barket) rune is an example of what we can call a _convenience rune_, similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner). `|^` [barket](../../language/hoon/reference/rune/bar.md#barket) produces a core with _at least_ a `$` buc arm and computes it immediately, called a _cork_. (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
+The `|^` [barket](../../language/hoon/reference/rune/bar.md#barket) rune is an example of what we can call a "convenience rune", similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner). `|^` [barket](../../language/hoon/reference/rune/bar.md#barket) produces a core with _at least_ a `$` buc arm and computes it immediately, called a "cork". (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
 
 This code calculates the volume of a cylinder, _A=πr²h_.
 
@@ -967,7 +967,7 @@ You can also create a trap for later use with the `|.` [bardot](../../language/h
 
 What is a [gate](../../glossary/gate.md)?  It is a [door](../../glossary/door.md) with only one arm `$` buc, and whenever you invoke it then that default arm's expression is referred to and evaluated.
 
-A _gate_ and a _trap_ are actually very similar:  a gate simply has a [sample](../../glossary/sample.md) (and can actively change when evaluated or via a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
+A "gate" and a "trap" are actually very similar:  a gate simply has a [sample](../../glossary/sample.md) (and can actively change when evaluated or via a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
 
 #### Example:  Hoon Workbook
 

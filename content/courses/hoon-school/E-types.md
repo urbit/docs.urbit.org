@@ -1,6 +1,6 @@
 # 4. Molds (Types)
 
-_This module will introduce the Hoon type system and illustrate how type checking and type inference work._
+"This module will introduce the Hoon type system and illustrate how type checking and type inference work."
 
 ## The Hoon Type System {#the-hoon-type-system}
 
@@ -12,7 +12,7 @@ A type is ordinarily understood to be a set of values. Examples: the set of all 
 
 Type systems provide type safety, in part by making sure functions produce values of the correct type. When you write a function whose product is intended to be an atom, it would be nice to know that the function is guaranteed to produce an atom. Hoon's type system provides such guarantees with _type checking_ and _type inference_.
 
-A _type_ is really a rule for interpretation. But for our Hoonish purposes, it's rather too broad a notion and we need to clarify some different kinds of things we could refer to as “type”. It is instructive for learners to distinguish three kinds of types in Hoon:
+A "type" is really a rule for interpretation. But for our Hoonish purposes, it's rather too broad a notion and we need to clarify some different kinds of things we could refer to as “type”. It is instructive for learners to distinguish three kinds of types in Hoon:
 
 1. Atoms:  values with auras.
 2. [Molds](../../glossary/mold.md):  structures. Think of cells, lists, and sets.
@@ -48,9 +48,9 @@ The `?` Dojo operator shows both the product and the inferred type of an express
 
 `@ud` is the inferred type of `15` (and of course `15` is the product). The `@` is for “atom” and the `ud` is for “unsigned decimal”. The letters after the `@` indicate the “aura” of the atom.
 
-One important role played by the type system is to make sure that the output of an expression is of the intended data type. If the output is of the wrong type then the programmer did something wrong. How does Hoon know what the intended data type is?  The programmer must specify this explicitly by using a _cast_. To cast for an unsigned decimal atom, you can use the `^-` kethep rune along with the `@ud` from above.
+One important role played by the type system is to make sure that the output of an expression is of the intended data type. If the output is of the wrong type then the programmer did something wrong. How does Hoon know what the intended data type is?  The programmer must specify this explicitly by using a "cast". To cast for an unsigned decimal atom, you can use the `^-` kethep rune along with the `@ud` from above.
 
-What exactly does the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune do?  It compares the inferred type of some expression with the desired cast type. If the expression's inferred type _nests_ under the desired type, then the product of the expression is returned.
+What exactly does the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune do?  It compares the inferred type of some expression with the desired cast type. If the expression's inferred type "nests" under the desired type, then the product of the expression is returned.
 
 Let's try one in the Dojo.
 
@@ -318,7 +318,7 @@ dojo: hoon expression failed
 
 We commonly need to do one of two things with a mold:
 
-1. Validate the shape of a noun (_clam_).
+1. Validate the shape of a noun ("clam").
     
     ```hoon
     > (@ux 0x1000)

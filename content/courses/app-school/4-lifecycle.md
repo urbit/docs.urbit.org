@@ -40,7 +40,7 @@ At some point, you might want to add a third status to represent "in progress", 
 (map title=@t status=?(%todo %done %work))
 ```
 
-The conventional way to keep this managable and reliably differentiate possible state types is to have _versioned states_. The first version of the state would typically be called `state-0`, and its head would be tagged with `%0`. Then, when you change the state's type in an update, you'd add a new structure called `state-1` and tag its head with `%1`. The next would then be `state-2`, and so on.
+The conventional way to keep this managable and reliably differentiate possible state types is to have "versioned states". The first version of the state would typically be called `state-0`, and its head would be tagged with `%0`. Then, when you change the state's type in an update, you'd add a new structure called `state-1` and tag its head with `%1`. The next would then be `state-2`, and so on.
 
 In addition to each of those individual state versions, you'd also define a structure called `versioned-state`, which just contains a union of all the possible states. This way, the vase `on-load` receives can be unpacked to a `versioned-state` type, and then a [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) (`?-`) expression can switch on the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
 

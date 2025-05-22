@@ -6,7 +6,7 @@ App School I is suitable for anyone with an intermediate knowledge of Hoon. If y
 
 ## What are Gall agents? {#what-are-gall-agents}
 
-Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating system. Gall's purpose is to manage userspace applications called _agents_.
+Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating system. Gall's purpose is to manage userspace applications called "agents".
 
 An agent is a piece of software that is primarily focused on maintaining and distributing a piece of state with a defined structure. It exposes an interface that lets programs read, subscribe to, and manipulate the state. Every event happens in an atomic transaction, so the state is never inconsistent. Since the state is permanent, when the agent is upgraded with a change to the structure of the state, the developer provides a migration function from the old state type to the new state type.
 

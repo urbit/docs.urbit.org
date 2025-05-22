@@ -29,7 +29,7 @@ This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of th
 
 ## Binding the Sample {#binding-the-sample}
 
-[_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. _Binding_, an allied process, is used to set the value of some of those arguments permanently.
+["Currying"](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. "Binding", an allied process, is used to set the value of some of those arguments permanently.
 
 If you have a [gate](../../glossary/gate.md) which accepts multiple values in the [sample](../../glossary/sample.md), you can fix one of these. To fix the head of the sample (the first argument), use [++cury](../../language/hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`++curr`](../../language/hoon/reference/stdlib/2n.md#curr).
 

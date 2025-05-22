@@ -2,7 +2,7 @@
 
 In this lesson we're going to look at subscriptions. Subscriptions are probably the most complicated part of writing agents, so there's a fair bit to cover. Before we get into the nitty-gritty details, we'll give a brief overview of Gall's subscription mechanics.
 
-The basic unit of subscriptions is the _path_. An agent will typically define a number of subscription paths in its `on-watch` arm, and other agents (local or remote) can subscribe to those paths. The agent will then send out updates called `%fact`s on one or more of its paths, and _all_ subscribers of those paths will receive them. An agent cannot send out updates to specific subscribers, it can only target its paths. An agent can kick subscribers from its paths, and subscribers can unsubscribe from any paths.
+The basic unit of subscriptions is the "path". An agent will typically define a number of subscription paths in its `on-watch` arm, and other agents (local or remote) can subscribe to those paths. The agent will then send out updates called `%fact`s on one or more of its paths, and _all_ subscribers of those paths will receive them. An agent cannot send out updates to specific subscribers, it can only target its paths. An agent can kick subscribers from its paths, and subscribers can unsubscribe from any paths.
 
 The subscription paths an agent defines can be simple and fixed like `/foo/bar/baz`. They can also be dynamic, containing data of a particular atom aura encoded in certain elements of the path. These paths can therefore be as simple or complex as you need for your particular application.
 

@@ -1,29 +1,25 @@
 # Hoon School
 
-Hoon School is designed to teach you Hoon without assuming you have an extensive programming background. You should be able to following most of it even if you have no programming experience at all yet, though of course experience helps. We strongly encourage you to try out all the examples of each lesson. Hoon School is meant for the beginner, but it's not meant to be skimmed. Each lesson consists of:
+Hoon School is designed to teach you Hoon without assuming you have an extensive programming background. You should be able to following most of it even if you have no programming experience at all yet, though of course experience helps. We strongly encourage you to try out all the examples of each lesson. Hoon School is meant for the beginner, but it's not meant to be skimmed.
 
+Each lesson consists of:
 - **Explanations**, which are prose-heavy commentary on the Hoon fundamentals.
-
 - **Exercises**, which challenge you to clarify or expand your own understanding in practice.
-
 - **Tutorials**, which are line-by-line commentary on example programs.
-
-There are two flavors of Hoon School:  the Hoon School Live cohort class, in which you work through lessons with other students and receive a certification (`%gora`) for completion, and these written Hoon School docs. To sign up for a future cohort of Hoon School Live, please [let us know of your interest here](..) and we'll be in touch.
-
 
 ## Why Hoon? {#why-hoon}
 
 The short version is that Hoon uses Urbit's provisions and protocols to enable very fast application development with shared primitives, sensible affordances, and straightforward distribution.
 
-Urbit consists of an identity protocol (["Azimuth"](../../glossary/azimuth.md), or “Urbit ID”) and a system protocol (["Arvo"](../../glossary/arvo.md), or “Urbit OS”). These two parts work hand-in-hand to build your hundred-year computer.
+Urbit consists of an identity protocol ([Azimuth](../../glossary/azimuth.md), or “Urbit ID”) and a system protocol ([Arvo](../../glossary/arvo.md), or “Urbit OS”). These two parts work hand-in-hand to build your hundred-year computer.
 
-1. **Urbit ID (Azimuth)** is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities. It provides a system of scarce and immutable identities which are cryptographically secure.
+**Urbit ID (Azimuth)** is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities. It provides a system of scarce and immutable identities which are cryptographically secure.
 
-2. **Urbit OS (Arvo)** is an operating system which provides the software for the personal server platform that constitutes the day-to-day usage of Urbit. Arvo works over a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer) [end-to-end-encrypted](https://en.wikipedia.org/wiki/End-to-end_encryption) network to interact with other Urbit ships (or unique instances).
+**Urbit OS (Arvo)** is an operating system which provides the software for the personal server platform that constitutes the day-to-day usage of Urbit. Arvo works over a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer), [end-to-end-encrypted](https://en.wikipedia.org/wiki/End-to-end_encryption) network to interact with other Urbit ships (or unique instances).
 
 Arvo is an axiomatic operating system which restricts itself to pure mathematical functions, making it [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) and [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming). Such strong guarantees require an operating protocol, the [Nock virtual machine](../../language/nock/reference/definition.md), which will be persistent across hardware changes and always provide an upgrade path for necessary changes.
 
-It's hard to write a purely functional operating system on hardware which doesn't make such guarantees, so Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit. [The Hoon overview](../../language/hoon) covers more of the high-level design decisions behind the language, as does [developer ~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
+It's hard to write a purely functional operating system on hardware which doesn't make such guarantees. So Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit. [The Hoon overview](../../language/hoon) covers more of the high-level design decisions behind the language, as does [developer ~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
 
 Hoon School introduces and explains the fundamental concepts you need in order to understand Hoon's semantics. It then introduces a number of key examples and higher-order abstractions which will make you a more fluent Hoon programmer.
 
@@ -31,9 +27,9 @@ Once you have completed Hoon School, you should work through [App School](../app
 
 ## Environment Setup {#environment-setup}
 
-An Urbit ship is a particular realization of an _identity_ and an _event log_ or _state_. Both of these are necessary.
+An Urbit ship is a particular realization of an _identity_ and an _event log_ (state). Both of these are necessary.
 
-Since live network identities (_liveships_) are finite, scarce, and valuable, most developers prefer to write new code using fake identities (_fakeships_ or _fakezods_). A fakeship is also different from a comet, which is an unkeyed liveship.
+Since live network identities ("liveships") are finite, scarce, and valuable, most developers prefer to write new code using fake identities ("fakeships" or "fakezods"). A fakeship is also different from a comet, which is an unkeyed liveship.
 
 Two fakeships can communicate with each other on the same machine, but have no awareness of the broader Urbit network. We won't need to use this capability in Hoon School Live, but it will be helpful later when you start developing networked apps.
 

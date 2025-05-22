@@ -84,7 +84,7 @@ While there are dozens of auras for specialized applications, here are the most 
 | `@ud` | Decimal value | `100.000` | Note that German-style thousands separator is used, `.` dot. |
 | `@ux` | Hexadecimal value | `0x1f.3c4b` |  |
 
-Hearkening back to our discussion of interchangeable representations in Lesson -1, you can see that these are all different-but-equivalent ways of representing the same underlying data values.
+You can see that these are all different-but-equivalent ways of representing the same underlying data values.
 
 There's a special value that recurs in many contexts in Hoon:  `~` sig is the null or zero value.
 

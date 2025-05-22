@@ -58,7 +58,7 @@ Notice that `p.q` has the label `%numbers`. Contrast with:
 
 ---
 
-## `+$` "lusbuc" {#lusbuc}
+## `$` "lusbuc" {#lusbuc}
 
 Produce a structure arm (type definition).
 
@@ -98,7 +98,7 @@ nest-fail
 
 ---
 
-## `++` "luslus" {#luslus}
+## `+` "luslus" {#luslus}
 
 Produce a normal arm.
 

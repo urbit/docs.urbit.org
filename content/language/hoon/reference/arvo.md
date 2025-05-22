@@ -2,7 +2,7 @@
 
 The `arvo.hoon` file primarily contains the basic event processing and routing machinery of Arvo, but it also defines a number of useful types and other functions. Some of these have been excluded as they're obscure types only used internally by Arvo, but the rest are documented below.
 
-## `+$arch` {#arch}
+## `$arch` {#arch}
 
 Node identity
 
@@ -43,7 +43,7 @@ This represents a node in Clay, which may be a file or a directory.
 
 ---
 
-## `++axal` {#axal}
+## `+axal` {#axal}
 
 Fundamental node, recursive
 
@@ -86,7 +86,7 @@ This mold builder creates a representation of a node in Clay like an [`arch`](#a
 
 ---
 
-## `++axil` {#axil}
+## `+axil` {#axil}
 
 Fundamental node
 
@@ -124,7 +124,7 @@ This is the mold builder used to create a representation of a node in Clay. It's
 
 ---
 
-## `+$beak` {#beak}
+## `$beak` {#beak}
 
 Global context
 
@@ -154,7 +154,7 @@ This is the unencoded global path prefix for a node in Clay. It's a triple of a 
 
 ---
 
-## `+$beam` {#beam}
+## `$beam` {#beam}
 
 Global name
 
@@ -178,7 +178,7 @@ An unencoded global path to a node in Clay. The [`beak`](#beak) denotes the [`sh
 
 ---
 
-## `+$bone` {#bone}
+## `$bone` {#bone}
 
 Opaque duct handle
 
@@ -202,7 +202,7 @@ This is used by Ames to identify a particular message flow over the network.
 
 ---
 
-## `+$case` {#case}
+## `$case` {#case}
 
 Global version
 
@@ -238,7 +238,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 ---
 
-## `+$cage` {#cage}
+## `$cage` {#cage}
 
 Marked vase
 
@@ -262,7 +262,7 @@ A pair of a [`mark`](#mark) and a [`vase`](stdlib/4o.md#vase) (type-value pair).
 
 ---
 
-## `++cask` {#cask}
+## `+cask` {#cask}
 
 Marked data builder
 
@@ -292,7 +292,7 @@ Like a [`cage`](#cage) except rather than a `vase`, the tail is whatever type wa
 
 ---
 
-## `+$desk` {#desk}
+## `$desk` {#desk}
 
 Local workspace
 
@@ -316,7 +316,7 @@ The name of a desk in Clay.
 
 ---
 
-## `+$dock` {#dock}
+## `$dock` {#dock}
 
 Message target
 
@@ -340,7 +340,7 @@ A pair of a [`ship`](#ship) and Gall agent name. This is most frequently used wh
 
 ---
 
-## `+$gang` {#gang}
+## `$gang` {#gang}
 
 Infinite set of peers
 
@@ -364,7 +364,7 @@ This is used internally by the Scry interfaces in Arvo and its vanes.
 
 ---
 
-## `+$mark` {#mark}
+## `$mark` {#mark}
 
 Symbolic content type
 
@@ -388,7 +388,7 @@ The name of a mark file. It will typically correspond to a file in the `/mar` di
 
 ---
 
-## `+$mien` {#mien}
+## `$mien` {#mien}
 
 Orientation
 
@@ -409,7 +409,7 @@ Some basic information given to Arvo: the local ship's name, the current time, a
 
 ---
 
-## `+$page` {#page}
+## `$page` {#page}
 
 Untyped cage
 
@@ -433,7 +433,7 @@ A pair of a [mark](#mark) and a raw, untyped noun. This is primarily used in Cla
 
 ---
 
-## `++omen` {#omen}
+## `+omen` {#omen}
 
 Namespace path and data
 
@@ -452,7 +452,7 @@ Namespace path and data
 
 ---
 
-## `+$ship` {#ship}
+## `$ship` {#ship}
 
 Network identity
 
@@ -476,7 +476,7 @@ Another name for an `@p`.
 
 ---
 
-## `+$sink` {#sink}
+## `$sink` {#sink}
 
 Subscription
 
@@ -497,7 +497,7 @@ A triple of a [`bone`](#bone), [`ship`](#ship) and `path`.
 
 ---
 
-## `++hypo` {#hypo}
+## `+hypo` {#hypo}
 
 Type-associated builder
 
@@ -520,7 +520,7 @@ A pair of a type and some value.
 
 ---
 
-## `+$meta` {#meta}
+## `$meta` {#meta}
 
 Meta-vase
 
@@ -539,7 +539,7 @@ Meta-vase
 
 ---
 
-## `+$maze` {#maze}
+## `$maze` {#maze}
 
 Vase, or [meta-vase](#meta)
 
@@ -558,7 +558,7 @@ Vase, or [meta-vase](#meta)
 
 ---
 
-## `+$ball` {#ball}
+## `$ball` {#ball}
 
 Dynamic kernel action
 
@@ -584,7 +584,7 @@ This contains the action or response in a kernel [`move`](#move). One of:
 
 ---
 
-## `+$card` {#card}
+## `$card` {#card}
 
 Tagged, untyped event
 
@@ -605,7 +605,7 @@ Note this is not the same as a `card:agent:gall` used in Gall agents.
 
 ---
 
-## `+$duct` {#duct}
+## `$duct` {#duct}
 
 Causal history
 
@@ -628,7 +628,7 @@ The Arvo causal stack is called a `duct`. This is represented simply as a list o
 
 ---
 
-## `++hobo` {#hobo}
+## `+hobo` {#hobo}
 
 `%soft` task builder
 
@@ -652,7 +652,7 @@ The Arvo causal stack is called a `duct`. This is represented simply as a list o
 
 ---
 
-## `+$goof` {#goof}
+## `$goof` {#goof}
 
 Crash label and trace
 
@@ -671,7 +671,7 @@ Crash label and trace
 
 ---
 
-## `+$mass` {#mass}
+## `$mass` {#mass}
 
 Memory usage
 
@@ -693,7 +693,7 @@ Memory usage
 
 ---
 
-## `+$move` {#move}
+## `$move` {#move}
 
 Cause and action
 
@@ -714,7 +714,7 @@ Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct)
 
 ---
 
-## `+$ovum` {#ovum}
+## `$ovum` {#ovum}
 
 [card](#card) with cause
 
@@ -733,7 +733,7 @@ Arvo makes calls and produces results by processing `move`s. The [`duct`](#duct)
 
 ---
 
-## `+$roof` {#roof}
+## `$roof` {#roof}
 
 Namespace
 
@@ -745,7 +745,7 @@ Namespace
 
 ---
 
-## `+$rook` {#rook}
+## `$rook` {#rook}
 
 Meta-namespace (super advanced)
 
@@ -757,7 +757,7 @@ Meta-namespace (super advanced)
 
 ---
 
-## `++room` {#room}
+## `+room` {#room}
 
 Generic namespace
 
@@ -780,7 +780,7 @@ This is used internally for scry handlers.
 
 ---
 
-## `+$roon` {#roon}
+## `$roon` {#roon}
 
 Partial namespace
 
@@ -795,7 +795,7 @@ Partial namespace
 
 ---
 
-## `+$root` {#root}
+## `$root` {#root}
 
 Raw namespace
 
@@ -807,7 +807,7 @@ Raw namespace
 
 ---
 
-## `+$view` {#view}
+## `$view` {#view}
 
 Namespace perspective
 
@@ -819,7 +819,7 @@ Namespace perspective
 
 ---
 
-## `++wind` {#wind}
+## `+wind` {#wind}
 
 Kernel action builder
 
@@ -853,7 +853,7 @@ This is similar to [`wite`](#wite) but without the error case. It's most commonl
 
 ---
 
-## `+$wire` {#wire}
+## `$wire` {#wire}
 
 Event pretext
 
@@ -879,7 +879,7 @@ On the kernel-level, `wire`s are used in [`duct`](#duct)s to represent a causal 
 
 ---
 
-## `++wite` {#wite}
+## `+wite` {#wite}
 
 Kernel action/error builder
 
@@ -917,7 +917,7 @@ This is used by the kernel in [`move`](#move)s. See the [`ball`](#ball) entry fo
 
 ---
 
-## `++en-beam` {#en-beam}
+## `+en-beam` {#en-beam}
 
 Encode a [`beam`](#beam) in a `path`
 
@@ -945,7 +945,7 @@ A `path`
 
 ---
 
-## `++de-beam` {#de-beam}
+## `+de-beam` {#de-beam}
 
 Decode a [`beam`](#beam) from a `path`
 
@@ -980,7 +980,7 @@ A `beam` in a `unit`, which is null if parsing failed.
 
 ---
 
-## `++de-case` {#de-case}
+## `+de-case` {#de-case}
 
 Parse a [`case`](#case)
 

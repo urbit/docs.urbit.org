@@ -2,7 +2,7 @@
 
 A `mip` is a map of maps. These can be constructed manually by nesting ordinary `map`s, but the `%landscape` desk contains a `/lib/mip.hoon` library which makes these a bit easier to deal with. You can copy the library into your own project. The various `mip` functions are documented below.
 
-## `++mip` {#mip}
+## `+mip` {#mip}
 
 Mip (map of maps) mold builder
 
@@ -45,7 +45,7 @@ A `mold`.
 
 ---
 
-## `++bi` {#bi}
+## `+bi` {#bi}
 
 Mip engine
 

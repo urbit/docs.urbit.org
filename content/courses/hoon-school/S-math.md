@@ -530,7 +530,7 @@ There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d
 
 `now` returns the `@da` of the current timestamp (in UTC).
 
-To go from a `@da` to a `+$tarp`, use [++yell](../../language/hoon/reference/stdlib/3c.md#yell):
+To go from a `@da` to a `$tarp`, use [++yell](../../language/hoon/reference/stdlib/3c.md#yell):
 
 ```hoon
 > *tarp
@@ -546,7 +546,7 @@ To go from a `@da` to a `+$tarp`, use [++yell](../../language/hoon/reference/std
 [d=20 h=0 m=0 s=0 f=~]
 ```
 
-To go from a `@da` to a `+$date`, use [++yore](../../language/hoon/reference/stdlib/3c.md#yore):
+To go from a `@da` to a `$date`, use [++yore](../../language/hoon/reference/stdlib/3c.md#yore):
 
 ```hoon
 > (yore ~2014.6.6..21.09.15..0a16)
@@ -556,7 +556,7 @@ To go from a `@da` to a `+$date`, use [++yore](../../language/hoon/reference/std
 [[a=%.y y=2.022] m=5 t=[d=24 h=16 m=20 s=57 f=~[0xbaec]]]
 ```
 
-To go from a `+$date` to a `@da`, use [++year](../../language/hoon/reference/stdlib/3c.md#year):
+To go from a `$date` to a `@da`, use [++year](../../language/hoon/reference/stdlib/3c.md#year):
 
 ```hoon
 > (year [[a=%.y y=2.014] m=8 t=[d=4 h=20 m=4 s=57 f=~[0xd940]]])
@@ -566,7 +566,7 @@ To go from a `+$date` to a `@da`, use [++year](../../language/hoon/reference/std
 ~2022.5.24..16.24.16..d184
 ```
 
-To go from a `+$tarp` to a `@da`, use
+To go from a `$tarp` to a `@da`, use
 [++yule](../../language/hoon/reference/stdlib/3c.md#yule):
 
 ```hoon

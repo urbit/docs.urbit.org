@@ -353,7 +353,7 @@ Hoon has a very powerful text parsing engine, built to compile Hoon itself. Howe
 
 #### Convert
 
-If you have a Hoon value and you want to convert it into text as such, use [++scot](../../language/hoon/reference/stdlib/4m.md#scot) and [++scow](../../language/hoon/reference/stdlib/4m.md#scow). These call for a value of type `+$dime`, which means the `@tas` equivalent of a regular aura. These are labeled as returning `$cord`s (`@t`s) but in practice seem to return `$knot`s (`@ta`s).
+If you have a Hoon value and you want to convert it into text as such, use [++scot](../../language/hoon/reference/stdlib/4m.md#scot) and [++scow](../../language/hoon/reference/stdlib/4m.md#scow). These call for a value of type `$dime`, which means the `@tas` equivalent of a regular aura. These are labeled as returning `$cord`s (`@t`s) but in practice seem to return `$knot`s (`@ta`s).
 
 - The [++scot](../../language/hoon/reference/stdlib/4m.md#scot) function renders a `$dime` as a `$cord` (`$dime`→`$cord`); the user must include any necessary aura transformation.
 

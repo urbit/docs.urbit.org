@@ -125,9 +125,9 @@ The `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) core created
 
 To create three types we're going to need, we use `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc), which is an [arm](../../glossary/arm.md) used to define a type.
 
-- `+$  suit  ?(%hearts %spades %clubs %diamonds)` defines `+$suit`, which can be either `%hearts`, `%spades`, `%clubs`, or `%diamonds`. It's a type union created by the irregular form of `$?` [bucwut](../../language/hoon/reference/rune/buc.md#bucwut).
+- `+$  suit  ?(%hearts %spades %clubs %diamonds)` defines `$suit`, which can be either `%hearts`, `%spades`, `%clubs`, or `%diamonds`. It's a type union created by the irregular form of `$?` [bucwut](../../language/hoon/reference/rune/buc.md#bucwut).
 
-- `+$  darc  [sut=suit val=@ud]` defines `+$darc`, which is a pair of `$suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `$darc` and not `$card`?  Because `$card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
+- `+$  darc  [sut=suit val=@ud]` defines `$darc`, which is a pair of `$suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `$darc` and not `$card`?  Because `$card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
 
 - `+$  deck  (list darc)` is simply a [list](../../glossary/list.md) of `$darc`.
 

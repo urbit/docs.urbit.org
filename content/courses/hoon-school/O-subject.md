@@ -213,7 +213,7 @@ This confirms for us, then, that `hoon.hoon` consists of six nested cores, with 
 
 ### Axes of the Subject {#axes-of-the-subject}
 
-The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of `+$axis` which is the tree address) in the [subject](../../glossary/subject.md). You've encountered these before:
+The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of `$axis` which is the tree address) in the [subject](../../glossary/subject.md). You've encountered these before:
 
 - `our` is the [ship's](../../glossary/ship.md) identity.
 

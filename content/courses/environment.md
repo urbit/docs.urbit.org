@@ -38,7 +38,7 @@ To create a fake ship named `~zod`, run the command below. You can replace `zod`
 ./urbit -F zod
 ```
 
-This should take a couple of minutes, during which you should see a block of boot messages, starting with the Urbit version number.
+This will take a couple of minutes, during which you should see a block of boot messages, starting with the Urbit version number.
 
 ### Fake ship networking {#fake-ship-networking}
 
@@ -143,101 +143,45 @@ You can unmount it again by running the `|unmount` command in the dojo:
 
 ### Create a new desk {#create-a-new-desk}
 
-To create a new desk, you'll need to merge from an existing one, typically `%base`. In the dojo, run the following (you can change `%mydesk` to your preferred name):
+To create a new desk, you can just run:
 
 ```
-|merge %mydesk our %base
+|new-desk %mydesk
 ```
 
-If you now mount it, you'll have `/mydesk` directory in your pier with all the files of the `%base` desk inside. You can then delete the contents, copy in your own files and `|commit` it.
-
-Desks must contain all the `mark` files, libraries, etc, that they need. A `sys.kelvin` file is mandatory, and there are a few `mark` files necessary as well. In the next couple of sections we'll look at different ways to populate a new desk with the necessary files.
-
-### Minimal desk {#minimal-desk}
-
-This is the absolute minimal desk you'll be able to commit:
-
-```
-skeleton
-├── mar
-│   ├── hoon.hoon
-│   ├── kelvin.hoon
-│   ├── mime.hoon
-│   ├── noun.hoon
-│   ├── txt-diff.hoon
-│   └── txt.hoon
-└── sys.kelvin
-```
-
-`sys.kelvin` specifies the kernel kelvin version with which the desk is compatible. You can copy it across from the `%base` desk, or just run the following in the terminal from within the desk directory:
-
-```sh
-echo "[%zuse 416]" > sys.kelvin
-```
-
-The other `mark` files can just be copied across from the `%base` desk.
-
-### Using `dev` desks {#using-dev-desks}
-
-If you're working on something more complex, for example a desk with agents and a front-end, there will be a number of `mark` files, libraries, etc, that will be necessary. Rather than having to manually copy all the files from the relevant default desks, the [Urbit OS repo](https://github.com/urbit/urbit) includes some dev desks which can be used as a base. To get these, make sure you have git installed and then clone the repo:
-
-```
-git clone https://github.com/urbit/urbit ~/git/urbit
-```
-
-If you now change to the `~/git/urbit/pkg` directory, you'll see the source for the default desks, among other things:
-
-```
-cd ~/git/urbit/pkg
-```
-
-The desks ending in `-dev`, like `base-dev` and `landscae-dev`, contain files for interfacing with those respective desks. If you're creating a new desk that has a tile and front-end, for example, you might like to use `base-dev` as a base. To create such a base, there's a `symbolic-merge.sh` script included in the directory. You can use it like so:
-
-```
-./symbolic-merge base-dev mydesk
-```
-
-After running that, you'll have a `mydesk` desk in the `pkg` directory that contains the symlinked files from that dev desk. To copy the files into your pier, you can create and mount a mydesk desk in the dojo:
-
-```
-|merge %mydesk our %base
-|mount %mydesk
-```
-
-Then, you can go into your pier:
-
-```
-cd /path/to/fake/zod
-```
-
-Delete the contents of `mydesk`:
-
-```
-rm -r mydesk/*
-```
-
-And then copy in the contents of the desk you created:
-
-```
-cp -rL ~/git/urbit/pkg/mydesk/* mydesk
-```
-
-Note you have to use `cp -rL` rather than just `cp -r` because the `symbolic-merge.sh` script creates symlinks, so the `L` flag is to resolve them and copy the actual files.
-
-Now you can just add a `sys.kelvin` file:
-
-```
-echo "[%zuse 416]" > mydesk/sys.kelvin
-```
-
-And you'll be able to mount the desk with `|commit %mydesk`.
-
-## Project organization {#project-organization}
-
-When you're developing a desk, it's best to structure your working directory with the same hierarchy as a real desk. For example, `~/project/mydesk` might look like:
+If you run `|mount %mydesk`, you'll see a `/mydesk` directory in your pier with the following files:
 
 ```
 mydesk
+├── mar
+│   ├── hoon.hoon
+│   ├── kelvin.hoon
+│   ├── noun.hoon
+│   └── txt.hoon
+└── sys.kelvin
+```
+
+The mark files in `/mar` are for handling some basic filetypes, and `sys.kelvin` specifies which kernel version(s) the desk is compatible with. The `|new-desk` generator populates `sys.kelvin` with the current kernel version like `[%zuse 410]`.
+
+You can delete these files, copy in your own and run `|commit %mydesk` in the Dojo.
+
+## `dev` folders {$dev-folders)
+
+The files included by `|new-desk` are the only the bare minimum necessary to mount the desk. If you're building a full app, you'll almost certainly need a number of mark files and libraries from the `%base` and `%landscape` desks. If your app is going to talk to other apps on your ship, you'll likely need files for those, too.
+
+To make these dependencies easier, the convention is for developers to include the necessary files in a separate `*-dev` folder in their git repo:
+
+- The [urbit/urbit repo](https://github.com/urbit/urbit) includes a [`base-dev` folder](https://github.com/urbit/urbit/tree/develop/pkg/base-dev) with the files necessary for interacting with agents on the `%base` desk, among other useful marks and libraries.
+- The [tloncorp/landscape repo](https://github.com/tloncorp/landscape) includes a [`desk-dev` folder](https://github.com/tloncorp/landscape/tree/develop/desk-dev) with marks and libraries for building Landscape apps.
+
+You can clone these repos and copy the contents of their `dev` folders into your own projects. A better alternative is to use the [desk skeleton](#desk-skeleton) described below.
+
+## Project organization {#project-organization}
+
+When you're developing a desk, it's best to structure your working directory with the same hierarchy as a real desk. For example, `~/project/desk` might look like:
+
+```
+desk
 ├── app
 │   └── foo.hoon
 ├── desk.bill
@@ -257,7 +201,7 @@ mydesk
 That way, whenever you want to test your changes, you can just copy it across to your pier like:
 
 ```
-cp -ruv mydesk/* /path/to/fake/zod/mydesk
+cp -ruv desk/* /path/to/fake/zod/mydesk
 ```
 
 And then just commit it in the dojo:
@@ -268,12 +212,47 @@ And then just commit it in the dojo:
 
 If you're [using dev desks](#using-dev-desks) as a base, it's best to keep those files separate from your own code.
 
-### Syncing repos {#syncing-repos}
+## Desk skeleton {#desk-skeleton}
 
-A useful pattern is to work from a git repo and sync your work with the pier of a fake ship. An easy way to do this is with the following command:
+Dependency management can be inconvenient when building Urbit apps. If you manually copy in `base-dev` and Landscape's `desk-dev`, it can be annoying to update them when a new kernel version is released.
 
+For this reason, the Urbit Foundation has published a desk skeleton to use for new projects. It includes a couple of tools to make code organization and dependency management easier.
+
+You can git clone the repo from [urbit/desk-skeleton](https://github.com/urbit/desk-skeleton):
+
+```sh
+git clone https://github.com/urbit/desk-skeleton.git my-project
 ```
-watch rsync -zr --delete /working/repo/desk/* /path/to/fake/zod/mydesk
+
+Then you can create a `my-project` repo on your Github, set the upstream to that instead, and push it:
+
+```sh
+cd my-project
+git remote set-url origin https://github.com/YOUR-GITHUB/my-project.git
+git push
 ```
 
-Here `/working/repo/desk` is the folder that has the proper desk structure outlined above, and `/path/to/fake/zod/mydesk` is the desk you wish to copy the contents of the working repo to. From here, you can edit from the working repo and perform git commands there, while testing your changes on the fake ship.
+The desk skeleton contains a `/desk` folder with an extremely simple example app. You can delete `example.hoon`, add your own files, list your own agents in `desk.bill`, and add your own Docket configuration to `desk.docket-0`.
+
+You can optionally create a separate `/desk-dev` folder for any dependencies another developer would need, or you can just put everything in `/desk`.
+
+You'll notice `/desk` doesn't include `base-dev` or Landscape's `desk-dev` files. Instead, they're configured in `peru.yaml` and pulled in by [peru](https://github.com/buildinspace/peru). Peru is a Python app for managing dependencies. You can install it from:
+
+- [pip](https://pypi.org/project/pip/): `pip install peru`
+- [Homebrew](https://brew.sh/): `brew install peru`
+- The [AUR](https://aur.archlinux.org/packages/peru) if you use Arch Linux
+
+With `peru` installed on your system, you simply need to run `./build.sh`. It'll create a `/dist` folder, copy in all the files from the `/desk` folder (and `/desk-dev` if it exists), and copy in the files from `base-dev` and Landscape's `desk-dev` on Github. The `/dist` folder will now contain all the necessary files, and you can copy them across to a mounted desk on a fake ship and `|commit` them in the Dojo.
+
+The `./build.sh` script can be run again any time you make changes.
+
+If there's a kernel update down the line and you need to update the `base-dev` and Landscape dependencies, you just need to run `peru reup`. This will update `peru.yaml` to use the latest commit on `master` for `urbit/urbit` and `tloncorp/landscape`. Then you can just run `./build.sh` again.
+
+The default `peru.yaml` only includes the two dependencies mentioned, but you can easily add any others you need. Refer to the [peru documentation](https://github.com/buildinspace/peru) configuration details.
+
+
+
+
+
+
+

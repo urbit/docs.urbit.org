@@ -24,16 +24,23 @@ Note: we'll only discuss the basic case of unencrypted and two-party encrypted s
 
 `$note:agent:gall` includes the following cases:
 
+{% code title="/sys/lull.hoon" overflow="nowrap" %}
+
 ```hoon
 +$  note
-  $%  ...
+  $%  ::  ...
       [%grow =spur =page]  ::  publish
       [%tomb =case =spur]  ::  delete one
       [%cull =case =spur]  ::  delete up to
+      ::  ...
   ==
 ```
 
+{% endcode %}
+
 Here's an example sequence of cards that use these:
+
+{% code overflow="nowrap" %}
 
 ```hoon
 [%pass /call/back/path %grow /foo atom+'lorem']  ::  /foo version 0
@@ -48,15 +55,23 @@ Here's an example sequence of cards that use these:
 [%pass /call/back/path %grow /foo/bar atom+123]  ::  /foo/bar version 0
 ```
 
+{% endcode %}
+
 After this sequence of cards we would have the following mappings (assuming the agent that emits them is named `%test`):
 
-```hoon
+{% code overflow="nowrap" %}
+
+```
 /g/x/2/test//foo     -> [%atom 'dolor']
 /g/x/4/test//foo     -> [%atom 'amet']
 /g/x/0/test//foo/bar -> [%atom 123]
 ```
 
+{% endcode %}
+
 Let's pick apart the first one of these paths.
+
+{% code overflow="nowrap" %}
 
 ```hoon
 /g     ::  g for Gall
@@ -66,6 +81,8 @@ Let's pick apart the first one of these paths.
 /      ::  ???
 /foo   ::  the path that the data is published on
 ```
+
+{% endcode %}
 
 What's that lone `/` before the path? It signifies that this data is published by *Gall* itself, instead of the `+on-peek` arm in the `%test` agent. As part of the remote scry release, we have *reserved* part of the scry namespace for Gall, effectively *preventing* any agents from directly publishing at those paths. Though as we've seen, they can do it indirectly, by asking Gall to do it for them using `%grow`.
 
@@ -86,12 +103,14 @@ All of these require the extra `/` to be present in the path, just as with `%x`.
 As well as ordinary unencrypted scries, Ames also supports two-party and multi-party encrypted scries. Two-party encryption doesn't require any additional steps on the publisher's side, but multi-party encryption does:
 
 1. A *security context* must be created.
-2. You must implement an access-control scry handler for that security context in the `++on-peek` arm.
+2. You must implement an access-control scry handler for that security context in the `+on-peek` arm.
 3. Data must be published to that security context.
 
-A security context is called a `coop`, which is just a `path` of your choosing, like `/foo/bar/baz`.
+A security context is called a `$coop`, which is just a path of your choosing, like `/foo/bar/baz`.
 
-`$note:agent:gall` includes the following two `note`s for managing security contexts and publishing data to them:
+`$note:agent:gall` includes the following two `$note`s for managing security contexts and publishing data to them:
+
+{% code overflow="nowrap" %}
 
 ```hoon
 $%  ...
@@ -100,40 +119,61 @@ $%  ...
     ...
 ==
 ```
+
+{% endcode %}
+
 #### `%germ`
+
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
 
 ```hoon
 [%germ =coop]
 ```
 
-The `%germ` note creates the *security context* specified in the `coop`. It's just a `path` of your choice, like `/foo/bar/baz`. Once created, you can publish data to it with a [`%tend`](#tend) note.
+{% endcode %}
+
+The `%germ` note creates the *security context* specified in the `$coop`. It's just a path of your choice, like `/foo/bar/baz`. Once created, you can publish data to it with a [`%tend`](#tend) note.
 
 Example:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /call/back/path %germ /foo/bar/baz]
 ```
 
+{% endcode %}
+
 #### `%tend`
+
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
 
 ```hoon
 [%tend =coop =path =page]
 ```
 
-The `%tend` note publishes the given `page` to the given `path` in the given `coop` security context. This is the same as a `%grow` note, just with the addition of the security context. The only difference is that access is limited to those allowed in the `coop`.
+{% endcode %}
+
+The `%tend` note publishes the given `$page` to the given path in the given `$coop` security context. This is the same as a `%grow` note, just with the addition of the security context. The only difference is that access is limited to those allowed in the `$coop`.
 
 ### Access control {#access-control}
 
-For each security context created with the `%tend` task described above, the `++on-peek` arm of the agent should provide a scry handler for it, to decide whether a ship is allowed to access the resource or not. The scry path looks like:
+For each security context created with the `%tend` task described above, the `+on-peek` arm of the agent should provide a scry handler for it, to decide whether a ship is allowed to access the resource or not. The scry path looks like:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 /c/your/security/context/~sampel-palnet
 ```
 
-It has a `%c` `care`, the security context (in this case `/your/security/context`), and then the ship in question (`~sampel-palnet`). It must return a `?` boolean in a `%noun` mark which is true if the ship is allowed to access that security context, and false if not. How you determine whether a ship is allowed is up to you. Here's a trivial example:
+{% endcode %}
+
+It has a `%c` `$care`, the security context (in this case `/your/security/context`), and then the ship in question (~sampel-palnet). It must return a `?` boolean in a `%noun` mark which is true if the ship is allowed to access that security context, and false if not. How you determine whether a ship is allowed is up to you. Here's a trivial example:
+
+{% code wrap="nowrap" %}
 
 ```hoon
-++  on-peek
++  on-peek
   |=  =path
   ^-  (unit (unit cage))
   ?.  ?=([%c %your %security %context @ ~] path)
@@ -144,19 +184,45 @@ It has a `%c` `care`, the security context (in this case `/your/security/context
   ``[%noun !>(%.n)]
 ```
 
+{% endcode %}
+
 Note this is unnecessary for unencrypted and two-party encrypted remote scries, only for files you publish in a security context with the [`%tend`](#tend) note.
 
 ## Scrying {#scrying}
 
-Now we've looking at the publisher side, let's look at actually performing remote scries. There is one `$note:agent:gall` for performing unencrypted and multi-party encrypted remote scries, one Ames task for performing two-party encrypted remote scries, and two Ames tasks for cancelling pending remote scries. We'll look at each of these.
+Now we've looked at the publisher side, let's look at actually performing remote scries.
+
+It's not currently possible to perform a remote scry on yourself, unless your ship has an Ames route to itself which is an edge-case. If you need to perform a dotket scry on a remote scry path, you can do so with this syntax.
+
+{% code title="Dojo" wrap="nowrap" %}
+
+```
+.^(* %gx /=/test/1//1/foo/bar)
+```
+
+{% endcode %}
+
+{% hint style="info" %}
+
+Notice the `//` empty path element differentiating an agent scry from a Gall vane scry.
+
+Additionally, notice the `1` after the `//`. This is a path format version number introduced in `[%zuse 411]` to facilitate easier path format changes in the future. _All remote scries to Gall agents must include the path format version number._ Scries to places other than Gall agents are unaffected.
+
+{% endhint %}
+
+There is one `$note:agent:gall` for performing unencrypted and multi-party encrypted remote scries, one Ames task for performing two-party encrypted remote scries, and two Ames tasks for cancelling pending remote scries. We'll look at each of these.
 
 ### Tasks and Notes {#tasks-and-notes}
 
 #### `%keen`
 
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
+
 ```hoon
 [%keen secret=? spar:ames]
 ```
+
+{% endcode %}
 
 The `%keen` note performs either an unencrypted scry or a multi-party encrypted scry.
 
@@ -166,33 +232,37 @@ Note that this is a `$note:agent:gall`, and is not to be confused with the Ames 
 
 {% endhint %}
 
-The `secret` boolean specifies whether it should be a multi-party encrypted scry or an ordinary unencrypted scry. The `spar` is a pair of `ship` and scry `path`.
+The `secret` boolean specifies whether it should be a multi-party encrypted scry or an ordinary unencrypted scry. The `$spar` is a `(pair ship path)`.
 
-For an unencrypted remote scry to read (`%x` care) the `/sys/hoon/hoon` file from the `%base` desk at revision `4` in Clay (`%c`) on the `~sampel` ship, it would look like:
+For an unencrypted remote scry to read (`%x` care) the `/sys/hoon/hoon` file from the `%base` desk at revision `4` in Clay (`%c`) on the ~sampel ship, it would look like:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /your/wire %keen %.n ~sampel /c/x/4/base/sys/hoon/hoon]
 ```
 
-For an unencrypted scry to the `%example` agent in Gall (`%g`) of the `~sampel` ship at `/foo` path, revision `4`, it would look like:
+{% endcode %}
+
+For an unencrypted scry to the `%example` agent in Gall (`%g`) of the ~sampel ship at `/foo` path, revision `4`, it would look like:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /your/wire %keen %.n ~sampel /g/x/4/example//1/foo]
 ```
 
-{% hint style="info" %}
+{% endcode %}
 
-Notice the `//` empty path element differentiating an agent scry from a Gall vane scry.
+For a multi-party encrypted scry to the `%example` agent in Gall (`%g`) of the ~sampel ship at the `/foo` path, revision `4` in the `/my/context` security context, it would look like:
 
-Additionally, notice the `1` at the beginning of the path portion after the empty element. This is a path format version number introduced in `[%zuse 411]` to facilitate easier path format changes in the future. All remote scries to Gall agents must include the version number. Scries to places other than Gall agents are unaffected.
-
-{% endhint %}
-
-For a multi-party encrypted scry to the `%example` agent in Gall (`%g`) of the `~sampel` ship at the `/foo` path, revision `4` in the `/my/context` security context, it would look like:
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /your/wire %keen %.y ~sampel /g/x/4/example//1/my/context/foo]
 ```
+
+{% endcode %}
 
 Notice the `/my/context` security context and `/foo` path are combined into a single continuous path.
 
@@ -200,51 +270,75 @@ You will receive a [`%tune`](#tune) gift from Ames with the response once comple
 
 #### `%chum`
 
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
+
 ```hoon
 [%chum spar]
 ```
 
-The Ames `%chum` task performs a two-party encrypted remote scry. It behaves exactly the same as an unencrypted remote scry except that it's encrypted. You don't need a security context for this kind of remote scry & an unencrypted `%keen` can be swapped out for this without the publisher having to change any of their app logic. For details of the `spar` format, see the [`%keen` note entry above](#keen).
+{% endcode %}
+
+The Ames `%chum` task performs a two-party encrypted remote scry. It behaves exactly the same as an unencrypted remote scry except that it's encrypted. You don't need a security context for this kind of remote scry & an unencrypted `%keen` can be swapped out for this without the publisher having to change any of their app logic. For details of the `$spar` format, see the [`%keen` note entry above](#keen).
 
 Example:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /your/wire %arvo %a %chum ~sampel /g/x/4/example//1/foo]
 ```
 
+{% endcode %}
+
 You will receive a [`%tune`](#tune) gift from Ames with the response once completed.
 
 #### `%yawn`
+
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
 
 ```hoon
 [%yawn spar]
 ```
 
-A `%yawn` Ames task tells Ames that *we're* no longer interest in a response from a pending request to the given `spar`. Ames uses the `duct` to determine which requests to cancel, which means the `wire` must be the same as the original `%chum` task or `%keen` note. Ames wi
+{% endcode %}
+
+A `%yawn` Ames task tells Ames that *we're* no longer interest in a response from a pending request to the given `$spar`. Ames uses the `$duct` to determine which requests to cancel, which means the `$wire` must be the same as the original `%chum` task or `%keen` note.
 
 Example:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /call/back/path %arvo %a %yawn ~sampel /g/x/4/test//foo]
 ```
 
-You will receive a [`%tune`](#tune) gift from Ames with a null `roar` for any pending requests.
+{% endcode %}
+
+You will receive a [`%tune`](#tune) gift from Ames with a null `$roar` for any pending requests.
 
 #### `%wham`
+
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
 
 ```hoon
 [%wham spar]
 ```
 
-A `%wham` task to Ames tells Ames to cancel all pending requests to the given `spar`, regardless of where it came from on our ship. This will cancel pending requests from other agents or vanes too, so be careful.
+{% endcode %}
+
+A `%wham` task to Ames tells Ames to cancel all pending requests to the given `$spar`, regardless of where it came from on our ship. This will cancel pending requests from other agents or vanes too, so be careful.
 
 Example:
+
+{% code wrap="nowrap" %}
 
 ```hoon
 [%pass /call/back/path %arvo %a %wham ~sampel /g/x/4/test//foo]
 ```
 
-Everything on the ship with pending requests to the given `spar` will receive a [`%tune`](#tune) gift from Ames with a null `roar`.
+{% endcode %}
+
+Everything on the ship with pending requests to the given `$spar` will receive a [`%tune`](#tune) gift from Ames with a null `$roar`.
 
 ### Gifts {#gifts}
 
@@ -254,24 +348,44 @@ There is only one kind of response you can receive from Ames for any kind of rem
 
 In response to any kind of remote scry, Ames returns a `%tune` gift, which looks like:
 
+{% code title="/sys/lull.hoon" wrap="nowrap" %}
+
 ```hoon
 [%tune spar roar=(unit roar)]
 ```
 
-The `spar` is the `ship` and `path` the request was made to, and the `roar` is the response. The outer `unit` of `roar` will be `~` if Ames doesn't have a response, but may have one in the future. Otherwise, it will contain a signature and the data. The data in the [`$roar`](../../../system/kernel/ames/reference/data-types.md#roar) may be `~`, meaning that there is no value at this path and will never be one.
+{% endcode %}
+
+The `$spar` is the `[ship path]` the request was made to, and the `$roar` is the response. The outer `$unit` of `$roar` will be `~` if Ames doesn't have a response, but may have one in the future. Otherwise, it will contain a signature and the data. The data in the [`$roar`](../../../system/kernel/ames/reference/data-types.md#roar) may be `~`, meaning that there is no value at this path and will never be one.
 
 You'll receive a `%tune` whether it failed or succeeded on the target ship, as well as if the request was cancelled locally.
 
-## `-keen` {#keen}
+## `-peek` {#peek}
 
-In addition to the above interface offered to agents, there is also support for making scry requests from threads using `+keen` in `lib/strandio`. It accepts a `[=ship =path]` and returns a `(unit page)`. There is also a [thread `ted/keen` that demonstrates this](https://github.com/urbit/urbit/blob/i/5788/remote-scry/pkg/arvo/ted/keen.hoon). You can run it from the dojo using `-keen [ship path]`. For example, this reads the `%noun` mark's source code out of `~zod`'s `%kids` desk, try it!
+In addition to the above interface offered to agents, there is also a thread `/ted/peek.hoon` in the `%base` desk. You can run it from the Dojo to read the `%noun` mark's source code out of ~zod's `%kids` desk.
+
+{% code title="Dojo" wrap="nowrap" %}
 
 ```
--keen [~zod /c/x/1/kids/mar/noun/hoon]
+-peek [[~zod /c/x/1/kids/mar/noun/hoon] ~]
 ```
+
+{% endcode %}
+
+That trailing `~` specifies the task to use, which depends on the security status: either `[%chum ~]` for a two-party encrypted remote scry, `[%shut idx=@ key=@]` for a multi-party encrypted remote scry, or `~` to do a regular `%keen` to a public path.
+
+If there were a `%test` agent on ~sampel with path `/foo/bar` that you wanted to scry with this thread, you'd do so like this:
+
+{% code title="Dojo" wrap="nowrap" %}
+
+```
+-peek [[~sampel /g/x/1/test//1/foo/bar] ~]
+```
+
+{% endcode %}
 
 ## Additional reading {#additional-reading}
 
 - [Gall scry reference](../../../system/kernel/gall/reference/scry.md): Reference documentation of Gall's vane-level and agent-level scry interface.
 
-- [Ames API reference](../../../system/kernel/ames/reference/tasks.md): Reference documentation of `task`s that can be passed to Ames, including those for remote scries.
+- [Ames API reference](../../../system/kernel/ames/reference/tasks.md): Reference documentation of tasks that can be passed to Ames, including those for remote scries.

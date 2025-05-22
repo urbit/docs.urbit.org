@@ -84,7 +84,7 @@ Hoon and Nock have several unusual properties:
 
 Minimalism, mostly.
 
-Urbit's principled minimalism simplifies all kinds of things at many layers of the stack; for example, Urbit's linker, which is part of the Ford build system, just conses together multiple libraries into a tuple to form the compile-time environment for a source file. Universal serialization means we can safely send arbitrary pieces of data to apps on other ships without any more work than sending them to a local app. Using an app called Aquarium that's about three hundred lines of code, Arvo can run a whole fleet of other Arvos inside itself at full speed, just like Docker, and perform a suite of deterministic end-to-end tests on the OS as a whole.
+Urbit's principled minimalism simplifies all kinds of things at many layers of the stack; for example, Urbit's linker, which is part of the Ford build system, just conses together multiple libraries into a tuple to form the compile-time environment for a source file. Universal serialization means we can safely send arbitrary pieces of data to apps on other ships without any more work than sending them to a local app.
 
 Even Hoon's seemingly baroque syntax is extremely regular and an unusually thin layer over the abstract syntax tree. It's designed to be a power tool; learning the syntax takes some time, but you only have to learn it once, and then it's not hard to read. It's like an English speaker learning Hiragana or Cyrillic. This heaping spoonful of syntactic sugar (along with jets for performance) is enough to take Nock from a Turing tarpit to a practical, ergonomic programming tool.
 

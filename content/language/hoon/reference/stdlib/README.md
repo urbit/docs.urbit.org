@@ -5,8 +5,6 @@ Comprehensive documentation for the Hoon standard library.
 The Hoon standard library provides a complete suite of functions for working with the fundamental data types and operations in Hoon. These functions are organized into numbered sections based on their purpose and the types they operate on. The numbering corresponds to the layer structure in `/sys/hoon.hoon`.
 
 ## Layer 1: Basic Operations {#layer-1-basic-operations}
-
-### Mathematics and Tree Addressing {#mathematics-and-tree-addressing}
 - [1a: Basic Arithmetic](1a.md) - Unsigned arithmetic operations including addition, subtraction, multiplication, division, and comparison functions.
 - [1b: Tree Addressing](1b.md) - Functions for addressing and navigating tree structures using Nock's tree addressing scheme.
 - [1c: Containers](1c.md) - Fundamental container types and molds including `+pair`, `+list`, `+unit`, `+tree`, `+gate`, and other essential type definitions.
@@ -38,7 +36,6 @@ The Hoon standard library provides a complete suite of functions for working wit
 
 ## Layer 3: Advanced Operations {#layer-3-advanced-operations}
 
-### Mathematical Operations {#mathematical-operations}
 - [3a: Signed and Modular Arithmetic](3a.md) - Signed integer arithmetic and modular arithmetic operations.
 - [3b: Floating Point](3b.md) - Floating-point arithmetic operations.
 - [3c: Urbit Time](3c.md) - Time and date manipulation functions specific to Urbit's `@da` datetime format.
@@ -49,7 +46,6 @@ The Hoon standard library provides a complete suite of functions for working wit
 
 ## Layer 4: Text Processing and I/O {#layer-4-text-processing-and-io}
 
-### Base Conversion and Text Processing {#base-conversion-and-text-processing}
 - [4a: Exotic Bases](4a.md) - Functions for converting between different number bases and representations.
 - [4b: Text Processing](4b.md) - String and text manipulation functions including parsing and formatting.
 - [4c: Tank Printer](4c.md) - Pretty-printing functions for structured output and debugging.
@@ -68,7 +64,6 @@ The Hoon standard library provides a complete suite of functions for working wit
 
 ## Layer 5: Compiler and System Operations {#layer-5-compiler-and-system-operations}
 
-### Compiler Support {#compiler-support}
 - [5a: Compiler Utilities](5a.md) - Utilities and helper functions used by the Hoon compiler.
 - [5b: Macro Expansion](5b.md) - Functions for macro expansion and code transformation.
 - [5c: Compiler Backend](5c.md) - Backend compilation functions and code generation utilities.

@@ -58,29 +58,7 @@ hi ~bus successful
 
 ### Local Networking {#local-networking}
 
-Fake ships run on their own network using fake keys and do not communicate with live-net ships in any way. Multiple fake ships running on the same machine can network with each other. However, these fake ships still have 'realistic' packet routing: fake galaxies can talk to each other, but fake stars/planets cannot - unless they have the appropriate fake sponsors running, too.
-
-```
-~tex & ~mex:            GOOD
-~tex & ~bintex:         GOOD
-~mex & ~bintex:         BAD
-~tex, ~mex, & ~bintex:  GOOD
-```
-
-For your convenience, note the following relationships of several convenient planets and stars:
-
-| Ship | Number | Parent |
-| --- | --- | --- |
-| ~zod | `0` | — |
-| ~nec | `1` | — |
-| ~marzod | `256` | ~zod |
-| ~marnec | `257` | ~nec |
-| ~dapnep-ronmyl | `65.536` | ~zod |
-| ~milrys-soglec | `65.537` | ~nec |
-| ~wicdev-wisryt | `65.792` | ~marzod |
-| ~ralnyt-botdyt | `65.793` | ~marnec |
-
-Other points can be calculated using [the layout of Azimuth](hoon-school/C-azimuth.md#the-urbit-address-space).
+Fake ships run on their own network using fake keys and do not communicate with live-net ships in any way. Multiple fake ships running on the same machine can network with each other. They don't need to have a "realistic" chain of fake sponsors to communicate.
 
 ### Faster fake ship booting {#faster-fake-ship-booting}
 

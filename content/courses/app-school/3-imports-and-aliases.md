@@ -4,7 +4,7 @@ In the last lesson we looked at the most basic aspects of a Gall agent's structu
 
 ## Useful libraries {#useful-libraries}
 
-There are a couple of libraries that you'll very likely use in every agent you write. These are [`default-agent`](#default-agent) and [`dbug`](#dbug). In brief, `default-agent` provides simple default behaviours for each agent arm, and `dbug` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
+There are a couple of libraries that you'll very likely use in every agent you write. These are [`default-agent`](#default-agent) and [`+dbug`](#dbug). In brief, `default-agent` provides simple default behaviours for each agent arm, and `+dbug` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
 
 Let's look at each in more detail:
 
@@ -23,9 +23,9 @@ The wet gate returns an `agent:gall` door with a sample of `bowl:gall` - a typic
 
 ### `dbug` {#dbug}
 
-The `dbug` library lets you inspect the state and `bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
+The `+dbug` library lets you inspect the state and `bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
-To use it, you just import `dbug` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
+To use it, you just import `+dbug` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 
 ```hoon
 %-  agent:dbug
@@ -53,7 +53,7 @@ The generator also has a few useful optional arguments:
 
 By default it will retrieve your agent's state by using its `on-save` arm, but if your app implements a scry endpoint with a path of `/x/dbug/state`, it will use that instead.
 
-We haven't yet covered some of the concepts described here, so don't worry if you don't fully understand `dbug`'s functionality - you can refer back here later.
+We haven't yet covered some of the concepts described here, so don't worry if you don't fully understand `+dbug`'s functionality - you can refer back here later.
 
 ## Virtual arms {#virtual-arms}
 
@@ -126,7 +126,7 @@ The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.ho
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `card` arm, which makes it simpler to reference the `card:agent:gall` type.
 
-After that core, we call `agent:dbug` with our whole agent core as its argument. This allows us to use the `dbug` features described earlier.
+After that core, we call `agent:dbug` with our whole agent core as its argument. This allows us to use the `+dbug` features described earlier.
 
 Inside our agent door, we've added an extra virtual arm and defined a couple deferred expressions:
 
@@ -137,7 +137,7 @@ Inside our agent door, we've added an extra virtual arm and defined a couple def
 
 In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of `default-agent`, which we set up as a deferred expression named `def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `this` in the `on-init` arm as an example - it makes things a bit simpler.
 
-You can save the code above in `/app/skeleton.hoon` of your `%base` desk like before and `|commit %base` in the dojo. Additionally, you can start the agent so we can try out `dbug`. To start it, run the following in the dojo:
+You can save the code above in `/app/skeleton.hoon` of your `%base` desk like before and `|commit %base` in the dojo. Additionally, you can start the agent so we can try out `+dbug`. To start it, run the following in the dojo:
 
 ```
 > |rein %base [& %skeleton]
@@ -145,7 +145,7 @@ You can save the code above in `/app/skeleton.hoon` of your `%base` desk like be
 
 For details of using the `|rein` generator, see the [Dojo Tools](../../manual/os/dojo-tools.md#rein) documentation.
 
-Now our agent should be running, so let's try out `dbug`. In the dojo, let's try poking our agent with the `+dbug` generator:
+Now our agent should be running, so let's try out `+dbug`. In the dojo, let's try poking our agent with the `+dbug` generator:
 
 ```
 >   ~
@@ -168,7 +168,7 @@ It just printed out `~`. Our dummy `skeleton` agent doesn't have any state defin
 >=
 ```
 
-We'll use `dbug` more throughout the guide, but hopefully you should now have an idea of its basic usage.
+We'll use `+dbug` more throughout the guide, but hopefully you should now have an idea of its basic usage.
 
 ## Summary {#summary}
 
@@ -176,7 +176,7 @@ The key takeaways are:
 
 - Libraries are imported with `/+`.
 - `default-agent` is a library that provides default behaviors for Gall agent arms.
-- `dbug` is a library that lets you inspect the state and `bowl` of an agent from the dojo, with the `+dbug` generator.
+- `+dbug` is a library that lets you inspect the state and `bowl` of an agent from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](../../language/hoon/reference/rune/lus.md#lustar) (`+*`) rune.
 - `this` is a conventional deferred expression name for the agent core itself.
 - `def` is a conventional deferred expression name for accessing arms in the `default-agent` library.

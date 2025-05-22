@@ -12,7 +12,7 @@ The `card:agent:gall` type (henceforth just `card`) has a slightly complex struc
 +$  card  (wind note gift)
 ```
 
-A `wind` is defined in `arvo.hoon` as:
+A `+wind` is defined in `arvo.hoon` as:
 
 ```hoon
 ++  wind

@@ -321,11 +321,11 @@ A `tang` is a [list](../../glossary/list.md) of `tank`, and a `tank` is a struct
 
 Because we imported [generators](../../glossary/generator.md), we can access its contained gates, three of which we use in `axe.hoon`: `++print`, `++prompt`, and `++produce`.
 
-- `print` is used for printing a `tank` to the console.
+- `+print` is used for printing a `tank` to the console.
 
     In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `++print`, with two arguments. The first argument is a `tank` to print. The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `++prompt`.
 
-- `prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
+- `+prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `++produce`. Most `%ask` generators will want to use the `++prompt` gate.
 
     The first element of the `++prompt` tuple/sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
 
@@ -333,7 +333,7 @@ Because we imported [generators](../../glossary/generator.md), we can access its
 
     The third element of the `++prompt` sample is the [tape](../../glossary/tape.md) that we would like to use to prompt the user. In the case of our example, we use `"color: "`.
 
-- `produce` is used to construct the output of the generator. In our example, we produce a `tang`.
+- `+produce` is used to construct the output of the generator. In our example, we produce a `tang`.
 
 ```hoon
 |=  t=tape

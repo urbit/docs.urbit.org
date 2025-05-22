@@ -256,7 +256,7 @@ Like the previous one, we use `=,` to expose the namespace of `++enjs:format`.
 
 Our gate takes an `$update` and returns a `$json` structure. We use `|^` so we can separate out the encoding functions for individual entries (`++entry`) and individual logged actions (`++logged`).
 
-We first test the head of the `$update`, and if it's `%jrnl` (a list of entries), we `turn` over the entries and call `++entry` to encode each one. If it's `%logs`, we do the same, but call `++logged` for each item in the list. Otherwise, if it's just a single update, we encode it with `++logged`.
+We first test the head of the `$update`, and if it's `%jrnl` (a list of entries), we `+turn` over the entries and call `++entry` to encode each one. If it's `%logs`, we do the same, but call `++logged` for each item in the list. Otherwise, if it's just a single update, we encode it with `++logged`.
 
 We primarily use `++pairs` to form the object, though sometimes `++frond` if it only contains a single key-value pair. We also use `++numb` to encode numerical values.
 

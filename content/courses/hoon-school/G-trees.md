@@ -1,6 +1,6 @@
 # 6. Trees and Addressing
 
-_Every noun in Urbit is an atom or a cell. This module will elaborate how we can use this fact to locate data and evaluate code in a given expression. It will also discuss the important `list` mold builder and a number of standard library operations._
+_Every noun in Urbit is an atom or a cell. This module will elaborate how we can use this fact to locate data and evaluate code in a given expression. It will also discuss the important `+list` mold builder and a number of standard library operations._
 
 ## Trees {#trees}
 
@@ -150,7 +150,7 @@ We have used lists incidentally. A [list](../../glossary/list.md) is an ordered 
 
 (Notice that all values are converted to the specified [aura](../../glossary/aura.md), in this case the empty aura.)
 
-A `list` is built with the `list` mold. A `list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `list` is built with the `+list` mold. A `list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
 
 ```hoon
 > `(list)`~['a' %b 100]
@@ -838,7 +838,7 @@ First, bind these faces.
     <|moon planet star galaxy moon planet star galaxy|>
     ```
 
-    This will not run because `weld` expects the elements of both lists to be of the same type:
+    This will not run because `+weld` expects the elements of both lists to be of the same type:
 
     ```hoon
     > (weld b c)

@@ -154,7 +154,7 @@ A mark file is a door with exactly three arms. The door's sample is the data typ
 - `grow`: Methods for converting _from_ our mark _to_ other marks.
 - `grad`: Revision control functions.
 
-In the context of Gall agents, you'll likely just use marks for sending and receiving data, and not for actually storing files in Clay. Therefore, it's unlikely you'll need to write custom revision control functions in the `grad` arm. Instead, you can simply delegate `grad` functions to another mark - typically `%noun`. If you want to learn more about writing such `grad` functions, you can refer to the [Marks Guide](../../system/kernel/clay/guides/marks) in the Clay vane documentation, which is much more comprehensive, but it's not necessary for our purposes here.
+In the context of Gall agents, you'll likely just use marks for sending and receiving data, and not for actually storing files in Clay. Therefore, it's unlikely you'll need to write custom revision control functions in the `+grad` arm. Instead, you can simply delegate `+grad` functions to another mark - typically `%noun`. If you want to learn more about writing such `+grad` functions, you can refer to the [Marks Guide](../../system/kernel/clay/guides/marks) in the Clay vane documentation, which is much more comprehensive, but it's not necessary for our purposes here.
 
 #### Example
 
@@ -177,9 +177,9 @@ Here's a very simple mark file for the `action` structure we created in the [pre
 
 We've imported the `/sur/todo.hoon` structure library from the previous section, and we've defined the sample of the door as `=action:todo`, since that's what it will handle. Now let's consider the arms:
 
-- `grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `noun` mark, so that's the core's only arm. The `noun` arm simply calls the `action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `action` type if it nests, and crashing otherwise.
-- `grow`: This handles conversion methods _from_ our mark. Like `grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `action` data will come in as the sample of our door, and the `noun` arm simply returns it, since it's already a noun (as everything is in Hoon).
-- `grad`: This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
+- `+grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `noun` mark, so that's the core's only arm. The `noun` arm simply calls the `action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `action` type if it nests, and crashing otherwise.
+- `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `action` data will come in as the sample of our door, and the `noun` arm simply returns it, since it's already a noun (as everything is in Hoon).
+- `+grad`: This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
 
 This mark file could be saved as `/mar/todo/action.hoon`, and then the `on-poke` arm in the previous example could test for it instead of `%noun` like so:
 
@@ -194,7 +194,7 @@ This mark file could be saved as `/mar/todo/action.hoon`, and then the `on-poke`
 
 Note how `%todo-action` will be resolved to `/mar/todo/action.hoon` - the hyphen will be interpreted as `/` if there's not already a `/mar/todo-action.hoon`.
 
-This simple mark file isn't all that useful. Typically, you'd add `json` arms to `grow` and `grab`, which allow your data to be converted to and from JSON, and therefore allow your agent to communicate with a web front-end. Front-ends, JSON, and Eyre's APIs which facilitate such communications will be covered in the separate [Full-Stack Walkthrough](../app-school-full-stack), which you might like to work through after completing this guide. For now though, it's still useful to use marks and understand how they work.
+This simple mark file isn't all that useful. Typically, you'd add `+json` arms to `+grow` and `+grab`, which allow your data to be converted to and from JSON, and therefore allow your agent to communicate with a web front-end. Front-ends, JSON, and Eyre's APIs which facilitate such communications will be covered in the separate [Full-Stack Walkthrough](../app-school-full-stack), which you might like to work through after completing this guide. For now though, it's still useful to use marks and understand how they work.
 
 One further note on marks - while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
 
@@ -234,10 +234,10 @@ Mark files:
 - Mark files live in the `/mar` directory of a desk.
 - A mark like `%foo` corresponds to a file in `/mar` like `/mar/foo.hoon`
 - Marks are file types in Clay, but are also used for passing data between agents as well as for external data generally.
-- A mark file is a door with a sample of the data type it handles and exactly three arms: `grab`, `grow` and `grad`.
-- `grab` and `grow` each contain a core with arm names corresponding to other marks.
-- `grab` and `grow` define functions for converting to and from our mark, respectively.
-- `grad` defines revision control functions for Clay, but you'd typically just delegate such functions to the `%noun` mark.
+- A mark file is a door with a sample of the data type it handles and exactly three arms: `+grab`, `+grow` and `+grad`.
+- `+grab` and `+grow` each contain a core with arm names corresponding to other marks.
+- `+grab` and `+grow` define functions for converting to and from our mark, respectively.
+- `+grad` defines revision control functions for Clay, but you'd typically just delegate such functions to the `%noun` mark.
 - Incoming data from remote ships will have their marks validated by the corresponding mark file in `/mar`.
 - Messages passed between agents on a local ship don't necessarily need mark files in `/mar`.
 - Mark files are most commonly used for converting an agent's native types to JSON, in order to interact with a web front-end.

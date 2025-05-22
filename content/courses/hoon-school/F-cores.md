@@ -62,7 +62,7 @@ Let's unroll it:
 
 6. `(gth counter 5) = %.y`
 
-And thus `sum` yields the final value of `15`.
+And thus `+sum` yields the final value of `15`.
 
 It is frequently helpful, when constructing these, to be able to output the values at each step of the process. Use the `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) rune to create output without changing any values:
 
@@ -122,7 +122,7 @@ You can do even better using _interpolation_:
     120
     ```
 
-    Let's visualize the operation of this gate using pseudocode (fake code that's explanatory but may not be operational). Here's basically what's happening when `factorial` receives the value `5`:
+    Let's visualize the operation of this gate using pseudocode (fake code that's explanatory but may not be operational). Here's basically what's happening when `+factorial` receives the value `5`:
 
     ```hoon
     (factorial 5)
@@ -137,7 +137,7 @@ You can do even better using _interpolation_:
     120
     ```
 
-    We're “floating” gate calls until we reach the final iteration of such calls that only produces a value. The `mul n` component of the gate leaves `mul 5` waiting for the final series of terms to be operated upon. The `%=($ n (dec n)))` component expands the expression outwards, as illustrated by `(factorial 4)`. This continues until the expression is not expanded further, at which point the operations work backwards, successively feeding values into the `mul` functions behind them.
+    We're “floating” gate calls until we reach the final iteration of such calls that only produces a value. The `mul n` component of the gate leaves `mul 5` waiting for the final series of terms to be operated upon. The `%=($ n (dec n)))` component expands the expression outwards, as illustrated by `(factorial 4)`. This continues until the expression is not expanded further, at which point the operations work backwards, successively feeding values into the `+mul` functions behind them.
 
     The pyramid-shaped illustration approximates what's happening on the "call stack", a memory structure that tracks the instructions of the program. In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame. This process continues until a value is produced instead of a function, completing the stack.
 
@@ -487,7 +487,7 @@ The (only) [arm](../../glossary/arm.md) of a [gate](../../glossary/gate.md) enco
 6
 ```
 
-The pretty printer represents the `$` buc arm of `inc` as `1.yop`. To see the actual noun of the `$` buc arm, enter `+2:inc` into the Dojo:
+The pretty printer represents the `$` buc arm of `+inc` as `1.yop`. To see the actual noun of the `$` buc arm, enter `+2:inc` into the Dojo:
 
 ```hoon
 > +2:inc
@@ -503,7 +503,7 @@ It's worth pointing out that the arm named `$` buc can be used like any other na
 1
 ```
 
-This result may seem a bit strange. We didn't call `inc` or in any other way pass it a number. Yet using `$` buc to evaluate `inc`'s arm seems to work... sort of, anyway. Why is it giving us `1` as the return value?  We can answer this question after we understand gate samples a little better.
+This result may seem a bit strange. We didn't call `+inc` or in any other way pass it a number. Yet using `$` buc to evaluate `+inc`'s arm seems to work... sort of, anyway. Why is it giving us `1` as the return value?  We can answer this question after we understand gate samples a little better.
 
 #### The Sample
 
@@ -528,7 +528,7 @@ We see `a=@`. This may not be totally clear, but at least the `@` should make a 
 a=0
 ```
 
-We see now that the sample of `inc` is the value `0`, and has `a` as a [face](../../glossary/face.md). This is a placeholder value for the function argument. If you evaluate the `$` buc arm of `inc` without passing it an argument the placeholder value is used for the computation, and the return value will thus be `0+1`:
+We see now that the sample of `+inc` is the value `0`, and has `a` as a [face](../../glossary/face.md). This is a placeholder value for the function argument. If you evaluate the `$` buc arm of `+inc` without passing it an argument the placeholder value is used for the computation, and the return value will thus be `0+1`:
 
 ```hoon
 > $:inc
@@ -556,7 +556,7 @@ Let's look at the context of inc:
 ]
 ```
 
-This is the default Dojo subject from before we put `inc` into the subject. The `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) expression defines the context as whatever the subject is. This guarantees that the context has all the information it needs to have for the `$` buc arm to work correctly.
+This is the default Dojo subject from before we put `+inc` into the subject. The `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) expression defines the context as whatever the subject is. This guarantees that the context has all the information it needs to have for the `$` buc arm to work correctly.
 
 #### Gates Define Functions of the Sample
 
@@ -569,9 +569,9 @@ In Hoon, one can use `(gate arg)` syntax to make a function call. For example:
 235
 ```
 
-The name of the gate is `inc`. How is the `$` buc arm of inc evaluated? When a function call occurs, a copy of the `inc` gate is created, but with one modification: the sample is replaced with the function argument. Then the `$` buc arm is computed against this modified version of the `inc` gate.
+The name of the gate is `+inc`. How is the `$` buc arm of inc evaluated? When a function call occurs, a copy of the `+inc` gate is created, but with one modification: the sample is replaced with the function argument. Then the `$` buc arm is computed against this modified version of the `+inc` gate.
 
-Remember that the default or “bunt” value of the sample of inc is `0`. In the function call above, a copy of the `inc` gate is made but with a sample value of `234`. When `$` buc is computed against this modified core, the product is `235`.
+Remember that the default or “bunt” value of the sample of inc is `0`. In the function call above, a copy of the `+inc` gate is made but with a sample value of `234`. When `$` buc is computed against this modified core, the product is `235`.
 
 Notice that neither the arm nor the context is modified before the arm is evaluated. That means that the only part of the gate that changes before the arm evaluation is the [sample](../../glossary/sample.md). Hence, we may understand each gate as defining a function whose argument is the sample. If you call a gate with the same sample, you'll get the same value returned to you every time.
 
@@ -839,7 +839,7 @@ This example isn't a very efficient use of computing resources. The pyramid-shap
 
 Once this stack of frames is completed, frames "pop" off the stack starting at the top. When a frame is popped, it executes the contained gate and passes produced data to the frame below it. This process continues until the stack is empty, giving us the gate's output.
 
-When a program's final expression uses the stack in this way, it's considered to be **not tail-recursive**. This usually happens when the last line of executable code calls more than one gate, our example code's `(mul n $(n (dec n)))` being such a case. That's because such an expression needs to hold each iteration of `$(n (dec n)` in memory so that it can know what to run against the `mul` function every time.
+When a program's final expression uses the stack in this way, it's considered to be **not tail-recursive**. This usually happens when the last line of executable code calls more than one gate, our example code's `(mul n $(n (dec n)))` being such a case. That's because such an expression needs to hold each iteration of `$(n (dec n)` in memory so that it can know what to run against the `+mul` function every time.
 
 To reiterate: if you have to manipulate the result of a recursion as the last expression of your gate, as we did in our example, the function is not tail-recursive, and therefore not very efficient with memory. A problem arises when we try to recurse more times than we have space on the stack. This will result in our computation failing and producing a stack overflow. If we tried to find the factorial of `5.000.000`, for example, we would almost certainly run out of stack space.
 

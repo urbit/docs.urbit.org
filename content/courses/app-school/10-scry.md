@@ -197,7 +197,7 @@ First, let's add some data to the map:
 >=
 ```
 
-Now if we use `dbug` to inspect the state, we'll see the data has been added:
+Now if we use `+dbug` to inspect the state, we'll see the data has been added:
 
 ```
 >   [n=[p=~zod q='foo'] l=[n=[p=~wet q='baz'] l={} r={[p=~nut q='bar']}] r=~]

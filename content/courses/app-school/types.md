@@ -97,9 +97,9 @@ A `cage` is a cell of a [`mark`](#mark) and a [`vase`](#vase), like `[%foo !>('b
 
 Most data an agent sends will be in a `cage`, and most data it receives will arrive in a `cage`. The `mark` may be used to validate or convert the data in the `vase`, depending on the context.
 
-## `quip` {#quip}
+## `+quip` {#quip}
 
-`quip` is a mold-builder. A `(quip a b)` is equivalent to `[(list a) b]`, it's just a more convenient way to specify it. Most arms of an agent return a `(quip card _this)`, which is a list of effects and a new state.
+`+quip` is a mold-builder. A `(quip a b)` is equivalent to `[(list a) b]`, it's just a more convenient way to specify it. Most arms of an agent return a `(quip card _this)`, which is a list of effects and a new state.
 
 ## `path` {#path}
 

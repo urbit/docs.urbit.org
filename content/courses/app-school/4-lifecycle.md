@@ -224,7 +224,7 @@ It takes in the old state in a `vase`, then unpacks it to the `versioned-state` 
 
 You can save it as `/app/lifecycle.hoon` in the `%base` desk and `|commit %base`. Then, run `|rein %base [& %lifecycle]` to start it.
 
-Let's try inspecting our state with `dbug`:
+Let's try inspecting our state with `+dbug`:
 
 ```
 >   [%0 val=42]
@@ -232,7 +232,7 @@ Let's try inspecting our state with `dbug`:
 >=
 ```
 
-`dbug` can also dig into the state with the `%state` argument, printing the value of the specified face:
+`+dbug` can also dig into the state with the `%state` argument, printing the value of the specified face:
 
 ```
 >   42
@@ -350,7 +350,7 @@ Note: the `a+b` syntax (as in `1+[val.old val.old]`) forms a cell of the constan
 [%42 'bar']
 ```
 
-Let's now use `dbug` to confirm our state has successfully been updated to the new type:
+Let's now use `+dbug` to confirm our state has successfully been updated to the new type:
 
 ```
 >   [%1 val=[42 42]]

@@ -6,7 +6,7 @@ _Hoon is statically typed, which means (among other things) that [auras](../../g
 
 ### Calling Gates {#calling-gates}
 
-There are two ways of making a function call in Hoon. First, you can call a gate in the [subject](../../glossary/subject.md) by name. For instance, we can produce a gate `inc` which adds `1` to an input:
+There are two ways of making a function call in Hoon. First, you can call a gate in the [subject](../../glossary/subject.md) by name. For instance, we can produce a gate `+inc` which adds `1` to an input:
 
 ```hoon
 > =inc |=(a=@ (add 1 a))
@@ -78,14 +78,14 @@ Notice that each [arm](../../glossary/arm.md) in core `c` is able to call the ot
 
 #### Mutating a Gate
 
-Let's say you want to modify the default [sample](../../glossary/sample.md) of the gate for `double`. We can infer the default sample by calling `double` with no argument:
+Let's say you want to modify the default [sample](../../glossary/sample.md) of the gate for `+double`. We can infer the default sample by calling `+double` with no argument:
 
 ```hoon
 > (double:c)
 0
 ```
 
-Given that `a x 2 = 0`, `a` must be `0`. (Remember that `a` is the face for the `double` sample, as defined in the core we bound to `c` above.)
+Given that `a x 2 = 0`, `a` must be `0`. (Remember that `a` is the face for the `+double` sample, as defined in the core we bound to `c` above.)
 
 Let's say we want to mutate the `++double` gate so that the default sample is `25`. There is only one problem: `++double` isn't a gate!
 
@@ -127,7 +127,7 @@ It does indeed. Unbind `c` and `double-copy`:
 > =double-copy
 ```
 
-Contrast this with the behavior of [++add](../../language/hoon/reference/stdlib/1a.md#add). We can look at the sample of the gate for `add` with `+6:add`:
+Contrast this with the behavior of [++add](../../language/hoon/reference/stdlib/1a.md#add). We can look at the sample of the gate for `+add` with `+6:add`:
 
 ```hoon
 > +6:add
@@ -285,7 +285,7 @@ Let's try out the arms of `c` with ordinary function calls:
 %.y
 ```
 
-This works, but the results are not exciting. Passing `10` to the `plus` gate returns `10`, so it must be that the value of `b` is `0` (the bunt value of `@`). The products of the other function calls reinforce that assessment. Let's look directly at `+6` of `c` to see the sample:
+This works, but the results are not exciting. Passing `10` to the `+plus` gate returns `10`, so it must be that the value of `b` is `0` (the bunt value of `@`). The products of the other function calls reinforce that assessment. Let's look directly at `+6` of `c` to see the sample:
 
 ```hoon
 > +6:c
@@ -775,7 +775,7 @@ The `++rotation` arm takes takes a specified number of characters off of a [tape
 
 `=/ length=@ud (lent my-alphabet)` stores the length of `my-alphabet` to make the following code a little clearer.
 
-The [++trim](../../language/hoon/reference/stdlib/4b.md#trim) gate from the standard library splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `my-alphabet` into two parts, `p` and `q`, which are now directly available in the [subject](../../glossary/subject.md). We call the modulus operation `mod` to make sure that the point at which we split our `tape` is a valid point inside of `my-alphabet` even if `my-steps` is greater than `length`, the length of `my-alphabet`. Try trim in the dojo:
+The [++trim](../../language/hoon/reference/stdlib/4b.md#trim) gate from the standard library splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `my-alphabet` into two parts, `p` and `q`, which are now directly available in the [subject](../../glossary/subject.md). We call the modulus operation `+mod` to make sure that the point at which we split our `tape` is a valid point inside of `my-alphabet` even if `my-steps` is greater than `length`, the length of `my-alphabet`. Try trim in the dojo:
 
 ```hoon
 > (trim 2 "abcdefg")
@@ -785,7 +785,7 @@ The [++trim](../../language/hoon/reference/stdlib/4b.md#trim) gate from the stan
 [p="your" q="beard"]
 ```
 
-`(weld q p)` uses [++weld](../../language/hoon/reference/stdlib/2b.md#weld), which combines two strings into one. Remember that `trim` has given us a split version of `my-alphabet` with `p` being the front half that was split off of `my-alphabet` and `q` being the back half. Here we are welding the two parts back together, but in reverse order: the second part `q` is welded to the front, and the first part `p` is welded to the back.
+`(weld q p)` uses [++weld](../../language/hoon/reference/stdlib/2b.md#weld), which combines two strings into one. Remember that `+trim` has given us a split version of `my-alphabet` with `p` being the front half that was split off of `my-alphabet` and `q` being the back half. Here we are welding the two parts back together, but in reverse order: the second part `q` is welded to the front, and the first part `p` is welded to the back.
 
 ```hoon
 ++  map-maker
@@ -846,13 +846,13 @@ We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [b
   (space-adder key-tape alpha)
 ```
 
-`++encoder` and `++decoder` utilize the `rotation` and `space-adder` arms. These [gates](../../glossary/gate.md) are essentially identical, with the arguments passed to `space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `maps` that we can use to encode and decode messages.
+`++encoder` and `++decoder` utilize the `+rotation` and `space-adder` arms. These [gates](../../glossary/gate.md) are essentially identical, with the arguments passed to `space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `maps` that we can use to encode and decode messages.
 
-In both cases, we create a gate that accepts a `@ud` named `steps`. In `encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `value-tape` [noun](../../glossary/noun.md) by calling `rotation` on `alpha`. `alpha` is our arm which contains a `tape` of the entire alphabet. The `value-tape` will be the list of `value`s in our [map](../../language/hoon/reference/stdlib/2o.md#map).
+In both cases, we create a gate that accepts a `@ud` named `steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `alpha`. `alpha` is our arm which contains a `tape` of the entire alphabet. The `value-tape` will be the list of `value`s in our [map](../../language/hoon/reference/stdlib/2o.md#map).
 
-In `decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `space-adder` it will be the list of `key`s in our `map`.
+In `+decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `space-adder` it will be the list of `key`s in our `map`.
 
-`(space-adder alpha value-tape)`, for `encoder`, and `(space-adder key-tape alpha)`, for `decoder`, produce a `map` that has the first argument as the keys and the second as the values.
+`(space-adder alpha value-tape)`, for `+encoder`, and `(space-adder key-tape alpha)`, for `+decoder`, produce a `map` that has the first argument as the keys and the second as the values.
 
 If our two inputs to `space-adder` were `"abcdefghijklmnopqrstuvwxyz"` and `"bcdefghijklmnopqrstuvwxyza"`, we would get a `map` where `'a'` maps to `'b'`, `'b'` to `'c'` and so on. By doing this we can produce a `map` that gives us a translation between the alphabet and our shifted alphabet, or vice versa.
 
@@ -871,7 +871,7 @@ Still with us? Good. We are finally about to use all the stuff that we've walked
 
 Both `++shift` and `++unshift` take two arguments: our `message`, the `tape` that we want to manipulate; and our `shift-steps`, the number of positions of the alphabet by which we want to shift our message.
 
-`++shift` is for encoding, and `++unshift` is for decoding. Thus, `++shift` calls the `operate` arm with `(operate message (encoder shift-steps))`, and `++unshift` makes that call with `(operate message (decoder shift-steps))`. These both produce the final output of the core, to be called in the form of `(shift msg steps)` and `(unshift msg steps)` in the [cell](../../glossary/cell.md) being created at the beginning of our code.
+`++shift` is for encoding, and `++unshift` is for decoding. Thus, `++shift` calls the `+operate` arm with `(operate message (encoder shift-steps))`, and `++unshift` makes that call with `(operate message (decoder shift-steps))`. These both produce the final output of the core, to be called in the form of `(shift msg steps)` and `(unshift msg steps)` in the [cell](../../glossary/cell.md) being created at the beginning of our code.
 
 ```hoon
 ++  operate

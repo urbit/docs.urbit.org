@@ -159,7 +159,7 @@ Here's another example of type inference at work:
 36
 ```
 
-The [add](../../language/hoon/reference/stdlib/1a.md#add) function in the Hoon standard library operates on all atoms, regardless of aura, and returns atoms with no aura specified. Hoon isn't able to infer anything more specific than `@` for the product of `add`. This is by design, however. Notice that when you `add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal). This works for all of the unsigned auras:
+The [add](../../language/hoon/reference/stdlib/1a.md#add) function in the Hoon standard library operates on all atoms, regardless of aura, and returns atoms with no aura specified. Hoon isn't able to infer anything more specific than `@` for the product of `+add`. This is by design, however. Notice that when you `+add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal). This works for all of the unsigned auras:
 
 ```hoon
 > (add 100 0b101)
@@ -383,7 +383,7 @@ We can have more complex molds as well:
 [[@p @p] @ud]
 ```
 
-Most of the time, we will define such complex types using specific runes and “mold builder” tools. Thus a `list` needs an associated type `(list @)` to correctly denote the data type.
+Most of the time, we will define such complex types using specific runes and “mold builder” tools. Thus a `+list` needs an associated type `(list @)` to correctly denote the data type.
 
 ### Identifying Molds {#identifying-molds}
 

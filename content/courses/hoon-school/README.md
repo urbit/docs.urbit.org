@@ -39,7 +39,7 @@ Once you have a "...dojo>" prompt, the system is ready to go and waiting on inpu
 
 ## Getting started {#getting-started}
 
-Once you've created your development ship, let's try a basic command. Type `%-  add  [2 2]` at the prompt and hit `Return`. (Note the double spaces before and after `add`.)  Your screen now shows:
+Once you've created your development ship, let's try a basic command. Type `%-  add  [2 2]` at the prompt and hit `Return`. (Note the double spaces before and after `+add`.)  Your screen now shows:
 
 ```hoon
 fake: ~zod
@@ -51,7 +51,7 @@ http: live (insecure, loopback) on 12321
 ~zod:dojo>
 ```
 
-You just used a function from the Hoon standard library, `add`, which for reasons that will become clear later is frequently written [++add](../../language/hoon/reference/stdlib/1a.md#add). Next, quit Urbit by entering [|exit](../../manual/os/dojo-tools.md#exit) :
+You just used a function from the Hoon standard library, `+add`, which for reasons that will become clear later is frequently written [++add](../../language/hoon/reference/stdlib/1a.md#add). Next, quit Urbit by entering [|exit](../../manual/os/dojo-tools.md#exit) :
 
 ```hoon
 > %-  add  [2 2]

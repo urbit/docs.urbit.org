@@ -158,7 +158,7 @@ add
 [1 2]
 ```
 
-The operation you just completed is straightforward enough: `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure). Literally, we can interpret `%-  add  [1 2]` as “evaluate the `add` core on the input values `[1 2]`”.
+The operation you just completed is straightforward enough: `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure). Literally, we can interpret `%-  add  [1 2]` as “evaluate the `+add` core on the input values `[1 2]`”.
 
 The [++add](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#cenhep) in the neighboring child expression as a cell. There's really no limit to the complexity of Hoon expressions: they can track deep and wide. They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
@@ -446,7 +446,7 @@ dojo: hoon expression failed
 
 There are two ways to represent text in Urbit: cords (`@t` [aura](../../glossary/aura.md) atoms) and [tapes](../../glossary/tape.md) (lists of individual characters). Both of these are commonly called [“strings”](https://en.wikipedia.org/wiki/String_%28computer_science%29).
 
-Why represent text?  What does that mean?  We have to have a way of distinguishing words that mean something to Hoon (like `list`) from words that mean something to a human or a process (like `'hello world'`).
+Why represent text?  What does that mean?  We have to have a way of distinguishing words that mean something to Hoon (like `+list`) from words that mean something to a human or a process (like `'hello world'`).
 
 Right now, all you need to know is that there are (at least) two valid ways to write text:
 

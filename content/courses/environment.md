@@ -250,9 +250,3 @@ If there's a kernel update down the line and you need to update the `base-dev` a
 
 The default `peru.yaml` only includes the two dependencies mentioned, but you can easily add any others you need. Refer to the [peru documentation](https://github.com/buildinspace/peru) configuration details.
 
-
-
-
-
-
-

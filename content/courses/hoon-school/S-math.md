@@ -514,7 +514,7 @@ Time values, often referred to as "timestamps", are commonly represented by the 
 
 A timestamp can be separated into the time portion, which is the relative offset within a given day, and the date portion, which represents the absolute day.
 
-There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d` [aura](../../glossary/aura.md), with `@da` for a full timestamp and `@dr` for an offset; and the [+$date](../../language/hoon/reference/stdlib/2q.md#date)/[+$tarp](../../language/hoon/reference/stdlib/2q.md#tarp) structure:
+There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d` [aura](../../glossary/aura.md), with `@da` for a full timestamp and `@dr` for an offset; and the [$date](../../language/hoon/reference/stdlib/2q.md#date)/[$tarp](../../language/hoon/reference/stdlib/2q.md#tarp) structure:
 
 | Aura | Meaning | Example |
 | ---- | ------- | ------- |

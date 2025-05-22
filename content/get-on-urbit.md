@@ -107,7 +107,7 @@ http: loopback live on http://localhost:12321
 
 {% endcode %}
 
-This is the Dojo, Urbit's command-line interface. You can leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
+This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
 
 You can access your planet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
 
@@ -156,7 +156,7 @@ http: loopback live on http://localhost:12321
 
 {% endcode %}
 
-This is the Dojo, Urbit's command-line interface. You can leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
+This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
 
 You can access your comet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
 

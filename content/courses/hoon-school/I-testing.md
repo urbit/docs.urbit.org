@@ -10,7 +10,7 @@ _This module will discuss how we can have confidence that a program does what it
 >
 > ~wicdev-wisryt
 
-When you produce software, how much confidence do you have that it does what you think it does?  Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected. We can classify a testing regimen for Urbit code into a couple of layers:  fences and unit tests.
+When you produce software, how much confidence do you have that it does what you think it does?  Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected. We can classify a testing regimen for Urbit code into a couple of layers: fences and unit tests.
 
 ### Fences {#fences}
 
@@ -58,7 +58,7 @@ Hoon unit tests come in two categories:
 
 Let's look at a practical example first, then dissect these.
 
-### Exercise:  Testing a Library {#exercise-testing-a-library}
+### Exercise: Testing a Library {#exercise-testing-a-library}
 
 Consider an absolute value arm `++absolute` for `@rs` values. The unit tests for `++absolute` should accomplish a few things:
 
@@ -108,7 +108,7 @@ The dcSpark blog post [“Writing Robust Hoon — A Guide To Urbit Unit Testing�
 
 ### `/lib/test.hoon` {#libtesthoon}
 
-In `/lib/test.hoon` we find a core with a few gates:  `++expect`, `++expect-eq`, and `++expect-fail`, among others.
+In `/lib/test.hoon` we find a core with a few gates: `++expect`, `++expect-eq`, and `++expect-fail`, among others.
 
 `++expect-eq` checks whether two vases are equal and pretty-prints the result of that test. It is our workhorse. The source for `++expect-eq` is:
 

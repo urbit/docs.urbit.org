@@ -13,13 +13,13 @@ There are four basic ways to represent text in Urbit:
 - `@tas`, a `term` used primarily for constants, which is an atom (single value)
 - `tape`, which is a `(list @t)`
 
-This is more ways than many languages support:  most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_%28computer_science%29), however.
+This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_%28computer_science%29), however.
 
 What are the applications of each?
 
 ### `@t` `cord` {#t-cord}
 
-What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol:  there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.)  Characters can be combined, particularly in ideographic languages like Mandarin Chinese.
+What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol: there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.)  Characters can be combined, particularly in ideographic languages like Mandarin Chinese.
 
 One way to handle text is to assign a code value to each letter, then represent these as subsequent values in memory. (Think, for instance, of [Morse code](https://en.wikipedia.org/wiki/Morse_code).)  On all modern computers, the numeric values used for each letter are given by the [ASCII](https://en.wikipedia.org/wiki/ASCII) standard, which defines 128 unique characters (2⁷ = 128).
 
@@ -222,7 +222,7 @@ Applicable `list` operations, some of which you've seen before, include:
     '!'
     ```
 
-    **Exercise:  `++snag` Yourself**
+    **Exercise: `++snag` Yourself**
 
     - Without using `++snag`, write a gate that returns the `n`th item of a list. There is a solution at the bottom of the page.
 
@@ -252,7 +252,7 @@ Applicable `list` operations, some of which you've seen before, include:
     6
     ```
 
-    **Exercise:  Count the Number of Characters in Text**
+    **Exercise: Count the Number of Characters in Text**
 
     - There is a built-in `++lent` function that counts the number of characters in a `tape`. Build your own `tape`-length character counting function without using `++lent`.
 
@@ -375,7 +375,7 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
 
 - The [++scow](../../language/hoon/reference/stdlib/4m.md#scow) function renders a `dime` as a `tape` (`dime`→`tape`); it is otherwise identical to [++scot](../../language/hoon/reference/stdlib/4m.md#scot).
 
-- The [++sane](../../language/hoon/reference/stdlib/4b.md#sane) function checks the validity of a possible text string as a `knot` or `term`. The usage of `++sane` will feel a bit strange to you:  it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `++sane` is also not infallible yet.
+- The [++sane](../../language/hoon/reference/stdlib/4b.md#sane) function checks the validity of a possible text string as a `knot` or `term`. The usage of `++sane` will feel a bit strange to you: it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `++sane` is also not infallible yet.
 
     ```hoon
     > ((sane %ta) 'ångstrom')
@@ -420,7 +420,7 @@ If you have a Hoon value and you want to convert it into text as such, use [++sc
     %.n
     ```
 
-## Exercise:  Building Your Own Library {#exercise-building-your-own-library}
+## Exercise: Building Your Own Library {#exercise-building-your-own-library}
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
@@ -528,7 +528,7 @@ Naked generators are limited because they have no way of accessing data that exi
 
 This entire structure is a [noun](../../glossary/noun.md), which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
 
-## Exercise:  The Magic 8-Ball {#exercise-the-magic-8-ball}
+## Exercise: The Magic 8-Ball {#exercise-the-magic-8-ball}
 
 This Magic 8-Ball generator returns one of a variety of answers in response to a call. In its entirety:
 
@@ -585,7 +585,7 @@ If we need to include optional arguments to a generator, we separate them using 
 +cat /===/gen/cat/hoon, =vane %c
 ```
 
-## Exercise:  Using the Playing Card Library {#exercise-using-the-playing-card-library}
+## Exercise: Using the Playing Card Library {#exercise-using-the-playing-card-library}
 
 Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use it with a `%say` generator.
 

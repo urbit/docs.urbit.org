@@ -11,7 +11,7 @@ As we've said before:
 
 Subject-oriented programming means that every expression is evaluated with respect to some [subject](../../glossary/subject.md). Every [arm](../../glossary/arm.md) of a [core](../../glossary/core.md) is evaluated with its parent core as the subject.
 
-You have also seen how wings work as search paths to identify [nouns](../../glossary/noun.md) in the [subject](../../glossary/subject.md), and you have learned three ways to access values by address:  numeric addressing, lark notation, and wing search expressions.
+You have also seen how wings work as search paths to identify [nouns](../../glossary/noun.md) in the [subject](../../glossary/subject.md), and you have learned three ways to access values by address: numeric addressing, lark notation, and wing search expressions.
 
 Generally speaking, the following [rune](../../glossary/rune.md) families allow you to do certain things to the [subject](../../glossary/subject.md):
 
@@ -43,7 +43,7 @@ In the Dojo, if you use `+1` by itself, you can see the current [subject](../../
 ]
 ```
 
-`.` does the same thing:  it always refers to the current subject.
+`.` does the same thing: it always refers to the current subject.
 
 If `.` is the subject, then `..arm` is the subject of a given [arm](../../glossary/arm.md) (the second `.` dot being the wing resolution operator). You can check the details of the parent [core](../../glossary/core.md) using something like `..add`. This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](../../system/runtime/guides/jetting.md#edit-the-hoon-source-code), for instance.
 
@@ -54,7 +54,7 @@ Another use case for the `..arm` syntax is when there is a core in the subject w
 <33.uof 1.pnw %138>
 ```
 
-#### Tutorial:  The Core Structure of `hoon.hoon`
+#### Tutorial: The Core Structure of `hoon.hoon`
 
 Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../language/hoon/reference/rune/tis.md#tisgar) to build up larger structures. `=>  p=hoon  q=hoon` yields the product of `q` with the product of `p` taken as the subject; i.e. it composes Hoon statements, like [cores](../../glossary/core.md).
 
@@ -206,7 +206,7 @@ Lastly, let's check the subject of the last arm in `hoon.hoon` (as of May 2024):
 
 This confirms for us, then, that `hoon.hoon` consists of six nested cores, with one inside the [payload](../../glossary/payload.md) of the next, with the `hoon-version` core most deeply nested.
 
-### Exercise:  Explore `hoon.hoon` {#exercise-explore-hoonhoon}
+### Exercise: Explore `hoon.hoon` {#exercise-explore-hoonhoon}
 
 - Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in its parent [core](../../glossary/core.md) or core(s) that have the parent core put in its context via the `=>` or `=<` runes.
 
@@ -257,7 +257,7 @@ Here are a couple of new runes for modifying the subject and chaining computatio
 - `=.` [tisdot](../../language/hoon/reference/rune/tis.md#tisdot) is used to change a leg in the [subject](../../glossary/subject.md).
 - `=~` [tissig](../../language/hoon/reference/rune/tis.md#tissig) composes many expressions together serially.
 
-#### Tutorial:  Bank Account
+#### Tutorial: Bank Account
 
 In this section, we will write a [door](../../glossary/door.md) that can act as a bank account with the ability to withdraw, deposit, and check the account's balance. This door replaces the sample of the door with the new values as each transaction proceeds.
 
@@ -333,7 +333,7 @@ Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud
 
 It's important to notice that the sample, `balance`, is stored as part of the [door](../../glossary/door.md) rather than existing outside of it.
 
-### Exercise:  Bank Account {#exercise-bank-account}
+### Exercise: Bank Account {#exercise-bank-account}
 
 - Modify the `%say` [generator](../../glossary/generator.md) above to accept a `@ud` unsigned decimal dollar amount and a `?(%deposit %withdraw)` term and returns the result of only that operation on the starting balance of the bank account. (Note that this will only work once on the [door](../../glossary/door.md), and the state will not persist between generator calls.)
 
@@ -382,7 +382,7 @@ Since the `rng` starts from the same seed value every single time, both of the n
 [21 47]
 ```
 
-#### Tutorial:  Magic 8-Ball
+#### Tutorial: Magic 8-Ball
 
 The Magic 8-Ball returns one of a variety of answers in response to a call. In its entirety:
 
@@ -440,7 +440,7 @@ We slam the `++rad:rng` gate which returns a random number from 0 to _n_-1 inclu
 "Ask again later."
 ```
 
-## Tutorial:  Dice Roll {#tutorial-dice-roll}
+## Tutorial: Dice Roll {#tutorial-dice-roll}
 
 Let's look at an example that uses all three parts. Save the code below in a file called `dice.hoon` in the `/gen` directory of your `%base` [desk](../../glossary/desk.md).
 

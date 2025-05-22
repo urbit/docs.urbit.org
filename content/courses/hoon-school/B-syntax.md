@@ -30,7 +30,7 @@ At its root, Urbit is completely specified by [Nock](../../glossary/nock.md), so
 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1]
 ```
 
-This is like reading binary machine code:  we mortals need a clearer vernacular.
+This is like reading binary machine code: we mortals need a clearer vernacular.
 
 Hoon serves as Urbit's practical programming language. Everything in Urbit OS is written in Hoon, and many of the ancillary tools as well. 
 
@@ -39,7 +39,7 @@ Any operation in Urbit ultimately results in a value. Much like machine language
 
 ## Nouns {#nouns}
 
-Think about a child persistently asking you what a thing is made of. At first, you may respond, “plastic”, or “metal”. Eventually, the child may wear you down to a more fundamental level:  atoms and molecules (bonded atoms).
+Think about a child persistently asking you what a thing is made of. At first, you may respond, “plastic”, or “metal”. Eventually, the child may wear you down to a more fundamental level: atoms and molecules (bonded atoms).
 
 In a very similar sense, everything in a Hoon program is an atom or a bond. Metaphorically, a Hoon program is a complex molecule, a digital chemistry that describes one mathematical representation of data.
 
@@ -86,7 +86,7 @@ While there are dozens of auras for specialized applications, here are the most 
 
 You can see that these are all different-but-equivalent ways of representing the same underlying data values.
 
-There's a special value that recurs in many contexts in Hoon:  `~` sig is the null or zero value.
+There's a special value that recurs in many contexts in Hoon: `~` sig is the null or zero value.
 
 The `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune is useful for ensuring that everything in the second child matches the type (aura) of the first, e.g.
 
@@ -96,7 +96,7 @@ The `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune is usef
 
 We will use `^-` kethep extensively to enforce type constraints, a very useful tool in Hoon code.
 
-### Exercise:  Aura Conversions {#exercise-aura-conversions}
+### Exercise: Aura Conversions {#exercise-aura-conversions}
 
 Convert between some of the given auras at the [Dojo](../../glossary/dojo.md) prompt, e.g.:
 
@@ -108,7 +108,7 @@ Convert between some of the given auras at the [Dojo](../../glossary/dojo.md) pr
 
 ### Cells {#cells}
 
-A [cell](../../glossary/cell.md) is a pair of nouns. Cells are traditionally written using square brackets:  `[]`. For now, just recall the square brackets and that cells are always "pairs" of values.
+A [cell](../../glossary/cell.md) is a pair of nouns. Cells are traditionally written using square brackets: `[]`. For now, just recall the square brackets and that cells are always "pairs" of values.
 
 ```hoon
 [1 2]
@@ -146,7 +146,7 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113%20-%20Basic%20Coding.mp4" %}
 
-The backbone of any Hoon expression is a scaffolding of [runes](../../glossary/rune.md), which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs:  they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
+The backbone of any Hoon expression is a scaffolding of [runes](../../glossary/rune.md), which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs: they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
 
 A rune is just a pair of ASCII characters (a digraph). We usually [pronounce runes](../../glossary/aural-ascii.md) by combining their characters’ names, e.g.: ["kethep"](../../language/hoon/reference/rune/ket.md#kethep) for `^-`, ["bartis"](../../language/hoon/reference/rune/bar.md#bartis) for `|=`, and ["barcen"](../../language/hoon/reference/rune/bar.md#barcen) for `|%`.
 
@@ -158,9 +158,9 @@ add
 [1 2]
 ```
 
-The operation you just completed is straightforward enough:  `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure). Literally, we can interpret `%-  add  [1 2]` as “evaluate the `add` core on the input values `[1 2]`”.
+The operation you just completed is straightforward enough: `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure). Literally, we can interpret `%-  add  [1 2]` as “evaluate the `add` core on the input values `[1 2]`”.
 
-The [++add](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#cenhep) in the neighboring child expression as a cell. There's really no limit to the complexity of Hoon expressions:  they can track deep and wide. They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
+The [++add](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#cenhep) in the neighboring child expression as a cell. There's really no limit to the complexity of Hoon expressions: they can track deep and wide. They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
 ```hoon
 %-
@@ -188,7 +188,7 @@ Any Hoon program is architected around runes. If you have used another programmi
 
 We are only going to introduce a handful of runes in this lesson, but by the time we're done with Hoon School, you'll know the twenty-five or so runes that yield 80% of the capability.
 
-### Exercise:  Identifying Unknown Runes {#exercise-identifying-unknown-runes}
+### Exercise: Identifying Unknown Runes {#exercise-identifying-unknown-runes}
 
 Here is a lightly-edited snippet of Hoon code. Anything written after a `::` [colcol](../../language/hoon/reference/rune/col.md#colcol) is a _comment_ and is ignored by the computer. (Comments are useful for human-language explanations.)
 
@@ -214,9 +214,9 @@ Here is a lightly-edited snippet of Hoon code. Anything written after a `::` [co
     - Is every pair of punctuation marks a rune?
     - How can you tell a rune from other kinds of marks?
  
-One clue:  every rune in Hoon (except for one, not in the above code) has _at least one child_.
+One clue: every rune in Hoon (except for one, not in the above code) has _at least one child_.
 
-### Exercise:  Inferring Rune Behavior {#exercise-inferring-rune-behavior}
+### Exercise: Inferring Rune Behavior {#exercise-inferring-rune-behavior}
 
 Here is a snippet of Hoon code:
  
@@ -234,7 +234,7 @@ Without looking it up first, what does the `==` [tistis](../../language/hoon/ref
 
 Most runes are used at the beginning of a complex expression, but there are exceptions. For example, the runes `--` [hephep](../../language/hoon/reference/rune/terminators.md#hephep) and `==` [tistis](../../language/hoon/reference/rune/terminators.md#tistis) are used at the end of certain expressions.
 
-#### Aside:  Writing Incorrect Code
+#### Aside: Writing Incorrect Code
 
 At the Dojo, you can attempt to operate using the wrong values; for instance, `++add` doesn't know how to add three numbers at the same time.
 
@@ -329,7 +329,7 @@ Right now, we don't have a way of preserving values for subsequent use in a more
 
 We are going to store the value as a variable, or in Hoon, “pin a face to the subject”. Hoon faces aren't exactly like variables in other programming languages, but for now we can treat them that way, with the caveat that they are only accessible to daughter or sister expressions.
 
-When we used [++add](../../language/hoon/reference/stdlib/1a.md#add) or [++sub](../../language/hoon/reference/stdlib/1a.md#sub) previously, we wanted an immediate answer. There's not much more to say than `5 + 1`. In contrast, pinning a face accepts three daughter expressions:  a name (or face), a value, and the rest of the expression.
+When we used [++add](../../language/hoon/reference/stdlib/1a.md#add) or [++sub](../../language/hoon/reference/stdlib/1a.md#sub) previously, we wanted an immediate answer. There's not much more to say than `5 + 1`. In contrast, pinning a face accepts three daughter expressions: a name (or face), a value, and the rest of the expression.
 
 ```hoon
 =/  perfect-number  28
@@ -367,7 +367,7 @@ The difference is that the Dojo “pin” is permanent until deleted:
 
 rather than only effective for the daughter expressions of a `=/` tisfas rune. (We also won't be able to use this Dojo-style pin in a regular Hoon program.)
 
-### Exercise:  A Large Power of Two {#exercise-a-large-power-of-two}
+### Exercise: A Large Power of Two {#exercise-a-large-power-of-two}
 
 Create two numbers named `two` and `twenty`, with appropriate values, using the `=/` tisfas rune.
  
@@ -394,7 +394,7 @@ This convention keeps the notation from getting too cluttered. For now, let's ca
 
 Since almost all cells branch rightwards, the pretty-printer (the printing routine that the Dojo uses) prefers to omit `[]` brackets marking the rightmost cells in a running cell. These read to the right; that is, `[1 2 3]` is the same as `[1 [2 3]]`.
 
-### Exercise:  Comparing Cells {#exercise-comparing-cells}
+### Exercise: Comparing Cells {#exercise-comparing-cells}
 
 Enter the following cells:
 
@@ -420,7 +420,7 @@ A running cell which terminates in a `~` sig (null) atom is a list.
   
 Lists are ubiquitous in Hoon, and many specialized tools exist to work with them. (For instance, to apply a gate to each value in a list, or to sum up the values in a list, etc.)  We'll see more of them in a future lesson.
 
-### Exercise:  Making a List from a Null-Terminated Cell {#exercise-making-a-list-from-a-null-terminated-cell}
+### Exercise: Making a List from a Null-Terminated Cell {#exercise-making-a-list-from-a-null-terminated-cell}
 
 You can apply an aura to explicitly designate a null-terminated running cell as a list containing particular types of data. Sometimes you have to clear the aura using a more general aura (like `@`) before the conversion can work.
 
@@ -444,7 +444,7 @@ dojo: hoon expression failed
 
 ### Text {#text}
 
-There are two ways to represent text in Urbit:  cords (`@t` [aura](../../glossary/aura.md) atoms) and [tapes](../../glossary/tape.md) (lists of individual characters). Both of these are commonly called [“strings”](https://en.wikipedia.org/wiki/String_%28computer_science%29).
+There are two ways to represent text in Urbit: cords (`@t` [aura](../../glossary/aura.md) atoms) and [tapes](../../glossary/tape.md) (lists of individual characters). Both of these are commonly called [“strings”](https://en.wikipedia.org/wiki/String_%28computer_science%29).
 
 Why represent text?  What does that mean?  We have to have a way of distinguishing words that mean something to Hoon (like `list`) from words that mean something to a human or a process (like `'hello world'`).
 
@@ -466,7 +466,7 @@ We will use these incidentally for now and explain their characteristics in a la
 "Some UTF-8: ἄλφα"
 ```
 
-### Exercise:  ASCII Values in Text {#exercise-ascii-values-in-text}
+### Exercise: ASCII Values in Text {#exercise-ascii-values-in-text}
 
 A [cord](../../glossary/cord.md) (`@t`) represents text as a sequence of characters. If you know the [ASCII](https://en.wikipedia.org/wiki/ASCII) value for a particular character, you can identify how the text is structured as a number. (This is most easily done using the hexadecimal `@ux` representation due to bit alignment.)
 
@@ -483,7 +483,7 @@ that is, the character codes `0x73` = `'s'`, `0x72` = `'r'`, `0x61` = `'a'`, and
 
 ## Making a Decision {#making-a-decision}
 
-The final rune we introduce in this lesson will allow us to select between two different Hoon expressions, like picking a fork in a road. Any computational process requires the ability to distinguish options. For this, we first require a basis for discrimination:  truthness.
+The final rune we introduce in this lesson will allow us to select between two different Hoon expressions, like picking a fork in a road. Any computational process requires the ability to distinguish options. For this, we first require a basis for discrimination: truthness.
 
 Essentially, we have to be able to decide whether or not some value or expression evaluates as `%.y` _true_ (in which case we will do one thing) or `%.n` _false_ (in which case we do another). At this point, our basic expressions are always mathematical; later on we will check for existence, for equality of two values, etc.
 
@@ -505,7 +505,7 @@ If we supply these with a pair of numbers to a `%-` cenhep call, we can see if t
 %.y
 ```
 
-Given a test expression like those above, we can use the `?:` wutcol rune to decide between the two possible alternatives. `?:` wutcol accepts three children:  a true/false statement, an expression for the `%.y` true case, and an expression for the `%.n` false case.
+Given a test expression like those above, we can use the `?:` wutcol rune to decide between the two possible alternatives. `?:` wutcol accepts three children: a true/false statement, an expression for the `%.y` true case, and an expression for the `%.n` false case.
 
 [Piecewise mathematical functions](https://en.wikipedia.org/wiki/Piecewise) require precisely this functionality. For instance, the Heaviside function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero.
 
@@ -548,7 +548,7 @@ We don't know yet how to store this capability for future use on as-yet-unknown 
 
 Carefully map how the runes in that statement relate to each other, and notice how the taller structure makes it relatively easier to read and understand what's going on.
 
-### Exercise:  “Absolute” Value (Around Ten) {#exercise-absolute-value-around-ten}
+### Exercise: “Absolute” Value (Around Ten) {#exercise-absolute-value-around-ten}
 
 Implement a version of the absolute value function, $$|x|$$, similar to the Heaviside implementation above. (Translate it to 10 as well since we still can't deal with negative numbers; call this $$|x|_{10}$$.)
 

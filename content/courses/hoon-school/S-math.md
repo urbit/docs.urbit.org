@@ -42,9 +42,9 @@ A number with a fractional part is called a “floating-point number” in compu
 
 Consider for a moment how you would represent a regular decimal fraction if you only had integers available. You would probably adopt one of three strategies:
 
-1. [**Rational numbers**](https://en.wikipedia.org/wiki/Fraction). Track whole-number ratios like fractions. Thus $$1.25 = \frac{5}{4}$$, thence the pair `(5, 4)`. Two numbers have to be tracked:  the numerator and the denominator.
-2. [**Fixed-point**](https://en.wikipedia.org/wiki/Fixed-point_arithmetic). Track the value in smaller fixed units (such as thousandths). By defining the base unit to be $$\frac{1}{1000}$$ , $$1.25$$ may be written $$1250$$. One number needs to be tracked:  the value in terms of the scale. (This is equivalent to rational numbers with only a fixed denominator allowed.)
-3. [**Floating-point**](https://en.wikipedia.org/wiki/Floating-point_arithmetic). Track the value at adjustable scale. In this case, one needs to represent $$1.25$$ as something like $$125 \times 10^{-2}$$. Two numbers have to be tracked:  the significand ($$125$$) and the exponent ($$-2$$).
+1. [**Rational numbers**](https://en.wikipedia.org/wiki/Fraction). Track whole-number ratios like fractions. Thus $$1.25 = \frac{5}{4}$$, thence the pair `(5, 4)`. Two numbers have to be tracked: the numerator and the denominator.
+2. [**Fixed-point**](https://en.wikipedia.org/wiki/Fixed-point_arithmetic). Track the value in smaller fixed units (such as thousandths). By defining the base unit to be $$\frac{1}{1000}$$ , $$1.25$$ may be written $$1250$$. One number needs to be tracked: the value in terms of the scale. (This is equivalent to rational numbers with only a fixed denominator allowed.)
+3. [**Floating-point**](https://en.wikipedia.org/wiki/Floating-point_arithmetic). Track the value at adjustable scale. In this case, one needs to represent $$1.25$$ as something like $$125 \times 10^{-2}$$. Two numbers have to be tracked: the significand ($$125$$) and the exponent ($$-2$$).
 
 Most systems use floating-point mathematics to solve this problem. For instance, single-precision floating-point mathematics designate one bit for the sign, eight bits for the exponent (which has 127 subtracted from it), and twenty-three bits for the significand.
 
@@ -89,7 +89,7 @@ However, as you can see here, the conversion is not “correct” for the percei
 0b11.1111.1000.0000.0000.0000.0000.0000
 ```
 
-If you refer back to the 32-bit floating-point example above, you'll see why:  to represent one exactly, we have to use $$1.0 = (-1)^0 \times 2^{{127 - 127}} \times 1$$ and thus `0b11.1111.1000.0000.0000.0000.0000.0000`.
+If you refer back to the 32-bit floating-point example above, you'll see why: to represent one exactly, we have to use $$1.0 = (-1)^0 \times 2^{{127 - 127}} \times 1$$ and thus `0b11.1111.1000.0000.0000.0000.0000.0000`.
 
 So to carry out this conversion from `@ud` to `@rs` correctly, we should use the [++sun:rs](../../language/hoon/reference/stdlib/3b.md#sunrs) arm.
 
@@ -152,7 +152,7 @@ This includes:
 - [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs), check equality (but not nearness!)
 - [++sqt:rs](../../language/hoon/reference/stdlib/3b.md#sqtrs), square root
 
-### Exercise:  `++is-close` {#exercise-is-close}
+### Exercise: `++is-close` {#exercise-is-close}
 
 The [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for complete equality of two values. The downside of this [arm](../../glossary/arm.md) is that it doesn't find very close values:
 
@@ -164,13 +164,13 @@ The [++equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for 
 %.n
 ```
 
-- Produce an arm which check for two values to be close to each other by an absolute amount. It should accept three values:  `a`, `b`, and `atol`. It should return the result of the following comparison:
+- Produce an arm which check for two values to be close to each other by an absolute amount. It should accept three values: `a`, `b`, and `atol`. It should return the result of the following comparison:
 
     $$
     |a-b| \leq \texttt{atol}
     $$
 
-#### Tutorial:  Length Converter
+#### Tutorial: Length Converter
 
 - Write a [generator](../../glossary/generator.md) to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement. For instance, this generator could convert a number of imperial feet to metric decameters.
 
@@ -256,7 +256,7 @@ This program shows several interesting aspects, which we've covered before but h
 - `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) produces an error message in case of a bad input.
 - `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc) is a type constructor arm, here for a type union over units of length.
 
-### Exercise:  Measurement Converter {#exercise-measurement-converter}
+### Exercise: Measurement Converter {#exercise-measurement-converter}
 
 - Add to this [generator](../../glossary/generator.md) the ability to convert some other measurement (volume, mass, force, or another of your choosing).
 - Add an argument to the [cell](../../glossary/cell.md) required by the [gate](../../glossary/gate.md) that indicates whether the measurements are distance or your new measurement.
@@ -485,7 +485,7 @@ The Hoon standard library at the current time omits many [transcendental functio
 
     (We will use these in subsequent examples.)
 
-### Exercise:  Calculate the Fibonacci Sequence {#exercise-calculate-the-fibonacci-sequence}
+### Exercise: Calculate the Fibonacci Sequence {#exercise-calculate-the-fibonacci-sequence}
 
 The Binet expression gives the $$n^\text{th}$$ Fibonacci number.
 
@@ -514,7 +514,7 @@ Time values, often referred to as "timestamps", are commonly represented by the 
 
 A timestamp can be separated into the time portion, which is the relative offset within a given day, and the date portion, which represents the absolute day.
 
-There are two [molds](../../glossary/mold.md) to represent time in Hoon:  the `@d` [aura](../../glossary/aura.md), with `@da` for a full timestamp and `@dr` for an offset; and the [+$date](../../language/hoon/reference/stdlib/2q.md#date)/[+$tarp](../../language/hoon/reference/stdlib/2q.md#tarp) structure:
+There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d` [aura](../../glossary/aura.md), with `@da` for a full timestamp and `@dr` for an offset; and the [+$date](../../language/hoon/reference/stdlib/2q.md#date)/[+$tarp](../../language/hoon/reference/stdlib/2q.md#tarp) structure:
 
 | Aura | Meaning | Example |
 | ---- | ------- | ------- |
@@ -592,7 +592,7 @@ The Urbit date system correctly compensates for the lack of Year Zero:
 
 The [++yo](../../language/hoon/reference/stdlib/3c.md#yo) core contains constants useful for calculating time, but in general you should not hand-roll time or timezone calculations.
 
-### Tutorial:  Julian Day {#tutorial-julian-day}
+### Tutorial: Julian Day {#tutorial-julian-day}
 
 Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to uniquely denote days. (This is not to be confused with the Julian calendar.)  The following core demonstrates conversion to and from Julian days using signed integer (`@sd`) and date (`@da`) mathematics.
 
@@ -652,7 +652,7 @@ Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to un
 
 ### Phonetic Base {#phonetic-base}
 
-The `@q` aura is similar to `@p` except for two details:  it doesn't obfuscate names (as planets do) and it can be used for any size of atom without adjust its width to fill the same size. Prefixes and suffixes are in the same order as `@p`, however. Thus:
+The `@q` aura is similar to `@p` except for two details: it doesn't obfuscate names (as planets do) and it can be used for any size of atom without adjust its width to fill the same size. Prefixes and suffixes are in the same order as `@p`, however. Thus:
 
 ```hoon
 > `@q`0
@@ -729,7 +729,7 @@ Computers often mix both deterministic processes (called “pseudorandom number 
 
 Given a source of entropy to seed a random number generator, one can then use the [++og](../../language/hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers. The basic operations of `++og` are described in [the lesson on subject-oriented programming](O-subject.md).
 
-### Exercise:  Implement a random-number generator from scratch {#exercise-implement-a-random-number-generator-from-scratch}
+### Exercise: Implement a random-number generator from scratch {#exercise-implement-a-random-number-generator-from-scratch}
 
 - Produce a random stream of bits using the linear congruential random number generator.
 
@@ -758,9 +758,9 @@ The linear congruential random number generator produces a stream of random bits
 
 Can you verify that `1`s constitute about half of the values in this bit stream, as Cook illustrates in Python?
 
-### Exercise:  Produce uniformly-distributed random numbers {#exercise-produce-uniformly-distributed-random-numbers}
+### Exercise: Produce uniformly-distributed random numbers {#exercise-produce-uniformly-distributed-random-numbers}
 
-- Using entropy as the source, produce uniform random numbers:  that is, numbers in the range [0, 1] with equal likelihood to machine precision.
+- Using entropy as the source, produce uniform random numbers: that is, numbers in the range [0, 1] with equal likelihood to machine precision.
 
 We use the LCG defined above, then chop out 23-bit slices using [++rip](../../language/hoon/reference/stdlib/2c.md#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1]. (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
 
@@ -804,7 +804,7 @@ We use the LCG defined above, then chop out 23-bit slices using [++rip](../../la
 
 - Produce a higher-quality Mersenne Twister uniform RNG, such as [per this method](https://xilinx.github.io/Vitis_Libraries/quantitative_finance/2022.1/guide_L1/RNGs/RNG.html).
 
-### Exercise:  Produce normally-distributed random numbers {#exercise-produce-normally-distributed-random-numbers}
+### Exercise: Produce normally-distributed random numbers {#exercise-produce-normally-distributed-random-numbers}
 
 - Produce a normally-distributed random number generator using the uniform RNG described above.
 
@@ -927,7 +927,7 @@ To calculate an arbitrary power of a floating-point number, we require a few tra
 
 </details>
 
-### Exercise:  Upgrade the normal RNG {#exercise-upgrade-the-normal-rng}
+### Exercise: Upgrade the normal RNG {#exercise-upgrade-the-normal-rng}
 
 A more complicated formula uses several constants to improve the accuracy significantly:
 
@@ -1149,6 +1149,6 @@ Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [t
     0x4c13.ef8b.09cf.6e59.05c4.f203.71a4.9cec.3432.ba26.0174.f964.48f1.5475.b2dd.2c59.98c2.017c.9c03.cbea.9d5f.591b.ff23.bbff.b0ae.9c67.a4a9.dd8d.748a.8e14.c006.cbcc
     ```
 
-### Exercise:  Produce a secure password tool {#exercise-produce-a-secure-password-tool}
+### Exercise: Produce a secure password tool {#exercise-produce-a-secure-password-tool}
 
 - Produce a basic secure password tool. It should accept a password, salt it (add a predetermined value to the password), and hash it. _That_ hash is then compared to a reference hash to determine whether or not the password is correct.

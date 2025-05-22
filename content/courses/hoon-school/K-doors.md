@@ -27,7 +27,7 @@ The second way of making a function call involves an expression that _produces_ 
 246
 ```
 
-The difference is subtle:  the first case has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
+The difference is subtle: the first case has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
 
 Are calls to [++add](../../language/hoon/reference/stdlib/1a.md#add) and [++mul](../../language/hoon/reference/stdlib/1a.md#mul) of the Hoon standard library of the first kind, or the second?
 
@@ -87,7 +87,7 @@ Let's say you want to modify the default [sample](../../glossary/sample.md) of t
 
 Given that `a x 2 = 0`, `a` must be `0`. (Remember that `a` is the face for the `double` sample, as defined in the core we bound to `c` above.)
 
-Let's say we want to mutate the `++double` gate so that the default sample is `25`. There is only one problem:  `++double` isn't a gate!
+Let's say we want to mutate the `++double` gate so that the default sample is `25`. There is only one problem: `++double` isn't a gate!
 
 ```hoon
 > double.c(a 25)
@@ -172,7 +172,7 @@ Basically, whenever you use `%-` [cenhep](../../language/hoon/reference/rune/cen
 
 A core is a [cell](../../glossary/cell.md) of code and data, called `[battery payload]`. The [battery](../../glossary/battery.md) contains a series of arms, and the [payload](../../glossary/payload.md) contains all the data necessary to run those arms correctly.
 
-A "door" is a core with a sample. That is, a door is a core whose payload is a cell of [sample](../../glossary/sample.md) and context:  `[sample context]`. A door's overall sample can affect how its gate-building arms work.
+A "door" is a core with a sample. That is, a door is a core whose payload is a cell of [sample](../../glossary/sample.md) and context: `[sample context]`. A door's overall sample can affect how its gate-building arms work.
 
 ```
         door
@@ -191,9 +191,9 @@ Doors are created with the `|_` [barcab](../../language/hoon/reference/rune/bar.
 
 One BIG pitfall for thinking about doors is thinking of them as “containing” gates, as if they were more like “objects”. Instead, think of them the same way as you think of gates, just that they can be altered at a higher level.
 
-#### Example:  The Quadratic Equation
+#### Example: The Quadratic Equation
 
-First, a mathematical example. If we wanted to calculate a quadratic polynomial, _y = a x² + b x + c_, then we need to know two kinds of things:  the unknown or variable _x_, AND the parameters _a_, _b_, and _c_. These aren't really the same kind of thing. When we calculate a particular curve _y_(_x_), we assume that the parameters _a_, _b_, and _c_ stay constant across evaluations of _x_, and it's inconvenient for us to specify them every single time.
+First, a mathematical example. If we wanted to calculate a quadratic polynomial, _y = a x² + b x + c_, then we need to know two kinds of things: the unknown or variable _x_, AND the parameters _a_, _b_, and _c_. These aren't really the same kind of thing. When we calculate a particular curve _y_(_x_), we assume that the parameters _a_, _b_, and _c_ stay constant across evaluations of _x_, and it's inconvenient for us to specify them every single time.
 
 If we were to build this as a gate, we would need to pass in four parameters:
 
@@ -202,7 +202,7 @@ If we were to build this as a gate, we would need to pass in four parameters:
 (add (add (mul a (mul x x)) (mul b x)) c)
 ```
 
-Any time we call the gate, we have to provide all four values:  one unknown, three parameters. But there's a sense in which we want to separate the three parameters and only call the gate with one _x_ value. One way to accomplish this is to wrap the gate inside of another:
+Any time we call the gate, we have to provide all four values: one unknown, three parameters. But there's a sense in which we want to separate the three parameters and only call the gate with one _x_ value. One way to accomplish this is to wrap the gate inside of another:
 
 ```hoon
 > =wrapped-gate |=  [x=@ud]
@@ -222,7 +222,7 @@ If we built this as a door instead, we could push the parameters out to a differ
 --
 ```
 
-This will be used in two steps:  a gate-building step then a gate usage step.
+This will be used in two steps: a gate-building step then a gate usage step.
 
 We produce a gate from a door's arm using the `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) rune, almost always used in its irregular form, `~()`. Here we prime the door with `[5 4 3]`, which yields a gate:
 
@@ -237,11 +237,11 @@ By itself, not so much to say. We could pin it into the [Dojo](../../glossary/do
 31
 ```
 
-By hand:  5×2² + 4×2 + 3 = 31, so that's correct.
+By hand: 5×2² + 4×2 + 3 = 31, so that's correct.
 
 Doors will enable us to build some very powerful data storage tools by letting us defer parts of a gate calculation to other stages of building and calculating the gate.
 
-#### Example:  A Calculator
+#### Example: A Calculator
 
 Let's unpack what's going on more with this next [door](../../glossary/door.md). Each of the [arms](../../glossary/arm.md) in this example door will define a simple gate. Let's bind the door to `c`. To make a door we use the `|_` [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune:
 
@@ -379,7 +379,7 @@ In the above example we created a [door](../../glossary/door.md) `c` with [sampl
 
 Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in the [next module](L-struct.md).
 
-### Exercise:  Adding Arms to a Door {#exercise-adding-arms-to-a-door}
+### Exercise: Adding Arms to a Door {#exercise-adding-arms-to-a-door}
 
 Recall the quadratic equation [door](../../glossary/door.md).
 
@@ -396,7 +396,7 @@ Recall the quadratic equation [door](../../glossary/door.md).
 - Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
 
 
-## Key-Value Pairs:  `map` as Door {#key-value-pairs-map-as-door}
+## Key-Value Pairs: `map` as Door {#key-value-pairs-map-as-door}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183%20-%20Maps%20and%20Sets.mp4" %}
 
@@ -431,7 +431,7 @@ To insert one key-value pair at a time, we use [put](../../language/hoon/referen
 =colors (~(put by colors) [%black 0x0])
 ```
 
-Note the pattern here:  there is a [++put](../../language/hoon/reference/stdlib/2i.md#putby) arm of [++by](../../language/hoon/reference/stdlib/2i.md#by) which builds a gate to modify `colors` by inserting a value.
+Note the pattern here: there is a [++put](../../language/hoon/reference/stdlib/2i.md#putby) arm of [++by](../../language/hoon/reference/stdlib/2i.md#by) which builds a gate to modify `colors` by inserting a value.
 
 What happens if we try to add something that doesn't match the type?
 
@@ -500,7 +500,7 @@ You can apply a gate to each value using [++run:by](../../language/hoon/referenc
 }
 ```
 
-### Exercise:  Display Cards {#exercise-display-cards}
+### Exercise: Display Cards {#exercise-display-cards}
 
 - Recall the `/lib/playing-cards.hoon` library. Use a map to pretty-print the `darc`s as Unicode card symbols.
 
@@ -609,14 +609,14 @@ You can apply a gate to each value using [++run:by](../../language/hoon/referenc
     <|🂭 🂨 🂵 🃒 🃊|>
     ```
 
-#### Tutorial:  Caesar Cipher
+#### Tutorial: Caesar Cipher
 
 The Caesar cipher is a shift cipher ([that was indeed used anciently](https://en.wikipedia.org/wiki/Caesar_cipher)) wherein each letter in a message is encrypted by replacing it with one shifted some number of positions down the alphabet. For example, with a “right-shift” of `1`, `a` would become `b`, `j` would become `k`, and `z` would wrap around back to `a`.
 
 Consider the message below, and the cipher that results when we Caesar-shift the message to the right by 1.
 
 ```
-Plaintext message:    "do not give way to anger"
+Plaintext message:   "do not give way to anger"
 Right-shifted cipher: "ep opu hjwf xbz up bohfs"
 ```
 
@@ -700,7 +700,7 @@ Below is a generator that performs a Caesar cipher on a [tape](../../glossary/ta
 
 </details>
 
-This generator takes two arguments:  a [tape](../../glossary/tape.md), which is your plaintext message, and an unsigned integer, which is the shift-value of the cipher. It produces a cell of two `tape`s:  one that has been shifted right by the value, and another that has been shifted left. It also converts any uppercase input into lowercase.
+This generator takes two arguments: a [tape](../../glossary/tape.md), which is your plaintext message, and an unsigned integer, which is the shift-value of the cipher. It produces a cell of two `tape`s: one that has been shifted right by the value, and another that has been shifted left. It also converts any uppercase input into lowercase.
 
 Try it out in the Dojo:
 
@@ -967,8 +967,8 @@ You can also create a trap for later use with the `|.` [bardot](../../language/h
 
 What is a [gate](../../glossary/gate.md)?  It is a [door](../../glossary/door.md) with only one arm `$` buc, and whenever you invoke it then that default arm's expression is referred to and evaluated.
 
-A "gate" and a "trap" are actually very similar:  a gate simply has a [sample](../../glossary/sample.md) (and can actively change when evaluated or via a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
+A "gate" and a "trap" are actually very similar: a gate simply has a [sample](../../glossary/sample.md) (and can actively change when evaluated or via a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
 
-#### Example:  Hoon Workbook
+#### Example: Hoon Workbook
 
 Other examples demonstrating [++map](../../language/hoon/reference/stdlib/2o.md#map) are available in the [Hoon Workbook](../../language/hoon/examples), such as Solution #2 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial.

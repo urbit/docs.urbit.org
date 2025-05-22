@@ -59,7 +59,7 @@ Another common design pattern besides creating a library is to sequester core-sp
 
 Watch for these being used in generators and libraries over the next few modules.
 
-### Exercise:  A Playing Card Library {#exercise-a-playing-card-library}
+### Exercise: A Playing Card Library {#exercise-a-playing-card-library}
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards. The [core](../../glossary/core.md) below builds such a library, and can be accessed by programs. You should recognize most of the things this program does aside from the `++shuffle-deck` arm which uses a [door](K-doors.md) to produce [randomness](O-subject.md). This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression. This means that instead of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) you may see `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot), which inverts the order of the true/false [arms](../../glossary/arm.md), as well as other new constructions.
 
@@ -177,7 +177,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   (slag n d)
 ```
 
-`++draw` takes two arguments:  `n`, an unsigned integer, and `d`, a `deck`. The gate will produce a cell of two `decks` using [++scag](../../language/hoon/reference/stdlib/2b.md#scag) and [++slag](../../language/hoon/reference/stdlib/2b.md#slag). [++scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [++slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
+`++draw` takes two arguments: `n`, an unsigned integer, and `d`, a `deck`. The gate will produce a cell of two `decks` using [++scag](../../language/hoon/reference/stdlib/2b.md#scag) and [++slag](../../language/hoon/reference/stdlib/2b.md#slag). [++scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [++slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `++scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `++slag` to produce the remaining deck in the tail of the cell as `rest`.
 
 ```hoon
 ++  shuffle-deck
@@ -198,7 +198,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-Finally we come to `++shuffle-deck`. This gate takes two arguments:  a `deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `deck`.
+Finally we come to `++shuffle-deck`. This gate takes two arguments: a `deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `deck`.
 
 We add a bunted `deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `++rads:random`.
 
@@ -219,7 +219,7 @@ With that completed, we use `%=` [centis](../../language/hoon/reference/rune/cen
 This is a very naive shuffling algorithm. We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
 
-### Exercise:  Using the Playing Card Library {#exercise-using-the-playing-card-library}
+### Exercise: Using the Playing Card Library {#exercise-using-the-playing-card-library}
 
 Unfortunately `/` [fas](../../language/hoon/reference/rune/fas.md) runes don't work in the [Dojo](../../glossary/dojo.md) right now, so we need to build code using the [-build-file](../../manual/os/dojo-tools.md#build-file) thread if we want to use the library directly.
 
@@ -289,32 +289,32 @@ At this point, you've likely only worked on the `%base` desk. You can see data a
 ```hoon
 > +vats %base
 %base
-  /sys/kelvin:           [%zuse 413]
-  base hash ends in:     hih5c
-  %cz hash ends in:      hih5c
-  app status:            running
-  pending updates:       ~
+  /sys/kelvin:          [%zuse 413]
+  base hash ends in:    hih5c
+  %cz hash ends in:     hih5c
+  app status:           running
+  pending updates:      ~
 
 > +vats %base, =verb %.y
 %base
-  /sys/kelvin:      [%zuse 413]
-  base hash:        0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
-  %cz hash:         0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
-  app status:       running
-  force on:         ~
-  force off:        ~
-  publishing ship:  ~
-  updates:          remote
-  source ship:      ~marnec-dozzod-marzod
-  source desk:      %kids
-  source aeon:      43
-  kids desk:        %kids
-  pending updates:  ~
+  /sys/kelvin:     [%zuse 413]
+  base hash:       0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
+  %cz hash:        0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
+  app status:      running
+  force on:        ~
+  force off:       ~
+  publishing ship: ~
+  updates:         remote
+  source ship:     ~marnec-dozzod-marzod
+  source desk:     %kids
+  source aeon:     43
+  kids desk:       %kids
+  pending updates: ~
 ```
 
 You'll see a slightly different configuration on the particular [ship](../../glossary/ship.md) you are running.
 
-### Aside:  Filesystems {#aside-filesystems}
+### Aside: Filesystems {#aside-filesystems}
 
 A filesystem is responsible for providing access to blobs of data somewhere on a disk drive. If you have worked with Windows or macOS, you have become accustomed to using a file browser to view and interact with files. Mobile devices tend to obscure the nature of files more, in favor of just providing an end-user interface for working with or viewing the data. To use files effectively, you need to know a few things:
 
@@ -330,9 +330,9 @@ An Earth filesystem and path orients itself around some key metaphor:
 - Windows machines organize the world by drive, e.g. `C:\`.
 - Unix machines (including macOS and Linux) organize the world from `/`, the root directory.
 
-**Absolute paths** are like street addresses, or latitude and longitude. They let you unambiguously locate a file or folder. **Relative paths** are more like informal (but correct) instructions:  “It's on the right just three houses past the church.”  They are often shorter but require the user to know the starting point.
+**Absolute paths** are like street addresses, or latitude and longitude. They let you unambiguously locate a file or folder. **Relative paths** are more like informal (but correct) instructions: “It's on the right just three houses past the church.”  They are often shorter but require the user to know the starting point.
 
-Once you have located a particular file, you need to load the data. Conventionally, _file extensions_ indicate what kind of file you are dealing with:  `.jpg`, `.png`, and `.gif` are image files, for instance; `.txt`, `.docx`, and `.pdf` are different kinds of documents; and `.mp3` and `.ogg` are audio files. Simply changing the extension on the file doesn't change the underlying data, but it can either elicit a stern warning from the OS or confuse it, depending on the OS. Normally you have to open the file in an appropriate program and save it as a new type if such a conversion is possible.
+Once you have located a particular file, you need to load the data. Conventionally, _file extensions_ indicate what kind of file you are dealing with: `.jpg`, `.png`, and `.gif` are image files, for instance; `.txt`, `.docx`, and `.pdf` are different kinds of documents; and `.mp3` and `.ogg` are audio files. Simply changing the extension on the file doesn't change the underlying data, but it can either elicit a stern warning from the OS or confuse it, depending on the OS. Normally you have to open the file in an appropriate program and save it as a new type if such a conversion is possible.
 
 ### File Data in Urbit {#file-data-in-urbit}
 
@@ -435,7 +435,7 @@ you are hosting 0 group(s):
 
 ### Marks {#marks}
 
-[Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade:  they are actually [molds](../../glossary/mold.md) and define conversion paths. We won't write them in Hoon School, but you will encounter them when you begin writing apps. They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
+[Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade: they are actually [molds](../../glossary/mold.md) and define conversion paths. We won't write them in Hoon School, but you will encounter them when you begin writing apps. They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
 
 In brief, each mark has a `++grab` arm to convert from other types to it; a `++grow` arm to convert it to other types; and a `++grad` arm for some standard operations across marks. You can explore the marks in `/mar`.
 

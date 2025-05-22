@@ -49,7 +49,7 @@ Hoon developers often employ irregular forms, sometimes called â€œsugar syntaxâ€
 
 You should get used to reading and interpreting these forms. We will start to use them actively during this lesson. You can find other irregular forms in the [irregular forms reference](../../language/hoon/reference/irregular.md).
 
-### Exercise:  Converting Between Forms {#exercise-converting-between-forms}
+### Exercise: Converting Between Forms {#exercise-converting-between-forms}
 
 Convert each of the following irregular forms into the correct regular runic syntax.
 
@@ -77,13 +77,13 @@ So far, every time we have calculated something, we have had to build it from sc
 'no'
 ```
 
-This has no flexibility:  if we want to change `a` we have to rewrite the whole thing every time!
+This has no flexibility: if we want to change `a` we have to rewrite the whole thing every time!
 
 (Note also our introduction of the `::` [colcol](../../language/hoon/reference/rune/col.md#colcol) digraph in the above code block. This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
 
 Hoon uses [gates](../../glossary/gate.md) as deferred computations. What this means is that we can build a Hoon expression now and use it at need later on, perhaps many times. More than that, we can also use it on different data values. A gate is the Hoon analogue of a [function or subroutine](https://en.wikipedia.org/wiki/Subroutine) in other programming languages.
 
-The word "function" is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_%28mathematics%29). Roughly put, a function takes one or more arguments (i.e., input values) and returns a value. The return value depends solely on the argument(s), and nothing else. For example, we can understand multiplication as a function:  it takes two numbers and returns another number. It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask. If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
+The word "function" is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_%28mathematics%29). Roughly put, a function takes one or more arguments (i.e., input values) and returns a value. The return value depends solely on the argument(s), and nothing else. For example, we can understand multiplication as a function: it takes two numbers and returns another number. It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask. If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
 
 That output value depends solely upon input value(s) is an important property of functions. This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and it's one of the key ingredients to building a secure Urbit stack.
 
@@ -93,7 +93,7 @@ Functions are implemented in Hoon with a special kind of [core](../../glossary/c
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS120%20-%20Gates.mp4" %}
 
-Syntactically, a gate is a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune with two children:  a [spec](../../language/hoon/reference/stdlib/4o.md#spec) (specification of input) and a [hoon](../../language/hoon/reference/stdlib/4o.md#hoon) (body). Think of just replacing the `=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas) with the `|=` bartis:
+Syntactically, a gate is a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune with two children: a [spec](../../language/hoon/reference/stdlib/4o.md#spec) (specification of input) and a [hoon](../../language/hoon/reference/stdlib/4o.md#hoon) (body). Think of just replacing the `=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas) with the `|=` bartis:
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -192,13 +192,13 @@ Notice that there is _one_ space (`ace`) after the `=name` term and then regular
 124
 ```
 
-To reiterate:  we typically use the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
+To reiterate: we typically use the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
 
 In the example gate above, `inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The `sample` is given the face `a`. With a face it's easier to refer to the `sample` value in later code.
 
 The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go. In `inc`, the product is defined by `(add 1 a)`. There's not much to it: it returns the value of `a+1`!
 
-### Exercise:  Double a Value {#exercise-double-a-value}
+### Exercise: Double a Value {#exercise-double-a-value}
 
 - Produce a gate which accepts any `@` unsigned integer value and doubles it. Call it `double`.
 
@@ -209,7 +209,7 @@ The second subexpression after the `|=` bartis rune is used to build the gate's 
     10
     ```
 
-### Exercise:  Convert Between Auras {#exercise-convert-between-auras}
+### Exercise: Convert Between Auras {#exercise-convert-between-auras}
 
 - Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent. Call it `myship`.
 
@@ -350,7 +350,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 **Note**: If you're using VS Code on Windows, you might need to manually change the line endings from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom. Urbit requires Unix-style line endings for Hoon files.
 
-### Exercise:  Triangular Function {#exercise-triangular-function}
+### Exercise: Triangular Function {#exercise-triangular-function}
  
 - Implement the triangular function as a gate and save it as a generator `tri.hoon`.
 
@@ -384,7 +384,7 @@ There are also a number of other import runes which make library, structure, and
 
 For simplicity, everything we do will take place on the `%base` desk for now. We will learn how to create a library in a subsequent lesson.
 
-### Exercise:  Loading a Library {#exercise-loading-a-library}
+### Exercise: Loading a Library {#exercise-loading-a-library}
 
 In a generator, load the `number-to-words` library using the `/+` faslus rune. (This must take place at the very top of your file.)
  

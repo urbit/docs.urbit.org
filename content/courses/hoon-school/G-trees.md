@@ -37,7 +37,7 @@ We can refer to any data stored anywhere in this tree. The numbers in the labele
 
 Most of any possible tree will be unoccupied for any actual data structure. For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself; that's a function of the algorithms working with the data.)
 
-### Exercise:  Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
+### Exercise: Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
 
 - Consider each of the following nouns. Which tree diagram do they correspond to?  (This is a matching exercise.)
 
@@ -47,7 +47,7 @@ Most of any possible tree will be unoccupied for any actual data structure. For 
     | 2. `[[1 2] 3 4]` | B. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
     | 3. `[1 2 3 4]` | C. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
-### Exercise:  Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
+### Exercise: Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
 
 - Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -150,7 +150,7 @@ We have used lists incidentally. A [list](../../glossary/list.md) is an ordered 
 
 (Notice that all values are converted to the specified [aura](../../glossary/aura.md), in this case the empty aura.)
 
-A `list` is built with the `list` mold. A `list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer:  it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `list` is built with the `list` mold. A `list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
 
 ```hoon
 > `(list)`~['a' %b 100]
@@ -198,7 +198,7 @@ We have already seen numeric addressing used to refer to parts of a binary tree.
 
 Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to decide if the contents of a node is a direct value or a tree: it just happens.
 
-### Exercise:  Tapes for Text {#exercise-tapes-for-text}
+### Exercise: Tapes for Text {#exercise-tapes-for-text}
  
 A [tape](../../glossary/tape.md) is one way of representing a text message in Hoon. It is written with double quotes:
  
@@ -228,7 +228,7 @@ Lark notation is not preferred in modern Hoon for more than one or two elements 
 
 When lark expressions resolve to the part of the subject containing an [arm](../../glossary/arm.md), they don't evaluate the arm. They simply return the indicated noun fragment of the subject, as if it were a leg.
 
-### Exercise:  Address the Fruit Tree {#exercise-address-the-fruit-tree}
+### Exercise: Address the Fruit Tree {#exercise-address-the-fruit-tree}
 
 Produce the numeric and lark-notated equivalent addresses for each of the following nodes in the binary fruit tree:
 
@@ -246,7 +246,7 @@ Produce the numeric and lark-notated equivalent addresses for each of the follow
 
 There is a solution at the bottom of the page.
 
-### Exercise:  Lark Notation {#exercise-lark-notation}
+### Exercise: Lark Notation {#exercise-lark-notation}
 
 - Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
@@ -474,7 +474,7 @@ How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=1
 
 We say that the inner face has been "shadowed" when an outer name obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune:  it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
+If you run into `^$`, don't go look for a `^$` ketbuc rune: it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
 
 Solution #1 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
@@ -490,7 +490,7 @@ Logically, `a:b` is two operations, while `a.b` is one operation. The compiler i
 
 ### What `%=` Does {#what-does}
 
-Now we're equipped to go back and examine the syntax of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune we have been using for recursion:  it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
+Now we're equipped to go back and examine the syntax of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune we have been using for recursion: it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
 
 ```hoon
 |=  n=@ud
@@ -530,7 +530,7 @@ where `=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) means to a
 
 Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`. How could you write that in terms of `|%` and `++`?
 
-### Example:  Number to Digits {#example-number-to-digits}
+### Example: Number to Digits {#example-number-to-digits}
 
 - Compose a generator which accepts a number as `@ud` unsigned decimal and returns a [list](../../glossary/list.md) of its digits.
 
@@ -590,7 +590,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 - Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
-### Exercise:  Resolving Wings {#exercise-resolving-wings}
+### Exercise: Resolving Wings {#exercise-resolving-wings}
 
 Enter the following into dojo:
 
@@ -624,7 +624,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     ~[5 4 3 2 1]
     ```
 
-  **Exercise:  `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
+  **Exercise: `++flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
 - The [++sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `list` and a comparison function (like [++lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
 
@@ -665,7 +665,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
     "Happy Birthday!"
     ```
 
-    **Exercise:  `++weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
+    **Exercise: `++weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
 
 There are a couple of sometimes-useful `list` builders:
 
@@ -714,7 +714,7 @@ There are a few more that you should pick up eventually, but these are enough to
 
 Using what we know to date, most operations that we would do on a collection of data require a trap.
 
-### Exercise:  Evaluating Expressions {#exercise-evaluating-expressions}
+### Exercise: Evaluating Expressions {#exercise-evaluating-expressions}
 
 - Without entering these expressions into the Dojo, what are the products of the following expressions?
 
@@ -724,7 +724,7 @@ Using what we know to date, most operations that we would do on a collection of 
     (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
     ```
 
-### Exercise:  Welding Nouns {#exercise-welding-nouns}
+### Exercise: Welding Nouns {#exercise-welding-nouns}
 
 First, bind these faces.
 
@@ -745,7 +745,7 @@ First, bind these faces.
     > (add (lent b) (lent c))
     ```
 
-### Exercise:  Palindrome {#exercise-palindrome}
+### Exercise: Palindrome {#exercise-palindrome}
 
 - Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [++flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
 

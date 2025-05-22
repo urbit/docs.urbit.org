@@ -98,7 +98,7 @@ You can do even better using _interpolation_:
 ==
 ```
 
-### Exercise:  Calculate a Factorial {#exercise-calculate-a-factorial}
+### Exercise: Calculate a Factorial {#exercise-calculate-a-factorial}
 
 - Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html). The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$. We will introduce a couple of new bits of syntax and a new gate ([++dec](../../language/hoon/reference/stdlib/1a.md#dec)). Make this into a generator `factorial.hoon`:
 
@@ -143,7 +143,7 @@ You can do even better using _interpolation_:
 
     - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
 
-### Exercise:  Tracking Expression Structure {#exercise-tracking-expression-structure}
+### Exercise: Tracking Expression Structure {#exercise-tracking-expression-structure}
 
 As we write more complicated programs, it is helpful to learn to read the [runes](../../glossary/rune.md) by identifying which daughter expressions attach to which runes, e.g.:
 
@@ -212,9 +212,9 @@ We will revert to the irregular form more and more. If you would like to see exa
 ]
 ```
 
-(_There's a lot going on in there._  Focus on the four-letter runic identifiers:  `%sgpm` for `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam), for instance.)
+(_There's a lot going on in there._  Focus on the four-letter runic identifiers: `%sgpm` for `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam), for instance.)
 
-### Exercise:  Calculate a sequence of numbers {#exercise-calculate-a-sequence-of-numbers}
+### Exercise: Calculate a sequence of numbers {#exercise-calculate-a-sequence-of-numbers}
 
 Produce a gate (generator) which accepts a `@ud` value and calculates the series where the $$i^\text{th}$$ term in the series is given by the equation
 
@@ -234,7 +234,7 @@ that is, the first numbers are 0, 1, 4, 9, 16, 25, etc.
 
 For this exercise, you do not need to store these values in a list. Calculate each one but only return the final value.
 
-### Exercise:  Output each letter in a `tape` {#exercise-output-each-letter-in-a-tape}
+### Exercise: Output each letter in a `tape` {#exercise-output-each-letter-in-a-tape}
 
 Produce a gate (generator) which accepts a [tape](../../glossary/tape.md) value and returns a `(list @ud)` containing the ASCII value of each character. Use a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md). The previous code simply modified a value by addition. You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a [list](../../glossary/list.md).
 
@@ -271,7 +271,7 @@ So far we have introduced and worked with a few key structures:
 3. Gates
 4. Traps
 
-Some of them are _data_, like raw values:  `0x1234.5678.abcd` and `[5 6 7]`. Others are _code_, programs that do something. What unifies all of these under the hood?
+Some of them are _data_, like raw values: `0x1234.5678.abcd` and `[5 6 7]`. Others are _code_, programs that do something. What unifies all of these under the hood?
 
 A [core](../../glossary/core.md) is a cell pairing operations to data. Formally, we'll say a core is a cell `[battery payload]`, where [battery](../../glossary/battery.md) describes the things that can be done (the operations) and [payload](../../glossary/payload.md) describes the data on which those operations rely. (For many English speakers, the word “battery” evokes a [voltaic pile](https://en.wikipedia.org/wiki/Voltaic_pile) more than a bank of guns, but the artillery metaphor is a better mnemonic for `[battery payload]`.)
 
@@ -283,7 +283,7 @@ Hoon (and Nock) very carefully bounds the known context of any part of the progr
 
 For instance, when we first composed generators, we made what are called “naked generators”:  that is, they do not have access to any information outside of the base subject (Arvo, Hoon, and `%zuse`) and their [sample](../../glossary/sample.md) (arguments). Other [generators](../../glossary/generator.md) (such as `%say` generators, described below) can have more contextual information, including random number generators and optional arguments, passed to them to form part of their subject.
 
-Cores have two kinds of values attached:  [arms](../../glossary/arm.md) and "legs", both called limbs. Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations. Legs are limbs which store data (with e.g. `=/` tisfas).
+Cores have two kinds of values attached: [arms](../../glossary/arm.md) and "legs", both called limbs. Arms describe known labeled addresses (with `++` luslus or `+$` lusbuc) which carry out computations. Legs are limbs which store data (with e.g. `=/` tisfas).
 
 ### Arms {#arms}
 
@@ -322,7 +322,7 @@ Give the name `adder` to the above, and use it thus:
 
 Notice here that we read the arm resolution from right-to-left. This isn't the only way to address an arm, but it's the most common one.
 
-### Exercise:  Produce a Gate Arm {#exercise-produce-a-gate-arm}
+### Exercise: Produce a Gate Arm {#exercise-produce-a-gate-arm}
 
 - Compose a core which contains arms for multiplying a value by two and for dividing a value by two.
 
@@ -410,7 +410,7 @@ This statement means that we recalculate the `$` buc arm of the current subject 
 
 ### What is a Gate? {#what-is-a-gate}
 
-A core is a cell:  `[battery payload]`.
+A core is a cell: `[battery payload]`.
 
 A gate is a core with two distinctive properties:
 
@@ -434,7 +434,7 @@ Like all arms, `$` buc is computed with its parent core as the subject. When `$`
 
 We will always call the values supplied to the gate the “sample” since we will later discover that this technical meaning (`[battery [sample context]]`) holds throughout more advanced cores.
 
-### Exercise:  Another Way to Calculate a Factorial {#exercise-another-way-to-calculate-a-factorial}
+### Exercise: Another Way to Calculate a Factorial {#exercise-another-way-to-calculate-a-factorial}
 
 Let's revisit our factorial code from above:
 
@@ -569,7 +569,7 @@ In Hoon, one can use `(gate arg)` syntax to make a function call. For example:
 235
 ```
 
-The name of the gate is `inc`. How is the `$` buc arm of inc evaluated? When a function call occurs, a copy of the `inc` gate is created, but with one modification:  the sample is replaced with the function argument. Then the `$` buc arm is computed against this modified version of the `inc` gate.
+The name of the gate is `inc`. How is the `$` buc arm of inc evaluated? When a function call occurs, a copy of the `inc` gate is created, but with one modification: the sample is replaced with the function argument. Then the `$` buc arm is computed against this modified version of the `inc` gate.
 
 Remember that the default or “bunt” value of the sample of inc is `0`. In the function call above, a copy of the `inc` gate is made but with a sample value of `234`. When `$` buc is computed against this modified core, the product is `235`.
 
@@ -684,7 +684,7 @@ If you find yourself caught in such a loop, press `Ctrl`+`C` to stop execution.
 
 Recursion can be set up different ways. A full treatment requires thinking about [algorithmic complexity and efficiency](https://en.wikipedia.org/wiki/Big_O_notation), but we can highlight some good rules of thumb here.
 
-#### Tutorial:  The Fibonacci Sequence
+#### Tutorial: The Fibonacci Sequence
 
 For instance, let's talk about calculating the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence), which is a sequence of numbers wherein each is formed by adding the two previous numbers together. Thus 1, 1, 1+1→2, 1+2→3, 2+3→5, and so forth. We may write the $$n^\text{th}$$ Fibonacci number in a generic way as:
 
@@ -815,7 +815,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     - Produce a diagram of how this last implementation yields a Fibonacci sequence for *F*₅, `(fibonacci 5)`.
 
-#### Tutorial:  Tail-Call Optimization of the Factorial Gate
+#### Tutorial: Tail-Call Optimization of the Factorial Gate
 
 The last factorial gate we produced looked like this:
 
@@ -841,7 +841,7 @@ Once this stack of frames is completed, frames "pop" off the stack starting at t
 
 When a program's final expression uses the stack in this way, it's considered to be **not tail-recursive**. This usually happens when the last line of executable code calls more than one gate, our example code's `(mul n $(n (dec n)))` being such a case. That's because such an expression needs to hold each iteration of `$(n (dec n)` in memory so that it can know what to run against the `mul` function every time.
 
-To reiterate:  if you have to manipulate the result of a recursion as the last expression of your gate, as we did in our example, the function is not tail-recursive, and therefore not very efficient with memory. A problem arises when we try to recurse more times than we have space on the stack. This will result in our computation failing and producing a stack overflow. If we tried to find the factorial of `5.000.000`, for example, we would almost certainly run out of stack space.
+To reiterate: if you have to manipulate the result of a recursion as the last expression of your gate, as we did in our example, the function is not tail-recursive, and therefore not very efficient with memory. A problem arises when we try to recurse more times than we have space on the stack. This will result in our computation failing and producing a stack overflow. If we tried to find the factorial of `5.000.000`, for example, we would almost certainly run out of stack space.
 
 But the Hoon compiler, like most compilers, is smart enough to notice when the last statement of a parent can reuse the same frame instead of needing to add new ones onto the stack. If we write our code properly, we can use a single frame that simply has its values replaced with each recursion.
 
@@ -882,7 +882,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
 
     We simply multiply `t` and `n` to produce the new value of `t`, and then decrement `n` before repeating. Since this `$` call is the final and solitary thing that is run in the default case and since we are doing all computation before the call, this version is properly tail-recursive. We don't need to do anything to the result of the recursion except recurse it again. That means that each iteration can be replaced instead of held in memory.
 
-#### Tutorial:  The Ackermann Function
+#### Tutorial: The Ackermann Function
 
 The [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function) is one of the earliest examples of a function that is both totally computabl, meaning that it can be solved, and not primitively recursive, meaning it can not be rewritten in an iterative fashion.
 
@@ -924,7 +924,7 @@ The Ackermann function is not terribly useful in and of itself, but it has an in
 
 - Calculate some of the $$m$$/$$n$$ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
 
-### Exercise:  The Sudan Function {#exercise-the-sudan-function}
+### Exercise: The Sudan Function {#exercise-the-sudan-function}
 
 The [Sudan function](https://en.wikipedia.org/wiki/Sudan_function) is related to the Ackermann function.
 

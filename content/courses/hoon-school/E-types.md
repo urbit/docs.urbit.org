@@ -14,7 +14,7 @@ Type systems provide type safety, in part by making sure functions produce value
 
 A "type" is really a rule for interpretation. But for our Hoonish purposes, it's rather too broad a notion and we need to clarify some different kinds of things we could refer to as “type”. It is instructive for learners to distinguish three kinds of types in Hoon:
 
-1. Atoms:  values with auras.
+1. Atoms: values with auras.
 2. [Molds](../../glossary/mold.md):  structures. Think of cells, lists, and sets.
 3. [Marks](../../glossary/mark.md):  file types. Compare to conventional files distinguished by extension and definite internal structure.
 
@@ -354,7 +354,7 @@ One more way to validate against type is to use an example instead of the extrac
 ^+(1.000 100)
 ```
 
-(This is what `^-` is actually doing:  `^-(p q)` reduces to `^+(^*(p) q)`. Many runes we use actually reduce to other rune forms, and have been introduced for ease of use.)
+(This is what `^-` is actually doing: `^-(p q)` reduces to `^+(^*(p) q)`. Many runes we use actually reduce to other rune forms, and have been introduced for ease of use.)
 
 We can use more complex structures for molds though, including built-in types like [lists](../../glossary/list.md) and [tapes](../../glossary/tape.md). (A `tape` represents text.)
 

@@ -10,9 +10,9 @@ Suppose we take a core, a [cell](../../glossary/cell.md) `[battery payload]`, an
 
 Is this legal?  Does it make sense?  Every function call in Hoon does this, so we'd better make it work well.
 
-The full core stores _both_ [payload](../../glossary/payload.md) types:  the type that describes the `payload` currently in the [core](../../glossary/core.md), and the type that the core was compiled with.
+The full core stores _both_ [payload](../../glossary/payload.md) types: the type that describes the `payload` currently in the [core](../../glossary/core.md), and the type that the core was compiled with.
 
-In the [Bertrand Meyer tradition of type theory](https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction), there are two forms of polymorphism:  _variance_ and _genericity_. In Hoon this choice is per core:  a core can be either `%wet` or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on genericity.
+In the [Bertrand Meyer tradition of type theory](https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction), there are two forms of polymorphism: _variance_ and _genericity_. In Hoon this choice is per core: a core can be either `%wet` or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on genericity.
 
 This lesson discusses both genericity and variance for core management. These two sections may be read separately or in either order, and all of this content is not a requirement for working extensively with Gall agents. If you're just starting off, [wet gates](../../glossary/wet-gate.md) (genericity) make the most sense to have in your toolkit now.
 
@@ -23,9 +23,9 @@ Polymorphism is a programming concept that allows a piece of code to use differe
 
 ### Dry Cores {#dry-cores}
 
-A dry gate is the kind of gate that you're already familiar with:  a one-armed [core](../../glossary/core.md) with a sample. A [wet gate](../../glossary/wet-gate.md) is also a one-armed core with a [sample](../../glossary/sample.md), but there is a difference in how types are handled. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the [gate](../../glossary/gate.md); if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) error.
+A dry gate is the kind of gate that you're already familiar with: a one-armed [core](../../glossary/core.md) with a sample. A [wet gate](../../glossary/wet-gate.md) is also a one-armed core with a [sample](../../glossary/sample.md), but there is a difference in how types are handled. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the [gate](../../glossary/gate.md); if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) error.
 
-A core's [payload](../../glossary/payload.md) can change from its original value. In fact, this happens in the typical function call:  the default [sample](../../glossary/sample.md) is replaced with an input value. How can we ensure that the core's [arms](../../glossary/arm.md) are able to run correctly, that the payload type is still appropriate despite whatever changes it has undergone?
+A core's [payload](../../glossary/payload.md) can change from its original value. In fact, this happens in the typical function call: the default [sample](../../glossary/sample.md) is replaced with an input value. How can we ensure that the core's [arms](../../glossary/arm.md) are able to run correctly, that the payload type is still appropriate despite whatever changes it has undergone?
 
 There is a type check for each [arm](../../glossary/arm.md) of a dry core, intended to verify that the arm's parent core has a [payload](../../glossary/payload.md) of the correct type.
 
@@ -33,7 +33,7 @@ When the `$` buc arm of a dry [gate](../../glossary/gate.md) is evaluated it tak
 
 ### Wet Gates {#wet-gates}
 
-When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site. In other words, for a wet gate, we ask:  “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified `payload`?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”; they defer the actual substitution in the [sample](../../glossary/sample.md). Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
+When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site. In other words, for a wet gate, we ask: “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified `payload`?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”; they defer the actual substitution in the [sample](../../glossary/sample.md). Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
 
 Consider a function like [++turn](../../language/hoon/reference/stdlib/2b.md#turn) which transforms each element of a list. To use `++turn`, we install a [list](../../glossary/list.md) and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
@@ -57,7 +57,7 @@ The dry gate does not preserve the type of `a` and `b`, but downcasts it to `*`;
 
 Wet gates are therefore used when incoming type information is not well known and needs to be preserved. This includes parsing, building, and structuring arbitrary [nouns](../../glossary/noun.md). (If you are familiar with them, you can think of C++'s templates and operator overloading, and Haskell's typeclasses.)  Wet gates are very powerful; they're enough rope to hang yourself with. Don't use them unless you have a specific reason to do so. (If you see `mull-*` errors then something has gone wrong with using wet gates.)
 
-### Exercise:  The Trapezoid Rule {#exercise-the-trapezoid-rule}
+### Exercise: The Trapezoid Rule {#exercise-the-trapezoid-rule}
 
 The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a definite integral. It approximates the area under the curve by a trapezoid or (commonly) a series of trapezoids. The rule requires a function as one of the inputs, i.e. it applies _for a specific function_. We will use [wet gates](../../glossary/wet-gate.md) to accomplish this without stripping type information of the input [gate](../../glossary/gate.md) core.
 
@@ -88,7 +88,7 @@ $$
 
 The meat of this gate is concerned with correctly implementing the mathematical equation. In particular, wetness is required because `b` can be _any_ gate (although it should only be a gate with one argument, lest the whole thing `mull-grow` fail). If you attempt to create the equivalent dry gate (`|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis)), Hoon fails to build it with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) due to the loss of type information from the gate `b`.
 
-#### Tutorial:  `++need`
+#### Tutorial: `++need`
 
 [Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [++maps](../../language/hoon/reference/stdlib/2o.md#map) or [++sets](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [++by](../../language/hoon/reference/stdlib/2i.md#by) and [++in](../../language/hoon/reference/stdlib/2h.md#in), as well as most [++list](../../glossary/list.md) tools, are wet gates.
 
@@ -195,13 +195,13 @@ Briefly, computer scientist Eric Lippert [clarifies](https://stackoverflow.com/q
 
 Variance describes the four possible relationships that type rules are able to have to each other. Hoon imaginatively designates these by [metals](../../glossary/metals.md). Briefly:
 
-1. **Covariance (`%zinc`)** means that specific types nest inside of generic types:  it's like claiming that a core that produces a `%plant` can produce a `%tree`, a subcategory of `%plant`. Covariance is useful for flexibility in return values.
+1. **Covariance (`%zinc`)** means that specific types nest inside of generic types: it's like claiming that a core that produces a `%plant` can produce a `%tree`, a subcategory of `%plant`. Covariance is useful for flexibility in return values.
 
-2. **Contravariance (`%iron`)** means that generic types are expected to nest inside of specific types:  it's like claiming that a core that can accept a `%tree` can accept a `%plant`, the supercategory of `%tree`. (Contravariance seems counterintuitive for many developers when they encounter it for the first time.)  Contravariance is useful for flexibility in input values (`sample`s).
+2. **Contravariance (`%iron`)** means that generic types are expected to nest inside of specific types: it's like claiming that a core that can accept a `%tree` can accept a `%plant`, the supercategory of `%tree`. (Contravariance seems counterintuitive for many developers when they encounter it for the first time.)  Contravariance is useful for flexibility in input values (`sample`s).
 
 3. **Bivariance (`%lead`)** means that we can allow both covariant and contravariant behavior. While bivariance is included for completeness (including a worked example below), it is not commonly used and only a few examples exist in the standard library for building shared data structure cores.
 
-4. **Invariance (`%gold`)** means that types must mutually nest compatibly:  a core that accepts or produces a `%tree` can only accept or produce a `%tree`. This is the default behavior of cores, so it's the strongest model you have imprinted on. Cores which allow variance are changing that behavior.
+4. **Invariance (`%gold`)** means that types must mutually nest compatibly: a core that accepts or produces a `%tree` can only accept or produce a `%tree`. This is the default behavior of cores, so it's the strongest model you have imprinted on. Cores which allow variance are changing that behavior.
 
 A `%gold` core can be cast or converted to any metal, and any metal can be cast or converted to `%lead`.
 
@@ -279,7 +279,7 @@ By default, cores are `%gold` invariant cores.
 
 ### Illustrations {#illustrations}
 
-#### Tutorial:  `%gold` Invariant Polymorphism
+#### Tutorial: `%gold` Invariant Polymorphism
 
 Usually it makes sense to cast for a `%gold` core type when you're treating a core as a state machine. The check ensures that the payload, which includes the relevant state, doesn't vary in type.
 
@@ -321,7 +321,7 @@ nest-fail
 
 In these examples, the `=>` rune is used to give each core a simple context. The context of the left-hand core in each case is a pair of atoms, `[@ @]`. The first cast goes through because the right-hand core also has a pair of atoms as its context. The second cast fails because the right-hand core has the wrong type of context -- three atoms, `[@ @ @]`.
 
-#### Tutorial:  `%iron` Contravariant Polymorphism
+#### Tutorial: `%iron` Contravariant Polymorphism
 
 `%iron` [gates](../../glossary/gate.md) are particularly useful when you want to pass gates (having various [payload](../../glossary/payload.md) types) to other gates. We can illustrate this use with a very simple example. Save the following as `/gen/gatepass.hoon` in your `%base` [desk](../../glossary/desk.md):
 
@@ -345,7 +345,7 @@ This [generator](../../glossary/generator.md) is rather simple except for the fi
 50
 ```
 
-But we still haven't fully explained the first line of the code. What does `_^|(|=(@ 15))` mean? The inside portion is clear enough:  `|=(@ 15)` produces a normal (i.e., `%gold`) [gate](../../glossary/gate.md) that takes an atom and returns `15`. The `^|` [ketbar](../../language/hoon/reference/rune/ket.md#ketbar) rune is used to turn `%gold` gates to `%iron`. (Reverse alchemy!)  And the `_` character turns that `%iron` gate value into a structure, i.e. a type. So the whole subexpression means, roughly:  “the same type as an iron gate whose [sample](../../glossary/sample.md) is an atom, `@`, and whose product is another atom, `@`”. The context isn't checked at all. This is good, because that allows us to accept gates defined and produced in drastically different environments. Let's try passing a gate with a different context:
+But we still haven't fully explained the first line of the code. What does `_^|(|=(@ 15))` mean? The inside portion is clear enough: `|=(@ 15)` produces a normal (i.e., `%gold`) [gate](../../glossary/gate.md) that takes an atom and returns `15`. The `^|` [ketbar](../../language/hoon/reference/rune/ket.md#ketbar) rune is used to turn `%gold` gates to `%iron`. (Reverse alchemy!)  And the `_` character turns that `%iron` gate value into a structure, i.e. a type. So the whole subexpression means, roughly: “the same type as an iron gate whose [sample](../../glossary/sample.md) is an atom, `@`, and whose product is another atom, `@`”. The context isn't checked at all. This is good, because that allows us to accept gates defined and produced in drastically different environments. Let's try passing a gate with a different context:
 
 ```hoon
 > +gatepass =>([22 33] |=(a=@ +(a)))
@@ -453,7 +453,7 @@ If you really want to look at the sample you can check `+6` of `iron-gate`:
 #t/*
 ```
 
-#### Tutorial:  `%zinc` Covariant Polymorphism
+#### Tutorial: `%zinc` Covariant Polymorphism
 
 As with `%iron` [cores](../../glossary/core.md), the context of `%zinc` cores is opaque; they cannot be written-to or read-from. The [sample](../../glossary/sample.md) of a `%zinc` core is read-only. That means, among other things, that `%zinc` cores cannot be used for function calls. Function calls in Hoon involve a change to the sample (the default sample is replaced with the argument value), which is disallowed as type-unsafe for `%zinc` cores.
 
@@ -500,7 +500,7 @@ payload-block
 32
 ```
 
-#### Tutorial:  `%lead` Bivariant Polymorphism
+#### Tutorial: `%lead` Bivariant Polymorphism
 
 `%lead` cores have more permissive nesting rules than either `%iron` or `%zinc` cores. There is no restriction on which [payload](../../glossary/payload.md) types nest. That means, among other things, that the payload type of a `%lead` core is both covariant and contravariant ( ‘bivariant’).
 
@@ -522,7 +522,7 @@ But don't try to read the sample:
 -find.a.lead-gate
 ```
 
-#### Tutorial:  `%lead` Bivariant Polymorphism
+#### Tutorial: `%lead` Bivariant Polymorphism
 
 - Calculate the Fibonacci series using `%lead` and `%iron` cores.
 
@@ -601,7 +601,7 @@ Let's examine each arm in detail.
 
 `++stream` is a mold-builder. It's a [wet gate](../../glossary/wet-gate.md) that takes one argument, `of`, which is a [mold](../../glossary/mold.md), and produces a `%lead` [trap](../../glossary/trap.md): a function with no `sample` and an arm `$` buc, with opaque [payload](../../glossary/payload.md).
 
-`$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) is a rune that produces a type from an example; `^?` [ketwut](../../language/hoon/reference/rune/ket.md#ketwut) converts (casts) a core to lead; `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) forms the [trap](../../glossary/trap.md). So to follow this sequence we read it backwards:  we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example from which to produce a type.
+`$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) is a rune that produces a type from an example; `^?` [ketwut](../../language/hoon/reference/rune/ket.md#ketwut) converts (casts) a core to lead; `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) forms the [trap](../../glossary/trap.md). So to follow this sequence we read it backwards: we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example from which to produce a type.
 
 With the line `^- $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` [bucpat](../../language/hoon/reference/rune/buc.md#bucpat) is the rune to describe a data structure that can either be an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md). The first part describes the atom, which here is going to be `~`. The second part describes a cell, which we define to have the head of type `of` with the [face](../../glossary/face.md) `item`, and a tail with a face of `more`. The expression `^$` is not a rune (no children), but rather a reference to the enclosing [wet gate](../../glossary/wet-gate.md), so the tail of this cell will be of the same type produced by this wet gate.
 
@@ -692,6 +692,6 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 
 This example is a bit overkill for simply calculating the Fibonacci series, but it illustrates how you could use `%lead` cores. Instead of `++fib`, you can supply any infinite sequence and `++stream` will correctly handle it.
 
-### Exercise:  `%lead` Bivariant Polymorphism {#exercise-lead-bivariant-polymorphism}
+### Exercise: `%lead` Bivariant Polymorphism {#exercise-lead-bivariant-polymorphism}
 
 - Produce a `%say` [generator](../../glossary/generator.md) that yields another self-referential sequence, like the [Lucas numbers](https://en.wikipedia.org/wiki/Lucas_number) or the [Thue–Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).

@@ -54,11 +54,11 @@ One can also [++cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, o
 0x13
 ```
 
-### Exercise:  Bind Gate Arguments {#exercise-bind-gate-arguments}
+### Exercise: Bind Gate Arguments {#exercise-bind-gate-arguments}
 
 - Create a gate `++inc` which increments a value in one step, analogous to [++dec](../../language/hoon/reference/stdlib/1a.md#dec).
 
-### Exercise:  Chain Gate Values {#exercise-chain-gate-values}
+### Exercise: Chain Gate Values {#exercise-chain-gate-values}
 
 - Write an expression which yields the parent [galaxy](../../glossary/galaxy.md) of a [planet's](../../glossary/planet.md) sponsoring [star](../../glossary/star.md) by composing two gates.
 
@@ -108,7 +108,7 @@ c
 120
 ```
 
-### Exercise:  Calculate a Factorial {#exercise-calculate-a-factorial}
+### Exercise: Calculate a Factorial {#exercise-calculate-a-factorial}
 
 - Use `++reel` to produce a [gate](../../glossary/gate.md) which calculates the factorial of a number.
 

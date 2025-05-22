@@ -173,7 +173,7 @@ How do we parse multiple characters in order to break things up sensibly?
     as a rule of thumb you wanna avoid the recursive use of stdlib list functions in general
     -->
 
-At this point we have two problems:  we are just getting raw `@t` atoms back, and we can't iteratively process arbitrarily long strings. [++cook](../../language/hoon/reference/stdlib/4f.md#cook) will help us with the first of these:
+At this point we have two problems: we are just getting raw `@t` atoms back, and we can't iteratively process arbitrarily long strings. [++cook](../../language/hoon/reference/stdlib/4f.md#cook) will help us with the first of these:
 
 - [++cook](../../language/hoon/reference/stdlib/4f.md#cook) will take a `rule` and a [gate](../../glossary/gate.md) to apply to the successful parse.
 
@@ -199,7 +199,7 @@ However, to parse iteratively, we need to use the [++knee](../../language/hoon/r
 
 There is an example of a calculator [in the parsing guide](../../language/hoon/guides/parsing.md#recursive-parsers) that's worth a read at this point. It uses [++knee](../../language/hoon/reference/stdlib/4f.md#knee) to scan in a set of numbers at a time.
 
-### Example:  Parse a String of Numbers {#example-parse-a-string-of-numbers}
+### Example: Parse a String of Numbers {#example-parse-a-string-of-numbers}
 
 A simple [++shim](../../language/hoon/reference/stdlib/4f.md#shim)-based parser:
 
@@ -218,6 +218,6 @@ A refined [++cook](../../language/hoon/reference/stdlib/4f.md#cook)/[++cury](../
 [p=[p=1 q=3] q=[~ u=[p=[~ 12] q=[p=[p=1 q=3] q="3"]]]]
 ```
 
-### Example:  Hoon Workbook {#example-hoon-workbook}
+### Example: Hoon Workbook {#example-hoon-workbook}
 
 More examples demonstrating parser usage are available in the [Hoon Workbook](../../language/hoon/examples), such as the [Roman Numeral](../../language/hoon/examples/roman.md) tutorial.

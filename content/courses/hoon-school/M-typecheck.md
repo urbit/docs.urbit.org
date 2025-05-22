@@ -172,12 +172,12 @@ nest-fail
 
 We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](R-metals.md).
 
-This isn't a comprehensive list of the type checks in Hoon:  for instance, some other runes that include a type check are `=.` [tisdot](../../language/hoon/reference/rune/tis.md#tisdot) and `%_` [cencab](../../language/hoon/reference/rune/cen.md#_-cencab).
+This isn't a comprehensive list of the type checks in Hoon: for instance, some other runes that include a type check are `=.` [tisdot](../../language/hoon/reference/rune/tis.md#tisdot) and `%_` [cencab](../../language/hoon/reference/rune/cen.md#_-cencab).
 
 
 ## Type Inference {#type-inference}
 
-Hoon infers the type of any given expression. How does this inference work?  Hoon has available various tools for inferring the type of any given expression:  literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
+Hoon infers the type of any given expression. How does this inference work?  Hoon has available various tools for inferring the type of any given expression: literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
 
 ### Literals {#literals}
 
@@ -449,7 +449,7 @@ mint-vain
 nest-fail
 ```
 
-#### Tutorial:  Leaf Counting
+#### Tutorial: Leaf Counting
 
 [Nouns](../../glossary/noun.md) can be understood as binary trees in which each 'leaf' of the tree is an [atom](../../glossary/atom.md). Let's look at a program that takes a noun and returns the number of leaves in it, i.e., the number of atoms.
 
@@ -478,7 +478,7 @@ This program is pretty simple. If the noun `a` is an atom, then it's a tree of o
 
 We have been careful to use `-.a` and `+.a` only on a branch for which `a` is proved to be a [cell](../../glossary/cell.md) -- then it's safe to treat `a` as having a head and a tail.
 
-#### Tutorial:  Cell Counting
+#### Tutorial: Cell Counting
 
 Here's a program that counts the number of cells in a noun:
 
@@ -518,7 +518,7 @@ Save this as `/gen/cellcount.hoon` and run it from the Dojo:
 
 This code is a little more tricky. The basic idea, however, is simple. We have a counter value, `c`, whose initial value is `0` (`=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) pins the [bunt](../../glossary/bunt.md) of the value with the given [face](../../glossary/face.md)). We trace through the noun `a`, adding `1` to `c` every time we come across a cell. For any part of the noun that is just an atom, `c` is returned unchanged.
 
-What makes this program is little harder to follow is that it recurses within a recursion call. The first recursion expression on line 6 makes changes to two face values:  `c`, the counter, and `a`, the input noun. The new value for `c` defined in the line `$(c +(c), a -.a)` is another recursion call (this time in irregular syntax). The new value for `c` is to be the result of running the same function on the the head of `a`, `-.a`, and with `1` added to `c`. We add `1` because we know that `a` must be a [cell](../../glossary/cell.md). Otherwise, we're asking for the number of cells in the rest of `-.a`.
+What makes this program is little harder to follow is that it recurses within a recursion call. The first recursion expression on line 6 makes changes to two face values: `c`, the counter, and `a`, the input noun. The new value for `c` defined in the line `$(c +(c), a -.a)` is another recursion call (this time in irregular syntax). The new value for `c` is to be the result of running the same function on the the head of `a`, `-.a`, and with `1` added to `c`. We add `1` because we know that `a` must be a [cell](../../glossary/cell.md). Otherwise, we're asking for the number of cells in the rest of `-.a`.
 
 Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`. We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
 
@@ -540,7 +540,7 @@ To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.
 
 (There are lists of every type. Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc. We can even have lists of lists of `@`, `^`, or `?`, etc.)
 
-#### Tutorial:  List Spanning Values
+#### Tutorial: List Spanning Values
 
 Here's a program that takes atoms `a` and `b` and returns a list of all atoms from `a` to `b`:
 
@@ -650,7 +650,7 @@ Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 4
 ```
 
-#### Tutorial:  Converting a Noun to a List of its Leaves
+#### Tutorial: Converting a Noun to a List of its Leaves
 
 Here's a program that takes a noun and returns a [list](../../glossary/list.md) of its 'leaves' (atoms) in order of their appearance:
 
@@ -685,7 +685,7 @@ So far you've learned about four kinds of type inference:
 
 There are several other ways that Hoon infers type. Any rune expression that evaluates to a `?` flag, e.g., `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis), will be inferred from accordingly. The `.+` [dotlus](../../language/hoon/reference/rune/dot.md#dotlus) rune always evaluates to an `@`, and Hoon knows that too. The cell constructor runes, `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep), `:+` [collus](../../language/hoon/reference/rune/col.md#collus), `:^` [colket](../../language/hoon/reference/rune/col.md#colket), and `:*` [coltar](../../language/hoon/reference/rune/col.md#coltar) are all known to produce cells.
 
-More subtly, the `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus), `=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas), and `=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) runes modify the [subject](../../glossary/subject.md) by pinning values to the head. Hoon infers from this that the subject has a new type:  a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
+More subtly, the `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus), `=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas), and `=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) runes modify the [subject](../../glossary/subject.md) by pinning values to the head. Hoon infers from this that the subject has a new type: a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
 
 In general, anything that modifies the subject modifies the type of the subject. Type inference can work in subtle ways for various expressions. However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 

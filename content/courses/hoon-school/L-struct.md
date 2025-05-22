@@ -145,7 +145,7 @@ A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](
 {10 6 12 1 2 16 4}
 ```
 
-#### Example:  Cartesian Product
+#### Example: Cartesian Product
 
 Here's a program that takes two [sets](../../language/hoon/reference/stdlib/2o.md#set) of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets. A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 

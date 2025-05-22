@@ -94,7 +94,7 @@ which is equivalent to
 
 `tank`s are the primary output mechanism for more advanced generators. Even if you don't end up writing them much, you will encounter them as you delve into the Urbit codebase.
 
-#### Tutorial:  Deep Dive into `ls.hoon`
+#### Tutorial: Deep Dive into `ls.hoon`
 
 The [+ls](../../manual/os/dojo-tools.md#ls) generator shows the contents at a particular path in [Clay](../../glossary/clay.md):
 
@@ -158,7 +158,7 @@ tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~
 
 The result of the lookup on the previous line is adapted into a formatted text block with a head of `%tang` and different results depending on whether the request was `~` null or not.
 
-#### Tutorial:  Deep Dive into `cat.hoon`
+#### Tutorial: Deep Dive into `cat.hoon`
 
 For instance, how does [+cat](../../manual/os/dojo-tools.md#cat) work?  Let's look at the structure of `/gen/cat/hoon`:
 
@@ -238,7 +238,7 @@ We use an `%ask` generator when we want to create an interactive program that pr
 
 This section will briefly walk through an `%ask` generator to give you a taste of how they work. The [CLI app guide](../../userspace/apps/guides/cli-tutorial.md) walks through the libraries necessary for working with `%ask` generators in greater detail. We also recommend reading [~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
 
-##### Tutorial:  `%ask` Generator
+##### Tutorial: `%ask` Generator
 
 The code below is an `%ask` [generator](../../glossary/generator.md) that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0). Save it as `/gen/axe.hoon` in your `%base` [desk](../../glossary/desk.md).
 

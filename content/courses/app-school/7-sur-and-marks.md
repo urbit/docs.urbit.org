@@ -121,9 +121,9 @@ Then, in its `+on-poke` arm, it could handle these actions in the following mann
   --
 ```
 
-Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `$action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `$action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
+Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `$action:todo` type and immediately pass it to the `+handle-poke` arm of the core created with the barket. This `+handle-poke` arm tests what kind of `$action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
 
-Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(quip card _this)`. The call to `handle-poke` is also part of the following expression:
+Notice that the `+handle-poke` arm produces a `(quip card _state)` rather than `(quip card _this)`. The call to `+handle-poke` is also part of the following expression:
 
 ```hoon
 =^  cards  state
@@ -131,7 +131,7 @@ Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(
 [cards this]
 ```
 
-The [tisket](../../language/hoon/reference/rune/tis.md#tisket) (`=^`) expression takes two arguments: A new named noun to pin to the subject (`cards` in this case), and an existing wing of the subject to modify (`.state` in this case). Since `handle-poke` produces `(quip card _state)`, we're saving the `$card`s it produces to `cards` and replacing the existing `.state` with its new one. Finally, we produce `[cards this]`, where `.this` will now contain the modified `.state`. The `[cards this]` is a `(quip card _this)`, which our `+on-poke` arm is expected to produce.
+The [tisket](../../language/hoon/reference/rune/tis.md#tisket) (`=^`) expression takes two arguments: A new named noun to pin to the subject (`cards` in this case), and an existing wing of the subject to modify (`.state` in this case). Since `+handle-poke` produces `(quip card _state)`, we're saving the `$card`s it produces to `cards` and replacing the existing `.state` with its new one. Finally, we produce `[cards this]`, where `.this` will now contain the modified `.state`. The `[cards this]` is a `(quip card _this)`, which our `+on-poke` arm is expected to produce.
 
 This might seem a little convoluted, but it's a common pattern we do for two reasons. Firstly, it's not ideal to be passing around the entire `.this` agent core - it's much tidier just passing around the `.state`, until you actually want to return it to Gall. Secondly, It's much easier to read when the poke handling logic is separated into its own arm. This is a fairly simple example but if your agent is more complex, handling multiple marks and containing additional logic before it gets to the actual contents of the `$vase`, structuring things this way can be useful.
 

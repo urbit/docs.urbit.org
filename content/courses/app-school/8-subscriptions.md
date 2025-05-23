@@ -415,7 +415,7 @@ You'll notice it only allows these pokes from the local ship, and enforces this 
 ?>  =(src.bowl our.bowl)
 ```
 
-Additionally, you might notice the `%add` case in `handle-poke` begins with the following:
+Additionally, you might notice the `%add` case in `+handle-poke` begins with the following:
 
 ```hoon
 ?:  (~(has by tasks) now.bowl)

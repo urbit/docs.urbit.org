@@ -4,7 +4,7 @@ As we previously discussed, most arms of an agent core produce a cell of `[effec
 
 ## `$card` type {#card-type}
 
-The `card:agent:gall` type (henceforth just `$card`) has a slightly complex structure, so we'll walk through it step-by-step.
+The `$card:agent:gall` type (henceforth just `$card`) has a slightly complex structure, so we'll walk through it step-by-step.
 
 `lull.hoon` defines a `$card` like so:
 

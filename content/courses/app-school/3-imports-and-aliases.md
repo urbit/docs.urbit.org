@@ -124,7 +124,7 @@ Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified w
 
 The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them into the subject of our agent so they're available for use. You can read more about Ford runes in the [Fas section of the rune documentation](../../language/hoon/reference/rune/fas.md).
 
-Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `card` arm, which makes it simpler to reference the `card:agent:gall` type.
+Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `$card` arm, which makes it simpler to reference the `$card:agent:gall` type.
 
 After that core, we call `+agent:dbug` with our whole agent core as its argument. This allows us to use the `/lib/dbug.hoon` features described earlier.
 

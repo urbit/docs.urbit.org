@@ -71,7 +71,7 @@ $$
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
 -->
 
-- Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a single variable) and a [list](../../glossary/list.md) of _x_ values, and yields the integral as a `@rs` floating-point value. (If you are not yet familiar with these, you may wish to skip ahead to the next lesson.)
+Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a single variable) and a [list](../../glossary/list.md) of _x_ values, and yields the integral as a `@rs` floating-point value. (If you are not yet familiar with these, you may wish to skip ahead to the next lesson.)
 
 ```hoon
 ++  trapezint
@@ -524,7 +524,7 @@ But don't try to read the sample:
 
 #### Tutorial: `%lead` Bivariant Polymorphism
 
-- Calculate the Fibonacci series using `%lead` and `%iron` cores.
+Calculate the Fibonacci series using `%lead` and `%iron` cores.
 
 This program produces a list populated by the first ten elements of the `+fib` [arm](../../glossary/arm.md). It consists of five arms; in brief:
 
@@ -694,4 +694,4 @@ This example is a bit overkill for simply calculating the Fibonacci series, but 
 
 ### Exercise: `%lead` Bivariant Polymorphism {#exercise-lead-bivariant-polymorphism}
 
-- Produce a `%say` [generator](../../glossary/generator.md) that yields another self-referential sequence, like the [Lucas numbers](https://en.wikipedia.org/wiki/Lucas_number) or the [Thue–Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).
+Produce a `%say` [generator](../../glossary/generator.md) that yields another self-referential sequence, like the [Lucas numbers](https://en.wikipedia.org/wiki/Lucas_number) or the [Thue–Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).

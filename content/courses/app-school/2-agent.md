@@ -139,7 +139,7 @@ Now, let's have a look:
 >
 ```
 
-The dojo pretty-prints cores with a format of `number-of-arms.hash`. You can see the head of `skeleton` is `10.fxw` - that's the battery of the core, our 10-arm agent. If we try printing the head of `skeleton` we'll see it's a whole lot of compiled Nock:
+The dojo pretty-prints cores with a format of `number-of-arms.hash`. You can see the head of `%skeleton` is `10.fxw` - that's the battery of the core, our 10-arm agent. If we try printing the head of `%skeleton` we'll see it's a whole lot of compiled Nock:
 
 ```
 > -.skeleton
@@ -158,7 +158,7 @@ The dojo pretty-prints cores with a format of `number-of-arms.hash`. You can see
 ...(truncated for brevity)...
 ```
 
-The battery's not too important, it's not something we'd ever touch in practice. Instead, let's have a look at the core's payload by printing the tail of `skeleton`. We'll see its head is the `$bowl:gall` sample we specified, and then the tail is just all the usual standard library functions:
+The battery's not too important, it's not something we'd ever touch in practice. Instead, let's have a look at the core's payload by printing the tail of `%skeleton`. We'll see its head is the `$bowl:gall` sample we specified, and then the tail is just all the usual standard library functions:
 
 ```
 > +.skeleton
@@ -174,7 +174,7 @@ The battery's not too important, it's not something we'd ever touch in practice.
 ]
 ```
 
-Currently `skeleton` has no state, but of course in practice you'd want to store some actual data. We'll add `foo=42` as our state with the `=+` rune at the beginning of our agent:
+Currently `%skeleton` has no state, but of course in practice you'd want to store some actual data. We'll add `foo=42` as our state with the `=+` rune at the beginning of our agent:
 
 ```hoon
 =+  foo=42
@@ -198,7 +198,7 @@ Save the modified `skeleton.hoon` in `/app` on the `%base` desk like before, and
 > =skeleton -build-file %/app/skeleton/hoon
 ```
 
-If we again examine our agent core's payload by looking at the tail of `skeleton`, we'll see `foo=42` is now included:
+If we again examine our agent core's payload by looking at the tail of `%skeleton`, we'll see `foo=42` is now included:
 
 ```
 > +.skeleton

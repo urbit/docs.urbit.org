@@ -153,7 +153,7 @@ Now our agent should be running, so let's try out `+dbug`. In the dojo, let's tr
 >=
 ```
 
-It just printed out `~`. Our dummy `skeleton` agent doesn't have any state defined, so it's printing out null as a result. Let's try printing the `$bowl` instead:
+It just printed out `~`. Our dummy `%skeleton` agent doesn't have any state defined, so it's printing out null as a result. Let's try printing the `$bowl` instead:
 
 ```
 >   [ [our=~zod src=~zod dap=%skeleton sap=/gall/dojo]

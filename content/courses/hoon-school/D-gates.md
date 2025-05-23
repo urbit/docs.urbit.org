@@ -248,7 +248,7 @@ $ ls zod
 $
 ```
 
-(For this lesson in particular take pains to distinguish the host OS prompt `$ ` from the Urbit Dojo prompt `> `. You should look into particular system setup instructions for Windows, macOS, and Linux hosts.) <!-- TODO -->
+(For this lesson in particular take pains to distinguish the host OS prompt `$ ` from the Urbit Dojo prompt `> `. You should look into particular system setup instructions for macOS and Linux hosts.) <!-- TODO -->
 
 Contrast that apparently empty folder with what the `+ls %` command shows you from inside of your Urbit (at the Dojo prompt):
 

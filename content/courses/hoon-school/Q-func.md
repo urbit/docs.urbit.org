@@ -62,7 +62,7 @@ One can also [+cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or
 
 - Write an expression which yields the parent [galaxy](../../glossary/galaxy.md) of a [planet's](../../glossary/planet.md) sponsoring [star](../../glossary/star.md) by composing two gates.
 
-## Working Across `list`s {#working-across-lists}
+## Working Across `+list`s {#working-across-lists}
 
 The [+turn](../../language/hoon/reference/stdlib/2b.md#turn) function takes a list and a [gate](../../glossary/gate.md), and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of [atoms](../../glossary/atom.md):
 
@@ -98,7 +98,7 @@ We can rewrite the Caesar cipher program using turn:
 c
 ```
 
-[+roll](../../language/hoon/reference/stdlib/2b.md#roll) and [+reel](../../language/hoon/reference/stdlib/2b.md#reel) are used to left-fold and right-fold a [list](../../glossary/list.md), respectively. To fold a list is similar to [+turn](../../language/hoon/reference/stdlib/2b.md#turn), except that instead of yielding a `list` with the values having had each applied, `+roll` and `+reel` produce an accumulated value.
+[+roll](../../language/hoon/reference/stdlib/2b.md#roll) and [+reel](../../language/hoon/reference/stdlib/2b.md#reel) are used to left-fold and right-fold a [list](../../glossary/list.md), respectively. To fold a list is similar to [+turn](../../language/hoon/reference/stdlib/2b.md#turn), except that instead of yielding a `+list` with the values having had each applied, `+roll` and `+reel` produce an accumulated value.
 
 ```hoon
 > (roll `(list @)`[1 2 3 4 5 ~] add)
@@ -117,7 +117,7 @@ c
 
 Functional programmers frequently rely on three design patterns to produce operations on collections of data:
 
-1. Map. The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [+turn](../../language/hoon/reference/stdlib/2b.md#turn) for a [list](../../glossary/list.md), [+run:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+run:by](../../language/hoon/reference/stdlib/2i.md#runby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
+1. Map. The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `+list` or `set`. The standard library arms that accomplish this include [+turn](../../language/hoon/reference/stdlib/2b.md#turn) for a [list](../../glossary/list.md), [+run:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+run:by](../../language/hoon/reference/stdlib/2i.md#runby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
 
 2. Reduce. The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library [arms](../../glossary/arm.md) that accomplish this are [+roll](../../language/hoon/reference/stdlib/2b.md#roll) and [+reel](../../language/hoon/reference/stdlib/2b.md#reel) for a [list](../../glossary/list.md), [+rep:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+rep:by](../../language/hoon/reference/stdlib/2i.md#repby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
 

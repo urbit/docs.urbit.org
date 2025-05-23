@@ -127,7 +127,7 @@ This returns the value in the `unit` since we now know it exists.
 
 We encountered `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) above as a [wet gate](../../glossary/wet-gate.md) that is a mold builder rune which takes in a list of [molds](../../glossary/mold.md) and produces a new mold. Here we take another look at this rune as an implementation of _parametric polymorphism_ in Hoon.
 
-For example, we have [lists](../../glossary/list.md), [trees](../../language/hoon/reference/stdlib/1c.md#tree), and [sets](../../language/hoon/reference/stdlib/2o.md#set) in Hoon, which are each defined in `hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `list` from `hoon.hoon`:
+For example, we have [lists](../../glossary/list.md), [trees](../../language/hoon/reference/stdlib/1c.md#tree), and [sets](../../language/hoon/reference/stdlib/2o.md#set) in Hoon, which are each defined in `hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `+list` from `hoon.hoon`:
 
 ```hoon
 ++  list
@@ -140,7 +140,7 @@ For example, we have [lists](../../glossary/list.md), [trees](../../language/hoo
   $@(~ [i=item t=(list item)])
 ```
 
-The `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) rune is especially useful for defining containers of various kinds. Indeed, `list`s, `tree`s, and `set`s are all examples of containers that accept subtypes. You can have a `(list @)`, a `(list ^)`, a `(list *)`, a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc. The same holds for `set`.
+The `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) rune is especially useful for defining containers of various kinds. Indeed, `+list`s, `tree`s, and `set`s are all examples of containers that accept subtypes. You can have a `(list @)`, a `(list ^)`, a `(list *)`, a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc. The same holds for `set`.
 
 One nice thing about containers defined by `|$` is that they nest in the expected way. Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`. And so it does:
 

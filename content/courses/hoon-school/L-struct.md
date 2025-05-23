@@ -98,7 +98,7 @@ A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](
 
 `set` operations are provided by [+in](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `map`/[+by](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
 
-[+silt](../../language/hoon/reference/stdlib/2l.md#silt) produces a `set` from a `list`:
+[+silt](../../language/hoon/reference/stdlib/2l.md#silt) produces a `set` from a `+list`:
 
 ```hoon
 =primes (silt ~[2 3 5 7 11 13])
@@ -128,7 +128,7 @@ A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](
 %.y
 ```
 
-[+tap:in](../../language/hoon/reference/stdlib/2h.md#tapin) yields a `list` of the values:
+[+tap:in](../../language/hoon/reference/stdlib/2h.md#tapin) yields a `+list` of the values:
 
 ```hoon
 > ~(tap in primes)
@@ -235,7 +235,7 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 
 [maps](../../language/hoon/reference/stdlib/2o.md#map) and [sets](../../language/hoon/reference/stdlib/2o.md#set) are frequently used in the standard library and in the extended ecosystem. There are other common patterns which recur often enough that they have their own names:
 
-- [+jar](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `map` of `list`s. `+jar` uses the [+ja](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
+- [+jar](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `map` of `+list`s. `+jar` uses the [+ja](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
 
 - [+jug](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `map` of `set`s. `+jug` uses the [+ju](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
 

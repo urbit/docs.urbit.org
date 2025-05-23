@@ -343,4 +343,4 @@ Our gate here takes a `$tape` that was produced by `+prompt`. If we needed anoth
 
 The rest of this generator should be intelligible to those with Hoon knowledge at this point.
 
-One quirk that you should be aware of, though, is that `$tang` prints in reverse order from how it is created. The reason for this is that `$tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [+flop](../../language/hoon/reference/stdlib/2b.md#flop) the `list`.
+One quirk that you should be aware of, though, is that `$tang` prints in reverse order from how it is created. The reason for this is that `$tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [+flop](../../language/hoon/reference/stdlib/2b.md#flop) the `+list`.

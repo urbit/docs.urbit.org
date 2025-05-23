@@ -89,7 +89,7 @@ Ordinary `map`s are fine if we just want to access one value at a time, but we w
 
 Maps are ordered by the hash of their key, so if we convert them to a list they'll come out in seemingly random order. That means we'd have to convert the map to a list, sort the list, and then iterate over it again to pull out the items we want. We could alternatively store things in a list directly, but retrieving or modifying arbitrary items would be less efficient.
 
-To solve this, rather than using a `map` or a `list`, we can use an _ordered map_. The mold builder for an ordered map is a `mop`, and it's included in the [`zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284) utility library rather than the standard library.
+To solve this, rather than using a `map` or a `+list`, we can use an _ordered map_. The mold builder for an ordered map is a `mop`, and it's included in the [`zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284) utility library rather than the standard library.
 
 A `mop` is defined similarly to a `map`, but it takes an extra argument in the following manner:
 

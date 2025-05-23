@@ -700,7 +700,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
 - Compose a Fibonacci sequence program which produces a [list](../../glossary/list.md) of the appropriate values.
 
-    We can elide some details of working with `list`s until the next lesson; simply recall that they are a way of storing multiple values in a cell of cells of cells….
+    We can elide some details of working with `+list`s until the next lesson; simply recall that they are a way of storing multiple values in a cell of cells of cells….
 
     The most naïve version of this calculation simply calculates all previous numbers in the sequence every time they are needed.
 
@@ -734,7 +734,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     This fully recursive version of the Fibonacci calculation is very wasteful because it keeps no intermediate results.
 
-    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated. We use the [+snoc](../../language/hoon/reference/stdlib/2b.md#snoc) gate to append a noun to a `list`.
+    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated. We use the [+snoc](../../language/hoon/reference/stdlib/2b.md#snoc) gate to append a noun to a `+list`.
 
     ```hoon
     |=  n=@ud

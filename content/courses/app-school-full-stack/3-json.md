@@ -99,7 +99,7 @@ For example:
 
 #### Array functions
 
-`+ar`, `+as`, and `+at` decode a `$json` array to a `list`, `set`, and n-tuple respectively. These gates take other `+dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
+`+ar`, `+as`, and `+at` decode a `$json` array to a `+list`, `set`, and n-tuple respectively. These gates take other `+dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
 
 ```
 > ((ar so):dejs:format a+[s+'foo' s+'bar' s+'baz' ~])
@@ -260,7 +260,7 @@ We first test the head of the `$update`, and if it's `%jrnl` (a list of entries)
 
 We primarily use `+pairs` to form the object, though sometimes `+frond` if it only contains a single key-value pair. We also use `+numb` to encode numerical values.
 
-You'll notice more of our encoding function is done manually than our previous decoding function. For example, we form arrays by tagging an ordinary `list` with `%a`, and strings by tagging an ordinary `$cord` with `%s`. This is typical when you write `$json` encoding functions, and is the reason there are far fewer `+enjs` functions than `+dejs` functions.
+You'll notice more of our encoding function is done manually than our previous decoding function. For example, we form arrays by tagging an ordinary `+list` with `%a`, and strings by tagging an ordinary `$cord` with `%s`. This is typical when you write `$json` encoding functions, and is the reason there are far fewer `+enjs` functions than `+dejs` functions.
 
 ## Resources {#resources}
 

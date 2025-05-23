@@ -882,7 +882,7 @@ Both `+shift` and `+unshift` take two arguments: our `message`, the `$tape` that
   (~(got by shift-map) a)
 ```
 
-`+operate` produces a `$tape`. The `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../language/hoon/reference/stdlib/2b.md#turn). This arm takes two arguments, a [list](../../glossary/list.md) and a [gate](../../glossary/gate.md) to apply to each element of the `list`.
+`+operate` produces a `$tape`. The `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../language/hoon/reference/stdlib/2b.md#turn). This arm takes two arguments, a [list](../../glossary/list.md) and a [gate](../../glossary/gate.md) to apply to each element of the `+list`.
 
 In this case, the `gate` we are applying to our `message` uses the [got](../../language/hoon/reference/stdlib/2i.md#gotby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) door with our `shift-map` as the [sample](../../glossary/sample.md) (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `$cord` in our `message`, one by one and replace it with the `value` from our `map` (either the encoded or decoded version).
 

@@ -7,7 +7,7 @@ _In this module we'll cover how the Hoon compiler infers type, as well as variou
 
 Casting is used to explain to the Hoon compiler exactly what it is we mean with a given data structure. As you get in the habit of casting your data structures, it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
 
-[+list](../../language/hoon/reference/stdlib/1c.md#list) is a mold builder that is used to produce a [mold](../../glossary/mold.md), i.e. a list of a particular type (like `(list @)` for a list of atoms). A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `list` of some kind and a null-terminated tuple.
+[+list](../../language/hoon/reference/stdlib/1c.md#list) is a mold builder that is used to produce a [mold](../../glossary/mold.md), i.e. a list of a particular type (like `(list @)` for a list of atoms). A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `+list` of some kind and a null-terminated tuple.
 
 ```hoon
 > -:!>(~[1 2 3])
@@ -17,7 +17,7 @@ Casting is used to explain to the Hoon compiler exactly what it is we mean with 
 #t/it(@)
 ```
 
-The former is inflexible and doesn't have the `i`/`t` faces that a list presents. By marking the type explicitly as a `(list @)` for the compiler, we achieve some stronger guarantees that many of the `list` operators require.
+The former is inflexible and doesn't have the `i`/`t` faces that a list presents. By marking the type explicitly as a `(list @)` for the compiler, we achieve some stronger guarantees that many of the `+list` operators require.
 
 However, we still don't get the [faces](../../glossary/face.md) for free:
 
@@ -74,7 +74,7 @@ Any time we see a `find-fork` error, it means that the type checker considers th
 1
 ```
 
-It's important to note that performing tests like this will actually transform a [list](../../glossary/list.md) into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
+It's important to note that performing tests like this will actually transform a [list](../../glossary/list.md) into a `lest`, a non-null list. Because `lest` is a different type than `+list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
 
 ### Casting Nouns (`^` ket Runes) {#casting-nouns-ket-runes}
@@ -635,7 +635,7 @@ This function takes a list of `@` and returns an `@`. It uses `c` as a counter v
 
 It's important to note that if `a` is a list, you can only use `i.a` and `t.a` after Hoon has inferred that `a` is non-null. A null list has no `i` or `t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `a` is non-null you'll get a `find-fork` crash.
 
-A non-null `list` is called a `lest`.
+A non-null `+list` is called a `lest`.
 
 Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 

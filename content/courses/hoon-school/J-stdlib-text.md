@@ -64,11 +64,11 @@ Special characters (non-ASCII, beyond the standard keyboard, basically) are repr
 
 ### `(list @t)` `$tape` {#list-t-tape}
 
-There are some tools to work with atom `$cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](../../glossary/tape.md). A `$tape` splits out the individual characters from a `$cord` into a `list` of character values.
+There are some tools to work with atom `$cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](../../glossary/tape.md). A `$tape` splits out the individual characters from a `$cord` into a `+list` of character values.
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
-We've hinted a bit at the structure of `list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig. So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
+We've hinted a bit at the structure of `+list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig. So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
 
 A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at the end of the [aura](../../glossary/aura.md) hints that the `@t` values are D→3 so 2³=8 bits wide.)
 
@@ -80,7 +80,7 @@ A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at
 ~[116 104 105 115 32 105 115 32 97 32 116 97 112 101]
 ```
 
-Since a [tape](../../glossary/tape.md) is a `(list @tD)`, all of the `list` tools we have seen before work on them.
+Since a [tape](../../glossary/tape.md) is a `(list @tD)`, all of the `+list` tools we have seen before work on them.
 
 ### `@ta` `$knot` {#ta-knot}
 
@@ -163,9 +163,9 @@ The [+weld](../../language/hoon/reference/stdlib/2b.md#weld) function can be use
 
 ### Manipulating Text {#manipulating-text}
 
-If you have text but you need to change part of it or alter its form, you can use standard library `list` operators like [+flop](../../language/hoon/reference/stdlib/2b.md#flop) as well as `$tape`-specific arms.
+If you have text but you need to change part of it or alter its form, you can use standard library `+list` operators like [+flop](../../language/hoon/reference/stdlib/2b.md#flop) as well as `$tape`-specific arms.
 
-Applicable `list` operations, some of which you've seen before, include:
+Applicable `+list` operations, some of which you've seen before, include:
 
 - The [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function takes a list and returns it in reverse order:
 
@@ -177,7 +177,7 @@ Applicable `list` operations, some of which you've seen before, include:
     "Hello!"
     ```
 
-- The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list. It takes a `list` to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [+lth](../../language/hoon/reference/stdlib/1a.md#lth) gate (for “less than”):
+- The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list. It takes a `+list` to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [+lth](../../language/hoon/reference/stdlib/1a.md#lth) gate (for “less than”):
 
     ```hoon
     > (sort ~[37 62 49 921 123] lth)
@@ -316,11 +316,11 @@ To "tokenize" text is to break it into pieces according to some rule. For instan
  1   2   3     4   5    6   7   8     9  10         11    12 13 14  15
 ```
 
-Hoon has a sophisticated parser built into it that [we'll use later](P-stdlib-io.md). There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other. We don't need that level of power to work with basic text operations, so we'll instead use basic `list` tools whenever we need to extract or break text apart for now.
+Hoon has a sophisticated parser built into it that [we'll use later](P-stdlib-io.md). There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other. We don't need that level of power to work with basic text operations, so we'll instead use basic `+list` tools whenever we need to extract or break text apart for now.
 
 ## Exercise: Break Text at a Space {#exercise-break-text-at-a-space}
 
-Hoon has a very powerful text parsing engine, built to compile Hoon itself. However, it tends to be quite obscure to new learners. We can build a simple one using `list` tools.
+Hoon has a very powerful text parsing engine, built to compile Hoon itself. However, it tends to be quite obscure to new learners. We can build a simple one using `+list` tools.
 
 - Compose a [gate](../../glossary/gate.md) which parses a long `$tape` into smaller `$tape`s by splitting the text at single spaces. For example, given a `$tape`
  

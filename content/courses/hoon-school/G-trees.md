@@ -150,7 +150,7 @@ We have used lists incidentally. A [list](../../glossary/list.md) is an ordered 
 
 (Notice that all values are converted to the specified [aura](../../glossary/aura.md), in this case the empty aura.)
 
-A `list` is built with the `+list` mold. A `list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `+list` is built with the `+list` mold. A `+list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
 
 ```hoon
 > `(list)`~['a' %b 100]
@@ -162,7 +162,7 @@ A `list` is built with the `+list` mold. A `list` is actually a "mold builder", 
 ~[~[1 2 3] ~[4 5 6]]
 ```
 
-True `list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `list`. In such cases, you'll need to explicitly mark it as such:
+True `+list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:
 
 ```hoon
 > [3 4 5 ~]
@@ -178,7 +178,7 @@ True `list`s have `i` and `t` faces which allow the head and tail of the data to
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `list`. See also [+limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `list`.)
+A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `+list`. See also [+limo](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `+list`.)
 
 ## Addressing Limbs {#addressing-limbs}
 
@@ -425,7 +425,7 @@ Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `c` of 
 -find.c [crash message]
 ```
 
-In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `list`) are likely. There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them. In other words, there are cases when you don't want the limb of the first matching face. You can ‘skip’ the first match by prepending `^` to the face. Upon discovery of the first match at address `n`, the search skips `n` (as well as its children) and continues the search elsewhere:
+In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `+list`) are likely. There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them. In other words, there are cases when you don't want the limb of the first matching face. You can ‘skip’ the first match by prepending `^` to the face. Upon discovery of the first match at address `n`, the search skips `n` (as well as its children) and continues the search elsewhere:
 
 ```hoon
 > ^b:[[4 b=5] [b=6 b=[14 15]]]
@@ -615,7 +615,7 @@ Enter the following into dojo:
 
 ## List operations {#list-operations}
 
-Once you have your data in the form of a `list`, there are a lot of tools available to manipulate and analyze the data:
+Once you have your data in the form of a `+list`, there are a lot of tools available to manipulate and analyze the data:
 
 - The [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
   
@@ -626,14 +626,14 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
   **Exercise: `+flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
-- The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `list` and a comparison function (like [+lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
+- The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [+lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
 
     ```hoon
     > (sort ~[1 3 5 2 4] lth)
     ~[1 2 3 4 5]
     ```
 
-- The [+snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `list` to grab out a particular element (note that it starts counting at zero):
+- The [+snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
 
     ```hoon
     > (snag 0 `(list @)`~[11 22 33 44])
@@ -667,7 +667,7 @@ Once you have your data in the form of a `list`, there are a lot of tools availa
 
     **Exercise: `+weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
 
-There are a couple of sometimes-useful `list` builders:
+There are a couple of sometimes-useful `+list` builders:
 
 - The [+gulf](../../language/hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
 
@@ -676,7 +676,7 @@ There are a couple of sometimes-useful `list` builders:
     ~[5 6 7 8 9 10]
     ```
 
-- The [+reap](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `list`:
+- The [+reap](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
 
     ```hoon
     > (reap 5 0x0)
@@ -702,7 +702,7 @@ There are a couple of sometimes-useful `list` builders:
     19.326.120
     ```
 
-Once you have a `list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
+Once you have a `+list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
 - The [+lent](../../language/hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
 - The [+find](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)

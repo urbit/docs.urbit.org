@@ -140,7 +140,7 @@ For example, we have [lists](../../glossary/list.md), [trees](../../language/hoo
   $@(~ [i=item t=(list item)])
 ```
 
-The `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) rune is especially useful for defining containers of various kinds. Indeed, `+list`s, `tree`s, and `set`s are all examples of containers that accept subtypes. You can have a `(list @)`, a `(list ^)`, a `(list *)`, a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc. The same holds for `set`.
+The `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) rune is especially useful for defining containers of various kinds. Indeed, `+list`s, `+tree`s, and `set`s are all examples of containers that accept subtypes. You can have a `(list @)`, a `(list ^)`, a `(list *)`, a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc. The same holds for `set`.
 
 One nice thing about containers defined by `|$` is that they nest in the expected way. Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`. And so it does:
 

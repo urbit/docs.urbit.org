@@ -7,11 +7,11 @@ _This module will introduce you to several useful data structures built on the [
 
 [`+maps`](../../language/hoon/reference/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `+map`s were documented in [the previous module](K-doors.md).
 
-### `tree` {#tree}
+### `+tree` {#tree}
 
 We use [tree](../../language/hoon/reference/stdlib/1c.md#tree) to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of atoms.
 
-There are two kinds of `tree` in Hoon:
+There are two kinds of `+tree` in Hoon:
 
 1. The null tree `~`.
 2. A non-null tree which is a cell with three parts.

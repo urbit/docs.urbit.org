@@ -6,13 +6,13 @@ As we previously discussed, most arms of an agent core produce a cell of \[effec
 
 The `$card:agent:gall` type (henceforth just `$card`) has a slightly complex structure, so we'll walk through it step-by-step.
 
-`lull.hoon` defines a `$card` like so:
+`/sys/lull.hoon` defines a `$card` like so:
 
 ```hoon
 +$  card  (wind note gift)
 ```
 
-A `+wind` is defined in `arvo.hoon` as:
+A `+wind` is defined in `/sys/arvo.hoon` as:
 
 ```hoon
 ++  wind
@@ -40,9 +40,9 @@ We'll consider each separately.
 
 The purpose of a `%pass` card is to send some kind of one-off request, action, task, or what have you, to another agent or vane. A `%pass` card is a request your agent _initiates_. This is in contrast to a [`%give`](#give) card, which is sent in _response_ to another agent or vane.
 
-The type of the first field in a `%pass` card is a `$wire`. A `$wire` is just a list of `@ta`, with a syntax of `/foo/bar/baz`. When you `%pass` something to an agent or vane, the response will come back on the `$wire` you specify here. Your agent can then check the `$wire` and maybe do different things depending on its content. The [`$wire`](types.md#wire) type is covered in the [types reference](types.md). We'll show how `$wire`s are practically used later on.
+The type of the first field in a `%pass` card is a `$wire`. A `$wire` is just a `(list @ta)`, with a syntax of `/foo/bar/baz`. When you `%pass` something to an agent or vane, the response will come back on the `$wire` you specify here. Your agent can then check the `$wire` and maybe do different things depending on its content. The [`$wire`](types.md#wire) type is covered in the [types reference](types.md). We'll show how `$wire`s are practically used later on.
 
-The type of the next field is a `note:agent:gall` (henceforth just `$note`), which `lull.hoon` defines as:
+The type of the next field is a `$note:agent:gall` (henceforth just `$note`), which `lull.hoon` defines as:
 
 ```hoon
 +$  note
@@ -70,7 +70,7 @@ The type of the next field is a `note:agent:gall` (henceforth just `$note`), whi
 
 ### `$task` {#task}
 
-A `task:agent:gall` (henceforth just `$task`) is defined in `lull.hoon` as:
+A `$task:agent:gall` (henceforth just `$task`) is defined in `lull.hoon` as:
 
 ```hoon
 +$  task
@@ -82,7 +82,7 @@ A `task:agent:gall` (henceforth just `$task`) is defined in `lull.hoon` as:
   ==
 ```
 
-Note a few of these include a `$path` field. The `$path` type is exactly the same as a `$wire` - a list of `@ta` with a syntax of `/foo/bar/baz`. The reason for the `$wire`/`$path` distinction is just to indicate their separate purposes. While a `$wire` is for _responses_, a `$path` is for _requests_. The [`$path`](types.md#path) type is also covered in the [types reference](types.md).
+Note a few of these include a `$path` field. The `$path` type is exactly the same as a `$wire` (another `(list @ta)`) with a syntax of `/foo/bar/baz`. The reason for the `$wire`/`$path` distinction is just to indicate their separate purposes. While a `$wire` is for _responses_, a `$path` is for _requests_. The [`$path`](types.md#path) type is also covered in the [types reference](types.md).
 
 The kinds of `$task`s can be divided into two categories:
 
@@ -112,7 +112,7 @@ The `%poke-as` task is the same as `%poke` except Gall will convert the `$mark` 
 
 ### `note-arvo` {#note-arvo}
 
-A `note-arvo` is defined in `lull.hoon` like so:
+A `$note-arvo` is defined in `lull.hoon` like so:
 
 ```hoon
 +$  note-arvo
@@ -146,7 +146,7 @@ The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Cl
 
 The purpose of a `%give` card is to respond to a request made by another agent or vane. More specifically, it's either for acknowledging a request, or for sending out updates to subscribers. This is in contrast to a [`%pass`](#give) card, which is essentially unsolicited.
 
-A `%give` card contains a `gift:agent:gall` (henceforth just `$gift`), which is defined in `lull.hoon` as:
+A `%give` card contains a `$gift:agent:gall` (henceforth just `$gift`), which is defined in `lull.hoon` as:
 
 ```hoon
 +$  gift

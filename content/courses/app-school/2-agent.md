@@ -112,7 +112,7 @@ The next part has `..on-init`, which means "the subject of the `+on-init` arm". 
 
 Let's examine our agent. In the dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the dojo, commit the file to the desk with `|commit %base`.
 
-For the moment we won't install our `%skeleton` agent. Instead, we'll use the `%build-file` thread to build it and save it in the dojo's subject so we can have a look. Run the following in the dojo:
+For the moment we won't install our `%skeleton` agent. Instead, we'll use the `-build-file` thread to build it and save it in the dojo's subject so we can have a look. Run the following in the dojo:
 
 ```
 > =skeleton -build-file %/app/skeleton/hoon
@@ -192,7 +192,7 @@ Currently `skeleton` has no state, but of course in practice you'd want to store
 --
 ```
 
-Save the modified `skeleton.hoon` in `/app` on the `%base` desk like before, and run `|commit %base` again in the dojo. Then, rebuild it with the same `%build-file` command as before:
+Save the modified `skeleton.hoon` in `/app` on the `%base` desk like before, and run `|commit %base` again in the dojo. Then, rebuild it with the same `-build-file` command as before:
 
 ```
 > =skeleton -build-file %/app/skeleton/hoon

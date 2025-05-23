@@ -208,34 +208,33 @@ This confirms for us, then, that `hoon.hoon` consists of six nested cores, with 
 
 ### Exercise: Explore `hoon.hoon` {#exercise-explore-hoonhoon}
 
-- Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in its parent [core](../../glossary/core.md) or core(s) that have the parent core put in its context via the `=>` or `=<` runes.
-
+Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in its parent [core](../../glossary/core.md) or core(s) that have the parent core put in its context via the `=>` or `=<` runes.
 
 ### Axes of the Subject {#axes-of-the-subject}
 
 The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of `$axis` which is the tree address) in the [subject](../../glossary/subject.md). You've encountered these before:
 
-- `.our` is the [ship's](../../glossary/ship.md) identity.
+`.our` is the [ship's](../../glossary/ship.md) identity.
 
-    ```hoon
-    > -<..
-    our=~nec
-    ```
+```hoon
+> -<..
+our=~nec
+```
 
-- `.now` is 128-bit timestamp sourced from the wall clock time, Linux's `gettimeofday()`.
+`.now` is 128-bit timestamp sourced from the wall clock time, Linux's `gettimeofday()`.
 
-    ```hoon
-    > ->-..
-    now=~2022.6.22..20.41.18..82f4
-    ```
+```hoon
+> ->-..
+now=~2022.6.22..20.41.18..82f4
+```
 
-- `.eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax). (`.eny` is shared between [vanes](../../glossary/vane.md) during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each [Gall](../../glossary/gall.md) agent activation.)
+`.eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax). (`.eny` is shared between [vanes](../../glossary/vane.md) during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each [Gall](../../glossary/gall.md) agent activation.)
 
-    ```hoon
-    > ->+..
-    eny
-    0vmr.qobqc.fd9f0.h5hf4.dkurh.b4s37.lt4qf.2k505.j3sir.cnshk.ldpm0.jeppc.ti7gs.vtpru.u09sm.0imu0.cgdln.fvoqc.mt41e.3iga5.qpct7
-    ```
+```hoon
+> ->+..
+eny
+0vmr.qobqc.fd9f0.h5hf4.dkurh.b4s37.lt4qf.2k505.j3sir.cnshk.ldpm0.jeppc.ti7gs.vtpru.u09sm.0imu0.cgdln.fvoqc.mt41e.3iga5.qpct7
+```
 
 
 ## State and Applications {#state-and-applications}

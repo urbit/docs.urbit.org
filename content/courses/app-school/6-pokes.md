@@ -216,7 +216,7 @@ This is a very simple agent that just has `val`, a number, in its state. It will
   ==
 ```
 
-It only expects pokes with a `%noun` mark, and passes all others to `on-poke:def`, which just crashes. For `%noun` pokes, it expects to receive either `%inc` or `%dec` in the `$vase`. If it's `%inc`, it produces a new `.this` with `.val` incremented. If it's `%dec`, it produces `.this` with `.val` decremented, or crashes if `.val` is already zero.
+It only expects pokes with a `%noun` mark, and passes all others to `+on-poke:def`, which just crashes. For `%noun` pokes, it expects to receive either `%inc` or `%dec` in the `$vase`. If it's `%inc`, it produces a new `.this` with `.val` incremented. If it's `%dec`, it produces `.this` with `.val` decremented, or crashes if `.val` is already zero.
 
 Let's try it out. Save the agent above as `/app/pokeme.hoon` in the `%base` desk and `|commit %base`. Then, start it up with `|rein %base [& %pokeme]`. We can check its initial state with `+dbug`:
 

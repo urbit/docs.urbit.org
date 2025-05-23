@@ -78,7 +78,7 @@ Rather than having to return `+on-init` like we did in the last lesson, instead 
 def  ~(. (default-agent this %.n) bowl)
 ```
 
-This sets up the default-agent library we [described above](#default-agent), so you can easily call its arms like `on-poke:def`, `on-agent:def`, etc.
+This sets up the default-agent library we [described above](#default-agent), so you can easily call its arms like `+on-poke:def`, `+on-agent:def`, etc.
 
 ## Additional cores {#additional-cores}
 

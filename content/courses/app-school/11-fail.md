@@ -6,7 +6,7 @@ In this lesson we'll cover the last agent arm we haven't touched on yet: `+on-fa
 
 When crashes or errors occur in certain cases, Gall passes them to an agent's `+on-fail` arm for handling. This arm is very seldom used, almost all agents leave it for default-agent to handle, which just prints the error message to the terminal. While you're unlikely to use this arm, we'll briefly go over its behavior for completeness.
 
-`+on-fail` takes a `$term` error message and a `$tang`, typically containing a stack trace, and often with additional messages about the error. If it weren't delegated to `on-fail:def`, it would begin with:
+`+on-fail` takes a `$term` error message and a `$tang`, typically containing a stack trace, and often with additional messages about the error. If it weren't delegated to `+on-fail:def`, it would begin with:
 
 ```hoon
 ++  on-fail

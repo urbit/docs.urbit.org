@@ -846,7 +846,7 @@ We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [b
   (space-adder key-tape alpha)
 ```
 
-`+encoder` and `+decoder` utilize the `+rotation` and `+space-adder` arms. These [gates](../../glossary/gate.md) are essentially identical, with the arguments passed to `+space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `maps` that we can use to encode and decode messages.
+`+encoder` and `+decoder` utilize the `+rotation` and `+space-adder` arms. These [gates](../../glossary/gate.md) are essentially identical, with the arguments passed to `+space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `+map`s that we can use to encode and decode messages.
 
 In both cases, we create a gate that accepts a `@ud` named `.steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `.value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `+alpha`. `+alpha` is our arm which contains a `$tape` of the entire alphabet. The `.value-tape` will be the list of values in our [map](../../language/hoon/reference/stdlib/2o.md#map).
 

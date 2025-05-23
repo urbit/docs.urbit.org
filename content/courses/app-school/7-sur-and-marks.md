@@ -121,7 +121,7 @@ Then, in its `+on-poke` arm, it could handle these actions in the following mann
   --
 ```
 
-Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `$action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
+Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `$action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `$action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
 
 Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(quip card _this)`. The call to `handle-poke` is also part of the following expression:
 
@@ -252,4 +252,4 @@ Permissions:
 ## Exercises {#exercises}
 
 - Have a quick look at the [tisket documentation](../../language/hoon/reference/rune/tis.md#tisket).
-- Try writing a mark file for the `update:todo` type, in a similar fashion to the `action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.
+- Try writing a mark file for the `update:todo` type, in a similar fashion to the `$action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.

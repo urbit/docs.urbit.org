@@ -39,59 +39,59 @@ Most of any possible tree will be unoccupied for any actual data structure. For 
 
 ### Exercise: Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
 
-- Consider each of the following nouns. Which tree diagram do they correspond to?  (This is a matching exercise.)
+Consider each of the following nouns. Which tree diagram do they correspond to?  (This is a matching exercise.)
 
-    | Noun | Tree Diagram |
-    | ---- | ------------ |
-    | 1. `[[[1 2] 3] 4]` | A. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
-    | 2. `[[1 2] 3 4]` | B. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
-    | 3. `[1 2 3 4]` | C. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
+| Noun | Tree Diagram |
+| ---- | ------------ |
+| 1. `[[[1 2] 3] 4]` | A. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-1.png) | 
+| 2. `[[1 2] 3 4]` | B. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-2.png) | 
+| 3. `[1 2 3 4]` | C. ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-exercise-3.png) | 
 
 ### Exercise: Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
 
-- Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
+Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
-    ```hoon
-    |=  end=@
-    =/  count=@  1
-    |-
-    ^-  (list @)
-    ?:  =(end count)
-      ~
-    :-  count
-    $(count (add 1 count))
-    ```
+```hoon
+|=  end=@
+=/  count=@  1
+|-
+^-  (list @)
+?:  =(end count)
+  ~
+:-  count
+$(count (add 1 count))
+```
 
-    In the Dojo:
+In the Dojo:
 
-    ```hoon
-    > +list 5
-    ~[1 2 3 4]
+```hoon
+> +list 5
+~[1 2 3 4]
 
-    > +list 10
-    ~[1 2 3 4 5 6 7 8 9]
+> +list 10
+~[1 2 3 4 5 6 7 8 9]
 
-    > +list 1
-    ~
-    ```
+> +list 1
+~
+```
 
-    OK, we've seen these runes before. This time we want to focus on the list, the thing that's being built here.
+OK, we've seen these runes before. This time we want to focus on the list, the thing that's being built here.
 
-    This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
+This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
 
-    ```
-      [1 [2 [3 [4 ~]]]]
+```
+[1 [2 [3 [4 ~]]]]
 
-             .
-            / \
-           1   .
-              / \
-             2   .
-                / \
-               3   .
-                  / \
-                 4   ~
-    ```
+  .
+ / \
+1   .
+   / \
+  2   .
+     / \
+    3   .
+       / \
+      4   ~
+```
 
 ### Tuples as Trees {#tuples-as-trees}
 
@@ -210,7 +210,7 @@ A `$tape` is actually a `(list @t)`, a binary tree of single characters which on
  
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
-- What are the addresses of each letter in the tree for the Gilbert & Sullivan quote above?  Can you see the pattern?  Can you get the address of EVERY letter through `l`?
+What are the addresses of each letter in the tree for the Gilbert & Sullivan quote above?  Can you see the pattern?  Can you get the address of EVERY letter through `l`?
 
 ### Positional Addressing (Lark Notation) {#positional-addressing-lark-notation}
 
@@ -248,25 +248,25 @@ There is a solution at the bottom of the page.
 
 ### Exercise: Lark Notation {#exercise-lark-notation}
 
-- Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
+Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
 
-    ```
-              .
-             / \
-            /   \
-           /     \
-          .       .
-         / \     / \
-        /   .   10  .
-       /   / \     / \
-      .   8   9   11  .
-     / \             / \
-    5   .           12  13
-       / \
-      6   7
-    ```
+```
+          .
+         / \
+        /   \
+       /     \
+      .       .
+     / \     / \
+    /   .   10  .
+   /   / \     / \
+  .   8   9   11  .
+ / \             / \
+5   .           12  13
+   / \
+  6   7
+```
 
-- Use a lark expression to obtain the value `9` in the following noun: `[[[5 6 7] 8 9] 10 11 12 13]`.
+Use a lark expression to obtain the value `9` in the following noun: `[[[5 6 7] 8 9] 10 11 12 13]`.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 
@@ -532,7 +532,7 @@ Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) produ
 
 ### Example: Number to Digits {#example-number-to-digits}
 
-- Compose a generator which accepts a number as `@ud` unsigned decimal and returns a [list](../../glossary/list.md) of its digits.
+Compose a generator which accepts a number as `@ud` unsigned decimal and returns a [list](../../glossary/list.md) of its digits.
 
 One verbose Hoon program 
 
@@ -588,7 +588,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation. This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-- Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise: Resolving Wings {#exercise-resolving-wings}
 
@@ -598,109 +598,113 @@ Enter the following into dojo:
 =a [[[b=%bweh a=%.y c=8] b="no" c="false"] 9]
 ```
 
-- Test your knowledge from this lesson by evaluating the following expressions and then checking your answer in the dojo or see the solutions below.
+Test your knowledge from this lesson by evaluating the following expressions and then checking your answer in the dojo or see the solutions below.
 
-    1. `b:a(a [b=%skrt a="four"])`
-    2. `^b:a(a [b=%skrt a="four"])`
-    3. `^^b:a(a [b=%skrt a="four"])`
-    4. `b.a:a(a [b=%skrt a="four"])`
-    5. `a.a:a(a [b=%skrt a="four"])`
-    6. `+.a:a(a [b=%skrt a="four"])`
-    7. `a:+.a:a(a [b=%skrt a="four"])`
-    8. `a(a a)`
-    9. `b:-<.a(a a)`
-    10. How many times does the atom `9` appear in `a(a a(a a))`?
+1. `b:a(a [b=%skrt a="four"])`
+2. `^b:a(a [b=%skrt a="four"])`
+3. `^^b:a(a [b=%skrt a="four"])`
+4. `b.a:a(a [b=%skrt a="four"])`
+5. `a.a:a(a [b=%skrt a="four"])`
+6. `+.a:a(a [b=%skrt a="four"])`
+7. `a:+.a:a(a [b=%skrt a="four"])`
+8. `a(a a)`
+9. `b:-<.a(a a)`
+10. How many times does the atom `9` appear in `a(a a(a a))`?
 
-    The answers are at the bottom of the page.
+The answers are at the bottom of the page.
 
 ## List operations {#list-operations}
 
 Once you have your data in the form of a `+list`, there are a lot of tools available to manipulate and analyze the data:
 
-- The [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
+The [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
   
-    ```hoon
-    > (flop ~[1 2 3 4 5])
-    ~[5 4 3 2 1]
-    ```
+```hoon
+> (flop ~[1 2 3 4 5])
+~[5 4 3 2 1]
+```
 
-  **Exercise: `+flop` Yourself:** Without using flop, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
+### Exercise: `+flop` Yourself
 
-- The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [+lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
+Without using `+flop`, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
-    ```hoon
-    > (sort ~[1 3 5 2 4] lth)
-    ~[1 2 3 4 5]
-    ```
+The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [+lth](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
 
-- The [+snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
+```hoon
+> (sort ~[1 3 5 2 4] lth)
+~[1 2 3 4 5]
+```
 
-    ```hoon
-    > (snag 0 `(list @)`~[11 22 33 44])
-    11
+The [+snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
 
-    > (snag 1 `(list @)`~[11 22 33 44])
-    22
-    
-    > (snag 3 `(list @)`~[11 22 33 44])
-    44
-    
-    > (snag 3 "Hello!")
-    'l'
-    
-    > (snag 1 "Hello!")
-    'e'
-    
-    > (snag 5 "Hello!")
-    '!'
-    ```
+```hoon
+> (snag 0 `(list @)`~[11 22 33 44])
+11
 
-- The [+weld](../../language/hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
+> (snag 1 `(list @)`~[11 22 33 44])
+22
 
-    ```hoon
-    > (weld ~[1 2 3] ~[4 5 6])
-    ~[1 2 3 4 5 6]
+> (snag 3 `(list @)`~[11 22 33 44])
+44
 
-    > (weld "Happy " "Birthday!")
-    "Happy Birthday!"
-    ```
+> (snag 3 "Hello!")
+'l'
 
-    **Exercise: `+weld` Yourself:** Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
+> (snag 1 "Hello!")
+'e'
+
+> (snag 5 "Hello!")
+'!'
+```
+
+The [+weld](../../language/hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
+
+```hoon
+> (weld ~[1 2 3] ~[4 5 6])
+~[1 2 3 4 5 6]
+
+> (weld "Happy " "Birthday!")
+"Happy Birthday!"
+```
+
+### Exercise: `+weld` Yourself
+
+Without using weld, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of the page.
 
 There are a couple of sometimes-useful `+list` builders:
 
-- The [+gulf](../../language/hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
+The [+gulf](../../language/hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
 
-    ```hoon
-    > (gulf 5 10)  
-    ~[5 6 7 8 9 10]
-    ```
+```hoon
+> (gulf 5 10)  
+~[5 6 7 8 9 10]
+```
 
-- The [+reap](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
+The [+reap](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
 
-    ```hoon
-    > (reap 5 0x0)
-    ~[0x0 0x0 0x0 0x0 0x0]
+```hoon
+> (reap 5 0x0)
+~[0x0 0x0 0x0 0x0 0x0]
 
-    > (reap 8 'a')
-    <|a a a a a a a a|>
+> (reap 8 'a')
+<|a a a a a a a a|>
 
-    > `tape`(reap 8 'a')
-    "aaaaaaaa"
+> `tape`(reap 8 'a')
+"aaaaaaaa"
 
-    > (reap 5 (gulf 5 10))
-    ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
-    ```
+> (reap 5 (gulf 5 10))
+~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
+```
 
-- The [+roll](../../language/hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+The [+roll](../../language/hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
-    ```hoon
-    > (roll `(list @)`~[11 22 33 44 55] add)
-    165
+```hoon
+> (roll `(list @)`~[11 22 33 44 55] add)
+165
 
-    > (roll `(list @)`~[11 22 33 44 55] mul)
-    19.326.120
-    ```
+> (roll `(list @)`~[11 22 33 44 55] mul)
+19.326.120
+```
 
 Once you have a `+list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
@@ -716,13 +720,13 @@ Using what we know to date, most operations that we would do on a collection of 
 
 ### Exercise: Evaluating Expressions {#exercise-evaluating-expressions}
 
-- Without entering these expressions into the Dojo, what are the products of the following expressions?
+Without entering these expressions into the Dojo, what are the products of the following expressions?
 
-    ```hoon
-    (lent ~[1 2 3 4 5])
-    (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
-    (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
-    ```
+```hoon
+(lent ~[1 2 3 4 5])
+(lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
+(lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
+```
 
 ### Exercise: Welding Nouns {#exercise-welding-nouns}
 
@@ -733,135 +737,135 @@ First, bind these faces.
 =c ~[1 2 3]
 ```
 
-- Determine whether the following Dojo expressions are valid, and if so, what they evaluate to.
+Determine whether the following Dojo expressions are valid, and if so, what they evaluate to.
 
-    ```hoon
-    > (weld b b)
+```hoon
+> (weld b b)
 
-    > (weld b c)
+> (weld b c)
 
-    > (lent (weld b c))
+> (lent (weld b c))
 
-    > (add (lent b) (lent c))
-    ```
+> (add (lent b) (lent c))
+```
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-- Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
+Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [+flop](../../language/hoon/reference/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 
-- Fruit Tree:
+### Fruit Tree {#fruit-tree}
 
-  - 🍇 `9` or `-<+`
-  - 🍌 `11` or `->+`
-  - 🍉 `12` or `+<-`
-  - 🍏 `16` or `-<-<`
-  - 🍋 `27` or `+<+>`
-  - 🍊 `30` or `+>+<`
-  - 🍑 `42` or `->->-`
-  - 🍒 `62` or `+>+>-`
-  - 🍍 `87` or `->->+>`
+- 🍇 `9` or `-<+`
+- 🍌 `11` or `->+`
+- 🍉 `12` or `+<-`
+- 🍏 `16` or `-<-<`
+- 🍋 `27` or `+<+>`
+- 🍊 `30` or `+>+<`
+- 🍑 `42` or `->->-`
+- 🍒 `62` or `+>+>-`
+- 🍍 `87` or `->->+>`
   
 
-- Resolving Lark Expressions
+### Resolving Lark Expressions {#resolving-lark-expressions}
 
-    ```hoon
-    > =b [[[5 6 7] 8 9] 10 11 12 13]
+```hoon
+> =b [[[5 6 7] 8 9] 10 11 12 13]
 
-    > -<+<:b
-    6
-    ```
+> -<+<:b
+6
+```
 
-- Resolving Wing Expressions
+### Resolving Wing Expressions {#resolving-wing-expressions}
 
-    1. `%bweh`
-    2. `"no"`
-    3. Error: `ford: %slim failed:`
-    4. `%skrt`
-    5. `"four"`
-    6. `a="four"` - Note that this is different from the above!
-    7. `"four"`
-    8. `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]`
-    9. `%bweh`
-    10. `9` appears 3 times:
-    
-    ```hoon
-    > a(a a(a a))
-    [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
-    ```
+1. `%bweh`
+2. `"no"`
+3. Error: `ford: %slim failed:`
+4. `%skrt`
+5. `"four"`
+6. `a="four"` - Note that this is different from the above!
+7. `"four"`
+8. `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]`
+9. `%bweh`
+10. `9` appears 3 times:
 
-- Roll-Your-Own-`+flop`:
+```hoon
+> a(a a(a a))
+[[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
+```
 
-    ```hoon
-    ::  /gen/flop.hoon
-    ::
-    |=  a=(list @)
-    =|  b=(list @)
-    |-  ^-  (list @)
-    ?~  a  b
-    $(b [i.a b], a t.a)
-    ```
+### Roll-Your-Own-`+flop` {#roll-your-own-flop}
 
-- Roll-Your-Own-`+weld`:
+```hoon
+::  /gen/flop.hoon
+::
+|=  a=(list @)
+=|  b=(list @)
+|-  ^-  (list @)
+?~  a  b
+$(b [i.a b], a t.a)
+```
 
-    ```hoon
-    ::  /gen/weld.hoon
-    ::
-    |=  [a=(list @) b=(list @)]
-    |-  ^-  (list @)
-    ?~  a  b
-    [i.a $(a t.a)]
-    ```
+### Roll-Your-Own-`+weld` {#roll-your-own-weld}
 
-- `+lent` expressions
+```hoon
+::  /gen/weld.hoon
+::
+|=  [a=(list @) b=(list @)]
+|-  ^-  (list @)
+?~  a  b
+[i.a $(a t.a)]
+```
 
-    Running each one in the Dojo:
+### `+lent` expressions {#lent-expressions}
 
-    ```hoon
-    > (lent ~[1 2 3 4 5])
-    5
+Running each one in the Dojo:
 
-    > (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
-    3
+```hoon
+> (lent ~[1 2 3 4 5])
+5
 
-    > (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
-    3
-    ```
+> (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
+3
 
-- `+weld` expressions
+> (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
+3
+```
 
-    Running each one in the Dojo:
+### `+weld` expressions {#weld-expressions}
 
-    ```hoon
-    > (weld b b)
-    <|moon planet star galaxy moon planet star galaxy|>
-    ```
+Running each one in the Dojo:
 
-    This will not run because `+weld` expects the elements of both lists to be of the same type:
+```hoon
+> (weld b b)
+<|moon planet star galaxy moon planet star galaxy|>
+```
 
-    ```hoon
-    > (weld b c)
-    ```
+This will not run because `+weld` expects the elements of both lists to be of the same type:
 
-    This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
+```hoon
+> (weld b c)
+```
 
-    ```hoon
-    > (lent (weld b c))
-    ```
+This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
 
-    We see here the correct way to find the sum of the length of two lists of unknown type.
+```hoon
+> (lent (weld b c))
+```
 
-    ```hoon
-    > (add (lent b) (lent c))
-    7
-    ```
+We see here the correct way to find the sum of the length of two lists of unknown type.
 
-- Palindrome
+```hoon
+> (add (lent b) (lent c))
+7
+```
 
-    ```hoon
-    ::  palindrome.hoon
-    ::
-    |=  a=(list)
-    =(a (flop a))
-    ```
+### Palindrome {#palindrome}
+
+```hoon
+::  palindrome.hoon
+::
+|=  a=(list)
+=(a (flop a))
+```

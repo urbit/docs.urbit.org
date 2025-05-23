@@ -112,8 +112,7 @@ In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, an
 
 `+expect-eq` checks whether two vases are equal and pretty-prints the result of that test. It is our workhorse. The source for `+expect-eq` is:
 
-<details>
-<summary>+expect-eq</summary>
+{% code title="/lib/test.hoon" overflow="nowrap" %}
 
 ```hoon
 ++  expect-eq
@@ -140,11 +139,26 @@ In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, an
   result
 ```
 
-</details>
+{% endcode %}
 
 Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) as a [cell](../../glossary/cell.md) of the type of a value and the value.
 
 `+expect-fail` by contrast take a `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc [arm](../../glossary/arm.md) but hasn't been called yet) and verifies that the code within fails.
+
+{% code title="/lib/test.hoon" overflow="nowrap" %}
+
+```hoon
+++  expect-fail
+  |=  a=(trap)
+  ^-  tang
+  =/  b  (mule a)
+  ?-  -.b
+    %|  ~
+    %&  ['expected failure - succeeded' ~]
+  ==
+```
+
+{% endcode %}
 
 ```hoon
 > (expect-fail:test |.(!!))
@@ -159,7 +173,6 @@ Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [
 
 (Recall that `~` null is `%.y` true.)
 
-
 ## Producing Error Messages {#producing-error-messages}
 
 Formal error messages in Urbit are built of tanks.
@@ -172,8 +185,9 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a stack trace, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-- The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
-- The `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
+The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+
+The `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
 ```hoon
 |=  a=@ud
@@ -181,7 +195,7 @@ As your code evaluates, the Arvo runtime maintains a stack trace, or list of the
 !!
 ```
 
-- The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../language/hoon/reference/rune/fas.md) imports) of a [generator](../../glossary/generator.md) or library while developing.
+The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../language/hoon/reference/rune/fas.md) imports) of a [generator](../../glossary/generator.md) or library while developing.
 
 ```hoon
 > (sub 0 1)
@@ -204,8 +218,7 @@ For instance, one could publish a set of tests which characterize the
 behavior of a Roman numeral translation library sufficiently that when
 such a library is provided it is immediately demonstrable.
 
-<details>
-<summary>/tests/lib/roman.hoon</summary>
+{% code title="/tests/lib/roman.hoon" overflow="nowrap" %}
 
 ```hoon
 /+  *test, *roman
@@ -253,7 +266,7 @@ such a library is provided it is immediately demonstrable.
 --
 ```
 
-</details>
+{% endcode %}
 
 By composing the unit tests ahead of time, you exercise a discipline of thinking carefully through details of the interface and implementation before you write a single line of implementation code.
 

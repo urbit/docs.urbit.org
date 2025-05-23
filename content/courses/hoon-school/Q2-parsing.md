@@ -17,11 +17,11 @@ The basic problem all parsers face is this:
 
 We could build a simple parser out of a [trap](../../glossary/trap.md) and [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag), but it would be brittle and difficult to extend. The Hoon parser is very sophisticated, since it has to take a file of ASCII characters (and some UTF-8 strings) and turn it via an AST into [Nock](../../glossary/nock.md) code. What makes parsing challenging is that we have to wade directly into a sea of new types and processes. To wit:
 
--   A [tape](../../glossary/tape.md) is the string to be parsed.
--   A `hair` is the position in the text the parser is at, as a cell of column & line, `[p=@ud q=@ud]`.
--   A `nail` is parser input, a cell of `hair` and `$tape`.
--   An `edge` is parser output, a cell of `hair` and a `+unit` of `hair` and `nail`. (There are some subtleties around failure-to-parse here that we'll defer a moment.)
--   A `rule` is a parser, a gate which applies a `nail` to yield an `edge`.
+-  A [tape](../../glossary/tape.md) is the string to be parsed.
+-  A `hair` is the position in the text the parser is at, as a cell of column & line, `[p=@ud q=@ud]`.
+-  A `nail` is parser input, a cell of `hair` and `$tape`.
+-  An `edge` is parser output, a cell of `hair` and a `+unit` of `hair` and `nail`. (There are some subtleties around failure-to-parse here that we'll defer a moment.)
+-  A `rule` is a parser, a gate which applies a `nail` to yield an `edge`.
 
 Basically, one uses a `rule` on `[hair tape]` to yield an `edge`.
 
@@ -51,41 +51,41 @@ The `rule`-building system is vast and often requires various components togethe
 
 ### `rule`s to parse fixed strings {#rules-to-parse-fixed-strings}
 
-- [`+just`](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `$tape` of the input `nail`.
+[`+just`](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `char` and produces a `rule` that attempts to match that `char` to the first character in the `$tape` of the input `nail`.
 
-    ```hoon
-    > ((just 'a') [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
-    ```
+```hoon
+> ((just 'a') [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
+```
 
-- [`+jest`](../../language/hoon/reference/stdlib/4f.md#jest) matches a `$cord`. It takes an input `$cord` and produces a `rule` that attempts to match that `$cord` against the beginning of the input.
+[`+jest`](../../language/hoon/reference/stdlib/4f.md#jest) matches a `$cord`. It takes an input `$cord` and produces a `rule` that attempts to match that `$cord` against the beginning of the input.
 
-    ```hoon
-    > ((jest 'abc') [[1 1] "abc"])
-    [p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q=""]]]]
+```hoon
+> ((jest 'abc') [[1 1] "abc"])
+[p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q=""]]]]
 
-    > ((jest 'abc') [[1 1] "abcabc"])
-    [p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q="abc"]]]]
-    
-    > ((jest 'abc') [[1 1] "abcdef"])
-    [p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q="def"]]]]
-    ```
+> ((jest 'abc') [[1 1] "abcabc"])
+[p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q="abc"]]]]
 
-    (Keep an eye on the structure of the return `edge` there.)
+> ((jest 'abc') [[1 1] "abcdef"])
+[p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q="def"]]]]
+```
 
-- [`+shim`](../../language/hoon/reference/stdlib/4f.md#shim) parses characters within a given range. It takes in two atoms and returns a `rule`.
+(Keep an eye on the structure of the return `edge` there.)
 
-    ```hoon
-    > ((shim 'a' 'z') [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
-    ```
+[`+shim`](../../language/hoon/reference/stdlib/4f.md#shim) parses characters within a given range. It takes in two atoms and returns a `rule`.
 
-- [`+next`](../../language/hoon/reference/stdlib/4f.md#next) is a simple `rule` that takes in the next character and returns it as the parsing result.
+```hoon
+> ((shim 'a' 'z') [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
+```
 
-    ```hoon
-    > (next [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
-    ```
+[`+next`](../../language/hoon/reference/stdlib/4f.md#next) is a simple `rule` that takes in the next character and returns it as the parsing result.
+
+```hoon
+> (next [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
+```
 
 ### `rule`s to parse flexible strings {#rules-to-parse-flexible-strings}
 
@@ -103,93 +103,93 @@ dojo: hoon expression failed
 
 How do we parse multiple characters in order to break things up sensibly?
 
-- [`+star`](../../language/hoon/reference/stdlib/4f.md#star) will match a multi-character list of values.
+[`+star`](../../language/hoon/reference/stdlib/4f.md#star) will match a multi-character list of values.
 
-    ```hoon
-    > (scan "a" (just 'a'))
-    'a'
+```hoon
+> (scan "a" (just 'a'))
+'a'
 
-    > (scan "aaaaa" (just 'a'))
-    ! {1 2}
-    ! 'syntax-error'
-    ! exit
+> (scan "aaaaa" (just 'a'))
+! {1 2}
+! 'syntax-error'
+! exit
 
-    > (scan "aaaaa" (star (just 'a')))
-    "aaaaa"
-    ```
+> (scan "aaaaa" (star (just 'a')))
+"aaaaa"
+```
 
-- [`+plug`](../../language/hoon/reference/stdlib/4e.md#plug) takes the `nail` in the `edge` produced by one rule and passes it to the next `rule`, forming a [cell](../../glossary/cell.md) of the results as it proceeds.
+[`+plug`](../../language/hoon/reference/stdlib/4e.md#plug) takes the `nail` in the `edge` produced by one rule and passes it to the next `rule`, forming a [cell](../../glossary/cell.md) of the results as it proceeds.
 
-    ```hoon
-    > (scan "starship" ;~(plug (jest 'star') (jest 'ship')))
-    ['star' 'ship']
-    ```
+```hoon
+> (scan "starship" ;~(plug (jest 'star') (jest 'ship')))
+['star' 'ship']
+```
 
-- [`+pose`](../../language/hoon/reference/stdlib/4e.md#pose) tries each `rule` you hand it successively until it finds one that works.
+[`+pose`](../../language/hoon/reference/stdlib/4e.md#pose) tries each `rule` you hand it successively until it finds one that works.
 
-    ```hoon
-    > (scan "a" ;~(pose (just 'a') (just 'b')))
-    'a'
-    
-    > (scan "b" ;~(pose (just 'a') (just 'b')))
-    'b'
-    
-    > (;~(pose (just 'a') (just 'b')) [1 1] "ab")
-    [p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
-    ```
+```hoon
+> (scan "a" ;~(pose (just 'a') (just 'b')))
+'a'
 
-- [`+glue`](../../language/hoon/reference/stdlib/4e.md#glue) parses a delimiter (a `rule`) in between each `rule` and forms a [cell](../../glossary/cell.md) of the results of each non-delimiter `rule`. Delimiters representing each symbol used in Hoon are named according to their [aural ASCII](../../glossary/aural-ascii.md) pronunciation. Sets of characters can also be used as delimiters, such as `prn` for printable characters ([more here](../../language/hoon/reference/stdlib/4i.md)).
+> (scan "b" ;~(pose (just 'a') (just 'b')))
+'b'
 
-    ```hoon
-    > (scan "a b" ;~((glue ace) (just 'a') (just 'b')))  
-    ['a' 'b']
+> (;~(pose (just 'a') (just 'b')) [1 1] "ab")
+[p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
+```
 
-    > (scan "a,b" ;~((glue com) (just 'a') (just 'b')))
-    ['a' 'b']
-    
-    > (scan "a,b,a" ;~((glue com) (just 'a') (just 'b')))
-    {1 4}
-    syntax error
-    
-    > (scan "a,b,a" ;~((glue com) (just 'a') (just 'b') (just 'a')))
-    ['a' 'b' 'a']
-    ```
+[`+glue`](../../language/hoon/reference/stdlib/4e.md#glue) parses a delimiter (a `rule`) in between each `rule` and forms a [cell](../../glossary/cell.md) of the results of each non-delimiter `rule`. Delimiters representing each symbol used in Hoon are named according to their [aural ASCII](../../glossary/aural-ascii.md) pronunciation. Sets of characters can also be used as delimiters, such as `prn` for printable characters ([more here](../../language/hoon/reference/stdlib/4i.md)).
 
-- The `;~` [micsig](../../language/hoon/reference/rune/mic.md#micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
+```hoon
+> (scan "a b" ;~((glue ace) (just 'a') (just 'b')))  
+['a' 'b']
 
-    ```hoon
-    > (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  
-    [[i='a' t=<|f t e r|>] [i='t' t=<|h e|>]
-    
-    > (;~(pose (just 'a') (just 'b')) [1 1] "ab")  
-    [p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
-    ```
+> (scan "a,b" ;~((glue com) (just 'a') (just 'b')))
+['a' 'b']
 
-    <!-- TODO
-    ~tinnus-napbus:
-    btw you should almost always avoid recursive welding cos weld has to traverse the entire first list in order to weld it
-    so you potentially end up traversing the list thousands of times
-    which involves chasing a gorillion pointers
-    as a rule of thumb you wanna avoid the recursive use of stdlib list functions in general
-    -->
+> (scan "a,b,a" ;~((glue com) (just 'a') (just 'b')))
+{1 4}
+syntax error
+
+> (scan "a,b,a" ;~((glue com) (just 'a') (just 'b') (just 'a')))
+['a' 'b' 'a']
+```
+
+The `;~` [micsig](../../language/hoon/reference/rune/mic.md#micsig) will create `;~(combinator (list rule))` to use multiple `rule`s.
+
+```hoon
+> (scan "after the" ;~((glue ace) (star (shim 'a' 'z')) (star (shim 'a' 'z'))))  
+[[i='a' t=<|f t e r|>] [i='t' t=<|h e|>]
+
+> (;~(pose (just 'a') (just 'b')) [1 1] "ab")  
+[p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
+```
+
+<!-- TODO
+~tinnus-napbus:
+btw you should almost always avoid recursive welding cos weld has to traverse the entire first list in order to weld it
+so you potentially end up traversing the list thousands of times
+which involves chasing a gorillion pointers
+as a rule of thumb you wanna avoid the recursive use of stdlib list functions in general
+-->
 
 At this point we have two problems: we are just getting raw `@t` atoms back, and we can't iteratively process arbitrarily long strings. [`+cook`](../../language/hoon/reference/stdlib/4f.md#cook) will help us with the first of these:
 
-- [`+cook`](../../language/hoon/reference/stdlib/4f.md#cook) will take a `rule` and a [gate](../../glossary/gate.md) to apply to the successful parse.
+[`+cook`](../../language/hoon/reference/stdlib/4f.md#cook) will take a `rule` and a [gate](../../glossary/gate.md) to apply to the successful parse.
 
-    ```hoon
-    > ((cook ,@ud (just 'a')) [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ u=[p=97 q=[p=[p=1 q=2] q="bc"]]]]
+```hoon
+> ((cook ,@ud (just 'a')) [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ u=[p=97 q=[p=[p=1 q=2] q="bc"]]]]
 
-    > ((cook ,@tas (just 'a')) [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ u=[p=%a q=[p=[p=1 q=2] q="bc"]]]]
+> ((cook ,@tas (just 'a')) [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ u=[p=%a q=[p=[p=1 q=2] q="bc"]]]]
 
-    > ((cook |=(a=@ +(a)) (just 'a')) [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ u=[p=98 q=[p=[p=1 q=2] q="bc"]]]]
+> ((cook |=(a=@ +(a)) (just 'a')) [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ u=[p=98 q=[p=[p=1 q=2] q="bc"]]]]
 
-    > ((cook |=(a=@ `@t`+(a)) (just 'a')) [[1 1] "abc"])
-    [p=[p=1 q=2] q=[~ u=[p='b' q=[p=[p=1 q=2] q="bc"]]]]
-    ```
+> ((cook |=(a=@ `@t`+(a)) (just 'a')) [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ u=[p='b' q=[p=[p=1 q=2] q="bc"]]]]
+```
 
 However, to parse iteratively, we need to use the [`+knee`](../../language/hoon/reference/stdlib/4f.md#knee) function, which takes a noun as the [bunt](../../glossary/bunt.md) of the type the `rule` produces, and produces a `rule` that recurses properly. (You'll probably want to treat this as a recipe for now and just copy it when necessary.)
 

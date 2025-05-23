@@ -164,11 +164,11 @@ The [+equ:rs](../../language/hoon/reference/stdlib/3b.md#equrs) arm checks for c
 %.n
 ```
 
-- Produce an arm which check for two values to be close to each other by an absolute amount. It should accept three values: `a`, `b`, and `atol`. It should return the result of the following comparison:
+Produce an arm which check for two values to be close to each other by an absolute amount. It should accept three values: `a`, `b`, and `atol`. It should return the result of the following comparison:
 
-    $$
-    |a-b| \leq \texttt{atol}
-    $$
+$$
+|a-b| \leq \texttt{atol}
+$$
 
 #### Tutorial: Length Converter
 
@@ -407,83 +407,83 @@ To convert a floating-point value from number (atom) to text, use
 
 The Hoon standard library at the current time omits many [transcendental functions](https://en.wikipedia.org/wiki/Transcendental_function), such as the trigonometric functions. It is useful to implement pure-Hoon versions of these, although they are not as efficient as [jetted](../../glossary/jet.md) mathematical code would be.
 
-- Produce a version of `+factorial` which can operate on `@rs` inputs correctly.
+Produce a version of `+factorial` which can operate on `@rs` inputs correctly.
 
-- Produce an exponentiation function `+pow-n` which operates on integer `@rs` only.
+Produce an exponentiation function `+pow-n` which operates on integer `@rs` only.
 
-    ```hoon
-    ++  pow-n
-      ::  restricted power, based on integers only
-      |=  [x=@rs n=@rs]
-      ^-  @rs
-      ?:  =(n .0)  .1
-      =/  p  x
-      |-  ^-  @rs
-      ?:  (lth:rs n .2)  p
-      $(n (sub:rs n .1), p (mul:rs p x))
-    ```
+```hoon
+++  pow-n
+  ::  restricted power, based on integers only
+  |=  [x=@rs n=@rs]
+  ^-  @rs
+  ?:  =(n .0)  .1
+  =/  p  x
+  |-  ^-  @rs
+  ?:  (lth:rs n .2)  p
+  $(n (sub:rs n .1), p (mul:rs p x))
+```
 
-- Using both of the above, produce the `+sine` function, defined by
+Using both of the above, produce the `+sine` function, defined by
 
-    $$
-    \sin(x)
-    = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} x^{2n+1}
-    = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
-    $$
+$$
+\sin(x)
+= \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} x^{2n+1}
+= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
+$$
 
-    <!--
-    \sin(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
-    -->
+<!--
+\sin(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
+-->
 
-    ```hoon
-    ++  sine
-      ::  sin x = x - x^3/3! + x^5/5! - x^7/7! + x^9/9! - ...
-      |=  x=@rs
-      ^-  @rs
-      =/  rtol  .1e-5
-      =/  p   .0
-      =/  po  .-1
-      =/  i   .0
-      |-  ^-  @rs
-      ?:  (lth:rs (absolute (sub:rs po p)) rtol)  p
-      =/  ii  (add:rs (mul:rs .2 i) .1)
-      =/  term  (mul:rs (pow-n .-1 i) (div:rs (pow-n x ii) (factorial ii)))
-      $(i (add:rs i .1), p (add:rs p term), po p)
-    ```
+```hoon
+++  sine
+  ::  sin x = x - x^3/3! + x^5/5! - x^7/7! + x^9/9! - ...
+  |=  x=@rs
+  ^-  @rs
+  =/  rtol  .1e-5
+  =/  p   .0
+  =/  po  .-1
+  =/  i   .0
+  |-  ^-  @rs
+  ?:  (lth:rs (absolute (sub:rs po p)) rtol)  p
+  =/  ii  (add:rs (mul:rs .2 i) .1)
+  =/  term  (mul:rs (pow-n .-1 i) (div:rs (pow-n x ii) (factorial ii)))
+  $(i (add:rs i .1), p (add:rs p term), po p)
+```
 
-- Implement `+cosine`.
+Implement `+cosine`.
 
-    $$
-    \cos(x)
-    = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}
-    = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
-    $$
+$$
+\cos(x)
+= \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!} x^{2n}
+= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
+$$
 
-    <!--
-    \cos(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
-    -->
+<!--
+\cos(x) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
+-->
 
-- Implement `+tangent`.
+Implement `+tangent`.
 
-    $$
-    \tan(x) = \frac{\sin(x)}{\cos(x)}
-    $$
+$$
+\tan(x) = \frac{\sin(x)}{\cos(x)}
+$$
 
-    <!--
-    \tan(x) = \frac{\sin(x)}{\cos(x)}
-    -->
+<!--
+\tan(x) = \frac{\sin(x)}{\cos(x)}
+-->
 
-- As a stretch exercise, look up definitions for [exp (e^x)](https://en.wikipedia.org/wiki/Exponentiation#The_exponential_function) and [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), and implement these. You can implement a general-purpose exponentiation function using the formula
+As a stretch exercise, look up definitions for [exp (e^x)](https://en.wikipedia.org/wiki/Exponentiation#The_exponential_function) and [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), and implement these. You can implement a general-purpose exponentiation function using the formula
 
-    $$
-    x^n = \exp(n \\, \text{ln} \\, x)
-    $$
+$$
+x^n = \exp(n \\, \text{ln} \\, x)
+$$
 
-    <!--
-    x^n = \exp(n \,\text{ln}\, x)
-    -->
+<!--
+x^n = \exp(n \,\text{ln}\, x)
+-->
 
-    (We will use these in subsequent examples.)
+(We will use these in subsequent examples.)
 
 ### Exercise: Calculate the Fibonacci Sequence {#exercise-calculate-the-fibonacci-sequence}
 
@@ -498,7 +498,7 @@ $$
 F_n = \frac{\varphi^n-(-\varphi)^{-n}}{\sqrt 5} = \frac{\varphi^n-(-\varphi)^{-n}}{2 \varphi - 1}
 -->
 
-- Implement this analytical formula for the Fibonacci series as a [gate](../../glossary/gate.md).
+Implement this analytical formula for the Fibonacci series as a [gate](../../glossary/gate.md).
 
 ## Date & Time Mathematics {#date-time-mathematics}
 
@@ -760,7 +760,7 @@ Can you verify that `1`s constitute about half of the values in this bit stream,
 
 ### Exercise: Produce uniformly-distributed random numbers {#exercise-produce-uniformly-distributed-random-numbers}
 
-- Using entropy as the source, produce uniform random numbers: that is, numbers in the range [0, 1] with equal likelihood to machine precision.
+Using entropy as the source, produce uniform random numbers: that is, numbers in the range [0, 1] with equal likelihood to machine precision.
 
 We use the LCG defined above, then chop out 23-bit slices using [`+rip`](../../language/hoon/reference/stdlib/2c.md#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1]. (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
 
@@ -800,13 +800,13 @@ We use the LCG defined above, then chop out 23-bit slices using [`+rip`](../../l
 
 </details>
 
-- Convert the above to a `%say` [generator](../../glossary/generator.md) that can optionally accept a seed; if no seed is provided, use `.eny`.
+Convert the above to a `%say` [generator](../../glossary/generator.md) that can optionally accept a seed; if no seed is provided, use `.eny`.
 
-- Produce a higher-quality Mersenne Twister uniform RNG, such as [per this method](https://xilinx.github.io/Vitis_Libraries/quantitative_finance/2022.1/guide_L1/RNGs/RNG.html).
+Produce a higher-quality Mersenne Twister uniform RNG, such as [per this method](https://xilinx.github.io/Vitis_Libraries/quantitative_finance/2022.1/guide_L1/RNGs/RNG.html).
 
 ### Exercise: Produce normally-distributed random numbers {#exercise-produce-normally-distributed-random-numbers}
 
-- Produce a normally-distributed random number generator using the uniform RNG described above.
+Produce a normally-distributed random number generator using the uniform RNG described above.
 
 The normal distribution, or bell curve, describes the randomness of measurement. The mean, or average value, is at zero, while points fall farther and farther away with increasingly less likelihood.
 
@@ -822,9 +822,7 @@ $$
 Z = \frac{U^{0.135} - (1-U)^{0.135}}{0.1975}
 $$
 
-where
-
-- sgn is the signum or sign function.
+where sgn is the signum or sign function.
 
 <!--
 $$
@@ -947,126 +945,9 @@ where
   - $$d_2 = 0.189268$$
   - $$d_3 = 0.001308$$
 
-<!--
-$$
-Z = \text{sgn}\left(U-\frac{1}{2}\right) \left( t - \frac{c_{0}+c_{1} t+c_{2} t^{2}}{1+d_{1} t+d_{2} t^{2} + d_{3} t^{3}} \right)
-$$
--->
+Implement this formula in Hoon to produce normally-distributed random numbers.
 
-- Implement this formula in Hoon to produce normally-distributed random numbers.
-- How would you implement other random number generators?
-
-<!--
-**`/gen/normal2.hoon`**
-
-```hoon
-!:
-=<
-|=  n=@ud  :: n is the number of values to return
-^-  (list @rs)
-=/  values  (rip 5 (~(lcg gen 20.220.524) n))
-=/  mask-clear           0b111.1111.1111.1111.1111.1111
-=/  mask-fill   0b11.1111.0000.0000.0000.0000.0000.0000
-=/  clears    (turn values |=(a=@rs (dis mask-clear a)))
-=/  uniforms  (turn clears |=(a=@ (sub:rs (mul:rs .2 (con mask-fill a)) .1.0)))
-(turn uniforms normal)
-|%
-++  sgn
-  |=  x=@rs
-  ^-  @rs
-  ?:  (lth:rs x .0)
-    .-1
-  ?:  (gth:rs x .0)
-    .1
-  .0
-++  factorial
-  :: integer factorial, not gamma function
-  |=  x=@rs
-  ^-  @rs
-  =/  t=@rs  .1
-  |-  ^-  @rs
-  ?:  |(=(x .1) (lth x .1))  t
-  $(x (sub:rs x .1), t (mul:rs t x))
-++  absrs
-  |=  x=@rs  ^-  @rs
-  ?:  (gth:rs x .0)
-    x
-  (sub:rs .0 x)
-++  exp
-  |=  x=@rs
-  ^-  @rs
-  =/  rtol  .1e-5
-  =/  p   .1
-  =/  po  .-1
-  =/  i   .1
-  |-  ^-  @rs
-  ?:  (lth:rs (absrs (sub:rs po p)) rtol)  p
-  $(i (add:rs i .1), p (add:rs p (div:rs (pow-n x i) (factorial i))), po p)
-++  pow-n
-  ::  restricted power, based on integers only
-  |=  [x=@rs n=@rs]
-  ^-  @rs
-  ?:  =(n .0)  .1
-  =/  p  x
-  |-  ^-  @rs
-  ?:  (lth:rs n .2)  p
-  $(n (sub:rs n .1), p (mul:rs p x))
-++  ln
-  ::  natural logarithm, z > 0
-  |=  z=@rs
-  ^-  @rs
-  =/  rtol  .1e-5
-  =/  p   .0
-  =/  po  .-1
-  =/  i   .0
-  |-  ^-  @rs
-  ?:  (lth:rs (absrs (sub:rs po p)) rtol)
-    (mul:rs (div:rs (mul:rs .2 (sub:rs z .1)) (add:rs z .1)) p)
-  =/  term1  (div:rs .1 (add:rs .1 (mul:rs .2 i)))
-  =/  term2  (mul:rs (sub:rs z .1) (sub:rs z .1))
-  =/  term3  (mul:rs (add:rs z .1) (add:rs z .1))
-  =/  term  (mul:rs term1 (pow-n (div:rs term2 term3) i))
-  $(i (add:rs i .1), p (add:rs p term), po p)
-++  powrs
-  ::  general power, based on logarithms
-  ::  x^n = exp(n ln x)
-  |=  [x=@rs n=@rs]
-  (exp (mul:rs n (ln x)))
-++  minrs
-  |=  [a=@rs b=@rs]
-  ?:  (lth:rs a b)  a  b
-++  normal
-  |=  u=@rs
-  =/  c0  .2.515517
-  =/  c1  .0.802853
-  =/  c2  .0.010328
-  =/  d1  .1.532788
-  =/  d2  .0.189268
-  =/  d3  .0.001308
-  =/  t  (sqt:rs (powrs (sub:rs .1 (ln (minrs u (sub:rs .1 u)))) .2))
-  =/  znum  :(add:rs c0 (mul:rs c1 t) (mul:rs c2 (mul:rs t t)))
-  =/  zden  :(add:rs .1 (mul:rs d1 t) (mul:rs d2 (mul:rs t t)) (mul:rs d3 (powrs t .3)))
-  (mul:rs (sgn (sub:rs u .0.5)) (sub:rs t (div:rs znum zden)))
-++  gen
-  |_  [z=@ud]
-  ++  lcg
-    |=  n=@ud                 :: n is the number of bits to return
-    =/  a  742.938.285        :: a is the multiplier
-    =/  e  31                 :: e is the exponent
-    =/  m  (sub (pow 2 e) 1)  :: modulus
-    =/  index  0
-    =/  accum  *@ub
-    |-  ^-  @ub
-    ?:  =(index n)  accum
-    %=  $
-      index  +(index)
-      z      (mod (mul a z) m)
-      accum  (cat 5 z accum)
-    ==
-  --
---
-```
--->
+How would you implement other random number generators?
 
 ## Hashing {#hashing}
 
@@ -1112,43 +993,43 @@ The Hoon standard library supports fast insecure hashing with [`+mug`](../../lan
 
 Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [tooling](../../language/hoon/reference/stdlib/3d.md). ([`+og`](../../language/hoon/reference/stdlib/3d.md#og), the random number generator, is based on SHA-256 hashing.)
 
-- [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any [atom](../../glossary/atom.md).
+[`+shax`](../../language/hoon/reference/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any [atom](../../glossary/atom.md).
 
-    ```hoon > (shax 1)
-    69.779.012.276.202.546.540.741.613.998.220.636.891.790.827.476.075.440.677.599.814.057.037.833.368.907
-    
-    > `@ux`(shax 1)
-    0x9a45.8577.3ce2.ccd7.a585.c331.d60a.60d1.e3b7.d28c.bb2e.de3b.c554.4534.2f12.f54b
+```hoon > (shax 1)
+69.779.012.276.202.546.540.741.613.998.220.636.891.790.827.476.075.440.677.599.814.057.037.833.368.907
 
-    > `@ux`(shax 2)
-    0x86d9.5764.98ea.764b.4924.3efe.b05d.f625.0104.38c6.a55d.5b57.8de4.ff00.c9b4.c1db
+> `@ux`(shax 1)
+0x9a45.8577.3ce2.ccd7.a585.c331.d60a.60d1.e3b7.d28c.bb2e.de3b.c554.4534.2f12.f54b
 
-    > `@ux`(shax 3)
-    0xc529.ffad.9a5a.b611.62b1.1d61.6b63.9e00.586b.a846.746a.197d.4daf.78b9.08ed.4f08
+> `@ux`(shax 2)
+0x86d9.5764.98ea.764b.4924.3efe.b05d.f625.0104.38c6.a55d.5b57.8de4.ff00.c9b4.c1db
 
-    > `@ux`(shax 1.000.000)
-    0x84a4.929b.1d69.708e.d4b7.0fb8.ca97.cc85.c4a6.1aae.4596.f753.d0d2.6357.e7b9.eb0f
-    ```
+> `@ux`(shax 3)
+0xc529.ffad.9a5a.b611.62b1.1d61.6b63.9e00.586b.a846.746a.197d.4daf.78b9.08ed.4f08
 
-- [`+shaz`](../../language/hoon/reference/stdlib/3d.md#shaz) produces a hashed atom of 512 bits from any atom.
+> `@ux`(shax 1.000.000)
+0x84a4.929b.1d69.708e.d4b7.0fb8.ca97.cc85.c4a6.1aae.4596.f753.d0d2.6357.e7b9.eb0f
+```
 
-    ```hoon
-    > (shaz 1)
-    3.031.947.054.025.992.811.210.838.487.475.158.569.967.793.095.050.169.760.709.406.427.393.828.309.497.273.121.275.530.382.185.415.047.474.588.395.933.812.689.047.905.034.106.140.802.678.745.778.695.328.891
+[`+shaz`](../../language/hoon/reference/stdlib/3d.md#shaz) produces a hashed atom of 512 bits from any atom.
 
-    > `@ux`(shaz 1)
-    0x39e3.d936.c6e3.1eaa.c08f.cfcf.e7bb.4434.60c6.1c0b.d5b7.4408.c8bc.c35a.6b8d.6f57.00bd.cdde.aa4b.466a.e65f.8fb6.7f67.ca62.dc34.149e.1d44.d213.ddfb.c136.68b6.547b
+```hoon
+> (shaz 1)
+3.031.947.054.025.992.811.210.838.487.475.158.569.967.793.095.050.169.760.709.406.427.393.828.309.497.273.121.275.530.382.185.415.047.474.588.395.933.812.689.047.905.034.106.140.802.678.745.778.695.328.891
 
-    > `@ux`(shaz 2)
-    0xcadc.698f.ca01.cf29.35f7.6027.8554.b4e6.1f35.4539.75a5.bb45.3890.0315.9bc8.485b.7018.dd81.52d9.cc23.b6e9.dd91.b107.380b.9d14.ddbf.9cc0.37ee.53a8.57b6.c948.b8fa
+> `@ux`(shaz 1)
+0x39e3.d936.c6e3.1eaa.c08f.cfcf.e7bb.4434.60c6.1c0b.d5b7.4408.c8bc.c35a.6b8d.6f57.00bd.cdde.aa4b.466a.e65f.8fb6.7f67.ca62.dc34.149e.1d44.d213.ddfb.c136.68b6.547b
 
-    > `@ux`(shaz 3)
-    0x4ba.a6ba.4a01.12e6.248b.5e89.9389.4786.aced.1a59.136b.78c6.7076.eb90.2221.d7a5.453a.56d1.446d.17d1.33cd.b468.f798.eb6b.dcee.f071.7040.7a2f.aa94.df7d.81f5.5be4
+> `@ux`(shaz 2)
+0xcadc.698f.ca01.cf29.35f7.6027.8554.b4e6.1f35.4539.75a5.bb45.3890.0315.9bc8.485b.7018.dd81.52d9.cc23.b6e9.dd91.b107.380b.9d14.ddbf.9cc0.37ee.53a8.57b6.c948.b8fa
 
-    > `@ux`(shaz 1.000.000)
-    0x4c13.ef8b.09cf.6e59.05c4.f203.71a4.9cec.3432.ba26.0174.f964.48f1.5475.b2dd.2c59.98c2.017c.9c03.cbea.9d5f.591b.ff23.bbff.b0ae.9c67.a4a9.dd8d.748a.8e14.c006.cbcc
-    ```
+> `@ux`(shaz 3)
+0x4ba.a6ba.4a01.12e6.248b.5e89.9389.4786.aced.1a59.136b.78c6.7076.eb90.2221.d7a5.453a.56d1.446d.17d1.33cd.b468.f798.eb6b.dcee.f071.7040.7a2f.aa94.df7d.81f5.5be4
+
+> `@ux`(shaz 1.000.000)
+0x4c13.ef8b.09cf.6e59.05c4.f203.71a4.9cec.3432.ba26.0174.f964.48f1.5475.b2dd.2c59.98c2.017c.9c03.cbea.9d5f.591b.ff23.bbff.b0ae.9c67.a4a9.dd8d.748a.8e14.c006.cbcc
+```
 
 ### Exercise: Produce a secure password tool {#exercise-produce-a-secure-password-tool}
 
-- Produce a basic secure password tool. It should accept a password, salt it (add a predetermined value to the password), and hash it. _That_ hash is then compared to a reference hash to determine whether or not the password is correct.
+Produce a basic secure password tool. It should accept a password, salt it (add a predetermined value to the password), and hash it. _That_ hash is then compared to a reference hash to determine whether or not the password is correct.

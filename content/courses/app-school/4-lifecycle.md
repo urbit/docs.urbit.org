@@ -375,5 +375,5 @@ Let's now use `+dbug` to confirm our state has successfully been updated to the 
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
 - Have a look at the [`$vase` entry in the type reference](types.md#vase).
-- Have a look at the [`quip` entry in the type reference](types.md#quip).
+- Have a look at the [`+quip` entry in the type reference](types.md#quip).
 - Try modifying the second version of the agent in the [example](#example) section, adding a third state version. Include functions in the wuthep expression in `+on-load` to convert old versions to your new state type.

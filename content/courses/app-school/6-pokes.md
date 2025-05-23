@@ -456,7 +456,7 @@ The `+on-agent` arm of `%pokeit` has received one ack and one nack. The first to
 - Incoming pokes go to the `+on-poke` arm of an agent.
 - The `+on-poke` arm takes a `$cage` and produces an `(quip card _this)`.
 - Gall will automatically return a `%poke-ack` to the poke's source, with a stack trace in the `(unit tang)` if your agent crashed while processing the poke.
-- Outgoing pokes can be sent by including `%poke` `%pass` `$card`s in the `quip` produced by most agent arms.
+- Outgoing pokes can be sent by including `%poke` `%pass` `$card`s in the `+quip` produced by most agent arms.
 - `%poke-ack`s in response to pokes you've sent will come in to the `+on-agent` arm in a `$sign`, on the `$wire` you specified in the original `%poke` `$card`.
 - You can poke agents from the dojo with a syntax of `:agent &mark ['some' 'noun']`.
 

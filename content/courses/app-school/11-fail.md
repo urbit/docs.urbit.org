@@ -42,7 +42,7 @@ Back in the lesson on lustar virtual arms, we briefly mentioned a common pattern
     hc    ~(. +> bowl)
 ```
 
-The name `do` is also used frequently besides `hc`.
+The name `.do` is also used frequently besides `.hc`.
 
 A helper core is a separate core composed into the subject of the agent core, containing useful functions for use by the agent arms. Such a helper core would typically contain functions that would only ever be used internally by the agent - more general functions would usually be included in a separate `/lib` library and imported with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune. Additionally, you might recall that the example agent of the [subscriptions lesson](8-subscriptions.md#example) used a barket (`|^`) rune to create a core in the `+on-poke` arm with a separate `+handle-poke` arm. That approach is typically used when functions will only be used in that one arm. The helper core, on the other hand, is useful when functions will be used by multiple agent arms.
 
@@ -95,4 +95,4 @@ To get to the helper core we composed from within the door, we use a [censig](..
 - A helper core is an extra core of useful functions, composed into the subject of the agent core.
 - Helper cores are typically placed below the agent core, and composed with a tisgal (`=<`) rune.
 - The helper core is typically a door with the `$bowl` as a sample.
-- The helper core is typically given a name of `hc` or `do` in the lustar virtual arm of the agent core.
+- The helper core is typically given a name of `.hc` or `.do` in the lustar virtual arm of the agent core.

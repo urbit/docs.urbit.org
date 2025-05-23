@@ -248,7 +248,7 @@ dojo: failed to process input
 - Scries are performed with the dotket (`.^`) rune.
 - Scries will fail if the scry endpoint does not exist, the requested data does not exist, or the data does not nest in the return type specified.
 - Scries can only be performed on the local ship, not on remote ships.
-- Gall scries with an agent name in the `desk` field and without an extra empty element at the beginning of the path will be passed to that agent's `+on-peek` arm for handling.
+- Gall scries with an agent name in the `/[desk]` field and without an extra empty element at the beginning of the path will be passed to that agent's `+on-peek` arm for handling.
 - Gall scries with a `%x` `$care` take a `$mark` at the end of the scry `$path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
 - The `+on-peek` arm takes a `$path` with the `care` in the head and the `$path` part of the scry in the tail, like `/x/some/path`.
 - The `+on-peek` arm produces a `(unit (unit cage))`. The outer `+unit` is null if the scry endpoint does not exist, and the inner `+unit` is null if the data does not exist.
@@ -259,5 +259,5 @@ dojo: failed to process input
 - Have a look at Gall's [scry reference](../../system/kernel/gall/reference/scry.md).
 - Have a read through the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
-- Try adding another scry endpoint to the `peeker.hoon` agent, which uses a [`wyt:by`](../../language/hoon/reference/stdlib/2i.md#wytby) map function to produce the number of items in the `data` map.
+- Try adding another scry endpoint to the `%peeker` agent, which uses a [`wyt:by`](../../language/hoon/reference/stdlib/2i.md#wytby) map function to produce the number of items in the `.data` map.
 - Have a look through the `+on-peek` arms of some other agents on your ship, and try performing some scries to some of the endpoints.

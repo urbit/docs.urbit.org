@@ -17,7 +17,7 @@ Casting is used to explain to the Hoon compiler exactly what it is we mean with 
 #t/it(@)
 ```
 
-The former is inflexible and doesn't have the `i`/`t` faces that a list presents. By marking the type explicitly as a `(list @)` for the compiler, we achieve some stronger guarantees that many of the `+list` operators require.
+The former is inflexible and doesn't have the "i" and "t" faces that a list presents. By marking the type explicitly as a `(list @)` for the compiler, we achieve some stronger guarantees that many of the `+list` operators require.
 
 However, we still don't get the [faces](../../glossary/face.md) for free:
 
@@ -67,14 +67,14 @@ find-fork
 dojo: hoon expression failed
 ```
 
-Any time we see a `find-fork` error, it means that the type checker considers the value to be underspecified. In this case, it can't guarantee that `i.a` exists because although `a` is a list, it's not known to be a non-null lest. If we enforce that constraint, then suddenly we can use the faces:
+Any time we see a `find-fork` error, it means that the type checker considers the value to be underspecified. In this case, it can't guarantee that `.i.a` exists because although `.a` is a list, it's not known to be a non-null lest. If we enforce that constraint, then suddenly we can use the faces:
 
 ```hoon
 > ?:  ?=(~ a)  !!  i.a
 1
 ```
 
-It's important to note that performing tests like this will actually transform a [list](../../glossary/list.md) into a `lest`, a non-null list. Because `lest` is a different type than `+list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
+It's important to note that performing tests like this will actually transform a [list](../../glossary/list.md) into a `+lest`, a non-null list. Because `+lest` is a different type than `+list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
 
 ### Casting Nouns (`^` ket Runes) {#casting-nouns-ket-runes}
@@ -299,7 +299,7 @@ The `?=` [wuttis](../../language/hoon/reference/rune/wut.md#wuttis) rune is part
 12
 ```
 
-The inferred type of the final `b` is just `*`, because that's how `b` was defined earlier. We can see this by using `?` in the Dojo to see the product type:
+The inferred type of the final `.b` is just `*`, because that's how `.b` was defined earlier. We can see this by using `?` in the Dojo to see the product type:
 
 ```hoon
 > ? =/(b=* 12 b)
@@ -309,25 +309,25 @@ The inferred type of the final `b` is just `*`, because that's how `b` was defin
 
 (Remember that `?` isn't part of Hoon -- it's a Dojo-specific instruction.)
 
-Let's replace that last `b` with a `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) expression whose condition subexpression is a `?=` [wuttis](../../language/hoon/reference/rune/wut.md#wuttis) test. If `b` is an `@`, it'll produce `[& b]`; otherwise `[| b]`:
+Let's replace that last "b" with a `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) expression whose condition subexpression is a `?=` [wuttis](../../language/hoon/reference/rune/wut.md#wuttis) test. If `.b` is an `@`, it'll produce `[& b]`; otherwise `[| b]`:
 
 ```hoon
 > =/(b=* 12 ?:(?=(@ b) [& b] [| b]))
 [%.y 12]
 ```
 
-You can't see it here, but the inferred type of `b` in `[& b]` is `@`. That subexpression is only evaluated if `?=(@ b)` evaluates as true; hence, Hoon can safely infer that `b` must be an [atom](../../glossary/atom.md) in that subexpression. Let's set `b` to a different initial value but leave everything else the same:
+You can't see it here, but the inferred type of `.b` in `[& b]` is `@`. That subexpression is only evaluated if `?=(@ b)` evaluates as true; hence, Hoon can safely infer that `.b` must be an [atom](../../glossary/atom.md) in that subexpression. Let's set `.b` to a different initial value but leave everything else the same:
 
 ```hoon
 > =/(b=* [12 14] ?:(?=(@ b) [& b] [| b]))
 [%.n 12 14]
 ```
 
-You can't see it here either, but the inferred type of `b` in `[| b]` is `^`. That subexpression is only evaluated if `?=(@ b)` evaluates as false, so `b` can't be an atom there. It follows that it must be a [cell](../../glossary/cell.md).
+You can't see it here either, but the inferred type of `.b` in `[| b]` is `^`. That subexpression is only evaluated if `?=(@ b)` evaluates as false, so `.b` can't be an atom there. It follows that it must be a [cell](../../glossary/cell.md).
 
 ##### The Type Spear
 
-What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with the "type spear". The `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune takes one subexpression and constructs a [cell](../../glossary/cell.md) from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` [face](../../glossary/face.md) attached. The head of the product cell is the inferred type of the subexpression.
+What if you want to see the inferred type of `.b` for yourself for each conditional branch?  One way to do this is with the "type spear". The `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune takes one subexpression and constructs a [cell](../../glossary/cell.md) from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` [face](../../glossary/face.md) attached. The head of the product cell is the inferred type of the subexpression.
 
 ```hoon
 > !>(15)
@@ -355,21 +355,21 @@ To get just the inferred type of a expression, we only want the head of the `!>`
 #t/@
 ```
 
-Now let's try using `?=` [wuttis](../../language/hoon/reference/rune/wut.md#wuttis) with `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) again. But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[| b]` with `[| -:!>(b)]`. With `b` as `12`:
+Now let's try using `?=` [wuttis](../../language/hoon/reference/rune/wut.md#wuttis) with `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) again. But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[| b]` with `[| -:!>(b)]`. With `.b` as `12`:
 
 ```hoon
 > =/(b=* 12 ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
 [%.y #t/@]
 ```
 
-… and with `b` as `[12 14]`:
+… and with `.b` as `[12 14]`:
 
 ```hoon
 > =/(b=* [12 14] ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
 [%.n #t/[* *]]
 ```
 
-In both cases, `b` is defined initially as a generic [noun](../../glossary/noun.md), `*`. But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an [atom](../../glossary/atom.md), `@`, when the condition is true; otherwise `b` is inferred to be a [cell](../../glossary/cell.md), `^` (identical to `[* *]`).
+In both cases, `.b` is defined initially as a generic [noun](../../glossary/noun.md), `*`. But when using `?:` with `?=(@ b)` as the test condition, `.b` is inferred to be an [atom](../../glossary/atom.md), `@`, when the condition is true; otherwise `.b` is inferred to be a [cell](../../glossary/cell.md), `^` (identical to `[* *]`).
 
 ###### `mint-vain`
 
@@ -635,7 +635,7 @@ This function takes a list of `@` and returns an `@`. It uses `c` as a counter v
 
 It's important to note that if `a` is a list, you can only use `i.a` and `t.a` after Hoon has inferred that `a` is non-null. A null list has no `i` or `t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `a` is non-null you'll get a `find-fork` crash.
 
-A non-null `+list` is called a `lest`.
+A non-null `+list` is called a `+lest`.
 
 Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 

@@ -86,7 +86,7 @@ The pokes will be processed by their targets [as described in the previous secti
   ...
 ```
 
-A `sign:agent:gall` (henceforth just `$sign`) is defined in `lull.hoon` as:
+A `$sign:agent:gall` (henceforth just `$sign`) is defined in `/sys/lull.hoon` as:
 
 ```hoon
 +$  sign
@@ -196,7 +196,7 @@ We're going to look at a couple of agents to demonstrate both sending and receiv
 
 </details>
 
-This is a very simple agent that just has `val`, a number, in its state. It will take pokes that either increment or decrement `val`. Here's its `+on-poke` arm:
+This is a very simple agent that just has `.val`, a number, in its state. It will take pokes that either increment or decrement `.val`. Here's its `+on-poke` arm:
 
 ```hoon
 ++  on-poke

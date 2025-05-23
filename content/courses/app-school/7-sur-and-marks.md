@@ -85,14 +85,14 @@ Then, in its `+on-poke` arm, it could handle these actions in the following mann
         %add
       :_  state(tasks (~(put by tasks) now.bowl [name.action %.n]))
       :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`[%add now.bowl name.action])
+              !>(`$update:todo`[%add now.bowl name.action])
           ==
       ==
     ::
         %del
       :_  state(tasks (~(del by tasks) id.action))
       :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`action)
+              !>(`$update:todo`action)
           ==
       ==
     ::
@@ -103,7 +103,7 @@ Then, in its `+on-poke` arm, it could handle these actions in the following mann
                    |=(=task:todo task(done !done.task))
           ==
       :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`action)
+              !>(`$update:todo`action)
           ==
       ==
     ::
@@ -114,7 +114,7 @@ Then, in its `+on-poke` arm, it could handle these actions in the following mann
                    |=(=task:todo task(name name.action))
           ==
       :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`action)
+              !>(`$update:todo`action)
           ==
       ==
     ==

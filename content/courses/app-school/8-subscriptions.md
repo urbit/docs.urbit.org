@@ -58,7 +58,7 @@ Updates to subscribers would usually be sent from other arms, but there's one sp
 
 ```hoon
 :_  this
-:~  [%give %fact ~ %todo-update !>(`update:todo`initial+tasks)]
+:~  [%give %fact ~ %todo-update !>(`$update:todo`initial+tasks)]
 ==
 ```
 
@@ -344,20 +344,20 @@ This is a very simple mark file for the `$update` type.
         $(now.bowl (add now.bowl ~s0..0001))
       :_  state(tasks (~(put by tasks) now.bowl [name.action %.n]))
       :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`[%add now.bowl name.action])
+              !>(`$update:todo`[%add now.bowl name.action])
           ==
       ==
     ::
         %del
       :_  state(tasks (~(del by tasks) id.action))
       :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`action)
+              !>(`$update:todo`action)
           ==
       ==
     ::
         %toggle
       :-  :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`action)
+              !>(`$update:todo`action)
           ==  ==
       %=  state
         tasks  %+  ~(jab by tasks)
@@ -367,7 +367,7 @@ This is a very simple mark file for the `$update` type.
     ::
         %rename
       :-  :~  :*  %give  %fact  ~[/updates]  %todo-update
-              !>(`update:todo`action)
+              !>(`$update:todo`action)
           ==  ==
       %=  state
         tasks  %+  ~(jab by tasks)
@@ -391,7 +391,7 @@ This is a very simple mark file for the `$update` type.
       [%updates ~]
     ?>  (~(has in friends) src.bowl)
     :_  this
-    :~  [%give %fact ~ %todo-update !>(`update:todo`initial+tasks)]
+    :~  [%give %fact ~ %todo-update !>(`$update:todo`initial+tasks)]
     ==
   ==
 ::
@@ -434,7 +434,7 @@ Let's now look at `+on-watch`:
       [%updates ~]
     ?>  (~(has in friends) src.bowl)
     :_  this
-    :~  [%give %fact ~ %todo-update !>(`update:todo`initial+tasks)]
+    :~  [%give %fact ~ %todo-update !>(`$update:todo`initial+tasks)]
     ==
   ==
 ```

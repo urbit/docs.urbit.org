@@ -5,7 +5,7 @@ _This module will introduce you to several useful data structures built on the [
 
 ## Key Data Structures and Molds {#key-data-structures-and-molds}
 
-[`+maps`](../../language/hoon/reference/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `+map`s were documented in [the previous module](K-doors.md).
+[`+map`s](../../language/hoon/reference/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `+map`s were documented in [the previous module](K-doors.md).
 
 ### `+tree` {#tree}
 

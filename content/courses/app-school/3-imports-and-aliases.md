@@ -72,7 +72,7 @@ A virtual arm in an agent often looks something like this:
 this  .
 ```
 
-Rather than having to return `..on-init` like we did in the last lesson, instead our arms can just refer to `.this` whenever modifying or returning the agent core.
+Rather than having to return `+on-init` like we did in the last lesson, instead our arms can just refer to `.this` whenever modifying or returning the agent core.
 
 ```hoon
 def  ~(. (default-agent this %.n) bowl)

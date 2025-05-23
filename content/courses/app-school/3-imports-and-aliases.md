@@ -23,7 +23,7 @@ The wet gate returns an `+agent:gall` door with a sample of `$bowl:gall` - a typ
 
 ### `dbug` {#dbug}
 
-The `+dbug` library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `+agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
+The `+dbug` library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `+agent:dbug` function which wraps your whole `+agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
 To use it, you just import `+dbug` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 
@@ -126,7 +126,7 @@ The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.ho
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `card` arm, which makes it simpler to reference the `card:agent:gall` type.
 
-After that core, we call `agent:dbug` with our whole agent core as its argument. This allows us to use the `+dbug` features described earlier.
+After that core, we call `+agent:dbug` with our whole agent core as its argument. This allows us to use the `+dbug` features described earlier.
 
 Inside our agent door, we've added an extra virtual arm and defined a couple deferred expressions:
 

@@ -179,7 +179,7 @@ Let's break it down and have a look at the new parts we've added. First, the sta
 
 In `state-0` we've defined the structure of our state, which is just a `@ud`. We've tagged the head with a `%0` constant representing the version number, so `+on-load` can easily test the state version. In `versioned-state` we've created a union and just added our `state-0` type. We've added an extra `$card` arm as well, just so we can use `$card` as a type, rather than the unweildy `card:agent:gall`.
 
-After that core, we have the usual `agent:dbug` call, and then we have this:
+After that core, we have the usual `+agent:dbug` call, and then we have this:
 
 ```hoon
 =|  state-0

@@ -82,7 +82,7 @@ A `task:agent:gall` (henceforth just `$task`) is defined in `lull.hoon` as:
   ==
 ```
 
-Note a few of these include a `path` field. The `path` type is exactly the same as a `$wire` - a list of `@ta` with a syntax of `/foo/bar/baz`. The reason for the `$wire`/`path` distinction is just to indicate their separate purposes. While a `$wire` is for _responses_, a `path` is for _requests_. The [`path`](types.md#path) type is also covered in the [types reference](types.md).
+Note a few of these include a `$path` field. The `$path` type is exactly the same as a `$wire` - a list of `@ta` with a syntax of `/foo/bar/baz`. The reason for the `$wire`/`$path` distinction is just to indicate their separate purposes. While a `$wire` is for _responses_, a `$path` is for _requests_. The [`$path`](types.md#path) type is also covered in the [types reference](types.md).
 
 The kinds of `$task`s can be divided into two categories:
 
@@ -90,9 +90,9 @@ The kinds of `$task`s can be divided into two categories:
 
 `%watch`, `%watch-as` and `%leave` all pertain to subscriptions.
 
-- `%watch`: A request to subscribe to the specified `path`. Once subscribed, your agent will receive any updates the other agent sends out on that `path`. You can subscribe more than once to the same `path`, but each subscription must have a separate `$wire` specified at the beginning of the [`%pass` card](#pass).
+- `%watch`: A request to subscribe to the specified `$path`. Once subscribed, your agent will receive any updates the other agent sends out on that `$path`. You can subscribe more than once to the same `$path`, but each subscription must have a separate `$wire` specified at the beginning of the [`%pass` card](#pass).
 - `%watch-as`: This is the same as `%watch`, except Gall will convert updates to the given `$mark` before delivering them to your agent.
-- `%leave`: Unsubscribe. The subscription to cancel is determined by the `$wire` at the beginning of the [`pass` card](#pass) rather than the subscription `path`, so its argument is just `~`.
+- `%leave`: Unsubscribe. The subscription to cancel is determined by the `$wire` at the beginning of the [`pass` card](#pass) rather than the subscription `$path`, so its argument is just `~`.
 
 **Examples**
 
@@ -171,9 +171,9 @@ These can be divided into two categories:
 
 `%fact` and `%kick` are both sent out to existing subscribers - entities that have previously `%watch`ed a path on your ship.
 
-A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which is the ship to kick from those paths. If the `+unit` is null, all subscribers are kicked from the specified paths. Note that sometimes Gall can produce `%kick` gifts without your agent explicitly sending a card, due to networking conditions.
+A `%kick` gift takes a list of subscription `$path`s and a `(unit ship)`, which is the ship to kick from those paths. If the `+unit` is null, all subscribers are kicked from the specified paths. Note that sometimes Gall can produce `%kick` gifts without your agent explicitly sending a card, due to networking conditions.
 
-`%fact`s are how updates are sent out to subscribers. The `paths` field is a list of subscription paths - all subscribers of the specified `path`s will receive the `%fact`. The `$cage` is the data itself - a cell of a `$mark` and a `$vase`.
+`%fact`s are how updates are sent out to subscribers. The `paths` field is a list of subscription paths - all subscribers of the specified `$path`s will receive the `%fact`. The `$cage` is the data itself - a cell of a `$mark` and a `$vase`.
 
 #### Examples
 
@@ -187,4 +187,4 @@ Here's a diagram that summarizes the different kinds of `$card`s:
 
 ## Exercises {#exercises}
 
-- Have a read of the [`$wire`](types.md#wire) and [`path`](types.md#path) entries in the type reference.
+- Have a read of the [`$wire`](types.md#wire) and [`$path`](types.md#path) entries in the type reference.

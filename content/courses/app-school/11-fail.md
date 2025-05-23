@@ -20,7 +20,7 @@ Gall calls `on-fail` in four cases:
 - When there's a crash in the `on-arvo` arm.
 - When there's a crash in the `on-agent` arm.
 - When there's a crash in the `on-leave` arm.
-- When an agent produces a `%watch` card but the `$wire`, ship, agent and `path` specified are the same as an existing subscription.
+- When an agent produces a `%watch` card but the `$wire`, ship, agent and `$path` specified are the same as an existing subscription.
 
 For an `on-arvo` failure, the `$term` will always be `%arvo-response`, and the `$tang` will contain a stack trace.
 

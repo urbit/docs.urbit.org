@@ -75,7 +75,7 @@ const getEntries = async () => {
 The scry is done with the `Urbit.scry` method. This function takes two arguments in an object:
 
 - `app` - the agent to scry.
-- `path` - the scry path. Note the `care` is not included - all scries through Eyre are `%x` scries.
+- `$path` - the scry path. Note the `care` is not included - all scries through Eyre are `%x` scries.
 
 The `Urbit.scry` method only allows JSON results, but note that scries done via direct GET requests allow other marks too.
 
@@ -104,7 +104,7 @@ const subscribe = () => {
 We use the `Urbit.subscribe` method for this, which takes five arguments in an object:
 
 - `app` - the target agent.
-- `path` - the `%watch` path we're subscribing to.
+- `$path` - the `%watch` path we're subscribing to.
 - `event` - a function to handle each fact the agent sends out. We call our `setSubEvent()` function to set off a cascade to update the interface; this process is described [below](#updates).
 - `err` - a function to call if the subscription request is rejected (nacked). We just display an error in this case.
 - `quit` - a function to call if we get kicked from the subscription. We also just display an error in this case.

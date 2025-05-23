@@ -375,7 +375,7 @@ You'll also sometimes see `%` cen stand in for the whole including the “curren
 
 ### Paths and Files {#paths-and-files}
 
-A `path` is a `(list @ta)`, a list of text identifiers. The first three are always the beak and the last one conventionally refers to the mark by which the file is represented.
+A `$path` is a `(list @ta)`, a list of text identifiers. The first three are always the beak and the last one conventionally refers to the mark by which the file is represented.
 
 For instance, the [+cat](../../manual/os/dojo-tools.md#cat) generator displays the contents of any path, e.g.
 

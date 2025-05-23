@@ -30,7 +30,7 @@ A `$task` can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on 
 [%pass path %arvo note-arvo]
 ```
 
-The `path` will just be the `$wire` you want the response to arrive on. The `note-arvo` is the following union:
+The `$path` will just be the `$wire` you want the response to arrive on. The `note-arvo` is the following union:
 
 ```hoon
 +$  note-arvo

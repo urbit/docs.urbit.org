@@ -101,19 +101,19 @@ Most data an agent sends will be in a `$cage`, and most data it receives will ar
 
 `+quip` is a mold-builder. A `(quip a b)` is equivalent to `[(list a) b]`, it's just a more convenient way to specify it. Most arms of an agent return a `(quip card _this)`, which is a list of effects and a new state.
 
-## `path` {#path}
+## `$path` {#path}
 
-The `path` type is formally defined as:
+The `$path` type is formally defined as:
 
 ```hoon
 +$  path  (list knot)
 ```
 
-A knot is a `@ta` text atom (see the [Strings guide](../../language/hoon/guides/strings.md) for details), so a `path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
+A knot is a `@ta` text atom (see the [Strings guide](../../language/hoon/guides/strings.md) for details), so a `$path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
 
-A `path` is similar to a filesystem path in Unix, giving data a location in a nested hierarchy. In Arvo though, they're not only used for files, but are a more general type used for several different purposes. Its elements have no inherent significance, it depends on the context. In a Gall agent, a `path` is most commonly a subscription path - you might subscribe for updates to `/foo/bar` on another agent, or another agent might subscribe to `/baz` on your agent.
+A `$path` is similar to a filesystem path in Unix, giving data a location in a nested hierarchy. In Arvo though, they're not only used for files, but are a more general type used for several different purposes. Its elements have no inherent significance, it depends on the context. In a Gall agent, a `$path` is most commonly a subscription path - you might subscribe for updates to `/foo/bar` on another agent, or another agent might subscribe to `/baz` on your agent.
 
-A `path` might just be a series of fixed `@ta` like `/foo/bar`, but some elements might also be variable and include encoded atoms, or some other datum. For example, you might like to include a date in the path like `/updates/~2021.10.31..07.24.27..db68`. Other agents might create the path by doing something like:
+A `$path` might just be a series of fixed `@ta` like `/foo/bar`, but some elements might also be variable and include encoded atoms, or some other datum. For example, you might like to include a date in the path like `/updates/~2021.10.31..07.24.27..db68`. Other agents might create the path by doing something like:
 
 ```hoon
 /update/(scot %da now.bowl)
@@ -130,11 +130,11 @@ Then, when you get a subscription request, you might do something like:
 
 See the [Encoding in text](../../language/hoon/guides/strings.md#encoding-in-text) and [Decoding from text](../../language/hoon/guides/strings.md#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
 
-Aside from using function calls when constructing a `path` as demonstrated above, you can also insert text you're previously stored with `=/` or what have you, simply by enclosing them in brackets. For example, in the dojo:
+Aside from using function calls when constructing a `$path` as demonstrated above, you can also insert text you're previously stored with `=/` or what have you, simply by enclosing them in brackets. For example, in the dojo:
 
 ```
 > =const ~.bar
-> `path`/foo/[const]/baz
+> `$path`/foo/[const]/baz
 /foo/bar/baz
 ```
 
@@ -146,7 +146,7 @@ The type of a wire is formally defined as:
 +$  wire  path
 ```
 
-So, a `$wire` is just a [`path`](#path), type-wise they're exactly the same. The reason there's a separate `$wire` type is just to differentiate their purpose. A `$wire` is a path for responses to requests an agent initiates. If you subscribe to the `$path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
+So, a `$wire` is just a [`$path`](#path), type-wise they're exactly the same. The reason there's a separate `$wire` type is just to differentiate their purpose. A `$wire` is a path for responses to requests an agent initiates. If you subscribe to the `$path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
 
 More formally, `$wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`duct`](../../system/kernel/arvo#duct). Inter-vane communications happen over `duct`s as [`move`](../../system/kernel/arvo#moves)s, and Gall converts the `$card`s produced by agents into such `move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../system/kernel/arvo) and [move trace tutorial](../../system/kernel/arvo/guides/move-trace.md).
 

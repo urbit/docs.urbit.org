@@ -50,7 +50,7 @@ Creating a new React app, installing the required packages, and setting up some 
 
 #### [7. React App Logic](7-app-logic.md)
 
-Analyzing the core logic of our React app, with particular focus on using methods of the `Urbit` class from `@urbit/http-api` to communicate with our agent.
+Analyzing the core logic of our React app, with particular focus on using methods of the `Urbit()` class from `@urbit/http-api` to communicate with our agent.
 
 #### [8. Desk and Glob](8-desk.md)
 

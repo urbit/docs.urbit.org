@@ -42,9 +42,9 @@ On an ordinary OS, you have persistent disk storage and volatile memory. An appl
 
 Arvo has no concept of volatile memory - its whole state is assumed to be persistent. This means it's unnecessary for a Gall agent to write its data to the filesystem or read it in from the filesystem - an agent can just modify its state in situ and leave it there. The urbit runtime writes events to disk and backs up Arvo's state on the host OS to ensure data integrity but Arvo itself isn't concerned with such details.
 
-The result of this total persistence is that the filesystem—Clay—does not have the same fundamental role as on an ordinary OS. In Arvo, very little of its data is actually stored in Clay. The vast majority is just in the state of Gall agents and vanes. For example, none of the chat messages, notebooks, etc, in the Tlon app exist in Clay - they're all in the state of the `%channels` agent. For the most part, Clay just stores source code.
+The result of this total persistence is that the filesystem&mdash;Clay&mdash;does not have the same fundamental role as on an ordinary OS. In Arvo, very little of its data is actually stored in Clay. The vast majority is just in the state of Gall agents and vanes. For example, none of the chat messages, notebooks, etc, in the Tlon app exist in Clay - they're all in the state of the `%channels` agent. For the most part, Clay just stores source code.
 
-Clay has a few unique features—it's a typed filesystem, with all file types defined in `mark` files. It's revision controlled, in a similar way to Git. It also has a built-in build system (formerly a separate vane called Ford, but was merged with Clay in 2020 to make atomicity of upgrades easier). We'll look at some of these features in more detail later in the guide.
+Clay has a few unique features&mdash;it's a typed filesystem, with all file types defined in mark files. It's revision controlled, in a similar way to Git. It also has a built-in build system (formerly a separate vane called Ford, but was merged with Clay in 2020 to make atomicity of upgrades easier). We'll look at some of these features in more detail later in the guide.
 
 ## Desk Anatomy {#desk-anatomy}
 
@@ -53,7 +53,7 @@ The fundamental unit in Clay is a desk. Desks are kind of like git repositories.
 - `%base` - This desk contains the kernel as well as some core agents and utilities.
 - `%landscape` - This desk contains agents and utilities for managing apps, and the home screen that displays other app tiles.
 - `%groups` - This desk contains everything for the Groups app.
-- `%webterm` - This desk is for the web dojo app.
+- `%webterm` - This desk is for the web Dojo app.
 
 You'll typically also have a `%kids` desk, which is just a copy of `%base` from upstream that sponsored ships (moons in the case of a planet, planets in the case of a star) sync their `%base` desk from. Any third-party apps you've installed will also have their own desks.
 
@@ -71,14 +71,14 @@ desk
 └── tests
 ```
 
-- `app`: Gall agents.
-- `gen`: Generators.
-- `lib`: Libraries - these are imported with the `/+` Ford rune.
-- `mar`: `mark` files, which are filetype definitions.
-- `sur`: Structures - these typically contain type definitions and structures, and would be imported with the `/-` Ford rune.
-- `sys`: Kernel files and standard library. Only the `%base` desk has this directory, it's omitted entirely in all other desks.
-- `ted`: Threads.
-- `tests`: Unit tests, to be run by the `%test` thread. This is often omitted in distributed desks.
+- `/app`: Gall agents.
+- `/gen`: Generators.
+- `/lib`: Libraries - these are imported with the `/+` Ford rune.
+- `/mar`: mark files, which are filetype definitions.
+- `/sur`: Structures - these typically contain type definitions and structures, and would be imported with the `/-` Ford rune.
+- `/sys`: Kernel files and standard library. Only the `%base` desk has this directory, it's omitted entirely in all other desks.
+- `/ted`: Threads.
+- `/tests`: Unit tests, to be run by the `%test` thread. This is often omitted in distributed desks.
 
 This directory hierarchy is not strictly enforced, but most tools expect things to be in their right place. Any of these folders can be omitted if they'd otherwise be empty.
 
@@ -103,11 +103,11 @@ sys
 └── zuse.hoon
 ```
 
-- `arvo.hoon`: Source code for Arvo itself.
-- `hoon.hoon`: Hoon standard library and compiler.
-- `lull.hoon`: Mostly structures and type definitions for interacting with vanes.
-- `vane`: This directory contains the source code for each of the vanes.
-- `zuse.hoon`: This is an extra utility library. It mostly contains cryptographic functions and functions for dealing with web data like JSON.
+- `/arvo.hoon`: Source code for Arvo itself.
+- `/hoon.hoon`: Hoon standard library and compiler.
+- `/lull.hoon`: Mostly structures and type definitions for interacting with vanes.
+- `/$vane`: This directory contains the source code for each of the vanes.
+- `/zuse.hoon`: This is an extra utility library. It mostly contains cryptographic functions and functions for dealing with web data like JSON.
 
 The chain of dependency for the core kernel files is `hoon.hoon` -> `arvo.hoon` -> `lull.hoon` -> `zuse.hoon`. For more information, see the [Filesystem Hierarchy](../../system/kernel/clay/guides/filesystem.md) documentation.
 
@@ -118,7 +118,7 @@ In addition to the directories discussed, there's a handful of special files a d
 - `desk.ship`: If the desk is being republished, the original publisher can be specified here.
 - `desk.docket-0`: Configures the front-end, tile, and other metadata for desks which include a home screen app.
 
-Each desk must be self-contained; it must include all the `mark`s, libraries, threads, etc, that it needs. The one exception is the kernel and standard libraries from the `%base` desk. Agents, threads and generators in other desks all have these libraries available to them in their subject.
+Each desk must be self-contained; it must include all the marks, libraries, threads, etc, that it needs. The one exception is the kernel and standard libraries from the `%base` desk. Agents, threads and generators in other desks all have these libraries available to them in their subject.
 
 ## APIs {#apis}
 
@@ -128,16 +128,16 @@ There are two basic ways of interacting with other parts of the system: by scryi
 
 - Scries: The scry system allows you to access the state of other agents and vanes in a read-only fashion. Scries can be performed from any context with the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you can read, and these are comprehensively documented in the Scry Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo). Agents define scry endpoints in the `+on-peek` arm of their agent core. Scries can only be done on the local ship; it is not yet possible to perform scries over the network (but this functionality is planned for the future). There is a separate [guide to scries](../../system/kernel/arvo/guides/scry.md) which you might like to read through for more details.
 - Messages:
-  - Vanes: Each vane has a number of `task`s it can be passed and `gift`s it can respond with in its respective section of `lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The `task`s and `gift`s of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo).
+  - Vanes: Each vane has a number of `$task`s it can be passed and `$gift`s it can respond with in its respective section of `/sys/lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The `$task`s and `$gift`s of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo).
   - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed, which means to subscribe for updates. We'll discuss these in detail later in the guide.
 
 Here's a simplified diagram of the ways an agent can interact with other parts of the system:
 
 ![](https://media.urbit.org/guides/core/app-school/api-diagram.svg)
 
-Things like `on-poke` are arms of the agent core. Don't worry about their meaning for now, we'll discuss them in detail later in the guide.
+Things like `+on-poke` are arms of the agent core. Don't worry about their meaning for now, we'll discuss them in detail later in the guide.
 
-Inter-agent messaging can occur over the network, so you can interact with agents on other ships as well as local ones. You can only talk to local vanes, but some vanes like Clay are able to make requests to other ships on your behalf. Note this summary is simplified - vanes don't just talk in `task`s and `gift`s in all cases. For example, requests from HTTP clients through Eyre (the webserver vane) behave more like those from agents than vanes, and a couple of other vanes also have some different behaviours. Agent interactions are also a little more complicated, and we'll discuss that later, but the basic patterns described here cover the majority of cases.
+Inter-agent messaging can occur over the network, so you can interact with agents on other ships as well as local ones. You can only talk to local vanes, but some vanes like Clay are able to make requests to other ships on your behalf. Note this summary is simplified - vanes don't just talk in `$task`s and `$gift`s in all cases. For example, requests from HTTP clients through Eyre (the webserver vane) behave more like those from agents than vanes, and a couple of other vanes also have some different behaviours. Agent interactions are also a little more complicated, and we'll discuss that later, but the basic patterns described here cover the majority of cases.
 
 ## Environment Setup {#environment-setup}
 

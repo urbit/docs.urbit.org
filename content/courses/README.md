@@ -1,6 +1,6 @@
 # Courses
 
-In-depth [tutorials](#tutorials) for learning the Hoon programming language and Urbit app development at your own pace.
+In-depth tutorials for learning the Hoon programming language and Urbit app development at your own pace.
 
 - [Environment Setup](environment.md) - Information about setting up a ship and editor for Urbit development.
 - [Hoon School](hoon-school) - Learn the fundamentals of the Hoon programming language.

@@ -43,7 +43,7 @@ This command will install the Urbit interface package (i.e. `@urbit/http-api`) a
 
 ## Basic app setup {#basic-app-setup}
 
-With all the basics now in place, we can begin work on the app itself. For this simple demonstration, we'll be working just with the `src/app.jsx` file, which contains the rendering logic for our React application. Before we look at the full front-end source for our journal app, let's first review the simpler default code provided by `create-landscape-app` to cover some Urbit API and React basics.
+With all the basics now in place, we can begin work on the app itself. For this simple demonstration, we'll be working just with the `/src/app.jsx` file, which contains the rendering logic for our React application. Before we look at the full front-end source for our journal app, let's first review the simpler default code provided by `create-landscape-app` to cover some Urbit API and React basics.
 
 ### Urbit API setup {#urbit-api-setup}
 
@@ -56,36 +56,36 @@ import { scryCharges } from '@urbit/api';
 import { AppTile } from './components/AppTile';
 ```
 
-The first two of these statements are very common in Urbit React applications; the first imports the React library and a few of its important functions (to be covered in a moment) and the second imports the `Urbit` class, which will be used subsequently to enable browser-to-ship communication.
+The first two of these statements are very common in Urbit React applications; the first imports the React library and a few of its important functions (to be covered in a moment) and the second imports the `Urbit()` class, which will be used subsequently to enable browser-to-ship communication.
 
-Next, the code sets up the `Urbit` API object as a global variable, which allows the browser-to-ship connection to be established *exactly once* when the page is first being loaded:
+Next, the code sets up the `Urbit()` API object as a global variable, which allows the browser-to-ship connection to be established *exactly once* when the page is first being loaded:
 
 ```javascript
 const api = new Urbit('', '', window.desk);
 api.ship = window.ship;
 ```
 
-The first statement creates a new instance of the `Urbit` class we imported from `@urbit/http-api`, and saves it to the `api` variable. The `Urbit` class constructor takes three arguments: `url`, `code`, and `desk`, of which only `url` is mandatory.
+The first statement creates a new instance of the `Urbit()` class we imported from `@urbit/http-api`, and saves it to the `api` variable. The `Urbit()` class constructor takes three arguments: `url`, `code`, and `desk`, of which only `url` is mandatory.
 
-- `url` is the URL of the ship we want to talk to. Since our React app will be served by the ship, we can just leave it as an empty `''` string and let `Urbit` use root-relative paths.
+- `url` is the URL of the ship we want to talk to. Since our React app will be served by the ship, we can just leave it as an empty `''` string and let `Urbit()` use root-relative paths.
 - `code` is the web login code for authentication. Since the user will already have logged in, we can also leave it as an empty `''` string.
 - `desk` is only necessary if we want to run threads through Eyre. This example doesn't submit any such requests, but the `desk` is set anyway for demonstration purposes.
 
-The second statement sets the ship name in our `Urbit` instance. Eyre requires the ship name be specified in all requests; if we don't set it, Eyre will reject all the messages we send. Fortunately, `create-landscape-app` handles this detail by automatically initializing the active ship's name to the variable `window.ship`, so we just set `api.ship` to this value.
+The second statement sets the ship name in our `Urbit()` instance. Eyre requires the ship name be specified in all requests; if we don't set it, Eyre will reject all the messages we send. Fortunately, `create-landscape-app` handles this detail by automatically initializing the active ship's name to the variable `window.ship`, so we just set `api.ship` to this value.
 
-While not referenced in the `create-landscape-app` default code, the `Urbit` class has three additional callbacks that can be set: `onOpen`, `onRetry`, and `onError`. These callbacks are fired when the state of our channel connection changes:
+While not referenced in the `create-landscape-app` default code, the `Urbit()` class has three additional callbacks that can be set: `onOpen()`, `onRetry()`, and `onError()`. These callbacks are fired when the state of our channel connection changes:
 
-- `onOpen` is called when a connection is established.
-- `onRetry` is called when a channel connection has been interrupted (such as by network issues) and the `Urbit` object is trying to reconnect. Reconnection will be attempted up to three times: immediately, after 750ms, and after 3000ms.
-- `onError` is called with an `Error` message once all retries have failed, or otherwise when a fatal error occurs.
+- `onOpen()` is called when a connection is established.
+- `onRetry()` is called when a channel connection has been interrupted (such as by network issues) and the `Urbit()` object is trying to reconnect. Reconnection will be attempted up to three times: immediately, after 750ms, and after 3000ms.
+- `onError()` is called with an `Error` message once all retries have failed, or otherwise when a fatal error occurs.
 
-We'll look at how we can use these callbacks in the next section.  Note that it's not mandatory to set these callbacks, but leaving connection problems unhandled is usually a bad idea.
+We'll look at how we can use these callbacks in the next section. Note that it's not mandatory to set these callbacks, but leaving connection problems unhandled is usually a bad idea.
 
 ### React app setup {#react-app-setup}
 
 Finally, let's take a quick look at the React rendering logic for our application. React rendering occurs within components, which are defined either as classes (e.g. `class A extends Component { /* ... */ }`) or functions (e.g. `function A() { /* ... */ }`). While recent React versions support both styles, the latter "modern" style is preferred and used by most Urbit React applications.
 
-Our code defines a few components, but we'll just focus on the primary component for this tutorial; this component is defined as a functional component named `App`:
+Our code defines a few components, but we'll just focus on the primary component for this tutorial; this component is defined as a functional component named `App()`:
 
 ```javascript
 export function App() {
@@ -93,7 +93,7 @@ export function App() {
 }
 ```
 
-As is common for React components, the first thing we'll define in our `App` component is its state. In React, modifying a component's state causes it to be re-rendered, so state variables should be carefully chosen to constitute all "display-affecting" values. In modern React, component state is defined using the [`useState()`] hook, which returns a pair of `[stateVariable, setStateVariableFunction]`. Since our default `create-landscape-app` code just displays the list of apps installed on a ship, it only needs to store this list as its state:
+As is common for React components, the first thing we'll define in our `App()` component is its state. In React, modifying a component's state causes it to be re-rendered, so state variables should be carefully chosen to constitute all "display-affecting" values. In modern React, component state is defined using the [`useState()`] hook, which returns a pair of `[stateVariable, setStateVariableFunction]`. Since our default `create-landscape-app` code just displays the list of apps installed on a ship, it only needs to store this list as its state:
 
 ```javascript
 const [apps, setApps] = useState();
@@ -145,13 +145,8 @@ With this brief primer complete, we'll take a closer look at our journal applica
 ## Resources {#resources}
 
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
-
 - [HTTP API Guide](../../tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
-
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
-
 - [`@urbit/http-api` source code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The source code for the `@urbit/http-api` NPM package.
-
-
-[`usestate()`]:  https://react.dev/reference/react/useState
-[`useeffect()`]: https://react.dev/reference/react/useEffect
+- [`usestate()`]:  https://react.dev/reference/react/useState
+- [`useeffect()`]: https://react.dev/reference/react/useEffect

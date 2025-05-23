@@ -1,10 +1,10 @@
 # 7. React app logic
 
-Now that we've reviewed the basics of setting up an Urbit React app, we can dive into the more complex logic that drives our [journal app's front-end](https://github.com/urbit/docs-examples/tree/main/journal-app/ui). We'll focus on the app's main component `App` (defined in [`src/app.jsx`](https://github.com/urbit/docs-examples/tree/main/journal-app/ui/src/app.jsx)) and how it leverages functions related to ship communications using the `Urbit` object. For more information on UI components and other helper functions, see the [resources section](#resources).
+Now that we've reviewed the basics of setting up an Urbit React app, we can dive into the more complex logic that drives our [journal app's front-end](https://github.com/urbit/docs-examples/tree/main/journal-app/ui). We'll focus on the app's main component `App()` (defined in [`src/app.jsx`](https://github.com/urbit/docs-examples/tree/main/journal-app/ui/src/app.jsx)) and how it leverages functions related to ship communications using the `Urbit()` object. For more information on UI components and other helper functions, see the [resources section](#resources).
 
 ## State {#state}
 
-In the previous section, we introduced how React components use [`useState()`] to declare state variables within components. The main `App` component in our journal app contains a number of these statements to manage its many constituents and sub-components:
+In the previous section, we introduced how React components use [`useState()`] to declare state variables within components. The main `App()` component in our journal app contains a number of these statements to manage its many constituents and sub-components:
 
 ```javascript
 // Control/Meta State //
@@ -33,7 +33,7 @@ We'll see how these are used subsequently.
 
 ## Initialize {#initialize}
 
-After defining its state, the next thing our `App` component does is define a function called `init()`, which is one of the first functions called during its bootstrapping process:
+After defining its state, the next thing our `App()` component does is define a function called `init()`, which is one of the first functions called during its bootstrapping process:
 
 ```javascript
 const init = () => {
@@ -72,14 +72,14 @@ const getEntries = async () => {
 };
 ```
 
-The scry is done with the `Urbit.scry` method. This function takes two arguments in an object:
+The scry is done with the `Urbit.scry()` method. This function takes two arguments in an object:
 
 - `app` - the agent to scry.
-- `path` - the scry path. Note the `care` is not included - all scries through Eyre are `%x` scries.
+- `$path` - the scry path. Note the `care` is not included - all scries through Eyre are `%x` scries.
 
-The `Urbit.scry` method only allows JSON results, but note that scries done via direct GET requests allow other marks too.
+The `Urbit.scry()` method only allows JSON results, but note that scries done via direct GET requests allow other marks too.
 
-The `Urbit.scry` method returns a Promise which will contain an HTTP error message if the scry failed. We handle it with a `.then` expression back in the function that called it, either [`init()`](#initialize) or `moreEntries()`. If the Promise is successfully evaluated, the results are passed to the [`setSubEvent()`](#updates) function, which appends the new entries to the existing ones via a [`useEffect()`] hook (more on this [below](#updates)).
+The `Urbit.scry()` method returns a Promise which will contain an HTTP error message if the scry failed. We handle it with a `.then` expression back in the function that called it, either [`init()`](#initialize) or `moreEntries()`. If the Promise is successfully evaluated, the results are passed to the [`setSubEvent()`](#updates) function, which appends the new entries to the existing ones via a [`useEffect()`] hook (more on this [below](#updates)).
 
 ## Subscription {#subscription}
 
@@ -104,7 +104,7 @@ const subscribe = () => {
 We use the `Urbit.subscribe` method for this, which takes five arguments in an object:
 
 - `app` - the target agent.
-- `path` - the `%watch` path we're subscribing to.
+- `$path` - the `%watch` path we're subscribing to.
 - `event` - a function to handle each fact the agent sends out. We call our `setSubEvent()` function to set off a cascade to update the interface; this process is described [below](#updates).
 - `err` - a function to call if the subscription request is rejected (nacked). We just display an error in this case.
 - `quit` - a function to call if we get kicked from the subscription. We also just display an error in this case.
@@ -113,7 +113,7 @@ Note that the `Urbit.subscribe` method returns a subscription ID number. Since w
 
 ## Updates {#updates}
 
-The architecture for updating a React interface based on incoming facts from an `Urbit` subscription tends to follow a common pattern constituted of three major parts:
+The architecture for updating a React interface based on incoming facts from an `Urbit()` subscription tends to follow a common pattern constituted of three major parts:
 
 1. A [`useState()`] call that creates an update object field as part of the main component's state:
    ```javascript
@@ -235,9 +235,9 @@ The `Urbit.poke` method takes five arguments:
 - `mark` is the mark of the data we're sending. We specify `"journal-action"`, so Eyre will use the `/mar/journal/action.hoon` mark we created to convert it to a `$action` structure with a `%journal-action` mark before it's delivered to our agent.
 - `json` is the actual data we're poking our agent with. In this case it's the JSON form of the `%add` `$action`.
 - `onSuccess` is a callback that fires if we get a positive ack in response. In this case we just clear the draft.
-- `onError` is a callback that fires if we get a negative ack (nack) in response, meaning the poke failed. In this case we just set an error message to be displayed.
+- `onError()` is a callback that fires if we get a negative ack (nack) in response, meaning the poke failed. In this case we just set an error message to be displayed.
 
-`onSuccess` and `onError` are optional, but it's usually desirable to handle these cases.
+`onSuccess` and `onError()` are optional, but it's usually desirable to handle these cases.
 
 The `deleteEntry()` and `editEntry()` functions are similar to `createEntry()`, but for the `%del` and `%edit` actions rather than `%add`:
 
@@ -279,7 +279,7 @@ Note that whether we're adding, editing or deleting entries, we update our state
 
 ![](https://media.urbit.org/guides/core/app-school-full-stack-guide/search.png)
 
-When searching for entries between two dates, the `searchEntries()` function is called, which uses the `Urbit.scry` method to scry for the results in a similar fashion to [`getEntries`](#getting-entries), but using the `/x/entries/between/[start]/[end]` endpoint.
+When searching for entries between two dates, the `searchEntries()` function is called, which uses the `Urbit.scry()` method to scry for the results in a similar fashion to [`getEntries`](#getting-entries), but using the `/x/entries/between/[start]/[end]` endpoint.
 
 ```javascript
 const searchEntries = async () => {
@@ -308,11 +308,11 @@ const searchEntries = async () => {
 
 ## Error handling {#error-handling}
 
-When the channel connection is interrupted, the `Urbit` object will begin trying to reconnect. On each attempt, it sets the connection `status` to `"try"`, as we specified for the `onRetry` callback. When this is set, a "reconnecting" message is displayed at the bottom of the screen:
+When the channel connection is interrupted, the `Urbit()` object will begin trying to reconnect. On each attempt, it sets the connection `status` to `"try"`, as we specified for the `onRetry()` callback. When this is set, a "reconnecting" message is displayed at the bottom of the screen:
 
 ![](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnecting.png)
 
-If all three reconnection attempts fail, the `onError` callback is fired and we replace the "reconnecting" message with a "reconnect" button:
+If all three reconnection attempts fail, the `onError()` callback is fired and we replace the "reconnecting" message with a "reconnect" button:
 
 ![](https://media.urbit.org/guides/core/app-school-full-stack-guide/reconnect.png)
 
@@ -353,7 +353,7 @@ const getUpdates = async () => {
 };
 ```
 
-This function uses the `Urbit.scry` method to scry the `/x/updates/since/[since]` path, querying the update `$log` for entries more recent than `latestUpdate`, which is always set to the last logged action we received. The `getUpdates` function returns a Promise to the `reconnect` function above which called it. The `reconnect` function handles it in a `.then` expression, where the success case passes each update retrieved to the [`setSubEvent()`](#updates) function, updating our state.
+This function uses the `Urbit.scry()` method to scry the `/x/updates/since/[since]` path, querying the update `.log` for entries more recent than `latestUpdate`, which is always set to the last logged action we received. The `getUpdates()` function returns a Promise to the `reconnect()` function above which called it. The `reconnect()` function handles it in a `.then()` expression, where the success case passes each update retrieved to the [`setSubEvent()`](#updates) function, updating our state.
 
 Lastly, as well as handling channel connection errors, we also handle errors such as poke nacks or failed scries by printing error messages added to the `error` map by the `setErrorMsg()` function. You could of course handle nacks, kicks, scry failures, etc differently than just printing an error; it depends on the needs of your app.
 
@@ -362,13 +362,8 @@ Lastly, as well as handling channel connection errors, we also handle errors suc
 ## Resources {#resources}
 
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
-
 - [HTTP API Guide](../../tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
-
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
-
 - [`@urbit/http-api` source code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The source code for the `@urbit/http-api` NPM package.
-
-
-[`usestate()`]:  https://react.dev/reference/react/useState
-[`useeffect()`]: https://react.dev/reference/react/useEffect
+- [`usestate()`]:  https://react.dev/reference/react/useState
+- [`useeffect()`]: https://react.dev/reference/react/useEffect

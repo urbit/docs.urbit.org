@@ -147,7 +147,7 @@ A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](
 
 #### Example: Cartesian Product
 
-Here's a program that takes two [sets](../../language/hoon/reference/stdlib/2o.md#set) of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets. A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
+Here's a program that takes two [sets](../../language/hoon/reference/stdlib/2o.md#set) of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets. A Cartesian product of two sets `.a` and `.b` is a set of all the cells whose head is a member of `.a` and whose tail is a member of `.b`.
 
 ```hoon
 |=  [a=(set @) b=(set @)]
@@ -183,7 +183,7 @@ Save this as `cartesian.hoon` in your urbit's [pier](../../glossary/pier.md) and
 {[2 6] [1 6] [3 6] [1 4] [1 5] [2 4] [3 5] [3 4] [2 5]}
 ```
 
-### `+unit` Redux (and `vase`) {#unit-redux-and-vase}
+### `+unit` Redux (and `$vase`) {#unit-redux-and-vase}
 
 We encountered the [unit](../../language/hoon/reference/stdlib/1c.md#unit) briefly as a tool for distinguishing null results from actual zeroes: using a `+unit` allows you to specify something that may not be there. For this reason, `+unit`s are commonly used for operations that sometimes fail, such as search functions, database lookups, remote data requests, etc.
 

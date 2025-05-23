@@ -8,41 +8,41 @@ _This module will elaborate on text representation in Hoon, including formatted 
 We frequently need to convert from text to data, and between different text-based representations. Let's examine some specific [arms](../../glossary/arm.md):
 
 - How do we convert text into all lower-case?
-    - [`+cass`](../../language/hoon/reference/stdlib/4b.md#cass)
+  - [`+cass`](../../language/hoon/reference/stdlib/4b.md#cass)
 
 - How do we turn a `$cord` into a [tape](../../glossary/tape.md)?
-    - [`+trip`](../../language/hoon/reference/stdlib/4b.md#trip)
+  - [`+trip`](../../language/hoon/reference/stdlib/4b.md#trip)
 
 - How can we make a [list](../../glossary/list.md) of a null-terminated tuple?
-    - [+le:nl](../../language/hoon/reference/stdlib/2m.md#lenl)
+  - [+le:nl](../../language/hoon/reference/stdlib/2m.md#lenl)
 
 - How can we evaluate [Nock](../../glossary/nock.md) expressions?
-    - [`+mink`](../../language/hoon/reference/stdlib/4n.md#mink)
+  - [`+mink`](../../language/hoon/reference/stdlib/4n.md#mink)
 
 (If you see a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune in the code, it's similar to a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis), but produces what's called a ["wet gate"](R-metals.md).)
 
 The `+html` core of the standard libary contains some additional important tools for working with web-based data, such as [MIME types](https://en.wikipedia.org/wiki/Media_type) and [JSON strings](https://en.wikipedia.org/wiki/JSON).
 
-- To convert a `@ux` hexadecimal value to a `$cord`:
+To convert a `@ux` hexadecimal value to a `$cord`:
 
-    ```hoon
-    > (en:base16:mimes:html [3 0x12.3456])  
-    '123456'
-    ```
+```hoon
+> (en:base16:mimes:html [3 0x12.3456])  
+'123456'
+```
 
-- To convert a `$cord` to a `@ux` hexadecimal value:
+To convert a `$cord` to a `@ux` hexadecimal value:
 
-    ```hoon
-    > `@ux`q.+>:(de:base16:mimes:html '123456')
-    0x12.3456
-    ```
+```hoon
+> `@ux`q.+>:(de:base16:mimes:html '123456')
+0x12.3456
+```
 
-- There are tools for working with Bitcoin wallet base-58 values, JSON strings, XML strings, and more.
+There are tools for working with Bitcoin wallet base-58 values, JSON strings, XML strings, and more.
 
-    ```hoon
-    > (en-urlt:html "https://hello.me")
-    "https%3A%2F%2Fhello.me"
-    ```
+```hoon
+> (en-urlt:html "https://hello.me")
+"https%3A%2F%2Fhello.me"
+```
 
 
 ## Formatted Text {#formatted-text}
@@ -203,17 +203,17 @@ For instance, how does [`+cat`](../../manual/os/dojo-tools.md#cat) work?  Let's 
 
 </details>
 
-- What is the top-level structure of the [generator](../../glossary/generator.md)?  (A [cell](../../glossary/cell.md) of `%say` and the [gate](../../glossary/gate.md), what Dojo recognizes as a `%say` generator.)
+What is the top-level structure of the [generator](../../glossary/generator.md)?  (A [cell](../../glossary/cell.md) of `%say` and the [gate](../../glossary/gate.md), what Dojo recognizes as a `%say` generator.)
 
-- Some points of interest include:
-  - `/?` faswut pins the expected Arvo [kelvin version](../../glossary/kelvin.md); right now it doesn't do anything.
-  - `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
-  - [`+smyt`](../../language/hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
-  - `=-` [tishep](../../language/hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas).
+Some points of interest include:
+- `/?` faswut pins the expected Arvo [kelvin version](../../glossary/kelvin.md); right now it doesn't do anything.
+- `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
+- [`+smyt`](../../language/hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
+- `=-` [tishep](../../language/hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas).
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `$tank` by prepending `%rose` tags and so forth.
 
-- Work line-by-line through the file and clarify parts that are muddy to you at first glance.
+Work line-by-line through the file and clarify parts that are muddy to you at first glance.
 
 ### Producing Error Messages {#producing-error-messages}
 
@@ -321,19 +321,23 @@ A `$tang` is a [list](../../glossary/list.md) of `$tank`, and a `$tank` is a str
 
 Because we imported [generators](../../glossary/generator.md), we can access its contained gates, three of which we use in `axe.hoon`: `+print`, `+prompt`, and `+produce`.
 
-- `+print` is used for printing a `$tank` to the console.
+**`+print` is used for printing a `$tank` to the console.**
 
-    In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `+print`, with two arguments. The first argument is a `$tank` to print. The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `+prompt`.
+In our example, `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) is used to call the gate `+print`, with two arguments. The first argument is a `$tank` to print. The `+` here is syntactic sugar for `[%leaf "What is your favorite color?"]` that just makes it easier to write. The second argument is the output of the call to `+prompt`.
 
-- `+prompt` is used to construct a prompt for the user to provide input. The first argument is a tuple. The second argument is a gate that returns the output of a call to `+produce`. Most `%ask` generators will want to use the `+prompt` gate.
+**`+prompt` is used to construct a prompt for the user to provide input.**
 
-    The first element of the `+prompt` tuple/sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
+The first argument is a tuple. The second argument is a gate that returns the output of a call to `+produce`. Most `%ask` generators will want to use the `+prompt` gate.
 
-    The second element of the `+prompt` sample is intended to be information for use in creating autocomplete options for the prompt. This functionality is not yet implemented.
+The first element of the `+prompt` tuple/sample is a flag that indicates whether what the user typed should be echoed out to them or hidden. `%&` will produce echoed output and `%|` will hide the output (for use in passwords or other secret text).
 
-    The third element of the `+prompt` sample is the [tape](../../glossary/tape.md) that we would like to use to prompt the user. In the case of our example, we use `"color: "`.
+The second element of the `+prompt` sample is intended to be information for use in creating autocomplete options for the prompt. This functionality is not yet implemented.
 
-- `+produce` is used to construct the output of the generator. In our example, we produce a `$tang`.
+The third element of the `+prompt` sample is the [tape](../../glossary/tape.md) that we would like to use to prompt the user. In the case of our example, we use `"color: "`.
+
+**`+produce` is used to construct the output of the generator.**
+
+In our example, we produce a `$tang`.
 
 ```hoon
 |=  t=tape

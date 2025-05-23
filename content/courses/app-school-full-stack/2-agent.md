@@ -9,9 +9,9 @@ Now that we have our agent's types defined and have thought through its behavior
 /+  default-agent, dbug, agentio
 ```
 
-We first import the `/sur/journal.hoon` file we previously created and expose its structures. We import the standard `/lib/default-agent.hoon` and `/lib/dbug.hoon`, and also an additional library called `agentio`.
+We first import the `/sur/journal.hoon` file we previously created and expose its structures. We import the standard `/lib/default-agent.hoon` and `/lib/dbug.hoon`, and also an additional library called agentio.
 
-Agentio contains a number of convenience functions to make common agent tasks simpler. For example, rather than writing out the full `$card`s when sending `%fact`s to subscribers, we can call `+fact` in `agentio` with the `$cage` and `$path`s and it will compose them for us. There are many more functions in `agentio` than we'll use here - you can have a look through the library in [`/base/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) to see what else it can do.
+Agentio contains a number of convenience functions to make common agent tasks simpler. For example, rather than writing out the full `$card`s when sending `%fact`s to subscribers, we can call `+fact` in agentio with the `$cage` and `$path`s and it will compose them for us. There are many more functions in agentio than we'll use here - you can have a look through the library in [`/base/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) to see what else it can do.
 
 ## State and type core {#state-and-type-core}
 
@@ -82,7 +82,7 @@ The last arm in our state definition core is `+unique-time`. Since we'll use `no
 ::
 ```
 
-Here we setup our agent core and define the three lifecycle arms. Since we only have a single state version at present, these are very simple functions. You'll notice in our `+*` arm, along with the usual `.this` and `.def`, we've also setup the `agentio` library we imported, giving it the bowl and an alias of `.io`.
+Here we setup our agent core and define the three lifecycle arms. Since we only have a single state version at present, these are very simple functions. You'll notice in our `+*` arm, along with the usual `.this` and `.def`, we've also setup the agentio library we imported, giving it the bowl and an alias of `.io`.
 
 ## Pokes {#pokes}
 
@@ -142,7 +142,7 @@ Back in the main part of `+on-poke`, `+poke-action` updates the state with the n
 ~[(fact:io journal-update+!>(`$update`[now act]) ~[/updates])]
 ```
 
-We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `+put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a `$vase` and add the mark to make it a `$cage`. Notice we're using the `+fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.
+We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `+put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a `$vase` and add the mark to make it a `$cage`. Notice we're using the `+fact` function in agentio (which we aliased as `io`) rather than manually composing the `%fact`.
 
 ## Subscriptions {#subscriptions}
 
@@ -241,4 +241,4 @@ The full agent source can be viewed [here](https://github.com/urbit/docs-example
 
 - [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `+mop`s, and is well commented.
 
-- [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The `agentio` library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.
+- [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The agentio library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.

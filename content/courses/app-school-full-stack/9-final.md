@@ -24,7 +24,7 @@ Here is the reference material for each section of this walkthrough.
 
 - [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `+mop`s, and is well commented.
 
-- [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The `agentio` library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.
+- [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The agentio library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.
 
 ### JSON {#json}
 

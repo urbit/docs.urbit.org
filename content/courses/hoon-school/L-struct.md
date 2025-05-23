@@ -18,8 +18,8 @@ There are two kinds of `+tree` in Hoon:
     1. The node value.
     2. The left child of the node.
     3. The right child of the node.
-    
-    Each child is itself a tree. The node value has the [face](../../glossary/face.md) `n`, the left child has the face `l`, and the right child has the face `r`. The following diagram provides an illustration of a `(tree @)` (without the faces):
+
+Each child is itself a tree. The node value has the [face](../../glossary/face.md) `n`, the left child has the face `l`, and the right child has the face `r`. The following diagram provides an illustration of a `(tree @)` (without the faces):
 
 ```
           12
@@ -38,7 +38,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.: `(tree @)
 {4 8 12 14 16}
 ```
 
-Notice that we don't have to insert the faces manually; by casting the [noun](../../glossary/noun.md) above to a `(tree @)` Hoon inserts the faces for us. Let's put this noun in the dojo [subject](../../glossary/subject.md) with the face `b` and pull out the tree at the left child of the `12` node:
+Notice that we don't have to insert the faces manually; by casting the [noun](../../glossary/noun.md) above to a `(tree @)` Hoon inserts the faces for us. Let's put this noun in the dojo [subject](../../glossary/subject.md) with the face "b" and pull out the tree at the left child of the `12` node:
 
 ```hoon
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
@@ -51,7 +51,7 @@ Notice that we don't have to insert the faces manually; by casting the [noun](..
 find-fork
 ```
 
-This didn't work because we haven't first proved to Hoon that `b` is a non-null tree. A null tree has no `l` in it, after all. Let's try again, using `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) to prove that `b` isn't null. We can also look at `r` and `n`:
+This didn't work because we haven't first proved to Hoon that `.b` is a non-null tree. A null tree has no `.l` in it, after all. Let's try again, using `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) to prove that `.b` isn't null. We can also look at `.r` and `.n`:
 
 ```hoon
 > ?~(b ~ l.b)
@@ -79,7 +79,7 @@ Here's a program that finds and replaces certain atoms in a `(tree @)`.
 $(hay r.hay)
 ```
 
-`nedl` is the atom to be replaced, `hay` is the tree, and `new` is the new atom with which to replace `nedl`. Save this as `findreplacetree.hoon` and run in the dojo:
+The `.nedl` is the atom to be replaced, `.hay` is the tree, and `.new` is the new atom with which to replace `.nedl`. Save this as `findreplacetree.hoon` and run in the dojo:
 
 ```hoon
 > b
@@ -92,26 +92,26 @@ $(hay r.hay)
 {4 8 12 94 16}
 ```
 
-### `set` {#set}
+### `+set` {#set}
 
-A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](../../glossary/list.md) except that each entry can only be represented once. As with a [map](../../language/hoon/reference/stdlib/2o.md#map), a `set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values. (`set`s also don't have an order, so they're basically a bag of unique values.)
+A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](../../glossary/list.md) except that each entry can only be represented once. As with a [map](../../language/hoon/reference/stdlib/2o.md#map), a `+set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values. (`+set`s also don't have an order, so they're basically a bag of unique values.)
 
-`set` operations are provided by [`+in`](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `+map`/[`+by`](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
+`+set` operations are provided by [`+in`](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `+map`/[`+by`](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
 
-[`+silt`](../../language/hoon/reference/stdlib/2l.md#silt) produces a `set` from a `+list`:
+[`+silt`](../../language/hoon/reference/stdlib/2l.md#silt) produces a `+set` from a `+list`:
 
 ```hoon
 =primes (silt ~[2 3 5 7 11 13])
 ```
 
-[+put:in](../../language/hoon/reference/stdlib/2h.md#putin) adds a value to a `set` (and null-ops when the value is already present):
+[+put:in](../../language/hoon/reference/stdlib/2h.md#putin) adds a value to a `+set` (and null-ops when the value is already present):
 
 ```hoon
 =primes (~(put in primes) 17)
 =primes (~(put in primes) 13)
 ```
 
-[+del:in](../../language/hoon/reference/stdlib/2h.md#delin) removes a value from a `set`:
+[+del:in](../../language/hoon/reference/stdlib/2h.md#delin) removes a value from a `+set`:
 
 ```hoon
 =primes (~(put in primes) 18)
@@ -237,7 +237,7 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 
 - [`+jar`](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `+map` of `+list`s. `+jar` uses the [`+ja`](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
 
-- [`+jug`](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `+map` of `set`s. `+jug` uses the [`+ju`](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
+- [`+jug`](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `+map` of `+set`s. `+jug` uses the [`+ju`](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
 
 - [`+mip`](../../language/hoon/reference/mip.md#mip) is a mold for a map of maps. `+mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
 

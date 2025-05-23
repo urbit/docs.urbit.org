@@ -99,7 +99,7 @@ For example:
 
 #### Array functions
 
-`+ar`, `+as`, and `+at` decode a `$json` array to a `+list`, `set`, and n-tuple respectively. These gates take other `+dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
+`+ar`, `+as`, and `+at` decode a `$json` array to a `+list`, `+set`, and n-tuple respectively. These gates take other `+dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
 
 ```
 > ((ar so):dejs:format a+[s+'foo' s+'bar' s+'baz' ~])

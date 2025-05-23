@@ -147,7 +147,7 @@ You can also call them different ways with raw `%` [cen](../../language/hoon/ref
 
 ### Creating Your Own Gate {#creating-your-own-gate}
 
-You can type the above Hoon code snippets directly into Dojo, but there's no way to actually use them yet!  The Dojo recognizes the expression as valid Hoon code, but can't actually apply it to an input `sample` yet.
+You can type the above Hoon code snippets directly into Dojo, but there's no way to actually use them yet!  The Dojo recognizes the expression as valid Hoon code, but can't actually apply it to an input sample yet.
 
 ```hoon
 > |=  [a=@ud b=@ud]
@@ -194,7 +194,7 @@ Notice that there is _one_ space (`ace`) after the `=name` term and then regular
 
 To reiterate: we typically use the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
 
-In the example gate above, `+inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The `sample` is given the face `a`. With a face it's easier to refer to the `sample` value in later code.
+In the example gate above, `+inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The sample is given the face `a`. With a face it's easier to refer to the sample value in later code.
 
 The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go. In `+inc`, the product is defined by `(add 1 a)`. There's not much to it: it returns the value of `a+1`!
 

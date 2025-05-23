@@ -2,7 +2,7 @@
 
 _This module introduces how [cores](../../glossary/core.md) can be extended for different behavioral patterns. It may be considered optional and skipped if you are speedrunning Hoon School._
 
-Cores can expose and operate with many different assumptions about their inputs and structure. `[battery payload]` describes the top-level structure of a core, but within that we already know other requirements can be enforced, like `[battery [sample context]]` for a [gate](../../glossary/gate.md), or no `sample` for a [trap](../../glossary/trap.md). Cores can also expose and operate on their input values with different relationships. This lesson is concerned with examining [_genericity_](https://en.wikipedia.org/wiki/Generic_programming) including certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism), which allows flexibility in type, and [_variance_](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which allows cores to use different sets of rules as they evaluate.
+Cores can expose and operate with many different assumptions about their inputs and structure. `[battery payload]` describes the top-level structure of a core, but within that we already know other requirements can be enforced, like `[battery [sample context]]` for a [gate](../../glossary/gate.md), or no sample for a [trap](../../glossary/trap.md). Cores can also expose and operate on their input values with different relationships. This lesson is concerned with examining [_genericity_](https://en.wikipedia.org/wiki/Generic_programming) including certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism), which allows flexibility in type, and [_variance_](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which allows cores to use different sets of rules as they evaluate.
 
 If cores never changed, we wouldn't need polymorphism. Of course, nouns are immutable and never change, but we use them as templates to construct new nouns around.
 
@@ -197,7 +197,7 @@ Variance describes the four possible relationships that type rules are able to h
 
 1. **Covariance (`%zinc`)** means that specific types nest inside of generic types: it's like claiming that a core that produces a `%plant` can produce a `%tree`, a subcategory of `%plant`. Covariance is useful for flexibility in return values.
 
-2. **Contravariance (`%iron`)** means that generic types are expected to nest inside of specific types: it's like claiming that a core that can accept a `%tree` can accept a `%plant`, the supercategory of `%tree`. (Contravariance seems counterintuitive for many developers when they encounter it for the first time.)  Contravariance is useful for flexibility in input values (`sample`s).
+2. **Contravariance (`%iron`)** means that generic types are expected to nest inside of specific types: it's like claiming that a core that can accept a `%tree` can accept a `%plant`, the supercategory of `%tree`. (Contravariance seems counterintuitive for many developers when they encounter it for the first time.)  Contravariance is useful for flexibility in input values (samples).
 
 3. **Bivariance (`%lead`)** means that we can allow both covariant and contravariant behavior. While bivariance is included for completeness (including a worked example below), it is not commonly used and only a few examples exist in the standard library for building shared data structure cores.
 
@@ -599,7 +599,7 @@ Let's examine each arm in detail.
   ~
 ```
 
-`+stream` is a mold-builder. It's a [wet gate](../../glossary/wet-gate.md) that takes one argument, `of`, which is a [mold](../../glossary/mold.md), and produces a `%lead` [trap](../../glossary/trap.md): a function with no `sample` and an arm `$` buc, with opaque [payload](../../glossary/payload.md).
+`+stream` is a mold-builder. It's a [wet gate](../../glossary/wet-gate.md) that takes one argument, `of`, which is a [mold](../../glossary/mold.md), and produces a `%lead` [trap](../../glossary/trap.md): a function with no sample and an arm `$` buc, with opaque [payload](../../glossary/payload.md).
 
 `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) is a rune that produces a type from an example; `^?` [ketwut](../../language/hoon/reference/rune/ket.md#ketwut) converts (casts) a core to lead; `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) forms the [trap](../../glossary/trap.md). So to follow this sequence we read it backwards: we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example from which to produce a type.
 

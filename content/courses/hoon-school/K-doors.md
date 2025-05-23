@@ -159,7 +159,7 @@ If you check the docs on our now-familiar `%-` [cenhep](../../language/hoon/refe
 
 So all gate calls actually pass back through `%~` [censig](../../language/hoon/reference/rune/cen.md#censig). What's the difference?
 
-The `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) rune accepts three children, a wing which resolves to an arm in a [door](../../glossary/door.md); the aforesaid door; and a `sample` for the door.
+The `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) rune accepts three children, a wing which resolves to an arm in a [door](../../glossary/door.md); the aforesaid door; and a sample for the door.
 
 Basically, whenever you use `%-` [cenhep](../../language/hoon/reference/rune/cen.md#cenhep), it actually looks up a wing in a door using `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which is a more general type of core than a gate. Whatever that wing resolves to is then provided a [sample](../../glossary/sample.md). The resulting Hoon expression is evaluated and the value is returned.
 

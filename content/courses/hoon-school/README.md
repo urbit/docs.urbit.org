@@ -19,7 +19,7 @@ Urbit consists of an identity protocol ([Azimuth](../../glossary/azimuth.md), or
 
 Arvo is an axiomatic operating system which restricts itself to pure mathematical functions, making it [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) and [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming). Such strong guarantees require an operating protocol, the [Nock virtual machine](../../language/nock/reference/definition.md), which will be persistent across hardware changes and always provide an upgrade path for necessary changes.
 
-It's hard to write a purely functional operating system on hardware which doesn't make such guarantees. So Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit. [The Hoon overview](../../language/hoon) covers more of the high-level design decisions behind the language, as does [developer ~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
+It's hard to write a purely functional operating system on hardware which doesn't make such guarantees. So Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit. [The Hoon overview](../../language/hoon) covers more of the high-level design decisions behind the language, as does [developer \~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
 
 Hoon School introduces and explains the fundamental concepts you need in order to understand Hoon's semantics. It then introduces a number of key examples and higher-order abstractions which will make you a more fluent Hoon programmer.
 
@@ -60,7 +60,7 @@ You just used a function from the Hoon standard library, `+add`, which for reaso
 $
 ```
 
-Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is ~zod, then you can restart the ship by typing:
+Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is \~zod, then you can restart the ship by typing:
 
 ```hoon
 ./urbit zod

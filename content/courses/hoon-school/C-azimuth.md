@@ -66,7 +66,7 @@ The [Stars](../../glossary/star.md) span the remaining addresses to 2¹⁶. Ther
 |  Hexadecimal | `0x100`       | `0xffff`     |
 |  `@p`        | ~marzod       | ~fipfes      |
 
-A star's sponsor can be calculated as modulo 2⁸. The first star of ~zod is `0x100` ~marzod. The last star of ~zod is `0xffff` - `0xff` = `0xff00` ~fipzod. The last star (of ~fes) is `0xffff` ~fipfes.
+A star's sponsor can be calculated as modulo 2⁸. The first star of \~zod is `0x100` \~marzod. The last star of \~zod is `0xffff` - `0xff` = `0xff00` \~fipzod. The last star (of \~fes) is `0xffff` \~fipfes.
 
 #### Planet
 
@@ -80,9 +80,9 @@ The [Planets](../../glossary/planet.md) span the remaining addresses to 2³². T
 
 A planet's sponsor can be calculated as modulo 2¹⁶.
 
-Galaxy planets occupy points beginning with `0x1.0000` ~dapnep-ronmyl (for ~zod); ~zod's last galaxy planet is `0xffff.ffff` - `0xffff` = `0xffff.0000` ~lodnyt-ranrud. The last galaxy planet (of ~fes) is `0xffff.ffff` - `0xffff` + `0x00ff` = `0xffff.00ff` ~hidwyt-mogbud.
+Galaxy planets occupy points beginning with `0x1.0000` \~dapnep-ronmyl (for \~zod); \~zod's last galaxy planet is `0xffff.ffff` - `0xffff` = `0xffff.0000` \~lodnyt-ranrud. The last galaxy planet (of \~fes) is `0xffff.ffff` - `0xffff` + `0x00ff` = `0xffff.00ff` \~hidwyt-mogbud.
 
-Star planets span the remaining space. The first star planet (of ~marzod) is `0x1.000` + `0x100` = `0x1.0100` ~wicdev-wisryt. The last star planet (of ~fipfes) is `0xffff.ffff` ~dostec-risfen. Remember that star planet recur module 2¹⁶.
+Star planets span the remaining space. The first star planet (of \~marzod) is `0x1.000` + `0x100` = `0x1.0100` \~wicdev-wisryt. The last star planet (of \~fipfes) is `0xffff.ffff` \~dostec-risfen. Remember that star planet recur module 2¹⁶.
 
 #### Moon
 
@@ -96,11 +96,11 @@ The [Moons](../../glossary/moon.md) occupy the block to 2⁶⁴, with 2³² moon
 
 Moons recur modulo 2³² from their sponsor. Thus dividing a moon's address by 2³² and taking the remainder yields the address of the sponsor.
 
-Any moon that begins with the prefix ~dopzod-dozzod-doz___ is a galaxy moon, but not every galaxy moon begins with that prefix. The first galaxy moon of ~zod is 0x1.0000.0000 ~doznec-dozzod-dozzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` = `0xffff.ffff.0000.0000` ~fipfes-fipfes-dozzod-dozzod.
+Any moon that begins with the prefix \~dopzod-dozzod-doz___ is a galaxy moon, but not every galaxy moon begins with that prefix. The first galaxy moon of \~zod is 0x1.0000.0000 \~doznec-dozzod-dozzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` = `0xffff.ffff.0000.0000` \~fipfes-fipfes-dozzod-dozzod.
 
-Any moon that begins with the prefix ~dopzod-dozzod-______ is a star moon (other than galaxy moons), but not every star moon begins with that prefix. The first star moon of ~marzod is `0x1.0000.0000.0100` ~doznec-dozzod-dozzod-marzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` + `0x100` = `0xffff.ffff.0000.0100` ~fipfes-fipfes-dozzod-marzod.
+Any moon that begins with the prefix \~dopzod-dozzod-______ is a star moon (other than galaxy moons), but not every star moon begins with that prefix. The first star moon of \~marzod is `0x1.0000.0000.0100` \~doznec-dozzod-dozzod-marzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` + `0x100` = `0xffff.ffff.0000.0100` \~fipfes-fipfes-dozzod-marzod.
 
-Any moon from ~dopzod-______-______ onwards is a planet moon.
+Any moon from \~dopzod-______-______ onwards is a planet moon.
 
 #### Comet
 
@@ -126,7 +126,7 @@ Each point other than a galaxy has a sponsor. To determine the sponsor of any po
 %-(sein:title [our now ~marzod])
 ```
 
-where ~marzod is the point in question; or more succinctly:
+where \~marzod is the point in question; or more succinctly:
 
 ```hoon
 (sein:title our now ~marzod)
@@ -138,14 +138,14 @@ where ~marzod is the point in question; or more succinctly:
 
 A neighbor of a point is a point which occupies the point immediately above or below that point's `@ud` number.
 
-For instance, the `@ud` of ~sampel-palnet may be found by:
+For instance, the `@ud` of \~sampel-palnet may be found by:
 
 ```hoon
 > `@ud`~sampel-palnet
 1.624.961.343
 ```
 
-The previous neighbor of ~sampel-palnet is thus:
+The previous neighbor of \~sampel-palnet is thus:
 
 ```hoon
 > %-(sub [1.624.961.343 1])
@@ -155,18 +155,18 @@ The previous neighbor of ~sampel-palnet is thus:
 ~datwyn-lavrud
 ```
 
-- Find the next neighbor of ~sampel-palnet.
+- Find the next neighbor of \~sampel-palnet.
 
 ### Exercise: Finding the sponsor of a neighbor {#exercise-finding-the-sponsor-of-a-neighbor}
 
-The sponsor of ~sampel-palnet may be found by:
+The sponsor of \~sampel-palnet may be found by:
 
 ```hoon
 > (sein:title our now ~sampel-palnet)
 ~talpur
 ```
 
-The sponsor of the previous neighbor of ~sampel-palnet is thus:
+The sponsor of the previous neighbor of \~sampel-palnet is thus:
 
 ```hoon
 > %-(sub [1.624.961.343 1])
@@ -179,20 +179,20 @@ The sponsor of the previous neighbor of ~sampel-palnet is thus:
 ~talnep
 ```
 
-- Find the sponsor of the next neighbor of ~sampel-palnet.
+- Find the sponsor of the next neighbor of \~sampel-palnet.
 
 ### Exercise: Finding the child of a point {#exercise-finding-the-child-of-a-point}
 
 A point has many children, but the first moon of a planet is located at that point plus 2³² = `4.294.967.296`.
 
-The first moon of ~sampel-palnet is:
+The first moon of \~sampel-palnet is:
 
 ```hoon
 > `@p`%-(add [~sampel-palnet 4.294.967.296])
 ~doznec-sampel-palnet
 ```
 
-- What are the first moon children of ~sampel-palnet's neighbors?
+- What are the first moon children of \~sampel-palnet's neighbors?
 
-- What is the first planet of the star ~sampel?  (Check the above text to determine the offset.)
+- What is the first planet of the star \~sampel?  (Check the above text to determine the offset.)
 

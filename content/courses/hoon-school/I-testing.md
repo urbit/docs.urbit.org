@@ -24,7 +24,7 @@ When you produce software, how much confidence do you have that it does what you
     
 In many languages, unit tests refer to functions, often prefixed `test`, that specify (and enforce) the expected behavior of a given function. Unit tests typically contain setup, assertions, and tear-down. In academic terms, they’re a grading script.
 
-In Hoon, the `tests/` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../manual/os/dojo-tools.md#test) [thread](../../glossary/thread.md):
+In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../manual/os/dojo-tools.md#test) [thread](../../glossary/thread.md):
 
 ```hoon
 > -test /=landscape=/tests ~  
@@ -102,7 +102,7 @@ Note that at this point we don’t care what the function looks like, only how i
 --
 ```
 
-- Use the tests to determine what is wrong with this library code and correct it.
+Use the tests to determine what is wrong with this library code and correct it.
 
 The dcSpark blog post [“Writing Robust Hoon — A Guide To Urbit Unit Testing”](https://medium.com/dcspark/writing-robust-hoon-a-guide-to-urbit-unit-testing-82b2631fe20a) covers some more good ideas about testing Hoon code.
 
@@ -170,31 +170,31 @@ Formal error messages in Urbit are built of tanks.
   - `$rose` is for printing rows of data.
 - A `$tang` is a `(list tank)`.
 
-As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
+As your code evaluates, the Arvo runtime maintains a stack trace, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
 - The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 - The `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
-    ```hoon
-    |=  a=@ud
-    ~_  leaf+"This code failed"
-    !!
-    ```
+```hoon
+|=  a=@ud
+~_  leaf+"This code failed"
+!!
+```
+
 - The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../language/hoon/reference/rune/fas.md) imports) of a [generator](../../glossary/generator.md) or library while developing.
 
-    ```hoon
-    > (sub 0 1)
-    subtract-underflow
-    dojo: hoon expression failed
+```hoon
+> (sub 0 1)
+subtract-underflow
+dojo: hoon expression failed
 
-    > !:((sub 0 1))
-    /~zod/base/~2022.6.14..20.47.19..3b7a:<[1 4].[1 13]>
-    subtract-underflow
-    dojo: hoon expression failed
-    ```
+> !:((sub 0 1))
+/~zod/base/~2022.6.14..20.47.19..3b7a:<[1 4].[1 13]>
+subtract-underflow
+dojo: hoon expression failed
+```
 
 When you compose your own library [cores](../../glossary/core.md), include error messages for likely failure modes.
-
 
 ## Test-Driven Development {#test-driven-development}
 
@@ -324,24 +324,25 @@ Also check if you are using Windows-style line endings, as Unix-style line endin
 
 Another common mistake is to attempt to use the default `$` buc arm in something that doesn't have it. This typically happens for one of two reasons:
 
-- `$.+2` means that `%-` [cenhep](../../language/hoon/reference/rune/cen.md#cenhep) or equivalent function call cannot locate a [battery](../../glossary/battery.md). This can occur when you try to use a non-gate as a [gate](../../glossary/gate.md). In particular, if you mask the name of a [mold](../../glossary/mold.md) (such as [list](../../glossary/list.md)), then a subsequent expression that requires the mold will experience this problem.
-    ```hoon
-    > =/  list  ~[1 2 3]
-     =/  a  ~[4 5 6]
-     `(list @ud)`a
-    -find.$.+2
-    ```
+`$.+2` means that `%-` [cenhep](../../language/hoon/reference/rune/cen.md#cenhep) or equivalent function call cannot locate a [battery](../../glossary/battery.md). This can occur when you try to use a non-gate as a [gate](../../glossary/gate.md). In particular, if you mask the name of a [mold](../../glossary/mold.md) (such as [list](../../glossary/list.md)), then a subsequent expression that requires the mold will experience this problem.
 
-- `-find.$` similarly looks for a `$` buc [arm](../../glossary/arm.md) in something that _is_ a core but doesn't have the `$` buc arm present.
+```hoon
+> =/  list  ~[1 2 3]
+ =/  a  ~[4 5 6]
+ `(list @ud)`a
+-find.$.+2
+```
 
-    ```hoon
-    > *tape
-    ""
-    > (tape)
-    ""
-    > *(tape)
-    -find.$
-    ```
+`-find.$` similarly looks for a `$` buc [arm](../../glossary/arm.md) in something that _is_ a core but doesn't have the `$` buc arm present.
+
+```hoon
+> *tape
+""
+> (tape)
+""
+> *(tape)
+-find.$
+```
 
 - [“Hoon Errors”](../../language/hoon/reference/hoon-errors.md)
 

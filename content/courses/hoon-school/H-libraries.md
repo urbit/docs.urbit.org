@@ -339,7 +339,7 @@ This message says that a file `demo.hoon` was added to the Urbit filesystem at t
 
 1. The **ship**, here \~zod. (You can find this out on any ship using `.our`.)
 2. The **desk**, here `%base`.
-3. A **revision number** or **timestamp**, here `2`. (The current system time is available as `now`.)  Clay tracks the history of each file, so older versions can be accessed by their revision number. (This is uncommon to need to do today.)
+3. A **revision number** or **timestamp**, here `2`. (The current system time is available as `.now`.)  Clay tracks the history of each file, so older versions can be accessed by their revision number. (This is uncommon to need to do today.)
 
 The beak is commonly constructed with the `/` fas prefix and `=` tis signs for the three components:
 

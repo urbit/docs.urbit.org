@@ -509,11 +509,11 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 
 `|= *` constructs a [gate](../../glossary/gate.md) that takes a noun. This `gate` will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `$cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
-A `%say` generator has access to values besides those passed into it and the Hoon standard subject. Namely, a `%say` generator knows about `.our`, `eny`, and `now`, as well as the current desk:
+A `%say` generator has access to values besides those passed into it and the Hoon standard subject. Namely, a `%say` generator knows about `.our`, `eny`, and `.now`, as well as the current desk:
 
 - `.our` is our current ship identity.
 - `eny` is entropy, a source of randomness.
-- `now` is the current system timestamp.
+- `.now` is the current system timestamp.
 - `bec` is the current path (beak).
 
 These values can be stubbed out with `*` or `^` if they are not needed in a particular generator.

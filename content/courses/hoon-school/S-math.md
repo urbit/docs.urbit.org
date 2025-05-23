@@ -528,7 +528,7 @@ There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d
 +$  tarp  [d=@ud h=@ud m=@ud s=@ud f=(list @ux)]
 ```
 
-`now` returns the `@da` of the current timestamp (in UTC).
+`.now` returns the `@da` of the current timestamp (in UTC).
 
 To go from a `@da` to a `$tarp`, use [+yell](../../language/hoon/reference/stdlib/3c.md#yell):
 

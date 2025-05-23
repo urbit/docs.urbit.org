@@ -160,4 +160,4 @@ For agents, the `$wire` is specified in the second argument of a `%pass` `$card`
 [%pass /this/is/wire %arvo %b %wait (add now.bowl ~m1)]
 ```
 
-The `on-agent` and `on-arvo` arms of the agent core include a `$wire` in their respective sample. Responses from agents come in to the former, and responses from vanes come in to the latter.
+The `+on-agent` and `+on-arvo` arms of the agent core include a `$wire` in their respective sample. Responses from agents come in to the former, and responses from vanes come in to the latter.

@@ -33,15 +33,15 @@ Gall handles `%x` specially, and expects an extra field at the end of the `$path
 '{"groups":{"profile":"Profile Header","profile-bio":"Profile Bio","join-button":"\\"Join me\\" button"}}'
 ```
 
-The majority of Gall agents simply take `%x` `$care`s in their scry endpoints, but in principle it's possible for a Gall agent to define a scry endpoint that takes any one of the `$care`s listed in the diagram above. An agent's scry endpoints are defined in its `on-peek` arm, which we'll look at next.
+The majority of Gall agents simply take `%x` `$care`s in their scry endpoints, but in principle it's possible for a Gall agent to define a scry endpoint that takes any one of the `$care`s listed in the diagram above. An agent's scry endpoints are defined in its `+on-peek` arm, which we'll look at next.
 
 ## Handling scries {#handling-scries}
 
-When a scry is performed on a Gall agent, Gall will strip out some extraneous parts, and deliver it to the agent's `on-peek` arm as a `$path`. The `$path` will only have two components from the diagram above: The "care" and the "path". For example, a scry of `.^(groups:g %gx /=groups=/groups/noun)` will come into the `on-peek` arm of `%groups` as `/x/groups`.
+When a scry is performed on a Gall agent, Gall will strip out some extraneous parts, and deliver it to the agent's `+on-peek` arm as a `$path`. The `$path` will only have two components from the diagram above: The "care" and the "path". For example, a scry of `.^(groups:g %gx /=groups=/groups/noun)` will come into the `+on-peek` arm of `%groups` as `/x/groups`.
 
-The `on-peek` arm produces a `(unit (unit cage))`. The reason for the double `+unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved, and interprets `[~ ~]` to means it resolved to nothing. In either case the dotket expression which initiated the scry will crash. The `cage` will contain the actual data to return.
+The `+on-peek` arm produces a `(unit (unit cage))`. The reason for the double `+unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved, and interprets `[~ ~]` to means it resolved to nothing. In either case the dotket expression which initiated the scry will crash. The `cage` will contain the actual data to return.
 
-An ordinary `on-peek` arm, therefore, begins like so:
+An ordinary `+on-peek` arm, therefore, begins like so:
 
 ```hoon
 ++  on-peek
@@ -50,7 +50,7 @@ An ordinary `on-peek` arm, therefore, begins like so:
   ....
 ```
 
-Typically, you'd handle the `$path` similarly to `on-watch`, as we discussed in the lesson on subscriptions. You'd use something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression to test the value of the `$path`, defining your scry endpoints like so:
+Typically, you'd handle the `$path` similarly to `+on-watch`, as we discussed in the lesson on subscriptions. You'd use something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression to test the value of the `$path`, defining your scry endpoints like so:
 
 ```hoon
 ?+    path  (on-peek:def path)
@@ -160,7 +160,7 @@ Here's a simple example agent with three scry endpoints:
 
 </details>
 
-The agent's `on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `data`. The `on-peek` arm is:
+The agent's `+on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `data`. The `+on-peek` arm is:
 
 ```hoon
 ++  on-peek
@@ -248,10 +248,10 @@ dojo: failed to process input
 - Scries are performed with the dotket (`.^`) rune.
 - Scries will fail if the scry endpoint does not exist, the requested data does not exist, or the data does not nest in the return type specified.
 - Scries can only be performed on the local ship, not on remote ships.
-- Gall scries with an agent name in the `desk` field and without an extra empty element at the beginning of the path will be passed to that agent's `on-peek` arm for handling.
+- Gall scries with an agent name in the `desk` field and without an extra empty element at the beginning of the path will be passed to that agent's `+on-peek` arm for handling.
 - Gall scries with a `%x` `$care` take a `$mark` at the end of the scry `$path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
-- The `on-peek` arm takes a `$path` with the `care` in the head and the `$path` part of the scry in the tail, like `/x/some/path`.
-- The `on-peek` arm produces a `(unit (unit cage))`. The outer `+unit` is null if the scry endpoint does not exist, and the inner `+unit` is null if the data does not exist.
+- The `+on-peek` arm takes a `$path` with the `care` in the head and the `$path` part of the scry in the tail, like `/x/some/path`.
+- The `+on-peek` arm produces a `(unit (unit cage))`. The outer `+unit` is null if the scry endpoint does not exist, and the inner `+unit` is null if the data does not exist.
 
 ## Exercises {#exercises}
 
@@ -260,4 +260,4 @@ dojo: failed to process input
 - Have a read through the [dotket rune documentation](../../language/hoon/reference/rune/dot.md#dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
 - Try adding another scry endpoint to the `peeker.hoon` agent, which uses a [`wyt:by`](../../language/hoon/reference/stdlib/2i.md#wytby) map function to produce the number of items in the `data` map.
-- Have a look through the `on-peek` arms of some other agents on your ship, and try performing some scries to some of the endpoints.
+- Have a look through the `+on-peek` arms of some other agents on your ship, and try performing some scries to some of the endpoints.

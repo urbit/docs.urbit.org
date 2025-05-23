@@ -63,7 +63,7 @@ The agent's state could be defined like:
 --
 ```
 
-Then, in its `on-poke` arm, it could handle these actions in the following manner:
+Then, in its `+on-poke` arm, it could handle these actions in the following manner:
 
 ```hoon
 ++  on-poke
@@ -121,7 +121,7 @@ Then, in its `on-poke` arm, it could handle these actions in the following manne
   --
 ```
 
-Let's break this down a bit. Firstly, our `on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
+Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
 
 Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(quip card _this)`. The call to `handle-poke` is also part of the following expression:
 
@@ -131,11 +131,11 @@ Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(
 [cards this]
 ```
 
-The [tisket](../../language/hoon/reference/rune/tis.md#tisket) (`=^`) expression takes two arguments: A new named noun to pin to the subject (`cards` in this case), and an existing wing of the subject to modify (`state` in this case). Since `handle-poke` produces `(quip card _state)`, we're saving the `$card`s it produces to `cards` and replacing the existing `state` with its new one. Finally, we produce `[cards this]`, where `this` will now contain the modified `state`. The `[cards this]` is a `(quip card _this)`, which our `on-poke` arm is expected to produce.
+The [tisket](../../language/hoon/reference/rune/tis.md#tisket) (`=^`) expression takes two arguments: A new named noun to pin to the subject (`cards` in this case), and an existing wing of the subject to modify (`state` in this case). Since `handle-poke` produces `(quip card _state)`, we're saving the `$card`s it produces to `cards` and replacing the existing `state` with its new one. Finally, we produce `[cards this]`, where `this` will now contain the modified `state`. The `[cards this]` is a `(quip card _this)`, which our `+on-poke` arm is expected to produce.
 
 This might seem a little convoluted, but it's a common pattern we do for two reasons. Firstly, it's not ideal to be passing around the entire `this` agent core - it's much tidier just passing around the `state`, until you actually want to return it to Gall. Secondly, It's much easier to read when the poke handling logic is separated into its own arm. This is a fairly simple example but if your agent is more complex, handling multiple marks and containing additional logic before it gets to the actual contents of the `$vase`, structuring things this way can be useful.
 
-You can of course structure your `on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
+You can of course structure your `+on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
 
 ## mark files {#mark-files}
 
@@ -181,7 +181,7 @@ We've imported the `/sur/todo.hoon` structure library from the previous section,
 - `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `action` data will come in as the sample of our door, and the `noun` arm simply returns it, since it's already a noun (as everything is in Hoon).
 - `+grad`: This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
 
-This mark file could be saved as `/mar/todo/action.hoon`, and then the `on-poke` arm in the previous example could test for it instead of `%noun` like so:
+This mark file could be saved as `/mar/todo/action.hoon`, and then the `+on-poke` arm in the previous example could test for it instead of `%noun` like so:
 
 ```hoon
 ++  on-poke
@@ -196,7 +196,7 @@ Note how `%todo-action` will be resolved to `/mar/todo/action.hoon` - the hyphen
 
 This simple mark file isn't all that useful. Typically, you'd add `+json` arms to `+grow` and `+grab`, which allow your data to be converted to and from JSON, and therefore allow your agent to communicate with a web front-end. Front-ends, JSON, and Eyre's APIs which facilitate such communications will be covered in the separate [Full-Stack Walkthrough](../app-school-full-stack), which you might like to work through after completing this guide. For now though, it's still useful to use marks and understand how they work.
 
-One further note on marks - while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
+One further note on marks - while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `+on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
 
 ## Permissions {#permissions}
 

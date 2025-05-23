@@ -135,7 +135,7 @@ Here's a simplified diagram of the ways an agent can interact with other parts o
 
 ![](https://media.urbit.org/guides/core/app-school/api-diagram.svg)
 
-Things like `on-poke` are arms of the agent core. Don't worry about their meaning for now, we'll discuss them in detail later in the guide.
+Things like `+on-poke` are arms of the agent core. Don't worry about their meaning for now, we'll discuss them in detail later in the guide.
 
 Inter-agent messaging can occur over the network, so you can interact with agents on other ships as well as local ones. You can only talk to local vanes, but some vanes like Clay are able to make requests to other ships on your behalf. Note this summary is simplified - vanes don't just talk in `$task`s and `$gift`s in all cases. For example, requests from HTTP clients through Eyre (the webserver vane) behave more like those from agents than vanes, and a couple of other vanes also have some different behaviours. Agent interactions are also a little more complicated, and we'll discuss that later, but the basic patterns described here cover the majority of cases.
 

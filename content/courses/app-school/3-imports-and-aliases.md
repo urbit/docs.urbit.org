@@ -51,7 +51,7 @@ The generator also has a few useful optional arguments:
   - `[%outgoing %wire /part/of/wire]`
   - `[outgoing %term %agent-name]`
 
-By default it will retrieve your agent's state by using its `on-save` arm, but if your app implements a scry endpoint with a path of `/x/dbug/state`, it will use that instead.
+By default it will retrieve your agent's state by using its `+on-save` arm, but if your app implements a scry endpoint with a path of `/x/dbug/state`, it will use that instead.
 
 We haven't yet covered some of the concepts described here, so don't worry if you don't fully understand `+dbug`'s functionality - you can refer back here later.
 
@@ -135,7 +135,7 @@ Inside our agent door, we've added an extra virtual arm and defined a couple def
     def   ~(. (default-agent this %.n) bowl)
 ```
 
-In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of `default-agent`, which we set up as a deferred expression named `def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `this` in the `on-init` arm as an example - it makes things a bit simpler.
+In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of `default-agent`, which we set up as a deferred expression named `def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `this` in the `+on-init` arm as an example - it makes things a bit simpler.
 
 You can save the code above in `/app/skeleton.hoon` of your `%base` desk like before and `|commit %base` in the dojo. Additionally, you can start the agent so we can try out `+dbug`. To start it, run the following in the dojo:
 

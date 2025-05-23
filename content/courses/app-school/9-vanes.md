@@ -59,7 +59,7 @@ The letter tags just specify which vane it goes to, and then follows the `$task`
 
 ## Receiving a vane gift {#receiving-a-vane-gift}
 
-Once a `$task` has been sent to a vane, any `$gift`s the vane sends back in response will arrive in the `on-arvo` arm of your agent. The `on-arvo` arm exclusively handles such vane `$gift`s. The `$gift`s will arrive in a `sign-arvo`, along with the `$wire` specified in the original request. The `on-arvo` arm produces a `(quip card _this)` like usual, so it would look like:
+Once a `$task` has been sent to a vane, any `$gift`s the vane sends back in response will arrive in the `+on-arvo` arm of your agent. The `+on-arvo` arm exclusively handles such vane `$gift`s. The `$gift`s will arrive in a `sign-arvo`, along with the `$wire` specified in the original request. The `+on-arvo` arm produces a `(quip card _this)` like usual, so it would look like:
 
 ```hoon
 ++  on-arvo
@@ -123,7 +123,7 @@ The typical pattern is to first test the `$wire` with something like a wutlus (`
 
 ## Example {#example}
 
-Here's a very simple example that takes a poke of a `@dr` (a relative date-time value) and sends Behn a `%wait` `task:behn`, setting a timer to go off `@dr` in the future. When the timer goes off, `on-arvo` will take the `%wake` `gift:behn` and print "Ding!" to the terminal.
+Here's a very simple example that takes a poke of a `@dr` (a relative date-time value) and sends Behn a `%wait` `task:behn`, setting a timer to go off `@dr` in the future. When the timer goes off, `+on-arvo` will take the `%wake` `gift:behn` and print "Ding!" to the terminal.
 
 <details>
 <summary>/app/ding.hoon</summary>
@@ -172,7 +172,7 @@ Here's a very simple example that takes a poke of a `@dr` (a relative date-time 
 
 </details>
 
-Let's examine the `on-poke` arm:
+Let's examine the `+on-poke` arm:
 
 ```hoon
 ++  on-poke
@@ -186,7 +186,7 @@ Let's examine the `on-poke` arm:
   ==
 ```
 
-A Behn `%wait` task has the format `[%wait @da]` - the `@da` (an absolute date-time value) is the time the timer should go off. The `$vase` of the poke takes a `@dr`, so we extract it directly into an `add` expression, producing a date-time `@dr` from now. Behn will receive the `%wait` task and set the timer in Unix. When it fires, Behn will produce a `%wake` `gift:behn` and deliver it to `on-arvo`, on the `$wire` we specified (`/timers`). Here's the `on-arvo` arm:
+A Behn `%wait` task has the format `[%wait @da]` - the `@da` (an absolute date-time value) is the time the timer should go off. The `$vase` of the poke takes a `@dr`, so we extract it directly into an `add` expression, producing a date-time `@dr` from now. Behn will receive the `%wait` task and set the timer in Unix. When it fires, Behn will produce a `%wake` `gift:behn` and deliver it to `+on-arvo`, on the `$wire` we specified (`/timers`). Here's the `+on-arvo` arm:
 
 ```hoon
 ++  on-arvo
@@ -234,7 +234,7 @@ After approximately five seconds, we see the timer fired successfully:
 - Each vane's `$task`s and `$gift`s are defined in `lull.hoon`
 - Each vane's section of the [Arvo documentation](../../system/kernel/arvo) includes an API reference that explains its `$task`s and `$gift`s, as well as an Examples section demonstrating their usage.
 - Vane `$task`s can be sent to vanes by `%pass`ing them an `%arvo` `$card`.
-- Vane `$gift`s come back to the `on-arvo` arm of the agent core in a `sign-arvo`.
+- Vane `$gift`s come back to the `+on-arvo` arm of the agent core in a `sign-arvo`.
 
 ## Exercises {#exercises}
 

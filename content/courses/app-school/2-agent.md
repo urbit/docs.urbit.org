@@ -12,32 +12,32 @@ We'll discuss each of the arms in detail later. For now, here's a quick summary.
 
 These arms are primarily for initializing and upgrading an agent.
 
-- `on-init`: Handles starting an agent for the first time.
-- `on-save`: Handles exporting an agent's state - typically as part of the upgrade process but also when suspending, uninstalling and debugging.
-- `on-load`: Handles loading a previously exported agent state - typically as part of the upgrade process but also when resuming or reinstalling an agent.
+- `+on-init`: Handles starting an agent for the first time.
+- `+on-save`: Handles exporting an agent's state - typically as part of the upgrade process but also when suspending, uninstalling and debugging.
+- `+on-load`: Handles loading a previously exported agent state - typically as part of the upgrade process but also when resuming or reinstalling an agent.
 
 ### Request handlers {#request-handlers}
 
 These arms handle requests initiated by outside entities, e.g. other agents, HTTP requests from the front-end, etc.
 
-- `on-poke`: Handles one-off requests, actions, etc.
-- `on-watch`: Handles subscription requests from other entities.
-- `on-leave`: Handles unsubscribe notifications from other, previously subscribed entities.
+- `+on-poke`: Handles one-off requests, actions, etc.
+- `+on-watch`: Handles subscription requests from other entities.
+- `+on-leave`: Handles unsubscribe notifications from other, previously subscribed entities.
 
 ### Response handlers {#response-handlers}
 
 These two arms handle responses to requests our agent previously initiated.
 
-- `on-agent`: Handles request acknowledgements and subscription updates from other agents.
-- `on-arvo`: Handles responses from vanes.
+- `+on-agent`: Handles request acknowledgements and subscription updates from other agents.
+- `+on-arvo`: Handles responses from vanes.
 
 ### Scry handler {#scry-handler}
 
-- `on-peek`: Handles local read-only requests.
+- `+on-peek`: Handles local read-only requests.
 
 ### Failure handler {#failure-handler}
 
-- `on-fail`: Handles certain kinds of crash reports from Gall.
+- `+on-fail`: Handles certain kinds of crash reports from Gall.
 
 ## Bowl {#bowl}
 
@@ -68,7 +68,7 @@ It goes something like this:
 
 ## Virtualization {#virtualization}
 
-When a crash occurs in the kernel, the system usually aborts the computation and discards the event as though it never happened. Gall on the other hand virtualizes all its agents, so this doesn't happen. Instead, when a crash occurs in an agent, Gall intercepts the crash and takes appropriate action depending on the kind of event that caused it. For example, if a poke from another ship caused a crash in the `on-poke` arm, Gall will respond to the poke with a "nack", a negative acknowledgement, telling the original ship the poke was rejected.
+When a crash occurs in the kernel, the system usually aborts the computation and discards the event as though it never happened. Gall on the other hand virtualizes all its agents, so this doesn't happen. Instead, when a crash occurs in an agent, Gall intercepts the crash and takes appropriate action depending on the kind of event that caused it. For example, if a poke from another ship caused a crash in the `+on-poke` arm, Gall will respond to the poke with a "nack", a negative acknowledgement, telling the original ship the poke was rejected.
 
 What this means is that you can intentionally design your agent to crash in cases it can't handle. For example, if a poke comes in with an unexpected `$mark`, it crashes. If a permission check fails, it crashes. This is quite different to most programs written in procedural languages, which must handle all exceptions to avoid crashing.
 
@@ -108,7 +108,7 @@ A backtick at the beginning is an irregular syntax meaning "prepend with null", 
 [~ 50]
 ```
 
-The next part has `..on-init`, which means "the subject of the `on-init` arm". The subject of the `on-init` arm is our whole agent. In the [transition function](#transition-function) section we mentioned that most arms return a list of effects called `$card`s and a new agent core. Since an empty list is `~`, we've created a cell that fits that description.
+The next part has `..on-init`, which means "the subject of the `+on-init` arm". The subject of the `+on-init` arm is our whole agent. In the [transition function](#transition-function) section we mentioned that most arms return a list of effects called `$card`s and a new agent core. Since an empty list is `~`, we've created a cell that fits that description.
 
 Let's examine our agent. In the dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the dojo, commit the file to the desk with `|commit %base`.
 

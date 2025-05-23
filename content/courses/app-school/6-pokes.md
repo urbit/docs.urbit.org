@@ -1,10 +1,10 @@
 # 6. Pokes
 
-In this lesson we'll look at sending and receiving one-off messages called `%poke`s. We'll look at the `on-poke` agent arm which handles incoming pokes. We'll also introduce the `on-agent` arm, and look at the one kind of response it can take - a `%poke-ack`.
+In this lesson we'll look at sending and receiving one-off messages called `%poke`s. We'll look at the `+on-poke` agent arm which handles incoming pokes. We'll also introduce the `+on-agent` arm, and look at the one kind of response it can take - a `%poke-ack`.
 
 ## Receiving a poke {#receiving-a-poke}
 
-Whenever something tries to poke your agent, Gall calls your agent's `on-poke` arm and give it the `$cage` from the poke as its sample. The `on-poke` arm will produce a `(quip card _this)`. Here's how it would typically begin:
+Whenever something tries to poke your agent, Gall calls your agent's `+on-poke` arm and give it the `$cage` from the poke as its sample. The `+on-poke` arm will produce a `(quip card _this)`. Here's how it would typically begin:
 
 ```hoon
 ++  on-poke
@@ -65,7 +65,7 @@ Note that the `$tang` in the nack is just for debugging purposes, you should not
 
 ## Sending a poke {#sending-a-poke}
 
-An agent can send pokes to other agents by producing [`%poke` `$card`s](5-cards.md#pokes). Any agent arm apart from `on-peek` and `on-save` can produce such `$card`s. The arms would typically produce the `(quip card _this)` like so:
+An agent can send pokes to other agents by producing [`%poke` `$card`s](5-cards.md#pokes). Any agent arm apart from `+on-peek` and `+on-save` can produce such `$card`s. The arms would typically produce the `(quip card _this)` like so:
 
 ```hoon
 :_  this
@@ -77,7 +77,7 @@ The [colcab](../../language/hoon/reference/rune/col.md#_-colcab) (`:_`) rune mak
 
 ### Receiving the `%poke-ack` {#receiving-the-poke-ack}
 
-The pokes will be processed by their targets [as described in the previous section](#receiving-a-poke), and they'll `%give` back a `%poke-ack` on the `$wire` you specified (`/some/wire` in the previous example). When Gall gets the `%poke-ack` back, it will call the `on-agent` arm of your agent, with the `$wire` it came in on and the `%poke-ack` itself in a `sign:agent:gall`. Your `on-agent` arm would therefore begin like so:
+The pokes will be processed by their targets [as described in the previous section](#receiving-a-poke), and they'll `%give` back a `%poke-ack` on the `$wire` you specified (`/some/wire` in the previous example). When Gall gets the `%poke-ack` back, it will call the `+on-agent` arm of your agent, with the `$wire` it came in on and the `%poke-ack` itself in a `sign:agent:gall`. Your `+on-agent` arm would therefore begin like so:
 
 ```hoon
 ++  on-agent
@@ -99,7 +99,7 @@ A `sign:agent:gall` (henceforth just `$sign`) is defined in `lull.hoon` as:
 
 It's basically the same as a [`$gift`](5-cards.md#give), but incoming instead of outgoing.
 
-The simplest way to handle a `%poke-ack` by passing it to `default-agent`'s `on-agent` arm, which will just print an error message to the terminal if it's a nack, and otherwise do nothing. Sometimes you'll want your agent to do something different depending on whether the poke failed or succeeded (and therefore whether it's a nack or an ack).
+The simplest way to handle a `%poke-ack` by passing it to `default-agent`'s `+on-agent` arm, which will just print an error message to the terminal if it's a nack, and otherwise do nothing. Sometimes you'll want your agent to do something different depending on whether the poke failed or succeeded (and therefore whether it's a nack or an ack).
 
 You should always route on wire before sign, never sign before wire. You might do something like:
 
@@ -196,7 +196,7 @@ We're going to look at a couple of agents to demonstrate both sending and receiv
 
 </details>
 
-This is a very simple agent that just has `val`, a number, in its state. It will take pokes that either increment or decrement `val`. Here's its `on-poke` arm:
+This is a very simple agent that just has `val`, a number, in its state. It will take pokes that either increment or decrement `val`. Here's its `+on-poke` arm:
 
 ```hoon
 ++  on-poke
@@ -366,7 +366,7 @@ Here's a second agent. It takes a poke of `%inc` or `%dec` like before, but rath
 
 </details>
 
-Here's the `on-poke` arm:
+Here's the `+on-poke` arm:
 
 ```hoon
 ++  on-poke
@@ -390,7 +390,7 @@ Here's the `on-poke` arm:
   ==
 ```
 
-It's similar to `%pokeme`, except it sends two `%poke` `$card`s to `%pokeme` for each case, rather than modifying its own state. The `%inc` pokes specify a `$wire` of `/inc`, and the `%dec` pokes specify a `$wire` of `/dec`, so we can differentiate the responses. It also has the following `on-agent`:
+It's similar to `%pokeme`, except it sends two `%poke` `$card`s to `%pokeme` for each case, rather than modifying its own state. The `%inc` pokes specify a `$wire` of `/inc`, and the `%dec` pokes specify a `$wire` of `/dec`, so we can differentiate the responses. It also has the following `+on-agent`:
 
 ```hoon
 ++  on-agent
@@ -417,7 +417,7 @@ It's similar to `%pokeme`, except it sends two `%poke` `$card`s to `%pokeme` for
   ==
 ```
 
-`on-agent` tests the `$wire`, checks if it's a `%poke-ack`, and then prints to the terminal whether it succeeded or failed.
+`+on-agent` tests the `$wire`, checks if it's a `%poke-ack`, and then prints to the terminal whether it succeeded or failed.
 
 Save this agent to `/app/pokeit.hoon` on the `%base` desk, `|commit %base`, and start it with `|rein %base [& %pokeme] [& %pokeit]`.
 
@@ -449,20 +449,20 @@ Let's try decrementing `%pokeme` so val is 1, and then try a `%dec` via `%pokeit
 >=
 ```
 
-The `on-agent` arm of `%pokeit` has received one ack and one nack. The first took `val` to zero, and the second crashed trying to decrement below zero.
+The `+on-agent` arm of `%pokeit` has received one ack and one nack. The first took `val` to zero, and the second crashed trying to decrement below zero.
 
 ## Summary {#summary}
 
-- Incoming pokes go to the `on-poke` arm of an agent.
-- The `on-poke` arm takes a `$cage` and produces an `(quip card _this)`.
+- Incoming pokes go to the `+on-poke` arm of an agent.
+- The `+on-poke` arm takes a `$cage` and produces an `(quip card _this)`.
 - Gall will automatically return a `%poke-ack` to the poke's source, with a stack trace in the `(unit tang)` if your agent crashed while processing the poke.
 - Outgoing pokes can be sent by including `%poke` `%pass` `$card`s in the `quip` produced by most agent arms.
-- `%poke-ack`s in response to pokes you've sent will come in to the `on-agent` arm in a `$sign`, on the `$wire` you specified in the original `%poke` `$card`.
+- `%poke-ack`s in response to pokes you've sent will come in to the `+on-agent` arm in a `$sign`, on the `$wire` you specified in the original `%poke` `$card`.
 - You can poke agents from the dojo with a syntax of `:agent &mark ['some' 'noun']`.
 
 ## Exercises {#exercises}
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
-- Have a look at the `on-agent` arm of `/lib/default-agent.hoon` to see how `default-agent` handles incoming `$sign`s.
+- Have a look at the `+on-agent` arm of `/lib/default-agent.hoon` to see how `default-agent` handles incoming `$sign`s.
 - Try modifying the `%pokeme` agent with another action of your choice (in addition to `%inc` and `%dec`).
 - Try modifying the `%pokeit` agent to send your new type of poke to `%pokeme`, and handle the `%poke-ack` it gets back.

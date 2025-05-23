@@ -235,45 +235,46 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 
 [maps](../../language/hoon/reference/stdlib/2o.md#map) and [sets](../../language/hoon/reference/stdlib/2o.md#set) are frequently used in the standard library and in the extended ecosystem. There are other common patterns which recur often enough that they have their own names:
 
-- [`+jar`](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `+map` of `+list`s. `+jar` uses the [`+ja`](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
+[`+jar`](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `+map` of `+list`s. `+jar` uses the [`+ja`](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
 
-- [`+jug`](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `+map` of `+set`s. `+jug` uses the [`+ju`](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
+[`+jug`](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `+map` of `+set`s. `+jug` uses the [`+ju`](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
 
-- [`+mip`](../../language/hoon/reference/mip.md#mip) is a mold for a map of maps. `+mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
+[`+mip`](../../language/hoon/reference/mip.md#mip) is a mold for a map of maps. `+mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
 
-    ```hoon
-    > =mip -build-file /=landscape=/lib/mip/hoon
-    
-    > =my-map-warm (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870]])
-    
-    > =my-map-cool (malt `(list (pair @tas @ux))`~[[%green 0x1.a638] [%blue 0x66ff]])
-    
-    > =my-mip *(mip:mip @tas (map @tas @ux))
-    
-    > =my-mip (~(put bi:mip my-mip) %cool %blue 0x66ff)
-    
-    > =my-mip (~(put bi:mip my-mip) %cool %green 0x1.a638)
-    
-    > =my-mip (~(put bi:mip my-mip) %warm %red 0xed.0a3f)
-    
-    > =my-mip (~(put bi:mip my-mip) %warm %yellow 0xfb.e870)
-    
-    > my-mip
-    [ n=[p=%warm q=[n=[p=%yellow q=0xfb.e870] l=[n=[p=%red q=0xed.0a3f] l=~ r=~] r=~]]
-      l=[n=[p=%cool q=[n=[p=%green q=0x1.a638] l=[n=[p=%blue q=0x66ff] l=~ r=~] r=~]] l=~ r=~]
-      r=~
-    ]
+```
+> =mip -build-file /=landscape=/lib/mip/hoon
 
-    > (~(got bi:mip my-mip) %cool %green)
-    0x1.a638
+> =my-map-warm (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870]])
 
-    > ~(tap bi:mip my-mip) ~[ [x=%warm y=%yellow v=0xfb.e870] [x=%warm
-    y=%red v=0xed.0a3f] [x=%cool y=%green v=0x1.a638] [x=%cool y=%blue
-    v=0x66ff] ] ```
+> =my-map-cool (malt `(list (pair @tas @ux))`~[[%green 0x1.a638] [%blue 0x66ff]])
 
-    `mip`s are unjetted and quite slow but serve as a proof of concept.
+> =my-mip *(mip:mip @tas (map @tas @ux))
 
-- [`+mop`](../../language/hoon/reference/zuse/2m.md#mop) ordered maps are discussed in [the App School guides](../app-school).
+> =my-mip (~(put bi:mip my-mip) %cool %blue 0x66ff)
+
+> =my-mip (~(put bi:mip my-mip) %cool %green 0x1.a638)
+
+> =my-mip (~(put bi:mip my-mip) %warm %red 0xed.0a3f)
+
+> =my-mip (~(put bi:mip my-mip) %warm %yellow 0xfb.e870)
+
+> my-mip
+[ n=[p=%warm q=[n=[p=%yellow q=0xfb.e870] l=[n=[p=%red q=0xed.0a3f] l=~ r=~] r=~]]
+  l=[n=[p=%cool q=[n=[p=%green q=0x1.a638] l=[n=[p=%blue q=0x66ff] l=~ r=~] r=~]] l=~ r=~]
+  r=~
+]
+
+> (~(got bi:mip my-mip) %cool %green)
+0x1.a638
+
+> ~(tap bi:mip my-mip) ~[ [x=%warm y=%yellow v=0xfb.e870] [x=%warm
+y=%red v=0xed.0a3f] [x=%cool y=%green v=0x1.a638] [x=%cool y=%blue
+v=0x66ff] ]
+```
+
+Note that `+mip`s are unjetted and quite slow, but serve as a proof of concept.
+
+[`+mop`](../../language/hoon/reference/zuse/2m.md#mop) ordered maps are discussed in [the App School guides](../app-school).
 
 
 ## Molds and Samples {#molds-and-samples}
@@ -295,7 +296,7 @@ In contrast, if you do the same thing to a list of numbers with a fractional par
 ```
 
 Why is this?  Let's peek inside the gates and see. Since we know a core
-is a cell of `[battery payload]`, let's take a look at the
+is a cell of \[battery payload], let's take a look at the
 [payload](../../glossary/payload.md):
 
 ```hoon
@@ -317,7 +318,7 @@ In an earlier exercise we created a [door](../../glossary/door.md) with [sample]
 [a=0 b=0 c=0]
 ```
 
-What if we wish to define a door with a chosen sample value directly? We can make use of the `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door `poly` with the sample set to have certain values in the [Dojo](../../glossary/dojo.md), we would write
+What if we wish to define a door with a chosen sample value directly? We can make use of the `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door "poly" with the sample set to have certain values in the [Dojo](../../glossary/dojo.md), we would write
 
 ```hoon
 > =poly |_  [a=_5 b=_4 c=_3]

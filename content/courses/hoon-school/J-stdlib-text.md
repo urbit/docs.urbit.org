@@ -184,7 +184,7 @@ The [+sort](../../language/hoon/reference/stdlib/2b.md#sort) function uses the [
 ~[37 49 62 123 921]
 ```
 
-To sort the list from greatest to least, use the gth gate ("greater than") as the basis of comparison instead:
+To sort the list from greatest to least, use the `+gth` gate ("greater than") as the basis of comparison instead:
 
 ```hoon
 > (sort ~[37 62 49 921 123] gth)
@@ -224,9 +224,9 @@ The [+snag](../../language/hoon/reference/stdlib/2b.md#snag) function takes an a
 
 **Exercise: `+snag` Yourself**
 
-Without using `+snag`, write a gate that returns the `n`th item of a list. There is a solution at the bottom of the page.
+Without using `+snag`, write a gate that returns the *n*th item of a list. There is a solution at the bottom of the page.
 
-The [+oust](../../language/hoon/reference/stdlib/2b.md#oust) function takes a pair of atoms `[a=@ b=@]` and a list, and returns the list with b items removed, starting at item a:
+The [+oust](../../language/hoon/reference/stdlib/2b.md#oust) function takes a pair of atoms `[a=@ b=@]` and a `+list`, and returns the list with `.b` items removed, starting at item `.a`:
 
 ```hoon
 > (oust [0 1] `(list @)`~[11 22 33 44])
@@ -254,11 +254,11 @@ The [+lent](../../language/hoon/reference/stdlib/2b.md#lent) function takes a li
 
 **Exercise: Count the Number of Characters in Text**
 
-- There is a built-in `+lent` function that counts the number of characters in a `$tape`. Build your own `$tape`-length character counting function without using `+lent`.
+There is a built-in `+lent` function that counts the number of characters in a `$tape`. Build your own `$tape`-length character counting function without using `+lent`.
 
 You may find the `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) rune to be helpful. It tells you whether a value is `~` or not. (How would you do this with a regular `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol)?)
 
-The foregoing are [list](../../glossary/list.md) operations. The following, in contrast, are [tape](../../glossary/tape.md)-specific operations:
+The foregoing are [`+list`](../../glossary/list.md) operations. The following, in contrast, are [`$tape`](../../glossary/tape.md)-specific operations:
 
 The [+crip](../../language/hoon/reference/stdlib/4b.md#crip) function converts a `$tape` to a `$cord` (`$tape`→`$cord`).
 
@@ -298,7 +298,7 @@ Given a string of text, what can you do with it?
 
 #### Search
 
-The [+find](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack). (`+find` starts counting from zero.)
+The [+find](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack). (`+find` starts counting from zero.)
 
 ```hoon
 > (find "brillig" "'Twas brillig and the slithy toves")
@@ -424,8 +424,8 @@ Since a `@tas` cannot include a space, this is formally incorrect, as `+sane` re
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
-- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) core. Save this file as `lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
-- Produce a generator `gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
+- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
+- Produce a generator `/gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
 
 
 ## Logging {#logging}
@@ -441,7 +441,7 @@ There are also `>` modifiers which can be included to mark “debugging levels�
 3. `>>`:  warning
 4. `>>>`:  error
 
-(Since all `~&` sigpam output is a side effect of the compiler, it doesn't map to the Unix [`stdout`/`stderr` streams](https://en.wikipedia.org/wiki/Standard_streams) separately; it's all `stdout`.)
+(Since all `~&` sigpam output is a side effect of the compiler, it doesn't map to the Unix [stdout/stderr streams](https://en.wikipedia.org/wiki/Standard_streams) separately; it's all stdout.)
 
 You can use these to differentiate messages when debugging or otherwise auditing the behavior of a generator or library. Try these in your own Dojo:
 
@@ -472,7 +472,7 @@ We use `%say` generators when we want to provide something else in [Arvo](../../
 
 To that end, `%say` generators use `$mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](../../glossary/mark.md) is akin to a MIME type on the Arvo level. A `$mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `$mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
 
-So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `$cask` -- a pair of the output data and the `$mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
+So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `$gate` that produces a `$cask` -- a pair of the output data and the `$mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
 ```hoon
 :-  %say
@@ -494,6 +494,7 @@ Notice that we used no argument, something that is possible with `%say` generato
 
 ```hoon
 :-  %say
+::  ...
 ```
 
 Recall that the rune `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
@@ -506,14 +507,14 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 (add 40 2)
 ```
 
-`|= *` constructs a [gate](../../glossary/gate.md) that takes a noun. This `gate` will itself produce a `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `$cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
+`|= *` constructs a [gate](../../glossary/gate.md) that takes a noun. This `$gate` will itself produce a `+cask`, which is cell formed by the prepending `:-`. The head of that `+cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `+cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject. Namely, a `%say` generator knows about `.our`, `.eny`, and `.now`, as well as the current desk:
 
 - `.our` is our current ship identity.
 - `.eny` is entropy, a source of randomness.
 - `.now` is the current system timestamp.
-- `bec` is the current path (beak).
+- `.bec` is the current path (beak).
 
 These values can be stubbed out with `*` or `^` if they are not needed in a particular generator.
 
@@ -583,7 +584,7 @@ If we need to include optional arguments to a generator, we separate them using 
 
 Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use it with a `%say` generator.
 
-**`/gen/cards.hoon`**
+{% code title="/gen/cards.hoon" overflow="nowrap" %}
 
 ```hoon
 /+  playing-cards
@@ -593,19 +594,21 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 (shuffle-deck:playing-cards make-deck:playing-cards eny)
 ```
 
+{% endcode %}
+
 Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) rune. When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that. It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
-Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `$deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `$deck`.
+Below `/+  playing-cards`, you have the standard `%say` generator boilerplate that allows us to get a bit of entropy from Arvo when the generator is run. Then we feed the entropy and a `$deck` created by `+make-deck` into `+shuffle-deck` to get back a shuffled `$deck`.
 
-#### Solutions to Exercises
+## Solutions to Exercises {#solutions-to-exercises}
 
-- Roll-Your-Own-`+snag`:
+Roll-Your-Own-`+snag`:
 
-    ```hoon
-    ::  snag.hoon
-    ::
-    |=  [a=@ b=(list @)]
-    ?~  b  !!
-    ?:  =(0 a)  i.b
-    $(a (dec a), b t.b)
-    ```
+```hoon
+::  snag.hoon
+::
+|=  [a=@ b=(list @)]
+?~  b  !!
+?:  =(0 a)  i.b
+$(a (dec a), b t.b)
+```

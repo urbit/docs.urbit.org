@@ -8,13 +8,13 @@ Vases are used to encapsulate _dynamically typed_ data - they let typed data be 
 
 Vases are used extensively - almost all data your agent will send and received is wrapped in a vase.
 
-A vase is just a cell with data in the tail and the type of the data in the head. Its formal definition is:
+A `$vase` is just a cell with data in the tail and the type of the data in the head. Its formal definition is:
 
 ```hoon
 +$  vase  [p=type q=*]
 ```
 
-Here's what it looks like if we bunt a vase in the dojo:
+Here's what it looks like if we bunt a `$vase` in the dojo:
 
 ```
 > *vase
@@ -45,9 +45,9 @@ You would typically use `!>` as part of a [`$cage`](#cage) when you're construct
 
 ### Extract data from `$vase` {#extract-data-from-vase}
 
-The [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the vase to be extracted.
+The [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the `$vase` to be extracted.
 
-Let's look at an example in the dojo. First, let's create a vase of `[@t @ux @ud]`:
+Let's look at an example in the dojo. First, let's create a `$vase` of `[@t @ux @ud]`:
 
 ```
 > =myvase !>(['foo' 0xabcd 123])
@@ -71,7 +71,7 @@ Now let's try asking for a `@p` rather than `@t`:
 nest-fail
 ```
 
-As you can see, it will crash if the type does not nest. Note that rather than using `!<`, you can also just clam the tail of the vase like:
+As you can see, it will crash if the type does not nest. Note that rather than using `!<`, you can also just clam the tail of the `$vase` like:
 
 ```
 > ((trel @t @ux @ud) +.myvase)
@@ -93,7 +93,7 @@ The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype o
 
 ## `$cage` {#cage}
 
-A `$cage` is a cell of a [`$mark`](#mark) and a [`$vase`](#vase), like `[%foo !>('bar')]`. The data in the vase should match the data type of the specified mark.
+A `$cage` is a cell of a [`$mark`](#mark) and a [`$vase`](#vase), like `[%foo !>('bar')]`. The data in the `$vase` should match the data type of the specified mark.
 
 Most data an agent sends will be in a `$cage`, and most data it receives will arrive in a `$cage`. The `$mark` may be used to validate or convert the data in the `$vase`, depending on the context.
 

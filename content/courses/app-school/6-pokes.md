@@ -232,7 +232,7 @@ Next, we'll try poking it. The dojo lets you poke agents with the following synt
 :agent-name &some-mark ['some' 'noun']
 ```
 
-If the `$mark` part is omitted, it'll just default to `%noun`. Since our agent only takes a `%noun` mark, we can skip that. The rest will be packed in a vase by the dojo and delivered as a poke, so we can do:
+If the `$mark` part is omitted, it'll just default to `%noun`. Since our agent only takes a `%noun` mark, we can skip that. The rest will be packed in a `$vase` by the dojo and delivered as a poke, so we can do:
 
 ```
 > :pokeme %inc

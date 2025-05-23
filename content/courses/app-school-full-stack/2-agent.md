@@ -125,7 +125,7 @@ Here we have our `+on-poke` arm, where we handle `$action`s. Since our `%journal
 ?>  (team:title our.bowl src.bowl)
 ```
 
-We haven't yet written our mark files, but our mark for `$action`s will be `%journal-action`, so we make sure that's what we've received and if not, call `+on-poke:def` to crash with an error message. We make sure the the timestamps are unique with our `+unique-time` function described earlier, and then we extract the poke's vase to an `$action` structure and call `+poke-action` to handle it. We've made `+on-poke` a door with a separate `+poke-action` arm to make the logic a little simpler, but in principle we could have had it all directly inside the main `+poke-action` gate, or even separated it out into a helper core below.
+We haven't yet written our mark files, but our mark for `$action`s will be `%journal-action`, so we make sure that's what we've received and if not, call `+on-poke:def` to crash with an error message. We make sure the the timestamps are unique with our `+unique-time` function described earlier, and then we extract the poke's `$vase` to an `$action` structure and call `+poke-action` to handle it. We've made `+on-poke` a door with a separate `+poke-action` arm to make the logic a little simpler, but in principle we could have had it all directly inside the main `+poke-action` gate, or even separated it out into a helper core below.
 
 The logic in `+poke-action` is very simple, with three cases for each of the possible `$action`s:
 
@@ -142,7 +142,7 @@ Back in the main part of `+on-poke`, `+poke-action` updates the state with the n
 ~[(fact:io journal-update+!>(`update`[now act]) ~[/updates])]
 ```
 
-We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `+put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a vase and add the mark to make it a `$cage`. Notice we're using the `+fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.
+We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `+put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a `$vase` and add the mark to make it a `$cage`. Notice we're using the `+fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.
 
 ## Subscriptions {#subscriptions}
 

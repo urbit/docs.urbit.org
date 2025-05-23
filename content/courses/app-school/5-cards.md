@@ -171,7 +171,7 @@ These can be divided into two categories:
 
 `%fact` and `%kick` are both sent out to existing subscribers - entities that have previously `%watch`ed a path on your ship.
 
-A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which is the ship to kick from those paths. If the `unit` is null, all subscribers are kicked from the specified paths. Note that sometimes Gall can produce `%kick` gifts without your agent explicitly sending a card, due to networking conditions.
+A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which is the ship to kick from those paths. If the `+unit` is null, all subscribers are kicked from the specified paths. Note that sometimes Gall can produce `%kick` gifts without your agent explicitly sending a card, due to networking conditions.
 
 `%fact`s are how updates are sent out to subscribers. The `paths` field is a list of subscription paths - all subscribers of the specified `path`s will receive the `%fact`. The `$cage` is the data itself - a cell of a `mark` and a `$vase`.
 

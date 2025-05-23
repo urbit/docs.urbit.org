@@ -92,7 +92,7 @@ The meat of this gate is concerned with correctly implementing the mathematical 
 
 [Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [+maps](../../language/hoon/reference/stdlib/2o.md#map) or [+sets](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [+by](../../language/hoon/reference/stdlib/2i.md#by) and [+in](../../language/hoon/reference/stdlib/2h.md#in), as well as most [+list](../../glossary/list.md) tools, are wet gates.
 
-Let's take a look at a particular wet gate from the Hoon standard library, [+need](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
+Let's take a look at a particular wet gate from the Hoon standard library, [+need](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `+unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
 ```hoon
 ++  need                                                ::  demand
@@ -107,21 +107,21 @@ Line by line:
 |*  a=(unit)
 ```
 
-This declares a wet gate which accepts a `unit`.
+This declares a wet gate which accepts a `+unit`.
 
 ```hoon
 ?~  a  ~>(%mean.'need' !!)
 ```
 
-If `a` is empty, `~`, then the `unit` cannot be unwrapped. Crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap), but use `~>` [siggar](../../language/hoon/reference/rune/sig.md#siggar) to hint to the runtime interpreter how to handle the crash.
+If `a` is empty, `~`, then the `+unit` cannot be unwrapped. Crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap), but use `~>` [siggar](../../language/hoon/reference/rune/sig.md#siggar) to hint to the runtime interpreter how to handle the crash.
 
 ```hoon
 u.a
 ```
 
-This returns the value in the `unit` since we now know it exists.
+This returns the value in the `+unit` since we now know it exists.
 
-`+need` is wet because we don't want to lose type information when we extract from the `unit`.
+`+need` is wet because we don't want to lose type information when we extract from the `+unit`.
 
 ### Parametric Polymorphism {#parametric-polymorphism}
 

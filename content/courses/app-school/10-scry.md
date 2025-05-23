@@ -39,7 +39,7 @@ The majority of Gall agents simply take `%x` `$care`s in their scry endpoints, b
 
 When a scry is performed on a Gall agent, Gall will strip out some extraneous parts, and deliver it to the agent's `on-peek` arm as a `path`. The `path` will only have two components from the diagram above: The "care" and the "path". For example, a scry of `.^(groups:g %gx /=groups=/groups/noun)` will come into the `on-peek` arm of `%groups` as `/x/groups`.
 
-The `on-peek` arm produces a `(unit (unit cage))`. The reason for the double `unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved, and interprets `[~ ~]` to means it resolved to nothing. In either case the dotket expression which initiated the scry will crash. The `cage` will contain the actual data to return.
+The `on-peek` arm produces a `(unit (unit cage))`. The reason for the double `+unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved, and interprets `[~ ~]` to means it resolved to nothing. In either case the dotket expression which initiated the scry will crash. The `cage` will contain the actual data to return.
 
 An ordinary `on-peek` arm, therefore, begins like so:
 
@@ -80,7 +80,7 @@ If it requires a more complex expression to retrieve or compose the data, you ca
 
 Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `mark` so it can easily be converted to JSON when accessed from the web.
 
-In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `$vase` in a `unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
+In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `$vase` in a `+unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
 
 ## Example {#example}
 
@@ -251,7 +251,7 @@ dojo: failed to process input
 - Gall scries with an agent name in the `desk` field and without an extra empty element at the beginning of the path will be passed to that agent's `on-peek` arm for handling.
 - Gall scries with a `%x` `$care` take a `mark` at the end of the scry `path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
 - The `on-peek` arm takes a `path` with the `care` in the head and the `path` part of the scry in the tail, like `/x/some/path`.
-- The `on-peek` arm produces a `(unit (unit cage))`. The outer `unit` is null if the scry endpoint does not exist, and the inner `unit` is null if the data does not exist.
+- The `on-peek` arm produces a `(unit (unit cage))`. The outer `+unit` is null if the scry endpoint does not exist, and the inner `+unit` is null if the data does not exist.
 
 ## Exercises {#exercises}
 

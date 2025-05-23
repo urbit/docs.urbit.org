@@ -454,14 +454,14 @@ What is that [cell](../../glossary/cell.md)?  Wasn't the value stored as `0xff.8
 
 - What does `[~ ~]` mean when returned from a `map`?
 
-`unit`s are common enough that they have their own syntax and set of operational functions. We'll look at them more in [the next module](L-struct.md).
+`+unit`s are common enough that they have their own syntax and set of operational functions. We'll look at them more in [the next module](L-struct.md).
 
 ```hoon
 > (~(get by colors) %brown)
 ~
 ```
 
-([+got:by](../../language/hoon/reference/stdlib/2i.md#gotby) returns the value without the `unit` wrapper, but crashes on failure to locate. I recommend just using `+get` and extracting the tail of the resulting cell after confirming it isn't null with `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig). See also [+gut:by](../../language/hoon/reference/stdlib/2i.md#gutby) which allows a default in case of failure to locate.)
+([+got:by](../../language/hoon/reference/stdlib/2i.md#gotby) returns the value without the `+unit` wrapper, but crashes on failure to locate. I recommend just using `+get` and extracting the tail of the resulting cell after confirming it isn't null with `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig). See also [+gut:by](../../language/hoon/reference/stdlib/2i.md#gutby) which allows a default in case of failure to locate.)
 
 You can check whether a key is present using [+has:by](../../language/hoon/reference/stdlib/2i.md#hasby):
 

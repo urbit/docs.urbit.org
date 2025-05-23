@@ -305,7 +305,7 @@ Given a string of text, what can you do with it?
     [~ 6]
     ```
 
-    `+find` returns a `unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `unit`s are discussed in more detail in [a later lesson](L-struct.md).
+    `+find` returns a `+unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `+unit`s are discussed in more detail in [a later lesson](L-struct.md).
 
 #### Tokenize/Parse
 

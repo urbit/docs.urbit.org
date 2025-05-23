@@ -183,11 +183,11 @@ Save this as `cartesian.hoon` in your urbit's [pier](../../glossary/pier.md) and
 {[2 6] [1 6] [3 6] [1 4] [1 5] [2 4] [3 5] [3 4] [2 5]}
 ```
 
-### `unit` Redux (and `vase`) {#unit-redux-and-vase}
+### `+unit` Redux (and `vase`) {#unit-redux-and-vase}
 
-We encountered the [unit](../../language/hoon/reference/stdlib/1c.md#unit) briefly as a tool for distinguishing null results from actual zeroes: using a `unit` allows you to specify something that may not be there. For this reason, `unit`s are commonly used for operations that sometimes fail, such as search functions, database lookups, remote data requests, etc.
+We encountered the [unit](../../language/hoon/reference/stdlib/1c.md#unit) briefly as a tool for distinguishing null results from actual zeroes: using a `+unit` allows you to specify something that may not be there. For this reason, `+unit`s are commonly used for operations that sometimes fail, such as search functions, database lookups, remote data requests, etc.
 
-You can build a `unit` using the tic special notation or [+some](../../language/hoon/reference/stdlib/2a.md#some):
+You can build a `+unit` using the tic special notation or [+some](../../language/hoon/reference/stdlib/2a.md#some):
 
 ```hoon
 > `%mars
@@ -197,9 +197,9 @@ You can build a `unit` using the tic special notation or [+some](../../language/
 [~ u=%mars]
 ```
 
-While [+got:by](../../language/hoon/reference/stdlib/2i.md#gotby) is one way to get a value back without wrapping it in a `unit`, it's better practice to use the [`unit` logic](../../language/hoon/reference/stdlib/2a.md) gates to manipulate gates to work correctly with `unit`s.
+While [+got:by](../../language/hoon/reference/stdlib/2i.md#gotby) is one way to get a value back without wrapping it in a `+unit`, it's better practice to use the [`+unit` logic](../../language/hoon/reference/stdlib/2a.md) gates to manipulate gates to work correctly with `+unit`s.
 
-For example, use [+need](../../language/hoon/reference/stdlib/2a.md#need) to unwrap a `unit`, or crash if the `unit` is `~` null.
+For example, use [+need](../../language/hoon/reference/stdlib/2a.md#need) to unwrap a `+unit`, or crash if the `+unit` is `~` null.
 
 ```hoon
 > =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
@@ -217,7 +217,7 @@ For example, use [+need](../../language/hoon/reference/stdlib/2a.md#need) to unw
 dojo: hoon expression failed
 ```
 
-Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), one can modify gates to work with `unit`s directly even if they're not natively set up that way. For instance, one cannot decrement a `unit` because [+dec](../../language/hoon/reference/stdlib/1a.md#dec) doesn't accept a `unit`. [+bind](../../language/hoon/reference/stdlib/2a.md#bind) can bind a non-`unit` function, another gate-building gate!.
+Rather than unwrap a [unit](../../language/hoon/reference/stdlib/1c.md#unit), one can modify gates to work with `+unit`s directly even if they're not natively set up that way. For instance, one cannot decrement a `+unit` because [+dec](../../language/hoon/reference/stdlib/1a.md#dec) doesn't accept a `+unit`. [+bind](../../language/hoon/reference/stdlib/2a.md#bind) can bind a non-`+unit` function, another gate-building gate!.
 
 ```hoon
 > (bind ((unit @ud) [~ 2]) dec)  

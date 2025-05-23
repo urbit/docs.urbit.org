@@ -204,11 +204,11 @@ The subscription to be ended is determined by the combination of the `$wire`, sh
 
 ## Example {#example}
 
-Here we're going to give a pretty well fleshed out example. It will demonstrate both inbound and outbound subscriptions, most of the concepts we've discussed here, as well as some from the previous lesson - `/sur` files, `mark` files, and permission checks.
+Here we're going to give a pretty well fleshed out example. It will demonstrate both inbound and outbound subscriptions, most of the concepts we've discussed here, as well as some from the previous lesson - `/sur` files, mark files, and permission checks.
 
 In previous lessons we've only dealt with things on a local ship - this example will demonstrate messages being sent over the network.
 
-The example will be composed of two separate agents - a publisher called `/app/todo.hoon` and a subscriber called `/app/todo-watcher.hoon`, which will live on separate ships. It will be a very rudimentary To-Do app - to-do tasks will be poked into the publisher and sent out to the subscriber as `%fact`s, which will just print them to the dojo. It will have its types defined in `/sur/todo.hoon`, and it will have a couple of `mark` files for pokes and updates: `/mar/todo/action.hoon` and `/mar/todo/update.hoon`.
+The example will be composed of two separate agents - a publisher called `/app/todo.hoon` and a subscriber called `/app/todo-watcher.hoon`, which will live on separate ships. It will be a very rudimentary To-Do app - to-do tasks will be poked into the publisher and sent out to the subscriber as `%fact`s, which will just print them to the dojo. It will have its types defined in `/sur/todo.hoon`, and it will have a couple of mark files for pokes and updates: `/mar/todo/action.hoon` and `/mar/todo/update.hoon`.
 
 Before we get into trying it out, we'll first walk through the `/sur` file, mark files, and each agent.
 
@@ -546,7 +546,7 @@ The `on-agent` arm will print whether a subscription request succeeded or failed
 
 ### Trying it out {#trying-it-out}
 
-We're going to try this between two different ships. The first ship will be the usual fakeship. We'll add both `mark` files, the `/sur` file, and the `todo.hoon` agent to the `%base` desk of our fakeship, putting them in the following directories:
+We're going to try this between two different ships. The first ship will be the usual fakeship. We'll add both mark files, the `/sur` file, and the `todo.hoon` agent to the `%base` desk of our fakeship, putting them in the following directories:
 
 ```
 base

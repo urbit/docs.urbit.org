@@ -6,7 +6,7 @@ The things haven't touched on yet are front-end development and integration, Eyr
 
 - [Eyre's external API reference](../../system/kernel/eyre/reference/external-api-ref.md) - This explains Eyre's HTTP API, through which a browser or other HTTP client can interact with a Gall agent.
 - [Eyre's usage guide](../../system/kernel/eyre/guides/guide.md) - This walks through examples of using Eyre's HTTP API.
-- [JSON guide](../../language/hoon/guides/json-guide.md) - This walks through the basics of converting Hoon data structures to JSON, for use with a web client. It also covers JSON conversion methods in `mark` files.
+- [JSON guide](../../language/hoon/guides/json-guide.md) - This walks through the basics of converting Hoon data structures to JSON, for use with a web client. It also covers JSON conversion methods in mark files.
 - [Zuse reference](../../language/hoon/reference/zuse) - This contains documentation of all JSON encoding and decoding functions included in the `zuse.hoon` utility library.
 - [The software distribution guide](../../userspace/apps/guides/software-distribution.md) - This covers everything you need to know to distribute apps to other ships. It includes details of bundling a web front-end and serving it to the user in the browser.
 - [The HTTP API guide](../../tools/js-libs/http-api-guide.md) - This is a reference and guide to using the `@urbit/http-api` NPM module.

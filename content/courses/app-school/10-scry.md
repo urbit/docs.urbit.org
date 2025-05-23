@@ -78,7 +78,7 @@ If it requires a more complex expression to retrieve or compose the data, you ca
 'baz'
 ```
 
-Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `$mark` so it can easily be converted to JSON when accessed from the web.
+Previously we discussed custom mark files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `$mark` so it can easily be converted to JSON when accessed from the web.
 
 In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `$vase` in a `+unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
 

@@ -1,6 +1,6 @@
 # 7. Structures and Marks
 
-Before we get into subscription mechanics, there's three things we need to touch on that are very commonly used in Gall agents. The first is defining an agent's types in a `/sur` structure file, the second is `mark` files, and the third is permissions. Note the example code presented in this lesson will not yet build a fully functioning Gall agent, we'll get to that in the next lesson.
+Before we get into subscription mechanics, there's three things we need to touch on that are very commonly used in Gall agents. The first is defining an agent's types in a `/sur` structure file, the second is mark files, and the third is permissions. Note the example code presented in this lesson will not yet build a fully functioning Gall agent, we'll get to that in the next lesson.
 
 ## `/sur` {#sur}
 
@@ -137,7 +137,7 @@ This might seem a little convoluted, but it's a common pattern we do for two rea
 
 You can of course structure your `on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
 
-## `mark` files {#mark-files}
+## mark files {#mark-files}
 
 So far we've just used a `%noun` mark for pokes - we haven't really delved into what such `mark`s represent, or considered writing custom ones.
 

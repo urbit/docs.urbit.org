@@ -26,7 +26,7 @@ But the best way to think about an agent is as a state machine. Like a state mac
 4. [Lifecycle](4-lifecycle.md) - This lesson introduces the state management arms of an agent.
 5. [Cards](5-cards.md) - This lesson covers `$card`s - the structure used to pass messages to other agents and vanes.
 6. [Pokes](6-pokes.md) - This lesson covers sending and receiving one-off messages called "pokes" between agents.
-7. [Structures and Marks](7-sur-and-marks.md) - This lesson talks about importing type defintions, and writing `mark` files.
+7. [Structures and Marks](7-sur-and-marks.md) - This lesson talks about importing type defintions, and writing mark files.
 8. [Subscriptions](8-subscriptions.md) - This lesson goes through the mechanics of subscriptions - both inbound and outbound.
 9. [Vanes](9-vanes.md) - This lesson explains how to interact with vanes (kernel modules) from an agent.
 10. [Scries](10-scry.md) - This lesson gives an overview of scrying Gall agents, and how scry endpoints are defined in agents.

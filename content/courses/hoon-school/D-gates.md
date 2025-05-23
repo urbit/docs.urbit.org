@@ -289,7 +289,7 @@ On Mars:
 + /~zod/base/2/desk/txt
 ```
 
-You can verify the contents of the copied files are the same using the [+cat](../../manual/os/dojo-tools.md#cat) command:
+You can verify the contents of the copied files are the same using the [`+cat`](../../manual/os/dojo-tools.md#cat) command:
 
 ```hoon
 > +cat %/desk/bill

@@ -98,7 +98,7 @@ So to carry out this conversion from `@ud` to `@rs` correctly, we should use the
 .1
 ```
 
-To go the other way requires us to use an algorithm for converting an arbitrary number with a fractional part back into `@ud` unsigned integers. The [+fl](../../language/hoon/reference/stdlib/3b.md#fl) named tuple representation serves this purpose, and uses the [Dragon4 algorithm](https://dl.acm.org/doi/10.1145/93548.93559) to accomplish the conversion:
+To go the other way requires us to use an algorithm for converting an arbitrary number with a fractional part back into `@ud` unsigned integers. The [`+fl`](../../language/hoon/reference/stdlib/3b.md#fl) named tuple representation serves this purpose, and uses the [Dragon4 algorithm](https://dl.acm.org/doi/10.1145/93548.93559) to accomplish the conversion:
 
 ```hoon
 > (drg:rs .1)
@@ -132,7 +132,7 @@ As with [aura](../../glossary/aura.md) conversion, the standard mathematical ope
 .1.0000001
 ```
 
-The [+rs](../../language/hoon/reference/stdlib/3b.md#rs) core defines a set of `@rs`-affiliated operations which should be used instead:
+The [`+rs`](../../language/hoon/reference/stdlib/3b.md#rs) core defines a set of `@rs`-affiliated operations which should be used instead:
 
 ```hoon
 > (add:rs .1 .1)
@@ -357,7 +357,7 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 | `@sx` | signed hexadecimal | `--0x5f5.e138` (positive) |
 |       |                    | `-0x5f5.e138` (negative) |
 
-The [+si](../../language/hoon/reference/stdlib/3a.md#si) core supports signed-integer operations correctly. However, unlike the `@r` operations, `@s` operations have different names (likely to avoid accidental mental overloading).
+The [`+si`](../../language/hoon/reference/stdlib/3a.md#si) core supports signed-integer operations correctly. However, unlike the `@r` operations, `@s` operations have different names (likely to avoid accidental mental overloading).
 
 To produce a signed integer from an unsigned value, use [+new:si](../../language/hoon/reference/stdlib/3a.md#newsi) with a sign flag, or simply use [+sun:si](../../language/hoon/reference/stdlib/3a.md#sunsi)
 
@@ -391,9 +391,9 @@ To recover an unsigned integer from a signed integer, use [+old:si](../../langua
 - [+cmp:si](../../language/hoon/reference/stdlib/3a.md#synsi), test for greater value (as index, `>` → `--1`, `<` → `-1`, `=` → `--0`)
 
 To convert a floating-point value from number (atom) to text, use
-[+scow](../../language/hoon/reference/stdlib/4m.md#scow) or
+[`+scow`](../../language/hoon/reference/stdlib/4m.md#scow) or
 [+r-co:co](../../language/hoon/reference/stdlib/4k.md#r-coco) with
-[+rlys](../../language/hoon/reference/stdlib/3b.md#rlys) (and friends):
+[`+rlys`](../../language/hoon/reference/stdlib/3b.md#rlys) (and friends):
 
 ```hoon
 > (scow %rs .3.14159)
@@ -530,7 +530,7 @@ There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d
 
 `.now` returns the `@da` of the current timestamp (in UTC).
 
-To go from a `@da` to a `$tarp`, use [+yell](../../language/hoon/reference/stdlib/3c.md#yell):
+To go from a `@da` to a `$tarp`, use [`+yell`](../../language/hoon/reference/stdlib/3c.md#yell):
 
 ```hoon
 > *tarp
@@ -546,7 +546,7 @@ To go from a `@da` to a `$tarp`, use [+yell](../../language/hoon/reference/stdli
 [d=20 h=0 m=0 s=0 f=~]
 ```
 
-To go from a `@da` to a `$date`, use [+yore](../../language/hoon/reference/stdlib/3c.md#yore):
+To go from a `@da` to a `$date`, use [`+yore`](../../language/hoon/reference/stdlib/3c.md#yore):
 
 ```hoon
 > (yore ~2014.6.6..21.09.15..0a16)
@@ -556,7 +556,7 @@ To go from a `@da` to a `$date`, use [+yore](../../language/hoon/reference/stdli
 [[a=%.y y=2.022] m=5 t=[d=24 h=16 m=20 s=57 f=~[0xbaec]]]
 ```
 
-To go from a `$date` to a `@da`, use [+year](../../language/hoon/reference/stdlib/3c.md#year):
+To go from a `$date` to a `@da`, use [`+year`](../../language/hoon/reference/stdlib/3c.md#year):
 
 ```hoon
 > (year [[a=%.y y=2.014] m=8 t=[d=4 h=20 m=4 s=57 f=~[0xd940]]])
@@ -567,7 +567,7 @@ To go from a `$date` to a `@da`, use [+year](../../language/hoon/reference/stdli
 ```
 
 To go from a `$tarp` to a `@da`, use
-[+yule](../../language/hoon/reference/stdlib/3c.md#yule):
+[`+yule`](../../language/hoon/reference/stdlib/3c.md#yule):
 
 ```hoon
 > (yule (yell now))
@@ -590,7 +590,7 @@ The Urbit date system correctly compensates for the lack of Year Zero:
 ~1-.1.1
 ```
 
-The [+yo](../../language/hoon/reference/stdlib/3c.md#yo) core contains constants useful for calculating time, but in general you should not hand-roll time or timezone calculations.
+The [`+yo`](../../language/hoon/reference/stdlib/3c.md#yo) core contains constants useful for calculating time, but in general you should not hand-roll time or timezone calculations.
 
 ### Tutorial: Julian Day {#tutorial-julian-day}
 
@@ -673,7 +673,7 @@ The `@q` aura is similar to `@p` except for two details: it doesn't obfuscate na
 
 `@q` [auras](../../glossary/aura.md) can be used as sequential mnemonic markers for values.
 
-The [+po](../../language/hoon/reference/stdlib/4a.md#po) core contains tools for directly parsing `@q` atoms.
+The [`+po`](../../language/hoon/reference/stdlib/4a.md#po) core contains tools for directly parsing `@q` atoms.
 
 ### Base-32 and Base-64 {#base-32-and-base-64}
 
@@ -727,7 +727,7 @@ Computers often mix both deterministic processes (called “pseudorandom number 
 
 ### Random Numbers {#random-numbers}
 
-Given a source of entropy to seed a random number generator, one can then use the [+og](../../language/hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers. The basic operations of `+og` are described in [the lesson on subject-oriented programming](O-subject.md).
+Given a source of entropy to seed a random number generator, one can then use the [`+og`](../../language/hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers. The basic operations of `+og` are described in [the lesson on subject-oriented programming](O-subject.md).
 
 ### Exercise: Implement a random-number generator from scratch {#exercise-implement-a-random-number-generator-from-scratch}
 
@@ -762,7 +762,7 @@ Can you verify that `1`s constitute about half of the values in this bit stream,
 
 - Using entropy as the source, produce uniform random numbers: that is, numbers in the range [0, 1] with equal likelihood to machine precision.
 
-We use the LCG defined above, then chop out 23-bit slices using [+rip](../../language/hoon/reference/stdlib/2c.md#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1]. (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
+We use the LCG defined above, then chop out 23-bit slices using [`+rip`](../../language/hoon/reference/stdlib/2c.md#rip) to produce each number, manually compositing the result into a valid floating-point number in the range [0, 1]. (We avoid producing special sequences like [`NaN`](https://en.wikipedia.org/wiki/NaN).)
 
 <details>
 <summary>/gen/uniform.hoon</summary>
@@ -1075,13 +1075,13 @@ A [hash function](https://en.wikipedia.org/wiki/Hash_function) is a tool which c
 1. **Encryption**. A [cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function) leans into the one-way nature of a hash calculation to produce a fast, practically-irreversible hash of a message. They are foundational to modern cryptography.
 2. **Attestation or preregistration**. If you wish to demonstrate that you produced a particular message at a later time (including a hypothesis or prediction), or that you solved a particular problem, hashing the text of the solution and posting the hash publicly allows you to verifiably timestamp your work.
 3. **Integrity verification**. By comparing the hash of data to its expected hash, you can verify that two copies of data are equivalent (such as a downloaded executable file). The [MD5](https://en.wikipedia.org/wiki/MD5) hash algorithm is frequently used for this purpose as [`md5sum`](https://en.wikipedia.org/wiki/Md5sum).
-4. **Data lookup**. [Hash tables](https://en.wikipedia.org/wiki/Hash_table) are one way to implement a key→value mapping, such as the functionality offered by Hoon's [+map](../../language/hoon/reference/stdlib/2o.md#map).
+4. **Data lookup**. [Hash tables](https://en.wikipedia.org/wiki/Hash_table) are one way to implement a key→value mapping, such as the functionality offered by Hoon's [`+map`](../../language/hoon/reference/stdlib/2o.md#map).
 
 Theoretically, since the number of fixed-length hashes are finite, an infinite number of possible programs can yield any given hash. This is called a ["hash collision"](https://en.wikipedia.org/wiki/Hash_collision), but for many practical purposes such a collision is extremely unlikely.
 
 ### Hoon Operations {#hoon-operations}
 
-The Hoon standard library supports fast insecure hashing with [+mug](../../language/hoon/reference/stdlib/2e.md#mug), which accepts any [noun](../../glossary/noun.md) and produces an atom of the hash.
+The Hoon standard library supports fast insecure hashing with [`+mug`](../../language/hoon/reference/stdlib/2e.md#mug), which accepts any [noun](../../glossary/noun.md) and produces an atom of the hash.
 
 ```hoon
 > `@ux`(mug 1)
@@ -1110,9 +1110,9 @@ The Hoon standard library supports fast insecure hashing with [+mug](../../langu
 721.923.263
 ```
 
-Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [tooling](../../language/hoon/reference/stdlib/3d.md). ([+og](../../language/hoon/reference/stdlib/3d.md#og), the random number generator, is based on SHA-256 hashing.)
+Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [tooling](../../language/hoon/reference/stdlib/3d.md). ([`+og`](../../language/hoon/reference/stdlib/3d.md#og), the random number generator, is based on SHA-256 hashing.)
 
-- [+shax](../../language/hoon/reference/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any [atom](../../glossary/atom.md).
+- [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any [atom](../../glossary/atom.md).
 
     ```hoon > (shax 1)
     69.779.012.276.202.546.540.741.613.998.220.636.891.790.827.476.075.440.677.599.814.057.037.833.368.907
@@ -1130,7 +1130,7 @@ Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [t
     0x84a4.929b.1d69.708e.d4b7.0fb8.ca97.cc85.c4a6.1aae.4596.f753.d0d2.6357.e7b9.eb0f
     ```
 
-- [+shaz](../../language/hoon/reference/stdlib/3d.md#shaz) produces a hashed atom of 512 bits from any atom.
+- [`+shaz`](../../language/hoon/reference/stdlib/3d.md#shaz) produces a hashed atom of 512 bits from any atom.
 
     ```hoon
     > (shaz 1)

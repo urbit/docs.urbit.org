@@ -31,7 +31,7 @@ This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of th
 
 ["Currying"](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. "Binding", an allied process, is used to set the value of some of those arguments permanently.
 
-If you have a [gate](../../glossary/gate.md) which accepts multiple values in the [sample](../../glossary/sample.md), you can fix one of these. To fix the head of the sample (the first argument), use [+cury](../../language/hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`+curr`](../../language/hoon/reference/stdlib/2n.md#curr).
+If you have a [gate](../../glossary/gate.md) which accepts multiple values in the [sample](../../glossary/sample.md), you can fix one of these. To fix the head of the sample (the first argument), use [`+cury`](../../language/hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`+curr`](../../language/hoon/reference/stdlib/2n.md#curr).
 
 Consider calculating _a x² + b x + c_, a situation we earlier resolved using a door. We can resolve the situation differently using currying:
 
@@ -47,7 +47,7 @@ Consider calculating _a x² + b x + c_, a situation we earlier resolved using a 
 117
 ```
 
-One can also [+cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or arrange it such that it applies to the result of the next gate. This pairs well with `;:` [miccol](../../language/hoon/reference/rune/mic.md#miccol). (There is also [+corl](../../language/hoon/reference/stdlib/2n.md#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
+One can also [`+cork`](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or arrange it such that it applies to the result of the next gate. This pairs well with `;:` [miccol](../../language/hoon/reference/rune/mic.md#miccol). (There is also [`+corl`](../../language/hoon/reference/stdlib/2n.md#corl), which composes backwards rather than forwards.) This example decrements a value then converts it to `@ux` by corking two gates:
 
 ```hoon
 > ((cork dec @ux) 20)  
@@ -56,7 +56,7 @@ One can also [+cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or
 
 ### Exercise: Bind Gate Arguments {#exercise-bind-gate-arguments}
 
-- Create a gate `+inc` which increments a value in one step, analogous to [+dec](../../language/hoon/reference/stdlib/1a.md#dec).
+- Create a gate `+inc` which increments a value in one step, analogous to [`+dec`](../../language/hoon/reference/stdlib/1a.md#dec).
 
 ### Exercise: Chain Gate Values {#exercise-chain-gate-values}
 
@@ -64,7 +64,7 @@ One can also [+cork](../../language/hoon/reference/stdlib/2n.md#cork) a gate, or
 
 ## Working Across `+list`s {#working-across-lists}
 
-The [+turn](../../language/hoon/reference/stdlib/2b.md#turn) function takes a list and a [gate](../../glossary/gate.md), and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of [atoms](../../glossary/atom.md):
+The [`+turn`](../../language/hoon/reference/stdlib/2b.md#turn) function takes a list and a [gate](../../glossary/gate.md), and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of [atoms](../../glossary/atom.md):
 
 ```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
@@ -98,7 +98,7 @@ We can rewrite the Caesar cipher program using turn:
 c
 ```
 
-[+roll](../../language/hoon/reference/stdlib/2b.md#roll) and [+reel](../../language/hoon/reference/stdlib/2b.md#reel) are used to left-fold and right-fold a [list](../../glossary/list.md), respectively. To fold a list is similar to [+turn](../../language/hoon/reference/stdlib/2b.md#turn), except that instead of yielding a `+list` with the values having had each applied, `+roll` and `+reel` produce an accumulated value.
+[`+roll`](../../language/hoon/reference/stdlib/2b.md#roll) and [`+reel`](../../language/hoon/reference/stdlib/2b.md#reel) are used to left-fold and right-fold a [list](../../glossary/list.md), respectively. To fold a list is similar to [`+turn`](../../language/hoon/reference/stdlib/2b.md#turn), except that instead of yielding a `+list` with the values having had each applied, `+roll` and `+reel` produce an accumulated value.
 
 ```hoon
 > (roll `(list @)`[1 2 3 4 5 ~] add)
@@ -117,8 +117,8 @@ c
 
 Functional programmers frequently rely on three design patterns to produce operations on collections of data:
 
-1. Map. The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `+list` or `set`. The standard library arms that accomplish this include [+turn](../../language/hoon/reference/stdlib/2b.md#turn) for a [list](../../glossary/list.md), [+run:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+run:by](../../language/hoon/reference/stdlib/2i.md#runby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
+1. Map. The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `+list` or `set`. The standard library arms that accomplish this include [`+turn`](../../language/hoon/reference/stdlib/2b.md#turn) for a [list](../../glossary/list.md), [+run:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+run:by](../../language/hoon/reference/stdlib/2i.md#runby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
 
-2. Reduce. The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library [arms](../../glossary/arm.md) that accomplish this are [+roll](../../language/hoon/reference/stdlib/2b.md#roll) and [+reel](../../language/hoon/reference/stdlib/2b.md#reel) for a [list](../../glossary/list.md), [+rep:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+rep:by](../../language/hoon/reference/stdlib/2i.md#repby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
+2. Reduce. The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library [arms](../../glossary/arm.md) that accomplish this are [`+roll`](../../language/hoon/reference/stdlib/2b.md#roll) and [`+reel`](../../language/hoon/reference/stdlib/2b.md#reel) for a [list](../../glossary/list.md), [+rep:in](../../language/hoon/reference/stdlib/2h.md#repin) for a [set](../../language/hoon/reference/stdlib/2o.md#set), and [+rep:by](../../language/hoon/reference/stdlib/2i.md#repby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
 
-3. Filter. The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [+skim](../../language/hoon/reference/stdlib/2b.md#skim), [+skid](../../language/hoon/reference/stdlib/2b.md#skid), [+murn](../../language/hoon/reference/stdlib/2b.md#murn) for a [list](../../glossary/list.md), and [+rib:by](../../language/hoon/reference/stdlib/2i.md#ribby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).
+3. Filter. The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`+skim`](../../language/hoon/reference/stdlib/2b.md#skim), [`+skid`](../../language/hoon/reference/stdlib/2b.md#skid), [`+murn`](../../language/hoon/reference/stdlib/2b.md#murn) for a [list](../../glossary/list.md), and [+rib:by](../../language/hoon/reference/stdlib/2i.md#ribby) for a [map](../../language/hoon/reference/stdlib/2o.md#map).

@@ -51,10 +51,10 @@ You are familiar in everyday life with making choices on the basis of a decision
 
 Essentially, we have to be able to decide whether or not some value or expression evaluates as `%.y` true (in which case we will do one thing) or `%.n` false (in which case we do another). Some basic expressions are mathematical, but we also check for existence, for equality of two values, etc.
 
-- [+gth](../../language/hoon/reference/stdlib/1a.md#gth) (greater than `>`)
-- [+lth](../../language/hoon/reference/stdlib/1a.md#lth) (less than `<`)  
-- [+gte](../../language/hoon/reference/stdlib/1a.md#gte) (greater than or equal to `≥`)
-- [+lte](../../language/hoon/reference/stdlib/1a.md#lte) (less than or equal to `≤`)
+- [`+gth`](../../language/hoon/reference/stdlib/1a.md#gth) (greater than `>`)
+- [`+lth`](../../language/hoon/reference/stdlib/1a.md#lth) (less than `<`)  
+- [`+gte`](../../language/hoon/reference/stdlib/1a.md#gte) (greater than or equal to `≥`)
+- [`+lte`](../../language/hoon/reference/stdlib/1a.md#lte) (less than or equal to `≤`)
 - `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis), irregularly `=()` (check for equality)
 
 The key conditional decision-making rune is `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol), which lets you branch between an `expression-if-true` and an "expression-if-false". `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot) inverts the order of `?:`. Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.

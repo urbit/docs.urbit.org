@@ -160,7 +160,7 @@ add
 
 The operation you just completed is straightforward enough: `1 + 2`, in many languages, or `(+ 1 2)` in a [Lisp dialect](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29) like [Clojure](https://en.wikipedia.org/wiki/Clojure). Literally, we can interpret `%-  add  [1 2]` as “evaluate the `+add` core on the input values `[1 2]`”.
 
-The [+add](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#cenhep) in the neighboring child expression as a cell. There's really no limit to the complexity of Hoon expressions: they can track deep and wide. They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
+The [`+add`](../../language/hoon/reference/stdlib/1a.md#add) function expects precisely two values (or _arguments_), which are provided by [%-](../../language/hoon/reference/rune/cen.md#cenhep) in the neighboring child expression as a cell. There's really no limit to the complexity of Hoon expressions: they can track deep and wide. They also don't care much about layout, which leaves you a lot of latitude. The only hard-and-fast rule is that there are single spaces (`ace`s) and everything else (`gap`s).
 
 ```hoon
 %-
@@ -329,7 +329,7 @@ Right now, we don't have a way of preserving values for subsequent use in a more
 
 We are going to store the value as a variable, or in Hoon, “pin a face to the subject”. Hoon faces aren't exactly like variables in other programming languages, but for now we can treat them that way, with the caveat that they are only accessible to daughter or sister expressions.
 
-When we used [+add](../../language/hoon/reference/stdlib/1a.md#add) or [+sub](../../language/hoon/reference/stdlib/1a.md#sub) previously, we wanted an immediate answer. There's not much more to say than `5 + 1`. In contrast, pinning a face accepts three daughter expressions: a name (or face), a value, and the rest of the expression.
+When we used [`+add`](../../language/hoon/reference/stdlib/1a.md#add) or [`+sub`](../../language/hoon/reference/stdlib/1a.md#sub) previously, we wanted an immediate answer. There's not much more to say than `5 + 1`. In contrast, pinning a face accepts three daughter expressions: a name (or face), a value, and the rest of the expression.
 
 ```hoon
 =/  perfect-number  28

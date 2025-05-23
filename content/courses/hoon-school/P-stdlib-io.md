@@ -8,16 +8,16 @@ _This module will elaborate on text representation in Hoon, including formatted 
 We frequently need to convert from text to data, and between different text-based representations. Let's examine some specific [arms](../../glossary/arm.md):
 
 - How do we convert text into all lower-case?
-    - [+cass](../../language/hoon/reference/stdlib/4b.md#cass)
+    - [`+cass`](../../language/hoon/reference/stdlib/4b.md#cass)
 
 - How do we turn a `$cord` into a [tape](../../glossary/tape.md)?
-    - [+trip](../../language/hoon/reference/stdlib/4b.md#trip)
+    - [`+trip`](../../language/hoon/reference/stdlib/4b.md#trip)
 
 - How can we make a [list](../../glossary/list.md) of a null-terminated tuple?
     - [+le:nl](../../language/hoon/reference/stdlib/2m.md#lenl)
 
 - How can we evaluate [Nock](../../glossary/nock.md) expressions?
-    - [+mink](../../language/hoon/reference/stdlib/4n.md#mink)
+    - [`+mink`](../../language/hoon/reference/stdlib/4n.md#mink)
 
 (If you see a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune in the code, it's similar to a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis), but produces what's called a ["wet gate"](R-metals.md).)
 
@@ -96,7 +96,7 @@ which is equivalent to
 
 #### Tutorial: Deep Dive into `ls.hoon`
 
-The [+ls](../../manual/os/dojo-tools.md#ls) generator shows the contents at a particular path in [Clay](../../glossary/clay.md):
+The [`+ls`](../../manual/os/dojo-tools.md#ls) generator shows the contents at a particular path in [Clay](../../glossary/clay.md):
 
 ```hoon
 > +cat /===/gen/ls/hoon
@@ -144,7 +144,7 @@ A `%say` [generator](../../glossary/generator.md) is a cell with a metadata tag 
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
-This generator requires a path argument in its sample and optionally accepts a [vane](../../glossary/vane.md) tag (`%g` [Gall](../../glossary/gall.md) or `%c` [Clay](../../glossary/clay.md)). Most of the time, [+cat](../../manual/os/dojo-tools.md#cat) is used with Clay, so `%c` as the last entry in the type union serves as the [bunt](../../glossary/bunt.md) value.
+This generator requires a path argument in its sample and optionally accepts a [vane](../../glossary/vane.md) tag (`%g` [Gall](../../glossary/gall.md) or `%c` [Clay](../../glossary/clay.md)). Most of the time, [`+cat`](../../manual/os/dojo-tools.md#cat) is used with Clay, so `%c` as the last entry in the type union serves as the [bunt](../../glossary/bunt.md) value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
@@ -160,7 +160,7 @@ The result of the lookup on the previous line is adapted into a formatted text b
 
 #### Tutorial: Deep Dive into `cat.hoon`
 
-For instance, how does [+cat](../../manual/os/dojo-tools.md#cat) work?  Let's look at the structure of `/gen/cat/hoon`:
+For instance, how does [`+cat`](../../manual/os/dojo-tools.md#cat) work?  Let's look at the structure of `/gen/cat/hoon`:
 
 <details>
 <summary>/gen/cat.hoon</summary>
@@ -208,7 +208,7 @@ For instance, how does [+cat](../../manual/os/dojo-tools.md#cat) work?  Let's lo
 - Some points of interest include:
   - `/?` faswut pins the expected Arvo [kelvin version](../../glossary/kelvin.md); right now it doesn't do anything.
   - `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
-  - [+smyt](../../language/hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
+  - [`+smyt`](../../language/hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
   - `=-` [tishep](../../language/hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../language/hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas).
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `$tank` by prepending `%rose` tags and so forth.
@@ -343,4 +343,4 @@ Our gate here takes a `$tape` that was produced by `+prompt`. If we needed anoth
 
 The rest of this generator should be intelligible to those with Hoon knowledge at this point.
 
-One quirk that you should be aware of, though, is that `$tang` prints in reverse order from how it is created. The reason for this is that `$tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [+flop](../../language/hoon/reference/stdlib/2b.md#flop) the `+list`.
+One quirk that you should be aware of, though, is that `$tang` prints in reverse order from how it is created. The reason for this is that `$tang` was originally created to display stack trace information, which should be produced in reverse order. This leads to an annoyance: we either have to specify our messages backwards or construct them in the order we want and then [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) the `+list`.

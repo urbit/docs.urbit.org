@@ -183,7 +183,7 @@ If you counted the arms in this core by hand, you'll come up with 139 arms. This
 
 and we also see the section 1 core and the core containing `hoon-version` in the subject.
 
-We can also confirm that [+add](../../language/hoon/reference/stdlib/1a.md#add) is in the subject of [+biff](../../language/hoon/reference/stdlib/2a.md#biff)
+We can also confirm that [`+add`](../../language/hoon/reference/stdlib/1a.md#add) is in the subject of [`+biff`](../../language/hoon/reference/stdlib/2a.md#biff)
 
 ```hoon
 > add:biff
@@ -364,7 +364,7 @@ Every time you start this “random” number generator with a given seed, it wi
 
 While RNGs don't work like our _π_-based example, a given seed will reliably produce the same result every time it is run.
 
-The basic RNG core in Hoon is [+og](../../language/hoon/reference/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket). [+rads:rng](../../language/hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
+The basic RNG core in Hoon is [`+og`](../../language/hoon/reference/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket). [+rads:rng](../../language/hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
 
 ```hoon
 > =+  rng=~(. og eny)
@@ -431,7 +431,7 @@ Zoom in on these lines:
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [+og](../../language/hoon/reference/stdlib/3d.md#og), the randomness [core](../../glossary/core.md) in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [`+og`](../../language/hoon/reference/stdlib/3d.md#og), the randomness [core](../../glossary/core.md) in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
 
 We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 

@@ -35,7 +35,7 @@ When the `$` buc arm of a dry [gate](../../glossary/gate.md) is evaluated it tak
 
 When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site. In other words, for a wet gate, we ask: “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified payload?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”; they defer the actual substitution in the [sample](../../glossary/sample.md). Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
 
-Consider a function like [+turn](../../language/hoon/reference/stdlib/2b.md#turn) which transforms each element of a list. To use `+turn`, we install a [list](../../glossary/list.md) and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
+Consider a function like [`+turn`](../../language/hoon/reference/stdlib/2b.md#turn) which transforms each element of a list. To use `+turn`, we install a [list](../../glossary/list.md) and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
 A wet gate is defined by a `|*` [bartar](../../language/hoon/reference/rune/bar.md#bartar) rune rather than a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis). More generally, cores that contain wet arms **must** be defined using `|@` [barpat](../../language/hoon/reference/rune/bar.md#barpat) instead of `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) (`|*` expands to a `|@` core with `$` buc arm). There is also `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) which defines the wet gate [mold](../../glossary/mold.md) builder (remember, we like gates that build gates).
 
@@ -90,9 +90,9 @@ The meat of this gate is concerned with correctly implementing the mathematical 
 
 #### Tutorial: `+need`
 
-[Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [+maps](../../language/hoon/reference/stdlib/2o.md#map) or [+sets](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [+by](../../language/hoon/reference/stdlib/2i.md#by) and [+in](../../language/hoon/reference/stdlib/2h.md#in), as well as most [+list](../../glossary/list.md) tools, are wet gates.
+[Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [`+maps`](../../language/hoon/reference/stdlib/2o.md#map) or [`+sets`](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [`+by`](../../language/hoon/reference/stdlib/2i.md#by) and [`+in`](../../language/hoon/reference/stdlib/2h.md#in), as well as most [`+list`](../../glossary/list.md) tools, are wet gates.
 
-Let's take a look at a particular wet gate from the Hoon standard library, [+need](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `+unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
+Let's take a look at a particular wet gate from the Hoon standard library, [`+need`](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `+unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
 ```hoon
 ++  need                                                ::  demand
@@ -162,7 +162,7 @@ nest-fail
 
 ### Drying Out a Gate {#drying-out-a-gate}
 
-Some functional tools like [+cury](../../language/hoon/reference/stdlib/2n.md#cury) don't work with [wet gates](../../glossary/wet-gate.md). It is, however, possible to “dry out“ a wet gate using [+bake](../../language/hoon/reference/stdlib/2b.md#bake):
+Some functional tools like [`+cury`](../../language/hoon/reference/stdlib/2n.md#cury) don't work with [wet gates](../../glossary/wet-gate.md). It is, however, possible to “dry out“ a wet gate using [`+bake`](../../language/hoon/reference/stdlib/2b.md#bake):
 
 ```hoon
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
@@ -248,7 +248,7 @@ If type `x` nests within type `xx`, and type `y` nests within type `yy`, then a 
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
-For instance, the archetypal [Gall](../../glossary/gall.md) agents in `/sys/lull.hoon` are composed using iron gates since they will be used as examples for building actual [agent](../../glossary/agent.md) cores. The [+rs](../../language/hoon/reference/stdlib/3b.md#rs) and sister gates in `/sys/hoon.hoon` are built using iron doors with specified rounding behavior so when you actually use the core (like [+add:rs](../../language/hoon/reference/stdlib/3b.md#addrs)) the core you are using has been built as an example.
+For instance, the archetypal [Gall](../../glossary/gall.md) agents in `/sys/lull.hoon` are composed using iron gates since they will be used as examples for building actual [agent](../../glossary/agent.md) cores. The [`+rs`](../../language/hoon/reference/stdlib/3b.md#rs) and sister gates in `/sys/hoon.hoon` are built using iron doors with specified rounding behavior so when you actually use the core (like [+add:rs](../../language/hoon/reference/stdlib/3b.md#addrs)) the core you are using has been built as an example.
 
 The `|~` [barsig](../../language/hoon/reference/rune/bar.md#barsig) rune produces an iron gate. The `^|` [ketbar](../../language/hoon/reference/rune/ket.md#ketbar) rune converts a `%gold` invariant core to an iron core.
 

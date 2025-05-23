@@ -121,9 +121,7 @@ The `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) core created
 To create three types we're going to need, we use `+$` [lusbuc](../../language/hoon/reference/rune/lus.md#lusbuc), which is an [arm](../../glossary/arm.md) used to define a type.
 
 - `+$  suit  ?(%hearts %spades %clubs %diamonds)` defines `$suit`, which can be either `%hearts`, `%spades`, `%clubs`, or `%diamonds`. It's a type union created by the irregular form of `$?` [bucwut](../../language/hoon/reference/rune/buc.md#bucwut).
-
 - `+$  darc  [sut=suit val=@ud]` defines `$darc`, which is a pair of `$suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `$darc` and not `$card`?  Because `$card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
-
 - `+$  deck  (list darc)` is simply a [list](../../glossary/list.md) of `$darc`.
 
 One way to get a feel for how a library works is to skim the `++` [luslus](../../language/hoon/reference/rune/lus.md#luslus) arm-names before diving into any specific [arm](../../glossary/arm.md). In this library, the arms are `+make-deck`, `+num-to-suit`, `+shuffle-deck`, and `+draw`. These names should be very clear, with the exception of `+num-to-suit` (although you could hazard a guess at what it does). Let's take a closer look at it first:
@@ -172,7 +170,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   (slag n d)
 ```
 
-`+draw` takes two arguments: `n`, an unsigned integer, and `d`, a `$deck`. The gate will produce a cell of two `decks` using [+scag](../../language/hoon/reference/stdlib/2b.md#scag) and [+slag](../../language/hoon/reference/stdlib/2b.md#slag). [+scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [+slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `+scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `+slag` to produce the remaining deck in the tail of the cell as `rest`.
+`+draw` takes two arguments: `n`, an unsigned integer, and `d`, a `$deck`. The gate will produce a cell of two `$deck`s using [+scag](../../language/hoon/reference/stdlib/2b.md#scag) and [+slag](../../language/hoon/reference/stdlib/2b.md#slag). [+scag](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [+slag](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `+scag` to produce the drawn hand of `n` cards in the head of the cell as `.hand`, and `+slag` to produce the remaining deck in the tail of the cell as `.rest`.
 
 ```hoon
 ++  shuffle-deck
@@ -199,81 +197,77 @@ We add a bunted `$deck`, then encounter a very interesting statement that you ha
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [+lent](../../language/hoon/reference/stdlib/2b.md#lent).
 
-`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `shuffled` and the one card left in `unshuffled`. We use the `:_` [colcab](../../language/hoon/reference/rune/col.md#_-colcab) rune here, so that the “heavier” expression is at the bottom.
+`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `.shuffled` and the one card left in `.unshuffled`. We use the `:_` [colcab](../../language/hoon/reference/rune/col.md#_-colcab) rune here, so that the “heavier” expression is at the bottom.
 
-If the above conditional evaluates to `%.n` false, we need to do a little work. `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket) is a rune that pins the head of a pair and changes a leg in the [subject](../../glossary/subject.md) with the tail. It's useful for interacting with the [og](../../language/hoon/reference/stdlib/3d.md#og) core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the [subject](../../glossary/subject.md) with the [face](../../glossary/face.md) `index` and change `random` to be the next core.
+If the above conditional evaluates to `%.n` false, we need to do a little work. `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket) is a rune that pins the head of a pair and changes a leg in the [subject](../../glossary/subject.md) with the tail. It's useful for interacting with the [og](../../language/hoon/reference/stdlib/3d.md#og) core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the [subject](../../glossary/subject.md) with the [face](../../glossary/face.md) `.index` and change `.random` to be the next core.
 
 With that completed, we use `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) to call `$` buc to recurse back up to `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) with a few changes:
 
-- `shuffled` gets the `$darc` from `unshuffled` at `index` added to the front of it.
-
-- `remaining` gets decremented. Why are we using a counter here instead of just checking the length of `unshuffled` on each loop? [+lent](../../language/hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
-
-- `unshuffled` becomes the result of using [+oust](../../language/hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `index` on `unshuffled`.
+- `.shuffled` gets the `$darc` from `.unshuffled` at `.index` added to the front of it.
+- `.remaining` gets decremented. Why are we using a counter here instead of just checking the length of `.unshuffled` on each loop? [+lent](../../language/hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
+- `.unshuffled` becomes the result of using [+oust](../../language/hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `.index` on `.unshuffled`.
 
 This is a very naive shuffling algorithm. We leave the implementation of a better shuffling algorithm as an exercise for the reader.
-
 
 ### Exercise: Using the Playing Card Library {#exercise-using-the-playing-card-library}
 
 Unfortunately `/` [fas](../../language/hoon/reference/rune/fas.md) runes don't work in the [Dojo](../../glossary/dojo.md) right now, so we need to build code using the [-build-file](../../manual/os/dojo-tools.md#build-file) thread if we want to use the library directly.
 
-- Import the `/lib/playing-cards.hoon` library and use it to shuffle and show a deck and a random hand of five cards.
+Import the `/lib/playing-cards.hoon` library and use it to shuffle and show a deck and a random hand of five cards.
 
-    We first import the library:
+We first import the library:
 
-    ```hoon
-    =playing-cards -build-file /===/lib/playing-cards/hoon
-    ```
+```hoon
+=playing-cards -build-file /===/lib/playing-cards/hoon
+```
 
-    We then invoke it using the "entropy" or system randomness. (This is an unpredictable value we will use when we want a process to be random. We will discuss it in detail when we talk about [subject-oriented programming](O-subject.md).)
+We then invoke it using the "entropy" or system randomness. (This is an unpredictable value we will use when we want a process to be random. We will discuss it in detail when we talk about [subject-oriented programming](O-subject.md).)
 
-    ```hoon
-    > =deck (shuffle-deck:playing-cards make-deck:playing-cards eny)
+```hoon
+> =deck (shuffle-deck:playing-cards make-deck:playing-cards eny)
 
-    > deck
-    ~[
-      [sut=%spades val=12]
-      [sut=%spades val=8]
-      [sut=%hearts val=5]
-      [sut=%clubs val=2]
-      [sut=%diamonds val=10]
-      ...
-      [sut=%spades val=2]
-      [sut=%hearts val=6]
-      [sut=%hearts val=12]
-    ]
-    ```
+> deck
+~[
+  [sut=%spades val=12]
+  [sut=%spades val=8]
+  [sut=%hearts val=5]
+  [sut=%clubs val=2]
+  [sut=%diamonds val=10]
+  ...
+  [sut=%spades val=2]
+  [sut=%hearts val=6]
+  [sut=%hearts val=12]
+]
+```
 
-    Draw a hand of five cards from the deck:
+Draw a hand of five cards from the deck:
 
-    ```hoon
-    > (draw:playing-cards 5 deck)
-    [   hand
-      ~[
-        [sut=%spades val=12]
-        [sut=%spades val=8]
-        [sut=%hearts val=5]
-        [sut=%clubs val=2]
-        [sut=%diamonds val=10]
-      ]
-        rest
-      ~[
-        [sut=%hearts val=2]
-        [sut=%clubs val=7]
-        [sut=%clubs val=9]
-        [sut=%diamonds val=6]
-        [sut=%diamonds val=8]
-        ...
-        [sut=%spades val=2]
-        [sut=%hearts val=6]
-        [sut=%hearts val=12]
-      ]
-    ]
-    ```
+```hoon
+> (draw:playing-cards 5 deck)
+[   hand
+  ~[
+    [sut=%spades val=12]
+    [sut=%spades val=8]
+    [sut=%hearts val=5]
+    [sut=%clubs val=2]
+    [sut=%diamonds val=10]
+  ]
+    rest
+  ~[
+    [sut=%hearts val=2]
+    [sut=%clubs val=7]
+    [sut=%clubs val=9]
+    [sut=%diamonds val=6]
+    [sut=%diamonds val=8]
+    ...
+    [sut=%spades val=2]
+    [sut=%hearts val=6]
+    [sut=%hearts val=12]
+  ]
+]
+```
 
-    Of course, since the deck was shuffled once, any time we draw from the same deck we will get the same hand. But if we replace the deck with the `rest` remaining, then we can continue to draw new hands.
-
+Of course, since the deck was shuffled once, any time we draw from the same deck we will get the same hand. But if we replace the deck with the `.rest` remaining, then we can continue to draw new hands.
 
 ## Desks {#desks}
 
@@ -323,11 +317,11 @@ Files are located using the "path" or "file path". Colloquially, this is what we
 
 An Earth filesystem and path orients itself around some key metaphor:
 - Windows machines organize the world by drive, e.g. `C:\`.
-- Unix machines (including macOS and Linux) organize the world from `/`, the root directory.
+- Unix machines (like macOS and Linux) organize the world from `/`, the root directory.
 
 **Absolute paths** are like street addresses, or latitude and longitude. They let you unambiguously locate a file or folder. **Relative paths** are more like informal (but correct) instructions: “It's on the right just three houses past the church.”  They are often shorter but require the user to know the starting point.
 
-Once you have located a particular file, you need to load the data. Conventionally, _file extensions_ indicate what kind of file you are dealing with: `.jpg`, `.png`, and `.gif` are image files, for instance; `.txt`, `.docx`, and `.pdf` are different kinds of documents; and `.mp3` and `.ogg` are audio files. Simply changing the extension on the file doesn't change the underlying data, but it can either elicit a stern warning from the OS or confuse it, depending on the OS. Normally you have to open the file in an appropriate program and save it as a new type if such a conversion is possible.
+Once you have located a particular file, you need to load the data. Conventionally, file "extensions" indicate what kind of file you are dealing with: `.jpg`, `.png`, and `.gif` are image files, for instance; `.txt`, `.docx`, and `.pdf` are different kinds of documents; and `.mp3` and `.ogg` are audio files. Simply changing the extension on the file doesn't change the underlying data, but it can either elicit a stern warning from the OS or confuse it, depending on the OS. Normally you have to open the file in an appropriate program and save it as a new type if such a conversion is possible.
 
 ### File Data in Urbit {#file-data-in-urbit}
 
@@ -430,7 +424,9 @@ you are hosting 0 group(s):
 
 ### Marks {#marks}
 
-[Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade: they are actually [molds](../../glossary/mold.md) and define conversion paths. We won't write them in Hoon School, but you will encounter them when you begin writing apps. They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
+[Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade: they are actually [molds](../../glossary/mold.md) and define conversion paths.
+
+We won't write them in Hoon School, but you will encounter them when you begin writing apps. They are used more broadly than merely as file types, because they act as smart molds to ingest and yield data structures such as JSON and HTML from Hoon data structures.
 
 In brief, each mark has a `+grab` arm to convert from other types to it; a `+grow` arm to convert it to other types; and a `+grad` arm for some standard operations across marks. You can explore the marks in `/mar`.
 
@@ -442,27 +438,27 @@ The `+ford` arm of Clay builds Hoon code. It provides [a number of runes](../../
 - `/-` [fashep](../../language/hoon/reference/rune/fas.md#fashep) imports a structure file from `/sur`. Structure files are a way to share common data structures (across agents, for instance).
 - `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) imports a library file from `/lib`.
 
-    Both `/-` fashep and `/+` faslus allow you to import by affecting the name of the exposed core:
-    
-    1. With the default name:
+Both `/-` fashep and `/+` faslus allow you to import by affecting the name of the exposed core:
 
-        ```hoon
-        /+  apple
-        ```
+1. With the default name:
 
-    2. With no name:
+```hoon
+/+  apple
+```
 
-        ```hoon
-        /-  *orange
-        ```
+2. With no name:
 
-    3. With a new name:
+```hoon
+/-  *orange
+```
 
-        ```hoon
-        /+  pomme=apple
-        ```
+3. With a new name:
 
-    `*` is useful when importing libraries with unwieldy names, but otherwise should be avoided as it can shadow names in your current subject.
+```hoon
+/+  pomme=apple
+```
+
+`*` is useful when importing libraries with unwieldy names, but otherwise should be avoided as it can shadow names in your current subject.
 
 - `/=` [fastis](../../language/hoon/reference/rune/fas.md#fastis) builds a user-specified path and wraps it with a given [face](../../glossary/face.md).
 - `/*` [fastar](../../language/hoon/reference/rune/fas.md#fastar) imports the contents of a file, applies a [mark](../../glossary/mark.md) to convert it, and wraps it with a given face.

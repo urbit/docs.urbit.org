@@ -49,7 +49,7 @@ Consider each of the following nouns. Which tree diagram do they correspond to? 
 
 ### Exercise: Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
 
-Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `n` as input and produces a list of numbers from `1` up to (but not including) `n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
+Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `.n` as input and produces a list of numbers from `1` up to (but not including) `.n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
 ```hoon
 |=  end=@
@@ -77,7 +77,7 @@ In the Dojo:
 
 OK, we've seen these runes before. This time we want to focus on the list, the thing that's being built here.
 
-This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
+This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `.count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `.count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
 
 ```
 [1 [2 [3 [4 ~]]]]
@@ -162,7 +162,7 @@ A `+list` is built with the `+list` mold. A `+list` is actually a "mold builder"
 ~[~[1 2 3] ~[4 5 6]]
 ```
 
-True `+list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:
+True `+list`s have `.i` and `.t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:
 
 ```hoon
 > [3 4 5 ~]
@@ -278,7 +278,7 @@ One can also identify a resource by a label, called a [wing](../../glossary/wing
 inner-limb.outer-limb.limb
 ```
 
-You can read this as `inner-limb` in `outer-limb` in `limb`, etc. Notice that these read left-to-right!
+You can read this as `.inner-limb` in `.outer-limb` in `.limb`, etc. Notice that these read left-to-right!
 
 A wing is a resolution path pointing to a limb. It's a search path, like an index to a particular labeled part of the subject.
 
@@ -418,7 +418,7 @@ The children of legs bearing names aren't included in the search path. For examp
 4. `a=5`
 5. `b=[c=14 15]`
 
-Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `c` of `[[4 a=5] b=[c=14 15]]` fails:
+Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `.c` of `[[4 a=5] b=[c=14 15]]` fails:
 
 ```hoon
 > c:[[4 b=5] [b=6 b=[c=14 15]]]
@@ -468,9 +468,9 @@ When a face is skipped at some address `n`, neither the head nor the tail of `n`
 -find.^b
 ```
 
-The first `b`, `b=[a=1 b=2 c=3]`, is skipped; so the entire head of the subject is skipped. The tail has no `b`; so `^b` doesn't resolve to a limb when the subject is `[b=[a=1 b=2 c=3] a=11]`.
+The first `.b`, `b=[a=1 b=2 c=3]`, is skipped; so the entire head of the subject is skipped. The tail has no `.b`; so `^b` doesn't resolve to a limb when the subject is `[b=[a=1 b=2 c=3] a=11]`.
 
-How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=14 15]]`? In each case you should use a wing.
+How do you get to that `b=2`?  And how do you get to the `.c` in `[[4 a=5] b=[c=14 15]]`? In each case you should use a wing.
 
 We say that the inner face has been "shadowed" when an outer name obscures it.
 
@@ -709,7 +709,7 @@ The [`+roll`](../../language/hoon/reference/stdlib/2b.md#roll) function takes a 
 Once you have a `+list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
 - The [`+lent`](../../language/hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
-- The [`+find`](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`nedl`, needle) in the list (`hstk`, haystack)
+- The [`+find`](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack)
 - The [`+snap`](../../language/hoon/reference/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
 - The [`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
 - The [`+slag`](../../language/hoon/reference/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
@@ -751,7 +751,7 @@ Determine whether the following Dojo expressions are valid, and if so, what they
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function.
+Write a gate that takes in a list `.a` and returns `%.y` if `.a` is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 
@@ -848,7 +848,7 @@ This will not run because `+weld` expects the elements of both lists to be of 
 > (weld b c)
 ```
 
-This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
+This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `.b` and `.c` and not worry about what the elements were. In that case, it would return `7`.
 
 ```hoon
 > (lent (weld b c))

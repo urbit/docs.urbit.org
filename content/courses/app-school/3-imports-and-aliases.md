@@ -66,13 +66,13 @@ A virtual arm in an agent often looks something like this:
     def   ~(. (default-agent this %.n) bowl)
 ```
 
-`this` and `def` are the deferred expressions, and next to each one is the Hoon expression it evaluates whenever called. Notice that unlike most things that take _n_ arguments, a virtual arm is not terminated with a `==`. You can define as many aliases as you like. The two in this example are conventional ones you'd use in most agents you write. Their purposes are:
+`.this` and `.def` are the deferred expressions, and next to each one is the Hoon expression it evaluates whenever called. Notice that unlike most things that take _n_ arguments, a virtual arm is not terminated with a `==`. You can define as many aliases as you like. The two in this example are conventional ones you'd use in most agents you write. Their purposes are:
 
 ```hoon
 this  .
 ```
 
-Rather than having to return `..on-init` like we did in the last lesson, instead our arms can just refer to `this` whenever modifying or returning the agent core.
+Rather than having to return `..on-init` like we did in the last lesson, instead our arms can just refer to `.this` whenever modifying or returning the agent core.
 
 ```hoon
 def  ~(. (default-agent this %.n) bowl)
@@ -135,7 +135,7 @@ Inside our agent door, we've added an extra virtual arm and defined a couple def
     def   ~(. (default-agent this %.n) bowl)
 ```
 
-In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of `default-agent`, which we set up as a deferred expression named `def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `this` in the `+on-init` arm as an example - it makes things a bit simpler.
+In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of `default-agent`, which we set up as a deferred expression named `.def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `.this` in the `+on-init` arm as an example - it makes things a bit simpler.
 
 You can save the code above in `/app/skeleton.hoon` of your `%base` desk like before and `|commit %base` in the dojo. Additionally, you can start the agent so we can try out `+dbug`. To start it, run the following in the dojo:
 
@@ -178,8 +178,8 @@ The key takeaways are:
 - `default-agent` is a library that provides default behaviors for Gall agent arms.
 - `+dbug` is a library that lets you inspect the state and `$bowl` of an agent from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](../../language/hoon/reference/rune/lus.md#lustar) (`+*`) rune.
-- `this` is a conventional deferred expression name for the agent core itself.
-- `def` is a conventional deferred expression name for accessing arms in the `default-agent` library.
+- `.this` is a conventional deferred expression name for the agent core itself.
+- `.def` is a conventional deferred expression name for accessing arms in the `default-agent` library.
 - Extra cores can be composed into the subject of the agent core. The composition is done implicitly by the build system. Typically we'd include one extra core that defines types for our agent's state and maybe other useful types as well.
 
 ## Exercises {#exercises}

@@ -160,7 +160,7 @@ Here's a simple example agent with three scry endpoints:
 
 </details>
 
-The agent's `+on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `data`. The `+on-peek` arm is:
+The agent's `+on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `.data`. The `+on-peek` arm is:
 
 ```hoon
 ++  on-peek

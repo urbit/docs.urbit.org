@@ -52,7 +52,7 @@ Permissions can be checked as described in the previous lesson, comparing the so
 
 If a permission check fails, the path is not valid, or any other reason you want to reject the subscription request, your agent can simply crash. The behavior here is the same as with `+on-poke` - Gall will send a `%watch-ack` card in response, which is either an ack (positive acknowledgement) or a nack (negative acknowledgement). The `(unit tang)` in the `%watch-ack` will be null if processing succeeded, and non-null if it crashed, with a stack trace in the `$tang`. Like with `poke-ack`s, you don't need to explicitly send a `%watch-ack` - Gall will do it automatically.
 
-As well as sending a `%watch-ack`, Gall will also record the subscription in the `sup` field of the `$bowl`, if it succeeded. Then, when you send updates out to subscribers of the `$path` in question, the new subscriber will begin receiving them as well.
+As well as sending a `%watch-ack`, Gall will also record the subscription in the `.sup` field of the `$bowl`, if it succeeded. Then, when you send updates out to subscribers of the `$path` in question, the new subscriber will begin receiving them as well.
 
 Updates to subscribers would usually be sent from other arms, but there's one special case for `+on-watch` which is very useful. Normally updates can only be sent to all subscribers of a particular path - you can't target a specific subscriber. There's one exception to this: In `+on-watch`, when there's a new subscription, you can send a `%fact` back with an empty `(list path)`, and it'll only go to the new subscriber. This is most useful when you want to give the subscriber some initial state, which you otherwise couldn't do without sending it to everyone. It might look something like this:
 
@@ -245,7 +245,7 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 
 </details>
 
-This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `action`s and `update`s for subscribers.
+This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `action`s and `update`s for subscribers.
 
 **`/mar/todo/action.hoon`**
 
@@ -422,7 +422,7 @@ Additionally, you might notice the `%add` case in `handle-poke` begins with the 
   $(now.bowl (add now.bowl ~s0..0001))
 ```
 
-Back in lesson two, we mentioned that the bowl is only repopulated when there's a new Arvo event, so simultaneous messages from a local agent or web client would be processed with the same bowl. Since we're using `now.bowl` for the task ID, this means multiple `%add` actions could collide. To handle this case, we check if there's already an entry in the `tasks` map with the current date-time, and if there is, we increase the time by a fraction of a second and try again.
+Back in lesson two, we mentioned that the bowl is only repopulated when there's a new Arvo event, so simultaneous messages from a local agent or web client would be processed with the same bowl. Since we're using `now.bowl` for the task ID, this means multiple `%add` actions could collide. To handle this case, we check if there's already an entry in the `.tasks` map with the current date-time, and if there is, we increase the time by a fraction of a second and try again.
 
 Let's now look at `+on-watch`:
 
@@ -439,7 +439,7 @@ Let's now look at `+on-watch`:
   ==
 ```
 
-When `+on-watch` gets a subscription request, it checks whether the requesting ship is in the `friends` set, and crashes if it is not. If they're in `friends`, it produces a `%fact` card with a null `(list path)`, which means it goes only to the new subscriber. This `%fact` contains the entire `tasks` map as it currently exists, getting the new subscriber up to date.
+When `+on-watch` gets a subscription request, it checks whether the requesting ship is in the `.friends` set, and crashes if it is not. If they're in `.friends`, it produces a `%fact` card with a null `(list path)`, which means it goes only to the new subscriber. This `%fact` contains the entire `.tasks` map as it currently exists, getting the new subscriber up to date.
 
 ### Subscriber {#subscriber}
 
@@ -538,7 +538,7 @@ When `+on-watch` gets a subscription request, it checks whether the requesting s
 
 </details>
 
-This is the subscriber agent. Since it's just for demonstrative purposes, it has no state and just prints the updates it receives. In practice it would keep the `tasks` map it receives in its own state, and then update it as it receives new `%fact`s.
+This is the subscriber agent. Since it's just for demonstrative purposes, it has no state and just prints the updates it receives. In practice it would keep the `.tasks` map it receives in its own state, and then update it as it receives new `%fact`s.
 
 The `+on-poke` arm is fairly simple - it accepts two pokes, to either `[%sub ~some-ship]` or `[%unsub ~some-ship]`.
 
@@ -599,7 +599,7 @@ Now, on \~nut, let's try subscribing:
 %todo-watcher: Subscribe failed!
 ```
 
-Our `%todo-watcher` agent tried, but received a negative `%watch-ack` from `%todo`, because we haven't yet added \~nut to the `friends` set of allowed ships. Let's now remedy that on \~zod:
+Our `%todo-watcher` agent tried, but received a negative `%watch-ack` from `%todo`, because we haven't yet added \~nut to the `.friends` set of allowed ships. Let's now remedy that on \~zod:
 
 ```
 > :todo &todo-action [%allow ~nut]
@@ -615,7 +615,7 @@ Let's also add a couple of to-do tasks, on \~zod:
 >=
 ```
 
-If we now check its state with `+dbug`, we'll see they're in the `tasks` map, and \~nut will also now be in the `friends` set:
+If we now check its state with `+dbug`, we'll see they're in the `.tasks` map, and \~nut will also now be in the `.friends` set:
 
 ```
 >   [ %0
@@ -651,7 +651,7 @@ Let's now try subscribing again on \~nut:
 ]
 ```
 
-As you can see, this time it's worked, and we've immediately received the initial `tasks` map.
+As you can see, this time it's worked, and we've immediately received the initial `.tasks` map.
 
 Now, let's try adding another task on \~zod:
 
@@ -703,14 +703,14 @@ On \~nut, let's look at the outgoing subscription:
 >=
 ```
 
-Now on \~zod, let's try kicking \~nut and removing it from our `friends` set:
+Now on \~zod, let's try kicking \~nut and removing it from our `.friends` set:
 
 ```
 > :todo &todo-action [%kick ~nut]
 >=
 ```
 
-On \~nut, we'll see it got the `%kick`, tried resubscribing automatically, but was rejected because \~nut is no longer in `friends`:
+On \~nut, we'll see it got the `%kick`, tried resubscribing automatically, but was rejected because \~nut is no longer in `.friends`:
 
 ```
 %todo-watcher: Got kick, resubscribing...
@@ -722,7 +722,7 @@ On \~nut, we'll see it got the `%kick`, tried resubscribing automatically, but w
 - Incoming subscription requests arrive in an agent's `+on-watch` arm.
 - An agent will define various subscription `$path`s in its `+on-watch` arm, which others can subscribe to.
 - Gall will automatically produce a negative `%watch-ack` if `+on-watch` crashed, and a positive one if it was successful.
-- Incoming subscribers are recorded in the `sup` field of the `$bowl`.
+- Incoming subscribers are recorded in the `.sup` field of the `$bowl`.
 - `+on-watch` can produce a `%fact` with a null `(list path)` which will go only to the new subscriber.
 - Updates are sent to subscribers in `%fact` cards, and contain a `$cage` with a `$mark` and some data in a `$vase`.
 - `%fact`s are sent to all subscribers of the paths specified in the `(list path)`.

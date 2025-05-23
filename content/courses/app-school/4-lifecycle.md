@@ -79,7 +79,7 @@ Along with a core defining the type of the state, we also need to actually add i
 =*  state  -
 ```
 
-The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `state` when necessary.
+The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `.state` when necessary.
 
 Note that adding the state like this only happens when the agent is built - from then on the arms of our agent will just modify it.
 
@@ -95,7 +95,7 @@ This arm takes no argument, and produces a `(quip card _this)`. It's called exac
 
 A `$card` is a message to another agent or vane. We'll discuss `$card`s in detail later.
 
-`this` is our agent core, which we give the `this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `this`" - the type of our agent core.
+`.this` is our agent core, which we give the `.this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `.this`" - the type of our agent core.
 
 Recall that in the last lesson, we said that most arms return a cell of `[effects new-agent-core]`. That's exactly what `(quip card _this)` is.
 
@@ -109,7 +109,7 @@ The state is packed in a vase with the [zapgar](../../language/hoon/reference/ru
 
 ### `+on-load` {#on-load}
 
-This arm takes a `$vase` and produces a `(quip card _this)`. Its purpose is to import a state previously exported with [`+on-save`](#on-save). Typically you'd have used a [versioned state](#versioned-state-type) as described above, so this arm would test which state version the imported data has, convert data from an old version to the new version if necessary, and load it into the `state` wing of the subject.
+This arm takes a `$vase` and produces a `(quip card _this)`. Its purpose is to import a state previously exported with [`+on-save`](#on-save). Typically you'd have used a [versioned state](#versioned-state-type) as described above, so this arm would test which state version the imported data has, convert data from an old version to the new version if necessary, and load it into the `.state` wing of the subject.
 
 The vase would be unpacked with a [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) (`!<`) rune, and then typically you'd test its version with a [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) (`?-`) expression.
 
@@ -186,7 +186,7 @@ After that core, we have the usual `agent:dbug` call, and then we have this:
 =*  state  -
 ```
 
-We've just bunted the `state-0` type, which will produce `[%0 val=0]`, pinning it to the head of the subject. Then, we've use [tistar](../../language/hoon/reference/rune/tis.md#tistar) (`=*`) to give it a name of `state`.
+We've just bunted the `state-0` type, which will produce `[%0 val=0]`, pinning it to the head of the subject. Then, we've use [tistar](../../language/hoon/reference/rune/tis.md#tistar) (`=*`) to give it a name of `.state`.
 
 Inside our agent core, we have `+on-init`:
 
@@ -196,7 +196,7 @@ Inside our agent core, we have `+on-init`:
   `this(val 42)
 ```
 
-The `a(b c)` syntax is the irregular form of the [centis](../../language/hoon/reference/rune/cen.md#centis) (`%=`) rune. You'll likely be familiar with this from recursive functions, where you'll typically call the buc arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying `this` (our agent core) with `val` replaced by `42`. Since `+on-init` is only called when the agent is first installed, we're just initializing the state.
+The `a(b c)` syntax is the irregular form of the [centis](../../language/hoon/reference/rune/cen.md#centis) (`%=`) rune. You'll likely be familiar with this from recursive functions, where you'll typically call the buc arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying `.this` (our agent core) with `val` replaced by `42`. Since `+on-init` is only called when the agent is first installed, we're just initializing the state.
 
 Next we have `+on-save`:
 
@@ -206,7 +206,7 @@ Next we have `+on-save`:
   !>(state)
 ```
 
-This exports our agent's state, and is called during upgrades, suspensions, etc. We're having it pack the `state` value in a `$vase`.
+This exports our agent's state, and is called during upgrades, suspensions, etc. We're having it pack the `.state` value in a `$vase`.
 
 Finally, we have `+on-load`:
 
@@ -340,7 +340,7 @@ In `+on-init`, we've updated it to initialize the state with a value that fits t
 
 We've updated the `?-` expression with a new case that handles our new state type, and for the old state type we've added a function that converts it to the new type - in this case by duplicating `val` and changing the head-tag from `%0` to `%1`. This is an extremely simple state type transition function - it would likely be more complicated for an agent with real functionality.
 
-Note: the `a+b` syntax (as in `1+[val.old val.old]`) forms a cell of the constant `%a` and the noun `b`. The constant may either be an integer or a `@tas`. For example:
+Note: the `a+b` syntax (as in `1+[val.old val.old]`) forms a cell of the constant `%a` and the noun `.b`. The constant may either be an integer or a `@tas`. For example:
 
 ```
 > foo+'bar'
@@ -367,7 +367,7 @@ Let's now use `+dbug` to confirm our state has successfully been updated to the 
 - `+on-load` imports an agent's state and is called during upgrade or when an app is unsuspended. It also handles converting data from old state versions to new state versions.
 - The type of an agent's state is typically defined in a separate core.
 - The state type is typically versioned, with a new type definition for each version of the state.
-- The state is initially added by bunting the state type and then naming it `state` with the tistar (`=*`) rune, so its contents can be referenced directly.
+- The state is initially added by bunting the state type and then naming it `.state` with the tistar (`=*`) rune, so its contents can be referenced directly.
 - A `$vase` is a cell of `[type-of-the-noun the-noun]`.
 - `(quip a b)` is the same as `[(list a) b]`, and is the `[effects new-agent-core]` pair returned by many arms of an agent core.
 

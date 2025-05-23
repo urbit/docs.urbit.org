@@ -537,7 +537,7 @@ We see now that the sample of `+inc` is the value `0`, and has `a` as a [face](.
 
 The placeholder value, as you saw in the previous module, is sometimes called the [bunt](../../glossary/bunt.md) value. The bunt value is determined by the input type; for `@` atoms the bunt value is typically `0`.
 
-The face value of `a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`. This was so we can use `a` to refer to the sample to generate the product with `(add 1 a)`.
+The face value of `.a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`. This was so we can use `.a` to refer to the sample to generate the product with `(add 1 a)`.
 
 #### The Context
 
@@ -595,7 +595,7 @@ It is possible to modify the context of a gate when you make a function call; or
 10
 ```
 
-Now let's write a gate called "ten" that adds `b` to the input value:
+Now let's write a gate called "ten" that adds `.b` to the input value:
 
 ```hoon
 > =ten |=(a=@ (add a b))
@@ -610,7 +610,7 @@ Now let's write a gate called "ten" that adds `b` to the input value:
 35
 ```
 
-We can unbind `b` from the Dojo subject, and `ten` works just as well because it's using a copy of `b` stored its context:
+We can unbind `b` from the Dojo subject, and `.ten` works just as well because it's using a copy of `.b` stored its context:
 
 ```hoon
 > =b
@@ -625,7 +625,7 @@ We can unbind `b` from the Dojo subject, and `ten` works just as well because it
 10
 ```
 
-We can use `ten(b 25)` to produce a variant of `ten`. Calling this mutant version of ten causes a different value to be returned than we'd get with a normal `ten` call:
+We can use `ten(b 25)` to produce a variant of `.ten`. Calling this mutant version of ten causes a different value to be returned than we'd get with a normal `.ten` call:
 
 ```hoon
 > (ten(b 25) 10)
@@ -858,15 +858,15 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
     $(n (dec n), t (mul t n))
     ```
 
-    The above code should look familiar. We are still building a gate that takes one argument a `@ud` unsigned decimal integer `n`. The `|-` here is used to create a new gate with one [arm](../../glossary/arm.md) `$` and immediately call it. As before, think of `|-` as the recursion point.
+    The above code should look familiar. We are still building a gate that takes one argument a `@ud` unsigned decimal integer `.n`. The `|-` here is used to create a new gate with one [arm](../../glossary/arm.md) `$` and immediately call it. As before, think of `|-` as the recursion point.
 
-    We then evaluate `n` to see if it is 1. If it is, we return the value of `t`. In case that `n` is anything other than 1, we perform our recursion:
+    We then evaluate `.n` to see if it is 1. If it is, we return the value of `.t`. In case that `.n` is anything other than 1, we perform our recursion:
 
     ```hoon
     $(n (dec n), t (mul t n))
     ```
 
-    All we are doing here is recursing our new gate and modifying the values of `n` and `t`. `t` is used as an accumulator variable that we use to keep a running total for the factorial computation.
+    All we are doing here is recursing our new gate and modifying the values of `.n` and `.t`. `.t` is used as an accumulator variable that we use to keep a running total for the factorial computation.
 
     Let's use more of our pseudo-Hoon to illustrate how the stack is working in this example for the factorial of 5.
 
@@ -880,7 +880,7 @@ But the Hoon compiler, like most compilers, is smart enough to notice when the l
     120
     ```
 
-    We simply multiply `t` and `n` to produce the new value of `t`, and then decrement `n` before repeating. Since this `$` call is the final and solitary thing that is run in the default case and since we are doing all computation before the call, this version is properly tail-recursive. We don't need to do anything to the result of the recursion except recurse it again. That means that each iteration can be replaced instead of held in memory.
+    We simply multiply `.t` and `.n` to produce the new value of `.t`, and then decrement `.n` before repeating. Since this `$` call is the final and solitary thing that is run in the default case and since we are doing all computation before the call, this version is properly tail-recursive. We don't need to do anything to the result of the recursion except recurse it again. That means that each iteration can be replaced instead of held in memory.
 
 #### Tutorial: The Ackermann Function
 
@@ -916,11 +916,11 @@ $$
 
     There are three cases to consider:
 
-    1. If `m` is zero, return the increment of `n`.
-    2. If `n` is zero, decrement `m`, set `n` to 1 and recurse.
-    3. Else, decrement `m` and set `n` to be the value of the Ackermann function with `n` and the decrement of `n` as arguments.
+    1. If `.m` is zero, return the increment of `.n`.
+    2. If `.n` is zero, decrement `.m`, set `.n` to 1 and recurse.
+    3. Else, decrement `.m` and set `.n` to be the value of the Ackermann function with `.n` and the decrement of `.n` as arguments.
 
-The Ackermann function is not terribly useful in and of itself, but it has an interesting history in mathematics. When running this function the value grows rapidly even for very small input. The value of computing this where `m` is `4` and `n` is `2` is an integer with 19,729 digits.
+The Ackermann function is not terribly useful in and of itself, but it has an interesting history in mathematics. When running this function the value grows rapidly even for very small input. The value of computing this where `.m` is `4` and `.n` is `2` is an integer with 19,729 digits.
 
 - Calculate some of the $$m$$/$$n$$ pairs given in [the table](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values).
 

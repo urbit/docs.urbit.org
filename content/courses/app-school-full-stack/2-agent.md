@@ -82,7 +82,7 @@ The last arm in our state definition core is `+unique-time`. Since we'll use `no
 ::
 ```
 
-Here we setup our agent core and define the three lifecycle arms. Since we only have a single state version at present, these are very simple functions. You'll notice in our `+*` arm, along with the usual `this` and `def`, we've also setup the `agentio` library we imported, giving it the bowl and an alias of `io`.
+Here we setup our agent core and define the three lifecycle arms. Since we only have a single state version at present, these are very simple functions. You'll notice in our `+*` arm, along with the usual `.this` and `.def`, we've also setup the `agentio` library we imported, giving it the bowl and an alias of `.io`.
 
 ## Pokes {#pokes}
 

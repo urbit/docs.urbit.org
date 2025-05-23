@@ -56,7 +56,7 @@ Another use case for the `..arm` syntax is when there is a core in the subject w
 
 #### Tutorial: The Core Structure of `hoon.hoon`
 
-Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../language/hoon/reference/rune/tis.md#tisgar) to build up larger structures. `=>  p=hoon  q=hoon` yields the product of `q` with the product of `p` taken as the subject; i.e. it composes Hoon statements, like [cores](../../glossary/core.md).
+Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../language/hoon/reference/rune/tis.md#tisgar) to build up larger structures. `=>  p=hoon  q=hoon` yields the product of `.q` with the product of `.p` taken as the subject; i.e. it composes Hoon statements, like [cores](../../glossary/core.md).
 
 We use this to set the context of cores. Recall that the [payload](../../glossary/payload.md) of a [gate](../../glossary/gate.md) is a cell of `[sample context]`. For example:
 
@@ -67,7 +67,7 @@ We use this to set the context of cores. Recall that the [payload](../../glossar
 [0 1 2]
 ```
 
-Here we have created a gate with `[1 2]` as its context that takes in an `@` and returns `15`. `+3:foo` shows the payload of the core to be `[0 [1 2]]`. Here `0` is the default value of `@` and is the sample, while `[1 2]` is the context that was given to `foo`.
+Here we have created a gate with `[1 2]` as its context that takes in an `@` and returns `15`. `+3:foo` shows the payload of the core to be `[0 [1 2]]`. Here `0` is the default value of `@` and is the sample, while `[1 2]` is the context that was given to `.foo`.
 
 `=>` [tisgar](../../language/hoon/reference/rune/tis.md#tisgar) (and its reversed version `=<` [tisgal](../../language/hoon/reference/rune/tis.md#tisgal)) are used extensively to put cores into the context of other cores.
 
@@ -304,7 +304,7 @@ In the above code chunk, we're creating a [cell](../../glossary/cell.md). The he
 
 In this code above, we're going to compose two runes using `=<`, which has inverted arguments. We use this rune to keep the heaviest twig to the bottom of the code.
 
-The `=~` [tissig](../../language/hoon/reference/rune/tis.md#tissig) rune composes multiple expressions together; we use it here to make the code more readable. We take `new-account` and use that as the subject for the call to `+deposit`. `+deposit` and `+withdraw` both produce a new version of the [door](../../glossary/door.md) that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `balance`, which is the account balance contained in the [core](../../glossary/core.md) that we examine below.
+The `=~` [tissig](../../language/hoon/reference/rune/tis.md#tissig) rune composes multiple expressions together; we use it here to make the code more readable. We take `.new-account` and use that as the subject for the call to `+deposit`. `+deposit` and `+withdraw` both produce a new version of the [door](../../glossary/door.md) that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `.balance`, which is the account balance contained in the [core](../../glossary/core.md) that we examine below.
 
 ```hoon
 |%
@@ -320,7 +320,7 @@ The `=~` [tissig](../../language/hoon/reference/rune/tis.md#tissig) rune compose
 --
 ```
 
-We've chosen here to wrap our [door](../../glossary/door.md) in its own core to emulate the style of programming that is used when creating libraries. `+new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two [arms](../../glossary/arm.md) `+deposit` and `+withdraw`.
+We've chosen here to wrap our [door](../../glossary/door.md) in its own core to emulate the style of programming that is used when creating libraries. `+new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `.balance` and two [arms](../../glossary/arm.md) `+deposit` and `+withdraw`.
 
 Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud` argument. Each of these gates has a similar bit of code inside:
 
@@ -328,9 +328,9 @@ Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud
 +>.$(balance (add balance amount))
 ```
 
-`+>` is a kind of wing syntax, lark notation. This particular wing construction looks for the tail of the tail (the third element) in `$` buc, the [subject](../../glossary/subject.md) of the gate we are in. The `+withdraw` and `+deposit` arms create gates with the entire `new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `balance` to be the result of adding `balance` and `amount` and produce the door as the result. `+withdraw` functions the same way only doing subtraction instead of addition.
+`+>` is a kind of wing syntax, lark notation. This particular wing construction looks for the tail of the tail (the third element) in `$` buc, the [subject](../../glossary/subject.md) of the gate we are in. The `+withdraw` and `+deposit` arms create gates with the entire `.new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `.balance` to be the result of adding `.balance` and `.amount` and produce the door as the result. `+withdraw` functions the same way only doing subtraction instead of addition.
 
-It's important to notice that the sample, `balance`, is stored as part of the [door](../../glossary/door.md) rather than existing outside of it.
+It's important to notice that the sample, `.balance`, is stored as part of the [door](../../glossary/door.md) rather than existing outside of it.
 
 ### Exercise: Bank Account {#exercise-bank-account}
 
@@ -371,7 +371,7 @@ The basic RNG core in Hoon is [`+og`](../../language/hoon/reference/stdlib/3d.md
 [60 60]
 ```
 
-Since the `rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `+rads:og`'s return [cell](../../glossary/cell.md)) to the subject using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket), e.g.,
+Since the `.rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `+rads:og`'s return [cell](../../glossary/cell.md)) to the subject using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket), e.g.,
 
 ```hoon
 > =/  rng  ~(. og eny)

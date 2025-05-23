@@ -273,23 +273,23 @@ What is `+rs`?  It's a door with 21 arms:
 <21|ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>
 ```
 
-The [battery](../../glossary/battery.md) of this [core](../../glossary/core.md), pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `+add`; it's a different `+add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [add:rs](../../language/hoon/reference/stdlib/3b.md#addrs) instead of just `+add` in a function call, (1) the `rs` door is produced, and then (2) the name search for `+add` resolves to the special `+add` [arm](../../glossary/arm.md) in `rs`. This produces the [gate](../../glossary/gate.md) for adding `@rs` atoms:
+The [battery](../../glossary/battery.md) of this [core](../../glossary/core.md), pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `+add`; it's a different `+add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [add:rs](../../language/hoon/reference/stdlib/3b.md#addrs) instead of just `+add` in a function call, (1) the `.rs` door is produced, and then (2) the name search for `+add` resolves to the special `+add` [arm](../../glossary/arm.md) in `.rs`. This produces the [gate](../../glossary/gate.md) for adding `@rs` atoms:
 
 ```hoon
 > add:rs
 <1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
-What about the sample of the `rs` [door](../../glossary/door.md)?  The pretty-printer shows `r=?(%d %n %u %z)`. The [rs](../../language/hoon/reference/stdlib/3b.md#rs) sample can take one of four values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four options for how to round `@rs` numbers:
+What about the sample of the `.rs` [door](../../glossary/door.md)?  The pretty-printer shows `r=?(%d %n %u %z)`. The [rs](../../language/hoon/reference/stdlib/3b.md#rs) sample can take one of four values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four options for how to round `@rs` numbers:
 
 - `%d` rounds down
 - `%n` rounds to the nearest value
 - `%u` rounds up
 - `%z` rounds to zero
 
-The default value is `%z`, round to zero. When we invoke `+add:rs` to call the addition function, there is no way to modify the `rs` door sample, so the default rounding option is used. How do we change it? We use the `~( )` notation: `~(arm door arg)`.
+The default value is `%z`, round to zero. When we invoke `+add:rs` to call the addition function, there is no way to modify the `.rs` door sample, so the default rounding option is used. How do we change it? We use the `~( )` notation: `~(arm door arg)`.
 
-Let's evaluate the `+add` [arm](../../glossary/arm.md) of `rs`, also modifying the door [sample](../../glossary/sample.md) to `%u` for 'round up':
+Let's evaluate the `+add` [arm](../../glossary/arm.md) of `.rs`, also modifying the door [sample](../../glossary/sample.md) to `%u` for 'round up':
 
 ```hoon
 > ~(add rs %u)
@@ -303,7 +303,7 @@ This is the gate produced by `+add`, and you can see that its sample is a pair o
 r=%u
 ```
 
-It did indeed change. We also see that the door [sample](../../glossary/sample.md) uses the [face](../../glossary/face.md) `r`, so let's use that instead of the unwieldy `+6.+7`:
+It did indeed change. We also see that the door [sample](../../glossary/sample.md) uses the [face](../../glossary/face.md) `.r`, so let's use that instead of the unwieldy `+6.+7`:
 
 ```hoon
 > r:~(add rs %u)

@@ -239,7 +239,7 @@ nest-fail
 -have.@ud
 ```
 
-If you try to call this gate with the wrong kind of argument, you get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail). If the call succeeds, then the argument takes on the type of the [sample](../../glossary/sample.md) definition: `[a=@ b=@]`. Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`. In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of [aura](../../glossary/aura.md).
+If you try to call this gate with the wrong kind of argument, you get a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail). If the call succeeds, then the argument takes on the type of the [sample](../../glossary/sample.md) definition: `[a=@ b=@]`. Accordingly, the inferred type of `.a` is `@`, and the inferred type of `.b` is `@`. In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of [aura](../../glossary/aura.md).
 
 ### Inferring Type (`?` wut Runes) {#inferring-type-wut-runes}
 
@@ -373,9 +373,9 @@ In both cases, `.b` is defined initially as a generic [noun](../../glossary/noun
 
 ###### `mint-vain`
 
-Expressions of the form `?:(?=(a b) c d)` should only be used when the previously inferred type of `b` isn't specific enough to determine whether it nests under `a`. This kind of expression is only to be used when `?=` can reveal new type information about `b`, not to confirm information Hoon already has.
+Expressions of the form `?:(?=(a b) c d)` should only be used when the previously inferred type of `.b` isn't specific enough to determine whether it nests under `.a`. This kind of expression is only to be used when `?=` can reveal new type information about `.b`, not to confirm information Hoon already has.
 
-For example, if you have a wing expression (e.g., `b`) that is already known to be an atom, `@`, and you use `?=(@ b)` to test whether `b` is an atom, you'll get a [mint-vain](../../language/hoon/reference/hoon-errors.md#mint-vain-and-mint-lost) crash. The same thing happens if `b` is initially defined to be a [cell](../../glossary/cell.md) `^`:
+For example, if you have a wing expression (e.g., `.b`) that is already known to be an atom, `@`, and you use `?=(@ b)` to test whether `.b` is an atom, you'll get a [mint-vain](../../language/hoon/reference/hoon-errors.md#mint-vain-and-mint-lost) crash. The same thing happens if `.b` is initially defined to be a [cell](../../glossary/cell.md) `^`:
 
 ```hoon
 > =/(b=@ 12 ?:(?=(@ b) [& b] [| b]))
@@ -385,7 +385,7 @@ mint-vain
 mint-vain
 ```
 
-In the first case it's already known that `b` is an atom. In the second case it's already known that `b` isn't an atom. Either way, the check is superfluous and thus one of the `?:` wutcol branches will never be taken. The `mint-vain` crash indicates that it's provably the case one of the branches will never be taken.
+In the first case it's already known that `.b` is an atom. In the second case it's already known that `.b` isn't an atom. Either way, the check is superfluous and thus one of the `?:` wutcol branches will never be taken. The `mint-vain` crash indicates that it's provably the case one of the branches will never be taken.
 
 #### `?@` wutpat Atom Match Tests
 
@@ -399,7 +399,7 @@ The `?@` [wutpat](../../language/hoon/reference/rune/wut.md#wutpat) rune takes t
 %cell
 ```
 
-If the second `?@` [wutpat](../../language/hoon/reference/rune/wut.md#wutpat) subexpression is evaluated, Hoon correctly infers that `b` is an [atom](../../glossary/atom.md). if the third subexpression is evaluated, Hoon correctly infers that `b` is a [cell](../../glossary/cell.md).
+If the second `?@` [wutpat](../../language/hoon/reference/rune/wut.md#wutpat) subexpression is evaluated, Hoon correctly infers that `.b` is an [atom](../../glossary/atom.md). if the third subexpression is evaluated, Hoon correctly infers that `.b` is a [cell](../../glossary/cell.md).
 
 ```hoon
 > =/(b=* 12 ?@(b [%atom -:!>(b)] [%cell -:!>(b)]))
@@ -439,7 +439,7 @@ The `?^` [wutket](../../language/hoon/reference/rune/wut.md#wutket) rune is just
 %cell
 ```
 
-Again, if the second subexpression is evaluated Hoon infers that `b` is a cell; if the third, Hoon infers that `b` is an atom. If one of the conditional branches is provably never evaluated, the expression crashes with a [mint-vain](../../language/hoon/reference/hoon-errors.md#mint-vain-and-mint-lost):
+Again, if the second subexpression is evaluated Hoon infers that `.b` is a cell; if the third, Hoon infers that `.b` is an atom. If one of the conditional branches is provably never evaluated, the expression crashes with a [mint-vain](../../language/hoon/reference/hoon-errors.md#mint-vain-and-mint-lost):
 
 ```hoon
 > =/(b=@ 12 ?^(b %cell %atom))
@@ -474,9 +474,9 @@ Save this as `/gen/leafcount.hoon` in your fakeship's [pier](../../glossary/pier
 6
 ```
 
-This program is pretty simple. If the noun `a` is an atom, then it's a tree of one leaf; return `1`. Otherwise, the number of leaves in `a` is the sum of the leaves in the head, `-.a`, and the tail, `+.a`.
+This program is pretty simple. If the noun `.a` is an atom, then it's a tree of one leaf; return `1`. Otherwise, the number of leaves in `.a` is the sum of the leaves in the head, `-.a`, and the tail, `+.a`.
 
-We have been careful to use `-.a` and `+.a` only on a branch for which `a` is proved to be a [cell](../../glossary/cell.md) -- then it's safe to treat `a` as having a head and a tail.
+We have been careful to use `-.a` and `+.a` only on a branch for which `.a` is proved to be a [cell](../../glossary/cell.md) -- then it's safe to treat `.a` as having a head and a tail.
 
 #### Tutorial: Cell Counting
 
@@ -516,19 +516,19 @@ Save this as `/gen/cellcount.hoon` and run it from the Dojo:
 5
 ```
 
-This code is a little more tricky. The basic idea, however, is simple. We have a counter value, `c`, whose initial value is `0` (`=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) pins the [bunt](../../glossary/bunt.md) of the value with the given [face](../../glossary/face.md)). We trace through the noun `a`, adding `1` to `c` every time we come across a cell. For any part of the noun that is just an atom, `c` is returned unchanged.
+This code is a little more tricky. The basic idea, however, is simple. We have a counter value, `.c`, whose initial value is `0` (`=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) pins the [bunt](../../glossary/bunt.md) of the value with the given [face](../../glossary/face.md)). We trace through the noun `.a`, adding `1` to `.c` every time we come across a cell. For any part of the noun that is just an atom, `.c` is returned unchanged.
 
-What makes this program is little harder to follow is that it recurses within a recursion call. The first recursion expression on line 6 makes changes to two face values: `c`, the counter, and `a`, the input noun. The new value for `c` defined in the line `$(c +(c), a -.a)` is another recursion call (this time in irregular syntax). The new value for `c` is to be the result of running the same function on the the head of `a`, `-.a`, and with `1` added to `c`. We add `1` because we know that `a` must be a [cell](../../glossary/cell.md). Otherwise, we're asking for the number of cells in the rest of `-.a`.
+What makes this program is little harder to follow is that it recurses within a recursion call. The first recursion expression on line 6 makes changes to two face values: `.c`, the counter, and `.a`, the input noun. The new value for `.c` defined in the line `$(c +(c), a -.a)` is another recursion call (this time in irregular syntax). The new value for `.c` is to be the result of running the same function on the the head of `.a`, `-.a`, and with `1` added to `.c`. We add `1` because we know that `.a` must be a [cell](../../glossary/cell.md). Otherwise, we're asking for the number of cells in the rest of `-.a`.
 
-Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`. We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
+Once that new value for `.c` is computed from the head of `.a`, we're ready to check the tail of `.a`, `+.a`. We've already got everything we want from `-.a`, so we throw that away and replace `.a` with `+.a`.
 
 ### Lists {#lists}
 
 You learned about lists earlier in the chapter, but we left out a little bit of information about the way Hoon understands [list](../../glossary/list.md) types.
 
-A non-null list is a cell. If `b` is a non-null list then the head of `b` is the first item of `b` _with an `i` face on it_. The tail of `b` is the rest of the list. The 'rest of the list' is itself another list _with a `t` [face](../../glossary/face.md) on it_. We can (and should) use these `i` and `t` faces in list functions.
+A non-null list is a cell. If `.b` is a non-null list then the head of `.b` is the first item of `.b` _with an `i` face on it_. The tail of `.b` is the rest of the list. The 'rest of the list' is itself another list _with a `t` [face](../../glossary/face.md) on it_. We can (and should) use these `i` and `t` faces in list functions.
 
-To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`. Let's construct this in stages:
+To illustrate: let's say that `.b` is the list of the atoms `11`, `22`, and `33`. Let's construct this in stages:
 
 ```hoon
 [i=11 t=[rest-of-list-b]]
@@ -542,7 +542,7 @@ To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.
 
 #### Tutorial: List Spanning Values
 
-Here's a program that takes atoms `a` and `b` and returns a list of all atoms from `a` to `b`:
+Here's a program that takes atoms `.a` and `.b` and returns a list of all atoms from `.a` to `.b`:
 
 ```hoon
 |=  [a=@ b=@]
@@ -552,7 +552,7 @@ Here's a program that takes atoms `a` and `b` and returns a list of all atoms fr
 [i=a t=$(a +(a))]
 ```
 
-This program is very simple. It takes two `@` as input, `a` and `b`, and returns a `(list @)`, i.e., a list of `@`. If `a` is greater than `b` the [list](../../glossary/list.md) is finished: return the null list `~`. Otherwise, return a non-null list: a pair in which the head is `a` with an `i` [face](../../glossary/face.md) on it, and in which the tail is another list with the `t` face on it. This embedded list is the product of a recursion call: add `1` to `a` and run the function again.
+This program is very simple. It takes two `@` as input, `.a` and `.b`, and returns a `(list @)`, i.e., a list of `@`. If `.a` is greater than `.b` the [list](../../glossary/list.md) is finished: return the null list `~`. Otherwise, return a non-null list: a pair in which the head is `.a` with an `i` [face](../../glossary/face.md) on it, and in which the tail is another list with the `t` face on it. This embedded list is the product of a recursion call: add `1` to `.a` and run the function again.
 
 Save this code as `/gen/gulf.hoon` and run it from the Dojo:
 
@@ -603,7 +603,7 @@ The `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) rune is a lo
 %not-null
 ```
 
-The inferred type of `b` must not already be known to be null or non-null; otherwise, the expression will crash with a [mint-vain](../../language/hoon/reference/hoon-errors.md#mint-vain-and-mint-lost):
+The inferred type of `.b` must not already be known to be null or non-null; otherwise, the expression will crash with a [mint-vain](../../language/hoon/reference/hoon-errors.md#mint-vain-and-mint-lost):
 
 ```hoon
 > =/(b=~ ~ ?~(b %null %not-null))
@@ -616,7 +616,7 @@ mint-vain
 mint-vain
 ```
 
-Hoon will infer that `b` either is or isn't null based on which `?~` branch is evaluated after the test.
+Hoon will infer that `.b` either is or isn't null based on which `?~` branch is evaluated after the test.
 
 ##### Using `?~` wutsig With Lists
 
@@ -631,9 +631,9 @@ Hoon will infer that `b` either is or isn't null based on which `?~` branch is e
 $(c +(c), a t.a)
 ```
 
-This function takes a list of `@` and returns an `@`. It uses `c` as a counter value, initially set at `0` on line 2. If `a` is `~` (i.e., a null list) then the computation is finished; return `c`. Otherwise `a` must be a non-null [list](../../glossary/list.md), in which case there is a recursion to the `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) on line 3, but with `c` incremented, and with the head of the list `a` thrown away.
+This function takes a list of `@` and returns an `@`. It uses `.c` as a counter value, initially set at `0` on line 2. If `.a` is `~` (i.e., a null list) then the computation is finished; return `.c`. Otherwise `.a` must be a non-null [list](../../glossary/list.md), in which case there is a recursion to the `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) on line 3, but with `.c` incremented, and with the head of the list `.a` thrown away.
 
-It's important to note that if `a` is a list, you can only use `i.a` and `t.a` after Hoon has inferred that `a` is non-null. A null list has no `i` or `t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `a` is non-null you'll get a `find-fork` crash.
+It's important to note that if `.a` is a list, you can only use `i.a` and `t.a` after Hoon has inferred that `.a` is non-null. A null list has no `i` or `t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `.a` is non-null you'll get a `find-fork` crash.
 
 A non-null `+list` is called a `+lest`.
 
@@ -663,9 +663,9 @@ Here's a program that takes a noun and returns a [list](../../glossary/list.md) 
 $(lis $(a +.a), a -.a)
 ```
 
-The input noun is `a`. The list of atoms to be output is `lis`, which is given an initial value of `~`. If `a` is just an atom, return a non-null list whose head is `a` and whose tail is `lis`. Otherwise, the somewhat complicated recursion `$(lis $(a +.a), a -.a)` is evaluated, in effect looping back to the `|-` with modifications made to `lis` and `a`.
+The input noun is `.a`. The list of atoms to be output is `.lis`, which is given an initial value of `~`. If `.a` is just an atom, return a non-null list whose head is `.a` and whose tail is `.lis`. Otherwise, the somewhat complicated recursion `$(lis $(a +.a), a -.a)` is evaluated, in effect looping back to the `|-` with modifications made to `.lis` and `.a`.
 
-The modification to `lis` in line 6 is to `$(a +.a)`. The latter is a recursion to `|-` but with `a` replaced by its tail. This evaluates to the list of `@` in the tail of `a`. So `lis` becomes the list of atoms in the tail of `a`, and `a` becomes the head of `a`, `-.a`.
+The modification to `.lis` in line 6 is to `$(a +.a)`. The latter is a recursion to `|-` but with `.a` replaced by its tail. This evaluates to the list of `@` in the tail of `.a`. So `.lis` becomes the list of atoms in the tail of `.a`, and `.a` becomes the head of `.a`, `-.a`.
 
 Save the above code as `/gen/listleaf.hoon` and run it from the Dojo:
 
@@ -779,7 +779,7 @@ As you can see, an atom with one aura can be converted to another aura. For a co
 
 This is what we mean when we call auras 'soft' types. The above examples show that the programmer can get around the type system for auras by casting up to `@` and then back down to the specific aura, say `@ub`; or by casting with `` `@ub` `` for short.
 
-**Note**:  there is currently a type system issue that causes some of these functions to fail when passed a list `b` after some type inference has been performed on `b`. For an illustration of the bug, let's set `b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
+**Note**:  there is currently a type system issue that causes some of these functions to fail when passed a list `.b` after some type inference has been performed on `.b`. For an illustration of the bug, let's set `.b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
 
 ```hoon
 > =b `(list @)`~[11 22 33 44]
@@ -788,7 +788,7 @@ This is what we mean when we call auras 'soft' types. The above examples show th
 ~[11 22 33 44]
 ```
 
-Now let's use `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) to prove that `b` isn't null, and then try to snag it:
+Now let's use `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) to prove that `.b` isn't null, and then try to snag it:
 
 ```hoon
 > ?~(b ~ (snag 0 b))
@@ -797,7 +797,7 @@ nest-fail
 
 The problem is that [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) is expecting a raw list, not a list that is known to be non-null.
 
-You can cast `b` back to `(list)` to work around this:
+You can cast `.b` back to `(list)` to work around this:
 
 ```hoon
 > ?~(b ~ (snag 0 `(list)`b))

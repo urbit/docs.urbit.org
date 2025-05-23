@@ -158,7 +158,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-`+make-deck` assembles a deck of 52 cards by cycling through every possible suit and number and combining them. It uses `+num-to-suit` and a couple of loops to go through the counters. It has an interesting `^$` loop skip where when `j` is greater than 14 it jumps instead to the outer loop, incrementing `i`.
+`+make-deck` assembles a deck of 52 cards by cycling through every possible suit and number and combining them. It uses `+num-to-suit` and a couple of loops to go through the counters. It has an interesting `^$` loop skip where when `.j` is greater than 14 it jumps instead to the outer loop, incrementing `.i`.
 
 `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot) may be an unfamiliar rune; it is simply the inverted version of `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol), so the first branch is actually the if-false branch and the second is the if-true branch. This is done to keep the “heaviest” branch at the bottom, which makes for more idiomatic and readable Hoon code.
 
@@ -170,7 +170,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   (slag n d)
 ```
 
-`+draw` takes two arguments: `n`, an unsigned integer, and `d`, a `$deck`. The gate will produce a cell of two `$deck`s using [`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) and [`+slag`](../../language/hoon/reference/stdlib/2b.md#slag). [`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `n` elements from a [list](../../glossary/list.md), while [`+slag`](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `n`th element. So we use `+scag` to produce the drawn hand of `n` cards in the head of the cell as `.hand`, and `+slag` to produce the remaining deck in the tail of the cell as `.rest`.
+`+draw` takes two arguments: `.n`, an unsigned integer, and `.d`, a `$deck`. The gate will produce a cell of two `$deck`s using [`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) and [`+slag`](../../language/hoon/reference/stdlib/2b.md#slag). [`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) is a standard library [gate](../../glossary/gate.md) produces the first `.n` elements from a [list](../../glossary/list.md), while [`+slag`](../../language/hoon/reference/stdlib/2b.md#slag) is a standard library gate that produces the remaining elements of a list starting after the `.n`th element. So we use `+scag` to produce the drawn hand of `.n` cards in the head of the cell as `.hand`, and `+slag` to produce the remaining deck in the tail of the cell as `.rest`.
 
 ```hoon
 ++  shuffle-deck

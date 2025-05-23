@@ -73,7 +73,7 @@ An agent can send pokes to other agents by producing [`%poke` `$card`s](5-cards.
 ==
 ```
 
-The [colcab](../../language/hoon/reference/rune/col.md#_-colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`this`), so it makes it more readable.
+The [colcab](../../language/hoon/reference/rune/col.md#_-colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`.this`), so it makes it more readable.
 
 ### Receiving the `%poke-ack` {#receiving-the-poke-ack}
 
@@ -216,7 +216,7 @@ This is a very simple agent that just has `val`, a number, in its state. It will
   ==
 ```
 
-It only expects pokes with a `%noun` mark, and passes all others to `on-poke:def`, which just crashes. For `%noun` pokes, it expects to receive either `%inc` or `%dec` in the `$vase`. If it's `%inc`, it produces a new `this` with `val` incremented. If it's `%dec`, it produces `this` with `val` decremented, or crashes if `val` is already zero.
+It only expects pokes with a `%noun` mark, and passes all others to `on-poke:def`, which just crashes. For `%noun` pokes, it expects to receive either `%inc` or `%dec` in the `$vase`. If it's `%inc`, it produces a new `.this` with `.val` incremented. If it's `%dec`, it produces `.this` with `.val` decremented, or crashes if `.val` is already zero.
 
 Let's try it out. Save the agent above as `/app/pokeme.hoon` in the `%base` desk and `|commit %base`. Then, start it up with `|rein %base [& %pokeme]`. We can check its initial state with `+dbug`:
 
@@ -449,7 +449,7 @@ Let's try decrementing `%pokeme` so val is 1, and then try a `%dec` via `%pokeit
 >=
 ```
 
-The `+on-agent` arm of `%pokeit` has received one ack and one nack. The first took `val` to zero, and the second crashed trying to decrement below zero.
+The `+on-agent` arm of `%pokeit` has received one ack and one nack. The first took `.val` to zero, and the second crashed trying to decrement below zero.
 
 ## Summary {#summary}
 

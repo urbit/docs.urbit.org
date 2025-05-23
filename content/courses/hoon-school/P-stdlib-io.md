@@ -150,7 +150,7 @@ This generator requires a path argument in its sample and optionally accepts a [
 =+  lon=.^(arch (cat 3 vane %y) arg)
 ```
 
-We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a "peek" or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md). Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc. In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup. The type of this lookup is `$arch`, and the location of the file or directory is given by `arg` from the sample.
+We saw `.^` [dotket](../../language/hoon/reference/rune/dot.md#dotket) for the first time in [the previous module](O-subject.md), where we learned that it performs a "peek" or [scry](../../glossary/scry.md) into the state of an Arvo [vane](../../glossary/vane.md). Most of the time this functionality is used to ask `%c` [Clay](../../glossary/clay.md) or `%g` [Gall](../../glossary/gall.md) for information about a path, [desk](../../glossary/desk.md), [agent](../../glossary/agent.md), etc. In this case, `(cat 3 %c %y)` is a fancy way of collocating the two `@tas` terms into `%cy`, a Clay file or directory lookup. The type of this lookup is `$arch`, and the location of the file or directory is given by `.arg` from the sample.
 
 ```hoon
 tang+[?~(dir.lon leaf+"~" (show-dir vane arg dir.lon))]~

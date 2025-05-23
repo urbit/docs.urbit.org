@@ -431,7 +431,7 @@ To insert one key-value pair at a time, we use [put](../../language/hoon/referen
 =colors (~(put by colors) [%black 0x0])
 ```
 
-Note the pattern here: there is a [`+put`](../../language/hoon/reference/stdlib/2i.md#putby) arm of [`+by`](../../language/hoon/reference/stdlib/2i.md#by) which builds a gate to modify `colors` by inserting a value.
+Note the pattern here: there is a [`+put`](../../language/hoon/reference/stdlib/2i.md#putby) arm of [`+by`](../../language/hoon/reference/stdlib/2i.md#by) which builds a gate to modify `.colors` by inserting a value.
 
 What happens if we try to add something that doesn't match the type?
 
@@ -769,7 +769,7 @@ The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) in the first
   (weld q p)
 ```
 
-The `+rotation` arm takes takes a specified number of characters off of a [tape](../../glossary/tape.md) and puts them on the end of the tape. We're going to use this to create our shifted alphabet, based on the number of `steps` given as an argument to our gate.
+The `+rotation` arm takes takes a specified number of characters off of a [tape](../../glossary/tape.md) and puts them on the end of the tape. We're going to use this to create our shifted alphabet, based on the number of `.steps` given as an argument to our gate.
 
 `|= [my-alphabet=tape my-steps=@ud]` creates a gate that takes two arguments: `.my-alphabet`, a `$tape`, and `.my-steps`, a `@ud`.
 

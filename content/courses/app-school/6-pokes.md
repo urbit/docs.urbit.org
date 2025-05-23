@@ -15,7 +15,7 @@ Whenever something tries to poke your agent, Gall calls your agent's `+on-poke` 
 
 The sample of the gate is usually specified as a cell of `$mark` and `$vase` rather than just `$cage`, simply because it's easier to work with.
 
-Typically, you'd first test the `$mark` with something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression, passing unexpected `$mark`s to `default-agent`, which just crashes. We'll look at custom `$mark`s in a subsequent lesson, but the basic pattern looks like:
+Typically, you'd first test the `$mark` with something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression, passing unexpected `$mark`s to default-agent, which just crashes. We'll look at custom `$mark`s in a subsequent lesson, but the basic pattern looks like:
 
 ```hoon
 ?+  mark  (on-poke:def mark vase)
@@ -40,7 +40,7 @@ Your agent will then produce a list of `$card`s to be sent off and a new, modifi
 
 As discussed in the previous lesson, Gall will automatically send a `%poke-ack` `$gift` back to wherever the poke came from. The `%poke-ack` will be a nack if your agent crashed while processing the poke, and an ack otherwise. If it's a nack, the `$tang` in the `%poke-ack` will contain a stack trace of the crash.
 
-As a result, you do not need to explicitly send a `%poke-ack`. Instead, you would design your agent to handle only what you expect and crash in all other cases. You can crash by passing the `$cage` to `default-agent`, or just with a `!!`. In the latter case, if you want to add an error message to the stack trace, you can do so like:
+As a result, you do not need to explicitly send a `%poke-ack`. Instead, you would design your agent to handle only what you expect and crash in all other cases. You can crash by passing the `$cage` to default-agent, or just with a `!!`. In the latter case, if you want to add an error message to the stack trace, you can do so like:
 
 ```hoon
 ~|  "some error message"
@@ -99,7 +99,7 @@ A `sign:agent:gall` (henceforth just `$sign`) is defined in `lull.hoon` as:
 
 It's basically the same as a [`$gift`](5-cards.md#give), but incoming instead of outgoing.
 
-The simplest way to handle a `%poke-ack` by passing it to `default-agent`'s `+on-agent` arm, which will just print an error message to the terminal if it's a nack, and otherwise do nothing. Sometimes you'll want your agent to do something different depending on whether the poke failed or succeeded (and therefore whether it's a nack or an ack).
+The simplest way to handle a `%poke-ack` by passing it to default-agent's `+on-agent` arm, which will just print an error message to the terminal if it's a nack, and otherwise do nothing. Sometimes you'll want your agent to do something different depending on whether the poke failed or succeeded (and therefore whether it's a nack or an ack).
 
 You should always route on wire before sign, never sign before wire. You might do something like:
 
@@ -463,6 +463,6 @@ The `+on-agent` arm of `%pokeit` has received one ack and one nack. The first to
 ## Exercises {#exercises}
 
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
-- Have a look at the `+on-agent` arm of `/lib/default-agent.hoon` to see how `default-agent` handles incoming `$sign`s.
+- Have a look at the `+on-agent` arm of `/lib/default-agent.hoon` to see how default-agent handles incoming `$sign`s.
 - Try modifying the `%pokeme` agent with another action of your choice (in addition to `%inc` and `%dec`).
 - Try modifying the `%pokeit` agent to send your new type of poke to `%pokeme`, and handle the `%poke-ack` it gets back.

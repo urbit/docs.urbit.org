@@ -119,7 +119,7 @@ The `$sign` will be of the following format:
 [%watch-ack p=(unit tang)]
 ```
 
-How you want to handle the `%watch-ack` really depends on the particular agent. In the simplest case, you can just pass it to the `+on-agent` arm of `default-agent`, which will just accept it and do nothing apart from printing the error in the `%watch-ack` `$tang` if it's a nack. You shouldn't have your agent crash on a `%watch-ack` - even if it's a nack your agent should process it successfully. If you wanted to apply some additional logic on receipt of the `%watch-ack`, you'd typically first test the `$wire`, then test whether it's a `%watch-ack`, then test whether it's an ack or a nack and do whatever's appropriate:
+How you want to handle the `%watch-ack` really depends on the particular agent. In the simplest case, you can just pass it to the `+on-agent` arm of default-agent, which will just accept it and do nothing apart from printing the error in the `%watch-ack` `$tang` if it's a nack. You shouldn't have your agent crash on a `%watch-ack` - even if it's a nack your agent should process it successfully. If you wanted to apply some additional logic on receipt of the `%watch-ack`, you'd typically first test the `$wire`, then test whether it's a `%watch-ack`, then test whether it's an ack or a nack and do whatever's appropriate:
 
 ```hoon
 ++  on-agent

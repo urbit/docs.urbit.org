@@ -9,7 +9,7 @@ Now that we have our agent's types defined and have thought through its behavior
 /+  default-agent, dbug, agentio
 ```
 
-We first import the `/sur/journal.hoon` file we previously created and expose its structures. We import the standard `default-agent` and `+dbug`, and also an additional library called `agentio`.
+We first import the `/sur/journal.hoon` file we previously created and expose its structures. We import the standard `/lib/default-agent.hoon` and `+dbug`, and also an additional library called `agentio`.
 
 Agentio contains a number of convenience functions to make common agent tasks simpler. For example, rather than writing out the full `$card`s when sending `%fact`s to subscribers, we can call `+fact` in `agentio` with the `$cage` and `$path`s and it will compose them for us. There are many more functions in `agentio` than we'll use here - you can have a look through the library in [`/base/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) to see what else it can do.
 
@@ -223,7 +223,7 @@ Here we have our `+on-peek` arm. The scry endpoints we've defined are divided in
 
 - `/x/updates/since/[since]` - Retrieve all `$update`s that have happened since the specified timestamp, if any. This is so our front-end (or another agent) can resynchronize its state in the event its subscription is interrupted, without having to fetch everything from scratch again.
 
-We don't use any of the other agent arms, so the remainder have all been passed to `default-agent` for handling:
+We don't use any of the other agent arms, so the remainder have all been passed to default-agent for handling:
 
 ```hoon
 ++  on-leave  on-leave:def

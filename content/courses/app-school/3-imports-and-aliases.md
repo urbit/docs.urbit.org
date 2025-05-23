@@ -4,18 +4,18 @@ In the last lesson we looked at the most basic aspects of a Gall agent's structu
 
 ## Useful libraries {#useful-libraries}
 
-There are a couple of libraries that you'll very likely use in every agent you write. These are [`default-agent`](#default-agent) and [`+dbug`](#dbug). In brief, `default-agent` provides simple default behaviours for each agent arm, and `+dbug` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
+There are a couple of libraries that you'll very likely use in every agent you write. These are [`/lib/default-agent.hoon`](#default-agent) and [`+dbug`](#dbug). In brief, `/lib/default-agent.hoon` provides simple default behaviours for each agent arm, and `+dbug` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
 
 Let's look at each in more detail:
 
-### `default-agent` {#default-agent}
+### `/lib/default-agent.hoon` {#default-agent}
 
-The `default-agent` library contains a basic agent with sane default behaviours for each arm. In some cases it just crashes and prints an error message to the terminal, and in others it succeeds but does nothing. It has two primary uses:
+The default-agent library contains a basic agent with sane default behaviours for each arm. In some cases it just crashes and prints an error message to the terminal, and in others it succeeds but does nothing. It has two primary uses:
 
-- For any agent arms you don't need, you can just have them call the matching function in `default-agent`, rather than having to manually handle events on those arms.
-- A common pattern in an agent is to switch on the input of an arm with [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) (`?+`) runes or maybe [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) (`?:`) runes. For any unexpected input, you can just pass it to the relevant arm of `default-agent` rather than handling it manually.
+- For any agent arms you don't need, you can just have them call the matching function in `/lib/default-agent.hoon`, rather than having to manually handle events on those arms.
+- A common pattern in an agent is to switch on the input of an arm with [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) (`?+`) runes or maybe [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) (`?:`) runes. For any unexpected input, you can just pass it to the relevant arm of default-agent rather than handling it manually.
 
-The `default-agent` library lives in `/lib/default-agent/hoon` of the `%base` desk, and you would typically include a copy in any new desk you created. It's imported at the beginning of an agent with the [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune.
+The default-agent library lives in `/lib/default-agent/hoon` of the `%base` desk, and you would typically include a copy in any new desk you created. It's imported at the beginning of an agent with the [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune.
 
 The library is a wet gate which takes two arguments: `agent` and `help`. The first is your agent core itself, and the second is a `?`. If `help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `help` as `%.n`.
 
@@ -78,7 +78,7 @@ Rather than having to return `..on-init` like we did in the last lesson, instead
 def  ~(. (default-agent this %.n) bowl)
 ```
 
-This sets up the `default-agent` library we [described above](#default-agent), so you can easily call its arms like `on-poke:def`, `on-agent:def`, etc.
+This sets up the default-agent library we [described above](#default-agent), so you can easily call its arms like `on-poke:def`, `on-agent:def`, etc.
 
 ## Additional cores {#additional-cores}
 
@@ -135,7 +135,7 @@ Inside our agent door, we've added an extra virtual arm and defined a couple def
     def   ~(. (default-agent this %.n) bowl)
 ```
 
-In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of `default-agent`, which we set up as a deferred expression named `.def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `.this` in the `+on-init` arm as an example - it makes things a bit simpler.
+In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of default-agent, which we set up as a deferred expression named `.def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `.this` in the `+on-init` arm as an example - it makes things a bit simpler.
 
 You can save the code above in `/app/skeleton.hoon` of your `%base` desk like before and `|commit %base` in the dojo. Additionally, you can start the agent so we can try out `+dbug`. To start it, run the following in the dojo:
 
@@ -175,11 +175,11 @@ We'll use `+dbug` more throughout the guide, but hopefully you should now have a
 The key takeaways are:
 
 - Libraries are imported with `/+`.
-- `default-agent` is a library that provides default behaviors for Gall agent arms.
+- `/lib/default-agent.hoon` is a library that provides default behaviors for Gall agent arms.
 - `+dbug` is a library that lets you inspect the state and `$bowl` of an agent from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](../../language/hoon/reference/rune/lus.md#lustar) (`+*`) rune.
 - `.this` is a conventional deferred expression name for the agent core itself.
-- `.def` is a conventional deferred expression name for accessing arms in the `default-agent` library.
+- `.def` is a conventional deferred expression name for accessing arms in the `/lib/default-agent.hoon` library.
 - Extra cores can be composed into the subject of the agent core. The composition is done implicitly by the build system. Typically we'd include one extra core that defines types for our agent's state and maybe other useful types as well.
 
 ## Exercises {#exercises}
@@ -187,4 +187,4 @@ The key takeaways are:
 - Run through the [example](#example) yourself on a fake ship if you've not done so already.
 - Have a read through the [Ford rune documentation](../../language/hoon/reference/rune/fas.md) for details about importing libraries, structures and other things.
 - Try the `+dbug` generator out on some other agents, like `:settings +dbug`, `:contacts +dbug`, etc, and try some of its options [described above](#dbug).
-- Have a quick look over the source of the `default-agent` library, located at `/lib/default-agent.hoon` in the `%base` desk. We've not yet covered what the different arms do but it's still useful to get a general idea, and you'll likely want to refer back to it later.
+- Have a quick look over the source of the `/lib/default-agent.hoon` library, located at `/lib/default-agent.hoon` in the `%base` desk. We've not yet covered what the different arms do but it's still useful to get a general idea, and you'll likely want to refer back to it later.

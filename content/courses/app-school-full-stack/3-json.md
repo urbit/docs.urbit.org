@@ -115,7 +115,7 @@ Many `+dejs` functions take other `+dejs` functions as their arguments. A comple
 - `+of` - decode an object containing a single key-value pair to a head-tagged cell.
 - `+ot` - decode an object to a n-tuple.
 - `+ou` - decode an object to an n-tuple, replacing optional missing values with a given value.
-- `+oj` - decode an object of arrays to a `jug`.
+- `+oj` - decode an object of arrays to a `+jug`.
 - `+om` - decode an object to a `+map`.
 - `+op` - decode an object to a `+map`, and also parse the object keys with a [parsing rule](../../language/hoon/reference/stdlib/4f.md).
 

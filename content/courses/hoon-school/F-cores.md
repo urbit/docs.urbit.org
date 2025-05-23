@@ -275,7 +275,7 @@ Some of them are _data_, like raw values: `0x1234.5678.abcd` and `[5 6 7]`. Othe
 
 A [core](../../glossary/core.md) is a cell pairing operations to data. Formally, we'll say a core is a cell `[battery payload]`, where [battery](../../glossary/battery.md) describes the things that can be done (the operations) and [payload](../../glossary/payload.md) describes the data on which those operations rely. (For many English speakers, the word “battery” evokes a [voltaic pile](https://en.wikipedia.org/wiki/Voltaic_pile) more than a bank of guns, but the artillery metaphor is a better mnemonic for `[battery payload]`.)
 
-**Cores are the most important structural concept for you to grasp in Hoon.**  Everything nontrivial is a core. Some of the runes you have used already produce cores, like the gate. That is, a gate marries a `battery` (the operating code) to the `payload` (the input values AND the [subject](../../glossary/subject.md) or operating context).
+**Cores are the most important structural concept for you to grasp in Hoon.**  Everything nontrivial is a core. Some of the runes you have used already produce cores, like the gate. That is, a gate marries a battery (the operating code) to the `payload` (the input values AND the [subject](../../glossary/subject.md) or operating context).
 
 Urbit adopts an innovative programming paradigm called [subject-oriented programming](../../glossary/subject-oriented-programming.md). By and large, Hoon (and [Nock](../../glossary/nock.md)) is a functional programming language in that running a piece of code twice will always yield the same result, and because runs cause a program to explicitly compose various subexpressions in a somewhat mathematical way.
 

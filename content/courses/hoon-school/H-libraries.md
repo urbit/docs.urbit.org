@@ -198,7 +198,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-Finally we come to `+shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of `entropy` to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `$deck`.
+Finally we come to `+shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of "entropy" to seed the [og](../../language/hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `$deck`.
 
 We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../language/hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `+rads:random`.
 

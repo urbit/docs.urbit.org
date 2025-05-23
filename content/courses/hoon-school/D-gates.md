@@ -122,7 +122,7 @@ The `hoon` body expression evaluates and yields a result, ultimately sent back t
 'no'
 ```
 
-The input value, what is included in the `spec`, is sometimes called the argument or parameter in mathematics and other programming languages. It's basically the input value. Hoon prefers to call it the `sample` for reasons that will become apparent later on, but you won't confuse other developers if you call it the argument or input.
+The input value, what is included in the `spec`, is sometimes called the argument or parameter in mathematics and other programming languages. It's basically the input value. Hoon prefers to call it the "sample" for reasons that will become apparent later on, but you won't confuse other developers if you call it the argument or input.
 
 Note as well that the backbone of the program runs straight down the left-hand margin. This makes it easier to read the essential mainline logic of the program.
 
@@ -200,7 +200,7 @@ The second subexpression after the `|=` bartis rune is used to build the gate's 
 
 ### Exercise: Double a Value {#exercise-double-a-value}
 
-- Produce a gate which accepts any `@` unsigned integer value and doubles it. Call it `double`.
+- Produce a gate which accepts any `@` unsigned integer value and doubles it. Call it "double".
 
     ```hoon
     > =double |=(a=@ (mul a 2))
@@ -211,11 +211,11 @@ The second subexpression after the `|=` bartis rune is used to build the gate's 
 
 ### Exercise: Convert Between Auras {#exercise-convert-between-auras}
 
-- Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent. Call it `myship`.
+- Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent. Call it "myship".
 
-- Produce a gate which accepts any `@` unsigned integer value and calculates the next neighbor (the `@p` of the number plus one). Call it `myneighbor`.
+- Produce a gate which accepts any `@` unsigned integer value and calculates the next neighbor (the `@p` of the number plus one). Call it "myneighbor".
 
-- Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned hexadecimal integer value of the ship. Call it `mynumber`.
+- Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned hexadecimal integer value of the ship. Call it "mynumber".
 
 ### Output Values {#output-values}
 
@@ -297,7 +297,7 @@ You can verify the contents of the copied files are the same using the [+cat](..
 > +cat %/desk/txt
 ```
 
-(Dojo does know what a `bill` file is, so it displays the contents slightly formatted. They are actually identical.)
+(Dojo does know what a "bill" file is, so it displays the contents slightly formatted. They are actually identical.)
 
 We will use this [|commit](../../manual/os/dojo-tools.md#commit) pattern to store persistent code as files, editing on Earth and then synchronizing to Mars.
 

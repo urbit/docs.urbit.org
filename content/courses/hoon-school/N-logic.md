@@ -57,7 +57,7 @@ Essentially, we have to be able to decide whether or not some value or expressio
 - [+lte](../../language/hoon/reference/stdlib/1a.md#lte) (less than or equal to `≤`)
 - `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis), irregularly `=()` (check for equality)
 
-The key conditional decision-making rune is `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol), which lets you branch between an `expression-if-true` and an `expression-if-false`. `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot) inverts the order of `?:`. Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
+The key conditional decision-making rune is `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol), which lets you branch between an `expression-if-true` and an "expression-if-false". `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot) inverts the order of `?:`. Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 

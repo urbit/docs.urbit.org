@@ -369,7 +369,7 @@ rather than only effective for the daughter expressions of a `=/` tisfas rune. (
 
 ### Exercise: A Large Power of Two {#exercise-a-large-power-of-two}
 
-Create two numbers named `two` and `twenty`, with appropriate values, using the `=/` tisfas rune.
+Create two numbers named "two" and "twenty", with appropriate values, using the `=/` tisfas rune.
  
 Then use these values to calculate 2²⁰ with `+pow` and `%-` cenhep.
 

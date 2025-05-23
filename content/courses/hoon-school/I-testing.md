@@ -172,7 +172,7 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a _stack trace_, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-- The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. (`printf` is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+- The `~_` [sigcab](../../language/hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 - The `~|` [sigbar](../../language/hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
     ```hoon
@@ -350,7 +350,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 What are some strategies for debugging?
 
 -   **Debugging stack.**  Use the `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../language/hoon/reference/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
--   **`printf` debugging.**  If your code will compile and run, employ `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
+-   **"printf" debugging.**  If your code will compile and run, employ `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
 -   **Typecast.**  Include `^` [ket](../../language/hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
 -   **The only wolf in Alaska.**  Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).
 -   **Build it again.**  Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.

@@ -677,7 +677,7 @@ The [+po](../../language/hoon/reference/stdlib/4a.md#po) core contains tools for
 
 ### Base-32 and Base-64 {#base-32-and-base-64}
 
-The base-32 representation uses the characters `0123456789abcdefghijklmnopqrstuv` to represent values. The digits are separated into collections of five characters separated by `.` dot.
+The base-32 representation uses the characters "0123456789abcdefghijklmnopqrstuv" to represent values. The digits are separated into collections of five characters separated by `.` dot.
 
 ```hoon
 > `@uv`0

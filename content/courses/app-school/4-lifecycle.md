@@ -79,7 +79,7 @@ Along with a core defining the type of the state, we also need to actually add i
 =*  state  -
 ```
 
-The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of `state`. You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `state` when necessary.
+The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `state` when necessary.
 
 Note that adding the state like this only happens when the agent is built - from then on the arms of our agent will just modify it.
 

@@ -141,7 +141,7 @@ You can do even better using _interpolation_:
 
     The pyramid-shaped illustration approximates what's happening on the "call stack", a memory structure that tracks the instructions of the program. In this code, every time a parent gate calls another gate, the gate being called is "pushed" to the top of the stack in the form of a frame. This process continues until a value is produced instead of a function, completing the stack.
 
-    - Why do we return the result (`product` in Hoon parlance) at 1 instead of 0?
+    - Why do we return the result ("product" in Hoon parlance) at 1 instead of 0?
 
 ### Exercise: Tracking Expression Structure {#exercise-tracking-expression-structure}
 
@@ -310,7 +310,7 @@ Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) 
 --
 ```
 
-Give the name `adder` to the above, and use it thus:
+Give the name "adder" to the above, and use it thus:
 
 ```hoon
 > (add-one:adder 5)
@@ -595,7 +595,7 @@ It is possible to modify the context of a gate when you make a function call; or
 10
 ```
 
-Now let's write a gate called `ten` that adds `b` to the input value:
+Now let's write a gate called "ten" that adds `b` to the input value:
 
 ```hoon
 > =ten |=(a=@ (add a b))

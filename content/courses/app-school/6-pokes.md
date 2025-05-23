@@ -226,13 +226,13 @@ Let's try it out. Save the agent above as `/app/pokeme.hoon` in the `%base` desk
 >=
 ```
 
-Next, we'll try poking it. The dojo lets you poke agents with the following syntax:
+Next, we'll try poking it. The Dojo lets you poke agents with the following syntax:
 
 ```
 :agent-name &some-mark ['some' 'noun']
 ```
 
-If the `$mark` part is omitted, it'll just default to `%noun`. Since our agent only takes a `%noun` mark, we can skip that. The rest will be packed in a `$vase` by the dojo and delivered as a poke, so we can do:
+If the `$mark` part is omitted, it'll just default to `%noun`. Since our agent only takes a `%noun` mark, we can skip that. The rest will be packed in a `$vase` by the Dojo and delivered as a poke, so we can do:
 
 ```
 > :pokeme %inc
@@ -257,7 +257,7 @@ Let's try decrement:
 >=
 ```
 
-As you can see, it's back at zero. If we try again, we'll see it fails, and the dojo will print the `$tang` in the `%poke-ack` nack:
+As you can see, it's back at zero. If we try again, we'll see it fails, and the Dojo will print the `$tang` in the `%poke-ack` nack:
 
 ```
 > :pokeme %dec
@@ -458,7 +458,7 @@ The `+on-agent` arm of `%pokeit` has received one ack and one nack. The first to
 - Gall will automatically return a `%poke-ack` to the poke's source, with a stack trace in the `(unit tang)` if your agent crashed while processing the poke.
 - Outgoing pokes can be sent by including `%poke` `%pass` `$card`s in the `+quip` produced by most agent arms.
 - `%poke-ack`s in response to pokes you've sent will come in to the `+on-agent` arm in a `$sign`, on the `$wire` you specified in the original `%poke` `$card`.
-- You can poke agents from the dojo with a syntax of `:agent &mark ['some' 'noun']`.
+- You can poke agents from the Dojo with a syntax of `:agent &mark ['some' 'noun']`.
 
 ## Exercises {#exercises}
 

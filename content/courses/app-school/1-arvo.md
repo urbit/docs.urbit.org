@@ -53,7 +53,7 @@ The fundamental unit in Clay is a desk. Desks are kind of like git repositories.
 - `%base` - This desk contains the kernel as well as some core agents and utilities.
 - `%landscape` - This desk contains agents and utilities for managing apps, and the home screen that displays other app tiles.
 - `%groups` - This desk contains everything for the Groups app.
-- `%webterm` - This desk is for the web dojo app.
+- `%webterm` - This desk is for the web Dojo app.
 
 You'll typically also have a `%kids` desk, which is just a copy of `%base` from upstream that sponsored ships (moons in the case of a planet, planets in the case of a star) sync their `%base` desk from. Any third-party apps you've installed will also have their own desks.
 

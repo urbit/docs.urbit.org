@@ -143,7 +143,7 @@ and so on, down to
 --
 ```
 
-This core contains the arms in [sections 1a–1c of the standard library documentation](../../language/hoon/reference/stdlib/1a.md). If you count them, there are 33 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the dojo by looking at the subject of `+add`.
+This core contains the arms in [sections 1a–1c of the standard library documentation](../../language/hoon/reference/stdlib/1a.md). If you count them, there are 33 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `+add`.
 
 ```hoon
 > ..add

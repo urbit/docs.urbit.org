@@ -89,7 +89,7 @@ ourfiles
 
 Next, we'll create a new `%journal` desk on our ship by forking an existing one. Once created, we can mount it to the unix filesystem.
 
-In the dojo of a fake ship:
+In the Dojo of a fake ship:
 
 ```
 |new-desk %journal

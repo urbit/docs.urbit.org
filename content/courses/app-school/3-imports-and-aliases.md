@@ -31,7 +31,7 @@ To use it, you just import `/lib/dbug.hoon` with a [faslus](../../language/hoon/
 %-  agent:dbug
 ```
 
-With that done, you can poke your agent with the `+dbug` generator from the dojo and it will pretty-print its state, like:
+With that done, you can poke your agent with the `+dbug` generator from the Dojo and it will pretty-print its state, like:
 
 ```
 > :your-agent +dbug

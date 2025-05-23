@@ -253,7 +253,7 @@ Let's unpack what's going on more with this next [door](../../glossary/door.md).
 --
 ```
 
-If you type this into the dojo manually, make sure you attend carefully to the spacing. Feel free to cut and paste the code, if desired.
+If you type this into the Dojo manually, make sure you attend carefully to the spacing. Feel free to cut and paste the code, if desired.
 
 Before getting into what these arms do, let's digress into how the `|_` [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune works in general.
 

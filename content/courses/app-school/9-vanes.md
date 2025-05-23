@@ -215,7 +215,7 @@ The `error` is null if the timer fired successfully, and contains an error in th
 
 Let's try it out. Save the agent above as `/app/ding.hoon` on the `%base` desk and `|commit %base`. Then, start the agent with `|rein %base [& %ding]`.
 
-Next, in the dojo let's try poking our agent, setting a timer for five seconds from now:
+Next, in the Dojo let's try poking our agent, setting a timer for five seconds from now:
 
 ```
 > :ding ~s5

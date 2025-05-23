@@ -110,7 +110,7 @@ A backtick at the beginning is an irregular syntax meaning "prepend with null", 
 
 The next part has `..on-init`, which means "the subject of the `+on-init` arm". The subject of the `+on-init` arm is our whole agent. In the [transition function](#transition-function) section we mentioned that most arms return a list of effects called `$card`s and a new agent core. Since an empty list is `~`, we've created a cell that fits that description.
 
-Let's examine our agent. In the dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the dojo, commit the file to the desk with `|commit %base`.
+Let's examine our agent. In the Dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the dojo, commit the file to the desk with `|commit %base`.
 
 For the moment we won't install our `%skeleton` agent. Instead, we'll use the `-build-file` thread to build it and save it in the dojo's subject so we can have a look. Run the following in the dojo:
 
@@ -139,7 +139,7 @@ Now, let's have a look:
 >
 ```
 
-The dojo pretty-prints cores with a format of `number-of-arms.hash`. You can see the head of `%skeleton` is `10.fxw` - that's the battery of the core, our 10-arm agent. If we try printing the head of `%skeleton` we'll see it's a whole lot of compiled Nock:
+The Dojo pretty-prints cores with a format of `number-of-arms.hash`. You can see the head of `%skeleton` is `10.fxw` - that's the battery of the core, our 10-arm agent. If we try printing the head of `%skeleton` we'll see it's a whole lot of compiled Nock:
 
 ```
 > -.skeleton

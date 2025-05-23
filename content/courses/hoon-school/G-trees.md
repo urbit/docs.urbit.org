@@ -598,7 +598,7 @@ Enter the following into dojo:
 =a [[[b=%bweh a=%.y c=8] b="no" c="false"] 9]
 ```
 
-Test your knowledge from this lesson by evaluating the following expressions and then checking your answer in the dojo or see the solutions below.
+Test your knowledge from this lesson by evaluating the following expressions and then checking your answer in the Dojo or see the solutions below.
 
 1. `b:a(a [b=%skrt a="four"])`
 2. `^b:a(a [b=%skrt a="four"])`

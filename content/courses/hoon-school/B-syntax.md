@@ -313,7 +313,7 @@ What Hoon expression does the following figure correspond to, and what does it e
 
 ![](https://media.urbit.org/docs/hoon-syntax/cell4.png)
 
-This represents the Hoon expression `:-  2  :-  3  4`, and evaluates to `[2 [3 4]]`. (If you input this into dojo it will print as `[2 3 4]`, which we'll consider later.)
+This represents the Hoon expression `:-  2  :-  3  4`, and evaluates to `[2 [3 4]]`. (If you input this into Dojo it will print as `[2 3 4]`, which we'll consider later.)
 
 Thinking in terms of such “LEGO brick” diagrams can be a helpful learning and debugging tactic.
 

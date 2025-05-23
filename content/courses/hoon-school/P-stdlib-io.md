@@ -306,9 +306,9 @@ With `|= *`, we create a [gate](../../glossary/gate.md) and ignore the standard 
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `$cask` of `$tang`. We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
+`%ask` [generators](../../glossary/generator.md) need to have the second half of the [cell](../../glossary/cell.md) be a gate that produces a `sole-result`, one that in this case contains a `+cask` of `$tang`. We use the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
 
-A `$cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md). We previously described a `$mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `$mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
+A `+cask` is a pair of a [mark](../../glossary/mark.md) name and a [noun](../../glossary/noun.md). We previously described a `$mark` as a kind of complicated [mold](../../glossary/mold.md); here we add that a `$mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
 
 A `$tang` is a [list](../../glossary/list.md) of `$tank`, and a `$tank` is a structure for printing data, as described above. There are three types of `$tank`: `$leaf`, `$palm`, and `$rose`. A `$leaf` is for printing a single noun, a `$rose` is for printing rows of data, and a `$palm` is for printing backstep-indented lists.
 

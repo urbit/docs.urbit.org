@@ -118,7 +118,7 @@ In addition to the directories discussed, there's a handful of special files a d
 - `desk.ship`: If the desk is being republished, the original publisher can be specified here.
 - `desk.docket-0`: Configures the front-end, tile, and other metadata for desks which include a home screen app.
 
-Each desk must be self-contained; it must include all the `mark`s, libraries, threads, etc, that it needs. The one exception is the kernel and standard libraries from the `%base` desk. Agents, threads and generators in other desks all have these libraries available to them in their subject.
+Each desk must be self-contained; it must include all the marks, libraries, threads, etc, that it needs. The one exception is the kernel and standard libraries from the `%base` desk. Agents, threads and generators in other desks all have these libraries available to them in their subject.
 
 ## APIs {#apis}
 

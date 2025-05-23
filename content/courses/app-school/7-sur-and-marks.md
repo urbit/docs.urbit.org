@@ -139,7 +139,7 @@ You can of course structure your `on-poke` arm differently than we've done here 
 
 ## mark files {#mark-files}
 
-So far we've just used a `%noun` mark for pokes - we haven't really delved into what such `mark`s represent, or considered writing custom ones.
+So far we've just used a `%noun` mark for pokes - we haven't really delved into what such marks represent, or considered writing custom ones.
 
 Formally, marks are file types in the Clay filesystem. They correspond to mark files in the `/mar` directory of a desk. The `%noun` mark, for example, corresponds to the `/mar/noun.hoon` file. Mark files define the actual hoon data type for the file (e.g. a `*` noun for the `%noun` mark), but they also specify some extra things:
 

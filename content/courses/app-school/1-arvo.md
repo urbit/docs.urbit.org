@@ -71,14 +71,14 @@ desk
 └── tests
 ```
 
-- `app`: Gall agents.
-- `gen`: Generators.
-- `lib`: Libraries - these are imported with the `/+` Ford rune.
-- `mar`: mark files, which are filetype definitions.
-- `sur`: Structures - these typically contain type definitions and structures, and would be imported with the `/-` Ford rune.
-- `sys`: Kernel files and standard library. Only the `%base` desk has this directory, it's omitted entirely in all other desks.
-- `ted`: Threads.
-- `tests`: Unit tests, to be run by the `%test` thread. This is often omitted in distributed desks.
+- `/app`: Gall agents.
+- `/gen`: Generators.
+- `/lib`: Libraries - these are imported with the `/+` Ford rune.
+- `/mar`: mark files, which are filetype definitions.
+- `/sur`: Structures - these typically contain type definitions and structures, and would be imported with the `/-` Ford rune.
+- `/sys`: Kernel files and standard library. Only the `%base` desk has this directory, it's omitted entirely in all other desks.
+- `/ted`: Threads.
+- `/tests`: Unit tests, to be run by the `%test` thread. This is often omitted in distributed desks.
 
 This directory hierarchy is not strictly enforced, but most tools expect things to be in their right place. Any of these folders can be omitted if they'd otherwise be empty.
 
@@ -103,11 +103,11 @@ sys
 └── zuse.hoon
 ```
 
-- `arvo.hoon`: Source code for Arvo itself.
-- `hoon.hoon`: Hoon standard library and compiler.
-- `lull.hoon`: Mostly structures and type definitions for interacting with vanes.
-- `$vane`: This directory contains the source code for each of the vanes.
-- `zuse.hoon`: This is an extra utility library. It mostly contains cryptographic functions and functions for dealing with web data like JSON.
+- `/arvo.hoon`: Source code for Arvo itself.
+- `/hoon.hoon`: Hoon standard library and compiler.
+- `/lull.hoon`: Mostly structures and type definitions for interacting with vanes.
+- `/$vane`: This directory contains the source code for each of the vanes.
+- `/zuse.hoon`: This is an extra utility library. It mostly contains cryptographic functions and functions for dealing with web data like JSON.
 
 The chain of dependency for the core kernel files is `hoon.hoon` -> `arvo.hoon` -> `lull.hoon` -> `zuse.hoon`. For more information, see the [Filesystem Hierarchy](../../system/kernel/clay/guides/filesystem.md) documentation.
 
@@ -128,7 +128,7 @@ There are two basic ways of interacting with other parts of the system: by scryi
 
 - Scries: The scry system allows you to access the state of other agents and vanes in a read-only fashion. Scries can be performed from any context with the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you can read, and these are comprehensively documented in the Scry Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo). Agents define scry endpoints in the `+on-peek` arm of their agent core. Scries can only be done on the local ship; it is not yet possible to perform scries over the network (but this functionality is planned for the future). There is a separate [guide to scries](../../system/kernel/arvo/guides/scry.md) which you might like to read through for more details.
 - Messages:
-  - Vanes: Each vane has a number of `$task`s it can be passed and `$gift`s it can respond with in its respective section of `lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The `$task`s and `$gift`s of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo).
+  - Vanes: Each vane has a number of `$task`s it can be passed and `$gift`s it can respond with in its respective section of `/sys/lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The `$task`s and `$gift`s of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../system/kernel/arvo).
   - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed, which means to subscribe for updates. We'll discuss these in detail later in the guide.
 
 Here's a simplified diagram of the ways an agent can interact with other parts of the system:

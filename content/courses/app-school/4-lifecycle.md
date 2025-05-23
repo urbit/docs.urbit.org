@@ -97,7 +97,7 @@ A `$card` is a message to another agent or vane. We'll discuss `$card`s in detai
 
 `.this` is our agent core, which we give the `.this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `.this`" - the type of our agent core.
 
-Recall that in the last lesson, we said that most arms return a cell of `[effects new-agent-core]`. That's exactly what `(quip card _this)` is.
+Recall that in the last lesson, we said that most arms return a cell of \[effects new-agent-core]. That's exactly what `(quip card _this)` is.
 
 ### `+on-save` {#on-save}
 
@@ -368,8 +368,8 @@ Let's now use `+dbug` to confirm our state has successfully been updated to the 
 - The type of an agent's state is typically defined in a separate core.
 - The state type is typically versioned, with a new type definition for each version of the state.
 - The state is initially added by bunting the state type and then naming it `.state` with the tistar (`=*`) rune, so its contents can be referenced directly.
-- A `$vase` is a cell of `[type-of-the-noun the-noun]`.
-- `(quip a b)` is the same as `[(list a) b]`, and is the `[effects new-agent-core]` pair returned by many arms of an agent core.
+- A `$vase` is a cell of \[type-of-the-noun the-noun].
+- `(quip a b)` is the same as `[(list a) b]`, and is the \[effects new-agent-core] pair returned by many arms of an agent core.
 
 ## Exercises {#exercises}
 

@@ -183,7 +183,7 @@ First, we'll import the `/sur/journal.hoon` structures we previously created. Ne
   ==
 ```
 
-The first thing we do is use the [`=,` rune](../../language/hoon/reference/rune/tis.md#tiscom) to expose the `+dejs:format` namespace. This allows us to reference `ot`, `ni`, etc rather than having to write `ot:dejs:format` every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
+The first thing we do is use the [`=,` rune](../../language/hoon/reference/rune/tis.md#tiscom) to expose the `+dejs:format` namespace. This allows us to reference "ot", "ni", etc. rather than having to write "ot:dejs:format" every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
 
 We then create a gate that takes `$json` and returns a `$action` structure. Since we'll only take one action at a time, we can use the `+of` function, which takes a single key-value pair. `+of` takes a list of all possible `$json` objects it will receive, tagged by key.
 
@@ -265,10 +265,7 @@ You'll notice more of our encoding function is done manually than our previous d
 ## Resources {#resources}
 
 - [The JSON Guide](../../language/hoon/guides/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
-- [The Zuse reference](../../language/hoon/reference/zuse) - The `zuse.hoon` reference documents all JSON-related functions in detail.
-
+- [The Zuse reference](../../language/hoon/reference/zuse) - The `/sys/zuse.hoon` reference documents all JSON-related functions in detail.
 - [`+enjs:format` reference](../../language/hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
-
 - [`+dejs:format` reference](../../language/hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
-
 - [Eyre overview](../../system/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.

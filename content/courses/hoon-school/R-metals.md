@@ -6,11 +6,11 @@ Cores can expose and operate with many different assumptions about their inputs 
 
 If cores never changed, we wouldn't need polymorphism. Of course, nouns are immutable and never change, but we use them as templates to construct new nouns around.
 
-Suppose we take a core, a [cell](../../glossary/cell.md) `[battery payload]`, and replace `payload` with a different [noun](../../glossary/noun.md). Then, we invoke an [arm](../../glossary/arm.md) from the [battery](../../glossary/battery.md).
+Suppose we take a core, a [cell](../../glossary/cell.md) `[battery payload]`, and replace payload with a different [noun](../../glossary/noun.md). Then, we invoke an [arm](../../glossary/arm.md) from the [battery](../../glossary/battery.md).
 
 Is this legal?  Does it make sense?  Every function call in Hoon does this, so we'd better make it work well.
 
-The full core stores _both_ [payload](../../glossary/payload.md) types: the type that describes the `payload` currently in the [core](../../glossary/core.md), and the type that the core was compiled with.
+The full core stores _both_ [payload](../../glossary/payload.md) types: the type that describes the payload currently in the [core](../../glossary/core.md), and the type that the core was compiled with.
 
 In the [Bertrand Meyer tradition of type theory](https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction), there are two forms of polymorphism: _variance_ and _genericity_. In Hoon this choice is per core: a core can be either `%wet` or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on genericity.
 
@@ -33,7 +33,7 @@ When the `$` buc arm of a dry [gate](../../glossary/gate.md) is evaluated it tak
 
 ### Wet Gates {#wet-gates}
 
-When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site. In other words, for a wet gate, we ask: “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified `payload`?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”; they defer the actual substitution in the [sample](../../glossary/sample.md). Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
+When you pass arguments to a [wet gate](../../glossary/wet-gate.md), their types are preserved and type analysis is done at the definition site of the gate rather than at the call site. In other words, for a wet gate, we ask: “Suppose this core was actually _compiled_ using the modified [payload](../../glossary/payload.md) instead of the one it was originally built with?  Would the [Nock](../../glossary/nock.md) formula we generated for the original template actually work for the modified payload?” Basically, wet gates allow you to hot-swap code at runtime and see if it “just works”; they defer the actual substitution in the [sample](../../glossary/sample.md). Wet gates are rather like [macros](https://en.wikipedia.org/wiki/Macro_%28computer_science%29) in this sense.
 
 Consider a function like [+turn](../../language/hoon/reference/stdlib/2b.md#turn) which transforms each element of a list. To use `+turn`, we install a [list](../../glossary/list.md) and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
@@ -256,7 +256,7 @@ The `|~` [barsig](../../language/hoon/reference/rune/bar.md#barsig) rune produce
 
 Bivariance means that both covariance and contravariance apply. Bivariant data types have an opaque [payload](../../glossary/payload.md) that can neither be read or written to.
 
-A lead core `l` has an opaque `payload` which can be neither read nor written to. There is no constraint on the payload of a core `m` which nests within it. Hence, **bivariant**.
+A lead core `l` has an opaque payload which can be neither read nor written to. There is no constraint on the payload of a core `m` which nests within it. Hence, **bivariant**.
 
 If type `x` nests within type `xx`, a lead core producing `x` nests within a lead core producing `xx`.
 
@@ -272,7 +272,7 @@ The `|?` [barwut](../../language/hoon/reference/rune/bar.md#barwut) rune produce
 
 Invariance means that type nesting is disallowed. Invariant data types have a read-write [payload](../../glossary/payload.md).
 
-A `%gold` [core](../../glossary/core.md) `g` has a read-write payload; another core `h` that nests within it (i.e., can be substituted for it) must be a `%gold` core whose `payload` is mutually compatible (`+3.g` nests in `+3.h`, `+3.h` nests in `+3.g`). Hence, **invariant**.
+A `%gold` [core](../../glossary/core.md) `g` has a read-write payload; another core `h` that nests within it (i.e., can be substituted for it) must be a `%gold` core whose payload is mutually compatible (`+3.g` nests in `+3.h`, `+3.h` nests in `+3.g`). Hence, **invariant**.
 
 By default, cores are `%gold` invariant cores.
 

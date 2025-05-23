@@ -150,9 +150,9 @@ Aside from their use by Clay for storing files in the filesystem, they're also u
 
 A mark file is a door with exactly three arms. The door's sample is the data type the mark will handle. For example, the sample of the `%noun` mark is just `non=*`, since it handles any noun. The three arms are as follows:
 
-- `grab`: Methods for converting _to_ our mark _from_ other marks.
-- `grow`: Methods for converting _from_ our mark _to_ other marks.
-- `grad`: Revision control functions.
+- `+grab`: Methods for converting _to_ our mark _from_ other marks.
+- `+grow`: Methods for converting _from_ our mark _to_ other marks.
+- `+grad`: Revision control functions.
 
 In the context of Gall agents, you'll likely just use marks for sending and receiving data, and not for actually storing files in Clay. Therefore, it's unlikely you'll need to write custom revision control functions in the `+grad` arm. Instead, you can simply delegate `+grad` functions to another mark - typically `%noun`. If you want to learn more about writing such `+grad` functions, you can refer to the [Marks Guide](../../system/kernel/clay/guides/marks) in the Clay vane documentation, which is much more comprehensive, but it's not necessary for our purposes here.
 

@@ -44,20 +44,20 @@ We've define `$card` for convenience as usual, and we've also added three more a
 (~(get by foo) %bar)
 ```
 
-An ordered map uses the `+on` gate in `zuse.hoon` rather than `+by`, and its invocation is slightly different. It must first be setup in a similar manner to the `mop` type, by providing it the key/value molds and comparator gates. Once that's done, its individual functions can be called with the `mop` and arguments, like:
+An ordered map uses the `+on` gate in `zuse.hoon` rather than `+by`, and its invocation is slightly different. It must first be setup in a similar manner to the `+mop` type, by providing it the key/value molds and comparator gates. Once that's done, its individual functions can be called with the `+mop` and arguments, like:
 
 ```hoon
 (get:((on @ud @ud) gth) foo %bar)
 ```
 
-This is quite a cumbersome expression to use every time we want to interact with our `mop`. To make it easier, we can store the `((on @ud @ud) gth)` part in an arm, and then when we need to use it we can just do `(get:arm-name foo %bar)`. In this case, we've done one each of our ordered maps like so:
+This is quite a cumbersome expression to use every time we want to interact with our `+mop`. To make it easier, we can store the `((on @ud @ud) gth)` part in an arm, and then when we need to use it we can just do `(get:arm-name foo %bar)`. In this case, we've done one each of our ordered maps like so:
 
 ```hoon
 ++  j-orm  ((on id txt) gth)
 ++  log-orm  ((on @ action) lth)
 ```
 
-The last arm in our state definition core is `+unique-time`. Since we'll use `now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `mop`. To avoid this, `+unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `mop`, ensuring all updates get unique timestamps and there are no collisions.
+The last arm in our state definition core is `+unique-time`. Since we'll use `now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `+mop`. To avoid this, `+unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `+mop`, ensuring all updates get unique timestamps and there are no collisions.
 
 ## Agent core setup {#agent-core-setup}
 
@@ -133,7 +133,7 @@ The logic in `+poke-action` is very simple, with three cases for each of the pos
 
 - `%edit` - Edit an existing journal entry. We make sure it _does_ exist with `+has:j-orm`, and then override the old entry with the new one using `+put:j-orm` again.
 
-- `%del` - Delete an existing journal entry. We make sure it exists again with `+has:j-orm`, and then use `+del:j-orm` to delete it from our `$journal` `mop`.
+- `%del` - Delete an existing journal entry. We make sure it exists again with `+has:j-orm`, and then use `+del:j-orm` to delete it from our `$journal` `+mop`.
 
 Back in the main part of `+on-poke`, `+poke-action` updates the state with the new `$journal`, then we proceed to:
 
@@ -215,9 +215,9 @@ Here we have our `+on-peek` arm. The scry endpoints we've defined are divided in
 
 - `/x/entries/all` - Retrieve all entries in the `$journal`. Our front-end will use lazy-loading and only get a few at a time, so it won't use this. It's nice to have it though, in case other agents want to get that data.
 
-- `/x/entries/before/[before]/[max]` - Retrieve at most `[max]` entries older than the entry on `[before]` date. This is so our lazy-loading front-end can progressively load more as the user scrolls down the page. The Javascript front-end will format numbers without dot separators, so the path will look like `/x/entries/before/1648051573109/10`. We therefore have to use the [`+dem`](../../language/hoon/reference/stdlib/4i.md#dem) parsing `rule` in a [`+rash`](../../language/hoon/reference/stdlib/4g.md#rash) parser to convert it to an ordinary atom. We then use the `+tap:log-orm` `mop` function to retrieve the requested range as a list and return it as an `$update` with a `%journal-update` mark.
+- `/x/entries/before/[before]/[max]` - Retrieve at most `[max]` entries older than the entry on `[before]` date. This is so our lazy-loading front-end can progressively load more as the user scrolls down the page. The Javascript front-end will format numbers without dot separators, so the path will look like `/x/entries/before/1648051573109/10`. We therefore have to use the [`+dem`](../../language/hoon/reference/stdlib/4i.md#dem) parsing `rule` in a [`+rash`](../../language/hoon/reference/stdlib/4g.md#rash) parser to convert it to an ordinary atom. We then use the `+tap:log-orm` `+mop` function to retrieve the requested range as a list and return it as an `$update` with a `%journal-update` mark.
 
-- `/x/entries/between/[start]/[end]` - Retrieve all journal entries between two dates. This is so our front-end can have a search function, where the user can enter a start and end date and get all the entries in between. The `+lot:j-orm` `mop` function returns the subset of a `mop` between the two given keys as a `mop`, and then we call `+tap:j-orm` to convert it to a list. The `+lot:j-orm function` excludes the start and end values, so we subtract 1 from the start and add 1 to the end to make sure it includes the full range.
+- `/x/entries/between/[start]/[end]` - Retrieve all journal entries between two dates. This is so our front-end can have a search function, where the user can enter a start and end date and get all the entries in between. The `+lot:j-orm` `+mop` function returns the subset of a `+mop` between the two given keys as a `+mop`, and then we call `+tap:j-orm` to convert it to a list. The `+lot:j-orm function` excludes the start and end values, so we subtract 1 from the start and add 1 to the end to make sure it includes the full range.
 
 - `/x/updates/all` - Retrieve the entire update `$log`. Our front-end won't use this but it might be useful for other agents, so we've included it here.
 
@@ -239,6 +239,6 @@ The full agent source can be viewed [here](https://github.com/urbit/docs-example
 
 - [App School I](../app-school) - App School I covers all aspects of writing Gall agents in detail.
 
-- [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `mop`s, and is well commented.
+- [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `+mop`s, and is well commented.
 
 - [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The `agentio` library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.

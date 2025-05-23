@@ -89,22 +89,22 @@ Ordinary `+map`s are fine if we just want to access one value at a time, but we 
 
 Maps are ordered by the hash of their key, so if we convert them to a list they'll come out in seemingly random order. That means we'd have to convert the map to a list, sort the list, and then iterate over it again to pull out the items we want. We could alternatively store things in a list directly, but retrieving or modifying arbitrary items would be less efficient.
 
-To solve this, rather than using a `+map` or a `+list`, we can use an _ordered map_. The mold builder for an ordered map is a `mop`, and it's included in the [`zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284) utility library rather than the standard library.
+To solve this, rather than using a `+map` or a `+list`, we can use an _ordered map_. The mold builder for an ordered map is a `+mop`, and it's included in the [`zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284) utility library rather than the standard library.
 
-A `mop` is defined similarly to a `+map`, but it takes an extra argument in the following manner:
+A `+mop` is defined similarly to a `+map`, but it takes an extra argument in the following manner:
 
 ```hoon
 ((mop key-mold val-mold) comparator-gate)
 ```
 
-The gate is a binary gate which takes two keys and produces a `?`. The comparator is used to decide how to order the items in the mop. In our case, we'll create a `$journal` and `$log` `mop` like so:
+The gate is a binary gate which takes two keys and produces a `?`. The comparator is used to decide how to order the items in the mop. In our case, we'll create a `$journal` and `$log` `+mop` like so:
 
 ```hoon
 +$  journal  ((mop id txt) gth)
 +$  log  ((mop @ action) lth)
 ```
 
-The entries in `$journal` are arranged in ascending time order using `+gth`, so the right-most item is the newest. The `$log` `mop` contains the update log, and is arranged in descending time order, so the right-most item is the oldest.
+The entries in `$journal` are arranged in ascending time order using `+gth`, so the right-most item is the newest. The `$log` `+mop` contains the update log, and is arranged in descending time order, so the right-most item is the oldest.
 
 We'll look at how to use ordered maps later when we get to writing the agent itself.
 
@@ -151,4 +151,4 @@ When we put each of these parts together, we have our complete `/sur/journal.hoo
 
 - [App School I /sur section](../app-school/7-sur-and-marks.md#sur) - This section of App School covers writing a `/sur` structure library for an agent.
 
-- [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `mop`s, and is well commented.
+- [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `+mop`s, and is well commented.

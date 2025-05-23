@@ -12,7 +12,7 @@ Once initialized, an agent will just go on doing its thing - processing events, 
 - The new version of the agent is built and loaded into Gall.
 - The previously exported `$vase` is passed to the `+on-load` arm of the newly built agent. The `+on-load` arm will process it, convert it to the new version of the state if necessary, and load it back into the state of the agent.
 
-A `$vase` is just a cell of `[type-of-the-noun the-noun]`. Most data an agent sends or receives will be encapsulated in a vase. A vase is made with the [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) (`!>`) rune like `!>(some-data)`, and unpacked with the [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) (`!<`) rune like `!<(type-to-extract vase)`. Have a read through the [`$vase` section of the type reference for details](types.md#vase).
+A `$vase` is just a cell of \[type-of-the-noun the-noun]. Most data an agent sends or receives will be encapsulated in a vase. A vase is made with the [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) (`!>`) rune like `!>(some-data)`, and unpacked with the [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) (`!<`) rune like `!<(type-to-extract vase)`. Have a read through the [`$vase` section of the type reference for details](types.md#vase).
 
 We'll look at the three arms described here in a little more detail, but first we need to touch on the state itself.
 

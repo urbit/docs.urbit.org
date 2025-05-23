@@ -368,7 +368,7 @@ A conventional library import with `/+` [faslus](../../language/hoon/reference/r
 
 Instead, you need to use the [-build-file](../../manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular core's functionality.
 
-`-build-file` accepts a file path and returns the built operational code, to which you can then attach a `face`. For instance:
+`-build-file` accepts a file path and returns the built operational code, to which you can then attach a `+face`. For instance:
 
 ```hoon
 > =ntw -build-file %/lib/number-to-words/hoon

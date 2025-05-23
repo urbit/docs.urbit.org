@@ -41,7 +41,7 @@ These two arms handle responses to requests our agent previously initiated.
 
 ## Bowl {#bowl}
 
-The sample of a Gall agent door is always a `bowl:gall`. Every time an event triggers the agent, Gall populates the bowl with things like the current date-time, fresh entropy, subscription information, which ship the request came from, etc, so that all the arms of the agent have access to that data. For the exact structure and contents of the bowl, have a read through [its entry in the Gall vane types documentation](../../system/kernel/gall/reference/data-types.md#bowl).
+The sample of a Gall agent door is always a `$bowl:gall`. Every time an event triggers the agent, Gall populates the bowl with things like the current date-time, fresh entropy, subscription information, which ship the request came from, etc, so that all the arms of the agent have access to that data. For the exact structure and contents of the bowl, have a read through [its entry in the Gall vane types documentation](../../system/kernel/gall/reference/data-types.md#bowl).
 
 One important thing to note is that the bowl is only repopulated when there's a new Arvo event. If a local agent or web client were to send multiple messages to your agent at the same time, these would all arrive in the same event. This means if your agent depended on a unique date-time or entropy to process each message, you could run into problems if your agent doesn't account for this possibility.
 
@@ -93,7 +93,7 @@ Here's about the simplest valid Gall agent:
 
 This is just a dummy agent that does absolutely nothing - it has no state and rejects all messages by crashing. Typically we'd cast this to an `agent:gall`, but in this instance we won't so it's easier to examine its structure in the dojo. We'll get to what each of the arms do later. For now, we'll just consider a few particular points.
 
-Firstly, note its structure - it's a door (created with `|_`) with a sample of `bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../language/hoon/reference/irregular.md#buctis)).
+Firstly, note its structure - it's a door (created with `|_`) with a sample of `$bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../language/hoon/reference/irregular.md#buctis)).
 
 Secondly, you'll notice some of the arms return:
 
@@ -158,7 +158,7 @@ The dojo pretty-prints cores with a format of `number-of-arms.hash`. You can see
 ...(truncated for brevity)...
 ```
 
-The battery's not too important, it's not something we'd ever touch in practice. Instead, let's have a look at the core's payload by printing the tail of `skeleton`. We'll see its head is the `bowl:gall` sample we specified, and then the tail is just all the usual standard library functions:
+The battery's not too important, it's not something we'd ever touch in practice. Instead, let's have a look at the core's payload by printing the tail of `skeleton`. We'll see its head is the `$bowl:gall` sample we specified, and then the tail is just all the usual standard library functions:
 
 ```
 > +.skeleton
@@ -217,7 +217,7 @@ If we again examine our agent core's payload by looking at the tail of `skeleton
 
 ## Summary {#summary}
 
-- A Gall agent is a door with exactly ten specific arms and a sample of `bowl:gall`.
+- A Gall agent is a door with exactly ten specific arms and a sample of `$bowl:gall`.
 - Each of the ten arms handle different kinds of events - Gall calls the
   appropriate arm for the kind of event it receives.
 - The ten arms fit roughly into five categories:

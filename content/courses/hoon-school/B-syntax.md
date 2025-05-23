@@ -173,7 +173,7 @@ add
 For instance, here are some of the standard library functions which have a similar architecture in common:
 
 - [`+add`](../../language/hoon/reference/stdlib/1a.md#add) (addition)
-- [`+sub`](../../language/hoon/reference/stdlib/1a.md#sub) (subtraction, positive results only... whappens if you subtract past zero?)
+- [`+sub`](../../language/hoon/reference/stdlib/1a.md#sub) (subtraction, positive results only... what happens if you subtract past zero?)
 - [`+mul`](../../language/hoon/reference/stdlib/1a.md#mul) (multiplication)
 - [`+div`](../../language/hoon/reference/stdlib/1a.md#div) (integer division, no remainder)
 - [`+pow`](../../language/hoon/reference/stdlib/2g.md#pow) (power or exponentiation)

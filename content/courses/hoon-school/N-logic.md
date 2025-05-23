@@ -61,80 +61,78 @@ The key conditional decision-making rune is `?:` [wutcol](../../language/hoon/re
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 
-- `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) lets you choose between several possibilities, as with a type union. Every case must be handled and no case can be unreachable.
+`?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) lets you choose between several possibilities, as with a type union. Every case must be handled and no case can be unreachable.
 
-    Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) switches over term unions can make it look like the expression is branching on the value. It's actually branching on the _type_. These are almost exclusively used with term type unions.
+Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) switches over term unions can make it look like the expression is branching on the value. It's actually branching on the _type_. These are almost exclusively used with term type unions.
 
-    ```hoon
-    |=  p=?(%1 %2 %3)
-    ?-  p
-      %1  1
-      %2  2
-      %3  3
-    ==
-    ```
+```hoon
+|=  p=?(%1 %2 %3)
+?-  p
+  %1  1
+  %2  2
+  %3  3
+==
+```
 
-- `?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) is similar to `?-` but allows a default value in case no branch is taken. Otherwise these are similar to `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) switch statements.
+`?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) is similar to `?-` but allows a default value in case no branch is taken. Otherwise these are similar to `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) switch statements.
 
-    ```hoon
-    |=  p=?(%0 %1 %2 %3 %4)
-    ?+  p  0
-      %1  1
-      %2  2
-      %3  3
-    ==
-    ```
+```hoon
+|=  p=?(%0 %1 %2 %3 %4)
+?+  p  0
+  %1  1
+  %2  2
+  %3  3
+==
+```
 
 ## Logical Operators {#logical-operators}
 
 Mathematical logic allows the collocation of propositions to determine other propositions. In computer science, we use this functionality to determine which part of an expression is evaluated. We can combine logical statements pairwise:
 
-- `?&` [wutpam](../../language/hoon/reference/rune/wut.md#wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
+`?&` [wutpam](../../language/hoon/reference/rune/wut.md#wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
 
-    |             `AND`            | `%.y` | `%.n` |
-    |------------------------------|-------|-------|
-    | `%.y` | `%.y` | `%.n` |
-    | `%.n` | `%.n` | `%.n` |
+|             `AND`            | `%.y` | `%.n` |
+|------------------------------|-------|-------|
+| `%.y` | `%.y` | `%.n` |
+| `%.n` | `%.n` | `%.n` |
 
-    <br>
+```hoon
+> =/  a  5
+  &((gth a 4) (lth a 7))
+%.y
+```
 
-    ```hoon
-    > =/  a  5
-      &((gth a 4) (lth a 7))
-    %.y
-    ```
+`?|` [wutbar](../../language/hoon/reference/rune/wut.md#wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
 
-- `?|` [wutbar](../../language/hoon/reference/rune/wut.md#wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
+|             `OR`             | `%.y` | `%.n` |
+|------------------------------|-------|-------|
+| `%.y` | `%.y` | `%.y` |
+| `%.n` | `%.y` | `%.n` |
 
-    |             `OR`             | `%.y` | `%.n` |
-    |------------------------------|-------|-------|
-    | `%.y` | `%.y` | `%.y` |
-    | `%.n` | `%.y` | `%.n` |
+<br>
 
-    <br>
+```hoon
+> =/  a  5
+  |((gth a 4) (lth a 7))
+%.y
+```
 
-    ```hoon
-    > =/  a  5
-      |((gth a 4) (lth a 7))
-    %.y
-    ```
+`?!` [wutzap](../../language/hoon/reference/rune/wut.md#wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*). Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
 
-- `?!` [wutzap](../../language/hoon/reference/rune/wut.md#wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*). Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
+|                              | `NOT` |
+|------------------------------|-------|
+| `%.y` | `%.n` |
+| `%.n` | `%.y` |
 
-    |                              | `NOT` |
-    |------------------------------|-------|
-    | `%.y` | `%.n` |
-    | `%.n` | `%.y` |
+<br>
 
-    <br>
+```hoon
+> !%.y
+%.n
 
-    ```hoon
-    > !%.y
-    %.n
-
-    > !%.n
-    %.y
-    ```
+> !%.n
+%.y
+```
 
 From these primitive operators, you can build other logical statements at need.
 
@@ -149,11 +147,11 @@ The logical operation `XOR` (i.e. *p*⊕*q* ; exclusive disjunction) yields true
 
 - Implement `XOR` as a [gate](../../glossary/gate.md) in Hoon.
 
-    ```hoon
-    |=  [p=?(%.y %.n) q=?(%.y %.n)]
-    ^-  ?(%.y %.n)
-    |(&(p !q) &(!p q))
-    ```
+```hoon
+|=  [p=?(%.y %.n) q=?(%.y %.n)]
+^-  ?(%.y %.n)
+|(&(p !q) &(!p q))
+```
 
 ### Exercise: Design a `NAND` Function {#exercise-design-a-nand-function}
 
@@ -181,28 +179,28 @@ The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands ar
 
 The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero. We implemented the similar Heaviside function [previously](B-syntax.md) using the `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) rune.
 
-- Compose a gate which implements the boxcar function,
+Compose a gate which implements the boxcar function,
 
-    $$
-    \text{boxcar}(x)
-    :=
-    \left(
-    \begin{matrix}
-    1, & 10 \leq x < 20 \\\\
-    0, & \text{otherwise} \\\\
-    \end{matrix}
-    \right)
-    $$
+$$
+\text{boxcar}(x)
+:=
+\left(
+\begin{matrix}
+1, & 10 \leq x < 20 \\\\
+0, & \text{otherwise} \\\\
+\end{matrix}
+\right)
+$$
 
-    <!--
-    $$
-    \text{boxcar}(x)
-    :=
-    \begin{matrix}
-    1, & 10 \leq x < 20 \\
-    0, & \text{otherwise} \\
-    \end{matrix}
-    $$
-    -->
+<!--
+$$
+\text{boxcar}(x)
+:=
+\begin{matrix}
+1, & 10 \leq x < 20 \\
+0, & \text{otherwise} \\
+\end{matrix}
+$$
+-->
 
-    Use Hoon logical operators to compress the logic into a single statement using at least one `AND` or `OR` operation.
+Use Hoon logical operators to compress the logic into a single statement using at least one `AND` or `OR` operation.

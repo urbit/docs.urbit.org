@@ -4,7 +4,7 @@ In the last lesson we looked at the most basic aspects of a Gall agent's structu
 
 ## Useful libraries {#useful-libraries}
 
-There are a couple of libraries that you'll very likely use in every agent you write. These are [`/lib/default-agent.hoon`](#default-agent) and [`/lib/debug.hoon`](#dbug). In brief, `/lib/default-agent.hoon` provides simple default behaviours for each agent arm, and `/lib/debug.hoon` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
+There are a couple of libraries that you'll very likely use in every agent you write. These are [`/lib/default-agent.hoon`](#default-agent) and [`/lib/dbug.hoon`](#dbug). In brief, `/lib/default-agent.hoon` provides simple default behaviours for each agent arm, and `/lib/dbug.hoon` lets you inspect the state and bowl of an agent from the dojo, for debugging purposes. Every example agent we look at from here on out will make use of both libraries.
 
 Let's look at each in more detail:
 
@@ -21,11 +21,11 @@ The library is a wet gate which takes two arguments: `agent` and `help`. The fir
 
 The wet gate returns an `+agent:gall` door with a sample of `$bowl:gall` - a typical agent core. Usually you would define an alias for it in a virtual arm ([explained below](#virtual-arms)) so it's simple to call.
 
-### `dbug` {#dbug}
+### `/lib/dbug.hoon` {#dbug}
 
-The `+dbug` library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `+agent:dbug` function which wraps your whole `+agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
+The dbug library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `+agent:dbug` function which wraps your whole `+agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
-To use it, you just import `/lib/debug.hoon` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
+To use it, you just import `/lib/dbug.hoon` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 
 ```hoon
 %-  agent:dbug
@@ -53,7 +53,7 @@ The generator also has a few useful optional arguments:
 
 By default it will retrieve your agent's state by using its `+on-save` arm, but if your app implements a scry endpoint with a path of `/x/dbug/state`, it will use that instead.
 
-We haven't yet covered some of the concepts described here, so don't worry if you don't fully understand `/lib/debug.hoon`'s functionality - you can refer back here later.
+We haven't yet covered some of the concepts described here, so don't worry if you don't fully understand `/lib/dbug.hoon`'s functionality - you can refer back here later.
 
 ## Virtual arms {#virtual-arms}
 
@@ -126,7 +126,7 @@ The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.ho
 
 Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `card` arm, which makes it simpler to reference the `card:agent:gall` type.
 
-After that core, we call `+agent:dbug` with our whole agent core as its argument. This allows us to use the `/lib/debug.hoon` features described earlier.
+After that core, we call `+agent:dbug` with our whole agent core as its argument. This allows us to use the `/lib/dbug.hoon` features described earlier.
 
 Inside our agent door, we've added an extra virtual arm and defined a couple deferred expressions:
 
@@ -176,7 +176,7 @@ The key takeaways are:
 
 - Libraries are imported with `/+`.
 - `/lib/default-agent.hoon` is a library that provides default behaviors for Gall agent arms.
-- `/lib/debug.hoon` is a library that lets you inspect the state and `$bowl` of an agent from the dojo, with the `+dbug` generator.
+- `/lib/dbug.hoon` is a library that lets you inspect the state and `$bowl` of an agent from the dojo, with the `+dbug` generator.
 - Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](../../language/hoon/reference/rune/lus.md#lustar) (`+*`) rune.
 - `.this` is a conventional deferred expression name for the agent core itself.
 - `.def` is a conventional deferred expression name for accessing arms in the `/lib/default-agent.hoon` library.

@@ -348,7 +348,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 "Some UTF-8: ἄλφα"
 ```
 
-**Note**: If you're using VS Code on Windows, you might need to manually change the line endings from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom. Urbit requires Unix-style line endings for Hoon files.
+**Note**: You might need to manually change the line endings in your IDE from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom. Urbit requires Unix-style line endings for Hoon files.
 
 ### Exercise: Triangular Function {#exercise-triangular-function}
  

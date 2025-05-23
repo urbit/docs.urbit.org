@@ -348,7 +348,7 @@ So far everything we have done has taken place on the `%base` desk. You have by 
 
 This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components?  We call this the [beak](../../system/kernel/clay/reference/data-types.md#beak). The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
 
-1. The **ship**, here `~zod`. (You can find this out on any ship using `our`.)
+1. The **ship**, here \~zod. (You can find this out on any ship using `our`.)
 2. The **desk**, here `%base`.
 3. A **revision number** or **timestamp**, here `2`. (The current system time is available as `now`.)  Clay tracks the history of each file, so older versions can be accessed by their revision number. (This is uncommon to need to do today.)
 

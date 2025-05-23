@@ -560,13 +560,13 @@ base
     └── todo.hoon
 ```
 
-In `~zod`'s dojo, we can `|commit %base`, and then start the `%todo` agent:
+In \~zod's dojo, we can `|commit %base`, and then start the `%todo` agent:
 
 ```
 |rein %base [& %todo]
 ```
 
-Now we need to spin up another fake ship. We'll use `~nut` in this example:
+Now we need to spin up another fake ship. We'll use \~nut in this example:
 
 ```
 urbit -F nut
@@ -585,13 +585,13 @@ base
     └── todo.hoon
 ```
 
-On `~nut` we can then `|commit %base`, and start the `%todo-watcher` agent:
+On \~nut we can then `|commit %base`, and start the `%todo-watcher` agent:
 
 ```
 |rein %base [& %todo-watcher]
 ```
 
-Now, on `~nut`, let's try subscribing:
+Now, on \~nut, let's try subscribing:
 
 ```
 > :todo-watcher [%sub ~zod]
@@ -599,14 +599,14 @@ Now, on `~nut`, let's try subscribing:
 %todo-watcher: Subscribe failed!
 ```
 
-Our `%todo-watcher` agent tried, but received a negative `%watch-ack` from `%todo`, because we haven't yet added `~nut` to the `friends` set of allowed ships. Let's now remedy that on `~zod`:
+Our `%todo-watcher` agent tried, but received a negative `%watch-ack` from `%todo`, because we haven't yet added \~nut to the `friends` set of allowed ships. Let's now remedy that on \~zod:
 
 ```
 > :todo &todo-action [%allow ~nut]
 >=
 ```
 
-Let's also add a couple of to-do tasks, on `~zod`:
+Let's also add a couple of to-do tasks, on \~zod:
 
 ```
 > :todo &todo-action [%add 'foo']
@@ -615,7 +615,7 @@ Let's also add a couple of to-do tasks, on `~zod`:
 >=
 ```
 
-If we now check its state with `+dbug`, we'll see they're in the `tasks` map, and `~nut` will also now be in the `friends` set:
+If we now check its state with `+dbug`, we'll see they're in the `tasks` map, and \~nut will also now be in the `friends` set:
 
 ```
 >   [ %0
@@ -633,7 +633,7 @@ If we now check its state with `+dbug`, we'll see they're in the `tasks` map, an
 >=
 ```
 
-Let's now try subscribing again on `~nut`:
+Let's now try subscribing again on \~nut:
 
 ```
 > :todo-watcher [%sub ~zod]
@@ -653,14 +653,14 @@ Let's now try subscribing again on `~nut`:
 
 As you can see, this time it's worked, and we've immediately received the initial `tasks` map.
 
-Now, let's try adding another task on `~zod`:
+Now, let's try adding another task on \~zod:
 
 ```
 > :todo &todo-action [%add 'baz']
 >=
 ```
 
-On `~nut`, we'll see it has received the `%fact` with the new task in it:
+On \~nut, we'll see it has received the `%fact` with the new task in it:
 
 ```
 [ %add
@@ -669,14 +669,14 @@ On `~nut`, we'll see it has received the `%fact` with the new task in it:
 ]
 ```
 
-Let's try toggle its done state on `~zod`:
+Let's try toggle its done state on \~zod:
 
 ```
 > :todo &todo-action [%toggle 170.141.184.505.349.082.779.030.192.959.445.270.528]
 >=
 ```
 
-`~nut` will again get the `%fact`:
+\~nut will again get the `%fact`:
 
 ```
 [ %toggle
@@ -684,7 +684,7 @@ Let's try toggle its done state on `~zod`:
 ]
 ```
 
-Recall that incoming subscriptions are stored in `sup.bowl`, and outgoing subscriptions are stored in `wex.bowl`. Let's have a look at the incoming subscription on `~zod`:
+Recall that incoming subscriptions are stored in `sup.bowl`, and outgoing subscriptions are stored in `wex.bowl`. Let's have a look at the incoming subscription on \~zod:
 
 ```
 >   [ path=/updates
@@ -695,7 +695,7 @@ Recall that incoming subscriptions are stored in `sup.bowl`, and outgoing subscr
 >=
 ```
 
-On `~nut`, let's look at the outgoing subscription:
+On \~nut, let's look at the outgoing subscription:
 
 ```
 >   [wire=/todos agnt=[~zod %todo] path=/updates ackd=%.y]
@@ -703,14 +703,14 @@ On `~nut`, let's look at the outgoing subscription:
 >=
 ```
 
-Now on `~zod`, let's try kicking `~nut` and removing it from our `friends` set:
+Now on \~zod, let's try kicking \~nut and removing it from our `friends` set:
 
 ```
 > :todo &todo-action [%kick ~nut]
 >=
 ```
 
-On `~nut`, we'll see it got the `%kick`, tried resubscribing automatically, but was rejected because `~nut` is no longer in `friends`:
+On \~nut, we'll see it got the `%kick`, tried resubscribing automatically, but was rejected because \~nut is no longer in `friends`:
 
 ```
 %todo-watcher: Got kick, resubscribing...

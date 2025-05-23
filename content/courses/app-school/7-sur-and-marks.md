@@ -177,8 +177,8 @@ Here's a very simple mark file for the `$action` structure we created in the [pr
 
 We've imported the `/sur/todo.hoon` structure library from the previous section, and we've defined the sample of the door as `=action:todo`, since that's what it will handle. Now let's consider the arms:
 
-- `+grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `noun` mark, so that's the core's only arm. The `noun` arm simply calls the `$action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `$action` type if it nests, and crashing otherwise.
-- `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `$action` data will come in as the sample of our door, and the `noun` arm simply returns it, since it's already a noun (as everything is in Hoon).
+- `+grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `%noun` mark, so that's the core's only arm. The `+noun` arm simply calls the `$action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `$action` type if it nests, and crashing otherwise.
+- `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `$action` data will come in as the sample of our door, and the `+noun` arm simply returns it, since it's already a `$noun` (as everything is in Hoon).
 - `+grad`: This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
 
 This mark file could be saved as `/mar/todo/action.hoon`, and then the `+on-poke` arm in the previous example could test for it instead of `%noun` like so:
@@ -212,7 +212,7 @@ You're free to use whatever logic you want for this, but the most common way is 
 ?>  =(src.bowl our.bowl)
 ```
 
-If we want to only allow messages from a particular set of ships, we could, for example, have a `(set @p)` in our agent's state called `.allowed`. Then, we can use the `has:in` set function to check:
+If we want to only allow messages from a particular set of ships, we could, for example, have a `(set @p)` in our agent's state called `.allowed`. Then, we can use the `+has:in` set function to check:
 
 ```hoon
 ?>  (~(has in allowed) src.bowl)
@@ -252,4 +252,4 @@ Permissions:
 ## Exercises {#exercises}
 
 - Have a quick look at the [tisket documentation](../../language/hoon/reference/rune/tis.md#tisket).
-- Try writing a mark file for the `update:todo` type, in a similar fashion to the `$action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.
+- Try writing a mark file for the `$update:todo` type, in a similar fashion to the `$action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.

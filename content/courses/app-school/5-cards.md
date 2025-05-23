@@ -91,7 +91,7 @@ The kinds of `$task`s can be divided into two categories:
 `%watch`, `%watch-as` and `%leave` all pertain to subscriptions.
 
 - `%watch`: A request to subscribe to the specified `path`. Once subscribed, your agent will receive any updates the other agent sends out on that `path`. You can subscribe more than once to the same `path`, but each subscription must have a separate `$wire` specified at the beginning of the [`%pass` card](#pass).
-- `%watch-as`: This is the same as `%watch`, except Gall will convert updates to the given `mark` before delivering them to your agent.
+- `%watch-as`: This is the same as `%watch`, except Gall will convert updates to the given `$mark` before delivering them to your agent.
 - `%leave`: Unsubscribe. The subscription to cancel is determined by the `$wire` at the beginning of the [`pass` card](#pass) rather than the subscription `path`, so its argument is just `~`.
 
 **Examples**
@@ -102,9 +102,9 @@ The kinds of `$task`s can be divided into two categories:
 
 Pokes are requests, actions, or just some data which you send to another agent. Unlike subscriptions, these are just one-off messages.
 
-A `%poke` contains a `$cage` of some data. A `$cage` is a cell of `[mark vase]`. The `mark` is just a `@tas` like `%foo`, and corresponds to a mark file in the `/mar` directory. We'll cover `mark`s in greater detail later. The `$vase` contains the actual data you're sending.
+A `%poke` contains a `$cage` of some data. A `$cage` is a cell of `[mark vase]`. The `$mark` is just a `@tas` like `%foo`, and corresponds to a mark file in the `/mar` directory. We'll cover `$mark`s in greater detail later. The `$vase` contains the actual data you're sending.
 
-The `%poke-as` task is the same as `%poke` except Gall will convert the `mark` in the `$cage` to the `mark` you specify before sending it off.
+The `%poke-as` task is the same as `%poke` except Gall will convert the `$mark` in the `$cage` to the `$mark` you specify before sending it off.
 
 **Examples**
 
@@ -173,7 +173,7 @@ These can be divided into two categories:
 
 A `%kick` gift takes a list of subscription `path`s and a `(unit ship)`, which is the ship to kick from those paths. If the `+unit` is null, all subscribers are kicked from the specified paths. Note that sometimes Gall can produce `%kick` gifts without your agent explicitly sending a card, due to networking conditions.
 
-`%fact`s are how updates are sent out to subscribers. The `paths` field is a list of subscription paths - all subscribers of the specified `path`s will receive the `%fact`. The `$cage` is the data itself - a cell of a `mark` and a `$vase`.
+`%fact`s are how updates are sent out to subscribers. The `paths` field is a list of subscription paths - all subscribers of the specified `path`s will receive the `%fact`. The `$cage` is the data itself - a cell of a `$mark` and a `$vase`.
 
 #### Examples
 

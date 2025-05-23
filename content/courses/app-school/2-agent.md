@@ -70,7 +70,7 @@ It goes something like this:
 
 When a crash occurs in the kernel, the system usually aborts the computation and discards the event as though it never happened. Gall on the other hand virtualizes all its agents, so this doesn't happen. Instead, when a crash occurs in an agent, Gall intercepts the crash and takes appropriate action depending on the kind of event that caused it. For example, if a poke from another ship caused a crash in the `on-poke` arm, Gall will respond to the poke with a "nack", a negative acknowledgement, telling the original ship the poke was rejected.
 
-What this means is that you can intentionally design your agent to crash in cases it can't handle. For example, if a poke comes in with an unexpected `mark`, it crashes. If a permission check fails, it crashes. This is quite different to most programs written in procedural languages, which must handle all exceptions to avoid crashing.
+What this means is that you can intentionally design your agent to crash in cases it can't handle. For example, if a poke comes in with an unexpected `$mark`, it crashes. If a permission check fails, it crashes. This is quite different to most programs written in procedural languages, which must handle all exceptions to avoid crashing.
 
 ## Example {#example}
 

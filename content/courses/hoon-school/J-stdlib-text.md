@@ -471,9 +471,9 @@ A naked [generator](../../glossary/generator.md) is merely a [gate](../../glossa
 
 We use `%say` generators when we want to provide something else in [Arvo](../../glossary/arvo.md), the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
 
-To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](../../glossary/mark.md) is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
+To that end, `%say` generators use `$mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](../../glossary/mark.md) is akin to a MIME type on the Arvo level. A `$mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `$mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
 
-So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `$cask` -- a pair of the output data and the `mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
+So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `gate` that produces a `$cask` -- a pair of the output data and the `$mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
 ```hoon
 :-  %say

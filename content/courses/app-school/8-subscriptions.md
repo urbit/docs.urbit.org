@@ -147,7 +147,7 @@ Assuming the `%watch` succeeded, your agent will now begin receiving any `%fact`
 [%fact =cage]
 ```
 
-You would typically handle such `%fact`s in the following manner: Test the `$wire`, test whether the `$sign` is a `%fact`, test the `mark` in the `$cage`, extract the data from the `$vase` in the `$cage`, and apply your logic. For example:
+You would typically handle such `%fact`s in the following manner: Test the `$wire`, test whether the `$sign` is a `%fact`, test the `$mark` in the `$cage`, extract the data from the `$vase` in the `$cage`, and apply your logic. For example:
 
 ```hoon
 ++  on-agent
@@ -724,7 +724,7 @@ On `~nut`, we'll see it got the `%kick`, tried resubscribing automatically, but 
 - Gall will automatically produce a negative `%watch-ack` if `on-watch` crashed, and a positive one if it was successful.
 - Incoming subscribers are recorded in the `sup` field of the `$bowl`.
 - `on-watch` can produce a `%fact` with a null `(list path)` which will go only to the new subscriber.
-- Updates are sent to subscribers in `%fact` cards, and contain a `$cage` with a `mark` and some data in a `$vase`.
+- Updates are sent to subscribers in `%fact` cards, and contain a `$cage` with a `$mark` and some data in a `$vase`.
 - `%fact`s are sent to all subscribers of the paths specified in the `(list path)`.
 - A subscriber can be kicked from subscription paths with a `%kick` card specifying the ship in the `(unit ship)`. All subscribers of the specified paths will be kicked if the `(unit ship)` is null.
 - An outgoing subscription can be initiated with a `%watch` card.

@@ -13,9 +13,9 @@ Whenever something tries to poke your agent, Gall calls your agent's `on-poke` a
   ...
 ```
 
-The sample of the gate is usually specified as a cell of `mark` and `$vase` rather than just `$cage`, simply because it's easier to work with.
+The sample of the gate is usually specified as a cell of `$mark` and `$vase` rather than just `$cage`, simply because it's easier to work with.
 
-Typically, you'd first test the `mark` with something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression, passing unexpected `mark`s to `default-agent`, which just crashes. We'll look at custom `mark`s in a subsequent lesson, but the basic pattern looks like:
+Typically, you'd first test the `$mark` with something like a [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) `?+` expression, passing unexpected `$mark`s to `default-agent`, which just crashes. We'll look at custom `$mark`s in a subsequent lesson, but the basic pattern looks like:
 
 ```hoon
 ?+  mark  (on-poke:def mark vase)
@@ -25,7 +25,7 @@ Typically, you'd first test the `mark` with something like a [wutlus](../../lang
 ==
 ```
 
-After testing the `mark`, you'd usually extract the `$vase` to the expected type, and then apply whatever logic you need. For example:
+After testing the `$mark`, you'd usually extract the `$vase` to the expected type, and then apply whatever logic you need. For example:
 
 ```hoon
 =/  action  !<(some-type vase)
@@ -232,7 +232,7 @@ Next, we'll try poking it. The dojo lets you poke agents with the following synt
 :agent-name &some-mark ['some' 'noun']
 ```
 
-If the `mark` part is omitted, it'll just default to `%noun`. Since our agent only takes a `%noun` mark, we can skip that. The rest will be packed in a vase by the dojo and delivered as a poke, so we can do:
+If the `$mark` part is omitted, it'll just default to `%noun`. Since our agent only takes a `%noun` mark, we can skip that. The rest will be packed in a vase by the dojo and delivered as a poke, so we can do:
 
 ```
 > :pokeme %inc

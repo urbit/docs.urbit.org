@@ -16,7 +16,7 @@ A note on `$care`s: Cares are most carefully implemented by Clay, where they spe
 
 #### `%x`
 
-Gall handles `%x` specially, and expects an extra field at the end of the `path` that specifies the `mark` to return. Gall will take the data produced by the specified endpoint and try to convert it to the given mark, crashing if the mark conversion fails. The extra field specifying the mark is not passed through to the agent itself. Here's a couple of examples:
+Gall handles `%x` specially, and expects an extra field at the end of the `path` that specifies the `$mark` to return. Gall will take the data produced by the specified endpoint and try to convert it to the given mark, crashing if the mark conversion fails. The extra field specifying the mark is not passed through to the agent itself. Here's a couple of examples:
 
 ```
 > =g -build-file /=groups=/sur/groups/hoon
@@ -78,7 +78,7 @@ If it requires a more complex expression to retrieve or compose the data, you ca
 'baz'
 ```
 
-Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `mark` so it can easily be converted to JSON when accessed from the web.
+Previously we discussed custom `mark` files. Such mark files are most commonly used when the data might be accessed through Eyre's HTTP API, and therefore require JSON conversion methods. We cover such things separately in the [Full-Stack Walkthrough](../app-school-full-stack), but note that if that's the case for your agent, you may wish to also have your scry endpoints return data with your custom `$mark` so it can easily be converted to JSON when accessed from the web.
 
 In some cases, typically with scry `path`s that contain wildcards like the `[%x %blah @ ~]` example above, your agent may not always be able to find the requested data. In such cases, you can just produce a cell of `[~ ~]` for the `(unit (unit cage))`. Keep in mind, however, that this will result in a crash for the dotket expression which initiated the scry. In some cases you may want that, but in other cases you may not, so instead you could wrap the data inside the `$vase` in a `+unit` and have _that_ be null instead. It all depends on the needs of your particular application and its clients.
 
@@ -249,7 +249,7 @@ dojo: failed to process input
 - Scries will fail if the scry endpoint does not exist, the requested data does not exist, or the data does not nest in the return type specified.
 - Scries can only be performed on the local ship, not on remote ships.
 - Gall scries with an agent name in the `desk` field and without an extra empty element at the beginning of the path will be passed to that agent's `on-peek` arm for handling.
-- Gall scries with a `%x` `$care` take a `mark` at the end of the scry `path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
+- Gall scries with a `%x` `$care` take a `$mark` at the end of the scry `path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
 - The `on-peek` arm takes a `path` with the `care` in the head and the `path` part of the scry in the tail, like `/x/some/path`.
 - The `on-peek` arm produces a `(unit (unit cage))`. The outer `+unit` is null if the scry endpoint does not exist, and the inner `+unit` is null if the data does not exist.
 

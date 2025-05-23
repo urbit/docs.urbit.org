@@ -186,7 +186,7 @@ It follows from this definition that a gate is a special case of a door. A gate 
 
 Doors are created with the `|_` [barcab](../../language/hoon/reference/rune/bar.md#_-barcab) rune. Doors get used for a few different purposes in the standard library:
 
-- Instrumenting and storing persistent data structures like `map`s (this module and the next)
+- Instrumenting and storing persistent data structures like `+map`s (this module and the next)
 - Implementing state machines (the [subject-oriented programming module](O-subject.md))
 
 One *big* pitfall for thinking about doors is thinking of them as “containing” gates, as if they were more like “objects”. Instead, think of them the same way as you think of gates, just that they can be altered at a higher level.
@@ -396,7 +396,7 @@ Recall the quadratic equation [door](../../glossary/door.md).
 - Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
 
 
-## Key-Value Pairs: `map` as Door {#key-value-pairs-map-as-door}
+## Key-Value Pairs: `+map` as Door {#key-value-pairs-map-as-door}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183%20-%20Maps%20and%20Sets.mp4" %}
 
@@ -411,13 +411,13 @@ In general terms, a [map](../../language/hoon/reference/stdlib/2o.md#map) is a p
 | 'Porsche'   | 'Boxster'  |
 | 'Bugatti'   | 'Type 22'  |
 
-While `map` is the [mold](../../glossary/mold.md) or type of the value, the [door](../../glossary/door.md) which affords `map`-related functionality is named [`+by`](../../language/hoon/reference/stdlib/2i.md#by). (This felicitously affords us a way to read `map` operations in an English-friendly phrasing.)
+While `+map` is the [mold](../../glossary/mold.md) or type of the value, the [door](../../glossary/door.md) which affords `+map`-related functionality is named [`+by`](../../language/hoon/reference/stdlib/2i.md#by). (This felicitously affords us a way to read `+map` operations in an English-friendly phrasing.)
 
-In Urbit, all values are static and never change. (This is why we “overwrite” or replace the values in a limb to change it with `%=` [centis](../../language/hoon/reference/rune/cen.md#centis).)  This means that when we build a `map`, we often rather awkwardly replace it with its modified value explicitly.
+In Urbit, all values are static and never change. (This is why we “overwrite” or replace the values in a limb to change it with `%=` [centis](../../language/hoon/reference/rune/cen.md#centis).)  This means that when we build a `+map`, we often rather awkwardly replace it with its modified value explicitly.
 
-We'll build a color `map`, from a `@tas` of a [color's name](https://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors) to its HTML hexadecimal representation as a `@ux` hex value.
+We'll build a color `+map`, from a `@tas` of a [color's name](https://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors) to its HTML hexadecimal representation as a `@ux` hex value.
 
-We can produce a `map` from a [list](../../glossary/list.md) of key-value cells using the [`+malt`](../../language/hoon/reference/stdlib/2l.md#malt) function. Using `@tas` terms as keys (which is common) requires us to explicitly mark the list as `(list (pair @tas @ux))`:
+We can produce a `+map` from a [list](../../glossary/list.md) of key-value cells using the [`+malt`](../../language/hoon/reference/stdlib/2l.md#malt) function. Using `@tas` terms as keys (which is common) requires us to explicitly mark the list as `(list (pair @tas @ux))`:
 
 ```hoon
 =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
@@ -443,7 +443,7 @@ We'll see a `mull-grow`, a `mull-nice`, and a [nest-fail](../../language/hoon/re
 
 (As an aside, `+put:by` is also how you'd replace a key's value.)
 
-The point of a `map` is to make it easy to retrieve data values given their appropriate key. Use [+get:by](../../language/hoon/reference/stdlib/2i.md#getby):
+The point of a `+map` is to make it easy to retrieve data values given their appropriate key. Use [+get:by](../../language/hoon/reference/stdlib/2i.md#getby):
 
 ```hoon
 > (~(get by colors) %orange)
@@ -452,7 +452,7 @@ The point of a `map` is to make it easy to retrieve data values given their appr
 
 What is that [cell](../../glossary/cell.md)?  Wasn't the value stored as `0xff.8833`?  Well, one fundamental problem that a [map](../../language/hoon/reference/stdlib/2o.md#map) needs to solve is to allow us to distinguish an _empty_ result (or failure to locate a value) from a _zero_ result (or an answer that's actually zero). To this end, the [unit](../../language/hoon/reference/stdlib/1c.md#unit) was introduced, a type union of a `~` (for no result) and `[~ item]` (for when a result exists).
 
-- What does `[~ ~]` mean when returned from a `map`?
+- What does `[~ ~]` mean when returned from a `+map`?
 
 `+unit`s are common enough that they have their own syntax and set of operational functions. We'll look at them more in [the next module](L-struct.md).
 
@@ -800,15 +800,15 @@ The expression `(weld q p)` uses [`+weld`](../../language/hoon/reference/stdlib/
   $(chart (~(put by chart) i.key-position i.value-result), key-position t.key-position, value-result t.value-result)
 ```
 
-The `+map-maker` arm, as the name implies, takes two tapes and creates a [map](../../language/hoon/reference/stdlib/2o.md#map) out of them. A `map` is a type equivalent to a dictionary in other languages: it's a data structure that associates a key with a value. If, for example, we wanted to have an association between "a" and 1 and "b" and 2, we could use a `map`.
+The `+map-maker` arm, as the name implies, takes two tapes and creates a [map](../../language/hoon/reference/stdlib/2o.md#map) out of them. A `+map` is a type equivalent to a dictionary in other languages: it's a data structure that associates a key with a value. If, for example, we wanted to have an association between "a" and 1 and "b" and 2, we could use a `+map`.
 
 `|= [a=tape b=tape]` builds a gate that takes two tapes, `.a` and `.b`, as its sample.
 
-`^- (map @t @t)` casts the gate to a `map` with a `$cord` (or `@t`) key and a `$cord` value.
+`^- (map @t @t)` casts the gate to a `+map` with a `$cord` (or `@t`) key and a `$cord` value.
 
 You might wonder, if our gate in this arm takes `$tape`s, why then are we producing a map of `$cord` keys and values?
 
-As we discussed earlier, a [tape](../../glossary/tape.md) is a list of `$cord`s. In this case what we are going to do is map a single element of a `$tape` (either our alphabet or shifted-alphabet) to an element of a different `$tape` (either our shifted-alphabet or our alphabet). This pair will therefore be a pair of `$cord`s. When we go to use this `map` to convert our incoming `.msg`, we will take each element (`$cord`) of our `.msg` `$tape`, use it as a key when accessing our `map` and get the corresponding value from that position in the `map`. This is how we're going to encode or decode our `.msg` `$tape`.
+As we discussed earlier, a [tape](../../glossary/tape.md) is a list of `$cord`s. In this case what we are going to do is map a single element of a `$tape` (either our alphabet or shifted-alphabet) to an element of a different `$tape` (either our shifted-alphabet or our alphabet). This pair will therefore be a pair of `$cord`s. When we go to use this `+map` to convert our incoming `.msg`, we will take each element (`$cord`) of our `.msg` `$tape`, use it as a key when accessing our `+map` and get the corresponding value from that position in the `+map`. This is how we're going to encode or decode our `.msg` `$tape`.
 
 `=| chart=(map @t @t)` adds a [noun](../../glossary/noun.md) to the subject with the default value of the `(map @t @t)` type, and gives that noun the face "chart".
 
@@ -818,7 +818,7 @@ If the two `$tape`s are of the same length, we continue on to create a trap. `|-
 
 `?: |(?=(~ key-position) ?=(~ value-result))` checks if either `$tape` is empty. If this is true, the `+map-maker` arm is finished and can return `.chart`, the [map](../../language/hoon/reference/stdlib/2o.md#map) that we have been creating.
 
-If the above test finds that the `$tape`s are not empty, we trigger a recursion that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `map` where the head of the `$tape` `.a` maps to the value of the head of `$tape` `.b` with `~(put by chart)`, our calling of the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) map-engine [core](../../glossary/core.md) (note that "\~(\<wing> \<door> \<sample>)" is a shorthand for "%~  \<wing>  \<door>  \<sample>" (see the `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `.a` and `.b` to their tails using `a t.a, b t.b`.
+If the above test finds that the `$tape`s are not empty, we trigger a recursion that constructs our `+map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `+map` where the head of the `$tape` `.a` maps to the value of the head of `$tape` `.b` with `~(put by chart)`, our calling of the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) map-engine [core](../../glossary/core.md) (note that "\~(\<wing> \<door> \<sample>)" is a shorthand for "%~  \<wing>  \<door>  \<sample>" (see the `%~` [censig](../../language/hoon/reference/rune/cen.md#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `.a` and `.b` to their tails using `a t.a, b t.b`.
 
 We have three related arms to look at next, `+decoder`, `+encoder`, and `+space-adder`. `+space-adder` is required for the other two, so we'll look at it first.
 
@@ -850,11 +850,11 @@ We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [b
 
 In both cases, we create a gate that accepts a `@ud` named `.steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `.value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `+alpha`. `+alpha` is our arm which contains a `$tape` of the entire alphabet. The `.value-tape` will be the list of values in our [map](../../language/hoon/reference/stdlib/2o.md#map).
 
-In `+decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `+space-adder` it will be the list of keys in our `map`.
+In `+decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `+space-adder` it will be the list of keys in our `+map`.
 
-The expressions `(space-adder alpha value-tape)`, for `+encoder`, and `(space-adder key-tape alpha)`, for `+decoder`, both produce a `map` that has the first argument as the keys and the second as the values.
+The expressions `(space-adder alpha value-tape)`, for `+encoder`, and `(space-adder key-tape alpha)`, for `+decoder`, both produce a `+map` that has the first argument as the keys and the second as the values.
 
-If our two inputs to `+space-adder` were `"abcdefghijklmnopqrstuvwxyz"` and `"bcdefghijklmnopqrstuvwxyza"`, we would get a `map` where `'a'` maps to `'b'`, `'b'` to `'c'` and so on. By doing this we can produce a `map` that gives us a translation between the alphabet and our shifted alphabet, or vice versa.
+If our two inputs to `+space-adder` were `"abcdefghijklmnopqrstuvwxyz"` and `"bcdefghijklmnopqrstuvwxyza"`, we would get a `+map` where `'a'` maps to `'b'`, `'b'` to `'c'` and so on. By doing this we can produce a `+map` that gives us a translation between the alphabet and our shifted alphabet, or vice versa.
 
 Still with us? Good. We are finally about to use all the stuff that we've walked through.
 
@@ -884,7 +884,7 @@ Both `+shift` and `+unshift` take two arguments: our `.message`, the `$tape` tha
 
 `+operate` produces a `$tape`. The `%+` [cenlus](../../language/hoon/reference/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../language/hoon/reference/stdlib/2b.md#turn). This arm takes two arguments, a [list](../../glossary/list.md) and a [gate](../../glossary/gate.md) to apply to each element of the `+list`.
 
-In this case, the `$gate` we are applying to our `.message` uses the [got](../../language/hoon/reference/stdlib/2i.md#gotby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) door with our `.shift-map` as the [sample](../../glossary/sample.md) (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `$cord` in our `.message`, one by one and replace it with the value from our `map` (either the encoded or decoded version).
+In this case, the `$gate` we are applying to our `.message` uses the [got](../../language/hoon/reference/stdlib/2i.md#gotby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) door with our `.shift-map` as the [sample](../../glossary/sample.md) (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `$cord` in our `.message`, one by one and replace it with the value from our `+map` (either the encoded or decoded version).
 
 Let's give our arm Caesar's famous statement (translated into English!) and get our left-cipher and right-cipher.
 

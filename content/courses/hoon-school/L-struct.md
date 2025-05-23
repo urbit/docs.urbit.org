@@ -96,7 +96,7 @@ $(hay r.hay)
 
 A [set](../../language/hoon/reference/stdlib/2o.md#set) is rather like a [list](../../glossary/list.md) except that each entry can only be represented once. As with a [map](../../language/hoon/reference/stdlib/2o.md#map), a `set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values. (`set`s also don't have an order, so they're basically a bag of unique values.)
 
-`set` operations are provided by [`+in`](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `map`/[`+by`](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
+`set` operations are provided by [`+in`](../../language/hoon/reference/stdlib/2h.md#in). Most names are similar to `+map`/[`+by`](../../language/hoon/reference/stdlib/2i.md#by) operations when applicable.
 
 [`+silt`](../../language/hoon/reference/stdlib/2l.md#silt) produces a `set` from a `+list`:
 
@@ -235,9 +235,9 @@ A [vase](../../glossary/vase.md) is a pair of type and value, such as that retur
 
 [maps](../../language/hoon/reference/stdlib/2o.md#map) and [sets](../../language/hoon/reference/stdlib/2o.md#set) are frequently used in the standard library and in the extended ecosystem. There are other common patterns which recur often enough that they have their own names:
 
-- [`+jar`](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `map` of `+list`s. `+jar` uses the [`+ja`](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
+- [`+jar`](../../language/hoon/reference/stdlib/2o.md#jar) is a mold for a `+map` of `+list`s. `+jar` uses the [`+ja`](../../language/hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
 
-- [`+jug`](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `map` of `set`s. `+jug` uses the [`+ju`](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
+- [`+jug`](../../language/hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `+map` of `set`s. `+jug` uses the [`+ju`](../../language/hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../language/hoon/reference/stdlib/2o.md#set).)
 
 - [`+mip`](../../language/hoon/reference/mip.md#mip) is a mold for a map of maps. `+mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
 

@@ -38,7 +38,7 @@ Agentio contains a number of convenience functions to make common agent tasks si
 
 As we discussed in the previous section, our state will contain a `$journal` structure containing all our journal entries, and a `$log` structure containing the update log. These are both _ordered maps_, defined as `((mop id txt) gth)` and `((mop @ action) lth)` respectively. We can therefore define our "versioned state" as `[%0 =journal =log]`, in the usual manner.
 
-We've define `$card` for convenience as usual, and we've also added three more arms. The first two relate to our two ordered maps. If you'll recall, an ordinary `map` is called with the `+by` door in the standard library, like so:
+We've define `$card` for convenience as usual, and we've also added three more arms. The first two relate to our two ordered maps. If you'll recall, an ordinary `+map` is called with the `+by` door in the standard library, like so:
 
 ```hoon
 (~(get by foo) %bar)

@@ -39,7 +39,7 @@ The majority of Gall agents simply take `%x` `$care`s in their scry endpoints, b
 
 When a scry is performed on a Gall agent, Gall will strip out some extraneous parts, and deliver it to the agent's `+on-peek` arm as a `$path`. The `$path` will only have two components from the diagram above: The "care" and the "path". For example, a scry of `.^(groups:g %gx /=groups=/groups/noun)` will come into the `+on-peek` arm of `%groups` as `/x/groups`.
 
-The `+on-peek` arm produces a `(unit (unit cage))`. The reason for the double `+unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved, and interprets `[~ ~]` to means it resolved to nothing. In either case the dotket expression which initiated the scry will crash. The `cage` will contain the actual data to return.
+The `+on-peek` arm produces a `(unit (unit cage))`. The reason for the double `+unit` is that Arvo interprets `~` to mean the scry path couldn't be resolved, and interprets `[~ ~]` to means it resolved to nothing. In either case the dotket expression which initiated the scry will crash. The `$cage` will contain the actual data to return.
 
 An ordinary `+on-peek` arm, therefore, begins like so:
 

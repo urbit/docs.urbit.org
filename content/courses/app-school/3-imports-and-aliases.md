@@ -19,11 +19,11 @@ The `default-agent` library lives in `/lib/default-agent/hoon` of the `%base` de
 
 The library is a wet gate which takes two arguments: `agent` and `help`. The first is your agent core itself, and the second is a `?`. If `help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `help` as `%.n`.
 
-The wet gate returns an `agent:gall` door with a sample of `$bowl:gall` - a typical agent core. Usually you would define an alias for it in a virtual arm ([explained below](#virtual-arms)) so it's simple to call.
+The wet gate returns an `+agent:gall` door with a sample of `$bowl:gall` - a typical agent core. Usually you would define an alias for it in a virtual arm ([explained below](#virtual-arms)) so it's simple to call.
 
 ### `dbug` {#dbug}
 
-The `+dbug` library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
+The `+dbug` library lets you inspect the state and `$bowl` of your agent from the dojo. It includes an `agent:dbug` function which wraps your whole `+agent:gall` door, adding its extra debugging functionality while transparently passing events to your agent for handling like usual.
 
 To use it, you just import `+dbug` with a [faslus](../../language/hoon/reference/rune/fas.md#faslus) (`/+`) rune at the beginning, then add the following line directly before the door of your agent:
 

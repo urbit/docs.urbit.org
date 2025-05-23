@@ -91,7 +91,7 @@ Here's about the simplest valid Gall agent:
 --
 ```
 
-This is just a dummy agent that does absolutely nothing - it has no state and rejects all messages by crashing. Typically we'd cast this to an `agent:gall`, but in this instance we won't so it's easier to examine its structure in the dojo. We'll get to what each of the arms do later. For now, we'll just consider a few particular points.
+This is just a dummy agent that does absolutely nothing - it has no state and rejects all messages by crashing. Typically we'd cast this to an `+agent:gall`, but in this instance we won't so it's easier to examine its structure in the dojo. We'll get to what each of the arms do later. For now, we'll just consider a few particular points.
 
 Firstly, note its structure - it's a door (created with `|_`) with a sample of `$bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../language/hoon/reference/irregular.md#buctis)).
 

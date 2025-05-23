@@ -2,11 +2,11 @@
 
 _This module introduces how [cores](../../glossary/core.md) can be extended for different behavioral patterns. It may be considered optional and skipped if you are speedrunning Hoon School._
 
-Cores can expose and operate with many different assumptions about their inputs and structure. `[battery payload]` describes the top-level structure of a core, but within that we already know other requirements can be enforced, like `[battery [sample context]]` for a [gate](../../glossary/gate.md), or no sample for a [trap](../../glossary/trap.md). Cores can also expose and operate on their input values with different relationships. This lesson is concerned with examining [_genericity_](https://en.wikipedia.org/wiki/Generic_programming) including certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism), which allows flexibility in type, and [_variance_](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which allows cores to use different sets of rules as they evaluate.
+Cores can expose and operate with many different assumptions about their inputs and structure. "\[battery payload]" describes the top-level structure of a core, but within that we already know other requirements can be enforced, like "\[battery \[sample context]]" for a [gate](../../glossary/gate.md), or no sample for a [trap](../../glossary/trap.md). Cores can also expose and operate on their input values with different relationships. This lesson is concerned with examining [_genericity_](https://en.wikipedia.org/wiki/Generic_programming) including certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism), which allows flexibility in type, and [_variance_](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which allows cores to use different sets of rules as they evaluate.
 
 If cores never changed, we wouldn't need polymorphism. Of course, nouns are immutable and never change, but we use them as templates to construct new nouns around.
 
-Suppose we take a core, a [cell](../../glossary/cell.md) `[battery payload]`, and replace payload with a different [noun](../../glossary/noun.md). Then, we invoke an [arm](../../glossary/arm.md) from the [battery](../../glossary/battery.md).
+Suppose we take a core, a [cell](../../glossary/cell.md) of \[battery payload], and replace payload with a different [noun](../../glossary/noun.md). Then, we invoke an [arm](../../glossary/arm.md) from the [battery](../../glossary/battery.md).
 
 Is this legal?  Does it make sense?  Every function call in Hoon does this, so we'd better make it work well.
 

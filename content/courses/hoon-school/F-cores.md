@@ -273,7 +273,7 @@ So far we have introduced and worked with a few key structures:
 
 Some of them are _data_, like raw values: `0x1234.5678.abcd` and `[5 6 7]`. Others are _code_, programs that do something. What unifies all of these under the hood?
 
-A [core](../../glossary/core.md) is a cell pairing operations to data. Formally, we'll say a core is a cell `[battery payload]`, where [battery](../../glossary/battery.md) describes the things that can be done (the operations) and [payload](../../glossary/payload.md) describes the data on which those operations rely. (For many English speakers, the word “battery” evokes a [voltaic pile](https://en.wikipedia.org/wiki/Voltaic_pile) more than a bank of guns, but the artillery metaphor is a better mnemonic for `[battery payload]`.)
+A [core](../../glossary/core.md) is a cell pairing operations to data. Formally, we'll say a core is a cell \[battery payload], where [battery](../../glossary/battery.md) describes the things that can be done (the operations) and [payload](../../glossary/payload.md) describes the data on which those operations rely. (For many English speakers, the word “battery” evokes a [voltaic pile](https://en.wikipedia.org/wiki/Voltaic_pile) more than a bank of guns, but the artillery metaphor is a better mnemonic for \[battery payload].)
 
 **Cores are the most important structural concept for you to grasp in Hoon.**  Everything nontrivial is a core. Some of the runes you have used already produce cores, like the gate. That is, a gate marries a battery (the operating code) to the payload (the input values AND the [subject](../../glossary/subject.md) or operating context).
 
@@ -410,7 +410,7 @@ This statement means that we recalculate the `$` buc arm of the current subject 
 
 ### What is a Gate? {#what-is-a-gate}
 
-A core is a cell: `[battery payload]`.
+A core is a cell of \[battery payload].
 
 A gate is a core with two distinctive properties:
 

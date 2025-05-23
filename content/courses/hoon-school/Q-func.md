@@ -76,7 +76,7 @@ Or to double each item in a [list](../../glossary/list.md) of atoms:
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))
 ~[22 44 66 88]
 ```
-`+turn` is Hoon's version of Haskell's map.
+`+turn` is Hoon's version of Haskell's `map`.
 
 We can rewrite the Caesar cipher program using turn:
 
@@ -110,7 +110,7 @@ c
 
 ### Exercise: Calculate a Factorial {#exercise-calculate-a-factorial}
 
-- Use `+reel` to produce a [gate](../../glossary/gate.md) which calculates the factorial of a number.
+Use `+reel` to produce a [gate](../../glossary/gate.md) which calculates the factorial of a number.
 
 
 ## Classic Operations {#classic-operations}

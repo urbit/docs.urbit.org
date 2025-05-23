@@ -245,7 +245,7 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 
 </details>
 
-This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `action`s and `update`s for subscribers.
+This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `$action`s and `$update`s for subscribers.
 
 **`/mar/todo/action.hoon`**
 
@@ -264,7 +264,7 @@ This file defines most of the types for the agents. The list of to-do tasks will
 --
 ```
 
-This is a very simple mark file for the `action` type.
+This is a very simple mark file for the `$action` type.
 
 **`/mar/todo/update.hoon`**
 
@@ -283,7 +283,7 @@ This is a very simple mark file for the `action` type.
 --
 ```
 
-This is a very simple mark file for the `update` type.
+This is a very simple mark file for the `$update` type.
 
 ### Publisher {#publisher}
 
@@ -405,7 +405,7 @@ This is a very simple mark file for the `update` type.
 
 </details>
 
-This is the publisher agent, `todo.hoon`. The bulk of its logic is in its `+on-poke` arm, where it handles the various possible actions like `%add`ing a task, `%toggle`ing its "done" state, `%rename`ing a task, and so on. It also has a couple of `action`s for `%allow`ing and `%kick`ing subscribers.
+This is the publisher agent, `todo.hoon`. The bulk of its logic is in its `+on-poke` arm, where it handles the various possible actions like `%add`ing a task, `%toggle`ing its "done" state, `%rename`ing a task, and so on. It also has a couple of `$action`s for `%allow`ing and `%kick`ing subscribers.
 
 Most of these cases both update the state of the agent, as well as producing `%fact` cards to send out to subscribers with the new data.
 

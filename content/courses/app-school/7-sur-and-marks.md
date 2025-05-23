@@ -16,7 +16,7 @@ With this approach, your agent can simply import the structures file and make us
 
 #### Example
 
-Let's look at a practical example. If we were creating a simple To-Do app, our agent might accept a few possible `action`s as pokes: Adding a new task, deleting a task, toggling a task's "done" status, and renaming an existing task. It might also be able to send `update`s out to subscribers when these events occur. If our agent were named `%todo`, it might have the following structure in `/sur/todo.hoon`:
+Let's look at a practical example. If we were creating a simple To-Do app, our agent might accept a few possible `$action`s as pokes: Adding a new task, deleting a task, toggling a task's "done" status, and renaming an existing task. It might also be able to send `$update`s out to subscribers when these events occur. If our agent were named `%todo`, it might have the following structure in `/sur/todo.hoon`:
 
 <details>
 <summary>/sur/todo.hoon</summary>
@@ -121,7 +121,7 @@ Then, in its `+on-poke` arm, it could handle these actions in the following mann
   --
 ```
 
-Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
+Let's break this down a bit. Firstly, our `+on-poke` arm includes a [barket](../../language/hoon/reference/rune/bar.md#barket) (`|^`) rune. Barket creates a core with a `$` arm that's computed immediately. We extract the `$vase` to the `action:todo` type and immediately pass it to the `handle-poke` arm of the core created with the barket. This `handle-poke` arm tests what kind of `$action` it's received by checking its head. It then updates the state, and also sends an update to subscribers, as appropriate. Don't worry too much about the `%give` `$card` for now - we'll cover subscriptions in the next lesson.
 
 Notice that the `handle-poke` arm produces a `(quip card _state)` rather than `(quip card _this)`. The call to `handle-poke` is also part of the following expression:
 
@@ -158,7 +158,7 @@ In the context of Gall agents, you'll likely just use marks for sending and rece
 
 #### Example
 
-Here's a very simple mark file for the `action` structure we created in the [previous section](#sur):
+Here's a very simple mark file for the `$action` structure we created in the [previous section](#sur):
 
 ```hoon
 /-  todo
@@ -177,8 +177,8 @@ Here's a very simple mark file for the `action` structure we created in the [pre
 
 We've imported the `/sur/todo.hoon` structure library from the previous section, and we've defined the sample of the door as `=action:todo`, since that's what it will handle. Now let's consider the arms:
 
-- `+grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `noun` mark, so that's the core's only arm. The `noun` arm simply calls the `action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `action` type if it nests, and crashing otherwise.
-- `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `action` data will come in as the sample of our door, and the `noun` arm simply returns it, since it's already a noun (as everything is in Hoon).
+- `+grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `noun` mark, so that's the core's only arm. The `noun` arm simply calls the `$action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `$action` type if it nests, and crashing otherwise.
+- `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `$action` data will come in as the sample of our door, and the `noun` arm simply returns it, since it's already a noun (as everything is in Hoon).
 - `+grad`: This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
 
 This mark file could be saved as `/mar/todo/action.hoon`, and then the `+on-poke` arm in the previous example could test for it instead of `%noun` like so:

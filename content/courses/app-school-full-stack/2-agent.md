@@ -97,7 +97,7 @@ Here we setup our agent core and define the three lifecycle arms. Since we only 
   =/  act  !<(action vase)
   =.  state  (poke-action act)
   :_  this(log (put:log-orm log now act))
-  ~[(fact:io journal-update+!>(`update`[now act]) ~[/updates])]
+  ~[(fact:io journal-update+!>(`$update`[now act]) ~[/updates])]
   ::
   ++  poke-action
     |=  act=action
@@ -139,7 +139,7 @@ Back in the main part of `+on-poke`, `+poke-action` updates the state with the n
 
 ```hoon
 :_  this(log (put:log-orm log now act))
-~[(fact:io journal-update+!>(`update`[now act]) ~[/updates])]
+~[(fact:io journal-update+!>(`$update`[now act]) ~[/updates])]
 ```
 
 We add the timestamp to the action, converting it to a logged update. We add it to the `$log` update log using `+put:log-orm`, and also send the logged update out to subscribers on the `/updates` subscription path. We haven't written our mark files yet, but `%journal-update` is the mark we'll use for `$update`s, so we pack the `$update` in a `$vase` and add the mark to make it a `$cage`. Notice we're using the `+fact` function in `agentio` (which we aliased as `io`) rather than manually composing the `%fact`.

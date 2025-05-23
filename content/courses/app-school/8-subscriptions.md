@@ -50,7 +50,7 @@ In the last case of `[%bar %baz *]`, we're allowing a variable number of element
 
 Permissions can be checked as described in the previous lesson, comparing the source `@p` of the request in `src.bowl` to `our.bowl` or any other logic you find appropriate.
 
-If a permission check fails, the path is not valid, or any other reason you want to reject the subscription request, your agent can simply crash. The behavior here is the same as with `+on-poke` - Gall will send a `%watch-ack` card in response, which is either an ack (positive acknowledgement) or a nack (negative acknowledgement). The `(unit tang)` in the `%watch-ack` will be null if processing succeeded, and non-null if it crashed, with a stack trace in the `$tang`. Like with `poke-ack`s, you don't need to explicitly send a `%watch-ack` - Gall will do it automatically.
+If a permission check fails, the path is not valid, or any other reason you want to reject the subscription request, your agent can simply crash. The behavior here is the same as with `+on-poke` - Gall will send a `%watch-ack` card in response, which is either an ack (positive acknowledgement) or a nack (negative acknowledgement). The `(unit tang)` in the `%watch-ack` will be null if processing succeeded, and non-null if it crashed, with a stack trace in the `$tang`. Like with `%poke-ack`s, you don't need to explicitly send a `%watch-ack` - Gall will do it automatically.
 
 As well as sending a `%watch-ack`, Gall will also record the subscription in the `.sup` field of the `$bowl`, if it succeeded. Then, when you send updates out to subscribers of the `$path` in question, the new subscriber will begin receiving them as well.
 
@@ -102,7 +102,7 @@ Now that we've covered incoming subscriptions, we'll look at the other side of i
 [%pass /some/wire %agent [~some-ship %some-agent] %watch /some/path]
 ```
 
-If your agent's subscription request is successful, updates will come in to your agent's `+on-agent` arm on the `$wire` specified (`/some/wire` in this example). The `$wire` can be anything you like - its purpose is for your agent to figure out which subscription the updates came from. The `[ship term]` pair specifies the ship and agent you're trying to subscribe to, and the final `$path` (`/some/path` in this example) is the path you want to subscribe to - a `$path` the target agent has defined in its `+on-watch` arm.
+If your agent's subscription request is successful, updates will come in to your agent's `+on-agent` arm on the `$wire` specified (`/some/wire` in this example). The `$wire` can be anything you like; its purpose is for your agent to figure out which subscription the updates came from. The `[ship term]` pair specifies the ship and agent you're trying to subscribe to, and the final `$path` (`/some/path` in this example) is the path you want to subscribe to: a `$path` the target agent has defined in its `+on-watch` arm.
 
 Gall will deliver the `$card` to the target agent and call that agent's `+on-watch` arm, which will process the request [as described above](#incoming-subscription-requests), accept or reject it, and send back either a positive or negative `%watch-ack`. The `%watch-ack` will come back in to your agent's `+on-agent` arm in a `$sign`, along with the `$wire` you specified (`/some/wire` in this example). Recall in the lesson on pokes, the `+on-agent` arm starts with:
 
@@ -204,11 +204,11 @@ The subscription to be ended is determined by the combination of the `$wire`, sh
 
 ## Example {#example}
 
-Here we're going to give a pretty well fleshed out example. It will demonstrate both inbound and outbound subscriptions, most of the concepts we've discussed here, as well as some from the previous lesson - `/sur` files, mark files, and permission checks.
+Here we're going to give a pretty well fleshed out example. It will demonstrate both inbound and outbound subscriptions, most of the concepts we've discussed here, as well as some from the previous lesson: `/sur` files, mark files, and permission checks.
 
-In previous lessons we've only dealt with things on a local ship - this example will demonstrate messages being sent over the network.
+In previous lessons we've only dealt with things on a local ship; this example will demonstrate messages being sent over the network.
 
-The example will be composed of two separate agents - a publisher called `/app/todo.hoon` and a subscriber called `/app/todo-watcher.hoon`, which will live on separate ships. It will be a very rudimentary To-Do app - to-do tasks will be poked into the publisher and sent out to the subscriber as `%fact`s, which will just print them to the dojo. It will have its types defined in `/sur/todo.hoon`, and it will have a couple of mark files for pokes and updates: `/mar/todo/action.hoon` and `/mar/todo/update.hoon`.
+The example will be composed of two separate agents, a publisher called `/app/todo.hoon` and a subscriber called `/app/todo-watcher.hoon`, which will live on separate ships. It will be a very rudimentary To-Do app. To-do tasks will be poked into the publisher and sent out to the subscriber as `%fact`s, which will just print them to the dojo. It will have its types defined in `/sur/todo.hoon`, and it will have a couple of mark files for pokes and updates: `/mar/todo/action.hoon` and `/mar/todo/update.hoon`.
 
 Before we get into trying it out, we'll first walk through the `/sur` file, mark files, and each agent.
 
@@ -245,7 +245,7 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 
 </details>
 
-This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `$action`s and `$update`s for subscribers.
+This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `$tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `$action`s and `$update`s for subscribers.
 
 **`/mar/todo/action.hoon`**
 
@@ -405,7 +405,7 @@ This is a very simple mark file for the `$update` type.
 
 </details>
 
-This is the publisher agent, `todo.hoon`. The bulk of its logic is in its `+on-poke` arm, where it handles the various possible actions like `%add`ing a task, `%toggle`ing its "done" state, `%rename`ing a task, and so on. It also has a couple of `$action`s for `%allow`ing and `%kick`ing subscribers.
+This is the publisher agent, `/app/todo.hoon`. The bulk of its logic is in its `+on-poke` arm, where it handles the various possible actions like `%add`ing a task, `%toggle`ing its "done" state, `%rename`ing a task, and so on. It also has a couple of `$action`s for `%allow`ing and `%kick`ing subscribers.
 
 Most of these cases both update the state of the agent, as well as producing `%fact` cards to send out to subscribers with the new data.
 
@@ -546,7 +546,7 @@ The `+on-agent` arm will print whether a subscription request succeeded or faile
 
 ### Trying it out {#trying-it-out}
 
-We're going to try this between two different ships. The first ship will be the usual fakeship. We'll add both mark files, the `/sur` file, and the `todo.hoon` agent to the `%base` desk of our fakeship, putting them in the following directories:
+We're going to try this between two different ships. The first ship will be the usual fakeship. We'll add both mark files, the `/sur` file, and the `%todo` agent to the `%base` desk of our fakeship, putting them in the following directories:
 
 ```
 base
@@ -572,7 +572,7 @@ Now we need to spin up another fake ship. We'll use \~nut in this example:
 urbit -F nut
 ```
 
-Once it's booted, we can `|mount %base` and then add just the `update.hoon` mark file, the `/sur` file, and the `todo-watcher.hoon` agent like so:
+Once it's booted, we can `|mount %base` and then add just the `/mar/todo/update.hoon` mark file, the `/sur` file, and the `todo-watcher.hoon` agent like so:
 
 ```
 base

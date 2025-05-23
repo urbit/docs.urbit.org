@@ -40,9 +40,9 @@ At some point, you might want to add a third status to represent "in progress", 
 (map title=@t status=?(%todo %done %work))
 ```
 
-The conventional way to keep this managable and reliably differentiate possible state types is to have "versioned states". The first version of the state would typically be called `state-0`, and its head would be tagged with `%0`. Then, when you change the state's type in an update, you'd add a new structure called `state-1` and tag its head with `%1`. The next would then be `state-2`, and so on.
+The conventional way to keep this managable and reliably differentiate possible state types is to have "versioned states". The first version of the state would typically be called `$state-0`, and its head would be tagged with `%0`. Then, when you change the state's type in an update, you'd add a new structure called `$state-1` and tag its head with `%1`. The next would then be `$state-2`, and so on.
 
-In addition to each of those individual state versions, you'd also define a structure called `versioned-state`, which just contains a union of all the possible states. This way, the `$vase` `+on-load` receives can be unpacked to a `versioned-state` type, and then a [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) (`?-`) expression can switch on the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
+In addition to each of those individual state versions, you'd also define a structure called `$versioned-state`, which just contains a union of all the possible states. This way, the `$vase` `+on-load` receives can be unpacked to a `$versioned-state` type, and then a [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) (`?-`) expression can switch on the head (`%0`, `%1`, `%2`, etc) and process each one appropriately.
 
 For example, your state definition core might initially look like:
 
@@ -177,7 +177,7 @@ Let's break it down and have a look at the new parts we've added. First, the sta
 --
 ```
 
-In `state-0` we've defined the structure of our state, which is just a `@ud`. We've tagged the head with a `%0` constant representing the version number, so `+on-load` can easily test the state version. In `versioned-state` we've created a union and just added our `state-0` type. We've added an extra `$card` arm as well, just so we can use `$card` as a type, rather than the unweildy `$card:agent:gall`.
+In `$state-0` we've defined the structure of our state, which is just a `@ud`. We've tagged the head with a `%0` constant representing the version number, so `+on-load` can easily test the state version. In `$versioned-state` we've created a union and just added our `$state-0` type. We've added an extra `$card` arm as well, just so we can use `$card` as a type, rather than the unweildy `$card:agent:gall`.
 
 After that core, we have the usual `+agent:dbug` call, and then we have this:
 
@@ -186,7 +186,7 @@ After that core, we have the usual `+agent:dbug` call, and then we have this:
 =*  state  -
 ```
 
-We've just bunted the `state-0` type, which will produce `[%0 val=0]`, pinning it to the head of the subject. Then, we've use [tistar](../../language/hoon/reference/rune/tis.md#tistar) (`=*`) to give it a name of `.state`.
+We've just bunted the `$state-0` type, which will produce `[%0 val=0]`, pinning it to the head of the subject. Then, we've use [tistar](../../language/hoon/reference/rune/tis.md#tistar) (`=*`) to give it a name of `.state`.
 
 Inside our agent core, we have `+on-init`:
 
@@ -220,7 +220,7 @@ Finally, we have `+on-load`:
   ==
 ```
 
-It takes in the old state in a `$vase`, then unpacks it to the `versioned-state` type we defined earlier. We test its head for the version, and load it back into the state of our agent if it matches. This test is a bit redundant at this stage since we only have one state version, but you'll soon see the purpose of it.
+It takes in the old state in a `$vase`, then unpacks it to the `$versioned-state` type we defined earlier. We test its head for the version, and load it back into the state of our agent if it matches. This test is a bit redundant at this stage since we only have one state version, but you'll soon see the purpose of it.
 
 You can save it as `/app/lifecycle.hoon` in the `%base` desk and `|commit %base`. Then, run `|rein %base [& %lifecycle]` to start it.
 

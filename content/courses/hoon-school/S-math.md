@@ -723,7 +723,7 @@ It is not straightforward for a computer, a deterministic machine, to produce an
 
 For instance, consider the sequence _3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3_. If you recognize the pattern as the constant π, you can predict the first few digits, but almost certainly not more than that. The sequence is deterministic (as it is derived from a well-characterized mathematical process) but unpredictable (as you cannot _a priori_ guess what the next digit will be).
 
-Computers often mix both deterministic processes (called “pseudorandom number generators”) with random inputs, such as the current timestamp, to produce high-quality random numbers for use in games, modeling, cryptography, and so forth. The Urbit entropy value `eny` is derived from the underlying host OS's `/dev/urandom` device, which uses sources like keystroke typing latency to produce random bits.
+Computers often mix both deterministic processes (called “pseudorandom number generators”) with random inputs, such as the current timestamp, to produce high-quality random numbers for use in games, modeling, cryptography, and so forth. The Urbit entropy value `.eny` is derived from the underlying host OS's `/dev/urandom` device, which uses sources like keystroke typing latency to produce random bits.
 
 ### Random Numbers {#random-numbers}
 
@@ -800,7 +800,7 @@ We use the LCG defined above, then chop out 23-bit slices using [+rip](../../lan
 
 </details>
 
-- Convert the above to a `%say` [generator](../../glossary/generator.md) that can optionally accept a seed; if no seed is provided, use `eny`.
+- Convert the above to a `%say` [generator](../../glossary/generator.md) that can optionally accept a seed; if no seed is provided, use `.eny`.
 
 - Produce a higher-quality Mersenne Twister uniform RNG, such as [per this method](https://xilinx.github.io/Vitis_Libraries/quantitative_finance/2022.1/guide_L1/RNGs/RNG.html).
 

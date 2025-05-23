@@ -229,7 +229,7 @@ The core [Arvo](../../glossary/arvo.md) subject exposes several axes (plural of 
     now=~2022.6.22..20.41.18..82f4
     ```
 
-- `eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax). (`eny` is shared between [vanes](../../glossary/vane.md) during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each [Gall](../../glossary/gall.md) agent activation.)
+- `.eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../language/hoon/reference/stdlib/3d.md#shax). (`.eny` is shared between [vanes](../../glossary/vane.md) during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each [Gall](../../glossary/gall.md) agent activation.)
 
     ```hoon
     > ->+..
@@ -250,7 +250,7 @@ To act in a stateful manner, a core must mutate itself and then pin the mutated 
 
 We will use `%say` [generators](../../glossary/generator.md) as a bridge concept. We will produce some short applications that maintain state while carrying out a calculation; they still result in a single return value, but gesture at the big-picture approach to maintaining state in persistent [agents](../../glossary/agent.md).
 
-[As you may recall](J-stdlib-text.md), a `%say` generator is like a naked generator except rather than being simply a [gate](../../glossary/gate.md), it is a [cell](../../glossary/cell.md) of `%say` (as a tag) and a gate. This gate can receive more information as gate arguments as part of its sample, such as a timestamp `.now`, some entropy `eny`, and a file system beak `bec`. These allow us to think about how a core can modify and maintain state. Although a `%say` generator, like all generators, ultimately simply terminates, a Gall agent will be a persistent core with state that can continue to be used.
+[As you may recall](J-stdlib-text.md), a `%say` generator is like a naked generator except rather than being simply a [gate](../../glossary/gate.md), it is a [cell](../../glossary/cell.md) of `%say` (as a tag) and a gate. This gate can receive more information as gate arguments as part of its sample, such as a timestamp `.now`, some entropy `.eny`, and a file system beak `bec`. These allow us to think about how a core can modify and maintain state. Although a `%say` generator, like all generators, ultimately simply terminates, a Gall agent will be a persistent core with state that can continue to be used.
 
 Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) which you've already seen:
 
@@ -364,7 +364,7 @@ Every time you start this “random” number generator with a given seed, it wi
 
 While RNGs don't work like our _π_-based example, a given seed will reliably produce the same result every time it is run.
 
-The basic RNG core in Hoon is [+og](../../language/hoon/reference/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket). [+rads:rng](../../language/hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
+The basic RNG core in Hoon is [+og](../../language/hoon/reference/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../language/hoon/reference/rune/tis.md#tisket). [+rads:rng](../../language/hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
 
 ```hoon
 > =+  rng=~(. og eny)

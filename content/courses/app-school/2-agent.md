@@ -49,7 +49,7 @@ One important thing to note is that the bowl is only repopulated when there's a 
 
 If you've worked through [Hoon School](../hoon-school), you may recall that a core is a cell of \[battery payload]. The battery is the core itself compiled to Nock, and the payload is the subject which it operates on.
 
-For an agent, the payload will at least contain the bowl, the usual Hoon and `zuse` standard library functions, and the **state** of the agent. For example, if your agent were for an address book app, it might keep a `+map` of ships to address book entries. It might add entries, delete entries, and modify entries. This address book `+map` would be part of the state stored in the payload.
+For an agent, the payload will at least contain the bowl, the usual Hoon and `/sys/zuse.hoon` standard library functions, and the **state** of the agent. For example, if your agent were for an address book app, it might keep a `+map` of ships to address book entries. It might add entries, delete entries, and modify entries. This address book `+map` would be part of the state stored in the payload.
 
 ## Transition function {#transition-function}
 

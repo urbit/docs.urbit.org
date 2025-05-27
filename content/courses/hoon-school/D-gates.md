@@ -6,36 +6,36 @@
 
 Until this point in Hoon School, we have rigorously adhered to the regular syntax of runes so that you could get used to using them. In fact, the only two irregular forms we used were these:
 
-- Cell definition `[a b]` which represents the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune, `:-  a  b`.
+Cell definition `[a b]` which represents the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune, `:-  a  b`.
 
-    That is, these expressions are all the same for Hoon:
+That is, these expressions are all the same for Hoon:
 
-    ```hoon
-    > [1 2]
-    [1 2]
+```hoon
+> [1 2]
+[1 2]
 
-    > :-  1  2
-    [1 2]
+> :-  1  2
+[1 2]
 
-    > :-
-    1
-    2
-    [1 2]
-    ```
+> :-
+1
+2
+[1 2]
+```
 
-- Aura application `` `@ux`500 `` which represents a double `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep), like `^-  @ux ^-  @  500`.
+Aura application `` `@ux`500 `` which represents a double `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep), like `^-  @ux ^-  @  500`.
 
-    These are equivalent in Hoon:
+These are equivalent in Hoon:
 
-    ```hoon
-    > ^-  @p  ^-  @  255
-    ~fes
+```hoon
+> ^-  @p  ^-  @  255
+~fes
 
-    > `@p`255
-    ~fes
-    ```
+> `@p`255
+~fes
+```
 
-    (Why two `^-`s?  We have to clear the type information in general to be able to apply new type information.)
+(Why two `^-`s?  We have to clear the type information in general to be able to apply new type information.)
 
 Hoon developers often employ irregular forms, sometimes called “sugar syntax”. Besides the `:-` colhep and `^-` kethep forms, we will commonly use a new form for `%-` [cenhep](../../language/hoon/reference/rune/cen.md#cenhep) “function calls”:
 
@@ -109,9 +109,9 @@ Compare this to other programming languages, if you know any:
 
 Beyond those, what is the purpose of each line?
 
-The `spec` gives the type as a mold and attaches a face to it for use in the gate.
+The `$spec` gives the type as a mold and attaches a face to it for use in the gate.
 
-The `hoon` body expression evaluates and yields a result, ultimately sent back to the call site. Frequently it is wise to explicitly require a particular type for the return value using the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune:
+The Hoon body expression evaluates and yields a result, ultimately sent back to the call site. Frequently it is wise to explicitly require a particular type for the return value using the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune:
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -194,28 +194,28 @@ Notice that there is _one_ space (`ace`) after the `=name` term and then regular
 
 To reiterate: we typically use the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
 
-In the example gate above, `+inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The sample is given the face `.a`. With a face it's easier to refer to the sample value in later code.
+In the example gate above, `+inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The sample is given the face `a`. With a face it's easier to refer to the sample value in later code.
 
 The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go. In `+inc`, the product is defined by `(add 1 a)`. There's not much to it: it returns the value of `a+1`!
 
 ### Exercise: Double a Value {#exercise-double-a-value}
 
-- Produce a gate which accepts any `@` unsigned integer value and doubles it. Call it "double".
+Produce a gate which accepts any `@` unsigned integer value and doubles it. Call it "double".
 
-    ```hoon
-    > =double |=(a=@ (mul a 2))
+```hoon
+> =double |=(a=@ (mul a 2))
 
-    > (double 5)
-    10
-    ```
+> (double 5)
+10
+```
 
 ### Exercise: Convert Between Auras {#exercise-convert-between-auras}
 
-- Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent. Call it "myship".
+Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent. Call it "myship".
 
-- Produce a gate which accepts any `@` unsigned integer value and calculates the next neighbor (the `@p` of the number plus one). Call it "myneighbor".
+Produce a gate which accepts any `@` unsigned integer value and calculates the next neighbor (the `@p` of the number plus one). Call it "myneighbor".
 
-- Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned hexadecimal integer value of the ship. Call it "mynumber".
+Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned hexadecimal integer value of the ship. Call it "mynumber".
 
 ### Output Values {#output-values}
 
@@ -352,9 +352,9 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 ### Exercise: Triangular Function {#exercise-triangular-function}
  
-- Implement the triangular function as a gate and save it as a generator `tri.hoon`.
+Implement the triangular function as a gate and save it as a generator `tri.hoon`.
 
-    ![](https://lh4.googleusercontent.com/zdauTDEWvhhOkFEb6VcDEJ4SITsHOgcStf4NYFQSIVjTDPjaCqYGdin9TDCCeTG3OyMrUUdq-JtViiu_c9wuojim_mHpV6-DoTNwZzYz5_6qVVvN5fc3hEuSna2GwY15RQ=w740)
+![](https://lh4.googleusercontent.com/zdauTDEWvhhOkFEb6VcDEJ4SITsHOgcStf4NYFQSIVjTDPjaCqYGdin9TDCCeTG3OyMrUUdq-JtViiu_c9wuojim_mHpV6-DoTNwZzYz5_6qVVvN5fc3hEuSna2GwY15RQ=w740)
 
 ### Coding Piecemeal {#coding-piecemeal}
 
@@ -386,6 +386,6 @@ For simplicity, everything we do will take place on the `%base` desk for now. We
 
 ### Exercise: Loading a Library {#exercise-loading-a-library}
 
-In a generator, load the `number-to-words` library using the `/+` faslus rune. (This must take place at the very top of your file.)
+In a generator, load the library at `/lib/number-to-words.hoon` using the `/+` faslus rune. (This must take place at the very top of your file.)
  
 Use this to produce a gate which accepts an unsigned decimal integer and returns the text interpretation of its increment.

@@ -537,7 +537,7 @@ We see now that the sample of `+inc` is the value `0`, and has `a` as a [face](.
 
 The placeholder value, as you saw in the previous module, is sometimes called the [bunt](../../glossary/bunt.md) value. The bunt value is determined by the input type; for `@` atoms the bunt value is typically `0`.
 
-The face value of `.a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`. This was so we can use `.a` to refer to the sample to generate the product with `(add 1 a)`.
+The face value of `a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`. This was so we can use `a` to refer to the sample to generate the product with `(add 1 a)`.
 
 #### The Context
 

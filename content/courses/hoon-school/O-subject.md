@@ -320,7 +320,7 @@ The `=~` [tissig](../../language/hoon/reference/rune/tis.md#tissig) rune compose
 --
 ```
 
-We've chosen here to wrap our [door](../../glossary/door.md) in its own core to emulate the style of programming that is used when creating libraries. `+new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `.balance` and two [arms](../../glossary/arm.md) `+deposit` and `+withdraw`.
+We've chosen here to wrap our [door](../../glossary/door.md) in its own core to emulate the style of programming that is used when creating libraries. `+new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two [arms](../../glossary/arm.md) `+deposit` and `+withdraw`.
 
 Each of these arms produces a [gate](../../glossary/gate.md) which takes an `@ud` argument. Each of these gates has a similar bit of code inside:
 

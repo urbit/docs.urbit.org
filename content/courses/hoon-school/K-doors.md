@@ -741,7 +741,7 @@ There are a few [runes](../../glossary/rune.md) in this which we haven't seen ye
 
 The `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) in the first line of the above code enables a full stack trace in the event of an error.
 
-`|= [msg=tape steps=@ud]` creates a [gate](../../glossary/gate.md) that takes a [cell](../../glossary/cell.md). The head of this cell is a `$tape`, which is a string type that's a list of `$cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `.msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](../../glossary/atom.md) -- that we give the [face](../../glossary/face.md) `.steps`.
+`|= [msg=tape steps=@ud]` creates a [gate](../../glossary/gate.md) that takes a [cell](../../glossary/cell.md). The head of this cell is a `$tape`, which is a string type that's a list of `$cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](../../glossary/atom.md) -- that we give the [face](../../glossary/face.md) `steps`.
 
 `=<` [zapgal](../../language/hoon/reference/rune/tis.md#tisgal) is the rune that evaluates its first child expression with respect to its second child expression as the [subject](../../glossary/subject.md). In this case, we evaluate the expressions in the code chunk below against the [core](../../glossary/core.md) declared later, which allows us reference the core's contained [arms](../../glossary/arm.md) before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
 
@@ -848,7 +848,7 @@ We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [b
 
 `+encoder` and `+decoder` utilize the `+rotation` and `+space-adder` arms. These [gates](../../glossary/gate.md) are essentially identical, with the arguments passed to `+space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `+map`s that we can use to encode and decode messages.
 
-In both cases, we create a gate that accepts a `@ud` named `.steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `.value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `+alpha`. `+alpha` is our arm which contains a `$tape` of the entire alphabet. The `.value-tape` will be the list of values in our [map](../../language/hoon/reference/stdlib/2o.md#map).
+In both cases, we create a gate that accepts a `@ud` named `steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `.value-tape` [noun](../../glossary/noun.md) by calling `+rotation` on `+alpha`. `+alpha` is our arm which contains a `$tape` of the entire alphabet. The `.value-tape` will be the list of values in our [map](../../language/hoon/reference/stdlib/2o.md#map).
 
 In `+decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `+space-adder` it will be the list of keys in our `+map`.
 

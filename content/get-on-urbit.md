@@ -109,17 +109,11 @@ Depending on how you got your planet, you may already have a .zip file called so
 
 Back in the terminal, you can boot your planet by running the command below. Replace "sampel-palnet" with your planet's Urbit ID, minus the usual "~" prefix, and make sure the second part after `-k` is the path to your keyfile including its filename.
 
-{% code %}
-
 ```sh
 ./urbit -w sampel-palnet -k sampel-palnet-1.key
 ```
 
-{% endcode %}
-
 This will take a few minutes. You'll know your planet has booted when you see something like this.
-
-{% code %}
 
 ```
 ames: live on 31337
@@ -127,8 +121,6 @@ http: web interface live on http://localhost:80
 http: loopback live on http://localhost:12321
 ~sampel-palnet:dojo>
 ```
-
-{% endcode %}
 
 This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
 
@@ -151,8 +143,6 @@ sudo apt-get install libcap2-bin
 sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 ```
 
-{% endcode %}
-
 {% endtab %}
 
 {% tab title="Mine a comet" %}
@@ -161,17 +151,11 @@ If you want to explore the network without buying an Urbit ID, you can use an an
 
 To start, run this command, where "mycomet" is the name of the folder you'd like to create for your comet.
 
-{% code %}
-
 ```sh
 ./urbit -c mycomet
 ```
 
-{% endcode %}
-
 You'll know your comet has booted when you see something like this.
-
-{% code %}
 
 ```
 ames: live on 31337
@@ -179,8 +163,6 @@ http: web interface live on http://localhost:80
 http: loopback live on http://localhost:12321
 ~sampel_ponnym:dojo>
 ```
-
-{% endcode %}
 
 This is the Dojo, Urbit's command-line interface.
 
@@ -209,17 +191,11 @@ sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 
 Run `urbit` with the `-F` flag to boot a new fake ship. You'll need to specify an identity for your fake ship, minus the usual "~" prefix.
 
-{% code %}
-
 ```sh
 ./urbit -F zod
 ```
 
-{% endcode %}
-
 This will take a few minutes. Once that's done, you'll see something like this:
-
-{% code %}
 
 ```
 ames: live on 31337
@@ -227,8 +203,6 @@ http: web interface live on http://localhost:80
 http: loopback live on http://localhost:12321
 ~zod:dojo> 
 ```
-
-{% endcode %}
 
 You can shut the comet down by typing `|exit` or pressing `Ctrl+D`.
 

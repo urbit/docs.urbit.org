@@ -55,7 +55,7 @@ In a nutshell, compare these two gates:
 
 The dry gate does not preserve the type of `.a` and `.b`, but downcasts it to `*`; the [wet gate](../../glossary/wet-gate.md) does preserve the input types. It is good practice to include a cast in all [gates](../../glossary/gate.md), even wet gates. But in many cases the desired output type depends on the input type. How can we cast appropriately? Often we can cast by example, using the input values themselves (using `^+` [ketlus](../../language/hoon/reference/rune/ket.md#ketlus)).
 
-Wet gates are therefore used when incoming type information is not well known and needs to be preserved. This includes parsing, building, and structuring arbitrary [nouns](../../glossary/noun.md). (If you are familiar with them, you can think of C++'s templates and operator overloading, and Haskell's typeclasses.)  Wet gates are very powerful; they're enough rope to hang yourself with. Don't use them unless you have a specific reason to do so. (If you see `mull-*` errors then something has gone wrong with using wet gates.)
+Wet gates are therefore used when incoming type information is not well known and needs to be preserved. This includes parsing, building, and structuring arbitrary [nouns](../../glossary/noun.md). (If you are familiar with them, you can think of C++'s templates and operator overloading, and Haskell's typeclasses.)  Wet gates are very powerful; they're enough rope to hang yourself with. Don't use them unless you have a specific reason to do so. (If you see "mull-*" errors then something has gone wrong with using wet gates.)
 
 ### Exercise: The Trapezoid Rule {#exercise-the-trapezoid-rule}
 
@@ -82,13 +82,13 @@ Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a
   $(k +(k), sum (mul:rs .2 (add:rs sum (b (snag k a)))))
 ```
 
-The meat of this gate is concerned with correctly implementing the mathematical equation. In particular, wetness is required because `.b` can be _any_ gate (although it should only be a gate with one argument, lest the whole thing `mull-grow` fail). If you attempt to create the equivalent dry gate (`|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis)), Hoon fails to build it with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) due to the loss of type information from the gate `.b`.
+The meat of this gate is concerned with correctly implementing the mathematical equation. In particular, wetness is required because `.b` can be _any_ gate (although it should only be a gate with one argument, lest the whole thing fail with a "mull-grow" error). If you attempt to create the equivalent dry gate (`|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis)), Hoon fails to build it with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) due to the loss of type information from the gate `.b`.
 
 #### Tutorial: `+need`
 
 [Wet gates](../../glossary/wet-gate.md) and wet cores are used in Hoon when type information isn't well-characterized ahead of time, as when constructing [`+map`s](../../language/hoon/reference/stdlib/2o.md#map) or [`+sets`](../../language/hoon/reference/stdlib/2o.md#set). For instance, almost all of the arms in [`+by`](../../language/hoon/reference/stdlib/2i.md#by) and [`+in`](../../language/hoon/reference/stdlib/2h.md#in), as well as most [`+list`](../../glossary/list.md) tools, are wet gates.
 
-Let's take a look at a particular wet gate from the Hoon standard library, [`+need`](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `+unit` call, or crash on `~`. (As this code is already defined in your `hoon.hoon`, you do not need to define it in the Dojo to use it.)
+Let's take a look at a particular wet gate from the Hoon standard library, [`+need`](../../language/hoon/reference/stdlib/2a.md#need). `+need` works with a [unit](../../language/hoon/reference/stdlib/1c.md#unit) to produce the value of a successful `+unit` call, or crash on `~`. (As this code is already defined in your `/sys/hoon.hoon`, you do not need to define it in the Dojo to use it.)
 
 ```hoon
 ++  need                                                ::  demand

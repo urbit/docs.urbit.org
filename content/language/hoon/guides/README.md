@@ -3,7 +3,7 @@
 Guides to various features of the Hoon language.
 
 - [Generators](generators.md) - How to write Hoon scripts called Generators.
-- [Implementing an Aura](aura-guide.md) - How to implement support for a new in Hoon.
+- [Implementing an Aura](aura-guide.md) - How to implement support for a new aura in Hoon.
 - [JSON](json-guide.md) - How to deal with JSON in Hoon.
 - [Parsing Text](parsing.md) - How to write functional parsers.
 - [Sail](sail.md) - How to use Sail, Hoon's domain-specific language for composing HTML.

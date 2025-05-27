@@ -99,39 +99,39 @@ It is highly advisable for you to learn these pronunciations, as the documentati
 
 | Name  | Character  |
 |-------|------------|
-| `ace` | `␣`        |
-| `gap` | `␣␣`, `\n` |
-| `pat` | `@`        |
-| `bar` | `\|`       |
-| `gar` | `>`        |
-| `sel` | `[`        |
-| `bas` | `\`        |
-| `hax` | `#`        |
-| `ser` | `]`        |
-| `buc` | `$`        |
-| `hep` | `-`        |
-| `sig` | `~`        |
-| `cab` | `_`        |
-| `kel` | `{`        |
-| `soq` | `'`        |
-| `cen` | `%`        |
-| `ker` | `}`        |
-| `tar` | `*`        |
-| `col` | `:`        |
-| `ket` | `^`        |
-| `tic` | `` ` ``    |
-| `com` | `,`        |
-| `lus` | `+`        |
-| `tis` | `=`        |
-| `doq` | `"`        |
-| `mic` | `;`        |
-| `wut` | `?`        |
-| `dot` | `.`        |
-| `pal` | `(`        |
-| `zap` | `!`        |
-| `fas` | `/`        |
-| `pam` | `&`        |
-| `gal` | `<`        |
-| `par` | `)`        |
+| "ace" | `␣`        |
+| "gap" | `␣␣`, `\n` |
+| "pat" | `@`        |
+| "bar" | `\|`       |
+| "gar" | `>`        |
+| "sel" | `[`        |
+| "bas" | `\`        |
+| "hax" | `#`        |
+| "ser" | `]`        |
+| "buc" | `$`        |
+| "hep" | `-`        |
+| "sig" | `~`        |
+| "cab" | `_`        |
+| "kel" | `{`        |
+| "soq" | `'`        |
+| "cen" | `%`        |
+| "ker" | `}`        |
+| "tar" | `*`        |
+| "col" | `:`        |
+| "ket" | `^`        |
+| "tic" | `` ` ``    |
+| "com" | `,`        |
+| "lus" | `+`        |
+| "tis" | `=`        |
+| "doq" | `"`        |
+| "mic" | `;`        |
+| "wut" | `?`        |
+| "dot" | `.`        |
+| "pal" | `(`        |
+| "zap" | `!`        |
+| "fas" | `/`        |
+| "pam" | `&`        |
+| "gal" | `<`        |
+| "par" | `)`        |
 
-Note that the list includes two separate whitespace forms: `ace` for a single space `␣`; `gap` is either two or more spaces `␣␣` or a line break `\n`. In Hoon, the only whitespace significance is the distinction between `ace` and `gap`: the distinction between "one space" and "more than one space".
+Note that the list includes two separate whitespace forms: "ace" for a single space `␣`; "gap" is either two or more spaces `␣␣` or a line break `\n`. In Hoon, the only whitespace significance is the distinction between "ace" and "gap": the distinction between "one space" and "more than one space".

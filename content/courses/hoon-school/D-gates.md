@@ -183,7 +183,7 @@ To name a gate in Dojo (or any expression resulting in a value, which is _every_
 6
 ```
 
-Notice that there is _one_ space (`ace`) after the `=name` term and then regular `gap`s thereafter. We could also do this in one line using wide form:
+Notice that there is _one_ space ("ace") after the `=name` term and then regular "gap"s thereafter. We could also do this in one line using wide form:
 
 ```hoon
 > =inc |=(a=@ (add 1 a))

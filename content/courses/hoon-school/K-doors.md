@@ -831,7 +831,7 @@ We have three related arms to look at next, `+decoder`, `+encoder`, and `+space-
 
 `|= [key-position=tape value-result=tape]` creates a gate that takes two `tapes`.
 
-We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) core on the next line, giving it a [map](../../language/hoon/reference/stdlib/2o.md#map) produced by the `+map-maker` arm that we created before as its [sample](../../glossary/sample.md). This adds an entry to the map where the space character (called `ace`) simply maps to itself. This is done to simplify the handling of spaces in [tapes](../../glossary/tape.md) we want to encode, since we don't want to shift them.
+We use the [put](../../language/hoon/reference/stdlib/2i.md#putby) arm of the [by](../../language/hoon/reference/stdlib/2i.md#by) core on the next line, giving it a [map](../../language/hoon/reference/stdlib/2o.md#map) produced by the `+map-maker` arm that we created before as its [sample](../../glossary/sample.md). This adds an entry to the map where the space character (called "ace") simply maps to itself. This is done to simplify the handling of spaces in [tapes](../../glossary/tape.md) we want to encode, since we don't want to shift them.
 
 ```hoon
 ++  encoder

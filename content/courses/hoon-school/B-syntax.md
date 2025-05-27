@@ -535,7 +535,7 @@ H_{10}(x)
 \begin{cases} 1, & x > 10 \\ 0, & x \le 10 \end{cases}
 $$-->
 
-Thus equipped, we can evaluate the Heaviside function for particular values of `x`:
+Thus equipped, we can evaluate the Heaviside function for particular values of *n*:
 
 ```hoon
 =/  x  10

@@ -4,7 +4,7 @@ Using Urbit requires two things: an Urbit ID, and a server running Urbit OS.
 
 {% hint %}
 
-You can get a free Urbit ID and OS in the cloud, courtesy of Tlon Corporation, at [this link](http://example.com).
+You can get a free Urbit ID and OS in the cloud, courtesy of Tlon Corporation, at [this link](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
 
 {% endhint %}
 

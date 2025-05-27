@@ -781,14 +781,14 @@ Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome a
 
 1. `%bweh`
 2. `"no"`
-3. Error: `ford: %slim failed:`
+3. Error: `ford: %slim failed:`
 4. `%skrt`
 5. `"four"`
-6. `a="four"` - Note that this is different from the above!
+6. `a="four"` - Note that this is different from the above!
 7. `"four"`
 8. `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]`
 9. `%bweh`
-10. `9` appears 3 times:
+10. `9` appears 3 times:
 
 ```hoon
 > a(a a(a a))
@@ -842,13 +842,13 @@ Running each one in the Dojo:
 <|moon planet star galaxy moon planet star galaxy|>
 ```
 
-This will not run because `+weld` expects the elements of both lists to be of the same type:
+This will not run because `+weld` expects the elements of both lists to be of the same type:
 
 ```hoon
 > (weld b c)
 ```
 
-This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `.b` and `.c` and not worry about what the elements were. In that case, it would return `7`.
+This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `.b` and `.c` and not worry about what the elements were. In that case, it would return `7`.
 
 ```hoon
 > (lent (weld b c))

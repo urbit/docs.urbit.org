@@ -122,11 +122,11 @@ The Hoon body expression evaluates and yields a result, ultimately sent back to 
 'no'
 ```
 
-The input value, what is included in the `spec`, is sometimes called the argument or parameter in mathematics and other programming languages. It's basically the input value. Hoon prefers to call it the "sample" for reasons that will become apparent later on, but you won't confuse other developers if you call it the argument or input.
+The input value, what is included in the `$spec`, is sometimes called the argument or parameter in mathematics and other programming languages. It's basically the input value. Hoon prefers to call it the "sample" for reasons that will become apparent later on, but you won't confuse other developers if you call it the argument or input.
 
 Note as well that the backbone of the program runs straight down the left-hand margin. This makes it easier to read the essential mainline logic of the program.
 
-Gates enforce the type of incoming and outgoing values. In other words, a `spec` is a kind of type which is fixing the possible noun inputs. (The lesson on types which follows this one will go into greater detail.)
+Gates enforce the type of incoming and outgoing values. In other words, a `$spec` is a kind of type which is fixing the possible noun inputs. (The lesson on types which follows this one will go into greater detail.)
 
 Gates can take multiple arguments as a cell:
 

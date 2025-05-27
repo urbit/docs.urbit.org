@@ -291,7 +291,7 @@ Here we bring in some of the types we are going to need from `/sur/sole` and gat
 
 - `/-` [fashep](../../language/hoon/reference/rune/fas.md#fashep) is a Ford rune used to import types from `/sur`.
 - `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) is a Ford rune used to import libraries from `/lib`.
-- `=,` [tiscom](../../language/hoon/reference/rune/tis.md#tiscol) is a rune that allows us to expose a namespace. We do this to avoid having to write `sole-result:sole` instead of `sole-result` or `print:generators` instead of `print`.
+- `=,` [tiscom](../../language/hoon/reference/rune/tis.md#tiscol) is a rune that allows us to expose a namespace. We do this to avoid having to write `sole-result:sole` instead of `sole-result` or `print:generators` instead of `+print`.
 
 ```hoon
 :-  %ask

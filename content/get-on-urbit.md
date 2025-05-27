@@ -24,7 +24,9 @@ If you want to run Urbit on your local device, or a cloud VPS, paste the command
 
 {% code %}
 
+```sh
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/' && ./urbit
+```
 
 {% endcode %}
 
@@ -34,7 +36,9 @@ curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 
 {% code %}
 
+```sh
 curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/' && ./urbit
+```
 
 {% endcode %}
 
@@ -55,7 +59,9 @@ curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/' 
 
 {% code %}
 
+```sh
 curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g' && ./urbit
+```
 
 {% endcode %}
 
@@ -65,7 +71,9 @@ curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.
 
 {% code %}
 
+```sh
 curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g' && ./urbit
+```
 
 {% endcode %}
 
@@ -92,9 +100,14 @@ There are three ways to get an identity:
 
 See [this detailed guide](./manual/id/get-id.md) on buying a planet. Once you've done that, proceed to booting it up.
 
-To boot a planet, you'll need a copy of its private key. Depending on how you got your planet, you may already have a .zip file called something like "sampel-palnet-1.key". If not, log into [Bridge](https://bridge.urbit.org), select your planet, go to the OS section, and click "Download Keyfile".
+To boot a planet, you'll need a copy of its private key.
 
-Back in the terminal, you can boot your planet by running this command. Replace "sampel-palnet" with your planet's Urbit ID, minus the usual "~" prefix, and make sure the second part after `-k` is the path to your keyfile including its filename.
+Depending on how you got your planet, you may already have a .zip file called something like "sampel-palnet-passport.zip".
+- If so, unzip it and it will contain a file called something like "sampel-palnet.key".
+- Alternatively, you might have downloaded a file called something like "sampel-palnet-1.key", no unzipping needed.
+- If you don't have any of those .key files, log into [Bridge](https://bridge.urbit.org), select your planet, go to the OS section, and click "Download Keyfile".
+
+Back in the terminal, you can boot your planet by running the command below. Replace "sampel-palnet" with your planet's Urbit ID, minus the usual "~" prefix, and make sure the second part after `-k` is the path to your keyfile including its filename.
 
 {% code %}
 
@@ -117,11 +130,11 @@ http: loopback live on http://localhost:12321
 
 This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
 
-Once you've booted for the first time, you can run your ship again with `./urbit sampel-palnet`. (For ease of portability, the `sampel-palnet` folder now has a copy of the runtime inside it, which you can run with `./sampel-palnet/.run`.)
+Once you've booted for the first time, you can run your ship again with `./sampel-palnet/.run`. (For ease of portability, the `sampel-palnet` folder now has a copy of the runtime inside it.)
 
 Run `./urbit` with no arguments to see a full list of commands available to you.
 
-You can access your planet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output.
+You can access your planet from a web browser by visiting `http://localhost`, or whichever URL you saw in the "web interface" line in your terminal output.
 
 You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
 
@@ -154,7 +167,7 @@ To start, run this command, where "mycomet" is the name of the folder you'd like
 
 {% endcode %}
 
-This will take a few minutes. If you're running this on a laptop it might warm up, but it's nothing a base-model MacBook can't easily handle. You'll know your comet has booted when you see something like this.
+You'll know your comet has booted when you see something like this.
 
 {% code %}
 
@@ -171,11 +184,11 @@ This is the Dojo, Urbit's command-line interface.
 
 You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
 
-Once you've booted for the first time, you can run your ship again with `./urbit mycomet`. (For ease of portability, the `mycomet` folder now has a copy of the runtime inside it, which you can run with `./mycomet/.run`.)
+Once you've booted for the first time, you can run your ship again with `./mycomet/.run`. (For ease of portability, the `mycomet` folder now has a copy of the runtime inside it.)
 
 Run `./urbit` with no arguments to see a full list of commands available to you.
 
-You can access your comet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
+You can access your comet from a web browser by visiting `http://localhost`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
 
 This will take you to your homescreen.
 
@@ -217,7 +230,7 @@ http: loopback live on http://localhost:12321
 
 You can shut the comet down by typing `|exit` or pressing `Ctrl+D`.
 
-Once you've booted for the first time, you can run your ship again with `./urbit zod`. (For ease of portability, the `zod` folder now has a copy of the runtime inside it, which you can run with `./zod/.run`.)
+Once you've booted for the first time, you can run your ship again with `./zod/.run`. (For ease of portability, the `zod` folder now has a copy of the runtime inside it.)
 
 Run `./urbit` with no arguments to see a full list of commands available to you.
 

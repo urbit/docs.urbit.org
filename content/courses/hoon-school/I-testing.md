@@ -22,7 +22,7 @@ When you produce software, how much confidence do you have that it does what you
 >
 > (Katy Huff, [“Python Testing and Continuous Integration”](https://mq-software-carpentry.github.io/python-testing/05-units/))
     
-In many languages, unit tests refer to functions, often prefixed `test`, that specify (and enforce) the expected behavior of a given function. Unit tests typically contain setup, assertions, and tear-down. In academic terms, they’re a grading script.
+In many languages, unit tests refer to functions, often prefixed "test", that specify (and enforce) the expected behavior of a given function. Unit tests typically contain setup, assertions, and tear-down. In academic terms, they’re a grading script.
 
 In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../manual/os/dojo-tools.md#test) [thread](../../glossary/thread.md):
 

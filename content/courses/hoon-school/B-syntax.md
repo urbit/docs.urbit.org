@@ -246,7 +246,7 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-So this statement above is _syntactically_ correct (for the `%-` rune) but in practice fails because the expected input arguments don't match. Any time you see a `need`/`have` pair, this is what it means.
+So this statement above is _syntactically_ correct (for the `%-` rune) but in practice fails because the expected input arguments don't match. Any time you see a "need"/"have" pair, this is what it means.
 
 ### Rune Families {#rune-families}
 

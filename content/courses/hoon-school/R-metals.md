@@ -608,7 +608,7 @@ Now you can see that a `+stream` is either `~` or a pair of a value of some type
   item
 ```
 
-`+stream-type` is a wet gate that produces the type of items stored in the `stream` [arm](../../glossary/arm.md). The `(stream)` syntax is a shortcut for `(stream *)`; a stream of some type.
+`+stream-type` is a wet gate that produces the type of items stored in the `+stream` [arm](../../glossary/arm.md). The `(stream)` syntax is a shortcut for `(stream *)`; a stream of some type.
 
 Calling a `+stream`, which is a [trap](../../glossary/trap.md), will either produce `.item` and `.more` or it will produce `~`. If it does produce `~`, the `+stream` is empty and we can't find what type it is, so we simply crash with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).
 

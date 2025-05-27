@@ -77,7 +77,7 @@ So far, every time we have calculated something, we have had to build it from sc
 'no'
 ```
 
-This has no flexibility: if we want to change `a` we have to rewrite the whole thing every time!
+This has no flexibility: if we want to change `.a` we have to rewrite the whole thing every time!
 
 (Note also our introduction of the `::` [colcol](../../language/hoon/reference/rune/col.md#colcol) digraph in the above code block. This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
 

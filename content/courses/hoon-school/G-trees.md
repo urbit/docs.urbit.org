@@ -398,7 +398,7 @@ There is no restriction against using the same face name for multiple limbs of t
 5
 ```
 
-Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
+Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address `n` of the subject, first the head of `.n` is searched and then `.n`'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
 
 1. `[[4 b=5] [b=6 b=[14 15]]]`
 2. `[4 b=5]`

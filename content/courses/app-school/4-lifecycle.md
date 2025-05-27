@@ -34,7 +34,7 @@ For example, if you were creating an agent for a To-Do task management app, your
 (map task=@t status=?(%todo %done))
 ```
 
-At some point, you might want to add a third status to represent "in progress", which might involve changing `status` like:
+At some point, you might want to add a third status to represent "in progress", which might involve changing `.status` like:
 
 ```hoon
 (map title=@t status=?(%todo %done %work))
@@ -79,7 +79,7 @@ Along with a core defining the type of the state, we also need to actually add i
 =*  state  -
 ```
 
-The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `tasks` as `tasks.state`. With tistar, we can just reference `tasks` while also being able to reference the whole `.state` when necessary.
+The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../language/hoon/reference/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `.tasks` as `tasks.state`. With tistar, we can just reference `.tasks` while also being able to reference the whole `.state` when necessary.
 
 Note that adding the state like this only happens when the agent is built - from then on the arms of our agent will just modify it.
 
@@ -196,7 +196,7 @@ Inside our agent core, we have `+on-init`:
   `this(val 42)
 ```
 
-The `a(b c)` syntax is the irregular form of the [centis](../../language/hoon/reference/rune/cen.md#centis) (`%=`) rune. You'll likely be familiar with this from recursive functions, where you'll typically call the buc arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying `.this` (our agent core) with `val` replaced by `42`. Since `+on-init` is only called when the agent is first installed, we're just initializing the state.
+The `a(b c)` syntax is the irregular form of the [centis](../../language/hoon/reference/rune/cen.md#centis) (`%=`) rune. You'll likely be familiar with this from recursive functions, where you'll typically call the buc arm of a trap like `$(a b, c d, ...)`. It's the same concept here - we're saying `.this` (our agent core) with `.val` replaced by `42`. Since `+on-init` is only called when the agent is first installed, we're just initializing the state.
 
 Next we have `+on-save`:
 
@@ -338,7 +338,7 @@ In `+on-init`, we've updated it to initialize the state with a value that fits t
   ==
 ```
 
-We've updated the `?-` expression with a new case that handles our new state type, and for the old state type we've added a function that converts it to the new type - in this case by duplicating `val` and changing the head-tag from `%0` to `%1`. This is an extremely simple state type transition function - it would likely be more complicated for an agent with real functionality.
+We've updated the `?-` expression with a new case that handles our new state type, and for the old state type we've added a function that converts it to the new type - in this case by duplicating `.val` and changing the head-tag from `%0` to `%1`. This is an extremely simple state type transition function - it would likely be more complicated for an agent with real functionality.
 
 Note: the `a+b` syntax (as in `1+[val.old val.old]`) forms a cell of the constant `%a` and the noun `.b`. The constant may either be an integer or a `@tas`. For example:
 

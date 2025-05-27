@@ -610,7 +610,7 @@ Now let's write a gate called "ten" that adds `.b` to the input value:
 35
 ```
 
-We can unbind `b` from the Dojo subject, and `.ten` works just as well because it's using a copy of `.b` stored its context:
+We can unbind `.b` from the Dojo subject, and `.ten` works just as well because it's using a copy of `.b` stored its context:
 
 ```hoon
 > =b

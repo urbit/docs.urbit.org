@@ -206,7 +206,7 @@ https://medium.com/@thejameskyle/type-systems-covariance-contravariance-bivarian
 
 Covariance means that specific types nest inside of generic types: `%tree` nests inside of `%plant`. Covariant data types are sources, or read-only values.
 
-A zinc core `.z` has a read-only [sample](../../glossary/sample.md) ([payload](../../glossary/payload.md) head, `+6.z`) and an opaque context (payload tail, `+7.z`). ("Opaque" here means that the faces and arms are not exported into the namespace, and that the values of faces and arms can't be written to. The object in question can be replaced by something else without breaking type safety.)  A core `.y` which nests within it must be a gold or zinc core, such that `+6.y` nests within `+6.z`. Hence, **covariant**.
+A zinc core *z* has a read-only [sample](../../glossary/sample.md) ([payload](../../glossary/payload.md) head, `+6.z`) and an opaque context (payload tail, `+7.z`). ("Opaque" here means that the faces and arms are not exported into the namespace, and that the values of faces and arms can't be written to. The object in question can be replaced by something else without breaking type safety.)  A core *y* which nests within it must be a gold or zinc core, such that `+6.y` nests within `+6.z`. Hence, **covariant**.
 
 You can read from the sample of a `%zinc` core, but not change it:
 
@@ -231,7 +231,7 @@ The `^&` [ketpam](../../language/hoon/reference/rune/ket.md#ketpam) rune convert
 
 Contravariance means that generic types nest inside of specific types. Contravariant data types are sinks, or write-only values.
 
-An `%iron` core `.i` has a write-only [sample](../../glossary/sample.md) ([payload](../../glossary/payload.md) head, `+6.i`) and an opaque context (payload tail, `+7.i`). A core `.j` which nests within it must be a `%gold` or `%iron` core, such that `+6.i` nests within `+6.j`. Hence, **contravariant**.
+An `%iron` core *i* has a write-only [sample](../../glossary/sample.md) ([payload](../../glossary/payload.md) head, `+6.i`) and an opaque context (payload tail, `+7.i`). A core *j* which nests within it must be a `%gold` or `%iron` core, such that `+6.i` nests within `+6.j`. Hence, **contravariant**.
 
 If type `$x` nests within type `$xx`, and type `$y` nests within type `$yy`, then a core accepting a `$yy` and producing an `$x` nests within an iron core accepting a `$y` and producing an `$xx`.
 

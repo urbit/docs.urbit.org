@@ -49,7 +49,7 @@ Consider each of the following nouns. Which tree diagram do they correspond to? 
 
 ### Exercise: Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
 
-Produce a [generator](../../glossary/generator.md) called `list.hoon` which accepts a single `@ud` number `.n` as input and produces a list of numbers from `1` up to (but not including) `.n`. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
+Produce a [generator](../../glossary/generator.md) called `/gen/list.hoon` which accepts a single `@ud` number *n* as input and produces a list of numbers from `1` up to (but not including) *n*. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
 ```hoon
 |=  end=@
@@ -77,7 +77,7 @@ In the Dojo:
 
 OK, we've seen these runes before. This time we want to focus on the list, the thing that's being built here.
 
-This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `.count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `.count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
+This program works by having each iteration of the list create a cell. In each of these cells, the head (the cell's first position) is filled with the current-iteration value of `.count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `.count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (pronounced "null"). When that happens, it terminates the list and the expression ends. A built-out list of nested cells can be visualized like this:
 
 ```
 [1 [2 [3 [4 ~]]]]
@@ -162,7 +162,7 @@ A `+list` is built with the `+list` mold. A `+list` is actually a "mold builder"
 ~[~[1 2 3] ~[4 5 6]]
 ```
 
-True `+list`s have `.i` and `.t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:
+True `+list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:
 
 ```hoon
 > [3 4 5 ~]
@@ -210,7 +210,7 @@ A `$tape` is actually a `(list @t)`, a binary tree of single characters which on
  
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
-What are the addresses of each letter in the tree for the Gilbert & Sullivan quote above?  Can you see the pattern?  Can you get the address of EVERY letter through `l`?
+What are the addresses of each letter in the tree for the Gilbert & Sullivan quote above? Can you see the pattern?
 
 ### Positional Addressing (Lark Notation) {#positional-addressing-lark-notation}
 
@@ -340,7 +340,7 @@ Hoon doesn't have variables like other programming languages do; it has [faces](
 
 A face is a limb expression that consists of a series of alphanumeric characters. A face has a combination of lowercase letters, numbers, and the `-` character. Some example faces: `b`, `c3`, `var`, `this-is-kebab-case123`. Faces must begin with a letter.
 
-There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`. An expression of this form is equivalent in value to simply `value`. Hoon registers the given `+face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
+There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`. Hereafter in the code, the expression `face` would be equivalent to the expression `value`, assuming `value` were a named wing in the subject. Hoon registers the given `+face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
 
 Now we have several ways to access values:
 
@@ -371,7 +371,7 @@ To be clear, `b=5` is equivalent in value to `5`, and `[[4 b2=5] [cat=6 d=[14 15
 6
 ```
 
-If you use a face that isn't in the subject you'll get a `find.[face]` crash:
+If you use a face that isn't in the subject you'll get a "find.[face]" crash:
 
 ```hoon
 > a:[b=12 c=14]
@@ -398,7 +398,7 @@ There is no restriction against using the same face name for multiple limbs of t
 5
 ```
 
-Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address *n* of the subject, first the head of `.n` is searched and then `.n`'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
+Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address *n* of the subject, first the head of *n* is searched and then *n*'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
 
 1. `[[4 b=5] [b=6 b=[14 15]]]`
 2. `[4 b=5]`
@@ -751,7 +751,7 @@ Determine whether the following Dojo expressions are valid, and if so, what they
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-Write a gate that takes in a list `.a` and returns `%.y` if `.a` is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function.
+Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 

@@ -50,7 +50,7 @@ The [Galaxies](../../glossary/galaxy.md) span the first 2⁸ addresses of Azimut
 |  Hexadecimal | `0x0`         | `0xff`       |
 |  `@p`        | ~zod          | ~fes         |
 
-As galaxies have no sponsors, they instead have an IP address determined by `gal.urbit.org` at port `13337`+galaxy number.
+As galaxies have no sponsors, they instead have an IP address determined by `gal.urbit.org` at port `13337` plus the galaxy number.
 
 At the current time, galaxies play the role of network peer discovery, but at some future time this will fall to the stars instead.
 

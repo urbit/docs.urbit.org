@@ -298,7 +298,7 @@ Here we bring in some of the types we are going to need from `/sur/sole` and gat
 |=  *
 ```
 
-This code might be familiar. Just as with their `%say` cousins, `%ask` generators need to produce a `cell`, the head of which specifies what kind of generator we are running.
+This code might be familiar. Just as with their `%say` cousins, `%ask` generators need to produce a `+cell`, the head of which specifies what kind of generator we are running.
 
 With `|= *`, we create a [gate](../../glossary/gate.md) and ignore the standard arguments we are given, because we're not using them.
 

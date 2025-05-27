@@ -51,7 +51,7 @@ The `$rule`-building system is vast and often requires various components togeth
 
 ### `$rule`s to parse fixed strings {#rules-to-parse-fixed-strings}
 
-[`+just`](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `char` and produces a `$rule` that attempts to match that `char` to the first character in the `$tape` of the input `$nail`.
+[`+just`](../../language/hoon/reference/stdlib/4f.md#just) takes in a single `$char` and produces a `$rule` that attempts to match that `$char` to the first character in the `$tape` of the input `$nail`.
 
 ```hoon
 > ((just 'a') [[1 1] "abc"])

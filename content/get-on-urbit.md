@@ -129,17 +129,12 @@ This will take you to your homescreen.
 
 Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
 
-<details>
-
-<summary>Note for Linux users on default ports</summary>
-Linux users need to run this command in another terminal window to access their urbit on port 80 every time they upgrade their <code>urbit</code> runtime. Otherwise, it'll default to port 8080.
+*Linux users:* If you want to access your Urbit on port :80, you'll need to run the commands below every time you upgrade your `urbit` runtime. Otherwise, it'll default to port :8080.
 
 ```sh
 sudo apt-get install libcap2-bin
 sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 ```
-
-</details>
 
 {% endcode %}
 
@@ -186,17 +181,12 @@ This will take you to your homescreen.
 
 Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
 
-<details>
-
-<summary>Note for Linux users on default ports</summary>
-Linux users need to run this command in another terminal window to access their urbit on port 80 every time they upgrade their <code>urbit</code> runtime. Otherwise, it'll default to port 8080.
+*Linux users:* If you want to access your Urbit on port :80, you'll need to run the commands below every time you upgrade your `urbit` runtime. Otherwise, it'll default to port :8080.
 
 ```sh
 sudo apt-get install libcap2-bin
 sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 ```
-
-</details>
 
 {% endtab %}
 

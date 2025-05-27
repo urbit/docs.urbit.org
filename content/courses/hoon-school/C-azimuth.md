@@ -25,7 +25,7 @@ In total there are 2¹²⁸ addressable points, of which the vast majority are a
 
 #### Naming
 
-Urbit uses a system of mnemonic syllables to uniquely identify each address point. These mnemonic names, called “`patp`s” after their Hoon representation `@p`, occur in a set of 256 suffixes (such as “zod”) and 256 prefixes (such as “lit”). They were selected to be memorable and pronounceable but not meaningful.
+Urbit uses a system of mnemonic syllables to uniquely identify each address point. These mnemonic names are colloqually called Urbit IDs, but Urbit ID proper is the larger ID system including the Azimuth and Ecliptic smart contracts. You'll often hear developers refer to these names as their Hoon type `@p`, pronounced "pat-pee". The `@p` schema emerges out of a set of 256 suffixes (such as “zod”) and 256 prefixes (such as “lit”). They were selected to be memorable and pronounceable, but not inherently meaningful.
 
 | Number | Prefix | Suffix |
 | -----: | :----: | :----: |
@@ -38,7 +38,7 @@ Urbit uses a system of mnemonic syllables to uniquely identify each address poin
 | 254  | mip | nev |
 | 255  | fip | fes | 
 
-Many points may be determined from the prefix and suffix alone, but planet names are obfuscated, meaning that they are scrambled so that the sponsor is not readily apparent to a peer.
+Many point numbers may be determined from the prefix and suffix alone, but planet names are obfuscated, meaning that they are scrambled so that the sponsor is not readily apparent to a peer.
 
 #### Galaxy
 

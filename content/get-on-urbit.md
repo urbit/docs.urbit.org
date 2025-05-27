@@ -10,6 +10,8 @@ You can get a free Urbit ID and OS in the cloud, courtesy of Tlon Corporation, a
 
 Clicking that link will also invite you to the official Urbit Foundation group on Tlon Messenger, which is a great place to start finding your way around the network.
 
+{% stepper %}
+{% step %}
 ## Install Urbit OS
 
 If you want to run Urbit on your local device, or a cloud VPS, paste the commands below into the terminal for your operating system and machine.
@@ -70,10 +72,16 @@ curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/
 {% endtab %}
 
 {% endtabs %}
+{% endstep %}
 
-## Get an Urbit ID
+{% step %}
+## Boot up your Urbit
 
-Every Urbit OS instance is made unique by its identity, which other ships can use to talk to it. There are three ways to get an identity:
+Every Urbit OS instance is made unique by its Urbit ID: a special kind of name that's like a combination IP address, domain name, and phone number. Your Urbit gets its name as soon as it's born; no other Urbit has ever had this name or ever will. Other Urbit servers use this name to talk to it whenever they're sending a chat message, requesting a file, or sending a software update.
+
+This is why you need an Urbit ID to connect to other ships on the network.
+
+There are three ways to get an identity:
 - **Buy a planet.** There are three main ranks of Urbit ID: 2^32 planets, 2^16 stars, and 2^8 galaxies. Most users will only need a planet.
 - **Mine a comet.** A comet is a free, anonymous, disposable Urbit ID. (There are 2^128 of them. Enough for every grain of sand on Earth.) You can use it to access the network, but some groups may refuse entry. Never buy these.
 - **Boot a fake ship.** For development and testing. This will only be able to talk to other fake ships on your machine.
@@ -109,7 +117,17 @@ http: loopback live on http://localhost:12321
 
 This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
 
-You can access your planet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
+Once you've booted for the first time, you can run your ship again with `./urbit sampel-palnet`. (For ease of portability, the `sampel-palnet` folder now has a copy of the runtime inside it, which you can run with `./sampel-palnet/.run`.)
+
+Run `./urbit` with no arguments to see a full list of commands available to you.
+
+You can access your planet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output.
+
+You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
+
+This will take you to your homescreen.
+
+Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
 
 <details>
 
@@ -123,15 +141,13 @@ sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 
 </details>
 
-This will take you to your homescreen. Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
-
 {% endcode %}
 
 {% endtab %}
 
 {% tab title="Mine a comet" %}
 
-If you want to run Urbit without buying an Urbit ID, you can use an anonymous, disposable ID called a comet for free.
+If you want to explore the network without buying an Urbit ID, you can use an anonymous, disposable ID called a comet for free.
 
 To start, run this command, where "mycomet" is the name of the folder you'd like to create for your comet.
 
@@ -156,9 +172,19 @@ http: loopback live on http://localhost:12321
 
 {% endcode %}
 
-This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
+This is the Dojo, Urbit's command-line interface.
+
+You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
+
+Once you've booted for the first time, you can run your ship again with `./urbit mycomet`. (For ease of portability, the `mycomet` folder now has a copy of the runtime inside it, which you can run with `./mycomet/.run`.)
+
+Run `./urbit` with no arguments to see a full list of commands available to you.
 
 You can access your comet from a web browser by visiting `http://localhost:80`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
+
+This will take you to your homescreen.
+
+Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
 
 <details>
 
@@ -171,8 +197,6 @@ sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
 ```
 
 </details>
-
-This will take you to your homescreen. Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
 
 {% endtab %}
 
@@ -210,6 +234,8 @@ Run `./urbit` with no arguments to see a full list of commands available to you.
 To learn more about developing on Urbit, look at our [courses](./courses/README.md).
 
 {% endtab %}
-
 {% endtabs %}
+
+{% endstep %}
+{% endstepper %}
 

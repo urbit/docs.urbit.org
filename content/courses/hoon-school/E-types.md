@@ -61,7 +61,7 @@ Let's try one in the Dojo.
 
 Because `@ud` is the inferred type of `15`, the cast succeeds. Notice that the `^-` kethep expression never does anything to modify the underlying [noun](../../glossary/noun.md) of the second subexpression. It's used simply to mandate a type-check on that expression. This check occurs at compile-time (when the expression is compiled to [Nock](../../glossary/nock.md)).
 
-What if the inferred type doesn't fit under the cast type?  You will see a `nest-fail` crash at compile-time:
+What if the inferred type doesn't fit under the cast type?  You will see a "nest-fail" crash at compile-time:
 
 ```hoon
 > ^-(@ud [13 14])
@@ -69,7 +69,7 @@ nest-fail
 [crash message]
 ```
 
-Why `nest-fail`?  The inferred type of `[13 14]` doesn't nest under the cast type `@ud`. It's a cell, not an atom. But if we use the symbol for nouns, `*`, then the cast succeeds:
+Why "nest-fail"?  The inferred type of `[13 14]` doesn't nest under the cast type `@ud`. It's a cell, not an atom. But if we use the symbol for nouns, `*`, then the cast succeeds:
 
 ```hoon
 > ^-(* [13 14])

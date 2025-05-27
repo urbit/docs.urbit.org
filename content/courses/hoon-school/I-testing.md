@@ -62,9 +62,9 @@ Let's look at a practical example first, then dissect these.
 
 Consider an absolute value arm `+absolute` for `@rs` values. The unit tests for `+absolute` should accomplish a few things:
 
--   Verify correct behavior for positive numeric input.
--   Verify correct behavior for negative numeric input.
--   For the purpose of demonstrating `+expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `+unit` are a way of dealing with failed computations.)
+- Verify correct behavior for positive numeric input.
+- Verify correct behavior for negative numeric input.
+- For the purpose of demonstrating `+expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `+unit` are a way of dealing with failed computations.)
 
 (You may also think we would need to verify `+absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type. So even if you wanted to add an `+expect-fail` test for it, your test file would not build.)
 
@@ -275,7 +275,7 @@ By composing the unit tests ahead of time, you exercise a discipline of thinking
 
 Let’s enumerate the errors you are likely to have encountered by this point:
 
-### `nest-fail` {#nest-fail}
+### nest-fail {#nest-fail}
 
 A [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) may be the most common. Likely you are using an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md) where the other is expected.
 
@@ -290,9 +290,9 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-### `mint-nice` {#mint-nice}
+### mint-nice {#mint-nice}
 
-`mint-nice` arises from typechecking errors:
+The "mint-nice" error arises from typechecking:
 
 ```hoon
 > ^-(tape ~[78 97 114 110 105 97])
@@ -317,9 +317,9 @@ dojo: hoon expression failed
 ~[0 1 2]
 ```
 
-### `fish-loop` {#fish-loop}
+### fish-loop {#fish-loop}
 
-A `fish-loop` arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.)  Alas, this fails today:
+A "fish-loop" arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.)  Alas, this fails today:
 
 ```hoon
 > ?=((list @) ~[1 2 3 4])
@@ -327,9 +327,9 @@ A `fish-loop` arises when using a recursive mold definition like [list](../../gl
 fish-loop
 ```
 
-### `generator-build-fail` {#generator-build-fail}
+### generator-build-fail {#generator-build-fail}
 
-A `generator-build-fail` most commonly results from composing code with mismatched [runes](../../glossary/rune.md) (and thus the wrong children including hanging expected-but-empty slots).
+A "generator-build-fail" most commonly results from composing code with mismatched [runes](../../glossary/rune.md) (and thus the wrong children including hanging expected-but-empty slots).
 
 Also check if you are using Windows-style line endings, as Unix-style line endings should be employed throughout Urbit.
 
@@ -346,7 +346,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 -find.$.+2
 ```
 
-`-find.$` similarly looks for a `$` buc [arm](../../glossary/arm.md) in something that _is_ a core but doesn't have the `$` buc arm present.
+Similarly, `-find.$` means the compiler is looking for a `$` buc [arm](../../glossary/arm.md) in something that _is_ a core but doesn't have the `$` buc arm present.
 
 ```hoon
 > *tape
@@ -363,9 +363,9 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 
 What are some strategies for debugging?
 
--   **Debugging stack.**  Use the `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../language/hoon/reference/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
--   **"printf" debugging.**  If your code will compile and run, employ `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
--   **Typecast.**  Include `^` [ket](../../language/hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
--   **The only wolf in Alaska.**  Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).
--   **Build it again.**  Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
+- **Debugging stack.**  Use the `!:` [zapcol](../../language/hoon/reference/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../language/hoon/reference/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
+- **"printf" debugging.**  If your code will compile and run, employ `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
+- **Typecast.**  Include `^` [ket](../../language/hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
+- **The only wolf in Alaska.**  Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap).
+- **Build it again.**  Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
 -  **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of [Ames](../../glossary/ames.md) don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in [Gall](../../glossary/gall.md). You can also develop using a [moon](../../glossary/moon.md) if you want to.

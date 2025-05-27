@@ -46,7 +46,7 @@ For simplicity, everything we do will take place on the `%base` [desk](../../glo
 
 ### Exercise: Loading a Library {#exercise-loading-a-library}
 
-In a [generator](../../glossary/generator.md), load the `number-to-words` library using the `/+` [tislus](../../language/hoon/reference/rune/tis.md#tislus) rune. (This must take place at the very top of your file.)
+In a [generator](../../glossary/generator.md), load `/lib/number-to-words.hoon` using the `/+` [tislus](../../language/hoon/reference/rune/tis.md#tislus) rune. (This must take place at the very top of your file.)
 
 Use this to produce a [gate](../../glossary/gate.md) which accepts an unsigned decimal integer and returns the text interpretation of its increment.
 
@@ -458,7 +458,7 @@ Both `/-` fashep and `/+` faslus allow you to import by affecting the name of th
 /+  pomme=apple
 ```
 
-`*` is useful when importing libraries with unwieldy names, but otherwise should be avoided as it can shadow names in your current subject.
+Exposing namespaces with `*` is useful when importing libraries with unwieldy names, but otherwise should be avoided as it can shadow names in your current subject.
 
 - `/=` [fastis](../../language/hoon/reference/rune/fas.md#fastis) builds a user-specified path and wraps it with a given [face](../../glossary/face.md).
 - `/*` [fastar](../../language/hoon/reference/rune/fas.md#fastar) imports the contents of a file, applies a [mark](../../glossary/mark.md) to convert it, and wraps it with a given face.

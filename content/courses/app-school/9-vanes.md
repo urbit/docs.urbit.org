@@ -186,7 +186,7 @@ Let's examine the `+on-poke` arm:
   ==
 ```
 
-A Behn `%wait` task has the format `[%wait @da]` - the `@da` (an absolute date-time value) is the time the timer should go off. The `$vase` of the poke takes a `@dr`, so we extract it directly into an `add` expression, producing a date-time `@dr` from now. Behn will receive the `%wait` task and set the timer in Unix. When it fires, Behn will produce a `%wake` `$gift:behn` and deliver it to `+on-arvo`, on the `$wire` we specified (`/timers`). Here's the `+on-arvo` arm:
+A Behn `%wait` task has the format `[%wait @da]` - the `@da` (an absolute date-time value) is the time the timer should go off. The `$vase` of the poke takes a `@dr`, so we extract it directly into an `+add` expression, producing a date-time `@dr` from now. Behn will receive the `%wait` task and set the timer in Unix. When it fires, Behn will produce a `%wake` `$gift:behn` and deliver it to `+on-arvo`, on the `$wire` we specified (`/timers`). Here's the `+on-arvo` arm:
 
 ```hoon
 ++  on-arvo

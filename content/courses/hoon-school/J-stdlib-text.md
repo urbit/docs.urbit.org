@@ -209,7 +209,7 @@ The [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld) function takes tw
 
 It does not inject a separator character like a space.
 
-The [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) function takes an atom `n` and a list, and returns the `n`th item of the list, where 0 is the first item:
+The [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) function takes an atom *n* and a list, and returns the *n*th item of the list, where 0 is the first item:
 
 ```hoon
 > (snag 3 "Hello!")

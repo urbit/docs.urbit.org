@@ -398,7 +398,7 @@ There is no restriction against using the same face name for multiple limbs of t
 5
 ```
 
-Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address `n` of the subject, first the head of `.n` is searched and then `.n`'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
+Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject. If there is no matching face for address *n* of the subject, first the head of `.n` is searched and then `.n`'s tail. The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
 
 1. `[[4 b=5] [b=6 b=[14 15]]]`
 2. `[4 b=5]`
@@ -425,7 +425,7 @@ Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `.c` of
 -find.c [crash message]
 ```
 
-In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `+list`) are likely. There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them. In other words, there are cases when you don't want the limb of the first matching face. You can ‘skip’ the first match by prepending `^` to the face. Upon discovery of the first match at address `n`, the search skips `n` (as well as its children) and continues the search elsewhere:
+In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `+list`) are likely. There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them. In other words, there are cases when you don't want the limb of the first matching face. You can ‘skip’ the first match by prepending `^` to the face. Upon discovery of the first match at address *n*, the search skips *n* (as well as its children) and continues the search elsewhere:
 
 ```hoon
 > ^b:[[4 b=5] [b=6 b=[14 15]]]
@@ -458,7 +458,7 @@ The second match in the search path is step 6, `b=6`, so the value at that leg i
 4
 ```
 
-When a face is skipped at some address `n`, neither the head nor the tail of `n` is searched:
+When a face is skipped at some address *n*, neither the head nor the tail of *n* is searched:
 
 ```hoon
 > b:[b=[a=1 b=2 c=3] a=11]

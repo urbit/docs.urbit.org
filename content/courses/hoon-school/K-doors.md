@@ -85,7 +85,7 @@ Let's say you want to modify the default [sample](../../glossary/sample.md) of t
 0
 ```
 
-Given that `a x 2 = 0`, `a` must be `0`. (Remember that `.a` is the face for the `+double` sample, as defined in the core we bound to `.c` above.)
+Given that *a x 2 = 0*, *a* must be 0. (Remember that `.a` is the face for the `+double` sample, as defined in the core we bound to `.c` above.)
 
 Let's say we want to mutate the `+double` gate so that the default sample is `25`. There is only one problem: `+double` isn't a gate!
 
@@ -237,7 +237,7 @@ By itself, not so much to say. We could pin it into the [Dojo](../../glossary/do
 31
 ```
 
-By hand: 5×2² + 4×2 + 3 = 31, so that's correct.
+By hand: *5×2² + 4×2 + 3 = 31*, so that's correct.
 
 Doors will enable us to build some very powerful data storage tools by letting us defer parts of a gate calculation to other stages of building and calculating the gate.
 
@@ -323,7 +323,7 @@ Doing the same mutation repeatedly can be tedious, so let's bind `.c` to the mod
 %.y
 ```
 
-There's a more direct way of passing arguments for both the door sample and the gate sample simultaneously. We may use the "~(arm door arg)" syntax. This generates the _arm_ product after modifying the _door_'s sample to be _arg_.
+There's a more direct way of passing arguments for both the door sample and the gate sample simultaneously. We may use the "\~(arm door arg)" syntax. This generates the _arm_ product after modifying the _door_'s sample to be _arg_.
 
 ```hoon
 > (~(plus c 7) 10)
@@ -367,7 +367,7 @@ The standard library provides [currying functionality](Q-func.md) outside of the
 
 #### Creating Doors with a Modified Sample
 
-In the above example we created a [door](../../glossary/door.md) `.c` with [sample](../../glossary/sample.md) `b=@` and found that the initial value of `.b` was `0`, the bunt value of `@`. We then created new door from `.c` by modifying the value of `.b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door `.c` with the sample `b=@` set to have the value `7` in the dojo, we would write
+In the above example we created a [door](../../glossary/door.md) `.c` with [sample](../../glossary/sample.md) `b=@` and found that the initial value of `.b` was `0`, the default value of type `@`. We then created new door from `.c` by modifying the value of `.b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door `.c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
 ```hoon
 =c |_  b=_7
@@ -391,9 +391,9 @@ Recall the quadratic equation [door](../../glossary/door.md).
 --
 ```
 
-- Add an [arm](../../glossary/arm.md) to the door which calculates the linear function _a_ × _x_ + _b_.
+- Add an [arm](../../glossary/arm.md) to the door which calculates the linear function *a × x + b*.
 
-- Add another arm which calculates the derivative of the first quadratic function, 2 × _a_ × _x_ + _b_.
+- Add another arm which calculates the derivative of the first quadratic function, *2 × a × x + b*.
 
 
 ## Key-Value Pairs: `+map` as Door {#key-value-pairs-map-as-door}

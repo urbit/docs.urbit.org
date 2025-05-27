@@ -67,10 +67,6 @@ $$
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
 $$
 
-<!--
-\int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)
--->
-
 Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a single variable) and a [list](../../glossary/list.md) of _x_ values, and yields the integral as a `@rs` floating-point value. (If you are not yet familiar with these, you may wish to skip ahead to the next lesson.)
 
 ```hoon
@@ -127,7 +123,7 @@ This returns the value in the `+unit` since we now know it exists.
 
 We encountered `|$` [barbuc](../../language/hoon/reference/rune/bar.md#barbuc) above as a [wet gate](../../glossary/wet-gate.md) that is a mold builder rune which takes in a list of [molds](../../glossary/mold.md) and produces a new mold. Here we take another look at this rune as an implementation of _parametric polymorphism_ in Hoon.
 
-For example, we have [lists](../../glossary/list.md), [trees](../../language/hoon/reference/stdlib/1c.md#tree), and [sets](../../language/hoon/reference/stdlib/2o.md#set) in Hoon, which are each defined in `hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `+list` from `hoon.hoon`:
+For example, we have [lists](../../glossary/list.md), [trees](../../language/hoon/reference/stdlib/1c.md#tree), and [sets](../../language/hoon/reference/stdlib/2o.md#set) in Hoon, which are each defined in `/sys/hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `+list` from `/sys/hoon.hoon`:
 
 ```hoon
 ++  list
@@ -186,11 +182,6 @@ There are four kinds of [cores](../../glossary/core.md): `%gold`, `%iron`, `%zin
 
 Before we embark on the following discussion, we want you to know that [variance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29) is a bright-line idea, much like cores themselves, which once you “get” illuminates you further about Hoon-nature. For the most part, though, you don't need to worry about core variance much unless you are writing kernel code, since it impinges on how cores evaluate with other cores as inputs. Don't sweat it if it takes a while for core variance to click for you. (If you want to dig into resources, check out Meyer type theory. The rules should make sense if you think about them intuitively and don't get hung up on terminology.)  You should read up on the [Liskov substitution principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle) if you want to dive deeper. [Vadzim Vysotski](https://vadzimv.dev/2019/10/01/generic-programming-part-1-introduction.html) and [Jamie Kyle](https://medium.com/@thejameskyle/type-systems-covariance-contravariance-bivariance-and-invariance-explained-35f43d1110f8) explain the theory of type system variance accessibly, while [Eric Lippert](https://archive.ph/QmiqB) provides a more technical description. There are many wrinkles that particular languages, such as object-oriented programming languages, introduce which we can elide here.
 
-<!--
-https://stackoverflow.com/questions/37467882/why-does-c-sharp-use-contravariance-not-covariance-in-input-parameters-with-de
-https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance
---->
-
 Briefly, computer scientist Eric Lippert [clarifies](https://stackoverflow.com/questions/37467882/why-does-c-sharp-use-contravariance-not-covariance-in-input-parameters-with-de) that “variance is a fact about the preservation of an assignment compatibility relationship across a transformation of types.”  What trips learners up about variance is that **variance rules apply to the input and output of a core, not directly to the core itself**. A core has a _variance property_, but that property doesn't manifest until cores are used together with each other.
 
 Variance describes the four possible relationships that type rules are able to have to each other. Hoon imaginatively designates these by [metals](../../glossary/metals.md). Briefly:
@@ -217,8 +208,6 @@ Covariance means that specific types nest inside of generic types: `%tree` nests
 
 A zinc core `.z` has a read-only [sample](../../glossary/sample.md) ([payload](../../glossary/payload.md) head, `+6.z`) and an opaque context (payload tail, `+7.z`). ("Opaque" here means that the faces and arms are not exported into the namespace, and that the values of faces and arms can't be written to. The object in question can be replaced by something else without breaking type safety.)  A core `.y` which nests within it must be a gold or zinc core, such that `+6.y` nests within `+6.z`. Hence, **covariant**.
 
-<!-- If type `x` nests within type `xx`, and type `y` nests within type `yy`, then a core accepting `yy` and producing `x` nests within an iron core accepting `y` and producing `xx`. TODO not adjusted yet -->
-
 You can read from the sample of a `%zinc` core, but not change it:
 
 ```hoon
@@ -244,7 +233,7 @@ Contravariance means that generic types nest inside of specific types. Contravar
 
 An `%iron` core `.i` has a write-only [sample](../../glossary/sample.md) ([payload](../../glossary/payload.md) head, `+6.i`) and an opaque context (payload tail, `+7.i`). A core `.j` which nests within it must be a `%gold` or `%iron` core, such that `+6.i` nests within `+6.j`. Hence, **contravariant**.
 
-If type `x` nests within type `xx`, and type `y` nests within type `yy`, then a core accepting `yy` and producing `x` nests within an iron core accepting `y` and producing `xx`.
+If type `$x` nests within type `$xx`, and type `$y` nests within type `$yy`, then a core accepting a `$yy` and producing an `$x` nests within an iron core accepting a `$y` and producing an `$xx`.
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
@@ -256,9 +245,9 @@ The `|~` [barsig](../../language/hoon/reference/rune/bar.md#barsig) rune produce
 
 Bivariance means that both covariance and contravariance apply. Bivariant data types have an opaque [payload](../../glossary/payload.md) that can neither be read or written to.
 
-A lead core `.l` has an opaque payload which can be neither read nor written to. There is no constraint on the payload of a core `.m` which nests within it. Hence, **bivariant**.
+A lead core *l* has an opaque payload which can be neither read nor written to. There is no constraint on the payload of a core *m* which nests within it. Hence, **bivariant**.
 
-If type `x` nests within type `xx`, a lead core producing `x` nests within a lead core producing `xx`.
+If type `$x` nests within type `$xx`, a lead core producing an `$x` nests within a lead core producing an `$xx`.
 
 Bivariant data types are neither readable nor writeable, but have no constraints on nesting. These are commonly used for `/mar` [marks](../../glossary/mark.md) and `/sur` structure files. They are useful as examples which produce types.
 
@@ -272,7 +261,7 @@ The `|?` [barwut](../../language/hoon/reference/rune/bar.md#barwut) rune produce
 
 Invariance means that type nesting is disallowed. Invariant data types have a read-write [payload](../../glossary/payload.md).
 
-A `%gold` [core](../../glossary/core.md) `.g` has a read-write payload; another core `.h` that nests within it (i.e., can be substituted for it) must be a `%gold` core whose payload is mutually compatible (`+3.g` nests in `+3.h`, `+3.h` nests in `+3.g`). Hence, **invariant**.
+A `%gold` [core](../../glossary/core.md) *g* has a read-write payload; another core *h* that nests within it (i.e., can be substituted for it) must be a `%gold` core whose payload is mutually compatible (`+3.g` nests in `+3.h`, `+3.h` nests in `+3.g`). Hence, **invariant**.
 
 By default, cores are `%gold` invariant cores.
 
@@ -332,7 +321,7 @@ In these examples, the `=>` rune is used to give each core a simple context. The
 (add b 20)
 ```
 
-This [generator](../../glossary/generator.md) is rather simple except for the first line. The sample is defined as an `%iron` gate and gives it the [face](../../glossary/face.md) `.a`. The function as a whole is for taking some gate as input, calling it by passing it the value `10`, adding `20` to it, and returning the result. Let's try it out in the Dojo:
+This [generator](../../glossary/generator.md) is rather simple except for the first line. The sample is defined as an `%iron` gate and gives it the [face](../../glossary/face.md) `a`. The function as a whole is for taking some gate as input, calling it by passing it the value `10`, adding `20` to it, and returning the result. Let's try it out in the Dojo:
 
 ```hoon
 > +gatepass |=(a=@ +(a))
@@ -367,9 +356,9 @@ If you test it, you'll find that the [generator](../../glossary/generator.md) be
 
 The sample type of an `%iron` gate is contravariant. This means that, when doing a cast with some `%iron` gate, the desired gate must have either the same sample type or a superset.
 
-Why is this a useful nesting rule for passing gates?  Let's say you're writing a function `F` that takes as input some gate `G`. Let's also say you want `G` to be able to take as input any **mammal**. The code of `F` is going to pass arbitrary **mammals** to `G`, so that `G` needs to know how to handle all **mammals** correctly. You can't pass `F` a gate that only takes **dogs** as input, because `F` might call it with a **cat**. But `F` can accept a gate that takes all **animals** as input, because a gate that can handle any **animal** can handle **any mammal**.
+Why is this a useful nesting rule for passing gates?  Let's say you're writing a function *F* that takes as input some gate *G*. Let's also say you want *G* to be able to take as input any **mammal**. The code of *F* is going to pass arbitrary **mammals** to *G*, so that *G* needs to know how to handle all **mammals** correctly. You can't pass *F* a gate that only takes **dogs** as input, because *F* might call it with a **cat**. But *F* can accept a gate that takes all **animals** as input, because a gate that can handle any **animal** can handle **any mammal**.
 
-`%iron` [cores](../../glossary/core.md) are designed precisely with this purpose in mind. The reason that the [sample](../../glossary/sample.md) is write-only is that we want to be able to assume, within function `F`, that the sample of `G` is a **mammal**. But that might not be true when `G` is first passed into `F`; the default value of `G` could be another **animal**, say, a **lizard**. So we restrict looking into the sample of `G` by making the sample write-only. The illusion is maintained and type safety secured.
+`%iron` [cores](../../glossary/core.md) are designed precisely with this purpose in mind. The reason that the [sample](../../glossary/sample.md) is write-only is that we want to be able to assume, within function *F*, that the sample of *G* is a **mammal**. But that might not be true when *G* is first passed into *F*; the default value of *G* could be another **animal**, say, a **lizard**. So we restrict looking into the sample of *G* by making the sample write-only. The illusion is maintained and type safety secured.
 
 Let's illustrate `%iron` core nesting properties:
 
@@ -415,7 +404,7 @@ Let's define a trivial [gate](../../glossary/gate.md) with a context of `[g=22 h
 33
 ```
 
-Not a complicated function, but it serves our purposes. Normally (i.e., with `%gold` cores) we can look at a context value `.p` of some gate `.q` with a wing expression: `p.q`. Not so with the iron gate:
+Not a complicated function, but it serves our purposes. Normally (i.e., with `%gold` cores) we can look at a context value *p* of some gate *q* with a wing expression: `p.q`. Not so with the iron gate:
 
 ```hoon
 > g.iron-gate
@@ -436,7 +425,7 @@ If you really want to look at the sample you can check `+6` of `.iron-gate`:
 0
 ```
 
-… and if you really want to look at the head of the context (i.e., where `.g` is located, `+14`) you can:
+… and if you really want to look at the head of the context (i.e., where *g* is located, `+14`) you can:
 
 ```hoon
 > +14.iron-gate
@@ -603,7 +592,7 @@ Let's examine each arm in detail.
 
 `$_` [buccab](../../language/hoon/reference/rune/buc.md#_-buccab) is a rune that produces a type from an example; `^?` [ketwut](../../language/hoon/reference/rune/ket.md#ketwut) converts (casts) a core to lead; `|.` [bardot](../../language/hoon/reference/rune/bar.md#bardot) forms the [trap](../../glossary/trap.md). So to follow this sequence we read it backwards: we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example from which to produce a type.
 
-With the line `^- $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` [bucpat](../../language/hoon/reference/rune/buc.md#bucpat) is the rune to describe a data structure that can either be an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md). The first part describes the atom, which here is going to be `~`. The second part describes a cell, which we define to have the head of type `.of` with the [face](../../glossary/face.md) `.item`, and a tail with a face of `.more`. The expression `^$` is not a rune (no children), but rather a reference to the enclosing [wet gate](../../glossary/wet-gate.md), so the tail of this cell will be of the same type produced by this wet gate.
+With the line `^- $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` [bucpat](../../language/hoon/reference/rune/buc.md#bucpat) is the rune to describe a data structure that can either be an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md). The first part describes the atom, which here is going to be `~`. The second part describes a cell, which we define to have the head of type `$of` with the [face](../../glossary/face.md) `.item`, and a tail with a face of `more`. The expression `^$` is not a rune (no children), but rather a reference to the enclosing [wet gate](../../glossary/wet-gate.md), so the tail of this cell will be of the same type produced by this wet gate.
 
 The final `~` here is used as the type produced when initially calling this wet gate. This is valid because it nests within the type we defined on the previous line.
 
@@ -663,7 +652,7 @@ If `.i` and `.n` are equal, the trap will produce `~`. If not, `.s` is called an
 
 `+to-list` is a wet gate that takes `.s`, a `+stream`, only here it will, as you may expect, produce a [list](../../glossary/list.md). The rest of this wet gate is straightforward but we can examine it quickly anyway. As is the proper style, this list that is produced will be reversed, so [flop](../../language/hoon/reference/stdlib/2b.md#flop) is used to put it in the order it is in the stream. Recall that adding to the front of a list is cheap, while adding to the back is expensive.
 
-`.r` is added to the [subject](../../glossary/subject.md) as an empty [list](../../glossary/list.md) of whatever type is produced by `.s`. A new [trap](../../glossary/trap.md) is formed and called, and it will produce the same type as `.r`. Then `.s` is called and has its value added to the subject. If the result is `~`, the trap produces `.r`. Otherwise, we want to call the trap again, adding `.item` to the front of `.r` and changing `.s` to `.more`. Now the utility of `take` should be clear. We don't want to feed `to-list` an infinite stream as it would never terminate.
+`.r` is added to the [subject](../../glossary/subject.md) as an empty [list](../../glossary/list.md) of whatever type is produced by `.s`. A new [trap](../../glossary/trap.md) is formed and called, and it will produce the same type as `.r`. Then `.s` is called and has its value added to the subject. If the result is `~`, the trap produces `.r`. Otherwise, we want to call the trap again, adding `.item` to the front of `.r` and changing `.s` to `.more`. Now the utility of `+take` should be clear. We don't want to feed `+to-list` an infinite stream as it would never terminate.
 
 ##### `+fib`
 

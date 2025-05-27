@@ -115,6 +115,8 @@ Back in the terminal, you can boot your planet by running the command below. Rep
 ./urbit -w sampel-palnet -k sampel-palnet-1.key
 ```
 
+{% endcode %}
+
 This will take a few minutes. You'll know your planet has booted when you see something like this.
 
 {% code %}

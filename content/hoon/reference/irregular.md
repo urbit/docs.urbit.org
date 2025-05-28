@@ -110,7 +110,7 @@ Irregular:
 
 ## `=` tis (flow) {#tis-flow}
 
-Flow hoons change the subject. All non-flow hoons (except cores) pass the subject down unchanged.
+Flow runes change the subject. All non-flow runes (except cores) pass the subject down unchanged.
 
 ### `=<` tisgal {#tisgal}
 
@@ -126,7 +126,7 @@ Irregular: `p:q`
 
 [docs](rune/bar.md) \\$
 
-Core hoons are flow hoon.
+Core runes are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.
 

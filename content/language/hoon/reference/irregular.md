@@ -13,18 +13,20 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#zapcom) rune to determi
 
 | Form | Regular Form |
 | ---- | ------------ |
-| `_foo` | [`$_`](rune/buc.md#_-buccab), normalizes to an example |
+| `_foo` | [`$_`](rune/buc.md#buccab), normalizes to an example |
+| `foo@bar` | [`$@`](rune/buc.md#bucpat), normalizes to a type union of an atom and a cell |
 | `foo=bar` | [`$=`](rune/buc.md#buctis), wraps a face around a value |
 | `?(%foo %bar %baz)` | [`$?`](rune/buc.md#bucwut), forms a type union |
-| `(fun a b c)` | [`%:`](rune/cen.md#cencol), calls a gate with n arguments |
+| `(foo a b c)` | [`%:`](rune/cen.md#cencol), calls a gate with _n_ arguments |
 | `~(arm core arg)` | [`%~`](rune/cen.md#censig), pulls an arm in a door |
-| `foo(x 1, y 2, z 3)` | [`%=`](rune/cen.md#centis), resolve a wing with changes |
+| `foo(a 1, b 2, c 3)` | [`%=`](rune/cen.md#centis), resolve a wing with changes |
+| `[foo bar]` | [`:-`](rune/col.md#colhep), constructs a cell |
 | `[a b c]` | [`:*`](rune/col.md#coltar) or [`$:`](rune/buc.md#buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
 | `~[a b c]` | [`:~`](rune/col.md#colsig), constructs null-terminated list |
 | `+(42)` | [`.+`](rune/dot.md#dotlus), increments with Nock 4 |
-| `=(a b)` | [`.=`](rune/dot.md#dottis), tests for equality wiht Nock 5 |
-| `` `foo` bar`` | [`^-`](rune/ket.md#kethep), typecasts by explicit type label |
-| `foo=bar` | [`^=`](rune/ket.md#kettis), binds name to value |
+| `=(a b)` | [`.=`](rune/dot.md#dottis), tests for equality with Nock 5 |
+| `` `foo`bar`` | [`^-`](rune/ket.md#kethep), typecasts by explicit type label |
+| `=foo` or `foo=bar` | [`^=`](rune/ket.md#kettis), binds name to value |
 | `*foo` | [`^*`](rune/ket.md#kettar), bunts (produces default mold value) |
 | `,foo` | [`^:`](rune/ket.md#ketcol), produces “factory” gate for type |
 | `:(fun a b c d)` | [`;:`](rune/mic.md#miccol), calls binary function as _n_-ary function |

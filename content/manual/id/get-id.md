@@ -24,7 +24,6 @@ There are a few ways to get your own planet:
 
 - Receiving one from a friend
 - Asking on Twitter (if you're lucky)
-- Booting a comet and being friendly in [Urbit Community](https://urbit.org/groups/~bitbet-bolbel/urbit-community)
 - Purchasing one from a marketplace
 
 This guide will cover the last case and what to do after receiving one.

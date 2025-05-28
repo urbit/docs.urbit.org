@@ -203,10 +203,15 @@ Irregular: `_p`
 
 `[%bcts p=skin q=spec]`: wraps a face around a structure.
 
-Regular: `$=(p q)`
+Regular:
+
+```
+$=(p q)
+```
 
 Irregular:
-```hoon
+
+```
  p=q   ==>   $=(p q)
   =q   ==>   q=q
 =p=q   ==>   p-q=q
@@ -377,73 +382,81 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 `,` can serve in several capacities in Hoon programs:
 
-1. As sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode. (Toggling out of structure mode is uncommon.)
+#### `,` as syntactic sugar
 
-    ```
-    > !,(*hoon ,[@t @t])
-    [ %ktcl
-      p=[%bccl p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+Sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode. (Toggling out of structure mode is uncommon.)
+
+```
+> !,(*hoon ,[@t @t])
+[ %ktcl
+  p=[%bccl p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+]
+
+> !,(*hoon |=(a=,[@t @t] b))
+[ %brts
+    p
+  [ %bcts
+    p=term=%a
+      q
+    [ %bcmc
+      p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
     ]
-    
-    > !,(*hoon |=(a=,[@t @t] b))
-    [ %brts
-        p
-      [ %bcts
-        p=term=%a
-          q
-        [ %bcmc
-          p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
-        ]
-      ]
-      q=[%cnts p=~[[%.y p=2] %a] q=~]
-    ]
-    
-    > !,(*hoon ,,[@t @t])
-    [ %ktcl
-        p
-      [ %bcmc
-        p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
-      ]
-    ]
-    ```
-    
-    (`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `hoon` instead of out of `spec`.  It is not commonly used.)
-    
-    From value mode to structure mode:
+  ]
+  q=[%cnts p=~[[%.y p=2] %a] q=~]
+]
 
-    ```hoon
-    [%ktcl p=spec]
-    ```
+> !,(*hoon ,,[@t @t])
+[ %ktcl
+    p
+  [ %bcmc
+    p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+  ]
+]
+```
 
-    From structure mode to value mode:
+(`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `hoon` instead of out of `spec`.  It is not commonly used.)
 
-    ```hoon
-    [%bcmc p=hoon]
-    ```
+From value mode to structure mode:
 
-2. As wing syntax for stripping a face.
+```hoon
+[%ktcl p=spec]
+```
 
-    For instance, a line similar to the following is present in many Gall agents receiving HTTP requests via Eyre:
+From structure mode to value mode:
 
-    ```
-    =/  ,request-line:server  (parse-request-line:server url.request.inbound-request)
-    ```
-    
-    This `,` lets you avoid using an outer face when handling the result.
-    
-    ```
-    > =/  ,@ud  1
-      -
-    1
-    > !,(*hoon =/(,@ud 1 -))
-    [ %tsfs
-      p=[%spec spec=[%bcmc p=[%base p=[%atom p=~.ud]]] skin=[%base base=%noun]]
-      q=[%sand p=%ud q=1]
-      r=[%cnts p=~[[%.y p=2]] q=~]
-    ]
-    ```
+```hoon
+[%bcmc p=hoon]
+```
 
-3. As a separator, e.g. between pairs in an inline `%=` centis expression, `$(i +(i), j (dec j))`.
+#### `,` as wing syntax for stripping a face
+
+For example, a line similar to the following is present in many Gall agents receiving HTTP requests via Eyre:
+
+```
+=/  ,request-line:server  (parse-request-line:server url.request.inbound-request)
+```
+
+This `,` lets you avoid using an outer face when handling the result.
+
+```
+> =/  ,@ud  1
+  -
+1
+> !,(*hoon =/(,@ud 1 -))
+[ %tsfs
+  p=[%spec spec=[%bcmc p=[%base p=[%atom p=~.ud]]] skin=[%base base=%noun]]
+  q=[%sand p=%ud q=1]
+  r=[%cnts p=~[[%.y p=2]] q=~]
+]
+```
+
+#### `,` as separator
+
+For example, between pairs in an inline `%=` centis expression.
+
+```hoon
+$(i +(i), j (dec j))
+```
 
 ## Commentary {#commentary}
 

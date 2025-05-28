@@ -43,7 +43,7 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#zapcom) rune to determi
 
 Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular and irregular forms are given.
 
-Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
+Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for "\symbol". ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
 ## `.` dot (nock) {#dot-nock}
 
@@ -171,7 +171,7 @@ Regular: `%-(p q)`
 
 Irregular: `(p q)`
 
-Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (func call w/o args).
+Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (function call without arguments).
 
 ## `$` buc (mold) {#buc-mold}
 
@@ -235,7 +235,7 @@ Irregular: `!(p)`
 
 [docs](rune/wut.md#wutpam) \\&
 
-`[%wtpm p=(list hoon)]`: logical and.
+`[%wtpm p=(list hoon)]`: logical AND.
 
 Regular: `?&(p)`
 
@@ -245,7 +245,7 @@ Irregular: `&(p)`
 
 [docs](rune/wut.md#wutbar) \\|
 
-`[%wtbr p=(list hoon)]`: logical or.
+`[%wtbr p=(list hoon)]`: logical OR.
 
 Regular: `?|(p)`
 
@@ -259,7 +259,7 @@ Lets us adjust types without violating type constraints.
 
 [docs](rune/ket.md#ketcol) \\,
 
-`[%ktcl p=spec]`: mold gate for type `p`.
+`[%ktcl p=spec]`: mold gate for type `.p`.
 
 Regular: `^:(p)`
 
@@ -322,8 +322,8 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 \\&\\|
 
-- `&n` nth element of a list.
-- `|n` tail of list after nth element (i.e. n is the head).
+- `&n` *n*th element of a list.
+- `|n` tail of list after *n*th element (i.e. _n_ is the head).
 
 ### Limbs {#limbs}
 
@@ -333,9 +333,10 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 - `+15` is slot 15
 - `.` is the whole subject (slot 1)
-- `^a` is the `a` "of a higher scope", i.e. "resolve variable a, ignoring the first one found".
-- `^^p` even higher, etc.
-- 'Lark' syntax for slots / tree addressing:
+- `^a` is the `.a` "of a higher scope", i.e. "resolve variable `a`, ignoring the first one found".
+- `^^p` even higher, and so on.
+
+'Lark' syntax for slots / tree addressing:
 
 ```
 +1
@@ -355,20 +356,20 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 `[%wing p=(list limb)]`; a limb search path.
 
-`a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
+`a.b` finds limb `.a` within limb `.b` ("variable" `.a` within "variable" `.b`).
 
 ### Printing stuff {#printing-stuff}
 
 \\\<\\\>
 
-- `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than 1 item), formatted in pretty-print.
+- `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than one item), formatted in pretty-print.
 
   ```hoon
   > >1 2 3<
   [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
   ```
 
-- `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (ie `<1 2 3>` is same as `~(ram re >1 2 3<)`).
+- `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (i.e. `<1 2 3>` is same as `~(ram re >1 2 3<)`).
 
   ```hoon
   > <1 2 3>
@@ -414,7 +415,7 @@ Sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mod
 ]
 ```
 
-(`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `hoon` instead of out of `spec`.  It is not commonly used.)
+(`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `$hoon` instead of out of `$spec`.  It is not commonly used.)
 
 From value mode to structure mode:
 

@@ -101,13 +101,13 @@ For existing ships booted before v1.9, you need to manually run the following co
 
 Afterwards, you'll be able to just do `/path/to/pier/.run` and can delete the separate `urbit` binary.
 
-If you see an error message that the link cannot be created, check that your file system allows hardlinks and you have permissions set to do so. (ExFAT file systems, used on some external hard drives, cannot create hardlinks.)
+If you see an error message that the link cannot be created, check that your file system allows hardlinks and you have permissions set to do so. (ExFAT file systems, used on some external hard drives, cannot create hardlinks.) Also note that this command will fail if the docked runtime already exists.
 
 ### Update binary {#update-binary}
 
 From binary version 1.9 onwards, there is a mechanism to update the binary without having to go and download it yourself. Simply run `./urbit next /path/to/pier` or `/path/to/pier/.run next` if docked.
 
-It will check if any newer binaries are available for your release channel and if there are, it'll automatically download the new one and install it in the pier.
+It will check if any newer binaries are available for your release channel and if there are, it'll download the new one and install it in the pier. You can run the newly-installed runtime with `/path/to/pier/.run`.
 
 ### Set memory size {#set-memory-size}
 
@@ -133,24 +133,6 @@ To reduce the total size of the event log, the binary includes a [`chop`](#chop)
 
 To `chop` the event log, first shut down your ship with `Ctrl+D` or `|exit` in the Dojo. Next, run `./urbit chop /path/to/pier` or `/path/to/pier/.run chop` if it's docked.
 
-You'll get an output that looks something like this:
-
-```
-loom: mapped 2048MB
-boot: protected loom
-live: mapped: MB/425.787.392
-live: loaded: KB/16.384
-boot: installed 967 jets
-disk: loaded epoch 0i95037
-chop: deleting epoch 0i346
-chop: deleting epoch 0i0
-chop: event log truncation complete
-```
-
-If only two or fewer epochs currently exist, chop won't do anything. Additionally, if most of the event log size is contained in the latest 2 epochs, it won't be very effective.
-
-In order to create new epochs, and therefore shunt existing ones towards being removed by `chop`, you can use the [`roll`](#roll) utility before chopping.
-
 ## Utilities {#utilities}
 
 These utilities are not used to run ships, but perform operations on piers, print information about piers, or otherwise do useful things. Note the ship must be stopped to run any of these utilities on a pier. Some of these are utilities of the previously separate `urbit-worker`.
@@ -166,9 +148,23 @@ Epochs older than the two latest will be deleted. This can significantly reduce 
 - Undocked: `./urbit chop [pier]`
 - Docked: `[pier]/.run chop`
 
+You'll get an output that looks something like this:
+
+```
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/425.787.392
+live: loaded: KB/16.384
+boot: installed 967 jets
+disk: loaded epoch 0i95037
+chop: deleting epoch 0i346
+chop: deleting epoch 0i0
+chop: event log truncation complete
+```
+
 If there are two or fewer epochs, `chop` won't do anything. Additionally, if most of the event log data is contained in the latest two epochs, `chop` won't be very effective at reducing its size.
 
-You can use the [`roll`](#roll) utility to create new epochs, so `chop` can chop the existing ones.
+In order to create new epochs, and therefore shunt existing ones towards being removed by `chop`, you can use the [`roll`](#roll) utility before chopping.
 
 ### `cram` {#cram}
 
@@ -178,6 +174,30 @@ The jamfile will be saved in `[pier]/.urb/roc/[current-event-number].jam`.
 
 - Undocked: `./urbit cram [pier]`
 - Docked: `[pier]/.run cram`
+
+```
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/503.791.616
+live: loaded: KB/16.384
+boot: installed 1362 jets
+disk: loaded epoch 0i355
+urbit: cram: preparing
+hash-cons arena:
+  root: B/160
+  atoms (507080):
+    refs: MB/10.284.580
+    data: MB/156.910.873
+    dict: MB/25.424.880
+  total: MB/192.620.333
+  cells (9746385):
+    refs: MB/298.607.040
+    dict: MB/738.197.200
+  total: GB/1.036.804.240
+total: GB/1.229.424.733
+
+urbit: cram: rock saved at event 405
+```
 
 ### `dock` {#dock}
 
@@ -194,21 +214,26 @@ When a ship is newly booted by a runtime from v1.9 onwards, it will be automatic
 - Undocked: `./urbit dock [pier]`
 - Docked: `[pier]/.run dock`
 
-Note the auto-dock behavior when booting new ships can be disabled with the `--no-dock` option.
+```
+dock: pace (live): configured at zod/.bin/pace
+vere: binary copy succeeded
+```
+
+Note the auto-dock behavior when booting new ships can be disabled by booting with the `--no-dock` flag.
 
 ### `eval` {#eval}
 
-Evaluate a hoon expression without booting a ship.
+Evaluate a Hoon expression without booting a ship.
 
 The expression to evaluate is given in a string, and the result is pretty-printed to the terminal. Note that you do not need to boot an actual ship to run this, the runtime can do it itself.
 
-- Undocked: `echo [expression] | urbit eval`
+- Undocked: `echo [expression] | ./urbit eval`
 - Docked: `echo [expression] | [pier]/.run eval`
 
 This will work like:
 
 ```
-> echo "(turn (limo 1 2 3 4 5 ~) succ)" | urbit eval
+$ echo "(turn (limo 1 2 3 4 5 ~) succ)" | ./urbit eval
 loom: mapped 2048MB
 lite: arvo formula 11a9e7fe
 lite: core 38d4ad4d
@@ -234,7 +259,7 @@ Print pier information.
 - Docked: `[pier]/.run info`
 
 ```
-> urbit info zod
+$ urbit info zod
 loom: mapped 2048MB
 boot: protected loom
 live: loaded: MB/268.173.312
@@ -268,6 +293,29 @@ If the meld succeeds, it will print out a memory usage report. If it exits sayin
 - Undocked: `./urbit meld [pier]`
 - Docked: `[pier]/.run meld`
 
+```
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/374.538.240
+live: loaded: KB/16.384
+boot: installed 1362 jets
+disk: loaded epoch 0i887
+hash-cons arena:
+  root: B/160
+  atoms (225113):
+    refs: MB/6.356.220
+    data: MB/146.816.424
+    dict: MB/15.713.440
+  total: MB/168.886.084
+  cells (7530958):
+    refs: MB/184.549.300
+    dict: MB/738.197.200
+  total: MB/922.746.500
+total: GB/1.091.632.744
+
+urbit: meld: gained: MB/41.238.216
+```
+
 ### `pack` {#pack}
 
 Defragment a ship's state.
@@ -276,6 +324,16 @@ This will reduce the size of a ship's state much less than `meld`, but it is muc
 
 - Undocked: `./urbit pack [pier]`
 - Docked: `[pier]/.run pack`
+
+```
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/398.344.192
+live: loaded: KB/16.384
+boot: installed 1362 jets
+disk: loaded epoch 0i887
+urbit: pack: gained: MB/23.806.504
+```
 
 ### `prep` {#prep}
 
@@ -286,14 +344,64 @@ This utility is designed to be a general-purpose forward-compatibility mechanism
 - Undocked: `./urbit prep [pier]`
 - Docked: `[pier]/.run prep`
 
+```
+boot: home is zod
+disk: loaded epoch 0i355
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/403.128.320
+live: loaded: KB/16.384
+boot: installed 1362 jets
+loom: image backup complete
+disk: created epoch 405
+loom: mapped 2048MB
+lite: arvo formula 4ce68411
+lite: core 641296f
+lite: final state 641296f
+disk: loaded epoch 0i405
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/403.128.320
+live: loaded: KB/16.384
+boot: installed 1362 jets
+vere: ready for upgrade
+```
+
 ### `next` {#next}
 
-Request a runtime upgrade.
+Upgrade the pier's runtime.
 
-If your binary is already the latest version, no action will be taken. If a new binary is available, it will be upgraded.
+If the pier's runtime is already the latest version, no action will be taken. If a new runtime version is available, it will be upgraded.
 
 - Undocked: `./urbit next [pier]`
 - Docked: `[pier]/.run next`
+
+```
+~
+urbit 3.2
+boot: home is zod
+disk: loaded epoch 0i887
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/347.766.784
+live: loaded: KB/16.384
+boot: installed 1362 jets
+loom: mapped 2048MB
+lite: arvo formula 4ce68411
+lite: core 641296f
+lite: final state 641296f
+disk: loaded epoch 0i887
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/347.766.784
+live: loaded: KB/16.384
+boot: installed 1362 jets
+vere: next (%live): 3.4
+vere: saved to zod/.bin/live/vere-v3.4-macos-aarch64
+vere: upgrade succeeded
+```
+
+You can run the pier's upgraded runtime with `/path/to/pier/.run`.
 
 ### `queu AT-EVENT` {#queu-at-event}
 
@@ -313,19 +421,35 @@ An epoch is a discrete, separate portion of the event log. This is useful in com
 - Undocked: `./urbit roll [pier]`
 - Docked: `[pier]/.run roll`
 
+```
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/347.766.784
+live: loaded: KB/16.384
+boot: installed 1362 jets
+disk: loaded epoch 0i887
+loom: image backup complete
+disk: created epoch 5886
+```
+
 ### `vere ARGS DIR` {#vere-args-dir}
 
 Download a binary.
 
 `DIR` is an output directory (it must already exist) and `ARGS` are:
 
-- `-a, --arch ARCH` - architecture, `ARCH` may be one of `x86_64-linux`, `x86_64-darwin`, `x86_64-windows` and `aarch64-linux`, though more may be added in the future.
-- `-v, --version VER` - version number, `VER` is e.g. `1.9`.
+- `-a, --arch ARCH` - architecture, `ARCH` may be one of `linux-x86_64`, `linux-aarch64`, `macos-aarch64`, or `macos-x86_64`. More may be added in the future.
+- `-v, --version VER` - version number, `VER` is e.g. `3.4`.
 - `-p, --pace` - release channel, e.g. `live`.
 
 Example usage:
 
-- Undocked: `./urbit vere -a x86_64-linux -v 1.9 -p live .`
+- Undocked: `./urbit vere -a macos-aarch64 -v 3.4 -p live .`
+
+```
+vere: saved to ./vere-v3.4-macos-aarch64
+vere: download succeeded
+```
 
 ### `vile` {#vile}
 
@@ -335,6 +459,15 @@ The private keys of ship in the specified pier will be printed to the terminal.
 
 - Undocked: `./urbit vile [pier]`
 - Docked: `[pier]/.run vile`
+
+```
+loom: mapped 2048MB
+boot: protected loom
+live: mapped: MB/403.128.320
+live: loaded: KB/16.384
+boot: installed 1362 jets
+<keyfile>
+```
 
 ### `serf ARGS` {#serf-args}
 
@@ -364,7 +497,7 @@ Bind the HTTP server to IP address `IP`.
 - Docked: `[pier]/.run -b 192.168.1.10`
 
 ```
-> ss -tlnp | grep urbit
+$ ss -tlnp | grep urbit
 LISTEN 0      16         127.0.0.1:12321      0.0.0.0:*    users:(("urbit",pid=15689,fd=29))
 LISTEN 0      16      192.168.1.10:8080       0.0.0.0:*    users:(("urbit",pid=15689,fd=28))
 ```
@@ -579,7 +712,7 @@ This lets you resume a partially completed replay. For the given `NUMBER`, there
 Report Vere build info.
 
 ```
-> urbit -R
+$ urbit -R
 urbit 1.9
 gmp: 6.2.1
 sigsegv: 2.14

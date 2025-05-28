@@ -459,6 +459,3 @@ For example, between pairs in an inline `%=` centis expression.
 $(i +(i), j (dec j))
 ```
 
-## Commentary {#commentary}
-
-In our in-house examples throughout our documentation, we use irregular forms instead of regular for the sake of verbosity. But remember with irregular forms: everything is just runes! Like magic. In general, irregular forms (usually) read better, but of course regular forms provide more information about what you're doing by showing you the full rune. Of course, it's up to you, the Hoon programmer, as to whether or not you want to use these.

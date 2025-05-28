@@ -10,9 +10,6 @@ Running Urbit locally is good for experimentation, but in the long term you'll w
 
 ## Next Steps {#next-steps}
 
-- [Get an Urbit ID](../../id/get-id.md) – Get a planet, a permanent Urbit ID, for the best networked experience.
-
 - [Install on the cloud](cloud-hosting.md) – A step-by-step guide to setting up Urbit on a VPS.
-
 - [Set up a home server](home-servers.md) – Explore options for running your own dedicated physical Urbit computer.
 

@@ -6,7 +6,7 @@ Urbit can be run in a variety of contexts. Our [Getting Started Guide](../gettin
 
 This guide covers the provisioning and setup of a cloud server in Digital Ocean running your Urbit. This enables your Urbit to be accessed from anywhere.
 
-## [Self-hosting](home-servers.md) {#self-hosting}
+## [Home Servers](home-servers.md) {#self-hosting}
 
 This guide covers self-hosting options for your Urbit.
 

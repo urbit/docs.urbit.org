@@ -119,7 +119,7 @@ curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 {% endtab %}
-{% tab title="Linux x86_64" %}
+{% tab title="Linux (x86_64)" %}
 
 Open a terminal and run:
 
@@ -128,7 +128,7 @@ curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.
 ```
 
 {% endtab %}
-{% tab title="Linux aarch64" %}
+{% tab title="Linux (aarch64)" %}
 
 Open a terminal and run:
 

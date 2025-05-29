@@ -71,7 +71,7 @@ Note: if the options next to "Networking Keys" are "Reset" and "View" rather tha
 
 {% endtab %}
 
-{% tab title="Claim planet invite" %}
+{% tab title="Invite link" %}
 
 If you bought an L2 planet, you likely received an invite link that looks like `https://bridge.urbit.org/#foshec-moplec-haddem-poddun-middeg-toptus`:
 

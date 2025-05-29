@@ -25,7 +25,7 @@ There are two simple runes used to create and unpack vases. We'll look at each o
 
 ### Create a `$vase` {#create-a-vase}
 
-The [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
+The [zapgar](../../hoon/reference/rune/zap.md#zapgar) rune (`!>`) takes a single argument of any noun, and wraps it in a vase. For example, in the dojo:
 
 ```
 > !>([1 2 3])
@@ -45,7 +45,7 @@ You would typically use `!>` as part of a [`$cage`](#cage) when you're construct
 
 ### Extract data from `$vase` {#extract-data-from-vase}
 
-The [zapgal](../../language/hoon/reference/rune/zap.md#zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the `$vase` to be extracted.
+The [zapgal](../../hoon/reference/rune/zap.md#zapgal) rune (`!<`) takes two arguments: A mold specifying the type to try and extract the data as, and the `$vase` to be extracted.
 
 Let's look at an example in the dojo. First, let's create a `$vase` of `[@t @ux @ud]`:
 
@@ -109,7 +109,7 @@ The `$path` type is formally defined as:
 +$  path  (list knot)
 ```
 
-A knot is a `@ta` text atom (see the [Strings guide](../../language/hoon/guides/strings.md) for details), so a `$path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
+A knot is a `@ta` text atom (see the [Strings guide](../../hoon/guides/strings.md) for details), so a `$path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
 
 A `$path` is similar to a filesystem path in Unix, giving data a location in a nested hierarchy. In Arvo though, they're not only used for files, but are a more general type used for several different purposes. Its elements have no inherent significance, it depends on the context. In a Gall agent, a `$path` is most commonly a subscription path - you might subscribe for updates to `/foo/bar` on another agent, or another agent might subscribe to `/baz` on your agent.
 
@@ -128,7 +128,7 @@ Then, when you get a subscription request, you might do something like:
   ...(rest of code)...
 ```
 
-See the [Encoding in text](../../language/hoon/guides/strings.md#encoding-in-text) and [Decoding from text](../../language/hoon/guides/strings.md#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
+See the [Encoding in text](../../hoon/guides/strings.md#encoding-in-text) and [Decoding from text](../../hoon/guides/strings.md#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
 
 Aside from using function calls when constructing a `$path` as demonstrated above, you can also insert text you're previously stored with `=/` or what have you, simply by enclosing them in brackets. For example, in the dojo:
 

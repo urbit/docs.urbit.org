@@ -10,4 +10,4 @@ Preliminary material:
 
 - [Hoon School, Text Parsing III](../hoon-school/Q2-parsing.md)
 - [Hoon School, Generic and Variant Cores](../hoon-school/R-metals.md)
-- [The Nested Cores Pattern](../../language/hoon/guides/nested-core-pattern.md)
+- [The Nested Cores Pattern](../../hoon/guides/nested-core-pattern.md)

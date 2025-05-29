@@ -17,9 +17,9 @@ Urbit consists of an identity protocol ([Azimuth](../../glossary/azimuth.md), or
 
 **Urbit OS (Arvo)** is an operating system which provides the software for the personal server platform that constitutes the day-to-day usage of Urbit. Arvo works over a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer), [end-to-end-encrypted](https://en.wikipedia.org/wiki/End-to-end_encryption) network to interact with other Urbit ships (or unique instances).
 
-Arvo is an axiomatic operating system which restricts itself to pure mathematical functions, making it [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) and [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming). Such strong guarantees require an operating protocol, the [Nock virtual machine](../../language/nock/reference/definition.md), which will be persistent across hardware changes and always provide an upgrade path for necessary changes.
+Arvo is an axiomatic operating system which restricts itself to pure mathematical functions, making it [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) and [functional-as-in-programming](https://en.wikipedia.org/wiki/Functional_programming). Such strong guarantees require an operating protocol, the [Nock virtual machine](../../nock/reference/definition.md), which will be persistent across hardware changes and always provide an upgrade path for necessary changes.
 
-It's hard to write a purely functional operating system on hardware which doesn't make such guarantees. So Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit. [The Hoon overview](../../language/hoon) covers more of the high-level design decisions behind the language, as does [developer \~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
+It's hard to write a purely functional operating system on hardware which doesn't make such guarantees. So Urbit OS uses a new language, Hoon, which compiles to Nock and hews to the necessary conceptual models for a platform like Urbit. [The Hoon overview](../../hoon) covers more of the high-level design decisions behind the language, as does [developer \~rovnys-ricfer's explanation](https://urbit.org/blog/why-hoon/).
 
 Hoon School introduces and explains the fundamental concepts you need in order to understand Hoon's semantics. It then introduces a number of key examples and higher-order abstractions which will make you a more fluent Hoon programmer.
 
@@ -51,7 +51,7 @@ http: live (insecure, loopback) on 12321
 ~zod:dojo>
 ```
 
-You just used a function from the Hoon standard library, `+add`, which for reasons that will become clear later is frequently written [`+add`](../../language/hoon/reference/stdlib/1a.md#add). Next, quit Urbit by entering [|exit](../../manual/os/dojo-tools.md#exit) :
+You just used a function from the Hoon standard library, `+add`, which for reasons that will become clear later is frequently written [`+add`](../../hoon/reference/stdlib/1a.md#add). Next, quit Urbit by entering [|exit](../../manual/os/dojo-tools.md#exit) :
 
 ```hoon
 > %-  add  [2 2]

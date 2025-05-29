@@ -112,7 +112,7 @@ The [Comets](../../glossary/comet.md) occupy the upper portion of the Urbit addr
 | Hexadecimal  | `0x1.0000.0000.0000.0000` | `0xffff.ffff.ffff.ffff.ffff.ffff.ffff.ffff` |
 | @p           | ~doznec--dozzod-dozzod-dozzod-dozzod | ~fipfes-fipfes-fipfes-fipfes--fipfes-fipfes-fipfes-fipfes |
 
-A comet is sponsored by a star. Currently star sponsors are determined randomly from a list supplied to `u3_dawn_come` in `pkg/urbit/vere/dawn.c` from a [jamfile](../../language/hoon/reference/stdlib/2p.md#jam) provided by urbit.org at `https://bootstrap.urbit.org/comet-stars.jam`.
+A comet is sponsored by a star. Currently star sponsors are determined randomly from a list supplied to `u3_dawn_come` in `pkg/urbit/vere/dawn.c` from a [jamfile](../../hoon/reference/stdlib/2p.md#jam) provided by urbit.org at `https://bootstrap.urbit.org/comet-stars.jam`.
 
 Comets cannot be breached or rekeyed: possession of the comet is *ipso facto* attestation of ownership.
 

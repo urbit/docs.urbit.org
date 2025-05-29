@@ -132,7 +132,7 @@ For instance, imagine creating a function to ensure that only a certain [classic
 --
 ```
 
-(See how that `=<` [tisgal](../../language/hoon/reference/rune/tis.md#tisgal) works with the helper [core?](../../glossary/core.md))
+(See how that `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) works with the helper [core?](../../glossary/core.md))
 
 
 ## Text Operations {#text-operations}
@@ -148,7 +148,7 @@ String interpolation puts the result of an expression directly into a `$tape`:
 "11 is the answer."
 ```
 
-The [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld) function can be used to glue two `$tape`s together:
+The [`+weld`](../../hoon/reference/stdlib/2b.md#weld) function can be used to glue two `$tape`s together:
 
 ```hoon
 > (weld "Hello" "Mars!")
@@ -163,11 +163,11 @@ The [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld) function can be u
 
 ### Manipulating Text {#manipulating-text}
 
-If you have text but you need to change part of it or alter its form, you can use standard library `+list` operators like [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) as well as `$tape`-specific arms.
+If you have text but you need to change part of it or alter its form, you can use standard library `+list` operators like [`+flop`](../../hoon/reference/stdlib/2b.md#flop) as well as `$tape`-specific arms.
 
 Applicable `+list` operations, some of which you've seen before, include:
 
-The [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function takes a list and returns it in reverse order:
+The [`+flop`](../../hoon/reference/stdlib/2b.md#flop) function takes a list and returns it in reverse order:
 
 ```hoon
 > (flop "Hello!")
@@ -177,7 +177,7 @@ The [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function takes a 
 "Hello!"
 ```
 
-The [`+sort`](../../language/hoon/reference/stdlib/2b.md#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list. It takes a `+list` to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [`+lth`](../../language/hoon/reference/stdlib/1a.md#lth) gate (for “less than”):
+The [`+sort`](../../hoon/reference/stdlib/2b.md#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list. It takes a `+list` to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [`+lth`](../../hoon/reference/stdlib/1a.md#lth) gate (for “less than”):
 
 ```hoon
 > (sort ~[37 62 49 921 123] lth)
@@ -200,7 +200,7 @@ You can sort letters this way as well:
 
 The function passed to sort must produce a flag, i.e., `?`.
 
-The [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
+The [`+weld`](../../hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
 
 ```hoon
 > (weld "Happy " "Birthday!")
@@ -209,7 +209,7 @@ The [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld) function takes tw
 
 It does not inject a separator character like a space.
 
-The [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) function takes an atom *n* and a list, and returns the *n*th item of the list, where 0 is the first item:
+The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an atom *n* and a list, and returns the *n*th item of the list, where 0 is the first item:
 
 ```hoon
 > (snag 3 "Hello!")
@@ -226,7 +226,7 @@ The [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) function takes an
 
 Without using `+snag`, write a gate that returns the *n*th item of a list. There is a solution at the bottom of the page.
 
-The [`+oust`](../../language/hoon/reference/stdlib/2b.md#oust) function takes a pair of atoms `[a=@ b=@]` and a `+list`, and returns the list with `.b` items removed, starting at item `.a`:
+The [`+oust`](../../hoon/reference/stdlib/2b.md#oust) function takes a pair of atoms `[a=@ b=@]` and a `+list`, and returns the list with `.b` items removed, starting at item `.a`:
 
 ```hoon
 > (oust [0 1] `(list @)`~[11 22 33 44])
@@ -242,7 +242,7 @@ The [`+oust`](../../language/hoon/reference/stdlib/2b.md#oust) function takes a 
 "Heo!"
 ```
 
-The [`+lent`](../../language/hoon/reference/stdlib/2b.md#lent) function takes a list and returns the number of items in it:
+The [`+lent`](../../hoon/reference/stdlib/2b.md#lent) function takes a list and returns the number of items in it:
 
 ```hoon
 > (lent ~[11 22 33 44])
@@ -256,32 +256,32 @@ The [`+lent`](../../language/hoon/reference/stdlib/2b.md#lent) function takes a 
 
 There is a built-in `+lent` function that counts the number of characters in a `$tape`. Build your own `$tape`-length character counting function without using `+lent`.
 
-You may find the `?~` [wutsig](../../language/hoon/reference/rune/wut.md#wutsig) rune to be helpful. It tells you whether a value is `~` or not. (How would you do this with a regular `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol)?)
+You may find the `?~` [wutsig](../../hoon/reference/rune/wut.md#wutsig) rune to be helpful. It tells you whether a value is `~` or not. (How would you do this with a regular `?:` [wutcol](../../hoon/reference/rune/wut.md#wutcol)?)
 
 The foregoing are [`+list`](../../glossary/list.md) operations. The following, in contrast, are [`$tape`](../../glossary/tape.md)-specific operations:
 
-The [`+crip`](../../language/hoon/reference/stdlib/4b.md#crip) function converts a `$tape` to a `$cord` (`$tape`→`$cord`).
+The [`+crip`](../../hoon/reference/stdlib/4b.md#crip) function converts a `$tape` to a `$cord` (`$tape`→`$cord`).
 
 ```hoon
 > (crip "Mars")
 'Mars'
 ```
 
-The [`+trip`](../../language/hoon/reference/stdlib/4b.md#trip) function converts a `$cord` to a `$tape` (`$cord`→`$tape`).
+The [`+trip`](../../hoon/reference/stdlib/4b.md#trip) function converts a `$cord` to a `$tape` (`$cord`→`$tape`).
 
 ```hoon
 > (trip 'Earth')
 "Earth"
 ```
 
-The [`+cass`](../../language/hoon/reference/stdlib/4b.md#cass) function: convert upper-case text to lower-case (`$tape`→`$tape`)
+The [`+cass`](../../hoon/reference/stdlib/4b.md#cass) function: convert upper-case text to lower-case (`$tape`→`$tape`)
 
 ```hoon
 > (cass "Hello Mars")
 "hello mars"
 ```
 
-The [`+cuss`](../../language/hoon/reference/stdlib/4b.md#cuss) function: convert lower-case text to upper-case (`$tape`→`$tape`)
+The [`+cuss`](../../hoon/reference/stdlib/4b.md#cuss) function: convert lower-case text to upper-case (`$tape`→`$tape`)
 
 ```hoon
 > (cuss "Hello Mars")
@@ -298,7 +298,7 @@ Given a string of text, what can you do with it?
 
 #### Search
 
-The [`+find`](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack). (`+find` starts counting from zero.)
+The [`+find`](../../hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack). (`+find` starts counting from zero.)
 
 ```hoon
 > (find "brillig" "'Twas brillig and the slithy toves")
@@ -335,8 +335,8 @@ the gate should yield
 ```
 
 To complete this, you'll need
-[`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) and
-[`+slag`](../../language/hoon/reference/stdlib/2b.md#slag) (who sound like
+[`+scag`](../../hoon/reference/stdlib/2b.md#scag) and
+[`+slag`](../../hoon/reference/stdlib/2b.md#slag) (who sound like
 villainous henchmen from a children's cartoon).
 
 ```hoon
@@ -353,9 +353,9 @@ $(index +(index))
 
 #### Convert
 
-If you have a Hoon value and you want to convert it into text as such, use [`+scot`](../../language/hoon/reference/stdlib/4m.md#scot) and [`+scow`](../../language/hoon/reference/stdlib/4m.md#scow). These call for a value of type `$dime`, which means the `@tas` equivalent of a regular aura. These are labeled as returning `$cord`s (`@t`s) but in practice seem to return `$knot`s (`@ta`s).
+If you have a Hoon value and you want to convert it into text as such, use [`+scot`](../../hoon/reference/stdlib/4m.md#scot) and [`+scow`](../../hoon/reference/stdlib/4m.md#scow). These call for a value of type `$dime`, which means the `@tas` equivalent of a regular aura. These are labeled as returning `$cord`s (`@t`s) but in practice seem to return `$knot`s (`@ta`s).
 
-The [`+scot`](../../language/hoon/reference/stdlib/4m.md#scot) function renders a `$dime` as a `$cord` (`$dime`→`$cord`); the user must include any necessary aura transformation.
+The [`+scot`](../../hoon/reference/stdlib/4m.md#scot) function renders a `$dime` as a `$cord` (`$dime`→`$cord`); the user must include any necessary aura transformation.
 
 ```hoon
 > `@t`(scot %ud 54.321)
@@ -373,9 +373,9 @@ The [`+scot`](../../language/hoon/reference/stdlib/4m.md#scot) function renders 
 '~sampel-palnet'
 ```
 
-The [`+scow`](../../language/hoon/reference/stdlib/4m.md#scow) function renders a `$dime` as a `$tape` (`$dime`→`$tape`); it is otherwise identical to [`+scot`](../../language/hoon/reference/stdlib/4m.md#scot).
+The [`+scow`](../../hoon/reference/stdlib/4m.md#scow) function renders a `$dime` as a `$tape` (`$dime`→`$tape`); it is otherwise identical to [`+scot`](../../hoon/reference/stdlib/4m.md#scot).
 
-The [`+sane`](../../language/hoon/reference/stdlib/4b.md#sane) function checks the validity of a possible text string as a `$knot` or `$term`. The usage of `+sane` will feel a bit strange to you: it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `+sane` is also not infallible yet.
+The [`+sane`](../../hoon/reference/stdlib/4b.md#sane) function checks the validity of a possible text string as a `$knot` or `$term`. The usage of `+sane` will feel a bit strange to you: it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `+sane` is also not infallible yet.
 
 ```hoon
 > ((sane %ta) 'ångstrom')
@@ -424,15 +424,15 @@ Since a `@tas` cannot include a space, this is formally incorrect, as `+sane` re
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
-- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../language/hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
+- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
 - Produce a generator `/gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
 
 
 ## Logging {#logging}
 
-The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing. To this end, we introduced `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) in the last lesson.
+The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing. To this end, we introduced `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) in the last lesson.
 
-The `~&` [sigpam](../../language/hoon/reference/rune/sig.md#sigpam) rune offers some finer-grained output options than just printing a simple value to the screen. For instance, you can use it with string interpolation to produce detailed error messages.
+The `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) rune offers some finer-grained output options than just printing a simple value to the screen. For instance, you can use it with string interpolation to produce detailed error messages.
 
 There are also `>` modifiers which can be included to mark “debugging levels”, really just color-coding the output:
 
@@ -497,7 +497,7 @@ Notice that we used no argument, something that is possible with `%say` generato
 ::  ...
 ```
 
-Recall that the rune `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
+Recall that the rune `:-` [colhep](../../hoon/reference/rune/col.md#colhep) produces a cell, with the first following expression as its head and the second following expression as its tail.
 
 The expression above creates a cell with `%say` as the head. The tail is the `|= *` expression on the line that follows.
 
@@ -565,7 +565,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 (snag val answers)
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. Right now we don't know quite enough to interpret this line, but we'll revisit the [`+og`](../../language/hoon/reference/stdlib/3d.md#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](O-subject.md). For now, just know that it allows us to produce a random (unpredictable) integer using `+rad:rng`. We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy. Right now we don't know quite enough to interpret this line, but we'll revisit the [`+og`](../../hoon/reference/stdlib/3d.md#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](O-subject.md). For now, just know that it allows us to produce a random (unpredictable) integer using `+rad:rng`. We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 
 Since this is a `%say` generator, we can run it without arguments:
 
@@ -596,7 +596,7 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 
 {% endcode %}
 
-Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) rune. When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that. It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
+Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) rune. When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that. It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
 Below `/+  playing-cards`, you have the standard `%say` generator boilerplate that allows us to get a bit of entropy from Arvo when the generator is run. Then we feed the entropy and a `$deck` created by `+make-deck` into `+shuffle-deck` to get back a shuffled `$deck`.
 

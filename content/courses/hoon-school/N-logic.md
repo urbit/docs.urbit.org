@@ -2,7 +2,7 @@
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
 
-_Although you've been using various of the `?` [wut](../../language/hoon/reference/rune/wut.md) runes for a while now, let's wrap up some loose ends. This module will cover the nature of loobean logic and the rest of the `?` wut runes._
+_Although you've been using various of the `?` [wut](../../hoon/reference/rune/wut.md) runes for a while now, let's wrap up some loose ends. This module will cover the nature of loobean logic and the rest of the `?` wut runes._
 
 
 ## Loobean Logic {#loobean-logic}
@@ -24,7 +24,7 @@ Pretty much all conditional operators rely on loobeans, although it is very unco
 
 ## Noun Equality {#noun-equality}
 
-The most fundamental comparison in Hoon is provided by `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis), a test for equality of two [nouns](../../glossary/noun.md) using Nock 5. This is almost always used in its irregular form of `=` tis.
+The most fundamental comparison in Hoon is provided by `.=` [dottis](../../hoon/reference/rune/dot.md#dottis), a test for equality of two [nouns](../../glossary/noun.md) using Nock 5. This is almost always used in its irregular form of `=` tis.
 
 ```hoon
 > =(0 0)
@@ -34,7 +34,7 @@ The most fundamental comparison in Hoon is provided by `.=` [dottis](../../langu
 %.n
 ```
 
-Since [Nock](../../glossary/nock.md) is unaware of the Hoon metadata type system, only bare [atoms](../../glossary/atom.md) in the nouns are compared. If you need to compare include type information, create vases with `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar).
+Since [Nock](../../glossary/nock.md) is unaware of the Hoon metadata type system, only bare [atoms](../../glossary/atom.md) in the nouns are compared. If you need to compare include type information, create vases with `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar).
 
 ```hoon
 > =('a' 97)
@@ -51,19 +51,19 @@ You are familiar in everyday life with making choices on the basis of a decision
 
 Essentially, we have to be able to decide whether or not some value or expression evaluates as `%.y` true (in which case we will do one thing) or `%.n` false (in which case we do another). Some basic expressions are mathematical, but we also check for existence, for equality of two values, etc.
 
-- [`+gth`](../../language/hoon/reference/stdlib/1a.md#gth) (greater than `>`)
-- [`+lth`](../../language/hoon/reference/stdlib/1a.md#lth) (less than `<`)  
-- [`+gte`](../../language/hoon/reference/stdlib/1a.md#gte) (greater than or equal to `≥`)
-- [`+lte`](../../language/hoon/reference/stdlib/1a.md#lte) (less than or equal to `≤`)
-- `.=` [dottis](../../language/hoon/reference/rune/dot.md#dottis), irregularly `=()` (check for equality)
+- [`+gth`](../../hoon/reference/stdlib/1a.md#gth) (greater than `>`)
+- [`+lth`](../../hoon/reference/stdlib/1a.md#lth) (less than `<`)  
+- [`+gte`](../../hoon/reference/stdlib/1a.md#gte) (greater than or equal to `≥`)
+- [`+lte`](../../hoon/reference/stdlib/1a.md#lte) (less than or equal to `≤`)
+- `.=` [dottis](../../hoon/reference/rune/dot.md#dottis), irregularly `=()` (check for equality)
 
-The key conditional decision-making rune is `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol), which lets you branch between an `expression-if-true` and an "expression-if-false". `?.` [wutdot](../../language/hoon/reference/rune/wut.md#wutdot) inverts the order of `?:`. Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
+The key conditional decision-making rune is `?:` [wutcol](../../hoon/reference/rune/wut.md#wutcol), which lets you branch between an `expression-if-true` and an "expression-if-false". `?.` [wutdot](../../hoon/reference/rune/wut.md#wutdot) inverts the order of `?:`. Good Hoon style prescribes that the heavier branch of a logical expression should be lower in the file.
 
 There are also two long-form decision-making runes, which we will call [_switch statements_](https://en.wikipedia.org/wiki/Switch_statement) by analogy with languages like C.
 
-`?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) lets you choose between several possibilities, as with a type union. Every case must be handled and no case can be unreachable.
+`?-` [wuthep](../../hoon/reference/rune/wut.md#wuthep) lets you choose between several possibilities, as with a type union. Every case must be handled and no case can be unreachable.
 
-Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) switches over term unions can make it look like the expression is branching on the value. It's actually branching on the _type_. These are almost exclusively used with term type unions.
+Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?-` [wuthep](../../hoon/reference/rune/wut.md#wuthep) switches over term unions can make it look like the expression is branching on the value. It's actually branching on the _type_. These are almost exclusively used with term type unions.
 
 ```hoon
 |=  p=?(%1 %2 %3)
@@ -74,7 +74,7 @@ Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?
 ==
 ```
 
-`?+` [wutlus](../../language/hoon/reference/rune/wut.md#wutlus) is similar to `?-` but allows a default value in case no branch is taken. Otherwise these are similar to `?-` [wuthep](../../language/hoon/reference/rune/wut.md#wuthep) switch statements.
+`?+` [wutlus](../../hoon/reference/rune/wut.md#wutlus) is similar to `?-` but allows a default value in case no branch is taken. Otherwise these are similar to `?-` [wuthep](../../hoon/reference/rune/wut.md#wuthep) switch statements.
 
 ```hoon
 |=  p=?(%0 %1 %2 %3 %4)
@@ -89,7 +89,7 @@ Since `@tas` terms are constants first, and not `@tas` unless marked as such, `?
 
 Mathematical logic allows the collocation of propositions to determine other propositions. In computer science, we use this functionality to determine which part of an expression is evaluated. We can combine logical statements pairwise:
 
-`?&` [wutpam](../../language/hoon/reference/rune/wut.md#wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
+`?&` [wutpam](../../hoon/reference/rune/wut.md#wutpam), irregularly `&()`, is a logical `AND` (i.e. _p_ ∧ _q_) over loobean values, e.g. both terms must be true.
 
 |             `AND`            | `%.y` | `%.n` |
 |------------------------------|-------|-------|
@@ -102,7 +102,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 %.y
 ```
 
-`?|` [wutbar](../../language/hoon/reference/rune/wut.md#wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
+`?|` [wutbar](../../hoon/reference/rune/wut.md#wutbar), irregularly `|()`, is a logical `OR` (i.e. _p_ ∨ _q_)  over loobean values, e.g. either term may be true.
 
 |             `OR`             | `%.y` | `%.n` |
 |------------------------------|-------|-------|
@@ -117,7 +117,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 %.y
 ```
 
-`?!` [wutzap](../../language/hoon/reference/rune/wut.md#wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*). Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
+`?!` [wutzap](../../hoon/reference/rune/wut.md#wutzap), irregularly `!`, is a logical `NOT` (i.e. ¬*p*). Sometimes it can be difficult to parse code including `!` because it operates without parentheses.
 
 |                              | `NOT` |
 |------------------------------|-------|
@@ -177,7 +177,7 @@ The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands ar
 
 ### Exercise: Implement a Piecewise Boxcar Function {#exercise-implement-a-piecewise-boxcar-function}
 
-The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero. We implemented the similar Heaviside function [previously](B-syntax.md) using the `?:` [wutcol](../../language/hoon/reference/rune/wut.md#wutcol) rune.
+The boxcar function is a piecewise mathematical function which is equal to zero for inputs less than zero and one for inputs greater than or equal to zero. We implemented the similar Heaviside function [previously](B-syntax.md) using the `?:` [wutcol](../../hoon/reference/rune/wut.md#wutcol) rune.
 
 Compose a gate which implements the boxcar function,
 

@@ -50,7 +50,7 @@ The `?` Dojo operator shows both the product and the inferred type of an express
 
 One important role played by the type system is to make sure that the output of an expression is of the intended data type. If the output is of the wrong type then the programmer did something wrong. How does Hoon know what the intended data type is?  The programmer must specify this explicitly by using a "cast". To cast for an unsigned decimal atom, you can use the `^-` kethep rune along with the `@ud` from above.
 
-What exactly does the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune do?  It compares the inferred type of some expression with the desired cast type. If the expression's inferred type "nests" under the desired type, then the product of the expression is returned.
+What exactly does the `^-` [kethep](../../hoon/reference/rune/ket.md#kethep) rune do?  It compares the inferred type of some expression with the desired cast type. If the expression's inferred type "nests" under the desired type, then the product of the expression is returned.
 
 Let's try one in the Dojo.
 
@@ -111,7 +111,7 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@uw`  | unsigned base64              | `0wbnC.8haTg` |
 | `@ux`  | unsigned hexadecimal         | `0x5f5.e138` |
 
-Some of these auras nest under others. For example, `@u` is for all unsigned auras. But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc. (For a more complete list of auras, see [Auras](../../language/hoon/reference/auras.md).)
+Some of these auras nest under others. For example, `@u` is for all unsigned auras. But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc. (For a more complete list of auras, see [Auras](../../hoon/reference/auras.md).)
 
 `$knot` and `$term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
 
@@ -159,7 +159,7 @@ Here's another example of type inference at work:
 36
 ```
 
-The [add](../../language/hoon/reference/stdlib/1a.md#add) function in the Hoon standard library operates on all atoms, regardless of aura, and returns atoms with no aura specified. Hoon isn't able to infer anything more specific than `@` for the product of `+add`. This is by design, however. Notice that when you `+add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal). This works for all of the unsigned auras:
+The [add](../../hoon/reference/stdlib/1a.md#add) function in the Hoon standard library operates on all atoms, regardless of aura, and returns atoms with no aura specified. Hoon isn't able to infer anything more specific than `@` for the product of `+add`. This is by design, however. Notice that when you `+add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal). This works for all of the unsigned auras:
 
 ```hoon
 > (add 100 0b101)
@@ -241,7 +241,7 @@ nest-fail
 nest-fail
 ```
 
-The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two atoms, and crashes with a [nest-fail](../../language/hoon/reference/hoon-errors.md#nest-fail) for any expression that evaluates to something different. The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` does evaluate to a cell, the left-hand side isn't an atom, but is instead another cell.
+The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two atoms, and crashes with a [nest-fail](../../hoon/reference/hoon-errors.md#nest-fail) for any expression that evaluates to something different. The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` does evaluate to a cell, the left-hand side isn't an atom, but is instead another cell.
 
 You can get even more specific about the kind of cell you want by using atom auras:
 
@@ -332,7 +332,7 @@ We commonly need to do one of two things with a mold:
 
 We often use bunts to clam; for example `@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
 
-To _actually_ get the bunt value, use the `^*` [kettar](../../language/hoon/reference/rune/ket.md#kettar) rune, almost always used in its irregular form `*` tar:
+To _actually_ get the bunt value, use the `^*` [kettar](../../hoon/reference/rune/ket.md#kettar) rune, almost always used in its irregular form `*` tar:
 
 ```hoon
 > ^*  @ud
@@ -348,7 +348,7 @@ To _actually_ get the bunt value, use the `^*` [kettar](../../language/hoon/refe
 [0 0x0 0b0]
 ```
 
-One more way to validate against type is to use an example instead of the extracted mold. This uses the `^+` [ketlus](../../language/hoon/reference/rune/ket.md#ketlus) rune similarly to how we used `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) previously:
+One more way to validate against type is to use an example instead of the extracted mold. This uses the `^+` [ketlus](../../hoon/reference/rune/ket.md#ketlus) rune similarly to how we used `^-` [kethep](../../hoon/reference/rune/ket.md#kethep) previously:
 
 ```hoon
 ^+(1.000 100)
@@ -387,7 +387,7 @@ Most of the time, we will define such complex types using specific runes and “
 
 ### Identifying Molds {#identifying-molds}
 
-Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune.
+Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out which mold the Hoon compiler thinks something is to use the `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) rune.
 
 ```hoon
 > !>(0xace2.bead)
@@ -403,7 +403,7 @@ For reasons which will be elaborated in Trees, this is often employed as the so-
 
 ### Type Unions {#type-unions}
 
-`$?` [bucwut](../../language/hoon/reference/rune/buc.md#bucwut) forms a type union. Most commonly these are used with types having different structures, such as an atom and a cell.
+`$?` [bucwut](../../hoon/reference/rune/buc.md#bucwut) forms a type union. Most commonly these are used with types having different structures, such as an atom and a cell.
 
 For instance, if you wanted a gate to accept an atom of an unsigned aura type, but no other type, you could define a type union thus:
 

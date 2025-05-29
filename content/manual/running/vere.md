@@ -554,7 +554,7 @@ You can kill this process by running `kill -9 [pid]`. You can find the PID with 
 
 ### `-e, --ethereum URL` {#e---ethereum-url}
 
-Use the Ethereum gateway at `URL` rather than the default.
+Use the Ethereum RPC node at `URL` rather than the default.
 
 - Undocked: `./urbit -e https://the.url [pier]`
 - Docked: `[pier]/.run -e https://the.url`

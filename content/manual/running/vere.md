@@ -707,7 +707,7 @@ This runs a sampling profiler and produces custom output. Runtime cost metrics a
 
 Run a ship without verbosity.
 
-This disables the output that the `|verb` command toggles. This is the opposite of `-v`. Verbosity can be enabled again by running `|verb`.
+This disables the output that the [`|verb`](../os/dojo-tools.md#verb) command toggles. This is the opposite of [`-v`](#v---verbose). Verbosity can be enabled again without turning off the ship by running `|verb`.
 
 - Undocked: `./urbit -q [pier]`
 - Docked: `[pier]/.run -q`

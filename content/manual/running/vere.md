@@ -590,7 +590,7 @@ The private key is [`@uw`](../../courses/hoon-school/E-types.md##what-auras-are-
 
 Set the HTTP port to `PORT`.
 
-This is the port you'd insecurely access Landscape on. Note this is for insecure HTTP only, see `--https-port` for HTTPS.
+This is the port you'd insecurely access Landscape on. Note this is for insecure HTTP only, see [`--https-port`](#https-port-port) for HTTPS.
 
 - Undocked: `./urbit --http-port 8085 [pier]`
 - Docked: `[pier]/.run --http-port 8085`
@@ -601,7 +601,7 @@ Set the HTTPS port to `PORT`.
 
 This is the port you'd securely access Landscape on. Note that this requires an SSL certificate to be configured, see the [Configuring SSL guide](../os/basics.md#configuring-ssl) for details. Note that if your ship is behind a reverse proxy (nginx, Caddy, etc) and an SSL certificate is configured _there_, you'd not usually enable HTTPS on the ship itself.
 
-Note this is for secure HTTPS only, see `--http-port` for insecure HTTP.
+Note this is for secure HTTPS only, see [`--http-port`](#http-port-port) for insecure HTTP.
 
 - Undocked: `./urbit --https-port 8443 [pier]`
 - Docked: `[pier]/.run --https-port 8443`

@@ -1,220 +1,254 @@
 # Get on Urbit
 
-Using Urbit requires two things: an Urbit ID, and a server running Urbit OS.
+Using Urbit requires two things: an Urbit ID, and a server running Urbit OS. This guide will walk through the steps of getting an Urbit ID, downloading its keyfile, installing the Urbit runtime, and booting up the Urbit.
+
+This guide will require:
+
+- A small amount of technical ability (such as using terminal).
+- Basic familiarity with crypto wallets and some ETH to buy a planet (unless you want to use a free disposable ID).
+- A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. You can usually get away with 2GB of RAM plus a swapfile, and maybe 10GB of disk space, but it might become a problem in the future as your Urbit grows.
+
+It should also be possible to run Urbit on a Windows computer using the Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.
 
 {% hint %}
 
-You can get a free Urbit ID and OS in the cloud, courtesy of Tlon Corporation, at [this link](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
+If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead.
+
+Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
 
 {% endhint %}
 
-Clicking that link will also invite you to the official Urbit Foundation group on Tlon Messenger, which is a great place to start finding your way around the network.
-
 {% stepper %}
+
 {% step %}
-## Install Urbit OS
 
-If you want to run Urbit on your local device, or a cloud VPS, paste the commands below into the terminal for your operating system and machine.
+## Get an Urbit ID {#get-an-urbit-id}
 
-### macOS
+All Urbits need a unique ID. There are [5 types of Urbit ID](manual/id/get-id.md#types-of-id), but the type an ordinary user needs is a **planet**, which looks like `~sampel-palnet`. Planets are stored in a smart contract called Azimuth on the Ethereum blockchain. Unless you know someone who can gift you one, you'll need to buy one from a marketplace.
 
-{% tabs %}
+{% hint %}
+If you don't want to buy one at this stage, you can use a disposable ID called a **comet**. If you're trying to run an Urbit locally for development purposes, you can also spin up a "fake ship". In either case, [skip straight to Step 3](#install-urbit-os).
+{% endhint %}
 
-{% tab title="Apple Silicon" %}
+Here are the best places to by planets:
 
-{% code %}
+| Layer | Market                                                   | Description                                            |
+|-------|----------------------------------------------------------|--------------------------------------------------------|
+| L1    | [OpenSea](https://opensea.io/collection/urbit-id-planet) | The largest NFT marketplace.                           |
+| L2    | [azimuth.shop](https://azimuth.shop)                     | Easily connect a wallet and buy an L2 planet with ETH. |
 
-```sh
-curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/' && ./urbit
-```
+Originally, all Urbit IDs were ERC-721 NFTs on Ethereum. In 2021, we introduce a Layer-2 protocol to reduce transaction costs on Ethereum. This means there are two places an Urbit ID can live:
 
-{% endcode %}
+- **L1**: The original kind. They can traded on ordinary NFT marketplaces like [OpenSea](https://opensea.io/) and other smart contracts can interact with them, but it'll cost a bit of [gas](https://ethereum.org/en/gas/#what-is-gas) if you need to do a factory reset or change your networking keys.
+- **L2**: There are no transaction fees for things like factory resets and key changes, but normal smart contracts and NFT marketplaces don't understand them.
 
-{% endtab %}
+In either case you retain full ownership and control of your Urbit ID. **It's yours forever.**
 
-{% tab title="Intel" %}
-
-{% code %}
-
-```sh
-curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/' && ./urbit
-```
-
-{% endcode %}
-
-{% endtab %}
-
-{% endtabs %}
-
-### Linux
-
-**System Requirements**
-- **Processor:** 1 core
-- **Memory:** At least 2GB
-- **Storage:** At least a few gigabytes, 40GB or more recommended
-
-{% tabs %}
-
-{% tab title="x86_64" %}
-
-{% code %}
-
-```sh
-curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g' && ./urbit
-```
-
-{% endcode %}
-
-{% endtab %}
-
-{% tab title="AArch64" %}
-
-{% code %}
-
-```sh
-curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g' && ./urbit
-```
-
-{% endcode %}
-
-{% endtab %}
-
-{% endtabs %}
 {% endstep %}
 
 {% step %}
-## Boot up your Urbit
 
-Every Urbit OS instance is made unique by its Urbit ID: a special kind of name that's like a combination IP address, domain name, and phone number. Your Urbit gets its name as soon as it's born; no other Urbit has ever had this name or ever will. Other Urbit servers use this name to talk to it whenever they're sending a chat message, requesting a file, or sending a software update.
+## Get your keyfile {#get-your-keyfile}
 
-This is why you need an Urbit ID to connect to other ships on the network.
+Once you've got an Urbit ID, the next step is to get its keyfile so you can boot it up. The process can vary depending on how you obtained your ID and where it's stored.
 
-There are three ways to get an identity:
-- **Buy a planet.** There are three main ranks of Urbit ID: 2^32 planets, 2^16 stars, and 2^8 galaxies. Most users will only need a planet.
-- **Mine a comet.** A comet is a free, anonymous, disposable Urbit ID. (There are 2^128 of them. Enough for every grain of sand on Earth.) You can use it to access the network, but some groups may refuse entry. Never buy these.
-- **Boot a fake ship.** For development and testing. This will only be able to talk to other fake ships on your machine.
+{% tabs }
+
+{% tab title="ID in wallet" %}
+
+If you got an L1 planet from somewhere like OpenSea, it likely got transferred directly to your Ethereum wallet. Here are the steps to get its keyfile:
+
+1. Go to [Bridge](https://bridge.urbit.org).
+2. Login with WalletConnect or MetaMask if you use that.
+3. Click on your planet, which should be listed there.
+4. Go to the "OS" section.
+5. Click "Initialize" next to "Network Keys" (see note below if it says something else)
+6. Make sure you have a little ETH to pay the transaction fee, then click on "Set Networking Keys"
+7. Click "Send Transaction"
+8. Approve the transaction in your wallet.
+9. Wait until the transaction completes and it says "Network Keys have been set" in Bridge.
+10. Click "Download Keyfile"
+11. A file called something like `sampel-palnet-1.key` will have been downloaded. Don't lose it.
+
+{% hint %}
+Note: if the options next to "Networking Keys" are "Reset" and "View" rather than "Initialize", it means a previous owner has generated keys for the planet. In that case, click on "Reset", tick the "Factory Reset" box, and continue from step 6.
+{% endhint %}
+
+{% endtab %}
+
+{% tab title="Claim planet invite" %}
+
+If you bought an L2 planet, you likely received an invite link that looks like `https://bridge.urbit.org/#foshec-moplec-haddem-poddun-middeg-toptus`:
+
+1. Open the link and complete the steps as prompted.
+2. At one point, there'll be an option to download the passport. Click on that, and it'll download a file that looks like `sampel-palnet-passport.zip`.
+3. Complete any remaining steps and make sure to record the Master Ticket code somewhere safe.
+4. Unzip the passport file you downloaded.
+5. It will contain a file that looks like `sampel-palnet.key`.
+
+If you've already claimed the planet and forgot to download the passport, you'll need to go and download the keyfile from [Bridge](https://bridge.urbit.org):
+
+1. Go to [Bridge](https://bridge.urbit.org).
+2. Click the "Master Ticket" login option.
+3. Enter the planet name and Master Ticket code, and hit "Login".
+4. Go to the "OS" section.
+5. Click on "Download Keyfile" and it'll download a file that looks like `sampel-palnet-2.key`.
+
+{% endtab %}
+
+{% endtabs %}
+
+{% endstep %}
+
+{% step %}
+
+## Get the Urbit runtime {#get-the-urbit-runtime}
+
+To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and download it or run the corresponding `curl` command if you're in a terminal. If you don't know which architecture you have, you can run `uname -m` in the terminal.
+
+| OS    | Architecture            | Name                      | Download link             | Terminal command                                                             |
+|-------|-------------------------|---------------------------|---------------------------|------------------------------------------------------------------------------|
+| macOS | `x86_64` (Intel)        | `vere-v3.4-macos-x86_64`  | [Download][macos-x86_64]  | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64`  |
+| macOS | `arm64` (Apple Silicon) | `vere-v3.4-macos-aarch64` | [Download][macos-aarch64] | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64` |
+| Linux | `x86_64`                | `vere-v3.4-linux-x86_64`  | [Download][linux-x86_64]  | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64`  |
+| Linux | `aarch64`               | `vere-v3.4-linux-aarch64` | [Download][linux-aarch64] | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64` |
+
+[macos-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
+[macos-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
+[linux-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
+[linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
+
+Once you've downloaded it, you'll need to make it executable by going to its location in the terminal and running `chmod +x vere-XXX` (replace `XXX` with the rest of its name, depending which one you downloaded).
+
+{% endstep %}
+
+{% step %}
+
+## Boot up your Urbit {#boot-up-your-urbit}
 
 {% tabs %}
 
-{% tab title="Buy a planet" %}
+{% tab title="Boot a planet" %}
 
-See [this detailed guide](./manual/id/get-id.md) on buying a planet. Once you've done that, proceed to booting it up.
-
-To boot a planet, you'll need a copy of its private key.
-
-Depending on how you got your planet, you may already have a .zip file called something like "sampel-palnet-passport.zip".
-- If so, unzip it and it will contain a file called something like "sampel-palnet.key".
-- Alternatively, you might have downloaded a file called something like "sampel-palnet-1.key", no unzipping needed.
-- If you don't have any of those .key files, log into [Bridge](https://bridge.urbit.org), select your planet, go to the OS section, and click "Download Keyfile".
-
-Back in the terminal, you can boot your planet by running the command below. Replace "sampel-palnet" with your planet's Urbit ID, minus the usual "~" prefix, and make sure the second part after `-k` is the path to your keyfile including its filename.
+Having acquired a planet and downloaded its keyfile, you can now boot it up. The best way to run an Urbit is inside a `screen` session. Screen is a terminal multiplexer that lets you detach from shell sessions and leave them running in the background, then attach them again later. Without something like `screen`, you'd have to leave the terminal open all the time while your Urbit is running. To start a new `screen` session and name it `urbit`, run the following command in your terminal:
 
 ```sh
-./urbit -w sampel-palnet -k sampel-palnet-1.key
+screen -S urbit
 ```
 
-This will take a few minutes. You'll know your planet has booted when you see something like this.
+Now that you're in a `screen` session, you can boot your Urbit with the command below. You'll need to replace `XXX` with Vere's full name, `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously: 
 
+```sh
+./vere-XXX -w sampel-palnet -k /path/to/sampel-palnet-1.key
 ```
-ames: live on 31337
-http: web interface live on http://localhost:80
-http: loopback live on http://localhost:12321
+
+Your planet will begin to boot up, it might take a few minutes. You'll know your planet has booted when you have a responsive prompt that looks like this:
+
+```sh
 ~sampel-palnet:dojo>
 ```
 
-This is the Dojo, Urbit's command-line interface. You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
+This is the Dojo, Urbit's command-line interface. For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
-Once you've booted for the first time, you can run your ship again with `./sampel-palnet/.run`. (For ease of portability, the `sampel-palnet` folder now has a copy of the runtime inside it.)
-
-Run `./urbit` with no arguments to see a full list of commands available to you.
-
-You can access your planet from a web browser by visiting `http://localhost`, or whichever URL you saw in the "web interface" line in your terminal output.
-
-You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
-
-This will take you to your homescreen.
-
-Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
-
-*Linux users:* If you want to access your Urbit on port :80, you'll need to run the commands below every time you upgrade your `urbit` runtime. Otherwise, it'll default to port :8080.
+**Linux users:** Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
-sudo apt-get install libcap2-bin
-sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
+sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
+sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run # replace sampel-palnet with the actual folder name
 ```
+
+You can now spin it back up again by running `./sampel-palnet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `sampel-palnet` folder so you don't need the separate `vere-XXX` binary anymore.
+
+Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`. You can save it in a password manager or write it down if you'd like.
+
+Now, detach the `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close the terminal entirely with `Ctrl+D`.
+
+If you need to get back to the Dojo again in the future, just open a terminal and run `screen -r urbit` to reattach the session.
 
 {% endtab %}
 
 {% tab title="Mine a comet" %}
 
-If you want to explore the network without buying an Urbit ID, you can use an anonymous, disposable ID called a comet for free.
-
-To start, run this command, where "mycomet" is the name of the folder you'd like to create for your comet.
+The best way to run an Urbit is inside a `screen` session. Screen is a terminal multiplexer that lets you detach from shell sessions and leave them running in the background, then attach them again later. Without something like `screen`, you'd have to leave the terminal open all the time while your Urbit is running. To start a new `screen` session and name it `urbit`, run the following command in your terminal:
 
 ```sh
-./urbit -c mycomet
+screen -S urbit
 ```
 
-You'll know your comet has booted when you see something like this.
-
-```
-ames: live on 31337
-http: web interface live on http://localhost:80
-http: loopback live on http://localhost:12321
-~sampel_ponnym:dojo>
-```
-
-This is the Dojo, Urbit's command-line interface.
-
-You can shut the ship down and leave the Dojo by typing `|exit` or pressing `Ctrl+D`.
-
-Once you've booted for the first time, you can run your ship again with `./mycomet/.run`. (For ease of portability, the `mycomet` folder now has a copy of the runtime inside it.)
-
-Run `./urbit` with no arguments to see a full list of commands available to you.
-
-You can access your comet from a web browser by visiting `http://localhost`, or whichever URL you saw in the "web interface" line in your terminal output. You'll see a login screen asking for a code, which you can get by typing `+code` in the Dojo. You'll see something like `lidlut-tabwed-pillex-ridrup`. Copy that into the login screen and click "Continue".
-
-This will take you to your homescreen.
-
-Open the Tlon app to find your way around the network. Click "Get Urbit Apps" to see some of what your ship can do.
-
-*Linux users:* If you want to access your Urbit on port :80, you'll need to run the commands below every time you upgrade your `urbit` runtime. Otherwise, it'll default to port :8080.
+Now that you're in a `screen` session, you can mine a new comet with the command below. You'll need to replace `XXX` with Vere's full name, and you can change `mycomet` to whatever you'd like: 
 
 ```sh
-sudo apt-get install libcap2-bin
-sudo setcap 'cap_net_bind_service=+ep' <pier>/.run
+./vere-XXX -c mycomet
 ```
+
+It might take a few minutes to boot up and mine a comet. You'll know your comet has fully booted when you have a responsive prompt that looks like this:
+
+```sh
+~sampel_litzod:dojo>
+```
+
+This is the Dojo, Urbit's command-line interface. For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
+
+**Linux users:** Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
+
+```sh
+sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
+sudo setcap 'cap_net_bind_service=+ep' mycomet/.run
+```
+
+You can now spin it back up again by running `./mycomet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `mycomet` folder so you don't need the separate `vere-XXX` binary anymore.
+
+Comets don't have kernel over-the-air updates enabled by default, so you'll want to run `|ota` in the Dojo to turn those on.
+
+Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`. You can save it in a password manager or write it down if you'd like.
+
+Now, detach the `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close the terminal entirely with `Ctrl+D`.
+
+If you need to get back to the Dojo again in the future, just open a terminal and run `screen -r urbit` to reattach the session.
 
 {% endtab %}
 
 {% tab title="Boot a fake ship" %}
 
-Run `urbit` with the `-F` flag to boot a new fake ship. You'll need to specify an identity for your fake ship, minus the usual "~" prefix.
+Fake ships are for development purposes only and cannot connect to the live network.
+
+Run the `vere` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
 
 ```sh
-./urbit -F zod
+./vere-XXX -F zod # replace XXX with the full name of the vere binary you downloaded
 ```
 
-This will take a few minutes. Once that's done, you'll see something like this:
+This will take a few minutes. Once it's done, you'll have a responsive prompt that looks like this:
 
 ```
-ames: live on 31337
-http: web interface live on http://localhost:80
-http: loopback live on http://localhost:12321
 ~zod:dojo> 
 ```
 
-You can shut the comet down by typing `|exit` or pressing `Ctrl+D`.
+You can shut the fake ship down by typing `|exit` or pressing `Ctrl+D`.
 
-Once you've booted for the first time, you can run your ship again with `./zod/.run`. (For ease of portability, the `zod` folder now has a copy of the runtime inside it.)
+You can now spin it back up again by running `./zod/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `zod` folder so you don't need the separate `vere-XXX` binary anymore.
 
-Run `./urbit` with no arguments to see a full list of commands available to you.
+If you need to access your fake ship's web interface, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`.
 
 To learn more about developing on Urbit, look at our [courses](./courses/README.md).
 
 {% endtab %}
+
 {% endtabs %}
 
 {% endstep %}
+
+{% step %}
+
+## Login to Landscape {#login-to-landscape}
+
+With your Urbit now running and your web login code in the clipboard, you can open a browser and go to `http://localhost` (try `http://localhost:8080` if that doesn't work). You should be greeted with your Urbit's login screen. Paste in the code you got from running `+code` in the Dojo (it looks like `lidlut-tabwed-pillex-ridrup`) and hit enter. You'll now be in your Landscape homescreen.
+
+To join your first group, you can open the Tlon app by clicking on its tile, then hit the `+` in the sidebar and select "Join a group". Paste in `~halbex-palheb/uf-public`, the Urbit Foundation's main public group, and hit "Go".
+
+If you'd like to explore what other apps are available, click on the "Get Urbit Apps" button at the top of the Landscape homescreen. There's a few suggestions listed there, and you can also paste in an app shortcode or an app publisher's ship name if you know any.
+
+{% endstep %}
+
 {% endstepper %}
 

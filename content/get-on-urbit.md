@@ -4,7 +4,7 @@ Using Urbit requires two things: an Urbit ID, and a server running Urbit OS. Thi
 
 This guide will require:
 
-- A small amount of technical ability (such as using terminal).
+- A small amount of technical ability (such as using a terminal).
 - Basic familiarity with crypto wallets and some ETH to buy a planet (unless you want to use a free disposable ID).
 - A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. You can usually get away with 2GB of RAM plus a swapfile and less disk space, but it might become a problem in the future as your Urbit grows.
 

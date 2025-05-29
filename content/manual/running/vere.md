@@ -470,7 +470,7 @@ boot: protected loom
 live: mapped: MB/403.128.320
 live: loaded: KB/16.384
 boot: installed 1362 jets
-<keyfile>
+0w50w.642KA.glYh8.RvaRp.6TA35.3XRYN.ULCI6.UmcsZ.5rGvG.3dvFt.E6rMF.mZnd~.3O6QB.7LZ1f.-ukYN.z2fcY.Ecviv.LiZEg.8w0sp
 ```
 
 ### `serf ARGS` {#serf-args}

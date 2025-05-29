@@ -103,54 +103,41 @@ To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt b
 {% tabs %}
 {% tab title="macOS (Intel)" %}
 
-[`vere-v3.4-macos-x86_64`][macos-x86_64]
-
 Open a terminal and run:
 
 ```sh
-curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64 -o vere && chmod +x vere
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/vere/'
 ```
 
 {% endtab %}
 {% tab title="macOS (Apple Silicon)" %}
 
-[`vere-v3.4-macos-aarch64`][macos-aarch64]
-
 Open a terminal and run:
 
 ```sh
-curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64 -o vere && chmod +x vere
+curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 {% endtab %}
 {% tab title="Linux x86_64" %}
 
-[`vere-v3.4-linux-x86_64`][linux-x86_64]
-
 Open a terminal and run:
 
 ```sh
-curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64 -o vere && chmod +x vere
+curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/vere/g'
 ```
 
 {% endtab %}
 {% tab title="Linux aarch64" %}
 
-[`vere-v3.4-linux-aarch64`][linux-aarch64]
-
 Open a terminal and run:
 
 ```sh
-curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64 -o vere && chmod +x vere
+curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/vere/g'
 ```
 
 {% endtab %}
 {% endtabs %}
-
-[macos-x86_64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
-[macos-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
-[linux-x86_64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
-[linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 
 {% endstep %}
 

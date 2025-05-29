@@ -98,7 +98,7 @@ If you've already claimed the planet and forgot to download the passport, you'll
 {% step %}
 ## Get the Urbit runtime {#get-the-urbit-runtime}
 
-To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and run the corresponding `curl` command in a terminal.
+To spin up a new Urbit, you need the Urbit runtime. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and run the corresponding `curl` command in a terminal.
 
 {% tabs %}
 {% tab title="macOS (Intel)" %}
@@ -106,7 +106,7 @@ To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt b
 Open a terminal and run:
 
 ```sh
-curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/vere/'
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 {% endtab %}
@@ -124,7 +124,7 @@ curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
 Open a terminal and run:
 
 ```sh
-curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/vere/g'
+curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 {% endtab %}
@@ -133,7 +133,7 @@ curl -L https://urbit.org/install/linux-x86_64/latest | tar xzk --transform='s/.
 Open a terminal and run:
 
 ```sh
-curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/vere/g'
+curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/.*/urbit/g'
 ```
 
 {% endtab %}
@@ -157,7 +157,7 @@ screen -S urbit
 Now that you're in a `screen` session, you can boot your Urbit with the command below, replacing `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously: 
 
 ```sh
-./vere -w sampel-palnet -k /path/to/sampel-palnet-1.key
+./urbit -w sampel-palnet -k /path/to/sampel-palnet-1.key
 ```
 
 Your planet will begin to boot up, it might take a few minutes. You'll know your planet has booted when you have a responsive prompt that looks like this:
@@ -171,7 +171,7 @@ This is the Dojo, Urbit's command-line interface. For the moment, shut the ship 
 {% hint style="warn" %}
 ## Linux users
 
-Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
+Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
 sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
@@ -179,7 +179,7 @@ sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run # replace sampel-palne
 ```
 {% endhint %}
 
-You can now spin it back up again by running `./sampel-palnet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `sampel-palnet` folder so you don't need the separate `vere` binary anymore.
+You can now spin it back up again by running `./sampel-palnet/.run`, and you'll be back at the Dojo. Urbit has "docked" itself with the `sampel-palnet` folder so you don't need the separate `urbit` binary anymore.
 
 Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`. You can save it in a password manager or write it down if you'd like.
 
@@ -200,7 +200,7 @@ screen -S urbit
 Now that you're in a `screen` session, you can mine a new comet with the command below. Yyou can change `mycomet` to whatever you'd like: 
 
 ```sh
-./vere -c mycomet
+./urbit -c mycomet
 ```
 
 It might take a few minutes to boot up and mine a comet. You'll know your comet has fully booted when you have a responsive prompt that looks like this:
@@ -214,7 +214,7 @@ This is the Dojo, Urbit's command-line interface. For the moment, shut the ship 
 {% hint style="warn" %}
 ## Linux users
 
-Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
+Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
 sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
@@ -222,7 +222,7 @@ sudo setcap 'cap_net_bind_service=+ep' mycomet/.run
 ```
 {% endhint %}
 
-You can now spin it back up again by running `./mycomet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `mycomet` folder so you don't need the separate `vere` binary anymore.
+You can now spin it back up again by running `./mycomet/.run`, and you'll be back at the Dojo. Urbit has "docked" itself with the `mycomet` folder so you don't need the separate `urbit` binary anymore.
 
 Comets don't have kernel over-the-air updates enabled by default, so you'll want to run `|ota` in the Dojo to turn those on.
 
@@ -238,10 +238,10 @@ If you need to get back to the Dojo again in the future, just open a terminal an
 
 Fake ships are for development purposes only and cannot connect to the live network.
 
-Run the `vere` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
+Run the `urbit` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
 
 ```sh
-./vere -F zod
+./urbit -F zod
 ```
 
 This will take a few minutes. Once it's done, you'll have a responsive prompt that looks like this:
@@ -252,7 +252,7 @@ This will take a few minutes. Once it's done, you'll have a responsive prompt th
 
 You can shut the fake ship down by typing `|exit` or pressing `Ctrl+D`.
 
-You can now spin it back up again by running `./zod/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `zod` folder so you don't need the separate `vere` binary anymore.
+You can now spin it back up again by running `./zod/.run`, and you'll be back at the Dojo. Urbit has "docked" itself with the `zod` folder so you don't need the separate `urbit` binary anymore.
 
 If you need to access your fake ship's web interface, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`.
 

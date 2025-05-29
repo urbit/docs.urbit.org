@@ -168,7 +168,7 @@ Your planet will begin to boot up, it might take a few minutes. You'll know your
 
 This is the Dojo, Urbit's command-line interface. For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
-{% hint style="warn" %}
+{% hint style="warning" %}
 ## Linux users
 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
@@ -211,7 +211,7 @@ It might take a few minutes to boot up and mine a comet. You'll know your comet 
 
 This is the Dojo, Urbit's command-line interface. For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
-{% hint style="warn" %}
+{% hint style="warning" %}
 ## Linux users
 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:

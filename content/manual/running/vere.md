@@ -545,7 +545,7 @@ An argument `0` means uncapped, otherwise the specified number of entries.
 
 Run the ship in daemon mode.
 
-The process will be detached from the terminal (this implies `-t`).
+The process will be detached from the terminal (this implies [`-t`](#t---no-tty)).
 
 - Undocked: `./urbit -d [pier]`
 - Docked: `[pier]/.run -d`

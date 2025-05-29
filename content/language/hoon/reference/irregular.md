@@ -13,18 +13,20 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#zapcom) rune to determi
 
 | Form | Regular Form |
 | ---- | ------------ |
-| `_foo` | [`$_`](rune/buc.md#_-buccab), normalizes to an example |
+| `_foo` | [`$_`](rune/buc.md#buccab), normalizes to an example |
+| `foo@bar` | [`$@`](rune/buc.md#bucpat), normalizes to a type union of an atom and a cell |
 | `foo=bar` | [`$=`](rune/buc.md#buctis), wraps a face around a value |
 | `?(%foo %bar %baz)` | [`$?`](rune/buc.md#bucwut), forms a type union |
-| `(fun a b c)` | [`%:`](rune/cen.md#cencol), calls a gate with n arguments |
+| `(foo a b c)` | [`%:`](rune/cen.md#cencol), calls a gate with _n_ arguments |
 | `~(arm core arg)` | [`%~`](rune/cen.md#censig), pulls an arm in a door |
-| `foo(x 1, y 2, z 3)` | [`%=`](rune/cen.md#centis), resolve a wing with changes |
+| `foo(a 1, b 2, c 3)` | [`%=`](rune/cen.md#centis), resolve a wing with changes |
+| `[foo bar]` | [`:-`](rune/col.md#colhep), constructs a cell |
 | `[a b c]` | [`:*`](rune/col.md#coltar) or [`$:`](rune/buc.md#buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
 | `~[a b c]` | [`:~`](rune/col.md#colsig), constructs null-terminated list |
 | `+(42)` | [`.+`](rune/dot.md#dotlus), increments with Nock 4 |
-| `=(a b)` | [`.=`](rune/dot.md#dottis), tests for equality wiht Nock 5 |
-| `` `foo` bar`` | [`^-`](rune/ket.md#kethep), typecasts by explicit type label |
-| `foo=bar` | [`^=`](rune/ket.md#kettis), binds name to value |
+| `=(a b)` | [`.=`](rune/dot.md#dottis), tests for equality with Nock 5 |
+| `` `foo`bar`` | [`^-`](rune/ket.md#kethep), typecasts by explicit type label |
+| `=foo` or `foo=bar` | [`^=`](rune/ket.md#kettis), binds name to value |
 | `*foo` | [`^*`](rune/ket.md#kettar), bunts (produces default mold value) |
 | `,foo` | [`^:`](rune/ket.md#ketcol), produces “factory” gate for type |
 | `:(fun a b c d)` | [`;:`](rune/mic.md#miccol), calls binary function as _n_-ary function |
@@ -41,7 +43,7 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#zapcom) rune to determi
 
 Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular and irregular forms are given.
 
-Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
+Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for "\symbol". ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
 ## `.` dot (nock) {#dot-nock}
 
@@ -108,7 +110,7 @@ Irregular:
 
 ## `=` tis (flow) {#tis-flow}
 
-Flow hoons change the subject. All non-flow hoons (except cores) pass the subject down unchanged.
+Flow runes change the subject. All non-flow runes (except cores) pass the subject down unchanged.
 
 ### `=<` tisgal {#tisgal}
 
@@ -124,7 +126,7 @@ Irregular: `p:q`
 
 [docs](rune/bar.md) \\$
 
-Core hoons are flow hoon.
+Core runes are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.
 
@@ -169,7 +171,7 @@ Regular: `%-(p q)`
 
 Irregular: `(p q)`
 
-Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (func call w/o args).
+Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (function call without arguments).
 
 ## `$` buc (mold) {#buc-mold}
 
@@ -201,10 +203,15 @@ Irregular: `_p`
 
 `[%bcts p=skin q=spec]`: wraps a face around a structure.
 
-Regular: `$=(p q)`
+Regular:
+
+```
+$=(p q)
+```
 
 Irregular:
-```hoon
+
+```
  p=q   ==>   $=(p q)
   =q   ==>   q=q
 =p=q   ==>   p-q=q
@@ -228,7 +235,7 @@ Irregular: `!(p)`
 
 [docs](rune/wut.md#wutpam) \\&
 
-`[%wtpm p=(list hoon)]`: logical and.
+`[%wtpm p=(list hoon)]`: logical AND.
 
 Regular: `?&(p)`
 
@@ -238,7 +245,7 @@ Irregular: `&(p)`
 
 [docs](rune/wut.md#wutbar) \\|
 
-`[%wtbr p=(list hoon)]`: logical or.
+`[%wtbr p=(list hoon)]`: logical OR.
 
 Regular: `?|(p)`
 
@@ -252,7 +259,7 @@ Lets us adjust types without violating type constraints.
 
 [docs](rune/ket.md#ketcol) \\,
 
-`[%ktcl p=spec]`: mold gate for type `p`.
+`[%ktcl p=spec]`: mold gate for type `.p`.
 
 Regular: `^:(p)`
 
@@ -315,8 +322,8 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 \\&\\|
 
-- `&n` nth element of a list.
-- `|n` tail of list after nth element (i.e. n is the head).
+- `&n` *n*th element of a list.
+- `|n` tail of list after *n*th element (i.e. _n_ is the head).
 
 ### Limbs {#limbs}
 
@@ -326,9 +333,10 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 - `+15` is slot 15
 - `.` is the whole subject (slot 1)
-- `^a` is the `a` "of a higher scope", i.e. "resolve variable a, ignoring the first one found".
-- `^^p` even higher, etc.
-- 'Lark' syntax for slots / tree addressing:
+- `^a` is the `.a` "of a higher scope", i.e. "resolve variable `a`, ignoring the first one found".
+- `^^p` even higher, and so on.
+
+'Lark' syntax for slots / tree addressing:
 
 ```
 +1
@@ -348,20 +356,20 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 `[%wing p=(list limb)]`; a limb search path.
 
-`a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
+`a.b` finds limb `.a` within limb `.b` ("variable" `.a` within "variable" `.b`).
 
 ### Printing stuff {#printing-stuff}
 
 \\\<\\\>
 
-- `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than 1 item), formatted in pretty-print.
+- `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than one item), formatted in pretty-print.
 
   ```hoon
   > >1 2 3<
   [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
   ```
 
-- `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (ie `<1 2 3>` is same as `~(ram re >1 2 3<)`).
+- `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (i.e. `<1 2 3>` is same as `~(ram re >1 2 3<)`).
 
   ```hoon
   > <1 2 3>
@@ -375,74 +383,79 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 `,` can serve in several capacities in Hoon programs:
 
-1. As sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode. (Toggling out of structure mode is uncommon.)
+#### `,` as syntactic sugar
 
-    ```
-    > !,(*hoon ,[@t @t])
-    [ %ktcl
-      p=[%bccl p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+Sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mode. (Toggling out of structure mode is uncommon.)
+
+```
+> !,(*hoon ,[@t @t])
+[ %ktcl
+  p=[%bccl p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+]
+
+> !,(*hoon |=(a=,[@t @t] b))
+[ %brts
+    p
+  [ %bcts
+    p=term=%a
+      q
+    [ %bcmc
+      p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
     ]
-    
-    > !,(*hoon |=(a=,[@t @t] b))
-    [ %brts
-        p
-      [ %bcts
-        p=term=%a
-          q
-        [ %bcmc
-          p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
-        ]
-      ]
-      q=[%cnts p=~[[%.y p=2] %a] q=~]
-    ]
-    
-    > !,(*hoon ,,[@t @t])
-    [ %ktcl
-        p
-      [ %bcmc
-        p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
-      ]
-    ]
-    ```
-    
-    (`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `hoon` instead of out of `spec`.  It is not commonly used.)
-    
-    From value mode to structure mode:
+  ]
+  q=[%cnts p=~[[%.y p=2] %a] q=~]
+]
 
-    ```hoon
-    [%ktcl p=spec]
-    ```
+> !,(*hoon ,,[@t @t])
+[ %ktcl
+    p
+  [ %bcmc
+    p=[%cltr p=[i=[%base p=[%atom p=~.t]] t=[i=[%base p=[%atom p=~.t]] t=~]]]
+  ]
+]
+```
 
-    From structure mode to value mode:
+(`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `$hoon` instead of out of `$spec`.  It is not commonly used.)
 
-    ```hoon
-    [%bcmc p=hoon]
-    ```
+From value mode to structure mode:
 
-2. As wing syntax for stripping a face.
+```hoon
+[%ktcl p=spec]
+```
 
-    For instance, a line similar to the following is present in many Gall agents receiving HTTP requests via Eyre:
+From structure mode to value mode:
 
-    ```
-    =/  ,request-line:server  (parse-request-line:server url.request.inbound-request)
-    ```
-    
-    This `,` lets you avoid using an outer face when handling the result.
-    
-    ```
-    > =/  ,@ud  1
-      -
-    1
-    > !,(*hoon =/(,@ud 1 -))
-    [ %tsfs
-      p=[%spec spec=[%bcmc p=[%base p=[%atom p=~.ud]]] skin=[%base base=%noun]]
-      q=[%sand p=%ud q=1]
-      r=[%cnts p=~[[%.y p=2]] q=~]
-    ]
-    ```
+```hoon
+[%bcmc p=hoon]
+```
 
-3. As a separator, e.g. between pairs in an inline `%=` centis expression, `$(i +(i), j (dec j))`.
+#### `,` as wing syntax for stripping a face
 
-## Commentary {#commentary}
+For example, a line similar to the following is present in many Gall agents receiving HTTP requests via Eyre:
 
-In our in-house examples throughout our documentation, we use irregular forms instead of regular for the sake of verbosity. But remember with irregular forms: everything is just runes! Like magic. In general, irregular forms (usually) read better, but of course regular forms provide more information about what you're doing by showing you the full rune. Of course, it's up to you, the Hoon programmer, as to whether or not you want to use these.
+```
+=/  ,request-line:server  (parse-request-line:server url.request.inbound-request)
+```
+
+This `,` lets you avoid using an outer face when handling the result.
+
+```
+> =/  ,@ud  1
+  -
+1
+> !,(*hoon =/(,@ud 1 -))
+[ %tsfs
+  p=[%spec spec=[%bcmc p=[%base p=[%atom p=~.ud]]] skin=[%base base=%noun]]
+  q=[%sand p=%ud q=1]
+  r=[%cnts p=~[[%.y p=2]] q=~]
+]
+```
+
+#### `,` as separator
+
+For example, between pairs in an inline `%=` centis expression.
+
+```hoon
+$(i +(i), j (dec j))
+```
+

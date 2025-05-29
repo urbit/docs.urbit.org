@@ -582,7 +582,7 @@ This runs a GC pass at the end of every virtualized computation. This is intende
 
 Boot a new ship with private key `STRING`.
 
-The private key is `@uw` format. See `-k` for an alternative.
+The private key is [`@uw`](../../courses/hoon-school/E-types.md##what-auras-are-there) format. See [`-k`](#k---key-file-keys) for an alternative.
 
 - Undocked: `./urbit -w sampel-palnet -G 0w50w.642KA.glYh8.RvaRp.6TA35.3XRYN.ULCI6.UmcsZ.5rGvG.3dvFt.E6rMF.mZnd~.3O6QB.7LZ1f.-ukYN.z2fcY.Ecviv.LiZEg.8w0sp`
 

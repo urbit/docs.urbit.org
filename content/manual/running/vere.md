@@ -496,10 +496,20 @@ Bind the HTTP server to IP address `IP`.
 - Undocked: `./urbit -b 192.168.1.10 [pier]`
 - Docked: `[pier]/.run -b 192.168.1.10`
 
+#### Linux
+
 ```
 $ ss -tlnp | grep urbit
 LISTEN 0      16         127.0.0.1:12321      0.0.0.0:*    users:(("urbit",pid=15689,fd=29))
 LISTEN 0      16      192.168.1.10:8080       0.0.0.0:*    users:(("urbit",pid=15689,fd=28))
+```
+
+#### macOS
+
+```
+$ lsof -nP -iTCP | grep urbit
+urbit      4841 admin 29u  IPv4 0x6e1dcf159955111b      0t0  TCP 127.0.0.1:8080 (LISTEN)
+urbit      4841 admin 31u  IPv4  0x16fd2f165413aca      0t0  TCP 127.0.0.1:12321 (LISTEN)
 ```
 
 ### `-B, --bootstrap PILL` {#b---bootstrap-pill}

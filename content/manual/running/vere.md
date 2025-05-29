@@ -725,20 +725,21 @@ This lets you resume a partially completed replay. For the given `NUMBER`, there
 
 Report Vere build info.
 
-```
-$ urbit -R
-urbit 1.9
-gmp: 6.2.1
-sigsegv: 2.14
-openssl: OpenSSL 1.1.1n  15 Mar 2022
-libuv: 1.43.0
-libh2o: 0.13.6
-lmdb: 0.9.29
-curl: 7.81.0
-```
-
 - Undocked: `./urbit -R [pier]`
 - Docked: `[pier]/.run -R`
+
+This reports the version numbers for the runtime and its dependencies.
+
+```
+urbit 3.4
+gmp: 6.2.1
+sigsegv: 2.14
+openssl: OpenSSL 1.1.1w  11 Sep 2023
+libuv: 1.50.0
+libh2o: 0.13.6
+lmdb: 0.9.29
+curl: 8.9.1
+```
 
 ### `-t, --no-tty` {#t---no-tty}
 

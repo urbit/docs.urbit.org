@@ -1,4 +1,4 @@
-# Cloud hosting
+# Cloud Hosting
 
 The goal of this guide is to have clear and easy to follow best practices for deploying an Urbit node to a server you control in the cloud. Deploying in the cloud allows you to access your Urbit from any device.
 
@@ -52,7 +52,7 @@ It should spit out a long string of letters and numbers beginning with `ssh-rsa`
 
 #### Additional options
 
-Click "+Advanced Options" check the box for "Add Initialization scripts (free)" and paste the script below into the field provided. This will automatically configure the server and install necessary software.
+Click "User data" and paste the script below into the field provided. This will automatically configure the server and install necessary software.
 
 ```bash
 #!/bin/bash

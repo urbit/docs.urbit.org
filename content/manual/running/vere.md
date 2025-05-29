@@ -534,7 +534,7 @@ The pier folder will be named `foobar` as a result of the above command.
 
 Set the maximum number of entries for the memoization cache.
 
-This cache is used by the `~+` rune and a few other things.
+This cache is used by the [`~+`](../../language/hoon/reference/rune/sig.md#siglus) rune and a few other things.
 
 An argument `0` means uncapped, otherwise the specified number of entries.
 

@@ -637,7 +637,7 @@ An Ivory pill is a pill compiled into the binary and used for runtime support co
 
 Boot a new ship with the private key file `KEY`.
 
-See `-G` for an alternative.
+See [`-G`](#g---key-string-string) for an alternative.
 
 - Undocked: `./urbit -w sampel-palnet -k /path/to/my.key`
 

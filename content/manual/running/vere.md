@@ -522,9 +522,11 @@ When booting a new ship, use file `PILL` for the pill, rather than the default o
 
 ### `-c, --pier PIER` {#c---pier-pier}
 
-When booting a ship, name its pier as `PIER` rather than the usual `@p`.
+When booting a ship, name its pier as `PIER` rather than the usual `sampel-palnet` etc.
 
-- Undocked: `./urbit -w sampel-palnet -k /path/to/my.key -c foobar`
+```
+./urbit -w sampel-palnet -k /path/to/my.key -c foobar
+```
 
 The pier folder will be named `foobar` as a result of the above command.
 

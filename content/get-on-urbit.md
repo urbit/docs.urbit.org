@@ -98,50 +98,50 @@ If you've already claimed the planet and forgot to download the passport, you'll
 {% step %}
 ## Get the Urbit runtime {#get-the-urbit-runtime}
 
-To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and download it or run the corresponding `curl` command if you're in a terminal.
+To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and run the corresponding `curl` command in a terminal.
 
 {% tabs %}
 {% tab title="macOS (Intel)" %}
 
-Download: [`vere-v3.4-macos-x86_64`][macos-x86_64]
+[`vere-v3.4-macos-x86_64`][macos-x86_64]
 
-Or from the terminal:
+Open a terminal and run:
 
 ```sh
-curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
+curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64 -o vere && chmod +x vere
 ```
 
 {% endtab %}
 {% tab title="macOS (Apple Silicon)" %}
 
-Download: [`vere-v3.4-macos-aarch64`][macos-aarch64]
+[`vere-v3.4-macos-aarch64`][macos-aarch64]
 
-Or from the terminal:
+Open a terminal and run:
 
 ```sh
-curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
+curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64 -o vere && chmod +x vere
 ```
 
 {% endtab %}
 {% tab title="Linux x86_64" %}
 
-Download: [`vere-v3.4-linux-x86_64`][linux-x86_64]
+[`vere-v3.4-linux-x86_64`][linux-x86_64]
 
-Or from the terminal:
+Open a terminal and run:
 
 ```sh
-curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
+curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64 -o vere && chmod +x vere
 ```
 
 {% endtab %}
 {% tab title="Linux aarch64" %}
 
-Download: [`vere-v3.4-linux-aarch64`][linux-aarch64]
+[`vere-v3.4-linux-aarch64`][linux-aarch64]
 
-Or from the terminal:
+Open a terminal and run:
 
 ```sh
-curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
+curl -L https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64 -o vere && chmod +x vere
 ```
 
 {% endtab %}
@@ -151,8 +151,6 @@ curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 [macos-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
 [linux-x86_64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
 [linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
-
-Once you've downloaded it, you'll need to make it executable by going to its location in the terminal and running `chmod +x vere` (replace `vere` with the full name of the one you downloaded).
 
 {% endstep %}
 
@@ -169,7 +167,7 @@ Having acquired a planet and downloaded its keyfile, you can now boot it up. The
 screen -S urbit
 ```
 
-Now that you're in a `screen` session, you can boot your Urbit with the command below. You'll need to replace `vere` with the full name of the one you downloaded, `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously: 
+Now that you're in a `screen` session, you can boot your Urbit with the command below, replacing `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously: 
 
 ```sh
 ./vere -w sampel-palnet -k /path/to/sampel-palnet-1.key
@@ -208,7 +206,7 @@ The best way to run an Urbit is inside a `screen` session. Screen is a terminal 
 screen -S urbit
 ```
 
-Now that you're in a `screen` session, you can mine a new comet with the command below. You'll need to replace `vere` with the full name of the one you downloaded, and you can change `mycomet` to whatever you'd like: 
+Now that you're in a `screen` session, you can mine a new comet with the command below. Yyou can change `mycomet` to whatever you'd like: 
 
 ```sh
 ./vere -c mycomet
@@ -248,7 +246,7 @@ Fake ships are for development purposes only and cannot connect to the live netw
 Run the `vere` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
 
 ```sh
-./vere -F zod # replace "vere" with the full name of the one you downloaded
+./vere -F zod
 ```
 
 This will take a few minutes. Once it's done, you'll have a responsive prompt that looks like this:

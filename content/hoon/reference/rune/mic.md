@@ -569,7 +569,7 @@ A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx)
 
 #### Discussion
 
-`;=` is a [Sail](../../guides/sail.md) rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
+`;=` is a [Sail](../guides/sail.md) rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
 In Sail a single XML node is represented by a `manx`. A single `<p>` node `manx` can be produced in the following way:
 

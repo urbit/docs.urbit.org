@@ -290,7 +290,7 @@ Likewise, the output of `+crip` can be cast to a knot or term:
 
 ## Encoding in text {#encoding-in-text}
 
-It's common to encode atoms in cords or knots, particularly when constructing a [scry](../../../system/kernel/arvo/guides/scry.md) [`path`](../reference/stdlib/2q.md#path) or just a `path` in general. There are two main functions for this purpose: [`+scot`](../reference/stdlib/4m.md#scot) and [`+scow`](../reference/stdlib/4m.md#scow). The former produces a `knot`, and the latter produces a `tape`. Additionally, there are two more functions for encoding `path`s in cords and tapes respectively: [`+spat`](../reference/stdlib/4m.md#spat) and [`+spud`](../reference/stdlib/4m.md#spud).
+It's common to encode atoms in cords or knots, particularly when constructing a [scry](../../system/kernel/arvo/guides/scry.md) [`path`](../reference/stdlib/2q.md#path) or just a `path` in general. There are two main functions for this purpose: [`+scot`](../reference/stdlib/4m.md#scot) and [`+scow`](../reference/stdlib/4m.md#scow). The former produces a `knot`, and the latter produces a `tape`. Additionally, there are two more functions for encoding `path`s in cords and tapes respectively: [`+spat`](../reference/stdlib/4m.md#spat) and [`+spud`](../reference/stdlib/4m.md#spud).
 
 ### `+scot` and `+spat` {#scot-and-spat}
 

@@ -22,7 +22,7 @@ Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks
 
 {% step %}
 
-## Get an Urbit ID {#get-an-urbit-id}
+### Get an Urbit ID {#get-an-urbit-id}
 
 All Urbits need a unique ID. There are [5 types of Urbit ID](manual/id/get-id.md#types-of-id), but the type an ordinary user needs is a **planet**, which looks like `~sampel-palnet`. Planets are stored in a smart contract called Azimuth on the Ethereum blockchain. Unless you know someone who can gift you one, you'll need to buy one from a marketplace.
 
@@ -48,7 +48,7 @@ In either case you retain full ownership and control of your Urbit ID. **It's yo
 
 {% step %}
 
-## Get your keyfile {#get-your-keyfile}
+### Get your keyfile {#get-your-keyfile}
 
 Once you've got an Urbit ID, the next step is to get its keyfile so you can boot it up. The process can vary depending on how you obtained your ID and where it's stored.
 
@@ -102,7 +102,7 @@ If you've already claimed the planet and forgot to download the passport, you'll
 
 {% step %}
 
-## Get the Urbit runtime {#get-the-urbit-runtime}
+### Get the Urbit runtime {#get-the-urbit-runtime}
 
 To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and download it or run the corresponding `curl` command if you're in a terminal. If you don't know which architecture you have, you can run `uname -m` in the terminal.
 
@@ -124,7 +124,7 @@ Once you've downloaded it, you'll need to make it executable by going to its loc
 
 {% step %}
 
-## Boot up your Urbit {#boot-up-your-urbit}
+### Boot up your Urbit {#boot-up-your-urbit}
 
 {% tabs %}
 
@@ -240,7 +240,7 @@ To learn more about developing on Urbit, look at our [courses](./courses/README.
 
 {% step %}
 
-## Login to Landscape {#login-to-landscape}
+### Login to Landscape {#login-to-landscape}
 
 With your Urbit now running and your web login code in the clipboard, you can open a browser and go to `http://localhost` (try `http://localhost:8080` if that doesn't work). You should be greeted with your Urbit's login screen. Paste in the code you got from running `+code` in the Dojo (it looks like `lidlut-tabwed-pillex-ridrup`) and hit enter. You'll now be in your Landscape homescreen.
 

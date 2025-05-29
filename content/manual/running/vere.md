@@ -444,7 +444,11 @@ Download a binary.
 
 Example usage:
 
-- Undocked: `./urbit vere -a macos-aarch64 -v 3.4 -p live .`
+```sh
+./urbit vere -a macos-aarch64 -v 3.4 -p live .
+```
+
+Results in...
 
 ```
 vere: saved to ./vere-v3.4-macos-aarch64
@@ -475,7 +479,9 @@ Run as a 'serf' (as though it were the previously separate `urbit-worker`).
 
 Note this utility is for kernel development purposes and has a programmatic interface, it does not have a user interface.
 
-- Undocked: `./urbit serf [pier] [key] [flags] [cache-size] [at-event]`
+```sh
+./urbit serf [pier] [key] [flags] [cache-size] [at-event]
+```
 
 ## Options {#options}
 
@@ -584,7 +590,9 @@ Boot a new ship with private key `STRING`.
 
 The private key is [`@uw`](../../courses/hoon-school/E-types.md##what-auras-are-there) format. See [`-k`](#k---key-file-keys) for an alternative.
 
-- Undocked: `./urbit -w sampel-palnet -G 0w50w.642KA.glYh8.RvaRp.6TA35.3XRYN.ULCI6.UmcsZ.5rGvG.3dvFt.E6rMF.mZnd~.3O6QB.7LZ1f.-ukYN.z2fcY.Ecviv.LiZEg.8w0sp`
+```sh
+./urbit -w sampel-palnet -G 0w50w.642KA.glYh8.RvaRp.6TA35.3XRYN.ULCI6.UmcsZ.5rGvG.3dvFt.E6rMF.mZnd~.3O6QB.7LZ1f.-ukYN.z2fcY.Ecviv.LiZEg.8w0sp
+```
 
 ### `--http-port PORT` {#http-port-port}
 
@@ -639,7 +647,9 @@ Boot a new ship with the private key file `KEY`.
 
 See [`-G`](#g---key-string-string) for an alternative.
 
-- Undocked: `./urbit -w sampel-palnet -k /path/to/my.key`
+```sh
+./urbit -w sampel-palnet -k /path/to/my.key
+```
 
 ### `-L, --local` {#l---local}
 
@@ -681,7 +691,9 @@ Disable the control pane unix socket.
 
 Prevent the `urbit` binary from copying itself into the new pier.
 
-- Undocked: `./urbit --no-dock -w sampel-palnet -k /path/to/my.key`
+```sh
+./urbit --no-dock -w sampel-palnet -k /path/to/my.key
+```
 
 ### `-p, --ames-port PORT` {#p---ames-port-port}
 
@@ -754,7 +766,9 @@ With this set, there will be no Dojo prompt, and you'll only see debug messages 
 
 Boot a new ship, using the pill fetched from `URL` rather than the default one.
 
-- Undocked: `./urbit -w sampel-palnet -k /path/to/my.key -u http://example.com/the.pill`
+```sh
+./urbit -w sampel-palnet -k /path/to/my.key -u http://example.com/the.pill
+```
 
 ### `--urth-loom SIZE` {#urth-loom-size}
 
@@ -778,7 +792,9 @@ Boot a new ship with an Urbit ID of `NAME`.
 
 The `NAME` is the ordinary [`@p`](../../courses/hoon-school/E-types.md##what-auras-are-there) format but without the leading `~`, so `~sampel-palnet` is specified as `sampel-palnet`. This is typically used in conjunction with `-k` when booting a new ship.
 
-- Undocked: `./urbit -w sampel-palnet -k /path/to/my.key`
+```sh
+./urbit -w sampel-palnet -k /path/to/my.key
+```
 
 ### `-x, --exit` {#x---exit}
 

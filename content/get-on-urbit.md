@@ -168,12 +168,16 @@ Your planet will begin to boot up, it might take a few minutes. You'll know your
 
 This is the Dojo, Urbit's command-line interface. For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
-**Linux users:** Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
+{% hint style="warn" %}
+## Linux users
+
+Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
 sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
 sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run # replace sampel-palnet with the actual folder name
 ```
+{% endhint %}
 
 You can now spin it back up again by running `./sampel-palnet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `sampel-palnet` folder so you don't need the separate `vere` binary anymore.
 
@@ -207,12 +211,16 @@ It might take a few minutes to boot up and mine a comet. You'll know your comet 
 
 This is the Dojo, Urbit's command-line interface. For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
-**Linux users:** Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
+{% hint style="warn" %}
+## Linux users
+
+Linux won't let Vere's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
 sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
 sudo setcap 'cap_net_bind_service=+ep' mycomet/.run
 ```
+{% endhint %}
 
 You can now spin it back up again by running `./mycomet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `mycomet` folder so you don't need the separate `vere` binary anymore.
 

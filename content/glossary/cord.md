@@ -4,4 +4,4 @@ A **cord** is an [atom](atom.md) [aura](aura.md) for a little-endian UTF-8 strin
 
 #### Further Reading
 
-- [Strings guide](../language/hoon/guides/strings.md): A guide to strings in Hoon.
+- [Strings guide](../hoon/guides/strings.md): A guide to strings in Hoon.

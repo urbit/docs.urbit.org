@@ -15,4 +15,4 @@ Note that [vases](vase.md) shouldn't be jammed as non-trivial types pull in a lo
 
 #### Further Reading
 
-- [Standard Library 2p: Serialization](../language/hoon/reference/stdlib/2p.md)
+- [Standard Library 2p: Serialization](../hoon/reference/stdlib/2p.md)

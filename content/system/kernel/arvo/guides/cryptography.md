@@ -45,5 +45,5 @@ For comets, their 128-bit `@p` name is the hash of their networking public key, 
 The following pages contained more detailed information about the cryptography utilized by each of the system components.
 
 - [Ames](../../ames/guides/cryptography.md)
-- [Zuse](../../../../language/hoon/reference/cryptography.md)
+- [Zuse](../../../../hoon/reference/cryptography.md)
 - [Vere](../../../runtime/reference/cryptography.md)

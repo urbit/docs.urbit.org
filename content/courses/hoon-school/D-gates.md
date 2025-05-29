@@ -1,43 +1,43 @@
 # 3. Gates (Functions)
 
-_This module will teach you how to produce deferred computations for later use, like functions in other languages._
+"This module will teach you how to produce deferred computations for later use, like functions in other languages."
 
 ## A Spoonful of Sugar {#a-spoonful-of-sugar}
 
-Until this point in Hoon School, we have rigorously adhered to the regular syntax of runes so that you could get used to using them.  In fact, the only two irregular forms we used were these:
+Until this point in Hoon School, we have rigorously adhered to the regular syntax of runes so that you could get used to using them. In fact, the only two irregular forms we used were these:
 
-- Cell definition `[a b]` which represents the `:-` [colhep](../../language/hoon/reference/rune/col.md#colhep) rune, `:-  a  b`.
+Cell definition `[a b]` which represents the `:-` [colhep](../../hoon/reference/rune/col.md#colhep) rune, `:-  a  b`.
 
-    That is, these expressions are all the same for Hoon:
+That is, these expressions are all the same for Hoon:
 
-    ```hoon
-    > [1 2]
-    [1 2]
+```hoon
+> [1 2]
+[1 2]
 
-    > :-  1  2
-    [1 2]
+> :-  1  2
+[1 2]
 
-    > :-
-    1
-    2
-    [1 2]
-    ```
+> :-
+1
+2
+[1 2]
+```
 
-- Aura application `` `@ux`500 `` which represents a double `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep), like `^-  @ux ^-  @  500`.
+Aura application `` `@ux`500 `` which represents a double `^-` [kethep](../../hoon/reference/rune/ket.md#kethep), like `^-  @ux ^-  @  500`.
 
-    These are equivalent in Hoon:
+These are equivalent in Hoon:
 
-    ```hoon
-    > ^-  @p  ^-  @  255
-    ~fes
+```hoon
+> ^-  @p  ^-  @  255
+~fes
 
-    > `@p`255
-    ~fes
-    ```
+> `@p`255
+~fes
+```
 
-    (Why two `^-`s?  We have to clear the type information in general to be able to apply new type information.)
+(Why two `^-`s?  We have to clear the type information in general to be able to apply new type information.)
 
-Hoon developers often employ irregular forms, sometimes called “sugar syntax”.  Besides the `:-` colhep and `^-` kethep forms, we will commonly use a new form for `%-` [cenhep](../../language/hoon/reference/rune/cen.md#cenhep) “function calls”:
+Hoon developers often employ irregular forms, sometimes called “sugar syntax”. Besides the `:-` colhep and `^-` kethep forms, we will commonly use a new form for `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep) “function calls”:
 
 ```hoon
 > %-  add  [1 2]
@@ -47,9 +47,9 @@ Hoon developers often employ irregular forms, sometimes called “sugar syntax�
 3
 ```
 
-You should get used to reading and interpreting these forms.  We will start to use them actively during this lesson.  You can find other irregular forms in the [irregular forms reference](../../language/hoon/reference/irregular.md).
+You should get used to reading and interpreting these forms. We will start to use them actively during this lesson. You can find other irregular forms in the [irregular forms reference](../../hoon/reference/irregular.md).
 
-### Exercise:  Converting Between Forms {#exercise-converting-between-forms}
+### Exercise: Converting Between Forms {#exercise-converting-between-forms}
 
 Convert each of the following irregular forms into the correct regular runic syntax.
 
@@ -67,7 +67,7 @@ Convert each of the following regular forms into the correct irregular syntax.
 
 ## Deferring Computations {#deferring-computations}
 
-So far, every time we have calculated something, we have had to build it from scratch in Dojo.  This is completely untenable for nontrivial calculations, and clearly the Urbit OS itself is built on persistent code structures defining the behavior.
+So far, every time we have calculated something, we have had to build it from scratch in Dojo. This is completely untenable for nontrivial calculations, and clearly the Urbit OS itself is built on persistent code structures defining the behavior.
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -77,23 +77,23 @@ So far, every time we have calculated something, we have had to build it from sc
 'no'
 ```
 
-This has no flexibility:  if we want to change `a` we have to rewrite the whole thing every time!
+This has no flexibility: if we want to change `.a` we have to rewrite the whole thing every time!
 
-(Note also our introduction of the `::` [colcol](../../language/hoon/reference/rune/col.md#colcol) digraph in the above code block.  This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
+(Note also our introduction of the `::` [colcol](../../hoon/reference/rune/col.md#colcol) digraph in the above code block. This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
 
-Hoon uses [gates](../../glossary/gate.md) as deferred computations.  What this means is that we can build a Hoon expression now and use it at need later on, perhaps many times.  More than that, we can also use it on different data values.  A gate is the Hoon analogue of a [function or subroutine](https://en.wikipedia.org/wiki/Subroutine) in other programming languages.
+Hoon uses [gates](../../glossary/gate.md) as deferred computations. What this means is that we can build a Hoon expression now and use it at need later on, perhaps many times. More than that, we can also use it on different data values. A gate is the Hoon analogue of a [function or subroutine](https://en.wikipedia.org/wiki/Subroutine) in other programming languages.
 
-The word "function" is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_%28mathematics%29). Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  The return value depends solely on the argument(s), and nothing else. For example, we can understand multiplication as a function:  it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
+The word "function" is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_%28mathematics%29). Roughly put, a function takes one or more arguments (i.e., input values) and returns a value. The return value depends solely on the argument(s), and nothing else. For example, we can understand multiplication as a function: it takes two numbers and returns another number. It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask. If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
 
 That output value depends solely upon input value(s) is an important property of functions. This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and it's one of the key ingredients to building a secure Urbit stack.
 
-Functions are implemented in Hoon with a special kind of [core](../../glossary/core.md) called a _gate_.  In this lesson you'll learn what a gate is and how a gate represents a function.  (We _won't_ talk about what a core is quite yet.)  Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of [core](../../glossary/core.md) called a "gate". In this lesson you'll learn what a gate is and how a gate represents a function. (We _won't_ talk about what a core is quite yet.)  Along the way you'll build some example gates of your own.
 
 ### Building a Gate {#building-a-gate}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS120%20-%20Gates.mp4" %}
 
-Syntactically, a gate is a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune with two children:  a [spec](../../language/hoon/reference/stdlib/4o.md#spec) (specification of input) and a [hoon](../../language/hoon/reference/stdlib/4o.md#hoon) (body). Think of just replacing the `=/` [tisfas](../../language/hoon/reference/rune/tis.md#tisfas) with the `|=` bartis:
+Syntactically, a gate is a `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) rune with two children: a [spec](../../hoon/reference/stdlib/4o.md#spec) (specification of input) and a [hoon](../../hoon/reference/stdlib/4o.md#hoon) (body). Think of just replacing the `=/` [tisfas](../../hoon/reference/rune/tis.md#tisfas) with the `|=` bartis:
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -109,9 +109,9 @@ Compare this to other programming languages, if you know any:
 
 Beyond those, what is the purpose of each line?
 
-The `spec` gives the type as a mold and attaches a face to it for use in the gate.
+The `$spec` gives the type as a mold and attaches a face to it for use in the gate.
 
-The `hoon` body expression evaluates and yields a result, ultimately sent back to the call site.  Frequently it is wise to explicitly require a particular type for the return value using the `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep) rune:
+The Hoon body expression evaluates and yields a result, ultimately sent back to the call site. Frequently it is wise to explicitly require a particular type for the return value using the `^-` [kethep](../../hoon/reference/rune/ket.md#kethep) rune:
 
 ```hoon
 ::  Confirm whether a value is greater than one.
@@ -122,11 +122,11 @@ The `hoon` body expression evaluates and yields a result, ultimately sent back t
 'no'
 ```
 
-The input value, what is included in the `spec`, is sometimes called the argument or parameter in mathematics and other programming languages. It's basically the input value.  Hoon prefers to call it the `sample` for reasons that will become apparent later on, but you won't confuse other developers if you call it the argument or input.
+The input value, what is included in the `$spec`, is sometimes called the argument or parameter in mathematics and other programming languages. It's basically the input value. Hoon prefers to call it the "sample" for reasons that will become apparent later on, but you won't confuse other developers if you call it the argument or input.
 
-Note as well that the backbone of the program runs straight down the left-hand margin.  This makes it easier to read the essential mainline logic of the program.
+Note as well that the backbone of the program runs straight down the left-hand margin. This makes it easier to read the essential mainline logic of the program.
 
-Gates enforce the type of incoming and outgoing values.  In other words, a `spec` is a kind of type which is fixing the possible noun inputs. (The lesson on types which follows this one will go into greater detail.)
+Gates enforce the type of incoming and outgoing values. In other words, a `$spec` is a kind of type which is fixing the possible noun inputs. (The lesson on types which follows this one will go into greater detail.)
 
 Gates can take multiple arguments as a cell:
 
@@ -138,7 +138,7 @@ Gates can take multiple arguments as a cell:
 b
 ```
 
-You can also call them different ways with raw `%` [cen](../../language/hoon/reference/rune/cen.md) runes:
+You can also call them different ways with raw `%` [cen](../../hoon/reference/rune/cen.md) runes:
 
 ```hoon
 %-  max  [100 200]
@@ -147,7 +147,7 @@ You can also call them different ways with raw `%` [cen](../../language/hoon/ref
 
 ### Creating Your Own Gate {#creating-your-own-gate}
 
-You can type the above Hoon code snippets directly into Dojo, but there's no way to actually use them yet!  The Dojo recognizes the expression as valid Hoon code, but can't actually apply it to an input `sample` yet.
+You can type the above Hoon code snippets directly into Dojo, but there's no way to actually use them yet!  The Dojo recognizes the expression as valid Hoon code, but can't actually apply it to an input sample yet.
 
 ```hoon
 > |=  [a=@ud b=@ud]
@@ -161,11 +161,11 @@ You can type the above Hoon code snippets directly into Dojo, but there's no way
   ]
 ```
 
-We need to attach a _name_ or a [face](../../glossary/face.md) to the expression.  Then we'll be able to use it directly.  Somewhat confusingly, there are three common ways to do this:
+We need to attach a _name_ or a [face](../../glossary/face.md) to the expression. Then we'll be able to use it directly. Somewhat confusingly, there are three common ways to do this:
 
-1. Attach the face (name) directly in Dojo.  (This is a good quick solution, and we'll use it when teaching and testing code, but it doesn't work inside of code files.)
-2. Save the gate as a [generator](../../glossary/generator.md) file and call it using the name of the file.  (We'll do this in the next section of this lesson.)
-3. Attach the face (name) as an [arm](../../glossary/arm".md) in a [core](../../glossary/core.md).  (We don't know what those are yet, so we'll set them aside for a couple of lessons.)
+1. Attach the face (name) directly in Dojo. (This is a good quick solution, and we'll use it when teaching and testing code, but it doesn't work inside of code files.)
+2. Save the gate as a [generator](../../glossary/generator.md) file and call it using the name of the file. (We'll do this in the next section of this lesson.)
+3. Attach the face (name) as an [arm](../../glossary/arm.md) in a [core](../../glossary/core.md). (We don't know what those are yet, so we'll set them aside for a couple of lessons.)
 
 To name a gate in Dojo (or any expression resulting in a value, which is _every_ expression), you can use the Dojo-specific syntax `=name value`:
 
@@ -183,7 +183,7 @@ To name a gate in Dojo (or any expression resulting in a value, which is _every_
 6
 ```
 
-Notice that there is _one_ space (`ace`) after the `=name` term and then regular `gap`s thereafter.  We could also do this in one line using wide form:
+Notice that there is _one_ space ("ace") after the `=name` term and then regular "gap"s thereafter. We could also do this in one line using wide form:
 
 ```hoon
 > =inc |=(a=@ (add 1 a))
@@ -192,36 +192,36 @@ Notice that there is _one_ space (`ace`) after the `=name` term and then regular
 124
 ```
 
-To reiterate:  we typically use the `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
+To reiterate: we typically use the `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
 
-In the example gate above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell).  The `sample` is given the face `a`.  With a face it's easier to refer to the `sample` value in later code.
+In the example gate above, `+inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The sample is given the face `a`. With a face it's easier to refer to the sample value in later code.
 
-The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go.  In `inc`, the product is defined by `(add 1 a)`.  There's not much to it—it returns the value of `a+1`!
+The second subexpression after the `|=` bartis rune is used to build the gate's body, where all the computations go. In `+inc`, the product is defined by `(add 1 a)`. There's not much to it: it returns the value of `a+1`!
 
-### Exercise:  Double a Value {#exercise-double-a-value}
+### Exercise: Double a Value {#exercise-double-a-value}
 
-- Produce a gate which accepts any `@` unsigned integer value and doubles it.  Call it `double`.
+Produce a gate which accepts any `@` unsigned integer value and doubles it. Call it "double".
 
-    ```hoon
-    > =double |=(a=@ (mul a 2))
+```hoon
+> =double |=(a=@ (mul a 2))
 
-    > (double 5)
-    10
-    ```
+> (double 5)
+10
+```
 
-### Exercise:  Convert Between Auras {#exercise-convert-between-auras}
+### Exercise: Convert Between Auras {#exercise-convert-between-auras}
 
-- Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent.  Call it `myship`.
+Produce a gate which accepts any `@` unsigned integer value and converts it to the `@p` equivalent. Call it "myship".
 
-- Produce a gate which accepts any `@` unsigned integer value and calculates the next neighbor (the `@p` of the number plus one).  Call it `myneighbor`.
+Produce a gate which accepts any `@` unsigned integer value and calculates the next neighbor (the `@p` of the number plus one). Call it "myneighbor".
 
-- Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned hexadecimal integer value of the ship.  Call it `mynumber`.
+Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned hexadecimal integer value of the ship. Call it "mynumber".
 
 ### Output Values {#output-values}
 
-How can we control what kind of value a gate returns?  Many programming languages (such as C and Java) are _extremely_ concerned about this specification.  Others, like Python and MATLAB, are _laissez-faire_. Hoon tends to be strict, but leaves some discretion over _how_ strict to you, the developer.
+How can we control what kind of value a gate returns?  Many programming languages (such as C and Java) are _extremely_ concerned about this specification. Others, like Python and MATLAB, are _laissez-faire_. Hoon tends to be strict, but leaves some discretion over _how_ strict to you, the developer.
 
-Remember `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep)?  We will use `^-` as a _fence_, a way of making sure only data matching the appropriate structure get passed on.
+Remember `^-` [kethep](../../hoon/reference/rune/ket.md#kethep)?  We will use `^-` as a "fence", a way of making sure only data matching the appropriate structure get passed on.
 
 ```hoon
 ::  Confirm whether a value is greater than one by return 1 (if no) or 0 (if yes).
@@ -234,21 +234,21 @@ Remember `^-` [kethep](../../language/hoon/reference/rune/ket.md#kethep)?  We wi
 
 **This is the correct way to define a gate.**  Frequent annotation of type with `^-` kethep fences is _essential_ to producing good Hoon code. From this point forward in Hoon School, we will hew to this standard.
 
-In technical language, we describe Hoon as a _statically typed_ language.  This means that it enforces type constraints on all values very aggressively.  If you are used to a dynamic language like Python or Ruby, this will seem very restrictive at first.  The flip side is that once your code compiles correctly, you will often find that it is very much along the way towards being a working correct product.
+In technical language, we describe Hoon as a "statically typed" language. This means that it enforces type constraints on all values very aggressively. If you are used to a dynamic language like Python or Ruby, this will seem very restrictive at first. The flip side is that once your code compiles correctly, you will often find that it is very much along the way towards being a working correct product.
 
 
 ## Coordinating Files {#coordinating-files}
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS111%20-%20Filesystem.mp4" %}
 
-In pragmatic terms, an Urbit ship is what results when you successfully boot a new ship.  If you are in the host OS, what you see is an apparently-empty folder:
+In pragmatic terms, an Urbit ship is what results when you successfully boot a new ship. If you are in the host OS, what you see is an apparently-empty folder:
 
 ```sh
 $ ls zod
 $
 ```
 
-(For this lesson in particular take pains to distinguish the host OS prompt `$ ` from the Urbit Dojo prompt `> `.  You should look into particular system setup instructions for Windows, macOS, and Linux hosts.) <!-- TODO -->
+(For this lesson in particular take pains to distinguish the host OS prompt `$ ` from the Urbit Dojo prompt `> `. You should look into particular system setup instructions for macOS and Linux hosts.) <!-- TODO -->
 
 Contrast that apparently empty folder with what the `+ls %` command shows you from inside of your Urbit (at the Dojo prompt):
 
@@ -257,7 +257,7 @@ Contrast that apparently empty folder with what the `+ls %` command shows you fr
 app/ desk/bill gen/ lib/ mar/ sur/ sys/ ted/
 ```
 
-Urbit organizes its internal view of data and files as _desks_, which are associated collections of code and data.  These are not visible to the host operating system unless you explicitly mount them, and changes on one side are not made clear to the other until you “commit” them. (Think of Dropbox, except that you have to explicitly synchronize to see changes somewhere else.)
+Urbit organizes its internal view of data and files as "desks", which are associated collections of code and data. These are not visible to the host operating system unless you explicitly mount them, and changes on one side are not made clear to the other until you “commit” them. (Think of Dropbox, except that you have to explicitly synchronize to see changes somewhere else.)
 
 Inside of your ship (“Mars”), you can mount a particular desk to the host operating system (“Earth”):
 
@@ -289,7 +289,7 @@ On Mars:
 + /~zod/base/2/desk/txt
 ```
 
-You can verify the contents of the copied files are the same using the [+cat](../../manual/os/dojo-tools.md#cat) command:
+You can verify the contents of the copied files are the same using the [`+cat`](../../manual/os/dojo-tools.md#cat) command:
 
 ```hoon
 > +cat %/desk/bill
@@ -297,16 +297,16 @@ You can verify the contents of the copied files are the same using the [+cat](..
 > +cat %/desk/txt
 ```
 
-(Dojo does know what a `bill` file is, so it displays the contents slightly formatted.  They are actually identical.)
+(Dojo does know what a "bill" file is, so it displays the contents slightly formatted. They are actually identical.)
 
 We will use this [|commit](../../manual/os/dojo-tools.md#commit) pattern to store persistent code as files, editing on Earth and then synchronizing to Mars.
 
 
 ## Building Code {#building-code}
 
-The missing piece to really tie all of this together is the ability to store a gate and use it at a later time, not just in the same long Dojo session.  Enter the [generator](../../glossary/generator.md).
+The missing piece to really tie all of this together is the ability to store a gate and use it at a later time, not just in the same long Dojo session. Enter the [generator](../../glossary/generator.md).
 
-A generator is a simple program which can be called from the Dojo.  It is a gate, so it takes some input as sample and produces some result. Naked generators are the simplest generators possible, having access only to information passed to them directly in their [sample](../../glossary/sample.md).
+A generator is a simple program which can be called from the Dojo. It is a gate, so it takes some input as sample and produces some result. Naked generators are the simplest generators possible, having access only to information passed to them directly in their [sample](../../glossary/sample.md).
 
 In this section, we will compose our first generator.
 
@@ -326,16 +326,16 @@ a
 ### The Process {#the-process}
 
 1. Open a text editor.
-2. Copy the gate above into the text editor.  (Double-check that two-space gaps are still gaps; some text editors chew them up into single-space aces.)
+2. Copy the gate above into the text editor. (Double-check that two-space gaps are still gaps; some text editors chew them up into single-space aces.)
 3. Save the gate as `square.hoon` in the `base/gen` folder of your fakeship.
-4. In the Dojo, `|commit %base`.  _You should see a message indicating that the file has been loaded._
+4. In the Dojo, `|commit %base`. _You should see a message indicating that the file has been loaded._
 5. Run the generator with `+square 5`.
 
 Any generator can be run the same way, beginning with the `+` lus character and followed by the name of a file in the `base/gen` directory.
 
 ### Hoon Source and Special Characters {#hoon-source-and-special-characters}
 
-Hoon source files are composed almost entirely of the printable ASCII characters.  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal; use two spaces instead.
+Hoon source files are composed almost entirely of the printable ASCII characters. Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings. Hard tab characters are illegal; use two spaces instead.
 
 ```hoon
 > "You can put ½ in quotes, but not elsewhere!"
@@ -348,27 +348,27 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 "Some UTF-8: ἄλφα"
 ```
 
-**Note**: If you're using VS Code on Windows, you might need to manually change the line endings from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom.  Urbit requires Unix-style line endings for Hoon files.
+**Note**: You might need to manually change the line endings in your IDE from Windows-style `CRLF` to Unix-style `LF` in the status bar at the bottom. Urbit requires Unix-style line endings for Hoon files.
 
-### Exercise:  Triangular Function {#exercise-triangular-function}
+### Exercise: Triangular Function {#exercise-triangular-function}
  
-- Implement the triangular function as a gate and save it as a generator `tri.hoon`.
+Implement the triangular function as a gate and save it as a generator `tri.hoon`.
 
-    ![](https://lh4.googleusercontent.com/zdauTDEWvhhOkFEb6VcDEJ4SITsHOgcStf4NYFQSIVjTDPjaCqYGdin9TDCCeTG3OyMrUUdq-JtViiu_c9wuojim_mHpV6-DoTNwZzYz5_6qVVvN5fc3hEuSna2GwY15RQ=w740)
+![](https://lh4.googleusercontent.com/zdauTDEWvhhOkFEb6VcDEJ4SITsHOgcStf4NYFQSIVjTDPjaCqYGdin9TDCCeTG3OyMrUUdq-JtViiu_c9wuojim_mHpV6-DoTNwZzYz5_6qVVvN5fc3hEuSna2GwY15RQ=w740)
 
 ### Coding Piecemeal {#coding-piecemeal}
 
-If you need to test code without completing it, you can stub out as-yet-undefined arms with the `!!` [zapzap](../../language/hoon/reference/rune/zap.md#zapzap) crash rune.  `!!` is the only rune which has no children, and it's helpful when you need something to satisfy Hoon syntax but aren't ready to flesh out the program yet.
+If you need to test code without completing it, you can stub out as-yet-undefined arms with the `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap) crash rune. `!!` is the only rune which has no children, and it's helpful when you need something to satisfy Hoon syntax but aren't ready to flesh out the program yet.
 
 ### Building Code Generally {#building-code-generally}
 
 A generator gives us on-demand access to code, but it is helpful to load and use code from files while we work in the Dojo.
 
-A conventional library import with `/+` [faslus](../../language/hoon/reference/rune/fas.md#faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.
+A conventional library import with `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) will work in a generator or another file, but won't work in Dojo, so you can't use `/+` faslus interactively.
 
 Instead, you need to use the [-build-file](../../manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular core's functionality.
 
-`-build-file` accepts a file path and returns the built operational code, to which you can then attach a `face`.  For instance:
+`-build-file` accepts a file path and returns the built operational code, to which you can then attach a `+face`. For instance:
 
 ```hoon
 > =ntw -build-file %/lib/number-to-words/hoon
@@ -380,12 +380,12 @@ Instead, you need to use the [-build-file](../../manual/os/dojo-tools.md#build-f
 [~ "nineteen"]
 ```
 
-There are also a number of other import runes which make library, structure, and mark code available to you.  Right now, the only one you need to worry about is `/+` faslus.
+There are also a number of other import runes which make library, structure, and mark code available to you. Right now, the only one you need to worry about is `/+` faslus.
 
-For simplicity, everything we do will take place on the `%base` desk for now.  We will learn how to create a library in a subsequent lesson.
+For simplicity, everything we do will take place on the `%base` desk for now. We will learn how to create a library in a subsequent lesson.
 
-### Exercise:  Loading a Library {#exercise-loading-a-library}
+### Exercise: Loading a Library {#exercise-loading-a-library}
 
-In a generator, load the `number-to-words` library using the `/+` faslus rune.  (This must take place at the very top of your file.)
+In a generator, load the library at `/lib/number-to-words.hoon` using the `/+` faslus rune. (This must take place at the very top of your file.)
  
 Use this to produce a gate which accepts an unsigned decimal integer and returns the text interpretation of its increment.

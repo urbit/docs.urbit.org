@@ -6,7 +6,8 @@ Welcome to the Urbit docs. This site contains guides, tutorials and reference do
 
 The developer documentation contains a wealth of guides, examples and reference material about all layers of Urbit, from the Hoon Language to the kernel and runtime. These are the places to refer to as you work on your Urbit project.
 
-- [Language](language) - Guides and reference material for the Hoon language as well as Nock.
+- [Hoon](hoon) - Guides and reference material for Urbit's high-level programming language, Hoon.
+- [Nock](nock) - Guides and reference material for Urbit's low-level assembly language, Nock.
 - [System](system) - Documentation of Urbit's kernel Arvo, the runtime Vere, and the identity system Azimuth.
 - [Userspace](userspace) - Information about building and publishing apps on Urbit.
 - [Tools](tools) - Documentation of additional and external Urbit-related libraries and apps.
@@ -21,7 +22,7 @@ There are in-depth tutorials to teach you the Hoon language, Urbit app developme
 ## User Docs
 
 If you want to get a planet, find a hosting provider, set up a server or learn how to use the Dojo, the manual is the place to go.
-                    
+
 - [Getting Started](manual/getting-started) - You can obtain a planet and run Urbit yourself or let a hosting provider do it for you. How to do these things and more are documented in this section.
 - [User Manual](manual) - Information on running your Urbit, using the Dojo (Urbit's command-line), managing your Urbit ID on Azimuth and more.
 

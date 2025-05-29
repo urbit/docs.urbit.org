@@ -4,4 +4,4 @@ A **cell** is an ordered pair of [nouns](noun.md). It is a fundamental data type
 
 #### Further Reading
 
-- [`:`-family rune reference](../language/hoon/reference/rune/col.md): The various runes in Hoon that form cells.
+- [`:`-family rune reference](../hoon/reference/rune/col.md): The various runes in Hoon that form cells.

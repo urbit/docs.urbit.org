@@ -6,4 +6,4 @@
 
 - [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
   - [“Hoon Syntax”](../courses/hoon-school/B-syntax.md#nouns): A Hoon School lesson that explains runes.
-- [The Rune reference](../language/hoon/reference/rune): A comprehensive catalogue of the different runes and how to use them.
+- [The Rune reference](../hoon/reference/rune): A comprehensive catalogue of the different runes and how to use them.

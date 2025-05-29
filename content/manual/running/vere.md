@@ -716,7 +716,7 @@ This disables the output that the [`|verb`](../os/dojo-tools.md#verb) command to
 
 Load snapshot at event `NUMBER`, only replay after that event.
 
-This lets you resume a partially completed replay. For the given `NUMBER`, there must be a corresponding snapshot in `[pier]/.urb/roc/[NUMBER].jam`, created by `cram` or `-n`.
+This lets you resume a partially completed replay. For the given `NUMBER`, there must be a corresponding snapshot in `[pier]/.urb/roc/[NUMBER].jam`, created by [`cram`](#cram) or [`-n`](#n---replay-to-number).
 
 - Undocked: `./urbit -r 10000 [pier]`
 - Docked: `[pier]/.run -r 10000`
@@ -766,7 +766,7 @@ The size is specified in exponents of 2. This is something you're unlikely to ne
 
 ### `-v, --verbose` {#v---verbose}
 
-Run a ship with verbose output. This is the same as what you get when you run `|verb`, and can be disabled by running `|verb`. This is the opposite of `-q`.
+Run a ship with verbose output. This is the same as what you get when you run [`|verb`](../os/dojo-tools.md#verb), and can be disabled by running `|verb`. This is the opposite of [`-q`](#q---quiet).
 
 - Undocked: `./urbit -v [pier]`
 - Docked: `[pier]/.run -v`
@@ -775,7 +775,7 @@ Run a ship with verbose output. This is the same as what you get when you run `|
 
 Boot a new ship with an Urbit ID of `NAME`.
 
-The `NAME` is the ordinary `@p` format but without the leading `~`, so `~sampel-palnet` is specified as `sampel-palnet`. This is typically used in conjunction with `-k` when booting a new ship.
+The `NAME` is the ordinary [`@p`](../../courses/hoon-school/E-types.md##what-auras-are-there) format but without the leading `~`, so `~sampel-palnet` is specified as `sampel-palnet`. This is typically used in conjunction with `-k` when booting a new ship.
 
 - Undocked: `./urbit -w sampel-palnet -k /path/to/my.key`
 

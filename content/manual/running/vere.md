@@ -696,7 +696,7 @@ This is the port used for inter-ship communications.
 
 Enable profiling.
 
-Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the `~$` rune will be recorded here.
+Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../language/hoon/reference/rune/sig.md#sigbuc) rune will be recorded here.
 
 This runs a sampling profiler and produces custom output. Runtime cost metrics are only calculated if the binary was built with `CPU_DEBUG`.
 

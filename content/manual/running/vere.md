@@ -550,6 +550,8 @@ The process will be detached from the terminal (this implies [`-t`](#t---no-tty)
 - Undocked: `./urbit -d [pier]`
 - Docked: `[pier]/.run -d`
 
+You can kill this process by running `kill -9 [pid]`. You can find the PID with `ss` or `lsof`; alternatively, you can attempt to run the ship again, then you'll get a warning from the runtime like `pier: locked by PID [pid]`.
+
 ### `-e, --ethereum URL` {#e---ethereum-url}
 
 Use the Ethereum gateway at `URL` rather than the default.

@@ -26,7 +26,7 @@ All Urbits need a unique ID. There are [5 types of Urbit ID](manual/id/get-id.md
 If you don't want to buy one at this stage, you can use a disposable ID called a **comet**. If you're trying to run an Urbit locally for development purposes, you can also spin up a "fake ship". In either case, [skip straight to Step 3](#get-the-urbit-runtime).
 {% endhint %}
 
-Here are the best places to by planets:
+Here are the best places to buy planets:
 
 | Layer | Market                                                   | Description                                            |
 |-------|----------------------------------------------------------|--------------------------------------------------------|

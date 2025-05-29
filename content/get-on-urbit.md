@@ -6,15 +6,13 @@ This guide will require:
 
 - A small amount of technical ability (such as using terminal).
 - Basic familiarity with crypto wallets and some ETH to buy a planet (unless you want to use a free disposable ID).
-- A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. You can usually get away with 2GB of RAM plus a swapfile, and maybe 10GB of disk space, but it might become a problem in the future as your Urbit grows.
+- A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. You can usually get away with 2GB of RAM plus a swapfile and less disk space, but it might become a problem in the future as your Urbit grows.
 
 It should also be possible to run Urbit on a Windows computer using the Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.
 
 {% hint %}
 
-If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead.
-
-Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
+If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
 
 {% endhint %}
 
@@ -25,7 +23,7 @@ Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks
 All Urbits need a unique ID. There are [5 types of Urbit ID](manual/id/get-id.md#types-of-id), but the type an ordinary user needs is a **planet**, which looks like `~sampel-palnet`. Planets are stored in a smart contract called Azimuth on the Ethereum blockchain. Unless you know someone who can gift you one, you'll need to buy one from a marketplace.
 
 {% hint %}
-If you don't want to buy one at this stage, you can use a disposable ID called a **comet**. If you're trying to run an Urbit locally for development purposes, you can also spin up a "fake ship". In either case, [skip straight to Step 3](#install-urbit-os).
+If you don't want to buy one at this stage, you can use a disposable ID called a **comet**. If you're trying to run an Urbit locally for development purposes, you can also spin up a "fake ship". In either case, [skip straight to Step 3](#get-the-urbit-runtime).
 {% endhint %}
 
 Here are the best places to by planets:
@@ -51,7 +49,7 @@ Once you've got an Urbit ID, the next step is to get its keyfile so you can boot
 
 {% tabs %}
 
-{% tab title="ID in wallet" %}
+{% tab title="In a wallet" %}
 
 If you got an L1 planet from somewhere like OpenSea, it likely got transferred directly to your Ethereum wallet. Here are the steps to get its keyfile:
 
@@ -154,7 +152,7 @@ curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 [linux-x86_64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
 [linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 
-Once you've downloaded it, you'll need to make it executable by going to its location in the terminal and running `chmod +x vere-XXX` (replace `XXX` with the rest of its name, depending which one you downloaded).
+Once you've downloaded it, you'll need to make it executable by going to its location in the terminal and running `chmod +x vere` (replace `vere` with the full name of the one you downloaded).
 
 {% endstep %}
 
@@ -165,16 +163,16 @@ Once you've downloaded it, you'll need to make it executable by going to its loc
 
 {% tab title="Boot a planet" %}
 
-Having acquired a planet and downloaded its keyfile, you can now boot it up. The best way to run an Urbit is inside a `screen` session. Screen is a terminal multiplexer that lets you detach from shell sessions and leave them running in the background, then attach them again later. Without something like `screen`, you'd have to leave the terminal open all the time while your Urbit is running. To start a new `screen` session and name it `urbit`, run the following command in your terminal:
+Having acquired a planet and downloaded its keyfile, you can now boot it up. The best way to run an Urbit is inside a `screen` session. Screen is a terminal multiplexer that lets you detach from shell sessions and leave them running in the background, then attach them again later. To start a new `screen` session and name it `urbit`, run the following command in your terminal:
 
 ```sh
 screen -S urbit
 ```
 
-Now that you're in a `screen` session, you can boot your Urbit with the command below. You'll need to replace `XXX` with Vere's full name, `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously: 
+Now that you're in a `screen` session, you can boot your Urbit with the command below. You'll need to replace `vere` with the full name of the one you downloaded, `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously: 
 
 ```sh
-./vere-XXX -w sampel-palnet -k /path/to/sampel-palnet-1.key
+./vere -w sampel-palnet -k /path/to/sampel-palnet-1.key
 ```
 
 Your planet will begin to boot up, it might take a few minutes. You'll know your planet has booted when you have a responsive prompt that looks like this:
@@ -192,7 +190,7 @@ sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have se
 sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run # replace sampel-palnet with the actual folder name
 ```
 
-You can now spin it back up again by running `./sampel-palnet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `sampel-palnet` folder so you don't need the separate `vere-XXX` binary anymore.
+You can now spin it back up again by running `./sampel-palnet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `sampel-palnet` folder so you don't need the separate `vere` binary anymore.
 
 Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`. You can save it in a password manager or write it down if you'd like.
 
@@ -210,10 +208,10 @@ The best way to run an Urbit is inside a `screen` session. Screen is a terminal 
 screen -S urbit
 ```
 
-Now that you're in a `screen` session, you can mine a new comet with the command below. You'll need to replace `XXX` with Vere's full name, and you can change `mycomet` to whatever you'd like: 
+Now that you're in a `screen` session, you can mine a new comet with the command below. You'll need to replace `vere` with the full name of the one you downloaded, and you can change `mycomet` to whatever you'd like: 
 
 ```sh
-./vere-XXX -c mycomet
+./vere -c mycomet
 ```
 
 It might take a few minutes to boot up and mine a comet. You'll know your comet has fully booted when you have a responsive prompt that looks like this:
@@ -231,7 +229,7 @@ sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have se
 sudo setcap 'cap_net_bind_service=+ep' mycomet/.run
 ```
 
-You can now spin it back up again by running `./mycomet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `mycomet` folder so you don't need the separate `vere-XXX` binary anymore.
+You can now spin it back up again by running `./mycomet/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `mycomet` folder so you don't need the separate `vere` binary anymore.
 
 Comets don't have kernel over-the-air updates enabled by default, so you'll want to run `|ota` in the Dojo to turn those on.
 
@@ -250,7 +248,7 @@ Fake ships are for development purposes only and cannot connect to the live netw
 Run the `vere` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
 
 ```sh
-./vere-XXX -F zod # replace XXX with the full name of the vere binary you downloaded
+./vere -F zod # replace "vere" with the full name of the one you downloaded
 ```
 
 This will take a few minutes. Once it's done, you'll have a responsive prompt that looks like this:
@@ -261,7 +259,7 @@ This will take a few minutes. Once it's done, you'll have a responsive prompt th
 
 You can shut the fake ship down by typing `|exit` or pressing `Ctrl+D`.
 
-You can now spin it back up again by running `./zod/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `zod` folder so you don't need the separate `vere-XXX` binary anymore.
+You can now spin it back up again by running `./zod/.run`, and you'll be back at the Dojo. Vere has "docked" itself with the `zod` folder so you don't need the separate `vere` binary anymore.
 
 If you need to access your fake ship's web interface, type `+code` in the Dojo and hit enter. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it to the clipboard with `Ctrl+Shift+C`.
 

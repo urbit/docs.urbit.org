@@ -271,7 +271,7 @@ With your Urbit now running and your web login code in the clipboard, you can op
 
 To join your first group, you can open the Tlon app by clicking on its tile, then hit the `+` in the sidebar and select "Join a group". Paste in `~halbex-palheb/uf-public`, the Urbit Foundation's main public group, and hit "Go".
 
-If you'd like to explore what other apps are available, click on the "Get Urbit Apps" button at the top of the Landscape homescreen. There's a few suggestions listed there, and you can also paste in an app shortcode or an app publisher's ship name if you know any.
+If you'd like to explore what other apps are available, click on the "Get Urbit Apps" button at the top of the Landscape homescreen. There's a few suggestions listed there, and you can also paste in an app shortcode or an app publisher's ship.
 
 {% endstep %}
 {% endstepper %}

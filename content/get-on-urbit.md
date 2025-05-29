@@ -102,16 +102,56 @@ If you've already claimed the planet and forgot to download the passport, you'll
 
 To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and download it or run the corresponding `curl` command if you're in a terminal. If you don't know which architecture you have, you can run `uname -m` in the terminal.
 
-| OS    | Architecture            | Name                      | Download link             | Terminal command                                                             |
-|-------|-------------------------|---------------------------|---------------------------|------------------------------------------------------------------------------|
-| macOS | `x86_64` (Intel)        | `vere-v3.4-macos-x86_64`  | [Download][macos-x86_64]  | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64`  |
-| macOS | `arm64` (Apple Silicon) | `vere-v3.4-macos-aarch64` | [Download][macos-aarch64] | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64` |
-| Linux | `x86_64`                | `vere-v3.4-linux-x86_64`  | [Download][linux-x86_64]  | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64`  |
-| Linux | `aarch64`               | `vere-v3.4-linux-aarch64` | [Download][linux-aarch64] | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64` |
+{% tabs %}
+{% tab title="macOS x86_64 (Intel)" %}
 
-[macos-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
+[Download `vere-v3.4-macos-x86_64`][macos-x86_64]
+
+Or from the terminal:
+
+```sh
+curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
+```
+
+{% endtab %}
+{% tab title="macOS arm64 (Apple Silicon)" %}
+
+[Download `vere-v3.4-macos-aarch64`][macos-aarch64]
+
+Or from the terminal:
+
+```sh
+curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
+```
+
+{% endtab %}
+{% tab title="Linux x86_64" %}
+
+[Download `vere-v3.4-linux-x86_64`][linux-x86_64]
+
+Or from the terminal:
+
+```sh
+curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
+```
+
+{% endtab %}
+{% tab title="Linux aarch64" %}
+
+[Download `vere-v3.4-linux-aarch64`][linux-aarch64]
+
+Or from the terminal:
+
+```sh
+curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
+```
+
+{% endtab %}
+{% endtabs %}
+
+[macos-x86_64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
 [macos-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
-[linux-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
+[linux-x86_64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
 [linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 
 Once you've downloaded it, you'll need to make it executable by going to its location in the terminal and running `chmod +x vere-XXX` (replace `XXX` with the rest of its name, depending which one you downloaded).

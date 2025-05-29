@@ -2,7 +2,7 @@
 
 Using Urbit requires two things: an Urbit ID, and a server running Urbit OS. This guide will walk through the steps of getting an Urbit ID, downloading its keyfile, installing the Urbit runtime, and booting up the Urbit.
 
-This guide will require:
+You'll need:
 
 - A small amount of technical ability (such as using a terminal).
 - Basic familiarity with crypto wallets and some ETH to buy a planet (unless you want to use a free disposable ID).

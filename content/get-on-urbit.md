@@ -49,7 +49,7 @@ In either case you retain full ownership and control of your Urbit ID. **It's yo
 
 Once you've got an Urbit ID, the next step is to get its keyfile so you can boot it up. The process can vary depending on how you obtained your ID and where it's stored.
 
-{% tabs }
+{% tabs %}
 
 {% tab title="ID in wallet" %}
 
@@ -108,6 +108,11 @@ To spin up a new Urbit, you need the runtime called Vere. There are 4 prebuilt b
 | macOS | `arm64` (Apple Silicon) | `vere-v3.4-macos-aarch64` | [Download][macos-aarch64] | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64` |
 | Linux | `x86_64`                | `vere-v3.4-linux-x86_64`  | [Download][linux-x86_64]  | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64`  |
 | Linux | `aarch64`               | `vere-v3.4-linux-aarch64` | [Download][linux-aarch64] | `curl -O https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64` |
+
+[macos-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
+[macos-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
+[linux-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
+[linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 
 Once you've downloaded it, you'll need to make it executable by going to its location in the terminal and running `chmod +x vere-XXX` (replace `XXX` with the rest of its name, depending which one you downloaded).
 
@@ -239,9 +244,4 @@ If you'd like to explore what other apps are available, click on the "Get Urbit 
 
 {% endstep %}
 {% endstepper %}
-
-[macos-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-x86_64
-[macos-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-macos-aarch64
-[linux-x86-64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-x86_64
-[linux-aarch64]: https://bootstrap.urbit.org/vere/live/v3.4/vere-v3.4-linux-aarch64
 

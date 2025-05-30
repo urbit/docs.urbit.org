@@ -178,7 +178,7 @@ True `+list`s have `i` and `t` faces which allow the head and tail of the data t
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `+list`. See also [`+limo`](../../language/hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `+list`.)
+A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `+list`. See also [`+limo`](../../hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `+list`.)
 
 ## Addressing Limbs {#addressing-limbs}
 
@@ -474,9 +474,9 @@ How do you get to that `b=2`?  And how do you get to the `.c` in `[[4 a=5] b=[c=
 
 We say that the inner face has been "shadowed" when an outer name obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune: it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) gate, for instance.
+If you run into `^$`, don't go look for a `^$` ketbuc rune: it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) gate, for instance.
 
-Solution #1 in the [Rhonda Numbers](../../language/hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
+Solution #1 in the [Rhonda Numbers](../../hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
 ### Limb Resolution Operators {#limb-resolution-operators}
 
@@ -490,7 +490,7 @@ Logically, `a:b` is two operations, while `a.b` is one operation. The compiler i
 
 ### What `%=` Does {#what-does}
 
-Now we're equipped to go back and examine the syntax of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune we have been using for recursion: it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
+Now we're equipped to go back and examine the syntax of the `%=` [centis](../../hoon/reference/rune/cen.md#centis) rune we have been using for recursion: it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
 
 ```hoon
 |=  n=@ud
@@ -503,7 +503,7 @@ Now we're equipped to go back and examine the syntax of the `%=` [centis](../../
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../language/hoon/reference/rune/cen.md#centis) rune.
+The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../hoon/reference/rune/cen.md#centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap. It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
@@ -518,7 +518,7 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
 
 ### Expanding the Runes {#expanding-the-runes}
  
-`|=` [bartis](../../language/hoon/reference/rune/bar.md#bartis) produces a gate. It actually expands to
+`|=` [bartis](../../hoon/reference/rune/bar.md#bartis) produces a gate. It actually expands to
 
 ```hoon
 =|  a=spec
@@ -526,9 +526,9 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
 --
 ``` 
 
-where `=|` [tisbar](../../language/hoon/reference/rune/tis.md#tisbar) means to add its sample to the current subject with the given [face](../../glossary/face.md).
+where `=|` [tisbar](../../hoon/reference/rune/tis.md#tisbar) means to add its sample to the current subject with the given [face](../../glossary/face.md).
 
-Similarly, `|-` [barhep](../../language/hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`. How could you write that in terms of `|%` and `++`?
+Similarly, `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`. How could you write that in terms of `|%` and `++`?
 
 ### Example: Number to Digits {#example-number-to-digits}
 
@@ -558,7 +558,7 @@ Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 ~[1 2 3 4 5 6 7 8 9]
 ```
 
-A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld).)
+A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [`+weld`](../../hoon/reference/stdlib/2b.md#weld).)
 
 ```hoon
 !:
@@ -588,7 +588,7 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 
 (Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation. This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../language/hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise: Resolving Wings {#exercise-resolving-wings}
 
@@ -617,7 +617,7 @@ The answers are at the bottom of the page.
 
 Once you have your data in the form of a `+list`, there are a lot of tools available to manipulate and analyze the data:
 
-The [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
+The [`+flop`](../../hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
   
 ```hoon
 > (flop ~[1 2 3 4 5])
@@ -628,14 +628,14 @@ The [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function reverses
 
 Without using `+flop`, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
-The [`+sort`](../../language/hoon/reference/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [`+lth`](../../language/hoon/reference/stdlib/1a.md#lth)) to order things:
+The [`+sort`](../../hoon/reference/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [`+lth`](../../hoon/reference/stdlib/1a.md#lth)) to order things:
 
 ```hoon
 > (sort ~[1 3 5 2 4] lth)
 ~[1 2 3 4 5]
 ```
 
-The [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
+The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
 
 ```hoon
 > (snag 0 `(list @)`~[11 22 33 44])
@@ -657,7 +657,7 @@ The [`+snag`](../../language/hoon/reference/stdlib/2b.md#snag) function takes an
 '!'
 ```
 
-The [`+weld`](../../language/hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
+The [`+weld`](../../hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
 
 ```hoon
 > (weld ~[1 2 3] ~[4 5 6])
@@ -673,14 +673,14 @@ Without using weld, write a gate that takes a `[(list @) (list @)]` of which the
 
 There are a couple of sometimes-useful `+list` builders:
 
-The [`+gulf`](../../language/hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
+The [`+gulf`](../../hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
 
 ```hoon
 > (gulf 5 10)  
 ~[5 6 7 8 9 10]
 ```
 
-The [`+reap`](../../language/hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
+The [`+reap`](../../hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
 
 ```hoon
 > (reap 5 0x0)
@@ -696,7 +696,7 @@ The [`+reap`](../../language/hoon/reference/stdlib/2b.md#reap) function repeats 
 ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
 ```
 
-The [`+roll`](../../language/hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+The [`+roll`](../../hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
 ```hoon
 > (roll `(list @)`~[11 22 33 44 55] add)
@@ -708,11 +708,11 @@ The [`+roll`](../../language/hoon/reference/stdlib/2b.md#roll) function takes a 
 
 Once you have a `+list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
-- The [`+lent`](../../language/hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
-- The [`+find`](../../language/hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack)
-- The [`+snap`](../../language/hoon/reference/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
-- The [`+scag`](../../language/hoon/reference/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
-- The [`+slag`](../../language/hoon/reference/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
+- The [`+lent`](../../hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
+- The [`+find`](../../hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack)
+- The [`+snap`](../../hoon/reference/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
+- The [`+scag`](../../hoon/reference/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
+- The [`+slag`](../../hoon/reference/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
@@ -751,7 +751,7 @@ Determine whether the following Dojo expressions are valid, and if so, what they
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../language/hoon/reference/stdlib/2b.md#flop) function.
+Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../hoon/reference/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 

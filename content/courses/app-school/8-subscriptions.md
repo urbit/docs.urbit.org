@@ -44,7 +44,7 @@ Your agent's subscription paths would be defined in this arm, typically in a wut
 ==
 ```
 
-Subscription paths can be simple and fixed like the first two examples above: `/updates` and `/blah/blah`. They can also contain "wildcard" elements, with an atom of a particular aura encoded in an element of the `$path`, as in the `[%foo @ ~]` example. The type pattern matcher is quite limited, so we just specify such variable elements as `@`, and then decode them with something like `(slav %da i.t.path)` (for a `@da`), as in the example. The incoming `$path` in this example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information on decoding atoms in strings, see the [Strings Guide](../../language/hoon/guides/strings.md#decoding-from-text).
+Subscription paths can be simple and fixed like the first two examples above: `/updates` and `/blah/blah`. They can also contain "wildcard" elements, with an atom of a particular aura encoded in an element of the `$path`, as in the `[%foo @ ~]` example. The type pattern matcher is quite limited, so we just specify such variable elements as `@`, and then decode them with something like `(slav %da i.t.path)` (for a `@da`), as in the example. The incoming `$path` in this example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information on decoding atoms in strings, see the [Strings Guide](../../hoon/guides/strings.md#decoding-from-text).
 
 In the last case of `[%bar %baz *]`, we're allowing a variable number of elements in the path. First we check it's `/bar/baz/...something...`, and then we check what the "something" is in another wutlus expression and handle it appropriately. In this case, it could be `/bar/baz`, `/bar/baz/abc/def`, or `/bar/baz/blah`. You could of course also have "wildcard" elements here too, so there's not really a limit to the complexity of your subscription paths, or the data that might be encoded therein.
 
@@ -737,7 +737,7 @@ On \~nut, we'll see it got the `%kick`, tried resubscribing automatically, but w
 
 ## Exercises {#exercises}
 
-- Have a look at the [Strings Guide](../../language/hoon/guides/strings.md) if you're not already familiar with decoding/encoding atoms in strings.
+- Have a look at the [Strings Guide](../../hoon/guides/strings.md) if you're not already familiar with decoding/encoding atoms in strings.
 - Try running through the [example](#example) yourself, if you've not done so already.
 - Try modifying `%todo-watcher` to recording the data it receives in its state, rather than simply printing it to the terminal.
 - If you'd like, try going back to [lesson 6](6-pokes.md) (on pokes) and modifying the agents with an appropriate permission system, and also try running them on separate ships.

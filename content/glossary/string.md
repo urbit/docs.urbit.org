@@ -4,4 +4,4 @@
 
 #### Further Reading
 
-- [Strings guide](../language/hoon/guides/strings.md): A guide to strings in Hoon.
+- [Strings guide](../hoon/guides/strings.md): A guide to strings in Hoon.

@@ -13,4 +13,4 @@ Example in the [Dojo](dojo.md):
 
 #### Further Reading
 
-- [Standard Library 2p: Serialization](../language/hoon/reference/stdlib/2p.md)
+- [Standard Library 2p: Serialization](../hoon/reference/stdlib/2p.md)

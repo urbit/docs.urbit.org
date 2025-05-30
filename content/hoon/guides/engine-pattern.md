@@ -6,7 +6,7 @@
 
 {% embed url="https://youtu.be/T4VyW72zX0w" %}
 
-The [core](../../../glossary/core.md) is one of the key elements of Urbit's subject-oriented programming paradigm. As a way of organizing code and data in a homoiconic language, the core pattern allows Hoon developers to encapsulate processes and lexically scope code while relying on a well-structured fundament. Simple core patterns like gates and traps have only one arm in their battery and possibly no sample at all (for a trap). More complex core patterns (such as the `|^` barket core, and doors) can consist of inner cores and outer cores, as well as stacking samples (such as for a gate in a door).
+The [core](../../glossary/core.md) is one of the key elements of Urbit's subject-oriented programming paradigm. As a way of organizing code and data in a homoiconic language, the core pattern allows Hoon developers to encapsulate processes and lexically scope code while relying on a well-structured fundament. Simple core patterns like gates and traps have only one arm in their battery and possibly no sample at all (for a trap). More complex core patterns (such as the `|^` barket core, and doors) can consist of inner cores and outer cores, as well as stacking samples (such as for a gate in a door).
 
 This pattern can telescope beyond doors, however, into the "engine pattern". (Also known as the "nested core" pattern.) In this guide, we examine the engine pattern through its most common instantiation, the `+abet` pattern.
 
@@ -318,7 +318,7 @@ This pattern works well for single cards or short collections of them, in partic
 
 ### `=^` tisket pattern {#tisket-pattern}
 
-The classic way of composing several cards uses a [`=^` tisket](../../hoon/reference/rune/tis.md#tisket) to pin a state and a helper core to process actions. This allows sequestration of logic into particular arms.
+The classic way of composing several cards uses a [`=^` tisket](../reference/rune/tis.md#tisket) to pin a state and a helper core to process actions. This allows sequestration of logic into particular arms.
 
 {% code wrap="nowrap" %}
 

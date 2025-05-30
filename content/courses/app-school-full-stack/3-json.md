@@ -2,7 +2,7 @@
 
 Data sent between our agent and our front-end will all be encoded as JSON. In this section, we'll briefly look at how JSON works in Urbit, and write a library to convert our agent's structures to and from JSON for our front-end.
 
-JSON data comes into Eyre as a string, and Eyre parses it with the [`+de:json:html`](../../language/hoon/reference/zuse/2e_2-3.md#dejsonhtml) function in [`zuse.hoon`](../../language/hoon/reference/zuse). The hoon type it's parsed to is `$json`, which is defined as:
+JSON data comes into Eyre as a string, and Eyre parses it with the [`+de:json:html`](../../hoon/reference/zuse/2e_2-3.md#dejsonhtml) function in [`zuse.hoon`](../../hoon/reference/zuse). The hoon type it's parsed to is `$json`, which is defined as:
 
 ```hoon
 +$  json                    ::  normal json value
@@ -15,7 +15,7 @@ JSON data comes into Eyre as a string, and Eyre parses it with the [`+de:json:ht
   ==                        ::
 ```
 
-Once Eyre has converted the raw JSON string to a `$json` structure, it will be converted to the mark the web client specified and then delivered to the target agent (unless the mark specified is already `%json`, in which case it will be delivered directly). Outbound facts will go through the same process in reverse - converted from the agent's native mark to `$json`, then encoded in a string by Eyre using [`+en:json:html`](../../language/hoon/reference/zuse/2e_2-3.md#enjsonhtml) and delivered to the web client. The basic flow for both inbound messages (pokes) and outbound messages (facts and scry results) looks like this:
+Once Eyre has converted the raw JSON string to a `$json` structure, it will be converted to the mark the web client specified and then delivered to the target agent (unless the mark specified is already `%json`, in which case it will be delivered directly). Outbound facts will go through the same process in reverse - converted from the agent's native mark to `$json`, then encoded in a string by Eyre using [`+en:json:html`](../../hoon/reference/zuse/2e_2-3.md#enjsonhtml) and delivered to the web client. The basic flow for both inbound messages (pokes) and outbound messages (facts and scry results) looks like this:
 
 ![](https://media.urbit.org/guides/core/app-school-full-stack-guide/eyre-mark-flow-diagram.svg)
 
@@ -25,11 +25,11 @@ Mark conversion functions can be included directly in the mark file, or they can
 
 ## `$json` utilities {#json-utilities}
 
-[`zuse.hoon`](../../language/hoon/reference/zuse) contains three main cores for converting to and from `$json`:
+[`zuse.hoon`](../../hoon/reference/zuse) contains three main cores for converting to and from `$json`:
 
-- [`+enjs:format`](../../language/hoon/reference/zuse/2d_1-5.md#enjsformat) - Functions to help encode data structures as `$json`.
-- [`+dejs:format`](../../language/hoon/reference/zuse/2d_6.md#dejsformat) - Functions to decode `$json` to other data structures.
-- [`+dejs-soft:format`](../../language/hoon/reference/zuse/2d_7.md#dejs-softformat) - Mostly the same as `+dejs:format` except the functions produce units which are null if decoding fails, rather than just crashing.
+- [`+enjs:format`](../../hoon/reference/zuse/2d_1-5.md#enjsformat) - Functions to help encode data structures as `$json`.
+- [`+dejs:format`](../../hoon/reference/zuse/2d_6.md#dejsformat) - Functions to decode `$json` to other data structures.
+- [`+dejs-soft:format`](../../hoon/reference/zuse/2d_7.md#dejs-softformat) - Mostly the same as `+dejs:format` except the functions produce units which are null if decoding fails, rather than just crashing.
 
 ### `+enjs:format` {#enjsformat}
 
@@ -73,7 +73,7 @@ Notice that we used a knot for the value of `foo` (`n+~.123`). Numbers in JSON c
 
 ### `+dejs:format` {#dejsformat}
 
-This core contains many functions for decoding `$json`. We'll touch on some useful families of `+dejs` functions in brief, but because there's so many, in practice you'll need to look through the [`+dejs` reference](../../language/hoon/reference/zuse/2d_6.md) to find the correct functions for your use case.
+This core contains many functions for decoding `$json`. We'll touch on some useful families of `+dejs` functions in brief, but because there's so many, in practice you'll need to look through the [`+dejs` reference](../../hoon/reference/zuse/2d_6.md) to find the correct functions for your use case.
 
 #### Number functions
 
@@ -95,7 +95,7 @@ For example:
 - `+sd` - decode a string containing a `@da` aura date value to a `@da`.
 - `+se` - decode a string containing the specified aura to that aura.
 - `+so` - decode a string to a `@t`.
-- `+su` - decode a string by parsing it with the given [parsing rule](../../language/hoon/reference/stdlib/4f.md).
+- `+su` - decode a string by parsing it with the given [parsing rule](../../hoon/reference/stdlib/4f.md).
 
 #### Array functions
 
@@ -117,7 +117,7 @@ Many `+dejs` functions take other `+dejs` functions as their arguments. A comple
 - `+ou` - decode an object to an n-tuple, replacing optional missing values with a given value.
 - `+oj` - decode an object of arrays to a `+jug`.
 - `+om` - decode an object to a `+map`.
-- `+op` - decode an object to a `+map`, and also parse the object keys with a [parsing rule](../../language/hoon/reference/stdlib/4f.md).
+- `+op` - decode an object to a `+map`, and also parse the object keys with a [parsing rule](../../hoon/reference/stdlib/4f.md).
 
 For example:
 
@@ -183,7 +183,7 @@ First, we'll import the `/sur/journal.hoon` structures we previously created. Ne
   ==
 ```
 
-The first thing we do is use the [`=,` rune](../../language/hoon/reference/rune/tis.md#tiscom) to expose the `+dejs:format` namespace. This allows us to reference "ot", "ni", etc. rather than having to write "ot:dejs:format" every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
+The first thing we do is use the [`=,` rune](../../hoon/reference/rune/tis.md#tiscom) to expose the `+dejs:format` namespace. This allows us to reference "ot", "ni", etc. rather than having to write "ot:dejs:format" every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
 
 We then create a gate that takes `$json` and returns a `$action` structure. Since we'll only take one action at a time, we can use the `+of` function, which takes a single key-value pair. `+of` takes a list of all possible `$json` objects it will receive, tagged by key.
 
@@ -264,8 +264,8 @@ You'll notice more of our encoding function is done manually than our previous d
 
 ## Resources {#resources}
 
-- [The JSON Guide](../../language/hoon/guides/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
-- [The Zuse reference](../../language/hoon/reference/zuse) - The `/sys/zuse.hoon` reference documents all JSON-related functions in detail.
-- [`+enjs:format` reference](../../language/hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
-- [`+dejs:format` reference](../../language/hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
+- [The JSON Guide](../../hoon/guides/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
+- [The Zuse reference](../../hoon/reference/zuse) - The `/sys/zuse.hoon` reference documents all JSON-related functions in detail.
+- [`+enjs:format` reference](../../hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
+- [`+dejs:format` reference](../../hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
 - [Eyre overview](../../system/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.

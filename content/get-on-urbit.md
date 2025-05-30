@@ -2,6 +2,12 @@
 
 Using Urbit requires two things: an Urbit ID, and a server running Urbit OS. This guide will walk through the steps of getting an Urbit ID, downloading its keyfile, installing the Urbit runtime, and booting up the Urbit.
 
+{% hint %}
+
+If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
+
+{% endhint %}
+
 You'll need:
 
 - A small amount of technical ability (such as using a terminal).
@@ -9,12 +15,6 @@ You'll need:
 - A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. You can usually get away with 2GB of RAM plus a swapfile and less disk space, but it might become a problem in the future as your Urbit grows.
 
 It should also be possible to run Urbit on a Windows computer using the Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.
-
-{% hint %}
-
-If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
-
-{% endhint %}
 
 {% stepper %}
 {% step %}
@@ -101,21 +101,21 @@ If you've already claimed the planet and forgot to download the passport, you'll
 To spin up a new Urbit, you need the Urbit runtime. There are 4 prebuilt binaries available, depending on your platform. Pick the one you're on and run the corresponding `curl` command in a terminal.
 
 {% tabs %}
-{% tab title="macOS (Intel)" %}
-
-Open a terminal and run:
-
-```sh
-curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
-```
-
-{% endtab %}
 {% tab title="macOS (Apple Silicon)" %}
 
 Open a terminal and run:
 
 ```sh
 curl -L https://urbit.org/install/macos-aarch64/latest | tar xzk -s '/.*/urbit/'
+```
+
+{% endtab %}
+{% tab title="macOS (Intel)" %}
+
+Open a terminal and run:
+
+```sh
+curl -L https://urbit.org/install/macos-x86_64/latest | tar xzk -s '/.*/urbit/'
 ```
 
 {% endtab %}
@@ -138,7 +138,6 @@ curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/
 
 {% endtab %}
 {% endtabs %}
-
 {% endstep %}
 
 {% step %}
@@ -174,8 +173,10 @@ This is the Dojo, Urbit's command-line interface. For the moment, shut the ship 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
-sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
-sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run # replace sampel-palnet with the actual folder name
+# if you're on ubuntu and don't already have setcap
+sudo apt-get install libcap2-bin
+# replace sampel-palnet with the actual folder name
+sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run
 ```
 {% endhint %}
 
@@ -217,7 +218,9 @@ This is the Dojo, Urbit's command-line interface. For the moment, shut the ship 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
 ```sh
-sudo apt-get install libcap2-bin # if you're on ubuntu and don't already have setcap
+# if you're on ubuntu and don't already have setcap
+sudo apt-get install libcap2-bin
+# replace mycomet with the actual folder name
 sudo setcap 'cap_net_bind_service=+ep' mycomet/.run
 ```
 {% endhint %}
@@ -235,10 +238,15 @@ If you need to get back to the Dojo again in the future, just open a terminal an
 {% endtab %}
 
 {% tab title="Boot a fake ship" %}
-
 Fake ships are for development purposes only and cannot connect to the live network.
 
-Run the `urbit` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
+The best way to run an Urbit is inside a `screen` session. Screen is a terminal multiplexer that lets you detach from shell sessions and leave them running in the background, then attach them again later. Without something like `screen`, you'd have to leave the terminal open all the time while your Urbit is running. To start a new `screen` session and name it `urbit`, run the following command in your terminal:
+
+```sh
+screen -S urbit
+```
+
+Now that you're in a `screen` session, run the `urbit` binary you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy `~zod`.
 
 ```sh
 ./urbit -F zod
@@ -259,9 +267,7 @@ If you need to access your fake ship's web interface, type `+code` in the Dojo a
 To learn more about developing on Urbit, look at our [courses](./courses/README.md).
 
 {% endtab %}
-
 {% endtabs %}
-
 {% endstep %}
 
 {% step %}

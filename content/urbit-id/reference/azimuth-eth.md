@@ -1,6 +1,6 @@
 # Azimuth.eth
 
-[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](ecliptic.md) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by [galaxy vote](../../../glossary/upgrade.md) - they are only eligible to modify the Ecliptic.
+[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](ecliptic.md) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by [galaxy vote](../../glossary/upgrade.md) - they are only eligible to modify the Ecliptic.
 
 ## Global state {#global}
 
@@ -89,7 +89,7 @@ A `Point` contains data about networking keys and sponsorship status, arranged i
 
 ## `Deed`s {#deeds}
 
-A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../../../manual/id/proxies.md) for that `Point`.
+A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../../manual/id/proxies.md) for that `Point`.
 
 ```solidity
 struct Deed

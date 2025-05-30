@@ -20,4 +20,4 @@ Creates new child points given Ethereum address. For [stars](star.md) and [galax
 ### Further Reading {#further-reading}
 
 - [Azimuth glossary page](azimuth.md): The glossary entry for Azimuth.
-- [The Azimuth concepts page](../system/identity/guides/advanced-azimuth-tools.md): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.
+- [The Azimuth concepts page](../urbit-id/guides/advanced-azimuth-tools.md): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.

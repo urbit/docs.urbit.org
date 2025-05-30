@@ -4,7 +4,7 @@ This document outlines some advanced techniques for generating, signing, and sen
 
 These tools are currently only available for layer 1 transactions. Tooling for layer 2 transactions is forthcoming.
 
-First you will want to [boot a fakezod](../../../courses/environment.md#creating-a-fake-ship). You can do this with your live running ship but at this time this will need you to modify the code so it's best to do this on a ship you can make mistakes on.
+First you will want to [boot a fakezod](../../courses/environment.md#creating-a-fake-ship). You can do this with your live running ship but at this time this will need you to modify the code so it's best to do this on a ship you can make mistakes on.
 
 Be sure to have mounted your base desk so you can easily edit files on it. The first edit that will probably need to be made is in [`app/claz.hoon`](https://github.com/urbit/urbit/blob/85435e9a81e105809d5d381b5d34fae1d4daa3b8/pkg/arvo/app/claz.hoon#L14). The listed url will need to be changed to a valid Ethereum endpoint. `infura.io` provides an Ethereum API that you can use.
 

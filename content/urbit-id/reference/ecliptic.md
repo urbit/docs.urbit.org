@@ -1,6 +1,6 @@
 # Ecliptic.eth
 
-[Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](../../../glossary/upgrade.md). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
+[Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](../../glossary/upgrade.md). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
 
 `Ecliptic.eth` uses external contracts such as [Azimuth.eth](azimuth-eth.md) and [Polls](https://github.com/urbit/azimuth/blob/master/contracts/Polls.sol) for data storage so that it can easily be replaced in case the logic needs to be changed without affecting the data. These data contracts are owned by `Ecliptic.eth`, and this ownership is passed to the new Ecliptic contract whenever it is replaced. Thus it is advised for clients to not store Ecliptic's contract address directly, but instead ask the `Azimuth.eth` contract for its `owner` attribute to ensure that transactions are sent to the latest Ecliptic contract. Alternatively, the [ENS](https://ens.domains/) name `Ecliptic.eth` will always resolve to the latest Ecliptic.
 
@@ -8,7 +8,7 @@ You can read about [Urbit's first upgrade](https://github.com/urbit/azimuth/pull
 
 `Ecliptic.eth` implements the [ERC-721](https://eips.ethereum.org/EIPS/eip-721) interface for non-fungible tokens, as well as the [ERC-165](https://eips.ethereum.org/EIPS/eip-165) standard for interface detection.
 
-There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions.md), and/or can be performed using [Bridge](../../../manual/id/using-bridge.md). We note these facts where applicable.
+There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions.md), and/or can be performed using [Bridge](../../manual/id/using-bridge.md). We note these facts where applicable.
 
 ## Write functions {#write}
 
@@ -59,7 +59,7 @@ Corresponds to the layer 2 `%spawn` action.
     function transferPoint(uint32 _point, address _target, bool _reset)
 ```
 
-Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](../../../manual/id/guide-to-resets.md), and thus this action increments the [`continuityNumber`](azimuth-eth.md#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift.md)).
+Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](../../manual/id/guide-to-resets.md), and thus this action increments the [`continuityNumber`](azimuth-eth.md#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift.md)).
 
 Requirements:
 
@@ -141,7 +141,7 @@ Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` o
 
 ### Proxy management {#proxies}
 
-These functions are used to manage the various [proxies](../../../manual/id/proxies.md). All of these actions may be performed from Bridge.
+These functions are used to manage the various [proxies](../../manual/id/proxies.md). All of these actions may be performed from Bridge.
 
 #### `setManagementProxy`
 
@@ -205,7 +205,7 @@ Corresponds to the layer 2 `%set-transfer-proxy` action.
 
 ### Poll actions {#poll-actions}
 
-Most of these are functions only available to galaxies. They are related to [voting](../../../glossary/voting.md). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
+Most of these are functions only available to galaxies. They are related to [voting](../../glossary/voting.md). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
 
 Upgrade and document polls last for 30 days, or once a majority is achieved, whichever comes first. If a majority (129) of yes or no votes is achieved, the final vote cast in favor of the winning option also triggers `updateUpgradePoll` or `updateDocumentPoll` as appropriate. Otherwise, if a quorum of 64 votes is achieved, with a majority voting for yes, and the 30 day voting period has expired, then _any_ Ethereum address may call `updateUpgradePoll` or `updateDocumentPoll` as appropriate.
 

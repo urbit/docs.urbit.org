@@ -14,11 +14,11 @@ Think of your master ticket like a very high-value password. The master ticket i
 
 ## Ownership Address {#ownership-address}
 
-An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](../../../glossary/ecliptic.md), Azimuth's suite of governing smart-contracts.
+An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](../../glossary/ecliptic.md), Azimuth's suite of governing smart-contracts.
 
 ## Proxies {#proxies}
 
-Each permanent Urbit ID can designate one or more [proxies](../../../manual/id/proxies.md), which are Ethereum addresses capable of a limited subset of Urbit ID transactions, such as spawning planets or rotating keys. The HD wallet automatically generates additional addresses utilized as proxies according to what is appropriate for your Urbit ID.
+Each permanent Urbit ID can designate one or more [proxies](../../manual/id/proxies.md), which are Ethereum addresses capable of a limited subset of Urbit ID transactions, such as spawning planets or rotating keys. The HD wallet automatically generates additional addresses utilized as proxies according to what is appropriate for your Urbit ID.
 
 ## HD wallet generation {#hd-wallet-generation}
 
@@ -26,7 +26,7 @@ Your Urbit HD wallet is generated from a `@q` seed called `T`, which looks somet
 
 ![](https://media.urbit.org/fora/proposals/UP-8.jpg)
 
-First, your `@q` is converted into a numeric value `E` as an intermediary step by adding [salt](<https://en.wikipedia.org/wiki/Salt_(cryptography)>). Then by adding additional salts, `E` is converted into a set of BIP39 seed phrases - these are 24 word mnemonic sequences used to generate Ethereum wallets. You end up with one seed phrase for each proxy associated with your ship, and these seed phrases are then used to generate Ethereum wallets.
+First, your `@q` is converted into a numeric value `E` as an intermediary step by adding [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)). Then by adding additional salts, `E` is converted into a set of BIP39 seed phrases - these are 24 word mnemonic sequences used to generate Ethereum wallets. You end up with one seed phrase for each proxy associated with your ship, and these seed phrases are then used to generate Ethereum wallets.
 
 One of the wallets will store your Azimuth point, an [ERC-721](#erc-721) token, which will be known as your ownership address. Bridge then automatically uses your ownership address to assign the other proxies to the other wallets generated.
 
@@ -48,12 +48,12 @@ A hardware HD wallet is generated from a seed phrase that should be thought of a
 
 In order to use your hardware wallet as your Urbit wallet, you first need to generate a set of addresses on which you would like to store your Azimuth point and proxies. Consult your wallet vendor on how to do this. Then login to Bridge using your current method (likely a master ticket) and transfer ownership to the wallet address you generated on your hardware wallet for ownership.
 
-Next, login to Bridge using your hardware wallet. While Bridge supports Trezor and Ledger natively, this may require using Metamask as an intermediary anyways, depending on which firmware you are running. Then [accept the transfer](../../../manual/id/using-bridge.md#accept-your-transfer). Your Azimuth point is now stored on your hardware wallet.
+Next, login to Bridge using your hardware wallet. While Bridge supports Trezor and Ledger natively, this may require using Metamask as an intermediary anyways, depending on which firmware you are running. Then [accept the transfer](../../manual/id/using-bridge.md#accept-your-transfer). Your Azimuth point is now stored on your hardware wallet.
 
 To finish the process, use Bridge to set your management, voting, and spawn proxies to the other addresses you generated as applicable. You are now using your hardware HD wallet in an analogous fashion to the Urbit HD wallet.
 
 ## Heightened security practices {#heightened-security-practices}
 
-A common security pattern is to have "hot" and "cold" wallets. For higher value points such as stars and galaxies, you may consider having your ownership address live on a "cold" wallet that never touches an internet-connected computer, and the various proxies on a "hot" wallet that is permitted to connect to internet-connected devices. This could be accomplished with multiple hardware wallets, a combination of paper and hardware wallet, a hardware cold wallet and Metamask hot wallet, etc. See the [User Manual](../../../manual/id/hd-wallet.md) for concrete suggestions on security practices.
+A common security pattern is to have "hot" and "cold" wallets. For higher value points such as stars and galaxies, you may consider having your ownership address live on a "cold" wallet that never touches an internet-connected computer, and the various proxies on a "hot" wallet that is permitted to connect to internet-connected devices. This could be accomplished with multiple hardware wallets, a combination of paper and hardware wallet, a hardware cold wallet and Metamask hot wallet, etc. See the [User Manual](../../manual/id/hd-wallet.md) for concrete suggestions on security practices.
 
 One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is used for making and signing Bridge transactions from an offline computer. A guide to using `claz` is available [here](../guides/advanced-azimuth-tools.md).

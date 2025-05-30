@@ -6,7 +6,7 @@ Once a ship moves to layer 2, the owner will still utilize the same private keys
 
 ## Moving a pre-existing ship to L2 {#moving-a-pre-existing-ship-to-l2}
 
-In order to move your ship from layer 1 to layer 2, transfer ownership of your ship to the address `0x1111111111111111111111111111111111111111`. The easiest way to accomplish this is using [Bridge](../../../glossary/bridge.md). The Azimuth smart contracts interpret any ship at this address as being on layer 2.
+In order to move your ship from layer 1 to layer 2, transfer ownership of your ship to the address `0x1111111111111111111111111111111111111111`. The easiest way to accomplish this is using [Bridge](../../glossary/bridge.md). The Azimuth smart contracts interpret any ship at this address as being on layer 2.
 
 ## Dominion {#dominion}
 
@@ -23,7 +23,7 @@ Layer 2 Azimuth data for a given ship includes which layer that ship is on. We c
  - management proxy: `%escape`, `%cancel-escape`
  - transfer proxy: none
 
-A planet in dominion `%l1` is said to exist on layer 1, which is the default state for all planets prior to the introduction of naive rollups. In addition to the ordinary layer 1 Azimuth actions a planet can perform, they may also choose to `%escape` or `%cancel-escape` on layer 2 using either their ownership key or [management proxy](../../../glossary/proxies.md). See the [layer 2 sponsorship](../concepts/layer2.md#sponsorship) section for more information on layer 1 ships performing layer 2 sponsorship actions.
+A planet in dominion `%l1` is said to exist on layer 1, which is the default state for all planets prior to the introduction of naive rollups. In addition to the ordinary layer 1 Azimuth actions a planet can perform, they may also choose to `%escape` or `%cancel-escape` on layer 2 using either their ownership key or [management proxy](../../glossary/proxies.md). See the [layer 2 sponsorship](../concepts/layer2.md#sponsorship) section for more information on layer 1 ships performing layer 2 sponsorship actions.
 
 Layer 1 planets may also move to dominion `%l2` by depositing their ownership to the layer 2 deposit address.
 

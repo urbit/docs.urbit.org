@@ -14,7 +14,7 @@ Factory resets used to be called "breaches", and you may still see this language
 
 - [Guide to Factory Resets](../manual/id/guide-to-resets.md): A more in-depth explanation of factory resets, including how to perform one.
 - [Ship Troubleshooting](../manual/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.
-- [Life and Rift](../system/identity/concepts/life-and-rift.md)
+- [Life and Rift](../urbit-id/concepts/life-and-rift.md)
 - [Using Bridge](../manual/id/using-bridge.md): A guide to starting out with Bridge.
-- [The Azimuth concepts page](../system/identity/guides/advanced-azimuth-tools.md): A more in-depth explanation of our identity layer.
+- [The Azimuth concepts page](../urbit-id/guides/advanced-azimuth-tools.md): A more in-depth explanation of our identity layer.
 

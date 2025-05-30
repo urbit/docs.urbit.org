@@ -191,7 +191,7 @@ To use the network as a planet or star, you must be sponsored by an active star 
 
 ## Life and rift number {#life-and-rift-number}
 
-You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](../../system/identity/concepts/life-and-rift.md).
+You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](../../urbit-id/concepts/life-and-rift.md).
 
 ## DNS setup {#dns-setup}
 

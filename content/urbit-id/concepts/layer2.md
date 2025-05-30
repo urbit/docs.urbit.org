@@ -16,7 +16,7 @@ In this section we give a high-level summary of how naive rollups function and h
 
 ### Layer 1 {#layer-1}
 
-We briefly review how "Layer 1", i.e. the [Azimuth](../../../glossary/azimuth.md) smart contract suite, functions. An update to the Azimuth PKI data stored on your urbit occurs with four steps:
+We briefly review how "Layer 1", i.e. the [Azimuth](../../glossary/azimuth.md) smart contract suite, functions. An update to the Azimuth PKI data stored on your urbit occurs with four steps:
 
 1.  A transaction is posted to the Ethereum blockchain.
 2.  The [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/) calculates the resulting state transition and checks its validity, then updates the state if it is a valid transition.
@@ -137,7 +137,7 @@ There are no security risks in utilizing an aggregator. The transactions you sub
 
 ## Multi-keyfiles {#multi-keyfiles}
 
-As part of the layer 2 upgrade, Tlon has expanded the role of [keyfiles](../../../glossary/keyfile.md). One of our goals with layer 2 was to reduce the amount of friction experienced when getting onto Urbit. The enormous reduction in fees has made a new boot method which allows instantaneous sale of layer 2 planets or stars to be cost effective.
+As part of the layer 2 upgrade, Tlon has expanded the role of [keyfiles](../../glossary/keyfile.md). One of our goals with layer 2 was to reduce the amount of friction experienced when getting onto Urbit. The enormous reduction in fees has made a new boot method which allows instantaneous sale of layer 2 planets or stars to be cost effective.
 
 The ideal situation would be for the end user to be able to buy or receive a planet and immediately boot it without having to wait for an aggregator to submit a transaction that spawns the planet. In order to bring about this circumstance, "multi-keyfiles" have been introduced.
 
@@ -153,7 +153,7 @@ In the process of designing naive rollups, we felt it to be of the utmost import
 
 ### Arvo is deterministic {#arvo-is-deterministic}
 
-Crucial to the functionality of Ethereum smart contracts is that they work the same way every time since the Ethereum Virtual Machine is deterministic. Similarly, as the state of Arvo is evolved via [a single pure function](../../kernel/arvo#an-operating-function), Arvo is deterministic as well. This property makes it well-suited for cases where side effects are unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the name "Hoon smart contract".
+Crucial to the functionality of Ethereum smart contracts is that they work the same way every time since the Ethereum Virtual Machine is deterministic. Similarly, as the state of Arvo is evolved via [a single pure function](../../system/kernel/arvo/README.md#operating-function), Arvo is deterministic as well. This property makes it well-suited for cases where side effects are unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the name "Hoon smart contract".
 
 ### Restricted standard library {#restricted-standard-library}
 

@@ -6,4 +6,4 @@ Zuse is the farthest downstream component of the kernel in terms of dependency, 
 
 ### Further Reading {#further-reading}
 
-- [Zuse reference](../language/hoon/reference/zuse): Developer documentation of various functions in `zuse.hoon`, particularly those relating to JSON.
+- [Zuse reference](../hoon/reference/zuse): Developer documentation of various functions in `zuse.hoon`, particularly those relating to JSON.

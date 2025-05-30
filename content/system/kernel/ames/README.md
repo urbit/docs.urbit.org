@@ -62,7 +62,7 @@ The 32-bit header is given by the following data, presented in order:
 - 3 bits: Ames protocol version (currently 0)
 - 2 bits: sender address size
 - 2 bits: receiver address size
-- 20 bits: checksum (truncated insecure hash of the body, done with [`+mug`](../../../language/hoon/reference/stdlib/2e.md#mug)
+- 20 bits: checksum (truncated insecure hash of the body, done with [`+mug`](../../../hoon/reference/stdlib/2e.md#mug)
 - 1 bit: is this relayed? (if set, `origin` will be present in the body)
 
 Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
@@ -84,7 +84,7 @@ The body is of variable length and consists of the following parts in this order
 
 `SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](guides/cryptography.md)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](../../identity/concepts/life-and-rift.md) for information on what `life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
 
-The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../language/hoon/reference/cryptography.md#en).
+The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../hoon/reference/cryptography.md#en).
 
 ### Packeting {#packeting}
 

@@ -4,4 +4,4 @@ A **wing** is a piece of data or code which can be referenced in the [subject](s
 
 ### Further Reading {#further-reading}
 
-- [Hoon reference: Wings](../language/hoon/reference/limbs/wing.md)
+- [Hoon reference: Wings](../hoon/reference/limbs/wing.md)

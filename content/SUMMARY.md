@@ -217,7 +217,7 @@
             * [API overview by prefix](system/runtime/reference/api.md)
             * [C in Urbit](system/runtime/reference/c.md)
             * [Cryptography](system/runtime/reference/cryptography.md)
-* [Identity](urbit-id/README.md)
+* [Urbit ID](urbit-id/README.md)
     * [Concepts](urbit-id/concepts/README.md)
         * [Urbit HD Wallet](urbit-id/concepts/hd-wallet.md)
         * [Azimuth Data Flow](urbit-id/concepts/flow.md)

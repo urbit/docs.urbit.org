@@ -1,6 +1,7 @@
 # Summary
 
 * [Urbit Docs](README.md)
+* [Get on Urbit](get-on-urbit.md)
 * [Language](language/README.md)
     * [Hoon](language/hoon/README.md)
         * [Reference](language/hoon/reference/README.md)
@@ -347,7 +348,7 @@
         * [14. Vanes VII:  Jael, Azimuth](courses/core-academy/ca13.md)
 * [Operator's Manual](manual/README.md)
     * [Getting Started](manual/getting-started/README.md)
-        * [Get an Urbit ID](manual/getting-started/get-id.md)
+        * [Get an Urbit ID](manual/id/get-id.md)
         * [Hosted Urbit](manual/getting-started/hosted/README.md)
             * [Hosting Providers](manual/getting-started/hosted/hosting-providers.md)
         * [Self-hosting](manual/getting-started/self-hosted/README.md)
@@ -358,7 +359,6 @@
             * [Getting Around](manual/getting-started/additional/getting-around.md)
             * [Installing apps](manual/getting-started/additional/installing-applications.md)
             * [Joining groups](manual/getting-started/additional/joining-groups.md)
-            * [Interfaces](manual/getting-started/additional/interfaces.md)
             * [Desktop app](manual/getting-started/additional/desktop.md)
     * [Urbit OS](manual/os/README.md)
         * [Basics](manual/os/basics.md)

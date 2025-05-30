@@ -33,12 +33,12 @@ Walkthroughs of some of the smart contracts are linked to [below](#other).
 
 These documents pertain to L1 and other general aspects of Azimuth. For L2 docs, [see below](#naive-rollups).
 
-- [HD Wallet](concepts/hd-wallet.md) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
-- [Data Flow](concepts/flow.md) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
-- [Azimuth.eth](reference/azimuth-eth.md) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
-- [Ecliptic.eth](reference/ecliptic.md) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
-- [Advanced Azimuth Tools](guides/advanced-azimuth-tools.md) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
-- [Life and Rift](concepts/life-and-rift.md) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
+- [HD Wallet](./concepts/hd-wallet.md) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
+- [Data Flow](./concepts/flow.md) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
+- [Azimuth.eth](./reference/azimuth-eth.md) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
+- [Ecliptic.eth](./reference/ecliptic.md) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
+- [Advanced Azimuth Tools](./guides/advanced-azimuth-tools.md) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
+- [Life and Rift](./concepts/life-and-rift.md) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
 
 ## Naive rollups {#naive-rollups}
 

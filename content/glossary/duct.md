@@ -6,4 +6,4 @@ The Arvo causal stack is called a **duct**. This is represented simply as a list
 
 ### Further Reading {#further-reading}
 
-- [Arvo overview](../system/kernel): technical details of how Arvo works.
+- [Arvo overview](../system/kernel) "BROKEN_LINK": technical details of how Arvo works.

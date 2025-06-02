@@ -189,7 +189,7 @@ Irregular: `?(p)`
 
 ### `$_` buccab {#buccab}
 
-[docs](rune/buc.md#_-buccab) \\\_
+[docs](rune/buc.md#_-buccab) "BROKEN_ANCHOR" \\\_
 
 `[%bccb p=value]`: mold which normalizes to an example.
 

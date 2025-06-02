@@ -8,7 +8,7 @@ The subscription paths an agent defines can be simple and fixed like `/foo/bar/b
 
 Note it's not strictly necessary to define subscription paths explicitly. As long as the arm doesn't crash, the subscription will succeed. In practice, however, it's nearly always appropriate to define them explicitly and crash on unrecognized paths.
 
-For a deeper explanation of subscription mechanics in Arvo, you can refer to Arvo's [Subscriptions](../../system/kernel/arvo/guides/subscriptions.md) section.
+For a deeper explanation of subscription mechanics in Arvo, you can refer to Arvo's [Subscriptions](../../urbit-os/kernel/arvo/guides/subscriptions.md) section.
 
 ## Incoming subscriptions {#incoming-subscriptions}
 

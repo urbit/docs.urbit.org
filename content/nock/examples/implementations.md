@@ -1427,9 +1427,9 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
     if (idx > 10) throw new Error('invalid formula: ' + idx)
 
-    if (useMacros) return macroFormulas[idx](s, f[1])
+    if (useMacros) return macroFormulas[idx](s, f[1]) "BROKEN_LINK" "BROKEN_LINK"
 
-    return formulas[idx](s, f[1])
+    return formulas[idx](s, f[1]) "BROKEN_LINK" "BROKEN_LINK"
   }
 
   /* construct a JS noun (group an array into pairs, associating right) */

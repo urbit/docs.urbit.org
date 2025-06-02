@@ -10,7 +10,7 @@ Of course, you need to know how Ame's `%chum` and `%tune` look, as well as Gall'
 
 ## Publishing {#publishing}
 
-At the moment, there are two vanes that can handle remote scry requests: [Clay](../../../glossary/clay.md) and [Gall](../../../glossary/gall.md). Clay uses it to distribute source code in a more efficient manner than is possible with conventional Ames, but conceptually it only extends its [local scries](../../../system/kernel/clay/reference/scry.md) over the network, with the notable difference that you can't scry at the *current* time, since the requester doesn't know when the request reaches the publisher. Additionally, the paths are modified so that the vane and care are specified separately, like so: `/c/x/1/base/sys/hoon/hoon`.
+At the moment, there are two vanes that can handle remote scry requests: [Clay](../../../glossary/clay.md) and [Gall](../../../glossary/gall.md). Clay uses it to distribute source code in a more efficient manner than is possible with conventional Ames, but conceptually it only extends its [local scries](../../../urbit-os/kernel/clay/reference/scry.md) over the network, with the notable difference that you can't scry at the *current* time, since the requester doesn't know when the request reaches the publisher. Additionally, the paths are modified so that the vane and care are specified separately, like so: `/c/x/1/base/sys/hoon/hoon`.
 
 Gall is more interesting. First, let's clear up a possible misunderstanding that could easily come up: remote scry does *not* involve calling an agent's `+on-peek` arm. `+on-peek` scries always happen at the current time, and since the requester can't know at which time the publisher handles the request, these aren't possible to reliably serve.
 
@@ -356,7 +356,7 @@ In response to any kind of remote scry, Ames returns a `%tune` gift, which looks
 
 {% endcode %}
 
-The `$spar` is the `[ship path]` the request was made to, and the `$roar` is the response. The outer `$unit` of `$roar` will be `~` if Ames doesn't have a response, but may have one in the future. Otherwise, it will contain a signature and the data. The data in the [`$roar`](../../../system/kernel/ames/reference/data-types.md#roar) may be `~`, meaning that there is no value at this path and will never be one.
+The `$spar` is the `[ship path]` the request was made to, and the `$roar` is the response. The outer `$unit` of `$roar` will be `~` if Ames doesn't have a response, but may have one in the future. Otherwise, it will contain a signature and the data. The data in the [`$roar`](../../../system/kernel/ames/reference/data-types.md#roar) "BROKEN_LINK" may be `~`, meaning that there is no value at this path and will never be one.
 
 You'll receive a `%tune` whether it failed or succeeded on the target ship, as well as if the request was cancelled locally.
 
@@ -386,6 +386,6 @@ If there were a `%test` agent on ~sampel with path `/foo/bar` that you wanted to
 
 ## Additional reading {#additional-reading}
 
-- [Gall scry reference](../../../system/kernel/gall/reference/scry.md): Reference documentation of Gall's vane-level and agent-level scry interface.
+- [Gall scry reference](../../../urbit-os/kernel/gall/reference/scry.md): Reference documentation of Gall's vane-level and agent-level scry interface.
 
-- [Ames API reference](../../../system/kernel/ames/reference/tasks.md): Reference documentation of tasks that can be passed to Ames, including those for remote scries.
+- [Ames API reference](../../../urbit-os/kernel/ames/reference/tasks.md): Reference documentation of tasks that can be passed to Ames, including those for remote scries.

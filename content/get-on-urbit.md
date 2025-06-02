@@ -200,7 +200,7 @@ Next, you'll want to get the web login code so you can login to your Urbit's web
 To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 {% hint %}
-You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, you can just [reset it in the Dojo](./manual/os/dojo-tools.md#reset-code) to log out of all browser sessions in your Urbit.
+You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, you can just [reset it in the Dojo](./manual/os/dojo-tools.md#reset-code) "BROKEN_ANCHOR" to log out of all browser sessions in your Urbit.
 {% endhint %}
 
 Detach from this `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close or quit the terminal entirely; your Urbit is still running in the `screen` session.
@@ -260,7 +260,7 @@ Next, you'll want to get the web login code so you can login to your Urbit's web
 To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 {% hint %}
-You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, just [reset it in the Dojo](./manual/os/dojo-tools.md#reset-code) to log out of all browser sessions in your Urbit.
+You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, just [reset it in the Dojo](./manual/os/dojo-tools.md#reset-code) "BROKEN_ANCHOR" to log out of all browser sessions in your Urbit.
 {% endhint %}
 
 Detach from this `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close or quit the terminal entirely; your Urbit is still running in the `screen` session.

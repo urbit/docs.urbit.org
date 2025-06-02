@@ -4,4 +4,4 @@ A **scry** is a read-only request to the namespace of a local [vane](vane.md) or
 
 #### Further Reading
 
-- [Scry reference](../system/kernel/arvo/guides/scry.md): developer documentation of how scries work and how to use them.
+- [Scry reference](../urbit-os/kernel/arvo/guides/scry.md): developer documentation of how scries work and how to use them.

@@ -318,7 +318,7 @@ In an earlier exercise we created a [door](../../glossary/door.md) with [sample]
 [a=0 b=0 c=0]
 ```
 
-What if we wish to define a door with a chosen sample value directly? We can make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door "poly" with the sample set to have certain values in the [Dojo](../../glossary/dojo.md), we would write
+What if we wish to define a door with a chosen sample value directly? We can make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#_-buccab) "BROKEN_ANCHOR" rune, whose irregular form is simply `_`. To create the door "poly" with the sample set to have certain values in the [Dojo](../../glossary/dojo.md), we would write
 
 ```hoon
 > =poly |_  [a=_5 b=_4 c=_3]

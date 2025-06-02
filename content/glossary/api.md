@@ -4,5 +4,5 @@
 
 #### Further reading
 
-- [The Arvo reference docs](../system/kernel): These technical developer docs include API documentation for Arvo's vanes.
+- [The Arvo reference docs](../system/kernel) "BROKEN_LINK": These technical developer docs include API documentation for Arvo's vanes.
 - [App School](../courses/app-school): This is a guide to writing Gall agents, and goes over the APIs of Gall agents in detail.

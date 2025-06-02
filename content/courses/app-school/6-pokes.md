@@ -73,7 +73,7 @@ An agent can send pokes to other agents by producing [`%poke` `$card`s](5-cards.
 ==
 ```
 
-The [colcab](../../hoon/reference/rune/col.md#_-colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`.this`), so it makes it more readable.
+The [colcab](../../hoon/reference/rune/col.md#_-colcab) "BROKEN_ANCHOR" (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`.this`), so it makes it more readable.
 
 ### Receiving the `%poke-ack` {#receiving-the-poke-ack}
 

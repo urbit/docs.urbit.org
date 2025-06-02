@@ -1,12 +1,12 @@
 # 10. Scries
 
-In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md), as well as the [dotket rune documentation](../../hoon/reference/rune/dot.md#dotket).
+In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../urbit-os/kernel/arvo/guides/scry.md), as well as the [dotket rune documentation](../../hoon/reference/rune/dot.md#dotket).
 
 ## Scrying {#scrying}
 
 A scry is a read-only request to Arvo's global namespace. Vanes and agents define "scry endpoints" which allow data to be requested from their states. The endpoints can process the data in any way before returning it, but they cannot alter the actual state - scries can only read, not modify.
 
-Gall itself defines some special vane-level endpoints [as described in its scry reference](../../system/kernel/gall/reference/scry.md), but most scries to Gall are routed to particular agents and handled by them instead. Agent scries are what we'll focus on here. 
+Gall itself defines some special vane-level endpoints [as described in its scry reference](../../urbit-os/kernel/gall/reference/scry.md), but most scries to Gall are routed to particular agents and handled by them instead. Agent scries are what we'll focus on here. 
 
 Scries are performed with the [dotket](../../hoon/reference/rune/dot.md#dotket) (`.^`) rune. Here's a summary of their format:
 
@@ -255,8 +255,8 @@ dojo: failed to process input
 
 ## Exercises {#exercises}
 
-- Have a read through the [Scry Guide](../../system/kernel/arvo/guides/scry.md).
-- Have a look at Gall's [scry reference](../../system/kernel/gall/reference/scry.md).
+- Have a read through the [Scry Guide](../../urbit-os/kernel/arvo/guides/scry.md).
+- Have a look at Gall's [scry reference](../../urbit-os/kernel/gall/reference/scry.md).
 - Have a read through the [dotket rune documentation](../../hoon/reference/rune/dot.md#dotket).
 - Run through the [Example](#example) yourself if you've not done so already.
 - Try adding another scry endpoint to the `%peeker` agent, which uses a [`wyt:by`](../../hoon/reference/stdlib/2i.md#wytby) map function to produce the number of items in the `.data` map.

@@ -4,4 +4,4 @@
 
 #### Further reading
 
-- [The Jael technical reference](../system/kernel/jael): In-depth technical and developer documentation of Jael.
+- [The Jael technical reference](../urbit-os/kernel/jael): In-depth technical and developer documentation of Jael.

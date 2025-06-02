@@ -268,4 +268,4 @@ You'll notice more of our encoding function is done manually than our previous d
 - [The Zuse reference](../../hoon/reference/zuse) - The `/sys/zuse.hoon` reference documents all JSON-related functions in detail.
 - [`+enjs:format` reference](../../hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
 - [`+dejs:format` reference](../../hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
-- [Eyre overview](../../system/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
+- [Eyre overview](../../system/kernel/eyre) "BROKEN_LINK" - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.

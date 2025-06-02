@@ -540,7 +540,7 @@ The pier folder will be named `foobar` as a result of the above command.
 
 Set the maximum number of entries for the memoization cache.
 
-This cache is used by the [`~+`](../../language/hoon/reference/rune/sig.md#siglus) rune and a few other things.
+This cache is used by the [`~+`](../../language/hoon/reference/rune/sig.md#siglus) "BROKEN_LINK" rune and a few other things.
 
 An argument `0` means uncapped, otherwise the specified number of entries.
 
@@ -588,7 +588,7 @@ This runs a GC pass at the end of every virtualized computation. This is intende
 
 Boot a new ship with private key `STRING`.
 
-The private key is [`@uw`](../../courses/hoon-school/E-types.md##what-auras-are-there) format. See [`-k`](#k---key-file-keys) for an alternative.
+The private key is [`@uw`](../../courses/hoon-school/E-types.md##what-auras-are-there) "BROKEN_ANCHOR" format. See [`-k`](#k---key-file-keys) for an alternative.
 
 ```sh
 ./urbit -w sampel-palnet -G 0w50w.642KA.glYh8.RvaRp.6TA35.3XRYN.ULCI6.UmcsZ.5rGvG.3dvFt.E6rMF.mZnd~.3O6QB.7LZ1f.-ukYN.z2fcY.Ecviv.LiZEg.8w0sp
@@ -708,7 +708,7 @@ This is the port used for inter-ship communications.
 
 Enable profiling.
 
-Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../language/hoon/reference/rune/sig.md#sigbuc) rune will be recorded here.
+Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../language/hoon/reference/rune/sig.md#sigbuc) "BROKEN_LINK" rune will be recorded here.
 
 This runs a sampling profiler and produces custom output. Runtime cost metrics are only calculated if the binary was built with `CPU_DEBUG`.
 
@@ -790,7 +790,7 @@ Run a ship with verbose output. This is the same as what you get when you run [`
 
 Boot a new ship with an Urbit ID of `NAME`.
 
-The `NAME` is the ordinary [`@p`](../../courses/hoon-school/E-types.md##what-auras-are-there) format but without the leading `~`, so `~sampel-palnet` is specified as `sampel-palnet`. This is typically used in conjunction with `-k` when booting a new ship.
+The `NAME` is the ordinary [`@p`](../../courses/hoon-school/E-types.md##what-auras-are-there) "BROKEN_ANCHOR" format but without the leading `~`, so `~sampel-palnet` is specified as `sampel-palnet`. This is typically used in conjunction with `-k` when booting a new ship.
 
 ```sh
 ./urbit -w sampel-palnet -k /path/to/my.key

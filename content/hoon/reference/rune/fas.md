@@ -1,6 +1,6 @@
 # / fas · Imports
 
-Fas (`/`) runes are not technically hoon runes, but instead are instructions to Arvo's build system. In the past, the build system was its own vane called Ford. Ford has since been merged into the filesystem vane [Clay](../../../system/kernel/clay), but these are still referred to as "Ford runes".
+Fas (`/`) runes are not technically hoon runes, but instead are instructions to Arvo's build system. In the past, the build system was its own vane called Ford. Ford has since been merged into the filesystem vane [Clay](../../../urbit-os/kernel/clay), but these are still referred to as "Ford runes".
 
 Ford runes are used at the top of a hoon file, and they typically specify imports.
 

@@ -31,7 +31,7 @@ This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of th
 
 ["Currying"](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. "Binding", an allied process, is used to set the value of some of those arguments permanently.
 
-If you have a [gate](../../glossary/gate.md) which accepts multiple values in the [sample](../../glossary/sample.md), you can fix one of these. To fix the head of the sample (the first argument), use [`+cury`](../../hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`+curr`](../../hoon/reference/stdlib/2n.md#curr).
+If you have a [gate](../../glossary/gate.md) which accepts multiple values in the [sample](../../glossary/sample.md), you can fix one of these. To fix the head of the sample (the first argument), use [`+cury`](../../hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`+curr`](../../hoon/reference/stdlib/2n.md#curr) "BROKEN_ANCHOR".
 
 Consider calculating _a x² + b x + c_, a situation we earlier resolved using a door. We can resolve the situation differently using currying:
 

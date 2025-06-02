@@ -101,7 +101,7 @@ When `++on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, i
   ==
 ```
 
-`++on-arvo` expects a [`%soak`](../reference/tasks.md#soak-1) gift from Lick. A `%soak` is primarily a message coming in from the socket, though connection status is also communicated in `%soak`s. The four cases we handle are:
+`++on-arvo` expects a [`%soak`](../reference/tasks.md#soak-1) "BROKEN_ANCHOR" gift from Lick. A `%soak` is primarily a message coming in from the socket, though connection status is also communicated in `%soak`s. The four cases we handle are:
 
 - `%connect`: An external process has connected to the socket.
 - `%disconnect`: An external process has disconnected from the socket.

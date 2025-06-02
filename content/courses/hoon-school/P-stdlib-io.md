@@ -219,7 +219,7 @@ Work line-by-line through the file and clarify parts that are muddy to you at fi
 
 Formal error messages in Urbit are built of tanks. “A `$tang` is a [list](../../glossary/list.md) of `$tank`s, and a `$tank` is a structure for printing data. There are three types of `$tank`: `$leaf`, `$palm`, and `$rose`. A `$leaf` is for printing a single noun, a `$rose` is for printing rows of data, and a `$palm` is for printing backstep-indented lists.”
 
-One way to include an error message in your code is the `~_` [sigcab](../../hoon/reference/rune/sig.md#_-sigcab) rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”. What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
+One way to include an error message in your code is the `~_` [sigcab](../../hoon/reference/rune/sig.md#_-sigcab) "BROKEN_ANCHOR" rune, described as a “user-formatted tracing printf”, or the `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”. What this means is that these print to the stack trace if something fails, so you can use either [rune](../../glossary/rune.md) to contribute to the error description:
 
 ```hoon
 |=  a=@ud

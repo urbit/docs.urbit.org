@@ -29,19 +29,19 @@ Here is the reference material for each section of this walkthrough.
 - [The Zuse Reference](../../hoon/reference/zuse) - The `zuse.hoon` reference documents all JSON-related functions in detail.
 - [`+enjs:format` reference](../../hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
 - [`+dejs:format` reference](../../hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
-- [Eyre Overview](../../system/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
+- [Eyre Overview](../../system/kernel/eyre) "BROKEN_LINK" "BROKEN_LINK" - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
 
 ### Marks {#marks}
 
-- [The Marks section of the Clay documentation](../../system/kernel/clay/guides/marks) - This section of the Clay vane documentation covers mark files comprehensively.
+- [The Marks section of the Clay documentation](../../urbit-os/kernel/clay/guides/marks) - This section of the Clay vane documentation covers mark files comprehensively.
 - [The mark file section of the Gall Guide](../app-school/7-sur-and-marks.md#mark-files) - This part of App School goes through the basics of mark files.
 - [The JSON Guide](../../hoon/guides/json-guide.md) - This also covers writing mark files to convert to/from JSON.
 
 ### Eyre {#eyre}
 
-- [The Eyre vane documentation](../../system/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
-- [Eyre External API Reference](../../system/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
-- [The Eyre Guide](../../system/kernel/eyre/guides/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).
+- [The Eyre vane documentation](../../system/kernel/eyre) "BROKEN_LINK" "BROKEN_LINK" - This section of the vane docs covers all aspects of Eyre.
+- [Eyre External API Reference](../../urbit-os/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
+- [The Eyre Guide](../../urbit-os/kernel/eyre/guides/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).
 
 ### React App Setup and Logic {#react-app-setup-and-logic}
 

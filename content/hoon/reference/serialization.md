@@ -11,7 +11,7 @@ The main tools from `/sys/hoon` for noun serialization are:
 - [`++mat`](stdlib/2p.md#mat), length-encode a noun
 - [`++rub`](stdlib/2p.md#rub), length-decode a noun
 
-`++jam` and `++cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](../../system/kernel/eyre/guides/noun-channels.md).
+`++jam` and `++cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](../../urbit-os/kernel/eyre/guides/noun-channels.md).
 
 ### `++cue` {#cue}
 

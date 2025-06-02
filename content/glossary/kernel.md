@@ -4,4 +4,4 @@ The **kernel** is the core, fundamental components of an operating system. In th
 
 #### Further reading
 
-- [Arvo overview](../system/kernel): Technical overview of Arvo.
+- [Arvo overview](../system/kernel) "BROKEN_LINK": Technical overview of Arvo.

@@ -1,6 +1,6 @@
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../system/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) subsection, as well as [`$bowl`](../../system/kernel/gall/reference/data-types.md#bowl), [`boat`](../../system/kernel/gall/reference/data-types.md#boat), and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt).
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) "BROKEN_LINK" subsection, as well as [`$bowl`](../../system/kernel/gall/reference/data-types.md#bowl) "BROKEN_LINK", [`boat`](../../system/kernel/gall/reference/data-types.md#boat) "BROKEN_LINK", and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt) "BROKEN_LINK".
 
 ## `$vase` {#vase}
 
@@ -89,7 +89,7 @@ You'd typically use `!<` on the data in `$card`s that come in from other ships, 
 
 ## `$mark` {#mark}
 
-The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `$mark` corresponds to a mark file in the `/mar` directory, so a `$mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../system/kernel/clay/guides/marks).
+The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `$mark` corresponds to a mark file in the `/mar` directory, so a `$mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../urbit-os/kernel/clay/guides/marks).
 
 ## `$cage` {#cage}
 
@@ -148,7 +148,7 @@ The type of a wire is formally defined as:
 
 So, a `$wire` is just a [`$path`](#path), type-wise they're exactly the same. The reason there's a separate `$wire` type is just to differentiate their purpose. A `$wire` is a path for responses to requests an agent initiates. If you subscribe to the `$path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
 
-More formally, `$wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`$duct`](../../system/kernel/arvo#duct). Inter-vane communications happen over `$duct`s as [`$move`](../../system/kernel/arvo#moves)s, and Gall converts the `$card`s produced by agents into such `$move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../system/kernel/arvo) and [move trace tutorial](../../system/kernel/arvo/guides/move-trace.md).
+More formally, `$wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`$duct`](../../system/kernel/arvo#duct) "BROKEN_LINK". Inter-vane communications happen over `$duct`s as [`$move`](../../system/kernel/arvo#moves) "BROKEN_LINK"s, and Gall converts the `$card`s produced by agents into such `$move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../urbit-os/kernel/arvo) and [move trace tutorial](../../urbit-os/kernel/arvo/guides/move-trace.md).
 
 For agents, the `$wire` is specified in the second argument of a `%pass` `$card`. It's used for anything you can `%pass`, such as `%poke`s, `%watch`es, and `%arvo` notes. For example:
 

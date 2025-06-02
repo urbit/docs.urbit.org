@@ -184,7 +184,7 @@ battery      .
 
 It follows from this definition that a gate is a special case of a door. A gate is a door with exactly one arm, named `$` buc.
 
-Doors are created with the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) rune. Doors get used for a few different purposes in the standard library:
+Doors are created with the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) "BROKEN_ANCHOR" rune. Doors get used for a few different purposes in the standard library:
 
 - Instrumenting and storing persistent data structures like `+map`s (this module and the next)
 - Implementing state machines (the [subject-oriented programming module](O-subject.md))
@@ -212,7 +212,7 @@ Any time we call the gate, we have to provide all four values: one unknown, thre
 (poly-gate x a b c)
 ```
 
-If we built this as a door instead, we could push the parameters out to a different layer of the structure. In this case, the parameters are the [sample](../../glossary/sample.md) of the door, while the arm `+quad` builds a gate that corresponds to those parameters and only accepts one unknown variable `.x`. To make a door we use the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) rune, which we'll discuss later:
+If we built this as a door instead, we could push the parameters out to a different layer of the structure. In this case, the parameters are the [sample](../../glossary/sample.md) of the door, while the arm `+quad` builds a gate that corresponds to those parameters and only accepts one unknown variable `.x`. To make a door we use the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) "BROKEN_ANCHOR" rune, which we'll discuss later:
 
 ```hoon
 > =poly |_  [a=@ud b=@ud c=@ud]
@@ -243,7 +243,7 @@ Doors will enable us to build some very powerful data storage tools by letting u
 
 #### Example: A Calculator
 
-Let's unpack what's going on more with this next [door](../../glossary/door.md). Each of the [arms](../../glossary/arm.md) in this example door will define a simple gate. Let's bind the door to `.c`. To make a door we use the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) rune:
+Let's unpack what's going on more with this next [door](../../glossary/door.md). Each of the [arms](../../glossary/arm.md) in this example door will define a simple gate. Let's bind the door to `.c`. To make a door we use the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) "BROKEN_ANCHOR" rune:
 
 ```hoon
 =c |_  b=@
@@ -255,9 +255,9 @@ Let's unpack what's going on more with this next [door](../../glossary/door.md).
 
 If you type this into the Dojo manually, make sure you attend carefully to the spacing. Feel free to cut and paste the code, if desired.
 
-Before getting into what these arms do, let's digress into how the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) rune works in general.
+Before getting into what these arms do, let's digress into how the `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) "BROKEN_ANCHOR" rune works in general.
 
-`|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) works exactly like the `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) rune for making a core, except that it takes one additional daughter expression, the door's [sample](../../glossary/sample.md). Following that are a series of `++` [luslus](../../hoon/reference/rune/lus.md#luslus) runes, each of which defines an arm of the door. Finally, the expression is terminated with a `--` [hephep](../../hoon/reference/rune/terminators.md#hephep) rune.
+`|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) "BROKEN_ANCHOR" works exactly like the `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) rune for making a core, except that it takes one additional daughter expression, the door's [sample](../../glossary/sample.md). Following that are a series of `++` [luslus](../../hoon/reference/rune/lus.md#luslus) runes, each of which defines an arm of the door. Finally, the expression is terminated with a `--` [hephep](../../hoon/reference/rune/terminators.md#hephep) rune.
 
 A door really is, at the bedrock level, the same thing as a [core](../../glossary/core.md) with a [sample](../../glossary/sample.md). Let's ask Dojo to pretty print a simple door.
 
@@ -367,7 +367,7 @@ The standard library provides [currying functionality](Q-func.md) outside of the
 
 #### Creating Doors with a Modified Sample
 
-In the above example we created a [door](../../glossary/door.md) `.c` with [sample](../../glossary/sample.md) `b=@` and found that the initial value of `.b` was `0`, the default value of type `@`. We then created new door from `.c` by modifying the value of `.b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#_-buccab) rune, whose irregular form is simply `_`. To create the door `.c` with the sample `b=@` set to have the value `7` in the dojo, we would write
+In the above example we created a [door](../../glossary/door.md) `.c` with [sample](../../glossary/sample.md) `b=@` and found that the initial value of `.b` was `0`, the default value of type `@`. We then created new door from `.c` by modifying the value of `.b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#_-buccab) "BROKEN_ANCHOR" rune, whose irregular form is simply `_`. To create the door `.c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
 ```hoon
 =c |_  b=_7

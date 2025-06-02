@@ -132,7 +132,7 @@ A `$note-arvo` is defined in `lull.hoon` like so:
   ==
 ```
 
-The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Clay, etc. After the vane letter comes the task. Each vane has an API with a set of tasks that it will accept, and are defined in each vane's section of `lull.hoon`. Each vane's tasks are documented on the API Reference page of its section in the [Arvo documentation](../../system/kernel/arvo).
+The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Clay, etc. After the vane letter comes the task. Each vane has an API with a set of tasks that it will accept, and are defined in each vane's section of `lull.hoon`. Each vane's tasks are documented on the API Reference page of its section in the [Arvo documentation](../../urbit-os/kernel/arvo).
 
 #### Examples
 

@@ -172,7 +172,7 @@ nest-fail
 
 We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation [when we discuss type polymorphism](R-metals.md).
 
-This isn't a comprehensive list of the type checks in Hoon: for instance, some other runes that include a type check are `=.` [tisdot](../../hoon/reference/rune/tis.md#tisdot) and `%_` [cencab](../../hoon/reference/rune/cen.md#_-cencab).
+This isn't a comprehensive list of the type checks in Hoon: for instance, some other runes that include a type check are `=.` [tisdot](../../hoon/reference/rune/tis.md#tisdot) and `%_` [cencab](../../hoon/reference/rune/cen.md#_-cencab) "BROKEN_ANCHOR".
 
 
 ## Type Inference {#type-inference}

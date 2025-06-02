@@ -4,7 +4,7 @@ In the last lesson we looked at a couple of useful things used as boilerplate in
 
 ## Lifecycle {#lifecycle}
 
-An agent's lifecycle starts when it's first installed. At this point, the agent's `+on-init` arm is called. This is the _only_ time `+on-init` is ever called - its purpose is just to initialize the agent. The `+on-init` arm might be very simple and just set an initial value for the state, or even do nothing at all and return the agent core exactly as-is. It may also be more complicated, and perform some [scries](../../system/kernel/arvo/guides/scry.md) to obtain extra data or check that another agent is also installed. It might send off some `$card`s to other agents or vanes to do things like load data in to the `%settings` agent, bind an Eyre endpoint, or anything else. It all depends on the needs of your particular application. If `+on-init` fails for whatever reason, the agent installation will fail and be aborted.
+An agent's lifecycle starts when it's first installed. At this point, the agent's `+on-init` arm is called. This is the _only_ time `+on-init` is ever called - its purpose is just to initialize the agent. The `+on-init` arm might be very simple and just set an initial value for the state, or even do nothing at all and return the agent core exactly as-is. It may also be more complicated, and perform some [scries](../../urbit-os/kernel/arvo/guides/scry.md) to obtain extra data or check that another agent is also installed. It might send off some `$card`s to other agents or vanes to do things like load data in to the `%settings` agent, bind an Eyre endpoint, or anything else. It all depends on the needs of your particular application. If `+on-init` fails for whatever reason, the agent installation will fail and be aborted.
 
 Once initialized, an agent will just go on doing its thing - processing events, updating its state, producing effects, etc. At some point, you'll likely want to push an update for your agent. Maybe it's a bug fix, maybe you want to add extra features. Whatever the reason, you need to change the source code of your agent, so you commit a modified version of the file to Clay. When the commit completes, Gall updates the app as follows:
 
@@ -95,7 +95,7 @@ This arm takes no argument, and produces a `(quip card _this)`. It's called exac
 
 A `$card` is a message to another agent or vane. We'll discuss `$card`s in detail later.
 
-`.this` is our agent core, which we give the `.this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../hoon/reference/rune/buc.md#_-buccab) (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `.this`" - the type of our agent core.
+`.this` is our agent core, which we give the `.this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../hoon/reference/rune/buc.md#_-buccab) "BROKEN_ANCHOR" (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `.this`" - the type of our agent core.
 
 Recall that in the last lesson, we said that most arms return a cell of \[effects new-agent-core]. That's exactly what `(quip card _this)` is.
 

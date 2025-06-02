@@ -10,5 +10,5 @@ Due to the dramatically reduced cost, Tlon offers their own roller that is free 
 
 - [Layer 2 for planets](../manual/id/layer-2-for-planets.md): Essential information for planet owners on layer 2 or considering a move to layer 2
 - [The Gang Solves the Gas Crisis](https://urbit.org/blog/rollups): A casual overview of how naive rollups works.
-- [Layer 2 Overview](../system/identity/concepts/layer2.md): where developers should go to learn about the technical details of naive rollups.
-- [Custom Roller Tutorial](../system/identity/guides/roller-tutorial.md): tutorial on how to set up your own L2 roller.
+- [Layer 2 Overview](../urbit-id/concepts/layer2.md): where developers should go to learn about the technical details of naive rollups.
+- [Custom Roller Tutorial](../urbit-id/guides/roller-tutorial.md): tutorial on how to set up your own L2 roller.

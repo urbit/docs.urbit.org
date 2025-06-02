@@ -372,10 +372,3 @@ If you booted a new ship by uploading a key file, it's a good idea to now delete
 
 If you uploaded an existing pier, you should delete the old copy of both the pier directory and the `.tar.gz` archive on your local machine. You might be tempted to keep one of these as a backup, but note that **you must never again boot the old copy on the live network**. Doing so will create unfixable networking problems and require you to perform a factory reset through Bridge, wiping your ship's data. We therefore don't recommend you keep duplicates of your pier lying around.
 
-
-## Next steps {#next-steps}
-
-- Kep your Urbit runtime up-to-date to take advantage of the latest Landscape and Application over-the-air updates.  See [Step #5 in the CLI guide](cli.md#5-runtime-upgrades) to update your runtime.
-
-- Learn how to [get around your
-urbit](../additional/getting-around.md).

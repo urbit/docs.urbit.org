@@ -323,7 +323,7 @@
         * [Layer 2 for stars](manual/id/l2-star.md)
     * [Running Urbit](manual/running/README.md)
         * [Runtime Reference](manual/running/vere.md)
-        * [Cloud Hosting](manual/running/hosting.md)
+        * [Cloud Hosting](manual/running/cloud-hosting.md)
         * [Self-hosting S3 Storage with MinIO](manual/running/minio.md)
         * [Home Servers](manual/running/home-servers.md)
 * [Userspace](userspace/README.md)

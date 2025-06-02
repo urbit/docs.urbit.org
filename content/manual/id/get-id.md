@@ -109,7 +109,7 @@ Now that you have a keyfile let's move on to booting the Urbit OS.
 
 - [CLI instructions](../../get-on-urbit.md#get-the-urbit-runtime) – Set up Vere, the Urbit runtime, using the command line.
 
-- [Install on the cloud](../running/hosting.md) – A step-by-step guide to setting up Urbit on a VPS.
+- [Install on the cloud](../running/cloud-hosting.md) – A step-by-step guide to setting up Urbit on a VPS.
 
 - [Set up a home server](../running/home-servers.md) – Explore options for running your own dedicated physical Urbit computer.
 

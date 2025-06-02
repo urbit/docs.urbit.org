@@ -155,10 +155,10 @@ This core contains cryptographic primitives and helper functions for elliptic cu
 
 `+ed:crypto` is primarily used to generate public/private keypairs from a seed for use with [elliptic curve Diffie-Hellman](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) key agreements as well as [Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm). These functionalities are ultimately utilized by [`+crub:crypto`](#crub), the only cryptosuite which [Ames](../../urbit-os/kernel/ames) makes use of.
 
-Most gates in `+ed:crypto` are [jetted](../../system/runtime/guides/jetting.md), meaning that an external reference library is utilized whenever these functions are called, rather than running in Nock natively. See the [Vere documentation](../../system/runtime/reference/cryptography.md#ed) for more information about the library utilized by jets.
+Most gates in `+ed:crypto` are [jetted](../../build-on-urbit/runtime/guides/jetting.md), meaning that an external reference library is utilized whenever these functions are called, rather than running in Nock natively. See the [Vere documentation](../../build-on-urbit/runtime/reference/cryptography.md#ed) for more information about the library utilized by jets.
 
 ## `+aes:crypto` {#aes}
 
-This core contains cryptographic primitives and helper functions for [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption and decryption. As is the case with `ed:crypto`, these functionalities are utilized by [`+crub:crypto`](#crub), and most gates are jetted. See also the Vere documentation on [AES SIV](../../system/runtime/reference/cryptography.md#aes) for more information about the library utilized by jets.
+This core contains cryptographic primitives and helper functions for [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption and decryption. As is the case with `ed:crypto`, these functionalities are utilized by [`+crub:crypto`](#crub), and most gates are jetted. See also the Vere documentation on [AES SIV](../../build-on-urbit/runtime/reference/cryptography.md#aes) for more information about the library utilized by jets.
 
 This core contains several doors, each one used for a different variation of AES according to key size and mode. The only ones currently in use are `+siva:aes:crypto` and `+sivc:aes:crypto`, which are 128-bit and 256-bit modes of [`AES-SIV`](https://www.aes-siv.com) respectively.

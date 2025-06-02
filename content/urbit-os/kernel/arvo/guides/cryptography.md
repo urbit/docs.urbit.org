@@ -34,9 +34,9 @@ For comets, their 128-bit `@p` name is the hash of their networking public key, 
 
 [Jael](../../jael) is primarily utilized for the safe storage of private networking keys and retrieval of public networking keys utilized by Ames. The Jael vane of planets, stars, and galaxies are responsible for distributing the public keys of their moons (ultimately via Ames).
 
-`zuse` is part of the standard library. It contains cryptographic functions which are utilized by Ames. All cryptographic primitives are [jetted](../../../../system/runtime/guides/jetting.md) in Vere with standard vetted implementations of cryptographic libraries.
+`zuse` is part of the standard library. It contains cryptographic functions which are utilized by Ames. All cryptographic primitives are [jetted](../../../../build-on-urbit/runtime/guides/jetting.md) in Vere with standard vetted implementations of cryptographic libraries.
 
-[Vere](../../../../system/runtime) is Urbit's Nock runtime system, written in C. All cryptographic functions implemented in Hoon are hinted to the interpreter, causing it to utilize the jet system to run standard vetted cryptographic libraries.
+[Vere](../../../../build-on-urbit/runtime) is Urbit's Nock runtime system, written in C. All cryptographic functions implemented in Hoon are hinted to the interpreter, causing it to utilize the jet system to run standard vetted cryptographic libraries.
 
 [Azimuth](../../../../urbit-id) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
 
@@ -46,4 +46,4 @@ The following pages contained more detailed information about the cryptography u
 
 - [Ames](../../ames/guides/cryptography.md)
 - [Zuse](../../../../hoon/reference/cryptography.md)
-- [Vere](../../../../system/runtime/reference/cryptography.md)
+- [Vere](../../../../build-on-urbit/runtime/reference/cryptography.md)

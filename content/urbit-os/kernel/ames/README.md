@@ -201,7 +201,7 @@ But if the message were not short enough to be contained in a single packet, eac
 
 ## The Serf and the King {#the-serf-and-the-king}
 
-Urbit's functionality is split between the two binaries `urbit-worker` (sometimes called the Serf) and `urbit-king` (sometimes called the King). This division of labor is currently not well-documented outside of the [Vere documents](../../../system/runtime), but we summarize it here.
+Urbit's functionality is split between the two binaries `urbit-worker` (sometimes called the Serf) and `urbit-king` (sometimes called the King). This division of labor is currently not well-documented outside of the [Vere documents](../../../build-on-urbit/runtime), but we summarize it here.
 
 In short, the Serf is the Nock runtime and so keeps track of the current state of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and then informs the King of the new state. The King manages snapshots of the Arvo state and handles I/O with Unix, among other things. The Serf only ever talks to the King, while the King talks with both the Serf and Unix.
 

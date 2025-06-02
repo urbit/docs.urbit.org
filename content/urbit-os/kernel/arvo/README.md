@@ -58,7 +58,7 @@ Being deterministic at a high level enables many things that are out of reach of
 
 The formal state of an Arvo instance is an event history, as a linked list of [nouns](../../../glossary/noun.md) from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the self-compiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
 
-The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](../../../system/runtime), but in practice event logs become too long over time to keep, as the event log has a size of O(n) where n is the number of events. Thus it is our intention to implement a feature whereby periodic snapshots of the state of Arvo are taken and the log up to that state is pruned. This is currently unnecessary and thus this feature has not been prioritized.
+The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](../../../build-on-urbit/runtime), but in practice event logs become too long over time to keep, as the event log has a size of O(n) where n is the number of events. Thus it is our intention to implement a feature whereby periodic snapshots of the state of Arvo are taken and the log up to that state is pruned. This is currently unnecessary and thus this feature has not been prioritized.
 
 The beginning of the event log starting from the very first time a ship is booted up until the kernel is compiled and identity and entropy are created is a special portion of the Arvo lifecycle known as the _larval stage_. We describe the larval stage in more detail in the [larval stage](#larval-stage-core) section.
 
@@ -98,7 +98,7 @@ Database theory studies in precise terms the possible properties of anything tha
 
 - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
 
-- Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. While Arvo transactions are sequential and performed by the daemon, persistence and effect application are performed in parallel by the worker; see [worker and daemon](../../../system/runtime) for more detail.
+- Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. While Arvo transactions are sequential and performed by the daemon, persistence and effect application are performed in parallel by the worker; see [worker and daemon](../../../build-on-urbit/runtime) for more detail.
 
 - Durability: Completed transactions will survive permanently. In other words, since the event log is stored on disk, if power is lost you are guaranteed that no transactions will be reversed.
 

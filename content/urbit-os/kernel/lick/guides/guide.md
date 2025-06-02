@@ -293,10 +293,10 @@ Open a `licker.py` file in an editor, paste in the `licker.py` code above, and s
 nano licker/client/licker.py
 ```
 
-Download the `noun.py` dependency from the [urbit/tools](https://github.com/urbit/tools/tree/master) repo:
+Download the `noun.py` dependency from the [urbit/tools](https://github.com/urbit/build-on-urbit/tools/tree/master) repo:
 
 ```
-wget -P licker/client https://raw.githubusercontent.com/urbit/tools/master/pkg/pynoun/noun.py
+wget -P licker/client https://raw.githubusercontent.com/urbit/build-on-urbit/tools/master/pkg/pynoun/noun.py
 ```
 
 Install additional python dependencies `bitstream`, `mmh3` and `numpy`:

@@ -145,7 +145,7 @@ With this brief primer complete, we'll take a closer look at our journal applica
 ## Resources {#resources}
 
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
-- [HTTP API Guide](../../tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
+- [HTTP API Guide](../../build-on-urbit/tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
 - [`@urbit/http-api` source code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The source code for the `@urbit/http-api` NPM package.
 - [`usestate()`]:  https://react.dev/reference/react/useState

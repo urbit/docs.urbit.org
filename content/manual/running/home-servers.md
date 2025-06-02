@@ -5,7 +5,7 @@ There are a variety of tools that make running Urbit at home straightforward on 
 
 ## Native Planet {#native-planet}
 
-![](https://media.urbit.org/site/getting-started/native-planet.jpg)]
+![](https://media.urbit.org/site/getting-started/native-planet.jpg)
 
 Purchase a [computer designed to run Urbit](https://www.nativeplanet.io/hardware), out of the box.
 

@@ -10,7 +10,7 @@ Running Urbit locally is good for experimentation, but in the long term you'll w
 
 ## Next Steps {#next-steps}
 
-- [Get an Urbit ID](../get-id.md) – Get a planet, a permanent Urbit ID, for the best networked experience.
+- [Get an Urbit ID](../../id/get-id.md) – Get a planet, a permanent Urbit ID, for the best networked experience.
 
 - [CLI instructions](cli.md) – Set up Vere, the Urbit runtime, using the command line.
 

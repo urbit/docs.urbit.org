@@ -179,7 +179,7 @@ Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
 
 One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](../../userspace/apps/guides/cli-tutorial.md). We usher the reader there to find an example where `+cold` is used.
 
-### [`+less`](../reference/stdlib/4f.md#less) "BROKEN_ANCHOR" {#lessreferencestdlib4fmdless}
+### `+less` {#lessreferencestdlib4fmdless}
 
 `+less` builds a `rule` to exclude matches to its first argument.  It is commonly used to filter out an undesired match.
 

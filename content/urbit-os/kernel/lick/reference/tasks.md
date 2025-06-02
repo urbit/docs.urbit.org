@@ -22,7 +22,7 @@ This `task` would not be used from userspace.
 
 #### Returns
 
-Lick may give [`%spin`](#spin-1) gifts to Vere and [`%soak`](#soak-1) gifts with a `mark` and `noun` of `[%disconnect ~]` to agents.
+Lick may give [`%spin`](#spin-1) gifts to Vere and [`%soak`](#soak) gifts with a `mark` and `noun` of `[%disconnect ~]` to agents.
 
 ---
 
@@ -74,11 +74,11 @@ Send a noun to the IPC port.
 [%spit =name =mark =noun]
 ```
 
-Lick will send the jammed `[mark noun]` cell to the socket `name` if something is connected to it. If nothing is connected to the port, Lick will send an `%error` [`%soak`](#soak-1) to the port's owner.
+Lick will send the jammed `[mark noun]` cell to the socket `name` if something is connected to it. If nothing is connected to the port, Lick will send an `%error` [`%soak`](#soak) to the port's owner.
 
 #### Returns
 
-Lick forwards the contents of the task as a [`%soak`](#soak-1) gift to Vere.
+Lick forwards the contents of the task as a [`%soak`](#soak) gift to Vere.
 
 #### Example
 
@@ -128,13 +128,13 @@ Receive data from outside.
 
 This `task` is sent to Lick by the runtime, you would not use it manually.
 
-The socket `name` is associated with the `duct` that registered it. The `%soak` is forwarded to it as a [`%soak`](#soak-1) gift.
+The socket `name` is associated with the `duct` that registered it. The `%soak` is forwarded to it as a [`%soak`](#soak) gift.
 
 ---
 
 ## Gifts {#gifts}
 
-Below are the `gift`s that Lick can give. Only the [`%soak`](#soak-1) gift would be given to an agent, the rest are only given to Vere.
+Below are the `gift`s that Lick can give. Only the [`%soak`](#soak) gift would be given to an agent, the rest are only given to Vere.
 
 ### `%spin` {#spin}
 

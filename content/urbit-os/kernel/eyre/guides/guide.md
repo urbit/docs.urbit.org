@@ -518,7 +518,7 @@ First, using `|pass` in the dojo, let's approve the origin `http://foo.example` 
 |pass [%e [%approve-origin 'http://foo.example']]
 ```
 
-Now if we scry for the [approved](../reference/scry.md#cors-approved) "BROKEN_ANCHOR" CORS `set`:
+Now if we scry for the [approved](../reference/scry.md#corsapproved) CORS `set`:
 
 ```
 > .^(approved=(set @t) %ex /=//=/cors/approved)
@@ -556,7 +556,7 @@ Now we'll try rejecting an `origin`. Back in the dojo, let's `|pass` Eyre a `%re
 |pass [%e [%reject-origin 'http://bar.example']]
 ```
 
-If we scry for the [rejected](../reference/scry.md#cors-rejected) "BROKEN_ANCHOR" CORS `set`:
+If we scry for the [rejected](../reference/scry.md#corsrejected) CORS `set`:
 
 ```
 > .^(rejected=(set @t) %ex /=//=/cors/rejected)
@@ -605,7 +605,7 @@ Connection: close
 Server: urbit/vere-1.5
 ```
 
-Now if we scry for the [requests](../reference/scry.md#cors-requests) "BROKEN_ANCHOR" CORS `set`:
+Now if we scry for the [requests](../reference/scry.md#corsrequests) CORS `set`:
 
 ```
 > .^(requests=(set @t) %ex /=//=/cors/requests)

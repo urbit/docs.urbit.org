@@ -280,7 +280,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 #### Discussion
 
-`%-` is used to call a function; `a` is the function ([`gate`](bar.md#bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar.md#_-barcab) "BROKEN_ANCHOR".
+`%-` is used to call a function; `a` is the function ([`gate`](bar.md#bartis), `q` the argument. `%-` is a special case of [`%~` ("censig")](#-censig), and a gate is a special case of a [door](bar.md#barcab).
 
 #### Examples
 
@@ -471,7 +471,7 @@ A `%~` expression evaluates the arm of a door (i.e., a core with a sample). `p` 
 
 Note also that `p` is a wing and can therefore be `.`, as in `~(. door sample)`. This little idiom lets you load your sample into the door once instead of over and over.
 
-See also [`|_`](bar.md#_-barcab) "BROKEN_ANCHOR".
+See also [`|_`](bar.md#barcab).
 
 #### Examples
 

@@ -95,7 +95,7 @@ This arm takes no argument, and produces a `(quip card _this)`. It's called exac
 
 A `$card` is a message to another agent or vane. We'll discuss `$card`s in detail later.
 
-`.this` is our agent core, which we give the `.this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../hoon/reference/rune/buc.md#_-buccab) "BROKEN_ANCHOR" (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `.this`" - the type of our agent core.
+`.this` is our agent core, which we give the `.this` alias in the virtual arm described in the previous lesson. The underscore at the beginning is the irregular syntax for the [buccab](../../hoon/reference/rune/buc.md#buccab) (`$_`) rune. Buccab is like an inverted bunt - instead of producing the default value of a type, instead it produces the type of some value. So `_this` means "the type of `.this`" - the type of our agent core.
 
 Recall that in the last lesson, we said that most arms return a cell of \[effects new-agent-core]. That's exactly what `(quip card _this)` is.
 

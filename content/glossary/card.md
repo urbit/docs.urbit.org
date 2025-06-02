@@ -9,5 +9,5 @@ A **card** is the data type for effects produced by
 
 ### Further Reading {#further-reading}
 
-- [Gall data types reference](../system/kernel/gall/reference/data-types.md#cardagent) "BROKEN_LINK": Documentation of the `card` type.
+- [Gall data types reference](../urbit-os/kernel/gall/reference/data-types.md#cardagent) - Documentation of the `card` type.
 - [App school: cards lesson](../courses/app-school/5-cards.md): A lesson on cards.

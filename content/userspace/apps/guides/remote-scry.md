@@ -356,7 +356,7 @@ In response to any kind of remote scry, Ames returns a `%tune` gift, which looks
 
 {% endcode %}
 
-The `$spar` is the `[ship path]` the request was made to, and the `$roar` is the response. The outer `$unit` of `$roar` will be `~` if Ames doesn't have a response, but may have one in the future. Otherwise, it will contain a signature and the data. The data in the [`$roar`](../../../system/kernel/ames/reference/data-types.md#roar) "BROKEN_LINK" may be `~`, meaning that there is no value at this path and will never be one.
+The `$spar` is the `[ship path]` the request was made to, and the `$roar` is the response. The outer `$unit` of `$roar` will be `~` if Ames doesn't have a response, but may have one in the future. Otherwise, it will contain a signature and the data. The data in the [`$roar`](../../../urbit-os/kernel/ames/reference/data-types.md#roar) may be `~`, meaning that there is no value at this path and will never be one.
 
 You'll receive a `%tune` whether it failed or succeeded on the target ship, as well as if the request was cancelled locally.
 

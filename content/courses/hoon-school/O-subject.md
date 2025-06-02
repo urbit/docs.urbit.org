@@ -45,7 +45,7 @@ In the Dojo, if you use `+1` by itself, you can see the current [subject](../../
 
 `.` does the same thing: it always refers to the current subject.
 
-If `.` is the subject, then `..arm` is the subject of a given [arm](../../glossary/arm.md) (the second `.` dot being the wing resolution operator). You can check the details of the parent [core](../../glossary/core.md) using something like `..add`. This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](../../system/runtime/guides/jetting.md#edit-the-hoon-source-code) "BROKEN_ANCHOR", for instance.
+If `.` is the subject, then `..arm` is the subject of a given [arm](../../glossary/arm.md) (the second `.` dot being the wing resolution operator). You can check the details of the parent [core](../../glossary/core.md) using something like `..add`. This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](../../urbit-os/runtime/guides/jetting.md#edit-the-hoon-source-code), for instance.
 
 Another use case for the `..arm` syntax is when there is a core in the subject without a [face](../../glossary/face.md) bound to it; i.e., the core might be nameless. In that case you can use an arm name in that [core](../../glossary/core.md) to refer to the whole core.
 
@@ -481,7 +481,7 @@ A "peek" or a [scry](../../glossary/scry.md) is a request to Arvo to tell you so
 
 The [Clay](../../glossary/clay.md) filesystem stores nouns persistently at hierarchical path addresses. These [nouns](../../glossary/noun.md) can be accessed using [marks](../../glossary/mark.md), which are rules for structuring the data. We call the nouns “files” and the path addresses “folders”.
 
-If we want to retrieve the contents of a file or folder, we can directly ask Clay for the data using a [scry](../../glossary/scry.md) with an appropriate [care](../../system/kernel/clay/reference/data-types.md#care) "BROKEN_LINK".
+If we want to retrieve the contents of a file or folder, we can directly ask Clay for the data using a [scry](../../glossary/scry.md) with an appropriate [care](../../urbit-os/kernel/clay/reference/data-types.md#care).
 
 For instance, the `%x` care to the `%c` Clay [vane](../../glossary/vane.md) returns the [noun](../../glossary/noun.md) at a given address as a `@` [atom](../../glossary/atom.md).
 

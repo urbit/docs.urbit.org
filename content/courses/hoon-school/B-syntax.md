@@ -289,7 +289,7 @@ Usually one or more line breaks are used to break up a tall form expression. Thi
 
 This is the preferred way to write an expression on a single line. The rune itself is followed by a set of parentheses, and the subexpressions inside are separated by a single space. Any more spacing than that results in a syntax error.
 
-Nearly all rune expressions can be written in either form, but there are exceptions. `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) and `|_` [barcab](../../hoon/reference/rune/bar.md#_-barcab) "BROKEN_ANCHOR" expressions, for example, can only be written in tall form. (Those are a bit too complicated to fit comfortably on one line anyway.)
+Nearly all rune expressions can be written in either form, but there are exceptions. `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) and `|_` [barcab](../../hoon/reference/rune/bar.md#barcab) expressions, for example, can only be written in tall form. (Those are a bit too complicated to fit comfortably on one line anyway.)
 
 ### Nesting Runes {#nesting-runes}
 

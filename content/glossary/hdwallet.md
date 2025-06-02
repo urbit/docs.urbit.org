@@ -8,5 +8,5 @@ If a proxy or ownership address is compromised or has its keys lost, it can alwa
 
 ### Further Reading {#further-reading}
 
-- [The Azimuth concepts page](../system/identity) "BROKEN_LINK": A more in-depth explanation of Azimuth.
+- [The Azimuth concepts page](../urbit-id/concepts/README.md): A more in-depth explanation of Azimuth.
 - [Urbit HD Wallet](../urbit-id/concepts/hd-wallet.md): An in-depth explanation of the HD wallet.

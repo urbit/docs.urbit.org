@@ -4,5 +4,5 @@
 
 ### Further Reading {#further-reading}
 
-- [The Arvo overview](../system/kernel) "BROKEN_LINK": a technical overview of Arvo that covers moves.
+- [The Arvo overview](../urbit-os/kernel): a technical overview of Arvo that covers moves.
 - [Move trace tutorial](../urbit-os/kernel/arvo/guides/move-trace.md): how to interpret move traces when such kernel verbosity is enabled.

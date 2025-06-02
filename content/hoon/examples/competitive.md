@@ -347,9 +347,9 @@ This last case can be handled with a couple of expedients:
 
 - Use of assertions to enforce type constraints.  Assertions are a form of `?` wut rune which check the structure of a value.  Ultimately they all reduce back to `?:` wutcol, but are very useful in this sugar form:
 
-    - [`?>` wutgar](../reference/rune/wut.md#-wutgar) "BROKEN_ANCHOR" is a positive assertion, that a condition _must_ be true.
-    - [`?<` wutgal](../reference/rune/wut.md#-wutgal) "BROKEN_ANCHOR" is a negative assertion, that a condition _must_ be false.
-    - [`?~` wutsig](../reference/rune/wut.md#-wutsig) "BROKEN_ANCHOR" is a branch on null.
+    - [`?>` wutgar](../reference/rune/wut.md#wutgar) is a positive assertion, that a condition _must_ be true.
+    - [`?<` wutgal](../reference/rune/wut.md#wutgal) is a negative assertion, that a condition _must_ be false.
+    - [`?~` wutsig](../reference/rune/wut.md#wutsig) is a branch on null.
 
     For instance, some operations require a `lest`, a `list` guaranteed to be non-null (that is, `^-  (list)  ~` is excluded).
 

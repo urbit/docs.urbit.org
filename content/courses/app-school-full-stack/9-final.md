@@ -29,7 +29,7 @@ Here is the reference material for each section of this walkthrough.
 - [The Zuse Reference](../../hoon/reference/zuse) - The `zuse.hoon` reference documents all JSON-related functions in detail.
 - [`+enjs:format` reference](../../hoon/reference/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
 - [`+dejs:format` reference](../../hoon/reference/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
-- [Eyre Overview](../../system/kernel/eyre) "BROKEN_LINK" "BROKEN_LINK" - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
+- [Eyre Overview](../../urbit-os/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.
 
 ### Marks {#marks}
 
@@ -39,7 +39,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Eyre {#eyre}
 
-- [The Eyre vane documentation](../../system/kernel/eyre) "BROKEN_LINK" "BROKEN_LINK" - This section of the vane docs covers all aspects of Eyre.
+- [The Eyre vane documentation](../../urbit-os/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
 - [Eyre External API Reference](../../urbit-os/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
 - [The Eyre Guide](../../urbit-os/kernel/eyre/guides/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).
 

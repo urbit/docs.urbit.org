@@ -1,6 +1,6 @@
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../system/kernel/gall/reference/data-types.md#agent) "BROKEN_LINK" subsection, as well as [`$bowl`](../../system/kernel/gall/reference/data-types.md#bowl) "BROKEN_LINK", [`boat`](../../system/kernel/gall/reference/data-types.md#boat) "BROKEN_LINK", and [`bitt`](../../system/kernel/gall/reference/data-types.md#bitt) "BROKEN_LINK".
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/reference/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../urbit-os/kernel/gall/reference/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/reference/data-types.md#bowl), [`boat`](../../urbit-os/kernel/gall/reference/data-types.md#boat), and [`bitt`](../../urbit-os/kernel/gall/reference/data-types.md#bitt).
 
 ## `$vase` {#vase}
 
@@ -148,7 +148,7 @@ The type of a wire is formally defined as:
 
 So, a `$wire` is just a [`$path`](#path), type-wise they're exactly the same. The reason there's a separate `$wire` type is just to differentiate their purpose. A `$wire` is a path for responses to requests an agent initiates. If you subscribe to the `$path` `/some/path` on another agent, you also specify `/some/wire`. Then, when that agent sends out updates to subscribers of `/some/path`, your agent receives them on `/some/wire`.
 
-More formally, `$wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`$duct`](../../system/kernel/arvo#duct) "BROKEN_LINK". Inter-vane communications happen over `$duct`s as [`$move`](../../system/kernel/arvo#moves) "BROKEN_LINK"s, and Gall converts the `$card`s produced by agents into such `$move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../urbit-os/kernel/arvo) and [move trace tutorial](../../urbit-os/kernel/arvo/guides/move-trace.md).
+More formally, `$wire`s are used by Arvo to represent an event cause, and therefore return path, in a call stack called a [`$duct`](../../urbit-os/kernel/arvo#duct). Inter-vane communications happen over `$duct`s as [`$move`](../../urbit-os/kernel/arvo#moves)s, and Gall converts the `$card`s produced by agents into such `$move`s behind the scenes. A detailed understanding of this system is not necessary to write Gall agents, but if you're interested it's comprehensively documented in the [Arvo overview](../../urbit-os/kernel/arvo) and [move trace tutorial](../../urbit-os/kernel/arvo/guides/move-trace.md).
 
 For agents, the `$wire` is specified in the second argument of a `%pass` `$card`. It's used for anything you can `%pass`, such as `%poke`s, `%watch`es, and `%arvo` notes. For example:
 

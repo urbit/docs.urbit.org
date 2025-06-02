@@ -197,7 +197,7 @@ We add a bunted `$deck`, then encounter a very interesting statement that you ha
 
 With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [`+lent`](../../hoon/reference/stdlib/2b.md#lent).
 
-`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `.shuffled` and the one card left in `.unshuffled`. We use the `:_` [colcab](../../hoon/reference/rune/col.md#_-colcab) "BROKEN_ANCHOR" rune here, so that the “heavier” expression is at the bottom.
+`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `.shuffled` and the one card left in `.unshuffled`. We use the `:_` [colcab](../../hoon/reference/rune/col.md#colcab) rune here, so that the “heavier” expression is at the bottom.
 
 If the above conditional evaluates to `%.n` false, we need to do a little work. `=^` [tisket](../../hoon/reference/rune/tis.md#tisket) is a rune that pins the head of a pair and changes a leg in the [subject](../../glossary/subject.md) with the tail. It's useful for interacting with the [og](../../hoon/reference/stdlib/3d.md#og) core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the [subject](../../glossary/subject.md) with the [face](../../glossary/face.md) `.index` and change `.random` to be the next core.
 
@@ -335,7 +335,7 @@ So far everything we have done has taken place on the `%base` desk. You have by 
 + /~zod/base/2/gen/demo/hoon
 ```
 
-This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components?  We call this the [beak](../../system/kernel/clay/reference/data-types.md#beak) "BROKEN_LINK". The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
+This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components?  We call this the [beak](../../urbit-os/kernel/clay/reference/data-types.md#beak). The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
 
 1. The **ship**, here \~zod. (You can find this out on any ship using `.our`.)
 2. The **desk**, here `%base`.

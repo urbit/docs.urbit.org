@@ -186,9 +186,9 @@ Everything in Urbit is a binary tree. And all code in Urbit is also represented 
 
 There are three different ways to access values:
 
-1. [Numeric addressing](G-trees.md#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
-2. [Positional addressing](G-trees.md#positional-addressing-(lark-notation) "BROKEN_ANCHOR") is helpful when you don't want to figure out the room number, but you know how to navigate to the value. This is like knowing the directions somewhere even if you don't know the house number.
-3. [Wing addressing](G-trees.md#wings) is a way of attaching a name to the address so that you can access it directly.
+1. [Numeric addressing](#numeric-addressing) is useful when you know the address, rather like knowing a house's street address directly.
+2. [Positional addressing](#positional-addressing-lark-notation) is helpful when you don't want to figure out the room number, but you know how to navigate to the value. This is like knowing the directions somewhere even if you don't know the house number.
+3. [Wing addressing](#wings) is a way of attaching a name to the address so that you can access it directly.
 
 ### Numeric Addressing {#numeric-addressing}
 

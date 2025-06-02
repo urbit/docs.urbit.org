@@ -14,7 +14,7 @@ Eyre's channel system is the primary way of interacting with Gall agents from ou
 
 The channel system is designed to be extremely simple with just a handful of `action` and `response` JSON objects to deal. Essentially it's a thin layer on top of the underlying Gall agent interface. You can poke agents, subscribe for updates, etc, just like you would from within Urbit.
 
-Detailed documentation of the channel system's JSON API is provided in the [External API Reference](reference/external-api-ref.md) document with corresponding examples in the [Guide](guides/guide.md#using-the-channel-system) "BROKEN_ANCHOR" document.
+Detailed documentation of the channel system's JSON API is provided in the [External API Reference](reference/external-api-ref.md) document with corresponding examples in the [Guide](guides/guide.md#using-channels) document.
 
 ## Scrying {#scrying}
 

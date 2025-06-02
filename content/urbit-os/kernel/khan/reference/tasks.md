@@ -42,7 +42,7 @@ In-line thread.
 [%lard =bear =shed]
 ```
 
-The [`bear`](types.md#bear) is either a `desk` or `beak`. The [`shed`](types.md#shed) "BROKEN_ANCHOR" is the thread itself. Since Spider doesn't need to read out the thread from Clay, the `bear` doesn't do much apart from be included in the thread name that Spider generates. Khan will have Spider run the given thread, and eventually give an [`%arow`](#arow) gift back with the result.
+The [`bear`](types.md#bear) is either a `desk` or `beak`. The `shed` is the thread itself. Since Spider doesn't need to read out the thread from Clay, the `bear` doesn't do much apart from be included in the thread name that Spider generates. Khan will have Spider run the given thread, and eventually give an [`%arow`](#arow) gift back with the result.
 
 #### Returns
 

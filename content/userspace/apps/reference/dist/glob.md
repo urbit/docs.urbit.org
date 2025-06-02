@@ -51,7 +51,7 @@ The `desk.docket-0` file must include exactly one of the following clauses:
 
 #### `site+/some/path`
 
-If an app binds an Eyre endpoint and handles HTTP directly, for example with a [`%connect` task:eyre](../../../../system/kernel/eyre/reference/tasks.md#connect) "BROKEN_LINK", the `%site` clause is used, specifying the Eyre binding. In this case a glob is omitted entirely.
+If an app binds an Eyre endpoint and handles HTTP directly, for example with a [`%connect` task:eyre](../../../../urbit-os/kernel/eyre/reference/tasks.md#connect), the `%site` clause is used, specifying the Eyre binding. In this case a glob is omitted entirely.
 
 #### `glob-ames+[~zod 0vs0me.h4sh]`
 

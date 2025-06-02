@@ -185,7 +185,7 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a stack trace, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-The `~_` [sigcab](../../hoon/reference/rune/sig.md#_-sigcab) "BROKEN_ANCHOR" rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+The `~_` [sigcab](../../hoon/reference/rune/sig.md#sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 
 The `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 

@@ -1,16 +1,16 @@
 # Cryptography
 
-This is a summary of the cryptography functions found in `sys/zuse.hoon`, Arvo's standard library. This page currently only documents cryptographic functions directly utilized by [Ames](../../system/kernel/ames "BROKEN_LINK"). `zuse` also contains cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core, but they are currently undocumented.
+This is a summary of the cryptography functions found in `sys/zuse.hoon`, Arvo's standard library. This page currently only documents cryptographic functions directly utilized by [Ames](../../urbit-os/kernel/ames). `zuse` also contains cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core, but they are currently undocumented.
 
 Documentation for [Insecure Hashing](stdlib/2e.md) and the [SHA Hash Family](stdlib/3d.md) is found in the Hoon standard library reference.
 
 ## Summary {#summary}
 
-`zuse` contains several cryptosuites. The ones utilized by Ames are [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with the latter being the only one which is implemented as an [`+acru:ames`](../../system/kernel/ames/guides/cryptography.md#crypto-core "BROKEN_LINK")-shaped core.
+`zuse` contains several cryptosuites. The ones utilized by Ames are [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with the latter being the only one which is implemented as an [`+acru:ames`](../../urbit-os/kernel/ames/guides/cryptography.md#crypto-core)-shaped core.
 
 ## `+crub:crypto` {#crub}
 
-`+crub:crypto` implements an [`+acru:ames`](../../system/kernel/ames/guides/cryptography.md#crypto-core "BROKEN_LINK") core that implements [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
+`+crub:crypto` implements an [`+acru:ames`](../../urbit-os/kernel/ames/guides/cryptography.md#crypto-core) core that implements [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
 It utilizes AES symmetric key encryption and decryption from [`+aes:crypto`](#aes) implemented using the Diffie-Hellman key exchange protocol, elliptic curve digital signature algorithm (ECDSA) signing and verification with [`+ed:crypto`](#ed), and generates public/private key pairs using elliptic curve cryptography with `+ed:crypto`.
 
@@ -153,7 +153,7 @@ Takes in a `pass` from a `+pub:ex:crub` and generates a new `+crub` core with `p
 
 This core contains cryptographic primitives and helper functions for elliptic curve cryptography with [Curve25519](https://en.wikipedia.org/wiki/Curve25519).
 
-`+ed:crypto` is primarily used to generate public/private keypairs from a seed for use with [elliptic curve Diffie-Hellman](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) key agreements as well as [Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm). These functionalities are ultimately utilized by [`+crub:crypto`](#crub), the only cryptosuite which [Ames](../../system/kernel/ames "BROKEN_LINK") makes use of.
+`+ed:crypto` is primarily used to generate public/private keypairs from a seed for use with [elliptic curve Diffie-Hellman](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) key agreements as well as [Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm). These functionalities are ultimately utilized by [`+crub:crypto`](#crub), the only cryptosuite which [Ames](../../urbit-os/kernel/ames) makes use of.
 
 Most gates in `+ed:crypto` are [jetted](../../system/runtime/guides/jetting.md), meaning that an external reference library is utilized whenever these functions are called, rather than running in Nock natively. See the [Vere documentation](../../system/runtime/reference/cryptography.md#ed) for more information about the library utilized by jets.
 

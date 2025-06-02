@@ -207,7 +207,7 @@ Unmounts the Unix path `/foo`.
 
 Merges a source `desk` into a target `desk`.
 
-This can optionally include a [merge strategy](../../system/kernel/clay/guides/using.md#merging) "BROKEN_LINK":
+This can optionally include a [merge strategy](../../urbit-os/kernel/clay/guides/using.md#merging):
 
 ```
 |merge %target-desk ~source-ship %source-desk, =gem %strategy

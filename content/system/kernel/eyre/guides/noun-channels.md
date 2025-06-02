@@ -14,7 +14,7 @@ Eyre will create a noun channel if a `PUT` request to open a new channel include
 content-type: application/x-urb-jam
 ```
 
-...and the body contains the [`++jam`](../../../../language/hoon/reference/stdlib/2p.md#jam) of a `list` of `$channel-request`s with [`@uw`](../../../../language/hoon/reference/auras.md#table-of-auras) base64 encoding.
+...and the body contains the [`++jam`](../../../../hoon/reference/stdlib/2p.md#jam) of a `list` of `$channel-request`s with [`@uw`](../../../../hoon/reference/auras.md#table-of-auras) base64 encoding.
 
 A `channel-request` is defined in `eyre.hoon` as:
 

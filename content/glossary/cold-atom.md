@@ -4,6 +4,6 @@ A **cold atom** is an [atom](atom.md) whose type is an exact value equal to itse
 
 ### Further Reading {#further-reading}
 
-- [Atoms and Strings](../language/hoon/reference/rune/constants.md): A guide to atoms.
+- [Atoms and Strings](../hoon/reference/rune/constants.md): A guide to atoms.
 - [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
   - [“Hoon Syntax”](../courses/hoon-school/B-syntax.md#nouns): A Hoon School lesson that explains how atoms work.

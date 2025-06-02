@@ -8,4 +8,4 @@ Code written in [Hoon](hoon.md) is compiled to Nock, though it is unnecessary to
 
 ### Further Reading {#further-reading}
 
-- [The Nock Tutorial](../language/nock): An-in depth technical guide.
+- [The Nock Tutorial](../nock): An-in depth technical guide.

@@ -20,7 +20,7 @@ Eyre expects a particular JSON object structure for each of these different requ
 
 ## Scries {#scries}
 
-Eyre's scry interface is separate to the channel system. Scries are performed by a simple GET request to a path with a format of `/~/scry/{agent}{path}.{mark}`. The specified `mark` must include a `+mime` arm in its `+grow` core which converts this datatype to a MIME, which will be included in the HTTP response. If successful, the HTTP response will contain the result with the mark specified. If unsuccessful, an HTTP error will be thrown in response.
+Eyre's scry interface is separate to the channel system. Scries are performed by a simple GET request to a path with a format of `/~/scry/{agent}{path}.{mark}`. The specified `$mark` must include a `+mime` arm in its `+grow` core which converts this datatype to a MIME, which will be included in the HTTP response. If successful, the HTTP response will contain the result with the mark specified. If unsuccessful, an HTTP error will be thrown in response.
 
 The `@urbit/http-api` library we'll use includes a function for performing scries, so we'll not need to manually send GET requests to the ship.
 

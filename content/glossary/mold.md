@@ -6,4 +6,4 @@
 
 - [Hoon school: types](../courses/hoon-school/E-types.md): A lesson on molds.
 
-- [Buc (`$`) rune reference](../language/hoon/reference/rune/buc.md): Details on the runes that can create molds.
+- [Buc (`$`) rune reference](../hoon/reference/rune/buc.md): Details on the runes that can create molds.

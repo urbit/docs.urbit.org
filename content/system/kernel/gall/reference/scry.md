@@ -127,7 +127,9 @@ A `@`.
 
 ### `%t`: remote scry subpaths {#t-remote-scry-subpaths}
 
-A scry with a `%t` care, an agent in `q.beak` and a path of `//some/path` will give you the list of remote scry subpaths bound under the given path.
+A scry with a `%t` care, an agent in `q.beak` and a path of `//1/some/path` will give you the list of remote scry subpaths bound under the given path.
+
+Note the version number `1` for scries to Gall's remote scry namespace.
 
 See the [remote scry guide](../../../../userspace/apps/guides/remote-scry.md) for more details.
 
@@ -138,7 +140,7 @@ A `(list path)`
 #### Examples
 
 ```
-> .^((list path) %gt /=acme=//foo)
+> .^((list path) %gt /=acme=//1/foo)
 ~
 ```
 
@@ -215,6 +217,8 @@ A `egg-any` (versioned passthrough to `egg`)
 
 A scry with a `%w` care and an agent in `q.beak` will get the latest revision number of the bound remote scry path given in the `spur`.
 
+As with `%gt` and `%gz` scries, this requires a version number `1` after the `//`.
+
 See the [remote scry guide](../../../../userspace/apps/guides/remote-scry.md) for more details.
 
 #### Produces
@@ -242,6 +246,8 @@ The type returned is the raw `noun` from the `page`. If the file has been tombst
 ### `%z`: hash of value at path {#z-hash-of-value-at-path}
 
 A scry with a `%z` care and an agent in `q.beak` will get the hash identifier of the value bound at the remote scry path given in the `spur`.
+
+As with `%gt` and `%gw` scries, this requires a version number `1` after the `//`.
 
 See the [remote scry guide](../../../../userspace/apps/guides/remote-scry.md) for more details.
 

@@ -249,6 +249,6 @@ Eyre gives a `%grow` `gift` in response to a `%set-response` `task`. A `%grow` `
 [%grow =path]
 ```
 
-The `path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`++scot`](../../../../language/hoon/reference/stdlib/4m.md#scot) encoding, so will need to be decoded with `%t` [`++slav`](../../../../language/hoon/reference/stdlib/4m.md#slav).
+The `path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`++scot`](../../../../hoon/reference/stdlib/4m.md#scot) encoding, so will need to be decoded with `%t` [`++slav`](../../../../hoon/reference/stdlib/4m.md#slav).
 
 ---

@@ -124,7 +124,7 @@
         * [Decrement](nock/examples/decrement.md)
         * [Implementations](nock/examples/implementations.md)
 * [Urbit OS](urbit-os/README.md)
-    * [Kernel](urbit-os/runtime)
+    * [Kernel](urbit-os/kernel)
         * [Arvo](urbit-os/kernel/arvo)
             * [Guides](urbit-os/kernel/arvo/guides)
                 * [Move Trace](urbit-os/kernel/arvo/guides/move-trace.md)

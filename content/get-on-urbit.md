@@ -50,7 +50,7 @@ In either case, your ownership of your planet is secured by your private key. **
 {% step %}
 ## Get your keyfile {#get-your-keyfile}
 
-Once you've got an Urbit ID, the next step is to download its private [networking key](./system/identity/concepts/hd-wallet.md) (contained in a "keyfile") so you can boot it up. This process can vary depending on how you obtained your ID and where it's stored.
+Once you've got an Urbit ID, the next step is to download its private [networking key](urbit-id/concepts/hd-wallet.md) (contained in a "keyfile") so you can boot it up. This process can vary depending on how you obtained your ID and where it's stored.
 
 {% tabs %}
 

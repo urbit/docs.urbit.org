@@ -30,7 +30,7 @@ Vim is free and open-source and runs on all major operating systems. It is avail
 
 To do work with Hoon, we recommended using a "fake" ship — one that's not connected to the network.
 
-Because such a ship has no presence on the network, you don't need an Azimuth identity. You just need to have [installed the Urbit binary](../manual/getting-started/self-hosted/cli.md).
+Because such a ship has no presence on the network, you don't need an Azimuth identity. You just need to have [installed the Urbit binary](../get-on-urbit.md#get-the-urbit-runtime).
 
 To create a fake ship named ~zod, run the command below. You can replace `zod` with any valid Urbit ID.
 

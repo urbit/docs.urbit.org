@@ -1,6 +1,6 @@
 # Star and Galaxy Operations
 
-To boot your galaxy or star, follow our [installation instructions](../getting-started).
+To boot your galaxy or star, follow our [installation instructions](../../get-on-urbit.md).
 
 ### Hosting your star {#hosting-your-star}
 

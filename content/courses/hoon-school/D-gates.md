@@ -165,7 +165,7 @@ We need to attach a _name_ or a [face](../../glossary/face.md) to the expression
 
 1. Attach the face (name) directly in Dojo. (This is a good quick solution, and we'll use it when teaching and testing code, but it doesn't work inside of code files.)
 2. Save the gate as a [generator](../../glossary/generator.md) file and call it using the name of the file. (We'll do this in the next section of this lesson.)
-3. Attach the face (name) as an [arm](../../glossary/arm".md) in a [core](../../glossary/core.md). (We don't know what those are yet, so we'll set them aside for a couple of lessons.)
+3. Attach the face (name) as an [arm](../../glossary/arm.md) in a [core](../../glossary/core.md). (We don't know what those are yet, so we'll set them aside for a couple of lessons.)
 
 To name a gate in Dojo (or any expression resulting in a value, which is _every_ expression), you can use the Dojo-specific syntax `=name value`:
 

@@ -94,7 +94,7 @@ Where:
 
 The output of a `%peek` command is `[%peek (unit (unit scry-output))]`, where `~` means that the scry endpoint is invalid, and `[~ ~]` means that the scry resolved to nothing.
 
-See [here](../../../courses/app-school/10-scry.md) for more information on scrying.
+See [here](../../../build-on-urbit/app-school/10-scry.md) for more information on scrying.
 
 #### `%peel`
 

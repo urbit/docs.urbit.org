@@ -4,4 +4,4 @@ A **gate** is [core](core.md) with one [arm](arm.md) named `$` (buc). They are o
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.

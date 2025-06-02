@@ -4,4 +4,4 @@ The Urbit operating system hews to a conceptual model wherein each expression ta
 
 #### Further reading
 
-- [Hoon School: subject-oriented programming](../courses/hoon-school/O-subject.md): A guide to subject-oriented programming.
+- [Hoon School: subject-oriented programming](../build-on-urbit/hoon-school/O-subject.md): A guide to subject-oriented programming.

@@ -4,6 +4,6 @@
 
 ### Further Reading {#further-reading}
 
-- [Hoon school: types](../courses/hoon-school/E-types.md): A lesson on molds.
+- [Hoon school: types](../build-on-urbit/hoon-school/E-types.md): A lesson on molds.
 
 - [Buc (`$`) rune reference](../hoon/reference/rune/buc.md): Details on the runes that can create molds.

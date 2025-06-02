@@ -10,7 +10,7 @@ The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good compan
 
 ## Prerequisites {#prerequisites}
 
-The conceptual section titled [What is Arvo?](#what-is-arvo) can be understood without knowing Hoon, the Urbit programming language. The technical section titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](../../../courses/hoon-school) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](/overview/).
+The conceptual section titled [What is Arvo?](#what-is-arvo) can be understood without knowing Hoon, the Urbit programming language. The technical section titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](../../../build-on-urbit/hoon-school) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](/overview/).
 
 We also suggest to the reader to peruse the [glossary](../../../glossary) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
@@ -121,7 +121,7 @@ Most operating systems are preemptive, meaning that they regularly interrupt tas
 
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
-This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](../../../courses/hoon-school).
+This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](../../../build-on-urbit/hoon-school).
 
 After concluding this section, the reader is encouraged to follow along with the [move trace tutorial](guides/move-trace.md), which applies many of the concepts covered below.
 
@@ -136,7 +136,7 @@ After concluding this section, the reader is encouraged to follow along with the
 - Larval stage core
 - Formal interface
 
-See [Hoon School “Subject-Oriented Programming”](../../../courses/hoon-school/O-subject.md#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
+See [Hoon School “Subject-Oriented Programming”](../../../build-on-urbit/hoon-school/O-subject.md#accessing-the-subject) for further explanation of what is meant here by “nesting”. We now describe the functionality of each of these components.
 
 ### Formal interface {#formal-interface}
 

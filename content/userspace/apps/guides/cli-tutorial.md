@@ -8,7 +8,7 @@ There are three CLI apps that currently ship with Urbit: `%dojo`, `%chat-cli`, a
 
 In [the Shoe library](#the-shoe-library) we take a closer look at the Shoe library and its cores and how they are utilized in CLI apps. Then in [the `sole` library](#the-sole-library) we look at what Shoe effects ultimately break down into. Finally in [`%shoe` app walkthrough](#shoe-app-walkthrough) we explore the functionality of the `%shoe` agent and then go through the code line-by-line.
 
-This tutorial can be considered to be an application equivalent of the [Hoon school lesson](../../../courses/hoon-school/P-stdlib-io.md#ask-generators) on `%sole` and `%ask` generators, which only covers the bare minimum necessary to write generators that take user input.
+This tutorial can be considered to be an application equivalent of the [Hoon school lesson](../../../build-on-urbit/hoon-school/P-stdlib-io.md#ask-generators) on `%sole` and `%ask` generators, which only covers the bare minimum necessary to write generators that take user input.
 
 ## The Shoe library {#the-shoe-library}
 

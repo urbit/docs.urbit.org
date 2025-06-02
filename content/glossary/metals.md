@@ -15,4 +15,4 @@ A `%gold` core can be cast or converted to any metal, and any metal can be cast 
 
 ### Further Reading {#further-reading}
 
-- [Hoon School: metals](../courses/hoon-school/R-metals.md): This lesson covers core variance.
+- [Hoon School: metals](../build-on-urbit/hoon-school/R-metals.md): This lesson covers core variance.

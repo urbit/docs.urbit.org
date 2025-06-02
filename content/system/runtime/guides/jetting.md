@@ -226,7 +226,7 @@ In general, jet code feels a bit heavy and formal.  Jet code may call other jet 
 
 ## Jet Composition:  Integer `++factorial` {#jet-composition-integer-factorial}
 
-Similar to how we encountered recursion way back in [Hoon School](../../../courses/hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code.  We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise.  Create a file `lib/trig.hoon` with the following contents:
+Similar to how we encountered recursion way back in [Hoon School](../../../build-on-urbit/hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code.  We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise.  Create a file `lib/trig.hoon` with the following contents:
 
 **`/lib/trig.hoon`**
 
@@ -1391,7 +1391,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 
 2.  Comparison to the reference Urbit binary can be done with a second development ship and the same Hoon library and generator.
 
-3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../../../courses/hoon-school/I-testing.md) and the [testing guide](../../../userspace/apps/guides/unit-tests.md).
+3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../../../build-on-urbit/hoon-school/I-testing.md) and the [testing guide](../../../userspace/apps/guides/unit-tests.md).
 
     ```hoon
     > -test %/tests/lib/trig-rs ~

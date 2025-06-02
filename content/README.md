@@ -16,8 +16,8 @@ The developer documentation contains a wealth of guides, examples and reference 
 
 There are in-depth tutorials to teach you the Hoon language, Urbit app development, and other aspects of the system. If you want to learn how to build things on Urbit, these are the best way to start.
 
-- [Hoon Tutorials](courses/hoon-school) - Learn the Hoon language at your own pace.
-- [App & System Tutorials](courses) - Learn application and system development on Urbit.
+- [Hoon Tutorials](build-on-urbit/hoon-school) - Learn the Hoon language at your own pace.
+- [App & System Tutorials](build-on-urbit) - Learn application and system development on Urbit.
 
 ## User Docs
 

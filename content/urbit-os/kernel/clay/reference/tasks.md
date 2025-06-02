@@ -51,7 +51,7 @@ This `rave` is for reading a single file or directory immediately.
 
 The `care` of the [mood](data-types.md#mood) will determine what you can read and what type of data will be returned. See the [care](data-types.md#care) documentation and [scry](scry.md) documentation for details on the various `care`s.
 
-The [case](data-types.md#case) "BROKEN_ANCHOR" specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
+The [case](data-types.md#case) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
 
 #### Example
 
@@ -332,7 +332,7 @@ A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](#norm---default-policy)
 [%seek =ship =desk =cash]
 ```
 
-A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombstoned data and integrate it into Clay's object store. The [`cash`](data-types.md#cash) is a reference to a commit on the given ship/desk as either a [`tako`](data-types.md#tako) or a [`case`](data-types.md#case) "BROKEN_ANCHOR".
+A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombstoned data and integrate it into Clay's object store. The [`cash`](data-types.md#cash) is a reference to a commit on the given ship/desk as either a [`tako`](data-types.md#tako) or a [`case`](data-types.md#case).
 
 ---
 

@@ -302,7 +302,7 @@
     * [Examples](nock/examples/README.md)
         * [Decrement](nock/examples/decrement.md)
         * [Implementations](nock/examples/implementations.md)
-* [Operator's Manual](manual/README.md)
+* [Manual](manual/README.md)
     * [Getting Started](manual/getting-started/README.md)
         * [Get an Urbit ID](manual/id/get-id.md)
         * [Hosted Urbit](manual/getting-started/hosted/README.md)

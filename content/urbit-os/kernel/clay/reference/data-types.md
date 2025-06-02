@@ -376,6 +376,25 @@ See the [scry reference](scry.md) for more details.
 
 ---
 
+### `case` {#case}
+
+```hoon
++$  case
+  $%  [%da p=@da]
+      [%tas p=@tas]
+      [%ud p=@ud]
+      [%uv p=@uv]
+  ==
+```
+
+The `$case` is a type union of:
+- `[%da p=@da]`: Any `@da` datetime.
+- `[%tas p=@tas]`: Any `@tas` label.
+- `[%ud p=@ud]`: Any existing revision number.
+- `[%uv p=@uv]`: Hashed content of some given version of the node in question.
+
+---
+
 ### `cash` {#cash}
 
 `case` or `tako`

@@ -272,15 +272,7 @@ If you need to get back to the Dojo again in the future, just open a terminal an
 {% tab title="Boot a fake ship" %}
 Fake ships are for development purposes only and cannot connect to the live network.
 
-The easiest way to run an Urbit is inside a `screen` session. `screen` is installed on macOS and Linux by default; it lets you "detach" from terminal sessions, leave them running in the background, then "attach" to them again later.
-
-To start a new `screen` session and name it `urbit`, run the following command in your terminal:
-
-```sh
-screen -S urbit
-```
-
-Now that you're in a `screen` session, run the `urbit` executable you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy \~zod.
+Run the `urbit` executable you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy \~zod.
 
 ```sh
 ./urbit -F zod
@@ -298,13 +290,7 @@ For ease of portability the Urbit runtime has made a copy of itself in the `zod`
 
 Spin up your fake ship again by running `./zod/.run`, and you'll be back at the Dojo.
 
-Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser.
-
-To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
-
-Detach from this `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close or quit the terminal entirely; your Urbit is still running in the `screen` session.
-
-If you need to get back to the Dojo again in the future, just open a terminal and run `screen -r urbit` to reattach to the `urbit` session.
+Next, you may want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 Fake ships are for developers. If you want to learn more about programming, app development, or core development on Urbit, look at our [courses](./courses/README.md) section to get started.
 

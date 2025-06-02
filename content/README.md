@@ -23,7 +23,6 @@ There are in-depth tutorials to teach you the Hoon language, Urbit app developme
 
 If you want to get a planet, find a hosting provider, set up a server or learn how to use the Dojo, the manual is the place to go.
 
-- [Getting Started](manual/getting-started) - You can obtain a planet and run Urbit yourself or let a hosting provider do it for you. How to do these things and more are documented in this section.
 - [User Manual](manual) - Information on running your Urbit, using the Dojo (Urbit's command-line), managing your Urbit ID on Azimuth and more.
 
 ## Videos

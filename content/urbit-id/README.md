@@ -1,6 +1,6 @@
 # Urbit ID
 
-Urbit ID is Urbit's identity standard. It's decentralized, secure, and human-meaningful. It's basis is a public-key infrastructure (PKI) implemented with NFTs on the Ethereum blockchain.
+Urbit ID is Urbit's identity standard. It's decentralized, secure, and human-meaningful. It's basis is [a public-key infrastructure (PKI) implemented with NFTs on the Ethereum blockchain](https://urbit.org/blog/pki-maze).
 
 You need an Urbit ID to get on the Urbit network. Your Urbit ID allows your Urbit OS server to cryptographically sign every message it sends over the network: everything you see on Urbit really comes from who it says it does.
 

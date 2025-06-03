@@ -4,4 +4,4 @@ The **runtime** is the `urbit` or `urbit.exe` binary you run your ship with in t
 
 ### Further Reading {#further-reading}
 
-- [The Vere tutorial](../system/runtime): An in-depth technical guide to Vere.
+- [The Vere tutorial](../build-on-urbit/runtime): An in-depth technical guide to Vere.

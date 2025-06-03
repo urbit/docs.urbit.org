@@ -4,4 +4,4 @@
 
 #### Further Reading
 
-- [Case data-type reference](../system/kernel/clay/reference/data-types.md#case-specifying-a-commit): The `case` entry of the Clay data type reference.
+- [Case data-type reference](../urbit-os/kernel/clay/reference/data-types.md#case) - The `case` entry of the Clay data type reference.

@@ -6,4 +6,4 @@ Lick is located in `/base/sys/vane/lick.hoon` within [Arvo](arvo.md).
 
 ### Further Reading {#further-reading}
 
-- [The Lick reference](../system/kernel/lick): A technical guide to the Lick vane.
+- [The Lick reference](../urbit-os/kernel/lick): A technical guide to the Lick vane.

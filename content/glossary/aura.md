@@ -11,4 +11,4 @@ Note that auras do not enforce the validity of an encoding scheme, so you can ty
 #### Further reading
 
 - [Aura reference](../hoon/reference/auras.md): Additional information about auras.
-- [Hoon School: syntax lesson](../courses/hoon-school/B-syntax.md): Includes details of atoms and auras.
+- [Hoon School: syntax lesson](../build-on-urbit/hoon-school/B-syntax.md): Includes details of atoms and auras.

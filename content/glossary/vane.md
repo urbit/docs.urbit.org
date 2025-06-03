@@ -16,4 +16,4 @@ A **vane** is an [Arvo](arvo.md) kernel module that performs essential system op
 
 ### Further Reading {#further-reading}
 
-- [The Arvo tutorial](../system/kernel): An in-depth technical guide to Arvo and its vanes.
+- [The Arvo tutorial](../urbit-os/kernel) - An in-depth technical guide to Arvo and its vanes.

@@ -4,4 +4,4 @@
 
 #### Further reading
 
-- [Arvo reference documentation](../system/kernel): these docs include API reference documentation for the various vanes.
+- [Arvo reference documentation](../urbit-os/kernel) - these docs include API reference documentation for the various vanes.

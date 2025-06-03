@@ -4,6 +4,6 @@ A **noun** is an [atom](atom.md) or a cell, which is an ordered pair of nouns. T
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
-  - [“Hoon Syntax”](../courses/hoon-school/B-syntax.md#nouns): A Hoon Tutoral lesson that explains how nouns work.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.
+  - [“Hoon Syntax”](../build-on-urbit/hoon-school/B-syntax.md#nouns): A Hoon Tutoral lesson that explains how nouns work.
 - [The Nock explanation](../nock): Includes a low-level explanation of nouns.

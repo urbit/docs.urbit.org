@@ -50,7 +50,7 @@ In either case, your ownership of your planet is secured by your private key. **
 {% step %}
 ## Get your keyfile {#get-your-keyfile}
 
-Once you've got an Urbit ID, the next step is to download its private [networking key](./system/identity/concepts/hd-wallet.md) (contained in a "keyfile") so you can boot it up. This process can vary depending on how you obtained your ID and where it's stored.
+Once you've got an Urbit ID, the next step is to download its private [networking key](urbit-id/concepts/hd-wallet.md) (contained in a "keyfile") so you can boot it up. This process can vary depending on how you obtained your ID and where it's stored.
 
 {% tabs %}
 
@@ -200,7 +200,7 @@ Next, you'll want to get the web login code so you can login to your Urbit's web
 To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 {% hint %}
-You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, you can just [reset it in the Dojo](./manual/os/dojo-tools.md#reset-code) to log out of all browser sessions in your Urbit.
+You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, you can just [reset it in the Dojo](./manual/os/dojo-tools.md#code) to log out of all browser sessions in your Urbit.
 {% endhint %}
 
 Detach from this `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close or quit the terminal entirely; your Urbit is still running in the `screen` session.
@@ -260,7 +260,7 @@ Next, you'll want to get the web login code so you can login to your Urbit's web
 To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 {% hint %}
-You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, just [reset it in the Dojo](./manual/os/dojo-tools.md#reset-code) to log out of all browser sessions in your Urbit.
+You can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, just [reset it in the Dojo](./manual/os/dojo-tools.md#code) to log out of all browser sessions in your Urbit.
 {% endhint %}
 
 Detach from this `screen` session by hitting `Ctrl+A`, then hitting `D`. It should say something like `[detached from 1819892.urbit]`. You can now close or quit the terminal entirely; your Urbit is still running in the `screen` session.
@@ -292,7 +292,7 @@ Spin up your fake ship again by running `./zod/.run`, and you'll be back at the 
 
 Next, you may want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
-Fake ships are for developers. If you want to learn more about programming, app development, or core development on Urbit, look at our [courses](./courses/README.md) section to get started.
+Fake ships are for developers. If you want to learn more about programming, app development, or core development on Urbit, look at our [courses](./build-on-urbit) section to get started.
 
 {% endtab %}
 {% endtabs %}

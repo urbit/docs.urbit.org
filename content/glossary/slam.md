@@ -4,5 +4,5 @@
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
-- [Hoon School: doors](../courses/hoon-school/K-doors.md): A guide to cores including gates.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.
+- [Hoon School: doors](../build-on-urbit/hoon-school/K-doors.md): A guide to cores including gates.

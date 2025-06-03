@@ -4,7 +4,7 @@ Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global,
 
 The most common way to use Clay is to mount a Clay node in a Unix directory. The mounted directory is always at the root of your pier directory.
 
-For more information on Clay, see the [Overview](../../system/kernel/clay/README.md), and additional usage information at [Using Clay](../../system/kernel/clay/guides/using.md).
+For more information on Clay, see the [Overview](../../urbit-os/kernel/clay), and additional usage information at [Using Clay](../../urbit-os/kernel/clay/guides/using.md).
 
 ### Quickstart {#quickstart}
 
@@ -207,7 +207,7 @@ Unmounts the Unix path `/foo`.
 
 Merges a source `desk` into a target `desk`.
 
-This can optionally include a [merge strategy](../../system/kernel/clay/guides/using.md#merging):
+This can optionally include a [merge strategy](../../urbit-os/kernel/clay/guides/using.md#merging):
 
 ```
 |merge %target-desk ~source-ship %source-desk, =gem %strategy

@@ -4,5 +4,5 @@ A `%gift` [card](card.md) is an effect produced by [agents](agent.md) and [threa
 
 #### Further reading
 
-- [App school: cards](../courses/app-school/5-cards.md): A lesson on cards, which covers `%gift`s.
-- [App school: subscriptions](../courses/app-school/8-subscriptions.md): A lesson on subscriptions.
+- [App school: cards](../build-on-urbit/app-school/5-cards.md): A lesson on cards, which covers `%gift`s.
+- [App school: subscriptions](../build-on-urbit/app-school/8-subscriptions.md): A lesson on subscriptions.

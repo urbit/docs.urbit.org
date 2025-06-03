@@ -6,4 +6,4 @@ The keyfile is used as an argument in the command line when booting a ship. Duri
 
 ### Further Reading {#further-reading}
 
-- [Installation Guide](../manual/getting-started): Instructions on using a keyfile to boot a ship.
+- [Installation Guide](../get-on-urbit.md): Instructions on using a keyfile to boot a ship.

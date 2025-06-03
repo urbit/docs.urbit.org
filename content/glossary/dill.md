@@ -12,4 +12,4 @@ Dill is located at `/base/sys/vane/dill.hoon` within [Arvo](arvo.md).
 
 ### Further Reading {#further-reading}
 
-- [The Dill tutorial](../system/kernel/dill): A technical guide to the Dill vane.
+- [The Dill tutorial](../urbit-os/kernel/dill) - A technical guide to the Dill vane.

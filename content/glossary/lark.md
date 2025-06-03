@@ -23,4 +23,4 @@ A couple of examples in the [dojo](dojo.md):
 
 #### Further Reading
 
-- [Hoon School Lesson 6: Trees and Addressing](../courses/hoon-school/G-trees.md)
+- [Hoon School Lesson 6: Trees and Addressing](../build-on-urbit/hoon-school/G-trees.md)

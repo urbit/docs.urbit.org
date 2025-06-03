@@ -17,4 +17,4 @@ Some groups may also not allow comet membership.
 
 ### Further reading {#further-reading}
 
-- [Creating a Comet](../manual/getting-started/self-hosted/cli.md): A guide to spinning up a comet of your own.
+- [Creating a Comet](../get-on-urbit.md): A guide to spinning up a comet of your own.

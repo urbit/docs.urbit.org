@@ -6,5 +6,5 @@ The Hoon standard library and compiler is located in `/base/sys/hoon.hoon` withi
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.
 - [Why Hoon?](https://urbit.org/blog/why-hoon): A blog post that explains why Urbit uses its own programming language.

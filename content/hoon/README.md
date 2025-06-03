@@ -4,10 +4,7 @@ We're often asked why Urbit is written in a new programming language, Hoon, rath
 
 This document provides a high-level rationale for that decision, and covers some of the features of Hoon that set it apart from others.
 
-If you're looking to learn Hoon, the best place to start is [Hoon School](../build-on-urbit/hoon-school) in the [Courses](../build-on-urbit) section. Additionally, [Hoon Workbook](examples) contains a number of interesting exercises to hone your Hoon skills.
-
-- [Hoon School](../build-on-urbit/hoon-school) - Learn the fundamentals of the Hoon programming language at your own pace with an in-depth tutorial including exercises.
-- [Hoon Workbook](examples) - A number of examples and exercises to hone your Hoon skills.
+If you're looking to learn Hoon, the best place to start is [Hoon School](../build-on-urbit/hoon-school).
 
 ## Why is Hoon the way it is? {#why-is-hoon-the-way-it-is}
 

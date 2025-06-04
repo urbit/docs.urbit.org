@@ -1,13 +1,15 @@
 # Kernel
 
-- [Arvo](arvo) - Arvo is the kernel itself.
-- [Ames](ames) - Ames is the name of our network and the vane that communicates over it. It's an encrypted P2P network composed of instances of the Arvo operating system.
-- [Behn](behn) - Behn is our timer. It allows vanes and applications to set and timer events, which are managed in a simple priority queue.
-- [Clay](clay) - Clay is our filesystem and revision-control system.
-- [Dill](dill) - Dill is our terminal driver. Unix sends keyboard events to dill from the terminal, and dill produces terminal output.
-- [Eyre](eyre) - Eyre is our HTTP server. Unix sends HTTP messages to Eyre, and Eyre produces HTTP messages in response.
-- [Gall](gall) - Gall is the vane for controlling userspace apps.
-- [Iris](iris) - Iris is our HTTP client.
-- [Jael](jael) - Jael manages keys and Azimuth state.
-- [Khan](khan) - Khan is our thread dispatcher.
-- [Lick](lick) - Lick is the IPC vane, for communicating with processes on the host.
+Guides and API documentation for the Urbit OS kernel, including Arvo and the various modules.
+
+- [Arvo](arvo) - The kernel itself. Implements the event loop and otherwise acts as air-traffic-control between the modules.
+- [Ames](ames) - Ames is the name of our encrypted peer-to-peer networking protocol and the module that communicates over it.
+- [Behn](behn) - Timer module. Allows Urbit OS and third-party applications to set and respond to timer events.
+- [Clay](clay) - Revision-controlled filesystem.
+- [Dill](dill) - Terminal driver. The Urbit runtime sends keyboard events to Dill from the terminal, and Dill produces terminal output.
+- [Eyre](eyre) - HTTP server. The runtime sends HTTP requests to Eyre, and Eyre forms HTTP responses.
+- [Gall](gall) - A framework for running state machines and third-party applications.
+- [Iris](iris) - HTTP client.
+- [Jael](jael) - Manages networking keys and Azimuth state.
+- [Khan](khan) - Thread dispatcher, the kernel's alternative to [spider](../../glossary/spider.md).
+- [Lick](lick) - IPC module for communicating with processes on the host machine.

@@ -1380,7 +1380,7 @@ Make an HTTP request via Iris, but don't wait for the response.
 
 #### Accepts
 
-A [`request:http`](../../../kernel/eyre/reference/data-types.md#requesthttp) "BROKEN_ANCHOR".
+A [`request:http`](../../../kernel/eyre/reference/data-types.md#requesthttp).
 
 #### Produces
 

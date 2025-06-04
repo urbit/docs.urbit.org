@@ -294,7 +294,7 @@ The type for messages initiated by our agent. This is opposed to [`gift:agent`](
   ```
   You can refer to the `/sys/lull.hoon` source code for all the possible vane tasks, or see each vane's API Reference section in the [Arvo documentation](../../arvo)
 - `%pyre`: This is for aborting side-effects initiated during agent installation. The `tang` is an error message.
-- `%grow`/`%tomb`/`%cull`: These are used for publishing and managing data available for remote scries. For more information, see the [remote scries guide](../../../../build-on-urbit/guides/guides/remote-scry.md).
+- `%grow`/`%tomb`/`%cull`: These are used for publishing and managing data available for remote scries. For more information, see the [remote scries guide](../../../../build-on-urbit/userspace/guides/remote-scry.md).
 
 A `note:agent` is always wrapped in a `%pass` [`card:agent`](#cardagent).
 

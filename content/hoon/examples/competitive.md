@@ -373,4 +373,4 @@ This last case can be handled with a couple of expedients:
     In general, if you see an error like `find.fork`, it means that the type system is confused by your use of a too general of a type for a particular case.  Use the assertion runes to correct its assumption.
 
 - [Testing Code](../../build-on-urbit/hoon-school/I-testing.md) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
-- [Unit Tests](../../build-on-urbit/guides/guides/unit-tests.md)
+- [Unit Tests](../../build-on-urbit/userspace/guides/unit-tests.md)

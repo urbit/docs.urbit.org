@@ -131,7 +131,7 @@ A scry with a `%t` care, an agent in `q.beak` and a path of `//1/some/path` will
 
 Note the version number `1` for scries to Gall's remote scry namespace.
 
-See the [remote scry guide](../../../../build-on-urbit/guides/guides/remote-scry.md) for more details.
+See the [remote scry guide](../../../../build-on-urbit/userspace/guides/remote-scry.md) for more details.
 
 #### Produces
 
@@ -219,7 +219,7 @@ A scry with a `%w` care and an agent in `q.beak` will get the latest revision nu
 
 As with `%gt` and `%gz` scries, this requires a version number `1` after the `//`.
 
-See the [remote scry guide](../../../../build-on-urbit/guides/guides/remote-scry.md) for more details.
+See the [remote scry guide](../../../../build-on-urbit/userspace/guides/remote-scry.md) for more details.
 
 #### Produces
 
@@ -235,7 +235,7 @@ A scry with a `%x` care and an agent in `q.beak` will get the value bound at the
 [%gx /[ship]/[agent]/[file revision]//[file path]
 ```
 
-See the [remote scry guide](../../../../build-on-urbit/guides/guides/remote-scry.md) for more details.
+See the [remote scry guide](../../../../build-on-urbit/userspace/guides/remote-scry.md) for more details.
 
 #### Produces
 
@@ -249,7 +249,7 @@ A scry with a `%z` care and an agent in `q.beak` will get the hash identifier of
 
 As with `%gt` and `%gw` scries, this requires a version number `1` after the `//`.
 
-See the [remote scry guide](../../../../build-on-urbit/guides/guides/remote-scry.md) for more details.
+See the [remote scry guide](../../../../build-on-urbit/userspace/guides/remote-scry.md) for more details.
 
 #### Produces
 

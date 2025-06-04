@@ -1391,7 +1391,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
 
 2.  Comparison to the reference Urbit binary can be done with a second development ship and the same Hoon library and generator.
 
-3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../../../build-on-urbit/hoon-school/I-testing.md) and the [testing guide](../../guides/guides/unit-tests.md).
+3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../../../build-on-urbit/hoon-school/I-testing.md) and the [testing guide](../../userspace/guides/unit-tests.md).
 
     ```hoon
     > -test %/tests/lib/trig-rs ~

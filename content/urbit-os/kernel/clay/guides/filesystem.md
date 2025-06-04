@@ -26,7 +26,7 @@ A desk is an independently revision-controlled branch of a ship that uses the Cl
 
 - `sys.kelvin` - This specifies the version of Arvo the desk is compatible with. This file is mandatory in all desks.
 - `desk.bill` - This file specifies the Gall agents on a desk which should be automatically started when it's installed. This file may be omitted if there are no agents to start.
-- `desk.docket-0` - This file configures the tile, [glob](../../../../build-on-urbit/guides/reference/dist/glob.md) and other metadata for apps with a front-end. This file may be omitted if the desk does not have a tile or front-end to be installed. This file is versioned so the number appended may change in the future as changes to its specification are made. See the [Docket File](../../../../build-on-urbit/guides/reference/dist/docket.md) documentation for more details.
+- `desk.docket-0` - This file configures the tile, [glob](../../../../build-on-urbit/userspace/reference/dist/glob.md) and other metadata for apps with a front-end. This file may be omitted if the desk does not have a tile or front-end to be installed. This file is versioned so the number appended may change in the future as changes to its specification are made. See the [Docket File](../../../../build-on-urbit/userspace/reference/dist/docket.md) documentation for more details.
 - `desk.ship` - This specifies the original publisher of the desk and is useful if a desk is being republished. It is optional and may be omitted.
 
-For more details of creating and distributing desks, see the [Software Distribution](../../../../build-on-urbit/guides/guides/software-distribution.md) documentation.
+For more details of creating and distributing desks, see the [Software Distribution](../../../../build-on-urbit/userspace/guides/software-distribution.md) documentation.

@@ -1,6 +1,6 @@
 # Examples
 
-Hoon language examples and exercises.
+Example solutions to programming exercises written in Hoon. If you've already [learned Hoon](../../build-on-urbit/hoon-school), you can try to solve these yourself before reading the solutions provided.
 
 - [ABC Blocks](abc-blocks.md) - Spell words with blocks.
 - [Competitive Programming](competitive.md) - Various exercises.

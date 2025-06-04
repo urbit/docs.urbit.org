@@ -2,6 +2,8 @@
 
 Reference information for Hoon language features.
 
+This section contains miscallaneous reference information for Hoon, including runes and standard library functions, types, and error messages.
+
 - [Arvo](arvo.md) - Reference documentation for a selection of `/sys/arvo.hoon`'s types and functions.
 - [Auras](auras.md) - Atomic auras.
 - [Basic Types](basic.md) - Basic type structures in Hoon.

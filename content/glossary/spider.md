@@ -4,4 +4,4 @@
 
 ### Further Reading {#further-reading}
 
-- [Threads guide](../userspace/threads/tutorials/basics/fundamentals.md): learn how to write threads.
+- [Threads guide](../urbit-os/base/threads/tutorials/basics/fundamentals.md): learn how to write threads.

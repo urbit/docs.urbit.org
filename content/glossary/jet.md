@@ -5,4 +5,4 @@
 #### Further reading
 
 - [Jet writing reference](../build-on-urbit/runtime/guides/jetting.md): developer documentation on how to write jets.
-- [Nock documentation](../nock/reference/definition.md): how Nock works.
+- [Nock documentation](../nock/definition.md): how Nock works.

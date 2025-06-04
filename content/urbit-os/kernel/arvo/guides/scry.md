@@ -1,6 +1,6 @@
 # Scries
 
-This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](../../../../userspace/apps/guides/remote-scry.md).
+This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](../../../../build-on-urbit/guides/guides/remote-scry.md).
 
 ## What is a scry? {#what-is-a-scry}
 

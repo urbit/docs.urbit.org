@@ -51,6 +51,6 @@ Here is the reference material for each section of this walkthrough.
 
 ### Desk and Glob {#desk-and-glob}
 
-- [App publishing/distribution docs](../../userspace/apps/guides/software-distribution.md) - Documentation covering third party desk composition, publishing and distribution.
-- [Glob documentation](../../userspace/apps/reference/dist/glob.md) - Comprehensive documentation of handling front-end files.
-- [Desk publishing guide](../../userspace/apps/guides/software-distribution.md) - A step-by-step guide to creating and publishing a desk.
+- [App publishing/distribution docs](../guides/guides/software-distribution.md) - Documentation covering third party desk composition, publishing and distribution.
+- [Glob documentation](../guides/reference/dist/glob.md) - Comprehensive documentation of handling front-end files.
+- [Desk publishing guide](../guides/guides/software-distribution.md) - A step-by-step guide to creating and publishing a desk.

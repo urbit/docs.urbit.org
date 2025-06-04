@@ -1380,7 +1380,7 @@ Make an HTTP request via Iris, but don't wait for the response.
 
 #### Accepts
 
-A [`request:http`](../../../urbit-os/kernel/eyre/reference/data-types.md#requesthttp).
+A [`request:http`](../../../kernel/eyre/reference/data-types.md#requesthttp) "BROKEN_ANCHOR".
 
 #### Produces
 
@@ -1447,7 +1447,7 @@ Nothing.
 
 #### Produces
 
-A [`client-response:iris`](../../../urbit-os/kernel/iris/reference/data-types.md#client-response).
+A [`client-response:iris`](../../../kernel/iris/reference/data-types.md#client-response).
 
 #### Source
 
@@ -1942,11 +1942,11 @@ Raw read from Clay.
 
 #### Accepts
 
-A pair of `ship` and [`riff:clay`](../../../urbit-os/kernel/clay/reference/data-types.md#riff).
+A pair of `ship` and [`riff:clay`](../../../kernel/clay/reference/data-types.md#riff).
 
 #### Produces
 
-A [`riot:clay`](../../../urbit-os/kernel/clay/reference/data-types.md#riot).
+A [`riot:clay`](../../../kernel/clay/reference/data-types.md#riot).
 
 #### Source
 
@@ -2076,7 +2076,7 @@ The `wire` to listen on.
 
 #### Produces
 
-A [`riot:clay`](../../../urbit-os/kernel/clay/reference/data-types.md#riot).
+A [`riot:clay`](../../../kernel/clay/reference/data-types.md#riot).
 
 #### Source
 
@@ -2294,7 +2294,7 @@ Send a wrapped Dill task to Dill.
 
 #### Accepts
 
-A [`flog:dill`](../../../urbit-os/kernel/dill/reference/data-types.md#flog).
+A [`flog:dill`](../../../kernel/dill/reference/data-types.md#flog).
 
 #### Produces
 

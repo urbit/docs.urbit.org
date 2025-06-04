@@ -60,3 +60,12 @@ You don't need to learn Nock to write Hoon or even work on most of the runtime. 
 
 This section includes guides on Nock, but you can find a more structured explanation of Nock in the opening sections of [Core Academy](../build-on-urbit/core-academy).
 
+## Examples
+- [Decrement](decrement.md) - Walk through implementing decrement in Nock.
+- [Implementations](implementations.md) - Nock interpreter implementations in various languages.
+- [Fast Hints and Jets](jetting.md) - Learn about jetting in Nock.
+
+## Reference
+- [Definition](definition.md) - The formal definition of Nock.
+- [Specification](specification.md) - Details of the Nock specification and instructions.
+

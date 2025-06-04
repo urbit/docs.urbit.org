@@ -56,7 +56,7 @@ nock(a)             *a
 
 Everything in Urbit OS compiles to Nock; Nock is interpreted by the Urbit runtime written in C.
 
-You don't need to learn Nock to write Hoon or even work on most of the runtime. But it is fun.
+You don't need to learn Nock to write Hoon or even work on most of the runtime. But it is fun, and in doing so you'll see why Hoon has several of the properties it has.
 
 This section includes guides on Nock, but you can find a more structured explanation of Nock in the opening sections of [Core Academy](../build-on-urbit/core-academy).
 

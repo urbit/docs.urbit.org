@@ -176,7 +176,7 @@ You are now inside a `screen` session. You can boot your Urbit with the command 
 
 Your planet will begin to boot up, which might take a few minutes. You'll know your planet has booted when you see something like this in the terminal:
 
-```sh
+```
 ~sampel-palnet:dojo>
 ```
 
@@ -236,7 +236,7 @@ Now that you're in a `screen` session, you can mine a new comet with the command
 
 It might take a few minutes to boot up and mine a comet. You'll know your comet has booted when you see something like this in the terminal:
 
-```sh
+```
 ~sampel_litzod:dojo>
 ```
 

@@ -7,7 +7,7 @@ This guide will walk through the steps of getting an Urbit ID, downloading its k
 {% hint style="warning" %}
 ## Get on Urbit faster
 
-If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offer a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
+If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offers a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
 
 {% endhint %}
 

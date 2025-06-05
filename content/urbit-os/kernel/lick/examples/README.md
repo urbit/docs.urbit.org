@@ -1,5 +1,5 @@
 # Examples
 
-### [Example](../../iris/examples/example.md) {#exampleirisexamplesexamplemd}
+### [Example](examples.md) {#example}
 
-An example of using Khan to run a thread.
+An example of using Lick to talk to a receipt printer.

@@ -69,8 +69,9 @@ For further details of globs, see the [Glob](glob.md) document.
 ## Sections {#sections}
 
 - [Glob](glob.md) - Documentation of `glob`s (client bundles).
-
 - [Docket Files](docket.md) - Documentation of docket files.
+
+## Further reading {#further-reading}
 
 - [Guide](../../guides/software-distribution.md) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
 

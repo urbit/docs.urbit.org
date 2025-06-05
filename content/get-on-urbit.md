@@ -187,7 +187,7 @@ This is the Dojo, Urbit's command-line interface.
 For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
 {% hint %}
-## Linux users
+## Linux default port
 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
@@ -247,7 +247,7 @@ This is the Dojo, Urbit's command-line interface.
 For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
 {% hint %}
-## Linux users
+## Linux default port
 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 

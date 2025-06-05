@@ -18,13 +18,13 @@ Here is the basic structure of the app we'll be building:
 
 ## Sections {#sections}
 
-- [1. Types](1-types.md) - Creating the `/sur` structure file for our `%journal` agent.
-- [2. Agent](2-agent.md) - Creating the `%journal` agent itself.
-- [3. JSON](3-json.md) - Writing a library to convert between our agent's marks and JSON. This lets our React front-end poke our agent, and our agent send updates back to it.
-- [4. Marks](4-marks.md) - Creating the mark files for the pokes our agent takes and updates it sends out.
-- [5. Eyre](5-eyre.md) - A brief overview of how the webserver vane Eyre works.
-- [6. React App Setup](6-react-setup.md) - Creating a new React app, installing the required packages, and setting up some basic things for our front-end.
-- [7. React App Logic](7-app-logic.md) - Analyzing the core logic of our React app, with particular focus on using methods of the `Urbit()` class from `@urbit/http-api` to communicate with our agent.
-- [8. Desk and Glob](8-desk.md) - Building and "globbing" our front-end, and putting together a desk for distribution.
-- [9. Summary](9-final.md) - Some final comments and additional resources.
+- [1. Types](./1-types.md) - Creating the `/sur` structure file for our `%journal` agent.
+- [2. Agent](./2-agent.md) - Creating the `%journal` agent itself.
+- [3. JSON](./3-json.md) - Writing a library to convert between our agent's marks and JSON. This lets our React front-end poke our agent, and our agent send updates back to it.
+- [4. Marks](./4-marks.md) - Creating the mark files for the pokes our agent takes and updates it sends out.
+- [5. Eyre](./5-eyre.md) - A brief overview of how the webserver vane Eyre works.
+- [6. React App Setup](./6-react-setup.md) - Creating a new React app, installing the required packages, and setting up some basic things for our front-end.
+- [7. React App Logic](./7-app-logic.md) - Analyzing the core logic of our React app, with particular focus on using methods of the `Urbit()` class from `@urbit/http-api` to communicate with our agent.
+- [8. Desk and Glob](./8-desk.md) - Building and "globbing" our front-end, and putting together a desk for distribution.
+- [9. Summary](./9-final.md) - Some final comments and additional resources.
 

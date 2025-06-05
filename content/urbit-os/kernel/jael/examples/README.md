@@ -1,5 +1,3 @@
 # Examples
 
-### [Examples](examples.md) {#examplesexamplesmd}
-
-Practical examples of using Jael's `task`s.
+- [Examples](examples.md) - Practical examples of using Jael's `task`s.

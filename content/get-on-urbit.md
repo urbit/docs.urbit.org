@@ -16,7 +16,7 @@ You will need:
 - Basic familiarity with crypto wallets and some ETH to buy a planet, unless you want to use a free disposable ID.
 - A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. (You can usually get away with 2GB of RAM plus a swapfile and less disk space, but it might become a problem in the future as your Urbit grows.)
 
-If you want to run Urbit on a Windows computer you should be able to do so with Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.
+(If you want to run Urbit on a Windows computer you should be able to do so with Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.)
 
 {% stepper %}
 {% step %}

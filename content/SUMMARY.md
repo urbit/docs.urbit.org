@@ -82,8 +82,8 @@
             * [File Format](build-on-urbit/tools/docs-app/file-format.md)
             * [Index File](build-on-urbit/tools/docs-app/index-file.md)
             * [Suggested Structure](build-on-urbit/tools/docs-app/structure.md)
-    * [Guides](build-on-urbit/guides) "BROKEN_LINK"
-        * [Guides](build-on-urbit/userspace/guides) "BROKEN_LINK"
+    * [Userspace](build-on-urbit/userspace)
+        * [Guides](build-on-urbit/userspace/guides)
             * [Remote Scry](build-on-urbit/userspace/guides/remote-scry.md)
             * [Command-Line Apps](build-on-urbit/userspace/guides/cli-tutorial.md)
             * [Software Distribution](build-on-urbit/userspace/guides/software-distribution.md)

@@ -22,7 +22,7 @@ We also suggest to the reader to consult the [glossary](../../../glossary) while
 
 Arvo is a new operating system built to run a new, peer-to-peer internet whereby users own and manage their own data. 
 
-Today, your life online is spread out across multiple services hosted on massive data centres. These are cost centers for the corporate web platforms that use them, centralized points of failure for the networks the modern world depends on, and an ideal place for foreign, domestic, state and non-state actors to watch everything you say and do across every networked device in your home.
+Today, your life online is spread out across multiple services hosted on massive data centres. These are cost centers for the corporate web platforms that use them, centralized points of failure for the networks the modern world depends on, and an ideal position for foreign, domestic, state and non-state actors to monitor network traffic.
 
 Urbit is an effort to replace this with one server, ideally in your own home, to contain all the apps and data you care about. It's not a platform, it's not a service, it's yours: you own your software, hardware, and identity completely. Every message between two Urbit servers is encrypted in transit, and shared just between them.
 

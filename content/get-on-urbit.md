@@ -201,7 +201,7 @@ sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run
 
 For ease of portability the Urbit runtime has made a copy of itself in the `sampel-palnet` folder, so you don't need the separate `urbit` executable anymore.
 
-Spin up your planet again by running `./sampel-palnet/.run`, and you'll be back at the Dojo.
+Spin up your planet again by running `sampel-palnet/.run`, and you'll be back at the Dojo.
 
 Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser.
 
@@ -261,7 +261,7 @@ sudo setcap 'cap_net_bind_service=+ep' mycomet/.run
 
 For ease of portability the Urbit runtime has made a copy of itself in the `mycomet` folder, so you don't need the separate `urbit` executable anymore.
 
-Spin up your comet again by running `./mycomet/.run`, and you'll be back at the Dojo.
+Spin up your comet again by running `mycomet/.run`, and you'll be back at the Dojo.
 
 Comets don't receive software updates by default. If you intend on running this comet for a while and you want to receive updates, run `|ota` in the Dojo.
 
@@ -300,7 +300,7 @@ You can shut the fake ship down by typing `|exit` or pressing `Ctrl+D`.
 
 For ease of portability the Urbit runtime has made a copy of itself in the `zod` folder, so you don't need the separate `urbit` executable anymore.
 
-Spin up your fake ship again by running `./zod/.run`, and you'll be back at the Dojo.
+Spin up your fake ship again by running `zod/.run`, and you'll be back at the Dojo.
 
 Next, you may want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 

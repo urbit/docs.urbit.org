@@ -32,7 +32,7 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [2n: Functional Hacks](./2n.md) - Utility functions and functional programming helpers.
 - [2o: Normalizing Containers](./2o.md) - Additional container types and operations.
 - [2p: Serialization](./2p.md) - Functions for serializing and deserializing data structures.
-- [2q: Molds and Mold-builders (./Layer 2)](2q.md) - Type construction and validation functions for creating and working with Hoon types.
+- [2q: Molds and Mold-builders (Layer 2)](2q.md) - Type construction and validation functions for creating and working with Hoon types.
 
 ## Layer 3: Advanced Operations {#layer-3-advanced-operations}
 
@@ -42,20 +42,20 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [3d: SHA Hash Family](./3d.md) - Cryptographic hash functions from the SHA family.
 - [3e: AES Encryption](./3e.md) - Advanced Encryption Standard functions (removed from current stdlib).
 - [3f: Scrambling](./3f.md) - Functions for data scrambling, obfuscation, and pseudo-random transformations.
-- [3g: Molds and Mold-builders (./Layer 3)](3g.md) - Advanced type system operations and mold construction utilities.
+- [3g: Molds and Mold-builders (Layer 3)](3g.md) - Advanced type system operations and mold construction utilities.
 
 ## Layer 4: Text Processing and I/O {#layer-4-text-processing-and-io}
 
 - [4a: Exotic Bases](./4a.md) - Functions for converting between different number bases and representations.
 - [4b: Text Processing](./4b.md) - String and text manipulation functions including parsing and formatting.
 - [4c: Tank Printer](./4c.md) - Pretty-printing functions for structured output and debugging.
-- [4d: Parsing (./Tracing)](4d.md) - Parsing utilities with tracing support for debugging parser errors.
-- [4e: Parsing (./Combinators)](4e.md) - Parser combinator functions for building complex parsers.
-- [4f: Parsing (./Rule Builders)](4f.md) - Functions for building parsing rules and grammar definitions.
-- [4g: Parsing (./Outside Caller)](4g.md) - Interface functions for calling parsers from external code.
-- [4h: Parsing (./ASCII Glyphs)](4h.md) - Parsers for ASCII characters and common text symbols.
-- [4i: Parsing (./Useful Idioms)](4i.md) - Common parsing patterns and idiomatic parser constructions.
-- [4j: Parsing (./Bases and Base Digits)](4j.md) - Parsers for numbers in various bases and digit representations.
+- [4d: Parsing (Tracing)](4d.md) - Parsing utilities with tracing support for debugging parser errors.
+- [4e: Parsing (Combinators)](4e.md) - Parser combinator functions for building complex parsers.
+- [4f: Parsing (Rule Builders)](4f.md) - Functions for building parsing rules and grammar definitions.
+- [4g: Parsing (Outside Caller)](4g.md) - Interface functions for calling parsers from external code.
+- [4h: Parsing (ASCII Glyphs)](4h.md) - Parsers for ASCII characters and common text symbols.
+- [4i: Parsing (Useful Idioms)](4i.md) - Common parsing patterns and idiomatic parser constructions.
+- [4j: Parsing (Bases and Base Digits)](4j.md) - Parsers for numbers in various bases and digit representations.
 - [4k: Atom Printing](./4k.md) - Functions for converting atoms to various textual representations.
 - [4l: Atom Parsing](./4l.md) - Functions for parsing text into atoms with various auras.
 - [4m: Formatting Functions](./4m.md) - Text formatting and pretty-printing utilities.

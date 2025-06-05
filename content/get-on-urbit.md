@@ -63,7 +63,7 @@ Once you've got an Urbit ID, the next step is to download its private [networkin
 
 If you got an L1 planet from somewhere like OpenSea, it was likely transferred directly to your Ethereum wallet. Here are the steps to get its keyfile:
 
-1. Go to [Bridge](https://bridge.urbit.org).
+1. Go to [bridge.urbit.org](https://bridge.urbit.org).
 2. Login with WalletConnect or MetaMask if you use that.
 3. Click on your planet, which should be listed there.
 4. Go to the "OS" section.
@@ -71,7 +71,7 @@ If you got an L1 planet from somewhere like OpenSea, it was likely transferred d
 6. Make sure you have a little ETH to pay the transaction fee, then click on "Set Networking Keys"
 7. Click "Send Transaction"
 8. Approve the transaction in your wallet.
-9. Wait until the transaction completes and it says "Network Keys have been set" in Bridge.
+9. Wait until the transaction completes and it says "Network Keys have been set" in [bridge.urbit.org](https://bridge.urbit.org).
 10. Click "Download Keyfile"
 11. A file called something like `sampel-palnet-1.key` will have been downloaded. Don't lose it.
 
@@ -95,9 +95,9 @@ If you bought an L2 planet, you likely received an invite link that looks like `
 
 {% hint %}
 ## Already have a planet?
-If you already claimed this planet at some point and forgot to download the passport, you'll need to go and download the keyfile from [Bridge](https://bridge.urbit.org):
+If you already claimed this planet at some point and forgot to download the passport, you'll need to go and download the keyfile from [bridge.urbit.org](https://bridge.urbit.org):
 
-1. Go to [Bridge](https://bridge.urbit.org).
+1. Go to [bridge.urbit.org](https://bridge.urbit.org).
 2. Click the "Master Ticket" login option.
 3. Enter the planet name and Master Ticket code, and hit "Login".
 4. Go to the "OS" section.

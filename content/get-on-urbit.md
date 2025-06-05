@@ -22,7 +22,7 @@ If you want to run Urbit on a Windows computer you should be able to do so with 
 {% step %}
 ## Get an Urbit ID {#get-an-urbit-id}
 
-Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are [five ranks of Urbit ID](manual/id/get-id.md#types-of-id), but the type an ordinary user needs is a planet, which has a name like "\~sampel-palnet". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one from a marketplace.
+Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are [five ranks of Urbit ID](./manual/id/get-id.md#types-of-id), but the type an ordinary user needs is a planet, which has a name like "\~sampel-palnet". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one from a marketplace.
 
 {% hint %}
 ## Get on Urbit for free

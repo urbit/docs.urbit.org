@@ -2,6 +2,4 @@
 
 Reference information about Gall agents and related utilities.
 
-## [Software Distribution](dist) {#software-distributiondist}
-
-Details of publishing and distributing apps.
+- [Software Distribution](./dist) - Details of publishing and distributing apps.

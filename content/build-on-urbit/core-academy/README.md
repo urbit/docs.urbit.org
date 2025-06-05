@@ -8,8 +8,8 @@ This written course is adapted from the teaching notes for the 2023 cohort of Co
 
 Video recordings of the 2023 Core Academy are [available to watch here](https://www.youtube.com/playlist?list=PLYGEMSwLguIGgrEGwxu2AAbESpfF_LRKx). The order in which vanes are covered differs between this written material and the recorded lectures, but aside from some Q&A in the lectures it's all the same information.
 
-Preliminary material:
+## Preliminary material {#preliminary-material}
 
 - [Hoon School, Text Parsing III](../hoon-school/Q2-parsing.md)
 - [Hoon School, Generic and Variant Cores](../hoon-school/R-metals.md)
-- [The Nested Cores Pattern](../../hoon/guides/engine-pattern.md)
+- [The Engine Pattern](../../hoon/guides/engine-pattern.md)

@@ -26,11 +26,11 @@ A thread may also be run from the dojo by prefixing its name with `-` and giving
 ## Thread basics {#thread-basics}
 
 This guide walks you through the fundamental things you need to know to write threads. They focus on basic thread composition and so don't touch on interacting with threads from gall agents and such. The included examples can all just be run from the dojo.
-1. [Thread Fundamentals](tutorials/basics/fundamentals.md) - Basic information and overview of threads, strands, `form` & `pure`.
-2. [Micgal and Bind](tutorials/basics/bind.md) - Covers using micgal and `bind` to chain strands.
-3. [Strand Input](tutorials/basics/input.md) - What strands receive as input
-4. [Strand Output](tutorials/basics/output.md) - What strands produce
-5. [Summary](tutorials/basics/summary.md)
+1. [Thread Fundamentals](./tutorials/basics/fundamentals.md) - Basic information and overview of threads, strands, `form` & `pure`.
+2. [Micgal and Bind](./tutorials/basics/bind.md) - Covers using micgal and `bind` to chain strands.
+3. [Strand Input](./tutorials/basics/input.md) - What strands receive as input.
+4. [Strand Output](./tutorials/basics/output.md) - What strands produce.
+5. [Summary](./tutorials/basics/summary.md) - Summary of the above.
 
 ## Gall {#gall}
 
@@ -44,18 +44,15 @@ These docs walk through the basics of interacting with threads from gall agents.
 
 ## How-tos & Examples {#how-tos-examples}
 
-- [Grab some JSON from a URL](examples/get-json.md) - Here's an example of chaining a couple of external http requests for JSON.
-- [Start a child thread](examples/child-thread.md) - Starting and managing child threads.
-- [Main Loop](examples/main-loop.md) - Some notes and examples of the `strandio` function `main-loop`.
-- [Poke an agent](examples/poke-agent.md) - Example of poking an agent from a thread.
-- [Scry](examples/scry.md) - Scry arvo or an agent.
-- [Take a fact](examples/take-fact.md) - Subscribe to an agent and receive a fact.
+- [Grab some JSON from a URL](./examples/get-json.md) - Here's an example of chaining a couple of external http requests for JSON.
+- [Start a child thread](./examples/child-thread.md) - Starting and managing child threads.
+- [Main Loop](./examples/main-loop.md) - Some notes and examples of the `strandio` function `main-loop`.
+- [Poke an agent](./examples/poke-agent.md) - Example of poking an agent from a thread.
+- [Scry](./examples/scry.md) - Scry arvo or an agent.
+- [Take a fact](./examples/take-fact.md) - Subscribe to an agent and receive a fact.
 
-## [Reference](reference/api.md) {#referencereferenceapimd}
+## Reference
 
-Basic reference information. For usage of particular `strandio` functions just refer directly to `/lib/strandio/hoon` since they're largely self-explanatory.
-
-## [Strandio](reference/strandio.md) {#strandioreferencestrandiomd}
-
-Reference documentation of the Strandio helper library.
+- [Spider API](./reference/api.md) - API reference for the Spider agent.
+- [Strandio](./reference/api.md) - Documentation for the strandio thread helper library.
 

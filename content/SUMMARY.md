@@ -142,6 +142,7 @@
                     * [Bind](urbit-os/base/threads/tutorials/basics/bind.md)
                     * [Input](urbit-os/base/threads/tutorials/basics/input.md)
                     * [Output](urbit-os/base/threads/tutorials/basics/output.md)
+                    * [Summary](urbit-os/base/threads/tutorials/basics/summary.md)
     * [Kernel](urbit-os/kernel)
         * [Arvo](urbit-os/kernel/arvo)
             * [Guides](urbit-os/kernel/arvo/guides)

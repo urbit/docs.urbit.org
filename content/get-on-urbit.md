@@ -1,6 +1,6 @@
 # Get on Urbit
 
-Urbit is two things: Urbit ID, and Urbit OS. To get on the network, you'll need both.
+Urbit is two things: [Urbit ID](./urbit-id), and [Urbit OS](./urbit-os). To get on the network, you'll need both.
 
 This guide will walk through the steps of getting an Urbit ID, downloading its key, installing the Urbit runtime, and using that to boot up your Urbit OS.
 

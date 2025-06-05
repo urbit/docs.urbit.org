@@ -32,7 +32,7 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [2n: Functional Hacks](./2n.md) - Utility functions and functional programming helpers.
 - [2o: Normalizing Containers](./2o.md) - Additional container types and operations.
 - [2p: Serialization](./2p.md) - Functions for serializing and deserializing data structures.
-- [2q: Molds and Mold-builders (Layer 2)](2q.md) - Type construction and validation functions for creating and working with Hoon types.
+- [2q: Molds and Mold-builders](2q.md) - Type construction and validation functions for creating and working with Hoon types.
 
 ## Layer 3: Advanced Operations {#layer-3-advanced-operations}
 
@@ -42,7 +42,7 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [3d: SHA Hash Family](./3d.md) - Cryptographic hash functions from the SHA family.
 - [3e: AES Encryption](./3e.md) - Advanced Encryption Standard functions (removed from current stdlib).
 - [3f: Scrambling](./3f.md) - Functions for data scrambling, obfuscation, and pseudo-random transformations.
-- [3g: Molds and Mold-builders (Layer 3)](3g.md) - Advanced type system operations and mold construction utilities.
+- [3g: Molds and Mold-builders](3g.md) - Advanced type system operations and mold construction utilities.
 
 ## Layer 4: Text Processing and I/O {#layer-4-text-processing-and-io}
 

@@ -78,7 +78,7 @@ If you got an L1 planet from somewhere like OpenSea, it was likely transferred d
 {% hint %}
 ## Don't see "Initialize"?
 
-If the options next to "Networking Keys" are "Reset" and "View" rather than "Initialize", it means your ID's previous owner at one point generated keys for their planet. In that case, click on "Reset", tick the "Factory Reset" box, and continue from step 6.
+If the options next to "Networking Keys" are "Reset" and "View" rather than "Initialize", it means your ID's previous owner at one point generated keys for their planet. In that case, click on "Reset", tick the "Factory Reset" box, and continue from step 6 above.
 {% endhint %}
 
 {% endtab %}

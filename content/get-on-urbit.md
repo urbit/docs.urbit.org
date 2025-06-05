@@ -2,7 +2,7 @@
 
 Getting on Urbit requires two things: an Urbit ID, and a server running Urbit OS.
 
-This guide will walk through the steps of getting an Urbit ID, downloading its key, installing the Urbit runtime, and booting up the Urbit.
+This guide will walk through the steps of getting an Urbit ID, downloading its key, installing the Urbit runtime, and using that to boot up your Urbit OS.
 
 {% hint style="warning" %}
 ## Get on Urbit faster

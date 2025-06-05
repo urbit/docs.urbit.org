@@ -616,5 +616,5 @@ requests={'http://baz.example' 'http://localhost:8080'}
 
 ### Dojo commands {#dojo-commands}
 
-[The `%base` desk](../../base) provides three generators (`|eyre/cors/registry`, `|eyre/cors/approve`, and `|eyre/cors/reject`) to respectively view, approve, and deny origins the ability to make CORS requests. You can try running thorugh the tutorial above with these commands instead of `|pass` tasks.
+[The `%base` desk](../../../base) provides three generators (`|eyre/cors/registry`, `|eyre/cors/approve`, and `|eyre/cors/reject`) to respectively view, approve, and deny origins the ability to make CORS requests. You can try running thorugh the tutorial above with these commands instead of `|pass` tasks.
 

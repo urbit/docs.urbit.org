@@ -8,7 +8,7 @@ The IPC ports Lick creates are Unix domain sockets (`AF_UNIX` address family) of
 
 The format of the full message with header and data sent to and from the socket is as follows:
 
-|1 byte |4 bytes          |n bytes|
+|1 byte |4 bytes          |*n* bytes|
 |-------|-----------------|-------|
 |version|jam size in bytes|jamfile|
 
@@ -18,8 +18,8 @@ The [`+jam`](../../../hoon/reference/stdlib/2p.md#jam)file contains a pair of `$
 
 Here are some libraries that can cue/jam:
 
-- [`pynoun`](https://github.com/urbit/tools)
-- [`nockjs`](https://github.com/urbit/nockjs)
+- [pynoun](https://github.com/urbit/tools)
+- [nockjs](https://github.com/urbit/nockjs)
 - [Rust Noun](https://github.com/urbit/noun)
 
 Lick has no novel data types in its API apart from `$name`, which is just a path representing the name of a socket.

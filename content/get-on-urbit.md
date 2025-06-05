@@ -32,6 +32,8 @@ If you don't want to buy anything at this stage, you can get on the network with
 If you just want to run an Urbit locally for testing/development purposes, without networking, you can boot a "fake ship" that uses an Urbit ID you don't actually own.
 
 To boot a comet or fake ship, [skip straight to Step 3](#get-the-urbit-runtime).
+
+You can also get a planet with [free cloud hosting](#get-on-urbit-faster).
 {% endhint %}
 
 Here are the best places to buy planets:

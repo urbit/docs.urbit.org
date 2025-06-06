@@ -325,7 +325,7 @@ Note that while it spins up pretty fast, `cloud-init` has to update all the pack
 
 Create an account on [Oracle Cloud](https://www.oracle.com/cloud).
 
-### Networking
+#### Networking
 
 Open the menu and click on "Networking", then click on "Virtual cloud networks". Click "Actions" and select "Start VCN Wizard".
 
@@ -353,7 +353,7 @@ Go to the "Security rules" tab, click "Add ingress rules", and add the following
 
 Once you've added these three rules, click "Add ingress rules" at the bottom.
 
-### Instance
+#### Instance
 
 Open the menu and click on "Instances", then click on "Create instance".
 

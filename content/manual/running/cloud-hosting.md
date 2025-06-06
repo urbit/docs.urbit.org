@@ -504,7 +504,7 @@ scp sampel-planet.tar.gz urbit-vps:
 
 It may take a while to upload if your pier is large and/or your internet is slow.
 
-{% /tab %}
+{% endtab %}
 
 {% tab label="If you have a keyfile" %}
 
@@ -518,9 +518,9 @@ scp /path/to/sampel-palnet.key urbit-vps:
 
 Note: you should keep the keyfile until you've completed this guide and your Urbit is booted to be sure it was copied successfully, but afterwards you should also delete that file for security.
 
-{% /tab %}
+{% endtab %}
 
-{% /tabs %}
+{% endtabs %}
 
 Once you've either uploaded your pier or uploaded your key file as the case may be, you can connect to your server:
 
@@ -560,7 +560,7 @@ urbit dock sampel-palnet
 
 That will copy the `urbit` runtime inside the pier.
 
-{% /tab %}
+{% endtab %}
 
 {% tab label="If you have a key file" %}
 
@@ -584,9 +584,9 @@ The key file is only needed when you first boot the ship, so it's good practice 
 rm sampel-palnet.key
 ```
 
-{% /tab %}
+{% endtab %}
 
-{% /tabs %}
+{% endtabs %}
 
 Linux prevents non-root executables from binding privileged ports like 80 and 443 by default, but a script is included in the Cloud-init config to give piers the required permissions. Run the following (replacing `sampel-palnet` with your pier name):
 

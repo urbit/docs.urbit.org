@@ -755,7 +755,7 @@ Disconnect from a remote dojo session:
 
 These tools are mostly useful to developers or similarly technical people.
 
-### `.` {#}
+### `.` {#.}
 
 Make a jamfile and write to disk. A noun is jammed and then written to `pier/.urb/put/path/extension` using a `%sag` `%blit`, saving it as a jamfile.
 
@@ -786,7 +786,7 @@ This is the Nock formula for decrement. If you copy it from `/pier/.urb/put/decr
 99
 ```
 
-### `@` {#}
+### `@` {#@}
 
 Write atom to a file in binary.
 
@@ -2459,10 +2459,10 @@ The hi and message will be displayed in that ship's dojo. This is useful for tes
 #### Arguments
 
 ```
-ship tape
+ship cord
 ```
 
-The target `ship` is mandatory, the `tape` is an optional message.
+The target `ship` is mandatory, the `cord` is an optional message.
 
 #### Example
 
@@ -2485,7 +2485,7 @@ With a message:
 ```
 :: in ~zod's dojo:
 
-> |hi ~bus "hello"
+> |hi ~bus 'hello'
 >=
 hi ~bus successful
 

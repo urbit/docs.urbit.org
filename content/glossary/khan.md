@@ -4,6 +4,6 @@
 
 #### Further reading
 
-- [Khan reference documentation](../system/kernel/khan)
+- [Khan reference documentation](../urbit-os/kernel/khan)
 
 

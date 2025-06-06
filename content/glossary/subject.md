@@ -4,4 +4,4 @@ The **subject** is the [context](context.md) a particular [Hoon](hoon.md) (and [
 
 #### Further reading
 
-- [Hoon School: subject-oriented programming](../courses/hoon-school/O-subject.md): A guide to subject-oriented programming.
+- [Hoon School: subject-oriented programming](../build-on-urbit/hoon-school/O-subject.md): A guide to subject-oriented programming.

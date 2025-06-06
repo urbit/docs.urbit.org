@@ -4,5 +4,5 @@ The **bowl** contains useful data about the current [ship](ship.md) and context.
 
 #### Further reading
 
-- [Gall data-types reference](../system/kernel/gall/reference/data-types.md#bowl): Details of the `bowl` data structure used by Gall.
+- [Gall data-types reference](../urbit-os/kernel/gall/reference/data-types.md#bowl) - Details of the `bowl` data structure used by Gall.
 - [The threads guide](../userspace/threads/tutorials/basics/input.md#bowl): This includes details about the bowl given to threads.

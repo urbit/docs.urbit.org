@@ -153,7 +153,7 @@ In the process of designing naive rollups, we felt it to be of the utmost import
 
 ### Arvo is deterministic {#arvo-is-deterministic}
 
-Crucial to the functionality of Ethereum smart contracts is that they work the same way every time since the Ethereum Virtual Machine is deterministic. Similarly, as the state of Arvo is evolved via [a single pure function](../../system/kernel/arvo/README.md#operating-function), Arvo is deterministic as well. This property makes it well-suited for cases where side effects are unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the name "Hoon smart contract".
+Crucial to the functionality of Ethereum smart contracts is that they work the same way every time since the Ethereum Virtual Machine is deterministic. Similarly, as the state of Arvo is evolved via [a single pure function](../../urbit-os/kernel/arvo/README.md#operating-function), Arvo is deterministic as well. This property makes it well-suited for cases where side effects are unacceptable such as smart contracts, and thus `naive.hoon` is worthy of the name "Hoon smart contract".
 
 ### Restricted standard library {#restricted-standard-library}
 

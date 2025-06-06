@@ -2,7 +2,7 @@
 
 Auras are system of nested "soft types" on [atoms](../../glossary/atom.md) that are used to track metadata about how a particular atom is to be interpreted. This is used for type checking as well as pretty printing.
 
-You can learn more about auras in [Hoon school](../../courses/hoon-school/B-syntax.md#nouns).
+You can learn more about auras in [Hoon school](../../build-on-urbit/hoon-school/B-syntax.md#nouns).
 
 ## Table of Auras {#table-of-auras}
 

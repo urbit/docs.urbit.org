@@ -179,7 +179,7 @@ Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
 
 One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](../../userspace/apps/guides/cli-tutorial.md). We usher the reader there to find an example where `+cold` is used.
 
-### [`+less`](../reference/stdlib/4f.md#less) {#lessreferencestdlib4fmdless}
+### `+less` {#lessreferencestdlib4fmdless}
 
 `+less` builds a `rule` to exclude matches to its first argument.  It is commonly used to filter out an undesired match.
 
@@ -233,7 +233,7 @@ For the remainder of this tutorial we will make use of `+scan` so that we do not
 
 ### Parsing atoms {#parsing-atoms}
 
-[Recall from Hoon School](../../courses/hoon-school/E-types.md) that `cord`s are atoms with the aura `@t` and are typically used to represent strings internally as data, as atoms are faster for the computer to work with than `tape`s, which are `list`s of `@tD` atoms. [`+rash`](../reference/stdlib/4g.md#rash) and [`+rush`](../reference/stdlib/4g.md#rush) are for parsing atoms, with `+rash` being analogous to `+scan` and `+rush` being analogous to `+rust`. Under the hood, `+rash` calls `+scan` after converting the input atom to a `tape`, and `+rush` does similary for `+rust`.
+[Recall from Hoon School](../../build-on-urbit/hoon-school/E-types.md) that `cord`s are atoms with the aura `@t` and are typically used to represent strings internally as data, as atoms are faster for the computer to work with than `tape`s, which are `list`s of `@tD` atoms. [`+rash`](../reference/stdlib/4g.md#rash) and [`+rush`](../reference/stdlib/4g.md#rush) are for parsing atoms, with `+rash` being analogous to `+scan` and `+rush` being analogous to `+rust`. Under the hood, `+rash` calls `+scan` after converting the input atom to a `tape`, and `+rush` does similary for `+rust`.
 
 ## Parser modifiers {#parser-modifiers}
 

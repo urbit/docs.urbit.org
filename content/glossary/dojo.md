@@ -6,4 +6,4 @@ The Dojo is the first thing you encounter after successfully booting your [ship]
 
 ### Further Reading {#further-reading}
 
-- [“Introduction to Hoon”](../courses/hoon-school): A great way to get started with using Hoon in the Dojo.
+- [“Introduction to Hoon”](../build-on-urbit/hoon-school): A great way to get started with using Hoon in the Dojo.

@@ -4,5 +4,5 @@ A **payload** is the [subject](subject.md) of a [core](core.md). It is exists in
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
-  - [“Cores”](../courses/hoon-school/F-cores.md#cores): A Hoon Tutorial lesson that discusses cores.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.
+  - [“Cores”](../build-on-urbit/hoon-school/F-cores.md#cores): A Hoon Tutorial lesson that discusses cores.

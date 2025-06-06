@@ -1203,7 +1203,7 @@ Query the state or [bowl][bowl] of a running agent.
 
 #### Arguments
 
-See the [dbug section of App School lesson 3](https://docs.urbit.org/courses/app-school/3-imports-and-aliases#dbug) for details of usage.
+See the [dbug section of App School lesson 3](https://docs.urbit.org/build-on-urbit/app-school/3-imports-and-aliases#dbug) for details of usage.
 
 #### Example
 

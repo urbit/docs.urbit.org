@@ -28,4 +28,4 @@ A ship creates its own copy of Arvo via a bootstrap sequence known as a [Pill](p
 
 ### Further Reading {#further-reading}
 
-- [The Arvo reference](../system/kernel): An in-depth technical guide to Arvo and its vanes.
+- [The Arvo reference](../urbit-os/kernel): An in-depth technical guide to Arvo and its vanes.

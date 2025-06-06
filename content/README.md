@@ -8,16 +8,16 @@ The developer documentation contains a wealth of guides, examples and reference 
 
 - [Hoon](hoon) - Guides and reference material for Urbit's high-level programming language, Hoon.
 - [Nock](nock) - Guides and reference material for Urbit's low-level assembly language, Nock.
-- [System](system) - Documentation of Urbit's kernel Arvo, the runtime Vere, and the identity system Azimuth.
+- [Urbit OS](urbit-os) - Documentation of Urbit's kernel Arvo, the runtime Vere, and the identity system Azimuth.
 - [Userspace](userspace) - Information about building and publishing apps on Urbit.
-- [Tools](tools) - Documentation of additional and external Urbit-related libraries and apps.
+- [Tools](build-on-urbit/tools) - Documentation of additional and external Urbit-related libraries and apps.
 
 ## Courses
 
 There are in-depth tutorials to teach you the Hoon language, Urbit app development, and other aspects of the system. If you want to learn how to build things on Urbit, these are the best way to start.
 
-- [Hoon Tutorials](courses/hoon-school) - Learn the Hoon language at your own pace.
-- [App & System Tutorials](courses) - Learn application and system development on Urbit.
+- [Hoon Tutorials](build-on-urbit/hoon-school) - Learn the Hoon language at your own pace.
+- [App & System Tutorials](build-on-urbit) - Learn application and system development on Urbit.
 
 ## User Docs
 

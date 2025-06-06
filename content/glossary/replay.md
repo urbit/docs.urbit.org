@@ -4,4 +4,4 @@
 
 ### Further Reading {#further-reading}
 
-- [The Vere tutorial](../system/runtime): An in-depth technical guide to Vere.
+- [The Vere tutorial](../build-on-urbit/runtime): An in-depth technical guide to Vere.

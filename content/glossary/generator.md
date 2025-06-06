@@ -4,5 +4,5 @@ A **generator** is something like a script in [Arvo](arvo.md). Generators are wr
 
 #### Further reading
 
-- [Hoon school: gates](../courses/hoon-school/D-gates.md): This lesson on gates also introduces generators.
-- [Hoon school: text processing](../courses/hoon-school/J-stdlib-text.md#say-generators): This lesson includes `%say` generators.
+- [Hoon school: gates](../build-on-urbit/hoon-school/D-gates.md): This lesson on gates also introduces generators.
+- [Hoon school: text processing](../build-on-urbit/hoon-school/J-stdlib-text.md#say-generators): This lesson includes `%say` generators.

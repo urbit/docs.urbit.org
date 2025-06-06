@@ -4,4 +4,4 @@ A **list** is a basic data structure in [Hoon](hoon.md), similar to an array in 
 
 #### Further Reading
 
-- [Hoon school: syntax](../courses/hoon-school/B-syntax.md#lists): This lesson includes a section on lists.
+- [Hoon school: syntax](../build-on-urbit/hoon-school/B-syntax.md#lists): This lesson includes a section on lists.

@@ -9,4 +9,4 @@ Vere consists of two processes that communicate via a socket: a daemon process i
 ### Further Reading {#further-reading}
 
 - [The Technical Overview](/overview/)
-- [The Vere tutorial](../system/runtime): An in-depth technical guide to Vere.
+- [The Vere tutorial](../build-on-urbit/runtime): An in-depth technical guide to Vere.

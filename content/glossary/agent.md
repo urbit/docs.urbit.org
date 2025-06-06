@@ -6,4 +6,4 @@ Gall agents can variously be treated as databases with developer-defined logic, 
 
 ### Further Reading {#further-reading}
 
-- [App School](../courses/app-school): A comprehensive guide to writing Gall agents.
+- [App School](../build-on-urbit/app-school): A comprehensive guide to writing Gall agents.

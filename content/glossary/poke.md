@@ -4,5 +4,5 @@ A **poke** is a kind of `note` passed from one [agent](agent.md) to another in a
 
 #### Further reading
 
-- [App school: cards](../courses/app-school/5-cards.md): A lesson on cards, which includes pokes.
-- [App school: pokes](../courses/app-school/6-pokes.md): A lesson on pokes.
+- [App school: cards](../build-on-urbit/app-school/5-cards.md): A lesson on cards, which includes pokes.
+- [App school: pokes](../build-on-urbit/app-school/6-pokes.md): A lesson on pokes.

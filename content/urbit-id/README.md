@@ -1,33 +1,34 @@
-# Identity
+# Urbit ID
 
-Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for _Urbit identities_. You need such an identity to use the Arvo network.
+Urbit ID is Urbit's identity standard. It's decentralized, secure, and human-meaningful. It's basis is [a public-key infrastructure (PKI) implemented with NFTs on the Ethereum blockchain](https://urbit.org/blog/pki-maze).
 
-## Arvo vs. Azimuth {#arvo-vs-azimuth}
+You need an Urbit ID to get on the Urbit network. Your Urbit ID allows your Urbit OS server to cryptographically sign every message it sends over the network: everything you see on Urbit really comes from who it says it does.
 
-Urbit is a project, not a single computer system. It has multiple components: Arvo, the operating system, and Azimuth, the identity system. Let's compare them.
+## Network topology {#network-topology}
 
-**Arvo** is an operating system that provides the software for a personal server. These personal servers together constitute the peer-to-peer Arvo network. To make this network work on the social level, Arvo is built to work with a system of scarce and immutable identities.
+Like any peer-to-peer network, Urbit needs topographic affordances for bootstrapping peer discovery. Some notions of governance, ownership, and reputation are nice-to-haves. Urbit solves these issues by dividing the address space into five "ranks":
 
-**Azimuth** is the public-key infrastructure built to be a system of scarce and immutable identities. It consists of a suite of [smart contracts on the Ethereum blockchain](https://github.com/urbit/azimuth) as well as [several apps](concepts/flow.md) run locally on your urbit. Togeter, they determine which Ethereum addresses own which Urbit ID's as well as the public keys needed to communicate with those ID's. All identity-related operations, such as transfers, are governed by Azimuth. Azimuth isn't built strictly for Arvo -- the smart contracts on Ethereum are sufficient to be used as a generalized identity system for other projects. Azimuth is considered to be the technical nomenclature for the PKI, while Urbit ID is the common nomenclature.
+- **Galaxies:** These 2^8 (256) nodes make up Urbit's Galactic Senate, which ratifies governance proposals and votes on smart contract upgrades. The Senate also elects the Board of Directors of the Urbit Foundation. They spawn and sponsor stars.
+- **Stars:** These 2^16 (65,536) nodes distribute software updates to their sponsees. Eventually they may be used for peer discovery. They spawn and sponsor planets.
+- **Planets:** There are 2^32 (~4 billion) nodes are for day-to-day individual usage. They spawn and sponsor moons.
+- **Moons:** Every planet can spawn ~4 billion moons, which are ideal for identifying machines tied to their owner's planet. Today, these are mostly used by app developers to host software distribution nodes on cloud servers.
+- **Comets:** Urbit ID also has room for 2^64 (~18 quintillion) free, anonymous, disposable identities. They aren't sponsored and don't interact with the blockchain at all.
 
-These otherwise-parallel systems meet when you want to connect to the Arvo network. Your Arvo personal server, called your _ship_, needs to be able to prove cryptographically that it is who it says it is. This proof comes in the form of a keyfile, derived from your identity, that you use to start your ship.
-
-A metaphor might help illustrate the relationship between these two systems: the Arvo network is the neighborhood that you live in; Azimuth is the bank vault that stores the deed to your house.
+Technically, "sponsorship" just means that the sponsor is responsible for distributing software updates to the sponsee. Whether this sponsorship chain means that one node endorses another as trustworthy is totally implicit.
 
 ## Smart contracts {#smart-contracts}
 
-Azimuth consists of the following smart contracts:
+Urbit ID ownership is stored on a smart contract at `azimuth.eth`, and that store is goverend by a contract at `ecliptic.eth`. Other contracts provide supplementary functionality.
 
-- [Azimuth.eth](https://etherscan.io/address/azimuth.eth) `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`: contains all on-chain state for Azimuth. Most notably, ownership and public keys. Can't be modified directly, you must use the Ecliptic.
-- [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth): `0x9ef27de616154FF8B38893C59522b69c7Ba8A81c ` is used as an interface for interacting with your points on-chain. Allows you to configure keys, transfer ownership, etc.
-- [Polls](https://etherscan.io/address/0x7fecab617c868bb5996d99d95200d2fa708218e4): `0x7fecab617c868bb5996d99d95200d2fa708218e4` registers votes by the Galactic Senate on proposals. These can be either static documents or Ecliptic upgrades.
-- [Linear Star Release](https://etherscan.io/address/0x86cd9cd0992f04231751e3761de45cecea5d1801): facilitates the release of blocks of stars to their owners over a period of time.
-- [Conditional Star Release](https://etherscan.io/address/0x8c241098c3d3498fe1261421633fd57986d74aea): `0x8c241098c3d3498fe1261421633fd57986d74aea` facilitates the release of blocks of stars to their owners based on milestones.
-- [Claims](https://etherscan.io/address/0xe7e7f69b34d7d9bd8d61fb22c33b22708947971a): `0xe7e7f69b34d7d9bd8d61fb22c33b22708947971a` allows point owners to make claims about (for example) their identity, and associate that with their point.
-- [Censures](https://etherscan.io/address/0x325f68d32bdee6ed86e7235ff2480e2a433d6189): `0x325f68d32bdee6ed86e7235ff2480e2a433d6189` simple reputation management, allowing galaxies and stars to flag points for negative reputation.
-- [Delegated Sending](https://etherscan.io/address/0xf6b461fe1ad4bd2ce25b23fe0aff2ac19b3dfa76): enables network-effect like distributing of planets.
-
-Walkthroughs of some of the smart contracts are linked to [below](#other).
+You can read these contracts on Etherscan:
+- [Azimuth.eth](https://etherscan.io/address/azimuth.eth) `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`: Contains all on-chain state for Urbit ID. Most notably, ownership and public keys. Can't be modified directly, you must use Ecliptic.
+- [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) `0x9ef27de616154FF8B38893C59522b69c7Ba8A81c`: An interface for interacting with Azimuth. Allows you to configure keys, transfer ownership, etc.
+- [Polls](https://etherscan.io/address/0x7fecab617c868bb5996d99d95200d2fa708218e4) `0x7fecab617c868bb5996d99d95200d2fa708218e4`: Registers votes on governance proposals by Urbit's Galactic Senate. These can be either static documents or Ecliptic upgrades.
+- [Linear Star Release](https://etherscan.io/address/0x86cd9cd0992f04231751e3761de45cecea5d1801) `0x86cd9cd0992f04231751e3761de45cecea5d1801`: Facilitates the release of blocks of stars to their owners over a period of time.
+- [Conditional Star Release](https://etherscan.io/address/0x8c241098c3d3498fe1261421633fd57986d74aea) `0x8c241098c3d3498fe1261421633fd57986d74aea`: Facilitates the release of blocks of stars to their owners based on milestones.
+- [Claims](https://etherscan.io/address/0xe7e7f69b34d7d9bd8d61fb22c33b22708947971a) `0xe7e7f69b34d7d9bd8d61fb22c33b22708947971a`: Allows point owners to make claims about (for example) their identity, and associate that with their point.
+- [Censures](https://etherscan.io/address/0x325f68d32bdee6ed86e7235ff2480e2a433d6189) `0x325f68d32bdee6ed86e7235ff2480e2a433d6189`: Simple reputation management, allowing galaxies and stars to flag points for negative reputation.
+- [Delegated Sending](https://etherscan.io/address/0xf6b461fe1ad4bd2ce25b23fe0aff2ac19b3dfa76) `0xf6b461fe1ad4bd2ce25b23fe0aff2ac19b3dfa76`: Enables network-effect like distributing of planets.
 
 ## General Azimuth Resources {#general-azimuth-resources}
 
@@ -42,11 +43,11 @@ These documents pertain to L1 and other general aspects of Azimuth. For L2 docs,
 
 ## Naive rollups {#naive-rollups}
 
-In 2021, a new system was introduced to Azimuth called **naive rollups**, and often referred to as **layer 2** or L2. It was intended to reduce gas costs for working with Urbit ID and friction associated with using cryptocurrency in general. This system allows batches of Azimuth transactions to be submitted together as a single transaction using an Urbit node known as a "roller". The PKI state transitions resulting from these transactions are computed locally by your urbit rather than by the [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/).
+In 2021, Tlon introduced a new component to Azimuth called **naive rollups**, and often referred to as Urbit ID's "Layer 2" or "L2". It was intended to reduce gas costs for working with Urbit ID and the friction associated with using cryptocurrency in general. This system allows batches of transactions with `azimuth.eth` to be submitted together as a single transaction, using an Urbit node known as a "roller". The PKI state transitions resulting from these transactions are computed locally by your urbit rather than by the [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/).
 
-Due to the dramatically reduced cost, Tlon offers their own roller that is free for ordinary public use. This enables new users to get started with a permanent Azimuth identity without any prior knowledge of Ethereum, cryptocurrency, or blockchains. However, anybody can run a roller, and even using your own ship as a roller to submit single transactions results in significant savings.
+Due to the extremely low cost, Tlon offers their own roller that is free for ordinary public use. This enables new users to get started with a permanent Urbit ID without any prior knowledge of Ethereum, cryptocurrency, or blockchains. Anybody can run a roller, and you can even use your own ship as a roller to submit single transactions.
 
-L2 operator and developer resources:
+### Layer 2 resources
 
 - [Layer 2 Overview](concepts/layer2.md) - An overview of how naive rollups work.
 - [Custom Roller Tutorial](guides/roller-tutorial.md) - A guide to running your own L2 roller locally.

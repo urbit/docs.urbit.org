@@ -8,7 +8,7 @@ Here we describe what each of the primary folders present in a Clay desk. This o
 - `/mar` contains [mark](marks) definitions.
 - `/sur` contains shared [structure](../../../../hoon/reference/rune) definitions. Whenever you expect structures to be used by code across multiple files, it is recommended to place their shared structures in `/sur`. Structures are imported from `/sur` with `/-`.
 - `/sys` contains the code that defines the kernel and standard libraries. Note that only the `%base` desk should contain these `/sys` files, other desks omit the directory and instead just depend on `%base`. `/sys/vane` contains the code for the vanes, aka kernel modules. `/sys` is the exception to the rule - structures and functions that are central to Hoon, Arvo, and its vanes, are all located within this folder rather than in `/lib` and `/sur`. See [below](#sys) for more information on `/sys`.
-- `/ted` contains [threads](../../../../userspace/threads). These may be run from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run with `-foo`. Threads on desks other than the `%base` desk can be run with `-desk!thread` like `-landscape!foo`.
+- `/ted` contains [threads](../../../base/threads). These may be run from dojo using `-`. For example, `/ted/foo/hoon` on the `%base` desk is run with `-foo`. Threads on desks other than the `%base` desk can be run with `-desk!thread` like `-landscape!foo`.
 - `/tests` contains unit tests intended to be run using the `test` thread. To run a particular test `+test-bar` in `/tests/foo.hoon` in dojo, enter `-test %/tests/foo/test-bar ~`. If a file is specified, every test in that file will run. If a folder is specified, every test in that folder will run.
 
 ## `/sys` {#sys}
@@ -26,7 +26,7 @@ A desk is an independently revision-controlled branch of a ship that uses the Cl
 
 - `sys.kelvin` - This specifies the version of Arvo the desk is compatible with. This file is mandatory in all desks.
 - `desk.bill` - This file specifies the Gall agents on a desk which should be automatically started when it's installed. This file may be omitted if there are no agents to start.
-- `desk.docket-0` - This file configures the tile, [glob](../../../../userspace/apps/reference/dist/glob.md) and other metadata for apps with a front-end. This file may be omitted if the desk does not have a tile or front-end to be installed. This file is versioned so the number appended may change in the future as changes to its specification are made. See the [Docket File](../../../../userspace/apps/reference/dist/docket.md) documentation for more details.
+- `desk.docket-0` - This file configures the tile, [glob](../../../../build-on-urbit/userspace/reference/dist/glob.md) and other metadata for apps with a front-end. This file may be omitted if the desk does not have a tile or front-end to be installed. This file is versioned so the number appended may change in the future as changes to its specification are made. See the [Docket File](../../../../build-on-urbit/userspace/reference/dist/docket.md) documentation for more details.
 - `desk.ship` - This specifies the original publisher of the desk and is useful if a desk is being republished. It is optional and may be omitted.
 
-For more details of creating and distributing desks, see the [Software Distribution](../../../../userspace/apps/guides/software-distribution.md) documentation.
+For more details of creating and distributing desks, see the [Software Distribution](../../../../build-on-urbit/userspace/guides/software-distribution.md) documentation.

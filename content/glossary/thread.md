@@ -11,4 +11,4 @@ A **thread** is like a transient [Gall](gall.md) [agent](agent.md). Unlike an ag
 
 ### Further Reading {#further-reading}
 
-- [Threads guide](../userspace/threads/tutorials/basics/fundamentals.md): learn how to write threads.
+- [Threads guide](../urbit-os/base/threads/tutorials/basics/fundamentals.md): learn how to write threads.

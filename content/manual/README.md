@@ -1,7 +1,7 @@
 # Manual
 
-The Urbit manual contains guides and reference material for users running their own ship. If you're looking for instructions on setting up a ship, read [this](../get-on-urbit.md) first.
+The manual contains everything users need to know to run their own Urbit. If you don't have a ship get, [read this](../get-on-urbit.md) first.
 
-- [Running Urbit](running) - This section contains information about running Urbit and related services in the cloud, as well as reference information for the runtime.
-- [Urbit ID](id) - Urbit ID is our public-key infrastructure, which is what allows you to truly own your identity. Here you'll find guides for interacting with your Urbit ID via our Bridge application.
-- [Urbit OS](os) - This section describes how to interact with your running Urbit ship. This includes working with the filesystem, command line (Dojo), resolving common issues, and more.
+- [Running Urbit](running) - Running your Urbit and related services, whether it's at home or in the cloud. Here you'll also find reference material for the Urbit runtime.
+- [Urbit ID](id) - Understanding what your Urbit ID is and managing it via our Bridge application.
+- [Urbit OS](os) - Troubleshooting, working with the command line, managing software updates, and more.

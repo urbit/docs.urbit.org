@@ -65,7 +65,7 @@ The type of the next field is a `$note:agent:gall` (henceforth just `$note`), wh
 - An `%agent` `$note` is a request to another Gall agent, either local or on a remote ship. The `$ship` and `name` fields are just the target ship and agent name. The `$task` is the request itself, we'll discuss it separately [below](#task).
 - An `%arvo` `$note` is a request to a vane. We'll discuss such requests [below](#note-arvo).
 - A `%pyre` `$note` is used to abort an event. It's mostly used internally by `%kiln` (a submodule of `%hood`), it's unlikely you'd use it in your own agent. The `$tang` contains an error message.
-- The other notes are for [remote scry](../../userspace/apps/guides/remote-scry.md).
+- The other notes are for [remote scry](../userspace/guides/remote-scry.md).
 
 
 ### `$task` {#task}

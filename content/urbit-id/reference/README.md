@@ -1,25 +1,13 @@
 # Reference
 
-### [Azimuth.eth](azimuth-eth.md) {#azimuthethazimuth-ethmd}
+Reference material for Urbit ID smart contracts and the Layer 2 scaling solution.
 
-A description of the `azimuth.eth` smart contract, which is the data store for Azimuth.
+## Layer 1
+- [Azimuth.eth](azimuth-eth.md) - A description of the `azimuth.eth` smart contract, which is the data store for Azimuth.
+- [Ecliptic.eth](ecliptic.md) - A description of the `ecliptic.eth` smart contract, which is the business logic for `azimuth.eth`. This includes an overview of all function calls available.
 
-### [Ecliptic.eth](ecliptic.md) {#eclipticetheclipticmd}
-
-A description of the `ecliptic.eth` smart contract, which is the business logic for `azimuth.eth`. This includes an overview of all function calls available.
-
-### [L2 Actions](l2-actions.md) {#l2-actionsl2-actionsmd}
-
-Technical documentation of the 11 layer 2 actions.
-
-### [L2 Transaction Format](bytestring.md) {#l2-transaction-formatbytestringmd}
-
-Details of the bytestring format for L2 transactions and batches.
-
-### [L2 Rollers](roller.md) {#l2-rollersrollermd}
-
-How the naive rollup rollers work.
-
-### [L2 Roller HTTP RPC-API](layer2-api.md) {#l2-roller-http-rpc-apilayer2-apimd}
-
-Details of the roller API.
+## Layer 2
+- [L2 Actions](l2-actions.md) - Technical documentation of the 11 L2 actions.
+- [L2 Transaction Format](bytestring.md) - Details of the bytestring format for L2 transactions and batches.
+- [L2 Rollers](roller.md) - How the L2 rollers work.
+- [L2 Roller HTTP RPC-API](layer2-api.md) - Details of the L2 roller API.

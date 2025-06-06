@@ -177,7 +177,7 @@ Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
 [p=[p=1 q=2] q=[~ u=[p=%foo q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](../../userspace/apps/guides/cli-tutorial.md). We usher the reader there to find an example where `+cold` is used.
+One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](../../build-on-urbit/userspace/guides/cli-tutorial.md). We usher the reader there to find an example where `+cold` is used.
 
 ### `+less` {#lessreferencestdlib4fmdless}
 

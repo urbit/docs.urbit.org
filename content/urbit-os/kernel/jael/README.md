@@ -1,12 +1,19 @@
 # Jael
 
-Jael is the networking key infrastructure vane.
+Jael is Arvo's module for networking key infrastructure.
 
-The main purpose of Jael is keeping track of [Azimuth](../../../urbit-id) related information. For each ship, this consists of its public keys, its key revision number (or `life`), its continuity breach number (or `rift`) (see [Life and Rift](../../../urbit-id/concepts/life-and-rift.md)), and who the sponsor of the ship is. It also handles the local ship's private keys, keeps track of galaxy domain prefixes, and performs some boot-related tasks.
+The main purpose of Jael is keeping track of [Azimuth](../../../urbit-id)-related information.
 
-By default, Jael's primary source of information is the Gall agent `%azimuth-tracker`, which (using `%eth-watcher`) runs a thread that polls an Ethereum node for transactions in the Azimuth contract. It can also get updates from other ships on the network. This is always the case for moons, where it subscribes to the moon's parent's Jael for updates.
+This includes:
+- Every known Urbit [ship](../../../glossary/ship.md)'s public keys.
+- Every known Urbit ship's [key revision number and continuity breach number](../../../urbit-id/concepts/life-and-rift.md).
+- Every known Urbit ship's [sponsor](../../../glossary/sponsor.md).
 
-The database of PKI information that Jael maintains is used by other vanes and agents for identity validation, encryption, decryption, and other cryptographic functions. In particular, Ames (the network vane) uses the information stored in Jael to encrypt packets it sends to other ships, and to decrypt & validate packets it receives from other ships.
+It also handles the local ship's private keys, keeps track of [galaxy](../../../glossary/galaxy.md) domain prexifes, and performs some tasks related to booting the local ship for the first time.
 
-Jael has a few `task`s you can use to interact with it. In particular, its [%public-keys task](reference/tasks.md#public-keys) allows an agent or thread to subscribe for PKI updates for a `set` of `ship`s.
+The database of PKI information that Jael maintains is used by other modules and applications for identity validation, encryption, decryption, and other cryptographic functions.
+
+In particular, [Ames](../ames) uses the information stored in Jael to encrypt packets it sends to other ships, and to decrypt and validate packets it receives from them.
+
+Jael has a few `$task`s you can use to interact with it. In particular, its [`%public-keys` task](reference/tasks.md#public-keys) allows an application or thread to subscribe for PKI updates for a set of ships.
 

@@ -354,6 +354,7 @@
         * [Ship Troubleshooting](manual/os/ship-troubleshooting.md)
         * [Dojo Tools](manual/os/dojo-tools.md)
     * [Urbit ID](manual/id/README.md)
+        * [Get an Urbit ID](manual/id/get-id.md)
         * [Using Bridge](manual/id/using-bridge.md)
         * [Proxies](manual/id/proxies.md)
         * [HD Wallet (Master Ticket)](manual/id/hd-wallet.md)

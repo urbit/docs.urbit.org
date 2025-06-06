@@ -173,7 +173,7 @@ screen -S urbit
 You are now inside a `screen` session. You can boot your Urbit with the command below, replacing `sampel-palnet` with your actual planet name, and `/path/to/sampel-palnet-1.key` with the path to the keyfile you downloaded previously. (If you're on macOS, it's probably `~/Downloads/sampel-palnet-1.key`.)
 
 ```sh
-urbit -w sampel-palnet -k /path/to/sampel-palnet-1.key
+./urbit -w sampel-palnet -k /path/to/sampel-palnet-1.key
 ```
 
 Your planet will begin to boot up, which might take a few minutes. You'll know your planet has booted when you see something like this in the terminal:
@@ -233,7 +233,7 @@ screen -S urbit
 Now that you're in a `screen` session, you can mine a new comet with the command below. `mycomet` is just the name of the folder, so you can change it to whatever you like.
 
 ```sh
-urbit -c mycomet
+./urbit -c mycomet
 ```
 
 It might take a few minutes to boot up and mine a comet. You'll know your comet has booted when you see something like this in the terminal:
@@ -287,7 +287,7 @@ Fake ships are for development purposes only and cannot connect to the live netw
 Run the `urbit` executable you previously downloaded with the `-F` flag to boot a new fake ship. You can specify any identity you want. Most people use the galaxy \~zod.
 
 ```sh
-urbit -F zod
+./urbit -F zod
 ```
 
 This will take a few minutes. Once it's done, you'll have a responsive prompt that looks like this:

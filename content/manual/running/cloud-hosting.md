@@ -46,7 +46,7 @@ users:
     shell: /bin/bash
     lock_passwd: true
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDKnPQjMWBmL5L0r3dncC+6kus/HW9ez42mUpLjFmHK mike@mike-desktop
+      - YOUR-SSH-KEY-HERE
 
 package_reboot_if_required: true
 package_update: true

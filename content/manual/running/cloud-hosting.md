@@ -1,8 +1,8 @@
 # Cloud Hosting
 
-The goal of this guide is to have clear and easy to follow best practices for deploying an Urbit node to a server you control in the cloud. Deploying in the cloud allows you to access your Urbit from any device. Most Urbit users start out running their ship locally on one machine in order to play with it, but this means when your machine is offline your Urbit node is offline too (and can't get updates). You can also only access your Urbit from that one machine.
+This guide walks through deploying an Urbit node to a server in the cloud. Deploying in the cloud allows you to access your Urbit from any device.
 
-This guide includes specific instructions for Digital Ocean, Hetzner and Oracle Cloud, as well as generic instructions for other cloud providers.
+Specific instructions are included for Digital Ocean, Hetzner and Oracle Cloud, as well as generic instructions for other cloud providers.
 
 Minimum requirements:
 
@@ -13,12 +13,12 @@ Minimum requirements:
 - **Disk space:** 40GB is preferred but 10GB will work
 
 {% hint %}
-Note: when an Urbit is first booted, it requires 2GB of memory (or swap) available to be mapped, but will use relatively little of it. Likewise, it initially won't use much disk space. However, the longer your Urbit runs and the more you use it (such as joining groups and installing apps), the larger its memory consumption and disk usage will grow. This means that while you can get away with a small amount of memory and disk space at first, you may eventually hit the limit of one or the other and need to upgrade it. Disk usage can be managed by periodically "chopping" the Urbit's event log, but it'll still require a few GBs. If memory usage grows to the point where the Urbit process starts utilizing swap space, performance will be severely degraded.
+**Note:** when an Urbit is first booted, it requires 2GB of memory (or swap) available to be mapped, but won't use much of it. Likewise, it initially won't use much disk space. The longer your Urbit runs and the more you use it (such as joining groups and installing apps), the larger its memory consumption and disk usage will grow. This means that while you can get away with a small amount of memory and disk space at first, you may eventually hit the limit of one or the other and need to upgrade it.
 {% endhint %}
 
 ## Cloud-init config {#cloud-init-config}
 
-This `cloud-init` config file will work for the great majority of Linux images available from cloud providers.
+This `cloud-init` config file will work for most Linux images available from cloud providers.
 
 {% hint type="warning" %}
 You must generate an SSH keypair and paste the contents of the `.pub` file where it says `YOUR-SSH-KEY-HERE` on line 17 or you will not be able to SSH into your instance.
@@ -184,6 +184,14 @@ We'll come back to these later.
 
 {% step %}
 ## Create instance
+
+You can use whichever cloud provider you prefer. Instructions are included for Digital Ocean, Hetzner, and Oracle Cloud, as well as generic instructions for others.
+
+Comparison:
+
+- **Digital Ocean:** the simplest to setup, but more expensive for what you get.
+- **Hetzner:** cheaper than Digital Ocean and still relatively easy to configure. Based in Germany.
+- **Oracle Cloud:** quite complex compared to the other two. However, they provide 4 Ampere cores and 24GB of memory for free, which can be used as one very powerful instance or up to 4 single-core instances with 6GB of memory each.
 
 {% tabs %}
 
@@ -494,7 +502,7 @@ Host urbit-vps
 
 {% tabs %}
 
-{% tab label="If you have an existing pier" %}
+{% tab title="If you have an existing pier" %}
 
 Copy the archived pier to the server with the following (substituting your ship name):
 
@@ -506,7 +514,7 @@ It may take a while to upload if your pier is large and/or your internet is slow
 
 {% endtab %}
 
-{% tab label="If you have a keyfile" %}
+{% tab title="If you have a keyfile" %}
 
 These instructions assume you've acquired a Urbit ID and downloaded its keyfile from [Bridge](https://bridge.urbit.org). If you don't have an Urbit ID yet, see the [Get an Urbit ID](../../get-on-urbit.md#get-an-urbit-id) section of the [Get On Urbit](../../get-on-urbit.md) guide. If you haven't downloaded your keyfile yet, see the [Get your keyfile](../../get-on-urbit.md#get-your-keyfile) section of the same guide.
 
@@ -536,7 +544,7 @@ You'll be taken to the shell on your server.
 
 {% tabs %}
 
-{% tab label="If you have an existing pier" %}
+{% tab title="If you have an existing pier" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, extract the pier archive you previously uploaded, then delete the archive:
 
@@ -562,7 +570,7 @@ That will copy the `urbit` runtime inside the pier.
 
 {% endtab %}
 
-{% tab label="If you have a key file" %}
+{% tab title="If you have a key file" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, start `tmux`:
 
@@ -607,7 +615,7 @@ After a few moments it'll show the Dojo prompt like `~sampel-palnet:dojo>`.
 {% step %}
 ## Get a domain
 
-To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo, replacing the IP address with your droplet's:
+To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo:
 
 ```
 |dns-config

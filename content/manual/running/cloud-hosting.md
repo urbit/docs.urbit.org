@@ -516,7 +516,11 @@ It may take a while to upload if your pier is large and/or your internet is slow
 
 {% tab title="If you have a keyfile" %}
 
+{% hint %}
+
 These instructions assume you've acquired a Urbit ID and downloaded its keyfile from [Bridge](https://bridge.urbit.org). If you don't have an Urbit ID yet, see the [Get an Urbit ID](../../get-on-urbit.md#get-an-urbit-id) section of the [Get On Urbit](../../get-on-urbit.md) guide. If you haven't downloaded your keyfile yet, see the [Get your keyfile](../../get-on-urbit.md#get-your-keyfile) section of the same guide.
+
+{% endhint %}
 
 Run the following in the terminal (replacing `/path/to/sampel-palnet.key` with the path to the keyfile you previously downloaded):
 

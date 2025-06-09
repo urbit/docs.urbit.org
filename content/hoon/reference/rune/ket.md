@@ -4,7 +4,7 @@
 
 The `nest` algorithm which tests subtyping is conservative; it never allows invalid nests, it sometimes rejects valid nests.
 
-## `^|` "ketbar" {#ketbar}
+## ^| "ketbar" {#ketbar}
 
 Convert a gold core to an iron core (contravariant).
 
@@ -48,7 +48,7 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 
 ---
 
-## `^:` "ketcol" {#ketcol}
+## ^: "ketcol" {#ketcol}
 
 Switch parser into structure mode (mold definition) and produce a gate for type `p`.  (See [`,` com]() which toggles modes.)
 
@@ -109,7 +109,7 @@ ford: %ride failed to execute:
 
 ---
 
-## `^.` "ketdot" {#ketdot}
+## ^. "ketdot" {#ketdot}
 
 Typecast on value produced by passing `q` to `p`.
 
@@ -181,7 +181,7 @@ mint-vain
 
 ---
 
-## `^-` "kethep" {#kethep}
+## ^- "kethep" {#kethep}
 
 Typecast by explicit type label.
 
@@ -254,7 +254,7 @@ It's a good practice to put a `^-` ("kethep") at the top of every arm (including
 [~ ~.a]
 ```
 
-## `^+` "ketlus" {#ketlus}
+## ^+ "ketlus" {#ketlus}
 
 Typecast by inferred type.
 
@@ -308,7 +308,7 @@ The value of `q` with the type of `p`, if the type of `q` nests within the type 
 
 ---
 
-## `^&` "ketpam" {#ketpam}
+## ^& "ketpam" {#ketpam}
 
 Convert a core to a zinc core (covariant).
 
@@ -373,7 +373,7 @@ ford: %ride failed to compute type:
 
 ---
 
-## `^~` "ketsig" {#ketsig}
+## ^~ "ketsig" {#ketsig}
 
 Fold constant at compile time.
 
@@ -407,7 +407,7 @@ One argument, fixed.
 
 ---
 
-## `^*` "kettar" {#kettar}
+## ^* "kettar" {#kettar}
 
 Produce example type value.
 
@@ -464,7 +464,7 @@ Irregular:
 
 ---
 
-## `^=` "kettis" {#kettis}
+## ^= "kettis" {#kettis}
 
 Bind name to a value.
 
@@ -533,7 +533,7 @@ a=1
 
 ---
 
-## `^?` "ketwut" {#ketwut}
+## ^? "ketwut" {#ketwut}
 
 Convert any core to a lead core (bivariant).
 

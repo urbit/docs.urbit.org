@@ -4,7 +4,7 @@ Core expressions produce cores. A core is a cell of `[battery payload]`. The `ba
 
 Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a core with a single arm, named `$`. As with all arms, we can recompute `$` with changes, which is useful for recursion among other things.
 
-## `|$` "barbuc" {#barbuc}
+## |$ "barbuc" {#barbuc}
 
 Declares a mold builder wet gate with one or more molds as its sample.
 
@@ -87,7 +87,7 @@ Proper style for `|$` is to enclose the first argument with brackets, even if it
 
 ---
 
-## `|_` "barcab" {#barcab}
+## |_ "barcab" {#barcab}
 
 Produce a **door** (a core with a sample).
 
@@ -198,7 +198,7 @@ The `ne` door prints a digit in base 10, 16, 32 or 64:
 
 ---
 
-## `|:` "barcol" {#barcol}
+## |: "barcol" {#barcol}
 
 Produce a gate with a custom sample.
 
@@ -270,7 +270,7 @@ This is useful if you want a gate to have a sample of a particular type, but you
 
 ---
 
-## `|%` "barcen" {#barcen}
+## |% "barcen" {#barcen}
 
 Produce a core, `[battery payload]`.
 
@@ -352,7 +352,7 @@ A trivial core:
 
 ---
 
-## `|.` "bardot" {#bardot}
+## |. "bardot" {#bardot}
 
 Produce a trap (a core with one arm `$`).
 
@@ -422,7 +422,7 @@ Note that we can use `$()` to recurse back into the trap, since it's a core with
 
 ---
 
-## `|^` "barket" {#barket}
+## |^ "barket" {#barket}
 
 Produce a core whose battery includes a `$` arm and compute the latter.
 
@@ -501,7 +501,7 @@ A trivial example:
 
 ---
 
-## `|-` "barhep" {#barhep}
+## |- "barhep" {#barhep}
 
 Produce a trap (a core with one arm `$`) and evaluate it.
 
@@ -560,7 +560,7 @@ The classic loop is a decrement:
 
 ---
 
-## `|~` "barsig" {#barsig}
+## |~ "barsig" {#barsig}
 
 Produce an iron gate.
 
@@ -624,7 +624,7 @@ See [this discussion of core variance models](../advanced.md)
 
 ---
 
-## `|*` "bartar" {#bartar}
+## |* "bartar" {#bartar}
 
 Produce a wet gate (one-armed core with sample).
 
@@ -688,7 +688,7 @@ The dry gate does not preserve the type of `a` and `b`; the wet gate does.
 
 ---
 
-## `|=` "bartis" {#bartis}
+## |= "bartis" {#bartis}
 
 Produce a gate (a one-armed core with a sample).
 
@@ -774,7 +774,7 @@ A slightly less trivial gate:
 
 ---
 
-## `|@` "barpat" {#barpat}
+## |@ "barpat" {#barpat}
 
 Produce a 'wet' core `[battery payload]`.
 
@@ -829,7 +829,7 @@ The `|@` rune is just like the `|%` rune except that instead of producing a 'dry
 
 ---
 
-## `|?` "barwut" {#barwut}
+## |? "barwut" {#barwut}
 
 Produce a lead trap.
 

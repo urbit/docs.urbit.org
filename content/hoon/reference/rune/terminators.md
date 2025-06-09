@@ -2,7 +2,7 @@
 
 The `--` and `==` are used as terminators: `--` for core expressions, and `==` for terminating a 'running' or 'jogging' series of Hoon expressions.
 
-## `--` "hephep" {#hephep}
+## -- "hephep" {#hephep}
 
 #### Syntax
 
@@ -33,7 +33,7 @@ The `|%`, `|_`, and `|^` runes are used to create cores that can have arbitraril
 
 ---
 
-## `==` "tistis" {#tistis}
+## == "tistis" {#tistis}
 
 #### Syntax
 

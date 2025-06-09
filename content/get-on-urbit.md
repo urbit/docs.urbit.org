@@ -13,7 +13,7 @@ If you want a quicker and easier way to get on Urbit, you can skip this guide an
 
 You will need:
 - Enough technical ability to use a terminal. We'll go through it step by step.
-- Basic familiarity with crypto wallets and some ETH to buy a planet, unless you want to use a free disposable ID.
+- Basic familiarity with crypto wallets and some ETH to buy a planet, unless you want to use a free disposable ID or purchase a planet with a credit card.
 - A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. (You can usually get away with 2GB of RAM plus a swapfile and less disk space, but it might become a problem in the future as your Urbit grows.)
 
 (If you want to run Urbit on a Windows computer you should be able to do so with Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.)
@@ -38,10 +38,11 @@ You can also get a planet with [free cloud hosting](#get-on-urbit-faster).
 
 Here are the best places to buy planets:
 
-| Layer | Market                                                   | Description                                            |
-|-------|----------------------------------------------------------|--------------------------------------------------------|
-| Layer 1    | [OpenSea](https://opensea.io/collection/urbit-id-planet) | The largest NFT marketplace.                           |
-| Layer 2    | [azimuth.shop](https://azimuth.shop)                     | Easily connect a wallet and buy an L2 planet with ETH. |
+| Layer   | Market                                                   | Description                                            |
+|---------|----------------------------------------------------------|--------------------------------------------------------|
+| Layer 1 | [OpenSea](https://opensea.io/collection/urbit-id-planet) | The largest NFT marketplace.                           |
+| Layer 2 | [azimuth.shop](https://azimuth.shop)                     | Easily connect a wallet and buy an L2 planet with ETH. |
+| Layer 2 | [pocwet.com](https://pocwet.com)                         | Buy an L2 planet with a credit card.                   |
 
 Originally, all Urbit IDs were ERC-721 NFTs on Ethereum. In 2021, Tlon [introduced a Layer 2 protocol](https://urbit.org/blog/rollups) to reduce transaction costs on Ethereum. This means there are two places an Urbit ID can live:
 

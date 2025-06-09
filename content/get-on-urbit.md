@@ -42,7 +42,7 @@ Here are the best places to buy planets:
 |---------|----------------------------------------------------------|--------------------------------------------------------|
 | Layer 1 | [OpenSea](https://opensea.io/collection/urbit-id-planet) | The largest NFT marketplace.                           |
 | Layer 2 | [azimuth.shop](https://azimuth.shop)                     | Easily connect a wallet and buy an L2 planet with ETH. |
-| Layer 2 | [pocwet.com](https://pocwet.com)                         | Buy an L2 planet with a credit card.                   |
+| Layer 2 | [Pocwet](https://store.pocwet.com)                         | Buy an L2 planet with a credit card.                   |
 
 Originally, all Urbit IDs were ERC-721 NFTs on Ethereum. In 2021, Tlon [introduced a Layer 2 protocol](https://urbit.org/blog/rollups) to reduce transaction costs on Ethereum. This means there are two places an Urbit ID can live:
 

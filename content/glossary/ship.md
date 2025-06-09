@@ -16,5 +16,5 @@ To be able to use the Arvo network, planets, stars, and galaxies must be combine
 
 * [Install instructions](../get-on-urbit.md): Guide to installing Urbit, which includes instructions on booting with your Urbit identity.
 * [Ship Troubleshooting](../user-manual/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.
-* [Urbit ID Overview](../urbit-id/)
+* [Urbit ID Overview](../urbit-id)
 * [Pier](pier.md): The directory containing a ship's state.

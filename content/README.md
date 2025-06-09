@@ -6,7 +6,7 @@ You can [get on Urbit](get-on-urbit.md) in a few clicks with cloud hosting or ho
 
 ## What is this site?
 
-The Urbit docs are for developers and self-hosted users. Developers can find [courses](./build-on-urbit/environment.md), guides, and reference material for [Urbit ID](urbit-id/what-is-urbit-id.md) and [Urbit OS](urbit-os/what-is-urbit-os.md). The [manual](./user-manual/README.md) section covers everything that users need to run their own server.
+The Urbit docs are for developers and self-hosted users. Developers can find [courses](./build-on-urbit/environment.md), guides, and reference material for [Urbit ID](urbit-id/what-is-urbit-id.md) and [Urbit OS](urbit-os/what-is-urbit-os.md). The [manual](./user-manual/contents.md) section covers everything that users need to run their own server.
 
 ## Developer documentation
 
@@ -18,4 +18,4 @@ The Urbit docs are for developers and self-hosted users. Developers can find [co
 
 ## User documentation
 
-* [Manual](./user-manual/README.md) - How to run your own Urbit, manage your Urbit ID, and more.
+* [Manual](./user-manual/contents.md) - How to run your own Urbit, manage your Urbit ID, and more.

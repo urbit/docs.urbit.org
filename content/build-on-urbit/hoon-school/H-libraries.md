@@ -2,11 +2,11 @@
 
 _Libraries allow you to import and share processing code. This module will discuss how libraries can be produced, imported, and used._
 
-## Importing a Library {#importing-a-library}
+## Importing a Library <a href="#importing-a-library" id="importing-a-library"></a>
 
 If you have only built [generators](../../glossary/generator.md), you will soon or later become frustrated with the apparent requirement that you manually reproduce helper cores and arms every time you need them in a different generator. Libraries are [cores](../../glossary/core.md) stored in `/lib` which provide access to [arms](../../glossary/arm.md) and legs (operations and data). While the Hoon standard library is directly available in the regular [subject](../../glossary/subject.md), many other elements of functionality have been introduced by software authors.
 
-### Building Code Generally {#building-code-generally}
+### Building Code Generally <a href="#building-code-generally" id="building-code-generally"></a>
 
 A generator gives us on-demand access to code, but it is helpful to load and use code from files while we work in the [Dojo](../../glossary/dojo.md).
 
@@ -26,7 +26,7 @@ Subsequent invocations of the [core](../../glossary/core.md) require you to refe
 (to-words:eng-us:numbers:number-to-words n)
 ```
 
-Since `/` fas runes don't work in the Dojo, you need to instead use the [-build-file](../../manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular [gate's](../../glossary/gate.md) functionality for interactive coding.
+Since `/` fas runes don't work in the Dojo, you need to instead use the [-build-file](../../user-manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular [gate's](../../glossary/gate.md) functionality for interactive coding.
 
 `-build-file` accepts a file path and returns the built operational code. For instance:
 
@@ -44,22 +44,22 @@ There are also a number of other import [runes](../../glossary/rune.md) which ma
 
 For simplicity, everything we do will take place on the `%base` [desk](../../glossary/desk.md) for now. We will learn how to create a library in a subsequent lesson.
 
-### Exercise: Loading a Library {#exercise-loading-a-library}
+### Exercise: Loading a Library <a href="#exercise-loading-a-library" id="exercise-loading-a-library"></a>
 
 In a [generator](../../glossary/generator.md), load `/lib/number-to-words.hoon` using the `/+` [tislus](../../hoon/reference/rune/tis.md#tislus) rune. (This must take place at the very top of your file.)
 
 Use this to produce a [gate](../../glossary/gate.md) which accepts an unsigned decimal integer and returns the text interpretation of its increment.
 
-## Helper Cores {#helper-cores}
+## Helper Cores <a href="#helper-cores" id="helper-cores"></a>
 
 Another common design pattern besides creating a library is to sequester core-specific behavior in a helper [core](../../glossary/core.md), which sits next to the interface operations. Two runes are used to compose expressions together so that the subject has everything it needs to carry out the desired calculations.
 
-- `=>` [tisgar](../../hoon/reference/rune/tis.md#tisgar) composes two expressions so that the first is included in the second's [subject](../../glossary/subject.md) (and thus can see it).
-- `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) inverts the order of composition, allowing heavier helper cores to be composed after the core's logic but still be available for use.
+* `=>` [tisgar](../../hoon/reference/rune/tis.md#tisgar) composes two expressions so that the first is included in the second's [subject](../../glossary/subject.md) (and thus can see it).
+* `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) inverts the order of composition, allowing heavier helper cores to be composed after the core's logic but still be available for use.
 
 Watch for these being used in generators and libraries over the next few modules.
 
-### Exercise: A Playing Card Library {#exercise-a-playing-card-library}
+### Exercise: A Playing Card Library <a href="#exercise-a-playing-card-library" id="exercise-a-playing-card-library"></a>
 
 In this exercise, we examine a library that can be used to represent a deck of 52 playing cards. The [core](../../glossary/core.md) below builds such a library, and can be accessed by programs. You should recognize most of the things this program does aside from the `+shuffle-deck` arm which uses a [door](K-doors.md) to produce [randomness](O-subject.md). This is fairly idiomatic Hoon and it relies a lot on the convention that heavier code should be lower in the expression. This means that instead of `?:` [wutcol](../../hoon/reference/rune/wut.md#wutcol) you may see `?.` [wutdot](../../hoon/reference/rune/wut.md#wutdot), which inverts the order of the true/false [arms](../../glossary/arm.md), as well as other new constructions.
 
@@ -120,9 +120,9 @@ The `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core created at the t
 
 To create three types we're going to need, we use `+$` [lusbuc](../../hoon/reference/rune/lus.md#lusbuc), which is an [arm](../../glossary/arm.md) used to define a type.
 
-- `+$  suit  ?(%hearts %spades %clubs %diamonds)` defines `$suit`, which can be either `%hearts`, `%spades`, `%clubs`, or `%diamonds`. It's a type union created by the irregular form of `$?` [bucwut](../../hoon/reference/rune/buc.md#bucwut).
-- `+$  darc  [sut=suit val=@ud]` defines `$darc`, which is a pair of `$suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `$darc` and not `$card`?  Because `$card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
-- `+$  deck  (list darc)` is simply a [list](../../glossary/list.md) of `$darc`.
+* `+$ suit ?(%hearts %spades %clubs %diamonds)` defines `$suit`, which can be either `%hearts`, `%spades`, `%clubs`, or `%diamonds`. It's a type union created by the irregular form of `$?` [bucwut](../../hoon/reference/rune/buc.md#bucwut).
+* `+$ darc [sut=suit val=@ud]` defines `$darc`, which is a pair of `$suit` and a `@ud`. By pairing a suit and a number, it represents a particular playing card, such as “nine of hearts”. Why do we call it `$darc` and not `$card`? Because `$card` already has a meaning in [Gall](../../glossary/gall.md), the [Arvo](../../glossary/arvo.md) app module, where one would likely to use this (or any) library. It's worthwhile to avoid any confusion over names.
+* `+$ deck (list darc)` is simply a [list](../../glossary/list.md) of `$darc`.
 
 One way to get a feel for how a library works is to skim the `++` [luslus](../../hoon/reference/rune/lus.md#luslus) arm-names before diving into any specific [arm](../../glossary/arm.md). In this library, the arms are `+make-deck`, `+num-to-suit`, `+shuffle-deck`, and `+draw`. These names should be very clear, with the exception of `+num-to-suit` (although you could hazard a guess at what it does). Let's take a closer look at it first:
 
@@ -138,7 +138,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-`+num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `$suit`. The `?+` [wutlus](../../hoon/reference/rune/wut.md#wutlus) rune creates a structure to switch against a value with a default in case there are no matches. (Here the default is to crash with `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap).)  We then have options 1–4 which each resulting in a different suit.
+`+num-to-suit` defines a gate which takes a single `@ud` unsigned decimal integer and produces a `$suit`. The `?+` [wutlus](../../hoon/reference/rune/wut.md#wutlus) rune creates a structure to switch against a value with a default in case there are no matches. (Here the default is to crash with `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap).) We then have options 1–4 which each resulting in a different suit.
 
 ```hoon
 ++  make-deck
@@ -193,25 +193,25 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
 
 Finally we come to `+shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of "entropy" to seed the [og](../../hoon/reference/stdlib/3d.md#og) random-number [core](../../glossary/core.md). It will produce a `$deck`.
 
-We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.”  For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `+rads:random`.
+We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../hoon/reference/rune/cen.md#censig), which “evaluates an arm in a door.” For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `+rads:random`.
 
-With `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with [`+lent`](../../hoon/reference/stdlib/2b.md#lent).
+With `=/ remaining (lent unshuffled)`, we get the length of the unshuffled deck with [`+lent`](../../hoon/reference/stdlib/2b.md#lent).
 
-`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `.shuffled` and the one card left in `.unshuffled`. We use the `:_` [colcab](../../hoon/reference/rune/col.md#colcab) rune here, so that the “heavier” expression is at the bottom.
+`?: =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a [cell](../../glossary/cell.md) of `.shuffled` and the one card left in `.unshuffled`. We use the `:_` [colcab](../../hoon/reference/rune/col.md#colcab) rune here, so that the “heavier” expression is at the bottom.
 
 If the above conditional evaluates to `%.n` false, we need to do a little work. `=^` [tisket](../../hoon/reference/rune/tis.md#tisket) is a rune that pins the head of a pair and changes a leg in the [subject](../../glossary/subject.md) with the tail. It's useful for interacting with the [og](../../hoon/reference/stdlib/3d.md#og) core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the [subject](../../glossary/subject.md) with the [face](../../glossary/face.md) `.index` and change `.random` to be the next core.
 
 With that completed, we use `%=` [centis](../../hoon/reference/rune/cen.md#centis) to call `$` buc to recurse back up to `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) with a few changes:
 
-- `.shuffled` gets the `$darc` from `.unshuffled` at `.index` added to the front of it.
-- `.remaining` gets decremented. Why are we using a counter here instead of just checking the length of `.unshuffled` on each loop? [`+lent`](../../hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
-- `.unshuffled` becomes the result of using [`+oust`](../../hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `.index` on `.unshuffled`.
+* `.shuffled` gets the `$darc` from `.unshuffled` at `.index` added to the front of it.
+* `.remaining` gets decremented. Why are we using a counter here instead of just checking the length of `.unshuffled` on each loop? [`+lent`](../../hoon/reference/stdlib/2b.md#lent) traverses the entire list every time it's called so maintaining a counter in this fashion is much faster.
+* `.unshuffled` becomes the result of using [`+oust`](../../hoon/reference/stdlib/2b.md#oust) to remove 1 `$darc` at `.index` on `.unshuffled`.
 
 This is a very naive shuffling algorithm. We leave the implementation of a better shuffling algorithm as an exercise for the reader.
 
-### Exercise: Using the Playing Card Library {#exercise-using-the-playing-card-library}
+### Exercise: Using the Playing Card Library <a href="#exercise-using-the-playing-card-library" id="exercise-using-the-playing-card-library"></a>
 
-Unfortunately `/` [fas](../../hoon/reference/rune/fas.md) runes don't work in the [Dojo](../../glossary/dojo.md) right now, so we need to build code using the [-build-file](../../manual/os/dojo-tools.md#build-file) thread if we want to use the library directly.
+Unfortunately `/` [fas](../../hoon/reference/rune/fas.md) runes don't work in the [Dojo](../../glossary/dojo.md) right now, so we need to build code using the [-build-file](../../user-manual/os/dojo-tools.md#build-file) thread if we want to use the library directly.
 
 Import the `/lib/playing-cards.hoon` library and use it to shuffle and show a deck and a random hand of five cards.
 
@@ -269,11 +269,11 @@ Draw a hand of five cards from the deck:
 
 Of course, since the deck was shuffled once, any time we draw from the same deck we will get the same hand. But if we replace the deck with the `.rest` remaining, then we can continue to draw new hands.
 
-## Desks {#desks}
+## Desks <a href="#desks" id="desks"></a>
 
 A [desk](../../glossary/desk.md) organizes a collection of files, including [generators](../../glossary/generator.md), libraries, [agents](../../glossary/agent.md), and system code, into one coherent bundle. A desk is similar to a file drive in a conventional computer, or a Git branch. Desks are supported by the [Clay](../../glossary/clay.md) [vane](../../glossary/vane.md) in [Arvo](../../glossary/arvo.md), the Urbit OS.
 
-At this point, you've likely only worked on the `%base` desk. You can see data about any particular desk using the [`+vats`](../../manual/os/dojo-tools.md#vats) generator:
+At this point, you've likely only worked on the `%base` desk. You can see data about any particular desk using the [`+vats`](../../user-manual/os/dojo-tools.md#vats) generator:
 
 ```hoon
 > +vats %base
@@ -303,7 +303,7 @@ At this point, you've likely only worked on the `%base` desk. You can see data a
 
 You'll see a slightly different configuration on the particular [ship](../../glossary/ship.md) you are running.
 
-### Aside: Filesystems {#aside-filesystems}
+### Aside: Filesystems <a href="#aside-filesystems" id="aside-filesystems"></a>
 
 A filesystem is responsible for providing access to blobs of data somewhere on a disk drive. If you have worked with Windows or macOS, you have become accustomed to using a file browser to view and interact with files. Mobile devices tend to obscure the nature of files more, in favor of just providing an end-user interface for working with or viewing the data. To use files effectively, you need to know a few things:
 
@@ -316,18 +316,19 @@ Files are identified by a _file name_, which is typically a short descriptor lik
 Files are located using the "path" or "file path". Colloquially, this is what we mean when we ask which folder or directory a file is located in. It's an address that users and programs can use to uniquely locate a particular file, even if that file has the same name as another file.
 
 An Earth filesystem and path orients itself around some key metaphor:
-- Windows machines organize the world by drive, e.g. `C:\`.
-- Unix machines (like macOS and Linux) organize the world from `/`, the root directory.
 
-**Absolute paths** are like street addresses, or latitude and longitude. They let you unambiguously locate a file or folder. **Relative paths** are more like informal (but correct) instructions: “It's on the right just three houses past the church.”  They are often shorter but require the user to know the starting point.
+* Windows machines organize the world by drive, e.g. `C:\`.
+* Unix machines (like macOS and Linux) organize the world from `/`, the root directory.
+
+**Absolute paths** are like street addresses, or latitude and longitude. They let you unambiguously locate a file or folder. **Relative paths** are more like informal (but correct) instructions: “It's on the right just three houses past the church.” They are often shorter but require the user to know the starting point.
 
 Once you have located a particular file, you need to load the data. Conventionally, file "extensions" indicate what kind of file you are dealing with: `.jpg`, `.png`, and `.gif` are image files, for instance; `.txt`, `.docx`, and `.pdf` are different kinds of documents; and `.mp3` and `.ogg` are audio files. Simply changing the extension on the file doesn't change the underlying data, but it can either elicit a stern warning from the OS or confuse it, depending on the OS. Normally you have to open the file in an appropriate program and save it as a new type if such a conversion is possible.
 
-### File Data in Urbit {#file-data-in-urbit}
+### File Data in Urbit <a href="#file-data-in-urbit" id="file-data-in-urbit"></a>
 
 On Mars, we treat a filesystem as a way of organizing arbitrary access to blocks of persistent data. There are some concessions to Earth-style filesystems, but [Clay](../../glossary/clay.md) (Urbit's filesystem) organizes everything with respect to a [desk](../../glossary/desk.md), a discrete collection of static data on a particular [ship](../../glossary/ship.md). Of course, like everything else in Hoon, a desk is a tree as well.
 
-So far everything we have done has taken place on the `%base` desk. You have by this point become proficient at synchronizing Earthling data (Unix data) and Martian data (Urbit data), using [|mount](../../manual/os/dojo-tools.md#mount) and [|commit](../../manual/os/dojo-tools.md#commit), and every time you've done this with `%base` that has been recorded in the update report the [Dojo](../../glossary/dojo.md) makes to you.
+So far everything we have done has taken place on the `%base` desk. You have by this point become proficient at synchronizing Earthling data (Unix data) and Martian data (Urbit data), using [|mount](../../user-manual/os/dojo-tools.md#mount) and [|commit](../../user-manual/os/dojo-tools.md#commit), and every time you've done this with `%base` that has been recorded in the update report the [Dojo](../../glossary/dojo.md) makes to you.
 
 ```hoon
 > |commit %base
@@ -335,11 +336,11 @@ So far everything we have done has taken place on the `%base` desk. You have by 
 + /~zod/base/2/gen/demo/hoon
 ```
 
-This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components?  We call this the [beak](../../urbit-os/kernel/clay/reference/data-types.md#beak). The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
+This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components? We call this the [beak](../../urbit-os/kernel/clay/reference/data-types.md#beak). The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
 
 1. The **ship**, here \~zod. (You can find this out on any ship using `.our`.)
 2. The **desk**, here `%base`.
-3. A **revision number** or **timestamp**, here `2`. (The current system time is available as `.now`.)  Clay tracks the history of each file, so older versions can be accessed by their revision number. (This is uncommon to need to do today.)
+3. A **revision number** or **timestamp**, here `2`. (The current system time is available as `.now`.) Clay tracks the history of each file, so older versions can be accessed by their revision number. (This is uncommon to need to do today.)
 
 The beak is commonly constructed with the `/` fas prefix and `=` tis signs for the three components:
 
@@ -362,11 +363,11 @@ You'll also sometimes see `%` cen stand in for the whole including the “curren
 [~.~zod ~.base ~.~2022.6.14..18.15.10..698c ~]
 ```
 
-### Paths and Files {#paths-and-files}
+### Paths and Files <a href="#paths-and-files" id="paths-and-files"></a>
 
 A `$path` is a `(list @ta)`, a list of text identifiers. The first three are always the beak and the last one conventionally refers to the mark by which the file is represented.
 
-For instance, the [`+cat`](../../manual/os/dojo-tools.md#cat) generator displays the contents of any path, e.g.
+For instance, the [`+cat`](../../user-manual/os/dojo-tools.md#cat) generator displays the contents of any path, e.g.
 
 ```hoon
 > +cat /===/gen/ls/hoon
@@ -396,12 +397,12 @@ If no data are located at the given path, `+cat` simply shows `~` null:
 
 Every desk has a standard directory structure:
 
--   `/app` for [agents](../../glossary/agent.md)
--   `/gen` for [generators](../../glossary/generator.md)
--   `/lib` for library and helper files
--   `/mar` for [marks](../../glossary/mark.md)
--   `/sur` for shared structures
--   `/ted` for [threads](../../glossary/thread.md)
+* `/app` for [agents](../../glossary/agent.md)
+* `/gen` for [generators](../../glossary/generator.md)
+* `/lib` for library and helper files
+* `/mar` for [marks](../../glossary/mark.md)
+* `/sur` for shared structures
+* `/ted` for [threads](../../glossary/thread.md)
 
 To run a generator from a different desk in Dojo, you need to prefix the desk name to the generator; to run `/=landscape=/gen/tally/hoon`, you would say:
 
@@ -422,7 +423,7 @@ you are in 0 group(s):
 you are hosting 0 group(s):
 ```
 
-### Marks {#marks}
+### Marks <a href="#marks" id="marks"></a>
 
 [Marks](../../glossary/mark.md) play the role of file extensions, with an important upgrade: they are actually [molds](../../glossary/mold.md) and define conversion paths.
 
@@ -430,13 +431,12 @@ We won't write them in Hoon School, but you will encounter them when you begin w
 
 In brief, each mark has a `+grab` arm to convert from other types to it; a `+grow` arm to convert it to other types; and a `+grad` arm for some standard operations across marks. You can explore the marks in `/mar`.
 
+## Other Ford Runes <a href="#other-ford-runes" id="other-ford-runes"></a>
 
-## Other Ford Runes {#other-ford-runes}
+The `+ford` arm of Clay builds Hoon code. It provides [a number of runes](../../hoon/reference/rune/fas.md) which allow fine-grained control over building and importing files. These must be in the specific order at the top of any file. (They also don't work in Dojo; see [-build-file](../../user-manual/os/dojo-tools.md#build-file) for a workaround.) The runes include:
 
-The `+ford` arm of Clay builds Hoon code. It provides [a number of runes](../../hoon/reference/rune/fas.md) which allow fine-grained control over building and importing files. These must be in the specific order at the top of any file. (They also don't work in Dojo; see [-build-file](../../manual/os/dojo-tools.md#build-file) for a workaround.) The runes include:
-
-- `/-` [fashep](../../hoon/reference/rune/fas.md#fashep) imports a structure file from `/sur`. Structure files are a way to share common data structures (across agents, for instance).
-- `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) imports a library file from `/lib`.
+* `/-` [fashep](../../hoon/reference/rune/fas.md#fashep) imports a structure file from `/sur`. Structure files are a way to share common data structures (across agents, for instance).
+* `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) imports a library file from `/lib`.
 
 Both `/-` fashep and `/+` faslus allow you to import by affecting the name of the exposed core:
 
@@ -460,5 +460,5 @@ Both `/-` fashep and `/+` faslus allow you to import by affecting the name of th
 
 Exposing namespaces with `*` is useful when importing libraries with unwieldy names, but otherwise should be avoided as it can shadow names in your current subject.
 
-- `/=` [fastis](../../hoon/reference/rune/fas.md#fastis) builds a user-specified path and wraps it with a given [face](../../glossary/face.md).
-- `/*` [fastar](../../hoon/reference/rune/fas.md#fastar) imports the contents of a file, applies a [mark](../../glossary/mark.md) to convert it, and wraps it with a given face.
+* `/=` [fastis](../../hoon/reference/rune/fas.md#fastis) builds a user-specified path and wraps it with a given [face](../../glossary/face.md).
+* `/*` [fastar](../../hoon/reference/rune/fas.md#fastar) imports the contents of a file, applies a [mark](../../glossary/mark.md) to convert it, and wraps it with a given face.

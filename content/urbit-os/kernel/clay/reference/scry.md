@@ -7,9 +7,9 @@ The normal Clay scries are specified by a `care`, which is a single character co
 [~.~zod ~.base ~.~2021.4.26..02.29.03..d31b ~]
 ```
 
-In addition to the ordinary `care`-based endpoints, there are also a few special endpoints described in the [Misc. Queries](#misc-queries) section below.
+In addition to the ordinary `care`-based endpoints, there are also a few special endpoints described in the [Misc. Queries](scry.md#misc-queries) section below.
 
-## Misc. queries {#misc-queries}
+## Misc. queries <a href="#misc-queries" id="misc-queries"></a>
 
 Clay exposes a few special "buc" scry endpoints. These all use a `%x` `care` and must have a desk of `%$` (an empty string) in the `beak`. They therefore have the basic form of:
 
@@ -19,11 +19,11 @@ Clay exposes a few special "buc" scry endpoints. These all use a `%x` `care` and
 
 Each of the possible `[path]`s are described below.
 
----
+***
 
-### `/sweep` - Cache check {#sweep---cache-check}
+### `/sweep` - Cache check <a href="#sweep---cache-check" id="sweep---cache-check"></a>
 
-A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`leak`](data-types.md#leak) is a Ford cache key used internally by Clay.
+A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`leak`](broken-reference) is a Ford cache key used internally by Clay.
 
 Example:
 
@@ -32,12 +32,11 @@ Example:
 ~
 ```
 
----
+***
 
-### `/rang` - Get `rang` {#rang---get-rang}
+### `/rang` - Get `rang` <a href="#rang---get-rang" id="rang---get-rang"></a>
 
-A buc scry with a path of `/rang` will return the full
-[`rang`](data-types.md#rang) from Clay's state.
+A buc scry with a path of `/rang` will return the full[`rang`](broken-reference) from Clay's state.
 
 Example:
 
@@ -47,9 +46,9 @@ Example:
 31
 ```
 
----
+***
 
-### `/tomb/[path]` - Is accessible? {#tombpath---is-accessible}
+### `/tomb/[path]` - Is accessible? <a href="#tombpath---is-accessible" id="tombpath---is-accessible"></a>
 
 A buc scry with a path beginning with `/tomb` will return a `?` which is `%.y` if the file specified by `[path]` is accessible, and `%.n` otherwise. The `[path]` must be a full `beam` like `/~zod/base/12/sys/kelvin`.
 
@@ -62,9 +61,9 @@ Example:
 %.y
 ```
 
----
+***
 
-### `/cult/[desk]` - Subscribers {#cultdesk---subscribers}
+### `/cult/[desk]` - Subscribers <a href="#cultdesk---subscribers" id="cultdesk---subscribers"></a>
 
 A buc scry with a path of `/cult/[desk]` will return the current subscriptions for the specified `desk`.
 
@@ -74,7 +73,7 @@ The type returned is:
 (set [@p rave:clay])
 ```
 
-See the [`$rave:clay`](data-types.md#rave) data type entry for more details of the `$rave` structure.
+See the [`$rave:clay`](broken-reference) data type entry for more details of the `$rave` structure.
 
 Example:
 
@@ -85,11 +84,11 @@ Example:
 }
 ```
 
----
+***
 
-### `/flow` - Build cache {#flow---build-cache}
+### `/flow` - Build cache <a href="#flow---build-cache" id="flow---build-cache"></a>
 
-A buc scry with a path of `/flow` will return the global build cache. The type returned is a [`$flow:clay`](data-types.md#flow).
+A buc scry with a path of `/flow` will return the global build cache. The type returned is a [`$flow:clay`](broken-reference).
 
 Example:
 
@@ -98,11 +97,11 @@ Example:
 960
 ```
 
----
+***
 
-### `/domes` - All domes {#domes---all-domes}
+### `/domes` - All domes <a href="#domes---all-domes" id="domes---all-domes"></a>
 
-A buc scry with a path of `/domes` will return a [`cone`](data-types.md#cone) containing the `dome`s and associated metadata for all desks, foreign and local.
+A buc scry with a path of `/domes` will return a [`cone`](broken-reference) containing the `dome`s and associated metadata for all desks, foreign and local.
 
 Example:
 
@@ -122,11 +121,11 @@ Example:
 }
 ```
 
----
+***
 
-### `/tire` - App state {#tire---app-state}
+### `/tire` - App state <a href="#tire---app-state" id="tire---app-state"></a>
 
-A buc scry with a path of `/tire` will return the `rock:tire:clay` for all domestic desks, which is a `(map desk [=zest wic=(set weft)])`. The [`zest`](data-types.md#zest) specifies whether apps on the desk are running or suspended. The `wic` set contains the `weft`s (kernel versions) of any queued updates.
+A buc scry with a path of `/tire` will return the `rock:tire:clay` for all domestic desks, which is a `(map desk [=zest wic=(set weft)])`. The [`zest`](broken-reference) specifies whether apps on the desk are running or suspended. The `wic` set contains the `weft`s (kernel versions) of any queued updates.
 
 Example:
 
@@ -141,9 +140,9 @@ Example:
 }
 ```
 
----
+***
 
-### `/tyre` - App state subs {#tyre---app-state-subs}
+### `/tyre` - App state subs <a href="#tyre---app-state-subs" id="tyre---app-state-subs"></a>
 
 A buc scry with a path of `/tyre` will return the `(set duct)` of all subscriptions to app states (those made via `%tire` tasks).
 
@@ -156,9 +155,9 @@ Example:
 }
 ```
 
----
+***
 
-## `%a` - Build hoon {#a---build-hoon}
+## `%a` - Build hoon <a href="#a---build-hoon" id="a---build-hoon"></a>
 
 A scry with a `care` of `%a` will build a `hoon` file and return it as a `vase`.
 
@@ -168,9 +167,9 @@ Example:
 .^(vase %ca %/lib/strandio/hoon)
 ```
 
----
+***
 
-## `%b` - Dyn. mark core {#b---dyn-mark-core}
+## `%b` - Dyn. mark core <a href="#b---dyn-mark-core" id="b---dyn-mark-core"></a>
 
 A scry with a `care` of `%b` will produce a `dais` processed `mark` core for the specified `mark`. The `path` in the scry is a `mark`.
 
@@ -180,7 +179,7 @@ Example:
 .^(dais:clay %cb %/txt)
 ```
 
-## %c - Dyn. mark convert {#c---dyn-mark-convert}
+## %c - Dyn. mark convert <a href="#c---dyn-mark-convert" id="c---dyn-mark-convert"></a>
 
 A scry with a `care` of `%c` will produce a `tube` dynamically typed `mark` conversion gate. The `path` specifies two `mark`s - _from_ and _to_, like `/txt/noun`.
 
@@ -192,9 +191,9 @@ Example:
 [p=/text/plain q=[p=3 q=7.303.014]]
 ```
 
----
+***
 
-## `%d` - List desks {#d---list-desks}
+## `%d` - List desks <a href="#d---list-desks" id="d---list-desks"></a>
 
 A scry with a `care` of `%d` will return a `(set desk)` of the `desk`s that exist on your ship.
 
@@ -207,9 +206,9 @@ Example:
 {%bitcoin %base %webterm %landscape %kids}
 ```
 
----
+***
 
-## `%e` - Static mark core {#e---static-mark-core}
+## `%e` - Static mark core <a href="#e---static-mark-core" id="e---static-mark-core"></a>
 
 A scry with a `care` of `%e` will return a statically typed `nave` `mark` core. The `path` in the scry specifies the `mark`. The type returned is a `(nave:clay [type] [diff])`, where `[type]` is the type the `mark` takes and `[diff]` is the type taken by the `mark` specified in `+form:grad`.
 
@@ -219,9 +218,9 @@ Example:
 .^((nave:clay noun noun) %ce %/noun)
 ```
 
----
+***
 
-## `%f` - Stat. mark convert {#f---stat-mark-convert}
+## `%f` - Stat. mark convert <a href="#f---stat-mark-convert" id="f---stat-mark-convert"></a>
 
 A scry with a `care` of `%f` will return a static `mark` conversion gate. The `path` specifies two `mark`s - _from_ and _to_, like `/txt/mime`.
 
@@ -231,11 +230,11 @@ A scry with a `care` of `%f` will return a static `mark` conversion gate. The `p
 [p=/text/plain q=[p=3 q=7.303.014]]
 ```
 
----
+***
 
-## `%p` - File permissions {#p---file-permissions}
+## `%p` - File permissions <a href="#p---file-permissions" id="p---file-permissions"></a>
 
-A scry with a `care` of `%p` will return the permissions of the file or directory in question. The type returned is a [`[dict:clay dict:clay]`](/system/kernel/clay/reference/data-types#dict) where the head is read permissions and the tail is write permissions.
+A scry with a `care` of `%p` will return the permissions of the file or directory in question. The type returned is a [`[dict:clay dict:clay]`](../../../../../system/kernel/clay/reference/data-types/#dict) where the head is read permissions and the tail is write permissions.
 
 If the specified file or directory has no permissions set, it will default to the permissions of its parent. If nothing above it has permissions set, it will default to empty whitelists. If the specified file or directory doesn't exist, it will also return the default empty whitelist.
 
@@ -246,9 +245,9 @@ Example:
 [[src=/ rul=[mod=%white who=[p={} q={}]]] src=/ rul=[mod=%white who=[p={} q={}]]]
 ```
 
----
+***
 
-## `%r` - File as vase {#r---file-as-vase}
+## `%r` - File as vase <a href="#r---file-as-vase" id="r---file-as-vase"></a>
 
 A scry with a `care` of `%r` will return the data of the given file wrapped in a `vase` or crash if it's a directory. It's basically just a vase-wrapped `%x` scry.
 
@@ -272,21 +271,21 @@ Examples:
 Crash!
 ```
 
----
+***
 
-## `%s` - Misc. scries {#s---misc-scries}
+## `%s` - Misc. scries <a href="#s---misc-scries" id="s---misc-scries"></a>
 
 A scry with a `care` of `%s` is for miscellaneous internal and debug functions and is liable to change in the future.
 
 Rather than just a `path` to a file, the head of the `path` is tagged with one of `%yaki %blob %hash %cage %open %late %base` and the tail depends on which tag you use. We'll look at each in turn.
 
-### `%yaki` - Commit {#yaki---commit}
+### `%yaki` - Commit <a href="#yaki---commit" id="yaki---commit"></a>
 
-This will return the [yaki:clay](data-types.md#yaki) of the specified commit. It takes a [tako:clay](data-types.md#tako).
+This will return the [yaki:clay](broken-reference) of the specified commit. It takes a [tako:clay](broken-reference).
 
 Example:
 
-Here we scry the [dome:clay](data-types.md#dome) for `%`, get the latest `tako` and the do a `%s` scry for the `yaki` in question.
+Here we scry the [dome:clay](broken-reference) for `%`, get the latest `tako` and the do a `%s` scry for the `yaki` in question.
 
 ```
 > =/  =dome:clay  .^(dome:clay %cv %)
@@ -305,11 +304,11 @@ Here we scry the [dome:clay](data-types.md#dome) for `%`, get the latest `tako` 
 ]
 ```
 
----
+***
 
-### `%blob` - File blob {#blob---file-blob}
+### `%blob` - File blob <a href="#blob---file-blob" id="blob---file-blob"></a>
 
-This will return the [page:clay](data-types.md#page) of some file. It takes a [lobe:clay](data-types.md#lobe).
+This will return the [page:clay](broken-reference) of some file. It takes a [lobe:clay](broken-reference).
 
 Example:
 
@@ -326,15 +325,15 @@ Here we grab the `lobe` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to 
 ]
 ```
 
----
+***
 
-### `%hash` - Commit hash {#hash---commit-hash}
+### `%hash` - Commit hash <a href="#hash---commit-hash" id="hash---commit-hash"></a>
 
-This will return the `@uvI` (256-bit) content hash of the specified commit. It takes a [`tako`](data-types.md#tako).
+This will return the `@uvI` (256-bit) content hash of the specified commit. It takes a [`tako`](broken-reference).
 
 Example:
 
-Here we grab the [`dome`](data-types.md#dome) for `%` with a `%v` scry, get the latest [`tako`](data-types.md#tako) and then do a `%s` `%hash` scry for it.
+Here we grab the [`dome`](broken-reference) for `%` with a `%v` scry, get the latest [`tako`](broken-reference) and then do a `%s` `%hash` scry for it.
 
 ```
 > =/  =dome:clay  .^(dome:clay %cv %)
@@ -343,9 +342,9 @@ Here we grab the [`dome`](data-types.md#dome) for `%` with a `%v` scry, get the 
 0v16.er7uq.oke4u.cru7u.nglu9.q3su7.6ub1o.bh4qk.r5uav.ut12d.5rdl5
 ```
 
----
+***
 
-### `%cage` - File as cage {#cage---file-as-cage}
+### `%cage` - File as cage <a href="#cage---file-as-cage" id="cage---file-as-cage"></a>
 
 This will return a `cage` of the data of some file. It takes a `lobe`.
 
@@ -367,17 +366,17 @@ Here we grab the `lobe` of `/gen/hood/hi/hoon` with a `%y` scry, then use it to 
 ]
 ```
 
----
+***
 
-### `%open` - Build prelude {#open---build-prelude}
+### `%open` - Build prelude <a href="#open---build-prelude" id="open---build-prelude"></a>
 
 This is like a `%a` scry but it only compiles the prelude to the file, e.g. the Ford rune imports. Proper documentation for this will be done as part of Ford documentaton at a later date.
 
----
+***
 
-### `%late` - Latest case {#late---latest-case}
+### `%late` - Latest case <a href="#late---latest-case" id="late---latest-case"></a>
 
-This will return the most recent revision number of a `desk` that has been fully downloaded. The type it returns is a [`cass`](data-types.md#cass). The `case` in the `beak` must be a revision number rather than a date. You can just provide a case of `1` since it returns the latest regardless. If we have nothing for the specified `desk`, this will just return the bunt of a `cass` like `cass=[ud=0 da=~2000.1.1]`.
+This will return the most recent revision number of a `desk` that has been fully downloaded. The type it returns is a [`cass`](broken-reference). The `case` in the `beak` must be a revision number rather than a date. You can just provide a case of `1` since it returns the latest regardless. If we have nothing for the specified `desk`, this will just return the bunt of a `cass` like `cass=[ud=0 da=~2000.1.1]`.
 
 Example:
 
@@ -391,9 +390,9 @@ cass=[ud=50 da=~2021.4.22..10.38.50..57a8]
 cass=[ud=0 da=~2000.1.1]
 ```
 
----
+***
 
-### `%base` - Merge-base {#base---merge-base}
+### `%base` - Merge-base <a href="#base---merge-base" id="base---merge-base"></a>
 
 This will return the mergebase (i.e. most recent common ancestor) between two `desk`s. The type it returns is a `(list tako:clay)`. The first `desk` will just be the one in the `beak` `path` prefix and the second will be specified like `/ship/desk` at the end of the scry `path`. If there is no common ancestor between the two `desk`s, this will just produce an empty `list`.
 
@@ -409,9 +408,9 @@ Examples:
 ~
 ```
 
----
+***
 
-## `%t` - List files {#t---list-files}
+## `%t` - List files <a href="#t---list-files" id="t---list-files"></a>
 
 A scry with a `care` of `%t` will return a `(list path)` of all files in the given directory, or just a `(list path)` of the single file if it's a file. This is done recursively so will provide files in subdirectories as well. The paths will be fully qualified except for the `ship`, `desk` and `case`. If the directory or file specified does not exist, it will return an empty `list`.
 
@@ -439,9 +438,9 @@ Examples:
 ~
 ```
 
----
+***
 
-## `%u` - Check exists {#u---check-exists}
+## `%u` - Check exists <a href="#u---check-exists" id="u---check-exists"></a>
 
 A scry with a `care` of `%u` will return a `?` depending on whether the file exists. It will produce `%.n` if it's a directory or doesn't exist and will produce `%.y` if it's a file and exists.
 
@@ -462,11 +461,11 @@ Examples:
 %.n
 ```
 
----
+***
 
-## `%v` - Desk state {#v---desk-state}
+## `%v` - Desk state <a href="#v---desk-state" id="v---desk-state"></a>
 
-A scry with a care of `%v` will return the entire state of a `desk` as a [`dome`](data-types.md#dome).
+A scry with a care of `%v` will return the entire state of a `desk` as a [`dome`](broken-reference).
 
 Example:
 
@@ -478,11 +477,11 @@ Example:
 
 Note: If you try printing this it will take forever and probably OOM your ship.
 
----
+***
 
-## `%w` - Revision number {#w---revision-number}
+## `%w` - Revision number <a href="#w---revision-number" id="w---revision-number"></a>
 
-A scry with a `care` of `%w` will return the revision number and date of a given `case`. The type returned is a [`cass`](data-types.md#cass) like `[ud=@ud da=@da]` where `ud` is the revision number and `da` is the date.
+A scry with a `care` of `%w` will return the revision number and date of a given `case`. The type returned is a [`cass`](broken-reference) like `[ud=@ud da=@da]` where `ud` is the revision number and `da` is the date.
 
 Example:
 
@@ -491,9 +490,9 @@ Example:
 [ud=2 da=~2021.4.13..19.12.49..3389]
 ```
 
----
+***
 
-## `%x` - Read file {#x---read-file}
+## `%x` - Read file <a href="#x---read-file" id="x---read-file"></a>
 
 A scry with a `care` of `%x` will return the data of a file or crash if it's a directory. The type returned will be whatever is defined by the `mark` of the file.
 
@@ -514,13 +513,13 @@ Examples:
 Crash!
 ```
 
----
+***
 
-## `%y` - Read arch {#y---read-arch}
+## `%y` - Read arch <a href="#y---read-arch" id="y---read-arch"></a>
 
 A scry with a `care` of `%y` will return the `arch` of a file or directory.
 
-An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain the [`lobe`](data-types.md#lobe) hash if it's a file, otherwise it will be null. The `dir` will contain a map of the files and directories it contains, otherwise it will be null.
+An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain the [`lobe`](broken-reference) hash if it's a file, otherwise it will be null. The `dir` will contain a map of the files and directories it contains, otherwise it will be null.
 
 It will return the bunt of an `arch` if the file or directory is not found.
 
@@ -557,9 +556,9 @@ Examples:
 [fil=~ dir={}]
 ```
 
----
+***
 
-## `%z` - Content hash {#z---content-hash}
+## `%z` - Content hash <a href="#z---content-hash" id="z---content-hash"></a>
 
 A scry with a `care` of `%z` will return the hash of a file or the recursive hash of a directory. If the file or directory doesn't exist it will return a null value.
 
@@ -582,4 +581,4 @@ Examples:
 0v0
 ```
 
----
+***

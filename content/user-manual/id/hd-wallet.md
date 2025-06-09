@@ -2,43 +2,43 @@
 
 This document explains what the [Urbit HD wallet](../../glossary/hdwallet.md) is and how to use it.
 
-### What is the Urbit HD Wallet? {#urbit-hd-wallet}
+### What is the Urbit HD Wallet? <a href="#urbit-hd-wallet" id="urbit-hd-wallet"></a>
 
 The [Urbit Hierarchical Deterministic (HD) Wallet](../../glossary/hdwallet.md) is a custom Ethereum wallet based on BIP39 and BIP44 – the same underlying technology used by wallet providers like Ledger, Trezor, Metamask, and MyEtherWallet. You can think of the Urbit HD wallet as a wallet of wallets, which lets you keep a single passphrase for all of your Urbit ID keys. Urbit ID uses multiple keys with different capabilities – a bit like permissions – so that you can keep the more valuable keys in cold storage while keeping less valuable keys, used in day-to-day operation, more easily accessible. If you're only operating a planet, you shouldn't have to worry about this: you can simply think of your "master ticket" as the password to your Urbit ID. If you're operating a star or galaxy, the Urbit HD Wallet allows you to implement a multi-tier key custody scheme.
 
 If you're interested, you can read the spec here: [Urbit HD Wallet Spec (UP 8)](https://github.com/urbit/proposals/blob/master/008-urbit-hd-wallet.md).
 
-### What is a master ticket? {#master-ticket}
+### What is a master ticket? <a href="#master-ticket" id="master-ticket"></a>
 
-The "master ticket" is the cryptographic seed from which your other Urbit ID keys are derived. It should be treated like a master password: **you should never share it with anyone, and you must store it very securely (see our practices below).** This ticket is used to derive the Ethereum wallet that holds your ownership keys, your [Urbit OS](#what-is-arvo) key – used to boot your Urbit – and the other keys associated with your identity. You’ll have a master ticket if you used the Urbit Wallet Generator or claimed a [ship](../../glossary/ship.md) on our hosted version of Bridge.
+The "master ticket" is the cryptographic seed from which your other Urbit ID keys are derived. It should be treated like a master password: **you should never share it with anyone, and you must store it very securely (see our practices below).** This ticket is used to derive the Ethereum wallet that holds your ownership keys, your [Urbit OS](hd-wallet.md#what-is-arvo) key – used to boot your Urbit – and the other keys associated with your identity. You’ll have a master ticket if you used the Urbit Wallet Generator or claimed a [ship](../../glossary/ship.md) on our hosted version of Bridge.
 
 If you're operating a planet, you can use your master ticket to authenticate with Bridge.
 
-### What is an ownership address? {#ownership-address}
+### What is an ownership address? <a href="#ownership-address" id="ownership-address"></a>
 
 An ownership address is an Ethereum address that owns one or more of your Urbit IDs. The Urbit Wallet Generator creates one [Urbit HD Wallet](../../glossary/hdwallet.md) and associated addresses for each of your identities. Using the ownership key associated with your ownership address, you can transfer identities to other people, meaning that it’s very important to store securely.
 
-### What are proxies? {#proxies}
+### What are proxies? <a href="#proxies" id="proxies"></a>
 
 See [Proxies](proxies.md).
 
-### What are seeds? {#seeds}
+### What are seeds? <a href="#seeds" id="seeds"></a>
 
-All Ethereum key-pairs in the Urbit wallet system, including [proxies](../../manual/id/proxies.md), are produced by 128-bit cryptographically random values called seeds. These seeds are the equivalent of the BIP39 mnemonic of an Ethereum wallet and are yours alone. An ownership key pair is derived from an ownership seed and, likewise, the various proxy key pairs are generated from their respective proxy seeds.
+All Ethereum key-pairs in the Urbit wallet system, including [proxies](proxies.md), are produced by 128-bit cryptographically random values called seeds. These seeds are the equivalent of the BIP39 mnemonic of an Ethereum wallet and are yours alone. An ownership key pair is derived from an ownership seed and, likewise, the various proxy key pairs are generated from their respective proxy seeds.
 
 For detailed information see the [Urbit HD Wallet Spec (UP 8)](https://github.com/urbit/proposals/blob/master/008-urbit-hd-wallet.md).
 
-### What does it mean to “set public keys”? {#set-public-keys}
+### What does it mean to “set public keys”? <a href="#set-public-keys" id="set-public-keys"></a>
 
-This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](../../urbit-id/README.md), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](../../glossary/ship.md) on the [Urbit OS](#what-is-arvo) network.
+This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](broken-reference), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](../../glossary/ship.md) on the [Urbit OS](hd-wallet.md#what-is-arvo) network.
 
 You want to reset these keys if they are compromised, or if your ship has sunk. This is of little practical significance today, but resetting your networking keys resets your relationship with other ships on the network.
 
-### What do I do if I want to own multiple identities? {#multiple-points}
+### What do I do if I want to own multiple identities? <a href="#multiple-points" id="multiple-points"></a>
 
 We recommend using a different HD Wallet for each identity. You are able to assign any number of identities to a single Ethereum address, however, since they are just ERC-721 tokens.
 
-### How should I take care of my Urbit HD Wallet? {#custody}
+### How should I take care of my Urbit HD Wallet? <a href="#custody" id="custody"></a>
 
 Urbit IDs have accompanying security realities that must be taken seriously. The responsibility for keeping cryptographic assets safe rests fully with the party that owns them.
 
@@ -54,15 +54,15 @@ Cold storage refers to any method in which secrets are stored in a way that is n
 
 Cold storage media options:
 
-- Printing the secret on a piece of paper. However, paper wallets are vulnerable to various forms of physical damage, such as rot, water damage, smoke, or fire. Laminating the paper can mitigate some of these risks, but the lamination can potentially trap moisture. Make sure that you trust the printer; some have memory and network connections.
-- Storing the secret on a brand-new USB stick or hard drive that has never been connected to a networked machine.
-- Storing the secret on a hardware wallet like Ledger or Trezor.
-- Engraving the secret on a strip of stainless steel. This medium is resistant to both water and fire damage.
+* Printing the secret on a piece of paper. However, paper wallets are vulnerable to various forms of physical damage, such as rot, water damage, smoke, or fire. Laminating the paper can mitigate some of these risks, but the lamination can potentially trap moisture. Make sure that you trust the printer; some have memory and network connections.
+* Storing the secret on a brand-new USB stick or hard drive that has never been connected to a networked machine.
+* Storing the secret on a hardware wallet like Ledger or Trezor.
+* Engraving the secret on a strip of stainless steel. This medium is resistant to both water and fire damage.
 
 Places to store your cold-storage media:
 
-- A hidden safe in your home
-- A safe-deposit box at a bank
+* A hidden safe in your home
+* A safe-deposit box at a bank
 
 It’s a good idea to store your keys redundantly; for example, on both a USB stick and a piece of paper in the safe, in case one of those methods fails. If you deem a key to be valuable enough, you can **shard** it into thirds (or other splits) and store each third in secure, geographically distributed locations. Urbit HD wallets for galaxies automatically provide a 3-way sharded master ticket.
 
@@ -76,9 +76,9 @@ A "paper wallet" is a physical medium printed or engraved with a secret. These a
 
 This tier includes any method where secrets are stored on an everyday computing platform. Some such methods are:
 
-- Encrypted PDFs containing a secret on your desktop’s drive
-- Storing secrets on a cloud account protected by multi-factor authentication
-- Storing secrets in a password manager
+* Encrypted PDFs containing a secret on your desktop’s drive
+* Storing secrets on a cloud account protected by multi-factor authentication
+* Storing secrets in a password manager
 
 This method is risky for a number of reasons. Networked computers can contain malware. Computers that see common use are also prone to crashes and data loss. Storing secrets on cloud accounts mitigates the risk of data destruction, but it exposes a much larger attack surface to malicious actors.
 

@@ -4,4 +4,4 @@
 
 #### Further reading
 
-- [The Updates guide](../manual/os/updates.md): Comprehensive user documentation of updates.
+* [The Updates guide](../user-manual/os/updates.md): Comprehensive user documentation of updates.

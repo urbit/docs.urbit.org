@@ -1,8 +1,10 @@
 # 11. Failure
 
+## 11. Failure
+
 In this lesson we'll cover the last agent arm we haven't touched on yet: `+on-fail`. We'll also touch on one last concept, which is the "helper core".
 
-# Failures
+## Failures
 
 When crashes or errors occur in certain cases, Gall passes them to an agent's `+on-fail` arm for handling. This arm is very seldom used, almost all agents leave it for default-agent to handle, which just prints the error message to the terminal. While you're unlikely to use this arm, we'll briefly go over its behavior for completeness.
 
@@ -17,10 +19,10 @@ When crashes or errors occur in certain cases, Gall passes them to an agent's `+
 
 Gall calls `+on-fail` in four cases:
 
-- When there's a crash in the `+on-arvo` arm.
-- When there's a crash in the `+on-agent` arm.
-- When there's a crash in the `+on-leave` arm.
-- When an agent produces a `%watch` card but the `$wire`, ship, agent and `$path` specified are the same as an existing subscription.
+* When there's a crash in the `+on-arvo` arm.
+* When there's a crash in the `+on-agent` arm.
+* When there's a crash in the `+on-leave` arm.
+* When an agent produces a `%watch` card but the `$wire`, ship, agent and `$path` specified are the same as an existing subscription.
 
 For an `+on-arvo` failure, the `$term` will always be `%arvo-response`, and the `$tang` will contain a stack trace.
 
@@ -32,7 +34,7 @@ For a `%watch` failure, the `$term` will be `%watch-not-unique`. The `$tang` wil
 
 How you might handle these cases (if you wanted to manually handle them) depends on the purpose of your particular agent.
 
-## Helper core {#helper-core}
+### Helper core <a href="#helper-core" id="helper-core"></a>
 
 Back in the lesson on lustar virtual arms, we briefly mentioned a common pattern is to define a deferred expression for a helper core named `hc` like:
 
@@ -44,7 +46,7 @@ Back in the lesson on lustar virtual arms, we briefly mentioned a common pattern
 
 The name `do` is also used frequently besides `hc`.
 
-A helper core is a separate core composed into the subject of the agent core, containing useful functions for use by the agent arms. Such a helper core would typically contain functions that would only ever be used internally by the agent - more general functions would usually be included in a separate `/lib` library and imported with a [faslus](../../hoon/reference/rune/fas.md#faslus) (`/+`) rune. Additionally, you might recall that the example agent of the [subscriptions lesson](8-subscriptions.md#example) used a barket (`|^`) rune to create a core in the `+on-poke` arm with a separate `+handle-poke` arm. That approach is typically used when functions will only be used in that one arm. The helper core, on the other hand, is useful when functions will be used by multiple agent arms.
+A helper core is a separate core composed into the subject of the agent core, containing useful functions for use by the agent arms. Such a helper core would typically contain functions that would only ever be used internally by the agent - more general functions would usually be included in a separate `/lib` library and imported with a [faslus](../../hoon/reference/rune/fas.md#faslus) (`/+`) rune. Additionally, you might recall that the example agent of the [subscriptions lesson](broken-reference) used a barket (`|^`) rune to create a core in the `+on-poke` arm with a separate `+handle-poke` arm. That approach is typically used when functions will only be used in that one arm. The helper core, on the other hand, is useful when functions will be used by multiple agent arms.
 
 The conventional pattern is to have the helper core _below_ the agent core, so the structure of the agent file is like:
 
@@ -86,13 +88,13 @@ hc  ~(. +>  bowl)
 
 To get to the helper core we composed from within the door, we use a [censig](../../hoon/reference/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `$bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
 
-## Summary {#summary}
+### Summary <a href="#summary" id="summary"></a>
 
-- `+on-fail` is called in certain cases of crashes or failures.
-- Crashes in the `+on-agent`, `+on-arvo`, or `+on-watch` arms will trigger a call to `+on-fail`.
-- A non-unique `%watch` `$card` will also trigger a call to `+on-fail`.
-- `+on-fail` is seldom used - most agents just leave it to `%default-agent` to handle, which just prints the error to the terminal.
-- A helper core is an extra core of useful functions, composed into the subject of the agent core.
-- Helper cores are typically placed below the agent core, and composed with a tisgal (`=<`) rune.
-- The helper core is typically a door with the `$bowl` as a sample.
-- The helper core is typically given a name of `hc` or `do` in the lustar virtual arm of the agent core.
+* `+on-fail` is called in certain cases of crashes or failures.
+* Crashes in the `+on-agent`, `+on-arvo`, or `+on-watch` arms will trigger a call to `+on-fail`.
+* A non-unique `%watch` `$card` will also trigger a call to `+on-fail`.
+* `+on-fail` is seldom used - most agents just leave it to `%default-agent` to handle, which just prints the error to the terminal.
+* A helper core is an extra core of useful functions, composed into the subject of the agent core.
+* Helper cores are typically placed below the agent core, and composed with a tisgal (`=<`) rune.
+* The helper core is typically a door with the `$bowl` as a sample.
+* The helper core is typically given a name of `hc` or `do` in the lustar virtual arm of the agent core.

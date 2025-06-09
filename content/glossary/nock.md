@@ -8,4 +8,4 @@ Code written in [Hoon](hoon.md) is compiled to Nock, though it is unnecessary to
 
 ### Further Reading <a href="#further-reading" id="further-reading"></a>
 
-* [Nock](broken-reference)
+* [Nock](../nock/)

@@ -143,7 +143,7 @@
 
 ## Build on Urbit
 
-* [Build on Urbit](build-on-urbit/contents.md)
+* [Contents](build-on-urbit/contents.md)
 * [Environment Setup](build-on-urbit/environment.md)
 * [Hoon School](build-on-urbit/hoon-school/README.md)
   * [1. Hoon Syntax](build-on-urbit/hoon-school/B-syntax.md)

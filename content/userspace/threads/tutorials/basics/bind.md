@@ -1,6 +1,6 @@
 # Bind
 
-Having looked at `form` and `pure`, we'll now look at the last `strand` arm `bind`. Bind is typically used in combination with micgal (`;<`).
+Having looked at `+form` and `+pure`, we'll now look at the last `+strand` arm `+bind`. Bind is typically used in combination with micgal (`;<`).
 
 ## Micgal {#micgal}
 
@@ -32,8 +32,8 @@ j
 
 Bind by itself must be specialised like `(bind:m ,<type>)` and it takes two arguments:
 
-- The first argument is a function that returns the `form` of a strand which produces `<type>`.
-- The second argument is a gate whose sample is `<type>` and which returns a `form`.
+- The first argument is a function that returns the `+form` of a strand which produces `<type>`.
+- The second argument is a gate whose sample is `<type>` and which returns a `+form`.
 
 Since you'll invariably use it in conjunction with micgal, the `<type>` in `;< <type> bind:m ...` will both specialise `bind` and specify the gate's sample.
 
@@ -45,14 +45,14 @@ Since the second gate may itself contain another `;< <type> bind:m ...`, you can
 
 `/lib/strandio/hoon` contains a large collection of useful, ready-made functions for use in threads. For example:
 
-- `sleep` waits for the specified time.
-- `get-time` gets the current time.
-- `poke` pokes an agent.
-- `watch` subscribes to an agent.
-- `fetch-json` produces the JSON at a particular URL.
-- `retry` tries a strand repeatedly with exponential backoff until it succeeds.
-- `start-thread` starts another thread.
-- `send-raw-card` sends any card.
+- `+sleep` waits for the specified time.
+- `+get-time` gets the current time.
+- `+poke` pokes an agent.
+- `+watch` subscribes to an agent.
+- `+fetch-json` produces the JSON at a particular URL.
+- `+retry` tries a strand repeatedly with exponential backoff until it succeeds.
+- `+start-thread` starts another thread.
+- `+send-raw-card` sends any card.
 
 ...and many more.
 
@@ -61,19 +61,16 @@ Since the second gate may itself contain another `;< <type> bind:m ...`, you can
 Here's a simple thread with a couple of `strandio` functions:
 
 ```hoon
-/-  spider
 /+  strandio
-=,  strand=strand:spider
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  t=@da   bind:m  get-time:strandio
 ;<  s=ship  bind:m  get-our:strandio
 (pure:m !>([s t]))
 ```
 
-Save it as `/ted/mythread.hoon` of `%base`, `|commit` it and run it with `-mythread`. You should see something like:
+Save it as `/ted/mythread.hoon` in `%base`, `|commit` it and run it with `-mythread`. You should see something like:
 
 ```
 > -mythread
@@ -84,10 +81,10 @@ Save it as `/ted/mythread.hoon` of `%base`, `|commit` it and run it with `-mythr
 
 To use `strandio` functions we've imported the library with `/+ strandio`.
 
-`get-time` and `get-our` get the current time & ship from the bowl in `strand-input`. We'll discuss `strand-input` in more detail later.
+`+get-time` and `+get-our` get the current time & ship from the bowl in `$strand-input`. We'll discuss `$strand-input` in more detail later.
 
 Note how we've specified the face and return type of each strand like `t=@da`, etc.
 
 You can see how `pure` has access to the results of previous strands in the pipeline. Note how we've wrapped `pure`'s argument in a `!>` because the thread must produce a `vase`.
 
-Next we'll look at `strand-input` in more detail.
+Next we'll look at `$strand-input` in more detail.

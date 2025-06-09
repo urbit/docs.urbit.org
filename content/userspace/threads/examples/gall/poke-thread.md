@@ -1,8 +1,11 @@
 # Poke Thread
 
-Here's a modified agent that pokes our thread. I've replaced some off the previous stuff because it was getting a little unwieldly.
+Here's a modified agent that pokes a thread. We start it by poking Spider directly because we need to know the thread ID to poke the thread itself. In this example we use a thread file, but an inline thread could also be used.
 
-#### `thread-starter.hoon`
+<details>
+<summary>thread-starter agent code</summary>
+
+{% code title="/app/thread-starter.hoon" overflow="nowrap" lineNumbers="true" %}
 
 ```hoon
 /+  default-agent, dbug
@@ -64,21 +67,23 @@ Here's a modified agent that pokes our thread. I've replaced some off the previo
 --
 ```
 
-And here we've modified the thread to take the poke and return it as the result:
+{% endcode %}
 
-#### `test-thread.hoon`
+</details>
 
+And here's a thread to take the poke and return it as the result:
+
+{% code title="/ted/test-thread.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
 /-  spider
 /+  *strandio
-=,  strand=strand:spider
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  vmsg=vase   bind:m  (take-poke %foo)
 (pure:m vmsg)
 ```
+{% endcode %}
 
 Save them, `|commit` and run it like `:thread-starter [%test-thread %blah]`. You should see:
 
@@ -108,4 +113,4 @@ In our thread we've added:
 ;<  vmsg=vase   bind:m  (take-poke %foo)
 ```
 
-`take-poke` is a `strandio` function that just waits for a poke with the given mark and skips everything else. In this case we've specified a mark of `%foo`. Once our thread gets a poke with this mark it returns it as a result with `(pure:m vmsg)`. When our agent gets that it just prints it.
+`+take-poke` is a `strandio` function that just waits for a poke with the given mark and skips everything else. In this case we've specified a mark of `%foo`. Once our thread gets a poke with this mark it returns it as a result with `(pure:m vmsg)`. When our agent gets that it just prints it.

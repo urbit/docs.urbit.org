@@ -14,11 +14,6 @@ Get some JSON from an external website.
 
 Spawn and manage threads from within threads.
 
-## [Main-loop](main-loop.md) {#main-loopmain-loopmd}
-
-Create a loop - useful for long-running threads and for trying the same input
-against multiple functions.
-
 ## [Poke Agent](poke-agent.md) {#poke-agentpoke-agentmd}
 
 Poke an agent from a thread.

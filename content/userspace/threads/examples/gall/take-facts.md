@@ -1,11 +1,14 @@
 # Take Facts
 
-Most of the time you'll just want the final result like how we did previously. Sometimes, though, you might want to send out facts while the thread runs rather than just at the end.
+Most of the time you'll just want the thread final result. Sometimes, though, you might want to send out facts while the thread runs rather than just at the end.
 
-Here we've added another card to subscribe for any facts sent by the thread and some small changes to `on-agent`:
+Here's an example agent with another card to subscribe for any facts sent by the thread and some small extra logic in `+on-agent` to handle them:
 
-#### `thread-starter.hoon`
+<details>
 
+<summary>/app/thread-starter.hoon code</summary>
+
+{% code title="/app/thread-starter.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
 /+  default-agent, dbug
 =*  card  card:agent:gall
@@ -73,18 +76,17 @@ Here we've added another card to subscribe for any facts sent by the thread and 
 ++  on-fail   on-fail:def
 --
 ```
+{% endcode %}
+
+</details>
 
 We've also made some changes to the thread:
 
-#### `test-thread.hoon`
-
+{% code title="/ted/test-thread.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
-/-  spider
 /+  *strandio
-=,  strand=strand:spider
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  =path   bind:m  take-watch
 ;<  ~       bind:m  (send-raw-card [%give %fact ~[path] %update !>("message 1")])
@@ -94,12 +96,13 @@ We've also made some changes to the thread:
                         [%give %fact ~[path] %update !>("message 4")]
                     ==
 ;<  ~       bind:m  (send-raw-card [%give %kick ~[path] ~])
-|=  strand-input:strand
+|=  strand-input:rand
 ?+    q.arg  [~ %fail %not-foo ~]
     %foo
   [~ %done arg]
 ==
 ```
+{% endcode %}
 
 Save & `|commit`, then run `:thread-starter [%test-thread %foo]`. You should see:
 
@@ -125,7 +128,7 @@ Thread failed: not-foo
 
 ### Analysis {#analysis}
 
-In our agent's `on-poke` arm we've added another card to subscribe to `/thread/[tid]/updates`:
+In our agent's `on-poke` arm we've added a card to subscribe to `/thread/[tid]/updates`:
 
 ```hoon
 [%pass /thread/updates/[ta-now] %agent [our.bowl %spider] %watch /thread/[tid]/updates]
@@ -166,7 +169,7 @@ Finally we've added:
 
 ...to kick subscribers. This is important because, unlike on `/thread-result`, spider will not automatically kick subscribers when the thread ends. You have to do it explicitly so your agent doesn't accumulate wires with repeated executions.
 
-Back in our agent: In the `on-agent` arm we've added:
+Back in our agent, in the `+on-agent` arm, we've added:
 
 ```hoon
   %update

@@ -1,12 +1,12 @@
 # Star and Galaxy Operations
 
-To boot your galaxy or star, follow our [installation instructions](../getting-started).
+To boot your galaxy or star, follow our [installation instructions](../../get-on-urbit.md).
 
 ### Hosting your star {#hosting-your-star}
 
 If you plan to distribute planets in any capacity, we ask that you keep your star running. If you fail to do so, those planets will become orphans that are unable to communicate with the network unless they transfer to a new star.
 
-See our [cloud hosting instructions](../running/hosting.md) for instructions on settings up a Digital Ocean droplet.
+See our [cloud hosting instructions](../running/cloud-hosting.md) for instructions on settings up a Digital Ocean droplet.
 
 ### Distributing planets {#distributing-planets}
 

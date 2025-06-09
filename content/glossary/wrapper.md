@@ -4,4 +4,4 @@ A **wrapper** is a library that takes a [Gall](gall.md) [agent](agent.md) [core]
 
 ### Further Reading {#further-reading}
 
-- [App School](../courses/app-school): A comprehensive guide to writing Gall agents.
+- [App School](../build-on-urbit/app-school): A comprehensive guide to writing Gall agents.

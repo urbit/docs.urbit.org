@@ -14,5 +14,5 @@ You can address things by axis with lus and a number, like `+7` for `c`, `+3` fo
 
 #### Further Reading
 
-- [Hoon School section 6: Trees](../courses/hoon-school/G-trees.md)
-- [Standard Library 1b: Tree Addressing](../language/hoon/reference/stdlib/1b.md)
+- [Hoon School section 6: Trees](../build-on-urbit/hoon-school/G-trees.md)
+- [Standard Library 1b: Tree Addressing](../hoon/reference/stdlib/1b.md)

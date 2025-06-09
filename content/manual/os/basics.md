@@ -2,7 +2,7 @@
 
 This document deals with:
 
-- Running an Urbit ship with the ordinary runtime [from the command line](../getting-started/self-hosted/cli.md).
+- Running an Urbit ship with the ordinary runtime [from the command line](../../get-on-urbit.md#get-the-urbit-runtime).
 - Basic setup, configuration and usage in Urbit's shell called the `dojo`.
 
 ## Shutdown {#shutdown}
@@ -130,7 +130,7 @@ The `moon:` part is the name of the moon, in this case `~faswep-navred-sampel-pa
 
 You can just copy the key (which in this case would be the `0w5[...]600g1` part) to the clipboard, or save it in a `.key` file, for example `faswep-navred-sampel-palnet.key`.
 
-You can use the key and moon name in the same installation flow from the [Command line installation](../getting-started/self-hosted/cli.md) guide, following the same scheme as for booting a planet. That scheme is:
+You can use the key and moon name in the same installation flow from the [Command line installation](../../get-on-urbit.md#get-the-urbit-runtime) guide, following the same scheme as for booting a planet. That scheme is:
 
 ```sh
 $ ./urbit -w <moon-name> -G <key> -c <pier-name>
@@ -191,7 +191,7 @@ To use the network as a planet or star, you must be sponsored by an active star 
 
 ## Life and rift number {#life-and-rift-number}
 
-You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](../../system/identity/concepts/life-and-rift.md).
+You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](../../urbit-id/concepts/life-and-rift.md).
 
 ## DNS setup {#dns-setup}
 

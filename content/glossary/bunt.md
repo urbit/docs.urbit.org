@@ -4,5 +4,5 @@ In [Hoon](hoon.md), **bunting** a [mold](mold.md) produces its default/example v
 
 #### Further reading
 
-- [Kettar rune reference](../language/hoon/reference/rune/ket.md#kettar): Details of the kettar rune.
-- [Hoon School: Molds lesson](../userspace/threads/tutorials/basics/input.md#bowl): This lesson discusses bunt values.
+- [Kettar rune reference](../hoon/reference/rune/ket.md#kettar): Details of the kettar rune.
+- [Hoon School: Molds lesson](../build-on-urbit/hoon-school/E-types.md): This lesson discusses bunt values.

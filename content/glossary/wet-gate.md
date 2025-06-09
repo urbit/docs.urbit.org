@@ -4,4 +4,4 @@ A **wet gate** is a [gate](gate.md) that can accept arguments of a type other th
 
 ### Further Reading {#further-reading}
 
-- [Hoon School: Metals](../courses/hoon-school/R-metals.md): This lesson covers dry and wet gates.
+- [Hoon School: Metals](../build-on-urbit/hoon-school/R-metals.md): This lesson covers dry and wet gates.

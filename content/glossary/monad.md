@@ -6,5 +6,5 @@ In [Hoon](hoon.md), there are a number of functions that are either monads or fo
 
 #### Further reading
 
-- [Threads guide](../userspace/threads/tutorials/basics/fundamentals.md): Learn how to write threads.
-- [stdlib reference section 2a](../language/hoon/reference/stdlib/2a.md): These functions are for manipulating and composing units.
+- [Threads guide](../urbit-os/base/threads/tutorials/basics/fundamentals.md): Learn how to write threads.
+- [stdlib reference section 2a](../hoon/reference/stdlib/2a.md): These functions are for manipulating and composing units.

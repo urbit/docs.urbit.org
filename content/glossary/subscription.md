@@ -4,4 +4,4 @@
 
 #### Further reading
 
-- [App School: subscriptions](../courses/app-school/8-subscriptions.md): A lesson on Gall agent subscriptions.
+- [App School: subscriptions](../build-on-urbit/app-school/8-subscriptions.md): A lesson on Gall agent subscriptions.

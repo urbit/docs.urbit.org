@@ -8,4 +8,4 @@ Eyre is located at `/base/sys/vane/eyre.hoon` within [Arvo](arvo.md).
 
 ### Further Reading {#further-reading}
 
-- [The Eyre tutorial](../system/kernel/eyre): A technical guide to the Eyre vane.
+- [The Eyre tutorial](../urbit-os/kernel/eyre) - A technical guide to the Eyre vane.

@@ -8,4 +8,4 @@ At the the time of writing, Gall allows agents to bind data to remote scry paths
 
 #### Further Reading
 
-- [Remote scry guide](../userspace/apps/guides/remote-scry.md): developer documentation of how remote scries work and how to use them.
+- [Remote scry guide](../build-on-urbit/userspace/guides/remote-scry.md): developer documentation of how remote scries work and how to use them.

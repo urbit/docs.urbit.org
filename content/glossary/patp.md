@@ -4,4 +4,4 @@ A **`@p`** (pronounced "pat P") is an [atom](atom.md) [aura](aura.md) in [Hoon](
 
 #### Further reading
 
-- [Atom aura reference](../language/hoon/reference/auras.md): details of auras in Hoon.
+- [Atom aura reference](../hoon/reference/auras.md): details of auras in Hoon.

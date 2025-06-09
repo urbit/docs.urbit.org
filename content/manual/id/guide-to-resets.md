@@ -1,6 +1,6 @@
 # Guide to Factory Resets
 
-An important concept on the [Ames](../../system/kernel/ames/README.md) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _factory reset_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.
+An important concept on the [Ames](../../urbit-os/kernel/ames) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _factory reset_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.
 
 ## Factory Resets {#factory-resets}
 
@@ -17,7 +17,7 @@ If you will be keeping your ship at the same Ethereum ownership address and woul
 - Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction` and wait for the progress bar to appear.
 - Download your new keyfile following these instructions: [Generate your keyfile](using-bridge.md#generate-your-keyfile).
 - Delete or archive your old [pier](../../glossary/pier.md).
-- Proceed to [boot your ship](../getting-started/self-hosted/cli.md#boot-your-planet) with the new keyfile.
+- Proceed to [boot your ship](../../get-on-urbit.md#boot-up-your-urbit) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 
@@ -29,7 +29,7 @@ If you are transferring a ship to a new Ethereum ownership address you will have
 - Logout of your current session in Bridge by clicking `Logout` at the top, and then login to your new ownership address.
 - From here, following the directions on how to [Accept your transfer](using-bridge.md#accept-your-transfer), [Set your networking keys](using-bridge.md#set-your-networking-keys), and [Generate your keyfile](using-bridge.md#generate-your-keyfile). The option whether or not to reset is in the Accept your Transfer step.
 - Delete or archive your old [pier](../../glossary/pier.md).
-- Proceed to [boot your ship](../getting-started/self-hosted/cli.md#boot-your-planet) with the new keyfile.
+- Proceed to [boot your ship](../../get-on-urbit.md#boot-up-your-urbit) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 

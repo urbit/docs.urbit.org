@@ -4,5 +4,5 @@ A **glob** is a bundle of front-end resources for an app which is served to a we
 
 #### Further reading
 
-- [Glob reference](../userspace/apps/reference/dist/glob.md): Details on how to make and distribute globs.
-- [The software distribution guide](../userspace/apps/guides/software-distribution.md): A walk-through of putting together and distribution an app, including globs.
+- [Glob reference](../build-on-urbit/userspace/reference/dist/glob.md): Details on how to make and distribute globs.
+- [The software distribution guide](../build-on-urbit/userspace/guides/software-distribution.md): A walk-through of putting together and distribution an app, including globs.

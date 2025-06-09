@@ -9,6 +9,6 @@ A Hoon atom type consists of a Nock atom with two additional pieces of metadata:
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
-  - [“Hoon Syntax”](../courses/hoon-school/B-syntax.md#nouns): A Hoon School lesson that explains how atoms work.
-- [The Nock explanation](../language/nock/reference/specification.md): Includes an explanation of atoms.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.
+  - [“Hoon Syntax”](../build-on-urbit/hoon-school/B-syntax.md#nouns): A Hoon School lesson that explains how atoms work.
+- [The Nock explanation](../nock/specification.md): Includes an explanation of atoms.

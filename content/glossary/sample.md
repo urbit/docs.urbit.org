@@ -4,4 +4,4 @@ The **sample** is the argument taken by a function (specifically a [gate](gate.m
 
 ### Further Reading {#further-reading}
 
-- [Hoon School](../courses/hoon-school): Our guide to learning the Hoon programming language.
+- [Hoon School](../build-on-urbit/hoon-school): Our guide to learning the Hoon programming language.

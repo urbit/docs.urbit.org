@@ -4,4 +4,4 @@ A **face** is a name for a value, type or expression in [Hoon](hoon.md). In the 
 
 #### Further reading
 
-- [Hoon school: Syntax lesson](../courses/hoon-school/B-syntax.md#preserving-values-with-faces): This lesson discusses faces in more detail.
+- [Hoon school: Syntax lesson](../build-on-urbit/hoon-school/B-syntax.md#preserving-values-with-faces): This lesson discusses faces in more detail.

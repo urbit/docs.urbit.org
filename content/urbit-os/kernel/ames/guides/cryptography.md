@@ -4,7 +4,7 @@ Here we give a technical overview of how Ames implements cryptography.
 
 ## Summary <a href="#summary" id="summary"></a>
 
-By default, all [packets are encrypted](cryptography.md#packets) with 256-bit [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption, whose key is obtained by [Diffie-Hellman key exchange](cryptography.md#key-exchange), with public/private keys generated using elliptic curve [Curve25519](https://en.wikipedia.org/wiki/Curve25519). The only exception to this are comet [self-attestation packets](cryptography.md#comets), which are unencrypted.
+By default, all [packets are encrypted](cryptography.md#packets) with 256-bit [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption, whose key is obtained by [Diffie-Hellman key exchange](#key-exchange), with public/private keys generated using elliptic curve [Curve25519](https://en.wikipedia.org/wiki/Curve25519). The only exception to this are comet [self-attestation packets](cryptography.md#comets), which are unencrypted.
 
 All packets are also [signed](cryptography.md#packets) using [Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm).
 
@@ -24,13 +24,13 @@ For each foreign ship a given ship has communicated with, `$ames-state` contains
 
 Recall that the `@p` of a comet is the hash of their 128-bit public key cast as a `@p`. Since the public key of a comet is not stored on Azimuth, a comet proves its identity with an "attestation packet". This is an unencrypted packet whose payload is the comet's signature created with its private key. This is the only circumstance under which a ship will send an unencrypted packet. The signature is generated with [`+sign:as:crub`](../../../../hoon/reference/cryptography.md#sign-as) found in `sys/zuse.hoon`.
 
-Upon hearing an attestation packet, the receiving ship will generate a symmetric key for communications with the comet, according to the [key exchange](cryptography.md#key-exchange) protocol.
+Upon hearing an attestation packet, the receiving ship will generate a symmetric key for communications with the comet, according to the [key exchange](#key-exchange) protocol.
 
 The fact that the first packet exchanged between a comet and another ship must be an attestation packet is why comets are unable to initiate communication with one another, and also why comets must be the first to initiate communication with a non-comet. This is a technical limitation with a planned workaround.
 
 ## `+acru:ames` <a href="#crypto-core" id="crypto-core"></a>
 
-The `+crypto-core` in `$ames-state` is an `+acru:ames` core, a [lead](../../../../hoon/reference/advanced.md#dry-polymorphism-and-core-nesting-rules) interface core for asymmetric cryptosuites found in `sys/lull.hoon` which handles encryption, decryption, signing, and verifying. In practice, the only cryptosuite in use is [`+crub:crypto`](cryptography.md#crub), which implements [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
+The `+crypto-core` in `$ames-state` is an `+acru:ames` core, a [lead](../../../../hoon/reference/advanced.md#dry-polymorphism-and-core-nesting-rules) interface core for asymmetric cryptosuites found in `sys/lull.hoon` which handles encryption, decryption, signing, and verifying. In practice, the only cryptosuite in use is [`+crub:crypto`](../../../../hoon/reference/cryptography.md#crub), which implements [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
 ```hoon
   ++  acru  $_  ^?                                      ::  asym cryptosuite

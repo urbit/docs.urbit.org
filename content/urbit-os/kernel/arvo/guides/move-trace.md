@@ -60,7 +60,7 @@ Let's put the first part of the move trace into a diagram to make following alon
 
 ![](https://media.urbit.org/docs/arvo/move-trace-with-key.png)
 
-Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` `note/task` sequence or a `%give` `gift/sign` sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information, see the [Arvo kernel tutorial](./README.md#the-kernel).
+Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` `note/task` sequence or a `%give` `gift/sign` sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information, see the [Arvo kernel tutorial](../../arvo/README.md#the-kernel).
 
 This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -\
 as well as four applications - hood, spider, dojo, and time.
@@ -73,7 +73,7 @@ Now let's go through each line one by one.
 
 This tells us that Unix has sent a `%belt` `card`, which corresponds to terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
 
-Here is the line of code in `arvo.hoon`, found in the [section 3bE core](./README.md#section-3be-core), that generated the output:
+Here is the line of code in `arvo.hoon`, found in the [section 3bE core](../../arvo/README.md#section-3be-core) "BROKEN_ANCHOR", that generated the output:
 
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]
@@ -110,7 +110,7 @@ Next in our move trace we have this:
 
 Here, Dill `%pass`es a `task` `card` saying to `%poke` Gall's hood app (with the Enter keystroke).
 
-Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](./README.md#section-3be-core). This arm is what the Arvo kernel uses to send `card`s, and here we look at the segment that includes `%pass` `move`s.
+Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](../../arvo/README.md#section-3be-core). This arm is what the Arvo kernel uses to send `card`s, and here we look at the segment that includes `%pass` `move`s.
 
 ```hoon
   ++  jack                                              ::  dispatch card

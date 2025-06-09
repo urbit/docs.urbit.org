@@ -290,7 +290,7 @@ Spin up your fake ship again by running `zod/.run`, and you'll be back at the Do
 
 Next, you may want to get the web login code so you can login to your Urbit's web interface in a browser. To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
-Fake ships are for developers. If you want to learn more about programming, app development, or core development on Urbit, look at our [courses](./build-on-urbit) section to get started.
+Fake ships are for developers. If you want to learn more about programming, app development, or core development on Urbit, look at our [courses](./build-on-urbit/environment.md) section to get started.
 {% endtab %}
 {% endtabs %}
 {% endstep %}

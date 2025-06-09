@@ -18,7 +18,7 @@ The [kernel section](#the-kernel) will require having read the first page of [Ho
 
 We also suggest to the reader to consult the [glossary](../../../glossary) while reading this page.
 
-## What is Arvo?
+## What is Arvo? {#what-is-arvo}
 
 Arvo is a new operating system built to run a new, peer-to-peer internet whereby users own and manage their own data. 
 
@@ -140,7 +140,7 @@ Most operating systems are preemptive, meaning that they regularly interrupt tas
 > Parts of the remainder of this document are out of date as of 2020.07.20, please use information here with
 > caution. This message will be removed once it is up to date.
 
-## The kernel
+## The kernel {#the-kernel}
 
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
@@ -183,7 +183,7 @@ The formal interface is a single gate that takes in the current time and a noun 
 
 This core contains the most basic types utilized in Arvo. We discuss a number of them here.
 
-##### `+duct`
+##### `+duct` {#duct}
 
 ```hoon
 ++  duct  (list wire)                                   ::  causal history
@@ -211,7 +211,7 @@ Behn saves this `duct`, so that when the specified time arrives and Unix sends a
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a `duct` zero, one, or many times. You can save `duct`s for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
 
-##### `wire`
+##### `wire` {#wire}
 
 ```hoon
 ++  wire  path                                          ::  event pretext
@@ -219,7 +219,7 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 
 Synonym for `path`, used in `duct`s. These should be thought of as a list of symbols representing a cause.
 
-##### `move`
+##### `move` {#move}
 
 ```hoon
 ++  move  [p=duct q=arvo]                               ::  arvo move
@@ -247,7 +247,7 @@ A `%slip` `move` is a cousin of `%pass`. Any `card` that can be `%pass`ed can al
 
 Lastly, a `%unix` `move` is how Arvo represents communication from Unix, such as a network request or terminal input.
 
-##### `card`s and `curd`s
+##### `card`s and `curd`s {#cards-and-curds}
 
 `card`s are the vane-specific portion of a `move`, while `curd`s are typeless `card`s utilized at the level of the kernel. `card`s are not actually defined in `arvo.hoon`, rather they are given by `+note-arvo` and `+sign-arvo` in the standard library `zuse` (which then refer to `+task` and `+gift` in each of the vane cores), but they are closely connected to `curd`s so we speak of them in the same breath.
 
@@ -267,7 +267,7 @@ Note that `%pass`ing a `note` doesn't _always_ result in a return - this diagram
 
 This overview has detailed how to pass a `card` to a particular vane. To see the `card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
-##### `ovum`
+##### `ovum` {#ovum}
 
 This mold is used to represent both steps and actions.
 
@@ -287,19 +287,19 @@ A short summary of the purpose of each these arms are as follows:
 
 The [Section 3bE core](#section-3be-core) does not follow this pattern.
 
-##### Section 3bE core
+##### Section 3bE core {#section-3be-core}
 
 This core defines helper functions that are called in the larval and adult cores. These helper functions are placed here for safety so that they do not have access to the entire [state of Arvo](#the-state), which is contained in the structural interface core. One reason this core is required is that the Arvo interface has only five arms and additional arms are required to perform everything the kernel needs to do in a clean manner, so they must be segregated from the other three cores that stick to the five-arm paradigm.
 
-##### Implementation core
+##### Implementation core {#implementation-core}
 
 This core is where the real legwork of the Arvo kernel is performed during the adult stage. It does not communicate with Unix directly, rather it is called by the structural interface core.
 
-##### Structural interface core
+##### Structural interface core {#structural-interface-core}
 
 This core could be thought of as the primary "adult core" - the one that is in operation for the majority of its lifecycle and the one that contains the [Arvo state](#the-state). This core should be thought of as an interface - that is, the amount of work the code does here is minimal as its main purpose is to be the core that communicates with Unix, and Unix should not be able to access deeper functions stored in the implementation core and 3bE core on its own. Thus, arms in this core are there primarily to call arms in the implementation core and 3bE core.
 
-##### Larval stage core
+##### Larval stage core {#larval-stage-core}
 
 This core is in use only during the larval stage of Arvo, which is after the Arvo kernel has compiled itself but before it has "broken symmetry" by acquiring identity and entropy, the point at which the larval stage has concluded. We call this breaking symmetry because prior to this point, every Urbit is completely identical. The larval stage performs the following steps in order:
 
@@ -375,7 +375,7 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Jael](../jael): storage for Azimuth information.
 - [Khan](../khan): control plane and thread runner.
 
-##### Applying your knowledge
+##### Applying your knowledge {#applying-your-knowledge}
 
 Now that you've learned about the nuts and bolts of the Arvo kernel, why not check it out in action? An in-depth "move trace" tutorial for running a timer app is available [here](guides/move-trace.md).
 

@@ -10,7 +10,7 @@ This section of the docs contains guides related to writing apps and [distributi
 * [Guides](guides/) - Guides to things like software distribution, CLI apps and remote scries.
 * [Examples](examples/) - A workbook of app exercises and examples.
 
-Additionally, the [courses](broken-reference) section of the docs contain two in-depth app-building tutorials, which are the recommended place to start learning Urbit app development:
+Additionally, the [courses](../../build-on-urbit/README.md) section of the docs contain two in-depth app-building tutorials, which are the recommended place to start learning Urbit app development:
 
 * [App School](../app-school/) - Learn the basics of app development.
 * [App School II](../app-school-full-stack/) - Learn to build and publish a full app, back-end and front-end.

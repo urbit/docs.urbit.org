@@ -2,7 +2,7 @@
 
 This document details all the `task`s you're likely to use to interact with Eyre, as well as the `gift`s you'll receive in response.
 
-The primary way of interacting with Eyre is from the outside with HTTP requests. As a result, most of its `task`s are only used internally and you're unlikely to need to deal with them directly. The ones you may want to use in certain cases are [%connect](tasks.md#connect), [%serve](tasks.md#serve), [%disconnect](tasks.md#disconnect), [%approve-origin](tasks.md#approve-origin) and [%reject-origin](tasks.md#reject-origin), and they are also demonstrated in the [Guide](broken-reference) document. The rest are just documented for completeness.
+The primary way of interacting with Eyre is from the outside with HTTP requests. As a result, most of its `task`s are only used internally and you're unlikely to need to deal with them directly. The ones you may want to use in certain cases are [%connect](tasks.md#connect), [%serve](tasks.md#serve), [%disconnect](tasks.md#disconnect), [%approve-origin](tasks.md#approve-origin) and [%reject-origin](tasks.md#reject-origin), and they are also demonstrated in the [Guide](../guides/README.md) document. The rest are just documented for completeness.
 
 Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `+eyre` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 
@@ -116,7 +116,7 @@ The `accepted` field says whether the binding succeeded and the `binding` is the
 
 #### Example
 
-See the [Agents: Direct HTTP](broken-reference) section of the [Guide](broken-reference) document for an example.
+See the [Agents: Direct HTTP](../guides/guide.md#agents-direct-http) section of the [Guide](../guides/guide.md) document for an example.
 
 ***
 
@@ -154,7 +154,7 @@ Eyre will return a `%bound` `gift` as described at the end of the [%connect](tas
 
 #### Example
 
-See the [Generators](broken-reference) section of the [Guide](broken-reference) document for an example.
+See the [Generators](../guides/guide.md#generators) section of the [Guide](../guides/guide.md) document for an example.
 
 ***
 
@@ -204,7 +204,7 @@ Eyre returns no `gift` in response to a `%approve-origin` `task`.
 
 #### Example
 
-See the [Managing CORS Origins](broken-reference) section of the [Guide](broken-reference) document for an example.
+See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
 
 ## `%reject-origin` <a href="#reject-origin" id="reject-origin"></a>
 
@@ -222,7 +222,7 @@ Eyre returns no `gift` in response to a `%reject-origin` `task`.
 
 #### Example
 
-See the [Managing CORS Origins](broken-reference) section of the [Guide](broken-reference) document for an example.
+See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
 
 ***
 

@@ -14,7 +14,7 @@ The `$ames-state` includes a [`+acru:ames`](cryptography.md#crypto-core) core, a
 
 Each Urbit ship possesses two networking keypairs: one for encryption, and one for authentication. We often refer to these two keypairs as though they were a single keypair because they are stored as a single atom. [Elliptic Curve Diffie-Hellman](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) is used for encryption, while [Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) is used for authentication
 
-The encrypted payload of each packet is a `$shut-packet`, which is the `+jam` of a cell with the [$bone](../reference/data-types.md#bone), message number, and message fragment or ack (see [Ames](broken-reference) for more information on packet structure). The message fragment is signed using the authentication key. It is encrypted using [`+en:crub:crypto`](../../../../hoon/reference/cryptography.md#en) found in `sys/zuse.hoon`, which utilizes the 256-bit AES-SIV algorithm.
+The encrypted payload of each packet is a `$shut-packet`, which is the `+jam` of a cell with the [$bone](../reference/data-types.md#bone), message number, and message fragment or ack (see [Ames](../../ames/README.md) for more information on packet structure). The message fragment is signed using the authentication key. It is encrypted using [`+en:crub:crypto`](../../../../hoon/reference/cryptography.md#en) found in `sys/zuse.hoon`, which utilizes the 256-bit AES-SIV algorithm.
 
 ## Diffie-Hellman key exchange <a href="#key-exchange" id="key-exchange"></a>
 

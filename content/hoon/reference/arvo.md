@@ -242,7 +242,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 Marked vase
 
-A pair of a [`mark`](arvo.md#mark) and a [`vase`](broken-reference) (type-value pair). These are extensively used for passing data around between vanes and agents.
+A pair of a [`mark`](arvo.md#mark) and a `vase` (type-value pair). These are extensively used for passing data around between vanes and agents.
 
 #### Source
 

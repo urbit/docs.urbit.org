@@ -30,7 +30,7 @@ For detailed information see the [Urbit HD Wallet Spec (UP 8)](https://github.co
 
 ### What does it mean to “set public keys”? <a href="#set-public-keys" id="set-public-keys"></a>
 
-This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](broken-reference), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](../../glossary/ship.md) on the [Urbit OS](hd-wallet.md#what-is-arvo) network.
+This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](../id/README.md), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](../../glossary/ship.md) on the [Urbit OS](hd-wallet.md#what-is-arvo) network.
 
 You want to reset these keys if they are compromised, or if your ship has sunk. This is of little practical significance today, but resetting your networking keys resets your relationship with other ships on the network.
 

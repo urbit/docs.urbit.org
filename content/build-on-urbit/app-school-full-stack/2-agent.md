@@ -231,6 +231,6 @@ The full agent source can be viewed [here](https://github.com/urbit/docs-example
 
 ## Resources <a href="#resources" id="resources"></a>
 
-* [App School I](broken-reference) - App School I covers all aspects of writing Gall agents in detail.
+* [App School I](../app-school/README.md) - App School I covers all aspects of writing Gall agents in detail.
 * [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `+mop`s, and is well commented.
 * [`/lib/agentio.hoon`](https://github.com/urbit/urbit/blob/master/pkg/base-dev/lib/agentio.hoon) - The agentio library in the `%base` desk contains a large number of useful functions which making writing Gall agents easier.

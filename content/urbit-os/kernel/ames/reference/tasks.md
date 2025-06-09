@@ -108,7 +108,7 @@ The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send` `gif
 [%init ~]
 ```
 
-`%init` is called a single time during the very first boot process, immediately after the [larval stage](broken-reference) is completed. This initializes the vane. Jael is initialized first, followed by other vanes such as Ames.
+`%init` is called a single time during the very first boot process, immediately after the [larval stage](../../arvo/README.md#larval-stage-core) is completed. This initializes the vane. Jael is initialized first, followed by other vanes such as Ames.
 
 In response to receiving the `%init` `task`, Ames subscribes to the information contained by Jael.
 

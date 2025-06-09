@@ -5,7 +5,7 @@ Urbit is two things: [Urbit ID](./urbit-id), and [Urbit OS](./urbit-os). To get 
 This guide will walk through the steps of getting an Urbit ID, downloading its key, installing the Urbit runtime, and using that to boot up your Urbit OS.
 
 {% hint style="warning" %}
-## Get on Urbit faster
+### Get on Urbit faster
 
 If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offers a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
 
@@ -18,14 +18,12 @@ You will need:
 
 (If you want to run Urbit on a Windows computer you should be able to do so with Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.)
 
-{% stepper %}
-{% step %}
-## Get an Urbit ID {#get-an-urbit-id}
+## 1. Get an Urbit ID {#get-an-urbit-id}
 
 Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are [five ranks of Urbit ID](./manual/id/get-id.md#types-of-id), but the type an ordinary user needs is a planet, which has a name like "\~sampel-palnet". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one from a marketplace.
 
 {% hint %}
-## Get on Urbit for free
+### Get on Urbit for free
 
 If you don't want to buy anything at this stage, you can get on the network with a free, disposable ID called a comet. Comets can do almost everything a planet can do, but select groups on the network may refuse entry.
 
@@ -50,10 +48,7 @@ Originally, all Urbit IDs were ERC-721 NFTs on Ethereum. In 2021, Tlon [introduc
 
 In either case, your ownership of your planet is secured by your private key. **Your Urbit is yours, forever.**
 
-{% endstep %}
-
-{% step %}
-## Get your keyfile {#get-your-keyfile}
+## 2. Get your keyfile {#get-your-keyfile}
 
 Once you've got an Urbit ID, the next step is to download its private [networking key](urbit-id/concepts/hd-wallet.md) (contained in a "keyfile") so you can boot it up. This process can vary depending on how you obtained your ID and where it's stored.
 
@@ -76,7 +71,7 @@ If you got an L1 planet from somewhere like OpenSea, it was likely transferred d
 11. A file called something like `sampel-palnet-1.key` will have been downloaded. Don't lose it.
 
 {% hint %}
-## Don't see "Initialize"?
+### Don't see "Initialize"?
 
 If the options next to "Networking Keys" are "Reset" and "View" rather than "Initialize", it means your ID's previous owner at one point generated keys for their planet. In that case, click on "Reset", tick the "Factory Reset" box, and continue from step 6 above.
 {% endhint %}
@@ -94,7 +89,7 @@ If you bought an L2 planet, you likely received an invite link that looks like `
 5. It will contain a file named something like `sampel-palnet.key`.
 
 {% hint %}
-## Already have a planet?
+### Already have a planet?
 If you already claimed this planet at some point and forgot to download the passport, you'll need to go and download the keyfile from [bridge.urbit.org](https://bridge.urbit.org):
 
 1. Go to [bridge.urbit.org](https://bridge.urbit.org).
@@ -106,10 +101,8 @@ If you already claimed this planet at some point and forgot to download the pass
 
 {% endtab %}
 {% endtabs %}
-{% endstep %}
 
-{% step %}
-## Get the Urbit runtime {#get-the-urbit-runtime}
+## 3. Get the Urbit runtime {#get-the-urbit-runtime}
 
 To boot up a new Urbit, you'll need the Urbit runtime. There are four pre-built versions of the runtime available, one for each platform we support. Pick the one you're on and copy/paste the provided `curl` command into your terminal.
 
@@ -151,10 +144,8 @@ curl -L https://urbit.org/install/linux-aarch64/latest | tar xzk --transform='s/
 
 {% endtab %}
 {% endtabs %}
-{% endstep %}
 
-{% step %}
-## Boot up your Urbit {#boot-up-your-urbit}
+## 4. Boot up your Urbit {#boot-up-your-urbit}
 
 {% tabs %}
 
@@ -187,7 +178,7 @@ This is the Dojo, Urbit's command-line interface.
 For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
 {% hint %}
-## Linux default port
+### Linux default port
 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
@@ -208,7 +199,7 @@ Next, you'll want to get the web login code so you can login to your Urbit's web
 To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 {% hint %}
-## Save your code
+### Save your code
 
 If you want, you can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, you can just [reset it in the Dojo](./manual/os/dojo-tools.md#code) to log out of all browser sessions in your Urbit.
 {% endhint %}
@@ -247,7 +238,7 @@ This is the Dojo, Urbit's command-line interface.
 For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`.
 
 {% hint %}
-## Linux default port
+### Linux default port
 
 Linux won't let Urbit's web server bind port 80, and it will instead default to port 8080. If you want it to bind port 80, you'll need to do the following in the terminal:
 
@@ -270,7 +261,7 @@ Next, you'll want to get the web login code so you can login to your Urbit's web
 To do so, type `+code` in the Dojo and hit `Return`. It'll give you a code that looks like `lidlut-tabwed-pillex-ridrup`. Highlight that and copy it.
 
 {% hint %}
-## Save your code
+### Save your code
 
 If you want, you can save your `+code` in a password manager or write it down somewhere safe. Your `+code` isn't your private key, just a web login password. If you think your `+code` has been compromised, you can just [reset it in the Dojo](./manual/os/dojo-tools.md#code) to log out of all browser sessions in your Urbit.
 {% endhint %}
@@ -308,10 +299,8 @@ Fake ships are for developers. If you want to learn more about programming, app 
 
 {% endtab %}
 {% endtabs %}
-{% endstep %}
 
-{% step %}
-## Login to Landscape {#login-to-landscape}
+## 5. Login to Landscape {#login-to-landscape}
 
 With your Urbit now running and your web login code copied, you can open a browser and go to `http://localhost`. (If that doesn't work, try `http://localhost:8080`.) You should see with your Urbit's login screen. Paste in the code you got from running `+code` in the Dojo (it looks like `lidlut-tabwed-pillex-ridrup`) and hit click "Continue". You'll now be in your Landscape homescreen.
 
@@ -319,6 +308,4 @@ To join your first group, you can open the Tlon app by clicking on its tile, the
 
 If you'd like to see what other apps are available, click on the "Get Urbit Apps" button at the top of the Landscape homescreen. There are a few suggestions listed there. If you know an app's publisher (e.g. \~bitdeg) or "shortcode" (e.g. `~bitdeg/hits`), you can type that in the searchbar at the top of the "Get Urbit Apps" menu.
 
-{% endstep %}
-{% endstepper %}
 

@@ -10,7 +10,7 @@ If you're interested, you can read the spec here: [Urbit HD Wallet Spec (UP 8)](
 
 ### What is a master ticket? <a href="#master-ticket" id="master-ticket"></a>
 
-The "master ticket" is the cryptographic seed from which your other Urbit ID keys are derived. It should be treated like a master password: **you should never share it with anyone, and you must store it very securely (see our practices below).** This ticket is used to derive the Ethereum wallet that holds your ownership keys, your [Urbit OS](hd-wallet.md#what-is-arvo) key – used to boot your Urbit – and the other keys associated with your identity. You’ll have a master ticket if you used the Urbit Wallet Generator or claimed a [ship](../../glossary/ship.md) on our hosted version of Bridge.
+The "master ticket" is the cryptographic seed from which your other Urbit ID keys are derived. It should be treated like a master password: **you should never share it with anyone, and you must store it very securely (see our practices below).** This ticket is used to derive the Ethereum wallet that holds your ownership keys, your [Urbit OS](../os/README.md) key – used to boot your Urbit – and the other keys associated with your identity. You’ll have a master ticket if you used the Urbit Wallet Generator or claimed a [ship](../../glossary/ship.md) on our hosted version of Bridge.
 
 If you're operating a planet, you can use your master ticket to authenticate with Bridge.
 
@@ -30,7 +30,7 @@ For detailed information see the [Urbit HD Wallet Spec (UP 8)](https://github.co
 
 ### What does it mean to “set public keys”? <a href="#set-public-keys" id="set-public-keys"></a>
 
-This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](broken-reference), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](../../glossary/ship.md) on the [Urbit OS](hd-wallet.md#what-is-arvo) network.
+This means registering the public keys of your identity's encryption and authentication key pairs (together known as "networking keys") with Urbit ID / [Azimuth](../id/README.md), so that others can discover them. The corresponding private keys can then be used to, for example, run a [ship](../../glossary/ship.md) on the [Urbit OS](../os/README.md) network.
 
 You want to reset these keys if they are compromised, or if your ship has sunk. This is of little practical significance today, but resetting your networking keys resets your relationship with other ships on the network.
 

@@ -2,7 +2,7 @@
 
 Urbit OS is a personal server operating system that runs on any Unix box as a self-contained virtual machine.
 
-It's sometimes described as an "operating function": the current state of your urbit is computed by running its history through one function, called [Nock](broken-reference). It's simple to understand, easy to secure, and trivial to reproduce exactly.
+It's sometimes described as an "operating function": the current state of your urbit is computed by running its history through one function, called [Nock](../nock/what-is-nock.md). It's simple to understand, easy to secure, and trivial to reproduce exactly.
 
 This section describes the two components of Urbit OS proper: the kernel, called "Arvo", and its standard distribution (the "`%base` desk") that contains other essential functionality.
 

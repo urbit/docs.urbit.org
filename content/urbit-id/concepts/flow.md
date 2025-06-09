@@ -8,7 +8,7 @@ The primary way in which users interact with Azimuth is via [Bridge](https://bri
 
 ## Azimuth <a href="#azimuth" id="azimuth"></a>
 
-Azimuth was originally defined as a set of smart contracts on Ethereum that defines the [state](broken-reference) and [business logic](broken-reference) of the PKI for layer 1. With the introduction of naive rollups, this has also come to include the set of components used for dealing with the PKI within Urbit, as now the complete PKI state is stored offchain (though this state is derived entirely from on-chain data). The following sections outline what each component is responsible for and how it communicates with the others.
+Azimuth was originally defined as a set of smart contracts on Ethereum that defines the [state](../reference/azimuth-eth.md) and [business logic](../reference/ecliptic.md) of the PKI for layer 1. With the introduction of naive rollups, this has also come to include the set of components used for dealing with the PKI within Urbit, as now the complete PKI state is stored offchain (though this state is derived entirely from on-chain data). The following sections outline what each component is responsible for and how it communicates with the others.
 
 The Gall agents involved with Azimuth are summarized as follows:
 
@@ -111,7 +111,7 @@ This app is not responsible for communicating with Bridge via HTTP. Instead, tha
 
 ## `naive.hoon` <a href="#naive" id="naive"></a>
 
-`/lib/naive.hoon` consists of a gate whose sample is a `verifier`, `chain-id=@ud`, `state`, and `input`, which outputs a cell of `[effects state]`. This is the transition function which updates the state of the PKI stored in `%azimuth` which handles state transitions caused by both layer 1 and layer 2 transactions. A high-level overview of how `naive.hoon` functions can be found [here](broken-reference).
+`/lib/naive.hoon` consists of a gate whose sample is a `verifier`, `chain-id=@ud`, `state`, and `input`, which outputs a cell of `[effects state]`. This is the transition function which updates the state of the PKI stored in `%azimuth` which handles state transitions caused by both layer 1 and layer 2 transactions. A high-level overview of how `naive.hoon` functions can be found [here](../concepts/flow.md#naive).
 
 A `verifier` is a gate whose sample is of the form `[dat=octs v=@ r=@ s=@]` and which returns `(unit address)`:
 
@@ -123,7 +123,7 @@ The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to 
 
 `chain-id` is the ID used by the Ethereum blockchain, which is `1337`. See [bytestring format](../reference/bytestring.md) for more information. This is used so that e.g. transactions on the Ropsten test network cannot be replayed on the mainnet.
 
-`state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](broken-reference), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](broken-reference) for more on how PKI state is handled.
+`state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](../reference/azimuth-eth.md), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](../concepts/layer2.md) for more on how PKI state is handled.
 
 ```hoon
 +$  state
@@ -160,7 +160,7 @@ The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to 
 +$  operators  (jug address address)
 ```
 
-`points` should be self-explanatory if you are already familiar with the structure of [Azimuth.eth](broken-reference). The only new addition is `dominion`, whose value says whether a ship is on layer 1, layer 2, or layer 1 with a layer 2 spawn proxy. See [Layer 2 actions](broken-reference) for an overview of how `dominion` determines the PKI actions available to a ship.
+`points` should be self-explanatory if you are already familiar with the structure of [Azimuth.eth](../reference/azimuth-eth.md). The only new addition is `dominion`, whose value says whether a ship is on layer 1, layer 2, or layer 1 with a layer 2 spawn proxy. See [Layer 2 actions](../reference/l2-actions.md) for an overview of how `dominion` determines the PKI actions available to a ship.
 
 `operators` already existed on layer 1 and are defined as a part of the [ERC-721 standard](https://eips.ethereum.org/EIPS/eip-721).
 

@@ -1,6 +1,6 @@
 # 9. Text Processing I
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered_ [_in a later module_](broken-reference)_._
+_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered_ [_in a later module_](./P-stdlib-io.md)_._
 
 ## Text in Hoon <a href="#text-in-hoon" id="text-in-hoon"></a>
 
@@ -304,7 +304,7 @@ The [`+find`](../../hoon/reference/stdlib/2b.md#find) function takes `[nedl=(lis
 [~ 6]
 ```
 
-`+find` returns a `+unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `+unit`s are discussed in more detail in [a later lesson](broken-reference).
+`+find` returns a `+unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `+unit`s are discussed in more detail in [a later lesson](./L-struct.md).
 
 #### Tokenize/Parse
 
@@ -315,7 +315,7 @@ To "tokenize" text is to break it into pieces according to some rule. For instan
  1   2   3     4   5    6   7   8     9  10         11    12 13 14  15
 ```
 
-Hoon has a sophisticated parser built into it that [we'll use later](broken-reference). There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other. We don't need that level of power to work with basic text operations, so we'll instead use basic `+list` tools whenever we need to extract or break text apart for now.
+Hoon has a sophisticated parser built into it that [we'll use later](./P-stdlib-io.md). There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other. We don't need that level of power to work with basic text operations, so we'll instead use basic `+list` tools whenever we need to extract or break text apart for now.
 
 ## Exercise: Break Text at a Space <a href="#exercise-break-text-at-a-space" id="exercise-break-text-at-a-space"></a>
 
@@ -560,7 +560,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 (snag val answers)
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. Right now we don't know quite enough to interpret this line, but we'll revisit the [`+og`](../../hoon/reference/stdlib/3d.md#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](broken-reference). For now, just know that it allows us to produce a random (unpredictable) integer using `+rad:rng`. We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy. Right now we don't know quite enough to interpret this line, but we'll revisit the [`+og`](../../hoon/reference/stdlib/3d.md#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](./O-subject.md). For now, just know that it allows us to produce a random (unpredictable) integer using `+rad:rng`. We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 
 Since this is a `%say` generator, we can run it without arguments:
 

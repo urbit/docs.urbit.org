@@ -143,6 +143,7 @@
 
 ## Build on Urbit
 
+* [Build on Urbit](build-on-urbit/contents.md)
 * [Environment Setup](build-on-urbit/environment.md)
 * [Hoon School](build-on-urbit/hoon-school/README.md)
   * [1. Hoon Syntax](build-on-urbit/hoon-school/B-syntax.md)
@@ -472,7 +473,7 @@
     * [/ fas · Imports](hoon/reference/rune/fas.md)
     * [^ ket · Casts](hoon/reference/rune/ket.md)
     * [; mic · Make](hoon/reference/rune/mic.md)
-    * [\~ sig · Hints](hoon/reference/rune/sig.md)
+    * [~ sig · Hints](hoon/reference/rune/sig.md)
     * [= tis · Subject](hoon/reference/rune/tis.md)
     * [? wut · Conditionals](hoon/reference/rune/wut.md)
     * [! zap · Wild](hoon/reference/rune/zap.md)
@@ -498,6 +499,7 @@
 
 ## User Manual
 
+* [Contents](user-manual/contents.md)
 * [Urbit ID](user-manual/id/README.md)
   * [Get an Urbit ID](user-manual/id/get-id.md)
   * [Using Bridge](user-manual/id/using-bridge.md)

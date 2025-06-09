@@ -1,6 +1,6 @@
 # API Reference
 
-This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Most sections have a corresponding practical example in the [Examples](../examples/examples.md) document. Many of the types referenced are detailed in the [Data Types](broken-reference) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
+This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Most sections have a corresponding practical example in the [Examples](../examples/examples.md) document. Many of the types referenced are detailed in the [Data Types](../reference/data-types.md) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 
 The focus of this document is on interacting with Clay from userspace applications and threads, so it doesn't delve into the internal mechanics of Clay from a kernel development perspective.
 
@@ -12,7 +12,7 @@ The focus of this document is on interacting with Clay from userspace applicatio
 
 A `%warp` `task` is for reading and subscribing to files and directories.
 
-The `wer` field is the target ship. The `(unit rave)` of the [riff](broken-reference) is null to cancel an existing subscription, otherwise the [rave](broken-reference) is tagged with one of:
+The `wer` field is the target ship. The `(unit rave)` of the [riff](../reference/data-types.md#riff) is null to cancel an existing subscription, otherwise the [rave](../reference/data-types.md#rave) is tagged with one of:
 
 * `%sing` - Read a single file or directory.
 * `%next` - Subscribe for the next change to a file or directory.
@@ -37,7 +37,7 @@ A `%wris` `gift` looks like:
 [%writ p=riot]  ::  response
 ```
 
-The `unit` of the [riot](broken-reference) will be null if the target file cannot be found or if a subscription has ended (depending on context). Otherwise it will have a [rant](broken-reference) with a `cage` containing the data you requested. Its contents will vary depending on the kind of request and `care`.
+The `unit` of the [riot](../reference/data-types.md#riot) will be null if the target file cannot be found or if a subscription has ended (depending on context). Otherwise it will have a [rant](../reference/data-types.md#riot) with a `cage` containing the data you requested. Its contents will vary depending on the kind of request and `care`.
 
 Now we'll look at each of the `rave` request types in turn.
 
@@ -49,9 +49,9 @@ Now we'll look at each of the `rave` request types in turn.
 
 This `rave` is for reading a single file or directory immediately.
 
-The `care` of the [mood](broken-reference) will determine what you can read and what type of data will be returned. See the [care](broken-reference) documentation and [scry](scry.md) documentation for details on the various `care`s.
+The `care` of the [mood](../reference/data-types.md#mood) will determine what you can read and what type of data will be returned. See the [care](../reference/data-types.md#care) documentation and [scry](scry.md) documentation for details on the various `care`s.
 
-The [case](broken-reference) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
+The [case](../reference/data-types.md#case) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
 
 #### Example
 
@@ -65,7 +65,7 @@ The [case](broken-reference) specifies the `desk` revision and you can use which
 [%next =mood]  ::  await next version
 ```
 
-This subscribes to the next version of the specified file. See [here](broken-reference) for details of the `mood` structure.
+This subscribes to the next version of the specified file. See [here](../reference/data-types.md#mood) for details of the `mood` structure.
 
 If you subscribe to the current `case` of the `desk`, Clay will not respond until the file changes. If you subscribe to a previous `case` of the `desk` and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at `case` `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at `case` `60`.
 
@@ -115,9 +115,9 @@ If the `track` is `%.y` it will just return a `%writ` like:
 
 ...that merely informs you of a change. If you want the actual data you'll have to request it separately.
 
-If the `track` is `%.n`, the `cage` of the `%writ` will contain a [nako](broken-reference) with the relevant data for all changes to a desk between what you have and the `case` requested. It is very large and fairly complicated. The `nako` structure is defined in the `clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since you're unlikely to work with it yourself.
+If the `track` is `%.n`, the `cage` of the `%writ` will contain a [nako](../reference/data-types.md#nako) with the relevant data for all changes to a desk between what you have and the `case` requested. It is very large and fairly complicated. The `nako` structure is defined in the `clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since you're unlikely to work with it yourself.
 
-The `from` and `to` fields of the [moat](broken-reference) specify the range of `case`s for which to subscribe. The range is _inclusive_. It can be specified by date or by revision number, whichever you prefer.
+The `from` and `to` fields of the [moat](../reference/data-types.md#moat) specify the range of `case`s for which to subscribe. The range is _inclusive_. It can be specified by date or by revision number, whichever you prefer.
 
 The `path` in the `moat` is a path to a file or directory. If it's `~` it refers to the root of the `desk` in question. This lets you say "only inform me of changes to the `desk` if the specified file or directory exists". If it doesn't exist, Clay will not send you anything.
 
@@ -153,9 +153,9 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 To write or modify a file, we send Clay a `%info` `task`.
 
-If the head of the [nori](broken-reference) `dit` is `%|`, it's a request to add a label to a commit, and the `nori` looks like `[%| p=@tas q=(unit aeon)]` where `p` is the label and `q` is the [`aeon`](broken-reference) (commit reference). If `q` is null, the label is applied to the latest commit in the desk.
+If the head of the [nori](../reference/data-types.md#nori) `dit` is `%|`, it's a request to add a label to a commit, and the `nori` looks like `[%| p=@tas q=(unit aeon)]` where `p` is the label and `q` is the [`aeon`](./data-types.md#aeon) (commit reference). If `q` is null, the label is applied to the latest commit in the desk.
 
-If the head of the `nori` is `%&`, it's a request to add, delete or modify one or more files in the given desk, and looks like `[%& p=soba]`. The [soba](broken-reference) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](broken-reference) is one of these types of requests:
+If the head of the `nori` is `%&`, it's a request to add, delete or modify one or more files in the given desk, and looks like `[%& p=soba]`. The [soba](../reference/data-types.md#soba) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](./data-types.md#miso) is one of these types of requests:
 
 * `%del` - Delete a file.
 * `%ins` - Insert file. This will also replace an existing file.
@@ -185,7 +185,7 @@ Here are examples of using each of these as well as making multiple changes in o
 [%rein des=desk ren=rein]
 ```
 
-Force on/off apps on a desk. A [`rein`](broken-reference) is a `map` from Gall agent name to `?`, where `%.y` is _on_ and `%.n` is _off_. By default, a live desk will run the agents defined in its `desk.bill` manifest, so this is used to either stop agents in its manifest or start agents which aren't in its manifest.
+Force on/off apps on a desk. A [`rein`](../reference/data-types.md#rein) is a `map` from Gall agent name to `?`, where `%.y` is _on_ and `%.n` is _off_. By default, a live desk will run the agents defined in its `desk.bill` manifest, so this is used to either stop agents in its manifest or start agents which aren't in its manifest.
 
 Note that the given `rein` overrides the existing one set by a previous `%rein` task.
 
@@ -213,7 +213,7 @@ A `rock:tire` is a:
 +$  rock  (map desk [=zest wic=(set weft)])
 ```
 
-The [`zest`](broken-reference) says whether the desk is running (`%live`), suspended (`%dead`), or suspended pending a kernel-compatible update (`%held`). The `wic` set contains the `weft`s (kernel versions) of any queued updates.
+The [`zest`](../reference/data-types.md#zest) says whether the desk is running (`%live`), suspended (`%dead`), or suspended pending a kernel-compatible update (`%held`). The `wic` set contains the `weft`s (kernel versions) of any queued updates.
 
 A `wave:tire` is a:
 
@@ -245,7 +245,7 @@ Try to apply a queued kernel update.
 [%zest des=desk liv=zest]
 ```
 
-A `%zest` `task` suspends or unsuspends a desk. the [`zest`](broken-reference) in `liv` is one of:
+A `%zest` `task` suspends or unsuspends a desk. the [`zest`](../reference/data-types.md#zest) in `liv` is one of:
 
 * `%live`: running.
 * `%dead`: suspended.
@@ -259,7 +259,7 @@ A `%zest` `task` suspends or unsuspends a desk. the [`zest`](broken-reference) i
 [%tomb =clue]
 ```
 
-Tombstoning is the deletion of data for old desk revisions. Clay has a single `%tomb` `task`, but its [`clue`](broken-reference) has a number of different possible actions:
+Tombstoning is the deletion of data for old desk revisions. Clay has a single `%tomb` `task`, but its [`clue`](../reference/data-types.md#clue) has a number of different possible actions:
 
 ```hoon
 +$  clue                                              ::  murder weapon
@@ -280,7 +280,7 @@ We'll look at each of these in turn.
 [%lobe =lobe]
 ```
 
-A `%tomb` `task` with a `%lobe` `clue` will tombstone the `page` matching the given [`lobe`](broken-reference). If the `page` in question is used in the current revision of any desks, it will fail. Otherwise, it will be tombstoned globally.
+A `%tomb` `task` with a `%lobe` `clue` will tombstone the `page` matching the given [`lobe`](../reference/data-types.md#lobe). If the `page` in question is used in the current revision of any desks, it will fail. Otherwise, it will be tombstoned globally.
 
 ***
 
@@ -300,7 +300,7 @@ A `%tomb` `task` with an `%all` `clue` will tombstone everything that's not used
 [%pick ~]
 ```
 
-A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombstoning any data that should be tombstoned according to current tombstoning policy ([`norm`](broken-reference)s).
+A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombstoning any data that should be tombstoned according to current tombstoning policy ([`norm`](../reference/data-types.md#norm)s).
 
 ***
 
@@ -310,7 +310,7 @@ A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombston
 [%norm =ship =desk =norm]
 ```
 
-A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy for the given `desk` and `ship`. A [`norm`](broken-reference) is an `(axal ?)`. An `axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says whether to _keep_ the given file or directory. You may want to look at the `+of` axal engine in `arvo.hoon` for constructing and manipulating the `norm`.
+A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy for the given `desk` and `ship`. A [`norm`](../reference/data-types.md#norm) is an `(axal ?)`. An `axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says whether to _keep_ the given file or directory. You may want to look at the `+of` axal engine in `arvo.hoon` for constructing and manipulating the `norm`.
 
 Note the given `norm` will overwrite the existing one for the the ship/desk in question. If you want to modify the existing one, you'll need to retrieve it and make your changes.
 
@@ -322,7 +322,7 @@ Note the given `norm` will overwrite the existing one for the the ship/desk in q
 [%worn =ship =desk =tako =norm]
 ```
 
-A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](tasks.md#norm---default-policy), except it only applies to a specific commit for a ship/desk. The [`tako`](broken-reference) denotes the commit to apply the policy.
+A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](tasks.md#norm---default-policy), except it only applies to a specific commit for a ship/desk. The [`tako`](../reference/data-types.md#tako) denotes the commit to apply the policy.
 
 ***
 
@@ -332,7 +332,7 @@ A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](tasks.md#norm---default
 [%seek =ship =desk =cash]
 ```
 
-A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombstoned data and integrate it into Clay's object store. The [`cash`](broken-reference) is a reference to a commit on the given ship/desk as either a [`tako`](broken-reference) or a [`case`](broken-reference).
+A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombstoned data and integrate it into Clay's object store. The [`cash`](../reference/data-types.md#cash) is a reference to a commit on the given ship/desk as either a [`tako`](./data-types.md#tako) or a [`case`](./data-types.md#case).
 
 ***
 

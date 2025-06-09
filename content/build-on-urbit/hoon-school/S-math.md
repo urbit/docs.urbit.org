@@ -701,7 +701,7 @@ Computers often mix both deterministic processes (called “pseudorandom number 
 
 ### Random Numbers <a href="#random-numbers" id="random-numbers"></a>
 
-Given a source of entropy to seed a random number generator, one can then use the [`+og`](../../hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers. The basic operations of `+og` are described in [the lesson on subject-oriented programming](broken-reference).
+Given a source of entropy to seed a random number generator, one can then use the [`+og`](../../hoon/reference/stdlib/3d.md#og) door to produce various kinds of random numbers. The basic operations of `+og` are described in [the lesson on subject-oriented programming](./O-subject.md).
 
 ### Exercise: Implement a random-number generator from scratch <a href="#exercise-implement-a-random-number-generator-from-scratch" id="exercise-implement-a-random-number-generator-from-scratch"></a>
 

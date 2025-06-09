@@ -14,9 +14,9 @@ Your Urbit ID exists as an ERC-721 non-fungible token on the Ethereum blockchain
 
 Only [planets](../../../../glossary/planet.md), [stars](../../../../glossary/star.md), and [galaxies](../../../../glossary/galaxy.md) have Azimuth keys. [Moons](../../../../glossary/moon.md) and [comets](../../../../glossary/comet.md) do not, as they do not exist on the Ethereum blockchain.
 
-It is important to note that no Azimuth keys are stored anywhere within your ship's [pier](../../../../glossary/pier.md) - Ethereum and Urbit ID are entirely separate entities from Urbit itself, and so you lose access to your Azimuth private keys there is no way to retrieve them somehow from your ship.
+It is important to note that no Azimuth keys are stored anywhere within your ship's [pier](../../../../glossary/pier.md) - Ethereum and Urbit ID are entirely separate entities from Urbit itself, and so you lose access to your Azimuth private keys there is no way to retrieve them somehow from your ship.
 
-For more information on the usage of these keys and the associated proxies, see the [Azimuth documentation](broken-reference).
+For more information on the usage of these keys and the associated proxies, see the [Azimuth documentation](../../../../urbit-id/what-is-urbit-id.md).
 
 ### Networking keys <a href="#networking-keys" id="networking-keys"></a>
 
@@ -38,7 +38,7 @@ For comets, their 128-bit `@p` name is the hash of their networking public key, 
 
 [Vere](../../../../build-on-urbit/runtime/) is Urbit's Nock runtime system, written in C. All cryptographic functions implemented in Hoon are hinted to the interpreter, causing it to utilize the jet system to run standard vetted cryptographic libraries.
 
-[Azimuth](broken-reference) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
+[Azimuth](../../../../urbit-id/what-is-urbit-id.md) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
 
 ## Additional documentation <a href="#additional-documentation" id="additional-documentation"></a>
 

@@ -14,7 +14,7 @@ Boot from keys.
 [%dawn dawn-event]
 ```
 
-This task is called once per ship during the vane initialization phase immediately following the beginning of the [adult stage](broken-reference). This task is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for technical reasons, though we consider Jael to be the true "first" vane. This task is only used for ships that will join the Ames network - fake ships (i.e. made with `./urbit -F zod`) use the [%fake](tasks.md#fake) task instead.
+This task is called once per ship during the vane initialization phase immediately following the beginning of the [adult stage](../../arvo/README.md#structural-interface-core). This task is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for technical reasons, though we consider Jael to be the true "first" vane. This task is only used for ships that will join the Ames network - fake ships (i.e. made with `./urbit -F zod`) use the [%fake](tasks.md#fake) task instead.
 
 `%dawn` is used to perform a sequence of initialization tasks related to saving information about Azimuth and the Ames network and booting other vanes for the first time. Upon receipt of a `%dawn` task, Jael will:
 
@@ -139,7 +139,7 @@ Subscribe to be notified of private key updates for the local ship. The subscrip
 
 #### Returns
 
-Jael responds to a `%private-keys` task with a [`%private-keys` gift](tasks.md#private-keys-1).
+Jael responds to a `%private-keys` task with a [`%private-keys` gift](../examples/examples.md#private-keys).
 
 Jael will immediately respond with a `%private-keys` gift. Then, whenever the ship's private keys are changed, it'll send a new and updated `%private-keys` gift.
 
@@ -161,7 +161,7 @@ An agent or thread can subscribe to be notified of public key updates, sponsorsh
 
 #### Returns
 
-Jael responds to a `%public-keys` task with [`%public-keys` gift](tasks.md#public-keys-1).
+Jael responds to a `%public-keys` task with [`%public-keys` gift](../examples/examples.md#public-keys) "BROKEN_ANCHOR".
 
 Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](data-types.md#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
 
@@ -199,7 +199,7 @@ This task asks Jael to resend our private keys to subscribers who have subscribe
 
 #### Returns
 
-Jael doesn't return any gifts in response to a `%rekey` task, but `%private-keys` subscribers will receive a [`%private-keys` gift](tasks.md#private-keys-1).
+Jael doesn't return any gifts in response to a `%rekey` task, but `%private-keys` subscribers will receive a [`%private-keys` gift](../examples/examples.md#private-keys).
 
 ***
 
@@ -211,7 +211,7 @@ Pretend breach.
 [%ruin ships=(set ship)]
 ```
 
-This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](tasks.md#public-keys-1) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
+This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](../examples/examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
 
 {% hint style="warning" %}
 **WARNING**
@@ -239,7 +239,7 @@ The domains returned by a `%turf` task are used as the base for individual galax
 
 #### Returns
 
-Jael will respond to a `%turf` task with a [`%turf` gift](tasks.md#turf-1).
+Jael will respond to a `%turf` task with a [`%turf` gift](#turf).
 
 #### Example
 

@@ -234,7 +234,7 @@ A scry with a `care` of `%f` will return a static `mark` conversion gate. The `p
 
 ## `%p` - File permissions <a href="#p---file-permissions" id="p---file-permissions"></a>
 
-A scry with a `care` of `%p` will return the permissions of the file or directory in question. The type returned is a [`[dict:clay dict:clay]`](../../../../../system/kernel/clay/reference/data-types.md#dict) where the head is read permissions and the tail is write permissions.
+A scry with a `care` of `%p` will return the permissions of the file or directory in question. The type returned is a [`[dict:clay dict:clay]`](./data-types.md#dict) where the head is read permissions and the tail is write permissions.
 
 If the specified file or directory has no permissions set, it will default to the permissions of its parent. If nothing above it has permissions set, it will default to empty whitelists. If the specified file or directory doesn't exist, it will also return the default empty whitelist.
 

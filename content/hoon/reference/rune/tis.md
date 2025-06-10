@@ -496,6 +496,8 @@ This is a bit like doing `=/` and `=.` at the same time. It's useful for state m
 
 This may also remind you of Haskell's State monad.
 
+Note that `=^` is subject to the same type nesting limitations as `=.`; e.g., if you have `?~` checked a list for null, you can no longer nest a regular list in the result. (In this case, use a nock `=(~ ...)` equality check instead or recast the result.)
+
 #### Examples
 
 The `og` core is a stateful pseudo-random number generator. We have to change the core state every time we generate a random number, so we use `=^`:

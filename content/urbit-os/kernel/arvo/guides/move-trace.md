@@ -1,12 +1,12 @@
 # Move Trace
 
-In this tutorial we will run a simple "move trace" and use the output to get a picture of what the Arvo kernel proper does during the routine task of setting a timer. Some level of familiarity with the kernel is required for this section, which can be obtained in our [Arvo kernel tutorial](..#the-kernel).
+In this tutorial we will run a simple "move trace" and use the output to get a picture of what the Arvo kernel proper does during the routine task of setting a timer. Some level of familiarity with the kernel is required for this section.
 
-## Running a move trace {#running-a-move-trace}
+## Running a move trace <a href="#running-a-move-trace" id="running-a-move-trace"></a>
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one another. Here we look at how a simple command, `-time ~s1`, goes from pressing Enter on your keyboard in Dojo towards returning a notification that one second has elapsed.
 
-To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo and press Enter to enable verbose mode (this is tracked by the laconic bit introduced in the section on [the state](..#the-state)) in the kernel documentation, followed by `-time ~s1` followed by Enter. Your terminal should pretty print a series of `move`s that looks something like this:
+To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo and press Enter to enable verbose mode (this is tracked by the laconic bit introduced in the section on [the state](../../../kernel/arvo/README.md#the-state)) in the kernel documentation, followed by `-time ~s1` followed by Enter. Your terminal should pretty print a series of `move`s that looks something like this:
 
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
@@ -50,19 +50,19 @@ The main process that is occurring here is a sequence of `%pass` `move`s initiat
 
 It is important to note that this move trace should be thought of as being from the "point of view" of the kernel - each line represents the kernel taking in a message from one source and passing it along to its destination. It is then processed at that destination (which could be a vane or an app), and the return of that process is sent back to Arvo in the form of another `move` to perform and the loop begins again. Thus this move trace does not display information about what is going on inside of the vane or app such as private function calls, only what the kernel itself sees.
 
-## Interpreting the move trace {#interpreting-the-move-trace}
+## Interpreting the move trace <a href="#interpreting-the-move-trace" id="interpreting-the-move-trace"></a>
 
 In this section we will go over the move trace line-by-line, explaining how the move trace is printed, what each line means (including some things not found in the move trace), and a particular focus on what code is being activated in the first few lines that should equip you well enough to unravel the rest of the move trace in as much detail as you desire.
 
-### The call {#the-call}
+### The call <a href="#the-call" id="the-call"></a>
 
 Let's put the first part of the move trace into a diagram to make following along a little easier.
 
 ![](https://media.urbit.org/docs/arvo/move-trace-with-key.png)
 
-Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` `note/task` sequence or a `%give` `gift/sign` sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information, see the [Arvo kernel tutorial](..#the-kernel).
+Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` `note/task` sequence or a `%give` `gift/sign` sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information, see the [Arvo kernel tutorial](../../arvo/README.md#the-kernel).
 
-This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -
+This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -\
 as well as four applications - hood, spider, dojo, and time.
 
 Now let's go through each line one by one.
@@ -73,7 +73,7 @@ Now let's go through each line one by one.
 
 This tells us that Unix has sent a `%belt` `card`, which corresponds to terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
 
-Here is the line of code in `arvo.hoon`, found in the [section 3bE core](..#section-3be-core), that generated the output:
+Here is the line of code in `arvo.hoon`, found in the [section 3bE core](../../arvo/README.md#section-3be-core) "BROKEN_ANCHOR", that generated the output:
 
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]
@@ -110,7 +110,7 @@ Next in our move trace we have this:
 
 Here, Dill `%pass`es a `task` `card` saying to `%poke` Gall's hood app (with the Enter keystroke).
 
-Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](..#section-3be-core). This arm is what the Arvo kernel uses to send `card`s, and here we look at the segment that includes `%pass` `move`s.
+Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](../../arvo/README.md#section-3be-core). This arm is what the Arvo kernel uses to send `card`s, and here we look at the segment that includes `%pass` `move`s.
 
 ```hoon
   ++  jack                                              ::  dispatch card
@@ -140,25 +140,25 @@ Code for writing traces can be a bit tricky, but let's try not to get too distra
 
 From the initial input event, Arvo has generated a `card` that it is now `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The `card` is a `%deal` `task`, asking Gall to `%poke` hood using data that has originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:- (runt [s.gum '|'] "")` displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]` tells us that `~zod` is both the sending and receiving ship.
 
-From here on our explanations will be more brief. We include some information that cannot be directly read from the move trace in [brackets]. Onto the next line:
+From here on our explanations will be more brief. We include some information that cannot be directly read from the move trace in \[brackets]. Onto the next line:
 
 ```
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
 ```
 
-Here is another `%pass` `move`, this time from Gall to iself as denoted by `[%g %g]`. Gall's hood has received the `%deal` `card` from Dill, and in response it is `%poke`ing dojo with the information [that Enter was pressed].
+Here is another `%pass` `move`, this time from Gall to iself as denoted by `[%g %g]`. Gall's hood has received the `%deal` `card` from Dill, and in response it is `%poke`ing dojo with the information \[that Enter was pressed].
 
 ```
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ```
 
-Gall's dojo `%give`s a `gift` with a `%fact` (subscription update) to Gall's hood, [saying to clear the terminal prompt].
+Gall's dojo `%give`s a `gift` with a `%fact` (subscription update) to Gall's hood, \[saying to clear the terminal prompt].
 
 ```
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ```
 
-Gall's hood `%give`s a `gift` with a `%fact` to Dill [saying to replace the current terminal line with `~zod:dojo>`]
+Gall's hood `%give`s a `gift` with a `%fact` to Dill \[saying to replace the current terminal line with `~zod:dojo>`]
 
 Next is the `move` that is not actually printed in the move trace mentioned above:
 
@@ -166,25 +166,25 @@ Next is the `move` that is not actually printed in the move trace mentioned abov
 ["|||||" %give %d %blit [i=//term/1 t=~]]
 ```
 
-Dill `%give`s a `%blit` (terminal output) event to Unix [saying to replace the current terminal line with `~zod:dojo>`].
+Dill `%give`s a `%blit` (terminal output) event to Unix \[saying to replace the current terminal line with `~zod:dojo>`].
 
 ```
 ["|||" %pass [%g %f] [%build /use/dojo/~zod/drum/hand] [i=/d t=~[//term/1]]]
 ```
 
-Gall's dojo also `%pass`es a `%build` request to Ford [asking to run "~s1" against the subject we use in the dojo].
+Gall's dojo also `%pass`es a `%build` request to Ford \[asking to run "\~s1" against the subject we use in the dojo].
 
 ```
 ["||||" %give %f %made [i=/g/use/dojo/~zod/drum/hand t=~[/d //term/1]]]
 ```
 
-Ford `%give`s a result back to dojo [with the value `~s1`]
+Ford `%give`s a result back to dojo \[with the value `~s1`]
 
 ```
 ["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
 ```
 
-Gall's dojo `%pass`es a `%watch` to Gall's spider app [to start listening for the result of the thread it's about to start].
+Gall's dojo `%pass`es a `%watch` to Gall's spider app \[to start listening for the result of the thread it's about to start].
 
 ```
 ["||||||" %give %g [%unto %watch-ack] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
@@ -196,45 +196,45 @@ Gall's spider acknowledges the subscription from dojo.
 ["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
 ```
 
-Gall's dojo also `%pass`es a `%poke` to Gall's spider [asking it start the thread "-time" with argument `~s1`].
+Gall's dojo also `%pass`es a `%poke` to Gall's spider \[asking it start the thread "-time" with argument `~s1`].
 
 ```
 ["||||||" %pass [%g %f] [%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider `%pass`es a `%build` request to Ford [asking it to find the path in `/ted` where the "time" thread is].
+Gall's spider `%pass`es a `%build` request to Ford \[asking it to find the path in `/ted` where the "time" thread is].
 
 ```
 ["|||||||" %give %f %made [i=/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
 ```
 
-Ford `%give`s a result back to Gall's spider [saying it's in `/ted/time.hoon`].
+Ford `%give`s a result back to Gall's spider \[saying it's in `/ted/time.hoon`].
 
 ```
 ["||||||||" %pass [%g %f] [%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider `%pass`es a `%build` request to Ford [asking it to compile the file `/ted/time.hoon`].
+Gall's spider `%pass`es a `%build` request to Ford \[asking it to compile the file `/ted/time.hoon`].
 
 ```
 ["|||||||||" %give %f %made [i=/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
 ```
 
-Ford `%give`s a result back to Gall's spider [with the compiled thread].
+Ford `%give`s a result back to Gall's spider \[with the compiled thread].
 
 ```
 ["||||||||||" %pass [%g %b] [%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks Behn to set a timer [for one second].
+Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks Behn to set a timer \[for one second].
 
 ```
 ["|||||||||||" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer [for one second from now]. At this point Arvo may rest.
+Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer \[for one second from now]. At this point Arvo may rest.
 
-### The return {#the-return}
+### The return <a href="#the-return" id="the-return"></a>
 
 Now Unix sets a timer for one second, waits one second, and then informs Behn that a second has passed, leading to a chain of `%give` `move`s that ultimately prints `~s1..0007`.
 
@@ -263,7 +263,7 @@ Unix sends a `%wake` (timer fire) `card` at time `~2020.1.14..19.01.26..755d`.
 ["|" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer [for whatever next timer it has in its queue].
+Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer \[for whatever next timer it has in its queue].
 
 ```
 ["|" %give %b %wake [i=/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 t=~[/d //term/1]]]
@@ -275,28 +275,28 @@ Behn `%give`s a `%wake` to Gall's spider's thread with id `~.dojo_0v6.210tt.1sme
 ["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ```
 
-Gall's spider `%give`s a `%fact` (subscription update) to dojo [saying that the thread completed successfully and produced value `~s1.0007`].
+Gall's spider `%give`s a `%fact` (subscription update) to dojo \[saying that the thread completed successfully and produced value `~s1.0007`].
 
 ```
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ```
 
-Gall's dojo `%give`s a `%fact` to hood [saying to output `~s1..0007`].
+Gall's dojo `%give`s a `%fact` to hood \[saying to output `~s1..0007`].
 
 ```
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ```
 
-Gall's hood `%give`s a `%fact` to Dill [saying to output `~s1..0007`].
+Gall's hood `%give`s a `%fact` to Dill \[saying to output `~s1..0007`].
 
 ```
 ["|||||" %give %d %blit [i=//term/1 t=~]]
 ```
 
-Dill `%give`s a `%blit` (terminal output) event to Unix [saying to print a new line with output `~s1..0007`].
+Dill `%give`s a `%blit` (terminal output) event to Unix \[saying to print a new line with output `~s1..0007`].
 
 ```
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ```
 
-Gall's spider also closes the subscription from dojo [since the thread has completed].
+Gall's spider also closes the subscription from dojo \[since the thread has completed].

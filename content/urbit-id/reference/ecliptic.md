@@ -8,17 +8,17 @@ You can read about [Urbit's first upgrade](https://github.com/urbit/azimuth/pull
 
 `Ecliptic.eth` implements the [ERC-721](https://eips.ethereum.org/EIPS/eip-721) interface for non-fungible tokens, as well as the [ERC-165](https://eips.ethereum.org/EIPS/eip-165) standard for interface detection.
 
-There are currently [28 functions](#write) which may be called to write to the Ecliptic, and [17 functions](#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions.md), and/or can be performed using [Bridge](../../manual/id/using-bridge.md). We note these facts where applicable.
+There are currently [28 functions](ecliptic.md#write) which may be called to write to the Ecliptic, and [17 functions](ecliptic.md#read) to read data from the Ecliptic. Many of these have a corresponding [layer 2 action](l2-actions.md), and/or can be performed using [Bridge](../../user-manual/id/using-bridge.md). We note these facts where applicable.
 
-## Write functions {#write}
+## Write functions <a href="#write" id="write"></a>
 
 Here we briefly describe each function in `Ecliptic.eth` which allows one to write data to Ethereum. These can be called using [Etherscan](https://etherscan.io/address/ecliptic.eth#writeContract), but the most common functions may be called from within Bridge.
 
 We only document here the write functions specific to `Ecliptic.eth` and not the standard functions that are part of the ERC-721 or ERC-165 interfaces.
 
-### `Point`s interface {#points-interface}
+### `Point`s interface <a href="#points-interface" id="points-interface"></a>
 
-These functions are available to each owner of a [`Point`](azimuth-eth.md#points), and a subset of them are available to its [proxies](#proxies). All of these actions may be performed from Bridge.
+These functions are available to each owner of a [`Point`](azimuth-eth.md#points), and a subset of them are available to its [proxies](ecliptic.md#proxies). All of these actions may be performed from Bridge.
 
 #### `configureKeys`
 
@@ -46,10 +46,10 @@ If `_target` is the `:msg.sender`, `_target` owns the `_point` right away. other
 
 Requirements:
 
-- `_point` must not be active
-- `_point` must not be a planet with a galaxy prefix
-- `_point`'s prefix must be linked and under its spawn limit
-- `:msg.sender` must be either the owner of `_point`'s prefix, or an authorized spawn proxy for it
+* `_point` must not be active
+* `_point` must not be a planet with a galaxy prefix
+* `_point`'s prefix must be linked and under its spawn limit
+* `:msg.sender` must be either the owner of `_point`'s prefix, or an authorized spawn proxy for it
 
 Corresponds to the layer 2 `%spawn` action.
 
@@ -59,12 +59,12 @@ Corresponds to the layer 2 `%spawn` action.
     function transferPoint(uint32 _point, address _target, bool _reset)
 ```
 
-Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](../../manual/id/guide-to-resets.md), and thus this action increments the [`continuityNumber`](azimuth-eth.md#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift.md)).
+Transfer `_point` to `_target`, clearing all permissions data and keys if `_reset` is true. `_reset` set to true makes this transaction a [breach](../../user-manual/id/guide-to-resets.md), and thus this action increments the [`continuityNumber`](azimuth-eth.md#points) of `_point`, and usually the `keyRevisionNumber` as well (see [Life and Rift](../concepts/life-and-rift.md)).
 
 Requirements:
 
-- `:msg.sender` must be either `_point`'s current owner, authorized to transfer `_point`, or authorized to transfer the current owner's points (i.e. is listed as an ERC-721 operator in [`operators`](azimuth-eth.md#other)).
-- `_target` must not be the zero address.
+* `:msg.sender` must be either `_point`'s current owner, authorized to transfer `_point`, or authorized to transfer the current owner's points (i.e. is listed as an ERC-721 operator in [`operators`](azimuth-eth.md#other)).
+* `_target` must not be the zero address.
 
 Corresponds to the layer 2 `%transfer-point` action.
 
@@ -80,8 +80,8 @@ If an escape request is already active, this overwrites the existing request.
 
 Requirements:
 
-- `:msg.sender` must be the owner or manager of `_point`,
-- `_point` must be able to escape to `_sponsor` as per to `canEscapeTo()`
+* `:msg.sender` must be the owner or manager of `_point`,
+* `_point` must be able to escape to `_sponsor` as per to `canEscapeTo()`
 
 Corresponds to the layer 2 `%escape` action.
 
@@ -105,7 +105,7 @@ As the relevant sponsor, accept the `_point`.
 
 Requirements:
 
-- `:msg.sender` must be the owner or management proxy of `_point`'s requested sponsor
+* `:msg.sender` must be the owner or management proxy of `_point`'s requested sponsor
 
 Corresponds to the layer 2 `%adopt` action.
 
@@ -119,7 +119,7 @@ As the relevant sponsor, deny the `_point`'s `%adopt` request.
 
 Requirements:
 
-- `:msg.sender` must be the owner or management proxy of `_point`'s requested sponsor
+* `:msg.sender` must be the owner or management proxy of `_point`'s requested sponsor
 
 Corresponds to the layer 2 `%reject` action.
 
@@ -133,15 +133,15 @@ As the `_sponsor`, stop sponsoring the `_point`.
 
 Requirements:
 
-- `:msg.sender` must be the owner or management proxy of `_point`'s current sponsor
+* `:msg.sender` must be the owner or management proxy of `_point`'s current sponsor
 
 Corresponds to the layer 2 `%detach` action.
 
 Unlike all other layer 1 actions, layer 1 sponsors may use a layer 1 `%detach` on a layer 2 sponsee. See the [Layer 2](../concepts/layer2.md#sponsorship) section for more detail. The detach action available in Bridge is a layer 2 action, so a layer 1 detach must be done [manually](https://etherscan.io/address/ecliptic.eth#writeContract).
 
-### Proxy management {#proxies}
+### Proxy management <a href="#proxies" id="proxies"></a>
 
-These functions are used to manage the various [proxies](../../manual/id/proxies.md). All of these actions may be performed from Bridge.
+These functions are used to manage the various [proxies](../../user-manual/id/proxies.md). All of these actions may be performed from Bridge.
 
 #### `setManagementProxy`
 
@@ -155,7 +155,7 @@ The management proxy may perform "reversible" operations on behalf of the owner.
 
 Requirements:
 
-- `:msg.sender` must be either `_point`'s current owner or the management proxy.
+* `:msg.sender` must be either `_point`'s current owner or the management proxy.
 
 Corresponds to the layer 2 `%set-management-proxy` action.
 
@@ -169,7 +169,7 @@ Give `_spawnProxy` the right to spawn points with the prefix `_prefix` using the
 
 Requirements:
 
-- `:msg.sender` must be either `_point`'s current owner or the spawn proxy.
+* `:msg.sender` must be either `_point`'s current owner or the spawn proxy.
 
 Corresponds to the layer 2 `%set-spawn-proxy` action.
 
@@ -185,7 +185,7 @@ The voting proxy is allowed to start polls and cast votes on the point's behalf.
 
 Requirements:
 
-- `:msg.sender` must be either `_point`'s current owner or the voting proxy.
+* `:msg.sender` must be either `_point`'s current owner or the voting proxy.
 
 There is no corresponding layer 2 action since voting must occur on layer 1.
 
@@ -199,11 +199,11 @@ Give `_transferProxy` the right to transfer `_point`.
 
 Requirements:
 
-- `:msg.sender` must be either `_point`'s current owner, an operator for the current owner, or the transfer proxy.
+* `:msg.sender` must be either `_point`'s current owner, an operator for the current owner, or the transfer proxy.
 
 Corresponds to the layer 2 `%set-transfer-proxy` action.
 
-### Poll actions {#poll-actions}
+### Poll actions <a href="#poll-actions" id="poll-actions"></a>
 
 Most of these are functions only available to galaxies. They are related to [voting](../../glossary/voting.md). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
 
@@ -219,8 +219,8 @@ As `_galaxy`, start a poll for the Ecliptic upgrade `_proposal`.
 
 Requirements:
 
-- `:msg.sender` must be the owner or voting proxy of `_galaxy`,
-- the `_proposal` must expect to be upgraded from this specific contract, as indicated by its `previousEcliptic` attribute.
+* `:msg.sender` must be the owner or voting proxy of `_galaxy`,
+* the `_proposal` must expect to be upgraded from this specific contract, as indicated by its `previousEcliptic` attribute.
 
 This action must be performed manually - it is not available in Bridge.
 
@@ -282,7 +282,7 @@ Check whether the `_proposal` has achieved majority. Any Ethereum address may ca
 
 This action eiher occurs as part of a vote that achieves a majority, or must be performed manually. It is not available in Bridge.
 
-### Contract owner operations {#contract-owner-operations}
+### Contract owner operations <a href="#contract-owner-operations" id="contract-owner-operations"></a>
 
 The following functions may only be performed by the owner of the contract. There are only two such functions, one of which is to spawn galaxies. As all galaxies have already been spawned, it is no longer of any use. Thus only `setDnsDomains` is relevant today.
 
@@ -302,7 +302,7 @@ Grant `_target` ownership of the `_galaxy` and register it for voting. Galaxies 
 
 Sets 3 DNS domains by which galaxy IP addresses may be looked up as part of the bootstrap process to get on the network. Currently, all three domains are `urbit.org`.
 
-## Read functions {#read}
+## Read functions <a href="#read" id="read"></a>
 
 Here we briefly describe each function in the Ecliptic which allows one to read data from the contract. These can be called using [Etherscan](https://etherscan.io/address/ecliptic.eth#readContract).
 

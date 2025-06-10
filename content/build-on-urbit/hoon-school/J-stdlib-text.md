@@ -1,27 +1,27 @@
 # 9. Text Processing I
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered [in a later module](P-stdlib-io.md)._
+_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered_ [_in a later module_](./P-stdlib-io.md)_._
 
-## Text in Hoon {#text-in-hoon}
+## Text in Hoon <a href="#text-in-hoon" id="text-in-hoon"></a>
 
 We've incidentally used `'messages written as cords'` and `"as tapes"`, but aside from taking a brief look at how [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) work with tree addressing, we haven't discussed why these differ or how text works more broadly.
 
 There are four basic ways to represent text in Urbit:
 
-- `@t`, a [cord](../../glossary/cord.md), which is an [atom](../../glossary/atom.md) (single value)
-- `@ta`, a `$knot` used for URL-safe path elements, which is an atom (single value)
-- `@tas`, a `$term` used primarily for constants, which is an atom (single value)
-- `$tape`, which is a `(list @t)`
+* `@t`, a [cord](../../glossary/cord.md), which is an [atom](../../glossary/atom.md) (single value)
+* `@ta`, a `$knot` used for URL-safe path elements, which is an atom (single value)
+* `@tas`, a `$term` used primarily for constants, which is an atom (single value)
+* `$tape`, which is a `(list @t)`
 
-This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_%28computer_science%29), however.
+This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_\(computer_science\)), however.
 
 What are the applications of each?
 
-### `@t` `$cord` {#t-cord}
+### `@t` `$cord` <a href="#t-cord" id="t-cord"></a>
 
-What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol: there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.)  Characters can be combined, particularly in ideographic languages like Mandarin Chinese.
+What is a written character? Essentially it is a representation of human semantic content (not sound strictly). (Note that we don't refer to _alphabets_, which prescribe a particular relationship of sound to symbol: there are ideographic and logographic scripts, syllabaries, and other representations. Thus, _characters_ not _letters_.) Characters can be combined, particularly in ideographic languages like Mandarin Chinese.
 
-One way to handle text is to assign a code value to each letter, then represent these as subsequent values in memory. (Think, for instance, of [Morse code](https://en.wikipedia.org/wiki/Morse_code).)  On all modern computers, the numeric values used for each letter are given by the [ASCII](https://en.wikipedia.org/wiki/ASCII) standard, which defines 128 unique characters (2⁷ = 128).
+One way to handle text is to assign a code value to each letter, then represent these as subsequent values in memory. (Think, for instance, of [Morse code](https://en.wikipedia.org/wiki/Morse_code).) On all modern computers, the numeric values used for each letter are given by the [ASCII](https://en.wikipedia.org/wiki/ASCII) standard, which defines 128 unique characters (2⁷ = 128).
 
 ```
 65  83  67  73  73
@@ -50,19 +50,19 @@ It's very helpful to use the `@ux` [aura](../../glossary/aura.md) if you are try
 
 You can think of this a couple of different ways. One way is to simple think of them as chained together, with the first letter in the rightmost position. Another is to think of them as values multipled by a “place value”:
 
-| Letter | ASCII | Place | “Place Value” |
-| ------ | ----- | ----- | ------------- |
-| `H`    | 0x48  | 0     | 2⁰ = 1 → 0x48 |
-| `E`    | 0x45  | 1     | 2⁸ = 256 = 0x100 → 0x4500 |
-| `L`    | 0x4c  | 2     | 2¹⁶ = 65.536 = 0x1.0000 → 0x4c.0000 |
-| `L`    | 0x4c  | 3     | 2²⁴ = 16.777.216 = 0x100.0000 → 0x4c00.0000 |
+| Letter | ASCII | Place | “Place Value”                                        |
+| ------ | ----- | ----- | ---------------------------------------------------- |
+| `H`    | 0x48  | 0     | 2⁰ = 1 → 0x48                                        |
+| `E`    | 0x45  | 1     | 2⁸ = 256 = 0x100 → 0x4500                            |
+| `L`    | 0x4c  | 2     | 2¹⁶ = 65.536 = 0x1.0000 → 0x4c.0000                  |
+| `L`    | 0x4c  | 3     | 2²⁴ = 16.777.216 = 0x100.0000 → 0x4c00.0000          |
 | `O`    | 0x4f  | 4     | 2³² = 4.294.967.296 = 0x1.0000.0000 → 0x4f.0000.0000 |
 
 This way, each value slots in after the preceding value.
 
 Special characters (non-ASCII, beyond the standard keyboard, basically) are represented using a more complex numbering convention. [Unicode](https://en.wikipedia.org/wiki/Unicode) defines a standard specification for _code points_ or numbers assigned to characters, and a few specific bitwise _encodings_ (such as the ubiquitous UTF-8). Urbit uses UTF-8 for `@t` values (thus both `$cord` and `$tape`).
 
-### `(list @t)` `$tape` {#list-t-tape}
+### `(list @t)` `$tape` <a href="#list-t-tape" id="list-t-tape"></a>
 
 There are some tools to work with atom `$cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](../../glossary/tape.md). A `$tape` splits out the individual characters from a `$cord` into a `+list` of character values.
 
@@ -82,7 +82,7 @@ A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at
 
 Since a [tape](../../glossary/tape.md) is a `(list @tD)`, all of the `+list` tools we have seen before work on them.
 
-### `@ta` `$knot` {#ta-knot}
+### `@ta` `$knot` <a href="#ta-knot" id="ta-knot"></a>
 
 If we restrict the character set to certain ASCII characters instead of UTF-8, we can use this restricted representation for system labels as well (such as URLs, file system paths, permissions). `@ta` `$knot`s and `@tas` `$term`s both fill this role for Hoon.
 
@@ -93,11 +93,11 @@ If we restrict the character set to certain ASCII characters instead of UTF-8, w
 
 Every valid `@ta` is a valid `@t`, but `@ta` does not permit spaces or a number of other characters. (See `+sane`, discussed below.)
 
-### `@tas` `$term` {#tas-term}
+### `@tas` `$term` <a href="#tas-term" id="tas-term"></a>
 
 A further tweak of the ASCII-only concept, the `@tas` `$term` permits only “text constants”, values that are first and foremost only _themselves_.
 
-> [`@tas` permits only] a restricted text atom for Hoon constants. The only characters permitted are lowercase ASCII letters, `-`, and `0-9`, the latter two of which cannot be the first character. The syntax for `@tas` is the text itself, always preceded by `%`. The empty `@tas` has a special syntax, `$`.
+> \[`@tas` permits only] a restricted text atom for Hoon constants. The only characters permitted are lowercase ASCII letters, `-`, and `0-9`, the latter two of which cannot be the first character. The syntax for `@tas` is the text itself, always preceded by `%`. The empty `@tas` has a special syntax, `$`.
 
 `$term`s are rarely used for message-like text, but they are used all the time for internal labels in code. They differ from regular text in a couple of key ways that can confuse you until you're used to them.
 
@@ -134,12 +134,11 @@ For instance, imagine creating a function to ensure that only a certain [classic
 
 (See how that `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) works with the helper [core?](../../glossary/core.md))
 
-
-## Text Operations {#text-operations}
+## Text Operations <a href="#text-operations" id="text-operations"></a>
 
 Text-based data commonly needs to be _produced_, _manipulated_, or _analyzed_ (including parsing).
 
-### Producing Text {#producing-text}
+### Producing Text <a href="#producing-text" id="producing-text"></a>
 
 String interpolation puts the result of an expression directly into a `$tape`:
 
@@ -161,7 +160,7 @@ The [`+weld`](../../hoon/reference/stdlib/2b.md#weld) function can be used to gl
 (weld t1 t2)
 ```
 
-### Manipulating Text {#manipulating-text}
+### Manipulating Text <a href="#manipulating-text" id="manipulating-text"></a>
 
 If you have text but you need to change part of it or alter its form, you can use standard library `+list` operators like [`+flop`](../../hoon/reference/stdlib/2b.md#flop) as well as `$tape`-specific arms.
 
@@ -209,7 +208,7 @@ The [`+weld`](../../hoon/reference/stdlib/2b.md#weld) function takes two lists o
 
 It does not inject a separator character like a space.
 
-The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an atom *n* and a list, and returns the *n*th item of the list, where 0 is the first item:
+The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an atom _n_ and a list, and returns the _&#x6E;_&#x74;h item of the list, where 0 is the first item:
 
 ```hoon
 > (snag 3 "Hello!")
@@ -224,7 +223,7 @@ The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an atom *n*
 
 **Exercise: `+snag` Yourself**
 
-Without using `+snag`, write a gate that returns the *n*th item of a list. There is a solution at the bottom of the page.
+Without using `+snag`, write a gate that returns the _&#x6E;_&#x74;h item of a list. There is a solution at the bottom of the page.
 
 The [`+oust`](../../hoon/reference/stdlib/2b.md#oust) function takes a pair of atoms `[a=@ b=@]` and a `+list`, and returns the list with `.b` items removed, starting at item `.a`:
 
@@ -288,7 +287,7 @@ The [`+cuss`](../../hoon/reference/stdlib/4b.md#cuss) function: convert lower-ca
 "HELLO MARS"
 ```
 
-### Analyzing Text {#analyzing-text}
+### Analyzing Text <a href="#analyzing-text" id="analyzing-text"></a>
 
 Given a string of text, what can you do with it?
 
@@ -305,7 +304,7 @@ The [`+find`](../../hoon/reference/stdlib/2b.md#find) function takes `[nedl=(lis
 [~ 6]
 ```
 
-`+find` returns a `+unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `+unit`s are discussed in more detail in [a later lesson](L-struct.md).
+`+find` returns a `+unit`, which right now means that we need to distinguish between nothing found (`~` null) and zero `[~ 0]`. `+unit`s are discussed in more detail in [a later lesson](./L-struct.md).
 
 #### Tokenize/Parse
 
@@ -316,14 +315,14 @@ To "tokenize" text is to break it into pieces according to some rule. For instan
  1   2   3     4   5    6   7   8     9  10         11    12 13 14  15
 ```
 
-Hoon has a sophisticated parser built into it that [we'll use later](P-stdlib-io.md). There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other. We don't need that level of power to work with basic text operations, so we'll instead use basic `+list` tools whenever we need to extract or break text apart for now.
+Hoon has a sophisticated parser built into it that [we'll use later](./P-stdlib-io.md). There are a lot of rules to deciding what is and isn't a rune, and how the various parts of an expression relate to each other. We don't need that level of power to work with basic text operations, so we'll instead use basic `+list` tools whenever we need to extract or break text apart for now.
 
-## Exercise: Break Text at a Space {#exercise-break-text-at-a-space}
+## Exercise: Break Text at a Space <a href="#exercise-break-text-at-a-space" id="exercise-break-text-at-a-space"></a>
 
 Hoon has a very powerful text parsing engine, built to compile Hoon itself. However, it tends to be quite obscure to new learners. We can build a simple one using `+list` tools.
 
 Compose a [gate](../../glossary/gate.md) which parses a long `$tape` into smaller `$tape`s by splitting the text at single spaces. For example, given a `$tape`
- 
+
 ```hoon
 "the sky above the port was the color of television tuned to a dead channel"
 ```
@@ -334,9 +333,7 @@ the gate should yield
 ~["the" "sky" "above" "the" ...]
 ```
 
-To complete this, you'll need
-[`+scag`](../../hoon/reference/stdlib/2b.md#scag) and
-[`+slag`](../../hoon/reference/stdlib/2b.md#slag) (who sound like
+To complete this, you'll need[`+scag`](../../hoon/reference/stdlib/2b.md#scag) and[`+slag`](../../hoon/reference/stdlib/2b.md#slag) (who sound like\
 villainous henchmen from a children's cartoon).
 
 ```hoon
@@ -391,7 +388,7 @@ The [`+sane`](../../hoon/reference/stdlib/4b.md#sane) function checks the validi
 %.y
 ```
 
-Why is this sort of check necessary?  Two reasons:
+Why is this sort of check necessary? Two reasons:
 
 1. `@ta` `$knot`s and `@tas` `$term`s have strict rules, such as being ASCII-only.
 2. Not every sequence of bits has a conversion to a text representation. That is, ASCII and Unicode have structural rules that limit the possible conversions which can be made. If things don't work, you'll get a `%bad-text` response.
@@ -420,15 +417,14 @@ Since a `@tas` cannot include a space, this is formally incorrect, as `+sane` re
 %.n
 ```
 
-## Exercise: Building Your Own Library {#exercise-building-your-own-library}
+## Exercise: Building Your Own Library <a href="#exercise-building-your-own-library" id="exercise-building-your-own-library"></a>
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
-- Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
-- Produce a generator `/gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
+* Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
+* Produce a generator `/gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
 
-
-## Logging {#logging}
+## Logging <a href="#logging" id="logging"></a>
 
 The most time-honored method of debugging is to simply output relevant values at key points throughout a program in order to make sure they are doing what you think they are doing. To this end, we introduced `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) in the last lesson.
 
@@ -436,10 +432,10 @@ The `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) rune offers some fine
 
 There are also `>` modifiers which can be included to mark “debugging levels”, really just color-coding the output:
 
-1. No `>`:  regular
-2. `>`:  information
-3. `>>`:  warning
-4. `>>>`:  error
+1. No `>`: regular
+2. `>`: information
+3. `>>`: warning
+4. `>>>`: error
 
 (Since all `~&` sigpam output is a side effect of the compiler, it doesn't map to the Unix [stdout/stderr streams](https://en.wikipedia.org/wiki/Standard_streams) separately; it's all stdout.)
 
@@ -463,10 +459,9 @@ You can use these to differentiate messages when debugging or otherwise auditing
 ~
 ```
 
+## `%say` Generators <a href="#say-generators" id="say-generators"></a>
 
-## `%say` Generators {#say-generators}
-
-A naked [generator](../../glossary/generator.md) is merely a [gate](../../glossary/gate.md):  a [core](../../glossary/core.md) with a `$` arm that Dojo knows to call. However, we can also invoke a generator which is a cell of a metadata tag and a core. The next level-up for our generator skills is the `%say` generator, a cell of `[%say core]` that affords slightly more sophisticated evaluation.
+A naked [generator](../../glossary/generator.md) is merely a [gate](../../glossary/gate.md): a [core](../../glossary/core.md) with a `$` arm that Dojo knows to call. However, we can also invoke a generator which is a cell of a metadata tag and a core. The next level-up for our generator skills is the `%say` generator, a cell of `[%say core]` that affords slightly more sophisticated evaluation.
 
 We use `%say` generators when we want to provide something else in [Arvo](../../glossary/arvo.md), the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
 
@@ -511,14 +506,14 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject. Namely, a `%say` generator knows about `.our`, `.eny`, and `.now`, as well as the current desk:
 
-- `.our` is our current ship identity.
-- `.eny` is entropy, a source of randomness.
-- `.now` is the current system timestamp.
-- `.bec` is the current path (beak).
+* `.our` is our current ship identity.
+* `.eny` is entropy, a source of randomness.
+* `.now` is the current system timestamp.
+* `.bec` is the current path (beak).
 
 These values can be stubbed out with `*` or `^` if they are not needed in a particular generator.
 
-### `%say` generators with arguments {#say-generators-with-arguments}
+### `%say` generators with arguments <a href="#say-generators-with-arguments" id="say-generators-with-arguments"></a>
 
 We can modify the boilerplate code to allow arguments to be passed into a `%say` generator, but in a way that gives us more power than we would have if we just used a naked generator.
 
@@ -528,7 +523,7 @@ Naked generators are limited because they have no way of accessing data that exi
 
 This entire structure is a [noun](../../glossary/noun.md), which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
 
-## Exercise: The Magic 8-Ball {#exercise-the-magic-8-ball}
+## Exercise: The Magic 8-Ball <a href="#exercise-the-magic-8-ball" id="exercise-the-magic-8-ball"></a>
 
 This Magic 8-Ball generator returns one of a variety of answers in response to a call. In its entirety:
 
@@ -565,7 +560,7 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 (snag val answers)
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. Right now we don't know quite enough to interpret this line, but we'll revisit the [`+og`](../../hoon/reference/stdlib/3d.md#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](O-subject.md). For now, just know that it allows us to produce a random (unpredictable) integer using `+rad:rng`. We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy. Right now we don't know quite enough to interpret this line, but we'll revisit the [`+og`](../../hoon/reference/stdlib/3d.md#og) aspect of this `%say` generator in [the lesson on subject-oriented-programming](./O-subject.md). For now, just know that it allows us to produce a random (unpredictable) integer using `+rad:rng`. We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 
 Since this is a `%say` generator, we can run it without arguments:
 
@@ -580,12 +575,11 @@ If we need to include optional arguments to a generator, we separate them using 
 +cat /===/gen/cat/hoon, =vane %c
 ```
 
-## Exercise: Using the Playing Card Library {#exercise-using-the-playing-card-library}
+## Exercise: Using the Playing Card Library <a href="#exercise-using-the-playing-card-library" id="exercise-using-the-playing-card-library"></a>
 
 Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use it with a `%say` generator.
 
-{% code title="/gen/cards.hoon" overflow="nowrap" %}
-
+{% code title="/gen/cards.hoon" %}
 ```hoon
 /+  playing-cards
 :-  %say
@@ -593,14 +587,13 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 :-  %noun
 (shuffle-deck:playing-cards make-deck:playing-cards eny)
 ```
-
 {% endcode %}
 
 Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) rune. When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that. It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
-Below `/+  playing-cards`, you have the standard `%say` generator boilerplate that allows us to get a bit of entropy from Arvo when the generator is run. Then we feed the entropy and a `$deck` created by `+make-deck` into `+shuffle-deck` to get back a shuffled `$deck`.
+Below `/+ playing-cards`, you have the standard `%say` generator boilerplate that allows us to get a bit of entropy from Arvo when the generator is run. Then we feed the entropy and a `$deck` created by `+make-deck` into `+shuffle-deck` to get back a shuffled `$deck`.
 
-## Solutions to Exercises {#solutions-to-exercises}
+## Solutions to Exercises <a href="#solutions-to-exercises" id="solutions-to-exercises"></a>
 
 Roll-Your-Own-`+snag`:
 

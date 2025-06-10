@@ -33,14 +33,14 @@ You can read these contracts on Etherscan:
 
 ### General Azimuth Resources <a href="#general-azimuth-resources" id="general-azimuth-resources"></a>
 
-These documents pertain to L1 and other general aspects of Azimuth. For L2 docs, [see below](https://docs.urbit.org/urbit-id#naive-rollups).
+These documents pertain to L1 and other general aspects of Azimuth. For L2 docs, [see below](#naive-rollups).
 
-* [HD Wallet](https://docs.urbit.org/urbit-id/concepts/hd-wallet) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
-* [Data Flow](https://docs.urbit.org/urbit-id/concepts/flow) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
-* [Azimuth.eth](https://docs.urbit.org/urbit-id/reference/azimuth-eth) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
-* [Ecliptic.eth](https://docs.urbit.org/urbit-id/reference/ecliptic) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
-* [Advanced Azimuth Tools](https://docs.urbit.org/urbit-id/guides/advanced-azimuth-tools) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
-* [Life and Rift](https://docs.urbit.org/urbit-id/concepts/life-and-rift) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
+* [HD Wallet](./concepts/hd-wallet.md) - Azimuth has its own optional hierarchical deterministic wallet system, often referred to as a "master ticket".
+* [Data Flow](./concepts/flow.md) - Diagrams and explanations of how data flows between Bridge and the various components inside Urbit involved with Azimuth and L2.
+* [Azimuth.eth](./reference/azimuth-eth.md) - A description of the azimuth.eth smart contract, which is the data store for Azimuth.
+* [Ecliptic.eth](./reference/ecliptic.md) - A description of the ecliptic.eth smart contract, which is the business logic for azimuth.eth. This includes an overview of all function calls available.
+* [Advanced Azimuth Tools](./guides/advanced-azimuth-tools.md) - Expert-level tooling for generating, signing, and sending layer 1 Azimuth transactions from within Urbit itself.
+* [Life and Rift](./concepts/life-and-rift.md) - An explanation of how Azimuth indexes networking keys revisions and breaches to keep track of the most recent set of networking keys necessary to communicate with a ship.
 
 ### Naive rollups <a href="#naive-rollups" id="naive-rollups"></a>
 
@@ -50,9 +50,8 @@ Due to the extremely low cost, Tlon offers their own roller that is free for ord
 
 #### Layer 2 resources <a href="#layer-2-resources" id="layer-2-resources"></a>
 
-* [Layer 2 Overview](https://docs.urbit.org/urbit-id/concepts/layer2) - An overview of how naive rollups work.
-* [Custom Roller Tutorial](https://docs.urbit.org/urbit-id/guides/roller-tutorial) - A guide to running your own L2 roller locally.
-* [Actions Reference](https://docs.urbit.org/urbit-id/reference/l2-actions) - Details of the L2 API's possible actions.
-* [Transaction Format Reference](https://docs.urbit.org/urbit-id/reference/bytestring) - Details of the bytestring format for L2 transactions and batches.
-* [Rollers](https://docs.urbit.org/urbit-id/reference/roller) - Overview of the L2 roller system.
-* [Roller HTTP RPC-API](https://docs.urbit.org/urbit-id/reference/roller) - A diagram summarizing the L2 API calls.
+* [Layer 2 Overview](./concepts/layer2.md) - An overview of how naive rollups work.
+* [Custom Roller Tutorial](./guides/roller-tutorial.md) - A guide to running your own L2 roller locally.
+* [Actions Reference](./reference/l2-actions.md) - Details of the L2 API's possible actions.
+* [Transaction Format Reference](./reference/bytestring.md) - Details of the bytestring format for L2 transactions and batches.
+* [Roller](./reference/roller.md) - Overview of the L2 roller system.

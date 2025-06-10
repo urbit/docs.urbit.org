@@ -138,8 +138,8 @@
   * [Wire](glossary/wire.md)
   * [Wrapper](glossary/wrapper.md)
   * [Zuse](glossary/zuse.md)
-  * [\~](glossary/null.md)
-  * [\~zod](glossary/zod.md)
+  * [~](glossary/null.md)
+  * [~zod](glossary/zod.md)
 
 ## Build on Urbit
 

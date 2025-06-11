@@ -53,7 +53,7 @@ Once you've got an Urbit ID, the next step is to download its private [networkin
 
 {% tabs %}
 {% tab title="In a wallet" %}
-If you got an L1 planet from somewhere like OpenSea, it was likely transferred directly to your Ethereum wallet. Here are the steps to get its keyfile:
+If you got an L1 planet from somewhere like OpenSea, it was likely transferred directly to your Ethereum wallet. Here are the steps to get your keyfile:
 
 1. Go to [bridge.urbit.org](https://bridge.urbit.org).
 2. Login with WalletConnect or MetaMask if you use that.
@@ -76,7 +76,7 @@ If the options next to "Networking Keys" are "Reset" and "View" rather than "Ini
 {% endtab %}
 
 {% tab title="Invite link" %}
-If you bought an L2 planet, you likely received an invite link that looks like `https://bridge.urbit.org/#foshec-moplec-haddem-poddun-middeg-toptus`:
+If you bought an L2 planet, you mighth have received an invite link that looks like `https://bridge.urbit.org/#foshec-moplec-haddem-poddun-middeg-toptus`. Here are the steps to get your keyfile:
 
 1. Open the link and complete the steps as prompted.
 2. At one point, there'll be an option to download the "passport". Click on that, and it'll download a file named something like like `sampel-palnet-passport.zip`.
@@ -87,7 +87,7 @@ If you bought an L2 planet, you likely received an invite link that looks like `
 {% hint %}
 ### Already have a planet?
 
-If you already claimed this planet at some point and forgot to download the passport, you'll need to go and download the keyfile from [bridge.urbit.org](https://bridge.urbit.org):
+If you already claimed this planet at some point and forgot to download the passport, you'll need to go and download your keyfile from [bridge.urbit.org](https://bridge.urbit.org):
 
 1. Go to [bridge.urbit.org](https://bridge.urbit.org).
 2. Click the "Master Ticket" login option.
@@ -95,6 +95,16 @@ If you already claimed this planet at some point and forgot to download the pass
 4. Go to the "OS" section.
 5. Click on "Download Keyfile" and it'll download a file with a name like `sampel-palnet-2.key`.
 {% endhint %}
+{% endtab %}
+
+{% tab title="Passport / Master Ticket" %}
+If you bought an L2 planet you might have received a "passport" or "Master Ticket". (As well as a file titled Master Ticket, there may be a file titled "[Management Proxy](./user-manual/id/proxies.md#types-of-proxies)" which you can ignore for now.) Here are the steps to get your keyfile:
+
+1. Go to [bridge.urbit.org](https://bridge.urbit.org).
+2. Click the "Master Ticket" login option.
+3. Enter the Urbit ID (or "Point") and the Master Ticket (e.g. `~sampel-ticlyt-migfun-falmel`) from the file titled Master Ticket.
+4. Click the "OS" section and click "Download Keyfile". This file should be named something like `sampel-palnet-1.key`.
+5. Store your Master Ticket and Management Proxy somewhere safe. As long as you know your Master Ticket, you can always log into [bridge.urbit.org](https://bridge.urbit.org) and retrieve all the other information you need.
 {% endtab %}
 {% endtabs %}
 

@@ -73,7 +73,7 @@ Now let's go through each line one by one.
 
 This tells us that Unix has sent a `%belt` `card`, which corresponds to terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
 
-Here is the line of code in `arvo.hoon`, found in the [section 3bE core](../../arvo/README.md#section-3be-core) "BROKEN_ANCHOR", that generated the output:
+Here is the line of code in `arvo.hoon`, found in the [section 3bE core](../../arvo/README.md#section-3be-core), that generated the output:
 
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]

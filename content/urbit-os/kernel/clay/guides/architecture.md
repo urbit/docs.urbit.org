@@ -1,6 +1,6 @@
 # Architecture
 
-Clay is the primary filesystem for the [Arvo](../../arvo) operating system, which is the [core](../../../../glossary/core.md) of an urbit. The architecture of Clay is intrinsically connected with Arvo, but for this section we assume no knowledge of either Arvo or Urbit. We will point out only those features of Arvo that are necessary for an understanding of Clay, and we will do so only when they arise.
+Clay is the primary filesystem for the [Arvo](../../arvo/README.md) operating system, which is the [core](../../../../glossary/core.md) of an urbit. The architecture of Clay is intrinsically connected with Arvo, but for this section we assume no knowledge of either Arvo or Urbit. We will point out only those features of Arvo that are necessary for an understanding of Clay, and we will do so only when they arise.
 
 The first relevant feature of Arvo is that it is a deterministic system where input and output are defined as a series of events and effects. The state of Arvo is simply a pure function of its event log. None of the effects from an event are emitted until the event is entered in the log and persisted, either to disk or another trusted source of persistence, such as a Kafka cluster. Consequently, Arvo is a single-level store: everything in its state is persistent.
 
@@ -12,7 +12,7 @@ Second, Clay has a distributed revision-control system baked into it. Traditiona
 
 Clay has two other unique properties that we'll cover later on: it supports typed data and is referentially transparent.
 
-## Revision Control {#revision-control}
+## Revision Control <a href="#revision-control" id="revision-control"></a>
 
 Every urbit has one or more desks, which are independently revision-controlled branches. Each desk contains its own `mark` definitions, apps, and so forth.
 
@@ -36,7 +36,7 @@ There are three ways to refer to particular commits in the revision history. Fir
 
 Additionally, Clay is a global filesystem, so data on other urbits is easily accessible the same way as data on our local urbit. In general, the path to a particular revision of a desk is `/~urbit-name/desk-name/revision`. Thus, to get `/try/readme/md` from revision 5 of the `%base` desk on `~sampel-sipnym`, we refer to `/~sampel-sipnym/base/5/try/readme/md`. Clay's namespace is thus global and referentially transparent.
 
-## A Typed Filesystem {#a-typed-filesystem}
+## A Typed Filesystem <a href="#a-typed-filesystem" id="a-typed-filesystem"></a>
 
 Since Clay is a general filesystem for storing data of arbitrary types, in order to revision control correctly it needs to be aware of types all the way through. Traditional revision control does an excellent job of handling source code, so for source code we act very similar to traditional revision control. The challenge is to handle other data similarly well.
 
@@ -52,6 +52,6 @@ A text file wrapped at 80 columns also reacts suboptimally with unadorned Hunt-M
 
 As far as we are aware, Clay is the first generalized, type-aware revision control system. We'll go into the workings of this system in some detail.
 
-## Marks {#marks}
+## Marks <a href="#marks" id="marks"></a>
 
-Central to a typed filesystem is the idea of file types. In Clay, we call these `mark`s. See the [Marks](marks) section for more details.
+Central to a typed filesystem is the idea of file types. In Clay, we call these `mark`s. See the [Marks](marks/) section for more details.

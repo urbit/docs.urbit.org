@@ -2,11 +2,11 @@
 
 This document details all the `task`s you're likely to use to interact with Eyre, as well as the `gift`s you'll receive in response.
 
-The primary way of interacting with Eyre is from the outside with HTTP requests. As a result, most of its `task`s are only used internally and you're unlikely to need to deal with them directly. The ones you may want to use in certain cases are [%connect](#connect), [%serve](#serve), [%disconnect](#disconnect), [%approve-origin](#approve-origin) and [%reject-origin](#reject-origin), and they are also demonstrated in the [Guide](../guides/guide.md) document. The rest are just documented for completeness.
+The primary way of interacting with Eyre is from the outside with HTTP requests. As a result, most of its `task`s are only used internally and you're unlikely to need to deal with them directly. The ones you may want to use in certain cases are [%connect](tasks.md#connect), [%serve](tasks.md#serve), [%disconnect](tasks.md#disconnect), [%approve-origin](tasks.md#approve-origin) and [%reject-origin](tasks.md#reject-origin), and they are also demonstrated in the [Guide](../guides/README.md) document. The rest are just documented for completeness.
 
 Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `+eyre` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 
-## `%live` {#live}
+## `%live` <a href="#live" id="live"></a>
 
 ```hoon
 [%live insecure=@ud secure=(unit @ud)]
@@ -20,9 +20,9 @@ The `insecure` field is the HTTP port and `secure` is the optional HTTPS port.
 
 Eyre returns no `gift` in response to a `%live` `task`.
 
----
+***
 
-## `%rule` {#rule}
+## `%rule` <a href="#rule" id="rule"></a>
 
 ```hoon
 [%rule =http-rule]
@@ -36,9 +36,9 @@ The [$http-rule](data-types.md#http-rule) is either tagged with `%cert` or `%tur
 
 Eyre returns no `gift` in response to a `%rule` `task`.
 
----
+***
 
-## `%request` {#request}
+## `%request` <a href="#request" id="request"></a>
 
 ```hoon
 [%request secure=? =address =request:http]
@@ -52,23 +52,23 @@ The `secure` field says whether it's over HTTPS. The `address` is the IP address
 
 Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
----
+***
 
-## `%request-local` {#request-local}
+## `%request-local` <a href="#request-local" id="request-local"></a>
 
 ```hoon
 [%request-local secure=? =address =request:http]
 ```
 
-This `task` is how Eyre receives an inbound HTTP request over the local loopback port. It behaves the same and takes the same arguments as in the [%request](#request) example except it skips any normally required authentication. Just like for a [%request](#request) `task`, you'd not normally use this manually.
+This `task` is how Eyre receives an inbound HTTP request over the local loopback port. It behaves the same and takes the same arguments as in the [%request](tasks.md#request) example except it skips any normally required authentication. Just like for a [%request](tasks.md#request) `task`, you'd not normally use this manually.
 
 #### Returns
 
 Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
----
+***
 
-## `%cancel-request` {#cancel-request}
+## `%cancel-request` <a href="#cancel-request" id="cancel-request"></a>
 
 ```hoon
 [%cancel-request ~]
@@ -82,9 +82,9 @@ This `task` takes no arguments.
 
 Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the state of the connection and other factors.
 
----
+***
 
-## `%connect` {#connect}
+## `%connect` <a href="#connect" id="connect"></a>
 
 ```hoon
 [%connect =binding app=term]
@@ -118,9 +118,9 @@ The `accepted` field says whether the binding succeeded and the `binding` is the
 
 See the [Agents: Direct HTTP](../guides/guide.md#agents-direct-http) section of the [Guide](../guides/guide.md) document for an example.
 
----
+***
 
-## `%serve` {#serve}
+## `%serve` <a href="#serve" id="serve"></a>
 
 ```hoon
 [%serve =binding =generator]
@@ -146,19 +146,19 @@ The sample of the first gate must be:
 
 The `?` says whether the HTTP request contained a valid session cookie and the [$request:http](data-types.md#requesthttp) contains the request itself.
 
-The `simple-payload:http` returned by the generator is similar to the response described in the [%connect](#connect) section except the HTTP headers and body are all contained in the one response rather than staggered across several.
+The `simple-payload:http` returned by the generator is similar to the response described in the [%connect](tasks.md#connect) section except the HTTP headers and body are all contained in the one response rather than staggered across several.
 
 #### Returns
 
-Eyre will return a `%bound` `gift` as described at the end of the [%connect](#connect) section.
+Eyre will return a `%bound` `gift` as described at the end of the [%connect](tasks.md#connect) section.
 
 #### Example
 
 See the [Generators](../guides/guide.md#generators) section of the [Guide](../guides/guide.md) document for an example.
 
----
+***
 
-## `%disconnect` {#disconnect}
+## `%disconnect` <a href="#disconnect" id="disconnect"></a>
 
 ```hoon
 [%disconnect =binding]
@@ -172,9 +172,9 @@ The [$binding](data-types.md#binding) is the URL path and domain of the binding 
 
 Eyre returns no `gift` in response to a `%disconnect` `task`.
 
----
+***
 
-## `%code-changed` {#code-changed}
+## `%code-changed` <a href="#code-changed" id="code-changed"></a>
 
 ```hoon
 [%code-changed ~]
@@ -188,7 +188,7 @@ This `task` takes no arguments.
 
 Eyre returns no `gift` in response to a `%code-changed` `task`.
 
-## `%approve-origin` {#approve-origin}
+## `%approve-origin` <a href="#approve-origin" id="approve-origin"></a>
 
 ```hoon
 [%approve-origin =origin]
@@ -206,7 +206,7 @@ Eyre returns no `gift` in response to a `%approve-origin` `task`.
 
 See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
 
-## `%reject-origin` {#reject-origin}
+## `%reject-origin` <a href="#reject-origin" id="reject-origin"></a>
 
 ```hoon
 [%reject-origin =origin]
@@ -224,8 +224,9 @@ Eyre returns no `gift` in response to a `%reject-origin` `task`.
 
 See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
 
----
-## `%set-response` {#set-response}
+***
+
+## `%set-response` <a href="#set-response" id="set-response"></a>
 
 ```hoon
 [%set-response url=@t entry=(unit cache-entry)]
@@ -251,4 +252,4 @@ Eyre gives a `%grow` `gift` in response to a `%set-response` `task`. A `%grow` `
 
 The `path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`++scot`](../../../../hoon/reference/stdlib/4m.md#scot) encoding, so will need to be decoded with `%t` [`++slav`](../../../../hoon/reference/stdlib/4m.md#slav).
 
----
+***

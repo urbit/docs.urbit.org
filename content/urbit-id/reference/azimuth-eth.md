@@ -2,7 +2,7 @@
 
 [Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](ecliptic.md) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by [galaxy vote](../../glossary/upgrade.md) - they are only eligible to modify the Ecliptic.
 
-## Global state {#global}
+## Global state <a href="#global" id="global"></a>
 
 The global state of `Azimuth.eth` is given by the following.
 
@@ -29,7 +29,7 @@ The global state of `Azimuth.eth` is given by the following.
 
 Urbit ID's are formalized as [ERC-721 non-fungible tokens](https://eips.ethereum.org/EIPS/eip-721) and are indexed by a number between `0` and `2^32-1`, e.g. a `uint32`. There are two data structures associated to a given `uint32`: a `Point` and a `Deed`.
 
-## `Point`s {#points}
+## `Point`s <a href="#points" id="points"></a>
 
 A `Point` contains data about networking keys and sponsorship status, arranged in the following `struct`:
 
@@ -87,9 +87,9 @@ A `Point` contains data about networking keys and sponsorship status, arranged i
   }
 ```
 
-## `Deed`s {#deeds}
+## `Deed`s <a href="#deeds" id="deeds"></a>
 
-A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../../manual/id/proxies.md) for that `Point`.
+A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../../user-manual/id/proxies.md) for that `Point`.
 
 ```solidity
 struct Deed
@@ -119,7 +119,7 @@ struct Deed
   }
 ```
 
-## Other state {#other}
+## Other state <a href="#other" id="other"></a>
 
 Finally, each Ethereum address may set for itself a number of `operators`, as defined and required by the [ERC-721 standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/). These are for third party brokers/wallets/auctioneers/etc such as [OpenSea](http://opensea.io), which facilitate exchange of ERC-721 tokens.
 

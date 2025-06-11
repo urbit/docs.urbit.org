@@ -1,4 +1,4 @@
-# Nock
+# What is Nock?
 
 Nock is Urbit's novel assembly language and a 47-line standard for general computation.
 
@@ -58,14 +58,4 @@ Everything in Urbit OS compiles to Nock; Nock is interpreted by the Urbit runtim
 
 You don't need to learn Nock to write Hoon or even work on most of the runtime. But it is fun, and in doing so you'll see why Hoon has several of the properties it has.
 
-This section includes guides on Nock, but you can find a more structured explanation of Nock in the opening sections of [Core Academy](../build-on-urbit/core-academy).
-
-## Examples
-- [Decrement](decrement.md) - Walk through implementing decrement in Nock.
-- [Implementations](implementations.md) - Nock interpreter implementations in various languages.
-- [Fast Hints and Jets](jetting.md) - Learn about jetting in Nock.
-
-## Reference
-- [Definition](definition.md) - The formal definition of Nock.
-- [Specification](specification.md) - Details of the Nock specification and instructions.
-
+This section includes guides on Nock, but you can find a more structured explanation of Nock in the opening sections of [Core Academy](../build-on-urbit/core-academy/).

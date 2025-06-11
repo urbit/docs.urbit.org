@@ -6,7 +6,7 @@ Most Urbit users start out running their ship locally on one machine in order to
 
 This guide uses Digital Ocean as the cloud provider, but others can be used. If using another provider, the setup script provided and other server configuration instructions may need to be modified or done manually.
 
-## 1. Create a Droplet {#1-create-a-droplet}
+## 1. Create a Droplet <a href="#id-1-create-a-droplet" id="id-1-create-a-droplet"></a>
 
 Create an account on [Digital Ocean](https://digitalocean.com). Once you make an account, choose "Deploy a virtual machine".
 
@@ -22,9 +22,9 @@ Ubuntu 22.04 x64
 
 #### Plan
 
-- Shared CPU: Basic
-- CPU options: Regular with SSD
-- 2GB / 1 CPU ($12/mo)
+* Shared CPU: Basic
+* CPU options: Regular with SSD
+* 2GB / 1 CPU ($12/mo)
 
 You can choose a more powerful option if you'd like but the $12 option should be sufficient. Note Urbit needs 2GB of memory; it's possible to choose a cheaper option and run it with less memory by using swap but it will impact performance.
 
@@ -123,21 +123,19 @@ Leave as the default.
 
 Hit this button to create the droplet.
 
-## 2. Prepare for upload {#2-prepare-for-upload}
+## 2. Prepare for upload <a href="#id-2-prepare-for-upload" id="id-2-prepare-for-upload"></a>
 
 {% hint style="info" %}
-
 **Note**
 
 This step is necessary if you already have a ship running locally and want to move it to the cloud. If you don't, you can skip this step.
-
 {% endhint %}
 
 In the Dojo, use either `"CTRL + D"` or `|exit` to shut down your ship.
 
 Archive your pier by running `tar cvzf riclen-tinlyr.tar.gz ~/path/to/your/pier` (substitute your own ship name and pier location).
 
-## 3. Connect to the server {#3-connect-to-the-server}
+## 3. Connect to the server <a href="#id-3-connect-to-the-server" id="id-3-connect-to-the-server"></a>
 
 To make connecting simple, you can add an alias to `~/.ssh/config` on your local machine. Open `~/.ssh/config` in an editor (you may need to create it if the file doesn't exist), and add the following to the bottom of the file (replacing the ship name with your own and the IP address with that of your droplet):
 
@@ -149,9 +147,6 @@ Host riclen-tinlyr
   IdentitiesOnly yes
 ```
 
-{% tabs %}
-
-{% tab label="If you have an existing pier" %}
 
 
 Copy the archived pier to the server with the following (substituting your ship name and Host):
@@ -162,9 +157,7 @@ scp riclen-tinlyr.tar.gz riclen-tinlyr:
 
 It may take a while to upload if your pier is large and/or your internet is slow.
 
-{% /tab %}
 
-{% tab label="If you have a key file" %}
 
 If you have obtained a planet and want to boot it for the first time, you'll need to upload its key file to the server. These instructions assume you've received an invite. If you've got a planet by another method, you can also login to [Bridge](https://bridge.urbit.org) and download the key file from there.
 
@@ -186,11 +179,11 @@ unzip ~/path/to/download/folder/riclen-tinlyr-passport.zip
 
 It'll create a folder called `riclen-tinlyr-passport` which will contain three files:
 
-- `riclen-tinlyr-1.key`
-- `riclen-tinlyr-Management Proxy.png`
-- `riclen-tinlyr-Master Ticket.png`
+* `riclen-tinlyr-1.key`
+* `riclen-tinlyr-Management Proxy.png`
+* `riclen-tinlyr-Master Ticket.png`
 
-You can physically print out the two `.png` files and store them in a safe and secure location. Importantly, you should ensure the *master ticket* (which will look something like `~tarnes-pilryd-dassed-sogsul`) is securely and safely stored. If anyone gains access to the master ticket they'll have ownership and control of your Urbit ID, and if you lose it you'll irreversibly lose ownership and control of your Urbit ID.
+You can physically print out the two `.png` files and store them in a safe and secure location. Importantly, you should ensure the _master ticket_ (which will look something like `~tarnes-pilryd-dassed-sogsul`) is securely and safely stored. If anyone gains access to the master ticket they'll have ownership and control of your Urbit ID, and if you lose it you'll irreversibly lose ownership and control of your Urbit ID.
 
 The next screen on the claim page will ask you to re-enter the master ticket to ensure you've recorded it accurately, and then the claim process is complete. Once you've securely, physically backed up the master ticket and the `.png` passports, it's a good idea to delete the `riclen-tinlyr-passport.zip` file and the two `.png` files, so if someone gains access to your computer, your Urbit ID will be safe.
 
@@ -202,22 +195,17 @@ scp riclen-tinlyr-passport/riclen-tinlyr-1.key riclen-tinlyr:
 
 Note: you should keep the `riclen-tinlyr-1.key` until you've completed this guide and your ship is booted to be sure it was copied successfully, but afterwards you should also delete that file for security.
 
-{% /tab %}
-
-{% /tabs %}
-
 Once you've either uploaded your pier or uploaded your key file as the case may be, you can connect to your server:
 
 ```bash
 ssh riclen-tinlyr
 ```
+
 You'll be taken to the shell on your server.
 
-## 5. Boot your ship {#5-boot-your-ship}
+## 5. Boot your ship <a href="#id-5-boot-your-ship" id="id-5-boot-your-ship"></a>
 
-{% tabs %}
 
-{% tab label="If you have an existing pier" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, extract the pier archive you previously uploaded, then delete the archive:
 
@@ -245,9 +233,7 @@ That will copy the `urbit` runtime inside the pier, so you can now delete the se
 rm urbit
 ```
 
-{% /tab %}
 
-{% tab label="If you have a key file" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, start tmux:
 
@@ -273,10 +259,6 @@ The key file is only needed when you first boot the ship, so it's good practice 
 rm riclen-tinlyr-1.key
 ```
 
-{% /tab %}
-
-{% /tabs %}
-
 Run the following to allow the runtime to bind ports 80 and 443:
 
 ```bash
@@ -291,7 +273,7 @@ Now you can start your ship up with the following:
 
 After a few moments it'll show the Dojo prompt like `~riclen-tinlyr:dojo>`.
 
-## 6. Get a domain {#6-get-a-domain}
+## 6. Get a domain <a href="#id-6-get-a-domain" id="id-6-get-a-domain"></a>
 
 To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo, replacing the IP address with your droplet's:
 
@@ -340,7 +322,7 @@ http: loopback live on http://localhost:12321
 
 That means the domain has been registered and an SSL certificate has been installed, so you can access the web interface securely with HTTPS.
 
-## 7. Log in to Landscape {#7-log-in-to-landscape}
+## 7. Log in to Landscape <a href="#id-7-log-in-to-landscape" id="id-7-log-in-to-landscape"></a>
 
 In order to login to the web interface, you need to get the web login code. Run the following in the Dojo:
 
@@ -356,7 +338,7 @@ The server configuration should now be complete, and you can access Landscape in
 
 Enter the web login code and you'll be taken to your ship's homescreen. Your ship is now running in the cloud, and you can access it from any device by visiting its URL.
 
-## 8. Disconnect {#8-disconnect}
+## 8. Disconnect <a href="#id-8-disconnect" id="id-8-disconnect"></a>
 
 You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the ship will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
@@ -366,9 +348,8 @@ tmux a
 
 Finally, you can disconnect from the ssh session completely by hitting `CTRL+d`.
 
-## 9. Cleanup {#9-cleanup}
+## 9. Cleanup <a href="#id-9-cleanup" id="id-9-cleanup"></a>
 
 If you booted a new ship by uploading a key file, it's a good idea to now delete the key file on your local machine.
 
 If you uploaded an existing pier, you should delete the old copy of both the pier directory and the `.tar.gz` archive on your local machine. You might be tempted to keep one of these as a backup, but note that **you must never again boot the old copy on the live network**. Doing so will create unfixable networking problems and require you to perform a factory reset through Bridge, wiping your ship's data. We therefore don't recommend you keep duplicates of your pier lying around.
-

@@ -18,9 +18,9 @@ The basic problem all parsers face is this:
 We could build a simple parser out of a [trap](../../glossary/trap.md) and [`+snag`](../../hoon/reference/stdlib/2b.md#snag), but it would be brittle and difficult to extend. The Hoon parser is very sophisticated, since it has to take a file of ASCII characters (and some UTF-8 strings) and turn it via an AST into [Nock](../../glossary/nock.md) code. What makes parsing challenging is that we have to wade directly into a sea of new types and processes. To wit:
 
 -  A [`$tape`](../../glossary/tape.md) is the string to be parsed.
--  A `$hair` is the position in the text the parser is at, as a cell of column & line, `[p=@ud q=@ud]`.
+-  A `$hair` is the position in the text the parser is at, as a cell of line & column, `[p=@ud q=@ud]`.
 -  A `$nail` is parser input, a cell of `$hair` and `$tape`.
--  An `$edge` is parser output, a cell of `$hair` and a `+unit` of `$hair` and `$nail`. (There are some subtleties around failure-to-parse here that we'll defer a moment.)
+-  An `$edge` is parser output, a pair of a `$hair` and a `+unit` containing a pair of the result and a `$nail`. (There are some subtleties around failure-to-parse here that we'll defer a moment.)
 -  A `$rule` is a parser, a gate which applies a `$nail` to yield an `$edge`.
 
 Basically, one uses a `$rule` on `[hair tape]` to yield an `$edge`.

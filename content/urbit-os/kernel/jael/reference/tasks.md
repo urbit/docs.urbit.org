@@ -161,7 +161,7 @@ An agent or thread can subscribe to be notified of public key updates, sponsorsh
 
 #### Returns
 
-Jael responds to a `%public-keys` task with [`%public-keys` gift](../examples/examples.md#public-keys) "BROKEN_ANCHOR".
+Jael responds to a `%public-keys` task with [`%public-keys` gift](../examples/examples.md#public-keys-and-nuke).
 
 Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](data-types.md#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
 

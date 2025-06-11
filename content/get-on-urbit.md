@@ -42,7 +42,7 @@ Here are the best places to buy planets:
 | ------- | -------------------------------------------------------- | ------------------------------------------------------ |
 | Layer 1 | [OpenSea](https://opensea.io/collection/urbit-id-planet) | The largest NFT marketplace. Accepts ETH.              |
 | Layer 2 | [azimuth.shop](https://azimuth.shop)                     | Third-party L2 planet store. Accepts ETH.              |
-| Layer 2 | [Pocwet](https://store.pocwet.com)                       | Third-party L2 planet stire. Accepts credit cards.     |
+| Layer 2 | [Pocwet](https://store.pocwet.com)                       | Third-party L2 planet store. Accepts credit cards.     |
 
 Originally, all Urbit IDs were ERC-721 NFTs on Ethereum. In 2021, Tlon [introduced a Layer 2 solution](https://urbit.org/blog/rollups) to reduce transaction costs on Ethereum. This means there are two places where ownership of your Urbit ID could be recorded:
 * **Layer 1**: These ordinary NFTs can traded on regular NFT marketplaces like [OpenSea](https://opensea.io/), and other smart contracts can interact with them. It'll cost you a bit of [gas](https://ethereum.org/en/gas/#what-is-gas) if you need to do an onchain action like a [factory reset](user-manual/id/guide-to-resets.md) or [changing your networking keys](user-manual/id/hd-wallet.md). Ownership of these IDs is recorded in Urbit's [Azimuth.eth](./urbit-id/reference/azimuth-eth.md) smart contract.

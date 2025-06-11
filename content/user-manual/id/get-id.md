@@ -55,6 +55,7 @@ Here are a few of the places where you can buy planets:
 - [azimuth.shop](https://azimuth.shop)
 - [lanlyd](https://lanlyd.net/)
 - [\_networked subject](https://subject.network)
+- [Pocwet](https://store.pocwet.com)
 
 {% endtab %}
 

@@ -23,7 +23,7 @@ Urbit ID ownership is stored on a smart contract at `azimuth.eth`, and that stor
 You can read these contracts on Etherscan:
 
 * [Azimuth.eth](https://etherscan.io/address/azimuth.eth) `0x223c067f8cf28ae173ee5cafea60ca44c335fecb`: Contains all on-chain state for Urbit ID. Most notably, ownership and public keys. Can't be modified directly, you must use Ecliptic.
-* [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) `0x9ef27de616154FF8B38893C59522b69c7Ba8A81c`: An interface for interacting with Azimuth. Allows you to configure keys, transfer ownership, etc.
+* [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) `0x33EeCbf908478C10614626A9D304bfe18B78DD73`: An interface for interacting with Azimuth. Allows you to configure keys, transfer ownership, etc.
 * [Polls](https://etherscan.io/address/0x7fecab617c868bb5996d99d95200d2fa708218e4) `0x7fecab617c868bb5996d99d95200d2fa708218e4`: Registers votes on governance proposals by Urbit's Galactic Senate. These can be either static documents or Ecliptic upgrades.
 * [Linear Star Release](https://etherscan.io/address/0x86cd9cd0992f04231751e3761de45cecea5d1801) `0x86cd9cd0992f04231751e3761de45cecea5d1801`: Facilitates the release of blocks of stars to their owners over a period of time.
 * [Conditional Star Release](https://etherscan.io/address/0x8c241098c3d3498fe1261421633fd57986d74aea) `0x8c241098c3d3498fe1261421633fd57986d74aea`: Facilitates the release of blocks of stars to their owners based on milestones.

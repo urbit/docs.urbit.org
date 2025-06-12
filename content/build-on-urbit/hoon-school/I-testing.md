@@ -8,23 +8,23 @@ _This module will discuss how we can have confidence that a program does what it
 >
 > It's natural to feel fear of code; however, you must act as though you are able to master and change any part of it. To code courageously is to walk into any abyss, bring light, and make it right.
 >
-> ~wicdev-wisryt
+> \~wicdev-wisryt
 
-When you produce software, how much confidence do you have that it does what you think it does?  Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected. We can classify a testing regimen for Urbit code into a couple of layers: fences and unit tests.
+When you produce software, how much confidence do you have that it does what you think it does? Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected. We can classify a testing regimen for Urbit code into a couple of layers: fences and unit tests.
 
-### Fences {#fences}
+### Fences <a href="#fences" id="fences"></a>
 
 "Fences" are barriers employed to block program execution if the state isn’t adequate to the intended task. Typically, these are implemented with `assert` or similar enforcement. In Hoon, this means `?>` [wutgar](../../hoon/reference/rune/wut.md#wutgar), `?<` [wutgal](../../hoon/reference/rune/wut.md#wutgal), and `?~` [wutsig](../../hoon/reference/rune/wut.md#wutsig), or judicious use of `^-` [kethep](../../hoon/reference/rune/ket.md#kethep) and `^+` [ketlus](../../hoon/reference/rune/ket.md#ketlus). For conditions that must succeed, the failure branch in Hoon should be `!!`, which crashes the program.
 
-### Unit Tests {#unit-tests}
+### Unit Tests <a href="#unit-tests" id="unit-tests"></a>
 
 > Unit tests are so called because they exercise the functionality of the code by interrogating individual functions and methods. Functions and methods can often be considered the atomic units of software because they are indivisible. However, what is considered to be the smallest code unit is subjective. The body of a function can be long are short, and shorter functions are arguably more unit-like than long ones.
 >
 > (Katy Huff, [“Python Testing and Continuous Integration”](https://mq-software-carpentry.github.io/python-testing/05-units/))
-    
+
 In many languages, unit tests refer to functions, often prefixed "test", that specify (and enforce) the expected behavior of a given function. Unit tests typically contain setup, assertions, and tear-down. In academic terms, they’re a grading script.
 
-In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../manual/os/dojo-tools.md#test) [thread](../../glossary/thread.md):
+In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../user-manual/os/dojo-tools.md#test) [thread](../../glossary/thread.md):
 
 ```hoon
 > -test /=landscape=/tests ~  
@@ -53,22 +53,22 @@ ok=%.y
 
 Hoon unit tests come in two categories:
 
-1.  `+expect-eq` (equality of two values)
-2.  `+expect-fail` (failure/crash)
+1. `+expect-eq` (equality of two values)
+2. `+expect-fail` (failure/crash)
 
 Let's look at a practical example first, then dissect these.
 
-### Exercise: Testing a Library {#exercise-testing-a-library}
+### Exercise: Testing a Library <a href="#exercise-testing-a-library" id="exercise-testing-a-library"></a>
 
 Consider an absolute value arm `+absolute` for `@rs` values. The unit tests for `+absolute` should accomplish a few things:
 
-- Verify correct behavior for positive numeric input.
-- Verify correct behavior for negative numeric input.
-- For the purpose of demonstrating `+expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `+unit` are a way of dealing with failed computations.)
+* Verify correct behavior for positive numeric input.
+* Verify correct behavior for negative numeric input.
+* For the purpose of demonstrating `+expect-fail`, verify an exception is raised on input of zero. (Properly speaking Hoon doesn't have exceptions because Nock is crash-only; tools like `+unit` are a way of dealing with failed computations.)
 
 (You may also think we would need to verify `+absolute` calls only succeed if the input is an `@rs`, but arvo already handles this for us, as a hoon file will not build if a gate call contains an argument that does not match the sample type. So even if you wanted to add an `+expect-fail` test for it, your test file would not build.)
 
-By convention any testing suite has the import line `/+  *test` at the top.
+By convention any testing suite has the import line `/+ *test` at the top.
 
 **/tests/lib/absolute.hoon**
 
@@ -106,14 +106,13 @@ Use the tests to determine what is wrong with this library code and correct it.
 
 The dcSpark blog post [“Writing Robust Hoon — A Guide To Urbit Unit Testing”](https://medium.com/dcspark/writing-robust-hoon-a-guide-to-urbit-unit-testing-82b2631fe20a) covers some more good ideas about testing Hoon code.
 
-### `/lib/test.hoon` {#libtesthoon}
+### `/lib/test.hoon` <a href="#libtesthoon" id="libtesthoon"></a>
 
 In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, and `+expect-fail`, among others.
 
 `+expect-eq` checks whether two vases are equal and pretty-prints the result of that test. It is our workhorse. The source for `+expect-eq` is:
 
-{% code title="/lib/test.hoon" overflow="nowrap" %}
-
+{% code title="/lib/test.hoon" %}
 ```hoon
 ++  expect-eq
   |=  [expected=vase actual=vase]
@@ -138,15 +137,13 @@ In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, an
     ==  ==
   result
 ```
-
 {% endcode %}
 
 Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) as a [cell](../../glossary/cell.md) of the type of a value and the value.
 
 `+expect-fail` by contrast take a `|.` [bardot](../../hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc [arm](../../glossary/arm.md) but hasn't been called yet) and verifies that the code within fails.
 
-{% code title="/lib/test.hoon" overflow="nowrap" %}
-
+{% code title="/lib/test.hoon" %}
 ```hoon
 ++  expect-fail
   |=  a=(trap)
@@ -157,7 +154,6 @@ Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [
     %&  ['expected failure - succeeded' ~]
   ==
 ```
-
 {% endcode %}
 
 ```hoon
@@ -173,15 +169,15 @@ Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [
 
 (Recall that `~` null is `%.y` true.)
 
-## Producing Error Messages {#producing-error-messages}
+## Producing Error Messages <a href="#producing-error-messages" id="producing-error-messages"></a>
 
 Formal error messages in Urbit are built of tanks.
 
-- A `$tank` is a structure for printing data.
-  - `$leaf` is for printing a single noun.
-  - `$palm` is for printing backstep-indented lists.
-  - `$rose` is for printing rows of data.
-- A `$tang` is a `(list tank)`.
+* A `$tank` is a structure for printing data.
+  * `$leaf` is for printing a single noun.
+  * `$palm` is for printing backstep-indented lists.
+  * `$rose` is for printing rows of data.
+* A `$tang` is a `(list tank)`.
 
 As your code evaluates, the Arvo runtime maintains a stack trace, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
@@ -210,16 +206,15 @@ dojo: hoon expression failed
 
 When you compose your own library [cores](../../glossary/core.md), include error messages for likely failure modes.
 
-## Test-Driven Development {#test-driven-development}
+## Test-Driven Development <a href="#test-driven-development" id="test-driven-development"></a>
 
 _In extremis_, rigorous unit testing yields test-driven development (TDD). Test-driven development refers to the practice of fully specifying desired function behavior before composing the function itself. The advantage of this approach is that it forces you to clarify ahead of time what you expect, rather than making it up on the fly.
 
-For instance, one could publish a set of tests which characterize the
-behavior of a Roman numeral translation library sufficiently that when
+For instance, one could publish a set of tests which characterize the\
+behavior of a Roman numeral translation library sufficiently that when\
 such a library is provided it is immediately demonstrable.
 
-{% code title="/tests/lib/roman.hoon" overflow="nowrap" %}
-
+{% code title="/tests/lib/roman.hoon" %}
 ```hoon
 /+  *test, *roman
 |%
@@ -265,17 +260,15 @@ such a library is provided it is immediately demonstrable.
 :: and so forth
 --
 ```
-
 {% endcode %}
 
 By composing the unit tests ahead of time, you exercise a discipline of thinking carefully through details of the interface and implementation before you write a single line of implementation code.
 
-
-## Debugging Common Errors {#debugging-common-errors}
+## Debugging Common Errors <a href="#debugging-common-errors" id="debugging-common-errors"></a>
 
 Let’s enumerate the errors you are likely to have encountered by this point:
 
-### nest-fail {#nest-fail}
+### nest-fail <a href="#nest-fail" id="nest-fail"></a>
 
 A [nest-fail](../../hoon/reference/hoon-errors.md#nest-fail) may be the most common. Likely you are using an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md) where the other is expected.
 
@@ -290,7 +283,7 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-### mint-nice {#mint-nice}
+### mint-nice <a href="#mint-nice" id="mint-nice"></a>
 
 The "mint-nice" error arises from typechecking:
 
@@ -317,9 +310,9 @@ dojo: hoon expression failed
 ~[0 1 2]
 ```
 
-### fish-loop {#fish-loop}
+### fish-loop <a href="#fish-loop" id="fish-loop"></a>
 
-A "fish-loop" arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.)  Alas, this fails today:
+A "fish-loop" arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.) Alas, this fails today:
 
 ```hoon
 > ?=((list @) ~[1 2 3 4])
@@ -327,13 +320,13 @@ A "fish-loop" arises when using a recursive mold definition like [list](../../gl
 fish-loop
 ```
 
-### generator-build-fail {#generator-build-fail}
+### generator-build-fail <a href="#generator-build-fail" id="generator-build-fail"></a>
 
 A "generator-build-fail" most commonly results from composing code with mismatched [runes](../../glossary/rune.md) (and thus the wrong children including hanging expected-but-empty slots).
 
 Also check if you are using Windows-style line endings, as Unix-style line endings should be employed throughout Urbit.
 
-### Misusing the `$` buc Arm {#misusing-the-buc-arm}
+### Misusing the `$` buc Arm <a href="#misusing-the-buc-arm" id="misusing-the-buc-arm"></a>
 
 Another common mistake is to attempt to use the default `$` buc arm in something that doesn't have it. This typically happens for one of two reasons:
 
@@ -357,15 +350,15 @@ Similarly, `-find.$` means the compiler is looking for a `$` buc [arm](../../glo
 -find.$
 ```
 
-- [“Hoon Errors”](../../hoon/reference/hoon-errors.md)
+* [“Hoon Errors”](../../hoon/reference/hoon-errors.md)
 
-### Debugging Strategies {#debugging-strategies}
+### Debugging Strategies <a href="#debugging-strategies" id="debugging-strategies"></a>
 
 What are some strategies for debugging?
 
-- **Debugging stack.**  Use the `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../hoon/reference/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
-- **"printf" debugging.**  If your code will compile and run, employ `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
-- **Typecast.**  Include `^` [ket](../../hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
-- **The only wolf in Alaska.**  Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap).
-- **Build it again.**  Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
--  **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of [Ames](../../glossary/ames.md) don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in [Gall](../../glossary/gall.md). You can also develop using a [moon](../../glossary/moon.md) if you want to.
+* **Debugging stack.** Use the `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../hoon/reference/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
+* **"printf" debugging.** If your code will compile and run, employ `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
+* **Typecast.** Include `^` [ket](../../hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
+* **The only wolf in Alaska.** Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap).
+* **Build it again.** Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
+* **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of [Ames](../../glossary/ames.md) don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in [Gall](../../glossary/gall.md). You can also develop using a [moon](../../glossary/moon.md) if you want to.

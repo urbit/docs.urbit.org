@@ -1,5 +1,3 @@
 # Examples
 
-### [Example](../../iris/examples/example.md) {#exampleirisexamplesexamplemd}
-
-An example of using Khan to run a thread.
+- [Example](../../khan/examples/example.md) - An example of using Khan to run a thread.

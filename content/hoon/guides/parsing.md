@@ -57,7 +57,7 @@ In this section we discuss the types most commonly used for Hoon parsers. In sho
 
 A `hair` is a pair of `@ud` used to keep track of what has already been parsed for stack tracing purposes. This allows the parser to reveal where the problem is in case it hits something unexpected during parsing.
 
-`p` represents the column and `q` represents the line.
+`p` represents the line and `q` represents the column.
 
 ### `nail` {#nail}
 
@@ -77,7 +77,7 @@ For example, if you wish to feed the entire `tape` `"abc"` into a parser, you wo
 
 An `edge` is the output of a parser. If parsing succeeded, `p` is the location of the original input `tape `up to which the text has been parsed. If parsing failed, `p` will be the first `hair` at which parsing failed.
 
-`q` may be `~`, indicating that parsing has failed . If parsing did not fail, `p.q` is the data structure that is the result of the parse up to this point, while `q.q` is the `nail` which contains the remainder of what is to be parsed. If `q` is not null, `p` and `p.q.q` are identical.
+`q` may be `~`, indicating that parsing has failed . If parsing did not fail, `p.u.q` is the data structure that is the result of the parse up to this point, while `q.u.q` is the `nail` which contains the remainder of what is to be parsed. If `q` is not null, `p` and `p.q.u.q` are identical.
 
 ### `rule` {#rule}
 
@@ -101,7 +101,7 @@ The most basic rule builder, `+just` takes in a single `char` and produces a `ru
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-We note that `p.edg` is `[p=1 q=2]`, indicating that the next character to be parsed is in line 1, column 2. `q.edg` is not null, indicating that parsing succeeded. `p.q.edg` is `'a'`, which is the result of the parse. `p.q.q.edg` is the same as `p.edg`, which is always the case for `rule`s built using standard library functions when parsing succeeds. Lastly, `q.q.edg` is `"bc"`, which is the part of the input `tape` that has yet to be parsed.
+We note that `p.edg` is `[p=1 q=2]`, indicating that the next character to be parsed is in line 1, column 2. `q.edg` is not null, indicating that parsing succeeded. `p.u.q.edg` is `'a'`, which is the result of the parse. `p.q.u.q.edg` is the same as `p.edg`, which is always the case for `rule`s built using standard library functions when parsing succeeds. Lastly, `q.q.u.q.edg` is `"bc"`, which is the part of the input `tape` that has yet to be parsed.
 
 Now let's see what happens when parsing fails.
 
@@ -127,7 +127,7 @@ Let's see what happens when we successfully parse the entire input `tape`.
 [p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q=""]]]]
 ```
 
-`p.edg` is `[p=1 q=4]`, indicating that the next character to be parsed is at line 1, column 4. Of course, this does not exist since the input `tape` was only 3 characters long, so this actually indicates that the entire `tape` has been successfully parsed (since the `hair` does not advance in the case of failure). `p.q.edg` is `'abc'`, as expected. `q.q.edg` is `""`, indicating that nothing remains to be parsed.
+`p.edg` is `[p=1 q=4]`, indicating that the next character to be parsed is at line 1, column 4. Of course, this does not exist since the input `tape` was only 3 characters long, so this actually indicates that the entire `tape` has been successfully parsed (since the `hair` does not advance in the case of failure). `p.u.q.edg` is `'abc'`, as expected. `q.q.u.q.edg` is `""`, indicating that nothing remains to be parsed.
 
 What happens if we only match some of the input `tape`?
 
@@ -137,7 +137,7 @@ What happens if we only match some of the input `tape`?
 [p=[p=1 q=3] q=[~ [p='ab' q=[p=[p=1 q=3] q="c"]]]]
 ```
 
-Now we have that the result, `p.q.edg`, is `'ab'`, while the remainder `q.q.q.edg` is `"c"`. So `+jest` has successfully parsed the first two characters, while the last character remains. Furthermore, we still have the information that the remaining character was in line 1 column 3 from `p.edg` and `p.q.q.edg`.
+Now we have that the result, `p.u.q.edg`, is `'ab'`, while the remainder `q.q.u.q.edg` is `"c"`. So `+jest` has successfully parsed the first two characters, while the last character remains. Furthermore, we still have the information that the remaining character was in line 1 column 3 from `p.edg` and `p.q.u.q.edg`.
 
 What happens when `+jest` fails?
 
@@ -177,7 +177,7 @@ Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
 [p=[p=1 q=2] q=[~ u=[p=%foo q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](../../userspace/apps/guides/cli-tutorial.md). We usher the reader there to find an example where `+cold` is used.
+One common scenario where `+cold` sees play is when writing [command line interface (CLI) apps](../../build-on-urbit/userspace/guides/cli-tutorial.md). We usher the reader there to find an example where `+cold` is used.
 
 ### `+less` {#lessreferencestdlib4fmdless}
 

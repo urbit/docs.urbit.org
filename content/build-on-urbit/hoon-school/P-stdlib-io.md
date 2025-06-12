@@ -1,23 +1,19 @@
 # 15. Text Processing II
 
-_This module will elaborate on text representation in Hoon, including formatted text and `%ask` [generators](../../glossary/generator.md). It may be considered optional and skipped if you are speedrunning Hoon School._
+_This module will elaborate on text representation in Hoon, including formatted text and `%ask`_ [_generators_](../../glossary/generator.md)_. It may be considered optional and skipped if you are speedrunning Hoon School._
 
-
-## Text Conversions {#text-conversions}
+## Text Conversions <a href="#text-conversions" id="text-conversions"></a>
 
 We frequently need to convert from text to data, and between different text-based representations. Let's examine some specific [arms](../../glossary/arm.md):
 
-- How do we convert text into all lower-case?
-  - [`+cass`](../../hoon/reference/stdlib/4b.md#cass)
-
-- How do we turn a `$cord` into a [tape](../../glossary/tape.md)?
-  - [`+trip`](../../hoon/reference/stdlib/4b.md#trip)
-
-- How can we make a [list](../../glossary/list.md) of a null-terminated tuple?
-  - [+le:nl](../../hoon/reference/stdlib/2m.md#lenl)
-
-- How can we evaluate [Nock](../../glossary/nock.md) expressions?
-  - [`+mink`](../../hoon/reference/stdlib/4n.md#mink)
+* How do we convert text into all lower-case?
+  * [`+cass`](../../hoon/reference/stdlib/4b.md#cass)
+* How do we turn a `$cord` into a [tape](../../glossary/tape.md)?
+  * [`+trip`](../../hoon/reference/stdlib/4b.md#trip)
+* How can we make a [list](../../glossary/list.md) of a null-terminated tuple?
+  * [+le:nl](../../hoon/reference/stdlib/2m.md#lenl)
+* How can we evaluate [Nock](../../glossary/nock.md) expressions?
+  * [`+mink`](../../hoon/reference/stdlib/4n.md#mink)
 
 (If you see a `|*` [bartar](../../hoon/reference/rune/bar.md#bartar) rune in the code, it's similar to a `|=` [bartis](../../hoon/reference/rune/bar.md#bartis), but produces what's called a ["wet gate"](R-metals.md).)
 
@@ -44,8 +40,7 @@ There are tools for working with Bitcoin wallet base-58 values, JSON strings, XM
 "https%3A%2F%2Fhello.me"
 ```
 
-
-## Formatted Text {#formatted-text}
+## Formatted Text <a href="#formatted-text" id="formatted-text"></a>
 
 Hoon produces messages at the [Dojo](../../glossary/dojo.md) (or otherwise) using an internal formatted text system, called `$tank`s. A `$tank` is a formatted print tree. Error messages and the like are built of `$tank`s. `$tank`s are defined in `hoon.hoon`:
 
@@ -96,7 +91,7 @@ which is equivalent to
 
 #### Tutorial: Deep Dive into `ls.hoon`
 
-The [`+ls`](../../manual/os/dojo-tools.md#ls) generator shows the contents at a particular path in [Clay](../../glossary/clay.md):
+The [`+ls`](../../user-manual/os/dojo-tools.md#ls) generator shows the contents at a particular path in [Clay](../../glossary/clay.md):
 
 ```hoon
 > +cat /===/gen/ls/hoon
@@ -144,7 +139,7 @@ A `%say` [generator](../../glossary/generator.md) is a cell with a metadata tag 
 |=  [^ [arg=path ~] vane=?(%g %c)]
 ```
 
-This generator requires a path argument in its sample and optionally accepts a [vane](../../glossary/vane.md) tag (`%g` [Gall](../../glossary/gall.md) or `%c` [Clay](../../glossary/clay.md)). Most of the time, [`+cat`](../../manual/os/dojo-tools.md#cat) is used with Clay, so `%c` as the last entry in the type union serves as the [bunt](../../glossary/bunt.md) value.
+This generator requires a path argument in its sample and optionally accepts a [vane](../../glossary/vane.md) tag (`%g` [Gall](../../glossary/gall.md) or `%c` [Clay](../../glossary/clay.md)). Most of the time, [`+cat`](../../user-manual/os/dojo-tools.md#cat) is used with Clay, so `%c` as the last entry in the type union serves as the [bunt](../../glossary/bunt.md) value.
 
 ```hoon
 =+  lon=.^(arch (cat 3 vane %y) arg)
@@ -160,9 +155,10 @@ The result of the lookup on the previous line is adapted into a formatted text b
 
 #### Tutorial: Deep Dive into `cat.hoon`
 
-For instance, how does [`+cat`](../../manual/os/dojo-tools.md#cat) work?  Let's look at the structure of `/gen/cat/hoon`:
+For instance, how does [`+cat`](../../user-manual/os/dojo-tools.md#cat) work? Let's look at the structure of `/gen/cat/hoon`:
 
 <details>
+
 <summary>/gen/cat.hoon</summary>
 
 ```hoon
@@ -203,19 +199,20 @@ For instance, how does [`+cat`](../../manual/os/dojo-tools.md#cat) work?  Let's 
 
 </details>
 
-What is the top-level structure of the [generator](../../glossary/generator.md)?  (A [cell](../../glossary/cell.md) of `%say` and the [gate](../../glossary/gate.md), what Dojo recognizes as a `%say` generator.)
+What is the top-level structure of the [generator](../../glossary/generator.md)? (A [cell](../../glossary/cell.md) of `%say` and the [gate](../../glossary/gate.md), what Dojo recognizes as a `%say` generator.)
 
 Some points of interest include:
-- `/?` faswut pins the expected Arvo [kelvin version](../../glossary/kelvin.md); right now it doesn't do anything.
-- `.^` [dotket](../../hoon/reference/rune/dot.md#dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
-- [`+smyt`](../../hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
-- `=-` [tishep](../../hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../hoon/reference/rune/tis.md#tisfas).
+
+* `/?` faswut pins the expected Arvo [kelvin version](../../glossary/kelvin.md); right now it doesn't do anything.
+* `.^` [dotket](../../hoon/reference/rune/dot.md#dotket) loads a value from Arvo (called a ["scry"](../../glossary/scry.md)).
+* [`+smyt`](../../hoon/reference/stdlib/4m.md#smyt) pretty-prints a path.
+* `=-` [tishep](../../hoon/reference/rune/tis.md#tishep) combines a [faced](../../glossary/face.md) noun with the [subject](../../glossary/subject.md), inverted relative to `=+` [tislus](../../hoon/reference/rune/tis.md#tislus)/`=/` [tisfas](../../hoon/reference/rune/tis.md#tisfas).
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `$tank` by prepending `%rose` tags and so forth.
 
 Work line-by-line through the file and clarify parts that are muddy to you at first glance.
 
-### Producing Error Messages {#producing-error-messages}
+### Producing Error Messages <a href="#producing-error-messages" id="producing-error-messages"></a>
 
 Formal error messages in Urbit are built of tanks. “A `$tang` is a [list](../../glossary/list.md) of `$tank`s, and a `$tank` is a structure for printing data. There are three types of `$tank`: `$leaf`, `$palm`, and `$rose`. A `$leaf` is for printing a single noun, a `$rose` is for printing rows of data, and a `$palm` is for printing backstep-indented lists.”
 
@@ -229,16 +226,15 @@ One way to include an error message in your code is the `~_` [sigcab](../../hoon
 
 When you compose your own library functions, consider including error messages for likely failure points.
 
-
-## `%ask` Generators {#ask-generators}
+## `%ask` Generators <a href="#ask-generators" id="ask-generators"></a>
 
 Previously, we introduced the concept of a `%say` [generator](../../glossary/generator.md) to produce a more versatile form of standalone single computation than a simple naked generator ([gate](../../glossary/gate.md)) allowed. Another elaboration, the `%ask` generator, takes things further.
 
 We use an `%ask` generator when we want to create an interactive program that prompts for inputs as it runs, rather than expecting arguments to be passed in at the time of initiation.
 
-This section will briefly walk through an `%ask` generator to give you a taste of how they work. The [CLI app guide](../../userspace/apps/guides/cli-tutorial.md) walks through the libraries necessary for working with `%ask` generators in greater detail. We also recommend reading [\~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
+This section will briefly walk through an `%ask` generator to give you a taste of how they work. The [CLI app guide](../userspace/guides/cli-tutorial.md) walks through the libraries necessary for working with `%ask` generators in greater detail. We also recommend reading [\~wicdev-wisryt's “Input and Output in Hoon”](https://urbit.org/blog/io-in-hoon) for an extended consideration of relevant input/output issues.
 
-##### Tutorial: `%ask` Generator
+**Tutorial: `%ask` Generator**
 
 The code below is an `%ask` [generator](../../glossary/generator.md) that checks if the user inputs `"blue"` when prompted [per a classic Monty Python scene](https://www.youtube.com/watch?v=L0vlQHxJTp0). Save it as `/gen/axe.hoon` in your `%base` [desk](../../glossary/desk.md).
 
@@ -289,9 +285,9 @@ Let's go over what exactly is happening in this code.
 
 Here we bring in some of the types we are going to need from `/sur/sole` and gates we will use from `/lib/generators`. We use some special [runes](../../glossary/rune.md) for this.
 
-- `/-` [fashep](../../hoon/reference/rune/fas.md#fashep) is a Ford rune used to import types from `/sur`.
-- `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) is a Ford rune used to import libraries from `/lib`.
-- `=,` [tiscom](../../hoon/reference/rune/tis.md#tiscol) is a rune that allows us to expose a namespace. We do this to avoid having to write `sole-result:sole` instead of `sole-result` or `print:generators` instead of `+print`.
+* `/-` [fashep](../../hoon/reference/rune/fas.md#fashep) is a Ford rune used to import types from `/sur`.
+* `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) is a Ford rune used to import libraries from `/lib`.
+* `=,` [tiscom](../../hoon/reference/rune/tis.md#tiscol) is a rune that allows us to expose a namespace. We do this to avoid having to write `sole-result:sole` instead of `sole-result` or `print:generators` instead of `+print`.
 
 ```hoon
 :-  %ask

@@ -6,9 +6,9 @@ Some `task`s appear to have more than one arm associated to them, e.g. there are
 
 Ames `task`s can be naturally divided into three categories: messaging tasks, system/lifecycle tasks, and remote scry tasks.
 
-## Messaging Tasks {#messaging-tasks}
+## Messaging Tasks <a href="#messaging-tasks" id="messaging-tasks"></a>
 
-### `%hear` {#hear}
+### `%hear` <a href="#hear" id="hear"></a>
 
 ```hoon
 [%hear =lane =blob]
@@ -26,9 +26,9 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:ev
 
 `%hear` can trigger a number of possible returns. It can trigger the release of zero or more additional packets via `%send` `gift`s. It may also trigger a `%boon` or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message.
 
----
+***
 
-### `%heed` {#heed}
+### `%heed` <a href="#heed" id="heed"></a>
 
 ```hoon
 [%heed =ship]
@@ -36,7 +36,7 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:ev
 
 A vane can pass Ames a `%heed` `task` to request Ames track a peer's responsiveness. If our `%boon`s to it start backing up locally, Ames will `give` a `%clog` back to the requesting vane containing the unresponsive peer's Urbit address.
 
-Stop tracking a peer by sending Ames a [%jilt](#jilt) `task`.
+Stop tracking a peer by sending Ames a [%jilt](tasks.md#jilt) `task`.
 
 The `ship` field specifies the peer to be tracked.
 
@@ -44,15 +44,15 @@ The `ship` field specifies the peer to be tracked.
 
 If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s, Ames will `give` a `%clog` `gift` to the requesting vane containing the unresponsive peer's urbit address.
 
----
+***
 
-### `%jilt` {#jilt}
+### `%jilt` <a href="#jilt" id="jilt"></a>
 
 ```hoon
 [%jilt =ship]
 ```
 
-`%jilt` stops tracking a potentially unresponsive peer that was previously being tracked as a result of the [%heed](#heed) `task`.
+`%jilt` stops tracking a potentially unresponsive peer that was previously being tracked as a result of the [%heed](tasks.md#heed) `task`.
 
 There are two `+on-jilt` arms, this `task` utilizes `+on-hear:event-core`.
 
@@ -62,9 +62,9 @@ The `ship` field specifies the peer we want to stop tracking.
 
 This `task` returns no `gift`s.
 
----
+***
 
-### `%plea` {#plea}
+### `%plea` <a href="#plea" id="plea"></a>
 
 ```hoon
 [%plea =ship =plea:ames]
@@ -82,11 +82,11 @@ A `%plea` `task` takes in the `ship` the `plea` is addressed to, and a [$plea](d
 
 This `task` returns no `gift`s.
 
----
+***
 
-## System Tasks {#system-tasks}
+## System Tasks <a href="#system-tasks" id="system-tasks"></a>
 
-### `%born` {#born}
+### `%born` <a href="#born" id="born"></a>
 
 ```hoon
 [%born ~]
@@ -100,15 +100,15 @@ In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
 
 The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send` `gift`s (which are instructions for Unix to send a packet) are also returned in response to `%born`.
 
----
+***
 
-### `%init` {#init}
+### `%init` <a href="#init" id="init"></a>
 
 ```hoon
 [%init ~]
 ```
 
-`%init` is called a single time during the very first boot process, immediately after the [larval stage](../../arvo#larval-stage-core) is completed. This initializes the vane. Jael is initialized first, followed by other vanes such as Ames.
+`%init` is called a single time during the very first boot process, immediately after the [larval stage](../../arvo/README.md#larval-stage-core) is completed. This initializes the vane. Jael is initialized first, followed by other vanes such as Ames.
 
 In response to receiving the `%init` `task`, Ames subscribes to the information contained by Jael.
 
@@ -121,9 +121,9 @@ In response to receiving the `%init` `task`, Ames subscribes to the information 
 
 `%init` sends two moves that subscribe to `%turf` and `%private-keys` in Jael.
 
----
+***
 
-### `%sift` {#sift}
+### `%sift` <a href="#sift" id="sift"></a>
 
 ```hoon
 [%sift ships=(list ship)]
@@ -137,9 +137,9 @@ The `ships` field specifies the ships for which debug output is desired.
 
 This `task` returns no `gift`s.
 
----
+***
 
-### `%snub` {#snub}
+### `%snub` <a href="#snub" id="snub"></a>
 
 ```hoon
 [%snub form=?(%allow %deny) ships=(list ship)]
@@ -152,20 +152,18 @@ The `form` field specifies whether the given ships should be blacklisted or whit
 The Ames `snub` settings can only have one form at a time: an `%allow` list or `%deny` list. If an `%allow` form is set, packets from **all ships not on the list will be blocked**. If a `%deny` form is set, packets from **any ship on the list will be blocked, and all others allowed**.
 
 {% hint style="info" %}
-
 Note: a `%snub` `task` overrides the existing snub list and form entirely, it does not merely add/remove ships from the existing list.
 
-If you just want to add/remove a ship from an existing blacklist/whitelist, you'll need to first [scry out the existing snub settings](scry.md#snubbed), make your changes, and send the whole modified list and form in a new `%snub` `task`. 
-
+If you just want to add/remove a ship from an existing blacklist/whitelist, you'll need to first [scry out the existing snub settings](scry.md#snubbed), make your changes, and send the whole modified list and form in a new `%snub` `task`.
 {% endhint %}
 
 #### Returns
 
 This `task` returns no `gift`s.
 
----
+***
 
-### `%spew` {#spew}
+### `%spew` <a href="#spew" id="spew"></a>
 
 ```hoon
 [%spew veb=(list verb)]
@@ -181,9 +179,9 @@ Sets verbosity toggles on debug output. This `task` is used internally when the 
 
 This `task` returns no `gift`s.
 
----
+***
 
-### `%stir` {#stir}
+### `%stir` <a href="#stir" id="stir"></a>
 
 ```hoon
 [%stir arg=@t]
@@ -197,9 +195,9 @@ The `arg` field is unused.
 
 This `task` returns no `gift`s.
 
----
+***
 
-### `%vega` {#vega}
+### `%vega` <a href="#vega" id="vega"></a>
 
 ```hoon
 [%vega ~]
@@ -211,11 +209,11 @@ This `task` returns no `gift`s.
 
 This `task` returns no `gift`s.
 
----
+***
 
-## Remote scry tasks {#remote-scry-tasks}
+## Remote scry tasks <a href="#remote-scry-tasks" id="remote-scry-tasks"></a>
 
-### `%keen` {#keen}
+### `%keen` <a href="#keen" id="keen"></a>
 
 Perform an unencrypted or multi-party encrypted remote scry.
 
@@ -227,7 +225,7 @@ A `%keen` `task` asks Ames to perform a remote scry, retrieving the value of `pa
 
 The `path` has the general format of `/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read into Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the empty element in between the agent and the rest of the path.
 
-Note that you would not use this task directly from userspace. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../../gall/reference/gall-api.md#keen) and for two-party encrypted scries you'd use a [`%chum`](#chum) task.
+Note that you would not use this task directly from userspace. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../../gall/reference/gall-api.md#keen) and for two-party encrypted scries you'd use a [`%chum`](tasks.md#chum) task.
 
 #### Returns
 
@@ -237,11 +235,11 @@ A `%tune` gift. A `%tune` gift looks like:
 [%tune spar roar=(unit roar)]
 ```
 
-It represents a *result*. The `roar` field is null if Ames doesn't have a response, but may have one in the future. The [`$roar`](data-types.md#roar) contains a signature and the data. The data in the `$roar` will be null if there is no value at the path in question and will never be. These two cases are equivalent to `~` and `[~ ~]` of a local scry.
+It represents a _result_. The `roar` field is null if Ames doesn't have a response, but may have one in the future. The [`$roar`](data-types.md#roar) contains a signature and the data. The data in the `$roar` will be null if there is no value at the path in question and will never be. These two cases are equivalent to `~` and `[~ ~]` of a local scry.
 
----
+***
 
-### `%chum` {#chum}
+### `%chum` <a href="#chum" id="chum"></a>
 
 Perform a two-party encrypted remote scry.
 
@@ -263,11 +261,11 @@ A `%tune` gift. A `%tune` gift looks like:
 [%tune spar roar=(unit roar)]
 ```
 
-It represents a *result*. The `roar` field is null if Ames doesn't have a response, but may have one in the future. The [`$roar`](data-types.md#roar) contains a signature and the data. The data in the `$roar` will be null if there is no value at the path in question and will never be. These two cases are equivalent to `~` and `[~ ~]` of a local scry.
+It represents a _result_. The `roar` field is null if Ames doesn't have a response, but may have one in the future. The [`$roar`](data-types.md#roar) contains a signature and the data. The data in the `$roar` will be null if there is no value at the path in question and will never be. These two cases are equivalent to `~` and `[~ ~]` of a local scry.
 
----
+***
 
-### `%yawn` {#yawn}
+### `%yawn` <a href="#yawn" id="yawn"></a>
 
 Cancel a remote scry request.
 
@@ -281,9 +279,9 @@ A `%yawn` task asks Ames to cancel an existing remote scry request to the given 
 
 This `task` returns no `gift`s.
 
----
+***
 
-### `%wham` {#wham}
+### `%wham` <a href="#wham" id="wham"></a>
 
 ```hoon
 [%wham =ship =path]
@@ -293,6 +291,6 @@ A `%wham` task asks Ames to cancel all existing remote scry requests from all va
 
 #### Returns
 
-A `%tune` gift with a null `data` is given to all listeners. See the [`%keen`](#keen) entry for more details of the `%tune` gift.
+A `%tune` gift with a null `data` is given to all listeners. See the [`%keen`](tasks.md#keen) entry for more details of the `%tune` gift.
 
----
+***

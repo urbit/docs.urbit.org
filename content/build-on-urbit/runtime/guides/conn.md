@@ -144,7 +144,7 @@ All three produce the same output if an error occured while running the thread: 
 
 If the thread succeeded, `%fard` and `%lard` produce `[%arow %& %noun vase]`. `%fyrd` produces `[%avow %& mark noun]`, where `mark` is the output mark and `noun` is the output as a raw noun after mark conversion.
 
-See [here](../../../userspace/threads/tutorials/basics/fundamentals.md) for more information about threads.
+See [here](../../../urbit-os/base/threads/tutorials/basics/fundamentals.md) for more information about threads.
 
 ### `urbit eval` {#urbit-eval}
 

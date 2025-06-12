@@ -1,5 +1,3 @@
 # Examples
 
-### [Example](example.md) {#exampleexamplemd}
-
-An example of using Iris to fetch a remote HTTP resource.
+- [Example](example.md) - An example of using Iris to fetch a remote HTTP resource.

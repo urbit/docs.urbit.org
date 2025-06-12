@@ -9,47 +9,47 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#zapcom) rune to determi
 [%wing p=~[%c %b %a]]
 ```
 
-## Quick Lookup of Irregular Forms {#quick-lookup-of-irregular-forms}
+## Quick Lookup of Irregular Forms <a href="#quick-lookup-of-irregular-forms" id="quick-lookup-of-irregular-forms"></a>
 
-| Form | Regular Form |
-| ---- | ------------ |
-| `_foo` | [`$_`](rune/buc.md#buccab), normalizes to an example |
-| `foo@bar` | [`$@`](rune/buc.md#bucpat), normalizes to a type union of an atom and a cell |
-| `foo=bar` | [`$=`](rune/buc.md#buctis), wraps a face around a value |
-| `?(%foo %bar %baz)` | [`$?`](rune/buc.md#bucwut), forms a type union |
-| `(foo a b c)` | [`%:`](rune/cen.md#cencol), calls a gate with _n_ arguments |
-| `~(arm core arg)` | [`%~`](rune/cen.md#censig), pulls an arm in a door |
-| `foo(a 1, b 2, c 3)` | [`%=`](rune/cen.md#centis), resolve a wing with changes |
-| `[foo bar]` | [`:-`](rune/col.md#colhep), constructs a cell |
-| `[a b c]` | [`:*`](rune/col.md#coltar) or [`$:`](rune/buc.md#buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
-| `~[a b c]` | [`:~`](rune/col.md#colsig), constructs null-terminated list |
-| `+(42)` | [`.+`](rune/dot.md#dotlus), increments with Nock 4 |
-| `=(a b)` | [`.=`](rune/dot.md#dottis), tests for equality with Nock 5 |
-| `` `foo`bar`` | [`^-`](rune/ket.md#kethep), typecasts by explicit type label |
-| `=foo` or `foo=bar` | [`^=`](rune/ket.md#kettis), binds name to value |
-| `*foo` | [`^*`](rune/ket.md#kettar), bunts (produces default mold value) |
-| `,foo` | [`^:`](rune/ket.md#ketcol), produces “factory” gate for type |
-| `:(fun a b c d)` | [`;:`](rune/mic.md#miccol), calls binary function as _n_-ary function |
-| `foo:bar` | [`=<`](rune/tis.md#tisgal), composes two expressions, inverted |
-| `\|(foo bar baz)` | [`?\|`](rune/wut.md#wutbar), logical OR (loobean) |
-| `&(foo bar baz)` | [`?&`](rune/wut.md#wutpam), logical AND (loobean) |
-| `!foo` | [`?!`](rune/wut.md#wutzap), logical NOT (loobean) |
+| Form                 | Regular Form                                                                                                                     |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `_foo`               | [`$_`](rune/buc.md#buccab), normalizes to an example                                                                             |
+| `foo@bar`            | [`$@`](rune/buc.md#bucpat), normalizes to a type union of an atom and a cell                                                     |
+| `foo=bar`            | [`$=`](rune/buc.md#buctis), wraps a face around a value                                                                          |
+| `?(%foo %bar %baz)`  | [`$?`](rune/buc.md#bucwut), forms a type union                                                                                   |
+| `(foo a b c)`        | [`%:`](rune/cen.md#cencol), calls a gate with _n_ arguments                                                                      |
+| `~(arm core arg)`    | [`%~`](rune/cen.md#censig), pulls an arm in a door                                                                               |
+| `foo(a 1, b 2, c 3)` | [`%=`](rune/cen.md#centis), resolve a wing with changes                                                                          |
+| `[foo bar]`          | [`:-`](rune/col.md#colhep), constructs a cell                                                                                    |
+| `[a b c]`            | [`:*`](rune/col.md#coltar) or [`$:`](rune/buc.md#buccol), constructs _n_-tuple in normal mode or its structure in structure mode |
+| `~[a b c]`           | [`:~`](rune/col.md#colsig), constructs null-terminated list                                                                      |
+| `+(42)`              | [`.+`](rune/dot.md#dotlus), increments with Nock 4                                                                               |
+| `=(a b)`             | [`.=`](rune/dot.md#dottis), tests for equality with Nock 5                                                                       |
+| `` `foo`bar ``       | [`^-`](rune/ket.md#kethep), typecasts by explicit type label                                                                     |
+| `=foo` or `foo=bar`  | [`^=`](rune/ket.md#kettis), binds name to value                                                                                  |
+| `*foo`               | [`^*`](rune/ket.md#kettar), bunts (produces default mold value)                                                                  |
+| `,foo`               | [`^:`](rune/ket.md#ketcol), produces “factory” gate for type                                                                     |
+| `:(fun a b c d)`     | [`;:`](rune/mic.md#miccol), calls binary function as _n_-ary function                                                            |
+| `foo:bar`            | [`=<`](rune/tis.md#tisgal), composes two expressions, inverted                                                                   |
+| `\|(foo bar baz)`    | [`?\|`](rune/wut.md#wutbar), logical OR (loobean)                                                                                |
+| `&(foo bar baz)`     | [`?&`](rune/wut.md#wutpam), logical AND (loobean)                                                                                |
+| `!foo`               | [`?!`](rune/wut.md#wutzap), logical NOT (loobean)                                                                                |
 
-<br>
+\
+\
 
-<br>
 
-##### Reading guide
+**Reading guide**
 
 Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular and irregular forms are given.
 
 Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for "\symbol". ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
-## `.` dot (nock) {#dot-nock}
+## `.` dot (nock) <a href="#dot-nock" id="dot-nock"></a>
 
 Anything Nock can do, Hoon can do also.
 
-### `.+` dotlus {#dotlus}
+### `.+` dotlus <a href="#dotlus" id="dotlus"></a>
 
 [docs](rune/dot.md#dotlus) \\+
 
@@ -59,7 +59,7 @@ Regular: `.+(p)`
 
 Irregular: `+(p)`
 
-### `.=` dottis {#dottis}
+### `.=` dottis <a href="#dottis" id="dottis"></a>
 
 [docs](rune/dot.md#dottis) \\=
 
@@ -69,11 +69,11 @@ Regular: `.=(p q)`
 
 Irregular: `=(p q)`
 
-## `;` mic (make) {#mic-make}
+## `;` mic (make) <a href="#mic-make" id="mic-make"></a>
 
 Miscellaneous useful macros.
 
-### `;:` miccol {#miccol}
+### `;:` miccol <a href="#miccol" id="miccol"></a>
 
 [docs](rune/mic.md#miccol) \\:
 
@@ -83,13 +83,13 @@ Regular: `;:(p q)`
 
 Irregular: `:(p q)`
 
-## `:` col (cells) {#col-cells}
+## `:` col (cells) <a href="#col-cells" id="col-cells"></a>
 
 The cell runes.
 
-### `:-` colhep {#colhep}
+### `:-` colhep <a href="#colhep" id="colhep"></a>
 
-[docs](rune/col.md#colhep) \\[\\]\\^\\/\\+\\\`\\~
+[docs](rune/col.md#colhep) \\\[\\]\\^\\/\\+\\\`\\\~
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -108,11 +108,11 @@ Irregular:
   [a b]~  ==>   [[a b] ~]
 ```
 
-## `=` tis (flow) {#tis-flow}
+## `=` tis (flow) <a href="#tis-flow" id="tis-flow"></a>
 
 Flow runes change the subject. All non-flow runes (except cores) pass the subject down unchanged.
 
-### `=<` tisgal {#tisgal}
+### `=<` tisgal <a href="#tisgal" id="tisgal"></a>
 
 [docs](rune/tis.md#tisgal) \\:
 
@@ -122,7 +122,7 @@ Regular: `=<(p q)`
 
 Irregular: `p:q`
 
-## `|` bar (core) {#bar-core}
+## `|` bar (core) <a href="#bar-core" id="bar-core"></a>
 
 [docs](rune/bar.md) \\$
 
@@ -130,18 +130,18 @@ Core runes are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.
 
-- `|= bartis`
-- `|. bardot`
-- `|- barhep`
-- `|* bartar`
+* `|= bartis`
+* `|. bardot`
+* `|- barhep`
+* `|* bartar`
 
 The above runes produce a core with a single arm, named `$` ("buc"). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=`, `:make`, like so: `$()`.
 
-## `%` cen (call) {#cen-call}
+## `%` cen (call) <a href="#cen-call" id="cen-call"></a>
 
 The invocation family of runes.
 
-### `%=` centis {#centis}
+### `%=` centis <a href="#centis" id="centis"></a>
 
 [docs](rune/cen.md#centis) \\(\\)
 
@@ -151,9 +151,9 @@ Regular: `%=(p a 1)`
 
 Irregular: `p(a 1)`
 
-### `%~` censig {#censig}
+### `%~` censig <a href="#censig" id="censig"></a>
 
-[docs](rune/cen.md#censig) \\~
+[docs](rune/cen.md#censig) \\\~
 
 `[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
@@ -161,7 +161,7 @@ Regular: `%~(p q r)`
 
 Irregular: `~(p q r)`
 
-### `%-` cenhep {#cenhep}
+### `%-` cenhep <a href="#cenhep" id="cenhep"></a>
 
 [docs](rune/cen.md#cenhep) \\(\\)
 
@@ -173,11 +173,11 @@ Irregular: `(p q)`
 
 Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (function call without arguments).
 
-## `$` buc (mold) {#buc-mold}
+## `$` buc (mold) <a href="#buc-mold" id="buc-mold"></a>
 
 A mold is a gate (function) that helps us build simple and rigorous data structures.
 
-### `$?` bucwut {#bucwut}
+### `$?` bucwut <a href="#bucwut" id="bucwut"></a>
 
 [docs](rune/buc.md#bucwut) \\?
 
@@ -187,9 +187,9 @@ Regular: `$?(p)`
 
 Irregular: `?(p)`
 
-### `$_` buccab {#buccab}
+### `$_` buccab <a href="#buccab" id="buccab"></a>
 
-[docs](../../hoon/reference/rune/buc.md#buccab) \\\_
+[docs](rune/buc.md#buccab) \\\_
 
 `[%bccb p=value]`: mold which normalizes to an example.
 
@@ -197,9 +197,9 @@ Regular: `$_(p)`
 
 Irregular: `_p`
 
-### `$=` buctis {#buctis}
+### `$=` buctis <a href="#buctis" id="buctis"></a>
 
-[docs](rune/buc.md#buctis)  \\=
+[docs](rune/buc.md#buctis) \\=
 
 `[%bcts p=skin q=spec]`: wraps a face around a structure.
 
@@ -217,11 +217,11 @@ Irregular:
 =p=q   ==>   p-q=q
 ```
 
-## `?` wut (test) {#wut-test}
+## `?` wut (test) <a href="#wut-test" id="wut-test"></a>
 
 Hoon has the usual branches and logical tests.
 
-### `?!` wutzap {#wutzap}
+### `?!` wutzap <a href="#wutzap" id="wutzap"></a>
 
 [docs](rune/wut.md#wutzap) \\!
 
@@ -231,7 +231,7 @@ Regular: `?!(p)`
 
 Irregular: `!(p)`
 
-### `?&` wutpam {#wutpam}
+### `?&` wutpam <a href="#wutpam" id="wutpam"></a>
 
 [docs](rune/wut.md#wutpam) \\&
 
@@ -241,7 +241,7 @@ Regular: `?&(p)`
 
 Irregular: `&(p)`
 
-### `?|` wutbar {#wutbar}
+### `?|` wutbar <a href="#wutbar" id="wutbar"></a>
 
 [docs](rune/wut.md#wutbar) \\|
 
@@ -251,11 +251,11 @@ Regular: `?|(p)`
 
 Irregular: `|(p)`
 
-## `^` ket (cast) {#ket-cast}
+## `^` ket (cast) <a href="#ket-cast" id="ket-cast"></a>
 
 Lets us adjust types without violating type constraints.
 
-### `^:` ketcol {#ketcol}
+### `^:` ketcol <a href="#ketcol" id="ketcol"></a>
 
 [docs](rune/ket.md#ketcol) \\,
 
@@ -265,7 +265,7 @@ Regular: `^:(p)`
 
 Irregular: `,p`
 
-### `^-` kethep {#kethep}
+### `^-` kethep <a href="#kethep" id="kethep"></a>
 
 [docs](rune/ket.md#kethep) \\\`
 
@@ -275,7 +275,7 @@ Regular: `^-(p q)`
 
 Irregular: `` `p`q ``
 
-### `^*` kettar {#kettar}
+### `^*` kettar <a href="#kettar" id="kettar"></a>
 
 [docs](rune/ket.md#kettar) \\\*
 
@@ -285,7 +285,7 @@ Regular: `^*(p)`
 
 Irregular: `*p`
 
-### `^=` kettis {#kettis}
+### `^=` kettis <a href="#kettis" id="kettis"></a>
 
 [docs](rune/ket.md#kettis) \\=
 
@@ -295,46 +295,46 @@ Regular: `^=(p q)`
 
 Irregular: `p=q`
 
-## Miscellaneous {#miscellaneous}
+## Miscellaneous <a href="#miscellaneous" id="miscellaneous"></a>
 
-### Trivial molds {#trivial-molds}
+### Trivial molds <a href="#trivial-molds" id="trivial-molds"></a>
 
-\\\*\\@\\^\\?\\~
+\\\*\\@\\^\\?\\\~
 
-- `*` noun.
-- `@` atom.
-- `^` cell.
-- `?` loobean.
-- `~` null.
+* `*` noun.
+* `@` atom.
+* `^` cell.
+* `?` loobean.
+* `~` null.
 
-### Values {#values}
+### Values <a href="#values" id="values"></a>
 
-\\~\\&\\|\\%
+\\\~\\&\\|\\%
 
-- `~` null.
-- `&` loobean true.
-- `|` loobean false.
-- `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
+* `~` null.
+* `&` loobean true.
+* `|` loobean false.
+* `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
 
 See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
-### List addressing {#list-addressing}
+### List addressing <a href="#list-addressing" id="list-addressing"></a>
 
 \\&\\|
 
-- `&n` *n*th element of a list.
-- `|n` tail of list after *n*th element (i.e. _n_ is the head).
+* `&n` _&#x6E;_&#x74;h element of a list.
+* `|n` tail of list after _&#x6E;_&#x74;h element (i.e. _n_ is the head).
 
-### Limbs {#limbs}
+### Limbs <a href="#limbs" id="limbs"></a>
 
 [docs](limbs/limb.md) \\+\\.\\^\\-
 
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
-- `+15` is slot 15
-- `.` is the whole subject (slot 1)
-- `^a` is the `.a` "of a higher scope", i.e. "resolve variable `a`, ignoring the first one found".
-- `^^p` even higher, and so on.
+* `+15` is slot 15
+* `.` is the whole subject (slot 1)
+* `^a` is the `.a` "of a higher scope", i.e. "resolve variable `a`, ignoring the first one found".
+* `^^p` even higher, and so on.
 
 'Lark' syntax for slots / tree addressing:
 
@@ -350,7 +350,7 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 ...
 ```
 
-### Wings {#wings}
+### Wings <a href="#wings" id="wings"></a>
 
 [docs](limbs/wing.md) \\.
 
@@ -358,28 +358,27 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 `a.b` finds limb `.a` within limb `.b` ("variable" `.a` within "variable" `.b`).
 
-### Printing stuff {#printing-stuff}
+### Printing stuff <a href="#printing-stuff" id="printing-stuff"></a>
 
-\\\<\\\>
+\\<\\>
 
-- `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than one item), formatted in pretty-print.
+*   `>a b c<` produces a [tank](stdlib/2q.md#tank) of the output of the contents (wrapped in cell if more than one item), formatted in pretty-print.
 
-  ```hoon
-  > >1 2 3<
-  [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
-  ```
+    ```hoon
+    > >1 2 3<
+    [%rose p=[p=" " q="[" r="]"] q=~[[%leaf p="1"] [%leaf p="2"] [%leaf p="3"]]]
+    ```
+*   `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (i.e. `<1 2 3>` is same as `~(ram re >1 2 3<)`).
 
-- `<a b c>` produces a [tape](stdlib/2q.md#tape) of the tank above (i.e. `<1 2 3>` is same as `~(ram re >1 2 3<)`).
+    ```hoon
+    > <1 2 3>
+    "[1 2 3]"
 
-  ```hoon
-  > <1 2 3>
-  "[1 2 3]"
+    > <`(list @)`~[1 2 3]>
+    "~[1 2 3]"
+    ```
 
-  > <`(list @)`~[1 2 3]>
-  "~[1 2 3]"
-  ```
-
-### `,` com {#com}
+### `,` com <a href="#com" id="com"></a>
 
 `,` can serve in several capacities in Hoon programs:
 
@@ -415,7 +414,7 @@ Sugar for the `^:` ketcol or `$;` bucmic runes, toggling structure and value mod
 ]
 ```
 
-(`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold.  Concretely, it lets you build a mold out of `$hoon` instead of out of `$spec`.  It is not commonly used.)
+(`$;` bucmic, or manual value mode, allows the use of value mode syntax to construct a mold. Concretely, it lets you build a mold out of `$hoon` instead of out of `$spec`. It is not commonly used.)
 
 From value mode to structure mode:
 
@@ -458,4 +457,3 @@ For example, between pairs in an inline `%=` centis expression.
 ```hoon
 $(i +(i), j (dec j))
 ```
-

@@ -1,7 +1,12 @@
 # Clay
 
-Our filesystem.
+Clay is Arvo's filesystem.
 
-`%clay` is version-controlled, referentially-transparent, and global. While this filesystem is stored in `%clay`, it is mirrored to Unix for convenience. Unix tells `%clay` whenever a file changes in the Unix copy of the filesystem so that the change may be applied. `%clay` tells unix whenever an app or vane changes the filesystem so that the change can be effected in Unix. Apps and vanes may use `%clay` to write to the filesystem, query it, and subscribe to changes in it. Ford and gall use `%clay` to serve up apps and web pages.
+Clay is version-controlled, referentially-transparent, and global.
 
-`%clay` includes three components. First is the filesystem/version control algorithms, which are mostly defined in `++ze` and `++zu` in zuse. Second is the write, query, and subscription logic. Finally, there is the logic for communicating requests to, and receiving requests from, foreign ships.
+While this filesystem is stored in the Clay module, it can be mirrored to Unix for convenience. Unix tells Clay whenever a file changes in the Unix copy of the filesystem so that the change may be applied. Clay tells Unix whenever an app or vane changes the filesystem so that the change can be effected in Unix.
+
+Clay includes three components:
+- Filesystem and version control algorithms, which are mostly defined in `+ze` and `+zu` in [Zuse](../../../glossary/zuse.md).
+- Write, query, and subscription logic.
+- Logic for communicating requests to, and receiving requests from, foreign ships.

@@ -24,7 +24,7 @@ Hoon expressions can be either basic or complex. Basic expressions of Hoon are f
 
 The Urbit operating system hews to a conceptual model wherein each expression takes place in a certain context (the [subject](../../glossary/subject.md)). While sharing a lot of practicality with other programming paradigms and platforms, Urbit's model is mathematically well-defined and unambiguously specified. Every expression of Hoon is evaluated relative to its subject, a piece of data that represents the environment, or the context, of an expression.
 
-At its root, Urbit is completely specified by [Nock](../../glossary/nock.md), sort of a machine language for the Urbit virtual machine layer and event log. However, Nock code is basically unreadable (and unwriteable) for a human. [One worked example](../../nock/examples/decrement.md) yields, for decrementing a value by one, the Nock formula:
+At its root, Urbit is completely specified by [Nock](../../glossary/nock.md), sort of a machine language for the Urbit virtual machine layer and event log. However, Nock code is basically unreadable (and unwriteable) for a human. [One worked example](../../nock/decrement.md) yields, for decrementing a value by one, the Nock formula:
 
 ```hoon
 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1]

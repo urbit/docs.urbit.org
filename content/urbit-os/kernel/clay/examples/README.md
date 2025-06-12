@@ -1,5 +1,3 @@
 # Examples
 
-### [Examples](examples.md) {#examplesexamplesmd}
-
-Example usage of the various Clay `task`s.
+- [Examples](examples.md) - Example usage of the various Clay `task`s.

@@ -352,4 +352,4 @@ See the [Scrying](../guides/guide.md#scrying) section of the [Guide](../guides/g
 
 ## Spider {#spider}
 
-See the [HTTP API](../../../../userspace/threads/guides/http-api.md) section of the [Threads](../../../../userspace/threads) documentation.
+See the [HTTP API](../../../base/threads/guides/http-api.md) section of the [Threads](../../../base/threads) documentation.

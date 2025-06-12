@@ -4,11 +4,11 @@ _This module will discuss how text is represented in Hoon, discuss tools for pro
 
 ## Text in Hoon <a href="#text-in-hoon" id="text-in-hoon"></a>
 
-We've incidentally used `'messages written as cords'` and `"as tapes"`, but aside from taking a brief look at how [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) work with tree addressing, we haven't discussed why these differ or how text works more broadly.
+We've incidentally used `'messages written as cords'` and `"as tapes"`, but aside from taking a brief look at how lists (and thus tapes) work with tree addressing, we haven't discussed why these differ or how text works more broadly.
 
 There are four basic ways to represent text in Urbit:
 
-* `@t`, a [cord](../../glossary/cord.md), which is an [atom](../../glossary/atom.md) (single value)
+* `@t`, a cord, which is an atom (single value)
 * `@ta`, a `$knot` used for URL-safe path elements, which is an atom (single value)
 * `@tas`, a `$term` used primarily for constants, which is an atom (single value)
 * `$tape`, which is a `(list @t)`
@@ -28,7 +28,7 @@ One way to handle text is to assign a code value to each letter, then represent 
 A   S   C   I   I
 ```
 
-A [cord](../../glossary/cord.md) simply shunts these values together in one-byte-wide slots and represents them as an integer.
+A cord simply shunts these values together in one-byte-wide slots and represents them as an integer.
 
 ```hoon
 > 'this is a cord'
@@ -38,7 +38,7 @@ A [cord](../../glossary/cord.md) simply shunts these values together in one-byte
 2.037.307.443.564.446.887.986.503.990.470.772
 ```
 
-It's very helpful to use the `@ux` [aura](../../glossary/aura.md) if you are trying to see the internal structure of a `$cord`. Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
+It's very helpful to use the `@ux` aura if you are trying to see the internal structure of a `$cord`. Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
 
 ```hoon
 > `@ux`'HELLO'
@@ -64,13 +64,13 @@ Special characters (non-ASCII, beyond the standard keyboard, basically) are repr
 
 ### `(list @t)` `$tape` <a href="#list-t-tape" id="list-t-tape"></a>
 
-There are some tools to work with atom `$cord`s of text, but most of the time it is more convenient to unpack the atom into a [tape](../../glossary/tape.md). A `$tape` splits out the individual characters from a `$cord` into a `+list` of character values.
+There are some tools to work with atom `$cord`s of text, but most of the time it is more convenient to unpack the atom into a tape. A `$tape` splits out the individual characters from a `$cord` into a `+list` of character values.
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
 We've hinted a bit at the structure of `+list`s before; for now the main thing you need to know is that they are cells which end in a `~` sig. So rather than have all of the text values stored sequentially in a single atom, they are stored sequentially in a rightwards-branching binary tree of cells.
 
-A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at the end of the [aura](../../glossary/aura.md) hints that the `@t` values are D→3 so 2³=8 bits wide.)
+A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at the end of the aura hints that the `@t` values are D→3 so 2³=8 bits wide.)
 
 ```hoon
 > "this is a tape"
@@ -80,7 +80,7 @@ A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at
 ~[116 104 105 115 32 105 115 32 97 32 116 97 112 101]
 ```
 
-Since a [tape](../../glossary/tape.md) is a `(list @tD)`, all of the `+list` tools we have seen before work on them.
+Since a tape is a `(list @tD)`, all of the `+list` tools we have seen before work on them.
 
 ### `@ta` `$knot` <a href="#ta-knot" id="ta-knot"></a>
 
@@ -132,7 +132,7 @@ For instance, imagine creating a function to ensure that only a certain [classic
 --
 ```
 
-(See how that `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) works with the helper [core?](../../glossary/core.md))
+(See how that `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) works with the helper core?)
 
 ## Text Operations <a href="#text-operations" id="text-operations"></a>
 
@@ -257,7 +257,7 @@ There is a built-in `+lent` function that counts the number of characters in a `
 
 You may find the `?~` [wutsig](../../hoon/reference/rune/wut.md#wutsig) rune to be helpful. It tells you whether a value is `~` or not. (How would you do this with a regular `?:` [wutcol](../../hoon/reference/rune/wut.md#wutcol)?)
 
-The foregoing are [`+list`](../../glossary/list.md) operations. The following, in contrast, are [`$tape`](../../glossary/tape.md)-specific operations:
+The foregoing are `+list` operations. The following, in contrast, are `$tape`-specific operations:
 
 The [`+crip`](../../hoon/reference/stdlib/4b.md#crip) function converts a `$tape` to a `$cord` (`$tape`→`$cord`).
 
@@ -321,7 +321,7 @@ Hoon has a sophisticated parser built into it that [we'll use later](./P-stdlib-
 
 Hoon has a very powerful text parsing engine, built to compile Hoon itself. However, it tends to be quite obscure to new learners. We can build a simple one using `+list` tools.
 
-Compose a [gate](../../glossary/gate.md) which parses a long `$tape` into smaller `$tape`s by splitting the text at single spaces. For example, given a `$tape`
+Compose a gate which parses a long `$tape` into smaller `$tape`s by splitting the text at single spaces. For example, given a `$tape`
 
 ```hoon
 "the sky above the port was the color of television tuned to a dead channel"
@@ -421,8 +421,8 @@ Since a `@tas` cannot include a space, this is formally incorrect, as `+sane` re
 
 Let's take some of the code we've built above for processing text and turn them into a library we can use in another generator.
 
-* Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` [desk](../../glossary/desk.md) of your fakeship and commit.
-* Produce a generator `/gen/text-user.hoon` which accepts a [tape](../../glossary/tape.md) and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
+* Take the space-breaking code and the element-counting code gates from above and include them in a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core. Save this file as `/lib/text.hoon` in the `%base` desk of your fakeship and commit.
+* Produce a generator `/gen/text-user.hoon` which accepts a tape and returns the number of words in the text (separated by spaces). (How would you obtain this from those two operations?)
 
 ## Logging <a href="#logging" id="logging"></a>
 
@@ -461,13 +461,13 @@ You can use these to differentiate messages when debugging or otherwise auditing
 
 ## `%say` Generators <a href="#say-generators" id="say-generators"></a>
 
-A naked [generator](../../glossary/generator.md) is merely a [gate](../../glossary/gate.md): a [core](../../glossary/core.md) with a `$` arm that Dojo knows to call. However, we can also invoke a generator which is a cell of a metadata tag and a core. The next level-up for our generator skills is the `%say` generator, a cell of `[%say core]` that affords slightly more sophisticated evaluation.
+A naked generator is merely a gate: a core with a `$` arm that Dojo knows to call. However, we can also invoke a generator which is a cell of a metadata tag and a core. The next level-up for our generator skills is the `%say` generator, a cell of `[%say core]` that affords slightly more sophisticated evaluation.
 
-We use `%say` generators when we want to provide something else in [Arvo](../../glossary/arvo.md), the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
+We use `%say` generators when we want to provide something else in Arvo, the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
 
-To that end, `%say` generators use `$mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A [mark](../../glossary/mark.md) is akin to a MIME type on the Arvo level. A `$mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `$mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
+To that end, `%say` generators use `$mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A mark is akin to a MIME type on the Arvo level. A `$mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`. `$mark`s are not specific to `%say` generators; whenever data moves between programs in Arvo, that data is marked.
 
-So, more formally, a `%say` generator is a [cell](../../glossary/cell.md). The head of that cell is the `%say` tag, and the tail is a `$gate` that produces a `+cask` -- a pair of the output data and the `$mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
+So, more formally, a `%say` generator is a cell. The head of that cell is the `%say` tag, and the tail is a `$gate` that produces a `+cask` -- a pair of the output data and the `$mark` describing that data. -- Save this example as `add.hoon` in the `/gen` directory of your `%base` desk:
 
 ```hoon
 :-  %say
@@ -502,7 +502,7 @@ The expression above creates a cell with `%say` as the head. The tail is the `|=
 (add 40 2)
 ```
 
-`|= *` constructs a [gate](../../glossary/gate.md) that takes a noun. This `$gate` will itself produce a `+cask`, which is cell formed by the prepending `:-`. The head of that `+cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `+cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
+`|= *` constructs a gate that takes a noun. This `$gate` will itself produce a `+cask`, which is cell formed by the prepending `:-`. The head of that `+cask` is `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the `+cask` will be our actual data produced by the body of the program: in this case, just adding 40 and 2 together.
 
 A `%say` generator has access to values besides those passed into it and the Hoon standard subject. Namely, a `%say` generator knows about `.our`, `.eny`, and `.now`, as well as the current desk:
 
@@ -517,11 +517,11 @@ These values can be stubbed out with `*` or `^` if they are not needed in a part
 
 We can modify the boilerplate code to allow arguments to be passed into a `%say` generator, but in a way that gives us more power than we would have if we just used a naked generator.
 
-Naked generators are limited because they have no way of accessing data that exists in Arvo, such as the date and time or pieces of fresh entropy. In `%say` generators, however, we can access that kind of [subject](../../glossary/subject.md) by identifying them in the gate's sample, which we only specified as `*` in the previous few examples. But we can do more with `%say` generators if we do more with that sample. Any valid sample will follow this 3-tuple scheme:
+Naked generators are limited because they have no way of accessing data that exists in Arvo, such as the date and time or pieces of fresh entropy. In `%say` generators, however, we can access that kind of subject by identifying them in the gate's sample, which we only specified as `*` in the previous few examples. But we can do more with `%say` generators if we do more with that sample. Any valid sample will follow this 3-tuple scheme:
 
 `[[now=@da eny=@uvJ bec=beak] [list of unnamed arguments] [list of named arguments]]`
 
-This entire structure is a [noun](../../glossary/noun.md), which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
+This entire structure is a noun, which is why `*` is a valid sample if we wish to not use any of the information here in a generator. But let's look at each of these three elements, piece by piece.
 
 ## Exercise: The Magic 8-Ball <a href="#exercise-the-magic-8-ball" id="exercise-the-magic-8-ball"></a>
 

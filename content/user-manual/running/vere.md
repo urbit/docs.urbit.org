@@ -1,6 +1,6 @@
 # Runtime Reference
 
-The Urbit runtime is named [Vere](../../glossary/vere.md). It's the binary executable you use to run your ship. Vere manages your ship's [pier](../../glossary/pier.md), handles events, and runs the Nock virtual machine that performs your ship's computations.
+The Urbit runtime is named Vere. It's the binary executable you use to run your ship. Vere manages your ship's pier, handles events, and runs the Nock virtual machine that performs your ship's computations.
 
 Before version 1.9, Vere was split into two separate binaries: The `urbit` "king"/"urth" responsible for I/O and event persistence, and the `urbit-worker` "serf"/"mars" responsible for computations and state persistence. As of version 1.9, these have been merged into a single binary, though under the hood there's still two separate processes. The alternative king written in Haskell, `urbit-king`, has also been deprecated, so there's now only one binary.
 

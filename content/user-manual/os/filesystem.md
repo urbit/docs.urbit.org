@@ -10,7 +10,7 @@ For more information on Clay, see the [Overview](../../urbit-os/kernel/clay), an
 
 This quick-start guide will walk you through some common commands. Follow along using your Dojo. When you get a `>=` message after entering a command, this means that the command was successful.
 
-A [`desk`](../../glossary/desk.md) is something like an independently revision-controlled branch of your urbit's file-system. Your urbit's system files live in the `%base` desk.
+A `desk` is something like an independently revision-controlled branch of your urbit's file-system. Your urbit's system files live in the `%base` desk.
 
 It's important to note that whenever you want to sync changes from your Unix directory to your ship, you must use the `|commit %desk` command, where `%desk` is the `desk` that you'd like to sync to.
 

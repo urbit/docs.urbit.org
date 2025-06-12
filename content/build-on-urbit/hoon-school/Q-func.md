@@ -2,9 +2,9 @@
 
 _This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools._
 
-Given a [gate](../../glossary/gate.md), you can manipulate it to accept a different number of values than its sample formally requires, or otherwise modify its behavior. These techniques mirror some of the common tasks used in other [functional programming languages](https://en.wikipedia.org/wiki/Functional_programming) like Haskell, Clojure, and OCaml.
+Given a gate, you can manipulate it to accept a different number of values than its sample formally requires, or otherwise modify its behavior. These techniques mirror some of the common tasks used in other [functional programming languages](https://en.wikipedia.org/wiki/Functional_programming) like Haskell, Clojure, and OCaml.
 
-Functional programming, as a paradigm, tends to prefer rather mathematical expressions with explicit modification of function behavior. It works as a formal system of symbolic expressions manipulated according to given rules and properties. FP was derived from the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus), a cousin of combinator calculi like [Nock](../../glossary/nock.md). (See also [APL](https://en.wikipedia.org/wiki/APL_%28programming_language%29).)
+Functional programming, as a paradigm, tends to prefer rather mathematical expressions with explicit modification of function behavior. It works as a formal system of symbolic expressions manipulated according to given rules and properties. FP was derived from the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus), a cousin of combinator calculi like Nock. (See also [APL](https://en.wikipedia.org/wiki/APL_%28programming_language%29).)
 
 ## Changing Arity {#changing-arity}
 
@@ -31,7 +31,7 @@ This is called changing the [_arity_](https://en.wikipedia.org/wiki/Arity) of th
 
 ["Currying"](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. "Binding", an allied process, is used to set the value of some of those arguments permanently.
 
-If you have a [gate](../../glossary/gate.md) which accepts multiple values in the [sample](../../glossary/sample.md), you can fix one of these. To fix the head of the sample (the first argument), use [`+cury`](../../hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`+curr`](../../hoon/reference/stdlib/2n.md#curr).
+If you have a gate which accepts multiple values in the sample, you can fix one of these. To fix the head of the sample (the first argument), use [`+cury`](../../hoon/reference/stdlib/2n.md#cury); to bind the tail, use [`+curr`](../../hoon/reference/stdlib/2n.md#curr).
 
 Consider calculating _a x² + b x + c_, a situation we earlier resolved using a door. We can resolve the situation differently using currying:
 
@@ -60,17 +60,17 @@ One can also [`+cork`](../../hoon/reference/stdlib/2n.md#cork) a gate, or arrang
 
 ### Exercise: Chain Gate Values {#exercise-chain-gate-values}
 
-- Write an expression which yields the parent [galaxy](../../glossary/galaxy.md) of a [planet's](../../glossary/planet.md) sponsoring [star](../../glossary/star.md) by composing two gates.
+- Write an expression which yields the parent galaxy of a planet's sponsoring star by composing two gates.
 
 ## Working Across `+list`s {#working-across-lists}
 
-The [`+turn`](../../hoon/reference/stdlib/2b.md#turn) function takes a list and a [gate](../../glossary/gate.md), and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of [atoms](../../glossary/atom.md):
+The [`+turn`](../../hoon/reference/stdlib/2b.md#turn) function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add 1 to each item in a list of atoms:
 
 ```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
 ~[12 23 34 45]
 ```
-Or to double each item in a [list](../../glossary/list.md) of atoms:
+Or to double each item in a list of atoms:
 
 ```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))
@@ -98,7 +98,7 @@ We can rewrite the Caesar cipher program using turn:
 c
 ```
 
-[`+roll`](../../hoon/reference/stdlib/2b.md#roll) and [`+reel`](../../hoon/reference/stdlib/2b.md#reel) are used to left-fold and right-fold a [list](../../glossary/list.md), respectively. To fold a list is similar to [`+turn`](../../hoon/reference/stdlib/2b.md#turn), except that instead of yielding a `+list` with the values having had each applied, `+roll` and `+reel` produce an accumulated value.
+[`+roll`](../../hoon/reference/stdlib/2b.md#roll) and [`+reel`](../../hoon/reference/stdlib/2b.md#reel) are used to left-fold and right-fold a list, respectively. To fold a list is similar to [`+turn`](../../hoon/reference/stdlib/2b.md#turn), except that instead of yielding a `+list` with the values having had each applied, `+roll` and `+reel` produce an accumulated value.
 
 ```hoon
 > (roll `(list @)`[1 2 3 4 5 ~] add)
@@ -110,15 +110,15 @@ c
 
 ### Exercise: Calculate a Factorial {#exercise-calculate-a-factorial}
 
-Use `+reel` to produce a [gate](../../glossary/gate.md) which calculates the factorial of a number.
+Use `+reel` to produce a gate which calculates the factorial of a number.
 
 
 ## Classic Operations {#classic-operations}
 
 Functional programmers frequently rely on three design patterns to produce operations on collections of data:
 
-1. Map. The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `+list` or `+set`. The standard library arms that accomplish this include [`+turn`](../../hoon/reference/stdlib/2b.md#turn) for a [list](../../glossary/list.md), [+run:in](../../hoon/reference/stdlib/2h.md#repin) for a [set](../../hoon/reference/stdlib/2o.md#set), and [+run:by](../../hoon/reference/stdlib/2i.md#runby) for a [map](../../hoon/reference/stdlib/2o.md#map).
+1. Map. The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `+list` or `+set`. The standard library arms that accomplish this include [`+turn`](../../hoon/reference/stdlib/2b.md#turn) for a list, [+run:in](../../hoon/reference/stdlib/2h.md#repin) for a [set](../../hoon/reference/stdlib/2o.md#set), and [+run:by](../../hoon/reference/stdlib/2i.md#runby) for a [map](../../hoon/reference/stdlib/2o.md#map).
 
-2. Reduce. The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library [arms](../../glossary/arm.md) that accomplish this are [`+roll`](../../hoon/reference/stdlib/2b.md#roll) and [`+reel`](../../hoon/reference/stdlib/2b.md#reel) for a [list](../../glossary/list.md), [+rep:in](../../hoon/reference/stdlib/2h.md#repin) for a [set](../../hoon/reference/stdlib/2o.md#set), and [+rep:by](../../hoon/reference/stdlib/2i.md#repby) for a [map](../../hoon/reference/stdlib/2o.md#map).
+2. Reduce. The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`+roll`](../../hoon/reference/stdlib/2b.md#roll) and [`+reel`](../../hoon/reference/stdlib/2b.md#reel) for a list, [+rep:in](../../hoon/reference/stdlib/2h.md#repin) for a [set](../../hoon/reference/stdlib/2o.md#set), and [+rep:by](../../hoon/reference/stdlib/2i.md#repby) for a [map](../../hoon/reference/stdlib/2o.md#map).
 
-3. Filter. The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`+skim`](../../hoon/reference/stdlib/2b.md#skim), [`+skid`](../../hoon/reference/stdlib/2b.md#skid), [`+murn`](../../hoon/reference/stdlib/2b.md#murn) for a [list](../../glossary/list.md), and [+rib:by](../../hoon/reference/stdlib/2i.md#ribby) for a [map](../../hoon/reference/stdlib/2o.md#map).
+3. Filter. The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`+skim`](../../hoon/reference/stdlib/2b.md#skim), [`+skid`](../../hoon/reference/stdlib/2b.md#skid), [`+murn`](../../hoon/reference/stdlib/2b.md#murn) for a list, and [+rib:by](../../hoon/reference/stdlib/2i.md#ribby) for a [map](../../hoon/reference/stdlib/2o.md#map).

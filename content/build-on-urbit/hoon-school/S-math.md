@@ -65,9 +65,9 @@ Hoon utilizes the [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) implementat
 | `@rd` | Double-precision 64-bit mathematics     | `.~4.5`   |
 | `@rq` | Quadruple-precision 128-bit mathematics | `.~~~4.5` |
 
-There are also a few [molds](../../glossary/mold.md) which can represent the separate values of the FP representation. These are used internally but mostly don't appear in userspace code.
+There are also a few molds which can represent the separate values of the FP representation. These are used internally but mostly don't appear in userspace code.
 
-As the [arms](../../glossary/arm.md) for the four `@r` auras are identical within their appropriate core, we will use [`@rs` single-precision floating-point mathematics](../../hoon/reference/stdlib/3b.md#rs) to demonstrate all operations.
+As the arms for the four `@r` auras are identical within their appropriate core, we will use [`@rs` single-precision floating-point mathematics](../../hoon/reference/stdlib/3b.md#rs) to demonstrate all operations.
 
 #### Conversion to and from other auras
 
@@ -121,7 +121,7 @@ It's up to you to decide how to handle this result, however! Perhaps a better op
 
 ### Floating-point specific operations <a href="#floating-point-specific-operations" id="floating-point-specific-operations"></a>
 
-As with [aura](../../glossary/aura.md) conversion, the standard mathematical operators don't work for `@rs`:
+As with aura conversion, the standard mathematical operators don't work for `@rs`:
 
 ```hoon
 > (add .1 1)
@@ -153,7 +153,7 @@ This includes:
 
 ### Exercise: `+is-close` <a href="#exercise-is-close" id="exercise-is-close"></a>
 
-The [+equ:rs](../../hoon/reference/stdlib/3b.md#equrs) arm checks for complete equality of two values. The downside of this [arm](../../glossary/arm.md) is that it doesn't find very close values:
+The [+equ:rs](../../hoon/reference/stdlib/3b.md#equrs) arm checks for complete equality of two values. The downside of this arm is that it doesn't find very close values:
 
 ```hoon
 > (equ:rs .1 .1)
@@ -171,7 +171,7 @@ $$
 
 #### Tutorial: Length Converter
 
-* Write a [generator](../../glossary/generator.md) to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement. For instance, this generator could convert a number of imperial feet to metric decameters.
+* Write a generator to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement. For instance, this generator could convert a number of imperial feet to metric decameters.
 
 **`/gen/convert-length.hoon`**
 
@@ -257,8 +257,8 @@ This program shows several interesting aspects, which we've covered before but h
 
 ### Exercise: Measurement Converter <a href="#exercise-measurement-converter" id="exercise-measurement-converter"></a>
 
-* Add to this [generator](../../glossary/generator.md) the ability to convert some other measurement (volume, mass, force, or another of your choosing).
-* Add an argument to the [cell](../../glossary/cell.md) required by the [gate](../../glossary/gate.md) that indicates whether the measurements are distance or your new measurement.
+* Add to this generator the ability to convert some other measurement (volume, mass, force, or another of your choosing).
+* Add an argument to the cell required by the gate that indicates whether the measurements are distance or your new measurement.
 * Enforce strictly that the `fr-meas` and `to-meas` values are either lengths or your new type.
 * Create a new map of conversion values to handle your new measurement conversion method.
 * Convert the functionality into a library.
@@ -272,14 +272,14 @@ What is `+rs`? It's a door with 21 arms:
 <21|ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>
 ```
 
-The [battery](../../glossary/battery.md) of this [core](../../glossary/core.md), pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `+add`; it's a different `+add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [add:rs](../../hoon/reference/stdlib/3b.md#addrs) instead of just `+add` in a function call, (1) the `.rs` door is produced, and then (2) the name search for `+add` resolves to the special `+add` [arm](../../glossary/arm.md) in `.rs`. This produces the [gate](../../glossary/gate.md) for adding `@rs` atoms:
+The battery of this core, pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `+add`; it's a different `+add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [add:rs](../../hoon/reference/stdlib/3b.md#addrs) instead of just `+add` in a function call, (1) the `.rs` door is produced, and then (2) the name search for `+add` resolves to the special `+add` arm in `.rs`. This produces the gate for adding `@rs` atoms:
 
 ```hoon
 > add:rs
 <1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
-What about the sample of the `.rs` [door](../../glossary/door.md)? The pretty-printer shows `r=?(%d %n %u %z)`. The [rs](../../hoon/reference/stdlib/3b.md#rs) sample can take one of four values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four options for how to round `@rs` numbers:
+What about the sample of the `.rs` door? The pretty-printer shows `r=?(%d %n %u %z)`. The [rs](../../hoon/reference/stdlib/3b.md#rs) sample can take one of four values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four options for how to round `@rs` numbers:
 
 * `%d` rounds down
 * `%n` rounds to the nearest value
@@ -288,21 +288,21 @@ What about the sample of the `.rs` [door](../../glossary/door.md)? The pretty-pr
 
 The default value is `%z`, round to zero. When we invoke `+add:rs` to call the addition function, there is no way to modify the `.rs` door sample, so the default rounding option is used. How do we change it? We use the `~( )` notation: `~(arm door arg)`.
 
-Let's evaluate the `+add` [arm](../../glossary/arm.md) of `.rs`, also modifying the door [sample](../../glossary/sample.md) to `%u` for 'round up':
+Let's evaluate the `+add` arm of `.rs`, also modifying the door sample to `%u` for 'round up':
 
 ```hoon
 > ~(add rs %u)
 <1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
-This is the gate produced by `+add`, and you can see that its sample is a pair of `@rs` atoms. But if you look in the context you'll see the [rs](../../hoon/reference/stdlib/3b.md#rs) door. Let's look in the sample of that [core](../../glossary/core.md) to make sure that it changed to `%u`. We'll use the wing `+6.+7` to look at the sample of the [gate's](../../glossary/gate.md) context:
+This is the gate produced by `+add`, and you can see that its sample is a pair of `@rs` atoms. But if you look in the context you'll see the [rs](../../hoon/reference/stdlib/3b.md#rs) door. Let's look in the sample of that core to make sure that it changed to `%u`. We'll use the wing `+6.+7` to look at the sample of the gate's context:
 
 ```hoon
 > +6.+7:~(add rs %u)
 r=%u
 ```
 
-It did indeed change. We also see that the door [sample](../../glossary/sample.md) uses the [face](../../glossary/face.md) `.r`, so let's use that instead of the unwieldy `+6.+7`:
+It did indeed change. We also see that the door sample uses the face `.r`, so let's use that instead of the unwieldy `+6.+7`:
 
 ```hoon
 > r:~(add rs %u)
@@ -328,7 +328,7 @@ Let's see the rounding differences in action. Because `~(add rs %u)` produces a 
 
 This difference between rounding up and rounding down might seem strange at first. There is a difference of 0.0000003 between the two answers. Why does this gap exist? Single-precision floats are 32-bit and there's only so many distinctions that can be made in floats before you run out of bits.
 
-Just as there is a [door](../../glossary/door.md) for `@rs` functions, there is a Hoon standard library door for `@rd` functions (double-precision 64-bit floats), another for `@rq` functions (quad-precision 128-bit floats), and one more for `@rh` functions (half-precision 16-bit floats).
+Just as there is a door for `@rs` functions, there is a Hoon standard library door for `@rd` functions (double-precision 64-bit floats), another for `@rq` functions (quad-precision 128-bit floats), and one more for `@rh` functions (half-precision 16-bit floats).
 
 ## Signed Integer Mathematics <a href="#signed-integer-mathematics" id="signed-integer-mathematics"></a>
 
@@ -343,7 +343,7 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 
 ### Hoon Operations <a href="#hoon-operations" id="hoon-operations"></a>
 
-`@u`-[aura](../../glossary/aura.md) atoms are _unsigned_ values, but there is a complete set of _signed_ auras in the `@s` series. ZigZag was chosen for Hoon's signed integer representation because it represents negative values with small absolute magnitude as short binary terms.
+`@u`-aura atoms are _unsigned_ values, but there is a complete set of _signed_ auras in the `@s` series. ZigZag was chosen for Hoon's signed integer representation because it represents negative values with small absolute magnitude as short binary terms.
 
 | Aura  | Meaning            | Example                   |
 | ----- | ------------------ | ------------------------- |
@@ -400,7 +400,7 @@ To convert a floating-point value from number (atom) to text, use[`+scow`](../..
 
 ### Beyond Arithmetic <a href="#beyond-arithmetic" id="beyond-arithmetic"></a>
 
-The Hoon standard library at the current time omits many [transcendental functions](https://en.wikipedia.org/wiki/Transcendental_function), such as the trigonometric functions. It is useful to implement pure-Hoon versions of these, although they are not as efficient as [jetted](../../glossary/jet.md) mathematical code would be.
+The Hoon standard library at the current time omits many [transcendental functions](https://en.wikipedia.org/wiki/Transcendental_function), such as the trigonometric functions. It is useful to implement pure-Hoon versions of these, although they are not as efficient as jetted mathematical code would be.
 
 Produce a version of `+factorial` which can operate on `@rs` inputs correctly.
 
@@ -473,7 +473,7 @@ F_n = \frac{\varphi^n - (-\varphi)^{-n}}{\sqrt 5}
 = \frac{\varphi^n - (-\varphi)^{-n}}{2 \varphi - 1}
 $$
 
-Implement this analytical formula for the Fibonacci series as a [gate](../../glossary/gate.md).
+Implement this analytical formula for the Fibonacci series as a gate.
 
 ## Date & Time Mathematics <a href="#date-time-mathematics" id="date-time-mathematics"></a>
 
@@ -489,7 +489,7 @@ Time values, often referred to as "timestamps", are commonly represented by the 
 
 A timestamp can be separated into the time portion, which is the relative offset within a given day, and the date portion, which represents the absolute day.
 
-There are two [molds](../../glossary/mold.md) to represent time in Hoon: the `@d` [aura](../../glossary/aura.md), with `@da` for a full timestamp and `@dr` for an offset; and the [$date](../../hoon/reference/stdlib/2q.md#date)/[$tarp](../../hoon/reference/stdlib/2q.md#tarp) structure:
+There are two molds to represent time in Hoon: the `@d` aura, with `@da` for a full timestamp and `@dr` for an offset; and the [$date](../../hoon/reference/stdlib/2q.md#date)/[$tarp](../../hoon/reference/stdlib/2q.md#tarp) structure:
 
 | Aura  | Meaning                    | Example                   |
 | ----- | -------------------------- | ------------------------- |
@@ -646,7 +646,7 @@ The `@q` aura is similar to `@p` except for two details: it doesn't obfuscate na
 .~nec-dozzod-dozzod-dozzod-dozzod-dozzod-dozzod-dozzod-dozzod
 ```
 
-`@q` [auras](../../glossary/aura.md) can be used as sequential mnemonic markers for values.
+`@q` auras can be used as sequential mnemonic markers for values.
 
 The [`+po`](../../hoon/reference/stdlib/4a.md#po) core contains tools for directly parsing `@q` atoms.
 
@@ -775,7 +775,7 @@ We use the LCG defined above, then chop out 23-bit slices using [`+rip`](../../h
 
 </details>
 
-Convert the above to a `%say` [generator](../../glossary/generator.md) that can optionally accept a seed; if no seed is provided, use `.eny`.
+Convert the above to a `%say` generator that can optionally accept a seed; if no seed is provided, use `.eny`.
 
 Produce a higher-quality Mersenne Twister uniform RNG, such as [per this method](https://xilinx.github.io/Vitis_Libraries/quantitative_finance/2022.1/guide_L1/RNGs/RNG.html).
 
@@ -932,7 +932,7 @@ Theoretically, since the number of fixed-length hashes are finite, an infinite n
 
 ### Hoon Operations <a href="#hoon-operations" id="hoon-operations"></a>
 
-The Hoon standard library supports fast insecure hashing with [`+mug`](../../hoon/reference/stdlib/2e.md#mug), which accepts any [noun](../../glossary/noun.md) and produces an atom of the hash.
+The Hoon standard library supports fast insecure hashing with [`+mug`](../../hoon/reference/stdlib/2e.md#mug), which accepts any noun and produces an atom of the hash.
 
 ```hoon
 > `@ux`(mug 1)
@@ -963,7 +963,7 @@ The Hoon standard library supports fast insecure hashing with [`+mug`](../../hoo
 
 Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [tooling](../../hoon/reference/stdlib/3d.md). ([`+og`](../../hoon/reference/stdlib/3d.md#og), the random number generator, is based on SHA-256 hashing.)
 
-[`+shax`](../../hoon/reference/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any [atom](../../glossary/atom.md).
+[`+shax`](../../hoon/reference/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any atom.
 
 ```hoon
 69.779.012.276.202.546.540.741.613.998.220.636.891.790.827.476.075.440.677.599.814.057.037.833.368.907

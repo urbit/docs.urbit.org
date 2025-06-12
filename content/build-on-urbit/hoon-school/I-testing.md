@@ -24,7 +24,7 @@ When you produce software, how much confidence do you have that it does what you
 
 In many languages, unit tests refer to functions, often prefixed "test", that specify (and enforce) the expected behavior of a given function. Unit tests typically contain setup, assertions, and tear-down. In academic terms, they’re a grading script.
 
-In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../user-manual/os/dojo-tools.md#test) [thread](../../glossary/thread.md):
+In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../user-manual/os/dojo-tools.md#test) thread:
 
 ```hoon
 > -test /=landscape=/tests ~  
@@ -49,7 +49,7 @@ OK      /lib/pull-hook-virt/test-kick-mule
 ok=%.y    
 ```
 
-(Depending on when you built your fakeship, particular tests may or may not be present. You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like. Regarding the example above (`%landscape` [desk](../../glossary/desk.md)), the tests are likely missing, so download them from [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you want to run them.)
+(Depending on when you built your fakeship, particular tests may or may not be present. You can download them from [the Urbit repo](https://github.com/urbit/urbit) and add them manually if you like. Regarding the example above (`%landscape` desk), the tests are likely missing, so download them from [here](https://github.com/urbit/urbit/tree/master/pkg/landscape) if you want to run them.)
 
 Hoon unit tests come in two categories:
 
@@ -139,9 +139,9 @@ In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, an
 ```
 {% endcode %}
 
-Test code deals in [vases](../../glossary/vase.md), which are produced by `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) as a [cell](../../glossary/cell.md) of the type of a value and the value.
+Test code deals in vases, which are produced by `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) as a cell of the type of a value and the value.
 
-`+expect-fail` by contrast take a `|.` [bardot](../../hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc [arm](../../glossary/arm.md) but hasn't been called yet) and verifies that the code within fails.
+`+expect-fail` by contrast take a `|.` [bardot](../../hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc arm but hasn't been called yet) and verifies that the code within fails.
 
 {% code title="/lib/test.hoon" %}
 ```hoon
@@ -183,7 +183,7 @@ As your code evaluates, the Arvo runtime maintains a stack trace, or list of the
 
 The `~_` [sigcab](../../hoon/reference/rune/sig.md#sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 
-The `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` [cord](../../glossary/cord.md). What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
+The `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord. What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
 ```hoon
 |=  a=@ud
@@ -191,7 +191,7 @@ The `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing pr
 !!
 ```
 
-The `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../hoon/reference/rune/fas.md) imports) of a [generator](../../glossary/generator.md) or library while developing.
+The `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../hoon/reference/rune/fas.md) imports) of a generator or library while developing.
 
 ```hoon
 > (sub 0 1)
@@ -204,7 +204,7 @@ subtract-underflow
 dojo: hoon expression failed
 ```
 
-When you compose your own library [cores](../../glossary/core.md), include error messages for likely failure modes.
+When you compose your own library cores, include error messages for likely failure modes.
 
 ## Test-Driven Development <a href="#test-driven-development" id="test-driven-development"></a>
 
@@ -270,7 +270,7 @@ Let’s enumerate the errors you are likely to have encountered by this point:
 
 ### nest-fail <a href="#nest-fail" id="nest-fail"></a>
 
-A [nest-fail](../../hoon/reference/hoon-errors.md#nest-fail) may be the most common. Likely you are using an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md) where the other is expected.
+A [nest-fail](../../hoon/reference/hoon-errors.md#nest-fail) may be the most common. Likely you are using an atom or a cell where the other is expected.
 
 ```hoon
 > (add 'a' 'b')
@@ -296,7 +296,7 @@ nest-fail
 dojo: hoon expression failed
 ```
 
-Conversion without casting via [auras](../../glossary/aura.md) fails because the atom types (auras) don't nest without explicit downcasting to `@`.
+Conversion without casting via auras fails because the atom types (auras) don't nest without explicit downcasting to `@`.
 
 ```hoon
 > `(list @ud)`~[0x0 0x1 0x2]
@@ -312,7 +312,7 @@ dojo: hoon expression failed
 
 ### fish-loop <a href="#fish-loop" id="fish-loop"></a>
 
-A "fish-loop" arises when using a recursive mold definition like [list](../../glossary/list.md). (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.) Alas, this fails today:
+A "fish-loop" arises when using a recursive mold definition like list. (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.) Alas, this fails today:
 
 ```hoon
 > ?=((list @) ~[1 2 3 4])
@@ -322,7 +322,7 @@ fish-loop
 
 ### generator-build-fail <a href="#generator-build-fail" id="generator-build-fail"></a>
 
-A "generator-build-fail" most commonly results from composing code with mismatched [runes](../../glossary/rune.md) (and thus the wrong children including hanging expected-but-empty slots).
+A "generator-build-fail" most commonly results from composing code with mismatched runes (and thus the wrong children including hanging expected-but-empty slots).
 
 Also check if you are using Windows-style line endings, as Unix-style line endings should be employed throughout Urbit.
 
@@ -330,7 +330,7 @@ Also check if you are using Windows-style line endings, as Unix-style line endin
 
 Another common mistake is to attempt to use the default `$` buc arm in something that doesn't have it. This typically happens for one of two reasons:
 
-`$.+2` means that `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep) or equivalent function call cannot locate a [battery](../../glossary/battery.md). This can occur when you try to use a non-gate as a [gate](../../glossary/gate.md). In particular, if you mask the name of a [mold](../../glossary/mold.md) (such as [list](../../glossary/list.md)), then a subsequent expression that requires the mold will experience this problem.
+`$.+2` means that `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep) or equivalent function call cannot locate a battery. This can occur when you try to use a non-gate as a gate. In particular, if you mask the name of a mold (such as list), then a subsequent expression that requires the mold will experience this problem.
 
 ```hoon
 > =/  list  ~[1 2 3]
@@ -339,7 +339,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 -find.$.+2
 ```
 
-Similarly, `-find.$` means the compiler is looking for a `$` buc [arm](../../glossary/arm.md) in something that _is_ a core but doesn't have the `$` buc arm present.
+Similarly, `-find.$` means the compiler is looking for a `$` buc arm in something that _is_ a core but doesn't have the `$` buc arm present.
 
 ```hoon
 > *tape
@@ -361,4 +361,4 @@ What are some strategies for debugging?
 * **Typecast.** Include `^` [ket](../../hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
 * **The only wolf in Alaska.** Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap).
 * **Build it again.** Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
-* **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of [Ames](../../glossary/ames.md) don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in [Gall](../../glossary/gall.md). You can also develop using a [moon](../../glossary/moon.md) if you want to.
+* **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of Ames don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in Gall. You can also develop using a moon if you want to.

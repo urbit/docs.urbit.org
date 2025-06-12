@@ -14,7 +14,7 @@ Think of your master ticket like a very high-value password. The master ticket i
 
 ## Ownership Address <a href="#ownership-address" id="ownership-address"></a>
 
-An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](../../glossary/ecliptic.md), Azimuth's suite of governing smart-contracts.
+An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in Ecliptic, Azimuth's suite of governing smart-contracts.
 
 ## Proxies <a href="#proxies" id="proxies"></a>
 

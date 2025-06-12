@@ -11,5 +11,5 @@ Guides and API documentation for the Urbit OS kernel, including Arvo and the var
 - [Gall](gall) - A framework for running state machines and third-party applications.
 - [Iris](iris) - HTTP client.
 - [Jael](jael) - Manages networking keys and Azimuth state.
-- [Khan](khan) - Thread dispatcher, the kernel's alternative to [spider](../../glossary/spider.md).
+- [Khan](khan) - Thread dispatcher, the kernel's alternative to spider.
 - [Lick](lick) - IPC module for communicating with processes on the host machine.

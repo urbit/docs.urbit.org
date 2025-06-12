@@ -1,13 +1,13 @@
 # EAuth
 
-EAuth is a system built into [Eyre](../../../../glossary/eyre.md) which allows one [ship](../../../../glossary/ship.md) to log into the web interface of another. Once logged in, all requests through Eyre will appear to Gall [agents](../../../../glossary/agent.md) as having come from the foreign ship, in the `src` of the [bowl](../../../../glossary/bowl.md). The agents can apply whatever logic they want based on the foreign `src`. Most Urbit apps (including Landscape) don't currently allow requests from anyone but the local ship. Nevertheless, EAuth has many potential useful applications, such as a allowing comments from other ships on a public-facing Urbit-hosted blog.
+EAuth is a system built into Eyre which allows one ship to log into the web interface of another. Once logged in, all requests through Eyre will appear to Gall agents as having come from the foreign ship, in the `src` of the bowl. The agents can apply whatever logic they want based on the foreign `src`. Most Urbit apps (including Landscape) don't currently allow requests from anyone but the local ship. Nevertheless, EAuth has many potential useful applications, such as a allowing comments from other ships on a public-facing Urbit-hosted blog.
 
 ## When to use {#when-to-use}
 
-[Landscape](../../../../glossary/landscape.md) and its `%docket` agent don't currently support access from foreign ships. You therefore cannot provide an app-launcher interface to foreign ships, nor serve them an ordinary [globbed](../../../../glossary/glob.md) front-end. This leaves three potential use-cases:
+Landscape and its `%docket` agent don't currently support access from foreign ships. You therefore cannot provide an app-launcher interface to foreign ships, nor serve them an ordinary globbed front-end. This leaves three potential use-cases:
 
-1. A [sail-based](../../../../glossary/sail.md) UI for a public-facing Urbit-hosted app.
-2. A [glob](../../../../glossary/glob.md)-based UI, but with the front-end files served independently from `%docket`.
+1. A sail-based UI for a public-facing Urbit-hosted app.
+2. A glob-based UI, but with the front-end files served independently from `%docket`.
 3. As an authentication system for an externally hosted service, with an additional API for that service to talk to the ship.
 
  The first case is the most common one.

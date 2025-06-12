@@ -4,11 +4,11 @@
 
 A [`$vase`](../reference/stdlib/4o.md#vase) is a pair of [`$type`](../reference/stdlib/4o.md#type) and [`$noun`](../reference/stdlib/2q.md#noun), where the type describes the noun. They're used all over Urbit to represent data whose type we can't know ahead of time. This often comes up when being asked to compile and run other Hoon code. It's also used to store data that could be any type, but where we want to know the type, so we tag the value with its type to form a vase.
 
-- The [Arvo](../../glossary/arvo.md) kernel uses vases to build itself and run [vanes](../../glossary/vane.md) (kernel modules).
-- The [Gall](../../glossary/gall.md) vane used to use vases to run userspace [agents](../../glossary/agent.md), and probably will again in the future.
-- The Ford build system (in the [Clay](../../glossary/clay.md) vane) uses vases to build Hoon code and store typed files.
-- The [Dojo](../../glossary/dojo.md) shell uses vases to compile and run shell expressions and to run generators.
-- The [Spider](../../glossary/spider.md) agent uses vases to run [threads](../../glossary/thread.md) (scripts written in an IO monad).
+- The Arvo kernel uses vases to build itself and run vanes (kernel modules).
+- The Gall vane used to use vases to run userspace agents, and probably will again in the future.
+- The Ford build system (in the Clay vane) uses vases to build Hoon code and store typed files.
+- The Dojo shell uses vases to compile and run shell expressions and to run generators.
+- The Spider agent uses vases to run threads (scripts written in an IO monad).
 
 ## Types and Molds {#types-and-molds}
 
@@ -16,7 +16,7 @@ A Hoon `$type` is a data structure that specifies a set of nouns. Remember, ever
 
 Types are not just used for this purpose, though. They're also used to represent the type of the "subject", which is the "scope" or "environment" that some Hoon code can access. This means that Hoon's equivalent of a symbol table lives in the type.
 
-The programmer can name parts of a type, including the type of the subject. Once part of a type has a name, Hoon code can refer to any named field within that type. Since the subject of any Hoon expression always has a known type at compile time, a reference (a [wing](../../glossary/wing.md), like `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0 operation (subtree lookups) at a known constant [axis](../reference/stdlib/2q.md#axis) (tree slot).
+The programmer can name parts of a type, including the type of the subject. Once part of a type has a name, Hoon code can refer to any named field within that type. Since the subject of any Hoon expression always has a known type at compile time, a reference (a wing, like `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0 operation (subtree lookups) at a known constant [axis](../reference/stdlib/2q.md#axis) (tree slot).
 
 A Hoon `$type` is defined by this (pronounced "buc type", also called "the type of type"):
 
@@ -41,7 +41,7 @@ If an instance of `$type` is an atom, it's either the value `%noun`, referring t
 
 Otherwise, an instance of `$type` is a cell, in which case the head is a tag (e.g. `%atom`, `%cell`, or `%core`) that says what kind of type this is. The values to the right of the tag contain the information used to specify the variable lookup namespace for this type (i.e. the mapping from wing to axis, or axis and core arm) and constraints that limit the set of nouns described by this type.
 
-An `%atom` type describes a set of numbers. The `p=term` in an atom type is its [aura](../../glossary/aura.md), a name for a kind of value that can be stored as an atom -- `%da` for date, `%ux` for hexadecimal number, `%t` for text, etc. The `q=(unit @)` is either `~`, meaning any value, or `[~ value]`, in which case this type has only a single member. The type `%foo` refers to the set whose only instance is the atom `%foo`.
+An `%atom` type describes a set of numbers. The `p=term` in an atom type is its aura, a name for a kind of value that can be stored as an atom -- `%da` for date, `%ux` for hexadecimal number, `%t` for text, etc. The `q=(unit @)` is either `~`, meaning any value, or `[~ value]`, in which case this type has only a single member. The type `%foo` refers to the set whose only instance is the atom `%foo`.
 
 The `%cell` type refers to cells whose heads have type `p` and tails have type `q`.
 
@@ -53,7 +53,7 @@ Consider the type `(list @ud)`. This is a hold. Just as any instance of this lis
 
 ### Cores {#cores}
 
-All executable Hoon code is found in a [core](../../glossary/core.md). This core stores a map from [arm](../../glossary/arm.md) name (like an OOP getter function) to result type, along with some other information about the core. If the core is a [door](../../glossary/door.md) (like an OOP object) or a [gate](../../glossary/gate.md) (like an anonymous function), then slot 6 (the head of the tail) of the core is a "sample" slot, which is overwritten with instance data or function argument, respectively. Whether this core expects a sample, and if so, what the sample's type is, is represented in the `$type` data structure for cores of that type.
+All executable Hoon code is found in a core. This core stores a map from arm name (like an OOP getter function) to result type, along with some other information about the core. If the core is a door (like an OOP object) or a gate (like an anonymous function), then slot 6 (the head of the tail) of the core is a "sample" slot, which is overwritten with instance data or function argument, respectively. Whether this core expects a sample, and if so, what the sample's type is, is represented in the `$type` data structure for cores of that type.
 
 Core types are more complex than this simplified explanation, but this description is hopefully enough detail to be able to work with cores from vase mode.
 

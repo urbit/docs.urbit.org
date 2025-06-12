@@ -12,7 +12,7 @@ Each lesson consists of:
 
 The short version is that Hoon uses Urbit's provisions and protocols to enable very fast application development with shared primitives, sensible affordances, and straightforward distribution.
 
-Urbit consists of an identity protocol ([Azimuth](../../glossary/azimuth.md), or “Urbit ID”) and a system protocol ([Arvo](../../glossary/arvo.md), or “Urbit OS”). These two parts work hand-in-hand to build your hundred-year computer.
+Urbit consists of an identity protocol (Azimuth, or “Urbit ID”) and a system protocol (Arvo, or “Urbit OS”). These two parts work hand-in-hand to build your hundred-year computer.
 
 **Urbit ID (Azimuth)** is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities. It provides a system of scarce and immutable identities which are cryptographically secure.
 
@@ -78,7 +78,7 @@ You'll see:
 17
 ```
 
-You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a [noun](../../glossary/noun.md). We'll talk more about nouns in the next lesson.
+You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a noun. We'll talk more about nouns in the next lesson.
 
 Basically, every Hoon expression operates on the values it is given until it reduces to some form that can't evaluate any farther. This is then returned as the result of the evaluation.
 
@@ -89,11 +89,11 @@ One more:
 [1 2]
 ```
 
-This `:-` rune takes two values and composes them into a [cell](../../glossary/cell.md), a pair of values.
+This `:-` rune takes two values and composes them into a cell, a pair of values.
 
 ## Pronouncing Hoon <a href="#pronouncing-hoon" id="pronouncing-hoon"></a>
 
-Hoon uses [runes](../../glossary/rune.md), or two-character ASCII symbols, to describe its structure. (These are analogous to keywords in other programming languages.) Because there has not really been a standard way of pronouncing, say, `#` (hash, pound, number, sharp, hatch) or `!` (exclamation point, bang, shriek, pling), the authors of Urbit decided to adopt a one-syllable mnemonic to uniquely refer to each.
+Hoon uses runes, or two-character ASCII symbols, to describe its structure. (These are analogous to keywords in other programming languages.) Because there has not really been a standard way of pronouncing, say, `#` (hash, pound, number, sharp, hatch) or `!` (exclamation point, bang, shriek, pling), the authors of Urbit decided to adopt a one-syllable mnemonic to uniquely refer to each.
 
 It is highly advisable for you to learn these pronunciations, as the documentation and other developers employ them frequently. For instance, a rune like `|=` is called a “bartis”, and you will find it designated as such in the docs, in the source code, and among the developers.
 

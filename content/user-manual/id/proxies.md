@@ -4,7 +4,7 @@ Proxy addresses allow you to execute non-ownership related actions like spawning
 
 Setting proxies is a good security practice. For instance, you might keep your ownership address in cold storage, while your management proxy is kept in Metamask.
 
-The [Urbit HD Wallet](../../glossary/hdwallet.md) automatically sets proxies for your Urbit ID.
+The Urbit HD Wallet automatically sets proxies for your Urbit ID.
 
 ### Types of proxies {#types-of-proxies}
 
@@ -20,7 +20,7 @@ There are three main types of proxy: management, spawn, and voting. Their capabi
 
 - **Voting proxy**
 
-  Galaxies only. Galaxies are the part of the [Galactic Senate](../../glossary/senate.md), and this means they can cast votes on new proposals including changes to Ecliptic.
+  Galaxies only. Galaxies are the part of the Galactic Senate, and this means they can cast votes on new proposals including changes to Ecliptic.
 
 ### Transfer proxy {#transfer-proxy}
 

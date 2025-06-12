@@ -1378,7 +1378,7 @@ While [`+cat`](#cat) can only read text files, the `-read` [thread][thread] can 
 care ship desk case path
 ```
 
-- [care][care]: One of `%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z`, denoting a [Clay][clay] submodule. For details of their meaning, see the [Clay data types documentation](../../urbit-os/kernel/clay/reference/data-types.md#careclay-clay-submode) and [Clay scry reference](../../urbit-os/kernel/clay/reference/scry.md).
+- [care][care]: One of `%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z`, denoting a [Clay][clay] submodule. For details of their meaning, see the [Clay data types documentation](../../urbit-os/kernel/clay/reference/data-types.md#care) and [Clay scry reference](../../urbit-os/kernel/clay/reference/scry.md).
 - [ship][ship]: The target ship like `~sampel`, or `our` for the local ship.
 - [desk][desk]: The [desk] on that ship like `%base`.
 - [case][case]: The revision you're requesting. This can be one of:

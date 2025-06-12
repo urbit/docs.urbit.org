@@ -365,13 +365,13 @@
       * [API Reference](urbit-os/kernel/khan/reference/tasks.md)
       * [Data Types](urbit-os/kernel/khan/reference/types.md)
   * [Lick](urbit-os/kernel/lick/README.md)
+    * [Examples](urbit-os/kernel/lick/examples/README.md)
+      * [Examples](urbit-os/kernel/lick/examples/examples.md)
     * [Guides](urbit-os/kernel/lick/guides/README.md)
       * [Guide](urbit-os/kernel/lick/guides/guide.md)
     * [Reference](urbit-os/kernel/lick/reference/README.md)
       * [API Reference](urbit-os/kernel/lick/reference/tasks.md)
       * [Scry Reference](urbit-os/kernel/lick/reference/scry.md)
-    * [Examples](urbit-os/kernel/lick/examples/README.md)
-      * [Examples](urbit-os/kernel/lick/examples/examples.md)
 
 ## Hoon
 

@@ -16,7 +16,7 @@ Minimum requirements:
 **Note:** when an Urbit is first booted, it requires 2GB of memory (or swap) available to be mapped, but won't use much of it. Likewise, it initially won't use much disk space. The longer your Urbit runs and the more you use it (such as joining groups and installing apps), the larger its memory consumption and disk usage will grow. This means that while you can get away with a small amount of memory and disk space at first, you may eventually hit the limit of one or the other and need to upgrade it.
 {% endhint %}
 
-### Cloud-init config {#cloud-init-config}
+#### Cloud-init config {#cloud-init-config}
 
 This `cloud-init` config file will work for most Linux images available from cloud providers.
 

@@ -26,7 +26,7 @@ Your Urbit HD wallet is generated from a `@q` seed called `T`, which looks somet
 
 ![](https://media.urbit.org/fora/proposals/UP-8.jpg)
 
-First, your `@q` is converted into a numeric value `E` as an intermediary step by adding [salt](https://en.wikipedia.org/wiki/Salt_\(cryptography\)). Then by adding additional salts, `E` is converted into a set of BIP39 seed phrases - these are 24 word mnemonic sequences used to generate Ethereum wallets. You end up with one seed phrase for each proxy associated with your ship, and these seed phrases are then used to generate Ethereum wallets.
+First, your `@q` is converted into a numeric value `E` as an intermediary step by adding [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)). Then by adding additional salts, `E` is converted into a set of BIP39 seed phrases - these are 24 word mnemonic sequences used to generate Ethereum wallets. You end up with one seed phrase for each proxy associated with your ship, and these seed phrases are then used to generate Ethereum wallets.
 
 One of the wallets will store your Azimuth point, an [ERC-721](hd-wallet.md#erc-721) token, which will be known as your ownership address. Bridge then automatically uses your ownership address to assign the other proxies to the other wallets generated.
 

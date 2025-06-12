@@ -6,7 +6,7 @@ The reference material for each section of this walkthrough is listed [below](#r
 
 In this guide we've built a separate React app for the front-end, but Hoon also has a native domain-specific language for composing HTML structures called Sail. Sail allows you to compose a front-end inside a Gall agent and serve it directly. See the [Sail guide](../../hoon/guides/sail.md) for details.
 
-Along with `@urbit/http-api`, there's also the `@urbit/api` NPM package, which contains a large number of helpful functions for dealing with Hoon data types and interacting with a number of agents - particularly those used by the Groups app. Its source code is [available here](https://github.com/urbit/urbit/tree/master/pkg/npm/api).
+Along with `@urbit/http-api`, there's also the `@urbit/api` NPM package, which contains a large number of helpful functions for dealing with Hoon data types and interacting with a number of agents - particularly those used by the Groups app. Its source code is [available here](https://github.com/urbit/js-http-api).
 
 ## Reference material {#reference-material}
 
@@ -47,7 +47,7 @@ Here is the reference material for each section of this walkthrough.
 
 - [HTTP API Guide](../../build-on-urbit/tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
-- [`@urbit/http-api` source code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The source code for the `@urbit/http-api` NPM package.
+- [`@urbit/http-api` source code](https://github.com/urbit/js-http-api) - The source code for the `@urbit/http-api` NPM package.
 
 ### Desk and Glob {#desk-and-glob}
 

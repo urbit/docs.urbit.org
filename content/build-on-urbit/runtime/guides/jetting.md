@@ -550,7 +550,7 @@ u3x_sam_2, u3x_sam_12, u3x_sam_13, u3x_sam_14, u3x_sam_15
     * [`tree.c`](https://github.com/urbit/urbit/blob/cd400dfa69059e211dc88f4ce5d53479b9da7542/pkg/urbit/jets/tree.c#L1575)
     * [`w.h`](https://github.com/urbit/urbit/blob/cd400dfa69059e211dc88f4ce5d53479b9da7542/pkg/urbit/include/jets/w.h#L53)
     * [`q.h`](https://github.com/urbit/urbit/blob/cd400dfa69059e211dc88f4ce5d53479b9da7542/pkg/urbit/include/jets/q.h#L51)
-    * [`cut.c`](https://github.com/urbit/urbit/blob/master/pkg/urbit/jets/c/cut.c)
+    * [`cut.c`](https://github.com/urbit/urbit/blob/cd400dfa69059e211dc88f4ce5d53479b9da7542/pkg/urbit/jets/c/cut.c)
 
     and learning in detail how particular operations are realized in `u3` C. Note in particular that jets do not need to follow the same solution algorithm and logic as the Hoon code; they merely need to reliably produce the same result.
 

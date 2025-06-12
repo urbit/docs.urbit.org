@@ -85,7 +85,7 @@ The basic idea of `++jam` is to produce a serial noun (in order of head/tail).  
 2. Next entry marks bit length of value for atom, `0` if cell, or `1` if reference.
 3. Then the actual value (itself a cell or atom).
 
-Some readers may prefer to examine the [Python `noun.py` implementation](https://github.com/urbit/build-on-urbit/tools/blob/master/pkg/pynoun/noun.py) to supplement the Hoon definition; see particularly `mat()`.
+Some readers may prefer to examine the [Python `noun.py` implementation](https://github.com/urbit/tools/blob/master/pkg/pynoun/noun.py) to supplement the Hoon definition; see particularly `mat()`.
 
 Examples:
 

@@ -121,4 +121,4 @@ You can alternatively import and build udon files at compile time with a [`/*` (
 
 ## Examples <a href="#examples" id="examples"></a>
 
-The [Docs App](https://urbit.org/applications/~pocwet/docs) includes a [a few files written in Udon](https://github.com/tinnus-napbus/docs-app/tree/main/bare-desk/doc) which are useful as a reference.
+The [Docs App](https://github.com/tinnus-napbus/docs-app) includes a [a few files written in Udon](https://github.com/tinnus-napbus/docs-app/tree/main/bare-desk/doc) which are useful as a reference.

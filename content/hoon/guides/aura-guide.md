@@ -13,7 +13,7 @@ We prefer the parsed form and the prettyprinted form to coincide so we can copy 
 
 ## Example: Sexagesimal Degrees <a href="#example-sexagesimal-degrees" id="example-sexagesimal-degrees"></a>
 
-Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds. Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_\(angle\)#Subdivisions) lends distinction and _gravitas_.
+Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds. Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_(angle)#Subdivisions) lends distinction and _gravitas_.
 
 $$5°6'7''$$
 

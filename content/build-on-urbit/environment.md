@@ -143,7 +143,7 @@ The mark files in `/mar` are for handling some basic filetypes, and `sys.kelvin`
 
 You can delete these files, copy in your own and run `|commit %mydesk` in the Dojo.
 
-## `/*-dev` folders {#dev-folders)
+## `-dev` folders {#dev-folders)
 
 The files included by `|new-desk` are the only the bare minimum necessary to mount the desk. If you're building a full app, you'll almost certainly need a number of mark files and libraries from the `%base` and `%landscape` desks. If your app is going to talk to other apps on your ship, you'll likely need files for those, too.
 

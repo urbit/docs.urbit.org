@@ -4,42 +4,42 @@
 
 This guide assumes that you have an Urbit ID, or that you have found someone to send an Urbit ID to your Ethereum address and are looking to claim it.
 
-### Hosted Bridge {#hosted-bridge}
+### Hosted Bridge <a href="#hosted-bridge" id="hosted-bridge"></a>
 
 To connect to Bridge, go to [https://bridge.urbit.org](https://bridge.urbit.org) into your browser, and enter your identity's credentials in the appropriate fields. If you were invited to claim an Urbit ID, it's very likely that you received an email that would direct you to Bridge, and you can simply follow the hyperlink in that email.
 
 You'll arrive at a page and see two major choices: `ID` and `OS`. `OS` is the only option that you're interested in right now; click on it. On the `OS` page, click the `Download Arvo Keyfile` button. Once you have downloaded the keyfile, you can exit Bridge and proceed to [install the Urbit binary](../../get-on-urbit.md#get-the-urbit-runtime).
 
-### Local Bridge {#local-bridge}
+### Local Bridge <a href="#local-bridge" id="local-bridge"></a>
 
 Alternatively, Bridge can be run locally. It's more complicated, but we recommend this option for managing sufficiently valuable assets, such as several stars or more. To install local Bridge, navigate to the [release page on GitHub](https://github.com/urbit/bridge/releases/). Download the `.zip` file of the latest version. After you download it, follow the instructions below.
 
 To use Bridge:
 
-- Unzip the .zip file that you downloaded (bridge-$version.zip).
-- Open up your command line interface (Terminal on X, Command Prompt on Windows).
-- Navigate to the bridge-$version directory, where $version is the appropriate version number.
-- Run this command: `python3 -m http.server 5000 --bind 127.0.0.1.`
+* Unzip the .zip file that you downloaded (bridge-$version.zip).
+* Open up your command line interface (Terminal on X, Command Prompt on Windows).
+* Navigate to the bridge-$version directory, where $version is the appropriate version number.
+* Run this command: `python3 -m http.server 5000 --bind 127.0.0.1.`
 
 You can then use the Bridge app by navigating to `http://localhost:5000` in your internet browser.
 
-### Log in {#log-in}
+### Log in <a href="#log-in" id="log-in"></a>
 
 Once the program is running in your browser, go through the steps presented according to the type of wallet you have. You’ll be presented with a few login options. A notable option is Urbit Master Ticket. This is for those who used our Wallet Generator software. If you bought points from an Urbit sale and then used the Wallet Generator, your networking keys will be set for you. All other login options will require you to set your own networking keys.
 
 Note: Bridge allows you to both make reads and writes to the Ethereum blockchain. Writing to the blockchain, such as changing your networking keys, will incur a transaction cost that will require you to have some ETH in the address you log in with.
 
-### Accept your transfer {#accept-your-transfer}
+### Accept your transfer <a href="#accept-your-transfer" id="accept-your-transfer"></a>
 
 If you were given points by Tlon you likely already fully own them. But if someone else sent you a point, then you will first need to use Bridge to accept that transfer.
 
 After you access your Ethereum address, if a point was sent to that address, you'll come to a page that has an `Incoming Transfers` header, under which is a graphic. Click the `Details ->` link under that graphic.
 
-Now you'll be on the management page of your point. The transfer isn't completed yet, so click `Accept incoming transfer`. If you are transferring to yourself and do not wish to [factory reset](../../manual/id/guide-to-resets.md), check the box labeled `Retain proxies and key configuration, in case of transferring to self`. Otherwise leave the box unchecked, ensuring that your ship will be factory reset upon transfer and thus no Azimuth data from the previous owner (namely proxies and networking keys) will be retained. Then press the `Generate and Sign Transaction` button, followed by the `Send Transaction` button.
+Now you'll be on the management page of your point. The transfer isn't completed yet, so click `Accept incoming transfer`. If you are transferring to yourself and do not wish to [factory reset](guide-to-resets.md), check the box labeled `Retain proxies and key configuration, in case of transferring to self`. Otherwise leave the box unchecked, ensuring that your ship will be factory reset upon transfer and thus no Azimuth data from the previous owner (namely proxies and networking keys) will be retained. Then press the `Generate and Sign Transaction` button, followed by the `Send Transaction` button.
 
 If you already own a point, click on the `Details ->` under your sigil in the `Your Points` section.
 
-### Set your networking keys {#set-your-networking-keys}
+### Set your networking keys <a href="#set-your-networking-keys" id="set-your-networking-keys"></a>
 
 If you just accepted a point, you'll be returned to your point screen. Notice that that links and buttons are now clickable. You now own this point!
 
@@ -53,20 +53,20 @@ and use the result.
 
 It should be noted that setting your network keys is an event on the Ethereum network and will therefore cost a trivial, but non-zero, amount of Ethereum gas to complete.
 
-### Generate your keyfile {#generate-your-keyfile}
+### Generate your keyfile <a href="#generate-your-keyfile" id="generate-your-keyfile"></a>
 
 From the detail page associated with your point, click the `Generate Arvo Keyfile` link and you'll be taken to a page with a field titled `Network seed`. This field should already be filled in, and should match the hexadecimal string that you entered in the previous step. If it's not filled in or does not match, fill it in with the correct string. Click `Generate ->`, which will download a keyfile onto your machine.
 
 With that keyfile in hand, you can now exit Bridge and continue to the guide to [install the Urbit binary](../../get-on-urbit.md#get-the-urbit-runtime).
 
-### Escaping your sponsor {#escaping-your-sponsor}
+### Escaping your sponsor <a href="#escaping-your-sponsor" id="escaping-your-sponsor"></a>
 
 As a planet or star, it behooves you to be sponsored by an active star or galaxy, respectively. If your sponsor isn't suiting your needs, you can escape to a different one.
 
 #### Prerequisites
 
-- A little bit of ETH in your management proxy address to pay for the transaction.
-- The `@p` of the sponsor you want to escape to. You should negotiate the transfer with the sponsor ahead of time, as they will need to accept it on their end. If you cannot find one, contact Tlon at support@urbit.org and we will assist you in escaping to one of our stars/galaxies.
+* A little bit of ETH in your management proxy address to pay for the transaction.
+* The `@p` of the sponsor you want to escape to. You should negotiate the transfer with the sponsor ahead of time, as they will need to accept it on their end. If you cannot find one, contact Tlon at support@urbit.org and we will assist you in escaping to one of our stars/galaxies.
 
 #### Instructions
 

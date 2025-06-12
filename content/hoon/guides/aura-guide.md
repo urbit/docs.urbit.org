@@ -1,65 +1,67 @@
 # Implementing an Aura
 
-An aura is a metadata tag for Hoon to identify and manipulate atoms correctly.  Auras nest inside of each other logically:  `@uvJ` nests inside of `@uv`, which in turn nests in `@u` then `@`.  Auras allow programmers to encode intent into their handling of values.
+An aura is a metadata tag for Hoon to identify and manipulate atoms correctly. Auras nest inside of each other logically: `@uvJ` nests inside of `@uv`, which in turn nests in `@u` then `@`. Auras allow programmers to encode intent into their handling of values.
 
 To implement an aura in Hoon, we follow these steps:
 
-1. **Design the aura.**  A lot of existing letter pairs are spoken for, and new auras _should_ nest logically. Currently unoccupied letters include: `abeghjkmovwxyz`.  If you can make a case for why your new aura logically nests under an existing aura, then you implement such a nesting; you'll just need to make the case for it in your pull request submission.
+1. **Design the aura.** A lot of existing letter pairs are spoken for, and new auras _should_ nest logically. Currently unoccupied letters include: `abeghjkmovwxyz`. If you can make a case for why your new aura logically nests under an existing aura, then you implement such a nesting; you'll just need to make the case for it in your pull request submission.
+2. **Implement the base logic in `/sys/hoon`.** This, by and large, means providing a core or door which can correctly carry out arithmetic, conversion, processing, and so forth on your atom.
+3. **Implement a pretty-printer in `|co`.** This should match the atom syntax from the next step.
+4. **Implement parser in `|so`.** Compose a parsing rule which is distinct from all others and add it in the appropriate sections here. (Finding a unique syntax that follows Hoon's rules, like URL-safe characters only and not parseable as Hoon code, can be rather challenging now.) The aura parser prefixes elements with a type `term`; properly the pair is called a `dime`. This will also allow you to type the literal atom in the Dojo.
 
-2. **Implement the base logic in `/sys/hoon`.**  This, by and large, means providing a core or door which can correctly carry out arithmetic, conversion, processing, and so forth on your atom.
+We prefer the parsed form and the prettyprinted form to coincide so we can copy and paste a result directly back in as valid Hoon. (This is generally true for atoms but not for other molds; consider `set` for instance.)
 
-3. **Implement a pretty-printer in `|co`.**  This should match the atom syntax from the next step.
+## Example: Sexagesimal Degrees <a href="#example-sexagesimal-degrees" id="example-sexagesimal-degrees"></a>
 
-4. **Implement parser in `|so`.**  Compose a parsing rule which is distinct from all others and add it in the appropriate sections here.  (Finding a unique syntax that follows Hoon's rules, like URL-safe characters only and not parseable as Hoon code, can be rather challenging now.)  The aura parser prefixes elements with a type `term`; properly the pair is called a `dime`.  This will also allow you to type the literal atom in the Dojo.
-
-We prefer the parsed form and the prettyprinted form to coincide so we can copy and paste a result directly back in as valid Hoon.  (This is generally true for atoms but not for other molds; consider `set` for instance.)
-
-
-## Example:  Sexagesimal Degrees {#example-sexagesimal-degrees}
-
-Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds.  Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_(angle)#Subdivisions) lends distinction and _gravitas_.
+Classically, angular measurements using degrees subdivided each degree into 60 minutes and each minute into 60 seconds. Although less common in an age rife with [floating-point values](https://xkcd.com/2170/), proficiency with [sexagesimal notation](https://en.wikipedia.org/wiki/Degree_\(angle\)#Subdivisions) lends distinction and _gravitas_.
 
 $$5°6'7''$$
 
-### Preliminaries {#preliminaries}
+### Preliminaries <a href="#preliminaries" id="preliminaries"></a>
 
-You should fork the [Urbit repo](https://github.com/urbit/urbit) and create a working branch for this project.  While per the guide you will not be PRing this code back against the main repo, this is the standard working environment setup.
+You should fork the [Urbit repo](https://github.com/urbit/urbit) and create a working branch for this project. While per the guide you will not be PRing this code back against the main repo, this is the standard working environment setup.
 
-### Design {#design}
+### Design <a href="#design" id="design"></a>
 
-In this example, we will produce a degree–minute–second (DMS) aura.  We will call it `@udms`.  It will have the visual form of three integers prefixed with `.` dots, e.g. `.359.59.59` for 359°59'59''.  This distinguishes it from `@rs`, which has two similarly-separated values, e.g. `.1.2`; and from `@if`, which has four, e.g. `.1.2.3.4`.  For atoms, the literal input form and literal output form should be the same.
+In this example, we will produce a degree–minute–second (DMS) aura. We will call it `@udms`. It will have the visual form of three integers prefixed with `.` dots, e.g. `.359.59.59` for 359°59'59''. This distinguishes it from `@rs`, which has two similarly-separated values, e.g. `.1.2`; and from `@if`, which has four, e.g. `.1.2.3.4`. For atoms, the literal input form and literal output form should be the same.
 
-It will have the bit-logical form of an integer of arbitrary size, with each whole-number increment representing a second.  This would permit overflow, i.e. values greater than 360° such as 720°; however, we will supply a `++norm` arm to enforce modular arithmetic at 360°.
+It will have the bit-logical form of an integer of arbitrary size, with each whole-number increment representing a second. This would permit overflow, i.e. values greater than 360° such as 720°; however, we will supply a `++norm` arm to enforce modular arithmetic at 360°.
 
-### Base Logic {#base-logic}
+### Base Logic <a href="#base-logic" id="base-logic"></a>
 
-We need to be able to perform arithmetic and type conversion with `@udms` values.  Some value representations have an “unpacked“ tuple form, like dates and floating-point values.  This makes it easier to shunt the values between auxiliary functions.  We'll define one as well here, `+$sexa` (for _sexagesimal_, base-60).
+We need to be able to perform arithmetic and type conversion with `@udms` values. Some value representations have an “unpacked“ tuple form, like dates and floating-point values. This makes it easier to shunt the values between auxiliary functions. We'll define one as well here, `+$sexa` (for _sexagesimal_, base-60).
 
-At this point, we implement modular arithmetic and wrap the values properly in `++op`.  For instance, wrapping around at 360°=0° should work properly, similar to midnight.  Subtraction is liable to underflow, so we need a special handler for it in `++dg`; since we have one, we may as well handle `++add` the same way for consistency.
+At this point, we implement modular arithmetic and wrap the values properly in `++op`. For instance, wrapping around at 360°=0° should work properly, similar to midnight. Subtraction is liable to underflow, so we need a special handler for it in `++dg`; since we have one, we may as well handle `++add` the same way for consistency.
 
 $$359° + 2° = 1°$$
 
-<br/>
+\
+
 
 $$59' + 1' = 1°$$
 
-<br/>
+\
+
 
 $$59'' + 1'' = 1'$$
 
-<br/>
+\
+
 
 $$1°59'59'' + 1'' = 2°$$
 
-<br/>
+\
+
 
 $$3° - 1° = 2°$$
 
-<br/>
+\
+
 
 $$1° - 3° = 358°$$
 
-<br/>
+\
+
 
 $$0° - 1'' = 359°59'59''$$
 
@@ -173,7 +175,7 @@ Let's write some unit tests first.
 --
 ```
 
-The Hoon logic will be located in a `++dg` arm.  This needs to be sufficiently high in the stack that our prettyprinter and parser logic know about them, so let's put `++dg` in the fourth core.  Search for `layer-5` and paste `++dg` in a few lines above that after `+$hump`.  (Strictly speaking, we should make sure that this works in a userspace `/lib` library first but here we'll just insert it into `/sys/hoon` and rely on our unit tests.)
+The Hoon logic will be located in a `++dg` arm. This needs to be sufficiently high in the stack that our prettyprinter and parser logic know about them, so let's put `++dg` in the fourth core. Search for `layer-5` and paste `++dg` in a few lines above that after `+$hump`. (Strictly speaking, we should make sure that this works in a userspace `/lib` library first but here we'll just insert it into `/sys/hoon` and rely on our unit tests.)
 
 **`/sys/hoon`**
 
@@ -211,9 +213,9 @@ The Hoon logic will be located in a `++dg` arm.  This needs to be sufficiently h
   --
 ```
 
-### Pretty-Printing {#pretty-printing}
+### Pretty-Printing <a href="#pretty-printing" id="pretty-printing"></a>
 
-The atom literal should be constructed in `++rend`, which has a cascade of switch statements over the atom aura.   Let's adopt the output syntax to be the same as the input syntax, `.ddd.mm.ss`.
+The atom literal should be constructed in `++rend`, which has a cascade of switch statements over the atom aura. Let's adopt the output syntax to be the same as the input syntax, `.ddd.mm.ss`.
 
 ```hoon
 ++  co
@@ -251,7 +253,7 @@ The atom literal should be constructed in `++rend`, which has a cascade of switc
 
 Every type has its own special conventions, so you need to adapt to follow whatever those may be.
 
-### Parsing {#parsing}
+### Parsing <a href="#parsing" id="parsing"></a>
 
 A parsing rule which correctly handles the aura is:
 
@@ -259,7 +261,7 @@ A parsing rule which correctly handles the aura is:
 ;~(pfix dot ;~((glue dot) dem:ag dem:ag dem:ag))
 ```
 
-as demonstrated by these tests.  (See also `++dem:ag`.)
+as demonstrated by these tests. (See also `++dem:ag`.)
 
 ```hoon
 > (;~(pfix dot ;~((glue dot) dem:ag dem:ag dem:ag)) [[1 1] ".1.2.3"])
@@ -288,7 +290,7 @@ Ultimately we will pack these together into the atom form `@udms`.
 
 Note that this form overflows still, but can be corrected using `++norm:dg`.
 
-Our parser logic needs to be cited in `++zust:so` because that arm parses atoms prefixed with `.` dot.  This means that the `pfix dot` gets eaten, and our actual parsing rule only needs to handle the rest of the symbol.  Add a `++dems` arm after `++zust` and register it in the `pose` in `++zust` as well.  Since parsers in a `pose` resolve in order, it should come after IPv4 `@if` addresses (`.1.1.1.1`) and before `@rs` values (`.1.1`).
+Our parser logic needs to be cited in `++zust:so` because that arm parses atoms prefixed with `.` dot. This means that the `pfix dot` gets eaten, and our actual parsing rule only needs to handle the rest of the symbol. Add a `++dems` arm after `++zust` and register it in the `pose` in `++zust` as well. Since parsers in a `pose` resolve in order, it should come after IPv4 `@if` addresses (`.1.1.1.1`) and before `@rs` values (`.1.1`).
 
 ```hoon
 ++  so
@@ -315,7 +317,7 @@ Our parser logic needs to be cited in `++zust:so` because that arm parses atoms 
 
 You also need to modify `+$iota` to include `[%udms @udms]` to satisfy the type system for typed paths.
 
-At this point, a compiled `/sys/hoon` should detect the typed atom syntax correctly.  This aura should pass all tests and be usable in conventional Hoon code.
+At this point, a compiled `/sys/hoon` should detect the typed atom syntax correctly. This aura should pass all tests and be usable in conventional Hoon code.
 
 ```hoon
 > .1.2.3
@@ -325,12 +327,12 @@ At this point, a compiled `/sys/hoon` should detect the typed atom syntax correc
 3.723
 ```
 
-## Exercises {#exercises}
+## Exercises <a href="#exercises" id="exercises"></a>
 
 What else should be implemented?
 
-- Radian-based angles could be supported (let's say as `@ur`).
-- Arguably, there should be an absolute angle (analogous to `@da`) representing a direction in 2D space, and a relative angle (analogous to `@dr`) representing a turn in 2D space.
-- You'd also want to decide how to deal with negative arcs, if supported; a zigzag scheme similar to `@s` would be most apt (`@sdms`).
-- A spherical trigonometry project could build on these mathematics for an astronomical or avionic calculator.  (`@uds` for steradians?)
-- `*@udms` displays incorrectly.  Why, and how would you fix it?
+* Radian-based angles could be supported (let's say as `@ur`).
+* Arguably, there should be an absolute angle (analogous to `@da`) representing a direction in 2D space, and a relative angle (analogous to `@dr`) representing a turn in 2D space.
+* You'd also want to decide how to deal with negative arcs, if supported; a zigzag scheme similar to `@s` would be most apt (`@sdms`).
+* A spherical trigonometry project could build on these mathematics for an astronomical or avionic calculator. (`@uds` for steradians?)
+* `*@udms` displays incorrectly. Why, and how would you fix it?

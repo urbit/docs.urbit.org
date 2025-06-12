@@ -12,7 +12,7 @@ Of course there are many variations on ways to modify the subject, useful for di
 
 ---
 
-## `=>` "tisgar" {#tisgar}
+## => "tisgar" {#tisgar}
 
 Compose two expressions.
 
@@ -81,7 +81,7 @@ the product of `q`, with the product of `p` taken as the subject.
 
 ---
 
-## `=|` "tisbar" {#tisbar}
+## =| "tisbar" {#tisbar}
 
 Combine a named noun with the subject by "bunting" (producing the default value) of a given mold.
 
@@ -146,7 +146,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 
 ---
 
-## `=:` "tiscol" {#tiscol}
+## =: "tiscol" {#tiscol}
 
 Change multiple legs in the subject.
 
@@ -213,7 +213,7 @@ This rune is like `=.`, but for modifying the values of multiple legs of the sub
 
 ---
 
-## `=,` "tiscom" {#tiscom}
+## =, "tiscom" {#tiscom}
 
 Expose namespace.
 
@@ -293,7 +293,7 @@ With a dojo-defined face:
 
 ---
 
-## `=.` "tisdot" {#tisdot}
+## =. "tisdot" {#tisdot}
 
 Change one leg in the subject.
 
@@ -363,7 +363,7 @@ nest-fail
 
 ---
 
-## `=-` "tishep" {#tishep}
+## =- "tishep" {#tishep}
 
 Combine a new noun with the subject, inverted.
 
@@ -431,7 +431,7 @@ None
 
 ---
 
-## `=^` "tisket" {#tisket}
+## =^ "tisket" {#tisket}
 
 Pin the head of a pair; change a leg with the tail.
 
@@ -496,6 +496,8 @@ This is a bit like doing `=/` and `=.` at the same time. It's useful for state m
 
 This may also remind you of Haskell's State monad.
 
+Note that `=^` is subject to the same type nesting limitations as `=.`; e.g., if you have `?~` checked a list for null, you can no longer nest a regular list in the result. (In this case, use a nock `=(~ ...)` equality check instead or recast the result.)
+
 #### Examples
 
 The `og` core is a stateful pseudo-random number generator. We have to change the core state every time we generate a random number, so we use `=^`:
@@ -510,7 +512,7 @@ The `og` core is a stateful pseudo-random number generator. We have to change th
 
 ---
 
-## `=<` "tisgal" {#tisgal}
+## =< "tisgal" {#tisgal}
 
 Compose two expressions, inverted.
 
@@ -582,7 +584,7 @@ p:q
 
 ---
 
-## `=+` "tislus" {#tislus}
+## =+ "tislus" {#tislus}
 
 Combine a new noun with the subject.
 
@@ -650,7 +652,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ---
 
-## `=;` "tismic" {#tismic}
+## =; "tismic" {#tismic}
 
 Combine a named noun with the subject, possibly with type annotation; inverted order.
 
@@ -716,7 +718,7 @@ None
 
 ---
 
-## `=/` "tisfas" {#tisfas}
+## =/ "tisfas" {#tisfas}
 
 Combine a named noun with the subject, possibly with type annotation.
 
@@ -805,7 +807,7 @@ r
 
 ---
 
-## `=~` "tissig" {#tissig}
+## =~ "tissig" {#tissig}
 
 Compose many expressions.
 
@@ -886,7 +888,7 @@ The product of the chain composition.
 
 ---
 
-## `=*` "tistar" {#tistar}
+## =* "tistar" {#tistar}
 
 Define a deferred expression.
 
@@ -963,7 +965,7 @@ This lets you reference the whole `state` while also being able to reference its
 
 ---
 
-## `=?` "tiswut" {#tiswut}
+## =? "tiswut" {#tiswut}
 
 Conditionally change one leg in the subject.
 

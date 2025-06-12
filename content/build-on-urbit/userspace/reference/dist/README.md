@@ -4,7 +4,7 @@ Urbit supports peer-to-peer distribution and installation of applications. A use
 
 This document describes the architecture of Urbit's app distribution system. For a walkthrough of creating and distributing an app, see the [`Guide`](../../guides/software-distribution.md) document.
 
-## Architecture {#architecture}
+## Architecture <a href="#architecture" id="architecture"></a>
 
 The unit of software distribution is the desk. A desk is a lot like a git branch, but full of typed files, and designed to work with the Arvo kernel. In addition to files full of source code, a desk specifies the version(s) of the kernel that it's compatible with, and it includes a manifest describing which of its Gall agents should be run by default.
 
@@ -22,7 +22,7 @@ Landscape apps (those with frontends launched from a tile in Landscape), should 
 
 The `%docket` agent in Landscape reads the `/desk/docket-0` file to display an app tile on the home screen and hook up other front-end functionality, such as downloading the app's client bundle ([glob](glob.md)). Docket also manages app installs, serves the home screen, downloads client bundles, and communicates with Kiln to configure the apps on your system.
 
-### Anatomy of a Desk {#anatomy-of-a-desk}
+### Anatomy of a Desk <a href="#anatomy-of-a-desk" id="anatomy-of-a-desk"></a>
 
 Desks contain helper files in `/lib` and `/sur`, generators in `/gen`, marks in `/mar`, threads in `/ted`, tests in `/tests`, and Gall agents in `/app`. In addition, desks also contain these files:
 
@@ -35,28 +35,28 @@ Desks contain helper files in `/lib` and `/sur`, generators in `/gen`, marks in 
 
 Only the `%base` desk contains a `/sys` directory with the standard library and vanes. All other desks simply specify the kernel version(s) they're compatible with in the `/sys/kelvin` file.
 
-### Updates {#updates}
+### Updates <a href="#updates" id="updates"></a>
 
 Kiln listens to the publisher for any new commits to the desk. If an update is compatible with the current kernel, it will be installed immediately. Any running Gall agents on the desk will be upgraded and if there's a new front-end glob version, it will be fetched. If the update is only compatible with a future kelvin, it will be queued until a compatible kernel upgrade is applied.
 
 A kernel update with a new kelvin version will not be applied until all running apps have compatible updates queued for installation. Users have the option to force the kernel update, which will suspend any incompatible apps. Once they receive a compatible update, they'll automatically be upgraded and started back up. It's therefore important for app publishers to push updates ahead of any new kernel versions. The Urbit Foundation will announce new kernel updates in advance, so app developers have time to update their apps. Often the only necessary change is signalling compatibility with the new version in `sys.kelvin`, but sometimes further changes are necessary. Breaking changes will be included in the release notes of release candidates on the [urbit/urbit](https://github.com/tloncorp/landscape) Github repo.
 
-### Managing Apps and Desks in Kiln {#managing-apps-and-desks-in-kiln}
+### Managing Apps and Desks in Kiln <a href="#managing-apps-and-desks-in-kiln" id="managing-apps-and-desks-in-kiln"></a>
 
 The default agents to run are listed in the `/desk/bill` file of the desk. These can be forced off, or additional agents forced on, with commands to Clay.
 
-For details of the generators for managing desks and agents, see the [`Dojo Tools`](../../../../manual/os/dojo-tools.md) document.
+For details of the generators for managing desks and agents, see the [`Dojo Tools`](../../../../user-manual/os/dojo-tools.md) document.
 
-### Landscape apps {#landscape-apps}
+### Landscape apps <a href="#landscape-apps" id="landscape-apps"></a>
 
 It's possible to create and distribute desks without a front-end, but most developers will want a web UI for their app. There are a couple of options for this:
 
-- Have a Gall agent handle directly HTTP requests through, doing server-side page rendering and/or serving front-end files out of Clay. You can refer to the [Sail guide](../../../../hoon/guides/sail.md) for more information about generating HTML in Hoon.
-- Have the Gall agents perform back-end functions only, and create a separate client bundle called a [`glob`](glob.md), which contains the front-end files like HTML, CSS, JS, images, and so forth.
+* Have a Gall agent handle directly HTTP requests through, doing server-side page rendering and/or serving front-end files out of Clay. You can refer to the [Sail guide](../../../../hoon/guides/sail.md) for more information about generating HTML in Hoon.
+* Have the Gall agents perform back-end functions only, and create a separate client bundle called a [`glob`](glob.md), which contains the front-end files like HTML, CSS, JS, images, and so forth.
 
 When an app is started, `%docket` will read the `desk.docket-0` file in the desk and, if it specifies a glob, fetch and serve it. For more details of the docket file, see the [Docket File](docket.md) document.
 
-### Globs {#globs}
+### Globs <a href="#globs" id="globs"></a>
 
 If the glob is to be served over Ames, the Docket globulator at the `/docket/upload` URL will let you upload the front-end files. It'll automatically update the `desk.docket-0` file with the name and hash so people who install the desk know where to get it.
 
@@ -66,13 +66,11 @@ Note that serving a glob over Ames might increase the install time for your app,
 
 For further details of globs, see the [Glob](glob.md) document.
 
-## Sections {#sections}
+## Sections <a href="#sections" id="sections"></a>
 
-- [Glob](./glob.md) - Documentation of `glob`s (client bundles).
-- [Docket Files](./docket.md) - Documentation of docket files.
+* [Glob](glob.md) - Documentation of `glob`s (client bundles).
+* [Docket Files](docket.md) - Documentation of docket files.
 
-## Further reading {#further-reading}
+## Further reading <a href="#further-reading" id="further-reading"></a>
 
-- [Guide](../../guides/software-distribution.md) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.
-
-
+* [Guide](../../guides/software-distribution.md) - A walkthrough of creating, installing and publishing a new desk with a tile and front-end.

@@ -29,18 +29,21 @@ Aura         Meaning                                 Example Literal Syntax
 @s           signed integer, sign bit low
   @sb        signed binary                           --0b11.1000
   @sd        signed decimal                          --1.000.056
+  @si        signed decimal, no separator            --1000056
   @sv        signed base32                           -0v1df64.49beg
   @sw        signed base64                           --0wbnC.8haTg
   @sx        signed hexadecimal                      -0x5f5.e138
 @t           UTF-8 text (cord)                       'howdy'
   @ta        URL-safe path element text (knot)       ~.howdy
     @tas     short name text (term)                  %howdy
-@u              unsigned integer
-  @ub           unsigned binary                      0b11.1000
-  @ud           unsigned decimal                     1.000.056
-  @uv           unsigned base32                      0v1df64.49beg
-  @uw           unsigned base64                      0wbnC.8haTg
-  @ux           unsigned hexadecimal                 0x5f5.e138
+@u           unsigned integer
+  @ub        unsigned binary                         0b11.1000
+  @ud        unsigned decimal                        1.000.056
+  @ui        unsigned decimal, no separator          1000056
+  @uv        unsigned base32                         0v1df64.49beg
+  @uw        unsigned base64                         0wbnC.8haTg
+  @ux        unsigned hexadecimal                    0x5f5.e138
+@x           unsigned hexadecimal, no separator      0xf5fe138
 ```
 
 ## Bitwidth {#bitwidth}

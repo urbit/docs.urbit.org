@@ -8,6 +8,6 @@ Traditionally a ship has at least a `%base` desk, and typically `%landscape` and
 2. A list of zero or more parents.
 3. A map from paths to data.
 
-### Further Reading {#further-reading}
+### Further Reading <a href="#further-reading" id="further-reading"></a>
 
-- [Using Your Ship](../manual/os/filesystem.md): A user guide that includes instructions for using desks.
+* [Using Your Ship](../user-manual/os/filesystem.md): A user guide that includes instructions for using desks.

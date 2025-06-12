@@ -8,9 +8,8 @@ There are a limited number of Azimuth identities which results in identities hav
 
 It should be noted that Azimuth isn't built just for Arvo. It can be used as an identity system for other projects.
 
-### Further Reading {#further-reading}
+### Further Reading <a href="#further-reading" id="further-reading"></a>
 
-- [The Azimuth concepts page](../urbit-id): A more in-depth explanation of Azimuth.
-- [Install instructions](../get-on-urbit.md): Guide to installing Urbit, which includes instructions on booting with your Urbit identity.
-- [Urbit ID Overview](https://urbit.org/overview/urbit-id)
-
+* [The Azimuth concepts page](../urbit-id/concepts/): A more in-depth explanation of Azimuth.
+* [Install instructions](../get-on-urbit.md): Guide to installing Urbit, which includes instructions on booting with your Urbit identity.
+* [Urbit ID Overview](https://urbit.org/overview/urbit-id)

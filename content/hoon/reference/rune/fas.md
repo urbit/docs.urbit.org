@@ -13,7 +13,7 @@ The Dojo does not support Ford runes at the current time, so you should instead 
 'baz'
 ```
 
-## `/-` "fashep" {#fashep}
+## /- "fashep" {#fashep}
 
 Import structure libraries from `/sur`.
 
@@ -33,7 +33,7 @@ Imports may be given a different face by doing `xyz=foo`. Imports may have their
 
 ---
 
-## `/+` "faslus" {#faslus}
+## /+ "faslus" {#faslus}
 
 Import libraries from `/lib`.
 
@@ -53,7 +53,7 @@ Imports may be given a different face by doing `xyz=foo`. Imports may have their
 
 ---
 
-## `/=` "fastis" {#fastis}
+## /= "fastis" {#fastis}
 
 Build and import a hoon file at the specified path.
 
@@ -81,7 +81,7 @@ To build and import `/foo/bar.hoon` you would do:
 
 ---
 
-## `/*` "fastar" {#fastar}
+## /* "fastar" {#fastar}
 
 Import the file at the specified path as the specified mark.
 
@@ -111,7 +111,7 @@ To import `/foo/bar.hoon` you would do:
 
 ---
 
-## `/$` "fasbuc" {#fasbuc}
+## /$ "fasbuc" {#fasbuc}
 
 Import mark conversion gate.
 
@@ -149,7 +149,7 @@ like:
 
 ---
 
-## `/~` "fassig" {#fassig}
+## /~ "fassig" {#fassig}
 
 Import, build, evaluate and pin the results of many hoon files in a directory.
 
@@ -193,7 +193,7 @@ Then the following `/~` expression:
 
 ---
 
-## `/%` "fascen" {#fascen}
+## /% "fascen" {#fascen}
 
 Build and import a mark core.
 

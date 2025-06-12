@@ -2,7 +2,7 @@
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter. A mnemonic to remember what sig runes are for is "we're *sig*naling some information to the interpreter".
 
-## `~>` "siggar" {#siggar}
+## ~> "siggar" {#siggar}
 
 Raw hint, applied to computation.
 
@@ -74,7 +74,7 @@ Running the compiler:
 
 ---
 
-## `~|` "sigbar" {#sigbar}
+## ~| "sigbar" {#sigbar}
 
 Tracing printf.
 
@@ -138,7 +138,7 @@ dojo: hoon expression failed
 
 ---
 
-## `~$` "sigbuc" {#sigbuc}
+## ~$ "sigbuc" {#sigbuc}
 
 Profiling hit counter.
 
@@ -215,7 +215,7 @@ my-hit-counter: 42
 
 ---
 
-## `~_` "sigcab" {#sigcab}
+## ~_ "sigcab" {#sigcab}
 
 User-formatted tracing printf.
 
@@ -283,7 +283,7 @@ dojo: hoon expression failed
 
 ---
 
-## `~%` "sigcen" {#sigcen}
+## ~% "sigcen" {#sigcen}
 
 Jet registration.
 
@@ -376,7 +376,7 @@ Here we label the entire `++aes` core for optimization.
 
 ---
 
-## `~<` "siggal" {#siggal}
+## ~< "siggal" {#siggal}
 
 Raw hint, applied to product.
 
@@ -438,7 +438,7 @@ None
 
 ---
 
-## `~+` "siglus" {#siglus}
+## ~+ "siglus" {#siglus}
 
 Cache a computation.
 
@@ -489,7 +489,7 @@ This should work fine:
 
 ---
 
-## `~/` "sigfas" {#sigfas}
+## ~/ "sigfas" {#sigfas}
 
 Jet registration for gate with registered context.
 
@@ -551,7 +551,7 @@ From the kernel:
 
 ---
 
-## `~&` "sigpam" {#sigpam}
+## ~& "sigpam" {#sigpam}
 
 Debugging printf.
 
@@ -629,7 +629,7 @@ A logging level can be specified by including `>` markers, i.e. `>`, `>>`,
 
 ---
 
-## `~=` "sigtis" {#sigtis}
+## ~= "sigtis" {#sigtis}
 
 Detect duplicate.
 
@@ -699,7 +699,7 @@ Without `~=`, it would build a copy of a completely unchanged tree. Sad!
 
 ---
 
-## `~?` "sigwut" {#sigwut}
+## ~? "sigwut" {#sigwut}
 
 Conditional debug printf.
 
@@ -773,7 +773,7 @@ If `p` is true, prettyprints `q` on the console before computing `r`.
 
 ---
 
-## `~!` "sigzap" {#sigzap}
+## ~! "sigzap" {#sigzap}
 
 Print type on compilation fail.
 

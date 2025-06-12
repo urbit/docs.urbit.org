@@ -224,6 +224,13 @@
     * [Index File](build-on-urbit/tools/docs-app/index-file.md)
     * [Suggested Structure](build-on-urbit/tools/docs-app/structure.md)
 * [Userspace](build-on-urbit/userspace/README.md)
+  * [Examples](build-on-urbit/userspace/examples/README.md)
+    * [Building a CLI App](build-on-urbit/userspace/examples/rpn.md)
+    * [Debugging Wrapper](build-on-urbit/userspace/examples/dbug.md)
+    * [Host a Website](build-on-urbit/userspace/examples/feature.md)
+    * [Serving a JS Game](build-on-urbit/userspace/examples/flap.md)
+    * [Ship Monitoring](build-on-urbit/userspace/examples/ahoy.md)
+    * [Styled Text](build-on-urbit/userspace/examples/track7.md)
   * [Guides](build-on-urbit/userspace/guides/README.md)
     * [Command-Line Apps](build-on-urbit/userspace/guides/cli-tutorial.md)
     * [Remote Scry](build-on-urbit/userspace/guides/remote-scry.md)
@@ -233,13 +240,6 @@
     * [Software Distribution](build-on-urbit/userspace/reference/dist/README.md)
       * [Docket File](build-on-urbit/userspace/reference/dist/docket.md)
       * [Glob](build-on-urbit/userspace/reference/dist/glob.md)
-  * [Examples](build-on-urbit/userspace/examples/README.md)
-    * [Building a CLI App](build-on-urbit/userspace/examples/rpn.md)
-    * [Debugging Wrapper](build-on-urbit/userspace/examples/dbug.md)
-    * [Host a Website](build-on-urbit/userspace/examples/feature.md)
-    * [Serving a JS Game](build-on-urbit/userspace/examples/flap.md)
-    * [Ship Monitoring](build-on-urbit/userspace/examples/ahoy.md)
-    * [Styled Text](build-on-urbit/userspace/examples/track7.md)
 
 ## Urbit ID
 

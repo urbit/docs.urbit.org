@@ -160,7 +160,7 @@ Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`
 ;<  ~           bind:m  %-  poke-our
                         :*  %spider
                             %spider-start
-                            !>([`tid.bowl byk.bowl(r da+now.bowl) `tid %child !>(~)])
+                            !>([`tid.bowl `tid byk.bowl(r da+now.bowl) %child !>(~)])
                         ==
 ;<  ~           bind:m  (sleep ~s5)
 %-  (slog leaf+"Stopping child thread..." ~)

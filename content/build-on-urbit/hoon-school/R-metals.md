@@ -61,7 +61,7 @@ Wet gates are therefore used when incoming type information is not well known an
 
 The [trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) solves a definite integral. It approximates the area under the curve by a trapezoid or (commonly) a series of trapezoids. The rule requires a function as one of the inputs, i.e. it applies _for a specific function_. We will use wet gates to accomplish this without stripping type information of the input gate core.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Integration_num_trapezes_notation.svg/573px-Integration_num_trapezes_notation.svg.png)
+![](https://media.urbit.org/docs/hoon-school/Integration_num_trapezes_notation.png)
 
 $$
 \int_a^b f(x) \, dx \approx \sum_{k=1}^N \frac{f(x_{k-1}) + f(x_k)}{2} \Delta x_k = \tfrac{\Delta x}{2}\left(f(x_0) + 2f(x_1)+2f(x_2)+ 2f(x_3)+2f(x_4)+\cdots+2f(x_{N-1}) + f(x_N)\right)

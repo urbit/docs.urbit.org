@@ -56,14 +56,14 @@ If we want to actually get the result of the thread we started, it's slightly mo
 ^-  form:m
 ;<  =bowl:rand  bind:m  get-bowl
 =/  tid  `@ta`(cat 3 'strand_' (scot %uv (sham %child eny.bowl)))
-;<  ~             bind:m  (watch-our /awaiting/[tid] %spider /thread-result/[tid])
-;<  ~             bind:m  %-  poke-our
-                          :*  %spider
-                              %spider-start
-                              !>([`tid.bowl `tid byk.bowl(r da+now.bowl) %child !>(~)])
-                          ==
-;<  =cage         bind:m  (take-fact /awaiting/[tid])
-;<  ~             bind:m  (take-kick /awaiting/[tid])
+;<  ~           bind:m  (watch-our /awaiting/[tid] %spider /thread-result/[tid])
+;<  ~           bind:m  %-  poke-our
+                        :*  %spider
+                            %spider-start
+                            !>([`tid.bowl `tid byk.bowl(r da+now.bowl) %child !>(~)])
+                        ==
+;<  =cage       bind:m  (take-fact /awaiting/[tid])
+;<  ~           bind:m  (take-kick /awaiting/[tid])
 ?+  p.cage  ~|([%strange-thread-result p.cage %child tid] !!)
   %thread-done  (pure:m q.cage)
   %thread-fail  (strand-fail:rand !<([term tang] q.cage))
@@ -73,18 +73,21 @@ If we want to actually get the result of the thread we started, it's slightly mo
 {% code title="/ted/child.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
 /+  *strandio
-=>
 |%
-++  url  "https://sampledataapi.com/API/getcategory"
+++  url  "https://jsonplaceholder.typicode.com/todos/1"
++$  todo  [user-id=@ud id=@ud title=@t completed=?]
+++  decode
+  =,  dejs:format
+  (ot ['userId' ni] ['id' ni] ['title' so] ['completed' bo] ~)
 --
 |=  arg=vase
 =/  m  (strand:rand ,vase)
 ^-  form:m
-;<  =cord  bind:m  (fetch-cord url)
-(pure:m !>(cord))
+;<  =json  bind:m  (fetch-json url)
+(pure:m !>(`todo`(decode json)))
 ```
 
-`child.hoon` simply grabs the JSON response from https://sampledataapi.com/ and returns it as a cord.  (There is also a `++fetch-json:strandio` gate that could be employed here.)
+`child.hoon` simply grabs the JSON response from https://jsonplaceholder.typicode.com and converts it to a noun.
 
 `parent.hoon` is a bit more complicated so we'll look at it line-by-line
 
@@ -154,19 +157,19 @@ Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`
 ;<  =bowl:rand  bind:m  get-bowl
 =/  tid  `@ta`(cat 3 'strand_' (scot %uv (sham %child eny.bowl)))
 %-  (slog leaf+"Starting child thread..." ~)
-;<  ~             bind:m  %-  poke-our
-                          :*  %spider
-                              %spider-start
-                              !>([`tid.bowl byk.bowl(r da+now.bowl) `tid %child !>(~)])
-                          ==
-;<  ~             bind:m  (sleep ~s5)
+;<  ~           bind:m  %-  poke-our
+                        :*  %spider
+                            %spider-start
+                            !>([`tid.bowl byk.bowl(r da+now.bowl) `tid %child !>(~)])
+                        ==
+;<  ~           bind:m  (sleep ~s5)
 %-  (slog leaf+"Stopping child thread..." ~)
-;<  ~             bind:m  %-  poke-our
-                          :*  %spider
-                              %spider-stop
-                              !>([tid %.y])
-                          ==
-;<  ~             bind:m  (sleep ~s2)
+;<  ~           bind:m  %-  poke-our
+                        :*  %spider
+                            %spider-stop
+                            !>([tid %.y])
+                        ==
+;<  ~           bind:m  (sleep ~s2)
 (pure:m !>("Done"))
 ```
 {% endcode %}

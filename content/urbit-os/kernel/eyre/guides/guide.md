@@ -6,7 +6,7 @@ General documentation of the `task`s and methods described here are available in
 
 ## Basic {#basic}
 
-Eyre's channel system is the typical way of interacting with Gall agents from an HTTP client. It provides a simple JSON API for actions like pokes, watches, etc, and an SSE event stream for subscription updates. Additionally, Eyre has a scry interface so you can retrieve data in a more ad-hoc manner. These examples use `curl` to be more language agnostic and to show the nitty-gritty details. In practice you'd probably use an "airlock" library (like [http-api](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) for Javascript) which abstracts things like ack'ing events, incrementing event IDs, manually composing the JSON for actions, etc.
+Eyre's channel system is the typical way of interacting with Gall agents from an HTTP client. It provides a simple JSON API for actions like pokes, watches, etc, and an SSE event stream for subscription updates. Additionally, Eyre has a scry interface so you can retrieve data in a more ad-hoc manner. These examples use `curl` to be more language agnostic and to show the nitty-gritty details. In practice you'd probably use an "airlock" library (like [http-api](https://github.com/urbit/js-http-api) for Javascript) which abstracts things like ack'ing events, incrementing event IDs, manually composing the JSON for actions, etc.
 
 It's advisable to have a read through the [External API Reference](../reference/external-api-ref.md) before going through these examples.
 

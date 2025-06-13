@@ -13,7 +13,7 @@ There are four basic ways to represent text in Urbit:
 * `@tas`, a `$term` used primarily for constants, which is an atom (single value)
 * `$tape`, which is a `(list @t)`
 
-This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_\(computer_science\)), however.
+This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_(computer_science)), however.
 
 What are the applications of each?
 

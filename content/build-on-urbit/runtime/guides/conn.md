@@ -192,7 +192,7 @@ Examples:
 
 ### click {#click}
 
-[click](https://github.com/urbit/vere/blob/develop/bin/click) is a `bash` thin client which auto-formats `-eval` and `-khan-eval` thread calls via `%fyrd` requests to `conn.c` and coordinates chaining together the appropriate commands to execute those requests on a running ship.
+[click](https://github.com/urbit/tools/tree/master/pkg/click) is a `bash` thin client which auto-formats `-eval` and `-khan-eval` thread calls via `%fyrd` requests to `conn.c` and coordinates chaining together the appropriate commands to execute those requests on a running ship.
 
 Using click, a call like:
 ```

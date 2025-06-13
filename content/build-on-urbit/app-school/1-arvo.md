@@ -27,7 +27,7 @@ Here's a brief summary of each of the vanes:
 
 Gall agents live in "userspace" as opposed to "kernelspace". Kernelspace is Arvo and its nine vanes. Userspace is primarily Gall agents, generators, threads, front-ends, and all of their related files in Clay. The distinction looks something like this:
 
-[![](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)
+![](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)
 
 By and large, Gall _is_ the userspace vane - the majority of userspace is either Gall agents, or things used by Gall agents. Apart from the agents themselves, there's also:
 

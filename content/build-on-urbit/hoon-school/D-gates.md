@@ -352,7 +352,7 @@ Hoon source files are composed almost entirely of the printable ASCII characters
 
 Implement the triangular function as a gate and save it as a generator `tri.hoon`.
 
-![](https://lh4.googleusercontent.com/zdauTDEWvhhOkFEb6VcDEJ4SITsHOgcStf4NYFQSIVjTDPjaCqYGdin9TDCCeTG3OyMrUUdq-JtViiu_c9wuojim_mHpV6-DoTNwZzYz5_6qVVvN5fc3hEuSna2GwY15RQ=w740)
+![](https://media.urbit.org/docs/hoon-school/plot-triangular.png)
 
 ### Coding Piecemeal <a href="#coding-piecemeal" id="coding-piecemeal"></a>
 

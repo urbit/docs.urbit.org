@@ -47,7 +47,7 @@ Consider for a moment how you would represent a regular decimal fraction if you 
 
 Most systems use floating-point mathematics to solve this problem. For instance, single-precision floating-point mathematics designate one bit for the sign, eight bits for the exponent (which has 127 subtracted from it), and twenty-three bits for the significand.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/640px-Float_example.svg.png)
+![](https://media.urbit.org/docs/hoon-school/Float_example.png)
 
 This number, `0b11.1110.0010.0000.0000.0000.0000.0000`, is converted to decimal as $$(-1)^0 \times 2^{(124 - 127)} \times 1.25 = 2^{-3} \times 1.25 = 0.15625$$.
 
@@ -785,11 +785,11 @@ Produce a normally-distributed random number generator using the uniform RNG des
 
 The normal distribution, or bell curve, describes the randomness of measurement. The mean, or average value, is at zero, while points fall farther and farther away with increasingly less likelihood.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/640px-Standard_deviation_diagram.svg.png)
+![](https://storage.googleapis.com/media.urbit.org/docs/hoon-school/Standard_deviation_diagram.png)
 
 One way to get from a uniform random number to a normal random number is [to use the uniform random number as the _cumulative distribution function_ (CDF)](https://www.omscs-notes.com/simulation/generating-uniform-random-numbers/), an index into “how far” the value is along the normal curve.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Normal_Distribution_CDF.svg/640px-Normal_Distribution_CDF.svg.png)
+![](https://storage.googleapis.com/media.urbit.org/docs/hoon-school/Normal_Distribution_CDF.png)
 
 This is an approximation which is accurate to one decimal place:
 

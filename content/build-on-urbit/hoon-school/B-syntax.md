@@ -470,7 +470,7 @@ We will use these incidentally for now and explain their characteristics in a la
 
 A cord (`@t`) represents text as a sequence of characters. If you know the [ASCII](https://en.wikipedia.org/wiki/ASCII) value for a particular character, you can identify how the text is structured as a number. (This is most easily done using the hexadecimal `@ux` representation due to bit alignment.)
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ASCII-Table-wide.svg/1024px-ASCII-Table-wide.svg.png)
+![](https://media.urbit.org/docs/hoon-syntax/ASCII-Table-wide.png)
 
 If you produce a text string as a cord, you can see the internal structure easily in Hoon:
 

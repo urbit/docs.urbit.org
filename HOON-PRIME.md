@@ -150,7 +150,7 @@ Hoon Prime should also adopt a standard of [literate programming](https://en.wik
 
 Our userspace code accessibility model should allow contributors from widely different skill levels to interact. We need to surface and document code patterns as cleanly as possible in the code we distribute.
 
-We need to upgrade as much code as possible to A standards [per the style guide](./hoon/guides/style.md#grading).
+We need to upgrade as much code as possible to A standards per the Hoon Style Guide.
 
 ## Gall agents
 
@@ -189,6 +189,6 @@ We need to include comments and unit tests so people can see how and why code wo
 ## References
 
 This document has benefited from a decade of Hoon code and organic best practices.
-- [“Hoon Style Guide”](./hoon/guides/style.md)
+- [“Hoon Style Guide”](https://docs.urbit.org/hoon/guides/style)
 - [“Urbit Precepts”](https://urbit.org/blog/precepts)
 - [Alex Feinman, “Design Principles for Programming Languages, Part 2a: Readability, Expressability, Concision, and Regularity”](https://afeinman.medium.com/design-principles-2a-1874c14975ab)

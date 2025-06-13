@@ -28,7 +28,7 @@ The transaction processing library is [`/lib/naive.hoon`](flow.md#naive).
 
 The following diagram illustrates `%azimuth`'s and `%eth-watcher`'s role in the system.
 
-![](https://media.urbit.org/docs/layer2/l2-azimuth-azimuth.svg)
+![](https://media.urbit.org/docs/layer2/l2-azimuth-azimuth.png)
 
 The state held by `%azimuth` is the following.
 
@@ -67,7 +67,7 @@ Scries can be inferred from the `+on-peek` arm:
 
 `%eth-watcher`, located at `/app/eth-watcher.hoon`, is responsible for listening to an Ethereum node and collecting event logs from it. It is general-purpose and not particular to Azimuth. It sends collected transactions to `+on-agent` in `%azimuth`, which then obtains the resulting PKI state transitions by passing them to [`naive.hoon`](flow.md#naive).
 
-[![](https://media.urbit.org/docs/layer2/roller-agents.png)](https://media.urbit.org/docs/layer2/roller-agents.png)
+![](https://media.urbit.org/docs/layer2/roller-agents.png)
 
 ### `%roller` <a href="#roller" id="roller"></a>
 
@@ -75,11 +75,11 @@ Scries can be inferred from the `+on-peek` arm:
 
 The following diagram illustrates how the roller interacts with Bridge and Ethereum at a high level.
 
-[![](https://media.urbit.org/docs/layer2/l2-high.png)](https://media.urbit.org/docs/layer2/l2-high.png)
+![](https://media.urbit.org/docs/layer2/l2-high.png)
 
 The relationship between the roller and other agents is outlined in the following diagram.
 
-[![](https://media.urbit.org/docs/layer2/roller-agents.png)](https://media.urbit.org/docs/layer2/roller-agents.png)
+![](https://media.urbit.org/docs/layer2/roller-agents.png)
 
 `%roller` has a number of scries available, intended primarily to display data to the end user in Bridge. They can be inferred from the `+on-peek` arm:
 

@@ -2,17 +2,13 @@
 
 Here's an example of a thread that scries ames for the IP address & port of a ship and nicely prints it:
 
-#### `get-ip.hoon`
-
+{% code title="/ted/get-ip.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
-/-  spider
 /+  strandio
-=,  strand=strand:spider
-=,  strand-fail=strand-fail:libstrand:spider
 |%
 ++  process-lanes
   |=  [target=@p lanes=(list lane:ames)]
-  =/  m  (strand ,~)
+  =/  m  (strand:rand ,~)
   ^-  form:m
   ?~  `(list lane:ames)`lanes
     %-  (slog leaf+"No route for {(scow %p target)}." ~)
@@ -26,22 +22,22 @@ Here's an example of a thread that scries ames for the IP address & port of a sh
   %-  (slog leaf+"{ip}:{port}" ~)
   (pure:m ~)
 --
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 =/  utarget  !<  (unit @p)  arg
 ?~  utarget
-  (strand-fail %no-arg ~)
+  (strand-fail:rand %no-arg ~)
 =/  target  u.utarget
 ;<  lanes=(list lane:ames)  bind:m  (scry:strandio (list lane:ames) /ax//peers/(scot %p target)/forward-lane)
 ;<  ~                       bind:m  (process-lanes target lanes)
 (pure:m !>(~))
 ```
+{% endcode %}
 
 **Note:** Pretty useless on a fake ship.
 
-Save as `ted/get-ip.hoon` in the `%base` desk, `|commit %base`, and run it with `-get-ip ~bitbet-bolbel`. You should see something like:
+Save as `/ted/get-ip.hoon` in the `%base` desk, `|commit %base`, and run it with `-get-ip ~bitbet-bolbel`. You should see something like:
 
 ```
 34.83.113.220:60659
@@ -49,7 +45,7 @@ Save as `ted/get-ip.hoon` in the `%base` desk, `|commit %base`, and run it with 
 
 ### Analysis {#analysis}
 
-Here we use the `strandio` function `scry` which takes an argument of `[mold path]` where:
+Here we use the `strandio` function `+scry` which takes an argument of `[mold path]` where:
 
 - `mold` is the return type of the scry
 - `path` is the scry path formatted like:
@@ -63,4 +59,4 @@ In our case the mold is `(list lane:ames)` and the path is `/ax//peers/(scot %p 
 ;<  lanes=(list lane:ames)  bind:m  (scry:strandio (list lane:ames) /ax//peers/(scot %p target)/forward-lane)
 ```
 
-After that we just process the result in `++ process-lanes` and print it.
+After that we just process the result in `+process-lanes` and print it.

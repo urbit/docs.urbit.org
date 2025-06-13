@@ -1,56 +1,30 @@
 # Poke Agent
 
-Here's a thread that lets you post a message to a chat in graph-store:
+Here's a thread that sends a `|hi` to a ship via the `%hood` agent:
 
-#### `post-msg.hoon`
-
+{% code title="/ted/send-hi.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
-/-  spider
-/+  *strandio, *graph-store, *resource
-=,  strand=strand:spider
-=>
-|%
-++  make-post
-  |=  [our=ship now=@da res=resource msg=@t]
-  ^-  cage
-  ::
-  =/  =post  *post
-  =:  author.post     our
-      index.post      ~[now]
-      time-sent.post  now
-      contents.post   ~[[%text msg]]
-  ==
-  ::
-  :-  %graph-update
-  !>  ^-  update
-  :+  %0  now
-  :+  %add-nodes  res
-  %-  ~(gas by *(map index node))
-  ~[[~[now] [post ~[%empty]]]]
---
-^-  thread:spider
+/+  *strandio
 |=  arg=vase
-=/  m  (strand ,vase)
-=/  uarg  !<  (unit (pair resource @t))  arg
+=/  m  (strand:rand ,vase)
+=/  uarg  !<  (unit @p)  arg
 ?~  uarg
-  (strand-fail %no-arg ~)
-=/  res  p.u.uarg
-=/  msg  q.u.uarg
+  (strand-fail:rand %no-arg ~)
+=/  =ship  u.uarg
 ^-  form:m
 ;<  our=@p   bind:m  get-our
 ;<  now=@da  bind:m  get-time
-;<  ~        bind:m  (poke [our %graph-push-hook] (make-post our now res msg))
+;<  ~        bind:m  (poke [our %hood] helm-send-hi+!>([ship ~]))
 (pure:m !>(~))
 ```
+{% end-code %}
 
 Save it in `/ted` of the `%base` desk, `|commit %base`, and run it like:
 
 ```
--post-msg [~zod %foo-9955] 'some message'
+-send-hi ~zod
 ```
-
-(obviously change the channel name to whatever you have)
 
 ### Analysis {#analysis}
 
-Pretty simple, just use `on-poke` with an argument of `[ship term] cage` where `term` is the agent and `cage` is whatever the particular agent expects.
+Pretty simple, just use `+poke` with an argument of `[ship term] cage` where `term` is the agent and `cage` is whatever the particular agent expects.

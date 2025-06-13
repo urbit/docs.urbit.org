@@ -5,58 +5,52 @@ A strand produces a `[(list card) <response>]`. The first part is a list of card
 - `[%wait ~]`
 - `[%skip ~]`
 - `[%cont self=(strand-form-raw a)]`
-- `[%fail err=(pair term tang)]`
+- `[%fail err=error]`
 - `[%done value=a]`
 
 So, for example, if you feed `2 2` into the following function:
 
 ```hoon
-  |=  [a=@ud b=@ud]
-  =/  m  (strand ,vase)
-  ^-  form:m
-  =/  res  !>(`@ud`(add a b))
-  (pure:m res)
+|=  [a=@ud b=@ud]
+=/  m  (strand:rand ,vase)
+^-  form:m
+=/  res  !>(`@ud`(add a b))
+(pure:m res)
 ```
 
 The resulting strand won't just produce `[#t/@ud q=4]`, but rather `[~ %done [#t/@ud q=4]]`.
 
-**Note:** that spider doesn't actually return the codes themselves to thread subscribers, they're only used internally to manage the flow of the thread.
+**Note:** that Spider doesn't actually return the codes themselves to thread subscribers, they're only used internally to manage the flow of the thread.
 
 Since a strand is a function from the previously discussed `strand-input` to the output discussed here, you can compose a valid strand like:
 
 ```hoon
-|=  strand-input:strand
+|=  strand-input:rand
 [~ %done 'foo']
 ```
 
 So this is a valid thread:
 
 ```hoon
-/-  spider
-=,  strand=strand:spider
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
-|=  strand-input:strand
+|=  strand-input:rand
 [~ %done arg]
 ```
 
 As is this:
 
 ```hoon
-/-  spider
-=,  strand=strand:spider
 |%
 ++  my-function
-  =/  m  (strand ,@t)
+  =/  m  (strand:rand ,@t)
   ^-  form:m
-  |=  strand-input:strand
+  |=  strand-input:rand
   [~ %done 'foo']
 --
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  msg=@t  bind:m  my-function
 (pure:m !>(msg))
@@ -65,13 +59,10 @@ As is this:
 As is this:
 
 ```hoon
-/-  spider
-=,  strand=strand:spider
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
-|=  strand-input:strand
+|=  strand-input:rand
 =/  umsg  !<  (unit @tas)  arg
 ?~  umsg
 [~ %fail %no-arg ~]
@@ -96,11 +87,11 @@ Now let's look at the meaning of each of the response codes.
 
 ### wait {#wait}
 
-Wait tells spider not to move on from the current strand, and to wait for some new input. For example, `sleep:strandio` will return a `[%wait ~]` along with a card to start a behn timer. Spider passes the card to behn, and when behn sends a wake back to spider, the new input will be given back to `sleep` as a `%sign`. Sleep will then issue `[~ %done ~]` and (assuming it's in a `bind`) `bind` will proceed to the next strand.
+Wait tells spider not to move on from the current strand, and to wait for some new input. For example, `+sleep:strandio` will return a `[%wait ~]` along with a card to start a Behn timer. Spider passes the card to Behn, and when Behn sends a wake back to Spider, the new input will be given back to `+sleep` as a `%sign`. Sleep will then issue `[~ %done ~]` and (assuming it's in a `+bind`) `+bind` will proceed to the next strand.
 
 ### skip {#skip}
 
-Spider will normally treat a `%skip` the same as a `%wait` and just wait for some new input. When used inside a `main-loop:strandio`, however, it will instead tell `main-loop` to skip this function and try the next one with the same input. This is very useful when you want to call different functions depending on the mark of a poke or some other condition.
+Spider will normally treat a `%skip` the same as a `%wait` and just wait for some new input. When used inside a `+main-loop:strandio`, however, it will instead tell `+main-loop` to skip this function and try the next one with the same input. This is very useful when you want to call different functions depending on the mark of a poke or some other condition.
 
 ### cont {#cont}
 
@@ -112,4 +103,4 @@ Fail says to end the thread here and don't call any subsequent strands. It inclu
 
 ### done {#done}
 
-Done means the computation was completed successfully and includes the result. When `spider` recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `bind` receives a `%done` it will extract the result and call the next gate with it.
+Done means the computation was completed successfully and includes the result. When Spider recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `bind` receives a `%done` it will extract the result and call the next gate with it.

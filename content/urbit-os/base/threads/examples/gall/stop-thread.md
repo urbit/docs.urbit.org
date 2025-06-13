@@ -1,9 +1,11 @@
 # Stop Thread
 
-Here we've added one last card to `on-poke` to stop the thread and a little extra to `on-agent` to print things for demonstrative purposes.
+Here's an example agent with an extra card in `on-poke` to stop the thread and a little extra in `on-agent` to print things for demonstrative purposes. We run the thread by poking Spider directly because we need to know the thread ID in order to stop it. In this example we use a thread file, but an inline thread could also be used.
 
-#### `thread-starter.hoon`
+<details>
+<summary>/app/thread-starter.hoon code</summary>
 
+{% code title="/app/thread-starter.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
 /+  default-agent, dbug
 =*  card  card:agent:gall
@@ -84,18 +86,17 @@ Here we've added one last card to `on-poke` to stop the thread and a little extr
 ++  on-fail   on-fail:def
 --
 ```
+{% endcode %}
 
-We've also added a `sleep` to the thread to keep it running for demonstration.
+</details>
 
-#### `test-thread.hoon`
+We've added a `sleep` to the thread to keep it running for demonstration:
 
+{% code title="/ted/test-thread.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
-/-  spider
 /+  *strandio
-=,  strand=strand:spider
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  =path   bind:m  take-watch
 ;<  ~       bind:m  (send-raw-card [%give %fact ~[path] %update !>("message 1")])
@@ -106,12 +107,13 @@ We've also added a `sleep` to the thread to keep it running for demonstration.
                     ==
 ;<  ~       bind:m  (send-raw-card [%give %kick ~[path] ~])
 ;<  ~       bind:m  (sleep ~m1)
-|=  strand-input:strand
+|=  strand-input:rand
 ?+    q.arg  [~ %fail %not-foo ~]
     %foo
   [~ %done arg]
 ==
 ```
+{% endcode %}
 
 Save these, `|commit`, and run with `:thread-starter [%test-thread %foo]`. You should see:
 

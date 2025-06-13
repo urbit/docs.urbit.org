@@ -15,12 +15,12 @@ Type systems provide type safety, in part by making sure functions produce value
 A "type" is really a rule for interpretation. But for our Hoonish purposes, it's rather too broad a notion and we need to clarify some different kinds of things we could refer to as “type”. It is instructive for learners to distinguish three kinds of types in Hoon:
 
 1. Atoms: values with auras.
-2. [Molds](../../glossary/mold.md):  structures. Think of cells, lists, and sets.
-3. [Marks](../../glossary/mark.md):  file types. Compare to conventional files distinguished by extension and definite internal structure.
+2. Molds: structures. Think of cells, lists, and sets.
+3. Marks: file types. Compare to conventional files distinguished by extension and definite internal structure.
 
 To employ a chemical metaphor, an atom is an atom; a cell is a molecule; a mold is an molecule definition, a template or structural representation; a mark is like a protein, a more complex transformation rule. **All of these are molds, or Hoon types. We are simply separating them by complexity as you learn.**
 
-You have seen and worked with the trivial atoms and cells. We will leave marks until a later discussion of [Gall](../../glossary/gall.md) [agents](../../glossary/agent.md) or the [Clay](../../glossary/clay.md) filesystem, which use marks to type file data. For now, we focus on [molds](../../glossary/mold.md).
+You have seen and worked with the trivial atoms and cells. We will leave marks until a later discussion of Gall agents or the Clay filesystem, which use marks to type file data. For now, we focus on molds.
 
 This lesson will talk about atoms, cells, then molds in a general sense. We allude to several topics which will be explored in Data Structures.
 
@@ -29,7 +29,7 @@ This lesson will talk about atoms, cells, then molds in a general sense. We allu
 
 In the most straightforward sense, atoms simply are unsigned integers. But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more. Every atom is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each atom, and this bit of metadata tells Hoon how to interpret the atom in question.
 
-The piece of type information that determines how Hoon interprets an atom is called an [aura](../../glossary/aura.md). The set of all atoms is indicated with the symbol `@`. An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal. Accordingly, the Hoon type system does more than track sets of values. It also tracks certain other relevant metadata about how those values are to be interpreted.
+The piece of type information that determines how Hoon interprets an atom is called an aura. The set of all atoms is indicated with the symbol `@`. An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal. Accordingly, the Hoon type system does more than track sets of values. It also tracks certain other relevant metadata about how those values are to be interpreted.
 
 How is aura information generated so that it can be tracked?  One way involves **type inference**. In certain cases Hoon's type system can infer the type of an expression using syntactic clues. The most straightforward case of type inference is for a [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) expression of data, such as `0x1000` for `@ux`. Hoon recognizes the aura literal syntax and infers that the data in question is an atom with the aura associated with that syntax.
 
@@ -59,7 +59,7 @@ Let's try one in the Dojo.
 15
 ```
 
-Because `@ud` is the inferred type of `15`, the cast succeeds. Notice that the `^-` kethep expression never does anything to modify the underlying [noun](../../glossary/noun.md) of the second subexpression. It's used simply to mandate a type-check on that expression. This check occurs at compile-time (when the expression is compiled to [Nock](../../glossary/nock.md)).
+Because `@ud` is the inferred type of `15`, the cast succeeds. Notice that the `^-` kethep expression never does anything to modify the underlying noun of the second subexpression. It's used simply to mandate a type-check on that expression. This check occurs at compile-time (when the expression is compiled to Nock).
 
 What if the inferred type doesn't fit under the cast type?  You will see a "nest-fail" crash at compile-time:
 
@@ -299,7 +299,7 @@ Because every piece of Hoon data is a noun, everything nests under `*`. When you
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS156%20-%20Molds.mp4" %}
 
-A [mold](../../glossary/mold.md) is a template or rule for identifying actual type structures. They are actually gates, meaning that they operate on a value to coerce it to a particular structure. Technically, a mold is a function from a noun to a noun. What this means is that we can use a mold to map any noun to a typed value; if this fails, then the mold crashes.
+A mold is a template or rule for identifying actual type structures. They are actually gates, meaning that they operate on a value to coerce it to a particular structure. Technically, a mold is a function from a noun to a noun. What this means is that we can use a mold to map any noun to a typed value; if this fails, then the mold crashes.
 
 ```hoon
 > (^ [1 2])
@@ -328,7 +328,7 @@ We commonly need to do one of two things with a mold:
     dojo: hoon expression failed
     ```
 
-2. Produce an example value ([bunt](../../glossary/bunt.md)).
+2. Produce an example value (bunt).
 
 We often use bunts to clam; for example `@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
 
@@ -356,7 +356,7 @@ One more way to validate against type is to use an example instead of the extrac
 
 (This is what `^-` is actually doing: `^-(p q)` reduces to `^+(^*(p) q)`. Many runes we use actually reduce to other rune forms, and have been introduced for ease of use.)
 
-We can use more complex structures for molds though, including built-in types like [lists](../../glossary/list.md) and [tapes](../../glossary/tape.md). (A `$tape` represents text.)
+We can use more complex structures for molds though, including built-in types like lists and tapes. (A `$tape` represents text.)
 
 ```hoon
 `(list @)`[104 101 108 108 111 32 77 97 114 115 33 ~]

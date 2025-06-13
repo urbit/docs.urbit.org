@@ -6,7 +6,7 @@ HTTP requests come in from clients (web frontends, mobile apps, etc.) and Eyre p
 
 ## Authentication {#authentication}
 
-Most types of HTTP request require the client to provide a valid session cookie, which is given to the client by the [ship](../../../glossary/ship.md) when the user logs in with their web login code. This process is documented in the [Authentication](reference/external-api-ref.md#authentication) section of Eyre's [External API Reference](reference/external-api-ref.md).
+Most types of HTTP request require the client to provide a valid session cookie, which is given to the client by the ship when the user logs in with their web login code. This process is documented in the [Authentication](reference/external-api-ref.md#authentication) section of Eyre's [External API Reference](reference/external-api-ref.md).
 
 ## The Channel System {#the-channel-system}
 
@@ -18,15 +18,15 @@ Detailed documentation of the channel system's JSON API is provided in Eyre's [E
 
 ## Scrying {#scrying}
 
-You can make read-only requests to Eyre with HTTP GET requests or [scries](../../../glossary/scry.md). Eyre's scry interface documented in the [Scry](reference/external-api-ref.md#scry) section of the [External API Reference](reference/external-api-ref.md).
+You can make read-only requests to Eyre with HTTP GET requests or scries. Eyre's scry interface documented in the [Scry](reference/external-api-ref.md#scry) section of the [External API Reference](reference/external-api-ref.md).
 
 ## Threads {#threads}
 
-You can also run [threads](../../../glossary/thread.md) directly through Eyre via HTTP request. The [API for this](../../base/threads/guides/http-api.md) is not part of Eyre itself, so is documented in the seperate [Threads](../../base/threads) section.
+You can also run threads directly through Eyre via HTTP request. The [API for this](../../base/threads/guides/http-api.md) is not part of Eyre itself, so is documented in the seperate [Threads](../../base/threads) section.
 
 ## Generators {#generators}
 
-[Generators](../../../glossary/generator.md) (Hoon scripts) can also be used by clients via Eyre. These don't have a JSON API, but handle HTTP requests and return HTTP responses directly.
+Generators (Hoon scripts) can also be used by clients via Eyre. These don't have a JSON API, but handle HTTP requests and return HTTP responses directly.
 
 This usage is uncommon, but is explained in the [`%serve`](reference/tasks.md#serve) section of Eyre's [Internal API Reference](reference/tasks.md). A practical example is provided in the [Generators](guides/guide.md#generators) section of the Eyre [guide](guides/guide.md).
 

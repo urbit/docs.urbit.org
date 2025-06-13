@@ -16,7 +16,7 @@ If you will be keeping your ship at the same Ethereum ownership address and woul
 * Click on `OS: Urbit OS Settings` at the bottom, then click `Reset Networking Keys`.
 * Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction` and wait for the progress bar to appear.
 * Download your new keyfile following these instructions: [Generate your keyfile](using-bridge.md#generate-your-keyfile).
-* Delete or archive your old [pier](../../glossary/pier.md).
+* Delete or archive your old pier.
 * Proceed to [boot your ship](../../get-on-urbit.md#boot-up-your-urbit) with the new keyfile.
 * Delete your keyfile after successfully booting.
 * Rejoin your favorite chat channels and subscriptions.
@@ -28,14 +28,14 @@ If you are transferring a ship to a new Ethereum ownership address you will have
 * Enter the new Ethereum address you would like to transfer ownership to. Click `Generate & Sign Transaction`, then click `Send Transaction` and wait for the progress bar to complete.
 * Logout of your current session in Bridge by clicking `Logout` at the top, and then login to your new ownership address.
 * From here, following the directions on how to [Accept your transfer](using-bridge.md#accept-your-transfer), [Set your networking keys](using-bridge.md#set-your-networking-keys), and [Generate your keyfile](using-bridge.md#generate-your-keyfile). The option whether or not to reset is in the Accept your Transfer step.
-* Delete or archive your old [pier](../../glossary/pier.md).
+* Delete or archive your old pier.
 * Proceed to [boot your ship](../../get-on-urbit.md#boot-up-your-urbit) with the new keyfile.
 * Delete your keyfile after successfully booting.
 * Rejoin your favorite chat channels and subscriptions.
 
 ## Network Resets <a href="#network-resets" id="network-resets"></a>
 
-Network resets were events where all ships on the network were required to update to a new continuity era. Network resets happened when an Arvo update was released that could not be implemented via an [OTA update](../../glossary/ota-updates.md). The continuity era is given by an integer in Ames that is incremented when the network resets. Only ships with the same such value are able to communicate with one another. The most recent network reset occurred in December 2020, and we expect it to have been the final one.
+Network resets were events where all ships on the network were required to update to a new continuity era. Network resets happened when an Arvo update was released that could not be implemented via an OTA update. The continuity era is given by an integer in Ames that is incremented when the network resets. Only ships with the same such value are able to communicate with one another. The most recent network reset occurred in December 2020, and we expect it to have been the final one.
 
 If another network reset does occur, we will provide accompanying documentation on what to do to transfer your ship and all of its data to the new era.
 

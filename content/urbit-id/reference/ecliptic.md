@@ -1,6 +1,6 @@
 # Ecliptic.eth
 
-[Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by [galaxy vote](../../glossary/upgrade.md). This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
+[Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by galaxy vote. This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.
 
 `Ecliptic.eth` uses external contracts such as [Azimuth.eth](azimuth-eth.md) and [Polls](https://github.com/urbit/azimuth/blob/master/contracts/Polls.sol) for data storage so that it can easily be replaced in case the logic needs to be changed without affecting the data. These data contracts are owned by `Ecliptic.eth`, and this ownership is passed to the new Ecliptic contract whenever it is replaced. Thus it is advised for clients to not store Ecliptic's contract address directly, but instead ask the `Azimuth.eth` contract for its `owner` attribute to ensure that transactions are sent to the latest Ecliptic contract. Alternatively, the [ENS](https://ens.domains/) name `Ecliptic.eth` will always resolve to the latest Ecliptic.
 
@@ -205,7 +205,7 @@ Corresponds to the layer 2 `%set-transfer-proxy` action.
 
 ### Poll actions <a href="#poll-actions" id="poll-actions"></a>
 
-Most of these are functions only available to galaxies. They are related to [voting](../../glossary/voting.md). As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
+Most of these are functions only available to galaxies. They are related to voting. As voting does not occur on layer 2, there are no corresponding layer 2 actions for poll actions.
 
 Upgrade and document polls last for 30 days, or once a majority is achieved, whichever comes first. If a majority (129) of yes or no votes is achieved, the final vote cast in favor of the winning option also triggers `updateUpgradePoll` or `updateDocumentPoll` as appropriate. Otherwise, if a quorum of 64 votes is achieved, with a majority voting for yes, and the 30 day voting period has expired, then _any_ Ethereum address may call `updateUpgradePoll` or `updateDocumentPoll` as appropriate.
 

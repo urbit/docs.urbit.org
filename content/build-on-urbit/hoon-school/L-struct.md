@@ -1,6 +1,6 @@
 # 11. Data Structures
 
-_This module will introduce you to several useful data structures built on the [door](../../glossary/door.md), then discuss how the compiler handles types and the [sample](../../glossary/sample.md)._
+_This module will introduce you to several useful data structures built on the door, then discuss how the compiler handles types and the sample._
 
 
 ## Key Data Structures and Molds {#key-data-structures-and-molds}
@@ -19,7 +19,7 @@ There are two kinds of `+tree` in Hoon:
     2. The left child of the node.
     3. The right child of the node.
 
-Each child is itself a tree. The node value has the [face](../../glossary/face.md) `n`, the left child has the face `l`, and the right child has the face `r`. The following diagram provides an illustration of a `(tree @)` (without the faces):
+Each child is itself a tree. The node value has the face `n`, the left child has the face `l`, and the right child has the face `r`. The following diagram provides an illustration of a `(tree @)` (without the faces):
 
 ```
           12
@@ -38,7 +38,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.: `(tree @)
 {4 8 12 14 16}
 ```
 
-Notice that we don't have to insert the faces manually; by casting the [noun](../../glossary/noun.md) above to a `(tree @)` Hoon inserts the faces for us. Let's put this noun in the Dojo [subject](../../glossary/subject.md) with the face "b" and pull out the tree at the left child of the `12` node:
+Notice that we don't have to insert the faces manually; by casting the noun above to a `(tree @)` Hoon inserts the faces for us. Let's put this noun in the Dojo subject with the face "b" and pull out the tree at the left child of the `12` node:
 
 ```hoon
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
@@ -94,7 +94,7 @@ The `.nedl` is the atom to be replaced, `.hay` is the tree, and `.new` is the ne
 
 ### `+set` {#set}
 
-A [set](../../hoon/reference/stdlib/2o.md#set) is rather like a [list](../../glossary/list.md) except that each entry can only be represented once. As with a [map](../../hoon/reference/stdlib/2o.md#map), a `+set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values. (`+set`s also don't have an order, so they're basically a bag of unique values.)
+A [set](../../hoon/reference/stdlib/2o.md#set) is rather like a list except that each entry can only be represented once. As with a [map](../../hoon/reference/stdlib/2o.md#map), a `+set` is typically associated with a particular type, such as `(set @ud)` for a collection of decimal values. (`+set`s also don't have an order, so they're basically a bag of unique values.)
 
 `+set` operations are provided by [`+in`](../../hoon/reference/stdlib/2h.md#in). Most names are similar to `+map`/[`+by`](../../hoon/reference/stdlib/2i.md#by) operations when applicable.
 
@@ -166,7 +166,7 @@ Here's a program that takes two [sets](../../hoon/reference/stdlib/2o.md#set) of
 ==
 ```
 
-Save this as `cartesian.hoon` in your urbit's [pier](../../glossary/pier.md) and run in the dojo:
+Save this as `cartesian.hoon` in your urbit's pier and run in the dojo:
 
 ```hoon
 > =c `(set @)`(sy ~[1 2 3])
@@ -229,15 +229,15 @@ Rather than unwrap a [unit](../../hoon/reference/stdlib/1c.md#unit), one can mod
 
 (There are several others tools listed [on that page](../../hoon/reference/stdlib/2a.md) which may be potentially useful to you.)
 
-A [vase](../../glossary/vase.md) is a pair of type and value, such as that returned by `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar). A `$vase` is useful when transmitting data in a way that may lose its type information.
+A vase is a pair of type and value, such as that returned by `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar). A `$vase` is useful when transmitting data in a way that may lose its type information.
 
 ### Containers of Containers {#containers-of-containers}
 
 [maps](../../hoon/reference/stdlib/2o.md#map) and [sets](../../hoon/reference/stdlib/2o.md#set) are frequently used in the standard library and in the extended ecosystem. There are other common patterns which recur often enough that they have their own names:
 
-[`+jar`](../../hoon/reference/stdlib/2o.md#jar) is a mold for a `+map` of `+list`s. `+jar` uses the [`+ja`](../../hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a [list](../../glossary/list.md).)
+[`+jar`](../../hoon/reference/stdlib/2o.md#jar) is a mold for a `+map` of `+list`s. `+jar` uses the [`+ja`](../../hoon/reference/stdlib/2j.md#ja) core. (Mnemonic: jars hold solid ordered things, like a list.)
 
-[`+jug`](../../hoon/reference/stdlib/2o.md#jug) is a [mold](../../glossary/mold.md) for a `+map` of `+set`s. `+jug` uses the [`+ju`](../../hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../hoon/reference/stdlib/2o.md#set).)
+[`+jug`](../../hoon/reference/stdlib/2o.md#jug) is a mold for a `+map` of `+set`s. `+jug` uses the [`+ju`](../../hoon/reference/stdlib/2j.md#ju) core. (Mnemonic: jugs hold liquids, evoking the unordered nature of a [set](../../hoon/reference/stdlib/2o.md#set).)
 
 [`+mip`](../../hoon/reference/mip.md#mip) is a mold for a map of maps. `+mip` lives in the `%landscape` desk in `/lib/mip.hoon`. Affordances are still few but a short example follows:
 
@@ -281,7 +281,7 @@ Note that `+mip`s are unjetted and quite slow, but serve as a proof of concept.
 
 ### Modifying Gate Behavior {#modifying-gate-behavior}
 
-Sometimes you need to modify parts of a [core](../../glossary/core.md) (like a [gate](../../glossary/gate.md)) on-the-fly to get the desired behavior. For instance, if you are using [`+roll`](../../hoon/reference/stdlib/2b.md#roll) to calculate the multiplicative product of the elements of a list, this “just works”:
+Sometimes you need to modify parts of a core (like a gate) on-the-fly to get the desired behavior. For instance, if you are using [`+roll`](../../hoon/reference/stdlib/2b.md#roll) to calculate the multiplicative product of the elements of a list, this “just works”:
 
 ```hoon
 > (roll `(list @ud)`~[10 12 14 16 18] mul)  
@@ -297,7 +297,7 @@ In contrast, if you do the same thing to a list of numbers with a fractional par
 
 Why is this?  Let's peek inside the gates and see. Since we know a core
 is a cell of \[battery payload], let's take a look at the
-[payload](../../glossary/payload.md):
+payload:
 
 ```hoon
 > +:mul
@@ -311,14 +311,14 @@ The correct behavior for [+mul:rs](../../hoon/reference/stdlib/3b.md#mulrs) is r
 
 ### Custom Samples {#custom-samples}
 
-In an earlier exercise we created a [door](../../glossary/door.md) with [sample](../../glossary/sample.md) `[a=@ud b=@ud c=@ud]`. If we investigated, we would find that the initial value of each is `0`, the bunt value of `@ud`.
+In an earlier exercise we created a door with sample `[a=@ud b=@ud c=@ud]`. If we investigated, we would find that the initial value of each is `0`, the bunt value of `@ud`.
 
 ```hoon
 > +6:poly
 [a=0 b=0 c=0]
 ```
 
-What if we wish to define a door with a chosen sample value directly? We can make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#buccab) rune, whose irregular form is simply `_`. To create the door "poly" with the sample set to have certain values in the [Dojo](../../glossary/dojo.md), we would write
+What if we wish to define a door with a chosen sample value directly? We can make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#buccab) rune, whose irregular form is simply `_`. To create the door "poly" with the sample set to have certain values in the Dojo, we would write
 
 ```hoon
 > =poly |_  [a=_5 b=_4 c=_3]
@@ -331,7 +331,7 @@ What if we wish to define a door with a chosen sample value directly? We can mak
 31
 ```
 
-For our earlier example with [`+roll`](../../hoon/reference/stdlib/2b.md#roll), if we wanted to set the default sample to have a different value than the [bunt](../../glossary/bunt.md) of the type, we could use `_` cab:
+For our earlier example with [`+roll`](../../hoon/reference/stdlib/2b.md#roll), if we wanted to set the default sample to have a different value than the bunt of the type, we could use `_` cab:
 
 ```hoon
 > =mmul |=([a=_.1 b=_.1] (mul:rs a b))
@@ -342,7 +342,7 @@ For our earlier example with [`+roll`](../../hoon/reference/stdlib/2b.md#roll), 
 
 ### Named Tuples {#named-tuples}
 
-A named tuple is a structured collection of values with [faces](../../glossary/face.md). The `$:` [buccol](../../hoon/reference/rune/buc.md#buccol) rune forms a named tuple. We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` [buccol](../../hoon/reference/rune/buc.md#buccol) expression for `[a=@ b=@]`. Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
+A named tuple is a structured collection of values with faces. The `$:` [buccol](../../hoon/reference/rune/buc.md#buccol) rune forms a named tuple. We use these implicitly in an irregular form when we specify the sample of a gate, as `|=([a=@ b=@] (add a b))` expands to a `$:` [buccol](../../hoon/reference/rune/buc.md#buccol) expression for `[a=@ b=@]`. Otherwise, we only need these if we are building a special type like a vector (e.g. with two components like an _x_ and a _y_).
 
 ### Structure Mode {#structure-mode}
 
@@ -360,7 +360,7 @@ For instance, in eval mode if you use the irregular form `p=1` this is an irregu
 
 (Normally we have preferred `=/` [tisfas](../../hoon/reference/rune/tis.md#tisfas) in the Hoon School docs, but that is just for consistency.)
 
-In a [sample](../../glossary/sample.md) definition, such as in a [gate](../../glossary/gate.md), the statement is evaluated in structure mode; these are equivalent statements:
+In a sample definition, such as in a gate, the statement is evaluated in structure mode; these are equivalent statements:
 
 ```hoon
 |=(hello=@ hello)

@@ -7,7 +7,7 @@
 
 ## A Public-Key Infrastructure {#a-public-key-infrastructure}
 
-What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)? Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. [Azimuth](../../glossary/azimuth.md) functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
+What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)? Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. Azimuth functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
 
 Urbit ID (=Azimuth) provides persistent and stable futureproof identity to its users through a hierarchical address space. Any particular Urbit ID plays a particular role in the overall Urbit system which is determined by its point number and classified into ranks.
 
@@ -42,7 +42,7 @@ Many point numbers may be determined from the prefix and suffix alone, but plane
 
 #### Galaxy
 
-The [Galaxies](../../glossary/galaxy.md) span the first 2⁸ addresses of Azimuth. There are 255 (`0xff` - 1) associated stars; counting the galaxy yields 256 points (not counting moons). Galaxy names are suffix-only.
+The Galaxies span the first 2⁸ addresses of Azimuth. There are 255 (`0xff` - 1) associated stars; counting the galaxy yields 256 points (not counting moons). Galaxy names are suffix-only.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -58,7 +58,7 @@ At the current time, galaxies play the role of network peer discovery, but at so
 
 Peer discovery, the primary role of stars besides planet allocation, is an important step in responsibly controlling network traffic. You need someone trustworthy to sponsor your membership on the network. An address that can’t find a sponsor may reasonably be considered to be a bot or a spammer.
 
-The [Stars](../../glossary/star.md) span the remaining addresses to 2¹⁶. There are thus 65,536 - 256 = 65,280 stars. Star names have prefix and suffix. They share the suffix with their sponsoring galaxy.
+The Stars span the remaining addresses to 2¹⁶. There are thus 65,536 - 256 = 65,280 stars. Star names have prefix and suffix. They share the suffix with their sponsoring galaxy.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -70,7 +70,7 @@ A star's sponsor can be calculated as modulo 2⁸. The first star of \~zod is `0
 
 #### Planet
 
-The [Planets](../../glossary/planet.md) span the remaining addresses to 2³². There are thus 4,294,967,296 - 65,536 = 4,294,901,760 planets. Planet names occur in pairs separated by a single hyphen. A planet's name is obfuscated so it is not immediately apparent who its sponsor is.
+The Planets span the remaining addresses to 2³². There are thus 4,294,967,296 - 65,536 = 4,294,901,760 planets. Planet names occur in pairs separated by a single hyphen. A planet's name is obfuscated so it is not immediately apparent who its sponsor is.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -86,7 +86,7 @@ Star planets span the remaining space. The first star planet (of \~marzod) is `0
 
 #### Moon
 
-The [Moons](../../glossary/moon.md) occupy the block to 2⁶⁴, with 2³² moons for each planet. Moon names have more than two blocks (three or four) separated by single hyphens.
+The Moons occupy the block to 2⁶⁴, with 2³² moons for each planet. Moon names have more than two blocks (three or four) separated by single hyphens.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |
@@ -104,7 +104,7 @@ Any moon from \~dopzod-______-______ onwards is a planet moon.
 
 #### Comet
 
-The [Comets](../../glossary/comet.md) occupy the upper portion of the Urbit address space. There are approximately 3.4×10³⁸ comets, a fantastically large number. Comet names occur in blocks of five to eight syllable pairs, separated by a double hyphen at the fourth.
+The Comets occupy the upper portion of the Urbit address space. There are approximately 3.4×10³⁸ comets, a fantastically large number. Comet names occur in blocks of five to eight syllable pairs, separated by a double hyphen at the fourth.
 
 |              | First Address | Last Address |
 | ------------ | ------------- | ------------ |

@@ -2,7 +2,7 @@
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
 
-A Gall agent is a [door](../../glossary/door.md) with exactly ten [arms](../../glossary/arm.md). Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a [core](../../glossary/core.md) with a sample - it's made with the [barcab](../../hoon/reference/rune/bar.md#barcab) rune (`|_`) instead of the usual [barcen](../../hoon/reference/rune/bar.md#barcen) rune (`|%`).
+A Gall agent is a door with exactly ten arms. Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a core with a sample - it's made with the [barcab](../../hoon/reference/rune/bar.md#barcab) rune (`|_`) instead of the usual [barcen](../../hoon/reference/rune/bar.md#barcen) rune (`|%`).
 
 ## The ten arms {#the-ten-arms}
 

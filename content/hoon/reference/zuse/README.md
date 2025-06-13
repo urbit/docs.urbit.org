@@ -2,7 +2,7 @@
 
 Documentation for the `%base` desk's `/sys/zuse.hoon` library, which contains helper functions for the kernel.
 
-Zuse is the farthest downstream component of the kernel in terms of dependency, so its version number is used to represent the version of the kernel as a whole. For example, a new kernel release might be referred to as "410k" to refer to Zuse [kelvin version](../../../glossary/kelvin.md) 410.
+Zuse is the farthest downstream component of the kernel in terms of dependency, so its version number is used to represent the version of the kernel as a whole. For example, a new kernel release might be referred to as "410k" to refer to Zuse kelvin version 410.
 
 ## 2d: Formatting functions {#2d-formatting-functions}
 

@@ -22,7 +22,7 @@ Pretty much all conditional operators rely on loobeans, although it is very unco
 
 ## Noun Equality <a href="#noun-equality" id="noun-equality"></a>
 
-The most fundamental comparison in Hoon is provided by `.=` [dottis](../../hoon/reference/rune/dot.md#dottis), a test for equality of two [nouns](../../glossary/noun.md) using Nock 5. This is almost always used in its irregular form of `=` tis.
+The most fundamental comparison in Hoon is provided by `.=` [dottis](../../hoon/reference/rune/dot.md#dottis), a test for equality of two nouns using Nock 5. This is almost always used in its irregular form of `=` tis.
 
 ```hoon
 > =(0 0)
@@ -32,7 +32,7 @@ The most fundamental comparison in Hoon is provided by `.=` [dottis](../../hoon/
 %.n
 ```
 
-Since [Nock](../../glossary/nock.md) is unaware of the Hoon metadata type system, only bare [atoms](../../glossary/atom.md) in the nouns are compared. If you need to compare include type information, create vases with `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar).
+Since Nock is unaware of the Hoon metadata type system, only bare atoms in the nouns are compared. If you need to compare include type information, create vases with `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar).
 
 ```hoon
 > =('a' 97)
@@ -144,7 +144,7 @@ The logical operation `XOR` (i.e. _p_⊕_q_ ; exclusive disjunction) yields true
 | `%.y` | `%.n` | `%.y` |
 | `%.n` | `%.y` | `%.n` |
 
-* Implement `XOR` as a [gate](../../glossary/gate.md) in Hoon.
+* Implement `XOR` as a gate in Hoon.
 
 ```hoon
 |=  [p=?(%.y %.n) q=?(%.y %.n)]

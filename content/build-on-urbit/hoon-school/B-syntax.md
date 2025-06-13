@@ -14,7 +14,7 @@ In this lesson we will give a general overview of Hoon’s syntax. By the end of
 
 ## Hoon Elements {#hoon-elements}
 
-An [**expression**](https://en.wikipedia.org/wiki/Expression_%28computer_science%29) is a combination of characters that a language interprets and evaluates to produce a value. All Hoon programs are built of expressions, rather like mathematical equations. Hoon expressions are built along a backbone of [runes](../../glossary/rune.md), which are two-character symbols that act like keywords in other programming languages to define the syntax, or grammar, of the expression.
+An [**expression**](https://en.wikipedia.org/wiki/Expression_%28computer_science%29) is a combination of characters that a language interprets and evaluates to produce a value. All Hoon programs are built of expressions, rather like mathematical equations. Hoon expressions are built along a backbone of runes, which are two-character symbols that act like keywords in other programming languages to define the syntax, or grammar, of the expression.
 
 Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes and other Hoon expressions are all separated from one another by either two spaces or a line break.
 
@@ -22,9 +22,9 @@ All runes take a fixed number of “children” or “daughters”. Children can
 
 Hoon expressions can be either basic or complex. Basic expressions of Hoon are fundamental, meaning that they can’t be broken down into smaller expressions. Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
-The Urbit operating system hews to a conceptual model wherein each expression takes place in a certain context (the [subject](../../glossary/subject.md)). While sharing a lot of practicality with other programming paradigms and platforms, Urbit's model is mathematically well-defined and unambiguously specified. Every expression of Hoon is evaluated relative to its subject, a piece of data that represents the environment, or the context, of an expression.
+The Urbit operating system hews to a conceptual model wherein each expression takes place in a certain context (the subject). While sharing a lot of practicality with other programming paradigms and platforms, Urbit's model is mathematically well-defined and unambiguously specified. Every expression of Hoon is evaluated relative to its subject, a piece of data that represents the environment, or the context, of an expression.
 
-At its root, Urbit is completely specified by [Nock](../../glossary/nock.md), sort of a machine language for the Urbit virtual machine layer and event log. However, Nock code is basically unreadable (and unwriteable) for a human. [One worked example](../../nock/decrement.md) yields, for decrementing a value by one, the Nock formula:
+At its root, Urbit is completely specified by Nock, sort of a machine language for the Urbit virtual machine layer and event log. However, Nock code is basically unreadable (and unwriteable) for a human. [One worked example](../../nock/decrement.md) yields, for decrementing a value by one, the Nock formula:
 
 ```hoon
 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1]
@@ -43,20 +43,20 @@ Think about a child persistently asking you what a thing is made of. At first, y
 
 In a very similar sense, everything in a Hoon program is an atom or a bond. Metaphorically, a Hoon program is a complex molecule, a digital chemistry that describes one mathematical representation of data.
 
-The most general data category in Hoon is a [noun](../../glossary/noun.md). This is just about as broad as saying “thing”, so let's be more specific:
+The most general data category in Hoon is a noun. This is just about as broad as saying “thing”, so let's be more specific:
 
 > A noun is an atom or a cell.
 
 Progress?  We can say, in plain English, that
 
-- An [atom](../../glossary/atom.md) is a non-negative integer number (0 to +∞), e.g. `42`.
-- A [cell](../../glossary/cell.md) is a pair of two nouns, written in square brackets, e.g. `[0 1]`.
+- An atom is a non-negative integer number (0 to +∞), e.g. `42`.
+- A cell is a pair of two nouns, written in square brackets, e.g. `[0 1]`.
 
 _Everything_ in Hoon (and Nock, and Urbit) is a noun. The Urbit OS itself is a noun. So given any noun, the Urbit VM simply applies the Nock rules to change the noun in well-defined mechanical ways.
 
 ### Atoms {#atoms}
 
-If an atom is a non-negative number, how do we represent anything else? Hoon provides each atom an [aura](../../glossary/aura.md), a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
+If an atom is a non-negative number, how do we represent anything else? Hoon provides each atom an aura, a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
 
 An aura always begins with `@` pat, which denotes an atom (as opposed to a cell, `^` ket, or the general noun, `*` tar). The next letter or letters tells you what kind of representation you want the value to have.
 
@@ -98,7 +98,7 @@ We will use `^-` kethep extensively to enforce type constraints, a very useful t
 
 ### Exercise: Aura Conversions {#exercise-aura-conversions}
 
-Convert between some of the given auras at the [Dojo](../../glossary/dojo.md) prompt, e.g.:
+Convert between some of the given auras at the Dojo prompt, e.g.:
 
 - `100` to `@p`
 - `0b1100.0101` to `@p`
@@ -108,7 +108,7 @@ Convert between some of the given auras at the [Dojo](../../glossary/dojo.md) pr
 
 ### Cells {#cells}
 
-A [cell](../../glossary/cell.md) is a pair of nouns. Cells are traditionally written using square brackets: `[]`. For now, just recall the square brackets and that cells are always "pairs" of values.
+A cell is a pair of nouns. Cells are traditionally written using square brackets: `[]`. For now, just recall the square brackets and that cells are always "pairs" of values.
 
 ```hoon
 [1 2]
@@ -146,9 +146,9 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113%20-%20Basic%20Coding.mp4" %}
 
-The backbone of any Hoon expression is a scaffolding of [runes](../../glossary/rune.md), which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs: they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
+The backbone of any Hoon expression is a scaffolding of runes, which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs: they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
 
-A rune is just a pair of ASCII characters (a digraph). We usually [pronounce runes](../../glossary/aural-ascii.md) by combining their characters’ names, e.g.: ["kethep"](../../hoon/reference/rune/ket.md#kethep) for `^-`, ["bartis"](../../hoon/reference/rune/bar.md#bartis) for `|=`, and ["barcen"](../../hoon/reference/rune/bar.md#barcen) for `|%`.
+A rune is just a pair of ASCII characters (a digraph). We usually pronounce runes by combining their characters’ names, e.g.: ["kethep"](../../hoon/reference/rune/ket.md#kethep) for `^-`, ["bartis"](../../hoon/reference/rune/bar.md#bartis) for `|=`, and ["barcen"](../../hoon/reference/rune/bar.md#barcen) for `|%`.
 
 For instance, when we called a function earlier (in Hoon parlance, we _slammed a gate_), we needed to provide the `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep) rune with two bits of information, a function name and the values to associate with it:
 
@@ -444,7 +444,7 @@ dojo: hoon expression failed
 
 ### Text {#text}
 
-There are two ways to represent text in Urbit: cords (`@t` [aura](../../glossary/aura.md) atoms) and [tapes](../../glossary/tape.md) (lists of individual characters). Both of these are commonly called [“strings”](https://en.wikipedia.org/wiki/String_%28computer_science%29).
+There are two ways to represent text in Urbit: cords (`@t` aura atoms) and tapes (lists of individual characters). Both of these are commonly called [“strings”](https://en.wikipedia.org/wiki/String_%28computer_science%29).
 
 Why represent text?  What does that mean?  We have to have a way of distinguishing words that mean something to Hoon (like `+list`) from words that mean something to a human or a process (like `'hello world'`).
 
@@ -468,7 +468,7 @@ We will use these incidentally for now and explain their characteristics in a la
 
 ### Exercise: ASCII Values in Text {#exercise-ascii-values-in-text}
 
-A [cord](../../glossary/cord.md) (`@t`) represents text as a sequence of characters. If you know the [ASCII](https://en.wikipedia.org/wiki/ASCII) value for a particular character, you can identify how the text is structured as a number. (This is most easily done using the hexadecimal `@ux` representation due to bit alignment.)
+A cord (`@t`) represents text as a sequence of characters. If you know the [ASCII](https://en.wikipedia.org/wiki/ASCII) value for a particular character, you can identify how the text is structured as a number. (This is most easily done using the hexadecimal `@ux` representation due to bit alignment.)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ASCII-Table-wide.svg/1024px-ASCII-Table-wide.svg.png)
 

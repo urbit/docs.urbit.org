@@ -1,6 +1,6 @@
 # Ship Monitoring
 
-The `%ahoy` desk by ~midden-fabler provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using [Behn](../../../glossary/behn.md).
+The `%ahoy` desk by ~midden-fabler provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using Behn.
 
 `%ahoy` presents a web UI at `/ahoy` rendered using [Sail](../../../hoon/guides/sail.md) and ~paldev's Rudder library alongside command-line generators to add, delete, and modify ship watches.  Notifications are sent using `%hark-store` if a ship hasn't been contacted after a specified amount of time.
 
@@ -63,7 +63,7 @@ At the macro level, `++on-poke` recognizes three poke cages:
 2. `%ahoy-command` for commands per `/sur/ahoy.hoon`.
 3. `handle-http-request` for displaying the webpage.
 
-Most of the poke work takes place through `%ahoy-command`, which checks on the ship state per [Ames](../../../glossary/ames.md)’ scheme of `%alien` and `%known` ships, then maintains the agent state by its watchlist.
+Most of the poke work takes place through `%ahoy-command`, which checks on the ship state per Ames’ scheme of `%alien` and `%known` ships, then maintains the agent state by its watchlist.
 
 ```hoon
   %ahoy-command

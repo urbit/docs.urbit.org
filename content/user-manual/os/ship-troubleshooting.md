@@ -68,7 +68,7 @@ Factory resets often fix connectivity issues, but should only be used as a last 
 
 **WARNING:** Do not reset your +code if you are using a hosted ship. You will be locked out. Please contact your hosting provider for more information.
 
-You login to Landscape using the camel-case phrase obtained from dojo by entering `+code`. For security reasons you may wish to change this code regularly. You may do so by entering `|code %reset` into dojo. Doing this will prevent [Bridge](../../glossary/bridge.md) from being able to derive your code, meaning you will only be able to check it from dojo in the future.
+You login to Landscape using the camel-case phrase obtained from dojo by entering `+code`. For security reasons you may wish to change this code regularly. You may do so by entering `|code %reset` into dojo. Doing this will prevent Bridge from being able to derive your code, meaning you will only be able to check it from dojo in the future.
 
 ## Operation Issues {#operation-issues}
 

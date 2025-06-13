@@ -80,13 +80,13 @@ This has no flexibility: if we want to change `.a` we have to rewrite the whole 
 
 (Note also our introduction of the `::` [colcol](../../hoon/reference/rune/col.md#colcol) digraph in the above code block. This marks anything following it as a _comment_, meaning that it is meant for the developer and reader, and ignored by the computer.)
 
-Hoon uses [gates](../../glossary/gate.md) as deferred computations. What this means is that we can build a Hoon expression now and use it at need later on, perhaps many times. More than that, we can also use it on different data values. A gate is the Hoon analogue of a [function or subroutine](https://en.wikipedia.org/wiki/Subroutine) in other programming languages.
+Hoon uses gates as deferred computations. What this means is that we can build a Hoon expression now and use it at need later on, perhaps many times. More than that, we can also use it on different data values. A gate is the Hoon analogue of a [function or subroutine](https://en.wikipedia.org/wiki/Subroutine) in other programming languages.
 
 The word "function" is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_\(mathematics\)). Roughly put, a function takes one or more arguments (i.e., input values) and returns a value. The return value depends solely on the argument(s), and nothing else. For example, we can understand multiplication as a function: it takes two numbers and returns another number. It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask. If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
 
 That output value depends solely upon input value(s) is an important property of functions. This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and it's one of the key ingredients to building a secure Urbit stack.
 
-Functions are implemented in Hoon with a special kind of [core](../../glossary/core.md) called a "gate". In this lesson you'll learn what a gate is and how a gate represents a function. (We _won't_ talk about what a core is quite yet.) Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of core called a "gate". In this lesson you'll learn what a gate is and how a gate represents a function. (We _won't_ talk about what a core is quite yet.) Along the way you'll build some example gates of your own.
 
 ### Building a Gate <a href="#building-a-gate" id="building-a-gate"></a>
 
@@ -161,11 +161,11 @@ You can type the above Hoon code snippets directly into Dojo, but there's no way
   ]
 ```
 
-We need to attach a _name_ or a [face](../../glossary/face.md) to the expression. Then we'll be able to use it directly. Somewhat confusingly, there are three common ways to do this:
+We need to attach a _name_ or a face to the expression. Then we'll be able to use it directly. Somewhat confusingly, there are three common ways to do this:
 
 1. Attach the face (name) directly in Dojo. (This is a good quick solution, and we'll use it when teaching and testing code, but it doesn't work inside of code files.)
-2. Save the gate as a [generator](../../glossary/generator.md) file and call it using the name of the file. (We'll do this in the next section of this lesson.)
-3. Attach the face (name) as an [arm](../../glossary/arm.md) in a [core](../../glossary/core.md). (We don't know what those are yet, so we'll set them aside for a couple of lessons.)
+2. Save the gate as a generator file and call it using the name of the file. (We'll do this in the next section of this lesson.)
+3. Attach the face (name) as an arm in a core. (We don't know what those are yet, so we'll set them aside for a couple of lessons.)
 
 To name a gate in Dojo (or any expression resulting in a value, which is _every_ expression), you can use the Dojo-specific syntax `=name value`:
 
@@ -192,7 +192,7 @@ Notice that there is _one_ space ("ace") after the `=name` term and then regular
 124
 ```
 
-To reiterate: we typically use the `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's [sample](../../glossary/sample.md) (input value type), and the second defines the gate's product (output value).
+To reiterate: we typically use the `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) rune to create a gate. In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`. The first defines the gate's sample (input value type), and the second defines the gate's product (output value).
 
 In the example gate above, `+inc`, the sample is defined by `a=@`. This means that the sample is defined as an atom `@` meaning that the gate will take as input anything of that type (so, not a cell). The sample is given the face `a`. With a face it's easier to refer to the sample value in later code.
 
@@ -302,9 +302,9 @@ We will use this [|commit](../../user-manual/os/dojo-tools.md#commit) pattern to
 
 ## Building Code <a href="#building-code" id="building-code"></a>
 
-The missing piece to really tie all of this together is the ability to store a gate and use it at a later time, not just in the same long Dojo session. Enter the [generator](../../glossary/generator.md).
+The missing piece to really tie all of this together is the ability to store a gate and use it at a later time, not just in the same long Dojo session. Enter the generator.
 
-A generator is a simple program which can be called from the Dojo. It is a gate, so it takes some input as sample and produces some result. Naked generators are the simplest generators possible, having access only to information passed to them directly in their [sample](../../glossary/sample.md).
+A generator is a simple program which can be called from the Dojo. It is a gate, so it takes some input as sample and produces some result. Naked generators are the simplest generators possible, having access only to information passed to them directly in their sample.
 
 In this section, we will compose our first generator.
 

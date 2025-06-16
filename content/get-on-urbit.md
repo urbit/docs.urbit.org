@@ -69,7 +69,7 @@ If you got an L1 planet from somewhere like OpenSea, it was likely transferred d
 7. Click "Send Transaction".
 8. Approve the transaction in your wallet.
 9. Wait until the transaction completes and it says "Network Keys have been set" in [bridge.urbit.org](https://bridge.urbit.org).
-10. Click "Download Keyfile".
+10. Click "Download Keyfile". You can ignore the prompt about [`|rekey`](./user-manual/os/dojo-tools.md#rekey) for now.
 11. A file called something like `sampel-palnet-1.key` will have been downloaded. Don't lose it; you'll need it for the next step.
 
 {% hint %}

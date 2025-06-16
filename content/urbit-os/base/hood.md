@@ -20,37 +20,122 @@ Drum's additional API is as follows.
 
 A scry with a path of `/x/kiln/our` will return our ship as an `@p` with a `%noun` mark.
 
+Example:
+
+```
+> .^(@p %gx /=hood=/kiln/our/noun)
+~zod
+```
+
 #### Kernel update blocked?
 
 A scry with a path of `/x/kiln/lag` will return a `?` with a `%loob` mark specifying whether a kernel upgrade is blocked.
+
+Example:
+
+```
+> .^(? %gx /=hood=/kiln/lag/loob)
+%.n
+```
 
 #### Base hash
 
 A scry with a path of `/x/kiln/base-hash` will return the `%base` base hash as a `@uv` with a `%noun` mark.
 
+Example:
+
+```
+> .^(@uv %gx /=hood=/kiln/base-hash/noun)
+0v1l.6h9mk.s675m.jmi9q.g5isc.20q0l.g6r86.36v92.1l6db.li3hh.6r68a
+```
+
 #### Sync source change requests
 
-A scry with a path of `/x/kiln/jumps` will return the current sync source change requests as an `%all` `$jump` with a `%kiln-jump` mark.
+A scry with a path of `/x/kiln/jumps` will return the current sync source change requests as an `%all` [`$jump`](#jump) with a `%kiln-jump` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^(jump:hood %gx /=hood=/kiln/jumps/kiln-jump)
+[%all all=~]
+```
 
 #### Syncs
 
-A scry with a path of `/x/kiln/syncs` will return a `(map sync-record sync-state)` of the currently active desk syncs with a `%noun` mark.
+A scry with a path of `/x/kiln/syncs` will return a map from [`$sync-record`](#sync-record) to [`$sync-state`](#sync-state) of the currently active desk syncs with a `%noun` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^((map sync-record:hood sync-state:hood) %gx /=hood=/kiln/syncs/noun)
+[ n=[p=[syd=%landscape her=~mister-dister-dozzod-dozzod sud=%landscape] q=[nun=~.0v3 kid=~ let=0 nit=~ hav=~ yea=%.n]]
+  l=~
+  r=~
+]
+```
 
 #### Sync sources
 
 A scry with a path of `/x/kiln/sources` will return a `(map desk [ship desk])` of the current syncs with `%noun` mark.
 
+Example:
+
+```
+> .^((map desk [ship desk]) %gx /=hood=/kiln/sources/noun)
+[n=[p=%landscape q=[~mister-dister-dozzod-dozzod %landscape]] l=~ r=~]
+```
+
 #### Global automerge setting
 
 A scry with a path of `/x/kiln/automerge` will return a `?` saying what the default automerge policy is with a `%loob` mark.
 
+Example:
+
+```
+> .^(? %gx /=hood=/kiln/automerge/loob)
+%.y
+```
+
 #### Pikes
 
-A scry with a path of `/x/kiln/pikes` wil return a `(map desk pike)` of the state of apps with a `%kiln-pikes` mark.
+A scry with a path of `/x/kiln/pikes` wil return a [`$pikes`](#pikes) of the state of apps with a `%kiln-pikes` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^(pikes:hood %gx /=hood=/kiln/pikes/kiln-pikes)
+[ n=[p=%base q=[sync=~ hash=0v1a.kt0d8.rvtjm.fkmp2.oblo6.oq3jp.mahql.22k1d.ilrdk.rljer.ift9b zest=%live wic=~]]
+    l
+  [   n
+    [ p=%groups
+        q
+      [ sync=[~ [ship=~sogryp-dister-dozzod-dozzod desk=%groups]]
+        hash=0v11.p6g14.eprqt.8vfd5.j8cm8.m914c.mlqrf.fm32d.tbuds.hai44.462ag
+        zest=%live
+        wic=~
+      ]
+    ]
+    l={}
+    r={}
+  ]
+    r
+........
+```
 
 #### Pending syncs
 
-A scry with a path of `/x/kiln/pending` will return a `%pending` `$sync-update` for pending syncs with a `%kiln-sync-update` mark.
+A scry with a path of `/x/kiln/pending` will return a `%pending` [`$sync-update`](#sync-update) for pending syncs with a `%kiln-sync-update` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^(sync-update:hood %gx /=hood=/kiln/pending/kiln-sync-update)
+[%pending pending={}]
+```
 
 ---
 
@@ -118,35 +203,6 @@ drum: link [~sampel-palnet %dojo]
 
 ---
 
-### Write file to Unix
-
-A poke with a `%drum-put` mark will write the given atom out to the unix filesystem in `<pier>/.urb/put/`. It just writes the atom's bytes so is agnostic to the format. Most commonly you'd give it a `cord` to write out a text file.
-
-#### Accepts
-
-```hoon
-[pax=path arg=$@(@ [@tas @])]
-```
-
-- `.pax`: the path where the last element is the extension, so `/foo/bar/txt` is written to `<pier>/.urb/put/foo/bar.txt`.
-- `.arg`: either the atom to write or a pair of session ID and the atom to write. If no session ID is given, it'll default to the default session `%$`, which is typically what you want.
-
-#### Example
-
-```
-> :hood &drum-put [/foo/bar/txt 'foo']
->=
-```
-
-Then in unix:
-
-```
-> cat ~/piers/zod/.urb/put/foo/bar.txt
-foo
-```
-
----
-
 ### Disconnect CLI app
 
 A poke with a `%drum-unlink` mark will unlink a previously linked CLI app.
@@ -165,6 +221,35 @@ A poke with a `%drum-unlink` mark will unlink a previously linked CLI app.
 ```
 > :hood &drum-unlink [%$ ~sampel-palnet %dojo]
 >=
+```
+
+---
+
+### Write file to Unix
+
+A poke with a `%drum-put` mark will write the given atom out to the Unix filesystem in `<pier>/.urb/put/`. It just writes the atom's bytes so is agnostic to the format. Most commonly you'd give it a `$cord` to write out a text file.
+
+#### Accepts
+
+```hoon
+[pax=path arg=$@(@ [@tas @])]
+```
+
+- `.pax`: the path where the last element is the extension, so `/foo/bar/txt` is written to `<pier>/.urb/put/foo/bar.txt`.
+- `.arg`: either the atom to write or a pair of session ID and the atom to write. If no session ID is given, it'll default to the default session `%$`, which is typically what you want.
+
+#### Example
+
+```
+> :hood &drum-put [/foo/bar/txt 'foo']
+>=
+```
+
+Then in Unix:
+
+```
+$ cat ~/piers/zod/.urb/put/foo/bar.txt
+foo
 ```
 
 ---
@@ -512,10 +597,10 @@ A poke with a mark of `%helm-gall-lave` will kill the specified incoming Gall su
 
 - `.dry`: if true, no-op.
 - `.subs`: a list of tuples where:
-    `.v`: the `%a` option simultaneously sends the subscriber a `%kick` and calls the target agent's `+on-leave` arm as though the subscriber initiated it. The `%g` option just calls `+on-leave` without sending a `%kick` to the subscriber.
-    `.ship`: the subscriber's ship.
-    `.dude`: the agent, an `@tas`.
-    `.duct`: the subscription `$duct`.
+  - `.v`: the `%a` option simultaneously sends the subscriber a `%kick` and calls the target agent's `+on-leave` arm as though the subscriber initiated it. The `%g` option just calls `+on-leave` without sending a `%kick` to the subscriber.
+  - `.ship`: the subscriber's ship.
+  - `.dude`: the agent, an `@tas`.
+  - `.duct`: the subscription `$duct`.
 
 #### Example
 
@@ -818,10 +903,28 @@ A poke with a mark of `%helm-serve` will bind a generator to a URL path in Eyre 
 
 #### Example
 
+In the Dojo:
+
 ```
-> :hood &helm-serve [`/foo/bar/baz %base /gen/example/hoon *]
+> *gen/hello-world/hoon ^-  cord
+  '''
+  |=  [[now=@da eny=@ bek=beak] ~ ~]
+  |=  [authorized=? =request:http]
+  ^-  simple-payload:http
+  :-  [%200 ['content-type' 'text/html']~]
+  `(as-octs:mimes:html '<h1>Hello World!</h1>')
+  '''
++ /~zod/base/2/gen/hello-world/hoon
+> :hood &helm-serve [`/hello-world %base /gen/hello-world/hoon ~]
 >=
 bound: %.y
+```
+
+The in the Unix terminal:
+
+```
+$ curl http://localhost:8080/hello-world
+<h1>Hello World!</h1>
 ```
 
 ---
@@ -869,7 +972,7 @@ A poke with a mark of `%helm-verb` will toggle move trace verbosity.
 
 ### Encrypt and write atom to Clay
 
-A poke with a mark of `%helm-write-sec-atom` will encrypt the given atom and write it to Clay. This is use internally by O-Auth machinery and is not generally useful.
+A poke with a mark of `%helm-write-sec-atom` will encrypt the given atom and write it to Clay. This is use internally by OAuth machinery and is not generally useful.
 
 #### Accepts
 
@@ -889,7 +992,7 @@ A poke with a mark of `%helm-dns-config` will configure an `arvo.network` (or ot
 [addr=(each address:dns @t) collector=dock self-check=? reset=?]
 ```
 
-- `.addr`: either the ship's public IP address, or a the URL of a "what is my IP?" reflector that returns the IP in the body of the response for automatic IP address discovery.
+- `.addr`: either the ship's public IP address, or a the URL of a "what is my IP?" reflector that returns the IP in the body of the response (e.g. [icanhazip.com](https://icanhazip.com)) for automatic IP address discovery.
 - `.collect`: the ship and agent that will handle the request and create the DNS entry. This is typically `[~deg %dns-collector]`.
 - `.self-check`: whether to perform self-checks or skip them.
 - `.reset`: whether to clear existing domain & SSL certificate configurations before creating the new one.
@@ -939,25 +1042,6 @@ A poke with the mark of `%kiln-autocommit` will enable autocommits for the given
 
 ---
 
-### Force kernel upgrade
-
-A poke with a mark of `%kiln-bump` will force a pending kernel upgrade, suspending any incompatible desks.
-
-#### Accepts
-
-```hoon
-~
-```
-
-#### Example
-
-```
-> |bump
->=
-```
-
----
-
 ### Cancel autocommit
 
 A poke with a mark of `%kiln-cancel-autocommit` will turn off the previously enabled Clay autocommit.
@@ -972,6 +1056,25 @@ A poke with a mark of `%kiln-cancel-autocommit` will turn off the previously ena
 
 ```
 > :hood &kiln-cancel-autocommit ~
+>=
+```
+
+---
+
+### Force kernel upgrade
+
+A poke with a mark of `%kiln-bump` will force a pending kernel upgrade, suspending any incompatible desks.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> |bump
 >=
 ```
 
@@ -1041,12 +1144,10 @@ A poke with a mark of `%kiln-fuse` will perform an octopus merge of the foreign 
 ```
 
 - `.syd`: the local desk.
-
-then either `~` to clear an existing fuse, or:
-
-- `.overwrite`: whether to force overwrite any previous fuse.
-- `.bas`: the base source, a `[who=ship des=desk ver=$@(%trak case)]`. If `ver` is `%trak` it tracks the source rather than just merging a single case.
-- `.con`: additional sources and their respective merge strategies.
+- Then either `~` to clear an existing fuse, or a tuple of:
+  - `.overwrite`: whether to force overwrite any previous fuse.
+  - `.bas`: the base source, a `[who=ship des=desk ver=$@(%trak case)]`. If `ver` is `%trak` it tracks the source rather than just merging a single case.
+  - `.con`: additional sources and their respective merge strategies.
 
 ---
 
@@ -1116,9 +1217,9 @@ A poke with a mark of `%kiln-install` will install the given desk on the given r
 [loc=desk her=ship rem=desk]
 ```
 
-- `.loc`: the local `$desk`.
-- `.her`: the remote `$ship`.
-- `.rem`: the remote `$desk`.
+- `.loc`: the local desk.
+- `.her`: the remote ship.
+- `.rem`: the remote desk.
 
 #### Example
 
@@ -1312,7 +1413,7 @@ gall: nuking %dbug
 
 ### Disable updates for a desk
 
-A poke with a mark of `%kiln-pause` will disable updates for the specified desk.
+A poke with a mark of `%kiln-pause` will disable updates for the specified desk. Note to re-enable them you'll have to re-run the `|install` generator or equivalent, specifying the ship and desk.
 
 #### Accepts
 
@@ -1582,7 +1683,7 @@ A poke with a mark of `%kiln-unmount` will unmount the specified desk or mountpo
 $@(term [knot path])
 ```
 
-Either a simple `term` or a path-encoded `$beam`.
+Either a simple `$term` or a path-encoded `$beam`.
 
 #### Example
 
@@ -1639,7 +1740,7 @@ A poke with a mark of `%kiln-essential-desk` will mark the given desk as essenti
 
 These are the types defined in `/sur/hood.hoon`.
 
-### `$pike`
+### `$pike` {#pike}
 
 Desk state.
 
@@ -1655,13 +1756,13 @@ Desk state.
 ```
 
 - `.sync`: whether the desk is currently syncing from a remote source.
-- `.hash`: `%cz` has of desk's current revision.
+- `.hash`: [`%cz` hash](../kernel/clay/reference/scry.md#z---content-hash) of desk's current revision.
 - `.zest`: whether it's running, suspended, or suspended pending a kernel-compatible update.
 - `.wic`: the kernel versions it's compatible with.
 
 ---
 
-### `$pikes`
+### `$pikes` {#pikes}
 
 State of all desks.
 
@@ -1673,7 +1774,7 @@ State of all desks.
 
 ---
 
-### `$jump`
+### `$jump` {#jump}
 
 An update to the state of requests to change sync sources.
 
@@ -1695,7 +1796,7 @@ An update to the state of requests to change sync sources.
 
 ---
 
-### `$rung`
+### `$rung` {#rung}
 
 A reference to an upstream commit
 
@@ -1707,7 +1808,7 @@ A reference to an upstream commit
 
 ---
 
-### `$sync-record`
+### `$sync-record` {#sync-record}
 
 Source and destination of a sync in Kiln.
 
@@ -1727,7 +1828,7 @@ Source and destination of a sync in Kiln.
 
 ---
 
-### `$sync-state`
+### `$sync-state` {#sync-state}
 
 The state of a sync in Kiln.
 
@@ -1753,7 +1854,7 @@ The state of a sync in Kiln.
 
 ---
 
-### `$sync-update`
+### `$sync-update` {#sync-update}
 
 An update about a sync.
 

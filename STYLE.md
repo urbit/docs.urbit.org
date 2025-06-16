@@ -66,6 +66,7 @@ The purpose of formatting is to disambiguate as quickly and clearly as possible:
 ## Hoon Style
 
 Hoon in the docs should generally follow the [Hoon Style Guide](https://docs.urbit.org/hoon/guides/style), with some extra considerations for new developers and for limited screen real estate:
-* A line of Hoon should be no more than 80 columns wide. It should strive to be no more than 56 columns wide.
+* A line of Hoon should be no more than 80 columns wide.
+* Hoon should strive to be no more than 56 columns wide.
 * Backstep as early and often as you reasonably can.
 

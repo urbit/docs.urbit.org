@@ -123,7 +123,7 @@ The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to 
 
 `chain-id` is the ID used by the Ethereum blockchain, which is `1337`. See [bytestring format](l2/bytestring.md) for more information. This is used so that e.g. transactions on the Ropsten test network cannot be replayed on the mainnet.
 
-`state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](azimuth-eth.md), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](../concepts/layer2.md) for more on how PKI state is handled.
+`state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](azimuth-eth.md), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](l2/README.md) for more on how PKI state is handled.
 
 ```hoon
 +$  state

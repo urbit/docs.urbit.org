@@ -6,10 +6,6 @@ One or more Gall agents can be put together in a "desk" in Clay (the filesystem 
 
 This section of the docs contains guides related to writing apps and [distributing them](dist/software-distribution.md). It also contains a number of different [examples and exercises](examples/) you can work through to learn how to build different kinds of apps.
 
-* [Reference](reference/) - Reference information about apps and software distribution.
-* [Guides](guides/) - Guides to things like software distribution, CLI apps and remote scries.
-* [Examples](examples/) - A workbook of app exercises and examples.
-
 Additionally, the [courses](../../build-on-urbit/contents.md) section of the docs contain two in-depth app-building tutorials, which are the recommended place to start learning Urbit app development:
 
 * [App School](../app-school/) - Learn the basics of app development.

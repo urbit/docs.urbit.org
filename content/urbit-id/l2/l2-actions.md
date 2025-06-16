@@ -23,7 +23,7 @@ Layer 2 Azimuth data for a given ship includes which layer that ship is on. We c
  - management proxy: `%escape`, `%cancel-escape`
  - transfer proxy: none
 
-A planet in dominion `%l1` is said to exist on layer 1, which is the default state for all planets prior to the introduction of naive rollups. In addition to the ordinary layer 1 Azimuth actions a planet can perform, they may also choose to `%escape` or `%cancel-escape` on layer 2 using either their ownership key or management proxy. See the [layer 2 sponsorship](../concepts/layer2.md#sponsorship) section for more information on layer 1 ships performing layer 2 sponsorship actions.
+A planet in dominion `%l1` is said to exist on layer 1, which is the default state for all planets prior to the introduction of naive rollups. In addition to the ordinary layer 1 Azimuth actions a planet can perform, they may also choose to `%escape` or `%cancel-escape` on layer 2 using either their ownership key or management proxy. See the [layer 2 sponsorship](README.md#sponsorship) section for more information on layer 1 ships performing layer 2 sponsorship actions.
 
 Layer 1 planets may also move to dominion `%l2` by depositing their ownership to the layer 2 deposit address.
 

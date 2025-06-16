@@ -10,13 +10,13 @@ The two categories of keys are your Azimuth/Ethereum keys and your networking ke
 
 ### Azimuth keys <a href="#azimuth-keys" id="azimuth-keys"></a>
 
-Your Urbit ID exists as an ERC-721 non-fungible token on the Ethereum blockchain, and as such is contained in a wallet whose private key you possess. If you are are utilizing a [master ticket](../../../../urbit-id/concepts/hd-wallet.md), this private key is derived from a seed, which is what you use to login to Bridge. Otherwise, you have generated the key by some other process, of which there are too many to list here. Besides the private key which unlocks your ownership wallet address, you may have a few other private keys which unlock a wallet that corresponds to your ship's proxies. We refer collectively to these keys as your _Azimuth keys_.
+Your Urbit ID exists as an ERC-721 non-fungible token on the Ethereum blockchain, and as such is contained in a wallet whose private key you possess. If you are are utilizing a [master ticket](../../../urbit-id/hd-wallet.md), this private key is derived from a seed, which is what you use to login to Bridge. Otherwise, you have generated the key by some other process, of which there are too many to list here. Besides the private key which unlocks your ownership wallet address, you may have a few other private keys which unlock a wallet that corresponds to your ship's proxies. We refer collectively to these keys as your _Azimuth keys_.
 
 Only planets, stars, and galaxies have Azimuth keys. Moons and comets do not, as they do not exist on the Ethereum blockchain.
 
 It is important to note that no Azimuth keys are stored anywhere within your ship's pier - Ethereum and Urbit ID are entirely separate entities from Urbit itself, and so you lose access to your Azimuth private keys there is no way to retrieve them somehow from your ship.
 
-For more information on the usage of these keys and the associated proxies, see the [Azimuth documentation](../../../../urbit-id/what-is-urbit-id.md).
+For more information on the usage of these keys and the associated proxies, see the [Azimuth documentation](../../../urbit-id/what-is-urbit-id.md).
 
 ### Networking keys <a href="#networking-keys" id="networking-keys"></a>
 
@@ -32,18 +32,18 @@ For comets, their 128-bit `@p` name is the hash of their networking public key, 
 
 [Ames](../../ames/) is Arvo's networking vane. All packets sent by Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception to this are comet self-attestation packets utilized to transmit authentication of ownership of the private networking key associated to their public key. Ames is responsible for encryption, decryption, and authentication of all packets. By default, this utilizes AES symmetric key encryption, whose shared private key is got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
 
-[Jael](../../jael/) is primarily utilized for the safe storage of private networking keys and retrieval of public networking keys utilized by Ames. The Jael vane of planets, stars, and galaxies are responsible for distributing the public keys of their moons (ultimately via Ames).
+[Jael](../jael/README.md) is primarily utilized for the safe storage of private networking keys and retrieval of public networking keys utilized by Ames. The Jael vane of planets, stars, and galaxies are responsible for distributing the public keys of their moons (ultimately via Ames).
 
-`zuse` is part of the standard library. It contains cryptographic functions which are utilized by Ames. All cryptographic primitives are [jetted](../../../../build-on-urbit/runtime/guides/jetting.md) in Vere with standard vetted implementations of cryptographic libraries.
+`zuse` is part of the standard library. It contains cryptographic functions which are utilized by Ames. All cryptographic primitives are [jetted](../../../build-on-urbit/runtime/jetting.md) in Vere with standard vetted implementations of cryptographic libraries.
 
 [Vere](../../../../build-on-urbit/runtime/) is Urbit's Nock runtime system, written in C. All cryptographic functions implemented in Hoon are hinted to the interpreter, causing it to utilize the jet system to run standard vetted cryptographic libraries.
 
-[Azimuth](../../../../urbit-id/what-is-urbit-id.md) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
+[Azimuth](../../../urbit-id/what-is-urbit-id.md) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
 
 ## Additional documentation <a href="#additional-documentation" id="additional-documentation"></a>
 
 The following pages contained more detailed information about the cryptography utilized by each of the system components.
 
-* [Ames](../../ames/guides/cryptography.md)
-* [Zuse](../../../../hoon/reference/cryptography.md)
-* [Vere](../../../../build-on-urbit/runtime/reference/cryptography.md)
+* [Ames](../ames/cryptography.md)
+* [Zuse](../../../hoon/cryptography.md)
+* [Vere](../../../build-on-urbit/runtime/cryptography.md)

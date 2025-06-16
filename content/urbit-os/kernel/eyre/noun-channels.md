@@ -3,7 +3,7 @@
 So far, developers have typically used JSON to interact with Urbit ships through Eyre's HTTP interface. As of kernel version `[%zuse 413]`, however, Eyre also supports sending and received nouns directly. At this stage, there are limited options for dealing with nouns in other languages, so this guide will only cover the channel mechanics on a low-level. You may, however, be interested in the [`@urbit/nockjs`](https://github.com/urbit/nockjs) package and the work-in-progress [`json-bgon` PR for `@urbit/js-http-api`](https://github.com/urbit/js-http-api/pull/4).
 
 {% hint style="info" %}
-If you are not familiar with low-level Eyre channel mechanics, please have a read through the [Eyre guide](../guides/guide.md) first.
+If you are not familiar with low-level Eyre channel mechanics, please have a read through the [Eyre guide](guide.md) first.
 {% endhint %}
 
 Eyre will create a noun channel if a `PUT` request to open a new channel includes the following HTTP header:
@@ -12,7 +12,7 @@ Eyre will create a noun channel if a `PUT` request to open a new channel include
 content-type: application/x-urb-jam
 ```
 
-...and the body contains the [`++jam`](../../../../hoon/reference/stdlib/2p.md#jam) of a `list` of `$channel-request`s with [`@uw`](../../../../hoon/reference/auras.md#table-of-auras) base64 encoding.
+...and the body contains the [`++jam`](../../../hoon/stdlib/2p.md#jam) of a `list` of `$channel-request`s with [`@uw`](../../../../hoon/reference/auras.md#table-of-auras) base64 encoding.
 
 A `channel-request` is defined in `eyre.hoon` as:
 
@@ -76,4 +76,4 @@ If the `GET` request is successful, you'll start receiving SSE events containing
 [request-id=@ud channel-event]
 ```
 
-See the [`$channel-event`](../reference/data-types.md#channel-event) entry in the data type reference for more details.
+See the [`$channel-event`](data-types.md#channel-event) entry in the data type reference for more details.

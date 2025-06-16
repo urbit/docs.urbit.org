@@ -86,7 +86,7 @@
   * [Command-Line App Tutorial](build-on-urbit/userspace/cli-tutorial.md)
   * [Remote Scry](build-on-urbit/userspace/remote-scry.md)
   * [Unit Tests](build-on-urbit/userspace/unit-tests.md)
-  * [Software Distribution](build-on-urbit/userspace/reference/dist/README.md)
+  * [Software Distribution](build-on-urbit/userspace/dist/README.md)
     * [Software Distribution Guide](build-on-urbit/userspace/dist/software-distribution.md)
     * [Docket File](build-on-urbit/userspace/dist/docket.md)
     * [Glob](build-on-urbit/userspace/dist/glob.md)

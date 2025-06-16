@@ -64,7 +64,7 @@ The fields are as follows:
 - `%website` - a link to a website for the app. This would often be its Github repo.
 - `%license` - the license of for the app.
 - `%base` - the desk name of the app.
-- `%glob-ames` - the ship to retrieve the front-end files from, and the hash of those files. We've put \~zod here but this would be the actual ship distributing the app when it's live on the network. The hash is `0v0` initially, but once we upload the front-end files it will be updated to the hash of those files automatically. Note that it's also possible to distribute front-end files from a separate web server. In that case, you'd use `glob-http` rather than `glob-ames`. The [Glob documentation](../userspace/reference/dist/glob.md) covers this alternative approach in more detail.
+- `%glob-ames` - the ship to retrieve the front-end files from, and the hash of those files. We've put \~zod here but this would be the actual ship distributing the app when it's live on the network. The hash is `0v0` initially, but once we upload the front-end files it will be updated to the hash of those files automatically. Note that it's also possible to distribute front-end files from a separate web server. In that case, you'd use `glob-http` rather than `glob-ames`. The [Glob documentation](../userspace/dist/glob.md) covers this alternative approach in more detail.
 
 Our files should now look like this:
 
@@ -168,7 +168,7 @@ Next, in the browser, we navigate to the `%docket` globulator at `http://localho
 
 We select our `%journal` desk, then we hit "Choose file", and select the whole `/build` directory which was created when we build our React app. Finally, we hit "glob!" to upload it.
 
-(For real production apps, you might prefer to use the [`-make-glob` thread](../../build-on-urbit/userspace/reference/dist/glob.md#make-glob) in the `%landscape` desk. This allows you to publish the glob from somewhere other than your ship; if your ship publishing the app is down, anyone can install the desk from a peer and get the frontend glob from this other location.)
+(For real production apps, you might prefer to use the [`-make-glob` thread](../userspace/dist/glob.md#make-glob) in the `%landscape` desk. This allows you to publish the glob from somewhere other than your ship; if your ship publishing the app is down, anyone can install the desk from a peer and get the frontend glob from this other location.)
 
 If we now return to the homescreen of our ship, we'll see our tile displayed, and we can open our app by clicking on it:
 
@@ -185,6 +185,6 @@ The last thing we need to do is publish our app, so other users can install it f
 ## Resources {#resources}
 
 - [App publishing/distribution documentation](../../build-on-urbit/userspace/reference/dist) - Documentation covering third party desk composition, publishing and distribution.
-- [Glob documentation](../userspace/reference/dist/glob.md) - Comprehensive documentation of handling front-end files.
-- [Desk publishing guide](../userspace/guides/software-distribution.md) - A step-by-step guide to creating and publishing a desk.
-- [-make-glob guide](../../build-on-urbit/userspace/reference/dist/glob.md#make-glob)
+- [Glob documentation](../userspace/dist/glob.md) - Comprehensive documentation of handling front-end files.
+- [Desk publishing guide](../userspace/dist/software-distribution.md) - A step-by-step guide to creating and publishing a desk.
+- [-make-glob guide](../userspace/dist/glob.md#make-glob)

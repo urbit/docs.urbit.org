@@ -1,8 +1,8 @@
 # Life and Rift
 
-Associated to every Azimuth point are two non-negative integers known as _life_ and _rift_. This numbering system partition messages according to the quantity of networking key changes and quantity of [breaches](../../user-manual/id/guide-to-resets.md), respectively. This is explained in more detail below. These values are utilized by [Ames](../../urbit-os/kernel/ames/) and [Jael](../../urbit-os/kernel/jael/) to ensure that communication between ships is always done with the most recent set of networking keys, and that networking state is appropriately reset when a breach has occurred.
+Associated to every Azimuth point are two non-negative integers known as _life_ and _rift_. This numbering system partition messages according to the quantity of networking key changes and quantity of [breaches](../user-manual/id/guide-to-resets.md), respectively. This is explained in more detail below. These values are utilized by [Ames](../urbit-os/kernel/ames/README.md) and [Jael](../urbit-os/kernel/jael/README.md) to ensure that communication between ships is always done with the most recent set of networking keys, and that networking state is appropriately reset when a breach has occurred.
 
-Every ship begins with a `life` and `rift` of 0. For galaxies, stars, and planets, these values are stored in the [Azimuth PKI](../reference/azimuth-eth.md#points) as `keyRevisionNumber` and `continuityNumber`, while for moons, these values are stored by their parent. Comets cannot change their networking keys, nor can they breach, and so their `life` and `rift` are always 0.
+Every ship begins with a `life` and `rift` of 0. For galaxies, stars, and planets, these values are stored in the [Azimuth PKI](azimuth-eth.md#points) as `keyRevisionNumber` and `continuityNumber`, while for moons, these values are stored by their parent. Comets cannot change their networking keys, nor can they breach, and so their `life` and `rift` are always 0.
 
 You can check your current `life` and `rift` number by running the `+keys our` generator in dojo. You can inspect another ship's `life` and `rift` by running `+keys ~sampel-palnet`.
 

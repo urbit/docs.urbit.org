@@ -9,7 +9,7 @@ There are two kinds of cores that Clay can build for you: A `mark` conversion ga
 - `%e` - Build a statically typed `mark` core.
 - `%f` - Build a statically typed `mark` conversion gate.
 
-You can either use these by `%pass`ing Clay a [%warp task](../../reference/tasks.md#foreign-ships) with the appropriate `care`, or else with a [Clay scry](../../reference/scry.md). In the examples here we've used the latter.
+You can either use these by `%pass`ing Clay a [%warp task](../tasks.md#foreign-ships) with the appropriate `care`, or else with a [Clay scry](../scry.md). In the examples here we've used the latter.
 
 ## mark conversion gates {#mark-conversion-gates}
 

@@ -124,7 +124,7 @@ or in a more compact form (omitting the parent core and chapter label)
   $(a (dec a), b +(b))
 ```
 
-The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist. By convention, the jet hint name matches the gate label. Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below. We will expand on the jet registration runes [`~/` sigfas](../../../hoon/reference/rune/sig.md#sigfas) and [`~%` sigcen](../../../hoon/reference/rune/sig.md#sigcen) later.
+The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist. By convention, the jet hint name matches the gate label. Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below. We will expand on the jet registration runes [`~/` sigfas](../../hoon/rune/sig.md#sigfas) and [`~%` sigcen](../../hoon/rune/sig.md#sigcen) later.
 
 The following C code implements `++add` as a significantly faster operation including handling of >31-bit atoms. It may be found in `urbit/pkg/noun/jets/a/add.c`:
 
@@ -226,7 +226,7 @@ In general, jet code feels a bit heavy and formal. Jet code may call other jet c
 
 ### Jet Composition: Integer `++factorial` <a href="#jet-composition-integer-factorial" id="jet-composition-integer-factorial"></a>
 
-Similar to how we encountered recursion way back in [Hoon School](../../hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code. We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise. Create a file `lib/trig.hoon` with the following contents:
+Similar to how we encountered recursion way back in [Hoon School](../hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code. We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise. Create a file `lib/trig.hoon` with the following contents:
 
 **`/lib/trig.hoon`**
 
@@ -903,8 +903,8 @@ Hoon jets are compiled into the Vere binary for distribution with the Urbit runt
 
 Jets are registered with the runtime so that Vere knows to check whether a particular jet exists when it encounters a marked Hoon arm.
 
-* [`~/` sigfas](../../../hoon/reference/rune/sig.md#sigfas) registers a jet simply (using defaults).
-* [`~%` sigcen](../../../hoon/reference/rune/sig.md#sigcen) registers a jet with all arguments specified.
+* [`~/` sigfas](../../hoon/rune/sig.md#sigfas) registers a jet simply (using defaults).
+* [`~%` sigcen](../../hoon/rune/sig.md#sigcen) registers a jet with all arguments specified.
 
 Typically we use `~/` sigfas to register jets within a core under the umbrella of a `~%` sigcen registration. For instance, `++add` is registered under the Kelvin tag of `hoon.hoon`:
 
@@ -1376,7 +1376,7 @@ All nontrivial code should be thoroughly tested to ensure software quality. To r
     > (exp:trig-rs .5)
     ```
 2. Comparison to the reference Urbit binary can be done with a second development ship and the same Hoon library and generator.
-3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../../hoon-school/I-testing.md) and the [testing guide](../../userspace/guides/unit-tests.md).
+3.  Unit tests rely on using the `-test` thread as covered in [Hoon School](../hoon-school/I-testing.md) and the [testing guide](../userspace/unit-tests.md).
 
     ```hoon
     > -test %/tests/lib/trig-rs ~

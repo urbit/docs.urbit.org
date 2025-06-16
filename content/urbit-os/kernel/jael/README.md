@@ -7,7 +7,7 @@ The main purpose of Jael is keeping track of [Azimuth](../../../urbit-id/what-is
 This includes:
 
 * Every known Urbit ship's public keys.
-* Every known Urbit ship's [key revision number and continuity breach number](../../../urbit-id/concepts/life-and-rift.md).
+* Every known Urbit ship's [key revision number and continuity breach number](../../../urbit-id/life-and-rift.md).
 * Every known Urbit ship's sponsor.
 
 It also handles the local ship's private keys, keeps track of galaxy domain prexifes, and performs some tasks related to booting the local ship for the first time.

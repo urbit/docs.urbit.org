@@ -4,7 +4,7 @@
 
 The Hoon subject is a noun. One way to look at this noun is to denote each fragment of is as either a computation or data. By strictly separating these two kinds of things, we derive the data structure known within Hoon as a core.
 
-Cores are the most important data structure in Hoon. They allow you to solve many coding problems by identifying a pattern and supplying a proper data structure apt to the challenge. You have already started using cores with `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) gate construction and use.
+Cores are the most important data structure in Hoon. They allow you to solve many coding problems by identifying a pattern and supplying a proper data structure apt to the challenge. You have already started using cores with `|=` [bartis](../../hoon/rune/bar.md#bartis) gate construction and use.
 
 This lesson will introduce another core to solve a specific use case, then continue with a general discussion of cores. Getting cores straight will be key to understanding why Hoon has the structure and internal logic it does.
 
@@ -16,7 +16,7 @@ Computers were built and designed to carry out tasks which were too dainty and t
 
 In programming, we call this behavior a “loop”. A loop describes the situation in which we set up some condition, and repeat a process over and over until something we do meets that condition. _Most_ of the time, this means counting once for each item in a collection, like a list.
 
-Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values). One way to do this is using the `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) rune, which creates a structure called a trap. (Think of the “trap” in the bottom of your sink.) It means a point to which you can return again, perhaps with some key values (like a counter) changed. Then you can repeat the calculation inside the trap again. This continues until some single value, some noun, results, thereby handing a value back out of the expression. (Remember that every Hoon expression results in a value.)
+Hoon effects the concept of a loop using recursion, return to a particular point in an expression (presumably with some different values). One way to do this is using the `|-` [barhep](../../hoon/rune/bar.md#barhep) rune, which creates a structure called a trap. (Think of the “trap” in the bottom of your sink.) It means a point to which you can return again, perhaps with some key values (like a counter) changed. Then you can repeat the calculation inside the trap again. This continues until some single value, some noun, results, thereby handing a value back out of the expression. (Remember that every Hoon expression results in a value.)
 
 This program adds 1+2+3+4+5 and returns the sum:
 
@@ -46,7 +46,7 @@ Let's unroll it:
 
 And thus `+sum` yields the final value of `15`.
 
-It is frequently helpful, when constructing these, to be able to output the values at each step of the process. Use the `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) rune to create output without changing any values:
+It is frequently helpful, when constructing these, to be able to output the values at each step of the process. Use the `~&` [sigpam](../../hoon/rune/sig.md#sigpam) rune to create output without changing any values:
 
 ```hoon
 =/  counter  1
@@ -82,7 +82,7 @@ You can do even better using _interpolation_:
 
 ### Exercise: Calculate a Factorial <a href="#exercise-calculate-a-factorial" id="exercise-calculate-a-factorial"></a>
 
-*   Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html). The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$. We will introduce a couple of new bits of syntax and a new gate ([`+dec`](../../hoon/reference/stdlib/1a.md#dec)). Make this into a generator `factorial.hoon`:
+*   Let's calculate a [factorial](https://mathworld.wolfram.com/Factorial.html). The factorial of a number $$n$$ is $$n \times (n-1) \times \ldots \times 2 \times 1$$. We will introduce a couple of new bits of syntax and a new gate ([`+dec`](../../hoon/stdlib/1a.md#dec)). Make this into a generator `factorial.hoon`:
 
     ```hoon
     |=  n=@ud
@@ -97,7 +97,7 @@ You can do even better using _interpolation_:
     ==
     ```
 
-    * We are using the `=` irregular syntax for the `.=` [dottis](../../hoon/reference/rune/dot.md#dottis) rune, which tests for the equality of two expressions.
+    * We are using the `=` irregular syntax for the `.=` [dottis](../../hoon/rune/dot.md#dottis) rune, which tests for the equality of two expressions.
 
     ```hoon
     > +factorial 5
@@ -151,7 +151,7 @@ As we write more complicated programs, it is helpful to learn to read the runes 
 
 Recall that the `::` digraph tells the compiler to ignore the rest of the text on the line. Such text is referred to as a "comment" because, instead of performing a computation, it exists to explain things to human readers of the source code. Here, we have also explicitly marked the expansion of the irregular forms.
 
-We will revert to the irregular form more and more. If you would like to see exactly how an expression is structured, you can use the `!,` [zapcom](../../hoon/reference/rune/zap.md#zapcom) rune. `!,` zapcom produces an annotated _abstract syntax tree_ (AST) which labels every value and expands any irregular syntax into the regular runic form.
+We will revert to the irregular form more and more. If you would like to see exactly how an expression is structured, you can use the `!,` [zapcom](../../hoon/rune/zap.md#zapcom) rune. `!,` zapcom produces an annotated _abstract syntax tree_ (AST) which labels every value and expands any irregular syntax into the regular runic form.
 
 ```hoon
 > !,  *hoon  (add 5 6)
@@ -194,7 +194,7 @@ We will revert to the irregular form more and more. If you would like to see exa
 ]
 ```
 
-(_There's a lot going on in there._ Focus on the four-letter runic identifiers: `%sgpm` for `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam), for instance.)
+(_There's a lot going on in there._ Focus on the four-letter runic identifiers: `%sgpm` for `~&` [sigpam](../../hoon/rune/sig.md#sigpam), for instance.)
 
 ### Exercise: Calculate a sequence of numbers <a href="#exercise-calculate-a-sequence-of-numbers" id="exercise-calculate-a-sequence-of-numbers"></a>
 
@@ -211,14 +211,14 @@ For this exercise, you do not need to store these values in a list. Calculate ea
 
 ### Exercise: Output each letter in a `$tape` <a href="#exercise-output-each-letter-in-a-tape" id="exercise-output-each-letter-in-a-tape"></a>
 
-Produce a gate (generator) which accepts a tape value and returns a `(list @ud)` containing the ASCII value of each character. Use a `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) trap. The previous code simply modified a value by addition. You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a list.
+Produce a gate (generator) which accepts a tape value and returns a `(list @ud)` containing the ASCII value of each character. Use a `|-` [barhep](../../hoon/rune/bar.md#barhep) trap. The previous code simply modified a value by addition. You can generalize this to other arithmetic processes, like multiplication, but you can also grow a data structure like a list.
 
 For example, given the `$tape` `"hello"`, the generator should return the list `[104 101 108 108 111 ~]`. (A list is structurally a null-terminated tuple, or rightwards-branching cell ending in `~` or `0`.) We can equivalently write `~[104 101 108 108 111]` which is a special syntax reducing to the same thing.
 
 Two tools that may help:
 
-* You can retrieve the _n_^th^ element in a `$tape` using the [`+snag`](../../hoon/reference/stdlib/2b.md#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `+snag` is zero-indexed; it counts from zero).
-* You can join an element to a list using the [`+snoc`](../../hoon/reference/stdlib/2b.md#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
+* You can retrieve the _n_^th^ element in a `$tape` using the [`+snag`](../../hoon/stdlib/2b.md#snag) gate, e.g. ``(snag 3 `(list @ud)`~[1 2 3 4 5])`` yields `4` (so `+snag` is zero-indexed; it counts from zero).
+* You can join an element to a list using the [`+snoc`](../../hoon/stdlib/2b.md#snoc) gate, e.g. ``(snoc `(list @ud)`~[1 2 3] 4)`` yields `~[1 2 3 4]`.
 
 ```hoon
 |=  [input=tape]
@@ -269,7 +269,7 @@ Every expression of Hoon is evaluated relative to a subject. An arm is a Hoon ex
 
 #### Arms for Gates
 
-Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the `++` [luslus](../../hoon/reference/rune/lus.md#luslus) digraph. (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value. The `--` [hephep](../../hoon/reference/rune/terminators.md#hephep) limiter digraph is used because `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) can have any number of arms attached. Like `++`, it is not formally a rune.)
+Within a core, we label arms as Hoon expressions (frequently `|=` bartis gates) using the `++` [luslus](../../hoon/rune/lus.md#luslus) digraph. (`++` isn't formally a rune because it doesn't actually change the structure of a Hoon expression, it simply marks a name for an expression or value. The `--` [hephep](../../hoon/rune/terminators.md#hephep) limiter digraph is used because `|%` [barcen](../../hoon/rune/bar.md#barcen) can have any number of arms attached. Like `++`, it is not formally a rune.)
 
 ```hoon
 |%
@@ -302,7 +302,7 @@ Notice here that we read the arm resolution from right-to-left. This isn't the o
 
 #### Arms for Types
 
-We can define custom types for a core using `+$` [lusbuc](../../hoon/reference/rune/lus.md#lusbuc) digraphs. We won't do much with these yet but they will come in handy for custom types later on.
+We can define custom types for a core using `+$` [lusbuc](../../hoon/rune/lus.md#lusbuc) digraphs. We won't do much with these yet but they will come in handy for custom types later on.
 
 This core defines a set of types intended to work with playing cards:
 
@@ -317,7 +317,7 @@ This core defines a set of types intended to work with playing cards:
 
 #### Cores in Generators
 
-When we write generators, we can include helpful tools as arms either before the main code (with `=>` [tisgar](../../hoon/reference/rune/tis.md#tisgar)) or after the main code (with `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal)):
+When we write generators, we can include helpful tools as arms either before the main code (with `=>` [tisgar](../../hoon/rune/tis.md#tisgar)) or after the main code (with `=<` [tisgal](../../hoon/rune/tis.md#tisgal)):
 
 ```hoon
 |=  n=@ud
@@ -331,7 +331,7 @@ When we write generators, we can include helpful tools as arms either before the
 --
 ```
 
-A library (a file in `/lib`) is typically structured as a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core.
+A library (a file in `/lib`) is typically structured as a `|%` [barcen](../../hoon/rune/bar.md#barcen) core.
 
 ### Legs <a href="#legs" id="legs"></a>
 
@@ -349,7 +349,7 @@ Under the hood, legs and arms are distinguished by the Nock instructions used in
 
 Arms and legs are both "limbs". Either one can be replaced in a given subject. This turns out to be very powerful, and permits Hoon to implement gates (functions) in a mathematically rigorous way, among other applications.
 
-Often a leg of the subject is produced with its value unchanged. But there is a way to produce a modified version of the leg as well. To do so, we use the `%=` [centis](../../hoon/reference/rune/cen.md#centis) rune:
+Often a leg of the subject is produced with its value unchanged. But there is a way to produce a modified version of the leg as well. To do so, we use the `%=` [centis](../../hoon/rune/cen.md#centis) rune:
 
 ```hoon
 %=  subject-limb
@@ -380,7 +380,7 @@ which can equivalently be expressed as
 $(counter (add counter 1), sum (add sum counter))
 ```
 
-This statement means that we recalculate the `$` buc arm of the current subject with the indicated changes. But what is `$` buc? `$` buc is the "default arm" for many core structures, including `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) gate cores and `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) trap cores.
+This statement means that we recalculate the `$` buc arm of the current subject with the indicated changes. But what is `$` buc? `$` buc is the "default arm" for many core structures, including `|=` [bartis](../../hoon/rune/bar.md#bartis) gate cores and `|-` [barhep](../../hoon/rune/bar.md#barhep) trap cores.
 
 ### What is a Gate? <a href="#what-is-a-gate" id="what-is-a-gate"></a>
 
@@ -424,7 +424,7 @@ Let's revisit our factorial code from above:
 ==
 ```
 
-We can write this code in several ways using the `%=` [centis](../../hoon/reference/rune/cen.md#centis) plus `$` buc structure.
+We can write this code in several ways using the `%=` [centis](../../hoon/rune/cen.md#centis) plus `$` buc structure.
 
 For instance, we can eliminate the trap by recursing straight back to the gate:
 
@@ -530,7 +530,7 @@ Let's look at the context of inc:
 ]
 ```
 
-This is the default Dojo subject from before we put `+inc` into the subject. The `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) expression defines the context as whatever the subject is. This guarantees that the context has all the information it needs to have for the `$` buc arm to work correctly.
+This is the default Dojo subject from before we put `+inc` into the subject. The `|=` [bartis](../../hoon/rune/bar.md#bartis) expression defines the context as whatever the subject is. This guarantees that the context has all the information it needs to have for the `$` buc arm to work correctly.
 
 #### Gates Define Functions of the Sample
 
@@ -622,7 +622,7 @@ Before finishing the lesson let's unbind ten:
 
 "Recursion" refers to a return to the same logical point in a program again and again. It's a common pattern for solving certain problems in most programming languages, and Hoon is no exception.
 
-In the following code, the `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) trap serves as the point of recursion, and the return to that point (with changes) is indicated by the `%=` centis. All this code does is count to the given number, then return that number.
+In the following code, the `|-` [barhep](../../hoon/rune/bar.md#barhep) trap serves as the point of recursion, and the return to that point (with changes) is indicated by the `%=` centis. All this code does is count to the given number, then return that number.
 
 ```hoon
 |=  n=@ud
@@ -633,7 +633,7 @@ In the following code, the `|-` [barhep](../../hoon/reference/rune/bar.md#barhep
 %=($ index +(index))
 ```
 
-We are using the `+` irregular syntax for the `.+` [dotlus](../../hoon/reference/rune/dot.md#dotlus) rune, which increments a value (adds one).
+We are using the `+` irregular syntax for the `.+` [dotlus](../../hoon/rune/dot.md#dotlus) rune, which increments a value (adds one).
 
 In a formal sense, we have to make sure that there is always a base case, a way of actually ending the recursion. If there isn't, we end up with an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop)! Some children's songs like [“Yon Yonson”](https://en.wikipedia.org/wiki/Yon_Yonson) or [“The Song That Never Ends”](https://en.wikipedia.org/wiki/The_Song_That_Never_Ends) rely on such recursive humor.
 
@@ -682,7 +682,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     (add $(n (dec n)) $(n (dec (dec n))))
     ```
 
-    We can use _two_ recursion points for `%=` [centis](../../hoon/reference/rune/cen.md#centis). The first calculate $$F$$ for $$n-1$$; the second calculate $$F$$ for $$n-2$$. These are then added together. If we diagram what's happening, we can see that each additional number costs as much as the previous numbers:
+    We can use _two_ recursion points for `%=` [centis](../../hoon/rune/cen.md#centis). The first calculate $$F$$ for $$n-1$$; the second calculate $$F$$ for $$n-2$$. These are then added together. If we diagram what's happening, we can see that each additional number costs as much as the previous numbers:
 
     ```hoon
     (fibonacci 5)
@@ -704,7 +704,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
 
     This fully recursive version of the Fibonacci calculation is very wasteful because it keeps no intermediate results.
 
-    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated. We use the [`+snoc`](../../hoon/reference/stdlib/2b.md#snoc) gate to append a noun to a `+list`.
+    An improved version stores each value in the sequence as an element in a list so that it can be used rather than re-calculated. We use the [`+snoc`](../../hoon/stdlib/2b.md#snoc) gate to append a noun to a `+list`.
 
     ```hoon
     |=  n=@ud
@@ -723,7 +723,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ==
     ```
 
-    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, `.+` [dotlus](../../hoon/reference/rune/dot.md#dotlus).)
+    (As in an earlier code example, `(add index 1)` can be replaced by the Nock increment rune, `.+` [dotlus](../../hoon/rune/dot.md#dotlus).)
 
     This version is a little more complicated to compare using a diagram because of the trap, but yields something like this:
 
@@ -736,7 +736,7 @@ and verify that our program correctly produces the sequence of numbers 1, 1, 2, 
     ~[1 1 2 3 5]
     ```
 
-    The program can be improved somewhat again by appending to the head of the cell (rather than using `+snoc`). This builds a list in a backwards order, so we apply the [`+flop`](../../hoon/reference/stdlib/2b.md#flop) gate to flip the order of the list before we return it.
+    The program can be improved somewhat again by appending to the head of the cell (rather than using `+snoc`). This builds a list in a backwards order, so we apply the [`+flop`](../../hoon/stdlib/2b.md#flop) gate to flip the order of the list before we return it.
 
     ```hoon
     |=  n=@ud

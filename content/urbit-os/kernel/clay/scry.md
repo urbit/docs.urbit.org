@@ -23,7 +23,7 @@ Each of the possible `[path]`s are described below.
 
 ### `/sweep` - Cache check <a href="#sweep---cache-check" id="sweep---cache-check"></a>
 
-A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`leak`](../reference/data-types.md#leak) is a Ford cache key used internally by Clay.
+A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`leak`](data-types.md#leak) is a Ford cache key used internally by Clay.
 
 Example:
 
@@ -36,7 +36,7 @@ Example:
 
 ### `/rang` - Get `rang` <a href="#rang---get-rang" id="rang---get-rang"></a>
 
-A buc scry with a path of `/rang` will return the full [`rang`](../reference/data-types.md#rang) from Clay's state.
+A buc scry with a path of `/rang` will return the full [`rang`](data-types.md#rang) from Clay's state.
 
 Example:
 
@@ -73,7 +73,7 @@ The type returned is:
 (set [@p rave:clay])
 ```
 
-See the [`$rave:clay`](../reference/data-types.md#rave) data type entry for more details of the `$rave` structure.
+See the [`$rave:clay`](data-types.md#rave) data type entry for more details of the `$rave` structure.
 
 Example:
 

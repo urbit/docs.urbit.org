@@ -2,7 +2,7 @@
 
 ## Overview {#overview}
 
-A [`$vase`](../reference/stdlib/4o.md#vase) is a pair of [`$type`](../reference/stdlib/4o.md#type) and [`$noun`](../reference/stdlib/2q.md#noun), where the type describes the noun. They're used all over Urbit to represent data whose type we can't know ahead of time. This often comes up when being asked to compile and run other Hoon code. It's also used to store data that could be any type, but where we want to know the type, so we tag the value with its type to form a vase.
+A [`$vase`](stdlib/4o.md#vase) is a pair of [`$type`](stdlib/4o.md#type) and [`$noun`](stdlib/2q.md#noun), where the type describes the noun. They're used all over Urbit to represent data whose type we can't know ahead of time. This often comes up when being asked to compile and run other Hoon code. It's also used to store data that could be any type, but where we want to know the type, so we tag the value with its type to form a vase.
 
 - The Arvo kernel uses vases to build itself and run vanes (kernel modules).
 - The Gall vane used to use vases to run userspace agents, and probably will again in the future.
@@ -16,7 +16,7 @@ A Hoon `$type` is a data structure that specifies a set of nouns. Remember, ever
 
 Types are not just used for this purpose, though. They're also used to represent the type of the "subject", which is the "scope" or "environment" that some Hoon code can access. This means that Hoon's equivalent of a symbol table lives in the type.
 
-The programmer can name parts of a type, including the type of the subject. Once part of a type has a name, Hoon code can refer to any named field within that type. Since the subject of any Hoon expression always has a known type at compile time, a reference (a wing, like `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0 operation (subtree lookups) at a known constant [axis](../reference/stdlib/2q.md#axis) (tree slot).
+The programmer can name parts of a type, including the type of the subject. Once part of a type has a name, Hoon code can refer to any named field within that type. Since the subject of any Hoon expression always has a known type at compile time, a reference (a wing, like `foo.+<.bar.|3.baz`) to a field within that subject is compiled to a Nock 0 operation (subtree lookups) at a known constant [axis](stdlib/2q.md#axis) (tree slot).
 
 A Hoon `$type` is defined by this (pronounced "buc type", also called "the type of type"):
 
@@ -59,19 +59,19 @@ Core types are more complex than this simplified explanation, but this descripti
 
 ## "Slap'n'Slop" Vase Algebra {#slapnslop-vase-algebra}
 
-The vase operations form a relatively simple algebra. This algebra can be thought of as a dynamically typed programming language. Each value in the language is a vase (a dynamically typed datum), and the basic operations are [`+slap`](../reference/stdlib/5c.md#slap) and [`+slop`](../reference/stdlib/5c.md#slop).
+The vase operations form a relatively simple algebra. This algebra can be thought of as a dynamically typed programming language. Each value in the language is a vase (a dynamically typed datum), and the basic operations are [`+slap`](stdlib/5c.md#slap) and [`+slop`](stdlib/5c.md#slop).
 
 For example, the Hoon expression `(slap (slop v1 (slop v2 (slap v3 h1)) v4) h2)` takes in four vases and two hoon expressions, and produces a vase. A pseudocode version of this would be `h2([v1 v2 h1(v3)])`
 
 ### Introduction Forms {#introduction-forms}
 
-The primary introduction form for a vase is the [`!>`](../reference/rune/zap.md#zapgar) rune, which produces a vase of its input. A vase can also be constructed manually as a cell whose head nests in `$type`, like `[[%atom %ud ~] 3]`.
+The primary introduction form for a vase is the [`!>`](rune/zap.md#zapgar) rune, which produces a vase of its input. A vase can also be constructed manually as a cell whose head nests in `$type`, like `[[%atom %ud ~] 3]`.
 
 ### Elimination Forms {#elimination-forms}
 
 An elimination form for a vase is something that converts a vase to a statically typed value.
 
-One unsafe elimination form is the [`!<`](../reference/rune/zap.md#zapgal) rune, which takes a mold and a value and (unsafely) converts the value to a typed value. The more traditional elimination form has no syntactic support, but involves pattern-matching on the type data structure, e.g. dispatching based on whether the type is atom, cell, or something else, and coercing the value to a specific type using a mold function.
+One unsafe elimination form is the [`!<`](rune/zap.md#zapgal) rune, which takes a mold and a value and (unsafely) converts the value to a typed value. The more traditional elimination form has no syntactic support, but involves pattern-matching on the type data structure, e.g. dispatching based on whether the type is atom, cell, or something else, and coercing the value to a specific type using a mold function.
 
 The lack of a safe general-purpose elimination form stems from the fact that Hoon's structural type system cannot guarantee that the value in a vase's tail is an instance of the type in the vase's head, i.e. is an instance of that type. If not, the vase is said to be "evil".
 
@@ -157,4 +157,4 @@ Got noun at axis (tree address)
 
 ## Further Reading {#further-reading}
 
-- [Standard library section 5c](../reference/stdlib/5c.md): This contains most of the vase functions in the standard library.
+- [Standard library section 5c](stdlib/5c.md): This contains most of the vase functions in the standard library.

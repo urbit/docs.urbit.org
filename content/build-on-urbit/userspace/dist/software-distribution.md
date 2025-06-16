@@ -165,13 +165,13 @@ In the text editor, we'll add the following:
 
 {% endcode %}
 
-You can refer to the [Docket File](../reference/dist/docket.md) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](../reference/dist/docket.md) which configure the appearance of the app tile, the source of the [glob](../reference/dist/glob.md), and some other metadata.
+You can refer to the [Docket File](docket.md) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](docket.md) which configure the appearance of the app tile, the source of the [glob](glob.md), and some other metadata.
 
-We've given the app a [`%title`](../reference/dist/docket.md#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](../reference/dist/docket.md#color) of `#8188C9`, and also specified the URL of an [`%image`](../reference/dist/docket.md#image) to display on the tile.
+We've given the app a [`%title`](docket.md#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](docket.md#color) of `#8188C9`, and also specified the URL of an [`%image`](docket.md#image) to display on the tile.
 
-The [`%base`](../reference/dist/docket.md#base) clause specifies the base URL path for the app. We've specified `'hello'` so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](../reference/dist/glob.md), we've used a clause of [`%glob-ames`](../reference/dist/docket.md#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](../reference/dist/docket.md#glob-http) clause or having an Eyre binding with a [`%site`](../reference/dist/docket.md#site) clause. You can refer to the [glob](../reference/dist/glob.md) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since ~zod is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the glob, so we can just specify `0v0` here as it'll get overwritten later.
+The [`%base`](docket.md#base) clause specifies the base URL path for the app. We've specified `'hello'` so it'll be `http://localhost:8080/apps/hello/...` in the browser. For the [glob](glob.md), we've used a clause of [`%glob-ames`](docket.md#glob-ames), which means the glob will be served from a ship over Ames, as opposed to being served over HTTP with a [`%glob-http`](docket.md#glob-http) clause or having an Eyre binding with a [`%site`](docket.md#site) clause. You can refer to the [glob](glob.md) documentation for more details of the glob options. In our case we've specified `[~zod 0v0]`. Since ~zod is the fakeship we'll install it on, the `%docket` agent will await a separate upload of the glob, so we can just specify `0v0` here as it'll get overwritten later.
 
-The [`%version`](../reference/dist/docket.md#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
+The [`%version`](docket.md#version) clause specifies the version as a triple of major version, minor version and patch version. The rest is just some additional informative metadata which will be displayed in _App Info_.
 
 So let's save that to the `desk.docket-0` file and have a look at our desk:
 
@@ -230,7 +230,7 @@ docket: awaiting manual glob for %hello desk
 
 {% endcode %}
 
-That's because our `desk.docket-0` file includes a [`%glob-ames`](../reference/dist/docket.md#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob of front-end files.
+That's because our `desk.docket-0` file includes a [`%glob-ames`](docket.md#glob-ames) clause which specifies our ship as the source, so it's waiting for us to upload the glob of front-end files.
 
 ## Create files for glob {#create-files-for-glob}
 
@@ -319,7 +319,7 @@ Once you login, you'll notice you have the Hello app's tile, but it still says "
 
 ## Upload to glob {#upload-to-glob}
 
-We can now create a glob from the `/hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](../reference/dist/glob.md#globulator) tool:
+We can now create a glob from the `/hello-glob` directory we previously created. To do so, navigate to `http://localhost:8080/docket/upload` in the browser. This will bring up the `%docket` app's [Globulator](glob.md#globulator) tool:
 
 ![](https://media.urbit.org/guides/additional/dist/2-globulator.png)
 

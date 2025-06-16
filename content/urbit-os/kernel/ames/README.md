@@ -62,7 +62,7 @@ The 32-bit header is given by the following data, presented in order:
 - 3 bits: Ames protocol version (currently 0)
 - 2 bits: sender address size
 - 2 bits: receiver address size
-- 20 bits: checksum (truncated insecure hash of the body, done with [`+mug`](../../../hoon/reference/stdlib/2e.md#mug)
+- 20 bits: checksum (truncated insecure hash of the body, done with [`+mug`](../../../hoon/stdlib/2e.md#mug)
 - 1 bit: is this relayed? (if set, `origin` will be present in the body)
 
 Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
@@ -82,9 +82,9 @@ The body is of variable length and consists of the following parts in this order
 
 `origin` is the IP and port of the original sender if the packet was proxied through a relay.
 
-`SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](guides/cryptography.md)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](../../../urbit-id/concepts/life-and-rift.md) for information on what `life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
+`SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](cryptography.md)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](../../../urbit-id/life-and-rift.md) for information on what `life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
 
-The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../hoon/reference/cryptography.md#en).
+The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../hoon/cryptography.md#en).
 
 ### Packeting {#packeting}
 
@@ -126,7 +126,7 @@ This means all re-sends of an ack packet will be bitwise identical to each other
 
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests under `@ud`.
 
-Here, `our-life` refers to the [`life`](../../../urbit-id/concepts/life-and-rift.md), or revision number, of the acking ship's networking keys, and `her-life` is the `life` of the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow. `message-num` denotes the number of the message in the flow identified by `bone`. `fragment-num` denotes the number of the fragment of the message identified by `message-num` that is being acked.
+Here, `our-life` refers to the [`life`](../../../urbit-id/life-and-rift.md), or revision number, of the acking ship's networking keys, and `her-life` is the `life` of the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow. `message-num` denotes the number of the message in the flow identified by `bone`. `fragment-num` denotes the number of the fragment of the message identified by `message-num` that is being acked.
 
 A message (n)ack is a different kind of ack that is obtained by encrypting the `+jam` of the following noun:
 

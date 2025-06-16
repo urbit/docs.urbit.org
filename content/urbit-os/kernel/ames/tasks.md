@@ -108,7 +108,7 @@ The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send` `gif
 [%init ~]
 ```
 
-`%init` is called a single time during the very first boot process, immediately after the [larval stage](../../arvo/README.md#larval-stage-core) is completed. This initializes the vane. Jael is initialized first, followed by other vanes such as Ames.
+`%init` is called a single time during the very first boot process, immediately after the [larval stage](../arvo/README.md#larval-stage-core) is completed. This initializes the vane. Jael is initialized first, followed by other vanes such as Ames.
 
 In response to receiving the `%init` `task`, Ames subscribes to the information contained by Jael.
 
@@ -225,7 +225,7 @@ A `%keen` `task` asks Ames to perform a remote scry, retrieving the value of `pa
 
 The `path` has the general format of `/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read into Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the empty element in between the agent and the rest of the path.
 
-Note that you would not use this task directly from userspace. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../../gall/reference/gall-api.md#keen) and for two-party encrypted scries you'd use a [`%chum`](tasks.md#chum) task.
+Note that you would not use this task directly from userspace. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../gall/gall-api.md#keen) and for two-party encrypted scries you'd use a [`%chum`](tasks.md#chum) task.
 
 #### Returns
 
@@ -251,7 +251,7 @@ A `spar` is a pair of `ship` and remote scry `path` like `/c/x/4/base/sys/hoon/h
 
 The `path` has the general format of `/[vane-letter]/[care]/[revision]/[rest-of-path]`. For a regular read into Gall, it's `/g/x/[revision]/[agent]//[rest-of-path]`. Note the empty element in between the agent and the rest of the path.
 
-Note this is for two-party encrypted remote scries only. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../../gall/reference/gall-api.md#keen).
+Note this is for two-party encrypted remote scries only. For unencrypted or multi-party encrypted scries you'd use a [Gall `%keen` note](../gall/gall-api.md#keen).
 
 #### Returns
 

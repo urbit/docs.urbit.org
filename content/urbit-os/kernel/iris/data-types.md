@@ -1,6 +1,6 @@
 # Data Types
 
-Iris itself only has three structures defined in `lull.hoon`, but it also uses `$http` structures which are shared between Iris and Eyre. The `$http` structures are detailed in the [Eyre](../../eyre/reference/data-types.md#http) Data Types documentation.
+Iris itself only has three structures defined in `lull.hoon`, but it also uses `$http` structures which are shared between Iris and Eyre. The `$http` structures are detailed in the [Eyre](../eyre/data-types.md#http) Data Types documentation.
 
 ## `$client-response` {#client-response}
 
@@ -22,7 +22,7 @@ This structure represents data which Iris has fetched from a remote HTTP resourc
 
 Note that at the time of writing, **neither `%progress` nor `%cancel` `client-response`s are implemented**, so in practice you'll only ever get a single `%finished` `client-response`.
 
-In a `%progress` `client-response`, the [$response-header:http](../../eyre/reference/data-types.md#response-headerhttp) contains the HTTP status code and headers. The `bytes-read` field is the total number of bytes fetched so far. The `expected-size` field is the total size specified in the content-length header if it has one. The `incremental` field is the data received since the last `%http-response`.
+In a `%progress` `client-response`, the [$response-header:http](../eyre/data-types.md#response-headerhttp) contains the HTTP status code and headers. The `bytes-read` field is the total number of bytes fetched so far. The `expected-size` field is the total size specified in the content-length header if it has one. The `incremental` field is the data received since the last `%http-response`.
 
 In a `%finished` `client-response`, the `full-file` is the complete body of the HTTP message as a (maybe) [$mime-data](#mime-data).
 

@@ -85,7 +85,7 @@ A `bowl` is given to the agent core each time an event comes in. The fields are 
 - `wex`: Outgoing subscriptions. That is, subscriptions our agent has initiated. See the [`boat`](#boat) section for details of the type.
 - `sup`: Incoming subscriptions. That is, subscriptions others have made to our agent. See the [`bitt`](#bitt) section for details of the type.
 - `sky`: Remote scry bindings. A map from binding paths to a [`fans`](#fans), an ordered map of files by revision number. Tombstoned files have an `@uvI` hash rather than `page`.
-- `act`: The total number of [`move`](../../arvo#move)s our agent has processed so far.
+- `act`: The total number of [`move`](../../../hoon/arvo.md#move)s our agent has processed so far.
 - `eny`: 512 bits of entropy.
 - `now`: The current date-time.
 - `byk`: The ship, desk and `case` in Clay from which this agent was loaded. The `case` will be `[%da @da]` where the `@da` is the when the agent was loaded. A `beak` is a triple of `[ship desk case]`.
@@ -294,7 +294,7 @@ The type for messages initiated by our agent. This is opposed to [`gift:agent`](
   ```
   You can refer to the `/sys/lull.hoon` source code for all the possible vane tasks, or see each vane's API Reference section in the [Arvo documentation](../../arvo)
 - `%pyre`: This is for aborting side-effects initiated during agent installation. The `tang` is an error message.
-- `%grow`/`%tomb`/`%cull`: These are used for publishing and managing data available for remote scries. For more information, see the [remote scries guide](../../../../build-on-urbit/userspace/guides/remote-scry.md).
+- `%grow`/`%tomb`/`%cull`: These are used for publishing and managing data available for remote scries. For more information, see the [remote scries guide](../../../build-on-urbit/userspace/remote-scry.md).
 
 A `note:agent` is always wrapped in a `%pass` [`card:agent`](#cardagent).
 
@@ -456,7 +456,7 @@ This arm is called when another agent unsubscribes from a subscription path on o
 - Accepts: `path`
 - Produces: `(unit (unit cage))`
 
-This arm is called when a [scry](../../arvo/guides/scry.md) is performed on our agent.
+This arm is called when a [scry](../arvo/scry.md) is performed on our agent.
 
 #### `on-agent`
 

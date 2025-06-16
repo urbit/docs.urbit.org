@@ -14,7 +14,7 @@ When you produce software, how much confidence do you have that it does what you
 
 ### Fences <a href="#fences" id="fences"></a>
 
-"Fences" are barriers employed to block program execution if the state isn’t adequate to the intended task. Typically, these are implemented with `assert` or similar enforcement. In Hoon, this means `?>` [wutgar](../../hoon/reference/rune/wut.md#wutgar), `?<` [wutgal](../../hoon/reference/rune/wut.md#wutgal), and `?~` [wutsig](../../hoon/reference/rune/wut.md#wutsig), or judicious use of `^-` [kethep](../../hoon/reference/rune/ket.md#kethep) and `^+` [ketlus](../../hoon/reference/rune/ket.md#ketlus). For conditions that must succeed, the failure branch in Hoon should be `!!`, which crashes the program.
+"Fences" are barriers employed to block program execution if the state isn’t adequate to the intended task. Typically, these are implemented with `assert` or similar enforcement. In Hoon, this means `?>` [wutgar](../../hoon/rune/wut.md#wutgar), `?<` [wutgal](../../hoon/rune/wut.md#wutgal), and `?~` [wutsig](../../hoon/rune/wut.md#wutsig), or judicious use of `^-` [kethep](../../hoon/rune/ket.md#kethep) and `^+` [ketlus](../../hoon/rune/ket.md#ketlus). For conditions that must succeed, the failure branch in Hoon should be `!!`, which crashes the program.
 
 ### Unit Tests <a href="#unit-tests" id="unit-tests"></a>
 
@@ -139,9 +139,9 @@ In `/lib/test.hoon` we find a core with a few gates: `+expect`, `+expect-eq`, an
 ```
 {% endcode %}
 
-Test code deals in vases, which are produced by `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) as a cell of the type of a value and the value.
+Test code deals in vases, which are produced by `!>` [zapgar](../../hoon/rune/zap.md#zapgar) as a cell of the type of a value and the value.
 
-`+expect-fail` by contrast take a `|.` [bardot](../../hoon/reference/rune/bar.md#bardot) trap (a trap that has the `$` buc arm but hasn't been called yet) and verifies that the code within fails.
+`+expect-fail` by contrast take a `|.` [bardot](../../hoon/rune/bar.md#bardot) trap (a trap that has the `$` buc arm but hasn't been called yet) and verifies that the code within fails.
 
 {% code title="/lib/test.hoon" %}
 ```hoon
@@ -181,9 +181,9 @@ Formal error messages in Urbit are built of tanks.
 
 As your code evaluates, the Arvo runtime maintains a stack trace, or list of the evaluations and expressions that got the program to its notional point of computation. When the code fails, any error hints currently on the stack are dumped to the terminal for you to see what has gone wrong.
 
-The `~_` [sigcab](../../hoon/reference/rune/sig.md#sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
+The `~_` [sigcab](../../hoon/rune/sig.md#sigcab) rune, described as a “user-formatted tracing printf”, can include an error message for you, requiring you to explicitly build the `$tank`. ("printf" is a reference to [C's I/O library](https://en.wikipedia.org/wiki/Printf_format_string).)
 
-The `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord. What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
+The `~|` [sigbar](../../hoon/rune/sig.md#sigbar) rune, a “tracing printf”, can include an error message from a simple `@t` cord. What this means is that these print to the stack trace if something fails, so you can use either rune to contribute to the error description:
 
 ```hoon
 |=  a=@ud
@@ -191,7 +191,7 @@ The `~|` [sigbar](../../hoon/reference/rune/sig.md#sigbar) rune, a “tracing pr
 !!
 ```
 
-The `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../hoon/reference/rune/fas.md) imports) of a generator or library while developing.
+The `!:` [zapcol](../../hoon/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../hoon/rune/fas.md) imports) of a generator or library while developing.
 
 ```hoon
 > (sub 0 1)
@@ -270,7 +270,7 @@ Let’s enumerate the errors you are likely to have encountered by this point:
 
 ### nest-fail <a href="#nest-fail" id="nest-fail"></a>
 
-A [nest-fail](../../hoon/reference/hoon-errors.md#nest-fail) may be the most common. Likely you are using an atom or a cell where the other is expected.
+A [nest-fail](../../hoon/hoon-errors.md#nest-fail) may be the most common. Likely you are using an atom or a cell where the other is expected.
 
 ```hoon
 > (add 'a' 'b')
@@ -330,7 +330,7 @@ Also check if you are using Windows-style line endings, as Unix-style line endin
 
 Another common mistake is to attempt to use the default `$` buc arm in something that doesn't have it. This typically happens for one of two reasons:
 
-`$.+2` means that `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep) or equivalent function call cannot locate a battery. This can occur when you try to use a non-gate as a gate. In particular, if you mask the name of a mold (such as list), then a subsequent expression that requires the mold will experience this problem.
+`$.+2` means that `%-` [cenhep](../../hoon/rune/cen.md#cenhep) or equivalent function call cannot locate a battery. This can occur when you try to use a non-gate as a gate. In particular, if you mask the name of a mold (such as list), then a subsequent expression that requires the mold will experience this problem.
 
 ```hoon
 > =/  list  ~[1 2 3]
@@ -350,15 +350,15 @@ Similarly, `-find.$` means the compiler is looking for a `$` buc arm in somethin
 -find.$
 ```
 
-* [“Hoon Errors”](../../hoon/reference/hoon-errors.md)
+* [“Hoon Errors”](../../hoon/hoon-errors.md)
 
 ### Debugging Strategies <a href="#debugging-strategies" id="debugging-strategies"></a>
 
 What are some strategies for debugging?
 
-* **Debugging stack.** Use the `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../hoon/reference/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
-* **"printf" debugging.** If your code will compile and run, employ `~&` [sigpam](../../hoon/reference/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
-* **Typecast.** Include `^` [ket](../../hoon/reference/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
-* **The only wolf in Alaska.** Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../hoon/reference/rune/zap.md#zapzap).
+* **Debugging stack.** Use the `!:` [zapcol](../../hoon/rune/zap.md#zapcol) rune to turn on the debugging stack, `!.` [zapdot](../../hoon/rune/zap.md#zapdot) to turn it off again. (Most of the time you just pop this on at the top of a generator and leave it there.)
+* **"printf" debugging.** If your code will compile and run, employ `~&` [sigpam](../../hoon/rune/sig.md#sigpam) frequently to make sure that your code is doing what you think it’s doing.
+* **Typecast.** Include `^` [ket](../../hoon/rune/ket.md) casts frequently throughout your code. Entire categories of error can be excluded by satisfying the Hoon typechecker.
+* **The only wolf in Alaska.** Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../hoon/rune/zap.md#zapzap).
 * **Build it again.** Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
 * **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of Ames don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in Gall. You can also develop using a moon if you want to.

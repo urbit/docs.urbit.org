@@ -398,7 +398,7 @@ Suspend agent.
 [%idle =dude]
 ```
 
-The agent specified in `dude` will be suspended. Note it is usually better to suspend agents with a [`%rein`](../../clay/reference/tasks.md#rein---force-apps) `task` to Clay rather than an `%idle` `task` to Gall.
+The agent specified in `dude` will be suspended. Note it is usually better to suspend agents with a [`%rein`](../clay/tasks.md#rein---force-apps) `task` to Clay rather than an `%idle` `task` to Gall.
 
 #### Returns
 

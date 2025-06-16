@@ -1,6 +1,6 @@
 # Architecture
 
-Clay is the primary filesystem for the [Arvo](../../arvo/README.md) operating system, which is the core of an urbit. The architecture of Clay is intrinsically connected with Arvo, but for this section we assume no knowledge of either Arvo or Urbit. We will point out only those features of Arvo that are necessary for an understanding of Clay, and we will do so only when they arise.
+Clay is the primary filesystem for the [Arvo](../arvo/README.md) operating system, which is the core of an urbit. The architecture of Clay is intrinsically connected with Arvo, but for this section we assume no knowledge of either Arvo or Urbit. We will point out only those features of Arvo that are necessary for an understanding of Clay, and we will do so only when they arise.
 
 The first relevant feature of Arvo is that it is a deterministic system where input and output are defined as a series of events and effects. The state of Arvo is simply a pure function of its event log. None of the effects from an event are emitted until the event is entered in the log and persisted, either to disk or another trusted source of persistence, such as a Kafka cluster. Consequently, Arvo is a single-level store: everything in its state is persistent.
 

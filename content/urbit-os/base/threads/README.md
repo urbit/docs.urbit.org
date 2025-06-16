@@ -26,11 +26,11 @@ A thread may also be run from the dojo by prefixing its name with `-` and giving
 ## Thread basics {#thread-basics}
 
 This guide walks you through the fundamental things you need to know to write threads. They focus on basic thread composition and so don't touch on interacting with threads from gall agents and such. The included examples can all just be run from the dojo.
-1. [Thread Fundamentals](./tutorials/basics/fundamentals.md) - Basic information and overview of threads, strands, `form` & `pure`.
-2. [Micgal and Bind](./tutorials/basics/bind.md) - Covers using micgal and `bind` to chain strands.
-3. [Strand Input](./tutorials/basics/input.md) - What strands receive as input.
-4. [Strand Output](./tutorials/basics/output.md) - What strands produce.
-5. [Summary](./tutorials/basics/summary.md) - Summary of the above.
+1. [Thread Fundamentals](basics/fundamentals.md) - Basic information and overview of threads, strands, `form` & `pure`.
+2. [Micgal and Bind](basics/bind.md) - Covers using micgal and `bind` to chain strands.
+3. [Strand Input](basics/input.md) - What strands receive as input.
+4. [Strand Output](basics/output.md) - What strands produce.
+5. [Summary](basics/summary.md) - Summary of the above.
 
 ## Gall {#gall}
 

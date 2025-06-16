@@ -1,6 +1,6 @@
 # Examples
 
-This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](../reference/tasks.md) document.
+This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](tasks.md) document.
 
 Most examples will either use `|pass` to just send a `task` or the following thread to send a `task` and take the resulting `gift`. You can save the following thread to the `ted` directory of the `%base` `desk` on a fake ship:
 
@@ -27,7 +27,7 @@ Most examples will either use `|pass` to just send a `task` or the following thr
 
 ## `%warp` {#warp}
 
-See the [Read and Subscribe](../reference/tasks.md#warp---read-and-track) section of the [API Reference](../reference/tasks.md) document for general details.
+See the [Read and Subscribe](tasks.md#warp---read-and-track) section of the [API Reference](tasks.md) document for general details.
 
 ### `%sing` {#sing}
 
@@ -314,7 +314,7 @@ Here's a breakdown of the `task` we sent:
 
 ## `%info` {#info}
 
-See the [Write and Modify](../reference/tasks.md#write-and-modify) section of the [API Reference](../reference/tasks.md) document for general details.
+See the [Write and Modify](tasks.md#write-and-modify) section of the [API Reference](tasks.md) document for general details.
 
 ### `%ins` {#ins}
 
@@ -399,7 +399,7 @@ Save to `ted/multi-change.hoon`, `|commit %base`, and run:
 
 ## Manage Mounts {#manage-mounts}
 
-See the [Manage Mounts](../reference/tasks.md#manage-mounts) section of the [API Reference](../reference/tasks.md) document for general details.
+See the [Manage Mounts](tasks.md#manage-mounts) section of the [API Reference](tasks.md) document for general details.
 
 ### `%boat` {#boat}
 
@@ -498,7 +498,7 @@ If you have the same `desk` mounted to multiple points, a committed change in on
 
 ## Merge Desks {#merge-desks}
 
-See the [Merge Desks](../reference/tasks.md#merge-desks) section of the [API Reference](../reference/tasks.md) document for general details.
+See the [Merge Desks](tasks.md#merge-desks) section of the [API Reference](tasks.md) document for general details.
 
 ### `%merg` {#merg}
 
@@ -572,7 +572,7 @@ You can also specify it by revision number or label.
 
 ## Permissions {#permissions}
 
-See the [Permissions](../reference/tasks.md#permissions) section of the [API Reference](../reference/tasks.md) document for general details.
+See the [Permissions](tasks.md#permissions) section of the [API Reference](tasks.md) document for general details.
 
 ### `%perm` {#perm}
 
@@ -711,7 +711,7 @@ Now we'll use the `send-task-take-gift.hoon` thread to try `%crow`:
 
 ## Foreign Ships {#foreign-ships}
 
-See the [Foreign Ships](../reference/tasks.md#foreign-ships) section of the [API Reference](../reference/tasks.md) document for general details.
+See the [Foreign Ships](tasks.md#foreign-ships) section of the [API Reference](tasks.md) document for general details.
 
 ### `%warp` - Remote {#warp---remote}
 

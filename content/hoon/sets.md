@@ -10,7 +10,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-identity.png)
 
-[`++silt`](../reference/stdlib/2l.md#silt) produces a `$set` from a `$list`.
+[`++silt`](stdlib/2l.md#silt) produces a `$set` from a `$list`.
 
 ```
 > `(set @tas)`(silt `(list @tas)`~[%a %b %c %a])
@@ -21,7 +21,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-addition.png)
 
-[`++put:in`](../reference/stdlib/2h.md#putin) adds an element _x_ to a set _A_.
+[`++put:in`](stdlib/2h.md#putin) adds an element _x_ to a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -29,7 +29,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 {%b %d %a %c}
 ```
 
-[`++gas:in`](../reference/stdlib/2h.md#gasin) adds each element _x_, _y_, _z_ of a list to a set _A_.
+[`++gas:in`](stdlib/2h.md#gasin) adds each element _x_, _y_, _z_ of a list to a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -42,7 +42,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-deletion.png)
 
-[`++del:in`](../reference/stdlib/2h.md#delin) removes an element _x_ from a set _A_.
+[`++del:in`](stdlib/2h.md#delin) removes an element _x_ from a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c %d])
@@ -54,7 +54,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-membership.png)
 
-[`++has:in`](../reference/stdlib/2h.md#hasin) checks if an element _x_ is in a set _A_.
+[`++has:in`](stdlib/2h.md#hasin) checks if an element _x_ is in a set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -68,7 +68,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ### Size {#size}
 
-[`++wyt:in`](../reference/stdlib/2h.md#wytin) produces the number of elements in _A_ as an atom (width).
+[`++wyt:in`](stdlib/2h.md#wytin) produces the number of elements in _A_ as an atom (width).
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -78,7 +78,7 @@ A `$set` is a tree with a particular internal order based on the hash of the val
 
 ### Export as List {#export-as-list}
 
-[`++tap:in`](../reference/stdlib/2h.md#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
+[`++tap:in`](stdlib/2h.md#tapin) produces the elements of set _A_ as a `$list`.  The order is the same as a depth-first search of the `$set`'s representation as a `$tree`, reversed.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -103,7 +103,7 @@ $$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-union.png)
 
-[`++uni:in`](../reference/stdlib/2h.md#uniin) produces a set containing all values from _A_ or _B_.  The types of _A_ and _B_ must match.
+[`++uni:in`](stdlib/2h.md#uniin) produces a set containing all values from _A_ or _B_.  The types of _A_ and _B_ must match.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -120,7 +120,7 @@ $$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-intersection.png)
 
-[`++int:in`](../reference/stdlib/2h.md#intin) produces a set containing all values from _A_ and _B_.  The types of _A_ and _B_ must match.
+[`++int:in`](stdlib/2h.md#intin) produces a set containing all values from _A_ and _B_.  The types of _A_ and _B_ must match.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -146,7 +146,7 @@ $$
 
 ![](https://media.urbit.org/docs/hoon-syntax/set-complement.png)
 
-The complement of a set _A_, _Aꟲ_, may be found using [`++dif`](../reference/stdlib/2h.md#difin) (difference).
+The complement of a set _A_, _Aꟲ_, may be found using [`++dif`](stdlib/2h.md#difin) (difference).
 
 For instance, if _X_ = {_a_, _b_, _c_, _d_} and A = {_c_, _d_}, then _Aꟲ_ = {_a_, _b_}.
 
@@ -183,7 +183,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Logical `AND` (∧) {#logical-and-}
 
-[`++all:in`](../reference/stdlib/2h.md#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
+[`++all:in`](stdlib/2h.md#allin) computes the logical `AND` on every element in set _A_ against a logical function _f_, producing  a flag.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -193,7 +193,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Logical `OR` (∨) {#logical-or-}
 
-[`++any:in`](../reference/stdlib/2h.md#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
+[`++any:in`](stdlib/2h.md#anyin) computes the logical `OR` on every element in set _A_ against a logical function _f_, producing a flag.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -203,7 +203,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Operate with Function {#operate-with-function}
 
-[`++run:in`](../reference/stdlib/2h.md#runin) applies a function _f_ to every member of set _A_.
+[`++run:in`](stdlib/2h.md#runin) applies a function _f_ to every member of set _A_.
 
 ```
 > =/  a  `(set @tas)`(silt `(list @tas)`~[%a %b %c])
@@ -213,7 +213,7 @@ For instance, if _A_ = {_a_, _b_, _c_} and _B_ = {_c_, _d_, _e_}, then _A_ Δ _B
 
 ### Accumulate with Function {#accumulate-with-function}
 
-[`++rep:in`](../reference/stdlib/2h.md#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
+[`++rep:in`](stdlib/2h.md#repin) applies a binary function _f_ to every member of set _A_ and accumulates the result.
 
 ```
 =/  a  `(set @ud)`(silt `(list @ud)`~[1 2 3 4 5])

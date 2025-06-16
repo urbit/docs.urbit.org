@@ -116,7 +116,7 @@ The `accepted` field says whether the binding succeeded and the `binding` is the
 
 #### Example
 
-See the [Agents: Direct HTTP](../guides/guide.md#agents-direct-http) section of the [Guide](../guides/guide.md) document for an example.
+See the [Agents: Direct HTTP](guide.md#agents-direct-http) section of the [Guide](guide.md) document for an example.
 
 ***
 
@@ -154,7 +154,7 @@ Eyre will return a `%bound` `gift` as described at the end of the [%connect](tas
 
 #### Example
 
-See the [Generators](../guides/guide.md#generators) section of the [Guide](../guides/guide.md) document for an example.
+See the [Generators](guide.md#generators) section of the [Guide](guide.md) document for an example.
 
 ***
 
@@ -204,7 +204,7 @@ Eyre returns no `gift` in response to a `%approve-origin` `task`.
 
 #### Example
 
-See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
+See the [Managing CORS Origins](guide.md#managing-cors-origins) section of the [Guide](guide.md) document for an example.
 
 ## `%reject-origin` <a href="#reject-origin" id="reject-origin"></a>
 
@@ -222,7 +222,7 @@ Eyre returns no `gift` in response to a `%reject-origin` `task`.
 
 #### Example
 
-See the [Managing CORS Origins](../guides/guide.md#managing-cors-origins) section of the [Guide](../guides/guide.md) document for an example.
+See the [Managing CORS Origins](guide.md#managing-cors-origins) section of the [Guide](guide.md) document for an example.
 
 ***
 
@@ -250,6 +250,6 @@ Eyre gives a `%grow` `gift` in response to a `%set-response` `task`. A `%grow` `
 [%grow =path]
 ```
 
-The `path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`++scot`](../../../../hoon/reference/stdlib/4m.md#scot) encoding, so will need to be decoded with `%t` [`++slav`](../../../../hoon/reference/stdlib/4m.md#slav).
+The `path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`++scot`](../../../hoon/stdlib/4m.md#scot) encoding, so will need to be decoded with `%t` [`++slav`](../../../hoon/stdlib/4m.md#slav).
 
 ***

@@ -266,7 +266,7 @@ To recap at this point: the engine pattern represents a way of using a helper co
 
 How could you use the engine pattern today?  A Gall agent is a door with a sample of the `$bowl` and an associated state. `$card`s are issued from the agent to Arvo and other agents, while `$gift`s and incoming `$card`s are handled by the agent. This means that agents need to compose lists of `$card`s: the ubiquitous `(quip card _this)` return type. This pair of `(list card)` and `agent:gall` allow us to produce effects (`$card`s) and return new state.
 
-A Gall agent sometimes needs to issue a lot of state changes using `$card`s. This can lead to awkward chains of [`=^` tisket](../../hoon/reference/rune/tis.md#tisket) pins as several cards are aggregated together before resolving. (`$card`s are all executed “at the same time”, meaning before any mutations are applied to the state, but composing several `$card`s together can be vexing.)
+A Gall agent sometimes needs to issue a lot of state changes using `$card`s. This can lead to awkward chains of [`=^` tisket](rune/tis.md#tisket) pins as several cards are aggregated together before resolving. (`$card`s are all executed “at the same time”, meaning before any mutations are applied to the state, but composing several `$card`s together can be vexing.)
 
 As an alternative, a helper core (the inner core, engine, or cursor) can be used to encapsulate complex card handling. When used well, the engine pattern can lead to cleaner code factoring and sequestration of more complex logic.
 
@@ -318,7 +318,7 @@ This pattern works well for single cards or short collections of them, in partic
 
 ### `=^` tisket pattern {#tisket-pattern}
 
-The classic way of composing several cards uses a [`=^` tisket](../reference/rune/tis.md#tisket) to pin a state and a helper core to process actions. This allows sequestration of logic into particular arms.
+The classic way of composing several cards uses a [`=^` tisket](rune/tis.md#tisket) to pin a state and a helper core to process actions. This allows sequestration of logic into particular arms.
 
 {% code wrap="nowrap" %}
 

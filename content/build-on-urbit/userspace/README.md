@@ -4,7 +4,7 @@ Gall is one of the nine vanes (kernel modules) of Arvo, Urbit's operating system
 
 One or more Gall agents can be put together in a "desk" in Clay (the filesystem vane) and, along with a front-end, can be published and distributed as a cohesive app for users to install.
 
-This section of the docs contains guides related to writing apps and [distributing them](guides/software-distribution.md). It also contains a number of different [examples and exercises](examples/) you can work through to learn how to build different kinds of apps.
+This section of the docs contains guides related to writing apps and [distributing them](dist/software-distribution.md). It also contains a number of different [examples and exercises](examples/) you can work through to learn how to build different kinds of apps.
 
 * [Reference](reference/) - Reference information about apps and software distribution.
 * [Guides](guides/) - Guides to things like software distribution, CLI apps and remote scries.

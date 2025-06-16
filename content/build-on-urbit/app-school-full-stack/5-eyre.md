@@ -27,5 +27,5 @@ The `@urbit/http-api` library we'll use includes a function for performing scrie
 ## Resources {#resources}
 
 - [The Eyre vane documentation](../../urbit-os/kernel/eyre) - This section of the vane docs covers all aspects of Eyre.
-- [Eyre External API Reference](../../urbit-os/kernel/eyre/reference/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
-- [The Eyre Guide](../../urbit-os/kernel/eyre/guides/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).
+- [Eyre External API Reference](../../urbit-os/kernel/eyre/external-api-ref.md) - This section of the Eyre documentation contains reference material for Eyre's external API.
+- [The Eyre Guide](../../urbit-os/kernel/eyre/guide.md) - This section of the Eyre documentation walks through using Eyre's external API at a low level (using `curl`).

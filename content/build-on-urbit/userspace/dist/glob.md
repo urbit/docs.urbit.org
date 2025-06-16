@@ -43,7 +43,7 @@ Note: The mime byte-length and data are 0 in this example because it was made wi
 
 A glob may contain any number of files and folders in any kind of heirarchy. The one important thing is that an `index.html` file is present in its root. The `index.html` file is automatically served when the app is opened in the browser and will fail if it is missing.
 
-In addition to the `$glob` type, a glob can also be output to Unix with a `.glob` file extension for distribution over HTTP. This file simply contains a [`jam`](../../../../hoon/reference/stdlib/2p.md#jam)med `$glob` structure.
+In addition to the `$glob` type, a glob can also be output to Unix with a `.glob` file extension for distribution over HTTP. This file simply contains a [`jam`](../../../hoon/stdlib/2p.md#jam)med `$glob` structure.
 
 ## Docket file clause {#docket-file-clause}
 
@@ -51,7 +51,7 @@ The `desk.docket-0` file must include exactly one of the following clauses:
 
 #### `site+/some/path`
 
-If an app binds an Eyre endpoint and handles HTTP directly, for example with a [`%connect` task:eyre](../../../../urbit-os/kernel/eyre/reference/tasks.md#connect), the `%site` clause is used, specifying the Eyre binding. In this case a glob is omitted entirely.
+If an app binds an Eyre endpoint and handles HTTP directly, for example with a [`%connect` task:eyre](../../../urbit-os/kernel/eyre/tasks.md#connect), the `%site` clause is used, specifying the Eyre binding. In this case a glob is omitted entirely.
 
 #### `glob-ames+[~zod 0vs0me.h4sh]`
 
@@ -77,7 +77,7 @@ Note the target desk must have been `|install`ed before uploading its glob. When
 
 ### `-make-glob` {#make-glob}
 
-There's a different process for globs to be distributed over HTTP from a webserver rather than over Ames from a ship. For this purpose, the `%landscape` desk includes a `%make-glob` thread. The thread takes a folder in a desk and produces a glob of the files it contains, which it then saves to Unix in a [`jam`](../../../../hoon/reference/stdlib/2p.md#jam)file with a `.glob` extension.
+There's a different process for globs to be distributed over HTTP from a webserver rather than over Ames from a ship. For this purpose, the `%landscape` desk includes a `%make-glob` thread. The thread takes a folder in a desk and produces a glob of the files it contains, which it then saves to Unix in a [`jam`](../../../hoon/stdlib/2p.md#jam)file with a `.glob` extension.
 
 To begin, you'll need to spin up a ship (typically a fake ship) and `|mount` a desk for which to add the files. In order for Clay to add the files, the desk must contain `mark` files in its `/mar` directory for all file extensions your folder contains. The `%landscape` desk is a good bet because it includes `mark` files for `.js`, `.html`, `.png`, `.svg`, `.woff2` and a couple of others. If there's no desk with a mark for a particular file type you want included in your glob, you may need to add a new mark file. A very rudimentary mark file like the `png.hoon` mark will suffice.
 

@@ -1,6 +1,6 @@
 # L2 Actions
 
-There are a total of eleven layer 2 actions, each corresponding to a familiar [layer 1 action](ecliptic.md): `%transfer-point`, `%spawn`, `%configure-keys`, `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`, `%set-management-proxy`, `%set-spawn-proxy`, and `%set-transfer-proxy`. Descriptions of what these actions do may be found by searching for them at [Azimuth.eth](azimuth-eth.md).
+There are a total of eleven layer 2 actions, each corresponding to a familiar [layer 1 action](../ecliptic.md): `%transfer-point`, `%spawn`, `%configure-keys`, `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`, `%set-management-proxy`, `%set-spawn-proxy`, and `%set-transfer-proxy`. Descriptions of what these actions do may be found by searching for them at [Azimuth.eth](../azimuth-eth.md).
 
 Once a ship moves to layer 2, the owner will still utilize the same private keys they used before the transfer to perform Azimuth actions. This includes the ownership key as well as proxies. Stars and galaxies may move their spawn proxy to layer 2 while otherwise remaining on layer 1, but it is not possible to transfer only the management proxy to layer 2; it may only happen as a side-effect of transferring ownership to layer 2.
 

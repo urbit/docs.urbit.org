@@ -154,7 +154,7 @@ _exactly one of either this, [glob-ames](#glob-ames) or [glob-http](#glob-http) 
 
 It's possible for an app to handle HTTP requests from the client directly rather than with a separate [glob](glob.md). In that case, the `%site` field specifies the `path` of the Eyre endpoint the app will bind. If `%site` is used, clicking the app's tile will simply open a new tab with a GET request to the specified Eyre endpoint.
 
-For more information on direct HTTP handling with a Gall agent or generator, see the [Eyre Internal API Reference](../../../../urbit-os/kernel/eyre/reference/tasks.md) documentation.
+For more information on direct HTTP handling with a Gall agent or generator, see the [Eyre Internal API Reference](../../../urbit-os/kernel/eyre/tasks.md) documentation.
 
 #### Type
 

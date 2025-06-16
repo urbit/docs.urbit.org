@@ -89,7 +89,7 @@ A `Point` contains data about networking keys and sponsorship status, arranged i
 
 ## `Deed`s <a href="#deeds" id="deeds"></a>
 
-A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../../user-manual/id/proxies.md) for that `Point`.
+A `Deed` says which Ethereum address owns a given `Point` as well as several [proxies](../user-manual/id/proxies.md) for that `Point`.
 
 ```solidity
 struct Deed
@@ -125,4 +125,4 @@ Finally, each Ethereum address may set for itself a number of `operators`, as de
 
 `Azimuth.eth` also contains some other state—`dnsDomains`—which are domain names by which the IP address of a galaxy may be looked up, e.g. `zod.urbit.org` resolves to `35.247.119.159`. This is used for bootstrapping the network from DNS. Three domains may be listed here, but as of today they are all `urbit.org`. This may only be updated by the owner of Ecliptic, but arguably each galaxy ought to be able to set its own domain name and so we do not expect this to remain the case forever.
 
-All data in this ledger is stored and processed locally on your ship by the [`%azimuth` Gall agent](../concepts/flow.md#azimuth), including [layer 2](../concepts/layer2.md) data. Because state transitions resulting from layer 2 transactions are not included in this ledger, in general the local store will differ from what is kept in `Azimuth.eth`.
+All data in this ledger is stored and processed locally on your ship by the [`%azimuth` Gall agent](flow.md#azimuth), including [layer 2](../concepts/layer2.md) data. Because state transitions resulting from layer 2 transactions are not included in this ledger, in general the local store will differ from what is kept in `Azimuth.eth`.

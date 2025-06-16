@@ -22,7 +22,7 @@ Next we'll look at these different types of strings in more detail.
 
 ### `cord` {#cord}
 
-A [`cord`](../reference/stdlib/2q.md#cord) has an aura of `@t`. It denotes UTF-8 text encoded in an atom, little-endian. That is, the first character in the text is the least-significant byte. A cord may contain any UTF-8 characters, there are no restrictions.
+A [`cord`](stdlib/2q.md#cord) has an aura of `@t`. It denotes UTF-8 text encoded in an atom, little-endian. That is, the first character in the text is the least-significant byte. A cord may contain any UTF-8 characters, there are no restrictions.
 
 The `hoon` syntax for a cord is some text wrapped in single-quotes like:
 
@@ -70,7 +70,7 @@ This will be parsed to:
 
 ### `knot` {#knot}
 
-A [`knot`](../reference/stdlib/2q.md#knot) has an aura of `@ta`, and is a subset of a [`cord`](#cord). It allows lower-case letters, numbers, and four special characters: Hyphen, tilde, underscore and period. Its restricted set of characters is intended to be URL-safe.
+A [`knot`](stdlib/2q.md#knot) has an aura of `@ta`, and is a subset of a [`cord`](#cord). It allows lower-case letters, numbers, and four special characters: Hyphen, tilde, underscore and period. Its restricted set of characters is intended to be URL-safe.
 
 The `hoon` syntax for a knot is a string containing any of the aforementioned characters prepended with `~.` like:
 
@@ -80,7 +80,7 @@ The `hoon` syntax for a knot is a string containing any of the aforementioned ch
 
 ### `term` {#term}
 
-A [`term`](../reference/stdlib/2q.md#term) has an aura of `@tas`, and is a subset of a [`knot`](#knot). It only allows lower-case letters, numbers, and hyphens. Additionally, the first character cannot be a hyphen or number. This is a very restricted text atom, and is intended for naming data structures and the like.
+A [`term`](stdlib/2q.md#term) has an aura of `@tas`, and is a subset of a [`knot`](#knot). It only allows lower-case letters, numbers, and hyphens. Additionally, the first character cannot be a hyphen or number. This is a very restricted text atom, and is intended for naming data structures and the like.
 
 The `hoon` syntax for a term is a string conforming to the prior description, prepended with a `%` like:
 
@@ -146,7 +146,7 @@ For example, you can do this:
 %!%* $@&
 ```
 
-This means you cannot rely on mere aura-casting if you need the text to conform to the specified aura's restrictions. Instead, there are a couple of function in the standard library to check text aura validity: [`+sane`](../reference/stdlib/4b.md#sane) and [`+sand`](../reference/stdlib/4b.md#sane).
+This means you cannot rely on mere aura-casting if you need the text to conform to the specified aura's restrictions. Instead, there are a couple of function in the standard library to check text aura validity: [`+sane`](stdlib/4b.md#sane) and [`+sand`](stdlib/4b.md#sane).
 
 The `+sane` function takes an argument of either `%ta` or `%tas` to validate `@ta` and `@tas` respectively (you can technically give it `%t` for `@t` too but there's no real point). It will return `%.y` if the given atom is valid for the given aura, and `%.n` if it isn't. For example:
 
@@ -168,7 +168,7 @@ The `+sand` function does the same thing, but rather than returning a `?` it ret
 
 ## `tape` {#tape}
 
-A [`tape`](../reference/stdlib/2q.md#tape) is the other main string type in hoon. Rather than a single atom, it's instead a list of individual `@tD` characters (the `D` specifies a bit-length of 8, see the [Auras](../reference/auras.md#bitwidth) documentation for details). The head of the list is the first character in the string.
+A [`tape`](stdlib/2q.md#tape) is the other main string type in hoon. Rather than a single atom, it's instead a list of individual `@tD` characters (the `D` specifies a bit-length of 8, see the [Auras](auras.md#bitwidth) documentation for details). The head of the list is the first character in the string.
 
 The `hoon` syntax for a tape is some text wrapped in double-quotes like:
 
@@ -220,7 +220,7 @@ Tapes, unlike cords, allow string interpolation. Arbitrary `hoon` may be embedde
 
 #### Manual
 
-In the first case, the code to be evaluated is enclosed in braces. The type of the product of the code must itself be a tape. For example, if the `@p` of our ship is stored in `our`, simply doing `"{our}"` will fail because its type will be `@p` rather than `tape`. Instead, we must explicitly use the [`+scow`](../reference/stdlib/4m.md#scow) function to render `our` as a tape:
+In the first case, the code to be evaluated is enclosed in braces. The type of the product of the code must itself be a tape. For example, if the `@p` of our ship is stored in `our`, simply doing `"{our}"` will fail because its type will be `@p` rather than `tape`. Instead, we must explicitly use the [`+scow`](stdlib/4m.md#scow) function to render `our` as a tape:
 
 ```
 > "{(scow %p our)}"
@@ -259,7 +259,7 @@ And another:
 
 ## Conversions {#conversions}
 
-Tapes can easily be converted to cords and vice versa. There are two stdlib functions for this purpose: [`+crip`](../reference/stdlib/4b.md#crip) and [`+trip`](../reference/stdlib/4b.md#trip). The former converts a `tape` to a `cord` and the latter does the opposite. For example:
+Tapes can easily be converted to cords and vice versa. There are two stdlib functions for this purpose: [`+crip`](stdlib/4b.md#crip) and [`+trip`](stdlib/4b.md#trip). The former converts a `tape` to a `cord` and the latter does the opposite. For example:
 
 ```
 > (crip "foobar")
@@ -290,7 +290,7 @@ Likewise, the output of `+crip` can be cast to a knot or term:
 
 ## Encoding in text {#encoding-in-text}
 
-It's common to encode atoms in cords or knots, particularly when constructing a [scry](../../urbit-os/kernel/arvo/guides/scry.md) [`path`](../reference/stdlib/2q.md#path) or just a `path` in general. There are two main functions for this purpose: [`+scot`](../reference/stdlib/4m.md#scot) and [`+scow`](../reference/stdlib/4m.md#scow). The former produces a `knot`, and the latter produces a `tape`. Additionally, there are two more functions for encoding `path`s in cords and tapes respectively: [`+spat`](../reference/stdlib/4m.md#spat) and [`+spud`](../reference/stdlib/4m.md#spud).
+It's common to encode atoms in cords or knots, particularly when constructing a [scry](../urbit-os/kernel/arvo/scry.md) [`path`](stdlib/2q.md#path) or just a `path` in general. There are two main functions for this purpose: [`+scot`](stdlib/4m.md#scot) and [`+scow`](stdlib/4m.md#scow). The former produces a `knot`, and the latter produces a `tape`. Additionally, there are two more functions for encoding `path`s in cords and tapes respectively: [`+spat`](stdlib/4m.md#spat) and [`+spud`](stdlib/4m.md#spud).
 
 ### `+scot` and `+spat` {#scot-and-spat}
 
@@ -362,7 +362,7 @@ You'll most commonly see this used in constructing a `path` like:
 
 ## Decoding from text {#decoding-from-text}
 
-For decoding atoms of particular auras encoded in cords, there are three functions: [`+slat`](../reference/stdlib/4m.md#slat), [`+slav`](../reference/stdlib/4m.md#slav), and [`+slaw`](../reference/stdlib/4m.md#slaw). Additionally, there is [`+stab`](../reference/stdlib/4m.md#stab) for decoding a cord to a path.
+For decoding atoms of particular auras encoded in cords, there are three functions: [`+slat`](stdlib/4m.md#slat), [`+slav`](stdlib/4m.md#slav), and [`+slaw`](stdlib/4m.md#slaw). Additionally, there is [`+stab`](stdlib/4m.md#stab) for decoding a cord to a path.
 
 `+slav` parses the given cord with the aura specified as a `@tas`, crashing if the parsing failed. For example:
 
@@ -414,12 +414,12 @@ Finally, `+stab` parses a cord containing a path to a `path`. For example:
 
 - [Parsing](parsing.md) - A guide to writing fully-fledged functional parsers in hoon.
   
-- [Auras](../reference/auras.md) - Details of auras in hoon.
+- [Auras](auras.md) - Details of auras in hoon.
 
-- [stdlib 2b: List logic](../reference/stdlib/2b.md) - Standard library functions for manipulating lists, which are useful for dealing with tapes.
+- [stdlib 2b: List logic](stdlib/2b.md) - Standard library functions for manipulating lists, which are useful for dealing with tapes.
 
-- [stdlib 2q: Molds and Mold-builders](../reference/stdlib/2q.md) - Several text types are defined in this section of the standard library.
+- [stdlib 2q: Molds and Mold-builders](stdlib/2q.md) - Several text types are defined in this section of the standard library.
 
-- [stdlib 4b: Text processing](../reference/stdlib/4b.md) - Standard library functions for manipulating and converting tapes and strings.
+- [stdlib 4b: Text processing](stdlib/4b.md) - Standard library functions for manipulating and converting tapes and strings.
 
-- [stdlib 4m: Formatting functions](../reference/stdlib/4m.md) - Standard library functions for encoding and decoding atom auras in strings.
+- [stdlib 4m: Formatting functions](stdlib/4m.md) - Standard library functions for encoding and decoding atom auras in strings.

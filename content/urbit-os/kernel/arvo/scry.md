@@ -1,6 +1,6 @@
 # Scries
 
-This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](../../../../build-on-urbit/userspace/guides/remote-scry.md).
+This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](../../../build-on-urbit/userspace/remote-scry.md).
 
 ## What is a scry? {#what-is-a-scry}
 
@@ -16,11 +16,11 @@ The subject available in something like a Gall agent or thread contains a great 
 
 Scries are performed exclusively with the dotket rune: `.^`
 
-For details of its usage, see the [dotket](../../../../hoon/reference/rune/dot.md#dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
+For details of its usage, see the [dotket](../../../hoon/rune/dot.md#dotket) section of the Nock rune documentation. In addition to the dotket documentation, below is a colour-coded diagram breaking down the structure of a dotket scry expression with some additional notes.
 
 ![](https://media.urbit.org/docs/arvo/scry-diagram-v3.svg)
 
-One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](../../clay/reference/scry.md).
+One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](../clay/scry.md).
 
 Most other vanes also make use of `care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `care`s still confer the general nature of the endpoint. The most widely used `care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
 
@@ -68,14 +68,14 @@ The case in the beginning says it takes a `%x` `care` and has a `path` of `/keys
 
 ## Web scries {#web-scries}
 
-The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](../../eyre/reference/external-api-ref.md#scry).
+The webserver vane Eyre has a system which allows clients like web browsers to perform scries over HTTP. For details, refer to the [Scry section of Eyre's External API Reference](../eyre/external-api-ref.md#scry).
 
 ## Further reading {#further-reading}
 
-[dotket](../../../../hoon/reference/rune/dot.md#dotket) - Documentation of the `.^` rune which performs scries.
+[dotket](../../../hoon/rune/dot.md#dotket) - Documentation of the `.^` rune which performs scries.
 
 [Arvo](..) - Each vane has a Scry Reference section with details of their endpoints as well as examples.
 
-[Eyre's External API Reference](../../eyre/reference/external-api-ref.md#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
+[Eyre's External API Reference](../eyre/external-api-ref.md#scry) - Documentation of Eyre's scry system which allows web clients to perform scries over HTTP.
 
-[App School I](../../../../build-on-urbit/app-school) - The App School Gall tutorial includes a section about `+on-peek` and writing scry endpoints.
+[App School I](../../../build-on-urbit/app-school/README.md) - The App School Gall tutorial includes a section about `+on-peek` and writing scry endpoints.

@@ -10,7 +10,7 @@ This document details the `task`s used by Iris. Iris only has three `task`s besi
 
 Fetch a remote HTTP resource.
 
-The [$request:http](../../eyre/reference/data-types.md#requesthttp) is the request itself and contains the HTTP method, the fully qualified target URL, a list of HTTP headers to be included and maybe the data for the body of the request.
+The [$request:http](../eyre/data-types.md#requesthttp) is the request itself and contains the HTTP method, the fully qualified target URL, a list of HTTP headers to be included and maybe the data for the body of the request.
 
 The [$outbound-config](data-types.md#outbound-config) specifies the number of redirects to follow before failing and the number of retries to attempt before giving up. The default values are `5` and `3` respectively. As of writing, **retries and auto-following redirects are not implemented**, so what you specify here is irrelevant and you can just use the bunt value of `outbound-config`.
 
@@ -54,4 +54,4 @@ Iris does not return any `gift` in response to a `%cancel-request` `task`. You w
 
 Receives HTTP data from outside. This `task` is sent to Iris by the runtime, you would not use it manually.
 
-The `id` is a sequential ID for the event and the [$http-event:http](../../eyre/reference/data-types.md#http-eventhttp) contains the HTTP headers and data.
+The `id` is a sequential ID for the event and the [$http-event:http](../eyre/data-types.md#http-eventhttp) contains the HTTP headers and data.

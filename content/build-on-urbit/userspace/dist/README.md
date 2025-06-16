@@ -45,13 +45,13 @@ A kernel update with a new kelvin version will not be applied until all running 
 
 The default agents to run are listed in the `/desk/bill` file of the desk. These can be forced off, or additional agents forced on, with commands to Clay.
 
-For details of the generators for managing desks and agents, see the [`Dojo Tools`](../../../../user-manual/os/dojo-tools.md) document.
+For details of the generators for managing desks and agents, see the [`Dojo Tools`](../../../user-manual/os/dojo-tools.md) document.
 
 ### Landscape apps <a href="#landscape-apps" id="landscape-apps"></a>
 
 It's possible to create and distribute desks without a front-end, but most developers will want a web UI for their app. There are a couple of options for this:
 
-* Have a Gall agent handle directly HTTP requests through, doing server-side page rendering and/or serving front-end files out of Clay. You can refer to the [Sail guide](../../../../hoon/guides/sail.md) for more information about generating HTML in Hoon.
+* Have a Gall agent handle directly HTTP requests through, doing server-side page rendering and/or serving front-end files out of Clay. You can refer to the [Sail guide](../../../hoon/sail.md) for more information about generating HTML in Hoon.
 * Have the Gall agents perform back-end functions only, and create a separate client bundle called a [`glob`](glob.md), which contains the front-end files like HTML, CSS, JS, images, and so forth.
 
 When an app is started, `%docket` will read the `desk.docket-0` file in the desk and, if it specifies a glob, fetch and serve it. For more details of the docket file, see the [Docket File](docket.md) document.

@@ -69,8 +69,3 @@ Hoon in the docs should generally follow the [Hoon Style Guide](https://docs.urb
 * A line of Hoon should be no more than 80 columns wide. It should strive to be no more than 56 columns wide.
 * Backstep as early and often as you reasonably can.
 
-### Hoon Prime
-
-Hoon in the docs should conform to "Hoon Prime" conventions, originally defined by \~lagrev-nocfep. There’s too much Hoon in the docs to apply this all at once. So whenever you’re reviewing Hoon code in the docs, consider whether it could be made more prime.
-
-Our canonical definition of Hoon Prime lives [here](./HOON-PRIME.md).

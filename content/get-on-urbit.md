@@ -10,10 +10,12 @@ This guide will walk through the steps of getting an Urbit ID, downloading its k
 If you want a quicker and easier way to get on Urbit, you can skip this guide and use a hosting provider instead. Tlon offers a free Urbit ID and hosting in the cloud that only takes a few clicks to get up and running, [available here](https://join.tlon.io/0v1.cr43s.b0o2b.nllrg.sf25p.62l4h).
 {% endhint %}
 
-You will need...
-* To be able to use a terminal / command line. We'll go through everything you need to do step by step.
-* Basic familiarity with crypto wallets and some ETH to buy a planet, unless you want to use a free disposable ID or purchase a planet with a credit card.
-* A computer or server running macOS or Linux with at least 4GB of RAM and around 40GB of disk space. (You can usually get away with 2GB of RAM plus a swapfile and less disk space, but it might become a problem in the future as your Urbit grows.)
+**Requirements**
+* Ability to use a terminal / command line. We'll go through everything you need to do step by step.
+* If you want to buy an Urbit ID you will need either...
+  * A credit card
+  * Some ETH and familiarity with Ethereum wallets, gas fees, security best practices, etc.
+* A computer or server running macOS or Linux, with at least 4GB of RAM and around 4GB of disk space. (You can usually get away with 2GB of RAM plus a swapfile and less disk space, but this might become a problem in the future as your Urbit grows.)
 
 (If you want to run Urbit on a Windows computer you should be able to do so with Windows Subsystem for Linux (WSL), but that's outside the scope of this guide.)
 
@@ -59,11 +61,11 @@ Once you've got an Urbit ID, the next step is to download its private [networkin
 If you got an L1 planet from somewhere like OpenSea, it was likely transferred directly to your Ethereum wallet. Here are the steps to get your keyfile:
 
 1. Go to [bridge.urbit.org](https://bridge.urbit.org).
-2. Login with WalletConnect or MetaMask if you use that.
-3. Click on your planet, which should be listed there.
+2. Conect your wallet.
+3. Click on your planet, which should be listed there. (If you only have one Urbit ID in your wallet, click "Set Network Keys" on the popup and go to Step 5.)
 4. Go to the "OS" section.
 5. Click "Initialize" next to "Network Keys". (See the note below if it says something else.)
-6. Make sure you have a little ETH to pay the transaction fee, then click on "Set Networking Keys".
+6. Make sure you have a little ETH to pay the transaction fee, then click on "Set Network Keys".
 7. Click "Send Transaction".
 8. Approve the transaction in your wallet.
 9. Wait until the transaction completes and it says "Network Keys have been set" in [bridge.urbit.org](https://bridge.urbit.org).
@@ -169,7 +171,9 @@ You are now inside a `screen` session. You can boot your Urbit with the command 
 ./urbit -w sampel-palnet -k /path/to/sampel-palnet-1.key
 ```
 
-Your planet will begin to boot up, which might take a few minutes. You'll know your planet has booted when you see something like this in the terminal:
+(Very rarely this can result in an error message `pre-boot error: %not-keyed`. If you see this, check your ETH wallet in Etherscan for a "Configure Keys" transaction. If you've confirmed your planet's keys have been set, leave it for a while and try again.)
+
+Your planet will begin to boot up, which will take a few minutes. You'll know your planet has booted when you see something like this in the terminal:
 
 ```
 ~sampel-palnet:dojo>
@@ -177,7 +181,7 @@ Your planet will begin to boot up, which might take a few minutes. You'll know y
 
 This is the Dojo, Urbit's command-line interface.
 
-For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`. If you see a loading spinner like "\<\<behn>>", you won't be able to type until that goes away.
+For the moment, shut the ship down again by typing `|exit` or pressing `Ctrl+D`. If you see a loading spinner like "\<\<behn>>", you won't be able to type until that goes away. Your planet might be installing a couple of apps, but since Urbit OS has no concept of RAM you can safely turn it off at any time without worrying about breaking it.
 
 {% hint %}
 
@@ -194,6 +198,8 @@ sudo setcap 'cap_net_bind_service=+ep' sampel-palnet/.run
 {% endhint %}
 
 For ease of portability the Urbit runtime has made a copy of itself in the `sampel-palnet` folder, so you don't need the separate `urbit` executable anymore. Delete it by typing `rm urbit`.
+
+At this point you can also delete your keyfile because it can never be used again.
 
 Spin up your planet again by running `sampel-palnet/.run`, and you'll be back at the Dojo.
 

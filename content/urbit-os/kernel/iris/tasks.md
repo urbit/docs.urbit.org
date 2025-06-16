@@ -30,7 +30,7 @@ Note that neither `%progress` partial messages nor `%cancel` responses have been
 
 #### Example
 
-See the [Example](../examples/example.md) document.
+See the [Example](example.md) document.
 
 ## `%cancel-request` {#cancel-request}
 

@@ -8,6 +8,6 @@ This section covers managing your Urbit ID with Bridge, and some other practical
 - [Bridge Troubleshooting](bridge-troubleshooting.md) - Help for common issues with Bridge.
 - [Creating an Invite Pool](creating-an-invite-pool.md) - Guide for star owners on inviting people to the network with their planets.
 - [Guide to Factory Resets](guide-to-resets.md) - Step-by-step guide for resetting your Urbit ID in the event that your Urbit server suffers an unrecoverable error.
-- [Layer 2 for planets](layer-2-for-planets.md) - How to use the [Layer 2](../../urbit-id/concepts/layer2.md) solution with your planet.
+- [Layer 2 for planets](layer-2-for-planets.md) - How to use the [Layer 2](../../urbit-id/l2/README.md) solution with your planet.
 - [Layer 2 for stars](l2-star.md) - How to use the Layer 2 solution for your star.
 

@@ -184,7 +184,7 @@ The last thing we need to do is publish our app, so other users can install it f
 
 ## Resources {#resources}
 
-- [App publishing/distribution documentation](../../build-on-urbit/userspace/reference/dist) - Documentation covering third party desk composition, publishing and distribution.
+- [App publishing/distribution documentation](../userspace/dist) - Documentation covering third party desk composition, publishing and distribution.
 - [Glob documentation](../userspace/dist/glob.md) - Comprehensive documentation of handling front-end files.
 - [Desk publishing guide](../userspace/dist/software-distribution.md) - A step-by-step guide to creating and publishing a desk.
 - [-make-glob guide](../userspace/dist/glob.md#make-glob)

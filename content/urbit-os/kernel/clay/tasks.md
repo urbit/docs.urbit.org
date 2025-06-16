@@ -1,6 +1,6 @@
 # API Reference
 
-This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Most sections have a corresponding practical example in the [Examples](../examples/examples.md) document. Many of the types referenced are detailed in the [Data Types](../reference/data-types.md) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
+This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Most sections have a corresponding practical example in the [Examples](examples.md) document. Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 
 The focus of this document is on interacting with Clay from userspace applications and threads, so it doesn't delve into the internal mechanics of Clay from a kernel development perspective.
 
@@ -55,7 +55,7 @@ The [case](data-types.md#case) specifies the `desk` revision and you can use whi
 
 #### Example
 
-[See here for an example of using %sing.](../examples/examples.md#sing)
+[See here for an example of using %sing.](examples.md#sing)
 
 ***
 
@@ -71,7 +71,7 @@ If you subscribe to the current `case` of the `desk`, Clay will not respond unti
 
 #### Example
 
-[See here for an example of using %next.](../examples/examples.md#next)
+[See here for an example of using %next.](examples.md#next)
 
 ***
 
@@ -95,7 +95,7 @@ You can use a different `care` for each of the files specified by the `path` if 
 
 #### Example
 
-[See here for an example of using %mult.](../examples/examples.md#mult)
+[See here for an example of using %mult.](examples.md#mult)
 
 ***
 
@@ -129,7 +129,7 @@ When you reach the end of the subscribed range of `case`s, Clay will send you a 
 
 #### Example
 
-[See here for an example of using %many.](../examples/examples.md#many)
+[See here for an example of using %many.](examples.md#many)
 
 ***
 
@@ -139,7 +139,7 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 #### Example
 
-[See here for an example of cancelling a subscription.](../examples/examples.md#cancel-subscription)
+[See here for an example of cancelling a subscription.](examples.md#cancel-subscription)
 
 ***
 
@@ -170,10 +170,10 @@ Clay does not give any response to an `%info` `task` so don't expect a `sign` ba
 
 Here are examples of using each of these as well as making multiple changes in one request:
 
-* [%del](../examples/examples.md#del)
-* [%ins](../examples/examples.md#ins)
-* [%mut](../examples/examples.md#mut)
-* [Multiple Changes](../examples/examples.md#multiple-changes)
+* [%del](examples.md#del)
+* [%ins](examples.md#ins)
+* [%mut](examples.md#mut)
+* [Multiple Changes](examples.md#multiple-changes)
 
 ***
 
@@ -367,7 +367,7 @@ The type it returns is a `%hill` `gift`, which looks like:
 
 #### Example
 
-[See here for an example of using %boat.](../examples/examples.md#boat)
+[See here for an example of using %boat.](examples.md#boat)
 
 ***
 
@@ -393,7 +393,7 @@ Clay does not return a `gift` in response to a `%mont` `%task`.
 
 #### Example
 
-[See here for an example of using %mont.](../examples/examples.md#mont)
+[See here for an example of using %mont.](examples.md#mont)
 
 ***
 
@@ -413,7 +413,7 @@ Clay does not return a `gift` in response to a `%ogre` `task`.
 
 #### Example
 
-[See here for an example of using %ogre.](../examples/examples.md#ogre)
+[See here for an example of using %ogre.](examples.md#ogre)
 
 ***
 
@@ -433,7 +433,7 @@ Clay does not return a `gift` in response to a `%dirk` `task`.
 
 #### Example
 
-[See here for an example of using %dirk.](../examples/examples.md#dirk)
+[See here for an example of using %dirk.](examples.md#dirk)
 
 ***
 
@@ -451,7 +451,7 @@ $:  %merg
 
 A `%merg` `task` will merge the specified source `desk` into the target local `desk`.
 
-The `germ` specifies the merge strategy. You can refer to the [Strategies](../guides/using.md#strategies) section of the [Using Clay](../guides/using.md) document for details of each `germ`.
+The `germ` specifies the merge strategy. You can refer to the [Strategies](using.md#strategies) section of the [Using Clay](using.md) document for details of each `germ`.
 
 If you're merging into a new `desk` you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
 
@@ -478,7 +478,7 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
 
 #### Example
 
-[See here for an example of using %merg.](../examples/examples.md#merg)
+[See here for an example of using %merg.](examples.md#merg)
 
 ***
 
@@ -564,7 +564,7 @@ Clay does not return a `gift` in response to a `%perm` `task`.
 
 #### Example
 
-[See here for an example of using %perm.](../examples/examples.md#perm)
+[See here for an example of using %perm.](examples.md#perm)
 
 ***
 
@@ -588,7 +588,7 @@ Clay does not return a `gift` in response to a `%cred` `task`.
 
 #### Example
 
-[See here for an example of using %cred.](../examples/examples.md#cred)
+[See here for an example of using %cred.](examples.md#cred)
 
 ***
 
@@ -614,7 +614,7 @@ The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 
 #### Example
 
-[See here for an example of using %crew.](../examples/examples.md#crew)
+[See here for an example of using %crew.](examples.md#crew)
 
 ***
 
@@ -644,7 +644,7 @@ The `gift` you get back is a `%croz` which looks like:
 
 #### Example
 
-[See here for an example of using %crow.](../examples/examples.md#crow)
+[See here for an example of using %crow.](examples.md#crow)
 
 ***
 
@@ -679,7 +679,7 @@ Note that if you're reading a whole `desk` or directory, all subfolders and file
 
 #### Example
 
-[See here for examples of requests to foreign ships.](../examples/examples.md#foreign-ships)
+[See here for examples of requests to foreign ships.](examples.md#foreign-ships)
 
 ### `%merg` - Remote <a href="#merg---remote" id="merg---remote"></a>
 
@@ -691,6 +691,6 @@ Note that all subfolders and individual files within the `desk` must permit your
 
 #### Example
 
-[See here for examples of requests to foreign ships.](../examples/examples.md#foreign-ships)
+[See here for examples of requests to foreign ships.](examples.md#foreign-ships)
 
 ***

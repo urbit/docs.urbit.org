@@ -2,7 +2,7 @@
 
 This document details all the tasks you may wish to send Jael, as well as the gifts you'll receive in response.
 
-You may also wish to reference the [Data Types](data-types.md) document for details of the types referenced here, and the [Examples](../examples/examples.md) document for practical examples of using these tasks.
+You may also wish to reference the [Data Types](data-types.md) document for details of the types referenced here, and the [Examples](examples.md) document for practical examples of using these tasks.
 
 ## Tasks <a href="#tasks" id="tasks"></a>
 
@@ -123,7 +123,7 @@ Jael does not return a gift in response to a `%nuke` task.
 
 #### Examples
 
-See the [%public-keys and %nuke](../examples/examples.md#public-keys-and-nuke) section of the Examples document for an example of using `%nuke` to cancel a `%public-keys` subscription. See the thread in the [%private-keys](../examples/examples.md#private-keys) example for cancelling a `%private-keys` subscription.
+See the [%public-keys and %nuke](examples.md#public-keys-and-nuke) section of the Examples document for an example of using `%nuke` to cancel a `%public-keys` subscription. See the thread in the [%private-keys](examples.md#private-keys) example for cancelling a `%private-keys` subscription.
 
 ***
 
@@ -139,13 +139,13 @@ Subscribe to be notified of private key updates for the local ship. The subscrip
 
 #### Returns
 
-Jael responds to a `%private-keys` task with a [`%private-keys` gift](../examples/examples.md#private-keys).
+Jael responds to a `%private-keys` task with a [`%private-keys` gift](examples.md#private-keys).
 
 Jael will immediately respond with a `%private-keys` gift. Then, whenever the ship's private keys are changed, it'll send a new and updated `%private-keys` gift.
 
 #### Example
 
-See the [%private-keys](../examples/examples.md#private-keys) section of the Examples document for a practical example.
+See the [%private-keys](examples.md#private-keys) section of the Examples document for a practical example.
 
 ***
 
@@ -161,13 +161,13 @@ An agent or thread can subscribe to be notified of public key updates, sponsorsh
 
 #### Returns
 
-Jael responds to a `%public-keys` task with [`%public-keys` gift](../examples/examples.md#public-keys-and-nuke).
+Jael responds to a `%public-keys` task with [`%public-keys` gift](examples.md#public-keys-and-nuke).
 
 Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](data-types.md#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
 
 #### Example
 
-See the [%public-keys and %nuke](../examples/examples.md#public-keys-and-nuke) section of the Examples document for a practical example.
+See the [%public-keys and %nuke](examples.md#public-keys-and-nuke) section of the Examples document for a practical example.
 
 ***
 
@@ -199,7 +199,7 @@ This task asks Jael to resend our private keys to subscribers who have subscribe
 
 #### Returns
 
-Jael doesn't return any gifts in response to a `%rekey` task, but `%private-keys` subscribers will receive a [`%private-keys` gift](../examples/examples.md#private-keys).
+Jael doesn't return any gifts in response to a `%rekey` task, but `%private-keys` subscribers will receive a [`%private-keys` gift](examples.md#private-keys).
 
 ***
 
@@ -211,14 +211,14 @@ Pretend breach.
 [%ruin ships=(set ship)]
 ```
 
-This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](../examples/examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
+This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
 
 {% hint style="warning" %}
 **WARNING**
 
 This will break communications with the given ships, and is not reversible until they actually breach. **Use with extreme caution.**
 
-Note it's better to use the [`%snub` Ames task](../../ames/reference/tasks.md#snub) if you want to block packets from ships.
+Note it's better to use the [`%snub` Ames task](../ames/tasks.md#snub) if you want to block packets from ships.
 {% endhint %}
 
 #### Returns
@@ -264,7 +264,7 @@ Jael does not return a gift in response to a `%step` task.
 
 #### Example
 
-See the [%step](../examples/examples.md#step) section of the Examples document for a practical example.
+See the [%step](examples.md#step) section of the Examples document for a practical example.
 
 ***
 

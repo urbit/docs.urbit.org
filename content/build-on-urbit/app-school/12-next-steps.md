@@ -7,7 +7,7 @@ The things haven't touched on yet are front-end development and integration, Eyr
 - [Eyre's external API reference](../../urbit-os/kernel/eyre/external-api-ref.md) - This explains Eyre's HTTP API, through which a browser or other HTTP client can interact with a Gall agent.
 - [Eyre's usage guide](../../urbit-os/kernel/eyre/guide.md) - This walks through examples of using Eyre's HTTP API.
 - [JSON guide](../../hoon/json-guide.md) - This walks through the basics of converting Hoon data structures to JSON, for use with a web client. It also covers JSON conversion methods in mark files.
-- [Zuse reference](../../hoon/reference/zuse) - This contains documentation of all JSON encoding and decoding functions included in the `/sys/zuse.hoon` utility library.
+- [Zuse reference](../../hoon/zuse) - This contains documentation of all JSON encoding and decoding functions included in the `/sys/zuse.hoon` utility library.
 - [The software distribution guide](../userspace/dist/software-distribution.md) - This covers everything you need to know to distribute apps to other ships. It includes details of bundling a web front-end and serving it to the user in the browser.
 - [The HTTP API guide](../../build-on-urbit/tools/js-libs/http-api-guide.md) - This is a reference and guide to using the `@urbit/http-api` NPM module.
 - [The Sail guide](../../hoon/sail.md) - Sail is a domain-specific language for composing XML structure in Hoon. It can be used to compose front-ends for Urbit apps directly in agents, as an alternative approach to having a separate Javascript app.

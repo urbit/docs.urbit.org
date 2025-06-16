@@ -42,7 +42,7 @@ Lick sends a [`%spin`](#spin-1) gift to Vere in response to a `%spin` task.
 
 #### Example
 
-See the [example agent](../examples/examples.md).
+See the [example agent](examples.md).
 
 ---
 
@@ -62,7 +62,7 @@ Lick gives a [`%shut`](#shut-1) gift to Vere in response to a `%shut` task.
 
 #### Example
 
-See the [example agent](../examples/examples.md).
+See the [example agent](examples.md).
 
 ---
 
@@ -82,7 +82,7 @@ Lick forwards the contents of the task as a [`%soak`](#soak) gift to Vere.
 
 #### Example
 
-See the [example agent](../examples/examples.md).
+See the [example agent](examples.md).
 
 ---
 

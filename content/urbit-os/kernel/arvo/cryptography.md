@@ -30,13 +30,13 @@ For comets, their 128-bit `@p` name is the hash of their networking public key, 
 
 ## System components <a href="#system-components" id="system-components"></a>
 
-[Ames](../../ames/) is Arvo's networking vane. All packets sent by Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception to this are comet self-attestation packets utilized to transmit authentication of ownership of the private networking key associated to their public key. Ames is responsible for encryption, decryption, and authentication of all packets. By default, this utilizes AES symmetric key encryption, whose shared private key is got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
+[Ames](../ames) is Arvo's networking vane. All packets sent by Ames are encrypted utilizing a cryptosuite found in `zuse`. The only exception to this are comet self-attestation packets utilized to transmit authentication of ownership of the private networking key associated to their public key. Ames is responsible for encryption, decryption, and authentication of all packets. By default, this utilizes AES symmetric key encryption, whose shared private key is got by elliptic curve Diffie-Hellman key exchange of the ships' networking keys.
 
 [Jael](../jael/README.md) is primarily utilized for the safe storage of private networking keys and retrieval of public networking keys utilized by Ames. The Jael vane of planets, stars, and galaxies are responsible for distributing the public keys of their moons (ultimately via Ames).
 
 `zuse` is part of the standard library. It contains cryptographic functions which are utilized by Ames. All cryptographic primitives are [jetted](../../../build-on-urbit/runtime/jetting.md) in Vere with standard vetted implementations of cryptographic libraries.
 
-[Vere](../../../../build-on-urbit/runtime/) is Urbit's Nock runtime system, written in C. All cryptographic functions implemented in Hoon are hinted to the interpreter, causing it to utilize the jet system to run standard vetted cryptographic libraries.
+[Vere](../../../build-on-urbit/runtime) is Urbit's Nock runtime system, written in C. All cryptographic functions implemented in Hoon are hinted to the interpreter, causing it to utilize the jet system to run standard vetted cryptographic libraries.
 
 [Azimuth](../../../urbit-id/what-is-urbit-id.md) is an Ethereum-based public key infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public keys for planets, stars, and galaxies from this store, which are then stored in Jael and utilized by Ames for end-to-end encrypted communication.
 

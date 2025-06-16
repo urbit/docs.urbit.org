@@ -28,13 +28,13 @@ You can also run threads directly through Eyre via HTTP request. The [API for th
 
 Generators (Hoon scripts) can also be used by clients via Eyre. These don't have a JSON API, but handle HTTP requests and return HTTP responses directly.
 
-This usage is uncommon, but is explained in the [`%serve`](reference/tasks.md#serve) section of Eyre's [Internal API Reference](reference/tasks.md). A practical example is provided in the [Generators](guide.md#generators) section of the Eyre [guide](guide.md).
+This usage is uncommon, but is explained in the [`%serve`](tasks.md#serve) section of Eyre's [Internal API Reference](tasks.md). A practical example is provided in the [Generators](guide.md#generators) section of the Eyre [guide](guide.md).
 
 ## Direct HTTP Handling With Gall Agents {#direct-http-handling-with-gall-agents}
 
 As well as the [Channel System](#the-channel-system) and [Scries](#scrying), it's also possible for Urbit apps to deal directly with HTTP requests using their own developer-defined logic.
 
-This method is explained in the [`%connect`](reference/tasks.md#connect) section of Eyre's [Internal API Reference](reference/tasks.md) document; a detailed example is provided in the [Agents: Direct HTTP](guide.md#agents-direct-http) section of the Eyre [guide](guide.md).
+This method is explained in the [`%connect`](tasks.md#connect) section of Eyre's [Internal API Reference](tasks.md) document; a detailed example is provided in the [Agents: Direct HTTP](guide.md#agents-direct-http) section of the Eyre [guide](guide.md).
 
 ## Cross-Origin Resource Sharing (CORS) {#cross-origin-resource-sharing}
 

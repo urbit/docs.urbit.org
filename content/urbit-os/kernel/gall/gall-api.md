@@ -170,7 +170,7 @@ scry.
 
 `secret` specifies whether it should be encrypted or not. The `spar` is a pair of `ship` and the remote scry path like `/c/x/4/base/sys/hoon/hoon`.
 
-Note that multiparty encrypted scry (specified with a true `secret`) should only be used when you know the publisher expects it (i.e, as part of their application protocol). Otherwise, the two-party [Ames `%chum` task](../../ames/reference/tasks.md#chum) should be used.
+Note that multiparty encrypted scry (specified with a true `secret`) should only be used when you know the publisher expects it (i.e, as part of their application protocol). Otherwise, the two-party [Ames `%chum` task](../ames/tasks.md#chum) should be used.
 
 ---
 

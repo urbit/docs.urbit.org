@@ -34,7 +34,7 @@ Behn does not return any `gift` in response to a `%rest` `task`.
 
 #### Example
 
-See the [%rest](../examples/examples.md#rest) section of the Examples document.
+See the [%rest](examples.md#rest) section of the Examples document.
 
 ## `%drip` {#drip}
 

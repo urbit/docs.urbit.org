@@ -546,7 +546,7 @@ Merge strategy
   ==                ::
 ```
 
-See the [Strategies](../guides/using.md#strategies) section of "Using Clay" for further details of their meaning.
+See the [Strategies](using.md#strategies) section of "Using Clay" for further details of their meaning.
 
 ---
 

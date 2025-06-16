@@ -292,7 +292,7 @@ The type for messages initiated by our agent. This is opposed to [`gift:agent`](
         [@tas %meta vase]
     ==
   ```
-  You can refer to the `/sys/lull.hoon` source code for all the possible vane tasks, or see each vane's API Reference section in the [Arvo documentation](../../arvo)
+  You can refer to the `/sys/lull.hoon` source code for all the possible vane tasks, or see each vane's API Reference section in the [Arvo documentation](../arvo)
 - `%pyre`: This is for aborting side-effects initiated during agent installation. The `tang` is an error message.
 - `%grow`/`%tomb`/`%cull`: These are used for publishing and managing data available for remote scries. For more information, see the [remote scries guide](../../../build-on-urbit/userspace/remote-scry.md).
 
@@ -493,7 +493,7 @@ This arm is called when a vane gives our agent a `gift`. A `sign-arvo` is:
   ==
 ```
 
-You can refer to the `/sys/lull.hoon` source code, or the API Reference of each vane in the [Arvo documentation](../../arvo).
+You can refer to the `/sys/lull.hoon` source code, or the API Reference of each vane in the [Arvo documentation](../arvo).
 
 #### `on-fail`
 

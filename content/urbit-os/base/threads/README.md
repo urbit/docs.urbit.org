@@ -53,6 +53,6 @@ These docs walk through the basics of interacting with threads from gall agents.
 
 ## Reference
 
-- [Spider API](./reference/api.md) - API reference for the Spider agent.
-- [Strandio](./reference/api.md) - Documentation for the strandio thread helper library.
+- [Spider API](api.md) - API reference for the Spider agent.
+- [Strandio](api.md) - Documentation for the strandio thread helper library.
 

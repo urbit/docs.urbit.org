@@ -89,7 +89,7 @@ You'd typically use `!<` on the data in `$card`s that come in from other ships, 
 
 ## `$mark` {#mark}
 
-The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `$mark` corresponds to a mark file in the `/mar` directory, so a `$mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../urbit-os/kernel/clay/guides/marks).
+The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `$mark` corresponds to a mark file in the `/mar` directory, so a `$mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../urbit-os/kernel/clay/marks).
 
 ## `$cage` {#cage}
 

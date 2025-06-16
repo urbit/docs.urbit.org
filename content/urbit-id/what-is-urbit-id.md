@@ -50,7 +50,7 @@ Due to the extremely low cost, Tlon offers their own roller that is free for ord
 
 #### Layer 2 resources <a href="#layer-2-resources" id="layer-2-resources"></a>
 
-* [Layer 2 Overview](./concepts/layer2.md) - An overview of how naive rollups work.
+* [Layer 2 Overview](l2/README.md) - An overview of how naive rollups work.
 * [Custom Roller Tutorial](roller-tutorial.md) - A guide to running your own L2 roller locally.
 * [Actions Reference](l2/l2-actions.md) - Details of the L2 API's possible actions.
 * [Transaction Format Reference](l2/bytestring.md) - Details of the bytestring format for L2 transactions and batches.

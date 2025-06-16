@@ -2,7 +2,7 @@
 
 This document details all the `task`s you're likely to use to interact with Eyre, as well as the `gift`s you'll receive in response.
 
-The primary way of interacting with Eyre is from the outside with HTTP requests. As a result, most of its `task`s are only used internally and you're unlikely to need to deal with them directly. The ones you may want to use in certain cases are [%connect](tasks.md#connect), [%serve](tasks.md#serve), [%disconnect](tasks.md#disconnect), [%approve-origin](tasks.md#approve-origin) and [%reject-origin](tasks.md#reject-origin), and they are also demonstrated in the [Guide](../guides/README.md) document. The rest are just documented for completeness.
+The primary way of interacting with Eyre is from the outside with HTTP requests. As a result, most of its `task`s are only used internally and you're unlikely to need to deal with them directly. The ones you may want to use in certain cases are [%connect](tasks.md#connect), [%serve](tasks.md#serve), [%disconnect](tasks.md#disconnect), [%approve-origin](tasks.md#approve-origin) and [%reject-origin](tasks.md#reject-origin), and they are also demonstrated in the [Guide](../README.md) document. The rest are just documented for completeness.
 
 Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `+eyre` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.
 

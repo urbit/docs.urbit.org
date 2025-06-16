@@ -111,7 +111,7 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@uw`  | unsigned base64              | `0wbnC.8haTg` |
 | `@ux`  | unsigned hexadecimal         | `0x5f5.e138` |
 
-Some of these auras nest under others. For example, `@u` is for all unsigned auras. But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc. (For a more complete list of auras, see [Auras](../../hoon/reference/auras.md).)
+Some of these auras nest under others. For example, `@u` is for all unsigned auras. But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc. (For a more complete list of auras, see [Auras](../../hoon/auras.md).)
 
 `$knot` and `$term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
 

@@ -2,7 +2,7 @@
 
 Data sent between our agent and our front-end will all be encoded as JSON. In this section, we'll briefly look at how JSON works in Urbit, and write a library to convert our agent's structures to and from JSON for our front-end.
 
-JSON data comes into Eyre as a string, and Eyre parses it with the [`+de:json:html`](../../hoon/zuse/2e_2-3.md#dejsonhtml) function in [`zuse.hoon`](../../hoon/reference/zuse). The hoon type it's parsed to is `$json`, which is defined as:
+JSON data comes into Eyre as a string, and Eyre parses it with the [`+de:json:html`](../../hoon/zuse/2e_2-3.md#dejsonhtml) function in [`zuse.hoon`](../../hoon/zuse). The hoon type it's parsed to is `$json`, which is defined as:
 
 ```hoon
 +$  json                    ::  normal json value
@@ -25,7 +25,7 @@ Mark conversion functions can be included directly in the mark file, or they can
 
 ## `$json` utilities {#json-utilities}
 
-[`zuse.hoon`](../../hoon/reference/zuse) contains three main cores for converting to and from `$json`:
+[`zuse.hoon`](../../hoon/zuse) contains three main cores for converting to and from `$json`:
 
 - [`+enjs:format`](../../hoon/zuse/2d_1-5.md#enjsformat) - Functions to help encode data structures as `$json`.
 - [`+dejs:format`](../../hoon/zuse/2d_6.md#dejsformat) - Functions to decode `$json` to other data structures.
@@ -265,7 +265,7 @@ You'll notice more of our encoding function is done manually than our previous d
 ## Resources {#resources}
 
 - [The JSON Guide](../../hoon/json-guide.md) - The stand-alone JSON guide covers JSON encoding/decoding in great detail.
-- [The Zuse reference](../../hoon/reference/zuse) - The `/sys/zuse.hoon` reference documents all JSON-related functions in detail.
+- [The Zuse reference](../../hoon/zuse) - The `/sys/zuse.hoon` reference documents all JSON-related functions in detail.
 - [`+enjs:format` reference](../../hoon/zuse/2d_1-5.md#enjsformat) - This section of the `zuse.hoon` documentation covers all JSON encoding functions.
 - [`+dejs:format` reference](../../hoon/zuse/2d_6.md) - This section of the `zuse.hoon` documentation covers all JSON _decoding_ functions.
 - [Eyre overview](../../urbit-os/kernel/eyre) - This section of the Eyre vane documentation goes over the basic features of the Eyre vane.

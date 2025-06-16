@@ -10,7 +10,7 @@ While you usually interact with Hood via its generators, its API can also be use
 
 ## Drum
 
-Drum's CLI app management functionality is usally mediated but functions in the `/lib/sole.hoon` library. We'll not document it here. For more information on CLI apps, you can refer to the [Command-Line Apps guide](../..build-on-urbit/userspace/guides/cli-tutorial) and [Building a CLI app example](../../build-on-urbit/userspace/examples/rpn.md).
+Drum's CLI app management functionality is usally mediated but functions in the `/lib/sole.hoon` library. We'll not document it here. For more information on CLI apps, you can refer to the [Command-Line Apps guide](../../build-on-urbit/userspace/guides/cli-tutorial.md) and [Building a CLI app example](../../build-on-urbit/userspace/examples/rpn.md).
 
 Drum's additional API is as follows.
 

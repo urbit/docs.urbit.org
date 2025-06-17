@@ -1,3 +1,8 @@
+---
+description: >-
+  Step-by-step guide to getting started with Urbit: obtaining an Urbit ID, downloading they keyfile, installing the runtime, and booting your first Urbit OS server.
+---
+
 # Get on Urbit
 
 Urbit is two things: [Urbit ID](urbit-id/what-is-urbit-id.md), and [Urbit OS](urbit-os/what-is-urbit-os.md). To get on the network, you'll need both.

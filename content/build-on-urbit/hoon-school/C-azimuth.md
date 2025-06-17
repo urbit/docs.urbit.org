@@ -1,3 +1,8 @@
+---
+description: >-
+  Overview of Urbit ID (Azimuth) hierarchical address space, including galaxy, star, planet, moon, and comet identity types, their naming conventions, and sponsor relationships.
+---
+
 # 2. Azimuth (Urbit ID)
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS102%20-%20Azimuth.mp4" %}

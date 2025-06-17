@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to working with JSON in Hoon, covering conversion between Hoon data structures and JSON using +enjs and +dejs functions, with practical examples and mark file creation.
+---
+
 # JSON
 
 If you are working on a Gall agent with any kind of web interface, it's likely you will encounter the problem of converting Hoon data structures to JSON and vice versa. This is what we'll examine in this document.

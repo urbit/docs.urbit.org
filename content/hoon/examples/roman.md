@@ -1,3 +1,8 @@
+---
+description: >-
+  Challenge to implement conversion between Roman numerals and decimal numbers in Hoon.
+---
+
 # Roman Numerals
 
 ## Challenge: Printing and Parsing Roman Numerals {#challenge-printing-and-parsing-roman-numerals}

@@ -1,3 +1,8 @@
+---
+description: >-
+  Troubleshooting guide for common issues with the Bridge web application for Urbit ID management.
+---
+
 # Bridge Troubleshooting
 
 This page covers common issues encountered with the [Bridge](https://bridge.urbit.org) application.

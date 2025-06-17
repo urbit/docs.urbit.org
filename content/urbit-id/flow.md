@@ -1,3 +1,8 @@
+---
+description: >-
+  Technical overview of Azimuth's data flow, including Bridge, Gall agents, the Layer 2 naive rollup solution, and how components in Urbit OS communicate in Urbit's PKI system on Ethereum.
+---
+
 # Azimuth Data Flow
 
 This document summarizes the various components involved with Azimuth and how they communicate with each other. This also constitutes an explanation for how Urbit implements the data flow of naive rollups.

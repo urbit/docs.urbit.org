@@ -1,3 +1,8 @@
+---
+description: >-
+  JavaScript libraries for Urbit development including @urbit/http-api for communicating with a Gall agent backend from a React web frontend.
+---
+
 # JS Libraries
 
 This section contains documentation of JS libraries for interacting with an Urbit ship.

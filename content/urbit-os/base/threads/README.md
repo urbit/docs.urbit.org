@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to writing threads: transient monadic functions for complex IO operations, managed by the %spider agent or the Khan vane, with tutorials, examples, and API reference.
+---
+
 # Threads
 
 Urbit code lives in the following basic categories:

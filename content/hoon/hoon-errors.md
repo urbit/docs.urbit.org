@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to debugging Hoon code, covering common syntax and semantic errors, error traces, debugging modes, and stack trace interpretation.
+---
+
 # Hoon Errors
 
 In this section we explore strategies for debugging and understanding what your Hoon code is doing. We cover common errors that Dojo may spit out, how to turn on debugging and verbose mode, and how to use debugging printfs.

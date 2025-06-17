@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference for wings in Hoon, which are lists of limbs forming search paths into the subject to access nested data and computations.
+---
+
 # Wings
 
 `[%wing p=(list limb)]`

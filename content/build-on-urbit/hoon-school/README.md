@@ -1,3 +1,8 @@
+---
+description: >-
+  Beginner's course for learning Hoon, Urbit's functional programming language, with explanations, exercises, and tutorials for developers at all levels.
+---
+
 # Hoon School
 
 Hoon School is designed to teach you Hoon without assuming you have an extensive programming background. You should be able to following most of it even if you have no programming experience at all yet, though of course experience helps. We strongly encourage you to try out all the examples of each lesson. Hoon School is meant for the beginner, but it's not meant to be skimmed.

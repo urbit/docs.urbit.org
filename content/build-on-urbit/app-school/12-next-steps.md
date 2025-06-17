@@ -1,3 +1,8 @@
+---
+description: >-
+  End of App School I. Covers next learning steps including Full-stack Walkthrough, Eyre HTTP API integration, JSON handling, web front-end development, threads, and software distribution.
+---
+
 # 12. Next Steps
 
 We've now covered all the arms of a Gall agent, and everything you need to know to start writing your own agent.

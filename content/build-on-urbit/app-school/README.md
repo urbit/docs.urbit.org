@@ -1,3 +1,8 @@
+---
+description: >-
+  Contents page for the guide to building Gall agents on Urbit, covering state management, subscriptions, and inter-agent communication for Urbit app development.
+---
+
 # App School I
 
 This guide will walk through everything you need to know to write your own Gall agents.

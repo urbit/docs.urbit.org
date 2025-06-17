@@ -1,3 +1,8 @@
+---
+description: >-
+  Essential concepts for Gall agent development covering /sur structure files for type definitions, mark files for data conversion and validation, and permission management patterns for agent security.
+---
+
 # 7. Structures and Marks
 
 Before we get into subscription mechanics, there's three things we need to touch on that are very commonly used in Gall agents. The first is defining an agent's types in a `/sur` structure file, the second is mark files, and the third is permissions. Note the example code presented in this lesson will not yet build a fully functioning Gall agent, we'll get to that in the next lesson.

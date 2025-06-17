@@ -1,3 +1,8 @@
+---
+description: >-
+  First step in building a full-stack Urbit app: defining data structures in /sur files including basic types, action commands, update events, and state organization.
+---
+
 # 1. Types
 
 The best place to start when building a new agent is its type definitions in its `/sur` structure file. The main things to think through are:

@@ -1,3 +1,8 @@
+---
+description: >-
+  Technical reference for the Ecliptic.eth smart contract: business logic for Urbit ID operations, including all write and read functions for managing Points, proxies, and governance.
+---
+
 # Ecliptic.eth Reference
 
 [Ecliptic.eth](https://etherscan.io/address/ecliptic.eth) holds the business logic for the ledger kept by `Azimuth.eth`. It may be modified by galaxy vote. This determines things such as what the various proxies are capable of, how keys are changed, or verifying that a request is valid.

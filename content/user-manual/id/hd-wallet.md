@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to Urbit HD wallets and master tickets for managing Urbit ID keys and ownership.
+---
+
 # HD Wallet (Master Ticket)
 
 This document explains what the Urbit HD wallet is and how to use it.

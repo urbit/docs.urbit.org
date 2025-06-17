@@ -1,3 +1,8 @@
+---
+description: >-
+  Comprehensive guide to text parsing in Hoon, covering parser fundamentals, rule building, parsing techniques with scanning and RegEx-like operations, and building complex parsers for structured text processing.
+---
+
 # 17. Text Processing III
 
 _This module covers text parsing. It may be considered optional and skipped if you are speedrunning Hoon School._

@@ -1,3 +1,8 @@
+---
+description: >-
+  Walkthrough for building a full-stack Urbit application with a Gall backend and React frontend, demonstrating how to create complete web applications on Urbit.
+---
+
 # App School II (Full-Stack)
 
 In [App School I](../app-school) you learned about the structure of a Gall agent. In this course, we'll walk through the writing of a full agent that serves as the backend for a React application which we'll also write.

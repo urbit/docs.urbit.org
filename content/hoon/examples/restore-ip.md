@@ -1,3 +1,8 @@
+---
+description: >-
+  Challenge to restore valid IPv4 addresses from strings of digits by inserting dots.
+---
+
 # Restore IP
 
 ## Challenge: Restore IP Addresses {#challenge-restore-ip-addresses}

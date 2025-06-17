@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to Gall agent structure and core concepts, covering the ten required arms, bowl samples, state management, transition functions, virtualization, and event handling patterns.
+---
+
 # 2. The Agent Core
 
 In this lesson we'll look at the basic type and structure of a Gall agent.

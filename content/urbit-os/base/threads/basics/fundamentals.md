@@ -1,3 +1,8 @@
+---
+description: >-
+  Foundational concepts for threads including transient agent functionality, strand composition, thread definition, the `+form` and `+pure` arms, threads' location in /ted directory, and creating basic threads with examples.
+---
+
 # Fundamentals
 
 ## Introduction {#introduction}

@@ -1,3 +1,8 @@
+---
+description: >-
+  Tutorial on building a ship monitoring app with Sail frontend, CLI generators, and Behn timers for notifications.
+---
+
 # Ship Monitoring
 
 The `%ahoy` desk by ~midden-fabler provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using Behn.

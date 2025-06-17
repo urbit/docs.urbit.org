@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to parsing text in Hoon using functional parsers and combinators, covering basic types like hair/nail/edge/rule and common parsing patterns.
+---
+
 # Parsing Text
 
 This document serves as an introduction to parsing text with Hoon. No prior knowledge of parsing is required, and we will explain the basic structure of how parsing works in a purely functional language such as Hoon before moving on to how it is implemented in Hoon.

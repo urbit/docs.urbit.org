@@ -1,3 +1,8 @@
+---
+description: >-
+  Explanation of life and rift numbers in Azimuth: how they track networking key revisions and breach counts for secure peer-to-peer networking on Urbit.
+---
+
 # Life and Rift
 
 Associated to every Azimuth point are two non-negative integers known as _life_ and _rift_. This numbering system partition messages according to the quantity of networking key changes and quantity of [breaches](../user-manual/id/guide-to-resets.md), respectively. This is explained in more detail below. These values are utilized by [Ames](../urbit-os/kernel/ames/README.md) and [Jael](../urbit-os/kernel/jael/README.md) to ensure that communication between ships is always done with the most recent set of networking keys, and that networking state is appropriately reset when a breach has occurred.

@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to strand input including $bowl structure with ship, timing, and subscription data, input types (pokes, signs, agent communication), and accessing input data within thread execution.
+---
+
 # Input
 
 The input to a `+strand` is defined in `lull.hoon` as:

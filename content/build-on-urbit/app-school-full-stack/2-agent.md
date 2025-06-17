@@ -1,3 +1,8 @@
+---
+description: >-
+  Building the Gall agent backend for a full-stack app including imports, state management, poke handling, subscription patterns, and scry endpoints for data retrieval.
+---
+
 # 2. Agent
 
 Now that we have our agent's types defined and have thought through its behavior, we can write the `%journal` agent itself.

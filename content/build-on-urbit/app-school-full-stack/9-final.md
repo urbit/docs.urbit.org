@@ -1,3 +1,8 @@
+---
+description: >-
+  Summary and conclusion of the full-stack Urbit app tutorial with reference links for all covered topics including types, agents, JSON conversion, marks, Eyre, React frontend, and desk publishing.
+---
+
 # 9. Summary
 
 That's it! We've built our agent and React front-end, put together a desk and published it. We hope this walkthrough has helped you see how all the pieces for together for building and distributing an app in Urbit.

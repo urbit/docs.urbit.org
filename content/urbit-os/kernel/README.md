@@ -1,3 +1,8 @@
+---
+description: >-
+  API documentation and guides for the Urbit OS kernel and its modules: Ames, Behn, Clay, Dill, Eyre, Gall, Iris, Jael, Khan, and Lick.
+---
+
 # Kernel
 
 Guides and API documentation for the Urbit OS kernel, including Arvo and the various modules.

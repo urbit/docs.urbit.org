@@ -1,3 +1,8 @@
+---
+description: >-
+  Challenge to find the largest connected island in a 2D grid using graph traversal algorithms.
+---
+
 # Islands
 
 ## Challenge: Largest Island {#challenge-largest-island}

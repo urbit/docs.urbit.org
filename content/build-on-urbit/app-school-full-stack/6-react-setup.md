@@ -1,3 +1,8 @@
+---
+description: >-
+  Setting up React frontend for full-stack Urbit apps using the npm @urbit/create-landscape-app package, configuring @urbit/http-api for ship communication. Also covers basic React patterns with useState() and useEffect() hooks.
+---
+
 # 6. React app setup
 
 Now that we have a basic idea of how Eyre works, we can begin working on our React app front-end.

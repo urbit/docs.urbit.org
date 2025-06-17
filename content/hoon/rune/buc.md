@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference for Hoon's structure runes, including mold creation, validation, and type construction.
+---
+
 # $ buc · Structures
 
 The `$` family of runes is used for defining custom types. Strictly speaking, these runes are used to produce `spec`s, which we call 'structures'.

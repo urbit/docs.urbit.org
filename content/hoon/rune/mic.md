@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference for the make rune family used for miscellaneous useful macros, including n-ary function calls and monadic notation.
+---
+
 # ; mic · Make
 
 Miscellaneous useful macros.

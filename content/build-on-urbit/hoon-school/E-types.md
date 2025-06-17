@@ -1,3 +1,8 @@
+---
+description: >-
+  Comprehensive guide to Hoon's type system, covering atoms with auras, molds for data structures, type-checking and type inference, core variance, nesting relationships, and practical type safety mechanisms.
+---
+
 # 4. Molds (Types)
 
 "This module will introduce the Hoon type system and illustrate how type checking and type inference work."

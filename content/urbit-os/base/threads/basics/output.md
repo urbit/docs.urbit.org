@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to strand output including cards and response codes (%wait, %skip, %cont, %fail, %done), flow control mechanisms, error handling, and completion patterns in thread execution.
+---
+
 # Output
 
 A strand produces a `[(list card) <response>]`. The first part is a list of cards to be sent off immediately, and `<response>` is one of:

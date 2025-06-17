@@ -1,3 +1,8 @@
+---
+description: >-
+  Advanced core theory covering genericity with wet gates and cores, core variance models for type polymorphism, dry vs wet core behavior, parametric polymorphism, and compile-time vs runtime type-checking strategies.
+---
+
 # 18. Generic and Variant Cores
 
 _This module introduces how cores can be extended for different behavioral patterns. It may be considered optional and skipped if you are speedrunning Hoon School._

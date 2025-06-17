@@ -1,3 +1,8 @@
+---
+description: >-
+  Configuration guide for doc.toc index files in the %docs app, covering structure definition, hierarchical organization, file/directory specification, and automatic table of contents generation.
+---
+
 # Index File
 
 Each desk with docs may include a `doc.toc` file in its root. A `doc.toc` file looks something like this:

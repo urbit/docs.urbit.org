@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide for operating stars and galaxies including hosting, planet distribution, and etiquette.
+---
+
 # Star and Galaxy Operations
 
 To boot your galaxy or star, follow our [installation instructions](../../get-on-urbit.md).

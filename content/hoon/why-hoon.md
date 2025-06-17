@@ -1,3 +1,8 @@
+---
+description: >-
+  Rationale for Hoon programming language design: functional, axiomatic, minimal systems language with unique features for building Urbit OS.
+---
+
 # Why Hoon?
 
 We're often asked why Urbit is written in a new programming language, Hoon, rather than some existing one like C, Haskell, or more recently Rust.

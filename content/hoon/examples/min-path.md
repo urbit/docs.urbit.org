@@ -1,3 +1,8 @@
+---
+description: >-
+  Challenge to find the minimum cost path through a 2D grid using dynamic programming.
+---
+
 # Minimum Path Sum
 
 ## Challenge: Minimum Path Sum {#challenge-minimum-path-sum}

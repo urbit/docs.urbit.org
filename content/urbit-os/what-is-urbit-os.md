@@ -1,3 +1,8 @@
+---
+description: >-
+  Introduction to Urbit OS: a functional, deterministic personal server operating system. Includes documentation for the Arvo kernel, its modules, and the standard distribution in the %base desk.
+---
+
 # What is Urbit OS?
 
 Urbit OS is a personal server operating system that runs on any Unix box as a self-contained virtual machine.

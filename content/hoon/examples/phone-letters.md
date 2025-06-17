@@ -1,3 +1,8 @@
+---
+description: >-
+  Challenge to generate all possible letter combinations from phone keypad number sequences.
+---
+
 # Phone Letters
 
 ## Challenge: Phone Letters {#challenge-phone-letters}

@@ -1,3 +1,8 @@
+---
+description: >-
+  Cryptography functions reference for Hoon including Suite B cryptography implementation with AES encryption, elliptic curve digital signatures, Diffie-Hellman key exchange, and Ames networking security.
+---
+
 # Cryptography
 
 This is a summary of the cryptography functions found in `sys/zuse.hoon`, Arvo's standard library. This page currently only documents cryptographic functions directly utilized by [Ames](../urbit-os/kernel/ames/README.md). `zuse` also contains cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core, but they are currently undocumented.

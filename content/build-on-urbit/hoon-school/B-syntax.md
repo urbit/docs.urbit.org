@@ -1,3 +1,8 @@
+---
+description: >-
+  Introduction to Hoon programming language syntax, covering basic elements like nouns (atoms and cells), runes (operators composed of pairs of non-alphanumeric ASCII characters), auras (atom types), and fundamental control flow structures.
+---
+
 # 1. Hoon Syntax
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}

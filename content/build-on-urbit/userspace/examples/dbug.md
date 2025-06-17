@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to using the dbug library to debug Gall agents and inspect their state.
+---
+
 # Debugging Wrapper
 
 The `/lib/dbug.hoon` agent wrapper adds support to view the state of a Gall agent.  It is applied to an existing Gall agent as a single drop-in line, `%-  agent:dbug`.

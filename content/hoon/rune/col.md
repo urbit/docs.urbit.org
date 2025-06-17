@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference for Hoon's cell constructor runes, with various forms including irregular syntax for common patterns.
+---
+
 # : col · Cells
 
 The `:` ("col") expressions are used to produce cells, which are pairs of

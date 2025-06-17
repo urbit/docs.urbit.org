@@ -1,3 +1,8 @@
+---
+description: >-
+  Developer environment setup guide for Urbit development, including text editor configuration, development ship setup, and project organization best practices.
+---
+
 # Environment Setup
 
 This guide covers best practices for preparing your environment to develop within the Urbit ecosystem.

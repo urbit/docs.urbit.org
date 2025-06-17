@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference for the conditional runes used for logical operations, including branching, type testing, and boolean logic with type inference.
+---
+
 # ? wut · Conditionals
 
 Hoon has the usual program control branches. It also has the usual logical operators: AND `?&`, OR `?|`, and NOT `?!`. It also has a `?=` rune that tests whether a value matches a given type. In the course of type inference, Hoon learns from `?=` tests in the test condition of [`?:` ("wutcol")](#-wutcol) expressions.

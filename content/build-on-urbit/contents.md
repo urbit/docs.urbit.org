@@ -1,3 +1,8 @@
+---
+description: >-
+  Overview of development resources for building on Urbit, including courses for learning Hoon, app development guides, core development, runtime development, and tools for Urbit developers.
+---
+
 # Build on Urbit
 
 Courses and guides for developers looking to learn how to build on Urbit.

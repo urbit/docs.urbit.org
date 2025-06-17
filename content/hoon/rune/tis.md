@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference for Hoon's subject modification runes.
+---
+
 # = tis · Subject
 
 These runes modify the subject. (Or more precisely, they evaluate at least one of their subexpressions with a modified subject.)

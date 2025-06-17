@@ -1,3 +1,8 @@
+---
+description: >-
+  Challenge to implement the Luhn algorithm for credit card number validation in Hoon.
+---
+
 # Luhn Number
 
 ## Challenge: Luhn Number {#challenge-luhn-number}

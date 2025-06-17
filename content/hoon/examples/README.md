@@ -1,3 +1,8 @@
+---
+description: >-
+  Programming exercise solutions in Hoon covering algorithms like spell checking with blocks, competitive programming challenges, prime number calculations, path finding, and encryption implementations.
+---
+
 # Examples
 
 Example solutions to programming exercises written in Hoon. If you've already [learned Hoon](../../build-on-urbit/hoon-school), you can try to solve these yourself before reading the solutions provided.

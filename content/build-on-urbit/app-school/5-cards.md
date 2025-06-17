@@ -1,3 +1,8 @@
+---
+description: >-
+  Complete guide to Gall agent cards (effects), covering %pass cards for requests, %give cards for responses, subscription management, pokes, vane interactions, and practical examples of inter-agent communication.
+---
+
 # 5. Cards
 
 As we previously discussed, most arms of an agent core produce a cell of \[effects new-agent-core], and the type we use for this is typically `(quip card _this)`. We've covered `_this`, but we haven't yet looked at `$card` effects in detail. That's what we'll do here. In explaining `$card`s we'll touch on some concepts relating to the mechanics of pokes, subscriptions and other things we've not yet covered. Don't worry if you don't understand how it all fits together yet, we just want to give you a basic idea of `$card`s so we can then dig into how they work in practice.

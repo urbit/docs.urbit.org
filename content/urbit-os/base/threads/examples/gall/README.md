@@ -1,3 +1,8 @@
+---
+description: >-
+  Examples of Gall agent integration with threads covering thread lifecycle management, starting threads, handling results, subscription patterns, cancellation, and inter-thread communication.
+---
+
 # Gall
 
 Examples of how to interact with threads from Gall agents.

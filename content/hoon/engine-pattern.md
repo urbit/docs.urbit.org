@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to the engine pattern in Hoon for managing nested cores and state with +abet.
+---
+
 # The Engine Pattern
 
 *The following is lightly adapted from "The Nested Core Design Pattern (As Seen Through `++abet`)", a 2022 blog post by \~lagrev-nocfep, which was written in collaboration with \~rovnys-ricfer.*

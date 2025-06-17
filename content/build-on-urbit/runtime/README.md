@@ -1,3 +1,8 @@
+---
+description: >-
+  Documentation for Urbit's runtime and Nock interpreter (Vere), including guides for U3, jetting, C programming in Urbit, and cryptography implementation.
+---
+
 # Runtime
 
 These guides cover Urbit's runtime and Nock interpreter, which is called Vere.

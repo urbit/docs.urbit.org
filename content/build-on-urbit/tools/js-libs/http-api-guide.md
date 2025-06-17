@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to the @urbit/http-api JavaScript library for building web frontends that communicate with Urbit ships, covering authentication, pokes, subscriptions, scries, threads, and practical examples.
+---
+
 # HTTP API
 
 Urbit's Eyre vane is an HTTP server which our web frontends can talk to. In this guide, we'll create a simple Urbit app and use the [`@urbit/http-api`](https://github.com/urbit/js-http-api) JavaScript module to interact with it from a web app.

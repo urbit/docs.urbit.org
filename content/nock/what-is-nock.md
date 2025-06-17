@@ -1,3 +1,8 @@
+---
+description: >-
+  Introduction to Nock: Urbit's minimal assembly language and computation standard that underlies all of Urbit OS and Hoon compilation.
+---
+
 # What is Nock?
 
 Nock is Urbit's novel assembly language and a 47-line standard for general computation.

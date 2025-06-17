@@ -1,3 +1,8 @@
+---
+description: >-
+  Building and deploying full-stack Urbit apps including desk configuration, kelvin versions, docket file for app metadata, glob creation for frontend assets, and publishing for distribution.
+---
+
 # 8. Desk and glob
 
 With our React app now complete, we can put together the final desk and publish

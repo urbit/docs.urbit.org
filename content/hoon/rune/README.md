@@ -1,3 +1,8 @@
+---
+description: >-
+  Reference documentation for Hoon's rune expressions organized by family.
+---
+
 # Runes
 
 Documentation for Hoon's rune expressions.

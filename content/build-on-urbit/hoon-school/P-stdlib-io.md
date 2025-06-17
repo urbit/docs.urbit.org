@@ -1,3 +1,8 @@
+---
+description: >-
+  Advanced text processing in Hoon, covering text conversions, formatted text with $tanks, %ask generators, I/O operations, and practical tools for web data, JSON, and output formatting.
+---
+
 # 15. Text Processing II
 
 _This module will elaborate on text representation in Hoon, including formatted text and `%ask`_ _generators__. It may be considered optional and skipped if you are speedrunning Hoon School._

@@ -1,3 +1,8 @@
+---
+description: >-
+  Guide to vases: pairs of type and data used for runtime type information in Urbit.
+---
+
 # Vases
 
 ## Overview {#overview}

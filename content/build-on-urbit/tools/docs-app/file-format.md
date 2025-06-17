@@ -1,3 +1,8 @@
+---
+description: >-
+  File format specifications for the %docs app including %docu mark requirements, supported formats (udon, txt, html, gmi), syntax rules, and conversion guidelines for documentation publishing.
+---
+
 # File Format
 
 ## `%docu` mark {#docu-mark}

@@ -1,7 +1,5 @@
 ---
-description: >-
-  Homepage. Overview of the Urbit docs content: get on Urbit, build on Urbit,
-  Urbit ID, Urbit OS, Hoon, Nock, and manual for self-hosted Urbit users.
+description: Urbit docs site. Urbit ID, Urbit OS, Hoon, Nock, and self-hosting.
 layout:
   title:
     visible: true

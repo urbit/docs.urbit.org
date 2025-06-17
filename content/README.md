@@ -2,6 +2,17 @@
 description: >-
   Homepage. Overview of the Urbit docs content: get on Urbit, build on Urbit,
   Urbit ID, Urbit OS, Hoon, Nock, and manual for self-hosted Urbit users.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # What is Urbit?

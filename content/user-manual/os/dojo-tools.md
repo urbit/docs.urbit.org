@@ -2788,7 +2788,7 @@ Change your web login code.
 
 You'll be logged out of all existing web sessions when you change the code.
 
-Note that Bridge won't be able to automatically derive your web login code if you change it.
+Note that [bridge.urbit.org](https://bridge.urbit.org) won't be able to automatically derive your web login code if you change it.
 
 #### Arguments
 
@@ -3097,11 +3097,11 @@ pier: pack complete
 
 Rotate private keys.
 
-**Note this should not be used unless you've changed your network keys on Bridge first. Using this incorrectly will render your ship unable to communicate.**
+**Note this should not be used unless you've changed your network keys on [bridge.urbit.org](https://bridge.urbit.org) first. Using this incorrectly will render your ship unable to communicate.**
 
 Note also this is not for when you perform a factory reset, this is specifically for if you change your keys *without* a factory reset.
 
-If your ship is a moon you'd do the key change on its parent planet rather than through Bridge, and then use `|rekey` on the moon itself.
+If your ship is a moon you'd do the key change on its parent planet rather than through [bridge.urbit.org](https://bridge.urbit.org), and then use `|rekey` on the moon itself.
 
 #### Arguments
 
@@ -3109,7 +3109,7 @@ If your ship is a moon you'd do the key change on its parent planet rather than 
 @t
 ```
 
-This is the long code inside the `sampel-palnet-1.key` file you downloaded from Bridge (or the code that your planet printed out in the dojo if a moon). It'll look like `0w9oBR.dfY5Z.LSxut.YHe3u....`. You must wrap it in single-quotes when giving it to this generator, like `'0w9oBR.dfY5Z.LSxut.YHe3u...'`.
+This is the long code inside the `sampel-palnet-1.key` file you downloaded from [bridge.urbit.org](https://bridge.urbit.org) (or the code that your planet printed out in the dojo if a moon). It'll look like `0w9oBR.dfY5Z.LSxut.YHe3u....`. You must wrap it in single-quotes when giving it to this generator, like `'0w9oBR.dfY5Z.LSxut.YHe3u...'`.
 
 #### Example
 

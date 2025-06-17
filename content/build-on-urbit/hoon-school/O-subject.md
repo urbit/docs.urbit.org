@@ -15,10 +15,10 @@ You have also seen how wings work as search paths to identify nouns in the subje
 
 Generally speaking, the following rune families allow you to do certain things to the subject:
 
-- `|` [bar](../../hoon/reference/rune/bar.md) runes create cores, i.e. largely self-contained expressions
-- `^` [ket](../../hoon/reference/rune/ket.md) runes transform cores, i.e. change core properties
-- `%` [cen](../../hoon/reference/rune/cen.md) runes pull arms in cores
-- `=` [tis](../../hoon/reference/rune/tis.md) runes modify the subject by introducing or replacing values
+- `|` [bar](../../hoon/rune/bar.md) runes create cores, i.e. largely self-contained expressions
+- `^` [ket](../../hoon/rune/ket.md) runes transform cores, i.e. change core properties
+- `%` [cen](../../hoon/rune/cen.md) runes pull arms in cores
+- `=` [tis](../../hoon/rune/tis.md) runes modify the subject by introducing or replacing values
 
 Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model. We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](R-metals.md) as well.
 
@@ -26,7 +26,7 @@ Different kinds of cores can expose or conceal functionality (such as their samp
 
 Usually the subject of a Hoon expression isn't shown explicitly. In fact, only when using `:`/`.` wing lookup expressions have we made the subject explicit.
 
-An arm is always evaluated with its parent core as its subject. We've briefly mentioned that one can use helper cores (e.g. for generators) by composing the cores side-by-side using `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal) and `=>` [tisgar](../../hoon/reference/rune/tis.md#tisgar). This way we can make sure that the arms fall within each other's subject horizon.
+An arm is always evaluated with its parent core as its subject. We've briefly mentioned that one can use helper cores (e.g. for generators) by composing the cores side-by-side using `=<` [tisgal](../../hoon/rune/tis.md#tisgal) and `=>` [tisgar](../../hoon/rune/tis.md#tisgar). This way we can make sure that the arms fall within each other's subject horizon.
 
 Why must an arm have its parent core as the subject, when it's computed? As stated previously, the payload of a core contains all the data needed for computing the arms of that core. Arms can only access data in the subject. By requiring that the parent core be the subject we guarantee that each arm has the appropriate data available to it. The tail of its subject contains the payload and thus all the values therein. The head of the subject is the battery, which allows for making reference to sibling arms of that same core.
 
@@ -45,7 +45,7 @@ In the Dojo, if you use `+1` by itself, you can see the current subject.
 
 `.` does the same thing: it always refers to the current subject.
 
-If `.` is the subject, then `..arm` is the subject of a given arm (the second `.` dot being the wing resolution operator). You can check the details of the parent core using something like `..add`. This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](../../build-on-urbit/runtime/guides/jetting.md), for instance.
+If `.` is the subject, then `..arm` is the subject of a given arm (the second `.` dot being the wing resolution operator). You can check the details of the parent core using something like `..add`. This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](../runtime/jetting.md), for instance.
 
 Another use case for the `..arm` syntax is when there is a core in the subject without a face bound to it; i.e., the core might be nameless. In that case you can use an arm name in that core to refer to the whole core.
 
@@ -56,7 +56,7 @@ Another use case for the `..arm` syntax is when there is a core in the subject w
 
 #### Tutorial: The Core Structure of `hoon.hoon`
 
-Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../hoon/reference/rune/tis.md#tisgar) to build up larger structures. `=>  p=hoon  q=hoon` yields the product of `.q` with the product of `.p` taken as the subject; i.e. it composes Hoon statements, like cores.
+Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../hoon/rune/tis.md#tisgar) to build up larger structures. `=>  p=hoon  q=hoon` yields the product of `.q` with the product of `.p` taken as the subject; i.e. it composes Hoon statements, like cores.
 
 We use this to set the context of cores. Recall that the payload of a gate is a cell of `[sample context]`. For example:
 
@@ -69,7 +69,7 @@ We use this to set the context of cores. Recall that the payload of a gate is a 
 
 Here we have created a gate with `[1 2]` as its context that takes in an `@` and returns `15`. `+3:foo` shows the payload of the core to be `[0 [1 2]]`. Here `0` is the default value of `@` and is the sample, while `[1 2]` is the context that was given to `.foo`.
 
-`=>` [tisgar](../../hoon/reference/rune/tis.md#tisgar) (and its reversed version `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal)) are used extensively to put cores into the context of other cores.
+`=>` [tisgar](../../hoon/rune/tis.md#tisgar) (and its reversed version `=<` [tisgal](../../hoon/rune/tis.md#tisgal)) are used extensively to put cores into the context of other cores.
 
 ```hoon
 =>
@@ -143,7 +143,7 @@ and so on, down to
 --
 ```
 
-This core contains the arms in [sections 1a–1c of the standard library documentation](../../hoon/reference/stdlib/1a.md). If you count them, there are 33 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `+add`.
+This core contains the arms in [sections 1a–1c of the standard library documentation](../../hoon/stdlib/1a.md). If you count them, there are 33 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `+add`.
 
 ```hoon
 > ..add
@@ -152,7 +152,7 @@ This core contains the arms in [sections 1a–1c of the standard library documen
 
 Here we see that core containing `hoon-version` is in the subject of the section 1 core.
 
-Next, [section 2](../../hoon/reference/stdlib/2a.md) starts:
+Next, [section 2](../../hoon/stdlib/2a.md) starts:
 
 ```hoon
 =>
@@ -183,7 +183,7 @@ If you counted the arms in this core by hand, you'll come up with 139 arms. This
 
 and we also see the section 1 core and the core containing `hoon-version` in the subject.
 
-We can also confirm that [`+add`](../../hoon/reference/stdlib/1a.md#add) is in the subject of [`+biff`](../../hoon/reference/stdlib/2a.md#biff)
+We can also confirm that [`+add`](../../hoon/stdlib/1a.md#add) is in the subject of [`+biff`](../../hoon/stdlib/2a.md#biff)
 
 ```hoon
 > add:biff
@@ -228,7 +228,7 @@ our=~nec
 now=~2022.6.22..20.41.18..82f4
 ```
 
-`.eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../hoon/reference/stdlib/3d.md#shax). (`.eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
+`.eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../hoon/stdlib/3d.md#shax). (`.eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
 
 ```hoon
 > ->+..
@@ -243,7 +243,7 @@ Default Hoon expressions are stateless. This means that they don't really make r
 
 However, clearly regular applications, such as Gall agents, are stateful, meaning that they modify their own subject regularly.
 
-There are several ways to manage state. One approach, including `%=` [centis](../../hoon/reference/rune/cen.md#centis), directly modifies the subject using a rune. Another method is to use the other runes to compose or sequence changes together (e.g. as a pipe of gates). By and large the `=` [tis](../../hoon/reference/rune/tis.md) runes are responsible for modifying the subject, and the `;` [mic](../../hoon/reference/rune/mic.md) runes permit chaining deferred computations together.
+There are several ways to manage state. One approach, including `%=` [centis](../../hoon/rune/cen.md#centis), directly modifies the subject using a rune. Another method is to use the other runes to compose or sequence changes together (e.g. as a pipe of gates). By and large the `=` [tis](../../hoon/rune/tis.md) runes are responsible for modifying the subject, and the `;` [mic](../../hoon/rune/mic.md) runes permit chaining deferred computations together.
 
 To act in a stateful manner, a core must mutate itself and then pin the mutated copy in its place. Most of the time this is handled by Arvo's Gall vane, by the Dojo, or another system service, but we need to explicit modify and manage state for cores as we work within these kinds of applications.
 
@@ -251,10 +251,10 @@ We will use `%say` generators as a bridge concept. We will produce some short ap
 
 [As you may recall](J-stdlib-text.md), a `%say` generator is like a naked generator except rather than being simply a gate, it is a cell of `%say` (as a tag) and a gate. This gate can receive more information as gate arguments as part of its sample, such as a timestamp `.now`, some entropy `.eny`, and a file system beak `.bec`. These allow us to think about how a core can modify and maintain state. Although a `%say` generator, like all generators, ultimately simply terminates, a Gall agent will be a persistent core with state that can continue to be used.
 
-Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` [centis](../../hoon/reference/rune/cen.md#centis) which you've already seen:
+Here are a couple of new runes for modifying the subject and chaining computations together, aside from `%=` [centis](../../hoon/rune/cen.md#centis) which you've already seen:
 
-- `=.` [tisdot](../../hoon/reference/rune/tis.md#tisdot) is used to change a leg in the subject.
-- `=~` [tissig](../../hoon/reference/rune/tis.md#tissig) composes many expressions together serially.
+- `=.` [tisdot](../../hoon/rune/tis.md#tisdot) is used to change a leg in the subject.
+- `=~` [tissig](../../hoon/rune/tis.md#tissig) composes many expressions together serially.
 
 #### Tutorial: Bank Account
 
@@ -304,7 +304,7 @@ In the above code chunk, we're creating a cell. The head of this cell is `%say`.
 
 In this code above, we're going to compose two runes using `=<`, which has inverted arguments. We use this rune to keep the heaviest twig to the bottom of the code.
 
-The `=~` [tissig](../../hoon/reference/rune/tis.md#tissig) rune composes multiple expressions together; we use it here to make the code more readable. We take `.new-account` and use that as the subject for the call to `+deposit`. `+deposit` and `+withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `.balance`, which is the account balance contained in the core that we examine below.
+The `=~` [tissig](../../hoon/rune/tis.md#tissig) rune composes multiple expressions together; we use it here to make the code more readable. We take `.new-account` and use that as the subject for the call to `+deposit`. `+deposit` and `+withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `.balance`, which is the account balance contained in the core that we examine below.
 
 ```hoon
 |%
@@ -342,12 +342,12 @@ It's important to notice that the sample, `.balance`, is stored as part of the d
 
 For instance, a network service call may take a while or may fail. How should the calculation deal with these outcomes?  In addition, the successful result of the network data is unpredictable in content (but should not be unpredictable in format!).
 
-We have some more tools available for managing deferred or chained computations, in addition to `=~` [tissig](../../hoon/reference/rune/tis.md#tissig) and `=*` [tistar](../../hoon/reference/rune/tis.md#tistar):
+We have some more tools available for managing deferred or chained computations, in addition to `=~` [tissig](../../hoon/rune/tis.md#tissig) and `=*` [tistar](../../hoon/rune/tis.md#tistar):
 
-- `=^` [tisket](../../hoon/reference/rune/tis.md#tisket) is used to change a leg in the tail of the subject then evaluate against it. This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` [centis](../../hoon/reference/rune/cen.md#centis). (Used in Gall agents frequently.)
-- `=*` [tistar](../../hoon/reference/rune/tis.md#tistar) defers an expression (rather like a macro).
-- `;<` [micgal](../../hoon/reference/rune/mic.md#micgal) sequences two computations, particularly for an asynchronous event like a remote system call. (Used in threads.)
-- `;~` [micsig](../../hoon/reference/rune/mic.md#micsig) produces a pipeline, a way of piping the output of one gate into another in a chain. (This is particularly helpful when parsing text.)
+- `=^` [tisket](../../hoon/rune/tis.md#tisket) is used to change a leg in the tail of the subject then evaluate against it. This is commonly used for events that need to be ordered in their resolution e.g. with a `%=` [centis](../../hoon/rune/cen.md#centis). (Used in Gall agents frequently.)
+- `=*` [tistar](../../hoon/rune/tis.md#tistar) defers an expression (rather like a macro).
+- `;<` [micgal](../../hoon/rune/mic.md#micgal) sequences two computations, particularly for an asynchronous event like a remote system call. (Used in threads.)
+- `;~` [micsig](../../hoon/rune/mic.md#micsig) produces a pipeline, a way of piping the output of one gate into another in a chain. (This is particularly helpful when parsing text.)
 
 ### `+og` Randomness {#og-randomness}
 
@@ -363,7 +363,7 @@ Every time you start this “random” number generator with a given seed, it wi
 
 While RNGs don't work like our _π_-based example, a given seed will reliably produce the same result every time it is run.
 
-The basic RNG core in Hoon is [`+og`](../../hoon/reference/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../hoon/reference/rune/tis.md#tisket). [+rads:rng](../../hoon/reference/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
+The basic RNG core in Hoon is [`+og`](../../hoon/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../hoon/rune/tis.md#tisket). [+rads:rng](../../hoon/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
 
 ```hoon
 > =+  rng=~(. og eny)
@@ -371,7 +371,7 @@ The basic RNG core in Hoon is [`+og`](../../hoon/reference/stdlib/3d.md#og). `+o
 [60 60]
 ```
 
-Since the `.rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `+rads:og`'s return cell) to the subject using `=^` [tisket](../../hoon/reference/rune/tis.md#tisket), e.g.,
+Since the `.rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `+rads:og`'s return cell) to the subject using `=^` [tisket](../../hoon/rune/tis.md#tisket), e.g.,
 
 ```hoon
 > =/  rng  ~(. og eny)
@@ -430,7 +430,7 @@ Zoom in on these lines:
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [`+og`](../../hoon/reference/stdlib/3d.md#og), the randomness core in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
+`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [`+og`](../../hoon/stdlib/3d.md#og), the randomness core in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
 
 We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 
@@ -475,13 +475,13 @@ We get a different value from the same generator between runs, something that is
 
 ## Scrying (In Brief) {#scrying-in-brief}
 
-A "peek" or a scry is a request to Arvo to tell you something about the state of part of the Urbit OS. Scries are used to determine the state of an agent or a vane. The `.^` [dotket](../../hoon/reference/rune/dot.md#dotket) rune sends the scry request to a particular vane with a certain "care" or type of scry. The request is then routed to a particular path in that vane. Scries are discused in detail in [App School](../app-school/10-scry.md). We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
+A "peek" or a scry is a request to Arvo to tell you something about the state of part of the Urbit OS. Scries are used to determine the state of an agent or a vane. The `.^` [dotket](../../hoon/rune/dot.md#dotket) rune sends the scry request to a particular vane with a certain "care" or type of scry. The request is then routed to a particular path in that vane. Scries are discused in detail in [App School](../app-school/10-scry.md). We will only briefly introduce them here as we can use them later to find out about Arvo's system state, such as file contents and agent state.
 
 ### `%c` Clay {#c-clay}
 
 The Clay filesystem stores nouns persistently at hierarchical path addresses. These nouns can be accessed using marks, which are rules for structuring the data. We call the nouns “files” and the path addresses “folders”.
 
-If we want to retrieve the contents of a file or folder, we can directly ask Clay for the data using a scry with an appropriate [care](../../urbit-os/kernel/clay/reference/data-types.md#care).
+If we want to retrieve the contents of a file or folder, we can directly ask Clay for the data using a scry with an appropriate [care](../../urbit-os/kernel/clay/data-types.md#care).
 
 For instance, the `%x` care to the `%c` Clay vane returns the noun at a given address as a `@` atom.
 

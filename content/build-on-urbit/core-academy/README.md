@@ -12,4 +12,4 @@ Video recordings of the 2023 Core Academy are [available to watch here](https://
 
 * [Hoon School, Text Parsing III](../hoon-school/Q2-parsing.md)
 * [Hoon School, Generic and Variant Cores](../hoon-school/R-metals.md)
-* [The Engine Pattern](../../hoon/guides/engine-pattern.md)
+* [The Engine Pattern](../../hoon/engine-pattern.md)

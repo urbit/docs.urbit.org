@@ -65,7 +65,7 @@ Here are a few of the places where you can buy planets:
 
 **Layer 2 for planets**
 
-Learn more about layer 2 planets [here](../../urbit-id/reference/README.md).
+Learn more about layer 2 planets [here](../../urbit-id/l2).
 
 {% endhint %}
 
@@ -76,7 +76,7 @@ An invitation to claim your planet comes in one of two forms.
 
 The first is an email invitation with an Urbit ID and a Master Ticket.
 
-The second, made available through our [L2 solution](../../urbit-id/reference/README.md), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the Urbit ID management tool.
+The second, made available through our [L2 solution](../../urbit-id/l2), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the Urbit ID management tool.
 
 ![](https://media.urbit.org/site/getting-started/Server-setup-1.jpg)
 

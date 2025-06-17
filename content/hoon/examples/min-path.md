@@ -218,7 +218,7 @@ _Another good solution by ~norweg-rivlex._
 
 ## Unit Tests {#unit-tests}
 
-Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../build-on-urbit/userspace/guides/unit-tests.md) section.
+Following a principle of test-driven development, the unit tests below allow us to check for expected behavior. To run the tests yourself, follow the instructions in the [Unit Tests](../../build-on-urbit/userspace/unit-tests.md) section.
 
 ```hoon
 /+  *test

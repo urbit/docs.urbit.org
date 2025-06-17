@@ -1,6 +1,6 @@
 # 10. Cores and Doors
 
-_Hoon is statically typed, which means (among other things) that auras are subject to strict nesting rules, molds are crash-only, and the whole thing is rather cantankerous about matching types. However, since gate-building arms are possible, Hoon developers frequently employ them as templates to build type-appropriate cores, including gates. This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include doors; finally it will introduce a common door, the [`+map`](../../hoon/reference/stdlib/2o.md#map), to illustrate how doors work._
+_Hoon is statically typed, which means (among other things) that auras are subject to strict nesting rules, molds are crash-only, and the whole thing is rather cantankerous about matching types. However, since gate-building arms are possible, Hoon developers frequently employ them as templates to build type-appropriate cores, including gates. This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include doors; finally it will introduce a common door, the [`+map`](../../hoon/stdlib/2o.md#map), to illustrate how doors work._
 
 ## Gate-Building Gates {#gate-building-gates}
 
@@ -29,7 +29,7 @@ The second way of making a function call involves an expression that _produces_ 
 
 The difference is subtle: the first case has an already-created gate in the subject when we called it, while the latter involves producing a gate that doesn't exist anywhere in the subject, and then calling it.
 
-Are calls to [`+add`](../../hoon/reference/stdlib/1a.md#add) and [`+mul`](../../hoon/reference/stdlib/1a.md#mul) of the Hoon standard library of the first kind, or the second?
+Are calls to [`+add`](../../hoon/stdlib/1a.md#add) and [`+mul`](../../hoon/stdlib/1a.md#mul) of the Hoon standard library of the first kind, or the second?
 
 ```hoon
 > (add 12 23)
@@ -47,7 +47,7 @@ It's important to learn the difference, however, because for certain use cases y
 
 ### Building Gates {#building-gates}
 
-Let's make a core with arms that build gates of various kinds. As we did in a previous lesson, we'll use the `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) rune. Copy and paste the following into the Dojo:
+Let's make a core with arms that build gates of various kinds. As we did in a previous lesson, we'll use the `|%` [barcen](../../hoon/rune/bar.md#barcen) rune. Copy and paste the following into the Dojo:
 
 ```hoon
 =c |%
@@ -127,7 +127,7 @@ It does indeed. Unbind `.c` and `.double-copy`:
 > =double-copy
 ```
 
-Contrast this with the behavior of [`+add`](../../hoon/reference/stdlib/1a.md#add). We can look at the sample of the gate for `+add` with `+6:add`:
+Contrast this with the behavior of [`+add`](../../hoon/stdlib/1a.md#add). We can look at the sample of the gate for `+add` with `+6:add`:
 
 ```hoon
 > +6:add
@@ -147,7 +147,7 @@ As before with `+double`, Hoon can't find an `.a` to modify in a gate that doesn
 
 ### Slamming a Gate {#slamming-a-gate}
 
-If you check the docs on our now-familiar `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep), you'll find that it is actually sugar syntax for another rune:
+If you check the docs on our now-familiar `%-` [cenhep](../../hoon/rune/cen.md#cenhep), you'll find that it is actually sugar syntax for another rune:
 
 > This rune is for evaluating the `$` arm of a gate, i.e., calling a
 > gate as a function. `.a` is the gate, and `.b` is the desired sample value
@@ -157,11 +157,11 @@ If you check the docs on our now-familiar `%-` [cenhep](../../hoon/reference/run
 > %~($ a b)
 > ```
 
-So all gate calls actually pass back through `%~` [censig](../../hoon/reference/rune/cen.md#censig). What's the difference?
+So all gate calls actually pass back through `%~` [censig](../../hoon/rune/cen.md#censig). What's the difference?
 
-The `%~` [censig](../../hoon/reference/rune/cen.md#censig) rune accepts three children, a wing which resolves to an arm in a door; the aforesaid door; and a sample for the door.
+The `%~` [censig](../../hoon/rune/cen.md#censig) rune accepts three children, a wing which resolves to an arm in a door; the aforesaid door; and a sample for the door.
 
-Basically, whenever you use `%-` [cenhep](../../hoon/reference/rune/cen.md#cenhep), it actually looks up a wing in a door using `%~` [censig](../../hoon/reference/rune/cen.md#censig), which is a more general type of core than a gate. Whatever that wing resolves to is then provided a sample. The resulting Hoon expression is evaluated and the value is returned.
+Basically, whenever you use `%-` [cenhep](../../hoon/rune/cen.md#cenhep), it actually looks up a wing in a door using `%~` [censig](../../hoon/rune/cen.md#censig), which is a more general type of core than a gate. Whatever that wing resolves to is then provided a sample. The resulting Hoon expression is evaluated and the value is returned.
 
 
 ## Doors {#doors}
@@ -184,7 +184,7 @@ battery      .
 
 It follows from this definition that a gate is a special case of a door. A gate is a door with exactly one arm, named `$` buc.
 
-Doors are created with the `|_` [barcab](../../hoon/reference/rune/bar.md#barcab) rune. Doors get used for a few different purposes in the standard library:
+Doors are created with the `|_` [barcab](../../hoon/rune/bar.md#barcab) rune. Doors get used for a few different purposes in the standard library:
 
 - Instrumenting and storing persistent data structures like `+map`s (this module and the next)
 - Implementing state machines (the [subject-oriented programming module](O-subject.md))
@@ -212,7 +212,7 @@ Any time we call the gate, we have to provide all four values: one unknown, thre
 (poly-gate x a b c)
 ```
 
-If we built this as a door instead, we could push the parameters out to a different layer of the structure. In this case, the parameters are the sample of the door, while the arm `+quad` builds a gate that corresponds to those parameters and only accepts one unknown variable `.x`. To make a door we use the `|_` [barcab](../../hoon/reference/rune/bar.md#barcab) rune, which we'll discuss later:
+If we built this as a door instead, we could push the parameters out to a different layer of the structure. In this case, the parameters are the sample of the door, while the arm `+quad` builds a gate that corresponds to those parameters and only accepts one unknown variable `.x`. To make a door we use the `|_` [barcab](../../hoon/rune/bar.md#barcab) rune, which we'll discuss later:
 
 ```hoon
 > =poly |_  [a=@ud b=@ud c=@ud]
@@ -224,7 +224,7 @@ If we built this as a door instead, we could push the parameters out to a differ
 
 This will be used in two steps: a gate-building step then a gate usage step.
 
-We produce a gate from a door's arm using the `%~` [censig](../../hoon/reference/rune/cen.md#censig) rune, almost always used in its irregular form, `~()`. Here we prime the door with `[5 4 3]`, which yields a gate:
+We produce a gate from a door's arm using the `%~` [censig](../../hoon/rune/cen.md#censig) rune, almost always used in its irregular form, `~()`. Here we prime the door with `[5 4 3]`, which yields a gate:
 
 ```hoon
 ~(quad poly [5 4 3])
@@ -243,7 +243,7 @@ Doors will enable us to build some very powerful data storage tools by letting u
 
 #### Example: A Calculator
 
-Let's unpack what's going on more with this next door. Each of the arms in this example door will define a simple gate. Let's bind the door to `.c`. To make a door we use the `|_` [barcab](../../hoon/reference/rune/bar.md#barcab) rune:
+Let's unpack what's going on more with this next door. Each of the arms in this example door will define a simple gate. Let's bind the door to `.c`. To make a door we use the `|_` [barcab](../../hoon/rune/bar.md#barcab) rune:
 
 ```hoon
 =c |_  b=@
@@ -255,9 +255,9 @@ Let's unpack what's going on more with this next door. Each of the arms in this 
 
 If you type this into the Dojo manually, make sure you attend carefully to the spacing. Feel free to cut and paste the code, if desired.
 
-Before getting into what these arms do, let's digress into how the `|_` [barcab](../../hoon/reference/rune/bar.md#barcab) rune works in general.
+Before getting into what these arms do, let's digress into how the `|_` [barcab](../../hoon/rune/bar.md#barcab) rune works in general.
 
-`|_` [barcab](../../hoon/reference/rune/bar.md#barcab) works exactly like the `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) rune for making a core, except that it takes one additional daughter expression, the door's sample. Following that are a series of `++` [luslus](../../hoon/reference/rune/lus.md#luslus) runes, each of which defines an arm of the door. Finally, the expression is terminated with a `--` [hephep](../../hoon/reference/rune/terminators.md#hephep) rune.
+`|_` [barcab](../../hoon/rune/bar.md#barcab) works exactly like the `|%` [barcen](../../hoon/rune/bar.md#barcen) rune for making a core, except that it takes one additional daughter expression, the door's sample. Following that are a series of `++` [luslus](../../hoon/rune/lus.md#luslus) runes, each of which defines an arm of the door. Finally, the expression is terminated with a `--` [hephep](../../hoon/rune/terminators.md#hephep) rune.
 
 A door really is, at the bedrock level, the same thing as a core with a sample. Let's ask Dojo to pretty print a simple door.
 
@@ -367,7 +367,7 @@ The standard library provides [currying functionality](Q-func.md) outside of the
 
 #### Creating Doors with a Modified Sample
 
-In the above example we created a door `.c` with sample `b=@` and found that the initial value of `.b` was `0`, the default value of type `@`. We then created new door from `.c` by modifying the value of `.b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../hoon/reference/rune/buc.md#buccab) rune, whose irregular form is simply `_`. To create the door `.c` with the sample `b=@` set to have the value `7` in the dojo, we would write
+In the above example we created a door `.c` with sample `b=@` and found that the initial value of `.b` was `0`, the default value of type `@`. We then created new door from `.c` by modifying the value of `.b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` [buccab](../../hoon/rune/buc.md#buccab) rune, whose irregular form is simply `_`. To create the door `.c` with the sample `b=@` set to have the value `7` in the dojo, we would write
 
 ```hoon
 =c |_  b=_7
@@ -400,7 +400,7 @@ Recall the quadratic equation door.
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183%20-%20Maps%20and%20Sets.mp4" %}
 
-In general terms, a [map](../../hoon/reference/stdlib/2o.md#map) is a pattern from a key to a value. You can think of a dictionary, or an index, or a data table. Essentially it scans for a particular key, then returns the data associated with that key (which may be any noun).
+In general terms, a [map](../../hoon/stdlib/2o.md#map) is a pattern from a key to a value. You can think of a dictionary, or an index, or a data table. Essentially it scans for a particular key, then returns the data associated with that key (which may be any noun).
 
 | Key         | Value      |
 | ----------- | ---------- |
@@ -411,19 +411,19 @@ In general terms, a [map](../../hoon/reference/stdlib/2o.md#map) is a pattern fr
 | 'Porsche'   | 'Boxster'  |
 | 'Bugatti'   | 'Type 22'  |
 
-While `+map` is the mold or type of the value, the door which affords `+map`-related functionality is named [`+by`](../../hoon/reference/stdlib/2i.md#by). (This felicitously affords us a way to read `+map` operations in an English-friendly phrasing.)
+While `+map` is the mold or type of the value, the door which affords `+map`-related functionality is named [`+by`](../../hoon/stdlib/2i.md#by). (This felicitously affords us a way to read `+map` operations in an English-friendly phrasing.)
 
-In Urbit, all values are static and never change. (This is why we “overwrite” or replace the values in a limb to change it with `%=` [centis](../../hoon/reference/rune/cen.md#centis).)  This means that when we build a `+map`, we often rather awkwardly replace it with its modified value explicitly.
+In Urbit, all values are static and never change. (This is why we “overwrite” or replace the values in a limb to change it with `%=` [centis](../../hoon/rune/cen.md#centis).)  This means that when we build a `+map`, we often rather awkwardly replace it with its modified value explicitly.
 
 We'll build a color `+map`, from a `@tas` of a [color's name](https://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors) to its HTML hexadecimal representation as a `@ux` hex value.
 
-We can produce a `+map` from a list of key-value cells using the [`+malt`](../../hoon/reference/stdlib/2l.md#malt) function. Using `@tas` terms as keys (which is common) requires us to explicitly mark the list as `(list (pair @tas @ux))`:
+We can produce a `+map` from a list of key-value cells using the [`+malt`](../../hoon/stdlib/2l.md#malt) function. Using `@tas` terms as keys (which is common) requires us to explicitly mark the list as `(list (pair @tas @ux))`:
 
 ```hoon
 =colors (malt `(list (pair @tas @ux))`~[[%red 0xed.0a3f] [%yellow 0xfb.e870] [%green 0x1.a638] [%blue 0x66ff]])
 ```
 
-To insert one key-value pair at a time, we use [put](../../hoon/reference/stdlib/2i.md#putby). In Dojo, we need to either pin it into the subject or modify a copy of the map for the rest of the expression using `=/` [tisfas](../../hoon/reference/rune/tis.md#tisfas).
+To insert one key-value pair at a time, we use [put](../../hoon/stdlib/2i.md#putby). In Dojo, we need to either pin it into the subject or modify a copy of the map for the rest of the expression using `=/` [tisfas](../../hoon/rune/tis.md#tisfas).
 
 ```hoon
 =colors (~(put by colors) [%orange 0xff.8833])
@@ -431,7 +431,7 @@ To insert one key-value pair at a time, we use [put](../../hoon/reference/stdlib
 =colors (~(put by colors) [%black 0x0])
 ```
 
-Note the pattern here: there is a [`+put`](../../hoon/reference/stdlib/2i.md#putby) arm of [`+by`](../../hoon/reference/stdlib/2i.md#by) which builds a gate to modify `.colors` by inserting a value.
+Note the pattern here: there is a [`+put`](../../hoon/stdlib/2i.md#putby) arm of [`+by`](../../hoon/stdlib/2i.md#by) which builds a gate to modify `.colors` by inserting a value.
 
 What happens if we try to add something that doesn't match the type?
 
@@ -439,18 +439,18 @@ What happens if we try to add something that doesn't match the type?
 =colors (~(put by colors) [%cerulean '#02A4D3'])
 ```
 
-We'll see a `mull-grow`, a `mull-nice`, and a [nest-fail](../../hoon/reference/hoon-errors.md#nest-fail). Essentially these are all flavors of mold-matching errors.
+We'll see a `mull-grow`, a `mull-nice`, and a [nest-fail](../../hoon/hoon-errors.md#nest-fail). Essentially these are all flavors of mold-matching errors.
 
 (As an aside, `+put:by` is also how you'd replace a key's value.)
 
-The point of a `+map` is to make it easy to retrieve data values given their appropriate key. Use [+get:by](../../hoon/reference/stdlib/2i.md#getby):
+The point of a `+map` is to make it easy to retrieve data values given their appropriate key. Use [+get:by](../../hoon/stdlib/2i.md#getby):
 
 ```hoon
 > (~(get by colors) %orange)
 [~ 0xff.8833]
 ```
 
-What is that cell?  Wasn't the value stored as `0xff.8833`?  Well, one fundamental problem that a [map](../../hoon/reference/stdlib/2o.md#map) needs to solve is to allow us to distinguish an _empty_ result (or failure to locate a value) from a _zero_ result (or an answer that's actually zero). To this end, the [unit](../../hoon/reference/stdlib/1c.md#unit) was introduced, a type union of a `~` (for no result) and `[~ item]` (for when a result exists).
+What is that cell?  Wasn't the value stored as `0xff.8833`?  Well, one fundamental problem that a [map](../../hoon/stdlib/2o.md#map) needs to solve is to allow us to distinguish an _empty_ result (or failure to locate a value) from a _zero_ result (or an answer that's actually zero). To this end, the [unit](../../hoon/stdlib/1c.md#unit) was introduced, a type union of a `~` (for no result) and `[~ item]` (for when a result exists).
 
 - What does `[~ ~]` mean when returned from a `+map`?
 
@@ -461,9 +461,9 @@ What is that cell?  Wasn't the value stored as `0xff.8833`?  Well, one fundament
 ~
 ```
 
-([+got:by](../../hoon/reference/stdlib/2i.md#gotby) returns the value without the `+unit` wrapper, but crashes on failure to locate. I recommend just using `+get` and extracting the tail of the resulting cell after confirming it isn't null with `?~` [wutsig](../../hoon/reference/rune/wut.md#wutsig). See also [+gut:by](../../hoon/reference/stdlib/2i.md#gutby) which allows a default in case of failure to locate.)
+([+got:by](../../hoon/stdlib/2i.md#gotby) returns the value without the `+unit` wrapper, but crashes on failure to locate. I recommend just using `+get` and extracting the tail of the resulting cell after confirming it isn't null with `?~` [wutsig](../../hoon/rune/wut.md#wutsig). See also [+gut:by](../../hoon/stdlib/2i.md#gutby) which allows a default in case of failure to locate.)
 
-You can check whether a key is present using [+has:by](../../hoon/reference/stdlib/2i.md#hasby):
+You can check whether a key is present using [+has:by](../../hoon/stdlib/2i.md#hasby):
 
 ```hoon
 > (~(has by colors) %teal)
@@ -473,14 +473,14 @@ You can check whether a key is present using [+has:by](../../hoon/reference/stdl
 %.y
 ```
 
-You can get a list of all keys with [+key:by](../../hoon/reference/stdlib/2i.md#keyby):
+You can get a list of all keys with [+key:by](../../hoon/stdlib/2i.md#keyby):
 
 ```hoon
 > ~(key by colors)
 {%black %red %blue %violet %green %yellow %orange}
 ```
 
-You can apply a gate to each value using [+run:by](../../hoon/reference/stdlib/2i.md#runby). For instance, these gates will break the color hexadecimal value into red, green, and blue components:
+You can apply a gate to each value using [+run:by](../../hoon/stdlib/2i.md#runby). For instance, these gates will break the color hexadecimal value into red, green, and blue components:
 
 ```hoon
 > =red |=(a=@ux ^-(@ux (cut 2 [4 2] a)))
@@ -504,7 +504,7 @@ You can apply a gate to each value using [+run:by](../../hoon/reference/stdlib/2
 
 Recall the `/lib/playing-cards.hoon` library. Use a map to pretty-print the `$darc`s as Unicode card symbols.
 
-The map type should be `(map darc @t)`. We'll use [`+malt`](../../hoon/reference/stdlib/2l.md#malt) to build it and associate the fancy (if tiny) [Unicode playing card symbols](https://en.wikipedia.org/wiki/Playing_cards_in_Unicode).
+The map type should be `(map darc @t)`. We'll use [`+malt`](../../hoon/stdlib/2l.md#malt) to build it and associate the fancy (if tiny) [Unicode playing card symbols](https://en.wikipedia.org/wiki/Playing_cards_in_Unicode).
 
 Add the following arms to the library core:
 
@@ -575,7 +575,7 @@ Add the following arms to the library core:
 
 </details>
 
-Import the library in Dojo (or use `/+` [faslus](../../hoon/reference/rune/fas.md#faslus) in a generator) and build a deck:
+Import the library in Dojo (or use `/+` [faslus](../../hoon/rune/fas.md#faslus) in a generator) and build a deck:
 
 ```hoon
 > =playing-cards -build-file /===/lib/playing-cards/hoon
@@ -739,11 +739,11 @@ There are a few runes in this which we haven't seen yet; we will deal with them 
 =<
 ```
 
-The `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) in the first line of the above code enables a full stack trace in the event of an error.
+The `!:` [zapcol](../../hoon/rune/zap.md#zapcol) in the first line of the above code enables a full stack trace in the event of an error.
 
 `|= [msg=tape steps=@ud]` creates a gate that takes a cell. The head of this cell is a `$tape`, which is a string type that's a list of `$cord`s. Tapes are represented as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal atom -- that we give the face `steps`.
 
-`=<` [zapgal](../../hoon/reference/rune/tis.md#tisgal) is the rune that evaluates its first child expression with respect to its second child expression as the subject. In this case, we evaluate the expressions in the code chunk below against the core declared later, which allows us reference the core's contained arms before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
+`=<` [zapgal](../../hoon/rune/tis.md#tisgal) is the rune that evaluates its first child expression with respect to its second child expression as the subject. In this case, we evaluate the expressions in the code chunk below against the core declared later, which allows us reference the core's contained arms before they are defined. Without `=<`, we would need to put the code chunk below at the bottom of our program. In Hoon, as previously stated, we always want to keep the longer code towards the bottom of our programs - `=<` helps us do that.
 
 ```hoon
 =.  msg  (cass msg)
@@ -751,7 +751,7 @@ The `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) in the first line of 
     (unshift msg steps)
 ```
 
-`=. msg (cass msg)` changes the input string `.msg` to lowercases. `=.` [tisdot](../../hoon/reference/rune/tis.md#tisdot) changes the leg of the subject to something else. In our case, the leg to be changed is `.msg`, and the thing to replace it is `(cass msg)`. `+cass` is a standard-library gate that converts uppercase letters to lowercase.
+`=. msg (cass msg)` changes the input string `.msg` to lowercases. `=.` [tisdot](../../hoon/rune/tis.md#tisdot) changes the leg of the subject to something else. In our case, the leg to be changed is `.msg`, and the thing to replace it is `(cass msg)`. `+cass` is a standard-library gate that converts uppercase letters to lowercase.
 
 `:- (shift msg steps)` and `(unshift msg steps)` simply composes a cell of a right-shifted cipher and a left-shifted cipher of our original message. We will see how this is done using the core described below, but this is the final output of our generator. We have indented the lower line, which is not strictly good Hoon style but makes the intent clearer.
 
@@ -759,7 +759,7 @@ The `!:` [zapcol](../../hoon/reference/rune/zap.md#zapcol) in the first line of 
 |%
 ```
 
-`|%` [barcen](../../hoon/reference/rune/bar.md#barcen) creates a core, the second child of `=<` [tisgal](../../hoon/reference/rune/tis.md#tisgal). Everything after `|%` is part of that second child `+core`, and will be used as the subject of the first child of `=<`, described above. The various parts, or arms, of the `+core` are denoted by `++` [luslus](../../hoon/reference/rune/lus.md#luslus) beneath it, for instance:
+`|%` [barcen](../../hoon/rune/bar.md#barcen) creates a core, the second child of `=<` [tisgal](../../hoon/rune/tis.md#tisgal). Everything after `|%` is part of that second child `+core`, and will be used as the subject of the first child of `=<`, described above. The various parts, or arms, of the `+core` are denoted by `++` [luslus](../../hoon/rune/lus.md#luslus) beneath it, for instance:
 
 ```hoon
 ++  rotation
@@ -775,7 +775,7 @@ The `+rotation` arm takes takes a specified number of characters off of a tape a
 
 `=/ length=@ud (lent my-alphabet)` stores the length of `.my-alphabet` to make the following code a little clearer.
 
-The [`+trim`](../../hoon/reference/stdlib/4b.md#trim) gate from the standard library splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `.my-alphabet` into two parts, `.p` and `.q`, which are now directly available in the subject. We call the modulus operation `+mod` to make sure that the point at which we split our `$tape` is a valid point inside of `.my-alphabet` even if `.my-steps` is greater than `.length`, the length of `.my-alphabet`. Try trim in the dojo:
+The [`+trim`](../../hoon/stdlib/4b.md#trim) gate from the standard library splits a tape into two parts at a specified position. So `=+ (trim (mod my-steps length) my-alphabet)` splits the tape `.my-alphabet` into two parts, `.p` and `.q`, which are now directly available in the subject. We call the modulus operation `+mod` to make sure that the point at which we split our `$tape` is a valid point inside of `.my-alphabet` even if `.my-steps` is greater than `.length`, the length of `.my-alphabet`. Try trim in the dojo:
 
 ```hoon
 > (trim 2 "abcdefg")
@@ -785,7 +785,7 @@ The [`+trim`](../../hoon/reference/stdlib/4b.md#trim) gate from the standard lib
 [p="your" q="beard"]
 ```
 
-The expression `(weld q p)` uses [`+weld`](../../hoon/reference/stdlib/2b.md#weld), which combines two strings into one. Remember that `+trim` has given us a split version of `.my-alphabet` with `.p` being the front half that was split off of `.my-alphabet` and `.q` being the back half. Here we are welding the two parts back together, but in reverse order: the second part `.q` is welded to the front, and the first part `.p` is welded to the back.
+The expression `(weld q p)` uses [`+weld`](../../hoon/stdlib/2b.md#weld), which combines two strings into one. Remember that `+trim` has given us a split version of `.my-alphabet` with `.p` being the front half that was split off of `.my-alphabet` and `.q` being the back half. Here we are welding the two parts back together, but in reverse order: the second part `.q` is welded to the front, and the first part `.p` is welded to the back.
 
 ```hoon
 ++  map-maker
@@ -800,7 +800,7 @@ The expression `(weld q p)` uses [`+weld`](../../hoon/reference/stdlib/2b.md#wel
   $(chart (~(put by chart) i.key-position i.value-result), key-position t.key-position, value-result t.value-result)
 ```
 
-The `+map-maker` arm, as the name implies, takes two tapes and creates a [map](../../hoon/reference/stdlib/2o.md#map) out of them. A `+map` is a type equivalent to a dictionary in other languages: it's a data structure that associates a key with a value. If, for example, we wanted to have an association between "a" and 1 and "b" and 2, we could use a `+map`.
+The `+map-maker` arm, as the name implies, takes two tapes and creates a [map](../../hoon/stdlib/2o.md#map) out of them. A `+map` is a type equivalent to a dictionary in other languages: it's a data structure that associates a key with a value. If, for example, we wanted to have an association between "a" and 1 and "b" and 2, we could use a `+map`.
 
 `|= [a=tape b=tape]` builds a gate that takes two tapes, `.a` and `.b`, as its sample.
 
@@ -814,11 +814,11 @@ As we discussed earlier, a tape is a list of `$cord`s. In this case what we are 
 
 `?. =((lent key-position) (lent value-result))` checks if the two `$tape`s are the same length. If not, the program crashes with an error message of `%uneven-lengths`, using `~| %uneven-lengths !!`.
 
-If the two `$tape`s are of the same length, we continue on to create a trap. `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) creates a trap, a gate with no arguments that is called immediately.
+If the two `$tape`s are of the same length, we continue on to create a trap. `|-` [barhep](../../hoon/rune/bar.md#barhep) creates a trap, a gate with no arguments that is called immediately.
 
-`?: |(?=(~ key-position) ?=(~ value-result))` checks if either `$tape` is empty. If this is true, the `+map-maker` arm is finished and can return `.chart`, the [map](../../hoon/reference/stdlib/2o.md#map) that we have been creating.
+`?: |(?=(~ key-position) ?=(~ value-result))` checks if either `$tape` is empty. If this is true, the `+map-maker` arm is finished and can return `.chart`, the [map](../../hoon/stdlib/2o.md#map) that we have been creating.
 
-If the above test finds that the `$tape`s are not empty, we trigger a recursion that constructs our `+map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `+map` where the head of the `$tape` `.a` maps to the value of the head of `$tape` `.b` with `~(put by chart)`, our calling of the [put](../../hoon/reference/stdlib/2i.md#putby) arm of the [by](../../hoon/reference/stdlib/2i.md#by) map-engine core (note that "\~(\<wing> \<door> \<sample>)" is a shorthand for "%~  \<wing>  \<door>  \<sample>" (see the `%~` [censig](../../hoon/reference/rune/cen.md#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `.a` and `.b` to their tails using `a t.a, b t.b`.
+If the above test finds that the `$tape`s are not empty, we trigger a recursion that constructs our `+map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`. This code recursively adds an entry in our `+map` where the head of the `$tape` `.a` maps to the value of the head of `$tape` `.b` with `~(put by chart)`, our calling of the [put](../../hoon/stdlib/2i.md#putby) arm of the [by](../../hoon/stdlib/2i.md#by) map-engine core (note that "\~(\<wing> \<door> \<sample>)" is a shorthand for "%~  \<wing>  \<door>  \<sample>" (see the `%~` [censig](../../hoon/rune/cen.md#censig) documentation for more information). The recursion also "consumes" those heads with every iteration by changing `.a` and `.b` to their tails using `a t.a, b t.b`.
 
 We have three related arms to look at next, `+decoder`, `+encoder`, and `+space-adder`. `+space-adder` is required for the other two, so we'll look at it first.
 
@@ -831,7 +831,7 @@ We have three related arms to look at next, `+decoder`, `+encoder`, and `+space-
 
 `|= [key-position=tape value-result=tape]` creates a gate that takes two `$tape`s.
 
-We use the [put](../../hoon/reference/stdlib/2i.md#putby) arm of the [by](../../hoon/reference/stdlib/2i.md#by) core on the next line, giving it a [map](../../hoon/reference/stdlib/2o.md#map) produced by the `+map-maker` arm that we created before as its sample. This adds an entry to the map where the space character (called "ace") simply maps to itself. This is done to simplify the handling of spaces in tapes we want to encode, since we don't want to shift them.
+We use the [put](../../hoon/stdlib/2i.md#putby) arm of the [by](../../hoon/stdlib/2i.md#by) core on the next line, giving it a [map](../../hoon/stdlib/2o.md#map) produced by the `+map-maker` arm that we created before as its sample. This adds an entry to the map where the space character (called "ace") simply maps to itself. This is done to simplify the handling of spaces in tapes we want to encode, since we don't want to shift them.
 
 ```hoon
 ++  encoder
@@ -848,7 +848,7 @@ We use the [put](../../hoon/reference/stdlib/2i.md#putby) arm of the [by](../../
 
 `+encoder` and `+decoder` utilize the `+rotation` and `+space-adder` arms. These gates are essentially identical, with the arguments passed to `+space-adder` reversed. They simplify the two common transactions you want to do in this program: producing `+map`s that we can use to encode and decode messages.
 
-In both cases, we create a gate that accepts a `@ud` named `steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `.value-tape` noun by calling `+rotation` on `+alpha`. `+alpha` is our arm which contains a `$tape` of the entire alphabet. The `.value-tape` will be the list of values in our [map](../../hoon/reference/stdlib/2o.md#map).
+In both cases, we create a gate that accepts a `@ud` named `steps`. In `+encoder`: `=/ value-tape=tape (rotation alpha steps)` creates a `.value-tape` noun by calling `+rotation` on `+alpha`. `+alpha` is our arm which contains a `$tape` of the entire alphabet. The `.value-tape` will be the list of values in our [map](../../hoon/stdlib/2o.md#map).
 
 In `+decoder`: `=/ key-tape (rotation alpha steps)` does the same work, but when passed to `+space-adder` it will be the list of keys in our `+map`.
 
@@ -882,9 +882,9 @@ Both `+shift` and `+unshift` take two arguments: our `.message`, the `$tape` tha
   (~(got by shift-map) a)
 ```
 
-`+operate` produces a `$tape`. The `%+` [cenlus](../../hoon/reference/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../hoon/reference/stdlib/2b.md#turn). This arm takes two arguments, a list and a gate to apply to each element of the `+list`.
+`+operate` produces a `$tape`. The `%+` [cenlus](../../hoon/rune/cen.md#cenlus) rune allows us to pull an arm with a pair sample. The arm we are going to pull is [turn](../../hoon/stdlib/2b.md#turn). This arm takes two arguments, a list and a gate to apply to each element of the `+list`.
 
-In this case, the `$gate` we are applying to our `.message` uses the [got](../../hoon/reference/stdlib/2i.md#gotby) arm of the [by](../../hoon/reference/stdlib/2i.md#by) door with our `.shift-map` as the sample (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `$cord` in our `.message`, one by one and replace it with the value from our `+map` (either the encoded or decoded version).
+In this case, the `$gate` we are applying to our `.message` uses the [got](../../hoon/stdlib/2i.md#gotby) arm of the [by](../../hoon/stdlib/2i.md#by) door with our `.shift-map` as the sample (which is either the standard alphabet for keys, and the shifted alphabet for values, or the other way, depending on whether we are encoding or decoding) to look up each `$cord` in our `.message`, one by one and replace it with the value from our `+map` (either the encoded or decoded version).
 
 Let's give our arm Caesar's famous statement (translated into English!) and get our left-cipher and right-cipher.
 
@@ -913,7 +913,7 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 
 ## A Bit More on Cores {#a-bit-more-on-cores}
 
-The `|^` [barket](../../hoon/reference/rune/bar.md#barket) rune is an example of what we can call a "convenience rune", similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner). `|^` [barket](../../hoon/reference/rune/bar.md#barket) produces a core with _at least_ a `$` buc arm and computes it immediately, called a "cork". (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
+The `|^` [barket](../../hoon/rune/bar.md#barket) rune is an example of what we can call a "convenience rune", similar to the idea of sugar syntax (irregular syntax to make writing certain things out in a more expressive manner). `|^` [barket](../../hoon/rune/bar.md#barket) produces a core with _at least_ a `$` buc arm and computes it immediately, called a "cork". (So a cork is like a trap in the regard of computing immediately, but it has more arms than just `$` buc.)
 
 This code calculates the volume of a cylinder, _A=πr²h_.
 
@@ -928,9 +928,9 @@ This code calculates the volume of a cylinder, _A=πr²h_.
 --
 ```
 
-Since all of the values either have to be pinned ahead of time or made available as arms, a `|^` [barket](../../hoon/reference/rune/bar.md#barket) would probably be used inside of a gate. Of course, since it is a core with a `$` buc arm, one could also use it recursively to calculate values like the factorial.
+Since all of the values either have to be pinned ahead of time or made available as arms, a `|^` [barket](../../hoon/rune/bar.md#barket) would probably be used inside of a gate. Of course, since it is a core with a `$` buc arm, one could also use it recursively to calculate values like the factorial.
 
-If you read the docs, you'll find that a `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` [barcen](../../hoon/reference/rune/bar.md#barcen) core with an arm `$`:
+If you read the docs, you'll find that a `|-` [barhep](../../hoon/rune/bar.md#barhep) rune “produces a trap (a core with one arm `$`) and evaluates it.”  So a trap actually evaluates to a `|%` [barcen](../../hoon/rune/bar.md#barcen) core with an arm `$`:
 
 ```hoon
 :: count to five
@@ -955,7 +955,7 @@ actually translates to
 --
 ```
 
-You can also create a trap for later use with the `|.` [bardot](../../hoon/reference/rune/bar.md#bardot) rune. It's quite similar, but without the `=<($...` part then it doesn't get evaluated immediately.
+You can also create a trap for later use with the `|.` [bardot](../../hoon/rune/bar.md#bardot) rune. It's quite similar, but without the `=<($...` part then it doesn't get evaluated immediately.
 
 ```hoon
 > =forty-two |.(42)
@@ -967,8 +967,8 @@ You can also create a trap for later use with the `|.` [bardot](../../hoon/refer
 
 What is a gate?  It is a door with only one arm `$` buc, and whenever you invoke it then that default arm's expression is referred to and evaluated.
 
-A "gate" and a "trap" are actually very similar: a gate simply has a sample (and can actively change when evaluated or via a `%=` [centis](../../hoon/reference/rune/cen.md#centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
+A "gate" and a "trap" are actually very similar: a gate simply has a sample (and can actively change when evaluated or via a `%=` [centis](../../hoon/rune/cen.md#centis)), whereas a trap does not (and can _only_ be passively changed via something like `%=` centis).
 
 #### Example: Hoon Workbook
 
-Other examples demonstrating [`+map`](../../hoon/reference/stdlib/2o.md#map) are available in the [Hoon Workbook](../../hoon/examples), such as Solution #2 in the [Rhonda Numbers](../../hoon/examples/rhonda.md) tutorial.
+Other examples demonstrating [`+map`](../../hoon/stdlib/2o.md#map) are available in the [Hoon Workbook](../../hoon/examples), such as Solution #2 in the [Rhonda Numbers](../../hoon/examples/rhonda.md) tutorial.

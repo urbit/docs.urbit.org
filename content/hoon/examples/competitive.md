@@ -60,7 +60,7 @@ We'll use `'Wild Hearts Can\'t Be Broken'` as our source atom.  As `@ux` the ASC
 
 Here are a few ways to slice and dice binary atom data.
 
-[`++rip`](../reference/stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
+[`++rip`](../stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'  
@@ -76,7 +76,7 @@ Here are a few ways to slice and dice binary atom data.
 ~[0x6165.4820.646c.6957 0x276e.6143.2073.7472 0x6f72.4220.6542.2074 0x6e.656b]
 ```
 
-[`++rap`](../reference/stdlib/2c.md#rap) is the opposite operation, producing an atom from a list of atoms `b` with a block size `2^a`.
+[`++rap`](../stdlib/2c.md#rap) is the opposite operation, producing an atom from a list of atoms `b` with a block size `2^a`.
 
 ```hoon
 > `(list @ux)`(rip 3 'Mars')
@@ -92,7 +92,7 @@ Here are a few ways to slice and dice binary atom data.
 0x73.0000.0000.0000.0072.0000.0000.0000.0061.0000.0000.0000.004d
 ```
 
-[`++cut`](../reference/stdlib/2c.md#cut) slices `2^a`-sized chunks from `b` to `c` out of atom `d`.
+[`++cut`](../stdlib/2c.md#cut) slices `2^a`-sized chunks from `b` to `c` out of atom `d`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'
@@ -108,21 +108,21 @@ Here are a few ways to slice and dice binary atom data.
 
 Standard bitwise logical operations are available:
 
-- `OR` is [`++con`](../reference/stdlib/2d.md#con) (conjoint):
+- `OR` is [`++con`](../stdlib/2d.md#con) (conjoint):
 
     ```hoon
     > `@ub`(con 0b10.0001.0110 0b11.1101.1011)
     0b11.1101.1111
     ```
 
-- `AND` is [`++dis`](../reference/stdlib/2d.md#dis) (disjoint):
+- `AND` is [`++dis`](../stdlib/2d.md#dis) (disjoint):
 
     ```hoon
     > `@ub`(dis 0b10.0001.0110 0b11.1101.1011)
     0b10.0001.0010
     ```
 
-- `XOR` is [`++mix`](../reference/stdlib/2d.md#mix):
+- `XOR` is [`++mix`](../stdlib/2d.md#mix):
 
     ```hoon
     > `@ub`534
@@ -135,7 +135,7 @@ Standard bitwise logical operations are available:
     0b1.1100.1101
     ```
 
-- `NOT` is [`++not`](../reference/stdlib/2d.md#not); it requires a block size (powers of 2) because leading zeroes are always stripped in Hoon (and thus `NOT` is implicitly based on block size):
+- `NOT` is [`++not`](../stdlib/2d.md#not); it requires a block size (powers of 2) because leading zeroes are always stripped in Hoon (and thus `NOT` is implicitly based on block size):
 
     ```hoon
     > `@ub`(not 2 1 0b1011)
@@ -177,8 +177,8 @@ Perhaps surprisingly, many text conversion operations live here.  To parse a hex
 
 There are operations for JSON, [Base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58), and XML/HTML as well.
 
-- [JSON](../guides/json-guide.md)
-- [Sail (HTML)](../guides/sail.md)
+- [JSON](../json-guide.md)
+- [Sail (HTML)](../sail.md)
 
 Urbit furthermore has a notion of _jammed noun_, which is essentially a serialization (marshaling, pickling) of a noun into an atom.
 
@@ -234,7 +234,7 @@ Now that we can find factors, it should be straightforward to find primes.  In t
 While Hoon has a sophisticated text parsing library, the primitives are rather low-level and we won't assume that you want to directly implement a parser using them in a rapid-fire competitive environment.
 
 - [Text Processing III](../../build-on-urbit/hoon-school/Q2-parsing.md) - This module will cover text parsing.
-- [Parsing Text](../guides/parsing.md)
+- [Parsing Text](../parsing.md)
 
 Fortunately, there is a regular expression library you can incorporate into your program which will allow you to match and work with code.
 
@@ -262,7 +262,7 @@ Hoon is a functional programming language, so naturally it supports the basic co
 
 ### Map {#map}
 
-The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`++turn`](../reference/stdlib/2b.md#turn) for a `list`, [`++run:in`](../reference/stdlib/2h.md#repin) for a `set`, and [`++run:by`](../reference/stdlib/2i.md#runby) for a `map`.
+The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`++turn`](../stdlib/2b.md#turn) for a `list`, [`++run:in`](../stdlib/2h.md#repin) for a `set`, and [`++run:by`](../stdlib/2i.md#runby) for a `map`.
 
 ```hoon
 > (turn `(list @ud)`~[1 2 3 4 5] one)
@@ -270,7 +270,7 @@ The Map operation describes applying a function to each item of a set or iterabl
 
 ### Reduce {#reduce}
 
-The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`++roll`](../reference/stdlib/2b.md#roll) and [`++reel`](../reference/stdlib/2b.md#reel) for a `list`, [`++rep:in`](../reference/stdlib/2h.md#repin) for a `set`, and [`++rep:by`](../reference/stdlib/2i.md#repby) for a `map`.
+The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`++roll`](../stdlib/2b.md#roll) and [`++reel`](../stdlib/2b.md#reel) for a `list`, [`++rep:in`](../stdlib/2h.md#repin) for a `set`, and [`++rep:by`](../stdlib/2i.md#repby) for a `map`.
 
 ```hoon
 > =my-set (silt `(list @ud)`~[1 2 3 4 5])
@@ -281,7 +281,7 @@ b=120
 
 ### Filter {#filter}
 
-The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`++skim`](../reference/stdlib/2b.md#skim), [`++skid`](../reference/stdlib/2b.md#skid), [`++murn`](../reference/stdlib/2b.md#murn) for a `list`, and [`++rib:by`](../reference/stdlib/2i.md#ribby) for a `map`.
+The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`++skim`](../stdlib/2b.md#skim), [`++skid`](../stdlib/2b.md#skid), [`++murn`](../stdlib/2b.md#murn) for a `list`, and [`++rib:by`](../stdlib/2i.md#ribby) for a `map`.
 
 ```hoon
 > `(list @ud)`(skim `(list @ud)`~[1 2 3 4 5] (curr gth 2))
@@ -347,9 +347,9 @@ This last case can be handled with a couple of expedients:
 
 - Use of assertions to enforce type constraints.  Assertions are a form of `?` wut rune which check the structure of a value.  Ultimately they all reduce back to `?:` wutcol, but are very useful in this sugar form:
 
-    - [`?>` wutgar](../reference/rune/wut.md#wutgar) is a positive assertion, that a condition _must_ be true.
-    - [`?<` wutgal](../reference/rune/wut.md#wutgal) is a negative assertion, that a condition _must_ be false.
-    - [`?~` wutsig](../reference/rune/wut.md#wutsig) is a branch on null.
+    - [`?>` wutgar](../rune/wut.md#wutgar) is a positive assertion, that a condition _must_ be true.
+    - [`?<` wutgal](../rune/wut.md#wutgal) is a negative assertion, that a condition _must_ be false.
+    - [`?~` wutsig](../rune/wut.md#wutsig) is a branch on null.
 
     For instance, some operations require a `lest`, a `list` guaranteed to be non-null (that is, `^-  (list)  ~` is excluded).
 
@@ -373,4 +373,4 @@ This last case can be handled with a couple of expedients:
     In general, if you see an error like `find.fork`, it means that the type system is confused by your use of a too general of a type for a particular case.  Use the assertion runes to correct its assumption.
 
 - [Testing Code](../../build-on-urbit/hoon-school/I-testing.md) - This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies.
-- [Unit Tests](../../build-on-urbit/userspace/guides/unit-tests.md)
+- [Unit Tests](../../build-on-urbit/userspace/unit-tests.md)

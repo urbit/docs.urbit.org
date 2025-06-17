@@ -540,7 +540,7 @@ The pier folder will be named `foobar` as a result of the above command.
 
 Set the maximum number of entries for the memoization cache.
 
-This cache is used by the [`~+`](../../hoon/reference/rune/sig.md#siglus) rune and a few other things.
+This cache is used by the [`~+`](../../hoon/rune/sig.md#siglus) rune and a few other things.
 
 An argument `0` means uncapped, otherwise the specified number of entries.
 
@@ -708,7 +708,7 @@ This is the port used for inter-ship communications.
 
 Enable profiling.
 
-Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../hoon/reference/rune/sig.md#sigbuc) rune will be recorded here.
+Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../hoon/rune/sig.md#sigbuc) rune will be recorded here.
 
 This runs a sampling profiler and produces custom output. Runtime cost metrics are only calculated if the binary was built with `CPU_DEBUG`.
 

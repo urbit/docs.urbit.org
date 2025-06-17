@@ -118,6 +118,7 @@
 
 * [What is Urbit OS?](urbit-os/what-is-urbit-os.md)
 * [Base](urbit-os/base/README.md)
+  * [Hood](urbit-os/base/hood.md)
   * [Threads](urbit-os/base/threads/README.md)
     * [Basics Tutorial](urbit-os/base/threads/basics/README.md)
       * [Bind](urbit-os/base/threads/basics/bind.md)

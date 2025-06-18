@@ -1,9 +1,11 @@
 # Input
 
-The input to a `strand` is defined in `/lib/strand/hoon` as:
+The input to a `+strand` is defined in `lull.hoon` as:
 
 ```hoon
-+$  strand-input  [=bowl in=(unit input)]
++$  strand-input
+  $+  strand-input
+  [=bowl in=(unit input)]
 ```
 
 When a thread is first started, spider will populate the `bowl` and provide it along with an `input` of `~`. If/when new input comes in (such as a poke, sign or watch) it will provide a new updated bowl along with the new input.
@@ -11,9 +13,7 @@ When a thread is first started, spider will populate the `bowl` and provide it a
 For example, here's a thread that gets the time from the bowl, runs an IO-less function that takes one or two seconds to compute, and then gets the time again:
 
 ```hoon
-/-  spider
-/+  *strandio
-=,  strand=strand:spider
+/+  strandio
 |%
 ++  ackermann
   |=  [m=@ n=@]
@@ -21,33 +21,29 @@ For example, here's a thread that gets the time from the bowl, runs an IO-less f
   ?:  =(n 0)  $(m (dec m), n 1)
   $(m (dec m), n $(n (dec n)))
 --
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
-;<  t1=@da  bind:m  get-time
+;<  t1=@da  bind:m  get-time:strandio
 =/  ack  (ackermann 3 8)
-;<  t2=@da  bind:m  get-time
+;<  t2=@da  bind:m  get-time:strandio
 (pure:m !>([t1 t2]))
 ```
 
-Since it never does any IO, `t1` and `t2` are the same: `[~2021.3.17..07.47.39..e186 ~2021.3.17..07.47.39..e186]`. However, if we replace the ackermann function with a 2 second `sleep` from strandio:
+Since it never does any IO, `t1` and `t2` are the same: `[~2021.3.17..07.47.39..e186 ~2021.3.17..07.47.39..e186]`. However, if we replace the ackermann function with a 2 second `+sleep` from strandio:
 
 ```hoon
-/-  spider
-/+  *strandio
-=,  strand=strand:spider
-^-  thread:spider
+/+  strandio
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
-;<  t1=@da  bind:m  get-time
-;<  ~       bind:m  (sleep ~s2)
-;<  t2=@da  bind:m  get-time
+;<  t1=@da  bind:m  get-time:strandio
+;<  ~       bind:m  (sleep:strandio ~s2)
+;<  t2=@da  bind:m  get-time:strandio
 (pure:m !>([t1 t2]))
 ```
 
-...and run it again we get different values for `t1` and `t2`: `[~2021.3.17..07.50.28..8a5d ~2021.3.17..07.50.30..8a66]`. This is because `sleep` gets a `%wake` sign back from `behn`, so spider updates the time in the bowl along with it.
+...and run it again we get different values for `t1` and `t2`: `[~2021.3.17..07.50.28..8a5d ~2021.3.17..07.50.30..8a66]`. This is because `+sleep` gets a `%wake` sign back from Behn, so Spider updates the time in the bowl along with it.
 
 Now let's look at the contents of `bowl` and `input` in detail:
 
@@ -57,6 +53,7 @@ Now let's look at the contents of `bowl` and `input` in detail:
 
 ```hoon
 +$  bowl
+  $+  strand-bowl
   $:  our=ship
       src=ship
       tid=tid
@@ -79,25 +76,20 @@ Now let's look at the contents of `bowl` and `input` in detail:
 - `now` - current datetime
 - `byk` - `[p=ship q=desk r=case]` path prefix
 
-There are a number of functions in `strandio` to access the `bowl` contents like `get-bowl`, `get-beak`, `get-time`, `get-our` and `get-entropy`.
+There are a number of functions in `strandio` to access the `bowl` contents like `+get-bowl`, `+get-beak`, `+get-time`, `+get-our` and `+get-entropy`.
 
-You can also write a function with a gate whose sample is `strand-input:strand` and access the bowl that way like:
+You can also write a function with a gate whose sample is `strand-input:rand` and access the bowl that way like:
 
 ```hoon
-/-  spider
-/+  strandio
-=,  strand=strand:spider
-=>
 |%
 ++  bowl-stuff
-  =/  m  (strand ,[boat:gall bitt:gall])
+  =/  m  (strand:rand ,[boat:gall bitt:gall])
   ^-  form:m
-  |=  tin=strand-input:strand
+  |=  tin=strand-input:rand
   `[%done [wex.bowl.tin sup.bowl.tin]]
 --
-^-  thread:spider
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  res=[boat:gall bitt:gall]  bind:m  bowl-stuff
 (pure:m !>(res))
@@ -109,6 +101,7 @@ You can also write a function with a gate whose sample is `strand-input:strand` 
 
 ```hoon
 +$  input
+  $+  input
   $%  [%poke =cage]
       [%sign =wire =sign-arvo]
       [%agent =wire =sign:agent:gall]
@@ -117,11 +110,11 @@ You can also write a function with a gate whose sample is `strand-input:strand` 
 ```
 
 - `%poke` incoming poke
-- `%sign` incoming sign from arvo
-- `%agent` incoming sign from a gall agent
+- `%sign` incoming sign from Arvo
+- `%agent` incoming sign from a Gall agent
 - `%watch` incoming subscription
 
-Various functions in `strandio` will check `input` and conditionally do things based on its contents. For example, `sleep` sets a `behn` timer and then calls `take-wake` to wait for a `%wake` sign from behn:
+Various functions in `strandio` will check `input` and conditionally do things based on its contents. For example, `+sleep` sets a Behn timer and then calls `+take-wake` to wait for a `%wake` sign from Behn:
 
 ```hoon
 ++  take-wake

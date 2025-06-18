@@ -10,7 +10,7 @@ While you usually interact with Hood via its generators, its API can also be use
 
 ## Drum
 
-Drum's CLI app management functionality is usally mediated but functions in the `/lib/sole.hoon` library. We'll not document it here. For more information on CLI apps, you can refer to the [Command-Line Apps guide](../../build-on-urbit/userspace/guides/cli-tutorial.md) and [Building a CLI app example](../../build-on-urbit/userspace/examples/rpn.md).
+Drum's CLI app management functionality is usally mediated but functions in the `/lib/sole.hoon` library. We'll not document it here. For more information on CLI apps, you can refer to the [Command-Line Apps guide](../../build-on-urbit/userspace/cli-tutorial.md) and [Building a CLI app example](../../build-on-urbit/userspace/examples/rpn.md).
 
 Drum's additional API is as follows.
 
@@ -328,7 +328,7 @@ A poke with a `%helm-ames-verb` mark will turn on debug prints for specified Ame
 veb=(list verb:ames)
 ```
 
-See the [`$verb:ames`](../kernel/ames/reference/data-types.md#verb) entry in the Ames data types reference for details of the different verbosity flags.
+See the [`$verb:ames`](../kernel/ames/data-types.md#verb) entry in the Ames data types reference for details of the different verbosity flags.
 
 #### Example
 
@@ -1756,7 +1756,7 @@ Desk state.
 ```
 
 - `.sync`: whether the desk is currently syncing from a remote source.
-- `.hash`: [`%cz` hash](../kernel/clay/reference/scry.md#z---content-hash) of desk's current revision.
+- `.hash`: [`%cz` hash](../kernel/clay/scry.md#z---content-hash) of desk's current revision.
 - `.zest`: whether it's running, suspended, or suspended pending a kernel-compatible update.
 - `.wic`: the kernel versions it's compatible with.
 

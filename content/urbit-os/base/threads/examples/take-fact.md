@@ -1,61 +1,107 @@
 # Take Fact
 
-Taking a fact from an agent, arvo or whatever is easy. First you subscribe using `watch:strandio` or `watch-our:strandio`, then you use `take-fact:strandio` to receive the fact. Here's an example that takes an update from `graph-store` and prints the message to the dojo:
+Taking a fact from an agent is easy. First you subscribe using `+watch:strandio` or `+watch-our:strandio`, then you use `+take-fact:strandio` to receive the fact.
 
-#### `print-msg.hoon`
+Here's an example agent named `%fact-spam` that just emits the string "beep" every 5 seconds in a fact on the `/updates` path:
 
+{% code title="/app/fact-spam.hoon" overflow="nowrap" lineNumbers="true" %}
 ```hoon
-/-  spider
-/+  *strandio, *graph-store
-=,  strand=strand:spider
-=>
-|%
-++  take-update
-  =/  m  (strand ,~)
-  ^-  form:m
-  ;<  =cage  bind:m  (take-fact /graph-store)
-  =/  =update  !<  update  q.cage
-  ?.  ?=(%add-nodes -.q.update)
-    (pure:m ~)
-  =/  nodes=(list [=index =node])  ~(tap by nodes.q.update)
-  ?~  nodes
-    (pure:m ~)
-  =/  contents=(list content)  contents.post.node.i.nodes
-  ?~  contents
-    (pure:m ~)
-  ?.  ?=(%text -.i.contents)
-    (pure:m ~)
-  =/  msg  (trip text.i.contents)
-  %-  (slog leaf+msg ~)
-  (pure:m ~)
+/+  default-agent, dbug
+=*  card  card:agent:gall
+%-  agent:dbug
+^-  agent:gall
+|_  =bowl:gall
++*  this      .
+    def   ~(. (default-agent this %|) bowl)
+++  on-init
+  ^-  (quip card _this)
+  :_  this
+  [%pass /timer %arvo %b %wait (add now.bowl ~s5)]~
+::
+++  on-watch
+  |=  =path
+  ^-  (quip card _this)
+  ?.  ?=([%updates ~] path)
+    (on-watch:def path)
+  `this
+::
+++  on-arvo
+  |=  [=wire sign=sign-arvo]
+  ^-  (quip card _this)
+  ?.  ?=([%behn %wake *] sign)
+    (on-arvo:def wire sign)
+  :_  this
+  :~  [%give %fact ~[/updates] %tape !>("beep")]
+      [%pass /timer %arvo %b %wait (add now.bowl ~s5)]
+  ==
+++  on-poke  on-poke:def
+++  on-agent  on-agent:def
+++  on-save  on-save:def
+++  on-load  on-load:def
+++  on-leave  on-leave:def
+++  on-peek   on-peek:def
+++  on-fail   on-fail:def
 --
-^-  thread:spider
+```
+{% endcode %}
+
+And here's a thread called `%fact-finder` that subscribes to `%fact-spam`, takes the number of facts specified, and prints the message in each one:
+
+{% code title="/ted/fact-finder.hoon" overflow="nowrap" lineNumbers="true" %}
+```hoon
+/+  *strandio
 |=  arg=vase
-=/  m  (strand ,vase)
+=/  m  (strand:rand ,vase)
+=+  !<(num=(unit @) arg)
+=/  cnt=@  ?~(num 0 u.num)
 ^-  form:m
-;<  ~        bind:m  (watch-our /graph-store %graph-store /updates)
-;<  ~        bind:m  take-update
-(pure:m !>(~))
+;<  ~      bind:m  (watch-our /beep %fact-spam /updates)
+|-
+;<  =cage  bind:m  (take-fact /beep)
+=+  !<(msg=tape q.cage)
+?:  (gte 1 cnt)
+  %-  (slog leaf+msg ~)
+  (pure:m !>(~))
+%-  (slog leaf+msg ~)
+$(cnt (dec cnt))
 ```
 
-Create a chat on your fake zod if you don't have one already, then save the thread in `/ted` on the `%base` desk, `|commit %base`, and run `-print-msg`. Next, type some message in your chat and you'll see it printed in the dojo.
+Save the agent in `/app/fact-spam.hoon` and the thread in `/ted/fact-finder.hoon` on the `%base` desk, `|commit %base`, and run `-fact-finder 3`. You should see:
+
+```
+> -fact-finder 3
+beep
+beep
+beep
+```
 
 ### Analysis {#analysis}
 
-First we call `watch-our` to subscribe:
+We get the number of facts to receive from the `arg` vase:
 
 ```hoon
-;<  ~        bind:m  (watch-our /graph-store %graph-store /updates)
+=+  !<(num=(unit @) arg)
+=/  cnt=@  ?~(num 0 u.num)
 ```
 
-We've spun the next part out into its own core, but it's just a `take-fact` to receive the update:
+We call `watch-our` to subscribe:
 
 ```hoon
-  ;<  =cage  bind:m  (take-fact /graph-store)
+;<  ~  bind:m  (watch-our /beep %fact-spam /updates)
 ```
 
-The rest of the code is just to pull the message out of the complicate data structure returned by graph-store and isn't important.
+Then we create a loop and keep calling `+take-fact` and printing the result until we've reached the count:
 
-Spider will automatically leave the subscription once the thread finishes.
+```hoon
+|-
+;<  =cage  bind:m  (take-fact /beep)
+=+  !<(msg=tape q.cage)
+?:  (gte 1 cnt)
+  %-  (slog leaf+msg ~)
+  (pure:m !>(~))
+%-  (slog leaf+msg ~)
+$(cnt (dec cnt))
+```
 
-Note that `take-fact` only takes a single fact, so you'd need one for each message you're expecting. Alternatively you can use `main-loop` to take an arbitrary number of facts.
+
+Note that `+take-fact` only takes a single fact, so you'd either need one for each fact you expect, or you'd need to create a loop like in this example.

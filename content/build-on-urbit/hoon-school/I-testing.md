@@ -1,6 +1,6 @@
 ---
 description: >-
-  Comprehensive guide to testing Hoon code, including unit testing frameworks, fences for runtime assertions, debugging strategies, and best practices for building reliable and maintainable software.
+  Testing Hoon code, including unit testing frameworks, fences for runtime assertions, debugging strategies, and best practices for building reliable and maintainable software.
 ---
 
 # 8. Testing Code

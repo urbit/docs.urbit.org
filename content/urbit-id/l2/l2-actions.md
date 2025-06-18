@@ -1,3 +1,17 @@
+---
+description: Guide to the actions that can be taken by Azimuth's Layer 2 roller.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # L2 Actions
 
 There are a total of eleven layer 2 actions, each corresponding to a familiar [layer 1 action](../ecliptic.md): `%transfer-point`, `%spawn`, `%configure-keys`, `%escape`, `%cancel-escape`, `%adopt`, `%reject`, `%detach`, `%set-management-proxy`, `%set-spawn-proxy`, and `%set-transfer-proxy`. Descriptions of what these actions do may be found by searching for them at [Azimuth.eth](../azimuth-eth.md).

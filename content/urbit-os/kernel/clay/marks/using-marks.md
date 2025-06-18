@@ -1,3 +1,17 @@
+---
+description: Clay marks usage - using mark cores and conversion gates for data transformation and type-safe operations.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Using Marks
 
 In the last document, [Writing Marks](writing-marks.md), we walked through writing `mark` files and touched on how Clay handles them. They needn't just be left to background vane processes though, you can also use them yourself in your code.

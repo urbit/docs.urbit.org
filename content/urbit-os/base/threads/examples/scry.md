@@ -1,3 +1,17 @@
+---
+description: Thread example showing how to scry ames for ship IP addresses and ports - practical scrying with formatted output.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Scry
 
 Here's an example of a thread that scries ames for the IP address & port of a ship and nicely prints it:

@@ -1,3 +1,17 @@
+---
+description: Jael scry reference - PKI queries for keys, lifes, rifts, domains, subscriptions, and ship identity information.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Jael Scry Reference
 
 Jael's scry endpoints never take a `care`. The particular endpoints are specified in the place of the desk in the path prefix, then additional arguments are specified in the path. Note this style of scry path is considered outdated, and may be changed in the future.

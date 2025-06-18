@@ -1,3 +1,17 @@
+---
+description: Arvo scry guide - read-only requests to the global namespace, endpoint mechanics, and data retrieval patterns.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Scries
 
 This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](../../../build-on-urbit/userspace/remote-scry.md).

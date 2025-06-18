@@ -1,3 +1,17 @@
+---
+description: Jael data type reference - PKI structures for keys, points, diffs, blocks, seeds, and Azimuth ship identity data.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Jael Data Types
 
 Jael's section in `lull.hoon` contains three ancillary cores with their own type definitions as well as Jael's general types.

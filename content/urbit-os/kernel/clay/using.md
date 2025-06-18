@@ -1,3 +1,17 @@
+---
+description: Clay usage guide - reading, subscribing, Unix sync, merge strategies, and filesystem best practices.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Using Clay
 
 ## Reading and Subscribing {#reading-and-subscribing}

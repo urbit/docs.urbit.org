@@ -1,3 +1,17 @@
+---
+description: Arvo cryptography overview - Azimuth keys, networking keys, and cryptographic components across the system.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Cryptography
 
 Cryptography is central to the operation of Urbit. Here we give an overview of how it is utilized.

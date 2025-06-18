@@ -1,3 +1,17 @@
+---
+description: Eyre web server guide - HTTP request handling, URL binding, authentication, channels, and web application development.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Low-Level Eyre Guide
 
 This document walks through practical examples of the various ways of interacting with Eyre. The [Basic](#basic) sections goes over the common methods of interacting through Eyre from an HTTP client, and the [Advanced](#advanced) section explains how to handle HTTP directly with generators and Gall agents.

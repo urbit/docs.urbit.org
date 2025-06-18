@@ -1,3 +1,17 @@
+---
+description: Complete tutorial on writing jets in Urbit. C implementations of Hoon gates for performance. Developer environment setup.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # How to Write a Jet
 
 ## Writing Jets

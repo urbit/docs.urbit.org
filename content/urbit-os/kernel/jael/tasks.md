@@ -1,3 +1,17 @@
+---
+description: Jael API reference - PKI tasks and gifts for key management, subscriptions, domains, and ship identity operations.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Jael API Reference
 
 This document details all the tasks you may wish to send Jael, as well as the gifts you'll receive in response.

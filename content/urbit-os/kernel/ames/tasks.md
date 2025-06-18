@@ -1,3 +1,17 @@
+---
+description: Ames API reference - networking tasks for messaging, packet handling, remote scries, and ship communication.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Ames API Reference
 
 In this document we describe the public interface for Ames. Namely, we describe each `task` that Ames can be `%pass`ed, and which `gift`(s) Ames can `%give` in return.

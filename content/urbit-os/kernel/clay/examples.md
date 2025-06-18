@@ -1,3 +1,17 @@
+---
+description: Clay filesystem examples - reading files, tracking changes, managing desks, merging, and filesystem operations.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Clay Examples
 
 This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](tasks.md) document.

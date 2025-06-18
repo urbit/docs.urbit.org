@@ -1,3 +1,17 @@
+---
+description: Gall agent example for receiving facts from running threads - subscription patterns and fact handling while threads execute.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Take Facts
 
 Most of the time you'll just want the thread final result. Sometimes, though, you might want to send out facts while the thread runs rather than just at the end.

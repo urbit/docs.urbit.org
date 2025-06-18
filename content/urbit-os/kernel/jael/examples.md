@@ -1,3 +1,17 @@
+---
+description: Practical examples of Jael PKI tasks - subscribing to key updates, managing domains, web login codes, and key subscriptions.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Jael Examples
 
 This documents contains practical examples of a number of Jael's `task`s.

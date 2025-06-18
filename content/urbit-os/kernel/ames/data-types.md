@@ -1,3 +1,17 @@
+---
+description: Ames data type reference - networking structures for packets, lanes, ships, addresses, and message flow state.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Ames Data Types
 
 Here are the data types used by Ames, as defined in `lull.hoon`.

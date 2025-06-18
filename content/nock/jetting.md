@@ -1,3 +1,17 @@
+---
+description: Runtime jetting system that accelerates Nock computation through fast hints. Cold state, hot state, warm state.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Fast Hints and Jets
 
 The computational feasibility of practical Nock computation depends upon the run-time "jetting" certain recognized nock computations. Naively, some subset of subject-formula pairs should not be stepped through according to the Nock reductions, but should instead be replaced by more efficient computations, which must return the *same result* as evaluation according to the Nock spec, even if the Sun would die before the Nock evaluation completed.

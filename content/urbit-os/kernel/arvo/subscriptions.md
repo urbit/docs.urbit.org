@@ -1,3 +1,17 @@
+---
+description: Arvo subscriptions guide - reactive data flow, subscription types, Clay/Gall/Jael subscriptions, and stream mechanics.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Subscriptions
 
 Urbit relies heavily on subscriptions throughout the stack. We strongly prefer reactive data flow compared to querying or polling, which is why for example our equivalent to git natively supports subscriptions to its data.

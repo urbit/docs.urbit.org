@@ -1,3 +1,17 @@
+---
+description: Dill data type reference - terminal structures for dimensions, sessions, input, and output handling.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Dill Data Types
 
 Here are the data types used by Dill, as defined in `/sys/lull.hoon`.

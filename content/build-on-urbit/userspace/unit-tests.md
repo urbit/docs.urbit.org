@@ -1,3 +1,17 @@
+---
+description: Unit testing framework using -test thread and /lib/test.hoon. Write test arms with +test-* pattern that return $tang.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Unit Tests
 
 ## Structure {#structure}

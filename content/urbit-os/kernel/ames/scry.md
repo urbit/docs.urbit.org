@@ -1,3 +1,17 @@
+---
+description: Ames scry reference - network queries for peers, routes, message flows, bones, and ship connectivity information.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Ames Scry Reference
 
 Here are the scry endpoints of Ames. All of them take a `%x` `care` and require the `desk` in the path prefix be empty, so the general format is `.^([type] %ax /=//=/[some-path])`.

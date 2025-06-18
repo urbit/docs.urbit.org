@@ -1,3 +1,17 @@
+---
+description: Guide to Clay, Arvo's revision-controlled filesystem vane, for self-hosted users.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Filesystem
 
 Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global, referentially transparent namespace. An easy way to think about it is like typed `git`.

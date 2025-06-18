@@ -1,3 +1,17 @@
+---
+description: Khan thread runner example - running threads from Gall agents with success/failure handling and result processing.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Khan Example
 
 Here we'll look at a simple example of running a thread from a Gall agent via Khan. The Gall agent will take a boolean poke. If it's `%.y`, the thread will succeed and return some text. If it's `%.n`, the thread will fail with an error message.

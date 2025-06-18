@@ -1,3 +1,17 @@
+---
+description: Eyre noun channels guide - direct noun communication over HTTP for efficient data exchange with applications.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Noun channels
 
 So far, developers have typically used JSON to interact with Urbit ships through Eyre's HTTP interface. As of kernel version `[%zuse 413]`, however, Eyre also supports sending and received nouns directly. At this stage, there are limited options for dealing with nouns in other languages, so this guide will only cover the channel mechanics on a low-level. You may, however, be interested in the [`@urbit/nockjs`](https://github.com/urbit/nockjs) package and the work-in-progress [`json-bgon` PR for `@urbit/js-http-api`](https://github.com/urbit/js-http-api/pull/4).

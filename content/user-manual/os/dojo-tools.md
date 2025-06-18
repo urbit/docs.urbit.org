@@ -1,3 +1,17 @@
+---
+description: Complete refernce for the Dojo, Urbit's CLI. Includes common actions self-hosted users will need to run their Urbit server.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Dojo Tools
 
 Below are the various generators, threads and other tools included with the `%base` desk and usable in the dojo. These are organized into rough categories for convenience.

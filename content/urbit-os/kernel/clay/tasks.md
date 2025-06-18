@@ -1,3 +1,17 @@
+---
+description: Clay API reference - filesystem tasks for reading, writing, tracking changes, and managing desks.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Clay API Reference
 
 This document details all the `task`s you're likely to use to interact with Clay, as well as the `gift`s you'll receive in response. Most sections have a corresponding practical example in the [Examples](examples.md) document. Many of the types referenced are detailed in the [Data Types](data-types.md) document. It may also be useful to look at the `++ clay` section of `/sys/lull.hoon` in Arvo where these `task`s, `gift`s and data structures are defined.

@@ -1,3 +1,17 @@
+---
+description: Basic instructions on how to set up an run an Urbit server for self-hosted users.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 # Basics
 
 This document deals with:

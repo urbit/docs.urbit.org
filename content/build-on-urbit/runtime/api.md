@@ -1,3 +1,18 @@
+---
+description: API overview by prefix for u3 system modules. Function reference for noun manipulation, jets, allocation, Nock computation.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # API overview by prefix
 
 Let's run through the `u3` modules one by one.  All public functions are commented, but the comments may be cryptic.

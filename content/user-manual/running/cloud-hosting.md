@@ -89,6 +89,44 @@ write_files:
         echo "[setcap] WARNING: no known package manager found; skipping installation" >&2
       fi
 
+  - path: /usr/local/bin/ensure-caddy.sh
+    permissions: '0755'
+    owner: root:root
+    content: |
+      #!/bin/bash
+      set -euo pipefail
+
+      echo "[caddy] Starting caddy check at $(date)"
+
+      if command -v caddy >/dev/null 2>&1; then
+        echo "[caddy] already installed"
+        exit 0
+      fi
+
+      if command -v apt-get >/dev/null 2>&1; then
+        apt-get install -q debian-keyring debian-archive-keyring apt-transport-https curl
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+        apt-get update -q
+        apt-get install -q caddy
+      elif command -v apk >/dev/null 2>&1; then
+        apk add --no-cache caddy
+      elif command -v yum >/dev/null 2>&1; then
+        yum install -y -q yum-plugin-copr
+        yum copr enable -y -q @caddy/caddy
+        yum install -y -q caddy
+      elif command -v dnf >/dev/null 2>&1; then
+        dnf install -y -q 'dnf-command(copr)'
+        dnf copr enable -y -q @caddy/caddy
+        dnf install -y -q caddy
+      elif command -v pacman >/dev/null 2>&1; then
+        pacman -Sy --noconfirm caddy
+      elif command -v emerge >/dev/null 2>&1; then
+        emerge www-servers/caddy
+      else
+        echo "[caddy] WARNING: no known package manager found; skipping installation" >&2
+      fi
+
   - path: /usr/local/bin/install-urbit.sh
     permissions: '0755'
     owner: root:root
@@ -151,7 +189,8 @@ write_files:
 
 runcmd:
   - [ "bash", "-c", "dd if=/dev/zero of=/swapfile bs=1M count=2048 && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile && echo '/swapfile none swap sw 0 0' >> /etc/fstab" ]
-  - [ "bash", "-c", "/usr/local/bin/ensure-setcap" ]
+  - [ "bash", "-c", "/usr/local/bin/ensure-setcap.sh" ]
+  - [ "bash", "-c", "/usr/local/bin/ensure-caddy.sh" ]
   - [ "ln", "-sf", "/usr/local/bin/piercap", "/usr/sbin/piercap" ]
   - [ "systemctl", "enable", "--now", "firewalld" ]
   - [ "firewall-cmd", "--permanent", "--add-service=ssh" ]
@@ -331,7 +370,7 @@ Create an account on [Oracle Cloud](https://www.oracle.com/cloud).
 
 Open the menu and click on "Networking", then click on "Virtual cloud networks". Click "Actions" and select "Start VCN Wizard".
 
-For "Connection Type", select "Create VCN with Internet Connectivity". Fill out the form like so:
+For "Connection Type", select "Create VCN with Internet Connectivity". Fill out the form like so (most of these should be the default):
 
 - **VCN name:** `urbit-vcn`
 - **VCN IPv4 CIDR block:** `10.0.0.0/16`
@@ -383,7 +422,7 @@ Leave everything as default.
 
 - **VNIC name:** `urbit-vnic`
 - **Primary network:** "Select existing virtual cloud network"
-- **New virtual cloud network name:** `urbit-vnc`
+- **Virtual cloud network name:** `urbit-vnc`
 - **Virtual cloud network compartment:** leave it as the default.
 - **Virtual cloud network:** `urbit-vcn`
 - **Subnet:** select "Select existing subnet".
@@ -461,20 +500,7 @@ Now create the instance, wait for it to be provisioned, then copy its public IP 
 
 {% endtabs %}
 
-## 3. Prepare for upload
-
-{% hint style="info" %}
-**Note**
-
-This step is necessary if you already have an Urbit running locally and want to move it to the cloud. If you don't, you can skip this step.
-
-{% endhint %}
-
-In the Dojo, use either `"CTRL + D"` or `|exit` to shut down your ship.
-
-Archive your pier by running `tar cvzf sampel-palnet.tar.gz ~/path/to/your/pier` (substitute your own Urbit name and pier location).
-
-## 4. Connect to the server
+## 3. Connect to the server
 
 To make connecting simple, you can add an alias to `~/.ssh/config` on your local machine. Open `~/.ssh/config` in an editor (you may need to create it if the file doesn't exist), and add the following to the bottom of the file (replacing the IP address with the one you copied from your instance earlier):
 
@@ -490,6 +516,10 @@ Host urbit-vps
 
 {% tab title="If you have an existing pier" %}
 
+If your Urbit is still running, use either `"CTRL + D"` or `|exit` in the Dojo to shut it down.
+
+With your Urbit now stopped (please be certain), archive your pier by running `tar cvzf sampel-palnet.tar.gz /path/to/your/pier` (substitute your own Urbit name and pier location).
+
 Copy the archived pier to the server with the following (substituting your ship name):
 
 ```sh
@@ -497,6 +527,18 @@ scp sampel-planet.tar.gz urbit-vps:
 ```
 
 It may take a while to upload if your pier is large and/or your internet is slow.
+
+Once the upload is complete, you can now connect to your server:
+
+```bash
+ssh urbit-vps
+```
+
+You'll be taken to the shell on your server.
+
+{% hint %}
+Note: it can take a few minutes for the server to be fully provisioned and configured. If you have trouble connecting, give it some more time. If you can connect but commands like `urbit` don't work, it's still being setup and you'll need to give it more time. If it asks you about the authenticity of the key fingerprint, just enter "yes".
+{% endhint %}
 
 {% endtab %}
 
@@ -514,13 +556,7 @@ Run the following in the terminal (replacing `/path/to/sampel-palnet.key` with t
 scp /path/to/sampel-palnet.key urbit-vps:
 ```
 
-Note: you should keep the keyfile until you've completed this guide and your Urbit is booted to be sure it was copied successfully, but afterwards you should also delete that file for security.
-
-{% endtab %}
-
-{% endtabs %}
-
-Once you've either uploaded your pier or uploaded your key file as the case may be, you can connect to your server:
+With your keyfile uploaded, you can now connect to your server:
 
 ```bash
 ssh urbit-vps
@@ -528,8 +564,33 @@ ssh urbit-vps
 
 You'll be taken to the shell on your server.
 
-## 5. Boot your ship
+{% hint %}
+Note: it can take a few minutes for the server to be fully provisioned and configured. If you have trouble connecting, give it some more time. If you can connect but commands like `urbit` don't work, it's still being setup and you'll need to give it more time. If it asks you about the authenticity of the key fingerprint, just enter "yes".
+{% endhint %}
 
+{% endtab %}
+
+{% tab title="If you're booting a comet" %}
+
+You can now connect to your server:
+
+```bash
+ssh urbit-vps
+```
+
+You'll be taken to the shell on your server.
+
+{% hint %}
+Note: it can take a few minutes for the server to be fully provisioned and configured. If you have trouble connecting, give it some more time. If you can connect but commands like `urbit` don't work, it's still being setup and you'll need to give it more time. If it asks you about the authenticity of the key fingerprint, just enter "yes".
+{% endhint %}
+
+{% endtab %}
+
+{% endtabs %}
+
+## 4. Boot your ship
+
+{% tabs %}
 {% tab title="If you have an existing pier" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, extract the pier archive you previously uploaded, then delete the archive:
@@ -553,6 +614,20 @@ urbit dock sampel-palnet
 ```
 
 That will copy the `urbit` runtime inside the pier.
+
+Linux prevents non-root executables from binding privileged ports like 80 and 443 by default, but a script is included in the Cloud-init config to give piers the required permissions. Run the following (replacing `sampel-palnet` with your pier name):
+
+```bash
+sudo piercap /home/urbit/sampel-palnet
+```
+
+Now you can start your ship up with the following:
+
+```bash
+./sampel-palnet/.run -p 34540
+```
+
+After a few moments it'll show the Dojo prompt like `~sampel-palnet:dojo>`.
 
 {% endtab %}
 
@@ -578,10 +653,6 @@ The key file is only needed when you first boot the ship, so it's good practice 
 rm sampel-palnet.key
 ```
 
-{% endtab %}
-
-{% endtabs %}
-
 Linux prevents non-root executables from binding privileged ports like 80 and 443 by default, but a script is included in the Cloud-init config to give piers the required permissions. Run the following (replacing `sampel-palnet` with your pier name):
 
 ```bash
@@ -596,7 +667,41 @@ Now you can start your ship up with the following:
 
 After a few moments it'll show the Dojo prompt like `~sampel-palnet:dojo>`.
 
-## 6. Get a domain
+{% endtab %}
+
+{% tab title="If you're booting a comet" %}
+
+In the previous section you ssh'd into the server. In the same ssh session, start `tmux`:
+
+```bash
+tmux new -s urbit
+```
+
+You should now be in `tmux`. Boot a new ship with the following command, specifying whatever name you'd like for the pier, as well as an Ames port in the range 34540-34550:
+
+```bash
+urbit -c mycomet -p 34540
+```
+
+It may take several minutes to boot the new ship. Eventually, it'll take you to the Dojo (Urbit's shell) and show a prompt like `~sampel-palnet:dojo>`. Once booted, shut the ship down again by typing `|exit` in the Dojo.
+
+Now you can start your ship up with the following:
+
+```bash
+./sampel-palnet/.run -p 34540
+```
+
+After a few moments it'll show the Dojo prompt like `~sampel_palnet:dojo>`.
+
+{% endtab %}
+
+{% endtabs %}
+
+## 5. Get a domain
+
+{% tabs %}
+
+{% tab title="If you're running a Planet or Star" %}
 
 To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo:
 
@@ -622,7 +727,44 @@ http: loopback live on http://localhost:12321
 
 That means the domain has been registered and an SSL certificate has been installed, so you can access the web interface securely with HTTPS.
 
-## 7. Log in to Landscape
+{% endtab %}
+
+{% tab title="If you're running a Comet" %}
+
+You can only get an `arvo.network` subdomain if you're running a Planet or a Star. For a comet, the best approach is to get a free subdomain from [freedns.afraid.org](https://freedns.afraid.org/) and use [Caddy](https://caddyserver.com) as a reverse-proxy to configure an SSL certificate. Cloud-init will have already installed Caddy.
+
+First, go to [freedns.afraid.org](https://freedns.afraid.org/) and click "Sign up Free". Fill out your details and click "Send activation email". Click the link in the email to enable your account, then Login to your new account. Click "Subdomains" in the "For Members" menu and click "Add a subdomain".
+
+Fill out the "Add a new subdomain" form:
+
+- **Type:** `A`
+- **Subdomain:** whatever you'd like.
+- **Domain:** whichever you'd prefer.
+- **Destination:** the public IP address of your server.
+- **TTL:** skip.
+- **Wildcard:** leave unticked.
+
+Complete the CAPTCHA and click "Save!"
+
+Now, back in the terminal of your server, hit `Ctrl+b d` (that is, you hit `Ctrl+b`, release it, and then hit `d`) to disconnect from `tmux`. In the main shell, run the following command, replacing `mysubdomain.example.com` which the domain you chose in the previous step.
+
+```
+echo -e "mysubdomain.example.com {\n  reverse_proxy localhost:8080\n}\n" | sudo tee /etc/caddy/Caddyfile > /dev/null
+```
+
+Next, start and enable the Caddy reverse-proxy with the following command:
+
+```
+sudo systemctl enable --now caddy
+```
+
+You can now run `tmux a` to reattach the `tmux` session and get back to your Urbit's Dojo.
+
+{% endtab %}
+
+{% endtabs %}
+
+## 6. Log in to Landscape
 
 In order to login to the web interface, you need to get the web login code. Run the following in the Dojo:
 
@@ -632,11 +774,11 @@ In order to login to the web interface, you need to get the web login code. Run 
 
 It'll spit out something like `ropnys-batwyd-nossyt-mapwet`. That's your web login code, you can copy that and save it in a password manager or similar. Note that the web login code is separate from the master ticket.
 
-The server configuration should now be complete, and you can access Landscape in the browser. Navigate to the domain you configured previously, in this example `sampel-palnet.arvo.network`. You should see the Landscape login screen.
+The server configuration should now be complete, and you can access Landscape in the browser. Navigate to the domain you configured previously, for example `sampel-palnet.arvo.network`. You should see the Landscape login screen.
 
 Enter the web login code and you'll be taken to your ship's homescreen. Your ship is now running in the cloud, and you can access it from any device by visiting its URL.
 
-## 8. Disconnect
+## 7. Disconnect
 
 You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the ship will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
@@ -646,7 +788,7 @@ tmux a
 
 Finally, you can disconnect from the ssh session completely by hitting `CTRL+d`.
 
-## 9. Cleanup
+## 8. Cleanup
 
 If you booted a new ship by uploading a key file, it's a good idea to now delete the key file on your local machine.
 

@@ -1,4 +1,4 @@
-# Cryptography
+# Ames Cryptography
 
 Here we give a technical overview of how Ames implements cryptography.
 

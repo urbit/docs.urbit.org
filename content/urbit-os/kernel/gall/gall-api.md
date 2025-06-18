@@ -1,4 +1,4 @@
-# API Reference
+# Gall API Reference
 
 ## Agent Notes {#agent-notes}
 

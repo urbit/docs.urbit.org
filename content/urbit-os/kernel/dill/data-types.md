@@ -1,4 +1,4 @@
-# Data Types
+# Dill Data Types
 
 Here are the data types used by Dill, as defined in `/sys/lull.hoon`.
 

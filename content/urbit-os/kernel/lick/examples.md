@@ -1,4 +1,4 @@
-# Examples
+# Lick Examples
 
 ## %receipt {#receipt}
 

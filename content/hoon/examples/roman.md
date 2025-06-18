@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Roman Numerals
 
 ## Challenge: Printing and Parsing Roman Numerals {#challenge-printing-and-parsing-roman-numerals}

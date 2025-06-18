@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 6. React app setup
 
 Now that we have a basic idea of how Eyre works, we can begin working on our React app front-end.

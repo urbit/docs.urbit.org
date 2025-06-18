@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 18. Generic and Variant Cores
 
 _This module introduces how cores can be extended for different behavioral patterns. It may be considered optional and skipped if you are speedrunning Hoon School._

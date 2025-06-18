@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Ames Cryptography
 
 Here we give a technical overview of how Ames implements cryptography.

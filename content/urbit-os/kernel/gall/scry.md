@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Gall Scry Reference
 
 Gall's scry interface is mainly used to scry into the individual agents it's running. The vane itself does have its own interface, however. Both [agent scries](#agent-scries) and [vane scries](#vane-scries) are documented below.

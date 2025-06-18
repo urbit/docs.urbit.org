@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # ABC Blocks
 
 ## Challenge: ABC Blocks {#challenge-abc-blocks}

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 4. Molds (Types)
 
 "This module will introduce the Hoon type system and illustrate how type checking and type inference work."

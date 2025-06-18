@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Layer 2 for planets
 
 What does Layer 2 mean for planets? Cheap transaction fees which make it inexpensive to get on the network and stay on the network.

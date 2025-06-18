@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # % cen · Calls
 
 The `%` family of runes is used for making 'function calls' in Hoon. To be more precise, these runes evaluate the `$` arm in cores, usually after modifying the sample. (The default sample is replaced with the input values given in the call.)

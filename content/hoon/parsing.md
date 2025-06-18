@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Parsing Text
 
 This document serves as an introduction to parsing text with Hoon. No prior knowledge of parsing is required, and we will explain the basic structure of how parsing works in a purely functional language such as Hoon before moving on to how it is implemented in Hoon.

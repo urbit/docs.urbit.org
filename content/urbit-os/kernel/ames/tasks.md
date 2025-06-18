@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Ames API Reference
 
 In this document we describe the public interface for Ames. Namely, we describe each `task` that Ames can be `%pass`ed, and which `gift`(s) Ames can `%give` in return.

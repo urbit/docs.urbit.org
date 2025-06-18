@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Using Bridge
 
 [Bridge](https://github.com/urbit/bridge) is the application we built for interacting with [Azimuth](https://azimuth.network), the Urbit PKI, and managing your Urbit ID. Importantly, Bridge also allows you to generate a keyfile that you will need to boot your ship so that it can use the Arvo network.

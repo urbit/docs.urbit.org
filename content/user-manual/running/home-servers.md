@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Home servers
 
 There are a variety of tools that make running Urbit at home straightforward on dedicated hardware.  If your enjoy hardware ownership and full embracing the spirit of decentralization, then these tools are for you.

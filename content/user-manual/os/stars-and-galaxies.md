@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Star and Galaxy Operations
 
 To boot your galaxy or star, follow our [installation instructions](../../get-on-urbit.md).

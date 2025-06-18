@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Useful Links
 
 A collection of links to external tools, libraries, app repos, and documentation.

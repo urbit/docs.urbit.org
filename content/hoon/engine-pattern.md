@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # The Engine Pattern
 
 *The following is lightly adapted from "The Nested Core Design Pattern (As Seen Through `++abet`)", a 2022 blog post by \~lagrev-nocfep, which was written in collaboration with \~rovnys-ricfer.*

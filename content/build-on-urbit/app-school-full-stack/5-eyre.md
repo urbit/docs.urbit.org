@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 5. Eyre
 
 Now that we have our structure file, agent, `$json` conversion library and mark file, our back-end is complete. Before we start writing our front-end, though, we should give a brief overview of how Eyre works.

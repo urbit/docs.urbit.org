@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Gall Data Types
 
 This document describes the data types for Gall defined in `lull.hoon`.

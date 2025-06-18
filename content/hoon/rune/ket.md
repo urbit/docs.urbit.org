@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # ^ ket · Casts
 
 [`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=` ("kettis")](#-kettis) let us adjust types without violating type constraints.

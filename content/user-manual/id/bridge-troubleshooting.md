@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Bridge Troubleshooting
 
 This page covers common issues encountered with the [Bridge](https://bridge.urbit.org) application.

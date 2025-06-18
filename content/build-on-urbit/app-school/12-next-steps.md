@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 12. Next Steps
 
 We've now covered all the arms of a Gall agent, and everything you need to know to start writing your own agent.

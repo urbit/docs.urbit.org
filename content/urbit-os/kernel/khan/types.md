@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Khan Data Types
 
 Khan only uses a handful of types, described below.

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 3. Gates (Functions)
 
 "This module will teach you how to produce deferred computations for later use, like functions in other languages."

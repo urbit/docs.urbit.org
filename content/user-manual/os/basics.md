@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Basics
 
 This document deals with:

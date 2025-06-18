@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Creating an Invite Pool
 
 If you're a star owner, you have the ability to create **invite pools**. These invite pools let you give your friends a piece of the network in the form of a planet. This document will give you an explanation of how to create an invite pool and how to share it with your friends using our tool [Bridge](https://bridge.urbit.org).

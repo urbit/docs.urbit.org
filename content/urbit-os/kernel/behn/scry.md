@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Behn Scry Reference
 
 Here are Behn's scry endpoints. There's only a few and they're mostly just useful for debugging. All of Behn's scries take a `%x` `care` and require the `desk` in the path prefix be empty, so the general format is `.^([type] %bx /=//=/[some-path])`.

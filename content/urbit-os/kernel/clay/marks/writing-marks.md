@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Writing Marks
 
 Here we'll walk through a practical example of writing a `mark` file.

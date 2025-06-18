@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Get on Urbit
 
 Urbit is two things: [Urbit ID](urbit-id/what-is-urbit-id.md), and [Urbit OS](urbit-os/what-is-urbit-os.md). To get on the network, you'll need both.

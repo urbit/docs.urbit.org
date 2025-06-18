@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Take Result
 
 Two examples are provided: taking the result for a thread started by poking Spider directly, and taking the result for a thread started via the Khan vane.

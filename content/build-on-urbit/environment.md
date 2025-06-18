@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Environment Setup
 
 This guide covers best practices for preparing your environment to develop within the Urbit ecosystem.

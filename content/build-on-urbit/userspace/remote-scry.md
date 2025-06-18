@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Remote Scry
 
 To scry is to perform a *read* from Urbit's referentially transparent namespace. In other words, it's a function from a `path` to a `noun` (although in some cases, the resulting type may be more constrained). Previously we only supported scrying within the same ship, but from Kernel version `[%zuse 413]`, it is possible to scry from *other* ships.

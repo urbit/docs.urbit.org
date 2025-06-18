@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # HTTP API Guide
 
 Spider has an Eyre binding which allows threads to be run externally via [authenticated](../../kernel/eyre/external-api-ref.md#authentication) HTTP POST requests.

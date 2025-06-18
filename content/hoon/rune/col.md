@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # : col · Cells
 
 The `:` ("col") expressions are used to produce cells, which are pairs of

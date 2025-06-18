@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 9. Vanes
 
 In this lesson we're going to look at interacting with vanes (kernel modules). The API for each vane consists of `$task`s it can take, and `$gift`s it can return. The `$task`s and `$gift`s for each vane are defined in its section of `/sys/lull.hoon`. Here's the `$task:iris`s and `$gift:iris`s for Iris, the HTTP client vane, as an example:

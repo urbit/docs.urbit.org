@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Auras
 
 Auras are system of nested "soft types" on atoms that are used to track metadata about how a particular atom is to be interpreted. This is used for type checking as well as pretty printing.

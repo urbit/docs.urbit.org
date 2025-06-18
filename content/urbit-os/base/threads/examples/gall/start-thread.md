@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Start Thread
 
 There are two kinds of threads you can run from a Gall agent: inline threads and thread files in the `/ted` directory of a desk. Additionally, there are two ways to run them: passing a task to the [Khan](../../../../kernel/khan) vane, and poking the `%spider` agent directly. Khan's API is typically easier to use and the correct choice most of the time. The only reason to poke `%spider` directly is because you want to specify the thread ID explicitly. This is only necessary if you want to be able to interact with it while it's running or cancel it prematurely.

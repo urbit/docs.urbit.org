@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # | bar · Cores
 
 Core expressions produce cores. A core is a cell of `[battery payload]`. The `battery` is code, a battery of Nock formulas. The `payload` is the data needed to run those formulas correctly.

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # What is Urbit OS?
 
 Urbit OS is a personal server operating system that runs on any Unix box as a self-contained virtual machine.

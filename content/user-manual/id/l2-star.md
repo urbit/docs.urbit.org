@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Layer 2 for stars
 
 This is a brief summary of the three possible options for star owners with respect to use of [layer 2](../../urbit-id/l2/README.md).

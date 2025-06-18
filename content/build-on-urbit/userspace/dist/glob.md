@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Glob
 
 A `glob` contains the client bundle—client-side resources like HTML, JS, and CSS files—for a Landscape app distributed in a desk. Globs are managed separately from other files in desks because they often contain large files that frequently change, and would therefore bloat a ship's state if they were subject to Clay's revision control mechanisms.

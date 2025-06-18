@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Limbs
 
 A limb is an attribute of subject.

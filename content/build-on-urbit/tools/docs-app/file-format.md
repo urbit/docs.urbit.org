@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # File Format
 
 ## `%docu` mark {#docu-mark}

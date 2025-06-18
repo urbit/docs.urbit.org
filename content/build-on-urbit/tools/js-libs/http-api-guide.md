@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # HTTP API
 
 Urbit's Eyre vane is an HTTP server which our web frontends can talk to. In this guide, we'll create a simple Urbit app and use the [`@urbit/http-api`](https://github.com/urbit/js-http-api) JavaScript module to interact with it from a web app.

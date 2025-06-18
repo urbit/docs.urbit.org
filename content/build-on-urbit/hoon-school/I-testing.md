@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 8. Testing Code
 
 _This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies. It may be considered optional and skipped if you are speedrunning Hoon School._

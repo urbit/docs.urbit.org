@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Dojo Tools
 
 Below are the various generators, threads and other tools included with the `%base` desk and usable in the dojo. These are organized into rough categories for convenience.

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Wings
 
 `[%wing p=(list limb)]`

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Implementing an Aura
 
 An aura is a metadata tag for Hoon to identify and manipulate atoms correctly. Auras nest inside of each other logically: `@uvJ` nests inside of `@uv`, which in turn nests in `@u` then `@`. Auras allow programmers to encode intent into their handling of values.

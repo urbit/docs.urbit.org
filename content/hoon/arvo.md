@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Arvo
 
 The `arvo.hoon` file primarily contains the basic event processing and routing machinery of Arvo, but it also defines a number of useful types and other functions. Some of these have been excluded as they're obscure types only used internally by Arvo, but the rest are documented below.

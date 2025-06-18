@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Basic Types
 
 A type is usually understood to be a set of values.  Hoon values are all nouns, so a Hoon type is a set of nouns.

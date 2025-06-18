@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 17. Text Processing III
 
 _This module covers text parsing. It may be considered optional and skipped if you are speedrunning Hoon School._

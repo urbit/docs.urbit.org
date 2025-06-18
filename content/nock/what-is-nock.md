@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # What is Nock?
 
 Nock is Urbit's novel assembly language and a 47-line standard for general computation.

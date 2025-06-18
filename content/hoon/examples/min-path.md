@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Minimum Path Sum
 
 ## Challenge: Minimum Path Sum {#challenge-minimum-path-sum}

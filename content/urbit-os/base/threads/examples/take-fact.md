@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Take Fact
 
 Taking a fact from an agent is easy. First you subscribe using `+watch:strandio` or `+watch-our:strandio`, then you use `+take-fact:strandio` to receive the fact.

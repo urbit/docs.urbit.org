@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Azimuth Data Flow
 
 This document summarizes the various components involved with Azimuth and how they communicate with each other. This also constitutes an explanation for how Urbit implements the data flow of naive rollups.

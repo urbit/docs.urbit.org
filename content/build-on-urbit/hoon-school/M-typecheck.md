@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 12. Type Checking
 
 _In this module we'll cover how the Hoon compiler infers type, as well as various cases in which a type check is performed._

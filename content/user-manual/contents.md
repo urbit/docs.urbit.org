@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # User Manual
 
 Guides for running your self-hosted Urbit.

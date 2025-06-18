@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 1. Hoon Syntax
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}

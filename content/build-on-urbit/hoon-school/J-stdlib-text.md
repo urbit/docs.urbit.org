@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 9. Text Processing I
 
 _This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered_ [_in a later module_](./P-stdlib-io.md)_._

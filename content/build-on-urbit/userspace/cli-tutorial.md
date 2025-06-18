@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Command-Line App Tutorial
 
 ## Introduction {#introduction}

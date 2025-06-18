@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # + lus · Arms
 
 A core is a cell of `[battery payload]`. The battery is made of one or more arms, each of which is a computation on its parent core.

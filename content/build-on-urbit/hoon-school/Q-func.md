@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 16. Functional Programming
 
 _This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools._

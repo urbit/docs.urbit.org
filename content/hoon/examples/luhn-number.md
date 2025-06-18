@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Luhn Number
 
 ## Challenge: Luhn Number {#challenge-luhn-number}

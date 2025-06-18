@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Fetch JSON
 
 Grabbing JSON from some url is very easy.

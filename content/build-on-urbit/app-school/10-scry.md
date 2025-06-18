@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 10. Scries
 
 In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../urbit-os/kernel/arvo/scry.md), as well as the [dotket rune documentation](../../hoon/rune/dot.md#dotket).

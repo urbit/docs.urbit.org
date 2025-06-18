@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 8. Desk and glob
 
 With our React app now complete, we can put together the final desk and publish

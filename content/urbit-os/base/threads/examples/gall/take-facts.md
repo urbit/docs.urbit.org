@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Take Facts
 
 Most of the time you'll just want the thread final result. Sometimes, though, you might want to send out facts while the thread runs rather than just at the end.

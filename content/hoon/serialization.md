@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Serialization
 
 Noun serialization refers to a uniquely-defined technique for converting a noun into a single atom.  The basic noun serialization process in Urbit, called “jamming”, includes supporting internal references so that there is a minor compression effect included.

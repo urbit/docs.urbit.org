@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Advanced Types
 
 The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.

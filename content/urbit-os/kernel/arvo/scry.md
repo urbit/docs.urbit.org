@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Scries
 
 This document mostly covers local scries. Remote scries have recently been introduced, and are documented in a [separate guide](../../../build-on-urbit/userspace/remote-scry.md).

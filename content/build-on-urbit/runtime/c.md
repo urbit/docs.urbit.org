@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # C in Urbit
 
 Under `u3` is the simple `c3` layer, which is just how we write C in Urbit.

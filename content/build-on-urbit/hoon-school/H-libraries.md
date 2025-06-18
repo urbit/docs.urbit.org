@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 7. Libraries
 
 _Libraries allow you to import and share processing code. This module will discuss how libraries can be produced, imported, and used._

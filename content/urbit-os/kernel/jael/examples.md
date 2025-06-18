@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Jael Examples
 
 This documents contains practical examples of a number of Jael's `task`s.

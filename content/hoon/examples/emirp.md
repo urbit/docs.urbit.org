@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Emirp
 
 ## Challenge: Reversible Primes {#challenge-reversible-primes}

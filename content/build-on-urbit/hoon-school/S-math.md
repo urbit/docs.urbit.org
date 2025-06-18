@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 19. Mathematics
 
 _This module introduces how non-`@ud` mathematics are instrumented in Hoon. It may be considered optional and skipped if you are speedrunning Hoon School._

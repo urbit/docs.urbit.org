@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Vases
 
 ## Overview {#overview}

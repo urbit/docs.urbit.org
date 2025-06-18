@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Ames Data Types
 
 Here are the data types used by Ames, as defined in `lull.hoon`.

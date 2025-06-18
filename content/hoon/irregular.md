@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Irregular forms
 
 While Hoon has a large amount of sugar syntax, some forms that may look irregular are actually regular wing syntax or another language feature, such as `,`.

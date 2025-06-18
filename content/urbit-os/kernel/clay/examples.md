@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Clay Examples
 
 This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](tasks.md) document.

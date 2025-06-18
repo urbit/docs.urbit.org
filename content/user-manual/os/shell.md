@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Shell
 
 The Dojo is our shell; it processes system commands and returns output. It's a good place to quickly experiment with Urbit. On the surface the Dojo is just a Hoon REPL. On the inside, the Dojo is a system for operating on and transforming data in Urbit.

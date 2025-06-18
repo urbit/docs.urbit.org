@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Restore IP
 
 ## Challenge: Restore IP Addresses {#challenge-restore-ip-addresses}

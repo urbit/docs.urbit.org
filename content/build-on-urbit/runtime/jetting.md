@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # How to Write a Jet
 
 ## Writing Jets

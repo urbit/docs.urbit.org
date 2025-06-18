@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Hoon Style Guide
 
 Welcome to the Hoon style guide. It’s important to familiarize yourself with our way of writing Hoon code.

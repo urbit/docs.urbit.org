@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Jael API Reference
 
 This document details all the tasks you may wish to send Jael, as well as the gifts you'll receive in response.

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Hood
 
 `%hood` is the system manager and control agent included in the `%base` desk. It's divided into three modules located in `/lib/hood/`:

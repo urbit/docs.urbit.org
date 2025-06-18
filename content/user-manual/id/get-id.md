@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Get an Urbit ID
 
 ### Types of ID {#types-of-id}

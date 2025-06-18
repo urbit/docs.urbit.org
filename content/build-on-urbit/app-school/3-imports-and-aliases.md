@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 3. Imports and Aliases
 
 In the last lesson we looked at the most basic aspects of a Gall agent's structure. Before we get into the different agent arms in detail, there's some boilerplate to cover that makes life easier when writing Gall agents.

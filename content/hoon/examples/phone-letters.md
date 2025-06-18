@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Phone Letters
 
 ## Challenge: Phone Letters {#challenge-phone-letters}

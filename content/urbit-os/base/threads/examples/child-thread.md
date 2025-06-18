@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Child Thread
 
 Here's a simple example of a thread that starts another thread:

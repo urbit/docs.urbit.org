@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Rhonda Numbers
 
 ## Challenge: Rhonda Numbers {#challenge-rhonda-numbers}

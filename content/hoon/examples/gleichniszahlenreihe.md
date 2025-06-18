@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Gleichniszahlenreihe
 
 ## Challenge: The Look-and-Say Sequence {#challenge-the-look-and-say-sequence}

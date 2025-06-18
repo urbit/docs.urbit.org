@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Water Towers
 
 ## Challenge: Water between Towers {#challenge-water-between-towers}

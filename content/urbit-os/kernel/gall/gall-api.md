@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Gall API Reference
 
 ## Agent Notes {#agent-notes}

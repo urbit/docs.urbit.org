@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Islands
 
 ## Challenge: Largest Island {#challenge-largest-island}

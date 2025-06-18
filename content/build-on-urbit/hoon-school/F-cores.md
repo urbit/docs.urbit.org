@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 5. Cores
 
 "This module will introduce the key Hoon data structure known as the **core**, as well as ramifications."

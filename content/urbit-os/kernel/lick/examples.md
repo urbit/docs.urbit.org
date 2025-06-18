@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Lick Examples
 
 ## %receipt {#receipt}

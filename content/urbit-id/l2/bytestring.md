@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # L2 Transaction Format
 
 This document gives the bytestring format for layer 2 transactions and batches.

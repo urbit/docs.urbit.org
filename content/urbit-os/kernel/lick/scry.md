@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Lick Scry Reference
 
 Here are Lick's scry endpoints. There's only a few and they're mostly just useful for debugging. All of Lick's scries are specified by a `care`. The `desk` field in the `beak` must be empty (`%$`, e.g. `/=//=`).

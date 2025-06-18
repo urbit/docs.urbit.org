@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 13. Conditional Logic
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}

@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Solitaire Cipher
 
 ## Challenge: Solitaire Encryption Cipher {#challenge-solitaire-encryption-cipher}

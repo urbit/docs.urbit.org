@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 1. Types
 
 The best place to start when building a new agent is its type definitions in its `/sur` structure file. The main things to think through are:

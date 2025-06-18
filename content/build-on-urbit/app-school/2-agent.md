@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 2. The Agent Core
 
 In this lesson we'll look at the basic type and structure of a Gall agent.

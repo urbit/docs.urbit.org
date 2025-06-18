@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Using Clay
 
 ## Reading and Subscribing {#reading-and-subscribing}

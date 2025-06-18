@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Docket File
 
 The docket file sets various options for desks with a tile and (usually) a browser-based front-end of some kind. Mainly it configures the appearance of an app's tile, the source of its [glob](glob.md), and some additional metadata.

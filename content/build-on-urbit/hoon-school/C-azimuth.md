@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # 2. Azimuth (Urbit ID)
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS102%20-%20Azimuth.mp4" %}

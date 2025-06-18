@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Bind
 
 Having looked at `+form` and `+pure`, we'll now look at the last `+strand` arm `+bind`. Bind is typically used in combination with micgal (`;<`).

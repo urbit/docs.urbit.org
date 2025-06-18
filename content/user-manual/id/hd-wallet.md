@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # HD Wallet (Master Ticket)
 
 This document explains what the Urbit HD wallet is and how to use it.

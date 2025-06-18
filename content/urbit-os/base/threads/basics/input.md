@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Input
 
 The input to a `+strand` is defined in `lull.hoon` as:

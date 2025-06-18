@@ -12,6 +12,7 @@ layout:
   pagination:
     visible: true
 ---
+
 # Cryptography
 
 Cryptography is central to the operation of Urbit. Here we give an overview of how it is utilized.

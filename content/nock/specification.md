@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Specification
 
 To make Nock make sense, let's work through the spec line by line. First the data model:

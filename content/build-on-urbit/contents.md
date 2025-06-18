@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Build on Urbit
 
 Courses and guides for developers looking to learn how to build on Urbit.

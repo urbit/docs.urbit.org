@@ -13,7 +13,6 @@ layout:
     visible: true
 ---
 
-
 # Fundamentals
 
 ## Introduction {#introduction}

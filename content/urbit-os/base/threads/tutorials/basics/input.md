@@ -38,7 +38,7 @@ Since it never does any IO, `t1` and `t2` are the same: `[~2021.3.17..07.47.39..
 =/  m  (strand:rand ,vase)
 ^-  form:m
 ;<  t1=@da  bind:m  get-time:strandio
-;<  ~       bind:m  (sleep:strandi ~s2)
+;<  ~       bind:m  (sleep:strandio ~s2)
 ;<  t2=@da  bind:m  get-time:strandio
 (pure:m !>([t1 t2]))
 ```

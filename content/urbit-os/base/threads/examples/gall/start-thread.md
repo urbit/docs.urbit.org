@@ -1,6 +1,6 @@
 # Start Thread
 
-There are two kinds of threads you can run from a Gall agent: inline threads and thread files in the `/ted` directory of a desk. Additionally, there are two ways to run them: passing a task to the Khan vane, and poking the `%spider` agent directly. Khan's API is typically easier to use and the correct choice most of the time. The only reason to poke `%spider` directly is because you want to specify the thread ID explicitly. This is only necessary if you want to be able to interact with it while it's running or cancel it prematurely.
+There are two kinds of threads you can run from a Gall agent: inline threads and thread files in the `/ted` directory of a desk. Additionally, there are two ways to run them: passing a task to the [Khan](../../../kernel/khan) vane, and poking the `%spider` agent directly. Khan's API is typically easier to use and the correct choice most of the time. The only reason to poke `%spider` directly is because you want to specify the thread ID explicitly. This is only necessary if you want to be able to interact with it while it's running or cancel it prematurely.
 
 ## Inline thread via Khan
 
@@ -59,9 +59,9 @@ First we'll look at running an "inline thread" from a Gall agent. Save the follo
 
 </details>
 
-In the dojo, run `|commit %base` then `|start %inline`.
+In the dojo, run `|commit %base` then `|start %inline-khan`.
 
-Now you can poke it from the Dojo with `:inline 'foo'`. You should see:
+Now you can poke it from the Dojo with `:inline-khan 'foo'`. You should see:
 
 {% code title="Dojo" overflow="nowrap" lineNumbers="false" %}
 ```
@@ -216,7 +216,7 @@ Thread error: %poke-ack
 
 ### Analysis
 
-In `+on-poke` we simply take `.ted` (the thread to run) and `.txt` (the starting argument string) and pass them to Kahn in a [`%fard`](../../../../kernel/khan/reference/tasks.md#fard) task card:
+In `+on-poke` we simply take `.ted` (the thread to run) and `.txt` (the starting argument string) and pass them to Khan in a [`%fard`](../../../../kernel/khan/reference/tasks.md#fard) task card:
 
 {% code overflow="nowrap" lineNumbers="false" %}
 ```hoon
@@ -396,4 +396,3 @@ The thread can either succeed with a `%thread-done` mark and a `$vase` of the re
 
 Note that poking spider directly with an explicitly provided thread ID is only useful if you want to interact with the thread while it's running, such as subscribing for facts, poking it, or prematurely killing it. We don't do any of that in our example, but the basic setup process used here would be the same.
 
----

@@ -17,7 +17,7 @@ Here's a thread that sends a `|hi` to a ship via the `%hood` agent:
 ;<  ~        bind:m  (poke [our %hood] helm-send-hi+!>([ship ~]))
 (pure:m !>(~))
 ```
-{% end-code %}
+{% endcode %}
 
 Save it in `/ted` of the `%base` desk, `|commit %base`, and run it like:
 

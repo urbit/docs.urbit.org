@@ -1,6 +1,6 @@
 # Take Fact
 
-Taking a fact from an agent is easy. First you subscribe using `+watch:strandio` or `+watch-our:strandio`, then you use `t+ake-fact:strandio` to receive the fact.
+Taking a fact from an agent is easy. First you subscribe using `+watch:strandio` or `+watch-our:strandio`, then you use `+take-fact:strandio` to receive the fact.
 
 Here's an example agent named `%fact-spam` that just emits the string "beep" every 5 seconds in a fact on the `/updates` path:
 

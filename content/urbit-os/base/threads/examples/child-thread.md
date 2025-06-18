@@ -38,7 +38,7 @@ foo
 ;<  =tid:rand  bind:m  (start-thread %child)
 ```
 
-See here how we gave `+start-thread` the name of the thread to run. It returns the `tid` of the thread, which we could then use to poke it or whatever.
+See here how we gave `+start-thread` the name of the thread to run. It returns the `tid` (thread ID) of the thread, which we could then use to poke it or whatever.
 
 `+start-thread` handles creating the `tid` for the thread so is quite convenient.
 
@@ -101,7 +101,7 @@ First we grab the bowl
 =/  tid  `@ta`(cat 3 'strand_' (scot %uv (sham %child eny.bowl)))
 ```
 
-Then we generate a `tid` (thread ID) for the thread we're gonna start
+Then we generate a `tid` for the thread we're going to start
 
 ```hoon
 ;<  ~  bind:m  (watch-our /awaiting/[tid] %spider /thread-result/[tid])
@@ -170,7 +170,8 @@ Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`
                             !>([tid %.y])
                         ==
 ;<  ~           bind:m  (sleep ~s2)
-(pure:m !>("Done"))
+%-  (slog leaf+"Done" ~)
+(pure:m !>(~))
 ```
 {% endcode %}
 

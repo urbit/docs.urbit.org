@@ -85,7 +85,7 @@ And here's a thread to take the poke and return it as the result:
 ```
 {% endcode %}
 
-Save them, `|commit` and run it like `:thread-starter [%test-thread %blah]`. You should see:
+Save them, `|commit %base`, `|start %thread-starter`, and run `:thread-starter [%test-thread %blah]`. You should see:
 
 ```
 Result: blah

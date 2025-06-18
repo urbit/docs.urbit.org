@@ -1,4 +1,4 @@
-# Internal API Reference
+# Eyre Internal API
 
 This document details all the `task`s you're likely to use to interact with Eyre, as well as the `gift`s you'll receive in response.
 

@@ -1,4 +1,4 @@
-# Examples
+# Mark Examples
 
 These are the files used in the [Writing Marks](writing-marks.md) guide.
 

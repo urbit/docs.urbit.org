@@ -1,4 +1,4 @@
-# API Reference
+# Lick API Reference
 
 In this document we describe the public interface for Lick. Namely, we describe each `task` that Lick can be `pass`ed, and which `gift`(s) Lick can `give` in return.
 

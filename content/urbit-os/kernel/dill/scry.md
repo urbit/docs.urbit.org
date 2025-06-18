@@ -1,4 +1,4 @@
-# Scry Reference
+# Dill Scry Reference
 
 Here are the scry endpoints of Dill. They require the `desk` in the path prefix be empty, so the general format is `.^([type] %d[care] /=//=/[some-path])`.
 

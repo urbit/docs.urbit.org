@@ -1,4 +1,4 @@
-# Data Types
+# Khan Data Types
 
 Khan only uses a handful of types, described below.
 

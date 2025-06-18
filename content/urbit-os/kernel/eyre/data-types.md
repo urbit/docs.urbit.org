@@ -1,4 +1,4 @@
-# Data Types
+# Eyre Data Types
 
 This document describes the data types used by Eyre as defined in `/sys/lull.hoon`. It's separated into two sections:
 

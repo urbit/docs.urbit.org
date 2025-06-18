@@ -1,4 +1,4 @@
-# External API Reference
+# Eyre External API
 
 This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](guide.md) document.
 

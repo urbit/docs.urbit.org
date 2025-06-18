@@ -1,4 +1,4 @@
-# Examples
+# Behn Examples
 
 Here are a couple of practical examples of using Behn's `%wait` and `%rest` `task`s.
 

@@ -514,7 +514,7 @@ Host urbit-vps
 
 {% tabs %}
 
-{% tab title="If you have an existing pier" %}
+{% tab title="Upload existing pier" %}
 
 If your Urbit is still running, use either `"CTRL + D"` or `|exit` in the Dojo to shut it down.
 
@@ -542,7 +542,7 @@ Note: it can take a few minutes for the server to be fully provisioned and confi
 
 {% endtab %}
 
-{% tab title="If you have a keyfile" %}
+{% tab title="Boot from keyfile" %}
 
 {% hint %}
 
@@ -570,7 +570,7 @@ Note: it can take a few minutes for the server to be fully provisioned and confi
 
 {% endtab %}
 
-{% tab title="If you're booting a comet" %}
+{% tab title="Boot a Comet" %}
 
 You can now connect to your server:
 
@@ -591,7 +591,7 @@ Note: it can take a few minutes for the server to be fully provisioned and confi
 ## 4. Boot your ship
 
 {% tabs %}
-{% tab title="If you have an existing pier" %}
+{% tab title="Upload existing pier" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, extract the pier archive you previously uploaded, then delete the archive:
 
@@ -631,7 +631,7 @@ After a few moments it'll show the Dojo prompt like `~sampel-palnet:dojo>`.
 
 {% endtab %}
 
-{% tab title="If you have a key file" %}
+{% tab title="Boot from key file" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, start `tmux`:
 
@@ -669,7 +669,7 @@ After a few moments it'll show the Dojo prompt like `~sampel-palnet:dojo>`.
 
 {% endtab %}
 
-{% tab title="If you're booting a comet" %}
+{% tab title="Booting a Comet" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, start `tmux`:
 
@@ -701,7 +701,7 @@ After a few moments it'll show the Dojo prompt like `~sampel_palnet:dojo>`.
 
 {% tabs %}
 
-{% tab title="If you're running a Planet or Star" %}
+{% tab title="Planet or Star" %}
 
 To make accessing the web interface convenient, you should request an `arvo.network` domain name. To do so, run the following command in the Dojo:
 
@@ -729,7 +729,7 @@ That means the domain has been registered and an SSL certificate has been instal
 
 {% endtab %}
 
-{% tab title="If you're running a Comet" %}
+{% tab title="Comet" %}
 
 You can only get an `arvo.network` subdomain if you're running a Planet or a Star. For a comet, the best approach is to get a free subdomain from [freedns.afraid.org](https://freedns.afraid.org/) and use [Caddy](https://caddyserver.com) as a reverse-proxy to configure an SSL certificate. Cloud-init will have already installed Caddy.
 

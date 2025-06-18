@@ -529,7 +529,7 @@ ship: processing azimuth snapshot (106.177 points)
 
 List all Azimuth sources.
 
-This will print a [`state-eth-node:jael`](../../urbit-os/kernel/jael/reference/data-types.md#state-eth-node) structure. Its contents is mostly other ships who are sources for updates about moons, but it will also include `%azimuth`.
+This will print a [`state-eth-node:jael`](../../urbit-os/kernel/jael/data-types.md#state-eth-node) structure. Its contents is mostly other ships who are sources for updates about moons, but it will also include `%azimuth`.
 
 #### Example
 
@@ -1002,7 +1002,7 @@ verb verb verb...
 
 A `verb:ames` is one of `%snd %rcv %odd %msg %ges %for %rot`. Each one enables printing of different kinds of events. You can enable as many as you want at one time. If `|ames/verb` is given no argument, it disables all Ames debug printing.
 
-For details of the meaning of these `verb`s, see its entry in the [Ames Data Types documentation](../../urbit-os/kernel/ames/reference/data-types.md#verb).
+For details of the meaning of these `verb`s, see its entry in the [Ames Data Types documentation](../../urbit-os/kernel/ames/data-types.md#verb).
 
 #### Example
 
@@ -1378,7 +1378,7 @@ While [`+cat`](#cat) can only read text files, the `-read` [thread][thread] can 
 care ship desk case path
 ```
 
-- [care][care]: One of `%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z`, denoting a [Clay][clay] submodule. For details of their meaning, see the [Clay data types documentation](../../urbit-os/kernel/clay/reference/data-types.md#careclay-clay-submode) and [Clay scry reference](../../urbit-os/kernel/clay/reference/scry.md).
+- [care][care]: One of `%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z`, denoting a [Clay][clay] submodule. For details of their meaning, see the [Clay data types documentation](../../urbit-os/kernel/clay/data-types.md#care) and [Clay scry reference](../../urbit-os/kernel/clay/scry.md).
 - [ship][ship]: The target ship like `~sampel`, or `our` for the local ship.
 - [desk][desk]: The [desk] on that ship like `%base`.
 - [case][case]: The revision you're requesting. This can be one of:
@@ -1409,7 +1409,7 @@ Check for the existence of that same file:
 
 Bind a generator to a URL path.
 
-See the [Eyre Guide](../../urbit-os/kernel/eyre/guides/guide.md#generators) for details of writing web-facing generators.
+See the [Eyre Guide](../../urbit-os/kernel/eyre/guide.md#generators) for details of writing web-facing generators.
 
 #### Arguments
 
@@ -1522,7 +1522,7 @@ Each [path][path] is a path to a file to test, and must include the [path prefix
 
 #### Example
 
-Refer to the [Unit Test Guide](../../build-on-urbit/userspace/guides/unit-tests.md) for details of using the `-test` thread.
+Refer to the [Unit Test Guide](../../build-on-urbit/userspace/unit-tests.md) for details of using the `-test` thread.
 
 ---
 

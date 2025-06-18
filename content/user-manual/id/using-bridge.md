@@ -78,4 +78,4 @@ As a planet or star, it behooves you to be sponsored by an active star or galaxy
 
 This action will consume a small amount of ETH. Your sponsor will then need to accept you via a similar process in Bridge, which will require ETH on their end. After the transaction is completed on Ethereum, it will still take some time for the information to propagate to the Urbit network. After 30 minutes or so, you may check that your sponsor has successfully been altered by running `(sein:title our now our)` in dojo and confirming that the `@p` matches that of your new sponsor.
 
-Once you change your sponsor, you will likely want to change your source of [OTAs](../../glossary/ota-updates.md) to them as well. To accomplish this, enter `|ota ~sponsor %kids` in dojo, where `~sponsor` is the `@p` of your new sponsor.
+Once you change your sponsor, you will likely want to change your source of OTAs to them as well. To accomplish this, enter `|ota ~sponsor %kids` in dojo, where `~sponsor` is the `@p` of your new sponsor.

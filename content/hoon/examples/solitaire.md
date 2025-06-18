@@ -13,8 +13,8 @@ Per Wikipedia:
 > 1.  Remove all punctuation and spaces, leaving only the 26 letters A–Z.
 > 2.  Convert each letter to its natural numerical value, A = 1, B = 2, ..., Z = 26.
 > 3.  Generate one keystream value for each letter in the message using the keystream algorithm below.
-> 4.  Add each keystream value to the corresponding plaintext number, subtracting 26 if the resulting value is greater than 26. (In mathematics this is called [modular arithmetic](https://en.wikipedia.org/wiki/Modular_arithmetic "Modular arithmetic").)
-> 5.  Convert the resulting numbers back to letters. This sequence of letters is the [ciphertext](https://en.wikipedia.org/wiki/Ciphertext "Ciphertext").
+> 4.  Add each keystream value to the corresponding plaintext number, subtracting 26 if the resulting value is greater than 26. (In mathematics this is called [modular arithmetic](https://en.wikipedia.org/wiki/Modular_arithmetic)).
+> 5.  Convert the resulting numbers back to letters. This sequence of letters is the [ciphertext](https://en.wikipedia.org/wiki/Ciphertext).
 >
 > To decrypt a ciphertext:
 >

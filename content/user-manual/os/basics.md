@@ -98,7 +98,7 @@ Ctrl-y    Yank from kill buffer
 
 ## Updates {#updates}
 
-By default, your `%base` [desk](../../glossary/desk.md) (which contains the [Arvo](../../glossary/arvo.md) kernel and core apps) receives updates ([OTAs](../../glossary/ota-updates.md)) from your sponsor. Other desks will receive updates from their respective publishers. To check the OTA source for each desk, run `+vats` in the [dojo](../../glossary/dojo.md). It will print out details for each desk - the `source` field shows which ship the desk gets updates from and the `updates` field shows `tracking` if automatic updates are enabled.
+By default, your `%base` desk (which contains the Arvo kernel and core apps) receives updates (OTAs) from your sponsor. Other desks will receive updates from their respective publishers. To check the OTA source for each desk, run `+vats` in the dojo. It will print out details for each desk - the `source` field shows which ship the desk gets updates from and the `updates` field shows `tracking` if automatic updates are enabled.
 
 If for some reason updates are not enabled or the current source is not online or up to date, you can enable updates or change source with the `|install` command.
 
@@ -160,7 +160,7 @@ You can then run `|rekey` on the moon with the key given by the above command as
 
 ### Maintaining Moons Through A Breach {#restoring-moons}
 
-Moons are [always subordinate to the ship that issued them](../../glossary/moon.md). Their PKI is sent around the network by their parent planet/star/galaxy. As such, if the sponsor planet/star/galaxy of a moon breaches, other urbits on the network who were not aware of the moon prior to the breach (knew its PKI information) will not be able to reach the old moon. Moons can, however, be preserved over the breach of their sponsor and re-added to `jael`. The following guide assumes you are on `[life=n rift=1]` where `n` can be any life #. If you've previously breached your moon and want to preserve it, you'll need to modify the instructions to include setting the appropriate rift using `|moon-breach` from `hood`.
+Moons are always subordinate to the ship that issued them. Their PKI is sent around the network by their parent planet/star/galaxy. As such, if the sponsor planet/star/galaxy of a moon breaches, other urbits on the network who were not aware of the moon prior to the breach (knew its PKI information) will not be able to reach the old moon. Moons can, however, be preserved over the breach of their sponsor and re-added to `jael`. The following guide assumes you are on `[life=n rift=1]` where `n` can be any life #. If you've previously breached your moon and want to preserve it, you'll need to modify the instructions to include setting the appropriate rift using `|moon-breach` from `hood`.
 
 To add an existing moon to `jael` on a breached planet, you'll need the following:
 
@@ -191,7 +191,7 @@ To use the network as a planet or star, you must be sponsored by an active star 
 
 ## Life and rift number {#life-and-rift-number}
 
-You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](../../urbit-id/concepts/life-and-rift.md).
+You can check your ship's _life_ and _rift_ number by running `+keys our` in dojo. You can inspect another ship's life and rift number by running `+keys ~sampel-palnet`. For information on what life and rift are, see [Life and Rift](../../urbit-id/life-and-rift.md).
 
 ## DNS setup {#dns-setup}
 

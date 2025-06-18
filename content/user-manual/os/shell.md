@@ -23,7 +23,7 @@ Tall-form Hoon may require multiple lines:
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the subject](../../glossary/subject.md).  The Dojo has its own subject and that's where Hoon's equivalent of variables, called faces, are stored.
+Hoon uses something called the subject.  The Dojo has its own subject and that's where Hoon's equivalent of variables, called faces, are stored.
 
 Use `=var` to save faces to the Dojo subject.
 
@@ -81,7 +81,7 @@ Generates a code that is used to remotely log into your ship. No arguments.
 ~your-urbit:dojo> +code
 ```
 
-You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent [Bridge](../../glossary/bridge.md) from being able to derive your code in the future.
+You can change your code to a new randomly generated one by entering `|code %reset`. Please note that this will prevent Bridge from being able to derive your code in the future.
 
 #### `+ls`
 

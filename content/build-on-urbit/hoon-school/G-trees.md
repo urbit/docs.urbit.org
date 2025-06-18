@@ -6,13 +6,13 @@ _Every noun in Urbit is an atom or a cell. This module will elaborate how we can
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS135%20-%20Trees.mp4" %}
 
-Every [noun](../../glossary/noun.md) in Urbit is a either an [atom](../../glossary/atom.md) or a [cell](../../glossary/cell.md). Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree). We can draw this layout naturally:
+Every noun in Urbit is a either an atom or a cell. Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree). We can draw this layout naturally:
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
 
 A binary tree has a single base node, and each node of the tree may have up to two child nodes (but it need not have any). A node without children is a “leaf”. You can think of a noun as a binary tree whose leaves are atoms, i.e., unsigned integers. All non-leaf nodes are cells. An atom is a trivial tree of just one node; e.g., `17`.
 
-For instance, if we produce a cell in the [Dojo](../../glossary/dojo.md)
+For instance, if we produce a cell in the Dojo
 
 ```hoon
 > =a [[[8 9] [10 11]] [[12 13] [14 15]]]
@@ -35,7 +35,7 @@ When we input the above cell representation into the Dojo, the pretty-printer hi
 
 We can refer to any data stored anywhere in this tree. The numbers in the labeled diagram above are the _numerical addresses_ of the tree, and may be extended indefinitely downwards into ever-deeper tree representations.
 
-Most of any possible tree will be unoccupied for any actual data structure. For instance, [lists](../../glossary/list.md) (and thus [tapes](../../glossary/tape.md)) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself; that's a function of the algorithms working with the data.)
+Most of any possible tree will be unoccupied for any actual data structure. For instance, lists (and thus tapes) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself; that's a function of the algorithms working with the data.)
 
 ### Exercise: Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
 
@@ -49,7 +49,7 @@ Consider each of the following nouns. Which tree diagram do they correspond to? 
 
 ### Exercise: Produce a List of Numbers {#exercise-produce-a-list-of-numbers}
 
-Produce a [generator](../../glossary/generator.md) called `/gen/list.hoon` which accepts a single `@ud` number *n* as input and produces a list of numbers from `1` up to (but not including) *n*. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
+Produce a generator called `/gen/list.hoon` which accepts a single `@ud` number *n* as input and produces a list of numbers from `1` up to (but not including) *n*. For example, if the user provides the number `5`, the program will produce: `~[1 2 3 4]`.
 
 ```hoon
 |=  end=@
@@ -141,16 +141,16 @@ dojo: hoon expression failed
 
 {% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS140%20-%20Lists.mp4" %}
 
-We have used lists incidentally. A [list](../../glossary/list.md) is an ordered arrangement of elements ending in a `~` (null). Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
+We have used lists incidentally. A list is an ordered arrangement of elements ending in a `~` (null). Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
 
 ```hoon
 > `(list @)`['a' %b 100 ~]
 ~[97 98 100]
 ```
 
-(Notice that all values are converted to the specified [aura](../../glossary/aura.md), in this case the empty aura.)
+(Notice that all values are converted to the specified aura, in this case the empty aura.)
 
-A `+list` is built with the `+list` mold. A `+list` is actually a "mold builder", a [gate](../../glossary/gate.md) that produces a gate. This is a common design pattern in Hoon. (Remember that a [mold](../../glossary/mold.md) is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `+list` is built with the `+list` mold. A `+list` is actually a "mold builder", a gate that produces a gate. This is a common design pattern in Hoon. (Remember that a mold is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
 
 ```hoon
 > `(list)`~['a' %b 100]
@@ -178,11 +178,11 @@ True `+list`s have `i` and `t` faces which allow the head and tail of the data t
 #t/it(@ud)
 ```
 
-A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `+list`. See also [`+limo`](../../hoon/reference/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `+list`.)
+A null-terminated tuple is almost the same thing as a list. (That is, to Hoon all lists are null-terminated tuples, but not all null-terminated tuples are lists. This gets rather involved in subtleties, but you should cast a value as `(list @)` or another type as appropriate whenever you need a `+list`. See also [`+limo`](../../hoon/stdlib/2b.md#limo) which explicitly marks a null-terminated tuple as a `+list`.)
 
 ## Addressing Limbs {#addressing-limbs}
 
-Everything in Urbit is a binary tree. And all code in Urbit is also represented as data. One corollary of these facts is that we can access any arbitrary part of an expression, gate, [core](../../glossary/core.md), whatever, via addressing (assuming proper permissions, of course). (In fact, we can even hot-swap parts of cores, which is how [wet gates](R-metals.md#wet-gates) work.)
+Everything in Urbit is a binary tree. And all code in Urbit is also represented as data. One corollary of these facts is that we can access any arbitrary part of an expression, gate, core, whatever, via addressing (assuming proper permissions, of course). (In fact, we can even hot-swap parts of cores, which is how [wet gates](R-metals.md#wet-gates) work.)
 
 There are three different ways to access values:
 
@@ -200,7 +200,7 @@ Since a node is _either_ an atom (value) _or_ a cell (fork), you never have to d
 
 ### Exercise: Tapes for Text {#exercise-tapes-for-text}
  
-A [tape](../../glossary/tape.md) is one way of representing a text message in Hoon. It is written with double quotes:
+A tape is one way of representing a text message in Hoon. It is written with double quotes:
  
 ```hoon
 "I am the very model of a modern Major-General"
@@ -226,7 +226,7 @@ Lark notation can locate a position in a tree of any size. However, it is most c
 
 Lark notation is not preferred in modern Hoon for more than one or two elements deep, but it can be helpful when working interactively with a complicated data structure like a JSON data object.
 
-When lark expressions resolve to the part of the subject containing an [arm](../../glossary/arm.md), they don't evaluate the arm. They simply return the indicated noun fragment of the subject, as if it were a leg.
+When lark expressions resolve to the part of the subject containing an arm, they don't evaluate the arm. They simply return the indicated noun fragment of the subject, as if it were a leg.
 
 ### Exercise: Address the Fruit Tree {#exercise-address-the-fruit-tree}
 
@@ -272,7 +272,7 @@ Solutions to these exercises may be found at the bottom of this lesson.
 
 ## Wings {#wings}
 
-One can also identify a resource by a label, called a [wing](../../glossary/wing.md). A wing represents a depth-first search into the current [subject](../../glossary/subject.md) (context). A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
+One can also identify a resource by a label, called a wing. A wing represents a depth-first search into the current subject (context). A wing is a limb resolution path into the subject. A wing expression indicates the path as a series of limb expressions separated by the `.` character. E.g.,
 
 ```hoon
 inner-limb.outer-limb.limb
@@ -336,7 +336,7 @@ We mention this because it is convenient to refer to all limbs and non-trivial w
 
 A name can resolve either an arm or a leg of the subject. Recall that arms are for computations and legs are for data. When a name resolves to an arm, the relevant computation is run and the product of the computation is produced. When a limb name resolves to a leg, the value of that leg is produced.
 
-Hoon doesn't have variables like other programming languages do; it has [faces](../../glossary/face.md). Faces are like variables in certain respects, but not in others. Faces play various roles in Hoon, but most frequently faces are used simply as labels for legs.
+Hoon doesn't have variables like other programming languages do; it has faces. Faces are like variables in certain respects, but not in others. Faces play various roles in Hoon, but most frequently faces are used simply as labels for legs.
 
 A face is a limb expression that consists of a series of alphanumeric characters. A face has a combination of lowercase letters, numbers, and the `-` character. Some example faces: `b`, `c3`, `var`, `this-is-kebab-case123`. Faces must begin with a letter.
 
@@ -474,7 +474,7 @@ How do you get to that `b=2`?  And how do you get to the `.c` in `[[4 a=5] b=[c=
 
 We say that the inner face has been "shadowed" when an outer name obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune: it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../hoon/reference/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) [trap](../../glossary/trap.md) nested inside of a `|=` [bartis](../../hoon/reference/rune/bar.md#bartis) gate, for instance.
+If you run into `^$`, don't go look for a `^$` ketbuc rune: it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../hoon/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../hoon/rune/bar.md#barhep) trap nested inside of a `|=` [bartis](../../hoon/rune/bar.md#bartis) gate, for instance.
 
 Solution #1 in the [Rhonda Numbers](../../hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
@@ -490,7 +490,7 @@ Logically, `a:b` is two operations, while `a.b` is one operation. The compiler i
 
 ### What `%=` Does {#what-does}
 
-Now we're equipped to go back and examine the syntax of the `%=` [centis](../../hoon/reference/rune/cen.md#centis) rune we have been using for recursion: it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the [trap](../../glossary/trap.md) core, applies certain changes, and re-evaluates the expression.
+Now we're equipped to go back and examine the syntax of the `%=` [centis](../../hoon/rune/cen.md#centis) rune we have been using for recursion: it _resolves a wing with changes_, which in this particular case means that it takes the `$` (default) arm of the trap core, applies certain changes, and re-evaluates the expression.
 
 ```hoon
 |=  n=@ud
@@ -503,7 +503,7 @@ Now we're equipped to go back and examine the syntax of the `%=` [centis](../../
 $(n (dec n))
 ```
 
-The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../hoon/reference/rune/cen.md#centis) rune.
+The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../hoon/rune/cen.md#centis) rune.
 
 Now, we noted that `$` buc is the default arm for the trap. It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
@@ -514,11 +514,11 @@ Now, we noted that `$` buc is the default arm for the trap. It turns out that `$
 (mul n $(n (dec n)))
 ```
 
-It's far more common to just use a trap, but you will see `$` buc used to manipulate a [core](../../glossary/core.md) in many in-depth code instances.
+It's far more common to just use a trap, but you will see `$` buc used to manipulate a core in many in-depth code instances.
 
 ### Expanding the Runes {#expanding-the-runes}
  
-`|=` [bartis](../../hoon/reference/rune/bar.md#bartis) produces a gate. It actually expands to
+`|=` [bartis](../../hoon/rune/bar.md#bartis) produces a gate. It actually expands to
 
 ```hoon
 =|  a=spec
@@ -526,13 +526,13 @@ It's far more common to just use a trap, but you will see `$` buc used to manipu
 --
 ``` 
 
-where `=|` [tisbar](../../hoon/reference/rune/tis.md#tisbar) means to add its sample to the current subject with the given [face](../../glossary/face.md).
+where `=|` [tisbar](../../hoon/rune/tis.md#tisbar) means to add its sample to the current subject with the given face.
 
-Similarly, `|-` [barhep](../../hoon/reference/rune/bar.md#barhep) produces a [core](../../glossary/core.md) with one arm `$`. How could you write that in terms of `|%` and `++`?
+Similarly, `|-` [barhep](../../hoon/rune/bar.md#barhep) produces a core with one arm `$`. How could you write that in terms of `|%` and `++`?
 
 ### Example: Number to Digits {#example-number-to-digits}
 
-Compose a generator which accepts a number as `@ud` unsigned decimal and returns a [list](../../glossary/list.md) of its digits.
+Compose a generator which accepts a number as `@ud` unsigned decimal and returns a list of its digits.
 
 One verbose Hoon program 
 
@@ -558,7 +558,7 @@ Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 ~[1 2 3 4 5 6 7 8 9]
 ```
 
-A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [`+weld`](../../hoon/reference/stdlib/2b.md#weld).)
+A more idiomatic solution would use the `^` ket infix to compose a cell and build the list from the head first. (This saves a call to [`+weld`](../../hoon/stdlib/2b.md#weld).)
 
 ```hoon
 !:
@@ -586,9 +586,9 @@ A further tweak maps to `@t` ASCII characters instead of the digits.
 ==
 ```
 
-(Notice that we apply `@t` as a [mold](../../glossary/mold.md) gate rather than using the tic notation. This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
+(Notice that we apply `@t` as a mold gate rather than using the tic notation. This is because `^` ket is a rare case where the order of evaluation of operators would cause the intuitive writing to fail.)
 
-Extend the above [generator](../../glossary/generator.md) so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../hoon/reference/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
+Extend the above generator so that it accepts a cell of type and value (a `$vase` as produced by the `!>` [zapgar](../../hoon/rune/zap.md#zapgar) rune). Use the type to determine which number base the digit string should be constructed from; e.g. `+num2dig !>(0xdead.beef)` should yield `~['d' 'e' 'a' 'd' 'b' 'e' 'e' 'f']`.
 
 ### Exercise: Resolving Wings {#exercise-resolving-wings}
 
@@ -617,7 +617,7 @@ The answers are at the bottom of the page.
 
 Once you have your data in the form of a `+list`, there are a lot of tools available to manipulate and analyze the data:
 
-The [`+flop`](../../hoon/reference/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
+The [`+flop`](../../hoon/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
   
 ```hoon
 > (flop ~[1 2 3 4 5])
@@ -628,14 +628,14 @@ The [`+flop`](../../hoon/reference/stdlib/2b.md#flop) function reverses the orde
 
 Without using `+flop`, write a gate that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of the page.
 
-The [`+sort`](../../hoon/reference/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [`+lth`](../../hoon/reference/stdlib/1a.md#lth)) to order things:
+The [`+sort`](../../hoon/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [`+lth`](../../hoon/stdlib/1a.md#lth)) to order things:
 
 ```hoon
 > (sort ~[1 3 5 2 4] lth)
 ~[1 2 3 4 5]
 ```
 
-The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
+The [`+snag`](../../hoon/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
 
 ```hoon
 > (snag 0 `(list @)`~[11 22 33 44])
@@ -657,7 +657,7 @@ The [`+snag`](../../hoon/reference/stdlib/2b.md#snag) function takes an index an
 '!'
 ```
 
-The [`+weld`](../../hoon/reference/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
+The [`+weld`](../../hoon/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
 
 ```hoon
 > (weld ~[1 2 3] ~[4 5 6])
@@ -673,14 +673,14 @@ Without using weld, write a gate that takes a `[(list @) (list @)]` of which the
 
 There are a couple of sometimes-useful `+list` builders:
 
-The [`+gulf`](../../hoon/reference/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
+The [`+gulf`](../../hoon/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
 
 ```hoon
 > (gulf 5 10)  
 ~[5 6 7 8 9 10]
 ```
 
-The [`+reap`](../../hoon/reference/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
+The [`+reap`](../../hoon/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
 
 ```hoon
 > (reap 5 0x0)
@@ -696,7 +696,7 @@ The [`+reap`](../../hoon/reference/stdlib/2b.md#reap) function repeats a value m
 ~[~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10] ~[5 6 7 8 9 10]]
 ```
 
-The [`+roll`](../../hoon/reference/stdlib/2b.md#roll) function takes a list and a [gate](../../glossary/gate.md), and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
+The [`+roll`](../../hoon/stdlib/2b.md#roll) function takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
 ```hoon
 > (roll `(list @)`~[11 22 33 44 55] add)
@@ -706,13 +706,13 @@ The [`+roll`](../../hoon/reference/stdlib/2b.md#roll) function takes a list and 
 19.326.120
 ```
 
-Once you have a `+list` (including a [tape](../../glossary/tape.md)), there are a lot of manipulation tools you can use to extract data from it or modify it:
+Once you have a `+list` (including a tape), there are a lot of manipulation tools you can use to extract data from it or modify it:
 
-- The [`+lent`](../../hoon/reference/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
-- The [`+find`](../../hoon/reference/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack)
-- The [`+snap`](../../hoon/reference/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
-- The [`+scag`](../../hoon/reference/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
-- The [`+slag`](../../hoon/reference/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
+- The [`+lent`](../../hoon/stdlib/2b.md#lent) function takes `[a=(list)]` and gets the number of elements (length) of the list
+- The [`+find`](../../hoon/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack)
+- The [`+snap`](../../hoon/stdlib/2b.md#snap) function takes `[a=(list) b=@ c=*]` and replaces the element at an index in the list (zero-indexed) with something else
+- The [`+scag`](../../hoon/stdlib/2b.md#scag) function takes `[a=@ b=(list)]` and produces the first _a_ elements from the front of the list
+- The [`+slag`](../../hoon/stdlib/2b.md#slag) function takes `[a=@ b=(list)]` and produces all elements of the list including and after the element at index _a_
 
 There are a few more that you should pick up eventually, but these are enough to get you started.
 
@@ -751,7 +751,7 @@ Determine whether the following Dojo expressions are valid, and if so, what they
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../hoon/reference/stdlib/2b.md#flop) function.
+Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../hoon/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 

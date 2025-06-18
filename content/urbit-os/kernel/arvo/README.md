@@ -16,7 +16,7 @@ The conceptual section titled [What is Arvo?](#what-is-arvo) can be understood w
 
 The [kernel section](#the-kernel) will require having read the first page of [Hoon School](../../../build-on-urbit/hoon-school) for full understanding, and some material from the second page will be helpful as well.
 
-We also suggest to the reader to consult the [glossary](../../../glossary) while reading this page.
+We also suggest to the reader to consult the glossary while reading this page.
 
 ## What is Arvo? {#what-is-arvo}
 
@@ -28,7 +28,7 @@ Urbit is an effort to replace this with one server, ideally in your own home, to
 
 Every architectural decision in Arvo was made with this goal in mind.
 
-Arvo won't replace Windows, macOS, or Linux anytime soon; for now it runs as a virtual machine on any macOS/Linux machine, but it could one day operate on bare metal built to run [Nock](../../../glossary/nock.md).
+Arvo won't replace Windows, macOS, or Linux anytime soon; for now it runs as a virtual machine on any macOS/Linux machine, but it could one day operate on bare metal built to run Nock.
 
 Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
@@ -70,7 +70,7 @@ Being deterministic at a high level enables many things that are out of reach of
 
 #### Event log {#event-log}
 
-The formal state of an Arvo instance is an event history, as a linked list of [nouns](../../../glossary/noun.md) from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel written in [Nock](../../../glossary/nock.md), then as the self-compiling [Hoon](../../../glossary/hoon.md) source code for that kernel.
+The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel written in Nock, then as the self-compiling Hoon source code for that kernel.
 
 This is a special portion of the Arvo lifecycle known as the _larval stage_. We describe this in more detail in the [larval stage](#larval-stage-core) section.
 
@@ -114,7 +114,7 @@ In the client-server model of the internet, data is stored on the server and thu
 
 In order to dismantle the client-server model and build a peer-to-peer internet, we need to put a robust modern database server in the hands of the user. So Arvo itself must have all of the properties of a reliable database.
 
-Database theory studies, in precise terms, the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the [Ames](../../../glossary/ames.md) network could be thought of as network of such databases. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_. We review here how Arvo satisfies these properties.
+Database theory studies, in precise terms, the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_. We review here how Arvo satisfies these properties.
 
 - **Atomicity:** Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `+poke`d, the effects of an event are computed, the event is [persisted](https://en.wikipedia.org/wiki/Persistence_(computer_science)) by writing it to the event log, and _only then_ are the actual effects applied.
 - **Consistency:** Every possible update to the database's state puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
@@ -146,11 +146,11 @@ The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose prim
 
 This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](../../../build-on-urbit/hoon-school).
 
-After concluding this section, the reader is encouraged to follow along with the [move trace tutorial](guides/move-trace.md), which applies many of the concepts covered below.
+After concluding this section, the reader is encouraged to follow along with the [move trace tutorial](move-trace.md), which applies many of the concepts covered below.
 
 ### Overall structure {#overall-structure}
 
-`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single [gate](../../../glossary/gate.md) that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
+`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single gate that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
 
 - Types
 - Section 3bE Arvo Core
@@ -314,7 +314,7 @@ Once the larval stage has passed its functionality will never be used again.
 
 As we follow functional programming paradigms, the state of Arvo is considered to be the entire Arvo kernel core currently in operation (whether it be the larval stage or adult stage). Thus when `+poke` is performed, a new core with the updated state is produced, rather than modifying the existing core as would be expected to happen in an imperative setting.
 
-Thus besides the battery of the Arvo core, we have the [payload](../../../glossary/payload.md) which is as follows.
+Thus besides the battery of the Arvo core, we have the payload which is as follows.
 
 ```hoon
 ::  persistent arvo state
@@ -377,5 +377,5 @@ As of this writing, we have nine vanes, which each provide the following service
 
 ##### Applying your knowledge {#applying-your-knowledge}
 
-Now that you've learned about the nuts and bolts of the Arvo kernel, why not check it out in action? An in-depth "move trace" tutorial for running a timer app is available [here](guides/move-trace.md).
+Now that you've learned about the nuts and bolts of the Arvo kernel, why not check it out in action? An in-depth "move trace" tutorial for running a timer app is available [here](move-trace.md).
 

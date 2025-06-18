@@ -15,7 +15,7 @@ Whenever something tries to poke your agent, Gall calls your agent's `+on-poke` 
 
 The sample of the gate is usually specified as a cell of `$mark` and `$vase` rather than just `$cage`, simply because it's easier to work with.
 
-Typically, you'd first test the `$mark` with something like a [wutlus](../../hoon/reference/rune/wut.md#wutlus) `?+` expression, passing unexpected `$mark`s to default-agent, which just crashes. We'll look at custom `$mark`s in a subsequent lesson, but the basic pattern looks like:
+Typically, you'd first test the `$mark` with something like a [wutlus](../../hoon/rune/wut.md#wutlus) `?+` expression, passing unexpected `$mark`s to default-agent, which just crashes. We'll look at custom `$mark`s in a subsequent lesson, but the basic pattern looks like:
 
 ```hoon
 ?+  mark  (on-poke:def mark vase)
@@ -73,7 +73,7 @@ An agent can send pokes to other agents by producing [`%poke` `$card`s](5-cards.
 ==
 ```
 
-The [colcab](../../hoon/reference/rune/col.md#colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`.this`), so it makes it more readable.
+The [colcab](../../hoon/rune/col.md#colcab) (`:_`) rune makes an inverted cell, it's just `:-` but with the head and tail swapped. We use colcab to produce the `(quip card _this)` because the list of cards is "heavier" here than the new agent core expression (`.this`), so it makes it more readable.
 
 ### Receiving the `%poke-ack` {#receiving-the-poke-ack}
 

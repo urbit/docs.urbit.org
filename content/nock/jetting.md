@@ -17,7 +17,7 @@ The registerization of cores is stateful. There are three stateful structures:
 
 ## Cold state {#cold-state}
 
-Cold state is the assignment of core hierarchies to labels. It is accumulated as a side effect, as computations hinted with `%fast` are evaluated. (This hint is emitted by Hoon's [`~%` sigcen](../hoon/reference/rune/sig.md#sigcen) and [`~/` sigfas](../hoon/reference/rune/sig.md#sigfas) runes).
+Cold state is the assignment of core hierarchies to labels. It is accumulated as a side effect, as computations hinted with `%fast` are evaluated. (This hint is emitted by Hoon's [`~%` sigcen](../hoon/rune/sig.md#sigcen) and [`~/` sigfas](../hoon/rune/sig.md#sigfas) runes).
 
 A cold state has one or more *roots*. In the case of the Hoon standard library, the root is the kelvin version. In our running example, our root will be:
 

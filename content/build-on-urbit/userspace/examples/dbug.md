@@ -368,12 +368,12 @@ The following `?-` wuthep handles the input arguments:  `%state` is the most int
 (ream grab.dbug)
 ```
 
-This branch includes the use of a rare [`=?` tiswut](../../../hoon/reference/rune/tis.md#tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../hoon/reference/rune/tis.md#tismic).  There is also some direct compilation of `cord`s taking place:
+This branch includes the use of a rare [`=?` tiswut](../../../hoon/rune/tis.md#tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../hoon/rune/tis.md#tismic).  There is also some direct compilation of `cord`s taking place:
 
-- [`++sell`](../../../hoon/reference/stdlib/5c.md#sell) is a `vase` pretty-printer.
-- [`++slop`](../../../hoon/reference/stdlib/5c.md#slop) conses two `vase`s together as a cell. 
-- [`++slap`](../../../hoon/reference/stdlib/5c.md#slap) compiles a Hoon expression and produces a `vase` of the result.
-- [`++ream`](../../../hoon/reference/stdlib/5d.md#ream) parses a `cord` to a Hoon expression.
+- [`++sell`](../../../hoon/stdlib/5c.md#sell) is a `vase` pretty-printer.
+- [`++slop`](../../../hoon/stdlib/5c.md#slop) conses two `vase`s together as a cell. 
+- [`++slap`](../../../hoon/stdlib/5c.md#slap) compiles a Hoon expression and produces a `vase` of the result.
+- [`++ream`](../../../hoon/stdlib/5d.md#ream) parses a `cord` to a Hoon expression.
 
 #### `++on-peek`
 

@@ -1,6 +1,6 @@
 # App School II (Full-Stack)
 
-In [App School I](../app-school) you learned about the structure of a [Gall agent](../../glossary/agent.md). In this course, we'll walk through the writing of a full agent that serves as the backend for a React application which we'll also write.
+In [App School I](../app-school) you learned about the structure of a Gall agent. In this course, we'll walk through the writing of a full agent that serves as the backend for a React application which we'll also write.
 
 We'll write a simple journal app, called "Journal". In the browser, users will be able to add plaintext journal entires organized by date. They'll be able to scroll through their entires in ascending date order, with more entries loaded each time the bottom of the list is reached. They'll be able to edit and delete old entries, and search through entries by specifying a date range.
 

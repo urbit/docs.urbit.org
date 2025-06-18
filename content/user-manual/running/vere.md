@@ -1,6 +1,6 @@
 # Runtime Reference
 
-The Urbit runtime is named [Vere](../../glossary/vere.md). It's the binary executable you use to run your ship. Vere manages your ship's [pier](../../glossary/pier.md), handles events, and runs the Nock virtual machine that performs your ship's computations.
+The Urbit runtime is named Vere. It's the binary executable you use to run your ship. Vere manages your ship's pier, handles events, and runs the Nock virtual machine that performs your ship's computations.
 
 Before version 1.9, Vere was split into two separate binaries: The `urbit` "king"/"urth" responsible for I/O and event persistence, and the `urbit-worker` "serf"/"mars" responsible for computations and state persistence. As of version 1.9, these have been merged into a single binary, though under the hood there's still two separate processes. The alternative king written in Haskell, `urbit-king`, has also been deprecated, so there's now only one binary.
 
@@ -540,7 +540,7 @@ The pier folder will be named `foobar` as a result of the above command.
 
 Set the maximum number of entries for the memoization cache.
 
-This cache is used by the [`~+`](../../hoon/reference/rune/sig.md#siglus) rune and a few other things.
+This cache is used by the [`~+`](../../hoon/rune/sig.md#siglus) rune and a few other things.
 
 An argument `0` means uncapped, otherwise the specified number of entries.
 
@@ -708,7 +708,7 @@ This is the port used for inter-ship communications.
 
 Enable profiling.
 
-Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../hoon/reference/rune/sig.md#sigbuc) rune will be recorded here.
+Profiles will be saved to `[pier]/.urb/put/profile/[now].txt`. This is useful for debugging and development. Profiling hit counters in Hoon code specified with the [`~$`](../../hoon/rune/sig.md#sigbuc) rune will be recorded here.
 
 This runs a sampling profiler and produces custom output. Runtime cost metrics are only calculated if the binary was built with `CPU_DEBUG`.
 

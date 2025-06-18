@@ -364,6 +364,6 @@ Lastly, as well as handling channel connection errors, we also handle errors suc
 - [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) - A tutorial walking through the basics of writing a modern React application.
 - [HTTP API Guide](../../build-on-urbit/tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
-- [`@urbit/http-api` source code](https://github.com/urbit/urbit/tree/master/pkg/npm/http-api) - The source code for the `@urbit/http-api` NPM package.
+- [`@urbit/http-api` source code](https://github.com/urbit/js-http-api) - The source code for the `@urbit/http-api` NPM package.
 - [`usestate()`]:  https://react.dev/reference/react/useState
 - [`useeffect()`]: https://react.dev/reference/react/useEffect

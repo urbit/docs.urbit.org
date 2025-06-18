@@ -46,7 +46,7 @@ Back in the lesson on lustar virtual arms, we briefly mentioned a common pattern
 
 The name `do` is also used frequently besides `hc`.
 
-A helper core is a separate core composed into the subject of the agent core, containing useful functions for use by the agent arms. Such a helper core would typically contain functions that would only ever be used internally by the agent - more general functions would usually be included in a separate `/lib` library and imported with a [faslus](../../hoon/reference/rune/fas.md#faslus) (`/+`) rune. Additionally, you might recall that the example agent of the [subscriptions lesson](./8-subscriptions.md) used a barket (`|^`) rune to create a core in the `+on-poke` arm with a separate `+handle-poke` arm. That approach is typically used when functions will only be used in that one arm. The helper core, on the other hand, is useful when functions will be used by multiple agent arms.
+A helper core is a separate core composed into the subject of the agent core, containing useful functions for use by the agent arms. Such a helper core would typically contain functions that would only ever be used internally by the agent - more general functions would usually be included in a separate `/lib` library and imported with a [faslus](../../hoon/rune/fas.md#faslus) (`/+`) rune. Additionally, you might recall that the example agent of the [subscriptions lesson](./8-subscriptions.md) used a barket (`|^`) rune to create a core in the `+on-poke` arm with a separate `+handle-poke` arm. That approach is typically used when functions will only be used in that one arm. The helper core, on the other hand, is useful when functions will be used by multiple agent arms.
 
 The conventional pattern is to have the helper core _below_ the agent core, so the structure of the agent file is like:
 
@@ -57,7 +57,7 @@ The conventional pattern is to have the helper core _below_ the agent core, so t
 [helper core]
 ```
 
-Recall that the build system will implicitly compose any discrete expressions. If we simply added the helper core below the agent core, the agent core would be composed into the subject of the helper core, which is the opposite of what we want. Instead, we must inversely compose the two cores with a [tisgal](../../hoon/reference/rune/tis.md#tisgal) (`=<`) rune. We add the tisgal rune directly above the agent core like:
+Recall that the build system will implicitly compose any discrete expressions. If we simply added the helper core below the agent core, the agent core would be composed into the subject of the helper core, which is the opposite of what we want. Instead, we must inversely compose the two cores with a [tisgal](../../hoon/rune/tis.md#tisgal) (`=<`) rune. We add the tisgal rune directly above the agent core like:
 
 ```hoon
 .....
@@ -86,7 +86,7 @@ Back in the lustar virtual arm of the agent core, we give it a deferred expressi
 hc  ~(. +>  bowl)
 ```
 
-To get to the helper core we composed from within the door, we use a [censig](../../hoon/reference/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `$bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
+To get to the helper core we composed from within the door, we use a [censig](../../hoon/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `$bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
 
 ### Summary <a href="#summary" id="summary"></a>
 

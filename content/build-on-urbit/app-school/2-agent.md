@@ -2,7 +2,7 @@
 
 In this lesson we'll look at the basic type and structure of a Gall agent.
 
-A Gall agent is a [door](../../glossary/door.md) with exactly ten [arms](../../glossary/arm.md). Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a [core](../../glossary/core.md) with a sample - it's made with the [barcab](../../hoon/reference/rune/bar.md#barcab) rune (`|_`) instead of the usual [barcen](../../hoon/reference/rune/bar.md#barcen) rune (`|%`).
+A Gall agent is a door with exactly ten arms. Each arm is responsible for handling certain kinds of events that Gall feeds in to the agent. A door is just a core with a sample - it's made with the [barcab](../../hoon/rune/bar.md#barcab) rune (`|_`) instead of the usual [barcen](../../hoon/rune/bar.md#barcen) rune (`|%`).
 
 ## The ten arms {#the-ten-arms}
 
@@ -41,7 +41,7 @@ These two arms handle responses to requests our agent previously initiated.
 
 ## Bowl {#bowl}
 
-The sample of a Gall agent door is always a `$bowl:gall`. Every time an event triggers the agent, Gall populates the bowl with things like the current date-time, fresh entropy, subscription information, which ship the request came from, etc, so that all the arms of the agent have access to that data. For the exact structure and contents of the bowl, have a read through [its entry in the Gall vane types documentation](../../urbit-os/kernel/gall/reference/data-types.md#bowl).
+The sample of a Gall agent door is always a `$bowl:gall`. Every time an event triggers the agent, Gall populates the bowl with things like the current date-time, fresh entropy, subscription information, which ship the request came from, etc, so that all the arms of the agent have access to that data. For the exact structure and contents of the bowl, have a read through [its entry in the Gall vane types documentation](../../urbit-os/kernel/gall/data-types.md#bowl).
 
 One important thing to note is that the bowl is only repopulated when there's a new Arvo event. If a local agent or web client were to send multiple messages to your agent at the same time, these would all arrive in the same event. This means if your agent depended on a unique date-time or entropy to process each message, you could run into problems if your agent doesn't account for this possibility.
 
@@ -93,7 +93,7 @@ Here's about the simplest valid Gall agent:
 
 This is just a dummy agent that does absolutely nothing - it has no state and rejects all messages by crashing. Typically we'd cast this to an `+agent:gall`, but in this instance we won't so it's easier to examine its structure in the dojo. We'll get to what each of the arms do later. For now, we'll just consider a few particular points.
 
-Firstly, note its structure - it's a door (created with `|_`) with a sample of `$bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../hoon/reference/irregular.md#buctis)).
+Firstly, note its structure - it's a door (created with `|_`) with a sample of `$bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../hoon/irregular.md#buctis)).
 
 Secondly, you'll notice some of the arms return:
 
@@ -232,4 +232,4 @@ If we again examine our agent core's payload by looking at the tail of `%skeleto
 ## Exercises {#exercises}
 
 - Run through the [Example](#example) yourself on a fake ship if you've not done so already.
-- Have a look at the [`$bowl` entry in the Gall data types documentation](../../urbit-os/kernel/gall/reference/data-types.md#bowl) if you've not done so already.
+- Have a look at the [`$bowl` entry in the Gall data types documentation](../../urbit-os/kernel/gall/data-types.md#bowl) if you've not done so already.

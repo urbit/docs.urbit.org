@@ -1756,7 +1756,7 @@ end
 
 ## Rust {#rust}
 
-From [Peter McEvoy](https://github.com/mcevoypeter/nock/tree/main/src):
+From [Peter McEvoy](https://github.com/mcevoypeter):
 
 ```rust
 #![allow(unused_parens)]

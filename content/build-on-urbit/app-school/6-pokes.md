@@ -1,6 +1,6 @@
 ---
 description: >-
-  Guide to handling one-off messages (pokes) in Gall agents, covering the +on-poke arm for receiving pokes, +on-agent arm for responses, poke acknowledgments, and practical patterns for inter-agent communication.
+  Guide to handling one-off messages (pokes) in Gall agents, covering the +on-poke arm for receiving pokes, +on-agent arm for responses, poke acknowledgments, and practical patterns.
 ---
 
 # 6. Pokes

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Comprehensive guide to text parsing in Hoon, covering parser fundamentals, rule building, parsing techniques with scanning and RegEx-like operations, and building complex parsers for structured text processing.
+  Guide to text parsing in Hoon, covering parser fundamentals, rule building, parsing techniques with scanning and RegEx-like operations, and building complex parsers.
 ---
 
 # 17. Text Processing III

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Programming implementations in Hoon for common algorithmic tasks including sorting, bitwise operations, prime calculation, functional operators, floating-point math, and debugging techniques for competitive programming.
+  Programming implementations in Hoon for common algorithmic tasks including sorting, bitwise operations, prime calculation, functional operators, floating-point math, and debugging techniques.
 ---
 
 # Competitive Programming

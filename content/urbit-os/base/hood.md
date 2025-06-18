@@ -1,6 +1,6 @@
 ---
 description: >-
-  API reference for %hood, a Gall agent that interfaces with Urbit OS. Includes documentation for its modules Drum (CLI management), Helm (system control), and Kiln (desk updates and filesystem control).
+  API reference for %hood, a Gall agent that interfaces with Urbit OS. Includes documentation for its modules Drum (CLI management), Helm (system control), and Kiln (desk updates and filesystem).
 ---
 
 # Hood

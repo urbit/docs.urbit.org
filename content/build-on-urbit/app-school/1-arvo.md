@@ -1,6 +1,6 @@
 ---
 description: >-
-  App school's to Arvo, Urbit's operating system and kernel, covering its vanes (kernel modules), userspace architecture, filesystem design with Clay, and fundamental concepts for Gall agent development.
+  Introduction to Arvo, Urbit's operating system and kernel, covering its vanes (kernel modules), userspace architecture, and fundamental concepts for Gall agent development.
 ---
 
 # 1. Arvo

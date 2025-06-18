@@ -1,6 +1,6 @@
 ---
 description: >-
-  Arvo types and functions reference including fundamental types like $arch, $beak, $beam, $cage, $duct, $move, $ship, and utilities for Clay nodes, global paths, event processing, and namespace operations.
+  Arvo types and functions reference including fundamental types like $arch, $beak, $beam, $cage, $duct, $move, $ship, and utilities for Clay nodes, global paths, event processing, and namespace.
 ---
 
 # Arvo

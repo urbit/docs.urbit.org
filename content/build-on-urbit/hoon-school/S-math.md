@@ -1,6 +1,6 @@
 ---
 description: >-
-  Comprehensive guide to mathematical operations in Hoon beyond unsigned integers, covering floating-point arithmetic, signed integers, modular arithmetic, bitwise operations, and IEEE 754 implementations.
+  Guide to mathematical operations in Hoon beyond unsigned integers, covering floating-point arithmetic, signed integers, modular arithmetic, bitwise operations, and IEEE 754.
 ---
 
 # 19. Mathematics

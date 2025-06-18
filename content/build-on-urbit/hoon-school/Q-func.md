@@ -1,6 +1,6 @@
 ---
 description: >-
-  Functional programming concepts in Hoon, including gate manipulation, currying and binding samples, changing arity, function composition with cork and corl, and working with lists using +turn, +roll, and fold operations.
+  Functional programming concepts in Hoon, including gate manipulation, currying and binding samples, changing arity, function composition with cork and corl, and working with lists.
 ---
 
 # 16. Functional Programming

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Complete guide to conditional logic in Hoon, covering loobean (boolean) values, logical operators (AND, OR, NOT), conditional branching, switch statements, and pattern matching for decision-making in code.
+  Guide to conditional logic in Hoon, covering loobean (boolean) values, logical operators (AND, OR, NOT), conditional branching, switch statements, and pattern matching.
 ---
 
 # 13. Conditional Logic

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Programming challenge solution for spelling words with letter blocks in Hoon including input validation, alphabet checking, and backtracking algorithm implementation with unit tests and multiple solutions.
+  Programming challenge solution for spelling words with letter blocks in Hoon including input validation, alphabet checking, and backtracking algorithm implementation with unit tests.
 ---
 
 # ABC Blocks

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Comprehensive guide to Hoon's type system, covering atoms with auras, molds for data structures, type-checking and type inference, core variance, nesting relationships, and practical type safety mechanisms.
+  Guide to Hoon's type system, covering atoms with auras, molds for data structures, type-checking and type inference, core variance, nesting relationships, and type safety.
 ---
 
 # 4. Molds (Types)

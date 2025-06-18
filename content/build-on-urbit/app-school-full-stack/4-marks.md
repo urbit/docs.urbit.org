@@ -1,6 +1,6 @@
 ---
 description: >-
-  Creating mark files for full-stack Urbit apps including conversion methods between native types and JSON, defining +grow and +grab arms for custom type conversion logic, and integrating with conversion libraries.
+  Creating mark files for full-stack Urbit apps: conversion methods between native types and JSON, defining +grow and +grab arms for custom type conversion logic.
 ---
 
 # 4. Marks

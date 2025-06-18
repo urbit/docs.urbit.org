@@ -1,6 +1,6 @@
 ---
 description: >-
-  React application logic for full-stack Urbit apps covering state management, ship communication patterns, subscription handling, poke operations, and data synchronization between the React frontend and Gall backend.
+  React application logic for full-stack Urbit apps covering state management, ship communication patterns, subscription handling, poke operations, and data synchronization.
 ---
 
 # 7. React app logic

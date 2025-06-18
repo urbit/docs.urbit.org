@@ -1,6 +1,6 @@
 ---
 description: >-
-  Deep dive into subject-oriented programming in Hoon, covering how expressions are evaluated within subjects, core composition, state management, deferred computations, and scrying local data with the .^ dotket rune.
+  Guide to subject-oriented programming in Hoon, covering how expressions are evaluated within subjects, core composition, state management, deferred computations, and scrying local data.
 ---
 
 # 14. Subject-Oriented Programming

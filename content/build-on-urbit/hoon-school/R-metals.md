@@ -1,6 +1,6 @@
 ---
 description: >-
-  Advanced core theory covering genericity with wet gates and cores, core variance models for type polymorphism, dry vs wet core behavior, parametric polymorphism, and compile-time vs runtime type-checking strategies.
+  Advanced core theory: genericity with wet gates and cores, type polymorphism, dry vs wet core behavior, parametric polymorphism, and compile-time vs. runtime type-checking.
 ---
 
 # 18. Generic and Variant Cores

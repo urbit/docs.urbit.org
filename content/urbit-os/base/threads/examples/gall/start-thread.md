@@ -1,6 +1,6 @@
 # Start Thread
 
-There are two kinds of threads you can run from a Gall agent: inline threads and thread files in the `/ted` directory of a desk. Additionally, there are two ways to run them: passing a task to the [Khan](../../../kernel/khan) vane, and poking the `%spider` agent directly. Khan's API is typically easier to use and the correct choice most of the time. The only reason to poke `%spider` directly is because you want to specify the thread ID explicitly. This is only necessary if you want to be able to interact with it while it's running or cancel it prematurely.
+There are two kinds of threads you can run from a Gall agent: inline threads and thread files in the `/ted` directory of a desk. Additionally, there are two ways to run them: passing a task to the [Khan](../../../../kernel/khan) vane, and poking the `%spider` agent directly. Khan's API is typically easier to use and the correct choice most of the time. The only reason to poke `%spider` directly is because you want to specify the thread ID explicitly. This is only necessary if you want to be able to interact with it while it's running or cancel it prematurely.
 
 ## Inline thread via Khan
 
@@ -84,7 +84,7 @@ In `+on-poke` we create a `$shed:khan` like so:
 
 Notice how we could directly reference the `txt` leg we'd pinned on a previous line in `+on-poke`. The thread can access anything in its subject, so an explicit starting argument is not required.
 
-We pass the whole `$shed:khan` to Khan in a [`%lard`](../../../../kernel/khan/reference/tasks.md#lard) task card:
+We pass the whole `$shed:khan` to Khan in a [`%lard`](../../../../kernel/khan/tasks.md#lard) task card:
 
 {% code overflow="nowrap" lineNumbers="false" %}
 ```hoon
@@ -92,7 +92,7 @@ We pass the whole `$shed:khan` to Khan in a [`%lard`](../../../../kernel/khan/re
 ```
 {% endcode %}
 
-Khan will handle creating a thread ID, poking Spider to start it, and waiting for the result. Once done, Khan will return an [`%arow`](../../../../kernel/khan/reference/tasks.md#arow) gift back to our agent in `+on-arvo`, where we check if it succeeded and print the result:
+Khan will handle creating a thread ID, poking Spider to start it, and waiting for the result. Once done, Khan will return an [`%arow`](../../../../kernel/khan/tasks.md#arow) gift back to our agent in `+on-arvo`, where we check if it succeeded and print the result:
 
 {% code overflow="nowrap" lineNumbers="false" %}
 ```hoon
@@ -216,7 +216,7 @@ Thread error: %poke-ack
 
 ### Analysis
 
-In `+on-poke` we simply take `.ted` (the thread to run) and `.txt` (the starting argument string) and pass them to Khan in a [`%fard`](../../../../kernel/khan/reference/tasks.md#fard) task card:
+In `+on-poke` we simply take `.ted` (the thread to run) and `.txt` (the starting argument string) and pass them to Khan in a [`%fard`](../../../../kernel/khan/tasks.md#fard) task card:
 
 {% code overflow="nowrap" lineNumbers="false" %}
 ```hoon
@@ -335,7 +335,7 @@ The thread ID is created on this line in `+on-poke`:
 
 It just needs to be a unique `$knot`. Using `eny.bowl` is a good idea to ensure there are no name collisions.
 
-Then we create the [`$inline-args`](../../reference/api.md#run-inline-thread) starting arguments. If you were running a thread file rather than an inline thread you'd use `$start-args` instead, which is very similarly structured, but specifies a thread filename and argument in a vase instead of the `$shed:khan`.
+Then we create the [`$inline-args`](../../api.md#run-inline-thread) starting arguments. If you were running a thread file rather than an inline thread you'd use `$start-args` instead, which is very similarly structured, but specifies a thread filename and argument in a vase instead of the `$shed:khan`.
 
 ```hoon
 =/  args=inline-args:spider

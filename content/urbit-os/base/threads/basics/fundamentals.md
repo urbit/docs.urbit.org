@@ -190,7 +190,7 @@ The `$shed` can then be passed to Kahn in card:
 [%pass /thread %arvo %k %lard %mydesk shed]~
 ```
 
-The result will come back into the `++on-arvo` arm of the Gall agent in an [`%arow`](../../../../kernel/khan/reference/tasks.md#arow) gift. 
+The result will come back into the `++on-arvo` arm of the Gall agent in an [`%arow`](../../../kernel/khan/tasks.md#arow) gift. 
 
 Next we'll look at the third arm of a strand: `+bind`.
 

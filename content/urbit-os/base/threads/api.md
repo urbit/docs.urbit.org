@@ -1,6 +1,6 @@
 # Spider API Reference
 
-This document describes Spider's API. Note it's usually better to run threads via the Khan vane than Spider directly, unless you need to interact with the thread while it's running. You can refer to the [Khan documentation](../../../kernel/khan) for details.
+This document describes Spider's API. Note it's usually better to run threads via the Khan vane than Spider directly, unless you need to interact with the thread while it's running. You can refer to the [Khan documentation](../../kernel/khan) for details.
 
 ## Run thread file {#run-thread-file}
 

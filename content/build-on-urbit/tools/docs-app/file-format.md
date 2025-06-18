@@ -1,7 +1,18 @@
 ---
-description: >-
-  File format specifications for the %docs app including %docu mark requirements, supported formats (udon, txt, html, gmi), syntax rules, and conversion guidelines for documentation publishing.
+description: File format specifications for the %docs app including %docu mark requirements, supported formats (udon, txt, html, gmi), syntax rules, and conversion guidelines for documentation publishing.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # File Format
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Advanced text processing in Hoon, covering text conversions, formatted text with $tanks, %ask generators, I/O operations, and practical tools for web data, JSON, and output formatting.
+description: Advanced text processing in Hoon, covering text conversions, formatted text with $tanks, %ask generators, I/O operations, and practical tools for web data, JSON, and output formatting.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 15. Text Processing II
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for Hoon's type-casting rune family, which allows safe type transformations without violating constraints.
+description: Reference for Hoon's type-casting rune family, which allows safe type transformations without violating constraints.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # ^ ket · Casts
 

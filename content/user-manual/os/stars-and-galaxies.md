@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide for operating stars and galaxies including hosting, planet distribution, and etiquette.
+description: Guide for operating stars and galaxies including hosting, planet distribution, and etiquette.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Star and Galaxy Operations
 

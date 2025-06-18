@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for the arm rune family used to define functions and other named expressions in cores, including normal computations, structure definitions, and constructors.
+description: Reference for the arm rune family used to define functions and other named expressions in cores, including normal computations, structure definitions, and constructors.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # + lus · Arms
 

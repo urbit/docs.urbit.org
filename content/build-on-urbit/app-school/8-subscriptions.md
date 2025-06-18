@@ -1,7 +1,18 @@
 ---
-description: >-
-  Gall agent subscription mechanics covering +on-watch for incoming subscriptions, subscription paths, sending updates with %fact cards, kicking subscribers, and managing outgoing subscriptions.
+description: Gall agent subscription mechanics covering +on-watch for incoming subscriptions, subscription paths, sending updates with %fact cards, kicking subscribers, and managing outgoing subscriptions.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 8. Subscriptions
 

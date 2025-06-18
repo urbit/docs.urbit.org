@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to using the Dojo shell for command-line interaction and Hoon expression evaluation.
+description: Guide to using the Dojo shell for command-line interaction and Hoon expression evaluation.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Shell
 

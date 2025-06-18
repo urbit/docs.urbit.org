@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to working with sets in Hoon: set creation, membership testing, and set operations like union, intersection, and difference.
+description: Guide to working with sets in Hoon. Set creation, membership testing, and set operations like union, intersection, and difference.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Sets
 

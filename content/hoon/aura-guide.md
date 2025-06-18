@@ -1,7 +1,18 @@
 ---
-description: >-
-  Step-by-step guide to creating custom auras in Hoon, covering aura design, base logic, pretty-printing, and parsing rules with a sexagesimal degrees example.
+description: Step-by-step guide to creating custom auras in Hoon, covering aura design, base logic, pretty-printing, and parsing rules with a sexagesimal degrees example.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Implementing an Aura
 

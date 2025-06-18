@@ -1,7 +1,18 @@
 ---
-description: >-
-  Programming challenge for calculating emirp numbers (primes whose reverses are also primes) in Hoon with efficient prime checking algorithms and multiple solution implementations including unit tests.
+description: Programming challenge for calculating emirp numbers (primes whose reverses are also primes) in Hoon with efficient prime checking algorithms and multiple solution implementations including unit tests.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Emirp
 

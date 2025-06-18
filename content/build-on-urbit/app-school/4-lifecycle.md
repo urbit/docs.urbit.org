@@ -1,7 +1,18 @@
 ---
-description: >-
-  Agent lifecycle management covering state initialization with +on-init, state export with +on-save, state import with +on-load, versioned state types, and upgrade procedures for Gall agents.
+description: Agent lifecycle management covering state initialization with +on-init, state export with +on-save, state import with +on-load, versioned state types, and upgrade procedures for Gall agents.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 4. Lifecycle
 

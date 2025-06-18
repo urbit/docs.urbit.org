@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to monadic bind operations for strand composition using the ;< micgal rune, chaining strands sequentially, error handling, and strandio library functions for complex thread operations.
+description: Guide to monadic bind operations for strand composition using the ;< micgal rune, chaining strands sequentially, error handling, and strandio library functions for complex thread operations.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Bind
 

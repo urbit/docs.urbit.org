@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to Gall agent error handling through the +on-fail arm, covering failure scenarios (crashes in +on-agent, +on-arvo, +on-leave), error types, and helper core patterns.
+description: Guide to Gall agent error handling through the +on-fail arm, covering failure scenarios (crashes in +on-agent, +on-arvo, +on-leave), error types, and helper core patterns.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 11. Failure
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Essential Gall agent development setup covering useful libraries (default-agent, dbug), virtual arms for deferred expressions, additional core composition, and standard boilerplate patterns.
+description: Essential Gall agent development setup covering useful libraries (default-agent, dbug), virtual arms for deferred expressions, additional core composition, and standard boilerplate patterns.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 3. Imports and Aliases
 

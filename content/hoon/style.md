@@ -1,7 +1,18 @@
 ---
-description: >-
-  Official Hoon style guide covering layout conventions, naming standards, commenting practices, and code quality.
+description: Official Hoon style guide covering layout conventions, naming standards, commenting practices, and code quality.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Hoon Style Guide
 

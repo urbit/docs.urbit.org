@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for Hoon's structure runes, including mold creation, validation, and type construction.
+description: Reference for Hoon's structure runes, including mold creation, validation, and type construction.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # $ buc · Structures
 

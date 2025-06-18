@@ -1,7 +1,18 @@
 ---
-description: >-
-  Step-by-step guide to getting started with Urbit: obtaining an Urbit ID, downloading they keyfile, installing the runtime, and booting your first Urbit OS server.
+description: Step-by-step guide to getting started with Urbit, including obtaining an Urbit ID, downloading they keyfile, installing the runtime, and booting your first Urbit OS server.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Get on Urbit
 

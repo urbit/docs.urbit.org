@@ -1,7 +1,18 @@
 ---
-description: >-
-  Learn to create and use gates (functions) in Hoon, including deferred computations, type specification, file organization, generators, and irregular syntactic sugar forms.
+description: Learn to create and use gates (functions) in Hoon, including deferred computations, type specification, file organization, generators, and irregular syntactic sugar forms.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 3. Gates (Functions)
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to subject-oriented programming in Hoon, covering how expressions are evaluated within subjects, core composition, state management, deferred computations, and scrying local data.
+description: Guide to subject-oriented programming in Hoon, covering how expressions are evaluated within subjects, core composition, state management, deferred computations, and scrying local data.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 14. Subject-Oriented Programming
 

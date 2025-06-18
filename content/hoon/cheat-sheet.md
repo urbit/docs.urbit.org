@@ -1,7 +1,18 @@
 ---
-description: >-
-  Quick reference guide to Hoon programming language syntax, operators, and functions available as a downloadable PDF for developers learning Urbit development.
+description: Quick reference guide to Hoon programming language syntax, operators, and functions available as a downloadable PDF for developers learning Urbit development.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Cheat Sheet
 

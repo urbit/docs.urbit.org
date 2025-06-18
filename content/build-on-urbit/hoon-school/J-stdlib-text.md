@@ -1,7 +1,18 @@
 ---
-description: >-
-  Introduction to text representation in Hoon, covering cords, tapes, knots, terms, text manipulation tools, and %say generators for command-line argument processing.
+description: Introduction to text representation in Hoon, covering cords, tapes, knots, terms, text manipulation tools, and %say generators for command-line argument processing.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 9. Text Processing I
 

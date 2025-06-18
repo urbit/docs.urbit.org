@@ -1,7 +1,18 @@
 ---
-description: >-
-  Challenge to implement conversion between Roman numerals and decimal numbers in Hoon.
+description: Challenge to implement conversion between Roman numerals and decimal numbers in Hoon.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Roman Numerals
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Best practices for organizing documentation in the %docs app, covering user documentation, developer API references, changelog structure, and data type documentation patterns.
+description: Best practices for organizing documentation in the %docs app, covering user documentation, developer API references, changelog structure, and data type documentation patterns.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Suggested Structure
 

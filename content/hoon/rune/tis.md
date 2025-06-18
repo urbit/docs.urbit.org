@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for Hoon's subject modification runes.
+description: Reference for Hoon's subject modification runes.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # = tis · Subject
 

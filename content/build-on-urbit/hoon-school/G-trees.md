@@ -1,7 +1,18 @@
 ---
-description: >-
-  Understanding Urbit's binary tree data representation, tree addressing systems, data location and evaluation, the `+list` mold, and standard library operations for working with tree-structured data.
+description: Understanding Urbit's binary tree data representation, tree addressing systems, data location and evaluation, the `+list` mold, and standard library operations for working with tree-structured data.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 6. Trees and Addressing
 

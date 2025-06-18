@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to managing Urbit OS updates including Vere runtime, Arvo kernel, and application updates.
+description: Guide to managing Urbit OS updates including Vere runtime, Arvo kernel, and application updates.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Updates
 

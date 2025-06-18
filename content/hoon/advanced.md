@@ -1,7 +1,18 @@
 ---
-description: >-
-  Advanced Hoon type system concepts including polymorphism, variance, wet and dry arms, core nesting rules, and advanced features like aliasing and bridges for complex programming scenarios.
+description: Advanced Hoon type system concepts including polymorphism, variance, wet and dry arms, core nesting rules, and advanced features like aliasing and bridges for complex programming scenarios.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Advanced Types
 

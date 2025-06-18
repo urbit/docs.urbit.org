@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to performing factory resets and understanding network continuity in Urbit.
+description: Guide to performing factory resets and understanding network continuity in Urbit.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Guide to Factory Resets
 

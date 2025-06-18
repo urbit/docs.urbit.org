@@ -1,7 +1,18 @@
 ---
-description: >-
-  Exercise in implementing decrement in Nock as a practice for understanding the language.
+description: Exercise in implementing decrement in Nock as a practice for understanding the language.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Decrement
 

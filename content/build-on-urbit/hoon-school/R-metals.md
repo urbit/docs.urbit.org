@@ -1,7 +1,18 @@
 ---
-description: >-
-  Advanced core theory: genericity with wet gates and cores, type polymorphism, dry vs wet core behavior, parametric polymorphism, and compile-time vs. runtime type-checking.
+description: Advanced core theory. Genericity with wet gates and cores, type polymorphism, dry vs wet core behavior, parametric polymorphism, and compile-time vs. runtime type-checking.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 18. Generic and Variant Cores
 

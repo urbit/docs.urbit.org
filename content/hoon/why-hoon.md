@@ -1,7 +1,18 @@
 ---
-description: >-
-  Rationale for Hoon programming language design: functional, axiomatic, minimal systems language with unique features for building Urbit OS.
+description: Rationale for Hoon programming language design.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Why Hoon?
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Advanced core concepts including doors (gate-building gates), doors as parametrized cores with sample data, working with `+map`s (key-value stores), and stateful computation patterns.
+description: Advanced core concepts including doors (gate-building gates), doors as parametrized cores with sample data, working with `+map`s (key-value stores), and stateful computation patterns.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 10. Cores and Doors
 

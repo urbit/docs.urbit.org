@@ -1,7 +1,18 @@
 ---
-description: >-
-  Using Eyre, the HTTP server vane, in full-stack Urbit development. Covers the channel system for pokes and subscriptions, scry interface for data queries, and authentication mechanisms.
+description: Using Eyre, the HTTP server vane, in full-stack Urbit development. Covers the channel system for pokes and subscriptions, scry interface for data queries, and authentication mechanisms.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 5. Eyre
 

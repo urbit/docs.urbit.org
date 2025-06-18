@@ -1,7 +1,18 @@
 ---
-description: >-
-  Troubleshooting guide for common issues with the Bridge web application for Urbit ID management.
+description: Troubleshooting guide for common issues with the Bridge web application for Urbit ID management.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Bridge Troubleshooting
 

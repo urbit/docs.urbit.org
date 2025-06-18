@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to Hoon's string types including cords, tapes, and text manipulation functions.
+description: Guide to Hoon's string types including cords, tapes, and text manipulation functions.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Strings
 

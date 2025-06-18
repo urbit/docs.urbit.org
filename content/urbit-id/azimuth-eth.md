@@ -1,7 +1,18 @@
 ---
-description: >-
-  Technical reference for the Azimuth.eth smart contract: the data store for Urbit ID ownership, Points, Deeds, networking keys, and sponsorship information on Ethereum.
+description: Technical reference for Azimuth.eth, the data store for Urbit ID ownership, Points, Deeds, networking keys, and sponsorship information on Ethereum.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Azimuth.eth Reference
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Tutorial on producing styled text with styx strings and outputting them from Urbit agents to the terminal.
+description: Tutorial on producing styled text with styx strings and outputting them from Urbit agents to the terminal.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Styled Text
 

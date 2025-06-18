@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for the hint runes used to pass non-semantic information to the interpreter using Nock 11, including debugging and tracing.
+description: Reference for the hint runes used to pass non-semantic information to the interpreter using Nock 11, including debugging and tracing.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # ~ sig · Hints
 

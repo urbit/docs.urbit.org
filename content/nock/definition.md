@@ -1,7 +1,18 @@
 ---
-description: >-
-  Formal definition of Nock with reduction rules and combinator specifications.
+description: Formal definition of Nock with reduction rules and combinator specifications.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Definition
 

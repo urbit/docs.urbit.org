@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to strand input including $bowl structure with ship, timing, and subscription data, input types (pokes, signs, agent communication), and accessing input data within thread execution.
+description: Guide to strand input including $bowl structure with ship, timing, and subscription data, input types (pokes, signs, agent communication), and accessing input data within thread execution.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Input
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Step-by-step tutorial for setting up your own Layer 2 roller for Urbit ID transactions, including configuration, Bridge setup, and roller management commands.
+description: Step-by-step tutorial for setting up your own Layer 2 roller for Urbit ID transactions, including configuration, Bridge setup, and roller management commands.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Custom Roller Tutorial
 

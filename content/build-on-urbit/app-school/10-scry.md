@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to Gall agent scry functionality covering read-only data requests with the .^ dotket rune, +on-peek arm implementation, endpoint patterns, and practical examples.
+description: Guide to Gall agent scry functionality covering read-only data requests with the .^ dotket rune, +on-peek arm implementation, endpoint patterns, and practical examples.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 10. Scries
 

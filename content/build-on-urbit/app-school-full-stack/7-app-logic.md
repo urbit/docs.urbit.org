@@ -1,7 +1,18 @@
 ---
-description: >-
-  React application logic for full-stack Urbit apps covering state management, ship communication patterns, subscription handling, poke operations, and data synchronization.
+description: React application logic for full-stack Urbit apps covering state management, ship communication patterns, subscription handling, poke operations, and data synchronization.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 7. React app logic
 

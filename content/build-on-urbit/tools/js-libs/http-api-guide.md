@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to the @urbit/http-api JavaScript library for building web frontends that communicate with Urbit ships, covering authentication, pokes, subscriptions, scries, threads, and practical examples.
+description: Guide to the @urbit/http-api JavaScript library for building web frontends that communicate with Urbit ships, covering authentication, pokes, subscriptions, scries, threads, and practical examples.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # HTTP API
 

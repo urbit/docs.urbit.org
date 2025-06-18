@@ -1,7 +1,18 @@
 ---
-description: >-
-  Curated collection of external Urbit development resources including app repositories, Hoon libraries, JavaScript packages, documentation sites, and development tools.
+description: Curated collection of external Urbit development resources including app repositories, Hoon libraries, JavaScript packages, documentation sites, and development tools.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Useful Links
 

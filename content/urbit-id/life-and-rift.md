@@ -1,7 +1,18 @@
 ---
-description: >-
-  Explanation of life and rift numbers in Azimuth: how they track networking key revisions and breach counts for secure peer-to-peer networking on Urbit.
+description: Explanation of life and rift numbers in Azimuth, how they track networking key revisions and breach counts for secure peer-to-peer networking on Urbit.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Life and Rift
 

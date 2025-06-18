@@ -1,7 +1,18 @@
 ---
-description: >-
-  Summary and recap of thread concepts including %spider agent management, strand composition, +form/+pure/+bind operations, input/output patterns, and strandio utility functions.
+description: Summary and recap of thread concepts including %spider agent management, strand composition, +form/+pure/+bind operations, input/output patterns, and strandio utility functions.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Summary
 

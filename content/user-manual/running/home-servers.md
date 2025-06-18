@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to running Urbit on home server hardware using tools like Native Planet and Umbrel.
+description: Guide to running Urbit on home server hardware using tools like Native Planet and Umbrel.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Home servers
 

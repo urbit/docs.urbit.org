@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for Hoon's Nock runes, including scrying with .^ and basic Nock operations like increment.
+description: Reference for Hoon's Nock runes, including scrying with .^ and basic Nock operations like increment.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # . dot · Nock
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Building the Gall agent backend for a full-stack app including imports, state management, poke handling, subscription patterns, and scry endpoints for data retrieval.
+description: Building the Gall agent backend for a full-stack app including imports, state management, poke handling, subscription patterns, and scry endpoints for data retrieval.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 2. Agent
 

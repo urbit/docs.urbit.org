@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to strand output including cards and response codes (%wait, %skip, %cont, %fail, %done), flow control mechanisms, error handling, and completion patterns in thread execution.
+description: Guide to strand output including cards and response codes (%wait, %skip, %cont, %fail, %done), flow control mechanisms, error handling, and completion patterns in thread execution.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Output
 

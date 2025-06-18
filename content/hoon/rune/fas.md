@@ -1,7 +1,18 @@
 ---
-description: >-
-  Reference for build system runes, used to import files from /sur and /lib directories among other locations.
+description: Reference for build system runes, used to import files from /sur and /lib directories among other locations.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # / fas · Imports
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to debugging Hoon code, covering common syntax and semantic errors, error traces, debugging modes, and stack trace interpretation.
+description: Guide to debugging Hoon code, covering common syntax and semantic errors, error traces, debugging modes, and stack trace interpretation.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Hoon Errors
 

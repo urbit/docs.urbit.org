@@ -1,7 +1,18 @@
 ---
-description: >-
-  Building JSON conversion libraries for full-stack Urbit apps covering +enjs and +dejs functions for encoding/decoding data, mark conversion workflows, and bridging Gall agents with web frontends.
+description: Building JSON conversion libraries for full-stack Urbit apps covering +enjs and +dejs functions for encoding/decoding data, mark conversion workflows, and bridging Gall agents with web frontends.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 3. JSON
 

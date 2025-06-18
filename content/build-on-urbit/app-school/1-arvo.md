@@ -1,7 +1,18 @@
 ---
-description: >-
-  Introduction to Arvo, Urbit's operating system and kernel, covering its vanes (kernel modules), userspace architecture, and fundamental concepts for Gall agent development.
+description: Introduction to Arvo, Urbit's operating system and kernel, covering its vanes (kernel modules), userspace architecture, and fundamental concepts for Gall agent development.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 1. Arvo
 

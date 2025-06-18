@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to noun serialization in Hoon using jamming and cuing techniques for converting nouns to atoms and back, with compression through internal references.
+description: Guide to noun serialization in Hoon using jamming and cuing techniques for converting nouns to atoms and back, with compression through internal references.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Serialization
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to using Bridge for managing Urbit ID, generating keyfiles, and setting networking keys.
+description: Guide to using Bridge for managing Urbit ID, generating keyfiles, and setting networking keys.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Using Bridge
 

@@ -1,7 +1,18 @@
 ---
-description: >-
-  Collection of Nock interpreter implementations in various programming languages.
+description: Collection of Nock interpreter implementations in various programming languages.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Implementations
 

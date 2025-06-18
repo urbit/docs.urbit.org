@@ -1,7 +1,18 @@
 ---
-description: >-
-  Tutorial on building a simple website hosting app using the Schooner library to serve HTML pages from Urbit.
+description: Tutorial on building a simple website hosting app using the Schooner library to serve HTML pages from Urbit.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Host a Website
 

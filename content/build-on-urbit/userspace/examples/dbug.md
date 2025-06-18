@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to using the dbug library to debug Gall agents and inspect their state.
+description: Guide to using the dbug library to debug Gall agents and inspect their state.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Debugging Wrapper
 

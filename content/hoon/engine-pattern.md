@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to the engine pattern in Hoon for managing nested cores and state with +abet.
+description: Guide to the engine pattern in Hoon for managing nested cores and state with +abet.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # The Engine Pattern
 

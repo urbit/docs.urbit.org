@@ -1,7 +1,18 @@
 ---
-description: >-
-  Complete Nock specification explaining the data model, reductions, and operational semantics.
+description: Complete Nock specification explaining the data model, reductions, and operational semantics.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Specification
 

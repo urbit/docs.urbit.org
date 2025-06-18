@@ -1,7 +1,18 @@
 ---
-description: >-
-  Tutorial on connecting a JavaScript Flappy Bird game to an Urbit backend with leaderboard and file serving.
+description: Tutorial on connecting a JavaScript Flappy Bird game to an Urbit backend with leaderboard and file serving.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Serving a JS Game
 

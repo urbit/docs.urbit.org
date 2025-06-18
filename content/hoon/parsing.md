@@ -1,7 +1,18 @@
 ---
-description: >-
-  Guide to parsing text in Hoon using functional parsers and combinators, covering basic types like hair/nail/edge/rule and common parsing patterns.
+description: Guide to parsing text in Hoon using functional parsers and combinators, covering basic types like hair/nail/edge/rule and common parsing patterns.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # Parsing Text
 

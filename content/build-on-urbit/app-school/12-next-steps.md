@@ -1,7 +1,18 @@
 ---
-description: >-
-  End of App School I. Covers next learning steps including Full-stack Walkthrough, Eyre HTTP API integration, JSON handling, web front-end development, threads, and software distribution.
+description: End of App School I. Covers next learning steps including Full-stack Walkthrough, Eyre HTTP API integration, JSON handling, web front-end development, threads, and software distribution.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
+
 
 # 12. Next Steps
 

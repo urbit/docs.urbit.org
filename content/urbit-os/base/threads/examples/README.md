@@ -1,6 +1,5 @@
 ---
-description: >-
-  Collection of practical thread examples including Gall agent integration, JSON fetching, child thread management, main-loop patterns, agent communication, scrying, and fact handling.
+description: Collection of practical thread examples including Gall agent integration, JSON fetching, child thread management, main-loop patterns, agent communication, scrying, and fact handling.
 ---
 
 # Examples

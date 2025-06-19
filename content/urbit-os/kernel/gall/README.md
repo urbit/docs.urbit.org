@@ -1,6 +1,5 @@
 ---
-description: >-
-  Documentation for Gall: Arvo's application framework for Urbit userspace apps.
+description: Documentation for Gall, Arvo's application framework for Urbit userspace apps.
 ---
 
 # Gall

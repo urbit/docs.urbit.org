@@ -1,6 +1,5 @@
 ---
-description: >-
-  Documentation for Iris: Arvo's HTTP client module for making HTTP requests.
+description: Documentation for Iris, Arvo's HTTP client module for making HTTP requests.
 ---
 
 # Iris

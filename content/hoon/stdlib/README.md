@@ -1,6 +1,5 @@
 ---
-description: >-
-  Reference documentation for the Hoon standard library, organized by layer from basic arithmetic to advanced compiler operations and text processing.
+description: Reference documentation for the Hoon standard library, organized by layer from basic arithmetic to advanced compiler operations and text processing.
 ---
 
 # Standard Library

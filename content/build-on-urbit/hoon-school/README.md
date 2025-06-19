@@ -1,6 +1,5 @@
 ---
-description: >-
-  Beginner's course for learning Hoon, Urbit's functional programming language, with explanations, exercises, and tutorials for developers at all levels.
+description: Beginner's course for learning Hoon, Urbit's functional programming language, with explanations, exercises, and tutorials for developers at all levels.
 ---
 
 # Hoon School

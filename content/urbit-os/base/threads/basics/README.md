@@ -1,6 +1,5 @@
 ---
-description: >-
-  Tutorial covering thread fundamentals including strands, monadic composition with form and pure, bind operations, input/output handling, and practical examples for writing threads.
+description: Tutorial covering thread fundamentals including strands, monadic composition with form and pure, bind operations, input/output handling, and practical examples for writing threads.
 ---
 
 # Basics Tutorial

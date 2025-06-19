@@ -1,3 +1,18 @@
+---
+description: Guide to Khan, Arvo's thread-runner vane.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Khan
 
 Khan is Arvo's thread-runner module. Its main purpose is to provide an interface for running [threads](../../base/threads) that can be used by Urbit apps, Arvo itself, or external applications using a Unix socket.

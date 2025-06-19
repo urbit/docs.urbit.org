@@ -1,6 +1,5 @@
 ---
-description: >-
-  Documentation for Clay, Arvo's version-controlled, referentially-transparent, and global filesystem, including architecture, data types, marks, and usage patterns.
+description: Documentation for Clay, Arvo's version-controlled, referentially-transparent, and global filesystem, including architecture, data types, marks, and usage patterns.
 ---
 
 # Clay

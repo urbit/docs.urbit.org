@@ -1,6 +1,5 @@
 ---
-description: >-
-  Guide to running Urbit in different contexts including cloud hosting and home servers.
+description: Guide to running Urbit in different contexts including cloud hosting and home servers.
 ---
 
 # Running Urbit

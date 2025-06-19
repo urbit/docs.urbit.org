@@ -1,6 +1,5 @@
 ---
-description: >-
-  Documentation for the %base desk: the Urbit OS standard distribution containing the kernel, Arvo, Hoon standard library, system apps like %hood, and affordances for writing threads.
+description: Documentation for the %base desk, the Urbit OS standard distribution containing the kernel, Arvo, Hoon standard library, system apps like %hood, and affordances for writing threads.
 ---
 
 # The `%base` desk

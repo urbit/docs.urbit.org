@@ -1,6 +1,5 @@
 ---
-description: >-
-  High-level technical introduction to Arvo, Urbit's functional operating system. Covers event handling, deterministic execution, and ACID database properties.
+description: High-level technical introduction to Arvo, Urbit's functional operating system. Covers event handling, deterministic execution, and ACID database properties.
 ---
 
 # Arvo

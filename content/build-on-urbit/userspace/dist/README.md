@@ -1,3 +1,18 @@
+---
+description: Urbit supports peer-to-peer distribution and installation of applications. A user can click on a link to an app published on another ship to install.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Software Distribution
 
 Urbit supports peer-to-peer distribution and installation of applications. A user can click on a link to an app published on another ship to install that app. Landscape lets users manage their installed apps and launch their interfaces in new tabs.

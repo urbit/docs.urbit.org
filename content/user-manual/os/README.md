@@ -1,6 +1,5 @@
 ---
-description: >-
-  User manual for operating and interacting with Urbit OS including filesystem and command line.
+description: User manual for operating and interacting with Urbit OS including filesystem and command line.
 ---
 
 # Urbit OS

@@ -1,3 +1,18 @@
+---
+description: Guide to using marks, Clay's conversion functions.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Marks
 
 Clay is a typed filesystem, and we call these file types marks. When talking about Hoon and Arvo we'll often talk of types like `@ud`, `(list @t)`, etc. A mark will specify such a type for its files, but it does more than just that - it also defines conversion routines to and from other marks, as well as diff, patch, and merge routines.

@@ -1,5 +1,16 @@
 ---
 description: JavaScript libraries for Urbit development including @urbit/http-api for communicating with a Gall agent backend from a React web frontend.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # JS Libraries

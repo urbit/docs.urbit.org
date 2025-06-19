@@ -1,5 +1,16 @@
 ---
 description: Guide to running Urbit in different contexts including cloud hosting and home servers.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Running Urbit

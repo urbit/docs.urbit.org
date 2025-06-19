@@ -1,5 +1,16 @@
 ---
 description: Documentation for Gall, Arvo's application framework for Urbit userspace apps.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Gall

@@ -1,5 +1,16 @@
 ---
 description: Reference documentation for the Hoon standard library, organized by layer from basic arithmetic to advanced compiler operations and text processing.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Standard Library

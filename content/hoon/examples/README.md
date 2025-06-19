@@ -1,5 +1,16 @@
 ---
 description: Programming exercise solutions in Hoon covering algorithms like spell checking with blocks, competitive programming challenges, prime number calculations, path finding, and encryption implementations.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Examples

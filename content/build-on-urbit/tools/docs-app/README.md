@@ -1,5 +1,16 @@
 ---
 description: Documentation application for distributing docs with Urbit desks, supporting multiple file formats (txt, udon, gmi, html), automatic detection, and structured browsing through the %docs app.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Docs App

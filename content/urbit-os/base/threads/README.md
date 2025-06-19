@@ -1,5 +1,16 @@
 ---
 description: Guide to writing threads, transient monadic functions for complex IO operations, managed by the %spider agent or the Khan vane, with tutorials, examples, and API reference.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Threads

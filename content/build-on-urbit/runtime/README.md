@@ -1,5 +1,16 @@
 ---
 description: Documentation for Urbit's runtime and Nock interpreter (Vere), including guides for U3, jetting, C programming in Urbit, and cryptography implementation.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Runtime

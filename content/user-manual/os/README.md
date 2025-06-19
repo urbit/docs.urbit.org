@@ -1,5 +1,16 @@
 ---
 description: User manual for operating and interacting with Urbit OS including filesystem and command line.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Urbit OS

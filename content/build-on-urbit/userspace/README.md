@@ -1,5 +1,16 @@
 ---
 description: Guides for building and distributing userspace applications on Urbit, including examples, exercises, and tutorials for app development.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Userspace

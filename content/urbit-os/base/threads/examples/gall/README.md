@@ -1,5 +1,16 @@
 ---
 description: Examples of Gall agent integration with threads covering thread lifecycle management, starting threads, handling results, subscription patterns, cancellation, and inter-thread communication.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Gall

@@ -1,5 +1,16 @@
 ---
 description: Reference documentation for Hoon's rune expressions organized by family.
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Runes

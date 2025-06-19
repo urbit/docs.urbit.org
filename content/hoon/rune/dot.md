@@ -1,5 +1,5 @@
 ---
-description: Reference for Hoon's Nock runes, including scrying with .^ and basic Nock operations like increment.
+description: "Reference for Hoon's Nock runes, including scrying with .^ and basic Nock operations like increment."
 layout:
   title:
     visible: true

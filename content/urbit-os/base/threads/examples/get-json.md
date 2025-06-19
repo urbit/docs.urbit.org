@@ -1,5 +1,5 @@
 ---
-description: Practical example of fetching and parsing JSON data in threads using strandio's +fetch-json function, demonstrated with a Bitcoin price fetcher that queries external APIs and processes responses.
+description: "Practical example of fetching and parsing JSON data in threads using strandio's +fetch-json function, demonstrated with a Bitcoin price fetcher that queries external APIs and processes responses."
 layout:
   title:
     visible: true

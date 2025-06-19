@@ -1,5 +1,5 @@
 ---
-description: Complete refernce for the Dojo, Urbit's CLI. Includes common actions self-hosted users will need to run their Urbit server.
+description: "Complete refernce for the Dojo, Urbit's CLI. Includes common actions self-hosted users will need to run their Urbit server."
 layout:
   title:
     visible: true

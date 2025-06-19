@@ -1,5 +1,5 @@
 ---
-description: Guide to Azimuth's Layer 2 roller's HTTP RPC-API.
+description: "Guide to Azimuth's Layer 2 roller's HTTP RPC-API."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Technical overview of Azimuth's Layer 2 naive rollups scaling solution: transaction batching, state management, sponsorship mechanics, and security measures for reduced-cost Urbit ID operations.
+description: "Technical overview of Azimuth's Layer 2 naive rollups scaling solution: transaction batching, state management, sponsorship mechanics, and security measures for reduced-cost Urbit ID operations."
 layout:
   title:
     visible: true

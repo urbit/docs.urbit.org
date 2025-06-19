@@ -1,5 +1,5 @@
 ---
-description: Reference guide to Hoon's irregular syntax forms, showing both the irregular and regular forms for common patterns with quick lookup table and detailed explanations.
+description: "Reference guide to Hoon's irregular syntax forms, showing both the irregular and regular forms for common patterns with quick lookup table and detailed explanations."
 layout:
   title:
     visible: true

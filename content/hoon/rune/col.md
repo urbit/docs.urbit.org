@@ -1,5 +1,5 @@
 ---
-description: Reference for Hoon's cell constructor runes, with various forms including irregular syntax for common patterns.
+description: "Reference for Hoon's cell constructor runes, with various forms including irregular syntax for common patterns."
 layout:
   title:
     visible: true

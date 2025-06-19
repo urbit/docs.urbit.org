@@ -1,5 +1,5 @@
 ---
-description: Documentation for Behn, Arvo's timer module for scheduling and managing timers.
+description: "Documentation for Behn, Arvo's timer module for scheduling and managing timers."
 layout:
   title:
     visible: true

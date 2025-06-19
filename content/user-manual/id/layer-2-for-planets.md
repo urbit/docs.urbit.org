@@ -1,5 +1,5 @@
 ---
-description: How planet users can use Azimuth's Layer 2 rollup solution.
+description: "How planet users can use Azimuth's Layer 2 rollup solution."
 layout:
   title:
     visible: true

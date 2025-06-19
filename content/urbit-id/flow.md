@@ -1,5 +1,5 @@
 ---
-description: Technical overview of Azimuth's data flow, including Bridge, Gall agents, the Layer 2 naive rollup solution, and how components in Urbit OS communicate in Urbit's PKI system on Ethereum.
+description: "Technical overview of Azimuth's data flow, including Bridge, Gall agents, the Layer 2 naive rollup solution, and how components in Urbit OS communicate in Urbit's PKI system on Ethereum."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Guide to Dill, Arvo's terminal driver vane.
+description: "Guide to Dill, Arvo's terminal driver vane."
 layout:
   title:
     visible: true

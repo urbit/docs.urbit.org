@@ -1,5 +1,5 @@
 ---
-description: Reference for Hoon's type-casting rune family, which allows safe type transformations without violating constraints.
+description: "Reference for Hoon's type-casting rune family, which allows safe type transformations without violating constraints."
 layout:
   title:
     visible: true

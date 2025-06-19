@@ -1,5 +1,5 @@
 ---
-description: Guide to Jael, Arvo's vane for networking key infrastructure.
+description: "Guide to Jael, Arvo's vane for networking key infrastructure."
 layout:
   title:
     visible: true

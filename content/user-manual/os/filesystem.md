@@ -1,5 +1,5 @@
 ---
-description: Guide to Clay, Arvo's revision-controlled filesystem vane, for self-hosted users.
+description: "Guide to Clay, Arvo's revision-controlled filesystem vane, for self-hosted users."
 layout:
   title:
     visible: true

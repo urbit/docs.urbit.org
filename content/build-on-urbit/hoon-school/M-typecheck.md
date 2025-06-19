@@ -1,5 +1,5 @@
 ---
-description: Detailed examination of Hoon's type checking system, covering type casting, type inference, compile-time verification, mold application, and debugging nest-fail errors in complex type hierarchies.
+description: "Detailed examination of Hoon's type checking system, covering type casting, type inference, compile-time verification, mold application, and debugging nest-fail errors in complex type hierarchies."
 layout:
   title:
     visible: true

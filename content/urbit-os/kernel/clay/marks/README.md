@@ -1,5 +1,5 @@
 ---
-description: Guide to using marks, Clay's conversion functions.
+description: "Guide to using marks, Clay's conversion functions."
 layout:
   title:
     visible: true

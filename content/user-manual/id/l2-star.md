@@ -1,5 +1,5 @@
 ---
-description: How star owners can use Azimuth's Layer 2 rollup.
+description: "How star owners can use Azimuth's Layer 2 rollup."
 layout:
   title:
     visible: true

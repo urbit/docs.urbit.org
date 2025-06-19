@@ -1,5 +1,5 @@
 ---
-description: Guide to Khan, Arvo's thread-runner vane.
+description: "Guide to Khan, Arvo's thread-runner vane."
 layout:
   title:
     visible: true

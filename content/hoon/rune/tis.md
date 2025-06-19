@@ -1,5 +1,5 @@
 ---
-description: Reference for Hoon's subject modification runes.
+description: "Reference for Hoon's subject modification runes."
 layout:
   title:
     visible: true

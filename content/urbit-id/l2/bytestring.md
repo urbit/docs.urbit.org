@@ -1,5 +1,5 @@
 ---
-description: Guide to the bytestring format for Azimuth's Layer 2 roller transactions and batches.
+description: "Guide to the bytestring format for Azimuth's Layer 2 roller transactions and batches."
 layout:
   title:
     visible: true

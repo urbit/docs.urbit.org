@@ -1,5 +1,5 @@
 ---
-description: Guide to Urbit's Hierarchical Deterministic wallet system. Master tickets, proxy keys, wallet generation, and security best practices for Urbit ID ownership.
+description: "Guide to Urbit's Hierarchical Deterministic wallet system. Master tickets, proxy keys, wallet generation, and security best practices for Urbit ID ownership."
 layout:
   title:
     visible: true

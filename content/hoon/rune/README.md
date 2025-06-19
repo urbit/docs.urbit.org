@@ -1,5 +1,5 @@
 ---
-description: Reference documentation for Hoon's rune expressions organized by family.
+description: "Reference documentation for Hoon's rune expressions organized by family."
 layout:
   title:
     visible: true

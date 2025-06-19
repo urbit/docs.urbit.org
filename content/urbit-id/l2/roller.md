@@ -1,5 +1,5 @@
 ---
-description: Overview of Azimuth's Layer 2 naive rollup solution.
+description: "Overview of Azimuth's Layer 2 naive rollup solution."
 layout:
   title:
     visible: true

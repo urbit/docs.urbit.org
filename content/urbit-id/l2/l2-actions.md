@@ -1,5 +1,5 @@
 ---
-description: Guide to the actions that can be taken by Azimuth's Layer 2 roller.
+description: "Guide to the actions that can be taken by Azimuth's Layer 2 roller."
 layout:
   title:
     visible: true

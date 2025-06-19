@@ -1,5 +1,5 @@
 ---
-description: Guide to Lick, Arvo's IPC vane.
+description: "Guide to Lick, Arvo's IPC vane."
 layout:
   title:
     visible: true

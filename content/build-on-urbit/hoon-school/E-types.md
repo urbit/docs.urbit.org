@@ -1,5 +1,5 @@
 ---
-description: Guide to Hoon's type system, covering atoms with auras, molds for data structures, type-checking and type inference, core variance, nesting relationships, and type safety.
+description: "Guide to Hoon's type system, covering atoms with auras, molds for data structures, type-checking and type inference, core variance, nesting relationships, and type safety."
 layout:
   title:
     visible: true

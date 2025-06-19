@@ -1,5 +1,5 @@
 ---
-description: Overview of Azimuth's Proxies system for users.
+description: "Overview of Azimuth's Proxies system for users."
 layout:
   title:
     visible: true

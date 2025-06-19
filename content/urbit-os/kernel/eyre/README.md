@@ -1,5 +1,5 @@
 ---
-description: Guide to Eyre, Arvo's HTTP server vane.
+description: "Guide to Eyre, Arvo's HTTP server vane."
 layout:
   title:
     visible: true

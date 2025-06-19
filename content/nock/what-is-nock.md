@@ -1,5 +1,5 @@
 ---
-description: Introduction to Nock, Urbit's minimal assembly language and computation standard that underlies all of Urbit OS and Hoon compilation.
+description: "Introduction to Nock, Urbit's minimal assembly language and computation standard that underlies all of Urbit OS and Hoon compilation."
 layout:
   title:
     visible: true

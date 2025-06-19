@@ -1,5 +1,5 @@
 ---
-description: Introduction to cores, Hoon's fundamental data structure that separates computation from data. Covers traps for recursion, core creation with arms and samples.
+description: "Introduction to cores, Hoon's fundamental data structure that separates computation from data. Covers traps for recursion, core creation with arms and samples."
 layout:
   title:
     visible: true

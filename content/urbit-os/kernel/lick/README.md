@@ -1,3 +1,18 @@
+---
+description: "Guide to Lick, Arvo's IPC vane."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Lick
 
 Urbit's [inter-process communication](https://en.wikipedia.org/wiki/Inter-process_communication) (IPC) module.

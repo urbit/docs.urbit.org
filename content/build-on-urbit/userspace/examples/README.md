@@ -1,3 +1,18 @@
+---
+description: "Examples and exercises for building Urbit userspace apps including CLI tools, websites, and games."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Examples
 
 This section contains examples of building simple apps and additional exercises to help hone your skills.

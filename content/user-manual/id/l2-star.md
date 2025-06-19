@@ -1,3 +1,18 @@
+---
+description: "How star owners can use Azimuth's Layer 2 rollup."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Layer 2 for stars
 
 This is a brief summary of the three possible options for star owners with respect to use of [layer 2](../../urbit-id/l2/README.md).

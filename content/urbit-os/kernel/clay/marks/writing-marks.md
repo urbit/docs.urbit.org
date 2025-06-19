@@ -1,3 +1,18 @@
+---
+description: "Clay marks guide - writing mark files for data type conversion, validation, parsing, and format handling."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Writing Marks
 
 Here we'll walk through a practical example of writing a `mark` file.

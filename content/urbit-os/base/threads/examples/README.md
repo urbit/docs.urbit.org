@@ -1,3 +1,18 @@
+---
+description: "Collection of practical thread examples including Gall agent integration, JSON fetching, child thread management, main-loop patterns, agent communication, scrying, and fact handling."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Examples
 
 A collection of how-tos and examples for threads.

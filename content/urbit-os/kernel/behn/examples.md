@@ -1,3 +1,18 @@
+---
+description: "Behn timer examples - setting timers with wait tasks, handling wake gifts, and timing operations."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Behn Examples
 
 Here are a couple of practical examples of using Behn's `%wait` and `%rest` `task`s.

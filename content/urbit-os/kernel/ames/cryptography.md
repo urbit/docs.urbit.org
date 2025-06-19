@@ -1,3 +1,18 @@
+---
+description: "Ames cryptography reference - AES encryption, Curve25519 key exchange, packet signing, and comet self-attestation."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Ames Cryptography
 
 Here we give a technical overview of how Ames implements cryptography.

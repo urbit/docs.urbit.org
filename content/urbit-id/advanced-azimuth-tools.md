@@ -1,3 +1,18 @@
+---
+description: "Advanced techniques for generating, signing, and sending Azimuth transactions from within Urbit using the %claz and %eth-sender agents for Layer 1 operations."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Advanced Azimuth Tools
 
 This document outlines some advanced techniques for generating, signing, and sending Azimuth-related transactions from within Urbit itself. It's strongly discouraged to do this unless you're very confident as Azimuth transactions are permanent and will cost ETH to complete. However, until you upload a signed transaction to the blockchain no transaction will take place so it's safe to explore these tools. It will also be very helpful to have at least a rudimentary understanding of Hoon in order to read and modify parts of the code.

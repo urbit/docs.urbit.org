@@ -1,3 +1,18 @@
+---
+description: "Lick IPC guide - building applications that communicate with external programs through Unix sockets."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Lick Guide
 
 In this guide we'll write a pair of simple apps to demonstrate how Lick works. One will be a Gall agent called [`licker.hoon`](#lickerhoon), and the other a Python script called `licker.py`.

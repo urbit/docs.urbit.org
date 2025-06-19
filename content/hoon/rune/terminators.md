@@ -1,3 +1,18 @@
+---
+description: "Reference for Hoon terminators -- and == used to end core expressions and other variable-length expression sequences respectively."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # --, == Terminators
 
 The `--` and `==` are used as terminators: `--` for core expressions, and `==` for terminating a 'running' or 'jogging' series of Hoon expressions.

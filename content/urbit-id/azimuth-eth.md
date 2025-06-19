@@ -1,6 +1,21 @@
+---
+description: "Technical reference for Azimuth.eth, the data store for Urbit ID ownership, Points, Deeds, networking keys, and sponsorship information on Ethereum."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Azimuth.eth Reference
 
-[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Azimuth. This contract is just a data store - it only contains the bare minimum of business logic. See [Ecliptic.eth](ecliptic.md) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by galaxy vote - they are only eligible to modify the Ecliptic.
+[Azimuth.eth](https://etherscan.io/address/azimuth.eth) is used for storing all data related to Azimuth points and their ownership, and should be considered to be the ledger for Urbit ID. This contract is just a data store: it only contains the bare minimum of business logic. See [Ecliptic.eth](ecliptic.md) for the contract containing the business logic for this ledger. `Azimuth.eth` cannot be modified directly by galaxy vote; they are only eligible to modify `Ecliptic.eth`.
 
 ## Global state <a href="#global" id="global"></a>
 

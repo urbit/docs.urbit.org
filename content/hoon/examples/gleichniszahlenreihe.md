@@ -1,3 +1,18 @@
+---
+description: "Challenge to implement the look-and-say sequence (Gleichniszahlenreihe) in Hoon with sample solutions."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Gleichniszahlenreihe
 
 ## Challenge: The Look-and-Say Sequence {#challenge-the-look-and-say-sequence}

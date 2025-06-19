@@ -1,3 +1,18 @@
+---
+description: "Iris HTTP client example - fetching remote resources with GET requests, handling responses, and processing HTTP data."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Iris Example
 
 Here we'll look at a simple example of fetching a remote HTTP resource with Iris. We'll use the following thread, which you can save in the `/ted` directory of your `%base` desk:

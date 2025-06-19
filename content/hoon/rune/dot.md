@@ -1,3 +1,18 @@
+---
+description: "Reference for Hoon's Nock runes, including scrying with .^ and basic Nock operations like increment."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # . dot · Nock
 
 Anything Nock can do, Hoon can do also. These runes are used for carrying out Nock operations in Hoon.

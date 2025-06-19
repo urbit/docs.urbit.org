@@ -1,3 +1,18 @@
+---
+description: "Challenge to restore valid IPv4 addresses from strings of digits by inserting dots."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Restore IP
 
 ## Challenge: Restore IP Addresses {#challenge-restore-ip-addresses}

@@ -1,3 +1,18 @@
+---
+description: "Clay mark examples - CSV mark implementation with parsing, validation, and conversion code samples."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Mark Examples
 
 These are the files used in the [Writing Marks](writing-marks.md) guide.

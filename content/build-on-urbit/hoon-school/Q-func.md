@@ -1,3 +1,18 @@
+---
+description: "Functional programming concepts in Hoon, including gate manipulation, currying and binding samples, changing arity, function composition with cork and corl, and working with lists."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 16. Functional Programming
 
 _This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools._

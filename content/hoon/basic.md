@@ -1,3 +1,18 @@
+---
+description: "Hoon type system fundamentals covering the recursive type data structure including atoms, cells, cores, faces, forks, and auras with explanations of type inference and nest checking."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Basic Types
 
 A type is usually understood to be a set of values.  Hoon values are all nouns, so a Hoon type is a set of nouns.

@@ -1,3 +1,18 @@
+---
+description: "Documentation for Behn, Arvo's timer module for scheduling and managing timers."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Behn
 
 Behn is Arvo's timer module.

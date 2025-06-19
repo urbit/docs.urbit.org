@@ -1,3 +1,18 @@
+---
+description: "Documentation for the %base desk's /sys/zuse.hoon library, which contains helper functions for the kernel."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Zuse
 
 Documentation for the `%base` desk's `/sys/zuse.hoon` library, which contains helper functions for the kernel.

@@ -1,3 +1,18 @@
+---
+description: "Reference for the hint runes used to pass non-semantic information to the interpreter using Nock 11, including debugging and tracing."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # ~ sig · Hints
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter. A mnemonic to remember what sig runes are for is "we're *sig*naling some information to the interpreter".

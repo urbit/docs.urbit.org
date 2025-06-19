@@ -1,3 +1,18 @@
+---
+description: "Reference for Hoon's cell constructor runes, with various forms including irregular syntax for common patterns."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # : col · Cells
 
 The `:` ("col") expressions are used to produce cells, which are pairs of

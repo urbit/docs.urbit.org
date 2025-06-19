@@ -1,3 +1,18 @@
+---
+description: "Course for developers who have finished Hoon School to learn Arvo kernel development, covering each part of Arvo, Zuse, Hoon, and the runtime for core Urbit OS development."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Core Academy
 
 Core Academy prepares [Hoon](../../hoon/why-hoon.md) developers to become [Arvo](../../urbit-os/what-is-urbit-os.md) kernel developers. While only [Hoon School](../hoon-school/) is strictly necessary to follow this material, readers should be capable of writing fairly complex applications in Hoon. Some knowledge of C and/or Rust is also necessary for some of the runtime material.

@@ -1,3 +1,18 @@
+---
+description: "Programming challenge solution for spelling words with letter blocks in Hoon including input validation, alphabet checking, and backtracking algorithm implementation with unit tests."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # ABC Blocks
 
 ## Challenge: ABC Blocks {#challenge-abc-blocks}

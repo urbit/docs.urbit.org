@@ -1,3 +1,18 @@
+---
+description: "API reference for %hood, a Gall agent that interfaces with Urbit OS. Includes documentation for its modules Drum (CLI management), Helm (system control), and Kiln (desk updates and filesystem)."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Hood
 
 `%hood` is the system manager and control agent included in the `%base` desk. It's divided into three modules located in `/lib/hood/`:

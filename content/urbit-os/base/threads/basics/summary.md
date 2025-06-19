@@ -1,3 +1,18 @@
+---
+description: "Summary and recap of thread concepts including %spider agent management, strand composition, +form/+pure/+bind operations, input/output patterns, and strandio utility functions."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Summary
 
 That's basically all you need to know to write threads. The best way to get a good handle on them is just to experiment with some `strandio` functions. For information on running threads from gall agents, see [here](/userspace/threads/examples/gall) and for some examples see [here](/userspace/threads/examples).

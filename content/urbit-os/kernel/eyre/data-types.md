@@ -1,3 +1,18 @@
+---
+description: "Eyre data type reference - web server structures for HTTP requests, responses, sessions, and server state."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Eyre Data Types
 
 This document describes the data types used by Eyre as defined in `/sys/lull.hoon`. It's separated into two sections:

@@ -1,3 +1,18 @@
+---
+description: "Complete Nock specification explaining the data model, reductions, and operational semantics."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Specification
 
 To make Nock make sense, let's work through the spec line by line. First the data model:

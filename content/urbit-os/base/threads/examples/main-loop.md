@@ -1,3 +1,18 @@
+---
+description: "Advanced thread examples using main-loop for continuous processing, multiple function patterns, and subscription handling."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Main-loop
 
 `main-loop` is a useful function included in `strandio` that:

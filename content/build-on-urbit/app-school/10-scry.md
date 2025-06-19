@@ -1,3 +1,18 @@
+---
+description: "Guide to Gall agent scry functionality covering read-only data requests with the .^ dotket rune, +on-peek arm implementation, endpoint patterns, and practical examples."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 10. Scries
 
 In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../urbit-os/kernel/arvo/scry.md), as well as the [dotket rune documentation](../../hoon/rune/dot.md#dotket).

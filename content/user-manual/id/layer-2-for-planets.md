@@ -1,3 +1,18 @@
+---
+description: "How planet users can use Azimuth's Layer 2 rollup solution."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Layer 2 for planets
 
 What does Layer 2 mean for planets? Cheap transaction fees which make it inexpensive to get on the network and stay on the network.

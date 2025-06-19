@@ -1,3 +1,18 @@
+---
+description: "Documentation application for distributing docs with Urbit desks."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Docs App
 
 The `%docs` app allows you to include documentation with the desks you distribute, making them available for easy browsing by users and developers.

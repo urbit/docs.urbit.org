@@ -1,3 +1,18 @@
+---
+description: "Eyre external API reference - HTTP endpoints, channel communication, authentication, and web interface integration."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Eyre External API
 
 This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Guide](guide.md) document.

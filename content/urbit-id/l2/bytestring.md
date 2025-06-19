@@ -1,3 +1,18 @@
+---
+description: "Guide to the bytestring format for Azimuth's Layer 2 roller transactions and batches."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # L2 Transaction Format
 
 This document gives the bytestring format for layer 2 transactions and batches.

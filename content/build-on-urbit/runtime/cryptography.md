@@ -1,3 +1,18 @@
+---
+description: "Cryptographic primitives used by Arvo. Ed25519 signatures, AES-SIV encryption. All jetted for performance."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Cryptography
 
 All cryptographic primitives utilized by Arvo are [jetted](../../nock/jetting.md). This is done for performance-related reasons in other parts of the system, but for cryptography this is also extremely important because it allows us to utilize standard reference implementations for the primitives written in C.

@@ -1,3 +1,18 @@
+---
+description: "Guide to noun serialization in Hoon using jamming and cuing techniques for converting nouns to atoms and back, with compression through internal references."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Serialization
 
 Noun serialization refers to a uniquely-defined technique for converting a noun into a single atom.  The basic noun serialization process in Urbit, called “jamming”, includes supporting internal references so that there is a minor compression effect included.

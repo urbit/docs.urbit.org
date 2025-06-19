@@ -1,3 +1,18 @@
+---
+description: "Reference for the make rune family used for miscellaneous useful macros, including n-ary function calls and monadic notation."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # ; mic · Make
 
 Miscellaneous useful macros.

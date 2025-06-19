@@ -1,3 +1,18 @@
+---
+description: "Advanced Hoon type system concepts including polymorphism, variance, wet and dry arms, core nesting rules, and advanced features like aliasing and bridges for complex programming scenarios."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Advanced Types
 
 The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.

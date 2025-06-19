@@ -1,3 +1,18 @@
+---
+description: "Exercise in implementing decrement in Nock as a practice for understanding the language."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Decrement
 
 A good practice exercise for Nock is a decrement formula.  Ie, a formula `f` which implements the partial function that produces `(s - 1)` if `s` is a nonzero atom, and otherwise does not terminate.

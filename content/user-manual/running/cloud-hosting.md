@@ -1,3 +1,18 @@
+---
+description: "Step-by-step guide to deploying Urbit on Digital Ocean cloud servers for remote access."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Cloud Hosting
 
 The goal of this guide is to have clear and easy to follow best practices for deploying an Urbit node to a server you control in the cloud. Deploying in the cloud allows you to access your Urbit from any device.

@@ -1,3 +1,18 @@
+---
+description: "Using Eyre, the HTTP server vane, in full-stack Urbit development. Covers the channel system for pokes and subscriptions, scry interface for data queries, and authentication mechanisms."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 5. Eyre
 
 Now that we have our structure file, agent, `$json` conversion library and mark file, our back-end is complete. Before we start writing our front-end, though, we should give a brief overview of how Eyre works.

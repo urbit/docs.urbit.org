@@ -1,3 +1,18 @@
+---
+description: "Clay data type reference - filesystem structures for files, desks, revisions, merges, and version control."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Clay Data Types
 
 This section will be reference documentation for the data types used by our filesystem.

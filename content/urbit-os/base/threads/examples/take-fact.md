@@ -1,3 +1,18 @@
+---
+description: "Thread example demonstrating subscription and fact handling - watching agents, taking facts, and processing subscription data."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Take Fact
 
 Taking a fact from an agent is easy. First you subscribe using `+watch:strandio` or `+watch-our:strandio`, then you use `+take-fact:strandio` to receive the fact.

@@ -1,3 +1,18 @@
+---
+description: "Khan API reference - thread runner tasks for executing threads, handling results, and thread lifecycle management."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Khan API Reference
 
 These are the `task`s Khan can be passed and the `gift`s it can give.

@@ -1,3 +1,18 @@
+---
+description: "Creating mark files for full-stack Urbit apps. Conversion methods between native types and JSON, defining +grow and +grab arms for custom type conversion logic."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 4. Marks
 
 In this section we'll write the mark files for our agent. We'll need two marks, one for poke `$action`s and one for subscription updates and scry results, both of which are `$update`s. Our `$action` mark will be called `%journal-action` and our `$update` mark will be called `%journal-update`. These will be located at `/mar/journal/action.hoon` and `/mar/journal/update.hoon`.

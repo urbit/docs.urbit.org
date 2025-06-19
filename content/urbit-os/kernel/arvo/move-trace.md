@@ -1,3 +1,18 @@
+---
+description: "Arvo move trace tutorial - debugging kernel operations, tracing moves, and understanding system message flow."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Move Trace
 
 In this tutorial we will run a simple "move trace" and use the output to get a picture of what the Arvo kernel proper does during the routine task of setting a timer. Some level of familiarity with the kernel is required for this section.

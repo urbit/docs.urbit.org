@@ -1,3 +1,18 @@
+---
+description: "Eyre scry reference - web server queries for connections, bindings, authentication, and HTTP server state."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Eyre Scry Reference
 
 Here are all of Eyre's scry endpoints. There's not too many and they mostly deal with either CORS settings or aspects of the state of connections.

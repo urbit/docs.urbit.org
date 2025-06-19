@@ -1,3 +1,18 @@
+---
+description: "Guide to Dill, Arvo's terminal driver vane."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Dill
 
 Dill is Arvo's terminal driver module, used to power Urbit's CLI.

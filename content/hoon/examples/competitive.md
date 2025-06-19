@@ -1,3 +1,18 @@
+---
+description: "Programming implementations in Hoon for common algorithmic tasks including sorting, bitwise operations, prime calculation, functional operators, floating-point math, and debugging techniques."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Competitive Programming
 
 Let's take a quick look at implementations for some common tasks in Hoon.  I assume that you want to use library tools whenever possible, but you can delve into the source code itself if you want to know more.

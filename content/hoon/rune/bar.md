@@ -1,3 +1,18 @@
+---
+description: "Reference for the core rune family, including gates, doors, traps, and wet cores with detailed syntax and examples for each variant."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # | bar · Cores
 
 Core expressions produce cores. A core is a cell of `[battery payload]`. The `battery` is code, a battery of Nock formulas. The `payload` is the data needed to run those formulas correctly.

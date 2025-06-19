@@ -1,3 +1,18 @@
+---
+description: "Eyre API reference - web server tasks for HTTP handling, binding URLs, serving content, and session management."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Eyre Internal API
 
 This document details all the `task`s you're likely to use to interact with Eyre, as well as the `gift`s you'll receive in response.

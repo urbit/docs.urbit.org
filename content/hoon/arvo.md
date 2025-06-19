@@ -1,3 +1,18 @@
+---
+description: "Arvo types and functions reference including fundamental types like $arch, $beak, $beam, $cage, $duct, $move, $ship, and utilities for Clay nodes, global paths, event processing, and namespace."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Arvo
 
 The `arvo.hoon` file primarily contains the basic event processing and routing machinery of Arvo, but it also defines a number of useful types and other functions. Some of these have been excluded as they're obscure types only used internally by Arvo, but the rest are documented below.

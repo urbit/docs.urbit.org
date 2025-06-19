@@ -1,3 +1,18 @@
+---
+description: "Introduction to limbs and wings in Hoon, which provide the primary mechanism for accessing data from the subject without traditional scope or environment concepts."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Limbs and wings
 
 One feature Hoon lacks: a context that isn't a first-class value. Hoon has no concept of scope, environment, etc. An expression has exactly one data source, the subject, a noun like any other.

@@ -1,3 +1,18 @@
+---
+description: "Guide to monadic bind operations for strand composition using the ;< micgal rune, chaining strands sequentially, error handling, and strandio library functions for complex thread operations."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Bind
 
 Having looked at `+form` and `+pure`, we'll now look at the last `+strand` arm `+bind`. Bind is typically used in combination with micgal (`;<`).

@@ -1,3 +1,18 @@
+---
+description: "Challenge to find the minimum cost path through a 2D grid using dynamic programming."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Minimum Path Sum
 
 ## Challenge: Minimum Path Sum {#challenge-minimum-path-sum}

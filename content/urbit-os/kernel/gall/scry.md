@@ -1,3 +1,18 @@
+---
+description: "Gall scry reference - agent queries and vane-level endpoints for agent state, subscriptions, and metadata."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Gall Scry Reference
 
 Gall's scry interface is mainly used to scry into the individual agents it's running. The vane itself does have its own interface, however. Both [agent scries](#agent-scries) and [vane scries](#vane-scries) are documented below.

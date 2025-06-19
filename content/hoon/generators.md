@@ -1,3 +1,18 @@
+---
+description: "Guide to building and using Hoon generator scripts for Dojo interaction, including bare generators for standalone calculations, %say generators with system knowledge access, and %ask generators."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Generators
 
 Generator files provide a way for users to interact with code "scripts" through the Dojo prompt.  There are three basic kinds of generators:

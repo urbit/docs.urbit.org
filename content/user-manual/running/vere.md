@@ -1,3 +1,18 @@
+---
+description: "Guide to Vere, the Urbit runtime and Nock interpreter, for self-hosted users."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Runtime Reference
 
 The Urbit runtime is named Vere. It's the binary executable you use to run your ship. Vere manages your ship's pier, handles events, and runs the Nock virtual machine that performs your ship's computations.

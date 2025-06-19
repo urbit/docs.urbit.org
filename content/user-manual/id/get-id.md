@@ -1,3 +1,18 @@
+---
+description: "How users can acquire an Urbit ID."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Get an Urbit ID
 
 ### Types of ID {#types-of-id}

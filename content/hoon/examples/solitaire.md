@@ -1,3 +1,18 @@
+---
+description: "Challenge to implement the Solitaire cryptographic cipher algorithm using playing cards as keys."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Solitaire Cipher
 
 ## Challenge: Solitaire Encryption Cipher {#challenge-solitaire-encryption-cipher}

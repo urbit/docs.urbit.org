@@ -1,3 +1,18 @@
+---
+description: "Lick API reference - IPC tasks for socket creation, data transmission, and inter-process communication."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Lick API Reference
 
 In this document we describe the public interface for Lick. Namely, we describe each `task` that Lick can be `pass`ed, and which `gift`(s) Lick can `give` in return.

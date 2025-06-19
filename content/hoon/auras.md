@@ -1,3 +1,18 @@
+---
+description: "Hoon aura system reference covering soft type annotation for atoms including text, numbers, dates, addresses, and their nesting behavior, bitwidth specifications, and literal syntax examples."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Auras
 
 Auras are system of nested "soft types" on atoms that are used to track metadata about how a particular atom is to be interpreted. This is used for type checking as well as pretty printing.

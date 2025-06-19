@@ -1,3 +1,18 @@
+---
+description: "Eyre authentication guide - web login, session management, cookies, and secure authentication mechanisms."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # EAuth
 
 EAuth is a system built into Eyre which allows one ship to log into the web interface of another. Once logged in, all requests through Eyre will appear to Gall agents as having come from the foreign ship, in the `src` of the bowl. The agents can apply whatever logic they want based on the foreign `src`. Most Urbit apps (including Landscape) don't currently allow requests from anyone but the local ship. Nevertheless, EAuth has many potential useful applications, such as a allowing comments from other ships on a public-facing Urbit-hosted blog.

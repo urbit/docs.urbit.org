@@ -1,3 +1,18 @@
+---
+description: "Detailed examination of Hoon's type checking system, covering type casting, type inference, compile-time verification, mold application, and debugging nest-fail errors in complex type hierarchies."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 12. Type Checking
 
 _In this module we'll cover how the Hoon compiler infers type, as well as various cases in which a type check is performed._

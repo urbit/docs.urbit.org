@@ -1,3 +1,18 @@
+---
+description: "Formal definition of Nock with reduction rules and combinator specifications."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Definition
 
 Nock is a Turing-complete function that maps a cell `[subject formula]` to a noun `product`, where `subject` is the data, `formula` is the code, and `product` is the result.

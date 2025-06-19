@@ -1,3 +1,18 @@
+---
+description: "Gall agent example demonstrating how to poke running threads."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Poke Thread
 
 Here's a modified agent that pokes a thread. We start it by poking Spider directly because we need to know the thread ID to poke the thread itself. In this example we use a thread file, but an inline thread could also be used.

@@ -1,3 +1,18 @@
+---
+description: "Example thread demonstrating how to poke agents - sending a |hi command to a ship via the hood agent."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Poke Agent
 
 Here's a thread that sends a `|hi` to a ship via the `%hood` agent:

@@ -1,3 +1,18 @@
+---
+description: "Tutorial on building a reverse Polish notation calculator CLI app using Hoon and the shoe library."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Building a CLI App
 
 We will utilize the basic calculator app logic from the [parsing guide](../../../hoon/parsing.md#recursive-parsers) to produce a linked calculator agent `%rpn` supporting the following operators by the appropriate parsers:

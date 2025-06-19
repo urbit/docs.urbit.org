@@ -1,3 +1,18 @@
+---
+description: "Technical overview of Azimuth's Layer 2 naive rollups scaling solution: transaction batching, state management, sponsorship mechanics, and security measures for reduced-cost Urbit ID operations."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Layer 2 Overview
 
 This document provides technical details on Azimuth's "Layer 2" scaling solution for Azimuth, known more formally as "naive rollups". We focus here primarily on the "Hoon smart contract" located at `/lib/naive.hoon` in your ship's pier, as well as other proximal topics.

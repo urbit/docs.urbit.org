@@ -1,3 +1,18 @@
+---
+description: "Guide to Hoon's string types including cords, tapes, and text manipulation functions."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Strings
 
 This document discusses hoon's two main string types: `cord`s (as well as its subsets `knot` and `term`) and `tape`s. The focus of this document is on their basic properties, syntax and the most common text-related functions you'll regularly encounter. In particular, it discusses conversions and the encoding/decoding of atom auras in strings.

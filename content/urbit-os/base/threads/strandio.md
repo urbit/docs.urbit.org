@@ -1,3 +1,18 @@
+---
+description: "Reference for Strandio library functions - HTTP requests, pokes, subscriptions, scries, timers, and more for thread programming."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Strandio Reference
 
 Documented below are the many useful functions in the

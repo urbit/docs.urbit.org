@@ -1,3 +1,18 @@
+---
+description: "Thread examples showing how parent threads can start/stop child threads, and get their results."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Child Thread
 
 Here's a simple example of a thread that starts another thread:

@@ -1,3 +1,18 @@
+---
+description: "Official Hoon style guide covering layout conventions, naming standards, commenting practices, and code quality."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Hoon Style Guide
 
 Welcome to the Hoon style guide. It’s important to familiarize yourself with our way of writing Hoon code.

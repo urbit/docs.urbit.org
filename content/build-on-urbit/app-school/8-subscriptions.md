@@ -1,3 +1,18 @@
+---
+description: "Gall agent subscription mechanics covering +on-watch for incoming subscriptions, subscription paths, sending updates with %fact cards, kicking subscribers, and managing outgoing subscriptions."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 8. Subscriptions
 
 In this lesson we're going to look at subscriptions. Subscriptions are probably the most complicated part of writing agents, so there's a fair bit to cover. Before we get into the nitty-gritty details, we'll give a brief overview of Gall's subscription mechanics.

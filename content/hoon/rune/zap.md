@@ -1,3 +1,18 @@
+---
+description: "Reference for the wild runes used for special operations, including AST introspection and vase creation for dynamic types."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # ! zap · Wild
 
 ## !, "zapcom" {#zapcom}

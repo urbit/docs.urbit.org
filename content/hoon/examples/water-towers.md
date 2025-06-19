@@ -1,3 +1,18 @@
+---
+description: "Challenge to calculate water trapped between tower heights using dynamic programming."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Water Towers
 
 ## Challenge: Water between Towers {#challenge-water-between-towers}

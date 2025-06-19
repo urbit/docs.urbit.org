@@ -1,3 +1,18 @@
+---
+description: "Guide to mathematical operations in Hoon beyond unsigned integers, covering floating-point arithmetic, signed integers, modular arithmetic, bitwise operations, and IEEE 754."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 19. Mathematics
 
 _This module introduces how non-`@ud` mathematics are instrumented in Hoon. It may be considered optional and skipped if you are speedrunning Hoon School._

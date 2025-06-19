@@ -1,3 +1,18 @@
+---
+description: "Clay filesystem architecture - distributed revision control, typed data, persistence, and versioned filesystem design."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Clay Architecture
 
 Clay is the primary filesystem for the [Arvo](../arvo/README.md) operating system, which is the core of an urbit. The architecture of Clay is intrinsically connected with Arvo, but for this section we assume no knowledge of either Arvo or Urbit. We will point out only those features of Arvo that are necessary for an understanding of Clay, and we will do so only when they arise.

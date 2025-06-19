@@ -1,3 +1,18 @@
+---
+description: "Advanced core concepts including doors (gate-building gates), doors as parametrized cores with sample data, working with `+map`s (key-value stores), and stateful computation patterns."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 10. Cores and Doors
 
 _Hoon is statically typed, which means (among other things) that auras are subject to strict nesting rules, molds are crash-only, and the whole thing is rather cantankerous about matching types. However, since gate-building arms are possible, Hoon developers frequently employ them as templates to build type-appropriate cores, including gates. This module will start by introducing the concept of gate-building gates; then it will expand our notion of cores to include doors; finally it will introduce a common door, the [`+map`](../../hoon/stdlib/2o.md#map), to illustrate how doors work._

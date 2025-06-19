@@ -1,3 +1,18 @@
+---
+description: "Guide to creating, importing, and using libraries in Hoon programming. Covers library imports with the /+ faslus rune, helper cores, composition runes, and best practices for code organization."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 7. Libraries
 
 _Libraries allow you to import and share processing code. This module will discuss how libraries can be produced, imported, and used._

@@ -1,3 +1,18 @@
+---
+description: "Testing Hoon code, including unit testing frameworks, fences for runtime assertions, debugging strategies, and best practices for building reliable and maintainable software."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 8. Testing Code
 
 _This module will discuss how we can have confidence that a program does what it claims to do, using unit testing and debugging strategies. It may be considered optional and skipped if you are speedrunning Hoon School._

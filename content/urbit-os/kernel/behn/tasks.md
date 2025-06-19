@@ -1,3 +1,18 @@
+---
+description: "Behn API reference - timer tasks for setting and cancelling timers, scheduling events, and time management."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Behn API Reference
 
 In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.

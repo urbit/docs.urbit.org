@@ -1,3 +1,18 @@
+---
+description: "Comprehensive guide to u3 noun processing in C. Memory model, reference counting, road system architecture."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Land of Nouns
 
 The division between `c3` and `u3` is that you could theoretically imagine using `c3` as just a generic C environment.  Anything to do with nouns is in `u3`.

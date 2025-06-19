@@ -1,3 +1,18 @@
+---
+description: "Reference for the arm rune family used to define functions and other named expressions in cores, including normal computations, structure definitions, and constructors."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # + lus · Arms
 
 A core is a cell of `[battery payload]`. The battery is made of one or more arms, each of which is a computation on its parent core.

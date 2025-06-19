@@ -1,3 +1,18 @@
+---
+description: "Guide to vases, pairs of type and data used for runtime type information in Urbit."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Vases
 
 ## Overview {#overview}

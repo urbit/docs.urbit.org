@@ -1,3 +1,18 @@
+---
+description: "Step-by-step tutorial for setting up your own Layer 2 roller for Urbit ID transactions, including configuration, Bridge setup, and roller management commands."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Custom Roller Tutorial
 
 This tutorial is an outline for how to set up your own L2 roller for Urbit. Some familiarity with how L2 works in general, as well as the role of the roller, is expected. See [Layer 2 Overview](l2/README.md) for a technical overview of L2, [Azimuth Data Flow](flow.md) to gain an understanding of how Azimuth data handling and processing is done on Urbit, and [Rollers](l2/roller.md) for a short summary of what the different Gall agents involved for rollers are. This tutorial is focused on setting up a roller to work on the main Ethereum network, but only minor changes are needed to utilize the Ropsten Ethereum network. We also explain how to set up a front end (Bridge) from which transactions to be batched by the roller are sent, but use of a front end is not mandatory.

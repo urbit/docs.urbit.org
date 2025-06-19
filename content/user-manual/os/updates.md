@@ -1,3 +1,18 @@
+---
+description: "Guide to managing Urbit OS updates including Vere runtime, Arvo kernel, and application updates."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Updates
 
 The OS/kernel in Urbit is called Arvo. Arvo is run inside a virtual machine called Vere - this is the `urbit` binary you execute in the terminal. You can also install a number of userspace applications such as Groups, Studio, Pals, etc. Each of these layers—Vere, Arvo and apps—receive updates. In this guide, we'll look at how to deal with these updates, the meaning of the update notifications you'll get in Landscape, and how these layers depend on each other.

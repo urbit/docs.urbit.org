@@ -1,3 +1,18 @@
+---
+description: "Reference for constant expressions in Hoon, including cold atoms, strings with interpolation, and path syntax with examples."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Constants (Atoms and Strings)
 
 The simplest expressions in every language are constants: atoms, strings, paths. (Strings and paths aren't all constants per se, because they have interpolations.)

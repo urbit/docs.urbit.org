@@ -1,3 +1,18 @@
+---
+description: "Technical documentation for Ames, Urbit's encrypted peer-to-peer networking protocol and the Arvo vane that implements it. Includes packet format, flows, congestion control, and cryptography."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Ames
 
 Our networking protocol.

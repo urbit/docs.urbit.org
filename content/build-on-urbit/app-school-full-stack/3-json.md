@@ -1,3 +1,18 @@
+---
+description: "Building JSON conversion libraries for full-stack Urbit apps covering +enjs and +dejs functions for encoding/decoding data, mark conversion workflows, and bridging Gall agents with web frontends."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 3. JSON
 
 Data sent between our agent and our front-end will all be encoded as JSON. In this section, we'll briefly look at how JSON works in Urbit, and write a library to convert our agent's structures to and from JSON for our front-end.

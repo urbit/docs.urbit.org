@@ -1,3 +1,18 @@
+---
+description: "Gall API reference - agent notes and cards for communication, requests, arvo tasks, and inter-agent messaging."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Gall API Reference
 
 ## Agent Notes {#agent-notes}

@@ -1,3 +1,18 @@
+---
+description: "Behn scry reference - timer queries for debugging timers, next timer, and scheduled timer information."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Behn Scry Reference
 
 Here are Behn's scry endpoints. There's only a few and they're mostly just useful for debugging. All of Behn's scries take a `%x` `care` and require the `desk` in the path prefix be empty, so the general format is `.^([type] %bx /=//=/[some-path])`.

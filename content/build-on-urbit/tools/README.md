@@ -1,3 +1,18 @@
+---
+description: "Developer documentation for additional tools, external libraries, and third-party applications for Urbit development, including JavaScript libraries and documentation tools."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Tools
 
 This section of the docs is for developer documentation of additonal, external and/or third-party apps, libraries and tools.

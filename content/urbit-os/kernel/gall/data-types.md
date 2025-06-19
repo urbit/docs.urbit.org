@@ -1,3 +1,18 @@
+---
+description: "Gall data type reference - agent structures for subscriptions, bowls, cards, signs, and agent lifecycle management."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Gall Data Types
 
 This document describes the data types for Gall defined in `lull.hoon`.

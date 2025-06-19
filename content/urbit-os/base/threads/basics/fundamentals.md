@@ -1,3 +1,18 @@
+---
+description: "Thread fundamentals. Transient agent functionality, strand composition, thread definition, the +form and +pure arms, threads' location in /ted directory, and creating basic threads."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Fundamentals
 
 ## Introduction {#introduction}

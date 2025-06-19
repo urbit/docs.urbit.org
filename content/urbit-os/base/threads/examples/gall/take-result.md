@@ -1,3 +1,18 @@
+---
+description: "Gall agent examples showing how to handle thread results - success/failure cases for Khan and Spider thread execution."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Take Result
 
 Two examples are provided: taking the result for a thread started by poking Spider directly, and taking the result for a thread started via the Khan vane.

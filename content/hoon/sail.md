@@ -1,3 +1,18 @@
+---
+description: "Guide to Sail, Urbit's domain-specific language for composing HTML and XML structures directly in Hoon, with syntax and examples for creating web interfaces."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Sail (HTML)
 
 Sail is a domain-specific language for composing HTML (and XML) structures in Hoon. Like everything else in Hoon, a Sail document is a noun, just one produced by a specialized markup language within Hoon.

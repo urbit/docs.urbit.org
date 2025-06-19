@@ -1,3 +1,18 @@
+---
+description: "Guide to Jael, Arvo's vane for networking key infrastructure."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Jael
 
 Jael is Arvo's module for networking key infrastructure.

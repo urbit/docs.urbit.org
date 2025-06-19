@@ -1,3 +1,18 @@
+---
+description: "Reference for Hoon's type-casting rune family, which allows safe type transformations without violating constraints."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # ^ ket · Casts
 
 [`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=` ("kettis")](#-kettis) let us adjust types without violating type constraints.

@@ -1,3 +1,18 @@
+---
+description: "Guide to Hoon data structures including trees, sets, jars, and jugs. Covers mold builders, type system handling, compiler type checking, and practical manipulation operations."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 11. Data Structures
 
 _This module will introduce you to several useful data structures built on the door, then discuss how the compiler handles types and the sample._

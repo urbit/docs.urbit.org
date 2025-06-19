@@ -1,3 +1,18 @@
+---
+description: "Iris data type reference - HTTP client structures for responses, MIME data, and outbound request configuration."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Iris Data Types
 
 Iris itself only has three structures defined in `lull.hoon`, but it also uses `$http` structures which are shared between Iris and Eyre. The `$http` structures are detailed in the [Eyre](../eyre/data-types.md#http) Data Types documentation.

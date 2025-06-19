@@ -1,3 +1,18 @@
+---
+description: "Guide to using Bridge for managing Urbit ID, generating keyfiles, and setting networking keys."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Using Bridge
 
 [Bridge](https://github.com/urbit/bridge) is the application we built for interacting with [Azimuth](https://azimuth.network), the Urbit PKI, and managing your Urbit ID. Importantly, Bridge also allows you to generate a keyfile that you will need to boot your ship so that it can use the Arvo network.

@@ -1,3 +1,18 @@
+---
+description: "Troubleshooting guide for resolving common Urbit ship connectivity and operational issues."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Ship Troubleshooting
 
 Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.

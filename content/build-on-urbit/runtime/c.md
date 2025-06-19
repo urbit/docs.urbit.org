@@ -1,3 +1,18 @@
+---
+description: "C conventions and style used in Urbit. Integer types, variable naming, loobeans. The c3 layer under u3."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # C in Urbit
 
 Under `u3` is the simple `c3` layer, which is just how we write C in Urbit.

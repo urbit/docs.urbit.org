@@ -1,3 +1,18 @@
+---
+description: "Rationale for Hoon programming language design."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Why Hoon?
 
 We're often asked why Urbit is written in a new programming language, Hoon, rather than some existing one like C, Haskell, or more recently Rust.

@@ -1,3 +1,18 @@
+---
+description: "Introduction to cores, Hoon's fundamental data structure that separates computation from data. Covers traps for recursion, core creation with arms and samples."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 5. Cores
 
 "This module will introduce the key Hoon data structure known as the **core**, as well as ramifications."

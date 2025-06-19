@@ -1,6 +1,19 @@
-# 11. Failure
+---
+description: "Guide to Gall agent error handling through the +on-fail arm, covering failure scenarios (crashes in +on-agent, +on-arvo, +on-leave), error types, and helper core patterns."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 
-## 11. Failure
+# 11. Failure
 
 In this lesson we'll cover the last agent arm we haven't touched on yet: `+on-fail`. We'll also touch on one last concept, which is the "helper core".
 

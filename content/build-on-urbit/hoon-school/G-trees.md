@@ -1,3 +1,18 @@
+---
+description: "Understanding Urbit's binary tree data representation, tree addressing systems, data location and evaluation, the `+list` mold, and standard library operations for working with tree-structured data."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 6. Trees and Addressing
 
 _Every noun in Urbit is an atom or a cell. This module will elaborate how we can use this fact to locate data and evaluate code in a given expression. It will also discuss the important `+list` mold builder and a number of standard library operations._

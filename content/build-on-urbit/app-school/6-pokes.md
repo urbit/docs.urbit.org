@@ -1,3 +1,18 @@
+---
+description: "Guide to handling one-off messages (pokes) in Gall agents, covering the +on-poke arm for receiving pokes, +on-agent arm for responses, poke acknowledgments, and practical patterns."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # 6. Pokes
 
 In this lesson we'll look at sending and receiving one-off messages called `%poke`s. We'll look at the `+on-poke` agent arm which handles incoming pokes. We'll also introduce the `+on-agent` arm, and look at the one kind of response it can take - a `%poke-ack`.

@@ -1,3 +1,18 @@
+---
+description: "Guide to running threads via HTTP API - URL structure, mark conversion, JSON handling, and authenticated requests through Eyre."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # HTTP API Guide
 
 Spider has an Eyre binding which allows threads to be run externally via [authenticated](../../kernel/eyre/external-api-ref.md#authentication) HTTP POST requests.

@@ -1,3 +1,18 @@
+---
+description: "Overview of Urbit ID, a decentralized identity standard built on Ethereum. Covers network topology, smart contracts, and Layer 2 rollup functionality."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # What is Urbit ID?
 
 Urbit ID is Urbit's identity standard. It's decentralized, secure, and human-meaningful. It's basis is [a public-key infrastructure (PKI) implemented with NFTs on the Ethereum blockchain](https://urbit.org/blog/pki-maze).

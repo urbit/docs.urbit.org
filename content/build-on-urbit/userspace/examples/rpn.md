@@ -1,5 +1,5 @@
 ---
-description: Tutorial on building a reverse Polish notation calculator CLI app using Hoon and the shoe library.
+description: "Tutorial on building a reverse Polish notation calculator CLI app using Hoon and the shoe library."
 layout:
   title:
     visible: true

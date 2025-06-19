@@ -1,5 +1,5 @@
 ---
-description: Clay mark examples - CSV mark implementation with parsing, validation, and conversion code samples.
+description: "Clay mark examples - CSV mark implementation with parsing, validation, and conversion code samples."
 layout:
   title:
     visible: true

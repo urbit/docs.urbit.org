@@ -1,5 +1,5 @@
 ---
-description: Clay marks guide - writing mark files for data type conversion, validation, parsing, and format handling.
+description: "Clay marks guide - writing mark files for data type conversion, validation, parsing, and format handling."
 layout:
   title:
     visible: true

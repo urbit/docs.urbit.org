@@ -1,5 +1,5 @@
 ---
-description: How users can acquire an Urbit ID.
+description: "How users can acquire an Urbit ID."
 layout:
   title:
     visible: true

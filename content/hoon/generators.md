@@ -1,5 +1,5 @@
 ---
-description: Guide to building and using Hoon generator scripts for Dojo interaction, including bare generators for standalone calculations, %say generators with system knowledge access, and %ask generators.
+description: "Guide to building and using Hoon generator scripts for Dojo interaction, including bare generators for standalone calculations, %say generators with system knowledge access, and %ask generators."
 layout:
   title:
     visible: true

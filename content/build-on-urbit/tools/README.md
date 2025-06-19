@@ -1,5 +1,5 @@
 ---
-description: Developer documentation for additional tools, external libraries, and third-party applications for Urbit development, including JavaScript libraries and documentation tools.
+description: "Developer documentation for additional tools, external libraries, and third-party applications for Urbit development, including JavaScript libraries and documentation tools."
 layout:
   title:
     visible: true

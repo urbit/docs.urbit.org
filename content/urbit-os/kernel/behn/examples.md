@@ -1,5 +1,5 @@
 ---
-description: Behn timer examples - setting timers with wait tasks, handling wake gifts, and timing operations.
+description: "Behn timer examples - setting timers with wait tasks, handling wake gifts, and timing operations."
 layout:
   title:
     visible: true

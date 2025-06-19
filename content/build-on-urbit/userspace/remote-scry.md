@@ -1,5 +1,5 @@
 ---
-description: Remote scrying between ships since kernel v413. Publishing with %grow, encryption options, access control, %keen/%chum/%tune lifecycle.
+description: "Remote scrying between ships since kernel v413. Publishing with %grow, encryption options, access control, %keen/%chum/%tune lifecycle."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Guide to Gall agent structure and core concepts, covering the ten required arms, bowl samples, state management, transition functions, virtualization, and event handling patterns.
+description: "Guide to Gall agent structure and core concepts, covering the ten required arms, bowl samples, state management, transition functions, virtualization, and event handling patterns."
 layout:
   title:
     visible: true

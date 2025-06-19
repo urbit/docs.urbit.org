@@ -1,5 +1,5 @@
 ---
-description: Building and deploying full-stack Urbit apps including desk configuration, kelvin versions, docket file for app metadata, glob creation for frontend assets, and publishing for distribution.
+description: "Building and deploying full-stack Urbit apps including desk configuration, kelvin versions, docket file for app metadata, glob creation for frontend assets, and publishing for distribution."
 layout:
   title:
     visible: true

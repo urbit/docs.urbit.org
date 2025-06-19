@@ -1,5 +1,5 @@
 ---
-description: Cryptography functions reference for Hoon including Suite B cryptography implementation with AES encryption, elliptic curve digital signatures, Diffie-Hellman key exchange, and Ames security.
+description: "Cryptography functions reference for Hoon including Suite B cryptography implementation with AES encryption, elliptic curve digital signatures, Diffie-Hellman key exchange, and Ames security."
 layout:
   title:
     visible: true

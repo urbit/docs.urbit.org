@@ -1,5 +1,5 @@
 ---
-description: Gall scry reference - agent queries and vane-level endpoints for agent state, subscriptions, and metadata.
+description: "Gall scry reference - agent queries and vane-level endpoints for agent state, subscriptions, and metadata."
 layout:
   title:
     visible: true

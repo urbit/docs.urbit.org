@@ -1,5 +1,5 @@
 ---
-description: Guide to text parsing in Hoon, covering parser fundamentals, rule building, parsing techniques with scanning and RegEx-like operations, and building complex parsers.
+description: "Guide to text parsing in Hoon, covering parser fundamentals, rule building, parsing techniques with scanning and RegEx-like operations, and building complex parsers."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Reference for constant expressions in Hoon, including cold atoms, strings with interpolation, and path syntax with examples.
+description: "Reference for constant expressions in Hoon, including cold atoms, strings with interpolation, and path syntax with examples."
 layout:
   title:
     visible: true

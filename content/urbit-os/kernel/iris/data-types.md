@@ -1,5 +1,5 @@
 ---
-description: Iris data type reference - HTTP client structures for responses, MIME data, and outbound request configuration.
+description: "Iris data type reference - HTTP client structures for responses, MIME data, and outbound request configuration."
 layout:
   title:
     visible: true

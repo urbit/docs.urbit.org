@@ -1,5 +1,5 @@
 ---
-description: Docket file configuration for Landscape apps. Defines tile appearance, glob source, version, and metadata using clauses like %title, %color.
+description: "Docket file configuration for Landscape apps. Defines tile appearance, glob source, version, and metadata using clauses like %title, %color."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Technical reference for Azimuth.eth, the data store for Urbit ID ownership, Points, Deeds, networking keys, and sponsorship information on Ethereum.
+description: "Technical reference for Azimuth.eth, the data store for Urbit ID ownership, Points, Deeds, networking keys, and sponsorship information on Ethereum."
 layout:
   title:
     visible: true

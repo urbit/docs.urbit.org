@@ -1,5 +1,5 @@
 ---
-description: Behn scry reference - timer queries for debugging timers, next timer, and scheduled timer information.
+description: "Behn scry reference - timer queries for debugging timers, next timer, and scheduled timer information."
 layout:
   title:
     visible: true

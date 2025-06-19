@@ -1,5 +1,5 @@
 ---
-description: Iris API reference - HTTP client tasks for making requests, canceling requests, and receiving HTTP responses.
+description: "Iris API reference - HTTP client tasks for making requests, canceling requests, and receiving HTTP responses."
 layout:
   title:
     visible: true

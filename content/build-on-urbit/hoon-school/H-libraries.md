@@ -1,5 +1,5 @@
 ---
-description: Guide to creating, importing, and using libraries in Hoon programming. Covers library imports with the /+ faslus rune, helper cores, composition runes, and best practices for code organization.
+description: "Guide to creating, importing, and using libraries in Hoon programming. Covers library imports with the /+ faslus rune, helper cores, composition runes, and best practices for code organization."
 layout:
   title:
     visible: true

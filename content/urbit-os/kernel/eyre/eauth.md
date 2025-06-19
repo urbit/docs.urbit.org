@@ -1,5 +1,5 @@
 ---
-description: Eyre authentication guide - web login, session management, cookies, and secure authentication mechanisms.
+description: "Eyre authentication guide - web login, session management, cookies, and secure authentication mechanisms."
 layout:
   title:
     visible: true

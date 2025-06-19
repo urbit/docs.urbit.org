@@ -1,5 +1,5 @@
 ---
-description: Guide to performing factory resets and understanding network continuity in Urbit.
+description: "Guide to performing factory resets and understanding network continuity in Urbit."
 layout:
   title:
     visible: true

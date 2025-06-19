@@ -1,5 +1,5 @@
 ---
-description: Udon markup language for document composition, similar to Markdown with Urbit-related affordances.
+description: "Udon markup language for document composition, similar to Markdown with Urbit-related affordances."
 layout:
   title:
     visible: true

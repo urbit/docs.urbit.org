@@ -1,5 +1,5 @@
 ---
-description: Thread example showing how to scry ames for ship IP addresses and ports - practical scrying with formatted output.
+description: "Thread example showing how to scry ames for ship IP addresses and ports - practical scrying with formatted output."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Tutorial on connecting a JavaScript Flappy Bird game to an Urbit backend with leaderboard and file serving.
+description: "Tutorial on connecting a JavaScript Flappy Bird game to an Urbit backend with leaderboard and file serving."
 layout:
   title:
     visible: true

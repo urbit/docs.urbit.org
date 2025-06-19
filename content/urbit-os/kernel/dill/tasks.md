@@ -1,5 +1,5 @@
 ---
-description: Dill API reference - terminal tasks for session management, input/output, and system printing.
+description: "Dill API reference - terminal tasks for session management, input/output, and system printing."
 layout:
   title:
     visible: true

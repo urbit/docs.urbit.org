@@ -1,5 +1,5 @@
 ---
-description: Summary and conclusion of the full-stack Urbit app tutorial with reference links for all covered topics including types, agents, JSON conversion, marks, Eyre, React frontend, and desk publishing.
+description: "Summary and conclusion of the full-stack Urbit app tutorial with reference links for all covered topics including types, agents, JSON conversion, marks, Eyre, React frontend, and desk publishing."
 layout:
   title:
     visible: true

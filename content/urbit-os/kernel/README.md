@@ -1,5 +1,5 @@
 ---
-description: API documentation and guides for the Urbit OS kernel and its modules Ames, Behn, Clay, Dill, Eyre, Gall, Iris, Jael, Khan, and Lick.
+description: "API documentation and guides for the Urbit OS kernel and its modules Ames, Behn, Clay, Dill, Eyre, Gall, Iris, Jael, Khan, and Lick."
 layout:
   title:
     visible: true

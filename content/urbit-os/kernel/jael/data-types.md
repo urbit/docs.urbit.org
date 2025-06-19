@@ -1,5 +1,5 @@
 ---
-description: Jael data type reference - PKI structures for keys, points, diffs, blocks, seeds, and Azimuth ship identity data.
+description: "Jael data type reference - PKI structures for keys, points, diffs, blocks, seeds, and Azimuth ship identity data."
 layout:
   title:
     visible: true

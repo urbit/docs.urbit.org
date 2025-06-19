@@ -1,5 +1,5 @@
 ---
-description: Clay marks usage - using mark cores and conversion gates for data transformation and type-safe operations.
+description: "Clay marks usage - using mark cores and conversion gates for data transformation and type-safe operations."
 layout:
   title:
     visible: true

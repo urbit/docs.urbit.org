@@ -1,5 +1,5 @@
 ---
-description: Complete tutorial for creating and publishing Urbit apps. Walk through Hello World example from desk creation to remote installation via Treaty.
+description: "Complete tutorial for creating and publishing Urbit apps. Walk through Hello World example from desk creation to remote installation via Treaty."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Guide to interacting with Arvo vanes (kernel modules) from Gall agents, covering sending tasks to vanes, receiving gifts from vanes in +on-arvo, and practical examples.
+description: "Guide to interacting with Arvo vanes (kernel modules) from Gall agents, covering sending tasks to vanes, receiving gifts from vanes in +on-arvo, and practical examples."
 layout:
   title:
     visible: true

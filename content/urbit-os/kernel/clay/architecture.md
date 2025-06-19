@@ -1,5 +1,5 @@
 ---
-description: Clay filesystem architecture - distributed revision control, typed data, persistence, and versioned filesystem design.
+description: "Clay filesystem architecture - distributed revision control, typed data, persistence, and versioned filesystem design."
 layout:
   title:
     visible: true

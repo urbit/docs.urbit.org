@@ -1,5 +1,5 @@
 ---
-description: Urbit docs site. Urbit ID, Urbit OS, Hoon, Nock, and self-hosting.
+description: "Urbit docs site. Urbit ID, Urbit OS, Hoon, Nock, and self-hosting."
 layout:
   title:
     visible: true

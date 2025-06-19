@@ -1,5 +1,5 @@
 ---
-description: Thread examples showing how parent threads can start/stop child threads, and get their results.
+description: "Thread examples showing how parent threads can start/stop child threads, and get their results."
 layout:
   title:
     visible: true

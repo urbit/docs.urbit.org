@@ -1,5 +1,5 @@
 ---
-description: Guide for operating stars and galaxies including hosting, planet distribution, and etiquette.
+description: "Guide for operating stars and galaxies including hosting, planet distribution, and etiquette."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Gall agent examples for starting threads - inline vs file threads, Khan vs Spider APIs, thread IDs and subscription patterns.
+description: "Gall agent examples for starting threads - inline vs file threads, Khan vs Spider APIs, thread IDs and subscription patterns."
 layout:
   title:
     visible: true

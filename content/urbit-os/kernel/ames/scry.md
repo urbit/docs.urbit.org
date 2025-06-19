@@ -1,5 +1,5 @@
 ---
-description: Ames scry reference - network queries for peers, routes, message flows, bones, and ship connectivity information.
+description: "Ames scry reference - network queries for peers, routes, message flows, bones, and ship connectivity information."
 layout:
   title:
     visible: true

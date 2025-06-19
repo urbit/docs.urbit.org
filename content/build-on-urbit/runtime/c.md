@@ -1,5 +1,5 @@
 ---
-description: C conventions and style used in Urbit. Integer types, variable naming, loobeans. The c3 layer under u3.
+description: "C conventions and style used in Urbit. Integer types, variable naming, loobeans. The c3 layer under u3."
 layout:
   title:
     visible: true

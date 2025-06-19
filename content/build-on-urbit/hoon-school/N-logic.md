@@ -1,5 +1,5 @@
 ---
-description: Guide to conditional logic in Hoon, covering loobean (boolean) values, logical operators (AND, OR, NOT), conditional branching, switch statements, and pattern matching.
+description: "Guide to conditional logic in Hoon, covering loobean (boolean) values, logical operators (AND, OR, NOT), conditional branching, switch statements, and pattern matching."
 layout:
   title:
     visible: true

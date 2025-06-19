@@ -1,5 +1,5 @@
 ---
-description: Tutorial on building a ship monitoring app with Sail frontend, CLI generators, and Behn timers for notifications.
+description: "Tutorial on building a ship monitoring app with Sail frontend, CLI generators, and Behn timers for notifications."
 layout:
   title:
     visible: true

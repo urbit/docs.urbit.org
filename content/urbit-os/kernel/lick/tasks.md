@@ -1,5 +1,5 @@
 ---
-description: Lick API reference - IPC tasks for socket creation, data transmission, and inter-process communication.
+description: "Lick API reference - IPC tasks for socket creation, data transmission, and inter-process communication."
 layout:
   title:
     visible: true

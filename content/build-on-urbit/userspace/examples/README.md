@@ -1,5 +1,5 @@
 ---
-description: Examples and exercises for building Urbit userspace apps including CLI tools, websites, and games.
+description: "Examples and exercises for building Urbit userspace apps including CLI tools, websites, and games."
 layout:
   title:
     visible: true

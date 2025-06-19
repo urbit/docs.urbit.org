@@ -1,5 +1,5 @@
 ---
-description: Advanced techniques for generating, signing, and sending Azimuth transactions from within Urbit using the %claz and %eth-sender agents for Layer 1 operations.
+description: "Advanced techniques for generating, signing, and sending Azimuth transactions from within Urbit using the %claz and %eth-sender agents for Layer 1 operations."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Arvo subscriptions guide - reactive data flow, subscription types, Clay/Gall/Jael subscriptions, and stream mechanics.
+description: "Arvo subscriptions guide - reactive data flow, subscription types, Clay/Gall/Jael subscriptions, and stream mechanics."
 layout:
   title:
     visible: true

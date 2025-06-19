@@ -1,5 +1,5 @@
 ---
-description: Formal definition of Nock with reduction rules and combinator specifications.
+description: "Formal definition of Nock with reduction rules and combinator specifications."
 layout:
   title:
     visible: true

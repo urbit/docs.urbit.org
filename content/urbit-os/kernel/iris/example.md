@@ -1,5 +1,5 @@
 ---
-description: Iris HTTP client example - fetching remote resources with GET requests, handling responses, and processing HTTP data.
+description: "Iris HTTP client example - fetching remote resources with GET requests, handling responses, and processing HTTP data."
 layout:
   title:
     visible: true

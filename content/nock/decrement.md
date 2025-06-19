@@ -1,5 +1,5 @@
 ---
-description: Exercise in implementing decrement in Nock as a practice for understanding the language.
+description: "Exercise in implementing decrement in Nock as a practice for understanding the language."
 layout:
   title:
     visible: true

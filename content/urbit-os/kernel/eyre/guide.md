@@ -1,5 +1,5 @@
 ---
-description: Eyre web server guide - HTTP request handling, URL binding, authentication, channels, and web application development.
+description: "Eyre web server guide - HTTP request handling, URL binding, authentication, channels, and web application development."
 layout:
   title:
     visible: true

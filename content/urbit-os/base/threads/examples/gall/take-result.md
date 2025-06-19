@@ -1,5 +1,5 @@
 ---
-description: Gall agent examples showing how to handle thread results - success/failure cases for Khan and Spider thread execution.
+description: "Gall agent examples showing how to handle thread results - success/failure cases for Khan and Spider thread execution."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Reference for working with mips (maps of maps) in Hoon using the mip library, covering mip operations like insertion, deletion, and retrieval.
+description: "Reference for working with mips (maps of maps) in Hoon using the mip library, covering mip operations like insertion, deletion, and retrieval."
 layout:
   title:
     visible: true

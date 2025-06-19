@@ -1,5 +1,5 @@
 ---
-description: This section covers managing your Urbit ID with Bridge, and some other practical information about using Urbit ID.
+description: "This section covers managing your Urbit ID with Bridge, and some other practical information about using Urbit ID."
 layout:
   title:
     visible: true

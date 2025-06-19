@@ -1,5 +1,5 @@
 ---
-description: Ames cryptography reference - AES encryption, Curve25519 key exchange, packet signing, and comet self-attestation.
+description: "Ames cryptography reference - AES encryption, Curve25519 key exchange, packet signing, and comet self-attestation."
 layout:
   title:
     visible: true

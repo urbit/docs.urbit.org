@@ -1,5 +1,5 @@
 ---
-description: Arvo scry guide - read-only requests to the global namespace, endpoint mechanics, and data retrieval patterns.
+description: "Arvo scry guide - read-only requests to the global namespace, endpoint mechanics, and data retrieval patterns."
 layout:
   title:
     visible: true

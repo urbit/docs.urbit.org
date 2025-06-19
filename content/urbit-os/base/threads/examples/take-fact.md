@@ -1,5 +1,5 @@
 ---
-description: Thread example demonstrating subscription and fact handling - watching agents, taking facts, and processing subscription data.
+description: "Thread example demonstrating subscription and fact handling - watching agents, taking facts, and processing subscription data."
 layout:
   title:
     visible: true

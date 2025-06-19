@@ -1,5 +1,5 @@
 ---
-description: Challenge to implement conversion between Roman numerals and decimal numbers in Hoon.
+description: "Challenge to implement conversion between Roman numerals and decimal numbers in Hoon."
 layout:
   title:
     visible: true

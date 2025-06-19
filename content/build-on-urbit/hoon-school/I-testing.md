@@ -1,5 +1,5 @@
 ---
-description: Testing Hoon code, including unit testing frameworks, fences for runtime assertions, debugging strategies, and best practices for building reliable and maintainable software.
+description: "Testing Hoon code, including unit testing frameworks, fences for runtime assertions, debugging strategies, and best practices for building reliable and maintainable software."
 layout:
   title:
     visible: true

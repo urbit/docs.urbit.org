@@ -1,5 +1,5 @@
 ---
-description: Gall agent example demonstrating how to poke running threads.
+description: "Gall agent example demonstrating how to poke running threads."
 layout:
   title:
     visible: true

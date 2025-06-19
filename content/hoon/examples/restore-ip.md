@@ -1,5 +1,5 @@
 ---
-description: Challenge to restore valid IPv4 addresses from strings of digits by inserting dots.
+description: "Challenge to restore valid IPv4 addresses from strings of digits by inserting dots."
 layout:
   title:
     visible: true

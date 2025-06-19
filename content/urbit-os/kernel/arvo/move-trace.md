@@ -1,5 +1,5 @@
 ---
-description: Arvo move trace tutorial - debugging kernel operations, tracing moves, and understanding system message flow.
+description: "Arvo move trace tutorial - debugging kernel operations, tracing moves, and understanding system message flow."
 layout:
   title:
     visible: true

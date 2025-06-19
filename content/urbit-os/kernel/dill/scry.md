@@ -1,5 +1,5 @@
 ---
-description: Dill scry reference - terminal queries for sessions and system state information.
+description: "Dill scry reference - terminal queries for sessions and system state information."
 layout:
   title:
     visible: true

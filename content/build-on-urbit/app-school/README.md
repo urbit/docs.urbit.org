@@ -1,5 +1,5 @@
 ---
-description: Contents page for the guide to building Gall agents on Urbit, covering state management, subscriptions, and inter-agent communication for Urbit app development.
+description: "Contents page for the guide to building Gall agents on Urbit, covering state management, subscriptions, and inter-agent communication for Urbit app development."
 layout:
   title:
     visible: true

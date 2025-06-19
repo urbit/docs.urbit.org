@@ -1,5 +1,5 @@
 ---
-description: Gall API reference - agent notes and cards for communication, requests, arvo tasks, and inter-agent messaging.
+description: "Gall API reference - agent notes and cards for communication, requests, arvo tasks, and inter-agent messaging."
 layout:
   title:
     visible: true

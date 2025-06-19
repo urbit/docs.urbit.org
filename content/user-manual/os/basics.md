@@ -1,5 +1,5 @@
 ---
-description: Basic instructions on how to set up an run an Urbit server for self-hosted users.
+description: "Basic instructions on how to set up an run an Urbit server for self-hosted users."
 layout:
   title:
     visible: true

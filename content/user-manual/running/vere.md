@@ -1,5 +1,5 @@
 ---
-description: Guide to Vere, the Urbit runtime and Nock interpreter, for self-hosted users.
+description: "Guide to Vere, the Urbit runtime and Nock interpreter, for self-hosted users."
 layout:
   title:
     visible: true

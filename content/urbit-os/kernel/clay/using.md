@@ -1,5 +1,5 @@
 ---
-description: Clay usage guide - reading, subscribing, Unix sync, merge strategies, and filesystem best practices.
+description: "Clay usage guide - reading, subscribing, Unix sync, merge strategies, and filesystem best practices."
 layout:
   title:
     visible: true

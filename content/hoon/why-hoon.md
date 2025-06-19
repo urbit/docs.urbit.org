@@ -1,5 +1,5 @@
 ---
-description: Rationale for Hoon programming language design.
+description: "Rationale for Hoon programming language design."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Spider API reference for starting, stopping, and interacting with threads. Pokes, subscriptions, and thread lifecycle management.
+description: "Spider API reference for starting, stopping, and interacting with threads. Pokes, subscriptions, and thread lifecycle management."
 layout:
   title:
     visible: true

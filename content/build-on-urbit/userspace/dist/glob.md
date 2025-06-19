@@ -1,5 +1,5 @@
 ---
-description: Globs contain client-side resources (HTML, JS, CSS) for Landscape apps. Distribution over Ames or HTTP, Globulator tool, make-glob thread.
+description: "Globs contain client-side resources (HTML, JS, CSS) for Landscape apps. Distribution over Ames or HTTP, Globulator tool, make-glob thread."
 layout:
   title:
     visible: true

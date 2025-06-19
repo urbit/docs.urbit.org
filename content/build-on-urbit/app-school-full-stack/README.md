@@ -1,5 +1,5 @@
 ---
-description: Walkthrough for building a full-stack Urbit application with a Gall backend and React frontend, demonstrating how to create complete web applications on Urbit.
+description: "Walkthrough for building a full-stack Urbit application with a Gall backend and React frontend, demonstrating how to create complete web applications on Urbit."
 layout:
   title:
     visible: true

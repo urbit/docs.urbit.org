@@ -1,5 +1,5 @@
 ---
-description: Eyre data type reference - web server structures for HTTP requests, responses, sessions, and server state.
+description: "Eyre data type reference - web server structures for HTTP requests, responses, sessions, and server state."
 layout:
   title:
     visible: true

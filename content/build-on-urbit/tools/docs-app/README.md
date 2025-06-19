@@ -1,5 +1,5 @@
 ---
-description: Documentation application for distributing docs with Urbit desks.
+description: "Documentation application for distributing docs with Urbit desks."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Guide to vases, pairs of type and data used for runtime type information in Urbit.
+description: "Guide to vases, pairs of type and data used for runtime type information in Urbit."
 layout:
   title:
     visible: true

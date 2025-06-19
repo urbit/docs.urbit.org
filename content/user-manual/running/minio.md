@@ -1,5 +1,5 @@
 ---
-description: Guide to self-hosting MinIO S3-compatible storage for Urbit media uploads and avatars.
+description: "Guide to self-hosting MinIO S3-compatible storage for Urbit media uploads and avatars."
 layout:
   title:
     visible: true

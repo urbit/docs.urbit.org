@@ -1,5 +1,5 @@
 ---
-description: First step in building a full-stack Urbit app. Defining data structures in /sur files including basic types, action commands, update events, and state organization.
+description: "First step in building a full-stack Urbit app. Defining data structures in /sur files including basic types, action commands, update events, and state organization."
 layout:
   title:
     visible: true

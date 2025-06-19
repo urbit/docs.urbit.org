@@ -1,5 +1,5 @@
 ---
-description: Guide to working with JSON in Hoon, covering conversion between Hoon data structures and JSON using +enjs and +dejs functions, with practical examples and mark file creation.
+description: "Guide to working with JSON in Hoon, covering conversion between Hoon data structures and JSON using +enjs and +dejs functions, with practical examples and mark file creation."
 layout:
   title:
     visible: true

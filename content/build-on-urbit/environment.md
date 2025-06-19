@@ -1,5 +1,5 @@
 ---
-description: Developer environment setup guide for Urbit development, including text editor configuration, development ship setup, and project organization best practices.
+description: "Developer environment setup guide for Urbit development, including text editor configuration, development ship setup, and project organization best practices."
 layout:
   title:
     visible: true

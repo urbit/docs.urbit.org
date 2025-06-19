@@ -1,5 +1,5 @@
 ---
-description: Challenge to generate all possible letter combinations from phone keypad number sequences.
+description: "Challenge to generate all possible letter combinations from phone keypad number sequences."
 layout:
   title:
     visible: true

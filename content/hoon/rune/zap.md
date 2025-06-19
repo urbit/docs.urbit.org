@@ -1,5 +1,5 @@
 ---
-description: Reference for the wild runes used for special operations, including AST introspection and vase creation for dynamic types.
+description: "Reference for the wild runes used for special operations, including AST introspection and vase creation for dynamic types."
 layout:
   title:
     visible: true

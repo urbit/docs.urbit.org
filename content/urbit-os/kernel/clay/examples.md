@@ -1,5 +1,5 @@
 ---
-description: Clay filesystem examples - reading files, tracking changes, managing desks, merging, and filesystem operations.
+description: "Clay filesystem examples - reading files, tracking changes, managing desks, merging, and filesystem operations."
 layout:
   title:
     visible: true

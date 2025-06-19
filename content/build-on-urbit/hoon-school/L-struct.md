@@ -1,5 +1,5 @@
 ---
-description: Guide to Hoon data structures including trees, sets, jars, and jugs. Covers mold builders, type system handling, compiler type checking, and practical manipulation operations.
+description: "Guide to Hoon data structures including trees, sets, jars, and jugs. Covers mold builders, type system handling, compiler type checking, and practical manipulation operations."
 layout:
   title:
     visible: true

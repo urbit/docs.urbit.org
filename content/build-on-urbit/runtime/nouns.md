@@ -1,5 +1,5 @@
 ---
-description: Comprehensive guide to u3 noun processing in C. Memory model, reference counting, road system architecture.
+description: "Comprehensive guide to u3 noun processing in C. Memory model, reference counting, road system architecture."
 layout:
   title:
     visible: true

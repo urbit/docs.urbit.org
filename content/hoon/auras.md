@@ -1,5 +1,5 @@
 ---
-description: Hoon aura system reference covering soft type annotation for atoms including text, numbers, dates, addresses, and their nesting behavior, bitwidth specifications, and literal syntax examples.
+description: "Hoon aura system reference covering soft type annotation for atoms including text, numbers, dates, addresses, and their nesting behavior, bitwidth specifications, and literal syntax examples."
 layout:
   title:
     visible: true

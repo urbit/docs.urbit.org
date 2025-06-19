@@ -1,5 +1,5 @@
 ---
-description: Challenge to find and validate Rhonda numbers based on prime factorization and base conversion.
+description: "Challenge to find and validate Rhonda numbers based on prime factorization and base conversion."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: API overview by prefix for u3 system modules. Function reference for noun manipulation, jets, allocation, Nock computation.
+description: "API overview by prefix for u3 system modules. Function reference for noun manipulation, jets, allocation, Nock computation."
 layout:
   title:
     visible: true

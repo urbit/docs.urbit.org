@@ -1,5 +1,5 @@
 ---
-description: Complete tutorial on writing jets in Urbit. C implementations of Hoon gates for performance. Developer environment setup.
+description: "Complete tutorial on writing jets in Urbit. C implementations of Hoon gates for performance. Developer environment setup."
 layout:
   title:
     visible: true

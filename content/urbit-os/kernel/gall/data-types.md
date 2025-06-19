@@ -1,5 +1,5 @@
 ---
-description: Gall data type reference - agent structures for subscriptions, bowls, cards, signs, and agent lifecycle management.
+description: "Gall data type reference - agent structures for subscriptions, bowls, cards, signs, and agent lifecycle management."
 layout:
   title:
     visible: true

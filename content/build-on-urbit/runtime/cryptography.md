@@ -1,5 +1,5 @@
 ---
-description: Cryptographic primitives used by Arvo. Ed25519 signatures, AES-SIV encryption. All jetted for performance.
+description: "Cryptographic primitives used by Arvo. Ed25519 signatures, AES-SIV encryption. All jetted for performance."
 layout:
   title:
     visible: true

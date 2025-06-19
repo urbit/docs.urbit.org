@@ -1,5 +1,5 @@
 ---
-description: Jael API reference - PKI tasks and gifts for key management, subscriptions, domains, and ship identity operations.
+description: "Jael API reference - PKI tasks and gifts for key management, subscriptions, domains, and ship identity operations."
 layout:
   title:
     visible: true

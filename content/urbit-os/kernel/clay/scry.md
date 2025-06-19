@@ -1,5 +1,5 @@
 ---
-description: Clay scry reference - filesystem queries by care for reading files, directories, hashes, and metadata.
+description: "Clay scry reference - filesystem queries by care for reading files, directories, hashes, and metadata."
 layout:
   title:
     visible: true

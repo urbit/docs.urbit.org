@@ -1,5 +1,5 @@
 ---
-description: Reference for the core rune family, including gates, doors, traps, and wet cores with detailed syntax and examples for each variant.
+description: "Reference for the core rune family, including gates, doors, traps, and wet cores with detailed syntax and examples for each variant."
 layout:
   title:
     visible: true

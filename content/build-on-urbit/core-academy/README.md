@@ -1,5 +1,5 @@
 ---
-description: Course for developers who have finished Hoon School to learn Arvo kernel development, covering each part of Arvo, Zuse, Hoon, and the runtime for core Urbit OS development.
+description: "Course for developers who have finished Hoon School to learn Arvo kernel development, covering each part of Arvo, Zuse, Hoon, and the runtime for core Urbit OS development."
 layout:
   title:
     visible: true

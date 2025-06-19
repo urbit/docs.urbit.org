@@ -1,5 +1,5 @@
 ---
-description: Eyre external API reference - HTTP endpoints, channel communication, authentication, and web interface integration.
+description: "Eyre external API reference - HTTP endpoints, channel communication, authentication, and web interface integration."
 layout:
   title:
     visible: true

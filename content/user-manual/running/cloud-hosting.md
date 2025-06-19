@@ -1,5 +1,5 @@
 ---
-description: Step-by-step guide to deploying Urbit on Digital Ocean cloud servers for remote access.
+description: "Step-by-step guide to deploying Urbit on Digital Ocean cloud servers for remote access."
 layout:
   title:
     visible: true

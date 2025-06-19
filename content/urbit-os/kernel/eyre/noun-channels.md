@@ -1,5 +1,5 @@
 ---
-description: Eyre noun channels guide - direct noun communication over HTTP for efficient data exchange with applications.
+description: "Eyre noun channels guide - direct noun communication over HTTP for efficient data exchange with applications."
 layout:
   title:
     visible: true

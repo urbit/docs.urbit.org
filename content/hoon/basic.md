@@ -1,5 +1,5 @@
 ---
-description: Hoon type system fundamentals covering the recursive type data structure including atoms, cells, cores, faces, forks, and auras with explanations of type inference and nest checking.
+description: "Hoon type system fundamentals covering the recursive type data structure including atoms, cells, cores, faces, forks, and auras with explanations of type inference and nest checking."
 layout:
   title:
     visible: true

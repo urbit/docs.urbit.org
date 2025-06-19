@@ -1,5 +1,5 @@
 ---
-description: Programming implementations in Hoon for common algorithmic tasks including sorting, bitwise operations, prime calculation, functional operators, floating-point math, and debugging techniques.
+description: "Programming implementations in Hoon for common algorithmic tasks including sorting, bitwise operations, prime calculation, functional operators, floating-point math, and debugging techniques."
 layout:
   title:
     visible: true

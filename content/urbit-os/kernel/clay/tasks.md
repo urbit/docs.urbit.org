@@ -1,5 +1,5 @@
 ---
-description: Clay API reference - filesystem tasks for reading, writing, tracking changes, and managing desks.
+description: "Clay API reference - filesystem tasks for reading, writing, tracking changes, and managing desks."
 layout:
   title:
     visible: true

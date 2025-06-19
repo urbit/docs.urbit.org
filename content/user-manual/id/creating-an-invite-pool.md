@@ -1,5 +1,5 @@
 ---
-description: Guide for Urbit star owners to create invite pools for distributing planet invites to friends.
+description: "Guide for Urbit star owners to create invite pools for distributing planet invites to friends."
 layout:
   title:
     visible: true

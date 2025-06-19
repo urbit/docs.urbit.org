@@ -1,5 +1,5 @@
 ---
-description: Configuration guide for doc.toc index files in the %docs app, covering structure definition, hierarchical organization, file/directory specification, and automatic table of contents generation.
+description: "Configuration guide for doc.toc index files in the %docs app, covering structure definition, hierarchical organization, file/directory specification, and automatic table of contents generation."
 layout:
   title:
     visible: true

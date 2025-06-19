@@ -1,5 +1,5 @@
 ---
-description: Runtime jetting system that accelerates Nock computation through fast hints. Cold state, hot state, warm state.
+description: "Runtime jetting system that accelerates Nock computation through fast hints. Cold state, hot state, warm state."
 layout:
   title:
     visible: true

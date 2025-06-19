@@ -1,5 +1,5 @@
 ---
-description: Example thread demonstrating how to poke agents - sending a |hi command to a ship via the hood agent.
+description: "Example thread demonstrating how to poke agents - sending a |hi command to a ship via the hood agent."
 layout:
   title:
     visible: true

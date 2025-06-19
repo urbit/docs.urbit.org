@@ -1,5 +1,5 @@
 ---
-description: Jael scry reference - PKI queries for keys, lifes, rifts, domains, subscriptions, and ship identity information.
+description: "Jael scry reference - PKI queries for keys, lifes, rifts, domains, subscriptions, and ship identity information."
 layout:
   title:
     visible: true

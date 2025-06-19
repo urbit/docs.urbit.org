@@ -1,5 +1,5 @@
 ---
-description: Khan data type reference - thread runner structures for results, errors, and thread execution state.
+description: "Khan data type reference - thread runner structures for results, errors, and thread execution state."
 layout:
   title:
     visible: true

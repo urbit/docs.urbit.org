@@ -1,5 +1,5 @@
 ---
-description: Guide to running threads via HTTP API - URL structure, mark conversion, JSON handling, and authenticated requests through Eyre.
+description: "Guide to running threads via HTTP API - URL structure, mark conversion, JSON handling, and authenticated requests through Eyre."
 layout:
   title:
     visible: true

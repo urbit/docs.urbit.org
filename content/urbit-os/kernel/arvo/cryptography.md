@@ -1,5 +1,5 @@
 ---
-description: Arvo cryptography overview - Azimuth keys, networking keys, and cryptographic components across the system.
+description: "Arvo cryptography overview - Azimuth keys, networking keys, and cryptographic components across the system."
 layout:
   title:
     visible: true

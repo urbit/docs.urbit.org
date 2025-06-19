@@ -1,5 +1,5 @@
 ---
-description: Ames data type reference - networking structures for packets, lanes, ships, addresses, and message flow state.
+description: "Ames data type reference - networking structures for packets, lanes, ships, addresses, and message flow state."
 layout:
   title:
     visible: true

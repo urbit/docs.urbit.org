@@ -1,5 +1,5 @@
 ---
-description: Complete guide to Gall agent cards (effects), covering %pass cards for requests, %give cards for responses, subscription management, pokes, vane interactions, and practical examples.
+description: "Complete guide to Gall agent cards (effects), covering %pass cards for requests, %give cards for responses, subscription management, pokes, vane interactions, and practical examples."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Official Hoon style guide covering layout conventions, naming standards, commenting practices, and code quality.
+description: "Official Hoon style guide covering layout conventions, naming standards, commenting practices, and code quality."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Lick IPC examples - inter-process communication with external programs, socket management, and data exchange.
+description: "Lick IPC examples - inter-process communication with external programs, socket management, and data exchange."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Gall agent example for receiving facts from running threads - subscription patterns and fact handling while threads execute.
+description: "Gall agent example for receiving facts from running threads - subscription patterns and fact handling while threads execute."
 layout:
   title:
     visible: true

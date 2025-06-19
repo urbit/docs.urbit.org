@@ -1,5 +1,5 @@
 ---
-description: Khan API reference - thread runner tasks for executing threads, handling results, and thread lifecycle management.
+description: "Khan API reference - thread runner tasks for executing threads, handling results, and thread lifecycle management."
 layout:
   title:
     visible: true

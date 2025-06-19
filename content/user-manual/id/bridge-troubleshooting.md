@@ -1,5 +1,5 @@
 ---
-description: Troubleshooting guide for common issues with the Bridge web application for Urbit ID management.
+description: "Troubleshooting guide for common issues with the Bridge web application for Urbit ID management."
 layout:
   title:
     visible: true

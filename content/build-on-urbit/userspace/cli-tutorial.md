@@ -1,5 +1,5 @@
 ---
-description: Complete tutorial for building CLI applications using /lib/shoe.hoon. Command parsing, session management, the %shoe example app.
+description: "Complete tutorial for building CLI applications using /lib/shoe.hoon. Command parsing, session management, the %shoe example app."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Clay filesystem hierarchy - desk organization, folder structure, app/gen/lib/sur/sys directories and conventions.
+description: "Clay filesystem hierarchy - desk organization, folder structure, app/gen/lib/sur/sys directories and conventions."
 layout:
   title:
     visible: true

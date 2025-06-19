@@ -1,5 +1,5 @@
 ---
-description: Introduction to limbs and wings in Hoon, which provide the primary mechanism for accessing data from the subject without traditional scope or environment concepts.
+description: "Introduction to limbs and wings in Hoon, which provide the primary mechanism for accessing data from the subject without traditional scope or environment concepts."
 layout:
   title:
     visible: true

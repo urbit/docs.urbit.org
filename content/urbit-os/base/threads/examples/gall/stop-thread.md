@@ -1,5 +1,5 @@
 ---
-description: Gall agent example demonstrating how to stop running threads - Spider-stop pokes and thread lifecycle management.
+description: "Gall agent example demonstrating how to stop running threads - Spider-stop pokes and thread lifecycle management."
 layout:
   title:
     visible: true

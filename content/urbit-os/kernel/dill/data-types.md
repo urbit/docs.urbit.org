@@ -1,5 +1,5 @@
 ---
-description: Dill data type reference - terminal structures for dimensions, sessions, input, and output handling.
+description: "Dill data type reference - terminal structures for dimensions, sessions, input, and output handling."
 layout:
   title:
     visible: true

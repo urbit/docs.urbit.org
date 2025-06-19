@@ -1,5 +1,5 @@
 ---
-description: Reference for Strandio library functions - HTTP requests, pokes, subscriptions, scries, timers, and more for thread programming.
+description: "Reference for Strandio library functions - HTTP requests, pokes, subscriptions, scries, timers, and more for thread programming."
 layout:
   title:
     visible: true

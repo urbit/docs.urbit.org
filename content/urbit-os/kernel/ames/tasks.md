@@ -1,5 +1,5 @@
 ---
-description: Ames API reference - networking tasks for messaging, packet handling, remote scries, and ship communication.
+description: "Ames API reference - networking tasks for messaging, packet handling, remote scries, and ship communication."
 layout:
   title:
     visible: true

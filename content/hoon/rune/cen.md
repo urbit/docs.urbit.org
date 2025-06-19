@@ -1,5 +1,5 @@
 ---
-description: Reference for the function call rune family, evaluating arms in cores and doors with various calling patterns and argument arrangements.
+description: "Reference for the function call rune family, evaluating arms in cores and doors with various calling patterns and argument arrangements."
 layout:
   title:
     visible: true

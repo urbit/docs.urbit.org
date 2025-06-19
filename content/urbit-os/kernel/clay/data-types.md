@@ -1,5 +1,5 @@
 ---
-description: Clay data type reference - filesystem structures for files, desks, revisions, merges, and version control.
+description: "Clay data type reference - filesystem structures for files, desks, revisions, merges, and version control."
 layout:
   title:
     visible: true

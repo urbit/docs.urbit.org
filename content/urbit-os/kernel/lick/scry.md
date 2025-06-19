@@ -1,5 +1,5 @@
 ---
-description: Lick scry reference - IPC queries for debugging socket connections and port status.
+description: "Lick scry reference - IPC queries for debugging socket connections and port status."
 layout:
   title:
     visible: true

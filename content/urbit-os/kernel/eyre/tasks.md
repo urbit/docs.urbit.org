@@ -1,5 +1,5 @@
 ---
-description: Eyre API reference - web server tasks for HTTP handling, binding URLs, serving content, and session management.
+description: "Eyre API reference - web server tasks for HTTP handling, binding URLs, serving content, and session management."
 layout:
   title:
     visible: true

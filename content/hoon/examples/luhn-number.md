@@ -1,5 +1,5 @@
 ---
-description: Challenge to implement the Luhn algorithm for credit card number validation in Hoon.
+description: "Challenge to implement the Luhn algorithm for credit card number validation in Hoon."
 layout:
   title:
     visible: true

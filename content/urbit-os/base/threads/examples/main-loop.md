@@ -1,5 +1,5 @@
 ---
-description: Advanced thread examples using main-loop for continuous processing, multiple function patterns, and subscription handling.
+description: "Advanced thread examples using main-loop for continuous processing, multiple function patterns, and subscription handling."
 layout:
   title:
     visible: true

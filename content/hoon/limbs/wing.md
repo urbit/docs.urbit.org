@@ -1,5 +1,5 @@
 ---
-description: Reference for wings in Hoon, which are lists of limbs forming search paths into the subject to access nested data and computations.
+description: "Reference for wings in Hoon, which are lists of limbs forming search paths into the subject to access nested data and computations."
 layout:
   title:
     visible: true

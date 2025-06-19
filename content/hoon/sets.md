@@ -1,5 +1,5 @@
 ---
-description: Guide to working with sets in Hoon. Set creation, membership testing, and set operations like union, intersection, and difference.
+description: "Guide to working with sets in Hoon. Set creation, membership testing, and set operations like union, intersection, and difference."
 layout:
   title:
     visible: true

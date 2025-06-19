@@ -1,5 +1,5 @@
 ---
-description: Behn API reference - timer tasks for setting and cancelling timers, scheduling events, and time management.
+description: "Behn API reference - timer tasks for setting and cancelling timers, scheduling events, and time management."
 layout:
   title:
     visible: true

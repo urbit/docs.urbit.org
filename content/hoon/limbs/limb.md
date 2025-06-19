@@ -1,5 +1,5 @@
 ---
-description: Reference for limbs in Hoon, which are attributes of the subject used to resolve to pieces of data (legs) or computations (arms) within the subject tree.
+description: "Reference for limbs in Hoon, which are attributes of the subject used to resolve to pieces of data (legs) or computations (arms) within the subject tree."
 layout:
   title:
     visible: true

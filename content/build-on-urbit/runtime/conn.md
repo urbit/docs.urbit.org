@@ -1,5 +1,5 @@
 ---
-description: Guide for using conn.c driver. Unix domain socket for external ship interaction. Khan vane, urbit eval utility.
+description: "Guide for using conn.c driver. Unix domain socket for external ship interaction. Khan vane, urbit eval utility."
 layout:
   title:
     visible: true

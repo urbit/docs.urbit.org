@@ -1,5 +1,5 @@
 ---
-description: Challenge to calculate water trapped between tower heights using dynamic programming.
+description: "Challenge to calculate water trapped between tower heights using dynamic programming."
 layout:
   title:
     visible: true

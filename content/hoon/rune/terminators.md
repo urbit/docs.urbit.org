@@ -1,5 +1,5 @@
 ---
-description: Reference for Hoon terminators -- and == used to end core expressions and other variable-length expression sequences respectively.
+description: "Reference for Hoon terminators -- and == used to end core expressions and other variable-length expression sequences respectively."
 layout:
   title:
     visible: true

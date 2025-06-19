@@ -1,5 +1,5 @@
 ---
-description: Urbit supports peer-to-peer distribution and installation of applications. A user can click on a link to an app published on another ship to install.
+description: "Urbit supports peer-to-peer distribution and installation of applications. A user can click on a link to an app published on another ship to install."
 layout:
   title:
     visible: true

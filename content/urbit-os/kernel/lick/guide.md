@@ -1,5 +1,5 @@
 ---
-description: Lick IPC guide - building applications that communicate with external programs through Unix sockets.
+description: "Lick IPC guide - building applications that communicate with external programs through Unix sockets."
 layout:
   title:
     visible: true

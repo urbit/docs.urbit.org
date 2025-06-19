@@ -1,5 +1,5 @@
 ---
-description: Troubleshooting guide for resolving common Urbit ship connectivity and operational issues.
+description: "Troubleshooting guide for resolving common Urbit ship connectivity and operational issues."
 layout:
   title:
     visible: true

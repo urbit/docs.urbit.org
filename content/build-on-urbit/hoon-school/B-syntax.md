@@ -1,5 +1,5 @@
 ---
-description: Introduction to Hoon programming language syntax, covering basic elements like nouns (atoms and cells), runes (operators), auras (atom types), and fundamental control flow structures.
+description: "Introduction to Hoon programming language syntax, covering basic elements like nouns (atoms and cells), runes (operators), auras (atom types), and fundamental control flow structures."
 layout:
   title:
     visible: true

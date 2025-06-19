@@ -1,5 +1,5 @@
 ---
-description: Khan thread runner example - running threads from Gall agents with success/failure handling and result processing.
+description: "Khan thread runner example - running threads from Gall agents with success/failure handling and result processing."
 layout:
   title:
     visible: true

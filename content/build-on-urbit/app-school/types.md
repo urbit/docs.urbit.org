@@ -1,5 +1,5 @@
 ---
-description: Explanation of types commonly used in Gall agents. Vase, mark, cage, quip, path, wire.
+description: "Explanation of types commonly used in Gall agents. Vase, mark, cage, quip, path, wire."
 layout:
   title:
     visible: true

@@ -1,5 +1,5 @@
 ---
-description: Guide to Urbit HD wallets and master tickets for managing Urbit ID keys and ownership.
+description: "Guide to Urbit HD wallets and master tickets for managing Urbit ID keys and ownership."
 layout:
   title:
     visible: true

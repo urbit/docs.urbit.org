@@ -1,5 +1,5 @@
 ---
-description: Challenge to implement the Solitaire cryptographic cipher algorithm using playing cards as keys.
+description: "Challenge to implement the Solitaire cryptographic cipher algorithm using playing cards as keys."
 layout:
   title:
     visible: true

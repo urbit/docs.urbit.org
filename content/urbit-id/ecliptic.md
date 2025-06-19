@@ -1,5 +1,5 @@
 ---
-description: Technical reference for the Ecliptic.eth smart contract, which runs business logic for Urbit ID operations, including all write and read functions for managing Points, proxies, and governance.
+description: "Technical reference for the Ecliptic.eth smart contract, which runs business logic for Urbit ID operations, including all write and read functions for managing Points, proxies, and governance."
 layout:
   title:
     visible: true

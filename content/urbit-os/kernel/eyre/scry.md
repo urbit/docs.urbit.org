@@ -1,5 +1,5 @@
 ---
-description: Eyre scry reference - web server queries for connections, bindings, authentication, and HTTP server state.
+description: "Eyre scry reference - web server queries for connections, bindings, authentication, and HTTP server state."
 layout:
   title:
     visible: true

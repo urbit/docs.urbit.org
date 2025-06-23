@@ -9,7 +9,7 @@ Minimum requirements:
 - **OS:** Linux
 - **Architecture:** `x86_64` or `aarch64`
 - **vCPUs:** 1 (more is generally a waste unless you're running more than one Urbit)
-- **Memory:** 2GB will work with a swapfile, though 4GB is preferred
+- **Memory:** 2GB will work with a [swapfile](https://www.linux.com/news/all-about-linux-swap-space), though 4GB is preferred
 - **Disk space:** 40GB is preferred but 10GB will work
 
 {% hint %}
@@ -18,7 +18,7 @@ Minimum requirements:
 
 #### Cloud-init config {#cloud-init-config}
 
-This `cloud-init` config file will work for most Linux images available from cloud providers.
+This `cloud-init` config file configures the VPS and installs the `urbit` runtime. It will work for most Linux images available from cloud providers. The guide below will refer back to this file later.
 
 {% hint type="warning" %}
 You must generate an SSH keypair and paste the contents of the `.pub` file where it says `YOUR-SSH-KEY-HERE` on line 17 or you will not be able to SSH into your instance.
@@ -214,7 +214,7 @@ The first thing you need to do is generate an SSH key so you can connect to the 
 ssh-keygen -q -t ed25519 -N "" -f ~/.ssh/urbit-vps
 ```
 
-We'll come back to these later.
+We'll come back to these keys later.
 
 ## 2. Create instance
 
@@ -223,7 +223,7 @@ You can use whichever cloud provider you prefer. Instructions are included for D
 Comparison:
 
 - **Digital Ocean:** the simplest to setup, but more expensive for what you get.
-- **Hetzner:** cheaper than Digital Ocean and still relatively easy to configure. Based in Germany.
+- **Hetzner:** cheaper than Digital Ocean and still relatively easy to configure. Based in Germany. Required KYC information.
 - **Oracle Cloud:** quite complex compared to the other two. However, they provide 4 Ampere cores and 24GB of memory for free, which can be used as one very powerful instance or up to 4 single-core instances with 6GB of memory each.
 
 {% tabs %}
@@ -282,7 +282,7 @@ On this page, go to the [Cloud init config](#cloud-init-config) section above, e
 
 {% hint type="warning" %}
 
-Make sure to paste the contents of `~/.ssh/urbit-vps.pub` into the config file where it says `YOUR-SSH-KEY-HERE` on line 17. If you don't do this you won't be able to SSH into your VPS when setup is complete.
+Make sure to paste the entire result of running `cat ~/.ssh/urbit-vps.pub` into the config file where it says `YOUR-SSH-KEY-HERE` on line 17. If you don't do this you won't be able to SSH into your VPS when setup is complete.
 
 {% endhint %}
 
@@ -312,7 +312,7 @@ Ubuntu, default version.
 
 #### Type
 
-Choose "Shared vCPU" and "Arm64 (Ampere)" for the architecture. Choose CAX11 (2 Ampere VCPUs / 4GB memory), it should be $3.99 per month.
+Choose "Shared vCPU" and "Arm64 (Ampere)" for the architecture. Choose CAX11 (2 Ampere VCPUs / 4GB memory), it should be $3.99 per month or equivalent.
 
 If this option's not available in the region you selected, you can try another region. You can choose a different option if you'd like but this one has the best performance at the lowest price.
 
@@ -346,7 +346,7 @@ Skip these sections.
 
 On this page, go to the [Cloud init config](#cloud-init-config) section above, expand the "Cloud-init config file", and copy the text to the clipboard. Paste it into Hetzner where it says "Cloud-init configuration".
 
-{% hint type="warning" %}
+{% hint style="warning" %}
 
 Make sure to paste the contents of `~/.ssh/urbit-vps.pub` into the config file where it says `YOUR-SSH-KEY-HERE` on line 17. If you don't do this you won't be able to SSH into your VPS when setup is complete.
 
@@ -516,11 +516,11 @@ Host urbit-vps
 
 {% tab title="Upload existing pier" %}
 
-If your Urbit is still running, use either `"CTRL + D"` or `|exit` in the Dojo to shut it down.
+If your Urbit is still running, use either `"Ctrl+d"` or `|exit` in the Dojo to shut it down.
 
 With your Urbit now stopped (please be certain), archive your pier by running `tar cvzf sampel-palnet.tar.gz /path/to/your/pier` (substitute your own Urbit name and pier location).
 
-Copy the archived pier to the server with the following (substituting your ship name):
+Copy the archived pier to the server with the following (substituting your Urbit's name):
 
 ```sh
 scp sampel-planet.tar.gz urbit-vps:
@@ -588,7 +588,7 @@ Note: it can take a few minutes for the server to be fully provisioned and confi
 
 {% endtabs %}
 
-## 4. Boot your ship
+## 4. Boot your Urbit
 
 {% tabs %}
 {% tab title="Upload existing pier" %}
@@ -607,7 +607,7 @@ Run `tmux`:
 tmux new -s urbit
 ```
 
-You should now be in `tmux`. First, dock your ship:
+You should now be in `tmux`. First, dock your Urbit:
 
 ```bash
 urbit dock sampel-palnet
@@ -621,7 +621,7 @@ Linux prevents non-root executables from binding privileged ports like 80 and 44
 sudo piercap /home/urbit/sampel-palnet
 ```
 
-Now you can start your ship up with the following:
+Now you can start your Urbit up with the following:
 
 ```bash
 ./sampel-palnet/.run -p 34540
@@ -639,15 +639,15 @@ In the previous section you ssh'd into the server. In the same ssh session, star
 tmux new -s urbit
 ```
 
-You should now be in `tmux`. Boot a new ship with the following command, specifying the ship name and key file, as well as an Ames port in the range 34540-34550:
+You should now be in `tmux`. Boot a new Urbit with the following command, specifying the Urbit name and key file, as well as an Ames port in the range 34540-34550:
 
 ```bash
 urbit -w sampel-palnet -k sampel-palnet.key -p 34540
 ```
 
-It may take several minutes to boot the new ship. Eventually, it'll take you to the Dojo (Urbit's shell) and show a prompt like `~sampel-palnet:dojo>`. Once booted, shut the ship down again by typing `|exit` in the Dojo.
+It may take several minutes to boot the new Urbit. Eventually, it'll take you to the Dojo (Urbit's shell) and show a prompt like `~sampel-palnet:dojo>`. Once booted, shut the Urbit down again by typing `|exit` in the Dojo.
 
-The key file is only needed when you first boot the ship, so it's good practice to delete it after first boot:
+The key file is only needed when you first boot the Urbit, so it's good practice to delete it after first boot:
 
 ```bash
 rm sampel-palnet.key
@@ -659,7 +659,7 @@ Linux prevents non-root executables from binding privileged ports like 80 and 44
 sudo piercap /home/urbit/sampel-palnet
 ```
 
-Now you can start your ship up with the following:
+Now you can start your Urbit up with the following:
 
 ```bash
 ./sampel-palnet/.run -p 34540
@@ -669,7 +669,7 @@ After a few moments it'll show the Dojo prompt like `~sampel-palnet:dojo>`.
 
 {% endtab %}
 
-{% tab title="Booting a Comet" %}
+{% tab title="Boot a Comet" %}
 
 In the previous section you ssh'd into the server. In the same ssh session, start `tmux`:
 
@@ -677,21 +677,21 @@ In the previous section you ssh'd into the server. In the same ssh session, star
 tmux new -s urbit
 ```
 
-You should now be in `tmux`. Boot a new ship with the following command, specifying whatever name you'd like for the pier, as well as an Ames port in the range 34540-34550:
+You should now be in `tmux`. Boot a new comet with the following command, specifying whatever name you'd like for the pier, as well as an Ames port in the range 34540-34550:
 
 ```bash
 urbit -c mycomet -p 34540
 ```
 
-It may take several minutes to boot the new ship. Eventually, it'll take you to the Dojo (Urbit's shell) and show a prompt like `~sampel-palnet:dojo>`. Once booted, shut the ship down again by typing `|exit` in the Dojo.
+It may take several minutes to boot the new comet. Eventually, it'll take you to the Dojo (Urbit's shell) and show a prompt like `~sampel_litzod:dojo>`. Once booted, shut the comet down again by typing `|exit` in the Dojo.
 
-Now you can start your ship up with the following:
+Now you can start your comet up with the following:
 
 ```bash
-./sampel-palnet/.run -p 34540
+./mycomet/.run -p 34540
 ```
 
-After a few moments it'll show the Dojo prompt like `~sampel_palnet:dojo>`.
+After a few moments it'll show the Dojo prompt like `~sampel_litzod:dojo>`.
 
 {% endtab %}
 
@@ -776,11 +776,11 @@ It'll spit out something like `ropnys-batwyd-nossyt-mapwet`. That's your web log
 
 The server configuration should now be complete, and you can access Landscape in the browser. Navigate to the domain you configured previously, for example `sampel-palnet.arvo.network`. You should see the Landscape login screen.
 
-Enter the web login code and you'll be taken to your ship's homescreen. Your ship is now running in the cloud, and you can access it from any device by visiting its URL.
+Enter the web login code and you'll be taken to your Urbit's homescreen. Your Urbit is now running in the cloud, and you can access it from any device by visiting its URL.
 
 ## 7. Disconnect
 
-You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the ship will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
+You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the Urbit will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
 ```bash
 tmux a
@@ -790,7 +790,7 @@ Finally, you can disconnect from the ssh session completely by hitting `CTRL+d`.
 
 ## 8. Cleanup
 
-If you booted a new ship by uploading a key file, it's a good idea to now delete the key file on your local machine.
+If you booted an Urbit by uploading a key file, it's a good idea to now delete the key file on your local machine.
 
-If you uploaded an existing pier, you should delete the old copy of both the pier directory and the `.tar.gz` archive on your local machine. You might be tempted to keep one of these as a backup, but note that **you must never again boot the old copy on the live network**. Doing so will create unfixable networking problems and require you to perform a factory reset through Bridge, wiping your ship's data. We therefore don't recommend you keep duplicates of your pier lying around.
+If you uploaded an existing pier, you should delete the old copy of both the pier directory and the `.tar.gz` archive on your local machine. You might be tempted to keep one of these as a backup, but note that **you must never again boot the old copy on the live network**. Doing so will create unfixable networking problems and require you to perform a factory reset through Bridge, wiping your Urbit's data. We therefore don't recommend you keep duplicates of your pier lying around.
 

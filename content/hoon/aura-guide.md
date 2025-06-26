@@ -44,7 +44,7 @@ It will have the bit-logical form of an integer of arbitrary size, with each who
 
 ### Base Logic <a href="#base-logic" id="base-logic"></a>
 
-We need to be able to perform arithmetic and type conversion with `@udms` values. Some value representations have an “unpacked“ tuple form, like dates and floating-point values. This makes it easier to shunt the values between auxiliary functions. We'll define one as well here, `+$sexa` (for _sexagesimal_, base-60).
+We need to be able to perform arithmetic and type conversion with `@udms` values. Some value representations have an “unpacked“ tuple form, like dates and floating-point values. This makes it easier to shunt the values between auxiliary functions. We'll define one as well here, `$sexa` (for _sexagesimal_, base-60).
 
 At this point, we implement modular arithmetic and wrap the values properly in `+op`. For instance, wrapping around at 360°=0° should work properly, similar to midnight. Subtraction is liable to underflow, so we need a special handler for it in `+dg`; since we have one, we may as well handle `+add` the same way for consistency.
 
@@ -190,7 +190,7 @@ Let's write some unit tests first.
 --
 ```
 
-The Hoon logic will be located in a `+dg` arm. This needs to be sufficiently high in the stack that our prettyprinter and parser logic know about them, so let's put `+dg` in the fourth core. Search for `layer-5` and paste `+dg` in a few lines above that after `+$hump`. (Strictly speaking, we should make sure that this works in a userspace `/lib` library first but here we'll just insert it into `/sys/hoon` and rely on our unit tests.)
+The Hoon logic will be located in a `+dg` arm. This needs to be sufficiently high in the stack that our prettyprinter and parser logic know about them, so let's put `+dg` in the fourth core. Search for `layer-5` and paste `+dg` in a few lines above that after `$hump`. (Strictly speaking, we should make sure that this works in a userspace `/lib` library first but here we'll just insert it into `/sys/hoon` and rely on our unit tests.)
 
 **`/sys/hoon`**
 
@@ -330,7 +330,7 @@ Our parser logic needs to be cited in `+zust:so` because that arm parses atoms p
   --
 ```
 
-You also need to modify `+$iota` to include `[%udms @udms]` to satisfy the type system for typed paths.
+You also need to modify `$iota` to include `[%udms @udms]` to satisfy the type system for typed paths.
 
 At this point, a compiled `/sys/hoon` should detect the typed atom syntax correctly. This aura should pass all tests and be usable in conventional Hoon code.
 

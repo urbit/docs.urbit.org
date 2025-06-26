@@ -46,7 +46,7 @@ We just need to define the expected operators that will show up in the stack.  T
 --
 ```
 
-(`+$command` doesn't really feel like the right name here, but we're pattern-matching with the demo `/app/shoe.hoon`.)
+(`$command` doesn't really feel like the right name here, but we're pattern-matching with the demo `/app/shoe.hoon`.)
 
 **`/lib/rpn.hoon`**
 

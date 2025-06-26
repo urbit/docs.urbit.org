@@ -102,8 +102,8 @@ be rendered as inline code.
 * **Block quotes**: a line beginning with `>` creates a block quote. This may be hard-wrapped, as long as the next line is indented two spaces. Block quotes may contain anything, including other blockquotes.
 * **Line breaks**: A line ending in a single backslash will have a line break inserted at the end, so it will not flow together with the subsequent line as is usually the case.
 * **Escape characters**: You may prefix Udon syntax with a backslash to have it treated as the literal text.
-* **Hoon literals and wings**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `+foo:bar`, `+$baz`, and `+*foo:bar:baz`, as inline code.
-* **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `+$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document.
+* **Hoon literals and wings**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `+foo:bar`, `$baz`, and `+*foo:bar:baz`, as inline code.
+* **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document.
 
 {% hint style="info" %}
 Note that Udon is quite strict on its syntax, and may fail to parse if it's incorrect.

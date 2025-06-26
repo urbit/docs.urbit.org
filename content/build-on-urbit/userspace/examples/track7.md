@@ -37,7 +37,7 @@ The agent will adopt a two-stage process, wherein a value is put on the stack th
 
 The input parser can simply accept whole words or single inputs, or parse complex expressions (as Dojo does with Hoon).
 
-This results in a noun of `+$command-type` based on the specific application.  The example `/app/shoe.hoon` agent defines:
+This results in a noun of `$command-type` based on the specific application.  The example `/app/shoe.hoon` agent defines:
 
 ```hoon
 +$  command

@@ -25,7 +25,7 @@ The `%docs` app supports any mark, as long as it has a conversion method to its 
 
 The `%docu` mark expects a `$manx`.
 
-A `$manx` is how an XML node structure is represented in hoon. See [Section 5e](../../../hoon/stdlib/5e.md#manx) of the standard library reference for details. A `$manx` is what `++de-xml:html` and `++en-xml:html` decode/encode raw XML strings from/to.
+A `$manx` is how an XML node structure is represented in hoon. See [Section 5e](../../../hoon/stdlib/5e.md#manx) of the standard library reference for details. A `$manx` is what `+de-xml:html` and `+en-xml:html` decode/encode raw XML strings from/to.
 
 The `%docu` mark will technically accept any `$manx`, but the `%docs` agent itself makes some changes and imposes some additional rules:
 
@@ -67,7 +67,7 @@ Udon is a markdown-like language native to hoon, with a parser built into the ho
 - **Block quotes**: a line beginning with `>` creates a block quote. This may be hard-wrapped, as long as the next line is indented two spaces. Block quotes may contain anything, including other blockquotes.
 - **Line breaks**: A line ending in a single backslash will have a line break inserted at the end, so it will not flow together with the subsequent line as is usually the case.
 - **Escape characters**: You may prefix Udon syntax with a backslash to have it treated as the literal text.
-- **Hoon constants**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `++foo:bar`, `+$baz`, and `+*foo:bar:baz`, as inline code.
+- **Hoon constants**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `+foo:bar`, `+$baz`, and `+*foo:bar:baz`, as inline code.
 - **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `+$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document. There is little formal sail documentation, but you can refer to the [`;` (mic) rune reference](../../../hoon/rune/mic.md) for most of its runes and some rudimentary examples.
 
 {% hint style="info" %}

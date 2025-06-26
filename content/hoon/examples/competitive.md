@@ -21,7 +21,7 @@ Let's take a quick look at implementations for some common tasks in Hoon.  I ass
 
 - Given a `list` of values, sort the values according to a given rule and produce a `list`.
 
-The standard `++sort` gate implements a quicksort.  You need to provide a comparison function as a gate as well.
+The standard `+sort` gate implements a quicksort.  You need to provide a comparison function as a gate as well.
 
 ```hoon
 > =/  my-list  `(list @ud)`~[10 9 8 1 2 3 7 6 4 5]
@@ -75,7 +75,7 @@ We'll use `'Wild Hearts Can\'t Be Broken'` as our source atom.  As `@ux` the ASC
 
 Here are a few ways to slice and dice binary atom data.
 
-[`++rip`](../stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
+[`+rip`](../stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'  
@@ -91,7 +91,7 @@ Here are a few ways to slice and dice binary atom data.
 ~[0x6165.4820.646c.6957 0x276e.6143.2073.7472 0x6f72.4220.6542.2074 0x6e.656b]
 ```
 
-[`++rap`](../stdlib/2c.md#rap) is the opposite operation, producing an atom from a list of atoms `b` with a block size `2^a`.
+[`+rap`](../stdlib/2c.md#rap) is the opposite operation, producing an atom from a list of atoms `b` with a block size `2^a`.
 
 ```hoon
 > `(list @ux)`(rip 3 'Mars')
@@ -107,7 +107,7 @@ Here are a few ways to slice and dice binary atom data.
 0x73.0000.0000.0000.0072.0000.0000.0000.0061.0000.0000.0000.004d
 ```
 
-[`++cut`](../stdlib/2c.md#cut) slices `2^a`-sized chunks from `b` to `c` out of atom `d`.
+[`+cut`](../stdlib/2c.md#cut) slices `2^a`-sized chunks from `b` to `c` out of atom `d`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'
@@ -123,21 +123,21 @@ Here are a few ways to slice and dice binary atom data.
 
 Standard bitwise logical operations are available:
 
-- `OR` is [`++con`](../stdlib/2d.md#con) (conjoint):
+- `OR` is [`+con`](../stdlib/2d.md#con) (conjoint):
 
     ```hoon
     > `@ub`(con 0b10.0001.0110 0b11.1101.1011)
     0b11.1101.1111
     ```
 
-- `AND` is [`++dis`](../stdlib/2d.md#dis) (disjoint):
+- `AND` is [`+dis`](../stdlib/2d.md#dis) (disjoint):
 
     ```hoon
     > `@ub`(dis 0b10.0001.0110 0b11.1101.1011)
     0b10.0001.0010
     ```
 
-- `XOR` is [`++mix`](../stdlib/2d.md#mix):
+- `XOR` is [`+mix`](../stdlib/2d.md#mix):
 
     ```hoon
     > `@ub`534
@@ -150,7 +150,7 @@ Standard bitwise logical operations are available:
     0b1.1100.1101
     ```
 
-- `NOT` is [`++not`](../stdlib/2d.md#not); it requires a block size (powers of 2) because leading zeroes are always stripped in Hoon (and thus `NOT` is implicitly based on block size):
+- `NOT` is [`+not`](../stdlib/2d.md#not); it requires a block size (powers of 2) because leading zeroes are always stripped in Hoon (and thus `NOT` is implicitly based on block size):
 
     ```hoon
     > `@ub`(not 2 1 0b1011)
@@ -165,9 +165,9 @@ Standard bitwise logical operations are available:
 
 ### MIME Data Operations {#mime-data-operations}
 
-[MIME data types](https://en.wikipedia.org/wiki/MIME) allow HTTP communications to include rich content.  The `++html` core in the standard library provides quite a few operations for encoding and decoding MIME-typed values.
+[MIME data types](https://en.wikipedia.org/wiki/MIME) allow HTTP communications to include rich content.  The `+html` core in the standard library provides quite a few operations for encoding and decoding MIME-typed values.
 
-Data transmitted as bytes ([“octets”](https://en.wikipedia.org/wiki/Octet_%28computing%29)) are decoded using `++as-octs:mimes:html`.  This is transparent for ASCII text data:
+Data transmitted as bytes ([“octets”](https://en.wikipedia.org/wiki/Octet_%28computing%29)) are decoded using `+as-octs:mimes:html`.  This is transparent for ASCII text data:
 
 ```hoon
 > (as-octs:mimes:html '<html><body>')
@@ -180,7 +180,7 @@ Data transmitted as bytes ([“octets”](https://en.wikipedia.org/wiki/Octet_%2
 [12 '<html><body>']
 ```
 
-Perhaps surprisingly, many text conversion operations live here.  To parse a hexadecimal value as a string, for instance, use `++de:base16:mimes:html`:
+Perhaps surprisingly, many text conversion operations live here.  To parse a hexadecimal value as a string, for instance, use `+de:base16:mimes:html`:
 
 ```hoon
 > (de:base16:mimes:html 'deadbeef')
@@ -261,7 +261,7 @@ Hoon is a functional programming language, so naturally it supports the basic co
 
 ### Curry {#curry}
 
-[_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. _Binding_, an allied process, is used to set the value of some of those arguments permanently.  Hoon has a left-bind `++cury` and a right-bind `++curr`.
+[_Currying_](https://en.wikipedia.org/wiki/Currying) describes taking a function of multiple arguments and reducing it to a set of functions that each take only one argument. _Binding_, an allied process, is used to set the value of some of those arguments permanently.  Hoon has a left-bind `+cury` and a right-bind `+curr`.
 
 ```hoon
 > =full |=([x=@ud a=@ud b=@ud c=@ud] (add (add (mul (mul x x) a) (mul x b)) c))
@@ -277,7 +277,7 @@ Hoon is a functional programming language, so naturally it supports the basic co
 
 ### Map {#map}
 
-The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`++turn`](../stdlib/2b.md#turn) for a `list`, [`++run:in`](../stdlib/2h.md#repin) for a `set`, and [`++run:by`](../stdlib/2i.md#runby) for a `map`.
+The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`+turn`](../stdlib/2b.md#turn) for a `list`, [`+run:in`](../stdlib/2h.md#repin) for a `set`, and [`+run:by`](../stdlib/2i.md#runby) for a `map`.
 
 ```hoon
 > (turn `(list @ud)`~[1 2 3 4 5] one)
@@ -285,7 +285,7 @@ The Map operation describes applying a function to each item of a set or iterabl
 
 ### Reduce {#reduce}
 
-The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`++roll`](../stdlib/2b.md#roll) and [`++reel`](../stdlib/2b.md#reel) for a `list`, [`++rep:in`](../stdlib/2h.md#repin) for a `set`, and [`++rep:by`](../stdlib/2i.md#repby) for a `map`.
+The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`+roll`](../stdlib/2b.md#roll) and [`+reel`](../stdlib/2b.md#reel) for a `list`, [`+rep:in`](../stdlib/2h.md#repin) for a `set`, and [`+rep:by`](../stdlib/2i.md#repby) for a `map`.
 
 ```hoon
 > =my-set (silt `(list @ud)`~[1 2 3 4 5])
@@ -296,14 +296,14 @@ b=120
 
 ### Filter {#filter}
 
-The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`++skim`](../stdlib/2b.md#skim), [`++skid`](../stdlib/2b.md#skid), [`++murn`](../stdlib/2b.md#murn) for a `list`, and [`++rib:by`](../stdlib/2i.md#ribby) for a `map`.
+The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`+skim`](../stdlib/2b.md#skim), [`+skid`](../stdlib/2b.md#skid), [`+murn`](../stdlib/2b.md#murn) for a `list`, and [`+rib:by`](../stdlib/2i.md#ribby) for a `map`.
 
 ```hoon
 > `(list @ud)`(skim `(list @ud)`~[1 2 3 4 5] (curr gth 2))
 ~[3 4 5]
 ```
 
-An interesting feature of Hoon is that it really prefers functions-that-produce-functions, which feels very functional once you get used to the idiom.  Here you can see that done with `++curr`.
+An interesting feature of Hoon is that it really prefers functions-that-produce-functions, which feels very functional once you get used to the idiom.  Here you can see that done with `+curr`.
 
 - [Functional Programming](../../build-on-urbit/hoon-school/Q-func.md) - This module will discuss some gates-that-work-on-gates and other assorted operators that are commonly recognized as functional programming tools.
 
@@ -325,7 +325,7 @@ An interesting feature of Hoon is that it really prefers functions-that-produce-
 .1e-4
 ```
 
-Equivalent mathematical operations for `@rs` values are available in the `++rs` door:
+Equivalent mathematical operations for `@rs` values are available in the `+rs` door:
 
 ```hoon
 > (add:rs .1 .2)

@@ -180,7 +180,7 @@ Three arguments.
 
 The first argument is the face to pin the results with. The second argument is the type each hoon file produces when evaluated. The third argument is the path to a directory in the same desk as this file, containing `%hoon` files.
 
-Each hoon file in the specified directory will be built and evalutated. The result of evaluating each file will be added to a [`++map`](../stdlib/2o.md#map) and pinned with the specified face (`some-face`). The keys of the map will be the name of each file, and the values of the map will be the result of evaluating each file and casting its result to the type specified (`some-type`).
+Each hoon file in the specified directory will be built and evalutated. The result of evaluating each file will be added to a [`+map`](../stdlib/2o.md#map) and pinned with the specified face (`some-face`). The keys of the map will be the name of each file, and the values of the map will be the result of evaluating each file and casting its result to the type specified (`some-type`).
 
 All of the hoon files in the specified directory, when evaluated, must produce data of a type that nests under the type specified (`some-type`). File with a mark other than `%hoon` will be ignored.
 

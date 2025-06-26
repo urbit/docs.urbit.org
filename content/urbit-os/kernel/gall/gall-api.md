@@ -88,7 +88,7 @@ Abort event.
 [%pyre =tang]
 ```
 
-This `note` tells Gall to crash with the given `tang` in the stack trace. You'd use it in `++on-load` or `++on-init` when you wanted the upgrade/installation to fail under some condition.
+This `note` tells Gall to crash with the given `tang` in the stack trace. You'd use it in `+on-load` or `+on-init` when you wanted the upgrade/installation to fail under some condition.
 
 ---
 
@@ -329,7 +329,7 @@ Acknowledge a subscription request.
 
 A `%watch-ack` is automatically given by Gall in response to a `%watch` `task`. A `%watch-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `p` is null, and a nack when `p` is non-null, instead containing a stack trace.
 
-A `%watch-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `++on-watch` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a subscription request by crashing or not crashing, respectively.
+A `%watch-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `+on-watch` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a subscription request by crashing or not crashing, respectively.
 
 ---
 
@@ -343,7 +343,7 @@ Acknowledge a poke.
 
 A `%poke-ack` is automatically given by Gall in response to a `%poke` `task`. A `%poke-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `p` is null, and a nack when `p` is non-null, instead containing a stack trace.
 
-A `%poke-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `++on-poke` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a poke by crashing or not crashing, respectively.
+A `%poke-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `+on-poke` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a poke by crashing or not crashing, respectively.
 
 ---
 

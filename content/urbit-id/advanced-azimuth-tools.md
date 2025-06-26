@@ -47,7 +47,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 
 `[%spawn ~ship to]` is the transaction we want to issue. The arguments are will vary based on the transaction. `~ship` will be the ship to be spawned. `to` is the Ethereum address to spawn the ship to.
 
-You will want to read [`/sur/claz.hoon`](https://github.com/urbit/urbit/blob/85435e9a81e105809d5d381b5d34fae1d4daa3b8/pkg/arvo/sur/claz.hoon). This will contain more details about the various kinds of transactions you can perform particularly `++call`
+You will want to read [`/sur/claz.hoon`](https://github.com/urbit/urbit/blob/85435e9a81e105809d5d381b5d34fae1d4daa3b8/pkg/arvo/sur/claz.hoon). This will contain more details about the various kinds of transactions you can perform particularly `+call`
 
 After running this command you should find a csv file at the output path you specified. You can examine this file to learn how they are constructed. You are able to modify the nonces, gas limit and price without changing the functionality of the transaction but it's not important for this guide.
 

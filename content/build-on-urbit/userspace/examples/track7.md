@@ -21,19 +21,19 @@ In this tutorial, we examine how to produce `styx` styled text strings and outpu
 
 `%shoe` is responsible to manage attached agent sessions.  It adds a few arms to the standard Gall agent, namely:
 
-- `++command-parser` is the input parser, similar to the work we were carrying out just above.  This parses every input and only permits valid keystrokes (think of Dojo real-time parsing).
-- `++tab-list` provides autocompletion options.  We can ignore for now.
-- `++on-command` is called whenever a valid command is run.  This produces the actual effects.
-- `++can-connect` supports `|dojo/link` connexion to the app.
-- `++on-connect` provides particular session support when a user connects.  We can ignore for now.
-- `++on-disconnect` provides particular session support when a user disconnects.  We can ignore for now.
+- `+command-parser` is the input parser, similar to the work we were carrying out just above.  This parses every input and only permits valid keystrokes (think of Dojo real-time parsing).
+- `+tab-list` provides autocompletion options.  We can ignore for now.
+- `+on-command` is called whenever a valid command is run.  This produces the actual effects.
+- `+can-connect` supports `|dojo/link` connexion to the app.
+- `+on-connect` provides particular session support when a user connects.  We can ignore for now.
+- `+on-disconnect` provides particular session support when a user disconnects.  We can ignore for now.
 
-To get started with text parsers and CLI agents, we need to focus on `++command-parser` and `++on-command`.  But first, the agent's structure and state:
+To get started with text parsers and CLI agents, we need to focus on `+command-parser` and `+on-command`.  But first, the agent's structure and state:
 
 
 The agent will adopt a two-stage process, wherein a value is put on the stack then the stack is checked for any valid operations.
 
-### `++command-parser` {#command-parser}
+### `+command-parser` {#command-parser}
 
 The input parser can simply accept whole words or single inputs, or parse complex expressions (as Dojo does with Hoon).
 
@@ -59,12 +59,12 @@ and later uses this as:
 
 where the unfamiliar parser components are:
 
-- `++stag` adds a label, here `&` pam `TRUE`/`%.y` to indicate that the command should be run immediately when it matches.  (We won't want this below so we will `++stag` a `|` `FALSE`/`%.n`.)
-- `++perk` parses a fork in the type.
+- `+stag` adds a label, here `&` pam `TRUE`/`%.y` to indicate that the command should be run immediately when it matches.  (We won't want this below so we will `+stag` a `|` `FALSE`/`%.n`.)
+- `+perk` parses a fork in the type.
 
-### `++on-command` {#on-command}
+### `+on-command` {#on-command}
 
-This arm accepts a session ID and a command resulting from `++command-parser`.  It produces a regular `(quip card _this)` so you can modify agent state and produce effects here.
+This arm accepts a session ID and a command resulting from `+command-parser`.  It produces a regular `(quip card _this)` so you can modify agent state and produce effects here.
 
 
 ## `%sole` Effects {#sole-effects}

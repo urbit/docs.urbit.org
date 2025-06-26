@@ -105,13 +105,13 @@ $ rm -rf zod/.urb
 $ cp -r zod-backup/.urb zod
 ```
 
-### Jet Walkthrough: `++add` <a href="#jet-walkthrough-add" id="jet-walkthrough-add"></a>
+### Jet Walkthrough: `+add` <a href="#jet-walkthrough-add" id="jet-walkthrough-add"></a>
 
 Given a Hoon gate, how can a developer produce a matching C jet? Let us illustrate the process using a simple `|%` core. We assume the reader has achieved facility with both Hoon code and C code. This tutorial aims to communicate the practical process of producing a jet, and many [`u3` noun concepts](nouns.md) are only briefly discussed or alluded to.
 
-To this end, we begin by examining the Hoon `++add` gate, which accepts two values in its sample.
+To this end, we begin by examining the Hoon `+add` gate, which accepts two values in its sample.
 
-The Hoon code for `++add` decrements one of these values and adds one to the other for each decrement until zero is reached. This is because all atoms in Hoon are unsigned integers and Nock has no simple addition operation. The source code for `++add` is located in `hoon.hoon`:
+The Hoon code for `+add` decrements one of these values and adds one to the other for each decrement until zero is reached. This is because all atoms in Hoon are unsigned integers and Nock has no simple addition operation. The source code for `+add` is located in `hoon.hoon`:
 
 ```hoon
 |%
@@ -141,7 +141,7 @@ or in a more compact form (omitting the parent core and chapter label)
 
 The jet hint `%add` allows Hoon to hint to the runtime that a jet _may_ exist. By convention, the jet hint name matches the gate label. Jets must be registered elsewhere in the runtime source code for the Vere binary to know where to connect the hint; we elide that discussion until we take a look at jet implementation below. We will expand on the jet registration runes [`~/` sigfas](../../hoon/rune/sig.md#sigfas) and [`~%` sigcen](../../hoon/rune/sig.md#sigcen) later.
 
-The following C code implements `++add` as a significantly faster operation including handling of >31-bit atoms. It may be found in `urbit/pkg/noun/jets/a/add.c`:
+The following C code implements `+add` as a significantly faster operation including handling of >31-bit atoms. It may be found in `urbit/pkg/noun/jets/a/add.c`:
 
 ```c
 u3_noun
@@ -239,9 +239,9 @@ The procedure to solve the problem in the C jet does not need to follow the same
 
 In general, jet code feels a bit heavy and formal. Jet code may call other jet code, however, so much as with Hoon layers of complexity can be appropriately encapsulated. Once you are used to the conventions of the u3 library, you will be in a good position to produce working and secure jet code.
 
-### Jet Composition: Integer `++factorial` <a href="#jet-composition-integer-factorial" id="jet-composition-integer-factorial"></a>
+### Jet Composition: Integer `+factorial` <a href="#jet-composition-integer-factorial" id="jet-composition-integer-factorial"></a>
 
-Similar to how we encountered recursion way back in [Hoon School](../hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `++factorial` example code. We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise. Create a file `lib/trig.hoon` with the following contents:
+Similar to how we encountered recursion way back in [Hoon School](../hoon-school/F-cores.md) to talk about gate mechanics, let us implement a C jet of the `+factorial` example code. We will call this library `trig` in a gesture to some subsequent functions you should implement as an exercise. Create a file `lib/trig.hoon` with the following contents:
 
 **`/lib/trig.hoon`**
 
@@ -415,9 +415,9 @@ u3_noun u3qe_trig_factorial(u3_atom);
 
 **Produce functions for compilation and linking.**
 
-Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig.c` and define all of your `trig` jets therein. (Here we show `++factorial` only.)
+Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig.c` and define all of your `trig` jets therein. (Here we show `+factorial` only.)
 
-As with `++add`, we have to worry about direct and indirect atoms when carrying out arithmetic operations, prompting the use of GMP `mpz` operations.
+As with `+add`, we have to worry about direct and indirect atoms when carrying out arithmetic operations, prompting the use of GMP `mpz` operations.
 
 ```c
 /* jets/e/trig.c
@@ -560,7 +560,7 @@ u3x_sam_2, u3x_sam_12, u3x_sam_13, u3x_sam_14, u3x_sam_15
 
 **Exercise: Review Jet Code**
 
-*   We commend to the reader the exercise of selecting particular Hoon-language library functions provided with the system, such as [`++cut`](https://github.com/urbit/urbit/blob/ceed4b78d068d7cb70350b3cd04e7525df1c7e2d/pkg/arvo/sys/hoon.hoon#L854), locating the corresponding jet code in:
+*   We commend to the reader the exercise of selecting particular Hoon-language library functions provided with the system, such as [`+cut`](https://github.com/urbit/urbit/blob/ceed4b78d068d7cb70350b3cd04e7525df1c7e2d/pkg/arvo/sys/hoon.hoon#L854), locating the corresponding jet code in:
 
     * [`tree.c`](https://github.com/urbit/urbit/blob/cd400dfa69059e211dc88f4ce5d53479b9da7542/pkg/urbit/jets/tree.c#L1575)
     * [`w.h`](https://github.com/urbit/urbit/blob/cd400dfa69059e211dc88f4ce5d53479b9da7542/pkg/urbit/include/jets/w.h#L53)
@@ -569,7 +569,7 @@ u3x_sam_2, u3x_sam_12, u3x_sam_13, u3x_sam_14, u3x_sam_15
 
     and learning in detail how particular operations are realized in `u3` C. Note in particular that jets do not need to follow the same solution algorithm and logic as the Hoon code; they merely need to reliably produce the same result.
 
-### Jet Composition: Floating-Point `++factorial` <a href="#jet-composition-floating-point-factorial" id="jet-composition-floating-point-factorial"></a>
+### Jet Composition: Floating-Point `+factorial` <a href="#jet-composition-floating-point-factorial" id="jet-composition-floating-point-factorial"></a>
 
 Let us examine jet composition using a more complicated floating-point operation. The Urbit runtime uses [SoftFloat](http://www.jhauser.us/arithmetic/SoftFloat-3/doc/SoftFloat.html) to provide a reference software implementation of floating-point mathematics. This is slower than hardware FP but more portable.
 
@@ -752,7 +752,7 @@ u3_noun u3qe_trigrs_factorial(u3_atom);
 
 **Produce functions for compilation and linking.**
 
-Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig-rs.c` and define all of your `trig-rs` jets therein. (Here we show `++factorial` only.)
+Given these function prototype declarations, all that remains is the actual definition of the function. Both functions will live in their own file; we find it the best convention to associate all arms of a core in a single file. In this case, create a file `pkg/noun/jets/e/trig-rs.c` and define all of your `trig-rs` jets therein. (Here we show `+factorial` only.)
 
 **`pkg/noun/jets/e/trig-rs.c`**
 
@@ -839,7 +839,7 @@ We have made use of `u3r_word` to convert a 32-bit (really, 31-bit or smaller) H
 
 #### Compiling and Using the Jet <a href="#compiling-and-using-the-jet" id="compiling-and-using-the-jet"></a>
 
-With this one jet for `++factorial` in place, compile the jet and take note of where Nix produces the binary.
+With this one jet for `+factorial` in place, compile the jet and take note of where Nix produces the binary.
 
 ```sh
 $ make
@@ -921,7 +921,7 @@ Jets are registered with the runtime so that Vere knows to check whether a parti
 * [`~/` sigfas](../../hoon/rune/sig.md#sigfas) registers a jet simply (using defaults).
 * [`~%` sigcen](../../hoon/rune/sig.md#sigcen) registers a jet with all arguments specified.
 
-Typically we use `~/` sigfas to register jets within a core under the umbrella of a `~%` sigcen registration. For instance, `++add` is registered under the Kelvin tag of `hoon.hoon`:
+Typically we use `~/` sigfas to register jets within a core under the umbrella of a `~%` sigcen registration. For instance, `+add` is registered under the Kelvin tag of `hoon.hoon`:
 
 ```hoon
 ~%  %k.140  ~  ~                                        ::
@@ -938,7 +938,7 @@ Typically we use `~/` sigfas to register jets within a core under the umbrella o
   $(a (dec a), b +(b))
 ```
 
-As a generic example, let us consider three nested arms within cores. We intend to jet only `++ccc`, but we need to give Vere a way of tracking the jet registration for all containing cores.
+As a generic example, let us consider three nested arms within cores. We intend to jet only `+ccc`, but we need to give Vere a way of tracking the jet registration for all containing cores.
 
 ```hoon
   ++  aaa
@@ -960,11 +960,11 @@ As a generic example, let us consider three nested arms within cores. We intend 
         !!
 ```
 
-We hint `++ccc` with `%ccc` and add a trail of hints up the enclosing tree of arms. `~/` sigfas takes only the `term` symbol used to label the hint because it knows the context, but `~%` sigcen needs two more fields: the parent jet and some core registration information (which is often `~` null). We here use the parent of `..is`, a system-supplied jet, as the parent jet. Since `++is` is an arm of the Arvo core, `..is` is a reference to the entire Arvo core. The whole Arvo core is hinted with the jet label `%hex`, which is used as the parent for all the top-level jet hints in %zuse.
+We hint `+ccc` with `%ccc` and add a trail of hints up the enclosing tree of arms. `~/` sigfas takes only the `term` symbol used to label the hint because it knows the context, but `~%` sigcen needs two more fields: the parent jet and some core registration information (which is often `~` null). We here use the parent of `..is`, a system-supplied jet, as the parent jet. Since `+is` is an arm of the Arvo core, `..is` is a reference to the entire Arvo core. The whole Arvo core is hinted with the jet label `%hex`, which is used as the parent for all the top-level jet hints in %zuse.
 
 When hinting your own code, make sure to hint each nesting arm. Skipping any nesting core will result in the jet code not being run.
 
-You do not need to provide C implementations for everything you hint. In the above, we hint `%aaa`, `%bbb`, and `%ccc`—even if our intent is only to jet `++ccc`.
+You do not need to provide C implementations for everything you hint. In the above, we hint `%aaa`, `%bbb`, and `%ccc`—even if our intent is only to jet `+ccc`.
 
 #### Editing the C Source Code <a href="#editing-the-c-source-code" id="editing-the-c-source-code"></a>
 
@@ -998,7 +998,7 @@ For each jet you will write one `u3we()` function and one `u3qe()` function.
   * the new `u3qe()` function
 * Edit `~/jetting/urbit/pkg/urbitjets/tree.c` to register the jet.
 
-In the Hoon code we hinted some leaf node functions (`%ccc` for `++ccc` in our example) and then hinted each parent node up to the root `%aaa`/`++aaa`). We need to replicate this structure in C. Here's example C code to jet our above example Hoon:
+In the Hoon code we hinted some leaf node functions (`%ccc` for `+ccc` in our example) and then hinted each parent node up to the root `%aaa`/`+aaa`). We need to replicate this structure in C. Here's example C code to jet our above example Hoon:
 
 ```c
       // 1: register a C func u3we_ccc()

@@ -93,7 +93,7 @@ This is the container door for all the mip functions.
 
 ---
 
-### `++del:bi` {#delbi}
+### `+del:bi` {#delbi}
 
 Delete item in `mip`
 
@@ -147,7 +147,7 @@ A [`mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended 
 
 ---
 
-### `++get:bi` {#getbi}
+### `+get:bi` {#getbi}
 
 Maybe get value in `mip`
 
@@ -155,7 +155,7 @@ Get the value of `c` in the map with key `b` in `mip` `a` as a unit. If there's 
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
@@ -191,7 +191,7 @@ A `(unit [type])`, where `[type]` is the value type. The unit is null if there's
 
 ---
 
-#### `++got:bi`
+#### `+got:bi`
 
 Get value in `mip` or crash
 
@@ -199,7 +199,7 @@ Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in 
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
@@ -234,7 +234,7 @@ dojo: hoon expression failed
 
 ---
 
-### `++gut:bi` {#gutbi}
+### `+gut:bi` {#gutbi}
 
 Get value in `mip` or default
 
@@ -242,7 +242,7 @@ Get the value of `c` in the map with key `b` in `mip` `a`. If there's no `c` in 
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
@@ -278,7 +278,7 @@ A noun, either the type of the value in the map or `d`.
 
 ---
 
-### `++has:bi` {#hasbi}
+### `+has:bi` {#hasbi}
 
 Check if `mip` contains
 
@@ -286,7 +286,7 @@ Check if `mip` `a` contains `c` in `b`.
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
@@ -320,7 +320,7 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
 
 ---
 
-### `++key:bi` {#keybi}
+### `+key:bi` {#keybi}
 
 Get keys of inner map in `mip`
 
@@ -328,7 +328,7 @@ Get the `set` of keys of the inner map matching key `b` in the outer map. If `b`
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
@@ -360,7 +360,7 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
 
 ---
 
-### `++put:bi` {#putbi}
+### `+put:bi` {#putbi}
 
 Insert value in `mip`
 
@@ -368,7 +368,7 @@ Add value `d` with key `c` to the inner map with key `b` in the outer map. If `b
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 `b` is a key matching the key type of the outer map.
 
@@ -406,7 +406,7 @@ A new, modified `mip`.
 
 ---
 
-### `++tap:bi` {#tapbi}
+### `+tap:bi` {#tapbi}
 
 Convert `mip` to `list`
 
@@ -414,7 +414,7 @@ The `mip` is flattened to a `list` of the triple `[x y v]`, where `x` is a key i
 
 #### Accepts
 
-`a` is a [`mip`](#mip), and is the sample of the [`++bi`](#bi) door.
+`a` is a [`mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 #### Produces
 

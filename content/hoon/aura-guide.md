@@ -40,13 +40,13 @@ You should fork the [Urbit repo](https://github.com/urbit/urbit) and create a wo
 
 In this example, we will produce a degree–minute–second (DMS) aura. We will call it `@udms`. It will have the visual form of three integers prefixed with `.` dots, e.g. `.359.59.59` for 359°59'59''. This distinguishes it from `@rs`, which has two similarly-separated values, e.g. `.1.2`; and from `@if`, which has four, e.g. `.1.2.3.4`. For atoms, the literal input form and literal output form should be the same.
 
-It will have the bit-logical form of an integer of arbitrary size, with each whole-number increment representing a second. This would permit overflow, i.e. values greater than 360° such as 720°; however, we will supply a `++norm` arm to enforce modular arithmetic at 360°.
+It will have the bit-logical form of an integer of arbitrary size, with each whole-number increment representing a second. This would permit overflow, i.e. values greater than 360° such as 720°; however, we will supply a `+norm` arm to enforce modular arithmetic at 360°.
 
 ### Base Logic <a href="#base-logic" id="base-logic"></a>
 
 We need to be able to perform arithmetic and type conversion with `@udms` values. Some value representations have an “unpacked“ tuple form, like dates and floating-point values. This makes it easier to shunt the values between auxiliary functions. We'll define one as well here, `+$sexa` (for _sexagesimal_, base-60).
 
-At this point, we implement modular arithmetic and wrap the values properly in `++op`. For instance, wrapping around at 360°=0° should work properly, similar to midnight. Subtraction is liable to underflow, so we need a special handler for it in `++dg`; since we have one, we may as well handle `++add` the same way for consistency.
+At this point, we implement modular arithmetic and wrap the values properly in `+op`. For instance, wrapping around at 360°=0° should work properly, similar to midnight. Subtraction is liable to underflow, so we need a special handler for it in `+dg`; since we have one, we may as well handle `+add` the same way for consistency.
 
 $$359° + 2° = 1°$$
 
@@ -190,7 +190,7 @@ Let's write some unit tests first.
 --
 ```
 
-The Hoon logic will be located in a `++dg` arm. This needs to be sufficiently high in the stack that our prettyprinter and parser logic know about them, so let's put `++dg` in the fourth core. Search for `layer-5` and paste `++dg` in a few lines above that after `+$hump`. (Strictly speaking, we should make sure that this works in a userspace `/lib` library first but here we'll just insert it into `/sys/hoon` and rely on our unit tests.)
+The Hoon logic will be located in a `+dg` arm. This needs to be sufficiently high in the stack that our prettyprinter and parser logic know about them, so let's put `+dg` in the fourth core. Search for `layer-5` and paste `+dg` in a few lines above that after `+$hump`. (Strictly speaking, we should make sure that this works in a userspace `/lib` library first but here we'll just insert it into `/sys/hoon` and rely on our unit tests.)
 
 **`/sys/hoon`**
 
@@ -230,7 +230,7 @@ The Hoon logic will be located in a `++dg` arm. This needs to be sufficiently hi
 
 ### Pretty-Printing <a href="#pretty-printing" id="pretty-printing"></a>
 
-The atom literal should be constructed in `++rend`, which has a cascade of switch statements over the atom aura. Let's adopt the output syntax to be the same as the input syntax, `.ddd.mm.ss`.
+The atom literal should be constructed in `+rend`, which has a cascade of switch statements over the atom aura. Let's adopt the output syntax to be the same as the input syntax, `.ddd.mm.ss`.
 
 ```hoon
 ++  co
@@ -276,7 +276,7 @@ A parsing rule which correctly handles the aura is:
 ;~(pfix dot ;~((glue dot) dem:ag dem:ag dem:ag))
 ```
 
-as demonstrated by these tests. (See also `++dem:ag`.)
+as demonstrated by these tests. (See also `+dem:ag`.)
 
 ```hoon
 > (;~(pfix dot ;~((glue dot) dem:ag dem:ag dem:ag)) [[1 1] ".1.2.3"])
@@ -303,9 +303,9 @@ Ultimately we will pack these together into the atom form `@udms`.
 3.723
 ```
 
-Note that this form overflows still, but can be corrected using `++norm:dg`.
+Note that this form overflows still, but can be corrected using `+norm:dg`.
 
-Our parser logic needs to be cited in `++zust:so` because that arm parses atoms prefixed with `.` dot. This means that the `pfix dot` gets eaten, and our actual parsing rule only needs to handle the rest of the symbol. Add a `++dems` arm after `++zust` and register it in the `pose` in `++zust` as well. Since parsers in a `pose` resolve in order, it should come after IPv4 `@if` addresses (`.1.1.1.1`) and before `@rs` values (`.1.1`).
+Our parser logic needs to be cited in `+zust:so` because that arm parses atoms prefixed with `.` dot. This means that the `pfix dot` gets eaten, and our actual parsing rule only needs to handle the rest of the symbol. Add a `+dems` arm after `+zust` and register it in the `pose` in `+zust` as well. Since parsers in a `pose` resolve in order, it should come after IPv4 `@if` addresses (`.1.1.1.1`) and before `@rs` values (`.1.1`).
 
 ```hoon
 ++  so

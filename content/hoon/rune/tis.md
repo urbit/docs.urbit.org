@@ -501,7 +501,7 @@ None
 - `r` is an expression that produces `[p-value new-q-value]`.
 - `s` is some more code to be evaluted against the modified subject.
 
-This is a bit like doing `=/` and `=.` at the same time. It's useful for state machines, where you want to produce both effects and a new state. For example, many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip card _this)`. In the `++on-poke` arm, you might have something like:
+This is a bit like doing `=/` and `=.` at the same time. It's useful for state machines, where you want to produce both effects and a new state. For example, many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip card _this)`. In the `+on-poke` arm, you might have something like:
 
 ```hoon
 =^  cards  state

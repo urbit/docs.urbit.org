@@ -273,9 +273,9 @@ There is also extensive use of `tank`/`tang` formatted error messaging.
 
 ## How the library works {#how-the-library-works}
 
-By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek` arms can be modified.  (In fact, all of the arms can be modified but most of the arms are pass-throughs to the modified agent.)
+By applying this door builder using `%-` censig, the `+on-poke` and `+on-peek` arms can be modified.  (In fact, all of the arms can be modified but most of the arms are pass-throughs to the modified agent.)
 
-#### `++on-poke`
+#### `+on-poke`
 
 <details>
 <summary>++on-poke</summary>
@@ -356,7 +356,7 @@ By applying this door builder using `%-` censig, the `++on-poke` and `++on-peek`
 
 </details>
 
-The `++on-poke` arm has several branches added to it after a check to see whether it is being used through the `+dbug` generator.  If it isn't (as determined by the associated `mark`), then the poke is passed through to the base agent.
+The `+on-poke` arm has several branches added to it after a check to see whether it is being used through the `+dbug` generator.  If it isn't (as determined by the associated `mark`), then the poke is passed through to the base agent.
 
 ```hoon
 ?.  ?=(%dbug mark)
@@ -364,7 +364,7 @@ The `++on-poke` arm has several branches added to it after a check to see whethe
   [cards this]
 ```
 
-The following `?-` wuthep handles the input arguments:  `%state` is the most interesting code in this library.  The code first checks whether the base agent has a `/dbug/state` peek endpoint already (in which case it passes it through), otherwise it evaluates the requested Hoon expression against the agent's state (obtained via `++on-save:ag`).
+The following `?-` wuthep handles the input arguments:  `%state` is the most interesting code in this library.  The code first checks whether the base agent has a `/dbug/state` peek endpoint already (in which case it passes it through), otherwise it evaluates the requested Hoon expression against the agent's state (obtained via `+on-save:ag`).
 
 ```hoon
   %state
@@ -385,12 +385,12 @@ The following `?-` wuthep handles the input arguments:  `%state` is the most int
 
 This branch includes the use of a rare [`=?` tiswut](../../../hoon/rune/tis.md#tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../hoon/rune/tis.md#tismic).  There is also some direct compilation of `cord`s taking place:
 
-- [`++sell`](../../../hoon/stdlib/5c.md#sell) is a `vase` pretty-printer.
-- [`++slop`](../../../hoon/stdlib/5c.md#slop) conses two `vase`s together as a cell. 
-- [`++slap`](../../../hoon/stdlib/5c.md#slap) compiles a Hoon expression and produces a `vase` of the result.
-- [`++ream`](../../../hoon/stdlib/5d.md#ream) parses a `cord` to a Hoon expression.
+- [`+sell`](../../../hoon/stdlib/5c.md#sell) is a `vase` pretty-printer.
+- [`+slop`](../../../hoon/stdlib/5c.md#slop) conses two `vase`s together as a cell. 
+- [`+slap`](../../../hoon/stdlib/5c.md#slap) compiles a Hoon expression and produces a `vase` of the result.
+- [`+ream`](../../../hoon/stdlib/5d.md#ream) parses a `cord` to a Hoon expression.
 
-#### `++on-peek`
+#### `+on-peek`
 
 <details>
 <summary>++on-peek</summary>
@@ -410,7 +410,7 @@ This branch includes the use of a rare [`=?` tiswut](../../../hoon/rune/tis.md#t
 
 </details>
 
-The `++on-peek` arm adds several peek endpoints which expose the state (via `++onsave:ag`) and the subscriptions.
+The `+on-peek` arm adds several peek endpoints which expose the state (via `+on-save:ag`) and the subscriptions.
 
 ```hoon
 > .^(noun %gx /(scot %p our)/azimuth/(scot %da now)/dbug/subscriptions/noun)

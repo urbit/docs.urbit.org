@@ -73,9 +73,9 @@ These are the parsing rules that the CLI agent will use.  We could include these
   ==
 ```
 
-**`++command-parser`**
+**`+command-parser`**
 
-We want this arm to wait until `RETURN` is pressed so we `++stag` the value with `|` `FALSE`/`%.n`.
+We want this arm to wait until `RETURN` is pressed so we `+stag` the value with `|` `FALSE`/`%.n`.
 
 ```hoon
 ++  command-parser
@@ -85,7 +85,7 @@ We want this arm to wait until `RETURN` is pressed so we `++stag` the value with
   (cook command:rpn ;~(pose num:rpnlib ops:rpnlib))
 ```
 
-**`++on-command`**
+**`+on-command`**
 
 This arm pushes values onto the stack, displays the stack, then checks to parse for the result of an operation.
 
@@ -196,6 +196,6 @@ gall: booted %rpn
 ## Exercises {#exercises}
 
 - Extend the calculator app to support modulus as `%` cen.
-- Extend the calculator app so it instead operates on `@rd` values.  Either use `++cook` to automatically convert the input values from a `1.23`-style input to the `.~1.23` `@rd` style or build a different input parser from the entries in `++royl:so`.
+- Extend the calculator app so it instead operates on `@rd` values.  Either use `+cook` to automatically convert the input values from a `1.23`-style input to the `.~1.23` `@rd` style or build a different input parser from the entries in `+royl:so`.
 - Extend the calculator app so that it can support named variables (using `@tas`) with `=` tis.  What new data structure do you need?  For convenience, expose the result of the last operation as `ans` (a feature of TI graphing calculators and MATLAB, among other programs).
 - The calculator app stack isn't really a proper CS stack with push and pop operations.  Refactor it to use such a type.

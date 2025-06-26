@@ -45,11 +45,11 @@ Any significant computation with nouns, certainly anything Turing complete, shou
 
 `sec_w` is the number of seconds to time out the computation. `fun_f` is a C function accepting `arg`.
 
-The result of `u3m_soft()` is a cell whose head is an atom.  If the head is `%$` - ie, `0` - the tail is the result of `fun_f(arg)`.  Otherwise, the head is a `term` (an atom which is an LSB first string), and the tail is a `(list tank)` (a list of `tank` printables - see `++tank` in `hoon.hoon`).  Error terms should be the same as the exception terms above.
+The result of `u3m_soft()` is a cell whose head is an atom.  If the head is `%$` - ie, `0` - the tail is the result of `fun_f(arg)`.  Otherwise, the head is a `term` (an atom which is an LSB first string), and the tail is a `(list tank)` (a list of `tank` printables - see `+tank` in `hoon.hoon`).  Error terms should be the same as the exception terms above.
 
 If you're confident that your computation won't fail, you can use `u3m_soft_sure()`, `u3m_soft_slam()`, or `u3m_soft_nock()` for C functions, Hoon function calls, and Nock invocations. Caution - this returns just the result, and asserts globally.
 
-All the `u3m_soft` functions above work **only on the surface**. Within the surface, virtualize with `u3m_soft_run()`.  Note that this takes a `fly` (a namespace gate), thus activating the `11` super-operator in the nock virtualizer, `++mock`.  When actually using the `fly`, call `u3m_soft_esc()`.  Don't do either unless you know what you're doing!
+All the `u3m_soft` functions above work **only on the surface**. Within the surface, virtualize with `u3m_soft_run()`.  Note that this takes a `fly` (a namespace gate), thus activating the `11` super-operator in the nock virtualizer, `+mock`.  When actually using the `fly`, call `u3m_soft_esc()`.  Don't do either unless you know what you're doing!
 
 For descending into a subroad **without** Nock virtualization, use `u3m_hate()` and `u3m_love` respectively.  Hating enters a subroad; loving leaves it, copying out a product noun.
 
@@ -172,7 +172,7 @@ Warm and cold state is **per road**.  In other words, as we nest roads, we also 
       } jed;
 ```
 
-In case you understand Hoon, `das` (cold state) is a `++dash`, and `har_p` (warm state) is a map from battery to `++calx`:
+In case you understand Hoon, `das` (cold state) is a `+dash`, and `har_p` (warm state) is a map from battery to `+calx`:
 
 ```hoon
     ++  bane  ,@tas                                 ::  battery name
@@ -194,7 +194,7 @@ In case you understand Hoon, `das` (cold state) is a `++dash`, and `har_p` (warm
     ++  dash  (map bash clog)                       ::  jet system
 ```
 
-The driver index `jax` in a `++calx` is an index into `ray_u` in the dashboard - ie, a pointer into hot state.  This is why the warm state has to be reset when we reload the pier in a new process.
+The driver index `jax` in a `+calx` is an index into `ray_u` in the dashboard - ie, a pointer into hot state.  This is why the warm state has to be reset when we reload the pier in a new process.
 
 Why is jet state nested?  Nock of course is a functional system, so as we compute we don't explicitly create state.  Jet state is an exception to this principle (which works only because it can't be semantically detected from Nock/Hoon) - but it can't violate the fundamental rules of the allocation system.
 
@@ -210,7 +210,7 @@ Jet binding starts with a `%fast` hint.  (In Hoon, this is produced by the runes
 [10 [%fast clue-formula] core-formula]
 ```
 
-`core-formula` assembles the core to be jet-propelled. `clue-formula` produces the hint information, or `++clue` above, which we want to annotate it with.
+`core-formula` assembles the core to be jet-propelled. `clue-formula` produces the hint information, or `+clue` above, which we want to annotate it with.
 
 A clue is a triple of name, parent, and hooks:
 
@@ -218,7 +218,7 @@ A clue is a triple of name, parent, and hooks:
 ++  clue  (trel chum nock (list (pair term nock)))
 ```
 
-The name, or `++chum`, has a bunch of historical structure which we don't need (cleaning these things up is tricky), but just gets flattened into a term.
+The name, or `+chum`, has a bunch of historical structure which we don't need (cleaning these things up is tricky), but just gets flattened into a term.
 
 The parent axis is a nock formula, but always reduces to a simple axis, which is the address of this core's **parent**.  Consider again an ordinary gate
 
@@ -264,13 +264,13 @@ Not all cores are static, of course - they may contain live data, like the sampl
 
 (And if you're wondering how we can use a deep noun like a Nock formula or battery as a key in a key-value table, remember `mug_w`, the lazily computed short hash, in all boxed nouns.)
 
-In any case, `das`, the dashboard, is a map from `bash` to jet location record (`++clog`).  A `clog` in turn contains two kinds of information: the `++cope`, or per-location noun; and a map of batteries to a per-battery `++club`.
+In any case, `das`, the dashboard, is a map from `bash` to jet location record (`+clog`).  A `clog` in turn contains two kinds of information: the `+cope`, or per-location noun; and a map of batteries to a per-battery `+club`.
 
-The `cope` is a triple of `++bane` (battery name, right now just a `term`); `++axis`, the axis, within **this** core, of the parent; and `(each bash noun)`, which is either `[0 bash]` if the parent is another core, or `[1 noun]`, for the constant noun (like `164`) if there is no parent core.
+The `cope` is a triple of `+bane` (battery name, right now just a `term`); `+axis`, the axis, within **this** core, of the parent; and `(each bash noun)`, which is either `[0 bash]` if the parent is another core, or `[1 noun]`, for the constant noun (like `164`) if there is no parent core.
 
-A `bash` is just the noun hash (`++sham`) of a `cope`, which uniquely expresses the battery's hierarchical location without depending on the actual formulas.
+A `bash` is just the noun hash (`+sham`) of a `cope`, which uniquely expresses the battery's hierarchical location without depending on the actual formulas.
 
-The `club` contains a `++corp`, which we use to actually validate the core.  Obviously jet execution has to be perfectly compatible with Nock.  We search on the battery, but getting the battery right is not enough - a typical battery is dependent on its context.  For example, your jet-propelled library function is very likely to call `++dec` or other advanced kernel technology. If you've replaced the kernel in your context with something else, we need to detect this and not run the jet.
+The `club` contains a `+corp`, which we use to actually validate the core.  Obviously jet execution has to be perfectly compatible with Nock.  We search on the battery, but getting the battery right is not enough - a typical battery is dependent on its context.  For example, your jet-propelled library function is very likely to call `+dec` or other advanced kernel technology. If you've replaced the kernel in your context with something else, we need to detect this and not run the jet.
 
 There are two cases for a jet-propelled core - either the entire core is a static constant, or it isn't.  Hence the definition of `corp`:
 
@@ -286,9 +286,9 @@ Note that there is at present no way to force a jet to depend on static **data**
 
 We don't use the cold state to match jets as we call them.  We use the cold state to register jets as we find them, and also to rebuild the warm state after the hot state is reset.
 
-What we actually use at runtime is the warm state, `jed->har_p`, which is a `u3h` (built-in hashtable), allocated on the loom, from battery to `++calx`.
+What we actually use at runtime is the warm state, `jed->har_p`, which is a `u3h` (built-in hashtable), allocated on the loom, from battery to `+calx`.
 
-A `calx` is a triple of a `++calf`, a `[bash cope]` cell, and a `club`.  The latter two are all straight from cold state.
+A `calx` is a triple of a `+calf`, a `[bash cope]` cell, and a `club`.  The latter two are all straight from cold state.
 
 The `calf` contains warm data dependent on hot state.  It's a quadruple: of `jax`, the hot driver index (in `ray_u` in `u3j_dash`); `hap`, a table from arm axis (ie, the axis of each formula within the battery) to driver arm index (into `arm_u` in `u3j_core`); `lab`, the complete label path; and  `jit`, any other dynamic data that may speed up execution.
 
@@ -328,7 +328,7 @@ In `u3j_boot()`, we traverse the hierarchy, fill in parent pointers `par_u`, and
 
 At present, all drivers are compiled statically into `u3`.  This is not a long-term permanent solution or anything.  However, it will always be the case with a certain amount of core functionality.
 
-For instance, there are some jet functions that we need to call as part of loading the Arvo kernel - like `++cue` to unpack a noun from an atom.  And obviously it makes sense, when jets are significant enough to compile into `u3`, to export their symbols in headers and the linker.
+For instance, there are some jet functions that we need to call as part of loading the Arvo kernel - like `+cue` to unpack a noun from an atom.  And obviously it makes sense, when jets are significant enough to compile into `u3`, to export their symbols in headers and the linker.
 
 There are three interface prefixes for standard jet functions: `u3k`, `u3q`, and `u3w`.  All jets have `u3w` interfaces; most have `u3q`; some have `u3k`.  Of course the actual logic is shared.
 
@@ -338,7 +338,7 @@ There are three interface prefixes for standard jet functions: `u3k`, `u3q`, and
 
 Following `u3k/q/w` is `[a-f]`, corresponding to the 6 logical tiers of the kernel, or `g` for user-level jets.  Another letter is added for functions within subcores.  The filename, under `j/`, follows the tier and the function name.
 
-For instance, `++add` is `u3wa_add(cor)`, `u3qa_add(a, b)`, or `u3ka_add(a, b)`, in `j/a/add.c`.  `++get` in `++by` is `u3wdb_get(cor)`, `u3kdb_get(a, b)`, etc, in `j/d/by_get.c`.
+For instance, `+add` is `u3wa_add(cor)`, `u3qa_add(a, b)`, or `u3ka_add(a, b)`, in `j/a/add.c`.  `+get` in `+by` is `u3wdb_get(cor)`, `u3kdb_get(a, b)`, etc, in `j/d/by_get.c`.
 
 For historical reasons, all internal jet code in `j/[a-f]` **retains** noun arguments, and **transfers** noun results.  Please do not do this in new `g` jets!  The new standard protocol is to transfer both arguments and results.
 
@@ -443,15 +443,15 @@ The `_on` functions in `u3n` are all defined as pure Nock.  But actually, even t
 
 Note that `u3` has a well-developed error handling system - `u3m_bail()` to throw an exception, `u3m_soft_*` to catch one. But Nock has no exception model at all.  That's okay - all it means if that if an `_on` function bails, the exception is an exception in the caller.
 
-However, `u3`'s exception handling happens to match a convenient virtual super-Nock in `hoon.hoon`, the infamous `++mock`.  Of course, Nock is slow, and `mock` is Nock in Nock, so it is (logically) super-slow.  Then again, so is decrement.
+However, `u3`'s exception handling happens to match a convenient virtual super-Nock in `hoon.hoon`, the infamous `+mock`.  Of course, Nock is slow, and `mock` is Nock in Nock, so it is (logically) super-slow.  Then again, so is decrement.
 
-With the power of `u3`, we nest arbitrary layers of `mock` without any particular performance cost.  Moreover, we simply treat Nock proper as a special case of `mock`.  (More precisely, the internal VM loop is `++mink` and the error compiler is `++mook`.  But we call the whole sandbox system `mock`.)
+With the power of `u3`, we nest arbitrary layers of `mock` without any particular performance cost.  Moreover, we simply treat Nock proper as a special case of `mock`.  (More precisely, the internal VM loop is `+mink` and the error compiler is `+mook`.  But we call the whole sandbox system `mock`.)
 
 The nice thing about `mock` functions is that (by executing within `u3m_soft_run()`, which as you may recall uses a nested road) they provide both exceptions and the namespace operator - `.^` in Hoon, which becomes operator `11` in `mock`.
 
-`11` requires a namespace function, or `fly`, which produces a `++unit` - `~` (`0`) for no binding, or `[0 value]`.  The sample to a `fly` is a `++path`, just a list of text `span`.
+`11` requires a namespace function, or `fly`, which produces a `+unit` - `~` (`0`) for no binding, or `[0 value]`.  The sample to a `fly` is a `+path`, just a list of text `span`.
 
-`mock` functions produce a `++toon`.  Fully elaborated:
+`mock` functions produce a `+toon`.  Fully elaborated:
 
 ```hoon
     ++  noun  ,*                                      ::  any noun
@@ -542,7 +542,7 @@ The only funky function is `u3h_gut()`, which unifies keys with `u3r_sung()`.  A
 
 Connected to the `~+` rune in Hoon, via the Nock `%memo` hint, the memoization facility is a general-purpose cache.
 
-(It's also used for partial memoization - a feature that'll probably be removed, in which conservative worklist algorithms (which would otherwise be exponential) memoize everything in the subject **except** the worklist.  This is used heavily in the Hoon compiler jets (j/f/*.c).  Unfortunately, it's probably not possible to make this work perfectly in that it can't be abused to violate Nock, so we'll probably remove it at a later date, instead making `++ut` keep its own monadic cache.)
+(It's also used for partial memoization - a feature that'll probably be removed, in which conservative worklist algorithms (which would otherwise be exponential) memoize everything in the subject **except** the worklist.  This is used heavily in the Hoon compiler jets (j/f/*.c).  Unfortunately, it's probably not possible to make this work perfectly in that it can't be abused to violate Nock, so we'll probably remove it at a later date, instead making `+ut` keep its own monadic cache.)
 
 Each `u3z` function comes with a `c3_m` mote which disambiguates the function mapping key to value.  For Nock itself, use 0.  For extra speed, small tuples are split out in C; thus, find with
 
@@ -610,21 +610,21 @@ An Arvo kernel - or at least, a core that compiles with the Arvo interface - is 
 
 This is the Arvo ABI in a very real sense.  Arvo is a core with these six arms.  To use these arms, we hardcode the axis of the formula (`11`, `4`, `86`, etc) into the C code that calls Arvo, because otherwise we'd need type metadata - which we can get, by calling Arvo.
 
-It's important to understand the Arvo event/action structure, or `++ovum`.  An `ovum` is a `card`, which is any `[term noun]` cell, and a `++wire`, a `path` which indicates the location of the event.  At the Unix level, the `wire` corresponds to a system module or context.  For input events, this is the module that caused the event; for output actions, it's the module that performs the action.
+It's important to understand the Arvo event/action structure, or `+ovum`.  An `ovum` is a `card`, which is any `[term noun]` cell, and a `+wire`, a `path` which indicates the location of the event.  At the Unix level, the `wire` corresponds to a system module or context.  For input events, this is the module that caused the event; for output actions, it's the module that performs the action.
 
-`++poke` sends Arvo an event `ovum`, producing a cell of action ova and a new Arvo core.
+`+poke` sends Arvo an event `ovum`, producing a cell of action ova and a new Arvo core.
 
-`++peek` dereferences the Arvo namespace.  It takes a date and a key, and produces `~` (`0`) or `[~ value]`.
+`+peek` dereferences the Arvo namespace.  It takes a date and a key, and produces `~` (`0`) or `[~ value]`.
 
-`++keep` asks Arvo the next time it wants to be woken up, for the given `wire`.  (This input will probably be eliminated in favor of a single global timer.)
+`+keep` asks Arvo the next time it wants to be woken up, for the given `wire`.  (This input will probably be eliminated in favor of a single global timer.)
 
-`++wish` compiles a string of Hoon source.  While just a convenience, it's a very convenient convenience.
+`+wish` compiles a string of Hoon source.  While just a convenience, it's a very convenient convenience.
 
-`++come` and `++load` are used by Arvo to reset itself (more precisely, to shift the Arvo state from an old kernel to a new one); there is no need to call them from C.
+`+come` and `+load` are used by Arvo to reset itself (more precisely, to shift the Arvo state from an old kernel to a new one); there is no need to call them from C.
 
 Now that we understand the Arvo kernel interface, let's look at the `u3v` API.  As usual, all the functions in `u3v` are commented, but unfortunately it's hard to describe this API as clean at present.  The problem is that `u3v` remains design coupled to the old `vere` event handling code written for `u2`. But let's describe the functions you should be calling, assuming you're not writing the next event system.  There are only two.
 
-`u3v_wish(str_c)` wraps the `++wish` functionality in a cache (which is read-only unless you're on the surface road).
+`u3v_wish(str_c)` wraps the `+wish` functionality in a cache (which is read-only unless you're on the surface road).
 
 `u3v_do()` uses `wish` to provide a convenient interface for calling Hoon kernel functions by name.  Even more conveniently, we tend to call `u3v_do()` with these convenient aliases:
 

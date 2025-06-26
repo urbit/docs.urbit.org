@@ -708,7 +708,7 @@ cp -r suite/mar/pals comet/flap/mar
 
 When dealing with `%pals`, we need to maintain some list of our friends and their current known high scores (which means modifying the app's state) and dealing with sending and receiving notifications. That is reflected in adding `scores` to the new state in the state definition in `/app/flap.hoon`.
 
-Subscriptions will all take place over the `/flap` path. In the `++on-poke` arm, we need to issue notices along that arm with the `%flap-update` mark.
+Subscriptions will all take place over the `/flap` path. In the `+on-poke` arm, we need to issue notices along that arm with the `%flap-update` mark.
 
 ```hoon
   %flap-action
@@ -721,7 +721,7 @@ Subscriptions will all take place over the `/flap` path. In the `++on-poke` arm,
 ==
 ```
 
-We also need to process incoming `%fact`s with a `%flap-update` cage in `++on-agent`:
+We also need to process incoming `%fact`s with a `%flap-update` cage in `+on-agent`:
 
 ```hoon
   %flap-update
@@ -1123,7 +1123,7 @@ function sendscore(score) {
 }
 ```
 
-If you examine `++on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` requests are accepted, examined, and if valid passed back through as a self-poke with appropriate mark.
+If you examine `+on-poke` in `/app/flap.hoon`, you will see that HTTP `POST` requests are accepted, examined, and if valid passed back through as a self-poke with appropriate mark.
 
 ```hoon
   %'POST'

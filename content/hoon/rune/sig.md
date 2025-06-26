@@ -387,7 +387,7 @@ Here's the beginning of the AES core in `zuse.hoon`:
   ..........
 ```
 
-Here we label the entire `++aes` core for optimization.
+Here we label the entire `+aes` core for optimization.
 
 ---
 

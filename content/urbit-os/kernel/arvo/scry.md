@@ -57,7 +57,7 @@ Gall agents can expose scry endpoints with any `care`, but most commonly they'll
 
 {% hint style="info" %}
 
-**Note:** you should not perform agent scries from within the `++on-load` arm of your agent. All Gall agents are suspended during kernel upgrade, and then reloaded one-by-one. If the agent you scry wasn't reloaded before yours, the scry will fail.
+**Note:** you should not perform agent scries from within the `+on-load` arm of your agent. All Gall agents are suspended during kernel upgrade, and then reloaded one-by-one. If the agent you scry wasn't reloaded before yours, the scry will fail.
 
 {% endhint %}
 

@@ -176,12 +176,12 @@ The system only handles pokes:  there are no subscriptions or Arvo calls except 
 
 ### Pokes {#pokes}
 
-`++on-poke` only responds to `%handle-http-request`, which is dealt with in a `|^` barket core.
+`+on-poke` only responds to `%handle-http-request`, which is dealt with in a `|^` barket core.
 
-The most interesting part of the whole app is the `++handle-http` arm:
+The most interesting part of the whole app is the `+handle-http` arm:
 
 <details>
-<summary>++handle-http</summary>
+<summary>+handle-http</summary>
 
 ```hoon
 ++  handle-http

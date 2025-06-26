@@ -289,7 +289,7 @@ There are also two kinds of exception: mild and severe.  An external exception i
 
 Either way, exceptions come with a stack trace.  The `u3` nock interpreter is instrumented to retain stack trace hints and produce them as a printable `(list tank)`.
 
-Mild exceptions are caught by the first virtualization layer and returned to the caller, following the behavior of the Nock virtualizer `++mock` (in `hoon.hoon`)
+Mild exceptions are caught by the first virtualization layer and returned to the caller, following the behavior of the Nock virtualizer `+mock` (in `hoon.hoon`)
 
 Severe exceptions, or mild exceptions at the surface, terminate the entire execution stack at any depth and send the cumulative trace back to the `u3` caller.
 

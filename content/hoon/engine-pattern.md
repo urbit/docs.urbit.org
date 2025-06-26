@@ -15,7 +15,7 @@ layout:
 
 # The Engine Pattern
 
-*The following is lightly adapted from "The Nested Core Design Pattern (As Seen Through `++abet`)", a 2022 blog post by \~lagrev-nocfep, which was written in collaboration with \~rovnys-ricfer.*
+*The following is lightly adapted from "The Nested Core Design Pattern (As Seen Through `+abet`)", a 2022 blog post by \~lagrev-nocfep, which was written in collaboration with \~rovnys-ricfer.*
 
 *They discuss the engine pattern in detail in this video which accompanied the blog post.*
 

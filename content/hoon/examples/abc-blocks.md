@@ -194,7 +194,7 @@ _These solutions were submitted by the Urbit community as part of a competition 
 
 ### Solution #1 {#solution-1}
 
-_By ~dozreg-toplud.  In the process, he found and fixed a bug in the implementation of `++curr`._
+_By ~dozreg-toplud.  In the process, he found and fixed a bug in the implementation of `+curr`._
 
 ```hoon
 ::  +abc-blocks: a solution to the HSL challenge #2

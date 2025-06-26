@@ -149,7 +149,7 @@ The `error` `unit` will be `~` if successful, or contain a traceback in the `tan
 
 #### Example
 
-See the [%wait](tasks.md#wait) section of the Examples document.
+See the [%wait](examples.md#wait) section of the Examples document.
 
 ## `%wake` {#wake}
 

@@ -214,7 +214,7 @@ The first thing you need to do is generate an SSH key so you can connect to the 
 ssh-keygen -q -t ed25519 -N "" -f ~/.ssh/urbit-vps
 ```
 
-We'll come back to these keys later.
+It will have added public and private keys in `~/.ssh/`. We'll come back to these keys later.
 
 ## 2. Create instance
 
@@ -230,17 +230,17 @@ Comparison:
 
 {% tab title="Digital Ocean" %}
 
-Create an account on [Digital Ocean](https://digitalocean.com). Once you make an account, choose "Create Droplets" from the menu.
+Create an account on [Digital Ocean](https://digitalocean.com). Once you make an account, choose "Create Droplets" from the control panel.
 
 Fill out the options like so:
 
 #### Region
 
-Choose the closest to you. The default data center for the region is fine.
+Choose the closest to you.
 
 #### Datacenter
 
-Default.
+The default data center for the region is fine.
 
 #### Choose an image
 
@@ -266,7 +266,7 @@ Skip this.
 
 #### Choose Authentication Method
 
-Select "SSH keys" and hit "New SSH Key". Run the following in the terminal:
+Select "SSH key" and hit "Add SSH key". Run the following in the terminal:
 
 ```sh
 cat ~/.ssh/urbit-vps.pub
@@ -288,9 +288,9 @@ Make sure to paste the entire result of running `cat ~/.ssh/urbit-vps.pub` into 
 
 #### Finalize Details
 
-Leave the quantity as 1 and skip the tags field. Where it says hostname, enter `urbit-vps` or something else if you'd prefer.
+Leave the quantity as 1 droplet and skip the tags field. Where it says hostname, enter `urbit-vps` or something else if you'd prefer.
 
-Finally, hit "Create Droplet". It'll take a minute, then you should see your droplet listed with a green dot, meaning it's running. Copy the IP address and save it somewhere so you can connect to it later.
+Finally, hit "Create Droplet". It'll take a minute, then you should see your droplet listed with a green dot, meaning it's running. Copy the IP address and save it somewhere so you can connect to it later. Note that you need to have set up a billing method in order to create the droplet, which you can do in a separate tab if you haven't already.
 
 Note that while it spins up pretty fast, `cloud-init` has to update all the packages and possibly reboot, so it may not be accessible or fully configured for a few minutes.
 

@@ -72,9 +72,9 @@ For instance, the following generator can be run with no arguments:
 42
 ```
 
-A `%say` generator is structurally a head-tagged cell of a gate which returns a head-tagged cell of a mark and a value (or a `cask`).
+A `%say` generator is structurally a head-tagged cell of a gate which returns a head-tagged cell of a mark and a value (or a `+cask`).
 
-The head tag over the entire generator is always `%say`.  The `cask` tag is most commonly `%noun`.
+The head tag over the entire generator is always `%say`.  The `+cask` tag is most commonly `%noun`.
 
 We use `%say` generators when we want to provide something else in Arvo, the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
   

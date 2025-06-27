@@ -72,7 +72,7 @@ A `[%face p=term q=type]` wraps the label `p` around the type `q`.  `p` is a `te
 
 ### `[%atom p=term q=(unit atom))]` {#atom-pterm-qunit-atom}
 
-`%atom` is for an atom, with two twists.  `q` is a `unit`, Hoon's equivalent of a nullable pointer or a Haskell `Maybe`.  If `q` is `~`, null, the type is **warm**; any atom is in the type. If `q` is `[~ x]`, where `x` is any atom, the type is **cold**; its only legal value is the constant `x`.
+`%atom` is for an atom, with two twists.  `q` is a `+unit`, Hoon's equivalent of a nullable pointer or a Haskell `Maybe`.  If `q` is `~`, null, the type is **warm**; any atom is in the type. If `q` is `[~ x]`, where `x` is any atom, the type is **cold**; its only legal value is the constant `x`.
 
 `p` in the atom is a terminal used as an **aura**, or soft atom type.  Auras are a lightweight, advisory representation of the units, semantics, and/or syntax of an atom.  An aura is an atomic string; two auras are compatible if one is a prefix of the other.
 

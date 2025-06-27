@@ -36,7 +36,7 @@ In order to hit the `+on-peek` arm of a Gall agent, you need to:
 1. Put the agent in `q.beak` of the scry path (where the `desk` usually goes), like `/=some-agent=`.
 2. Make sure the beginning of the `spur` is *not* an empty `%$` element, as that will route the scry to the [vane endpoints](#vane-scries) instead. An agent scry must be `/=some-agent=/some/path` not `/=some-agent=//some/path`.
 
-Any `care` can be used (dependent on what the agent accepts, of course). The most common is `%x`.
+Any `$care` can be used (dependent on what the agent accepts, of course). The most common is `%x`.
 
 {% hint style="info" %}
 
@@ -48,7 +48,7 @@ Note that `%x` cares alone must include an extra `mark` field at the end of the 
 
 ## Vane scries {#vane-scries}
 
-Gall itself provides the special vane-level endpoints listed below. They are organized by the `care`. In order to hit the vane-level endpoints, the beginning of the the `spur` (e.g. the `path` after the `beak`) *must* be a `%$` empty element. For example:
+Gall itself provides the special vane-level endpoints listed below. They are organized by the `$care`. In order to hit the vane-level endpoints, the beginning of the the `spur` (e.g. the `path` after the `beak`) *must* be a `%$` empty element. For example:
 
 ```hoon
 .^(desk %gd /=acme=/$)

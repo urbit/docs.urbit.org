@@ -118,4 +118,4 @@ Fail says to end the thread here and don't call any subsequent strands. It inclu
 
 ### done {#done}
 
-Done means the computation was completed successfully and includes the result. When Spider recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `bind` receives a `%done` it will extract the result and call the next gate with it.
+Done means the computation was completed successfully and includes the result. When Spider recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `+bind` receives a `%done` it will extract the result and call the next gate with it.

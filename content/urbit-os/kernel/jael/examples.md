@@ -69,7 +69,7 @@ At this point our thread unsubscribes again with a `%nuke` `task` but without th
 
 ## `%public-keys` and `%nuke` {#public-keys-and-nuke}
 
-Here we'll look at both subscribing and unsubscribing to updates of a ship's public keys in Jael. We'll subscribe by sending Jael a `%public-keys` `task`, take the `%public-keys` `gift` it responds with, print it to the terminal, scry for the `set` of `duct`s subscribed to the ship in question, print them to the terminal, and finally send Jael a `%nuke` `task` to unsubscribe.
+Here we'll look at both subscribing and unsubscribing to updates of a ship's public keys in Jael. We'll subscribe by sending Jael a `%public-keys` `task`, take the `%public-keys` `gift` it responds with, print it to the terminal, scry for the `+set` of `duct`s subscribed to the ship in question, print them to the terminal, and finally send Jael a `%nuke` `task` to unsubscribe.
 
 Here's a thread that performs these actions:
 
@@ -167,7 +167,7 @@ It first passes a `%public-keys` `task` to Jael that looks like `[%public-keys (
 
 Along with giving us the current information, Jael will also subscribe us to any future updates for the ships in question. Such updates will come as additional `%public-keys` `gift`s, but rather than a `%full` `public-keys-result`, they'll instead contain either a `%diff` or `%breach` `public-keys-result`, depending on what's happened to the ship in question. It's difficult to simulate such events for demonstrative purposes so an example is not included, but you can look at the [$public-keys-result](data-types.md#public-keys-result) to get an idea.
 
-Jael maintains a `(jug duct ship)` and its reverse `(jug ship duct)` in its state to track subscriptions. If we do a [subscriptions](scry.md#subscriptions) scry and filter the result for `~dopzod`, we can see the duct of our thread has now been added to the `~dopzod` `set`. Our thread does this, and will output something like:
+Jael maintains a `(jug duct ship)` and its reverse `(jug ship duct)` in its state to track subscriptions. If we do a [subscriptions](scry.md#subscriptions) scry and filter the result for `~dopzod`, we can see the duct of our thread has now been added to the `~dopzod` `+set`. Our thread does this, and will output something like:
 
 ```
 {~[/gall/use/spider/0w1.vGVi-/~sampel-palnet/thread/~.dojo_0v6.0hlak.dam1b.bcdou.ai7gq.19fi8/sub-pubkeys /dill //term/1]}
@@ -180,7 +180,7 @@ At this point our thread will send a `%nuke` `task` like `[%nuke (silt ~[~dopzod
 ~
 ```
 
-As you can see the `set` is now empty, so we know the `%nuke` succeeded and Jael will no longer send us pubkey updates for `~dopzod`. One thing to note about `%nuke` is that it _must_ come from the same `duct` as the original subscription. You can't unsubscribe another app, ship, thread or what have you, so if we'd tried `%nuke`ing the subscription from a separate thread it wouldn't have worked.
+As you can see the `+set` is now empty, so we know the `%nuke` succeeded and Jael will no longer send us pubkey updates for `~dopzod`. One thing to note about `%nuke` is that it _must_ come from the same `duct` as the original subscription. You can't unsubscribe another app, ship, thread or what have you, so if we'd tried `%nuke`ing the subscription from a separate thread it wouldn't have worked.
 
 ## `%turf` {#turf}
 
@@ -241,13 +241,13 @@ Now, let's pass Jael a `%step` task by using `|pass` in the dojo:
 > |pass [%j %step ~]
 ```
 
-Jael will `pass` Eyre a `%code-changed` `task:eyre` to let Eyre know the code's changed so you'll see a message from Eyre in the terminal:
+Jael will `+pass` Eyre a `%code-changed` `task:eyre` to let Eyre know the code's changed so you'll see a message from Eyre in the terminal:
 
 ```
 eyre: code-changed: throwing away cookies and sessions
 ```
 
-Now let's again scry for the `step` and see that it's been incremented:
+Now let's again scry for the `+step` and see that it's been incremented:
 
 ```
 > .^(@ud %j /=step=/(scot %p our))

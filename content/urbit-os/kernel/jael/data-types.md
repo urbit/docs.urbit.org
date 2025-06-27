@@ -27,9 +27,9 @@ Jael's section in `lull.hoon` contains three ancillary cores with their own type
   ==
 ```
 
-This is what Jael gives (in a [%public-keys](tasks.md#public-keys) `gift`) to subcribers who are tracking public key information for a `set` of `ship`s.
+This is what Jael gives (in a [%public-keys](tasks.md#public-keys) `gift`) to subcribers who are tracking public key information for a `+set` of `ship`s.
 
-Typically the `%full` kind with a `map` of `ship`s to [$point:point](#pointpoint)s is given immediately upon subscription and contains all public key records for the ships in question. After the `%full`, a `%diff` (including a [$diff:point](#diffpoint)) will be given whenever a change (such as the sponsor or pubkey) has occurred for one of the ships being tracked, and a `%breach` will be given whenever a continuity breach for a tracked ship occurs.
+Typically the `%full` kind with a `+map` of `ship`s to [$point:point](#pointpoint)s is given immediately upon subscription and contains all public key records for the ships in question. After the `%full`, a `%diff` (including a [$diff:point](#diffpoint)) will be given whenever a change (such as the sponsor or pubkey) has occurred for one of the ships being tracked, and a `%breach` will be given whenever a continuity breach for a tracked ship occurs.
 
 ### `$seed` {#seed}
 
@@ -55,11 +55,11 @@ Private boot parameters. The `who` field is the name of the ship, `lyf` is the `
 Ship initialisation parameters.
 
 - [$seed](#seed) contains the private boot parameters.
-- `spon` is a `list` of ships and their [$point](#pointpoint)s in the ship's sponsorship chain, all the way to the galaxy level.
-- `czar` is a map from each galaxy's `@p` to its `rift`, `life`, and public key (`pass`).
-- `turf` is a `list` of DNS suffixes used for galaxies, which is `urbit.org` by default.
-- `bloq` is the number of the Ethereum block in which the ship registered its keys with the Azimuth smart contract.
-- `node` is the URL of the Ethereum node used to monitor Azimuth.
+- `spon` is a `+list` of ships and their [$point](#pointpoint)s in the ship's sponsorship chain, all the way to the galaxy level.
+- `czar` is a map from each galaxy's `@p` to its `+rift`, `life`, and public key (`+pass`).
+- `turf` is a `+list` of DNS suffixes used for galaxies, which is `urbit.org` by default.
+- `+bloq` is the number of the Ethereum block in which the ship registered its keys with the Azimuth smart contract.
+- `+node` is the URL of the Ethereum node used to monitor Azimuth.
 
 ### `$source` {#source}
 
@@ -93,10 +93,10 @@ Numerical index for Jael to organise its `source`s. Jael assigns its `source-id`
 Jael's data about `source`s for PKI updates about ships.
 
 - `top-source-id` tracks the highest `source-id` so Jael can easily determine what the next `source-id` should be.
-- `sources` is a `map` of [$source-id](#source-id)s to [$source](#source)s.
-- `sources-reverse` the same as `sources` but in reverse.
+- `sources` is a `+map` of [$source-id](#source-id)s to [$source](#source)s.
+- `sources-reverse` the same as `+sources` but in reverse.
 - `default-source` is the default `source` to use (typically `0` - `%azimuth-tracker`).
-- `ship-sources` is a `map` from `ship`s to `source-id`s and records where to get updates from for the ships in question. Typically these will map moons to their parent ships.
+- `ship-sources` is a `+map` from `ship`s to `source-id`s and records where to get updates from for the ships in question. Typically these will map moons to their parent ships.
 - `ship-sources-reverse` is the same as `ship-sources` but in reverse.
 
 ## block {#block}
@@ -150,7 +150,7 @@ Structures for points (Ship IDs in Azimuth).
   ==
 ```
 
-Public key data for a particular ship. The `rift` is the current continuity breach number and `life` is the current key revision number. The `keys` `map` contains the public key (`pass`) for each `life` up to the current one. The `sponsor` is the current sponsor of the ship in question, if it has one.
+Public key data for a particular ship. The `rift` is the current continuity breach number and `life` is the current key revision number. The `keys` `+map` contains the public key (`pass`) for each `life` up to the current one. The `sponsor` is the current sponsor of the ship in question, if it has one.
 
 ### `$key-update:point` {#key-updatepoint}
 

@@ -251,7 +251,7 @@ yields `[153 218]`.
 *[a 2 b c]  *[*[a b] *[a c]]
 ```
 
-If you can compute a subject and a formula, you can evaluate them in the interpreter.  In most fundamental languages, like Lisp, `eval` is a curiosity.  But Nock has no `apply` - so all our work gets done with `2`.
+If you can compute a subject and a formula, you can evaluate them in the interpreter.  In most fundamental languages, like Lisp, `+eval` is a curiosity.  But Nock has no `+apply` - so all our work gets done with `2`.
 
 Let's convert the previous example into a stupid use of `2`, with constant subject and formula:
 

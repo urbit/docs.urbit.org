@@ -29,7 +29,7 @@ Run a thread from within Arvo.
 [%fard p=(fyrd cage)]
 ```
 
-`p` contains the thread location, name, and start arguments. See the [`fyrd`](types.md#fyrd) data type reference entry for details.
+`p` contains the thread location, name, and start arguments. See the [`+fyrd`](types.md#fyrd) data type reference entry for details.
 
 #### Returns
 
@@ -77,7 +77,7 @@ In-arvo result.
 [%arow p=(avow cage)]
 ```
 
-This gift contains the result of a finished thread if successful, or an error and stack trace if it failed. It's given for threads run from within Arvo. See the [`avow`](types.md#avow) entry in the types reference for more details.
+This gift contains the result of a finished thread if successful, or an error and stack trace if it failed. It's given for threads run from within Arvo. See the [`+avow`](types.md#avow) entry in the types reference for more details.
 
 ---
 
@@ -92,6 +92,6 @@ External result.
 This gift contains the result of running a thread externally. You would not receive this in userspace.
 
 
-A `page` is a pair of `mark` and `noun`. See the [`avow`](types.md#avow) entry in the types reference for more details of that mold builder.
+A `page` is a pair of `mark` and `noun`. See the [`+avow`](types.md#avow) entry in the types reference for more details of that mold builder.
 
 ---

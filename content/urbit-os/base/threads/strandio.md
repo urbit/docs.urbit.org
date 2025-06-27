@@ -119,7 +119,7 @@ A `bowl:rand`.
 
 ---
 
-### `get-beak` {#get-beak}
+### `+get-beak` {#get-beak}
 
 Get the beak.
 
@@ -345,7 +345,7 @@ A pair of `[wire sign-arvo]`.
 
 ## Pokes {#pokes}
 
-### `poke` {#poke}
+### `+poke` {#poke}
 
 Poke an agent, then await a positive ack.
 
@@ -955,7 +955,7 @@ The subscription `path`.
 
 ## Scries {#scries}
 
-### `scry` {#scry}
+### `+scry` {#scry}
 
 Scry an agent or vane.
 
@@ -1268,7 +1268,7 @@ any-time)`.
 
 ### `retry` {#retry}
 
-Retry a strand that produces a `unit` if the `unit` is null, with a backoff.
+Retry a strand that produces a `+unit` if the `+unit` is null, with a backoff.
 
 #### Accepts
 
@@ -1504,7 +1504,7 @@ Nothing
 
 #### Produces
 
-A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
+A `(unit httr:eyre)`. The `+unit` is null if we failed to receive a response.
 
 #### Source
 
@@ -1541,7 +1541,7 @@ Nothing
 
 #### Produces
 
-A `(unit client-response:iris)`. The `unit` is null if we failed to receive a response.
+A `(unit client-response:iris)`. The `+unit` is null if we failed to receive a response.
 
 #### Source
 
@@ -1637,7 +1637,7 @@ The URL as a `tape`.
 
 #### Produces
 
-A `json` structure.
+A `$json` structure.
 
 #### Source
 
@@ -1671,7 +1671,7 @@ Make a raw HTTP request, take a raw response.
 
 #### Produces
 
-A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
+A `(unit httr:eyre)`. The `+unit` is null if we failed to receive a response.
 
 #### Source
 
@@ -1696,7 +1696,7 @@ A `(unit httr:eyre)`. The `unit` is null if we failed to receive a response.
 
 ## Build {#build}
 
-### `build-file` {#build-file}
+### `+build-file` {#build-file}
 
 Build a source file at the specified `beam`.
 
@@ -1706,7 +1706,7 @@ A `beam`.
 
 #### Produces
 
-A `(unit vase)`. The `vase` contains the compiled file, the `unit` is null if it failed.
+A `(unit vase)`. The `vase` contains the compiled file, the `+unit` is null if it failed.
 
 #### Source
 
@@ -1807,7 +1807,7 @@ A `dais:clay`
 
 ---
 
-### `build-tube` {#build-tube}
+### `+build-tube` {#build-tube}
 
 Build a dynamic mark conversion gate from file.
 
@@ -1844,7 +1844,7 @@ A `tube:clay`
 
 ---
 
-### `build-nave` {#build-nave}
+### `+build-nave` {#build-nave}
 
 Build a static mark core from file.
 
@@ -1881,7 +1881,7 @@ A `vase`.
 
 ---
 
-### `build-cast` {#build-cast}
+### `+build-cast` {#build-cast}
 
 Build a static mark conversion gate from file.
 
@@ -1982,7 +1982,7 @@ A [`riot:clay`](../../kernel/clay/data-types.md#riot).
 
 ---
 
-### `read-file` {#read-file}
+### `+read-file` {#read-file}
 
 Read a file from Clay.
 
@@ -2191,7 +2191,7 @@ A `main-loop` can be used for three things:
 
 #### Accepts
 
-It first accepts a `mold`, specifying the return type, and produces a gate. The gate produced takes a `list` of gates that take an argument of the specified `mold`, and produce the `form` of a `strand` of that mold.
+It first accepts a `mold`, specifying the return type, and produces a gate. The gate produced takes a `+list` of gates that take an argument of the specified `mold`, and produce the `+form` of a `+strand` of that mold.
 
 #### Produces
 
@@ -2259,11 +2259,11 @@ Data of the type produced by the given `mold`.
 
 See the [separate `main-loop`
 example](../examples/main-loop.md) or the
-[`echo`](#echo) example below.
+[`+echo`](#echo) example below.
 
 ---
 
-### `echo` {#echo}
+### `+echo` {#echo}
 
 Echo a given message to the terminal every 2 seconds until told to stop.
 
@@ -2400,7 +2400,7 @@ A `tang`
 
 ---
 
-### `trace` {#trace}
+### `+trace` {#trace}
 
 Slog a `tang` to the terminal.
 

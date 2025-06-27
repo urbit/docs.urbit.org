@@ -15,9 +15,9 @@ layout:
 
 # Lick API Reference
 
-In this document we describe the public interface for Lick. Namely, we describe each `task` that Lick can be `pass`ed, and which `gift`(s) Lick can `give` in return.
+In this document we describe the public interface for Lick. Namely, we describe each `task` that Lick can be `+pass`ed, and which `gift`(s) Lick can `give` in return.
 
-The only novel data type is `name`, which is just a `path` representing the name of a socket.
+The only novel data type is `$name`, which is just a `path` representing the name of a socket.
 
 ## Tasks {#tasks}
 
@@ -49,7 +49,7 @@ Open an IPC port.
 [%spin =name]
 ```
 
-Lick takes in a `path` and saves the `duct` that sent it as the owner, then forwards the call to Vere. Vere will open a socket with the given `name` on the host OS.
+Lick takes in a `path` and saves the `duct` that sent it as the owner, then forwards the call to Vere. Vere will open a socket with the given `$name` on the host OS.
 
 #### Returns
 
@@ -89,7 +89,7 @@ Send a noun to the IPC port.
 [%spit =name =mark =noun]
 ```
 
-Lick will send the jammed `[mark noun]` cell to the socket `name` if something is connected to it. If nothing is connected to the port, Lick will send an `%error` [`%soak`](#soak) to the port's owner.
+Lick will send the jammed `[mark noun]` cell to the socket `$name` if something is connected to it. If nothing is connected to the port, Lick will send an `%error` [`%soak`](#soak) to the port's owner.
 
 #### Returns
 
@@ -143,7 +143,7 @@ Receive data from outside.
 
 This `task` is sent to Lick by the runtime, you would not use it manually.
 
-The socket `name` is associated with the `duct` that registered it. The `%soak` is forwarded to it as a [`%soak`](#soak) gift.
+The socket `$name` is associated with the `duct` that registered it. The `%soak` is forwarded to it as a [`%soak`](#soak) gift.
 
 ---
 
@@ -159,7 +159,7 @@ Open an IPC port.
 [%spin =name]
 ```
 
-Lick gives this `gift` to Vere in order to register a socket with the `path` specified in `name`.
+Lick gives this `gift` to Vere in order to register a socket with the `path` specified in `$name`.
 
 ---
 
@@ -171,7 +171,7 @@ Close an IPC port.
 [%shut =name]
 ```
 
-Lick gives this `gift` to Vere in order to close and remove the socket with the `path` specified in `name`.
+Lick gives this `gift` to Vere in order to close and remove the socket with the `path` specified in `$name`.
 
 ---
 
@@ -195,6 +195,6 @@ Soak a noun from the IPC port.
 [%soak =name =mark =noun]
 ```
 
-Lick converts a [`%soak` task](#soak) from Vere into this `gift` and gives it to the agent that registered the `name` socket, representing an incoming message. It will also give a `%soak` with a `mark` and `noun` of `[%disconnect ~]` if the socket is closed. This is the only Lick `gift` an agent would receive.
+Lick converts a [`%soak` task](#soak) from Vere into this `gift` and gives it to the agent that registered the `$name` socket, representing an incoming message. It will also give a `%soak` with a `mark` and `noun` of `[%disconnect ~]` if the socket is closed. This is the only Lick `gift` an agent would receive.
 
 ---

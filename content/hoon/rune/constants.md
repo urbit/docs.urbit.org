@@ -38,7 +38,7 @@ A cold atom is one whose type is inferred to be of a single atom constant.
 #### Examples
 
 We can see the contrast with warm atoms by using the compiler parser function,
-`ream`:
+`+ream`:
 
 ```
 > (ream '%hi')
@@ -206,7 +206,7 @@ nest-fail
 
 #### Produces
 
-A warm (variable) atom `q` with aura `p`. Use the Hoon compiler parser function `ream` to take a closer look:
+A warm (variable) atom `q` with aura `p`. Use the Hoon compiler parser function `+ream` to take a closer look:
 
 ```
 > (ream '12')

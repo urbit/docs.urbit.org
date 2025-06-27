@@ -194,7 +194,7 @@ So far we've just delegated `+grad` functions to the `%noun` `mark`, but now we'
 
 For demonstrative purposes, we can just poach the algorithms used in the `+grad` arm of the `%txt` `mark` and modify them to take our `(list (list @t))` type instead of a `wain`. It's not the most efficient algorithm for a CSV file but it'll do the job.
 
-Our diff format will be a `(urge:clay (list @t))`, and we'll use some `differ` functions from `zuse.hoon` like `+loss`, `+lusk` and `+lurk` to produce diffs and apply patches.
+Our diff format will be a `(urge:clay (list @t))`, and we'll use some `+differ` functions from `zuse.hoon` like `+loss`, `+lusk` and `+lurk` to produce diffs and apply patches.
 
 The [csv-utils.hoon library](examples.md#libcsv-utilshoon) we imported also contains a `+csv-join` function which we'll use in the `+join` arm, just to save space here.
 
@@ -318,7 +318,7 @@ This arm produces the diff of two `%csv` files. The first `%csv` file will be gi
   (csv-join ali bob)
 ```
 
-The `+join` arm merges two different diffs. It takes them both as the sample of its gate (which we've named `ali` and `bob`), and returns a new diff wrapped in a `unit` like `(unit (urge:clay (list @t)))`. The `unit` will be `~` if the merge failed due to a conflict. This is used by Clay in some cases when `desk`s are merged. If diff merges are not possible for your use case, you could just have it always return `~`.
+The `+join` arm merges two different diffs. It takes them both as the sample of its gate (which we've named `ali` and `bob`), and returns a new diff wrapped in a `+unit` like `(unit (urge:clay (list @t)))`. The `+unit` will be `~` if the merge failed due to a conflict. This is used by Clay in some cases when `desk`s are merged. If diff merges are not possible for your use case, you could just have it always return `~`.
 
 ### `+mash` {#mash}
 
@@ -331,7 +331,7 @@ The `+join` arm merges two different diffs. It takes them both as the sample of 
   ~|(%csv-mash !!)
 ```
 
-This is like `+join` except it forces a diff merge even if there's a conflict. Rather than returning a `unit`, it just returns the diff - a `(urge:clay (list @t))` in our case. Also unlike `+join`, it takes the `ship` and `desk` each diff came from as well as the diff itself.
+This is like `+join` except it forces a diff merge even if there's a conflict. Rather than returning a `+unit`, it just returns the diff - a `(urge:clay (list @t))` in our case. Also unlike `+join`, it takes the `ship` and `desk` each diff came from as well as the diff itself.
 
 The `+mash` arm is not used by Clay in its file revision operations, so it's safe to just make it a dummy arm that crashes as we've done here. If you were to use it, it would likely just be used manually in an agent, thread or generator.
 

@@ -52,7 +52,7 @@ A `%wris` `gift` looks like:
 [%writ p=riot]  ::  response
 ```
 
-The `unit` of the [riot](data-types.md#riot) will be null if the target file cannot be found or if a subscription has ended (depending on context). Otherwise it will have a [rant](data-types.md#riot) with a `cage` containing the data you requested. Its contents will vary depending on the kind of request and `care`.
+The `+unit` of the [riot](data-types.md#riot) will be null if the target file cannot be found or if a subscription has ended (depending on context). Otherwise it will have a [rant](data-types.md#riot) with a `cage` containing the data you requested. Its contents will vary depending on the kind of request and `$care`.
 
 Now we'll look at each of the `rave` request types in turn.
 
@@ -64,9 +64,9 @@ Now we'll look at each of the `rave` request types in turn.
 
 This `rave` is for reading a single file or directory immediately.
 
-The `care` of the [mood](data-types.md#mood) will determine what you can read and what type of data will be returned. See the [care](data-types.md#care) documentation and [scry](scry.md) documentation for details on the various `care`s.
+The `$care` of the [mood](data-types.md#mood) will determine what you can read and what type of data will be returned. See the [care](data-types.md#care) documentation and [scry](scry.md) documentation for details on the various `$care`s.
 
-The [case](data-types.md#case) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
+The [case](data-types.md#case) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `$care`.
 
 #### Example
 
@@ -96,7 +96,7 @@ If you subscribe to the current `case` of the `desk`, Clay will not respond unti
 [%mult =mool]
 ```
 
-This subscribes to the next version of a `set` of files or directories. Clay will only send a single response, and it will send it when _any_ of the specified files change. For example, if you subscribe to both `/foo/txt` and `/bar/txt`, and only `/foo/txt` changes, Clay will send a response indicating a change to `/foo/txt`. If `/bar/txt` changes subsequently, it will not tell you. If more than one file changes at once, it will tell you about each of the changes in the one response.
+This subscribes to the next version of a `+set` of files or directories. Clay will only send a single response, and it will send it when _any_ of the specified files change. For example, if you subscribe to both `/foo/txt` and `/bar/txt`, and only `/foo/txt` changes, Clay will send a response indicating a change to `/foo/txt`. If `/bar/txt` changes subsequently, it will not tell you. If more than one file changes at once, it will tell you about each of the changes in the one response.
 
 The behaviour with respect to requesting old `case`s is the same as explained in the [`%next`](tasks.md#next---await-next) section above.
 
@@ -106,7 +106,7 @@ The `mool` specified in the request is this structure:
 +$  mool  [=case paths=(set (pair care path))]  ::  requests in desk
 ```
 
-You can use a different `care` for each of the files specified by the `path` if you like. Significantly, the `care` will determine whether Clay sends a response for a given change. For example, if you subscribe to an existing `/foo/txt` with a `%u` `care` and `/foo/txt` is modified but isn't deleted, Clay will _not_ tell you. However, if you subscribe with an `%x` `care`, it _will_ tell you.
+You can use a different `$care` for each of the files specified by the `path` if you like. Significantly, the `$care` will determine whether Clay sends a response for a given change. For example, if you subscribe to an existing `/foo/txt` with a `%u` `$care` and `/foo/txt` is modified but isn't deleted, Clay will _not_ tell you. However, if you subscribe with an `%x` `$care`, it _will_ tell you.
 
 #### Example
 
@@ -120,7 +120,7 @@ You can use a different `care` for each of the files specified by the `path` if 
 [%many track=? =moat]
 ```
 
-This subscribes to all changes to a `desk` for the specified range of `case`s. Note that you're unlikely to use this directly, it's mostly used implicitly if you make a `%sing` or `%next` request with a `%v` `care` to a foreign `desk`. Regardless, we'll have a look at it for completeness.
+This subscribes to all changes to a `desk` for the specified range of `case`s. Note that you're unlikely to use this directly, it's mostly used implicitly if you make a `%sing` or `%next` request with a `%v` `$care` to a foreign `desk`. Regardless, we'll have a look at it for completeness.
 
 If the `track` is `%.y` it will just return a `%writ` like:
 
@@ -168,7 +168,7 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 To write or modify a file, we send Clay a `%info` `task`.
 
-If the head of the [nori](data-types.md#nori) `dit` is `%|`, it's a request to add a label to a commit, and the `nori` looks like `[%| p=@tas q=(unit aeon)]` where `p` is the label and `q` is the [`aeon`](./data-types.md#aeon) (commit reference). If `q` is null, the label is applied to the latest commit in the desk.
+If the head of the [nori](data-types.md#nori) `dit` is `%|`, it's a request to add a label to a commit, and the `nori` looks like `[%| p=@tas q=(unit aeon)]` where `p` is the label and `q` is the [`$aeon`](./data-types.md#aeon) (commit reference). If `q` is null, the label is applied to the latest commit in the desk.
 
 If the head of the `nori` is `%&`, it's a request to add, delete or modify one or more files in the given desk, and looks like `[%& p=soba]`. The [soba](data-types.md#soba) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](./data-types.md#miso) is one of these types of requests:
 
@@ -179,7 +179,7 @@ If the head of the `nori` is `%&`, it's a request to add, delete or modify one o
 
 #### Returns
 
-Clay does not give any response to an `%info` `task` so don't expect a `sign` back.
+Clay does not give any response to an `%info` `task` so don't expect a `+sign` back.
 
 #### Example
 
@@ -200,7 +200,7 @@ Here are examples of using each of these as well as making multiple changes in o
 [%rein des=desk ren=rein]
 ```
 
-Force on/off apps on a desk. A [`rein`](data-types.md#rein) is a `map` from Gall agent name to `?`, where `%.y` is _on_ and `%.n` is _off_. By default, a live desk will run the agents defined in its `desk.bill` manifest, so this is used to either stop agents in its manifest or start agents which aren't in its manifest.
+Force on/off apps on a desk. A [`rein`](data-types.md#rein) is a `+map` from Gall agent name to `?`, where `%.y` is _on_ and `%.n` is _off_. By default, a live desk will run the agents defined in its `desk.bill` manifest, so this is used to either stop agents in its manifest or start agents which aren't in its manifest.
 
 Note that the given `rein` overrides the existing one set by a previous `%rein` task.
 
@@ -228,7 +228,7 @@ A `rock:tire` is a:
 +$  rock  (map desk [=zest wic=(set weft)])
 ```
 
-The [`zest`](data-types.md#zest) says whether the desk is running (`%live`), suspended (`%dead`), or suspended pending a kernel-compatible update (`%held`). The `wic` set contains the `weft`s (kernel versions) of any queued updates.
+The [`$zest`](data-types.md#zest) says whether the desk is running (`%live`), suspended (`%dead`), or suspended pending a kernel-compatible update (`%held`). The `wic` set contains the `weft`s (kernel versions) of any queued updates.
 
 A `wave:tire` is a:
 
@@ -260,7 +260,7 @@ Try to apply a queued kernel update.
 [%zest des=desk liv=zest]
 ```
 
-A `%zest` `task` suspends or unsuspends a desk. the [`zest`](data-types.md#zest) in `liv` is one of:
+A `%zest` `task` suspends or unsuspends a desk. the [`$zest`](data-types.md#zest) in `liv` is one of:
 
 * `%live`: running.
 * `%dead`: suspended.
@@ -315,7 +315,7 @@ A `%tomb` `task` with an `%all` `clue` will tombstone everything that's not used
 [%pick ~]
 ```
 
-A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombstoning any data that should be tombstoned according to current tombstoning policy ([`norm`](data-types.md#norm)s).
+A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombstoning any data that should be tombstoned according to current tombstoning policy ([`$norm`](data-types.md#norm)s).
 
 ***
 
@@ -325,9 +325,9 @@ A `%tomb` `task` with a `%pick` `clue` will perform garbage collection, tombston
 [%norm =ship =desk =norm]
 ```
 
-A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy for the given `desk` and `ship`. A [`norm`](data-types.md#norm) is an `(axal ?)`. An `axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says whether to _keep_ the given file or directory. You may want to look at the `+of` axal engine in `arvo.hoon` for constructing and manipulating the `norm`.
+A `%tomb` `task` with a `%norm` `clue` will set the default tombstoning policy for the given `desk` and `ship`. A [`$norm`](data-types.md#norm) is an `(axal ?)`. An `+axal` is like a recursive `arch`, and is defined in `arvo.hoon`. The `?` says whether to _keep_ the given file or directory. You may want to look at the `+of` axal engine in `arvo.hoon` for constructing and manipulating the `$norm`.
 
-Note the given `norm` will overwrite the existing one for the the ship/desk in question. If you want to modify the existing one, you'll need to retrieve it and make your changes.
+Note the given `$norm` will overwrite the existing one for the the ship/desk in question. If you want to modify the existing one, you'll need to retrieve it and make your changes.
 
 ***
 
@@ -347,7 +347,7 @@ A `%tomb` `task` with a `%worn` `clue` is like [`%norm`](tasks.md#norm---default
 [%seek =ship =desk =cash]
 ```
 
-A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombstoned data and integrate it into Clay's object store. The [`cash`](data-types.md#cash) is a reference to a commit on the given ship/desk as either a [`tako`](./data-types.md#tako) or a [`case`](./data-types.md#case).
+A `%tomb` `task` with a `%seek` `clue` will attempt to retrieve missing, tombstoned data and integrate it into Clay's object store. The [`+cash`](data-types.md#cash) is a reference to a commit on the given ship/desk as either a [`tako`](./data-types.md#tako) or a [`case`](./data-types.md#case).
 
 ***
 
@@ -466,7 +466,7 @@ $:  %merg
 
 A `%merg` `task` will merge the specified source `desk` into the target local `desk`.
 
-The `germ` specifies the merge strategy. You can refer to the [Strategies](using.md#strategies) section of the [Using Clay](using.md) document for details of each `germ`.
+The `+germ` specifies the merge strategy. You can refer to the [Strategies](using.md#strategies) section of the [Using Clay](using.md) document for details of each `+germ`.
 
 If you're merging into a new `desk` you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
 
@@ -499,11 +499,11 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
 
 ## Permissions <a href="#permissions" id="permissions"></a>
 
-For each file or directory, there is both a read permission and a write permission. Each may be set separately and is either a whitelist or a blacklist (but not both). The whitelist/blacklist contains a `set` of ships and/or groups which are allowed or banned respectively. If it's an empty whitelist it means all foreign ships are denied. If it's an empty blacklist it means all foreign ships are allowed.
+For each file or directory, there is both a read permission and a write permission. Each may be set separately and is either a whitelist or a blacklist (but not both). The whitelist/blacklist contains a `+set` of ships and/or groups which are allowed or banned respectively. If it's an empty whitelist it means all foreign ships are denied. If it's an empty blacklist it means all foreign ships are allowed.
 
 If permissions are not set for a particular file, they will be inherited from the directory in which it resides. If _that_ directory has no permissions set, they will be inherited from another level up, and so on to the `desk`'s root directory. If the root directory has no permissions set, it will have the default permissions of an empty whitelist, meaning "deny all".
 
-A group is called a `crew` and is just a `set` of ships with a `@ta` name.
+A group is called a `crew` and is just a `+set` of ships with a `@ta` name.
 
 The permissions for each file or directory are a pair of `dict` where the head is read permissions and the tail is write permissions.
 
@@ -522,7 +522,7 @@ The `src` path is where the permissions were inherited from and the `real` is th
     ==                                        ::
 ```
 
-So if we scry for permissions with a `%p` `care`, it'll look like:
+So if we scry for permissions with a `%p` `$care`, it'll look like:
 
 ```hoon
 > .^([r=dict:clay w=dict:clay] %cp %/lib/strandio/hoon)
@@ -559,7 +559,7 @@ The `pax` path is the file or directory whose permissions you want to change, an
   ==
 ```
 
-Where a `rule` is this structure:
+Where a `+rule` is this structure:
 
 ```hoon
 +$  rule  [mod=?(%black %white) who=(set whom)]  ::  node permission
@@ -673,7 +673,7 @@ As it currently stands, it's not possible to write to a foreign `desk`. Addition
 
 To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](tasks.md#warp---read-and-track) section.
 
-Clay only allows a subset of `care`s to be used remotely. They are:
+Clay only allows a subset of `$care`s to be used remotely. They are:
 
 * `%u` - Check for existence of file.
 * `%v` - Get entire `dome` state of a desk.
@@ -682,7 +682,7 @@ Clay only allows a subset of `care`s to be used remotely. They are:
 * `%y` - Get `arch` of file or directory.
 * `%z` - Get content hash of file or directory.
 
-Any other `care` will crash with a `%clay-bad-foreign-request-care` error.
+Any other `$care` will crash with a `%clay-bad-foreign-request-care` error.
 
 In addition, Clay only allows `%sing` and `%many` requests -- not `%next` or `%mult`. One way to get the next revision is to first `%sing` the current revision number using `%w` and case `da+now`, then `%sing` again with the next revision number using case `ud+<next-revision-number>`.
 

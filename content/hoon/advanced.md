@@ -105,7 +105,7 @@ But of course, we don't actually recompile the arm at runtime. We actually run t
 
 When we call a wet arm, we're essentially using the hoon as a macro.  We are not generating new code for every call site; we are creating a new type analysis path, which works as if we expanded the callee with the caller's context.
 
-Consider a function like `turn` (Haskell `map`) which transforms each element of a list.  To use `turn`, we install a list and a transformation function in a generic core.  The type of the list we produce depends on the type of the list and the type of the transformation function.  But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
+Consider a function like `+turn` (Haskell `+map`) which transforms each element of a list.  To use `+turn`, we install a list and a transformation function in a generic core.  The type of the list we produce depends on the type of the list and the type of the transformation function.  But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
 Again, will this work?  A simple (and not quite right) way to ask this question is to compile all the hoons in the battery for both a payload of `p` and a payload of `q.q`, and see if they generate exactly the same Nock.  The actual algorithm is a little more interesting, but not much.
 
@@ -121,7 +121,7 @@ There's only one field of the `coil` we haven't explained yet: `p.r.q`.  This is
 
 In the advanced `tune` form, the `%face` type also has a couple of secret superpowers for hacking the namespace.  Remember that Hoon doesn't have anything like a symbol table; to resolve a limb, we just search the type depth-first.
 
-If a name is in the `p.p` `map`, it's an alias.  (An alias is defined using the `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name resolves to that hoon (compiled against the `q` type).  If the unit is empty, the name is blocked / skipped (see [limb](limbs/limb.md) for what this means).
+If a name is in the `p.p` `+map`, it's an alias.  (An alias is defined using the `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name resolves to that hoon (compiled against the `q` type).  If the unit is empty, the name is blocked / skipped (see [limb](limbs/limb.md) for what this means).
 
 If a name is the `q.p` `term`, it's a bridge.  (A bridge is defined using the `=,` rune.)  When we search for a name, we also compile the bridge, and check if the name resolves against the bridge product.  If so, we use it.
 

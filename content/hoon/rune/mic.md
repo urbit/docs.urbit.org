@@ -128,7 +128,7 @@ Four arguments, fixed.
 
 #### Semantics
 
-A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `bind` which takes a mold `mold` and produces an implementation of monadic bind.
+A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `+bind` which takes a mold `mold` and produces an implementation of monadic bind.
 
 #### Desugaring
 
@@ -153,7 +153,7 @@ We remark that you can switch binds in the middle of a sequence of `;<`.
 
 [`+biff`](../stdlib/2a.md#biff) is the unit monad's implementation of monadic bind. That is to say, it takes a unit `a` and a gate `b` that accepts a noun that produces a unit, and extracts the value from `a` to pass as a sample to `b`.
 
-We illustrate the usage of `;<` with `+biff` with a `map` of atoms:
+We illustrate the usage of `;<` with `+biff` with a `+map` of atoms:
 
 ```
 > =m (my ~[[1 3] [2 2] [3 1]])
@@ -438,7 +438,7 @@ This can be thought of as user-defined function composition; instead of simply n
 
 #### Examples
 
-A simple "parser." `trip` converts a `cord` (atomic string) to a `tape` (linked string).
+A simple "parser." `+trip` converts a `cord` (atomic string) to a `tape` (linked string).
 
 ```
 > =cmp |=([a=tape b=$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))

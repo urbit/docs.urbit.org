@@ -419,7 +419,7 @@ The `+on-peek` arm adds several peek endpoints which expose the state (via `+on-
 
 ## How the generator works {#how-the-generator-works}
 
-The generator explicitly injects the `%dbug` mark in its return `cask` (`[mark noun]`).  This is a valid if uncommon operation, and it works here because the mark is never used as a transforming gate but only as a marker to see whether the arms need to pass through the values.  The no-argument input is routed through the `%state` with an empty `cord`.
+The generator explicitly injects the `%dbug` mark in its return `+cask` (`[mark noun]`).  This is a valid if uncommon operation, and it works here because the mark is never used as a transforming gate but only as a marker to see whether the arms need to pass through the values.  The no-argument input is routed through the `%state` with an empty `cord`.
 
 ```hoon
 :-  %dbug

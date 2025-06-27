@@ -143,13 +143,13 @@ Thread failed: not-foo
 
 ### Analysis {#analysis}
 
-In our agent's `on-poke` arm we've added a card to subscribe to `/thread/[tid]/updates`:
+In our agent's `+on-poke` arm we've added a card to subscribe to `/thread/[tid]/updates`:
 
 ```hoon
 [%pass /thread/updates/[ta-now] %agent [our.bowl %spider] %watch /thread/[tid]/updates]
 ```
 
-**Note:** In practice you'll want to include some kind of tag in the wire so you can differentiate particular threads and subscriptions and test for it in `on-agent`.
+**Note:** In practice you'll want to include some kind of tag in the wire so you can differentiate particular threads and subscriptions and test for it in `+on-agent`.
 
 Threads always send facts on `/thread/[tid]/some-path`. The thread itself will see the incoming subscription on `/some-path` though, not the full thing.
 

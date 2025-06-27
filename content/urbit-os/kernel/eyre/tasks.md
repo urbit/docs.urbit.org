@@ -65,7 +65,7 @@ The `secure` field says whether it's over HTTPS. The `address` is the IP address
 
 #### Returns
 
-Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
+Eyre may `+pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
 ***
 
@@ -79,7 +79,7 @@ This `task` is how Eyre receives an inbound HTTP request over the local loopback
 
 #### Returns
 
-Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
+Eyre may `+pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
 ***
 
@@ -95,7 +95,7 @@ This `task` takes no arguments.
 
 #### Returns
 
-Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the state of the connection and other factors.
+Eyre may `+pass` a `%response` `gift` on the appropriate `duct` depending on the state of the connection and other factors.
 
 ***
 
@@ -251,7 +251,7 @@ This `task` tells Eyre to set a cache entry for a URL path. Adding entries to Ey
 
 The `url` field is the URL path you want to bind with the cache entry. Note this will just be the URL path as a cord like `'/foo/bar/baz'`, it does not include the host, etc.
 
-The `entry` field is a [`$cache-entry`](data-types.md#cache-entry) in a `unit`. If the unit is null, the specified `url` will be unbound and the cache entry removed. If non-null, the given `entry` will be added to the cache (or updated if the binding already exists).
+The `entry` field is a [`$cache-entry`](data-types.md#cache-entry) in a `+unit`. If the unit is null, the specified `url` will be unbound and the cache entry removed. If non-null, the given `entry` will be added to the cache (or updated if the binding already exists).
 
 Each time the entry for a URL path is changed, its revision number will be incremented.
 

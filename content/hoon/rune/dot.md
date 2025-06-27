@@ -98,7 +98,7 @@ In the dojo we can ask Clay -- the Arvo filesystem -- for a listing of the files
 ]
 ```
 
-The `%c` is for Clay, and the `y` is for the request type. `arch` is the type of the listing. See `gen/cat.hoon` to see how this information is printed more prettily.
+The `c` in `%cy` is for Clay, and the `y` is for the request type. `$arch` is the type of the listing. See `/gen/cat.hoon` to see how this information is printed more prettily.
 
 The `%` is for the current path in the dojo:
 

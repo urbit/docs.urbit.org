@@ -150,7 +150,7 @@ curl --header "Content-Type: application/json" \
      http://localhost:8080/~/channel/my-channel
 ```
 
-Unlike `poke` and `subscribe` actions, Eyre doesn't acknowledge `unsubscribe`s, but we'll now have stopped receiving updates from `graph-store`.
+Unlike `+poke` and `subscribe` actions, Eyre doesn't acknowledge `unsubscribe`s, but we'll now have stopped receiving updates from `graph-store`.
 
 Finally, let's close the channel itself. We can do this simply by sending Eyre a [delete](external-api-ref.md#delete-channel) `action`:
 
@@ -172,7 +172,7 @@ First we must obtain a session cookie by [authenticating](#authenticating).
 
 Having obtained a cookie, we can now try a scry. We'll scry the `graph-store` Gall agent on the `/x/keys` scry path, which will return the list of channels it has. If you don't already have any chat channels on your fakezod, go ahead and create one via landscape so it'll have something to return.
 
-The url path will be `/~/scry/graph-store/keys.json`. The `/~/scry` part specifies a scry, the `/graph-store` part is the Gall agent, the `/keys` is the scry path without the `care`, and the `.json` file extension specifies the return `mark`.
+The url path will be `/~/scry/graph-store/keys.json`. The `/~/scry` part specifies a scry, the `/graph-store` part is the Gall agent, the `/keys` is the scry path without the `$care`, and the `.json` file extension specifies the return `mark`.
 
 The request will be an HTTP GET request:
 
@@ -220,7 +220,7 @@ content-type: text/html
 
 ## Advanced {#advanced}
 
-Rather than using things like Eyre's channel system described in the [Basic](#basic) section, it's possible to handle HTTP requests directly in Gall agents or generators. This is useful if you want to implement a custom API or work with `sail` to dynamically compose HTML inside an agent.
+Rather than using things like Eyre's channel system described in the [Basic](#basic) section, it's possible to handle HTTP requests directly in Gall agents or generators. This is useful if you want to implement a custom API or work with Sail to dynamically compose HTML inside an agent.
 
 ### Agents: Direct HTTP {#agents-direct-http}
 
@@ -533,7 +533,7 @@ First, using `|pass` in the dojo, let's approve the origin `http://foo.example` 
 |pass [%e [%approve-origin 'http://foo.example']]
 ```
 
-Now if we scry for the [approved](scry.md#corsapproved) CORS `set`:
+Now if we scry for the [approved](scry.md#corsapproved) CORS `+set`:
 
 ```
 > .^(approved=(set @t) %ex /=//=/cors/approved)
@@ -571,7 +571,7 @@ Now we'll try rejecting an `origin`. Back in the dojo, let's `|pass` Eyre a `%re
 |pass [%e [%reject-origin 'http://bar.example']]
 ```
 
-If we scry for the [rejected](scry.md#corsrejected) CORS `set`:
+If we scry for the [rejected](scry.md#corsrejected) CORS `+set`:
 
 ```
 > .^(rejected=(set @t) %ex /=//=/cors/rejected)
@@ -620,7 +620,7 @@ Connection: close
 Server: urbit/vere-1.5
 ```
 
-Now if we scry for the [requests](scry.md#corsrequests) CORS `set`:
+Now if we scry for the [requests](scry.md#corsrequests) CORS `+set`:
 
 ```
 > .^(requests=(set @t) %ex /=//=/cors/requests)

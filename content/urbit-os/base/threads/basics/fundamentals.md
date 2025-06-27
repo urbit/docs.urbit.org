@@ -28,7 +28,7 @@ Threads can be run from a file in the `/ted` directory, or an "inline thread" ca
 
 ## Thread file location {#thread-file-location}
 
-Thread files live in the `ted` directory of each desk. For example, in a desk named `%sandbox`:
+Thread files live in the `/ted` directory of each desk. For example, in a desk named `%sandbox`:
 
 ```
 %sandbox
@@ -54,7 +54,7 @@ There are two libraries that may be relevant:
 
 ## Thread definition {#thread-definition}
 
-A thread is defined as a `$-(vase shed:khan)`. That is, a gate that takes a `$vase` and produces a `$shed:khan`. A `$shed:khan` is the `form` of a strand that produces a `$vase`. This is a little confusing and we'll look at each part in detail later. For now, note that the thread doesn't just produce a result, it actually produces a strand that takes input and produces output from which a result can be extracted. It works something like this:
+A thread is defined as a `$-(vase shed:khan)`. That is, a gate that takes a `$vase` and produces a `$shed:khan`. A `$shed:khan` is the `+form` of a strand that produces a `$vase`. This is a little confusing and we'll look at each part in detail later. For now, note that the thread doesn't just produce a result, it actually produces a strand that takes input and produces output from which a result can be extracted. It works something like this:
 
 ![thread diagram](https://media.urbit.org/site/thread-diagram.png "diagram of a thread")
 
@@ -175,13 +175,13 @@ Inside the gate we create our `+strand` specialised to produce a `$vase` and giv
 ^-  form:m
 ```
 
-We cast the output to `form` - the mold of the strand we created.
+We cast the output to `+form` - the mold of the strand we created.
 
 ```hoon
 (pure:m arg)
 ```
 
-Finally we call `pure` with the gate input `arg` as its argument. Since `arg` is a `vase` it will return the `+form` of a `+strand` which produces a `$vase`. Thus we've created a thread in accordance with its type definition.
+Finally we call `+pure` with the gate input `arg` as its argument. Since `arg` is a `vase` it will return the `+form` of a `+strand` which produces a `$vase`. Thus we've created a thread in accordance with its type definition.
 
 ## Inline Threads {#inline-threads}
 

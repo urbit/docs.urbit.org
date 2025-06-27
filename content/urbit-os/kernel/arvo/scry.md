@@ -35,9 +35,9 @@ For details of its usage, see the [dotket](../../../hoon/rune/dot.md#dotket) sec
 
 ![](https://media.urbit.org/docs/arvo/scry-diagram-v3.svg)
 
-One further note on `care`s (which can sometimes be confusing): While `care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `care` reads the data of a file, a `%p` `care` reads file permissions, and so forth. To see all of Clay's `care`s and what they do, you can refer to Clay's [Scry Reference](../clay/scry.md).
+One further note on `$care`s (which can sometimes be confusing): While `$care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `$care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `task`s and `gift`s. For example, a `%x` `$care` reads the data of a file, a `%p` `$care` reads file permissions, and so forth. To see all of Clay's `$care`s and what they do, you can refer to Clay's [Scry Reference](../clay/scry.md).
 
-Most other vanes also make use of `care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `care`s still confer the general nature of the endpoint. The most widely used `care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
+Most other vanes also make use of `$care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `$care`s still confer the general nature of the endpoint. The most widely used `$care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `$care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
 
 ## What can I scry? {#what-can-i-scry}
 
@@ -53,7 +53,7 @@ To explore what scry endpoints are available for vanes, you can refer to the Scr
 
 Gall has a single scry endpoint of its own to check for the existence of an agent, but otherwise all Gall scries are passed through to one of the agents it manages. The target agent to scry is specified in place of the `desk` as described in the diagram above. Each Gall agent includes a `+on-peek` arm that defines its own scry endpoints. For example, `%graph-store` has a number of scry endpoints to access the data it stores, such as chat messages and the like.
 
-Gall agents can expose scry endpoints with any `care`, but most commonly they'll take a `%x` `care`. Gall handles `%x` scries specially - it expects an extra field at the end of the `path` that specifies a `mark`. Gall will attempt to perform a `mark` conversion from the `mark` returned by the scry endpoint to the `mark` specified. Note the trailing `mark` in the `path` will not be passed through to the agent itself.
+Gall agents can expose scry endpoints with any `$care`, but most commonly they'll take a `%x` `$care`. Gall handles `%x` scries specially - it expects an extra field at the end of the `path` that specifies a `mark`. Gall will attempt to perform a `mark` conversion from the `mark` returned by the scry endpoint to the `mark` specified. Note the trailing `mark` in the `path` will not be passed through to the agent itself.
 
 {% hint style="info" %}
 
@@ -63,7 +63,7 @@ Gall agents can expose scry endpoints with any `care`, but most commonly they'll
 
 ## What is an endpoint? {#what-is-an-endpoint}
 
-"Endpoint" refers to a specific scry path in a vane or agent. They will sometimes informally be noted in documentation or source comments like `/x/foo/bar/baz` or maybe just `/foo/bar/baz`. The first part of the former example is the `care`, then the rest is the `path` portion as noted in the diagram earlier.
+"Endpoint" refers to a specific scry path in a vane or agent. They will sometimes informally be noted in documentation or source comments like `/x/foo/bar/baz` or maybe just `/foo/bar/baz`. The first part of the former example is the `$care`, then the rest is the `path` portion as noted in the diagram earlier.
 
 If an agent's scry endpoints don't have formal documentation, you may need to refer to the `+on-peek` arm in its source code to determine its endpoints. While there's no exact pattern that's consistent across different agents, the general pattern will be some initial tests and conversions followed by a `?+` rune, whose cases will typically correspond to the endpoints. The `+on-peek` arm always return a `(unit (unit cage))` (a `cage` is a cell of `[mark vase]`), so each endpoint will typically finish by composing such a structure.
 
@@ -75,7 +75,7 @@ Here's an example from the `+on-peek` arm of `%graph-store`:
 !>(`update:store`[now.bowl [%keys ~(key by graphs)]])
 ```
 
-The case in the beginning says it takes a `%x` `care` and has a `path` of `/keys`. Additionally, it returns data with a `mark` of `%graph-update-2`. Assuming we wanted the `%graph-update-2` `mark` converted to a `%json` `mark`, our scry would be composed along the lines of:
+The case in the beginning says it takes a `%x` `$care` and has a `path` of `/keys`. Additionally, it returns data with a `mark` of `%graph-update-2`. Assuming we wanted the `%graph-update-2` `mark` converted to a `%json` `mark`, our scry would be composed along the lines of:
 
 ```hoon
 .^(json %gx /(scot %p our)/graph-store/(scot %da now)/keys/json)

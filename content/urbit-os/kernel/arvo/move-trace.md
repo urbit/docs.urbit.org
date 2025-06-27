@@ -59,7 +59,7 @@ followed by a pause of one second, then
 ~s1..0007
 ```
 
-This gives us a move trace that is a list of `move`s and some associated metadata. Some of the `move`s are a bit of a distraction from what's going on overall such as acknowledgements that a `poke` was received (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the `%blit` `card`s) is not printed even in verbose mode because it occurs so frequently, but there are only two of them here and so we have added it in.
+This gives us a move trace that is a list of `move`s and some associated metadata. Some of the `move`s are a bit of a distraction from what's going on overall such as acknowledgements that a `+poke` was received (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the `%blit` `card`s) is not printed even in verbose mode because it occurs so frequently, but there are only two of them here and so we have added it in.
 
 The main process that is occurring here is a sequence of `%pass` `move`s initiated by pressing Enter in the terminal that goes on to be handled by Dill, then Gall, and finally Behn. After the timer has elapsed, a sequence of `%give` `move`s is begun by Behn, which then passes through Gall and ultimately ends up back at the terminal. Any `move`s besides `%pass` in the first segment of the move trace is a secondary process utilized for book-keeping, spawning processes, interpreting commands, etc. All of this will be explained in detail below.
 

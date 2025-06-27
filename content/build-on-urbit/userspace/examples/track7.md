@@ -76,7 +76,7 @@ This arm accepts a session ID and a command resulting from `+command-parser`.  I
 
 ## `$styx` Styled Text String {#styx-styled-text-string}
 
-A `klr` effect uses a `styx`, or styled text string.  The relevant data structures are in `/sys/lull.hoon`:
+A `+klr` effect uses a `styx`, or styled text string.  The relevant data structures are in `/sys/lull.hoon`:
 
 ```hoon
 +$  deco  ?(~ %bl %br %un)                              ::  text decoration

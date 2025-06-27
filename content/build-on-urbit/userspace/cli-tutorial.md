@@ -21,7 +21,7 @@ In this walkthrough we will go in-depth on how to build command line interface (
 
 There are three CLI apps that currently ship with Urbit: `%dojo`, `%chat-cli`, and `%shoe`. You should be familiar with the former two, the latter is an example app that shows off how the Shoe library works that we will be looking at closely. These are all Gall apps, and their source can be found in the `/app` folder of your `%base` desk.
 
-In [the Shoe library](#the-shoe-library) we take a closer look at the Shoe library and its cores and how they are utilized in CLI apps. Then in [the `sole` library](#the-sole-library) we look at what Shoe effects ultimately break down into. Finally in [`%shoe` app walkthrough](#shoe-app-walkthrough) we explore the functionality of the `%shoe` agent and then go through the code line-by-line.
+In [the Shoe library](#the-shoe-library) we take a closer look at the Shoe library and its cores and how they are utilized in CLI apps. Then in [the sole library](#the-sole-library) we look at what Shoe effects ultimately break down into. Finally in [`%shoe` app walkthrough](#shoe-app-walkthrough) we explore the functionality of the `%shoe` agent and then go through the code line-by-line.
 
 This tutorial can be considered to be an application equivalent of the [Hoon school lesson](../hoon-school/P-stdlib-io.md#ask-generators) on `%sole` and `%ask` generators, which only covers the bare minimum necessary to write generators that take user input.
 
@@ -45,7 +45,7 @@ Gall agents with the Shoe library are able to utilize `$card:shoe`s. These addit
 
 {% endcode %}
 
-The Shoe card's `sole-ids` is the list of session ids that the following `$shoe-effect` is emitted to. An empty `sole-ids` list sends the effect to all connected sessions. `$shoe-effect`s, for now, are always of the shape `[%sole effect=sole-effect]`, where `$sole-effect`s are basic console events such as displaying text, changing the prompt, beeping, etc. These are described in the section on the [`sole` library](#the-sole-library).
+The Shoe card's `sole-ids` is the list of session ids that the following `$shoe-effect` is emitted to. An empty `sole-ids` list sends the effect to all connected sessions. `$shoe-effect`s, for now, are always of the shape `[%sole effect=sole-effect]`, where `$sole-effect`s are basic console events such as displaying text, changing the prompt, beeping, etc. These are described in the section on the [sole library](#the-sole-library).
 
 For example, a `$card:shoe` that causes all connected sessions to beep would be `[%shoe ~ %sole %bel ~]`.
 
@@ -302,7 +302,7 @@ The `^-` type casts here are just reminders of what is being produced. So let's 
 
 {% endcode %}
 
-This is boilerplate Gall agent core code. We set `this` to be a macro for the subject, which is the Gall agent core itself. We set `def` and `des` to be macros for initialized `+default-agent` and `+default:shoe` doors respectively.
+This is boilerplate Gall agent core code. We set `.this` to be a macro for the subject, which is the Gall agent core itself. We set `def` and `des` to be macros for initialized `+default-agent` and `+default:shoe` doors respectively.
 
 Next we implement all of the arms required for a Shoe agent. Starting with the standard Gall arms:
 
@@ -393,7 +393,7 @@ This is a gate that takes in the `$sole-id` corresponding to the session and the
 
 {% endcode %}
 
-This creates a cell of a `$card:shoe` that triggers a `$sole-effect` given by the head of the subject `-`, then the Gall agent core `this` - the return result of this gate. The use of the `=-` rune means that what follows this expression is actually run first, which puts the desired `$sole-effect` into the head of the subject.
+This creates a cell of a `$card:shoe` that triggers a `$sole-effect` given by the head of the subject `-`, then the Gall agent core `.this` - the return result of this gate. The use of the `=-` rune means that what follows this expression is actually run first, which puts the desired `$sole-effect` into the head of the subject.
 
 {% code title="/app/shoe.hoon" overflow="nowrap" %}
 

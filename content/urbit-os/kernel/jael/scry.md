@@ -15,7 +15,7 @@ layout:
 
 # Jael Scry Reference
 
-Jael's scry endpoints never take a `care`. The particular endpoints are specified in the place of the desk in the path prefix, then additional arguments are specified in the path. Note this style of scry path is considered outdated, and may be changed in the future.
+Jael's scry endpoints never take a `$care`. The particular endpoints are specified in the place of the desk in the path prefix, then additional arguments are specified in the path. Note this style of scry path is considered outdated, and may be changed in the future.
 
 ## `%step` {#step}
 
@@ -117,7 +117,7 @@ A `%vein` scry gets your ship's private key for the specified `life`. It takes a
 
 ## `%vile` {#vile}
 
-A `%vile` scry gets your `jam`mmed private boot parameters at your ship's current `life`. It takes no additional arguments in its `path`. The type returned is a `@` which is a `jam`med [$seed](data-types.md#seed).
+A `%vile` scry gets your `+jam`mmed private boot parameters at your ship's current `life`. It takes no additional arguments in its `path`. The type returned is a `@` which is a `+jam`med [$seed](data-types.md#seed).
 
 #### Examples
 
@@ -198,7 +198,7 @@ ney=(jug ship duct)  ::  reverse trackers
 nel=(set duct)       ::  trackers of all
 ```
 
-The `yen` `jug` maps subscribed `duct`s to the `ship`s they're tracking, and `ney` is just the inverse, mapping tracked `ship`s to subscribed `duct`s. The `nel` set contains `duct`s track all public key updates.
+The `yen` `+jug` maps subscribed `duct`s to the `ship`s they're tracking, and `ney` is just the inverse, mapping tracked `ship`s to subscribed `duct`s. The `nel` set contains `duct`s track all public key updates.
 
 #### Example
 

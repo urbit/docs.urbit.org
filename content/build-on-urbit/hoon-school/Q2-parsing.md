@@ -153,7 +153,7 @@ How do we parse multiple characters in order to break things up sensibly?
 [p=[p=1 q=2] q=[~ u=[p='a' q=[p=[p=1 q=2] q=[i='b' t=""]]]]]
 ```
 
-[`+glue`](../../hoon/stdlib/4e.md#glue) parses a delimiter (a `$rule`) in between each `$rule` and forms a cell of the results of each non-delimiter `$rule`. Delimiters representing each symbol used in Hoon are named according to their aural ASCII pronunciation. Sets of characters can also be used as delimiters, such as `prn` for printable characters ([more here](../../hoon/stdlib/4i.md)).
+[`+glue`](../../hoon/stdlib/4e.md#glue) parses a delimiter (a `$rule`) in between each `$rule` and forms a cell of the results of each non-delimiter `$rule`. Delimiters representing each symbol used in Hoon are named according to their aural ASCII pronunciation. Sets of characters can also be used as delimiters, such as `+prn` for printable characters ([more here](../../hoon/stdlib/4i.md)).
 
 ```hoon
 > (scan "a b" ;~((glue ace) (just 'a') (just 'b')))  

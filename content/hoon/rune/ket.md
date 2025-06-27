@@ -17,7 +17,7 @@ layout:
 
 [`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=` ("kettis")](#-kettis) let us adjust types without violating type constraints.
 
-The `nest` algorithm which tests subtyping is conservative; it never allows invalid nests, it sometimes rejects valid nests.
+The `+nest` algorithm which tests subtyping is conservative; it never allows invalid nests, it sometimes rejects valid nests.
 
 ## ^| "ketbar" {#ketbar}
 
@@ -175,7 +175,7 @@ None
 
 `p` produces a gate and q is any Hoon expression.
 
-`^.` is particularly useful when `p` is a gate that 'cleans up' the type information about some piece of data. For example, `limo` is used to turn a raw noun of the appropriate shape into a genuine list. Hence we can use `^.` to cast with `limo` and similar gates, ensuring that the product has the desired type.
+`^.` is particularly useful when `p` is a gate that 'cleans up' the type information about some piece of data. For example, `+limo` is used to turn a raw noun of the appropriate shape into a genuine list. Hence we can use `^.` to cast with `+limo` and similar gates, ensuring that the product has the desired type.
 
 #### Examples
 

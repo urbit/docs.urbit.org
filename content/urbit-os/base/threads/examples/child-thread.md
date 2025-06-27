@@ -159,7 +159,7 @@ Spider will kick us from the subscription when it ends the thread so we also tak
 ==
 ```
 
-Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`. These are the two possible marks produced by spider when it returns the results of a thread. A `%thread-done` will contain a vase with the result, and a `%thread-fail` will contain an error message and traceback, so we see which it is and then either produce the result with `pure` or trigger a `%thread-fail` with the error we got from the child.
+Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`. These are the two possible marks produced by spider when it returns the results of a thread. A `%thread-done` will contain a vase with the result, and a `%thread-fail` will contain an error message and traceback, so we see which it is and then either produce the result with `+pure` or trigger a `%thread-fail` with the error we got from the child.
 
 ## Stop a thread {#stop-a-thread}
 

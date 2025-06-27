@@ -17,13 +17,13 @@ layout:
 
 Here are all of Eyre's scry endpoints. There's not too many and they mostly deal with either CORS settings or aspects of the state of connections.
 
-The first few have a `care` of `x` and are a scry like `.^([type] %ex /=//=/[some-path])` (note the empty `desk`). The rest have no `care` and the tag replaces the `desk` like `.^([type] %e /=[something]=)`.
+The first few have a `$care` of `x` and are a scry like `.^([type] %ex /=//=/[some-path])` (note the empty `desk`). The rest have no `$care` and the tag replaces the `desk` like `.^([type] %e /=[something]=)`.
 
 All examples are run from the dojo.
 
 ## `/cors` {#cors}
 
-An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](data-types.md#cors-registry) which contains the `set`s of approved, rejected and requested origins.
+An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](data-types.md#cors-registry) which contains the `+set`s of approved, rejected and requested origins.
 
 #### Example {#example-1}
 
@@ -39,7 +39,7 @@ An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. Th
 
 ## `/cors/requests` {#corsrequests}
 
-An `x` scry with a `path` of `/cors/requests` will return the `set` of pending origin requests. These are origins that were in an `Origin: ...` HTTP header but weren't in the existing approved or rejected sets. The type returned is a `(set origin:eyre)`.
+An `x` scry with a `path` of `/cors/requests` will return the `+set` of pending origin requests. These are origins that were in an `Origin: ...` HTTP header but weren't in the existing approved or rejected sets. The type returned is a `(set origin:eyre)`.
 
 #### Example {#example-2}
 
@@ -52,7 +52,7 @@ requests={~~http~3a.~2f.~2f.baz~.example}
 
 ## `/cors/approved` {#corsapproved}
 
-An `x` scry with a `path` of `/cors/approved` will return the `set` of approved CORS origins. The type returned is a `(set origin:eyre)`.
+An `x` scry with a `path` of `/cors/approved` will return the `+set` of approved CORS origins. The type returned is a `(set origin:eyre)`.
 
 #### Example {#example-3}
 
@@ -85,7 +85,7 @@ The origin URL is a `@t`, but since `@t` may not be valid in a path, it must be 
 
 ## `/cors/rejected` {#corsrejected}
 
-An `x` scry with a `path` of `/cors/rejected` will return the `set` of rejected CORS origins. The type returned is a `(set origin:eyre)`.
+An `x` scry with a `path` of `/cors/rejected` will return the `+set` of rejected CORS origins. The type returned is a `(set origin:eyre)`.
 
 #### Example {#example-4}
 
@@ -175,7 +175,7 @@ A scry with `cache` in place of the `desk` in the `beak` will return Eyre's enti
 (map url=@t [aeon=@ud val=(unit cache-entry:eyre)])
 ```
 
-The map's `url` key is a URL path like `/foo/bar/baz.jpg` in a `cord`. The `aeon` is the revision number, and `val` is either the cache entry or null if it's been tombstoned. See the [$cache-entry](data-types.md#cache-entry) section of the Data Types document for details of its type.
+The map's `url` key is a URL path like `/foo/bar/baz.jpg` in a `cord`. The `$aeon` is the revision number, and `val` is either the cache entry or null if it's been tombstoned. See the [$cache-entry](data-types.md#cache-entry) section of the Data Types document for details of its type.
 
 ---
 

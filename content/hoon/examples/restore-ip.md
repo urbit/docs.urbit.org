@@ -31,7 +31,7 @@ While the following are not:
 * `192.168.00.1`
 * `a23.b25.1.194`
 
-A database containing IPv4 addresses has gotten out of order up by addresses losing their dots. Your job is to restore it. You'll write a generator `restore-ip` such that it takes a `@t` `cord` containing only numerical digits and returns a `set` of all the `@t` `cord`s with dots inserted into the given digits to create a valid IPv4 address. 
+A database containing IPv4 addresses has gotten out of order up by addresses losing their dots. Your job is to restore it. You'll write a generator `/gen/restore-ip` such that it takes a `@t` `cord` containing only numerical digits and returns a `+set` of all the `@t` `cord`s with dots inserted into the given digits to create a valid IPv4 address. 
 
 We also want to crash if the input given is clearly invalid. Your generator should crash in the following cases:
 * If the input contains any characters other than digits.

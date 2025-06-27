@@ -298,7 +298,7 @@ You must ack the event.
 
 ### Diff {#diff}
 
-All `fact`s sent by a Gall agent on the `path` to which you've subscribed are delivered as `diff`s. Note that Eyre makes a best effort to convert the `fact` to a `json` mark. If it can't, Eyre will crash and close the subscription, and you won't receive any `diff` for the `fact`.
+All `fact`s sent by a Gall agent on the `path` to which you've subscribed are delivered as diffs. Note that Eyre makes a best effort to convert the `fact` to a `%json` mark. If it can't, Eyre will crash and close the subscription, and you won't receive any diff for the `fact`.
 
 | Key        | JSON Type | Example Value    | Description                                                  |
 | ---------- | --------- | ---------------- | ------------------------------------------------------------ |
@@ -318,7 +318,7 @@ All `fact`s sent by a Gall agent on the `path` to which you've subscribed are de
 
 #### Action Required
 
-You must [ack](#ack) each `diff` that comes in the event stream.
+You must [ack](#ack) each diff that comes in the event stream.
 
 ### Quit {#quit}
 

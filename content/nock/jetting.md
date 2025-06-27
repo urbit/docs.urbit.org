@@ -17,7 +17,7 @@ layout:
 
 The computational feasibility of practical Nock computation depends upon the run-time "jetting" certain recognized nock computations. Naively, some subset of subject-formula pairs should not be stepped through according to the Nock reductions, but should instead be replaced by more efficient computations, which must return the *same result* as evaluation according to the Nock spec, even if the Sun would die before the Nock evaluation completed.
 
-It is sometimes thought that jets are matched to formulas, however, this is not in general sufficient. Even as simple an arm as as `$:add` will invoke code from its context (`dec` and then `$:dec`).
+It is sometimes thought that jets are matched to formulas, however, this is not in general sufficient. Even as simple an arm as as `$:add` will invoke code from its context (`+dec` and then `$:dec`).
 
 Thus, we need to fix the subject to be jetted as well. However, we cannot simply specify the subject as a noun, because our inputs are also in the subject (in the sample, `+6`, in the usual case of gates and doors).
 

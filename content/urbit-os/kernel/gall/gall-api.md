@@ -365,7 +365,7 @@ Its fields are:
 
 - `p`: A `sock`, a `(pair ship ship)`, the sending and receiving ships.
 - `q`: The source agent.
-- `r`: A [`deal`](data-types.md#deal) is either a [`task:agent`](data-types.md#taskagent) or a `%raw-poke`. This is the request itself.
+- `r`: A [`$deal`](data-types.md#deal) is either a [`task:agent`](data-types.md#taskagent) or a `%raw-poke`. This is the request itself.
 
 #### Returns
 
@@ -431,7 +431,7 @@ Load agents.
 
 This `task` is given to Gall by Clay. It contains the compiled agents to be installed or updated. This `task` would not be used from userspace.
 
-See the [`load`](data-types.md#load) entry in the type reference for more details of the datastructure in this `task`.
+See the [`$load`](data-types.md#load) entry in the type reference for more details of the datastructure in this `task`.
 
 #### Returns
 

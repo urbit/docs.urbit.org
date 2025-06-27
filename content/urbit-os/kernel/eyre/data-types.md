@@ -58,7 +58,7 @@ A single CORS origin as used in an HTTP Origin header and the [$cors-registry](#
   ==
 ```
 
-CORS origins categorised by approval status. The `requests` `set` contains all [$origin](#origin)s Eyre has received in the headers of HTTP requests that have not been explicitly approved or rejected. The `approved` and `rejected` `set`s are those that have been explicitly approved or rejected.
+CORS origins categorised by approval status. The `requests` `+set` contains all [$origin](#origin)s Eyre has received in the headers of HTTP requests that have not been explicitly approved or rejected. The `approved` and `rejected` `+set`s are those that have been explicitly approved or rejected.
 
 ---
 
@@ -96,7 +96,7 @@ This represents the authentication state of all sessions. It maps session cookie
   ==
 ```
 
-This represents server-side data about a session. The `expiry-time` is when the `session` expires and `channels` is the `set` of [$channel](#channel) names opened by the session.
+This represents server-side data about a session. The `expiry-time` is when the `session` expires and `channels` is the `+set` of [$channel](#channel) names opened by the session.
 
 ---
 
@@ -109,7 +109,7 @@ This represents server-side data about a session. The `expiry-time` is when the 
   ==
 ```
 
-The state used by the channel system. The `session` is a `map` between channel names and [$channel](#channel)s and the `duct-to-key` `map`s `duct`s to `channel` names.
+The state used by the channel system. The `session` is a `+map` between channel names and [$channel](#channel)s and the `duct-to-key` `+map`s `duct`s to `+channel` names.
 
 ---
 
@@ -167,8 +167,8 @@ This is the state of a particular channel in the channel system.
   - `id` is the server-set event ID.
   - `request-id` is the client-set request ID.
   - [$channel-event](#channel-event) is the event itself.
-- `unacked` `map` contains the unacked event count per `request-id` and is used for clog calculations.
-- `subscriptions` `map` contains gall subscriptions by `request-id`.
+- `unacked` `+map` contains the unacked event count per `request-id` and is used for clog calculations.
+- `subscriptions` `+map` contains gall subscriptions by `request-id`.
 - `heartbeat` is the SSE heartbeat [$timer](#timer).
 
 ---

@@ -15,7 +15,7 @@ layout:
 
 # Dill API Reference
 
-In this document we describe the public interface for Dill. Namely, we describe each `task` that Dill can be `pass`ed, and which `gift`(s) Dill can `give` in return.
+In this document we describe the public interface for Dill. Namely, we describe each `task` that Dill can be `+pass`ed, and which `gift`(s) Dill can `give` in return.
 
 Dill's `task`s are organized into three categories: [Session `task`s](tasks.md#session-tasks) for interacting with a particular session, [Told `task`s](tasks.md#told-tasks) for basic terminal printing, and [system/miscellaneous `task`s](tasks.md#system-misc-tasks) which are a combination of general system `task`s and Dill `task`s which don't fit in the previous two categories.
 

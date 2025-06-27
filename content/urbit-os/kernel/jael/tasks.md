@@ -128,7 +128,7 @@ Cancel subscription to public or private key updates.
 [%nuke whos=(set ship)]
 ```
 
-If you've subscribed to public or private key updates from Jael with a [%private-keys](tasks.md#private-keys) or [%public-keys](tasks.md#public-keys) task, you can unsubscribe and stop receiving updates with a `%nuke` task. The `(set ship)` is the `set` of `ship`s which you want to stop tracking. Jael organises subscriptions based on `duct`s, and will determine which subscription to cancel implicitly based on the `duct` the `%nuke` task came from. This means a `%nuke` task only works from the same thread or agent and on the same `path` as the original subscription request.
+If you've subscribed to public or private key updates from Jael with a [%private-keys](tasks.md#private-keys) or [%public-keys](tasks.md#public-keys) task, you can unsubscribe and stop receiving updates with a `%nuke` task. The `(set ship)` is the `+set` of `ship`s which you want to stop tracking. Jael organises subscriptions based on `duct`s, and will determine which subscription to cancel implicitly based on the `duct` the `%nuke` task came from. This means a `%nuke` task only works from the same thread or agent and on the same `path` as the original subscription request.
 
 To cancel a subscription to the ship's private keys you must leave `whos` empty like `[%nuke ~]`.
 
@@ -172,7 +172,7 @@ Subscribe to public key (and related) updates from Jael.
 [%public-keys ships=(set ship)]
 ```
 
-An agent or thread can subscribe to be notified of public key updates, sponsorship changes and continuity breaches for the `set` of `ship`s specified in the `ships` field. The subscription will continue until Jael receives a [%nuke](tasks.md#nuke) task to cancel it.
+An agent or thread can subscribe to be notified of public key updates, sponsorship changes and continuity breaches for the `+set` of `ship`s specified in the `ships` field. The subscription will continue until Jael receives a [%nuke](tasks.md#nuke) task to cancel it.
 
 #### Returns
 
@@ -226,7 +226,7 @@ Pretend breach.
 [%ruin ships=(set ship)]
 ```
 
-This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
+This simulates a breach locally for the given `+set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
 
 {% hint style="warning" %}
 **WARNING**

@@ -62,7 +62,7 @@ This represents a node in Clay, which may be a file or a directory.
 
 Fundamental node, recursive
 
-This mold builder creates a representation of a node in Clay like an [`arch`](arvo.md#arch) or [`axil`](arvo.md#axil), but the directory map contains more `axal`s, so it contains the entire subtree rather than just one level.
+This mold builder creates a representation of a node in Clay like an [`arch`](arvo.md#arch) or [`+axil`](arvo.md#axil), but the directory map contains more `+axal`s, so it contains the entire subtree rather than just one level.
 
 #### Source
 
@@ -838,7 +838,7 @@ Namespace perspective
 
 Kernel action builder
 
-This is similar to [`wite`](arvo.md#wite) but without the error case. It's most commonly used in the type of a `card:agent:gall`.
+This is similar to [`+wite`](arvo.md#wite) but without the error case. It's most commonly used in the type of a `card:agent:gall`.
 
 #### Source
 
@@ -872,7 +872,7 @@ This is similar to [`wite`](arvo.md#wite) but without the error case. It's most 
 
 Event pretext
 
-Type-wise, a `wire` is the same as a [`path`](stdlib/2q.md#path); a `list` of [`knot`](stdlib/2q.md#knot)s with the syntax of `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or subscription endpoint, a `wire` is used for responses.
+Type-wise, a `wire` is the same as a [`path`](stdlib/2q.md#path); a `+list` of [`knot`](stdlib/2q.md#knot)s with the syntax of `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or subscription endpoint, a `wire` is used for responses.
 
 On the kernel-level, `wire`s are used in [`duct`](arvo.md#duct)s to represent a causal step in a call stack for routing purposes. In userspace, they're used the same way under the hood, but practically speaking, they can be thought of as "tags" for responses. That is, when you make a request to a vane of Gall agent, you provide a `wire` for any responses you get back, and you can use this to identity what the response is for.
 
@@ -970,7 +970,7 @@ A `path`
 
 #### Produces
 
-A `beam` in a `unit`, which is null if parsing failed.
+A `beam` in a `+unit`, which is null if parsing failed.
 
 #### Source
 
@@ -1005,7 +1005,7 @@ A `knot`
 
 #### Produces
 
-A [`case`](arvo.md#case) in a `unit`, which is null if parsing failed.
+A [`case`](arvo.md#case) in a `+unit`, which is null if parsing failed.
 
 #### Source
 

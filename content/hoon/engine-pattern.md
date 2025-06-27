@@ -258,7 +258,7 @@ We recommend reading the following examples which employ the engine pattern:
 - `+vats` in `%base`'s `/lib/hood/kiln.hoon`
 - `+go` in [`%cult`](https://github.com/rabsef-bicrym/cult/blob/master/gora/cult/cult.hoon)'s `/cult/cult.hoon`
 
-For instance, [Quartus’ `cult` library](https://github.com/rabsef-bicrym/cult/blob/master/gora/cult/cult.hoon) uses the engine pattern in `+go` for a [gossip protocol library](https://en.wikipedia.org/wiki/Gossip_protocol). Some of the names are different (e.g. `+easy` for `+abed`), but you can see how the design pattern holds:
+For instance, [Quartus’ Cult library](https://github.com/rabsef-bicrym/cult/blob/master/gora/cult/cult.hoon) uses the engine pattern in `+go` for a [gossip protocol library](https://en.wikipedia.org/wiki/Gossip_protocol). Some of the names are different (e.g. `+easy` for `+abed`), but you can see how the design pattern holds:
 
 {% code wrap="nowrap" %}
 

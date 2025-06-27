@@ -15,7 +15,7 @@ layout:
 
 # Behn API Reference
 
-In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.
+In this document we describe the public interface for Behn. Namely, we describe each `task` that Behn can be `+pass`ed, and which `gift`(s) Behn can `give` in return.
 
 Most of Behn's `task`s are only used by the kernel or runtime. The two `task`s you're likely to use from userspace are [%wait](#wait) for setting a timer and [%rest](#rest) for cancelling a timer.
 
@@ -145,7 +145,7 @@ Behn returns a `%wake` `gift` in response to a `%wait` `task`, once the timer ha
 [%wake error=(unit tang)]
 ```
 
-The `error` `unit` will be `~` if successful, or contain a traceback in the `tang` if the timer failed for some reason.
+The `error` `+unit` will be `~` if successful, or contain a traceback in the `tang` if the timer failed for some reason.
 
 #### Example
 

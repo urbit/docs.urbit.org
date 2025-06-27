@@ -65,7 +65,7 @@ Agents can kick subscribers, and you can unsubscribe at any time.
 
 Pokes and subscriptions can modify the state of the agent. A third kind of interaction called a _scry_ does not. It simply retrieves data from the agent without any side-effects. Agents can define _scry endpoints_ which, like subscriptions, are paths. A scry to one of these endpoints will retrieve some data as determined by the agent. Like subscription paths, scry paths can be simple like `/foo/bar` or contain dynamic elements. Unlike subscriptions, a scry is a one-off request and the data will come back immediately.
 
-Scry endpoints are defined in the `+on-peek` section of an agent's source code. Scry endpoints will be written with a leading letter like `/x/foo/bar`. That letter is a `care` which tells Gall what kind of request this is. All scries through Eyre have a care of `/x`, so that letter needn't be specified.
+Scry endpoints are defined in the `+on-peek` section of an agent's source code. Scry endpoints will be written with a leading letter like `/x/foo/bar`. That letter is a `$care` which tells Gall what kind of request this is. All scries through Eyre have a care of `/x`, so that letter needn't be specified.
 
 `@urbit/http-api` includes a `scry()` function which allows you to perform scries through Eyre, and is [detailed below](#scry).
 
@@ -476,13 +476,13 @@ Note that the examples in this guide are simple HTML documents with vanilla Java
 
 If your web app is served externally to the ship, you must authenticate and obtain a session cookie before commencing communications with the ship.
 
-The `Urbit()` object includes an `authenticate` function which does the following:
+The `Urbit()` object includes an `authenticate()` function which does the following:
 
 1. Login to the user's ship with their `code` and obtain a session cookie.
 2. Generate a random channel ID for the connection.
 3. Poke the user's ship and print "opening airlock" in the dojo to initialize the channel.
 
-The `authenticate` function takes four arguments in an object: `ship`, `url`, `code` and `verbose`:
+The `authenticate()` function takes four arguments in an object: `ship`, `url`, `code` and `verbose`:
 
 | Argument  | Type      | Description                                                                            | Example                           |
 | --------- | --------- | -------------------------------------------------------------------------------------- | --------------------------------- |
@@ -522,7 +522,7 @@ This function returns a promise that if successful, produces an `Urbit()` object
 {% endcode %}
 
 ### Poke {#poke}
-For poking a ship, `Urbit()` includes a `poke` function. The `poke` function takes six arguments in a object:
+For poking a ship, `Urbit()` includes a `poke()` function. The `poke()` function takes six arguments in a object:
 
 | Argument    | Type        | Description                                                                                                                  | Example                 |
 | ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
@@ -639,14 +639,14 @@ For poking a ship, `Urbit()` includes a `poke` function. The `poke` function tak
 {% endcode %}
 
 ### Scry {#scry}
-To scry agents on the ship, `Urbit()` includes a `scry` function. The `scry` function takes two arguments in a object:
+To scry agents on the ship, `Urbit()` includes a `scry()` function. The `scry()` function takes two arguments in a object:
 
 | Argument | Type     | Description                        | Example         |
 | -------- | -------- | ---------------------------------- | --------------- |
 | `app`    | `string` | The agent to scry.                 | `"api-demo"` |
 | `path`   | `string` | The path to scry, sans the `care`. | `"/store"`       |
 
-The `scry` function returns a promise that, if successful, contains the requested data as JSON. If the scry failed, for example due to a non-existent scry endpoint, connection problem, or mark conversion failure, the promise will fail.
+The `scry()` function returns a promise that, if successful, contains the requested data as JSON. If the scry failed, for example due to a non-existent scry endpoint, connection problem, or mark conversion failure, the promise will fail.
 
 #### `scry()` example {#scry-example}
 

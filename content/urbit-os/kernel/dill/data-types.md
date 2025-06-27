@@ -109,8 +109,8 @@ A `$blit` is one of:
 - `%mor` - multiple `$blit`s.
 - `%nel` - a newline.
 - `%put` - put text (as a list of UTF-32 characters) at the current cursor position.
-- `%sag` - Save to jamfile, typically in `/[pier]/.urb/put/`. `p` is `/[path]/[filename]/[extension]`. For example, `/foo/bar` will save it in `/[pier]/.urb/put/foo.bar`, `/a/b/c/foo/bar` will save it in `/[pier]/.urb/put/a/b/c/foo.bar`, and `/foo` will save it in `/[pier]/.urb/put.foo`. `q` is the `noun` to `jam` and save in the file.
-- `%sav` - Save to file. Same behaviour as `%sag` except `q` is an `atom` rather than a `noun` and therefore doesn't need to be `jam`med. The `atom` is written to disk as if it were the bytestring in the tail of an `$octs`. That is, `%sav`ing the `cord` `'abcdef'`, whose `@ux` value is `0x6665.6463.6261`, results in a unix file whose hex dump renders as `61 62 63 64 65 66`.
+- `%sag` - Save to jamfile, typically in `/[pier]/.urb/put/`. `p` is `/[path]/[filename]/[extension]`. For example, `/foo/bar` will save it in `/[pier]/.urb/put/foo.bar`, `/a/b/c/foo/bar` will save it in `/[pier]/.urb/put/a/b/c/foo.bar`, and `/foo` will save it in `/[pier]/.urb/put.foo`. `q` is the `noun` to `+jam` and save in the file.
+- `%sav` - Save to file. Same behaviour as `%sag` except `q` is an `atom` rather than a `noun` and therefore doesn't need to be `+jam`med. The `atom` is written to disk as if it were the bytestring in the tail of an `$octs`. That is, `%sav`ing the `cord` `'abcdef'`, whose `@ux` value is `0x6665.6463.6261`, results in a unix file whose hex dump renders as `61 62 63 64 65 66`.
 - `%url` - Activate URL, `p` is the URL.
 - `%wyp` - clear the cursor line.
 

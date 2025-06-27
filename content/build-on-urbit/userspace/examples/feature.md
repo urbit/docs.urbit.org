@@ -237,7 +237,7 @@ The most interesting part of the whole app is the `+handle-http` arm:
 
 </details>
 
-This arm uses the `server` library and `schooner` to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
+This arm uses the server and schooner libraries to produce a response of a server state and associated data.  HTTP requests to `/apps/feature` are checked for login authentication, while `/apps/feature/public` are not.
 
 ### `POST` {#post}
 

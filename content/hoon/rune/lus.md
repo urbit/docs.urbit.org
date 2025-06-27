@@ -43,7 +43,7 @@ See [`tome`](../stdlib/4o.md#tome) in the Hoon standard library.
 
 #### Examples
 
-Let's look at what the Hoon compiler's parser, `ream`, does with the `+|` rune:
+Let's look at what the Hoon compiler's parser, `+ream`, does with the `+|` rune:
 
 ```
 > (ream '|%  +|  %numbers  ++  two  2  ++  three  3  --')
@@ -129,7 +129,7 @@ Two arguments, fixed.
 
 #### Discussion
 
-All arms must have a name (e.g., `add`). An arm is computed by name resolution. (This resolution is implicit in the case of `$` arms. See `|=`, `|-`, and `|^`.) The `++` rune is used for explicitly giving a name to an arm.
+All arms must have a name (e.g., `+add`). An arm is computed by name resolution. (This resolution is implicit in the case of `$` arms. See `|=`, `|-`, and `|^`.) The `++` rune is used for explicitly giving a name to an arm.
 
 Any Hoon expression, `q`, may be used to define the arm computation.
 
@@ -237,7 +237,7 @@ Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd 
     cont  +>
 ```
 
-This assigns the door the alias `this`, the sample of the door `samp`, and the context of the door `cont`.
+This assigns the door the alias `this`, the sample of the door `.samp`, and the context of the door `.cont`.
 
 You may also call functions with `+*` by making use of e.g. the `%~` rune.
 

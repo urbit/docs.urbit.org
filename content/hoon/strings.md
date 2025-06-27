@@ -172,7 +172,7 @@ The `+sane` function takes an argument of either `%ta` or `%tas` to validate `@t
 %.n
 ```
 
-The `+sand` function does the same thing, but rather than returning a `?` it returns a `unit` of the given atom, or `~` if validation failed. For example:
+The `+sand` function does the same thing, but rather than returning a `?` it returns a `+unit` of the given atom, or `~` if validation failed. For example:
 
 ```
 > `(unit @tas)`((sand %tas) 'foo')
@@ -392,7 +392,7 @@ For decoding atoms of particular auras encoded in cords, there are three functio
 dojo: hoon expression failed
 ```
 
-`+slaw` is like `+slav` except it produces a `unit` which is null if parsing failed, rather than crashing. For example:
+`+slaw` is like `+slav` except it produces a `+unit` which is null if parsing failed, rather than crashing. For example:
 
 ```
 > `(unit @da)`(slaw %da '~2021.10.4..11.26.54')

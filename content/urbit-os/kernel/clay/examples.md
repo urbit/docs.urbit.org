@@ -75,7 +75,7 @@ You should see something like this as the output:
 ]
 ```
 
-The `cage` in the `riot` of the `%writ` contains the file's data due to our use of an `%x` `care`. It needn't be `%x` though. If we change it to `%u`, for example, we'll get a `?` `cage` instead:
+The `cage` in the `riot` of the `%writ` contains the file's data due to our use of an `%x` `$care`. It needn't be `%x` though. If we change it to `%u`, for example, we'll get a `?` `cage` instead:
 
 ```
 > -send-task-take-gift [%warp our %base ~ %sing %u da+now /gen/hood/hi/hoon]
@@ -113,7 +113,7 @@ Now, in unix, create a file called `foo.txt` in the root of the `base` directory
 + /~zod/base/3/foo/txt
 ```
 
-As you can see, the `riot` in the `%writ` includes a `cage` with the data of `/foo/txt` due to our use of an `%x` `care`.
+As you can see, the `riot` in the `%writ` includes a `cage` with the data of `/foo/txt` due to our use of an `%x` `$care`.
 
 Now run the thread again, and this time delete the file in unix and again `|commit %base` in the dojo. You should see:
 
@@ -134,7 +134,7 @@ Here's a breakdown of the task we sent:
 
 Here we'll look at subscribing to the next version of multiple files by passing Clay a `%warp` `task` with a `%mult` `rave` and receiving a `%wris` `gift` when any of the files change.
 
-This thread will subscribe to `/foo/txt` with an `%x` `care` and `/bar/txt` with a `%u` `care`. It will print out the `%wris` it gets back from Clay.
+This thread will subscribe to `/foo/txt` with an `%x` `$care` and `/bar/txt` with a `%u` `$care`. It will print out the `%wris` it gets back from Clay.
 
 `sub-mult.hoon`
 
@@ -170,7 +170,7 @@ Save the above to `ted/sub-mult.hoon`, `|commit %base` and run with `-sub-mult`.
 + /~zod/base/151/bar/txt
 ```
 
-You'll notice that, unlike a `%writ`, the `%wris` doesn't give you the data. It merely tells you the `care`s and `path`s of the files that changed. If you need to actually get the data, you can just scry or send a request for the files in question.
+You'll notice that, unlike a `%writ`, the `%wris` doesn't give you the data. It merely tells you the `$care`s and `path`s of the files that changed. If you need to actually get the data, you can just scry or send a request for the files in question.
 
 Now, run the thread again, open `bar.txt` in an editor, modify its contents, save it and `|commit %base`. You'll notice you didn't receive a `%wris`. This is because we subscribed to `/bar/txt` with `%u` care and its existence didn't change.
 
@@ -375,7 +375,7 @@ Identical to the [%ins](#ins) example, just replace `%ins` with `%mut`.
 
 Here we'll look at changing multiple files in one request by sending Clay a `%info` `task` containing multiple `miso` in the `soba`.
 
-Since `soba` is just a `list` of `miso`, you can add a bunch of `miso` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `miso` in each request but you could mix different types together too.
+Since `soba` is just a `+list` of `miso`, you can add a bunch of `miso` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `miso` in each request but you could mix different types together too.
 
 `multi-change.hoon`
 
@@ -568,7 +568,7 @@ Now the merge has succeeded and the `%mere` notes the file with a merge conflict
 : /~zod/foo/6/foo/txt
 ```
 
-...you can see it's overwritten the `foo/txt` in the `%foo` `desk` and the `%mere` now has an empty `set`, indicating no merge conflicts.
+...you can see it's overwritten the `foo/txt` in the `%foo` `desk` and the `%mere` now has an empty `+set`, indicating no merge conflicts.
 
 Next, let's look at subscribing for future changes. Since the `case` is specified explicitly in the `%merge` `task`, we can set it in the future:
 
@@ -740,7 +740,7 @@ First we'll set permissions on the foreign ship. Create a file called `foo.txt` 
 > |pass [%c [%perm %base /foo/txt %rw `[%white (sy [%.y ~zod]~)] `[%white (sy [%.y ~zod]~)]]]
 ```
 
-If we scry the file for its permissions with a `%p` `care`, we'll see `~zod` is now whitelisted:
+If we scry the file for its permissions with a `%p` `$care`, we'll see `~zod` is now whitelisted:
 
 ```
 > .^([r=dict:clay w=dict:clay] %cp %/foo/txt)

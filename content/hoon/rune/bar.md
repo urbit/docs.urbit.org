@@ -77,7 +77,7 @@ body
 
 #### Semantics
 
-`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `lest` of `term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
+`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `+lest` of `term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
 
 #### Discussion
 
@@ -87,7 +87,7 @@ A mold builder is a wet gate from one or more molds to a mold. A mold is a funct
 
 Like other single-arm cores, the arm for `|$` is named `$` and this can be used to define recursive structures. Note however that Hoon is evaluated eagerly, and so infinite structures are not permitted.
 
-Proper style for `|$` is to enclose the first argument with brackets, even if it is only a single term. The interpeter will accept a single term without brackets just fine, but this style is for consistency with the fact that the first argument is a `lest`.
+Proper style for `|$` is to enclose the first argument with brackets, even if it is only a single term. The interpeter will accept a single term without brackets just fine, but this style is for consistency with the fact that the first argument is a `+lest`.
 
 #### Examples
 
@@ -204,7 +204,7 @@ A more interesting door, from the kernel library:
   --
 ```
 
-The `ne` door prints a digit in base 10, 16, 32 or 64:
+The `+ne` door prints a digit in base 10, 16, 32 or 64:
 
 ```
 ~zod:dojo> `@t`~(x ne 12)

@@ -28,7 +28,7 @@ You typically want `$json` data converted to some other `noun` structure or vice
 
 - [`+enjs:format`](zuse/2d_1-5.md#enjsformat) - Functions for converting various atoms and structures to `$json`.
 - [`+dejs:format`](zuse/2d_6.md#dejsformat) - Many "reparsers" for converting `$json` data to atoms and other structures.
-- [`+dejs-soft:format`](zuse/2d_7.md#dejs-softformat) - Largely the same as `+dejs:format` except its reparsers produce `unit`s which are null upon failure rather than simply crashing.
+- [`+dejs-soft:format`](zuse/2d_7.md#dejs-softformat) - Largely the same as `+dejs:format` except its reparsers produce `+unit`s which are null upon failure rather than simply crashing.
 
 The relationship between these types and functions look like this:
 
@@ -123,7 +123,7 @@ Let's have a look at a practical example. Here's a core with three arms. It has 
 --
 ```
 
-**Note**: This example (and a couple of others in this guide) sometimes use a syntax of `foo+bar`. This is just syntactic sugar to tag the head of `bar` with the `term` constant `%foo`, and is equivalent to `[%foo bar]`. Since `json` data is a union with head tags of `%b`, `%n`, `%s`, `%a`, or `%o`, it's sometimes convenient to do `s+'some string'`, `b+&`, etc.
+**Note**: This example (and a couple of others in this guide) sometimes use a syntax of `foo+bar`. This is just syntactic sugar to tag the head of `bar` with the `term` constant `%foo`, and is equivalent to `[%foo bar]`. Since `$json` data is a union with head tags of `%b`, `%n`, `%s`, `%a`, or `%o`, it's sometimes convenient to do `s+'some string'`, `b+&`, etc.
 
 ### Try it out {#try-it-out}
 
@@ -213,7 +213,7 @@ Here's our arm that converts a `$user` structure to `$json`:
   --
 ```
 
-There are different ways we could represent our `$user` structure as JSON, but in this case we've opted to encapsulate it in an object and have the `name` as an array (since JSON arrays preserve order).
+There are different ways we could represent our `$user` structure as JSON, but in this case we've opted to encapsulate it in an object and have the `+name` as an array (since JSON arrays preserve order).
 
 [`+enjs:format`](zuse/2d_1-5.md#enjsformat)includes the convenient [`+pairs`](zuse/2d_1-5.md#pairsenjsformat) function, which converts a list of `[@t json]` to an object containing those key-value pairs. We've used this to assemble the final object. Note that if you happen to have only a single key-value pair rather than a list, you can use [`+frond`](zuse/2d_1-5.md#frondenjsformat) instead of `+pairs`.
 
@@ -250,7 +250,7 @@ For `joined`, we've used the [`+du`](zuse/2d_6.md#dudejsformat) function, which 
 
 Notice how `+ot` takes in other `+dejs` functions in its argument. One of its arguments includes the `+at` function which itself takes in other `+dejs` functions. There are several `+dejs` functions like this that allow complex nested JSON structures to be decoded. For other examples of common `+dejs` functions like this, see the [More `+dejs`](#more-dejs) section below.
 
-There are dozens of different functions in [`+dejs:format`](zuse/2d_6.md) that will cover a great many use cases. If there isn't a `+dejs` function for a particular case, you can also just write a custom function - it just has to take `$json`. Note there's also the [`+dejs-soft:format`](zuse/2d_7.md) functions - these are similar to `+dejs` functions except they produce `unit`s rather than simply crashing if decoding fails.
+There are dozens of different functions in [`+dejs:format`](zuse/2d_6.md) that will cover a great many use cases. If there isn't a `+dejs` function for a particular case, you can also just write a custom function - it just has to take `$json`. Note there's also the [`+dejs-soft:format`](zuse/2d_7.md) functions - these are similar to `+dejs` functions except they produce `+unit`s rather than simply crashing if decoding fails.
 
 ## More `+dejs` {#more-dejs}
 
@@ -346,7 +346,7 @@ dojo: hoon expression failed
 
 ### `+su` {#su}
 
-The [`+su`](zuse/2d_6.md#sudejsformat) function parses a string with the given parsing `rule`. Hoon's functional parsing library is very powerful and lets you create arbitrarily complex parsers. JSON will often have data types encoded in strings, so this function can be very useful. The writing of parsers is outside the scope of this guide, but you can see the [Parsing Guide](parsing.md) and sections 4e to 4j of the standard library documentation for details.
+The [`+su`](zuse/2d_6.md#sudejsformat) function parses a string with the given parsing `+rule`. Hoon's functional parsing library is very powerful and lets you create arbitrarily complex parsers. JSON will often have data types encoded in strings, so this function can be very useful. The writing of parsers is outside the scope of this guide, but you can see the [Parsing Guide](parsing.md) and sections 4e to 4j of the standard library documentation for details.
 
 Here are some simple examples of using `+su` to parse strings:
 
@@ -462,7 +462,7 @@ We'll also build our library so we can use its types from the dojo:
 > =user-lib -build-file %/lib/json-test/hoon
 ```
 
-Now we can ask Clay to build a mark conversion gate from a `%json` mark to our `%user` mark. We'll use a scry with a `%f` `care` which produces a static mark conversion gate:
+Now we can ask Clay to build a mark conversion gate from a `%json` mark to our `%user` mark. We'll use a scry with a `%f` `$care` which produces a static mark conversion gate:
 
 ```
 > =json-to-user .^($-(json user:user-lib) %cf /===/json/user)

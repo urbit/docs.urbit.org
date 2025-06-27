@@ -19,7 +19,7 @@ Let's take a quick look at implementations for some common tasks in Hoon.  I ass
 
 ## Sorting {#sorting}
 
-- Given a `list` of values, sort the values according to a given rule and produce a `list`.
+- Given a `+list` of values, sort the values according to a given rule and produce a `+list`.
 
 The standard `+sort` gate implements a quicksort.  You need to provide a comparison function as a gate as well.
 
@@ -43,9 +43,9 @@ E.g. given a data structure like `[@ud @tas]`, a cell which we wish to sort on t
 ~[[1 %a] [3 %b] [2 %c] [4 %d]]
 ```
 
-- Given a `set` of values, sort the values according to a given rule and produce a `list`.
+- Given a `+set` of values, sort the values according to a given rule and produce a `+list`.
 
-If something isn't a `list`, the easiest way to sort it is to convert it to a `list` first and then sort that.
+If something isn't a `+list`, the easiest way to sort it is to convert it to a `+list` first and then sort that.
 
 ```hoon
 > =/  my-set  (silt ~[1 10 10 1 2 3 3 2 4 9 8 5 7 6 8 9])
@@ -75,7 +75,7 @@ We'll use `'Wild Hearts Can\'t Be Broken'` as our source atom.  As `@ux` the ASC
 
 Here are a few ways to slice and dice binary atom data.
 
-[`+rip`](../stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `list`.
+[`+rip`](../stdlib/2c.md#rip) disassembles an atom `b` into `2^a`-sized chunks as a `+list`.
 
 ```hoon
 > =/  text  'Wild Hearts Can\'t Be Broken'  
@@ -277,7 +277,7 @@ Hoon is a functional programming language, so naturally it supports the basic co
 
 ### Map {#map}
 
-The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `list` or `set`. The standard library arms that accomplish this include [`+turn`](../stdlib/2b.md#turn) for a `list`, [`+run:in`](../stdlib/2h.md#repin) for a `set`, and [`+run:by`](../stdlib/2i.md#runby) for a `map`.
+The Map operation describes applying a function to each item of a set or iterable object, resulting in the same final number of items transformed. In Hoon terms, we would say slamming a gate on each member of a `+list` or `+set`. The standard library arms that accomplish this include [`+turn`](../stdlib/2b.md#turn) for a `+list`, [`+run:in`](../stdlib/2h.md#repin) for a `+set`, and [`+run:by`](../stdlib/2i.md#runby) for a `+map`.
 
 ```hoon
 > (turn `(list @ud)`~[1 2 3 4 5] one)
@@ -285,7 +285,7 @@ The Map operation describes applying a function to each item of a set or iterabl
 
 ### Reduce {#reduce}
 
-The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`+roll`](../stdlib/2b.md#roll) and [`+reel`](../stdlib/2b.md#reel) for a `list`, [`+rep:in`](../stdlib/2h.md#repin) for a `set`, and [`+rep:by`](../stdlib/2i.md#repby) for a `map`.
+The Reduce operation applies a function as a sequence of pairwise operations to each item, resulting in one summary value. The standard library arms that accomplish this are [`+roll`](../stdlib/2b.md#roll) and [`+reel`](../stdlib/2b.md#reel) for a `+list`, [`+rep:in`](../stdlib/2h.md#repin) for a `+set`, and [`+rep:by`](../stdlib/2i.md#repby) for a `+map`.
 
 ```hoon
 > =my-set (silt `(list @ud)`~[1 2 3 4 5])
@@ -296,7 +296,7 @@ b=120
 
 ### Filter {#filter}
 
-The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`+skim`](../stdlib/2b.md#skim), [`+skid`](../stdlib/2b.md#skid), [`+murn`](../stdlib/2b.md#murn) for a `list`, and [`+rib:by`](../stdlib/2i.md#ribby) for a `map`.
+The Filter operation applies a true/false function to each member of a collection, resulting in some number of items equal to or fewer than the size of the original set. In Hoon, the library arms that carry this out include [`+skim`](../stdlib/2b.md#skim), [`+skid`](../stdlib/2b.md#skid), [`+murn`](../stdlib/2b.md#murn) for a `+list`, and [`+rib:by`](../stdlib/2i.md#ribby) for a `+map`.
 
 ```hoon
 > `(list @ud)`(skim `(list @ud)`~[1 2 3 4 5] (curr gth 2))
@@ -349,8 +349,8 @@ Static typing with compile-time type checking turns out to be a secret strength 
 There are three basic things that tend to go wrong:
 
 1. Syntax error, general (just typing things out wrong, for instance in a way Dojo would prevent)
-2. Syntax error mismatching rune daughters (due to `ace`/`gap` or miscounting children)
-3. Type issues (`need`/`have`, notoriously)
+2. Syntax error mismatching rune daughters (due to `+ace`/`+gap` or miscounting children)
+3. Type issues (`+need`/`have`, notoriously)
 
 This last case can be handled with a couple of expedients:
 
@@ -366,7 +366,7 @@ This last case can be handled with a couple of expedients:
     - [`?<` wutgal](../rune/wut.md#wutgal) is a negative assertion, that a condition _must_ be false.
     - [`?~` wutsig](../rune/wut.md#wutsig) is a branch on null.
 
-    For instance, some operations require a `lest`, a `list` guaranteed to be non-null (that is, `^-  (list)  ~` is excluded).
+    For instance, some operations require a `+lest`, a `+list` guaranteed to be non-null (that is, `^-  (list)  ~` is excluded).
 
     ```hoon
     > =/  list=(list @)  ~[1 2 3]

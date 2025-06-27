@@ -141,7 +141,7 @@ If we changed our working directory to something called `/gen/gmail`, we could a
 ~sampel-palnet:dojo/=/=/~2021.3.19..16.11.20..0c60/gen/gmail> +cat /===/app/=/split/hoon
 ```
 
-Because both paths share a directory named `/gmail` at the same position in the address hierarchy – which, if you recall, is just a `list` – the above command works!
+Because both paths share a directory named `/gmail` at the same position in the address hierarchy – which, if you recall, is just a `+list` – the above command works!
 
 We can do the same thing between desks. If `%sandbox` has been merged with `%base`, the following command will produce the same results as the above command.
 
@@ -282,7 +282,7 @@ Example:
 
 Syntax: `+cat path [path ...]`
 
-Similar to Unix `cat`. `+cat` takes one or more `path`s, and prints their contents. If that `path` is a file, the contents of the file is printed. If the `path` terminates in a directory, the list of names at that path is produced.
+Similar to Unix `cat`. `/gen/cat` takes one or more `$path`s, and prints their contents. If that `$path` is a file, the contents of the file is printed. If the `$path` terminates in a directory, the list of names at that path is produced.
 
 #### `+ls`
 
@@ -300,7 +300,7 @@ Produces a list of names at the `path`.
 
 Syntax: `|rm path`
 
-Remove the data at `path`. `Path` must be a path to the actual node, not a 'directory'.
+Remove the data at `path`. `path` must be a path to the actual node, not a 'directory'.
 
 #### `|cp`
 

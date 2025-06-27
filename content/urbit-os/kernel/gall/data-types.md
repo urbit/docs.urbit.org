@@ -66,7 +66,7 @@ Revisions for a remote scry file published at a particular path.
 +$  fans  ((mop @ud (pair @da (each page @uvI))) lte)
 ```
 
-The `mop` is organized by file revision number. Each value includes the date-time of the entry, and then either the file as a `page` or just the `@uvI` hash of the file if it has been tombstoned.
+The `+mop` is organized by file revision number. Each value includes the date-time of the entry, and then either the file as a `page` or just the `@uvI` hash of the file if it has been tombstoned.
 
 ---
 
@@ -129,7 +129,7 @@ A pair of the ship and agent name.
 
 ---
 
-## `load` {#load}
+## `$load` {#load}
 
 Loadout.
 
@@ -137,7 +137,7 @@ Loadout.
 +$  load  (list [=dude =beak =agent])
 ```
 
-The [`dude`](#dude) is the agent name, the `beak` is the ship/desk/case in which it resides, and the [`agent`](#agent) is the built agent itself. Clay passes this to Gall when it builds or modifies the state of running agents.
+The [`dude`](#dude) is the agent name, the `beak` is the ship/desk/case in which it resides, and the [`+agent`](#agent) is the built agent itself. Clay passes this to Gall when it builds or modifies the state of running agents.
 
 ---
 
@@ -173,7 +173,7 @@ Desk and agent.
 +$  well  (pair desk term)
 ```
 
-## `deal` {#deal}
+## `$deal` {#deal}
 
 An agent task or raw poke.
 
@@ -227,7 +227,7 @@ A security context for remote scries.
 
 ---
 
-## `agent` {#agent}
+## `+agent` {#agent}
 
 ```hoon
 ++  agent
@@ -235,7 +235,7 @@ A security context for remote scries.
   |%
 ```
 
-Container for Gall agent types. The most significant arm is [`form:agent`](#formagent), which specifies the structure of the agent itself. There are also some additional structures defined here, mostly defining the kinds of messages agents can send. The different arms of the core in `agent` are considered separately below.
+Container for Gall agent types. The most significant arm is [`form:agent`](#formagent), which specifies the structure of the agent itself. There are also some additional structures defined here, mostly defining the kinds of messages agents can send. The different arms of the core in `+agent` are considered separately below.
 
 ### `step:agent` {#stepagent}
 
@@ -253,7 +253,7 @@ A cell of [`card:agent`](#cardagent)s to be sent and a new agent state. This is 
 +$  card  (wind note gift)
 ```
 
-An effect - typically a message to be sent to another agent or vane. A list of these are returned by most agent arms along with a new state in a [`step:agent`](#stepagent). A `wind` is the following:
+An effect - typically a message to be sent to another agent or vane. A list of these are returned by most agent arms along with a new state in a [`step:agent`](#stepagent). A `+wind` is the following:
 
 ```hoon
 ++  wind
@@ -357,7 +357,7 @@ The types of messages our agent can either send in response to messages from oth
 This is in contrast to [`task:agent`](#taskagent)s, which are messages to other agents our agent initiates rather than sends in response. The four kinds of `gift:agent` are:
 
 - `%fact`: An update to existing subscribers. The `paths` field specifies which subscription paths the update should go out to. The `cage` is the data, and is a `[mark vase]`.
-- `%kick`: Kick subscriber, ending their subscription. The `paths` field specifies which paths the subscriber should be kicked from, and the `ship` field specifies the ship to kick. If the `ship` field is null, all subscribers on the specified paths are kicked. Gall will automatically remove the subscription from our agent's [`bitt`](#bitt) (inbound subscription `map`), and subscriber will no longer receive updates on the `path`s in question.
+- `%kick`: Kick subscriber, ending their subscription. The `paths` field specifies which paths the subscriber should be kicked from, and the `ship` field specifies the ship to kick. If the `ship` field is null, all subscribers on the specified paths are kicked. Gall will automatically remove the subscription from our agent's [`bitt`](#bitt) (inbound subscription `+map`), and subscriber will no longer receive updates on the `path`s in question.
 - `%watch-ack`: Acknowledge a subscription request. If `p` is null, it's an ack (positive acknowledgement), and if `p` is non-null, it's a nack (negative acknowledgement). Simply crashing will caused Gall to nack a subscription request, and not crashing but not explicitly producing a `%watch-ack` `gift` will cause Gall to ack a subscription request. Therefore, you'd typically only explicitly produce a `%watch-ack` `gift` if you wanted to nack a subscription request with a custom error in the `tang`.
 - `%poke-ack`: Acknowledge a poke. If `p` is null, it's an ack, and if `p` is non-null, it's a nack. Simply crashing will cause Gall to nack a poke, and not crashing but not explicitly producing a `%poke-ack` `gift` will cause Gall to ack a poke. Therefore, you'd typically only explicitly produce a `%poke-ack` `gift` if you wanted to nack a poke with a custom error in the `tang`.
 
@@ -367,7 +367,7 @@ A `gift:agent` is always wrapped in a `%give` [`card:agent`](#cardagent).
 
 ### `sign:agent` {#signagent}
 
-A `sign` is like a [`gift:agent`](#giftagent) but it's something that comes _in_ to our agent from another agent rather than something we send out.
+A `$sign` is like a [`gift:agent`](#giftagent) but it's something that comes _in_ to our agent from another agent rather than something we send out.
 
 ```hoon
 +$  sign
@@ -438,49 +438,49 @@ This defines the structure of the agent itself.
 
 The agent is a door with a [`bowl`](#bowl) as its sample and exactly ten arms. Below we'll describe each arm briefly.
 
-#### `on-init`
+#### `+on-init`
 
 - Accepts: Nothing.
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when the agent is initially installed.
 
-#### `on-poke`
+#### `+on-poke`
 
 - Accepts: `cage`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent pokes our agent.
 
-#### `on-watch`
+#### `+on-watch`
 
 - Accepts: `path`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent subscribes to our agent.
 
-#### `on-leave`
+#### `+on-leave`
 
 - Accepts: `path`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent unsubscribes from a subscription path on our agent.
 
-#### `on-peek`
+#### `+on-peek`
 
 - Accepts: `path`
 - Produces: `(unit (unit cage))`
 
 This arm is called when a [scry](../arvo/scry.md) is performed on our agent.
 
-#### `on-agent`
+#### `+on-agent`
 
 - Accepts: `[wire sign:agent]`
 - Produces: [`step:agent`](#stepagent)
 
 This arm is called when another agent give our agent a [`sign:agent`](#signagent).
 
-#### `on-arvo`
+#### `+on-arvo`
 
 - Accepts: `[wire sign-arvo]`
 - Produces: [`step:agent`](#stepagent)
@@ -510,7 +510,7 @@ This arm is called when a vane gives our agent a `gift`. A `sign-arvo` is:
 
 You can refer to the `/sys/lull.hoon` source code, or the API Reference of each vane in the [Arvo documentation](../arvo).
 
-#### `on-fail`
+#### `+on-fail`
 
 - Accepts: `[term tang]`
 - Produces: [`step:agent`](#stepagent)

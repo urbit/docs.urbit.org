@@ -87,7 +87,7 @@ This `task` returns no `gift`s.
 
 `%plea` is the `task` used to instruct Ames to send a message. It extends the `%pass`/`%give` semantics across the network. As such, it is the most fundamental `task` in Ames and the primary reason for its existence.
 
-Ames also `pass`es a `%plea` `note` to another vane when it receives a message on a "forward flow" from a peer, originally passed from one of the peer's vanes to the peer's Ames.
+Ames also `+pass`es a `%plea` `note` to another vane when it receives a message on a "forward flow" from a peer, originally passed from one of the peer's vanes to the peer's Ames.
 
 Ultimately `%plea` causes `%send` `gift`(s) to be sent to Unix, which tells Unix to send packets. In terms of `%pass`/`%give` semantics, this is in response to the `%born` `task`, which came along the Unix `duct`, rather than a response to the `%plea`.
 
@@ -186,7 +186,7 @@ This `task` returns no `gift`s.
 
 Sets verbosity toggles on debug output. This `task` is used internally when the `|ames/verb` `hood` generator is run from the dojo.
 
-`%spew` takes in a `list` of [$verb](data-types.md#verb), which are verbosity flags for Ames.
+`%spew` takes in a `+list` of [$verb](data-types.md#verb), which are verbosity flags for Ames.
 
 `%spew` flips each toggle given in `veb`.
 

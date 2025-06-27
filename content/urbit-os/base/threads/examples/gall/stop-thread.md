@@ -15,7 +15,7 @@ layout:
 
 # Stop Thread
 
-Here's an example agent with an extra card in `on-poke` to stop the thread and a little extra in `on-agent` to print things for demonstrative purposes. We run the thread by poking Spider directly because we need to know the thread ID in order to stop it. In this example we use a thread file, but an inline thread could also be used.
+Here's an example agent with an extra card in `+on-poke` to stop the thread and a little extra in `+on-agent` to print things for demonstrative purposes. We run the thread by poking Spider directly because we need to know the thread ID in order to stop it. In this example we use a thread file, but an inline thread could also be used.
 
 <details>
 <summary>/app/thread-starter.hoon code</summary>

@@ -59,7 +59,7 @@ We mentioned that `+noun` is the only mandatory arm in `+grab`, but there are a 
 
 The first is a `+mime` arm for converting to and from the `%mime` mark. When you `|commit` a file to a desk mounted to Unix, Clay will receive the data as a `%mime` mark, and then convert it to the mark matching the file extension. It will perform the same operation in reverse when mounting a desk to Unix. For this reason, any mark you wish to be able to access from the Unix filesystem should have `%mime` conversion routines. In certain cases (such as the scry interface), Eyre will also need to convert your mark to a `%mime` in order to encode it in an HTTP response, so you may require a `+mime` arm for that reason as well.
 
-The second case of interest is the `+json` arm for converting to and from a `%json` mark. If, for example, you want to write a Gall agent to which you can subscribe through Eyre's channel system, it must produce data with a mark containing `%json` conversion routines. If it doesn't, Eyre will not be able to deliver the data to the subscribed HTTP client in the SSE stream.
+The second case of interest is the `$json` arm for converting to and from a `%json` mark. If, for example, you want to write a Gall agent to which you can subscribe through Eyre's channel system, it must produce data with a mark containing `%json` conversion routines. If it doesn't, Eyre will not be able to deliver the data to the subscribed HTTP client in the SSE stream.
 
 ## Sections {#sections}
 

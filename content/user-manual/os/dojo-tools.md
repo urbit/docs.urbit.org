@@ -1352,7 +1352,7 @@ Read a file, local or remote.
 
 While [`+cat`](#cat) can only read text files, the `-read` thread can read any kind of file, directory or desk on any ship it has permission to read. This thread doesn't pretty-print the result like `+cat`, it just produces the data.
 
-`-read` isn't limited to ordinary file reads, but can make requests using any care Some `care`s might be useful, such as `%u` to check file existence. Others have obscure technical uses. The most common is `%x`, which is a normal read.
+`-read` isn't limited to ordinary file reads, but can make requests using any care Some `$care`s might be useful, such as `%u` to check file existence. Others have obscure technical uses. The most common is `%x`, which is a normal read.
 
 #### Arguments
 
@@ -1706,7 +1706,7 @@ The default behavior of `+ls` is to query Clay, but Gall agents can also be quer
   khan/hoon
 ```
 
-Note the mark (file type/extension) is separated with a `/` rather than a `.` as is common in other systems: `hoon` is not a sub-directory of `ames` here, it is the mark. Directories can be distinguished from files by their lack of a mark; they'll just look like `app/`.
+Note the mark (file type/extension) is separated with a `/` rather than a `.` as is common in other systems: `hoon` is not a sub-directory of `/ames` here, it is the mark. Directories can be distinguished from files by their lack of a mark; they'll just look like `app/`.
 
 ---
 
@@ -1981,7 +1981,7 @@ Labels let you name particular commits, and then refer to them by that name rath
 desk term, =aeon @ud
 ```
 
-The `desk` and `term` are mandatory, the `=aeon` is optional. The `term` is the label to give the revision. If an `aeon` is not specified, it will default to the most recent revision.
+The `desk` and `term` are mandatory, the `=aeon` is optional. The `term` is the label to give the revision. If an `$aeon` is not specified, it will default to the most recent revision.
 
 #### Example
 

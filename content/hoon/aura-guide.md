@@ -24,7 +24,7 @@ To implement an aura in Hoon, we follow these steps:
 3. **Implement a pretty-printer in `|co`.** This should match the atom syntax from the next step.
 4. **Implement parser in `|so`.** Compose a parsing rule which is distinct from all others and add it in the appropriate sections here. (Finding a unique syntax that follows Hoon's rules, like URL-safe characters only and not parseable as Hoon code, can be rather challenging now.) The aura parser prefixes elements with a type `term`; properly the pair is called a `dime`. This will also allow you to type the literal atom in the Dojo.
 
-We prefer the parsed form and the prettyprinted form to coincide so we can copy and paste a result directly back in as valid Hoon. (This is generally true for atoms but not for other molds; consider `set` for instance.)
+We prefer the parsed form and the prettyprinted form to coincide so we can copy and paste a result directly back in as valid Hoon. (This is generally true for atoms but not for other molds; consider `+set` for instance.)
 
 ## Example: Sexagesimal Degrees <a href="#example-sexagesimal-degrees" id="example-sexagesimal-degrees"></a>
 
@@ -305,7 +305,7 @@ Ultimately we will pack these together into the atom form `@udms`.
 
 Note that this form overflows still, but can be corrected using `+norm:dg`.
 
-Our parser logic needs to be cited in `+zust:so` because that arm parses atoms prefixed with `.` dot. This means that the `pfix dot` gets eaten, and our actual parsing rule only needs to handle the rest of the symbol. Add a `+dems` arm after `+zust` and register it in the `pose` in `+zust` as well. Since parsers in a `pose` resolve in order, it should come after IPv4 `@if` addresses (`.1.1.1.1`) and before `@rs` values (`.1.1`).
+Our parser logic needs to be cited in `+zust:so` because that arm parses atoms prefixed with `.` dot. This means that the `pfix dot` gets eaten, and our actual parsing rule only needs to handle the rest of the symbol. Add a `+dems` arm after `+zust` and register it in the `+pose` in `+zust` as well. Since parsers in a `+pose` resolve in order, it should come after IPv4 `@if` addresses (`.1.1.1.1`) and before `@rs` values (`.1.1`).
 
 ```hoon
 ++  so

@@ -275,7 +275,7 @@ None
 
 #### Discussion
 
-This is especially useful for calling arms from an imported library core or for calling arms from a stdlib core repeatedly. For example, JSON reparsers like `so:dejs:format` and `of:dejs:format` can be called as `so` and `of` after doing:
+This is especially useful for calling arms from an imported library core or for calling arms from a stdlib core repeatedly. For example, JSON reparsers like `+so:dejs:format` and `+of:dejs:format` can be called as `+so` and `+of` after doing:
 
 ```hoon
 =,  dejs:format
@@ -515,7 +515,7 @@ Note that `=^` is subject to the same type nesting limitations as `=.`; e.g., if
 
 #### Examples
 
-The `og` core is a stateful pseudo-random number generator. We have to change the core state every time we generate a random number, so we use `=^`:
+The `+og` core is a stateful pseudo-random number generator. We have to change the core state every time we generate a random number, so we use `=^`:
 
 ```
 ~zod:dojo> =+  rng=~(. og 420)

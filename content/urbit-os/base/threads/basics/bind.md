@@ -50,7 +50,7 @@ Bind by itself must be specialised like `(bind:m ,<type>)` and it takes two argu
 - The first argument is a function that returns the `+form` of a strand which produces `<type>`.
 - The second argument is a gate whose sample is `<type>` and which returns a `+form`.
 
-Since you'll invariably use it in conjunction with micgal, the `<type>` in `;< <type> bind:m ...` will both specialise `bind` and specify the gate's sample.
+Since you'll invariably use it in conjunction with micgal, the `<type>` in `;< <type> bind:m ...` will both specialise `+bind` and specify the gate's sample.
 
 Bind calls the first function then, if it succeeded, calls the second gate with the result of the first as its sample. If the first function failed, it will instead just return an error message and not bother calling the next gate. So it's essentially "strand A then strand B".
 
@@ -100,6 +100,6 @@ To use `strandio` functions we've imported the library with `/+ strandio`.
 
 Note how we've specified the face and return type of each strand like `t=@da`, etc.
 
-You can see how `pure` has access to the results of previous strands in the pipeline. Note how we've wrapped `pure`'s argument in a `!>` because the thread must produce a `vase`.
+You can see how `+pure` has access to the results of previous strands in the pipeline. Note how we've wrapped `+pure`'s argument in a `!>` because the thread must produce a `vase`.
 
 Next we'll look at `$strand-input` in more detail.

@@ -62,7 +62,7 @@ A data cursor is pinned at `c`, while the third bit is pinned at `a`.  If the fi
 
 Otherwise, we have a cell, so we have to expand the second bit at `a`.  If it is `0b0`, then the cell needs to be decoded by decoding the noun at .  If it is `0b1`, then we have a saved reference and retrieve it from the cache (last branch).
 
-If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that case, expand at `c` (the head), as `$(b c)` and pin the cursor after as `v`.  `w` is the cell of `q.u` and `q.v`.  `p` is the lengths of `u` and `v` plus 2.  `q` is `w`, with `r` is the cache with `w` inserted.
+If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that case, expand at `c` (the head), as `$(b c)` and pin the cursor after as `v`.  `+w` is the cell of `q.u` and `q.v`.  `p` is the lengths of `u` and `v` plus 2.  `q` is `+w`, with `r` is the cache with `+w` inserted.
 
 ### `+rub` {#rub}
 
@@ -144,7 +144,7 @@ To cue a jamfile:
 
 This cues as a noun, so it should be `;;` or clammed to a particular mold.
 
-## `eval` and newt encoding {#eval-and-newt-encoding}
+## `+eval` and newt encoding {#eval-and-newt-encoding}
 
 Newt encoding is a variation of this:  it is a jammed noun with a short header.  Newt encoding is used by `urbit eval`.
 
@@ -158,7 +158,7 @@ V.BBBB.JJJJ.JJJJ...
 - `B` jam size in bytes (little endian)
 - `J` jammed noun (little endian)
 
-`eval` supports several options for processing Hoon nouns as input to or output from `conn.c`:
+`+eval` supports several options for processing Hoon nouns as input to or output from `conn.c`:
 
 - `-j`, `--jam`: output result as a jammed noun.
 - `-c`, `--cue`: read input as a jammed noun.

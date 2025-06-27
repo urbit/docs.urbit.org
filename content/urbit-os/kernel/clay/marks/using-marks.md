@@ -17,14 +17,14 @@ layout:
 
 In the last document, [Writing Marks](writing-marks.md), we walked through writing `mark` files and touched on how Clay handles them. They needn't just be left to background vane processes though, you can also use them yourself in your code.
 
-There are two kinds of cores that Clay can build for you: A `mark` conversion gate and a `mark` core. Each has two kinds: Statically typed and dynamically typed. Clay has a `care` for producing each of these:
+There are two kinds of cores that Clay can build for you: A `mark` conversion gate and a `mark` core. Each has two kinds: Statically typed and dynamically typed. Clay has a `$care` for producing each of these:
 
 - `%b` - Build a dynamically typed `mark` core.
 - `%c` - Build a dynamically typed `mark` conversion gate.
 - `%e` - Build a statically typed `mark` core.
 - `%f` - Build a statically typed `mark` conversion gate.
 
-You can either use these by `%pass`ing Clay a [%warp task](../tasks.md#foreign-ships) with the appropriate `care`, or else with a [Clay scry](../scry.md). In the examples here we've used the latter.
+You can either use these by `%pass`ing Clay a [%warp task](../tasks.md#foreign-ships) with the appropriate `$care`, or else with a [Clay scry](../scry.md). In the examples here we've used the latter.
 
 ## mark conversion gates {#mark-conversion-gates}
 
@@ -122,7 +122,7 @@ First we get the `%txt` `mark` core with a `%e` scry:
 > =txt-nave .^((nave:clay wain (urge:clay cord)) %ce /===/txt)
 ```
 
-Note we specified the `mark` type `wain` and diff type `(urge:clay cord)` in the `nave` returned by the scry.
+Note we specified the `mark` type `wain` and diff type `(urge:clay cord)` in the `+nave` returned by the scry.
 
 We can see the `mark` for diffs with `+form`:
 
@@ -153,7 +153,7 @@ Let's create some more diffs for experimentation:
 > =diff-c (diff:txt-nave ~['foo' 'bar' 'baz'] ~['foo' 'bla' 'baz'])
 ```
 
-If we try merging diffs `a` and `b` with `+join`, we get a new merged diff back in a `unit`:
+If we try merging diffs `a` and `b` with `+join`, we get a new merged diff back in a `+unit`:
 
 ```
 > (join:txt-nave diff-a diff-b)
@@ -167,7 +167,7 @@ If we try merging diffs `a` and `c` however, we get `~` because of a conflict:
 [~ ~]
 ```
 
-If we run `+mash` on `a` and `b` we get the same diff as with `+join` (sans the `unit`):
+If we run `+mash` on `a` and `b` we get the same diff as with `+join` (sans the `+unit`):
 
 ```
 > (mash:txt-nave [our %base diff-a] [our %blah diff-b])

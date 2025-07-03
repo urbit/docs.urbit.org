@@ -389,7 +389,7 @@ Instead, you need to use the [-build-file](../../user-manual/os/dojo-tools.md#bu
 > one-hundred:numbers:ntw  
 100
 
-> (to-words:eng-us:numbers:ntw 19)
+> (to-words:eng-us:ntw 19)
 [~ "nineteen"]
 ```
 

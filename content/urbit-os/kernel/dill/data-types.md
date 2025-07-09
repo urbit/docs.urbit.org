@@ -25,7 +25,7 @@ Terminal dimension.
 +$  blew  [p=@ud q=@ud]
 ```
 
-`p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [%blew](tasks.md#blew) `task` whenever the dimensions of the terminal changes.
+`p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [`%blew`](tasks.md#blew) `$task` whenever the dimensions of the terminal changes.
 
 ---
 
@@ -42,9 +42,9 @@ Terminal client input.
   ==                                                  :: 
 ```
 
-A `$belt` is passed to Dill in a [%belt](tasks.md#belt) `task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [$dill-belt](#dill-belt) is used between Dill and Arvo.
+A `$belt` is passed to Dill in a [`%belt`](tasks.md#belt) `$task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [`$dill-belt`](#dill-belt) is used between Dill and Arvo.
 
-May either be a [$bolt](#bolt) or one of:
+May either be a [`$bolt`](#bolt) or one of:
 
 - `%mod` - Modifier (Ctrl, Meta or Hyper) plus a key (see [`$bolt`](#bolt).
 - `%txt` - A series of UTF-32 characters.
@@ -96,7 +96,7 @@ Terminal client output.
   ==                                                  ::
 ```
 
-A `$blit` is given to the terminal client by Dill in a `%blit` `gift` when it wants to print some text, clear the screen, go _ding_ or what have you.
+A `$blit` is given to the terminal client by Dill in a `%blit` `$gift` when it wants to print some text, clear the screen, go _ding_ or what have you.
 
 This is directly used between Dill and the terminal client, while a [$dill-blit](#dill-blit) is used between Arvo and Dill. A `$dill-blit` includes the `$blit` union as a subset.
 
@@ -109,8 +109,8 @@ A `$blit` is one of:
 - `%mor` - multiple `$blit`s.
 - `%nel` - a newline.
 - `%put` - put text (as a list of UTF-32 characters) at the current cursor position.
-- `%sag` - Save to jamfile, typically in `/[pier]/.urb/put/`. `p` is `/[path]/[filename]/[extension]`. For example, `/foo/bar` will save it in `/[pier]/.urb/put/foo.bar`, `/a/b/c/foo/bar` will save it in `/[pier]/.urb/put/a/b/c/foo.bar`, and `/foo` will save it in `/[pier]/.urb/put.foo`. `q` is the `noun` to `+jam` and save in the file.
-- `%sav` - Save to file. Same behaviour as `%sag` except `q` is an `atom` rather than a `noun` and therefore doesn't need to be `+jam`med. The `atom` is written to disk as if it were the bytestring in the tail of an `$octs`. That is, `%sav`ing the `cord` `'abcdef'`, whose `@ux` value is `0x6665.6463.6261`, results in a unix file whose hex dump renders as `61 62 63 64 65 66`.
+- `%sag` - Save to jamfile, typically in `/[pier]/.urb/put/`. `p` is `/[path]/[filename]/[extension]`. For example, `/foo/bar` will save it in `/[pier]/.urb/put/foo.bar`, `/a/b/c/foo/bar` will save it in `/[pier]/.urb/put/a/b/c/foo.bar`, and `/foo` will save it in `/[pier]/.urb/put.foo`. `q` is the `$noun` to `+jam` and save in the file.
+- `%sav` - Save to file. Same behaviour as `%sag` except `q` is an `$atom` rather than a `$noun` and therefore doesn't need to be `+jam`med. The `$atom` is written to disk as if it were the bytestring in the tail of an `$octs`. That is, `%sav`ing the `$cord` `'abcdef'`, whose `@ux` value is `0x6665.6463.6261`, results in a unix file whose hex dump renders as `61 62 63 64 65 66`.
 - `%url` - Activate URL, `p` is the URL.
 - `%wyp` - clear the cursor line.
 
@@ -162,7 +162,7 @@ A `$dill-blit` is either a [`$blit`](#blit) or a:
 
 ## `$flog` {#flog}
 
-Wrapped Dill `task`s.
+Wrapped Dill `$task`s.
 
 ```hoon
 +$  flog                                              ::  sent to %dill
@@ -176,7 +176,7 @@ Wrapped Dill `task`s.
   ==                                                  ::
 ```
 
-These are a subset of Dill's `task`s which can be wrapped in a `%flog` `task`. See the [API Reference](tasks.md) document for details of each of these `task`s.
+These are a subset of Dill's `$task`s which can be wrapped in a `%flog` `$task`. See the [API Reference](tasks.md) document for details of each of these `$task`s.
 
 ---
 
@@ -197,7 +197,7 @@ A [`$dill-belt`](#dill-belt) (client input) for a particular session.
 
 ## `$session-task` {#session-task}
 
-A subset of [Dill's `task`s](tasks.md#session-tasks) for interacting with a particular session.
+A subset of [Dill's `$task`s](tasks.md#session-tasks) for interacting with a particular session.
 
 ```hoon
 +$  session-task                                      ::  session request
@@ -211,15 +211,15 @@ A subset of [Dill's `task`s](tasks.md#session-tasks) for interacting with a part
   ==                                                  ::
 ```
 
-This type is used in the [`%shot`](tasks.md#shot) wrapper `task`.
+This type is used in the [`%shot`](tasks.md#shot) wrapper `$task`.
 
-See the [Session Tasks](tasks.md#session-tasks) entry in the API reference for more details of these `task`s.
+See the [Session Tasks](tasks.md#session-tasks) entry in the API reference for more details of these `$task`s.
 
 ---
 
 ## `$told` {#told}
 
-A subset of [Dill's `task`s](tasks.md#session-tasks) for basic text printing.
+A subset of [Dill's `$task`s](tasks.md#session-tasks) for basic text printing.
 
 ```hoon
 +$  told                                              ::  system output
@@ -229,6 +229,6 @@ A subset of [Dill's `task`s](tasks.md#session-tasks) for basic text printing.
   ==                                                  ::
 ```
 
-See the [Told Tasks](tasks.md#told-tasks) entry in the API reference for more details of these `task`s.
+See the [`$told` `$task`s](tasks.md#told-tasks) entry in the API reference for more details of these `$task`s.
 
 ---

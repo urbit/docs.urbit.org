@@ -397,7 +397,7 @@ There are a few different HTML and XML related marks, so it can be a bit confusi
 
 - Type: `@t`
 
-This mark is used for HTML that has been printed as text in a cord. You may wish to return this mark when serving pages to the web. To do so, you must run the `$manx` produced by your Sail expressions through `+en-xml:html`, and then run the resulting `tape` through `+crip`.
+This mark is used for HTML that has been printed as text in a cord. You may wish to return this mark when serving pages to the web. To do so, you must run the `$manx` produced by your Sail expressions through `+en-xml:html`, and then run the resulting `$tape` through `+crip`.
 
 #### `%hymn`
 
@@ -434,7 +434,7 @@ The [miclus rune](rune/mic.md#miclus) makes a `$marl` from a complex hoon expres
 ==
 ```
 
-Produces one of these depending on the value of `number`:
+Produces one of these depending on the value of `.number`:
 
 ```
 <p><b>2 </b>is an <b>even </b>number.</p>

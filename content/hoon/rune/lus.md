@@ -37,7 +37,7 @@ One argument, fixed.
 
 The `+|` doesn't produce an arm. It instead provides a label for the arms that follow it. The arms of a core can be divided into **chapters** for 'organization'. Chapter labels aren't part of the underlying noun of the core; they're stored as type system metadata only.
 
-See [`tome`](../stdlib/4o.md#tome) in the Hoon standard library.
+See [`$tome`](../stdlib/4o.md#tome) in the Hoon standard library.
 
 **Note:** The `+|` rune has little practical utility. Chapter labels cannot be referenced short of manually processing the `$type` of a core.
 
@@ -91,7 +91,7 @@ Two arguments, fixed.
 
 Arms produced by `+$` are essentially type definitions. They should be used when one wants to define custom types using core arms.
 
-The Hoon subexpression, `q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `tape`).
+The Hoon subexpression, `q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `$tape`).
 
 #### Examples
 

@@ -15,13 +15,13 @@ layout:
 
 # Jael Examples
 
-This documents contains practical examples of a number of Jael's `task`s.
+This documents contains practical examples of a number of Jael's `$task`s.
 
-General documentation of the `task`s demonstrated here can be found in the [API Reference](tasks.md) document, and details of the data types mentioned can be found in the [Data Types](data-types.md) document.
+General documentation of the `$task`s demonstrated here can be found in the [API Reference](tasks.md) document, and details of the data types mentioned can be found in the [Data Types](data-types.md) document.
 
 ## `%private-keys` {#private-keys}
 
-Here we'll look at subscribing to private key updates from Jael. We'll use a thread to pass Jael a `%private-keys` `task`, take the `%private-keys` `gift` it returns, debug print it to the terminal and finally unsubscribe with a `%nuke` `task`.
+Here we'll look at subscribing to private key updates from Jael. We'll use a thread to pass Jael a `%private-keys` `$task`, take the `%private-keys` `$gift` it returns, debug print it to the terminal and finally unsubscribe with a `%nuke` `$task`.
 
 `sub-priv.hoon`
 
@@ -51,7 +51,7 @@ Now let's run the thread:
 > -sub-priv
 ```
 
-You should see the `%private-key` `gift` it returns in the Dojo:
+You should see the `%private-key` `$gift` it returns in the Dojo:
 
 ```
 [ %private-keys
@@ -65,11 +65,11 @@ You should see the `%private-key` `gift` it returns in the Dojo:
 ]
 ```
 
-At this point our thread unsubscribes again with a `%nuke` `task` but without that it would send a new `%private-key` `gift` each time the private keys were changed.
+At this point our thread unsubscribes again with a `%nuke` `$task` but without that it would send a new `%private-key` `$gift` each time the private keys were changed.
 
 ## `%public-keys` and `%nuke` {#public-keys-and-nuke}
 
-Here we'll look at both subscribing and unsubscribing to updates of a ship's public keys in Jael. We'll subscribe by sending Jael a `%public-keys` `task`, take the `%public-keys` `gift` it responds with, print it to the terminal, scry for the `+set` of `duct`s subscribed to the ship in question, print them to the terminal, and finally send Jael a `%nuke` `task` to unsubscribe.
+Here we'll look at both subscribing and unsubscribing to updates of a ship's public keys in Jael. We'll subscribe by sending Jael a `%public-keys` `$task`, take the `%public-keys` `$gift` it responds with, print it to the terminal, scry for the `+set` of `$duct`s subscribed to the ship in question, print them to the terminal, and finally send Jael a `%nuke` `$task` to unsubscribe.
 
 Here's a thread that performs these actions:
 
@@ -117,13 +117,13 @@ Here's a thread that performs these actions:
 
 Note this example was performed on a comet as a fake ship won't have the required information in Jael.
 
-Save the above thread in the `/ted` directory and `|commit %base`. The thread takes a `ship` as an argument, so we'll try to subscribe to pubkey updates for `~dopzod`. Let's run the thread:
+Save the above thread in the `/ted` directory and `|commit %base`. The thread takes a `$ship` as an argument, so we'll try to subscribe to pubkey updates for `~dopzod`. Let's run the thread:
 
 ```
 > -sub-pub ~dopzod
 ```
 
-It first passes a `%public-keys` `task` to Jael that looks like `[%public-keys (silt ~[~dopzod])]` in order to subscribe. Jael will immediately respond with a `%public-keys` `gift` that contains a `%full` [$public-keys-result](data-types.md#public-keys-result). The `(map ship point)` contained will (for each ship specified in the `task`) include the current pubkeys for the ship's current life as well as previous keys for previous `life`s. It thus contains a complete record of keys up to the present for each ship. Our thread will print these out to the terminal like so:
+It first passes a `%public-keys` `$task` to Jael that looks like `[%public-keys (silt ~[~dopzod])]` in order to subscribe. Jael will immediately respond with a `%public-keys` `$gift` that contains a `%full` [`$public-keys-result`](data-types.md#public-keys-result). The `(map ship point)` contained will (for each ship specified in the `$task`) include the current pubkeys for the ship's current life as well as previous keys for previous `$life`s. It thus contains a complete record of keys up to the present for each ship. Our thread will print these out to the terminal like so:
 
 ```
 [ %public-keys
@@ -165,7 +165,7 @@ It first passes a `%public-keys` `task` to Jael that looks like `[%public-keys (
 ]
 ```
 
-Along with giving us the current information, Jael will also subscribe us to any future updates for the ships in question. Such updates will come as additional `%public-keys` `gift`s, but rather than a `%full` `public-keys-result`, they'll instead contain either a `%diff` or `%breach` `public-keys-result`, depending on what's happened to the ship in question. It's difficult to simulate such events for demonstrative purposes so an example is not included, but you can look at the [$public-keys-result](data-types.md#public-keys-result) to get an idea.
+Along with giving us the current information, Jael will also subscribe us to any future updates for the ships in question. Such updates will come as additional `%public-keys` `$gift`s, but rather than a `%full` `$public-keys-result`, they'll instead contain either a `%diff` or `%breach` `$public-keys-result`, depending on what's happened to the ship in question. It's difficult to simulate such events for demonstrative purposes so an example is not included, but you can look at the [`$public-keys-result`](data-types.md#public-keys-result) to get an idea.
 
 Jael maintains a `(jug duct ship)` and its reverse `(jug ship duct)` in its state to track subscriptions. If we do a [subscriptions](scry.md#subscriptions) scry and filter the result for `~dopzod`, we can see the duct of our thread has now been added to the `~dopzod` `+set`. Our thread does this, and will output something like:
 
@@ -173,20 +173,20 @@ Jael maintains a `(jug duct ship)` and its reverse `(jug ship duct)` in its stat
 {~[/gall/use/spider/0w1.vGVi-/~sampel-palnet/thread/~.dojo_0v6.0hlak.dam1b.bcdou.ai7gq.19fi8/sub-pubkeys /dill //term/1]}
 ```
 
-At this point our thread will send a `%nuke` `task` like `[%nuke (silt ~[~dopzod])]` to cancel our subscription. Jael doesn't respond to it, but now, with our thread having finished and exited, we can again scry & filter for subscriptions to `~dopzod`:
+At this point our thread will send a `%nuke` `$task` like `[%nuke (silt ~[~dopzod])]` to cancel our subscription. Jael doesn't respond to it, but now, with our thread having finished and exited, we can again scry & filter for subscriptions to `~dopzod`:
 
 ```
 > =/(a .^([yen=(jug duct ship) ney=(jug ship duct) nel=(set duct)] %j /=subscriptions=/1) (~(get ju ney.a) ~dopzod))
 ~
 ```
 
-As you can see the `+set` is now empty, so we know the `%nuke` succeeded and Jael will no longer send us pubkey updates for `~dopzod`. One thing to note about `%nuke` is that it _must_ come from the same `duct` as the original subscription. You can't unsubscribe another app, ship, thread or what have you, so if we'd tried `%nuke`ing the subscription from a separate thread it wouldn't have worked.
+As you can see the `+set` is now empty, so we know the `%nuke` succeeded and Jael will no longer send us pubkey updates for `~dopzod`. One thing to note about `%nuke` is that it _must_ come from the same `$duct` as the original subscription. You can't unsubscribe another app, ship, thread or what have you, so if we'd tried `%nuke`ing the subscription from a separate thread it wouldn't have worked.
 
 ## `%turf` {#turf}
 
-Here we'll look at using a `%turf` `task` to get Jael's list of domains. Note on a fake ship the list will be empty, so you may wish to run it on a comet or moon.
+Here we'll look at using a `%turf` `$task` to get Jael's list of domains. Note on a fake ship the list will be empty, so you may wish to run it on a comet or moon.
 
-Here's a simple thread that'll pass Jael a `%turf` `task`, take the `%turf` `gift` it sends back and print it to the terminal:
+Here's a simple thread that'll pass Jael a `%turf` `$task`, take the `%turf` `$gift` it sends back and print it to the terminal:
 
 `turf.hoon`
 
@@ -215,7 +215,7 @@ Save in in the `/ted` directory of your ship and `|commit %base`. Next, let's tr
 [%turf turf=~[<|org urbit|>]]
 ```
 
-As you see, the `%turf` `gift` contains `urbit.org` as `~['org' 'urbit']`.
+As you see, the `%turf` `$gift` contains `urbit.org` as `~['org' 'urbit']`.
 
 ## `%step` {#step}
 

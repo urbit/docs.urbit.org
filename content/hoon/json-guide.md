@@ -40,15 +40,15 @@ Note this diagram is a simplification - the `+dejs:format` and `+enjs:format` co
 
 A typical Gall agent will have a number of structures defined in a file in the `/sur` directory. These will define the type of data it expects to be `%poke`ed with, the type of data it will `%give` to subscribers, and the type of data its scry endpoints produce.
 
-If the agent only interacts with other agents inside Urbit, it may just use a `%noun` `mark`. If, however, it needs to talk to a web interface of some kind, it usually must handle `$json` data with a `%json` mark.
+If the agent only interacts with other agents inside Urbit, it may just use a `%noun` `$mark`. If, however, it needs to talk to a web interface of some kind, it usually must handle `$json` data with a `%json` mark.
 
 Sometimes an agent's interactions with a web interface are totally distinct from its interactions with other agents. If so, the agent could just have separate scry endpoints, poke handlers, etc, that directly deal with `$json` data with a `%json` mark. In such a case, you can include `$json` encoding/decoding functions directly in the agent or associated libraries, using the general techniques demonstrated in the [$json encoding and decoding example](#json-encoding-and-decoding-example) section below.
 
-If, on the other hand, you want a unified interface (whether interacting with a web client or within Urbit), a different approach is necessary. Rather than taking or producing either `%noun` or `%json` marked data, custom `mark` files can be created which specify conversion methods for both `%noun` and `%json` marked data.
+If, on the other hand, you want a unified interface (whether interacting with a web client or within Urbit), a different approach is necessary. Rather than taking or producing either `%noun` or `%json` marked data, custom mark files can be created which specify conversion methods for both `%noun` and `%json` marked data.
 
-With this approach, an agent would take and/or produce data with some `mark` like `%my-custom-mark`. Then, when the agent must interact with a web client, the webserver vane Eyre can automatically convert `%my-custom-mark` to `%json` or vice versa. This way the agent only ever has to handle the `%my-custom-mark` data. This approach is used by `%graph-store` with its `%graph-update-2` mark, for example, and a number of other agents.
+With this approach, an agent would take and/or produce data with some `$mark` like `%my-custom-mark`. Then, when the agent must interact with a web client, the webserver vane Eyre can automatically convert `%my-custom-mark` to `%json` or vice versa. This way the agent only ever has to handle the `%my-custom-mark` data. This approach is used by `%graph-store` with its `%graph-update-2` mark, for example, and a number of other agents.
 
-For details of creating a `mark` file for this purpose, the [mark file example](#mark-file-example) section below walks through a practical example.
+For details of creating a mark file for this purpose, the [mark file example](#mark-file-example) section below walks through a practical example.
 
 ## The `$json` type {#the-json-type}
 
@@ -76,7 +76,7 @@ The correspondence of `$json` to JSON types is fairly self-evident, but here's a
 | Array     | `[%a p=(list json)]`   | `["foo",123]`             | `[%a p=~[[%s p='foo'] [%n p=~.123]]]`                        |
 | Object    | `[%o p=(map @t json)]` | `{"foo":"xyz","bar":123}` | `[%o p={[p='bar' q=[%n p=~.123]] [p='foo' q=[%s p='xyz']]}]` |
 
-Since the `$json` `%o` object and `%a` array types may themselves contain any `$json`, you can see how JSON structures of arbitrary complexity can be represented. Note the `%n` number type is a `@ta` rather than something like a `@ud` that you might expect. This is because JSON's number type may be either an integer or floating point, so it's left as a `knot` which can then be parsed to a `@ud` or `@rd` with the appropriate [`+dejs:format`](zuse/2d_6.md) function.
+Since the `$json` `%o` object and `%a` array types may themselves contain any `$json`, you can see how JSON structures of arbitrary complexity can be represented. Note the `%n` number type is a `@ta` rather than something like a `@ud` that you might expect. This is because JSON's number type may be either an integer or floating point, so it's left as a `$knot` which can then be parsed to a `@ud` or `@rd` with the appropriate [`+dejs:format`](zuse/2d_6.md) function.
 
 ## `$json` encoding and decoding example {#json-encoding-and-decoding-example}
 
@@ -123,7 +123,7 @@ Let's have a look at a practical example. Here's a core with three arms. It has 
 --
 ```
 
-**Note**: This example (and a couple of others in this guide) sometimes use a syntax of `foo+bar`. This is just syntactic sugar to tag the head of `bar` with the `term` constant `%foo`, and is equivalent to `[%foo bar]`. Since `$json` data is a union with head tags of `%b`, `%n`, `%s`, `%a`, or `%o`, it's sometimes convenient to do `s+'some string'`, `b+&`, etc.
+**Note**: This example (and a couple of others in this guide) sometimes use a syntax of `foo+bar`. This is just syntactic sugar to tag the head of `bar` with the `$term` constant `%foo`, and is equivalent to `[%foo bar]`. Since `$json` data is a union with head tags of `%b`, `%n`, `%s`, `%a`, or `%o`, it's sometimes convenient to do `s+'some string'`, `b+&`, etc.
 
 ### Try it out {#try-it-out}
 
@@ -244,7 +244,7 @@ We make extensive use of [`+dejs:format`](zuse/2d_6.md) functions here, so we've
 
 We use the [`+ot`](zuse/2d_6.md#otdejsformat) function from `+dejs:format` to decode the `$json` object to a n-tuple. It's a wet gate that takes a list of pairs of keys and other `+dejs` functions and produces a new gate that takes the `$json` to be decoded (which we've given it in `jon`).
 
-The [`+so`](zuse/2d_6.md#sodejsformat) functions just decode `$json` strings to `cord`s. The [`+at`](zuse/2d_6.md#atdejsformat) function converts a `$json` array to a tuple, decoding each element with the respective function given in its argument list. Like `+ot`, `+at` is also a wet gate that produces a gate that takes `$json`. In our case we've used `+so` for each element, since they're all strings.
+The [`+so`](zuse/2d_6.md#sodejsformat) functions just decode `$json` strings to `$cord`s. The [`+at`](zuse/2d_6.md#atdejsformat) function converts a `$json` array to a tuple, decoding each element with the respective function given in its argument list. Like `+ot`, `+at` is also a wet gate that produces a gate that takes `$json`. In our case we've used `+so` for each element, since they're all strings.
 
 For `joined`, we've used the [`+du`](zuse/2d_6.md#dudejsformat) function, which converts a Unix seconds timestamp in a `$json` number to a `@da` (it's basically the inverse of the `+sect:enjs:format` we used earlier).
 
@@ -402,9 +402,9 @@ syntax error
 dojo: naked generator failure
 ```
 
-## `mark` file example {#mark-file-example}
+## Mark file example {#mark-file-example}
 
-Here's a simple `mark` file for the `$user` structure we created in the [first example](#json-encoding-and-decoding-example). It imports the [json-test.hoon](#json-testhoon) library we created and saved in our `%base` desk's `/lib` directory.
+Here's a simple mark file for the `$user` structure we created in the [first example](#json-encoding-and-decoding-example). It imports the [json-test.hoon](#json-testhoon) library we created and saved in our `%base` desk's `/lib` directory.
 
 #### `user.hoon`
 
@@ -425,7 +425,7 @@ Here's a simple `mark` file for the `$user` structure we created in the [first e
 --
 ```
 
-The [Marks section](../urbit-os/kernel/clay/marks) of the Clay documentation covers `mark` files comprehensively and is worth reading through if you want to write a mark file.
+The [Marks section](../urbit-os/kernel/clay/marks) of the Clay documentation covers mark files comprehensively and is worth reading through if you want to write a mark file.
 
 In brief, a mark file contains a `door` with three arms. The door's sample type is the type of the data in question - in our case the `$user` structure. The `+grab` arm contains methods for converting _to_ our mark, and the `+grow` arm contains methods for converting _from_ our mark. The `+noun` arms are mandatory, and then we've added `+json` arms which respectively call the `+from-js` and `+to-js` functions from our `json-test.hoon` library. The final `+grad` arm defines various revision control functions, in our case we've delegated these to the `%noun` mark.
 
@@ -513,7 +513,7 @@ Usually (though not in all cases) these mark conversions will be performed impli
 
 [The Zuse library reference](zuse) - This includes documentation of the JSON parsing, printing, encoding and decoding functions.
 
-[The Marks section of the Clay documentation](../urbit-os/kernel/clay/marks) - Comprehensive documentation of `mark`s.
+[The Marks section of the Clay documentation](../urbit-os/kernel/clay/marks) - Comprehensive documentation of marks.
 
 [The External API Reference section of the Eyre documentation](../urbit-os/kernel/eyre/external-api-ref.md) - Details of the webserver vane Eyre's external API.
 

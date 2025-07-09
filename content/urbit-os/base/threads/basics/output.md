@@ -37,7 +37,7 @@ The resulting strand won't just produce `[#t/@ud q=4]`, but rather `[~ %done [#t
 
 **Note:** that Spider doesn't actually return the codes themselves to thread subscribers, they're only used internally to manage the flow of the thread.
 
-Since a strand is a function from the previously discussed `strand-input` to the output discussed here, you can compose a valid strand like:
+Since a strand is a function from the previously discussed `$strand-input` to the output discussed here, you can compose a valid strand like:
 
 ```hoon
 |=  strand-input:rand

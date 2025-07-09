@@ -39,12 +39,12 @@ Roman numerals constitute a numeral system capable of expressing positive intege
 
         Your library `/lib/roman/hoon` should expose two arms:
 
-        - `+parse` accepts a `tape` text string containing a Roman numeral expression in lower or upper case and returns the corresponding `@ud` unsigned decimal value.  On failure to parse, call `!!` zapzap.
-        - `+yield` accepts a `@ud` unsigned decimal value and returns the corresponding `tape` text string in lower case.
+        - `+parse` accepts a `$tape` text string containing a Roman numeral expression in lower or upper case and returns the corresponding `@ud` unsigned decimal value.  On failure to parse, call `!!` zapzap.
+        - `+yield` accepts a `@ud` unsigned decimal value and returns the corresponding `$tape` text string in lower case.
 
     - `/gen/roman/hoon`
 
-        Provide a `%say` generator at `/gen/roman/hoon` which accepts a `tape` text string or a `@ud` unsigned decimal value and performs the appropriate conversion on the basis of the sample's type.
+        Provide a `%say` generator at `/gen/roman/hoon` which accepts a `$tape` text string or a `@ud` unsigned decimal value and performs the appropriate conversion on the basis of the sample's type.
 
         **Note**:  This design pattern is not optimal since analysis over a union of some types can be difficult to carry out, and it would be better to either separate the generators or use a flag.  In this case, the pattern works because we are distinguishing an atom from a cell.
 

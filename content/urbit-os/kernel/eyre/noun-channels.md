@@ -29,7 +29,7 @@ content-type: application/x-urb-jam
 
 ...and the body contains the [`+jam`](../../../hoon/stdlib/2p.md#jam) of a `+list` of `$channel-request`s with [`@uw`](../../../hoon/auras.md#table-of-auras) base64 encoding.
 
-A `channel-request` is defined in `eyre.hoon` as:
+A `$channel-request` is defined in `eyre.hoon` as:
 
 ```hoon
 ::  channel-request: an action requested on a channel

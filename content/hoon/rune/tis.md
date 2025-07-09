@@ -951,7 +951,7 @@ None
 
 #### Discussion
 
-`=*` assigns a name to an expression that will be evaluated in each place the name is dereferenced. This allows you to "write" through it to the original subject `axis`. `q` is recorded in the type information of `p`, and `q` is calculated every time you use `p`.
+`=*` assigns a name to an expression that will be evaluated in each place the name is dereferenced. This allows you to "write" through it to the original subject `$axis`. `q` is recorded in the type information of `p`, and `q` is calculated every time you use `p`.
 
 This rune has some similarities with macros, and some similarities with aliases, but it is not really either.
 
@@ -961,7 +961,7 @@ This rune is commonly used to give a Gall agent's state the name `state` like:
 =*  state  -
 ```
 
-This lets you reference the whole `state` while also being able to reference its individual elements like `foo` and `bar`, without having to do `foo.state`, `bar.state`, etc.
+This lets you reference the whole `.state` while also being able to reference its individual elements like `foo` and `bar`, without having to do `foo.state`, `bar.state`, etc.
 
 #### Examples
 

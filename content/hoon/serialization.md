@@ -163,7 +163,7 @@ V.BBBB.JJJJ.JJJJ...
 - `-j`, `--jam`: output result as a jammed noun.
 - `-c`, `--cue`: read input as a jammed noun.
 - `-n`, `--newt`: write output / read input as a newt-encoded jammed noun, when paired with `-j` or `-c` respectively.
-- `-k`: treat the input as the jammed noun input of a `%fyrd` request to `conn.c`; if the result is a `goof`, pretty-print it to `stderr` instead of returning it.
+- `-k`: treat the input as the jammed noun input of a `%fyrd` request to `conn.c`; if the result is a `$goof`, pretty-print it to `stderr` instead of returning it.
 
 In the Vere runtime, these are used by `vere/newt.c`; see particularly:
 

@@ -349,8 +349,8 @@ Static typing with compile-time type checking turns out to be a secret strength 
 There are three basic things that tend to go wrong:
 
 1. Syntax error, general (just typing things out wrong, for instance in a way Dojo would prevent)
-2. Syntax error mismatching rune daughters (due to `+ace`/`+gap` or miscounting children)
-3. Type issues (`+need`/`have`, notoriously)
+2. Syntax error mismatching rune daughters (due to `ace`/`gap` or miscounting children)
+3. Type issues (`need`/`have`, notoriously)
 
 This last case can be handled with a couple of expedients:
 

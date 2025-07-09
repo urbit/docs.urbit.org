@@ -77,7 +77,7 @@ The type of the next field is a `$note:agent:gall` (henceforth just `$note`), wh
   ==
 ```
 
-- An `%agent` `$note` is a request to another Gall agent, either local or on a remote ship. The `$ship` and `name` fields are just the target ship and agent name. The `$task` is the request itself, we'll discuss it separately [below](#task).
+- An `%agent` `$note` is a request to another Gall agent, either local or on a remote ship. The `$ship` and `$name` fields are just the target ship and agent name. The `$task` is the request itself, we'll discuss it separately [below](#task).
 - An `%arvo` `$note` is a request to a vane. We'll discuss such requests [below](#note-arvo).
 - A `%pyre` `$note` is used to abort an event. It's mostly used internally by `%kiln` (a submodule of `%hood`), it's unlikely you'd use it in your own agent. The `$tang` contains an error message.
 - The other notes are for [remote scry](../userspace/remote-scry.md).
@@ -107,7 +107,7 @@ The kinds of `$task`s can be divided into two categories:
 
 - `%watch`: A request to subscribe to the specified `$path`. Once subscribed, your agent will receive any updates the other agent sends out on that `$path`. You can subscribe more than once to the same `$path`, but each subscription must have a separate `$wire` specified at the beginning of the [`%pass` card](#pass).
 - `%watch-as`: This is the same as `%watch`, except Gall will convert updates to the given `$mark` before delivering them to your agent.
-- `%leave`: Unsubscribe. The subscription to cancel is determined by the `$wire` at the beginning of the [`pass` card](#pass) rather than the subscription `$path`, so its argument is just `~`.
+- `%leave`: Unsubscribe. The subscription to cancel is determined by the `$wire` at the beginning of the [`$pass` card](#pass) rather than the subscription `$path`, so its argument is just `~`.
 
 **Examples**
 
@@ -125,7 +125,7 @@ The `%poke-as` task is the same as `%poke` except Gall will convert the `$mark` 
 
 ![](https://media.urbit.org/guides/core/app-school/poke-cards.svg)
 
-### `note-arvo` {#note-arvo}
+### `$note-arvo` {#note-arvo}
 
 A `$note-arvo` is defined in `lull.hoon` like so:
 

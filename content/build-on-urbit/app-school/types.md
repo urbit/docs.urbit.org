@@ -15,7 +15,7 @@ layout:
 
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../urbit-os/kernel/gall/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl), [`boat`](../../urbit-os/kernel/gall/data-types.md#boat), and [`bitt`](../../urbit-os/kernel/gall/data-types.md#bitt).
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../urbit-os/kernel/gall/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl), [`$boat`](../../urbit-os/kernel/gall/data-types.md#boat), and [`$bitt`](../../urbit-os/kernel/gall/data-types.md#bitt).
 
 ## `$vase` {#vase}
 

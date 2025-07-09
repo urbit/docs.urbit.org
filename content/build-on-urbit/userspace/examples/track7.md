@@ -15,7 +15,7 @@ layout:
 
 # Styled Text
 
-In this tutorial, we examine how to produce `styx` styled text strings and output them to the terminal from an agent.
+In this tutorial, we examine how to produce `$styx` styled text strings and output them to the terminal from an agent.
 
 ## `%shoe` CLI Session Manager {#shoe-cli-session-manager}
 
@@ -76,7 +76,7 @@ This arm accepts a session ID and a command resulting from `+command-parser`.  I
 
 ## `$styx` Styled Text String {#styx-styled-text-string}
 
-A `+klr` effect uses a `styx`, or styled text string.  The relevant data structures are in `/sys/lull.hoon`:
+A `+klr` effect uses a `$styx`, or styled text string.  The relevant data structures are in `/sys/lull.hoon`:
 
 ```hoon
 +$  deco  ?(~ %bl %br %un)                              ::  text decoration

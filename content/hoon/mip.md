@@ -27,15 +27,15 @@ A `(mip kex key value)` is equivalent to `(map kex (map key value))`.
 
 #### Accepts
 
-`kex` is a `mold`, the type of the outer map's key.
+`kex` is a `$mold`, the type of the outer map's key.
 
-`key` is a `mold`, the type of the key of the inner maps.
+`key` is a `$mold`, the type of the key of the inner maps.
 
-`value` is a `mold`, the type of the value of the inner maps.
+`value` is a `$mold`, the type of the value of the inner maps.
 
 #### Produces
 
-A `mold`.
+A `$mold`.
 
 #### Source
 

@@ -77,7 +77,7 @@ body
 
 #### Semantics
 
-`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `+lest` of `term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
+`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `+lest` of `$term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
 
 #### Discussion
 

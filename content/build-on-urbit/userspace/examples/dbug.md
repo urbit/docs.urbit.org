@@ -55,7 +55,7 @@ For instance, using the `%azimuth` agent, we can expose the current state of the
 There are four actions exposed by the wrapper via the `+dbug` generator:
 
 1. `:app +dbug` exposes the entire state, just dumping the current agent state.
-2. `:app +dbug %bowl` shows the agent's `bowl`.  The Gall `bowl` consists of:
+2. `:app +dbug %bowl` shows the agent's `$bowl`.  The Gall `$bowl` consists of:
     
     ```hoon
     +$  bowl              ::  standard app state
@@ -269,7 +269,7 @@ As we examine this code, there are two particularly interesting aspects:
 1. How `/lib/dbug.hoon` modifies an agent's arms by adding functionality over the top of them.
 2. How `/gen/dbug.hoon` utilizes the modified arms with an elegant and simple invocation.
 
-There is also extensive use of `tank`/`tang` formatted error messaging.
+There is also extensive use of `$tank`/`$tang` formatted error messaging.
 
 ## How the library works {#how-the-library-works}
 
@@ -356,7 +356,7 @@ By applying this door builder using `%-` censig, the `+on-poke` and `+on-peek` a
 
 </details>
 
-The `+on-poke` arm has several branches added to it after a check to see whether it is being used through the `+dbug` generator.  If it isn't (as determined by the associated `mark`), then the poke is passed through to the base agent.
+The `+on-poke` arm has several branches added to it after a check to see whether it is being used through the `+dbug` generator.  If it isn't (as determined by the associated `$mark`), then the poke is passed through to the base agent.
 
 ```hoon
 ?.  ?=(%dbug mark)
@@ -383,12 +383,12 @@ The following `?-` wuthep handles the input arguments:  `%state` is the most int
 (ream grab.dbug)
 ```
 
-This branch includes the use of a rare [`=?` tiswut](../../../hoon/rune/tis.md#tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../hoon/rune/tis.md#tismic).  There is also some direct compilation of `cord`s taking place:
+This branch includes the use of a rare [`=?` tiswut](../../../hoon/rune/tis.md#tiswut) conditional leg change and the reversed `=/` tisfas, [`=;` tismic](../../../hoon/rune/tis.md#tismic).  There is also some direct compilation of `$cord`s taking place:
 
-- [`+sell`](../../../hoon/stdlib/5c.md#sell) is a `vase` pretty-printer.
-- [`+slop`](../../../hoon/stdlib/5c.md#slop) conses two `vase`s together as a cell. 
-- [`+slap`](../../../hoon/stdlib/5c.md#slap) compiles a Hoon expression and produces a `vase` of the result.
-- [`+ream`](../../../hoon/stdlib/5d.md#ream) parses a `cord` to a Hoon expression.
+- [`+sell`](../../../hoon/stdlib/5c.md#sell) is a `$vase` pretty-printer.
+- [`+slop`](../../../hoon/stdlib/5c.md#slop) conses two `$vase`s together as a cell. 
+- [`+slap`](../../../hoon/stdlib/5c.md#slap) compiles a Hoon expression and produces a `$vase` of the result.
+- [`+ream`](../../../hoon/stdlib/5d.md#ream) parses a `$cord` to a Hoon expression.
 
 #### `+on-peek`
 
@@ -419,7 +419,7 @@ The `+on-peek` arm adds several peek endpoints which expose the state (via `+on-
 
 ## How the generator works {#how-the-generator-works}
 
-The generator explicitly injects the `%dbug` mark in its return `+cask` (`[mark noun]`).  This is a valid if uncommon operation, and it works here because the mark is never used as a transforming gate but only as a marker to see whether the arms need to pass through the values.  The no-argument input is routed through the `%state` with an empty `cord`.
+The generator explicitly injects the `%dbug` mark in its return `+cask` (`[mark noun]`).  This is a valid if uncommon operation, and it works here because the mark is never used as a transforming gate but only as a marker to see whether the arms need to pass through the values.  The no-argument input is routed through the `%state` with an empty `$cord`.
 
 ```hoon
 :-  %dbug

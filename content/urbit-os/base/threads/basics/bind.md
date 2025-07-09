@@ -100,6 +100,6 @@ To use `strandio` functions we've imported the library with `/+ strandio`.
 
 Note how we've specified the face and return type of each strand like `t=@da`, etc.
 
-You can see how `+pure` has access to the results of previous strands in the pipeline. Note how we've wrapped `+pure`'s argument in a `!>` because the thread must produce a `vase`.
+You can see how `+pure` has access to the results of previous strands in the pipeline. Note how we've wrapped `+pure`'s argument in a `!>` because the thread must produce a `$vase`.
 
 Next we'll look at `$strand-input` in more detail.

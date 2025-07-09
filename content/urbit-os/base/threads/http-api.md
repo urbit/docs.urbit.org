@@ -23,7 +23,7 @@ Spider is bound to the `/spider` URL path, and expects the requested URL to look
 http{s}://[host]/spider/[desk]/[inputMark]/[threadName]/[outputMark]
 ```
 
-The `desk` is the desk in which the thread resides. The `inputMark` is the `mark` the thread takes. The `threadName` is the name of the thread, e.g. `foo` for `/ted/foo/hoon`. The `outputMark` is the `mark` the thread produces. You may also include a file extension though it doesn't have an effect.
+The `$desk` is the desk in which the thread resides. The `inputMark` is the `$mark` the thread takes. The `threadName` is the name of the thread, e.g. `foo` for `/ted/foo/hoon`. The `outputMark` is the `$mark` the thread produces. You may also include a file extension though it doesn't have an effect.
 
 When Spider receives an HTTP request, the following steps happen:
 
@@ -41,7 +41,7 @@ Thus, it's important to understand that the original HTTP request and final HTTP
 
 Here we'll look at running Spider threads through Eyre.
 
-Here's an extremely simple thread that takes a `vase` of `(unit json)` and just returns the `$json` in a new `vase`. You can save it in `/ted` and `|commit %base`:
+Here's an extremely simple thread that takes a `$vase` of `(unit json)` and just returns the `$json` in a new `$vase`. You can save it in `/ted` and `|commit %base`:
 
 `eyre-thread.hoon`
 

@@ -74,7 +74,7 @@ This produces the [`$hoon`](../stdlib/4o.md#hoon) AST of expression `q`. The fir
 
 ## !> "zapgar" {#zapgar}
 
-Wrap a noun in its type (form a [`vase`](../stdlib/4o.md#vase)).
+Wrap a noun in its type (form a [`$vase`](../stdlib/4o.md#vase)).
 
 #### Syntax
 
@@ -96,7 +96,7 @@ A cell whose tail is the product of `p`, and whose head is the static type of `p
 
 #### Discussion
 
-In Hoon, a dynamic type is a static type compiled at runtime. This type-noun cell is generally called a [`vase`](../stdlib/4o.md#vase).
+In Hoon, a dynamic type is a static type compiled at runtime. This type-noun cell is generally called a [`$vase`](../stdlib/4o.md#vase).
 
 #### Examples
 
@@ -116,7 +116,7 @@ If you want just the type value, use a 'type spear'. This is `-:!>`, i.e., the h
 
 ## !< "zapgal" {#zapgal}
 
-Extracts a [`vase`](../stdlib/4o.md#vase) to the given mold if its type nests.
+Extracts a [`$vase`](../stdlib/4o.md#vase) to the given mold if its type nests.
 
 #### Syntax
 
@@ -161,7 +161,7 @@ The value of vase `q` typed with the type of mold `p` if possible, else a `nest-
 
 #### Discussion
 
-This is something like a partial inverse to the `!>` rune and can be used to extract a typed value from a `vase`.
+This is something like a partial inverse to the `!>` rune and can be used to extract a typed value from a `$vase`.
 
 #### Examples
 

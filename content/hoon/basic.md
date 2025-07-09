@@ -27,7 +27,7 @@ In this document we discuss the recursive data structure Hoon uses for type infe
 
 Below is a simplified version the `+$  type` arm, which defines the data structure Hoon uses to keep track of types.  But this data structure is used for more than simply type inference.  It also handles the resolution of names, including both faces and arm names.  (See Chapter 1 of the Hoon tutorial for an introduction to name resolution.)
 
-As noted, this is a simplified version of `type`.  We undo and explain the simplifications in the [advanced types](advanced.md) section.
+As noted, this is a simplified version of `$type`.  We undo and explain the simplifications in the [advanced types](advanced.md) section.
 
 ```hoon
 +$  term  @tas
@@ -54,7 +54,7 @@ Effectively this structure defines a set of nouns that Hoon uses to keep track t
 
 ### `[%cell p=type q=type]` {#cell-ptype-qtype}
 
-`[%cell p=type q=type]` is for cells.  The `type` of the head is labelled `p` and the tail `type` is `q`.
+`[%cell p=type q=type]` is for cells.  The `$type` of the head is labelled `p` and the tail `$type` is `q`.
 
 ### `[%fork p=(set type)]` {#fork-pset-type}
 
@@ -68,7 +68,7 @@ A `%hold` type, with type `p` and hoon `q`, is a lazy reference to the type of `
 
 ### `[%face p=term q=type]` {#face-pterm-qtype}
 
-A `[%face p=term q=type]` wraps the label `p` around the type `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen, first character must be a lowercase letter.
+A `[%face p=term q=type]` wraps the label `p` around the type `q`.  `p` is a `$term` or `@tas`, an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen, first character must be a lowercase letter.
 
 ### `[%atom p=term q=(unit atom))]` {#atom-pterm-qunit-atom}
 

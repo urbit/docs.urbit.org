@@ -70,9 +70,9 @@ Now here's a quick recap of the main points covered:
 ## Strand input
 
 - looks like `[=bowl in=(unit input)]`
-- `bowl` has things like `our`, `now`, `eny` and so forth
-- `bowl` is populated once when the thread is first called and then every time it receives new input
-- `input` contains any incoming pokes, signs and watches.
+- `$bowl` has things like `our`, `now`, `eny` and so forth
+- `$bowl` is populated once when the thread is first called and then every time it receives new input
+- `$input` contains any incoming pokes, signs and watches.
 
 ## Strand output
 

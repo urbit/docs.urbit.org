@@ -21,7 +21,7 @@ This section will be reference documentation for the data types used by our file
 
 These types are only used inside of Clay. These are only relevant if you're working directly on Clay itself, or trying to understand its inner workings.
 
-### `cane` {#cane}
+### `$cane` {#cane}
 
 The set of changes between the mergebase and one of the desks being merged.
 
@@ -41,7 +41,7 @@ The set of changes between the mergebase and one of the desks being merged.
 
 ---
 
-### `melt` {#melt}
+### `$melt` {#melt}
 
 State for ongoing `%fuse` merges.
 
@@ -51,11 +51,11 @@ State for ongoing `%fuse` merges.
 
 - `con` maintains the ordering.
 - `sto` stores the data needed to merge.
-- `bas` is the base `beak` for the merge.
+- `bas` is the base `$beak` for the merge.
 
 ---
 
-### `dojo` {#dojo}
+### `$dojo` {#dojo}
 
 Domestic desk state
 
@@ -69,17 +69,17 @@ Domestic desk state
   ==
 ```
 
-This is the all the data that is specific to a particular `desk` on a domestic ship.
+This is the all the data that is specific to a particular `$desk` on a domestic ship.
 
-- `qyx` is the set of subscribers to this `desk`.
-- `dom` is the data in the `desk`.
+- `qyx` is the set of subscribers to this `$desk`.
+- `dom` is the data in the `$desk`.
 - `per` is a `+map` of read permissions by path.
 - `pew` is a `+map` of write permissions by path.
 - `fiz` is the state for ongoing `%fuse` merges.
 
 ---
 
-### `nako` {#nako}
+### `$nako` {#nako}
 
 New desk data
 
@@ -96,7 +96,7 @@ Sent to other ships to update them about a particular desk. Includes a map of al
 
 ---
 
-### `raft` {#raft}
+### `$raft` {#raft}
 
 Formal state
 
@@ -118,11 +118,11 @@ Formal state
 
 This is the state of the vane. Anything that must be remembered between calls to Clay is stored in this state.
 
-- `rom`: the state for all local desks. It consists of a `duct` to [Dill](../dill/README.md) and a collection of `desk`s.
+- `rom`: the state for all local desks. It consists of a `$duct` to [Dill](../dill/README.md) and a collection of `$desk`s.
 - `hoy`: the state for all foreign desks.
 - `ran`: the global, hash-addressed object store. It has maps of commit hashes to commits and content hashes to content.
 - `fad`: the global build cache. Each desk has its own fast-lookup index over this global cache.
-- `mon`: a collection of Unix mount points. `term` is the mount point (relative to th pier) and `beam` is a domestic Clay directory.
+- `mon`: a collection of Unix mount points. `$term` is the mount point (relative to th pier) and `$beam` is a domestic Clay directory.
 - `hez`: the duct used to sync with Unix.
 - `cez`: a collection of named aermission groups.
 - `tyr`: app subscriptions.
@@ -148,7 +148,7 @@ Like a [`$rant`](#rant), but with a page of data rather than a cage of it.
 
 ---
 
-### `rede` {#rede}
+### `$rede` {#rede}
 
 Generic desk state
 
@@ -166,17 +166,17 @@ Generic desk state
 
 This is our knowledge of the state of a desk, either foreign or domestic.
 
-- `lim`: the most recent `@da` for which we're confident we have all the information for. For local `desk`s, this is always `now`. For foriegn `desk`s, this is the last time we got a full update from the foreign ship.
-- `ref`: the request manager for the desk. For domestic `desk`s, this is null since we handle requests ourselves. For foreign `desk`s, this keeps track of all pending foriegn requests plus a cache of the responses to previous requests.
-- `qyx`: the `+set` of subscriptions to this desk, with listening `duct`s. These subscriptions exist only until they've been filled. For domestic `desk`s, this is simply `qyx:dojo` - all subscribers to the `desk`. For foreign `desk`s this is all the subscribers from our ship to the foreign `desk`.
-- `dom`: the data in the `desk`.
+- `lim`: the most recent `@da` for which we're confident we have all the information for. For local `$desk`s, this is always `now`. For foriegn `$desk`s, this is the last time we got a full update from the foreign ship.
+- `ref`: the request manager for the desk. For domestic `$desk`s, this is null since we handle requests ourselves. For foreign `$desk`s, this keeps track of all pending foriegn requests plus a cache of the responses to previous requests.
+- `qyx`: the `+set` of subscriptions to this desk, with listening `$duct`s. These subscriptions exist only until they've been filled. For domestic `$desk`s, this is simply `qyx:dojo` - all subscribers to the `$desk`. For foreign `$desk`s this is all the subscribers from our ship to the foreign `$desk`.
+- `dom`: the data in the `$desk`.
 - `per`: a `+map` of read permissions by path.
 - `pew`: a `+map` of write permissions by path.
 - `fiz`: the state for ongoing `%fuse` merges.
 
 ---
 
-### `rind` {#rind}
+### `$rind` {#rind}
 
 Foreign request manager
 
@@ -198,7 +198,7 @@ When we send a request to a foreign ship, we keep track of it in here.
 
 ---
 
-### `bill` {#bill}
+### `$bill` {#bill}
 
 The list of agents that should be automatically started on a desk
 
@@ -206,7 +206,7 @@ The list of agents that should be automatically started on a desk
 +$  bill  (list dude:gall)
 ```
 
-### `update-state` {#update-state}
+### `$update-state` {#update-state}
 
 State of outstanding foreign request
 
@@ -220,13 +220,13 @@ State of outstanding foreign request
   ==
 ```
 
-An `update-state` is used to represent the status of an outstanding request to a foreign `desk`.
+An `$update-state` is used to represent the status of an outstanding request to a foreign `$desk`.
 
-- `duct`: the duct along which the request was made.
-- `rave`: the request itself.
-- `need`: a list of hashes yet to be acquired.
-- `nako`: a queue of data yet to be validated.
-- `busy`: tracks whether or not the request is currently being fulfilled.
+- `.duct`: the duct along which the request was made.
+- `.rave`: the request itself.
+- `.need`: a list of hashes yet to be acquired.
+- `.nako`: a queue of data yet to be validated.
+- `.busy`: tracks whether or not the request is currently being fulfilled.
 
 ---
 
@@ -236,19 +236,19 @@ Filesystem per domestic ship
 
 ```hoon
 +$  room                                         ::  fs per ship
-          $:  hun=duct                           ::  terminal duct
-              dos=(map desk dojo)                ::  native desk
-          ==                                     ::
+  $:  hun=duct                           ::  terminal duct
+      dos=(map desk dojo)                ::  native desk
+  ==                                     ::
 ```
 
 This is the representation of the filesystem of a ship on our pier.
 
-- `hun`: the duct we use to send messages to [Dill](../dill/README.md) to display notifications of filesystem changes. Only `%note` `%gift`s should be produced along this `duct`. This is set by the `%init` `move`.
-- `dos`: the set of `desk`s on this ship, mapped to their `desk` state.
+- `hun`: the duct we use to send messages to [Dill](../dill/README.md) to display notifications of filesystem changes. Only `%note` `%gift`s should be produced along this `$duct`. This is set by the `%init` `$move`.
+- `dos`: the set of `$desk`s on this ship, mapped to their `$desk` state.
 
 ---
 
-### `cach` {#cach}
+### `$cach` {#cach}
 
 Cached result of a request
 
@@ -258,7 +258,7 @@ Cached result of a request
 
 ---
 
-### `wove` {#wove}
+### `$wove` {#wove}
 
 Stored source and request
 
@@ -268,39 +268,39 @@ Stored source and request
  
 ---
 
-### `rove` {#rove}
+### `$rove` {#rove}
 
 Stored request
 
 ```hoon
-+$  rove                                                ::  stored request
-          $%  [%sing =mood]                             ::  single request
-              [%next =mood aeon=(unit aeon) =cach]      ::  next version of one
-              $:  %mult                                 ::  next version of any
-                  =mool                                 ::  original request
-                  aeon=(unit aeon)                      ::  checking for change
-                  old-cach=(map [=care =path] cach)     ::  old version
-                  new-cach=(map [=care =path] cach)     ::  new version
-              ==                                        ::
-              [%many track=? =moat lobes=(map path lobe)] ::  change range
-          ==                                            ::
++$  rove                                           ::  stored request
+  $%  [%sing =mood]                                ::  single request
+      [%next =mood aeon=(unit aeon) =cach]         ::  next version of one
+      $:  %mult                                    ::  next version of any
+          =mool                                    ::  original request
+          aeon=(unit aeon)                         ::  checking for change
+          old-cach=(map [=care =path] cach)        ::  old version
+          new-cach=(map [=care =path] cach)        ::  new version
+      ==                                           ::
+      [%many track=? =moat lobes=(map path lobe)]  ::  change range
+  ==
 ```
 
 Like a [`$rave`](#rave) but with caches of current versions for `%next` and `%many`. Generally used when we store a request in our state somewhere.
 
 ---
 
-### `rung` {#rung}
+### `$rung` {#rung}
 
 Foreign desk data
 
 ```hoon
 +$  rung
-          $:  rus=(map desk rede)                       ::  neighbor desks
-          ==
+  $:  rus=(map desk rede)                       ::  neighbor desks
+  ==
 ```
 
-This contains the filesystem of a neighbour ship. The keys to this `+map` are all the `desk`s we know about on their ship.
+This contains the filesystem of a neighbour ship. The keys to this `+map` are all the `$desk`s we know about on their ship.
 
 ---
 
@@ -318,7 +318,7 @@ Desk revision number
 
 ---
 
-### `beam` {#beam}
+### `$beam` {#beam}
 
 Global name
 
@@ -330,7 +330,7 @@ The full path to a file or directory.
 
 ---
 
-### `beak` {#beak}
+### `$beak` {#beak}
 
 Path prefix
 
@@ -342,9 +342,9 @@ A [`$beam`](#beam) sans the specific file path.
 
 ---
 
-### `cable` {#cable}
+### `$cable` {#cable}
 
-`/lib`, `/sur` or `mark` reference
+`/lib`, `/sur` or `$mark` reference
 
 ```hoon
 +$  cable
@@ -369,29 +369,28 @@ Clay submodule
 
 This specifies what type of information is requested in a subscription or a scry.
 
-- `%a`: build a Hoon file at a `path`.
-- `%b`: build a dynamically typed `mark` by name (a `$dais` mark-interface core).
-- `%c`: build a dynamically typed `mark` conversion gate (a `$tube`) by "from" and "to" `mark` names.
-- `%d`: returns a `(set desk)` of the `desk`s that exist on your ship.
-- `%e`: builds a statically typed `mark` by name (a `$nave` mark-interface core).
+- `%a`: build a Hoon file at a `$path`.
+- `%b`: build a dynamically typed mark by name (a `$dais` mark interface core).
+- `%c`: build a dynamically typed mark conversion gate (a `$tube`) by "from" and "to" `$mark` names.
+- `%d`: returns a `(set desk)` of the `$desk`s that exist on your ship.
+- `%e`: builds a statically typed mark by name (a `$nave` mark interface core).
 - `%f`: builds a statically typed mark converstion gate.
 - `%p`: produces the permissions for a directory, returned as a `[dict dict]`.
-- `%r`: requests the file in the same fashion as `%x`, but wraps the result in a `vase`.
+- `%r`: requests the file in the same fashion as `%x`, but wraps the result in a `$vase`.
 - `%s`: has miscellaneous debug endpoints.
-- `%t`: produces a `(list path)` of descendent `path`s for a directory within a `yaki`.
+- `%t`: produces a `(list path)` of descendent `$path`s for a directory within a `$yaki`.
 - `%u`: produces a `?` depending on whether or not the specified file exists. It does not check any of its children.
-- `%v`: requests the entire `dome` for a specified `desk` at a particular `$aeon`. When used on a foreign `desk`, this get us up-to-date to the requested version.
+- `%v`: requests the entire `$dome` for a specified `$desk` at a particular `$aeon`. When used on a foreign `$desk`, this get us up-to-date to the requested version.
 - `%w`: requests the revision number and date of the specified path, returned as a `+cass`.
-- `%x`: requests the file at a specified path at the specified commit, returned as an `@`. If there is no node at that path or if the node has no contents (that is, if `fil:ankh` is null), then this crashes.
-- `%y`: requests an `arch` of the specfied commit at the specified path. It will return the bunt of an `arch` if the file or directory is not found.
-- `%z`: requests a recursive hash of a node and all its children, returned as a
-  `@uxI`.
+- `%x`: requests the file at a specified path at the specified commit, returned as an `@`. If there is no node at that path or if the node has no contents (that is, if `+fil:ankh` is null), then this crashes.
+- `%y`: requests an `$arch` of the specfied commit at the specified path. It will return the bunt of an `$arch` if the file or directory is not found.
+- `%z`: requests a recursive hash of a node and all its children, returned as a `@uxI`.
 
 See the [scry reference](scry.md) for more details.
 
 ---
 
-### `case` {#case}
+### `$case` {#case}
 
 ```hoon
 +$  case
@@ -412,7 +411,7 @@ The `$case` is a type union of:
 
 ### `$cash` {#cash}
 
-`case` or `tako`
+`$case` or `$tako`
 
 ```hoon
 +$  cash
@@ -435,7 +434,7 @@ This is returned by a `%w` read.
 
 ---
 
-### `clue` {#clue}
+### `$clue` {#clue}
 
 Tombstone target
 
@@ -450,7 +449,7 @@ Tombstone target
   ==
 ```
 
-- `%lobe`: specific [`lobe`](#lobe).
+- `%lobe`: specific [`$lobe`](#lobe).
 - `%all`: all safe tombstone targets.
 - `%pick`: collect garbage.
 - `%norm`: set default [`$norm`](#norm).
@@ -459,7 +458,7 @@ Tombstone target
 
 ---
 
-### `cone` {#cone}
+### `$cone` {#cone}
 
 Domes
 
@@ -469,7 +468,7 @@ Domes
 
 ---
 
-### `dome` {#dome}
+### `$dome` {#dome}
 
 Desk data
 
@@ -488,7 +487,7 @@ Desk data
   ==
 ```
 
-A `dome` is the state of a `desk` and associated data.
+A `$dome` is the state of a `$desk` and associated data.
 
 - `let` is the number of the most recently numbered commit. This is also the total number of numbered commits.
 - `hit` is a map of numerical IDs to commit hashes. These hashes are mapped into their associated commits in the [`$rang`](#rang) of the the [`$raft`](#raft) of Clay. In general, the keys of this map are exactly the numbers from 1 to `let`, with no gaps. Of course, when there are no numbered commits, `let` is 0, so `hit` is null. Additionally, each of the commits is an ancestor of every commit numbered greater than this one. Thus, each is a descendant of every commit numbered less than this one. Since it is true that the date in each commit (`t.yaki`) is no earlier than that of each of its parents, the numbered commits are totally ordered in the same way by both pedigree and date. If that sounds too complicated to you, don't worry about it. It basically behaves exactly as you would expect.
@@ -496,14 +495,14 @@ A `dome` is the state of a `desk` and associated data.
 - `tom` contains the tombstoning policies for all files in the desk.
 - `nor` is the default tombstoning policy.
 - `mim` is a cache of the content in the directories that are mounted to Unix.
-- `fod` is the Ford cache, which keeps a cache of the results of builds performed at this `desk`'s current revision, including a full transitive closure of dependencies for each completed build.
+- `fod` is the Ford cache, which keeps a cache of the results of builds performed at this `$desk`'s current revision, including a full transitive closure of dependencies for each completed build.
 - `wic` contains commits waiting for future kernel versions.
 - `liv` says whether agents on the desk are running or suspended.
 - `ren` records which agents have been forced on or off, differing from the desk's `desk.bill` manifest.
   
 ---
 
-### `crew` {#crew}
+### `$crew` {#crew}
 
 Permission group
 
@@ -513,7 +512,7 @@ Permission group
 
 ---
 
-### `dict` {#dict}
+### `$dict` {#dict}
 
 Effective permission
 
@@ -523,7 +522,7 @@ Effective permission
 
 ---
 
-### `domo` {#domo}
+### `$domo` {#domo}
 
 Project state
 
@@ -565,7 +564,7 @@ See the [Strategies](using.md#strategies) section of "Using Clay" for further de
 
 ---
 
-### `lobe` {#lobe}
+### `$lobe` {#lobe}
 
 File reference
 
@@ -573,11 +572,11 @@ File reference
 +$  lobe  @uvI
 ```
 
-This is a hash of a [`page`](#page). These are most notably used in [`lat.rang`](#rang), where they are associated with the actual `page`, and as the values in [`q.yaki`](#yaki), where `path`s are associated with their content hashes in a commit.
+This is a hash of a [`$page`](#page). These are most notably used in [`lat.rang`](#rang), where they are associated with the actual `$page`, and as the values in [`q.yaki`](#yaki), where `$path`s are associated with their content hashes in a commit.
 
 ---
 
-### `miso` {#miso}
+### `$miso` {#miso}
 
 File delta
 
@@ -590,16 +589,16 @@ File delta
   ==
 ```
 
-There are four kinds of changes that may be made to a node in a `desk`.
+There are four kinds of changes that may be made to a node in a `$desk`.
 
 - `%del`: deletes the node.
 - `%ins`: inserts a file given by `p`.
-- `%dif`: currently unimplemented. This may seem strange, so we remark that diffs for individual files are implemented using `+diff` and `+pact` in `mark`s. So for an `+ankh`, which may include both files and directories, `%dif` being unimplemented really just means that we do not yet have a formal concept of changes in directory structure.
+- `%dif`: currently unimplemented. This may seem strange, so we remark that diffs for individual files are implemented using `+diff` and `+pact` in `$mark`s. So for an `+ankh`, which may include both files and directories, `%dif` being unimplemented really just means that we do not yet have a formal concept of changes in directory structure.
 - `%mut`: mutates the file using raw data given by `p`.
 
 ---
 
-### `misu` {#misu}
+### `$misu` {#misu}
 
 Computed delta
 
@@ -617,7 +616,7 @@ Computed delta
 
 ---
 
-### `mizu` {#mizu}
+### `$mizu` {#mizu}
 
 New state
 
@@ -627,7 +626,7 @@ New state
 
 ---
 
-### `moar` {#moar}
+### `$moar` {#moar}
 
 Normal change range
 
@@ -637,7 +636,7 @@ Normal change range
 
 ---
 
-### `moat` {#moat}
+### `$moat` {#moat}
 
 Range subscription request
 
@@ -645,11 +644,11 @@ Range subscription request
 +$  moat  [from=case to=case =path]
 ```
 
-This represents a request for all changes between `from` and `to` on `path`. You will be notified when a change is made to the node referenced by the `path` or to any of its children.
+This represents a request for all changes between `.from` and `.to` on `$path`. You will be notified when a change is made to the node referenced by the `$path` or to any of its children.
 
 ---
 
-### `mode` {#mode}
+### `$mode` {#mode}
 
 External files
 
@@ -661,7 +660,7 @@ This is used when there's a commit from the host system.
 
 ---
 
-### `mood` {#mood}
+### `$mood` {#mood}
 
 Single subscription request
 
@@ -669,11 +668,11 @@ Single subscription request
 +$  mood  [=care =case =path]
 ```
 
-This represents a request for data related to the state of the `desk` at a particular commit, specfied by `case`. The `$care` specifies what kind of information is desired, and the `path` specifies the path we are requesting.
+This represents a request for data related to the state of the `$desk` at a particular commit, specfied by `$case`. The `$care` specifies what kind of information is desired, and the `$path` specifies the path we are requesting.
 
 ---
 
-### `mool` {#mool}
+### `$mool` {#mool}
 
 Requests in desk
 
@@ -681,11 +680,11 @@ Requests in desk
 +$  mool  [=case paths=(set (pair care path))]
 ```
 
-This is used in a `%mult` [`rave`](#rave) to specify the next version of multiple files with multiple cares.
+This is used in a `%mult` [`$rave`](#rave) to specify the next version of multiple files with multiple cares.
 
 ---
 
-### `nori` {#nori}
+### `$nori` {#nori}
 
 Repository action
 
@@ -696,13 +695,13 @@ Repository action
   ==
 ```
 
-This describes a change that we are asking Clay to make to the `desk`. There are two kinds of changes that may be made: we can modify files or we can apply a label to a commit.
+This describes a change that we are asking Clay to make to the `$desk`. There are two kinds of changes that may be made: we can modify files or we can apply a label to a commit.
 
 In the `&` case, we will apply the given changes. In the `|` case, we will apply the given label to the commit specified in `q`, or the current one if it's null.
 
 ---
 
-### `nuri` {#nuri}
+### `$nuri` {#nuri}
 
 Repository action
 
@@ -713,7 +712,7 @@ Repository action
   ==
 ```
 
-Same as a [`nori`](#nori) but a [`+suba`](#suba) rather than [`soba`](#soba).
+Same as a [`$nori`](#nori) but a [`+suba`](#suba) rather than [`$soba`](#soba).
 
 ---
 
@@ -741,7 +740,7 @@ This defines the type of a function for retrieving imported files.
 
 ---
 
-### `page` {#page}
+### `$page` {#page}
 
 A raw, unvalidated file.
 
@@ -749,11 +748,11 @@ A raw, unvalidated file.
 +$  page  ^page
 ```
 
-This is just the `page` defined in `arvo.hoon`: a pair of a mark and a noun.
+This is just the `$page` defined in `arvo.hoon`: a pair of a mark and a noun.
 
 ---
 
-### `pour` {#pour}
+### `$pour` {#pour}
 
 Ford build with content.
 
@@ -788,9 +787,9 @@ Data repository
 
 This is a data repository keyed by hash. Thus, this is where the "real" data is stored, but it is only meaningful if we know the hash of what we're looking for.
 
-`hut` is a `+map` from commit hashes ([`tako`](#tako)s) to commits ([`yaki`](#yaki)s). We often get the hashes from [`hit.dome`](#dome), which keys them by numerical id.
+`hut` is a `+map` from commit hashes ([`$tako`](#tako)s) to commits ([`$yaki`](#yaki)s). We often get the hashes from [`hit.dome`](#dome), which keys them by numerical ID.
 
-`lat` is a `+map` from content hashes ([`lobe`](#lobe)s) to the actual content ([`page`](#page)s). We often get the hashes from a [`yaki`](#yaki), which references this `+map` to get the data. There is no `page` in `yaki`. They are only accessible through `lat`.
+`lat` is a `+map` from content hashes ([`$lobe`](#lobe)s) to the actual content ([`$page`](#page)s). We often get the hashes from a [`$yaki`](#yaki), which references this `+map` to get the data. There is no `$page` in `$yaki`. They are only accessible through `lat`.
 
 ---
 
@@ -810,13 +809,13 @@ This is the data associated to the response to a request.
 
 - `p.p`: specifies the type of data that was requested (and is produced).
 - `q.p`: gives the specific version reported (since a range of versions may be requested in a subscription).
-- `r.p`: the `desk`.
+- `r.p`: the `$desk`.
 - `q`: the path to the filesystem node.
 - `r`: is the data itself (in the format specified by `p.p`).
 
 ---
 
-### `rave` {#rave}
+### `$rave` {#rave}
 
 General subscription request
 
@@ -829,16 +828,16 @@ General subscription request
   ==
 ```
 
-This represents a subscription request for a `desk`.
+This represents a subscription request for a `$desk`.
 
 - `%sing`: asks for data at single revision.
 - `%next`: asks to be notified the next time there’s a change to the specified file.
 - `%mult`: asks to be notified the next time there's a change to a specified set of files.
-- `%many`: asks to be notified on every change in a `desk` for a range of changes (including into the future).
+- `%many`: asks to be notified on every change in a `$desk` for a range of changes (including into the future).
 
 ---
 
-### `real` {#real}
+### `$real` {#real}
 
 Resolved permissions
 
@@ -850,11 +849,11 @@ Resolved permissions
 ```
 
 - `mod`: whether it's a blacklist or whitelist.
-- `who`: the ships who are blacklisted/whitelisted. It can have both individual ships as well as [`crew`](#crew) (permission groups).
+- `who`: the ships who are blacklisted/whitelisted. It can have both individual ships as well as [`$crew`](#crew) (permission groups).
 
 ---
 
-### `regs` {#regs}
+### `$regs` {#regs}
 
 Permission rules for paths
 
@@ -866,7 +865,7 @@ A map from file/directory paths to permission [`+rule`](#rule)s.
 
 ---
 
-### `rein` {#rein}
+### `$rein` {#rein}
 
 Forced on/off apps
 
@@ -878,7 +877,7 @@ A `dude:gall` is the name of a Gall agent and the `?` is whether it's forced on 
 
 ---
 
-### `riff` {#riff}
+### `$riff` {#riff}
 
 Request/desist
 
@@ -886,13 +885,13 @@ Request/desist
 +$  riff  [p=desk q=(unit rave)]
 ```
 
-This represents a request for data about a particular `desk`. If `q` contains a `rave`, then this opens a subscription to the `desk` for that data. If `q` is null, then this tells Clay to cancel the subscription along this duct.
+This represents a request for data about a particular `$desk`. If `q` contains a `$rave`, then this opens a subscription to the `$desk` for that data. If `q` is null, then this tells Clay to cancel the subscription along this duct.
 
 ---
 
-### `riff-any` {#riff-any}
+### `$riff-any` {#riff-any}
 
-Versioned [`riff`](#riff)
+Versioned [`$riff`](#riff)
 
 ```hoon
   +$  riff-any
@@ -904,7 +903,7 @@ Currently there's only one version.
 
 ---
 
-### `rite` {#rite}
+### `$rite` {#rite}
 
 New permissions
 
@@ -922,7 +921,7 @@ New permissions
 
 ---
 
-### `riot` {#riot}
+### `$riot` {#riot}
 
 Response
 
@@ -930,7 +929,7 @@ Response
 +$  riot  (unit rant)
 ```
 
-A `riot` is a response to a subscription. If null, the subscription has been completed, and no more responses will be sent. Otherwise, the `+rant` is the produced data.
+A `$riot` is a response to a subscription. If null, the subscription has been completed, and no more responses will be sent. Otherwise, the `+rant` is the produced data.
 
 ---
 
@@ -957,7 +956,7 @@ Relative path
 
 ---
 
-### `saba` {#saba}
+### `$saba` {#saba}
 
 Patch plus merge
 
@@ -967,7 +966,7 @@ Patch plus merge
 
 ---
 
-### `soak` {#soak}
+### `$soak` {#soak}
 
 Ford result
 
@@ -985,7 +984,7 @@ The actual data in the Ford cache.
 
 ---
 
-### `soba` {#soba}
+### `$soba` {#soba}
 
 Delta
 
@@ -993,7 +992,7 @@ Delta
 +$  soba  (list [p=path q=miso])
 ```
 
-This describes a `+list` of changes to make to a `desk`. The `path`s are `path`s to files to be changed, and the corresponding `miso` value is a description of the change itself.
+This describes a `+list` of changes to make to a `$desk`. The `$path`s are `$path`s to files to be changed, and the corresponding `$miso` value is a description of the change itself.
 
 ---
 
@@ -1005,11 +1004,11 @@ Delta
 +$  suba  (list [p=path q=misu])
 ```
 
-Same as a [`soba`](#soba) but with a [`misu`](#misu) rather than [`miso`](#miso).
+Same as a [`$soba`](#soba) but with a [`$misu`](#misu) rather than [`$miso`](#miso).
 
 ---
 
-### `tako` {#tako}
+### `$tako` {#tako}
 
 Commit reference
 
@@ -1017,11 +1016,11 @@ Commit reference
 +$  tako  @uvI
 ```
 
-This is a hash of a [`yaki`](#yaki), a commit. These are most notably used as the keys in [`hut.rang`](#rang), where they are associated with the actual `yaki`, and as the values in [`hit.dome`](#dome), where sequential numerical ids are associated with these.
+This is a hash of a [`$yaki`](#yaki), a commit. These are most notably used as the keys in [`hut.rang`](#rang), where they are associated with the actual `$yaki`, and as the values in [`hit.dome`](#dome), where sequential numerical ids are associated with these.
 
 ---
 
-### `toro` {#toro}
+### `$toro` {#toro}
 
 General change
 
@@ -1062,7 +1061,7 @@ This is a parametrized type for list changes. For example, `(urge @t)` is a list
 
 ---
 
-### `waft` {#waft}
+### `$waft` {#waft}
 
 Kelvin range
 
@@ -1072,7 +1071,7 @@ Kelvin range
   weft
 ```
 
-A `waft` is the result of reading a `sys.kelvin` file in a desk. It lists all the `weft`s (kernel versions) a desk is compatible with. It may either be a single `weft` like `[%zuse 417]`, or a range like:
+A `$waft` is the result of reading a `sys.kelvin` file in a desk. It lists all the `$weft`s (kernel versions) a desk is compatible with. It may either be a single `$weft` like `[%zuse 410]`, or a range like:
 
 ```hoon
 [[%1 ~] (silt zuse+417 zuse+416 ~)]
@@ -1080,7 +1079,7 @@ A `waft` is the result of reading a `sys.kelvin` file in a desk. It lists all th
 
 ---
 
-### `whom` {#whom}
+### `$whom` {#whom}
 
 Ship or named crew
 
@@ -1088,11 +1087,11 @@ Ship or named crew
 +$  whom  (each ship @ta)
 ```
 
-Either a single ship or a set of ships in a [`crew`](#crew) (permission group). This is used for read/write permissions.
+Either a single ship or a set of ships in a [`$crew`](#crew) (permission group). This is used for read/write permissions.
 
 ---
 
-### `yoki` {#yoki}
+### `$yoki` {#yoki}
 
 Commit
 
@@ -1100,11 +1099,11 @@ Commit
 +$  yoki  (each yuki yaki)
 ```
 
-Either a [`yuki`](#yuki) or a [`yaki`](#yaki). A `yuki` is a proto-commit, a `yaki` is a final commit whose data is entirely in the general object store.
+Either a [`$yuki`](#yuki) or a [`$yaki`](#yaki). A `$yuki` is a proto-commit, a `$yaki` is a final commit whose data is entirely in the general object store.
 
 ---
 
-### `yuki` {#yuki}
+### `$yuki` {#yuki}
 
 Proto-commit
 
@@ -1115,14 +1114,14 @@ Proto-commit
   ==
 ```
 
-A `yuki` is a proto-commit: a new, proposed commit that has not yet been finalized. This is in contrast to a [`yaki`](#yaki). The main difference is that a `yuki` may contain actual data, while a `yaki` only contains [`lobe`](#lobe)s ( content hashes used as references to data in the general object store).
+A `$yuki` is a proto-commit: a new, proposed commit that has not yet been finalized. This is in contrast to a [`$yaki`](#yaki). The main difference is that a `$yuki` may contain actual data, while a `$yaki` only contains [`$lobe`](#lobe)s (content hashes used as references to data in the general object store).
 
 - `p`: commit references of any parents.
-- `q`: a `+map` from file paths to either [`page`](#page) data or `lobe`s.
+- `q`: a `+map` from file paths to either [`$page`](#page) data or `$lobe`s.
 
 ---
 
-### `yaki` {#yaki}
+### `$yaki` {#yaki}
 
 Finalized commit
 
@@ -1136,7 +1135,7 @@ Finalized commit
 ```
 
 - `p`: a `+list` of the hashes of the parents of this commit. In most cases, this will be a single commit, but in a merge there may be more parents.
-- `q`: is a `+map` of the `path`s on a desk to the content hashes at that location. If you understand what a [`lobe`](#lobe) and a [`page`](#page) is, then the type signature here tells the whole story.
+- `q`: is a `+map` of the `$path`s on a desk to the content hashes at that location. If you understand what a [`$lobe`](#lobe) and a [`$page`](#page) is, then the type signature here tells the whole story.
 - `r`: is the hash associated with this commit.
 - `t`: is the date at which this commit was made.
 
@@ -1167,7 +1166,7 @@ App states
 ```
 
 - [`+zest`](#zest) says whether the desk is running or suspended.
-- `wic` is the set of kernel versions ([`weft`](#weft)s) for which the desk has queued commits awaiting kernel updates.
+- `wic` is the set of kernel versions ([`$weft`](#weft)s) for which the desk has queued commits awaiting kernel updates.
 
 ---
 
@@ -1183,13 +1182,13 @@ App state changes
   ==
 ```
 
-- `%wait`: blocked commit by [`weft`](#weft).
-- `%warp`: unblocked commit by `weft`.
-- `%zest`: desk is now running/suspended/held.
+- `%wait`: blocked commit by [`$weft`](#weft).
+- `%warp`: unblocked commit by `$weft`.
+- `%zest`: desk is now running / suspended / held.
 
 ---
 
-### `leak` {#leak}
+### `$leak` {#leak}
 
 Ford cache key
 
@@ -1205,7 +1204,7 @@ This includes all build inputs, including transitive dependencies, recursively.
 
 ---
 
-### `flow` {#flow}
+### `$flow` {#flow}
 
 Global Ford cache
 
@@ -1215,11 +1214,11 @@ Global Ford cache
 
 Refcount includes references from other items in the cache, and from `spill`s in each desk.
 
-This is optimized for minimizing the number of rebuilds, and given that, minimizing the amount of memory used. It is relatively slow to lookup, because generating a cache key can be fairly slow (for files, it requires parsing; for `tube`s, it even requires building the marks).
+This is optimized for minimizing the number of rebuilds, and given that, minimizing the amount of memory used. It is relatively slow to lookup, because generating a cache key can be fairly slow (for files, it requires parsing; for `$tube`s, it even requires building the marks).
 
 ---
 
-### `flue` {#flue}
+### `$flue` {#flue}
 
 Per-desk build cache
 
@@ -1232,7 +1231,7 @@ Per-desk build cache
 
 ---
 
-### `mist` {#mist}
+### `$mist` {#mist}
 
 Ford build without content
 
@@ -1252,7 +1251,7 @@ This is used at the index of `sprig`s in [`$flue`](#flue)s.
 
 ---
 
-### `pile` {#pile}
+### `$pile` {#pile}
 
 Preprocessed hoon source file
 
@@ -1276,11 +1275,11 @@ Preprocessed hoon source file
 - `maz`: imports mark definition from `/mar` (`/%`).
 - `caz`: imports mark converter from `/mar` (`/$`).
 - `bar`: unbuilt file imports, as mark (`/*`).
-- `hoon`: the rest of the hoon file.
+- `$hoon`: the rest of the hoon file.
 
 ---
 
-### `taut` {#taut}
+### `$taut` {#taut}
 
 File import from `/lib` or `/sur`
 
@@ -1290,7 +1289,7 @@ File import from `/lib` or `/sur`
 
 ---
 
-### `mars` {#mars}
+### `$mars` {#mars}
 
 Mark conversion request
 
@@ -1302,7 +1301,7 @@ From `a` to `b`.
 
 ---
 
-### `tube` {#tube}
+### `$tube` {#tube}
 
 Mark conversion gate
 
@@ -1310,7 +1309,7 @@ Mark conversion gate
 +$  tube  $-(vase vase)
 ```
 
-A gate that takes a `vase` and produces a `vase`. This is the type of mark convertion gate returned by `%c`-care scries and read requests.
+A gate that takes a `$vase` and produces a `$vase`. This is the type of mark convertion gate returned by `%c`-care scries and read requests.
 
 ---
 

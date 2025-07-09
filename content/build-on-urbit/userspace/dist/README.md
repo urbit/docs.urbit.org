@@ -27,7 +27,7 @@ Every desk is self-contained: the result of validating and building its files is
 
 For the moment, every live desk must support the running kernel version. Kernel backwards compatibility is an intended feature in the future, but for now, app developers will need to publish an app update supporting new kernels each time they're released.
 
-Each desk defines its own filetypes (called `mark`s), in its `/mar` folder. There are no shared system marks that all userspace code knows, nor common libraries in `/lib` or `/sur` — each desk is completely self-contained.
+Each desk defines its own filetypes (called `$mark`s), in its `/mar` folder. There are no shared system marks that all userspace code knows, nor common libraries in `/lib` or `/sur` — each desk is completely self-contained.
 
 It's common for a apps to interact with apps on other desks, and therefore need marks and libraries by the other desk's developer. Since direct cross-desk dependencies are not currently supported, the typical approach is for app developers to publish a "dev" folder on their git repo with the files need for developers interfacing with their app.
 

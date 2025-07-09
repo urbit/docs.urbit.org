@@ -63,7 +63,7 @@ Path with interpolation.
 
 #### Produces
 
-A null-terminated list of the items, which are either constant `@ta` atoms (`knots`), or expressions producing a `knot`.
+A null-terminated list of the items, which are either constant `@ta` atoms (`$knot`s), or expressions producing a `$knot`.
 
 #### Examples
 

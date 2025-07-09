@@ -112,7 +112,7 @@ The `+slap` gate runs a hoon expression against a vase, producing a vase of the 
 
 `+slop` is the simplest vase operation. It converts a cell of vases into a vase of a cell. It does this by making a pair `[q.hed q.tal]` of the values of the two input vases, and it constructs the type of the output vase as `[%cell p.hed p.tal]`, i.e. a cell whose head has the type as the first vase and whose tail has the same type as the second vase.
 
-`+slap` first compiles a parsed Hoon expression (`gen`) using `+mint:ut`, with the type of the subject.
+`+slap` first compiles a parsed Hoon expression (`.gen`) using `+mint:ut`, with the type of the subject.
 
 #### Examples
 

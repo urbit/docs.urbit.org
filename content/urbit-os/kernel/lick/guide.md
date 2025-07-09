@@ -95,7 +95,7 @@ All `+on-init` does is pass Lick a [`%spin`](tasks.md#spin) task to create a new
   [%pass /spit %arvo %l %spit /'licker.sock' %noun %ping]~
 ```
 
-When `+on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, it passes Lick a [`%spit`](tasks.md#spit) task with the same data. Lick will send it on through to our `licker.sock` socket for our Python script. This lets us poke our agent from the Dojo like:
+When `+on-poke` receives a poke with a `$mark` of `%noun` and data of `%ping`, it passes Lick a [`%spit`](tasks.md#spit) task with the same data. Lick will send it on through to our `licker.sock` socket for our Python script. This lets us poke our agent from the Dojo like:
 
 ```
 > :licker %ping
@@ -120,7 +120,7 @@ When `+on-poke` receives a poke with a `mark` of `%noun` and data of `%ping`, it
 
 - `%connect`: An external process has connected to the socket.
 - `%disconnect`: An external process has disconnected from the socket.
-- `%error`: An error has occurred. The error message is a `cord` in the `noun`. The only time you'll get this is if you tried to `%spit` a message to the socket but there was nothing connected to it. In that case, the error message will be `'not connected'`.
+- `%error`: An error has occurred. The error message is a `$cord` in the `$noun`. The only time you'll get this is if you tried to `%spit` a message to the socket but there was nothing connected to it. In that case, the error message will be `'not connected'`.
 - `[%noun %pong]`: This is the successful response we expect from the Python script.
 
 In all cases we just `+slog` a message to the terminal.
@@ -197,7 +197,7 @@ def cue_data(data):
     return (mark,noun)
 ```
 
-This function takes some data from the socket, decodes it, and returns a pair of the `mark` and `noun`. The data initially has the following format:
+This function takes some data from the socket, decodes it, and returns a pair of the mark and noun. The data initially has the following format:
 
 ```
 [1B: version][4B: size of jam in bytes][nB: jammed data]
@@ -205,7 +205,7 @@ This function takes some data from the socket, decodes it, and returns a pair of
 
 The version is always `0` (though this may change in the future). The `cue_data` function just strips off the the version and size headers, but you may wish to verify these.
 
-After that, `cue_data` converts the jam to an integer and passes it to the `cue` function in `noun.py` to decode. It converts the `mark` to a string, then returns it along with the raw noun.
+After that, `cue_data` converts the jam to an integer and passes it to the `cue` function in `noun.py` to decode. It converts the mark to a string, then returns it along with the raw noun.
 
 
 ```python

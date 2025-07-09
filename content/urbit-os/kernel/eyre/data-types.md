@@ -33,8 +33,8 @@ This document describes the data types used by Eyre as defined in `/sys/lull.hoo
   ==  ==
 ```
 
-- `auth`: Whether the request must include a valid session cookie or otherwise be authenticated. If this is false, the entry will be publicly accessible.
-- `body`: The HTTP response to give. This contains a `[%payload =simple-payload:http]`. See the [`$simple-payload:http`](#simple-payloadhttp) for more details of the data.
+- `.auth`: Whether the request must include a valid session cookie or otherwise be authenticated. If this is false, the entry will be publicly accessible.
+- `.body`: The HTTP response to give. This contains a `[%payload =simple-payload:http]`. See the [`$simple-payload:http`](#simple-payloadhttp) for more details of the data.
 
 ---
 
@@ -73,7 +73,7 @@ CORS origins categorised by approval status. The `requests` `+set` contains all 
   ==
 ```
 
-An HTTP connection that is currently open. The [$action](#action) is how it's being handled (e.g. by a Gall app, the channel system, etc). The [$inbound-request](#inbound-request) is the original request which opened the connection. The `response-header` contains the status code and headers. The `bytes-sent` is the total bytes sent so far in response.
+An HTTP connection that is currently open. The [`$action`](#action) is how it's being handled (e.g. by a Gall app, the channel system, etc). The [`$inbound-request`](#inbound-request) is the original request which opened the connection. The `$response-header` contains the status code and headers. The `.bytes-sent` is the total bytes sent so far in response.
 
 ---
 
@@ -96,7 +96,7 @@ This represents the authentication state of all sessions. It maps session cookie
   ==
 ```
 
-This represents server-side data about a session. The `expiry-time` is when the `session` expires and `channels` is the `+set` of [$channel](#channel) names opened by the session.
+This represents server-side data about a session. The `.expiry-time` is when the `$session` expires and `.channels` is the `+set` of [`$channel`](#channel) names opened by the session.
 
 ---
 
@@ -109,7 +109,7 @@ This represents server-side data about a session. The `expiry-time` is when the 
   ==
 ```
 
-The state used by the channel system. The `session` is a `+map` between channel names and [$channel](#channel)s and the `duct-to-key` `+map`s `duct`s to `+channel` names.
+The state used by the channel system. The `$session` is a `+map` between channel names and [`$channel`](#channel)s and the `.duct-to-key` `+map`s `$duct`s to `$channel` names.
 
 ---
 
@@ -122,7 +122,7 @@ The state used by the channel system. The `session` is a `+map` between channel 
   ==
 ```
 
-A reference to a timer so it can be cancelled or updated. The `date` is when it will fire and the `duct` is what set the timer.
+A reference to a timer so it can be cancelled or updated. The `$date` is when it will fire and the `$duct` is what set the timer.
 
 ---
 
@@ -159,17 +159,17 @@ An unacknowledged event in the channel system.
 
 This is the state of a particular channel in the channel system.
 
-- `mode` says whether the channel sends/received JSON or [nouns](noun-channels.md).
-- `state` is either the expiration time or the duct currently listening.
-- `next-id` is the next event ID to be used in the event stream.
-- `last-ack` is the date of the last client ack and is used for clog calculations in combination with `unacked`.
-- `events` queue contains all unacked events:
-  - `id` is the server-set event ID.
-  - `request-id` is the client-set request ID.
-  - [$channel-event](#channel-event) is the event itself.
-- `unacked` `+map` contains the unacked event count per `request-id` and is used for clog calculations.
-- `subscriptions` `+map` contains gall subscriptions by `request-id`.
-- `heartbeat` is the SSE heartbeat [$timer](#timer).
+- `.mode` says whether the channel sends/received JSON or [nouns](noun-channels.md).
+- `.state` is either the expiration time or the duct currently listening.
+- `.next-id` is the next event ID to be used in the event stream.
+- `.last-ack` is the date of the last client ack and is used for clog calculations in combination with `.unacked`.
+- `.events` queue contains all unacked events:
+  - `.id` is the server-set event ID.
+  - `.request-id` is the client-set request ID.
+  - [`.channel-event`](#channel-event) is the event itself.
+- `.unacked` `+map` contains the unacked event count per `.request-id` and is used for clog calculations.
+- `.subscriptions` `+map` contains gall subscriptions by `.request-id`.
+- `.heartbeat` is the SSE heartbeat [`$timer`](#timer).
 
 ---
 
@@ -182,7 +182,7 @@ This is the state of a particular channel in the channel system.
   ==
 ```
 
-A `binding` is a rule to match a URL `path` and optional `site` domain which can then be tied to an [$action](#action). A `path` of `/foo` will also match `/foo/bar`, `/foo/bar/baz`, etc. If the `site` is `~` it will be determined implicitly. A binding must be unique.
+A `$binding` is a rule to match a URL `$path` and optional `.site` domain which can then be tied to an [`$action`](#action). A `$path` of `/foo` will also match `/foo/bar`, `/foo/bar/baz`, etc. If the `.site` is `~` it will be determined implicitly. A binding must be unique.
 
 ---
 
@@ -243,7 +243,7 @@ The configuration of the runtime HTTP server itself. The `secure` field contains
   ==
 ```
 
-This is for updating the server configuration. In the case of `%cert`, a `cert` of `~` clears the HTTPS cert & key, otherwise `cert` contains the PEM-encoded RSA private key and certificate or certificate chain. In the case of `%turf`, a `%put` `action` sets a domain name and a `%del` `action` removes it. The [$turf](#turf) contains the domain name.
+This is for updating the server configuration. In the case of `%cert`, a `cert` of `~` clears the HTTPS cert & key, otherwise `cert` contains the PEM-encoded RSA private key and certificate or certificate chain. In the case of `%turf`, a `%put` `.action` sets a domain name and a `%del` `.action` removes it. The [$turf](#turf) contains the domain name.
 
 ---
 
@@ -317,7 +317,7 @@ An HTTP method.
   ==
 ```
 
-A single HTTP request. The [$method:http](#methodhttp) is the HTTP method, the `url` is the unescaped URL, the [$header-list:http](#header-listhttp) contains the HTTP headers of the request and the `body` is the actual data. An `octs` is just `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
+A single HTTP request. The [`$method:http`](#methodhttp) is the HTTP method, the `url` is the unescaped URL, the [`$header-list:http`](#header-listhttp) contains the HTTP headers of the request and the `body` is the actual data. An `$octs` is just `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
 
 ---
 
@@ -353,7 +353,7 @@ The status code and [$header-list:http](#header-listhttp) of an HTTP response.
 
 Packetized HTTP.
 
-Urbit treats Earth's HTTP servers as pipes, where Urbit sends or receives one or more `http-event`s. The first of these will be a `%start`, and the last will always be `%cancel` or will have `complete` set to `%.y` to finish the connection.
+Urbit treats Earth's HTTP servers as pipes, where Urbit sends or receives one or more `$http-event`s. The first of these will be a `%start`, and the last will always be `%cancel` or will have `complete` set to `%.y` to finish the connection.
 
 Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding'` should be performed at a higher level; this structure is merely for what gets sent to or received from Earth.
 
@@ -369,6 +369,6 @@ Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding
 --
 ```
 
-A simple, one-event response used for generators. The [$reponse-header:http](#response-headerhttp) contains the status code and HTTP headers. The `octs` in the `data` contains the body of the response and is a `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
+A simple, one-event response used for generators. The [`$reponse-header:http`](#response-headerhttp) contains the status code and HTTP headers. The `$octs` in the `$data` contains the body of the response and is a `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
 
 ---

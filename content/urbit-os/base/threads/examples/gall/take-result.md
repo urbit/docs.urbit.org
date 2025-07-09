@@ -132,7 +132,7 @@ In `+on-poke` we've added an extra card _before_ the `%spider-start` poke to sub
 
 If successful the thread will return a cage with a mark of `%thread-done` and a vase containing the result.
 
-If the thread failed it will return a cage with a mark of `%thread-fail` and a vase containing `[term tang]` where `term` is an error message and `tang` is a traceback. In our case our thread fails with error `%not-foo` when its argument is not `%foo`.
+If the thread failed it will return a cage with a mark of `%thread-fail` and a vase containing `[term tang]` where `$term` is an error message and `$tang` is a traceback. In our case our thread fails with error `%not-foo` when its argument is not `%foo`.
 
 Note that spider will automatically `%kick` us from the subscription after ending the thread and returning the result.
 

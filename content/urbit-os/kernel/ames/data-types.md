@@ -73,9 +73,9 @@ Ship transport address; either opaque [$address](#address) or galaxy. The runtim
 
 Application-level message, as a `%pass`.
 
-- `vane` - Destination vane on remote ship.
-- `path` - Internal route on the receiving ship.
-- `payload` - Semantic message contents.
+- `.vane` - Destination vane on remote ship.
+- `.path` - Internal route on the receiving ship.
+- `.payload` - Semantic message contents.
 
 ## `$spar` {#spar}
 
@@ -91,16 +91,16 @@ Instead of a fully qualifying scry path, Ames infers rift and life based on the 
 +$  bone  @udbone
 ```
 
-Message flow index - mapped to `duct`s in the [$ossuary](#ossuary).
+Message flow index - mapped to `$duct`s in the [$ossuary](#ossuary).
 
-The first `bone` is 0. They increment by 4, since each flow includes a bit for each message determining forward vs. backward and a second bit for whether the message is on the normal flow or the associated diagnostic flow (for naxplanations).
+The first `$bone` is 0. They increment by 4, since each flow includes a bit for each message determining forward vs. backward and a second bit for whether the message is on the normal flow or the associated diagnostic flow (for naxplanations).
 
-The least significant bit of a `bone` is:
+The least significant bit of a `$bone` is:
 
 - 1 if "forward", i.e. we send `%plea`s on this flow.
 - 0 if "backward", i.e. we receive `%plea`s on this flow.
 
-The second-least significant bit is 1 if the `bone` is a naxplanation `bone`, and 0 otherwise. Only naxplanation messages can be sent on a naxplanation `bone`, as `%boon`s.
+The second-least significant bit is 1 if the `$bone` is a naxplanation `$bone`, and 0 otherwise. Only naxplanation messages can be sent on a naxplanation `$bone`, as `%boon`s.
 
 ## `$fragment` {#fragment}
 
@@ -178,7 +178,7 @@ A message acknowledgement.
 All Ames knows about a peer.
 
 - `%alien` - No PKI data, so enqueue actions to perform once we learn it.
-- `%known` - We know their `life` and public keys, so we have a channel.
+- `%known` - We know their `$life` and public keys, so we have a channel.
 
 ## `$alien-agenda` {#alien-agenda}
 
@@ -223,16 +223,16 @@ What to do when Ames learns a peer's life and keys.
 
 State for a peer with known life and keys.
 
-- `route` - Transport-layer destination for packets to the peer.
-- `qos` - Quality of service; connection status to the peer.
-- `ossuary` - [$bone](#bone) to `duct` mapper.
-- `snd` - Per-`bone` message pumps to send messages as fragments.
-- `rcv` - Per-`bone` message sinks to assemble messages from fragments.
-- `nax` - Unprocessed nacks (negative acknowledgments).
-- `heeds` - Listeners for `%clog` notifications.
-- `closing`: Bones closed on the sender side.
-- `corked`: Bones closed on both sender and receiver.
-- `keens`: Remote scry state.
+- `.route` - Transport-layer destination for packets to the peer.
+- `.qos` - Quality of service; connection status to the peer.
+- `.ossuary` - [$bone](#bone) to `$duct` mapper.
+- `.snd` - Per-`$bone` message pumps to send messages as fragments.
+- `.rcv` - Per-`$bone` message sinks to assemble messages from fragments.
+- `.nax` - Unprocessed nacks (negative acknowledgments).
+- `.heeds` - Listeners for `%clog` notifications.
+- `.closing`: Bones closed on the sender side.
+- `.corked`: Bones closed on both sender and receiver.
+- `.keens`: Remote scry state.
 
 ## `$keen-state` {#keen-state}
 
@@ -346,7 +346,7 @@ Therefore, a `$roar` looks like:
 [dat=[p=/ q=~] syg=~]
 ```
 
-In `dat`, for the `(pair path (unit (cask)))`, the `path` is the remote scry path and the `(unit (cask))` contains the value, or is null if there's no value at this path and will never be one (equivalent to the `[~ ~]` case of a local scry).
+In `dat`, for the `(pair path (unit (cask)))`, the `$path` is the remote scry path and the `(unit (cask))` contains the value, or is null if there's no value at this path and will never be one (equivalent to the `[~ ~]` case of a local scry).
 
 ## `$purr` {#purr}
 
@@ -384,7 +384,7 @@ Quality of service; how is the connection to a peer doing?
   ==
 ```
 
-[$bone](#bone) to `duct` mapping, `next` is the next `bone` to map to a `duct`.
+[`$bone`](#bone) to `$duct` mapping, `$next` is the next `$bone` to map to a `$duct`.
 
 ## `$message-pump-state` {#message-pump-state}
 
@@ -401,12 +401,12 @@ Quality of service; how is the connection to a peer doing?
 
 Persistent state for a `|message-pump`.
 
-- `current`- Sequence number of earliest message sent or being sent.
-- `next` - Sequence number of next message to send.
-- `unsent-messages` - Messages to be sent after current message.
-- `unsent-fragments` - Fragments of current message waiting for sending.
-- `queued-message-acks` - Future message acks to be applied after current.
-- `packet-pump-state` - State of corresponding `|packet-pump`.
+- `.current`- Sequence number of earliest message sent or being sent.
+- `.next` - Sequence number of next message to send.
+- `.unsent-messages` - Messages to be sent after current message.
+- `.unsent-fragments` - Fragments of current message waiting for sending.
+- `.queued-message-acks` - Future message acks to be applied after current.
+- `.packet-pump-state` - State of corresponding `|packet-pump`.
 
 ## `$static-fragment` {#static-fragment}
 
@@ -520,10 +520,10 @@ Sending statistics about a packet in flight.
 
 State of a `|message-sink` to assemble received messages.
 
-- `last-acked` - Highest [$message-num](#message-num) Ames has fully acknowledged.
-- `last-heard` - Highest `message-num` Ames has heard all fragments for.
-- `pending-vane-ack` - Heard but not processed by local vane.
-- `live-messages` - Partially received messages.
+- `.last-acked` - Highest [`$message-num`](#message-num) Ames has fully acknowledged.
+- `.last-heard` - Highest `$message-num` Ames has heard all fragments for.
+- `.pending-vane-ack` - Heard but not processed by local vane.
+- `.live-messages` - Partially received messages.
 
 ## `$partial-rcv-message` {#partial-rcv-message}
 

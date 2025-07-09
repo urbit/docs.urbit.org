@@ -137,7 +137,7 @@ The core is the underlying representation of a function (a lambda with implicit 
 
 The type system has several unusual features:
 
-* It's intentional, in the sense that all constructs are first-class and can be down-cast to `noun`, Hoon's "any" or "top" type that matches all Nock nouns.
+* It's intentional, in the sense that all constructs are first-class and can be down-cast to a noun, Hoon's "any" or "top" type that matches all Nock nouns.
 * Types are also used as scopes, so they store all of Hoon's variable names and docstrings.
 * It uses an unusual macro-like feature called "wetness" to implement parametric polymorphism.
 * It can also auto-generate coercion functions that validate and lift raw nouns into structural types, such as lists or cells. This is used to validate untrusted data, such as messages from the other ships on the network.

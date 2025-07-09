@@ -21,7 +21,7 @@ In this tutorial we will run a simple "move trace" and use the output to get a p
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one another. Here we look at how a simple command, `-time ~s1`, goes from pressing Enter on your keyboard in Dojo towards returning a notification that one second has elapsed.
 
-To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo and press Enter to enable verbose mode (this is tracked by the laconic bit introduced in the section on [the state](README.md#the-state)) in the kernel documentation, followed by `-time ~s1` followed by Enter. Your terminal should pretty print a series of `move`s that looks something like this:
+To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo and press Enter to enable verbose mode (this is tracked by the laconic bit introduced in the section on [the state](README.md#the-state)) in the kernel documentation, followed by `-time ~s1` followed by `Enter`. Your terminal should pretty print a series of `$move`s that looks something like this:
 
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
@@ -59,11 +59,11 @@ followed by a pause of one second, then
 ~s1..0007
 ```
 
-This gives us a move trace that is a list of `move`s and some associated metadata. Some of the `move`s are a bit of a distraction from what's going on overall such as acknowledgements that a `+poke` was received (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the `%blit` `card`s) is not printed even in verbose mode because it occurs so frequently, but there are only two of them here and so we have added it in.
+This gives us a move trace that is a list of `$move`s and some associated metadata. Some of the `$move`s are a bit of a distraction from what's going on overall such as acknowledgements that a `+poke` was received (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `$move`s (the `%blit` `$card`s) is not printed even in verbose mode because it occurs so frequently, but there are only two of them here and so we have added it in.
 
-The main process that is occurring here is a sequence of `%pass` `move`s initiated by pressing Enter in the terminal that goes on to be handled by Dill, then Gall, and finally Behn. After the timer has elapsed, a sequence of `%give` `move`s is begun by Behn, which then passes through Gall and ultimately ends up back at the terminal. Any `move`s besides `%pass` in the first segment of the move trace is a secondary process utilized for book-keeping, spawning processes, interpreting commands, etc. All of this will be explained in detail below.
+The main process that is occurring here is a sequence of `%pass` `$move`s initiated by pressing `Enter` in the terminal that goes on to be handled by Dill, then Gall, and finally Behn. After the timer has elapsed, a sequence of `%give` `$move`s is begun by Behn, which then passes through Gall and ultimately ends up back at the terminal. Any `$move`s besides `%pass` in the first segment of the move trace is a secondary process utilized for book-keeping, spawning processes, interpreting commands, etc. All of this will be explained in detail below.
 
-It is important to note that this move trace should be thought of as being from the "point of view" of the kernel - each line represents the kernel taking in a message from one source and passing it along to its destination. It is then processed at that destination (which could be a vane or an app), and the return of that process is sent back to Arvo in the form of another `move` to perform and the loop begins again. Thus this move trace does not display information about what is going on inside of the vane or app such as private function calls, only what the kernel itself sees.
+It is important to note that this move trace should be thought of as being from the "point of view" of the kernel - each line represents the kernel taking in a message from one source and passing it along to its destination. It is then processed at that destination (which could be a vane or an app), and the return of that process is sent back to Arvo in the form of another `$move` to perform and the loop begins again. Thus this move trace does not display information about what is going on inside of the vane or app such as private function calls, only what the kernel itself sees.
 
 ## Interpreting the move trace <a href="#interpreting-the-move-trace" id="interpreting-the-move-trace"></a>
 
@@ -75,10 +75,9 @@ Let's put the first part of the move trace into a diagram to make following alon
 
 ![](https://media.urbit.org/docs/arvo/move-trace-with-key.png)
 
-Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` `note/task` sequence or a `%give` `gift/sign` sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information, see the [Arvo kernel tutorial](README.md#the-kernel).
+Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` note/task sequence or a `%give` gift/sign sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `$note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `$task` to Vane B. For more information, see the [Arvo kernel tutorial](README.md#the-kernel).
 
-This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -\
-as well as four applications - hood, spider, dojo, and time.
+This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford - as well as four applications - hood, spider, Dojo, and time.
 
 Now let's go through each line one by one.
 
@@ -86,35 +85,35 @@ Now let's go through each line one by one.
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
 ```
 
-This tells us that Unix has sent a `%belt` `card`, which corresponds to terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
+This tells us that Unix has sent a `%belt` `$card`, which corresponds to terminal input (the `Enter` keystroke) at time `~2020.1.14..19.01.25..7556`
 
 Here is the line of code in `arvo.hoon`, found in the [section 3bE core](README.md#section-3be-core), that generated the output:
 
 ```hoon
-    ~?  !lac  ["" %unix -.q.ovo p.ovo now]
+~?  !lac  ["" %unix -.q.ovo p.ovo now]
 ```
 
-First we note that this line is executed only if the laconic bit is set to true, as we did when we input `|verb`. Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`, we can then say that this is a `%unix` `move` tagged with `%belt` whose cause is a `wire` given by `//term/1`, where the empty path element `//` represents Unix and `term/1` represents the terminal in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s) since Unix I/O events are always the beginning and end of the Arvo event loop, thus only a single `wire` is ever required at this initial stage.
+First we note that this line is executed only if the laconic bit is set to true, as we did when we input `|verb`. Here, `.ovo` is the input `$ovum`. Knowing that an `$ovum` is a `[p=wire q=curd]`, we can then say that this is a `%unix` `$move` tagged with `%belt` whose cause is a `$wire` given by `//term/1`, where the empty path element `//` represents Unix and `term/1` represents the terminal in Unix. Here we have a `$wire` instead of a `$duct` (i.e. a list of `$wire`s) since Unix I/O events are always the beginning and end of the Arvo event loop, thus only a single `$wire` is ever required at this initial stage.
 
 The `""` here is a metadatum that keeps track of how many steps deep in the causal chain the event is. An event with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In this case, Unix events are an "original cause" and thus represented by an empty string.
 
-At this point in time, Dill has received the `move` and then processes it. The `%belt` `task` in `dill.hoon` is `+call`ed, which is processed using the `+send` arm:
+At this point in time, Dill has received the `$move` and then processes it. The `%belt` `$task` in `dill.hoon` is `+call`ed, which is processed using the `+send` arm:
 
 ```hoon
-      ++  send                                          ::  send action
-        |=  bet/dill-belt
-        ^+  +>
-        ?^  tem
-          +>(tem `[bet u.tem])
-        (deal / [%poke [%dill-belt -:!>(bet) bet]])
+++  send                                          ::  send action
+  |=  bet/dill-belt
+  ^+  +>
+  ?^  tem
+    +>(tem `[bet u.tem])
+  (deal / [%poke [%dill-belt -:!>(bet) bet]])
 ```
 
-Dill has taken in the command and in response it `%pass`es a `task` `card` with instructions to `%poke` hood, which is a Gall app primarily used for interfacing with Dill. Here, `+deal` is an arm for `%pass`ing a `card` to Gall to ask it to create a `%deal` `task`:
+Dill has taken in the command and in response it `%pass`es a `$task` `$card` with instructions to `%poke` hood, which is a Gall app primarily used for interfacing with Dill. Here, `+deal` is an arm for `%pass`ing a `$card` to Gall to ask it to create a `%deal` `$task`:
 
 ```hoon
-      ++  deal                                          ::  pass to %gall
-        |=  [=wire =deal:gall]
-        (pass wire [%g %deal [our our] ram deal])
+++  deal                                          ::  pass to %gall
+  |=  [=wire =deal:gall]
+  (pass wire [%g %deal [our our] ram deal])
 ```
 
 Next in our move trace we have this:
@@ -123,37 +122,37 @@ Next in our move trace we have this:
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
 
-Here, Dill `%pass`es a `task` `card` saying to `%poke` Gall's hood app (with the Enter keystroke).
+Here, Dill `%pass`es a `$task` `$card` saying to `%poke` Gall's hood app (with the Enter keystroke).
 
-Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](README.md#section-3be-core). This arm is what the Arvo kernel uses to send `card`s, and here we look at the segment that includes `%pass` `move`s.
+Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](README.md#section-3be-core). This arm is what the Arvo kernel uses to send `$card`s, and here we look at the segment that includes `%pass` `$move`s.
 
 ```hoon
-  ++  jack                                              ::  dispatch card
-    |=  [lac=? gum=muse]
-    ^-  [[p=(list ovum) q=(list muse)] _vanes]
-    ~|  %failed-jack
-    ::  =.  lac  |(lac ?=(?(%g %f) p.gum))
-    ::  =.  lac  &(lac !?=($b p.gum))
-    %^    fire
-        p.gum
-      s.gum
-    ?-    -.r.gum
-        $pass
-      ~?  &(!lac !=(%$ p.gum))
-        :-  (runt [s.gum '|'] "")
-        :^  %pass  [p.gum p.q.r.gum]
-          ?:  ?=(?(%deal %deal-gall) +>-.q.q.r.gum)
-            :-  :-  +>-.q.q.r.gum
-                (,[[ship ship] term term] [+>+< +>+>- +>+>+<]:q.q.r.gum)
-            p.r.gum
-          [(symp +>-.q.q.r.gum) p.r.gum]
-        q.gum
-      [p.q.r.gum ~ [[p.gum p.r.gum] q.gum] q.q.r.gum]
+++  jack                                              ::  dispatch card
+  |=  [lac=? gum=muse]
+  ^-  [[p=(list ovum) q=(list muse)] _vanes]
+  ~|  %failed-jack
+  ::  =.  lac  |(lac ?=(?(%g %f) p.gum))
+  ::  =.  lac  &(lac !?=($b p.gum))
+  %^    fire
+      p.gum
+    s.gum
+  ?-    -.r.gum
+      $pass
+    ~?  &(!lac !=(%$ p.gum))
+      :-  (runt [s.gum '|'] "")
+      :^  %pass  [p.gum p.q.r.gum]
+        ?:  ?=(?(%deal %deal-gall) +>-.q.q.r.gum)
+          :-  :-  +>-.q.q.r.gum
+              (,[[ship ship] term term] [+>+< +>+>- +>+>+<]:q.q.r.gum)
+          p.r.gum
+        [(symp +>-.q.q.r.gum) p.r.gum]
+      q.gum
+    [p.q.r.gum ~ [[p.gum p.r.gum] q.gum] q.q.r.gum]
 ```
 
 Code for writing traces can be a bit tricky, but let's try not to get too distracted by the lark expressions and such. By paying attention to the lines concerning the laconic bit (following `!lac`) we can mostly determine what is being told to us.
 
-From the initial input event, Arvo has generated a `card` that it is now `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The `card` is a `%deal` `task`, asking Gall to `%poke` hood using data that has originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:- (runt [s.gum '|'] "")` displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]` tells us that `~zod` is both the sending and receiving ship.
+From the initial input event, Arvo has generated a `$card` that it is now `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The `$card` is a `%deal` `$task`, asking Gall to `%poke` hood using data that has originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:- (runt [s.gum '|'] "")` displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]` tells us that `~zod` is both the sending and receiving ship.
 
 From here on our explanations will be more brief. We include some information that cannot be directly read from the move trace in \[brackets]. Onto the next line:
 
@@ -161,21 +160,21 @@ From here on our explanations will be more brief. We include some information th
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
 ```
 
-Here is another `%pass` `move`, this time from Gall to iself as denoted by `[%g %g]`. Gall's hood has received the `%deal` `card` from Dill, and in response it is `%poke`ing dojo with the information \[that Enter was pressed].
+Here is another `%pass` `$move`, this time from Gall to iself as denoted by `[%g %g]`. Gall's hood has received the `%deal` `$card` from Dill, and in response it is `%poke`ing dojo with the information \[that Enter was pressed].
 
 ```
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ```
 
-Gall's dojo `%give`s a `gift` with a `%fact` (subscription update) to Gall's hood, \[saying to clear the terminal prompt].
+Gall's dojo `%give`s a `$gift` with a `%fact` (subscription update) to Gall's hood, \[saying to clear the terminal prompt].
 
 ```
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ```
 
-Gall's hood `%give`s a `gift` with a `%fact` to Dill \[saying to replace the current terminal line with `~zod:dojo>`]
+Gall's hood `%give`s a `$gift` with a `%fact` to Dill \[saying to replace the current terminal line with `~zod:dojo>`]
 
-Next is the `move` that is not actually printed in the move trace mentioned above:
+Next is the `$move` that is not actually printed in the move trace mentioned above:
 
 ```
 ["|||||" %give %d %blit [i=//term/1 t=~]]
@@ -247,11 +246,11 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 ["|||||||||||" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer \[for one second from now]. At this point Arvo may rest.
+Behn `%give`s a `%doze` `$card` to Unix, asking it to set a timer \[for one second from now]. At this point Arvo may rest.
 
 ### The return <a href="#the-return" id="the-return"></a>
 
-Now Unix sets a timer for one second, waits one second, and then informs Behn that a second has passed, leading to a chain of `%give` `move`s that ultimately prints `~s1..0007`.
+Now Unix sets a timer for one second, waits one second, and then informs Behn that a second has passed, leading to a chain of `%give` `$move`s that ultimately prints `~s1..0007`.
 
 Let's throw the move trace into a table:
 
@@ -272,13 +271,13 @@ Now we follow it line-by-line:
 ["" %unix p=%wake //behn ~2020.1.14..19.01.26..755d]
 ```
 
-Unix sends a `%wake` (timer fire) `card` at time `~2020.1.14..19.01.26..755d`.
+Unix sends a `%wake` (timer fire) `$card` at time `~2020.1.14..19.01.26..755d`.
 
 ```
 ["|" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer \[for whatever next timer it has in its queue].
+Behn `%give`s a `%doze` `$card` to Unix, asking it to set a timer \[for whatever next timer it has in its queue].
 
 ```
 ["|" %give %b %wake [i=/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 t=~[/d //term/1]]]

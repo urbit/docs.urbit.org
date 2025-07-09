@@ -265,7 +265,7 @@ dojo: failed to process input
 - Scries can only be performed on the local ship, not on remote ships.
 - Gall scries with an agent name in the `/[desk]` field and without an extra empty element at the beginning of the path will be passed to that agent's `+on-peek` arm for handling.
 - Gall scries with a `%x` `$care` take a `$mark` at the end of the scry `$path`, telling Gall to convert the data returned by the scry endpoint to the mark specified.
-- The `+on-peek` arm takes a `$path` with the `care` in the head and the `$path` part of the scry in the tail, like `/x/some/path`.
+- The `+on-peek` arm takes a `$path` with the `$care` in the head and the `$path` part of the scry in the tail, like `/x/some/path`.
 - The `+on-peek` arm produces a `(unit (unit cage))`. The outer `+unit` is null if the scry endpoint does not exist, and the inner `+unit` is null if the data does not exist.
 
 ## Exercises {#exercises}

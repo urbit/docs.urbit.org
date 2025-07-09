@@ -17,7 +17,7 @@ layout:
 
 The `%docs` app allows you to include documentation with the desks you distribute, making them available for easy browsing by users and developers.
 
-The `%docs` app will automatically detect and publish any docs included with any installed desks. As long as they're in the correct place and of a filetype with appropriate `mark` conversion methods, they'll be picked up.
+The `%docs` app will automatically detect and publish any docs included with any installed desks. As long as they're in the correct place and of a filetype with appropriate `$mark` conversion methods, they'll be picked up.
 
 A `doc.toc` file may be included in the root of the desk, specifying the files to be included, their `$mark`s, and their titles. See the [Index File](index-file.md) section for details.
 

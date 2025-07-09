@@ -106,7 +106,7 @@ A strand is a core that has three important arms:
 
 We'll discuss each of these arms later.
 
-A strand must be specialised to produce a particular type like `(strand:rand ,<type>)`. As previously mentioned, a `thread` produces a `vase` so is specialised like `(strand:rand ,vase)`. Within your thread you'll likely compose multiple strands which produce different types like `(strand:rand ,@ud)`, `(strand:rand ,[path cage])`, etc, but the thread itself will always come back to a `(strand:rand ,vase)`.
+A strand must be specialised to produce a particular type like `(strand:rand ,<type>)`. As previously mentioned, a `thread` produces a `$vase` so is specialised like `(strand:rand ,vase)`. Within your thread you'll likely compose multiple strands which produce different types like `(strand:rand ,@ud)`, `(strand:rand ,[path cage])`, etc, but the thread itself will always come back to a `(strand:rand ,vase)`.
 
 Strands are conventionally given the face `m` like:
 
@@ -181,7 +181,7 @@ We cast the output to `+form` - the mold of the strand we created.
 (pure:m arg)
 ```
 
-Finally we call `+pure` with the gate input `arg` as its argument. Since `arg` is a `vase` it will return the `+form` of a `+strand` which produces a `$vase`. Thus we've created a thread in accordance with its type definition.
+Finally we call `+pure` with the gate input `arg` as its argument. Since `arg` is a `$vase` it will return the `+form` of a `+strand` which produces a `$vase`. Thus we've created a thread in accordance with its type definition.
 
 ## Inline Threads {#inline-threads}
 

@@ -22,7 +22,7 @@ Documented below are the many useful functions in the
 
 ### `send-raw-cards` {#send-raw-cards}
 
-Send a list of `card`s.
+Send a list of `$card`s.
 
 #### Accepts
 
@@ -58,7 +58,7 @@ A `(list card:agent:gall)`.
 
 ### `send-raw-card` {#send-raw-card}
 
-Send a single `card`.
+Send a single `$card`.
 
 #### Accepts
 
@@ -129,7 +129,7 @@ Nothing.
 
 #### Produces
 
-A `beak`.
+A `$beak`.
 
 #### Source
 
@@ -247,7 +247,7 @@ Install a domain in Eyre, triggering the setup of an SSL certificate.
 
 #### Accepts
 
-A `turf`.
+A `$turf`.
 
 #### Produces
 
@@ -351,7 +351,7 @@ Poke an agent, then await a positive ack.
 
 #### Accepts
 
-A pair of `[dock cage]`, where the `dock` is the ship and agent you want to poke, and the `cage` is the data.
+A pair of `[dock cage]`, where the `$dock` is the ship and agent you want to poke, and the `$cage` is the data.
 
 #### Produces
 
@@ -385,7 +385,7 @@ This doesn't care whether the ack is positive or negative, unlike the ordinary [
 
 #### Accepts
 
-A pair of `[dock cage]`, where the `dock` is the ship and agent to poke, and the `cage` is the data.
+A pair of `[dock cage]`, where the `$dock` is the ship and agent to poke, and the `$cage` is the data.
 
 #### Produces
 
@@ -430,7 +430,7 @@ This doesn't care whether the ack is positive or negative, unlike the ordinary [
 
 #### Accepts
 
-A pair of `[app=term =cage]`, where `app` is the local agent to poke and `cage` is the data.
+A pair of `[app=term =cage]`, where `app` is the local agent to poke and `$cage` is the data.
 
 #### Produces
 
@@ -463,7 +463,7 @@ Note this fails if it gets a nack back.
 
 #### Accepts
 
-A pair of `[=term =cage]` where `term` is the name of a local agent and `cage` is the data.
+A pair of `[=term =cage]` where `$term` is the name of a local agent and `$cage` is the data.
 
 #### Produces
 
@@ -496,7 +496,7 @@ If the ack is a nack, the strand fails.
 
 #### Accepts
 
-A `wire`.
+A `$wire`.
 
 #### Produces
 
@@ -535,11 +535,11 @@ Wait for a poke with a particular mark.
 
 #### Accepts
 
-A `mark`.
+A `$mark`.
 
 #### Produces
 
-A `vase`.
+A `$vase`.
 
 #### Source
 
@@ -578,7 +578,7 @@ Note this fails if it gets a watch nack back.
 
 #### Accepts
 
-A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path` is the subscription path.
+A triple of `[=wire =dock =path]` where `$dock` is the ship and agent, and `$path` is the subscription path.
 
 #### Produces
 
@@ -610,11 +610,11 @@ Subscribe to a watch path on an agent, take a single fact, then await a kick.
 
 #### Accepts
 
-A triple of `[=wire =dock =path]` where `dock` is a ship and agent, and `path` is the subscription path.
+A triple of `[=wire =dock =path]` where `$dock` is a ship and agent, and `$path` is the subscription path.
 
 #### Produces
 
-The `cage` of the received fact.
+The `$cage` of the received fact.
 
 #### Source
 
@@ -646,7 +646,7 @@ This will fail if it gets a watch nack.
 
 #### Accepts
 
-A triple of `[=wire =term =path]` where `term` is the name of the agent and `path` is the subscription path.
+A triple of `[=wire =term =path]` where `$term` is the name of the agent and `$path` is the subscription path.
 
 #### Produces
 
@@ -678,7 +678,7 @@ Leave a subscription.
 
 #### Accepts
 
-A pair of `[=wire =dock]` where `dock` is the ship and agent in question.
+A pair of `[=wire =dock]` where `$dock` is the ship and agent in question.
 
 #### Produces
 
@@ -709,7 +709,7 @@ Unsubscribe from a local agent.
 
 #### Accepts
 
-A pair of `[=wire =term]` where `term` is the local agent.
+A pair of `[=wire =term]` where `$term` is the local agent.
 
 #### Produces
 
@@ -742,7 +742,7 @@ This waits for a kick on a given wire, then rewatches the given ship, agent and 
 
 #### Accepts
 
-A triple of `[=wire =dock =path]` where `dock` is the ship and agent, and `path` is the subscription path.
+A triple of `[=wire =dock =path]` where `$dock` is the ship and agent, and `$path` is the subscription path.
 
 #### Produces
 
@@ -774,7 +774,7 @@ Wait for a subscription update on a wire.
 
 #### Accepts
 
-A `wire` as the *prefix* of what you expect. E.g. if `/foo` is given, a fact with a wire of `/foo`, `/foo/bar`, `/foo/bar/baz`, etc, will be accepted.
+A `$wire` as the *prefix* of what you expect. E.g. if `/foo` is given, a fact with a wire of `/foo`, `/foo/bar`, `/foo/bar/baz`, etc, will be accepted.
 
 #### Produces
 
@@ -811,11 +811,11 @@ Wait for a subscription update on a wire.
 
 #### Accepts
 
-The `wire` you want to listen on.
+The `$wire` you want to listen on.
 
 #### Produces
 
-A `cage`.
+A `$cage`.
 
 #### Source
 
@@ -848,7 +848,7 @@ Wait for a subscription close.
 
 #### Accepts
 
-The `wire` you want to listen on.
+The `$wire` you want to listen on.
 
 #### Produces
 
@@ -887,7 +887,7 @@ If the watch ack is a nack, the strand fails.
 
 #### Accepts
 
-A `wire`.
+A `$wire`.
 
 #### Produces
 
@@ -930,7 +930,7 @@ Nothing.
 
 #### Produces
 
-The subscription `path`.
+The subscription `$path`.
 
 #### Source
 
@@ -961,7 +961,7 @@ Scry an agent or vane.
 
 #### Accepts
 
-A pair of `[=mold =path]` where `mold` is the type returned and `path` has the following format:
+A pair of `[=mold =path]` where `$mold` is the type returned and `$path` has the following format:
 
 ```hoon
 /[vane letter and care]/[desk]/[rest of path after beak]
@@ -1033,7 +1033,7 @@ Wait for a remote scry result on a particular wire.
 
 #### Accepts
 
-A `wire`.
+A `$wire`.
 
 #### Produces
 
@@ -1172,7 +1172,7 @@ Make a strand fail if it takes too long.
 
 #### Accepts
 
-This takes the `mold` produced but the strand you're timing, and produces a gate. The gate takes a pair of the `@dr` timeout and the strand being timed.
+This takes the `$mold` produced but the strand you're timing, and produces a gate. The gate takes a pair of the `@dr` timeout and the strand being timed.
 
 #### Produces
 
@@ -1279,7 +1279,7 @@ Retry a strand that produces a `+unit` if the `+unit` is null, with a backoff.
 
 #### Produces
 
-The type of `result`.
+The type of `.result`.
 
 #### Source
 
@@ -1344,7 +1344,7 @@ Rewrite a strand failure error.
 
 #### Accepts
 
-This function takes the return `mold` of the strand in question as its argument and returns a gate that takes two arguments:
+This function takes the return `$mold` of the strand in question as its argument and returns a gate that takes two arguments:
 
 - `f`: a gate that takes a `[term tang]` and produces a `[term tang]`. This is the `%error-tag` and stack trace of the failure you're rewriting.
 - `computation`: the strand whose errors you're rewriting.
@@ -1577,7 +1577,7 @@ A `client-response:iris`
 
 #### Produces
 
-A `cord`.
+A `$cord`.
 
 #### Source
 
@@ -1600,11 +1600,11 @@ Get the HTTP response body from a URL.
 
 #### Accepts
 
-The URL in a `tape`.
+The URL in a `$tape`.
 
 #### Produces
 
-A `cord` of the response body.
+A `$cord` of the response body.
 
 #### Source
 
@@ -1633,7 +1633,7 @@ Get some JSON from a URL.
 
 #### Accepts
 
-The URL as a `tape`.
+The URL as a `$tape`.
 
 #### Produces
 
@@ -1698,15 +1698,15 @@ A `(unit httr:eyre)`. The `+unit` is null if we failed to receive a response.
 
 ### `+build-file` {#build-file}
 
-Build a source file at the specified `beam`.
+Build a source file at the specified `$beam`.
 
 #### Accepts
 
-A `beam`.
+A `$beam`.
 
 #### Produces
 
-A `(unit vase)`. The `vase` contains the compiled file, the `+unit` is null if it failed.
+A `(unit vase)`. The `$vase` contains the compiled file, the `+unit` is null if it failed.
 
 #### Source
 
@@ -1735,15 +1735,15 @@ A `(unit vase)`. The `vase` contains the compiled file, the `+unit` is null if i
 
 ### `build-file-hard` {#build-file-hard}
 
-Build a source file at the specified `beam`, crashing if it fails.
+Build a source file at the specified `$beam`, crashing if it fails.
 
 #### Accepts
 
-A `beam`.
+A `$beam`.
 
 #### Produces
 
-A `vase`.
+A `$vase`.
 
 #### Source
 
@@ -1813,7 +1813,7 @@ Build a dynamic mark conversion gate from file.
 
 #### Accepts
 
-A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* and *to* mark.
+A pair of `[beak mars:clay]`. A `$mars` is a pair of the *from* and *to* mark.
 
 #### Produces
 
@@ -1854,7 +1854,7 @@ A pair of `[beak mark]`.
 
 #### Produces
 
-A `vase`.
+A `$vase`.
 
 #### Source
 
@@ -1887,7 +1887,7 @@ Build a static mark conversion gate from file.
 
 #### Accepts
 
-A pair of `[beak mars:clay]`. A `mars` is a pair of the *from* mark and *to* mark.
+A pair of `[beak mars:clay]`. A `$mars` is a pair of the *from* mark and *to* mark.
 
 #### Source
 
@@ -1920,11 +1920,11 @@ Evaluate some hoon and produce the result.
 
 #### Accepts
 
-A pair of `[gen=hoon bez=(list beam)]`. The `gen` argument is the hoon to be evaluated. If `bez` is empty, it will be evaluated against the standard `..zuse` subject. If a list of `beam`s are provided in `bez`, each one will be read from Clay, build, and pinned to the head of the subject, before `gen` is evaluated against it.
+A pair of `[gen=hoon bez=(list beam)]`. The `.gen` argument is the hoon to be evaluated. If `bez` is empty, it will be evaluated against the standard `..zuse` subject. If a list of `$beam`s are provided in `bez`, each one will be read from Clay, build, and pinned to the head of the subject, before `.gen` is evaluated against it.
 
 #### Produces
 
-A `vase` of the result.
+A `$vase` of the result.
 
 #### Source
 
@@ -1957,11 +1957,11 @@ Raw read from Clay.
 
 #### Accepts
 
-A pair of `ship` and [`riff:clay`](../../kernel/clay/data-types.md#riff).
+A pair of `$ship` and [`$riff:clay`](../../kernel/clay/data-types.md#riff).
 
 #### Produces
 
-A [`riot:clay`](../../kernel/clay/data-types.md#riot).
+A [`$riot:clay`](../../kernel/clay/data-types.md#riot).
 
 #### Source
 
@@ -1988,11 +1988,11 @@ Read a file from Clay.
 
 #### Accepts
 
-A `beam`.
+A `$beam`.
 
 #### Produces
 
-A `cage`.
+A `$cage`.
 
 #### Source
 
@@ -2022,7 +2022,7 @@ Check for the existence of a file in Clay.
 
 #### Accepts
 
-A `beam`.
+A `$beam`.
 
 #### Produces
 
@@ -2053,7 +2053,7 @@ Get a list of all files in the given Clay directory.
 
 #### Accepts
 
-A `beam`.
+A `$beam`.
 
 #### Produces
 
@@ -2087,7 +2087,7 @@ Take a Clay read result.
 
 #### Accepts
 
-The `wire` to listen on.
+The `$wire` to listen on.
 
 #### Produces
 
@@ -2191,11 +2191,11 @@ A `main-loop` can be used for three things:
 
 #### Accepts
 
-It first accepts a `mold`, specifying the return type, and produces a gate. The gate produced takes a `+list` of gates that take an argument of the specified `mold`, and produce the `+form` of a `+strand` of that mold.
+It first accepts a `$mold`, specifying the return type, and produces a gate. The gate produced takes a `+list` of gates that take an argument of the specified `$mold`, and produce the `+form` of a `+strand` of that mold.
 
 #### Produces
 
-Data of the type produced by the given `mold`.
+Data of the type produced by the given `$mold`.
 
 #### Source
 
@@ -2269,7 +2269,7 @@ Echo a given message to the terminal every 2 seconds until told to stop.
 
 #### Accepts
 
-This strand takes nothing directly, but expects a poke with a `mark` of `%echo` and vase containing a `tape` with the message to echo. To finish, it expects a poke with a `mark` of `%over`.
+This strand takes nothing directly, but expects a poke with a `$mark` of `%echo` and vase containing a `$tape` with the message to echo. To finish, it expects a poke with a `$mark` of `%over`.
 
 #### Produces
 
@@ -2303,7 +2303,7 @@ This strand takes nothing directly, but expects a poke with a `mark` of `%echo` 
 
 ## Printing {#printing}
 
-### `flog` {#flog}
+### `$flog` {#flog}
 
 Send a wrapped Dill task to Dill.
 
@@ -2339,7 +2339,7 @@ Print a message to the terminal via Dill.
 
 #### Accepts
 
-A `tape`.
+A `$tape`.
 
 #### Produces
 
@@ -2365,11 +2365,11 @@ A `tape`.
 
 ### `flog-tang` {#flog-tang}
 
-Print a `tang` to the terminal via Dill.
+Print a `$tang` to the terminal via Dill.
 
 #### Accepts
 
-A `tang`
+A `$tang`
 
 #### Produces
 
@@ -2402,11 +2402,11 @@ A `tang`
 
 ### `+trace` {#trace}
 
-Slog a `tang` to the terminal.
+Slog a `$tang` to the terminal.
 
 #### Accepts
 
-A `tang`.
+A `$tang`.
 
 #### Produces
 
@@ -2438,11 +2438,11 @@ Print a message to the terminal tagged with an app name, like:
 my-app: foo bar baz
 ```
 
-Then, optionally, print a `tang`.
+Then, optionally, print a `$tang`.
 
 #### Accepts
 
-A triple of `[term cord tang]`. The `term` is the app name, the `cord` is the message, and the `tang` is any traceback.
+A triple of `[term cord tang]`. The `$term` is the app name, the `$cord` is the message, and the `$tang` is any traceback.
 
 #### Produces
 
@@ -2478,9 +2478,9 @@ Run an inline thread via Khan.
 
 A triple of:
 
-- `bear:khan`: desk or beak.
-- `shed:khan`: the thread itself.
-- `wire`: the wire for responses from Khan.
+- `$bear:khan`: desk or beak.
+- `$shed:khan`: the thread itself.
+- `$wire`: the wire for responses from Khan.
 
 #### Produces
 
@@ -2504,11 +2504,11 @@ Start a child thread.
 
 #### Accepts
 
-A `term`, the name of a thread in `/ted` of this desk.
+A `$term`, the name of a thread in `/ted` of this desk.
 
 #### Produces
 
-A `tid:spider`, the ID of the child thread.
+A `$tid:spider`, the ID of the child thread.
 
 #### Source
 
@@ -2536,9 +2536,9 @@ Start a child thread with arguments.
 
 A triple of:
 
-- `beak`: the ship/desk/case where the thread is located.
-- `term`: the name of the thread in `/ted` of the given desk.
-- `vase`: the start argument.
+- `$beak`: the ship/desk/case where the thread is located.
+- `$term`: the name of the thread in `/ted` of the given desk.
+- `$vase`: the start argument.
 
 #### Produces
 
@@ -2588,7 +2588,7 @@ Start a thread with an argument, then await its result.
 
 #### Accepts
 
-A pair of `[term vase]` where `term` is the name of a thread in `/ted` of this desk, and `vase` contains the start argument.
+A pair of `[term vase]` where `$term` is the name of a thread in `/ted` of this desk, and `$vase` contains the start argument.
 
 #### Produces
 

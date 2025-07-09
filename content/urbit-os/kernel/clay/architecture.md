@@ -29,7 +29,7 @@ Clay has two other unique properties that we'll cover later on: it supports type
 
 ## Revision Control <a href="#revision-control" id="revision-control"></a>
 
-Every urbit has one or more desks, which are independently revision-controlled branches. Each desk contains its own `mark` definitions, apps, and so forth.
+Every urbit has one or more desks, which are independently revision-controlled branches. Each desk contains its own mark definitions, apps, and so forth.
 
 Traditionally, an Urbit ship has at least a `%base` desk, and usually a `%landscape` desk, among others. The `%base` desk has the kernel and base system software. The `%landscape` desk has software pertaining to the home screen. The `%base` desk is a fork of the `%base` desk of whichever ship you download system updates from - typically your sponsor, but theoretically may be any ship.
 
@@ -37,7 +37,7 @@ A desk is a series of numbered commits, the most recent of which represents the 
 
 Most commits have exactly one parent, but the initial commit on a desk may have zero parents, and merge commits have more than one parent.
 
-The non-metadata is stored as a `+map` of `path`s to data. It's worth noting that no constraints are put on this `+map`, so, for example, both `/a/b` and `/a/b/c` could have data. This is impossible in a traditional Unix filesystem since it means that `/a/b` is both a file and a directory. Conventionally, the final element in the path is its `mark` -- much like a filename extension in Unix. Thus, `/doc/readme.md` in Unix is stored as `/doc/readme/md` in urbit.
+The non-metadata is stored as a `+map` of `$path`s to data. It's worth noting that no constraints are put on this `+map`, so, for example, both `/a/b` and `/a/b/c` could have data. This is impossible in a traditional Unix filesystem since it means that `/a/b` is both a file and a directory. Conventionally, the final element in the path is its `$mark` -- much like a filename extension in Unix. Thus, `/doc/readme.md` in Unix is stored as `/doc/readme/md` in urbit.
 
 The data is not stored directly in the `+map`; rather, a hash of the data is stored, and we maintain a master blob store. Thus, if the same data is referred to in multiple commits (as, for example, when a file doesn't change between commits), only the hash is duplicated.
 
@@ -69,4 +69,4 @@ As far as we are aware, Clay is the first generalized, type-aware revision contr
 
 ## Marks <a href="#marks" id="marks"></a>
 
-Central to a typed filesystem is the idea of file types. In Clay, we call these `mark`s. See the [Marks](marks/) section for more details.
+Central to a typed filesystem is the idea of file types. In Clay, we call these "marks". See the [Marks](marks/) section for more details.

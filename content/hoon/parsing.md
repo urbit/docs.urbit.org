@@ -80,9 +80,9 @@ A `+hair` is a pair of `@ud` used to keep track of what has already been parsed 
 ++  nail  [p=hair q=tape]
 ```
 
-We recall from our [discussion above](#what-is-parsing) that parsing functions must keep track of both what has been parsed and what has yet to be parsed. Thus a `+nail` consists of both a `+hair`, giving the line and column up to which the input sequence has already been parsed, and a `tape`, consisting of what remains of the original input string (i.e. everything after the location indicated by the `+nail`, including the character at that `+nail`).
+We recall from our [discussion above](#what-is-parsing) that parsing functions must keep track of both what has been parsed and what has yet to be parsed. Thus a `+nail` consists of both a `+hair`, giving the line and column up to which the input sequence has already been parsed, and a `$tape`, consisting of what remains of the original input string (i.e. everything after the location indicated by the `+nail`, including the character at that `+nail`).
 
-For example, if you wish to feed the entire `tape` `"abc"` into a parser, you would pass it as the `+nail` `[[1 1] "abc"]`. If the parser successfully parses the first character, the `+nail` it returns will be `[[1 2] "bc"]` (though we note that parser outputs are actually `+edge`s which contain a `+nail`, see the following). The `+nail` only matters for book-keeping reasons - it could be any value here since it doesn't refer to a specific portion of the string being input, but only what has theoretically already been parsed up to that point.
+For example, if you wish to feed the entire `$tape` `"abc"` into a parser, you would pass it as the `+nail` `[[1 1] "abc"]`. If the parser successfully parses the first character, the `+nail` it returns will be `[[1 2] "bc"]` (though we note that parser outputs are actually `+edge`s which contain a `+nail`, see the following). The `+nail` only matters for book-keeping reasons - it could be any value here since it doesn't refer to a specific portion of the string being input, but only what has theoretically already been parsed up to that point.
 
 ### `+edge` {#edge}
 
@@ -108,7 +108,7 @@ These functions are used to build `+rule`s (i.e. parsers), and thus are often ca
 
 ### [`+just`](stdlib/4f.md#just) {#justreferencestdlib4fmdjust}
 
-The most basic rule builder, `+just` takes in a single `+char` and produces a `+rule` that attempts to match that `+char` to the first character in the `tape` of the input `+nail`.
+The most basic rule builder, `+just` takes in a single `+char` and produces a `+rule` that attempts to match that `+char` to the first character in the `$tape` of the input `+nail`.
 
 ```
 > =edg ((just 'a') [[1 1] "abc"])
@@ -116,7 +116,7 @@ The most basic rule builder, `+just` takes in a single `+char` and produces a `+
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
-We note that `p.edg` is `[p=1 q=2]`, indicating that the next character to be parsed is in line 1, column 2. `q.edg` is not null, indicating that parsing succeeded. `p.u.q.edg` is `'a'`, which is the result of the parse. `p.q.u.q.edg` is the same as `p.edg`, which is always the case for `+rule`s built using standard library functions when parsing succeeds. Lastly, `q.q.u.q.edg` is `"bc"`, which is the part of the input `tape` that has yet to be parsed.
+We note that `p.edg` is `[p=1 q=2]`, indicating that the next character to be parsed is in line 1, column 2. `q.edg` is not null, indicating that parsing succeeded. `p.u.q.edg` is `'a'`, which is the result of the parse. `p.q.u.q.edg` is the same as `p.edg`, which is always the case for `+rule`s built using standard library functions when parsing succeeds. Lastly, `q.q.u.q.edg` is `"bc"`, which is the part of the input `$tape` that has yet to be parsed.
 
 Now let's see what happens when parsing fails.
 
@@ -132,9 +132,9 @@ Later we will use [+star](#star) to string together a sequence of `+just`s in or
 
 ### [`+jest`](stdlib/4f.md#jest) {#jestreferencestdlib4fmdjest}
 
-`+jest` is a `+rule` builder used to match a `cord`. It takes an input `cord` and produces a `+rule` that attempts to match that `cord` against the beginning of the input.
+`+jest` is a `+rule` builder used to match a `$cord`. It takes an input `$cord` and produces a `+rule` that attempts to match that `$cord` against the beginning of the input.
 
-Let's see what happens when we successfully parse the entire input `tape`.
+Let's see what happens when we successfully parse the entire input `$tape`.
 
 ```
 > =edg ((jest 'abc') [[1 1] "abc"])
@@ -142,9 +142,9 @@ Let's see what happens when we successfully parse the entire input `tape`.
 [p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q=""]]]]
 ```
 
-`p.edg` is `[p=1 q=4]`, indicating that the next character to be parsed is at line 1, column 4. Of course, this does not exist since the input `tape` was only 3 characters long, so this actually indicates that the entire `tape` has been successfully parsed (since the `+hair` does not advance in the case of failure). `p.u.q.edg` is `'abc'`, as expected. `q.q.u.q.edg` is `""`, indicating that nothing remains to be parsed.
+`p.edg` is `[p=1 q=4]`, indicating that the next character to be parsed is at line 1, column 4. Of course, this does not exist since the input `$tape` was only 3 characters long, so this actually indicates that the entire `$tape` has been successfully parsed (since the `+hair` does not advance in the case of failure). `p.u.q.edg` is `'abc'`, as expected. `q.q.u.q.edg` is `""`, indicating that nothing remains to be parsed.
 
-What happens if we only match some of the input `tape`?
+What happens if we only match some of the input `$tape`?
 
 ```
 > =edg ((jest 'ab') [[1 1] "abc"])
@@ -216,15 +216,15 @@ Another important function in the parser builder library is `+knee`, used for bu
 
 ## Outside callers {#outside-callers}
 
-Since `+hair`s, `+nail`s, etc. are only utilized within the context of writing parsers, we'd like to hide them from the rest of the code of a program that utilizes parsers. That is to say, you'd like the programmer to only worry about passing `tape`s to the parser, and not have to dress up the `tape` as a `+nail` themselves. Thus we have several functions for exactly this purpose.
+Since `+hair`s, `+nail`s, etc. are only utilized within the context of writing parsers, we'd like to hide them from the rest of the code of a program that utilizes parsers. That is to say, you'd like the programmer to only worry about passing `$tape`s to the parser, and not have to dress up the `$tape` as a `+nail` themselves. Thus we have several functions for exactly this purpose.
 
-These functions take in either a `tape` or a `cord`, alongside a `+rule`, and attempt to parse the input with the `+rule`. If the parse succeeds, it returns the result. There are crashing and unitized versions of each caller, corresponding to what happens when a parse fails.
+These functions take in either a `$tape` or a `$cord`, alongside a `+rule`, and attempt to parse the input with the `+rule`. If the parse succeeds, it returns the result. There are crashing and unitized versions of each caller, corresponding to what happens when a parse fails.
 
 For additional information including examples see [4g: Parsing (Outside Caller)](stdlib/4g.md).
 
-### Parsing `tape`s {#parsing-tapes}
+### Parsing `$tape`s {#parsing-tapes}
 
-[`+scan`](stdlib/4g.md#scan) takes in a `tape` and a `+rule` and attempts to parse the `tape` with the
+[`+scan`](stdlib/4g.md#scan) takes in a `$tape` and a `+rule` and attempts to parse the `$tape` with the
 `+rule`.
 
 ```
@@ -248,7 +248,7 @@ For the remainder of this tutorial we will make use of `+scan` so that we do not
 
 ### Parsing atoms {#parsing-atoms}
 
-[Recall from Hoon School](../build-on-urbit/hoon-school/E-types.md) that `cord`s are atoms with the aura `@t` and are typically used to represent strings internally as data, as atoms are faster for the computer to work with than `tape`s, which are `+list`s of `@tD` atoms. [`+rash`](stdlib/4g.md#rash) and [`+rush`](stdlib/4g.md#rush) are for parsing atoms, with `+rash` being analogous to `+scan` and `+rush` being analogous to `+rust`. Under the hood, `+rash` calls `+scan` after converting the input atom to a `tape`, and `+rush` does similary for `+rust`.
+[Recall from Hoon School](../build-on-urbit/hoon-school/E-types.md) that `$cord`s are atoms with the aura `@t` and are typically used to represent strings internally as data, as atoms are faster for the computer to work with than `$tape`s, which are `+list`s of `@tD` atoms. [`+rash`](stdlib/4g.md#rash) and [`+rush`](stdlib/4g.md#rush) are for parsing atoms, with `+rash` being analogous to `+scan` and `+rush` being analogous to `+rust`. Under the hood, `+rash` calls `+scan` after converting the input atom to a `$tape`, and `+rush` does similary for `+rust`.
 
 ## Parser modifiers {#parser-modifiers}
 
@@ -274,7 +274,7 @@ The standard library provides a number of gates that take a `+rule` and produce 
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="aaa"]]]]
 ```
 
-We can use `+star` to get the rest of the `tape`:
+We can use `+star` to get the rest of the `$tape`:
 
 ```
 > ((star (just 'a')) [[1 1] "aaa"])
@@ -428,9 +428,9 @@ You may want to utilize the `~+` rune when writing recursive parsers to cache th
 
 # Parsing arithmetic expressions
 
-In this section we will be applying what we have learned to write a parser for arithmetic expressions in Hoon. That is, we will make a `+rule` that takes in `tape`s of the form `"(2+3)*4"` and returns `20` as a `@ud`.
+In this section we will be applying what we have learned to write a parser for arithmetic expressions in Hoon. That is, we will make a `+rule` that takes in `$tape`s of the form `"(2+3)*4"` and returns `20` as a `@ud`.
 
-We call a `tape` consisting of some consistent arithmetic string of numbers, `+`, `*`, `(`, and `)` an _expression_. We wish to build a `+rule` that takes in an expression and returns the result of the arithmetic computation described by the expression as a `@ud`.
+We call a `$tape` consisting of some consistent arithmetic string of numbers, `+`, `*`, `(`, and `)` an _expression_. We wish to build a `+rule` that takes in an expression and returns the result of the arithmetic computation described by the expression as a `@ud`.
 
 To build a parser it is a helpful exercise to first describe its [grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar). This has a formal mathematical definition, but we will manage to get by here describing the grammar for arithmetic expressions informally.
 
@@ -507,9 +507,9 @@ Then follows the definition of the gate utilized by `+knee`:
 
 An _expression_ is either a term plus an expression or a term.
 
-In the case of a term plus an expression, we actually must compute what that equals. Thus we will make use of [`+slug`](stdlib/4f.md#slug), which parses a delimited list into `tape`s separated by a given delimiter and then composes them by folding with a binary gate. In this case, our delimiter is `+` and our binary gate is `+add`. That is to say, we will split the input string into terms and expressions separated by luses, parse each term and expression until they reduce to a `@ud`, and then add them together. This is accomplished with the `+rule` `((slug add) lus ;~(pose term expr))`.
+In the case of a term plus an expression, we actually must compute what that equals. Thus we will make use of [`+slug`](stdlib/4f.md#slug), which parses a delimited list into `$tape`s separated by a given delimiter and then composes them by folding with a binary gate. In this case, our delimiter is `+` and our binary gate is `+add`. That is to say, we will split the input string into terms and expressions separated by luses, parse each term and expression until they reduce to a `@ud`, and then add them together. This is accomplished with the `+rule` `((slug add) lus ;~(pose term expr))`.
 
-If the above `+rule` does not parse the expression, it must be a `term`, so the `tape` is automatically passed to `+term` to be evaluated. Again we use `;~` and `+pose` to accomplish this:
+If the above `+rule` does not parse the expression, it must be a `term`, so the `$tape` is automatically passed to `+term` to be evaluated. Again we use `;~` and `+pose` to accomplish this:
 
 ```hoon
 ;~  pose

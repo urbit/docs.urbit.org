@@ -25,11 +25,11 @@ For more information on Clay, see the [Overview](../../urbit-os/kernel/clay), an
 
 This quick-start guide will walk you through some common commands. Follow along using your Dojo. When you get a `>=` message after entering a command, this means that the command was successful.
 
-A `desk` is something like an independently revision-controlled branch of your urbit's file-system. Your urbit's system files live in the `%base` desk.
+A `$desk` is something like an independently revision-controlled branch of your urbit's file-system. Your urbit's system files live in the `%base` desk.
 
-It's important to note that whenever you want to sync changes from your Unix directory to your ship, you must use the `|commit %desk` command, where `%desk` is the `desk` that you'd like to sync to.
+It's important to note that whenever you want to sync changes from your Unix directory to your ship, you must use the `|commit %desk` command, where `%desk` is the `$desk` that you'd like to sync to.
 
-When developing it's a good idea to use a separate `desk`. Create a `%sandbox` `desk` based on the `%base` `desk` (`our` produces your ship name):
+When developing it's a good idea to use a separate desk. Create a `%sandbox` desk based on the `%base` desk (`our` produces your ship name):
 
 ```
 ~zod:dojo> |merge %sandbox our %base
@@ -81,7 +81,7 @@ A path in Clay is a list of URL-safe text, restricted to the characters `[a z]`,
 
 Paths begin with three strings indicating the ship, desk, and revision, and might look like `/~dozbud-namsep/base/11`.
 
-The first component is `ship`, which is, as you might guess, the name of an Urbit ship. The second component is `desk`, which is a workspace meant to contain other directories; the default `desk` is `%base`. The third component is the revision, which represents version information in various ways: date and time; a version sequence, which is a value incremented by one whenever a file on the given `desk` is modified; or an arbitrary plaintext label.
+The first component is `$ship`, which is, as you might guess, the name of an Urbit ship. The second component is `$desk`, which is a workspace meant to contain other directories; the default `$desk` is `%base`. The third component is the revision, which represents version information in various ways: date and time; a version sequence, which is a value incremented by one whenever a file on the given `$desk` is modified; or an arbitrary plaintext label.
 
 You can find what your current ship, desk, and revision is at any given moment by typing `%` in the Dojo and looking at the first three results. This will display as a cell rather than a path, like
 
@@ -103,7 +103,7 @@ The `%` command, which we gestured at in the above section, represents the **rel
 ~zod:dojo> %%%
 ```
 
-You'll notice that it only has your ship name and the empty list. The two additional `%`s abandoned the revision and the `desk` information by moving up twice the hierarchy.
+You'll notice that it only has your ship name and the empty list. The two additional `%`s abandoned the revision and the desk information by moving up twice the hierarchy.
 
 There are no local relative paths. `/foo/bar` must be written as `%/foo/bar`.
 
@@ -111,7 +111,7 @@ There are no local relative paths. `/foo/bar` must be written as `%/foo/bar`.
 
 You don't need to write out the explicit path every time you want to reference somewhere outside of your working directory. You can substitute `=` for the segments of a path.
 
-Recall that a full address in the the Urbit namespace is of the form `/ship/desk/case/path`. To switch to the `%sandbox` `desk`, you would enter
+Recall that a full address in the the Urbit namespace is of the form `/ship/desk/case/path`. To switch to the `%sandbox` desk, you would enter
 
 ```
 ~sampel-palnet:dojo> =dir /=sandbox=
@@ -119,7 +119,7 @@ Recall that a full address in the the Urbit namespace is of the form `/ship/desk
 
 `=dir` is used to change the working directory - we will see more on it [below](#changing-directories).
 
-The above command uses substitution to use your current `ship` and revision; only the `desk` argument, which is located between the other two, is given something new. Without substitution, you would need to write:
+The above command uses substitution to use your current `$ship` and revision; only the `$desk` argument, which is located between the other two, is given something new. Without substitution, you would need to write:
 
 ```
 ~sampel-palnet:dojo> =dir /~sampel-palnet/sandbox/85
@@ -149,7 +149,7 @@ We can do the same thing between desks. If `%sandbox` has been merged with `%bas
 ~sampel-palnet:dojo/=/=/~2021.3.19..16.11.20..0c60/gen/gmail> +cat /=sandbox=/app/=/split/hoon
 ```
 
-Most commonly this is used to avoid having to know the current revision number in the `dojo`: `/~lodleb-ritrul/base/~2021.3.19..16.11.20..0c60/gen/example/hoon`
+Most commonly this is used to avoid having to know the current revision number in the Dojo: `/~lodleb-ritrul/base/~2021.3.19..16.11.20..0c60/gen/example/hoon`
 
 #### Changing directories
 
@@ -220,7 +220,7 @@ Unmounts the Unix path `/foo`.
 |merge %target-desk ~source-ship %source-desk
 ```
 
-Merges a source `desk` into a target `desk`.
+Merges a source desk into a target desk.
 
 This can optionally include a [merge strategy](../../urbit-os/kernel/clay/using.md#merging):
 
@@ -228,7 +228,7 @@ This can optionally include a [merge strategy](../../urbit-os/kernel/clay/using.
 |merge %target-desk ~source-ship %source-desk, =gem %strategy
 ```
 
-You may also merge a Clay path on your own ship to a `desk`, along with an optional strategy.
+You may also merge a Clay path on your own ship to a desk, along with an optional strategy.
 
 ```
 |merge %target-get %/clay/path, =gem %strategy
@@ -240,7 +240,7 @@ You may also merge a Clay path on your own ship to a `desk`, along with an optio
 |merge %examples ~wacbex-ribmex %examples
 ```
 
-Merge the `%examples` `desk` from `~waxbex-ribmex`
+Merge the `%examples` desk from `~waxbex-ribmex`
 
 ```
 |merge %work /=base=, =gem %fine
@@ -254,7 +254,7 @@ Merge `/=base=` into `%work` using merge strategy `%fine`.
 |sync %target-desk ~source-ship %target-desk
 ```
 
-Subscribe to continuous updates from remote `desk` on local `desk`.
+Subscribe to continuous updates from remote desk on local desk.
 
 **Examples:**
 
@@ -268,7 +268,7 @@ Subscribe to continuous updates from remote `desk` on local `desk`.
 |unsync %target-desk ~source-ship %source-desk
 ```
 
-Unsubscribe from updates from remote `desk` on local `desk`. Arguments must match original `|sync` command.
+Unsubscribe from updates from remote desk on local desk. Arguments must match original `|sync` command.
 
 Example:
 
@@ -288,9 +288,9 @@ Similar to Unix `cat`. `/gen/cat` takes one or more `$path`s, and prints their c
 
 Syntax: `+ls path`
 
-Similar to Unix `ls`. `+ls` takes a single `path`.
+Similar to Unix `ls`. `+ls` takes a single `$path`.
 
-Produces a list of names at the `path`.
+Produces a list of names at the `$path`.
 
 ```
 ~sampel-palnet:dojo> +cat %/our/base/gen/curl/hoon
@@ -300,7 +300,7 @@ Produces a list of names at the `path`.
 
 Syntax: `|rm path`
 
-Remove the data at `path`. `path` must be a path to the actual node, not a 'directory'.
+Remove the data at `$path`. `$path` must be a path to the actual node, not a 'directory'.
 
 #### `|cp`
 

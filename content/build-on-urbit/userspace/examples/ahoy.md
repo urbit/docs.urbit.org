@@ -266,7 +266,7 @@ The `+send-plea` status check is interesting:  it checks whether Ames is respons
   [%pass /ahoy/(scot %p who) %arvo %a %plea who %evil-vane / ~]
 ```
 
-`%hark-store` is the standard cross-agent notification store provided by Grid and recognized by Landscape.  The notification message requires a little bit of explicit construction as `action` but can be treated as boilerplate code aside from the text.
+`%hark-store` is the standard cross-agent notification store provided by Grid and recognized by Landscape.  The notification message requires a little bit of explicit construction as `$action` but can be treated as boilerplate code aside from the text.
 
 ```hoon
 ++  send-notification

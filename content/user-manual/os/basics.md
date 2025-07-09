@@ -18,7 +18,7 @@ layout:
 This document deals with:
 
 - Running an Urbit ship with the ordinary runtime [from the command line](../../get-on-urbit.md#get-the-urbit-runtime).
-- Basic setup, configuration and usage in Urbit's shell called the `dojo`.
+- Basic setup, configuration and usage in Urbit's shell called the Dojo.
 
 ## Shutdown {#shutdown}
 

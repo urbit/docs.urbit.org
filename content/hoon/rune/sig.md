@@ -200,7 +200,7 @@ None
 
 #### Discussion
 
-If profiling is on, adds 1 to the hit counter `p`, which is a `term` like `%foo`. Profiling is enabled by passing the `-P` flag to the `urbit` binary. Profiling results are saved in `/path/to/pier/.urb/put/profile/~some.date.txt`.
+If profiling is on, adds 1 to the hit counter `p`, which is a `$term` like `%foo`. Profiling is enabled by passing the `-P` flag to the `urbit` binary. Profiling results are saved in `/path/to/pier/.urb/put/profile/~some.date.txt`.
 
 #### Examples
 
@@ -281,7 +281,7 @@ Shows `p` in stacktrace if `q` crashes.
 
 #### Discussion
 
-`p` must produce a `tank` (pretty-print source).
+`p` must produce a `$tank` (pretty-print source).
 
 #### Examples
 
@@ -426,7 +426,7 @@ None
 
 {% endtabs %}
 
-`p` may either be a a `term` or a pair of `[term hoon]`. If it's the latter, `p` may optionally be written as `%foo.some-hoon`.
+`p` may either be a a `$term` or a pair of `[term hoon]`. If it's the latter, `p` may optionally be written as `%foo.some-hoon`.
 
 #### AST
 

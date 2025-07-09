@@ -15,9 +15,9 @@ layout:
 
 # Clay Examples
 
-This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](tasks.md) document.
+This document contains a number of examples of interacting with Clay using its various tasks. Sections correspond to the general details in the [API Reference](tasks.md) document.
 
-Most examples will either use `|pass` to just send a `task` or the following thread to send a `task` and take the resulting `gift`. You can save the following thread to the `ted` directory of the `%base` `desk` on a fake ship:
+Most examples will either use `|pass` to just send a task or the following thread to send a task and take the resulting `$gift`. You can save the following thread to the `/ted` directory of the `%base` desk on a fake ship:
 
 `send-task-take-gift.hoon`
 
@@ -46,7 +46,7 @@ See the [Read and Subscribe](tasks.md#warp---read-and-track) section of the [API
 
 ### `%sing` {#sing}
 
-Here we'll look at reading files by passing Clay a `%warp` `task` with a `%sing` `rave` and receiving a `%writ` `gift` containing the data in response.
+Here we'll look at reading files by passing Clay a `%warp` task with a `%sing` `$rave` and receiving a `%writ` `$gift` containing the data in response.
 
 Using the `send-task-take-gift.hoon` thread, let's try reading `gen/hood/hi.hoon`:
 
@@ -75,7 +75,7 @@ You should see something like this as the output:
 ]
 ```
 
-The `cage` in the `riot` of the `%writ` contains the file's data due to our use of an `%x` `$care`. It needn't be `%x` though. If we change it to `%u`, for example, we'll get a `?` `cage` instead:
+The `$cage` in the `$riot` of the `%writ` contains the file's data due to our use of an `%x` `$care`. It needn't be `%x` though. If we change it to `%u`, for example, we'll get a `?` `$cage` instead:
 
 ```
 > -send-task-take-gift [%warp our %base ~ %sing %u da+now /gen/hood/hi/hoon]
@@ -90,13 +90,13 @@ The `cage` in the `riot` of the `%writ` contains the file's data due to our use 
 ]
 ```
 
-Here's a breakdown of the `task` we sent:
+Here's a breakdown of the task we sent:
 
 ![](https://media.urbit.org/docs/arvo/clay/sing.png "%sing diagram")
 
 ### `%next` {#next}
 
-Here we'll look at subscribing to the next version of a file by passing Clay a `%warp` `task` with a `%next` `rave` and receiving a `%writ` `gift` when the file changes.
+Here we'll look at subscribing to the next version of a file by passing Clay a `%warp` task with a `%next` `$rave` and receiving a `%writ` `$gift` when the file changes.
 
 Using the `send-task-take-gift.hoon` thread, let's subscribe to the next version of `foo.txt`:
 
@@ -104,7 +104,7 @@ Using the `send-task-take-gift.hoon` thread, let's subscribe to the next version
 > -send-task-take-gift [%warp our %base ~ %next %x da+now /foo/txt]
 ```
 
-Now, in unix, create a file called `foo.txt` in the root of the `base` directory of your ship. In the dojo, hit backspace to disconnect the thread from the dojo prompt and run `|commit %base`. You should see something like:
+Now, in unix, create a file called `foo.txt` in the root of the `$base` directory of your ship. In the dojo, hit backspace to disconnect the thread from the dojo prompt and run `|commit %base`. You should see something like:
 
 ```
 > |commit %base
@@ -113,7 +113,7 @@ Now, in unix, create a file called `foo.txt` in the root of the `base` directory
 + /~zod/base/3/foo/txt
 ```
 
-As you can see, the `riot` in the `%writ` includes a `cage` with the data of `/foo/txt` due to our use of an `%x` `$care`.
+As you can see, the `$riot` in the `%writ` includes a `$cage` with the data of `/foo/txt` due to our use of an `%x` `$care`.
 
 Now run the thread again, and this time delete the file in unix and again `|commit %base` in the dojo. You should see:
 
@@ -124,7 +124,7 @@ Now run the thread again, and this time delete the file in unix and again `|comm
 - /~zod/base/4/foo/txt
 ```
 
-You can see the `riot` is just `~` due to the file being deleted.
+You can see the `$riot` is just `~` due to the file being deleted.
 
 Here's a breakdown of the task we sent:
 
@@ -132,7 +132,7 @@ Here's a breakdown of the task we sent:
 
 ### `%mult` {#mult}
 
-Here we'll look at subscribing to the next version of multiple files by passing Clay a `%warp` `task` with a `%mult` `rave` and receiving a `%wris` `gift` when any of the files change.
+Here we'll look at subscribing to the next version of multiple files by passing Clay a `%warp` task with a `%mult` `$rave` and receiving a `%wris` `$gift` when any of the files change.
 
 This thread will subscribe to `/foo/txt` with an `%x` `$care` and `/bar/txt` with a `%u` `$care`. It will print out the `%wris` it gets back from Clay.
 
@@ -170,7 +170,7 @@ Save the above to `ted/sub-mult.hoon`, `|commit %base` and run with `-sub-mult`.
 + /~zod/base/151/bar/txt
 ```
 
-You'll notice that, unlike a `%writ`, the `%wris` doesn't give you the data. It merely tells you the `$care`s and `path`s of the files that changed. If you need to actually get the data, you can just scry or send a request for the files in question.
+You'll notice that, unlike a `%writ`, the `%wris` doesn't give you the data. It merely tells you the `$care`s and `$path`s of the files that changed. If you need to actually get the data, you can just scry or send a request for the files in question.
 
 Now, run the thread again, open `bar.txt` in an editor, modify its contents, save it and `|commit %base`. You'll notice you didn't receive a `%wris`. This is because we subscribed to `/bar/txt` with `%u` care and its existence didn't change.
 
@@ -185,15 +185,15 @@ Lastly, delete `foo.txt` and `|commit %base`. You should see something like:
 
 As you can see, a relevant change to any of the subscribed files will trigger a response, not just when all of them change.
 
-Here's a breakdown of the `task` we sent:
+Here's a breakdown of the task we sent:
 
 ![](https://media.urbit.org/docs/arvo/clay/sub-mult.png "subscribe mult diagram")
 
 ### `%many` {#many}
 
-Here we'll look at subscribing to a range of changes to a `desk` by passing Clay a `%warp` `task` with a `%many` `rave` and receiving `%writ` `gift`s when changes occur.
+Here we'll look at subscribing to a range of changes to a desk by passing Clay a `%warp` task with a `%many` `$rave` and receiving `%writ` `$gift`s when changes occur.
 
-This thread will subscribe to changes to your `%base` `desk` for the next three minutes. The `track` is `%.y` so it will only inform you of changes, not send the full `nako`. It will only get updates if the specified file exists. It contains a `main-loop` that will take an arbitrary number of `sign`s and print them out in the dojo. Since it never ends, you'll need to stop it with the `:spider|kill` command in the dojo.
+This thread will subscribe to changes to your `%base` desk for the next three minutes. The `track` is `%.y` so it will only inform you of changes, not send the full `$nako`. It will only get updates if the specified file exists. It contains a `main-loop` that will take an arbitrary number of `$sign`s and print them out in the dojo. Since it never ends, you'll need to stop it with the `:spider|kill` command in the dojo.
 
 `sub-many.hoon`
 
@@ -231,7 +231,7 @@ This thread will subscribe to changes to your `%base` `desk` for the next three 
 (pure:m !>(~))
 ```
 
-Make sure `foo.txt` doesn't exist in the root of your `%base` `desk`. Save this to `ted/sub-many.hoon`, `|commit %base`, run it like `-sub-many /foo/txt`, and hit backspace in the dojo to free up the dojo prompt. Now, add a file called `bar.txt` to your `desk` and `|commit %base`. You should see something like:
+Make sure `foo.txt` doesn't exist in the root of your `%base` desk. Save this to `ted/sub-many.hoon`, `|commit %base`, run it like `-sub-many /foo/txt`, and hit backspace in the dojo to free up the dojo prompt. Now, add a file called `bar.txt` to your desk and `|commit %base`. You should see something like:
 
 ```
 > |commit %base
@@ -275,17 +275,17 @@ Now wait until the three minutes is up and try making a change, for example dele
 - /~zod/base/263/baz/txt
 ```
 
-You can see that along with the normal `%writ` it's also sent a second `%writ` with a null `riot` to indicate the subscription has ended. This is because it has now passed the end of the range of `case`s to which you subscribed.
+You can see that along with the normal `%writ` it's also sent a second `%writ` with a null `$riot` to indicate the subscription has ended. This is because it has now passed the end of the range of `$case`s to which you subscribed.
 
 Run `:spider|kill` to stop the thread.
 
-Here's a breakdown of the `task` we sent:
+Here's a breakdown of the task we sent:
 
 ![](https://media.urbit.org/docs/arvo/clay/sub-many.png "subscribe many diagram")
 
 ### Cancel Subscription {#cancel-subscription}
 
-Here we'll look at cancelling a subscription by sending Clay a `%warp` `task` with a null `(unit rave)` in the `riff`.
+Here we'll look at cancelling a subscription by sending Clay a `%warp` task with a null `(unit rave)` in the `$riff`.
 
 This thread will subscribe to the `%next` version of `/foo/txt`, then immediately cancel the subscription and wait for a response to print (which it will never receive).
 
@@ -311,7 +311,7 @@ This thread will subscribe to the `%next` version of `/foo/txt`, then immediatel
 (pure:m !>(~))
 ```
 
-Save the above to `ted/stop-sub.hoon`, `|commit %base`, run it with `-stop-sub` and hit backspace to detach it from the dojo prompt. Now, add `foo.txt` to the root of your `%base` `desk` and `|commit %base`. You should see:
+Save the above to `/ted/stop-sub.hoon`, `|commit %base`, run it with `-stop-sub` and hit backspace to detach it from the dojo prompt. Now, add `foo.txt` to the root of your `%base` desk and `|commit %base`. You should see:
 
 ```
 > |commit %base
@@ -323,7 +323,7 @@ As you can see we've received no `%writ`. We can thus conclude the subscription 
 
 Run `:spider|kill` to stop the thread.
 
-Here's a breakdown of the `task` we sent:
+Here's a breakdown of the task we sent:
 
 ![](https://media.urbit.org/docs/arvo/clay/stop-sub.png "cancel subscription diagram")
 
@@ -333,7 +333,7 @@ See the [Write and Modify](tasks.md#write-and-modify) section of the [API Refere
 
 ### `%ins` {#ins}
 
-Here we'll look at adding a file by sending Clay a `%info` `task` containing a `%ins` `miso`.
+Here we'll look at adding a file by sending Clay a `%info` task containing a `%ins` `$miso`.
 
 Let's try adding a `foo.txt` file with 'foo' as its contents:
 
@@ -344,15 +344,15 @@ Let's try adding a `foo.txt` file with 'foo' as its contents:
 
 If you have a look in the base of your pier you'll see there's now a file called `foo.txt` with the text `foo` in it.
 
-We've created the `cage` of the content like `[%txt !>(~['foo'])]`, if you want to write something besides a text file you'd just give it the appropriate `mark` and `vase`.
+We've created the `$cage` of the content like `[%txt !>(~['foo'])]`, if you want to write something besides a text file you'd just give it the appropriate `$mark` and `$vase`.
 
-Here's a breakdown of the `task` we sent:
+Here's a breakdown of the task we sent:
 
 ![](https://media.urbit.org/docs/arvo/clay/ins.png)
 
 ### `%del` {#del}
 
-Here we'll look at deleting a file by sending Clay a `%info` `task` containing a `%del` `miso`.
+Here we'll look at deleting a file by sending Clay a `%info` task containing a `%del` `$miso`.
 
 Let's try deleting the `foo.txt` file created in the [previous example](#ins):
 
@@ -363,7 +363,7 @@ Let's try deleting the `foo.txt` file created in the [previous example](#ins):
 
 If you have a look in the base of your pier you'll see the `foo.txt` file is now gone.
 
-Here's a breakdown of the `task` we sent:
+Here's a breakdown of the task we sent:
 
 ![](https://media.urbit.org/docs/arvo/clay/del.png)
 
@@ -373,9 +373,9 @@ Identical to the [%ins](#ins) example, just replace `%ins` with `%mut`.
 
 ### Multiple Changes {#multiple-changes}
 
-Here we'll look at changing multiple files in one request by sending Clay a `%info` `task` containing multiple `miso` in the `soba`.
+Here we'll look at changing multiple files in one request by sending Clay a `%info` task containing multiple `$miso` in the `$soba`.
 
-Since `soba` is just a `+list` of `miso`, you can add a bunch of `miso` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `miso` in each request but you could mix different types together too.
+Since `$soba` is just a `+list` of `$miso`, you can add a bunch of `$miso` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `$miso` in each request but you could mix different types together too.
 
 `multi-change.hoon`
 
@@ -418,7 +418,7 @@ See the [Manage Mounts](tasks.md#manage-mounts) section of the [API Reference](t
 
 ### `%boat` {#boat}
 
-Here we'll look at requesting the list of existing mount points on a ship by sending Clay a `%boat` `task` and receiving a `%hill` `gift`.
+Here we'll look at requesting the list of existing mount points on a ship by sending Clay a `%boat` task and receiving a `%hill` `$gift`.
 
 Using the `send-task-take-gift.hoon` thread, let's make such a request:
 
@@ -429,7 +429,7 @@ Using the `send-task-take-gift.hoon` thread, let's make such a request:
 
 ### `%mont` {#mont}
 
-Here we'll look at mounting `desk`s, directories and files to unix by sending Clay a `%mont` `task`.
+Here we'll look at mounting desks, directories and files to unix by sending Clay a `%mont` task.
 
 Let's first try mounting our `%landscape` desk:
 
@@ -437,7 +437,7 @@ Let's first try mounting our `%landscape` desk:
 > |pass [%c [%mont %landscape [our %landscape da+now] /]]
 ```
 
-If you look in your pier, you should now see a `landscape` folder which contains the contents of that `desk`.
+If you look in your pier, you should now see a `/landscape` folder which contains the contents of that desk.
 
 If we make a `%boat` request as detailed in the [%boat](#boat) section, we'll now see the mount point listed:
 
@@ -446,13 +446,13 @@ If we make a `%boat` request as detailed in the [%boat](#boat) section, we'll no
 [%hill p=~[%landscape %base]]
 ```
 
-Note the mount point doesn't need to match a `desk`, file or directory. We can also do:
+Note the mount point doesn't need to match a desk, file, or directory. We can also do:
 
 ```
 > |pass [%c [%mont %wibbly-wobbly [our %base da+now] /]]
 ```
 
-And you'll now see that there's a `wibbly-wobbly` folder with the contents of the `%base` `desk`. You'll also notice we can mount the same file or directory more than once. There's no problem having `%base` mounted to both `base` and `wibbly-wobbly`. The only requirement is that their mount points be unique.
+And you'll now see that there's a `/wibbly-wobbly` folder with the contents of the `%base` desk. You'll also notice we can mount the same file or directory more than once. There's no problem having `%base` mounted to both `$base` and `/wibbly-wobbly`. The only requirement is that their mount points be unique.
 
 Let's try mounting a subdirectory and a single folder:
 
@@ -461,11 +461,11 @@ Let's try mounting a subdirectory and a single folder:
 > |pass [%c [%mont %hi [our %base da+now] /gen/hood/hi]]
 ```
 
-If you look in your pier you'll now see a `gen` folder with the contents of `/gen` and a `hi.hoon` file by itself. Notice how the file extension has been automatically added.
+If you look in your pier you'll now see a `/gen` folder with the contents of `/gen` and a `hi.hoon` file by itself. Notice how the file extension has been automatically added.
 
 ### `%ogre` {#ogre}
 
-Here we'll look at unmounting `desk`s, directories and files by sending Clay a `%ogre` `task`.
+Here we'll look at unmounting desks, directories and files by sending Clay a `%ogre` task.
 
 Let's unmount what we mounted in the [%mont](#mont) section. First we'll unmount the `%landscape` desk:
 
@@ -492,15 +492,15 @@ If we specify a non-existent mount point it will fail with an error printed to t
 [%not-mounted %foo]
 ```
 
-If we give it an unmounted `beam` it will not print an error but still won't work.
+If we give it an unmounted `$beam` it will not print an error but still won't work.
 
 ### `%dirk` {#dirk}
 
-Here we'll look at committing changed files by sending Clay a `%dirk` `task`.
+Here we'll look at committing changed files by sending Clay a `%dirk` task.
 
-This `task` performs the same function as the `|commit` dojo command.
+This task performs the same function as the `|commit` dojo command.
 
-With your `%base` `desk` mounted, try adding a file and send a `%dirk` to commit the change:
+With your `%base` desk mounted, try adding a file and send a `%dirk` to commit the change:
 
 ```
 > |pass [%c [%dirk %base]]
@@ -509,7 +509,7 @@ With your `%base` `desk` mounted, try adding a file and send a `%dirk` to commit
 
 Clay will print the changed files to the dojo with a leading `+`, `-` or `:` to indicate a new file, deleted file and changed file respectively.
 
-If you have the same `desk` mounted to multiple points, a committed change in one mount will also update the others.
+If you have the same desk mounted to multiple points, a committed change in one mount will also update the others.
 
 ## Merge Desks {#merge-desks}
 
@@ -517,22 +517,22 @@ See the [Merge Desks](tasks.md#merge-desks) section of the [API Reference](tasks
 
 ### `%merg` {#merg}
 
-Here we'll look at merging `desk`s by sending Clay a `%merg` `task` and receiving a `%mere` `gift` in response.
+Here we'll look at merging desks by sending Clay a `%merg` task and receiving a `%mere` `$gift` in response.
 
-First, using the `send-task-take-gift.hoon` thread, let's try creating a new `desk`:
+First, using the `send-task-take-gift.hoon` thread, let's try creating a new desk:
 
 ```
 > -send-task-take-gift [%merg %foo our %base da+now %init]
 [%mere p=[%.y p={}]]
 ```
 
-Now if we scry for our `desk`s we'll see `%foo` is there:
+Now if we scry for our desks we'll see `%foo` is there:
 
 ```hoon
 > .^((set desk) %cd %)
 ```
 
-Next, we'll create a merge conflict and try a couple of things. Mount `%foo` with `|mount /=foo=`, then add a `foo.txt` to both `desk`s but with different text in each and `|commit` them.
+Next, we'll create a merge conflict and try a couple of things. Mount `%foo` with `|mount /=foo=`, then add a `foo.txt` to both desks but with different text in each and `|commit` them.
 
 Now we'll try merging `%base` into `%foo` with a `%mate` strategy:
 
@@ -568,15 +568,15 @@ Now the merge has succeeded and the `%mere` notes the file with a merge conflict
 : /~zod/foo/6/foo/txt
 ```
 
-...you can see it's overwritten the `foo/txt` in the `%foo` `desk` and the `%mere` now has an empty `+set`, indicating no merge conflicts.
+...you can see it's overwritten the `/foo/txt` in the `%foo` desk and the `%mere` now has an empty `+set`, indicating no merge conflicts.
 
-Next, let's look at subscribing for future changes. Since the `case` is specified explicitly in the `%merge` `task`, we can set it in the future:
+Next, let's look at subscribing for future changes. Since the `$case` is specified explicitly in the `%merge` task, we can set it in the future:
 
 ```
 > -send-task-take-gift [%merg %foo our %base da+(add ~m2 now) %only-that]
 ```
 
-Now change the text in the `foo.txt` in the `%base` `desk`, hit backspace to detach the thread and `|commit %base`. After the two minutes pass you should see:
+Now change the text in the `foo.txt` in the `%base` desk, hit backspace to detach the thread and `|commit %base`. After the two minutes pass you should see:
 
 ```
 [/foo [%clay [%mere p=[%.y p={}]]]]
@@ -591,7 +591,7 @@ See the [Permissions](tasks.md#permissions) section of the [API Reference](tasks
 
 ### `%perm` {#perm}
 
-Here we'll look at setting permissions by sending Clay a `%perm` `task`.
+Here we'll look at setting permissions by sending Clay a `%perm` task.
 
 First, let's allow `~nes` to read `/gen/hood/hi/hoon`:
 
@@ -639,7 +639,7 @@ Now let's try setting both read and write permissions:
 [r=[src=/gen/help/hoon rul=[mod=%black who=[p={~nes} q={}]]] w=[src=/gen/help/hoon rul=[mod=%white who=[p={~nes} q={}]]]]
 ```
 
-Lastly, let's look at deleting a permission rule we've previously set. To do that, we just send a null `(unit rule)` in the `rite`.
+Lastly, let's look at deleting a permission rule we've previously set. To do that, we just send a null `(unit rule)` in the `$rite`.
 
 For example, to remove a read permission (or write if you specify `%w`):
 
@@ -671,7 +671,7 @@ Here's a breakdown of a `%perm` task:
 
 ### `%cred` {#cred}
 
-Here we'll look at creating a permission group by sending Clay a `%cred` `task`.
+Here we'll look at creating a permission group by sending Clay a `%cred` task.
 
 Let's create a group called `'foo'` with a few ships:
 
@@ -679,13 +679,13 @@ Let's create a group called `'foo'` with a few ships:
 |pass [%c [%crew 'foo' (sy ~[~zod ~nec ~bud ~wes ~sev])]]
 ```
 
-We'll check it with the next kind of `task`: [%crew](#crew).
+We'll check it with the next kind of task: [`%crew`](#crew).
 
 ### `%crew` {#crew}
 
-Here we'll look at retrieving permission groups by sending Clay a `%crew` `task` and receiving a `%cruz` `gift` in response.
+Here we'll look at retrieving permission groups by sending Clay a `%crew` task and receiving a `%cruz` `$gift` in response.
 
-Let's check, using the `send-task-take-gift.hoon` thread, for the permission group created in the [%cred](#cred) example:
+Let's check, using the `send-task-take-gift.hoon` thread, for the permission group created in the [`%cred`](#cred) example:
 
 ```
 > -send-task-take-gift [%crew ~]
@@ -694,16 +694,16 @@ Let's check, using the `send-task-take-gift.hoon` thread, for the permission gro
 
 ### `%crow` {#crow}
 
-Here we'll look at retrieving a list of all files and directories in all `desk`s which have permissions set for a group by sending Clay a `%crow` `task` and receiving a `%croz` `gift` in response.
+Here we'll look at retrieving a list of all files and directories in all desks which have permissions set for a group by sending Clay a `%crow` task and receiving a `%croz` `$gift` in response.
 
-First we'll set a couple of permissions for the `foo` group we created in the [%cred](#cred) section:
+First we'll set a couple of permissions for the `foo` group we created in the [`%cred`](#cred) section:
 
 ```
 > |pass [%c [%perm %base /gen/hood/hi/hoon %w ~ %white (sy [%.n 'foo']~)]]
 > |pass [%c [%perm %base /ted %w ~ %white (sy [%.n 'foo']~)]]
 ```
 
-Notice we use a `%.n` in the `whom` to indicate a group rather than the `%.y` of a ship.
+Notice we use a `%.n` in the `$whom` to indicate a group rather than the `%.y` of a ship.
 
 Now we'll use the `send-task-take-gift.hoon` thread to try `%crow`:
 
@@ -730,7 +730,7 @@ See the [Foreign Ships](tasks.md#foreign-ships) section of the [API Reference](t
 
 ### `%warp` - Remote {#warp---remote}
 
-Here we'll look at reading files on a foreign ship by sending Clay a `%warp` `task` with a foreign ship in the `wer` field and receiving a `%writ` `gift` in response.
+Here we'll look at reading files on a foreign ship by sending Clay a `%warp` task with a foreign ship in the `wer` field and receiving a `%writ` `$gift` in response.
 
 We'll use a fake `~nes` as the the foreign ship and a fake `~zod` as the local ship.
 
@@ -793,6 +793,6 @@ call: failed
 
 ### `%merg` - Remote {#merg---remote}
 
-To merge a foreign `desk` into a local one, you just send Clay a `%merg` `task` (as you would for a local merge) and specify the foreign ship in the `her` field. For an example, see the [%merg](#merg) section.
+To merge a foreign desk into a local one, you just send Clay a `%merg` task (as you would for a local merge) and specify the foreign ship in the `her` field. For an example, see the [`%merg`](#merg) section.
 
-The foreign ship will respond only if correct permissions have been set. See the [%perm](#perm) section for an example.
+The foreign ship will respond only if correct permissions have been set. See the [`%perm`](#perm) section for an example.

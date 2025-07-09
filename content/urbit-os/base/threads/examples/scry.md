@@ -62,8 +62,8 @@ Save as `/ted/get-ip.hoon` in the `%base` desk, `|commit %base`, and run it with
 
 Here we use the `strandio` function `+scry` which takes an argument of `[mold path]` where:
 
-- `mold` is the return type of the scry
-- `path` is the scry path formatted like:
+- `$mold` is the return type of the scry
+- `$path` is the scry path formatted like:
   1.  vane letter and care
   2.  desk if scrying arvo or agent if scrying a gall agent
   3.  rest of path

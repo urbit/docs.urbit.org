@@ -128,7 +128,7 @@ Four arguments, fixed.
 
 #### Semantics
 
-A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `+bind` which takes a mold `mold` and produces an implementation of monadic bind.
+A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `+bind` which takes a mold `$mold` and produces an implementation of monadic bind.
 
 #### Desugaring
 
@@ -192,26 +192,26 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `;+  p`   | `;+(p)`   | None           |
 
-`p` is a Hoon expression that produces a `manx`.
+`p` is a Hoon expression that produces a `$manx`.
 
 #### Produces
 
-A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx). A `manx` is a noun that represents a single XML node.
+A [`$marl`](../stdlib/5e.md#marl), i.e., a list of [`$manx`](../stdlib/5e.md#manx). A `$manx` is a noun that represents a single XML node.
 
 #### Discussion
 
-tl;dr -- `;+` converts a `manx` to a `marl`.
+tl;dr -- `;+` converts a `$manx` to a `$marl`.
 
 `;+` is a Sail rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-In Sail a single XML node is represented by a `manx`. A single <code><p&gt;</code> node `manx` can be produced in the following way:
+In Sail a single XML node is represented by a `$manx`. A single <code><p&gt;</code> node `$manx` can be produced in the following way:
 
 ```
 > ;p: This will be rendered as an XML node.
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a single `manx` to a `marl`, use the `;+` rune.
+Sometimes what is needed is a `$marl`, i.e., a list of `$manx`. To convert a single `$manx` to a `$marl`, use the `;+` rune.
 
 One interesting thing about Sail is that it allows you to use complex Hoon expressions to choose from among several nodes to render. The `;+` rune can take such a complex expression.
 
@@ -438,7 +438,7 @@ This can be thought of as user-defined function composition; instead of simply n
 
 #### Examples
 
-A simple "parser." `+trip` converts a `cord` (atomic string) to a `tape` (linked string).
+A simple "parser." `+trip` converts a `$cord` (atomic string) to a `$tape` (linked string).
 
 ```
 > =cmp |=([a=tape b=$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
@@ -496,17 +496,17 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `;*  p`   | `;*(p)`   | None           |
 
-`p` is a Hoon expression that produces a `marl`.
+`p` is a Hoon expression that produces a `$marl`.
 
 #### Produces
 
-A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx). A `manx` is a noun that represents a single XML node.
+A [`$marl`](../stdlib/5e.md#marl), i.e., a list of [`$manx`](../stdlib/5e.md#manx). A `$manx` is a noun that represents a single XML node.
 
 #### Discussion
 
 `;*` is a Sail rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-If you need a complex Hoon expression to produce a `marl`, use the `;*` rune. Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
+If you need a complex Hoon expression to produce a `$marl`, use the `;*` rune. Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
 
 (See also [`;=`](#-mictis).)
 
@@ -576,24 +576,24 @@ None
 
 {% endtabs %}
 
-`p1`-`pn` are Hoon expressions, each of which poduces a `manx`.
+`p1`-`pn` are Hoon expressions, each of which poduces a `$manx`.
 
 #### Produces
 
-A [`marl`](../stdlib/5e.md#marl), i.e., a list of [`manx`](../stdlib/5e.md#manx). A `manx` is a noun that represents a single XML node.
+A [`$marl`](../stdlib/5e.md#marl), i.e., a list of [`$manx`](../stdlib/5e.md#manx). A `$manx` is a noun that represents a single XML node.
 
 #### Discussion
 
 `;=` is a [Sail](../sail.md) rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-In Sail a single XML node is represented by a `manx`. A single `<p>` node `manx` can be produced in the following way:
+In Sail a single XML node is represented by a `$manx`. A single `<p>` node `$manx` can be produced in the following way:
 
 ```
 > ;p: This will be rendered as an XML node.
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-Sometimes what is needed is a `marl`, i.e., a list of `manx`. To convert a series of `manx` nodes to a `marl`, use the `;=` rune.
+Sometimes what is needed is a `$marl`, i.e., a list of `$manx`. To convert a series of `$manx` nodes to a `$marl`, use the `;=` rune.
 
 (See also [`;*`](#-mictar).)
 

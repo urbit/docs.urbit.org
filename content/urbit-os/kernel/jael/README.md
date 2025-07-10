@@ -31,4 +31,4 @@ The database of PKI information that Jael maintains is used by other modules and
 
 In particular, [Ames](../ames/) uses the information stored in Jael to encrypt packets it sends to other ships, and to decrypt and validate packets it receives from them.
 
-Jael has a few `$task`s you can use to interact with it. In particular, its [`%public-keys` task](tasks.md#public-keys) allows an application or thread to subscribe for PKI updates for a set of ships.
+Jael has a few tasks you can use to interact with it. In particular, its [`%public-keys` task](tasks.md#public-keys) allows an application or thread to subscribe for PKI updates for a set of ships.

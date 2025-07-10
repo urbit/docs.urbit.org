@@ -15,7 +15,7 @@ layout:
 
 # Iris API Reference
 
-This document details the `$task`s used by Iris. Iris only has three `$task`s besides the standard vane `$task`s: [`%request`](#request), [`%cancel-request`](#cancel-request), and [`%receive`](#receive). The `%receive` `$task` is only sent to Iris by the runtime, so you're likely to only use `%request` and `%cancel-request`.
+This document details the tasks used by Iris. Iris only has three tasks besides the standard vane tasks: [`%request`](#request), [`%cancel-request`](#cancel-request), and [`%receive`](#receive). The `%receive` task is only sent to Iris by the runtime, so you're likely to only use `%request` and `%cancel-request`.
 
 ## `%request` {#request}
 
@@ -31,7 +31,7 @@ The [`$outbound-config`](data-types.md#outbound-config) specifies the number of 
 
 #### Returns
 
-Iris returns a `%http-response` `$gift` in response to a `%request` task. A `%response` `$gift` looks like:
+Iris returns a `%http-response` gift in response to a `%request` task. A `%response` gift looks like:
 
 ```hoon
 [%http-response =client-response]
@@ -41,7 +41,7 @@ The [$client-response](data-types.md#client-response) contains the HTTP response
 
 The `$client-response` structure specifies three kinds of responses - `%progress`, `%finished` and `%cancel`. The `%progress` response would contain each chunk of the message as it came in, `%finished` would contain the final assembled message from Vere's buffer, and `%cancel` would be sent if the runtime cancels the request.
 
-Note that neither `%progress` partial messages nor `%cancel` responses have been implemented in Vere at the time of writing, so **you will only ever receive a single `%http-response` `$gift` with a `%finished` `$client-response`**. If the request fails for some reason, you'll still get an empty `%finished` `$client-response` with a `504` status code.
+Note that neither `%progress` partial messages nor `%cancel` responses have been implemented in Vere at the time of writing, so **you will only ever receive a single `%http-response` gift with a `%finished` `$client-response`**. If the request fails for some reason, you'll still get an empty `%finished` `$client-response` with a `504` status code.
 
 #### Example
 
@@ -55,11 +55,11 @@ See the [Example](example.md) document.
 
 Cancel a previous request to fetch a remote HTTP resource.
 
-A `%cancel-request` `$task` does not take any arguments, the [request](#request) to cancel is determined implicitly.
+A `%cancel-request` task does not take any arguments, the [request](#request) to cancel is determined implicitly.
 
 #### Returns
 
-Iris does not return any `$gift` in response to a `%cancel-request` `$task`. You will also not receive any `$gift` back from the original `%request` `$task` you've cancelled.
+Iris does not return any gift in response to a `%cancel-request` task. You will also not receive any gift back from the original `%request` task you've cancelled.
 
 ## `%receive` {#receive}
 
@@ -67,6 +67,6 @@ Iris does not return any `$gift` in response to a `%cancel-request` `$task`. You
 [%receive id=@ud =http-event:http]
 ```
 
-Receives HTTP data from outside. This `$task` is sent to Iris by the runtime, you would not use it manually.
+Receives HTTP data from outside. This task is sent to Iris by the runtime, you would not use it manually.
 
 The `.id` is a sequential ID for the event and the [$http-event:http](../eyre/data-types.md#http-eventhttp) contains the HTTP headers and data.

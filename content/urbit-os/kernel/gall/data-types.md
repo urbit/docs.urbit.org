@@ -289,8 +289,8 @@ For `%pass`, `p` specifies the `$wire` on which a response should be returned. S
 
 The type for messages initiated by our agent. This is opposed to [`gift:agent`](#giftagent), which is the type for responding to other agents or vanes, or for sending out updates to subscribers. The three cases are:
 
-- `%agent`: Poke another agent, subscribe to another agent, or cancel a subscription to another agent. The `$ship` and `$name` fields are the ship and agent to which the `$task` should be sent. The `$task` is the request itself, see [`$task:agent`](#taskagent) below for its possible types.
-- `%arvo`: Pass a `$task` to a vane. The type of a `$note-arvo` is:
+- `%agent`: Poke another agent, subscribe to another agent, or cancel a subscription to another agent. The `$ship` and `$name` fields are the ship and agent to which the task should be sent. The task is the request itself, see [`$task:agent`](#taskagent) below for its possible types.
+- `%arvo`: Pass a task to a vane. The type of a `$note-arvo` is:
   ```hoon
   +$  note-arvo
     $~  [%b %wake ~]
@@ -358,8 +358,8 @@ This is in contrast to [`task:agent`](#taskagent)s, which are messages to other 
 
 - `%fact`: An update to existing subscribers. The `.paths` field specifies which subscription paths the update should go out to. The `$cage` is the data, and is a `[mark vase]`.
 - `%kick`: Kick subscriber, ending their subscription. The `.paths` field specifies which paths the subscriber should be kicked from, and the `$ship` field specifies the ship to kick. If the `$ship` field is null, all subscribers on the specified paths are kicked. Gall will automatically remove the subscription from our agent's [`$bitt`](#bitt) (inbound subscription `+map`), and subscriber will no longer receive updates on the `$path`s in question.
-- `%watch-ack`: Acknowledge a subscription request. If `p` is null, it's an ack (positive acknowledgement), and if `p` is non-null, it's a nack (negative acknowledgement). Simply crashing will caused Gall to nack a subscription request, and not crashing but not explicitly producing a `%watch-ack` `$gift` will cause Gall to ack a subscription request. Therefore, you'd typically only explicitly produce a `%watch-ack` `$gift` if you wanted to nack a subscription request with a custom error in the `$tang`.
-- `%poke-ack`: Acknowledge a poke. If `p` is null, it's an ack, and if `p` is non-null, it's a nack. Simply crashing will cause Gall to nack a poke, and not crashing but not explicitly producing a `%poke-ack` `$gift` will cause Gall to ack a poke. Therefore, you'd typically only explicitly produce a `%poke-ack` `$gift` if you wanted to nack a poke with a custom error in the `$tang`.
+- `%watch-ack`: Acknowledge a subscription request. If `p` is null, it's an ack (positive acknowledgement), and if `p` is non-null, it's a nack (negative acknowledgement). Simply crashing will caused Gall to nack a subscription request, and not crashing but not explicitly producing a `%watch-ack` gift will cause Gall to ack a subscription request. Therefore, you'd typically only explicitly produce a `%watch-ack` gift if you wanted to nack a subscription request with a custom error in the `$tang`.
+- `%poke-ack`: Acknowledge a poke. If `p` is null, it's an ack, and if `p` is non-null, it's a nack. Simply crashing will cause Gall to nack a poke, and not crashing but not explicitly producing a `%poke-ack` gift will cause Gall to ack a poke. Therefore, you'd typically only explicitly produce a `%poke-ack` gift if you wanted to nack a poke with a custom error in the `$tang`.
 
 A `gift:agent` is always wrapped in a `%give` [`card:agent`](#cardagent).
 
@@ -485,7 +485,7 @@ This arm is called when another agent give our agent a [`$sign:agent`](#signagen
 - Accepts: `[wire sign-arvo]`
 - Produces: [`$step:agent`](#stepagent)
 
-This arm is called when a vane gives our agent a `$gift`. A `$sign-arvo` is:
+This arm is called when a vane gives our agent a gift. A `$sign-arvo` is:
 
 ```hoon
 +$  sign-arvo

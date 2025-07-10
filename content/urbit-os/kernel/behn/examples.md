@@ -15,13 +15,13 @@ layout:
 
 # Behn Examples
 
-Here are a couple of practical examples of using Behn's `%wait` and `%rest` `$task`s.
+Here are a couple of practical examples of using Behn's `%wait` and `%rest` tasks.
 
 ## %wait {#wait}
 
-Here we'll look at setting a timer by passing Behn a `%wait` `$task` and taking the `%wake` `$gift` it returns when the timer fires.
+Here we'll look at setting a timer by passing Behn a `%wait` task and taking the `%wake` gift it returns when the timer fires.
 
-Below is a thread which will take a `@dr` as its argument and `%pass`es Behn a `%wait` `$task` to fire `@dr` in the future. When the timer fires, it'll then take the `%wake` `$gift` and print it to the terminal along with the time that has elapsed.
+Below is a thread which will take a `@dr` as its argument and `%pass`es Behn a `%wait` task to fire `@dr` in the future. When the timer fires, it'll then take the `%wake` gift and print it to the terminal along with the time that has elapsed.
 
 `wait.hoon`
 
@@ -58,13 +58,13 @@ Gift: [%wake error=~]
 Time elapsed: ~s2..0154
 ```
 
-As you can see, the timer has fired successfully after `~s2` and Behn has given us a `%wake` `$gift`.
+As you can see, the timer has fired successfully after `~s2` and Behn has given us a `%wake` gift.
 
 ## %rest {#rest}
 
-Here we'll look at cancelling a previously set timer by passing Behn a `%rest` `$task`.
+Here we'll look at cancelling a previously set timer by passing Behn a `%rest` task.
 
-Below is a variation on the [%wake](#wake) thread. It takes a `@dr` as its argument and sets a timer that far in the future, as before. However, it also sets a second timer twice the `@dr` in the future, and then cancels the first with a `%rest` `$task`. If the `%rest` `$task` succeeds in cancelling the first timer, the `%wake` `$gift` will arrive after double the specified delay.
+Below is a variation on the [%wake](#wake) thread. It takes a `@dr` as its argument and sets a timer that far in the future, as before. However, it also sets a second timer twice the `@dr` in the future, and then cancels the first with a `%rest` task. If the `%rest` task succeeds in cancelling the first timer, the `%wake` gift will arrive after double the specified delay.
 
 `rest.hoon`
 
@@ -103,4 +103,4 @@ Gift: [%wake error=~]
 Time elapsed: ~s4..00d4
 ```
 
-As you can see, the timer fired after four seconds, which means the two second timer was successfully cancelled by the `%rest` `$task`.
+As you can see, the timer fired after four seconds, which means the two second timer was successfully cancelled by the `%rest` task.

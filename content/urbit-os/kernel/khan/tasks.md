@@ -15,11 +15,11 @@ layout:
 
 # Khan API Reference
 
-These are the `$task`s Khan can be passed and the `$gift`s it can give.
+These are the tasks Khan can be passed and the gifts it can give.
 
 ## Tasks {#tasks}
 
-Here are the `$task`s you can pass Khan. You'd either use [`%fard`](#fard) to run a thread from a file or [`%lard`](#lard) to run an in-line thread.
+Here are the tasks you can pass Khan. You'd either use [`%fard`](#fard) to run a thread from a file or [`%lard`](#lard) to run an in-line thread.
 
 ### `%fard` {#fard}
 
@@ -67,7 +67,7 @@ When the thread eventually finishes (or if it fails), Khan with give an [`%arow`
 
 ## Gifts {#gifts}
 
-These are the two `$gift`s Khan can give. In userspace, you'd only receive an [`%arow`](#arow).
+These are the two gifts Khan can give. In userspace, you'd only receive an [`%arow`](#arow).
 
 ### `%arow` {#arow}
 

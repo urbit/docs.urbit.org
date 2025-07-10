@@ -77,15 +77,15 @@ The type of the next field is a `$note:agent:gall` (henceforth just `$note`), wh
   ==
 ```
 
-- An `%agent` `$note` is a request to another Gall agent, either local or on a remote ship. The `$ship` and `$name` fields are just the target ship and agent name. The `$task` is the request itself, we'll discuss it separately [below](#task).
+- An `%agent` `$note` is a request to another Gall agent, either local or on a remote ship. The `$ship` and `$name` fields are just the target ship and agent name. The task is the request itself, we'll discuss it separately [below](#task).
 - An `%arvo` `$note` is a request to a vane. We'll discuss such requests [below](#note-arvo).
 - A `%pyre` `$note` is used to abort an event. It's mostly used internally by `%kiln` (a submodule of `%hood`), it's unlikely you'd use it in your own agent. The `$tang` contains an error message.
 - The other notes are for [remote scry](../userspace/remote-scry.md).
 
 
-### `$task` {#task}
+### task {#task}
 
-A `$task:agent:gall` (henceforth just `$task`) is defined in `lull.hoon` as:
+A `$task:agent:gall` (henceforth just task) is defined in `lull.hoon` as:
 
 ```hoon
 +$  task
@@ -99,7 +99,7 @@ A `$task:agent:gall` (henceforth just `$task`) is defined in `lull.hoon` as:
 
 Note a few of these include a `$path` field. The `$path` type is exactly the same as a `$wire` (another `(list @ta)`) with a syntax of `/foo/bar/baz`. The reason for the `$wire`/`$path` distinction is just to indicate their separate purposes. While a `$wire` is for _responses_, a `$path` is for _requests_. The [`$path`](types.md#path) type is also covered in the [types reference](types.md).
 
-The kinds of `$task`s can be divided into two categories:
+The kinds of tasks can be divided into two categories:
 
 #### Subscriptions
 
@@ -161,7 +161,7 @@ The letter at the beginning corresponds to the vane - `%b` for Behn, `%c` for Cl
 
 The purpose of a `%give` card is to respond to a request made by another agent or vane. More specifically, it's either for acknowledging a request, or for sending out updates to subscribers. This is in contrast to a [`%pass`](#give) card, which is essentially unsolicited.
 
-A `%give` card contains a `$gift:agent:gall` (henceforth just `$gift`), which is defined in `lull.hoon` as:
+A `%give` card contains a `$gift:agent:gall` (henceforth just gift), which is defined in `lull.hoon` as:
 
 ```hoon
 +$  gift

@@ -51,9 +51,9 @@ After testing the `$mark`, you'd usually extract the `$vase` to the expected typ
 ==
 ```
 
-Your agent will then produce a list of `$card`s to be sent off and a new, modified state, as appropriate. We'll go into subscriptions in the next lesson, but just to give you an idea of a typical pattern: An agent for a chat app might take new messages as pokes, add them to the list of messages in its state, and send out the new messages to subscribed chat participants as `$gift`s.
+Your agent will then produce a list of `$card`s to be sent off and a new, modified state, as appropriate. We'll go into subscriptions in the next lesson, but just to give you an idea of a typical pattern: An agent for a chat app might take new messages as pokes, add them to the list of messages in its state, and send out the new messages to subscribed chat participants as gifts.
 
-As discussed in the previous lesson, Gall will automatically send a `%poke-ack` `$gift` back to wherever the poke came from. The `%poke-ack` will be a nack if your agent crashed while processing the poke, and an ack otherwise. If it's a nack, the `$tang` in the `%poke-ack` will contain a stack trace of the crash.
+As discussed in the previous lesson, Gall will automatically send a `%poke-ack` gift back to wherever the poke came from. The `%poke-ack` will be a nack if your agent crashed while processing the poke, and an ack otherwise. If it's a nack, the `$tang` in the `%poke-ack` will contain a stack trace of the crash.
 
 As a result, you do not need to explicitly send a `%poke-ack`. Instead, you would design your agent to handle only what you expect and crash in all other cases. You can crash by passing the `$cage` to default-agent, or just with a `!!`. In the latter case, if you want to add an error message to the stack trace, you can do so like:
 
@@ -112,7 +112,7 @@ A `$sign:agent:gall` (henceforth just `$sign`) is defined in `/sys/lull.hoon` as
   ==
 ```
 
-It's basically the same as a [`$gift`](5-cards.md#give), but incoming instead of outgoing.
+It's basically the same as a [gift](5-cards.md#give), but incoming instead of outgoing.
 
 The simplest way to handle a `%poke-ack` by passing it to default-agent's `+on-agent` arm, which will just print an error message to the terminal if it's a nack, and otherwise do nothing. Sometimes you'll want your agent to do something different depending on whether the poke failed or succeeded (and therefore whether it's a nack or an ack).
 

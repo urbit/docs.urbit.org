@@ -75,7 +75,7 @@ Let's put the first part of the move trace into a diagram to make following alon
 
 ![](https://media.urbit.org/docs/arvo/move-trace-with-key.png)
 
-Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` note/task sequence or a `%give` gift/sign sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `$note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a `$task` to Vane B. For more information, see the [Arvo kernel tutorial](README.md#the-kernel).
+Here, each arrow represents the passing of some information, with most of it being from vane to vane. Here, when Vane A has an arrow to a card and then an arrow to Vane B, this represents either a `%pass` note/task sequence or a `%give` gift/sign sequence that actually has the Arvo kernel in the middle. That is to say, Vane A `%pass`es a `$note` to the Arvo kernel addressed to Vane B, and the Arvo kernel then `%pass`es a task to Vane B. For more information, see the [Arvo kernel tutorial](README.md#the-kernel).
 
 This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford - as well as four applications - hood, spider, Dojo, and time.
 
@@ -97,7 +97,7 @@ First we note that this line is executed only if the laconic bit is set to true,
 
 The `""` here is a metadatum that keeps track of how many steps deep in the causal chain the event is. An event with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In this case, Unix events are an "original cause" and thus represented by an empty string.
 
-At this point in time, Dill has received the `$move` and then processes it. The `%belt` `$task` in `dill.hoon` is `+call`ed, which is processed using the `+send` arm:
+At this point in time, Dill has received the `$move` and then processes it. The `%belt` task in `dill.hoon` is `+call`ed, which is processed using the `+send` arm:
 
 ```hoon
 ++  send                                          ::  send action
@@ -108,7 +108,7 @@ At this point in time, Dill has received the `$move` and then processes it. The 
   (deal / [%poke [%dill-belt -:!>(bet) bet]])
 ```
 
-Dill has taken in the command and in response it `%pass`es a `$task` `$card` with instructions to `%poke` hood, which is a Gall app primarily used for interfacing with Dill. Here, `+deal` is an arm for `%pass`ing a `$card` to Gall to ask it to create a `%deal` `$task`:
+Dill has taken in the command and in response it `%pass`es a task `$card` with instructions to `%poke` hood, which is a Gall app primarily used for interfacing with Dill. Here, `+deal` is an arm for `%pass`ing a `$card` to Gall to ask it to create a `%deal` task:
 
 ```hoon
 ++  deal                                          ::  pass to %gall
@@ -122,7 +122,7 @@ Next in our move trace we have this:
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
 
-Here, Dill `%pass`es a `$task` `$card` saying to `%poke` Gall's hood app (with the Enter keystroke).
+Here, Dill `%pass`es a task `$card` saying to `%poke` Gall's hood app (with the Enter keystroke).
 
 Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE core](README.md#section-3be-core). This arm is what the Arvo kernel uses to send `$card`s, and here we look at the segment that includes `%pass` `$move`s.
 
@@ -152,7 +152,7 @@ Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 
 
 Code for writing traces can be a bit tricky, but let's try not to get too distracted by the lark expressions and such. By paying attention to the lines concerning the laconic bit (following `!lac`) we can mostly determine what is being told to us.
 
-From the initial input event, Arvo has generated a `$card` that it is now `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The `$card` is a `%deal` `$task`, asking Gall to `%poke` hood using data that has originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:- (runt [s.gum '|'] "")` displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]` tells us that `~zod` is both the sending and receiving ship.
+From the initial input event, Arvo has generated a `$card` that it is now `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The `$card` is a `%deal` task, asking Gall to `%poke` hood using data that has originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:- (runt [s.gum '|'] "")` displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]` tells us that `~zod` is both the sending and receiving ship.
 
 From here on our explanations will be more brief. We include some information that cannot be directly read from the move trace in \[brackets]. Onto the next line:
 
@@ -166,13 +166,13 @@ Here is another `%pass` `$move`, this time from Gall to iself as denoted by `[%g
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ```
 
-Gall's dojo `%give`s a `$gift` with a `%fact` (subscription update) to Gall's hood, \[saying to clear the terminal prompt].
+Gall's dojo `%give`s a gift with a `%fact` (subscription update) to Gall's hood, \[saying to clear the terminal prompt].
 
 ```
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ```
 
-Gall's hood `%give`s a `$gift` with a `%fact` to Dill \[saying to replace the current terminal line with `~zod:dojo>`]
+Gall's hood `%give`s a gift with a `%fact` to Dill \[saying to replace the current terminal line with `~zod:dojo>`]
 
 Next is the `$move` that is not actually printed in the move trace mentioned above:
 

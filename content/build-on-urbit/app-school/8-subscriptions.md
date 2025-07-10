@@ -260,7 +260,7 @@ Before we get into trying it out, we'll first walk through the `/sur` file, mark
 
 </details>
 
-This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `$tasks` type, a `(map id task)`, where a `$task` is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `$action`s and `$update`s for subscribers.
+This file defines most of the types for the agents. The list of to-do tasks will be stored in the state of the publisher agent as the `$tasks` type, a `(map id task)`, where a task is a `[=name done=?]`. The set of ships allowed to subscribe will be stored in `.friends`, a `(set @p)`, also in the publisher's state. After that, there are the head-tagged unions of accepted poke `$action`s and `$update`s for subscribers.
 
 **`/mar/todo/action.hoon`**
 

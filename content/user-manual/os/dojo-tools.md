@@ -3005,7 +3005,7 @@ The `$term` is an error tag like `%foo`. The verbosity level for the specified t
 
 - `%hush` - Completely silent, print nothing.
 - `%soft` - Just print `crud: %error-tag event failed`, ignore any `$tang` given in the `%crud`.
-- `%loud` - Print the `%soft` message as well as the full `$tang` given in the `%crud` `$task`.
+- `%loud` - Print the `%soft` message as well as the full `$tang` given in the `%crud` task.
   
 #### Example
 

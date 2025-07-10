@@ -56,7 +56,7 @@ The [zapgar](../../hoon/rune/zap.md#zapgar) rune (`!>`) takes a single argument 
 [#t/foo=@t q=7.496.034]
 ```
 
-You would typically use `!>` as part of a [`$cage`](#cage) when you're constructing a `$card` like a poke or a `%fact` `$gift` to be sent off.
+You would typically use `!>` as part of a [`$cage`](#cage) when you're constructing a `$card` like a poke or a `%fact` gift to be sent off.
 
 ### Extract data from `$vase` {#extract-data-from-vase}
 

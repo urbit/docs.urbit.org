@@ -33,7 +33,7 @@ Iris itself only has three structures defined in `lull.hoon`, but it also uses `
   ==
 ```
 
-This structure represents data which Iris has fetched from a remote HTTP resource, and is what's returned in a `%http-response` `$gift` (see the [%request](tasks.md#request) documentation for details) by Iris to the app or thread which requested it. There are three kinds of `$client-response` - `%progress`, `%finished` and `%cancel`. A `%progress` `$client-response` is a partial response, such as when an HTTP response is split into multiple separate chunks. A `%finished` `$client-response` is the final complete, assembled and parsed HTTP response. A `%cancel` `$client-response` is sent when the runtime cancels the request for some reason.
+This structure represents data which Iris has fetched from a remote HTTP resource, and is what's returned in a `%http-response` gift (see the [%request](tasks.md#request) documentation for details) by Iris to the app or thread which requested it. There are three kinds of `$client-response` - `%progress`, `%finished` and `%cancel`. A `%progress` `$client-response` is a partial response, such as when an HTTP response is split into multiple separate chunks. A `%finished` `$client-response` is the final complete, assembled and parsed HTTP response. A `%cancel` `$client-response` is sent when the runtime cancels the request for some reason.
 
 Note that at the time of writing, **neither `%progress` nor `%cancel` `$client-response`s are implemented**, so in practice you'll only ever get a single `%finished` `$client-response`.
 

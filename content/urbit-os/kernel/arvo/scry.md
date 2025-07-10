@@ -25,7 +25,7 @@ Vanes and agents define _scry endpoints_ which allow one to request data from th
 
 ## Why scry? {#why-scry}
 
-The subject available in something like a Gall agent or thread contains a great many functions and structures from the standard library as well as Zuse and Lull, but it does not include any of the actual data stored elsewhere in the ship. All it has is its own state, a `$bowl` and any `$card`s it has been passed. Ordinarily, in order to access such data, one would need to `%poke` or `%watch` other agents, or `%pass` `$task`s to vanes, then wait for a response. Arvo's scry system is the one exception to this; it allows direct retrieval of data from other vanes or agents in situ, from any context, without any of the normal messaging rigmarole.
+The subject available in something like a Gall agent or thread contains a great many functions and structures from the standard library as well as Zuse and Lull, but it does not include any of the actual data stored elsewhere in the ship. All it has is its own state, a `$bowl` and any `$card`s it has been passed. Ordinarily, in order to access such data, one would need to `%poke` or `%watch` other agents, or `%pass` tasks to vanes, then wait for a response. Arvo's scry system is the one exception to this; it allows direct retrieval of data from other vanes or agents in situ, from any context, without any of the normal messaging rigmarole.
 
 ## How do I scry? {#how-do-i-scry}
 
@@ -35,7 +35,7 @@ For details of its usage, see the [dotket](../../../hoon/rune/dot.md#dotket) sec
 
 ![](https://media.urbit.org/docs/arvo/scry-diagram-v3.svg)
 
-One further note on `$care`s (which can sometimes be confusing): While `$care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `$care`s specify Clay submodules with specific behaviour, and are used both in scries as well as `$task`s and `$gift`s. For example, a `%x` `$care` reads the data of a file, a `%p` `$care` reads file permissions, and so forth. To see all of Clay's `$care`s and what they do, you can refer to Clay's [Scry Reference](../clay/scry.md).
+One further note on `$care`s (which can sometimes be confusing): While `$care`s are part of the global namespace, they're most extensively used by Clay in particular. In Clay, `$care`s specify Clay submodules with specific behaviour, and are used both in scries as well as tasks and gifts. For example, a `%x` `$care` reads the data of a file, a `%p` `$care` reads file permissions, and so forth. To see all of Clay's `$care`s and what they do, you can refer to Clay's [Scry Reference](../clay/scry.md).
 
 Most other vanes also make use of `$care`s in their scry endpoints. While such vanes don't have corresponding submodules with strictly defined behaviour like Clay, the `$care`s still confer the general nature of the endpoint. The most widely used `$care` is `%x`, which implies reading data in a general sense. Gall has special handling of `%x` scries as described in the [Gall agents](#gall-agents) section below, but otherwise `$care`s have no special behaviour for non-Clay vanes (though they must still be included if the endpoint specifies it).
 

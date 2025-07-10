@@ -17,7 +17,7 @@ layout:
 
 This document contains a number of examples of interacting with Clay using its various tasks. Sections correspond to the general details in the [API Reference](tasks.md) document.
 
-Most examples will either use `|pass` to just send a task or the following thread to send a task and take the resulting `$gift`. You can save the following thread to the `/ted` directory of the `%base` desk on a fake ship:
+Most examples will either use `|pass` to just send a task or the following thread to send a task and take the resulting gift. You can save the following thread to the `/ted` directory of the `%base` desk on a fake ship:
 
 `send-task-take-gift.hoon`
 
@@ -46,7 +46,7 @@ See the [Read and Subscribe](tasks.md#warp---read-and-track) section of the [API
 
 ### `%sing` {#sing}
 
-Here we'll look at reading files by passing Clay a `%warp` task with a `%sing` `$rave` and receiving a `%writ` `$gift` containing the data in response.
+Here we'll look at reading files by passing Clay a `%warp` task with a `%sing` `$rave` and receiving a `%writ` gift containing the data in response.
 
 Using the `send-task-take-gift.hoon` thread, let's try reading `gen/hood/hi.hoon`:
 
@@ -96,7 +96,7 @@ Here's a breakdown of the task we sent:
 
 ### `%next` {#next}
 
-Here we'll look at subscribing to the next version of a file by passing Clay a `%warp` task with a `%next` `$rave` and receiving a `%writ` `$gift` when the file changes.
+Here we'll look at subscribing to the next version of a file by passing Clay a `%warp` task with a `%next` `$rave` and receiving a `%writ` gift when the file changes.
 
 Using the `send-task-take-gift.hoon` thread, let's subscribe to the next version of `foo.txt`:
 
@@ -132,7 +132,7 @@ Here's a breakdown of the task we sent:
 
 ### `%mult` {#mult}
 
-Here we'll look at subscribing to the next version of multiple files by passing Clay a `%warp` task with a `%mult` `$rave` and receiving a `%wris` `$gift` when any of the files change.
+Here we'll look at subscribing to the next version of multiple files by passing Clay a `%warp` task with a `%mult` `$rave` and receiving a `%wris` gift when any of the files change.
 
 This thread will subscribe to `/foo/txt` with an `%x` `$care` and `/bar/txt` with a `%u` `$care`. It will print out the `%wris` it gets back from Clay.
 
@@ -191,7 +191,7 @@ Here's a breakdown of the task we sent:
 
 ### `%many` {#many}
 
-Here we'll look at subscribing to a range of changes to a desk by passing Clay a `%warp` task with a `%many` `$rave` and receiving `%writ` `$gift`s when changes occur.
+Here we'll look at subscribing to a range of changes to a desk by passing Clay a `%warp` task with a `%many` `$rave` and receiving `%writ` gifts when changes occur.
 
 This thread will subscribe to changes to your `%base` desk for the next three minutes. The `track` is `%.y` so it will only inform you of changes, not send the full `$nako`. It will only get updates if the specified file exists. It contains a `main-loop` that will take an arbitrary number of `$sign`s and print them out in the dojo. Since it never ends, you'll need to stop it with the `:spider|kill` command in the dojo.
 
@@ -418,7 +418,7 @@ See the [Manage Mounts](tasks.md#manage-mounts) section of the [API Reference](t
 
 ### `%boat` {#boat}
 
-Here we'll look at requesting the list of existing mount points on a ship by sending Clay a `%boat` task and receiving a `%hill` `$gift`.
+Here we'll look at requesting the list of existing mount points on a ship by sending Clay a `%boat` task and receiving a `%hill` gift.
 
 Using the `send-task-take-gift.hoon` thread, let's make such a request:
 
@@ -517,7 +517,7 @@ See the [Merge Desks](tasks.md#merge-desks) section of the [API Reference](tasks
 
 ### `%merg` {#merg}
 
-Here we'll look at merging desks by sending Clay a `%merg` task and receiving a `%mere` `$gift` in response.
+Here we'll look at merging desks by sending Clay a `%merg` task and receiving a `%mere` gift in response.
 
 First, using the `send-task-take-gift.hoon` thread, let's try creating a new desk:
 
@@ -683,7 +683,7 @@ We'll check it with the next kind of task: [`%crew`](#crew).
 
 ### `%crew` {#crew}
 
-Here we'll look at retrieving permission groups by sending Clay a `%crew` task and receiving a `%cruz` `$gift` in response.
+Here we'll look at retrieving permission groups by sending Clay a `%crew` task and receiving a `%cruz` gift in response.
 
 Let's check, using the `send-task-take-gift.hoon` thread, for the permission group created in the [`%cred`](#cred) example:
 
@@ -694,7 +694,7 @@ Let's check, using the `send-task-take-gift.hoon` thread, for the permission gro
 
 ### `%crow` {#crow}
 
-Here we'll look at retrieving a list of all files and directories in all desks which have permissions set for a group by sending Clay a `%crow` task and receiving a `%croz` `$gift` in response.
+Here we'll look at retrieving a list of all files and directories in all desks which have permissions set for a group by sending Clay a `%crow` task and receiving a `%croz` gift in response.
 
 First we'll set a couple of permissions for the `foo` group we created in the [`%cred`](#cred) section:
 
@@ -730,7 +730,7 @@ See the [Foreign Ships](tasks.md#foreign-ships) section of the [API Reference](t
 
 ### `%warp` - Remote {#warp---remote}
 
-Here we'll look at reading files on a foreign ship by sending Clay a `%warp` task with a foreign ship in the `wer` field and receiving a `%writ` `$gift` in response.
+Here we'll look at reading files on a foreign ship by sending Clay a `%warp` task with a foreign ship in the `wer` field and receiving a `%writ` gift in response.
 
 We'll use a fake `~nes` as the the foreign ship and a fake `~zod` as the local ship.
 

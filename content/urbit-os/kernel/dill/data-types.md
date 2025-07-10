@@ -25,7 +25,7 @@ Terminal dimension.
 +$  blew  [p=@ud q=@ud]
 ```
 
-`p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [`%blew`](tasks.md#blew) `$task` whenever the dimensions of the terminal changes.
+`p` is columns, `q` is rows. This structure is passed to Dill by the runtime in a [`%blew`](tasks.md#blew) task whenever the dimensions of the terminal changes.
 
 ---
 
@@ -42,7 +42,7 @@ Terminal client input.
   ==                                                  :: 
 ```
 
-A `$belt` is passed to Dill in a [`%belt`](tasks.md#belt) `$task` by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [`$dill-belt`](#dill-belt) is used between Dill and Arvo.
+A `$belt` is passed to Dill in a [`%belt`](tasks.md#belt) task by the runtime whenever there is input, such as a user typing in the console. This is only used between the terminal client and Dill, a [`$dill-belt`](#dill-belt) is used between Dill and Arvo.
 
 May either be a [`$bolt`](#bolt) or one of:
 
@@ -96,7 +96,7 @@ Terminal client output.
   ==                                                  ::
 ```
 
-A `$blit` is given to the terminal client by Dill in a `%blit` `$gift` when it wants to print some text, clear the screen, go _ding_ or what have you.
+A `$blit` is given to the terminal client by Dill in a `%blit` gift when it wants to print some text, clear the screen, go _ding_ or what have you.
 
 This is directly used between Dill and the terminal client, while a [$dill-blit](#dill-blit) is used between Arvo and Dill. A `$dill-blit` includes the `$blit` union as a subset.
 
@@ -162,7 +162,7 @@ A `$dill-blit` is either a [`$blit`](#blit) or a:
 
 ## `$flog` {#flog}
 
-Wrapped Dill `$task`s.
+Wrapped Dill tasks.
 
 ```hoon
 +$  flog                                              ::  sent to %dill
@@ -176,7 +176,7 @@ Wrapped Dill `$task`s.
   ==                                                  ::
 ```
 
-These are a subset of Dill's `$task`s which can be wrapped in a `%flog` `$task`. See the [API Reference](tasks.md) document for details of each of these `$task`s.
+These are a subset of Dill's tasks which can be wrapped in a `%flog` task. See the [API Reference](tasks.md) document for details of each of these tasks.
 
 ---
 
@@ -197,7 +197,7 @@ A [`$dill-belt`](#dill-belt) (client input) for a particular session.
 
 ## `$session-task` {#session-task}
 
-A subset of [Dill's `$task`s](tasks.md#session-tasks) for interacting with a particular session.
+A subset of [Dill's tasks](tasks.md#session-tasks) for interacting with a particular session.
 
 ```hoon
 +$  session-task                                      ::  session request
@@ -211,15 +211,15 @@ A subset of [Dill's `$task`s](tasks.md#session-tasks) for interacting with a par
   ==                                                  ::
 ```
 
-This type is used in the [`%shot`](tasks.md#shot) wrapper `$task`.
+This type is used in the [`%shot`](tasks.md#shot) wrapper task.
 
-See the [Session Tasks](tasks.md#session-tasks) entry in the API reference for more details of these `$task`s.
+See the [Session Tasks](tasks.md#session-tasks) entry in the API reference for more details of these tasks.
 
 ---
 
 ## `$told` {#told}
 
-A subset of [Dill's `$task`s](tasks.md#session-tasks) for basic text printing.
+A subset of [Dill's tasks](tasks.md#session-tasks) for basic text printing.
 
 ```hoon
 +$  told                                              ::  system output
@@ -229,6 +229,6 @@ A subset of [Dill's `$task`s](tasks.md#session-tasks) for basic text printing.
   ==                                                  ::
 ```
 
-See the [`$told` `$task`s](tasks.md#told-tasks) entry in the API reference for more details of these `$task`s.
+See the [`$told` tasks](tasks.md#told-tasks) entry in the API reference for more details of these tasks.
 
 ---

@@ -15,7 +15,7 @@ layout:
 
 # 9. Vanes
 
-In this lesson we're going to look at interacting with vanes (kernel modules). The API for each vane consists of `$task`s it can take, and `$gift`s it can return. The `$task`s and `$gift`s for each vane are defined in its section of `/sys/lull.hoon`. Here's the `$task:iris`s and `$gift:iris`s for Iris, the HTTP client vane, as an example:
+In this lesson we're going to look at interacting with vanes (kernel modules). The API for each vane consists of tasks it can take, and gifts it can return. The tasks and gifts for each vane are defined in its section of `/sys/lull.hoon`. Here's the `$task:iris`s and `$gift:iris`s for Iris, the HTTP client vane, as an example:
 
 ```hoon
 |%
@@ -35,11 +35,11 @@ In this lesson we're going to look at interacting with vanes (kernel modules). T
   ==
 ```
 
-The API of each vane is documented in its respective section of the [Arvo documentation](../../urbit-os/kernel/arvo). Each vane has a detailed API reference and examples of their usage. There are far too many `$task`s and `$gift`s across the vanes to cover here, so in the [`Example`](#example) section of this document, we'll just look at a single, simple example with a Behn timer. The basic pattern in the example is broadly applicable to the other vanes as well.
+The API of each vane is documented in its respective section of the [Arvo documentation](../../urbit-os/kernel/arvo). Each vane has a detailed API reference and examples of their usage. There are far too many tasks and gifts across the vanes to cover here, so in the [`Example`](#example) section of this document, we'll just look at a single, simple example with a Behn timer. The basic pattern in the example is broadly applicable to the other vanes as well.
 
 ## Sending a vane task {#sending-a-vane-task}
 
-A `$task` can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on these in the [Cards](5-cards.md) lesson, but we'll briefly recap it here. The type of the card is as follows:
+A task can be sent to a vane by `%pass`ing it an `%arvo` card. We touched on these in the [Cards](5-cards.md) lesson, but we'll briefly recap it here. The type of the card is as follows:
 
 ```hoon
 [%pass path %arvo note-arvo]
@@ -65,7 +65,7 @@ The `$path` will just be the `$wire` you want the response to arrive on. The `$n
   ==
 ```
 
-The letter tags just specify which vane it goes to, and then follows the `$task` itself. Here are a couple of examples. The first sends a `%wait` `$task:behn` to Behn, setting a timer to go off one minute in the future. The second sends a `%warp` `$task:clay` to Clay, asking whether `sys.kelvin` exists on the `%base` desk.
+The letter tags just specify which vane it goes to, and then follows the task itself. Here are a couple of examples. The first sends a `%wait` `$task:behn` to Behn, setting a timer to go off one minute in the future. The second sends a `%warp` `$task:clay` to Clay, asking whether `sys.kelvin` exists on the `%base` desk.
 
 ```hoon
 [%pass /some/wire %arvo %b %wait (add ~m1 now.bowl)]
@@ -74,7 +74,7 @@ The letter tags just specify which vane it goes to, and then follows the `$task`
 
 ## Receiving a vane gift {#receiving-a-vane-gift}
 
-Once a `$task` has been sent to a vane, any `$gift`s the vane sends back in response will arrive in the `+on-arvo` arm of your agent. The `+on-arvo` arm exclusively handles such vane `$gift`s. The `$gift`s will arrive in a `$sign-arvo`, along with the `$wire` specified in the original request. The `+on-arvo` arm produces a `(quip card _this)` like usual, so it would look like:
+Once a task has been sent to a vane, any gifts the vane sends back in response will arrive in the `+on-arvo` arm of your agent. The `+on-arvo` arm exclusively handles such vane gifts. The gifts will arrive in a `$sign-arvo`, along with the `$wire` specified in the original request. The `+on-arvo` arm produces a `(quip card _this)` like usual, so it would look like:
 
 ```hoon
 ++  on-arvo
@@ -107,7 +107,7 @@ A `$sign-arvo` is the following structure, defined in `lull.hoon`:
   ==
 ```
 
-The head of the `$sign-arvo` will be the name of the vane like `%behn`, `%clay`, etc. The tail will be the `$gift` itself. Here are a couple of `$sign-arvo` examples, and the responses to the example `$task`s in the previous section:
+The head of the `$sign-arvo` will be the name of the vane like `%behn`, `%clay`, etc. The tail will be the gift itself. Here are a couple of `$sign-arvo` examples, and the responses to the example tasks in the previous section:
 
 ```hoon
 [%behn %wake ~]
@@ -127,7 +127,7 @@ The head of the `$sign-arvo` will be the name of the vane like `%behn`, `%clay`,
 ]
 ```
 
-The typical pattern is to first test the `$wire` with something like a wutlus (`?+`) expression, and then test the `$sign-arvo`. Since most `$gift`s are head-tagged, you can test both the vane and the gift at the same time like:
+The typical pattern is to first test the `$wire` with something like a wutlus (`?+`) expression, and then test the `$sign-arvo`. Since most gifts are head-tagged, you can test both the vane and the gift at the same time like:
 
 ```hoon
 ?+    sign-arvo  (on-arvo:def wire sign-arvo)
@@ -218,7 +218,7 @@ A Behn `%wait` task has the format `[%wait @da]` - the `@da` (an absolute date-t
   ==
 ```
 
-We remark that, just like in the case of agent-agent communication, `$gift`s from Arvo are also routed `$wire` before `$sign-arvo`.
+We remark that, just like in the case of agent-agent communication, gifts from Arvo are also routed `$wire` before `$sign-arvo`.
 
 First we check the `$wire` is `/timers`, and then we check the `$sign-arvo` begins with `[%behn %wake ....]`. Behn's `%wake` gift has the following format:
 
@@ -245,11 +245,11 @@ After approximately five seconds, we see the timer fired successfully:
 
 ## Summary {#summary}
 
-- Each vane has an API composed of `$task`s it takes and `$gift`s it produces.
-- Each vane's `$task`s and `$gift`s are defined in `lull.hoon`
-- Each vane's section of the [Arvo documentation](../../urbit-os/kernel/arvo) includes an API reference that explains its `$task`s and `$gift`s, as well as an Examples section demonstrating their usage.
-- Vane `$task`s can be sent to vanes by `%pass`ing them an `%arvo` `$card`.
-- Vane `$gift`s come back to the `+on-arvo` arm of the agent core in a `$sign-arvo`.
+- Each vane has an API composed of tasks it takes and gifts it produces.
+- Each vane's tasks and gifts are defined in `lull.hoon`
+- Each vane's section of the [Arvo documentation](../../urbit-os/kernel/arvo) includes an API reference that explains its tasks and gifts, as well as an Examples section demonstrating their usage.
+- Vane tasks can be sent to vanes by `%pass`ing them an `%arvo` `$card`.
+- Vane gifts come back to the `+on-arvo` arm of the agent core in a `$sign-arvo`.
 
 ## Exercises {#exercises}
 

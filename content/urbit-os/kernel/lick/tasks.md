@@ -15,7 +15,7 @@ layout:
 
 # Lick API Reference
 
-In this document we describe the public interface for Lick. Namely, we describe each task that Lick can be `+pass`ed, and which `$gift`(s) Lick can `%give` in return.
+In this document we describe the public interface for Lick. Namely, we describe each task that Lick can be `+pass`ed, and which gift(s) Lick can `%give` in return.
 
 The only novel data type is `$name`, which is just a `$path` representing the name of a socket.
 
@@ -113,7 +113,7 @@ This task is sent by Arvo in order to free up memory. Lick does not do anything 
 
 #### Returns
 
-Lick does not return any `$gift` in response to a `%trim` task.
+Lick does not return any gift in response to a `%trim` task.
 
 ---
 
@@ -129,7 +129,7 @@ You would not use this task from userspace.
 
 #### Returns
 
-Lick does not return any `$gift` in response to a `%vega` task.
+Lick does not return any gift in response to a `%vega` task.
 
 ---
 
@@ -149,7 +149,7 @@ The socket `$name` is associated with the `$duct` that registered it. The `%soak
 
 ## Gifts {#gifts}
 
-Below are the `$gift`s that Lick can give. Only the [`%soak`](#soak) gift would be given to an agent, the rest are only given to Vere.
+Below are the gifts that Lick can give. Only the [`%soak`](#soak) gift would be given to an agent, the rest are only given to Vere.
 
 ### `%spin` {#spin}
 
@@ -159,7 +159,7 @@ Open an IPC port.
 [%spin =name]
 ```
 
-Lick gives this `$gift` to Vere in order to register a socket with the `$path` specified in `$name`.
+Lick gives this gift to Vere in order to register a socket with the `$path` specified in `$name`.
 
 ---
 
@@ -171,7 +171,7 @@ Close an IPC port.
 [%shut =name]
 ```
 
-Lick gives this `$gift` to Vere in order to close and remove the socket with the `$path` specified in `$name`.
+Lick gives this gift to Vere in order to close and remove the socket with the `$path` specified in `$name`.
 
 ---
 
@@ -183,7 +183,7 @@ Spit a noun to the IPC port.
 [%spit =name =mark =noun]
 ```
 
-Lick converts a [`%spit` task](#spit) to this `$gift` and gives it to Vere.
+Lick converts a [`%spit` task](#spit) to this gift and gives it to Vere.
 
 ---
 
@@ -195,5 +195,5 @@ Soak a noun from the IPC port.
 [%soak =name =mark =noun]
 ```
 
-Lick converts a [`%soak` task](#soak) from Vere into this `$gift` and gives it to the agent that registered the `$name` socket, representing an incoming message. It will also give a `%soak` with a `$mark` and `$noun` of `[%disconnect ~]` if the socket is closed. This is the only Lick `$gift` an agent would receive.
+Lick converts a [`%soak` task](#soak) from Vere into this gift and gives it to the agent that registered the `$name` socket, representing an incoming message. It will also give a `%soak` with a `$mark` and `$noun` of `[%disconnect ~]` if the socket is closed. This is the only Lick gift an agent would receive.
 

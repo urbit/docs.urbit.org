@@ -17,7 +17,7 @@ layout:
 
 This document walks through practical examples of the various ways of interacting with Eyre. The [Basic](#basic) sections goes over the common methods of interacting through Eyre from an HTTP client, and the [Advanced](#advanced) section explains how to handle HTTP directly with generators and Gall agents.
 
-General documentation of the `$task`s and methods described here are available in the [External API Reference](external-api-ref.md) document and the [Internal API Reference](tasks.md) document.
+General documentation of the tasks and methods described here are available in the [External API Reference](external-api-ref.md) document and the [Internal API Reference](tasks.md) document.
 
 ## Basic {#basic}
 
@@ -341,7 +341,7 @@ Save the above to `/app/eyre-agent.hoon`. Commit it:
 > |rein %base [& %eyre-agent]
 ```
 
-Now, first we need to bind a URL to our app. In the `+on-poke` arm, our agent will send a [%connect](tasks.md#connect) `$task` to Eyre when poked with `%bind`:
+Now, first we need to bind a URL to our app. In the `+on-poke` arm, our agent will send a [%connect](tasks.md#connect) task to Eyre when poked with `%bind`:
 
 ```hoon
   %noun
@@ -353,7 +353,7 @@ Now, first we need to bind a URL to our app. In the `+on-poke` arm, our agent wi
 [%pass /eyre %arvo %e %connect `/'foo' %eyre-agent]~
 ```
 
-...and when `%eyre` responds with a `%bound` `$gift`, the `+on-agent` arm will print whether the bind succeeded:
+...and when `%eyre` responds with a `%bound` gift, the `+on-agent` arm will print whether the bind succeeded:
 
 ```hoon
   [%eyre %bound *]
@@ -484,7 +484,7 @@ The return type of the generator must be [$simple-payload:http](data-types.md#si
 
 Because generators return the entire HTTP message as a single `$simple-payload`, Eyre can calculate the `content-length` itself and automatically add the header.
 
-In order to make our generator available, we must bind it to a URL path. To do this, we send Eyre a `%serve` `$task`, which looks like:
+In order to make our generator available, we must bind it to a URL path. To do this, we send Eyre a `%serve` task, which looks like:
 
 ```hoon
 [%serve =binding =generator]
@@ -498,7 +498,7 @@ Let's bind our generator to the `/mygen` URL path with the `|pass` command in th
 |pass [%e [%serve `/mygen %base /gen/eyre-gen/hoon ~]]
 ```
 
-Note that Eyre responds with a `%bound` `$gift` to indicate whether the binding succeeded but `|pass` doesn't take such responses so it's not shown.
+Note that Eyre responds with a `%bound` gift to indicate whether the binding succeeded but `|pass` doesn't take such responses so it's not shown.
 
 Now let's try making an HTTP request using `curl` in the unix terminal:
 
@@ -523,11 +523,11 @@ blah blah blah
 
 ## Managing CORS Origins {#managing-cors-origins}
 
-Here we'll look at approving and rejecting a CORS origin by passing Clay a [`%approve-origin`](tasks.md#approve-origin) `$task` and [`%reject-origin`](tasks.md#reject-origin) `$task` respectively.
+Here we'll look at approving and rejecting a CORS origin by passing Clay a [`%approve-origin`](tasks.md#approve-origin) task and [`%reject-origin`](tasks.md#reject-origin) task respectively.
 
 In this example we'll use more manual methods for demonstrative purposes but note there are also the `|eyre/cors/approve` and `|eyre/cors/reject` generators to approve/reject origins from the dojo, and the `+eyre/cors/registry` generator for viewing the CORS configuration.
 
-First, using `|pass` in the dojo, let's approve the origin `http://foo.example` by sending Eyre a `%approve-origin` `$task`:
+First, using `|pass` in the dojo, let's approve the origin `http://foo.example` by sending Eyre a `%approve-origin` task:
 
 ```
 |pass [%e [%approve-origin 'http://foo.example']]
@@ -565,7 +565,7 @@ Access-Control-Allow-Headers: X-Requested-With
 Access-Control-Allow-Methods: POST
 ```
 
-Now we'll try rejecting an `$origin`. Back in the dojo, let's `|pass` Eyre a `%reject-origin` `$task` for `http://bar.example`:
+Now we'll try rejecting an `$origin`. Back in the dojo, let's `|pass` Eyre a `%reject-origin` task for `http://bar.example`:
 
 ```
 |pass [%e [%reject-origin 'http://bar.example']]

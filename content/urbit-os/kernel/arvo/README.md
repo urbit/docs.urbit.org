@@ -266,21 +266,21 @@ Lastly, a `%unix` `$move` is how Arvo represents communication from Unix, such a
 
 `$card`s are the vane-specific portion of a `$move`, while `curd`s are typeless `$card`s utilized at the level of the kernel. `$card`s are not actually defined in `arvo.hoon`, rather they are given by `+note-arvo` and `+sign-arvo` in the standard library `zuse` (which then refer to `+task` and `+gift` in each of the vane cores), but they are closely connected to `curd`s so we speak of them in the same breath.
 
-Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of `$card`s: `task`s, `gift`s, `$note`s, and `$sign`s.
+Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of `$card`s: tasks, gifts, `$note`s, and `$sign`s.
 
-When one vane is `%pass`ed a `$card` in its `task` (defined in `zuse`), Arvo activates the `+call` gate with the `$card` as its argument. To produce a result, the vane `%give`s one of the `$card`s defined in its `gift`. If the vane needs to request something of another vane, it `%pass`es it a `$note` `$card`. When that other vane returns a result, Arvo activates the `+take` gate of the initial vane with one of the `$card`s defined in its `$sign`.
+When one vane is `%pass`ed a `$card` in its task (defined in `zuse`), Arvo activates the `+call` gate with the `$card` as its argument. To produce a result, the vane `%give`s one of the `$card`s defined in its gift. If the vane needs to request something of another vane, it `%pass`es it a `$note` `$card`. When that other vane returns a result, Arvo activates the `+take` gate of the initial vane with one of the `$card`s defined in its `$sign`.
 
-In other words, there are only four ways of seeing a `$move`: (1) as a request seen by the caller, which is a `$note`. (2) that same request as seen by the callee, a `task`. (3) the response to that first request as seen by the callee, a `gift`. (4) the response to the first request as seen by the caller, a `$sign`.
+In other words, there are only four ways of seeing a `$move`: (1) as a request seen by the caller, which is a `$note`. (2) that same request as seen by the callee, a task. (3) the response to that first request as seen by the callee, a gift. (4) the response to the first request as seen by the caller, a `$sign`.
 
-When a `task` `$card` is `%pass`ed to a vane, Arvo calls its `+call` gate, passing it both the `$card` and its `$duct`. This gate must be defined in every vane. It produces two things in the following order: a list of `$move`s and a possibly modified copy of its context. The `$move`s are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
+When a task `$card` is `%pass`ed to a vane, Arvo calls its `+call` gate, passing it both the `$card` and its `$duct`. This gate must be defined in every vane. It produces two things in the following order: a list of `$move`s and a possibly modified copy of its context. The `$move`s are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
 
-This cycle of `%pass`ing a `$note` to `%pass`ing a `task` to `%give`ing a `gift` to `%give`ing a `%sign` is summarized in the following diagram:
+This cycle of `%pass`ing a `$note` to `%pass`ing a task to `%give`ing a gift to `%give`ing a `%sign` is summarized in the following diagram:
 
 ![](https://media.urbit.org/docs/arvo/cycle.png)
 
-Note that `%pass`ing a `$note` doesn't _always_ result in a return - this diagram just shows the complete cycle. However, `%give`ing a `gift` is always in response to being `%pass`ed some `task`. Since the Arvo kernel acts as a middleman between all `$move`s in Arvo, in diagrams we will generally represent the intermediate steps of a vane `%pass`ing a `$note` to the kernel addressed to another vane followed by the kernel `%pass`ing a `task` to the addressed vane as a single arrow from one vane to the other to make the diagrams less cluttered.
+Note that `%pass`ing a `$note` doesn't _always_ result in a return - this diagram just shows the complete cycle. However, `%give`ing a gift is always in response to being `%pass`ed some task. Since the Arvo kernel acts as a middleman between all `$move`s in Arvo, in diagrams we will generally represent the intermediate steps of a vane `%pass`ing a `$note` to the kernel addressed to another vane followed by the kernel `%pass`ing a task to the addressed vane as a single arrow from one vane to the other to make the diagrams less cluttered.
 
-This overview has detailed how to pass a `$card` to a particular vane. To see the `$card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
+This overview has detailed how to pass a `$card` to a particular vane. To see the `$card`s each vane can be `%pass`ed as a task or return as a gift (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
 ##### `$ovum` {#ovum}
 

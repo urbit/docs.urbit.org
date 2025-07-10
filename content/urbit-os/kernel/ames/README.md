@@ -55,9 +55,9 @@ Ames encrypts every message using symmetric-key encryption by performing an elli
 
 When a peer suffers a continuity breach, Ames removes all messaging state related to it. Ames does not guarantee that all messages will be fully delivered to the now-stale peer. From Ames's perspective, the newly restarted peer is a new ship. Ames's guarantees are not maintained across a breach.
 
-A vane can pass Ames a `%heed` `$task` to request Ames track a peer's responsiveness. If our `%boon`'s to it start backing up locally, Ames will give a `%clog` back to the requesting vane containing the unresponsive peer's urbit address. This interaction does not use ducts as unique keys. Stop tracking a peer by sending Ames a `%jilt` `$task`.
+A vane can pass Ames a `%heed` task to request Ames track a peer's responsiveness. If our `%boon`'s to it start backing up locally, Ames will give a `%clog` back to the requesting vane containing the unresponsive peer's urbit address. This interaction does not use ducts as unique keys. Stop tracking a peer by sending Ames a `%jilt` task.
 
-Debug output can be adjusted using `%sift` and `%spew` `$task`'s.
+Debug output can be adjusted using `%sift` and `%spew` task's.
 
 ## Packets {#packets}
 
@@ -228,7 +228,7 @@ This division is summarized in the following diagram, describing how `~bacbel-ta
 
 ![](https://media.urbit.org/docs/arvo/packet.png)
 
-Ames, as a part of Arvo, handles `+jam`ming, packetizing, encryption, and forming Ames packets. Once it is ready to send an Ames packet, it `%give`s to Unix a `%send` `$gift` containing that packet. This will be a Nock noun containing the `@tas` `%send` as well as the serialized packet.
+Ames, as a part of Arvo, handles `+jam`ming, packetizing, encryption, and forming Ames packets. Once it is ready to send an Ames packet, it `%give`s to Unix a `%send` gift containing that packet. This will be a Nock noun containing the `@tas` `%send` as well as the serialized packet.
 
 "Unix", in this case, is actually the King. The King receives the `%send` instruction, wraps the packet contained within as a UDP packet, and immediately hands it off the the Unix network interface to be sent.
 

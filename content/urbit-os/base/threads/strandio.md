@@ -2303,13 +2303,13 @@ This strand takes nothing directly, but expects a poke with a `$mark` of `%echo`
 
 ## Printing {#printing}
 
-### `$flog` {#flog}
+### `flog` {#flog}
 
 Send a wrapped Dill task to Dill.
 
 #### Accepts
 
-A [`flog:dill`](../../kernel/dill/data-types.md#flog).
+A [`$flog:dill`](../../kernel/dill/data-types.md#flog).
 
 #### Produces
 

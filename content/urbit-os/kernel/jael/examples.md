@@ -241,7 +241,7 @@ Now, let's pass Jael a `%step` task by using `|pass` in the dojo:
 > |pass [%j %step ~]
 ```
 
-Jael will `+pass` Eyre a `%code-changed` `task:eyre` to let Eyre know the code's changed so you'll see a message from Eyre in the terminal:
+Jael will `+pass` Eyre a `%code-changed` task to let Eyre know the code's changed so you'll see a message from Eyre in the terminal:
 
 ```
 eyre: code-changed: throwing away cookies and sessions

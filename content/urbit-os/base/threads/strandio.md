@@ -1667,7 +1667,7 @@ Make a raw HTTP request, take a raw response.
 
 #### Accepts
 
-`hiss:eyre`
+`$hiss:eyre`
 
 #### Produces
 

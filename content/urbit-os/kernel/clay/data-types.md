@@ -873,7 +873,7 @@ Forced on/off apps
 +$  rein  (map dude:gall ?)
 ```
 
-A `dude:gall` is the name of a Gall agent and the `?` is whether it's forced on or off. An app is forced when it's started despite not being on the `desk.bill` manifest or stopped when it *is* on the manifest.
+A `$dude:gall` is the name of a Gall agent and the `?` is whether it's forced on or off. An app is forced when it's started despite not being on the `desk.bill` manifest or stopped when it *is* on the manifest.
 
 ---
 

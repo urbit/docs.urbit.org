@@ -31,7 +31,7 @@ These are the Dill tasks not otherwise categorized as [session tasks](tasks.md#s
 
 This task is used only once, when Arvo first enters the [adult stage](../arvo/README.md#structural-interface-core). Dill is technically the first vane to be activated, via the `%boot` task, which then sends Jael (considered the "true" first vane) the `%dawn` or `%fake` task wrapped in the `%boot` task. Jael then goes on to call `%init` tasks for other vanes (including Dill).
 
-The `lit` flag specifies whether to boot in lite mode. `p` is either a [%dawn](../jael/tasks.md#dawn) or [%fake](../jael/tasks.md#fake) `task:jael`. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
+The `lit` flag specifies whether to boot in lite mode. `p` is either a [%dawn](../jael/tasks.md#dawn) or [%fake](../jael/tasks.md#fake) task. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
 
 This task would not be used from userspace.
 

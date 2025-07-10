@@ -1780,7 +1780,7 @@ A pair of `[beak mark]`.
 
 #### Produces
 
-A `dais:clay`
+A `$dais:clay`
 
 #### Source
 
@@ -1817,7 +1817,7 @@ A pair of `[beak mars:clay]`. A `$mars` is a pair of the *from* and *to* mark.
 
 #### Produces
 
-A `tube:clay`
+A `$tube:clay`
 
 #### Source
 
@@ -2091,7 +2091,7 @@ The `$wire` to listen on.
 
 #### Produces
 
-A [`riot:clay`](../../kernel/clay/data-types.md#riot).
+A [`$riot:clay`](../../kernel/clay/data-types.md#riot).
 
 #### Source
 

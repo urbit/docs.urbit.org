@@ -238,7 +238,7 @@ See the [remote scry guide](../../../build-on-urbit/userspace/remote-scry.md) fo
 
 #### Produces
 
-A `cass:clay`, specifically the `%ud` kind.
+A `$cass:clay`, specifically the `%ud` kind.
 
 ---
 

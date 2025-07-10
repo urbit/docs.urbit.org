@@ -224,7 +224,7 @@ Two arguments.
 
 The first argument is a face to pin the mark core with. The second argument is a mark.
 
-The static mark core (a `nave:clay`) for the specified mark (which resides in the same desk as the file) is built and pinned to the subject with the specified face.
+The static mark core (a `$nave:clay`) for the specified mark (which resides in the same desk as the file) is built and pinned to the subject with the specified face.
 
 #### Examples
 

@@ -1111,7 +1111,7 @@ The path points to a Hoon file in Clay It must begin with the path prefix.
 
 Build a dynamic mark core.
 
-A dynamic mark core is one that deals with `$vase`s rather direct values. Its type is a `dais:clay`.
+A dynamic mark core is one that deals with `$vase`s rather direct values. Its type is a `$dais:clay`.
 
 #### Arguments
 
@@ -1135,7 +1135,7 @@ The path is a path prefix followed by the mark, like `%/txt`. The mark in questi
 
 Build a static mark core.
 
-A static mark core is one that deals with values directly rather than vases. Its type is a `nave:clay`.
+A static mark core is one that deals with values directly rather than vases. Its type is a `$nave:clay`.
 
 #### Arguments
 
@@ -1159,7 +1159,7 @@ The path is a path prefix followed by the mark, like `%/txt`. The mark in questi
 
 Build a dynamic mark conversion gate.
 
-A *dynamic* mark conversion gate is one that deals with `$vase`s rather that plain nouns. Its type is a `tube:clay`.
+A *dynamic* mark conversion gate is one that deals with `$vase`s rather that plain nouns. Its type is a `$tube:clay`.
 
 #### Arguments
 

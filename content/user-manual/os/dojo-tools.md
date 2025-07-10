@@ -982,7 +982,7 @@ Enable verbose Ames debug printing.
 verb verb verb...
 ```
 
-A `verb:ames` is one of `%snd %rcv %odd %msg %ges %for %rot`. Each one enables printing of different kinds of events. You can enable as many as you want at one time. If `|ames/verb` is given no argument, it disables all Ames debug printing.
+A `$verb:ames` is one of `%snd`, `%rcv`, `%odd`, `%msg`, `%ges`, `%for`, or `%rot`. Each one enables printing of different kinds of events. You can enable as many as you want at one time. If `|ames/verb` is given no argument, it disables all Ames debug printing.
 
 For details of the meaning of these `$verb`s, see its entry in the [Ames Data Types documentation](../../urbit-os/kernel/ames/data-types.md#verb).
 

@@ -221,7 +221,7 @@ None
 
 #### Discussion
 
-This wraps the product of `.q` in its inferred type. It's a raw version of [`!>`](#-zapgar). Unlike zapgar, `.q` is not given a `p` face and its type information is not stripped to a raw noun.
+This wraps the product of `.q` in its inferred type. It's a raw version of [`!>`](#-zapgar). Unlike zapgar, `.q` is not given a face `p` and its type information is not stripped to a raw noun.
 
 The first field, `.p`, must be an example of the [`$type`](../stdlib/4o.md#type) type, typically just `*type` (the bunt of `$type`). The `.p` argument is just so transitions can be handled if the `$type` type changes.
 

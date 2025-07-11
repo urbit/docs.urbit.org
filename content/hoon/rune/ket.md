@@ -45,7 +45,7 @@ One argument, fixed.
 
 An iron core is an opaque function (gate or door).
 
-Theorem: if type `x` nests within type `a`, and type `y` nests within type `b`, a core accepting `b` and producing `x` nests within a iron core accepting `y` and producing `a`.
+Theorem: if type *x* nests within type *a*, and type *y* nests within type *b*, a core accepting *b* and producing *x* nests within a iron core accepting *y* and producing *a*.
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
@@ -574,7 +574,7 @@ One argument, fixed.
 
 A lead core is an opaque generator; the payload can't be read or written.
 
-Theorem: if type `x` nests within type `a`, a lead core producing `x` nests within a lead core producing `a`.
+Theorem: if type *x* nests within type *a*, a lead core producing *x* nests within a lead core producing *a*.
 
 Informally, a more specific generator can be used as a less specific generator.
 

@@ -400,14 +400,14 @@ The gates in `.q` are composed together using the gate `.p` as an intermediate f
 
 `;~(a b)` reduces to `b`.
 
-`;~(a b c)` expands to
+`;~(a b c)` expands to...
 
 ```hoon
 |=  arg=*
 (a (b arg) c(+6 arg))
 ```
 
-`;~(a b c d)` expands to
+`;~(a b c d)` expands to...
 
 ```hoon
 |=  arg=*
@@ -506,7 +506,7 @@ A [`$marl`](../stdlib/5e.md#marl), i.e., a list of [`$manx`](../stdlib/5e.md#man
 
 `;*` is a Sail rune. Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes. With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
-If you need a complex Hoon expression to produce a `$marl`, use the `;*` rune. Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
+If you need a complex Hoon expression to produce a `$marl`, use the `;*` rune. Often this rune is used with an expression that includes one or more `;=` subexpressions.
 
 (See also [`;=`](#-mictis).)
 

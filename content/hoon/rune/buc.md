@@ -695,7 +695,7 @@ None
 $&(combined-mold=spec normalizing-gate=hoon)
 ```
 
-Here `combined-mold` is a tagged union type (typically made with `$%`) and `normalizing-gate` is a gate which accepts values of `combined-mold` and normalizes them to be of one particular type in `combined-mold`.
+Here `.combined-mold` is a tagged union type (typically made with `$%`) and `.normalizing-gate` is a gate which accepts values of `.combined-mold` and normalizes them to be of one particular type in `.combined-mold`.
 
 #### AST
 
@@ -724,7 +724,7 @@ This rune is used to "upgrade" or "repair" values of a structure, typically from
 +$  adapting  $&(combined |=(?-(-.a %0 [%1 1 +.a], %1 a)))
 ```
 
-Here `adapting` is a structure that bunts to `[%1 ^]` but also normalizes from `[%0 @]` if called on such a noun.
+Here `$adapting` is a structure that bunts to `[%1 ^]` but also normalizes from `[%0 @]` if called on such a noun.
 
 ---
 

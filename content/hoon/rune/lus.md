@@ -226,7 +226,7 @@ To assign an alias to a door, we often write the following.
 +*  this  .
 ```
 
-This is the idomatic way to assign the alias `this` to the door.
+This is the idomatic way to assign the face `this` to the door containing this expression.
 
 Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd like to include more. This is where aliases employed as "virtual arms" may be of use. We note that it is often better style to compose cores with `=>` or `=<` to add more arms to a Gall app core. This usage of `+*` is controversial and should be minimized.
 

@@ -19,7 +19,7 @@ These runes modify the subject. (Or more precisely, they evaluate at least one o
 
 ## Overview {#overview}
 
-Hoon doesn't have variables in the ordinary sense. If you want to bind a name to a value, e.g., name `a` to value `12`, you do so by pinning `12` to the subject and associating the name with it. This sort of operation is done with the `=` family of runes.
+Hoon doesn't have variables in the ordinary sense. If you want to bind a name (or "face") to a value, e.g., face `a` to value `12`, you do so by pinning `12` to the subject and associating the name with it. This sort of operation is done with the `=` family of runes.
 
 Let's say you have some old subject `.p`. To 'pin' a value to the head means to modify the subject by repacing it with a cell of `[new-value p]`. The head of the cell is the new value. So to pin `12` with the face `a` the new subject would be: `[a=12 p]`.
 

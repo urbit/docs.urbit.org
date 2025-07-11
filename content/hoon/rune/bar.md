@@ -15,7 +15,7 @@ layout:
 
 # | bar · Cores
 
-Core expressions produce cores. A core is a cell of `[battery payload]`. The `battery` is code, a battery of Nock formulas. The `payload` is the data needed to run those formulas correctly.
+Core expressions produce cores. A core is a cell of \[battery payload]. The "battery" is code, a battery of Nock formulas. The "payload" is the data needed to run those formulas correctly.
 
 Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a core with a single arm, named `$`. As with all arms, we can recompute `$` with changes, which is useful for recursion among other things.
 
@@ -161,7 +161,7 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 #### Semantics
 
-The product of a `|_` expression is a **door**, a core with one or more arms whose payload includes a sample. That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
+The product of a `|_` expression is a **door**, a core with one or more arms whose payload includes a sample. That is, a door is a cell of \[battery \[sample context]], where the "battery" contains one or more arms.
 
 `.a` defines the door sample type and usually includes a name assignment (e.g., `n=@`). `.a` is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`.b`, `.d`, and `.f` above), which is followed by the expression (`.c`, `.e`, and `.g` above) that defines the arm product.
 
@@ -171,7 +171,7 @@ The context of the door is the subject of the `|_` expression.
 
 A door is the general case of a gate (function). A gate is a door with only one arm, which has the name `$`.
 
-Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
+Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door (call it `door`) which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
 Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#censig).
 
@@ -340,9 +340,9 @@ The core payload is the subject of the `|%` expression.
 
 #### Discussion
 
-A core is a cell of `[battery payload]`, where the `battery` is code and the `payload` is data. The `battery` is one or more arms. An arm is a computation that takes the core itself as its subject.
+A core is a cell of \[battery payload], where the "battery" is code and the "payload" is data. The "battery" is one or more arms. An arm is a computation that takes the core itself as its subject.
 
-The `|%` rune is used to construct a core from a series of arm definitions. Each arm definition in the expression begins with an arm rune (`++`, `+$`, or `+*`). These arms make up the `battery`. The subject of the `|%` expression is used to make the core's `payload`.
+The `|%` rune is used to construct a core from a series of arm definitions. Each arm definition in the expression begins with an arm rune (`++`, `+$`, or `+*`). These arms make up the "battery". The subject of the `|%` expression is used to make the core's "payload".
 
 A core is like an "object" in a conventional language, but its attributes (_arms_) are functions on the core, not the core and an argument. A "method" on a core is an arm that produces a gate.
 

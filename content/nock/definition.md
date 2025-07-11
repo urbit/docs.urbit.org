@@ -89,7 +89,7 @@ The pseudocode notation defines six prefix operators: `?`, `+`, `=`, `/`, `#`, a
 
 `=[x y]` reduces to `0` if `x` and `y` are the same noun, `1` otherwise.
 
-`/` (`+slot`) is a tree addressing operator.  The root of the tree is `1`; the left child of any node `n` is `2n`; the right child is `2n+1`.  `/[x y]` is the subtree of `y` at address `x`.
+`/` (`+slot`) is a tree addressing operator.  The root of the tree is `1`; the left child of any node *n* is *2n*; the right child is *2n+1*.  `/[x y]` is the subtree of `y` at address `x`.
 
 For instance, `/[1 [531 25 99]]` is `[531 25 99]`; `/[2 [531 25 99]]` is `531`; `/[3 [531 25 99]]` is `[25 99]`; `/[6 [531 25 99]]` is `25`; `/[12 [531 25 99]]` crashes.
 

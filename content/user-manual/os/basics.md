@@ -175,7 +175,7 @@ You can then run `|rekey` on the moon with the key given by the above command as
 
 ### Maintaining Moons Through A Breach {#restoring-moons}
 
-Moons are always subordinate to the ship that issued them. Their PKI is sent around the network by their parent planet/star/galaxy. As such, if the sponsor planet/star/galaxy of a moon breaches, other urbits on the network who were not aware of the moon prior to the breach (knew its PKI information) will not be able to reach the old moon. Moons can, however, be preserved over the breach of their sponsor and re-added to Jael. The following guide assumes you are on `[life=n rift=1]` where `n` can be any life #. If you've previously breached your moon and want to preserve it, you'll need to modify the instructions to include setting the appropriate rift using `|moon-breach` from `hood`.
+Moons are always subordinate to the ship that issued them. Their PKI is sent around the network by their parent planet/star/galaxy. As such, if the sponsor planet/star/galaxy of a moon breaches, other urbits on the network who were not aware of the moon prior to the breach (knew its PKI information) will not be able to reach the old moon. Moons can, however, be preserved over the breach of their sponsor and re-added to Jael. The following guide assumes you are on `[life=n rift=1]` where `.life` can be any life number. If you've previously breached your moon and want to preserve it, you'll need to modify the instructions to include setting the appropriate rift using `|moon-breach` from `hood`.
 
 To add an existing moon to Jael on a breached planet, you'll need the following:
 

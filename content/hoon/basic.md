@@ -17,7 +17,7 @@ layout:
 
 A type is usually understood to be a set of values.  Hoon values are all nouns, so a Hoon type is a set of nouns.
 
-Hoon's type system conducts various type-checks at compile time in order to ensure type safety.  For example, one's program might have an integer squaring function, such that given some atom `n` the return value is `n^2`.  The output value should be an unsigned integer (i.e., an atom).  Hoon uses type inference on the expression that defines the squaring function in to determine what possible values it could produce.  If the inferred type 'nests' under the desired type then the program compiles; otherwise the compile fails with a `nest-fail` crash.
+Hoon's type system conducts various type-checks at compile time in order to ensure type safety.  For example, one's program might have an integer squaring function, such that given some atom *n* the return value is *n^2*.  The output value should be an unsigned integer (i.e., an atom).  Hoon uses type inference on the expression that defines the squaring function in to determine what possible values it could produce.  If the inferred type 'nests' under the desired type then the program compiles; otherwise the compile fails with a `nest-fail` crash.
 
 (For an introduction on how to use Hoon's type system, see [Chapter 4](../build-on-urbit/hoon-school/E-types.md) of the Hoon tutorial.)
 

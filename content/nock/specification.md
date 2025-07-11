@@ -114,7 +114,7 @@ We should note that in Nock and Hoon, `0` (pronounced "yes") is true, and `1` ("
 
 Slightly more interesting is our tree numbering.  Every noun is of course a tree.  The `/` operator - pronounced "slot" - imposes an address space on that tree, mapping every nonzero atom to a tree position.
 
-1 is the root.  The head of every node `n` is `2n`; the tail is `2n+1`.  Thus a simple tree:
+1 is the root.  The head of every node *n* is *2n*; the tail is *2n+1*.  Thus a simple tree:
 
 ```
      1

@@ -95,7 +95,7 @@ Here is the line of code in `arvo.hoon`, found in the [section 3bE core](README.
 
 First we note that this line is executed only if the laconic bit is set to true, as we did when we input `|verb`. Here, `.ovo` is the input `$ovum`. Knowing that an `$ovum` is a `[p=wire q=curd]`, we can then say that this is a `%unix` `$move` tagged with `%belt` whose cause is a `$wire` given by `//term/1`, where the empty path element `//` represents Unix and `term/1` represents the terminal in Unix. Here we have a `$wire` instead of a `$duct` (i.e. a list of `$wire`s) since Unix I/O events are always the beginning and end of the Arvo event loop, thus only a single `$wire` is ever required at this initial stage.
 
-The `""` here is a metadatum that keeps track of how many steps deep in the causal chain the event is. An event with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In this case, Unix events are an "original cause" and thus represented by an empty string.
+The `""` here is a metadatum that keeps track of how many steps deep in the causal chain the event is. An event with *n* `|`s was caused by the most recent previous event with *n-1* `|`s. In this case, Unix events are an "original cause" and thus represented by an empty string.
 
 At this point in time, Dill has received the `$move` and then processes it. The `%belt` task in `dill.hoon` is `+call`ed, which is processed using the `+send` arm:
 

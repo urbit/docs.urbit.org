@@ -446,7 +446,7 @@ A simple "parser." `+trip` converts a `$cord` (atomic string) to a `$tape` (link
 <1.zje {a/@ <409.yxa 110.lxv 1.ztu $151>}>
 ```
 
-With just one gate in the pipeline `q`, the glue `p` is unused:
+With just one gate in the pipeline `.q`, the glue `.p` is unused:
 
 ```
 > (;~(cmp trip) 'a')

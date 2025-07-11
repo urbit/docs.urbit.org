@@ -25,7 +25,7 @@ Load from the Arvo namespace (scry) with a fake Nock instruction: Nock 12.
 
 Two arguments, with the second optionally split into an arbitrary number of elements.
 
-While this rune technically takes a fixed number of arguments, `q` is usually split into at least two parts, and the tall form of this rune must be terminated with a `==`. Note also that the `==` does not make the arguments into a list as you might expect, so `q` must be explicitly null-terminated if its elements are specified separately.
+While this rune technically takes a fixed number of arguments, `.q` is usually split into at least two parts, and the tall form of this rune must be terminated with a `==`. Note also that the `==` does not make the arguments into a list as you might expect, so `.q` must be explicitly null-terminated if its elements are specified separately.
 
 {% tabs %}
 

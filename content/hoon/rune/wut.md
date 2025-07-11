@@ -196,7 +196,7 @@ $(q t.q)
 
 #### Discussion
 
-The `?-` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. There is no default branch.
+The `?-` rune is for a conditional expression in which the type of `.p` determines which branch is taken. Usually the type of `.p` is a union of other types. There is no default branch.
 
 The compiler makes sure that your code neither misses a case of the union, nor includes a double case that isn't there. This is not special handling for `?-`, just a consequence of the semantics of `?:`, which `?-` reduces to.
 
@@ -666,7 +666,7 @@ $(r t.r)
 
 #### Discussion
 
-The `?+` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. If `p`'s type doesn't match the case for any given branch, the default expression, `q`, is evaluated.
+The `?+` rune is for a conditional expression in which the type of `.p` determines which branch is taken. Usually the type of `.p` is a union of other types. If `p`'s type doesn't match the case for any given branch, the default expression, `q`, is evaluated.
 
 If there is a case that is never taken you'll get a `mint-vain` error.
 

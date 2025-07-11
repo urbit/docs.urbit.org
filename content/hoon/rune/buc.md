@@ -763,7 +763,7 @@ None
 
 {% endtabs %}
 
-`p` defines the default value, and `q` defines everything else about the
+`.p` defines the default value, and `.q` defines everything else about the
 structure.
 
 #### AST

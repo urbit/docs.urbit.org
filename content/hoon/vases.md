@@ -58,7 +58,7 @@ Otherwise, an instance of `$type` is a cell, in which case the head is a tag (e.
 
 An `%atom` type describes a set of numbers. The `p=term` in an atom type is its aura, a name for a kind of value that can be stored as an atom -- `%da` for date, `%ux` for hexadecimal number, `%t` for text, etc. The `q=(unit @)` is either `~`, meaning any value, or `[~ value]`, in which case this type has only a single member. The type `%foo` refers to the set whose only instance is the atom `%foo`.
 
-The `%cell` type refers to cells whose heads have type `p` and tails have type `q`.
+The `%cell` type refers to cells whose heads have type `.p` and tails have type `.q`.
 
 When working with types, `%hold` types are particularly important to understand. A `%hold` is a lazily evaluated type. This is used for recursive types and polymorphism (wetness). A hold contains a `p=type`, referring to a subject type, and a `q=hoon`, a hoon expression intended to be run on a value of that type.
 

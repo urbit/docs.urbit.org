@@ -70,7 +70,7 @@ The noun `.q`, cast to the type `.p`.
 
 #### Discussion
 
-Nock has no `12` instruction! But the virtual Nock used to run userspace code does. Nock `12` loads from a typed immutable namespace defined by its virtual context.
+Nock has no 12 instruction! But the virtual Nock used to run userspace code does. Nock 12 loads from a typed immutable namespace defined by its virtual context.
 
 Ordinarily a Hoon expression has access to no information but whatever can be found in the subject. The one exception is with the `.^` rune. It essentially allows you to request information from one of the Arvo vanes (modules).
 
@@ -131,7 +131,7 @@ You can modify the time of the file listing quite simply and ask for a listing f
 
 ## .+ "dotlus" {#dotlus}
 
-Increment an atom with Nock `4`.
+Increment an atom with Nock 4.
 
 #### Syntax
 
@@ -147,7 +147,7 @@ Increment an atom with Nock `4`.
 
 #### Produces
 
-`.p` plus `1` if `.p` is an atom; otherwise, crashes. The product atom has no aura.
+`.p` plus 1 if `.p` is an atom; otherwise, crashes. The product atom has no aura.
 
 #### Examples
 
@@ -169,7 +169,7 @@ nest-fail
 
 ## .* "dottar" {#dottar}
 
-Evaluate with Nock `2`.
+Evaluate with Nock 2.
 
 #### Produces
 
@@ -246,7 +246,7 @@ Note also that `.*` ("dottar") can be used to bypass the type system. It's there
 
 ## .= "dottis" {#dottis}
 
-Test for equality with Nock `5`.
+Test for equality with Nock 5.
 
 #### Syntax
 
@@ -318,7 +318,7 @@ Like Nock equality, `.=` ("dottis") tests whether two nouns are the same, ignori
 
 ## .? "dotwut" {#dotwut}
 
-Test for cell or atom with Nock `3`.
+Test for cell or atom with Nock 3.
 
 #### Syntax
 

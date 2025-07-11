@@ -171,9 +171,9 @@ The context of the door is the subject of the `|_` expression.
 
 A door is the general case of a gate (function). A gate is a door with only one arm, which has the name `$`.
 
-Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door (call it `door`) which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
+Calling a door is like calling a gate except the caller also needs to specify the arm to be computed. So, for example, if you have some door (call it `door`) which contains some arm `+arm`, and you want to pass some argument (i.e., input value `.arg`), you would call it with `~(arm door arg)`.
 
-Because gates are also doors, you can call them the same way. To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#censig).
+Because gates are also doors, you can call them the same way. To call the gate `+foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`. This is an irregular form for `%~($ foo baz)`, [%~](cen.md#censig).
 
 #### Examples
 
@@ -256,7 +256,7 @@ None
 
 #### Semantics
 
-`a` is a Hoon expression whose product type defines which values the gate accepts, and it usually includes a name (e.g., `n=1`). The product of `a` also serves as the default value of the sample. `b` is a Hoon expression that determines the product value of the gate.
+Below, *a* is a Hoon expression whose product type defines which values the gate accepts, and it usually includes a name (e.g., `n=1`). The product of *a* also serves as the default value of the sample. *b* is a Hoon expression that determines the product value of the gate.
 
 #### Expands to
 
@@ -267,7 +267,7 @@ None
 
 #### Discussion
 
-Pick your own default value for the sample. Note that `a` is an ordinary expression, not a type; `|:` doesn't bunt a sample as [`|=`](#-bartis) does.
+Pick your own default value for the sample. Note that *a* is an ordinary expression, not a type; `|:` doesn't bunt a sample as [`|=`](#-bartis) does.
 
 This is useful if you want a gate to have a sample of a particular type, but you don't want the default value of the gate to be the default value of that type.
 
@@ -624,7 +624,7 @@ None
 
 #### Semantics
 
-A `|~` expression produces an iron gate. `a` defines the sample, and `b` defines the output value of the gate.
+A `|~` expression produces an iron gate. *a* defines the sample, and *b* defines the output value of the gate.
 
 #### Discussion
 
@@ -669,7 +669,7 @@ Two arguments, fixed.
 
 #### Semantics
 
-A `|*` expression produces a wet gate. `a` defines the gate's sample, and `b` is a Hoon expression that determines the output value of the gate.
+A `|*` expression produces a wet gate. *a* defines the gate's sample, and *b* is a Hoon expression that determines the output value of the gate.
 
 #### Discussion
 
@@ -870,7 +870,7 @@ One argument, fixed.
 
 #### Semantics
 
-A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`). `a` is a Hoon expression that defines what the `$` arm does.
+A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`). *a* is a Hoon expression that defines what the `$` arm does.
 
 #### Discussion
 

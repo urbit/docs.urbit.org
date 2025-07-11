@@ -34,7 +34,7 @@ Documentation for Hoon's rune expressions.
 - [`^ ket` (Casts)](ket.md) - Adjust types without violating type constraints.
 - [`+ lus` (Arms)](./lus.md) - Define arms in a core.
 - [`; mic` (Make)](mic.md) - Miscellaneous useful macros.
-- [`~ sig` (Hints)](sig.md) - Use Nock `11` to pass non-semantic info to the interpreter.
+- [`~ sig` (Hints)](sig.md) - Use Nock 11 to pass non-semantic info to the interpreter.
 - [`= tis` (Subject Modification)](tis.md) - Modify the subject.
 - [`? wut` (Conditionals)](wut.md) - Branch on conditionals.
 - [`! zap` (wild)](zap.md) - Expressions that don't fit anywhere else go here.

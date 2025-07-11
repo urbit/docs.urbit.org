@@ -65,7 +65,7 @@ One fixed argument, then a variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `.q`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.q`:
 
 Regular form:
 
@@ -128,7 +128,7 @@ Four arguments, fixed.
 
 #### Semantics
 
-A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `+bind` which takes a mold `$mold` and produces an implementation of monadic bind.
+A `;<` is for sequencing two computations, `expr1` and `expr2`, using a provided implementation of monadic bind. This rune takes a gate `+bind` which takes a mold and produces an implementation of monadic bind.
 
 #### Desugaring
 
@@ -192,7 +192,7 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `;+  p`   | `;+(p)`   | None           |
 
-`p` is a Hoon expression that produces a `$manx`.
+Here *p* is a Hoon expression that produces a `$manx`.
 
 #### Produces
 
@@ -496,7 +496,7 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `;*  p`   | `;*(p)`   | None           |
 
-`p` is a Hoon expression that produces a `$marl`.
+Here *p* is a Hoon expression that produces a `$marl`.
 
 #### Produces
 
@@ -576,7 +576,7 @@ None
 
 {% endtabs %}
 
-`p1`-`pn` are Hoon expressions, each of which poduces a `$manx`.
+Here *p1-pn* are Hoon expressions, each of which poduces a `$manx`.
 
 #### Produces
 

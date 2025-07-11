@@ -84,7 +84,7 @@ Two arguments.
 
 This lets you build and import a hoon file from anywhere in the desk.
 
-The first argument is the face to pin it as. The second argument is the path to the file in the same desk as this file. The file must be a `%hoon` file, and the trailing mark (`hoon`) must be omitted from the path.
+The first argument is the face to pin it as. The second argument is the path to the file in the same desk as this file. The file must be a `%hoon` file, and the trailing mark (`%hoon`) must be omitted from the path.
 
 #### Examples
 
@@ -122,7 +122,7 @@ To import `/foo/bar.hoon` you would do:
 /*  foobar  %hoon  /foo/bar/hoon
 ```
 
-`foobar` would then be an `@t` of the contents of that file.
+Then `foobar` woudl be a `@t` of the contents of that file.
 
 ---
 
@@ -154,8 +154,7 @@ To build a mark conversion gate from `%txt` to `%mime`, you would do:
 /$  txt-to-mime  %txt  %mime
 ```
 
-`txt-to-mime` would be a gate of `$-(wain mime)`. You could then call the gate
-like:
+Where `txt-to-mime` would be a gate of `$-(wain mime)`. You could then call the gate, like:
 
 ```
 > (txt-to-mime ~['first line' 'second line'])
@@ -178,11 +177,11 @@ Three arguments.
 
 #### Semantics
 
-The first argument is the face to pin the results with. The second argument is the type each hoon file produces when evaluated. The third argument is the path to a directory in the same desk as this file, containing `%hoon` files.
+The first argument is the face to pin the results with. The second argument is the type each hoon file produces when evaluated. The third argument is the path to a directory in the same desk as this file, containing Hoon files.
 
-Each hoon file in the specified directory will be built and evalutated. The result of evaluating each file will be added to a [`+map`](../stdlib/2o.md#map) and pinned with the specified face (`some-face`). The keys of the map will be the name of each file, and the values of the map will be the result of evaluating each file and casting its result to the type specified (`some-type`).
+Each hoon file in the specified directory will be built and evalutated. The result of evaluating each file will be added to a [`+map`](../stdlib/2o.md#map) and pinned with the specified face `some-face`. The keys of the map will be the name of each file, and the values of the map will be the result of evaluating each file and casting its result to the type specified `$some-type`.
 
-All of the hoon files in the specified directory, when evaluated, must produce data of a type that nests under the type specified (`some-type`). File with a mark other than `%hoon` will be ignored.
+All of the hoon files in the specified directory, when evaluated, must produce data of a type that nests under the type specified `$some-type`. File with a mark other than `%hoon` will be ignored.
 
 The type of the map will be `(map knot some-type)`.
 

@@ -355,7 +355,7 @@ Hoon doesn't have variables like other programming languages do; it has faces. F
 
 A face is a limb expression that consists of a series of alphanumeric characters. A face has a combination of lowercase letters, numbers, and the `-` character. Some example faces: `b`, `c3`, `var`, `this-is-kebab-case123`. Faces must begin with a letter.
 
-There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`. Hereafter in the code, the expression `face` would be equivalent to the expression `value`, assuming `value` were a named wing in the subject. Hoon registers the given `+face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
+There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`. Hereafter in the code, the expression `face` would be equivalent to the expression `value`, assuming `value` were a named wing in the subject. Hoon registers the given `face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
 
 Now we have several ways to access values:
 

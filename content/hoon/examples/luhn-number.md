@@ -47,7 +47,7 @@ The even digits:
 s1 + s2 = 70 ends in zero, which means that 49927398716 passes the Luhn test
 ```
 
-Your task for this challenge is as follows. First you will write a library file `lib/luhn-number` with a core containing an arm named `++validate`. `validate` will be a gate that takes as input a `tape` which is a sequence of digits, and returns either a `%.y` or `%.n` if the number is a Luhn number or not. 
+Your task for this challenge is as follows. First you will write a library file `lib/luhn-number` with a core containing an arm named `+validate`. `+validate` will be a gate that takes as input a `$tape` which is a sequence of digits, and returns either a `%.y` or `%.n` if the number is a Luhn number or not. 
 
 Example usage:
 ```
@@ -58,14 +58,14 @@ Example usage:
 %.n
 ```
 
-Next you will write a generator file `gen/luhn-number` which takes as input a `tape` which consists of digits or the `*` character, such as:
+Next you will write a generator file `gen/luhn-number` which takes as input a `$tape` which consists of digits or the `*` character, such as:
 ```
 "*1*25**574*18403"
 "****"
 "584"
 ```
 
-It will return a `(list tape)` which contains all of the Luhn numbers that fit that format. The numbers should be in lexicographic order (smallest to largest by first digit, then second digit, and so on). You may choose to import and use your `++validate` arm, or perhaps use some other strategy.
+It will return a `(list tape)` which contains all of the Luhn numbers that fit that format. The numbers should be in lexicographic order (smallest to largest by first digit, then second digit, and so on). You may choose to import and use your `+validate` arm, or perhaps use some other strategy.
 
 Example usage:
 ```
@@ -80,7 +80,7 @@ Example usage:
 ```
 
 Some notes: 
-* We take the input as a `tape` rather than a `@ud` because a potential credit card number can have leading zeros.
+* We take the input as a `$tape` rather than a `@ud` because a potential credit card number can have leading zeros.
 
 * Note that in Hoon, we index starting from 0 -- so the first digit will be in the 0th index, second in 1st index, and so on.
 

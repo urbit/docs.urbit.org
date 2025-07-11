@@ -108,7 +108,7 @@ First we subscribe to graph-store for updates with `watch-our`, then we call the
 
 ...to receive the fact and then the rest is just processing & printing logic which isn't too important.
 
-Once this is done, main-loop will just call the same function again which will again wait for a fact and so on. So you see how it creates a loop. The only way to exit the loop is with a `%fail` or else by poking spider with a `%spider-stop` and the thread's `tid`.
+Once this is done, main-loop will just call the same function again which will again wait for a fact and so on. So you see how it creates a loop. The only way to exit the loop is with a `%fail` or else by poking spider with a `%spider-stop` and the thread's `$tid`.
 
 ## Try input against multiple functions {#try-input-against-multiple-functions}
 

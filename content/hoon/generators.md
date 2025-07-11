@@ -72,13 +72,13 @@ For instance, the following generator can be run with no arguments:
 42
 ```
 
-A `%say` generator is structurally a head-tagged cell of a gate which returns a head-tagged cell of a mark and a value (or a `cask`).
+A `%say` generator is structurally a head-tagged cell of a gate which returns a head-tagged cell of a mark and a value (or a `+cask`).
 
-The head tag over the entire generator is always `%say`.  The `cask` tag is most commonly `%noun`.
+The head tag over the entire generator is always `%say`.  The `+cask` tag is most commonly `%noun`.
 
 We use `%say` generators when we want to provide something else in Arvo, the Urbit operating system, with metadata about the generator's output. This is useful when a generator is needed to pipe data to another program, a frequent occurrence.
   
-To that end, `%say` generators use `mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A `mark` is akin to a MIME type on the Arvo level. A `mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`.
+To that end, `%say` generators use `$mark`s to make it clear, to other Arvo computations, exactly what kind of data their output is. A `$mark` is akin to a MIME type on the Arvo level. A `$mark` describes the data in some way, indicating that it's an `%atom`, or that it's a standard such as `%json`, or even that it's an application-specific data structure like `%talk-command`.
 
 The gate sample follows this pattern, with undesired elements stubbed out by `*`:
 

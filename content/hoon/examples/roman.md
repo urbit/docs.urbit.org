@@ -39,12 +39,12 @@ Roman numerals constitute a numeral system capable of expressing positive intege
 
         Your library `/lib/roman/hoon` should expose two arms:
 
-        - `++parse` accepts a `tape` text string containing a Roman numeral expression in lower or upper case and returns the corresponding `@ud` unsigned decimal value.  On failure to parse, call `!!` zapzap.
-        - `++yield` accepts a `@ud` unsigned decimal value and returns the corresponding `tape` text string in lower case.
+        - `+parse` accepts a `$tape` text string containing a Roman numeral expression in lower or upper case and returns the corresponding `@ud` unsigned decimal value.  On failure to parse, call `!!` zapzap.
+        - `+yield` accepts a `@ud` unsigned decimal value and returns the corresponding `$tape` text string in lower case.
 
     - `/gen/roman/hoon`
 
-        Provide a `%say` generator at `/gen/roman/hoon` which accepts a `tape` text string or a `@ud` unsigned decimal value and performs the appropriate conversion on the basis of the sample's type.
+        Provide a `%say` generator at `/gen/roman/hoon` which accepts a `$tape` text string or a `@ud` unsigned decimal value and performs the appropriate conversion on the basis of the sample's type.
 
         **Note**:  This design pattern is not optimal since analysis over a union of some types can be difficult to carry out, and it would be better to either separate the generators or use a flag.  In this case, the pattern works because we are distinguishing an atom from a cell.
 
@@ -884,7 +884,7 @@ _These solutions were submitted by the Urbit community as part of a competition 
 
 ### Solution #1 {#solution-1}
 
-_This solution was produced by ~sidnym-ladrut.  This code utilizes the Hoon parser tools like `++cook` and `++scan`, and in particular illustrates a strong ethic of [function encapsulation](https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29)._
+_This solution was produced by ~sidnym-ladrut.  This code utilizes the Hoon parser tools like `+cook` and `+scan`, and in particular illustrates a strong ethic of [function encapsulation](https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29)._
 
 **`/lib/roman.hoon`**
 
@@ -1020,7 +1020,7 @@ _This solution was produced by ~sidnym-ladrut.  This code utilizes the Hoon pars
 
 ### Solution #2 {#solution-2}
 
-_This solution was produced by ~mocmex-pollen.  It particularly illustrates the use of `++cook` and `++pose` in constructing a parser-based solution._
+_This solution was produced by ~mocmex-pollen.  It particularly illustrates the use of `+cook` and `+pose` in constructing a parser-based solution._
 
 **`/lib/roman.hoon`**
 
@@ -1166,7 +1166,7 @@ _This solution was produced by ~mocmex-pollen.  It particularly illustrates the 
 
 ### Solution #3 {#solution-3}
 
-_This solution was produced by ~mashex-masrex.  Notice how it utilizes a well-structured parser based on `++jest` and `++cold`._
+_This solution was produced by ~mashex-masrex.  Notice how it utilizes a well-structured parser based on `+jest` and `+cold`._
 
 **`/lib/roman.hoon`**
 

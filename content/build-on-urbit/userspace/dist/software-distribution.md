@@ -180,7 +180,7 @@ In the text editor, we'll add the following:
 
 {% endcode %}
 
-You can refer to the [Docket File](docket.md) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a `hoon` list of [clauses](docket.md) which configure the appearance of the app tile, the source of the [glob](glob.md), and some other metadata.
+You can refer to the [Docket File](docket.md) documentation for more details of what is required. In brief, the `desk.docket-0` file contains a Hoon list of [clauses](docket.md) which configure the appearance of the app tile, the source of the [glob](glob.md), and some other metadata.
 
 We've given the app a [`%title`](docket.md#title) of "Hello", which will be displayed on the app tile and will be the name of the app when others browse to install it. We've given the app tile a [`%color`](docket.md#color) of `#8188C9`, and also specified the URL of an [`%image`](docket.md#image) to display on the tile.
 

@@ -29,12 +29,12 @@ The [Wolfram MathWorld entry for “Rhonda Number”](https://mathworld.wolfram.
 
         Your library `/lib/rhonda/hoon` should expose two arms:
 
-        - `++check` accepts a `@ud` unsigned decimal value for the base and a `@ud` unsigned decimal value for the number, and returns `%.y` or `%.n` depending on whether the given number is a Rhonda number in that base or not.
-        - `++series` accepts a base as a `@ud` unsigned decimal value and a number of values to return `n`, and either returns `~` if the base is prime or the `n` first Rhonda numbers in that base.
+        - `+check` accepts a `@ud` unsigned decimal value for the base and a `@ud` unsigned decimal value for the number, and returns `%.y` or `%.n` depending on whether the given number is a Rhonda number in that base or not.
+        - `+series` accepts a base as a `@ud` unsigned decimal value and a number of values to return `n`, and either returns `~` if the base is prime or the `n` first Rhonda numbers in that base.
 
     - `/gen/rhonda-check/hoon`
 
-        You should provide a `%say` generator at `/gen/rhonda-check/hoon` which accepts a `@ud` unsigned decimal value and applies `++check` to verify if that value is a Rhonda number or not.
+        You should provide a `%say` generator at `/gen/rhonda-check/hoon` which accepts a `@ud` unsigned decimal value and applies `+check` to verify if that value is a Rhonda number or not.
 
     - `/gen/rhonda-series/hoon`
 
@@ -412,7 +412,7 @@ _This solution was produced by ~mocmex-pollen.  This code includes the `~_` sigc
 
 ### Solution #2 {#solution-2}
 
-_This solution was produced by ~ticlys-monlun.  This code demonstrates using a `++map` data structure and a different square-root solution algorithm._
+_This solution was produced by ~ticlys-monlun.  This code demonstrates using a `+map` data structure and a different square-root solution algorithm._
 
 **`/lib/rhonda.hoon`**
 
@@ -606,7 +606,7 @@ _This solution was produced by ~ticlys-monlun.  This code demonstrates using a `
 
 ### Solution #3 {#solution-3}
 
-_This solution was produced by ~tamlut-modnys.  This code demonstrates a clean prime factorization algorithm and the use of `++roll`._
+_This solution was produced by ~tamlut-modnys.  This code demonstrates a clean prime factorization algorithm and the use of `+roll`._
 
 **`/lib/rhonda.hoon`**
 

@@ -37,13 +37,13 @@ One argument, fixed.
 
 The `+|` doesn't produce an arm. It instead provides a label for the arms that follow it. The arms of a core can be divided into **chapters** for 'organization'. Chapter labels aren't part of the underlying noun of the core; they're stored as type system metadata only.
 
-See [`tome`](../stdlib/4o.md#tome) in the Hoon standard library.
+See [`$tome`](../stdlib/4o.md#tome) in the Hoon standard library.
 
 **Note:** The `+|` rune has little practical utility. Chapter labels cannot be referenced short of manually processing the `$type` of a core.
 
 #### Examples
 
-Let's look at what the Hoon compiler's parser, `ream`, does with the `+|` rune:
+Let's look at what the Hoon compiler's parser, `+ream`, does with the `+|` rune:
 
 ```
 > (ream '|%  +|  %numbers  ++  two  2  ++  three  3  --')
@@ -85,13 +85,13 @@ Two arguments, fixed.
 |----------------------|-----------|----------------|
 | `+$  p=term  q=spec` | None      | None           |
 
-`p` is an arm name, and `q` is any structure expression.
+`.p` is an arm name, and `.q` is any structure expression.
 
 #### Discussion
 
 Arms produced by `+$` are essentially type definitions. They should be used when one wants to define custom types using core arms.
 
-The Hoon subexpression, `q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `tape`).
+The Hoon subexpression, `.q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `$tape`).
 
 #### Examples
 
@@ -125,13 +125,13 @@ Two arguments, fixed.
 |----------------------|-----------|----------------|
 | `++  p=term  q=hoon` | None      | None           |
 
-`p` is the arm name, and `q` is any Hoon expression.
+`.p` is the arm name, and `.q` is any Hoon expression.
 
 #### Discussion
 
-All arms must have a name (e.g., `add`). An arm is computed by name resolution. (This resolution is implicit in the case of `$` arms. See `|=`, `|-`, and `|^`.) The `++` rune is used for explicitly giving a name to an arm.
+All arms must have a name (e.g., `+add`). An arm is computed by name resolution. (This resolution is implicit in the case of `$` arms. See `|=`, `|-`, and `|^`.) The `++` rune is used for explicitly giving a name to an arm.
 
-Any Hoon expression, `q`, may be used to define the arm computation.
+Any Hoon expression, `.q`, may be used to define the arm computation.
 
 #### Examples
 
@@ -185,7 +185,7 @@ None
 
 {% endtabs %}
 
-`a`, `c`, `e` are arm names and `b`, `d`, `f` are any Hoon expression. Note that unlike all other runes with a variable number of arguments, the list of arguments of `+*` does not end with a terminator.
+`.a`, `.c`, `.e` are arm names and `.b`, `.d`, `.f` are any Hoon expression. Note that unlike all other runes with a variable number of arguments, the list of arguments of `+*` does not end with a terminator.
 
 `+*` arms must always come at the beginning of the battery, before any other type of lus arm.
 
@@ -226,7 +226,7 @@ To assign an alias to a door, we often write the following.
 +*  this  .
 ```
 
-This is the idomatic way to assign the alias `this` to the door.
+This is the idomatic way to assign the face `this` to the door containing this expression.
 
 Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd like to include more. This is where aliases employed as "virtual arms" may be of use. We note that it is often better style to compose cores with `=>` or `=<` to add more arms to a Gall app core. This usage of `+*` is controversial and should be minimized.
 
@@ -237,7 +237,7 @@ Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd 
     cont  +>
 ```
 
-This assigns the door the alias `this`, the sample of the door `samp`, and the context of the door `cont`.
+This assigns the door the alias `this`, the sample of the door `.samp`, and the context of the door `.cont`.
 
 You may also call functions with `+*` by making use of e.g. the `%~` rune.
 

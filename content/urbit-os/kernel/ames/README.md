@@ -19,13 +19,13 @@ Our networking protocol.
 
 Ames is the name of both our network and the vane that communicates over it. When Unix receives a packet over the correct UDP port, it pipes it straight into Ames for handling. Also, all packets sent over the Ames network are sent by the Ames vane. Apps and vanes may use Ames to directly send messages to other ships. In general, apps use [Gall](../gall) and [Clay](../clay) to communicate with other ships rather than using Ames directly, but this isn't a requirement. Of course, Gall and Clay use Ames behind the scenes to communicate across the network. Jael is the only other vane to utilize Ames.
 
-Ames includes several significant components. Although the actual crypto algorithms are defined in `zuse`, they're used extensively in Ames for encrypting and decrypting packets. Congestion control and routing is handled entirely in Ames. Finally, the actual Ames protocol itself, including how to route incoming packets to the correct vane or app, is defined in Ames.
+Ames includes several significant components. Although the actual crypto algorithms are defined in `/sys/zuse.hoon`, they're used extensively in Ames for encrypting and decrypting packets. Congestion control and routing is handled entirely in Ames. Finally, the actual Ames protocol itself, including how to route incoming packets to the correct vane or app, is defined in Ames.
 
 ## Technical Overview {#technical-overview}
 
 This section summarizes the design of Ames. Beyond this section are deeper elaborations on the concepts presented here.
 
-Ames extends [Arvo's](../arvo) `%pass`/`%give` `move` semantics across the network.
+Ames extends [Arvo's](../arvo) `%pass`/`%give` `$move` semantics across the network.
 
 Ames receives packets as Arvo events and emits packets as Arvo effects. The runtime is responsible for transferring the bytes in an Ames packet across a physical network to another ship.
 
@@ -35,7 +35,7 @@ A local vane can pass Ames a `%plea` request message. Ames transmits the message
 
 Once the peer has processed the `%plea` message, it sends a message-acknowledgment packet over the wire back to the local Ames. This "ack" can either be positive to indicate the request was processed, or negative to indicate the request failed, in which case it's called a "nack". (Don't confuse Ames nacks with TCP nacks, which are a different concept).
 
-When the local Ames receives either a positive message-ack or a combination of a nack and "naxplanation" (explained in more detail below), it gives an `%done` `move` to the local vane that had requested the original `%plea` message be sent.
+When the local Ames receives either a positive message-ack or a combination of a nack and "naxplanation" (explained in more detail below), it gives an `%done` `$move` to the local vane that had requested the original `%plea` message be sent.
 
 A local vane can give Ames zero or more `%boon` response messages in response to a `%plea`, on the same duct that Ames used to pass the `%plea` to the vane. Ames transmits a `%boon` over the wire to the peer's Ames, which gives it to the destination vane on the same duct the vane had used to pass the original `%plea` to Ames.
 
@@ -45,7 +45,7 @@ If the Arvo event that completed receipt of a `%boon` message crashes, Ames inst
 
 `%plea` messages can be nacked, in which case the peer will send both a message-nack packet and a naxplanation message, which is sent in a way that does not interfere with normal operation. The naxplanation is sent as a full Ames message, instead of just a packet, because the contained error information can be arbitrarily large. A naxplanation can only give rise to a positive ack -- never ack an ack, and never nack a naxplanation.
 
-Ames guarantees a total ordering of messages within a "flow", identified in other vanes by a duct and over the wire by a `bone`: an opaque number. Each flow has a FIFO (first-in-first-out) queue of `%plea` requests from the requesting ship to the responding ship and a FIFO queue of `%boon`'s in the other direction.
+Ames guarantees a total ordering of messages within a "flow", identified in other vanes by a duct and over the wire by a `$bone`: an opaque number. Each flow has a FIFO (first-in-first-out) queue of `%plea` requests from the requesting ship to the responding ship and a FIFO queue of `%boon`'s in the other direction.
 
 Message order across flows is not specified and may vary based on network conditions.
 
@@ -55,9 +55,9 @@ Ames encrypts every message using symmetric-key encryption by performing an elli
 
 When a peer suffers a continuity breach, Ames removes all messaging state related to it. Ames does not guarantee that all messages will be fully delivered to the now-stale peer. From Ames's perspective, the newly restarted peer is a new ship. Ames's guarantees are not maintained across a breach.
 
-A vane can pass Ames a `%heed` `$task` to request Ames track a peer's responsiveness. If our `%boon`'s to it start backing up locally, Ames will give a `%clog` back to the requesting vane containing the unresponsive peer's urbit address. This interaction does not use ducts as unique keys. Stop tracking a peer by sending Ames a `%jilt` `$task`.
+A vane can pass Ames a `%heed` task to request Ames track a peer's responsiveness. If our `%boon`'s to it start backing up locally, Ames will give a `%clog` back to the requesting vane containing the unresponsive peer's urbit address. This interaction does not use ducts as unique keys. Stop tracking a peer by sending Ames a `%jilt` task.
 
-Debug output can be adjusted using `%sift` and `%spew` `$task`'s.
+Debug output can be adjusted using `%sift` and `%spew` task's.
 
 ## Packets {#packets}
 
@@ -97,7 +97,7 @@ The body is of variable length and consists of the following parts in this order
 
 `origin` is the IP and port of the original sender if the packet was proxied through a relay.
 
-`SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](cryptography.md)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](../../../urbit-id/life-and-rift.md) for information on what `life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
+`SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption algorithm utilized to encrypt Ames packets (see the page on [Ames cryptography](cryptography.md)). It is formed from the following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see [Life and Rift](../../../urbit-id/life-and-rift.md) for information on what `$life` is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus the mod 16 sender and receiver life in the first 8 bits are only for quick filtering of honest packets sent to or from a stale life.
 
 The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting using [`+en:sivc:aes:crypto`](../../../hoon/cryptography.md#en).
 
@@ -127,7 +127,7 @@ A nack indicates a negative acknowledgement to a `%plea`, meaning that the reque
 
 `%boon`s and naxplanations are never nacked. Individual packets are also never nacked, only complete `%plea` messages are. Whether a malformed packet causes a `%plea` to be nacked depends on its content. In the case of an incorrect checksum or a failure to decrypt then Ames drops the packet and it is as though it never happened. However, if the packet does decrypt and has invalid ciphertext (i.e. something other than a jammed `$shutpacket` data structure), then Ames will nack the whole `%plea` since that indicates that the peer is misbehaving. Eventually Ames should also present a warning to the user that the peer is untrustworthy.
 
-A nack will be accompanied by a naxplanation, which is a special type of`%boon` that uses its own `bone` (see [flows](#flows)). Ames won't give the vane that requested the initial `%plea` a nack until it also receives the naxplanation, which it will send to the vane as a `%done` gift. Naxplanations may only be acked, never nacked. Furthermore, naxplanations can only ever be sent as a rejection of a `%plea` - the receiver will never both perform a `%plea` and return a naxplanation.
+A nack will be accompanied by a naxplanation, which is a special type of`%boon` that uses its own `$bone` (see [flows](#flows)). Ames won't give the vane that requested the initial `%plea` a nack until it also receives the naxplanation, which it will send to the vane as a `%done` gift. Naxplanations may only be acked, never nacked. Furthermore, naxplanations can only ever be sent as a rejection of a `%plea` - the receiver will never both perform a `%plea` and return a naxplanation.
 
 #### (N)ack packets
 
@@ -141,7 +141,7 @@ This means all re-sends of an ack packet will be bitwise identical to each other
 
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests under `@ud`.
 
-Here, `our-life` refers to the [`life`](../../../urbit-id/life-and-rift.md), or revision number, of the acking ship's networking keys, and `her-life` is the `life` of the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow. `message-num` denotes the number of the message in the flow identified by `bone`. `fragment-num` denotes the number of the fragment of the message identified by `message-num` that is being acked.
+Here, `our-life` refers to the [`$life`](../../../urbit-id/life-and-rift.md), or revision number, of the acking ship's networking keys, and `her-life` is the `$life` of the ack-receiving ship's networking keys. `$bone` is an opaque number identifying the flow. `$message-num` denotes the number of the message in the flow identified by `$bone`. `$fragment-num` denotes the number of the fragment of the message identified by `$message-num` that is being acked.
 
 A message (n)ack is a different kind of ack that is obtained by encrypting the `+jam` of the following noun:
 
@@ -228,9 +228,9 @@ This division is summarized in the following diagram, describing how `~bacbel-ta
 
 ![](https://media.urbit.org/docs/arvo/packet.png)
 
-Ames, as a part of Arvo, handles `+jam`ming, packetizing, encryption, and forming Ames packets. Once it is ready to send an Ames packet, it `%give`s to Unix a `%send` `gift` containing that packet. This will be a Nock noun containing the `@tas` `%send` as well as the serialized packet.
+Ames, as a part of Arvo, handles `+jam`ming, packetizing, encryption, and forming Ames packets. Once it is ready to send an Ames packet, it `%give`s to Unix a `%send` gift containing that packet. This will be a Nock noun containing the `@tas` `%send` as well as the serialized packet.
 
 "Unix", in this case, is actually the King. The King receives the `%send` instruction, wraps the packet contained within as a UDP packet, and immediately hands it off the the Unix network interface to be sent.
 
-Now the receiving King is handed a UDP packet by Unix. The King removes the UDP wrapper, `+jam`s the `lane` on which it heard the packet, and delivers the packet to the Ames vane as an atom by copying the bytes it heard on the UDP port.
+Now the receiving King is handed a UDP packet by Unix. The King removes the UDP wrapper, `+jam`s the `$lane` on which it heard the packet, and delivers the packet to the Ames vane as an atom by copying the bytes it heard on the UDP port.
 

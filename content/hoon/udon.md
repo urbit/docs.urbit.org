@@ -17,7 +17,7 @@ layout:
 
 Udon is a domain-specific language for composing documents. Udon is very similar to Markdown, but with some minor variation in syntax and some additional Urbit-related affordances.
 
-Udon files are compiled to `manx`es (Urbit's XHTML/XML representation), so can easily be used to publish documents to the browser. Udon also allows you to embed arbitrary [Sail](sail.md) syntax, which itself allows embedding arbitrary Hoon, so it can be quite powerful for dynamic content when compiled against an appropriate subject.
+Udon files are compiled to `$manx`es (Urbit's XHTML/XML representation), so can easily be used to publish documents to the browser. Udon also allows you to embed arbitrary [Sail](sail.md) syntax, which itself allows embedding arbitrary Hoon, so it can be quite powerful for dynamic content when compiled against an appropriate subject.
 
 This document will walk through the basics of Udon and its syntax.
 
@@ -102,8 +102,8 @@ be rendered as inline code.
 * **Block quotes**: a line beginning with `>` creates a block quote. This may be hard-wrapped, as long as the next line is indented two spaces. Block quotes may contain anything, including other blockquotes.
 * **Line breaks**: A line ending in a single backslash will have a line break inserted at the end, so it will not flow together with the subsequent line as is usually the case.
 * **Escape characters**: You may prefix Udon syntax with a backslash to have it treated as the literal text.
-* **Hoon literals and wings**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `++foo:bar`, `+$baz`, and `+*foo:bar:baz, as inline code.`
-* **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `+$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document.
+* **Hoon literals and wings**: Udon will automatically render any values with atom aura syntax as inline code. It'll also render arms like `+foo:bar`, `$baz`, and `+*foo:bar:baz`, as inline code.
+* **Sail**: this is hoon's native XML syntax. Udon will parse it, execute it, and include the `$manx`es produced in the resulting document. This means you can embed arbitrary hoon in the document.
 
 {% hint style="info" %}
 Note that Udon is quite strict on its syntax, and may fail to parse if it's incorrect.
@@ -117,7 +117,7 @@ The first thing in an Udon file must be the `micgar` rune: `;>`
 
 Micgar tells the Hoon compiler to interpret everything afterwards as Udon. Udon-mode ends at the end of the file; there's no way to terminate micgar before that. Udon is therefore useful for whole documents rather than embedding snippets in other Hoon files.
 
-The Hoon compiler will produce a `manx` as a result.
+The Hoon compiler will produce a `$manx` as a result.
 
 To scry out a file, compile it against the standard library, and stringify the resulting XHTML, you can do:
 
@@ -130,9 +130,9 @@ To scry out a file, compile it against the standard library, and stringify the r
 .^(@t %cx /=the-desk=/the-file/udon)
 ```
 
-Note you may want to provide more than just `..zuse` in the subject (like a `bowl`), or if you're automatically building untrusted code, you may want to provide less. It depends on your use case.
+Note you may want to provide more than just `..zuse` in the subject (like a `$bowl`), or if you're automatically building untrusted code, you may want to provide less. It depends on your use case.
 
-You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](rune/fas.md#fastar) specifying an `%elem` mark (which produces a `manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
+You can alternatively import and build udon files at compile time with a [`/*` (fastar) Ford rune](rune/fas.md#fastar) specifying an `%elem` mark (which produces a `$manx`), although note it compiles the Udon against an empty subject, so Hoon in embedded Sail won't have access to standard library functions. A mark conversion gate from `%udon` to `%elem` is another option.
 
 ## Examples <a href="#examples" id="examples"></a>
 

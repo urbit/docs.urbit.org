@@ -15,7 +15,7 @@ layout:
 
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../urbit-os/kernel/gall/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl), [`boat`](../../urbit-os/kernel/gall/data-types.md#boat), and [`bitt`](../../urbit-os/kernel/gall/data-types.md#bitt).
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../urbit-os/kernel/gall/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl), [`$boat`](../../urbit-os/kernel/gall/data-types.md#boat), and [`$bitt`](../../urbit-os/kernel/gall/data-types.md#bitt).
 
 ## `$vase` {#vase}
 
@@ -56,7 +56,7 @@ The [zapgar](../../hoon/rune/zap.md#zapgar) rune (`!>`) takes a single argument 
 [#t/foo=@t q=7.496.034]
 ```
 
-You would typically use `!>` as part of a [`$cage`](#cage) when you're constructing a `$card` like a poke or a `%fact` `$gift` to be sent off.
+You would typically use `!>` as part of a [`$cage`](#cage) when you're constructing a `$card` like a poke or a `%fact` gift to be sent off.
 
 ### Extract data from `$vase` {#extract-data-from-vase}
 

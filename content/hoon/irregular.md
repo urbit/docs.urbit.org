@@ -58,7 +58,7 @@ When in doubt, you can use the [`!,` zapcom](rune/zap.md#zapcom) rune to determi
 
 Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular and irregular forms are given.
 
-Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for "\symbol". ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
+Want to `Ctrl+F` to find out the meaning of something weird you saw? Search for "\symbol". ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
 ## `.` dot (nock) <a href="#dot-nock" id="dot-nock"></a>
 
@@ -348,7 +348,7 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 * `+15` is slot 15
 * `.` is the whole subject (slot 1)
-* `^a` is the `.a` "of a higher scope", i.e. "resolve variable `a`, ignoring the first one found".
+* `^a` is the `.a` "of a higher scope", i.e. "resolve variable `.a`, ignoring the first one found".
 * `^^p` even higher, and so on.
 
 'Lark' syntax for slots / tree addressing:

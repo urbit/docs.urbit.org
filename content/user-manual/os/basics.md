@@ -18,13 +18,13 @@ layout:
 This document deals with:
 
 - Running an Urbit ship with the ordinary runtime [from the command line](../../get-on-urbit.md#get-the-urbit-runtime).
-- Basic setup, configuration and usage in Urbit's shell called the `dojo`.
+- Basic setup, configuration and usage in Urbit's shell called the Dojo.
 
 ## Shutdown {#shutdown}
 
-You can turn your urbit off with `Ctrl-d` from the Chat or Dojo prompts.
+You can turn your urbit off with `Ctrl+D` from the Chat or Dojo prompts.
 
-You can force-quit your urbit with `Ctrl-z` from anywhere.
+You can force-quit your urbit with `Ctrl+Z` from anywhere.
 
 ## Restart {#restart}
 
@@ -83,32 +83,32 @@ Your Urbit terminal is separated into two parts: the prompt (the bottom line) an
 
 In the CLI, Urbit apps can process your input before you hit return. To see this in action try entering `)` as the first character at the Dojo prompt. Since there is no Dojo command or Hoon expression that starts with ')', the Dojo rejects it.
 
-`Ctrl-x` - Switches the prompt between running console apps
+`Ctrl+X` - Switches the prompt between running console apps
 
-`Ctrl-c` - Crash current event. Processed at the Unix layer and prints a stack trace.
+`Ctrl+C` - Crash current event. Processed at the Unix layer and prints a stack trace.
 
-`Ctrl-d` - From Chat or Dojo, stops your Urbit process.
+`Ctrl+D` - From Chat or Dojo, stops your Urbit process.
 
-`Ctrl-z` - Stops the Urbit process from _anywhere_.
+`Ctrl+Z` - Stops the Urbit process from _anywhere_.
 
 `↑` / `↓` - History navigation
 
 The following emacs-style key bindings are available:
 
 ```
-Ctrl-a    Cursor to beginning of the line (Home)
-Ctrl-b    Cursor one character backward (left-arrow)
-Ctrl-e    Cursor to the end of the line (End)
-Ctrl-f    Cursor one character forward (right-arrow)
-Ctrl-g    Beep; cancel reverse-search
-Ctrl-k    Kill to end of line
-Ctrl-l    Clear the screen
-Ctrl-n    Next line in history (down-arrow)
-Ctrl-p    Previous line in history (up-arrow)
-Ctrl-r    Reverse-search
-Ctrl-t    Transpose characters
-Ctrl-u    Kill to beginning of line
-Ctrl-y    Yank from kill buffer
+Ctrl+A    Cursor to beginning of the line (Home)
+Ctrl+B    Cursor one character backward (left-arrow)
+Ctrl+C    Cursor to the end of the line (End)
+Ctrl+F    Cursor one character forward (right-arrow)
+Ctrl+G    Beep; cancel reverse-search
+Ctrl+K    Kill to end of line
+Ctrl+L    Clear the screen
+Ctrl+N    Next line in history (down-arrow)
+Ctrl+P    Previous line in history (up-arrow)
+Ctrl+R    Reverse-search
+Ctrl+T    Transpose characters
+Ctrl+U    Kill to beginning of line
+Ctrl+Y    Yank from kill buffer
 ```
 
 ## Updates {#updates}
@@ -175,16 +175,16 @@ You can then run `|rekey` on the moon with the key given by the above command as
 
 ### Maintaining Moons Through A Breach {#restoring-moons}
 
-Moons are always subordinate to the ship that issued them. Their PKI is sent around the network by their parent planet/star/galaxy. As such, if the sponsor planet/star/galaxy of a moon breaches, other urbits on the network who were not aware of the moon prior to the breach (knew its PKI information) will not be able to reach the old moon. Moons can, however, be preserved over the breach of their sponsor and re-added to `jael`. The following guide assumes you are on `[life=n rift=1]` where `n` can be any life #. If you've previously breached your moon and want to preserve it, you'll need to modify the instructions to include setting the appropriate rift using `|moon-breach` from `hood`.
+Moons are always subordinate to the ship that issued them. Their PKI is sent around the network by their parent planet/star/galaxy. As such, if the sponsor planet/star/galaxy of a moon breaches, other urbits on the network who were not aware of the moon prior to the breach (knew its PKI information) will not be able to reach the old moon. Moons can, however, be preserved over the breach of their sponsor and re-added to Jael. The following guide assumes you are on `[life=n rift=1]` where `.life` can be any life number. If you've previously breached your moon and want to preserve it, you'll need to modify the instructions to include setting the appropriate rift using `|moon-breach` from `hood`.
 
-To add an existing moon to `jael` on a breached planet, you'll need the following:
+To add an existing moon to Jael on a breached planet, you'll need the following:
 
 - Your moon's current life # `+keys ~sampel-monler-dozzod-dozzod` (run on the moon) _and_;
 - Your moon's sponsor's understanding of your moon's current life (same command, run on the sponsor).
 - Your moon's existing keyfile or key-string (`@uw`) _or_ the result of `pub:ex:(nol:nu:crub:crypto .^(@uv %j /=vein=/<life # of moon, per moon, here>))` _and_;
 - Your moon's sponsor's understanding of your moon's existing public key `pass:.^([@ud pass=@uw ~] %j /=deed=/~sampel-monler-dozzod-dozzod/<life # of moon per sponsor here>)`.
 
-If you only have they keyfile or key-string from your moon's last boot, you'll need to derive the `pass` value from that using
+If you only have they keyfile or key-string from your moon's last boot, you'll need to derive the `+pass` value from that using
 
 ```
 pub:ex:(nol:nu:crub:crypto key:(seed:jael:l (cue <your @uw keyfile contents or key-string contents here>)))

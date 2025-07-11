@@ -35,7 +35,7 @@ Applications are unlikely to pass tasks to Dill directly. Instead, Dill looks at
 
 Currently, Dill supports multiple sessions, but the Urbit runtime only supports a single Unix terminal client for the default session. This means any [non-default sessions will need to be linked](tasks.md#session-tasks) if they are to work in the Unix terminal.
 
-By default Arvo has one CLI application running: Dojo. For more information on the `sole` library and the related `shoe` library, and for information on how to build CLI apps, you can refer to the [CLI app tutorial](../../../build-on-urbit/userspace/cli-tutorial.md).
+By default Arvo has one CLI application running: Dojo. For more information on the sole library and the related shoe library, and for information on how to build CLI apps, you can refer to the [CLI app tutorial](../../../build-on-urbit/userspace/cli-tutorial.md).
 
 To give a basic idea of how keyboard events flow through these systems and produce terminal output, here's a diagram showing the messages in pseudo-Hoon:
 

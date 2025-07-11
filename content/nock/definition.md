@@ -89,11 +89,11 @@ The pseudocode notation defines six prefix operators: `?`, `+`, `=`, `/`, `#`, a
 
 `=[x y]` reduces to `0` if `x` and `y` are the same noun, `1` otherwise.
 
-`/` (`slot`) is a tree addressing operator.  The root of the tree is `1`; the left child of any node `n` is `2n`; the right child is `2n+1`.  `/[x y]` is the subtree of `y` at address `x`.
+`/` (`+slot`) is a tree addressing operator.  The root of the tree is `1`; the left child of any node *n* is *2n*; the right child is *2n+1*.  `/[x y]` is the subtree of `y` at address `x`.
 
 For instance, `/[1 [531 25 99]]` is `[531 25 99]`; `/[2 [531 25 99]]` is `531`; `/[3 [531 25 99]]` is `[25 99]`; `/[6 [531 25 99]]` is `25`; `/[12 [531 25 99]]` crashes.
 
-`#` (`edit`) is for replacing part of a noun with another noun. `#[x y z]` replaces the value at slot `x` of `z` (i.e., `/[x z]`) with `y`.
+`#` (`+edit`) is for replacing part of a noun with another noun. `#[x y z]` replaces the value at slot `x` of `z` (i.e., `/[x z]`) with `y`.
 
 For instance, `#[2 11 [22 33]]` is `[11 33]`; `#[3 11 [22 33]]` is `[22 11]`; `#[4 11 [[22 33] 44]]` is `[[11 33] 44]`; and `#[5 11 [[22 33] 44]]` is `[[22 11] 44]`.
 
@@ -125,7 +125,7 @@ Instructions `6` through `11` are not strictly necessary for Turing completeness
 
 `[8 b c]` produces the product of formula `c`, against a subject whose head is the product of formula `b` with the original subject, and whose tail is the original subject.  (Think of `8` as a "variable declaration" or "stack push.")
 
-`[9 b c]` computes the product of formula `c` with the current subject; from that product `d` it extracts a formula `e` at tree address `b`, then computes `*[d e]`.  (`9` is designed to fit Hoon; `d` is a `core` (object), `e` points to an arm (method).)
+`[9 b c]` computes the product of formula `c` with the current subject; from that product `d` it extracts a formula `e` at tree address `b`, then computes `*[d e]`.  (`9` is designed to fit Hoon; `d` is a `+core` (object), `e` points to an arm (method).)
 
 In a formula `[10 [b c] d]`, `c` and `d` are computed with the current subject, and then `b` of the product of `d` is replaced with the product of `c`.
 

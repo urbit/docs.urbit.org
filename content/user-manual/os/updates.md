@@ -60,7 +60,7 @@ As of version 1.9, the runtime has a built-in update mechanism. First, shut your
 
 If you're still running a binary older than 1.9, you'll need to:
 
-1. Shut down your ship with `Ctrl+d` or by typing `|exit` in the dojo.
+1. Shut down your ship with `Ctrl+D` or by typing `|exit` in the dojo.
 2. Download the new binary with the command given for your operating system in the [command line install guide](../../get-on-urbit.md#get-the-urbit-runtime).
 3. Start your ship back up with the new `urbit` binary you downloaded.
 4. If you have a kernel update that was blocked, run `|bump` in the dojo to apply it.
@@ -108,7 +108,7 @@ The `updates` entry says whether automatic updates are enabled. If it doesn't sa
 
 Apps (such as Groups, Studio, Pals, etc) receive OTA (over-the-air) updates from their respective publishers. Automatic updates for each app should be enabled by default when you install them. Normal updates (those unrelated to a kernel update) should not require any user action - when you see the update notification in Landscape it's already been done.
 
-When there are kernel updates, app developers are encouraged to push updates for their apps before the kernel update itself is deployed. This means you'll probably see a bunch of notifications about app updates being blocked by the `base` desk in the days before the kernel update ships. You don't need to worry about these - the updates will be queued and automatically applied when the kernel update arrives.
+When there are kernel updates, app developers are encouraged to push updates for their apps before the kernel update itself is deployed. This means you'll probably see a bunch of notifications about app updates being blocked by the `%base` desk in the days before the kernel update ships. You don't need to worry about these - the updates will be queued and automatically applied when the kernel update arrives.
 
 Sometimes, app developers may not get a kernel-compatible update out in time, or else they have simply stopped maintaining the app. In this case, such apps will block kernel updates, and you'll see the "The following (n) apps blocked a System Update" notification [described above](updates.md#update-notifications). In this case, the app will need to be suspended in order for the kernel update to complete. You can do this either by clicking the button in that notification or running `|bump, =force &` in the dojo. You should not manually suspend apps via their tile menu or the `|suspend` command, because they will not be automatically revived if they later receive a kernel-compatible update.
 

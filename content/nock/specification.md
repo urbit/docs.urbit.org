@@ -114,7 +114,7 @@ We should note that in Nock and Hoon, `0` (pronounced "yes") is true, and `1` ("
 
 Slightly more interesting is our tree numbering.  Every noun is of course a tree.  The `/` operator - pronounced "slot" - imposes an address space on that tree, mapping every nonzero atom to a tree position.
 
-1 is the root.  The head of every node `n` is `2n`; the tail is `2n+1`.  Thus a simple tree:
+1 is the root.  The head of every node *n* is *2n*; the tail is *2n+1*.  Thus a simple tree:
 
 ```
      1
@@ -251,7 +251,7 @@ yields `[153 218]`.
 *[a 2 b c]  *[*[a b] *[a c]]
 ```
 
-If you can compute a subject and a formula, you can evaluate them in the interpreter.  In most fundamental languages, like Lisp, `eval` is a curiosity.  But Nock has no `apply` - so all our work gets done with `2`.
+If you can compute a subject and a formula, you can evaluate them in the interpreter.  In most fundamental languages, like Lisp, `+eval` is a curiosity.  But Nock has no `+apply` - so all our work gets done with `2`.
 
 Let's convert the previous example into a stupid use of `2`, with constant subject and formula:
 

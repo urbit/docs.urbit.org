@@ -29,7 +29,7 @@ Clay has two other unique properties that we'll cover later on: it supports type
 
 ## Revision Control <a href="#revision-control" id="revision-control"></a>
 
-Every urbit has one or more desks, which are independently revision-controlled branches. Each desk contains its own `mark` definitions, apps, and so forth.
+Every urbit has one or more desks, which are independently revision-controlled branches. Each desk contains its own mark definitions, apps, and so forth.
 
 Traditionally, an Urbit ship has at least a `%base` desk, and usually a `%landscape` desk, among others. The `%base` desk has the kernel and base system software. The `%landscape` desk has software pertaining to the home screen. The `%base` desk is a fork of the `%base` desk of whichever ship you download system updates from - typically your sponsor, but theoretically may be any ship.
 
@@ -37,9 +37,9 @@ A desk is a series of numbered commits, the most recent of which represents the 
 
 Most commits have exactly one parent, but the initial commit on a desk may have zero parents, and merge commits have more than one parent.
 
-The non-metadata is stored as a `map` of `path`s to data. It's worth noting that no constraints are put on this `map`, so, for example, both `/a/b` and `/a/b/c` could have data. This is impossible in a traditional Unix filesystem since it means that `/a/b` is both a file and a directory. Conventionally, the final element in the path is its `mark` -- much like a filename extension in Unix. Thus, `/doc/readme.md` in Unix is stored as `/doc/readme/md` in urbit.
+The non-metadata is stored as a `+map` of `$path`s to data. It's worth noting that no constraints are put on this `+map`, so, for example, both `/a/b` and `/a/b/c` could have data. This is impossible in a traditional Unix filesystem since it means that `/a/b` is both a file and a directory. Conventionally, the final element in the path is its `$mark` -- much like a filename extension in Unix. Thus, `/doc/readme.md` in Unix is stored as `/doc/readme/md` in urbit.
 
-The data is not stored directly in the `map`; rather, a hash of the data is stored, and we maintain a master blob store. Thus, if the same data is referred to in multiple commits (as, for example, when a file doesn't change between commits), only the hash is duplicated.
+The data is not stored directly in the `+map`; rather, a hash of the data is stored, and we maintain a master blob store. Thus, if the same data is referred to in multiple commits (as, for example, when a file doesn't change between commits), only the hash is duplicated.
 
 In the master blob store, we either store the data directly, or else we store a diff against another blob. The hash is dependent only on the data within and not on whether or not it's stored directly, so we may on occasion rearrange the contents of the blob store for performance reasons.
 
@@ -47,7 +47,7 @@ Recall that a desk is a series of numbered commits. Not every commit in a desk m
 
 We do guarantee that the first commit is numbered 1, commits are numbered consecutively after that (i.e. there are no "holes"), the topmost commit is always numbered, and every numbered commit is an ancestor of every later numbered commit.
 
-There are three ways to refer to particular commits in the revision history. Firstly, one can use the revision number. Secondly, one can use any absolute time between the one numbered commit and the next (inclusive of the first, exclusive of the second). Thirdly, every desk has a `map` of labels to revision numbers. These labels may be used to refer to specific commits.
+There are three ways to refer to particular commits in the revision history. Firstly, one can use the revision number. Secondly, one can use any absolute time between the one numbered commit and the next (inclusive of the first, exclusive of the second). Thirdly, every desk has a `+map` of labels to revision numbers. These labels may be used to refer to specific commits.
 
 Additionally, Clay is a global filesystem, so data on other urbits is easily accessible the same way as data on our local urbit. In general, the path to a particular revision of a desk is `/~urbit-name/desk-name/revision`. Thus, to get `/try/readme/md` from revision 5 of the `%base` desk on `~sampel-sipnym`, we refer to `/~sampel-sipnym/base/5/try/readme/md`. Clay's namespace is thus global and referentially transparent.
 
@@ -69,4 +69,4 @@ As far as we are aware, Clay is the first generalized, type-aware revision contr
 
 ## Marks <a href="#marks" id="marks"></a>
 
-Central to a typed filesystem is the idea of file types. In Clay, we call these `mark`s. See the [Marks](marks/) section for more details.
+Central to a typed filesystem is the idea of file types. In Clay, we call these "marks". See the [Marks](marks/) section for more details.

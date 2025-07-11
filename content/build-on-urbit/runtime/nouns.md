@@ -252,7 +252,7 @@ Within the interpreter, your code can run either in the surface road or in a dee
 
 ie: does the pier's home road equal the current road pointer? Normally in this context you assume you're obeying the rules of running on an inner road, ie, "deep memory."  Remember, however, that the interpreter **can** run on surface memory - but anything you can do deep, you can do on the surface.  The converse is by no means the case.
 
-In deep memory, think of yourself as if in a signal handler. Your execution context is extremely fragile and may be terminated without warning or cleanup at any time (for instance, by `ctrl-c`).
+In deep memory, think of yourself as if in a signal handler. Your execution context is extremely fragile and may be terminated without warning or cleanup at any time (for instance, by `Ctrl+C`).
 
 For instance, you can't call `malloc` (or C++ `new`) in your C code, because you don't have the right to modify data structures at the global level, and will leave them in an inconsistent state if your inner road gets terminated.  (Instead, use our drop-in replacements, `u3a_malloc()`, `u3a_free()`, `u3a_realloc()`.)
 
@@ -289,7 +289,7 @@ There are also two kinds of exception: mild and severe.  An external exception i
 
 Either way, exceptions come with a stack trace.  The `u3` nock interpreter is instrumented to retain stack trace hints and produce them as a printable `(list tank)`.
 
-Mild exceptions are caught by the first virtualization layer and returned to the caller, following the behavior of the Nock virtualizer `++mock` (in `hoon.hoon`)
+Mild exceptions are caught by the first virtualization layer and returned to the caller, following the behavior of the Nock virtualizer `+mock` (in `hoon.hoon`)
 
 Severe exceptions, or mild exceptions at the surface, terminate the entire execution stack at any depth and send the cumulative trace back to the `u3` caller.
 

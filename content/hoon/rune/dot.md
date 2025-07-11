@@ -25,7 +25,7 @@ Load from the Arvo namespace (scry) with a fake Nock instruction: Nock 12.
 
 Two arguments, with the second optionally split into an arbitrary number of elements.
 
-While this rune technically takes a fixed number of arguments, `q` is usually split into at least two parts, and the tall form of this rune must be terminated with a `==`. Note also that the `==` does not make the arguments into a list as you might expect, so `q` must be explicitly null-terminated if its elements are specified separately.
+While this rune technically takes a fixed number of arguments, `.q` is usually split into at least two parts, and the tall form of this rune must be terminated with a `==`. Note also that the `==` does not make the arguments into a list as you might expect, so `.q` must be explicitly null-terminated if its elements are specified separately.
 
 {% tabs %}
 
@@ -66,17 +66,17 @@ None
 
 #### Produces
 
-The noun `q`, cast to the type `p`.
+The noun `.q`, cast to the type `.p`.
 
 #### Discussion
 
-Nock has no `12` instruction! But the virtual Nock used to run userspace code does. Nock `12` loads from a typed immutable namespace defined by its virtual context.
+Nock has no 12 instruction! But the virtual Nock used to run userspace code does. Nock 12 loads from a typed immutable namespace defined by its virtual context.
 
 Ordinarily a Hoon expression has access to no information but whatever can be found in the subject. The one exception is with the `.^` rune. It essentially allows you to request information from one of the Arvo vanes (modules).
 
-`.^` checks that the type of the value retrieved from Arvo nests under `p`. `q` is a `path` which includes information about which vane is being queried, and what sort of information is requested.
+`.^` checks that the type of the value retrieved from Arvo nests under `.p`. `.q` is a `$path` which includes information about which vane is being queried, and what sort of information is requested.
 
-In principle `.^` takes two subexpressions, but in practice `q` is often given in two parts: the first part includes the vane to be queried (e.g., `%a` for Ames, `%b` for Behn, `%c` for Clay, etc.) and the kind of request. The second part is a path that corresponds to the kind of request.
+In principle `.^` takes two subexpressions, but in practice `.q` is often given in two parts: the first part includes the vane to be queried (e.g., `%a` for Ames, `%b` for Behn, `%c` for Clay, etc.) and the kind of request. The second part is a path that corresponds to the kind of request.
 
 #### Examples
 
@@ -98,7 +98,7 @@ In the dojo we can ask Clay -- the Arvo filesystem -- for a listing of the files
 ]
 ```
 
-The `%c` is for Clay, and the `y` is for the request type. `arch` is the type of the listing. See `gen/cat.hoon` to see how this information is printed more prettily.
+The "c" in `%cy` is for Clay, and the "y" is for the request type. `$arch` is the type of the listing. See `/gen/cat.hoon` to see how this information is printed more prettily.
 
 The `%` is for the current path in the dojo:
 
@@ -131,7 +131,7 @@ You can modify the time of the file listing quite simply and ask for a listing f
 
 ## .+ "dotlus" {#dotlus}
 
-Increment an atom with Nock `4`.
+Increment an atom with Nock 4.
 
 #### Syntax
 
@@ -147,7 +147,7 @@ Increment an atom with Nock `4`.
 
 #### Produces
 
-`p` plus `1` if `p` is an atom; otherwise, crashes. The product atom has no aura.
+`.p` plus 1 if `.p` is an atom; otherwise, crashes. The product atom has no aura.
 
 #### Examples
 
@@ -169,11 +169,11 @@ nest-fail
 
 ## .* "dottar" {#dottar}
 
-Evaluate with Nock `2`.
+Evaluate with Nock 2.
 
 #### Produces
 
-Nock of formula `q` and subject `p`, with type `%noun`.
+Nock of formula `.q` and subject `.p`, with type `%noun`.
 
 #### Syntax
 
@@ -214,9 +214,9 @@ None.
 
 #### Discussion
 
-`.*(p q)` is used to run Nock formula `q` on the subject `p` from within Hoon.
+`.*(p q)` is used to run Nock formula `.q` on the subject `.p` from within Hoon.
 
-Keep in mind that `p` and `q` can be arbitrary Hoon expressions, as long as they evaluate to the appropriate nouns for Nock evaluation.
+Keep in mind that `.p` and `.q` can be arbitrary Hoon expressions, as long as they evaluate to the appropriate nouns for Nock evaluation.
 
 Note also that `.*` ("dottar") can be used to bypass the type system. It's therefore possible to use Hoon as a typeless language.
 
@@ -246,7 +246,7 @@ Note also that `.*` ("dottar") can be used to bypass the type system. It's there
 
 ## .= "dottis" {#dottis}
 
-Test for equality with Nock `5`.
+Test for equality with Nock 5.
 
 #### Syntax
 
@@ -289,7 +289,7 @@ q
 
 #### Produces
 
-`%.y` if `p` equals `q`; otherwise `%.n`.
+`%.y` if `.p` equals `.q`; otherwise `%.n`.
 
 #### Discussion
 
@@ -318,7 +318,7 @@ Like Nock equality, `.=` ("dottis") tests whether two nouns are the same, ignori
 
 ## .? "dotwut" {#dotwut}
 
-Test for cell or atom with Nock `3`.
+Test for cell or atom with Nock 3.
 
 #### Syntax
 
@@ -336,7 +336,7 @@ One argument, fixed.
 
 #### Produces
 
-`%.y` if `p` is a cell; otherwise `%.n`.
+`%.y` if `.p` is a cell; otherwise `%.n`.
 
 #### Examples
 

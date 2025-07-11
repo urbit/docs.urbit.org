@@ -27,15 +27,15 @@ Thread result mold builder
 
 Khan returns this structure when the thread either successfully completes, or fails.
 
-If the [`each`](../../../hoon/stdlib/1c.md#each) is `%.y`, it succeeded and `p` contains the result in either a `cage` or a `page`. If the thread was run internally it's a `cage`, and if it was run externally it's a `page`.
+If the [`+each`](../../../hoon/stdlib/1c.md#each) is `%.y`, it succeeded and `.p` contains the result in either a `$cage` or a `$page`. If the thread was run internally it's a `$cage`, and if it was run externally it's a `$page`.
 
-If the `each` is `%.n`, the thread failed and `p` contains a `goof`, which is:
+If the `+each` is `%.n`, the thread failed and `.p` contains a `$goof`, which is:
 
 ```hoon
 +$  goof  [mote=term =tang]
 ```
 
-The `mote` is an error code like `%foobar` and the `tang` contains something like a stack trace.
+The `.mote` is an error code like `%foobar` and the `.tang` contains something like a stack trace.
 
 #### Example
 
@@ -57,7 +57,7 @@ Thread location
 $@(desk beak)
 ```
 
-This is tells Khan where to look for a thread. It's either a `desk` or a full `beak`. Khan will look in the `/ted` directory of the specified location.
+This is tells Khan where to look for a thread. It's either a `$desk` or a full `$beak`. Khan will look in the `/ted` directory of the specified location.
 
 #### Example
 
@@ -79,7 +79,7 @@ External thread argument
 (pair mark page)
 ```
 
-This is only used if you're running a thread via Khan's external interface. The `mark` specifies the output mark, and a `page` is a pair of input `mark` and raw noun.
+This is only used if you're running a thread via Khan's external interface. The `$mark` specifies the output mark, and a `$page` is a pair of input `$mark` and raw noun.
 
 #### Example
 
@@ -100,9 +100,9 @@ Mold builder for a thread run request
 
 The fields are:
 
-- [`bear`](#bear): thread location.
-- `name`: thread name. Khan will look in `/ted` for this. If it's in a subdirectory like `/ted/foo/bar.hoon`, you'd say `%foo-bar`.
-- `args`: a `cage` if it's an internal request, and a [`cast`](#cast) if it's an external request.
+- [`.bear`](#bear): thread location.
+- `.name`: thread name. Khan will look in `/ted` for this. If it's in a subdirectory like `/ted/foo/bar.hoon`, you'd say `%foo-bar`.
+- `.args`: a `$cage` if it's an internal request, and a [`$cast`](#cast) if it's an external request.
 
 #### Examples
 

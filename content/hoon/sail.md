@@ -93,7 +93,7 @@ Filled tags are closed via line-break. To fill text inside, add `:` after the ta
 
 To nest tags, simply create a new line. Nested tags need to be closed with `==`, because they expect a list of sub-tags.
 
-If we nest lines of plain text with no tag, the text will be wrapped in a `<p>` tag. Additionally, any text with atom auras or `++arm:syntax` in such plain text lines will be wrapped in `<code>` tags.
+If we nest lines of plain text with no tag, the text will be wrapped in a `<p>` tag. Additionally, any text with atom auras or `+arm:syntax` in such plain text lines will be wrapped in `<code>` tags.
 
 Example:
 
@@ -318,7 +318,7 @@ Likewise:
 
 ## A note on CSS {#a-note-on-css}
 
-The CSS for a page is usually quite large. The typical approach is to include a separate arm in your agent (`++style` or the like) and write out the CSS in a fenced cord block. You can then call `++trip` on it and include it in a style tag. For example:
+The CSS for a page is usually quite large. The typical approach is to include a separate arm in your agent (`+style` or the like) and write out the CSS in a fenced cord block. You can then call `+trip` on it and include it in a style tag. For example:
 
 ```hoon
 ++  style
@@ -342,7 +342,7 @@ And then your style tag might look like:
 ;style: {style}
 ```
 
-A cord is used rather than a tape so you don't need to escape braces. The [ketsig](rune/ket.md#ketsig) (`^~`) rune means `++trip` will be run at compile time rather than call time.
+A cord is used rather than a tape so you don't need to escape braces. The [ketsig](rune/ket.md#ketsig) (`^~`) rune means `+trip` will be run at compile time rather than call time.
 
 ## Types and marks {#types-and-marks}
 
@@ -363,7 +363,7 @@ You don't need to understand these types in order to write Sail. The main thing 
 
 ### Rendering {#rendering}
 
-A `$manx` can be rendered as HTML in a tape with the `++en-xml:html` function in `zuse.hoon`. For example:
+A `$manx` can be rendered as HTML in a tape with the `+en-xml:html` function in `zuse.hoon`. For example:
 
 ```
 > ;p: foobar
@@ -380,7 +380,7 @@ A `$manx` can be rendered as HTML in a tape with the `++en-xml:html` function in
 
 ### Sanitization {#sanitization}
 
-The `++en-xml:html` function will sanitize the contents of both attributes and elements, converting characters such as `>` to HTML entities. For example:
+The `+en-xml:html` function will sanitize the contents of both attributes and elements, converting characters such as `>` to HTML entities. For example:
 
 ```
 > =z ;p(class "\"><script src=\"example.com/xxx.js"): <h1>FOO</h1>
@@ -397,7 +397,7 @@ There are a few different HTML and XML related marks, so it can be a bit confusi
 
 - Type: `@t`
 
-This mark is used for HTML that has been printed as text in a cord. You may wish to return this mark when serving pages to the web. To do so, you must run the `$manx` produced by your Sail expressions through `++en-xml:html`, and then run the resulting `tape` through `++crip`.
+This mark is used for HTML that has been printed as text in a cord. You may wish to return this mark when serving pages to the web. To do so, you must run the `$manx` produced by your Sail expressions through `+en-xml:html`, and then run the resulting `$tape` through `+crip`.
 
 #### `%hymn`
 
@@ -413,7 +413,7 @@ The type of the `%elem` mark is a `$manx`, just like a `%hymn`. While `%hymn`s a
 
 #### Summary
 
-In general, if you're going to be composing web pages and serving them to web clients, running the result of your Sail through `++en-xml:html`, `++crip`ping it and producing `%html` is the most straight-forward approach. If you might want to pass around a `$manx` to other agents or ships which may wish to manipulate it futher, a `%hymn` or `%elem` is better.
+In general, if you're going to be composing web pages and serving them to web clients, running the result of your Sail through `+en-xml:html`, `+crip`ping it and producing `%html` is the most straight-forward approach. If you might want to pass around a `$manx` to other agents or ships which may wish to manipulate it futher, a `%hymn` or `%elem` is better.
 
 ## Sail Runes {#sail-runes}
 
@@ -434,7 +434,7 @@ The [miclus rune](rune/mic.md#miclus) makes a `$marl` from a complex hoon expres
 ==
 ```
 
-Produces one of these depending on the value of `number`:
+Produces one of these depending on the value of `.number`:
 
 ```
 <p><b>2 </b>is an <b>even </b>number.</p>

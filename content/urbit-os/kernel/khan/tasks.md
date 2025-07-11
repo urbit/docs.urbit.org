@@ -15,11 +15,11 @@ layout:
 
 # Khan API Reference
 
-These are the `task`s Khan can be passed and the `gift`s it can give.
+These are the tasks Khan can be passed and the gifts it can give.
 
 ## Tasks {#tasks}
 
-Here are the `task`s you can pass Khan. You'd either use [`%fard`](#fard) to run a thread from a file or [`%lard`](#lard) to run an in-line thread.
+Here are the tasks you can pass Khan. You'd either use [`%fard`](#fard) to run a thread from a file or [`%lard`](#lard) to run an in-line thread.
 
 ### `%fard` {#fard}
 
@@ -29,7 +29,7 @@ Run a thread from within Arvo.
 [%fard p=(fyrd cage)]
 ```
 
-`p` contains the thread location, name, and start arguments. See the [`fyrd`](types.md#fyrd) data type reference entry for details.
+`.p` contains the thread location, name, and start arguments. See the [`+fyrd`](types.md#fyrd) data type reference entry for details.
 
 #### Returns
 
@@ -57,7 +57,7 @@ In-line thread.
 [%lard =bear =shed]
 ```
 
-The [`bear`](types.md#bear) is either a `desk` or `beak`. The `shed` is the thread itself. Since Spider doesn't need to read out the thread from Clay, the `bear` doesn't do much apart from be included in the thread name that Spider generates. Khan will have Spider run the given thread, and eventually give an [`%arow`](#arow) gift back with the result.
+The [`$bear`](types.md#bear) is either a `$desk` or `$beak`. The `$shed` is the thread itself. Since Spider doesn't need to read out the thread from Clay, the `$bear` doesn't do much apart from be included in the thread name that Spider generates. Khan will have Spider run the given thread, and eventually give an [`%arow`](#arow) gift back with the result.
 
 #### Returns
 
@@ -67,7 +67,7 @@ When the thread eventually finishes (or if it fails), Khan with give an [`%arow`
 
 ## Gifts {#gifts}
 
-These are the two `gift`s Khan can give. In userspace, you'd only receive an [`%arow`](#arow).
+These are the two gifts Khan can give. In userspace, you'd only receive an [`%arow`](#arow).
 
 ### `%arow` {#arow}
 
@@ -77,7 +77,7 @@ In-arvo result.
 [%arow p=(avow cage)]
 ```
 
-This gift contains the result of a finished thread if successful, or an error and stack trace if it failed. It's given for threads run from within Arvo. See the [`avow`](types.md#avow) entry in the types reference for more details.
+This gift contains the result of a finished thread if successful, or an error and stack trace if it failed. It's given for threads run from within Arvo. See the [`+avow`](types.md#avow) entry in the types reference for more details.
 
 ---
 
@@ -92,6 +92,6 @@ External result.
 This gift contains the result of running a thread externally. You would not receive this in userspace.
 
 
-A `page` is a pair of `mark` and `noun`. See the [`avow`](types.md#avow) entry in the types reference for more details of that mold builder.
+A `$page` is a pair of `$mark` and `$noun`. See the [`+avow`](types.md#avow) entry in the types reference for more details of that mold builder.
 
 ---

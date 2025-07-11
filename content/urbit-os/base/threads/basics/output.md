@@ -37,7 +37,7 @@ The resulting strand won't just produce `[#t/@ud q=4]`, but rather `[~ %done [#t
 
 **Note:** that Spider doesn't actually return the codes themselves to thread subscribers, they're only used internally to manage the flow of the thread.
 
-Since a strand is a function from the previously discussed `strand-input` to the output discussed here, you can compose a valid strand like:
+Since a strand is a function from the previously discussed `$strand-input` to the output discussed here, you can compose a valid strand like:
 
 ```hoon
 |=  strand-input:rand
@@ -118,4 +118,4 @@ Fail says to end the thread here and don't call any subsequent strands. It inclu
 
 ### done {#done}
 
-Done means the computation was completed successfully and includes the result. When Spider recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `bind` receives a `%done` it will extract the result and call the next gate with it.
+Done means the computation was completed successfully and includes the result. When Spider recieves a `%done` it will send the result it contains in a fact with a mark of `%thread-done` to subscribers and end the thread. When `+bind` receives a `%done` it will extract the result and call the next gate with it.

@@ -52,7 +52,7 @@ This thread takes a fully qualified URL in a `@t` as an argument. It will ask Ir
 
 In this example, our `request:http` specifies no additional headers and has no body so it has a `~` for each of those fields. Of course in practice if you have headers or data you want to send you would include those.
 
-Our thread will take the `%http-response` `gift` that comes back from Iris and debug print it to the terminal so you can have a look at the structure, and then it will cast the body of the HTTP message to a `@t` and print it.
+Our thread will take the `%http-response` gift that comes back from Iris and debug print it to the terminal so you can have a look at the structure, and then it will cast the body of the HTTP message to a `@t` and print it.
 
 Let's try it out:
 

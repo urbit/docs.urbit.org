@@ -21,9 +21,9 @@ The docket file is read by the `%docket` agent when a desk is `|install`ed. The 
 
 The docket file is _optional_ in the general case. If it is omitted, however, the app cannot have a tile in Landscape, nor can it be published with the `%treaty` agent, so others will not be able to browse for it in Landscape.
 
-The docket file must be named `desk.docket-0`. The `%docket` `mark` is versioned to facilitate changes down the line, so the `-0` suffix may be incremented in the future.
+The docket file must be named `desk.docket-0`. The `%docket` mark is versioned to facilitate changes down the line, so the `-0` suffix may be incremented in the future.
 
-The file must contain a `hoon` list with a series of clauses. The clauses are defined in `/sur/docket.hoon` as:
+The file must contain a Hoon list with a series of clauses. The clauses are defined in `/sur/docket.hoon` as:
 
 ```hoon
 +$  clause
@@ -167,7 +167,7 @@ glob-ames+[~zod 0v0]
 
 _exactly one of either this, [glob-ames](#glob-ames) or [glob-http](#glob-http) is required_
 
-It's possible for an app to handle HTTP requests from the client directly rather than with a separate [glob](glob.md). In that case, the `%site` field specifies the `path` of the Eyre endpoint the app will bind. If `%site` is used, clicking the app's tile will simply open a new tab with a GET request to the specified Eyre endpoint.
+It's possible for an app to handle HTTP requests from the client directly rather than with a separate [glob](glob.md). In that case, the `%site` field specifies the `$path` of the Eyre endpoint the app will bind. If `%site` is used, clicking the app's tile will simply open a new tab with a GET request to the specified Eyre endpoint.
 
 For more information on direct HTTP handling with a Gall agent or generator, see the [Eyre Internal API Reference](../../../urbit-os/kernel/eyre/tasks.md) documentation.
 
@@ -201,7 +201,7 @@ It may be tempting to set the image URL as a root-relative path like `/apps/myap
 [%image =url]
 ```
 
-The `url` type is a simple `cord`:
+The `url` type is a simple `$cord`:
 
 ```hoon
 +$  url  cord
@@ -219,7 +219,7 @@ image+'http://example.com/icon.svg'
 
 _required_
 
-The `%base` field specifies the base of the URL path of the glob resources. In the browser, the path will begin with `/apps`, then the specified base, then the rest of the path to the particular glob resource like `http://localhost:8080/apps/my-base/index.html`. Note the `path`s of the glob contents themselves should not include this base element.
+The `%base` field specifies the base of the URL path of the glob resources. In the browser, the path will begin with `/apps`, then the specified base, then the rest of the path to the particular glob resource like `http://localhost:8080/apps/my-base/index.html`. Note the `$path`s of the glob contents themselves should not include this base element.
 
 #### Type
 
@@ -274,7 +274,7 @@ The `%website` field is for a link to a relevant website. This might be a link t
 [%website website=url]
 ```
 
-The `url` type is a simple `cord`:
+The `url` type is a simple `$cord`:
 
 ```hoon
 +$  url  cord
@@ -292,7 +292,7 @@ website+'https://example.com'
 
 _required_
 
-The `%license` field specifies the license for the app in question. It would typically be a short name like `MIT`, `GPLv2`, or what have you. The field just takes a `cord` so any license can be specified.
+The `%license` field specifies the license for the app in question. It would typically be a short name like `MIT`, `GPLv2`, or what have you. The field just takes a `$cord` so any license can be specified.
 
 #### Type
 

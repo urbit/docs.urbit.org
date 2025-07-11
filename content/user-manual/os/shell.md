@@ -127,7 +127,7 @@ Generate a recursive directory listing. Takes a path.
 
 The hood is the system daemon. See `gen/hood` and `app/hood`.
 
-`|hi` - Sends a direct message. Sort of like Unix `write`. Accepts an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
+`|hi` - Sends a direct message. Sort of like Unix `write`. Accepts an urbit name (`@p`) and a string (`$tape`, which is text wrapped with double-quotes).
 
 ```
 ~your-urbit:dojo> |hi ~binzod "you there?"
@@ -196,7 +196,7 @@ Apps usually expect marked data, so `&` is often used here.
 
 #### `*` - Save in `%clay`
 
-Save a new `.hoon` file in `gen`:
+Save a new `.hoon` file in `/gen`:
 
 ```
 ~your-urbit:dojo> *%/gen/foo/hoon '# hello'

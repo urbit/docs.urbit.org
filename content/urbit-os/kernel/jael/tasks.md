@@ -64,7 +64,7 @@ This task is used instead of [%dawn](tasks.md#dawn) when creating a fake ship vi
 
 `%fake` endows the ship with a private key and a public key deterministically derived from the ship's `@p`. It sets `fak.own.pki` to `%.y`, which is the bit that determines whether or not a ship is fake. Other parts of the Jael state, such as the sponsorship chain and galaxy public keys are left at their bunted values.
 
-The `ship` field specifies the `@p` of the fake ship being created.
+The `$ship` field specifies the `@p` of the fake ship being created.
 
 You would not use this task manually.
 
@@ -82,9 +82,9 @@ Set Ethereum source.
 [%listen whos=(set ship) =source]
 ```
 
-Sets the source that the public keys for a set of `ship`s should be obtained from. This can either be a Gall app that communicates with an Ethereum node such as `%azimuth-tracker`, as in the case of galaxies, stars, and planets, or a ship, as in the case of moons.
+Sets the source that the public keys for a set of `$ship`s should be obtained from. This can either be a Gall app that communicates with an Ethereum node such as `%azimuth-tracker`, as in the case of galaxies, stars, and planets, or a ship, as in the case of moons.
 
-`whos` is the set of ships whose key data source is to be monitored. The [$source](data-types.md#source) is either a ship or the name of a Gall app to use as a source. A `%listen` task with empty `whos` will set the default source. When the `source` is a ship, Jael will obtain public keys for ships in `(set ship)` from the given ship. By default, the `source` for a moon will be the planet that spawned that moon.
+The `.whos` set is the set of ships whose key data source is to be monitored. The [`$source`](data-types.md#source) is either a ship or the name of a Gall app to use as a source. A `%listen` task with empty `whos` will set the default source. When the `$source` is a ship, Jael will obtain public keys for ships in `(set ship)` from the given ship. By default, the `$source` for a moon will be the planet that spawned that moon.
 
 You are unlikely to use this task manually.
 
@@ -112,7 +112,7 @@ Register moon keys or otherwise administer a moon.
 [%moon =ship =udiff:point]
 ```
 
-This is what is sent to Jael by `%hood` behind the scenes when you run `|moon`, `|moon-breach` or `|moon-cycle-keys`. The `ship` field is the moon's `@p`. The [$udiff:point](data-types.md#udiffpoint) will contain the bunt of an [$id:block](data-types.md#idblock) (since moons aren't registered in Azimuth) and one of the `udiff` actions depending on what you want to do.
+This is what is sent to Jael by `%hood` behind the scenes when you run `|moon`, `|moon-breach` or `|moon-cycle-keys`. The `$ship` field is the moon's `@p`. The [`$udiff:point`](data-types.md#udiffpoint) will contain the bunt of an [`$id:block`](data-types.md#idblock) (since moons aren't registered in Azimuth) and one of the `$udiff` actions depending on what you want to do.
 
 #### Returns
 
@@ -128,7 +128,7 @@ Cancel subscription to public or private key updates.
 [%nuke whos=(set ship)]
 ```
 
-If you've subscribed to public or private key updates from Jael with a [%private-keys](tasks.md#private-keys) or [%public-keys](tasks.md#public-keys) task, you can unsubscribe and stop receiving updates with a `%nuke` task. The `(set ship)` is the `set` of `ship`s which you want to stop tracking. Jael organises subscriptions based on `duct`s, and will determine which subscription to cancel implicitly based on the `duct` the `%nuke` task came from. This means a `%nuke` task only works from the same thread or agent and on the same `path` as the original subscription request.
+If you've subscribed to public or private key updates from Jael with a [`%private-keys`](tasks.md#private-keys) or [`%public-keys`](tasks.md#public-keys) task, you can unsubscribe and stop receiving updates with a `%nuke` task. The `(set ship)` is the `+set` of `$ship`s which you want to stop tracking. Jael organises subscriptions based on `$duct`s, and will determine which subscription to cancel implicitly based on the `$duct` the `%nuke` task came from. This means a `%nuke` task only works from the same thread or agent and on the same `$path` as the original subscription request.
 
 To cancel a subscription to the ship's private keys you must leave `whos` empty like `[%nuke ~]`.
 
@@ -172,13 +172,13 @@ Subscribe to public key (and related) updates from Jael.
 [%public-keys ships=(set ship)]
 ```
 
-An agent or thread can subscribe to be notified of public key updates, sponsorship changes and continuity breaches for the `set` of `ship`s specified in the `ships` field. The subscription will continue until Jael receives a [%nuke](tasks.md#nuke) task to cancel it.
+An agent or thread can subscribe to be notified of public key updates, sponsorship changes and continuity breaches for the `+set` of `$ship`s specified in the `.ships` field. The subscription will continue until Jael receives a [`%nuke`](tasks.md#nuke) task to cancel it.
 
 #### Returns
 
 Jael responds to a `%public-keys` task with [`%public-keys` gift](examples.md#public-keys-and-nuke).
 
-Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `public-keys-result` with the public key for each `life` up until the current one for each `ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](data-types.md#public-keys-result) each time a change occurs for any of the `ship`s to which you're subscribed.
+Upon subscription, Jael will immeditely respond with a `%public-keys` gift containing a `%full` `$public-keys-result` with the public key for each `$life` up until the current one for each `$ship` specified in the original task. After than, Jael will send a `%public-keys` gift with either a `%diff` or `%breach` [`$public-keys-result`](data-types.md#public-keys-result) each time a change occurs for any of the `$ship`s to which you're subscribed.
 
 #### Example
 
@@ -194,7 +194,7 @@ Update private keys.
 [%rekey =life =ring]
 ```
 
-This is what is sent to Jael by `%hood` when you run `|rekey`, as you must after setting new Azimuth keys or running `|cycle-moon-keys` on a moon's parent. It will update your `life` (key revision number) and private keys. The `life` field is the new `life` (typically an increment of the current `life`) and the `ring` is a private key `@`.
+This is what is sent to Jael by `%hood` when you run `|rekey`, as you must after setting new Azimuth keys or running `|cycle-moon-keys` on a moon's parent. It will update your `$life` (key revision number) and private keys. The `$life` field is the new `$life` (typically an increment of the current `$life`) and the `$ring` is a private key `@`.
 
 #### Returns
 
@@ -226,7 +226,7 @@ Pretend breach.
 [%ruin ships=(set ship)]
 ```
 
-This simulates a breach locally for the given `set` of `ship`s. Jael will blast out a `%breach` [`%public-keys` gift](examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
+This simulates a breach locally for the given `+set` of `$ship`s. Jael will blast out a `%breach` [`%public-keys` gift](examples.md#private-keys) to all subscribers. Ames will delete all message state for the ships in question in response to the `%breach` gift.
 
 {% hint style="warning" %}
 **WARNING**
@@ -250,7 +250,7 @@ View domains.
 [%turf ~]
 ```
 
-The domains returned by a `%turf` task are used as the base for individual galaxy domain names (e.g. from `urbit.org` you get `zod.urbit.org`, `bus.urbit.org`, etc). Jael gets these from Azimuth, then Ames gets them from Jael and passes them to the runtime, which will perform the DNS lookups and give Ames back the galaxy IP addresses. A `%turf` task takes no additional arguments. You're unlikely to use this manually - if you want the current `turf`s you'd likely want to do a [turf scry](scry.md#turf) instead.
+The domains returned by a `%turf` task are used as the base for individual galaxy domain names (e.g. from `urbit.org` you get `zod.urbit.org`, `bus.urbit.org`, etc). Jael gets these from Azimuth, then Ames gets them from Jael and passes them to the runtime, which will perform the DNS lookups and give Ames back the galaxy IP addresses. A `%turf` task takes no additional arguments. You're unlikely to use this manually - if you want the current `$turf`s you'd likely want to do a [turf scry](scry.md#turf) instead.
 
 #### Returns
 
@@ -271,7 +271,7 @@ Reset web login code.
 [%step ~]
 ```
 
-Jael maintains a `step` value that represents the web login code revision number, and uses it to derive the code itself. It begins at `0` and is incremented each time the code is changed. When Jael updates the web login code, it sends Eyre a `%code-changed` `task:eyre` so that Eyre can throw away all of its current cookies and sessions. A `%step` task takes no additional argument.
+Jael maintains a `$step` value that represents the web login code revision number, and uses it to derive the code itself. It begins at `0` and is incremented each time the code is changed. When Jael updates the web login code, it sends Eyre a `%code-changed` `$task:eyre` so that Eyre can throw away all of its current cookies and sessions. A `%step` task takes no additional argument.
 
 #### Returns
 
@@ -319,7 +319,7 @@ Private keys.
 
 This is given to those who have subscribed with a [`%private-keys` task](tasks.md#private-keys) whenever our keys change.
 
-The `life` is our current key revision number, and the `vein` contains a map from current and previous `life`s to private keys as `ring`s.
+The `$life` is our current key revision number, and the `$vein` contains a map from current and previous `$life`s to private keys as `$ring`s.
 
 ***
 

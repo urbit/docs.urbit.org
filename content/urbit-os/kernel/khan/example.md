@@ -114,6 +114,6 @@ baz
 [mote=%thread-fail tang=~['i-have-failed' 'foo' 'bar' 'baz']]
 ```
 
-Khan automatically prints the error message, and our app has also pretty-printed the `goof` it received.
+Khan automatically prints the error message, and our app has also pretty-printed the `$goof` it received.
 
 ---

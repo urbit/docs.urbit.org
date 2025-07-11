@@ -32,7 +32,7 @@ The default-agent library contains a basic agent with sane default behaviours fo
 
 The default-agent library lives in `/lib/default-agent/hoon` of the `%base` desk, and you would typically include a copy in any new desk you created. It's imported at the beginning of an agent with the [faslus](../../hoon/rune/fas.md#faslus) (`/+`) rune.
 
-The library is a wet gate which takes two arguments: `agent` and `help`. The first is your agent core itself, and the second is a `?`. If `help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `help` as `%.n`.
+The library is a wet gate which takes two arguments: `agent` and `$help`. The first is your agent core itself, and the second is a `?`. If `$help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `$help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `$help` as `%.n`.
 
 The wet gate returns an `+agent:gall` door with a sample of `$bowl:gall` - a typical agent core. Usually you would define an alias for it in a virtual arm ([explained below](3-imports-and-aliases.md#virtual-arms)) so it's simple to call.
 

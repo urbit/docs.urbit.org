@@ -62,7 +62,7 @@ This represents a node in Clay, which may be a file or a directory.
 
 Fundamental node, recursive
 
-This mold builder creates a representation of a node in Clay like an [`arch`](arvo.md#arch) or [`axil`](arvo.md#axil), but the directory map contains more `axal`s, so it contains the entire subtree rather than just one level.
+This mold builder creates a representation of a node in Clay like an [`$arch`](arvo.md#arch) or [`+axil`](arvo.md#axil), but the directory map contains more `+axal`s, so it contains the entire subtree rather than just one level.
 
 #### Source
 
@@ -105,7 +105,7 @@ This mold builder creates a representation of a node in Clay like an [`arch`](ar
 
 Fundamental node
 
-This is the mold builder used to create a representation of a node in Clay. It's used by [`arch`](arvo.md#arch).
+This is the mold builder used to create a representation of a node in Clay. It's used by [`$arch`](arvo.md#arch).
 
 #### Source
 
@@ -143,7 +143,7 @@ This is the mold builder used to create a representation of a node in Clay. It's
 
 Global context
 
-This is the unencoded global path prefix for a node in Clay. It's a triple of a [`ship`](arvo.md#ship), [`desk`](arvo.md#desk) and [`case`](arvo.md#case). The `case` is a revision reference.
+This is the unencoded global path prefix for a node in Clay. It's a triple of a [`$ship`](arvo.md#ship), [`$desk`](arvo.md#desk) and [`$case`](arvo.md#case). The `$case` is a revision reference.
 
 #### Source
 
@@ -173,7 +173,7 @@ This is the unencoded global path prefix for a node in Clay. It's a triple of a 
 
 Global name
 
-An unencoded global path to a node in Clay. The [`beak`](arvo.md#beak) denotes the [`ship`](arvo.md#ship), [`desk`](arvo.md#desk) and [`case`](arvo.md#case) (revision reference), and then `s` is the path to the node therein.
+An unencoded global path to a node in Clay. The [`$beak`](arvo.md#beak) denotes the [`$ship`](arvo.md#ship), [`$desk`](arvo.md#desk) and [`$case`](arvo.md#case) (revision reference), and then `.s` is the path to the node therein.
 
 #### Source
 
@@ -257,7 +257,7 @@ A reference to a particular revision in Clay. It may be one of:
 
 Marked vase
 
-A pair of a [`mark`](arvo.md#mark) and a `vase` (type-value pair). These are extensively used for passing data around between vanes and agents.
+A pair of a [`$mark`](arvo.md#mark) and a `$vase` (type-value pair). These are extensively used for passing data around between vanes and agents.
 
 #### Source
 
@@ -281,7 +281,7 @@ A pair of a [`mark`](arvo.md#mark) and a `vase` (type-value pair). These are ext
 
 Marked data builder
 
-Like a [`cage`](arvo.md#cage) except rather than a `vase`, the tail is whatever type was given to the mold builder. These are most frequently used for sending data over the network, as vases can only be used locally.
+Like a [`$cage`](arvo.md#cage) except rather than a `$vase`, the tail is whatever type was given to the mold builder. These are most frequently used for sending data over the network, as vases can only be used locally.
 
 #### Source
 
@@ -335,7 +335,7 @@ The name of a desk in Clay.
 
 Message target
 
-A pair of a [`ship`](arvo.md#ship) and Gall agent name. This is most frequently used when composing cards to other agents in a Gall agent.
+A pair of a [`$ship`](arvo.md#ship) and Gall agent name. This is most frequently used when composing cards to other agents in a Gall agent.
 
 #### Source
 
@@ -495,7 +495,7 @@ Another name for an `@p`.
 
 Subscription
 
-A triple of a [`bone`](arvo.md#bone), [`ship`](arvo.md#ship) and `path`.
+A triple of a [`$bone`](arvo.md#bone), [`$ship`](arvo.md#ship) and `$path`.
 
 #### Source
 
@@ -577,7 +577,7 @@ Vase, or [meta-vase](arvo.md#meta)
 
 Dynamic kernel action
 
-This contains the action or response in a kernel [`move`](arvo.md#move). One of:
+This contains the action or response in a kernel [`$move`](arvo.md#move). One of:
 
 * `[%hurl [%error-tag stack-trace] wite=pass-or-gift]`: action failed; error.
 * `[%pass wire=/vane-name/etc note=[vane=%vane-name task=[%.y p=vase]]]`: advance; request.
@@ -626,7 +626,7 @@ Causal history
 
 Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
-The Arvo causal stack is called a `duct`. This is represented simply as a list of [`wire`](arvo.md#wire)s (paths), where each path represents a step in the causal chain. The first element in the path is the vane handled that step in the computation, or an empty string for Unix.
+The Arvo causal stack is called a `$duct`. This is represented simply as a list of [`$wire`](arvo.md#wire)s (paths), where each path represents a step in the causal chain. The first element in the path is the vane handled that step in the computation, or an empty string for Unix.
 
 #### Source
 
@@ -712,7 +712,7 @@ Memory usage
 
 Cause and action
 
-Arvo makes calls and produces results by processing `move`s. The [`duct`](arvo.md#duct) is a call stack, and the [`ball`](arvo.md#ball) contains the action or response.
+Arvo makes calls and produces results by processing `$move`s. The [`$duct`](arvo.md#duct) is a call stack, and the [`$ball`](arvo.md#ball) contains the action or response.
 
 #### Source
 
@@ -838,7 +838,7 @@ Namespace perspective
 
 Kernel action builder
 
-This is similar to [`wite`](arvo.md#wite) but without the error case. It's most commonly used in the type of a `card:agent:gall`.
+This is similar to [`+wite`](arvo.md#wite) but without the error case. It's most commonly used in the type of a `card:agent:gall`.
 
 #### Source
 
@@ -872,9 +872,9 @@ This is similar to [`wite`](arvo.md#wite) but without the error case. It's most 
 
 Event pretext
 
-Type-wise, a `wire` is the same as a [`path`](stdlib/2q.md#path); a `list` of [`knot`](stdlib/2q.md#knot)s with the syntax of `/foo/bar/baz`. While a `path` is typically used in requests to denote a scry or subscription endpoint, a `wire` is used for responses.
+Type-wise, a `$wire` is the same as a [`$path`](stdlib/2q.md#path); a `+list` of [`$knot`](stdlib/2q.md#knot)s with the syntax of `/foo/bar/baz`. While a `$path` is typically used in requests to denote a scry or subscription endpoint, a `$wire` is used for responses.
 
-On the kernel-level, `wire`s are used in [`duct`](arvo.md#duct)s to represent a causal step in a call stack for routing purposes. In userspace, they're used the same way under the hood, but practically speaking, they can be thought of as "tags" for responses. That is, when you make a request to a vane of Gall agent, you provide a `wire` for any responses you get back, and you can use this to identity what the response is for.
+On the kernel-level, `$wire`s are used in [`$duct`](arvo.md#duct)s to represent a causal step in a call stack for routing purposes. In userspace, they're used the same way under the hood, but practically speaking, they can be thought of as "tags" for responses. That is, when you make a request to a vane of Gall agent, you provide a `$wire` for any responses you get back, and you can use this to identity what the response is for.
 
 #### Source
 
@@ -898,7 +898,7 @@ On the kernel-level, `wire`s are used in [`duct`](arvo.md#duct)s to represent a 
 
 Kernel action/error builder
 
-This is used by the kernel in [`move`](arvo.md#move)s. See the [`ball`](arvo.md#ball) entry for further details.
+This is used by the kernel in [`$move`](arvo.md#move)s. See the [`$ball`](arvo.md#ball) entry for further details.
 
 #### Source
 
@@ -934,15 +934,15 @@ This is used by the kernel in [`move`](arvo.md#move)s. See the [`ball`](arvo.md#
 
 ## `+en-beam` <a href="#en-beam" id="en-beam"></a>
 
-Encode a [`beam`](arvo.md#beam) in a `path`
+Encode a [`$beam`](arvo.md#beam) in a `$path`
 
 #### Accepts
 
-A [`beam`](arvo.md#beam)
+A [`$beam`](arvo.md#beam)
 
 #### Produces
 
-A `path`
+A `$path`
 
 #### Source
 
@@ -962,15 +962,15 @@ A `path`
 
 ## `+de-beam` <a href="#de-beam" id="de-beam"></a>
 
-Decode a [`beam`](arvo.md#beam) from a `path`
+Decode a [`$beam`](arvo.md#beam) from a `$path`
 
 #### Accepts
 
-A `path`
+A `$path`
 
 #### Produces
 
-A `beam` in a `unit`, which is null if parsing failed.
+A `$beam` in a `+unit`, which is null if parsing failed.
 
 #### Source
 
@@ -997,15 +997,15 @@ A `beam` in a `unit`, which is null if parsing failed.
 
 ## `+de-case` <a href="#de-case" id="de-case"></a>
 
-Parse a [`case`](arvo.md#case)
+Parse a [`$case`](arvo.md#case)
 
 #### Accepts
 
-A `knot`
+A `$knot`
 
 #### Produces
 
-A [`case`](arvo.md#case) in a `unit`, which is null if parsing failed.
+A [`$case`](arvo.md#case) in a `+unit`, which is null if parsing failed.
 
 #### Source
 

@@ -58,7 +58,7 @@ The state held by `%azimuth` is the following.
   ==
 ```
 
-`whos` is the set of ships currently known by Azimuth. `nas` is the PKI state, as defined in [`naive.hoon`](flow.md#naive). `own` is a `jug` of Ethereum addresses and the set of ships owned by that address. `logs` is a list of all Azimuth-related Ethereum event logs known by the ship.
+`whos` is the set of ships currently known by Azimuth. `nas` is the PKI state, as defined in [`naive.hoon`](flow.md#naive). `own` is a `+jug` of Ethereum addresses and the set of ships owned by that address. `logs` is a list of all Azimuth-related Ethereum event logs known by the ship.
 
 Scries can be inferred from the `+on-peek` arm:
 

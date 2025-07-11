@@ -117,10 +117,10 @@ In our agent we've added this card:
 
 To poke a particular thread you poke `%spider` with a mark of `%spider-input` and a vase of `[tid cage]` where:
 
-- `tid` is the thread you want to poke
-- `cage` has whatever mark and vase of data you want to give the thread
+- `$tid` is the thread you want to poke
+- `$cage` has whatever mark and vase of data you want to give the thread
 
-In our case we've given it a mark of `%foo` and a vase of whatever `term` we poked our agent with.
+In our case we've given it a mark of `%foo` and a vase of whatever `$term` we poked our agent with.
 
 In our thread we've added:
 

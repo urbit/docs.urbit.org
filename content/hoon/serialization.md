@@ -21,14 +21,14 @@ Noun serialization refers to a uniquely-defined technique for converting a noun 
 
 The main tools from `/sys/hoon` for noun serialization are:
 
-- [`++cue`](stdlib/2p.md#cue), unpack a jammed noun
-- [`++jam`](stdlib/2p.md#jam), pack a jammed noun
-- [`++mat`](stdlib/2p.md#mat), length-encode a noun
-- [`++rub`](stdlib/2p.md#rub), length-decode a noun
+- [`+cue`](stdlib/2p.md#cue), unpack a jammed noun
+- [`+jam`](stdlib/2p.md#jam), pack a jammed noun
+- [`+mat`](stdlib/2p.md#mat), length-encode a noun
+- [`+rub`](stdlib/2p.md#rub), length-decode a noun
 
-`++jam` and `++cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](../urbit-os/kernel/eyre/noun-channels.md).
+`+jam` and `+cue` are critically important for noun communication operations, including the `%lick` vane, the `%khan` vane, and [noun channels in `%eyre`](../urbit-os/kernel/eyre/noun-channels.md).
 
-### `++cue` {#cue}
+### `+cue` {#cue}
 
 It is more straightforward to see how to decode a noun than to encode it, so let's start there.
 
@@ -54,17 +54,17 @@ It is more straightforward to see how to decode a noun than to encode it, so let
   [(add 2 p.d) (need (~(get by m) q.d)) m]
 ```
 
-The above gate accepts an atom `b`, which is a “blob” or as-yet-undefined value.  Pin a cursor to run from low to high (LSB) at 0.  The empty map `m` will map from cursor to noun.  (All cursor-to-noun mappings will be saved here.)
+The above gate accepts an atom `.b`, which is a “blob” or as-yet-undefined value.  Pin a cursor to run from low to high (LSB) at 0.  The empty map `.m` will map from cursor to noun.  (All cursor-to-noun mappings will be saved here.)
 
-The trap produces a 3-tuple where `p` is the following cursor position; `q` is the noun; and `r` is the cache.  The product itself will be `q`.
+The trap produces a 3-tuple where `.p` is the following cursor position; `.q` is the noun; and `.r` is the cache.  The product itself will be `.q`.
 
-A data cursor is pinned at `c`, while the third bit is pinned at `a`.  If the first bit at `a` is `0b0`, then the noun is a direct atom.  Pin the expansion of the second bit at `a` as `c`; `p` is now the cursor after `c`, `q` is the atom from `e`, and `r` is an updated cache.  (See `++rub` discussion below for the atom expansion details.)
+A data cursor is pinned at `.c`, while the third bit is pinned at `.a`.  If the first bit at `.a` is `0b0`, then the noun is a direct atom.  Pin the expansion of the second bit at `.a` as `.c`; `.p` is now the cursor after `.c`, `.q` is the atom from `.e`, and `.r` is an updated cache.  (See `+rub` discussion below for the atom expansion details.)
 
-Otherwise, we have a cell, so we have to expand the second bit at `a`.  If it is `0b0`, then the cell needs to be decoded by decoding the noun at .  If it is `0b1`, then we have a saved reference and retrieve it from the cache (last branch).
+Otherwise, we have a cell, so we have to expand the second bit at `.a`.  If it is `0b0`, then the cell needs to be decoded by decoding the noun at .  If it is `0b1`, then we have a saved reference and retrieve it from the cache (last branch).
 
-If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that case, expand at `c` (the head), as `$(b c)` and pin the cursor after as `v`.  `w` is the cell of `q.u` and `q.v`.  `p` is the lengths of `u` and `v` plus 2.  `q` is `w`, with `r` is the cache with `w` inserted.
+If the second bit at `.a` is `0b1`, then the noun is a saved reference.  In that case, expand at `.c` (the head), as `$(b c)` and pin the cursor after as `.v`.  `+w` is the cell of `q.u` and `q.v`.  `.p` is the lengths of `.u` and `.v` plus 2.  `.q` is `+w`, with `.r` is the cache with `+w` inserted.
 
-### `++rub` {#rub}
+### `+rub` {#rub}
 
 ```hoon
 ++  rub                                                 ::  length-decode
@@ -84,17 +84,17 @@ If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that 
   [(add (add c c) e) (cut 0 [(add d (dec c)) e] b)]
 ```
 
-`++rub` extracts a self-measuring atom from an atomic blob, which accepts a cell of bit position cursor `a` and atomic blob `b`.  `++rub` produces a number of bits to advance the cursor `p` and the encoded atom `q`.
+`+rub` extracts a self-measuring atom from an atomic blob, which accepts a cell of bit position cursor `.a` and atomic blob `.b`.  `+rub` produces a number of bits to advance the cursor `.p` and the encoded atom `.q`.
 
-`c` is a unary sequance of `0b1` bits followed by a `0b0` bit.  If `c` is `0b0`, then the cursor advancement `p` is `0b1` and the encoded atom `q` is `0b0`.  Otherwise, `c` is the number of bits needed to express the number of bits in `q`.
+`.c` is a unary sequance of `0b1` bits followed by a `0b0` bit.  If `.c` is `0b0`, then the cursor advancement `.p` is `0b1` and the encoded atom `.q` is `0b0`.  Otherwise, `.c` is the number of bits needed to express the number of bits in `.q`.
 
-The cursor `a` is advanced to include `c` and the terminator bit.
+The cursor `.a` is advanced to include `.c` and the terminator bit.
 
-We pin `e`, the number of bits in `q`. This is encoded as a `c-1`-length sequence of bits following `a`, which is added to $2^{c-1}$. `p` (the number of bits consumed) is `c+c+e`.  The packaged atom `q` is the `e`-length bitfield at `a+c+c`.
+We pin `.e`, the number of bits in `.q`. This is encoded as a `c-1`-length sequence of bits following `.a`, which is added to $2^{c-1}$. `.p` (the number of bits consumed) is `c+c+e`.  The packaged atom `.q` is the `.e`-length bitfield at `a+c+c`.
 
-### `++jam` {#jam}
+### `+jam` {#jam}
 
-The basic idea of `++jam` is to produce a serial noun (in order of head/tail).  This requires a recursive examination of the encoded noun:
+The basic idea of `+jam` is to produce a serial noun (in order of head/tail).  This requires a recursive examination of the encoded noun:
 
 1. One bit marks cell or atom.
 2. Next entry marks bit length of value for atom, `0` if cell, or `1` if reference.
@@ -144,7 +144,7 @@ To cue a jamfile:
 
 This cues as a noun, so it should be `;;` or clammed to a particular mold.
 
-## `eval` and newt encoding {#eval-and-newt-encoding}
+## `+eval` and newt encoding {#eval-and-newt-encoding}
 
 Newt encoding is a variation of this:  it is a jammed noun with a short header.  Newt encoding is used by `urbit eval`.
 
@@ -158,12 +158,12 @@ V.BBBB.JJJJ.JJJJ...
 - `B` jam size in bytes (little endian)
 - `J` jammed noun (little endian)
 
-`eval` supports several options for processing Hoon nouns as input to or output from `conn.c`:
+`+eval` supports several options for processing Hoon nouns as input to or output from `conn.c`:
 
 - `-j`, `--jam`: output result as a jammed noun.
 - `-c`, `--cue`: read input as a jammed noun.
 - `-n`, `--newt`: write output / read input as a newt-encoded jammed noun, when paired with `-j` or `-c` respectively.
-- `-k`: treat the input as the jammed noun input of a `%fyrd` request to `conn.c`; if the result is a `goof`, pretty-print it to `stderr` instead of returning it.
+- `-k`: treat the input as the jammed noun input of a `%fyrd` request to `conn.c`; if the result is a `$goof`, pretty-print it to `stderr` instead of returning it.
 
 In the Vere runtime, these are used by `vere/newt.c`; see particularly:
 

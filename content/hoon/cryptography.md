@@ -15,7 +15,7 @@ layout:
 
 # Cryptography
 
-This is a summary of the cryptography functions found in `sys/zuse.hoon`, Arvo's standard library. This page currently only documents cryptographic functions directly utilized by [Ames](../urbit-os/kernel/ames/README.md). `zuse` also contains cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core, but they are currently undocumented.
+This is a summary of the cryptography functions found in `/sys/zuse.hoon`, Arvo's standard library. This page currently only documents cryptographic functions directly utilized by [Ames](../urbit-os/kernel/ames/README.md). `zuse` also contains cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core, but they are currently undocumented.
 
 Documentation for [Insecure Hashing](stdlib/2e.md) and the [SHA Hash Family](stdlib/3d.md) is found in the Hoon standard library reference.
 
@@ -73,7 +73,7 @@ Crashes if `sek` is null.
         ...
 ```
 
-`+cue`s `txt` to get a signature `sig=@` and message `msg=@`. Verifies that `sig` was `msg` signed using the secret key associated to the public key stored at `sgn.pub`. Returns `(unit msg)` if so, null otherwise.
+`+cue`s `txt` to get a signature `sig=@` and message `msg=@`. Verifies that `+sig` was `msg` signed using the secret key associated to the public key stored at `sgn.pub`. Returns `(unit msg)` if so, null otherwise.
 
 ### `+tear:as` {#tearas}
 
@@ -95,7 +95,7 @@ Crashes if `sek` is null.
       ...
 ```
 
-`+cue`s `txt` then decrypts with the symmetric key `key` using `+de:sivc:aes`. Returns null in case of failure.
+`+cue`s `.txt` then decrypts with the symmetric `.key` using `+de:sivc:aes`. Returns null in case of failure.
 
 ### `+dy` {#dy}
 
@@ -114,7 +114,7 @@ Same as `+dy`, but crashes in case of failure.
       |=  [key=@J msg=@]
 ```
 
-Encrypts `msg` with the symmetric key `key` using `en:sivc:aes`, then `+jam`s it.
+Encrypts `.msg` with the symmetric `.key` using `+en:sivc:aes`, then `+jam`s it.
 
 ### `+fig:ex` {#figex}
 
@@ -140,7 +140,7 @@ Returns the concatenation of `sgn.u.sek` and `cry.u.sek`.
         ...
 ```
 
-Creates a `+crub` core with encryption and authentication public/private keypairs generated from a bitwidth `w` and `seed`. The private keys are generated with SHA-512, while `+puck:ed:crypto` is used to derive the public keys from the private keys.
+Creates a `+crub` core with encryption and authentication public/private keypairs generated from a bitwidth `.w` and `.seed`. The private keys are generated with SHA-512, while `+puck:ed:crypto` is used to derive the public keys from the private keys.
 
 This is how one typically generates a brand new `+crub` core for signing and encrypting your own messages.
 
@@ -152,7 +152,7 @@ This is how one typically generates a brand new `+crub` core for signing and enc
         ...
 ```
 
-Takes in a `ring` from a `+sec:ex:crub` and generates a new `+crub` core with `sek` taken from `+sec:ex` and `pub` generated with `+puck:ed:crypto`. Crashes if `+sec:ex` is not a `+crub` secret key.
+Takes in a `$ring` from a `+sec:ex:crub` and generates a new `+crub` core with `sek` taken from `+sec:ex` and `pub` generated with `+puck:ed:crypto`. Crashes if `+sec:ex` is not a `+crub` secret key.
 
 ### `+com:nu` {#comnu}
 
@@ -162,7 +162,7 @@ Takes in a `ring` from a `+sec:ex:crub` and generates a new `+crub` core with `s
         ...
 ```
 
-Takes in a `pass` from a `+pub:ex:crub` and generates a new `+crub` core with `pub` taken from `+pub:ex` and null `sek`.
+Takes in a `+pass` from a `+pub:ex:crub` and generates a new `+crub` core with `+pub` taken from `+pub:ex` and null `sek`.
 
 ## `+ed:crypto` {#ed}
 

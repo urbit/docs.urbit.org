@@ -28,7 +28,7 @@ Threads can be run from a file in the `/ted` directory, or an "inline thread" ca
 
 ## Thread file location {#thread-file-location}
 
-Thread files live in the `ted` directory of each desk. For example, in a desk named `%sandbox`:
+Thread files live in the `/ted` directory of each desk. For example, in a desk named `%sandbox`:
 
 ```
 %sandbox
@@ -54,7 +54,7 @@ There are two libraries that may be relevant:
 
 ## Thread definition {#thread-definition}
 
-A thread is defined as a `$-(vase shed:khan)`. That is, a gate that takes a `$vase` and produces a `$shed:khan`. A `$shed:khan` is the `form` of a strand that produces a `$vase`. This is a little confusing and we'll look at each part in detail later. For now, note that the thread doesn't just produce a result, it actually produces a strand that takes input and produces output from which a result can be extracted. It works something like this:
+A thread is defined as a `$-(vase shed:khan)`. That is, a gate that takes a `$vase` and produces a `$shed:khan`. A `$shed:khan` is the `+form` of a strand that produces a `$vase`. This is a little confusing and we'll look at each part in detail later. For now, note that the thread doesn't just produce a result, it actually produces a strand that takes input and produces output from which a result can be extracted. It works something like this:
 
 ![thread diagram](https://media.urbit.org/site/thread-diagram.png "diagram of a thread")
 
@@ -106,7 +106,7 @@ A strand is a core that has three important arms:
 
 We'll discuss each of these arms later.
 
-A strand must be specialised to produce a particular type like `(strand:rand ,<type>)`. As previously mentioned, a `thread` produces a `vase` so is specialised like `(strand:rand ,vase)`. Within your thread you'll likely compose multiple strands which produce different types like `(strand:rand ,@ud)`, `(strand:rand ,[path cage])`, etc, but the thread itself will always come back to a `(strand:rand ,vase)`.
+A strand must be specialised to produce a particular type like `(strand:rand ,<type>)`. As previously mentioned, a `thread` produces a `$vase` so is specialised like `(strand:rand ,vase)`. Within your thread you'll likely compose multiple strands which produce different types like `(strand:rand ,@ud)`, `(strand:rand ,[path cage])`, etc, but the thread itself will always come back to a `(strand:rand ,vase)`.
 
 Strands are conventionally given the face `m` like:
 
@@ -175,13 +175,13 @@ Inside the gate we create our `+strand` specialised to produce a `$vase` and giv
 ^-  form:m
 ```
 
-We cast the output to `form` - the mold of the strand we created.
+We cast the output to `+form` - the mold of the strand we created.
 
 ```hoon
 (pure:m arg)
 ```
 
-Finally we call `pure` with the gate input `arg` as its argument. Since `arg` is a `vase` it will return the `+form` of a `+strand` which produces a `$vase`. Thus we've created a thread in accordance with its type definition.
+Finally we call `+pure` with the gate input `arg` as its argument. Since `arg` is a `$vase` it will return the `+form` of a `+strand` which produces a `$vase`. Thus we've created a thread in accordance with its type definition.
 
 ## Inline Threads {#inline-threads}
 
@@ -205,7 +205,7 @@ The `$shed` can then be passed to Kahn in card:
 [%pass /thread %arvo %k %lard %mydesk shed]~
 ```
 
-The result will come back into the `++on-arvo` arm of the Gall agent in an [`%arow`](../../../kernel/khan/tasks.md#arow) gift. 
+The result will come back into the `+on-arvo` arm of the Gall agent in an [`%arow`](../../../kernel/khan/tasks.md#arow) gift. 
 
 Next we'll look at the third arm of a strand: `+bind`.
 

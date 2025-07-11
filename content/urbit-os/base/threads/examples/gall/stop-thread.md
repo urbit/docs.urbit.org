@@ -15,7 +15,7 @@ layout:
 
 # Stop Thread
 
-Here's an example agent with an extra card in `on-poke` to stop the thread and a little extra in `on-agent` to print things for demonstrative purposes. We run the thread by poking Spider directly because we need to know the thread ID in order to stop it. In this example we use a thread file, but an inline thread could also be used.
+Here's an example agent with an extra card in `+on-poke` to stop the thread and a little extra in `+on-agent` to print things for demonstrative purposes. We run the thread by poking Spider directly because we need to know the thread ID in order to stop it. In this example we use a thread file, but an inline thread could also be used.
 
 <details>
 <summary>/app/thread-starter.hoon code</summary>
@@ -162,4 +162,4 @@ The card we've added to our agent:
 [%pass /thread-stop/[ta-now] %agent [our.bowl %spider] %poke %spider-stop !>([tid %.y])]
 ```
 
-...pokes spider with mark `%spider-stop` and a vase containing the tid of the thread we want to stop and a `?`. The `?` specifies whether to end it nicely or not. If `%.y` it will end with `%thread-done` and a `*vase` bunted vase. If `%.n` it will end with `%thread-fail` and a vase containing `[term tang]` where `term` is `%cancelled` and `tang` is `~`. You can see the difference in our tests above.
+...pokes spider with mark `%spider-stop` and a vase containing the tid of the thread we want to stop and a `?`. The `?` specifies whether to end it nicely or not. If `%.y` it will end with `%thread-done` and a `*vase` bunted vase. If `%.n` it will end with `%thread-fail` and a vase containing `[term tang]` where `$term` is `%cancelled` and `$tang` is `~`. You can see the difference in our tests above.

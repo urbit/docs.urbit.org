@@ -21,7 +21,7 @@ A prime number is a number that is only divisible by 1 and itself, for example, 
 
 Palindromic numbers are not emirps. `101` is a prime and its reverse is itself -- it is not an emirp.
 
-Your task for this challenge is write a generator that will add up all the first `n` emirps. To be precise, you should write a generator `emirp` which takes a `@ud` number `n` as an input, and returns a `@ud` number which is the sum of the first `n` emirps.
+Your task for this challenge is write a generator that will add up all the first *n* emirps. To be precise, you should write a generator `emirp` which takes a `@ud` number *n* as an input, and returns a `@ud` number which is the sum of the first *n* emirps.
 
 Example usage:
 ```

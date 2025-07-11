@@ -108,4 +108,4 @@ Finally, we check if the `$unit` is null and either print an error or print the 
 (pure:m !>(~))
 ```
 
-For more information about working with `json`, see the [JSON Guide](../../../../hoon/json-guide.md).
+For more information about working with `$json`, see the [JSON Guide](../../../../hoon/json-guide.md).

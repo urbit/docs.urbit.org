@@ -77,7 +77,7 @@ Variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.p`:
 
 ```hoon
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
@@ -173,7 +173,7 @@ None
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.q`:
 
 ```hoon
 ?:  ?=(p.a p)  q.a
@@ -196,7 +196,7 @@ $(q t.q)
 
 #### Discussion
 
-The `?-` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. There is no default branch.
+The `?-` rune is for a conditional expression in which the type of `.p` determines which branch is taken. Usually the type of `.p` is a union of other types. There is no default branch.
 
 The compiler makes sure that your code neither misses a case of the union, nor includes a double case that isn't there. This is not special handling for `?-`, just a consequence of the semantics of `?:`, which `?-` reduces to.
 
@@ -267,11 +267,11 @@ None
 
 #### Produces
 
-If `p` produces true (`%.y`), then `q`. If `p` produces false (`%.n`), then `r`. If `p` is not a boolean, compiler yells at you.
+If `.p` produces true (`%.y`), then `.q`. If `.p` produces false (`%.n`), then `.r`. If `.p` is not a boolean, compiler yells at you.
 
 #### Discussion
 
-If test analysis reveals that either branch is never taken, or if `p` is not a boolean, compilation fails. An untaken branch is indicated with `mint-lost`.
+If test analysis reveals that either branch is never taken, or if `.p` is not a boolean, compilation fails. An untaken branch is indicated with `mint-lost`.
 
 Note also that all other branching expressions reduce to `?:`.
 
@@ -420,7 +420,7 @@ None
 
 #### Discussion
 
-The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?^` branches, `q` or `r`, is never taken.
+The type of the wing, `.p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?^` branches, `.q` or `.r`, is never taken.
 
 #### Examples
 
@@ -487,7 +487,7 @@ None
 
 #### Discussion
 
-`?<` is used to force a crash when some condition `p` doesn't yield false (`%.n`). It can be used for type inference with the `?=` rune, much like the `?>` rune.
+`?<` is used to force a crash when some condition `.p` doesn't yield false (`%.n`). It can be used for type inference with the `?=` rune, much like the `?>` rune.
 
 #### Examples
 
@@ -558,7 +558,7 @@ None
 
 #### Discussion
 
-`?>` is used to force a crash when some condition `p` doesn't yield true (`%.y`). It can be used for type inference, with the `?=` rune, to specify the type of a value.
+`?>` is used to force a crash when some condition `.p` doesn't yield true (`%.y`). It can be used for type inference, with the `?=` rune, to specify the type of a value.
 
 #### Examples
 
@@ -643,7 +643,7 @@ None
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `r`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.r`:
 
 ```hoon
 ?:  ?=(p.a p)  q.a
@@ -666,7 +666,7 @@ $(r t.r)
 
 #### Discussion
 
-The `?+` rune is for a conditional expression in which the type of `p` determines which branch is taken. Usually the type of `p` is a union of other types. If `p`'s type doesn't match the case for any given branch, the default expression, `q`, is evaluated.
+The `?+` rune is for a conditional expression in which the type of `.p` determines which branch is taken. Usually the type of `.p` is a union of other types. If `.p`'s type doesn't match the case for any given branch, the default expression, `.q`, is evaluated.
 
 If there is a case that is never taken you'll get a `mint-vain` error.
 
@@ -738,7 +738,7 @@ Variable arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.p`:
 
 ```hoon
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
@@ -821,11 +821,11 @@ None
 
 #### Produces
 
-If `p` is an atom, `q`. If `p` is a cell, `r`.
+If `.p` is an atom, `.q`. If `.p` is a cell, `.r`.
 
 #### Discussion
 
-The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?@` branches, `q` or `r`, is never taken.
+The type of the wing, `.p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time. `mint-vain` means that one of the `?@` branches, `.q` or `.r`, is never taken.
 
 #### Examples
 
@@ -893,7 +893,7 @@ None
 
 #### Produces
 
-If `p` is null (`~`), `q`. If `p` is non-null, `r`.
+If `.p` is null (`~`), `.q`. If `.p` is non-null, `.r`.
 
 #### Discussion
 
@@ -952,7 +952,7 @@ q
 
 #### Produces
 
-`%.y` (true) if the noun at `q` is in the type of `p`; `%.n` (false) otherwise.
+`%.y` (true) if the noun at `.q` is in the type of `.p`; `%.n` (false) otherwise.
 
 #### Discussion
 
@@ -962,7 +962,7 @@ Patterns should be as weak as possible. Unpack one layer of union at a time. Don
 
 For example, when matching from a tagged union for the type `[%foo p=@ q=[@ @]]`, the appropriate pattern is `[%foo *]`. You have one question, which is whether the head of the noun is `%foo`.
 
-A common error is `find.$`, meaning `p` is not a type.
+A common error is `find.$`, meaning `.p` is not a type.
 
 #### Examples
 
@@ -1000,7 +1000,7 @@ One argument, fixed.
 
 #### Produces
 
-The logical NOT of `p`, which must evaluate to either `%.y` or `%.n`.
+The logical NOT of `.p`, which must evaluate to either `%.y` or `%.n`.
 
 #### Examples
 

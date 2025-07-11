@@ -71,7 +71,7 @@ p^q
 
 #### Produces
 
-The cell of `p` and `q`.
+The cell of `.p` and `.q`.
 
 #### Discussion
 
@@ -323,7 +323,7 @@ Variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.p`:
 
 ```hoon
 :-(a :-(b :-(c :-(... z)))))
@@ -413,7 +413,7 @@ Variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: *a*, *b*, *c*, ... as elements of `.p`:
 
 ```hoon
 :-(a :-(b :-(c :-(... :-(z ~)))))
@@ -431,7 +431,7 @@ $(p t.p)
 
 #### Discussion
 
-Note that this does not produce a `list` type, it just produces a null-terminated n-tuple. To make it a proper `list` it must be cast or molded.
+Note that this does not produce a `+list` type, it just produces a null-terminated n-tuple. To make it a proper `+list` it must be cast or molded.
 
 #### Examples
 

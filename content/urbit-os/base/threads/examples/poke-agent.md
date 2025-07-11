@@ -42,4 +42,4 @@ Save it in `/ted` of the `%base` desk, `|commit %base`, and run it like:
 
 ### Analysis {#analysis}
 
-Pretty simple, just use `+poke` with an argument of `[ship term] cage` where `term` is the agent and `cage` is whatever the particular agent expects.
+Pretty simple, just use `+poke` with an argument of `[ship term] cage` where `$term` is the agent and `$cage` is whatever the particular agent expects.

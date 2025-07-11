@@ -58,7 +58,7 @@ data: {"ok":"ok","id":1,"response":"poke"}
 
 If you're working with Javascript in the browser context you'll handle these with an EventSource object or by using fetch and ReadableStream. If you're using another language, there'll likely be a library available to handle SSEs.
 
-All the events that Eyre sends you on a channel must be [ack](#ack)ed so that Eyre can forget about them and clear them from the channel state. If `fact`s (as [diff](#diff)s) from Gall agents to which you've subscribed are left un`ack`ed long enough, Eyre will consider the particular subscription clogged and automatically unsubscribe you. Note that `ack`ing one event will implicitly `ack` all previous events.
+All the events that Eyre sends you on a channel must be [ack](#ack)ed so that Eyre can forget about them and clear them from the channel state. If facts (as [diff](#diff)s) from Gall agents to which you've subscribed are left unacked long enough, Eyre will consider the particular subscription clogged and automatically unsubscribe you. Note that acking one event will implicitly ack all previous events.
 
 When you're finished with a channel, you can send Eyre a [delete action](#delete-channel) to close it.
 
@@ -110,7 +110,7 @@ Eyre will send a [poke ack](#poke-ack) as an SSE event on the channel event stre
 
 ### Subscribe {#subscribe}
 
-This is for subscribing to a watch `path` of a Gall agent.
+This is for subscribing to a watch `$path` of a Gall agent.
 
 | Key      | JSON Type | Example Value   | Description                                         |
 | -------- | --------- | --------------- | --------------------------------------------------- |
@@ -134,11 +134,11 @@ This is for subscribing to a watch `path` of a Gall agent.
 
 #### Response
 
-Eyre will send back a [watch ack](#watch-ack). If subscribing was successful, you will also begin receiving any [diff](#diff)s sent by the Gall agent on the specified `path`.
+Eyre will send back a [`%watch-ack`](#watch-ack). If subscribing was successful, you will also begin receiving any [diff](#diff)s sent by the Gall agent on the specified `$path`.
 
 ### Ack {#ack}
 
-This is for acknowledging an SSE event. If you `ack` one event, you also implicitly `ack` all previous events. Events _must_ be `ack`ed so that Eyre can forget them. If you leave `fact`s (as [diff](#diff)s) un`ack`ed long enough, Eyre will consider the subscription clogged and automatically unsubscribe you.
+This is for acknowledging an SSE event. If you ack one event, you also implicitly ack all previous events. Events _must_ be acked so that Eyre can forget them. If you leave facts (as [diff](#diff)s) unacked long enough, Eyre will consider the subscription clogged and automatically unsubscribe you.
 
 | Key        | JSON Type | Example Value | Description                                              |
 | ---------- | --------- | ------------- | -------------------------------------------------------- |
@@ -158,11 +158,11 @@ This is for acknowledging an SSE event. If you `ack` one event, you also implici
 
 #### Response
 
-Eyre will not respond to an `ack` action.
+Eyre will not respond to an ack action.
 
 ### Unsubscribe {#unsubscribe}
 
-This is for unsubscribing from a Gall agent watch `path` to which you've previously subscribed.
+This is for unsubscribing from a Gall agent watch `$path` to which you've previously subscribed.
 
 | Key            | JSON Type | Example Value | Description                                                |
 | -------------- | --------- | ------------- | ---------------------------------------------------------- |
@@ -217,7 +217,7 @@ This acknowledgement comes in response to a [poke](#poke) action. A poke ack wit
 | Key        | JSON Type | Example Value | Description                                  |
 | ---------- | --------- | ------------- | -------------------------------------------- |
 | `ok`       | String    | `'ok'`        | Positive acknowledgement.                    |
-| `id`       | Number    | `1`           | Request ID of the `poke` being acknowledged. |
+| `id`       | Number    | `1`           | Request ID of the `$poke` being acknowledged. |
 | `response` | String    | `'poke'`      | The kind of action being acknowledged.       |
 
 #### Example
@@ -235,7 +235,7 @@ This acknowledgement comes in response to a [poke](#poke) action. A poke ack wit
 | Key        | JSON Type | Example Value    | Description                                                           |
 | ---------- | --------- | ---------------- | --------------------------------------------------------------------- |
 | `err`      | String    | `'some text...'` | Negative acknowledgement. Contains an error message and/or traceback. |
-| `id`       | Number    | `1`              | Request ID of the `poke` being acknowledged.                          |
+| `id`       | Number    | `1`              | Request ID of the `$poke` being acknowledged.                          |
 | `response` | String    | `'poke'`         | The kind of action being acknowledged.                                |
 
 #### Example
@@ -298,7 +298,7 @@ You must ack the event.
 
 ### Diff {#diff}
 
-All `fact`s sent by a Gall agent on the `path` to which you've subscribed are delivered as `diff`s. Note that Eyre makes a best effort to convert the `fact` to a `json` mark. If it can't, Eyre will crash and close the subscription, and you won't receive any `diff` for the `fact`.
+All facts sent by a Gall agent on the `$path` to which you've subscribed are delivered as diffs. Note that Eyre makes a best effort to convert the fact to a JSON mark. If it can't, Eyre will crash and close the subscription, and you won't receive any diff for the fact.
 
 | Key        | JSON Type | Example Value    | Description                                                  |
 | ---------- | --------- | ---------------- | ------------------------------------------------------------ |
@@ -318,7 +318,7 @@ All `fact`s sent by a Gall agent on the `path` to which you've subscribed are de
 
 #### Action Required
 
-You must [ack](#ack) each `diff` that comes in the event stream.
+You must [ack](#ack) each diff that comes in the event stream.
 
 ### Quit {#quit}
 
@@ -354,14 +354,14 @@ http{s}://{host}/~/scry/{app}{path}.{mark}
 
 The `{app}` is the name of the Gall agent you want to query, for example `graph-store`.
 
-The `{path}` is a scry endpoint of the Gall agent in question. Eyre will always scry with a care of `%x`, so the `{path}` needn't specify that. For example, the `/x/keys` scry endpoint of `graph-store` would just be specified as `keys`.
+The `{path}` is a scry endpoint of the Gall agent in question. Eyre will always scry with a care of `%x`, so the `{path}` needn't specify that. For example, the `/x/keys` scry endpoint of `%graph-store` would just be specified as `/keys`.
 
-The `{mark}` is the type you want returned. It needn't just be `json` as with the channel system, it can be any `mark`, with two conditions:
+The `{mark}` is the type you want returned. It needn't just be `json` as with the channel system, it can be any mark, with two conditions:
 
-1. It must be possible to convert the `mark` produced by the specified scry endpoint to the `mark` you want returned.
-2. It must be possible to convert the `mark` you want returned to a `mime` `mark`, otherwise Eyre can't encode it in the HTTP response.
+1. It must be possible to convert the mark produced by the specified scry endpoint to the mark you want returned.
+2. It must be possible to convert the mark you want returned to a MIME mark, otherwise Eyre can't encode it in the HTTP response.
 
-If your session cookie is invalid or missing, Eyre will respond with a 403 Forbidden status. If the scry endpoint cannot be found, Eyre will respond with a 404 Missing status. If the `mark` conversions can't be done, Eyre will respond with a 500 Internal Server Error status. Otherwise, Eyre will respond with a 200 OK status with the requested data in the body of the HTTP response.
+If your session cookie is invalid or missing, Eyre will respond with a 403 Forbidden status. If the scry endpoint cannot be found, Eyre will respond with a 404 Missing status. If the mark conversions can't be done, Eyre will respond with a 500 Internal Server Error status. Otherwise, Eyre will respond with a 200 OK status with the requested data in the body of the HTTP response.
 
 See the [Scrying](guide.md#scrying) section of the [Guide](guide.md) document for a practical example.
 

@@ -15,7 +15,7 @@ layout:
 
 # Advanced Types
 
-The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.
+The definition of `$type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.
 
 The good news is that you can **skip this section**, at least when you're first learning Hoon.  Polymorphism and aliasing are mainly for advanced programmers writing complex infrastructure and/or large functions.  Don't worry about them for a little while.
 
@@ -51,7 +51,7 @@ The good news is that you can **skip this section**, at least when you're first 
           ==                                            ::
 ```
 
-If you compare this to the basic `type`, you'll see that we've changed two parts: `%core` and `%face`.  We added polymorphism to `%core`, and aliases and bridges to `%face`.
+If you compare this to the basic `$type`, you'll see that we've changed two parts: `%core` and `%face`.  We added polymorphism to `%core`, and aliases and bridges to `%face`.
 
 (We also added `%hint` for hint expressions.)
 
@@ -65,7 +65,7 @@ Is this legal?  Does it make sense?  Every function call in Hoon does this, so w
 
 The full core stores both payload types.  The type that describes the payload currently in the core is `p`.  The type that describes the payload the core was compiled with is `q.q`.
 
-In the Bertrand Meyer tradition of type theory, there are two forms of polymorphism: variance and genericity.  In Hoon this choice is per core, hence the `poly` label in `p.q`: it can be either `%wet` or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on genericity.
+In the Bertrand Meyer tradition of type theory, there are two forms of polymorphism: variance and genericity.  In Hoon this choice is per core, hence the `$poly` label in `p.q`: it can be either `%wet` or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on genericity.
 
 ### Dry arms {#dry-arms}
 
@@ -105,7 +105,7 @@ But of course, we don't actually recompile the arm at runtime. We actually run t
 
 When we call a wet arm, we're essentially using the hoon as a macro.  We are not generating new code for every call site; we are creating a new type analysis path, which works as if we expanded the callee with the caller's context.
 
-Consider a function like `turn` (Haskell `map`) which transforms each element of a list.  To use `turn`, we install a list and a transformation function in a generic core.  The type of the list we produce depends on the type of the list and the type of the transformation function.  But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
+Consider a function like `+turn` (Haskell `+map`) which transforms each element of a list.  To use `+turn`, we install a list and a transformation function in a generic core.  The type of the list we produce depends on the type of the list and the type of the transformation function.  But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
 Again, will this work?  A simple (and not quite right) way to ask this question is to compile all the hoons in the battery for both a payload of `p` and a payload of `q.q`, and see if they generate exactly the same Nock.  The actual algorithm is a little more interesting, but not much.
 
@@ -115,14 +115,14 @@ Like typeclasses, wet arms / gates are a powerful tool.  Don't use them unless y
 
 ### Constant folding {#constant-folding}
 
-There's only one field of the `coil` we haven't explained yet: `p.r.q`.  This is simply the compiled battery, if available.  (Of course, we compile the hoons in a core against the core itself, and the formulas can't be available while we're compiling them.) External users of the core want this battery constant, though: it lets us fold constants by executing arms at compile time.
+There's only one field of the `$coil` we haven't explained yet: `p.r.q`.  This is simply the compiled battery, if available.  (Of course, we compile the hoons in a core against the core itself, and the formulas can't be available while we're compiling them.) External users of the core want this battery constant, though: it lets us fold constants by executing arms at compile time.
 
 ## `%face`: aliases and bridges {#face-aliases-and-bridges}
 
-In the advanced `tune` form, the `%face` type also has a couple of secret superpowers for hacking the namespace.  Remember that Hoon doesn't have anything like a symbol table; to resolve a limb, we just search the type depth-first.
+In the advanced `$tune` form, the `%face` type also has a couple of secret superpowers for hacking the namespace.  Remember that Hoon doesn't have anything like a symbol table; to resolve a limb, we just search the type depth-first.
 
-If a name is in the `p.p` `map`, it's an alias.  (An alias is defined using the `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name resolves to that hoon (compiled against the `q` type).  If the unit is empty, the name is blocked / skipped (see [limb](limbs/limb.md) for what this means).
+If a name is in the `p.p` `+map`, it's an alias.  (An alias is defined using the `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name resolves to that hoon (compiled against the `.q` type).  If the unit is empty, the name is blocked / skipped (see [limb](limbs/limb.md) for what this means).
 
-If a name is the `q.p` `term`, it's a bridge.  (A bridge is defined using the `=,` rune.)  When we search for a name, we also compile the bridge, and check if the name resolves against the bridge product.  If so, we use it.
+If a name is the `q.p` `$term`, it's a bridge.  (A bridge is defined using the `=,` rune.)  When we search for a name, we also compile the bridge, and check if the name resolves against the bridge product.  If so, we use it.
 
 These hacks let us deal with interesting large-scale problems, like complex library dependencies.  You definitely don't need to understand them to just write simple Hoon programs.

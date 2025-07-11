@@ -531,7 +531,7 @@ Host urbit-vps
 
 {% tab title="Upload existing pier" %}
 
-If your Urbit is still running, use either `"Ctrl+d"` or `|exit` in the Dojo to shut it down.
+If your Urbit is still running, use either `Ctrl+D` or `|exit` in the Dojo to shut it down.
 
 With your Urbit now stopped (please be certain), archive your pier by running `tar cvzf sampel-palnet.tar.gz /path/to/your/pier` (substitute your own Urbit name and pier location).
 
@@ -761,7 +761,7 @@ Fill out the "Add a new subdomain" form:
 
 Complete the CAPTCHA and click "Save!"
 
-Now, back in the terminal of your server, hit `Ctrl+b d` (that is, you hit `Ctrl+b`, release it, and then hit `d`) to disconnect from `tmux`. In the main shell, run the following command, replacing `mysubdomain.example.com` which the domain you chose in the previous step.
+Now, back in the terminal of your server, hit `Ctrl+B D` (that is, you hit `Ctrl+B`, release it, and then hit `D`) to disconnect from `tmux`. In the main shell, run the following command, replacing `mysubdomain.example.com` which the domain you chose in the previous step.
 
 ```
 echo -e "mysubdomain.example.com {\n  reverse_proxy localhost:8080\n}\n" | sudo tee /etc/caddy/Caddyfile > /dev/null
@@ -795,13 +795,13 @@ Enter the web login code and you'll be taken to your Urbit's homescreen. Your Ur
 
 ## 7. Disconnect
 
-You can now disconnect from the tmux session by hitting `CTRL+b d` (that is, you hit `CTRL+b`, release it, and then hit `d`). You'll be taken back to the ordinary shell, but the Urbit will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
+You can now disconnect from the tmux session by hitting `CTRL+B D` (that is, you hit `CTRL+B`, release it, and then hit `D`). You'll be taken back to the ordinary shell, but the Urbit will still be running in the background. If you want to get back to the Dojo again, you can reattach the tmux session with:
 
 ```bash
 tmux a
 ```
 
-Finally, you can disconnect from the ssh session completely by hitting `CTRL+d`.
+Finally, you can disconnect from the ssh session completely by hitting `CTRL+D`.
 
 ## 8. Cleanup
 

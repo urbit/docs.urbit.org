@@ -150,7 +150,7 @@ An unsigned transaction is an atom consisting of the concatentation of an Ethere
 ==
 ```
 
-Here `+cad` is a gate in `/lib/tiny.hoon` that concatenates atoms given in `octs` format. The argument `3` is a `bloq` size meaning `2^3=8` bits (one byte), and the head of each cell (which are `octs`) in the arguments that follow is the number of blocks (number of bytes in this scenario) of each entry, with the tail being the actual data.
+Here `+cad` is a gate in `/lib/tiny.hoon` that concatenates atoms given in `$octs` format. The argument `3` is a `+bloq` size meaning `2^3=8` bits (one byte), and the head of each cell (which are `$octs`) in the arguments that follow is the number of blocks (number of bytes in this scenario) of each entry, with the tail being the actual data.
 
 `len` is the length measured in bytes of everything following it except the signature. `chain-t` is the chain ID, which is to distinguish between e.g. the Ethereum test net and main net, to ensure that transaction used in one cannot be rebroadcast on the other (see [EIP-155](https://eips.ethereum.org/EIPS/eip-155)). We note that `len` and `chain-t` are both ASCII decimals (`@t` in Hoon), while `nonce` and `action` are `@ud`s.
 
@@ -160,4 +160,4 @@ Again we emphasize that unsigned transactions are _not_ what is submitted in a b
 
 The signature is a 65-byte ECDSA signature as described in [EIP-191](https://eips.ethereum.org/EIPS/eip-191) and is compatible with `personal_sign`. The precise format of the signature depends on which wallet was used to sign it. Layer 2 supports all major signature formats, including Metamask, Trezor, Ledger, and others. Signatures in batches are obtained by signing an [unsigned transaction](bytestring.md#unsigned).
 
-Because of the format of signatures, it may have leading zeroes resulting in a 64-byte signature, and so it is important to use `octs` to ensure that it is interpreted as being 65 bytes.
+Because of the format of signatures, it may have leading zeroes resulting in a 64-byte signature, and so it is important to use `$octs` to ensure that it is interpreted as being 65 bytes.

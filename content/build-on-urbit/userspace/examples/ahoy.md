@@ -15,7 +15,7 @@ layout:
 
 # Ship Monitoring
 
-The `%ahoy` desk by ~midden-fabler provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `++abet` nested core design pattern, construct CLI generators, and set wakeup timers using Behn.
+The `%ahoy` desk by ~midden-fabler provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `+abet` nested core design pattern, construct CLI generators, and set wakeup timers using Behn.
 
 `%ahoy` presents a web UI at `/ahoy` rendered using [Sail](../../../hoon/sail.md) and ~paldev's Rudder library alongside command-line generators to add, delete, and modify ship watches.  Notifications are sent using `%hark-store` if a ship hasn't been contacted after a specified amount of time.
 
@@ -72,7 +72,7 @@ In addition, `%ahoy` sends notifications using `%hark-store`, the notification p
 
 ### Pokes {#pokes}
 
-At the macro level, `++on-poke` recognizes three poke cages:
+At the macro level, `+on-poke` recognizes three poke cages:
 
 1. `%noun` for pinging a ship.
 2. `%ahoy-command` for commands per `/sur/ahoy.hoon`.
@@ -103,17 +103,17 @@ Most of the poke work takes place through `%ahoy-command`, which checks on the s
 
 HTTP requests are processed into a form useful to `rudder`, a front-end rendering library for native Hoon webpages.  `rudder` facilitates a Sail-based webpage being exposed through three arms:
 
-1. `++argue` responds to `POST` requests.
-2. `++final` is called after `POST` requests.
-3. `++build` responds to `GET` requests, most commonly just yielding the webpage.
+1. `+argue` responds to `POST` requests.
+2. `+final` is called after `POST` requests.
+3. `+build` responds to `GET` requests, most commonly just yielding the webpage.
 
 A number of other facilities in `rudder` are employed here as well:
 
-- `++order:rudder` is a type for handling inbound requests from Eyre.
-- `++steer:rudder` is the helper constructor for producing pages.
-- `++point:rudder` is a routing arm.
-- `++fours:rudder` is a 404 error handler.
-- `++brief:rudder` is a type union, `?(~ @t)`.
+- `+order:rudder` is a type for handling inbound requests from Eyre.
+- `+steer:rudder` is the helper constructor for producing pages.
+- `+point:rudder` is a routing arm.
+- `+fours:rudder` is a 404 error handler.
+- `+brief:rudder` is a type union, `?(~ @t)`.
 
 ```hoon
   %handle-http-request
@@ -134,7 +134,7 @@ A number of other facilities in `rudder` are employed here as well:
 
 ### Gifts {#gifts}
 
-The agent expects to receive a `%wake` gift periodically from Behn on the wire `%update-interval`.  It handles this by means of an arm in the agent's helper core, `++on-update-interval`.
+The agent expects to receive a `%wake` gift periodically from Behn on the wire `%update-interval`.  It handles this by means of an arm in the agent's helper core, `+on-update-interval`.
 
 ```hoon
   [%update-interval ~]
@@ -143,15 +143,15 @@ The agent expects to receive a `%wake` gift periodically from Behn on the wire `
 [cards this]
 ```
 
-This helper core arm notably employs the `++abet` nested core pattern for handling cards.  The `++abet` nested core is a design pattern rather than a specific core.  It is designed to accumulate cards, often using `++emit` and `++emil`, then send them all at once.
+This helper core arm notably employs the `+abet` nested core pattern for handling cards.  The `+abet` nested core is a design pattern rather than a specific core.  It is designed to accumulate cards, often using `+emit` and `+emil`, then send them all at once.
 
-The `++abet` pattern itself is rather simple to construct.  It enables other arms to construct a list of cards rather than having to produce complex `=^`-style constructions.  This instance of the nested core pattern consists of three arms (omitting an `++abed` arm):
+The `+abet` pattern itself is rather simple to construct.  It enables other arms to construct a list of cards rather than having to produce complex `=^`-style constructions.  This instance of the nested core pattern consists of three arms (omitting an `+abed` arm):
 
-- `++emit` is used to submit a card to a collection of cards in the helper core.
-- `++emil` is similar but accepts a list of cards.
-- `++abet` issues the list of cards back along with the state to be updated.  (Note that the core must be scoped such that the Gall agent's state is visible.)
+- `+emit` is used to submit a card to a collection of cards in the helper core.
+- `+emil` is similar but accepts a list of cards.
+- `+abet` issues the list of cards back along with the state to be updated.  (Note that the core must be scoped such that the Gall agent's state is visible.)
 
-Other arms (such as `++set-timer`) then simply construct cards which are inserted into the `++abet` core's list.
+Other arms (such as `+set-timer`) then simply construct cards which are inserted into the `+abet` core's list.
 
 <details>
 <summary>Helper Core code</summary>
@@ -234,7 +234,7 @@ Other arms (such as `++set-timer`) then simply construct cards which are inserte
 
 </details>
 
-For `%ahoy`, the main arm we need to examine is `++on-update-interval`.  This arm resets the timer, sends checks to all of the ships, and then sends notifications to `%hark-store` for anything unresponsive.
+For `%ahoy`, the main arm we need to examine is `+on-update-interval`.  This arm resets the timer, sends checks to all of the ships, and then sends notifications to `%hark-store` for anything unresponsive.
 
 ```hoon
 ++  on-update-interval
@@ -257,7 +257,7 @@ For `%ahoy`, the main arm we need to examine is `++on-update-interval`.  This ar
   abet
 ```
 
-The `++send-plea` status check is interesting:  it checks whether Ames is responsive on a particular ship without doing anything to the remote ship except eliciting an error.  (`|hi` or similar would unnecessarily spam the recipient's Dojo.)
+The `+send-plea` status check is interesting:  it checks whether Ames is responsive on a particular ship without doing anything to the remote ship except eliciting an error.  (`|hi` or similar would unnecessarily spam the recipient's Dojo.)
 
 ```hoon
 ++  send-plea
@@ -266,7 +266,7 @@ The `++send-plea` status check is interesting:  it checks whether Ames is respon
   [%pass /ahoy/(scot %p who) %arvo %a %plea who %evil-vane / ~]
 ```
 
-`%hark-store` is the standard cross-agent notification store provided by Grid and recognized by Landscape.  The notification message requires a little bit of explicit construction as `action` but can be treated as boilerplate code aside from the text.
+`%hark-store` is the standard cross-agent notification store provided by Grid and recognized by Landscape.  The notification message requires a little bit of explicit construction as `$action` but can be treated as boilerplate code aside from the text.
 
 ```hoon
 ++  send-notification

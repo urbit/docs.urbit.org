@@ -53,9 +53,9 @@ foo
 ;<  =tid:rand  bind:m  (start-thread %child)
 ```
 
-See here how we gave `+start-thread` the name of the thread to run. It returns the `tid` (thread ID) of the thread, which we could then use to poke it or whatever.
+See here how we gave `+start-thread` the name of the thread to run. It returns the `$tid` (thread ID) of the thread, which we could then use to poke it or whatever.
 
-`+start-thread` handles creating the `tid` for the thread so is quite convenient.
+`+start-thread` handles creating the `$tid` for the thread so is quite convenient.
 
 Note that threads we start this way will be a child of the thread that started them, and so will be killed when the parent thread ends.
 
@@ -116,7 +116,7 @@ First we grab the bowl
 =/  tid  `@ta`(cat 3 'strand_' (scot %uv (sham %child eny.bowl)))
 ```
 
-Then we generate a `tid` for the thread we're going to start
+Then we generate a `$tid` for the thread we're going to start
 
 ```hoon
 ;<  ~  bind:m  (watch-our /awaiting/[tid] %spider /thread-result/[tid])
@@ -134,11 +134,11 @@ We pre-emptively subscribe for the result. Spider sends the result at `/thread-r
 
 Spider takes a poke with a mark `%spider-start` and a vase containing `[parent=(unit tid) use=(unit tid) =beak file=term =vase]` to start a thread, where:
 
-- `parent` is an optional parent thread. In this case we say the parent is our tid. Specifying a parent means the child will be killed if the parent ends.
-- `use` is the thread ID for the thread we're creating
-- `beak` is a `[p=ship q=desk r=case]` triple which specifies the desk and revision containing the thread we want to run. In this case we just use `byk.bowl`, but with the date of revision `q` changed to `now.bowl`.
-- `file` is the filename of the thread we want to start
-- `vase` is the vase it will be given as an argument when it's started
+- `.parent` is an optional parent thread. In this case we say the parent is our tid. Specifying a parent means the child will be killed if the parent ends.
+- `.use` is the thread ID for the thread we're creating
+- `.beak` is a `[p=ship q=desk r=case]` triple which specifies the desk and revision containing the thread we want to run. In this case we just use `byk.bowl`, but with the date of revision `r` changed to `now.bowl`.
+- `.file` is the filename of the thread we want to start
+- `.vase` is the vase it will be given as an argument when it's started
 
 ```hoon
 ;<  =cage  bind:m  (take-fact /awaiting/[tid])
@@ -159,7 +159,7 @@ Spider will kick us from the subscription when it ends the thread so we also tak
 ==
 ```
 
-Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`. These are the two possible marks produced by spider when it returns the results of a thread. A `%thread-done` will contain a vase with the result, and a `%thread-fail` will contain an error message and traceback, so we see which it is and then either produce the result with `pure` or trigger a `%thread-fail` with the error we got from the child.
+Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`. These are the two possible marks produced by spider when it returns the results of a thread. A `%thread-done` will contain a vase with the result, and a `%thread-fail` will contain an error message and traceback, so we see which it is and then either produce the result with `+pure` or trigger a `%thread-fail` with the error we got from the child.
 
 ## Stop a thread {#stop-a-thread}
 
@@ -227,5 +227,5 @@ Finally we test whether the thread produced a `%thread-done` or a `%thread-fail`
 ```
 
 - `%spider-stop` is the mark that tells Spider to kill a thread.
-- `tid` is the tid of the thread to kill
+- `$tid` is the tid of the thread to kill
 - `%.y` tells Spider to suppress traceback in the result of the killed thread. If you give it `%.n` it will include the traceback.

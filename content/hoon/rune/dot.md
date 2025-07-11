@@ -66,7 +66,7 @@ None
 
 #### Produces
 
-The noun `q`, cast to the type `p`.
+The noun `.q`, cast to the type `.p`.
 
 #### Discussion
 
@@ -74,9 +74,9 @@ Nock has no `12` instruction! But the virtual Nock used to run userspace code do
 
 Ordinarily a Hoon expression has access to no information but whatever can be found in the subject. The one exception is with the `.^` rune. It essentially allows you to request information from one of the Arvo vanes (modules).
 
-`.^` checks that the type of the value retrieved from Arvo nests under `p`. `q` is a `$path` which includes information about which vane is being queried, and what sort of information is requested.
+`.^` checks that the type of the value retrieved from Arvo nests under `.p`. `.q` is a `$path` which includes information about which vane is being queried, and what sort of information is requested.
 
-In principle `.^` takes two subexpressions, but in practice `q` is often given in two parts: the first part includes the vane to be queried (e.g., `%a` for Ames, `%b` for Behn, `%c` for Clay, etc.) and the kind of request. The second part is a path that corresponds to the kind of request.
+In principle `.^` takes two subexpressions, but in practice `.q` is often given in two parts: the first part includes the vane to be queried (e.g., `%a` for Ames, `%b` for Behn, `%c` for Clay, etc.) and the kind of request. The second part is a path that corresponds to the kind of request.
 
 #### Examples
 
@@ -147,7 +147,7 @@ Increment an atom with Nock `4`.
 
 #### Produces
 
-`p` plus `1` if `p` is an atom; otherwise, crashes. The product atom has no aura.
+`.p` plus `1` if `.p` is an atom; otherwise, crashes. The product atom has no aura.
 
 #### Examples
 
@@ -173,7 +173,7 @@ Evaluate with Nock `2`.
 
 #### Produces
 
-Nock of formula `q` and subject `p`, with type `%noun`.
+Nock of formula `.q` and subject `.p`, with type `%noun`.
 
 #### Syntax
 
@@ -214,9 +214,9 @@ None.
 
 #### Discussion
 
-`.*(p q)` is used to run Nock formula `q` on the subject `p` from within Hoon.
+`.*(p q)` is used to run Nock formula `.q` on the subject `.p` from within Hoon.
 
-Keep in mind that `p` and `q` can be arbitrary Hoon expressions, as long as they evaluate to the appropriate nouns for Nock evaluation.
+Keep in mind that `.p` and `.q` can be arbitrary Hoon expressions, as long as they evaluate to the appropriate nouns for Nock evaluation.
 
 Note also that `.*` ("dottar") can be used to bypass the type system. It's therefore possible to use Hoon as a typeless language.
 
@@ -289,7 +289,7 @@ q
 
 #### Produces
 
-`%.y` if `p` equals `q`; otherwise `%.n`.
+`%.y` if `.p` equals `.q`; otherwise `%.n`.
 
 #### Discussion
 
@@ -336,7 +336,7 @@ One argument, fixed.
 
 #### Produces
 
-`%.y` if `p` is a cell; otherwise `%.n`.
+`%.y` if `.p` is a cell; otherwise `%.n`.
 
 #### Examples
 

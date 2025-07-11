@@ -32,7 +32,7 @@ Mark conversion gates simply convert from one mark to another.
 
 ### Static {#static}
 
-A static mark conversion gate looks like `$-(a b)`, where `a` is the type of the mark you're converting _from_, and `b` is type of the mark you're converting _to_. For example, a mark conversion gate from `%txt` to `%mime` would look like `$-(wain mime)`. You'd simply feed it a `$wain` and get a `$mime` in return.
+A static mark conversion gate looks like `$-(a b)`, where `.a` is the type of the mark you're converting _from_, and `.b` is type of the mark you're converting _to_. For example, a mark conversion gate from `%txt` to `%mime` would look like `$-(wain mime)`. You'd simply feed it a `$wain` and get a `$mime` in return.
 
 #### Example
 
@@ -84,7 +84,7 @@ While a mark conversion gate is built from functions defined in `+grab` and `+gr
 
 ### Static {#static}
 
-A statically typed mark core is a `(nave:clay a b)` where `a` is the type of the mark and `b` is the type for diffs (which is the type of the mark specified in `+form:grad`). For example, a static mark core for a `%txt` mark looks like `(nave:clay wain (urge:clay cord))`.
+A statically typed mark core is a `(nave:clay a b)` where `.a` is the type of the mark and `.b` is the type for diffs (which is the type of the mark specified in `+form:grad`). For example, a static mark core for a `%txt` mark looks like `(nave:clay wain (urge:clay cord))`.
 
 `+nave:clay` looks like this in full:
 

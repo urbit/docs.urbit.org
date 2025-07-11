@@ -151,7 +151,7 @@ We remark that you can switch binds in the middle of a sequence of `;<`.
 
 #### Examples
 
-[`+biff`](../stdlib/2a.md#biff) is the unit monad's implementation of monadic bind. That is to say, it takes a unit `a` and a gate `b` that accepts a noun that produces a unit, and extracts the value from `a` to pass as a sample to `b`.
+[`+biff`](../stdlib/2a.md#biff) is the unit monad's implementation of monadic bind. That is to say, it takes a unit `.a` and a gate `.b` that accepts a noun that produces a unit, and extracts the value from `.a` to pass as a sample to `.b`.
 
 We illustrate the usage of `;<` with `+biff` with a `+map` of atoms:
 
@@ -392,7 +392,7 @@ None
 
 #### Produces
 
-The gates in `q` are composed together using the gate `p` as an intermediate function, which transforms a `q` product and a `q` gate into a `q` sample.
+The gates in `.q` are composed together using the gate `.p` as an intermediate function, which transforms a `.q` product and a `.q` gate into a `.q` sample.
 
 #### Expands to
 
@@ -434,7 +434,7 @@ Apparently `;~` is a "Kleisli arrow." It's also a close cousin of the infamous "
 
 `;~` is often used in parsers, but is not only for parsers.
 
-This can be thought of as user-defined function composition; instead of simply nesting the gates in `q`, each is passed individually to `p` with the product of the previous gate, allowing arbitrary filtering, transformation, or conditional application.
+This can be thought of as user-defined function composition; instead of simply nesting the gates in `.q`, each is passed individually to `.p` with the product of the previous gate, allowing arbitrary filtering, transformation, or conditional application.
 
 #### Examples
 

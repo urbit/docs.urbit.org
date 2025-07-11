@@ -29,7 +29,7 @@ Run a thread from within Arvo.
 [%fard p=(fyrd cage)]
 ```
 
-`p` contains the thread location, name, and start arguments. See the [`+fyrd`](types.md#fyrd) data type reference entry for details.
+`.p` contains the thread location, name, and start arguments. See the [`+fyrd`](types.md#fyrd) data type reference entry for details.
 
 #### Returns
 

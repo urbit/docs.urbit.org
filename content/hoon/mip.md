@@ -68,7 +68,7 @@ This is the container door for all the mip functions.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip).
+`.a` is a [`+mip`](#mip).
 
 #### Source
 
@@ -97,19 +97,19 @@ This is the container door for all the mip functions.
 
 Delete item in `+mip`
 
-This takes two keys as its argument, `b` and `c`, and deletes `c` in the inner map that matches key `b` in the outer map . If this results in an empty inner map, then `b` is also deleted from the outer map.
+This takes two keys as its argument, `.b` and `.c`, and deletes `.c` in the inner map that matches key `.b` in the outer map . If this results in an empty inner map, then `.b` is also deleted from the outer map.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the [`+bi`](#bi) door's sample.
+`.a` is a [`+mip`](#mip), and is the [`+bi`](#bi) door's sample.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
-`c` is a key matching the key type of the inner maps.
+`.c` is a key matching the key type of the inner maps.
 
 #### Produces
 
-A [`+mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended up empty.
+A [`+mip`](#mip) with `.c` deleted from `.b`, or `.b` deleted from `.a` if `.c` ended up empty.
 
 #### Source
 
@@ -151,19 +151,19 @@ A [`+mip`](#mip) with `c` deleted from `b`, or `b` deleted from `a` if `c` ended
 
 Maybe get value in `+mip`
 
-Get the value of `c` in the map with key `b` in `+mip` `a` as a unit. If there's no `c` in `b` or `b` in `a`, the unit is null.
+Get the value of `.c` in the map with key `.b` in `+mip` `.a` as a unit. If there's no `.c` in `.b` or `.b` in `.a`, the unit is null.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
-`c` is a key matching the key type of the inner maps.
+`.c` is a key matching the key type of the inner maps.
 
 #### Produces
 
-A `(unit [type])`, where `[type]` is the value type. The unit is null if there's no `c` in `b` or no `b` in `a`.
+A `(unit [type])`, where `[type]` is the value type. The unit is null if there's no `.c` in `.b` or no `.b` in `.a`.
 
 #### Source
 
@@ -195,15 +195,15 @@ A `(unit [type])`, where `[type]` is the value type. The unit is null if there's
 
 Get value in `+mip` or crash
 
-Get the value of `c` in the map with key `b` in `+mip` `a`. If there's no `c` in `b` or `b` in `a`, crash.
+Get the value of `.c` in the map with key `.b` in `+mip` `.a`. If there's no `.c` in `.b` or `.b` in `.a`, crash.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
-`c` is a key matching the key type of the inner maps.
+`.c` is a key matching the key type of the inner maps.
 
 #### Produces
 
@@ -238,21 +238,21 @@ dojo: hoon expression failed
 
 Get value in `+mip` or default
 
-Get the value of `c` in the map with key `b` in `+mip` `a`. If there's no `c` in `b` or `b` in `a`, produce default value `d`.
+Get the value of `.c` in the map with key `.b` in `+mip` `.a`. If there's no `.c` in `.b` or `.b` in `.a`, produce default value `.d`.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
-`c` is a key matching the key type of the inner maps.
+`.c` is a key matching the key type of the inner maps.
 
-`d` is a default value, which is produced if the value cannot be found.
+`.d` is a default value, which is produced if the value cannot be found.
 
 #### Produces
 
-A noun, either the type of the value in the map or `d`.
+A noun, either the type of the value in the map or `.d`.
 
 #### Source
 
@@ -282,19 +282,19 @@ A noun, either the type of the value in the map or `d`.
 
 Check if `+mip` contains
 
-Check if `+mip` `a` contains `c` in `b`.
+Check if `+mip` `.a` contains `.c` in `.b`.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
-`c` is a key matching the key type of the inner maps.
+`.c` is a key matching the key type of the inner maps.
 
 #### Produces
 
-A `?` which is true if `c` in `b` exists, and false otherwise.
+A `?` which is true if `.c` in `.b` exists, and false otherwise.
 
 #### Source
 
@@ -324,13 +324,13 @@ A `?` which is true if `c` in `b` exists, and false otherwise.
 
 Get keys of inner map in `+mip`
 
-Get the `+set` of keys of the inner map matching key `b` in the outer map. If `b` doesn't exist, an empty set is returned.
+Get the `+set` of keys of the inner map matching key `.b` in the outer map. If `.b` doesn't exist, an empty set is returned.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
 #### Produces
 
@@ -364,17 +364,17 @@ A `(set [type])` where `[type]` is the type of the keys in the inner map.
 
 Insert value in `+mip`
 
-Add value `d` with key `c` to the inner map with key `b` in the outer map. If `b` doesn't exist, an inner map is also added with that key. If `c` already exists, its value is replaced with `d`.
+Add value `.d` with key `.c` to the inner map with key `.b` in the outer map. If `.b` doesn't exist, an inner map is also added with that key. If `.c` already exists, its value is replaced with `.d`.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
-`b` is a key matching the key type of the outer map.
+`.b` is a key matching the key type of the outer map.
 
-`c` is a key matching the key type of the inner maps.
+`.c` is a key matching the key type of the inner maps.
 
-`d` is a noun matching the type of the values in the `+mip`.
+`.d` is a noun matching the type of the values in the `+mip`.
 
 #### Produces
 
@@ -410,19 +410,19 @@ A new, modified `+mip`.
 
 Convert `+mip` to `+list`
 
-The `+mip` is flattened to a `+list` of the triple `[x y v]`, where `x` is a key in the outer map, `y` is a key in an inner map, and `v` is its value.
+The `+mip` is flattened to a `+list` of the triple `[x y v]`, where `.x` is a key in the outer map, `.y` is a key in an inner map, and `.v` is its value.
 
 #### Accepts
 
-`a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
+`.a` is a [`+mip`](#mip), and is the sample of the [`+bi`](#bi) door.
 
 #### Produces
 
 A triple cell of `[x y v]`, where:
 
-- `x` is a key in the outer map.
-- `y` is a key in an inner map.
-- `v` is its value.
+- `.x` is a key in the outer map.
+- `.y` is a key in an inner map.
+- `.v` is its value.
 
 #### Source
 

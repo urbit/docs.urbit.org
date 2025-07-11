@@ -70,7 +70,7 @@ None
 
 #### Produces
 
-the product of `q`, with the product of `p` taken as the subject.
+the product of `.q`, with the product of `.p` taken as the subject.
 
 #### Examples
 
@@ -145,7 +145,7 @@ none
 
 #### Discussion
 
-The default (or 'bunt') value of `p` is pinned to the head of the subject. Usually `p` includes a name for ease of reference.
+The default (or 'bunt') value of `.p` is pinned to the head of the subject. Usually `.p` includes a name for ease of reference.
 
 Speaking more loosely, `=|` usually "declares a variable" which is "uninitialized," presumably because you'll set it in a loop or similar.
 
@@ -271,7 +271,7 @@ None
 
 #### Produces
 
-`p` evaluates to a noun with some namespace. From within `q` you may access `p`'s names without a wing path (i.e., you can use face `b` rather than `b.p`).
+`.p` evaluates to a noun with some namespace. From within `.q` you may access `.p`'s names without a wing path (i.e., you can use face `.b` rather than `b.p`).
 
 #### Discussion
 
@@ -357,7 +357,7 @@ None
 
 #### Discussion
 
-Technically the `=.` rune doesn't change the subject. It creates a new subject just like the old one except for a changed value at `p`. Note that the mutation uses [`%_` ("cencab")](cen.md#cencab), so the type at `p` doesn't change. Trying to change the value type results in a `nest-fail`.
+Technically the `=.` rune doesn't change the subject. It creates a new subject just like the old one except for a changed value at `.p`. Note that the mutation uses [`%_` ("cencab")](cen.md#cencab), so the type at `.p` doesn't change. Trying to change the value type results in a `nest-fail`.
 
 #### Examples
 
@@ -496,10 +496,10 @@ None
 
 #### Discussion
 
-- `p` is a new name (optionally with type) to pin to the subject.
-- `q` is the name of an existing wing of the subject.
-- `r` is an expression that produces `[p-value new-q-value]`.
-- `s` is some more code to be evaluted against the modified subject.
+- `.p` is a new name (optionally with type) to pin to the subject.
+- `.q` is the name of an existing wing of the subject.
+- `.r` is an expression that produces `[p-value new-q-value]`.
+- `.s` is some more code to be evaluted against the modified subject.
 
 This is a bit like doing `=/` and `=.` at the same time. It's useful for state machines, where you want to produce both effects and a new state. For example, many arms of a Gall agent produce `[effects new-state]` in the form of a `(quip card _this)`. In the `+on-poke` arm, you might have something like:
 
@@ -777,13 +777,13 @@ None
 
 #### Expands to
 
-if `p` is a name, (e.g. `a`):
+if `.p` is a name, (e.g. `a`):
 
 ```hoon
 =+(^=(p q) r)
 ```
 
-if `p` is a name with a type (e.g., `a=@`):
+if `.p` is a name with a type (e.g., `a=@`):
 
 ```hoon
 =+(^-(p q) r)
@@ -801,7 +801,7 @@ r
 
 #### Discussion
 
-`p` can be either a name or a `name=type`. If it's just a name, `=/` ("tisfas") "declares a type-inferred variable." If it has a type, `=/` "declares a type-checked variable."
+`.p` can be either a name or a `name=type`. If it's just a name, `=/` ("tisfas") "declares a type-inferred variable." If it has a type, `=/` "declares a type-checked variable."
 
 #### Examples
 
@@ -947,11 +947,11 @@ None
 
 #### Produces
 
-`r`, compiled with a subject in which `p` is a deferred expression for `q`.
+`.r`, compiled with a subject in which `.p` is a deferred expression for `.q`.
 
 #### Discussion
 
-`=*` assigns a name to an expression that will be evaluated in each place the name is dereferenced. This allows you to "write" through it to the original subject `$axis`. `q` is recorded in the type information of `p`, and `q` is calculated every time you use `p`.
+`=*` assigns a name to an expression that will be evaluated in each place the name is dereferenced. This allows you to "write" through it to the original subject `$axis`. `.q` is recorded in the type information of `.p`, and `.q` is calculated every time you use `.p`.
 
 This rune has some similarities with macros, and some similarities with aliases, but it is not really either.
 
@@ -1031,7 +1031,7 @@ s
 
 #### Discussion
 
-Use `=?` to replace the value of leg `p` with `r` on condition `q`. As usual, we are not actually mutating the subject, just creating a new subject with a changed value. The change in value includes a type check against the old subject; the type of `r` must nest under the type of `p`.
+Use `=?` to replace the value of leg `.p` with `.r` on condition `.q`. As usual, we are not actually mutating the subject, just creating a new subject with a changed value. The change in value includes a type check against the old subject; the type of `.r` must nest under the type of `.p`.
 
 #### Examples
 

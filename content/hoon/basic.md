@@ -54,27 +54,27 @@ Effectively this structure defines a set of nouns that Hoon uses to keep track t
 
 ### `[%cell p=type q=type]` {#cell-ptype-qtype}
 
-`[%cell p=type q=type]` is for cells.  The `$type` of the head is labelled `p` and the tail `$type` is `q`.
+`[%cell p=type q=type]` is for cells.  The `$type` of the head is labelled `.p` and the tail `$type` is `.q`.
 
 ### `[%fork p=(set type)]` {#fork-pset-type}
 
-`[%fork p=(set type)]` is for the union of all types in the set `p`.  That is, when the type of an expression is known to be a `%fork`, the expression must evaluate as one of the types in `p`.
+`[%fork p=(set type)]` is for the union of all types in the set `.p`.  That is, when the type of an expression is known to be a `%fork`, the expression must evaluate as one of the types in `.p`.
 
-Hoon uses branching (usually with conditional runes of the `?` family) for type inference in order to rule out which of the types in `p` can apply.
+Hoon uses branching (usually with conditional runes of the `?` family) for type inference in order to rule out which of the types in `.p` can apply.
 
 ### `[%hold p=type q=hoon]` {#hold-ptype-qhoon}
 
-A `%hold` type, with type `p` and hoon `q`, is a lazy reference to the type of `(mint p q)`.  In English, it means: "the type of the product when we compile Hoon expression `q` against a subject with type `p`."
+A `%hold` type, with type `.p` and hoon `.q`, is a lazy reference to the type of `(mint p q)`.  In English, it means: "the type of the product when we compile Hoon expression `.q` against a subject with type `.p`."
 
 ### `[%face p=term q=type]` {#face-pterm-qtype}
 
-A `[%face p=term q=type]` wraps the label `p` around the type `q`.  `p` is a `$term` or `@tas`, an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen, first character must be a lowercase letter.
+A `[%face p=term q=type]` wraps the label `.p` around the type `.q`.  `.p` is a `$term` or `@tas`, an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen, first character must be a lowercase letter.
 
 ### `[%atom p=term q=(unit atom))]` {#atom-pterm-qunit-atom}
 
-`%atom` is for an atom, with two twists.  `q` is a `+unit`, Hoon's equivalent of a nullable pointer or a Haskell `Maybe`.  If `q` is `~`, null, the type is **warm**; any atom is in the type. If `q` is `[~ x]`, where `x` is any atom, the type is **cold**; its only legal value is the constant `x`.
+`%atom` is for an atom, with two twists.  `.q` is a `+unit`, Hoon's equivalent of a nullable pointer or a Haskell `Maybe`.  If `.q` is `~`, null, the type is **warm**; any atom is in the type. If `.q` is `[~ x]`, where `x` is any atom, the type is **cold**; its only legal value is the constant `x`.
 
-`p` in the atom is a terminal used as an **aura**, or soft atom type.  Auras are a lightweight, advisory representation of the units, semantics, and/or syntax of an atom.  An aura is an atomic string; two auras are compatible if one is a prefix of the other.
+`.p` in the atom is a terminal used as an **aura**, or soft atom type.  Auras are a lightweight, advisory representation of the units, semantics, and/or syntax of an atom.  An aura is an atomic string; two auras are compatible if one is a prefix of the other.
 
 For instance, `@t` means UTF-8 text (LSB low), `@ta` means ASCII text, and `@tas` means an ASCII symbol.  `@u` means an unsigned integer, `@ud` an unsigned decimal, `@ux` an unsigned hexadecimal.  You can use a `@ud` atom as a `@u` or vice versa, but not as a `@tas`.
 
@@ -115,7 +115,7 @@ Auras are truly soft; you can turn any aura into any other, statically, by casti
 
 ### `[%core p=type q=(map term hoon)]` {#core-ptype-qmap-term-hoon}
 
-`%core` is for a code-data cell.  The data (or **payload**) is the tail; the code (or **battery**) is the head.  `p`, a type, is the type of the payload.  `q` is a mapping of arm names and Hoon expressions.  It is the source code for the core battery.
+`%core` is for a code-data cell.  The data (or **payload**) is the tail; the code (or **battery**) is the head.  `.p`, a type, is the type of the payload.  `.q` is a mapping of arm names and Hoon expressions.  It is the source code for the core battery.
 
 (For an introduction to cores and arms, see Chapter 1 of the Hoon tutorial.)
 

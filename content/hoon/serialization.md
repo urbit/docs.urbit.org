@@ -54,15 +54,15 @@ It is more straightforward to see how to decode a noun than to encode it, so let
   [(add 2 p.d) (need (~(get by m) q.d)) m]
 ```
 
-The above gate accepts an atom `b`, which is a “blob” or as-yet-undefined value.  Pin a cursor to run from low to high (LSB) at 0.  The empty map `m` will map from cursor to noun.  (All cursor-to-noun mappings will be saved here.)
+The above gate accepts an atom `.b`, which is a “blob” or as-yet-undefined value.  Pin a cursor to run from low to high (LSB) at 0.  The empty map `.m` will map from cursor to noun.  (All cursor-to-noun mappings will be saved here.)
 
-The trap produces a 3-tuple where `p` is the following cursor position; `q` is the noun; and `r` is the cache.  The product itself will be `q`.
+The trap produces a 3-tuple where `.p` is the following cursor position; `.q` is the noun; and `.r` is the cache.  The product itself will be `.q`.
 
-A data cursor is pinned at `c`, while the third bit is pinned at `a`.  If the first bit at `a` is `0b0`, then the noun is a direct atom.  Pin the expansion of the second bit at `a` as `c`; `p` is now the cursor after `c`, `q` is the atom from `e`, and `r` is an updated cache.  (See `+rub` discussion below for the atom expansion details.)
+A data cursor is pinned at `.c`, while the third bit is pinned at `.a`.  If the first bit at `.a` is `0b0`, then the noun is a direct atom.  Pin the expansion of the second bit at `.a` as `.c`; `.p` is now the cursor after `.c`, `.q` is the atom from `.e`, and `.r` is an updated cache.  (See `+rub` discussion below for the atom expansion details.)
 
-Otherwise, we have a cell, so we have to expand the second bit at `a`.  If it is `0b0`, then the cell needs to be decoded by decoding the noun at .  If it is `0b1`, then we have a saved reference and retrieve it from the cache (last branch).
+Otherwise, we have a cell, so we have to expand the second bit at `.a`.  If it is `0b0`, then the cell needs to be decoded by decoding the noun at .  If it is `0b1`, then we have a saved reference and retrieve it from the cache (last branch).
 
-If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that case, expand at `c` (the head), as `$(b c)` and pin the cursor after as `v`.  `+w` is the cell of `q.u` and `q.v`.  `p` is the lengths of `u` and `v` plus 2.  `q` is `+w`, with `r` is the cache with `+w` inserted.
+If the second bit at `.a` is `0b1`, then the noun is a saved reference.  In that case, expand at `.c` (the head), as `$(b c)` and pin the cursor after as `.v`.  `+w` is the cell of `q.u` and `q.v`.  `.p` is the lengths of `.u` and `.v` plus 2.  `.q` is `+w`, with `.r` is the cache with `+w` inserted.
 
 ### `+rub` {#rub}
 
@@ -84,13 +84,13 @@ If the second bit at `a` is `0b1`, then the noun is a saved reference.  In that 
   [(add (add c c) e) (cut 0 [(add d (dec c)) e] b)]
 ```
 
-`+rub` extracts a self-measuring atom from an atomic blob, which accepts a cell of bit position cursor `a` and atomic blob `b`.  `+rub` produces a number of bits to advance the cursor `p` and the encoded atom `q`.
+`+rub` extracts a self-measuring atom from an atomic blob, which accepts a cell of bit position cursor `.a` and atomic blob `.b`.  `+rub` produces a number of bits to advance the cursor `.p` and the encoded atom `.q`.
 
-`c` is a unary sequance of `0b1` bits followed by a `0b0` bit.  If `c` is `0b0`, then the cursor advancement `p` is `0b1` and the encoded atom `q` is `0b0`.  Otherwise, `c` is the number of bits needed to express the number of bits in `q`.
+`.c` is a unary sequance of `0b1` bits followed by a `0b0` bit.  If `.c` is `0b0`, then the cursor advancement `.p` is `0b1` and the encoded atom `.q` is `0b0`.  Otherwise, `.c` is the number of bits needed to express the number of bits in `.q`.
 
-The cursor `a` is advanced to include `c` and the terminator bit.
+The cursor `.a` is advanced to include `.c` and the terminator bit.
 
-We pin `e`, the number of bits in `q`. This is encoded as a `c-1`-length sequence of bits following `a`, which is added to $2^{c-1}$. `p` (the number of bits consumed) is `c+c+e`.  The packaged atom `q` is the `e`-length bitfield at `a+c+c`.
+We pin `.e`, the number of bits in `.q`. This is encoded as a `c-1`-length sequence of bits following `.a`, which is added to $2^{c-1}$. `.p` (the number of bits consumed) is `c+c+e`.  The packaged atom `.q` is the `.e`-length bitfield at `a+c+c`.
 
 ### `+jam` {#jam}
 

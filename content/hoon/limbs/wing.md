@@ -33,7 +33,7 @@ Intuitively, Hoon wings are written in the opposite order from attribute dot-pat
 
 Any item in the wing can resolve to a leg (fragment) or arm (computation).  But if a non-terminal item in the wing would resolve to an arm, it resolves instead to the subject of the arm -- in other words, the core exporting that name.
 
-The mysterious idiom `..b` produces the leg `b` if `b` is a leg; the core exporting `b` if `b` is an arm.  Since `.` is the same limb as `+`, `..b` is the same wing as `+1.foo`.
+The mysterious idiom `..b` produces the leg `.b` if `.b` is a leg; the core exporting `.b` if `.b` is an arm.  Since `.` is the same limb as `+`, `..b` is the same wing as `+1.foo`.
 
 ## Examples {#examples}
 

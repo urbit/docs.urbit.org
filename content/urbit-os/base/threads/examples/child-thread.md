@@ -136,7 +136,7 @@ Spider takes a poke with a mark `%spider-start` and a vase containing `[parent=(
 
 - `.parent` is an optional parent thread. In this case we say the parent is our tid. Specifying a parent means the child will be killed if the parent ends.
 - `.use` is the thread ID for the thread we're creating
-- `.beak` is a `[p=ship q=desk r=case]` triple which specifies the desk and revision containing the thread we want to run. In this case we just use `byk.bowl`, but with the date of revision `q` changed to `now.bowl`.
+- `.beak` is a `[p=ship q=desk r=case]` triple which specifies the desk and revision containing the thread we want to run. In this case we just use `byk.bowl`, but with the date of revision `r` changed to `now.bowl`.
 - `.file` is the filename of the thread we want to start
 - `.vase` is the vase it will be given as an argument when it's started
 

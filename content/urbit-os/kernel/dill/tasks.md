@@ -31,7 +31,7 @@ These are the Dill tasks not otherwise categorized as [session tasks](tasks.md#s
 
 This task is used only once, when Arvo first enters the [adult stage](../arvo/README.md#structural-interface-core). Dill is technically the first vane to be activated, via the `%boot` task, which then sends Jael (considered the "true" first vane) the `%dawn` or `%fake` task wrapped in the `%boot` task. Jael then goes on to call `%init` tasks for other vanes (including Dill).
 
-The `lit` flag specifies whether to boot in lite mode. `p` is either a [%dawn](../jael/tasks.md#dawn) or [%fake](../jael/tasks.md#fake) task. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
+The `lit` flag specifies whether to boot in lite mode. `.p` is either a [%dawn](../jael/tasks.md#dawn) or [%fake](../jael/tasks.md#fake) task. `%dawn` is for an ordinary boot and `%fake` is for booting a fake ship.
 
 This task would not be used from userspace.
 
@@ -97,7 +97,7 @@ Watch system output.
 [%logs p=(unit ~)]
 ```
 
-A non-null `p` subscribes to system output, and a null `p` unsubscribes. While subscribed, you'll receive each piece of output in a `%logs` gift as it occurs.
+A non-null `.p` subscribes to system output, and a null `.p` unsubscribes. While subscribed, you'll receive each piece of output in a `%logs` gift as it occurs.
 
 #### Returns
 
@@ -201,7 +201,7 @@ Terminal input.
 [%belt p=belt]
 ```
 
-The [$belt](data-types.md#belt) in `p` contains the input such as which key was pressed. Dill will convert the `$belt` into a [$dill-belt](data-types.md#dill-belt) and `%poke` it into the session handler agent for the session in question.
+The [$belt](data-types.md#belt) in `.p` contains the input such as which key was pressed. Dill will convert the `$belt` into a [$dill-belt](data-types.md#dill-belt) and `%poke` it into the session handler agent for the session in question.
 
 This task should be wrapped in a [`%shot`](tasks.md#shot) task to specify the session. Without the `%shot` wrapper, it will use the default session (`%$`).
 
@@ -275,11 +275,11 @@ Setup session.
 
 This task is always wrapped in a [`%shot`](tasks.md#shot) task, and creates the new session specified in that wrapper. If it's not wrapped in a `%shot` task, it will default to the default session (`%$`) and fail because it already exists. This task is designed to be used by a userspace session handler like `%drum` that multiplexes terminal interfaces for multiple userspace applications, but could also be used by a stand-alone application that talks to Dill directly.
 
-The Gall agent specified in `p` is the session handler or stand-alone application. The `q` field contains a list of `$gill:gall`, which are pairs of `[ship term]`, representing an app on a ship. The `$gill`s in `q` are the list of apps being managed by the session handler `q` that should be notified of being connected to this session. If `p` were a stand-alone application, `q` could be empty, or else just contain that one app.
+The Gall agent specified in `.p` is the session handler or stand-alone application. The `.q` field contains a list of `$gill:gall`, which are pairs of `[ship term]`, representing an app on a ship. The `$gill`s in `.q` are the list of apps being managed by the session handler `.q` that should be notified of being connected to this session. If `.p` were a stand-alone application, `.q` could be empty, or else just contain that one app.
 
-Dill will poke every agent listed in `q` (local or remote) with a [`%yow` `$dill-belt`](data-types.md#dill-belt), to let it know it's been connected. It will also `%watch` the agent `p` for [`$dill-blit`](data-types.md#dill-blit)s in `%fact`s with a `%dill-blit` `$mark` on the `$path` `/dill/[ses]` where `ses` is the session specified in the [`%shot`](tasks.md#shot) wrapper.
+Dill will poke every agent listed in `.q` (local or remote) with a [`%yow` `$dill-belt`](data-types.md#dill-belt), to let it know it's been connected. It will also `%watch` the agent `.p` for [`$dill-blit`](data-types.md#dill-blit)s in `%fact`s with a `%dill-blit` `$mark` on the `$path` `/dill/[ses]` where `ses` is the session specified in the [`%shot`](tasks.md#shot) wrapper.
 
-Additionally, the source of the `%open` request (as determined by the `$duct`, typically the agent in `p`) will begin receiving terminal output gifts for the session in question. Essentially, it behaves as though you also passed it a [`%view`](tasks.md#view) task.
+Additionally, the source of the `%open` request (as determined by the `$duct`, typically the agent in `.p`) will begin receiving terminal output gifts for the session in question. Essentially, it behaves as though you also passed it a [`%view`](tasks.md#view) task.
 
 #### Returns
 
@@ -365,7 +365,7 @@ Print `$tang` to terminal.
 [%talk p=(list tank)]
 ```
 
-The `$tank`s in `p` will be printed to the terminal, first to last.
+The `$tank`s in `.p` will be printed to the terminal, first to last.
 
 #### Returns
 
@@ -381,7 +381,7 @@ Print `$tape` to terminal.
 [%text p=tape]
 ```
 
-The `$tape` in `p` will be printed to the terminal.
+The `$tape` in `.p` will be printed to the terminal.
 
 #### Returns
 

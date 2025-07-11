@@ -115,7 +115,7 @@ Along with the poke, Eyre will also subscribe to the `/http-response/[eyre-id]` 
 
 The first fact's `$cage` must have a `$mark` of `%http-response-header` and a `$vase` containing a [`$response-header:http`](data-types.md#response-headerhttp) with the HTTP status code and headers of the response.
 
-The `$cage` of the second and subsequent facts must have a `$mark` of `%http-response-data` and a `$vase` containing a `(unit octs)` with the actual data of the response. An `$octs` is just `[p=@ud q=@]` where `p` is the byte-length of `q`, the data. You can send an arbitrary number of these.
+The `$cage` of the second and subsequent facts must have a `$mark` of `%http-response-data` and a `$vase` containing a `(unit octs)` with the actual data of the response. An `$octs` is just `[p=@ud q=@]` where `.p` is the byte-length of `.q`, the data. You can send an arbitrary number of these.
 
 Finally, once you've sent all the facts you want, you can kick Eyre's subscription and it will complete the response and close the connection to the HTTP client.
 

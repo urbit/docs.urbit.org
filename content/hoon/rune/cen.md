@@ -169,7 +169,7 @@ A `%:` expression calls a gate with many arguments. `a` is the gate to be called
 
 #### Discussion
 
-When `%:` is used in tall-form syntax, the series of expressions after `p` must be terminated with `==`.
+When `%:` is used in tall-form syntax, the series of expressions after `.p` must be terminated with `==`.
 
 #### Examples
 

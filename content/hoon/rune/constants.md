@@ -206,7 +206,7 @@ nest-fail
 
 #### Produces
 
-A warm (variable) atom `q` with aura `p`. Use the Hoon compiler parser function `+ream` to take a closer look:
+A warm (variable) atom `.q` with aura `.p`. Use the Hoon compiler parser function `+ream` to take a closer look:
 
 ```
 > (ream '12')

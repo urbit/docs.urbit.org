@@ -211,7 +211,7 @@ Each item may be an atom or (more commonly) a cell. The atom or head of the cell
 
 #### Defaults to
 
-The default of the last item `i` in `p`. Crashes if `p` is empty.
+The default of the last item `.i` in `.p`. Crashes if `.p` is empty.
 
 #### Discussion
 
@@ -292,11 +292,11 @@ $:(p1 p2 p3 pn)
 
 #### Normalizes to
 
-The tuple the length of `p`, normalizing each item.
+The tuple the length of `.p`, normalizing each item.
 
 #### Defaults to
 
-The tuple the length of `p`.
+The tuple the length of `.p`.
 
 #### Examples
 
@@ -358,7 +358,7 @@ None
 
 #### Discussion
 
-This can be used to obtain type(s) from a list of types `q` that do not satisfy a requirement given by `p`.
+This can be used to obtain type(s) from a list of types `.q` that do not satisfy a requirement given by `.p`.
 
 #### Examples
 
@@ -425,7 +425,7 @@ None
 
 #### Discussion
 
-This can be used to obtain type(s) from a list of types `q` that satisfy a requirement given by `p`.
+This can be used to obtain type(s) from a list of types `.q` that satisfy a requirement given by `.p`.
 
 #### Examples
 
@@ -509,7 +509,7 @@ None
 
 {% endtabs %}
 
-`p` is the type the gate takes and `q` is the type the gate produces.
+`.p` is the type the gate takes and `.q` is the type the gate produces.
 
 #### Discussion
 
@@ -569,11 +569,11 @@ None
 
 #### Normalizes to
 
-Default, if the sample is an atom; `p`, if the head of the sample is an atom; `q` otherwise.
+Default, if the sample is an atom; `.p`, if the head of the sample is an atom; `.q` otherwise.
 
 #### Defaults to
 
-The default of `p`.
+The default of `.p`.
 
 #### Examples
 
@@ -638,11 +638,11 @@ None
 <!--
 #### Normalizes to
 
-Default, if the sample is an atom; `p`, if the head of the sample is an atom; `q` otherwise.
+Default, if the sample is an atom; `.p`, if the head of the sample is an atom; `.q` otherwise.
 
 #### Defaults to
 
-The default of `p`.
+The default of `.p`.
 -->
 
 #### Examples
@@ -709,7 +709,7 @@ The product of the normalizing gate and sample.
 
 #### Defaults to
 
-The default of the last type listed in `p`, normalized with the normalizing gate.
+The default of the last type listed in `.p`, normalized with the normalizing gate.
 
 #### Discussion
 
@@ -774,15 +774,15 @@ structure.
 
 #### Product
 
-Creates a structure (custom type) just like `q`, except its default value is `p`.
+Creates a structure (custom type) just like `.q`, except its default value is `.p`.
 
 #### Defaults to
 
-The product of `p`.
+The product of `.p`.
 
 #### Discussion
 
-You should make sure that the product type of `p` nests under `q`. You can check the default value of some structure (custom type) `r` with `*r`. (See the [`^*` rune](ket.md#kettar).)
+You should make sure that the product type of `.p` nests under `.q`. You can check the default value of some structure (custom type) `.r` with `*r`. (See the [`^*` rune](ket.md#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`. (The latter uses older Hoon syntax that is still accepted. Preferably it would be `%~`.)
 
@@ -867,15 +867,15 @@ None
 
 #### Normalizes to
 
-`p`, if the sample is an atom; `q`, if the sample is a cell.
+`.p`, if the sample is an atom; `.q`, if the sample is a cell.
 
 #### Defaults to
 
-The default of `p`.
+The default of `.p`.
 
 #### Produces
 
-A structure which applies `p` if its sample is an atom, `q` if its sample is a cell.
+A structure which applies `.p` if its sample is an atom, `.q` if its sample is a cell.
 
 #### Examples
 
@@ -1010,13 +1010,13 @@ $?(p1 p2 p3 pn)
 
 #### Normalizes to
 
-The last item in `p` which normalizes the sample to itself.
+The last item in `.p` which normalizes the sample to itself.
 
-Void, if `p` is empty.
+Void, if `.p` is empty.
 
 #### Defaults to
 
-The last item in `p`.
+The last item in `.p`.
 
 #### Discussion
 

@@ -217,7 +217,7 @@ This gate accepts a number and divides it by every number from half the number d
 --
 ```
 
-Now that we can find factors, it should be straightforward to find primes.  In this case, we simply check each value up to `n` and see if it has any factors (other than itself and 1, of course).
+Now that we can find factors, it should be straightforward to find primes.  In this case, we simply check each value up to `.n` and see if it has any factors (other than itself and 1, of course).
 
 ```hoon
 |%

@@ -168,7 +168,7 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 To write or modify a file, we send Clay a `%info` task.
 
-If the head of the [`$nori`](data-types.md#nori) `dit` is `%|`, it's a request to add a label to a commit, and the `$nori` looks like `[%| p=@tas q=(unit aeon)]` where `p` is the label and `q` is the [`$aeon`](./data-types.md#aeon) (commit reference). If `q` is null, the label is applied to the latest commit in the desk.
+If the head of the [`$nori`](data-types.md#nori) `dit` is `%|`, it's a request to add a label to a commit, and the `$nori` looks like `[%| p=@tas q=(unit aeon)]` where `.p` is the label and `.q` is the [`$aeon`](./data-types.md#aeon) (commit reference). If `.q` is null, the label is applied to the latest commit in the desk.
 
 If the head of the `$nori` is `%&`, it's a request to add, delete or modify one or more files in the given desk, and looks like `[%& p=soba]`. The [`$soba`](data-types.md#soba) in the `$nori` is just a list of changes so you can make more than one change in one request. Its `$path` is just the path to a file like `/gen/hood/hi/hoon` and the [`$miso`](./data-types.md#miso) is one of these types of requests:
 
@@ -212,7 +212,7 @@ Note that the given `$rein` overrides the existing one set by a previous `%rein`
 [%tire p=(unit ~)]
 ```
 
-A `%tire` task subscribes to, or unsubscribes from, updates to the state of apps. If `p` is non-null, it subscribes. If `p` is null, it unsubscribes.
+A `%tire` task subscribes to, or unsubscribes from, updates to the state of apps. If `.p` is non-null, it subscribes. If `.p` is null, it unsubscribes.
 
 Once subscribed, you'll immediately receive a `%tire` gift, which looks like:
 
@@ -478,9 +478,9 @@ Clay will respond to the request with a `%mere` gift which looks like:
 [%mere p=(each (set path) (pair term tang))]  ::  merge result
 ```
 
-If the merge succeeded, `p` will look like `[%mere p=[%.y p={}]]` where `p.p` is the set of files which had a merge conflict. For example, `[%mere p=[%.y p={/foo/txt}]]` means there was a conflict with `/foo/txt`. An empty set means there were no conflicts.
+If the merge succeeded, `.p` will look like `[%mere p=[%.y p={}]]` where `p.p` is the set of files which had a merge conflict. For example, `[%mere p=[%.y p={/foo/txt}]]` means there was a conflict with `/foo/txt`. An empty set means there were no conflicts.
 
-If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` where the `$term` is an error message and the `$tang` contains additional details, for example:
+If the merge failed, `.p` will have a head of `%.n` and then a `[term tang]` where the `$term` is an error message and the `$tang` contains additional details, for example:
 
 ```hoon
 [ %mere

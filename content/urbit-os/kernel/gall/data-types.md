@@ -269,7 +269,7 @@ Gall will not allow a `%slip`, so in practice a `$card` will be one of:
 - `[%pass path note]`
 - `[%give gift]`
 
-For `%pass`, `p` specifies the `$wire` on which a response should be returned. See [`$note:agent`](#noteagent) and [`$gift:agent`](#giftagent) below for details of their types.
+For `%pass`, `.p` specifies the `$wire` on which a response should be returned. See [`$note:agent`](#noteagent) and [`$gift:agent`](#giftagent) below for details of their types.
 
 ---
 
@@ -333,7 +333,7 @@ This is in contrast to [`gift:agent`](#giftagent)s, which are responses to incom
 
 - `%watch`: Subscribe to `$path` on the target ship and agent.
 - `%watch-as`: Same as `%watch`, except you ask the target's Gall to convert subscription updates to the `$mark` you specified rather than just giving you the `$mark` produced by the agent.
-- `%leave`: Cancel subscription. The particular subscription to cancel will be determined by the `$wire` given in the `p` field of the containing `%pass` [`card:agent`](#cardagent).
+- `%leave`: Cancel subscription. The particular subscription to cancel will be determined by the `$wire` given in the `.p` field of the containing `%pass` [`card:agent`](#cardagent).
 - `%poke`: Poke the target ship and agent with the given `$cage`, which is a pair of `[mark vase]`.
 - `%poke-as`: Same as `%poke`, except the `$cage` will be converted to the specified `$mark` before sending.
 
@@ -358,8 +358,8 @@ This is in contrast to [`task:agent`](#taskagent)s, which are messages to other 
 
 - `%fact`: An update to existing subscribers. The `.paths` field specifies which subscription paths the update should go out to. The `$cage` is the data, and is a `[mark vase]`.
 - `%kick`: Kick subscriber, ending their subscription. The `.paths` field specifies which paths the subscriber should be kicked from, and the `$ship` field specifies the ship to kick. If the `$ship` field is null, all subscribers on the specified paths are kicked. Gall will automatically remove the subscription from our agent's [`$bitt`](#bitt) (inbound subscription `+map`), and subscriber will no longer receive updates on the `$path`s in question.
-- `%watch-ack`: Acknowledge a subscription request. If `p` is null, it's an ack (positive acknowledgement), and if `p` is non-null, it's a nack (negative acknowledgement). Simply crashing will caused Gall to nack a subscription request, and not crashing but not explicitly producing a `%watch-ack` gift will cause Gall to ack a subscription request. Therefore, you'd typically only explicitly produce a `%watch-ack` gift if you wanted to nack a subscription request with a custom error in the `$tang`.
-- `%poke-ack`: Acknowledge a poke. If `p` is null, it's an ack, and if `p` is non-null, it's a nack. Simply crashing will cause Gall to nack a poke, and not crashing but not explicitly producing a `%poke-ack` gift will cause Gall to ack a poke. Therefore, you'd typically only explicitly produce a `%poke-ack` gift if you wanted to nack a poke with a custom error in the `$tang`.
+- `%watch-ack`: Acknowledge a subscription request. If `.p` is null, it's an ack (positive acknowledgement), and if `.p` is non-null, it's a nack (negative acknowledgement). Simply crashing will caused Gall to nack a subscription request, and not crashing but not explicitly producing a `%watch-ack` gift will cause Gall to ack a subscription request. Therefore, you'd typically only explicitly produce a `%watch-ack` gift if you wanted to nack a subscription request with a custom error in the `$tang`.
+- `%poke-ack`: Acknowledge a poke. If `.p` is null, it's an ack, and if `.p` is non-null, it's a nack. Simply crashing will cause Gall to nack a poke, and not crashing but not explicitly producing a `%poke-ack` gift will cause Gall to ack a poke. Therefore, you'd typically only explicitly produce a `%poke-ack` gift if you wanted to nack a poke with a custom error in the `$tang`.
 
 A `gift:agent` is always wrapped in a `%give` [`card:agent`](#cardagent).
 
@@ -380,8 +380,8 @@ A `$sign` is like a [`gift:agent`](#giftagent) but it's something that comes _in
 
 The possible types are:
 
-- `%poke-ack`: Another agent has acked (positively acknowledged) or nacked (negatively acknowledged) a `%poke` [`$task:agent`](#taskagent) we previously sent. It's an ack if `p` is null and a nack if `p` is non-null. The `$tang` contains an error or traceback if it's a nack.
-- `%watch-ack`: Another agent has acked or nacked a `%watch` [`$task:agent`](#taskagent) (subscription request) we previously sent. It's an ack if `p` is null and a nack if `p` is non-null. The `$tang` contains an error or traceback if it's a nack. If it's a nack, Gall will automatically remove the subscription from our agent's [`$boat`](#boat) (outbound subscription map).
+- `%poke-ack`: Another agent has acked (positively acknowledged) or nacked (negatively acknowledged) a `%poke` [`$task:agent`](#taskagent) we previously sent. It's an ack if `.p` is null and a nack if `.p` is non-null. The `$tang` contains an error or traceback if it's a nack.
+- `%watch-ack`: Another agent has acked or nacked a `%watch` [`$task:agent`](#taskagent) (subscription request) we previously sent. It's an ack if `.p` is null and a nack if `.p` is non-null. The `$tang` contains an error or traceback if it's a nack. If it's a nack, Gall will automatically remove the subscription from our agent's [`$boat`](#boat) (outbound subscription map).
 - `%fact`: An update from another agent to which we've previously subscribed with a `%watch` [`$task:agent`](#taskagent) (subscription request). The `$cage` contains the data, and is a `[mark vase]`.
 - `%kick`: Our subscription to another agent has been ended, and we'll no longer receive updates. A `%kick` may be intentional, but it may also happen due to certain network conditions or other factors. As a result, it's best to try and resubscribe with another `%watch` [`$task:agent`](#taskagent), and if they nack the `%watch`, we can conclude it was intentional and give up.
 

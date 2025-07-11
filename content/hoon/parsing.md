@@ -72,7 +72,7 @@ In this section we discuss the types most commonly used for Hoon parsers. In sho
 
 A `+hair` is a pair of `@ud` used to keep track of what has already been parsed for stack tracing purposes. This allows the parser to reveal where the problem is in case it hits something unexpected during parsing.
 
-`p` represents the line and `q` represents the column.
+`.p` represents the line and `.q` represents the column.
 
 ### `+nail` {#nail}
 
@@ -90,9 +90,9 @@ For example, if you wish to feed the entire `$tape` `"abc"` into a parser, you w
 ++  edge  [p=hair q=(unit [p=* q=nail])]
 ```
 
-An `+edge` is the output of a parser. If parsing succeeded, `p` is the location of the original input `tape `up to which the text has been parsed. If parsing failed, `p` will be the first `+hair` at which parsing failed.
+An `+edge` is the output of a parser. If parsing succeeded, `.p` is the location of the original input `tape `up to which the text has been parsed. If parsing failed, `.p` will be the first `+hair` at which parsing failed.
 
-`q` may be `~`, indicating that parsing has failed . If parsing did not fail, `p.u.q` is the data structure that is the result of the parse up to this point, while `q.u.q` is the `+nail` which contains the remainder of what is to be parsed. If `q` is not null, `p` and `p.q.u.q` are identical.
+`.q` may be `~`, indicating that parsing has failed . If parsing did not fail, `p.u.q` is the data structure that is the result of the parse up to this point, while `q.u.q` is the `+nail` which contains the remainder of what is to be parsed. If `.q` is not null, `.p` and `p.q.u.q` are identical.
 
 ### `+rule` {#rule}
 
@@ -299,7 +299,7 @@ We can combine `+star` with `+next` to just return the whole input:
 
 `+cook` takes a `+rule` and a gate and produces a modified version of the `+rule` that passes the result of a successful parse through the given gate.
 
-Let's modify the rule `(just 'a')` so that it when it successfully parses `a`, it returns the following letter `b` as the result.
+Let's modify the rule `(just 'a')` so that it when it successfully parses `.a`, it returns the following letter `.b` as the result.
 
 ```
 ((cook |=(a=@ `@t`+(a)) (just 'a')) [[1 1] "abc"])

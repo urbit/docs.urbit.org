@@ -173,7 +173,7 @@ This is the unencoded global path prefix for a node in Clay. It's a triple of a 
 
 Global name
 
-An unencoded global path to a node in Clay. The [`$beak`](arvo.md#beak) denotes the [`$ship`](arvo.md#ship), [`$desk`](arvo.md#desk) and [`$case`](arvo.md#case) (revision reference), and then `s` is the path to the node therein.
+An unencoded global path to a node in Clay. The [`$beak`](arvo.md#beak) denotes the [`$ship`](arvo.md#ship), [`$desk`](arvo.md#desk) and [`$case`](arvo.md#case) (revision reference), and then `.s` is the path to the node therein.
 
 #### Source
 

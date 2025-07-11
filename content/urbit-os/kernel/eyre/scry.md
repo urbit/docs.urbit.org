@@ -194,7 +194,7 @@ A scry with `%connections` in place of the `$desk` in the `$beak` will return al
 
 ## `%authentication-state` {#authentication-state}
 
-A scry with `$authentication-state` in place of the `$desk` in the `$beak` will return authentication details of all current sessions. The type returned is a [`$authentication-state`](data-types.md#authentication-state). The `p` field is the cookie sans the `urbauth-[ship]=` part.
+A scry with `$authentication-state` in place of the `$desk` in the `$beak` will return authentication details of all current sessions. The type returned is a [`$authentication-state`](data-types.md#authentication-state). The `.p` field is the cookie sans the `urbauth-[ship]=` part.
 
 #### Example {#example-7}
 

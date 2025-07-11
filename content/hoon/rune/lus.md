@@ -85,13 +85,13 @@ Two arguments, fixed.
 |----------------------|-----------|----------------|
 | `+$  p=term  q=spec` | None      | None           |
 
-`p` is an arm name, and `q` is any structure expression.
+`.p` is an arm name, and `.q` is any structure expression.
 
 #### Discussion
 
 Arms produced by `+$` are essentially type definitions. They should be used when one wants to define custom types using core arms.
 
-The Hoon subexpression, `q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `$tape`).
+The Hoon subexpression, `.q`, must be a structure expression. That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants). Names of structures are also permitted (e.g., `$tape`).
 
 #### Examples
 
@@ -125,13 +125,13 @@ Two arguments, fixed.
 |----------------------|-----------|----------------|
 | `++  p=term  q=hoon` | None      | None           |
 
-`p` is the arm name, and `q` is any Hoon expression.
+`.p` is the arm name, and `.q` is any Hoon expression.
 
 #### Discussion
 
 All arms must have a name (e.g., `+add`). An arm is computed by name resolution. (This resolution is implicit in the case of `$` arms. See `|=`, `|-`, and `|^`.) The `++` rune is used for explicitly giving a name to an arm.
 
-Any Hoon expression, `q`, may be used to define the arm computation.
+Any Hoon expression, `.q`, may be used to define the arm computation.
 
 #### Examples
 
@@ -185,7 +185,7 @@ None
 
 {% endtabs %}
 
-`a`, `c`, `e` are arm names and `b`, `d`, `f` are any Hoon expression. Note that unlike all other runes with a variable number of arguments, the list of arguments of `+*` does not end with a terminator.
+`.a`, `.c`, `.e` are arm names and `.b`, `.d`, `.f` are any Hoon expression. Note that unlike all other runes with a variable number of arguments, the list of arguments of `+*` does not end with a terminator.
 
 `+*` arms must always come at the beginning of the battery, before any other type of lus arm.
 

@@ -135,7 +135,7 @@ Behn does not return any gift in response to a `%vega` task.
 
 Set timer.
 
-This task sets a timer to fire at the `@da` specified in `p`.
+This task sets a timer to fire at the `@da` specified in `.p`.
 
 #### Returns
 

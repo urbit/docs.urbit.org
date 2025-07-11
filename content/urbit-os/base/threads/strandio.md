@@ -1346,7 +1346,7 @@ Rewrite a strand failure error.
 
 This function takes the return `$mold` of the strand in question as its argument and returns a gate that takes two arguments:
 
-- `f`: a gate that takes a `[term tang]` and produces a `[term tang]`. This is the `%error-tag` and stack trace of the failure you're rewriting.
+- `.f`: a gate that takes a `[term tang]` and produces a `[term tang]`. This is the `%error-tag` and stack trace of the failure you're rewriting.
 - `computation`: the strand whose errors you're rewriting.
 
 See the example below for usage.

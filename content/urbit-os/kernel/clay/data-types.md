@@ -592,9 +592,9 @@ File delta
 There are four kinds of changes that may be made to a node in a `$desk`.
 
 - `%del`: deletes the node.
-- `%ins`: inserts a file given by `p`.
+- `%ins`: inserts a file given by `.p`.
 - `%dif`: currently unimplemented. This may seem strange, so we remark that diffs for individual files are implemented using `+diff` and `+pact` in `$mark`s. So for an `+ankh`, which may include both files and directories, `%dif` being unimplemented really just means that we do not yet have a formal concept of changes in directory structure.
-- `%mut`: mutates the file using raw data given by `p`.
+- `%mut`: mutates the file using raw data given by `.p`.
 
 ---
 
@@ -611,7 +611,7 @@ Computed delta
 ```
 
 - `%del`: deletes the node.
-- `%ins`: inserts file `p`.
+- `%ins`: inserts file `.p`.
 - `%dif`: currently unimplemented.
 
 ---
@@ -697,7 +697,7 @@ Repository action
 
 This describes a change that we are asking Clay to make to the `$desk`. There are two kinds of changes that may be made: we can modify files or we can apply a label to a commit.
 
-In the `&` case, we will apply the given changes. In the `|` case, we will apply the given label to the commit specified in `q`, or the current one if it's null.
+In the `&` case, we will apply the given changes. In the `|` case, we will apply the given label to the commit specified in `.q`, or the current one if it's null.
 
 ---
 
@@ -810,8 +810,8 @@ This is the data associated to the response to a request.
 - `p.p`: specifies the type of data that was requested (and is produced).
 - `q.p`: gives the specific version reported (since a range of versions may be requested in a subscription).
 - `r.p`: the `$desk`.
-- `q`: the path to the filesystem node.
-- `r`: is the data itself (in the format specified by `p.p`).
+- `.q`: the path to the filesystem node.
+- `.r`: is the data itself (in the format specified by `p.p`).
 
 ---
 
@@ -885,7 +885,7 @@ Request/desist
 +$  riff  [p=desk q=(unit rave)]
 ```
 
-This represents a request for data about a particular `$desk`. If `q` contains a `$rave`, then this opens a subscription to the `$desk` for that data. If `q` is null, then this tells Clay to cancel the subscription along this duct.
+This represents a request for data about a particular `$desk`. If `.q` contains a `$rave`, then this opens a subscription to the `$desk` for that data. If `.q` is null, then this tells Clay to cancel the subscription along this duct.
 
 ---
 
@@ -1042,10 +1042,10 @@ Change part of a list.
   ==
 ```
 
-This is a single change in a list of elements of type `a`. For example, `(unce @t)` is a single change in lines of text.
+This is a single change in a list of elements of type `.a`. For example, `(unce @t)` is a single change in lines of text.
 
-- `%&`: the next `p` lines are unchanged.
-- `%|`: the lines `p` have changed to `q`.
+- `%&`: the next `.p` lines are unchanged.
+- `%|`: the lines `.p` have changed to `.q`.
 
 ---
 
@@ -1116,8 +1116,8 @@ Proto-commit
 
 A `$yuki` is a proto-commit: a new, proposed commit that has not yet been finalized. This is in contrast to a [`$yaki`](#yaki). The main difference is that a `$yuki` may contain actual data, while a `$yaki` only contains [`$lobe`](#lobe)s (content hashes used as references to data in the general object store).
 
-- `p`: commit references of any parents.
-- `q`: a `+map` from file paths to either [`$page`](#page) data or `$lobe`s.
+- `.p`: commit references of any parents.
+- `.q`: a `+map` from file paths to either [`$page`](#page) data or `$lobe`s.
 
 ---
 
@@ -1134,10 +1134,10 @@ Finalized commit
   ==
 ```
 
-- `p`: a `+list` of the hashes of the parents of this commit. In most cases, this will be a single commit, but in a merge there may be more parents.
-- `q`: is a `+map` of the `$path`s on a desk to the content hashes at that location. If you understand what a [`$lobe`](#lobe) and a [`$page`](#page) is, then the type signature here tells the whole story.
-- `r`: is the hash associated with this commit.
-- `t`: is the date at which this commit was made.
+- `.p`: a `+list` of the hashes of the parents of this commit. In most cases, this will be a single commit, but in a merge there may be more parents.
+- `.q`: is a `+map` of the `$path`s on a desk to the content hashes at that location. If you understand what a [`$lobe`](#lobe) and a [`$page`](#page) is, then the type signature here tells the whole story.
+- `.r`: is the hash associated with this commit.
+- `.t`: is the date at which this commit was made.
 
 ---
 
@@ -1297,7 +1297,7 @@ Mark conversion request
 +$  mars  [a=mark b=mark]
 ```
 
-From `a` to `b`.
+From `.a` to `.b`.
 
 ---
 

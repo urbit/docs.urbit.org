@@ -327,9 +327,9 @@ Acknowledge a subscription request.
 [%watch-ack p=(unit tang)]
 ```
 
-A `%watch-ack` is automatically given by Gall in response to a `%watch` task. A `%watch-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `p` is null, and a nack when `p` is non-null, instead containing a stack trace.
+A `%watch-ack` is automatically given by Gall in response to a `%watch` task. A `%watch-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `.p` is null, and a nack when `.p` is non-null, instead containing a stack trace.
 
-A `%watch-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `+on-watch` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a subscription request by crashing or not crashing, respectively.
+A `%watch-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `+on-watch` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `.p`. Your agent should therefore be designed to accept or reject a subscription request by crashing or not crashing, respectively.
 
 ---
 
@@ -341,9 +341,9 @@ Acknowledge a poke.
 [%poke-ack p=(unit tang)]
 ```
 
-A `%poke-ack` is automatically given by Gall in response to a `%poke` task. A `%poke-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `p` is null, and a nack when `p` is non-null, instead containing a stack trace.
+A `%poke-ack` is automatically given by Gall in response to a `%poke` task. A `%poke-ack` is either positive (an "ack") or negative (a "nack"). It's an ack when `.p` is null, and a nack when `.p` is non-null, instead containing a stack trace.
 
-A `%poke-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `+on-poke` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `p`. Your agent should therefore be designed to accept or reject a poke by crashing or not crashing, respectively.
+A `%poke-ack` is given *automatically* and *implicitly* by Gall itself, it is unnecessary for an agent to emit one explicitly. An ack will be given as long as `+on-poke` doesn't crash. A nack will be given if it *does* crash, with a trace of the crash in `.p`. Your agent should therefore be designed to accept or reject a poke by crashing or not crashing, respectively.
 
 ---
 
@@ -363,9 +363,9 @@ Gall translates agent [`$task:agent`](data-types.md#taskagent)s emitted by agent
 
 Its fields are:
 
-- `p`: A `$sock`, a `(pair ship ship)`, the sending and receiving ships.
-- `q`: The source agent.
-- `r`: A [`$deal`](data-types.md#deal) is either a [`$task:agent`](data-types.md#taskagent) or a `%raw-poke`. This is the request itself.
+- `.p`: A `$sock`, a `(pair ship ship)`, the sending and receiving ships.
+- `.q`: The source agent.
+- `.r`: A [`$deal`](data-types.md#deal) is either a [`$task:agent`](data-types.md#taskagent) or a `%raw-poke`. This is the request itself.
 
 #### Returns
 

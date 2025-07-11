@@ -71,7 +71,7 @@ p^q
 
 #### Produces
 
-The cell of `p` and `q`.
+The cell of `.p` and `.q`.
 
 #### Discussion
 

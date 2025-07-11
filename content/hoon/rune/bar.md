@@ -77,7 +77,7 @@ body
 
 #### Semantics
 
-`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `a` is a `+lest` of `$term` used as identifiers for the input molds. `b` is a structure built from elements of `a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `a` into `b`.
+`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds. `.a` is a `+lest` of `$term` used as identifiers for the input molds. `.b` is a structure built from elements of `.a`. The output of `|$` is a mold builder obtained by substituting the input molds parameterized by `.a` into `.b`.
 
 #### Discussion
 
@@ -163,7 +163,7 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 The product of a `|_` expression is a **door**, a core with one or more arms whose payload includes a sample. That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
 
-`a` defines the door sample type and usually includes a name assignment (e.g., `n=@`). `a` is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`b`, `d`, and `f` above), which is followed by the expression (`c`, `e`, and `g` above) that defines the arm product.
+`.a` defines the door sample type and usually includes a name assignment (e.g., `n=@`). `.a` is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`.b`, `.d`, and `.f` above), which is followed by the expression (`.c`, `.e`, and `.g` above) that defines the arm product.
 
 The context of the door is the subject of the `|_` expression.
 
@@ -334,7 +334,7 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 The product of a `|%` expression is a dry core with one or more arms in the battery.
 
-The `|%` rune is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`a`, `c`, and `e` above), which is followed by the expression (`b`, `d`, and `f` above) that defines the arm product.
+The `|%` rune is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`). There must be at least one arm, but there may be arbitrarily many. Each arm must include a name (`.a`, `.c`, and `.e` above), which is followed by the expression (`.b`, `.d`, and `.f` above) that defines the arm product.
 
 The core payload is the subject of the `|%` expression.
 
@@ -394,7 +394,7 @@ One argument, fixed.
 
 #### Semantics
 
-A `|.` expression produces a core with a single arm, `$`. The core isn't explicitly given a sample. `a` is a Hoon expression that defines the computation of the `$` arm.
+A `|.` expression produces a core with a single arm, `$`. The core isn't explicitly given a sample. `.a` is a Hoon expression that defines the computation of the `$` arm.
 
 The payload of the core is the subject of the `|.` expression.
 
@@ -495,7 +495,7 @@ $
 
 #### Semantics
 
-A `|^` expression produces a multi-arm core whose battery includes a `$` arm, which is evaluated immediately. `a` is a Hoon expression that defines the product of the `$` arm. `a` is followed by a series of arm definitions for the rest of the core battery arms. There must be at least one arm other than the `$` arm.
+A `|^` expression produces a multi-arm core whose battery includes a `$` arm, which is evaluated immediately. `.a` is a Hoon expression that defines the product of the `$` arm. `.a` is followed by a series of arm definitions for the rest of the core battery arms. There must be at least one arm other than the `$` arm.
 
 #### Discussion
 
@@ -542,7 +542,7 @@ One argument, fixed.
 
 #### Semantics
 
-A `|-` expression produces a core with one arm named `$` and immediately evaluates `$`. `a` is a Hoon expression that determines what `$` evaluates to.
+A `|-` expression produces a core with one arm named `$` and immediately evaluates `$`. `.a` is a Hoon expression that determines what `$` evaluates to.
 
 #### Discussion
 
@@ -699,7 +699,7 @@ Wet and dry gates in a nutshell:
 [%dog %cat]
 ```
 
-The dry gate does not preserve the type of `a` and `b`; the wet gate does.
+The dry gate does not preserve the type of `.a` and `.b`; the wet gate does.
 
 ---
 
@@ -756,7 +756,7 @@ None
 
 The product of a `|=` expression is a dry **gate**, i.e., a Hoon function.
 
-`p` defines the gate sample type -- i.e., the input value type -- and usually includes a sample name assignment (e.g., `a=@`). `q` is an expression that determines the output value of the gate.
+`.p` defines the gate sample type -- i.e., the input value type -- and usually includes a sample name assignment (e.g., `a=@`). `.q` is an expression that determines the output value of the gate.
 
 #### Discussion
 
@@ -836,7 +836,7 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 #### Semantics
 
-A `|@` expression produces a 'wet' core whose payload is the expression's subject. The various arms in the battery are each named (`a`, `c`, and `e` above) and defined explicitly with a Hoon expression (with `b`, `d`, and `f` above).
+A `|@` expression produces a 'wet' core whose payload is the expression's subject. The various arms in the battery are each named (`.a`, `.c`, and `.e` above) and defined explicitly with a Hoon expression (with `.b`, `.d`, and `.f` above).
 
 #### Discussion
 

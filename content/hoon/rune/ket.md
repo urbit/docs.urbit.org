@@ -39,7 +39,7 @@ One argument, fixed.
 
 #### Produces
 
-`p` as an iron core; crash if not a gold core.
+`.p` as an iron core; crash if not a gold core.
 
 #### Discussion
 
@@ -65,7 +65,7 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 
 ## ^: "ketcol" {#ketcol}
 
-Switch parser into structure mode (mold definition) and produce a gate for type `p`.  (See [`,` com]() which toggles modes.)
+Switch parser into structure mode (mold definition) and produce a gate for type `.p`.  (See [`,` com]() which toggles modes.)
 
 #### Syntax
 
@@ -126,7 +126,7 @@ ford: %ride failed to execute:
 
 ## ^. "ketdot" {#ketdot}
 
-Typecast on value produced by passing `q` to `p`.
+Typecast on value produced by passing `.q` to `.p`.
 
 #### Syntax
 
@@ -173,9 +173,9 @@ None
 
 #### Discussion
 
-`p` produces a gate and q is any Hoon expression.
+`.p` produces a gate and q is any Hoon expression.
 
-`^.` is particularly useful when `p` is a gate that 'cleans up' the type information about some piece of data. For example, `+limo` is used to turn a raw noun of the appropriate shape into a genuine list. Hence we can use `^.` to cast with `+limo` and similar gates, ensuring that the product has the desired type.
+`^.` is particularly useful when `.p` is a gate that 'cleans up' the type information about some piece of data. For example, `+limo` is used to turn a raw noun of the appropriate shape into a genuine list. Hence we can use `^.` to cast with `+limo` and similar gates, ensuring that the product has the desired type.
 
 #### Examples
 
@@ -312,7 +312,7 @@ None
 
 #### Produces
 
-The value of `q` with the type of `p`, if the type of `q` nests within the type of `p`. Otherwise, `nest-fail`.
+The value of `.q` with the type of `.p`, if the type of `.q` nests within the type of `.p`. Otherwise, `nest-fail`.
 
 #### Examples
 
@@ -343,7 +343,7 @@ One argument, fixed.
 
 #### Produces
 
-`p` as a zinc core; crash if `p` isn't a gold or zinc core.
+`.p` as a zinc core; crash if `.p` isn't a gold or zinc core.
 
 #### Discussion
 
@@ -408,7 +408,7 @@ One argument, fixed.
 
 #### Produces
 
-`p`, folded as a constant if possible.
+`.p`, folded as a constant if possible.
 
 #### Examples
 
@@ -434,7 +434,7 @@ One argument, fixed.
 |-----------|-----------|----------------|
 | `^*  p`   | `^*(p)`   | `*p`           |
 
-`p` is any structure expression.
+`.p` is any structure expression.
 
 #### AST
 
@@ -444,7 +444,7 @@ One argument, fixed.
 
 #### Produces
 
-A default value (i.e., 'bunt value') of the type `p`.
+A default value (i.e., 'bunt value') of the type `.p`.
 
 #### Examples
 
@@ -524,7 +524,7 @@ q
 
 #### Produces
 
-If `p` is a term, the product `q` with type `[%face p q]`. `p` may also be a tuple of terms, or a term-skin pair; the type of `q` must divide evenly into cells to match it.
+If `.p` is a term, the product `.q` with type `[%face p q]`. `.p` may also be a tuple of terms, or a term-skin pair; the type of `.q` must divide evenly into cells to match it.
 
 #### Examples
 
@@ -568,7 +568,7 @@ One argument, fixed.
 
 #### Produces
 
-`p` as a lead core; crash if not a core.
+`.p` as a lead core; crash if not a core.
 
 #### Discussion
 

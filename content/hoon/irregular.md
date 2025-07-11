@@ -348,7 +348,7 @@ See [%sand](rune/constants.md#warm) for other irregular definitions of atoms.
 
 * `+15` is slot 15
 * `.` is the whole subject (slot 1)
-* `^a` is the `.a` "of a higher scope", i.e. "resolve variable `a`, ignoring the first one found".
+* `^a` is the `.a` "of a higher scope", i.e. "resolve variable `.a`, ignoring the first one found".
 * `^^p` even higher, and so on.
 
 'Lark' syntax for slots / tree addressing:

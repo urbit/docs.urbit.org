@@ -317,7 +317,7 @@ An HTTP method.
   ==
 ```
 
-A single HTTP request. The [`$method:http`](#methodhttp) is the HTTP method, the `url` is the unescaped URL, the [`$header-list:http`](#header-listhttp) contains the HTTP headers of the request and the `body` is the actual data. An `$octs` is just `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
+A single HTTP request. The [`$method:http`](#methodhttp) is the HTTP method, the `url` is the unescaped URL, the [`$header-list:http`](#header-listhttp) contains the HTTP headers of the request and the `body` is the actual data. An `$octs` is just `[p=@ud q=@]` where `.p` is the byte-length of `.q`, the data.
 
 ---
 
@@ -369,6 +369,6 @@ Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding
 --
 ```
 
-A simple, one-event response used for generators. The [`$reponse-header:http`](#response-headerhttp) contains the status code and HTTP headers. The `$octs` in the `$data` contains the body of the response and is a `[p=@ud q=@]` where `p` is the byte-length of `q`, the data.
+A simple, one-event response used for generators. The [`$reponse-header:http`](#response-headerhttp) contains the status code and HTTP headers. The `$octs` in the `$data` contains the body of the response and is a `[p=@ud q=@]` where `.p` is the byte-length of `.q`, the data.
 
 ---

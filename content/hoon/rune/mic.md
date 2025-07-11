@@ -65,7 +65,7 @@ One fixed argument, then a variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.q`:
 
 Regular form:
 

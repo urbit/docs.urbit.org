@@ -323,7 +323,7 @@ Variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.p`:
 
 ```hoon
 :-(a :-(b :-(c :-(... z)))))
@@ -413,7 +413,7 @@ Variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.p`:
 
 ```hoon
 :-(a :-(b :-(c :-(... :-(z ~)))))

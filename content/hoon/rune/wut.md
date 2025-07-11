@@ -77,7 +77,7 @@ Variable number of arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.p`:
 
 ```hoon
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
@@ -173,7 +173,7 @@ None
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.q`:
 
 ```hoon
 ?:  ?=(p.a p)  q.a
@@ -643,7 +643,7 @@ None
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `r`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.r`:
 
 ```hoon
 ?:  ?=(p.a p)  q.a
@@ -738,7 +738,7 @@ Variable arguments.
 
 #### Expands to
 
-**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `.p`:
 
 ```hoon
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))

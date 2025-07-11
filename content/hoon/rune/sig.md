@@ -488,7 +488,7 @@ This may pause for a second:
 121.393
 ```
 
-This may make you want to press `ctrl-c`:
+This may make you want to press `Ctrl+C`:
 
 ```
 > %.(30 |=(a=@ ?:((lth a 2) 1 (add $(a (sub a 2)) $(a (dec a))))))

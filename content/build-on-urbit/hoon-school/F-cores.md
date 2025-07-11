@@ -669,7 +669,7 @@ You need to make sure when you compose a trap that it has a base case which retu
 $(index +(index))
 ```
 
-If you find yourself caught in such a loop, press `Ctrl`+`C` to stop execution.
+If you find yourself caught in such a loop, press `Ctrl+C` to stop execution.
 
 Recursion can be set up different ways. A full treatment requires thinking about [algorithmic complexity and efficiency](https://en.wikipedia.org/wiki/Big_O_notation), but we can highlight some good rules of thumb here.
 

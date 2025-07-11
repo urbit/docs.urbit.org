@@ -150,7 +150,7 @@ Today's operating systems utilize at least two types of memory: the hard disk an
 
 #### Non-preemptive {#non-preemptive}
 
-Most operating systems are preemptive, meaning that they regularly interrupt tasks being performed with the intention of resuming that task at a later time, without the task explicitly yielding control. Arvo does not do this. Tasks run until they are complete or are cancelled due to some heuristic, such as taking too long or because the user pressed `Ctrl-C`. This is known as [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) or cooperative multitasking.
+Most operating systems are preemptive, meaning that they regularly interrupt tasks being performed with the intention of resuming that task at a later time, without the task explicitly yielding control. Arvo does not do this. Tasks run until they are complete or are cancelled due to some heuristic, such as taking too long or because the user pressed `Ctrl+C`. This is known as [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) or cooperative multitasking.
 
 > Parts of the remainder of this document are out of date as of 2020.07.20, please use information here with
 > caution. This message will be removed once it is up to date.

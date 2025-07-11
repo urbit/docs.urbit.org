@@ -22,9 +22,9 @@ This document deals with:
 
 ## Shutdown {#shutdown}
 
-You can turn your urbit off with `Ctrl-d` from the Chat or Dojo prompts.
+You can turn your urbit off with `Ctrl+D` from the Chat or Dojo prompts.
 
-You can force-quit your urbit with `Ctrl-z` from anywhere.
+You can force-quit your urbit with `Ctrl+Z` from anywhere.
 
 ## Restart {#restart}
 
@@ -83,32 +83,32 @@ Your Urbit terminal is separated into two parts: the prompt (the bottom line) an
 
 In the CLI, Urbit apps can process your input before you hit return. To see this in action try entering `)` as the first character at the Dojo prompt. Since there is no Dojo command or Hoon expression that starts with ')', the Dojo rejects it.
 
-`Ctrl-x` - Switches the prompt between running console apps
+`Ctrl+X` - Switches the prompt between running console apps
 
-`Ctrl-c` - Crash current event. Processed at the Unix layer and prints a stack trace.
+`Ctrl+C` - Crash current event. Processed at the Unix layer and prints a stack trace.
 
-`Ctrl-d` - From Chat or Dojo, stops your Urbit process.
+`Ctrl+D` - From Chat or Dojo, stops your Urbit process.
 
-`Ctrl-z` - Stops the Urbit process from _anywhere_.
+`Ctrl+Z` - Stops the Urbit process from _anywhere_.
 
 `↑` / `↓` - History navigation
 
 The following emacs-style key bindings are available:
 
 ```
-Ctrl-a    Cursor to beginning of the line (Home)
-Ctrl-b    Cursor one character backward (left-arrow)
-Ctrl-e    Cursor to the end of the line (End)
-Ctrl-f    Cursor one character forward (right-arrow)
-Ctrl-g    Beep; cancel reverse-search
-Ctrl-k    Kill to end of line
-Ctrl-l    Clear the screen
-Ctrl-n    Next line in history (down-arrow)
-Ctrl-p    Previous line in history (up-arrow)
-Ctrl-r    Reverse-search
-Ctrl-t    Transpose characters
-Ctrl-u    Kill to beginning of line
-Ctrl-y    Yank from kill buffer
+Ctrl+A    Cursor to beginning of the line (Home)
+Ctrl+B    Cursor one character backward (left-arrow)
+Ctrl+C    Cursor to the end of the line (End)
+Ctrl+F    Cursor one character forward (right-arrow)
+Ctrl+G    Beep; cancel reverse-search
+Ctrl+K    Kill to end of line
+Ctrl+L    Clear the screen
+Ctrl+N    Next line in history (down-arrow)
+Ctrl+P    Previous line in history (up-arrow)
+Ctrl+R    Reverse-search
+Ctrl+T    Transpose characters
+Ctrl+U    Kill to beginning of line
+Ctrl+Y    Yank from kill buffer
 ```
 
 ## Updates {#updates}

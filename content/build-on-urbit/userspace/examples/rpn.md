@@ -151,7 +151,7 @@ After a `%sole` agent has been `|install`ed, it should be registered for Dojo to
 |dojo/link %rpn
 ```
 
-Now `Ctrl`+`X` allows you to switch to that app and evaluate expressions using it.
+Now `Ctrl+X` allows you to switch to that app and evaluate expressions using it.
 
 ```hoon
 gall: booted %rpn

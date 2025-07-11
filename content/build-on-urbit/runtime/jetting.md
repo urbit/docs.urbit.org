@@ -1347,7 +1347,7 @@ The only way to run the new code is to follow the following process:
     ```
 
     If this is successful, then you are ready to move forwards. Otherwise, correct the syntax errors and iterate.
-3. Exit the ship with `Ctrl`+`D` or `|exit`.
+3. Exit the ship with `Ctrl+D` or `|exit`.
 4.  Save the pill file.
 
     ```sh

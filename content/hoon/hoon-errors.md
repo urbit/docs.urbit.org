@@ -112,7 +112,7 @@ These are errors caused by type inference in pattern matching. `mint-vain` means
 
 If your code crashes at runtime or overflows the stack, you'll see a stack trace that looks just like the trace above. Don't confuse runtime crashes with compilation errors, though.
 
-If your code goes into an infinite loop, kill it with `ctrl-c` (you'll need to be developing on the local console; otherwise, the infinite loop will time out either too slowly or too fast). The stack trace will show what your code was doing when interrupted.
+If your code goes into an infinite loop, kill it with `Ctrl+C` (you'll need to be developing on the local console; otherwise, the infinite loop will time out either too slowly or too fast). The stack trace will show what your code was doing when interrupted.
 
 The counterpart of `~!` for runtime crashes is `~|` ([**sigbar**](rune/sig.md#sigbar)):
 

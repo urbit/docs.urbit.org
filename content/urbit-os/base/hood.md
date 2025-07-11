@@ -197,7 +197,7 @@ A poke with a `%drum-exit` mark will shut down the ship.
 
 ### Connect CLI app
 
-A poke with a `%drum-link` mark will connect the specified CLI app on the specified ship to the Dojo (you can cycle between linked CLI apps with Ctrl+X). Note you can connect to the Dojo of remote ships if they've given you permission by running `:dojo|allow-remote-login ~sampel-palnet`.
+A poke with a `%drum-link` mark will connect the specified CLI app on the specified ship to the Dojo (you can cycle between linked CLI apps with `Ctrl+X`). Note you can connect to the Dojo of remote ships if they've given you permission by running `:dojo|allow-remote-login ~sampel-palnet`.
 
 #### Accepts
 

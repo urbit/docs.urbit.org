@@ -697,7 +697,7 @@ Connect to the `%chat-cli` app locally:
 ~zod:chat-cli/ 
 ```
 
-Note you can cycle between CLI apps with Ctrl+x. You can disconnect a CLI app with the [|dojo/unlink](#dojounlink) command.
+Note you can cycle between CLI apps with `Ctrl+X`. You can disconnect a CLI app with the [|dojo/unlink](#dojounlink) command.
 
 ---
 

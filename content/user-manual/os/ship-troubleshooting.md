@@ -55,7 +55,7 @@ Find out who your star is by running `(sein:title our now our)` in the Dojo. The
 
 ### Turn your ship off and on again {#turn-your-ship-off-and-on-again}
 
-Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
+Use `Ctrl+D` to gracefully exit your ship, and then start it again. This can solve many issues.
 
 ### Use the `|knob` command to customize your error messages {#use-the-knob-command-to-customize-your-error-messages}
 
@@ -91,7 +91,7 @@ You login to Landscape using the camel-case phrase obtained from dojo by enterin
 
 Sometimes this happens if you're processing a very large event, or if you're in an infinite loop, or for a variety of other reasons.
 
-Before doing anything, try waiting for a minute: an event might finish processing. If it doesn't clear up, then use the Unix kill-command, `ctrl-z`, to end your ship's process. Then restart your ship.
+Before doing anything, try waiting for a minute: an event might finish processing. If it doesn't clear up, then use the Unix kill-command, `Ctrl+Z`, to end your ship's process. Then restart your ship.
 
 ### When I try to type into the Dojo, it prints `%dy-edit-busy` or `%dy-no-prompt` {#when-i-try-to-type-into-the-dojo-it-prints-dy-edit-busy-or-dy-no-prompt}
 

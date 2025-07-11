@@ -54,6 +54,7 @@ The purpose of formatting is to disambiguate as quickly and clearly as possible:
   * When referring to a library like strandio by name, just call it "strandio" rather than `strandio`.
 * When writing about non-Hoon languages, use whatever conventions of that language’s first- and third-party documentation that exist to format inline symbols. For example, JavaScript functions and classes should always be `foo()`, never `foo`.
 * Vanes like Gall are always Gall, never %gall, `%gall`, or `gall`.
+* Keyboard commands should be formatted like `Ctrl+D`.
 
 ### Formatting code blocks
 

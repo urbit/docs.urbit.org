@@ -41,6 +41,7 @@ The purpose of formatting is to disambiguate as quickly and clearly as possible:
 * Hoon paths are always `/foo/bar`.
 * Named wings in the Hoon subject are always `.foo`, `.foo.bar`, etc.
   * Occassionally you might want to refer to the name of the wing as distinct from the value of that named wing. In this case, use backticks without prepending a `.`. (For example, the name of the wing `.foo` is `foo`.)
+  * Where the name of a wing is also the type of its data, e.g. `=foo` or `foo=foo`, refer to it as `.foo` rather than `$foo`.
 * Hoon structures are almost always `$foo`, and never `foo` or `+$foo`.
   * Use `%foo` when referring to the actual `%foo` mark, not when referring to the `$foo` datatype it converts to, nor the `/mar/foo.hoon` file that defines it.
   * When a kernelspace Hoon structure is referred to so many times throughout the docs, or this page, that it would be annoying to call it `$foo` every time, just call it “foo”.

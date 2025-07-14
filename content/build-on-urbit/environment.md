@@ -23,13 +23,13 @@ A variety of plugins have been built to provide support for the Hoon language in
 
 **Note:** The hoon compiler expects Unix-style line endings (LF) and will fail to parse Windows-style line endings (CRLF). Make sure your editor is set to use LF for line endings, especially if you're developing on Windows.
 
-#### Sublime Text
-
-Sublime Text is closed-source, but may be downloaded for free and there is no enforced time limit for evaluation. It runs on all major operating systems. It is available [here](https://www.sublimetext.com/).
-
 #### Visual Studio Code
 
 Visual Studio Code is free and open-source and runs on all major operating systems. It is available [here](https://code.visualstudio.com/). Hoon support may be acquired in the Extensions menu within the editor by searching for `Hoon`.
+
+#### Sublime Text
+
+Sublime Text is closed-source, but may be downloaded for free and there is no enforced time limit for evaluation. It runs on all major operating systems. It is available [here](https://www.sublimetext.com/).
 
 #### Emacs
 

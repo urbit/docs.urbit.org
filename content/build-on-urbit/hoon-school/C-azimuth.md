@@ -24,7 +24,7 @@ layout:
 
 What is the purpose of a [public-key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure)? Essentially a PKI defines a protocol for asymmetrically revealing a public key (which anyone can use to check that a message came from where it says it came) and retaining a private key, used by the owner as a cryptographically secure tool for signing electronic transactions. Azimuth functions as a PKI so that Urbit ID points can be uniquely controlled, transferred, and used to work with instances of Urbit OS (ships).
 
-Urbit ID (=Azimuth) provides persistent and stable futureproof identity to its users through a hierarchical address space. Any particular Urbit ID plays a particular role in the overall Urbit system which is determined by its point number and classified into ranks.
+Urbit ID (also called "Azimuth") provides persistent and stable futureproof identity to its users through a hierarchical address space. Any particular Urbit ID plays a particular role in the overall Urbit system which is determined by its point number and classified into ranks.
 
 ### The Urbit Address Space {#the-urbit-address-space}
 
@@ -111,11 +111,11 @@ The Moons occupy the block to 2⁶⁴, with 2³² moons for each planet. Moon na
 
 Moons recur modulo 2³² from their sponsor. Thus dividing a moon's address by 2³² and taking the remainder yields the address of the sponsor.
 
-Any moon that begins with the prefix \~dopzod-dozzod-doz___ is a galaxy moon, but not every galaxy moon begins with that prefix. The first galaxy moon of \~zod is 0x1.0000.0000 \~doznec-dozzod-dozzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` = `0xffff.ffff.0000.0000` \~fipfes-fipfes-dozzod-dozzod.
+Any moon that begins with the prefix "\~dopzod-dozzod-doz..." is a galaxy moon, but not every galaxy moon begins with that prefix. The first galaxy moon of \~zod is 0x1.0000.0000 \~doznec-dozzod-dozzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` = `0xffff.ffff.0000.0000` \~fipfes-fipfes-dozzod-dozzod.
 
-Any moon that begins with the prefix \~dopzod-dozzod-______ is a star moon (other than galaxy moons), but not every star moon begins with that prefix. The first star moon of \~marzod is `0x1.0000.0000.0100` \~doznec-dozzod-dozzod-marzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` + `0x100` = `0xffff.ffff.0000.0100` \~fipfes-fipfes-dozzod-marzod.
+Any moon that begins with the prefix "\~dopzod-dozzod-..." is a star moon (other than galaxy moons), but not every star moon begins with that prefix. The first star moon of \~marzod is `0x1.0000.0000.0100` \~doznec-dozzod-dozzod-marzod; the last is `0xffff.ffff.ffff.ffff` - `0xffff.ffff` + `0x100` = `0xffff.ffff.0000.0100` \~fipfes-fipfes-dozzod-marzod.
 
-Any moon from \~dopzod-______-______ onwards is a planet moon.
+Any moon from "\~dopzod-...-..." onwards is a planet moon.
 
 #### Comet
 
@@ -170,7 +170,7 @@ The previous neighbor of \~sampel-palnet is thus:
 ~datwyn-lavrud
 ```
 
-- Find the next neighbor of \~sampel-palnet.
+As an exercise, find the next neighbor of \~sampel-palnet.
 
 ### Exercise: Finding the sponsor of a neighbor {#exercise-finding-the-sponsor-of-a-neighbor}
 
@@ -194,11 +194,11 @@ The sponsor of the previous neighbor of \~sampel-palnet is thus:
 ~talnep
 ```
 
-- Find the sponsor of the next neighbor of \~sampel-palnet.
+Try finding the sponsor of the next neighbor of \~sampel-palnet.
 
 ### Exercise: Finding the child of a point {#exercise-finding-the-child-of-a-point}
 
-A point has many children, but the first moon of a planet is located at that point plus 2³² = `4.294.967.296`.
+A point has many children, but the first moon of a planet is located at that point plus 2³², which is `4.294.967.296`.
 
 The first moon of \~sampel-palnet is:
 
@@ -207,7 +207,7 @@ The first moon of \~sampel-palnet is:
 ~doznec-sampel-palnet
 ```
 
-- What are the first moon children of \~sampel-palnet's neighbors?
+What are the first moon children of \~sampel-palnet's neighbors?
 
-- What is the first planet of the star \~sampel?  (Check the above text to determine the offset.)
+What is the first planet of the star \~sampel?  (Check the above text to determine the offset.)
 

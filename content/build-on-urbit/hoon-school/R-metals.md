@@ -191,7 +191,7 @@ Typically it's better to find another way to express your problem than to `+bake
 
 Dry polymorphism works by substituting cores. Typically, one core is used as the interface definition, then replaced with another core which does something useful.
 
-For core `.b` to nest within core `.a`, the batteries of `.a` and `.b` must have the same tree shape, and the product of each `.b` arm must nest within the product of the `.a` arm. Wet arms (described above) are not compatible unless the Hoon expression is exactly the same. But for dry cores we also apply a payload test that depends on the rules of variance.
+For core *b* to nest within core *a*, the batteries of *a* and *b* must have the same tree shape, and the product of each *b* arm must nest within the product of the *a* arm. Wet arms (described above) are not compatible unless the Hoon expression is exactly the same. But for dry cores we also apply a payload test that depends on the rules of variance.
 
 There are four kinds of cores: `%gold`, `%iron`, `%zinc`, and `%lead`. You are able to use core-variance rules to create programs which take other programs as arguments. Which particular rules depends on which kind of core your program needs to complete.
 
@@ -248,7 +248,7 @@ Contravariance means that generic types nest inside of specific types. Contravar
 
 An `%iron` core *i* has a write-only sample (payload head, `+6.i`) and an opaque context (payload tail, `+7.i`). A core *j* which nests within it must be a `%gold` or `%iron` core, such that `+6.i` nests within `+6.j`. Hence, **contravariant**.
 
-If type `$x` nests within type `$xx`, and type `$y` nests within type `$yy`, then a core accepting a `$yy` and producing an `$x` nests within an iron core accepting a `$y` and producing an `$xx`.
+If type *x* nests within type *xx*, and type *y* nests within type *yy*, then a core accepting a *yy* and producing an *x* nests within an iron core accepting a *y* and producing an *xx*.
 
 Informally, a function fits an interface if the function has a more specific result and/or a less specific argument than the interface.
 
@@ -262,7 +262,7 @@ Bivariance means that both covariance and contravariance apply. Bivariant data t
 
 A lead core *l* has an opaque payload which can be neither read nor written to. There is no constraint on the payload of a core *m* which nests within it. Hence, **bivariant**.
 
-If type `$x` nests within type `$xx`, a lead core producing an `$x` nests within a lead core producing an `$xx`.
+If type *x* nests within type *xx*, a lead core producing an *x* nests within a lead core producing an *xx*.
 
 Bivariant data types are neither readable nor writeable, but have no constraints on nesting. These are commonly used for `/mar` marks and `/sur` structure files. They are useful as examples which produce types.
 

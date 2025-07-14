@@ -181,8 +181,6 @@ Basically, whenever you use `%-` [cenhep](../../hoon/rune/cen.md#cenhep), it act
 
 ## Doors {#doors}
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS150%20-%20Doors.mp4" %}
-
 Doors are another kind of core whose arms evaluate to make gates, as we just discovered. The difference is that a door also has its own sample. A door is the most general case of a function in Hoon. (You could say a "gate-building core" or a "function-building function" to clarify what the intent of most of these are.)
 
 A core is a cell of code and data we call "\[battery payload]". The battery contains a series of arms, and the payload contains all the data necessary to run those arms correctly.
@@ -412,8 +410,6 @@ Recall the quadratic equation door.
 
 
 ## Key-Value Pairs: `+map` as Door {#key-value-pairs-map-as-door}
-
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS183%20-%20Maps%20and%20Sets.mp4" %}
 
 In general terms, a [map](../../hoon/stdlib/2o.md#map) is a pattern from a key to a value. You can think of a dictionary, or an index, or a data table. Essentially it scans for a particular key, then returns the data associated with that key (which may be any noun).
 

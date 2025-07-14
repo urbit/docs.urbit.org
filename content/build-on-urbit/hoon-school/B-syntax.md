@@ -17,8 +17,6 @@ layout:
 
 _This module will discuss the fundamental data concepts of Hoon and how programs handle control flow._
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}
-
 The study of Hoon can be divided into two parts: syntax and semantics.
 
 1. The **syntax** of a programming language is the set of rules that determine what counts as admissible code in that language. It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program. Attempting to run a program that doesn’t follow these rules will result in a syntax error.
@@ -158,8 +156,6 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 {% endhint %}
 
 ## Verbs (Runes) {#verbs-runes}
-
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113%20-%20Basic%20Coding.mp4" %}
 
 The backbone of any Hoon expression is a scaffolding of runes, which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs: they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
 

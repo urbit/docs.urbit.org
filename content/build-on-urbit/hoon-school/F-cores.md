@@ -25,8 +25,6 @@ This lesson will introduce another core to solve a specific use case, then conti
 
 ## Repeating Yourself Using a Trap <a href="#repeating-yourself-using-a-trap" id="repeating-yourself-using-a-trap"></a>
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS130%20-%20Traps.mp4" %}
-
 Computers were built and designed to carry out tasks which were too dainty and temperamental for humans to repeat consistently, or too prodigiously numerous for humans to ever complete. At this point, you know how to build code that can make a decision between two branches, two different Hoon expressions. Computers can decide between alternatives, but they also need to carry out a task until some condition is met. (We can think of it as a recipe step, like “crack five eggs into a bowl”. Until that process is complete, we as humans continue to carry out the equivalent action again and again until the process has been completed.)
 
 In programming, we call this behavior a “loop”. A loop describes the situation in which we set up some condition, and repeat a process over and over until something we do meets that condition. _Most_ of the time, this means counting once for each item in a collection, like a list.
@@ -250,8 +248,6 @@ Two tools that may help:
 ```
 
 ## Cores <a href="#cores" id="cores"></a>
-
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS133%20-%20Cores.mp4" %}
 
 So far we have introduced and worked with a few key structures:
 

@@ -312,8 +312,6 @@ Because every piece of Hoon data is a noun, everything nests under `*`. When you
 
 ## Molds {#molds}
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS156%20-%20Molds.mp4" %}
-
 A mold is a template or rule for identifying actual type structures. They are actually gates, meaning that they operate on a value to coerce it to a particular structure. Technically, a mold is a function from a noun to a noun. What this means is that we can use a mold to map any noun to a typed value; if this fails, then the mold crashes.
 
 ```hoon

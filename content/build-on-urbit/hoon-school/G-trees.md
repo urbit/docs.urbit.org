@@ -19,8 +19,6 @@ _Every noun in Urbit is an atom or a cell. This module will elaborate how we can
 
 ## Trees {#trees}
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS135%20-%20Trees.mp4" %}
-
 Every noun in Urbit is a either an atom or a cell. Since a cell has only two elements, a head and a tail, we can derive that everything is representable as a [_binary tree_](https://en.wikipedia.org/wiki/Binary_tree). We can draw this layout naturally:
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree.png)
@@ -153,8 +151,6 @@ dojo: hoon expression failed
 ```
 
 ### Lists as Trees {#lists-as-trees}
-
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS140%20-%20Lists.mp4" %}
 
 We have used lists incidentally. A list is an ordered arrangement of elements ending in a `~` (null). Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
 

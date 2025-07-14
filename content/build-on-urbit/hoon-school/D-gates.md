@@ -105,8 +105,6 @@ Functions are implemented in Hoon with a special kind of core called a "gate". I
 
 ### Building a Gate <a href="#building-a-gate" id="building-a-gate"></a>
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS120%20-%20Gates.mp4" %}
-
 Syntactically, a gate is a `|=` [bartis](../../hoon/rune/bar.md#bartis) rune with two children: a [spec](../../hoon/stdlib/4o.md#spec) (specification of input) and a [hoon](../../hoon/stdlib/4o.md#hoon) (body). Think of just replacing the `=/` [tisfas](../../hoon/rune/tis.md#tisfas) with the `|=` bartis:
 
 ```hoon
@@ -252,8 +250,6 @@ Remember `^-` [kethep](../../hoon/rune/ket.md#kethep)? We will use `^-` as a "ty
 In technical language, we describe Hoon as a "statically typed" language. This means that it enforces type constraints on all values very aggressively. If you are used to a dynamic language like Python or Ruby, this will seem very restrictive at first. The flip side is that once your code compiles correctly, you will often find that it is very much along the way towards being a working correct product.
 
 ## Coordinating Files <a href="#coordinating-files" id="coordinating-files"></a>
-
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS111%20-%20Filesystem.mp4" %}
 
 In pragmatic terms, an Urbit ship is what results when you successfully boot a new ship. If you are in the host OS, what you see is an apparently-empty folder:
 

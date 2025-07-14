@@ -17,8 +17,6 @@ layout:
 
 _Although you've been using various of the `?`_ [_wut_](../../hoon/rune/wut.md) _runes for a while now, let's wrap up some loose ends. This module will cover the nature of loobean logic and the rest of the `?` wut runes._
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
-
 ## Loobean Logic <a href="#loobean-logic" id="loobean-logic"></a>
 
 Throughout Hoon School, you have been using `%.y` and `%.n`, often implicitly, every time you have asked a question like `?: =(5 4)`. The `=()` expression returns a loobean, a member of the type union `?(%.y %.n)`. (There is a proper aura `@f` but unfortunately it can't be used outside of the compiler.) These can also be written as `&` (`%.y`, true) and `|` (`%.n`, false), which is common in older code but should be avoided for clarity in your own compositions.

@@ -38,7 +38,7 @@ Subsequent invocations of the core require you to refer to it by name:
 ```hoon
 /+  number-to-words
 |=  n=@ud
-(to-words:eng-us:numbers:number-to-words n)
+(to-words:eng-us:number-to-words n)
 ```
 
 Since `/` fas runes don't work in the Dojo, you need to instead use the [-build-file](../../user-manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular gate's functionality for interactive coding.
@@ -51,7 +51,7 @@ Since `/` fas runes don't work in the Dojo, you need to instead use the [-build-
 > one-hundred:numbers:ntw  
 100
 
-> (to-words:eng-us:numbers:ntw 19)
+> (to-words:eng-us:ntw 19)
 [~ "nineteen"]
 ```
 

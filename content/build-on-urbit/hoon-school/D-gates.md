@@ -15,7 +15,7 @@ layout:
 
 # 3. Gates (Functions)
 
-"This module will teach you how to produce deferred computations for later use, like functions in other languages."
+*This module will teach you how to produce deferred computations for later use, like functions in other languages.*
 
 ## A Spoonful of Sugar <a href="#a-spoonful-of-sugar" id="a-spoonful-of-sugar"></a>
 

@@ -15,7 +15,7 @@ layout:
 
 # 4. Molds (Types)
 
-"This module will introduce the Hoon type system and illustrate how type checking and type inference work."
+*This module will introduce the Hoon type system and illustrate how type checking and type inference work.*
 
 ## The Hoon Type System {#the-hoon-type-system}
 

@@ -17,7 +17,6 @@ layout:
 
 _In this module we'll cover how the Hoon compiler infers type, as well as various cases in which a type check is performed._
 
-
 ## Type Casting {#type-casting}
 
 Casting is used to explain to the Hoon compiler exactly what it is we mean with a given data structure. As you get in the habit of casting your data structures, it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.

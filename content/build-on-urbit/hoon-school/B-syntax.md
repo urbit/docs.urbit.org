@@ -15,9 +15,9 @@ layout:
 
 # 1. Hoon Syntax
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}
-
 _This module will discuss the fundamental data concepts of Hoon and how programs handle control flow._
+
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 

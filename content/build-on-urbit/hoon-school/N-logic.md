@@ -15,9 +15,9 @@ layout:
 
 # 13. Conditional Logic
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
-
 _Although you've been using various of the `?`_ [_wut_](../../hoon/rune/wut.md) _runes for a while now, let's wrap up some loose ends. This module will cover the nature of loobean logic and the rest of the `?` wut runes._
+
+{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
 
 ## Loobean Logic <a href="#loobean-logic" id="loobean-logic"></a>
 

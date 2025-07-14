@@ -15,7 +15,7 @@ layout:
 
 # 5. Cores
 
-"This module will introduce the key Hoon data structure known as the **core**, as well as ramifications."
+*This module will introduce the key Hoon data structure known as the **core**, as well as ramifications.*
 
 The Hoon subject is a noun. One way to look at this noun is to denote each fragment of is as either a computation or data. By strictly separating these two kinds of things, we derive the data structure known within Hoon as a core.
 

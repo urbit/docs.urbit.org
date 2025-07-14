@@ -17,7 +17,6 @@ layout:
 
 _This module will introduce you to several useful data structures built on the door, then discuss how the compiler handles types and the sample._
 
-
 ## Key Data Structures and Molds {#key-data-structures-and-molds}
 
 [`+map`s](../../hoon/stdlib/2o.md#map) are a versatile way to store and access data, but they are far from the only useful pattern. `+map`s were documented in [the previous module](K-doors.md).

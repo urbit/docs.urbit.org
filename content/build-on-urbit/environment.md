@@ -158,14 +158,14 @@ The mark files in `/mar` are for handling some basic filetypes, and `sys.kelvin`
 
 You can delete these files, copy in your own and run `|commit %mydesk` in the Dojo.
 
-## `/*-dev` folders {#dev-folders}
+## `/base-dev`, `/desk-dev` folders
 
 The files included by `|new-desk` are the only the bare minimum necessary to mount the desk. If you're building a full app, you'll almost certainly need a number of mark files and libraries from the `%base` and `%landscape` desks. If your app is going to talk to other apps on your ship, you'll likely need files for those, too.
 
-To make these dependencies easier, the convention is for developers to include the necessary files in a separate `/*-dev` folder in their git repo:
+To make these dependencies easier, the necessary dependencies are included in `/base-dev` and `/desk-dev` folders.
 
-- The [urbit/urbit repo](https://github.com/urbit/urbit) includes a [`base-dev` folder](https://github.com/urbit/urbit/tree/develop/pkg/base-dev) with the files necessary for interacting with agents on the `%base` desk, among other useful marks and libraries.
-- The [tloncorp/landscape repo](https://github.com/tloncorp/landscape) includes a [`desk-dev` folder](https://github.com/tloncorp/landscape/tree/develop/desk-dev) with marks and libraries for building Landscape apps.
+- The [urbit/urbit repo](https://github.com/urbit/urbit) includes [`/base-dev`](https://github.com/urbit/urbit/tree/develop/pkg/base-dev) with the files necessary for interacting with agents on the `%base` desk, among other useful marks and libraries.
+- The [tloncorp/landscape repo](https://github.com/tloncorp/landscape) includes [`/desk-dev`](https://github.com/tloncorp/landscape/tree/develop/desk-dev) with marks and libraries for building Landscape apps.
 
 You can clone these repos and copy the contents of their `/*-dev` folders into your own projects. A better alternative is to use the [desk skeleton](#desk-skeleton) described below.
 

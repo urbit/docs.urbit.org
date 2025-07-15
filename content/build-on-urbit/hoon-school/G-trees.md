@@ -27,7 +27,7 @@ A binary tree has a single base node, and each node of the tree may have up to t
 
 For instance, if we produce a cell in the Dojo
 
-```hoon
+```
 > =a [[[8 9] [10 11]] [[12 13] [14 15]]]
 ```
 
@@ -39,20 +39,20 @@ We will use the convention in these graphics that black-text-on-white-circle rep
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-bottom-row-full.png)
 
-When we input the above cell representation into the Dojo, the pretty-printer hides the rightwards-branching `[]` sel/ser brackets.
+When we input the above cell representation into the Dojo, the pretty-printer hides the rightwards-branching square brackets.
 
-```hoon
+```
 > [[[8 9] [10 11]] [[12 13] [14 15]]]
 [[[8 9] 10 11] [12 13] 14 15]
 ```
 
 We can refer to any data stored anywhere in this tree. The numbers in the labeled diagram above are the _numerical addresses_ of the tree, and may be extended indefinitely downwards into ever-deeper tree representations.
 
-Most of any possible tree will be unoccupied for any actual data structure. For instance, lists (and thus tapes) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself; that's a function of the algorithms working with the data.)
+Most of any possible tree will be unoccupied for any actual data structure. For instance, `+list`s (and thus `$tape`s) are collections of values which occupy the tails of cells, leading to a rightwards-branching tree representation. (Although this may seem extravagant, it has effectively no bearing on efficiency in and of itself; that's a function of the algorithms working with the data.)
 
 ### Exercise: Map Nouns to Tree Diagrams {#exercise-map-nouns-to-tree-diagrams}
 
-Consider each of the following nouns. Which tree diagram do they correspond to?  (This is a matching exercise.)
+Consider each of the following nouns. Which tree diagram do they correspond to? (This is a matching exercise.)
 
 | Noun | Tree Diagram |
 | ---- | ------------ |
@@ -77,7 +77,7 @@ $(count (add 1 count))
 
 In the Dojo:
 
-```hoon
+```
 > +list 5
 ~[1 2 3 4]
 
@@ -114,9 +114,9 @@ Given the cell `[1 2 3 4 ~]` (or equivalently `~[1 2 3 4]`, an irregular form fo
 
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-1234.png)
 
-At this point, you should start to be able to work this out in your head, at least for the first few rows. The `+` lus operator can be used to return the limb of the subject at a given numeric address. If there is no such limb, the result is a crash.
+At this point, you should start to be able to work this out in your head, at least for the first few rows. The `+` operator can be used to return the limb of the subject at a given numeric address. If there is no such limb, the result is a crash.
 
-```hoon
+```
 > =data ~[1 2 3 4]
 
 > +1:data
@@ -152,30 +152,30 @@ dojo: hoon expression failed
 
 ### Lists as Trees {#lists-as-trees}
 
-We have used lists incidentally. A list is an ordered arrangement of elements ending in a `~` (null). Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
+We have used `+list`s incidentally. A `+list` is an ordered arrangement of elements ending in a `~`. Most lists have the same kind of content in every element (for instance, a `(list @rs)`, a list of numbers with a fractional part), but some lists have many kinds of things within them. Some lists are even empty.
 
-```hoon
+```
 > `(list @)`['a' %b 100 ~]
 ~[97 98 100]
 ```
 
 (Notice that all values are converted to the specified aura, in this case the empty aura.)
 
-A `+list` is built with the `+list` mold. A `+list` is actually a "mold builder", a gate that produces a gate. This is a common design pattern in Hoon. (Remember that a mold is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.) Lists are commonly written with a shorthand `~[]`:
+A `+list` is built with the `+list` mold. **A `+list` is actually a "mold builder", a gate that produces a gate. This is a common design pattern in Hoon. (Remember that a `$mold` is a type and can be used as an enforcer: it attempts to convert any data it receives into the given structure, and crashes if it fails to do so.)** Lists are commonly written with a shorthand `~[]`:
 
-```hoon
+```
 > `(list)`~['a' %b 100]
 ~[97 98 100]
 ```
 
-```hoon
+```
 > `(list (list @ud))`~[~[1 2 3] ~[4 5 6]]
 ~[~[1 2 3] ~[4 5 6]]
 ```
 
-True `+list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:
+True `+list`s have `i` and `t` faces which allow the head and tail of the data to be quickly and conveniently accessed; the "head" is the first element while the "tail" is everything else. **If something has the same _structure_ as a `+list` but hasn't been explicitly labeled as such, then Hoon won't always recognize it as a `+list`. In such cases, you'll need to explicitly mark it as such:**
 
-```hoon
+```
 > [3 4 5 ~]
 [3 4 5 ~]
 
@@ -217,7 +217,7 @@ A tape is one way of representing a text message in Hoon. It is written with dou
 "I am the very model of a modern Major-General"
 ```
 
-A `$tape` is actually a `(list @t)`, a binary tree of single characters which only branches rightwards and ends in a `~`:
+A `$tape` is actually a `(list @tD)`, a binary tree of single characters which only branches rightwards and ends in a `~`:
  
 ![](https://media.urbit.org/docs/userspace/hoon-school/binary-tree-tape.png)
 
@@ -295,7 +295,7 @@ A wing is a resolution path pointing to a limb. It's a search path, like an inde
 
 Here are some examples:
 
-```hoon
+```
 > c.b:[[4 a=5] b=[c=14 15]]
 14
 
@@ -332,7 +332,7 @@ r='howdy'
 
 To locate a value in a named tuple data structure:
 
-```hoon
+```
 > =data [a=[aa=[aaa=[1 2] bbb=[3 4]] bb=[5 6]] b=[7 8]]
 
 > -:aaa.aa.a.data
@@ -347,15 +347,15 @@ We mention this because it is convenient to refer to all limbs and non-trivial w
 
 A name can resolve either an arm or a leg of the subject. Recall that arms are for computations and legs are for data. When a name resolves to an arm, the relevant computation is run and the product of the computation is produced. When a limb name resolves to a leg, the value of that leg is produced.
 
-Hoon doesn't have variables like other programming languages do; it has faces. Faces are like variables in certain respects, but not in others. Faces play various roles in Hoon, but most frequently faces are used simply as labels for legs.
+Hoon doesn't have variables quite like other programming languages do. And instead of variable names, it has "faces". If you're coming in from antoher programming langauge, you can think of faces as variable names and faced values as named variables and you'll usually be okay. Faces play various roles in Hoon, but usually they're just labels for legs in the subject.
 
-A face is a limb expression that consists of a series of alphanumeric characters. A face has a combination of lowercase letters, numbers, and the `-` character. Some example faces: `b`, `c3`, `var`, `this-is-kebab-case123`. Faces must begin with a letter.
+A face is a limb expression that consists of a series of alphanumeric characters. A face may contain a combination of lowercase letters, numbers, and `-`s. Faces must begin with a letter. Some example faces are `b`, `c3`, `var`, `this-is-kebab-case123`.
 
-There are various ways to affix a face to a limb of the subject, but for now we'll use the simplest method: `face=value`. Hereafter in the code, the expression `face` would be equivalent to the expression `value`, assuming `value` were a named wing in the subject. Hoon registers the given `face` as metadata about where the value is stored in the subject, so that when that face is invoked later its data is produced.
+There are various ways to assign (or "pin") a face to a limb of the subject, but for now we'll just use the simplest method: `face=value`. Hereafter in the code, the expression `face` would be equivalent to the product of whatever code we gave as the `value`. This works because Hoon registers the given `face` as metadata about where the `value` is stored in the subject, so that when the `face` is invoked later, its data is produced through wing resolution. This means we can reference any computed result (be that code or data) in the subject by the `face` we assigned to it, which gives us some nice flexibility around code style.
 
 Now we have several ways to access values:
 
-```hoon
+```
 > b=5
 b=5
 
@@ -375,16 +375,16 @@ b=5
 [14 15]
 ```
 
-To be clear, `b=5` is equivalent in value to `5`, and `[[4 b2=5] [cat=6 d=[14 15]]]` is equivalent in value to `[[4 5] 6 14 15]`. The faces are not part of the underlying noun; they're stored as metadata about address values in the subject.
+To be clear, `b=5` is equivalent in value to `5`, and `[[4 b2=5] [cat=6 d=[14 15]]]` is equivalent in value to `[[4 5] 6 14 15]`. The faces are not part of the underlying noun, they're stored as metadata about address values in the subject.
 
-```hoon
+```
 > (add b=5 1)
 6
 ```
 
-If you use a face that isn't in the subject you'll get a "find.[face]" crash:
+If you reference `face` and it isn't in the subject, you'll get a `-find.face` error:
 
-```hoon
+```
 > a:[b=12 c=14]
 -find.a
 [crash message]
@@ -392,7 +392,7 @@ If you use a face that isn't in the subject you'll get a "find.[face]" crash:
 
 You can even give faces to faces:
 
-```hoon
+```
 > b:[b=c=123 d=456]
 c=123
 ```
@@ -401,7 +401,7 @@ c=123
 
 There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables:
 
-```hoon
+```
 > [[4 b=5] [b=6 b=[14 15]]]
 [[4 b=5] b=6 b=[14 15]]
 
@@ -431,14 +431,14 @@ The children of legs bearing names aren't included in the search path. For examp
 
 Neither of the legs `c=14` or `15` is checked. Accordingly, a search for `.c` of `[[4 a=5] b=[c=14 15]]` fails:
 
-```hoon
+```
 > c:[[4 b=5] [b=6 b=[c=14 15]]]
 -find.c [crash message]
 ```
 
 In any programming paradigm, good names are valuable and collisions (repetitions, e.g. a list named `+list`) are likely. There is no restriction against using the same face name for multiple limbs of the subject. This is one way in which faces aren't like ordinary variables. If multiple values match a particular face, we need a way to distinguish them. In other words, there are cases when you don't want the limb of the first matching face. You can ‘skip’ the first match by prepending `^` to the face. Upon discovery of the first match at address *n*, the search skips *n* (as well as its children) and continues the search elsewhere:
 
-```hoon
+```
 > ^b:[[4 b=5] [b=6 b=[14 15]]]
 6
 ```
@@ -455,7 +455,7 @@ Recall that the search path for this noun is:
 
 The second match in the search path is step 6, `b=6`, so the value at that leg is produced. You can stack `^` characters to skip more than one matching face:
 
-```hoon
+```
 > a:[[[a=1 a=2] a=3] a=4]
 1
 
@@ -471,7 +471,7 @@ The second match in the search path is step 6, `b=6`, so the value at that leg i
 
 When a face is skipped at some address *n*, neither the head nor the tail of *n* is searched:
 
-```hoon
+```
 > b:[b=[a=1 b=2 c=3] a=11]
 [a=1 b=2 c=3]
 
@@ -483,9 +483,9 @@ The first `.b`, `b=[a=1 b=2 c=3]`, is skipped; so the entire head of the subject
 
 How do you get to that `b=2`?  And how do you get to the `.c` in `[[4 a=5] b=[c=14 15]]`? In each case you should use a wing.
 
-We say that the inner face has been "shadowed" when an outer name obscures it.
+We say that the inner face has been "shadowed" when an outer face obscures it.
 
-If you run into `^$`, don't go look for a `^$` ketbuc rune: it's matching the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../hoon/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../hoon/rune/bar.md#barhep) trap nested inside of a `|=` [bartis](../../hoon/rune/bar.md#bartis) gate, for instance.
+If you run into `^$`, don't go looking for a nonexistent `^$` ketbuc rune: it's referencing the outer `$` buc arm. `^$` is one way of setting up a `%=` [centis](../../hoon/rune/cen.md#centis) loop/recursion of multiple cores with a `|-` [barhep](../../hoon/rune/bar.md#barhep) trap nested inside of a `|=` [bartis](../../hoon/rune/bar.md#bartis) gate, for instance.
 
 Solution #1 in the [Rhonda Numbers](../../hoon/examples/rhonda.md) tutorial in the Hoon Workbook illustrates using `^` ket to skip `$` buc matches.
 
@@ -494,8 +494,7 @@ Solution #1 in the [Rhonda Numbers](../../hoon/examples/rhonda.md) tutorial in t
 There are two symbols we use to search for a face or limb:
 
 - `.` dot resolves the wing path into the current subject.
-- `:` col resolves the wing path with the right-hand-side as the
-  subject.
+- `:` col resolves the wing path with the right-hand-side as the subject.
 
 Logically, `a:b` is two operations, while `a.b` is one operation. The compiler is smart about `:` col wing resolutions and reduces it to a regular lookup, though.
 
@@ -516,7 +515,7 @@ $(n (dec n))
 
 The `$()` syntax is the commonly-used irregular form of the `%=` [centis](../../hoon/rune/cen.md#centis) rune.
 
-Now, we noted that `$` buc is the default arm for the trap. It turns out that `$` is also the default arm for some other structures, like the gate!  That means we can cut out the trap, in the factorial example, and write something more compact like this:
+Now, we noted that `$` buc is the default arm for the trap. It turns out that `$` is also the default arm for some other structures, like the gate! That means we can cut out the trap, in the factorial example, and write something more compact like this:
 
 ```hoon
 |=  n=@ud
@@ -561,7 +560,7 @@ One verbose Hoon program
 
 Save this as a file `/gen/num2dig.hoon`, `|commit %base`, and run it:
 
-```hoon
+```
 > +num2dig 1.000
 ~[1 0 0 0]
 
@@ -630,7 +629,7 @@ Once you have your data in the form of a `+list`, there are a lot of tools avail
 
 The [`+flop`](../../hoon/stdlib/2b.md#flop) function reverses the order of the elements (exclusive of the `~`):
   
-```hoon
+```
 > (flop ~[1 2 3 4 5])
 ~[5 4 3 2 1]
 ```
@@ -641,14 +640,14 @@ Without using `+flop`, write a gate that takes a `(list @)` and returns it in re
 
 The [`+sort`](../../hoon/stdlib/2b.md#sort) function uses a `+list` and a comparison function (like [`+lth`](../../hoon/stdlib/1a.md#lth)) to order things:
 
-```hoon
+```
 > (sort ~[1 3 5 2 4] lth)
 ~[1 2 3 4 5]
 ```
 
 The [`+snag`](../../hoon/stdlib/2b.md#snag) function takes an index and a `+list` to grab out a particular element (note that it starts counting at zero):
 
-```hoon
+```
 > (snag 0 `(list @)`~[11 22 33 44])
 11
 
@@ -670,7 +669,7 @@ The [`+snag`](../../hoon/stdlib/2b.md#snag) function takes an index and a `+list
 
 The [`+weld`](../../hoon/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
 
-```hoon
+```
 > (weld ~[1 2 3] ~[4 5 6])
 ~[1 2 3 4 5 6]
 
@@ -686,14 +685,14 @@ There are a couple of sometimes-useful `+list` builders:
 
 The [`+gulf`](../../hoon/stdlib/2b.md#gulf) function spans between two numeric values (inclusive of both):
 
-```hoon
+```
 > (gulf 5 10)  
 ~[5 6 7 8 9 10]
 ```
 
 The [`+reap`](../../hoon/stdlib/2b.md#reap) function repeats a value many times in a `+list`:
 
-```hoon
+```
 > (reap 5 0x0)
 ~[0x0 0x0 0x0 0x0 0x0]
 
@@ -709,7 +708,7 @@ The [`+reap`](../../hoon/stdlib/2b.md#reap) function repeats a value many times 
 
 The [`+roll`](../../hoon/stdlib/2b.md#roll) function takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use roll:
 
-```hoon
+```
 > (roll `(list @)`~[11 22 33 44 55] add)
 165
 
@@ -743,14 +742,14 @@ Without entering these expressions into the Dojo, what are the products of the f
 
 First, bind these faces.
 
-```hoon
+```
 =b ~['moon' 'planet' 'star' 'galaxy']
 =c ~[1 2 3]
 ```
 
 Determine whether the following Dojo expressions are valid, and if so, what they evaluate to.
 
-```hoon
+```
 > (weld b b)
 
 > (weld b c)
@@ -762,7 +761,7 @@ Determine whether the following Dojo expressions are valid, and if so, what they
 
 ### Exercise: Palindrome {#exercise-palindrome}
 
-Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../hoon/stdlib/2b.md#flop) function.
+Write a gate that takes in a list `.a` and returns `%.y` if `.a` is a palindrome and `%.n` otherwise. You may use the [`+flop`](../../hoon/stdlib/2b.md#flop) function.
 
 ## Solutions to Exercises {#solutions-to-exercises}
 
@@ -781,7 +780,7 @@ Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome a
 
 ### Resolving Lark Expressions {#resolving-lark-expressions}
 
-```hoon
+```
 > =b [[[5 6 7] 8 9] 10 11 12 13]
 
 > -<+<:b
@@ -801,7 +800,7 @@ Write a gate that takes in a list *a* and returns `%.y` if *a* is a palindrome a
 9. `%bweh`
 10. `9` appears 3 times:
 
-```hoon
+```
 > a(a a(a a))
 [[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
 ```
@@ -833,7 +832,7 @@ $(b [i.a b], a t.a)
 
 Running each one in the Dojo:
 
-```hoon
+```
 > (lent ~[1 2 3 4 5])
 5
 
@@ -848,26 +847,26 @@ Running each one in the Dojo:
 
 Running each one in the Dojo:
 
-```hoon
+```
 > (weld b b)
 <|moon planet star galaxy moon planet star galaxy|>
 ```
 
-This will not run because `+weld` expects the elements of both lists to be of the same type:
+The below will not run because `+weld` expects the elements of both lists to be of the same type, in this case a `(list @t)` or `(list @ud)`.
 
-```hoon
+```
 > (weld b c)
 ```
 
 This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `.b` and `.c` and not worry about what the elements were. In that case, it would return `7`.
 
-```hoon
+```
 > (lent (weld b c))
 ```
 
 We see here the correct way to find the sum of the length of two lists of unknown type.
 
-```hoon
+```
 > (add (lent b) (lent c))
 7
 ```

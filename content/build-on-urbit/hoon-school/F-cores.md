@@ -370,7 +370,7 @@ Often a leg of the subject is produced with its value unchanged. But there is a 
 ==
 ```
 
-`%=` centis is frequently used in its irregular form, particularly if the expression within it fits on a single line. The irregular form prepends the arm (often `$`) to parentheses `()`. In its irregular form, the above would be:
+`%=` centis is frequently used in its irregular form, particularly if the expression within it fits on a single line. The irregular form prepends the arm (often `$`) to brackets (e.g. `$(...)`). In its irregular form, the above would be:
 
 ```hoon
 subject-limb(leg-1 new-leg-1, leg-2 new-leg-2, ...)
@@ -623,7 +623,7 @@ We can use `ten(b 25)` to produce a variant of `.ten`. Calling this mutant versi
 175
 ```
 
-Before finishing the lesson let's unbind ten:
+Before finishing the lesson let's unbind `.ten`:
 
 ```
 > =ten

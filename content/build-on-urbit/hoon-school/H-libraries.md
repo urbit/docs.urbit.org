@@ -41,7 +41,7 @@ Subsequent invocations of the core require you to refer to it by name:
 (to-words:eng-us:number-to-words n)
 ```
 
-Since `/` fas runes don't work in the Dojo, you need to instead use the [-build-file](../../user-manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular gate's functionality for interactive coding.
+Since `/` fas runes don't work in the Dojo, you need to instead use the [`-build-file`](../../user-manual/os/dojo-tools.md#build-file) thread to load the code. Most commonly, you will do this with library code when you need a particular gate's functionality for interactive coding.
 
 `-build-file` accepts a file path and returns the built operational code. For instance:
 
@@ -206,7 +206,7 @@ One way to get a feel for how a library works is to skim the `++` [luslus](../..
   ==
 ```
 
-Finally we come to `+shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of "entropy" to seed the [og](../../hoon/stdlib/3d.md#og) random-number core. It will produce a `$deck`.
+Finally we come to `+shuffle-deck`. This gate takes two arguments: a `$deck`, and a `@` as a bit of "entropy" to seed the [`+og`](../../hoon/stdlib/3d.md#og) random-number core. It will produce a `$deck`.
 
 We add a bunted `$deck`, then encounter a very interesting statement that you haven't run into yet. This is the irregular form of `%~` [censig](../../hoon/rune/cen.md#censig), which “evaluates an arm in a door.” For our purposes now, you can see it as a way of creating a random-value arm that we'll use later on with `+rads:random`.
 
@@ -214,7 +214,7 @@ With `=/ remaining (lent unshuffled)`, we get the length of the unshuffled deck 
 
 `?: =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a cell of `.shuffled` and the one card left in `.unshuffled`. We use the `:_` [colcab](../../hoon/rune/col.md#colcab) rune here, so that the “heavier” expression is at the bottom.
 
-If the above conditional evaluates to `%.n` false, we need to do a little work. `=^` [tisket](../../hoon/rune/tis.md#tisket) is a rune that pins the head of a pair and changes a leg in the subject with the tail. It's useful for interacting with the [og](../../hoon/stdlib/3d.md#og) core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the subject with the face `.index` and change `.random` to be the next core.
+If the above conditional evaluates to `%.n` false, we need to do a little work. `=^` [tisket](../../hoon/rune/tis.md#tisket) is a rune that pins the head of a pair and changes a leg in the subject with the tail. It's useful for interacting with the [`+og`](../../hoon/stdlib/3d.md#og) core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the subject with the face `.index` and change `.random` to be the next core.
 
 With that completed, we use `%=` [centis](../../hoon/rune/cen.md#centis) to call `$` buc to recurse back up to `|-` [barhep](../../hoon/rune/bar.md#barhep) with a few changes:
 
@@ -226,7 +226,7 @@ This is a very naive shuffling algorithm. We leave the implementation of a bette
 
 ### Exercise: Using the Playing Card Library <a href="#exercise-using-the-playing-card-library" id="exercise-using-the-playing-card-library"></a>
 
-Unfortunately `/` [fas](../../hoon/rune/fas.md) runes don't work in the Dojo right now, so we need to build code using the [-build-file](../../user-manual/os/dojo-tools.md#build-file) thread if we want to use the library directly.
+Unfortunately `/` [fas](../../hoon/rune/fas.md) runes don't work in the Dojo right now, so we need to build code using the [`-build-file`](../../user-manual/os/dojo-tools.md#build-file) thread if we want to use the library directly.
 
 Import the `/lib/playing-cards.hoon` library and use it to shuffle and show a deck and a random hand of five cards.
 
@@ -343,7 +343,7 @@ Once you have located a particular file, you need to load the data. Conventional
 
 On Mars, we treat a filesystem as a way of organizing arbitrary access to blocks of persistent data. There are some concessions to Earth-style filesystems, but Clay (Urbit's filesystem) organizes everything with respect to a desk, a discrete collection of static data on a particular ship. Of course, like everything else in Hoon, a desk is a tree as well.
 
-So far everything we have done has taken place on the `%base` desk. You have by this point become proficient at synchronizing Earthling data (Unix data) and Martian data (Urbit data), using [|mount](../../user-manual/os/dojo-tools.md#mount) and [|commit](../../user-manual/os/dojo-tools.md#commit), and every time you've done this with `%base` that has been recorded in the update report the Dojo makes to you.
+So far everything we have done has taken place on the `%base` desk. You have by this point become proficient at synchronizing Earthling data (Unix data) and Martian data (Urbit data), using [`|mount`](../../user-manual/os/dojo-tools.md#mount) and [`|commit`](../../user-manual/os/dojo-tools.md#commit), and every time you've done this with `%base` that has been recorded in the update report the Dojo makes to you.
 
 ```hoon
 > |commit %base
@@ -351,7 +351,7 @@ So far everything we have done has taken place on the `%base` desk. You have by 
 + /~zod/base/2/gen/demo/hoon
 ```
 
-This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components? We call this the [beak](../../urbit-os/kernel/clay/data-types.md#beak). The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
+This message says that a file `demo.hoon` was added to the Urbit filesystem at the path in `/gen`. What is the rest of it, though, the first three components? We call this the [`$beak`](../../urbit-os/kernel/clay/data-types.md#beak). The beak lets Clay globally identify any resource on any ship at any point in time. A beak has three components:
 
 1. The **ship**, here \~zod. (You can find this out on any ship using `.our`.)
 2. The **desk**, here `%base`.
@@ -448,7 +448,7 @@ In brief, each mark has a `+grab` arm to convert from other types to it; a `+gro
 
 ## Other Ford Runes <a href="#other-ford-runes" id="other-ford-runes"></a>
 
-The `+ford` arm of Clay builds Hoon code. It provides [a number of runes](../../hoon/rune/fas.md) which allow fine-grained control over building and importing files. These must be in the specific order at the top of any file. (They also don't work in Dojo; see [-build-file](../../user-manual/os/dojo-tools.md#build-file) for a workaround.) The runes include:
+The `+ford` arm of Clay builds Hoon code. It provides [a number of runes](../../hoon/rune/fas.md) which allow fine-grained control over building and importing files. These must be in the specific order at the top of any file. (They also don't work in Dojo; see [`-build-file`](../../user-manual/os/dojo-tools.md#build-file) for a workaround.) The runes include:
 
 * `/-` [fashep](../../hoon/rune/fas.md#fashep) imports a structure file from `/sur`. Structure files are a way to share common data structures (across agents, for instance).
 * `/+` [faslus](../../hoon/rune/fas.md#faslus) imports a library file from `/lib`.

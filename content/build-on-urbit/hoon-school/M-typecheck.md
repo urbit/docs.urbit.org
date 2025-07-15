@@ -23,7 +23,7 @@ Casting is used to explain to the Hoon compiler exactly what it is we mean with 
 
 [`+list`](../../hoon/stdlib/1c.md#list) is a mold builder that is used to produce a mold, i.e. a list of a particular type (like `(list @)` for a list of atoms). A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `+list` of some kind and a null-terminated tuple.
 
-```hoon
+```
 > -:!>(~[1 2 3])
 #t/[@ud @ud @ud %~]
 
@@ -35,7 +35,7 @@ The former is inflexible and doesn't have the "i" and "t" faces that a list pres
 
 However, we still don't get the faces for free:
 
-```hoon
+```
 > =a `(list @)`~[1 2 3]
 
 > i.a
@@ -54,7 +54,7 @@ It's easy to see where the heads are and where the nesting tails are. The head o
 
 You can construct lists of any type. `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
-```hoon
+```
 > `(list @)`~
 ~
 
@@ -72,7 +72,7 @@ Notice how the last Dojo command has a different construction, with the `~` in f
 
 Back to our earlier example:
 
-```hoon
+```
 > =a `(list @)`~[1 2 3]
 
 > i.a
@@ -83,7 +83,7 @@ dojo: hoon expression failed
 
 Any time we see a "find-fork" error, it means that the type checker considers the value to be underspecified. In this case, it can't guarantee that `.i.a` exists because although `.a` is a list, it's not known to be a non-null lest. If we enforce that constraint, then suddenly we can use the faces:
 
-```hoon
+```
 > ?:  ?=(~ a)  !!  i.a
 1
 ```
@@ -93,7 +93,7 @@ It's important to note that performing tests like this will actually transform a
 
 ### Casting Nouns (`^` ket Runes) {#casting-nouns-ket-runes}
 
-As the Hoon compiler compiles your Hoon code, it does a type check on certain expressions to make sure they are guaranteed to produce a value of the correct type. If it cannot be proved that the output value is correctly typed, the compile will fail with a [nest-fail](../../hoon/hoon-errors.md#nest-fail) crash. In order to figure out what type of value is produced by a given expression, the compiler uses type inference on that code.
+As the Hoon compiler compiles your Hoon code, it does a type check on certain expressions to make sure they are guaranteed to produce a value of the correct type. If it cannot be proved that the output value is correctly typed, the compile will fail with a [`nest-fail`](../../hoon/hoon-errors.md#nest-fail) crash. In order to figure out what type of value is produced by a given expression, the compiler uses type inference on that code.
 
 Let's enumerate the most common cases where a type check is called for in Hoon.
 
@@ -103,7 +103,7 @@ The most obvious case is when there is a casting `^` [ket](../../hoon/rune/ket.m
 
 You've already seen one rune that calls for a type check: `^-` [kethep](../../hoon/rune/ket.md#kethep):
 
-```hoon
+```
 > ^-(@ 12)
 12
 
@@ -133,7 +133,7 @@ nest-fail
 
 The rune `^+` [ketlus](../../hoon/rune/ket.md#ketlus) is like `^-` [kethep](../../hoon/rune/ket.md#kethep), except that instead of using a type name for the cast, it uses an example value of the type in question. E.g.:
 
-```hoon
+```
 > ^+(7 12)
 12
 
@@ -150,7 +150,7 @@ This rune is useful for casting when you already have a noun, or an expression p
 
 More examples:
 
-```hoon
+```
 > ^+([12 13] [123 456])
 [123 456]
 
@@ -165,9 +165,9 @@ nest-fail
 
 Whenever an arm is evaluated in Hoon it expects to have some version of its parent core as the subject. Specifically, a type check is performed to see whether the arm subject is of the appropriate type. We see this in action whenever a gate or a multi-arm door is called.
 
-A gate is a one-armed core with a sample. When it is called, its `$` buc arm is evaluated with (a mutated copy of) the gate as the subject. The only part of the core that might change is the payload, including the sample. Of course, we want the sample to be able to change. The sample is where the argument(s) of the function call are placed. For example, when we call [add](../../hoon/stdlib/1a.md#add) the `$` buc arm expects two atoms for the sample, i.e., the two numbers to be added. When the type check occurs, the payload must be of the appropriate type. If it isn't, the result is a [nest-fail](../../hoon/hoon-errors.md#nest-fail) crash.
+A gate is a one-armed core with a sample. When it is called, its `$` arm is evaluated with (a mutated copy of) the gate as the subject. The only part of the core that might change is the payload, including the sample. Of course, we want the sample to be able to change. The sample is where the argument(s) of the function call are placed. For example, when we call [`+add`](../../hoon/stdlib/1a.md#add) the `$` arm expects two atoms for the sample, i.e., the two numbers to be added. When the type check occurs, the payload must be of the appropriate type. If it isn't, the result is a [`nest-fail`](../../hoon/hoon-errors.md#nest-fail) crash.
 
-```hoon
+```
 > (add 22 33)
 55
 
@@ -195,30 +195,30 @@ Hoon infers the type of any given expression. How does this inference work?  Hoo
 
 ### Literals {#literals}
 
-[Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values. Atom and cell literals are supported in Hoon, and every supported aura has an unambiguous representation that allows the parser to directly infer the type from the form. Here are a few examples of auras and associated literal formats:
+[Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values as they "literally" exist in the source code. Atom and cell literals are supported in Hoon, and every supported aura has an unambiguous representation that allows the parser to directly infer the type from the form. Here are a few examples of auras and associated literal formats:
 
-| Type | Literal |
-| ---- | ------- |
-| `@ud` | `123`, `1.000` |
-| `@ux` | `0x1234`, `0x12.3456` |
-| `@ub` | `0b1011.1110` |
-| `[@ud @ud]` | `[12 14]` |
-| `[@ux @t ?]` | `[0x1f 'hello' %.y]` |
+| Type         | Literal               |
+| ------------ | --------------------- |
+| `@ud`        | `123`, `1.000`        |
+| `@ux`        | `0x1234`, `0x12.3456` |
+| `@ub`        | `0b1011.1110`         |
+| `[@ud @ud]`  | `[12 14]`             |
+| `[@ux @t ?]` | `[0x1f 'hello' %.y]`  |
 
 ### Casts {#casts}
 
 Casting with `^` [ket](../../hoon/rune/ket.md) runes also shape how Hoon understands an expression type, as outlined above. The inferred type of a cast expression is just the type being cast for. It can be inferred that, if the cast didn't result in a [nest-fail](../../hoon/hoon-errors.md#nest-fail), the value produced must be of the cast type. Here are some examples of cast expressions with the inferred output type on the right:
 
-| Type | Cast |
-| ---- | ---- |
-| `@ud` | `^-(@ud 123)` |
-| `@` | `^-(@ 123)` |
-| `^` | `^-(^ [12 14])` |
-| `[@ @]` | `^-([@ @] [12 14])` |
-| `*` | `^-(* [12 14])` |
-| `@ud` | `^+(7 123)` |
-| `[@ud @ud]` | `^+([7 8] [12 14])` |
-| `[@ud @ud]` | `^+([44 55] [12 14])` |
+| Type        | Cast                            |
+| ----------- | ------------------------------- |
+| `@ud`       | `^-(@ud 123)`                   |
+| `@`         | `^-(@ 123)`                     |
+| `^`         | `^-(^ [12 14])`                 |
+| `[@ @]`     | `^-([@ @] [12 14])`             |
+| `*`         | `^-(* [12 14])`                 |
+| `@ud`       | `^+(7 123)`                     |
+| `[@ud @ud]` | `^+([7 8] [12 14])`             |
+| `[@ud @ud]` | `^+([44 55] [12 14])`           |
 | `[@ux @ub]` | `^+([0x1b 0b11] [0x123 0b101])` |
 
 You can also use the irregular `` ` `` syntax for casting in the same way as `^-` [kethep](../../hoon/rune/ket.md#kethep); e.g., `` `@`123 `` for `^-(@ 123)`.
@@ -243,7 +243,7 @@ $(a +(a), b (dec b))
 
 We run it in the Dojo using a cell to pass the two arguments:
 
-```hoon
+```
 > +sum [12 14]
 26
 
@@ -253,7 +253,7 @@ nest-fail
 -have.@ud
 ```
 
-If you try to call this gate with the wrong kind of argument, you get a [nest-fail](../../hoon/hoon-errors.md#nest-fail). If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`. Accordingly, the inferred type of `.a` is `@`, and the inferred type of `.b` is `@`. In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of aura.
+If you try to call this gate with the wrong kind of argument, you get a [`nest-fail`](../../hoon/hoon-errors.md#nest-fail). If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`. Accordingly, the inferred type of `.a` is `@`, and the inferred type of `.b` is `@`. In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of aura.
 
 ### Inferring Type (`?` wut Runes) {#inferring-type-wut-runes}
 
@@ -267,7 +267,7 @@ There is also a `?=` [wuttis](../../hoon/rune/wut.md#wuttis) rune for pattern-ma
 
 The `?=` [wuttis](../../hoon/rune/wut.md#wuttis) rune takes two subexpressions. The first subexpression should be a type. The second subexpression is evaluated and the resulting value is compared to the first type. If the value is an instance of the type, `%.y` is produced. Otherwise, `%.n`. Examples:
 
-```hoon
+```
 > ?=(@ 12)
 %.y
 
@@ -289,7 +289,7 @@ The `?=` [wuttis](../../hoon/rune/wut.md#wuttis) rune takes two subexpressions. 
 
 `?=` [wuttis](../../hoon/rune/wut.md#wuttis) expressions ignore aura information:
 
-```hoon
+```
 > ?=(@ud 0x12)
 %.y
 
@@ -299,7 +299,7 @@ The `?=` [wuttis](../../hoon/rune/wut.md#wuttis) rune takes two subexpressions. 
 
 We haven't talked much about types that are made with a type constructor yet. We'll discuss these more soon, but it's worth pointing out that every list type qualifies as such, and hence should not be used with `?=`:
 
-```hoon
+```
 > ?=((list @) ~[1 2 3 4])
 fish-loop
 ```
@@ -308,31 +308,31 @@ Using these non-basic constructed types with the `?=` [wuttis](../../hoon/rune/w
 
 The `?=` [wuttis](../../hoon/rune/wut.md#wuttis) rune is particularly useful when used with the `?:` [wutcol](../../hoon/rune/wut.md#wutcol) rune, because in these cases Hoon uses the result of the `?=` wuttis evaluation to infer type information. To see how this works lets use `=/` [tisfas](../../hoon/rune/tis.md#tisfas) to define a face, `b`, as a generic noun:
 
-```hoon
+```
 > =/(b=* 12 b)
 12
 ```
 
 The inferred type of the final `.b` is just `*`, because that's how `.b` was defined earlier. We can see this by using `?` in the Dojo to see the product type:
 
-```hoon
+```
 > ? =/(b=* 12 b)
   *
 12
 ```
 
-(Remember that `?` isn't part of Hoon -- it's a Dojo-specific instruction.)
+(Remember that `?` isn't part of Hoon, it's a Dojo-specific instruction.)
 
-Let's replace that last "b" with a `?:` [wutcol](../../hoon/rune/wut.md#wutcol) expression whose condition subexpression is a `?=` [wuttis](../../hoon/rune/wut.md#wuttis) test. If `.b` is an `@`, it'll produce `[& b]`; otherwise `[| b]`:
+Let's replace that last `.b` with a `?:` [wutcol](../../hoon/rune/wut.md#wutcol) expression whose condition subexpression is a `?=` [wuttis](../../hoon/rune/wut.md#wuttis) test. If `.b` is an `@`, it'll produce `[& b]`; otherwise `[| b]`:
 
-```hoon
+```
 > =/(b=* 12 ?:(?=(@ b) [& b] [| b]))
 [%.y 12]
 ```
 
 You can't see it here, but the inferred type of `.b` in `[& b]` is `@`. That subexpression is only evaluated if `?=(@ b)` evaluates as true; hence, Hoon can safely infer that `.b` must be an atom in that subexpression. Let's set `.b` to a different initial value but leave everything else the same:
 
-```hoon
+```
 > =/(b=* [12 14] ?:(?=(@ b) [& b] [| b]))
 [%.n 12 14]
 ```
@@ -343,7 +343,7 @@ You can't see it here either, but the inferred type of `.b` in `[| b]` is `^`. T
 
 What if you want to see the inferred type of `.b` for yourself for each conditional branch?  One way to do this is with the "type spear". The `!>` [zapgar](../../hoon/rune/zap.md#zapgar) rune takes one subexpression and constructs a cell from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached. The head of the product cell is the inferred type of the subexpression.
 
-```hoon
+```
 > !>(15)
 [#t/@ud q=15]
 
@@ -358,7 +358,7 @@ The `#t/` is the pretty-printer's way of indicating a type.
 
 To get just the inferred type of a expression, we only want the head of the `!>` product, `-`. Thus we should use our mighty weapon, the type spear, `-:!>`.
 
-```hoon
+```
 > -:!>(15)
 #t/@ud
 
@@ -371,14 +371,14 @@ To get just the inferred type of a expression, we only want the head of the `!>`
 
 Now let's try using `?=` [wuttis](../../hoon/rune/wut.md#wuttis) with `?:` [wutcol](../../hoon/rune/wut.md#wutcol) again. But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[| b]` with `[| -:!>(b)]`. With `.b` as `12`:
 
-```hoon
+```
 > =/(b=* 12 ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
 [%.y #t/@]
 ```
 
 … and with `.b` as `[12 14]`:
 
-```hoon
+```
 > =/(b=* [12 14] ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
 [%.n #t/[* *]]
 ```
@@ -389,9 +389,9 @@ In both cases, `.b` is defined initially as a generic noun, `*`. But when using 
 
 Expressions of the form `?:(?=(a b) c d)` should only be used when the previously inferred type of `.b` isn't specific enough to determine whether it nests under `.a`. This kind of expression is only to be used when `?=` can reveal new type information about `.b`, not to confirm information Hoon already has.
 
-For example, if you have a wing expression (e.g., `.b`) that is already known to be an atom, `@`, and you use `?=(@ b)` to test whether `.b` is an atom, you'll get a [mint-vain](../../hoon/hoon-errors.md#mint-vain-and-mint-lost) crash. The same thing happens if `.b` is initially defined to be a cell `^`:
+For example, if you have a wing expression (e.g., `.b`) that is already known to be an atom, `@`, and you use `?=(@ b)` to test whether `.b` is an atom, you'll get a [`mint-vain`](../../hoon/hoon-errors.md#mint-vain-and-mint-lost) crash. The same thing happens if `.b` is initially defined to be a cell `^`:
 
-```hoon
+```
 > =/(b=@ 12 ?:(?=(@ b) [& b] [| b]))
 mint-vain
 
@@ -405,7 +405,7 @@ In the first case it's already known that `.b` is an atom. In the second case it
 
 The `?@` [wutpat](../../hoon/rune/wut.md#wutpat) rune takes three subexpressions. The first is evaluated, and if its value is an instance of `@`, the second subexpression is evaluated. Otherwise, the third subexpression is evaluated.
 
-```hoon
+```
 > =/(b=* 12 ?@(b %atom %cell))
 %atom
 
@@ -415,7 +415,7 @@ The `?@` [wutpat](../../hoon/rune/wut.md#wutpat) rune takes three subexpressions
 
 If the second `?@` [wutpat](../../hoon/rune/wut.md#wutpat) subexpression is evaluated, Hoon correctly infers that `.b` is an atom. if the third subexpression is evaluated, Hoon correctly infers that `.b` is a cell.
 
-```hoon
+```
 > =/(b=* 12 ?@(b [%atom -:!>(b)] [%cell -:!>(b)]))
 [%atom #t/@]
 
@@ -423,9 +423,9 @@ If the second `?@` [wutpat](../../hoon/rune/wut.md#wutpat) subexpression is eval
 [%cell #t/[* *]]
 ```
 
-If the inferred type of the first `?@` [wutpat](../../hoon/rune/wut.md#wutpat) subexpression nests under `@` then one of the conditional branches provably never runs. Attempting to evaluate the expression results in a [mint-vain](../../hoon/hoon-errors.md#mint-vain-and-mint-lost):
+If the inferred type of the first `?@` [wutpat](../../hoon/rune/wut.md#wutpat) subexpression nests under `@` then one of the conditional branches provably never runs. Attempting to evaluate the expression results in a [`mint-vain`](../../hoon/hoon-errors.md#mint-vain-and-mint-lost):
 
-```hoon
+```
 > ?@(12 %an-atom %not-an-atom)
 mint-vain
 
@@ -445,7 +445,7 @@ mint-vain
 
 The `?^` [wutket](../../hoon/rune/wut.md#wutket) rune is just like `?@` [wutpat](../../hoon/rune/wut.md#wutpat) except it tests for a cell match instead of for an atom match. The first subexpression is evaluated, and if the resulting value is an instance of `^` the second subexpression is evaluated. Otherwise, the third is run.
 
-```hoon
+```
 > =/(b=* 12 ?^(b %cell %atom))
 %atom
 
@@ -453,9 +453,9 @@ The `?^` [wutket](../../hoon/rune/wut.md#wutket) rune is just like `?@` [wutpat]
 %cell
 ```
 
-Again, if the second subexpression is evaluated Hoon infers that `.b` is a cell; if the third, Hoon infers that `.b` is an atom. If one of the conditional branches is provably never evaluated, the expression crashes with a [mint-vain](../../hoon/hoon-errors.md#mint-vain-and-mint-lost):
+Again, if the second subexpression is evaluated Hoon infers that `.b` is a cell; if the third, Hoon infers that `.b` is an atom. If one of the conditional branches is provably never evaluated, the expression crashes with a [`mint-vain`](../../hoon/hoon-errors.md#mint-vain-and-mint-lost):
 
-```hoon
+```
 > =/(b=@ 12 ?^(b %cell %atom))
 mint-vain
 
@@ -477,7 +477,7 @@ Nouns can be understood as binary trees in which each 'leaf' of the tree is an a
 
 Save this as `/gen/leafcount.hoon` in your fakeship's pier and run it from the Dojo:
 
-```hoon
+```
 > +leafcount 12
 1
 
@@ -510,7 +510,7 @@ Here's a program that counts the number of cells in a noun:
 
 Save this as `/gen/cellcount.hoon` and run it from the Dojo:
 
-```hoon
+```
 > +cellcount 12
 0
 
@@ -570,7 +570,7 @@ This program is very simple. It takes two `@` as input, `.a` and `.b`, and retur
 
 Save this code as `/gen/gulf.hoon` and run it from the Dojo:
 
-```hoon
+```
 > +gulf [1 10]
 ~[1 2 3 4 5 6 7 8 9 10]
 
@@ -597,7 +597,7 @@ Because there is a cast to a `(list @)` on line 2, Hoon will silently include `i
 
 We called this program `gulf.hoon` because it replicates the [gulf](../../hoon/stdlib/2b.md#gulf) function in the Hoon standard library:
 
-```hoon
+```
 > (gulf 1 10)
 ~[1 2 3 4 5 6 7 8 9 10]
 
@@ -609,7 +609,7 @@ We called this program `gulf.hoon` because it replicates the [gulf](../../hoon/s
 
 The `?~` [wutsig](../../hoon/rune/wut.md#wutsig) rune is a lot like `?@` [wutpat](../../hoon/rune/wut.md#wutpat) and `?^` [wutket](../../hoon/rune/wut.md#wutket). It takes three subexpressions, the first of which is evaluated to see whether the result is `~` null. If so, the second subexpression is evaluated. Otherwise, the third one is evaluated.
 
-```hoon
+```
 > =/(b=* ~ ?~(b %null %not-null))
 %null
 
@@ -617,9 +617,9 @@ The `?~` [wutsig](../../hoon/rune/wut.md#wutsig) rune is a lot like `?@` [wutpat
 %not-null
 ```
 
-The inferred type of `.b` must not already be known to be null or non-null; otherwise, the expression will crash with a [mint-vain](../../hoon/hoon-errors.md#mint-vain-and-mint-lost):
+The inferred type of `.b` must not already be known to be null or non-null; otherwise, the expression will crash with a [`mint-vain`](../../hoon/hoon-errors.md#mint-vain-and-mint-lost):
 
-```hoon
+```
 > =/(b=~ ~ ?~(b %null %not-null))
 mint-vain
 
@@ -653,7 +653,7 @@ A non-null `+list` is called a `+lest`.
 
 Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 
-```hoon
+```
 > +lent ~[11 22 33]
 3
 
@@ -683,7 +683,7 @@ The modification to `.lis` in line 6 is to `$(a +.a)`. The latter is a recursion
 
 Save the above code as `/gen/listleaf.hoon` and run it from the Dojo:
 
-```hoon
+```
 > +listleaf [[[[12 13] [33 22] 12] 11] 33]
 ~[12 13 33 22 12 11 33]
 ```
@@ -692,10 +692,10 @@ Save the above code as `/gen/listleaf.hoon` and run it from the Dojo:
 
 So far you've learned about four kinds of type inference:
 
-1. literals
-2. explicit casts
-3. gate sample definitions
-4. branch specialization using runes in the `?` family
+1. Literals
+2. Explicit casts
+3. Gate sample definitions
+4. Branch specialization using runes in the `?` family
 
 There are several other ways that Hoon infers type. Any rune expression that evaluates to a `?` flag, e.g., `.=` [dottis](../../hoon/rune/dot.md#dottis), will be inferred from accordingly. The `.+` [dotlus](../../hoon/rune/dot.md#dotlus) rune always evaluates to an `@`, and Hoon knows that too. The cell constructor runes, `:-` [colhep](../../hoon/rune/col.md#colhep), `:+` [collus](../../hoon/rune/col.md#collus), `:^` [colket](../../hoon/rune/col.md#colket), and `:*` [coltar](../../hoon/rune/col.md#coltar) are all known to produce cells.
 
@@ -703,14 +703,13 @@ More subtly, the `=+` [tislus](../../hoon/rune/tis.md#tislus), `=/` [tisfas](../
 
 In general, anything that modifies the subject modifies the type of the subject. Type inference can work in subtle ways for various expressions. However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 
-
 ## Auras as 'Soft' Types {#auras-as-soft-types}
 
 It's important to understand that Hoon's type system doesn't enforce auras as strictly as it does other types. Auras are 'soft' type information. To see how this works, we'll take you through the process of converting the aura of an atom to another aura.
 
 Hoon makes an effort to enforce that the correct aura is produced by an expression:
 
-```hoon
+```
 > ^-(@ud 0x10)
 nest-fail
 
@@ -723,7 +722,7 @@ nest-fail
 
 But there are ways around this. First, you can cast to a more general aura, as long as the current aura nests under the cast aura. E.g., `@ub` to `@u`, `@ux` to `@u`, `@u` to `@`, etc. By doing this you're essentially telling Hoon to throw away some aura information:
 
-```hoon
+```
 > ^-(@u 0x10)
 16
 
@@ -741,7 +740,7 @@ But there are ways around this. First, you can cast to a more general aura, as l
 
 In fact, you can cast any atom all the way to the most general case `@`:
 
-```hoon
+```
 > ^-(@ 0x10)
 16
 
@@ -759,7 +758,7 @@ In fact, you can cast any atom all the way to the most general case `@`:
 
 Anything of the general aura `@` can, in turn, be cast to more specific auras. We can show this by embedding a cast expression inside another cast:
 
-```hoon
+```
 > ^-(@ud ^-(@ 0x10))
 16
 
@@ -772,7 +771,7 @@ Anything of the general aura `@` can, in turn, be cast to more specific auras. W
 
 Hoon uses the outermost cast to infer the type:
 
-```hoon
+```
 > ? ^-(@ub ^-(@ 0x10))
   @ub
 0b1.0000
@@ -780,7 +779,7 @@ Hoon uses the outermost cast to infer the type:
 
 As you can see, an atom with one aura can be converted to another aura. For a convenient shorthand, you can do this conversion with irregular cast syntax, e.g. `` `@ud` ``, rather than using the `^-` [kethep](../../hoon/rune/ket.md#kethep) rune twice:
 
-```hoon
+```
 > `@ud`0x10
 16
 
@@ -795,7 +794,7 @@ This is what we mean when we call auras 'soft' types. The above examples show th
 
 **Note**:  there is currently a type system issue that causes some of these functions to fail when passed a list `.b` after some type inference has been performed on `.b`. For an illustration of the bug, let's set `.b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
 
-```hoon
+```
 > =b `(list @)`~[11 22 33 44]
 
 > b
@@ -804,7 +803,7 @@ This is what we mean when we call auras 'soft' types. The above examples show th
 
 Now let's use `?~` [wutsig](../../hoon/rune/wut.md#wutsig) to prove that `.b` isn't null, and then try to snag it:
 
-```hoon
+```
 > ?~(b ~ (snag 0 b))
 nest-fail
 ```
@@ -813,7 +812,7 @@ The problem is that [`+snag`](../../hoon/stdlib/2b.md#snag) is expecting a raw l
 
 You can cast `.b` back to `(list)` to work around this:
 
-```hoon
+```
 > ?~(b ~ (snag 0 `(list)`b))
 11
 ```
@@ -832,4 +831,4 @@ There are two additional assertions which can be used with the type system:
 - `?>` [wutgar](../../hoon/rune/wut.md#wutgar) is a positive assertion (`%.y` or crash).
 - `?<` [wutgal](../../hoon/rune/wut.md#wutgal) is a negative assertion (`%.n` or crash).
 
-If you are running into "find-fork" errors in more complicated data structures (like marks or JSONs), consider using these assertions to guide the typechecker.
+If you are running into `find-fork` errors in more complicated data structures (like marks or `$json`s), consider using these assertions to guide the typechecker.

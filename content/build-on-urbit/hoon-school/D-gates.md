@@ -234,7 +234,7 @@ Produce a gate which accepts a `@p` ship name and produces the `@ux` unsigned he
 
 How can we control what kind of value a function returns in Hoon? Many programming languages (such as C, Java, and TypeScript) are _extremely_ concerned about this specification. Others, like Python and MATLAB, are _laissez-faire_. Hoon tends to be strict, but leaves some discretion over _how_ strict to you, the developer.
 
-Remember `^-` [kethep](../../hoon/rune/ket.md#kethep)? We will use `^-` as a "type fence", a way of making sure only data matching the appropriate structure get passed on.
+Remember `^-` [kethep](../../hoon/rune/ket.md#kethep)? We will use `^-` as a "fence", a way of making sure only data matching the appropriate structure get passed on.
 
 ```hoon
 ::  Confirm whether a value is greater than one by return 1 (if no) or 0 (if yes).
@@ -245,7 +245,7 @@ Remember `^-` [kethep](../../hoon/rune/ket.md#kethep)? We will use `^-` as a "ty
 0
 ```
 
-**This is the correct way to define a gate.** Frequent annotation of type with `^-` type fences is _essential_ to producing good Hoon code. From this point forward in Hoon School, we will hew to this standard.
+**This is the correct way to define a gate.** Frequent annotation of type with `^-` fences is _essential_ to producing good Hoon code. From this point forward in Hoon School, we will hew to this standard.
 
 In technical language, we describe Hoon as a "statically typed" language. This means that it enforces type constraints on all values very aggressively. If you are used to a dynamic language like Python or Ruby, this will seem very restrictive at first. The flip side is that once your code compiles correctly, you will often find that it is very much along the way towards being a working correct product.
 

@@ -15,8 +15,6 @@ layout:
 
 # 13. Conditional Logic
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS184%20-%20Logical%20Operations.mp4" %}
-
 _Although you've been using various of the `?`_ [_wut_](../../hoon/rune/wut.md) _runes for a while now, let's wrap up some loose ends. This module will cover the nature of loobean logic and the rest of the `?` wut runes._
 
 ## Loobean Logic <a href="#loobean-logic" id="loobean-logic"></a>
@@ -25,7 +23,7 @@ Throughout Hoon School, you have been using `%.y` and `%.n`, often implicitly, e
 
 What are the actual values of these, _sans_ formatting?
 
-```hoon
+```
 > `@`%.y
 0
 
@@ -33,13 +31,11 @@ What are the actual values of these, _sans_ formatting?
 1
 ```
 
-Pretty much all conditional operators rely on loobeans, although it is very uncommon for you to need to unpack them.
-
 ## Noun Equality <a href="#noun-equality" id="noun-equality"></a>
 
 The most fundamental comparison in Hoon is provided by `.=` [dottis](../../hoon/rune/dot.md#dottis), a test for equality of two nouns using Nock 5. This is almost always used in its irregular form of `=` tis.
 
-```hoon
+```
 > =(0 0)
 %.y
 
@@ -49,7 +45,7 @@ The most fundamental comparison in Hoon is provided by `.=` [dottis](../../hoon/
 
 Since Nock is unaware of the Hoon metadata type system, only bare atoms in the nouns are compared. If you need to compare include type information, create vases with `!>` [zapgar](../../hoon/rune/zap.md#zapgar).
 
-```hoon
+```
 > =('a' 97)
 %.y
 
@@ -108,7 +104,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 | `%.y` | `%.y` | `%.n` |
 | `%.n` | `%.n` | `%.n` |
 
-```hoon
+```
 > =/  a  5
   &((gth a 4) (lth a 7))
 %.y
@@ -124,7 +120,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 \
 
 
-```hoon
+```
 > =/  a  5
   |((gth a 4) (lth a 7))
 %.y
@@ -140,7 +136,7 @@ Mathematical logic allows the collocation of propositions to determine other pro
 \
 
 
-```hoon
+```
 > !%.y
 %.n
 
@@ -152,42 +148,36 @@ From these primitive operators, you can build other logical statements at need.
 
 ### Exercise: Design an `XOR` Function <a href="#exercise-design-an-xor-function" id="exercise-design-an-xor-function"></a>
 
-The logical operation `XOR` (i.e. _p_⊕_q_ ; exclusive disjunction) yields true if one but not both operands are true. `XOR` can be calculated by (_p_ ∧ ¬_q_) ∨ (¬_p_ ∧ _q_).
+The logical operation `XOR` yields true if one but not both operands are true.
 
 | `XOR` | `%.y` | `%.n` |
 | ----- | ----- | ----- |
 | `%.y` | `%.n` | `%.y` |
 | `%.n` | `%.y` | `%.n` |
 
-* Implement `XOR` as a gate in Hoon.
-
-```hoon
-|=  [p=?(%.y %.n) q=?(%.y %.n)]
-^-  ?(%.y %.n)
-|(&(p !q) &(!p q))
-```
+Implement `XOR` as a gate in Hoon.
 
 ### Exercise: Design a `NAND` Function <a href="#exercise-design-a-nand-function" id="exercise-design-a-nand-function"></a>
 
-The logical operation `NAND` (i.e. _p_ ↑ _q_) produces false if both operands are true. `NAND` can be calculated by ¬(_p_ ∧ _q_).
+The logical operation `NAND` produces false if both operands are true.
 
 | `NAND` | `%.y` | `%.n` |
 | ------ | ----- | ----- |
 | `%.y`  | `%.n` | `%.y` |
 | `%.n`  | `%.y` | `%.y` |
 
-* Implement `NAND` as a gate in Hoon.
+Implement `NAND` as a gate in Hoon.
 
 ### Exercise: Design a `NOR` Function <a href="#exercise-design-a-nor-function" id="exercise-design-a-nor-function"></a>
 
-The logical operation `NOR` (i.e. _p_ ↓ _q_) produces true if both operands are false. `NOR` can be calculated by ¬(_p_ ∨ _q_).
+The logical operation `NOR` produces true if both operands are false.
 
 | `NOR` | `%.y` | `%.n` |
 | ----- | ----- | ----- |
 | `%.y` | `%.n` | `%.n` |
 | `%.n` | `%.n` | `%.y` |
 
-* Implement `NAND` as a gate in Hoon.
+Implement `NOR` as a gate in Hoon.
 
 ### Exercise: Implement a Piecewise Boxcar Function <a href="#exercise-implement-a-piecewise-boxcar-function" id="exercise-implement-a-piecewise-boxcar-function"></a>
 

@@ -15,8 +15,6 @@ layout:
 
 # 1. Hoon Syntax
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS110%20-%20Syntax.mp4" %}
-
 _This module will discuss the fundamental data concepts of Hoon and how programs handle control flow._
 
 The study of Hoon can be divided into two parts: syntax and semantics.
@@ -73,7 +71,7 @@ _Everything_ in Hoon (and Nock, and Urbit) is a noun. The Urbit OS itself is a n
 
 If an atom is a non-negative number, how do we represent anything else? Hoon provides each atom an aura, a tag which lets you treat a number as text, time, date, Urbit address, IP address, and much more.
 
-An aura always begins with `@` pat, which denotes an atom (as opposed to a cell, `^` ket, or the general noun, `*` tar). The next letter or letters tells you what kind of representation you want the value to have.
+An aura always begins with `@` ("pat"), which denotes an atom (as opposed to a cell, `^` ("ket"), or the general noun, `*` ("tar")). The next letter or letters tells you what kind of representation you want the value to have.
 
 For instance, to change the representation of a regular decimal number like `32` to a binary representation (i.e. for 2⁵), use `@ub`:
 
@@ -158,8 +156,6 @@ For now, you can preview the structure of the Urbit OS as a noun by typing `.` d
 {% endhint %}
 
 ## Verbs (Runes) {#verbs-runes}
-
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS113%20-%20Basic%20Coding.mp4" %}
 
 The backbone of any Hoon expression is a scaffolding of runes, which are essentially mathematical relationships between daughter components. If nouns are nouns, then runes are verbs: they describe how nouns relate. Runes provide the structural and logical relationship between noun values.
 

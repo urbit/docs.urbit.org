@@ -15,7 +15,7 @@ layout:
 
 # 4. Molds (Types)
 
-"This module will introduce the Hoon type system and illustrate how type checking and type inference work."
+*This module will introduce the Hoon type system and illustrate how type checking and type inference work.*
 
 ## The Hoon Type System {#the-hoon-type-system}
 
@@ -29,9 +29,9 @@ Type systems provide type safety, in part by making sure functions produce value
 
 A "type" is really a rule for interpretation. But for our Hoonish purposes, it's rather too broad a notion and we need to clarify some different kinds of things we could refer to as “type”. It is instructive for learners to distinguish three kinds of types in Hoon:
 
-1. Atoms: values with auras.
-2. Molds: structures. Think of cells, lists, and sets.
-3. Marks: file types. Compare to conventional files distinguished by extension and definite internal structure.
+1. **Auras:** atoms with type metadata. (e.g. `0` as a `@t` is `''`)
+2. **Molds:** typed nouns. Think of cells, lists, and sets.
+3. **Marks:** file types. Compare to conventional files distinguished by extension and definite internal structure.
 
 To employ a chemical metaphor, an atom is an atom; a cell is a molecule; a mold is an molecule definition, a template or structural representation; a mark is like a protein, a more complex transformation rule. **All of these are molds, or Hoon types. We are simply separating them by complexity as you learn.**
 
@@ -52,7 +52,7 @@ To see the inferred type of a literal expression in the Dojo, use the `?` operat
 
 The `?` Dojo operator shows both the product and the inferred type of an expression. Let's try `?` on `15`:
 
-```hoon
+```
 > 15
 15
 
@@ -69,7 +69,7 @@ What exactly does the `^-` [kethep](../../hoon/rune/ket.md#kethep) rune do?  It 
 
 Let's try one in the Dojo.
 
-```hoon
+```
 > ^-(@ud 15)
 15
 ```
@@ -78,7 +78,7 @@ Because `@ud` is the inferred type of `15`, the cast succeeds. Notice that the `
 
 What if the inferred type doesn't fit under the cast type?  You will see a "nest-fail" crash at compile-time:
 
-```hoon
+```
 > ^-(@ud [13 14])
 nest-fail
 [crash message]
@@ -86,7 +86,7 @@ nest-fail
 
 Why "nest-fail"?  The inferred type of `[13 14]` doesn't nest under the cast type `@ud`. It's a cell, not an atom. But if we use the symbol for nouns, `*`, then the cast succeeds:
 
-```hoon
+```
 > ^-(* [13 14])
 [13 14]
 ```
@@ -104,7 +104,7 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@d`   | date                         | no literal |
 | `@da`  | absolute date                | `~2018.5.14..22.31.46..1435` |
 | `@dr`  | relative date (ie, timespan) | `~h5.m30.s12` |
-| `@p`   | phonemic base (ship name)    | `~sorreg-namtyv` |
+| `@p`   | phonemic base (ship name)    | `~sampel-palnet` |
 | `@r`   | [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754) floating-point |  |
 | `@rd`  | double precision  (64 bits)  | `.~6.02214085774e23` |
 | `@rh`  | half precision (16 bits)     | `.~~3.14` |
@@ -128,13 +128,13 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 
 Some of these auras nest under others. For example, `@u` is for all unsigned auras. But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc. (For a more complete list of auras, see [Auras](../../hoon/auras.md).)
 
-`$knot` and `$term` values each use a URL-safe subset of ASCII, omitting characters like spaces.
+Note that `$knot` and `$term` values each use a URL-safe subset of ASCII which excludes characters like spaces.
 
 ### Aura Inference in Hoon {#aura-inference-in-hoon}
 
 Let's work a few more examples in the Dojo using the `?` operator. We'll focus on just the unsigned auras for now:
 
-```hoon
+```
 > 15
 15
 
@@ -154,11 +154,11 @@ When you enter just `15`, the Hoon type checker infers from the syntax that its 
 
 And when you enter `0x15` the type checker infers that its aura is `@ux`, because you used `0x` before the number to indicate the unsigned hexadecimal literal syntax. In both cases, Hoon pretty-prints the appropriate literal syntax by using inferred type information from the input expression; the Dojo isn't (just) echoing what you enter.
 
-More generally: for each atom expression in Hoon, you can use the literal syntax of an aura to force Hoon to interpret the atom as having that aura type. For example, when you type `~sorreg-namtyv` Hoon will interpret it as an atom with aura `@p` and treat it accordingly.
+More generally: for each atom expression in Hoon, you can use the literal syntax of an aura to force Hoon to interpret the atom as having that aura type. For example, when you type `~sampel-palnet` Hoon will interpret it as an atom with aura `@p` and treat it accordingly.
 
 Here's another example of type inference at work:
 
-```hoon
+```
 > (add 15 15)
 30
 
@@ -174,9 +174,9 @@ Here's another example of type inference at work:
 36
 ```
 
-The [add](../../hoon/stdlib/1a.md#add) function in the Hoon standard library operates on all atoms, regardless of aura, and returns atoms with no aura specified. Hoon isn't able to infer anything more specific than `@` for the product of `+add`. This is by design, however. Notice that when you `+add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal). This works for all of the unsigned auras:
+The [`+add`](../../hoon/stdlib/1a.md#add) function in the Hoon standard library operates on all atoms, regardless of aura, and returns atoms with no aura specified. Hoon isn't able to infer anything more specific than `@` for the product of `+add`. This is by design, however. Notice that when you `+add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal). This works for all of the unsigned auras:
 
-```hoon
+```
 > (add 100 0b101)
 105
 
@@ -196,9 +196,9 @@ Let's move on to consider cells. For now we'll limit ourselves to simple cell ty
 
 ### Generic Cells {#generic-cells}
 
-The `^` ket symbol is used to indicate the type for cells (i.e., the set of all cells). We can use it for casting as we did with atom auras, like `@ux` and `@t`:
+The `^` ("ket") symbol is used to indicate the type for cells (i.e., the set of all cells). We can use it for casting as we did with atom auras, like `@ux` and `@t`:
 
-```hoon
+```
 > ^-(^ [12 13])
 [12 13]
 
@@ -217,9 +217,9 @@ nest-fail
 
 If the expression to be evaluated produces a cell, the cast succeeds; if the expression evaluates produces an atom, the cast fails with a nest-fail crash.
 
-The downside of using `^` ket for casts is that Hoon will infer only that the product of the expression is a cell; it won't know what kind of cell is produced.
+The downside of using `^` for casts is that Hoon will infer only that the product of the expression is a cell of nouns; `^` tells the compiler nothing about the contents of the cell.
 
-```hoon
+```
 > ? ^-(^ [12 13])
   [* *]
 [12 13]
@@ -233,7 +233,7 @@ The downside of using `^` ket for casts is that Hoon will infer only that the pr
 [[12 13] [14 15 16]]
 ```
 
-When we use the `?` operator to see the type inferred by Hoon for the expression, in all three of the above cases the same thing is returned: `[* *]`. The `*` symbol indicates the type for any noun, and the square brackets `[ ]` indicate a cell. Every cell in Hoon is a cell of nouns; remember that cells are defined as pairs of nouns.
+When we use the `?` operator to see the type inferred by Hoon for the expression, in all three of the above cases the same thing is returned: `[* *]`. The `*` ("tar") symbol indicates the type for any noun, and the square brackets indicate a cell. Every cell in Hoon is a cell of nouns; remember that cells are defined as pairs of nouns.
 
 Yet the cell `[[12 13] [14 15 16]]` is a bit more complex than the cell `[12 13]`. Can we use the type system to distinguish them?  Yes.
 
@@ -241,7 +241,7 @@ Yet the cell `[[12 13] [14 15 16]]` is a bit more complex than the cell `[12 13]
 
 What if you want to cast for a particular kind of cell?  You can use square brackets when casting for a specific cell type. For example, if you want to cast for a cell in which the head and the tail must each be an atom, then simply cast using `[@ @]`:
 
-```hoon
+```
 > ^-([@ @] [12 13])
 [12 13]
 
@@ -256,11 +256,11 @@ nest-fail
 nest-fail
 ```
 
-The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two atoms, and crashes with a [nest-fail](../../hoon/hoon-errors.md#nest-fail) for any expression that evaluates to something different. The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` does evaluate to a cell, the left-hand side isn't an atom, but is instead another cell.
+The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two atoms, and crashes with a [nest-fail](../../hoon/hoon-errors.md#nest-fail) error for any expression that evaluates to something different. The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` does evaluate to a cell, the left-hand side isn't an atom, but is instead another cell.
 
 You can get even more specific about the kind of cell you want by using atom auras:
 
-```hoon
+```
 > ^-([@ud @ux] [12 0x10])
 [12 0x10]
 
@@ -275,9 +275,9 @@ You can get even more specific about the kind of cell you want by using atom aur
 nest-fail
 ```
 
-You are also free to embed more square brackets `[ ]` to indicate cells within cells:
+You are also free to embed more square brackets to indicate cells within cells:
 
-```hoon
+```
 > ^-([[@ud @sb] @ux] [[12 --0b1101] 0xdead.beef])
 [[12 --0b1101] 0xdead.beef]
 
@@ -291,7 +291,7 @@ nest-fail
 
 You can also be highly specific with certain parts of the type structure, leaving other parts more general. Keep in mind that when you do this, Hoon's type system will infer a general type from the general part of the cast. Type information may be thrown away:
 
-```hoon
+```
 > ^-([^ @ux] [[12 --0b1101] 0xdead.beef])
 [[12 26] 0xdead.beef]
 
@@ -312,11 +312,9 @@ Because every piece of Hoon data is a noun, everything nests under `*`. When you
 
 ## Molds {#molds}
 
-{% embed url="https://storage.googleapis.com/media.urbit.org/docs/hoon-school-videos/HS156%20-%20Molds.mp4" %}
+A mold is a template or rule for identifying actual type structures. **Molds are actually gates, meaning that they operate on a value to coerce it to a particular structure.** Technically, a mold is a function from a noun to a noun. What this means is that we can use a mold to coerce any noun into a typed value; if this gate fails, then the mold crashes.
 
-A mold is a template or rule for identifying actual type structures. They are actually gates, meaning that they operate on a value to coerce it to a particular structure. Technically, a mold is a function from a noun to a noun. What this means is that we can use a mold to map any noun to a typed value; if this fails, then the mold crashes.
-
-```hoon
+```
 > (^ [1 2])
 [1 2]
 
@@ -333,23 +331,23 @@ dojo: hoon expression failed
 
 We commonly need to do one of two things with a mold:
 
-1. Validate the shape of a noun ("clam").
+1. Validate the shape of a noun. (Or, "clam" the noun in Hoon developer parlance.)
     
-    ```hoon
-    > (@ux 0x1000)
-    0x1000
+```
+> (@ux 0x1000)
+0x1000
 
-    > (@ux [1 2])
-    dojo: hoon expression failed
-    ```
+> (@ux [1 2])
+dojo: hoon expression failed
+```
 
 2. Produce an example value (bunt).
 
-We often use bunts to clam; for example `@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
+We often use bunts (default value of a type) to clam; for example, `@ud` implicitly uses the `@ud` default value (`0`) as the type specimen which the computation must match.
 
-To _actually_ get the bunt value, use the `^*` [kettar](../../hoon/rune/ket.md#kettar) rune, almost always used in its irregular form `*` tar:
+To _actually_ get the bunt value, use the `^*` [kettar](../../hoon/rune/ket.md#kettar) rune, almost always used in its irregular form `*`
 
-```hoon
+```
 > ^*  @ud
 0
 
@@ -381,15 +379,13 @@ We can use more complex structures for molds though, including built-in types li
 `(list @p)``(list @)`[144 57 195 46 200 165 186 88 118 99 ~]
 ```
 
-(Sometimes you see a `%bad-text` when using `$tape`s, which means that you've tried to convert a number into text which isn't text. More on `$tape`s in Trees.)
+(Sometimes you see a `%bad-text` when using `$tape`s, which means that you've tried to convert a number into text which isn't text. More on `$tape`s in the lesson on trees.)
 
--   Why does this mold conversion fail?
+Why does this mold conversion fail? What do we need to do in order to make it succeed?
 
-     ```hoon
-     `(list @ux)`[1 2 3 ~]
-     ```
-
-    What do we need to do in order to make it succeed?
+ ```hoon
+ `(list @ux)`[1 2 3 ~]
+ ```
 
 We can have more complex molds as well:
 
@@ -398,7 +394,7 @@ We can have more complex molds as well:
 [[@p @p] @ud]
 ```
 
-Most of the time, we will define such complex types using specific runes and “mold builder” tools. Thus a `+list` needs an associated type `(list @)` to correctly denote the data type.
+Most of the time, we will define such complex types using specific runes and “mold builder” tools. Thus a `+list` mold needs an associated type `(list @)` to correctly denote the data type.
 
 ### Identifying Molds {#identifying-molds}
 
@@ -409,16 +405,16 @@ Besides `?` (which is a Dojo-specific tool), the programmatic way to figure out 
 [#t/@ux q=2.900.541.101]
 ```
 
-For reasons which will be elaborated in Trees, this is often employed as the so-called “type spear” `-:!>`:
+For reasons which will be elaborated in the lesson on trees, this is often employed as the so-called “type spear” `-:!>`:
 
-```hoon
+```
 > -:!>(0xace2.bead)
 #t/@ux
 ```
 
 ### Type Unions {#type-unions}
 
-`$?` [bucwut](../../hoon/rune/buc.md#bucwut) forms a type union. Most commonly these are used with types having different structures, such as an atom and a cell.
+The `$?` [bucwut](../../hoon/rune/buc.md#bucwut) rune forms a type union. Most commonly these are used with types having different structures, such as an atom and a cell.
 
 For instance, if you wanted a gate to accept an atom of an unsigned aura type, but no other type, you could define a type union thus:
 
@@ -433,7 +429,7 @@ and use it in a gate:
 (add n 1)
 ```
 
-```hoon
+```
 > (foo 4)  
 5  
 > (foo 0x5)  
@@ -449,7 +445,7 @@ dojo: hoon expression failed
 
 Unfortunately, type unions of atoms are not helpful in filtering over produced values (with `^-` kethep), as they default to the type of the last value in the union. So the type union `$?(@ (list @))` distinguishes an atom and a list, but `(list $?(@ud @sd))` does not successfully produce a list distinguishing both types.
 
-The irregular form of `$?` bucwut looks like this:
+The irregular form of `$?` looks like this:
 
 ```hoon
 ?(@ud @ux @ub)

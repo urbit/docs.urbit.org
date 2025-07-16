@@ -15,7 +15,7 @@ layout:
 
 # 9. Text Processing I
 
-_This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered_ [_in a later module_](./P-stdlib-io.md)_._
+*This module will discuss how text is represented in Hoon, discuss tools for producing and manipulating text, and introduce the `%say` generator, a new generator type. We don't deal with formatted text (`$tank`s) or parsers here, deferring that discussion. Formatted text and text parsing are covered_ [_in a later module_](./P-stdlib-io.md).*
 
 ## Text in Hoon <a href="#text-in-hoon" id="text-in-hoon"></a>
 
@@ -23,12 +23,12 @@ We've incidentally used `'messages written as cords'` and `"as tapes"`, but asid
 
 There are four basic ways to represent text in Urbit:
 
-* `@t`, a cord, which is an atom (single value)
-* `@ta`, a `$knot` used for URL-safe path elements, which is an atom (single value)
-* `@tas`, a `$term` used primarily for constants, which is an atom (single value)
-* `$tape`, which is a `(list @t)`
+* `@t`, a `$cord`, which is an atom (single value)
+* `@ta`, a `$knot`, used for URL-safe path elements, which is an atom (single value)
+* `@tas`, a `$term`, used primarily for constants, which is an atom (single value)
+* `$tape`, which is a `(list @t)` (many values)
 
-This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call cords and tapes [_strings_](https://en.wikipedia.org/wiki/String_(computer_science)), however.
+This is more ways than many languages support: most languages simply store text directly as a character array, or list of characters in memory. Colloquially, we would only call `$cord`s and `$tape`s [strings](https://en.wikipedia.org/wiki/String_(computer_science)), however.
 
 What are the applications of each?
 
@@ -45,7 +45,7 @@ A   S   C   I   I
 
 A cord simply shunts these values together in one-byte-wide slots and represents them as an integer.
 
-```hoon
+```
 > 'this is a cord'
 'this is a cord'
 
@@ -55,7 +55,7 @@ A cord simply shunts these values together in one-byte-wide slots and represents
 
 It's very helpful to use the `@ux` aura if you are trying to see the internal structure of a `$cord`. Since the ASCII values align at the 8-bit wide characters, you can see each character delineated by a hexadecimal pair.
 
-```hoon
+```
 > `@ux`'HELLO'
 0x4f.4c4c.4548
 
@@ -87,7 +87,7 @@ We've hinted a bit at the structure of `+list`s before; for now the main thing y
 
 A tape is a list of `@tD` atoms (i.e., characters). (The upper-case character at the end of the aura hints that the `@t` values are D→3 so 2³=8 bits wide.)
 
-```hoon
+```
 > "this is a tape"
 "this is a tape"
 
@@ -101,7 +101,7 @@ Since a tape is a `(list @tD)`, all of the `+list` tools we have seen before wor
 
 If we restrict the character set to certain ASCII characters instead of UTF-8, we can use this restricted representation for system labels as well (such as URLs, file system paths, permissions). `@ta` `$knot`s and `@tas` `$term`s both fill this role for Hoon.
 
-```hoon
+```
 > `@ta`'hello'
 ~.hello
 ```
@@ -118,7 +118,7 @@ A further tweak of the ASCII-only concept, the `@tas` `$term` permits only “te
 
 For instance, a `@tas` value is also a mold, and the value will _only_ match its own mold, so they are commonly used with [type unions](N-logic.md) to filter for acceptable values.
 
-```hoon
+```
 > ^-  @tas  %5
 mint-nice
 -need.@tas
@@ -157,14 +157,14 @@ Text-based data commonly needs to be _produced_, _manipulated_, or _analyzed_ (i
 
 String interpolation puts the result of an expression directly into a `$tape`:
 
-```hoon
+```
 > "{<(add 5 6)>} is the answer."
 "11 is the answer."
 ```
 
 The [`+weld`](../../hoon/stdlib/2b.md#weld) function can be used to glue two `$tape`s together:
 
-```hoon
+```
 > (weld "Hello" "Mars!")
 "HelloMars!"
 ```
@@ -183,7 +183,7 @@ Applicable `+list` operations, some of which you've seen before, include:
 
 The [`+flop`](../../hoon/stdlib/2b.md#flop) function takes a list and returns it in reverse order:
 
-```hoon
+```
 > (flop "Hello!")
 "!olleH"
 
@@ -193,21 +193,21 @@ The [`+flop`](../../hoon/stdlib/2b.md#flop) function takes a list and returns it
 
 The [`+sort`](../../hoon/stdlib/2b.md#sort) function uses the [quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) to sort a list. It takes a `+list` to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the [`+lth`](../../hoon/stdlib/1a.md#lth) gate (for “less than”):
 
-```hoon
+```
 > (sort ~[37 62 49 921 123] lth)
 ~[37 49 62 123 921]
 ```
 
 To sort the list from greatest to least, use the `+gth` gate ("greater than") as the basis of comparison instead:
 
-```hoon
+```
 > (sort ~[37 62 49 921 123] gth)
 ~[921 123 62 49 37]
 ```
 
 You can sort letters this way as well:
 
-```hoon
+```
 > (sort ~['a' 'f' 'e' 'k' 'j'] lth)
 <|a e f j k|>
 ```
@@ -216,7 +216,7 @@ The function passed to sort must produce a flag, i.e., `?`.
 
 The [`+weld`](../../hoon/stdlib/2b.md#weld) function takes two lists of the same type and concatenates them:
 
-```hoon
+```
 > (weld "Happy " "Birthday!")
 "Happy Birthday!"
 ```
@@ -225,7 +225,7 @@ It does not inject a separator character like a space.
 
 The [`+snag`](../../hoon/stdlib/2b.md#snag) function takes an atom _n_ and a list, and returns the _&#x6E;_&#x74;h item of the list, where 0 is the first item:
 
-```hoon
+```
 > (snag 3 "Hello!")
 'l'
 
@@ -242,7 +242,7 @@ Without using `+snag`, write a gate that returns the _&#x6E;_&#x74;h item of a l
 
 The [`+oust`](../../hoon/stdlib/2b.md#oust) function takes a pair of atoms `[a=@ b=@]` and a `+list`, and returns the list with `.b` items removed, starting at item `.a`:
 
-```hoon
+```
 > (oust [0 1] `(list @)`~[11 22 33 44])
 ~[22 33 44]
 
@@ -258,7 +258,7 @@ The [`+oust`](../../hoon/stdlib/2b.md#oust) function takes a pair of atoms `[a=@
 
 The [`+lent`](../../hoon/stdlib/2b.md#lent) function takes a list and returns the number of items in it:
 
-```hoon
+```
 > (lent ~[11 22 33 44])
 4
 
@@ -276,28 +276,28 @@ The foregoing are `+list` operations. The following, in contrast, are `$tape`-sp
 
 The [`+crip`](../../hoon/stdlib/4b.md#crip) function converts a `$tape` to a `$cord` (`$tape`→`$cord`).
 
-```hoon
+```
 > (crip "Mars")
 'Mars'
 ```
 
 The [`+trip`](../../hoon/stdlib/4b.md#trip) function converts a `$cord` to a `$tape` (`$cord`→`$tape`).
 
-```hoon
+```
 > (trip 'Earth')
 "Earth"
 ```
 
 The [`+cass`](../../hoon/stdlib/4b.md#cass) function: convert upper-case text to lower-case (`$tape`→`$tape`)
 
-```hoon
+```
 > (cass "Hello Mars")
 "hello mars"
 ```
 
 The [`+cuss`](../../hoon/stdlib/4b.md#cuss) function: convert lower-case text to upper-case (`$tape`→`$tape`)
 
-```hoon
+```
 > (cuss "Hello Mars")
 "HELLO MARS"
 ```
@@ -314,7 +314,7 @@ Given a string of text, what can you do with it?
 
 The [`+find`](../../hoon/stdlib/2b.md#find) function takes `[nedl=(list) hstk=(list)]` and locates a sublist (`.nedl`, needle) in the list (`.hstk`, haystack). (`+find` starts counting from zero.)
 
-```hoon
+```
 > (find "brillig" "'Twas brillig and the slithy toves")
 [~ 6]
 ```
@@ -369,7 +369,7 @@ If you have a Hoon value and you want to convert it into text as such, use [`+sc
 
 The [`+scot`](../../hoon/stdlib/4m.md#scot) function renders a `$dime` as a `$cord` (`$dime`→`$cord`); the user must include any necessary aura transformation.
 
-```hoon
+```
 > `@t`(scot %ud 54.321)
 '54.321'
 
@@ -377,7 +377,7 @@ The [`+scot`](../../hoon/stdlib/4m.md#scot) function renders a `$dime` as a `$co
 '0xd2f0'
 ```
 
-```hoon
+```
 > (scot %p ~sampel-palnet)
 ~.~sampel-palnet
 
@@ -389,7 +389,7 @@ The [`+scow`](../../hoon/stdlib/4m.md#scow) function renders a `$dime` as a `$ta
 
 The [`+sane`](../../hoon/stdlib/4b.md#sane) function checks the validity of a possible text string as a `$knot` or `$term`. The usage of `+sane` will feel a bit strange to you: it doesn't apply directly to the text you want to check, but it produces a gate that checks for the aura (as `%ta` or `%tas`). (The gate-builder is a fairly common pattern in Hoon that we've started to hint at by using molds.) `+sane` is also not infallible yet.
 
-```hoon
+```
 > ((sane %ta) 'ångstrom')
 %.n
 
@@ -408,7 +408,7 @@ Why is this sort of check necessary? Two reasons:
 1. `@ta` `$knot`s and `@tas` `$term`s have strict rules, such as being ASCII-only.
 2. Not every sequence of bits has a conversion to a text representation. That is, ASCII and Unicode have structural rules that limit the possible conversions which can be made. If things don't work, you'll get a `%bad-text` response.
 
-```hoon
+```
 > 0x1234.5678.90ab.cdef
 0x1234.5678.90ab.cdef
 > `@t`0x1234.5678.90ab.cdef
@@ -417,14 +417,14 @@ Why is this sort of check necessary? Two reasons:
 
 There's a minor bug in Hoon that will let you produce an erroneous `$term` (`@tas`):
 
-```hoon
+```
 > `@tas`'hello mars'
 %hello mars
 ```
 
 Since a `@tas` cannot include a space, this is formally incorrect, as `+sane` reveals:
 
-```hoon
+```
 > ((sane %tas) 'hello')  
 %.y
 
@@ -456,7 +456,7 @@ There are also `>` modifiers which can be included to mark “debugging levels�
 
 You can use these to differentiate messages when debugging or otherwise auditing the behavior of a generator or library. Try these in your own Dojo:
 
-```hoon
+```
 > ~&  'Hello Mars!'  ~  
 'Hello Mars!'
 ~  
@@ -493,7 +493,7 @@ So, more formally, a `%say` generator is a cell. The head of that cell is the `%
 
 Run it with:
 
-```hoon
+```
 > |commit %base
 
 > +add
@@ -579,14 +579,14 @@ This Magic 8-Ball generator returns one of a variety of answers in response to a
 
 Since this is a `%say` generator, we can run it without arguments:
 
-```hoon
+```
 > +magic-8
 "Ask again later."
 ```
 
 If we need to include optional arguments to a generator, we separate them using a `,` com:
 
-```hoon
+```
 +cat /===/gen/cat/hoon, =vane %c
 ```
 
@@ -595,6 +595,7 @@ If we need to include optional arguments to a generator, we separate them using 
 Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use it with a `%say` generator.
 
 {% code title="/gen/cards.hoon" %}
+
 ```hoon
 /+  playing-cards
 :-  %say
@@ -602,11 +603,12 @@ Recall the playing card library `/lib/playing-cards.hoon` in `/lib`. Let's use i
 :-  %noun
 (shuffle-deck:playing-cards make-deck:playing-cards eny)
 ```
+
 {% endcode %}
 
 Having already saved the library as `/lib/playing-cards.hoon`, you can import it with the `/+` [faslus](../../hoon/rune/fas.md#faslus) rune. When `cards.hoon` gets built, the Hoon builder will pull in the requested library and also build that. It will also create a dependency so that if `/lib/playing-cards.hoon` changes, this file will also get rebuilt.
 
-Below `/+ playing-cards`, you have the standard `%say` generator boilerplate that allows us to get a bit of entropy from Arvo when the generator is run. Then we feed the entropy and a `$deck` created by `+make-deck` into `+shuffle-deck` to get back a shuffled `$deck`.
+Below `/+  playing-cards`, you have the standard `%say` generator boilerplate that allows us to get a bit of entropy from Arvo when the generator is run. Then we feed the entropy and a `$deck` created by `+make-deck` into `+shuffle-deck` to get back a shuffled `$deck`.
 
 ## Solutions to Exercises <a href="#solutions-to-exercises" id="solutions-to-exercises"></a>
 

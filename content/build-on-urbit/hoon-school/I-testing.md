@@ -23,7 +23,7 @@ _This module will discuss how we can have confidence that a program does what it
 >
 > It's natural to feel fear of code; however, you must act as though you are able to master and change any part of it. To code courageously is to walk into any abyss, bring light, and make it right.
 >
-> \~wicdev-wisryt
+> **\~wicdev-wisryt - [*Precepts*, urbit.org](https://urbit.org/blog/precepts)**
 
 When you produce software, how much confidence do you have that it does what you think it does? Bugs in code are common, but judicious testing can manifest failures so that the bugs can be identified and corrected. We can classify a testing regimen for Urbit code into a couple of layers: fences and unit tests.
 
@@ -35,13 +35,13 @@ When you produce software, how much confidence do you have that it does what you
 
 > Unit tests are so called because they exercise the functionality of the code by interrogating individual functions and methods. Functions and methods can often be considered the atomic units of software because they are indivisible. However, what is considered to be the smallest code unit is subjective. The body of a function can be long are short, and shorter functions are arguably more unit-like than long ones.
 >
-> (Katy Huff, [“Python Testing and Continuous Integration”](https://mq-software-carpentry.github.io/python-testing/05-units/))
+> **Katy Huff - [*Python Testing and Continuous Integration*, Software Carpentry](https://mq-software-carpentry.github.io/python-testing/05-units/)**
 
 In many languages, unit tests refer to functions, often prefixed "test", that specify (and enforce) the expected behavior of a given function. Unit tests typically contain setup, assertions, and tear-down. In academic terms, they’re a grading script.
 
-In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [-test](../../user-manual/os/dojo-tools.md#test) thread:
+In Hoon, the `/tests` directory contains the relevant tests for the testing framework to grab and utilize. These can be invoked with the [`-test`](../../user-manual/os/dojo-tools.md#test) thread:
 
-```hoon
+```
 > -test /=landscape=/tests ~  
 built   /tests/lib/pull-hook-virt/hoon  
 built   /tests/lib/versioning/hoon  
@@ -171,7 +171,7 @@ Test code deals in vases, which are produced by `!>` [zapgar](../../hoon/rune/za
 ```
 {% endcode %}
 
-```hoon
+```
 > (expect-fail:test |.(!!))
 ~
 
@@ -208,7 +208,7 @@ The `~|` [sigbar](../../hoon/rune/sig.md#sigbar) rune, a “tracing printf”, c
 
 The `!:` [zapcol](../../hoon/rune/zap.md#zapcol) rune turns on line-by-line stack tracing, which is extremely helpful when debugging programs. Drop it in on the first Hoon line (after `/` [fas](../../hoon/rune/fas.md) imports) of a generator or library while developing.
 
-```hoon
+```
 > (sub 0 1)
 subtract-underflow
 dojo: hoon expression failed
@@ -225,11 +225,10 @@ When you compose your own library cores, include error messages for likely failu
 
 _In extremis_, rigorous unit testing yields test-driven development (TDD). Test-driven development refers to the practice of fully specifying desired function behavior before composing the function itself. The advantage of this approach is that it forces you to clarify ahead of time what you expect, rather than making it up on the fly.
 
-For instance, one could publish a set of tests which characterize the\
-behavior of a Roman numeral translation library sufficiently that when\
-such a library is provided it is immediately demonstrable.
+For instance, one could publish a set of tests which characterize the behavior of a Roman numeral translation library sufficiently that when such a library is provided it is immediately demonstrable.
 
 {% code title="/tests/lib/roman.hoon" %}
+
 ```hoon
 /+  *test, *roman
 |%
@@ -275,6 +274,7 @@ such a library is provided it is immediately demonstrable.
 :: and so forth
 --
 ```
+
 {% endcode %}
 
 By composing the unit tests ahead of time, you exercise a discipline of thinking carefully through details of the interface and implementation before you write a single line of implementation code.
@@ -285,9 +285,9 @@ Let’s enumerate the errors you are likely to have encountered by this point:
 
 ### nest-fail <a href="#nest-fail" id="nest-fail"></a>
 
-A [nest-fail](../../hoon/hoon-errors.md#nest-fail) may be the most common. Likely you are using an atom or a cell where the other is expected.
+A [`nest-fail`](../../hoon/hoon-errors.md#nest-fail) may be the most common. Likely you are using an atom or a cell where the other is expected.
 
-```hoon
+```
 > (add 'a' 'b')
 195
 
@@ -300,9 +300,9 @@ dojo: hoon expression failed
 
 ### mint-nice <a href="#mint-nice" id="mint-nice"></a>
 
-The "mint-nice" error arises from typechecking:
+The `mint-nice` error arises from typechecking:
 
-```hoon
+```
 > ^-(tape ~[78 97 114 110 105 97])
 mint-nice  
 -need.?(%~ [i=@tD t=""])  
@@ -313,7 +313,7 @@ dojo: hoon expression failed
 
 Conversion without casting via auras fails because the atom types (auras) don't nest without explicit downcasting to `@`.
 
-```hoon
+```
 > `(list @ud)`~[0x0 0x1 0x2]
 mint-nice
 -need.?(%~ [i=@ud t=it(@ud)])
@@ -327,9 +327,9 @@ dojo: hoon expression failed
 
 ### fish-loop <a href="#fish-loop" id="fish-loop"></a>
 
-A "fish-loop" arises when using a recursive mold definition like list. (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.) Alas, this fails today:
+A `fish-loop` arises when using a recursive mold definition like list. (The relevant mnemonic is that `+fish` goes fishing for the type of an expression.) Alas, this fails today:
 
-```hoon
+```
 > ?=((list @) ~[1 2 3 4])
 [%test ~[[%.y p=2]]]
 fish-loop
@@ -337,7 +337,7 @@ fish-loop
 
 ### generator-build-fail <a href="#generator-build-fail" id="generator-build-fail"></a>
 
-A "generator-build-fail" most commonly results from composing code with mismatched runes (and thus the wrong children including hanging expected-but-empty slots).
+A `generator-build-fail` most commonly results from composing code with mismatched runes (and thus the wrong children including hanging expected-but-empty slots).
 
 Also check if you are using Windows-style line endings, as Unix-style line endings should be employed throughout Urbit.
 
@@ -347,7 +347,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 
 `$.+2` means that `%-` [cenhep](../../hoon/rune/cen.md#cenhep) or equivalent function call cannot locate a battery. This can occur when you try to use a non-gate as a gate. In particular, if you mask the name of a mold (such as list), then a subsequent expression that requires the mold will experience this problem.
 
-```hoon
+```
 > =/  list  ~[1 2 3]
  =/  a  ~[4 5 6]
  `(list @ud)`a
@@ -356,7 +356,7 @@ Another common mistake is to attempt to use the default `$` buc arm in something
 
 Similarly, `-find.$` means the compiler is looking for a `$` buc arm in something that _is_ a core but doesn't have the `$` buc arm present.
 
-```hoon
+```
 > *tape
 ""
 > (tape)
@@ -364,8 +364,6 @@ Similarly, `-find.$` means the compiler is looking for a `$` buc arm in somethin
 > *(tape)
 -find.$
 ```
-
-* [“Hoon Errors”](../../hoon/hoon-errors.md)
 
 ### Debugging Strategies <a href="#debugging-strategies" id="debugging-strategies"></a>
 
@@ -377,3 +375,8 @@ What are some strategies for debugging?
 * **The only wolf in Alaska.** Essentially a bisection search, you split your code into smaller modules and run each part until you know where the bug arose (where the wolf howled). Then you keep fencing it in tighter and tighter until you know where it arose. You can stub out arms with `!!` [zapzap](../../hoon/rune/zap.md#zapzap).
 * **Build it again.** Remove all of the complicated code from your program and add it in one line at a time. For instance, replace a complicated function with either a `~&` sigpam and `!!` zapzap, or return a known static hard-coded value instead. That way as you reintroduce lines of code or parts of expressions you can narrow down what went wrong and why.
 * **Run without networking**. If you run the Urbit executable with `-L`, you cut off external networking. This is helpful if you want to mess with a _copy_ of an actual ship without producing remote effects. That is, if other parts of Ames don’t know what you’re doing, then you can delete that copy (COPY!) of your pier and continue with the original. This is an alternative to using fakeships which is occasionally helpful in debugging userspace apps in Gall. You can also develop using a moon if you want to.
+
+### Further reading
+
+* [Hoon Errors](../../hoon/hoon-errors.md)
+

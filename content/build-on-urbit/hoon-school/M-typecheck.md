@@ -21,7 +21,7 @@ _In this module we'll cover how the Hoon compiler infers type, as well as variou
 
 Casting is used to explain to the Hoon compiler exactly what it is we mean with a given data structure. As you get in the habit of casting your data structures, it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
 
-[`+list`](../../hoon/stdlib/1c.md#list) is a mold builder that is used to produce a mold, i.e. a list of a particular type (like `(list @)` for a list of atoms). A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `+list` of some kind and a null-terminated tuple.
+[`+list`](../../hoon/stdlib/1c.md#list) is a mold builder that is used to produce a mold, i.e. a `+list` of a particular type (like `(list @)` for a list of atoms). A `+list` can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null). There is a difference to Hoon, however, between something explicitly tagged as a `+list` of some kind and a null-terminated tuple.
 
 ```
 > -:!>(~[1 2 3])
@@ -31,7 +31,7 @@ Casting is used to explain to the Hoon compiler exactly what it is we mean with 
 #t/it(@)
 ```
 
-The former is inflexible and doesn't have the "i" and "t" faces that a list presents. By marking the type explicitly as a `(list @)` for the compiler, we achieve some stronger guarantees that many of the `+list` operators require.
+The former is inflexible and doesn't have the "i" and "t" faces that a `+list` presents. By marking the type explicitly as a `(list @)` for the compiler, we achieve some stronger guarantees that many of the `+list` operators require.
 
 However, we still don't get the faces for free:
 
@@ -44,7 +44,7 @@ find-fork
 dojo: hoon expression failed
 ```
 
-What's going on?  Formally, a list can be either null or non-null. When the list contains only `~` and no items, it's the null list. Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called "lests", are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sublist is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
+What's going on? Formally, a `+list` can be either null or non-null. When the `+list` contains only `~` and no items, it's the null `+list`. Most `+list`s are, however, non-null `+list`s, which have items preceding the `~`. Non-null lists, called `+lest`s, are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a `+list`, and if such a `+list` is also non-null, the head of this sublist is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
 
 ```hoon
 [1 [2 [3 [4 ~]]]]
@@ -52,7 +52,7 @@ What's going on?  Formally, a list can be either null or non-null. When the list
 
 It's easy to see where the heads are and where the nesting tails are. The head of the above list is the atom `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.
 
-You can construct lists of any type. `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
+You can construct `+list`s of any type. `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
 ```
 > `(list @)`~
@@ -81,14 +81,14 @@ find-fork
 dojo: hoon expression failed
 ```
 
-Any time we see a "find-fork" error, it means that the type checker considers the value to be underspecified. In this case, it can't guarantee that `.i.a` exists because although `.a` is a list, it's not known to be a non-null lest. If we enforce that constraint, then suddenly we can use the faces:
+Any time we see a "find-fork" error, it means that the type checker considers the value to be underspecified. In this case, it can't guarantee that `.i.a` exists because although `.a` is a `+list`, it's not known to be a non-null `+lest`. If we enforce that constraint, then suddenly we can use the faces:
 
 ```
 > ?:  ?=(~ a)  !!  i.a
 1
 ```
 
-It's important to note that performing tests like this will actually transform a list into a `+lest`, a non-null list. Because `+lest` is a different type than `+list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
+It's important to note that performing tests like this will actually transform a `+list` into a `+lest`, a non-null list. Because `+lest` is a different type than `+list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for `+list`s.
 
 
 ### Casting Nouns (`^` ket Runes) {#casting-nouns-ket-runes}
@@ -191,11 +191,11 @@ This isn't a comprehensive list of the type checks in Hoon: for instance, some o
 
 ## Type Inference {#type-inference}
 
-Hoon infers the type of any given expression. How does this inference work?  Hoon has available various tools for inferring the type of any given expression: literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
+Hoon infers the type of any given expression. How does this inference work? Hoon has available various tools for inferring the type of any given expression: literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
 
 ### Literals {#literals}
 
-[Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values as they "literally" exist in the source code. Atom and cell literals are supported in Hoon, and every supported aura has an unambiguous representation that allows the parser to directly infer the type from the form. Here are a few examples of auras and associated literal formats:
+[Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values as they *literally* exist in the source code. Atom and cell literals are supported in Hoon, and every supported aura has an unambiguous representation that allows the parser to directly infer the type from the form. Here are a few examples of auras and associated literal formats:
 
 | Type         | Literal               |
 | ------------ | --------------------- |
@@ -207,7 +207,7 @@ Hoon infers the type of any given expression. How does this inference work?  Hoo
 
 ### Casts {#casts}
 
-Casting with `^` [ket](../../hoon/rune/ket.md) runes also shape how Hoon understands an expression type, as outlined above. The inferred type of a cast expression is just the type being cast for. It can be inferred that, if the cast didn't result in a [nest-fail](../../hoon/hoon-errors.md#nest-fail), the value produced must be of the cast type. Here are some examples of cast expressions with the inferred output type on the right:
+Casting with `^` [ket](../../hoon/rune/ket.md) runes also shape how Hoon understands an expression type, as outlined above. The inferred type of a cast expression is just the type being cast for. It can be inferred that, if the cast didn't result in a [`nest-fail`](../../hoon/hoon-errors.md#nest-fail), the value produced must be of the cast type. Here are some examples of cast expressions with the inferred output type on the right:
 
 | Type        | Cast                            |
 | ----------- | ------------------------------- |
@@ -297,7 +297,7 @@ The `?=` [wuttis](../../hoon/rune/wut.md#wuttis) rune takes two subexpressions. 
 %.y
 ```
 
-We haven't talked much about types that are made with a type constructor yet. We'll discuss these more soon, but it's worth pointing out that every list type qualifies as such, and hence should not be used with `?=`:
+We haven't talked much about types that are made with a type constructor yet. We'll discuss these more soon, but it's worth pointing out that every `+list` type qualifies as such, and hence should not be used with `?=`:
 
 ```
 > ?=((list @) ~[1 2 3 4])
@@ -341,7 +341,7 @@ You can't see it here either, but the inferred type of `.b` in `[| b]` is `^`. T
 
 ##### The Type Spear
 
-What if you want to see the inferred type of `.b` for yourself for each conditional branch?  One way to do this is with the "type spear". The `!>` [zapgar](../../hoon/rune/zap.md#zapgar) rune takes one subexpression and constructs a cell from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached. The head of the product cell is the inferred type of the subexpression.
+What if you want to see the inferred type of `.b` for yourself for each conditional branch? One way to do this is with the "type spear". The `!>` [zapgar](../../hoon/rune/zap.md#zapgar) rune takes one subexpression and constructs a cell from it. The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached. The head of the product cell is the inferred type of the subexpression.
 
 ```
 > !>(15)
@@ -538,9 +538,9 @@ Once that new value for `.c` is computed from the head of `.a`, we're ready to c
 
 ### Lists {#lists}
 
-You learned about lists earlier in the chapter, but we left out a little bit of information about the way Hoon understands list types.
+You learned about `+list`s earlier in the chapter, but we left out a little bit of information about the way Hoon understands `+list` types.
 
-A non-null list is a cell. If `.b` is a non-null list then the head of `.b` is the first item of `.b` _with an `i` face on it_. The tail of `.b` is the rest of the list. The 'rest of the list' is itself another list _with a `t` face on it_. We can (and should) use these `i` and `t` faces in list functions.
+A non-null list is a cell. If `.b` is a non-null list then the head of `.b` is the first item of `.b` _with an `i` face on it_. The tail of `.b` is the rest of the list. The 'rest of the list' is itself another `+list` _with a `t` face on it_. We can (and should) use these `i` and `t` faces in `+list` functions.
 
 To illustrate: let's say that `.b` is the list of the atoms `11`, `22`, and `33`. Let's construct this in stages:
 
@@ -552,11 +552,11 @@ To illustrate: let's say that `.b` is the list of the atoms `11`, `22`, and `33`
 [i=11 t=[i=22 t=[i=33 t=~]]]
 ```
 
-(There are lists of every type. Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc. We can even have lists of lists of `@`, `^`, or `?`, etc.)
+(There are lists of every type. Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc. We can even have `+list`s of `+list`s of `@`, `^`, or `?`, etc.)
 
 #### Tutorial: List Spanning Values
 
-Here's a program that takes atoms `.a` and `.b` and returns a list of all atoms from `.a` to `.b`:
+Here's a program that takes atoms `.a` and `.b` and returns a `+list` of all atoms from `.a` to `.b`:
 
 ```hoon
 |=  [a=@ b=@]
@@ -566,7 +566,7 @@ Here's a program that takes atoms `.a` and `.b` and returns a list of all atoms 
 [i=a t=$(a +(a))]
 ```
 
-This program is very simple. It takes two `@` as input, `.a` and `.b`, and returns a `(list @)`, i.e., a list of `@`. If `.a` is greater than `.b` the list is finished: return the null list `~`. Otherwise, return a non-null list: a pair in which the head is `.a` with an `i` face on it, and in which the tail is another list with the `t` face on it. This embedded list is the product of a recursion call: add `1` to `.a` and run the function again.
+This program is very simple. It takes two `@` as input, `.a` and `.b`, and returns a `(list @)`, i.e., a `+list` of `@`. If `.a` is greater than `.b` the list is finished: return the null `+list` `~`. Otherwise, return a non-null list: a pair in which the head is `.a` with an `i` face on it, and in which the tail is another `+list` with the `t` face on it. This embedded `+list` is the product of a recursion call: add `1` to `.a` and run the function again.
 
 Save this code as `/gen/gulf.hoon` and run it from the Dojo:
 
@@ -581,7 +581,7 @@ Save this code as `/gen/gulf.hoon` and run it from the Dojo:
 ~
 ```
 
-Where are all the `i`s and `t`s???  For the sake of neatness the Hoon pretty-printer doesn't show the `i` and `t` faces of lists, just the items.
+Where are all the `i`s and `t`s??? For the sake of neatness the Hoon pretty-printer doesn't show the `i` and `t` faces of `+list`s, just the items.
 
 In fact, we could have left out the `i` and `t` faces in the program itself:
 
@@ -634,7 +634,7 @@ Hoon will infer that `.b` either is or isn't null based on which `?~` branch is 
 
 ##### Using `?~` wutsig With Lists
 
-`?~` [wutsig](../../hoon/rune/wut.md#wutsig) is especially useful for working with lists. Is a list null, or not?  You probably want to do different things based on the answer to that question. Above, we used a pattern of `?:` [wutcol](../../hoon/rune/wut.md#wutcol) and `?=` [wuttis](../../hoon/rune/wut.md#wuttis) to answer the question, but `?~` wutsig will let us know in one step. Here's a program using `?~` wutsig to calculate the number of items in a list of atoms:
+`?~` [wutsig](../../hoon/rune/wut.md#wutsig) is especially useful for working with `+list`s. Is a list null, or not? You probably want to do different things based on the answer to that question. Above, we used a pattern of `?:` [wutcol](../../hoon/rune/wut.md#wutcol) and `?=` [wuttis](../../hoon/rune/wut.md#wuttis) to answer the question, but `?~` wutsig will let us know in one step. Here's a program using `?~` wutsig to calculate the number of items in a `+list` of atoms:
 
 ```hoon
 |=  a=(list @)
@@ -645,9 +645,9 @@ Hoon will infer that `.b` either is or isn't null based on which `?~` branch is 
 $(c +(c), a t.a)
 ```
 
-This function takes a list of `@` and returns an `@`. It uses `.c` as a counter value, initially set at `0` on line 2. If `.a` is `~` (i.e., a null list) then the computation is finished; return `.c`. Otherwise `.a` must be a non-null list, in which case there is a recursion to the `|-` [barhep](../../hoon/rune/bar.md#barhep) on line 3, but with `.c` incremented, and with the head of the list `.a` thrown away.
+This function takes a `+list` of `@` and returns an `@`. It uses `.c` as a counter value, initially set at `0` on line 2. If `.a` is `~` (i.e., a null `+list`) then the computation is finished; return `.c`. Otherwise `.a` must be a non-null list, in which case there is a recursion to the `|-` [barhep](../../hoon/rune/bar.md#barhep) on line 3, but with `.c` incremented, and with the head of the list `.a` thrown away.
 
-It's important to note that if `.a` is a list, you can only use `i.a` and `t.a` after Hoon has inferred that `.a` is non-null. A null list has no `.i` or `.t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `.a` is non-null you'll get a "find-fork" crash.
+It's important to note that if `.a` is a `+list`, you can only use `i.a` and `t.a` after Hoon has inferred that `.a` is non-null. A null `+list` has no `.i` or `.t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `.a` is non-null you'll get a "find-fork" crash.
 
 A non-null `+list` is called a `+lest`.
 
@@ -666,7 +666,7 @@ Save the above code as `/gen/lent.hoon` and run it from the Dojo:
 
 #### Tutorial: Converting a Noun to a List of its Leaves
 
-Here's a program that takes a noun and returns a list of its 'leaves' (atoms) in order of their appearance:
+Here's a program that takes a noun and returns a `+list` of its 'leaves' (atoms) in order of their appearance:
 
 ```hoon
 |=  a=*
@@ -677,9 +677,9 @@ Here's a program that takes a noun and returns a list of its 'leaves' (atoms) in
 $(lis $(a +.a), a -.a)
 ```
 
-The input noun is `.a`. The list of atoms to be output is `.lis`, which is given an initial value of `~`. If `.a` is just an atom, return a non-null list whose head is `.a` and whose tail is `.lis`. Otherwise, the somewhat complicated recursion `$(lis $(a +.a), a -.a)` is evaluated, in effect looping back to the `|-` with modifications made to `.lis` and `.a`.
+The input noun is `.a`. The `+list` of atoms to be output is `.lis`, which is given an initial value of `~`. If `.a` is just an atom, return a non-null list whose head is `.a` and whose tail is `.lis`. Otherwise, the somewhat complicated recursion `$(lis $(a +.a), a -.a)` is evaluated, in effect looping back to the `|-` with modifications made to `.lis` and `.a`.
 
-The modification to `.lis` in line 6 is to `$(a +.a)`. The latter is a recursion to `|-` but with `.a` replaced by its tail. This evaluates to the list of `@` in the tail of `.a`. So `.lis` becomes the list of atoms in the tail of `.a`, and `.a` becomes the head of `.a`, `-.a`.
+The modification to `.lis` in line 6 is to `$(a +.a)`. The latter is a recursion to `|-` but with `.a` replaced by its tail. This evaluates to the `+list` of `@` in the tail of `.a`. So `.lis` becomes the `+list` of atoms in the tail of `.a`, and `.a` becomes the head of `.a`, `-.a`.
 
 Save the above code as `/gen/listleaf.hoon` and run it from the Dojo:
 
@@ -792,7 +792,7 @@ As you can see, an atom with one aura can be converted to another aura. For a co
 
 This is what we mean when we call auras 'soft' types. The above examples show that the programmer can get around the type system for auras by casting up to `@` and then back down to the specific aura, say `@ub`; or by casting with `` `@ub` `` for short.
 
-**Note**:  there is currently a type system issue that causes some of these functions to fail when passed a list `.b` after some type inference has been performed on `.b`. For an illustration of the bug, let's set `.b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
+**Note**: there is currently a type system issue that causes some of these functions to fail when passed a `+list` `.b` after some type inference has been performed on `.b`. For an illustration of the bug, let's set `.b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
 
 ```
 > =b `(list @)`~[11 22 33 44]
@@ -808,7 +808,7 @@ Now let's use `?~` [wutsig](../../hoon/rune/wut.md#wutsig) to prove that `.b` is
 nest-fail
 ```
 
-The problem is that [`+snag`](../../hoon/stdlib/2b.md#snag) is expecting a raw list, not a list that is known to be non-null.
+The problem is that [`+snag`](../../hoon/stdlib/2b.md#snag) is expecting a raw `+list`, not a list that is known to be non-null.
 
 You can cast `.b` back to `(list)` to work around this:
 

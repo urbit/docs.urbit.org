@@ -38,13 +38,13 @@ Polymorphism is a programming concept that allows a piece of code to use differe
 
 ### Dry Cores {#dry-cores}
 
-A dry gate is the kind of gate that you're already familiar with: a one-armed core with a sample. A wet gate is also a one-armed core with a sample, but there is a difference in how types are handled. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `$cord` instead of a `+cell` you will get a [nest-fail](../../hoon/hoon-errors.md#nest-fail) error.
+A dry gate is the kind of gate that you're already familiar with: a one-armed core with a sample. A wet gate is also a one-armed core with a sample, but there is a difference in how types are handled. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `$cord` instead of a cell you will get a [`nest-fail`](../../hoon/hoon-errors.md#nest-fail) error.
 
 A core's payload can change from its original value. In fact, this happens in the typical function call: the default sample is replaced with an input value. How can we ensure that the core's arms are able to run correctly, that the payload type is still appropriate despite whatever changes it has undergone?
 
 There is a type check for each arm of a dry core, intended to verify that the arm's parent core has a payload of the correct type.
 
-When the `$` buc arm of a dry gate is evaluated it takes its parent core (the dry gate itself) as the subject, often with a modified sample value. But any change in sample type should be conservative; the modified sample value must be of the same type as the default sample value (or possibly a subtype). When the `$` buc arm is evaluated it should have a subject of a type it knows how to use.
+When the `$` arm of a dry gate is evaluated it takes its parent core (the dry gate itself) as the subject, often with a modified sample value. But any change in sample type should be conservative; the modified sample value must be of the same type as the default sample value (or possibly a subtype). When the `$` arm is evaluated it should have a subject of a type it knows how to use.
 
 ### Wet Gates {#wet-gates}
 
@@ -52,11 +52,11 @@ When you pass arguments to a wet gate, their types are preserved and type analys
 
 Consider a function like [`+turn`](../../hoon/stdlib/2b.md#turn) which transforms each element of a list. To use `+turn`, we install a list and a transformation function in a generic core. The type of the list we produce depends on the type of the list and the type of the transformation function. But the Nock formulas for transforming each element of the list will work on any function and any list, so long as the function's argument is the list item.
 
-A wet gate is defined by a `|*` [bartar](../../hoon/rune/bar.md#bartar) rune rather than a `|=` [bartis](../../hoon/rune/bar.md#bartis). More generally, cores that contain wet arms **must** be defined using `|@` [barpat](../../hoon/rune/bar.md#barpat) instead of `|%` [barcen](../../hoon/rune/bar.md#barcen) (`|*` expands to a `|@` core with `$` buc arm). There is also `|$` [barbuc](../../hoon/rune/bar.md#barbuc) which defines the wet gate mold builder (remember, we like gates that build gates).
+A wet gate is defined by a `|*` [bartar](../../hoon/rune/bar.md#bartar) rune rather than a `|=` [bartis](../../hoon/rune/bar.md#bartis). More generally, cores that contain wet arms **must** be defined using `|@` [barpat](../../hoon/rune/bar.md#barpat) instead of `|%` [barcen](../../hoon/rune/bar.md#barcen) (`|*` expands to a `|@` core with `$` arm). There is also `|$` [barbuc](../../hoon/rune/bar.md#barbuc) which defines the wet gate mold builder (remember, we like gates that build gates).
 
 In a nutshell, compare these two gates:
 
-```hoon
+```
 > =dry |=([a=* b=*] [b a])
 
 > =wet |*([a=* b=*] [b a])
@@ -97,7 +97,7 @@ Produce a trapezoid-rule integrator which accepts a wet gate (as a function of a
   $(k +(k), sum (mul:rs .2 (add:rs sum (b (snag k a)))))
 ```
 
-The meat of this gate is concerned with correctly implementing the mathematical equation. In particular, wetness is required because `.b` can be _any_ gate (although it should only be a gate with one argument, lest the whole thing fail with a "mull-grow" error). If you attempt to create the equivalent dry gate (`|=` [bartis](../../hoon/rune/bar.md#bartis)), Hoon fails to build it with a [nest-fail](../../hoon/hoon-errors.md#nest-fail) due to the loss of type information from the gate `.b`.
+The meat of this gate is concerned with correctly implementing the mathematical equation. In particular, wetness is required because `.b` can be _any_ gate (although it should only be a gate with one argument, lest the whole thing fail with a "mull-grow" error). If you attempt to create the equivalent dry gate (`|=` [bartis](../../hoon/rune/bar.md#bartis)), Hoon fails to build it with a [`nest-fail`](../../hoon/hoon-errors.md#nest-fail) due to the loss of type information from the gate `.b`.
 
 #### Tutorial: `+need`
 
@@ -138,7 +138,7 @@ This returns the value in the `+unit` since we now know it exists.
 
 We encountered `|$` [barbuc](../../hoon/rune/bar.md#barbuc) above as a wet gate that is a mold builder rune which takes in a list of molds and produces a new mold. Here we take another look at this rune as an implementation of _parametric polymorphism_ in Hoon.
 
-For example, we have lists, [trees](../../hoon/stdlib/1c.md#tree), and [sets](../../hoon/stdlib/2o.md#set) in Hoon, which are each defined in `/sys/hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside brackets `[ ]`. After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `+list` from `/sys/hoon.hoon`:
+For example, we have `+list`s, [`+tree`s](../../hoon/stdlib/1c.md#tree), and [`+set`s](../../hoon/stdlib/2o.md#set) in Hoon, which are each defined in `/sys/hoon.hoon` as wet gate mold builders. Take a moment to see for yourself. Each `++` arm is followed by `|$` and a list of labels for input types inside square brackets (e.g. `[item]`). After that subexpression comes another that defines a type that is parametrically polymorphic with respect to the input values. For example, here is the definition of `+list` from `/sys/hoon.hoon`:
 
 ```hoon
 ++  list
@@ -155,7 +155,7 @@ The `|$` [barbuc](../../hoon/rune/bar.md#barbuc) rune is especially useful for d
 
 One nice thing about containers defined by `|$` is that they nest in the expected way. Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`. And so it does:
 
-```hoon
+```
 > =a `(list @)`~[11 22 33]
 
 > ^-((list *) a)
@@ -164,7 +164,7 @@ One nice thing about containers defined by `|$` is that they nest in the expecte
 
 Conversely, a `(list *)` should not nest under `(list @)`, because `*` does not nest under `@`:
 
-```hoon
+```
 > =b `(list *)`~[11 22 33]
 
 > ^-((list @) b)
@@ -175,7 +175,7 @@ nest-fail
 
 Some functional tools like [`+cury`](../../hoon/stdlib/2n.md#cury) don't work with wet gates. It is, however, possible to “dry out“ a wet gate using [`+bake`](../../hoon/stdlib/2b.md#bake):
 
-```hoon
+```
 > ((curr reel add) `(list @)`[1 2 3 4 ~])
 mull-grow
 -find.i.a
@@ -185,7 +185,6 @@ mull-grow
 ```
 
 Typically it's better to find another way to express your problem than to `+bake` a wet gate, however. As we said before, wet gates are powerful and for that reason not apt for every purpose.
-
 
 ## Variance {#variance}
 
@@ -202,11 +201,8 @@ Briefly, computer scientist Eric Lippert [clarifies](https://stackoverflow.com/q
 Variance describes the four possible relationships that type rules are able to have to each other. Hoon imaginatively designates these by metals. Briefly:
 
 1. **Covariance (`%zinc`)** means that specific types nest inside of generic types: it's like claiming that a core that produces a `%plant` can produce a `%tree`, a subcategory of `%plant`. Covariance is useful for flexibility in return values.
-
 2. **Contravariance (`%iron`)** means that generic types are expected to nest inside of specific types: it's like claiming that a core that can accept a `%tree` can accept a `%plant`, the supercategory of `%tree`. (Contravariance seems counterintuitive for many developers when they encounter it for the first time.)  Contravariance is useful for flexibility in input values (samples).
-
 3. **Bivariance (`%lead`)** means that we can allow both covariant and contravariant behavior. While bivariance is included for completeness (including a worked example below), it is not commonly used and only a few examples exist in the standard library for building shared data structure cores.
-
 4. **Invariance (`%gold`)** means that types must mutually nest compatibly: a core that accepts or produces a `%tree` can only accept or produce a `%tree`. This is the default behavior of cores, so it's the strongest model you have imprinted on. Cores which allow variance are changing that behavior.
 
 A `%gold` core can be cast or converted to any metal, and any metal can be cast or converted to `%lead`.
@@ -225,7 +221,7 @@ A zinc core *z* has a read-only sample (payload head, `+6.z`) and an opaque cont
 
 You can read from the sample of a `%zinc` core, but not change it:
 
-```hoon
+```
 > =mycore ^&(|=(a=@ 1))
 
 > a.mycore
@@ -289,7 +285,7 @@ Usually it makes sense to cast for a `%gold` core type when you're treating a co
 
 Let's look at simpler examples here, using the `^+` [ketlus](../../hoon/rune/ket.md#ketlus) rune:
 
-```hoon
+```
 > ^+(|=(^ 15) |=(^ 16))
 < 1.jcu
   [ [* *]
@@ -323,7 +319,7 @@ Two more examples:
 nest-fail
 ```
 
-In these examples, the `=>` rune is used to give each core a simple context. The context of the left-hand core in each case is a pair of atoms, `[@ @]`. The first cast goes through because the right-hand core also has a pair of atoms as its context. The second cast fails because the right-hand core has the wrong type of context -- three atoms, `[@ @ @]`.
+In these examples, the `=>` rune is used to give each core a simple context. The context of the left-hand core in each case is a pair of atoms, `[@ @]`. The first cast goes through because the right-hand core also has a pair of atoms as its context. The second cast fails because the right-hand core has the wrong type of context: three atoms, `[@ @ @]`.
 
 #### Tutorial: `%iron` Contravariant Polymorphism
 
@@ -338,7 +334,7 @@ In these examples, the `=>` rune is used to give each core a simple context. The
 
 This generator is rather simple except for the first line. The sample is defined as an `%iron` gate and gives it the face `a`. The function as a whole is for taking some gate as input, calling it by passing it the value `10`, adding `20` to it, and returning the result. Let's try it out in the Dojo:
 
-```hoon
+```
 > +gatepass |=(a=@ +(a))
 31
 
@@ -351,7 +347,7 @@ This generator is rather simple except for the first line. The sample is defined
 
 But we still haven't fully explained the first line of the code. What does `_^|(|=(@ 15))` mean? The inside portion is clear enough: `|=(@ 15)` produces a normal (i.e., `%gold`) gate that takes an atom and returns `15`. The `^|` [ketbar](../../hoon/rune/ket.md#ketbar) rune is used to turn `%gold` gates to `%iron`. (Reverse alchemy!)  And the `_` character turns that `%iron` gate value into a structure, i.e. a type. So the whole subexpression means, roughly: “the same type as an iron gate whose sample is an atom, `@`, and whose product is another atom, `@`”. The context isn't checked at all. This is good, because that allows us to accept gates defined and produced in drastically different environments. Let's try passing a gate with a different context:
 
-```hoon
+```
 > +gatepass =>([22 33] |=(a=@ +(a)))
 31
 ```
@@ -377,7 +373,7 @@ Why is this a useful nesting rule for passing gates?  Let's say you're writing a
 
 Let's illustrate `%iron` core nesting properties:
 
-```hoon
+```
 > ^+(^|(|=(^ 15)) |=(^ 16))
 < 1|jcu
   [ [* *]
@@ -409,7 +405,7 @@ We mentioned previously that an `%iron` core has a write-only sample and an opaq
 
 Let's define a trivial gate with a context of `[g=22 h=44 .]`, convert it to `%iron` with `^|`, and bind it to `.iron-gate` in the dojo:
 
-```hoon
+```
 > =iron-gate ^|  =>([g=22 h=44 .] |=(a=@ (add a g)))
 
 > (iron-gate 10)
@@ -421,35 +417,35 @@ Let's define a trivial gate with a context of `[g=22 h=44 .]`, convert it to `%i
 
 Not a complicated function, but it serves our purposes. Normally (i.e., with `%gold` cores) we can look at a context value *p* of some gate *q* with a wing expression: `p.q`. Not so with the iron gate:
 
-```hoon
+```
 > g.iron-gate
 -find.g.iron-gate
 ```
 
 And usually we can look at the sample value using the face given in the gate definition. Not in this case:
 
-```hoon
+```
 > a.iron-gate
 -find.a.iron-gate
 ```
 
 If you really want to look at the sample you can check `+6` of `.iron-gate`:
 
-```hoon
+```
 > +6.iron-gate
 0
 ```
 
 … and if you really want to look at the head of the context (i.e., where *g* is located, `+14`) you can:
 
-```hoon
+```
 > +14.iron-gate
 22
 ```
 
 … but in both cases all the relevant type information has been thrown away:
 
-```hoon
+```
 > -:!>(+6.iron-gate)
 #t/*
 
@@ -463,7 +459,7 @@ As with `%iron` cores, the context of `%zinc` cores is opaque; they cannot be wr
 
 We can illustrate the casting properties of `%zinc` cores with a few examples. The `^&` [ketpam](../../hoon/rune/ket.md#ketpam) rune is used to convert `%gold` cores to `%zinc`:
 
-```hoon
+```
 > ^+(^&(|=(^ 15)) |=(^ 16))
 < 1&jcu
   [ [* *]
@@ -491,7 +487,7 @@ The first two casts succeed because the right-hand core sample type is either th
 
 Even though you can't function call a `%zinc` core, the arms of a `%zinc` core can be computed and the sample can be read. Let's test this with a `%zinc` gate of our own:
 
-```hoon
+```
 > =zinc-gate ^&  |=(a=_22 (add 10 a))
 
 > (zinc-gate 12)
@@ -512,7 +508,7 @@ In order to preserve type safety when working with `%lead` cores, a severe restr
 
 The arms of a `%lead` core can still be evaluated, however. We can use the `^?` rune to convert a `%gold`, `%iron`, or `%zinc` core to lead:
 
-```hoon
+```
 > =lead-gate ^?  |=(a=_22 (add 10 a))
 
 > $.lead-gate
@@ -521,7 +517,7 @@ The arms of a `%lead` core can still be evaluated, however. We can use the `^?` 
 
 But don't try to read the sample:
 
-```hoon
+```
 > a.lead-gate
 -find.a.lead-gate
 ```
@@ -532,7 +528,7 @@ Calculate the Fibonacci series using `%lead` and `%iron` cores.
 
 This program produces a list populated by the first ten elements of the `+fib` arm. It consists of five arms; in brief:
 
-- `+fib` is a trap (core with no sample and default arm `$` buc)
+- `+fib` is a trap (core with no sample and default arm `$` buc).
 - `+stream` is a mold builder that produces a trap, a function with no argument. This trap can yield a value or a `~`.
 - `+stream-type` is a wet gate that produces the type of items stored in `+stream`.
 - `+to-list` is a wet gate that converts a `+stream` to a list.
@@ -607,7 +603,7 @@ Let's examine each arm in detail.
 
 `$_` [buccab](../../hoon/rune/buc.md#buccab) is a rune that produces a type from an example; `^?` [ketwut](../../hoon/rune/ket.md#ketwut) converts (casts) a core to lead; `|.` [bardot](../../hoon/rune/bar.md#bardot) forms the trap. So to follow this sequence we read it backwards: we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example from which to produce a type.
 
-With the line `^- $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` [bucpat](../../hoon/rune/buc.md#bucpat) is the rune to describe a data structure that can either be an atom or a cell. The first part describes the atom, which here is going to be `~`. The second part describes a cell, which we define to have the head of type `$of` with the face `item`, and a tail with a face of `more`. The expression `^$` is not a rune (no children), but rather a reference to the enclosing wet gate, so the tail of this cell will be of the same type produced by this wet gate.
+With the line `^-  $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` [bucpat](../../hoon/rune/buc.md#bucpat) is the rune to describe a data structure that can either be an atom or a cell. The first part describes the atom, which here is going to be `~`. The second part describes a cell, which we define to have the head of type `$of` with the face `item`, and a tail with a face of `more`. The expression `^$` is not a rune (no children), but rather a reference to the enclosing wet gate, so the tail of this cell will be of the same type produced by this wet gate.
 
 The final `~` here is used as the type produced when initially calling this wet gate. This is valid because it nests within the type we defined on the previous line.
 
@@ -645,7 +641,7 @@ Calling a `+stream`, which is a trap, will either produce `.item` and `.more` or
   ==
 ```
 
-`+take` is another wet gate. This time it takes a `+stream` `.s` and an atom `.n`. We add an atom to the subject and then make sure that the trap we are creating is going to be of the same type as `.s`, the `+stream` we passed in.
+The `+take` arm is another wet gate. This time it takes a `+stream` `.s` and an atom `.n`. We add an atom to the subject and then make sure that the trap we are creating is going to be of the same type as `.s`, the `+stream` we passed in.
 
 If `.i` and `.n` are equal, the trap will produce `~`. If not, `.s` is called and has its result put on the front of the subject. If its value is `~`, then the trap again produces `~`. Otherwise the trap produces a cell of `.item`, the first part of the value of `.s`, and a new trap that increments `.i`, and sets `.s` to be the `.more` trap which produces the next value of the `+stream`. The result here is a `+stream` that will only ever produce `.n` items, even if the stream otherwise would have been infinite.
 
@@ -665,7 +661,7 @@ If `.i` and `.n` are equal, the trap will produce `~`. If not, `.s` is called an
   ==
 ```
 
-`+to-list` is a wet gate that takes `.s`, a `+stream`, only here it will, as you may expect, produce a list. The rest of this wet gate is straightforward but we can examine it quickly anyway. As is the proper style, this list that is produced will be reversed, so [flop](../../hoon/stdlib/2b.md#flop) is used to put it in the order it is in the stream. Recall that adding to the front of a list is cheap, while adding to the back is expensive.
+The `+to-list` arm is a wet gate that takes `.s`, a `+stream`, only here it will, as you may expect, produce a list. The rest of this wet gate is straightforward but we can examine it quickly anyway. As is the proper style, this list that is produced will be reversed, so [`+flop`](../../hoon/stdlib/2b.md#flop) is used to put it in the order it is in the stream. Recall that adding to the front of a list is cheap, while adding to the back is expensive.
 
 `.r` is added to the subject as an empty list of whatever type is produced by `.s`. A new trap is formed and called, and it will produce the same type as `.r`. Then `.s` is called and has its value added to the subject. If the result is `~`, the trap produces `.r`. Otherwise, we want to call the trap again, adding `.item` to the front of `.r` and changing `.s` to `.more`. Now the utility of `+take` should be clear. We don't want to feed `+to-list` an infinite stream as it would never terminate.
 

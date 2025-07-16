@@ -19,9 +19,7 @@ _This module discusses how Urbit's subject-oriented programming paradigm structu
 
 ## The Subject {#the-subject}
 
-As we've said before:
-
-> The Urbit operating system hews to a conceptual model wherein each expression takes place in a certain context (the subject). While sharing a lot of practicality with other programming paradigms and platforms, Urbit's model is mathematically well-defined and unambiguously specified. Every expression of Hoon is evaluated relative to its subject, a piece of data that represents the environment, or the context, of an expression.
+The Urbit operating system hews to a conceptual model wherein each expression takes place in a certain context (the subject). While sharing a lot of practicality with other programming paradigms and platforms, Urbit's model is mathematically well-defined and unambiguously specified. Every expression of Hoon is evaluated relative to its subject, a piece of data that represents the environment, or the context, of an expression.
 
 Subject-oriented programming means that every expression is evaluated with respect to some subject. Every arm of a core is evaluated with its parent core as the subject.
 
@@ -29,10 +27,10 @@ You have also seen how wings work as search paths to identify nouns in the subje
 
 Generally speaking, the following rune families allow you to do certain things to the subject:
 
-- `|` [bar](../../hoon/rune/bar.md) runes create cores, i.e. largely self-contained expressions
-- `^` [ket](../../hoon/rune/ket.md) runes transform cores, i.e. change core properties
-- `%` [cen](../../hoon/rune/cen.md) runes pull arms in cores
-- `=` [tis](../../hoon/rune/tis.md) runes modify the subject by introducing or replacing values
+- `|` [bar](../../hoon/rune/bar.md) runes create cores, i.e. largely self-contained expressions.
+- `^` [ket](../../hoon/rune/ket.md) runes transform cores, i.e. change core properties.
+- `%` [cen](../../hoon/rune/cen.md) runes pull arms in cores.
+- `=` [tis](../../hoon/rune/tis.md) runes modify the subject by introducing or replacing values.
 
 Different kinds of cores can expose or conceal functionality (such as their sample) based on their variance model. We don't need to be concerned about that yet, but if you are building certain kinds of library code or intend to build code expressions directly, you'll need to read [that module](R-metals.md) as well.
 
@@ -46,7 +44,7 @@ Why must an arm have its parent core as the subject, when it's computed? As stat
 
 In the Dojo, if you use `+1` by itself, you can see the current subject.
 
-```hoon
+```
 > +1
 [ [ our=~zod
     now=~2024.5.7..21.47.30..818c
@@ -57,13 +55,13 @@ In the Dojo, if you use `+1` by itself, you can see the current subject.
 ]
 ```
 
-`.` does the same thing: it always refers to the current subject.
+The `.` operator does the same thing: it always refers to the current subject.
 
 If `.` is the subject, then `..arm` is the subject of a given arm (the second `.` dot being the wing resolution operator). You can check the details of the parent core using something like `..add`. This trick is used when producing agents that have highly nested operations (search `..` in the `/app` directory), or when composing [jets](../runtime/jetting.md), for instance.
 
 Another use case for the `..arm` syntax is when there is a core in the subject without a face bound to it; i.e., the core might be nameless. In that case you can use an arm name in that core to refer to the whole core.
 
-```hoon
+```
 > ..add
 <33.uof 1.pnw %138>
 ```
@@ -72,9 +70,9 @@ Another use case for the `..arm` syntax is when there is a core in the subject w
 
 Let's take a deeper look at how cores can be combined with `=>` [tisgar](../../hoon/rune/tis.md#tisgar) to build up larger structures. `=>  p=hoon  q=hoon` yields the product of `.q` with the product of `.p` taken as the subject; i.e. it composes Hoon statements, like cores.
 
-We use this to set the context of cores. Recall that the payload of a gate is a cell of `[sample context]`. For example:
+We use this to set the context of cores. Recall that the payload of a gate is a cell of \[sample context]. For example:
 
-```hoon
+```
 > =foo =>([1 2] |=(@ 15))
 
 > +3:foo
@@ -116,7 +114,7 @@ The first core listed here has just one arm.
 
 This is reflected in the subject of `hoon-version`.
 
-```hoon
+```
 > ..hoon-version
 <1.pnw %138>
 ```
@@ -157,9 +155,9 @@ and so on, down to
 --
 ```
 
-This core contains the arms in [sections 1a–1c of the standard library documentation](../../hoon/stdlib/1a.md). If you count them, there are 33 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `+add`.
+This core contains the arms in [sections 1a–1c of the standard library documentation](../../hoon/stdlib/1a.md). If you count them, there are 33 arms in the core from `+add` down to `+unit`. We again can see this fact reflected in the Dojo by looking at the subject of `+add`.
 
-```hoon
+```
 > ..add
 <33.uof 1.pnw %138>
 ```
@@ -190,7 +188,7 @@ Next, [section 2](../../hoon/stdlib/2a.md) starts:
 
 If you counted the arms in this core by hand, you'll come up with 139 arms. This is also reflected in the dojo:
 
-```hoon
+```
 > ..biff
 <139.oyl 33.uof 1.pnw %138>
 ```
@@ -199,21 +197,21 @@ and we also see the section 1 core and the core containing `hoon-version` in the
 
 We can also confirm that [`+add`](../../hoon/stdlib/1a.md#add) is in the subject of [`+biff`](../../hoon/stdlib/2a.md#biff)
 
-```hoon
+```
 > add:biff
 <1.otf [[a=@ b=@] <33.uof 1.pnw %138>]>
 ```
 
 and that `+biff` is not in the subject of `+add`.
 
-```hoon
+```
 > biff:add
 -find.biff
 ```
 
 Lastly, let's check the subject of the last arm in `hoon.hoon` (as of May 2024):
 
-```hoon
+```
 > ..pi-tell
 <77.vsv 236.zqw 51.njr 139.oyl 33.uof 1.pnw %138>
 ```
@@ -230,26 +228,25 @@ The core Arvo subject exposes several axes (plural of `$axis` which is the tree 
 
 `.our` is the ship's identity.
 
-```hoon
+```
 > -<..
 our=~nec
 ```
 
 `.now` is 128-bit timestamp sourced from the wall clock time, Linux's `gettimeofday()`.
 
-```hoon
+```
 > ->-..
 now=~2022.6.22..20.41.18..82f4
 ```
 
 `.eny` is 512 bits of entropy as `@uvJ`, sourced from a [CSPRNG](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator) and hash-iterated using [`+shax`](../../hoon/stdlib/3d.md#shax). (`.eny` is shared between vanes during an event, so there are currently limits on how much it should be relied on until the Urbit kernel is security-hardened, but it is unique within each Gall agent activation.)
 
-```hoon
+```
 > ->+..
 eny
 0vmr.qobqc.fd9f0.h5hf4.dkurh.b4s37.lt4qf.2k505.j3sir.cnshk.ldpm0.jeppc.ti7gs.vtpru.u09sm.0imu0.cgdln.fvoqc.mt41e.3iga5.qpct7
 ```
-
 
 ## State and Applications {#state-and-applications}
 
@@ -305,7 +302,7 @@ We start with the three boilerplate lines we have in every `%say` generator:
 :-  %noun
 ```
 
-In the above code chunk, we're creating a cell. The head of this cell is `%say`. The tail is a gate (`|= *`) that produces another cell (`:- %noun`) with a head of the mark of a the kind of data we are going to produce, a `%noun`; the tail of the second cell is the rest of the program.
+In the above code chunk, we're creating a cell. The head of this cell is `%say`. The tail is a gate (`|=  *`) that produces another cell (`:-  %noun`) with a head of the mark of a the kind of data we are going to produce, a `%noun`; the tail of the second cell is the rest of the program.
 
 ```hoon
 =<  =~  new-account
@@ -318,7 +315,7 @@ In the above code chunk, we're creating a cell. The head of this cell is `%say`.
 
 In this code above, we're going to compose two runes using `=<`, which has inverted arguments. We use this rune to keep the heaviest twig to the bottom of the code.
 
-The `=~` [tissig](../../hoon/rune/tis.md#tissig) rune composes multiple expressions together; we use it here to make the code more readable. We take `.new-account` and use that as the subject for the call to `+deposit`. `+deposit` and `+withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `.balance`, which is the account balance contained in the core that we examine below.
+The `=~` [tissig](../../hoon/rune/tis.md#tissig) rune composes multiple expressions together; we use it here to make the code more readable. We take `+new-account` and use that as the subject for the call to `+deposit`. `+deposit` and `+withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `.balance`, which is the account balance contained in the core that we examine below.
 
 ```hoon
 |%
@@ -342,13 +339,13 @@ Each of these arms produces a gate which takes an `@ud` argument. Each of these 
 +>.$(balance (add balance amount))
 ```
 
-`+>` is a kind of wing syntax, lark notation. This particular wing construction looks for the tail of the tail (the third element) in `$` buc, the subject of the gate we are in. The `+withdraw` and `+deposit` arms create gates with the entire `.new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `.balance` to be the result of adding `.balance` and `.amount` and produce the door as the result. `+withdraw` functions the same way only doing subtraction instead of addition.
+`+>` is a kind of wing syntax, lark notation. This particular wing construction looks for the tail of the tail (the third element) in `$`, the subject of the gate we are in. The `+withdraw` and `+deposit` arms create gates with the entire `+new-account` door as the context in their cores' \[battery sample context], in the "tail of the tail" slot. We change `.balance` to be the result of adding `.balance` and `.amount` and produce the door as the result. `+withdraw` functions the same way only doing subtraction instead of addition.
 
 It's important to notice that the sample, `.balance`, is stored as part of the door rather than existing outside of it.
 
 ### Exercise: Bank Account {#exercise-bank-account}
 
-- Modify the `%say` generator above to accept a `@ud` unsigned decimal dollar amount and a `?(%deposit %withdraw)` term and returns the result of only that operation on the starting balance of the bank account. (Note that this will only work once on the door, and the state will not persist between generator calls.)
+Modify the `%say` generator above to accept a `@ud` unsigned decimal dollar amount and a `?(%deposit %withdraw)` term and returns the result of only that operation on the starting balance of the bank account. (Note that this will only work once on the door, and the state will not persist between generator calls.)
 
 ### Deferred Computations {#deferred-computations}
 
@@ -369,17 +366,17 @@ A _random number generator_ provides a stream of calculable but unpredictable va
 
 An RNG emits a sequence of values given a starting _seed_. For instance, a very simple RNG could emit digits of the number _π_ given a seed which is the number of digits to start from.
 
-- seed 1:  1, 4, 1, 5, 9, 2, 6, 5, 3, 5
-- seed 3:  1, 5, 9, 2, 6, 5, 3, 5, 8, 9
-- seed 100:  8, 2, 1, 4, 8, 0, 8, 6, 5, 1
+- Seed 1:  1, 4, 1, 5, 9, 2, 6, 5, 3, 5
+- Seed 3:  1, 5, 9, 2, 6, 5, 3, 5, 8, 9
+- Seed 100:  8, 2, 1, 4, 8, 0, 8, 6, 5, 1
 
 Every time you start this “random” number generator with a given seed, it will reproduce the same sequence of numbers.
 
 While RNGs don't work like our _π_-based example, a given seed will reliably produce the same result every time it is run.
 
-The basic RNG core in Hoon is [`+og`](../../hoon/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../hoon/rune/tis.md#tisket). [+rads:rng](../../hoon/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
+The basic RNG core in Hoon is [`+og`](../../hoon/stdlib/3d.md#og). `+og` is a door whose sample is its seed. We need to use `.eny` to seed it non-deterministically, but we can also pin the state using `=^` [tisket](../../hoon/rune/tis.md#tisket). [`+rads:rng`](../../hoon/stdlib/3d.md#radsog) produces a cell of a random whole number in a given range and a new modified core to continue the random sequence.
 
-```hoon
+```
 > =+  rng=~(. og eny)
   [-:(rads:rng 100) -:(rads:rng 100)]
 [60 60]
@@ -387,7 +384,7 @@ The basic RNG core in Hoon is [`+og`](../../hoon/stdlib/3d.md#og). `+og` is a do
 
 Since the `.rng` starts from the same seed value every single time, both of the numbers will always be the same. What we have to do is pin the updated version of the RNG (the tail of `+rads:og`'s return cell) to the subject using `=^` [tisket](../../hoon/rune/tis.md#tisket), e.g.,
 
-```hoon
+```
 > =/  rng  ~(. og eny)
   =^  r1  rng  (rads:rng 100)
   =^  r2  rng  (rads:rng 100)
@@ -444,11 +441,11 @@ Zoom in on these lines:
 =/  val  (rad:rng (lent answers))
 ```
 
-`~(. og eny)` starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [`+og`](../../hoon/stdlib/3d.md#og), the randomness core in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
+The `~(. og eny)` expression starts a random number generator with a seed from the current entropy. A [random number generator](https://en.wikipedia.org/wiki/Random_number_generation) is a stateful mathematical function that produces an unpredictable result (unless you know the algorithm AND the starting value, or seed). Here we pull the subject of [`+og`](../../hoon/stdlib/3d.md#og), the randomness core in Hoon, to start the RNG. An RNG like `+og` maintains its own state, but we will find that we have to preserve state changes to continue to produce novel random numbers.
 
 We slam the `+rad:rng` gate which returns a random number from 0 to _n_-1 inclusive. This gives us a random value from the list of possible answers.
 
-```hoon
+```
 > +magic-8
 "Ask again later."
 ```
@@ -468,7 +465,7 @@ This is a very simple dice program with an optional betting functionality. In th
 
 We can run this generator like so:
 
-```hoon
+```
 > +dice 6, =bet 2
 [4 2]
 
@@ -495,18 +492,18 @@ A "peek" or a scry is a request to Arvo to tell you something about the state of
 
 The Clay filesystem stores nouns persistently at hierarchical path addresses. These nouns can be accessed using marks, which are rules for structuring the data. We call the nouns “files” and the path addresses “folders”.
 
-If we want to retrieve the contents of a file or folder, we can directly ask Clay for the data using a scry with an appropriate [care](../../urbit-os/kernel/clay/data-types.md#care).
+If we want to retrieve the contents of a file or folder, we can directly ask Clay for the data using a scry with an appropriate [`$care`](../../urbit-os/kernel/clay/data-types.md#care).
 
 For instance, the `%x` care to the `%c` Clay vane returns the noun at a given address as a `@` atom.
 
-```hoon
+```
 > .^(@ %cx /===/gen/hood/hi/hoon)
 3.548.750.706.400.251.607.252.023.288.575.526.190.856.734.474.077.821.289.791.377.301.707.878.697.553.411.219.689.905.949.957.893.633.811.025.757.107.990.477.902.858.170.125.439.223.250.551.937.540.468.638.902.955.378.837.954.792.031.592.462.617.422.136.386.332.469.076.584.061.249.923.938.374.214.925.312.954.606.277.212.923.859.309.330.556.730.410.200.952.056.760.727.611.447.500.996.168.035.027.753.417.869.213.425.113.257.514.474.700.810.203.348.784.547.006.707.150.406.298.809.062.567.217.447.347.357.039.994.339.342.906
 ```
 
 There are tools like `/lib/pretty-file/hoon` which will render this legible to you by using formatted text `$tank`s:
 
-```hoon
+```
 > =pretty-file -build-file %/lib/pretty-file/hoon
 
 > (pretty-file .^(noun %cx /===/gen/hood/hi/hoon))
@@ -523,7 +520,7 @@ There are tools like `/lib/pretty-file/hoon` which will render this legible to y
 
 Similarly, you can request the contents at a particular directory path:
 
-```hoon
+```
 > .^(arch %cy /===/gen/hood)
 [ fil=~
     dir
@@ -539,7 +536,7 @@ Similarly, you can request the contents at a particular directory path:
 
 There are many more options with Clay than just accessing file and folder data. For instance, we can also scry all of the desks on our current ship with the `%d` care of `%c` Clay:
 
-```hoon
+```
 > .^((set desk) %cd /=//=)
 {%base %landscape %webterm %kids}
 ```

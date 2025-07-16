@@ -26,7 +26,7 @@ We frequently need to convert from text to data, and between different text-base
 * How do we turn a `$cord` into a tape?
   * [`+trip`](../../hoon/stdlib/4b.md#trip)
 * How can we make a list of a null-terminated tuple?
-  * [+le:nl](../../hoon/stdlib/2m.md#lenl)
+  * [`+le:nl`](../../hoon/stdlib/2m.md#lenl)
 * How can we evaluate Nock expressions?
   * [`+mink`](../../hoon/stdlib/4n.md#mink)
 
@@ -79,7 +79,7 @@ Hoon produces messages at the Dojo (or otherwise) using an internal formatted te
 +$ tang (list tank) :: bottom-first error
 ```
 
-The [+ram:re](../../hoon/stdlib/4c.md#ramre) arm is used to convert these to actual formatted output as a tape, e.g.
+The [`+ram:re`](../../hoon/stdlib/4c.md#ramre) arm is used to convert these to actual formatted output as a tape, e.g.
 
 ```hoon
 > ~(ram re leaf+"foo")
@@ -221,7 +221,7 @@ Some points of interest include:
 * `/?` faswut pins the expected Arvo kelvin version; right now it doesn't do anything.
 * `.^` [dotket](../../hoon/rune/dot.md#dotket) loads a value from Arvo (called a "scry").
 * [`+smyt`](../../hoon/stdlib/4m.md#smyt) pretty-prints a path.
-* `=-` [tishep](../../hoon/rune/tis.md#tishep) combines a faced noun with the subject, inverted relative to `=+` [tislus](../../hoon/rune/tis.md#tislus)/`=/` [tisfas](../../hoon/rune/tis.md#tisfas).
+* `=-` [tishep](../../hoon/rune/tis.md#tishep) combines a faced noun with the subject, inverted relative to `=+` [tislus](../../hoon/rune/tis.md#tislus) or `=/` [tisfas](../../hoon/rune/tis.md#tisfas).
 
 You can see how much of the generator is concerned with formatting the content of the file into a formatted text `$tank` by prepending `%rose` tags and so forth.
 
@@ -282,7 +282,7 @@ What is your favorite color?
 : color:
 ```
 
-Something new has happened. Instead of simply returning something, your Dojo's prompt changed from `~your-urbit:dojo>` to `~your-urbit:dojo: color:`, and now expects additional input. Let's give it an answer:
+Something new has happened. Instead of simply returning something, your Dojo's prompt changed from "\~your-urbit:dojo>" to "\~your-urbit:dojo: color:", and now expects additional input. Let's give it an answer:
 
 ```hoon
 : color: red
@@ -311,13 +311,13 @@ Here we bring in some of the types we are going to need from `/sur/sole` and gat
 
 This code might be familiar. Just as with their `%say` cousins, `%ask` generators need to produce a `+cell`, the head of which specifies what kind of generator we are running.
 
-With `|= *`, we create a gate and ignore the standard arguments we are given, because we're not using them.
+With `|=  *`, we create a gate and ignore the standard arguments we are given, because we're not using them.
 
 ```hoon
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` generators need to have the second half of the cell be a gate that produces a `sole-result`, one that in this case contains a `+cask` of `$tang`. We use the `^-` [kethep](../../hoon/rune/ket.md#kethep) rune to constrain the generator's output to such a `sole-result`.
+`%ask` generators need to have the second half of the cell be a gate that produces a `$sole-result`, one that in this case contains a `+cask` of `$tang`. We use the `^-` [kethep](../../hoon/rune/ket.md#kethep) rune to constrain the generator's output to such a `$sole-result`.
 
 A `+cask` is a pair of a mark name and a noun. We previously described a `$mark` as a kind of complicated mold; here we add that a `$mark` can be thought of as an Arvo-level [MIME](https://en.wikipedia.org/wiki/MIME) type for data.
 

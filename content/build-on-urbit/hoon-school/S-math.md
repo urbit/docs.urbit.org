@@ -21,7 +21,7 @@ All of the math we've done until this point relied on unsigned integers: there w
 
 `@u` unsigned integers (whether `@ud` decimal, `@ux` hexadecimal, etc.) simply count upwards by binary place value from zero. However, if we apply a different interpretive rule to the resulting value, we can treat the integer (in memory) _as if_ it corresponded to a different real value, such as a [negative number](https://en.wikipedia.org/wiki/Integer) or a [number with a fractional part](https://en.wikipedia.org/wiki/Rational_number). Auras make this straightforward to explore:
 
-```hoon
+```
 > `@ud`1.000.000
 1.000.000
 
@@ -86,14 +86,14 @@ As the arms for the four `@r` auras are identical within their appropriate core,
 
 Any `@ud` unsigned decimal integer can be directly cast as an `@rs`.
 
-```hoon
+```
 > `@ud`.1
 1.065.353.216
 ```
 
 However, as you can see here, the conversion is not “correct” for the perceived values. Examining the `@ux` hexadecimal and `@ub` binary representation shows why:
 
-```hoon
+```
 > `@ux`.1
 0x3f80.0000
 
@@ -103,16 +103,16 @@ However, as you can see here, the conversion is not “correct” for the percei
 
 If you refer back to the 32-bit floating-point example above, you'll see why: to represent one exactly, we have to use $$1.0 = (-1)^0 \times 2^{{127 - 127}} \times 1$$ and thus `0b11.1111.1000.0000.0000.0000.0000.0000`.
 
-So to carry out this conversion from `@ud` to `@rs` correctly, we should use the [+sun:rs](../../hoon/stdlib/3b.md#sunrs) arm.
+So to carry out this conversion from `@ud` to `@rs` correctly, we should use the [`+sun:rs`](../../hoon/stdlib/3b.md#sunrs) arm.
 
-```hoon
+```
 > (sun:rs 1)
 .1
 ```
 
 To go the other way requires us to use an algorithm for converting an arbitrary number with a fractional part back into `@ud` unsigned integers. The [`+fl`](../../hoon/stdlib/3b.md#fl) named tuple representation serves this purpose, and uses the [Dragon4 algorithm](https://dl.acm.org/doi/10.1145/93548.93559) to accomplish the conversion:
 
-```hoon
+```
 > (drg:rs .1)
 [%d s=%.y e=--0 a=1]
 
@@ -123,9 +123,9 @@ To go the other way requires us to use an algorithm for converting an arbitrary 
 [%d s=%.y e=--3 a=1]
 ```
 
-It's up to you to decide how to handle this result, however! Perhaps a better option for many cases is to round the answer to an `@s` integer with [+toi:rs](../../hoon/stdlib/3b.md#toirs):
+It's up to you to decide how to handle this result, however! Perhaps a better option for many cases is to round the answer to an `@s` integer with [`+toi:rs`](../../hoon/stdlib/3b.md#toirs):
 
-```hoon
+```
 > (toi:rs .3.1415926535)
 [~ --3]
 ```
@@ -136,7 +136,7 @@ It's up to you to decide how to handle this result, however! Perhaps a better op
 
 As with aura conversion, the standard mathematical operators don't work for `@rs`:
 
-```hoon
+```
 > (add .1 1)
 1.065.353.217
 
@@ -146,29 +146,29 @@ As with aura conversion, the standard mathematical operators don't work for `@rs
 
 The [`+rs`](../../hoon/stdlib/3b.md#rs) core defines a set of `@rs`-affiliated operations which should be used instead:
 
-```hoon
+```
 > (add:rs .1 .1)
 .2
 ```
 
 This includes:
 
-* [+add:rs](../../hoon/stdlib/3b.md#addrs), addition
-* [+sub:rs](../../hoon/stdlib/3b.md#subrs), subtraction
-* [+mul:rs](../../hoon/stdlib/3b.md#mulrs), multiplication
-* [+div:rs](../../hoon/stdlib/3b.md#divrs), division
-* [+gth:rs](../../hoon/stdlib/3b.md#gthrs), greater than
-* [+gte:rs](../../hoon/stdlib/3b.md#gters), greater than or equal to
-* [+lth:rs](../../hoon/stdlib/3b.md#lthrs), less than
-* [+lte:rs](../../hoon/stdlib/3b.md#lters), less than or equal to
-* [+equ:rs](../../hoon/stdlib/3b.md#equrs), check equality (but not nearness!)
-* [+sqt:rs](../../hoon/stdlib/3b.md#sqtrs), square root
+* [`+add:rs`](../../hoon/stdlib/3b.md#addrs), addition.
+* [`+sub:rs`](../../hoon/stdlib/3b.md#subrs), subtraction.
+* [`+mul:rs`](../../hoon/stdlib/3b.md#mulrs), multiplication.
+* [`+div:rs`](../../hoon/stdlib/3b.md#divrs), division.
+* [`+gth:rs`](../../hoon/stdlib/3b.md#gthrs), greater than.
+* [`+gte:rs`](../../hoon/stdlib/3b.md#gters), greater than or equal to.
+* [`+lth:rs`](../../hoon/stdlib/3b.md#lthrs), less than.
+* [`+lte:rs`](../../hoon/stdlib/3b.md#lters), less than or equal to.
+* [`+equ:rs`](../../hoon/stdlib/3b.md#equrs), check equality (but not nearness!).
+* [`+sqt:rs`](../../hoon/stdlib/3b.md#sqtrs), square root.
 
 ### Exercise: `+is-close` <a href="#exercise-is-close" id="exercise-is-close"></a>
 
-The [+equ:rs](../../hoon/stdlib/3b.md#equrs) arm checks for complete equality of two values. The downside of this arm is that it doesn't find very close values:
+The [`+equ:rs`](../../hoon/stdlib/3b.md#equrs) arm checks for complete equality of two values. The downside of this arm is that it doesn't find very close values:
 
-```hoon
+```
 > (equ:rs .1 .1)
 %.y
 
@@ -184,7 +184,7 @@ $$
 
 #### Tutorial: Length Converter
 
-* Write a generator to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement. For instance, this generator could convert a number of imperial feet to metric decameters.
+Write a generator to take a `@tas` input measurement unit of length, a `@rs` value, and a `@tas` output unit to which we will convert the input measurement. For instance, this generator could convert a number of imperial feet to metric decameters.
 
 **`/gen/convert-length.hoon`**
 
@@ -270,68 +270,68 @@ This program shows several interesting aspects, which we've covered before but h
 
 ### Exercise: Measurement Converter <a href="#exercise-measurement-converter" id="exercise-measurement-converter"></a>
 
-* Add to this generator the ability to convert some other measurement (volume, mass, force, or another of your choosing).
-* Add an argument to the cell required by the gate that indicates whether the measurements are distance or your new measurement.
-* Enforce strictly that the `fr-meas` and `to-meas` values are either lengths or your new type.
-* Create a new map of conversion values to handle your new measurement conversion method.
-* Convert the functionality into a library.
+1. Add to this generator the ability to convert some other measurement (volume, mass, force, or another of your choosing).
+2. Add an argument to the cell required by the gate that indicates whether the measurements are distance or your new measurement.
+3. Enforce strictly that the `fr-meas` and `to-meas` values are either lengths or your new type.
+4. Create a new map of conversion values to handle your new measurement conversion method.
+5. Convert the functionality into a library.
 
 ### `+rs` as a Door <a href="#rs-as-a-door" id="rs-as-a-door"></a>
 
 What is `+rs`? It's a door with 21 arms:
 
-```hoon
+```
 > rs
 <21|ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>
 ```
 
-The battery of this core, pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `+add`; it's a different `+add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [add:rs](../../hoon/stdlib/3b.md#addrs) instead of just `+add` in a function call, (1) the `.rs` door is produced, and then (2) the name search for `+add` resolves to the special `+add` arm in `.rs`. This produces the gate for adding `@rs` atoms:
+The battery of this core, pretty-printed as `21|ezj`, has 21 arms that define functions specifically for `@rs` atoms. One of these arms is named `+add`; it's a different `+add` from the standard one we've been using for vanilla atoms, and thus the one we used above. When you invoke [`+add:rs`](../../hoon/stdlib/3b.md#addrs) instead of just `+add` in a function call, (1) the `.rs` door is produced, and then (2) the name search for `+add` resolves to the special `+add` arm in `.rs`. This produces the gate for adding `@rs` atoms:
 
-```hoon
+```
 > add:rs
 <1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
-What about the sample of the `.rs` door? The pretty-printer shows `r=?(%d %n %u %z)`. The [rs](../../hoon/stdlib/3b.md#rs) sample can take one of four values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four options for how to round `@rs` numbers:
+What about the sample of the `.rs` door? The pretty-printer shows `r=?(%d %n %u %z)`. The [`+rs`](../../hoon/stdlib/3b.md#rs) sample can take one of four values: `%d`, `%n`, `%u`, and `%z`. These argument values represent four options for how to round `@rs` numbers:
 
-* `%d` rounds down
-* `%n` rounds to the nearest value
-* `%u` rounds up
-* `%z` rounds to zero
+* `%d` rounds down.
+* `%n` rounds to the nearest value.
+* `%u` rounds up.
+* `%z` rounds to zero.
 
-The default value is `%z`, round to zero. When we invoke `+add:rs` to call the addition function, there is no way to modify the `.rs` door sample, so the default rounding option is used. How do we change it? We use the `~( )` notation: `~(arm door arg)`.
+The default value is `%z`, round to zero. When we invoke `+add:rs` to call the addition function, there is no way to modify the `+rs` door sample, so the default rounding option is used. How do we change it? We use the `~( )` notation: `~(arm door arg)`.
 
-Let's evaluate the `+add` arm of `.rs`, also modifying the door sample to `%u` for 'round up':
+Let's evaluate the `+add` arm of `+rs`, also modifying the door sample to `%u` for 'round up':
 
-```hoon
+```
 > ~(add rs %u)
 <1.uka [[a=@rs b=@rs] <21.ezj [r=?(%d %n %u %z) <51.njr 139.oyl 33.uof 1.pnw %138>]>]>
 ```
 
 This is the gate produced by `+add`, and you can see that its sample is a pair of `@rs` atoms. But if you look in the context you'll see the [rs](../../hoon/stdlib/3b.md#rs) door. Let's look in the sample of that core to make sure that it changed to `%u`. We'll use the wing `+6.+7` to look at the sample of the gate's context:
 
-```hoon
+```
 > +6.+7:~(add rs %u)
 r=%u
 ```
 
 It did indeed change. We also see that the door sample uses the face `.r`, so let's use that instead of the unwieldy `+6.+7`:
 
-```hoon
+```
 > r:~(add rs %u)
 %u
 ```
 
 We can do the same thing for rounding down, `%d`:
 
-```hoon
+```
 > r:~(add rs %d)
 %d
 ```
 
 Let's see the rounding differences in action. Because `~(add rs %u)` produces a gate, we can call it like we would any other gate:
 
-```hoon
+```
 > (~(add rs %u) .3.14159265 .1.11111111)
 .4.252704
 
@@ -370,9 +370,9 @@ There are tradeoffs in compactness of representation and efficiency of mathemati
 
 The [`+si`](../../hoon/stdlib/3a.md#si) core supports signed-integer operations correctly. However, unlike the `@r` operations, `@s` operations have different names (likely to avoid accidental mental overloading).
 
-To produce a signed integer from an unsigned value, use [+new:si](../../hoon/stdlib/3a.md#newsi) with a sign flag, or simply use [+sun:si](../../hoon/stdlib/3a.md#sunsi)
+To produce a signed integer from an unsigned value, use [`+new:si`](../../hoon/stdlib/3a.md#newsi) with a sign flag, or simply use [`+sun:si`](../../hoon/stdlib/3a.md#sunsi)
 
-```hoon
+```
 > (new:si & 2)
 --2
 
@@ -383,9 +383,9 @@ To produce a signed integer from an unsigned value, use [+new:si](../../hoon/std
 --5
 ```
 
-To recover an unsigned integer from a signed integer, use [+old:si](../../hoon/stdlib/3a.md#oldsi), which returns the magnitude and the sign.
+To recover an unsigned integer from a signed integer, use [`+old:si`](../../hoon/stdlib/3a.md#oldsi), which returns the magnitude and the sign.
 
-```hoon
+```
 > (old:si --5)
 [%.y 5]
 
@@ -393,17 +393,17 @@ To recover an unsigned integer from a signed integer, use [+old:si](../../hoon/s
 [%.n 5]
 ```
 
-* [+sum:si](../../hoon/stdlib/3a.md#sumsi), addition
-* [+dif:si](../../hoon/stdlib/3a.md#difsi), subtraction
-* [+pro:si](../../hoon/stdlib/3a.md#prosi), multiplication
-* [+fra:si](../../hoon/stdlib/3a.md#frasi), division
-* [+rem:si](../../hoon/stdlib/3a.md#remsi), modulus (remainder after division), b modulo a as `@s`
-* [+abs:si](../../hoon/stdlib/3a.md#abssi), absolute value
-* [+cmp:si](../../hoon/stdlib/3a.md#synsi), test for greater value (as index, `>` → `--1`, `<` → `-1`, `=` → `--0`)
+* [`+sum:si`](../../hoon/stdlib/3a.md#sumsi), addition.
+* [`+dif:si`](../../hoon/stdlib/3a.md#difsi), subtraction.
+* [`+pro:si`](../../hoon/stdlib/3a.md#prosi), multiplication.
+* [`+fra:si`](../../hoon/stdlib/3a.md#frasi), division.
+* [`+rem:si`](../../hoon/stdlib/3a.md#remsi), modulus (remainder after division), b modulo a as `@s`.
+* [`+abs:si`](../../hoon/stdlib/3a.md#abssi), absolute value.
+* [`+cmp:si`](../../hoon/stdlib/3a.md#synsi), test for greater value (as index, `>` → `--1`, `<` → `-1`, `=` → `--0`).
 
 To convert a floating-point value from number (atom) to text, use[`+scow`](../../hoon/stdlib/4m.md#scow) or[+r-co:co](../../hoon/stdlib/4k.md#r-coco) with[`+rlys`](../../hoon/stdlib/3b.md#rlys) (and friends):
 
-```hoon
+```
 > (scow %rs .3.14159)
 ".3.14159"
 
@@ -502,7 +502,7 @@ Time values, often referred to as "timestamps", are commonly represented by the 
 
 A timestamp can be separated into the time portion, which is the relative offset within a given day, and the date portion, which represents the absolute day.
 
-There are two molds to represent time in Hoon: the `@d` aura, with `@da` for a full timestamp and `@dr` for an offset; and the [$date](../../hoon/stdlib/2q.md#date)/[$tarp](../../hoon/stdlib/2q.md#tarp) structure:
+There are two molds to represent time in Hoon: the `@d` aura, with `@da` for a full timestamp and `@dr` for an offset; and the [`$date`](../../hoon/stdlib/2q.md#date) / [`$tarp`](../../hoon/stdlib/2q.md#tarp) structure:
 
 | Aura  | Meaning                    | Example                   |
 | ----- | -------------------------- | ------------------------- |
@@ -520,7 +520,7 @@ There are two molds to represent time in Hoon: the `@d` aura, with `@da` for a f
 
 To go from a `@da` to a `$tarp`, use [`+yell`](../../hoon/stdlib/3c.md#yell):
 
-```hoon
+```
 > *tarp
 [d=0 h=0 m=0 s=0 f=~]
 
@@ -536,7 +536,7 @@ To go from a `@da` to a `$tarp`, use [`+yell`](../../hoon/stdlib/3c.md#yell):
 
 To go from a `@da` to a `$date`, use [`+yore`](../../hoon/stdlib/3c.md#yore):
 
-```hoon
+```
 > (yore ~2014.6.6..21.09.15..0a16)
 [[a=%.y y=2.014] m=6 t=[d=6 h=21 m=9 s=15 f=~[0xa16]]]
 
@@ -546,7 +546,7 @@ To go from a `@da` to a `$date`, use [`+yore`](../../hoon/stdlib/3c.md#yore):
 
 To go from a `$date` to a `@da`, use [`+year`](../../hoon/stdlib/3c.md#year):
 
-```hoon
+```
 > (year [[a=%.y y=2.014] m=8 t=[d=4 h=20 m=4 s=57 f=~[0xd940]]])
 ~2014.8.4..20.04.57..d940
 
@@ -556,7 +556,7 @@ To go from a `$date` to a `@da`, use [`+year`](../../hoon/stdlib/3c.md#year):
 
 To go from a `$tarp` to a `@da`, use[`+yule`](../../hoon/stdlib/3c.md#yule):
 
-```hoon
+```
 > (yule (yell now))
 0x8000000d312b148891f0000000000000
 
@@ -569,7 +569,7 @@ To go from a `$tarp` to a `@da`, use[`+yule`](../../hoon/stdlib/3c.md#yule):
 
 The Urbit date system correctly compensates for the lack of Year Zero:
 
-```hoon
+```
 > ~0.1.1
 ~1-.1.1
 
@@ -642,7 +642,7 @@ Astronomers use the [Julian day](https://en.wikipedia.org/wiki/Julian_day) to un
 
 The `@q` aura is similar to `@p` except for two details: it doesn't obfuscate names (as planets do) and it can be used for any size of atom without adjust its width to fill the same size. Prefixes and suffixes are in the same order as `@p`, however. Thus:
 
-```hoon
+```
 > `@q`0
 .~zod
 
@@ -667,7 +667,7 @@ The [`+po`](../../hoon/stdlib/4a.md#po) core contains tools for directly parsing
 
 The base-32 representation uses the characters "0123456789abcdefghijklmnopqrstuv" to represent values. The digits are separated into collections of five characters separated by `.` dot.
 
-```hoon
+```
 > `@uv`0
 0v0
 
@@ -683,7 +683,7 @@ The base-32 representation uses the characters "0123456789abcdefghijklmnopqrstuv
 
 The base-64 representation uses the characters `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-~` to represent values. The digits are separated into collections of five characters separated by `.` dot.
 
-```hoon
+```
 > `@uw`0
 0w0
 
@@ -708,7 +708,7 @@ You previously saw entropy introduced when we discussed stateful random number g
 
 It is not straightforward for a computer, a deterministic machine, to produce an unpredictable sequence. We can either use a source of true randomness (such as the third significant digit of chip temperature or another [hardware source](https://en.wikipedia.org/wiki/Hardware_random_number_generator)) or a source of artificial randomness (such as a sequence of numbers the user cannot predict).
 
-For instance, consider the sequence _3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3_. If you recognize the pattern as the constant π, you can predict the first few digits, but almost certainly not more than that. The sequence is deterministic (as it is derived from a well-characterized mathematical process) but unpredictable (as you cannot _a priori_ guess what the next digit will be).
+For instance, consider the sequence *3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3*. If you recognize the pattern as the constant *π*, you can predict the first few digits, but almost certainly not more than that. The sequence is deterministic (as it is derived from a well-characterized mathematical process) but unpredictable (as you cannot _a priori_ guess what the next digit will be).
 
 Computers often mix both deterministic processes (called “pseudorandom number generators”) with random inputs, such as the current timestamp, to produce high-quality random numbers for use in games, modeling, cryptography, and so forth. The Urbit entropy value `.eny` is derived from the underlying host OS's `/dev/urandom` device, which uses sources like keystroke typing latency to produce random bits.
 
@@ -947,7 +947,7 @@ Theoretically, since the number of fixed-length hashes are finite, an infinite n
 
 The Hoon standard library supports fast insecure hashing with [`+mug`](../../hoon/stdlib/2e.md#mug), which accepts any noun and produces an atom of the hash.
 
-```hoon
+```
 > `@ux`(mug 1)
 0x715c.2a60
 
@@ -966,7 +966,7 @@ The Hoon standard library supports fast insecure hashing with [`+mug`](../../hoo
 
 `+mug` operates on the raw form of the noun however, without Hoon-specific metadata like aura:
 
-```hoon
+```
 > (mug 0x5)
 721.923.263
 
@@ -978,9 +978,7 @@ Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [t
 
 [`+shax`](../../hoon/stdlib/3d.md#shax) produces a hashed atom of 256 bits from any atom.
 
-```hoon
-69.779.012.276.202.546.540.741.613.998.220.636.891.790.827.476.075.440.677.599.814.057.037.833.368.907
-
+```
 > `@ux`(shax 1)
 0x9a45.8577.3ce2.ccd7.a585.c331.d60a.60d1.e3b7.d28c.bb2e.de3b.c554.4534.2f12.f54b
 
@@ -996,7 +994,7 @@ Hoon also includes [SHA-256 and SHA-512](https://en.wikipedia.org/wiki/SHA-2) [t
 
 [`+shaz`](../../hoon/stdlib/3d.md#shaz) produces a hashed atom of 512 bits from any atom.
 
-```hoon
+```
 > (shaz 1)
 3.031.947.054.025.992.811.210.838.487.475.158.569.967.793.095.050.169.760.709.406.427.393.828.309.497.273.121.275.530.382.185.415.047.474.588.395.933.812.689.047.905.034.106.140.802.678.745.778.695.328.891
 

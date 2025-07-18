@@ -1,0 +1,1887 @@
+---
+description: "API reference for %hood, a Gall agent that interfaces with Urbit OS. Includes documentation for its modules Drum (CLI management), Helm (system control), and Kiln (desk updates and filesystem)."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
+# Hood
+
+`%hood` is the system manager and control agent included in the `%base` desk. It's divided into three modules located in `/lib/hood/`:
+
+- `%drum`: CLI app management. It acts as the middle-man between the Dill vane and the individual CLI apps, including the Dojo itself.
+- `%helm`: system control. It handles requests for things like sending `|hi`s, spawning moons, packing and melding, seting verbosity, etc. It's the middle-man between user commands and the kernel. It's the target of many of the Hood generators (those that begin with `|`) like `|moon`, `|hi`, `|verb`, etc, and the various vane-specific generators.
+- `%kiln`: desk updates and filesystem control. It's responsible for tracking and applying desk updates (like when you run `|install ~mister-dister-dozzod-dozzod %landscape`). It also exposes a number of Clay and filesystem-related actions. It's the target of a number of Hood generators (those that begin with `|`) like `|commit`, `|install`, `|mount`, `|suspend`, etc.
+
+While you usually interact with Hood via its generators, its API can also be used by agents, so it's useful to know what its pokes and other endpoints are. We'll look at each module in turn.
+
+## Drum
+
+Drum's CLI app management functionality is usally mediated but functions in the `/lib/sole.hoon` library. We'll not document it here. For more information on CLI apps, you can refer to the [Command-Line Apps guide](../../build-on-urbit/userspace/cli-tutorial.md) and [Building a CLI app example](../../build-on-urbit/userspace/examples/rpn.md).
+
+Drum's additional API is as follows.
+
+### Scries
+
+#### Our ship
+
+A scry with a path of `/x/kiln/our` will return our ship as an `@p` with a `%noun` mark.
+
+Example:
+
+```
+> .^(@p %gx /=hood=/kiln/our/noun)
+~zod
+```
+
+#### Kernel update blocked?
+
+A scry with a path of `/x/kiln/lag` will return a `?` with a `%loob` mark specifying whether a kernel upgrade is blocked.
+
+Example:
+
+```
+> .^(? %gx /=hood=/kiln/lag/loob)
+%.n
+```
+
+#### Base hash
+
+A scry with a path of `/x/kiln/base-hash` will return the `%base` base hash as a `@uv` with a `%noun` mark.
+
+Example:
+
+```
+> .^(@uv %gx /=hood=/kiln/base-hash/noun)
+0v1l.6h9mk.s675m.jmi9q.g5isc.20q0l.g6r86.36v92.1l6db.li3hh.6r68a
+```
+
+#### Sync source change requests
+
+A scry with a path of `/x/kiln/jumps` will return the current sync source change requests as an `%all` [`$jump`](#jump) with a `%kiln-jump` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^(jump:hood %gx /=hood=/kiln/jumps/kiln-jump)
+[%all all=~]
+```
+
+#### Syncs
+
+A scry with a path of `/x/kiln/syncs` will return a map from [`$sync-record`](#sync-record) to [`$sync-state`](#sync-state) of the currently active desk syncs with a `%noun` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^((map sync-record:hood sync-state:hood) %gx /=hood=/kiln/syncs/noun)
+[ n=[p=[syd=%landscape her=~mister-dister-dozzod-dozzod sud=%landscape] q=[nun=~.0v3 kid=~ let=0 nit=~ hav=~ yea=%.n]]
+  l=~
+  r=~
+]
+```
+
+#### Sync sources
+
+A scry with a path of `/x/kiln/sources` will return a `(map desk [ship desk])` of the current syncs with `%noun` mark.
+
+Example:
+
+```
+> .^((map desk [ship desk]) %gx /=hood=/kiln/sources/noun)
+[n=[p=%landscape q=[~mister-dister-dozzod-dozzod %landscape]] l=~ r=~]
+```
+
+#### Global automerge setting
+
+A scry with a path of `/x/kiln/automerge` will return a `?` saying what the default automerge policy is with a `%loob` mark.
+
+Example:
+
+```
+> .^(? %gx /=hood=/kiln/automerge/loob)
+%.y
+```
+
+#### Pikes
+
+A scry with a path of `/x/kiln/pikes` wil return a [`$pikes`](#pikes) of the state of apps with a `%kiln-pikes` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^(pikes:hood %gx /=hood=/kiln/pikes/kiln-pikes)
+[ n=[p=%base q=[sync=~ hash=0v1a.kt0d8.rvtjm.fkmp2.oblo6.oq3jp.mahql.22k1d.ilrdk.rljer.ift9b zest=%live wic=~]]
+    l
+  [   n
+    [ p=%groups
+        q
+      [ sync=[~ [ship=~sogryp-dister-dozzod-dozzod desk=%groups]]
+        hash=0v11.p6g14.eprqt.8vfd5.j8cm8.m914c.mlqrf.fm32d.tbuds.hai44.462ag
+        zest=%live
+        wic=~
+      ]
+    ]
+    l={}
+    r={}
+  ]
+    r
+........
+```
+
+#### Pending syncs
+
+A scry with a path of `/x/kiln/pending` will return a `%pending` [`$sync-update`](#sync-update) for pending syncs with a `%kiln-sync-update` mark.
+
+Example:
+
+```
+> =hood -build-file %/sur/hood/hoon
+> .^(sync-update:hood %gx /=hood=/kiln/pending/kiln-sync-update)
+[%pending pending={}]
+```
+
+---
+
+### Set system error verbosity
+
+A poke with a `%drum-knob` mark will set the verbosity level for `%crud` error messages generated by the system.
+
+#### Accepts
+
+```hoon
+[tag=@tas lev=?(%hush %soft %loud)]
+```
+
+- `.tag`: should always be `%crud`, all other tags have no effect.
+- `.lev`: verbosity level.
+
+#### Example
+
+```
+> :hood &drum-knob [%crud %hush]
+>=
+```
+
+---
+
+### Shut down ship
+
+A poke with a `%drum-exit` mark will shut down the ship.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &drum-exit ~
+>=
+```
+
+---
+
+### Connect CLI app
+
+A poke with a `%drum-link` mark will connect the specified CLI app on the specified ship to the Dojo (you can cycle between linked CLI apps with `Ctrl+X`). Note you can connect to the Dojo of remote ships if they've given you permission by running `:dojo|allow-remote-login ~sampel-palnet`.
+
+#### Accepts
+
+```hoon
+[ses=@tas gyl=gill:gall]
+```
+
+- `.ses`: terminal session. Typically `%$` for the default one.
+- `.gyl`: the ship and app to link. A `(pair ship term)` where the `$term` is the app name.
+
+#### Example
+
+```
+> :hood &drum-link [%$ ~sampel-palnet %dojo]
+>=
+drum: link [~sampel-palnet %dojo]
+```
+
+---
+
+### Disconnect CLI app
+
+A poke with a `%drum-unlink` mark will unlink a previously linked CLI app.
+
+#### Accepts
+
+```hoon
+[ses=@ta gyl=gill:gall]
+```
+
+- `.ses`: terminal session. Typically `%$` for the default one.
+- `.gyl`: the ship and app to unlink. A `(pair ship term)` where the `$term` is the app name.
+
+#### Example
+
+```
+> :hood &drum-unlink [%$ ~sampel-palnet %dojo]
+>=
+```
+
+---
+
+### Write file to Unix
+
+A poke with a `%drum-put` mark will write the given atom out to the Unix filesystem in `<pier>/.urb/put/`. It just writes the atom's bytes so is agnostic to the format. Most commonly you'd give it a `$cord` to write out a text file.
+
+#### Accepts
+
+```hoon
+[pax=path arg=$@(@ [@tas @])]
+```
+
+- `.pax`: the path where the last element is the extension, so `/foo/bar/txt` is written to `<pier>/.urb/put/foo/bar.txt`.
+- `.arg`: either the atom to write or a pair of session ID and the atom to write. If no session ID is given, it'll default to the default session `%$`, which is typically what you want.
+
+#### Example
+
+```
+> :hood &drum-put [/foo/bar/txt 'foo']
+>=
+```
+
+Then in Unix:
+
+```
+$ cat ~/piers/zod/.urb/put/foo/bar.txt
+foo
+```
+
+---
+
+## Helm
+
+Helm provides an interface for a number of vane tasks. Some of them are generally useful and some are fairly obscure debug functionality. We will document all of them here for completeness.
+
+### Reset Ames congestion control
+
+A poke with a `%helm-ames-prod` mark will reset congestion control in Ames for the specified ship(s).
+
+#### Accepts
+
+```hoon
+(list ship)
+```
+
+#### Example
+
+```
+> :hood &helm-ames-prod ~[~sampel-palnet ~sampel]
+>=
+```
+
+---
+
+### Blacklist/whitelist ships in Ames
+
+A poke with a `%helm-ames-snub` mark will whitelist or blacklist a list of ships in Ames. Ships on the blacklist or not on the whitelist will have all Ames traffic dropped. Note that this overrides the existing blacklist/whitelist, it's not additive.
+
+#### Accepts
+
+```hoon
+[form=?(%allow %deny) ships=(list ship)]
+```
+
+- `.form`: `%allow` means whitelist, `%deny` means blacklist. A whitelist means all traffic from sources other than the ships specified will be dropped. A blacklist means traffic from the specified ships will be dropped, and other traffic will be allowed.
+- `.ships`: The list of ships to whitelist/blacklist.
+
+#### Example
+
+```
+> :hood &helm-ames-snub [%deny ~sampel-palnet ~sampel ~]
+>=
+```
+
+---
+
+### Filter Ames debug prints
+
+A poke with a `%helm-ames-sift` mark will turn off Ames verbosity for all but the specified ships. Note this overrides existing per-ship verbosity settings. If the list is empty, it'll just turn on verbosity for all ships. This would be used in combination with [`%helm-ames-verb`](#set-ames-verbosity) to turn on specific Ames debug prints. Without any debug prints turned on, you won't see any difference.
+
+#### Accepts
+
+```hoon
+(list ship)
+```
+
+#### Examples
+
+```
+> :hood &helm-ames-sift ~[~sampel-palnet ~sampel]
+>=
+```
+
+---
+
+### Set Ames verbosity
+
+A poke with a `%helm-ames-verb` mark will turn on debug prints for specified Ames debug flags. Note this will override any previous settings. An empty list of debug flags will turn off all Ames debug prints.
+
+#### Accepts
+
+```hoon
+veb=(list verb:ames)
+```
+
+See the [`$verb:ames`](../kernel/ames/data-types.md#verb) entry in the Ames data types reference for details of the different verbosity flags.
+
+#### Example
+
+```
+> :hood &helm-ames-verb ~[%snd %rcv %odd %msg %ges %for %rot]
+>=
+```
+
+---
+
+### Resend timers in Ames
+
+A poke with a `%helm-ames-wake` mark will tell Ames to set resend timers for any flows that lack them. This was introduced to solve a bug in an old kernel version and is unlikely to be useful.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &helm-ames-wake ~
+>=
+```
+
+---
+
+### Close stale flows in Ames
+
+A poke with a `%helm-ames-kroc` mark will close all stale Ames flows for the given list of ship-`$bone` pairs. If the optional `.dry` flag is enabled, it won't do anything. This requires a great deal of additional logic to use, and is better left to the `|ames/close-flows` generator.
+
+{% hint %}
+As of the directed messaging update in `[%zuse 410]`, Ames no-ops on the `%kroc` task this poke sends. Therefore, this poke is no longer useful.
+{% endhint %}
+
+#### Accepts
+
+```hoon
+[dry=? bones=(list [ship bone])]
+```
+
+- `.dry`: whether it's a dry run (no-op) or whether the stale flows should actually be closed.
+- `.bones`: the ship-`$bone` pairs for which stale flows should be closed.
+
+---
+
+### Adjust congestion control in Ames
+
+A poke with a `%helm-ames-cong` mark will adjust the congestion control constants in Ames. You shouldn't change these unless you know what you're doing.
+
+#### Accepts
+
+```hoon
+[msg=@ud mem=@ud]
+```
+
+- `.msg`: number of pending messages to be considered clogged (default is `5`).
+- `.mem`: number of pending message fragments to be considered clogged (default is `100.000`).
+
+Note that Ames `.mem` no longer considers `.mem` in its clog calculations so you should just leave it as the default `100.000`.
+
+#### Example
+
+```
+> :hood &helm-ames-cong [4 100.000]
+>=
+```
+
+---
+
+### Print Atom details
+
+A poke with a `%helm-atom` mark will print source, size and hash information about the given atom.
+
+#### Accepts
+
+```hoon
+@
+```
+
+#### Example
+
+```
+> :hood &helm-atom 'foo'
+>=
+< ~zod: atom: 3 bytes, mug ~bantep-harfyl
+```
+
+---
+
+### Automatic memory reports
+
+A poke with a mark of `%helm-automass` will tell Hood to repeatedly run a memory report at the given interval. You can turn it off again with [`%helm-cancel-automass`](#cancel-automatic-memory-reports).
+
+#### Accepts
+
+```hoon
+recur=@dr
+```
+
+- `.recur`: the memory report interval. For example, `~m1` would be every 1 minute.
+
+#### Example
+
+```
+> :hood &helm-automass ~m1
+>=
+```
+
+---
+
+### Cancel automatic memory reports
+
+A poke with a mark of `%helm-cancel-automass` will turn off [Automass](#automatic-memory-reports) automatic memory reports.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &helm-cancel-automass ~
+>=
+```
+
+---
+
+### Rotate web login code
+
+A poke with a mark of `%helm-code` will rotate a ship's web login code. Note all existing web login sessions with be ended, and you'll need to run `+code` to get the new login code. Note also that cycling the code like this means Bridge can't automatically derive the web login code.
+
+### Accepts
+
+```hoon
+act=?(~ %reset)
+```
+
+- `.act`: if it's null it's a no-op, if it's `%reset` it changes the code.
+
+### Example
+
+```
+> :hood &helm-code %reset
+>=
+```
+
+---
+
+### Approve CORS origin in Eyre
+
+A poke with a mark of `%helm-cors-approve` will approve the given CORS origin URL.
+
+#### Accepts
+
+```hoon
+=origin:eyre
+```
+
+- `.origin`: this is a cord containing the fully qualified URL to whitelist for CORS.
+
+#### Example
+
+```
+> :hood &helm-cors-approve 'http://localhost:8081'
+>=
+```
+
+---
+
+### Deny CORS origin in Eyre
+
+A poke with a mark of `%helm-cors-reject` will reject the given CORS origin URL.
+
+#### Accepts
+
+```hoon
+=origin:eyre
+```
+- `.origin`: this is a cord containing the fully qualified URL to whitelist for CORS.
+
+#### Example
+
+```
+> :hood &helm-cors-reject 'http://localhost:8081'
+>=
+```
+
+---
+
+### Kill old-style outgoing subscriptions in Gall
+
+A poke with a mark of `%helm-doff` will kill old-style outgoing subscriptions in Gall. This is an obscure bug-fixing task for old kernel versions that shouldn't be used unless you know what you're doing.
+
+#### Accepts
+
+```
+[dude=(unit dude:gall) ship=(unit ship)]
+```
+
+- `.dude`: agent name or null for all agents.
+- `.ship`: old-style outgoing subscriptions to the specified ship or null for all ships.
+
+#### Example
+
+```
+> :hood &helm-doff [(some %foo) (some ~sampel-palnet)]
+>=
+```
+
+---
+
+### Filter Gall debug prints
+
+A poke with a mark of `%helm-gall-sift` will filter Gall verbosity to the specified agents. Note this overrides previous filters and simply removes all filters if the list of agents is empty.
+
+#### Accepts
+
+```hoon
+dudes=(list dude:gall)
+```
+
+#### Example
+
+```
+> :hood &helm-gall-sift [%foo %bar ~]
+>=
+```
+
+---
+
+### Set Gall verbosity flags
+
+A poke with a mark of `%helm-gall-verb` will enable the specified Gall verbosity flags.
+
+#### Accepts
+
+```hoon
+veb=(list verb:gall)
+```
+
+- `.veb`: currently, the only `$verb:gall` is `%odd`.
+
+#### Example
+
+```
+> :hood &helm-gall-verb ~[%odd]
+>=
+```
+
+---
+
+### Kill incoming subscriptions in Gall
+
+A poke with a mark of `%helm-gall-lave` will kill the specified incoming Gall subscription(s). This is for developer debugging and should not be used unless you know what you're doing.
+
+#### Accepts
+
+```hoon
+[dry=? subs=(list [v=?(%g %a) =ship =dude =duct])]
+```
+
+- `.dry`: if true, no-op.
+- `.subs`: a list of tuples where:
+  - `.v`: the `%a` option simultaneously sends the subscriber a `%kick` and calls the target agent's `+on-leave` arm as though the subscriber initiated it. The `%g` option just calls `+on-leave` without sending a `%kick` to the subscriber.
+  - `.ship`: the subscriber's ship.
+  - `.dude`: the agent, an `@tas`.
+  - `.duct`: the subscription `$duct`.
+
+#### Example
+
+```
+> :hood &helm-gall-lave [| [%a ~sampel-palnet %foo ~[/some/duct]]~]
+>=
+```
+
+---
+
+### Print a hi
+
+A poke with a mark of `%helm-hi` will print the source of the poke and the incoming message (or its hash and size if it's very large). Note this is the handler for incoming `|hi`s. To send outgoing ones, see [`%helm-send-hi`](#send-a-hi).
+
+#### Accepts
+
+```hoon
+mes=@t
+```
+
+- `.mes`: a `$cord` message to print or just an atom if it's longer than 100 bytes and you just want the size and hash rather than the message itself for testing.
+
+#### Example
+
+```
+> :hood &helm-hi 'foo'
+>=
+< ~zod: foo
+```
+
+---
+
+### Pass notes to vanes
+
+A poke with a mark of `%helm-pans` will pass the given list of `$note-arvo`s to their respective vanes. This is like `|pass` but for multiple tasks.
+
+#### Accepts
+
+```hoon
+(list note-arvo)
+```
+
+#### Example
+
+```
+> :hood &helm-pans :~  [%d %flog %text "foo"]
+                       [%d %flog %text "bar"]
+                       [%d %flog %text "baz"]
+                   ==
+>=
+foo
+bar
+baz
+```
+
+---
+
+### Run a memory report
+
+A poke with a mark of `%helm-mass` will tell the runtime to print a memory report.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &helm-mass ~
+>=
+arvo: 
+  hoon: 
+    one: KB/24.768
+    two: KB/207.984
+    tri: KB/282.232
+...
+```
+
+---
+
+### Meld memory
+
+A poke with a mark of `%helm-meld` will tell the runtime to deduplicate the ship's state, reducing memory usage. Note this can be memory-intensive for ships with large states.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &helm-meld ~
+>=
+~zod:dojo> atoms (234614): MB/1.048.576
+cells (7639325): MB/67.108.864
+serf: meld: gained: MB/60.364.648
+pier: meld complete
+```
+
+---
+
+### Register new moon
+
+A poke with a mark of `%helm-moon` will save the given moon's pubkey in Jael so it can be booted and communicate on the network. Note that the keys must be provided explicitly.
+
+#### Accepts
+
+```hoon
+sed=(unit [=ship =udiff:point:jael])
+```
+
+- `.sed`: if null, no-op. Otherwise add the given moon with the given pubkey and life in the `$udiff:point:jael` to Jael. See the `|moon` generator's source for details of key generation.
+
+---
+
+### Breach a moon
+
+A poke with a `%helm-moon-breach` mark will breach the specified moon (assuming its a child of your ship), incrementing its `$rift`.
+
+#### Accepts
+
+```hoon
+ship
+```
+
+#### Example
+
+```
+> :hood &helm-moon-breach ~sampel-sampel-dozzod-dozzod
+>=
+```
+
+---
+
+### Pack memory
+
+A poke with a mark of `%helm-pack` will tell the runtime to compact memory.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &helm-pack ~
+>=
+serf: pack: gained: MB/2.352.840
+pier: pack complete
+```
+
+---
+
+### Pass a note to a vane
+
+A poke with a mark of `%helm-pass` will pass the given `$note-arvo` to its target vane.
+
+#### Accepts
+
+```hoon
+=note-arvo
+```
+
+#### Example
+
+```
+> :hood &helm-pass [%d %flog %text "foo"]
+>=
+foo
+```
+
+---
+
+### Rekey ship
+
+A poke with the mark of `%helm-rekey` will rotate the ship's networking keys with the given private key. Note this can be dangerous if you provide an incorrect key/life.
+
+#### Accepts
+
+```
+des=@t
+```
+
+- `.des`: this is a `$feed:jael` `+jam`'d and encoded in a `$cord` with `@uw` syntax.
+
+---
+
+### Send a hi
+
+A poke with a mark of `%helm-send-hi` will send a `|hi` to the target ship with an optional message.
+
+#### Accepts
+
+```hoon
+[her=ship mes=@]
+```
+
+- `.her`: the target ship.
+- `.mes`: a message to print on the target ship. Leave the string empty if you don't want a message.
+
+#### Example
+
+```
+> :hood &helm-send-hi [~zod 'foo']
+>=
+hi ~zod successful
+< ~zod: foo
+```
+
+---
+
+### Negotiate migration to directed messaging with a ship {#ahoy}
+
+A poke with a mark of `%helm-send-ahoy` will request to migrate networking with the given ship to Mesa (directed messaging).
+
+#### Accepts
+
+```hoon
+[her=ship test=?]
+```
+
+- `.her`: the target ship.
+- `.test`: if true, it will merely test directed messaging upgrade negotiations but won't actually enable it.
+
+---
+
+### Migrate to directed messaging
+
+A poke with a mark of `%helm-mass-mate` will migrate networking with the target ship or all ships to Mesa (directed messaging). This is like [`%helm-send-ahoy`](#ahoy) except it doesn't do the negotiation part and it can do it for everyone, not just a single ship. This is dangerous and should not be touched unless you know exactly what you're doing.
+
+#### Accepts
+
+```hoon
+[ship=(unit ship) dry=?]
+```
+
+- `.ship`: either a specific ship, or null for all ships.
+- `.dry`: if true, it does a test-run without actually applying the upgrade.
+
+---
+
+### Negotiate reversal of directed messaging migration with ship {#send-rege}
+
+A poke with a mark of `%helm-send-rege` will send a request to the target ship to negotiate a reversal back to old-style Ames networking from directed messaging. This is the inverse of [`%helm-send-ahoy`](#ahoy).
+
+#### Accepts
+
+```hoon
+[her=ship test=?]
+```
+
+- `.her`: the target ship.
+- `.test`: if true, it does a dry-run of the negotiation without actually applying it.
+
+---
+
+### Reverse directed messaging migration
+
+A poke with a mark of `%helm-mass-rege` will reverse directed messaging migration back to ordinary Ames networking for either a specific ship or all ships. This is the same as [`%helm-send-rege`](#send-rege) except it doesn't do the negotiation part and it can do it for everyone, not just a single ship.
+
+#### Accepts
+
+```hoon
+[ship=(unit ship) dry=?]
+```
+
+- `.ship`: the target ship, or all ships if null.
+- `.dry`: if true, it does a dry-run test of the reveral without actually applying it.
+
+---
+
+### Serve a generator over HTTP
+
+A poke with a mark of `%helm-serve` will bind a generator to a URL path in Eyre so it can be run over HTTP. Note the generator has to be structured like so:
+
+```hoon
+|=  [[now=@da eny=@ bek=beak] ~ ~]
+|=  [authorized=? =request:http]
+^-  simple-payload:http
+...
+```
+
+#### Accepts
+
+```hoon
+[=binding:eyre =generator:eyre]
+```
+
+- `.binding`: a pair of optional site and URL path. Normally the site is empty, so it's like `[site=~ path=/foo/bar/baz]`.
+- `.generator` is a `+trel` of:
+    - `.desk`: the desk that contains the generator.
+    - `.path`: the path to the generator, like `/gen/foo/hoon`.
+    - `.args`: any extra arguments to give the generator.
+
+#### Example
+
+In the Dojo:
+
+```
+> *gen/hello-world/hoon ^-  cord
+  '''
+  |=  [[now=@da eny=@ bek=beak] ~ ~]
+  |=  [authorized=? =request:http]
+  ^-  simple-payload:http
+  :-  [%200 ['content-type' 'text/html']~]
+  `(as-octs:mimes:html '<h1>Hello World!</h1>')
+  '''
++ /~zod/base/2/gen/hello-world/hoon
+> :hood &helm-serve [`/hello-world %base /gen/hello-world/hoon ~]
+>=
+bound: %.y
+```
+
+The in the Unix terminal:
+
+```
+$ curl http://localhost:8080/hello-world
+<h1>Hello World!</h1>
+```
+
+---
+
+### Trim memory
+
+A poke with a mark of `%helm-trim` will request vanes trim their state size at the specified priority level.
+
+#### Accepts
+
+```hoon
+pri=@ud
+```
+
+- `.pri`: the larger the number, the lower the priority. Currently vanes don't consider the priority so it doesn't matter what you specify. This might change in the future.
+
+#### Example
+
+```
+> :hood &helm-trim 10
+>=
+eyre: trim: closing 1 inactive channels
+```
+
+---
+
+### Toggle move trace verbosity
+
+A poke with a mark of `%helm-verb` will toggle move trace verbosity.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &helm-verb ~
+>=
+```
+
+---
+
+### Encrypt and write atom to Clay
+
+A poke with a mark of `%helm-write-sec-atom` will encrypt the given atom and write it to Clay. This is use internally by OAuth machinery and is not generally useful.
+
+#### Accepts
+
+```hoon
+[hot=host:eyre dat=@]
+```
+
+---
+
+### Configure domain
+
+A poke with a mark of `%helm-dns-config` will configure an `arvo.network` (or other) subdomain for the ship. The HTTP server must be bound on port 80 and be publicly available.
+
+#### Accepts
+
+```hoon
+[addr=(each address:dns @t) collector=dock self-check=? reset=?]
+```
+
+- `.addr`: either the ship's public IP address, or a the URL of a "what is my IP?" reflector that returns the IP in the body of the response (e.g. [icanhazip.com](https://icanhazip.com)) for automatic IP address discovery.
+- `.collect`: the ship and agent that will handle the request and create the DNS entry. This is typically `[~deg %dns-collector]`.
+- `.self-check`: whether to perform self-checks or skip them.
+- `.reset`: whether to clear existing domain & SSL certificate configurations before creating the new one.
+
+---
+
+## Kiln
+
+Helm controls app update synchronization and provides an interface for various filesystem-related system calls.
+
+### Approve merge
+
+A poke with a mark of `%kiln-approve-merge` will approve or reject the specified pending merge.
+
+#### Accepts
+
+```hoon
+[[syd=desk her=ship sud=desk] approve=?]
+```
+
+- `.syd`: local `$desk`.
+- `.her`: foreign `$ship`.
+- `.sud`: foreign `$desk`.
+- `.approve`: whether to approve or reject the pending merge.
+
+---
+
+### Enable autocommit
+
+A poke with the mark of `%kiln-autocommit` will enable autocommits for the given mount point. Note this can quickly blow up your ship's state and isn't recommended.
+
+#### Accepts
+
+```hoon
+[mon=kiln-commit auto=?]
+```
+
+- `.mon`: a Clay mountpoint as a `@tas`. Typically this is just the desk name but theoretically things can be mounted with different names.
+- `.auto`: if false it just does a single commit and isn't actually "auto". If true it auto-commits every 1 second.
+
+#### Example
+
+```
+> :hood &kiln-autocommit [%base &]
+>=
+```
+
+---
+
+### Cancel autocommit
+
+A poke with a mark of `%kiln-cancel-autocommit` will turn off the previously enabled Clay autocommit.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &kiln-cancel-autocommit ~
+>=
+```
+
+---
+
+### Force kernel upgrade
+
+A poke with a mark of `%kiln-bump` will force a pending kernel upgrade, suspending any incompatible desks.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> |bump
+>=
+```
+
+---
+
+### Commit
+
+A poke with a mark of `%kiln-commit` will commit the given mount point.
+
+#### Accepts
+
+```hoon
+[mon=kiln-commit auto=?]
+```
+
+- `.mon`: a Clay mountpoint as a `@tas`. Typically this is just the desk name but theoretically things can be mounted with different names.
+- `.auto`: if false it just does a single commit and isn't actually "auto". If true it auto-commits every 1 second.
+
+#### Example
+
+```
+> :hood &kiln-commit [%base |]
+>=
+```
+
+---
+
+### Sync automerge
+
+A poke with a mark of `%kiln-sync-automerge` will enable or disable automatic merges for the given sync.
+
+#### Accepts
+
+```hoon
+[[syd=desk her=ship sud=desk] auto=(unit ?)]
+```
+
+- `.syd`: local `$desk`.
+- `.her`: foreign `$ship`.
+- `.sud`: foreign `$desk`.
+- `.auto`: is null, defer to global automerge settings. Otherwise, enable if true and disable if false.
+
+#### Example
+
+```
+> :hood &kiln-sync-automerge [[%landscape ~mister-dister-dozzod-dozzod %landscape] `|]
+>=
+```
+
+---
+
+### Octopus merge
+
+A poke with a mark of `%kiln-fuse` will perform an octopus merge of the foreign sources into the local desk with the given merge strategies. The sources can also be tracked rather than a one-off merge.
+
+#### Accepts
+
+```hoon
+  $@  ~
+  $:  syd=desk
+      $@  ~  :: signifies clearing the fuse
+      $:  overwrite=flag  :: force overwrite previous fuse
+          bas=fuse-source
+          con=(list [fuse-source germ])
+      ==
+  ==
+```
+
+- `.syd`: the local desk.
+- Then either `~` to clear an existing fuse, or a tuple of:
+  - `.overwrite`: whether to force overwrite any previous fuse.
+  - `.bas`: the base source, a `[who=ship des=desk ver=$@(%trak case)]`. If `ver` is `%trak` it tracks the source rather than just merging a single case.
+  - `.con`: additional sources and their respective merge strategies.
+
+---
+
+### Print octopus merge details
+
+A poke with a mark of `%kiln-fuse-list` will list the details of any fuses into the given local desk or all desks.
+
+#### Accepts
+
+```hoon
+k=kiln-fuse-list
+```
+
+- `.k`: a `(unit desk)`. If it's null it's for all desks, otherwise the specified one.
+
+#### Example
+
+```
+> :hood &kiln-fuse-list ~
+>=
+no ongoing fuses
+```
+
+---
+
+### Clear inbound blocked moves in Gall
+
+A poke with a mark of `%kiln-gall-sear` will clear the queue of blocked incoming moves from the given ship.
+
+#### Accepts
+
+```hoon
+ship
+```
+
+#### Example
+
+```
+> :hood &kiln-gall-sear ~wet
+>=
+```
+
+---
+
+### Write to Clay (`%info`)
+
+A poke with a mark of `%kiln-info` will write the given `$toro:clay` and print the specified message to the Dojo.
+
+#### Accepts
+
+```hoon
+[mez=tape tor=(unit toro)]
+```
+
+- `.mez`: a message to print to the Dojo.
+- `.tor`: a Clay diff or if it's null, it just prints `.mez` and does nothing.
+
+---
+
+### Install app
+
+A poke with a mark of `%kiln-install` will install the given desk on the given remote ship to the given local desk.
+
+#### Accepts
+
+```hoon
+[loc=desk her=ship rem=desk]
+```
+
+- `.loc`: the local desk.
+- `.her`: the remote ship.
+- `.rem`: the remote desk.
+
+#### Example
+
+```
+> :hood &kiln-install [%landscape ~mister-dister-dozzod-dozzod %landscape]
+>=
+```
+
+---
+
+### Set the kids desk for a sync
+
+A poke with a mark of `%kiln-kids` will set (or unset) the kids desk for a sync.
+
+#### Accepts
+
+```hoon
+[hos=sync-record nex=(unit desk)]
+```
+
+- `.hos` is a trel where:
+  - `.syd` is the local desk.
+  - `.her` is the foreign ship.
+  - `.sud` is the foreign desk.
+- `.nex`: the kids desk or null to unset.
+
+#### Example
+
+```
+> :hood &kiln-kids [[%landscape ~mister-dister-dozzod-dozzod %landscape] `%foo]
+>=
+```
+
+---
+
+### Add a label to a desk revision
+
+A poke with a mark of `%kiln-label` will add a label to the specified revision or latest if null.
+
+#### Accepts
+
+```hoon
+[syd=desk lab=@tas aey=(unit aeon)]
+```
+
+- `.syd`: the desk.
+- `.lab`: the label to apply.
+- `.aey`: the revision number or null for latest.
+
+#### Example
+
+```
+> :hood &kiln-label [%base 'foo' ~]
+>=
+labeled /~zod/base/foo
+```
+
+---
+
+### Clay merge
+
+A poke with a mark of `%kiln-merge` will perform the given merge in Clay.
+
+#### Accepts
+
+```hoon
+$@  ~
+$:  syd=desk
+    ali=ship
+    sud=desk
+    cas=case
+    gim=?(%auto germ)
+==
+```
+
+- `.syd`: the local desk.
+- `.ali`: the ship to merge from.
+- `.sud`: the desk to merge from.
+- `.cas`: the `$case` to merge from.
+- `.gim`: the merge strategy.
+
+#### Example
+
+```
+> :hood &kiln-merge [%landscape ~mister-dister-dozzod-dozzod %landscape da+now %auto]
+>=
+```
+
+---
+
+### Mount a desk
+
+A poke with a mark of `%kiln-mount` will mount the given path to the given mount point.
+
+#### Accepts
+
+```hoon
+  $:  pax=path
+      pot=term
+  ==
+```
+
+- `.pax`: a full path-encoded `$beam` to a desk, subdirectory or file.
+- `.pot`: the name of the mount point (typically just the desk name for a desk but it's up to you).
+
+#### Example
+
+```
+> :hood &kiln-mount [/=landscape= %landscape]
+>=
+```
+
+---
+
+### Receive a sync source change request
+
+The `%kiln-jump-ask` marked poke handler is for publishers to request you change your update source for their app.
+
+#### Accepts
+
+```hoon
+[old=dock new=dock]
+```
+
+- `.old`: the ship and desk of the old sync source.
+- `.new`: the ship and desk of the new sync source.
+
+---
+
+### Accept or reject a sync source change request
+
+A poke with a mark of `%kiln-jump-opt` lets you accept or reject a sync source change request from a publisher.
+
+#### Accepts
+
+```hoon
+[old=dock new=dock yea=?]
+```
+
+- `.old`: old sync source ship and desk.
+- `.new`: new sync source ship and desk.
+- `.yea`: change to the new source if true, keep the old source if false.
+
+---
+
+### Propose app subscribers change to a new sync source
+
+A poke with a mark of `%kiln-jump-propose` will ask all desk subscribers to change their update source to a new ship and desk. This is intended for app publishers if the need to migrate their app distribution to a new ship or desk.
+
+#### Accepts
+
+```hoon
+[syd=desk her=ship sud=desk]
+```
+
+- `.syd`: the local desk whose subscribers should change their update source.
+- `.her`: the new ship to sync from.
+- `.sud`: the new desk on that ship to sync from.
+
+#### Example
+
+```
+> :hood &kiln-jump-propose [%foo ~wet %bar]
+>=
+```
+
+---
+
+### Erase app state
+
+A poke with a mark of `%kiln-nuke` will disable and erase the state of an agent or all agents on a desk. Note the erased state cannot be recovered and this might break things so be careful.
+
+#### Accepts
+
+```hoon
+[=term desk=?]
+```
+
+- `.term`: either a Gall agent or a desk name.
+- `.desk`: whether `.term` is a desk, in which all agents on that desk should be nuked, or whether it specifies just a single agent.
+
+#### Example
+
+```
+> :hood &kiln-nuke [%dbug |]
+>=
+gall: nuking %dbug
+```
+
+---
+
+### Disable updates for a desk
+
+A poke with a mark of `%kiln-pause` will disable updates for the specified desk. Note to re-enable them you'll have to re-run the `|install` generator or equivalent, specifying the ship and desk.
+
+#### Accepts
+
+```hoon
+desk
+```
+
+#### Example
+
+```
+> :hood &kiln-pause %landscape
+>=
+kiln: cancelling sync from %landscape on ~mister-dister-dozzod-dozzod to %landscape
+```
+
+---
+
+### Make files public or private
+
+A poke with a mark of `%kiln-permission` will set permissions for the given path in the given desk to public or private.
+
+#### Accepts
+
+```hoon
+[syd=desk pax=path pub=?]
+```
+
+- `.syd`: the desk in question.
+- `.pax`: the path on that desk you want to make public or private (`/` for the whole desk).
+- `.pub`: whether it should be public of private.
+
+#### Example
+
+```
+> :hood &kiln-permission [%base /ted &]
+>=
+```
+
+---
+
+### Unsuspend an app
+
+A poke with a mark of `%kiln-revive` will unsuspend the specified desk if possible.
+
+#### Accepts
+
+```hoon
+desk
+```
+
+#### Example
+
+```
+> :hood &kiln-revive %landscape
+>=
+```
+
+---
+
+### Start/stop agents on a desk
+
+A poke with a mark of `%kiln-rein` will set which agents should be running or stopped on the specified desk. Note this will reset previous overrides to the desk's running agent list.
+
+#### Accepts
+
+```hoon
+[=desk =rein]
+```
+
+- `.desk`: the desk in question.
+- `.rein`: a `(map dude:gall ?)` where the `?` says whether each agent should be running or suspended.
+
+#### Example
+
+```
+> :hood &kiln-rein [%base (malt [%dbug |] ~)]
+>=
+gall: stopping %dbug
+```
+
+---
+
+### Delete files
+
+A poke with a mark of `%kiln-rm` will delete the files at a given path in Clay.
+
+#### Accepts
+
+```hoon
+a=path
+```
+
+- `.a`: a full path-encoded `$beam` into Clay.
+
+#### Example
+
+```
+> :hood &kiln-rm /=base=/gen/aqua
+>=
+- /~zod/base/51/gen/aqua/breach/hoon
+- /~zod/base/51/gen/aqua/restore-fleet/hoon
+- /~zod/base/51/gen/aqua/export/hoon
+- /~zod/base/51/gen/aqua/dojo/hoon
+- /~zod/base/51/gen/aqua/pill/hoon
+- /~zod/base/51/gen/aqua/scry/hoon
+- /~zod/base/51/gen/aqua/init/hoon
+- /~zod/base/51/gen/aqua/snap-fleet/hoon
+- /~zod/base/51/gen/aqua/file/hoon
+- /~zod/base/51/gen/aqua/raw-event/hoon
+- /~zod/base/51/gen/aqua/spawn/hoon
+- /~zod/base/51/gen/aqua/init-azimuth/hoon
+```
+
+---
+
+### Set global automerge policy
+
+A poke with a mark of `%kiln-global-automerge` sets whether desks should automatically merge updates, by default.
+
+#### Accepts
+
+```hoon
+auto=?
+```
+
+- `.auto`: whether desks should automatically merge updates by default.
+
+#### Example
+
+```
+> :hood &kiln-global-automerge &
+>=
+```
+
+---
+
+### Add an entry to a schedule file
+
+A poke with a mark of `%kiln-schedule` will write the given cord to a `%sched` file in Clay at the given time.
+
+#### Accepts
+
+```hoon
+[where=path tym=@da eve=@t]
+```
+
+- `.where`: a path-encoded `$beam` to a `.sched` file or a directory within which a `.sched` file should be created.
+- `.tym`: the time of the entry.
+- `.eve`: the event.
+
+---
+
+### Suspend a desk
+
+A poke with a mark of `%kiln-suspend` will suspend the specified desk.
+
+#### Accepts
+
+```hoon
+desk
+```
+
+#### Example
+
+```
+> :hood &kiln-suspend %webterm
+>=
+```
+
+---
+
+### Suspend desks
+
+A poke with a mark of `%kiln-suspend-many` will suspend the list of specified desks.
+
+#### Accepts
+
+```hoon
+desks=(list desk)
+```
+
+#### Example
+
+```
+> :hood &kiln-suspend-many ~[%webterm %groups]
+>=
+```
+
+---
+
+### Sync desk from remote source
+
+A poke with a mark of `%kiln-sync` will turn on automatic updates for the given desk from the given source.
+
+#### Accepts
+
+```hoon
+$:  syd=desk
+    her=ship
+    sud=desk
+==
+```
+
+- `.syd`: the local desk.
+- `.her`: the remote ship.
+- `.sud`: the remote desk.
+
+#### Example
+
+```
+> :hood &kiln-sync [%landscape ~mister-dister-dozzod-dozzod %landscape]
+>=
+```
+
+---
+
+### List existing desk syncs
+
+A poke with a mark of `%kiln-syncs` will list the currently enabled desk syncs.
+
+#### Accepts
+
+```hoon
+~
+```
+
+#### Example
+
+```
+> :hood &kiln-syncs ~
+>=
+kiln: sync configured from %webterm on ~mister-dister-dozzod-dozzod to %webterm
+kiln: sync configured from %groups on ~sogryp-dister-dozzod-dozzod to %groups
+kiln: sync configured from %landscape on ~mister-dister-dozzod-dozzod to %landscape
+```
+
+---
+
+### Uninstall an app
+
+A poke with a mark of `%kiln-uninstall` will suspend the given desk and disable updates.
+
+#### Accepts
+
+```hoon
+desk
+```
+
+#### Example
+
+```
+> :hood &kiln-uninstall %webterm
+>=
+kiln: uninstalling %webterm
+kiln: cancelling sync from %webterm on ~mister-dister-dozzod-dozzod to %webterm
+```
+
+---
+
+### Unmount a desk
+
+A poke with a mark of `%kiln-unmount` will unmount the specified desk or mountpoint.
+
+#### Accepts
+
+```hoon
+$@(term [knot path])
+```
+
+Either a simple `$term` or a path-encoded `$beam`.
+
+#### Example
+
+```
+> :hood &kiln-unmount %landscape
+>=
+```
+
+---
+
+### Unsync desk from remote source
+
+A poke with a mark of `%kiln-unsync` will unsync the given desk from the given remote (or local) source.
+
+#### Accepts
+
+```hoon
+$:  syd=desk
+    her=ship
+    sud=desk
+==
+```
+
+- `.syd`: the local desk.
+- `.her`: the remote ship.
+- `.sud`: the remote desk.
+
+#### Example
+
+```
+> :hood &kiln-unsync [%groups ~sogryp-dister-dozzod-dozzod %groups]
+>=
+kiln: cancelling sync from %groups on ~sogryp-dister-dozzod-dozzod to %groups
+```
+
+---
+
+### Mark/unmark desk as essential
+
+A poke with a mark of `%kiln-essential-desk` will mark the given desk as essential or not.
+
+#### Accepts
+
+```hoon
+[=desk ese=?]
+```
+
+- `.desk`: the desk in question.
+- `.ese`: whether or not the desk is essential.
+
+---
+
+## Types
+
+These are the types defined in `/sur/hood.hoon`.
+
+### `$pike` {#pike}
+
+Desk state.
+
+#### Source
+
+```hoon
++$  pike
+  $:  sync=(unit [=ship =desk])
+      hash=@uv
+      =zest
+      wic=(set weft)
+  ==
+```
+
+- `.sync`: whether the desk is currently syncing from a remote source.
+- `.hash`: [`%cz` hash](../kernel/clay/scry.md#z---content-hash) of desk's current revision.
+- `.zest`: whether it's running, suspended, or suspended pending a kernel-compatible update.
+- `.wic`: the kernel versions it's compatible with.
+
+---
+
+### `$pikes` {#pikes}
+
+State of all desks.
+
+#### Source
+
+```hoon
++$  pikes  (map desk pike)
+```
+
+---
+
+### `$jump` {#jump}
+
+An update to the state of requests to change sync sources.
+
+#### Source
+
+```hoon
++$  jump
+  $%  [%all all=(map dock dock)]
+      [%add old=dock new=dock]
+      [%yea old=dock new=dock]
+      [%nay old=dock new=dock]
+  ==
+```
+
+- `%all`: current pending requests.
+- `%add`: new request.
+- `%yea`: request approved.
+- `%nay`: request denied.
+
+---
+
+### `$rung` {#rung}
+
+A reference to an upstream commit
+
+#### Source
+
+```hoon
++$  rung  [=aeon =weft]
+```
+
+---
+
+### `$sync-record` {#sync-record}
+
+Source and destination of a sync in Kiln.
+
+#### Source
+
+```hoon
++$  sync-record
+  $:  syd=desk
+      her=ship
+      sud=desk
+  ==
+```
+
+- `.syd`: local desk.
+- `.her`: remote ship.
+- `.sud`: remote desk.
+
+---
+
+### `$sync-state` {#sync-state}
+
+The state of a sync in Kiln.
+
+#### Source
+
+```hoon
++$  sync-state                          ::
+  $:  nun=@ta                           :: nonce
+      kid=(unit desk)                   :: has kids desk too?
+      let=@ud                           :: next revision
+      nit=(unit ?)                      :: automerge or default
+      hav=(unit @ud)                    :: update available
+      yea=?                             :: update approved
+  ==
+```
+
+- `.nun`: nonce.
+- `.kid`: whether it has a kid desk to merge into.
+- `.let`: next revision (awaited).
+- `.nit`: automerge or global default if null.
+- `.hav`: whether an update is available.
+- `.yea`: whether the update has been approved.
+
+---
+
+### `$sync-update` {#sync-update}
+
+An update about a sync.
+
+#### Source
+
+```hoon
++$  sync-update
+  $%  [%new for=sync-record rev=@ud]
+      [%done for=sync-record rev=@ud]
+      [%drop for=sync-record rev=@ud]
+      [%pending pending=(set [for=sync-record rev=@ud])]
+  ==
+```
+
+---

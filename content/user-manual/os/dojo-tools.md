@@ -2318,7 +2318,7 @@ Note this will also execute any other unapplied tombstone policies as it sends C
 path, =dry ?
 ```
 
-The path is mandatory, it's a path to a file including the full path prefix. If the optional `.dry` argument is `.y`, it will perform a dry run and not actually tombstone the file.
+The path is mandatory, it's a path to a file including the full path prefix. If the optional `.dry` argument is `%.y`, it will perform a dry run and not actually tombstone the file.
 
 #### Examples
 

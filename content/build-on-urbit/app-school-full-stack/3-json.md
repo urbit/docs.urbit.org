@@ -114,7 +114,7 @@ For example:
 
 #### Array functions
 
-`+ar`, `+as`, and `+at` decode a `$json` array to a `+list`, `+set`, and n-tuple respectively. These gates take other `+dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
+`+ar`, `+as`, and `+at` decode a `$json` array to a `+list`, `+set`, and *n*-tuple respectively. These gates take other `+dejs` functions as an argument, producing a new gate that will then take the `$json` array. For example:
 
 ```
 > ((ar so):dejs:format a+[s+'foo' s+'bar' s+'baz' ~])
@@ -128,8 +128,8 @@ Many `+dejs` functions take other `+dejs` functions as their arguments. A comple
 #### Object functions
 
 - `+of` - decode an object containing a single key-value pair to a head-tagged cell.
-- `+ot` - decode an object to a n-tuple.
-- `+ou` - decode an object to an n-tuple, replacing optional missing values with a given value.
+- `+ot` - decode an object to a *n*-tuple.
+- `+ou` - decode an object to an *n*-tuple, replacing optional missing values with a given value.
 - `+oj` - decode an object of arrays to a `+jug`.
 - `+om` - decode an object to a `+map`.
 - `+op` - decode an object to a `+map`, and also parse the object keys with a [parsing rule](../../hoon/stdlib/4f.md).
@@ -198,7 +198,7 @@ First, we'll import the `/sur/journal.hoon` structures we previously created. Ne
   ==
 ```
 
-The first thing we do is use the [`=,` rune](../../hoon/rune/tis.md#tiscom) to expose the `+dejs:format` namespace. This allows us to reference "ot", "ni", etc. rather than having to write "ot:dejs:format" every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
+The first thing we do is use the [`=,` rune](../../hoon/rune/tis.md#tiscom) to expose the `+dejs:format` namespace. This allows us to reference `ot`, `ni`, etc. rather than having to write `ot:dejs:format` every time. Note that you should be careful using `=,` generally as the exposed wings can shadow previous wings if they have the same name.
 
 We then create a gate that takes `$json` and returns a `$action` structure. Since we'll only take one action at a time, we can use the `+of` function, which takes a single key-value pair. `+of` takes a list of all possible `$json` objects it will receive, tagged by key.
 

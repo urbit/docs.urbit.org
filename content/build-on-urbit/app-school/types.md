@@ -15,7 +15,7 @@ layout:
 
 # Appendix: Types
 
-This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`agent`](../../urbit-os/kernel/gall/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl), [`$boat`](../../urbit-os/kernel/gall/data-types.md#boat), and [`$bitt`](../../urbit-os/kernel/gall/data-types.md#bitt).
+This document explains a few of the types commonly used in Gall agents. In addition to these, the [Data Types](../../urbit-os/kernel/gall/data-types.md) section of the Gall vane documentation is a useful reference. In particular, the whole [`+agent`](../../urbit-os/kernel/gall/data-types.md#agent) subsection, as well as [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl), [`$boat`](../../urbit-os/kernel/gall/data-types.md#boat), and [`$bitt`](../../urbit-os/kernel/gall/data-types.md#bitt).
 
 ## `$vase` {#vase}
 
@@ -104,7 +104,7 @@ You'd typically use `!<` on the data in `$card`s that come in from other ships, 
 
 ## `$mark` {#mark}
 
-The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `$mark` corresponds to a mark file in the `/mar` directory, so a `$mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [Marks section of the Clay documentation](../../urbit-os/kernel/clay/marks).
+The `$mark` type is just a `@tas` like `%foo`, and specifies the Clay filetype of some data. The `$mark` corresponds to a mark file in the `/mar` directory, so a `$mark` of `%foo` corresponds to `/mar/foo/hoon`. Mark files are used for saving data in Clay, validating data sent between agents or over the network, and converting between different data types. For more information about mark files, you can refer to the [marks section of the Clay documentation](../../urbit-os/kernel/clay/marks).
 
 ## `$cage` {#cage}
 
@@ -124,7 +124,7 @@ The `$path` type is formally defined as:
 +$  path  (list knot)
 ```
 
-A knot is a `@ta` text atom (see the [Strings guide](../../hoon/strings.md) for details), so a `$path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
+A knot is a `@ta` text atom (see the [strings guide](../../hoon/strings.md) for details), so a `$path` is just a list of text. Rather than having to write `[~.foo ~.bar ~.baz ~]` though, it has its own syntax which looks like `/foo/bar/baz`.
 
 A `$path` is similar to a filesystem path in Unix, giving data a location in a nested hierarchy. In Arvo though, they're not only used for files, but are a more general type used for several different purposes. Its elements have no inherent significance, it depends on the context. In a Gall agent, a `$path` is most commonly a subscription path - you might subscribe for updates to `/foo/bar` on another agent, or another agent might subscribe to `/baz` on your agent.
 
@@ -143,7 +143,7 @@ Then, when you get a subscription request, you might do something like:
   ...(rest of code)...
 ```
 
-See the [Encoding in text](../../hoon/strings.md#encoding-in-text) and [Decoding from text](../../hoon/strings.md#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
+See the [encoding in text](../../hoon/strings.md#encoding-in-text) and [decoding from text](../../hoon/strings.md#decoding-from-text) sections of the Strings guide for more information on dealing with atoms encoded in strings.
 
 Aside from using function calls when constructing a `$path` as demonstrated above, you can also insert text you're previously stored with `=/` or what have you, simply by enclosing them in brackets. For example, in the dojo:
 

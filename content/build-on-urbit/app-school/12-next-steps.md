@@ -17,7 +17,7 @@ layout:
 
 We've now covered all the arms of a Gall agent, and everything you need to know to start writing your own agent.
 
-The things haven't touched on yet are front-end development and integration, Eyre's HTTP API for communicating with agents from the web, and dealing with JSON data. The [Full-stack Walkthrough](../app-school-full-stack) covers these aspects of Urbit app development, and it also puts into practice many of the concepts we've discussed in this guide, so you might like to work through that next. In addition to that walkthrough, you can refer to the following documents for help writing a web front-end for your app:
+The things haven't touched on yet are front-end development and integration, Eyre's HTTP API for communicating with agents from the web, and dealing with JSON data. The [full-stack walkthrough](../app-school-full-stack) covers these aspects of Urbit app development, and it also puts into practice many of the concepts we've discussed in this guide, so you might like to work through that next. In addition to that walkthrough, you can refer to the following documents for help writing a web front-end for your app:
 
 - [Eyre's external API reference](../../urbit-os/kernel/eyre/external-api-ref.md) - This explains Eyre's HTTP API, through which a browser or other HTTP client can interact with a Gall agent.
 - [Eyre's usage guide](../../urbit-os/kernel/eyre/guide.md) - This walks through examples of using Eyre's HTTP API.

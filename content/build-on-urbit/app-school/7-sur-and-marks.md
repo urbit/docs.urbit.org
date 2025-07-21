@@ -1,5 +1,5 @@
 ---
-description: "Essential concepts for Gall agent development covering /sur structure files for type definitions, mark files for data conversion and validation, and permission management patterns for agent security."
+description: "Type definitions and data conversion for Gall agents."
 layout:
   title:
     visible: true

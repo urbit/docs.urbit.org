@@ -1,5 +1,5 @@
 ---
-description: "Gall agent subscription mechanics covering +on-watch for incoming subscriptions, subscription paths, sending updates with %fact cards, kicking subscribers, and managing outgoing subscriptions."
+description: "Gall agent subscription management."
 layout:
   title:
     visible: true

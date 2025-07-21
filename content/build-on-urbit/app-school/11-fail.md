@@ -27,7 +27,7 @@ When crashes or errors occur in certain cases, Gall passes them to an agent's `+
 ++  on-fail
   |=  [=term =tang]
   ^-  (quip card _this)
-  ....
+  ::  ...
 ```
 
 Gall calls `+on-fail` in four cases:
@@ -73,23 +73,23 @@ The conventional pattern is to have the helper core _below_ the agent core, so t
 Recall that the build system will implicitly compose any discrete expressions. If we simply added the helper core below the agent core, the agent core would be composed into the subject of the helper core, which is the opposite of what we want. Instead, we must inversely compose the two cores with a [tisgal](../../hoon/rune/tis.md#tisgal) (`=<`) rune. We add the tisgal rune directly above the agent core like:
 
 ```hoon
-.....
+::  ...
 =<
 |_  =bowl:gall
 +*  this      .
     def   ~(. (default-agent this %.n) bowl)
     hc    ~(. +> bowl)
 ++  on-init
-.....
+::  ...
 ```
 
 We can then add the helper core below the agent core. The helper core is most typically a door like the agent core, also with the `$bowl` as its sample. This is just so any functions you define in it have ready access to the `$bowl`. It would look like:
 
 ```hoon
 |_  =bowl:gall
-++  some-function  ...
-++  another  ....
-++  etc ...
+++  some-function  ::  ...
+++  another        ::  ...
+++  etc            ::  ...
 --
 ```
 
@@ -99,7 +99,7 @@ Back in the lustar virtual arm of the agent core, we give it a deferred expressi
 hc  ~(. +>  bowl)
 ```
 
-To get to the helper core we composed from within the door, we use a [censig](../../hoon/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `$bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ....)`.
+To get to the helper core we composed from within the door, we use a [censig](../../hoon/rune/cen.md#censig) expression to call `+>` of the subject (`.`) with the `$bowl` as its sample. After that, any agent arms can make use of helper core functions by calling them like `(some-function:hc ...)`.
 
 ### Summary <a href="#summary" id="summary"></a>
 

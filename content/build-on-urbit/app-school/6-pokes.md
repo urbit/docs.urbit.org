@@ -453,7 +453,7 @@ Let's try it out:
 >=
 ```
 
-Let's try decrementing `%pokeme` so val is 1, and then try a `%dec` via `%pokeit`:
+Let's try decrementing `%pokeme` so `.val` is 1, and then try a `%dec` via `%pokeit`:
 
 ```
 > :pokeme %dec

@@ -17,13 +17,13 @@ layout:
 
 In this lesson we're going to look at subscriptions. Subscriptions are probably the most complicated part of writing agents, so there's a fair bit to cover. Before we get into the nitty-gritty details, we'll give a brief overview of Gall's subscription mechanics.
 
-The basic unit of subscriptions is the "path". An agent will typically define a number of subscription paths in its `+on-watch` arm, and other agents (local or remote) can subscribe to those paths. The agent will then send out updates called `%fact`s on one or more of its paths, and _all_ subscribers of those paths will receive them. An agent cannot send out updates to specific subscribers, it can only target its paths. An agent can kick subscribers from its paths, and subscribers can unsubscribe from any paths.
+The basic unit of subscriptions is the `$path`. An agent will typically define a number of subscription paths in its `+on-watch` arm, and other agents (local or remote) can subscribe to those paths. The agent will then send out updates called `%fact`s on one or more of its paths, and _all_ subscribers of those paths will receive them. An agent cannot send out updates to specific subscribers, it can only target its paths. An agent can kick subscribers from its paths, and subscribers can unsubscribe from any paths.
 
 The subscription paths an agent defines can be simple and fixed like `/foo/bar/baz`. They can also be dynamic, containing data of a particular atom aura encoded in certain elements of the path. These paths can therefore be as simple or complex as you need for your particular application.
 
 Note it's not strictly necessary to define subscription paths explicitly. As long as the arm doesn't crash, the subscription will succeed. In practice, however, it's nearly always appropriate to define them explicitly and crash on unrecognized paths.
 
-For a deeper explanation of subscription mechanics in Arvo, you can refer to Arvo's [Subscriptions](../../urbit-os/kernel/arvo/subscriptions.md) section.
+For a deeper explanation of subscription mechanics in Arvo, you can refer to Arvo's [subscriptions](../../urbit-os/kernel/arvo/subscriptions.md) section.
 
 ## Incoming subscriptions {#incoming-subscriptions}
 
@@ -41,25 +41,29 @@ Your agent's subscription paths would be defined in this arm, typically in a wut
 ```hoon
 ?+    path  (on-watch:def path)
     [%updates ~]
-  ......
-  ......
+  ::  ...
+  ::  ...
     [%blah %blah ~]
-  ......
-  ......
+  ::  ...
+  ::  ...
     [%foo @ ~]
   =/  when=@da  (slav %da i.t.path)
-  ......
-  ......
+  ::  ...
+  ::  ...
     [%bar %baz *]
-  ?+  t.t.path  (on-watch:def path)
-    ~              .....
-    [%abc %def ~]  .....
-    [%blah ~]      .....
+  ?+     t.t.path
+       (on-watch:def path)
+      ~
+    ::  ...
+      [%abc %def ~]
+    ::  ...
+      [%blah ~]
+    ::  ...
   ==
 ==
 ```
 
-Subscription paths can be simple and fixed like the first two examples above: `/updates` and `/blah/blah`. They can also contain "wildcard" elements, with an atom of a particular aura encoded in an element of the `$path`, as in the `[%foo @ ~]` example. The type pattern matcher is quite limited, so we just specify such variable elements as `@`, and then decode them with something like `(slav %da i.t.path)` (for a `@da`), as in the example. The incoming `$path` in this example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information on decoding atoms in strings, see the [Strings Guide](../../hoon/strings.md#decoding-from-text).
+Subscription paths can be simple and fixed like the first two examples above: `/updates` and `/blah/blah`. They can also contain "wildcard" elements, with an atom of a particular aura encoded in an element of the `$path`, as in the `[%foo @ ~]` example. The type pattern matcher is quite limited, so we just specify such variable elements as `@`, and then decode them with something like `(slav %da i.t.path)` (for a `@da`), as in the example. The incoming `$path` in this example would look like `/foo/~2021.11.14..13.30.39..6b17`. For more information on decoding atoms in strings, see the [strings guide](../../hoon/strings.md#decoding-from-text).
 
 In the last case of `[%bar %baz *]`, we're allowing a variable number of elements in the path. First we check it's `/bar/baz/...something...`, and then we check what the "something" is in another wutlus expression and handle it appropriately. In this case, it could be `/bar/baz`, `/bar/baz/abc/def`, or `/bar/baz/blah`. You could of course also have "wildcard" elements here too, so there's not really a limit to the complexity of your subscription paths, or the data that might be encoded therein.
 
@@ -125,7 +129,7 @@ Gall will deliver the `$card` to the target agent and call that agent's `+on-wat
 ++  on-agent
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
-  .....
+  ::  ...
 ```
 
 The `$sign` will be of the following format:
@@ -145,9 +149,9 @@ How you want to handle the `%watch-ack` really depends on the particular agent. 
     ?+    -.sign  (on-agent:def wire sign)
         %watch-ack
       ?~  p.sign
-        ...(do something if ack)...
-      ...(do something if nack)...
-  ......
+        ::  ...(do something if ack)...
+      ::  ...(do something if nack)...
+  ::  ...
 ```
 
 The `+on-agent` arm produces a `(quip card _this)`, so you can produce new `$card`s and update your agent's state, as appropriate.
@@ -175,8 +179,8 @@ You would typically handle such `%fact`s in the following manner: Test the `$wir
       ?+    p.cage.sign  (on-agent:def wire sign)
           %expected-mark
         =/  foo  !<(expected-type q.cage.sign)
-        .....
-  ......
+        ::  ...
+  ::  ...
 ```
 
 Note that Gall will not allow `$sign`s to come into `+on-agent` unsolicited, so you don't necessarily need to include permission logic in this arm.
@@ -204,7 +208,7 @@ Since the `%kick` itself contains no information, you'll need to consider the `$
       :_  this
       :~  [%pass /some/wire %agent [src.bowl dap.bowl] %watch /some/path]
       ==
-  .......
+  ::  ...
 ```
 
 ## Leaving a subscription {#leaving-a-subscription}
@@ -437,7 +441,7 @@ Additionally, you might notice the `%add` case in `+handle-poke` begins with the
   $(now.bowl (add now.bowl ~s0..0001))
 ```
 
-Back in lesson two, we mentioned that the bowl is only repopulated when there's a new Arvo event, so simultaneous messages from a local agent or web client would be processed with the same bowl. Since we're using `now.bowl` for the task ID, this means multiple `%add` actions could collide. To handle this case, we check if there's already an entry in the `.tasks` map with the current date-time, and if there is, we increase the time by a fraction of a second and try again.
+Back in lesson two, we mentioned that the bowl is only repopulated when there's a new Arvo event, so simultaneous messages from a local agent or web client would be processed with the same bowl. Since we're using `.now.bowl` for the task ID, this means multiple `%add` actions could collide. To handle this case, we check if there's already an entry in the `.tasks` map with the current date-time, and if there is, we increase the time by a fraction of a second and try again.
 
 Let's now look at `+on-watch`:
 
@@ -699,7 +703,7 @@ Let's try toggle its done state on \~zod:
 ]
 ```
 
-Recall that incoming subscriptions are stored in `sup.bowl`, and outgoing subscriptions are stored in `wex.bowl`. Let's have a look at the incoming subscription on \~zod:
+Recall that incoming subscriptions are stored in `.sup.bowl`, and outgoing subscriptions are stored in `.wex.bowl`. Let's have a look at the incoming subscription on \~zod:
 
 ```
 >   [ path=/updates
@@ -752,7 +756,7 @@ On \~nut, we'll see it got the `%kick`, tried resubscribing automatically, but w
 
 ## Exercises {#exercises}
 
-- Have a look at the [Strings Guide](../../hoon/strings.md) if you're not already familiar with decoding/encoding atoms in strings.
+- Have a look at the [strings guide](../../hoon/strings.md) if you're not already familiar with decoding/encoding atoms in strings.
 - Try running through the [example](#example) yourself, if you've not done so already.
 - Try modifying `%todo-watcher` to recording the data it receives in its state, rather than simply printing it to the terminal.
 - If you'd like, try going back to [lesson 6](6-pokes.md) (on pokes) and modifying the agents with an appropriate permission system, and also try running them on separate ships.

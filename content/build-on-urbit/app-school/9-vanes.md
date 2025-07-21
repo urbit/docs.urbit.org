@@ -80,7 +80,7 @@ Once a task has been sent to a vane, any gifts the vane sends back in response w
 ++  on-arvo
   |=  [=wire =sign-arvo]
   ^-  (quip card _this)
-  .....
+  ::  ...
 ```
 
 A `$sign-arvo` is the following structure, defined in `lull.hoon`:
@@ -132,8 +132,8 @@ The typical pattern is to first test the `$wire` with something like a wutlus (`
 ```hoon
 ?+    sign-arvo  (on-arvo:def wire sign-arvo)
     [%behn %wake *]
-  .....
-....
+  ::  ..
+::  ...
 ```
 
 ## Example {#example}
@@ -220,7 +220,7 @@ A Behn `%wait` task has the format `[%wait @da]` - the `@da` (an absolute date-t
 
 We remark that, just like in the case of agent-agent communication, gifts from Arvo are also routed `$wire` before `$sign-arvo`.
 
-First we check the `$wire` is `/timers`, and then we check the `$sign-arvo` begins with `[%behn %wake ....]`. Behn's `%wake` gift has the following format:
+First we check the `$wire` is `/timers`, and then we check the `$sign-arvo` is `[%behn %wake *]`, where `*` is any noun. Behn's `%wake` gift has the following format:
 
 ```hoon
 [%wake error=(unit tang)]
@@ -253,6 +253,6 @@ After approximately five seconds, we see the timer fired successfully:
 
 ## Exercises {#exercises}
 
-- Run through the [Example](#example) yourself if you've not done so already.
+- Run through the [example](#example) yourself if you've not done so already.
 - Have a look at some vane sections of `lull.hoon` to familiarize yourself with its structure.
 - Have a quick look at the API reference sections of a couple of vanes in the [Arvo documentation](../../urbit-os/kernel/arvo).

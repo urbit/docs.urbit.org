@@ -34,7 +34,7 @@ By default, your star accepts software updates from its galaxy and routes them t
 ### Star-owner etiquette {#star-owner-etiquette}
 
 - If you distribute planets, boot and run your star on the Arvo network, or the planets won't be able to boot for the first time or connect unless they transfer to a different star.
-- A star is networking infrastructure. For that reason, the machine running your star or galaxy must have sufficient bandwidth, storage, and processing power for your dependent planets. Until event log pruning is implemented, expect ships to consume more disk space every year; stars looking to serve around 100 planets will want to ensure around 50GB of space per year of operation.
+- A star is networking infrastructure. For that reason, the machine running your star or galaxy must have sufficient bandwidth, storage, and processing power for your dependent planets.
 - When messaging others, communicate using your star only when speaking in an official/infrastructural capacity. Otherwise, use your personal planet.
 
 ### Taxes {#taxes}

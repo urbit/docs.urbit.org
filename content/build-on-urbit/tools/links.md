@@ -41,6 +41,8 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [John](https://github.com/litlep-nibbyt/john) - automatic JSON reparsing.
 
+[/lib/string](https://github.com/sigilante/string) - a string library for mortals.
+
 [Manx Utils](https://github.com/tinnus-napbus/manx-utils) - tools for working with XML structures.
 
 [Mast](https://github.com/R-JG/mast) - a library for building fully dynamic Sail front-ends.
@@ -49,21 +51,21 @@ A collection of links to external tools, libraries, app repos, and documentation
 
 [Regex](https://github.com/lynko/re.hoon) - an implementation of POSIX extended regular expressions.
 
-[/lib/string](https://github.com/sigilante/string) - a string library for mortals.
-
 [Saloon](https://github.com/sigilante/saloon) - transcendental and algebraic functions in Hoon (WIP).
 
 [Yard](https://github.com/urbit/yard) - helpful utilities for app development.
 
 ## JS Libraries {#js-libraries}
 
-[HTTP API](https://github.com/urbit/js-http-api) - connect to an Urbit ship via a JS application.
+[create-landscape-app](https://github.com/urbit/create-landscape-app) - get started building an Urbit app.
 
-[urbit-ob](https://github.com/urbit/urbit-ob) - utilities for Hoon-style atom printing and conversion.
+[HTTP API](https://github.com/urbit/js-http-api) - connect to an Urbit ship via a JS application.
 
 [nockjs](https://github.com/urbit/nockjs) - A JS implementation of Nock, plus some useful functions.
 
-[create-landscape-app](https://github.com/urbit/create-landscape-app) - get started building an Urbit app.
+[sigil-js](https://github.com/urbit/sigil-js) - A library for generating sigil profile pictures from `@p`s.
+
+[urbit-ob](https://github.com/urbit/urbit-ob) - Utilities for Hoon-style atom printing and conversion.
 
 ## Other Languages {#other-languages}
 

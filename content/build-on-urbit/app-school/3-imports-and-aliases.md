@@ -1,5 +1,5 @@
 ---
-description: "Essential Gall agent development setup covering useful libraries (default-agent, dbug), virtual arms for deferred expressions, additional core composition, and standard boilerplate patterns."
+description: "Importing libraries, virtual arms, core composition, and boilerplate patterns."
 layout:
   title:
     visible: true
@@ -32,7 +32,7 @@ The default-agent library contains a basic agent with sane default behaviours fo
 
 The default-agent library lives in `/lib/default-agent/hoon` of the `%base` desk, and you would typically include a copy in any new desk you created. It's imported at the beginning of an agent with the [faslus](../../hoon/rune/fas.md#faslus) (`/+`) rune.
 
-The library is a wet gate which takes two arguments: `agent` and `$help`. The first is your agent core itself, and the second is a `?`. If `$help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `$help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `$help` as `%.n`.
+The library is a wet gate which takes two arguments: an `+agent` and a `$help`. The first is your agent core itself, and the second is a `?`. If `$help` is `%.y` (equivalently, `%&`), it will crash in all cases. If `$help` is `%.n` (equivalently, `%|`), it will use its defaults. You would almost always have `$help` as `%.n`.
 
 The wet gate returns an `+agent:gall` door with a sample of `$bowl:gall` - a typical agent core. Usually you would define an alias for it in a virtual arm ([explained below](3-imports-and-aliases.md#virtual-arms)) so it's simple to call.
 
@@ -72,7 +72,7 @@ We haven't yet covered some of the concepts described here, so don't worry if yo
 
 ## Virtual arms <a href="#virtual-arms" id="virtual-arms"></a>
 
-An agent core must have exactly ten arms. However, there's a special kind of "virtual arm" that can be added without actually increasing the core's arm count, since it really just adds code to the other arms in the core. A virtual arm is created with the [lustar](../../hoon/rune/lus.md#lustar) (`+*`) rune, and its purpose is to define "deferred expressions". It takes a list of pairs of names and Hoon expressions. When compiled, the deferred expressions defined in the virtual arm are implicitly inserted at the beginning of every other arm of the core, so they all have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the [tistar](../../hoon/rune/tis.md#tistar) reference for more information on deferred expressions.
+An agent core must have exactly ten arms. However, there's a special kind of "virtual arm" that can be added without actually increasing the core's arm count, since it really just adds code to the other arms in the core. A virtual arm is created with the [lustar](../../hoon/rune/lus.md#lustar) (`+*`) rune, and its purpose is to define "deferred expressions". It takes a list of pairs of names and Hoon expressions. When compiled, the deferred expressions defined in the virtual arm are implicitly inserted at the beginning of every other arm of the core, so they all have access to them. Each time a name in a `+*` is called, the associated Hoon is evaluated in its place, similar to lazy evaluation except it is re-evaluated whenever needed. See the `=*` [tistar](../../hoon/rune/tis.md#tistar) reference for more information on deferred expressions.
 
 A virtual arm in an agent often looks something like this:
 
@@ -89,6 +89,12 @@ this  .
 
 Rather than having to return `+on-init` like we did in the last lesson, instead our arms can just refer to `.this` whenever modifying or returning the agent core.
 
+```
+%=  this
+  foo  bar
+==
+```
+
 ```hoon
 def  ~(. (default-agent this %.n) bowl)
 ```
@@ -97,9 +103,9 @@ This sets up the default-agent library we [described above](3-imports-and-aliase
 
 ## Additional cores <a href="#additional-cores" id="additional-cores"></a>
 
-While Gall expects a single 10-arm agent core, it's possible to include additional cores by composing them into the subject of the agent core itself. The contents of these cores will then be available to arms of the agent core.
+While Gall expects a single ten-arm agent core, it's possible to include additional cores by composing them into the subject of the agent core itself. The contents of these cores will then be available to arms of the agent core.
 
-Usually to compose cores in this way, you'd have to do something like insert [tisgar](../../hoon/rune/tis.md#tisgar) (`=>`) runes in between them. However, Clay's build system implicitly composes everything in a file by wrapping it in a [tissig](../../hoon/rune/tis.md#tissig) (`=~`) expression, which means you can just butt separate cores up against one another and they'll all still get composed.
+Usually to compose cores in this way, you'd have to do something like insert `=>` [tisgar](../../hoon/rune/tis.md#tisgar) runes in between them. However, Clay's build system implicitly composes everything in a file by wrapping it in a `=~` [tissig](../../hoon/rune/tis.md#tissig) expression, which means you can just butt separate cores up against one another and they'll all still get composed.
 
 You can add as many extra cores as you'd like before the agent core, but typically you'd just add one containing type definitions for the agent's state, as well as any other useful structures. We'll look at the state in more detail in the next lesson.
 
@@ -138,9 +144,9 @@ Here's the `/app/skeleton.hoon` dummy agent from the previous lesson, modified w
 
 </details>
 
-The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them into the subject of our agent so they're available for use. You can read more about Ford runes in the [Fas section of the rune documentation](../../hoon/rune/fas.md).
+The first line uses the faslus (`/+`) Ford rune to import `/lib/default-agent.hoon` and `/lib/dbug.hoon`, building them and loading them into the subject of our agent so they're available for use. You can read more about Ford runes in the [fas section of the rune documentation](../../hoon/rune/fas.md).
 
-Next, we've added an extra core. Notice how it's not explicitly composed, since the build system will do that for us. In this case we've just added a single `$card` arm, which makes it simpler to reference the `$card:agent:gall` type.
+Next, we've added an extra core. Notice how it's not explicitly composed, since Clay's build system will do that for us. In this case we've just added a single `$card` arm, which makes it simpler to reference the `$card:agent:gall` type.
 
 After that core, we call `+agent:dbug` with our whole agent core as its argument. This allows us to use the `/lib/dbug.hoon` features described earlier.
 
@@ -151,7 +157,7 @@ Inside our agent door, we've added an extra virtual arm and defined a couple def
     def   ~(. (default-agent this %.n) bowl)
 ```
 
-In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of default-agent, which we set up as a deferred expression named `.def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `.this` in the `+on-init` arm as an example - it makes things a bit simpler.
+In most of the arms, you see we've been able to replace the dummy code with simple calls to the corresponding arms of default-agent, which we set up as a deferred expression named `def` in the virtual arm. We've also replaced the old `..on-init` with our deferred expression named `.this` in the `+on-init` arm as an example, it makes things a bit simpler.
 
 You can save the code above in `/app/skeleton.hoon` of your `%base` desk like before and `|commit %base` in the dojo. Additionally, you can start the agent so we can try out `+dbug`. To start it, run the following in the dojo:
 
@@ -194,8 +200,8 @@ The key takeaways are:
 * `/lib/default-agent.hoon` is a library that provides default behaviors for Gall agent arms.
 * `/lib/dbug.hoon` is a library that lets you inspect the state and `$bowl` of an agent from the dojo, with the `+dbug` generator.
 * Convenient deferred expressions for Hoon expressions can be defined in a virtual arm with the [lustar](../../hoon/rune/lus.md#lustar) (`+*`) rune.
-* `.this` is a conventional deferred expression name for the agent core itself.
-* `.def` is a conventional deferred expression name for accessing arms in the `/lib/default-agent.hoon` library.
+* `this` is a conventional deferred expression name for the agent core itself.
+* `def` is a conventional deferred expression name for accessing arms in the `/lib/default-agent.hoon` library.
 * Extra cores can be composed into the subject of the agent core. The composition is done implicitly by the build system. Typically we'd include one extra core that defines types for our agent's state and maybe other useful types as well.
 
 ## Exercises <a href="#exercises" id="exercises"></a>

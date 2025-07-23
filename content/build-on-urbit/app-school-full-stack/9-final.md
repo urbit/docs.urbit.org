@@ -21,7 +21,7 @@ The reference material for each section of this walkthrough is listed [below](#r
 
 In this guide we've built a separate React app for the front-end, but Hoon also has a native domain-specific language for composing HTML structures called Sail. Sail allows you to compose a front-end inside a Gall agent and serve it directly. See the [Sail guide](../../hoon/sail.md) for details.
 
-Along with `@urbit/http-api`, there's also the `@urbit/api` NPM package, which contains a large number of helpful functions for dealing with Hoon data types and interacting with a number of agents - particularly those used by the Groups app. Its source code is [available here](https://github.com/urbit/js-http-api).
+Along with `@urbit/http-api`, there's also the `@urbit/api` npm package, which contains a large number of helpful functions for dealing with Hoon data types and interacting with a number of agents - particularly those used by the Groups app. Its source code is [available here](https://github.com/urbit/js-http-api).
 
 ## Reference material {#reference-material}
 
@@ -29,7 +29,7 @@ Here is the reference material for each section of this walkthrough.
 
 ### Types {#types}
 
-- [App School /sur section](../app-school/7-sur-and-marks.md#sur) - This section of App School covers writing a `/sur` structure library for an agent.
+- [App School `/sur` section](../app-school/7-sur-and-marks.md#sur) - This section of App School covers writing a `/sur` structure library for an agent.
 - [Ordered map functions in `zuse.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon#L5284-L5688) - This section of `zuse.hoon` contains all the functions for working with `+mop`s, and is well commented.
 
 ### Agent {#agent}

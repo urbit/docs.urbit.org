@@ -79,7 +79,7 @@ The fields are as follows:
 - `%website` - a link to a website for the app. This would often be its Github repo.
 - `%license` - the license of for the app.
 - `%base` - the desk name of the app.
-- `%glob-ames` - the ship to retrieve the front-end files from, and the hash of those files. We've put \~zod here but this would be the actual ship distributing the app when it's live on the network. The hash is `0v0` initially, but once we upload the front-end files it will be updated to the hash of those files automatically. Note that it's also possible to distribute front-end files from a separate web server. In that case, you'd use `glob-http` rather than `glob-ames`. The [Glob documentation](../userspace/dist/glob.md) covers this alternative approach in more detail.
+- `%glob-ames` - the ship to retrieve the front-end files from, and the hash of those files. We've put \~zod here but this would be the actual ship distributing the app when it's live on the network. The hash is `0v0` initially, but once we upload the front-end files it will be updated to the hash of those files automatically. Note that it's also possible to distribute front-end files from a separate web server. In that case, you'd use `%glob-http` rather than `%glob-ames`. The [glob documentation](../userspace/dist/glob.md) covers this alternative approach in more detail.
 
 Our files should now look like this:
 
@@ -111,7 +111,7 @@ In the Dojo of a fake ship:
 |mount %journal
 ```
 
-Now we can browse to it in the unix terminal:
+Now we can browse to it in the Unix terminal:
 
 ```sh
 cd /path/to/zod/journal
@@ -149,7 +149,7 @@ Now, we copy the contents of the new `/journal` folder into our empty desk:
 cp -rL journal/* /path/to/zod/journal/
 ```
 
-Note we've used the `L` flag to resolve symbolic links.
+Note we've used the `-L` flag to resolve symbolic links.
 
 We can copy across all of our own files too:
 

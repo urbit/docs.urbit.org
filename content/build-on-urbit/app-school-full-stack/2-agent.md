@@ -72,7 +72,7 @@ This is quite a cumbersome expression to use every time we want to interact with
 ++  log-orm  ((on @ action) lth)
 ```
 
-The last arm in our state definition core is `+unique-time`. Since we'll use `now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `+mop`. To avoid this, `+unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `+mop`, ensuring all updates get unique timestamps and there are no collisions.
+The last arm in our state definition core is `+unique-time`. Since we'll use `.now.bowl` to derive the timestamp for updates, we run into an issue if multiple pokes arrive in a single Arvo event. In that case, `.now.bowl` would be the same for each poke, so they'd be given the same key and override each other in the `+mop`. To avoid this, `+unique-time` is just a simple recursive function that will increment the timestamp by one millisecond if the key already exists in the `$log` `+mop`, ensuring all updates get unique timestamps and there are no collisions.
 
 ## Agent core setup <a href="#agent-core-setup" id="agent-core-setup"></a>
 

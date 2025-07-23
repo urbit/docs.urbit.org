@@ -1,5 +1,5 @@
 ---
-description: "Essential concepts for Gall agent development covering /sur structure files for type definitions, mark files for data conversion and validation, and permission management patterns for agent security."
+description: "Type definitions and data conversion for Gall agents."
 layout:
   title:
     visible: true
@@ -152,7 +152,7 @@ This might seem a little convoluted, but it's a common pattern we do for two rea
 
 You can of course structure your `+on-poke` arm differently than we've done here - we're just demonstrating a typical pattern.
 
-## mark files {#mark-files}
+## Mark files {#mark-files}
 
 So far we've just used a `%noun` mark for pokes - we haven't really delved into what such marks represent, or considered writing custom ones.
 
@@ -169,7 +169,7 @@ A mark file is a door with exactly three arms. The door's sample is the data typ
 - `+grow`: Methods for converting _from_ our mark _to_ other marks.
 - `+grad`: Revision control functions.
 
-In the context of Gall agents, you'll likely just use marks for sending and receiving data, and not for actually storing files in Clay. Therefore, it's unlikely you'll need to write custom revision control functions in the `+grad` arm. Instead, you can simply delegate `+grad` functions to another mark - typically `%noun`. If you want to learn more about writing such `+grad` functions, you can refer to the [Marks Guide](../../urbit-os/kernel/clay/marks) in the Clay vane documentation, which is much more comprehensive, but it's not necessary for our purposes here.
+In the context of Gall agents, you'll likely just use marks for sending and receiving data, and not for actually storing files in Clay. Therefore, it's unlikely you'll need to write custom revision control functions in the `+grad` arm. Instead, you can simply delegate `+grad` functions to another mark - typically `%noun`. If you want to learn more about writing such `+grad` functions, you can refer to the [marks Guide](../../urbit-os/kernel/clay/marks) in the Clay vane documentation, which is much more comprehensive, but it's not necessary for our purposes here.
 
 #### Example
 
@@ -192,9 +192,17 @@ Here's a very simple mark file for the `$action` structure we created in the [pr
 
 We've imported the `/sur/todo.hoon` structure library from the previous section, and we've defined the sample of the door as `=action:todo`, since that's what it will handle. Now let's consider the arms:
 
-- `+grab`: This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `%noun` mark, so that's the core's only arm. The `+noun` arm simply calls the `$action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `$action` type if it nests, and crashing otherwise.
-- `+grow`: This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `$action` data will come in as the sample of our door, and the `+noun` arm simply returns it, since it's already a `$noun` (as everything is in Hoon).
-- `+grad`: This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
+### `+grab`
+
+This handles conversion methods _to_ our mark. It contains a core with arm names corresponding to other marks. In this case, it can only convert from a `%noun` mark, so that's the core's only arm. The `+noun` arm simply calls the `$action` structure from our structure library. This is called "clamming" or "molding" - when some noun comes in, it gets called like `(action:todo [some-noun])` - producing data of the `$action` type if it nests, and crashing otherwise.
+
+### `+grow`
+
+This handles conversion methods _from_ our mark. Like `+grab`, it contains a core with arm names corresponding to other marks. Here we've also only added an arm for a `%noun` mark. In this case, `$action` data will come in as the sample of our door, and the `+noun` arm simply returns it, since it's already a `$noun` (as everything is in Hoon).
+
+### `+grad`
+
+This is the revision control arm, and as you can see we've simply delegated it to the `%noun` mark.
 
 This mark file could be saved as `/mar/todo/action.hoon`, and then the `+on-poke` arm in the previous example could test for it instead of `%noun` like so:
 
@@ -209,15 +217,15 @@ This mark file could be saved as `/mar/todo/action.hoon`, and then the `+on-poke
 
 Note how `%todo-action` will be resolved to `/mar/todo/action.hoon` - the hyphen will be interpreted as `/` if there's not already a `/mar/todo-action.hoon`.
 
-This simple mark file isn't all that useful. Typically, you'd add `+json` arms to `+grow` and `+grab`, which allow your data to be converted to and from JSON, and therefore allow your agent to communicate with a web front-end. Front-ends, JSON, and Eyre's APIs which facilitate such communications will be covered in the separate [Full-Stack Walkthrough](../app-school-full-stack), which you might like to work through after completing this guide. For now though, it's still useful to use marks and understand how they work.
+This simple mark file isn't all that useful. Typically, you'd add `+json` arms to `+grow` and `+grab`, which allow your data to be converted to and from JSON, and therefore allow your agent to communicate with a web front-end. Front-ends, JSON, and Eyre's APIs which facilitate such communications will be covered in the separate [full-stack walkthrough](../app-school-full-stack), which you might like to work through after completing this guide. For now though, it's still useful to use marks and understand how they work.
 
-One further note on marks - while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `+on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
+One further note on marks: while data from remote ships must have a matching mark file in `/mar`, it's possible to exchange data between local agents with "fake" marks - ones that don't exist in `/mar`. Your `+on-poke` arm could, for example, use a made-up mark like `%foobar` for actions initiated locally. This is because marks come into play only at validation boundaries, none of which are crossed when doing local agent-to-agent communications.
 
 ## Permissions {#permissions}
 
 In example agents so far, we haven't bothered to check where events such as pokes are actually coming from - our example agents would accept data from anywhere, including random foreign ships. We'll now have a look at how to handle such permission checks.
 
-Back in [lesson 2](2-agent.md#bowl) we discussed the [bowl](../../urbit-os/kernel/gall/data-types.md#bowl). The `$bowl` includes a couple of useful fields: `.our` and `.src`. The `.our` field just contains the `@p` of the local ship. The `.src` field contains the `@p` of the ship from which the event originated, and is updated for every new event.
+Back in [lesson 2](2-agent.md#bowl) we discussed the [`$bowl`](../../urbit-os/kernel/gall/data-types.md#bowl). The `$bowl` includes a couple of useful fields: `.our` and `.src`. The `.our` field just contains the `@p` of the local ship. The `.src` field contains the `@p` of the ship from which the event originated, and is updated for every new event.
 
 When messages come in over Ames from other ships on the network, they're [encrypted](../../urbit-os/kernel/ames/cryptography.md) with our ship's public keys and signed by the ship which sent them. The Ames vane decrypts and verifies the messages using keys in the Jael vane, which are obtained from the [Azimuth Ethereum contract](../../urbit-id/azimuth-eth.md) and [Layer 2 data](../../urbit-id/l2/README.md) where Urbit ID ownership and keys are recorded. This means the originating `@p` of all messages are cryptographically validated before being passed on to Gall, so the `@p` specified in the `.src` field of the `$bowl` can be trusted to be correct, which makes checking permissions very simple.
 
@@ -227,7 +235,7 @@ You're free to use whatever logic you want for this, but the most common way is 
 ?>  =(src.bowl our.bowl)
 ```
 
-If we want to only allow messages from a particular set of ships, we could, for example, have a `(set @p)` in our agent's state called `.allowed`. Then, we can use the `+has:in` set function to check:
+If we want to only allow messages from a particular set of ships, we could, for example, have a `(set @p)` in our agent's state called `allowed`. Then, we can use the `+has:in` set function to check:
 
 ```hoon
 ?>  (~(has in allowed) src.bowl)
@@ -244,7 +252,7 @@ Type definitions:
 - `/sur` files are imported with the fashep (`/-`) Ford rune at the beginning of a file.
 - Agent API types, for pokes and updates to subscribers, are commonly defined as head-tagged unions such as `[%foo bar=baz]`.
 
-Mark files:
+### Mark files
 
 - Mark files live in the `/mar` directory of a desk.
 - A mark like `%foo` corresponds to a file in `/mar` like `/mar/foo.hoon`
@@ -257,7 +265,7 @@ Mark files:
 - Messages passed between agents on a local ship don't necessarily need mark files in `/mar`.
 - Mark files are most commonly used for converting an agent's native types to JSON, in order to interact with a web front-end.
 
-Permissions:
+### Permissions
 
 - The source of incoming messages from remote ships are cryptographically validated by Ames and provided to Gall, which then populates the `.src` field of the `$bowl` with the `@p`.
 - Permissions are most commonly enforced with wutgar (`?>`) and wutgal (`?<`) assertions in the relevant agent arms.
@@ -266,5 +274,5 @@ Permissions:
 
 ## Exercises {#exercises}
 
-- Have a quick look at the [tisket documentation](../../hoon/rune/tis.md#tisket).
+- Have a quick look at the `=^` [tisket documentation](../../hoon/rune/tis.md#tisket).
 - Try writing a mark file for the `$update:todo` type, in a similar fashion to the `$action:todo` one in the [mark file section](#mark-files). You can compare yours to the one we'll use in the next lesson.

@@ -1,5 +1,5 @@
 ---
-description: "Contents page for the guide to building Gall agents on Urbit, covering state management, subscriptions, and inter-agent communication for Urbit app development."
+description: "Guide to building Gall agents on Urbit."
 layout:
   title:
     visible: true
@@ -17,7 +17,7 @@ layout:
 
 This guide will walk through everything you need to know to write your own Gall agents.
 
-App School I is suitable for anyone with an intermediate knowledge of Hoon. If you've worked through [Hoon School](../hoon-school) or something equivalent, you should be fine.
+App School I is suitable for anyone with an intermediate knowledge of Hoon. If you've worked through [Hoon School](../hoon-school), you should have everything you need.
 
 ## What are Gall agents? {#what-are-gall-agents}
 

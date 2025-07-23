@@ -62,7 +62,7 @@ With all the basics now in place, we can begin work on the app itself. For this 
 
 ### Urbit API setup {#urbit-api-setup}
 
-First, let's open up `src/app.jsx` and look at the import statements at the top of this file:
+First, let's open up `/src/app.jsx` and look at the import statements at the top of this file:
 
 ```javascript
 import React, { useEffect, useState } from 'react';
@@ -163,5 +163,5 @@ With this brief primer complete, we'll take a closer look at our journal applica
 - [HTTP API Guide](../../build-on-urbit/tools/js-libs/http-api-guide.md) - Reference documentation for `@urbit/http-api`.
 - [React app source code](https://github.com/urbit/docs-examples/tree/main/journal-app/ui) - The source code for the Journal app UI.
 - [`@urbit/http-api` source code](https://github.com/urbit/js-http-api) - The source code for the `@urbit/http-api` NPM package.
-- [`usestate()`]:  https://react.dev/reference/react/useState
-- [`useeffect()`]: https://react.dev/reference/react/useEffect
+- [`useState()`](https://react.dev/reference/react/useState)
+- [`useEffect()`](https://react.dev/reference/react/useEffect)

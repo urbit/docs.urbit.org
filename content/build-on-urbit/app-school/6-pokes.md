@@ -1,5 +1,5 @@
 ---
-description: "Guide to handling one-off messages (pokes) in Gall agents, covering the +on-poke arm for receiving pokes, +on-agent arm for responses, poke acknowledgments, and practical patterns."
+description: "Handling one-off messages (pokes) in Gall agents."
 layout:
   title:
     visible: true
@@ -453,7 +453,7 @@ Let's try it out:
 >=
 ```
 
-Let's try decrementing `%pokeme` so val is 1, and then try a `%dec` via `%pokeit`:
+Let's try decrementing `%pokeme` so `.val` is 1, and then try a `%dec` via `%pokeit`:
 
 ```
 > :pokeme %dec

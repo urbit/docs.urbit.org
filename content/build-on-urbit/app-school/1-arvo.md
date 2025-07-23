@@ -1,5 +1,5 @@
 ---
-description: "Introduction to Arvo, Urbit's operating system and kernel, covering its vanes (kernel modules), userspace architecture, and fundamental concepts for Gall agent development."
+description: "Introduction to Arvo, Urbit's operating system and kernel."
 layout:
   title:
     visible: true
@@ -19,9 +19,19 @@ This document is a prologue to App School I. If you've worked though [Hoon Schoo
 
 ## Arvo and its Vanes {#arvo-and-its-vanes}
 
-[Arvo](../../urbit-os/kernel/arvo) is the Urbit OS and kernel which is written in Hoon, compiled to Nock, and executed by the runtime environment and virtual machine Vere. Arvo has ten kernel modules called vanes: [Ames](../../urbit-os/kernel/ames), [Behn](../../urbit-os/kernel/behn), [Clay](../../urbit-os/kernel/clay), [Dill](../../urbit-os/kernel/dill), [Eyre](../../urbit-os/kernel/eyre), [Gall](../../urbit-os/kernel/gall), [Iris](../../urbit-os/kernel/iris), [Jael](../../urbit-os/kernel/jael), [Khan](../../urbit-os/kernel/khan), and [Lick](../../urbit-os/kernel/lick).
+[Arvo](../../urbit-os/kernel/arvo) is the Urbit OS and kernel which is written in Hoon, compiled to Nock, and executed by the runtime environment and virtual machine Vere. Arvo has ten kernel modules called "vanes":
+1. [Ames](../../urbit-os/kernel/ames)
+2. [Behn](../../urbit-os/kernel/behn)
+3. [Clay](../../urbit-os/kernel/clay)
+4. [Dill](../../urbit-os/kernel/dill)
+5. [Eyre](../../urbit-os/kernel/eyre)
+6. [Gall](../../urbit-os/kernel/gall)
+7. [Iris](../../urbit-os/kernel/iris)
+8. [Jael](../../urbit-os/kernel/jael)
+9. [Khan](../../urbit-os/kernel/khan)
+10. [Lick](../../urbit-os/kernel/lick)
 
-Arvo itself has its own small codebase in `/sys/arvo.hoon` which primarily implements the [transition function](../../urbit-os/kernel/arvo#operating-function) `(State, Event) -> (State, Effects)` for events injected by the runtime. It also handles inter-vane messaging, the [scry](../../urbit-os/kernel/arvo/scry.md) system, and a couple of other things. Most of the heavy lifting is done by the vanes themselves - Arvo itself typically just routes events to the relevant vanes.
+The Arvo kernel itself has its own small codebase in `/sys/arvo.hoon` which primarily implements the [transition function](../../urbit-os/kernel/arvo#operating-function) `(State, Event) -> (State, Effects)` for events injected by the runtime. It also handles inter-vane messaging, the [scry](../../urbit-os/kernel/arvo/scry.md) system, and a couple of other things. Most of the heavy lifting is done by the vanes themselves - Arvo itself typically just routes events to the relevant vanes.
 
 Each vane has its own state. Gall's state contains the agents it's managing, Clay's state contains all the desks and their files, Jael's state contains all its PKI data, etc. All the vanes and their states live in Arvo's state, so Arvo's state ultimately contains the entire OS and its data.
 
@@ -31,24 +41,23 @@ Here's a brief summary of each of the vanes:
 - **Behn**: A simple timer vane. Behn lets your Gall agent set timers which go off at the time specified and notify your agent.
 - **Clay**: Filesystem vane. Clay is a revision-controlled, typed filesystem with a built-in build system. Your agent's source code lives in Clay. Your agent's source code and relevant files are automatically built and loaded upon installation, so your Gall agent itself would not need to interact with Clay unless you specifically wanted to read and write files.
 - **Dill**: Terminal driver vane. You would not typically interact with Dill directly; printing debug messages to the terminal is usually done with hinting runes and functions rather than tasks to Dill, and CLI apps are mediated by a sub-module of the `%hood` system agent called `%drum`. CLI apps will not be touched on in this guide, but there's a separate [CLI Apps](../userspace/cli-tutorial.md) guide which covers them if you're interested.
-- **Eyre**: Webserver vane. App web front-ends are served via Eyre. It's possible to handle HTTP requests directly in a Gall agent (see the [Eyre Guide](../../urbit-os/kernel/eyre/guide.md) for details), but usually you'd just serve a front-end [glob](../userspace/dist/glob.md) via the `%docket` agent, so you'd not typically have your agent deal with Eyre directly.
-- **Gall**: App management vane; this is where your agent lives.
-- **Iris**: Web client vane. If you want your agent to query external web APIs and the like, it's done via Iris. Oftentimes web API interactions are spun out into [threads](../../urbit-os/base/threads/basics/fundamentals.md) to avoid complicating the Gall agent itself, so a Gall agent would not necessary deal with Iris directly, even if it made use of external APIs.
-- **Jael**: Key infrastructure vane. Jael keeps track of PKI data for your ship and other ships on the network. Jael's data is most heavily used by Ames, and since Gall handles Ames communications for you, you'd not typically deal with Jael directly unless your were specifically writing something that made use of its data.
-- **Khan**: Control plane vane. The main purpose of Khan is for external application to be able to run threads via a Unix socket and receive their results. Khan's external interface is still experimental, but it's also good for running threads internally.
+- **Eyre**: HTTP server vane. App web front-ends are served via Eyre. It's possible to handle HTTP requests directly in a Gall agent (see the [Eyre Guide](../../urbit-os/kernel/eyre/guide.md) for details), but usually you'd just serve a front-end [glob](../userspace/dist/glob.md) via the `%docket` agent, so you'd not typically have your agent deal with Eyre directly.
+- **Gall**: App management vane; this is where your app's backend will live.
+- **Iris**: HTTP client vane. If you want your agent to query external web APIs and the like, it's done via Iris. Oftentimes web API interactions are spun out into [threads](../../urbit-os/base/threads/basics/fundamentals.md) to avoid complicating the Gall agent itself, so a Gall agent would not necessary deal with Iris directly, even if it made use of external APIs.
+- **Jael**: Networking key infrastructure vane. Jael keeps track of PKI data for your ship and other ships on the network. Jael's data is most heavily used by Ames, and since Gall handles Ames communications for you, you'd not typically deal with Jael directly unless your were specifically writing something that made use of its data.
+- **Khan**: Control plane vane. The main purpose of Khan is for external applications to be able to run threads via a Unix socket and receive their results. Khan's external interface is still experimental, but it's also good for running threads internally.
 - **Lick**: Inter-process communication (IPC) vane. Lick manages IPC ports, and the communication between Urbit applications and POSIX applications via these ports. Other vanes and applications ask Lick to open an IPC port, notify it when something is connected or disconnected, and transfer data between itself and the Unix application.
 
 ## Userspace {#userspace}
 
-Gall agents live in "userspace" as opposed to "kernelspace". Kernelspace is Arvo and its nine vanes. Userspace is primarily Gall agents, generators, threads, front-ends, and all of their related files in Clay. The distinction looks something like this:
+Gall agents live in "userspace" as opposed to "kernelspace". Kernelspace is Arvo and its vanes. Userspace is primarily Gall agents, generators, threads, front-ends, and all of their related files in Clay. The distinction looks something like this:
 
 ![](https://media.urbit.org/guides/core/app-school/kernelspace-userspace-diagram-v1.svg)
 
 By and large, Gall _is_ the userspace vane - the majority of userspace is either Gall agents, or things used by Gall agents. Apart from the agents themselves, there's also:
 
-- **Generators**: These are basically scripts. You'll likely already be familiar with these from Hoon School. Aside from learning exercises, their main use is to make interacting with Gall agents easier from the dojo. Rather than having to manually craft `%poke`s to agents, generators can take a simpler input, reformat it into what the agent actually expects, and poke the agent with it. When you do something like `:dojo|wipe` in the dojo, you're actually running the `/gen/dojo/wipe.hoon` generator and poking the `%dojo` agent with its output.
-- **Threads**: While generators are for strictly synchronous operations, threads make it easy to implement sequences of asynchronous operations. Threads are managed by the `%spider` agent. They can be used as mere scripts like generators, but their main purpose is for performing complex IO. For example, suppose you need to query some external web API, then with the data in its response you make another API call, and then another, before finally having the data you need. If one of the API calls fails, your Gall agent is potentially left in a strange intermediary state. Instead, you can put all the IO logic in a separate thread which is completely atomic. That way the Gall agent only has to deal with the two conditions of success or failure. Writing threads is covered in a [separate guide](../../urbit-os/base/threads/basics/fundamentals.md), which you might like to work through after completing App School I.
-
+- **Generators**: These are basically scripts. You'll likely already be familiar with these from Hoon School. Aside from learning exercises, their main use is to make interacting with Gall agents from the Dojo easier. Rather than having to manually craft `%poke`s to agents, generators can take a simpler input, reformat it into what the agent actually expects, and poke the agent with it. When you do something like `:dojo|wipe` in the dojo, you're actually running the `/gen/dojo/wipe.hoon` generator and poking the `%dojo` agent with its output.
+- **Threads**: While generators are for strictly synchronous operations, threads make it easy to implement sequences of asynchronous operations. Threads are managed by the `%spider` agent or the Khan vane. They can be used as mere scripts like generators, but their main purpose is for performing complex IO. For example, suppose you need to query some external web API, then with the data in its response you make another API call, and then another, before finally having the data you need. If one of the API calls fails, your Gall agent is potentially left in a strange intermediary state. Instead, you can put all the IO logic in a separate thread which is completely atomic. That way the Gall agent only has to deal with the two conditions: success or failure. Writing threads is covered in a [separate guide](../../urbit-os/base/threads/basics/fundamentals.md), which you might like to work through after completing App School I.
 - **Front-end**: Web UIs. It's possible for Gall agents to handle HTTP requests directly and dynamically produce responses, but it's also possible to have a static [glob](../userspace/dist/glob.md) of HTML, CSS, Javascript, images, etc, which are served to the client like an ordinary web app. Such front-end files are typically managed by the `%docket` agent which serves them via Eyre. The [software distribution guide](../userspace/dist/software-distribution.md) covers this in detail, and you might like to work through it after completing App School I.
 
 ## The Filesystem {#the-filesystem}
@@ -121,10 +130,10 @@ sys
 - `/arvo.hoon`: Source code for Arvo itself.
 - `/hoon.hoon`: Hoon standard library and compiler.
 - `/lull.hoon`: Mostly structures and type definitions for interacting with vanes.
-- `/$vane`: This directory contains the source code for each of the vanes.
+- `/vane`: This directory contains the source code for each of the vanes.
 - `/zuse.hoon`: This is an extra utility library. It mostly contains cryptographic functions and functions for dealing with web data like JSON.
 
-The chain of dependency for the core kernel files is `hoon.hoon` -> `arvo.hoon` -> `lull.hoon` -> `zuse.hoon`. For more information, see the [Filesystem Hierarchy](../../urbit-os/kernel/clay/filesystem.md) documentation.
+The chain of dependency for the core kernel files is as follows: `hoon.hoon` is the subject of `arvo.hoon`, which is the subject of `lull.hoon`, which is the subject of `zuse.hoon`. This nested structure is the subject shared by each of the Arvo vanes. (For more information, see the [Filesystem Hierarchy](../../urbit-os/kernel/clay/filesystem.md) documentation.)
 
 In addition to the directories discussed, there's a handful of special files a desk might contain. All of them live in the root of the desk, and all are optional in the general case, except for `sys.kelvin`, which is mandatory.
 
@@ -141,10 +150,13 @@ You should now have a general idea of the different parts of Arvo, but how does 
 
 There are two basic ways of interacting with other parts of the system: by scrying into them, and by passing them messages and receiving messages in response. There are also two basic things to interact with: vanes, and other agents.
 
-- Scries: The scry system allows you to access the state of other agents and vanes in a read-only fashion. Scries can be performed from any context with the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you can read, and these are comprehensively documented in the Scry Reference of each vane's section of the [Arvo documentation](../../urbit-os/kernel/arvo). Agents define scry endpoints in the `+on-peek` arm of their agent core. Scries can only be done on the local ship; it is not yet possible to perform scries over the network (but this functionality is planned for the future). There is a separate [guide to scries](../../urbit-os/kernel/arvo/scry.md) which you might like to read through for more details.
-- Messages:
-  - Vanes: Each vane has a number of tasks it can be passed and gifts it can respond with in its respective section of `/sys/lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The tasks and gifts of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../urbit-os/kernel/arvo).
-  - Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed, which means to subscribe for updates. We'll discuss these in detail later in the guide.
+### Scries
+
+The scry system allows you to access the state of other agents and vanes in a read-only fashion. Scries can be performed from any context with the dotket (`.^`) rune. Each vane has "scry endpoints" which define what you can read, and these are comprehensively documented in the Scry Reference of each vane's section of the [Arvo documentation](../../urbit-os/kernel/arvo). Agents define scry endpoints in the `+on-peek` arm of their agent core. Scries can only be done on the local ship; it is not yet possible to perform scries over the network (but this functionality is planned for the future). There is a separate [guide to scries](../../urbit-os/kernel/arvo/scry.md) which you might like to read through for more details.
+
+### Messages:
+- Vanes: Each vane has a number of tasks it can be passed and gifts it can respond with in its respective section of `/sys/lull.hoon`. These might do all manner of things, depending on the vane. For example, Iris might fetch an external HTTP resource for you, Clay might read or build a specified file, etc. The tasks and gifts of each vane are comprehensively documented in the API Reference of each vane's section of the [Arvo documentation](../../urbit-os/kernel/arvo).
+- Agents: These can be `%poke`d with some data, which is a request to perform a single action. They can also be `%watch`ed, which means to subscribe for updates. We'll discuss these in detail later in the guide.
 
 Here's a simplified diagram of the ways an agent can interact with other parts of the system:
 

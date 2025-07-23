@@ -1,5 +1,5 @@
 ---
-description: "Guide to Gall agent scry functionality covering read-only data requests with the .^ dotket rune, +on-peek arm implementation, endpoint patterns, and practical examples."
+description: "Guide to Gall agent scry functionality."
 layout:
   title:
     visible: true
@@ -15,7 +15,7 @@ layout:
 
 # 10. Scries
 
-In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [Scry Guide](../../urbit-os/kernel/arvo/scry.md), as well as the [dotket rune documentation](../../hoon/rune/dot.md#dotket).
+In this lesson we'll look at scrying agents, as well as how agents handle such scries. If you're not at all familiar with performing scries in general, have a read through the [scry guide](../../urbit-os/kernel/arvo/scry.md), as well as the [dotket rune documentation](../../hoon/rune/dot.md#dotket).
 
 ## Scrying {#scrying}
 
@@ -69,12 +69,14 @@ Typically, you'd handle the `$path` similarly to `+on-watch`, as we discussed in
 
 ```hoon
 ?+    path  (on-peek:def path)
-    [%x %some %path ~]  ....
-    [%x %foo ~]    ....
+    [%x %some %path ~]
+  ::  ...
+    [%x %foo ~]
+  ::  ...
     [%x %blah @ ~]
   =/  =ship  (slav %p i.t.t.path)
-  .....
-....
+  ::  ...
+::  ...
 ```
 
 Each endpoint would then compose the `(unit (unit cage))`. The simplest way to format it is like:
@@ -175,7 +177,7 @@ Here's a simple example agent with three scry endpoints:
 
 </details>
 
-The agent's `+on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `.data`. The `+on-peek` arm is:
+The agent's `+on-poke` arm takes a cell of `[@p @t]` and saves it in the agent's state, which contains a `(map @p @t)` called `data`. The `+on-peek` arm is:
 
 ```hoon
 ++  on-peek
@@ -270,9 +272,9 @@ dojo: failed to process input
 
 ## Exercises {#exercises}
 
-- Have a read through the [Scry Guide](../../urbit-os/kernel/arvo/scry.md).
+- Have a read through the [scry guide](../../urbit-os/kernel/arvo/scry.md).
 - Have a look at Gall's [scry reference](../../urbit-os/kernel/gall/scry.md).
 - Have a read through the [dotket rune documentation](../../hoon/rune/dot.md#dotket).
-- Run through the [Example](#example) yourself if you've not done so already.
-- Try adding another scry endpoint to the `%peeker` agent, which uses a [`wyt:by`](../../hoon/stdlib/2i.md#wytby) map function to produce the number of items in the `.data` map.
+- Run through the [example](#example) yourself if you've not done so already.
+- Try adding another scry endpoint to the `%peeker` agent, which uses a [`+wyt:by`](../../hoon/stdlib/2i.md#wytby) map function to produce the number of items in the `.data` map.
 - Have a look through the `+on-peek` arms of some other agents on your ship, and try performing some scries to some of the endpoints.

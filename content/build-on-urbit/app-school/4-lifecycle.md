@@ -1,5 +1,5 @@
 ---
-description: "Agent lifecycle management covering state initialization with +on-init, state export with +on-save, state import with +on-load, versioned state types, and upgrade procedures for Gall agents."
+description: "Agent lifecycle management: state initialization, import and export, versioned state types, and upgrade procedures."
 layout:
   title:
     visible: true
@@ -24,7 +24,7 @@ An agent's lifecycle starts when it's first installed. At this point, the agent'
 Once initialized, an agent will just go on doing its thing - processing events, updating its state, producing effects, etc. At some point, you'll likely want to push an update for your agent. Maybe it's a bug fix, maybe you want to add extra features. Whatever the reason, you need to change the source code of your agent, so you commit a modified version of the file to Clay. When the commit completes, Gall updates the app as follows:
 
 - The agent's `+on-save` arm is called, which packs the agent's state in a `$vase` and exports it.
-- The new version of the agent is built and loaded into Gall.
+- The new version of the `+agent` is built and loaded into Gall.
 - The previously exported `$vase` is passed to the `+on-load` arm of the newly built agent. The `+on-load` arm will process it, convert it to the new version of the state if necessary, and load it back into the state of the agent.
 
 A `$vase` is just a cell of \[type-of-the-noun the-noun]. Most data an agent sends or receives will be encapsulated in a vase. A `$vase` is made with the [zapgar](../../hoon/rune/zap.md#zapgar) (`!>`) rune like `!>(some-data)`, and unpacked with the [zapgal](../../hoon/rune/zap.md#zapgal) (`!<`) rune like `!<(type-to-extract vase)`. Have a read through the [`$vase` section of the type reference for details](types.md#vase).
@@ -41,7 +41,7 @@ In the previous lesson we introduced the idea of composing additional cores into
 --
 ```
 
-However, when you update your agent as described in the [Lifecycle](#lifecycle) section, you may want to change the type of the state itself. This means `+on-load` might find different versions of the state in the `$vase` it receives, and it might not be able to distinguish between them.
+However, when you update your agent as described in the [lifecycle](#lifecycle) section, you may want to change the type of the state itself. This means `+on-load` might find different versions of the state in the `$vase` it receives, and it might not be able to distinguish between them.
 
 For example, if you were creating an agent for a To-Do task management app, your tasks might initially have a `?(%todo %done)` union to specify whether they're complete or not. Something like:
 
@@ -94,9 +94,9 @@ Along with a core defining the type of the state, we also need to actually add i
 =*  state  -
 ```
 
-The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../hoon/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `.tasks` as `tasks.state`. With tistar, we can just reference `.tasks` while also being able to reference the whole `.state` when necessary.
+The first line bunts (produces the default value) of the state type we defined in the previous core, and adds it to the head of the subject _without a face_. The next line uses [tistar](../../hoon/rune/tis.md#tistar) to give it the name of "state". You might wonder why we don't just give it a face when we bunt it and skip the tistar part. If we did that, we'd have to refer to `.tasks` as `.tasks.state`. With tistar, we can just reference `.tasks` while also being able to reference the whole `.state` when necessary.
 
-Note that adding the state like this only happens when the agent is built - from then on the arms of our agent will just modify it.
+Note that adding the state like this only happens when the agent is built. From then on the arms of our agent will just modify it.
 
 ## State management arms {#state-management-arms}
 
@@ -192,7 +192,7 @@ Let's break it down and have a look at the new parts we've added. First, the sta
 --
 ```
 
-In `$state-0` we've defined the structure of our state, which is just a `@ud`. We've tagged the head with a `%0` constant representing the version number, so `+on-load` can easily test the state version. In `$versioned-state` we've created a union and just added our `$state-0` type. We've added an extra `$card` arm as well, just so we can use `$card` as a type, rather than the unweildy `$card:agent:gall`.
+In `$state-0` we've defined the structure of our state, which is just a `@ud`. We've tagged the head with a `%0` constant representing the version number, so `+on-load` can easily test the state version. In `$versioned-state` we've created a union and just added our `$state-0` type. We've added an extra `$card` arm as well, just so we can use `$card` as a type, rather than the unwieldy `$card:agent:gall`.
 
 After that core, we have the usual `+agent:dbug` call, and then we have this:
 
@@ -382,7 +382,7 @@ Let's now use `+dbug` to confirm our state has successfully been updated to the 
 - `+on-load` imports an agent's state and is called during upgrade or when an app is unsuspended. It also handles converting data from old state versions to new state versions.
 - The type of an agent's state is typically defined in a separate core.
 - The state type is typically versioned, with a new type definition for each version of the state.
-- The state is initially added by bunting the state type and then naming it `.state` with the tistar (`=*`) rune, so its contents can be referenced directly.
+- The state is initially added by bunting the state type and then naming it `state` with the tistar (`=*`) rune, so its contents can be referenced directly.
 - A `$vase` is a cell of \[type-of-the-noun the-noun].
 - `(quip a b)` is the same as `[(list a) b]`, and is the \[effects new-agent-core] pair returned by many arms of an agent core.
 

@@ -1,5 +1,5 @@
 ---
-description: "Guide to Gall agent structure and core concepts, covering the ten required arms, bowl samples, state management, transition functions, virtualization, and event handling patterns."
+description: "Guide to Gall agent structure and core concepts."
 layout:
   title:
     visible: true
@@ -27,32 +27,32 @@ We'll discuss each of the arms in detail later. For now, here's a quick summary.
 
 These arms are primarily for initializing and upgrading an agent.
 
-- `+on-init`: Handles starting an agent for the first time.
-- `+on-save`: Handles exporting an agent's state - typically as part of the upgrade process but also when suspending, uninstalling and debugging.
-- `+on-load`: Handles loading a previously exported agent state - typically as part of the upgrade process but also when resuming or reinstalling an agent.
+1. `+on-init`: Handles starting an agent for the first time.
+2. `+on-save`: Handles exporting an agent's state, typically as part of the upgrade process but also when suspending, uninstalling and debugging.
+3. `+on-load`: Handles loading a previously exported agent state, typically as part of the upgrade process but also when resuming or reinstalling an agent.
 
 ### Request handlers {#request-handlers}
 
-These arms handle requests initiated by outside entities, e.g. other agents, HTTP requests from the front-end, etc.
+These arms handle requests initiated by outside entities, e.g. other agents, HTTP requests from the frontend, etc.
 
-- `+on-poke`: Handles one-off requests, actions, etc.
-- `+on-watch`: Handles subscription requests from other entities.
-- `+on-leave`: Handles unsubscribe notifications from other, previously subscribed entities.
+4. `+on-poke`: Handles one-off requests, actions, etc.
+5. `+on-watch`: Handles subscription requests from other entities.
+6. `+on-leave`: Handles unsubscribe notifications from other, previously subscribed entities.
 
 ### Response handlers {#response-handlers}
 
 These two arms handle responses to requests our agent previously initiated.
 
-- `+on-agent`: Handles request acknowledgements and subscription updates from other agents.
-- `+on-arvo`: Handles responses from vanes.
+7. `+on-agent`: Handles request acknowledgements and subscription updates from other agents.
+8. `+on-arvo`: Handles responses from vanes.
 
 ### Scry handler {#scry-handler}
 
-- `+on-peek`: Handles local read-only requests.
+9. `+on-peek`: Handles local read-only requests.
 
 ### Failure handler {#failure-handler}
 
-- `+on-fail`: Handles certain kinds of crash reports from Gall.
+10. `+on-fail`: Handles certain kinds of crash reports from Gall.
 
 ## Bowl {#bowl}
 
@@ -68,7 +68,7 @@ For an agent, the payload will at least contain the bowl, the usual Hoon and `/s
 
 ## Transition function {#transition-function}
 
-If you recall from the prologue, the whole Arvo operating system works on the basis of a simple transition function `(event, oldState) -> (effects, newState)`. Gall agents also function the same way. Eight of an agent's ten arms produce the same thing, a cell of:
+If you recall from the prologue, the whole Arvo operating system works on the basis of a simple transition function `(event, oldState) -> (effects, newState)`. Gall agents also function the same way. Eight of an agent's ten arms produce `(quip card _this)`, a cell of:
 
 - **Head**: A list of effects called `$card`s (which we'll discuss later).
 - **Tail**: A new agent core, possibly with a modified payload.
@@ -108,7 +108,7 @@ Here's about the simplest valid Gall agent:
 
 This is just a dummy agent that does absolutely nothing - it has no state and rejects all messages by crashing. Typically we'd cast this to an `+agent:gall`, but in this instance we won't so it's easier to examine its structure in the dojo. We'll get to what each of the arms do later. For now, we'll just consider a few particular points.
 
-Firstly, note its structure - it's a door (created with `|_`) with a sample of `$bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` ([`$=` irregular syntax](../../hoon/irregular.md#buctis)).
+Firstly, note its structure - it's a door (created with `|_`) with a sample of `$bowl:gall` and the ten arms described earlier. The `=bowl:gall` syntax simply means `bowl=bowl:gall` (see [`$=` irregular syntax](../../hoon/irregular.md#buctis)).
 
 Secondly, you'll notice some of the arms return:
 
@@ -125,7 +125,7 @@ A backtick at the beginning is an irregular syntax meaning "prepend with null", 
 
 The next part has `..on-init`, which means "the subject of the `+on-init` arm". The subject of the `+on-init` arm is our whole agent. In the [transition function](#transition-function) section we mentioned that most arms return a list of effects called `$card`s and a new agent core. Since an empty list is `~`, we've created a cell that fits that description.
 
-Let's examine our agent. In the Dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the dojo, commit the file to the desk with `|commit %base`.
+Let's examine our agent. In the Dojo of a fake ship, mount the `%base` desk with `|mount %base`. On the Unix side, navigate to `/path/to/fake/ship/base`, and save the above agent in the `/app` directory as `skeleton.hoon`. Back in the Dojo, commit the file to the desk with `|commit %base`.
 
 For the moment we won't install our `%skeleton` agent. Instead, we'll use the `-build-file` thread to build it and save it in the dojo's subject so we can have a look. Run the following in the dojo:
 
@@ -241,10 +241,10 @@ If we again examine our agent core's payload by looking at the tail of `%skeleto
   - Response handlers.
   - Scry handler.
   - Failure handler.
-- The state of an agent&mdash;the data it's storing&mdash;lives in the core's payload.
+- The state of an agent (the data it's storing) lives in the core's payload.
 - Most arms produce a list of effects called `$card`s, and a new agent core with a modified state in its payload.
 
 ## Exercises {#exercises}
 
-- Run through the [Example](#example) yourself on a fake ship if you've not done so already.
+- Run through the [example](#example) yourself on a fake ship if you've not done so already.
 - Have a look at the [`$bowl` entry in the Gall data types documentation](../../urbit-os/kernel/gall/data-types.md#bowl) if you've not done so already.

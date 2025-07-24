@@ -97,7 +97,7 @@ An `$edge` is the output of a parser. If parsing succeeded, `.p` is the location
 ### `$rule` {#rule}
 
 ```hoon
-++  rule  _|:($:nail $:edge)
++$  rule  _|:($:nail $:edge)
 ```
 
 A `$rule` is a gate which takes in a `$nail` and returns an `$edge` - in other words, a parser.

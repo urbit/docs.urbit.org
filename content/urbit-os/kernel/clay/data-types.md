@@ -861,7 +861,7 @@ Permission rules for paths
 +$  regs  (map path rule)
 ```
 
-A map from file/directory paths to permission [`+rule`](#rule)s.
+A map from file/directory paths to permission [`$rule`](#rule)s.
 
 ---
 

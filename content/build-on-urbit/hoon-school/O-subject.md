@@ -79,7 +79,7 @@ We use this to set the context of cores. Recall that the payload of a gate is a 
 [0 1 2]
 ```
 
-Here we have created a gate with `[1 2]` as its context that takes in an `@` and returns `15`. `+3:foo` shows the payload of the core to be `[0 [1 2]]`. Here `0` is the default value of `@` and is the sample, while `[1 2]` is the context that was given to `.foo`.
+Here we have created a gate with `[1 2]` as its context that takes in a `@` and returns `15`. `+3:foo` shows the payload of the core to be `[0 [1 2]]`. Here `0` is the default value of `@` and is the sample, while `[1 2]` is the context that was given to `.foo`.
 
 `=>` [tisgar](../../hoon/rune/tis.md#tisgar) (and its reversed version `=<` [tisgal](../../hoon/rune/tis.md#tisgal)) are used extensively to put cores into the context of other cores.
 
@@ -333,7 +333,7 @@ The `=~` [tissig](../../hoon/rune/tis.md#tissig) rune composes multiple expressi
 
 We've chosen here to wrap our door in its own core to emulate the style of programming that is used when creating libraries. `+new-account` is the name of our door. A door is a core with one or more arms that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two arms `+deposit` and `+withdraw`.
 
-Each of these arms produces a gate which takes an `@ud` argument. Each of these gates has a similar bit of code inside:
+Each of these arms produces a gate which takes a `@ud` argument. Each of these gates has a similar bit of code inside:
 
 ```hoon
 +>.$(balance (add balance amount))

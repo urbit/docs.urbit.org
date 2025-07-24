@@ -471,7 +471,7 @@ Namespace path and data
 
 Network identity
 
-Another name for an `@p`.
+Another name for a `@p`.
 
 #### Source
 

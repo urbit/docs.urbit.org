@@ -287,7 +287,7 @@ A door really is, at the bedrock level, the same thing as a core with a sample. 
 
 Dojo tells us that `.a` is a core with one arm and a payload of `[b=@ %~]`. Since a door's payload is \[sample context], this means that `.b` is the sample and the context is null. (The `=> ~` set the context. We did this to avoid including the standard library that is included in the context by default in Dojo, which would have made the pretty-printed core much more verbose. Try it without `=>  ~` as well.)
 
-For the door defined above, `.c`, the sample is defined as an `@` atom and given the face `.b`. The `+plus` arm defines a gate that takes a single atom as its argument `.a` and returns the sum of `.a` and `.b`. The `+times` arm defines a gate that takes a single atom `.a` and returns the product of `.a` and `.b`. The `+greater` arm defines a gate that takes a single atom `.a`, and returns `%.y` if `.a` is greater than `.b`; otherwise it returns `%.n`.
+For the door defined above, `.c`, the sample is defined as a `@` atom and given the face `.b`. The `+plus` arm defines a gate that takes a single atom as its argument `.a` and returns the sum of `.a` and `.b`. The `+times` arm defines a gate that takes a single atom `.a` and returns the product of `.a` and `.b`. The `+greater` arm defines a gate that takes a single atom `.a`, and returns `%.y` if `.a` is greater than `.b`; otherwise it returns `%.n`.
 
 Let's try out the arms of `.c` with ordinary function calls:
 

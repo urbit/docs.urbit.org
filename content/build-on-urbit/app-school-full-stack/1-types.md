@@ -28,7 +28,7 @@ Let's look at each of these questions in turn, and put together our agent's `/su
 
 Our journal entries will just be plain text, so a simple `@t` will work fine to store their contents. Entries will be organized by date, so we'll also need to decide a format for that.
 
-One option would be to use an `@da`, and then use the date functions included in the `@urbit/api` NPM package on the front-end to convert them to ordinary Javascript `Date` objects. In this case, to keep it simple, we'll just use the number of milliseconds since the Unix Epoch as an `$atom`, since it's natively supported by the Javascript `Date` object.
+One option would be to use a `@da`, and then use the date functions included in the `@urbit/api` NPM package on the front-end to convert them to ordinary Javascript `Date` objects. In this case, to keep it simple, we'll just use the number of milliseconds since the Unix Epoch as an `$atom`, since it's natively supported by the Javascript `Date` object.
 
 The structure for a journal entry can therefore be:
 

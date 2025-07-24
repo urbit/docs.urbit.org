@@ -382,7 +382,7 @@ This specifies what type of information is requested in a subscription or a scry
 - `%u`: produces a `?` depending on whether or not the specified file exists. It does not check any of its children.
 - `%v`: requests the entire `$dome` for a specified `$desk` at a particular `$aeon`. When used on a foreign `$desk`, this get us up-to-date to the requested version.
 - `%w`: requests the revision number and date of the specified path, returned as a `+cass`.
-- `%x`: requests the file at a specified path at the specified commit, returned as an `@`. If there is no node at that path or if the node has no contents (that is, if `+fil:ankh` is null), then this crashes.
+- `%x`: requests the file at a specified path at the specified commit, returned as a `@`. If there is no node at that path or if the node has no contents (that is, if `+fil:ankh` is null), then this crashes.
 - `%y`: requests an `$arch` of the specfied commit at the specified path. It will return the bunt of an `$arch` if the file or directory is not found.
 - `%z`: requests a recursive hash of a node and all its children, returned as a `@uxI`.
 

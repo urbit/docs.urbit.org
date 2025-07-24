@@ -323,7 +323,7 @@ The inferred type of the final `.b` is just `*`, because that's how `.b` was def
 
 (Remember that `?` isn't part of Hoon, it's a Dojo-specific instruction.)
 
-Let's replace that last `.b` with a `?:` [wutcol](../../hoon/rune/wut.md#wutcol) expression whose condition subexpression is a `?=` [wuttis](../../hoon/rune/wut.md#wuttis) test. If `.b` is an `@`, it'll produce `[& b]`; otherwise `[| b]`:
+Let's replace that last `.b` with a `?:` [wutcol](../../hoon/rune/wut.md#wutcol) expression whose condition subexpression is a `?=` [wuttis](../../hoon/rune/wut.md#wuttis) test. If `.b` is a `@`, it'll produce `[& b]`; otherwise `[| b]`:
 
 ```
 > =/(b=* 12 ?:(?=(@ b) [& b] [| b]))
@@ -645,7 +645,7 @@ Hoon will infer that `.b` either is or isn't null based on which `?~` branch is 
 $(c +(c), a t.a)
 ```
 
-This function takes a `+list` of `@` and returns an `@`. It uses `.c` as a counter value, initially set at `0` on line 2. If `.a` is `~` (i.e., a null `+list`) then the computation is finished; return `.c`. Otherwise `.a` must be a non-null list, in which case there is a recursion to the `|-` [barhep](../../hoon/rune/bar.md#barhep) on line 3, but with `.c` incremented, and with the head of the list `.a` thrown away.
+This function takes a `+list` of `@` and returns a `@`. It uses `.c` as a counter value, initially set at `0` on line 2. If `.a` is `~` (i.e., a null `+list`) then the computation is finished; return `.c`. Otherwise `.a` must be a non-null list, in which case there is a recursion to the `|-` [barhep](../../hoon/rune/bar.md#barhep) on line 3, but with `.c` incremented, and with the head of the list `.a` thrown away.
 
 It's important to note that if `.a` is a `+list`, you can only use `i.a` and `t.a` after Hoon has inferred that `.a` is non-null. A null `+list` has no `.i` or `.t` in it!  You'll often use `?~` to distinguish the two kinds of list (null and non-null). If you use `i.a` or `t.a` without showing that `.a` is non-null you'll get a "find-fork" crash.
 
@@ -697,7 +697,7 @@ So far you've learned about four kinds of type inference:
 3. Gate sample definitions
 4. Branch specialization using runes in the `?` family
 
-There are several other ways that Hoon infers type. Any rune expression that evaluates to a `?` flag, e.g., `.=` [dottis](../../hoon/rune/dot.md#dottis), will be inferred from accordingly. The `.+` [dotlus](../../hoon/rune/dot.md#dotlus) rune always evaluates to an `@`, and Hoon knows that too. The cell constructor runes, `:-` [colhep](../../hoon/rune/col.md#colhep), `:+` [collus](../../hoon/rune/col.md#collus), `:^` [colket](../../hoon/rune/col.md#colket), and `:*` [coltar](../../hoon/rune/col.md#coltar) are all known to produce cells.
+There are several other ways that Hoon infers type. Any rune expression that evaluates to a `?` flag, e.g., `.=` [dottis](../../hoon/rune/dot.md#dottis), will be inferred from accordingly. The `.+` [dotlus](../../hoon/rune/dot.md#dotlus) rune always evaluates to a `@`, and Hoon knows that too. The cell constructor runes, `:-` [colhep](../../hoon/rune/col.md#colhep), `:+` [collus](../../hoon/rune/col.md#collus), `:^` [colket](../../hoon/rune/col.md#colket), and `:*` [coltar](../../hoon/rune/col.md#coltar) are all known to produce cells.
 
 More subtly, the `=+` [tislus](../../hoon/rune/tis.md#tislus), `=/` [tisfas](../../hoon/rune/tis.md#tisfas), and `=|` [tisbar](../../hoon/rune/tis.md#tisbar) runes modify the subject by pinning values to the head. Hoon infers from this that the subject has a new type: a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
 

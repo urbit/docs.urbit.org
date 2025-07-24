@@ -62,7 +62,7 @@ You can try with other currencies as well:
 
 ### Analysis {#analysis}
 
-The thread takes an `@tas` as its argument, which the dojo wraps in a `$unit`. We extract the `$vase` and check it's not empty:
+The thread takes a `@tas` as its argument, which the dojo wraps in a `$unit`. We extract the `$vase` and check it's not empty:
 
 ```hoon
 =/  cur  !<((unit @tas) arg)

@@ -60,7 +60,7 @@ In this section we will cover the basic types, parser functions, and parser comb
 In this section we discuss the types most commonly used for Hoon parsers. In short:
 
 - A `+hair` is the position in the text the parser is at,
-- A `+nail` is parser input,
+- A `$nail` is parser input,
 - An `+edge` is parser output,
 - A `$rule` is a parser.
 
@@ -74,15 +74,15 @@ A `+hair` is a pair of `@ud` used to keep track of what has already been parsed 
 
 `.p` represents the line and `.q` represents the column.
 
-### `+nail` {#nail}
+### `$nail` {#nail}
 
 ```hoon
-++  nail  [p=hair q=tape]
++$  nail  [p=hair q=tape]
 ```
 
-We recall from our [discussion above](#what-is-parsing) that parsing functions must keep track of both what has been parsed and what has yet to be parsed. Thus a `+nail` consists of both a `+hair`, giving the line and column up to which the input sequence has already been parsed, and a `$tape`, consisting of what remains of the original input string (i.e. everything after the location indicated by the `+nail`, including the character at that `+nail`).
+We recall from our [discussion above](#what-is-parsing) that parsing functions must keep track of both what has been parsed and what has yet to be parsed. Thus a `$nail` consists of both a `+hair`, giving the line and column up to which the input sequence has already been parsed, and a `$tape`, consisting of what remains of the original input string (i.e. everything after the location indicated by the `$nail`, including the character at that `$nail`).
 
-For example, if you wish to feed the entire `$tape` `"abc"` into a parser, you would pass it as the `+nail` `[[1 1] "abc"]`. If the parser successfully parses the first character, the `+nail` it returns will be `[[1 2] "bc"]` (though we note that parser outputs are actually `+edge`s which contain a `+nail`, see the following). The `+nail` only matters for book-keeping reasons - it could be any value here since it doesn't refer to a specific portion of the string being input, but only what has theoretically already been parsed up to that point.
+For example, if you wish to feed the entire `$tape` `"abc"` into a parser, you would pass it as the `$nail` `[[1 1] "abc"]`. If the parser successfully parses the first character, the `$nail` it returns will be `[[1 2] "bc"]` (though we note that parser outputs are actually `+edge`s which contain a `$nail`, see the following). The `$nail` only matters for book-keeping reasons - it could be any value here since it doesn't refer to a specific portion of the string being input, but only what has theoretically already been parsed up to that point.
 
 ### `+edge` {#edge}
 
@@ -92,7 +92,7 @@ For example, if you wish to feed the entire `$tape` `"abc"` into a parser, you w
 
 An `+edge` is the output of a parser. If parsing succeeded, `.p` is the location of the original input `tape `up to which the text has been parsed. If parsing failed, `.p` will be the first `+hair` at which parsing failed.
 
-`.q` may be `~`, indicating that parsing has failed . If parsing did not fail, `p.u.q` is the data structure that is the result of the parse up to this point, while `q.u.q` is the `+nail` which contains the remainder of what is to be parsed. If `.q` is not null, `.p` and `p.q.u.q` are identical.
+`.q` may be `~`, indicating that parsing has failed . If parsing did not fail, `p.u.q` is the data structure that is the result of the parse up to this point, while `q.u.q` is the `$nail` which contains the remainder of what is to be parsed. If `.q` is not null, `.p` and `p.q.u.q` are identical.
 
 ### `$rule` {#rule}
 
@@ -100,7 +100,7 @@ An `+edge` is the output of a parser. If parsing succeeded, `.p` is the location
 ++  rule  _|:($:nail $:edge)
 ```
 
-A `$rule` is a gate which takes in a `+nail` and returns an `+edge` - in other words, a parser.
+A `$rule` is a gate which takes in a `$nail` and returns an `+edge` - in other words, a parser.
 
 ## Parser builders {#parser-builders}
 
@@ -108,7 +108,7 @@ These functions are used to build `$rule`s (i.e. parsers), and thus are often ca
 
 ### [`+just`](stdlib/4f.md#just) {#justreferencestdlib4fmdjust}
 
-The most basic rule builder, `+just` takes in a single `+char` and produces a `$rule` that attempts to match that `+char` to the first character in the `$tape` of the input `+nail`.
+The most basic rule builder, `+just` takes in a single `+char` and produces a `$rule` that attempts to match that `+char` to the first character in the `$tape` of the input `$nail`.
 
 ```
 > =edg ((just 'a') [[1 1] "abc"])
@@ -216,7 +216,7 @@ Another important function in the parser builder library is `+knee`, used for bu
 
 ## Outside callers {#outside-callers}
 
-Since `+hair`s, `+nail`s, etc. are only utilized within the context of writing parsers, we'd like to hide them from the rest of the code of a program that utilizes parsers. That is to say, you'd like the programmer to only worry about passing `$tape`s to the parser, and not have to dress up the `$tape` as a `+nail` themselves. Thus we have several functions for exactly this purpose.
+Since `+hair`s, `$nail`s, etc. are only utilized within the context of writing parsers, we'd like to hide them from the rest of the code of a program that utilizes parsers. That is to say, you'd like the programmer to only worry about passing `$tape`s to the parser, and not have to dress up the `$tape` as a `$nail` themselves. Thus we have several functions for exactly this purpose.
 
 These functions take in either a `$tape` or a `$cord`, alongside a `$rule`, and attempt to parse the input with the `$rule`. If the parse succeeds, it returns the result. There are crashing and unitized versions of each caller, corresponding to what happens when a parse fails.
 
@@ -244,7 +244,7 @@ For additional information including examples see [4g: Parsing (Outside Caller)]
 ~
 ```
 
-For the remainder of this tutorial we will make use of `+scan` so that we do not need to deal directly with `+nail`s except where it is illustrative to do so.
+For the remainder of this tutorial we will make use of `+scan` so that we do not need to deal directly with `$nail`s except where it is illustrative to do so.
 
 ### Parsing atoms {#parsing-atoms}
 
@@ -316,11 +316,11 @@ The syntax to combine `$rule`s is
 ;~(combinator rule1 rule2 ... ruleN)
 ```
 
-The `$rule`s are composed together using the combinator as an intermediate function, which takes the product of a `$rule` (an `+edge`) and a `$rule` and turns it into a sample (a `+nail`) for the next `$rule` to handle. We elaborate on this behavior [below](#-micsig).
+The `$rule`s are composed together using the combinator as an intermediate function, which takes the product of a `$rule` (an `+edge`) and a `$rule` and turns it into a sample (a `$nail`) for the next `$rule` to handle. We elaborate on this behavior [below](#-micsig).
 
 ### [`+plug`](stdlib/4e.md#plug) {#plugreferencestdlib4emdplug}
 
-`+plug` simply takes the `+nail` in the `+edge` produced by one rule and passes it to the next `$rule`, forming a cell of the results as it proceeds.
+`+plug` simply takes the `$nail` in the `+edge` produced by one rule and passes it to the next `$rule`, forming a cell of the results as it proceeds.
 
 ```
 > (scan "starship" ;~(plug (jest 'star') (jest 'ship')))

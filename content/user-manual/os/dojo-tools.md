@@ -1365,7 +1365,7 @@ care ship desk case path
 - desk The desk like `%base`.
 - case The revision you're requesting. This can be one of:
   - `ud+123` - A revision number.
-  - `da+now` - The revision at that date-time. You can use `now` for the most recent or an `@da` for another time.
+  - `da+now` - The revision at that date-time. You can use `now` for the most recent or a `@da` for another time.
   - `tas+foobar`: A revision label, these are rarely used.
 - path The filepath like `/gen/code/hoon`. Note the Clay path prefix is not included since that data was specified separately.
 

@@ -346,7 +346,7 @@ dojo: hoon expression failed
 
 ### `+su` {#su}
 
-The [`+su`](zuse/2d_6.md#sudejsformat) function parses a string with the given parsing `+rule`. Hoon's functional parsing library is very powerful and lets you create arbitrarily complex parsers. JSON will often have data types encoded in strings, so this function can be very useful. The writing of parsers is outside the scope of this guide, but you can see the [Parsing Guide](parsing.md) and sections 4e to 4j of the standard library documentation for details.
+The [`+su`](zuse/2d_6.md#sudejsformat) function parses a string with the given parsing `$rule`. Hoon's functional parsing library is very powerful and lets you create arbitrarily complex parsers. JSON will often have data types encoded in strings, so this function can be very useful. The writing of parsers is outside the scope of this guide, but you can see the [Parsing Guide](parsing.md) and sections 4e to 4j of the standard library documentation for details.
 
 Here are some simple examples of using `+su` to parse strings:
 

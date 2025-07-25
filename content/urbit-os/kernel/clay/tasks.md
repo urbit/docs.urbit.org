@@ -559,7 +559,7 @@ The `.pax` path is the file or directory whose permissions you want to change, a
   ==
 ```
 
-Where a `+rule` is this structure:
+Where a `$rule` is this structure:
 
 ```hoon
 +$  rule  [mod=?(%black %white) who=(set whom)]  ::  node permission

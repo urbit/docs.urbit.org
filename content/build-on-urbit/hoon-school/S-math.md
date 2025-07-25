@@ -84,7 +84,7 @@ As the arms for the four `@r` auras are identical within their appropriate core,
 
 #### Conversion to and from other auras
 
-Any `@ud` unsigned decimal integer can be directly cast as an `@rs`.
+Any `@ud` unsigned decimal integer can be directly cast as a `@rs`.
 
 ```
 > `@ud`.1
@@ -123,7 +123,7 @@ To go the other way requires us to use an algorithm for converting an arbitrary 
 [%d s=%.y e=--3 a=1]
 ```
 
-It's up to you to decide how to handle this result, however! Perhaps a better option for many cases is to round the answer to an `@s` integer with [`+toi:rs`](../../hoon/stdlib/3b.md#toirs):
+It's up to you to decide how to handle this result, however! Perhaps a better option for many cases is to round the answer to a `@s` integer with [`+toi:rs`](../../hoon/stdlib/3b.md#toirs):
 
 ```
 > (toi:rs .3.1415926535)

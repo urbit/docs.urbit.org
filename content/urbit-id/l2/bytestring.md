@@ -69,7 +69,7 @@ The `proxy` is an atom between `0` and `4`, which corresponds as follows:
 
 Note that `%vote` proxies are not supported by layer 2.
 
-The ship is its `@p` encoded as an `@`. As we are working with fixed width atoms, the full 4 bytes is used, even if the bit length of the `@p` is shorter.
+The ship is its `@p` encoded as a `@`. As we are working with fixed width atoms, the full 4 bytes is used, even if the bit length of the `@p` is shorter.
 
 The operation is an atom between `0` and `10` corresponding as follows:
 

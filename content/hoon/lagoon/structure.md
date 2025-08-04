@@ -1,8 +1,6 @@
----
-
 ## `+reshape` {#reshape}
 
-Function: reshape
+Reshape an array into an array with the same total number of elements.
 
 #### Accepts
 
@@ -10,7 +8,7 @@ Parameters as specified in source
 
 #### Produces
 
-A `ray`
+A `$ray`.
 
 #### Source
 
@@ -24,14 +22,13 @@ A `ray`
     ?>  =(in-cnt out-cnt)
     =.  shape.meta.a  shape
     a
-  ::  stack along dimension (0 row, 1 col, 2 lay, etc.)
 ```
 
 ---
 
 ## `+stack` {#stack}
 
-stack along dimension (0 row, 1 col, 2 lay, etc.)
+Stack along dimension (0 row, 1 col, 2 lay, etc.).
 
 #### Accepts
 
@@ -39,7 +36,7 @@ Parameters as specified in source
 
 #### Produces
 
-A `ray`
+A `$ray`.
 
 #### Source
 
@@ -60,7 +57,6 @@ A `ray`
       ?.  =((snag idx shape.meta.a) (snag idx shape.meta.b))
         %.n
       $(idx +(idx))
-    ::  TODO revisit this assumption/requirement
     ?>  (^lte dim (lent shape.meta.a))
     =|  c=ray
     ?:  =(0 dim)
@@ -90,14 +86,13 @@ A `ray`
         c    (set-row c off row-c)
       ==
     !!
-  ::
 ```
 
 ---
 
 ## `+hstack` {#hstack}
 
-Function: hstack
+Horizontally stack two arrays.
 
 #### Accepts
 
@@ -105,7 +100,7 @@ Parameters as specified in source
 
 #### Produces
 
-A `ray`
+A `$ray`.
 
 #### Source
 
@@ -114,14 +109,13 @@ A `ray`
     |=  [a=ray b=ray]
     ^-  ray
     (stack a b 1)
-  ::
 ```
 
 ---
 
 ## `+vstack` {#vstack}
 
-Function: vstack
+Vertically stack two arrays.
 
 #### Accepts
 
@@ -129,7 +123,7 @@ Parameters as specified in source
 
 #### Produces
 
-A `ray`
+A `$ray`.
 
 #### Source
 
@@ -138,23 +132,21 @@ A `ray`
     |=  [a=ray b=ray]
     ^-  ray
     (stack a b 0)
-  ::
-  ::
 ```
 
 ---
 
 ## `+transpose` {#transpose}
 
-Function: transpose
+Transpose a 2D array.
 
 #### Accepts
 
-A `ray`
+A `$ray`.
 
 #### Produces
 
-A `ray`
+A `$ray`.
 
 #### Source
 
@@ -183,7 +175,5 @@ A `ray`
           prod  (set-item prod ~[j i] (get-item a ~[i j]))
         ==
     ==
-  ::  Returns diagonal of an array.
-  ::
 ```
 

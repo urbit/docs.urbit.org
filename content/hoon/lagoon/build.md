@@ -14,36 +14,36 @@ A `$ray`
 
 ```hoon
 ++  eye      ::  produces identity matrix of shape nxn.
-    |=  =meta
-    ^-  ray
-    ~_  leaf+"lagoon-fail"
-    ?>  =(2 (lent shape.meta))
-    ?>  =((snag 0 shape.meta) (snag 1 shape.meta))
-    =/  n  (snag 0 shape.meta)
-    =<  +
-    %^    spin
-        (gulf 0 (dec n))
-      ^-  ray  (zeros [~[n n] bloq.meta kind.meta ~])
-    |=  [i=@ r=ray]
-    :: [i (set-item r ~[i i] 1)]
-    :-  i
-    %^  set-item
-        r
-      ~[i i]
-    ^-  @
-    ?-    kind.meta
-        %uint  `@`1
-      ::
-        %int2  !!
-      ::
-        %i754
-      ?+  bloq.meta  ~|(bloq.meta !!)
-        %7  .~~~1
-        %6  .~1
-        %5  .1
-        %4  .~~1
-      ==
+  |=  =meta
+  ^-  ray
+  ~_  leaf+"lagoon-fail"
+  ?>  =(2 (lent shape.meta))
+  ?>  =((snag 0 shape.meta) (snag 1 shape.meta))
+  =/  n  (snag 0 shape.meta)
+  =<  +
+  %^    spin
+      (gulf 0 (dec n))
+    ^-  ray  (zeros [~[n n] bloq.meta kind.meta ~])
+  |=  [i=@ r=ray]
+  :: [i (set-item r ~[i i] 1)]
+  :-  i
+  %^  set-item
+      r
+    ~[i i]
+  ^-  @
+  ?-    kind.meta
+      %uint  `@`1
+    ::
+      %int2  !!
+    ::
+      %i754
+    ?+  bloq.meta  ~|(bloq.meta !!)
+      %7  .~~~1
+      %6  .~1
+      %5  .1
+      %4  .~~1
     ==
+  ==
 ```
 
 ---
@@ -64,10 +64,10 @@ A `$ray`
 
 ```hoon
 ++  zeros
-    |=  =meta  ^-  ray
-    ~_  leaf+"lagoon-fail"
-    :-  meta
-    (lsh [bloq.meta (roll shape.meta ^mul)] 1)
+  |=  =meta  ^-  ray
+  ~_  leaf+"lagoon-fail"
+  :-  meta
+  (lsh [bloq.meta (roll shape.meta ^mul)] 1)
 ```
 
 ---
@@ -88,23 +88,23 @@ A `$ray`
 
 ```hoon
 ++  ones
-    |=  =meta  ^-  ray
-    ~_  leaf+"lagoon-fail"
-    =/  one
-      ?-    kind.meta
-          %uint  `@`1
-        ::
-          %int2  !!
-        ::
-          %i754
-        ?+  bloq.meta  !!
-          %7  .~~~1
-          %6  .~1
-          %5  .1
-          %4  .~~1
-        ==
+  |=  =meta  ^-  ray
+  ~_  leaf+"lagoon-fail"
+  =/  one
+    ?-    kind.meta
+        %uint  `@`1
+      ::
+        %int2  !!
+      ::
+        %i754
+      ?+  bloq.meta  !!
+        %7  .~~~1
+        %6  .~1
+        %5  .1
+        %4  .~~1
       ==
-    (fill meta one)
+    ==
+  (fill meta one)
 ```
 
 ---
@@ -125,12 +125,12 @@ A `$ray`
 
 ```hoon
 ++  iota
-    |=  =meta
-    ^-  ray
-    ?>  =((lent shape.meta) 1)
-    =/  n  (snag 0 shape.meta)
-    =.  kind.meta  %uint
-    (en-ray meta (gulf 0 (dec n)))
+  |=  =meta
+  ^-  ray
+  ?>  =((lent shape.meta) 1)
+  =/  n  (snag 0 shape.meta)
+  =.  kind.meta  %uint
+  (en-ray meta (gulf 0 (dec n)))
 ```
 
 ---
@@ -151,12 +151,12 @@ A `$ray`
 
 ```hoon
 ++  magic
-    |=  =meta
-    ^-  ray
-    =/  n  (roll shape.meta ^mul)
-    %+  reshape
-      (en-ray [~[n] bloq.meta %uint ~] (gulf 0 (dec n)))
-    shape.meta
+  |=  =meta
+  ^-  ray
+  =/  n  (roll shape.meta ^mul)
+  %+  reshape
+    (en-ray [~[n] bloq.meta %uint ~] (gulf 0 (dec n)))
+  shape.meta
 ```
 
 ---
@@ -177,49 +177,49 @@ A `$ray`
 
 ```hoon
 ++  range
-    ~/  %range
-    |=  [=meta [a=@ b=@] d=@]
-    ^-  ray
-    =.  kind.meta  %i754
-    %-  spac
-    %-  en-ray
+  ~/  %range
+  |=  [=meta [a=@ b=@] d=@]
+  ^-  ray
+  =.  kind.meta  %i754
+  %-  spac
+  %-  en-ray
+  ::
+  ?+    bloq.meta  !!
+      %7
+    =/  ba  (~(sub rq rnd) b a)
+    =/  bad  `(list @)`~[a]
+    |-  ^-  baum
+    ?:  (?:((~(lth rq rnd) ba .~~~0) ~(lte rq rnd) ~(gte rq rnd)) (~(add rq rnd) (snag 0 bad) d) b)
+      =.  shape.meta  ~[(lent bad)]
+      [meta (flop bad)]
+    $(bad [(~(add rq rnd) (snag 0 bad) d) bad])
     ::
-    ?+    bloq.meta  !!
-        %7
-      =/  ba  (~(sub rq rnd) b a)
-      =/  bad  `(list @)`~[a]
-      |-  ^-  baum
-      ?:  (?:((~(lth rq rnd) ba .~~~0) ~(lte rq rnd) ~(gte rq rnd)) (~(add rq rnd) (snag 0 bad) d) b)
-        =.  shape.meta  ~[(lent bad)]
-        [meta (flop bad)]
-      $(bad [(~(add rq rnd) (snag 0 bad) d) bad])
-      ::
-        %6
-      =/  ba  (~(sub rd rnd) b a)
-      =/  bad  `(list @)`~[a]
-      |-  ^-  baum
-      ?:  (?:((~(lth rd rnd) ba .~0) ~(lte rd rnd) ~(gte rd rnd)) (~(add rd rnd) (snag 0 bad) d) b)
-        =.  shape.meta  ~[(lent bad)]
-        [meta (flop bad)]
-      $(bad [(~(add rd rnd) (snag 0 bad) d) bad])
-      ::
-        %5
-      =/  ba  (~(sub rs rnd) b a)
-      =/  bad  `(list @)`~[a]
-      |-  ^-  baum
-      ?:  (?:((~(lth rs rnd) ba .0) ~(lte rs rnd) ~(gte rs rnd)) (~(add rs rnd) (snag 0 bad) d) b)
-        =.  shape.meta  ~[(lent bad)]
-        [meta (flop bad)]
-      $(bad [(~(add rs rnd) (snag 0 bad) d) bad])
-      ::
-        %4
-      =/  ba  (~(sub rh rnd) b a)
-      =/  bad  `(list @)`~[a]
-      |-  ^-  baum
-      ?:  (?:((~(lth rh rnd) ba .~~0) ~(lte rh rnd) ~(gte rh rnd)) (~(add rh rnd) (snag 0 bad) d) b)
-        [meta (flop bad)]
-      $(bad [(~(add rh rnd) (snag 0 bad) d) bad])
-    ==
+      %6
+    =/  ba  (~(sub rd rnd) b a)
+    =/  bad  `(list @)`~[a]
+    |-  ^-  baum
+    ?:  (?:((~(lth rd rnd) ba .~0) ~(lte rd rnd) ~(gte rd rnd)) (~(add rd rnd) (snag 0 bad) d) b)
+      =.  shape.meta  ~[(lent bad)]
+      [meta (flop bad)]
+    $(bad [(~(add rd rnd) (snag 0 bad) d) bad])
+    ::
+      %5
+    =/  ba  (~(sub rs rnd) b a)
+    =/  bad  `(list @)`~[a]
+    |-  ^-  baum
+    ?:  (?:((~(lth rs rnd) ba .0) ~(lte rs rnd) ~(gte rs rnd)) (~(add rs rnd) (snag 0 bad) d) b)
+      =.  shape.meta  ~[(lent bad)]
+      [meta (flop bad)]
+    $(bad [(~(add rs rnd) (snag 0 bad) d) bad])
+    ::
+      %4
+    =/  ba  (~(sub rh rnd) b a)
+    =/  bad  `(list @)`~[a]
+    |-  ^-  baum
+    ?:  (?:((~(lth rh rnd) ba .~~0) ~(lte rh rnd) ~(gte rh rnd)) (~(add rh rnd) (snag 0 bad) d) b)
+      [meta (flop bad)]
+    $(bad [(~(add rh rnd) (snag 0 bad) d) bad])
+  ==
 ```
 
 ---
@@ -240,53 +240,53 @@ A `$ray`
 
 ```hoon
 ++  linspace
-    ~/  %linspace
-    |=  [=meta [a=@ b=@] n=@ud]
-    ^-  ray
-    =.  shape.meta  ~[n]
-    =.  kind.meta  %i754
-    ?<  =(n 0)
-    ?:  =(n 1)  (en-ray meta ~[a])
-    %-  en-ray
-    :-  meta
+  ~/  %linspace
+  |=  [=meta [a=@ b=@] n=@ud]
+  ^-  ray
+  =.  shape.meta  ~[n]
+  =.  kind.meta  %i754
+  ?<  =(n 0)
+  ?:  =(n 1)  (en-ray meta ~[a])
+  %-  en-ray
+  :-  meta
+  ::
+  ?+    bloq.meta  !!
+      %7
+    =/  ba  (~(sub rq rnd) b a)
+    =/  d  (~(div rq rnd) ba (~(sun rq rnd) (dec n)))
+    =|  bad=(list @)
+    =|  i=@ud
+    |-  ^-  ndray
+    ?:  (^lte n +(i))  (flop [b bad])
+    $(i +(i), bad [(~(add rq rnd) a (~(mul rq rnd) (~(sun rq rnd) i) d)) bad])
     ::
-    ?+    bloq.meta  !!
-        %7
-      =/  ba  (~(sub rq rnd) b a)
-      =/  d  (~(div rq rnd) ba (~(sun rq rnd) (dec n)))
-      =|  bad=(list @)
-      =|  i=@ud
-      |-  ^-  ndray
-      ?:  (^lte n +(i))  (flop [b bad])
-      $(i +(i), bad [(~(add rq rnd) a (~(mul rq rnd) (~(sun rq rnd) i) d)) bad])
-      ::
-        %6
-      =/  ba  (~(sub rd rnd) b a)
-      =/  d  (~(div rd rnd) ba (~(sun rd rnd) (dec n)))
-      =|  bad=(list @)
-      =|  i=@ud
-      |-  ^-  ndray
-      ?:  (^lte n +(i))  (flop [b bad])
-      $(i +(i), bad [(~(add rd rnd) a (~(mul rd rnd) (~(sun rd rnd) i) d)) bad])
-      ::
-        %5
-      =/  ba  (~(sub rs rnd) b a)
-      =/  d  (~(div rs rnd) ba (~(sun rs rnd) (dec n)))
-      =|  bad=(list @)
-      =|  i=@ud
-      |-  ^-  ndray
-      ?:  (^lte n +(i))  (flop [b bad])
-      $(i +(i), bad [(~(add rs rnd) a (~(mul rs rnd) (~(sun rs rnd) i) d)) bad])
-      ::
-        %4
-      =/  ba  (~(sub rh rnd) b a)
-      =/  d  (~(div rh rnd) ba (~(sun rh rnd) (dec n)))
-      =|  bad=(list @)
-      =|  i=@ud
-      |-  ^-  ndray
-      ?:  (^lte n +(i))  (flop [b bad])
-      $(i +(i), bad [(~(add rh rnd) a (~(mul rh rnd) (~(sun rh rnd) i) d)) bad])
-    ==
+      %6
+    =/  ba  (~(sub rd rnd) b a)
+    =/  d  (~(div rd rnd) ba (~(sun rd rnd) (dec n)))
+    =|  bad=(list @)
+    =|  i=@ud
+    |-  ^-  ndray
+    ?:  (^lte n +(i))  (flop [b bad])
+    $(i +(i), bad [(~(add rd rnd) a (~(mul rd rnd) (~(sun rd rnd) i) d)) bad])
+    ::
+      %5
+    =/  ba  (~(sub rs rnd) b a)
+    =/  d  (~(div rs rnd) ba (~(sun rs rnd) (dec n)))
+    =|  bad=(list @)
+    =|  i=@ud
+    |-  ^-  ndray
+    ?:  (^lte n +(i))  (flop [b bad])
+    $(i +(i), bad [(~(add rs rnd) a (~(mul rs rnd) (~(sun rs rnd) i) d)) bad])
+    ::
+      %4
+    =/  ba  (~(sub rh rnd) b a)
+    =/  d  (~(div rh rnd) ba (~(sun rh rnd) (dec n)))
+    =|  bad=(list @)
+    =|  i=@ud
+    |-  ^-  ndray
+    ?:  (^lte n +(i))  (flop [b bad])
+    $(i +(i), bad [(~(add rh rnd) a (~(mul rh rnd) (~(sun rh rnd) i) d)) bad])
+  ==
 ```
 
 #### Discussion
@@ -311,13 +311,13 @@ A `$ray`
 
 ```hoon
 ++  urge
-    |=  [=ray [i=@ud n=@ud]]
-    ^-  ^ray
-    ?>  =(1 (lent shape.meta.ray))
-    =.  shape.meta.ray  `(list @)`(zing (reap n ~[1]))
-    =.  shape.meta.ray  (snap shape.meta.ray i n)
-    |-
-    ray
+  |=  [=ray [i=@ud n=@ud]]
+  ^-  ^ray
+  ?>  =(1 (lent shape.meta.ray))
+  =.  shape.meta.ray  `(list @)`(zing (reap n ~[1]))
+  =.  shape.meta.ray  (snap shape.meta.ray i n)
+  |-
+  ray
 ```
 
 ---
@@ -338,25 +338,25 @@ A `$ray`
 
 ```hoon
 ++  scale
-    |=  [=meta data=@]
-    ^-  ray
-    =.  shape.meta  `(list @)`(zing (reap (lent shape.meta) ~[1]))
-    ?-    kind.meta
-        %uint
-      (spac [meta `@ux`data])
-      ::
-        %int2
-      (spac [meta `@ux`data])
-      ::
-        %i754
-      ::  convert date to fl to @r XXX TODO REVISIT whether we want to specify input type
-      =/  fin
-        ?+    bloq.meta  !!
-          %7  (bit:ma:rq (sea:ma:rq data))
-          %6  (bit:ma:rd (sea:ma:rd data))
-          %5  (bit:ma:rs (sea:ma:rs data))
-          %4  (bit:ma:rh (sea:ma:rh data))
-        ==
-      (spac [meta `@ux`fin])
-    ==
+  |=  [=meta data=@]
+  ^-  ray
+  =.  shape.meta  `(list @)`(zing (reap (lent shape.meta) ~[1]))
+  ?-    kind.meta
+      %uint
+    (spac [meta `@ux`data])
+    ::
+      %int2
+    (spac [meta `@ux`data])
+    ::
+      %i754
+    ::  convert date to fl to @r XXX TODO REVISIT whether we want to specify input type
+    =/  fin
+      ?+    bloq.meta  !!
+        %7  (bit:ma:rq (sea:ma:rq data))
+        %6  (bit:ma:rd (sea:ma:rd data))
+        %5  (bit:ma:rs (sea:ma:rs data))
+        %4  (bit:ma:rh (sea:ma:rh data))
+      ==
+    (spac [meta `@ux`fin])
+  ==
 ```

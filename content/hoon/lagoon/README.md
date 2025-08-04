@@ -141,4 +141,6 @@ A `$slice` stores index bounds for selecting a submatrix from a 2D array.  If th
 
 ## Jetting
 
-`/lib/lagoon` is jetted as part of the `%non` core.
+`/lib/lagoon` is jetted as part of the `%non` core.  Deterministic IEEE 754 floating-point arithmetic is provided by SoftBLAS built on the reference SoftFloat used by the rest of Urbit's `@rs` etc. support.
+
+- [SoftBLAS](https://github.com/urbit/softblas)

@@ -1,4 +1,5 @@
 ---
+hidden: true
 description: "Urbit docs style guide."
 layout:
   title:

@@ -6,7 +6,7 @@ This is the Markdown source content for the Urbit Docs, currently hosted on GitB
 
 You can contribute to the docs by cloning this repo and making a PR to the `master` branch, or with the "Edit on GitHub" button on the relevant page of docs.urbit.org.
 
-Before submitting a PR, please consult the [docs style guide](./STYLE.md).
+Before submitting a PR, please consult the [docs style guide](https://docs.urbit.org/style).
 
 New files added in the `/content` folder should be added to the table of contents in [`SUMMARY.md`](./content/SUMMARY.md).
 

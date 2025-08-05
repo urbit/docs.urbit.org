@@ -1,3 +1,18 @@
+---
+description: "Urbit docs style guide."
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Urbit Docs Style Guide
 
 ## Style & Tone of Voice

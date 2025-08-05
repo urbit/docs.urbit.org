@@ -2,6 +2,7 @@
 
 * [What is Urbit?](README.md)
 * [Get on Urbit](get-on-urbit.md)
+* [Style Guide](style.md)
 
 ## Build on Urbit
 

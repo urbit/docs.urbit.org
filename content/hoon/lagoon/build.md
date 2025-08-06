@@ -4,11 +4,11 @@ Identity matrix of shape nxn.
 
 #### Accepts
 
-A `$meta`
+A `$meta`.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -50,15 +50,15 @@ A `$ray`
 
 ## `+zeros` {#zeros}
 
-Zeroes
+An array containing only zeros as values.
 
 #### Accepts
 
-A `$meta` of the target shape and parameters
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -74,15 +74,15 @@ A `$ray`
 
 ## `+ones` {#ones}
 
-Ones
+An array containing only ones as values.
 
 #### Accepts
 
-A `$meta` of the target shape and parameters
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -111,15 +111,15 @@ A `$ray`
 
 ## `+iota` {#iota}
 
-Produce a 1-dimensional index array. Only produces %uint. Note that this runs from 0 to n-1.  (The point of ++iota is to be an index, so it needs to pattern-match the context rather than slavishly follow APL.)
+Produce a 1-dimensional index array. Only produces `%uint`. Note that this runs from 0 to $$n-1$$.  (The point of `+iota` is to be an index, so it needs to pattern-match the context rather than slavishly follow APL.)
 
 #### Accepts
 
-A `$meta` of the target shape and parameters
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -133,19 +133,23 @@ A `$ray`
   (en-ray meta (gulf 0 (dec n)))
 ```
 
+#### Discussion
+
+The target shape is determined from the length of `.shape` in `.meta`.
+
 ---
 
 ## `+magic` {#magic}
 
-Produce a magic square in nD.
+Produce a magic square in $$n$$ dimensions.
 
 #### Accepts
 
-A `$meta` of the target shape and parameters
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -163,15 +167,15 @@ A `$ray`
 
 ## `+range` {#range}
 
-Produce a 1-dimensional range along one dimension as $[a, b)$ with interval d. Only produces %i754.
+Produce a 1-dimensional range along one dimension as $$[a, b)$$ with interval $$d$$. Only produces `%i754`.
 
 #### Accepts
 
-A `$meta` of the target shape and parameters
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -226,7 +230,7 @@ A `$ray`
 
 ## `+linspace` {#linspace}
 
-Produce a 1-dimensional range along one dimension as [a b] with number of steps n. Only produces %i754.
+Produce a 1-dimensional range along one dimension as $$[a b]$$ with number of steps $$n$$. Only produces `%i754`.
 
 #### Accepts
 
@@ -234,7 +238,7 @@ A `$meta` of the target shape and parameters, a pair of left-hand and right-hand
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -301,11 +305,11 @@ Coerce 1D array along specified dimension with given overall dimensionality.
 
 #### Accepts
 
-Parameters as specified in source
+A `$ray`, a target dimension index `.i`, and a resulting overall dimensionality `.n`.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 
@@ -324,15 +328,15 @@ A `$ray`
 
 ## `+scale` {#scale}
 
-Produce an n-dimensional array containing a single value.
+Produce an $$n$$-dimensional array containing a single value.
 
 #### Accepts
 
-A `$meta` of the target shape and parameters, and the single value as an atom
+A `$meta` of the target shape and parameters, and the single value as an atom.
 
 #### Produces
 
-A `$ray`
+A `$ray`.
 
 #### Source
 

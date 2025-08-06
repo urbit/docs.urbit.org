@@ -55,11 +55,11 @@ Utility function to print an array.
 
 #### Accepts
 
-Parameters as specified in source
+A `$ray`.
 
 #### Produces
 
-See source for return type details.
+A `$tank` `%slog` (as side effect) and `~`.
 
 #### Source
 
@@ -75,7 +75,7 @@ Convert a `$ray` to a `$tank`.
 
 #### Accepts
 
-Parameters as specified in source
+A list of data, a shape as a list of dimensions, and the scalar type as a `$kind`.
 
 #### Produces
 
@@ -112,7 +112,7 @@ Utility function to get the term tag associated with a `$ray`'s metadata type.
 
 #### Accepts
 
-See source for parameter details.
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
@@ -168,11 +168,11 @@ Produce a submatrix from a `$ray` using [slice](README.md#slice) notation.
 
 #### Accepts
 
-See source for parameter details.
+A `$slice` and a `$ray`.
 
 #### Produces
 
-See source for return type details.
+A `$ray`.
 
 #### Source
 
@@ -241,11 +241,11 @@ Produce the cartesian product of two lists.
 
 #### Accepts
 
-See source for parameter details.
+A pair of lists.
 
 #### Produces
 
-See source for return type details.
+The cartesian product as a list of pairs.
 
 #### Source
 
@@ -268,7 +268,7 @@ Utility function to gather indices for submatrix extraction.
 
 #### Accepts
 
-Parameters as specified in source
+A `(list (list (list @)))`.
 
 #### Produces
 
@@ -300,7 +300,7 @@ A `$ray` and target index as a list of multi-dimensional indices.  Crashes if in
 
 #### Produces
 
-The value as a `@ux`.
+A `@ux`.
 
 #### Source
 
@@ -327,7 +327,7 @@ A `$ray`, target index as a list of multi-dimensional indices, and the value to 
 
 #### Produces
 
-The updated `$ray`.
+A `$ray`.
 
 #### Source
 
@@ -356,7 +356,7 @@ A `$ray` and target index as a single-entry list of multi-dimensional indices.
 
 #### Produces
 
-A `$ray`. of dimension $n-1$.
+A `$ray` of dimension $$n-1$$.
 
 #### Source
 
@@ -394,7 +394,7 @@ A `$ray`, target index as a list of multi-dimensional indices, and the row to se
 
 #### Produces
 
-The updated `$ray`.
+A `$ray`.
 
 #### Source
 
@@ -428,7 +428,7 @@ A `$ray` and target index as a single-entry list of multi-dimensional indices.
 
 #### Produces
 
-A `$ray`. of dimension $n-1$.
+A `$ray` of dimension $$n-1$$.
 
 #### Source
 
@@ -451,7 +451,7 @@ A `$ray`, target index as a list of multi-dimensional indices, and the column to
 
 #### Produces
 
-The updated `$ray`.
+A `$ray`.
 
 #### Source
 
@@ -474,7 +474,7 @@ A `$ray` and target index as a list of multi-dimensional indices.
 
 #### Produces
 
-A `@`
+A `$bloq` offset `@`.
 
 #### Source
 
@@ -493,11 +493,11 @@ Utility function to convert an n-dimensional index to a scalar index.
 
 #### Accepts
 
-Parameters as specified in source
+A shape as a list of dimensions and a scalar index as a list of multi-dimensional indices.
 
 #### Produces
 
-An index `@`.
+A scalar index `@`.
 
 #### Source
 
@@ -525,15 +525,15 @@ An index `@`.
 
 ## `+strides` {#strides}
 
-Return the stride in each dimension:  row, col, layer, &c. The stride is reported in units of bits.
+Return the stride in each dimension:  row, col, layer, etc.
 
 #### Accepts
 
-See source for parameter details.
+A `$meta` of the target shape and parameters.
 
 #### Produces
 
-A `(list`
+A `(list @)`.
 
 #### Source
 
@@ -553,6 +553,10 @@ A `(list`
   ==
 ```
 
+#### Discussion
+
+The stride is reported in units of bits.
+
 ---
 
 ## `+get-dim` {#getdim}
@@ -561,11 +565,11 @@ Utility function to convert a scalar index to an n-dimensional index.
 
 #### Accepts
 
-Parameters as specified in source
+A shape as a list of dimensions and a scalar index.
 
 #### Produces
 
-See source for return type details.
+The $$n$$-dimensional index as a `(list @)`.
 
 #### Source
 
@@ -593,7 +597,7 @@ Utility function to get the item index from a multi-dimensional index.
 
 #### Accepts
 
-Parameters as specified in source
+A shape as a list of dimensions and a scalar index.
 
 #### Produces
 
@@ -725,7 +729,7 @@ Utility function to recursively rip a bite into a list of atoms.
 
 #### Accepts
 
-Parameters as specified in source
+A target `$bite` and an atom to rip `.b`.
 
 #### Produces
 
@@ -755,7 +759,7 @@ A `$ray`.
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -827,7 +831,7 @@ A `$ray`.
 
 ## `+spac` {#spac}
 
-Utility function to add a pinned 0x1 MSB to an in-flight `$ray`'s data to preserve leading zeros.  For internal library use only.
+Utility function to add a pinned `0x1` MSB to an in-flight `$ray`'s data to preserve leading zeros.  For internal library use only.
 
 #### Accepts
 
@@ -851,7 +855,7 @@ A `$ray`.
 
 ## `+unspac` {#unspac}
 
-Utility function to remove the pinned 0x1 MSB from an in-flight `$ray`'s data.  For internal library use only.
+Utility function to remove the pinned `0x1` MSB from an in-flight `$ray`'s data.  For internal library use only.
 
 #### Accepts
 
@@ -879,7 +883,7 @@ Convert a scalar value to an $n$-dimensional `$ray`.
 
 #### Accepts
 
-Parameters as specified in source
+A `$meta` of the target shape and parameters, and the single value as an atom `.data`.
 
 #### Produces
 

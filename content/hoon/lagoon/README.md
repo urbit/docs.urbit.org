@@ -31,7 +31,7 @@ Lagoon's data types are supplied by `/sur/lagoon`.
 
 ## `$ray`
 
-$n$-dimensional data array
+$$n$$-dimensional data array
 
 A pair of a bare array as an LSB atom with an associated metadata descriptor.
 
@@ -50,7 +50,7 @@ A pair of a bare array as an LSB atom with an associated metadata descriptor.
 
 Metadata for `$ray`
 
-A description of the necessary metadata to disambiguate an atom into an array.  The dimensionality of the array is derived from `shape`; the block width from `bloq`; and the type of data each entry should be interpreted as from `kind`.  An arbitrary noun `tail` is supplied for various current and future purposes.
+A description of the necessary metadata to disambiguate an atom into an array.  The dimensionality of the array is derived from `.shape`; the block width from `.bloq`; and the type of data each entry should be interpreted as from `.kind`.  An arbitrary noun `.tail` is supplied for various current and future purposes.
 
 #### Source
 
@@ -65,9 +65,9 @@ A description of the necessary metadata to disambiguate an atom into an array.  
 
 #### Discussion
 
-An array has a dimensionality, and a length-$5$ vector is not the same as a $5 \times 1$ or a $5 \times 1 \times 1$ array even if the data representation as an atom is the same.
+An array has a dimensionality, and a length-$$5$$ vector is not the same as a $$5 \times 1$$ or a $$5 \times 1 \times 1$$ array even if the data representation as an atom is the same.
 
-Metadata are constrained by various factors; for instance, an IEEE 754 floating-point array may only be of `bloq` sizes 4 (16-bit half-precision, `@rh`), 5 (32-bit regular precision, `@rs`), 6 (64-bit double precision, `@rd`), and 7 (128-bit quadruple-precision, `@rq`).  A `bloq` size of 3 will fail due to no operators being implemented for that bit width.
+Metadata are constrained by various factors; for instance, an IEEE 754 floating-point array may only be of `.bloq` sizes 4 (16-bit half-precision, `@rh`), 5 (32-bit regular precision, `@rs`), 6 (64-bit double precision, `@rd`), and 7 (128-bit quadruple-precision, `@rq`).  A `.bloq` size of 3 will fail due to no operators being implemented for that bit width.
 
 ## `$kind`
 
@@ -87,15 +87,15 @@ Array scalar type
 
 Lagoon is a general-purpose linear algebra platform.  At the current time, it provides support for:
 
-* `%i754`, IEEE 754 floating-point numbers
-* `%uint`, unsigned integers (to bit width, not arbitrarily sized like conventional atoms)
-* `%int2`, twos-complement integers (to bit width, not `@s`-style ZigZag atoms)
+* `%i754`, IEEE 754 floating-point numbers.
+* `%uint`, unsigned integers (to bit width, not arbitrarily sized like conventional atoms).
+* `%int2`, twos-complement integers (to bit width, not `@s`-style ZigZag atoms).
 
 ## `$baum`
 
-$n$-dimensional array with metadata, unwrapped
+$$n$$-dimensional array with metadata, unwrapped
 
-`$baum` is the `tape` to `$ray` as `cord`:  that is, it unpacks the array atom into a list.  This is relatively inefficient, but can be convenient for practical operations.
+`$baum` is the tape to `$ray` as cord:  that is, it unpacks the array atom into a list.  This is relatively inefficient, but can be convenient for practical operations.
 
 #### Source
 
@@ -108,9 +108,9 @@ $n$-dimensional array with metadata, unwrapped
 
 ## `$ndray`
 
-$n$-dimensional array with metadata, unwrapped
+$$n$$-dimensional array with metadata, unwrapped
 
-`$ndray` is the `tape` to `$data=@ux` as `cord`:  that is, it unpacks the array atom into a list.  This is relatively inefficient, but can be convenient for practical operations.
+`$ndray` is the tape to `$data=@ux` as cord:  that is, it unpacks the array atom into a list.  This is relatively inefficient, but can be convenient for practical operations.
 
 #### Source
 

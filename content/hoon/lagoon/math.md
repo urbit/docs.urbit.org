@@ -8,7 +8,7 @@ A `$ray`.
 
 #### Produces
 
-See source for return type details.
+A `$ray`.
 
 #### Source
 
@@ -36,7 +36,7 @@ A `$ray`.
 
 #### Produces
 
-A `@ud`
+A `@ud`.
 
 #### Source
 
@@ -61,7 +61,7 @@ A `$ray`.
 
 #### Produces
 
-See source for return type details.
+A `$ray`.
 
 #### Source
 
@@ -89,7 +89,7 @@ A `$ray`.
 
 #### Produces
 
-A `@ud`
+A `@ud`.
 
 #### Source
 
@@ -216,11 +216,11 @@ A `$ray`.
 
 ## `+dot` {#dot}
 
-Function: dot
+Dot product of two arrays.
 
 #### Accepts
 
-Parameters as specified in source
+A pair of `$ray`s with the same shape.
 
 #### Produces
 
@@ -549,11 +549,11 @@ A `$ray`.
 
 ## `+mod` {#mod}
 
-Function: mod
+Yield the modulus of two arrays element-wise.
 
 #### Accepts
 
-Parameters as specified in source
+A pair of `$ray`s with the same shape.
 
 #### Produces
 
@@ -573,11 +573,11 @@ A `$ray`.
 
 ## `+pow-n` {#pown}
 
-Function: pow n
+Raise a `$ray` to the power of an integer $$n$$.
 
 #### Accepts
 
-Parameters as specified in source
+A `$ray` and an integer power `.n` (as `@ud` not `@r`).
 
 #### Produces
 
@@ -743,7 +743,7 @@ A `$ray`.
 
 ## `+mpow-n` {#mpown}
 
-Raise a matrix to the power of an integer $n$.
+Raise a matrix to the power of an integer $$n$$.
 
 #### Accepts
 

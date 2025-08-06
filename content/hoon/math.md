@@ -23,14 +23,14 @@ Like [Lagoon](lagoon/README.md), `/lib/math` is intended to support general-purp
 
 Like the basic floating-point support in Hoon, `/lib/math` is divided into doors along the lines of the supported data types.  At the current time, it supports:
 
-- `++rh`, half-precision (16-bit) floating-point numbers
-- `++rs`, single-precision (32-bit) floating-point numbers
-- `++rd`, double-precision (64-bit) floating-point numbers
-- `++rq`, quadruple-precision (128-bit) floating-point numbers
+- `+rh`, half-precision (16-bit) floating-point numbers.
+- `+rs`, single-precision (32-bit) floating-point numbers.
+- `+rd`, double-precision (64-bit) floating-point numbers.
+- `+rq`, quadruple-precision (128-bit) floating-point numbers.
 
 ## `+rs` {#rs}
 
-Single-precision IEEE-754 mathematical operations.
+Single-precision IEEE 754 mathematical operations.
 
 A container core for operations related to single-precision binary floats.
 
@@ -56,7 +56,7 @@ The value $$\tau = 2 \pi$$ (OEIS A019692).
 
 #### Produces
 
-The value of tau or 2π, represented as a single-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$\pi$$, represented as a single-precision floating-point atom.
 
 #### Source
 
@@ -72,7 +72,7 @@ The value pi (OEIS A000796).
 
 #### Produces
 
-The value of π, represented as a single-precision floating-point atom.
+The value of pi $$\pi$$, represented as a single-precision floating-point atom.
 
 #### Source
 
@@ -356,7 +356,7 @@ A floating-point atom (`@rs`).
 
 #### Produces
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Source
 
@@ -368,11 +368,11 @@ A decimal form (`dn`).
 
 ### `+grd` {#grd}
 
-The floating-point atom of a decimal form.  Inverse of `++drg`.
+The floating-point atom of a decimal form.  Inverse of `+drg`.
 
 #### Accepts
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Produces
 
@@ -396,7 +396,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -416,7 +416,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -436,7 +436,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -456,7 +456,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -476,7 +476,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -496,7 +496,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -516,7 +516,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -536,7 +536,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -556,7 +556,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -578,7 +578,7 @@ A pair of floating-point atoms (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -607,7 +607,7 @@ A floating-point atom (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -753,7 +753,7 @@ A floating-point atom (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -773,7 +773,7 @@ A floating-point atom (`@rs`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -1747,7 +1747,7 @@ A floating-point atom (`@rs`).
 
 ## `+rd` {#rd}
 
-Double-precision IEEE-754 mathematical operations.
+Double-precision IEEE 754 mathematical operations.
 
 A container core for operations related to double-precision binary floats.
 
@@ -1773,7 +1773,7 @@ The value $$\tau = 2 \pi$$ (OEIS A019692).
 
 #### Produces
 
-The value of tau or 2π, represented as a double-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$\pi$$, represented as a double-precision floating-point atom.
 
 #### Examples
 
@@ -1796,7 +1796,7 @@ The value pi (OEIS A000796).
 
 #### Produces
 
-The value of π, represented as a double-precision floating-point atom.
+The value of pi $$\pi$$, represented as a double-precision floating-point atom.
 
 #### Examples
 
@@ -2177,7 +2177,7 @@ A floating-point atom (`@rd`).
 
 #### Produces
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Examples
 
@@ -2199,11 +2199,11 @@ A decimal form (`dn`).
 
 ### `+grd` {#grd}
 
-The floating-point atom of a decimal form.  Inverse of `++drg`.
+The floating-point atom of a decimal form.  Inverse of `+drg`.
 
 #### Accepts
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Produces
 
@@ -2237,7 +2237,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2268,7 +2268,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2299,7 +2299,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2330,7 +2330,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2361,7 +2361,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2392,7 +2392,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2423,7 +2423,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2454,7 +2454,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2485,7 +2485,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2518,7 +2518,7 @@ A pair of floating-point atoms (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2558,7 +2558,7 @@ A floating-point atom (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2728,7 +2728,7 @@ A floating-point atom (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -2757,7 +2757,7 @@ A floating-point atom (`@rd`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -3713,7 +3713,7 @@ A floating-point atom (`@rd`).
 
 ## `+rh` {#rh}
 
-Half-precision IEEE-754 floating-point arithmetic.
+Half-precision IEEE 754 floating-point arithmetic.
 
 A container core for operations related to half-precision binary floats.
 
@@ -3739,7 +3739,7 @@ The value $$\tau = 2 \pi$$ (OEIS A019692).
 
 #### Produces
 
-The value of tau or  2π, represented as a half-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$2\pi$$, represented as a half-precision floating-point atom.
 
 #### Examples
 
@@ -3760,7 +3760,7 @@ The value pi (OEIS A000796).
 
 #### Produces
 
-The value of π, represented as a half-precision floating-point atom.
+The value of pi $$\pi$$, represented as a half-precision floating-point atom.
 
 #### Examples
 
@@ -4113,7 +4113,7 @@ A floating-point atom (`@rh`).
 
 #### Produces
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Examples
 
@@ -4137,7 +4137,7 @@ The floating-point atom of a decimal form.  Inverse of `+drg`.
 
 #### Accepts
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Produces
 
@@ -4172,7 +4172,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4203,7 +4203,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4234,7 +4234,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4265,7 +4265,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4296,7 +4296,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4327,7 +4327,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4358,7 +4358,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4389,7 +4389,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4420,7 +4420,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4453,7 +4453,7 @@ A pair of floating-point atoms (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4493,7 +4493,7 @@ A floating-point atom (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4661,7 +4661,7 @@ A floating-point atom (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -4690,7 +4690,7 @@ A floating-point atom (`@rh`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Examples
 
@@ -5516,7 +5516,7 @@ A floating-point atom (`@rh`).
 
 ## `+rq` {#rq}
 
-Quadruple-precision IEEE-754 floating-point arithmetic.
+Quadruple-precision IEEE 754 floating-point arithmetic.
 
 A container core for operations related to quadruple-precision binary floats.
 
@@ -5542,7 +5542,7 @@ The value $$\tau = 2 \pi$$ (OEIS A019692).
 
 #### Produces
 
-The value of tau or  2π, represented as a quad-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$2\pi$$, represented as a quad-precision floating-point atom.
 
 #### Examples
 
@@ -5563,7 +5563,7 @@ The value pi (OEIS A000796).
 
 #### Produces
 
-The value of π, represented as a quad-precision floating-point atom.
+The value of pi $$\pi$$, represented as a quad-precision floating-point atom.
 
 #### Examples
 
@@ -5879,7 +5879,7 @@ A floating-point atom (`@rq`).
 
 #### Produces
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Source
 
@@ -5891,11 +5891,11 @@ A decimal form (`dn`).
 
 ### `+grd` {#grd}
 
-The floating-point atom of a decimal form.  Inverse of `++drg`.
+The floating-point atom of a decimal form.  Inverse of `+drg`.
 
 #### Accepts
 
-A decimal form (`dn`).
+A decimal form (`+dn`).
 
 #### Produces
 
@@ -5919,7 +5919,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -5939,7 +5939,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -5959,7 +5959,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -5979,7 +5979,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -5999,7 +5999,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6019,7 +6019,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6039,7 +6039,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6059,7 +6059,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6079,7 +6079,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6101,7 +6101,7 @@ A pair of floating-point atoms (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6130,7 +6130,7 @@ A floating-point atom (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6252,7 +6252,7 @@ A floating-point atom (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 
@@ -6272,7 +6272,7 @@ A floating-point atom (`@rq`).
 
 #### Produces
 
-A loobean.
+A `$flag`.
 
 #### Source
 

@@ -1,0 +1,3 @@
+# UrWASM Generator Example
+
+foo

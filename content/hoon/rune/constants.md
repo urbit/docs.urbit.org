@@ -164,7 +164,7 @@ Aura         Meaning                                 Example Literal Syntax
 @n           nil (for compiler, not castable)        ~
 @p           phonemic base (ship name)               ~sorreg-namtyv
 @q           phonemic base, unscrambled              .~litsyn-polbel
-@r           IEEE-754 floating-point
+@r           IEEE 754 floating-point
   @rh        half precision (16 bits)                .~~3.14
   @rs        single precision (32 bits)              .6.022141e23
   @rd        double precision (64 bits)              .~6.02214085774e23

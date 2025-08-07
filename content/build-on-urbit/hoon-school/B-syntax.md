@@ -555,7 +555,7 @@ Thus equipped, we can evaluate the Heaviside function for particular values of *
 0
 ```
 
-We don't know yet how to store this capability for future use on as-yet-unknown values of `.x`, but we'll see how to do so in a future lesson.
+We don't know yet how to store this capability for future use on as-yet-unknown values of $$x$$, but we'll see how to do so in a future lesson.
 
 Carefully map how the runes in that statement relate to each other, and notice how the taller structure makes it relatively easier to read and understand what's going on.
 

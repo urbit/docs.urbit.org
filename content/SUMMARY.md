@@ -237,6 +237,7 @@
 * [Limbs and wings](hoon/limbs/README.md)
   * [Limbs](hoon/limbs/limb.md)
   * [Wings](hoon/limbs/wing.md)
+* [Mathematics](hoon/math.md)
 * [Mips (Maps of Maps)](hoon/mip.md)
 * [Parsing Text](hoon/parsing.md)
 * [Runes](hoon/rune/README.md)

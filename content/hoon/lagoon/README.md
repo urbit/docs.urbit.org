@@ -108,7 +108,7 @@ $$n$$-dimensional array with metadata, unwrapped.
 
 ## `$ndray`
 
-$$n$$-dimensional array with metadata, unwrapped
+$$n$$-dimensional array with metadata, unwrapped.
 
 `$ndray` is the tape to `$data=@ux` as cord:  that is, it unpacks the array atom into a list.  This is relatively inefficient, but can be convenient for practical operations.
 

@@ -63,7 +63,7 @@ In our case, we'll have to write our own bindings manually in Hoon. We'll cover 
 
 ## Lia
 
-The main theortical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWASM solves this by executing compiled WASM in Lia, a tiny interpreter that manages WASM's handful of nondeterministic edge-cases such that the same inputs to a WASM function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute WASM code at near-native speeds.
+The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWASM solves this by executing compiled WASM in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages WASM's handful of nondeterministic edge-cases such that the same inputs to a WASM function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute WASM code at near-native speeds.
 
 * Determinism solved by Lia
   * [urwasm-jetting.md](https://gist.github.com/Quodss/196a4deb3e24a652c021469d2c4544fb)
@@ -71,4 +71,35 @@ The main theortical blocker to executing non-Hoon code on Urbit was that doing s
     * Motivation
       * Higher level interpreting function
       * Lia interpreter
+
+## UrWASM Structure
+
+UrWASM is structured as several nested cores, with each core in this list being in the [subject](../../hoon/why-hoon.md#subject-oriented-programming) of the core below.
+
+```
+/sur/wasm/wasm/hoon             ::  WASM types
+/sur/wasm/engine/hoon           ::  WASM interpreter types
+/sur/wasm/lia/hoon              ::  Lia types
+/lib/wasm/parser/hoon           ::  WASM parser
+/lib/wasm/validator/hoon        ::  WASM validator
+/lib/wasm/runner/op-def/hoon    ::  WASM operator definitions
+/lib/wasm/runner/engine/hoon    ::  WASM interpreter
+/lib/wasm/lia/hoon              ::  Lia interpreter
+```
+
+All cores except `/lib/wasm/lia/hoon`, are additionally wrapped in one-armed cores for easy invocation:
+
+```
+/sur/wasm/wasm/hoon             ::  wasm-sur
+/sur/wasm/engine/hoon           ::  engine-sur
+/sur/wasm/lia/hoon              ::  lia-sur
+/lib/wasm/parser/hoon           ::  parser
+/lib/wasm/validator/hoon        ::  validator
+/lib/wasm/runner/op-def/hoon    ::  op-def
+/lib/wasm/runner/engine/hoon    ::  engine
+```
+
+Thus if you imported `/lib/wasm/lia/hoon` as `wasm`, you can get the core with Lia types as `lia-sur:wasm`.
+
+UrWASM's data types and functionality are covered in detail in the [reference](./reference/README.md) section.
 

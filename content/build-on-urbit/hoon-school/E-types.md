@@ -105,7 +105,7 @@ Here's a non-exhaustive list of auras, along with examples of corresponding lite
 | `@da`  | absolute date                | `~2018.5.14..22.31.46..1435` |
 | `@dr`  | relative date (ie, timespan) | `~h5.m30.s12` |
 | `@p`   | phonemic base (ship name)    | `~sampel-palnet` |
-| `@r`   | [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754) floating-point |  |
+| `@r`   | [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) floating-point |  |
 | `@rd`  | double precision  (64 bits)  | `.~6.02214085774e23` |
 | `@rh`  | half precision (16 bits)     | `.~~3.14` |
 | `@rq`  | quad precision (128 bits)    | `.~~~6.02214085774e23` |

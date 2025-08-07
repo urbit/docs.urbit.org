@@ -230,7 +230,7 @@ A `$ray`.
 
 ## `+linspace` {#linspace}
 
-Produce a 1-dimensional range along one dimension as $$[a b]$$ with number of steps $$n$$. Only produces `%i754`.
+Produce a 1-dimensional range along one dimension as $$[a, b]$$ with number of steps $$n$$. Only produces `%i754`.
 
 #### Accepts
 

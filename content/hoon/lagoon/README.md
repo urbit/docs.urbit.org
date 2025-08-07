@@ -31,7 +31,7 @@ Lagoon's data types are supplied by `/sur/lagoon`.
 
 ## `$ray`
 
-$$n$$-dimensional data array
+$$n$$-dimensional data array.
 
 A pair of a bare array as an LSB atom with an associated metadata descriptor.
 
@@ -48,7 +48,7 @@ A pair of a bare array as an LSB atom with an associated metadata descriptor.
 
 ## `$meta`
 
-Metadata for `$ray`
+Metadata for `$ray`.
 
 A description of the necessary metadata to disambiguate an atom into an array.  The dimensionality of the array is derived from `.shape`; the block width from `.bloq`; and the type of data each entry should be interpreted as from `.kind`.  An arbitrary noun `.tail` is supplied for various current and future purposes.
 
@@ -71,7 +71,7 @@ Metadata are constrained by various factors; for instance, an IEEE 754 floating-
 
 ## `$kind`
 
-Array scalar type
+Array scalar type.
 
 #### Source
 
@@ -93,7 +93,7 @@ Lagoon is a general-purpose linear algebra platform.  At the current time, it pr
 
 ## `$baum`
 
-$$n$$-dimensional array with metadata, unwrapped
+$$n$$-dimensional array with metadata, unwrapped.
 
 `$baum` is the tape to `$ray` as cord:  that is, it unpacks the array atom into a list.  This is relatively inefficient, but can be convenient for practical operations.
 

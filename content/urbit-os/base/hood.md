@@ -33,7 +33,7 @@ Drum's additional API is as follows.
 
 #### Our ship
 
-A scry with a path of `/x/kiln/our` will return our ship as an `@p` with a `%noun` mark.
+A scry with a path of `/x/kiln/our` will return our ship as a `@p` with a `%noun` mark.
 
 Example:
 
@@ -614,7 +614,7 @@ A poke with a mark of `%helm-gall-lave` will kill the specified incoming Gall su
 - `.subs`: a list of tuples where:
   - `.v`: the `%a` option simultaneously sends the subscriber a `%kick` and calls the target agent's `+on-leave` arm as though the subscriber initiated it. The `%g` option just calls `+on-leave` without sending a `%kick` to the subscriber.
   - `.ship`: the subscriber's ship.
-  - `.dude`: the agent, an `@tas`.
+  - `.dude`: the agent, a `@tas`.
   - `.duct`: the subscription `$duct`.
 
 #### Example

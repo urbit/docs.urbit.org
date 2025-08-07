@@ -31,10 +31,10 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [2b: List Logic](./2b.md) - List manipulation functions.
 
 ### Bit and Logic Operations {#bit-and-logic-operations}
-- [2c: Bit Arithmetic](./2c.md) - Functions for assembling, disassembling, and manipulating atoms at the bit level.
+- [2c: Bit Arithmetic](./2c.md) - Functions for assembling, disassembling, and manipulating `$atom`s at the bit level.
 - [2d: Bit Logic](./2d.md) - Bitwise logical operations including binary AND, OR, XOR, and bit manipulation.
 - [2e: Insecure Hashing](./2e.md) - Non-cryptographic hash functions including MurmurHash and other fast hashing algorithms.
-- [2f: Noun Ordering](./2f.md) - Functions for ordering and comparing nouns.
+- [2f: Noun Ordering](./2f.md) - Functions for ordering and comparing `$noun`s.
 - [2g: Unsigned Powers](./2g.md) - Exponentiation and power-related operations for unsigned integers.
 
 ### Container Data Structures {#container-data-structures}
@@ -43,7 +43,7 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [2j: Jar and Jug Logic](./2j.md) - Operations for jar (map of lists) and jug (map of sets) data structures.
 - [2k: Queue Logic](./2k.md) - Queue data structure operations for first-in, first-out data handling.
 - [2l: Container from Container](./2l.md) - Functions for transforming one container type into another.
-- [2m: Container from Noun](./2m.md) - Functions for creating containers from raw noun data.
+- [2m: Container from Noun](./2m.md) - Functions for creating containers from raw `$noun` data.
 - [2n: Functional Hacks](./2n.md) - Utility functions and functional programming helpers.
 - [2o: Normalizing Containers](./2o.md) - Additional container types and operations.
 - [2p: Serialization](./2p.md) - Functions for serializing and deserializing data structures.
@@ -71,8 +71,8 @@ The Hoon standard library provides a complete suite of functions for working wit
 - [4h: Parsing (ASCII Glyphs)](4h.md) - Parsers for ASCII characters and common text symbols.
 - [4i: Parsing (Useful Idioms)](4i.md) - Common parsing patterns and idiomatic parser constructions.
 - [4j: Parsing (Bases and Base Digits)](4j.md) - Parsers for numbers in various bases and digit representations.
-- [4k: Atom Printing](./4k.md) - Functions for converting atoms to various textual representations.
-- [4l: Atom Parsing](./4l.md) - Functions for parsing text into atoms with various auras.
+- [4k: Atom Printing](./4k.md) - Functions for converting `$atom`s to various textual representations.
+- [4l: Atom Parsing](./4l.md) - Functions for parsing text into `$atom`s with various auras.
 - [4m: Formatting Functions](./4m.md) - Text formatting and pretty-printing utilities.
 - [4n: Virtualization](./4n.md) - Virtualization and abstraction utilities for code execution.
 - [4o: Molds and Mold-builders](./4o.md) - Advanced mold operations and type system utilities for complex type manipulation.

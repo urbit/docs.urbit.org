@@ -99,7 +99,7 @@ A `$bowl` is given to the agent core each time an event comes in. The fields are
 - `dap`: The name of our agent.
 - `wex`: Outgoing subscriptions. That is, subscriptions our agent has initiated. See the [`$boat`](#boat) section for details of the type.
 - `sup`: Incoming subscriptions. That is, subscriptions others have made to our agent. See the [`$bitt`](#bitt) section for details of the type.
-- `sky`: Remote scry bindings. A map from binding paths to a [`$fans`](#fans), an ordered map of files by revision number. Tombstoned files have an `@uvI` hash rather than `$page`.
+- `sky`: Remote scry bindings. A map from binding paths to a [`$fans`](#fans), an ordered map of files by revision number. Tombstoned files have a `@uvI` hash rather than `$page`.
 - `act`: The total number of [`$move`](../../../hoon/arvo.md#move)s our agent has processed so far.
 - `eny`: 512 bits of entropy.
 - `now`: The current date-time.

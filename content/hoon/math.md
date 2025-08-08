@@ -52,11 +52,11 @@ A container core for operations related to single-precision binary floats.
 
 ### `+tau` {#tau}
 
-The value $$\tau = 2 \pi$$ (OEIS A019692).
+The value $$\tau = 2 \pi$$ (OEIS A019692), radian angle measure of a full turn.
 
 #### Produces
 
-The value of tau $$\tau$$ or 2 pi $$\pi$$, represented as a single-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$\pi$$, radian angle measure of a full turn, represented as a single-precision floating-point atom.
 
 #### Source
 
@@ -68,11 +68,11 @@ The value of tau $$\tau$$ or 2 pi $$\pi$$, represented as a single-precision flo
 
 ### `+pi` {#pi}
 
-The value pi (OEIS A000796).
+The value pi (OEIS A000796), radian angle measure of a half turn.
 
 #### Produces
 
-The value of pi $$\pi$$, represented as a single-precision floating-point atom.
+The value of pi $$\pi$$, radian angle measure of a half turn, represented as a single-precision floating-point atom.
 
 #### Source
 
@@ -1769,11 +1769,11 @@ A container core for operations related to double-precision binary floats.
 
 ### `+tau` {#tau}
 
-The value $$\tau = 2 \pi$$ (OEIS A019692).
+The value $$\tau = 2 \pi$$ (OEIS A019692), radian angle measure of a full turn.
 
 #### Produces
 
-The value of tau $$\tau$$ or 2 pi $$\pi$$, represented as a double-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$\pi$$, radian angle measure of a full turn, represented as a single-precision floating-point atom.
 
 #### Examples
 
@@ -1792,11 +1792,11 @@ The value of tau $$\tau$$ or 2 pi $$\pi$$, represented as a double-precision flo
 
 ### `+pi` {#pi}
 
-The value pi (OEIS A000796).
+The value pi (OEIS A000796), radian angle measure of a half turn.
 
 #### Produces
 
-The value of pi $$\pi$$, represented as a double-precision floating-point atom.
+The value of pi $$\pi$$, radian angle measure of a half turn, represented as a single-precision floating-point atom.
 
 #### Examples
 
@@ -3735,11 +3735,11 @@ A container core for operations related to half-precision binary floats.
 
 ### `+tau` {#tau}
 
-The value $$\tau = 2 \pi$$ (OEIS A019692).
+The value $$\tau = 2 \pi$$ (OEIS A019692), radian angle measure of a full turn.
 
 #### Produces
 
-The value of tau $$\tau$$ or 2 pi $$2\pi$$, represented as a half-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$\pi$$, radian angle measure of a full turn, represented as a single-precision floating-point atom.
 
 #### Examples
 
@@ -3756,11 +3756,11 @@ The value of tau $$\tau$$ or 2 pi $$2\pi$$, represented as a half-precision floa
 
 ### `+pi` {#pi}
 
-The value pi (OEIS A000796).
+The value pi (OEIS A000796), radian angle measure of a half turn.
 
 #### Produces
 
-The value of pi $$\pi$$, represented as a half-precision floating-point atom.
+The value of pi $$\pi$$, radian angle measure of a half turn, represented as a single-precision floating-point atom.
 
 #### Examples
 
@@ -5538,11 +5538,11 @@ A container core for operations related to quadruple-precision binary floats.
 
 ### `+tau` {#tau}
 
-The value $$\tau = 2 \pi$$ (OEIS A019692).
+The value $$\tau = 2 \pi$$ (OEIS A019692), radian angle measure of a full turn.
 
 #### Produces
 
-The value of tau $$\tau$$ or 2 pi $$2\pi$$, represented as a quad-precision floating-point atom.
+The value of tau $$\tau$$ or 2 pi $$\pi$$, radian angle measure of a full turn, represented as a single-precision floating-point atom.
 
 #### Examples
 
@@ -5559,11 +5559,11 @@ The value of tau $$\tau$$ or 2 pi $$2\pi$$, represented as a quad-precision floa
 
 ### `+pi` {#pi}
 
-The value pi (OEIS A000796).
+The value pi (OEIS A000796), radian angle measure of a half turn.
 
 #### Produces
 
-The value of pi $$\pi$$, represented as a quad-precision floating-point atom.
+The value of pi $$\pi$$, radian angle measure of a half turn, represented as a single-precision floating-point atom.
 
 #### Examples
 
@@ -7068,7 +7068,7 @@ A core of reference values in high precision as hard-coded string constants for 
 
 ### `+tau` {#tau}
 
-The value $$\tau = 2\pi$$ (OEIS A019692).
+The value $$\tau = 2 \pi$$ (OEIS A019692), radian angle measure of a full turn.
 
 #### Source
 
@@ -7080,7 +7080,7 @@ The value $$\tau = 2\pi$$ (OEIS A019692).
 
 ### `+pi` {#pi}
 
-The value $$\pi$$ (OEIS A000796).
+The value $$\pi$$ (OEIS A000796), radian angle measure of a half turn.
 
 #### Source
 

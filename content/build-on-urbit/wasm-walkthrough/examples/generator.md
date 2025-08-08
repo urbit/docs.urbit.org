@@ -267,12 +267,12 @@ Now we split the resulting octets atom (`$octs`, a cell of byte length and data)
 Once you have the `sort.wasm` module and the `sort.hoon` generator in your `%base` desk, run `|commit %base` and run this generator in the Dojo, again timing it with the `%bout` in the generator.
 
 ```
+> =l (flop (gulf 0 1.000))
+>
 took ms/5.012
 > __~ +sort l
 ~
 ```
-
-{TODO: get example data in there}
 
 A 10x speedup compared to pure Hoon for our test case (1.000 elements, reversed ordering).
 

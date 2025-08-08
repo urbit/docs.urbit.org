@@ -7,12 +7,13 @@ Let's use UrWASM to write a generator that can quickly sort a large list of 64-b
 In pure Hoon, we would write something like this:
 
 ```hoon
-::  XX check this compiles and runs
 |=  lit=(list @G)
 ^-  (list @G)
 ~>  %bout
 (sort lit lth)
 ```
+
+{TODO: check the above compiles and runs}
 
 Let's run this and see how long it takes. (`__~` in the Dojo discards the product of the given expression and returns `~`).
 

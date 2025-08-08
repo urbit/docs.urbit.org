@@ -107,7 +107,7 @@ We don't need to reimplement step 5, since the whole Wasm VM will be freed when 
 
 Our generator with Hoon "bindings" will look like this in full. We'll examine each part in detail below.
 
-{% code title="/ted/sort.hoon" overflow="nowrap" lineNumbers="true" %}
+{% code title="/gen/sort.hoon" overflow="nowrap" lineNumbers="true" %}
 
 ```hoon
 /+  *wasm-lia

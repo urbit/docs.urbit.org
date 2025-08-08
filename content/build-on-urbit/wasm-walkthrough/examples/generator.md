@@ -25,7 +25,7 @@ took ms/63.434
 ~
 ```
 
-## Building the WASM module
+## Building the Wasm module
 
 Now let's sort the list using UrWasm, with the source code written in Rust. Initialize a new library cargo with `cargo new wasm_sort --lib` and edit `Cargo.toml`:
 
@@ -95,7 +95,7 @@ export function sort_u64(input) {
 
 What's going on in this `sortu64()` wrapper function? We see that it does the following:
 1. Allocates memory for the input vector by calling `__wbindgen_malloc`.
-2. Writes the contents of the array to WASM memory.
+2. Writes the contents of the array to Wasm memory.
 3. Calls `sort_u64()` with the array pointer and length as parameters, which returns two values.
 4. Uses those two values as the pointer and length of the resulting array, reads that from memory.
 5. Frees the returned array from Wasm memory with `__wbindgen_free`.

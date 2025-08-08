@@ -2,17 +2,17 @@
 
 Onboarding new developers onto Urbit necessarily involves teaching them [Hoon](../../hoon/why-hoon.md). Whatever Hoon's merits as a systems programming language, the time commitment to understanding the language enough to be productive is an obvious barrier to entry.
 
-Urbit allows developers to run server-side code in languages like Rust and Python by compiling that code to [WebAssembly](https://webassembly.org/) (WASM). They can run Javascript on the Urbit ship with a JS interpreter like QuickJS. Today this still involves some knowledge of Hoon, but the developer can mostly use the examples here as boilerplate.
+Urbit allows developers to run server-side code in languages like Rust and Python by compiling that code to [WebAssembly](https://webassembly.org/) (Wasm). They can run Javascript on the Urbit ship with a JS interpreter like QuickJS. Today this still involves some knowledge of Hoon, but the developer can mostly use the examples here as boilerplate.
 
-Trivially, Urbit's WASM affordances (collectively "UrWasm") enable Hoon developers to leverage pre-existing libraries for functionality that doesn't already exist in Hoon, or would be prohibitively slow without writing a C [runtime jet](../runtime/jetting.md). But one can imagine more ambitious use-cases like running complete Next.js or Rust apps on the Urbit ship.
+Trivially, Urbit's Wasm affordances (collectively "UrWasm") enable Hoon developers to leverage pre-existing libraries for functionality that doesn't already exist in Hoon, or would be prohibitively slow without writing a C [runtime jet](../runtime/jetting.md). But one can imagine more ambitious use-cases like running complete Next.js or Rust apps on the Urbit ship.
 
 ## WebAssembly
 
-WebAssembly is a small, hardware-independent assembly language for a stack-based virtual machine, primarily intended to be deployed on the web for client- and server-side applications that may be written in one of many programming languages other than Javascript. WASM is supported out-of-the-box in all mainstream browsers, and it uses Web APIs wherever possible, but WASM may be executed in other runtimes.
+WebAssembly is a small, hardware-independent assembly language for a stack-based virtual machine, primarily intended to be deployed on the web for client- and server-side applications that may be written in one of many programming languages other than Javascript. Wasm is supported out-of-the-box in all mainstream browsers, and it uses Web APIs wherever possible, but Wasm may be executed in other runtimes.
 
-Compiled WASM code (a `.wasm` file) is structured as a module, which consists of import and export declarations, function definitions, global variable and memory declarations, etc. A WASM module describes the starting state of a WASM virtual machine, whose state is modified by calling its functions, writing directly to the memory of the module, or what have you.
+Compiled Wasm code (a `.wasm` file) is structured as a module, which consists of import and export declarations, function definitions, global variable and memory declarations, etc. A Wasm module describes the starting state of a Wasm virtual machine, whose state is modified by calling its functions, writing directly to the memory of the module, or what have you.
 
-As a low-level language, WASM's functions only return 32/64 bit integers and floating-point numbers. Higher-level information like structs and function signatures are stripped away during compliation and must be restored via "host language bindings", which reimplement the source code functions as wrappers around calls to the WASM VM. These may be generated automatically by the WASM compiler in addition to the `.wasm` module, usually in Javascript if the code is targeting a browser.
+As a low-level language, Wasm's functions only return 32/64 bit integers and floating-point numbers. Higher-level information like structs and function signatures are stripped away during compliation and must be restored via "host language bindings", which reimplement the source code functions as wrappers around calls to the Wasm VM. These may be generated automatically by the Wasm compiler in addition to the `.wasm` module, usually in Javascript if the code is targeting a browser.
 
 For example, the following Rust code...
 
@@ -63,7 +63,7 @@ In our case, we'll have to write our own bindings manually in Hoon. We'll cover 
 
 ## Lia
 
-The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWasm solves this by executing compiled WASM in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages WASM's handful of nondeterministic edge-cases such that the same inputs to a WASM function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute WASM code at near-native speeds.
+The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWasm solves this by executing compiled Wasm in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages Wasm's handful of nondeterministic edge-cases such that the same inputs to a Wasm function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute Wasm code at near-native speeds.
 
 * Determinism solved by Lia
   * [urwasm-jetting.md](https://gist.github.com/Quodss/196a4deb3e24a652c021469d2c4544fb)
@@ -77,13 +77,13 @@ The main theoretical blocker to executing non-Hoon code on Urbit was that doing 
 UrWasm is structured as several nested cores, with each core in this list being in the [subject](../../hoon/why-hoon.md#subject-oriented-programming) of the core below.
 
 ```
-/sur/wasm/wasm/hoon             ::  WASM types
-/sur/wasm/engine/hoon           ::  WASM interpreter types
+/sur/wasm/wasm/hoon             ::  Wasm types
+/sur/wasm/engine/hoon           ::  Wasm interpreter types
 /sur/wasm/lia/hoon              ::  Lia types
-/lib/wasm/parser/hoon           ::  WASM parser
-/lib/wasm/validator/hoon        ::  WASM validator
-/lib/wasm/runner/op-def/hoon    ::  WASM operator definitions
-/lib/wasm/runner/engine/hoon    ::  WASM interpreter
+/lib/wasm/parser/hoon           ::  Wasm parser
+/lib/wasm/validator/hoon        ::  Wasm validator
+/lib/wasm/runner/op-def/hoon    ::  Wasm operator definitions
+/lib/wasm/runner/engine/hoon    ::  Wasm interpreter
 /lib/wasm/lia/hoon              ::  Lia interpreter
 ```
 

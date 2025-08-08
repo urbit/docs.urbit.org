@@ -1,10 +1,10 @@
-# UrWASM Overview
+# UrWasm Overview
 
 Onboarding new developers onto Urbit necessarily involves teaching them [Hoon](../../hoon/why-hoon.md). Whatever Hoon's merits as a systems programming language, the time commitment to understanding the language enough to be productive is an obvious barrier to entry.
 
 Urbit allows developers to run server-side code in languages like Rust and Python by compiling that code to [WebAssembly](https://webassembly.org/) (WASM). They can run Javascript on the Urbit ship with a JS interpreter like QuickJS. Today this still involves some knowledge of Hoon, but the developer can mostly use the examples here as boilerplate.
 
-Trivially, Urbit's WASM affordances (collectively "UrWASM") enable Hoon developers to leverage pre-existing libraries for functionality that doesn't already exist in Hoon, or would be prohibitively slow without writing a C [runtime jet](../runtime/jetting.md). But one can imagine more ambitious use-cases like running complete Next.js or Rust apps on the Urbit ship.
+Trivially, Urbit's WASM affordances (collectively "UrWasm") enable Hoon developers to leverage pre-existing libraries for functionality that doesn't already exist in Hoon, or would be prohibitively slow without writing a C [runtime jet](../runtime/jetting.md). But one can imagine more ambitious use-cases like running complete Next.js or Rust apps on the Urbit ship.
 
 ## WebAssembly
 
@@ -63,7 +63,7 @@ In our case, we'll have to write our own bindings manually in Hoon. We'll cover 
 
 ## Lia
 
-The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWASM solves this by executing compiled WASM in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages WASM's handful of nondeterministic edge-cases such that the same inputs to a WASM function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute WASM code at near-native speeds.
+The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWasm solves this by executing compiled WASM in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages WASM's handful of nondeterministic edge-cases such that the same inputs to a WASM function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute WASM code at near-native speeds.
 
 * Determinism solved by Lia
   * [urwasm-jetting.md](https://gist.github.com/Quodss/196a4deb3e24a652c021469d2c4544fb)
@@ -72,9 +72,9 @@ The main theoretical blocker to executing non-Hoon code on Urbit was that doing 
       * Higher level interpreting function
       * Lia interpreter
 
-## UrWASM Structure
+## UrWasm Structure
 
-UrWASM is structured as several nested cores, with each core in this list being in the [subject](../../hoon/why-hoon.md#subject-oriented-programming) of the core below.
+UrWasm is structured as several nested cores, with each core in this list being in the [subject](../../hoon/why-hoon.md#subject-oriented-programming) of the core below.
 
 ```
 /sur/wasm/wasm/hoon             ::  WASM types
@@ -101,5 +101,5 @@ All cores except `/lib/wasm/lia/hoon`, are additionally wrapped in one-armed cor
 
 Thus if you imported `/lib/wasm/lia/hoon` as `wasm`, you can get the core with Lia types as `lia-sur:wasm`.
 
-UrWASM's data types and functionality are covered in detail in the [reference](./reference/README.md) section.
+UrWasm's data types and functionality are covered in detail in the [reference](./reference/README.md) section.
 

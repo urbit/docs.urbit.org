@@ -1,4 +1,4 @@
-# UrWASM Gall Agent Example
+# UrWasm Gall Agent Example
 
 foobar
 

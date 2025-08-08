@@ -1,4 +1,4 @@
-# UrWASM Reference
+# UrWasm Reference
 
 foobar
 

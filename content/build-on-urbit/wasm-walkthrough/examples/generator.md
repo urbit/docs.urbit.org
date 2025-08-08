@@ -1,8 +1,8 @@
-# UrWASM Generator Example
+# UrWasm Generator Example
 
-Let's use UrWASM to write a generator that can quickly sort a large list of 64-bit integers in ascending order.
+Let's use UrWasm to write a generator that can quickly sort a large list of 64-bit integers in ascending order.
 
-## Benchmark without UrWASM
+## Benchmark without UrWasm
 
 In pure Hoon, we would write something like this:
 

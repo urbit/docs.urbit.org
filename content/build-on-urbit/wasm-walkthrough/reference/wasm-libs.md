@@ -1,4 +1,4 @@
-# UrWASM Library Reference
+# UrWasm Library Reference
 
 nested core structure
 
@@ -10,8 +10,8 @@ nested core structure
 
 foobar
 
-  * Stateless UrWASM: `+run-once`
-  * Stateful UrWASM: `+run`
+  * Stateless UrWasm: `+run-once`
+  * Stateful UrWasm: `+run`
 
 ***
 

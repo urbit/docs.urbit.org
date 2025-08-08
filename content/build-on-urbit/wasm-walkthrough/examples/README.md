@@ -1,4 +1,4 @@
-# UrWASM Examples
+# UrWasm Examples
 
 What usage patterns are possible with WASM on Urbit? In this section we'll demonstrate several:
 - WASM in a [generator](../../../hoon/generators.md).

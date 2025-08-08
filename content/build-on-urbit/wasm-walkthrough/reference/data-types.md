@@ -1,4 +1,4 @@
-# UrWASM Data Types
+# UrWasm Data Types
 
 nested core structure
 

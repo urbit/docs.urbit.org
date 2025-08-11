@@ -1,14 +1,5 @@
-# UrWasm Data Types
+# Wasm Data Types
 
-UrWasm's data types are defined in three nested `/sur` files in `%base`; innermost to outermost:
-
-```
-/sur/wasm/wasm/hoon             ::  Wasm types definition
-/sur/wasm/engine/hoon           ::  Wasm interpreter types
-/sur/wasm/lia/hoon              ::  Lia [Language for Invocation of (web)Assembly] types
-```
-
-## Wasm types
 
 UrWasm's inner core, `+wasm-sur`, contains the foundational Wasm types.
 
@@ -1157,11 +1148,4 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 ```
 
 ???
-
-## Wasm interpreter types
-
-Wasm interpreter types
-
-## Lia types
-Lia [Language for Invocation of (web)Assembly] types
 

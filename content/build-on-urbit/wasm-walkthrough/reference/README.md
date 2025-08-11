@@ -1,6 +1,6 @@
 # UrWasm Reference
 
-UrWasm is structured as a series of nested cores:
+The UrWasm project is structured as a series of nested cores, innermost to outermost:
 
 ```
 /sur/wasm/wasm/hoon             ::  Wasm types definition
@@ -13,4 +13,16 @@ UrWasm is structured as a series of nested cores:
 /lib/wasm/lia/hoon              ::  Lia interpreter
 ```
 
-This reference section documents the UrWasm project's data types and library functionality.
+This reference section documents UrWasm's data types and library functionality.
+
+## Data types
+- Wasm data types
+- Wasm interpreter data types
+- Lia data types
+
+## Libraries
+- Wasm parser
+- Wasm validator
+- Wasm operator
+- Wasm interpreter
+- Lia interpreter

@@ -16,9 +16,9 @@ The UrWasm project is structured as a series of nested cores, innermost to outer
 This reference section documents UrWasm's data types and library functionality.
 
 ## Data types
-- Wasm data types
-- Wasm interpreter data types
-- Lia data types
+- [Wasm data types](./wasm-data-types.md)
+- [Wasm interpreter data types](./wasm-interpreter-data-types.md)
+- [Lia data types](./lia-data-types.md)
 
 ## Libraries
 - Wasm parser

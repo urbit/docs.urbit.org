@@ -677,9 +677,9 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
   - If there are more values on the stack than allowed by the function's return type, the first $$n$$ values are returned (where $$n$$ is the number of values allowed) and the rest are discarded.
 - `%0x1a`: `drop` a value from the stack.
 - `%0x1b`: Like a ternary operator, `select` one of the first two operands based on whether the third is `0` or not.
-- `%0xa7`: Convert an `i64` to an `i32` if possible. (If not, the operation "`wrap`s" and returns a different number entirely.)
-- `%0xb6`: Convert an `f64` to `f32`.
-- `%0xbb`: Convert an `f32` to `f64`.
+- `%0xa7`: Convert an `i64` / `@G` to an `i32` / `@F` if possible. (If not, the operation "`wrap`s" and returns a different number entirely.)
+- `%0xb6`: Convert an `f64` / `@rd` to `f32` / `@rs`.
+- `%0xbb`: Convert an `f32` / `@rs` to `f64` / `@rd`.
 
 ### `$pseudo-opcode`
 

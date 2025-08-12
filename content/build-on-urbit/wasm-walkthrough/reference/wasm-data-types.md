@@ -15,11 +15,11 @@ The second part implements Wasm's binary-format opcodes.
 
 Pair of byte-length and octet stream data.
 
-### `+wasm-sur`
+### `+wasm-sur` {#wasm-sur}
 
 Wrapper arm around the Wasm types. This just makes the types addressable by limb resolution paths like `num-type:wasm-sur`.
 
-### `$num-type`
+### `$num-type` {#num-type}
 
 ```hoon
 +$  num-type  ?(%i32 %i64 %f32 %f64)
@@ -31,23 +31,23 @@ Type annotation for the four types of number Wasm calls can return:
 - 32-bit floating point numbers (`@rs`).
 - 64-bit floating point numbers (`@rd`).
 
-### `$vec-type`
+### `$vec-type` {#vec-type}
 
 ```hoon
 +$  vec-type  %v128
 ```
 
-Type annotation for a 128-bit vector (`@H`).
+Type annotation for a 128-bit (`@H`) register.
 
-### `$ref-type`
+### `$ref-type` {#ref-type}
 
 ```hoon
 +$  ref-type  ?(%extn %func)  ::  externref and funcref
 ```
 
-Type annotation for ???
+Type annotation for references in the Wasm state, be those functions or data.
 
-### `$valtype`
+### `$valtype` {#valtype}
 
 ```hoon
 +$  valtype
@@ -58,9 +58,9 @@ Type annotation for ???
   ==
 ```
 
-Type annotation for ???
+Type annotation for all the types that Wasm can accept: numbers, vectors, and references.
 
-### `$coin-wasm`
+### `$coin-wasm` {#coin-wasm}
 
 ```hoon
 +$  coin-wasm
@@ -81,9 +81,11 @@ Type annotation for ???
   ==
 ```
 
-Type-annotated Wasm value.
+Type-annotated Wasm value. A `$coin-wasm` is UrWasm's version of Wasm's [result types](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/syntax/types.html#result-types), which look something like Hoon's [`$coin`](https://docs.urbit.org/hoon/stdlib/3g#coin) nouns.
 
-### `$limits`
+These are the [`$valtype`](#valtype) type annotation terms with extra specification for atom size and object references.
+
+### `$limits` {#limits}
 
 ```hoon
 +$  limits
@@ -92,9 +94,9 @@ Type-annotated Wasm value.
   ==
 ```
 
-???
+Limits the range of available storage for [`$memarg`](#memarg)s and [`$table`](#table)s.
 
-### `$memarg`
+### `$memarg` {#memarg}
 
 ```hoon
 +$  memarg
@@ -102,9 +104,9 @@ Type-annotated Wasm value.
   [align=@ offset=@]
 ```
 
-???
+Defines the minimum and maximum size of a memory instance. The `.align` and `.offset` values represent units of Wasm's page size, which is 128 bits (so, a `@H`).
 
-### `$block-type`
+### `$block-type` {#block-type}
 
 ```hoon
 +$  block-type  $@(@ func-type)  ::  typeidx in type section or func-type
@@ -112,7 +114,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$func-type`
+### `$func-type` {#func-type}
 
 ```hoon
 +$  func-type
@@ -121,17 +123,17 @@ Type-annotated Wasm value.
   ==
 ```
 
-???
+Function signature.
 
-### `$lane-type`
+### `$lane-type` {#lane-type}
 
 ```hoon
 +$  lane-type  ?(%i8 %i16 num-type)
 ```
 
-???
+Type annotation for lanes (memory elements) in a 128-bit (`@H`) register. Includes the usual [`$num-type`s](#num-type) and additional `%i8` and `%i16` types for smaller lanes.
 
-### `$instruction`
+### `$instruction` {#instruction}
 
 ```hoon
 +$  instruction
@@ -140,7 +142,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$instr-dbug`
+### `$instr-dbug` {#instr-dbug}
 
 ```hoon
 +$  instr-dbug
@@ -151,7 +153,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$instr-num`
+### `$instr-num` {#instr-num}
 
 ```hoon
 +$  instr-num  ?(instr-num-zero instr-num-one instr-num-two)
@@ -159,7 +161,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$instr-num-zero`
+### `$instr-num-zero` {#instr-num-zero}
 
 ```hoon
 +$  instr-num-zero
@@ -168,9 +170,9 @@ Type-annotated Wasm value.
   ==
 ```
 
-???
+Any [`$coin-wasm`](#coin-wasm) that represents a constant value.
 
-### `$instr-num-one`
+### `$instr-num-one` {#instr-num-one}
 
 ```hoon
 +$  instr-num-one
@@ -211,7 +213,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$instr-num-two`
+### `$instr-num-two` {#instr-num-two}
 
 ```hoon
 +$  instr-num-two
@@ -242,7 +244,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$instr-short`
+### `$instr-short` {#instr-short}
 
 ```hoon
 +$  instr-short
@@ -317,7 +319,7 @@ Type-annotated Wasm value.
 
 ???
 
-### `$instr-vec`
+### `$instr-vec` {#instr-vec}
 
 ```hoon
 +$  instr-vec
@@ -393,15 +395,15 @@ Type-annotated Wasm value.
 
 ???
 
-### `$expression`
+### `$expression` {#expression}
 
 ```hoon
 +$  expression  (list instruction)
 ```
 
-List of `$instruction`s.
+An ordered sequence of [`$instruction`](#instruction)s.
 
-### `$const-instr`
+### `$const-instr` {#const-instr}
 
 ```hoon
 +$  const-instr
@@ -411,9 +413,9 @@ List of `$instruction`s.
   ==
 ```
 
-???
+Constant instruction. ???
 
-### `$module`
+### `$module` {#module}
 
 ```hoon
 +$  module
@@ -433,9 +435,9 @@ List of `$instruction`s.
   ==
 ```
 
-A Wasm module, represented in a format closer to its binary representation (i.e. separate code and function sections) to simplify parsing.
+A Wasm module, represented in a format closer to its binary representation to simplify parsing.
 
-### `$type-section`
+### `$type-section` {#type-section}
 
 ```hoon
 +$  type-section
@@ -443,9 +445,9 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   (list func-type)
 ```
 
-???
+List of function signatures in the module.
 
-### `$import-section`
+### `$import-section` {#import-section}
 
 ```hoon
 +$  import-section
@@ -453,16 +455,29 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   (list import)
 ```
 
-???
+List of [`$import`s](#import) this module requires from other modules.
 
-### `$import`
+### `$import` {#import}
 
 ```hoon
++$  import
+  $:  mod=cord
+      name=cord
+      $=  desc
+      $%
+        [%func type-id=@]
+        [%tabl t=table]
+        [%memo l=limits]
+        [%glob v=valtype m=?(%con %var)]  ::  constant or variable
+  ==  ==
 ```
 
-???
+Import from another Wasm module, including:
+- `.mod`: Module name.
+- `.name`: Name for the entity in the module we'd like to import.
+- `.desc`: Importable definitions within the module, including functions, tables, global variables, etc.
 
-### `$function-section`
+### `$function-section` {#function-section}
 
 ```hoon
 +$  function-section
@@ -470,41 +485,41 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   (list type-id=@)
 ```
 
-???
+List of functions in this module, referenced by index.
 
-### `$table-section`
+### `$table-section` {#table-section}
 
 ```hoon
 +$  table-section  (list table)
 ```
 
-???
+List of [`$table`s](#table) in the module.
 
-### `$table`
+### `$table` {#table}
 
 ```hoon
 +$  table  (pair ref-type limits)
 ```
 
-???
+Wasm table, referenced by its [`$ref-type`](#ref-type) and describing the [`$limits`](#limits) of its size.
 
-### `$memory-section`
+### `$memory-section` {#memory-section}
 
 ```hoon
 +$  memory-section  (list limits)
 ```
 
-???
+List of the module's memory arrays, defined by the [`$limits`](#limits) of their size.
 
-### `$global-section`
+### `$global-section` {#global-section}
 
 ```hoon
 +$  global-section  (list global)
 ```
 
-???
+List of the module's [`$global`](#global) variables.
 
-### `$global`
+### `$global` {#global}
 
 ```hoon
 +$  global
@@ -514,12 +529,12 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   ==
 ```
 
-  ::  valtype, mutability and init value.
-  ::  We use a single constant instruction as opposed to a
-  ::  (list instruction) since there is no global value type
-  ::  that would take multiple constant values
+Global variable, including:
+- `.val`: [`$valtype`](#valtype), type of the variable's value.
+- `.m`: Constant or variable.
+- `.i`: Initial value. (Note that this is a constant instruction and not a `(list instruction)` as Wasm has no global value type that would take multiple constant values.)
 
-### `$export-section`
+### `$export-section` {#export-section}
 
 ```hoon
 +$  export-section
@@ -527,17 +542,19 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   (list export)
 ```
 
-???
+List of [`$export`s](#export) in the module.
 
-### `$export`
+### `$export` {#export}
 
 ```hoon
 +$  export  [name=cord =export-desc]
 ```
 
-???
+Element to be exportable for use in other modules:
+- `.name`: Name of the export.
+- `.export-desk`: [`$export-desc`](#export-desc), type-annotated value of the export.
 
-### `$export-desc`
+### `$export-desc` {#export-desc}
 
 ```hoon
 +$  export-desc
@@ -548,25 +565,31 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   ==
 ```
 
-???
+Type-annotated value of an export addressed by its index:
+- `%func`: Function.
+- `%tabl`: Table.
+- `%memo`: Memory.
+- `%glob`: Global variable.
 
-### `$start-section`
+In practice these indexes will always be 32-bit integers (`@F`s).
+
+### `$start-section` {#start-section}
 
 ```hoon
 +$  start-section  (unit @)
 ```
 
-???
+The initialization (or "start") function for the module, if one exists.
 
-### `$elem-section`
+### `$elem-section` {#elem-section}
 
 ```hoon
 +$  elem-section  (list elem)
 ```
 
-???
+List of [`$elem`s](#elem).
 
-### `$elem`
+### `$elem` {#elem}
 
 ```hoon
 +$  elem
@@ -580,9 +603,17 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   ==  ==
 ```
 
-???
+Wasm element segment:
+- `.t`: Reference type. (Currently Wasm only supports function references (`%func` [`$ref-type`s](#ref-type)).)
+- `.i`: Sequence of [`$instruction`s](#instruction) to produce function references.
+- `.m`: Element segment mode:
+  - `%pass`: Passive, elements copied manually via table initialization.
+  - `%decl`: Declarative, declares references which aren't copied to tables.
+  - `%acti`: Active, automatically copies element data to the table `.tab` at offset `.off` when the module is instantiated.
 
-### `$code-section`
+Element segments store static data with which to populate [`$table`s](#table) when the module is initialized.
+
+### `$code-section` {#code-section}
 
 ```hoon
 +$  code-section
@@ -592,7 +623,7 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
 
 ???
 
-### `$code`
+### `$code` {#code}
 
 ```hoon
 +$  code
@@ -603,15 +634,15 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
 
 ???
 
-### `$data-section`
+### `$data-section` {#data-section}
 
 ```hoon
 +$  data-section  (list data)
 ```
 
-???
+List of the module's [`$data`](#data) segments.
 
-### `$data`
+### `$data` {#data}
 
 ```hoon
 +$  data
@@ -621,9 +652,11 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
   ==
 ```
 
-???
+Data segment for initializing the module's state.
+- `%acti`: Active segments automatically copy `$octs` `.b` to the module's memory at offset `.off` during instantiation.
+- `%pass`: Passive segments are copied manually when instructed.
 
-### `+datacnt-section`
+### `+datacnt-section` {#datacnt-section}
 
 ```hoon
 ++  datacnt-section  (unit @)
@@ -631,7 +664,7 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
 
 ???
 
-### `$opcode`
+### `$opcode` {#opcode}
 
 ```hoon
 +$  opcode  $?  bin-opcodes-zero-args
@@ -644,7 +677,7 @@ A Wasm module, represented in a format closer to its binary representation (i.e.
 
 ???
 
-### `$bin-opcodes-zero-args`
+### `$bin-opcodes-zero-args` {#bin-opcodes-zero-args}
 
 ```hoon
 +$  bin-opcodes-zero-args
@@ -674,7 +707,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 - `%0xb6`: Convert an `f64` / `@rd` to `f32` / `@rs`.
 - `%0xbb`: Convert an `f32` / `@rs` to `f64` / `@rd`.
 
-### `$pseudo-opcode`
+### `$pseudo-opcode` {#pseudo-opcode}
 
 ```hoon
 +$  pseudo-opcode  ?(%0x5 %0xb)  ::  else, end
@@ -682,7 +715,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$bin-opcodes-one-arg`
+### `$bin-opcodes-one-arg` {#bin-opcodes-one-arg}
 
 ```hoon
 +$  bin-opcodes-one-arg
@@ -698,7 +731,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$bin-opcodes-two-args`
+### `$bin-opcodes-two-args` {#bin-opcodes-two-args}
 
 ```hoon
 +$  bin-opcodes-two-args
@@ -712,7 +745,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$bin-opcodes-blocks`
+### `$bin-opcodes-blocks` {#bin-opcodes-blocks}
 
 ```hoon
 +$  bin-opcodes-blocks
@@ -725,7 +758,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$const-opcodes`
+### `$const-opcodes` {#const-opcodes}
 
 ```hoon
 +$  const-opcodes
@@ -739,7 +772,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$load-opcodes`
+### `$load-opcodes` {#load-opcodes}
 
 ```hoon
 +$  load-opcodes
@@ -763,7 +796,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$store-opcodes`
+### `$store-opcodes` {#store-opcodes}
 
 ```hoon
 +$  store-opcodes
@@ -782,7 +815,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$eqz-opcodes`
+### `$eqz-opcodes` {#eqz-opcodes}
 
 ```hoon
 +$  eqz-opcodes  ?(%0x45 %0x50)              ::  i32, i64
@@ -790,7 +823,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$eq-opcodes`
+### `$eq-opcodes` {#eq-opcodes}
 
 ```hoon
 +$  eq-opcodes   ?(%0x46 %0x51 %0x5b %0x61)  ::  i32, i64, f32, f64
@@ -798,7 +831,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$ne-opcodes`
+### `$ne-opcodes` {#ne-opcodes}
 
 ```hoon
 +$  ne-opcodes   ?(%0x47 %0x52 %0x5c %0x62)  ::  i32, i64, f32, f64
@@ -806,7 +839,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$lt-opcodes`
+### `$lt-opcodes` {#lt-opcodes}
 
 ```hoon
 +$  lt-opcodes
@@ -822,7 +855,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$gt-opcodes`
+### `$gt-opcodes` {#gt-opcodes}
 
 ```hoon
 +$  gt-opcodes
@@ -838,7 +871,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$le-opcodes`
+### `$le-opcodes` {#le-opcodes}
 
 ```hoon
 +$  le-opcodes
@@ -854,7 +887,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$ge-opcodes`
+### `$ge-opcodes` {#ge-opcodes}
 
 ```hoon
 +$  ge-opcodes
@@ -870,7 +903,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$clz-opcodes`
+### `$clz-opcodes` {#clz-opcodes}
 
 ```hoon
 +$  clz-opcodes  ?(%0x67 %0x79)              ::  i32, i64
@@ -878,7 +911,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$ctz-opcodes`
+### `$ctz-opcodes` {#ctz-opcodes}
 
 ```hoon
 +$  ctz-opcodes  ?(%0x68 %0x7a)              ::  i32, i64
@@ -886,7 +919,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$popcnt-opcodes`
+### `$popcnt-opcodes` {#popcnt-opcodes}
 
 ```hoon
 +$  popcnt-opcodes  ?(%0x69 %0x7b)           ::  i32, i64
@@ -894,7 +927,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$add-opcodes`
+### `$add-opcodes` {#add-opcodes}
 
 ```hoon
 +$  add-opcodes  ?(%0x6a %0x7c %0x92 %0xa0)  ::  i32, i64, f32, f64
@@ -902,7 +935,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$sub-opcodes`
+### `$sub-opcodes` {#sub-opcodes}
 
 ```hoon
 +$  sub-opcodes  ?(%0x6b %0x7d %0x93 %0xa1)  ::  i32, i64, f32, f64
@@ -910,7 +943,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$mul-opcodes`
+### `$mul-opcodes` {#mul-opcodes}
 
 ```hoon
 +$  mul-opcodes  ?(%0x6c %0x7e %0x94 %0xa2)  ::  i32, i64, f32, f64
@@ -918,7 +951,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$div-opcodes`
+### `$div-opcodes` {#div-opcodes}
 
 ```hoon
 +$  div-opcodes
@@ -934,7 +967,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$rem-opcodes`
+### `$rem-opcodes` {#rem-opcodes}
 
 ```hoon
 +$  rem-opcodes
@@ -948,7 +981,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$and-opcodes`
+### `$and-opcodes` {#and-opcodes}
 
 ```hoon
 +$  and-opcodes  ?(%0x71 %0x83)  ::  i32, i64
@@ -956,7 +989,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$or-opcodes`
+### `$or-opcodes` {#or-opcodes}
 
 ```hoon
 +$  or-opcodes   ?(%0x72 %0x84)  ::  i32, i64
@@ -964,7 +997,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$xor-opcodes`
+### `$xor-opcodes` {#xor-opcodes}
 
 ```hoon
 +$  xor-opcodes  ?(%0x73 %0x85)  ::  i32, i64
@@ -972,7 +1005,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$shl-opcodes`
+### `$shl-opcodes` {#shl-opcodes}
 
 ```hoon
 +$  shl-opcodes  ?(%0x74 %0x86)  ::  i32, i64
@@ -980,7 +1013,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$shr-opcodes`
+### `$shr-opcodes` {#shr-opcodes}
 
 ```hoon
 +$  shr-opcodes
@@ -994,7 +1027,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$rotl-opcodes`
+### `$rotl-opcodes` {#rotl-opcodes}
 
 ```hoon
 +$  rotl-opcodes   ?(%0x77 %0x89)  ::  i32, i64
@@ -1002,7 +1035,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$rotr-opcodes`
+### `$rotr-opcodes` {#rotr-opcodes}
 
 ```hoon
 +$  rotr-opcodes   ?(%0x78 %0x8a)  ::  i32, i64
@@ -1010,7 +1043,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$abs-opcodes`
+### `$abs-opcodes` {#abs-opcodes}
 
 ```hoon
 +$  abs-opcodes    ?(%0x8b %0x99)  ::  f32, f64
@@ -1018,7 +1051,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$neg-opcodes`
+### `$neg-opcodes` {#neg-opcodes}
 
 ```hoon
 +$  neg-opcodes    ?(%0x8c %0x9a)  ::  f32, f64
@@ -1026,7 +1059,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$ceil-opcodes`
+### `$ceil-opcodes` {#ceil-opcodes}
 
 ```hoon
 +$  ceil-opcodes   ?(%0x8d %0x9b)  ::  f32, f64
@@ -1034,7 +1067,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$floor-opcodes`
+### `$floor-opcodes` {#floor-opcodes}
 
 ```hoon
 +$  floor-opcodes  ?(%0x8e %0x9c)  ::  f32, f64
@@ -1042,7 +1075,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$trunc-opcodes`
+### `$trunc-opcodes` {#trunc-opcodes}
 
 ```hoon
 +$  trunc-opcodes
@@ -1062,7 +1095,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$nearest-opcodes`
+### `$nearest-opcodes` {#nearest-opcodes}
 
 ```hoon
 +$  nearest-opcodes   ?(%0x90 %0x9e)  ::  f32, f64
@@ -1070,7 +1103,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$sqrt-opcodes`
+### `$sqrt-opcodes` {#sqrt-opcodes}
 
 ```hoon
 +$  sqrt-opcodes      ?(%0x91 %0x9f)  ::  f32, f64
@@ -1078,7 +1111,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$min-opcodes`
+### `$min-opcodes` {#min-opcodes}
 
 ```hoon
 +$  min-opcodes       ?(%0x96 %0xa4)  ::  f32, f64
@@ -1086,7 +1119,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$max-opcodes`
+### `$max-opcodes` {#max-opcodes}
 
 ```hoon
 +$  max-opcodes       ?(%0x97 %0xa5)  ::  f32, f64
@@ -1094,7 +1127,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$copysign-opcodes`
+### `$copysign-opcodes` {#copysign-opcodes}
 
 ```hoon
 +$  copysign-opcodes  ?(%0x98 %0xa6)  ::  f32, f64
@@ -1102,7 +1135,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$extend-opcodes`
+### `$extend-opcodes` {#extend-opcodes}
 
 ```hoon
 +$  extend-opcodes
@@ -1119,7 +1152,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$convert-opcodes`
+### `$convert-opcodes` {#convert-opcodes}
 
 ```hoon
 +$  convert-opcodes
@@ -1137,7 +1170,7 @@ WebAssembly opcodes. Most of these are defined in the types below, with some exc
 
 ???
 
-### `$reinterpret-opcodes`
+### `$reinterpret-opcodes` {#reinterpret-opcodes}
 
 ```hoon
 +$  reinterpret-opcodes

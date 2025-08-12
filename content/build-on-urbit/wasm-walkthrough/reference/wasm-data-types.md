@@ -621,7 +621,7 @@ Element segments store static data with which to populate [`$table`s](#table) wh
   (list code)
 ```
 
-???
+List of [`$code`](#code) entries.
 
 ### `$code` {#code}
 
@@ -632,7 +632,9 @@ Element segments store static data with which to populate [`$table`s](#table) wh
   ==
 ```
 
-???
+Function implementation stored in binary format:
+- `.locals`: List of local variables in this function.
+- `.expression`: The function body as a sequence of instructions. (See [`$expression`](#expression).)
 
 ### `$data-section` {#data-section}
 

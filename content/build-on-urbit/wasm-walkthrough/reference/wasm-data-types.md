@@ -140,7 +140,13 @@ Type annotation for lanes (memory elements) in a 128-bit (`@H`) register. Includ
   $%([%vec instr-vec] instr-short instr-num instr-dbug)
 ```
 
-???
+Type union of all Wasm instructions.
+
+Instructions are categorized here by their operand patterns:
+- `%vec`: Vector instructions. (See [`$instr-vec`]($instr-vec).)
+- [`$instr-short`](#instr-short): ???
+- [`$instr-num`](#instr-num): Standard Wasm instructions categorized by arity.
+- [`$instr-dbug`](#instr-dbug): Debugging.
 
 ### `$instr-dbug` {#instr-dbug}
 
@@ -151,7 +157,7 @@ Type annotation for lanes (memory elements) in a 128-bit (`@H`) register. Includ
   ==
 ```
 
-???
+Debugging instructions. The only one supported here is `%print-tee`, which prints a value {TODO ???} with the given `$term` as a label.
 
 ### `$instr-num` {#instr-num}
 
@@ -159,7 +165,7 @@ Type annotation for lanes (memory elements) in a 128-bit (`@H`) register. Includ
 +$  instr-num  ?(instr-num-zero instr-num-one instr-num-two)
 ```
 
-???
+Type union of all standard Wasm instructions, categorized here by arity.
 
 ### `$instr-num-zero` {#instr-num-zero}
 
@@ -170,7 +176,15 @@ Type annotation for lanes (memory elements) in a 128-bit (`@H`) register. Includ
   ==
 ```
 
-Any [`$coin-wasm`](#coin-wasm) that represents a constant value.
+Wasm `const` instruction, whose value is any [`$coin-wasm`](#coin-wasm) that may represent a constant value. So...
+
+```hoon
+$?  [%i32 @F]
+    [%i64 @G]
+    [%f32 @rs]
+    [%f64 @rd]
+==
+```
 
 ### `$instr-num-one` {#instr-num-one}
 
@@ -211,7 +225,24 @@ Any [`$coin-wasm`](#coin-wasm) that represents a constant value.
   ==
 ```
 
-???
+Standard Wasm instructions with one parameter each:
+- `eqz`: Check if equals zero.
+- `clz`: Count leading zeroes.
+- `ctz`: Count trailing zeroes.
+- `popcnt`: Population count (number of set bits).
+- `abs`: Absolute value.
+- `neg`: Negate.
+- `ceil`: Round a float up to nearest integer.
+- `floor`: Round a float down to nearest integer.
+- `nearest`: Round a float to nearest integer.
+- `sqrt`: Square root.
+- `trunc`: Truncate float to integer (with optional saturation).
+- `wrap`: Wrap larger integer to smaller type.
+- `extend`: Extend smaller integer to larger type.
+- `convert`: Convert between integer and float.
+- `demote`: Convert `f64` (`@rd`) to `f32` `(@rs`).
+- `promote`: Convert `f32` (`@rs`) to `f64` (`@rd`).
+- `reinterpret`: Reinterpret bit pattern as different type.
 
 ### `$instr-num-two` {#instr-num-two}
 
@@ -242,7 +273,28 @@ Any [`$coin-wasm`](#coin-wasm) that represents a constant value.
   ==
 ```
 
-???
+Wasm's binary numeric instructions:
+- `eq`: Test equality.
+- `ne`: Test inequality.
+- `lt`: Less than.
+- `gt`: Greater than.
+- `le`: Less than or equal.
+- `ge`: Greater than or equal.
+- `add`: Addition.
+- `sub`: Subtraction.
+- `mul`: Multiplication.
+- `div`: Division.
+- `rem`: Remainder.
+- `and`: Bitwise AND.
+- `or`: Bitwise OR.
+- `xor`: Bitwise XOR.
+- `shl`: Shift left.
+- `shr`: Shift right (logical or arithmetic).
+- `rotl`: Rotate left.
+- `rotr`: Rotate right.
+- `min`: Minimum value.
+- `max`: Maximum value.
+- `copysign`: Copy sign bit from second operand to first.
 
 ### `$instr-short` {#instr-short}
 
@@ -317,7 +369,44 @@ Any [`$coin-wasm`](#coin-wasm) that represents a constant value.
   ==  ::  $instr-short
 ```
 
-???
+Non-numeric Wasm instructions:
+- `unreachable`: Trap execution unconditionally.
+- `nop`: No operation.
+- `block`: Start a block with optional result type.
+- `loop`: Start a loop with optional result type.
+- `if`: Conditional execution with true/false branches.
+- `br`: Unconditional branch to label.
+- `br-if`: Conditional branch to label.
+- `br-table`: Multi-way branch (switch statement).
+- `return`: Return from current function.
+- `call`: Call function by index.
+- `call-indirect`: Call function indirectly through table.
+- `ref-null`: Create null reference.
+- `ref-is-null`: Test if reference is null.
+- `ref-func`: Get function reference.
+- `drop`: Remove top stack value.
+- `select`: Choose between two values based on condition.
+- `local-get`: Get local variable value.
+- `local-set`: Set local variable value.
+- `local-tee`: Set local variable and return the value.
+- `global-get`: Get global variable value.
+- `global-set`: Set global variable value.
+- `table-get`: Get element from table.
+- `table-set`: Set element in table.
+- `table-init`: Initialize table from element segment.
+- `table-copy`: Copy elements between tables.
+- `table-grow`: Grow table size.
+- `table-size`: Get table size.
+- `table-fill`: Fill table range with value.
+- `elem-drop`: Drop element segment.
+- `load`: Load value from memory.
+- `store`: Store value to memory.
+- `memory-size`: Get memory size in pages.
+- `memory-grow`: Grow memory size.
+- `memory-init`: Initialize memory from data segment.
+- `data-drop`: Drop data segment.
+- `memory-copy`: Copy memory regions.
+- `memory-fill`: Fill memory range with byte value.
 
 ### `$instr-vec` {#instr-vec}
 
@@ -393,7 +482,60 @@ Any [`$coin-wasm`](#coin-wasm) that represents a constant value.
   ==  ::  $instr-vec
 ```
 
-???
+Wasm SIMD vector instructions for 128-bit vectors:
+- `load`: Load vector from memory (with optional splat/zero-extend/sign-extend).
+- `load-lane`: Load single value into specific lane.
+- `store`: Store vector to memory.
+- `store-lane`: Store single lane to memory.
+- `const`: Vector constant.
+- `shuffle`: Rearrange lanes by index list.
+- `extract`: Get value from specific lane.
+- `replace`: Set value in specific lane.
+- `swizzle`: Rearrange lanes using second vector as indices.
+- `splat`: Broadcast scalar to all lanes.
+- `eq`: Lane-wise equality comparison.
+- `ne`: Lane-wise inequality comparison.
+- `lt`: Lane-wise less than comparison.
+- `gt`: Lane-wise greater than comparison.
+- `le`: Lane-wise less than or equal comparison.
+- `ge`: Lane-wise greater than or equal comparison.
+- `not`: Bitwise NOT on entire vector.
+- `and`: Bitwise AND on entire vector.
+- `andnot`: Bitwise AND-NOT on entire vector.
+- `or`: Bitwise OR on entire vector.
+- `xor`: Bitwise XOR on entire vector.
+- `bitselect`: Select bits based on mask.
+- `any-true`: Test if any lanes are true.
+- `all-true`: Test if all lanes are true.
+- `bitmask`: Extract high bit from each lane.
+- `abs`: Lane-wise absolute value.
+- `neg`: Lane-wise negation.
+- `popcnt`: Population count on each lane.
+- `narrow`: Pack two vectors into one with narrower lanes.
+- `shl`: Lane-wise left bit shift.
+- `shr`: Lane-wise right bit shift.
+- `add`: Lane-wise addition (with optional saturation).
+- `sub`: Lane-wise subtraction (with optional saturation).
+- `min`: Lane-wise minimum.
+- `max`: Lane-wise maximum.
+- `avgr`: Averaging with rounding.
+- `mul`: Lane-wise multiplication.
+- `extend`: Extend lane width.
+- `extmul`: Extended multiplication.
+- `extadd`: Extended addition.
+- `q15mul-r-sat`: Q15 fixed-point multiplication.
+- `dot`: Dot product.
+- `ceil`: Lane-wise ceiling (round up).
+- `floor`: Lane-wise floor (round down).
+- `nearest`: Lane-wise round to nearest.
+- `sqrt`: Lane-wise square root.
+- `div`: Lane-wise division.
+- `trunc`: Lane-wise truncate to integer.
+- `convert`: Lane-wise type conversion.
+- `demote`: Lane-wise f64 to f32 conversion.
+- `promote`: Lane-wise f32 to f64 conversion.
+- `pmin`: Propagating minimum (NaN handling).
+- `pmax`: Propagating maximum (NaN handling).
 
 ### `$expression` {#expression}
 

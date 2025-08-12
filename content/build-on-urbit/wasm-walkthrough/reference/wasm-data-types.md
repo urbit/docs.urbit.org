@@ -3,7 +3,9 @@
 
 UrWasm's inner core, `+wasm-sur`, contains the foundational Wasm types.
 
-The first part implements the Structure chapter of the [WebAssembly Core Specification](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/syntax/index.html). The second part implements Wasm's binary-format opcodes.
+The first part implements the [Structure chapter](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/syntax/index.html) of the [WebAssembly Core Specification](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/syntax/index.html).
+
+The second part implements Wasm's binary-format opcodes.
 
 ### `$octs`  (pair @ud @)
 

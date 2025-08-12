@@ -435,7 +435,7 @@ Constant instruction. ???
   ==
 ```
 
-A Wasm module, represented in a format closer to its binary representation to simplify parsing.
+A Wasm module. Note code and function sections have been separated here to simplify parsing.
 
 ### `$type-section` {#type-section}
 

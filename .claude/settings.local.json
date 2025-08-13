@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:webassembly.github.io)",
+      "WebFetch(domain:pengowray.github.io)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

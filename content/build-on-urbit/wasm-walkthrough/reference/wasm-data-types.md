@@ -112,7 +112,7 @@ Defines the minimum and maximum size of a memory instance. The `.align` and `.of
 +$  block-type  $@(@ func-type)  ::  typeidx in type section or func-type
 ```
 
-Block type for {structured control instructions ???}. Can be a type index in the [`$type-section`](#type-section) or a [`$func-type`](#func-type) function signature.
+Function signature for control flow blocks (`if`, `loop`, etc.). This may be defined inline ([`$func-type`](#func-type)) or referred to by its index in the [`$type-section`](#type-section).
 
 ### `$func-type` {#func-type}
 
@@ -144,7 +144,7 @@ Type union of all Wasm instructions.
 
 Instructions are categorized here by their operand patterns:
 - `%vec`: Vector instructions. (See [`$instr-vec`]($instr-vec).)
-- [`$instr-short`](#instr-short): ???
+- [`$instr-short`](#instr-short): Non-numeric Wasm instructions.
 - [`$instr-num`](#instr-num): Standard Wasm instructions categorized by arity.
 - [`$instr-dbug`](#instr-dbug): Debugging.
 
@@ -157,7 +157,7 @@ Instructions are categorized here by their operand patterns:
   ==
 ```
 
-Debugging instructions. The only one supported here is `%print-tee`, which prints a value {TODO ???} with the given `$term` as a label.
+Debugging instructions. The only one supported here is `%print-tee`, which prints a value to output with the given `$term` as a label.
 
 ### `$instr-num` {#instr-num}
 
@@ -369,7 +369,7 @@ Wasm's binary numeric instructions:
   ==  ::  $instr-short
 ```
 
-???:
+Non-numeric WebAssembly instructions organized by category:
 - `unreachable`: Trap execution unconditionally.
 - `nop`: No operation.
 - `block`: Start a block with optional result type.
@@ -555,7 +555,7 @@ An ordered sequence of [`$instruction`](#instruction)s.
   ==
 ```
 
-{??? - some kind of const but not sure how relates to `$instr-num-zero`}
+Instructions that produce constant values e.g. global variables. Unlike [`$instr-num-zero`](#instr-num-zero) which only handles scalar numeric constants, this includes vector constants, global variable reads, and reference constants.
 
 ### `$module` {#module}
 

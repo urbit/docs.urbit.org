@@ -1,0 +1,31 @@
+
+## /lib/wasm/validator
+
+++  validator
+  ++  output
+  ++  result-form
+  ++  result
+    ++  bind
+  ++  snug
+  ++  validate-module
+  ++  v-import-section
+  ++  validate-limits
+  ++  v-function-section
+  ++  v-table-section
+  ++  v-memory-section
+  ++  v-global-section
+  ++  v-export-section
+  ++  v-start-section
+  ++  v-elem-section
+  ++  v-datacnt-section
+  ++  v-code-section
+  ++  v-data-section
+  ++  validate-code
+  ++  validate-expr
+  ++  validate-instr
+  ++  get-type
+  ++  get-type-vec
+  ++  from-coin
+  ++  byte-width
+  ++  dim-lane
+  ++  unpack

@@ -12,6 +12,8 @@ While `+wasm-sur` implements the WebAssembly Core Specification, `+engine-sur` p
 ++  engine-sur
   =,  wasm-sur
   |%
+  ::  ...
+::  ...
 ```
 
 Wrapper arm around the engine types, making them addressable by limb resolution paths like `module:engine-sur`. Also exposes the `+wasm-sur` namespace so it can refer to types like `$type-section` directly.

@@ -7,7 +7,7 @@ The first part implements the [Structure chapter](https://www.w3.org/TR/2022/WD-
 
 The second part implements Wasm's binary-format opcodes.
 
-### `$octs`  (pair @ud @)
+### `$octs` {#octs}
 
 ```hoon
 +$  octs  (pair @ud @)

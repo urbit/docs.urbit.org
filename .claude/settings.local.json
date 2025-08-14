@@ -3,7 +3,10 @@
     "allow": [
       "WebSearch",
       "WebFetch(domain:webassembly.github.io)",
-      "WebFetch(domain:pengowray.github.io)"
+      "WebFetch(domain:pengowray.github.io)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:gist.github.com)"
     ],
     "deny": [],
     "ask": []

@@ -631,43 +631,464 @@ Reference instruction implementations:
 
 ```hoon
 ++  simd
-  |=  iv=instr-vec
-  ^-  $-(local-state local-state)
-  ::  Implementation details for SIMD vector instructions
+  =<  fetch-vec
+  |%
+  ::  ++rope: ++rip but with leading zeros.
+  ::  Takes bloq size, number of blocks and
+  ::  an atom to dissasemble
+  ::
+  ::  ... 
+  --
 ```
+
+{TODO include comments with +foo, +bar arms in code sample above? did that in another file and i quite like that convention; you get a low-res picture of the whole thing at once to fill in as you read, easier to navigate}
 
 SIMD vector instruction implementations for 128-bit vectors. Handles vector load/store operations, lane manipulation, and parallel arithmetic operations on packed data.
 
-The SIMD implementation includes:
-
 ### `+rope` {#rope}
 
-Helper functions for vector operation utilities.
+```hoon
+++  rope
+  |=  [b=bloq s=step a=@]
+  ^-  (list @)
+  ?:  =(s 0)  ~
+  :-  (end b a)
+  $(a (rsh b a), s (dec s))
+```
+
+Helper for dissembling atoms with leading zeros. Similar to `+rip` but takes a specific number of blocks to extract.
 
 ### `+fetch-vec` {#fetch-vec}
 
-Vector instruction dispatcher that routes to specific vector operation implementations.
+```hoon
+++  fetch-vec
+  |=  i=instr-vec
+  ^-  $-(local-state local-state)
+  ?+    -.i  (plain i)
+      %load        (load i)
+      %load-lane   (load-lane i)
+      %store       (store i)
+      %store-lane  (store-lane i)
+  ::
+      %const    (const i)
+      %shuffle  (shuffle i)
+      %extract  (extract i)
+      %replace  (replace i)
+  ::
+  ==
+```
 
-### Vector Memory Operations
+Vector instruction dispatcher that routes [`$instr-vec`](./wasm-data-types.md#instr-vec) to specific vector operation implementations.
 
-- `load`: Load vector from memory with optional splat/zero-extend/sign-extend
-- `load-lane`: Load single value into specific lane  
-- `store`: Store vector to memory
-- `store-lane`: Store single lane to memory
+### `+load` {#load}
 
-### Vector Manipulation
+```hoon
+++  load
+  |=  i=instr-vec
+  ?>  ?=(%load -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([addr=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  =/  index=@  (add addr offset.m.i)
+  =+  mem=(memo:grab 0 store.l)
+  ?:  ?=(%| -.mem)
+    %^  buy  l(va.stack rest)
+      :*  -.p.mem
+          %memo
+          (change ~[%i32] ~[addr])
+          [%vec i]
+      ==
+    ~[%v128]
+  ?~  kind.i
+    =+  loaded=(mem-load index 16 p.mem)
+    ?~  loaded  l(br.stack [%trap ~])
+    l(va.stack [u.loaded rest])
+  ?-    q.u.kind.i
+      [%extend p=?(%s %u)]
+    =;  loaded=(unit @)
+      ?~  loaded  l(br.stack [%trap ~])
+      l(va.stack [u.loaded rest])
+    =+  bloq=(xeb (dec p.u.kind.i))
+    =+  get=(mem-load index 8 p.mem)
+    ?~  get  ~
+    =/  lanes=(list @)
+      (rope bloq (div 64 p.u.kind.i) u.get)
+    :-  ~
+    %+  rep  +(bloq)
+    ?:  ?=(%u p.q.u.kind.i)
+      lanes
+    %+  turn  lanes
+    %+  cork  (cury to-si p.u.kind.i)
+    (cury en-si (mul 2 p.u.kind.i))
+  ::
+      %zero
+    =+  get=(mem-load index (div p.u.kind.i 8) p.mem)
+    ?~  get  l(br.stack [%trap ~])
+    l(va.stack [u.get rest])
+  ::
+      %splat
+    =;  loaded=(unit @)
+      ?~  loaded  l(br.stack [%trap ~])
+      l(va.stack [u.loaded rest])
+    =+  lane=(mem-load index (div p.u.kind.i 8) p.mem)
+    ?~  lane  ~
+    `(fil (xeb (dec p.u.kind.i)) (div 128 p.u.kind.i) u.lane)
+  ::
+  ==
+```
 
-- `const`: Vector constant values
-- `shuffle`: Rearrange lanes by index list
-- `extract`: Get value from specific lane
-- `replace`: Set value in specific lane
+Load vector from memory with optional operations like splat (broadcast), zero-extend, or sign-extend.
 
-### Vector Arithmetic
+### `+load-lane` {#load-lane}
 
-- `plain`: Plain vector operations including:
-  - `kind`: Categorize vector operation types
-  - `vec-unar`: Unary vector operations 
-  - `vec-bina`: Binary vector operations
-  - `get-op-unar`: Resolve unary operation implementations
-  - `get-op-bina`: Resolve binary operation implementations
-  - `get-size`: Extract size information from vector types
+```hoon
+++  load-lane
+  |=  i=instr-vec
+  ?>  ?=(%load-lane -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([vec=@ addr=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  =/  index=@  (add addr offset.m.i)
+  =+  mem=(memo:grab 0 store.l)
+  ?:  ?=(%| -.mem)
+    %^  buy  l(va.stack rest)
+      :*  -.p.mem
+          %memo
+          (change ~[%i32 %v128] ~[addr vec])
+          [%vec i]
+      ==
+    ~[%v128]
+  =+  lane=(mem-load index (div p.i 8) p.mem)
+  ?~  lane  l(br.stack [%trap ~])
+  %=    l
+      va.stack
+    [(sew (xeb (dec p.i)) [l.i 1 u.lane] vec) rest]
+  ==
+```
+
+Load single value from memory into a specific lane of an existing vector.
+
+### `+store` {#store}
+
+```hoon
+++  store
+  |=  i=instr-vec
+  ?>  ?=(%store -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([vec=@ addr=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  =+  memo=(memo:grab 0 store.l)
+  ?:  ?=(%| -.memo)
+    %^  buy  l(va.stack rest)
+      :*  -.p.memo
+          %memo
+          (change ~[%i32 %v128] ~[addr vec])
+          [%vec i]
+      ==
+    ~
+  =/  index=@  (add addr offset.m.i)
+  =+  mem-stored=(mem-store index 16 vec p.memo)
+  ?~  mem-stored  l(br.stack [%trap ~])
+  %=    l
+      va.stack  rest
+  ::
+      mem.store
+    `u.mem-stored
+  ==
+```
+
+Store 128-bit vector to memory at the specified address.
+
+### `+store-lane` {#store-lane}
+
+```hoon
+++  store-lane
+  |=  i=instr-vec
+  ?>  ?=(%store-lane -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([vec=@ addr=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  =+  memo=(memo:grab 0 store.l)
+  ?:  ?=(%| -.memo)
+    %^  buy  l(va.stack rest)
+      :*  -.p.memo
+          %memo
+          (change ~[%i32 %v128] ~[addr vec])
+          [%vec i]
+      ==
+    ~
+  =/  index=@  (add addr offset.m.i)
+  =+  lane=(cut (xeb (dec p.i)) [l.i 1] vec)
+  =+  mem-stored=(mem-store index (div p.i 8) lane p.memo)
+  ?~  mem-stored  l(br.stack [%trap ~])
+  %=    l
+      va.stack  rest
+  ::
+      mem.store
+    `u.mem-stored
+  ==
+```
+
+Store single lane from vector to memory at the specified address.
+
+### `+const` {#const}
+
+```hoon
+++  const
+  |=  i=instr-vec
+  ?>  ?=(%const -.i)
+  |=  l=local-state
+  ^-  local-state
+  l(va.stack [(coin-to-val p.i) va.stack.l])
+```
+
+Push vector constant value onto the stack.
+
+### `+shuffle` {#shuffle}
+
+```hoon
+++  shuffle
+  |=  i=instr-vec
+  ?>  ?=(%shuffle -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([c2=@ c1=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  =/  seq=(list @)
+    (weld (rope 3 16 c1) (rope 3 16 c2))
+  %=    l
+      va.stack
+    :_  rest
+    %+  rep  3
+    %+  turn  lane-ids.i
+    (curr snag seq)
+  ==
+```
+
+Shuffle lanes between two vectors according to the lane indices specified in the instruction.
+
+### `+extract` {#extract}
+
+```hoon
+++  extract
+  |=  i=instr-vec
+  ?>  ?=(%extract -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([vec=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  =+  size=(lane-size p.i)
+  =+  lane=(cut (xeb (dec size)) [l.i 1] vec)
+  =;  to-put=@
+    l(va.stack [to-put rest])
+  ?:  ?=(%u mode.i)  lane
+  (en-si 32 (to-si size lane))
+```
+
+Extract value from a specific lane of a vector, with optional sign extension.
+
+### `+replace` {#replace}
+
+```hoon
+++  replace
+  |=  i=instr-vec
+  ?>  ?=(%replace -.i)
+  |=  l=local-state
+  ^-  local-state
+  ?>  ?=([lane=@ vec=@ rest=*] va.stack.l)
+  =,  va.stack.l
+  %=    l
+      va.stack
+    :_  rest
+    (sew (xeb (dec (lane-size p.i))) [l.i 1 lane] vec)
+  ==
+```
+
+Replace a specific lane in a vector with a new value.
+
+### `+plain` {#plain}
+
+```hoon
+++  plain
+  |=  i=instr-vec
+  ^-  $-(local-state local-state)
+  ~+
+  |^
+  ?+    -.i  !!
+      vec-unary:kind
+    |=  l=local-state
+    ^-  local-state
+    ?>  ?=([a=@ rest=*] va.stack.l)
+    =,  va.stack.l
+    =+  val=((vec-unar i) a)
+    ?~  val  l(br.stack [%trap ~])
+    l(va.stack [val rest])
+  ::
+      vec-binary:kind
+    |=  l=local-state
+    ^-  local-state
+    ?>  ?=([b=@ a=@ rest=*] va.stack.l)
+    =,  va.stack.l
+    =+  val=((vec-bina i) a b)
+    ?~  val  l(br.stack [%trap ~])
+    l(va.stack [val rest])
+  ::
+      lane-wise-unary:kind
+    =/  op=$-(@ (unit @))  (get-op-unar i)
+    =/  size=@  (get-size i)
+    |=  l=local-state
+    ^-  local-state
+    ?>  ?=([vec=@ rest=*] va.stack.l)
+    =,  va.stack.l
+    =;  val=(unit @)
+      ?~  val  l(br.stack [%trap ~])
+      l(va.stack [u.val rest])
+    ;<  =(list @)  _biff
+      (torn (rope (xeb (dec size)) (div 128 size) vec) op)
+    `(rep (xeb (dec size)) list)
+  ::
+      lane-wise-binary:kind
+    =/  op=$-([@ @] (unit @))  (get-op-bina i)
+    =/  size=@  (get-size i)
+    |=  l=local-state
+    ^-  local-state
+    ?>  ?=([vec2=@ vec1=@ rest=*] va.stack.l)
+    =,  va.stack.l
+    =;  val=(unit @)
+      ?~  val  l(br.stack [%trap ~])
+      l(va.stack [u.val rest])
+    ;<  =(list @)  _biff
+      %-  torn  :_  op
+      %+  fuse  (rope (xeb (dec size)) (div 128 size) vec1)
+      (rope (xeb (dec size)) (div 128 size) vec2)
+    `(rep (xeb (dec size)) list)
+  ::
+      %bitselect
+    |=  l=local-state
+    ^-  local-state
+    ?>  ?=([vec3=@ vec2=@ vec1=@ rest=*] va.stack.l)
+    =,  va.stack.l
+    %=    l
+      va.stack
+      :_  rest
+      ::  ++con is ior, ++dis is iand
+      ::
+      (con (dis vec1 vec3) (dis vec2 (not 7 1 vec3)))
+    ==
+  ==
+```
+
+Plain vector operations dispatcher that handles different categories of SIMD instructions.
+
+#### `+kind:plain` {#kind-plain}
+
+```hoon
+++  kind
+  |%
+  +$  vec-unary
+    $?  %splat  %not  %any-true  %all-true
+        %bitmask  %extadd  %extend  %convert
+        %demote  %promote
+    ==
+  ::
+  +$  vec-binary
+    $?  %swizzle  %and  %andnot  %or  %xor
+        %narrow  %shl  %shr  %extmul  %dot
+    ==
+  ::
+  +$  lane-wise-unary
+    $?
+      %abs  %neg  %popcnt  %ceil  %floor  %trunc
+      %nearest  %sqrt
+    ==
+  ::
+  +$  lane-wise-binary
+    $?  %eq  %ne  %lt  %gt  %le  %ge  %add  %sub
+        %min  %max  %avgr  %q15mul-r-sat  %mul  %div
+        %pmin  %pmax
+    ==
+  --
+```
+
+SIMD instruction type categories for organizing vector operations.
+
+#### `+vec-unar:plain` {#vec-unar-plain}
+
+```hoon
+++  vec-unar
+  |:  i=`$>(vec-unary:kind instr-vec)`[%not ~]
+  ^-  $-(@ @)
+  ?-    -.i
+  ::  ...
+  ==
+```
+
+{TODO - comment with %foo, %bar branches analogous to core with commented out +foo, +bar etc.}
+
+Unary vector operations including splat, bitwise not, truth testing, type conversions, and lane extensions.
+
+#### `+vec-bina:plain` {#vec-bina-plain}
+
+```hoon
+++  vec-bina
+  |:  i=`$>(vec-binary:kind instr-vec)`[%and ~]
+  ^-  $-([@ @] @)
+  ?-    -.i
+  ::  ...
+  ==
+```
+
+Binary vector operations including logical operations, lane narrowing, shifts, and multiplication.
+
+#### `+get-op-unar:plain` {#get-op-unar-plain}
+
+```hoon
+++  get-op-unar
+  |:  i=`$>(lane-wise-unary:kind instr-vec)`[%popcnt ~]
+  ^-  $-(@ (unit @))
+  ?-    -.i
+  ::  ...
+  ==
+```
+
+Resolve unary operation implementations for lane-wise vector operations.
+
+#### `+get-op-bina:plain` {#get-op-bina-plain}
+
+```hoon
+++  get-op-bina
+  |:  i=`$>(lane-wise-binary:kind instr-vec)`[%q15mul-r-sat ~]
+  ^-  $-([@ @] (unit @))
+  ?-    -.i
+  ::  ...
+  ==
+```
+
+Resolve binary operation implementations for lane-wise vector operations.
+
+#### `+get-size:plain` {#get-size-plain}
+
+```hoon
+++  get-size
+  |=  i=^
+  ^-  @
+  ?+    +.i  !!
+      ~
+    ?+  -.i  !!
+      %q15mul-r-sat  16
+      %popcnt  8
+    ==
+  ::
+      lane-type
+    (lane-size +.i)
+  ::
+      [p=lane-type *]
+    (lane-size p.i)
+  ==
+```
+
+Extract size information from lane-wise SIMD instruction types.

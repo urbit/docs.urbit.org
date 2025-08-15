@@ -26,3 +26,6 @@ This reference section documents UrWasm's data types and library functionality.
 - Wasm operator
 - Wasm interpreter
 - Lia interpreter
+
+## Jets
+- foobar

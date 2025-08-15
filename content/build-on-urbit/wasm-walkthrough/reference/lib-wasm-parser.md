@@ -1219,7 +1219,7 @@ Parse [`$global`](./wasm-data-types.md#global) variable with type, mutability, a
 ++  const-expr  ;~(sfix const-instr end)  ::  single instruction
 ```
 
-Parse constant expression (single constant instruction followed by end).
+Parse constant [`$expression`](./wasm-data-types.md#expression) (single constant instruction followed by end).
 
 ### `+const-instr` {#const-instr}
 
@@ -1234,7 +1234,7 @@ Parse constant expression (single constant instruction followed by end).
 instr
 ```
 
-Parse instructions that can appear in constant expressions.
+Parse [`$instruction`s](./wasm-data-types.md#instruction) that can appear in [constant instructions](./wasm-data-types.md#const-instr).
 
 ### `+export-section` {#export-section}
 
@@ -1272,7 +1272,7 @@ Parse export entry with name and description.
   (stag ~ u32)
 ```
 
-Parse Wasm start section with start function index.
+Parse Wasm module [`$start-section`](./wasm-data-types.md#start-section) with start function index.
 
 ### `+elem-section` {#elem-section}
 
@@ -1282,7 +1282,7 @@ Parse Wasm start section with start function index.
   (vec elem)
 ```
 
-Parse Wasm element section for table initialization.
+Parse Wasm module [`$elem-section`](./wasm-data-types.md#elem-section) for table initialization.
 
 ### `+elem` {#elem}
 
@@ -1300,7 +1300,11 @@ Parse Wasm element section for table initialization.
   ==
 ```
 
-Parse element segment in one of eight different formats (Wasm specification variations).
+Parse element segment in one of eight different formats. Each format has different combinations of:
+- Active/passive/declarative mode.
+- Table index specification.
+- Element type annotation.
+- Initialization [`$expression`](./wasm-data-types.md#expression) vs [`$function`](./wasm-data-types.md#function-section) indices.
 
 ### `+elem-kind` {#elem-kind}
 
@@ -1308,7 +1312,7 @@ Parse element segment in one of eight different formats (Wasm specification vari
 ++  elem-kind  (just '\00')
 ```
 
-Parse element kind (currently only function references supported).
+Parse element kind (currently only function references references supported).
 
 ### `+elem-0` through +elem-7 {#elem-variants}
 
@@ -1320,11 +1324,7 @@ Parse element kind (currently only function references supported).
   ==
 ```
 
-Parse different element segment formats. Each format has different combinations of:
-- Active/passive/declarative mode
-- Table index specification
-- Element type annotation
-- Initialization expression vs function indices
+Parse different element segment formats. 
 
 ### `+handle-elem-0` through +handle-elem-7 {#handle-elem-variants}
 
@@ -1338,7 +1338,7 @@ Handler functions that convert parsed element data into the standard [`$elem`](.
   (vec code)
 ```
 
-Parse Wasm code section containing function implementations.
+Parse Wasm module [`$code-section`](./wasm-data-types.md#code-section) containing function implementations.
 
 ### `+code` {#code}
 
@@ -1366,7 +1366,7 @@ Parse function implementation with local variable declarations and body.
 ++  locals  ;~(plug u32 valtype)
 ```
 
-Parse local variable declaration (count and type).
+Parse local variable declaration (count and [`$valtype`](./wasm-data-types.md#valtype)).
 
 ### `+handle-locals` {#handle-locals}
 
@@ -1389,7 +1389,7 @@ Expand compressed local variable declarations into full list.
   (vec data)
 ```
 
-Parse Wasm data section for memory initialization.
+Parse Wasm module [`$data-section`](./wasm-data-types.md#data-section) section for memory initialization.
 
 ### `+data` {#data}
 
@@ -1418,7 +1418,7 @@ Parse Wasm data section for memory initialization.
   ==  ==  ==  ==
 ```
 
-Parse data segment in active or passive mode with initialization data.
+Parse [`$data`](./wasm-data-types.md#data) segment in active or passive mode with initialization data.
 
 ### `+to-octs` {#to-octs}
 
@@ -1430,7 +1430,7 @@ Parse data segment in active or passive mode with initialization data.
   (rep 3 tape)
 ```
 
-Convert tape to octets format.
+Convert tape to `$octs` format.
 
 ### `+datacnt-section` {#datacnt-section}
 
@@ -1440,7 +1440,7 @@ Convert tape to octets format.
   (stag ~ u32)
 ```
 
-Parse Wasm data count section.
+Parse Wasm module [data count](./wasm-data-types.md#datacnt-section) section.
 
 ### `+module` {#module}
 
@@ -1454,7 +1454,7 @@ Parse Wasm data count section.
   ==
 ```
 
-Parse complete Wasm module with magic number, version, and sections.
+Parse complete Wasm [`$module`](./wasm-data-types.md#module) with [`+magic`](#magic) number, [`+version`](#version), and sections.
 
 ### `+module-contents` {#module-contents}
 
@@ -1476,7 +1476,7 @@ Parse complete Wasm module with magic number, version, and sections.
   ==
 ```
 
-Parse module contents with all sections in order, allowing for missing optional sections.
+Parse Wasm [`$module`](./wasm-data-types.md#module) contents.
 
 ### `+check` {#check}
 
@@ -1494,7 +1494,7 @@ Parse module contents with all sections in order, allowing for missing optional 
   ==
 ```
 
-Check for optional section presence, providing default values for missing sections.
+Check for optional Wasm module sections, providing default values for missing sections.
 
 ### `+customs` {#customs}
 
@@ -1507,7 +1507,7 @@ Check for optional section presence, providing default values for missing sectio
   ==
 ```
 
-Parse custom sections (ignored during parsing).
+Parse custom Wasm module sections (ignored during parsing).
 
 ### `+magic` {#magic}
 
@@ -1544,17 +1544,11 @@ Parse Wasm version number (currently version 1).
     %0xf   `[%return ~]
     %0x1a  `[%drop ~]
     %0x1b  `[%select ~]
-    :: [more opcodes...]
+    :: ...
   ==
 ```
 
-Maps single-byte Wasm opcodes to their corresponding [`$instruction`](./wasm-data-types.md#instruction) representations. Covers all basic Wasm instructions including:
-- Control flow (`unreachable`, `nop`, `return`)
-- Stack manipulation (`drop`, `select`)
-- Arithmetic operations (`add`, `sub`, `mul`, `div`)
-- Comparison operations (`eq`, `ne`, `lt`, `gt`, `le`, `ge`)
-- Bitwise operations (`and`, `or`, `xor`, `shl`, `shr`)
-- Type conversion operations (`extend`, `convert`, `reinterpret`)
+Maps single-byte Wasm opcodes to their corresponding [`$instruction`](./wasm-data-types.md#instruction) representations.
 
 ## `+simd-map` {#simd-map}
 
@@ -1570,46 +1564,8 @@ Maps single-byte Wasm opcodes to their corresponding [`$instruction`](./wasm-dat
   ?+  op    ~
     %14   `[%swizzle ~]
     %98   `[%popcnt ~]
-    :: [more SIMD opcodes...]
+    :: ...
   ==
 ```
 
-Maps SIMD/vector instruction opcodes to their corresponding vector instruction representations. Includes helper functions for different categories of vector operations:
-
-### `+nearest`, +sqrt, +div, +pmin, +pmax {#simd-float-ops}
-
-Floating-point vector operations with type-specific handling.
-
-### `+avgr`, +ceil, +floor {#simd-rounding-ops}
-
-Vector rounding and averaging operations.
-
-### `+all-true`, +bitmask {#simd-reduction-ops}
-
-Vector reduction operations that produce scalar results.
-
-### `+narrow`, +shl, +extadd, +convert {#simd-width-ops}
-
-Vector operations that change lane width or perform type conversions.
-
-### `+mul`, +splat, +eq, +ne, +abs, +neg, +trunc {#simd-basic-ops}
-
-Basic vector arithmetic and comparison operations.
-
-### `+lt`, +gt, +le, +ge {#simd-comparison-ops}
-
-Vector comparison operations with signed/unsigned variants.
-
-### `+shr`, +min, +max {#simd-minmax-ops}
-
-Vector shift and min/max operations.
-
-### `+add`, +sub {#simd-arithmetic-ops}
-
-Vector addition and subtraction with optional saturation.
-
-### `+extend`, +extmul {#simd-extend-ops}
-
-Vector lane extension and extended multiplication operations.
-
-Each SIMD operation handler correctly maps the opcode to the appropriate lane type and operation mode (signed/unsigned, saturation, etc.).
+Maps SIMD instruction opcodes to their corresponding [vector instruction](./wasm-data-types.md#instr-vec) representations. Includes helper functions for different categories of vector operations.

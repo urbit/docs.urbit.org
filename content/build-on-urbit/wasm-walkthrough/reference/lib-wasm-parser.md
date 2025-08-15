@@ -1324,7 +1324,7 @@ Parse element kind (currently only function references references supported).
   ==
 ```
 
-Parse different element segment formats. 
+Parse different element segment formats.
 
 ### `+handle-elem-0` through +handle-elem-7 {#handle-elem-variants}
 

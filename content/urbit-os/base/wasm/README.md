@@ -21,11 +21,8 @@ This reference section documents UrWasm's data types and library functionality.
 - [Lia data types](./lia-data-types.md)
 
 ## Libraries
-- Wasm parser
-- Wasm validator
-- Wasm operator
-- Wasm interpreter
-- Lia interpreter
-
-## Jets
-- foobar
+- [Wasm parser](./lib-wasm-parser.md)
+- [Wasm validator](./lib-wasm-validator.md)
+- [Wasm operator definitions](./lib-wasm-runner-op-def.md)
+- [Wasm interpreter](./wasm-interpreter-data-types.md)
+- [Lia interpreter](./lib-wasm-lia.md)

@@ -2,7 +2,7 @@
 
 Onboarding new developers onto Urbit necessarily involves teaching them [Hoon](../../hoon/why-hoon.md). Whatever Hoon's merits as a systems programming language, the time commitment to understanding the language enough to be productive is an obvious barrier to entry.
 
-Urbit allows developers to run server-side code in languages like Rust and Python by compiling that code to [WebAssembly](https://webassembly.org/) (Wasm). They can run Javascript on the Urbit ship with a JS interpreter like QuickJS. Today this still involves some knowledge of Hoon, but the developer can mostly use the examples here as boilerplate.
+Urbit allows developers to run server-side code in languages like Rust and Python by compiling that code to [WebAssembly](https://webassembly.org/) (Wasm). Today this still involves some knowledge of Hoon, but the developer can mostly use the examples here as boilerplate.
 
 Trivially, Urbit's Wasm affordances (collectively "UrWasm") enable Hoon developers to leverage pre-existing libraries for functionality that doesn't already exist in Hoon, or would be prohibitively slow without writing a C [runtime jet](../runtime/jetting.md). But one can imagine more ambitious use-cases like running complete Next.js or Rust apps on the Urbit ship.
 

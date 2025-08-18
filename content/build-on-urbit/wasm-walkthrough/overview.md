@@ -69,7 +69,7 @@ UrWasm solves this by executing compiled Wasm in Lia ("Language for Invocation o
 
 Lia handles Wasm's non-determinism like so:
 - Some numerical operations may return an empty set of values; this is often equivalent to `undefined` in other languages, e.g. when the Wasm VM attempts to divide by zero. Whenever a function returns an empty set of values, Lia treats it as an error and deterministically crashes.
-- Some numerical operations may legally return one of a set of values, from which the Wasm VM may select any. {TODO - how does Lia select this deterministically?}
+- Some numerical operations may legally return one of a set of values, from which the Wasm VM may select any. This typically occurs with floating-point operations that produce NaN results, where different implementations might return different NaN bit patterns. Lia preserves determinism by normalizing all NaN results to one type.
 - Wasm's `memory.grow` may or may not grow the memory; in some cases the choice is left to the host environment like the browser. In Lia, `memory.grow` will always increase the length of linear memory if the module's limits allow.
 
 ## UrWasm Structure

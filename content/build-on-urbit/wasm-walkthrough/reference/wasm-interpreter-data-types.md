@@ -1,10 +1,6 @@
 # Wasm Interpreter Data Types
 
-{??? not sure abt intro - not very deep / clear, LLM smell}
-
-UrWasm's engine layer, `+engine-sur`, contains the interpreter data types that represent Wasm modules in their executable form.
-
-While `+wasm-sur` implements the WebAssembly Core Specification, `+engine-sur` provides the runtime representation needed for execution, with optimized module structure and execution state management.
+UrWasm's `+engine-sur` types represent Wasm modules in their executable form. While `+wasm-sur` implements the WebAssembly Core Specification, `+engine-sur` provides the runtime representation needed for execution, with some optimizations.
 
 ### `+engine-sur` {#engine-sur}
 

@@ -1314,7 +1314,7 @@ Parse element segment in one of eight different formats. Each format has differe
 
 Parse element kind (currently only function references references supported).
 
-### `+elem-0` through +elem-7 {#elem-variants}
+### `+elem-0` {#elem-0}
 
 ```hoon
 ++  elem-0
@@ -1324,11 +1324,229 @@ Parse element kind (currently only function references references supported).
   ==
 ```
 
-Parse different element segment formats.
+Parse active element segment with implicit table 0 and function indices.
 
-### `+handle-elem-0` through +handle-elem-7 {#handle-elem-variants}
+### `+elem-1` {#elem-1}
 
-Handler functions that convert parsed element data into the standard [`$elem`](./wasm-data-types.md#elem) format, normalizing the different binary representations.
+```hoon
+++  elem-1
+  %+  cook  handle-elem-1
+  ;~  pfix  (just '\01')
+    ;~(plug elem-kind (vec u32))
+  ==
+```
+
+Parse passive element segment with element kind and function indices.
+
+### `+elem-2` {#elem-2}
+
+```hoon
+++  elem-2
+  %+  cook  handle-elem-2
+  ;~  pfix  (just '\02')
+    ;~(plug u32 const-expr elem-kind (vec u32))
+  ==
+```
+
+Parse active element segment with explicit table index, offset expression, element kind, and function indices.
+
+### `+elem-3` {#elem-3}
+
+```hoon
+++  elem-3
+  %+  cook  handle-elem-3
+  ;~  pfix  (just '\03')
+    ;~(plug elem-kind (vec u32))
+  ==
+```
+
+Parse declarative element segment with element kind and function indices.
+
+### `+elem-4` {#elem-4}
+
+```hoon
+++  elem-4
+  %+  cook  handle-elem-4
+  ;~  pfix  (just '\04')
+    ;~(plug const-expr (vec expr))
+  ==
+```
+
+Parse active element segment with implicit table 0 and initialization expressions.
+
+### `+elem-5` {#elem-5}
+
+```hoon
+++  elem-5
+  %+  cook  handle-elem-5
+  ;~  pfix  (just '\05')
+    ;~(plug ref-type (vec expr))
+  ==
+```
+
+Parse passive element segment with reference type and initialization expressions.
+
+### `+elem-6` {#elem-6}
+
+```hoon
+++  elem-6
+  %+  cook  handle-elem-6
+  ;~  pfix  (just '\06')
+    ;~(plug u32 const-expr ref-type (vec expr))
+  ==
+```
+
+Parse active element segment with explicit table index, offset expression, reference type, and initialization expressions.
+
+### `+elem-7` {#elem-7}
+
+```hoon
+++  elem-7
+  %+  cook  handle-elem-7
+  ;~  pfix  (just '\07')
+    ;~(plug ref-type (vec expr))
+  ==
+```
+
+Parse declarative element segment with reference type and initialization expressions.
+
+### `+handle-elem-0` {#handle-elem-0}
+
+```hoon
+++  handle-elem-0
+  |=  [e=const-instr:sur y=(list @)]
+  ^-  elem:sur
+  :+  %func
+    %+  turn  y
+    |=  y=@
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    [%ref-func y]
+  [%acti 0 e]
+```
+
+Convert parsed elem-0 data into standard [`$elem`](./wasm-data-types.md#elem) format with active mode, table 0, and function references.
+
+### `+handle-elem-1` {#handle-elem-1}
+
+```hoon
+++  handle-elem-1
+  |=  [et=@ y=(list @)]
+  ^-  elem:sur
+  :+  ?+  et  ~|(%unrecognized-elem-kind !!)
+        %0x0  %func
+      ==
+    %+  turn  y
+    |=  y=@
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    [%ref-func y]
+  [%pass ~]
+```
+
+Convert parsed elem-1 data into standard [`$elem`](./wasm-data-types.md#elem) format with passive mode and function references.
+
+### `+handle-elem-2` {#handle-elem-2}
+
+```hoon
+++  handle-elem-2
+  |=  [x=@ e=const-instr:sur et=@ y=(list @)]
+  ^-  elem:sur
+  :+  ?+  et  ~|(%unrecognized-elem-kind !!)
+        %0x0  %func
+      ==
+    %+  turn  y
+    |=  y=@
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    [%ref-func y]
+  [%acti x e]
+```
+
+Convert parsed elem-2 data into standard [`$elem`](./wasm-data-types.md#elem) format with active mode, explicit table index, and function references.
+
+### `+handle-elem-3` {#handle-elem-3}
+
+```hoon
+++  handle-elem-3
+  |=  [et=@ y=(list @)]
+  ^-  elem:sur
+  :+  ?+  et  ~|(%unrecognized-elem-kind !!)
+        %0x0  %func
+      ==
+    %+  turn  y
+    |=  y=@
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    [%ref-func y]
+  [%decl ~]
+```
+
+Convert parsed elem-3 data into standard [`$elem`](./wasm-data-types.md#elem) format with declarative mode and function references.
+
+### `+handle-elem-4` {#handle-elem-4}
+
+```hoon
+++  handle-elem-4
+  |=  [e=const-instr:sur el=(list expression:sur)]
+  ^-  elem:sur
+  :+  %func
+    %+  turn  el
+    |=  ex=expression:sur
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    ?>  ?=([[%ref-func *] ~] ex)
+    i.ex
+  [%acti 0 e]
+```
+
+Convert parsed elem-4 data into standard [`$elem`](./wasm-data-types.md#elem) format with active mode, table 0, and expression-based initialization.
+
+### `+handle-elem-5` {#handle-elem-5}
+
+```hoon
+++  handle-elem-5
+  |=  [et=ref-type:sur el=(list expression:sur)]
+  ^-  elem:sur
+  :+  et
+    %+  turn  el
+    |=  ex=expression:sur
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    ?>  ?=([[%ref-func *] ~] ex)
+    i.ex
+  [%pass ~]
+```
+
+Convert parsed elem-5 data into standard [`$elem`](./wasm-data-types.md#elem) format with passive mode and expression-based initialization.
+
+### `+handle-elem-6` {#handle-elem-6}
+
+```hoon
+++  handle-elem-6
+  |=  [x=@ e=const-instr:sur et=ref-type:sur el=(list expression:sur)]
+  ^-  elem:sur
+  :+  et
+    %+  turn  el
+    |=  ex=expression:sur
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    ?>  ?=([[%ref-func *] ~] ex)
+    i.ex
+  [%acti x e]
+```
+
+Convert parsed elem-6 data into standard [`$elem`](./wasm-data-types.md#elem) format with active mode, explicit table index, and expression-based initialization.
+
+### `+handle-elem-7` {#handle-elem-7}
+
+```hoon
+++  handle-elem-7
+  |=  [et=ref-type:sur el=(list expression:sur)]
+  ^-  elem:sur
+  :+  et
+    %+  turn  el
+    |=  ex=expression:sur
+    ^-  $>(?(%ref-func %ref-null) instruction:sur)
+    ?>  ?=([[%ref-func *] ~] ex)
+    i.ex
+  [%decl ~]
+```
+
+Convert parsed elem-7 data into standard [`$elem`](./wasm-data-types.md#elem) format with declarative mode and expression-based initialization.
 
 ### `+code-section` {#code-section}
 

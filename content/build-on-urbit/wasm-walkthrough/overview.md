@@ -90,13 +90,13 @@ UrWasm is structured as several nested cores, with each core in this list being 
 All cores except `/lib/wasm/lia/hoon`, are additionally wrapped in one-armed cores for easy invocation:
 
 ```
-/sur/wasm/wasm/hoon             ::  wasm-sur
-/sur/wasm/engine/hoon           ::  engine-sur
-/sur/wasm/lia/hoon              ::  lia-sur
-/lib/wasm/parser/hoon           ::  parser
-/lib/wasm/validator/hoon        ::  validator
-/lib/wasm/runner/op-def/hoon    ::  op-def
-/lib/wasm/runner/engine/hoon    ::  engine
+/sur/wasm/wasm/hoon             ::  +wasm-sur
+/sur/wasm/engine/hoon           ::  +engine-sur
+/sur/wasm/lia/hoon              ::  +lia-sur
+/lib/wasm/parser/hoon           ::  +parser
+/lib/wasm/validator/hoon        ::  +validator
+/lib/wasm/runner/op-def/hoon    ::  +op-def
+/lib/wasm/runner/engine/hoon    ::  +engine
 ```
 
 Thus if you imported `/lib/wasm/lia/hoon` as `wasm`, you can get the core with Lia types as `lia-sur:wasm`.

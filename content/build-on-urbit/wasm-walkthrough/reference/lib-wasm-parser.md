@@ -451,8 +451,6 @@ Parse Wasm `if` opcode (`0x04`).
 
 Helper function that converts a list of sorted integers into a list of ranges (`?(@ [@ @])`).
 
-??? - Used to optimize parsing by creating efficient lookup tables for opcodes.
-
 ### `+instr` {#instr}
 
 ```hoon
@@ -519,7 +517,7 @@ Main instruction parser. Uses `+stew` parser to switch on the given text to the 
   ==
 ```
 
-??? - Parse Wasm `select` expression with optional type annotation for vectors.
+Parses a typed `select` instruction with explicit value types.
 
 ### `+br-table` {#br-table}
 

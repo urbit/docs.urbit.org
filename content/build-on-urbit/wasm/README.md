@@ -13,7 +13,7 @@ layout:
     visible: true
 ---
 
-# Wasm Walkthrough
+# WebAssembly Walkthrough
 
 Urbit's WebAssembly affordances (collectively known as "UrWasm") enables Hoon developers to leverage pre-existing libraries from any Wasm-compatible language like Rust, Python, and Go.
 

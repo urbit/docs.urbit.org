@@ -1,3 +1,18 @@
+---
+description: "UrWasm reference section, including data types and libraries"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # UrWasm Reference
 
 The UrWasm project is structured as a series of nested cores, innermost to outermost:

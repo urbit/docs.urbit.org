@@ -1,3 +1,18 @@
+---
+description: "Reference for UrWasm's Lia interpreter"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 ## Lia Interpreter
 
 The `/lib/wasm/lia.hoon` library implements Lia (Language for Invocation of webAssembly), a high-level scripting interface for executing WebAssembly modules within Urbit. Lia provides deterministic execution of Wasm code while maintaining performance through caching and efficient state management.

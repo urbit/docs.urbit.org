@@ -1,3 +1,18 @@
+---
+description: "Data types for Lia, Urbit's deterministic Wasm interpreter"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Lia Data Types
 
 The `+lia-sur` core builds on top of `+wasm-sur` and `+engine-sur` to define Lia's monadic, deterministic approach to making Wasm function calls and handling their results.

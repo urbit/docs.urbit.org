@@ -1,5 +1,5 @@
 ---
-description: "foobarbaz"
+description: "WebAssembly tutorials"
 layout:
   title:
     visible: true

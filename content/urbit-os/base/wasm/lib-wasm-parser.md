@@ -1,3 +1,18 @@
+---
+description: "Reference for UrWasm's parsing library"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Wasm Parser
 
 The `/lib/wasm/parser.hoon` library converts Wasm bytecode into UrWasm's Hoon types defined in [`+wasm-sur`](./wasm-data-types.md), which is nested in the imported [`/sur/wasm/lia.hoon`](./lia-data-types.md) file. This library implements parsing rules that follow the [WebAssembly Core Specification](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/binary/index.html) binary format.

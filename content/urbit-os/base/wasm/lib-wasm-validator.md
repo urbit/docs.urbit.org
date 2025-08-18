@@ -1,3 +1,18 @@
+---
+description: "Reference for UrWasm's Wasm module validator library"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Wasm Validator
 
 The `+validator` library validates WebAssembly modules for correctness according to the [WebAssembly Core Specification](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/valid/index.html). It performs static analysis to ensure type safety, proper memory access, and correct control flow before execution.

@@ -1,3 +1,18 @@
+---
+description: "Types for Wasm code in its executable form"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Wasm Interpreter Data Types
 
 UrWasm's `+engine-sur` types represent Wasm modules in their executable form. While `+wasm-sur` implements the WebAssembly Core Specification, `+engine-sur` provides the runtime representation needed for execution, with some optimizations.

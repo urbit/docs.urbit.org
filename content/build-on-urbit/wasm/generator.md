@@ -1,3 +1,18 @@
+---
+description: "Example of a Hoon generator using an imported Wasm module"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # UrWasm Generator Example
 
 Let's use UrWasm to write a generator that can quickly sort a large list of 64-bit integers in ascending order.

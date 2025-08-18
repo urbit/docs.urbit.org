@@ -1,4 +1,19 @@
-# Wasm Runner Op-Def
+---
+description: "Reference for UrWasm's Wasm operation definitions"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
+# Wasm Runner Operation Definitions
 
 The `/lib/wasm/runner/op-def` library implements WebAssembly instruction definitions as functions that transform the [`$local-state`](./wasm-interpreter-data-types.md#local-state) of the UrWasm interpreter. This library serves as the operational semantics for WebAssembly instructions, defining how each instruction modifies the interpreter's execution state.
 

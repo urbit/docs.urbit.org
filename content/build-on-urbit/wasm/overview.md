@@ -1,3 +1,18 @@
+---
+description: "Overview of the UrWasm project, goals, structure"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # UrWasm Overview
 
 Onboarding new developers onto Urbit necessarily involves teaching them [Hoon](../../hoon/why-hoon.md). Whatever Hoon's merits as a systems programming language, the time commitment to understanding the language enough to be productive is an obvious barrier to entry.

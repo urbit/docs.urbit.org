@@ -1,3 +1,18 @@
+---
+description: "Reference for UrWasm's interpreter library"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Wasm Runner Engine
 
 The `+engine` core implements the core WebAssembly interpreter engine. This runs module instantiation, function invocation, and the main evaluation loop for WebAssembly instructions.

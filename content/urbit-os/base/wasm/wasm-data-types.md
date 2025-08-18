@@ -1,5 +1,19 @@
-# Wasm Data Types
+---
+description: "Foundational Wasm types"
+layout:
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 
+# Wasm Data Types
 
 UrWasm's inner core, `+wasm-sur`, contains the foundational Wasm types.
 

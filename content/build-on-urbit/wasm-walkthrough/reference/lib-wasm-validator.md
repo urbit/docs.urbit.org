@@ -51,25 +51,7 @@ List of all global variable types.
   --
 ```
 
-Validation output types.
-
-??? - why are they flopped?
-
-## `$import` {#import}
-
-```hoon
-+$  import
-  $:
-    funcs=(list func-type)  ::  flopped
-    tables=(list table)  ::  flopped
-    memo=(unit limits)
-    globs=glob-types  ::  flopped
-  ==
-```
-
-??? - why flopped?
-
-Aggregated import validation results:
+Validation output types. The `.funcs`, `.tables`, and `.globs` lists are built in reverse order during parsing, so must be `+flop`ped to get the right order.
 - `.funcs`: List of imported function types.
 - `.tables`: List of imported [`$table`s](./wasm-data-types.md#table).
 - `.memo`: Optional imported memory [`$limits`](./wasm-data-types.md#limits).
@@ -81,9 +63,7 @@ Aggregated import validation results:
 +$  store  import:output  ::  right order
 ```
 
-Validation store containing all available types in the correct order for validation context.
-
-??? - why does order matter here?
+Validation store containing all available types in the correct order for validation context. Order matters because the store provides the validation context where imported items come first, followed by locally defined items, matching the WebAssembly spec's indexing requirements.
 
 ## `+result-form` {#result-form}
 

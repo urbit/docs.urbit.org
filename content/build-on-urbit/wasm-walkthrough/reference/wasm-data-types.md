@@ -806,8 +806,6 @@ Data segment for initializing the module's state.
 ++  datacnt-section  (unit @)
 ```
 
-{TODO check the below}
-
 Data count section of the Wasm module, which may optionally contain the number of data segments ([`$data`](#data)) in the module. This allows validators to check the index validity of the data section before trying to access it.
 
 ### `$opcode` {#opcode}

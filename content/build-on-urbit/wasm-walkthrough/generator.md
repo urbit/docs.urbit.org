@@ -13,8 +13,6 @@ In pure Hoon, we would write something like this:
 (sort lit lth)
 ```
 
-{TODO: check the above compiles and runs}
-
 Let's run this and see how long it takes. (`__~` in the Dojo discards the product of the given expression and returns `~`).
 
 ```
@@ -101,8 +99,6 @@ What's going on in this `sortu64()` wrapper function? We see that it does the fo
 5. Frees the returned array from Wasm memory with `__wbindgen_free`.
 6. Returns the sorted array.
 
-{TODO: better setup for yil-mold and acc-mold here.}
-
 We don't need to reimplement step 5, since the whole Wasm VM will be freed when we're done.
 
 Our generator with Hoon "bindings" will look like this in full. We'll examine each part in detail below.
@@ -172,9 +168,11 @@ We use the `%bout` runtime hint to time the computation that follows.
 ~>  %bout
 ```
 
-Now we'll define the types for our yield of the main script and the accumulator noun. We don't need the accumulator for this example but it's required for `+run-once`, so we'll just call it a noun `*`.
+Now we'll define the types for our yield of the main script, and the accumulator noun:
+- The `$yil-mold` is the type of our yield, the result of the script.
+- The `$acc-mold` is the type of the accumulator, which holds some arbitrary state we can read and write to during script execution.
 
-{TODO: better intro to the yield concept}
+We don't need the accumulator for this example but it's required for `+run-once`, so we'll just call it a noun `*`.
 
 ```hoon
 =>  |%
@@ -183,13 +181,9 @@ Now we'll define the types for our yield of the main script and the accumulator 
     --
 ```
 
-Since Lia's `+run-once` returns a pair of \[yield accumulator], we grab the yield with [`=<`](../../../hoon/rune/tis.md#tisgal) to get the head (`-`) of the result. `+yield-need` is a Lia function that asserts that a yield is successful and returns the unwrapped result. The `%$` is where we'd specify a runtime hint like `%bout`, but we stub it out here as we don't need one.
+Since Lia's `+run-once` returns a pair of \[yield accumulator], we grab the yield with [`=<`](../../../hoon/rune/tis.md#tisgal) to get the head (`-`) of the result. `+yield-need` is a Lia function that asserts that a yield is successful and returns the unwrapped result.
 
-Below, we build Lia's `+run-once` gate and run it on our imported `.wasm-bin` module, which we give the empty initial state `[~ ~]`. (That is, a pair of the initial accumulator state and {foobar}).
-
-{TODO: not sure about this Lia `+run-once` verbiage above}
-
-{TODO: get clarity on (list coin-wasm) arg in wasm state}
+Below, we build Lia's `+run-once` core and run it on our imported `.wasm-bin` module, which we give the empty argument `[~ ~]`. (That is, a pair of the initial accumulator state and a map of imports.) The `%$` is where we'd specify a runtime hint like `%bout`, but we stub it out here as we don't need it.
 
 ```hoon
 ::  run +yield-need on the head of the result
@@ -201,9 +195,7 @@ Below, we build Lia's `+run-once` gate and run it on our imported `.wasm-bin` mo
 %^  (run-once yil-mold acc-mold)  [wasm-bin [~ ~]]  %$
 ```
 
-Some more boilerplate. Hoon developers will recognize `.m` by analogy to the `.m` from the boilerplate often seen in [threads](../../../urbit-os/base/threads/README.md). `.arrows` is our built `+arrows` core from Lia, and we expose that namespace with [`=,`](../../../hoon/rune/tis.md#tiscom) for convenient usage later.
-
-{TODO: link to `+arrows` documentation in the reference section once it exists}
+Some more boilerplate. Hoon developers will recognize `.m` by analogy to the `.m` from the boilerplate often seen in [threads](../../../urbit-os/base/threads/README.md). `.arrows` is our built [`+arrows`](./reference/lib-wasm-lia.md#arrows) core from Lia, and we expose that namespace with [`=,`](../../../hoon/rune/tis.md#tiscom) for convenient usage later.
 
 ```hoon
 ::  define the monadic interface for the script
@@ -215,8 +207,6 @@ Some more boilerplate. Hoon developers will recognize `.m` by analogy to the `.m
 ```
 
 We'll measure the input list and concatonate all of its elements into a single atom with [`+rep`](../../../hoon/stdlib/2c.md#rep).
-
-{TODO: amend generator code style and update all code blocks accordingly}
 
 ```hoon
 ::  number of items in the list
@@ -240,9 +230,7 @@ With that out of the way we can now interact with Wasm VM, replicating steps 1-4
 ;<  vec-out=octs      try:m  (memread &1.ptr-len (mul 8 &2.ptr-len))
 ```
 
-Now we split the resulting octets atom (`$octs`, a cell of byte length and data) into a list of 64-bit atoms with [`+rip`](../../../hoon/stdlib/2c.md) and add missing trailing zeroes if necessary.
-
-{TODO: why would trailing zeroes be missing?}
+Now we split the resulting octets atom (`$octs`, a cell of byte length and data) into a list of 64-bit atoms with [`+rip`](../../../hoon/stdlib/2c.md) and add missing trailing zeroes if necessary. (Note that UrWasm's [`+rope`](./reference/lib-wasm-runner-op-def.md#rope) would preserve the zeroes.)
 
 ```hoon
 ::  rip the octet stream into a list of 64-bit atoms

@@ -633,15 +633,19 @@ Reference instruction implementations:
 ++  simd
   =<  fetch-vec
   |%
-  ::  ++rope: ++rip but with leading zeros.
-  ::  Takes bloq size, number of blocks and
-  ::  an atom to dissasemble
-  ::
-  ::  ... 
+  ::  +rope
+  ::  +fetch-vec
+  ::  +load
+  ::  +load-lane
+  ::  +store
+  ::  +store-lane
+  ::  +const
+  ::  +shuffle
+  ::  +extract
+  ::  +replace
+  ::  +plain
   --
 ```
-
-{TODO include comments with +foo, +bar arms in code sample above? did that in another file and i quite like that convention; you get a low-res picture of the whole thing at once to fill in as you read, easier to navigate}
 
 SIMD vector instruction implementations for 128-bit vectors. Handles vector load/store operations, lane manipulation, and parallel arithmetic operations on packed data.
 
@@ -1023,11 +1027,18 @@ SIMD instruction type categories for organizing vector operations.
   |:  i=`$>(vec-unary:kind instr-vec)`[%not ~]
   ^-  $-(@ @)
   ?-    -.i
-  ::  ...
+  ::  %splat
+  ::  %not
+  ::  %any-true
+  ::  %all-true
+  ::  %bitmask
+  ::  %extadd
+  ::  %extend
+  ::  %convert
+  ::  %demote
+  ::  %promote
   ==
 ```
-
-{TODO - comment with %foo, %bar branches analogous to core with commented out +foo, +bar etc.}
 
 Unary vector operations including splat, bitwise not, truth testing, type conversions, and lane extensions.
 
@@ -1038,7 +1049,16 @@ Unary vector operations including splat, bitwise not, truth testing, type conver
   |:  i=`$>(vec-binary:kind instr-vec)`[%and ~]
   ^-  $-([@ @] @)
   ?-    -.i
-  ::  ...
+  ::  %swizzle
+  ::  %and
+  ::  %andnot
+  ::  %or
+  ::  %xor
+  ::  %narrow
+  ::  %shl
+  ::  %shr
+  ::  %extmul
+  ::  %dot
   ==
 ```
 
@@ -1051,7 +1071,14 @@ Binary vector operations including logical operations, lane narrowing, shifts, a
   |:  i=`$>(lane-wise-unary:kind instr-vec)`[%popcnt ~]
   ^-  $-(@ (unit @))
   ?-    -.i
-  ::  ...
+  ::  %abs
+  ::  %neg
+  ::  %popcnt
+  ::  %ceil
+  ::  %floor
+  ::  %trunc
+  ::  %nearest
+  ::  %sqrt
   ==
 ```
 
@@ -1064,7 +1091,22 @@ Resolve unary operation implementations for lane-wise vector operations.
   |:  i=`$>(lane-wise-binary:kind instr-vec)`[%q15mul-r-sat ~]
   ^-  $-([@ @] (unit @))
   ?-    -.i
-  ::  ...
+  ::  %eq
+  ::  %ne
+  ::  %lt
+  ::  %gt
+  ::  %le
+  ::  %ge
+  ::  %add
+  ::  %sub
+  ::  %min
+  ::  %max
+  ::  %avgr
+  ::  %q15mul-r-sat
+  ::  %mul
+  ::  %div
+  ::  %pmin
+  ::  %pmax
   ==
 ```
 

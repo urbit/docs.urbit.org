@@ -63,14 +63,14 @@ In our case, we'll have to write our own bindings manually in Hoon. We'll cover 
 
 ## Lia
 
-The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Urbit's commitments to determinism and referential transparency. UrWasm solves this by executing compiled Wasm in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages Wasm's handful of nondeterministic edge-cases such that the same inputs to a Wasm function will always result in the same output. The interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute Wasm code at near-native speeds.
+The main theoretical blocker to executing non-Hoon code on Urbit was that doing so would violate Arvo's commitments to determinism. Some Wasm instructions like `memory.grow` and floating-point operators have non-deterministic behavior.
 
-* Determinism solved by Lia
-  * [urwasm-jetting.md](https://gist.github.com/Quodss/196a4deb3e24a652c021469d2c4544fb)
-    * Jetting
-    * Motivation
-      * Higher level interpreting function
-      * Lia interpreter
+UrWasm solves this by executing compiled Wasm in Lia ("Language for Invocation of (web)Assembly"), a tiny interpreter that manages Wasm's handful of nondeterministic edge-cases such that the same inputs to a Wasm function will always result in the same output. The Lia interpreter itself is small enough to be [jetted](../runtime/jetting.md), such that Urbit can execute Wasm code at near-native speeds.
+
+Lia handles Wasm's non-determinism like so:
+- Some numerical operations may return an empty set of values; this is often equivalent to `undefined` in other languages, e.g. when the Wasm VM attempts to divide by zero. Whenever a function returns an empty set of values, Lia treats it as an error and deterministically crashes.
+- Some numerical operations may legally reutrn one of a set of values, from which the Wasm VM may select any. {TODO - how does Lia select this deterministically?}
+- Wasm's `memory.grow` may or may not grow the memory; in some cases the choice is left to the host environment like the browser. In Lia, `memory.grow` will always increase the length of linear memory if the module's limits allow.
 
 ## UrWasm Structure
 

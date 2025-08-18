@@ -2,8 +2,6 @@
 
 The `/lib/wasm/parser.hoon` library converts Wasm bytecode into UrWasm's Hoon types defined in [`+wasm-sur`](./wasm-data-types.md), which is nested in the imported [`/sur/wasm/lia.hoon`](./lia-data-types.md) file. This library implements parsing rules that follow the [WebAssembly Core Specification](https://www.w3.org/TR/2022/WD-wasm-core-2-20220419/binary/index.html) binary format.
 
-{TODO Implements WebAssembly's [LEB128](https://en.wikipedia.org/wiki/LEB128) unsigned integer encoding.}
-
 ## `+parser` {#parser}
 
 ```hoon
@@ -359,13 +357,11 @@ First expression (true branch), followed by optional [`+else`](#else) and second
 
 ### `+end` {#end}
 
-{TODO change `\0b` in prose to `0x0b` as in actual Wasm binary}
-
 ```hoon
 ++  end        (just '\0b')
 ```
 
-Parse Wasm `end` opcode (`\0b`).
+Parse Wasm `end` opcode (`0x0B`).
 
 ### `+else` {#else}
 
@@ -373,7 +369,7 @@ Parse Wasm `end` opcode (`\0b`).
 ++  else       (just '\05')
 ```
 
-Parse Wasm `else` opcode (`\05`).
+Parse Wasm `else` opcode (`0x05`).
 
 ### `+const-i32` {#const-i32}
 
@@ -381,7 +377,7 @@ Parse Wasm `else` opcode (`\05`).
 ++  const-i32  (just '\41')
 ```
 
-Parse Wasm `i32.const` opcode (`\41`).
+Parse Wasm `i32.const` opcode (`0x41`).
 
 ### `+const-i64` {#const-i64}
 
@@ -389,7 +385,7 @@ Parse Wasm `i32.const` opcode (`\41`).
 ++  const-i64  (just '\42')
 ```
 
-Parse Wasm `i64.const` opcode (`\42`).
+Parse Wasm `i64.const` opcode (`0x42`).
 
 ### `+const-f32` {#const-f32}
 
@@ -397,7 +393,7 @@ Parse Wasm `i64.const` opcode (`\42`).
 ++  const-f32  (just '\43')
 ```
 
-Parse Wasm `f32.const` opcode (`\43`).
+Parse Wasm `f32.const` opcode (`0x43`).
 
 ### `+const-f64` {#const-f64}
 
@@ -405,7 +401,7 @@ Parse Wasm `f32.const` opcode (`\43`).
 ++  const-f64  (just '\44')
 ```
 
-Parse Wasm `f64.const` opcode (`\44`).
+Parse Wasm `f64.const` opcode (`0x44`).
 
 ### `+block-op` {#block-op}
 
@@ -413,7 +409,7 @@ Parse Wasm `f64.const` opcode (`\44`).
 ++  block-op   (just '\02')
 ```
 
-Parse Wasm `block` opcode (`\02`).
+Parse Wasm `block` opcode (`0x02`).
 
 ### `+loop-op` {#loop-op}
 
@@ -421,7 +417,7 @@ Parse Wasm `block` opcode (`\02`).
 ++  loop-op    (just '\03')
 ```
 
-Parse Wasm `loop` opcode (`\03`).
+Parse Wasm `loop` opcode (`0x03`).
 
 ### `+if-op` {#if-op}
 
@@ -429,7 +425,7 @@ Parse Wasm `loop` opcode (`\03`).
 ++  if-op      (just '\04')
 ```
 
-Parse Wasm `if` opcode (`\04`).
+Parse Wasm `if` opcode (`0x04`).
 
 ### `+form-ranges` {#form-ranges}
 
@@ -1733,7 +1729,7 @@ Parse custom Wasm module sections (ignored during parsing).
 ++  magic  (jest '\00asm')
 ```
 
-Parse Wasm magic number (`\00asm`).
+Parse Wasm magic number (`0x00`, `0x61`, `0x73`, `0x6D`) which identifies this file as a Wasm module.
 
 ### `+version` {#version}
 

@@ -210,7 +210,7 @@ Below, we build Lia's `+run-once` core and run it on our imported `.wasm-bin` mo
 %^  (run-once yil-mold acc-mold)  [wasm-bin [~ ~]]  %$
 ```
 
-Some more boilerplate. Hoon developers will recognize `.m` by analogy to the `.m` from the boilerplate often seen in [threads](../../../urbit-os/base/threads/README.md). `.arrows` is our built [`+arrows`](./reference/lib-wasm-lia.md#arrows) core from Lia, and we expose that namespace with [`=,`](../../../hoon/rune/tis.md#tiscom) for convenient usage later.
+Some more boilerplate. Hoon developers will recognize `.m` by analogy to the `.m` from the boilerplate often seen in [threads](../../urbit-os/base/threads/README.md). `.arrows` is our built [`+arrows`](../../urbit-os/base/wasm/lib-wasm-lia.md#arrows) core from Lia, and we expose that namespace with [`=,`](../../../hoon/rune/tis.md#tiscom) for convenient usage later.
 
 ```hoon
 ::  define the monadic interface for the script
@@ -245,7 +245,7 @@ With that out of the way we can now interact with Wasm VM, replicating steps 1-4
 ;<  vec-out=octs      try:m  (memread &1.ptr-len (mul 8 &2.ptr-len))
 ```
 
-Now we split the resulting octets atom (`$octs`, a cell of byte length and data) into a list of 64-bit atoms with [`+rip`](../../../hoon/stdlib/2c.md) and add missing trailing zeroes if necessary. (Note that UrWasm's [`+rope`](./reference/lib-wasm-runner-op-def.md#rope) would preserve the zeroes.)
+Now we split the resulting octets atom (`$octs`, a cell of byte length and data) into a list of 64-bit atoms with [`+rip`](../../../hoon/stdlib/2c.md) and add missing trailing zeroes if necessary. (Note that UrWasm's [`+rope`](../../../urbit-os/base/wasm/lib-wasm-runner-op-def.md#rope) "BROKEN_LINK" would preserve the zeroes.)
 
 ```hoon
 ::  rip the octet stream into a list of 64-bit atoms

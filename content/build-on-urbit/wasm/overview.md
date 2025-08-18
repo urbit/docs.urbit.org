@@ -116,5 +116,5 @@ All cores except `/lib/wasm/lia/hoon`, are additionally wrapped in one-armed cor
 
 Thus if you imported `/lib/wasm/lia/hoon` as `wasm`, you can get the core with Lia types as `lia-sur:wasm`.
 
-UrWasm's data types and functionality are covered in detail in the [reference](./reference/README.md) section.
+UrWasm's data types and functionality are covered in detail in the [reference](../../urbit-os/base/wasm/README.md) section.
 

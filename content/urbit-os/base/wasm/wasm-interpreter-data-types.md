@@ -66,7 +66,7 @@ Wasm [`$module`](./wasm-data-types.md#module) as seen by the engine. Some sectio
   ==
 ```
 
-Unlike `+wasm-sur`'s [`$function`](./wasm-data-types.md#function), this includes both the function signature and its implementation merged together:
+This includes both the function signature and its implementation merged together:
 - `.type-id`: Index into the [`$type-section`](./wasm-data-types.md#type-section) for this function's signature.
 - `.locals`: Local variables for this function.
 - [`.expression`](./wasm-data-types.md#expression): The function body as a sequence of [`$instruction`s](./wasm-data-types.md#instruction).

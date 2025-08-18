@@ -157,7 +157,7 @@ Type annotation for lanes (memory elements) in a 128-bit (`@H`) register. Includ
 Type union of all Wasm instructions.
 
 Instructions are categorized here by their operand patterns:
-- `%vec`: Vector instructions. (See [`$instr-vec`]($instr-vec).)
+- `%vec`: Vector instructions. (See [`$instr-vec`](#instr-vec).)
 - [`$instr-short`](#instr-short): Non-numeric Wasm instructions.
 - [`$instr-num`](#instr-num): Standard Wasm instructions categorized by arity.
 - [`$instr-dbug`](#instr-dbug): Debugging.

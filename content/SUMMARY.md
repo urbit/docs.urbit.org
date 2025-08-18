@@ -98,7 +98,7 @@
     * [Serving a JS Game](build-on-urbit/userspace/examples/flap.md)
     * [Ship Monitoring](build-on-urbit/userspace/examples/ahoy.md)
     * [Styled Text](build-on-urbit/userspace/examples/track7.md)
-* [WebAssembly](build-on-urbit/webassembly/README.md)
+* [WebAssembly](build-on-urbit/wasm/README.md)
   * [UrWasm Overview](build-on-urbit/wasm/overview.md)
   * [Example Generator](build-on-urbit/wasm/generator.md)
 

@@ -52,9 +52,9 @@ Wrapper arm around the engine types, making them addressable by limb resolution 
 ```
 
 Wasm [`$module`](./wasm-data-types.md#module) as seen by the engine. Some sections have been removed or modified for efficiency:
-- [`$code-section](./wasm-data-types.md#code-section) is merged into the function section.
-- [`$datacnt-section](./wasm-data-types.md#datacnt-section) is removed as it's not needed during execution.
-- [`$import-section](./wasm-data-types.md#import-section) is restructured for runtime resolution.
+- [`$code-section`](./wasm-data-types.md#code-section) is merged into the function section.
+- [`$datacnt-section`](./wasm-data-types.md#datacnt-section) is removed as it's not needed during execution.
+- [`$import-section`](./wasm-data-types.md#import-section) is restructured for runtime resolution.
 
 ### `$function` {#function}
 

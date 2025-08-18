@@ -18,7 +18,7 @@ layout:
 Urbit's WebAssembly affordances (collectively known as "UrWasm") enables Hoon developers to leverage pre-existing libraries from any Wasm-compatible language like Rust, Python, and Go.
 
 These docs cover:
-- UrWasm overview
-- UrWasm example usage
-- UrWasm types and API
+- An [overview](./overview.md) of Wasm and how it interacts with Urbit.
+- [Example usage](./generator.md) of a Wasm module sort a large list.
+- UrWasm data types and library [reference](./reference).
 

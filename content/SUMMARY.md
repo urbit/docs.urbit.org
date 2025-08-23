@@ -98,6 +98,9 @@
     * [Serving a JS Game](build-on-urbit/userspace/examples/flap.md)
     * [Ship Monitoring](build-on-urbit/userspace/examples/ahoy.md)
     * [Styled Text](build-on-urbit/userspace/examples/track7.md)
+* [WebAssembly](build-on-urbit/wasm/README.md)
+  * [UrWasm Overview](build-on-urbit/wasm/overview.md)
+  * [Example Generator](build-on-urbit/wasm/generator.md)
 
 ## Urbit ID
 
@@ -143,6 +146,15 @@
       * [Poke Agent](urbit-os/base/threads/examples/poke-agent.md)
       * [Scry](urbit-os/base/threads/examples/scry.md)
       * [Take Fact](urbit-os/base/threads/examples/take-fact.md)
+  * [WebAssembly](urbit-os/base/wasm/README.md)
+    * [Lia Library](urbit-os/base/wasm/lib-wasm-lia.md)
+    * [Lia Types](urbit-os/base/wasm/lia-data-types.md)
+    * [Wasm Data Types](urbit-os/base/wasm/wasm-data-types.md)
+    * [Wasm Engine](urbit-os/base/wasm/lib-wasm-runner-engine.md)
+    * [Wasm Interpreter Types](urbit-os/base/wasm/wasm-interpreter-data-types.md)
+    * [Wasm Operator Definitions](urbit-os/base/wasm/lib-wasm-runner-op-def.md)
+    * [Wasm Parser](urbit-os/base/wasm/lib-wasm-parser.md)
+    * [Wasm Validator](urbit-os/base/wasm/lib-wasm-validator.md)
 * [Kernel](urbit-os/kernel/README.md)
   * [Arvo](urbit-os/kernel/arvo/README.md)
     * [Cryptography](urbit-os/kernel/arvo/cryptography.md)

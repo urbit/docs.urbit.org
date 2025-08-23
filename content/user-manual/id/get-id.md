@@ -62,7 +62,7 @@ Here are a few of the places where you can buy planets:
 - [Urbit.live](https://urbit.live)
 - [Urbit.me](https://urbit.me)
 - [OpenSea "Urbit ID: Planet" collection](https://opensea.io/collection/urbit-id-planet)
-- [OpenSea "Urbit ID" colleciton](https://opensea.io/collection/urbit-id)
+- [OpenSea "Urbit ID" collection](https://opensea.io/collection/urbit-id)
 
 {% endtab %}
 

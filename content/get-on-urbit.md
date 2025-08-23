@@ -57,7 +57,7 @@ Here are the best places to buy planets:
 
 | Layer   | Market                                                   | Description                                            |
 | ------- | -------------------------------------------------------- | ------------------------------------------------------ |
-| Layer 1 | [OpenSea](https://opensea.io/collection/urbit-id-planet) | The largest NFT marketplace. Accepts ETH.              |
+| Layer 1 | OpenSea [Urbit ID: Planet](https://opensea.io/collection/urbit-id-planet) and [Urbit ID](https://opensea.io/collection/urbit-id) collections. | The largest NFT marketplace. Accepts ETH. |
 | Layer 2 | [azimuth.shop](https://azimuth.shop)                     | Third-party L2 planet store. Accepts ETH.              |
 | Layer 2 | [Pocwet](https://store.pocwet.com)                       | Third-party L2 planet store. Accepts credit cards.     |
 

@@ -27,7 +27,7 @@ The Urbit docs are for developers and self-hosted users. Developers can find [co
 
 * [Build on Urbit](build-on-urbit/environment.md) - Courses and tutorials for building on Urbit.
 * [Urbit ID](urbit-id/what-is-urbit-id.md) - Everything there is to know about Urbit ID, from high-level concepts to smart contract documentation.
-* [Urbit OS](urbit-id/what-is-urbit-id.md) - Documentation for Urbit OS, including step-by-step guides and kernel module APIs.
+* [Urbit OS](urbit-id/what-is-urbit-os.md) - Documentation for Urbit OS, including step-by-step guides and kernel module APIs.
 * [Hoon](hoon/why-hoon.md) - Guides and reference material for Urbit's high-level programming language.
 * [Nock](nock/what-is-nock.md) - Guides and reference material for Urbit's low-level assembly language.
 

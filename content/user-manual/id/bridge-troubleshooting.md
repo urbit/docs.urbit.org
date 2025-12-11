@@ -15,7 +15,7 @@ layout:
 
 # Bridge Troubleshooting
 
-This page covers common issues encountered with the [Bridge](https://bridge.urbit.org) application.
+This page covers common issues encountered with the [Bridge](https://bridge.urbit.org) application. If you are having trouble, please ensure you are using a recommended browser (either Chrome or Brave) and a supported wallet connection. If you still encounter issues, send us an email at support@urbit.org and we will point you in the right direction.
 
 ### Canvas Issues {#canvas-issues}
 
@@ -30,16 +30,6 @@ To fix canvas issues on Brave:
 - Click on the Brave logo on the right edge of your URL bar
 - Click `Advanced View`
 - Set the bottom dropdown to `Cross-site device recognition blocked`
-- Click on Retry in Bridge
-
-The warning box should disappear.
-
-#### Firefox Users
-
-To fix canvas issues on Brave:
-
-- Click on the icon of an image in your URL bar, to the left of `https://bridge.urbit.org`
-- Click `Allow Data access`
 - Click on Retry in Bridge
 
 The warning box should disappear.

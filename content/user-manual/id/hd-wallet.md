@@ -51,7 +51,9 @@ You want to reset these keys if they are compromised, or if your ship has sunk. 
 
 ### What do I do if I want to own multiple identities? <a href="#multiple-points" id="multiple-points"></a>
 
-We recommend using a different HD Wallet for each identity. You are able to assign any number of identities to a single Ethereum address, however, since they are just ERC-721 tokens.
+If you intend to utilize these identities as instances of Urbit OS, we recommend using a different HD Wallet for each identity. You are able to assign any number of identities to a single Ethereum address, however, since they are just ERC-721 tokens.
+
+If you are holding them as long term assets (e.g. holding many stars), it is often easiest to hold the ownership seeds of many Urbit IDs in a single address, although depending on the quantity and value of assets you may want to hold them in an address secured by a hardware wallet or multisignature wallet (such as Gnosis Safe), rather than an Urbit HD wallet.
 
 ### How should I take care of my Urbit HD Wallet? <a href="#custody" id="custody"></a>
 
@@ -71,7 +73,6 @@ Cold storage media options:
 
 * Printing the secret on a piece of paper. However, paper wallets are vulnerable to various forms of physical damage, such as rot, water damage, smoke, or fire. Laminating the paper can mitigate some of these risks, but the lamination can potentially trap moisture. Make sure that you trust the printer; some have memory and network connections.
 * Storing the secret on a brand-new USB stick or hard drive that has never been connected to a networked machine.
-* Storing the secret on a hardware wallet like Ledger or Trezor.
 * Engraving the secret on a strip of stainless steel. This medium is resistant to both water and fire damage.
 
 Places to store your cold-storage media:
@@ -80,6 +81,8 @@ Places to store your cold-storage media:
 * A safe-deposit box at a bank
 
 It’s a good idea to store your keys redundantly; for example, on both a USB stick and a piece of paper in the safe, in case one of those methods fails. If you deem a key to be valuable enough, you can **shard** it into thirds (or other splits) and store each third in secure, geographically distributed locations. Urbit HD wallets for galaxies automatically provide a 3-way sharded master ticket.
+
+**Please note**, typing your secret, such as a seed phrase or master ticket, into a computer (e.g. into the browser for signing in to Bridge) is considered by many to nullify the security properties of cold storage because it will have touched a computer connected to the internet which _may possibly_ be compromised.
 
 #### Security Tier 2: Hardware wallet or paper wallet
 
@@ -97,4 +100,4 @@ This tier includes any method where secrets are stored on an everyday computing 
 
 This method is risky for a number of reasons. Networked computers can contain malware. Computers that see common use are also prone to crashes and data loss. Storing secrets on cloud accounts mitigates the risk of data destruction, but it exposes a much larger attack surface to malicious actors.
 
-For all of these reasons, if you use Tier 3 methods, use them only for the storage of low-value secrets.
+For all of these reasons, if you use Tier 3 methods, use them only for the storage of low-value secrets. For most planet-level identities, this is an acceptable storage method, and if your planet becomes exceptionally valuable to you it is always possible to transfer ownership or re-ticket to a more secure storage method.

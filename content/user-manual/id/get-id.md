@@ -37,6 +37,7 @@ Planets have a unique, four syllable phonetic name and a [sigil](https://urbit.o
 
 There are a few ways to get your own planet:
 
+- Getting a free co-custodied one from Tlon, [through their hosting service](https://join.tlon.io/0v3.r87kb.fjpft.3k7b5.pbsr5.5em17)
 - Receiving one from a friend
 - Asking on Twitter (if you're lucky)
 - Purchasing one from a marketplace
@@ -47,11 +48,11 @@ This guide will cover the last case and what to do after receiving one.
 
 There are many places to buy a planet using either crypto or fiat currency.
 
-Layer 1 planets are the most available through marketplaces, however they can be expensive due to Ethereum gas fees. You will need an Ethereum wallet such as Metamask to purchase planets, and will later need to sign in to Bridge with your wallet to configure your planet.
+Layer 1 planets are the most available through marketplaces, due to their integration as ERC721 NFTs on Ethereum. You will need an Ethereum wallet such as Metamask to purchase planets, and 'gas' for transaction fees.
 
 Layer 2 planets do not require any crypto wallet management, but are only available on specific marketplaces.
 
-There is no difference between Layer 1 or Layer 2 in the quality of experience when using Urbit.
+There is no difference between Layer 1 or Layer 2 when using Urbit OS, the differences are limited to the legibility of the identity to tools that integrate with Ethereum and the ERC721 standard.
 
 Here are a few of the places where you can buy planets:
 
@@ -59,7 +60,6 @@ Here are a few of the places where you can buy planets:
 
 {% tab title="L1 Planet Markets" %}
 
-- [Urbit.live](https://urbit.live)
 - [Urbit.me](https://urbit.me)
 - [OpenSea "Urbit ID: Planet" collection](https://opensea.io/collection/urbit-id-planet)
 - [OpenSea "Urbit ID" collection](https://opensea.io/collection/urbit-id)
@@ -92,7 +92,7 @@ An invitation to claim your planet comes in one of two forms.
 
 The first is an email invitation with an Urbit ID and a Master Ticket.
 
-The second, made available through our [L2 solution](../../urbit-id/l2), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the Urbit ID management tool.
+The second, made available through Tlon's [L2 solution](../../urbit-id/l2), is an activation code or a link to activate on [Bridge](https://bridge.urbit.org), the original Urbit ID management interface.
 
 ![](https://media.urbit.org/site/getting-started/Server-setup-1.jpg)
 
@@ -102,7 +102,7 @@ Clicking a link to activate a planet on Bridge will take you to page which will 
 
 **Claiming L1 planets**
 
-If you’ve purchased an L1 planet, you won’t need to claim it because you already own it as an NFT. Simply log into Bridge using Metamask or your wallet of choice.
+If you’ve purchased an L1 planet, you won’t need to claim it because you already own it as an NFT. Simply log into Bridge using Metamask or a Wallet Connect compatible wallet of your choice.
 
 {% endhint %}
 
@@ -135,7 +135,7 @@ Now that you have a keyfile let's move on to booting the Urbit OS.
 There are many places to buy a star using either crypto or fiat currency.
 
 - [OpenSea Urbit ID Star](https://opensea.io/collection/urbit-id-star)
-- ~tirrel/the-marketplace on Urbit for person-to-person sales
+- [~tirrel/the-marketplace](https://join.tlon.io/0v7.b5ubg.oofti.qkr2t.a4dmi.css6n) on Urbit for person-to-person sales
 
 Stars were originally distributed as part of galaxy address space holdings, but many have changed hands from the original owner.  If you want to find the owner of a particular star today, you can use the Etherscan API to do so.  Build a query like the one below using the star ID number (rather than name).  (You will need an Etherscan API key.)
 
@@ -158,3 +158,9 @@ Topic 0 = OwnerChanged
 Topic 1 = star number (ship number in hex)
 Topic 2 = linear star release contract
 ```
+
+You can also find the ownership address of a particular star by searching [the urbit Network Explorer](https://network.urbit.org).
+
+### Buying a galaxy {#buying-a-galaxy}
+
+If you are interested in buying a galaxy, please reach out to [support@urbit.org](mailto:support@urbit.org&subject=I%20want%20to%20buy%20a%20galaxy) and we will help connect you with members of the Galactic Senate to see if there are any open opportunities for acquiring a galaxy.

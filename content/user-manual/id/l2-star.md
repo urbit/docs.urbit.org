@@ -35,8 +35,10 @@ A star on layer 1 performs all Urbit ID-related actions on layer 1, except for s
 
 ## Layer 1 with Layer 2 spawn proxy {#layer-1-with-layer-2-spawn-proxy}
 
-A star on layer 1 with layer 2 spawn proxy can spawn planets on layer 2 using either their ownership proxy or spawn proxy. They will no longer be able to spawn planets on layer 1. They may also perform sponsorship actions on either layer, identical to layer 1 stars.
+A star on layer 1 with layer 2 spawn proxy can spawn planets on layer 2 using either their ownership proxy or spawn proxy. They will no longer be able to spawn planets on layer 1. They may also perform sponsorship actions on either layer, identical to layer 1 stars. 
+
+Note that if you use this approach for your star, it is recommende to use an [Urbit HD Wallet](./hd-wallet.md) to enable easier generation of layer 2 planet invites. If your spawn proxy is in a hardware or MetaMask wallet, each invite generation will require 4 separate cryptographic signatures which often negates the gas cost savings of L2 spawning.
 
 ## Layer 2 {#layer-2}
 
-A star on layer 2 must perform all Urbit ID related actions on layer 2. All planets spawned by the star will be on layer 2.
+A star on layer 2 must perform all Urbit ID related actions on layer 2. All planets spawned by the star will be on layer 2. This is generally not a recommended approach for stars due to the limitations it introduces 

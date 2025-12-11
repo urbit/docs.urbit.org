@@ -31,14 +31,14 @@ There are three main types of proxy: management, spawn, and voting. Their capabi
 
 - **Spawn proxy**
 
-  For stars and galaxies only. Can create new child identities.
+  For stars and galaxies only. Can create new child identities. It can also be assigned to an Ethereum smart contract to enable functionality like programmatically and permissionlessly selling Urbit IDs. 
 
 - **Voting proxy**
 
-  Galaxies only. Galaxies are the part of the Galactic Senate, and this means they can cast votes on new proposals including changes to Ecliptic.
+  Galaxies only. Galaxies are the part of the Galactic Senate, and this means they can cast votes on new proposals including changes to Ecliptic and selection of the board of the Urbit Foundation.
 
 ### Transfer proxy {#transfer-proxy}
 
 There is also a fourth proxy called the transfer proxy which is considered to be of a different sort than the other three, since it generally only set on a temporary basis to make ownership transfer less mistake-prone, and cleared once ownership has finished.
 
-The address holding the transfer proxy may transfer ownership of the ID to the address of the transfer proxy. This is used to make transferring a two-step process: using the ownership address to set the transfer proxy, and then using the transfer proxy to complete the transaction. It is possible to transfer ownership as a one-step process, but this is risky and not recommended. Bridge does not natively support one-step transfers, you must use an advanced tool like [`%claz`](../../urbit-id/advanced-azimuth-tools.md) to manually generate such a transaction.
+The address holding the transfer proxy may transfer ownership of the ID to the address of the transfer proxy. This is used to make transferring a two-step process: using the ownership address to set the transfer proxy, and then using the transfer proxy to complete the transaction. Bridge does not natively support one-step transfers, you must use a different tool such as Perigee or (for L1 points) a standard ERC721 transfer interface if you would like to execute a transfer in a single transaction. Please note a standard ERC721 interface that calls the `safeTransferFrom` in order to transfer an NFT will cause your Urbit ID to perform a breach while transferring. 

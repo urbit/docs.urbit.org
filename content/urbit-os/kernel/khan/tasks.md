@@ -65,6 +65,16 @@ When the thread eventually finishes (or if it fails), Khan with give an [`%arow`
 
 ---
 
+### `%done` {#done}
+
+Socket closed.
+
+```hoon
+[%done ~]
+```
+
+Tells Khan that the external control socket has closed. This comes from the runtime; you would not send it from userspace.
+
 ## Gifts {#gifts}
 
 These are the two gifts Khan can give. In userspace, you'd only receive an [`%arow`](#arow).

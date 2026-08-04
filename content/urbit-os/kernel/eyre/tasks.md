@@ -268,3 +268,52 @@ Eyre gives a `%grow` gift in response to a `%set-response` task. A `%grow` gift 
 The `$path` will be of the format `/cache/[revision]/[url]`, for example `/cache/12/~~~2f.foo~2f.bar`. The revision number is incremented each time the entry is updated, including if it's removed, and is in `@ud` format. The url element uses `%t` [`+scot`](../../../hoon/stdlib/4m.md#scot) encoding, so will need to be decoded with `%t` [`+slav`](../../../hoon/stdlib/4m.md#slav).
 
 ***
+
+## `%eauth-host` <a href="#eauth-host" id="eauth-host"></a>
+
+Set the EAuth base URL.
+
+```hoon
+[%eauth-host host=(unit @t)]
+```
+
+Explicitly sets the base URL used for EAuth, for example `'https://sampel.com'`. Eyre appends `/~/eauth` to it internally when redirecting into the EAuth flow. A null `.host` clears it, so the endpoint is determined implicitly again.
+
+See the [EAuth guide](eauth.md) for how the endpoint is otherwise derived.
+
+***
+
+## `%spew` <a href="#spew" id="spew"></a>
+
+Set verbosity.
+
+```hoon
+[%spew veb=@]
+```
+
+Sets Eyre's debug verbosity toggle.
+
+***
+
+## Gifts <a href="#gifts" id="gifts"></a>
+
+The complete `$gift:eyre` union:
+
+```hoon
++$  gift
+  $%  $>(?(%boon %done) gift:ames)
+      [%set-config =http-config]
+      [%sessions ses=(set @t)]
+      [%response =http-event:http]
+      [%bound accepted=? =binding]
+      [%grow =path]
+  ==
+```
+
+- `%boon` / `%done` - Ames responses, reused from [`$gift:ames`](../ames/data-types.md). These carry results for requests that arrived over the network.
+- `%set-config` - Configures the external HTTP server, given to Unix.
+- `%sessions` - The set of valid authentication cookie strings.
+- `%response` - A response to an event from Unix, as an [`$http-event:http`](data-types.md#http-eventhttp).
+- `%bound` - The result of a [`%connect`](#connect) or [`%serve`](#serve). `.accepted` is false if the binding was rejected, which happens when it duplicates an existing one.
+- `%grow` - Notifies that a cache entry has changed. See [`%set-response`](#set-response) for the path format.
+

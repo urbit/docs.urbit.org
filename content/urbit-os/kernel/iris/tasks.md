@@ -70,3 +70,27 @@ Iris does not return any gift in response to a `%cancel-request` task. You will 
 Receives HTTP data from outside. This task is sent to Iris by the runtime, you would not use it manually.
 
 The `.id` is a sequential ID for the event and the [$http-event:http](../eyre/data-types.md#http-eventhttp) contains the HTTP headers and data.
+
+---
+
+## Gifts {#gifts}
+
+The complete `$gift:iris` union:
+
+```hoon
++$  gift
+  $%  [%request id=@ud request=request:http]
+      [%cancel-request id=@ud]
+      [%http-response =client-response]
+  ==
+```
+
+- `%request` - An outbound HTTP request, given to Unix to perform. Note this
+  shares a name with the [`%request`](#request) *task*: the task is how a vane
+  asks Iris to fetch something, and the gift is how Iris asks Unix to do it.
+- `%cancel-request` - Tells Unix to cancel a previously given `%request`. The
+  same naming applies as above.
+- `%http-response` - The result, given back to whoever sent the
+  [`%request`](#request) task, as a
+  [`$client-response`](data-types.md#client-response).
+

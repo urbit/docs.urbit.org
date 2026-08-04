@@ -21,11 +21,51 @@ Documentation for [Insecure Hashing](stdlib/2e.md) and the [SHA Hash Family](std
 
 ## Summary {#summary}
 
-`zuse` contains several cryptosuites. The ones utilized by Ames are [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with the latter being the only one which is implemented as an [`+acru:ames`](../urbit-os/kernel/ames/cryptography.md#crypto-core)-shaped core.
+`zuse` contains several cryptosuites. The ones utilized by Ames are [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+cric:crypto`](#cric).
+
+[`+crub:crypto`](#crub) is the older suite and still exists in `zuse`, but Ames no longer uses it: at the current kernel there are no references to `+crub` anywhere in `sys/vane/ames.hoon`. Jael likewise builds keys through `+cric` (`pit:nu:cric:crypto`, `nol:nu:cric:crypto`).
+
+## `+cric:crypto` {#cric}
+
+`+cric:crypto` is the cryptosuite Ames and Jael use. Unlike `+crub`, which is
+fixed to Suite B, `+cric` is a door over a tagged payload and can carry either
+suite:
+
+```hoon
+++  cric
+  |_  $%  $:  suite=%b
+              pub=[cry=@ sgn=@ ~]
+              sek=$@(~ [sed=@ cry=@ sgn=@])
+          ==
+          $:  suite=%c
+              pub=[cry=@ sgn=@ tw=[ugn=@ dat=@ xtr=@]]
+              sek=$@(~ [sed=@ cry=@ sgn=@])
+          ==
+      ==
+```
+
+The `%b` case corresponds to [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography),
+as `+crub` did; the `%c` case carries the additional `tw` material for Suite C.
+
+It contains four sub-cores:
+
+- `+as:cric` — asymmetric operations: `+sign`, `+sigh`, `+sure`, `+safe`, `+seal`, `+tear`.
+- `+ex:cric` — extraction: `+fig`, `+pac`, `+pub`, `+sec`, `+ven`, `+ded`, `+saf`, `+cry`, `+sgn`, `+num`.
+- `+nu:cric` — construction: `+pit` (create keypair), `+nol` (activate secret), `+com` (activate public).
+- `+cyf:cric` — symmetric encryption: `+de`, `+dy`, `+en`.
+
+Note that the symmetric arms live under `+cyf`, where `+crub` had them at the
+top level: what was `+en:crub:crypto` is now `+en:cyf:cric:crypto`.
+
+The suite in use for a given ship's keys is recorded on Azimuth as the
+`crypto-suite` field of [`$key-update:point`](../urbit-os/kernel/jael/data-types.md#key-updatepoint).
 
 ## `+crub:crypto` {#crub}
 
 `+crub:crypto` implements an [`+acru:ames`](../urbit-os/kernel/ames/cryptography.md#crypto-core) core that implements [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
+
+It is superseded by [`+cric:crypto`](#cric) and is no longer used by Ames or
+Jael, but remains in `zuse` and is documented here.
 
 It utilizes AES symmetric key encryption and decryption from [`+aes:crypto`](#aes) implemented using the Diffie-Hellman key exchange protocol, elliptic curve digital signature algorithm (ECDSA) signing and verification with [`+ed:crypto`](#ed), and generates public/private key pairs using elliptic curve cryptography with `+ed:crypto`.
 
@@ -174,6 +214,6 @@ Most gates in `+ed:crypto` are [jetted](../build-on-urbit/runtime/jetting.md), m
 
 ## `+aes:crypto` {#aes}
 
-This core contains cryptographic primitives and helper functions for [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption and decryption. As is the case with `ed:crypto`, these functionalities are utilized by [`+crub:crypto`](#crub), and most gates are jetted. See also the Vere documentation on [AES SIV](../build-on-urbit/runtime/cryptography.md#aes) for more information about the library utilized by jets.
+This core contains cryptographic primitives and helper functions for [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) symmetric key encryption and decryption. As is the case with `ed:crypto`, these functionalities are utilized by [`+cric:crypto`](#cric) and [`+crub:crypto`](#crub), and most gates are jetted. See also the Vere documentation on [AES SIV](../build-on-urbit/runtime/cryptography.md#aes) for more information about the library utilized by jets.
 
 This core contains several doors, each one used for a different variation of AES according to key size and mode. The only ones currently in use are `+siva:aes:crypto` and `+sivc:aes:crypto`, which are 128-bit and 256-bit modes of [`AES-SIV`](https://www.aes-siv.com) respectively.

@@ -333,7 +333,7 @@ A poke with a `%helm-ames-sift` mark will turn off Ames verbosity for all but th
 
 ---
 
-### Set Ames verbosity
+### Set Ames verbosity {#set-ames-verbosity}
 
 A poke with a `%helm-ames-verb` mark will turn on debug prints for specified Ames debug flags. Note this will override any previous settings. An empty list of debug flags will turn off all Ames debug prints.
 
@@ -436,7 +436,7 @@ A poke with a `%helm-atom` mark will print source, size and hash information abo
 
 ---
 
-### Automatic memory reports
+### Automatic memory reports {#automatic-memory-reports}
 
 A poke with a mark of `%helm-automass` will tell Hood to repeatedly run a memory report at the given interval. You can turn it off again with [`%helm-cancel-automass`](#cancel-automatic-memory-reports).
 
@@ -457,7 +457,7 @@ recur=@dr
 
 ---
 
-### Cancel automatic memory reports
+### Cancel automatic memory reports {#cancel-automatic-memory-reports}
 
 A poke with a mark of `%helm-cancel-automass` will turn off [Automass](#automatic-memory-reports) automatic memory reports.
 
@@ -809,7 +809,7 @@ des=@t
 
 ---
 
-### Send a hi
+### Send a hi {#send-a-hi}
 
 A poke with a mark of `%helm-send-hi` will send a `|hi` to the target ship with an optional message.
 
@@ -835,37 +835,65 @@ hi ~zod successful
 
 ### Negotiate migration to directed messaging with a ship {#ahoy}
 
-A poke with a mark of `%helm-send-ahoy` will request to migrate networking with the given ship to Mesa (directed messaging).
+A poke with a mark of `%ahoy-prob` will request to migrate networking with the given ship to Mesa (directed messaging). It is sent by the `|ahoy/prob` generator.
 
 #### Accepts
 
 ```hoon
-[her=ship test=?]
+[=ship force=?]
 ```
 
-- `.her`: the target ship.
-- `.test`: if true, it will merely test directed messaging upgrade negotiations but won't actually enable it.
+- `.ship`: the target ship.
+- `.force`: if true, retry the negotiation even if we have previously recorded that the peer does not support directed messaging.
+
+> The older `%helm-send-ahoy` mark no longer exists. It was removed along with
+> the `|ahoy` generator in March 2026 and replaced by `%ahoy-prob` (single peer)
+> and `%ahoy-comb` (all peers).
 
 ---
 
-### Migrate to directed messaging
+### Migrate all peers to directed messaging {#ahoy-comb}
 
-A poke with a mark of `%helm-mass-mate` will migrate networking with the target ship or all ships to Mesa (directed messaging). This is like [`%helm-send-ahoy`](#ahoy) except it doesn't do the negotiation part and it can do it for everyone, not just a single ship. This is dangerous and should not be touched unless you know exactly what you're doing.
+A poke with a mark of `%ahoy-comb` migrates networking with *all* peers to Mesa. It is sent by the `|ahoy/comb` generator.
 
 #### Accepts
 
 ```hoon
-[ship=(unit ship) dry=?]
+[dry=? veb=? nuke=?]
 ```
 
-- `.ship`: either a specific ship, or null for all ships.
-- `.dry`: if true, it does a test-run without actually applying the upgrade.
+- `.dry`: if true, do a test-run without applying the migration. Defaults to true.
+- `.veb`: verbose output.
+- `.nuke`: clear the recorded per-peer negotiation state before migrating.
+
+> **Currently a no-op.** The handler in `/lib/hood/ahoy.hoon` begins
+> `?:  &  this  :: XX disabled`, so it returns immediately and the rest of the
+> arm is unreachable. The poke succeeds and does nothing. Use `%ahoy-prob` for a
+> single peer instead.
+
+---
+
+### Migrate to directed messaging {#migrate-to-directed-messaging}
+
+A poke with a mark of `%helm-mass-mate` will migrate networking with the target ship or all ships to Mesa (directed messaging). This is like [`%ahoy-prob`](#ahoy) except it doesn't do the negotiation part and it can do it for everyone, not just a single ship. This is dangerous and should not be touched unless you know exactly what you're doing. It is sent by the `|mate` generator, which is for testing and always runs dry.
+
+#### Accepts
+
+```hoon
+(unit ship)
+```
+
+- either a specific ship, or null for all ships.
+
+Note the handler binds `dry` in its subject rather than taking it as part of the
+sample (`+poke-mass-mate` in `/lib/hood/helm.hoon`), so the poke payload is the
+`(unit ship)` alone.
 
 ---
 
 ### Negotiate reversal of directed messaging migration with ship {#send-rege}
 
-A poke with a mark of `%helm-send-rege` will send a request to the target ship to negotiate a reversal back to old-style Ames networking from directed messaging. This is the inverse of [`%helm-send-ahoy`](#ahoy).
+A poke with a mark of `%helm-send-rege` will send a request to the target ship to negotiate a reversal back to old-style Ames networking from directed messaging. This is the inverse of [`%ahoy-prob`](#ahoy).
 
 #### Accepts
 

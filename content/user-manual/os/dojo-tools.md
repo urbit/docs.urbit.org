@@ -395,8 +395,8 @@ Print all desks (default, terse):
 ```
 > +vats
 %base
-  /sys/kelvin:            [%zuse 409]
-  %cz hash ends in:       6kehr
+  /sys/kelvin:            [%zuse 408]
+  %cz hash ends in:       71c37
   essential desk:         yes
   app status:             running
   source ship:            ~
@@ -404,8 +404,8 @@ Print all desks (default, terse):
   /desk/bill:             ~[%acme %azimuth %dbug %dojo %eth-watcher %hood %herm %lens %ping %spider]
 ::
 %webterm
-  /sys/kelvin:            [%zuse 409] [%zuse 410] [%zuse 411] [%zuse 412] [%zuse 413] [%zuse 414] [%zuse 415] [%zuse 416]
-  %cz hash ends in:       fn41o
+  /sys/kelvin:            [%zuse 408] [%zuse 409] [%zuse 410] [%zuse 411] [%zuse 412] [%zuse 413] [%zuse 414] [%zuse 415] [%zuse 416]
+  %cz hash ends in:       ge4a9
   essential desk:         yes
   app status:             running
   source ship:            ~mister-dister-dozzod-dozzod
@@ -420,9 +420,9 @@ Print a single desk with full detail:
 ```
 > +vats %base, =verb &
 %base
-  /sys/kelvin:      [%zuse 409]
-  base hash:        0v19.n4cpn.0d8d1.693uf.8anru.6fih8.o9cdo.rm1js.tuje0.os701.6kehr
-  %cz hash:         0v19.n4cpn.0d8d1.693uf.8anru.6fih8.o9cdo.rm1js.tuje0.os701.6kehr
+  /sys/kelvin:      [%zuse 408]
+  base hash:        0v1f.8rfhf.gck0h.bdgic.td3kk.muapf.ett6q.q8sra.188jt.hlai3.71c37
+  %cz hash:         0v1f.8rfhf.gck0h.bdgic.td3kk.muapf.ett6q.q8sra.188jt.hlai3.71c37
   essential desk:   yes
   app status:       running
   force on:         ~
@@ -444,8 +444,8 @@ argument `=filt`; a bare `+vats %suspended` would look for a *desk* called
 ```
 > +vats, =filt %suspended
 %testdesk
-  /sys/kelvin:            [%zuse 409]
-  %cz hash ends in:       a7qd3
+  /sys/kelvin:            [%zuse 408]
+  %cz hash ends in:       vtk9h
   essential desk:         no
   app status:             suspended
   source ship:            ~

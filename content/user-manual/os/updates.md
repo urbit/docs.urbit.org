@@ -88,9 +88,9 @@ To check if you have unapplied kernel updates queued, you can run `+vats %base, 
 ```
 > +vats %base, =verb &
 %base
-  /sys/kelvin:      [%zuse 409]
-  base hash:        0v19.n4cpn.0d8d1.693uf.8anru.6fih8.o9cdo.rm1js.tuje0.os701.6kehr
-  %cz hash:         0v19.n4cpn.0d8d1.693uf.8anru.6fih8.o9cdo.rm1js.tuje0.os701.6kehr
+  /sys/kelvin:      [%zuse 408]
+  base hash:        0v1f.8rfhf.gck0h.bdgic.td3kk.muapf.ett6q.q8sra.188jt.hlai3.71c37
+  %cz hash:         0v1f.8rfhf.gck0h.bdgic.td3kk.muapf.ett6q.q8sra.188jt.hlai3.71c37
   essential desk:   yes
   app status:       running
   force on:         ~
@@ -110,7 +110,7 @@ a `source ship` and receives updates from it; `local` means it has no upstream
 source and only changes through commits on this ship. If `%base` says `local` and
 you expected it to track your sponsor, run `|ota (sein:title our now our)`. The
 `pending updates` section will list any blocked updates, it'll look something like
-`~[[%zuse 408]]`. The `/sys/kelvin` line says the version it's currently on.
+`~[[%zuse 407]]`. The `/sys/kelvin` line says the version it's currently on.
 
 ## App updates <a href="#app-updates" id="app-updates"></a>
 
@@ -127,9 +127,9 @@ To check the update status of an app, you can run the `+vats %the-desk, =verb &`
 ```
 > +vats %webterm, =verb &
 %webterm
-  /sys/kelvin:      [%zuse 409] [%zuse 410] [%zuse 411] [%zuse 412] [%zuse 413] [%zuse 414] [%zuse 415] [%zuse 416]
+  /sys/kelvin:      [%zuse 408] [%zuse 409] [%zuse 410] [%zuse 411] [%zuse 412] [%zuse 413] [%zuse 414] [%zuse 415] [%zuse 416]
   base hash:        ~
-  %cz hash:         0v1l.ov8ds.3k2kt.0m8c5.51srb.q0osj.o2v53.o311c.5ocsb.2hgtc.fn41o
+  %cz hash:         0v5.vqi3m.o4jpl.8i5tk.qn4h3.5272h.tie2f.degcr.ptngr.cnjbl.ge4a9
   essential desk:   yes
   app status:       running
   force on:         ~

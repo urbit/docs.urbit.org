@@ -36,11 +36,14 @@ The `%base` desk includes a `-test` thread which can run unit tests you've writt
 
 Any arms that don't begin with `test-` will be ignored. Each `+test-*` arm must produce a `$tang` (a `(list tank)`). If the `$tang` is empty (`~`), it indicates success. If the `$tang` is non-empty, it indicates failure, and the contents of the `$tang` is the error message.
 
-To make test-writing easier, the `%base` desk includes the `/lib/test.hoon` library which you can import into your test file. The library contains four functions which all produce `$tang`s:
+To make test-writing easier, the `%base` desk includes the `/lib/test.hoon` library which you can import into your test file. The library contains the following functions, which all produce `$tang`s:
 
 - `+expect-eq` - test whether an expression produces the expected value. This function takes `[expected=vase actual=vase]`, comparing `.expected` to `.actual`.
 - `+expect` - test whether an expression produces `%.y`. This function takes a `$vase` containing the result to check.
 - `+expect-fail` - tests whether the given `$trap` crashes, failing if it succeeds.
+- `+expect-success` - the converse of `+expect-fail`: tests whether the given `$trap` succeeds, failing if it crashes.
+- `+expect-fail-message` - takes `[msg=@t a=(trap)]`. Like `+expect-fail`, but also requires that `.msg` appear in the resulting error message, so you can assert on *why* something failed rather than just that it did.
+- `+run-chain` - takes an `$a-test-chain` and runs a sequence of tests, stopping at the first failure. Note that arms in the chain should not begin with `test-`, so that `-test %/... ~` does not also run them individually.
 - `+category` - this is a utility that prepends an error message to a failed test (non-null `$tang`), passing through an empty `$tang` (successful test) unchanged.
 
 The most commonly used function is `+expect-eq`, which is used like:

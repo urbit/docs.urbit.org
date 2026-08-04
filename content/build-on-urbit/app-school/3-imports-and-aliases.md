@@ -208,5 +208,5 @@ The key takeaways are:
 
 * Run through the [example](3-imports-and-aliases.md#example) yourself on a fake ship if you've not done so already.
 * Have a read through the [Ford rune documentation](../../hoon/rune/fas.md) for details about importing libraries, structures and other things.
-* Try the `+dbug` generator out on some other agents, like `:settings +dbug`, `:contacts +dbug`, etc, and try some of its options [described above](3-imports-and-aliases.md#dbug).
+* Try the `+dbug` generator out on some other agents, like `:azimuth +dbug`, `:spider +dbug`, `:hood +dbug`, etc, and try some of its options [described above](3-imports-and-aliases.md#dbug).
 * Have a quick look over the source of the `/lib/default-agent.hoon` library, located at `/lib/default-agent.hoon` in the `%base` desk. We've not yet covered what the different arms do but it's still useful to get a general idea, and you'll likely want to refer back to it later.

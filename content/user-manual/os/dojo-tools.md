@@ -535,7 +535,7 @@ Change node URL and network for Azimuth.
 #### Arguments
 
 ```
-cord ?(%mainnet %ropsten %local %default)
+cord ?(%mainnet %ropsten %goerli %local %default)
 ```
 
 The first argument is the note URL in a cord like `'http://eth-mainnet.urbit.org:8545' `. The second argument specifies the network.

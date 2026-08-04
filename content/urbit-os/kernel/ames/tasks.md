@@ -309,3 +309,223 @@ A `%wham` task asks Ames to cancel all existing remote scry requests from all va
 A `%tune` gift with a null `$data` is given to all listeners. See the [`%keen`](tasks.md#keen) entry for more details of the `%tune` gift.
 
 ***
+
+## Flow and peer management <a href="#flow-and-peer-management" id="flow-and-peer-management"></a>
+
+These tasks manage message flows and per-peer routing state.
+
+### `%cork` <a href="#cork" id="cork"></a>
+
+```hoon
+[%cork =ship]
+```
+
+Request to delete a message flow. Ames negotiates the teardown with the peer; a flow is closed on the sender side first and only fully removed once both ends agree. The `/corked` and `/closing` scries report flows in each state.
+
+***
+
+### `%kroc` <a href="#kroc" id="kroc"></a>
+
+```hoon
+[%kroc bones=(list [ship bone])]
+```
+
+Request to delete specific message flows, identified by their [`$bone`](data-types.md#bone)s. This is the bulk, targeted form of [`%cork`](#cork).
+
+***
+
+### `%tame` <a href="#tame" id="tame"></a>
+
+```hoon
+[%tame =ship]
+```
+
+Request to delete the cached route for a ship, so that its lane is rediscovered.
+
+***
+
+### `%dear` <a href="#dear" id="dear"></a>
+
+```hoon
+[%dear =ship =lane]
+```
+
+A lane from Unix — manually associates a ship with a transport address. This is how a route can be supplied directly rather than discovered.
+
+***
+
+### `%deep` <a href="#deep" id="deep"></a>
+
+```hoon
+[%deep =deep]
+```
+
+Deferred calls to Ames, from itself. Ames passes these to defer work into a later event rather than performing it inline. The `$deep` union covers nack handling, flow teardown (`%cork`, `%kill`), the `%ahoy` migration, and flow halting.
+
+***
+
+### `%stun` <a href="#stun" id="stun"></a>
+
+```hoon
+[%stun =stun]
+```
+
+A STUN response, or failure, from Unix. Ames uses STUN to learn whether it is behind a NAT and what its externally visible address is, which feeds route discovery.
+
+***
+
+### `%prod` <a href="#prod" id="prod"></a>
+
+```hoon
+[%prod ships=(list ship)]
+```
+
+Re-send a packet per flow. If `.ships` is `~`, this applies to all peers. Used to shake loose flows that have stalled.
+
+***
+
+### `%cong` <a href="#cong" id="cong"></a>
+
+```hoon
+[%cong msg=@ud mem=@ud]
+```
+
+Adjust congestion control parameters — the number of messages and the amount of memory Ames will allow to be outstanding before it considers a flow clogged. This backs the `|ames/cong` generator.
+
+***
+
+### `%trim` <a href="#trim" id="trim"></a>
+
+```hoon
+$>(%trim vane-task)
+```
+
+Release memory. This is the standard vane task.
+
+***
+
+## Remote scry key reservation <a href="#remote-scry-key-reservation" id="remote-scry-key-reservation"></a>
+
+### `%plug` <a href="#plug" id="plug"></a>
+
+```hoon
+[%plug =path]
+```
+
+Reserve a key for the `%shut` (encrypted remote scry) namespace at the given path, so that data published there can be read only by holders of the key.
+
+***
+
+### `%gulp` <a href="#gulp" id="gulp"></a>
+
+```hoon
+[%gulp path]
+```
+
+The same as [`%plug`](#plug), but for the `|mesa` network core. Both are handled by the same arm; they differ only in how the key is derived.
+
+***
+
+## Directed Messaging migration <a href="#directed-messaging-migration" id="directed-messaging-migration"></a>
+
+Ames contains a second network core, `|mesa`, alongside the original `|ames` one. Peers are migrated between them individually, and Ames records which core each peer is on. These tasks drive that migration; in practice they are sent by the `|ahoy/*`, `|mate`, `|rege` and `|ress` generators rather than directly.
+
+### `%mate` <a href="#mate" id="mate"></a>
+
+```hoon
+[%mate (unit ship) dry=?]
+```
+
+Migrate a peer, or all peers if the unit is null, to `|mesa`. A true `.dry` performs a test run without applying the migration.
+
+***
+
+### `%rege` <a href="#rege" id="rege"></a>
+
+```hoon
+[%rege (unit ship) dry=?]
+```
+
+Regress a peer, or all peers if null, back to `|ames`. The inverse of [`%mate`](#mate).
+
+***
+
+### `%load` <a href="#load" id="load"></a>
+
+```hoon
+[%load ?(%mesa %ames)]
+```
+
+Set which network core is used for *new* peers. The default is `%ames`, so that communication with peers on older kernels is always possible.
+
+***
+
+## Mesa protocol tasks <a href="#mesa-protocol-tasks" id="mesa-protocol-tasks"></a>
+
+The following tasks belong to the `|mesa` core's own packet and message protocol. They are internal to Ames and the runtime, and are not intended to be sent from userspace or from other vanes:
+
+```hoon
+[%heer =lane:pact p=@]       ::  receive a packet
+[%mess =mess]                ::  receive a message
+[%moke =space =spar =path]   ::  initiate %poke request
+[%meek =space =spar]         ::  initiate %peek request
+[%mage =space =spar]         ::  send %page of data
+[%rate =spar rate]           ::  get rate progress for peeks, from unix
+[%prog =spar task=... feq=@ud]  ::  subscribe to progress %rate
+[%whey =spar boq=@ud]        ::  weight of the noun at .path.spar
+```
+
+***
+
+## Gifts <a href="#gifts" id="gifts"></a>
+
+The complete `$gift:ames` union:
+
+```hoon
++$  gift
+  $~  lost/~
+  $%  [%boon payload=*]
+      [%noon id=* payload=*]
+      [%done error=(unit error)]
+      [%lost ~]
+      [%send =lane =blob]
+      [%nail =ship lanes=(list lane)]
+      [%stub num=@ud key=@]
+      [%near spar dat=(unit (unit page))]
+      [%tune spar roar=(unit roar)]
+      [%turf turfs=(list turf)]
+      [%saxo sponsors=(list ship)]
+      [%push p=(list lane:pact) q=@]
+      [%sage =sage:mess]
+      $>(%page mess)
+      $>(%rate task)
+  ==
+```
+
+Messaging gifts:
+
+- `%boon` - A response message from a remote ship, given to the vane that is party to the flow.
+- `%noon` - A `%boon` carrying a duct, for clog tracking.
+- `%done` - Notifies a vane that the peer acked or nacked our message. A non-null `.error` means it was nacked.
+- `%lost` - Notifies a vane that we crashed while processing a `%boon`.
+- `%send` - A packet, given to Unix to transmit.
+- `%nail` - Lanes for a ship, given to Unix.
+
+Remote scry gifts:
+
+- `%tune` - A peek result, as a `(unit roar)`. A null value means the data does not and will never exist.
+- `%near` - A peek result for a `%chum` request.
+- `%stub` - A reserved key for the `%shut` namespace, given in response to [`%plug`](#plug).
+
+System gifts:
+
+- `%turf` - A domain report, relayed from Jael.
+- `%saxo` - Our sponsor list.
+
+Mesa gifts, internal to the `|mesa` core:
+
+- `%push` - Send a request or response packet.
+- `%sage` - Give a deserialized payload.
+- `%page` - Give a serialized, sealed payload.
+- `%rate` - Report rate progress, mirroring the `%rate` task.
+

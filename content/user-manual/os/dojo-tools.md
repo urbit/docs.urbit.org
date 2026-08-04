@@ -68,6 +68,39 @@ Try to apply update, suspending any incompatible desks:
 
 ---
 
+### `|essential-desk` {#essential-desk}
+
+Mark a desk as essential, or unmark it.
+
+An essential desk is one the system will not suspend when a kernel update arrives.
+Non-essential desks whose kelvin set does not include the incoming `%zuse` are
+suspended so that the update can proceed; essential desks are left running.
+The current setting is shown as the `essential desk` field in
+[`+vats`](#vats) output.
+
+#### Arguments
+
+```
+desk, ?
+```
+
+Both arguments are positional: the desk, then a loobean — `&` to mark the desk
+essential, `|` to unmark it.
+
+#### Examples
+
+```
+> |essential-desk %mydesk &
+>=
+```
+
+```
+> |essential-desk %mydesk |
+>=
+```
+
+---
+
 ### `|install` {#install}
 
 Install a desk, starting its agents and listening for updates.
@@ -107,8 +140,13 @@ The default behaviour is to shut down the specified Gall agent and discard its s
 #### Arguments
 
 ```
-@tas, =desk ?
+@tas, =desk ?, =hard ?
 ```
+
+`=hard &` **skips the confirmation prompt** and nukes immediately. Since `|nuke`
+irreversibly discards agent state, this flag removes the only safeguard against a
+mistyped agent or desk name; use it only in scripts where you have already
+verified the argument.
 
 #### Examples
 
@@ -258,13 +296,19 @@ The tile in the homescreen (if it has one) will turn gray and say "Suspended" in
 #### Arguments
 
 ```
-desk
+(list desk)
 ```
+
+One or more desks may be given; they are all suspended together.
 
 #### Examples
 
 ```
 |suspend %bitcoin
+```
+
+```
+|suspend %bitcoin %landscape
 ```
 
 ---
@@ -297,88 +341,90 @@ Print out the status of each installed desk.
 
 Also see the related [`+vat`](#vat) command, which prints the status of a single desk rather than all desks.
 
-Fields:
+By default the output is terse. Passing `=verb &` prints the full detail.
+
+Fields shown in the default (terse) output:
 
 - `/sys/kelvin` - The kernel version(s) the desk is compatible with.
+- `%cz hash ends in` - The last five characters of the desk hash.
+- `essential desk` - `yes` or `no`; whether the desk is marked essential and so survives a kernel upgrade without being suspended. See [`|essential-desk`](#essential-desk).
+- `app status` - One of `running`, `suspended`, or `suspended until next update`.
+- `source ship` - The ship the desk updates from, or `~` for a local desk.
+- `pending updates` - Updates waiting to be applied due to kernel incompatibility.
+- `/desk/bill` - The desk's agent manifest, or `missing` if the desk has no `desk.bill`.
+
+Passing `=verb &` replaces `%cz hash ends in` and `/desk/bill` with the following
+additional fields:
+
+- `%cz hash` - The full hash of the desk.
 - `base hash` - The merge base (common ancestor) between the desk and its upstream source.
-- `%cz hash` - The hash of the desk.
-- `app status` - May be `suspended` or `running`.
 - `force on` - The set of agents on the desk which have been manually started despite not being on the `desk.bill` manifest.
 - `force off` - The set of agents on the desk which have been manually stopped despite being on the `desk.bill` manifest.
 - `publishing ship` - The original publisher if the source ship is republishing the desk.
-- `updates` - May be `local`, `remote` or `paused`. Local means it will receive updates via commits on the local ship. Remote means it will receive updates from the `source ship`. Paused means it will not receive updates.
+- `updates` - Either `local` or `remote`. Local means it will receive updates via commits on the local ship; remote means it will receive updates from the `source ship`.
 - `source desk` - The desk on the `source ship`.
 - `source aeon` - The revision number of the desk on the `source ship`.
-- `pending updates` - Updates waiting to be applied due to kernel incompatibility.
+- `kids desk` - The desk published to the ship's children, if any.
 
 #### Arguments
 
 ```
-?(%suspended %running %blocking %nonexistent), =verb ?, =show-suspended ?, =show-running ?, =show-blocking ?, =show-nonexistent ?
+(list desk), =filt ?(%running %suspended %exists %exists-not %blocking), =verb ?
 ```
 
 All arguments are optional.
 
-With no arguments, it prints verbose details for all desks. If the optional `.verb` argument is set to `|`, verbosity is reduced.
+The positional argument is a list of desks; with none, every desk is reported.
+Note that the filter is a *named* argument — `+vats %suspended` is parsed as a
+desk named `%suspended` and reports `desk does not yet exist: %suspended`.
 
-It may optionally take one of four filters as a primary argument:
+- `=filt %running`: desks that are installed and running.
+- `=filt %suspended`: suspended desks only.
+- `=filt %exists`: desks that exist.
+- `=filt %exists-not`: desks we should have but don't yet.
+- `=filt %blocking`: desks blocking a kernel update due to incompatibility. This filter always reports all matching desks, even if a desk list was also given.
 
-- `%suspended`: filter for suspended desks only.
-- `%running`: filter for desks that are installed and running.
-- `%blocking`: filter for desks that are blocking a kernel update due to incompatibility.
-- `%nonexistent`: filter for desks we should have but don't yet.
-
-Alternatively, these filters can be *excluded* from the default output of everything by setting one or more of the `=show-*` arguments to `|`.
+If both a desk list and a filter are given, the output is the desks in the list
+that also match the filter — except for `%blocking`, as noted above.
 
 
 #### Examples
 
-Print everything verbosely (no arguments):
+Print all desks (default, terse):
 
 ```
 > +vats
-  %base                                                                                        
-  /sys/kelvin:      [%zuse 414]                                                                
-  base hash:        0v8.n40h1.hjn8c.e762q.ncgh0.e4gq3.6n3l5.5kt8l.6gtdr.ovbah.u3avd            
-  %cz hash:         0v8.n40h1.hjn8c.e762q.ncgh0.e4gq3.6n3l5.5kt8l.6gtdr.ovbah.u3avd            
-  app status:       running                                                                    
-  force on:         ~                                                                          
-  force off:        ~                                                                          
-  publishing ship:  ~                                                                          
-  updates:          local                                                                      
-  source ship:      ~                                                                          
-  source desk:      ~                                                                          
-  source aeon:      ~                                                                          
-  kids desk:        ~
-  pending updates:  ~
+%base
+  /sys/kelvin:            [%zuse 409]
+  %cz hash ends in:       6kehr
+  essential desk:         yes
+  app status:             running
+  source ship:            ~
+  pending updates:        ~
+  /desk/bill:             ~[%acme %azimuth %dbug %dojo %eth-watcher %hood %herm %lens %ping %spider]
 ::
-  %landscape
-  /sys/kelvin:      [%zuse 416] [%zuse 415] [%zuse 414]
-  base hash:        ~
-  %cz hash:         0v18.hnfi7.tps9t.0bv04.ikolg.ge98v.6f24v.a65m7.hlicn.rcl98.3skdu
-  app status:       running
-  force on:         ~
-  force off:        ~
-  publishing ship:  [~ ~lander-dister-dozzod-dozzod]
-  updates:          remote
-  source ship:      ~lander-dister-dozzod-dozzod
-  source desk:      %landscape
-  source aeon:      0
-  kids desk:        ~
-  pending updates:  ~
+%webterm
+  /sys/kelvin:            [%zuse 409] [%zuse 410] [%zuse 411] [%zuse 412] [%zuse 413] [%zuse 414] [%zuse 415] [%zuse 416]
+  %cz hash ends in:       fn41o
+  essential desk:         yes
+  app status:             running
+  source ship:            ~mister-dister-dozzod-dozzod
+  pending updates:        ~
+  /desk/bill:             ~
 ::
 .......
 ```
 
-Print suspended desks:
+Print a single desk with full detail:
 
 ```
-> +vats %suspended
-  %foo
-  /sys/kelvin:      [%zuse 415]
-  base hash:        0vo.9f28r.java2.qnmqf.b3t1l.65mlu.8qsql.hq0cv.fpmdr.vuo1e.iehht
-  %cz hash:         0vo.9f28r.java2.qnmqf.b3t1l.65mlu.8qsql.hq0cv.fpmdr.vuo1e.iehht
-  app status:       suspended
+> +vats %base, =verb &
+%base
+  /sys/kelvin:      [%zuse 409]
+  base hash:        0v19.n4cpn.0d8d1.693uf.8anru.6fih8.o9cdo.rm1js.tuje0.os701.6kehr
+  %cz hash:         0v19.n4cpn.0d8d1.693uf.8anru.6fih8.o9cdo.rm1js.tuje0.os701.6kehr
+  essential desk:   yes
+  app status:       running
   force on:         ~
   force off:        ~
   publishing ship:  ~
@@ -391,41 +437,21 @@ Print suspended desks:
 ::
 ```
 
-Print suspended desks with low verbosity:
+Print only suspended desks. Note that the filter must be given as the named
+argument `=filt`; a bare `+vats %suspended` would look for a *desk* called
+`%suspended` and report `desk does not yet exist: %suspended`.
 
 ```
-> +vats %suspended, =verb |
-  %foo
-  /sys/kelvin:      [%zuse 415]
-  app status:       suspended
-  publishing ship:  ~
-  pending updates:  ~
+> +vats, =filt %suspended
+%testdesk
+  /sys/kelvin:            [%zuse 409]
+  %cz hash ends in:       a7qd3
+  essential desk:         no
+  app status:             suspended
+  source ship:            ~
+  pending updates:        ~
+  /desk/bill:             missing
 ::
-```
-
-Print everything with low verbosity except suspended desks and blocking desks:
-
-```
-> +vats, =verb |, =show-blocking |, =show-suspended |
-  %groups
-  /sys/kelvin:      [%zuse 417] [%zuse 416] [%zuse 415] [%zuse 414]
-  app status:       running
-  publishing ship:  [~ ~sogryp-dister-dozzod-dozzod]
-  pending updates:  ~
-::
-  %base
-  /sys/kelvin:      [%zuse 414]
-  app status:       running
-  publishing ship:  ~
-  pending updates:  ~
-::
-  %landscape
-  /sys/kelvin:      [%zuse 416] [%zuse 415] [%zuse 414]
-  app status:       running
-  publishing ship:  [~ ~lander-dister-dozzod-dozzod]
-  pending updates:  ~
-::
-.........
 ```
 
 ---
@@ -2094,14 +2120,22 @@ Create a new desk:
 
 The desk is now created in Clay.
 
-Create a new desk from the `%base` desk:
+Create a new desk, reading the template files from a desk other than the default:
 
 ```
 > |new-desk %pahoehoe, =from %base
 >=
 ```
 
-The desk is now created in Clay and filled with the contents of `%base`.  (Note that you would want to clear the `desk.bill` file or never `|install` such a desk, since the `%base` agents would be erroneously superseded.)
+`=from` selects **which desk the template files are read from**; it does not copy
+that desk. `|new-desk` always writes the same short, fixed file list —
+`/mar/noun/hoon`, `/mar/hoon/hoon`, `/mar/txt/hoon`, `/mar/kelvin/hoon` and
+`/sys/kelvin`, plus the extra Gall files if `=gall &` is given — and `=from` only
+changes where those files are sourced. The default is already `%base`, so the
+command above is equivalent to a bare `|new-desk %pahoehoe`.
+
+For comparison, on a fresh ship `%base` contains `{app sur gen lib mar ted desk sys}`,
+while a desk created this way contains only `{mar sys}`.
 
 Create a new desk, overwriting any existing desk and including useful Gall files:
 

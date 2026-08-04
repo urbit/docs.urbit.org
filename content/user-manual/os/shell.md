@@ -70,10 +70,10 @@ Save output to a file in `%clay` with `*`:
 ~your-urbit:dojo> *some/file/path/hoon 'hello world'
 ```
 
-Run system commands from `:hood`, like `reload`, using `|`:
+Run system commands from `:hood`, like `mass`, using `|`:
 
 ```
-~your-urbit:dojo> |reload %eyre
+~your-urbit:dojo> |mass
 ```
 
 ### Generators {#generators}
@@ -145,12 +145,6 @@ The hood is the system daemon. See `gen/hood` and `app/hood`.
 
 ```
 ~your-urbit:dojo> |mass
-```
-
-`|breload` - Reloads a kernel module (vane) from source. Accepts any number of vane names.
-
-```
-~your-urbit:dojo> |breload %clay %eyre
 ```
 
 ---

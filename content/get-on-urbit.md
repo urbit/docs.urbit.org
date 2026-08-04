@@ -278,7 +278,7 @@ For ease of portability the Urbit runtime has made a copy of itself in the `myco
 
 Spin up your comet again by running `mycomet/.run`, and you'll be back at the Dojo.
 
-Comets don't receive software updates by default. If you intend on running this comet for a while and you want to receive updates, run `|ota` in the Dojo.
+Comets don't receive software updates by default. If you intend on running this comet for a while and you want to receive updates, run `|ota (sein:title our now our)` in the Dojo.
 
 Next, you'll want to get the web login code so you can login to your Urbit's web interface in a browser.
 

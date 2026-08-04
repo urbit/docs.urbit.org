@@ -58,6 +58,22 @@ Gall itself provides the special vane-level endpoints listed below. They are org
 
 Note you can use `$` to make the last element empty since it won't allow a trailing `/`. Note how in the third example, the empty element is at the *beginning* of the `$spur` and *after* the `$beak`. If you fail to include this empty element, Gall will try route the scry to an agent for handling instead.
 
+### `%b`: blocked moves {#b-blocked-moves}
+
+A scry with a `%b` care will give you the moves queued for agents that have not been started yet.
+
+#### Produces
+
+A `(map term (qeu blocked-move))`, keyed by agent name.
+
+#### Example
+
+```
+> .^(* %gb /=//=/$)
+```
+
+---
+
 ### `%d`: get desk of app {#d-get-desk-of-app}
 
 A scry with a `%d` care and an agent in `q.beak` will give you the desk that agent is on.
@@ -126,6 +142,54 @@ A `(map dude @)` where the `@` is the nonce.
       [p=%s3-store q=1]
       [p=%hark-system-hook q=1]
 ......(truncated for brevity)......
+```
+
+---
+
+### `%g`: flubbed apps {#g-flubbed-apps}
+
+A scry with a `%g` care will give you, per ship, the agents that have refused a `$plea` — the apps for which Gall has given Ames a `%flub`. This is one half of the Ames/Gall backpressure mechanism: a `%flub` causes the corresponding flow to halt.
+
+#### Produces
+
+A `(jug ship app=term)`.
+
+#### Example
+
+```
+> .^(* %gg /=//=/$)
+```
+
+---
+
+### `%h`: halted apps {#h-halted-apps}
+
+A scry with an `%h` care will give you, per agent, the ships whose flows are halted because that agent is missing or suspended.
+
+#### Produces
+
+A `(jug app=term [ship =duct])`.
+
+#### Example
+
+```
+> .^(* %gh /=//=/$)
+```
+
+---
+
+### `%i`: flub ducts {#i-flub-ducts}
+
+A scry with an `%i` care will give you the duct Gall uses to send `%flub` notifications for each ship.
+
+#### Produces
+
+A `(map ship duct)`.
+
+#### Example
+
+```
+> .^(* %gi /=//=/$)
 ```
 
 ---
@@ -255,6 +319,24 @@ See the [remote scry guide](../../../build-on-urbit/userspace/remote-scry.md) fo
 #### Produces
 
 The type returned is the raw `$noun` from the `$page`. If the file has been tombstoned or does not exist, the scry will fail.
+
+---
+
+### `%y`: live agents {#y-live-agents}
+
+A scry with a `%y` care will give you every running agent and its state. Agents that are not live are excluded from the map.
+
+#### Produces
+
+A `(map term yoke)`.
+
+Note this is the scry the `+vats` generator uses to gather per-desk agent status.
+
+#### Example
+
+```
+> .^(* %gy /=//=/$)
+```
 
 ---
 

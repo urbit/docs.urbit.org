@@ -116,10 +116,22 @@ A `$told` is either a [`%crud`](tasks.md#crud), [`%talk`](tasks.md#talk) or [`%t
 Deduplicate persistent state.
 
 ```hoon
-[%meld ~]
+[%meld $@(~ [memo=? ford=?])]
 ```
 
 Dill asks the runtime to perform the memory deduplication.
+
+The payload may be `~`, or a pair of flags selecting caches to discard *before*
+the deduplication runs:
+
+- `memo` - drop the persistent memo cache.
+- `ford` - drop the Ford build cache.
+
+Dropping a cache frees whatever it held, so it can recover more memory than a
+bare `%meld`, at the cost of rebuilding that cache afterwards. A bare `[%meld ~]`
+still type-checks and leaves both caches intact.
+
+The same payload appears in Dill's `$gift` and in [`$flog`](data-types.md#flog).
 
 #### Returns
 
@@ -139,7 +151,7 @@ Dill asks the runtime to perform the defragmentation.
 
 #### Returns
 
-Dill does not return a gift in response to a `%meld` task.
+Dill does not return a gift in response to a `%pack` task.
 
 ***
 

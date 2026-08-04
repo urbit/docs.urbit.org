@@ -154,7 +154,7 @@ mydesk
 └── sys.kelvin
 ```
 
-The mark files in `/mar` are for handling some basic filetypes, and `sys.kelvin` specifies which kernel version(s) the desk is compatible with. The `|new-desk` generator populates `sys.kelvin` with the current kernel version like `[%zuse 410]`.
+The mark files in `/mar` are for handling some basic filetypes, and `sys.kelvin` specifies which kernel version(s) the desk is compatible with. The `|new-desk` generator populates `sys.kelvin` with the current kernel version like `[%zuse 408]`.
 
 You can delete these files, copy in your own and run `|commit %mydesk` in the Dojo.
 

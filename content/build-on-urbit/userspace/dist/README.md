@@ -42,7 +42,7 @@ The `%docket` agent in Landscape reads the `/desk/docket-0` file to display an a
 Desks contain helper files in `/lib` and `/sur`, generators in `/gen`, marks in `/mar`, threads in `/ted`, tests in `/tests`, and Gall agents in `/app`. In addition, desks also contain these files:
 
 ```
-/sys/kelvin     ::  Kernel kelvin, e.g. [%zuse 410] (mandatory)
+/sys/kelvin     ::  Kernel kelvin, e.g. [%zuse 408] (mandatory)
 /desk/bill      ::  list of agents to start on install (optional, read by Kiln) 
 /desk/docket-0  ::  app metadata (optional, read by Docket) 
 /desk/ship      ::  ship of original desk publisher (optional, read by Docket) 

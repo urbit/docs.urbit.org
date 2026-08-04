@@ -827,7 +827,7 @@ The scry path is in the format `/[care]/[path]`, omitting the ship and case elem
 - Undocked: `./urbit -X /cx/base/gen/code/hoon [pier]`
 - Docked: `[pier]/.run -X /cx/base/gen/code/hoon`
 
-### `-Y, --scry-info FILE` {#y---scry-info-file}
+### `-Y, --scry-into FILE` {#y---scry-into-file}
 
 Optional name for the file produced by a scry performed with `-X`, rather than the scry path.
 

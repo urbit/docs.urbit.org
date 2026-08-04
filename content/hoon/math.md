@@ -43,7 +43,7 @@ A container core for operations related to single-precision binary floats.
 ```hoon
 ++  rs
   ^|
-  |_  $$:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
+  |_  $:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
           rtol=_.1e-5         :: relative tolerance for precision of operations
       ==
 ```
@@ -302,26 +302,6 @@ A floating-point atom (`@rs`).
 
 ```hoon
 ++  san  san:^rs
-```
-
----
-
-### `+exp` {#exp}
-
-The value of e^x for a given floating-point atom.
-
-#### Accepts
-
-A floating-point atom (`@rs`).
-
-#### Produces
-
-A floating-point atom (`@rs`).
-
-#### Source
-
-```hoon
-++  exp  exp:^rs  :: no pass-through because of exp function
 ```
 
 ---
@@ -592,7 +572,7 @@ A `$flag`.
     %.y
   ?.  (is-close p (snag i q))
     %.n
-  $$(i +(i))
+  $(i +(i))
 ```
 
 ---
@@ -827,7 +807,7 @@ A floating-point atom (`@rs`).
   |-  ^-  @rs
   ?:  (is-close x .1)
     t
-  $$(x (sub x .1), t (mul t x))
+  $(x (sub x .1), t (mul t x))
 ```
 
 ---
@@ -907,7 +887,7 @@ A floating-point atom (`@rs`).
   |-  ^-  @rs
   ?:  (lth (abs (sub po p)) rtol)
     p
-  $$(i (add i .1), p (add p (div (pow-n x i) (factorial i))), po p)
+  $(i (add i .1), p (add p (div (pow-n x i) (factorial i))), po p)
 ```
 
 ---
@@ -960,7 +940,7 @@ A floating-point atom (`@rs`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (add i2 .1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -1013,7 +993,7 @@ A floating-point atom (`@rs`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (sub i2 .1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -1171,7 +1151,7 @@ A floating-point atom (`@rs`).
     (div x (mul (pow (add .1 (mul x x)) .0.5) b))
   =/  ai  (mul .0.5 (add a b))
   =/  bi  (sqt (mul ai b))
-  $$(a ai, b bi)
+  $(a ai, b bi)
 ```
 
 ---
@@ -1257,7 +1237,7 @@ A floating-point atom (`@rs`).
   |-  ^-  @rs
   ?:  (lth n .2)
     p
-  $$(n (sub n .1), p (mul p x))
+  $(n (sub n .1), p (mul p x))
 ```
 
 ---
@@ -1315,7 +1295,7 @@ A floating-point atom (`@rs`).
   =/  term2  (mul (sub z .1) (sub z .1))
   =/  term3  (mul (add z .1) (add z .1))
   =/  term  (mul term1 (pow-n (div term2 term3) i))
-  $$(i (add i .1), p (add p term), po p)
+  $(i (add i .1), p (add p term), po p)
 ```
 
 ---
@@ -1503,7 +1483,7 @@ A floating-point atom (`@rs`).
   =/  n=@rs  (mul .0.5 (add g (div x g)))
   ?.  (gth (abs (sub g n)) rtol)
     n
-  $$(g n)
+  $(g n)
 ```
 
 ---
@@ -1760,7 +1740,7 @@ A container core for operations related to double-precision binary floats.
 ```hoon
 ++  rd
   ^|
-  |_  $$:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
+  |_  $:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
           rtol=_.~1e-10       :: relative tolerance for precision of operations
       ==
 ```
@@ -2543,7 +2523,7 @@ A `$flag`.
     %.y
   ?.  (is-close p (snag i q))
     %.n
-  $$(i +(i))
+  $(i +(i))
 ```
 
 ---
@@ -2840,7 +2820,7 @@ A floating-point atom (`@rd`).
   |-  ^-  @rd
   ?:  (is-close x .~1)
     t
-  $$(x (sub x .~1), t (mul t x))
+  $(x (sub x .~1), t (mul t x))
 ```
 
 ---
@@ -2926,7 +2906,7 @@ A floating-point atom (`@rd`).
   |-  ^-  @rd
   ?:  (lth (abs (sub po p)) rtol)
     p
-  $$(i (add i .~1), p (add p (div (pow-n x i) (factorial i))), po p)
+  $(i (add i .~1), p (add p (div (pow-n x i) (factorial i))), po p)
 ```
 
 ---
@@ -2977,7 +2957,7 @@ A floating-point atom (`@rd`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (add i2 .~1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -3028,7 +3008,7 @@ A floating-point atom (`@rd`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (sub i2 .~1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -3176,7 +3156,7 @@ A floating-point atom (`@rd`).
     (div x (mul (pow (add .~1 (mul x x)) .~0.5) b))
   =/  ai  (mul .~0.5 (add a b))
   =/  bi  (sqt (mul ai b))
-  $$(a ai, b bi)
+  $(a ai, b bi)
 ```
 
 ---
@@ -3260,7 +3240,7 @@ A floating-point atom (`@rd`).
     |-  ^-  @rd
     ?:  (lth n .~2)
       p
-    $$(n (sub n .~1), p (mul p x))
+    $(n (sub n .~1), p (mul p x))
 ```
 
 ### `+log` {#log}
@@ -3313,7 +3293,7 @@ A floating-point atom (`@rd`).
   =/  term2  (mul (sub z .~1) (sub z .~1))
   =/  term3  (mul (add z .~1) (add z .~1))
   =/  term  (mul term1 (pow-n (div term2 term3) i))
-  $$(i (add i .~1), p (add p term), po p)
+  $(i (add i .~1), p (add p term), po p)
 ```
 
 ### `+log-10` {#log10}
@@ -3488,7 +3468,7 @@ A floating-point atom (`@rd`).
   =/  n=@rd  (mul .~0.5 (add g (div x g)))
   ?.  (gth (abs (sub g n)) rtol)
     n
-  $$(g n)
+  $(g n)
 ```
 
 ### `+cbrt` {#cbrt}
@@ -3726,7 +3706,7 @@ A container core for operations related to half-precision binary floats.
 ```hoon
 ++  rh
   ^|
-  |_  $$:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
+  |_  $:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
           rtol=_.~~1e-2       :: relative tolerance for precision of operations
       ==
 ```
@@ -4478,7 +4458,7 @@ A `$flag`.
     %.y
   ?.  (is-close p (snag i q))
     %.n
-  $$(i +(i))
+  $(i +(i))
 ```
 
 ---
@@ -4773,7 +4753,7 @@ A floating-point atom (`@rh`).
   |-  ^-  @rh
   ?:  (is-close x .~~1)
     t
-  $$(x (sub x .~~1), t (mul t x))
+  $(x (sub x .~~1), t (mul t x))
 ```
 
 ---
@@ -4859,7 +4839,7 @@ A floating-point atom (`@rh`).
   |-  ^-  @rh
   ?:  (lth (abs (sub po p)) rtol)
     p
-  $$(i (add i .~~1), p (add p (div (pow-n x i) (factorial i))), po p)
+  $(i (add i .~~1), p (add p (div (pow-n x i) (factorial i))), po p)
 ```
 
 ---
@@ -4910,7 +4890,7 @@ A floating-point atom (`@rh`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (add i2 .~~1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -4961,7 +4941,7 @@ A floating-point atom (`@rh`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (sub i2 .~~1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -5109,7 +5089,7 @@ A floating-point atom (`@rh`).
     (div x (mul (pow (add .~~1 (mul x x)) .~~0.5) b))
   =/  ai  (mul .~~0.5 (add a b))
   =/  bi  (sqt (mul ai b))
-  $$(a ai, b bi)
+  $(a ai, b bi)
 ```
 
 ---
@@ -5191,7 +5171,7 @@ A floating-point atom (`@rh`).
   |-  ^-  @rh
   ?:  (lth n .~~2)
     p
-  $$(n (sub n .~~1), p (mul p x))
+  $(n (sub n .~~1), p (mul p x))
 ```
 
 ---
@@ -5241,7 +5221,7 @@ A floating-point atom (`@rh`).
   =/  term2  (mul (sub z .~~1) (sub z .~~1))
   =/  term3  (mul (add z .~~1) (add z .~~1))
   =/  term  (mul term1 (pow-n (div term2 term3) i))
-  $$(i (add i .~~1), p (add p term), po p)
+  $(i (add i .~~1), p (add p term), po p)
 ```
 
 ---
@@ -5413,7 +5393,7 @@ A floating-point atom (`@rh`).
   =/  n=@rh  (mul .~~0.5 (add g (div x g)))
   ?.  (gth (abs (sub g n)) rtol)
     n
-  $$(g n)
+  $(g n)
 ```
 
 ---
@@ -5529,7 +5509,7 @@ A container core for operations related to quadruple-precision binary floats.
 ```hoon
 ++  rq
   ^|
-  |_  $$:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
+  |_  $:  r=$?(%n %u %d %z)   :: round nearest, up, down, to zero
           rtol=_.~~~1e-20     :: relative tolerance for precision of operations
       ==
 ```
@@ -6115,7 +6095,7 @@ A `$flag`.
     %.y
   ?.  (is-close p (snag i q))
     %.n
-  $$(i +(i))
+  $(i +(i))
 ```
 
 ---
@@ -6326,7 +6306,7 @@ A floating-point atom (`@rq`).
   |-  ^-  @rq
   ?:  (is-close x .~~~1)
     t
-  $$(x (sub x .~~~1), t (mul t x))
+  $(x (sub x .~~~1), t (mul t x))
 ```
 
 ---
@@ -6406,7 +6386,7 @@ A floating-point atom (`@rq`).
   |-  ^-  @rq
   ?:  (lth (abs (sub po p)) rtol)
     p
-  $$(i (add i .~~~1), p (add p (div (pow-n x i) (factorial i))), po p)
+  $(i (add i .~~~1), p (add p (div (pow-n x i) (factorial i))), po p)
 ```
 
 ---
@@ -6459,7 +6439,7 @@ A floating-point atom (`@rq`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (add i2 .~~~1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -6512,7 +6492,7 @@ A floating-point atom (`@rq`).
     p
   =/  i2  (add (sun i) (sun i))
   =.  term  (mul (neg term) (div (mul x x) (mul i2 (sub i2 .~~~1))))
-  $$(i +(i), p (add p term), po p)
+  $(i +(i), p (add p term), po p)
 ```
 
 ---
@@ -6668,7 +6648,7 @@ A floating-point atom (`@rq`).
     (div x (mul (pow (add .~~~1 (mul x x)) .~~~0.5) b))
   =/  ai  (mul .~~~0.5 (add a b))
   =/  bi  (sqt (mul ai b))
-  $$(a ai, b bi)
+  $(a ai, b bi)
 ```
 
 ---
@@ -6751,7 +6731,7 @@ A floating-point atom (`@rq`).
   |-  ^-  @rq
   ?:  (lth n .~~~2)
     p
-  $$(n (sub n .~~~1), p (mul p x))
+  $(n (sub n .~~~1), p (mul p x))
 ```
 
 ---
@@ -6806,7 +6786,7 @@ A floating-point atom (`@rq`).
   =/  term2  (mul (sub z .~~~1) (sub z .~~~1))
   =/  term3  (mul (add z .~~~1) (add z .~~~1))
   =/  term  (mul term1 (pow-n (div term2 term3) i))
-  $$(i (add i .~~~1), p (add p term), po p)
+  $(i (add i .~~~1), p (add p term), po p)
 ```
 
 ---
@@ -6962,7 +6942,7 @@ A floating-point atom (`@rq`).
   =/  n=@rq  (mul .~~~0.5 (add g (div x g)))
   ?.  (gth (abs (sub g n)) rtol)
     n
-  $$(g n)
+  $(g n)
 ```
 
 ---

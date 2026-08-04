@@ -378,7 +378,7 @@ The Arvo kernel can do very little on its own. Its functionality is extended in 
 
 As described above, we use Arvo proper to route and control the flow of `$move`s. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a `$move`. This event data is contained within a `$card`. Instead, Arvo proper passes the `$card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
 
-As of this writing, we have nine vanes, which each provide the following services:
+As of this writing, we have ten vanes, which each provide the following services:
 
 - [Ames](../ames): the name of both our network and the vane that communicates over it.
 - [Behn](../behn): a simple timer.
@@ -389,6 +389,7 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Iris](../iris): an http client.
 - [Jael](../jael): storage for Azimuth information.
 - [Khan](../khan): control plane and thread runner.
+- [Lick](../lick): an inter-process communication (IPC) vane, for talking to Unix processes over a socket.
 
 ##### Applying your knowledge {#applying-your-knowledge}
 

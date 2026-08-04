@@ -192,6 +192,54 @@ Here are examples of using each of these as well as making multiple changes in o
 
 ***
 
+### `%into` - External edit <a href="#into---external-edit" id="into---external-edit"></a>
+
+```hoon
+[%into des=desk all=? fis=mode]
+```
+
+Commit changes that came from outside Clay — this is the task Unix sync uses to write mounted files back in. A [`$mode`](data-types.md#mode) is a list of paths paired with an optional `$page`; a null value deletes the file.
+
+If `.all` is true, the given `$mode` is treated as the complete contents of the desk, so any file not mentioned is deleted. If false, it is applied as a patch.
+
+Unlike [`%info`](#info---write), `%into` is for changes Clay did not originate, and it takes raw untyped data rather than a `$nori`.
+
+***
+
+### `%park` - Synchronous commit <a href="#park---synchronous-commit" id="park---synchronous-commit"></a>
+
+```hoon
+[%park des=desk yok=yoki ran=rang]
+```
+
+Perform a commit synchronously, in the current event, rather than going through the ordinary asynchronous commit path.
+
+A `$yoki` is either a complete new commit or a set of changes to apply, and a [`$rang`](data-types.md#rang) supplies any objects the commit references that Clay does not already have. This is how a desk can be installed in one shot, with its content supplied alongside the commit rather than fetched.
+
+***
+
+### `%pork` - Resume commit <a href="#pork---resume-commit" id="pork---resume-commit"></a>
+
+```hoon
+[%pork ~]
+```
+
+Resume a commit that was interrupted. Clay records a pending update in its state (`pud` in the [`$raft`](data-types.md#raft)) so that a commit which could not complete — typically because it needed a kernel upgrade first — can be picked up again afterwards.
+
+This is sent by Clay to itself as part of the upgrade sequence; it is not something userspace would normally send.
+
+***
+
+### `%prep` - Prime store <a href="#prep---prime-store" id="prep---prime-store"></a>
+
+```hoon
+[%prep lat=(map lobe page)]
+```
+
+Prime Clay's object store with the given content, keyed by [`$lobe`](data-types.md#lobe) (content hash). This makes objects available for a subsequent commit that references them, and is used together with [`%park`](#park---synchronous-commit).
+
+***
+
 ## Apps and updates <a href="#apps-and-updates" id="apps-and-updates"></a>
 
 ### `%rein` - Force apps <a href="#rein---force-apps" id="rein---force-apps"></a>
@@ -265,6 +313,38 @@ A `%zest` task suspends or unsuspends a desk. the [`$zest`](data-types.md#zest) 
 * `%live`: running.
 * `%dead`: suspended.
 * `%held`: suspended pending kernel update.
+
+***
+
+### `%esse` - Mark desk essential <a href="#esse---mark-desk-essential" id="esse---mark-desk-essential"></a>
+
+```hoon
+[%esse des=desk ese=?]
+```
+
+Mark a desk as essential, or unmark it. An essential desk is not suspended when an incompatible kernel update arrives; a non-essential desk whose kelvin set lacks the incoming `%zuse` is held until it has a compatible update.
+
+This is what the `|essential-desk` generator sends. The current setting is readable with the `/esse/[desk]` scry and appears as the `essential desk` field in `+vats` output.
+
+***
+
+### `%zeal` - Batch app state <a href="#zeal---batch-app-state" id="zeal---batch-app-state"></a>
+
+```hoon
+[%zeal lit=(list [=desk =zest])]
+```
+
+Set the [`$zest`](data-types.md#zest) of several desks at once. This is the batch form of [`%zest`](#zest---app-state), applying all the changes in a single event rather than one desk at a time.
+
+***
+
+### `%stir` - Debug <a href="#stir---debug" id="stir---debug"></a>
+
+```hoon
+[%stir arg=*]
+```
+
+Debugging task. The argument is untyped and its interpretation is internal to Clay; it is not part of the stable interface and is not intended for use from userspace.
 
 ***
 
@@ -497,6 +577,37 @@ If the merge failed, `.p` will have a head of `%.n` and then a `[term tang]` whe
 
 ***
 
+### `%fuse` - Merge many <a href="#fuse---merge-many" id="fuse---merge-many"></a>
+
+```hoon
+[%fuse des=desk bas=beak con=(list [beak germ])]
+```
+
+Replace the contents of `.des` with the merge of several sources. `.bas` is the base beak, and `.con` is a list of further beaks each paired with the [`$germ`](data-types.md#germ) (merge strategy) to apply.
+
+Unlike [`%merg`](#merg---merge), a `%fuse` has no dependence on the previous state of the target desk — any existing work there is overwritten.
+
+This is what the `|fuse` generator sends:
+
+```
+|fuse %dest /=kids= mate//~nel/base= meet//~zod/kids/track
+|fuse %desk-to-cancel-fuse-into %cancel
+```
+
+A source beak may name `%track` in place of a case, which tells Clay to take the latest version of that source *and* re-run the fuse whenever the source changes. A fuse may have any number of tracked sources, including the base.
+
+***
+
+### `%drop` - Cancel merge <a href="#drop---cancel-merge" id="drop---cancel-merge"></a>
+
+```hoon
+[%drop des=desk]
+```
+
+Cancel a pending merge on the given desk.
+
+***
+
 ## Permissions <a href="#permissions" id="permissions"></a>
 
 For each file or directory, there is both a read permission and a write permission. Each may be set separately and is either a whitelist or a blacklist (but not both). The whitelist/blacklist contains a `+set` of ships and/or groups which are allowed or banned respectively. If it's an empty whitelist it means all foreign ships are denied. If it's an empty blacklist it means all foreign ships are allowed.
@@ -669,6 +780,8 @@ Here we'll looking at making Clay requests to a foreign ship.
 
 As it currently stands, it's not possible to write to a foreign desk. Additionally, remote scries are not implemented. That leaves requests to read files (`%warp`) and merge desks (`%merg`), which we'll look at next.
 
+Note the distinction between `%warp` and [`%werp`](#werp---inbound-remote): `%warp` is how *we* request a file, naming the ship we want it from. `%werp` is the inbound form, carrying the requesting ship, and is passed to Clay by Ames on our behalf.
+
 ### `%warp` - Remote <a href="#warp---remote" id="warp---remote"></a>
 
 To read files on a foreign desk, you just send Clay a `%warp` task (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](tasks.md#warp---read-and-track) section.
@@ -709,3 +822,69 @@ Note that all subfolders and individual files within the desk must permit your r
 [See here for examples of requests to foreign ships.](examples.md#foreign-ships)
 
 ***
+
+### `%werp` - Inbound remote <a href="#werp---inbound-remote" id="werp---inbound-remote"></a>
+
+```hoon
+[%werp who=ship wer=ship rif=riff-any]
+```
+
+An external file request, as received from a foreign ship. `.who` is the ship making the request, `.wer` is the ship being asked (us), and `.rif` is a `$riff-any` — a versioned [`$riff`](data-types.md#riff), so that peers on different Clay versions can still be understood.
+
+This is the task Ames passes to Clay when a remote ship reads from us. You would not send it yourself; you send [`%warp`](#warp---remote) to read from *them*.
+
+***
+
+## Vane lifecycle tasks <a href="#vane-lifecycle-tasks" id="vane-lifecycle-tasks"></a>
+
+Clay's `$task` union also includes four cards drawn from the shared `$vane-task` type. These are kernel-level and are not sent from userspace.
+
+```hoon
+$>(%init vane-task)   ::  report install
+$>(%trim vane-task)   ::  trim state
+$>(%vega vane-task)   ::  report upgrade
+$>(%plea vane-task)   ::  ames request
+```
+
+- `%init` - Sent once when Clay is first installed.
+- `%trim` - Asks Clay to free memory. Clay does nothing in response.
+- `%vega` - Notifies Clay that the kernel has been upgraded.
+- `%plea` - An inbound request arriving over Ames. Clay's network requests are carried as `%plea`s, and the corresponding inbound file read is [`%werp`](#werp---inbound-remote).
+
+***
+
+## Gifts <a href="#gifts" id="gifts"></a>
+
+The complete `$gift:clay` union. Several of these are described alongside the task that produces them; they are collected here for reference.
+
+```hoon
++$  gift
+  $%  [%boon payload=*]
+      [%croz rus=(map desk [r=regs w=regs])]
+      [%cruz cez=(map @ta crew)]
+      [%dirk p=@tas]
+      [%ergo p=@tas q=mode]
+      [%hill p=(list @tas)]
+      [%done error=(unit error:ames)]
+      [%mere p=(each (set path) (pair term tang))]
+      [%ogre p=@tas]
+      [%rule red=dict wit=dict]
+      [%tire p=(each rock:tire wave:tire)]
+      [%writ p=riot]
+      [%wris p=[%da p=@da] q=(set (pair care path))]
+  ==
+```
+
+- `%boon` - Ames response payload, for a request that came in over the network.
+- `%croz` - Permission rules for a group, per desk; the response to [`%crow`](#crow---group-files).
+- `%cruz` - All permission groups; the response to [`%crew`](#crew---get-groups).
+- `%dirk` - Tells Unix to mark a mount point dirty, so it re-syncs.
+- `%ergo` - A version update for a mount point, giving the changed files as a [`$mode`](data-types.md#mode).
+- `%hill` - The list of mount points; the response to [`%boat`](#boat---list-mounts).
+- `%done` - An Ames message acknowledgement, carrying an error if it was nacked.
+- `%mere` - The result of a merge: either the set of changed paths, or a failure with a `$tang`.
+- `%ogre` - Tells Unix to delete a mount point.
+- `%rule` - The read and write permissions on a node; the response to a `%p` care scry or a [`%perm`](#perm---set-perms) change.
+- `%tire` - App state, as a full `$rock` or an incremental `$wave`; the response to [`%tire`](#tire---app-state-sub).
+- `%writ` - The response to a [`%warp`](#warp---read-and-track) read, as a [`$riot`](data-types.md#riot). A null `$riot` means the requested data does not exist.
+- `%wris` - Reports many changes at once, as a set of `care`/`path` pairs at a given date. This is what a [`%mult`](#mult---next-of-any) subscription receives.

@@ -36,19 +36,6 @@ Each of the possible `[path]`s are described below.
 
 ***
 
-### `/sweep` - Cache check <a href="#sweep---cache-check" id="sweep---cache-check"></a>
-
-A buc scry with a path of `/sweep` will check the global ford cache for refcount errors. It returns a `(list [need=@ud have=@ud leak])`, where a [`$leak`](data-types.md#leak) is a Ford cache key used internally by Clay.
-
-Example:
-
-```
-> .^((list [need=@ud have=@ud *]) %cx /=//=/sweep)
-~
-```
-
-***
-
 ### `/rang` - Get `$rang` <a href="#rang---get-rang" id="rang---get-rang"></a>
 
 A buc scry with a path of `/rang` will return the full [`$rang`](data-types.md#rang) from Clay's state.
@@ -101,15 +88,19 @@ Example:
 
 ***
 
-### `/flow` - Build cache <a href="#flow---build-cache" id="flow---build-cache"></a>
+### `/esse` - Desk essential? <a href="#esse---desk-essential" id="esse---desk-essential"></a>
 
-A buc scry with a path of `/flow` will return the global build cache. The type returned is a [`$flow:clay`](./data-types.md#flow).
+A buc scry with a path of `/esse/[desk]` will return whether the given desk is
+marked essential. An essential desk is not suspended when an incompatible kernel
+update arrives. The type returned is a `?`.
+
+The desk is mandatory; a bare `/esse` fails.
 
 Example:
 
 ```
-> ~(wyt by .^(flow:clay %cx /=//=/flow))
-960
+> .^(? %cx /=//=/esse/base)
+%.y
 ```
 
 ***

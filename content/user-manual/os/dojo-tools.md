@@ -1997,7 +1997,7 @@ labeled /~zod/base/bar
 > =<  lab  .^(dome:clay %cv %)
 {[p=%bar q=1] [p=%foo q=9]}
 
-> .^(? %cu /=base/bar/gen/code/hoon)
+> .^(? %cu /=base=/bar/gen/code/hoon)
 %.y
 ```
 

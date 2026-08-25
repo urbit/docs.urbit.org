@@ -426,17 +426,19 @@ None
 
 #### Discussion
 
-`.p` is a wing reference like `foo`, `bar.foo`, etc. If `.p` exists, `.q`. If `.p` does not exist, `.r`. Essentially, this is like `?:` for wing existence.
+`.p` is a wing reference like `foo`, `bar.foo`, etc. If `.p` does *not* exist, `.q`. If `.p` does exist, `.r`. Essentially, this is like `?:` for wing existence, with the non-existence case first.
+
+Note the branch order: `.q` is the "missing" branch and `.r` is the "found" branch. This order was reversed in 2025; code written against the previous ordering will compile but take the wrong branch.
 
 #### Examples
 
 ```
 > =foo 42
 
-> !@(foo 'exists' 'does not exist')
+> !@(foo 'does not exist' 'exists')
 'exists'
 
-> !@(baz 'exists' 'does not exist')
+> !@(baz 'does not exist' 'exists')
 'does not exist'
 ```
 

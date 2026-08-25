@@ -169,7 +169,7 @@ Wrapped Dill tasks.
   $%  [%crop p=@ud]                                   ::  trim kernel state
       $>(%crud told)                                  ::
       [%heft ~]                                       ::
-      [%meld ~]                                       ::  unify memory
+      [%meld $@(~ [memo=? ford=?])]                   ::  unify memory
       [%pack ~]                                       ::  compact memory
       $>(%text told)                                  ::
       [%verb ~]                                       ::  verbose mode

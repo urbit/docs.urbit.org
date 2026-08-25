@@ -43,35 +43,48 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to `+on-hear:ev
 
 ***
 
-### `%heed` <a href="#heed" id="heed"></a>
+### `%halt` <a href="#halt" id="halt"></a>
 
 ```hoon
-[%heed =ship]
+$>(%halt deep)
 ```
 
-A vane can pass Ames a `%heed` task to request Ames track a peer's responsiveness. If our `%boon`s to it start backing up locally, Ames will `%give` a `%clog` back to the requesting vane containing the unresponsive peer's Urbit address.
+where the relevant case of [`$deep`](data-types.md#deep) is:
 
-Stop tracking a peer by sending Ames a [`%jilt`](tasks.md#jilt) task.
+```hoon
+[%halt =ship agent=term =bone]
+```
 
-The `$ship` field specifies the peer to be tracked.
+`%halt` stops a flow after we hear a remote `%flub` — that is, after the peer's
+Gall has told us the destination agent will not currently accept the `$plea`. A
+halted flow stops re-sending; no new timers are started for it.
+
+Ames also passes a `%halt` task *to Gall* in the other direction, which is how
+the remote `%flub` gets emitted: Gall's `+mo-halt` gives a `%boon` carrying
+`%flub` back to the `$plea` sender.
+
+The flow's `halt` flag is set in either direction:
+
+- forward: Gall passes a `%flub` to Ames.
+- backward: a `$plea` gets `%flub`bed over the wire.
 
 #### Returns
 
-If the `$ship` is indeed being unresponsive, as measured by backed up `%boon`s, Ames will `%give` a `%clog` gift to the requesting vane containing the unresponsive peer's urbit address.
+This task returns no gifts.
 
 ***
 
-### `%jilt` <a href="#jilt" id="jilt"></a>
+### `%goad` <a href="#goad" id="goad"></a>
 
 ```hoon
-[%jilt =ship]
+[%goad =ship]
 ```
 
-`%jilt` stops tracking a potentially unresponsive peer that was previously being tracked as a result of the [`%heed`](tasks.md#heed) task.
+`%goad` restarts flows to `.ship` that were previously halted, once the remote
+agent is live again. Halted flows do not start new timers, so a `%goad` is what
+gets them moving.
 
-There are two `+on-jilt` arms, this task utilizes `+on-hear:event-core`.
-
-The `$ship` field specifies the peer we want to stop tracking.
+The `$ship` field specifies the peer whose flows should be restarted.
 
 #### Returns
 

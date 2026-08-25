@@ -77,6 +77,27 @@ Application-level message, as a `%pass`.
 - `.path` - Internal route on the receiving ship.
 - `.payload` - Semantic message contents.
 
+## `$deep` {#deep}
+
+```hoon
++$  deep
+  $%  [%nack =ship =nack=bone =message]
+      [%sink =ship =target=bone naxplanation=[=message-num =error]]
+      [%drop =ship =nack=bone =message-num]
+      [%cork =ship =bone]
+      [%kill =ship =bone]
+      [%ahoy =ship =bone]
+      [%prun =ship =user=path =duct =ames=path]
+      [%halt =ship agent=term =bone]
+  ==
+```
+
+Deferred internal operations. Ames passes these to itself so that the work
+happens in a later event rather than inside the current one.
+
+The `%deep` task carries a `$deep`, and the [`%halt`](tasks.md#halt) task is the
+`%halt` case of it, written `$>(%halt deep)`.
+
 ## `$spar` {#spar}
 
 ```hoon
@@ -186,8 +207,8 @@ All Ames knows about a peer.
 +$  alien-agenda
   $:  messages=(list [=duct =plea])
       packets=(set =blob)
-      heeds=(set duct)
-      keens=(jug path duct)
+      keens=(jug [path ints] duct)
+      chums=(jug [path ints] duct)
   ==
 ```
 
@@ -195,8 +216,8 @@ What to do when Ames learns a peer's life and keys.
 
 - `messages` - [$plea](#plea)s local vanes have asked Ames to send.
 - `packets` - Packets we've tried to send.
-- `heeds` - Local tracking requests; passed through into [$peer-state](#peer-state).
 - `keens` - Subscribers to remote scry paths.
+- `chums` - Subscribers to remote scry paths via `%chum`.
 
 ## `$peer-state` {#peer-state}
 
@@ -214,10 +235,12 @@ What to do when Ames learns a peer's life and keys.
       snd=(map bone message-pump-state)
       rcv=(map bone message-sink-state)
       nax=(set [=bone =message-num])
-      heeds=(set duct)
       closing=(set bone)
       corked=(set bone)
       keens=(map path keen-state)
+      =chain
+      tip=(jug =user=path [duct =ames=path])
+      halt=(set bone)
   ==
 ```
 
@@ -229,10 +252,12 @@ State for a peer with known life and keys.
 - `.snd` - Per-`$bone` message pumps to send messages as fragments.
 - `.rcv` - Per-`$bone` message sinks to assemble messages from fragments.
 - `.nax` - Unprocessed nacks (negative acknowledgments).
-- `.heeds` - Listeners for `%clog` notifications.
 - `.closing`: Bones closed on the sender side.
 - `.corked`: Bones closed on both sender and receiver.
 - `.keens`: Remote scry state.
+- `.chain`: Remote scry key chain.
+- `.tip`: Outstanding subscription paths.
+- `.halt`: Bones whose flows are halted by backpressure. See [`%halt`](tasks.md#halt).
 
 ## `$keen-state` {#keen-state}
 

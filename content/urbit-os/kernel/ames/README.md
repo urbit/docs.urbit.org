@@ -55,7 +55,11 @@ Ames encrypts every message using symmetric-key encryption by performing an elli
 
 When a peer suffers a continuity breach, Ames removes all messaging state related to it. Ames does not guarantee that all messages will be fully delivered to the now-stale peer. From Ames's perspective, the newly restarted peer is a new ship. Ames's guarantees are not maintained across a breach.
 
-A vane can pass Ames a `%heed` task to request Ames track a peer's responsiveness. If our `%boon`'s to it start backing up locally, Ames will give a `%clog` back to the requesting vane containing the unresponsive peer's urbit address. This interaction does not use ducts as unique keys. Stop tracking a peer by sending Ames a `%jilt` task.
+Ames and Gall apply backpressure to each other so that a peer whose agent cannot currently accept a message does not cause unbounded retries.
+
+When an agent will not take a `$plea`, Gall gives Ames a `%flub` gift; when it is ready again it gives a `%spur`. On the sending side, Ames halts the flow with a [`%halt`](tasks.md#halt) task, and restarts it with a [`%goad`](tasks.md#goad) once the remote agent is live. A halted flow stops re-sending and starts no new timers.
+
+Ames may also pass Gall a `%clog` task to signal that `%boon`s to a peer are backing up locally. Note that `%clog` is a `$task:gall` — it is no longer an Ames gift, and the older `%heed`/`%jilt` tasks that drove it have been removed.
 
 Debug output can be adjusted using `%sift` and `%spew` task's.
 

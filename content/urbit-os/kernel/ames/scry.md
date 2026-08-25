@@ -78,7 +78,12 @@ A scry with a `%x` `$care` and a `$path` of `/peers/[ship]` where `[ship]` is a 
   }
   rcv={}
   nax={}
-  heeds={~[/gall/sys/lag /dill //term/1]}
+  closing={}
+  corked={}
+  keens={}
+  chain={}
+  tip={}
+  halt={}
 ]
 ```
 

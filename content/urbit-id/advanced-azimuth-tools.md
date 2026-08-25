@@ -39,7 +39,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 
 `%/spawn/eth-txs` is simply the path for the output file
 
-`%mainnet` specifies which network this is going to sent out on. Other options are possible including the test-net `%ropsten`.
+`%mainnet` specifies which network this is going to sent out on. The full set of options is `%mainnet`, `%goerli`, `%fakenet` and `[%other id=@]` (`+network` in `/sur/claz.hoon`), where `[%other id]` lets you give a chain ID directly. Note that Goerli has since been deprecated by the Ethereum Foundation, so `[%other id]` is the practical choice for a testnet today.
 
 `author` here is an Ethereum address that is issuing the transaction. It will need to be written in `@ux` notation, e.g. `0x3b17.d097.d9dd.711e.4ef8.517a.bbf1.8b2b.a643.81fe`.
 

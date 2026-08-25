@@ -136,7 +136,7 @@ A `verifier` is a gate whose sample is of the form `[dat=octs v=@ r=@ s=@]` and 
 
 The `verifier` in use by `naive.hoon` runs the keccak hash function on `dat` to verify that `dat` is data signed by the ECDSA signature given by the `[v r s]` tuple, according to the format for signed transactions outlined in the [bytestring format](l2/bytestring.md) documentation.
 
-`chain-id` is the ID used by the Ethereum blockchain, which is `1337`. See [bytestring format](l2/bytestring.md) for more information. This is used so that e.g. transactions on the Ropsten test network cannot be replayed on the mainnet.
+`chain-id` is the ID used by the Ethereum blockchain, which is `1337`. See [bytestring format](l2/bytestring.md) for more information. This is used so that e.g. transactions on a test network cannot be replayed on the mainnet.
 
 `state` is the current state of the PKI. This is structured similarly to the state held in [Azimuth.eth](azimuth-eth.md), but will differ in general since `state` takes into account layer 2 transactions as well. See the [Layer 2 Overview](l2/README.md) for more on how PKI state is handled.
 

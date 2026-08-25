@@ -15,7 +15,7 @@ layout:
 
 # Custom Roller Tutorial
 
-This tutorial is an outline for how to set up your own L2 roller for Urbit. Some familiarity with how L2 works in general, as well as the role of the roller, is expected. See [Layer 2 Overview](l2/README.md) for a technical overview of L2, [Azimuth Data Flow](flow.md) to gain an understanding of how Azimuth data handling and processing is done on Urbit, and [Rollers](l2/roller.md) for a short summary of what the different Gall agents involved for rollers are. This tutorial is focused on setting up a roller to work on the main Ethereum network, but only minor changes are needed to utilize the Ropsten Ethereum network. We also explain how to set up a front end (Bridge) from which transactions to be batched by the roller are sent, but use of a front end is not mandatory.
+This tutorial is an outline for how to set up your own L2 roller for Urbit. Some familiarity with how L2 works in general, as well as the role of the roller, is expected. See [Layer 2 Overview](l2/README.md) for a technical overview of L2, [Azimuth Data Flow](flow.md) to gain an understanding of how Azimuth data handling and processing is done on Urbit, and [Rollers](l2/roller.md) for a short summary of what the different Gall agents involved for rollers are. This tutorial is focused on setting up a roller to work on the main Ethereum network. We also explain how to set up a front end (Bridge) from which transactions to be batched by the roller are sent, but use of a front end is not mandatory.
 
 Note that this process involves giving the private key of an Ethereum wallet to the ship running the roller so that it may spend ETH to submit transactions. If you do not fully understand what this entails, we recommend against running your own roller on the Ethereum mainnet. See [below](roller-tutorial.md#step2) for more information on this.
 
@@ -88,12 +88,24 @@ This will launch a server running Bridge that utilizes the mainnet roller you se
 
 | Dojo Command         | Description                                                           | Argument                           |
 | -------------------- | --------------------------------------------------------------------- | ---------------------------------- |
+| `:roller\|assign`    | Assigns a quota to a ship; omit the quota to allow unlimited txs.     | `[ship (unit @ud)]`                |
 | `:roller\|commit`    | Submits a new L2 batch with all pending transactions.                 | None.                              |
 | `:roller\|config`    | General configuration command.                                        | `$config` (see `/sur/dice.hoon`)   |
-| `:roller\|endpoint`  | Set the Infura endpoint.                                              | `[@t ?(%mainnet %ropsten %local)]` |
+| `:roller\|endpoint`  | Set the Infura endpoint.                                              | `[@t ?(%mainnet %goerli %local)]`  |
 | `:roller\|frequency` | Sets the frequency at which batches are submitted.                    | `@dr`                              |
 | `:roller\|local`     | Configures `%roller` to listen to a local Ethereum node at port 8545. | None.                              |
 | `:roller\|quota`     | Modified the number of txs a ship is allowed to send per unit time.   | `@ud`                              |
-| `:roller\|ropsten`   | Configure `%roller` to listen to a preset Ropsten Infura node.        | None.                              |
+| `:roller\|refuel`    | Bumps the gas price for a sending transaction.                        | `[@ @ud (unit @ux)]`               |
+| `:roller\|goerli`    | Configure `%roller` to listen to a preset Goerli Infura node.         | None.                              |
 | `:roller\|setkey`    | Load a private key into the roller and retrieves its L1 nonce.        | `@t`                               |
 | `:roller\|slice`     | Modified the unit of time for each ship's quota.                      | `@dr`                              |
+
+> **A note on testnets.** The only testnet this tooling supports is Goerli:
+> `:roller|goerli` points `%roller` at a Goerli Infura node whose URL is
+> hardcoded in `/gen/roller/goerli.hoon`. Goerli has since been deprecated by
+> the Ethereum Foundation, as was the earlier Ropsten network that this page
+> previously referred to. There is no Sepolia or Holešky generator in
+> `pkg/arvo/gen/roller/`, so the testnet path is unmaintained upstream, not just
+> in these docs. If you want a non-mainnet roller today, use `:roller|local`
+> against your own node and set the endpoint explicitly with
+> `:roller|endpoint`.

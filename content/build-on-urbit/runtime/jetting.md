@@ -17,8 +17,6 @@ layout:
 
 ## Writing Jets
 
-## Writing Jets
-
 Many operations are inefficient when implemented in Nock, and it is efficacious to treat Nock as a standard of behavior rather than the implementation. This tutorial aims to teach you how to read existing jet code; produce a jet matching a Hoon gate with a single argument; and produce a more complex jet involving multiple values and floating-point arithmetic. It will then discuss jetting more generically.
 
 Since jetting code requires modifying the binary runtime, we will work some in Hoon but much more in C. While you can build whatever you like as experimental or personal work, if you intend to submit your jetted code back to the main Urbit developer community then you should coordinate with the Urbit Foundation.

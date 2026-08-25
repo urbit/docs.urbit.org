@@ -164,3 +164,26 @@ You would not use this task from userspace.
 #### Returns
 
 In response to receiving this task, Behn may `%give` a `%doze` gift containing the `@da` of the next timer to elapse. Behn may also `%give` a `%wake` gift to itself.
+
+---
+
+## Gifts {#gifts}
+
+The complete `$gift:behn` union:
+
+```hoon
++$  gift
+  $%  [%doze p=(unit @da)]
+      [%wake error=(unit tang)]
+      [%meta p=vase]
+      [%heck syn=sign-arvo]
+  ==
+```
+
+- `%doze` - The next alarm. Behn gives this to Unix, which does the real
+  timekeeping. A null `.p` means there is no timer set, so Unix can stop waiting.
+- `%wake` - A timer has elapsed, given to whoever set it with [`%wait`](#wait).
+  A non-null `.error` means the timer fired but the resulting event crashed.
+- `%meta` - Gives back the vase from a [`%drip`](#drip), in the following event.
+- `%heck` - Gives back the `$sign-arvo` from a [`%huck`](#huck).
+

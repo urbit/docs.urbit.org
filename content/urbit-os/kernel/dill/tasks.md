@@ -400,3 +400,80 @@ The `$tape` in `.p` will be printed to the terminal.
 Dill does not return a gift in response to a `%text` task.
 
 ***
+
+***
+
+### `%mass` <a href="#mass" id="mass"></a>
+
+Run a memory report.
+
+```hoon
+[%mass ~]
+```
+
+Asks the runtime to produce a memory report. This is the mechanism behind `|mass` in the dojo. The runtime replies with a [`%quac`](#quac) task carrying the result.
+
+#### Returns
+
+Dill does not return a gift in response to a `%mass` task.
+
+***
+
+### `%quac` <a href="#quac" id="quac"></a>
+
+Memory report from the runtime.
+
+```hoon
+[%quac p=(list quac)]
+```
+
+Carries the memory report produced in response to [`%mass`](#mass). This comes from the runtime; you would not send it from userspace.
+
+#### Returns
+
+Dill gives a `%meme` gift carrying the report.
+
+***
+
+### `%knob` <a href="#knob" id="knob"></a>
+
+Set error volume for a tag.
+
+```hoon
+[%knob tag=term level=?(%hush %soft %loud)]
+```
+
+**Deprecated.** This task is marked `:: deprecated removeme` in `lull.hoon` and should not be adopted in new code.
+
+#### Returns
+
+Dill does not return a gift in response to a `%knob` task.
+
+***
+
+## Gifts <a href="#gifts" id="gifts"></a>
+
+The complete `$gift:dill` union:
+
+```hoon
++$  gift
+  $%  [%blit p=(list blit)]
+      [%logo ~]
+      [%meld $@(~ [memo=? ford=?])]
+      [%pack ~]
+      [%trim p=@ud]
+      [%logs =told]
+      [%meme p=(list quac)]
+      [%quac ~]
+  ==
+```
+
+- `%blit` - Terminal output, given to Unix as a list of [`$blit`](data-types.md#blit)s.
+- `%logo` - Tells the runtime to shut the ship down.
+- `%meld` - Asks the runtime to deduplicate memory. Same payload as the [`%meld`](#meld) task.
+- `%pack` - Asks the runtime to defragment memory.
+- `%trim` - Asks the runtime to free memory.
+- `%logs` - System output, given to subscribers of the [`%logs`](#logs) task.
+- `%meme` - A memory report, given in response to a [`%quac`](#quac) task.
+- `%quac` - Asks the runtime for a memory report; the counterpart of the [`%mass`](#mass) task.
+

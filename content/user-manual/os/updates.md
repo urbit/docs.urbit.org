@@ -79,30 +79,38 @@ All apps you install (such as Groups, Studio, Pals, etc) specify the kernel vers
 
 This means that both the runtime and all apps must be up-to-date in order to apply a kernel update. If either of these conditions are not met, you will be notified in landscape as described in the [update notifications](updates.md#update-notifications) section above, and you will need to take the actions described.
 
-If you have apps installed that simply don't have kernel-compatible updates available, you can force the kernel update by clicking the button in the notification [described above](updates.md#update-notifications), or by running `|bump, =force &` in the dojo. Doing so will suspend the incompatible apps until they receive compatible updates.
+If you have apps installed that simply don't have kernel-compatible updates available, you can force the kernel update by clicking the button in the notification [described above](updates.md#update-notifications), or by running `|bump` in the dojo. Doing so will suspend the incompatible apps until they receive compatible updates.
 
 If the kernel update was blocked by an outdated runtime and you've since updated the runtime, you can tell it to try applying the update again by running `|bump` in the dojo.
 
-To check if you have unapplied kernel updates queued, you can run `+vats %base` in the dojo. You'll see an output like this:
+To check if you have unapplied kernel updates queued, you can run `+vats %base, =verb &` in the dojo. The `=verb &` is needed because the default output is terse and omits the `updates` entry. You'll see an output like this:
 
 ```
+> +vats %base, =verb &
 %base
-  /sys/kelvin:      [%zuse 418]
-  base hash:        0vu.fptbs.6f05p.c9ghb.qfh7e.sbhum.vfnnr.osfs7.vv1i1.qveva.dfvli
-  %cz hash:         0vu.fptbs.6f05p.c9ghb.qfh7e.sbhum.vfnnr.osfs7.vv1i1.qveva.dfvli
+  /sys/kelvin:      [%zuse 408]
+  base hash:        0v1f.8rfhf.gck0h.bdgic.td3kk.muapf.ett6q.q8sra.188jt.hlai3.71c37
+  %cz hash:         0v1f.8rfhf.gck0h.bdgic.td3kk.muapf.ett6q.q8sra.188jt.hlai3.71c37
+  essential desk:   yes
   app status:       running
   force on:         ~
   force off:        ~
   publishing ship:  ~
-  updates:          tracking
-  source ship:      ~marzod
-  source desk:      %kids
-  source aeon:      8
+  updates:          local
+  source ship:      ~
+  source desk:      ~
+  source aeon:      ~
+  kids desk:        ~
   pending updates:  ~
 ::
 ```
 
-The `updates` entry says whether automatic updates are enabled. If it doesn't say `tracking`, you can run `|ota (sein:title our now our)` to enable them. The `pending updates` section will list any blocked updates, it'll look something like `~[[%zuse 417]]`. The `/sys/kelvin` line says the version it's currently on.
+The `updates` entry is either `local` or `remote`. `remote` means the desk tracks
+a `source ship` and receives updates from it; `local` means it has no upstream
+source and only changes through commits on this ship. If `%base` says `local` and
+you expected it to track your sponsor, run `|ota (sein:title our now our)`. The
+`pending updates` section will list any blocked updates, it'll look something like
+`~[[%zuse 407]]`. The `/sys/kelvin` line says the version it's currently on.
 
 ## App updates <a href="#app-updates" id="app-updates"></a>
 
@@ -110,31 +118,33 @@ Apps (such as Groups, Studio, Pals, etc) receive OTA (over-the-air) updates from
 
 When there are kernel updates, app developers are encouraged to push updates for their apps before the kernel update itself is deployed. This means you'll probably see a bunch of notifications about app updates being blocked by the `%base` desk in the days before the kernel update ships. You don't need to worry about these - the updates will be queued and automatically applied when the kernel update arrives.
 
-Sometimes, app developers may not get a kernel-compatible update out in time, or else they have simply stopped maintaining the app. In this case, such apps will block kernel updates, and you'll see the "The following (n) apps blocked a System Update" notification [described above](updates.md#update-notifications). In this case, the app will need to be suspended in order for the kernel update to complete. You can do this either by clicking the button in that notification or running `|bump, =force &` in the dojo. You should not manually suspend apps via their tile menu or the `|suspend` command, because they will not be automatically revived if they later receive a kernel-compatible update.
+Sometimes, app developers may not get a kernel-compatible update out in time, or else they have simply stopped maintaining the app. In this case, such apps will block kernel updates, and you'll see the "The following (n) apps blocked a System Update" notification [described above](updates.md#update-notifications). In this case, the app will need to be suspended in order for the kernel update to complete. You can do this either by clicking the button in that notification or running `|bump` in the dojo. You should not manually suspend apps via their tile menu or the `|suspend` command, because they will not be automatically revived if they later receive a kernel-compatible update.
 
 Automatic app updates can be paused with the `|pause %the-desk` command in the dojo. The desk name may differ from the app name - you can find the desk name by clicking on "App Info" in the app tile's hamburger menu and looking for the "Installed into" entry.
 
-To check the update status of an app, you can run the `+vats %the-desk` command in the dojo. It will give you a print-out like this:
+To check the update status of an app, you can run the `+vats %the-desk, =verb &` command in the dojo. It will give you a print-out like this:
 
 ```
-> +vats %docs
-%docs
-  /sys/kelvin:      [%zuse 418]
-  base hash:        0vu.moe96.kmq1d.a0nen.76vf6.t5qbc.aokqv.89fg5.avctv.pvq08.pdio0
-  %cz hash:         0vu.moe96.kmq1d.a0nen.76vf6.t5qbc.aokqv.89fg5.avctv.pvq08.pdio0
+> +vats %webterm, =verb &
+%webterm
+  /sys/kelvin:      [%zuse 408] [%zuse 409] [%zuse 410] [%zuse 411] [%zuse 412] [%zuse 413] [%zuse 414] [%zuse 415] [%zuse 416]
+  base hash:        ~
+  %cz hash:         0v5.vqi3m.o4jpl.8i5tk.qn4h3.5272h.tie2f.degcr.ptngr.cnjbl.ge4a9
+  essential desk:   yes
   app status:       running
   force on:         ~
   force off:        ~
-  publishing ship:  ~
-  updates:          tracking
-  source ship:      ~pocwet
-  source desk:      %docs
-  source aeon:      30
+  publishing ship:  ~mister-dister-dozzod-dozzod
+  updates:          remote
+  source ship:      ~mister-dister-dozzod-dozzod
+  source desk:      %webterm
+  source aeon:      0
+  kids desk:        ~
   pending updates:  ~
 ::
 ```
 
-If there are `pending updates`, it usually means they're waiting for a kernel update before they can be applied. The `updates` entry tells you whether automatic updates are enabled.
+If there are `pending updates`, it usually means they're waiting for a kernel update before they can be applied. The `updates` entry is `remote` when the desk tracks a `source ship`, and `local` when it does not.
 
 ## Further reading <a href="#further-reading" id="further-reading"></a>
 

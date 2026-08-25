@@ -60,7 +60,7 @@ Back on Earth:
 ```sh
 rm -rf comet/flap/*
 echo "~[%flap]" > comet/flap/desk.bill
-echo "[%zuse 417]" > comet/flap/sys.kelvin
+echo "[%zuse 408]" > comet/flap/sys.kelvin
 ```
 
 At this point, we need to take stock of what kind of file marks and libraries we need to make available: `kelvin`, `docket-0`, and so forth. While there are marks for `js` and `png`, there is no `wav` so we'll handle that directly.

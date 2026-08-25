@@ -295,7 +295,7 @@ desk
 
 Print out the status of each installed desk.
 
-Also see the related [`+vat`](#vat) command, which prints the status of a single desk rather than all desks.
+To print the status of a single desk rather than all desks, pass the desk name: `+vats %base`.
 
 Fields:
 

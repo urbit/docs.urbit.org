@@ -293,7 +293,7 @@ At this point, you've likely only worked on the `%base` desk. You can see data a
 ```hoon
 > +vats %base
 %base
-  /sys/kelvin:          [%zuse 413]
+  /sys/kelvin:          [%zuse 408]
   base hash ends in:    hih5c
   %cz hash ends in:     hih5c
   app status:           running
@@ -301,7 +301,7 @@ At this point, you've likely only worked on the `%base` desk. You can see data a
 
 > +vats %base, =verb %.y
 %base
-  /sys/kelvin:     [%zuse 413]
+  /sys/kelvin:     [%zuse 408]
   base hash:       0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
   %cz hash:        0v2.vhcjk.rj42q.e3la7.1679q.u2qs2.35vnn.9n1jm.mj66h.kgpe5.hih5c
   app status:      running

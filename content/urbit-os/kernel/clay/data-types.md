@@ -1071,7 +1071,7 @@ Kelvin range
   weft
 ```
 
-A `$waft` is the result of reading a `sys.kelvin` file in a desk. It lists all the `$weft`s (kernel versions) a desk is compatible with. It may either be a single `$weft` like `[%zuse 410]`, or a range like:
+A `$waft` is the result of reading a `sys.kelvin` file in a desk. It lists all the `$weft`s (kernel versions) a desk is compatible with. It may either be a single `$weft` like `[%zuse 408]`, or a range like:
 
 ```hoon
 [[%1 ~] (silt zuse+417 zuse+416 ~)]

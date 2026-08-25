@@ -52,7 +52,7 @@ We only have one agent to start, so `desk.bill` is very simple:
 Likewise, `sys.kelvin` just contains:
 
 ```
-[%zuse 414]
+[%zuse 408]
 ```
 
 The `desk.docket-0` file is slightly more complicated:

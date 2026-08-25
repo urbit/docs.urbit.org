@@ -112,7 +112,7 @@ The Dojo will modify the sample by inserting `%~` (constant null) at the end of 
 ```
 > +vats
 %base
-  /sys/kelvin:           [%zuse 414]
+  /sys/kelvin:           [%zuse 408]
   base hash ends in:     drceb
   %cz hash ends in:      drceb
   app status:            running
@@ -120,7 +120,7 @@ The Dojo will modify the sample by inserting `%~` (constant null) at the end of 
 
 > +vats, =verb %.n
 %base
-  /sys/kelvin:           [%zuse 414]
+  /sys/kelvin:           [%zuse 408]
   base hash ends in:     drceb
   %cz hash ends in:      drceb
   app status:            running

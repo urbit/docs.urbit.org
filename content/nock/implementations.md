@@ -1549,7 +1549,11 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
 ## Python {#python}
 
-From [James Tauber](https://github.com/jtauber/pynock/blob/master/nock.py):
+From [~lagrev-nocfep](https://github.com/sigilante/pinochle), of Nock 4K.
+
+* (too long to include, see GitHub)
+
+From [James Tauber](https://github.com/jtauber/pynock/blob/master/nock.py), of Nock 5K:
 
 ```python
 #!/usr/bin/env python3

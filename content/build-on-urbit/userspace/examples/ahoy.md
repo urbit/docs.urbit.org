@@ -15,6 +15,13 @@ layout:
 
 # Ship Monitoring
 
+> **Not to be confused with the kernel's `%ahoy`.** This page is about a
+> third-party desk. Since February 2026 there is also an `%ahoy` subsystem in the
+> kernel, for migrating peers to Directed Messaging, reached through the
+> [`|ahoy/prob`](../../../user-manual/os/dojo-tools.md#ahoyprob) and
+> [`|ahoy/comb`](../../../user-manual/os/dojo-tools.md#ahoycomb) generators.
+> The two are unrelated.
+
 The `%ahoy` desk by ~midden-fabler provides a number of agents to automatically monitor ship activity such as breaching and network uptime.  This tutorial examines the `%ahoy` agent specifically with some slight simplifications to demonstrate how an Urbit-native app can be constructed.  You will see how to render a front-end using Sail, employ the `+abet` nested core design pattern, construct CLI generators, and set wakeup timers using Behn.
 
 `%ahoy` presents a web UI at `/ahoy` rendered using [Sail](../../../hoon/sail.md) and ~paldev's Rudder library alongside command-line generators to add, delete, and modify ship watches.  Notifications are sent using `%hark-store` if a ship hasn't been contacted after a specified amount of time.

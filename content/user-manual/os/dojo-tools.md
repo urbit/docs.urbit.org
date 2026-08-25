@@ -1043,6 +1043,103 @@ Set timers for Ames flows that lack them, cancel timers for Ames flows that have
 
 ---
 
+### `|ahoy/prob` {#ahoyprob}
+
+Migrate one peer to Directed Messaging (Mesa).
+
+Negotiates with the given ship to move networking with it from `%ames` to `%mesa`. Sends a [`%ahoy-prob`](../../urbit-os/base/hood.md#ahoy) poke.
+
+#### Arguments
+
+```
+@p, =force-test ?
+```
+
+- The positional argument is the peer to migrate.
+- `=force-test` retries the negotiation even if we previously recorded that the peer does not support directed messaging. Defaults to `&`.
+
+#### Example
+
+```
+> |ahoy/prob ~zod
+>=
+```
+
+---
+
+### `|ahoy/comb` {#ahoycomb}
+
+Migrate all peers to Directed Messaging (Mesa).
+
+Sends an [`%ahoy-comb`](../../urbit-os/base/hood.md#ahoy-comb) poke.
+
+**This is currently a no-op.** The handler in `/lib/hood/ahoy.hoon` begins `?:  &  this  :: XX disabled`, so the poke succeeds and does nothing. Use [`|ahoy/prob`](#ahoyprob) for an individual peer.
+
+#### Arguments
+
+```
+=dry ?, =veb ?, =nuke ?
+```
+
+All default to `&`. `=dry` is a test run, `=veb` is verbose output, and `=nuke` clears the recorded per-peer negotiation state first.
+
+---
+
+### `|mate` {#mate}
+
+Migrate peers to Directed Messaging locally, without negotiating.
+
+Sends a [`%helm-mass-mate`](../../urbit-os/base/hood.md#migrate-to-directed-messaging) poke. Unlike [`|ahoy/prob`](#ahoyprob), this skips the negotiation step, so the peer is not consulted. **For testing only** — the generator always runs dry.
+
+#### Arguments
+
+```
+(unit ship)
+```
+
+A specific ship, or `~` for all ships.
+
+---
+
+### `|rege` {#rege}
+
+Negotiate a peer back from Directed Messaging to ordinary Ames.
+
+The inverse of [`|ahoy/prob`](#ahoyprob). Sends a `%helm-send-rege` poke.
+
+#### Arguments
+
+```
+@p, =dry ?
+```
+
+`=dry` defaults to `&`, so it is a test run unless you pass `=dry |`.
+
+#### Example
+
+```
+> |rege ~zod, =dry |
+>=
+```
+
+---
+
+### `|ress` {#ress}
+
+Regress peers to ordinary Ames locally, without negotiating.
+
+Sends a `%helm-mass-rege` poke. The bulk counterpart to [`|rege`](#rege), skipping negotiation. **For testing only** — always runs dry.
+
+#### Arguments
+
+```
+(unit ship), =dry ?
+```
+
+A specific ship, or `~` for all ships.
+
+---
+
 ### `+pill/brass` {#pillbrass}
 
 Build a brass pill.

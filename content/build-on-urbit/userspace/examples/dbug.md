@@ -89,9 +89,12 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
         ::  inline arguments
         args=?(~ [what=?(%bowl %state) ~] [=poke ~])
         ::  named arguments
-        ~
+        depth=@ud
     ==
 :-  %dbug
+=;  =poke
+  ?:  =(0 depth)  poke
+  [%skip depth poke]
 ?-  args
   ~          [%state '']
   [@ ~]      ?-(what.args %bowl [%bowl ~], %state [%state ''])
@@ -111,7 +114,8 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
 ::
 |%
 +$  poke
-  $%  [%bowl ~]
+  $%  [%skip depth=@ud =poke]
+      [%bowl ~]
       [%state grab=cord]
       [%incoming =about]
       [%outgoing =about]
@@ -141,6 +145,12 @@ There are four actions exposed by the wrapper via the `+dbug` generator:
       [cards this]
     =/  dbug
       !<(poke vase)
+    =?  dbug  ?=([%skip %0 *] dbug)  poke.dbug
+    ?:  ?=(%skip -.dbug)
+      =^  cards  agent
+        %+  on-poke:ag  %dbug
+        !>(`poke`dbug(depth (dec depth.dbug)))
+      [cards this]
     =;  =tang
       ((%*(. slog pri 1) tang) [~ this])
     ?-  -.dbug
@@ -289,6 +299,12 @@ By applying this door builder using `%-` censig, the `+on-poke` and `+on-peek` a
       [cards this]
     =/  dbug
       !<(poke vase)
+    =?  dbug  ?=([%skip %0 *] dbug)  poke.dbug
+    ?:  ?=(%skip -.dbug)
+      =^  cards  agent
+        %+  on-poke:ag  %dbug
+        !>(`poke`dbug(depth (dec depth.dbug)))
+      [cards this]
     =;  =tang
       ((%*(. slog pri 1) tang) [~ this])
     ?-  -.dbug

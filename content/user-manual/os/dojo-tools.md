@@ -1211,16 +1211,61 @@ Query the state or bowl of a running agent.
 
 #### Arguments
 
-See the [dbug section of App School lesson 3](../../build-on-urbit/app-school/3-imports-and-aliases.md#dbug) for details of usage.
+```
+?(~ [?(%bowl %state) ~] [poke ~]), =depth @ud
+```
+
+See the [dbug section of App School lesson 3](../../build-on-urbit/app-school/3-imports-and-aliases.md#dbug) for details of the positional argument.
+
+The named `=depth` argument addresses an agent running *underneath* a wrapper
+agent. With a non-zero depth the poke is wrapped as `[%skip depth poke]`, and
+each layer of `/lib/dbug` decrements it before passing the poke down. It is only
+meaningful for a nested agent; sending it to an ordinary agent produces
+`unexpected poke to %agent with mark %dbug`.
 
 #### Example
 
 This is only used with an `:agent`, not by itself.
 
 ```
-> :graph-store +dbug [%state '(~(got by graphs) ~zod %dm-inbox)']
+> :azimuth +dbug [%state 'whos']
 >=
->   [p={} q=[~ %graph-validator-dm]]
+>   {}
+```
+
+---
+
+### `|eyre/clean` {#eyreclean}
+
+Delete stale incoming HTTP subscriptions.
+
+Eyre channel subscriptions can be left behind when a channel goes away without
+its subscriptions being torn down. This generator finds those and can remove
+them.
+
+**It runs in dry mode by default**, only reporting how many stale subscriptions
+it found. Pass `=dry |` to actually delete them.
+
+#### Arguments
+
+```
+=dry ?, =veb ?(%1 %2 ~)
+```
+
+- `=dry` - defaults to `&` (dry run). Pass `|` to delete.
+- `=veb` - verbosity. `%1` prints each stale subscription; `%2` prints each
+  subscription that still exists.
+
+#### Examples
+
+```
+> |eyre/clean
+>=
+"#0 stale incoming subscriptions"
+```
+
+```
+> |eyre/clean, =dry |
 ```
 
 ---
@@ -1848,7 +1893,7 @@ These are more advanced desk and filesystem tools.
 
 Enable automatic commits for a mounted desk
 
-Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancelautocommit).
+Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancel-autocommit).
 
 #### Arguments
 
@@ -1912,7 +1957,7 @@ The `$desk` is mandatory, the `.auto` is optional.
 
 If `.auto` is `%.y`, auto-commits will be enabled, meaning changes to that desk on the host side will automatically be committed as soon as they happen.
 
-Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancelautocommit).
+Auto-commits can be disabled with [`|clay/cancel-autocommit`](#claycancel-autocommit).
 
 #### Example
 

@@ -77,11 +77,11 @@ Which perspective is more fruitful depends on the problem being considered.
 
 We consider Arvo to be deterministic at a high level. By that we mean that it is stacked on top of a frozen instruction set known as Nock. Frozen instruction sets are a new idea for an operating system, but not for computing in general. For instance, the CPU instruction sets such as [x86-64](https://en.wikipedia.org/wiki/X86-64) are frozen at the level of the chip. A given operating system may be adapted to run on more than one CPU instruction set, we merely freeze the instruction set at a higher level in order to enable deterministic computation.
 
-Arvo handles nondeterminism in an interesting way. Deciding whether or not to halt a computation that could potentially last forever becomes a heuristic decision that is akin to dropping a packet. Thus it behooves one to think of Arvo as being a stateful packet transceiver rather than an ordinary computer: events are never guaranteed to complete, even if one can prove that the computation would eventually terminate. We elaborate on this in the [solid state interpreter](#solid-state-intrepeter) section.
+Arvo handles nondeterminism in an interesting way. Deciding whether or not to halt a computation that could potentially last forever becomes a heuristic decision that is akin to dropping a packet. Thus it behooves one to think of Arvo as being a stateful packet transceiver rather than an ordinary computer: events are never guaranteed to complete, even if one can prove that the computation would eventually terminate. We elaborate on this in the [solid state interpreter](#solid-state-interpreter) section.
 
 Because Arvo is run on a virtual machine, nondeterministic information such as the stack trace of an infinite loop that was entered into may be obtained. This is possible because while Arvo may be unable to obtain that information, the runtime may inject that information into the event log.
 
-Being deterministic at a high level enables many things that are out of reach of any other operating system. For instance, we are able to do [over-the-air](#over-the-air-updates) (OTA) updates, which allows software updates to be implemented across the network without needing to worry whether it won't work on someone's ship. Since Arvo is an [interpreter](#solid-state-intrepeter), it can accept source code with which to update itself instead of requiring a pre-compiled binary. This essential property makes Urbit much simpler and more accessible than any comparable personal server setup.
+Being deterministic at a high level enables many things that are out of reach of any other operating system. For instance, we are able to do [over-the-air](#over-the-air-updates) (OTA) updates, which allows software updates to be implemented across the network without needing to worry whether it won't work on someone's ship. Since Arvo is an [interpreter](#solid-state-interpreter), it can accept source code with which to update itself instead of requiring a pre-compiled binary. This essential property makes Urbit much simpler and more accessible than any comparable personal server setup.
 
 #### Event log {#event-log}
 
@@ -332,45 +332,92 @@ As we follow functional programming paradigms, the state of Arvo is considered t
 Thus besides the battery of the Arvo core, we have the payload which is as follows.
 
 ```hoon
-::  persistent arvo state
+::  cached reflexives
 ::
-=/  pit=vase  !>(..is)                                  ::
-=/  vil=vile  (viol p.pit)                              ::  cached reflexives
-=|  $:  lac=_&                                          ::  laconic bit
-        eny=@                                           ::  entropy
-        our=ship                                        ::  identity
-        bud=vase                                        ::  %zuse
-        vanes=(list [label=@tas =vane])                 ::  modules
-    ==                                                  ::
+=/  pit=vase  !>(..part)
+=/  vil=vile  (viol p.pit)
+::
+::  arvo state, as a discriminable sample
+::
+=|  [_arvo soul]
+=*  sol  ->
 ```
 
 Let's investigate the state piece by piece.
 
 ```hoon
-=/  pit=vase  !>(..is)                                  ::
+=/  pit=vase  !>(..part)
 ```
 
-This `$vase` is part of the state but does not get directly migrated when `+poke` is called. `!>(..is)` consists of the code in `arvo.hoon` written above this core contained in a `$vase`. Thus this part of the state changes only when that code changes in an update.
+This `$vase` is part of the state but does not get directly migrated when `+poke` is called. `!>(..part)` consists of the code in `arvo.hoon` written above this core contained in a `$vase`. Thus this part of the state changes only when that code changes in an update.
 
 ```hoon
-=/  vil=vile  (viol p.pit)                              ::  cached reflexives
-
+=/  vil=vile  (viol p.pit)
 ```
 
 This is a cache of specific types that are of fundamental importance to Arvo - namely `$type`s, `$duct`s, `$path`s, and `$vase`s. This is kept because it is unnecessarily wasteful to recompile these fundamental types on a regular basis. Again, this part of the state is never updated directly by `+poke`.
 
+The real state is a `$soul`:
+
 ```hoon
-=|  $:  lac=_&                                          ::  laconic bit
-        eny=@                                           ::  entropy
-        our=ship                                        ::  identity
-        bud=vase                                        ::  %zuse
-        vanes=(list [label=@tas =vane])                 ::  modules
-    ==
++$  soul
+  $:  mien
+      $=  fad
+      $:  lac=?
+      ==
+      $=  zen
+      $:  ver=vere
+          lag=_|
+      ==
+      $=  mod
+      $:  fat=(axal (cask))
+          lul=vase
+          zus=vase
+          van=(map term vane)
+      ==
+  ==
 ```
 
-This is where the real state of the Arvo kernel is kept. `lac` detemines whether Arvo's output is verbose, which can be set using the `|verb` command in the dojo. `eny` is the current entropy. `our` is the ship, which is permanently frozen during the larval stage. `bud` is the standard library. Lastly, `vanes` is of course the list of vanes, which have their own internal states.
+where `+$  mien  [our=ship now=@da eny=@uvJ]`.
 
-As you can see, the state of Arvo itself is quite simple. Its primary role is that of a traffic cop, and most of the interesting part of the state lies in `vanes`.
+- `mien` is identity, time and entropy: `our` is the ship, permanently frozen during the larval stage; `now` is the current event time; `eny` is entropy.
+- `fad` is configuration. `lac` determines whether Arvo's output is verbose, which can be set using the `|verb` command in the dojo.
+- `zen` is knowledge of the Outside: `ver` is the runtime version, and `lag` records whether an upgrade is blocked.
+- `mod` is the internal modules: `fat` is the kernel filesystem, `lul` is `%lull`, `zus` is `%zuse`, and `van` is the vanes.
+
+Note that `van` is a `(map term vane)` — vanes are keyed by name, not held in a list — and a `+$  vane` is `[=vase =worm]`.
+
+As you can see, the state of Arvo itself is quite simple. Its primary role is that of a traffic cop, and most of the interesting part of the state lies in the vanes.
+
+#### Larval state and upgrades {#larval-state-and-upgrades}
+
+During the [larval stage](#larval-stage-core), before Arvo knows its identity, the state is instead a `$grub`, whose fields are units filled in as they are learned:
+
+```hoon
++$  grub
+  $:  who=(unit ship)
+      eny=(unit @)
+      lac=?
+      ver=(unit vere)
+      fat=(unit (axal (cask)))
+      lul=(unit (trap vase))
+      zus=(unit (trap vase))
+      van=(map term (trap vase))
+  ==
+```
+
+An upgrade arrives wrapped in a `$heir`, which is the envelope Arvo accepts when
+loading a previous state:
+
+```hoon
++$  heir
+  $%  [%grub %234 =grub]
+      [?(%240 %239 %238 %237 %236 %235) =debt =soul:a235]
+      [%234 =debt =soul]
+  ==
+```
+
+The current Arvo kelvin is `%234`.
 
 ### Vanes {#vanes}
 

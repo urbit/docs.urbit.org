@@ -105,7 +105,6 @@ Formal state
   $:  rom=room                              ::  domestic
       hoy=(map ship rung)                   ::  foreign
       ran=rang                              ::  hashes
-      fad=flow                              ::  ford cache
       mon=(map term beam)                   ::  mount points
       hez=(unit duct)                       ::  sync duct
       cez=(map @ta crew)                    ::  permission groups
@@ -121,7 +120,6 @@ This is the state of the vane. Anything that must be remembered between calls to
 - `rom`: the state for all local desks. It consists of a `$duct` to [Dill](../dill/README.md) and a collection of `$desk`s.
 - `hoy`: the state for all foreign desks.
 - `ran`: the global, hash-addressed object store. It has maps of commit hashes to commits and content hashes to content.
-- `fad`: the global build cache. Each desk has its own fast-lookup index over this global cache.
 - `mon`: a collection of Unix mount points. `$term` is the mount point (relative to th pier) and `$beam` is a domestic Clay directory.
 - `hez`: the duct used to sync with Unix.
 - `cez`: a collection of named aermission groups.
@@ -480,7 +478,6 @@ Desk data
       tom=(map tako norm)
       nor=norm
       mim=(map path mime)
-      fod=flue
       wic=(map weft yoki)
       liv=zest
       ren=rein
@@ -495,7 +492,6 @@ A `$dome` is the state of a `$desk` and associated data.
 - `tom` contains the tombstoning policies for all files in the desk.
 - `nor` is the default tombstoning policy.
 - `mim` is a cache of the content in the directories that are mounted to Unix.
-- `fod` is the Ford cache, which keeps a cache of the results of builds performed at this `$desk`'s current revision, including a full transitive closure of dependencies for each completed build.
 - `wic` contains commits waiting for future kernel versions.
 - `liv` says whether agents on the desk are running or suspended.
 - `ren` records which agents have been forced on or off, differing from the desk's `desk.bill` manifest.
@@ -770,7 +766,13 @@ Ford build with content.
   ==
 ```
 
-Like a [`$mist`](#mist) except the leaf nodes (files and directories) contain the [`$lobe`](#lobe) (content hash).
+A Ford build key in which the leaf nodes (files and directories) carry the
+[`$lobe`](#lobe) (content hash).
+
+> **Legacy.** This type is no longer part of Clay's public interface. It survives
+> only inside `clay.hoon`'s state-migration core, where it is used to type
+> pre-existing state during an upgrade. The global Ford cache it belonged to was
+> removed from vane state in 2026.
 
 ---
 
@@ -982,6 +984,11 @@ Ford result
 
 The actual data in the Ford cache.
 
+> **Legacy.** This type is no longer part of Clay's public interface. It survives
+> only inside `clay.hoon`'s state-migration core, where it is used to type
+> pre-existing state during an upgrade. The global Ford cache it belonged to was
+> removed from vane state in 2026.
+
 ---
 
 ### `$soba` {#soba}
@@ -1058,6 +1065,19 @@ List change
 ```
 
 This is a parametrized type for list changes. For example, `(urge @t)` is a list change for lines of text.
+
+---
+
+### `$weft` {#weft}
+
+Kernel version
+
+```hoon
++$  weft  [lal=@tas num=@ud]
+```
+
+A single kernel version, such as `[%zuse 408]`. `lal` is the component name and
+`num` its kelvin. Defined in `arvo.hoon`.
 
 ---
 
@@ -1202,6 +1222,11 @@ Ford cache key
 
 This includes all build inputs, including transitive dependencies, recursively.
 
+> **Legacy.** This type is no longer part of Clay's public interface. It survives
+> only inside `clay.hoon`'s state-migration core, where it is used to type
+> pre-existing state during an upgrade. The global Ford cache it belonged to was
+> removed from vane state in 2026.
+
 ---
 
 ### `$flow` {#flow}
@@ -1216,38 +1241,10 @@ Refcount includes references from other items in the cache, and from `spill`s in
 
 This is optimized for minimizing the number of rebuilds, and given that, minimizing the amount of memory used. It is relatively slow to lookup, because generating a cache key can be fairly slow (for files, it requires parsing; for `$tube`s, it even requires building the marks).
 
----
-
-### `$flue` {#flue}
-
-Per-desk build cache
-
-```hoon
-+$  flue  [spill=(set leak) sprig=(map mist [=leak =soak])]
-```
-
-- `spill` is the set of "roots" we have into the [global ford cache](#flow). We add a root for everything referenced directly or indirectly on a desk, then invalidate them on commit only if their dependencies change.
-- `sprig` is a fast-lookup index over the global ford cache. The only goal is to make cache hits fast.
-
----
-
-### `$mist` {#mist}
-
-Ford build without content
-
-```hoon
-+$  mist
-  $%  [%file =path]
-      [%nave =mark]
-      [%dais =mark]
-      [%cast =mars]
-      [%tube =mars]
-      [%vale =path]
-      [%arch =path]
-  ==
-```
-
-This is used at the index of `sprig`s in [`$flue`](#flue)s.
+> **Legacy.** This type is no longer part of Clay's public interface. It survives
+> only inside `clay.hoon`'s state-migration core, where it is used to type
+> pre-existing state during an upgrade. The global Ford cache it belonged to was
+> removed from vane state in 2026.
 
 ---
 

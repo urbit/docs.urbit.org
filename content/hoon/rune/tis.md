@@ -513,6 +513,20 @@ This may also remind you of Haskell's State monad.
 
 Note that `=^` is subject to the same type nesting limitations as `=.`; e.g., if you have `?~` checked a list for null, you can no longer nest a regular list in the result. (In this case, use a nock `=(~ ...)` equality check instead or recast the result.)
 
+`.r` **must produce a cell.** Since 2026, `=^` desugars through
+[`^_`](ket.md#ketcab) with a cell as the goal, so a non-cell right-hand side is a
+compile error rather than something that slides through:
+
+```
+> =|  a=@  =^  b  a  [1 2]  [b a]
+[1 2]
+
+> =|  a=@  =^  b  a  5  [b a]
+-need.[* *]
+-have.@ud
+nest-fail
+```
+
 #### Examples
 
 The `+og` core is a stateful pseudo-random number generator. We have to change the core state every time we generate a random number, so we use `=^`:

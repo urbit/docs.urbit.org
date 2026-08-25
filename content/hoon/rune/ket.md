@@ -15,9 +15,83 @@ layout:
 
 # ^ ket · Casts
 
-[`^-` ("kethep")](#--kethep), [`^+` ("ketlus")](#-ketlus), and [`^=` ("kettis")](#-kettis) let us adjust types without violating type constraints.
+[`^-` ("kethep")](#kethep), [`^+` ("ketlus")](#ketlus), and [`^=` ("kettis")](#kettis) let us adjust types without violating type constraints.
 
 The `+nest` algorithm which tests subtyping is conservative; it never allows invalid nests, it sometimes rejects valid nests.
+
+## ^_ "ketcab" {#ketcab}
+
+Assert that an expression nests in a type, without casting it.
+
+#### Syntax
+
+Two arguments, fixed.
+
+{% tabs %}
+
+{% tab title="Tall form" %}
+
+```hoon
+^_  p
+q
+```
+
+{% endtab %}
+
+{% tab title="Wide form" %}
+
+```hoon
+^_(p q)
+```
+
+{% endtab %}
+
+{% tab title="Irregular form" %}
+
+None
+
+{% endtab %}
+
+{% endtabs %}
+
+#### AST
+
+```hoon
+[%ktcb p=hoon q=hoon]
+```
+
+#### Produces
+
+The product of `.q`, with **`.q`'s own type** — not `.p`'s.
+
+#### Discussion
+
+`^_` compiles `.q` using `.p`'s type as the goal, so `.q` must nest in `.p`'s
+type or the expression fails to compile. Unlike [`^-`](#kethep), however, the
+result keeps the type inferred for `.q`. It is a type *test* rather than a cast.
+
+The difference is visible in the dojo:
+
+```
+> ? ^_(*@ 'a')
+  @t
+'a'
+
+> ? ^-(@ 'a')
+  @
+97
+```
+
+Both accept `'a'`, because `@t` nests in `@`. `^-` casts the result to `@`, so it
+prints as `97`; `^_` leaves it as `@t`, so it prints as `'a'`.
+
+`^_` is what [`=^`](tis.md#tisket) desugars through, which is why that rune
+requires its right-hand expression to produce a cell.
+
+Note this rune was spelled `^#` until June 2026; on a kernel from before that
+change, use `^#` instead.
+
+---
 
 ## ^| "ketbar" {#ketbar}
 

@@ -66,6 +66,8 @@ Returns the script yield and final accumulator state.
 
 Initializes the Wasm module within [`+run-once`](#run-once). Handles module instantiation and processes any required imports by calling external functions.
 
+This is an internal function, it should not be called by Lia scripts directly.
+
 ## `+run` {#run}
 
 ```hoon
@@ -88,6 +90,8 @@ Stateful execution of a Wasm module. Can be used to run a new script or resume c
 ```
 
 Initializes the Wasm module within [`+run`](#run). Similar to [`+init`](#init-run-once) in `+run-once` but operates on the monomorphic [`$lia-state`](./lia-data-types.md#lia-state).
+
+This is an internal function, it should not be called by Lia scripts directly.
 
 ## `+arrows` {#arrows}
 

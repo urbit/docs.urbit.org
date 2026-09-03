@@ -15,7 +15,7 @@ layout:
 
 # Lia Data Types
 
-The `+lia-sur` core builds on top of `+wasm-sur` and `+engine-sur` to define Lia's monadic, deterministic approach to making Wasm function calls and handling their results.
+The `+lia-sur` core builds on top of `+wasm-sur` and `+engine-sur` to define Lia's monadic approach to making Wasm function calls and handling their results.
 
 ### `+lia-sur` {#lia-sur}
 
@@ -41,9 +41,8 @@ Wrapper arm around the Lia core, making its arms and types addressable by limb r
 ```
 
 Lia value type. Can be:
-- 32-bit integer `0`.
 - `%octs`: Byte data with length and content (see [`$octs`](./wasm-data-types.md#octs)).
-- Any [`$coin-wasm`](./wasm-data-types.md#coin-wasm) except references. That leaves integers, floats, vectors, and binary data.
+- Any [`$coin-wasm`](./wasm-data-types.md#coin-wasm) except references. That leaves integers, floats and SIMD vectors.
 
 ### `+import` {#import}
 
@@ -86,7 +85,7 @@ Execution state for a Lia script, returning a tuple of:
 
 Result of executing a Lia script step:
 - `%0`: Step completed with result of type `$a`.
-- `%1`: Step blocked on external call to function `.name`, with the provided list of `.args` from the previous step.
+- `%1`: Step blocked on external call to function `.name`, with the provided list of `.args` for that function to be resolved outside of Lia.
 - `%2`: Step crashed or errored.
 
 ### `+script-result` {#script-result}

@@ -198,15 +198,16 @@ We don't need the accumulator for this example but it's required for `+run-once`
 
 Since Lia's `+run-once` returns a pair of \[yield accumulator], we grab the yield with [`=<`](../../../hoon/rune/tis.md#tisgal) to get the head (`-`) of the result. `+yield-need` is a Lia function that asserts that a yield is successful and returns the unwrapped result.
 
-Below, we build Lia's `+run-once` core and run it on our imported `.wasm-bin` module, which we give the empty argument `[~ ~]`. (That is, a pair of the initial accumulator state and a map of imports.) The `%$` is where we'd specify a runtime hint like `%bout`, but we stub it out here as we don't need it.
+Below, we build Lia's `+run-once` gate and apply it to our imported `.wasm-bin` module, a pair of a noun accumulator and a map of imports, which will be just `[~ ~]`, an empty jet hint `%$` and finally the script itself.
 
 ```hoon
 ::  run +yield-need on the head of the result
-%-  yield-need  =<  -
 ::
+%-  yield-need  =<  -
 ::  build Lia's +run-once core with our .yil-mold
 ::  and .acc-mold and run it with our .wasm-bin, which
 ::  will be given the empty state [~ ~]
+::
 %^  (run-once yil-mold acc-mold)  [wasm-bin [~ ~]]  %$
 ```
 
@@ -214,21 +215,27 @@ Some more boilerplate. Hoon developers will recognize `.m` by analogy to the `.m
 
 ```hoon
 ::  define the monadic interface for the script
+::
 =/  m  (script yil-mold acc-mold)
 ::  define basic operations
+::
 =/  arr  (arrows acc-mold)
 ::  expose the .arr namespace
+::
 =,  arr
 ```
 
-We'll measure the input list and concatonate all of its elements into a single atom with [`+rep`](../../../hoon/stdlib/2c.md#rep).
+We'll measure the input list and concatenate all of its elements into a single atom with [`+rep`](../../../hoon/stdlib/2c.md#rep).
 
 ```hoon
 ::  number of items in the list
+::
 =/  len-vec=@    (lent lit)
 ::  byte-length of the list
+::
 =/  len-bytes=@  (mul 8 len-vec)
 ::  2^6 = 64 bits per list element
+::
 =/  vec=@        (rep 6 lit)
 ```
 
@@ -236,32 +243,39 @@ With that out of the way we can now interact with Wasm VM, replicating steps 1-4
 
 ```hoon
 ::  allocate memory
+::
 ;<  ptr=@             try:m  (call-1 '__wbindgen_malloc' len-bytes 8 ~)
 ::  write the input vector
+::
 ;<  ~                 try:m  (memwrite ptr len-bytes vec)
 ::  call the sort_u64 function in the module
+::
 ;<  ptr-len=(list @)  try:m  (call 'sort_u64' ptr len-vec ~)
 ::  read the resulting vector from memory
+::
 ;<  vec-out=octs      try:m  (memread &1.ptr-len (mul 8 &2.ptr-len))
 ```
 
-Now we split the resulting octets atom (`$octs`, a cell of byte length and data) into a list of 64-bit atoms with [`+rip`](../../../hoon/stdlib/2c.md) and add missing trailing zeroes if necessary. (Note that UrWasm's [`+rope`](../../../urbit-os/base/wasm/lib-wasm-runner-op-def.md#rope) "BROKEN_LINK" would preserve the zeroes.)
+Now we split the resulting octets atom (`$octs`, a cell of byte length and data) into a list of 64-bit atoms with [`+rip`](../../../hoon/stdlib/2c.md) and add missing trailing zeroes if necessary.
 
 ```hoon
 ::  rip the octet stream into a list of 64-bit atoms
+::
 =/  lit-out=(list @)  (rip 6 q.vec-out)
 ::  measure the length of the list
-=/  lent-out=@  (lent lit-out)
 ::
+=/  lent-out=@  (lent lit-out)
 ::  check if .lent-out equals the length of the
 ::  original list we passed into the generator
+::
 ?:  =(len-vec lent-out)
   ::  if so, return the output list
+  ::
   (return:m lit-out)
-::
 ::  if not, use +return from the .m +script core to
 ::  return the output list with enough trailing zeroes
 ::  to match the length of the input list
+::
 %-  return:m
 %+  weld  lit-out
 (reap (sub len-vec lent-out) 0)
